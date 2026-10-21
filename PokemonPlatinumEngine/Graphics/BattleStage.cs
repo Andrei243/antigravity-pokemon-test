@@ -19,6 +19,16 @@ internal sealed class BattleStage
     /// <summary>Where the player runs in to throw a ball at a wild Pokémon: left of their own platform.</summary>
     public static readonly Vector3 ThrowSpot = PlayerSpot + new Vector3(-1.7f, 0, 0.5f);
 
+    /// <summary>
+    /// Where a trainer across the field stands to say a line once their Pokémon are out (plan 11 · C13): at the edge of
+    /// their platform on the side they stepped off by (the first or only trainer to the right, the second of two to
+    /// the left), a little behind their Pokémon, so neither hides the other.
+    /// </summary>
+    public static Vector3 SpeakerSpot(bool second) => EnemySpot + new Vector3((second ? -1f : 1f) * (EnemyPlatformRadius + 0.35f), 0, -1.1f);
+
+    /// <summary>How far off the platform a trainer who steps back to speak sets out from, along the way they left.</summary>
+    public const float SpeakerFrom = 7f;
+
     /// <summary>Height of the grass platforms' tops; other arenas raise or lower theirs (<see cref="PlatformTopOf"/>).</summary>
     public const float PlatformHeight = 0.16f;
 

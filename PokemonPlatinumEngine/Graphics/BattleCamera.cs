@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -182,6 +182,10 @@ internal sealed class BattleCamera
         if (anim.Ball is { } ball && !(ball.Caught && ball.Age > BattleAnimator.BallThrowTime(ball.Shakes)))
             return BallShot(anim, ball, places);
 
+        // A trainer back on their platform to say a line, while it is read (plan 11 · C13); eased back once they go
+        if (anim.Speaking is { LeaveAge: < 0f } speaking)
+            return (SpeakerShot(speaking, anim.EnemyTrainer2Look != null, places), ShotKind.Trainer, null);
+
         // The newest move
         EffectCue? move = null;
         for (int i = anim.Cues.Count - 1; i >= 0; i--)
@@ -230,6 +234,24 @@ internal sealed class BattleCamera
 
         if (anim.Time < 1.8f) return (Intro(anim.Time), ShotKind.Intro, null);
         return (Overview(anim.Time), ShotKind.Overview, null);
+    }
+
+    /// <summary>A trainer's height in their rig's own units, which the battle scales up (<see cref="BattleRenderer.SpeakerAt"/>).</summary>
+    public const float TrainerHeight = 1.6f;
+
+    /// <summary>
+    /// A trainer who speaks (plan 11 · C13): a shot of them beside their Pokémon, from the front as the foe's shots
+    /// are, centred a little toward the trainer at the edge of the platform they come back to (so they walk into the
+    /// frame), and set high enough that their feet stand clear of the message box over the picture's lowest fifth.
+    /// </summary>
+    public static CameraShot SpeakerShot(SpeakingTrainer speaking, bool two, FxPlaces places)
+    {
+        float scale = two ? 2.1f : 2.3f;
+        float h = TrainerHeight * scale;
+        var spot = BattleStage.SpeakerSpot(speaking.Second);
+        var pokemon = places.Feet(BattleSide.Enemy, speaking.Second ? 1 : 0);
+        var focus = Vector3.Lerp(new Vector3(pokemon.X, 0, pokemon.Z), spot, 0.6f) + Vector3.UnitY * (pokemon.Y + h * 0.55f);
+        return Frame(focus, h * 2.2f, -0.18f, 0.06f, limitZ: FoeShotLimit);
     }
 
     /// <summary>Every place the newest move is landing on (a move that hits both foes has a cue for each).</summary>

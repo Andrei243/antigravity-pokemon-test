@@ -29,6 +29,11 @@ partial class Harness
             LaterFieldMode();
             return;
         }
+        if (Environment.GetEnvironmentVariable("CONDITIONS_FROM") == "speaks")
+        {
+            SpeakingMode();
+            return;
+        }
 
         var flyer = new Pokemon(PokemonDatabase.Get("Staravia")!, 30);
         flyer.Moves.Clear();
@@ -315,18 +320,23 @@ partial class Harness
 
     // Trainers who speak in battle (plan 11 · C12): Roark with his own team, a Gible's Dragon Rage taking forty HP a
     // turn, at the three moments his lines are read (98_speaks_first_down, 98_speaks_last_pokemon, 98_speaks_low_hp),
-    // and the last of them again with the option off (98_speaks_off), where nothing is said
+    // and the last of them again with the option off (98_speaks_off), where nothing is said. Since plan 11 · C13 he steps
+    // back onto his platform for each line and the camera finds him, and off again once it is read
+    // (98_speaks_first_down_leaving); CONDITIONS_FROM=speaks runs this part alone
     void SpeakingMode()
     {
         BattleEngine Against(bool lines)
         {
-            var roark = new Trainer { Id = "leader_roark" };
+            // In his own look, as the person of his Gym carries him into the game's battle (plan 11 · C5)
+            var roark = new Trainer { Id = "leader_roark", Look = "roark" };
             TrainerDatabase.Fill(roark, TrainerDatabase.Get("leader_roark")!);
             // His Potions would take the last one out of the red the turn it got there
             roark.Items.Clear();
             var gible = new Pokemon(PokemonDatabase.Get("Gible")!, 40);
             gible.Moves.Clear();
             gible.Moves.Add(new Move(MoveDatabase.Get("Dragon Rage")));
+            // Twenty HP a hit, for the last one, which has fewer than Dragon Rage's forty to spare above the red
+            gible.Moves.Add(new Move(MoveDatabase.Get("Sonic Boom")));
             var team = new Party();
             team.Add(gible);
             // On the Gym's own floor, for its stage
@@ -349,7 +359,9 @@ partial class Harness
         {
             for (int i = 0; i < 40 && b.CurrentSpeaker == null && (orTo == null || b.CurrentMessage != orTo) && !b.IsBattleOver; i++)
             {
-                Confirm(b);
+                // A Pokémon of his that outlasts one Dragon Rage (his Cranidos) takes another
+                if (b.HUD.MenuState == BattleMenuState.Main) b.SelectMove(0);
+                else Confirm(b);
                 Skip(0.3);
             }
             Skip(0.8);
@@ -364,18 +376,24 @@ partial class Harness
             }
             Skip(0.5);
         }
-        // Roark's last one, left forty HP above a fifth of its HP: the Dragon Rage leaves it in the red
+        // Roark's last one, left twenty HP above a fifth of its HP: the Sonic Boom leaves it in the red
         void IntoTheRed(BattleEngine b)
         {
             var last = b.EnemyPokemon;
-            last.CurrentHP = Math.Min(last.MaxHP, 40 + Math.Max(1, last.MaxHP / 5));
-            b.SelectMove(0);
+            last.CurrentHP = Math.Min(last.MaxHP, 20 + Math.Max(1, last.MaxHP / 5));
+            Console.WriteLine($"  {last.DisplayName}: {last.CurrentHP} of {last.MaxHP} HP before the Sonic Boom");
+            b.SelectMove(1);
         }
 
         var speaking = Against(lines: true);
         speaking.SelectMove(0);
         ReadToSpeaker(speaking);
         Shot("98_speaks_first_down");
+        // Read, and Roark on his way off again with the camera easing back (plan 11 · C13)
+        Confirm(speaking);
+        Skip(0.2);
+        Console.WriteLine($"  speaking: {(speaking.Anim.Speaking is { } back ? $"{back.Look}, back {back.Back:0.00}" : "nobody")}");
+        Shot("98_speaks_first_down_leaving");
         // The line read, Roark sends the next; the second down, his last comes out
         ToMenu(speaking);
         speaking.SelectMove(0);
@@ -389,12 +407,14 @@ partial class Harness
         game.State = GameState.Overworld;
 
         var quiet = Against(lines: false);
-        quiet.SelectMove(0);
-        ToMenu(quiet);
-        quiet.SelectMove(0);
-        ToMenu(quiet);
+        // Down to his last, however many Dragon Rages that takes
+        for (int i = 0; i < 6 && quiet.Trainers[0].Party.Members.Count(p => !p.IsFainted) > 1; i++)
+        {
+            quiet.SelectMove(0);
+            ToMenu(quiet);
+        }
         IntoTheRed(quiet);
-        ReadToSpeaker(quiet, $"{quiet.PlayerPokemon.DisplayName} used Dragon Rage!");
+        ReadToSpeaker(quiet, $"{quiet.PlayerPokemon.DisplayName} used Sonic Boom!");
         // The next line, where the option on would have had Roark's
         Confirm(quiet);
         Skip(0.8);

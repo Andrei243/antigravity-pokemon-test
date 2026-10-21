@@ -563,7 +563,7 @@ What the player wears is an `Outfit` (`Core/Outfit.cs`): a garment's id in each 
 
 - A key is a trainer's id in `trainers.json` (`leader_roark`), or a stem ending in `*` that every id beginning with it takes (`rival_route_203_*`: the rival's three teams there, one for each starter). An id of its own wins over a stem, and a longer stem over a shorter one. A rematch is a trainer of its own (`leader_roark_rematch`), with nothing unless it is given its own lines.
 - Each moment has up to one line, `text`, which may hold `{player}` and `{rival}`; a moment left out says nothing. A line must fit two lines of the battle's message box (a hundred characters with both names at their longest) and is Latin-1 only, as the interface's font is.
-- `mood` and `act` are the face and the gesture the line is said with, by plan 11 · C11's names, for C13's trainer on the platform; nothing reads them yet.
+- `mood` and `act` are the face and the gesture the line is said with, by plan 11 · C11's names (`Mood`: `neutral`, `happy`, `surprised`, `sad`, `angry`; `Gesture`: `wave`, `nod`, `cheer`, `surprised`, `bow`, `shrug`, `point`, `laugh`, `jump`; either may be left out), which the trainer shows as they step back onto their platform to say it (plan 11 · C13; `TrainerLine.Face`, `Gesture`). A name the game doesn't know is a failed test.
 - The lines are read only where the `TrainerLines` option holds (On, or Rules in a game played by the modern rules). Whoever is beside the player (a partner) never speaks: the moments are the other side's.
 
 ## Text

@@ -465,10 +465,53 @@ public sealed class BattleAnimator
 
     /// <summary>Character type standing on each platform before the Pokémon are sent out (null = none).</summary>
     public string? PlayerTrainer { get; internal set; } = PlayerIdentity.Character;
-    public string? EnemyTrainer { get; internal set; }
+    public string? EnemyTrainer { get => enemyTrainer; internal set { enemyTrainer = value; if (value != null) EnemyTrainerLook = value; } }
+    private string? enemyTrainer;
 
     /// <summary>A second opposing trainer standing beside the first (two trainers battling together).</summary>
-    public string? EnemyTrainer2 { get; internal set; }
+    public string? EnemyTrainer2 { get => enemyTrainer2; internal set { enemyTrainer2 = value; if (value != null) EnemyTrainer2Look = value; } }
+    private string? enemyTrainer2;
+
+    /// <summary>
+    /// The looks of the trainers across the field, kept once they have stepped off their platform (when
+    /// <see cref="EnemyTrainer"/> and <see cref="EnemyTrainer2"/> are cleared), so that one who speaks can step back
+    /// (plan 11 · C13).
+    /// </summary>
+    public string? EnemyTrainerLook { get; private set; }
+    public string? EnemyTrainer2Look { get; private set; }
+
+    /// <summary>Seconds a trainer takes to step back onto their platform to speak, and to step off again once their line is read (plan 11 · C13).</summary>
+    public const float TrainerBackTime = 0.4f;
+
+    /// <summary>The trainer across the field who is back on their platform to say a line, or on their way there or off again; null for none (plan 11 · C13).</summary>
+    public SpeakingTrainer? Speaking { get; private set; }
+
+    /// <summary>
+    /// A trainer across the field steps back onto their platform to say a line (plan 11 · C13), with the line's face
+    /// and gesture: the first or only trainer (<paramref name="second"/> false) or the second of two, alone. Nothing
+    /// while they still stand there, or with no look kept for them. One already back stays, and takes the new face.
+    /// </summary>
+    public void StepBack(bool second, Overworld.Mood mood, Overworld.Gesture? gesture)
+    {
+        string? look = second ? EnemyTrainer2Look : EnemyTrainerLook;
+        if (look == null || (second ? EnemyTrainer2 : EnemyTrainer) != null) return;
+        if (Speaking is { } back && back.Second == second && back.Look == look)
+        {
+            // Turned round on the way off: as far back as they had come, walking on from there
+            back.Age = back.Back * TrainerBackTime;
+            back.LeaveAge = -1f;
+            back.Mood = mood;
+            back.Gesture = gesture;
+            return;
+        }
+        Speaking = new SpeakingTrainer(look, second) { Mood = mood, Gesture = gesture };
+    }
+
+    /// <summary>The trainer who spoke has had their line read and steps off their platform again (plan 11 · C13).</summary>
+    public void SendOffSpeaker()
+    {
+        if (Speaking is { LeaveAge: < 0f } back) back.LeaveAge = 0f;
+    }
 
     /// <summary>
     /// Whoever battles beside the player, standing on the platform with them until the Pokémon are sent out (a tag
@@ -1066,6 +1109,11 @@ public sealed class BattleAnimator
         if (EnemyTrainerExit >= 0f) EnemyTrainerExit += dt;
         if (PlayerTrainerExit > TrainerExitTime) PlayerTrainer = PartnerTrainer = null;
         if (EnemyTrainerExit > TrainerExitTime) EnemyTrainer = EnemyTrainer2 = null;
+        if (Speaking != null)
+        {
+            Speaking.Age += dt;
+            if (Speaking.LeaveAge >= 0f && (Speaking.LeaveAge += dt) >= TrainerBackTime) Speaking = null;
+        }
 
         for (int i = 0; i < cues.Count; i++)
         {
@@ -1186,4 +1234,41 @@ public sealed class BattleAnimator
     /// </summary>
     public static float Emerge(float sendOutAge) =>
         sendOutAge < SendOutBallTime ? -1f : Math.Clamp((sendOutAge - SendOutBallTime) / (SendOutTime - SendOutBallTime), 0f, 1f);
+}
+
+/// <summary>
+/// A trainer across the field back on their platform to say a line (plan 11 · C13; style guide, "Camera (G8)" and
+/// "Characters", "Faces in battle"): who they are, where they stand, and how far they have come or gone, as a
+/// function of the animator's clock alone.
+/// </summary>
+public sealed class SpeakingTrainer
+{
+    public SpeakingTrainer(string look, bool second)
+    {
+        Look = look;
+        Second = second;
+    }
+
+    /// <summary>The look they are drawn in: the one they stood on the platform in before the Pokémon were sent out.</summary>
+    public string Look { get; }
+
+    /// <summary>The second of two trainers battling together, who stands at the other edge of the platform.</summary>
+    public bool Second { get; }
+
+    /// <summary>The face their line is said with, and the gesture played once they are back.</summary>
+    public Overworld.Mood Mood { get; internal set; }
+    public Overworld.Gesture? Gesture { get; internal set; }
+
+    /// <summary>Seconds since they set off back to their platform.</summary>
+    public float Age { get; internal set; }
+
+    /// <summary>Seconds since they set off again once their line was read (-1 while it is still being read).</summary>
+    public float LeaveAge { get; internal set; } = -1f;
+
+    /// <summary>How far onto the platform they stand: 0 off it, 1 at its edge.</summary>
+    public float Back => Math.Min(Math.Clamp(Age / BattleAnimator.TrainerBackTime, 0f, 1f),
+        LeaveAge < 0f ? 1f : 1f - Math.Clamp(LeaveAge / BattleAnimator.TrainerBackTime, 0f, 1f));
+
+    /// <summary>Seconds into their gesture, which begins as they arrive (negative before).</summary>
+    public float GestureAge => Age - BattleAnimator.TrainerBackTime;
 }

@@ -7,13 +7,20 @@ namespace PokemonPlatinumEngine.Data;
 
 /// <summary>
 /// One thing a trainer says in battle (plan 11 · C12): its words, which may hold <c>{player}</c> and <c>{rival}</c>,
-/// and the face and gesture it is said with, by C11's names, for plan 11 · C13 to show (nothing reads them yet).
+/// and the face and gesture it is said with, by C11's names (<see cref="Overworld.Mood"/>, <see cref="Overworld.Gesture"/>),
+/// which the trainer shows as they step back onto their platform to say it (plan 11 · C13).
 /// </summary>
 public sealed class TrainerLine
 {
     public string Text { get; set; } = "";
     public string? Mood { get; set; }
     public string? Act { get; set; }
+
+    /// <summary>The face the line is said with: its <see cref="Mood"/> by C11's name, neutral where it gives none.</summary>
+    public Overworld.Mood Face => Mood != null && Enum.TryParse<Overworld.Mood>(Mood, true, out var mood) ? mood : Overworld.Mood.Neutral;
+
+    /// <summary>The gesture the line is said with, by C11's name; null where it gives none.</summary>
+    public Overworld.Gesture? Gesture => Act != null && Enum.TryParse<Overworld.Gesture>(Act, true, out var gesture) ? gesture : null;
 }
 
 /// <summary>A trainer's lines in battle: up to one for each moment (<see cref="TrainerCue"/>).</summary>

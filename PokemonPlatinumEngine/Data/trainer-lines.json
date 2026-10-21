@@ -1,163 +1,163 @@
 {
   "rival_route_201_*": {
-    "lowHp": { "text": "Hey, hey, slow down! These Pokémon are brand new, {player}!" }
+    "lowHp": { "text": "Hey, hey, slow down! These Pokémon are brand new, {player}!", "mood": "surprised", "act": "jump" }
   },
   "rival_route_203_*": {
-    "firstDown": { "text": "Already?! Fine, fine, that one was just warming up!" },
-    "lastPokemon": { "text": "Last one! No more messing about, let's wrap this up fast!" },
-    "lowHp": { "text": "No, no, no! I ran the whole way here for this!" }
+    "firstDown": { "text": "Already?! Fine, fine, that one was just warming up!", "mood": "surprised", "act": "shrug" },
+    "lastPokemon": { "text": "Last one! No more messing about, let's wrap this up fast!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "No, no, no! I ran the whole way here for this!", "mood": "sad", "act": "jump" }
   },
   "rival_route_209_*": {
-    "firstDown": { "text": "Tch! I'll make up for that one double, just watch!" },
-    "lastPokemon": { "text": "My partner since day one! Show {player} what we've got!" },
-    "lowHp": { "text": "Hang in there! We can't lose before Hearthome, we just can't!" }
+    "firstDown": { "text": "Tch! I'll make up for that one double, just watch!", "mood": "angry" },
+    "lastPokemon": { "text": "My partner since day one! Show {player} what we've got!", "mood": "happy", "act": "point" },
+    "lowHp": { "text": "Hang in there! We can't lose before Hearthome, we just can't!", "mood": "angry", "act": "cheer" }
   },
   "rival_pastoria_city_*": {
-    "firstDown": { "text": "Huh! You've been training on the sly, haven't you?" },
-    "lastPokemon": { "text": "Okay, this is it! All or nothing, {player}!" },
-    "lowHp": { "text": "Come on, come on! Don't you quit on me now!" }
+    "firstDown": { "text": "Huh! You've been training on the sly, haven't you?", "mood": "surprised", "act": "surprised" },
+    "lastPokemon": { "text": "Okay, this is it! All or nothing, {player}!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "Come on, come on! Don't you quit on me now!", "mood": "sad", "act": "cheer" }
   },
   "rival_canalave_city_*": {
-    "firstDown": { "text": "Gah, that one hurts! But I'm only just getting started!" },
-    "lastPokemon": { "text": "My last one! If this doesn't work, I'll... I'll think of something!" },
-    "lowHp": { "text": "We are not losing on this bridge! Not here, not to you!" }
+    "firstDown": { "text": "Gah, that one hurts! But I'm only just getting started!", "mood": "surprised", "act": "shrug" },
+    "lastPokemon": { "text": "My last one! If this doesn't work, I'll... I'll think of something!", "mood": "surprised", "act": "point" },
+    "lowHp": { "text": "We are not losing on this bridge! Not here, not to you!", "mood": "angry" }
   },
   "rival_pokemon_league_*": {
-    "firstDown": { "text": "Ha! That's the {player} I know! But I'm not done yet!" },
-    "lastPokemon": { "text": "Last one! Everything I've got goes into this, {player}!" },
-    "lowHp": { "text": "Hold on! We came too far to stop right at the League's door!" }
+    "firstDown": { "text": "Ha! That's the {player} I know! But I'm not done yet!", "mood": "happy", "act": "laugh" },
+    "lastPokemon": { "text": "Last one! Everything I've got goes into this, {player}!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "Hold on! We came too far to stop right at the League's door!", "mood": "angry", "act": "cheer" }
   },
   "rival_survival_area_*": {
-    "firstDown": { "text": "Ow! You never let up, do you? Good! Neither do I!" },
-    "lastPokemon": { "text": "Down to my last! Funny, it always comes to this with you!" },
-    "lowHp": { "text": "Not yet! One more hit, that's all I need!" }
+    "firstDown": { "text": "Ow! You never let up, do you? Good! Neither do I!", "mood": "happy", "act": "laugh" },
+    "lastPokemon": { "text": "Down to my last! Funny, it always comes to this with you!", "mood": "happy", "act": "point" },
+    "lowHp": { "text": "Not yet! One more hit, that's all I need!", "mood": "angry" }
   },
 
   "leader_roark": {
-    "firstDown": { "text": "A crack in the rock... You hit harder than you look." },
-    "lastPokemon": { "text": "My last stone. Let's see if you can break bedrock." },
-    "lowHp": { "text": "Steady now... Rock holds firm until the very last blow." }
+    "firstDown": { "text": "A crack in the rock... You hit harder than you look.", "mood": "surprised", "act": "nod" },
+    "lastPokemon": { "text": "My last stone. Let's see if you can break bedrock.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Steady now... Rock holds firm until the very last blow.", "mood": "angry" }
   },
   "leader_gardenia": {
-    "firstDown": { "text": "Oh, my poor sprout! Don't worry, the rest of my garden's tougher!" },
-    "lastPokemon": { "text": "My prettiest bloom is last! Isn't she lovely? And she bites!" },
-    "lowHp": { "text": "Wilting? No way! Grass always grows back!" }
+    "firstDown": { "text": "Oh, my poor sprout! Don't worry, the rest of my garden's tougher!", "mood": "sad" },
+    "lastPokemon": { "text": "My prettiest bloom is last! Isn't she lovely? And she bites!", "mood": "happy", "act": "wave" },
+    "lowHp": { "text": "Wilting? No way! Grass always grows back!", "mood": "angry", "act": "cheer" }
   },
   "leader_maylene": {
-    "firstDown": { "text": "You're strong... No! I won't doubt myself. Not today." },
-    "lastPokemon": { "text": "This is my partner. Together, we don't back down!" },
-    "lowHp": { "text": "My hands are shaking... but my heart isn't!" }
+    "firstDown": { "text": "You're strong... No! I won't doubt myself. Not today.", "mood": "sad" },
+    "lastPokemon": { "text": "This is my partner. Together, we don't back down!", "mood": "angry", "act": "bow" },
+    "lowHp": { "text": "My hands are shaking... but my heart isn't!", "mood": "sad", "act": "cheer" }
   },
   "leader_wake": {
-    "firstDown": { "text": "OOF! A clean pin! The crowd loves it! But the match goes on!" },
-    "lastPokemon": { "text": "The main event! My champion of the ring steps in!" },
-    "lowHp": { "text": "Down on the mat? Not while I'm still roaring!" }
+    "firstDown": { "text": "OOF! A clean pin! The crowd loves it! But the match goes on!", "mood": "surprised", "act": "surprised" },
+    "lastPokemon": { "text": "The main event! My champion of the ring steps in!", "mood": "happy", "act": "cheer" },
+    "lowHp": { "text": "Down on the mat? Not while I'm still roaring!", "mood": "angry", "act": "cheer" }
   },
   "leader_fantina": {
-    "firstDown": { "text": "Ah! A misstep in our dance... How very exciting!" },
-    "lastPokemon": { "text": "And now, the finale! My star takes the stage!" },
-    "lowHp": { "text": "Such passion! You make my heart spin, but we will not bow yet!" }
+    "firstDown": { "text": "Ah! A misstep in our dance... How very exciting!", "mood": "happy", "act": "laugh" },
+    "lastPokemon": { "text": "And now, the finale! My star takes the stage!", "mood": "happy", "act": "wave" },
+    "lowHp": { "text": "Such passion! You make my heart spin, but we will not bow yet!", "mood": "surprised", "act": "bow" }
   },
   "leader_byron": {
-    "firstDown": { "text": "Ha! Not bad at all! My boy said you had some grit!" },
-    "lastPokemon": { "text": "My last wall of steel! Come on, give it everything!" },
-    "lowHp": { "text": "Dented, maybe! But steel doesn't fold, kid!" }
+    "firstDown": { "text": "Ha! Not bad at all! My boy said you had some grit!", "mood": "happy", "act": "laugh" },
+    "lastPokemon": { "text": "My last wall of steel! Come on, give it everything!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "Dented, maybe! But steel doesn't fold, kid!", "mood": "angry" }
   },
   "leader_candice": {
-    "firstDown": { "text": "Whoa, nice one! Okay, okay, time to focus up!" },
-    "lastPokemon": { "text": "Last one! She's the coolest girl in Snowpoint, just watch!" },
-    "lowHp": { "text": "Brrr... We're still in this! Stay focused, stay frosty!" }
+    "firstDown": { "text": "Whoa, nice one! Okay, okay, time to focus up!", "mood": "surprised", "act": "nod" },
+    "lastPokemon": { "text": "Last one! She's the coolest girl in Snowpoint, just watch!", "mood": "happy", "act": "cheer" },
+    "lowHp": { "text": "Brrr... We're still in this! Stay focused, stay frosty!", "mood": "angry", "act": "jump" }
   },
   "leader_volkner": {
-    "firstDown": { "text": "Huh. That actually woke me up a little." },
-    "lastPokemon": { "text": "My last one. Don't let the spark go out now, okay?" },
-    "lowHp": { "text": "Yeah... This is the battle I've been waiting for." }
+    "firstDown": { "text": "Huh. That actually woke me up a little.", "mood": "surprised" },
+    "lastPokemon": { "text": "My last one. Don't let the spark go out now, okay?", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Yeah... This is the battle I've been waiting for.", "mood": "happy", "act": "nod" }
   },
 
   "commander_mars_valley_windworks": {
-    "firstDown": { "text": "Ugh, seriously? A kid like you?!" },
-    "lastPokemon": { "text": "Fine! My cutie will teach you some manners!" },
-    "lowHp": { "text": "This is SO annoying! Just give up already!" }
+    "firstDown": { "text": "Ugh, seriously? A kid like you?!", "mood": "angry", "act": "surprised" },
+    "lastPokemon": { "text": "Fine! My cutie will teach you some manners!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "This is SO annoying! Just give up already!", "mood": "angry", "act": "jump" }
   },
   "commander_mars_lake_verity": {
-    "firstDown": { "text": "Again with you?! You're getting on my last nerve!" },
-    "lastPokemon": { "text": "I won't lose to you twice! Not in front of the boss's lake!" },
-    "lowHp": { "text": "No, no! Cyrus is counting on me!" }
+    "firstDown": { "text": "Again with you?! You're getting on my last nerve!", "mood": "angry" },
+    "lastPokemon": { "text": "I won't lose to you twice! Not in front of the boss's lake!", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "No, no! Cyrus is counting on me!", "mood": "sad" }
   },
   "commander_mars_spear_pillar": {
-    "firstDown": { "text": "Don't think you've won! The boss is right behind us!" },
-    "lastPokemon": { "text": "Last one, but it only takes one to stop you!" },
-    "lowHp": { "text": "We're so close to a new world... Don't you dare ruin it!" }
+    "firstDown": { "text": "Don't think you've won! The boss is right behind us!", "mood": "angry", "act": "point" },
+    "lastPokemon": { "text": "Last one, but it only takes one to stop you!", "mood": "angry" },
+    "lowHp": { "text": "We're so close to a new world... Don't you dare ruin it!", "mood": "sad" }
   },
   "commander_mars_stark_mountain": {
-    "firstDown": { "text": "Heh. Still as stubborn as ever, aren't you?" },
-    "lastPokemon": { "text": "Last one. Let's see if you've still got it." },
-    "lowHp": { "text": "You know what? This is more fun than any order I ever followed." }
+    "firstDown": { "text": "Heh. Still as stubborn as ever, aren't you?", "mood": "happy", "act": "shrug" },
+    "lastPokemon": { "text": "Last one. Let's see if you've still got it.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "You know what? This is more fun than any order I ever followed.", "mood": "happy", "act": "laugh" }
   },
   "commander_jupiter_team_galactic_eterna_building": {
-    "firstDown": { "text": "Hmph. A little luck goes a long way, doesn't it?" },
-    "lastPokemon": { "text": "Enough games. My partner ends this now." },
-    "lowHp": { "text": "You really don't know when to quit, do you?" }
+    "firstDown": { "text": "Hmph. A little luck goes a long way, doesn't it?", "mood": "neutral", "act": "shrug" },
+    "lastPokemon": { "text": "Enough games. My partner ends this now.", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "You really don't know when to quit, do you?", "mood": "angry" }
   },
   "commander_jupiter_spear_pillar": {
-    "firstDown": { "text": "Cute. But you're already far too late." },
-    "lastPokemon": { "text": "Last one. It's more than enough for the likes of you." },
-    "lowHp": { "text": "Tch... Cyrus's dream won't be stopped by a child." }
+    "firstDown": { "text": "Cute. But you're already far too late.", "mood": "neutral", "act": "shrug" },
+    "lastPokemon": { "text": "Last one. It's more than enough for the likes of you.", "mood": "neutral" },
+    "lowHp": { "text": "Tch... Cyrus's dream won't be stopped by a child.", "mood": "angry" }
   },
   "commander_jupiter_stark_mountain": {
-    "firstDown": { "text": "Well. You haven't gone soft, I'll give you that." },
-    "lastPokemon": { "text": "My last. Let's finish what we started all those months ago." },
-    "lowHp": { "text": "Heh... Losing to you is starting to feel familiar." }
+    "firstDown": { "text": "Well. You haven't gone soft, I'll give you that.", "mood": "neutral", "act": "nod" },
+    "lastPokemon": { "text": "My last. Let's finish what we started all those months ago.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Heh... Losing to you is starting to feel familiar.", "mood": "happy", "act": "shrug" }
   },
   "commander_saturn_valor_cavern": {
-    "firstDown": { "text": "I see. Your strength is not an accident." },
-    "lastPokemon": { "text": "My last Pokémon. I'll treat this with the care it deserves." },
-    "lowHp": { "text": "Interesting. You may yet be the one who stops us." }
+    "firstDown": { "text": "I see. Your strength is not an accident.", "mood": "neutral", "act": "nod" },
+    "lastPokemon": { "text": "My last Pokémon. I'll treat this with the care it deserves.", "mood": "neutral" },
+    "lowHp": { "text": "Interesting. You may yet be the one who stops us.", "mood": "surprised" }
   },
   "commander_saturn_galactic_hq": {
-    "firstDown": { "text": "As expected. Then I'll stop holding back." },
-    "lastPokemon": { "text": "Last one. Whatever happens next, I'll accept it." },
-    "lowHp": { "text": "Perhaps... perhaps this is how it should end." }
+    "firstDown": { "text": "As expected. Then I'll stop holding back.", "mood": "neutral", "act": "nod" },
+    "lastPokemon": { "text": "Last one. Whatever happens next, I'll accept it.", "mood": "neutral" },
+    "lowHp": { "text": "Perhaps... perhaps this is how it should end.", "mood": "sad" }
   },
   "galactic_boss_cyrus_celestic_town_ruins": {
-    "firstDown": { "text": "Your Pokémon fight hard for you. How very inefficient." },
-    "lastPokemon": { "text": "My last. Show me what that spirit of yours is truly worth." },
-    "lowHp": { "text": "Even now, I feel nothing. That is my strength." }
+    "firstDown": { "text": "Your Pokémon fight hard for you. How very inefficient.", "mood": "neutral" },
+    "lastPokemon": { "text": "My last. Show me what that spirit of yours is truly worth.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "Even now, I feel nothing. That is my strength.", "mood": "neutral" }
   },
   "galactic_boss_cyrus_galactic_hq": {
-    "firstDown": { "text": "You've grown. It changes nothing." },
-    "lastPokemon": { "text": "My last Pokémon. A single piece is all a plan needs." },
-    "lowHp": { "text": "Emotion is a flaw. And yet you lean on it so..." }
+    "firstDown": { "text": "You've grown. It changes nothing.", "mood": "neutral" },
+    "lastPokemon": { "text": "My last Pokémon. A single piece is all a plan needs.", "mood": "neutral" },
+    "lowHp": { "text": "Emotion is a flaw. And yet you lean on it so...", "mood": "neutral", "act": "shrug" }
   },
   "galactic_boss_cyrus_distortion_world": {
-    "firstDown": { "text": "Even here, where nothing is whole, you will not give way." },
-    "lastPokemon": { "text": "The last. The world I seek lies past you, and I will reach it." },
-    "lowHp": { "text": "Why... Why does a spirit like yours refuse to break?" }
+    "firstDown": { "text": "Even here, where nothing is whole, you will not give way.", "mood": "angry" },
+    "lastPokemon": { "text": "The last. The world I seek lies past you, and I will reach it.", "mood": "angry", "act": "point" },
+    "lowHp": { "text": "Why... Why does a spirit like yours refuse to break?", "mood": "surprised" }
   },
 
   "elite_four_aaron": {
-    "firstDown": { "text": "Oh, my dear bug! It fought so bravely for me..." },
-    "lastPokemon": { "text": "My last one. Even the smallest wing can carry a storm!" },
-    "lowHp": { "text": "Don't give up! Bugs never stop, not even when they're cornered!" }
+    "firstDown": { "text": "Oh, my dear bug! It fought so bravely for me...", "mood": "sad" },
+    "lastPokemon": { "text": "My last one. Even the smallest wing can carry a storm!", "mood": "happy", "act": "point" },
+    "lowHp": { "text": "Don't give up! Bugs never stop, not even when they're cornered!", "mood": "angry", "act": "cheer" }
   },
   "elite_four_bertha": {
-    "firstDown": { "text": "Oh my! You hit like a landslide, young one." },
-    "lastPokemon": { "text": "My last. Granny still has some strength left in her, you'll see." },
-    "lowHp": { "text": "Ho ho! It's been ages since anyone shook my ground like this!" }
+    "firstDown": { "text": "Oh my! You hit like a landslide, young one.", "mood": "surprised" },
+    "lastPokemon": { "text": "My last. Granny still has some strength left in her, you'll see.", "mood": "happy", "act": "nod" },
+    "lowHp": { "text": "Ho ho! It's been ages since anyone shook my ground like this!", "mood": "happy", "act": "laugh" }
   },
   "elite_four_flint": {
-    "firstDown": { "text": "Yeah! Now THAT is some heat! Keep it coming!" },
-    "lastPokemon": { "text": "My last flame! Let's see whose fire burns brighter!" },
-    "lowHp": { "text": "Burning low, but never out! Never!" }
+    "firstDown": { "text": "Yeah! Now THAT is some heat! Keep it coming!", "mood": "happy", "act": "cheer" },
+    "lastPokemon": { "text": "My last flame! Let's see whose fire burns brighter!", "mood": "happy", "act": "point" },
+    "lowHp": { "text": "Burning low, but never out! Never!", "mood": "angry", "act": "cheer" }
   },
   "elite_four_lucian": {
-    "firstDown": { "text": "Hm. This chapter turns out differently from what I'd read." },
-    "lastPokemon": { "text": "The last page. Let us see how your story ends." },
-    "lowHp": { "text": "Remarkable. I could not have predicted this." }
+    "firstDown": { "text": "Hm. This chapter turns out differently from what I'd read.", "mood": "neutral" },
+    "lastPokemon": { "text": "The last page. Let us see how your story ends.", "mood": "neutral", "act": "bow" },
+    "lowHp": { "text": "Remarkable. I could not have predicted this.", "mood": "surprised" }
   },
   "champion_cynthia": {
-    "firstDown": { "text": "Wonderful. You and your Pokémon truly trust one another." },
-    "lastPokemon": { "text": "My last Pokémon. I've rarely had to call on it... Let's go." },
-    "lowHp": { "text": "This is it... the battle I've been hoping for. Don't hold back!" }
+    "firstDown": { "text": "Wonderful. You and your Pokémon truly trust one another.", "mood": "happy", "act": "nod" },
+    "lastPokemon": { "text": "My last Pokémon. I've rarely had to call on it... Let's go.", "mood": "neutral", "act": "point" },
+    "lowHp": { "text": "This is it... the battle I've been hoping for. Don't hold back!", "mood": "happy" }
   }
 }

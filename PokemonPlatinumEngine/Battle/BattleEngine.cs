@@ -898,7 +898,14 @@ public partial class BattleEngine
                 // line, so the screen never takes the rules' state while it waits. Nothing with the option off. The
                 // words are the chosen language's (plan 17 · N6): the data files' table keyed by the English line
                 if (SpeaksTrainerLines && At(reacts.Place).Trainer is { } speaker && TrainerLines.For(speaker.Id, reacts.Cue) is { } said)
-                    interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), null, PlayerIdentity.Fill(speaker.Name)));
+                {
+                    // They step back onto their platform with the line's face and gesture as it appears, and off
+                    // again once it has been read (plan 11 · C13): the second of two trainers at their own edge
+                    bool second = Trainers.Count > 1 && (ReferenceEquals(Trainers[1], speaker) || Trainers[1].Id == speaker.Id && Trainers[0].Id != speaker.Id);
+                    Action? stepBack = Scene ? () => Anim.StepBack(second, said.Face, said.Gesture) : null;
+                    interlude.Enqueue(new Line(PlayerIdentity.Fill(Text.OfData(said.Text)), stepBack, PlayerIdentity.Fill(speaker.Name)));
+                    if (Scene) interlude.Enqueue(new Happening(Anim.SendOffSpeaker));
+                }
                 break;
             case Won:
                 AudioManager.PlayMusic(MusicDirector.VictoryRole(MusicDirector.BattleRole(Trainers.Select(t => t.TrainerClass))));

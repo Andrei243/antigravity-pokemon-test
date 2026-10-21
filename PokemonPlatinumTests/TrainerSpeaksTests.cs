@@ -354,4 +354,131 @@ public class TrainerSpeaksTests
         // A rematch is a battle of its own, with nothing yet
         Assert.Null(TrainerLines.SetOf("leader_roark_rematch"));
     }
+
+    // ------------------------------------------------------------------ back on the platform (plan 11 · C13)
+
+    [Fact]
+    public void ATrainerWhoSpeaksIsBackOnThePlatformWhileTheLineIsReadAndGoneAfter()
+    {
+        var battle = AgainstRoark(lines: true);
+        // The opening played out: Roark has stepped off his platform, as he has by the time anyone chooses a move
+        for (int i = 0; i < 90; i++) battle.Update(1f / 60f);
+        Assert.Null(battle.Anim.EnemyTrainer);
+        battle.SelectMove(0);
+        var heard = new List<(PokemonPlatinumEngine.Overworld.Mood Mood, PokemonPlatinumEngine.Overworld.Gesture? Gesture)>();
+        var said = Read(battle, b =>
+        {
+            if (b.CurrentSpeaker == null) return;
+            var back = b.Anim.Speaking;
+            Assert.NotNull(back);
+            Assert.True(back!.LeaveAge < 0f);
+            Assert.False(back.Second);
+            // The look they stood on the platform in, kept after they stepped off it
+            Assert.Null(b.Anim.EnemyTrainer);
+            Assert.Equal(b.Anim.EnemyTrainerLook, back.Look);
+            heard.Add((back.Mood, back.Gesture));
+        });
+        Assert.Equal(2, heard.Count);
+        // Each with the face and the gesture of their own line
+        var firstDown = TrainerLines.For("leader_roark", TrainerCue.FirstDown)!;
+        var lastOne = TrainerLines.For("leader_roark", TrainerCue.LastPokemon)!;
+        Assert.Equal(lastOne.Face, heard[1].Mood);
+        Assert.Equal(lastOne.Gesture, heard[1].Gesture);
+        Assert.Equal(firstDown.Face, heard[0].Mood);
+        // Once the line is read they step off again, and are gone in the time it takes
+        Assert.True(battle.Anim.Speaking == null || battle.Anim.Speaking.LeaveAge >= 0f);
+        for (int i = 0; i < 30; i++) battle.Update(1f / 60f);
+        Assert.Null(battle.Anim.Speaking);
+    }
+
+    [Fact]
+    public void WithTheBattleSceneOffTheTrainerSpeaksFromOffThePlatform()
+    {
+        var battle = AgainstRoark(lines: true);
+        battle.Scene = false;
+        battle.SelectMove(0);
+        var said = Read(battle, b => Assert.Null(b.Anim.Speaking));
+        Assert.Contains(said, s => s.Speaker == "Roark");
+    }
+
+    [Fact]
+    public void ATrainerStepsBackOnlyOnceTheyHaveSteppedOff()
+    {
+        var anim = new BattleAnimator();
+        // Nobody to step back: no look kept
+        anim.StepBack(false, PokemonPlatinumEngine.Overworld.Mood.Happy, null);
+        Assert.Null(anim.Speaking);
+        // Still standing there
+        anim.EnemyTrainer = "hiker";
+        anim.StepBack(false, PokemonPlatinumEngine.Overworld.Mood.Happy, null);
+        Assert.Null(anim.Speaking);
+        // Stepped off, and back
+        anim.EnemyTrainer = null;
+        Assert.Equal("hiker", anim.EnemyTrainerLook);
+        anim.StepBack(false, PokemonPlatinumEngine.Overworld.Mood.Angry, PokemonPlatinumEngine.Overworld.Gesture.Point);
+        Assert.Equal(0f, anim.Speaking!.Back);
+        anim.Update(BattleAnimator.TrainerBackTime / 2f, null, null);
+        Assert.Equal(0.5f, anim.Speaking.Back, 3);
+        Assert.True(anim.Speaking.GestureAge < 0f);
+        anim.Update(BattleAnimator.TrainerBackTime, null, null);
+        Assert.Equal(1f, anim.Speaking.Back);
+        Assert.True(anim.Speaking.GestureAge > 0f);
+        // Sent off, and turned round half way: they walk on from where they were
+        anim.SendOffSpeaker();
+        anim.Update(BattleAnimator.TrainerBackTime * 0.25f, null, null);
+        Assert.Equal(0.75f, anim.Speaking.Back, 3);
+        anim.StepBack(false, PokemonPlatinumEngine.Overworld.Mood.Sad, null);
+        Assert.Equal(0.75f, anim.Speaking.Back, 3);
+        Assert.Equal(PokemonPlatinumEngine.Overworld.Mood.Sad, anim.Speaking.Mood);
+        anim.SendOffSpeaker();
+        anim.Update(BattleAnimator.TrainerBackTime, null, null);
+        Assert.Null(anim.Speaking);
+    }
+
+    [Fact]
+    public void TheSecondOfTwoTrainersStepsBackAloneToTheirOwnEdge()
+    {
+        var anim = new BattleAnimator { EnemyTrainer = "twin", EnemyTrainer2 = "twin_b" };
+        anim.EnemyTrainer = anim.EnemyTrainer2 = null;
+        anim.StepBack(true, PokemonPlatinumEngine.Overworld.Mood.Neutral, null);
+        Assert.True(anim.Speaking!.Second);
+        Assert.Equal("twin_b", anim.Speaking.Look);
+        Assert.True(PokemonPlatinumEngine.Graphics.BattleStage.SpeakerSpot(true).X < 0f);
+        Assert.True(PokemonPlatinumEngine.Graphics.BattleStage.SpeakerSpot(false).X > 0f);
+    }
+
+    [Fact]
+    public void TheCameraFindsTheTrainerWhileTheySpeakAndLetsThemGo()
+    {
+        var anim = new BattleAnimator { EnemyTrainer = "hiker" };
+        anim.EnemyTrainer = null;
+        var places = new PokemonPlatinumEngine.Graphics.FxPlaces();
+        anim.Update(3f, null, null);
+        Assert.Equal(PokemonPlatinumEngine.Graphics.ShotKind.Overview, PokemonPlatinumEngine.Graphics.BattleCamera.Direct(anim, places).Kind);
+        anim.StepBack(false, PokemonPlatinumEngine.Overworld.Mood.Happy, null);
+        anim.Update(0.1f, null, null);
+        var (shot, kind, _) = PokemonPlatinumEngine.Graphics.BattleCamera.Direct(anim, places);
+        Assert.Equal(PokemonPlatinumEngine.Graphics.ShotKind.Trainer, kind);
+        // A function of the animator's state: the same state, the same shot, framing the platform's edge they come to
+        Assert.Equal(shot, PokemonPlatinumEngine.Graphics.BattleCamera.Direct(anim, places).Shot);
+        Assert.True(shot.Target.X > PokemonPlatinumEngine.Graphics.BattleStage.EnemySpot.X);
+        // While the player chooses, the overview
+        Assert.Equal(PokemonPlatinumEngine.Graphics.ShotKind.Overview, PokemonPlatinumEngine.Graphics.BattleCamera.Direct(anim, places, choosing: true).Kind);
+        anim.SendOffSpeaker();
+        Assert.NotEqual(PokemonPlatinumEngine.Graphics.ShotKind.Trainer, PokemonPlatinumEngine.Graphics.BattleCamera.Direct(anim, places).Kind);
+    }
+
+    [Fact]
+    public void EveryLinesFaceAndGestureAreNamesOfTheGame()
+    {
+        foreach (var (key, set) in TrainerLines.All)
+            foreach (var line in new[] { set.FirstDown, set.LastPokemon, set.LowHp })
+            {
+                if (line == null) continue;
+                Assert.True(line.Mood == null || Enum.TryParse<PokemonPlatinumEngine.Overworld.Mood>(line.Mood, true, out _), $"{key}: {line.Mood}");
+                Assert.True(line.Act == null || line.Gesture != null, $"{key}: {line.Act}");
+            }
+        // Every boss's line has a face of its own
+        Assert.All(TrainerLines.All.SelectMany(e => new[] { e.Value.FirstDown, e.Value.LastPokemon, e.Value.LowHp }).Where(l => l != null), l => Assert.NotNull(l!.Mood));
+    }
 }
