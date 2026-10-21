@@ -3294,6 +3294,7 @@
     "confirm": {
       "title": "Îi aduci pe acești {n}?",
       "body": "Vor aștepta în Pal Park Concursul de Capturare, iar {who} nu mai dă nimic o zi. Fișierul rămâne cum este.",
+      "bodyOwn": "Vor aștepta în Pal Park Concursul de Capturare și pleacă pentru totdeauna din salvarea lui {who}.",
       "no": "NU, AȘTEPT",
       "yes": "DA, ADU-I"
     },
@@ -3303,7 +3304,26 @@
       "refused": { "title": "Nu s-a adus nimic" },
       "ok": "OK"
     },
-    "kind": { "gba": "SALVARE GBA", "platinum": "SALVARE PLATINUM", "files": "{n} FIȘIERE POKÉMON", "file": "FIȘIER POKÉMON", "unknown": "FIȘIER" },
+    "kind": { "gba": "SALVARE GBA", "platinum": "SALVARE PLATINUM", "files": "{n} FIȘIERE POKÉMON", "file": "FIȘIER POKÉMON", "slot": "ACEST JOC · SLOTUL {slot}", "unknown": "FIȘIER" },
+    "box": "CUTIA {n}",
+    "party": "ECHIPA",
+    "menu": {
+      "bring": "ADU POKÉMON ÎNCOACE",
+      "out": "SCRIE UN POKÉMON ÎN AFARĂ",
+      "bringBody": "Alege șase Pokémon dintr-o altă salvare sau din fișierele din dosarul migrate. Ei așteaptă în Pal Park pentru Spectacolul de Capturare.",
+      "outBody": "Alege un Pokémon dintr-o salvare a acestui joc și scrie-l ca fișier în dosarul out al dosarului migrate. Rămâne în salvare."
+    },
+    "out": {
+      "title": "Scrie {name} ca",
+      "body": "O copie este scrisă în dosarul out. Nimic nu pleacă din salvare.",
+      "pk4": "UN FIȘIER .PK4",
+      "showdown": "TEXT SHOWDOWN",
+      "either": "CA FIȘIER SAU CA TEXT",
+      "textOnly": "DOAR CA TEXT",
+      "textOnlyWhy": "Un fișier .pk4 ține doar Pokémon din Pokédexul generației a patra, cu ce avea acel joc.",
+      "done": { "title": "Scris", "body": "Copia este {file}, în dosarul out al dosarului migrate." },
+      "failed": { "title": "Nu s-a scris nimic", "body": "Fișierul nu a putut fi scris. Dosarul out poate fi doar pentru citire sau acest Pokémon nu poate fi scris așa." }
+    },
     "refused": {
       "size": "Acest fișier nu este nicio salvare și niciun fișier Pokémon pe care jocul le cunoaște.",
       "save": "Această salvare este deteriorată: nicio copie a ei nu este întreagă, așa că nu s-a citit nimic din ea.",
@@ -3320,6 +3340,7 @@
       "impossible": "{why}"
     },
     "impossible": {
+      "noId": "Nu are încă un id propriu: deschide salvarea o dată în joc.",
       "species": "Specia lui nu există în acest joc.",
       "exp": "Are mai multă EXP decât poate avea un Pokémon de nivel 100.",
       "effort": "Efortul lui e mai mare decât poate avea orice Pokémon.",

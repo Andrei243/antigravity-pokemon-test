@@ -66,6 +66,9 @@ public static class AbilityDatabase
     /// <summary>The ability Platinum's number is (the number a Pokémon of the DS games keeps), or null.</summary>
     public static string? NameOf(int id) => NamesById.GetValueOrDefault(id);
 
+    /// <summary>The number Platinum gives an ability, or 0 for one with none (<see cref="NameOf"/> the other way round).</summary>
+    public static int IdOf(string? name) => name == null ? 0 : NamesById.FirstOrDefault(p => string.Equals(p.Value, name, StringComparison.OrdinalIgnoreCase)).Key;
+
     public static Ability? Get(string? name) => name != null && Abilities.TryGetValue(name, out var a) ? a : null;
 
     public static IEnumerable<Ability> GetAll() => Abilities.Values;

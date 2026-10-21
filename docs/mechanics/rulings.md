@@ -4152,3 +4152,38 @@ folder beside the saves (`SavePaths.Migrate`), read by plan 08 · P20's readers;
   and a test and the harness (`title` mode, "the migrate folder is as it was") hold the files' bytes and times unchanged after a whole
   migration. MIGRATE is on the title's menu only while the folder holds a file the readers know and a save can be read, so a
   game without the folder has the title it has always had.
+
+## Between this game's saves, and the way out (2026-10-21, plan 08 · P22)
+
+The migration's screen also moves Pokémon from one of this game's saves into another's Pal Park, and writes one out of a save as a
+file or as text. The rules are `Core/SlotMoves.cs` (a move and its recovery), `Models/ShowdownText.cs` and `DsPokemon.Write`; the
+files written by `Core/MigrationOut.cs`.
+
+- **Another slot is a source like a file** (`ForeignKind.OwnSave`, `Migration.FromSave`): its boxes only, not its team, each
+  Pokémon held whole (`ForeignPokemon.Own`, so what is moved is the Pokémon itself and not a conversion of it). A Pokémon of the
+  game's own has nothing the GBA's checks ask, so it is refused for an Egg, for having no id yet (`Pokemon.Id`, which a save is given
+  as it loads: the save has to have been opened once), for being already in the receiving save (team, boxes, park, Day Care: the
+  `CameBefore` of a file's Pokémon) and for the legality check, as a file's is. **The once-a-day wait is not asked of a slot**:
+  the wait guards against one cartridge giving its six again and again, and these six leave the source for good.
+- **Six exactly, as the park takes them** (the National Pokédex of the receiving save, an empty park, six chosen from the source's boxes),
+  and they wait in the park's `Waiting` as the six of a file do, but are **not** entered in the ledger (`Came`, `Sources`): they are
+  not copies, so nothing can come twice.
+- **A move is four writes with a receipt** (`MoveReceipt`, `SaveData.Receipts`, the full copies of the six and the source's checksum):
+  the receiving save with the six and the receipt; the source without them and with the receipt; the receiving save with the receipt
+  closed; the source with it closed. `SaveSlots.Write` makes each whole or not at all (plan 12 · Q1), and `SlotMoves.Resolve` runs as the
+  game starts, **before the slots are read for the title**: for a receipt open anywhere, the source lets go of the Pokémon if it still
+  holds them, the receipts are closed (the receiving save's first), and the move is done, so after a crash at any of the four writes
+  each Pokémon is in exactly one save. **With the receiving save gone** (its slot deleted between the writes) the six go back into the
+  source's first free places, and a source with no room for one says so in the log. A receiving slot that now holds another game (it has neither the receipt nor a
+  single one of the six) is treated as gone. A save that can't be read keeps the receipt open until it can. A save of this game copied into
+  migrate/ is not a source: the readers know no JSON save, so it is not listed.
+- **The way out** (`MigrationOut`): a Pokémon of a save (the team, then the boxes) written, as a copy, into `migrate/out/`: as
+  **a `.pk4`** (`DsPokemon.Write`: Platinum's 136 bytes in a box, plain and in the order A, B, C, D, with the checksum, as the tools
+  that read a `.pk4` read them; `DsPokemon.ReadPlain` reads one back) or as **Pokémon Showdown's text** (`ShowdownText.Of`: the name
+  with the nickname, the gender and the item; the ability, level, shininess, happiness, effort, nature, IVs and moves; English,
+  whatever language the game is in). A `.pk4` holds only the species of the fourth generation's Pokédex (to 493) and a later game's
+  item, ability or move is written as none: the screen offers a later species as text only and says why. The original trainer is
+  the Pokémon's own, or the save's player where it has none. A name is never written over (`FileMode.CreateNew`; the next free
+  number is taken); the folder is made when the first file is written, and nothing else in `migrate/` is written, renamed or moved.
+- **Offered** when the folder holds a file the readers know, or when two saves can be read (one to move from, one to move to). With
+  one save and no folder there is nothing to offer, and the player makes the folder to write out.

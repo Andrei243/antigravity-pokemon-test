@@ -23,6 +23,10 @@ internal static partial class ModernUi
         ScreenTitle(Text.Of("migrate.title"));
         switch (screen.Phase)
         {
+            case MigratePhase.Menu:
+                Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.open"), Hint("shared.keys.esc", "shared.hints.back"));
+                MigrateMenu(sw, screen, appear);
+                break;
             case MigratePhase.Save:
                 Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.open"), Hint("shared.keys.esc", "shared.hints.back"));
                 MigrateSaves(sw, screen, appear);
@@ -32,23 +36,53 @@ internal static partial class ModernUi
                 MigrateFiles(sw, screen, appear);
                 break;
             default:
-                Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.pick"),
-                    Hint("migrate.keyBoxes", "shared.hints.changeBox"), Hint("shared.keys.enter", "migrate.hints.bring"), Hint("shared.keys.esc", "shared.hints.back"));
+                if (screen.Mode == MigrateMode.WriteOut)
+                    Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.pick"),
+                        Hint("migrate.keyBoxes", "shared.hints.changeBox"), Hint("shared.keys.esc", "shared.hints.back"));
+                else
+                    Hints(sw - Margin, 44, Hint("shared.keys.arrows", "shared.hints.choose"), Hint("shared.keys.z", "shared.hints.pick"),
+                        Hint("migrate.keyBoxes", "shared.hints.changeBox"), Hint("shared.keys.enter", "migrate.hints.bring"), Hint("shared.keys.esc", "shared.hints.back"));
                 MigrateBox(sw, screen, appear);
                 break;
         }
 
-        if (screen.Phase == MigratePhase.Confirm)
-            Prompt(sw, sh, Text.Of("migrate.confirm.title", ("n", Migration.Size)), Text.Of("migrate.confirm.body", ("who", screen.Source?.Name ?? "")),
+        if (screen.Phase == MigratePhase.Format)
+            Prompt(sw, sh, Text.Of("migrate.out.title", ("name", screen.ToWrite != null ? MigrateName(screen.ToWrite) : "")), Text.Of("migrate.out.body"),
+                new[] { (Text.Of("migrate.out.pk4"), screen.ToWrite != null && MigrateScreen.CanBePk4(screen.ToWrite) ? Blue : Muted), (Text.Of("migrate.out.showdown"), Green) },
+                screen.Format == WriteFormat.Pk4 ? 0 : 1);
+        else if (screen.Phase == MigratePhase.Confirm)
+            Prompt(sw, sh, Text.Of("migrate.confirm.title", ("n", Migration.Size)), Text.Of(screen.Source?.Slot != null ? "migrate.confirm.bodyOwn" : "migrate.confirm.body", ("who", screen.Source?.Name ?? "")),
                 new[] { (Text.Of("migrate.confirm.no"), Blue), (Text.Of("migrate.confirm.yes"), Green) }, screen.ConfirmYes ? 1 : 0);
         else if (screen.Phase == MigratePhase.Working)
             Prompt(sw, sh, Text.Of("migrate.working.title"), Text.Of("migrate.working.body"), Array.Empty<(string, Color)>(), -1);
+        else if (screen.Phase == MigratePhase.Result && screen.Mode == MigrateMode.WriteOut)
+            Notice(sw, sh, Text.Of(screen.Wrote != null ? "migrate.out.done.title" : "migrate.out.failed.title"),
+                screen.Wrote != null ? Text.Of("migrate.out.done.body", ("file", screen.Wrote)) : Text.Of("migrate.out.failed.body"), Text.Of("migrate.result.ok"));
         else if (screen.Phase == MigratePhase.Result)
         {
             bool done = screen.Outcome == MigrationBlock.None;
             Notice(sw, sh, Text.Of(done ? "migrate.result.done.title" : "migrate.result.refused.title"),
                 done ? Text.Of("migrate.result.done.body", ("n", Migration.Size)) : Migration.Words(screen.Outcome), Text.Of("migrate.result.ok"));
         }
+    }
+
+    // ------------------------------------------------------------------ what to do
+
+    private static void MigrateMenu(int sw, MigrateScreen screen, float appear)
+    {
+        float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
+        var list = new Rectangle(Margin, ContentTop + rise, 1040, ContentBottom - ContentTop);
+        Panel(list, 40);
+        string[] rows = { Text.Of("migrate.menu.bring"), Text.Of("migrate.menu.out") };
+        for (int row = 0; row < rows.Length; row++)
+            ListRow(RowRect(list, row), row == screen.Cursor, rows[row], nameX: 44);
+
+        var detail = new Rectangle(list.X + list.Width + Gutter, ContentTop + rise, sw - Margin * 2 - list.Width - Gutter, ContentBottom - ContentTop);
+        Panel(detail, 40);
+        float x = detail.X + 44, wide = detail.Width - 88, y = detail.Y + 48;
+        UiFonts.Draw(rows[screen.Cursor], x, y, 40, Ink, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(x, y + 64, wide, 3), 1.5f, Rule);
+        DrawWrapped(Text.Of(screen.Cursor == 0 ? "migrate.menu.bringBody" : "migrate.menu.outBody"), x, y + 96, wide, 30, Ink, 42);
     }
 
     // ------------------------------------------------------------------ the saves
@@ -159,6 +193,7 @@ internal static partial class ModernUi
 
     private static void MigrateBox(int sw, MigrateScreen screen, float appear)
     {
+        bool bring = screen.Mode == MigrateMode.Bring;
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
         float height = ContentBottom - ContentTop;
         var box = new Rectangle(Margin - slide, ContentTop, 792, height);
@@ -198,7 +233,7 @@ internal static partial class ModernUi
             else if (number > 0) UiShapes.Shape(r, 24, new Color(255, 244, 214, 255), new Color(250, 232, 184, 255), Gold, 5f);
             else UiShapes.Shape(r, 24, SlotTop, SlotBottom, Rule, 3f);
             if (pokemon == null) continue;
-            bool allowed = screen.VerdictOf(pokemon).Allowed;
+            bool allowed = !bring || screen.VerdictOf(pokemon).Allowed;
             PixelArt(MigrateIcon(pokemon), new Vector2(r.X + MigrateCell / 2f, r.Y + MigrateCell / 2f - 2), 2, selected && allowed ? Hop(true) * 2 : 0,
                 allowed ? Color.White : new Color(150, 156, 176, 170));
             if (number > 0)
@@ -215,9 +250,9 @@ internal static partial class ModernUi
             }
         }
 
-        // ---- How many are chosen
+        // ---- How many are chosen (in the way out one is chosen, and the box's own name says where it is)
         float tagY = gridY + MigrateScreen.Rows * (MigrateCell + MigrateGap) + 12;
-        Tag(gridX, tagY, Text.Of("migrate.chosen", ("n", screen.ChosenCount), ("of", Migration.Size)), screen.ChosenCount == Migration.Size ? Green : Frame with { A = 225 }, 44);
+        if (bring) Tag(gridX, tagY, Text.Of("migrate.chosen", ("n", screen.ChosenCount), ("of", Migration.Size)), screen.ChosenCount == Migration.Size ? Green : Frame with { A = 225 }, 44);
 
         // ---- The one under the cursor, and the six
         var detail = new Rectangle(box.X + box.Width + Gutter + slide, ContentTop, sw - Margin - (box.X + box.Width + Gutter + slide), height);
@@ -235,7 +270,8 @@ internal static partial class ModernUi
         }
         else
         {
-            var verdict = screen.VerdictOf(p);
+            bool bring = screen.Mode == MigrateMode.Bring;
+            var verdict = bring ? screen.VerdictOf(p) : new MigrationVerdict(MigrationRefusal.None);
             var disc = new Vector2(detail.X + detail.Width / 2f, y + 100);
             UiShapes.Circle(disc, 100, Disc);
             PixelArt(MigrateIcon(p), disc, 4, 0, verdict.Allowed ? Color.White : new Color(150, 156, 176, 200));
@@ -251,7 +287,14 @@ internal static partial class ModernUi
                 UiFonts.Draw(Fitted(p.OtName, wide, 30), x, y + 348, 30, Ink, UiWeight.Black);
             }
             UiShapes.Fill(new Rectangle(x, y + 400, wide, 3), 1.5f, Rule);
-            if (verdict.Allowed) Tag(x, y + 424, screen.ChosenNumber(screen.Place) > 0 ? Text.Of("migrate.picked") : Text.Of("migrate.canCome"), Green, 44);
+            if (!bring)
+            {
+                // The way out: which of the two it can be written as
+                bool pk4 = MigrateScreen.CanBePk4(p);
+                Tag(x, y + 424, Text.Of(pk4 ? "migrate.out.either" : "migrate.out.textOnly"), pk4 ? Green : Gold, 44);
+                if (!pk4) DrawWrapped(Text.Of("migrate.out.textOnlyWhy"), x, y + 490, wide, 28, Ink, 40);
+            }
+            else if (verdict.Allowed) Tag(x, y + 424, screen.ChosenNumber(screen.Place) > 0 ? Text.Of("migrate.picked") : Text.Of("migrate.canCome"), Green, 44);
             else
             {
                 Tag(x, y + 424, Text.Of("migrate.cantCome"), Red, 44);
@@ -260,6 +303,7 @@ internal static partial class ModernUi
         }
 
         // The six, in the order they were chosen, along the panel's foot
+        if (screen.Mode == MigrateMode.WriteOut) return;
         float footY = detail.Y + detail.Height - 150;
         UiShapes.Fill(new Rectangle(x, footY - 18, wide, 3), 1.5f, Rule);
         Label(Text.Of("migrate.six"), x, footY);

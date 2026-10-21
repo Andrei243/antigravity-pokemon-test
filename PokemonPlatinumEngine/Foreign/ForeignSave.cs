@@ -8,7 +8,9 @@ public enum ForeignKind
 {
     GbaSave, PlatinumSave, GbaPokemon, DsPokemon,
     /// <summary>A folder of loose Pokémon files taken as one source (<c>Models.Migration.Combine</c>, plan 08 · P21).</summary>
-    Files
+    Files,
+    /// <summary>One of this game's own saves, a slot's, whose boxes are moved and not converted (<c>Models.Migration.FromSave</c>, plan 08 · P22).</summary>
+    OwnSave
 }
 
 /// <summary>Why a foreign file was refused whole: nothing of it was kept.</summary>

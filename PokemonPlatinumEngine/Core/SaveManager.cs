@@ -183,6 +183,14 @@ public class SaveData
     public Models.PastimesSave? Pastimes { get; set; }
 
     /// <summary>
+    /// The moves of Pokémon between this game's saves that have been begun here and not closed (plan 08 · P22,
+    /// <see cref="SlotMoves"/>): a receipt in each of the two saves until the move is over, so that a crash at any step
+    /// leaves each Pokémon in exactly one save. Null, left out, when none is open, which is nearly always.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.MoveReceipt>? Receipts { get; set; }
+
+    /// <summary>
     /// The Battle Frontier (plan 06 · R18a): every facility's streaks, the Battle Points, and the Battle Tower's own
     /// part, a challenge put down between two battles among it. Null in saves from before it, which are given a new one.
     /// </summary>
@@ -888,6 +896,20 @@ public static class SaveManager
         catch (Exception e) when (e is JsonException or ArgumentException or InvalidOperationException)
         {
             return false;
+        }
+    }
+
+    /// <summary>The checksum a save file carries, as its own text says it (null where it has none or can't be read): what a receipt names the source by.</summary>
+    public static string? ChecksumOfFile(string path)
+    {
+        try
+        {
+            byte[] utf8 = File.ReadAllBytes(path);
+            return FindChecksum(utf8, out _, out _, out string? value) ? value : null;
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 

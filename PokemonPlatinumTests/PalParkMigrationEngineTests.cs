@@ -66,6 +66,9 @@ public class PalParkMigrationEngineTests
             game.OpenMigrate();
             Assert.Equal(GameState.Migrate, game.State);
             var screen = game.Migrate;
+            // From the title it opens on what to do; bringing Pokémon over is the first row
+            Assert.Equal(MigratePhase.Menu, screen.Phase);
+            screen.Confirm();
             Assert.Equal(MigratePhase.Files, screen.Phase);
             screen.Confirm();
             for (int i = 0; i < 6; i++) { screen.Confirm(); screen.Move(1, 0); }
@@ -99,6 +102,7 @@ public class PalParkMigrationEngineTests
             engine.Update(1f / 60f);
             Assert.Equal(GameState.Title, game.State);
             game.OpenMigrate();
+            game.Migrate.Confirm();
             Assert.Equal(MigrationBlock.WaitForADay, game.Migrate.BlockOf(game.Migrate.Sources[0]));
         }
         finally
@@ -126,6 +130,7 @@ public class PalParkMigrationEngineTests
             engine.MigrationClock = () => Noon;
             game.OpenMigrate();
             var screen = game.Migrate;
+            screen.Confirm();
             screen.Confirm();
             for (int i = 0; i < 6; i++) { screen.Confirm(); screen.Move(1, 0); }
             screen.Done();

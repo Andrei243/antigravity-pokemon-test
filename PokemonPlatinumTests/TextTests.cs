@@ -60,6 +60,7 @@ public class TextTests
     {
         ["Core/CommandLine.cs"] = "the switches and --help, said to the terminal",
         ["Core/SavePaths.cs"] = "--where, said to the terminal",
+        ["Core/MigrationOut.cs"] = "the extensions of the files it writes, not words on a screen",
         ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
         ["Core/Diagnostics/CrashReport.cs"] = "a crash's report, for whoever reads it",
         ["Core/Diagnostics/Manifest.cs"] = "--verify, said to the terminal",
