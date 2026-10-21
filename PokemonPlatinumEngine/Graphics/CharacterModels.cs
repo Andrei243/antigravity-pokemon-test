@@ -265,6 +265,34 @@ internal static class CharacterModels
         LegTop: new(0.072f, 0.465f, 0), Knee: new(0.075f, 0.262f, 0.008f), Ankle: new(0.076f, 0.072f, 0),
         TorsoW: 0.13f, TorsoD: 0.095f, ArmR: 0.049f, LegR: 0.064f, EyeDrop: 0.035f, EyeHalf: 0.085f);
 
+    /// <summary>
+    /// A little child (plan 11 · C2): a child's head on a body four fifths as tall and a little narrower, the head
+    /// lowered onto it, so they stand about one unit tall.
+    /// </summary>
+    private static readonly Frame Little = Shrunk(Kid, 0.8f, 0.92f);
+
+    private static Frame Shrunk(Frame f, float tall, float wide)
+    {
+        Vector3 Body(Vector3 v) => new(v.X * wide, v.Y * tall, v.Z);
+        float drop = f.NeckY * (1f - tall);
+        return f with
+        {
+            HipY = f.HipY * tall, WaistY = f.WaistY * tall, ChestY = f.ChestY * tall, NeckY = f.NeckY * tall,
+            HeadC = f.HeadC - new Vector3(0, drop, 0),
+            Shoulder = Body(f.Shoulder), Elbow = Body(f.Elbow), Wrist = Body(f.Wrist),
+            LegTop = Body(f.LegTop), Knee = Body(f.Knee), Ankle = Body(f.Ankle),
+            TorsoW = f.TorsoW * wide, TorsoD = f.TorsoD * wide, ArmR = f.ArmR * wide, LegR = f.LegR * wide
+        };
+    }
+
+    /// <summary>The frame of a build.</summary>
+    private static Frame FrameOf(BodyBuild build) => build switch
+    {
+        BodyBuild.Adult => Adult,
+        BodyBuild.Little => Little,
+        _ => Kid
+    };
+
     private static Vector3 Side(Vector3 v, float side) => v with { X = v.X * side };
 
     private static Color Shade(Color c, float f) => MeshBuilder.Scale(c, f);
@@ -282,7 +310,7 @@ internal static class CharacterModels
 
     private static void BuildHumanoid(CharacterRig rig, SdfModel m, CharacterStyle s)
     {
-        var f = s.Build == BodyBuild.Adult ? Adult : Kid;
+        var f = FrameOf(s.Build);
         rig.Scale = s.Height;
         m.WeightBlend = 0.04f;
 
@@ -315,11 +343,23 @@ internal static class CharacterModels
 
         // 1. The hair's base: a cap snug on the skull with the face carved out of it (a cut only carves what came
         // before it). The locks laid over it later give the hair its shape.
-        m.Ellipsoid(H + new Vector3(0, 0.02f, -0.02f), new Vector3(R * 1.04f, R * 1.0f, R * 1.04f), hair, HumanBones.Head, 0f, Hair);
-        if (s.Hair is HairCut.Swept or HairCut.Bun)
-            m.Ellipsoid(H + new Vector3(0, -R * 0.2f, R * 0.62f), new Vector3(R * 0.9f, R * 0.98f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
-        else
-            m.Ellipsoid(H + new Vector3(0, -R * 0.42f, R * 0.62f), new Vector3(R * 0.86f, R * 0.78f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
+        // Bald hair has no cap (the crown is the head's own skin; only a band of locks round the back grows, BuildHair)
+        if (s.Hair == HairCut.Bowl)
+        {
+            // A bowl (plan 11 · C2): one round mass a little fuller than the skull, cut by a plane straight across the
+            // brow that slopes down past the tops of the ears to the nape; the face below it is the head's
+            m.Ellipsoid(H + new Vector3(0, 0.03f, -0.015f), new Vector3(R * 1.13f, R * 1.06f, R * 1.12f), hair, HumanBones.Head, 0f, Hair);
+            m.Box(H + new Vector3(0, -0.035f - R * 0.7f, R * 0.1f), new Vector3(R * 1.6f, R * 0.7f, R * 1.6f), 0f, hair, HumanBones.Head, 0.012f,
+                rotation: Pitch(-0.26f), op: SdfOp.Cut);
+        }
+        else if (s.Hair != HairCut.Bald)
+        {
+            m.Ellipsoid(H + new Vector3(0, 0.02f, -0.02f), new Vector3(R * 1.04f, R * 1.0f, R * 1.04f), hair, HumanBones.Head, 0f, Hair);
+            if (s.Hair is HairCut.Swept or HairCut.Bun)
+                m.Ellipsoid(H + new Vector3(0, -R * 0.2f, R * 0.62f), new Vector3(R * 0.9f, R * 0.98f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
+            else
+                m.Ellipsoid(H + new Vector3(0, -R * 0.42f, R * 0.62f), new Vector3(R * 0.86f, R * 0.78f, R * 0.8f), hair, HumanBones.Head, 0.03f, op: SdfOp.Cut);
+        }
         // The hair ends in a clean line that slopes from above the ears down to the nape (long hair adds its own fall later)
         m.Box(H + new Vector3(0, -R * 1.25f, R * 0.15f), new Vector3(R * 1.6f, R * 0.62f, R * 1.6f), 0f, hair, HumanBones.Head, 0.02f,
             rotation: Pitch(-0.42f), op: SdfOp.Cut);
@@ -465,6 +505,14 @@ internal static class CharacterModels
             foreach (float y in new[] { f.ChestY - 0.045f, f.WaistY - 0.025f })
                 m.Paint(m.Box(new Vector3(0, y, 0), new Vector3(0.3f, 0.013f, 0.3f), 0f, stripe, HumanBones.Spine), false, HumanBones.Spine);
         }
+        if (s.GalacticMark)
+        {
+            // Team Galactic's mark in the middle of the chest (plan 11 · C2): the lozenge in its yellow round its dark core
+            var at = new Vector3(0, f.ChestY - 0.012f, f.TorsoD + 0.02f);
+            var turn = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, MathF.PI / 4f);
+            m.Paint(m.Box(at, new Vector3(0.024f, 0.024f, 0.05f), 0f, GalacticMark.Base, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
+            m.Paint(m.Box(at, new Vector3(0.011f, 0.011f, 0.052f), 0f, GalacticMark.Ink, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
+        }
         if (s.Blush)
         {
             var blush = PixelCanvas.Mix(skin, new Color(250, 120, 130, 255), 0.32f);
@@ -504,7 +552,8 @@ internal static class CharacterModels
         }
 
         // Under a beret, a cap or a fedora only the hair below its edge shows, so locks grow from there instead of the crown
-        bool hatted = s.Hat is Headwear.Beret or Headwear.Cap or Headwear.Fedora;
+        // (and under a helmet, a hard hat, a beanie or a bandana, plan 11 · C2)
+        bool hatted = s.Hat is Headwear.Beret or Headwear.Cap or Headwear.Fedora or Headwear.Helmet or Headwear.HardHat or Headwear.Beanie or Headwear.Bandana;
         Vector3 Root(Vector3 to) => hatted ? Vector3.Normalize(new Vector3(to.X * 0.9f, 0.42f, to.Z == 0f ? -0.9f : MathF.Sign(to.Z) * 0.86f)) : crown;
 
         void Lock(Vector3 from, Vector3 to, float r0, float r1, float lift = 0.012f, int bone = HumanBones.Head)
@@ -524,8 +573,27 @@ internal static class CharacterModels
             }
         }
 
+        // A bowl is its cap alone, cut straight across (plan 11 · C2)
+        if (s.Hair == HairCut.Bowl) return;
+        // Bald: a band of short locks round the back of the head from ear to ear, the crown bare
+        if (s.Hair == HairCut.Bald)
+        {
+            foreach (float side in new[] { 1f, -1f })
+            {
+                Lock(new Vector3(side * 0.96f, -0.02f, 0.18f), new Vector3(side * 0.3f, -0.2f, -0.95f), 0.07f, 0.06f, 0.01f);
+                Lock(new Vector3(side * 0.9f, -0.32f, 0.1f), new Vector3(side * 0.3f, -0.48f, -0.85f), 0.065f, 0.055f, 0.01f);
+            }
+            Lock(new Vector3(0.3f, -0.3f, -0.92f), new Vector3(-0.3f, -0.3f, -0.92f), 0.075f, 0.075f, 0.01f);
+            return;
+        }
+        if (s.Hair == HairCut.Curls)
+        {
+            BuildCurls(m, s, H, R, eyeY, hatted);
+            return;
+        }
+
         // Bangs over the forehead, pointed, ending just above the eyes (swept hair leaves the forehead bare)
-        if (s.Hair is HairCut.Short or HairCut.Long or HairCut.Spiky or HairCut.Braids or HairCut.Bunches)
+        if (s.Hair is HairCut.Short or HairCut.Long or HairCut.Spiky or HairCut.Braids or HairCut.Bunches or HairCut.Ponytail)
         {
             float fringe = (eyeY + 0.03f - H.Y) / R;
             foreach (float x in new[] { -0.5f, -0.17f, 0.17f, 0.5f })
@@ -609,8 +677,57 @@ internal static class CharacterModels
                 }
                 if (s.Hair == HairCut.Braids) BuildBraids(m, s, f, H, R);
                 if (s.Hair == HairCut.Bunches) BuildBunches(m, s, H, R);
+                if (s.Hair == HairCut.Ponytail) BuildPonytail(m, s, H, R, hatted);
                 break;
         }
+    }
+
+    /// <summary>
+    /// Curls (plan 11 · C2): small round curls a fifth of the head's radius over the cap, in rings over the crown, the
+    /// sides and the back, and a row at the fringe whose lowest stands clear of the eyes; none over the face. Under a
+    /// hat only the rings below its edge show. <paramref name="H"/> is the hair's centre.
+    /// </summary>
+    private static void BuildCurls(SdfModel m, CharacterStyle s, Vector3 H, float R, float eyeY, bool hatted)
+    {
+        var hair = s.HairColor;
+        var dirs = new List<Vector3>();
+        if (!hatted) dirs.Add(new Vector3(0, 1, 0));
+        foreach (var (y, count) in new[] { (0.75f, 6), (0.4f, 9), (0.02f, 10), (-0.36f, 8) })
+        {
+            if (hatted && y > 0.45f) continue;
+            for (int i = 0; i < count; i++)
+            {
+                float a = (i + (count % 2 == 0 ? 0.5f : 0f)) / count * MathF.Tau;
+                var d = new Vector3(MathF.Sin(a), y, MathF.Cos(a));
+                // Leave the face's half-circle bare below the fringe
+                if (d.Z > 0.3f && y < 0.38f) continue;
+                dirs.Add(d);
+            }
+        }
+        // The fringe: a row across the brow, its lowest curl above the eyes
+        float fringe = Math.Max(0.42f, (eyeY + 0.07f + R * 0.2f - H.Y) / R);
+        foreach (float x in new[] { -0.55f, -0.18f, 0.18f, 0.55f })
+            dirs.Add(new Vector3(x, fringe + MathF.Abs(x) * 0.15f, 0.82f));
+        foreach (var d in dirs)
+            m.Sphere(H + Vector3.Normalize(d) * R * 1.0f, R * 0.21f, hair, HumanBones.Head, 0.02f, SurfaceMaterial.Hair);
+    }
+
+    /// <summary>
+    /// A ponytail (plan 11 · C2): a tail tied high at the back of the head in the band's colour (lower, below the hat's
+    /// edge, under a hat), falling to the shoulders on the hair's bone so it swings, thick at the tie and thin at its tip.
+    /// </summary>
+    private static void BuildPonytail(SdfModel m, CharacterStyle s, Vector3 H, float R, bool hatted)
+    {
+        var hair = s.HairColor;
+        const SurfaceMaterial Hair = SurfaceMaterial.Hair;
+        var back = Vector3.Normalize(hatted ? new Vector3(0, 0.05f, -1f) : new Vector3(0, 0.45f, -0.9f));
+        var tie = H + back * (R * 1.1f);
+        var bend = tie + new Vector3(0, -R * 0.25f, -R * 0.38f);
+        var tip = H + new Vector3(0, -R * 1.45f, -R * 1.2f);
+        m.Sphere(tie, R * 0.2f, hair, HumanBones.Hair, 0.03f, Hair);
+        m.Capsule(tie, bend, R * 0.2f, R * 0.19f, hair, HumanBones.Hair, 0.03f, Hair);
+        m.Capsule(bend, tip, R * 0.19f, R * 0.05f, hair, HumanBones.Hair, 0.03f, Hair);
+        m.Torus(tie + back * (R * 0.06f), R * 0.15f, 0.02f, s.HatBand, HumanBones.Hair, 0.004f, SurfaceMaterial.Cloth, AlignY(back));
     }
 
     /// <summary>
@@ -768,6 +885,70 @@ internal static class CharacterModels
                 m.Paint(m.Box(front, new Vector3(0.036f, 0.013f, 0.02f), 0f, s.HatBand, HumanBones.Head, rotation: tilt));
                 break;
             }
+            case Headwear.Helmet:
+            {
+                // A smooth shell over the crown, its front edge above the brows (plan 11 · C2), a stripe in the band's
+                // colour from front to back over its top, and a short peak over the eyes
+                var at = H + new Vector3(0, R * 0.5f, -R * 0.06f);
+                var tilt = Pitch(-0.12f);
+                m.Ellipsoid(at, new Vector3(R * 1.2f, R * 0.8f, R * 1.28f), s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Plastic, tilt);
+                m.Paint(m.Box(at + new Vector3(0, R * 0.6f, 0), new Vector3(R * 0.17f, R * 0.6f, R * 1.5f), 0f, s.HatBand, HumanBones.Head, rotation: tilt),
+                    false, HumanBones.Head);
+                m.Ellipsoid(H + new Vector3(0, R * 0.36f, R * 1.1f), new Vector3(R * 0.62f, 0.02f, R * 0.28f), s.HatColor, HumanBones.Head, 0.01f,
+                    SurfaceMaterial.Plastic, Pitch(0.18f));
+                break;
+            }
+            case Headwear.HardHat:
+            {
+                // A round crown with a ridge in the band's colour from front to back (plan 11 · C2), and a brim all round
+                // its foot, no wider at the front than at the sides, so the eyes still show from the field's camera
+                var at = H + new Vector3(0, R * 0.55f, -R * 0.02f);
+                var radii = new Vector3(R * 1.14f, R * 0.82f, R * 1.18f);
+                m.Ellipsoid(at, radii, s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Plastic);
+                m.Ellipsoid(H + new Vector3(0, R * 0.3f, 0), new Vector3(R * 1.42f, R * 0.06f, R * 1.36f), s.HatColor, HumanBones.Head, 0.01f, SurfaceMaterial.Plastic);
+                Vector3 OnCrown(float angle) => at + new Vector3(0, MathF.Cos(angle) * radii.Y, MathF.Sin(angle) * radii.Z);
+                const int Steps = 6;
+                for (int i = 0; i < Steps; i++)
+                {
+                    float a0 = 1.2f - i * (2.4f / Steps), a1 = 1.2f - (i + 1) * (2.4f / Steps);
+                    m.Capsule(OnCrown(a0), OnCrown(a1), 0.032f, 0.032f, s.HatBand, HumanBones.Head, 0.01f, SurfaceMaterial.Plastic);
+                }
+                break;
+            }
+            case Headwear.Beanie:
+            {
+                // A snug knitted crown (plan 11 · C2), a rolled cuff in the band's colour at its foot and a pompom on top
+                var tilt = Pitch(-0.15f);
+                var at = H + new Vector3(0, R * 0.5f, -R * 0.06f);
+                m.Ellipsoid(at, new Vector3(R * 1.16f, R * 0.86f, R * 1.2f), s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth, tilt);
+                m.Torus(H + new Vector3(0, R * 0.3f, -R * 0.04f), R * 1.1f, 0.035f, s.HatBand, HumanBones.Head, 0.005f, SurfaceMaterial.Cloth, tilt);
+                m.Sphere(at + new Vector3(0, R * 0.86f, -R * 0.12f), R * 0.22f, s.HatBand, HumanBones.Head, 0.02f, SurfaceMaterial.Cloth);
+                break;
+            }
+            case Headwear.Bandana:
+            {
+                // A cloth over the crown down to the brow (plan 11 · C2), knotted at the back in the band's colour with
+                // two short tails that swing
+                var at = H + new Vector3(0, R * 0.42f, -R * 0.08f);
+                m.Ellipsoid(at, new Vector3(R * 1.14f, R * 0.86f, R * 1.18f), s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth);
+                var knot = H + new Vector3(0, R * 0.2f, -R * 1.2f);
+                m.Sphere(knot, R * 0.17f, s.HatBand, HumanBones.Head, 0.01f, SurfaceMaterial.Cloth);
+                foreach (float side in new[] { 1f, -1f })
+                    m.Capsule(knot, knot + new Vector3(side * R * 0.28f, -R * 0.55f, -R * 0.25f), 0.032f, 0.02f, s.HatBand, HumanBones.Hair, 0.01f, SurfaceMaterial.Cloth);
+                break;
+            }
+            case Headwear.Headband:
+            {
+                // A band round the brow over the bangs, lower at the front than at the back (plan 11 · C2), and a knot at
+                // the back with two tails in the band's colour that hang and swing; the hair shows above it as it is
+                var band = H + new Vector3(0, R * 0.38f, -R * 0.02f);
+                m.Torus(band, R * 1.13f, 0.03f, s.HatColor, HumanBones.Head, 0.005f, SurfaceMaterial.Cloth, Pitch(0.18f));
+                var knot = H + new Vector3(0, R * 0.62f, -R * 1.16f);
+                m.Sphere(knot, R * 0.13f, s.HatBand, HumanBones.Head, 0.01f, SurfaceMaterial.Cloth);
+                foreach (float side in new[] { 1f, -1f })
+                    m.Capsule(knot, knot + new Vector3(side * R * 0.22f, -R * 0.7f, -R * 0.3f), 0.03f, 0.018f, s.HatBand, HumanBones.Hair, 0.01f, SurfaceMaterial.Cloth);
+                break;
+            }
         }
     }
 
@@ -801,7 +982,7 @@ internal static class CharacterModels
     private static void SoftenHair(CharacterRig rig)
     {
         var mesh = rig.Mesh;
-        var f = rig.Style.Build == BodyBuild.Adult ? Adult : Kid;
+        var f = FrameOf(rig.Style.Build);
         var top = f.HeadC + new Vector3(0, 0.02f, -0.015f);
         float lowest = top.Y;
         for (int v = 0; v < mesh.VertexCount; v++)

@@ -25,7 +25,10 @@ public class CharacterKitTests
         "POKETCH_PRESIDENT", "CHERYL", "MIRA", "BEBE", "CRASHER_WAKE",
         // Plan 11 · C6's: the second half's named cast and the Battle Frontier's
         "SATURN", "RILEY", "BYRON", "CANDICE", "VOLKNER", "JASMINE", "MARLEY", "BUCK", "CHARON", "AARON", "BERTHA", "FLINT", "LUCIAN",
-        "PALMER", "TEALA", "PROF_OAK", "THORTON", "ARGENTA", "DARACH", "DAHLIA", "CAITLIN"
+        "PALMER", "TEALA", "PROF_OAK", "THORTON", "ARGENTA", "DARACH", "DAHLIA", "CAITLIN",
+        // Plan 11 · C2's: the first trainers of the open areas, and the grunt and the black belt it gave a mark and a headband
+        "SCHOOL_KID_M", "SCHOOL_KID_F", "BUG_CATCHER", "CAMPER", "PICNICKER", "TWIN", "KID_WITH_NDS", "HIKER", "WORKER", "GRUNT", "GRUNT_F",
+        "CYCLIST_M", "CYCLIST_F", "BATTLE_GIRL", "ACE_TRAINER_M", "ACE_TRAINER_F", "BLACKBELT", "PSYCHIC", "NINJA_BOY", "RUIN_MANIAC", "ARTIST"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });
@@ -59,7 +62,8 @@ public class CharacterKitTests
         var max = new Vector3(float.MinValue);
         foreach (var p in mesh.Positions) { min = Vector3.Min(min, p); max = Vector3.Max(max, p); }
         Assert.InRange(min.Y, -0.01f, 0.01f);
-        Assert.InRange(max.Y, 1.1f, rig.Style.Hair == HairCut.Spiky ? 1.65f : 1.5f);
+        // (a little child, plan 11 · C2, stands about a unit tall)
+        Assert.InRange(max.Y, rig.Style.Build == BodyBuild.Little ? 0.9f : 1.1f, rig.Style.Hair == HairCut.Spiky ? 1.65f : 1.5f);
         Assert.InRange(max.X - min.X, 0.45f, 0.9f);
 
         // Hands, feet and head move with their own bones: the surface round each hand's joint follows the hand
@@ -90,6 +94,12 @@ public class CharacterKitTests
     [InlineData("MIRA")]
     [InlineData("CRASHER_WAKE")]
     [InlineData("RILEY")]
+    // Plan 11 · C2's five: a helmet, a hard hat, a beanie, a bandana and a headband
+    [InlineData("CYCLIST_M")]
+    [InlineData("WORKER")]
+    [InlineData("CAMPER")]
+    [InlineData("NINJA_BOY")]
+    [InlineData("BATTLE_GIRL")]
     public void EveryHatShowsOverTheHair(string type)
     {
         // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace

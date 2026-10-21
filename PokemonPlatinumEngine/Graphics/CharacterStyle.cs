@@ -2,12 +2,14 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora }
+/// <summary>What is worn on the head (style guide, "Characters"; Helmet to Headband came with plan 11 · C2).</summary>
+internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, HardHat, Beanie, Bandana, Headband }
 
-internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches }
+/// <summary>How the hair is cut (style guide, "Characters"; Bowl to Bald came with plan 11 · C2).</summary>
+internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches, Bowl, Ponytail, Curls, Bald }
 
-/// <summary>Body proportions: chibi children, and adults with a longer body and a slightly smaller head.</summary>
-internal enum BodyBuild { Kid, Adult }
+/// <summary>Body proportions: chibi children, adults with a longer body and a slightly smaller head, and little children with a shorter one (plan 11 · C2).</summary>
+internal enum BodyBuild { Kid, Adult, Little }
 
 /// <summary>
 /// Outfit and colouring for one kind of character, shared by the 3D field models and the 2D trainer card art. Each
@@ -45,6 +47,9 @@ internal sealed class CharacterStyle
 
     /// <summary>Glasses in this frame colour, drawn by the faces rather than sculpted (none when left out; plan 11 · C6).</summary>
     public Color? Glasses;
+
+    /// <summary>Team Galactic's mark on the chest of the uniform (plan 11 · C2; <see cref="Graphics.GalacticMark"/>).</summary>
+    public bool GalacticMark;
 
     /// <summary>Relative size: adults stand a little taller than the kids.</summary>
     public float Height = 1f;
