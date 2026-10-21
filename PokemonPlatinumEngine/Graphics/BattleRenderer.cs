@@ -364,9 +364,55 @@ public sealed class BattleRenderer
         else if (anim.EnemyTrainer != null)
             PlaceOnPlatform(anim.EnemyTrainer, BattleStage.EnemySpot, 0f, 2.3f, anim.EnemyTrainerExit, 1f, anim.Time + 1.3f);
 
+        // A trainer back on their platform to say a line, and off again once it is read (plan 11 · C13)
+        if (anim.Speaking is { } speaking)
+            trainers.Add(Speaker(speaking, anim.EnemyTrainer2Look != null, platformTop, anim.Time));
+
         // The player runs back in to throw a ball at a wild Pokémon, and off again
         if (anim.Ball is { } ball && anim.PlayerTrainer == null && ball.Age < CaptureThrowerGone)
             trainers.Add(CaptureThrower(ball, anim.Time));
+    }
+
+    /// <summary>
+    /// A trainer who steps back to speak (plan 11 · C13): walking in from beside their platform to its edge, turned
+    /// to the field with the line's face and its gesture once there, and walking off the way they came once it is
+    /// read. A function of <paramref name="speaking"/>'s clock alone, which <see cref="SpeakerAt"/> shares with the camera.
+    /// </summary>
+    internal static (Vector3 Feet, float Yaw, float Scale, CharacterPose Pose) SpeakerAt(SpeakingTrainer speaking, bool two, float platformTop, float time)
+    {
+        float scale = two ? 2.1f : 2.3f;
+        float direction = speaking.Second ? -1f : 1f;
+        var pose = new CharacterPose
+        {
+            Time = time + (speaking.Second ? 0.6f : 1.3f),
+            Blink = time % 3.7f < 0.12f,
+            Expression = CharacterAnimation.ExpressionOf(speaking.Mood)
+        };
+        var feet = BattleStage.SpeakerSpot(speaking.Second) + new Vector3(0, platformTop, 0);
+        float back = speaking.Back;
+        // Turned a little toward the player's side of the field while they speak
+        float yaw = -direction * 0.35f;
+        if (back < 1f)
+        {
+            // Eased in and out, as a walk would slow to a stop
+            float off = 1f - back;
+            feet.X += direction * off * off * BattleStage.SpeakerFrom;
+            yaw = (speaking.LeaveAge >= 0f ? direction : -direction) * MathF.PI / 2f;
+            pose.Walk = (speaking.LeaveAge >= 0f ? speaking.LeaveAge : speaking.Age) * 2.6f;
+            pose.WalkBlend = Math.Clamp(off * 3f, 0f, 1f);
+        }
+        else if (speaking.Gesture is { } gesture && speaking.GestureAge >= 0f && speaking.GestureAge < Acting.Length(gesture))
+        {
+            CharacterAnimation.Act(ref pose, gesture, speaking.GestureAge);
+            if (gesture == Overworld.Gesture.Jump) feet.Y += CharacterAnimation.JumpLift(speaking.GestureAge) / 32f * scale;
+        }
+        return (feet, yaw, scale, pose);
+    }
+
+    private static TrainerPlacement Speaker(SpeakingTrainer speaking, bool two, float platformTop, float time)
+    {
+        var (feet, yaw, scale, pose) = SpeakerAt(speaking, two, platformTop, time);
+        return new TrainerPlacement(speaking.Look, Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw) * Matrix4x4.CreateTranslation(feet), pose);
     }
 
     private const float RunInTime = 0.3f, RunOffAt = 1.05f, CaptureThrowerGone = 1.6f;

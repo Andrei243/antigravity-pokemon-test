@@ -168,6 +168,14 @@ Written 2026-10-06, before any session.
 - Harness: the `98_speaks_*` shots again, the trainer back on the platform and the camera on them; `profile`'s battle scene before and after.
 - **Done when** a trainer who speaks steps back onto the platform with a face and a gesture to match, the camera finds them, and a battle at its menu costs what it did.
 
+**Done (2026-10-21).** What was built, and where it differs from the above:
+- `BattleAnimator` keeps the looks of the trainers across the field after they step off (`EnemyTrainerLook`, `EnemyTrainer2Look`) and holds the one who speaks as a `SpeakingTrainer` (`Speaking`: the look, which of two, the line's `Mood` and `Gesture`, an `Age` and a `LeaveAge`, `Back` from 0 to 1, all on the animator's clock). `StepBack(second, mood, gesture)` brings them back in `TrainerBackTime` (0.4 s), and does nothing while they still stand on the platform or with no look kept; `SendOffSpeaker()` sends them off again; a line said while they are going turns them back from where they are. Nothing comes from the battle's `Random`.
+- `BattleEngine.Show(TrainerReacts)` hands the line's face and gesture over as the line appears (the `Line`'s `OnShow`) and queues a `Happening` that sends them off once it is read, both only with the Battle Scene on. The second of two trainers is told by the battle's `Trainers` list.
+- `BattleRenderer.SpeakerAt` places them (`BattleStage.SpeakerSpot`: the platform's edge on the side they ran off by, 1.1 behind; they walk in from `SpeakerFrom`, 7 units out), with the line's expression throughout and its gesture played once on arrival (a jump lifted as the field's). `BattleCamera` gains `ShotKind.Trainer` (at the enum's end): `SpeakerShot`, them beside their Pokémon, framed so their feet stand clear of the message box, taken while the line is read and before a move's or a send-out's shots.
+- `trainer-lines.json`: every line has a `mood`, and most an `act` (`TrainerLine.Face`, `Gesture` parse them; a name the game doesn't know fails `EveryLinesFaceAndGestureAreNamesOfTheGame`). Style guide: "Camera (G8)", "A trainer who speaks"; "Characters", "A trainer back on the platform".
+- Harness: C12's `SpeakingMode` had never run to its end (the plan says its shots were written, not run): Roark's Cranidos outlasts one Dragon Rage, so the reader waited at the menu, and his level-12 Onix has fewer than forty HP, so the red was never reached. It now chooses the move again at the menu, gives the Gible a Sonic Boom for the red, gives Roark his own look, and adds `98_speaks_first_down_leaving`; `CONDITIONS_FROM=speaks` runs it alone. All four moments were shot and looked at on the Windows machine. `profile`'s battle scene was not timed: nothing is drawn at a battle's menu that was not drawn before (the speaker is drawn only while a line is read).
+- Tests: `TrainerSpeaksTests` (the trainer back while each line is read and gone after, with each line's face and gesture; nobody back with the scene off; `StepBack`'s rules and clock; the second of two at their own edge; the camera's shot a function of the animator's state, the overview while choosing, let go once they leave; every line's face and gesture a name of the game).
+
 ## Risks
 
 - **Volume and judgement.** A hundred looks, each reviewed by the user on a board, because Claude can't judge a likeness; batches of fifteen to twenty-five entries keep a session reviewable. A look that doesn't read is a change of values, not of code.
@@ -208,4 +216,4 @@ Written 2026-10-06, before any session.
 - [~] C10 Choosing it: the introduction and the boutique (the wardrobe and a Jubilife boutique; the introduction not yet)
 - [x] C11 Gestures and faces on cue
 - [x] C12 Trainers who speak in battle: the moments and the lines
-- [ ] C13 Trainers who speak in battle: back on the platform
+- [x] C13 Trainers who speak in battle: back on the platform
