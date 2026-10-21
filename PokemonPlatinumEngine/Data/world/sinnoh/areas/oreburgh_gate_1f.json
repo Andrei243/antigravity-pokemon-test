@@ -48,6 +48,28 @@
     "Zubat",
     "Zubat"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zubat",
+      "Zubat"
+    ],
+    "sapphire": [
+      "Zubat",
+      "Zubat"
+    ],
+    "emerald": [
+      "Zubat",
+      "Zubat"
+    ],
+    "fireRed": [
+      "Zubat",
+      "Zubat"
+    ],
+    "leafGreen": [
+      "Zubat",
+      "Zubat"
+    ]
+  },
   "warps": [
     { "x": 4, "z": 22, "to": "route_203", "toWarp": 0 },
     { "x": 27, "z": 22, "to": "oreburgh_city", "toWarp": 10 },

@@ -48,6 +48,28 @@
     "Dusclops",
     "Chingling"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Dusclops",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Dusclops",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Dusclops",
+      "Chingling"
+    ]
+  },
   "water": [
     { "species": "Golduck", "level": 20, "maxLevel": 40 },
     { "species": "Golduck", "level": 20, "maxLevel": 40 },

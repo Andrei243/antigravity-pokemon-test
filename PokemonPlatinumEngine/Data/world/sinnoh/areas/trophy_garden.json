@@ -48,6 +48,28 @@
     "Pikachu",
     "Pichu"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Pikachu",
+      "Pichu"
+    ],
+    "sapphire": [
+      "Pikachu",
+      "Pichu"
+    ],
+    "emerald": [
+      "Pikachu",
+      "Pichu"
+    ],
+    "fireRed": [
+      "Pikachu",
+      "Pichu"
+    ],
+    "leafGreen": [
+      "Pikachu",
+      "Pichu"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 14, "z": 25, "to": "pokemon_mansion", "toWarp": 5 },

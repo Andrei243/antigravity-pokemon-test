@@ -48,6 +48,28 @@
     "Piloswine",
     "Piloswine"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Sneasel",
+      "Snover"
+    ],
+    "sapphire": [
+      "Sneasel",
+      "Snover"
+    ],
+    "emerald": [
+      "Ursaring",
+      "Ursaring"
+    ],
+    "fireRed": [
+      "Sneasel",
+      "Snover"
+    ],
+    "leafGreen": [
+      "Sneasel",
+      "Snover"
+    ]
+  },
   "warps": [
     { "x": 293, "z": 311, "to": "route_217_west_house", "toWarp": 0 },
     { "x": 316, "z": 285, "to": "route_217_northeast_house", "toWarp": 0 }

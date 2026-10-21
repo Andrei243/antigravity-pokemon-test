@@ -48,6 +48,28 @@
     "Wobbuffet",
     "Wobbuffet"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Starly",
+      "Bidoof"
+    ],
+    "fireRed": [
+      "Starly",
+      "Bidoof"
+    ],
+    "leafGreen": [
+      "Starly",
+      "Bidoof"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

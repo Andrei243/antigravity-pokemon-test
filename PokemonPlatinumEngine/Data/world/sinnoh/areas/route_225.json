@@ -48,6 +48,28 @@
     "Mankey",
     "Mankey"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Spearow",
+      "Rattata"
+    ],
+    "sapphire": [
+      "Spearow",
+      "Rattata"
+    ],
+    "emerald": [
+      "Spearow",
+      "Rattata"
+    ],
+    "fireRed": [
+      "Spearow",
+      "Rattata"
+    ],
+    "leafGreen": [
+      "Spearow",
+      "Rattata"
+    ]
+  },
   "water": [
     { "species": "Golduck", "level": 35, "maxLevel": 55 },
     { "species": "Golduck", "level": 35, "maxLevel": 55 },

@@ -48,6 +48,28 @@
     "Torkoal",
     "Torkoal"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "sapphire": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "emerald": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "fireRed": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "leafGreen": [
+      "Numel",
+      "Rhyhorn"
+    ]
+  },
   "water": [
     { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
     { "species": "Poliwag", "level": 35, "maxLevel": 45 },

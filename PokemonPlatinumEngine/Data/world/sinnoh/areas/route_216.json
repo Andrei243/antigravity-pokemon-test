@@ -48,6 +48,28 @@
     "Graveler",
     "Snover"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Graveler",
+      "Snover"
+    ],
+    "sapphire": [
+      "Graveler",
+      "Snover"
+    ],
+    "emerald": [
+      "Ursaring",
+      "Ursaring"
+    ],
+    "fireRed": [
+      "Graveler",
+      "Snover"
+    ],
+    "leafGreen": [
+      "Graveler",
+      "Snover"
+    ]
+  },
   "warps": [
     { "x": 375, "z": 403, "to": "mt_coronet_1f_north_room_2", "toWarp": 1 },
     { "x": 303, "z": 398, "to": "route_216_house", "toWarp": 0 }

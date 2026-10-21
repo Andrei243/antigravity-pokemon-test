@@ -33,6 +33,7 @@ public partial class GameEngine
             Today = GameClock.Today,
             SwarmArea = Swarms.Today(flow.Encounters),
             NationalDex = flow.Pokedex.NationalUnlocked,
+            SlotTwo = Settings.SlotTwo,
             TrophyFirst = TrophyGardenRules.SpeciesIn(flow.Encounters.TrophyFirst, garden),
             TrophySecond = TrophyGardenRules.SpeciesIn(flow.Encounters.TrophySecond, garden),
             MarshDaily = flow.Safari.Active ? flow.Encounters.MarshDaily : null,

@@ -48,6 +48,28 @@
     "Baltoy",
     "Baltoy"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Machop",
+      "Geodude"
+    ],
+    "sapphire": [
+      "Machop",
+      "Geodude"
+    ],
+    "emerald": [
+      "Machop",
+      "Geodude"
+    ],
+    "fireRed": [
+      "Machop",
+      "Geodude"
+    ],
+    "leafGreen": [
+      "Machop",
+      "Geodude"
+    ]
+  },
   "warps": [
     { "x": 302, "z": 688, "to": "route_206_cycling_road_south_gate", "toWarp": 4 },
     { "x": 303, "z": 688, "to": "route_206_cycling_road_south_gate", "toWarp": 4 },

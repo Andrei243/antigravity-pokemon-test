@@ -48,6 +48,28 @@
     "Smeargle",
     "Smeargle"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Roselia",
+      "Marill"
+    ],
+    "sapphire": [
+      "Roselia",
+      "Marill"
+    ],
+    "emerald": [
+      "Roselia",
+      "Marill"
+    ],
+    "fireRed": [
+      "Roselia",
+      "Marill"
+    ],
+    "leafGreen": [
+      "Roselia",
+      "Marill"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

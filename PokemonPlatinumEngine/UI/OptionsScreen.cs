@@ -21,6 +21,7 @@ public enum OptionRow
     SpeedUp, AutoAdvance, Autorun, Frame,
     ButtonMode, StickDeadZone, Gamepad,
     RecordBattles,
+    SlotTwo,
     Controls,
     Help
 }
@@ -229,6 +230,10 @@ public class OptionsScreen
             case OptionRow.RecordBattles:
                 s.RecordBattles = !s.RecordBattles;
                 break;
+            case OptionRow.SlotTwo:
+                // None, Ruby, Sapphire, Emerald, FireRed, LeafGreen, and round again (plan 08 · P23)
+                s.SlotTwo = (SlotTwoGame)Wrap((int)s.SlotTwo + step, 6);
+                break;
         }
     }
 
@@ -267,6 +272,8 @@ public class OptionsScreen
         OptionRow.StickDeadZone => (Text.Of("options.stickDeadZone.label"), Text.Of("options.stickDeadZone.value", ("n", s.StickDeadZone)), Text.Of("options.stickDeadZone.help")),
         OptionRow.Gamepad => (Text.Of("options.gamepad.label"), Text.Of("options.gamepad.value", ("n", Math.Clamp(s.GamepadIndex, 0, 3) + 1)), Text.Of("options.gamepad.help")),
         OptionRow.RecordBattles => (Text.Of("options.recordBattles.label"), OnOff(s.RecordBattles), Text.Of(s.RecordBattles ? "options.recordBattles.help.on" : "options.recordBattles.help.off")),
+        OptionRow.SlotTwo => (Text.Of("options.slotTwo.label"), Text.Of($"options.slotTwo.value.{s.SlotTwo}"),
+            Text.Of(s.SlotTwo == SlotTwoGame.None ? "options.slotTwo.help.None" : "options.slotTwo.help.game", ("game", Text.Of($"options.slotTwo.value.{s.SlotTwo}")))),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

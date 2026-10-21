@@ -48,6 +48,28 @@
     "Bagon",
     "Bagon"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zangoose",
+      "Zangoose"
+    ],
+    "sapphire": [
+      "Seviper",
+      "Seviper"
+    ],
+    "emerald": [
+      "Machop",
+      "Machoke"
+    ],
+    "fireRed": [
+      "Machop",
+      "Machoke"
+    ],
+    "leafGreen": [
+      "Machop",
+      "Machoke"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

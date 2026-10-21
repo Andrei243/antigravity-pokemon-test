@@ -48,6 +48,28 @@
     "Graveler",
     "Graveler"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Mawile",
+      "Mawile"
+    ],
+    "sapphire": [
+      "Sableye",
+      "Sableye"
+    ],
+    "emerald": [
+      "Graveler",
+      "Graveler"
+    ],
+    "fireRed": [
+      "Graveler",
+      "Graveler"
+    ],
+    "leafGreen": [
+      "Graveler",
+      "Graveler"
+    ]
+  },
   "warps": [
     { "x": 6, "z": 26, "to": "iron_island_b2f_left_room", "toWarp": 0 },
     { "x": 16, "z": 26, "to": "iron_island_b2f_right_room", "toWarp": 0 },

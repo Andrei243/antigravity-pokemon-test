@@ -48,6 +48,28 @@
     "Dewgong",
     "Gabite"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Dewgong",
+      "Gabite"
+    ],
+    "sapphire": [
+      "Dewgong",
+      "Gabite"
+    ],
+    "emerald": [
+      "Dewgong",
+      "Gabite"
+    ],
+    "fireRed": [
+      "Dewgong",
+      "Gabite"
+    ],
+    "leafGreen": [
+      "Dewgong",
+      "Gabite"
+    ]
+  },
   "water": [
     { "species": "Floatzel", "level": 35, "maxLevel": 55 },
     { "species": "Dewgong", "level": 35, "maxLevel": 55 },

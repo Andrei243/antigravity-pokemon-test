@@ -48,6 +48,28 @@
     "Machoke",
     "Bronzor"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Machoke",
+      "Bronzor"
+    ],
+    "sapphire": [
+      "Machoke",
+      "Bronzor"
+    ],
+    "emerald": [
+      "Machoke",
+      "Bronzor"
+    ],
+    "fireRed": [
+      "Machoke",
+      "Bronzor"
+    ],
+    "leafGreen": [
+      "Machoke",
+      "Bronzor"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 419, "z": 527, "to": "mt_coronet_1f_north_room_1", "toWarp": 3 }

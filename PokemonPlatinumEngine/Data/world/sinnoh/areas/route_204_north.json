@@ -48,6 +48,28 @@
     "Sunkern",
     "Sunkern"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Seedot",
+      "Seedot"
+    ],
+    "sapphire": [
+      "Lotad",
+      "Lotad"
+    ],
+    "emerald": [
+      "Pineco",
+      "Pineco"
+    ],
+    "fireRed": [
+      "Caterpie",
+      "Caterpie"
+    ],
+    "leafGreen": [
+      "Weedle",
+      "Weedle"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

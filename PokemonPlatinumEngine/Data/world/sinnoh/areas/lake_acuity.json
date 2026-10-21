@@ -48,6 +48,28 @@
     "Snover",
     "Bibarel"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Teddiursa",
+      "Teddiursa"
+    ],
+    "fireRed": [
+      "Snover",
+      "Bibarel"
+    ],
+    "leafGreen": [
+      "Snover",
+      "Bibarel"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

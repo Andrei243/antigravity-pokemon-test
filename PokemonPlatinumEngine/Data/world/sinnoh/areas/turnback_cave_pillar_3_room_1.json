@@ -48,6 +48,28 @@
     "Dusclops",
     "Chimecho"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Dusclops",
+      "Chimecho"
+    ],
+    "fireRed": [
+      "Dusclops",
+      "Chimecho"
+    ],
+    "leafGreen": [
+      "Dusclops",
+      "Chimecho"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },

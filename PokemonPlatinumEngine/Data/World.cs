@@ -1287,6 +1287,8 @@ public static class WorldMapBuilder
         area.NightSlots.AddRange(file?.Night ?? new());
         area.SwarmSlots.AddRange(file?.Swarm ?? new());
         area.RadarSlots.AddRange(file?.Radar ?? new());
+        // What a game in the console's second slot puts in slots 8 and 9 (plan 08 · P23)
+        area.DualSlot = file?.DualSlot;
         // What the Pokégear's radio brings in on its days (plan 20 · J3)
         area.HoennSounds.AddRange(file?.HoennSounds ?? new());
         area.SinnohSounds.AddRange(file?.SinnohSounds ?? new());

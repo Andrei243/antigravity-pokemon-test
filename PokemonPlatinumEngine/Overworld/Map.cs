@@ -112,6 +112,13 @@ public sealed class MapArea
     public List<string> NationalSlots { get; } = new();
     public List<string> NationalSuperRod { get; } = new();
 
+    /// <summary>
+    /// What each game in the console's second slot puts in the grass's slots 8 and 9 (plan 08 · P23, the original's
+    /// <c>ruby</c>, <c>sapphire</c>, <c>emerald</c>, <c>firered</c> and <c>leafgreen</c>, <c>WildEncounters_ReplaceDualSlotEncounters</c>);
+    /// null where the area has no grass.
+    /// </summary>
+    public DualSlotTables? DualSlot { get; set; }
+
     /// <summary>The wild Pokémon met surfing on the area's water, and the rate for them.</summary>
     public List<WildEncounterEntry> WaterEncounters { get; } = new();
     public int WaterRate { get; set; }

@@ -48,6 +48,28 @@
     "Diglett",
     "Cacnea"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Diglett",
+      "Cacnea"
+    ],
+    "sapphire": [
+      "Diglett",
+      "Cacnea"
+    ],
+    "emerald": [
+      "Diglett",
+      "Cacnea"
+    ],
+    "fireRed": [
+      "Diglett",
+      "Cacnea"
+    ],
+    "leafGreen": [
+      "Sandslash",
+      "Sandslash"
+    ]
+  },
   "water": [
     { "species": "Poliwhirl", "level": 35, "maxLevel": 55 },
     { "species": "Poliwag", "level": 35, "maxLevel": 45 },

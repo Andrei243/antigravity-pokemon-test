@@ -48,6 +48,28 @@
     "Slugma",
     "Rhyhorn"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Slugma",
+      "Rhyhorn"
+    ],
+    "sapphire": [
+      "Slugma",
+      "Rhyhorn"
+    ],
+    "emerald": [
+      "Slugma",
+      "Rhyhorn"
+    ],
+    "fireRed": [
+      "Slugma",
+      "Rhyhorn"
+    ],
+    "leafGreen": [
+      "Slugma",
+      "Rhyhorn"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 20, "z": 29, "to": "stark_mountain_outside", "toWarp": 0 },

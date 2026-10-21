@@ -573,6 +573,12 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 - **Feebas** (`PlayerAvatar_IsFacingFeebasTile`): the tiles of Mt. Coronet's lake are cut into four groups in the original's order, and the day's number picks one of each by its four bytes; a cast at one hooks Feebas (levels 10 to 20, any rod) one time in two.
 - **Poison in the field** (`Field_UpdatePoison`, `Pokemon_DoPoisonDamage`, `Pokemon_TrySurvivePoison`): every fourth step each poisoned Pokémon able to fight loses a hit point, never its last, and the field flashes; one left with one hit point comes through, cured, and loses a little friendship (5, 5 or 10 by its band).
 
+**The dual slot** (plan 08 · P23; `WildEncounters_ReplaceDualSlotEncounters`, the table's `ruby`, `sapphire`, `emerald`, `firered` and `leafgreen`)
+
+- Each area with grass lists two species for each of the five Game Boy Advance games (`WorldAreaFile.DualSlot`, `MapArea.DualSlot`, written by the importer's `--data` from the original's encounter files; the Pokédex's area page leaves them out as the original does). With a game chosen **they take slots 8 and 9**, each keeping the slot's level and weight, after the time of day, a swarm and the Pokégear's songs and before the Trophy Garden's and the Great Marsh's (slots 6 and 7, which they never share). Sweet Scent, Honey, the Poké Radar and every step in the grass go through the same table (`EncounterSlots.Grass`), so each meets them.
+- **The stand-in for the cartridge**: there is none to read, so the game is the options' SLOT 2 GAME (`GameSettings.SlotTwo`, `SlotTwoGame`: None, Ruby, Sapphire, Emerald, FireRed, LeafGreen; None unless chosen, one value for the whole game, so it can be changed between steps). Not `Foreign.GbaGame`, which tells which game wrote a save file.
+- **Only with the National Pokédex** (the plan's ruling; Platinum's own condition for the dual slot is the cartridge alone), so a new game's grass is Platinum's whatever the options say. With a game chosen its two take the place of our own species of plan 03 · D12a in the same two slots (the species Diamond and Pearl have, which nothing else gives): with None they are met as before.
+
 **Our own choices**
 
 - The honey tree's, the radar's, the poison's and the swarm's lines are our own words.
@@ -583,7 +589,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 
 | What | The original | Here | Why |
 | --- | --- | --- | --- |
-| The pair of species a second game calls up | Slots 8 and 9 take two of the game in the DS's other slot | The table's own | No second game to read (plan 08's dual-slot stand-in) |
+| The pair of species a second game calls up | Slots 8 and 9 take two of the game in the DS's other slot | The options' SLOT 2 GAME names the game (None unless chosen); with the National Pokédex its two take slots 8 and 9 | No cartridge to read (plan 08 · P23, "The dual slot" below) |
 | Who tells of swarms and of the Trophy Garden | The assistant's sister in her house in Sandgem Town; Mr. Backlot in his mansion, once a day | The common scripts are ready (`common.SwarmNews`, the `trophygarden` command) and nobody runs them yet | Their rooms are plan 01 · M11's |
 | The radar's music | The radar's own theme while patches shake | Not yet (the chain records are the Pokétch's Trainer Counter's, plan 06 · R14b) | The theme is plan 05's |
 | Who is where | The Pokétch's marking map shows the roamers; the TV tells of swarms | The marking map (plan 06 · R14b); not the TV yet | The TV is plan 08's |

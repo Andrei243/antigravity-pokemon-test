@@ -48,6 +48,28 @@
     "Medicham",
     "Chingling"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Golbat",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Golbat",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Golbat",
+      "Chingling"
+    ]
+  },
   "warps": [
     { "x": 14, "z": 26, "to": "mt_coronet_2f", "toWarp": 4 },
     { "x": 18, "z": 26, "to": "mt_coronet_2f", "toWarp": 5 },

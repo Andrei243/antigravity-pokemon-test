@@ -48,6 +48,28 @@
     "Geodude",
     "Geodude"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Geodude",
+      "Geodude"
+    ],
+    "sapphire": [
+      "Geodude",
+      "Geodude"
+    ],
+    "emerald": [
+      "Geodude",
+      "Geodude"
+    ],
+    "fireRed": [
+      "Geodude",
+      "Geodude"
+    ],
+    "leafGreen": [
+      "Geodude",
+      "Geodude"
+    ]
+  },
   "warps": [
     { "x": 11, "z": 1, "to": "oreburgh_city", "toWarp": 12 },
     { "x": 12, "z": 1, "to": "oreburgh_city", "toWarp": 13 },

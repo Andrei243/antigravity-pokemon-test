@@ -246,6 +246,7 @@ public sealed class WorldWriter
             Night = land == null ? null : SlotSpecies(header, "night", 2),
             Swarm = land == null ? null : SlotSpecies(header, "swarms", 2),
             Radar = land == null ? null : SlotSpecies(header, "radar", 4),
+            DualSlot = land == null ? null : DualSlots(header),
             Water = water,
             WaterRate = water == null ? null : waterRate,
             OldRod = Water(header, "old_rod", out int? oldRodRate),
@@ -336,6 +337,23 @@ public sealed class WorldWriter
             }
         }
         return names;
+    }
+
+    /// <summary>
+    /// The two species each of the five games in the console's second slot puts in slots 8 and 9 (plan 08 · P23: the original's
+    /// <c>ruby</c>, <c>sapphire</c>, <c>emerald</c>, <c>firered</c> and <c>leafgreen</c>); null when the area lists none.
+    /// </summary>
+    private DualSlotTables? DualSlots(MapHeader header)
+    {
+        var tables = new DualSlotTables
+        {
+            Ruby = SlotSpecies(header, "ruby", 2),
+            Sapphire = SlotSpecies(header, "sapphire", 2),
+            Emerald = SlotSpecies(header, "emerald", 2),
+            FireRed = SlotSpecies(header, "firered", 2),
+            LeafGreen = SlotSpecies(header, "leafgreen", 2)
+        };
+        return tables.Ruby == null && tables.Sapphire == null && tables.Emerald == null && tables.FireRed == null && tables.LeafGreen == null ? null : tables;
     }
 
     /// <summary>

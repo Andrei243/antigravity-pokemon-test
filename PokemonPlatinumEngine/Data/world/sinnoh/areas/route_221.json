@@ -48,6 +48,28 @@
     "Nidorino",
     "Nidorina"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Floatzel",
+      "Roselia"
+    ],
+    "sapphire": [
+      "Floatzel",
+      "Roselia"
+    ],
+    "emerald": [
+      "Floatzel",
+      "Roselia"
+    ],
+    "fireRed": [
+      "Floatzel",
+      "Roselia"
+    ],
+    "leafGreen": [
+      "Floatzel",
+      "Roselia"
+    ]
+  },
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Wingull", "level": 20, "maxLevel": 30 },

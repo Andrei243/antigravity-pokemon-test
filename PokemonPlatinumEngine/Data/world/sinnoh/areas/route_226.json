@@ -48,6 +48,28 @@
     "Mankey",
     "Mankey"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Wingull",
+      "Rattata"
+    ],
+    "sapphire": [
+      "Wingull",
+      "Rattata"
+    ],
+    "emerald": [
+      "Wingull",
+      "Rattata"
+    ],
+    "fireRed": [
+      "Wingull",
+      "Rattata"
+    ],
+    "leafGreen": [
+      "Wingull",
+      "Rattata"
+    ]
+  },
   "water": [
     { "species": "Wingull", "level": 35, "maxLevel": 45 },
     { "species": "Pelipper", "level": 35, "maxLevel": 55 },

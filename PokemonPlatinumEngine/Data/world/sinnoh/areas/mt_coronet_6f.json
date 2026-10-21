@@ -48,6 +48,28 @@
     "Golbat",
     "Chimecho"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Golbat",
+      "Chimecho"
+    ],
+    "fireRed": [
+      "Golbat",
+      "Chimecho"
+    ],
+    "leafGreen": [
+      "Golbat",
+      "Chimecho"
+    ]
+  },
   "warps": [
     { "x": 10, "z": 24, "to": "mt_coronet_5f", "toWarp": 1 },
     { "x": 7, "z": 5, "to": "spear_pillar", "toWarp": 0 },

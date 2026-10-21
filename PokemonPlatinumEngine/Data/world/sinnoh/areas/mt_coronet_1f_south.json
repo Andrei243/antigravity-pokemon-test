@@ -48,6 +48,28 @@
     "Zubat",
     "Chingling"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zubat",
+      "Chingling"
+    ],
+    "sapphire": [
+      "Zubat",
+      "Chingling"
+    ],
+    "emerald": [
+      "Zubat",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Zubat",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Zubat",
+      "Chingling"
+    ]
+  },
   "water": [
     { "species": "Zubat", "level": 20, "maxLevel": 30 },
     { "species": "Zubat", "level": 20, "maxLevel": 30 },

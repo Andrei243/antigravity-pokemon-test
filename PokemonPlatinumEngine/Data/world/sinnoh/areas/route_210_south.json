@@ -48,6 +48,28 @@
     "Miltank",
     "Tauros"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Seedot",
+      "Nuzleaf"
+    ],
+    "sapphire": [
+      "Ponyta",
+      "Chansey"
+    ],
+    "emerald": [
+      "Pineco",
+      "Pineco"
+    ],
+    "fireRed": [
+      "Ponyta",
+      "Chansey"
+    ],
+    "leafGreen": [
+      "Ponyta",
+      "Chansey"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 566, "z": 591, "to": "cafe", "toWarp": 0 }

@@ -48,6 +48,28 @@
     "Marill",
     "Kadabra"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Marill",
+      "Kadabra"
+    ],
+    "sapphire": [
+      "Marill",
+      "Kadabra"
+    ],
+    "emerald": [
+      "Marill",
+      "Kadabra"
+    ],
+    "fireRed": [
+      "Marill",
+      "Kadabra"
+    ],
+    "leafGreen": [
+      "Marill",
+      "Kadabra"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 671, "z": 598, "to": "route_215_gate_to_veilstone_city", "toWarp": 1 },

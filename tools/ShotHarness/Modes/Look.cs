@@ -130,6 +130,15 @@ partial class Harness
         Console.WriteLine($"the options as they were again: button mode {engine.Settings.ButtonMode}, dead zone {engine.Settings.StickDeadZone}, pad {engine.Settings.GamepadIndex + 1}, device {InputManager.LastDevice}");
         options.Open();
 
+        // The game in the console's second slot (plan 08 · P23), the row before Controls: None unless chosen, then FireRed
+        GoToRow(OptionRow.SlotTwo);
+        Frames(1); Shot("look_15h_options_slot_two");
+        for (int i = 0; i < 4; i++) OptionsScreen.Change(engine.Settings, OptionRow.SlotTwo, 1);
+        Frames(1); Shot("look_15i_options_slot_two_firered");
+        Console.WriteLine($"slot two: {engine.Settings.SlotTwo}");
+        engine.Settings.SlotTwo = SlotTwoGame.None;
+        options.Open();
+
         // The Controls page (plan 12 · Q5): the list on the keyboard, the pad's column, waiting for a key, a clash, the
         // bottom of the list, then the hints drawn by action: a rebound key named, the pad's signs
         GoToRow(OptionRow.Controls);
