@@ -533,7 +533,12 @@ public partial class BattleEngine
                 break;
             case Seen seen:
                 // The Pokédex isn't told of what is met in the catching lesson or the Battle Frontier (BattleSystem_DexFlagSeen)
-                if (Kind != BattleKind.CatchingLesson && !IsFrontier) Pokedex.RegisterSeen(seen.Species.DexNumber);
+                if (Kind != BattleKind.CatchingLesson && !IsFrontier)
+                {
+                    // The first Spinda met gives its spots (the log's event carries the look and not the personality, which only that species needs)
+                    uint? spots = Pokedex.KeepsPersonality(seen.Species) ? EnemySlots.Select(b => b.Pokemon).FirstOrDefault(p => p != null && p.Species == seen.Species)?.Personality : null;
+                    Pokedex.RegisterSeen(seen.Species, seen.Form, seen.Gender, spots);
+                }
                 break;
             case Entered entered:
             {
@@ -877,7 +882,7 @@ public partial class BattleEngine
                 if (Scene) Anim.Cheer(BattleSide.Player);
                 CaughtNewSpecies = !Pokedex.IsCaught(mine.Species.DexNumber);
                 Caught = mine;
-                Pokedex.RegisterCaught(mine.Species.DexNumber);
+                Pokedex.RegisterCaught(mine);
                 mine.ResetStatStages();
                 mine.Ball = caught.Ball;
                 // Where, when and at what level it was met (Pokemon_SetCatchData)

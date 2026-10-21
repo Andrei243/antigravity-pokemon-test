@@ -464,6 +464,54 @@ partial class Harness
         dexScreen.Close();
         game.State = stateBefore;
 
+        // The forms page (plan 08 · P19), last of the Pokédex's shots (seen only: the counts after it stay as they were), drawn without a frame
+        // of the game's clock so that nothing after it moves: both seas of Shellos with a male and a female of each,
+        // and Unown's marks in the order met
+        {
+            Pokemon Look(string species, Gender gender, string? form = null)
+            {
+                var p = new Pokemon(PokemonDatabase.Get(species)!, 20, new Random(5)) { Gender = gender };
+                if (form != null) p.ChangeForm(form);
+                return p;
+            }
+            var looks = pokedex;   // the screen draws the game's own Pokédex
+            looks.RegisterSeen(Look("Shellos", Gender.Female, "Shellos-East"));
+            looks.RegisterSeen(Look("Shellos", Gender.Male, "Shellos-East"));
+            looks.RegisterSeen(Look("Shellos", Gender.Female));
+            looks.RegisterSeen(Look("Shellos", Gender.Male));
+            var unown = PokemonDatabase.Get("Unown")!;
+            foreach (var letter in new[] { "Unown-C", "Unown", "Unown-H", "Unown-B", "Unown-F", "Unown-D" }) looks.RegisterSeen(Look("Unown", Gender.Genderless, letter == "Unown" ? null : letter));
+            var names = looks.AllLooks().Select(l => l.Look.Name).Distinct().ToList();
+            foreach (string name in names) PokemonSprites.Request(name);
+            PokemonSprites.Flush(game.RenderContext);
+            game.State = GameState.PokedexMenu;
+            dexScreen.FormsKnown = true;
+            dexScreen.Open(looks, game.World.Portrait(PlayerIdentity.Character));
+            // The listing the screen was left on may be Kanto's: Sinnoh's has both species
+            dexScreen.OpenSearch();
+            for (int i = 0; i < 4 && dexScreen.DraftMode != Pokedex.Sinnoh; i++) dexScreen.Sideways(1);
+            dexScreen.Search();
+            Pick("Shellos");
+            dexScreen.Confirm();
+            for (int i = 0; i < 6 && dexScreen.Page != PokedexPage.Forms; i++) dexScreen.Sideways(1);
+            engine.Draw(); Shot("26s_pokedex_forms_shellos_tabs");
+            dexScreen.Confirm();                 // into the cards
+            engine.Draw(); Shot("26s_pokedex_forms_shellos");
+            dexScreen.Sideways(1); dexScreen.Sideways(1);
+            engine.Draw(); Shot("26t_pokedex_forms_shellos_west");
+            dexScreen.Cancel(); dexScreen.Cancel();
+            Pick("Unown");
+            dexScreen.Confirm();
+            for (int i = 0; i < 6 && dexScreen.Page != PokedexPage.Forms; i++) dexScreen.Sideways(1);
+            dexScreen.Confirm();
+            for (int i = 0; i < 3; i++) dexScreen.Sideways(1);
+            engine.Draw(); Shot("26w_pokedex_forms_unown");
+            Console.WriteLine($"  forms page: {looks.LooksOf(PokemonDatabase.Get("Shellos")!.DexNumber).Count} looks of Shellos, {looks.LooksOf(unown.DexNumber).Count} of Unown, card {dexScreen.FormsIndex} on {dexScreen.LookChosen?.Name}");
+            dexScreen.Close();
+            dexScreen.FormsKnown = false;
+            game.State = stateBefore;
+        }
+
         if (args.Length > 2)
             Boards(args[2], new[]
             {

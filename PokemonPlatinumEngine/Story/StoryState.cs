@@ -26,6 +26,12 @@ public sealed class StoryState
     /// <summary>Mom has given the Running Shoes (in the original a flag of the player's data; plan 02 · S4).</summary>
     public const string RunningShoesFlag = "FLAG_HAS_RUNNING_SHOES";
 
+    /// <summary>
+    /// The Pokédex's upgrade (plan 08 · P19): set by Professor Rowan's aide in the gate between Route 218 and Canalave City
+    /// (the original's <c>TurnOnPokedexFormDetection</c>), after which the Pokédex's FORMS page shows the looks seen.
+    /// </summary>
+    public const string FormDetectionFlag = "FLAG_ENABLED_POKEDEX_FORM_DETECTION";
+
     private readonly HashSet<string> flags = new(StringComparer.Ordinal);
     private readonly Dictionary<string, int> variables = new(StringComparer.Ordinal);
     private readonly HashSet<string> defeated = new(StringComparer.Ordinal);

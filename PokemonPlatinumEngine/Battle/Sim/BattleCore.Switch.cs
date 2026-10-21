@@ -296,7 +296,7 @@ public sealed partial class BattleCore
         SendIn(place, incoming);
         if (baton != null) TakeUp(place, baton);
         var said = Say(line);
-        if (!place.IsPlayerSide) said.With(new Seen(incoming.Species));
+        if (!place.IsPlayerSide) said.With(Seen.Of(incoming));
         // The line tells what the newcomer brings: a condition it already had, a confusion passed to it (plan 09 · L2)
         Bringing(said.With(new Entered(place.Place, incoming, FromBall: true)), place);
         // A Substitute passed by Baton Pass comes in with the Pokémon it now stands for, on the line that sends it out
@@ -520,7 +520,7 @@ public sealed partial class BattleCore
                 if (Result != BattleResult.None) yield break;
                 entered.Add(place);
                 SendIn(place, next);
-                var sent = Bringing(Say(SentOutLine(place, next)).With(new Seen(next.Species)).With(new Entered(place.Place, next, FromBall: true)), place);
+                var sent = Bringing(Say(SentOutLine(place, next)).With(Seen.Of(next)).With(new Entered(place.Place, next, FromBall: true)), place);
                 SentOutTheLast(place, sent);
             }
 

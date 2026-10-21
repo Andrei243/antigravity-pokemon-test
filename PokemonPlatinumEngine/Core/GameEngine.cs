@@ -457,8 +457,8 @@ public partial class GameEngine
             flow.Bag.AddItem(ItemDatabase.Get("Revive")!, 2);
             var first = new Pokemon(PokemonDatabase.Get(region.Starters.FirstOrDefault() ?? "Turtwig")!, 5);
             flow.Party.Add(first);
-            flow.Pokedex.RegisterSeen(first.Species.DexNumber);
-            flow.Pokedex.RegisterCaught(first.Species.DexNumber);
+            flow.Pokedex.RegisterSeen(first);
+            flow.Pokedex.RegisterCaught(first);
         }
     }
 
@@ -520,8 +520,8 @@ public partial class GameEngine
         {
             var p = pData.ToPokemon();
             flow.Party.Add(p);
-            flow.Pokedex.RegisterSeen(p.Species.DexNumber);
-            flow.Pokedex.RegisterCaught(p.Species.DexNumber);
+            flow.Pokedex.RegisterSeen(p);
+            flow.Pokedex.RegisterCaught(p);
         }
 
         // (A save from before plan 02 · S4, whose game began with a Pokémon; one made in the opening has none yet)
@@ -529,8 +529,8 @@ public partial class GameEngine
         {
             var fallback = new Pokemon(PokemonDatabase.Get("Turtwig")!, 5);
             flow.Party.Add(fallback);
-            flow.Pokedex.RegisterSeen(fallback.Species.DexNumber);
-            flow.Pokedex.RegisterCaught(fallback.Species.DexNumber);
+            flow.Pokedex.RegisterSeen(fallback);
+            flow.Pokedex.RegisterCaught(fallback);
         }
 
         // Each stored Pokémon in its own place; a save from before the boxes had places lays its list out in them
@@ -580,6 +580,9 @@ public partial class GameEngine
         KeepTrainerNumber();
         // The Day Care as it was left (plan 06 · R15): an older save's is empty
         DayCareSave.Restore(save.DayCare, flow.DayCare);
+        // The looks the Pokédex has seen; a save from before them has its looks rebuilt from the Pokémon the player has (plan 08 · P19)
+        flow.Pokedex.RestoreLooks(save.SeenLooks.Select(l => (SavedLook.SpeciesOf(l.Name)?.DexNumber ?? 0, l.Name, l.Gender)).Where(l => l.Item1 != 0), save.SpindaPersonality);
+        flow.Pokedex.RebuildLooksFrom(OwnedPokemon());
         // Every Pokémon with its own id (plan 07 · O2): the save's count goes on, and one given here (the Turtwig of a
         // save from before the opening, two that came to hold one id) takes the next
         flow.PokemonIdsIssued = save.PokemonIdsIssued;
@@ -663,6 +666,8 @@ public partial class GameEngine
             Inventory = flow.Bag.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             SeenSpecies = flow.Pokedex.SeenSpecies.ToList(),
             CaughtSpecies = flow.Pokedex.CaughtSpecies.ToList(),
+            SeenLooks = flow.Pokedex.AllLooks().Select(l => new SavedLook { Name = l.Look.Name, Gender = l.Look.Gender }).ToList(),
+            SpindaPersonality = flow.Pokedex.SpindaPersonality,
             NationalPokedex = flow.Pokedex.NationalUnlocked,
             Diplomas = flow.Pokedex.Diplomas.Select(Pokedex.DiplomaKey).Order().ToList(),
             DexesEntered = flow.Pokedex.Entered.ToList(),
@@ -1054,8 +1059,8 @@ public partial class GameEngine
                 {
                     chosen.Met(PlaceName(), GameClock.Today);
                     flow.Party.Add(chosen);
-                    flow.Pokedex.RegisterSeen(chosen.Species.DexNumber);
-                    flow.Pokedex.RegisterCaught(chosen.Species.DexNumber);
+                    flow.Pokedex.RegisterSeen(chosen);
+                    flow.Pokedex.RegisterCaught(chosen);
                     // The story remembers which was taken, and with it which the rival takes
                     flow.Story.ChooseStarter(chosen.Species.Name);
                     flow.ScriptAnswer = Math.Max(0, Here.Starters.ToList().IndexOf(chosen.Species.Name));
@@ -1709,8 +1714,9 @@ public partial class GameEngine
     {
         if (flow.EvolutionScreen.Outcome is { } outcome)
         {
-            flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
-            if (outcome.Shed != null) flow.Pokedex.RegisterCaught(outcome.Shed.Species.DexNumber);
+            if (flow.EvolutionScreen.Pokemon is { } evolved) flow.Pokedex.RegisterCaught(evolved);
+            else flow.Pokedex.RegisterCaught(outcome.Into.DexNumber);
+            if (outcome.Shed != null) flow.Pokedex.RegisterCaught(outcome.Shed);
         }
         if (BeginNextEvolution()) return;
 
@@ -1740,7 +1746,7 @@ public partial class GameEngine
         }
 
         received.Friendship = received.Species.BaseFriendship;
-        flow.Pokedex.RegisterCaught(received.Species.DexNumber);
+        flow.Pokedex.RegisterCaught(received);
 
         GiveIds();
 
@@ -2074,7 +2080,8 @@ public partial class GameEngine
             case StartMenuChoice.Pokedex:
                 flow.State = GameState.PokedexMenu;
                 flow.Pokedex.Enter(Here);
-                flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character), Here);
+                flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
+        flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character), Here);
                 break;
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;

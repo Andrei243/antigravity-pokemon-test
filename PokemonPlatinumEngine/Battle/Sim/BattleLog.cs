@@ -48,8 +48,15 @@ public sealed record Said(string Text) : BattleEvent
 /// <summary>The trainers standing across the field as the battle opens.</summary>
 public sealed record TrainersStand(string First, string? Second) : BattleEvent;
 
-/// <summary>A species has been met (it goes in the Pokédex as seen).</summary>
-public sealed record Seen(PokemonSpecies Species) : BattleEvent;
+/// <summary>
+/// A species has been met (it goes in the Pokédex as seen), in the form and of the gender it was met in (plan 08 · P19):
+/// plain values, which is all the Pokédex's record of looks needs. <see cref="Form"/> is null for the species' own.
+/// </summary>
+public sealed record Seen(PokemonSpecies Species, string? Form = null, Gender Gender = Gender.Genderless) : BattleEvent
+{
+    /// <summary>A Pokémon as it is met.</summary>
+    public static Seen Of(Pokemon pokemon) => new(pokemon.Species, pokemon.Form, pokemon.Gender);
+}
 
 /// <summary>A Pokémon takes a place: thrown out of a ball, or already there when a wild battle opens.</summary>
 public sealed record Entered(Place Place, Pokemon Pokemon, bool FromBall) : BattleEvent;

@@ -590,7 +590,8 @@
   },
   "pokedex": {
     "title": "POKÉDEX",
-    "page": { "Info": "INFO", "Area": "ZONĂ", "Cry": "STRIGĂT", "Size": "MĂRIME" },
+    "page": { "Info": "INFO", "Area": "ZONĂ", "Cry": "STRIGĂT", "Size": "MĂRIME", "Forms": "FORME" },
+    "forms": { "front": "DIN FAȚĂ", "back": "DIN SPATE", "male": "Mascul", "female": "Femelă", "looks": "{n} văzute" },
     "cry": {
       "pitch": "Înălțime", "chorus": "Cor", "pan": "Panoramă", "reverb": "Ecou", "filter": "Filtru", "loop": "Repetare", "play": "Redare",
       "plain": "Neschimbat", "semitones": "{n} semitonuri", "off": "Oprit", "on": "Pornit", "centre": "Centru",

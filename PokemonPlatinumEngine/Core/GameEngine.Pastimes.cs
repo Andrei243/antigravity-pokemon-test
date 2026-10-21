@@ -59,7 +59,7 @@ public partial class GameEngine
                 if (!flow.Pastimes.PalPark.Stocked) return 0;
                 foreach (var pokemon in flow.Pastimes.PalPark.TakeSix("Pal Park", GameClock.Today))
                 {
-                    flow.Pokedex.RegisterCaught(pokemon.Species.DexNumber);
+                    flow.Pokedex.RegisterCaught(pokemon);
                     flow.Boxes.Store(pokemon);
                 }
                 return 1;

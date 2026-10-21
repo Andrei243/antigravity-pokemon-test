@@ -589,7 +589,8 @@
   },
   "pokedex": {
     "title": "POKÉDEX",
-    "page": { "Info": "INFO", "Area": "AREA", "Cry": "CRY", "Size": "SIZE" },
+    "page": { "Info": "INFO", "Area": "AREA", "Cry": "CRY", "Size": "SIZE", "Forms": "FORMS" },
+    "forms": { "front": "FRONT", "back": "BACK", "male": "Male", "female": "Female", "looks": "{n} seen" },
     "cry": {
       "pitch": "Pitch", "chorus": "Chorus", "pan": "Pan", "reverb": "Reverb", "filter": "Filter", "loop": "Loop", "play": "Play",
       "plain": "As it is", "semitones": "{n} semitones", "off": "Off", "on": "On", "centre": "Centre",

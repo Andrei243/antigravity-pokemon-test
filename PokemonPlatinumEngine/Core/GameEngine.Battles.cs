@@ -72,9 +72,9 @@ public partial class GameEngine
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
         Story.LessonCatcher? catcher = null)
     {
-        if (second != null) flow.Pokedex.RegisterSeen(second.Species.DexNumber);
+        if (second != null) flow.Pokedex.RegisterSeen(second);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
-        if (kind != BattleKind.CatchingLesson) flow.Pokedex.RegisterSeen(wildPkmn.Species.DexNumber);
+        if (kind != BattleKind.CatchingLesson) flow.Pokedex.RegisterSeen(wildPkmn);
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
         var party = flow.Party;
         var bag = flow.Bag;

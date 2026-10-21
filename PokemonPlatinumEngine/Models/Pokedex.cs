@@ -9,6 +9,13 @@ namespace PokemonPlatinumEngine.Models;
 public readonly record struct PokedexEntry(int Number, PokemonSpecies Species);
 
 /// <summary>
+/// One look of a species the player has seen (plan 08 · P19): its model's name (<see cref="Pokemon.ModelName"/>, the
+/// form's Showdown name or the species') and its gender. The original's Pokédex keeps which genders, which of Unown's
+/// letters, seas, cloaks and formes have been seen (<c>Pokedex_Encounter</c>); this one keeps every form of every species.
+/// </summary>
+public readonly record struct SeenLook(string Name, Gender Gender);
+
+/// <summary>
 /// What the player has seen and caught, by national number, and what the Pokédex itself has become: the National
 /// upgrade and the diplomas for a complete Pokédex (plan 03 · D10, plan 18 · W3). Seen and caught are shared by
 /// every Pokédex (a species seen in Sinnoh is seen in Kanto's list if Kanto lists it); a Pokédex is a PokeAPI
@@ -51,10 +58,82 @@ public class Pokedex
         CaughtSpecies.Add(dexNumber);
     }
 
+    // ------------------------------------------------------------------ the looks seen
+
+    private readonly Dictionary<int, List<SeenLook>> looks = new();
+
+    /// <summary>
+    /// The first Spinda met's personality, from which its spots are drawn (the original keeps it from the first
+    /// sighting, whatever the Pokédex can show yet); null until one has been met.
+    /// </summary>
+    public uint? SpindaPersonality { get; private set; }
+
+    /// <summary>Whether the Pokédex keeps the first personality met of a species: Spinda's, whose spots are drawn from it.</summary>
+    public static bool KeepsPersonality(PokemonSpecies species) => species.Name == "Spinda";
+
+    /// <summary>The looks of a species the player has seen, in the order they were first seen (Unown's letters in the order met); empty for a species met with no look recorded.</summary>
+    public IReadOnlyList<SeenLook> LooksOf(int dexNumber) => looks.TryGetValue(dexNumber, out var list) ? list : System.Array.Empty<SeenLook>();
+
+    /// <summary>A Pokémon seen: its species, and its look (plan 08 · P19). An Egg is seen as its species and has no look yet.</summary>
+    public void RegisterSeen(Pokemon pokemon)
+    {
+        if (pokemon.IsEgg) { RegisterSeen(pokemon.Species.DexNumber); return; }
+        RegisterSeen(pokemon.Species, pokemon.Form, pokemon.Gender, pokemon.Personality);
+    }
+
+    /// <summary>A Pokémon caught: seen, with its look, and caught.</summary>
+    public void RegisterCaught(Pokemon pokemon)
+    {
+        RegisterSeen(pokemon);
+        RegisterCaught(pokemon.Species.DexNumber);
+    }
+
+    /// <summary>A look met without a Pokémon in hand (the battle log's <see cref="Battle.Seen"/>: a species, its form and gender).</summary>
+    public void RegisterSeen(PokemonSpecies species, string? form, Gender gender, uint? personality = null)
+    {
+        SeenSpecies.Add(species.DexNumber);
+        AddLook(species.DexNumber, new SeenLook(form ?? species.Name, gender));
+        if (personality != null && KeepsPersonality(species)) SpindaPersonality ??= personality;
+    }
+
+    private void AddLook(int dexNumber, SeenLook look)
+    {
+        if (!looks.TryGetValue(dexNumber, out var list)) looks[dexNumber] = list = new List<SeenLook>();
+        if (!list.Contains(look)) list.Add(look);
+    }
+
+    /// <summary>Restores the looks a save kept, in order, and the first Spinda's personality; a species they name is seen.</summary>
+    public void RestoreLooks(IEnumerable<(int Dex, string Name, Gender Gender)> saved, uint? spinda)
+    {
+        foreach (var (dex, name, gender) in saved)
+        {
+            SeenSpecies.Add(dex);
+            AddLook(dex, new SeenLook(name, gender));
+        }
+        SpindaPersonality ??= spinda;
+    }
+
+    /// <summary>
+    /// A save from before the looks were kept: the Pokémon the player has (team, boxes, Day Care) give theirs, and every
+    /// other species seen its own form, no gender known. Never takes away or reorders a look already there.
+    /// </summary>
+    public void RebuildLooksFrom(IEnumerable<Pokemon> owned)
+    {
+        foreach (var pokemon in owned) RegisterSeen(pokemon);
+        foreach (int dex in SeenSpecies)
+            if (!looks.ContainsKey(dex) && PokemonDatabase.GetByDex(dex) is { } species)
+                AddLook(dex, new SeenLook(species.Name, Gender.Genderless));
+    }
+
+    /// <summary>Every look, species by species in number order, then in the order seen: what a save keeps.</summary>
+    public IEnumerable<(int Dex, SeenLook Look)> AllLooks() => looks.OrderBy(kv => kv.Key).SelectMany(kv => kv.Value.Select(l => (kv.Key, l)));
+
     public void Clear()
     {
         SeenSpecies.Clear();
         CaughtSpecies.Clear();
+        looks.Clear();
+        SpindaPersonality = null;
         NationalUnlocked = false;
         Diplomas.Clear();
         entered.Clear();

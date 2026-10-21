@@ -12,10 +12,10 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>Where the Pokédex's cursor is: its list, the entry beside it, the search panel or a diploma.</summary>
 /// <summary>Where the cursor is: the list, an entry's pages, the search panel, a diploma, or the cry page's rows (plan 08 · P18).</summary>
-public enum PokedexFocus { List, Entry, Search, Diploma, Cry }
+public enum PokedexFocus { List, Entry, Search, Diploma, Cry, Forms }
 
 /// <summary>The pages of an entry.</summary>
-public enum PokedexPage { Info, Area, Cry, Size }
+public enum PokedexPage { Info, Area, Cry, Size, Forms }
 
 /// <summary>The cry page's rows, top to bottom (plan 08 · P18).</summary>
 public enum PokedexCryRow { Pitch, Stereo, Room, Loop, Play }
@@ -45,7 +45,59 @@ public class PokedexScreen
     /// The pages an entry offers, in order (plan 08 · P18): INFO, AREA, CRY and SIZE for a species seen. The FORMS page
     /// joins them once the Pokédex can show forms (plan 08 · P19).
     /// </summary>
-    public IReadOnlyList<PokedexPage> PagesOf(PokedexEntry? entry) => new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size };
+    public IReadOnlyList<PokedexPage> PagesOf(PokedexEntry? entry) => FormsKnown
+        ? new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms }
+        : new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size };
+
+    // ---- The forms page (plan 08 · P19)
+
+    /// <summary>The cards a row of the forms page holds, and how many rows show at once.</summary>
+    public const int FormsColumns = 8, FormsVisibleRows = 2;
+
+    /// <summary>
+    /// Whether the Pokédex can show forms: Professor Rowan's aide has upgraded it (<see cref="Story.StoryState.FormDetectionFlag"/>),
+    /// which the engine tells the screen as it opens. Until then FORMS is not among the pages.
+    /// </summary>
+    public bool FormsKnown { get; set; }
+
+    /// <summary>The card the cursor is on, among <see cref="Looks"/>.</summary>
+    public int FormsIndex { get; private set; }
+
+    /// <summary>The first row of cards shown (the grid scrolls past two rows: Unown's twenty-eight marks).</summary>
+    public int FormsFirstRow { get; private set; }
+
+    /// <summary>Which of the look's written entries is shown; A turns to the next.</summary>
+    public int FormsEntry { get; private set; }
+
+    /// <summary>
+    /// The looks of the species selected, in the order they were first seen. A species seen with no look recorded
+    /// (a save rebuilt without one) has its own form, no gender known, so the page is never empty.
+    /// </summary>
+    public IReadOnlyList<SeenLook> Looks => Selected is { } entry
+        ? pokedex.LooksOf(entry.Species.DexNumber) is { Count: > 0 } seen ? seen : new[] { new SeenLook(entry.Species.Name, Gender.Genderless) }
+        : System.Array.Empty<SeenLook>();
+
+    /// <summary>The look the cursor is on.</summary>
+    public SeenLook? LookChosen => Looks.Count == 0 ? null : Looks[Math.Clamp(FormsIndex, 0, Looks.Count - 1)];
+
+    /// <summary>The cursor goes to a card, bringing its row into view.</summary>
+    private void GoToLook(int index)
+    {
+        int count = Math.Max(1, Looks.Count);
+        FormsIndex = Math.Clamp(index, 0, count - 1);
+        int row = FormsIndex / FormsColumns, rows = (count + FormsColumns - 1) / FormsColumns;
+        if (row < FormsFirstRow) FormsFirstRow = row;
+        if (row >= FormsFirstRow + FormsVisibleRows) FormsFirstRow = row - FormsVisibleRows + 1;
+        FormsFirstRow = Math.Clamp(FormsFirstRow, 0, Math.Max(0, rows - FormsVisibleRows));
+        FormsEntry = 0;
+    }
+
+    private void ResetForms()
+    {
+        FormsIndex = 0;
+        FormsFirstRow = 0;
+        FormsEntry = 0;
+    }
     public static readonly PokedexSearchButton[] AllButtons = Enum.GetValues<PokedexSearchButton>();
 
     private readonly List<PokedexEntry> rows = new();
@@ -164,6 +216,7 @@ public class PokedexScreen
     private void Opened()
     {
         StopCry();
+        ResetForms();
         if (Selected is { } entry) openings[entry.Species.DexNumber] = openings.GetValueOrDefault(entry.Species.DexNumber) + 1;
     }
     public IReadOnlyList<PokedexEntry> Rows => rows;
@@ -188,6 +241,7 @@ public class PokedexScreen
         Focus = PokedexFocus.List;
         Page = PokedexPage.Info;
         ResetCry();
+        ResetForms();
         Rebuild();
         int firstSeen = rows.FindIndex(r => this.pokedex.IsSeen(r.Species.DexNumber));
         SelectedIndex = Math.Max(0, firstSeen);
@@ -261,6 +315,15 @@ public class PokedexScreen
                 CryRow = (PokedexCryRow)UiNav.Wrap((int)CryRow, Math.Sign(step), Enum.GetValues<PokedexCryRow>().Length);
                 AudioManager.PlaySound("cursor");
                 break;
+            case PokedexFocus.Forms:
+            {
+                // A row of cards at a time, stopping at the first and last row (a last row that is short takes its last card)
+                int row = FormsIndex / FormsColumns + Math.Sign(step), rows = (Looks.Count + FormsColumns - 1) / FormsColumns;
+                if (row < 0 || row >= rows) break;
+                GoToLook(Math.Min(row * FormsColumns + FormsIndex % FormsColumns, Looks.Count - 1));
+                AudioManager.PlaySound("cursor");
+                break;
+            }
         }
     }
 
@@ -314,6 +377,10 @@ public class PokedexScreen
             case PokedexFocus.Cry:
                 ChangeCry(Math.Sign(step));
                 break;
+            case PokedexFocus.Forms:
+                GoToLook(UiNav.Wrap(FormsIndex, Math.Sign(step), Math.Max(1, Looks.Count)));
+                AudioManager.PlaySound("cursor");
+                break;
             case PokedexFocus.Search:
                 ChangeValue(Math.Sign(step));
                 AudioManager.PlaySound("cursor");
@@ -347,6 +414,17 @@ public class PokedexScreen
                     AudioManager.PlaySound("select");
                     AudioManager.PlayCry(entry.Species, null, CryMode.Pokedex);
                 }
+                break;
+            case PokedexFocus.Entry when Page == PokedexPage.Forms:
+                // A moves into the cards (plan 08 · P19)
+                Focus = PokedexFocus.Forms;
+                GoToLook(0);
+                AudioManager.PlaySound("select");
+                break;
+            case PokedexFocus.Forms:
+                // The written entry of the look turns to its next
+                FormsEntry++;
+                AudioManager.PlaySound("select");
                 break;
             case PokedexFocus.Entry when Page == PokedexPage.Cry:
                 // A moves into the page's rows (plan 08 · P18)
@@ -389,6 +467,9 @@ public class PokedexScreen
     {
         switch (Focus)
         {
+            case PokedexFocus.Forms:
+                Focus = PokedexFocus.Entry;
+                break;
             case PokedexFocus.Cry:
                 // B from the rows goes back to the pages, and the loop stops
                 Focus = PokedexFocus.Entry;
@@ -589,7 +670,7 @@ public class PokedexScreen
         {
             if (Focus == PokedexFocus.Search) Search();
             else if (Focus == PokedexFocus.Diploma) Confirm();
-            else if (Focus != PokedexFocus.Cry) OpenSearch();
+            else if (Focus is not (PokedexFocus.Cry or PokedexFocus.Forms)) OpenSearch();
         }
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
     }
