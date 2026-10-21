@@ -449,6 +449,10 @@
     "Expert": [ "gentleman", "lady" ],
     "Old Couple": [ "gentleman", "lady" ],
     // Plan 21 · H6, part c: Gabby and Ty, whose reporter and cameraman stand as the nearest looks until theirs are made
-    "Interviewer": [ "lady", "gentleman" ]
+    "Interviewer": [ "lady", "gentleman" ],
+    // Plan 22 · U2: Black 2's first trainers, folded onto the nearest looks until their own are made
+    "Preschooler": [ "youngster", "lass" ],
+    "Nursery Aide": [ "nurse" ],
+    "Janitor": [ "clerk" ]
   }
 }
