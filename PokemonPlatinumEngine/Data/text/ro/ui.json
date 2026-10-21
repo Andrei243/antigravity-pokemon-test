@@ -411,7 +411,39 @@
     "accuracy": "PRECIZIE",
     "pp": "PP",
     "ppValue": "{pp} / {max}",
-    "egg": "Un Ou de Pokémon",
+    "memo": {
+      "trainer": "ANTRENOR",
+      "id": "ID nr.",
+      "metOn": "ÎNTÂLNIT LA",
+      "metOnUnknown": "ÎNTÂLNIT",
+      "nature": "Are o fire {nature}.",
+      "metLine": "Întâlnit la {where}, la nivelul {level}.",
+      "hatchedLine": "Ieșit din ou la {where}.",
+      "unknownLine": "Întâlnit undeva, demult.",
+      "characteristic": "CARACTERISTICĂ",
+      "ability": "ABILITATE"
+    },
+    "characteristic": {
+      "HP": {
+        "0": "Pare să aibă un apetit fără fund.", "1": "Moțăie ori de câte ori soarele e cald.", "2": "Lasă dezordine în urma lui.", "3": "E cel mai fericit când nu are nimic de făcut.", "4": "Îi ia ceva până se trezește de-a binelea."
+      },
+      "Attack": {
+        "0": "Își arată cu mândrie forța.", "1": "Nu rezistă unei încăierări bune.", "2": "Se aprinde din te miri ce.", "3": "Caută mereu un rival de pus la încercare.", "4": "Se repede înainte să spună cineva start."
+      },
+      "Defense": {
+        "0": "Are un trup ca un zid.", "1": "Ia o lovitură fără să clipească.", "2": "Nu cedează nicio palmă de teren.", "3": "Poate sta pe loc ore în șir.", "4": "Rămâne calm când ceilalți obosesc."
+      },
+      "SpAttack": {
+        "0": "Își bagă nasul în toate.", "1": "Adoră să le facă farse oamenilor.", "2": "E mereu cu un pas înaintea unui complot.", "3": "Se uită în gol ore întregi.", "4": "Se agită pentru orice mic amănunt."
+      },
+      "SpDefense": {
+        "0": "Se ține strâns de hotărârea lui.", "1": "Îi place să fie admirat.", "2": "Nu se lasă comandat.", "3": "Se bosumflă când pierde.", "4": "Se înfige și nu se mișcă."
+      },
+      "Speed": {
+        "0": "Sare de colo-colo la fiecare ocazie.", "1": "Își ciulește urechile la orice zgomot.", "2": "Face înainte să gândească.", "3": "Îi place să-i facă pe alții să râdă.", "4": "Fuge la primul semn de primejdie."
+      }
+    },
+    "egg":"Un Ou de Pokémon",
     "receivedFrom": "PRIMIT DE LA",
     "on": "PE",
     "date": "{day} {month} {year}",
