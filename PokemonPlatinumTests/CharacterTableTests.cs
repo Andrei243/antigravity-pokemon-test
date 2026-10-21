@@ -116,12 +116,13 @@ public class CharacterTableTests
             Assert.True(Table.Has(look), $"{look} has no look");
             Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
         }
-        // Each is told from every other look by hair, hat and clothes
-        var seen = new Dictionary<(Color, HairCut, Headwear, Color, Color, Color), string>();
+        // Each is told from every other look by hair, hat and clothes (a skirt among them: the grunts of plan 11 · C2
+        // wear one uniform, the women in a skirt)
+        var seen = new Dictionary<(Color, HairCut, Headwear, Color, Color, Color, bool), string>();
         foreach (string look in Table.Names)
         {
             var s = Table.Get(look);
-            var key = (s.HairColor, s.Hair, s.Hat, s.HatColor, s.Top, s.Bottom);
+            var key = (s.HairColor, s.Hair, s.Hat, s.HatColor, s.Top, s.Bottom, s.Skirt);
             Assert.False(seen.TryGetValue(key, out var other), $"{look} looks just like {other}");
             seen[key] = look;
         }
@@ -284,9 +285,12 @@ public class CharacterTableTests
             if (look == null) Assert.Equal("Roark", Table.InBattle(trainerClass, "Roark"));
             else if (!Table.Has(look)) plain.Add(trainerClass);
         }
-        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer)
-        Assert.True(plain.Count <= 90, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
-        Assert.Contains("Hiker", plain);
+        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas)
+        Assert.True(plain.Count <= 77, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
+        Assert.Contains("Sailor", plain);
+        // Plan 11 · C2 drew these
+        Assert.DoesNotContain("Hiker", plain);
+        Assert.DoesNotContain("Ace Trainer", plain);
         Assert.DoesNotContain("Lass", plain);
     }
 
@@ -300,10 +304,13 @@ public class CharacterTableTests
         Assert.Equal("Roark", Table.InBattle("Leader", "Roark"));
         Assert.Equal("Mars", Table.InBattle("Commander", "Mars"));
         Assert.Equal("Cynthia", Table.InBattle("Champion", "Cynthia"));
-        // ...and a class with no look yet stands in the plain default it always did: a Hiker stands as a Gentleman in
-        // the field until plan 11 · C2 draws him
-        Assert.Equal("Hiker", Table.InBattle("Hiker", "Gentleman"));
-        Assert.False(Table.Has("Hiker"));
+        // ...a class plan 11 · C2 drew stands as its own look whatever the person wears...
+        Assert.Equal("hiker", Table.InBattle("Hiker", "Gentleman"));
+        Assert.Equal("grunt_f", Table.InBattle("Galactic", "grunt_f"));
+        // ...and a class with no look yet stands in the plain default it always did, under its own name (a Sailor,
+        // until plan 11 · C4 draws him)
+        Assert.Equal("Sailor", Table.InBattle("Sailor", "Gentleman"));
+        Assert.False(Table.Has("Sailor"));
         // A trainer nobody carries (a test's, the harness's) stands as the class
         Assert.Equal("Leader", Table.InBattle("Leader", null));
 
@@ -350,5 +357,62 @@ public class CharacterTableTests
             System.Threading.Thread.Sleep(25);
         }
         return false;
+    }
+
+    /// <summary>The looks plan 11 · C2 made: the first trainers of the open areas, by the original's object names.</summary>
+    public static readonly string[] FirstTrainers =
+    {
+        "school_kid_m", "school_kid_f", "bug_catcher", "camper", "picnicker", "twin", "kid_with_nds", "hiker", "worker", "grunt_m", "grunt_f",
+        "cyclist_m", "cyclist_f", "battle_girl", "ace_trainer_m", "ace_trainer_f", "black_belt", "psychic", "ninja_boy", "ruin_maniac", "artist"
+    };
+
+    [Fact]
+    public void TheFirstTrainersAreEachTheirOwnLook()
+    {
+        foreach (string look in FirstTrainers)
+        {
+            Assert.True(Table.Has(look), $"{look} has no look");
+            Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
+            // A person of the world placed with this object look stands as it
+            Assert.Equal(look, WorldMapBuilder.CharacterFor(look));
+        }
+        // Each class of theirs stands in battle as its own look, the woman's where there are two
+        foreach (var (trainerClass, man, woman) in new[]
+        {
+            ("School Kid", "school_kid_m", "school_kid_f"), ("Cyclist", "cyclist_m", "cyclist_f"), ("Ace Trainer", "ace_trainer_m", "ace_trainer_f"),
+            ("Galactic", "grunt", "grunt_f"), ("Hiker", "hiker", "hiker"), ("Worker", "worker", "worker"), ("Bug Catcher", "bug_catcher", "bug_catcher"),
+            ("Camper", "camper", "camper"), ("Picnicker", "picnicker", "picnicker"), ("Battle Girl", "battle_girl", "battle_girl"),
+            ("Psychic", "psychic", "psychic"), ("Ninja Boy", "ninja_boy", "ninja_boy"), ("Ruin Maniac", "ruin_maniac", "ruin_maniac"),
+            ("Artist", "artist", "artist"), ("Black Belt", "blackbelt", "blackbelt")
+        })
+        {
+            Assert.Equal(man, Table.InBattle(trainerClass, null));
+            Assert.Equal(woman, Table.InBattle(trainerClass, woman));
+        }
+        // The new parts are worn: every cut, hat and the little build by someone
+        var styles = FirstTrainers.Select(Table.Get).ToList();
+        foreach (var cut in new[] { HairCut.Bowl, HairCut.Ponytail, HairCut.Curls, HairCut.Bald })
+            Assert.Contains(styles, s => s.Hair == cut);
+        foreach (var hat in new[] { Headwear.Helmet, Headwear.HardHat, Headwear.Beanie, Headwear.Bandana, Headwear.Headband })
+            Assert.Contains(styles, s => s.Hat == hat);
+        Assert.Contains(styles, s => s.Build == BodyBuild.Little);
+        // The grunts carry the team's mark, and nobody else of them does
+        Assert.Equal(new[] { "grunt_m", "grunt_f" }, FirstTrainers.Where(n => Table.Get(n).GalacticMark));
+    }
+
+    /// <summary>The mark on a grunt's chest is the mark's own yellow round its dark core, in the middle of the chest.</summary>
+    [Fact]
+    public void AGruntsUniformCarriesTheGalacticMark()
+    {
+        var rig = CharacterModels.Build("GRUNT_F");
+        var mesh = rig.Mesh;
+        static bool Near(Color a, Color b) => Math.Abs(a.R - b.R) + Math.Abs(a.G - b.G) + Math.Abs(a.B - b.B) < 24;
+        var yellow = Enumerable.Range(0, mesh.VertexCount).Where(v => Near(mesh.Colors[v], GalacticMark.Base)).Select(v => mesh.Positions[v]).ToList();
+        Assert.True(yellow.Count > 20, $"only {yellow.Count} vertices of the mark");
+        Assert.All(yellow, p => Assert.True(MathF.Abs(p.X) < 0.06f && p.Z > 0.05f, $"a yellow vertex at {p} is off the chest's middle"));
+        Assert.Contains(Enumerable.Range(0, mesh.VertexCount), v => Near(mesh.Colors[v], GalacticMark.Ink));
+        // A look without it has none
+        var plain = CharacterModels.Build("LASS").Mesh;
+        Assert.DoesNotContain(Enumerable.Range(0, plain.VertexCount), v => Near(plain.Colors[v], GalacticMark.Base));
     }
 }

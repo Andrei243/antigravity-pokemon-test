@@ -24,10 +24,10 @@
     "fantina": { "hairColor": "#824e9c", "hair": "Long", "top": "#764896", "accent": "#dcc4ec", "bottom": "#603880", "shoes": "#402850", "eyes": "#6e3c82", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
     // Veilstone's: short pink hair, a fighter's white top with a blue sash, and bare feet
     "maylene": { "hairColor": "#ec84a8", "top": "#f6f6fa", "accent": "#4068c4", "bottom": "#4068c4", "shoes": "#f0ceb2", "eyes": "#964664", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "height": 0.96 },
-    // Her black belts: close-cropped dark hair, a white training jacket and trousers, the black belt, bare feet
-    "blackbelt": { "hairColor": "#2c282e", "top": "#f4f4f0", "accent": "#242228", "bottom": "#ecece6", "shoes": "#deac84", "eyes": "#3c322c", "build": "Adult", "bushyBrows": true, "height": 1.06 },
-    // Team Galactic's grunts (plan 02 · S5): our own take, teal hair cut in a bowl and a pale grey uniform with a dark collar
-    "grunt": { "hairColor": "#40969e", "top": "#d0d4de", "accent": "#383c50", "bottom": "#969cac", "shoes": "#343642", "build": "Adult" },
+    // Her black belts: close-cropped dark hair under a white headband (since plan 11 · C2), a white training jacket and trousers, the black belt, bare feet
+    "blackbelt": { "hairColor": "#2c282e", "hat": "Headband", "hatColor": "#f6f6f2", "hatBand": "#f6f6f2", "top": "#f4f4f0", "accent": "#242228", "bottom": "#ecece6", "shoes": "#deac84", "eyes": "#3c322c", "build": "Adult", "bushyBrows": true, "height": 1.06 },
+    // Team Galactic's grunts (plan 02 · S5): our own take, teal hair cut in a bowl (since plan 11 · C2, which made the cut) and a pale grey uniform with a dark collar and the team's mark
+    "grunt": { "hairColor": "#40969e", "hair": "Bowl", "top": "#d0d4de", "accent": "#383c50", "bottom": "#969cac", "shoes": "#343642", "galacticMark": true, "build": "Adult" },
     // Team Galactic's Commander met at the Valley Windworks (plan 02 · S6): our own take, short crimson hair and the team's pale uniform, its dark collar and a short grey skirt
     "mars": { "hairColor": "#c43646", "top": "#dee0e8", "accent": "#383c50", "bottom": "#848a9c", "shoes": "#343642", "eyes": "#963246", "skirt": true, "build": "Adult", "sole": "#c8cad4", "lashes": true },
     // The team's old scientist (plan 02 · S6): our own take, a short man with thin grey hair in a long white lab coat
@@ -219,35 +219,58 @@
     // Unova's first two (plan 22 · U2; our own takes): Professor Juniper, light brown hair gathered up, a long white coat
     // over a green top and a pale skirt; Hugh, the friend from Aspertia, dark blue hair standing up and a red jacket
     "prof_juniper": { "hairColor": "#a8784a", "hair": "Bun", "top": "#4e9a6a", "accent": "#f4f4f6", "bottom": "#e6dcc2", "shoes": "#c8463c", "eyes": "#3e5a3a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
-    "hugh": { "hairColor": "#2a3460", "hair": "Spiky", "top": "#c8383a", "accent": "#26262c", "bottom": "#2a2a36", "shoes": "#3a3a4a", "eyes": "#2a3a5a", "bushyBrows": true }
+    "hugh": { "hairColor": "#2a3460", "hair": "Spiky", "top": "#c8383a", "accent": "#26262c", "bottom": "#2a2a36", "shoes": "#3a3a4a", "eyes": "#2a3a5a", "bushyBrows": true },
+    // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
+    "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
+    "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
+    // The Bug Catcher: a green cap, a short-sleeved green shirt and brown shorts
+    "bug_catcher": { "hairColor": "#5a3a24", "hat": "Cap", "hatColor": "#5a9c48", "hatBand": "#f0d47a", "top": "#78b05a", "accent": "#f0e6c8", "bottom": "#7a5a38", "shoes": "#5a4030", "shorts": true, "shortSleeves": true, "blush": true },
+    // The Camper: a knitted khaki beanie with a brown cuff, a khaki shirt, brown shorts and a green pack
+    "camper": { "hairColor": "#6a4428", "hat": "Beanie", "hatColor": "#b8a468", "hatBand": "#7a5432", "top": "#c4ac72", "accent": "#7a5432", "bottom": "#6e5236", "shoes": "#4a3426", "shorts": true, "shortSleeves": true, "bag": "#5a8a4e", "blush": true },
+    // The Picnicker: a ponytail tied in white, a yellow top and green shorts
+    "picnicker": { "hairColor": "#9a5430", "hair": "Ponytail", "hatBand": "#f6f6f8", "top": "#f2c84a", "accent": "#f8f4e6", "bottom": "#5aa060", "shoes": "#c45a46", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true },
+    // The twins: little girls with bunches tied in white, in pink dresses
+    "twin": { "hairColor": "#6a3a2e", "hair": "Bunches", "hatBand": "#f6f6f8", "top": "#f08ab0", "accent": "#fcf2f6", "bottom": "#f08ab0", "shoes": "#c4506e", "skirt": true, "shortSleeves": true, "build": "Little", "lashes": true, "blush": true },
+    // The boy with his game: little and curly-haired, an orange striped top and blue shorts
+    "kid_with_nds": { "hairColor": "#3a2a24", "hair": "Curls", "top": "#f08a3a", "accent": "#fcf0e0", "bottom": "#4a6ab8", "shoes": "#d84a40", "shorts": true, "stripes": true, "build": "Little", "blush": true },
+    // The Hiker: big, bald and bearded, a rust-brown shirt, brown trousers and a big pack
+    "hiker": { "skin": "#ecc29c", "hairColor": "#4a3426", "hair": "Bald", "top": "#b4643a", "accent": "#e6d6b4", "bottom": "#6a5038", "shoes": "#4a3426", "beard": true, "bushyBrows": true, "bag": "#7a6a3a", "build": "Adult", "height": 1.12 },
+    // The Worker: a yellow hard hat with an orange ridge, an orange top banded for safety, navy trousers
+    "worker": { "hairColor": "#3a2c26", "hat": "HardHat", "hatColor": "#f4c43c", "hatBand": "#e0782a", "top": "#ec8a34", "accent": "#f2f2a6", "bottom": "#2e3a5c", "shoes": "#3a2e28", "stripes": true, "mustache": true, "build": "Adult", "height": 1.06 },
+    // Team Galactic's grunt who is a woman: the team's teal bowl, the pale uniform with its mark and a short grey skirt
+    "grunt_f": { "hairColor": "#40969e", "hair": "Bowl", "top": "#d0d4de", "accent": "#383c50", "bottom": "#969cac", "shoes": "#343642", "skirt": true, "galacticMark": true, "build": "Adult", "sole": "#c8cad4", "lashes": true },
+    // The Cyclists: helmets with a white stripe, striped short-sleeved tops and black shorts; the woman's helmet pink, with a ponytail
+    "cyclist_m": { "hairColor": "#5a3a28", "hat": "Helmet", "hatColor": "#d8403c", "hatBand": "#f6f6f8", "top": "#d8403c", "accent": "#f6f6f8", "bottom": "#262830", "shoes": "#f0f0f2", "shorts": true, "shortSleeves": true, "stripes": true, "sole": "#2a2a30", "height": 1.06 },
+    "cyclist_f": { "hairColor": "#a8582e", "hair": "Ponytail", "hatBand": "#f6f6f8", "hat": "Helmet", "hatColor": "#ec7aa4", "top": "#ec7aa4", "accent": "#f6f6f8", "bottom": "#262830", "shoes": "#f0f0f2", "shorts": true, "shortSleeves": true, "stripes": true, "sole": "#2a2a30", "lashes": true, "height": 1.04 },
+    // The Battle Girl: a red headband over a ponytail, a white top and black shorts, barefoot
+    "battle_girl": { "hairColor": "#3a2a2a", "hair": "Ponytail", "hat": "Headband", "hatColor": "#d8383c", "hatBand": "#d8383c", "top": "#f6f6f4", "accent": "#d8383c", "bottom": "#26262c", "shoes": "#f0caa8", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "height": 1.04 },
+    // The Ace Trainers: navy and white, the man's hair spiky and blue-black, the woman's auburn in a ponytail over a navy skirt
+    "ace_trainer_m": { "hairColor": "#26304e", "hair": "Spiky", "top": "#2e3e7a", "accent": "#f4f4f6", "bottom": "#24263a", "shoes": "#f0f0f2", "sole": "#2e3e7a", "build": "Adult", "height": 1.06 },
+    "ace_trainer_f": { "hairColor": "#a24a34", "hair": "Ponytail", "hatBand": "#f4f4f6", "top": "#2e3e7a", "accent": "#f4f4f6", "bottom": "#24263a", "shoes": "#f0f0f2", "sole": "#2e3e7a", "skirt": true, "build": "Adult", "lashes": true },
+    // The Psychic: a long violet coat over a pale shirt, swept violet hair
+    "psychic": { "hairColor": "#6a4a96", "hair": "Swept", "top": "#6e4a9a", "accent": "#e8e0f2", "bottom": "#3e3058", "shoes": "#2e2638", "eyes": "#5a3a7a", "coat": true, "build": "Adult", "height": 1.02 },
+    // The Ninja Boy: all in navy under a navy bandana knotted in red, with a red scarf, barefoot in dark sandals
+    "ninja_boy": { "hairColor": "#26262e", "hat": "Bandana", "hatColor": "#2a3048", "hatBand": "#d43c3c", "top": "#2a3048", "accent": "#d43c3c", "bottom": "#2a3048", "shoes": "#1e2028", "scarf": true, "blush": true },
+    // The Ruin Maniac: bearded and in glasses under a tan hard hat, a khaki shirt and a pack
+    "ruin_maniac": { "hairColor": "#6a4a34", "hat": "HardHat", "hatColor": "#d4bc84", "hatBand": "#8a6a44", "top": "#b4a272", "accent": "#7a5a3a", "bottom": "#6a5a42", "shoes": "#4a3a2c", "beard": true, "glasses": "#3a2e28", "bag": "#8a6a44", "build": "Adult", "height": 1.04 },
+    // The Artist: a maroon beret, a moustache and a cream smock over brown trousers
+    "artist": { "hairColor": "#8a8a96", "hair": "Swept", "hat": "Beret", "hatColor": "#8a2e3e", "hatBand": "#6a2030", "top": "#ece2c8", "accent": "#d4483c", "bottom": "#6a4a38", "shoes": "#3a2a24", "mustache": true, "coat": true, "build": "Adult", "height": 0.98 }
   },
   // Names that are another look
-  "same": { "trainer": "player", "lucas": "player" },
+  "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt" },
   // The original's object looks (OBJ_EVENT_GFX_*, as the map importer names them) that have no look of their own yet,
   // and the look of ours each stands as until it has; a look of the table is never folded, and anything else stands
-  // as the boy ("fallback"). Plan 11 · C2 to C4 make the rest and take their lines out of here.
+  // as the boy ("fallback"). Plan 11 · C2 made the first trainers' and took their lines out; C3 and C4 make the rest.
   "fallbacks": {
     "barry": "Rival",
     "prof_rowan": "Rowan",
     "pokecenter_nurse": "Nurse",
     "var_0": "Lass",
-    "school_kid_f": "Lass",
-    "twin": "Lass",
-    "picnicker": "Lass",
     "little_girl": "Lass",
-    "battle_girl": "Lass",
     "crush_girl": "Lass",
     "tuber_f": "Lass",
-    "ace_trainer_f": "Lass",
-    "cyclist_f": "Lass",
-    "school_kid_m": "Youngster",
     "guitarist": "Youngster",
-    "bug_catcher": "Youngster",
-    "camper": "Youngster",
     "little_boy": "Youngster",
-    "kid_with_nds": "Youngster",
-    "cyclist_m": "Youngster",
-    "ace_trainer_m": "Youngster",
     "pokemon_breeder_f": "Lady",
     "beauty": "Lady",
     "aroma_lady": "Lady",
@@ -262,27 +285,18 @@
     "scientist_m": "Gentleman",
     "middle_aged_man": "Gentleman",
     "expert_m": "Gentleman",
-    "hiker": "Gentleman",
-    "worker": "Gentleman",
     "pokefan_m": "Gentleman",
     "fisherman": "Gentleman",
     "pokemon_breeder_m": "Gentleman",
-    "black_belt": "Gentleman",
-    "ruin_maniac": "Gentleman",
-    "artist": "Gentleman",
     "rancher": "Gentleman",
     "gym_guide": "Gentleman",
     "jogger": "Youngster",
-    "ninja_boy": "Youngster",
-    "psychic": "Youngster",
     "cowgirl": "Lass",
     "idol": "Lass",
     "receptionist": "Lass",
     "cashier_m": "Clerk",
     "cashier_f": "Clerk",
     "waiter": "Clerk",
-    "grunt_m": "Grunt",
-    "grunt_f": "Grunt",
     "briefcase": "StarterBriefcase",
     // FireRed's looks (plan 19 · K1), until each Kanto chapter gives the classes and the cast it meets their own
     "daisy": "Lady",
@@ -405,7 +419,21 @@
     "Clown": "clown",
     "Scientist": "scientist",
     "Black Belt": "blackbelt",
-    "Galactic": "grunt",
+    "Galactic": [ "grunt", "grunt_f" ],
+    // Plan 11 · C2: the first trainers of the open areas, the second look of a class standing for the women
+    "School Kid": [ "school_kid_m", "school_kid_f" ],
+    "Bug Catcher": "bug_catcher",
+    "Camper": "camper",
+    "Picnicker": "picnicker",
+    "Hiker": "hiker",
+    "Worker": "worker",
+    "Cyclist": [ "cyclist_m", "cyclist_f" ],
+    "Battle Girl": "battle_girl",
+    "Ace Trainer": [ "ace_trainer_m", "ace_trainer_f" ],
+    "Psychic": "psychic",
+    "Ninja Boy": "ninja_boy",
+    "Ruin Maniac": "ruin_maniac",
+    "Artist": "artist",
     "Rival": [ "rival", "blue", "may", "brendan", "wally" ],
     // Emerald's classes of plan 21 · H3, part b, folded onto the nearest look until their own are made
     "Bug Maniac": [ "youngster" ],
