@@ -646,6 +646,18 @@ internal static class CharacterModels
                 m.Paint(m.Sphere(body + along * 0.06f + new Vector3(0, 0, 0.04f), 0.028f, new Color(52, 36, 28, 255), HumanBones.Spine), false, HumanBones.Spine);
                 break;
             }
+            case HeldProp.Camera:
+            {
+                // A television camera on the right shoulder (plan 11 · C4): a box half a head long, a handle on top,
+                // a lens pointing ahead
+                var colour = s.PropColor ?? new Color(58, 60, 70, 255);
+                var at = new Vector3(-0.27f, f.ChestY + 0.09f, 0.02f);
+                m.Box(at, new Vector3(0.06f, 0.065f, 0.13f), 0.015f, colour, HumanBones.Spine, 0.004f, SurfaceMaterial.Plastic);
+                m.Capsule(at + new Vector3(0, 0.07f, -0.05f), at + new Vector3(0, 0.07f, 0.05f), 0.012f, 0.012f, colour, HumanBones.Spine, 0.004f, SurfaceMaterial.Plastic);
+                m.Cylinder(at + new Vector3(0, 0.005f, 0.13f), 0.04f, 0.03f, 0.008f, new Color(28, 30, 36, 255), HumanBones.Spine, 0.004f, SurfaceMaterial.Plastic,
+                    Pitch(MathF.PI / 2f));
+                break;
+            }
             case HeldProp.FloatRing:
             {
                 // Round the waist, striped white four times round
@@ -690,7 +702,7 @@ internal static class CharacterModels
 
         // Under a beret, a cap or a fedora only the hair below its edge shows, so locks grow from there instead of the crown
         // (and under a helmet, a hard hat, a beanie or a bandana, plan 11 · C2)
-        bool hatted = s.Hat is Headwear.Beret or Headwear.Cap or Headwear.Fedora or Headwear.Helmet or Headwear.HardHat or Headwear.Beanie or Headwear.Bandana or Headwear.Cowboy;
+        bool hatted = s.Hat is Headwear.Beret or Headwear.Cap or Headwear.Fedora or Headwear.Helmet or Headwear.HardHat or Headwear.Beanie or Headwear.Bandana or Headwear.Cowboy or Headwear.WideHat;
         Vector3 Root(Vector3 to) => hatted ? Vector3.Normalize(new Vector3(to.X * 0.9f, 0.42f, to.Z == 0f ? -0.9f : MathF.Sign(to.Z) * 0.86f)) : crown;
 
         void Lock(Vector3 from, Vector3 to, float r0, float r1, float lift = 0.012f, int bone = HumanBones.Head)
@@ -1020,6 +1032,27 @@ internal static class CharacterModels
                 var front = at + Vector3.Transform(new Vector3(0, 0.01f, 0.03f), tilt);
                 m.Paint(m.Box(front, new Vector3(0.013f, 0.036f, 0.02f), 0f, s.HatBand, HumanBones.Head, rotation: tilt));
                 m.Paint(m.Box(front, new Vector3(0.036f, 0.013f, 0.02f), 0f, s.HatBand, HumanBones.Head, rotation: tilt));
+                break;
+            }
+            case Headwear.Visor:
+            {
+                // A band round the brow in the band's colour and a peak at its front in the hat's (plan 11 · C4); the
+                // hair shows above it as it is
+                m.Torus(H + new Vector3(0, R * 0.4f, -R * 0.02f), R * 1.13f, 0.028f, s.HatBand, HumanBones.Head, 0.005f, SurfaceMaterial.Cloth, Pitch(0.15f));
+                m.Ellipsoid(H + new Vector3(0, R * 0.36f, R * 1.1f), new Vector3(R * 0.72f, 0.022f, R * 0.42f), s.HatColor, HumanBones.Head, 0.01f,
+                    SurfaceMaterial.Plastic, Pitch(0.22f));
+                break;
+            }
+            case Headwear.WideHat:
+            {
+                // A low round crown with a band at its foot and a wide brim all round (plan 11 · C4), the brim tipped
+                // up at the front so the eyes still show from the field's camera
+                var tilt = Pitch(-0.14f);
+                var at = H + new Vector3(0, R * 0.72f, -0.02f);
+                m.Ellipsoid(at, new Vector3(R * 1.06f, R * 0.62f, R * 1.08f), s.HatColor, HumanBones.Head, 0f, SurfaceMaterial.Cloth, tilt);
+                var foot = H + new Vector3(0, R * 0.4f, -0.03f);
+                m.Torus(foot + new Vector3(0, R * 0.06f, 0), R * 1.04f, 0.026f, s.HatBand, HumanBones.Head, 0f, SurfaceMaterial.Cloth, tilt);
+                m.Ellipsoid(foot, new Vector3(R * 1.62f, R * 0.05f, R * 1.55f), s.HatColor, HumanBones.Head, 0.01f, SurfaceMaterial.Cloth, tilt);
                 break;
             }
             case Headwear.Cowboy:

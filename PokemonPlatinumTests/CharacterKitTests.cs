@@ -33,7 +33,12 @@ public class CharacterKitTests
         // Plan 11 · C3's: the rest of the open areas' people, and three classes drawn only in battle
         "BEAUTY", "COLLECTOR", "EXPERT_M", "EXPERT_F", "MIDDLE_AGED_MAN", "MIDDLE_AGED_WOMAN", "OLD_MAN", "OLD_WOMAN", "POKEFAN_M", "POKEFAN_F",
         "POKEMON_BREEDER_M", "POKEMON_BREEDER_F", "TUBER_M", "TUBER_F", "PARASOL_LADY", "FISHERMAN", "SWIMMER_M", "SWIMMER_F", "SCIENTIST",
-        "SCIENTIST_F", "GUITARIST", "COWGIRL", "RANCHER", "RECEPTIONIST", "CASHIER_M", "AROMA_LADY", "VETERAN", "POKE_KID"
+        "SCIENTIST_F", "GUITARIST", "COWGIRL", "RANCHER", "RECEPTIONIST", "CASHIER_M", "AROMA_LADY", "VETERAN", "POKE_KID",
+        // Plan 11 · C4's: the rest of Platinum's people and classes
+        "SAILOR", "SKIER_M", "SKIER_F", "POLICEMAN", "ROUGHNECK", "IDOL", "SOCIALITE", "RICH_BOY", "WAITER", "WAITRESS", "MAID", "REPORTER",
+        "CAMERAMAN", "CASHIER_F", "GYM_GUIDE", "JOGGER", "SNOWPOINT_NPC_M", "SNOWPOINT_NPC_F", "ACE_TRAINER_SNOW_M", "ACE_TRAINER_SNOW_F",
+        "BABY_IN_PRAM", "MYSTERY_GIFT_DELIVERYMAN", "FRONTIER_SINGLE_ATTENDANT", "FRONTIER_MULTI_ATTENDANT", "FRONTIER_BOOTH_ATTENDANT",
+        "WIFI_PLAZA_ATTENDANT_M", "WIFI_PLAZA_ATTENDANT_F", "GAME_DIRECTOR", "DRAGON_TAMER", "RANGER_M", "RANGER_F", "PI"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });
@@ -111,6 +116,9 @@ public class CharacterKitTests
     [InlineData("BATTLE_GIRL")]
     // Plan 11 · C3's cowboy hat
     [InlineData("RANCHER")]
+    // Plan 11 · C4's visor and wide hat
+    [InlineData("JOGGER")]
+    [InlineData("SOCIALITE")]
     public void EveryHatShowsOverTheHair(string type)
     {
         // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace
