@@ -1756,6 +1756,97 @@
       "Celebi is small and shy, and it vanishes in a shimmer of light when approached. Old shrines in the forest were built in its honor."
     ]
   },
+  "Treecko": {
+    "habitat": "Forest",
+    "entries": [
+      "Tiny hooked pads on its feet let it cling to bark and even to smooth walls. It scampers up trunks to watch the forest floor from above.",
+      "Treecko keeps its tail raised like a small flag and swishes it to talk to others of its kind. A calm, patient hunter, it waits for insects to wander close."
+    ]
+  },
+  "Grovyle": {
+    "habitat": "Forest",
+    "entries": [
+      "Leaves along its arms are sharp enough to slice twigs clean through. It crosses the canopy in long, quiet leaps and seldom touches the ground.",
+      "Grovyle guards a stretch of woodland as its own and chases off anything that tramples the saplings. Its tail sways in time with its steps."
+    ]
+  },
+  "Sceptile": {
+    "habitat": "Forest",
+    "entries": [
+      "The seeds growing along its tail are a mark of pride, and it grooms them every morning. It moves through thick trees faster than most birds can fly.",
+      "Sceptile stands very still on a branch until prey is within reach, then strikes with the blades on its forearms. It is a fiercely loyal partner."
+    ]
+  },
+  "Torchic": {
+    "habitat": "Grassland",
+    "entries": [
+      "A warm glow lives in its belly and keeps its downy body cozy on cold nights. Hold it close and you will feel a gentle heat, like a hand warmer.",
+      "Torchic trails after whoever feeds it, peeping all the way. When startled it puffs out a few sparks, then looks quite embarrassed about it."
+    ]
+  },
+  "Combusken": {
+    "habitat": "Grassland",
+    "entries": [
+      "It trains by kicking at fence posts and stones, over and over, until the dust rises. Its legs are far stronger than its small size would suggest.",
+      "Combusken lets out a shrill cry to hearten its allies and to unsettle rivals. The feathers on its head stand up when it gets excited."
+    ]
+  },
+  "Blaziken": {
+    "habitat": "Grassland",
+    "entries": [
+      "Flames burst from its wrists when it fights, and a single leap can carry it over a house. It prefers a clean, fair match against a strong opponent.",
+      "Blaziken's kicks hit with the weight of a falling beam. It grows restless if it goes too long without a worthy challenge."
+    ]
+  },
+  "Mudkip": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The fin on its head feels the slightest change in the water and warns it of what is coming. It spends sunny afternoons dozing half buried in warm mud.",
+      "Mudkip is strong enough to heave a boulder aside with its sturdy little legs. It follows trainers around the shore, splashing in every puddle."
+    ]
+  },
+  "Marshtomp": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its hind legs are much stronger than the front ones, so it pushes through mire with ease and stays steady where others sink.",
+      "Marshtomp likes to sit with its feet in wet soil, and it grows cranky if the ground dries out. A rainy day makes it lively and playful."
+    ]
+  },
+  "Swampert": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its great arms can drag a boulder out of the way or tow a ship that has run aground. It reads the tide from the sound of the waves.",
+      "Swampert keeps a watchful eye on the shore and will carry stranded travelers back to dry land. It is happiest wading through a storm."
+    ]
+  },
+  "Poochyena": {
+    "habitat": "Grassland",
+    "entries": [
+      "It will chase anything that moves, nipping at heels and tugging at cloth. A scolding makes it back off for a moment, but only a moment.",
+      "Poochyena roams in loose gangs and is bold about eating scraps left by travelers. Its ears swivel at every sound while it sniffs for a trail."
+    ]
+  },
+  "Mightyena": {
+    "habitat": "Grassland",
+    "entries": [
+      "A pack follows one leader, and each member knows exactly where it stands. They herd prey together and never leave a wounded packmate behind.",
+      "Its growl is low and steady, and its stare can freeze a careless hunter in place. A trained Mightyena obeys its trainer without a bark."
+    ]
+  },
+  "Zigzagoon": {
+    "habitat": "Grassland",
+    "entries": [
+      "It cannot walk in a straight line and weaves from side to side, nose to the ground. Anything shiny or tasty it finds goes into a hoard.",
+      "Zigzagoon rubs its back against tree trunks to leave a scent and to scratch an itch. It often trots along beside travelers for company."
+    ]
+  },
+  "Linoone": {
+    "habitat": "Grassland",
+    "entries": [
+      "Once it spots prey it dashes in a dead straight line at a speed that blurs its stripes. Turning is not its strong suit, so it often overshoots.",
+      "Linoone covers a whole meadow in a few seconds when it runs. After a hunt it flops down in the grass and naps with its legs splayed."
+    ]
+  },
   "Wurmple": {
     "habitat": "Forest",
     "entries": [
@@ -1789,6 +1880,62 @@
     "entries": [
       "It flies only after sunset, its wings beating with a soft, papery rustle. The green dust it sheds glows faintly as it drifts down through moonlit trees.",
       "A Dustox rests through the day pressed flat against the underside of a leaf. Its drab markings make it all but invisible among the shadows."
+    ]
+  },
+  "Lotad": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A wide leaf rides on top of its head and serves as a little raft, so it floats lazily across calm ponds. When the water dries up it grows weak and droopy.",
+      "Lotad sips rain from its leaf and now and then lets a drop roll off. Children like to balance it on their heads as a funny hat."
+    ]
+  },
+  "Lombre": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It loves to tease fishermen by tugging their lines from below, then giggling at the reaction. Its webbed hands make it a very quick swimmer.",
+      "Lombre's smooth skin is slick with a cooling film that feels pleasant on a hot day. It dislikes dry, dusty roads and stays near streams."
+    ]
+  },
+  "Ludicolo": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Cheerful music sets it dancing, and a whole group will sway and clap along together. The merrier it is, the more energy it seems to have.",
+      "Ludicolo wears a hat of broad leaves and a long, flowing fringe. It greets the morning sun with a stretch and a swaying little jig."
+    ]
+  },
+  "Seedot": {
+    "habitat": "Forest",
+    "entries": [
+      "It hangs from a branch by the stalk on its head and looks just like an acorn. When a person walks beneath, it drops down to play a trick.",
+      "Seedot soaks up water through its feet to plump itself up, then shakes it off in a spray. It grows fussy when its shell gets dirty."
+    ]
+  },
+  "Nuzleaf": {
+    "habitat": "Forest",
+    "entries": [
+      "It plays a thin tune on a leaf flute at night, and the sound can unsettle travelers in the dark. It is clever and a little mischievous.",
+      "Nuzleaf's long nose wags as it sniffs for ripe berries. It shies away from crowds and watches the world from tall trees."
+    ]
+  },
+  "Shiftry": {
+    "habitat": "Forest",
+    "entries": [
+      "A single wave of its great leaf fans can whip up a gust that tosses grown people aside. It lives deep in the woods, far from any town.",
+      "Shiftry carries itself like a stern old hermit and chooses its companions with great care. Its mere shadow makes smaller creatures hush."
+    ]
+  },
+  "Taillow": {
+    "habitat": "Grassland",
+    "entries": [
+      "Brave beyond its size, it will dive at much bigger foes to defend its nest. It sulks and fluffs its feathers when it is hungry.",
+      "Taillow darts from warm lands to cool ones with the seasons. A trained one will perch on a shoulder and sing the moment it sees dawn."
+    ]
+  },
+  "Swellow": {
+    "habitat": "Grassland",
+    "entries": [
+      "It glides in wide circles, then folds its wings and drops like a stone on its target. Its glossy plumage is kept neat and spotless.",
+      "Swellow's call carries across whole valleys. It holds its head high when it lands, proud of the speed that brought it there."
     ]
   },
   "Wingull": {
@@ -1826,6 +1973,111 @@
       "Its arms are thin and elegant, and it uses them to sketch shapes in the air while it thinks. Those it has bonded with say they can almost read the shapes."
     ]
   },
+  "Surskit": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It skims across the surface of ponds as if on ice, never sinking. A sweet syrup oozes from its head and draws smaller creatures near.",
+      "Surskit prefers calm, clean water and will leave a pond that turns muddy. On a bright day you can see its reflection racing along beside it."
+    ]
+  },
+  "Masquerain": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The eye patterns on its antennae look like fierce staring eyes and frighten off foes. It hovers over lakes, beating its wings to stay aloft.",
+      "Masquerain flies far out over the water in rain, its fine wings wet and shining. It folds its antennae down when it wants to rest."
+    ]
+  },
+  "Shroomish": {
+    "habitat": "Forest",
+    "entries": [
+      "It lives in damp, dark soil beneath fallen leaves and wears a cap that scatters fine spores when shaken. The cap is its pride.",
+      "Shroomish sleeps much of the day, only wandering out when the air is cool and moist. It dislikes bright sun and dry wind."
+    ]
+  },
+  "Breloom": {
+    "habitat": "Forest",
+    "entries": [
+      "Its quick, snapping punches fall faster than the eye can follow, and its tail curls and uncurls as it strikes. It never fights without good cause.",
+      "Breloom balances on a thick springy tail, bouncing lightly from tree to tree. The cap on its head grows a bit with every year."
+    ]
+  },
+  "Slakoth": {
+    "habitat": "Forest",
+    "entries": [
+      "It hangs from a branch for most of the day and moves only a few steps before resting again. A full night's sleep is never enough for it.",
+      "Slakoth chews leaves at a snail's pace and sighs as it does. Its calm face makes an onlooker feel sleepy too."
+    ]
+  },
+  "Vigoroth": {
+    "habitat": "Forest",
+    "entries": [
+      "It cannot sit still and runs about in circles, scratching at the earth and the bark. If it is made to rest it grows tense and edgy.",
+      "Vigoroth's claws leave deep marks on any tree it passes. It thrives on activity and sleeps only when it has worn itself out."
+    ]
+  },
+  "Slaking": {
+    "habitat": "Forest",
+    "entries": [
+      "It spends its days sprawled on the ground, munching whatever is within arm's reach. When it finally stirs, the whole ground seems to shake.",
+      "Slaking is the very picture of laziness, yet one swipe of its massive arm can fell a sturdy tree. It naps until a meal comes by."
+    ]
+  },
+  "Nincada": {
+    "habitat": "Forest",
+    "entries": [
+      "It spends long years underground, drinking from tree roots and slowly growing. Sunlight is hard on its pale eyes, so it hides in the dark.",
+      "Nincada's shell is tough but its body inside is tender. When the time is right it climbs out of the soil and cracks open."
+    ]
+  },
+  "Ninjask": {
+    "habitat": "Forest",
+    "entries": [
+      "Its wings beat so fast that its body is only a blur, and the buzz they make is deafening. Few can keep it in sight for more than a heartbeat.",
+      "Ninjask is rarely still, and it will fly all day without a pause. It is shy of crowds, and its cry rings sharply over the treetops."
+    ]
+  },
+  "Shedinja": {
+    "habitat": "Forest",
+    "entries": [
+      "A hollow shell with no breath and no pulse, it drifts about silently. People who stare too long into the dark gap of its back feel uneasy.",
+      "Shedinja does not eat or drink, and it seems to live off nothing at all. Superstitious villagers keep one far away from their homes."
+    ]
+  },
+  "Whismur": {
+    "habitat": "Cave",
+    "entries": [
+      "Normally it speaks in a whisper, but a sudden fright makes it howl at a volume well beyond its small body. It covers its own ears when it does.",
+      "Whismur lives in quiet caves where its voice echoes. It practises squeaks and murmurs for hours and gets shy when others listen."
+    ]
+  },
+  "Loudred": {
+    "habitat": "Cave",
+    "entries": [
+      "Heavy stamps of its feet send shock waves through the rock, and its bellow makes them stronger. A blast from its voice can rattle windows and shake pebbles loose.",
+      "Loudred listens for echoes to learn the shape of the dark places it explores. A pair of big ears stand up whenever it hears a new sound."
+    ]
+  },
+  "Exploud": {
+    "habitat": "Cave",
+    "entries": [
+      "The tubes along its body gather air and fire it out as a roar that can be heard across a mountain. Its mouth gapes wide when it shouts.",
+      "Exploud uses different calls to signal to its friends, and a trained one can sing along with music. The sound it makes is gentle at a short range."
+    ]
+  },
+  "Makuhita": {
+    "habitat": "Mountain",
+    "entries": [
+      "It slaps at tree trunks and boulders for hours to harden its palms, and it eats big meals to build up its strength. It never complains of tiredness.",
+      "Makuhita is a cheerful, stubborn fighter that gets back up every time it is thrown. It dreams of one day becoming a champion."
+    ]
+  },
+  "Hariyama": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its thick palms can slam with enough force to topple a truck. A bout against a human champion is a pleasure it seldom refuses.",
+      "Hariyama keeps a calm, dignified manner and trains on cold mountain slopes. It stomps the ground to settle itself before a match."
+    ]
+  },
   "Azurill": {
     "habitat": "WatersEdge",
     "entries": [
@@ -1838,6 +2090,55 @@
     "entries": [
       "It stands so still that minerals slowly gather on its body over the years. Cavers have chipped crystals the size of a fist from an old Nosepass.",
       "Iron filings in the soil around it form neat lines that point to its nose. Prospectors follow these lines to find where a Nosepass is resting."
+    ]
+  },
+  "Skitty": {
+    "habitat": "Forest",
+    "entries": [
+      "Round and round it spins after its tail, and when the world starts to swim it topples over and begins again. Anything that sways or dangles is fair game for its paws.",
+      "Skitty has a gentle purr and a bright, curious eye. Many a household keeps one because it makes such good company."
+    ]
+  },
+  "Delcatty": {
+    "habitat": "Forest",
+    "entries": [
+      "It sleeps wherever it likes and wakes only when it wants to, and no one tries to tell it otherwise. Its soft fur is groomed with great care.",
+      "Delcatty keeps to quiet corners and lets its trainer see it only at the right moments. It stalks about with its tail held high and its nose in the air."
+    ]
+  },
+  "Sableye": {
+    "habitat": "Cave",
+    "entries": [
+      "Its gleaming eyes are really gems, and they glow in the gloom. It scrapes at cave walls for stones to eat, leaving glittering dust behind.",
+      "Sableye hides in the dark and leaps out with a grin. It is happiest in places where no light ever reaches."
+    ]
+  },
+  "Mawile": {
+    "habitat": "Cave",
+    "entries": [
+      "The big jaws on its head are really horns shaped like a trap. It looks sweet and harmless, then snaps without warning.",
+      "Mawile smiles shyly to lure in the unwary. Behind its pleasant face is a stubborn will, and its jaws can bite through thick iron."
+    ]
+  },
+  "Aron": {
+    "habitat": "Mountain",
+    "entries": [
+      "It eats iron ore and rails alike, and the metal builds its armor plating. Where trains run it can be found chewing the tracks.",
+      "Aron is a headstrong youngster that charges into trouble. It likes to sleep in mountain hollows with its plates tucked in."
+    ]
+  },
+  "Lairon": {
+    "habitat": "Mountain",
+    "entries": [
+      "It digs for ore in mountain slopes, and where it feeds, the ground may be left bare and scarred. Its steel hide is polished by constant rubbing on rock.",
+      "Lairon plods about with its heavy head lowered and rams anything that blocks its path. It drinks from clear mountain streams."
+    ]
+  },
+  "Aggron": {
+    "habitat": "Mountain",
+    "entries": [
+      "It defends its mountain territory fiercely, and if its armor is damaged it hurries to mend the scar with fresh ore. It tends the land it lives on.",
+      "Aggron's head and horns are mighty enough to splinter solid stone. After a landslide it clears the rubble away and plants new trees."
     ]
   },
   "Meditite": {
@@ -1854,11 +2155,172 @@
       "Medicham are said to train in pairs, each mirroring the other's movements exactly. Onlookers cannot tell which of the two is leading."
     ]
   },
+  "Electrike": {
+    "habitat": "Grassland",
+    "entries": [
+      "It stores energy in its fur and discharges it with a crackle when it pounces. On dry days, its mane stands up in a wild burst.",
+      "Electrike races across the plains faster than a thrown ball, sparks flickering behind it. It tires if it cannot stretch its legs."
+    ]
+  },
+  "Manectric": {
+    "habitat": "Grassland",
+    "entries": [
+      "Lightning leaps from its mane when it gets angry, and storm clouds gather above it as it runs. It darts over the fields like a flash.",
+      "Manectric's glowing mane lights up a path at night. It races ahead of storms, scouting the way for its pack."
+    ]
+  },
+  "Plusle": {
+    "habitat": "Grassland",
+    "entries": [
+      "Small sparks pop between its paws whenever it is excited. It dashes to the side of any friend in trouble and waves its arms as if to cheer them up.",
+      "Plusle's red cheeks hum with a faint charge. It loves a crowd and will jump about at a festival, dropping little static shocks on anyone who pets it."
+    ]
+  },
+  "Minun": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its blue cheeks crackle when it is in high spirits. It is shyer than its look-alike, peeking at strangers from behind its trainer's legs.",
+      "Minun hops and claps for whoever it likes, and a handful of sparks trail its fingers. Alone, it sulks quietly in a corner."
+    ]
+  },
+  "Volbeat": {
+    "habitat": "Forest",
+    "entries": [
+      "On warm summer evenings its tail lights up, and swarms of them draw shapes across the sky. A few quick blinks can say a surprising amount.",
+      "Volbeat is drawn to the sweet smell of its partner and follows it around on soft nights. By day it rests in the reeds with its light dimmed."
+    ]
+  },
+  "Illumise": {
+    "habitat": "Forest",
+    "entries": [
+      "It tends meadow flowers by night and sprinkles a scented dust over them. Its wings hum like a distant song as it lights its way.",
+      "Illumise is a gentle flyer that orders the dance of every glow in the field. Every lamp in the swarm follows its lead."
+    ]
+  },
   "Roselia": {
     "habitat": "Grassland",
     "entries": [
       "Its two flowers open and close with the sun. On cloudy days a Roselia hangs its head and refuses to move until the light returns.",
       "It is fussy about where it grows and will walk for days to find the right soil. Gardens with a Roselia in them always seem to bloom more brightly."
+    ]
+  },
+  "Gulpin": {
+    "habitat": "Grassland",
+    "entries": [
+      "Nearly everything it has is stomach, and it swallows scraps whole. A bit of fruit or a fallen berry vanishes in one gulp.",
+      "Gulpin sits with its mouth hanging open, humming gently to itself while it digests. A faint sour smell hangs around it."
+    ]
+  },
+  "Swalot": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its huge mouth can stretch around a large tire and bite it out of shape. Every dribble of its slime stings the skin.",
+      "Swalot lumbers through the grass with its jaws parted and its two small arms swinging. It sleeps in the shade after a big meal."
+    ]
+  },
+  "Carvanha": {
+    "habitat": "Sea",
+    "entries": [
+      "A school can strip a drifting plank to splinters before it sinks. Its bite is out of all proportion to its length.",
+      "Carvanha waits near river mouths and rushes anything that splashes. Fishermen toss out chum to keep it away from their boats."
+    ]
+  },
+  "Sharpedo": {
+    "habitat": "Sea",
+    "entries": [
+      "It swims at the speed of a speedboat and rams its targets with its pointed snout. The thick scales along its flank repel almost all attacks.",
+      "Sharpedo cruises far from shore and shows up when the sea is rough. Its fangs break off often, but new ones keep growing in."
+    ]
+  },
+  "Wailmer": {
+    "habitat": "Sea",
+    "entries": [
+      "When it takes in a great gulp of seawater, it swells like a ball and bounces across the waves. Children love to chase it on the beach.",
+      "Wailmer spouts a tall fountain from its blowhole to greet its pod. It eats huge piles of small fish every single day."
+    ]
+  },
+  "Wailord": {
+    "habitat": "Sea",
+    "entries": [
+      "It is among the longest creatures in the world, and a whole pod seems like a moving island. Its call rolls across the ocean for miles.",
+      "Wailord is gentle and unhurried despite its bulk. Great flocks of birds ride on its back when it surfaces for air."
+    ]
+  },
+  "Numel": {
+    "habitat": "Mountain",
+    "entries": [
+      "Magma burns inside its hump, but it is a dull, sluggish creature that is slow to notice danger. Dozing on warm rock suits it best.",
+      "When the weather turns cold, Numel curls up and its hump grows hard. It trudges up volcano slopes to graze on mineral-rich shrubs."
+    ]
+  },
+  "Camerupt": {
+    "habitat": "Mountain",
+    "entries": [
+      "Twin humps on its back can erupt with molten rock when it is angry, and it must rest to cool them. Quakes are said to follow its footsteps.",
+      "Camerupt's body temperature climbs when it is upset, and the steam rising from its hump warns others to stand back."
+    ]
+  },
+  "Torkoal": {
+    "habitat": "Mountain",
+    "entries": [
+      "It burns coal in its shell for fuel and puffs out thick black smoke when it wants to hide. Farmers keep a few to warm their barns in winter.",
+      "Torkoal digs shallow holes in the ground to nap in, and when it is startled it pulls its limbs inside and lets off a hiss of steam."
+    ]
+  },
+  "Spoink": {
+    "habitat": "Mountain",
+    "entries": [
+      "It bounces without stopping on its spring-like tail, because the beat of each hop keeps its small heart going. If it stops, it can grow weak.",
+      "Spoink carries a pearl on its head and treasures it above all else. It leaps along on every path in a cheerful rhythm."
+    ]
+  },
+  "Grumpig": {
+    "habitat": "Mountain",
+    "entries": [
+      "Dancing helps it gather a strange energy, and the dark pearls set into its skin shine as it sways. Each step is slow and deliberate.",
+      "Grumpig sways in circles under the moon and seems to enjoy itself. Its stomping makes strange patterns in the dirt."
+    ]
+  },
+  "Spinda": {
+    "habitat": "Mountain",
+    "entries": [
+      "No two are marked alike, and the spots on its face give it a different expression each time. It sways in an unsteady lurching walk.",
+      "Spinda wanders in a dizzy zigzag as though lost, but somehow reaches its destination. Collectors like to compare their patterns."
+    ]
+  },
+  "Trapinch": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It digs a funnel of loose sand and sits at the bottom with its great jaws open. Whatever slides down is its meal, and it can wait for days.",
+      "Trapinch has a huge head and tiny legs, and it walks with awkward little steps. In hot deserts it stays in its pit and keeps cool."
+    ]
+  },
+  "Vibrava": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its immature wings do not carry it far yet, but they thrum to make a ringing note. The sound confuses anyone who listens too closely.",
+      "Vibrava flaps at the edge of the desert, gaining strength. It leaves the burrow only on calm days when the sand is still."
+    ]
+  },
+  "Flygon": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its wings stir up clouds of sand as it flies, and from the ground it looks like a shimmering green ghost in the dust. It is rarely seen.",
+      "Flygon's song floats over the dunes, and travelers in a sandstorm sometimes follow the sound to safety. It rests among dry rocks."
+    ]
+  },
+  "Cacnea": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It lives where rain seldom falls and holds water in its prickly body. It enjoys hearing music and sways a little when a tune drifts by.",
+      "Cacnea likes to stand still at night and bask in the cool air. Careless hands that touch it pull back with a yelp."
+    ]
+  },
+  "Cacturne": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "At dusk it wanders the sands to follow tired travelers, waiting until they falter. In daytime it holds so still that it looks like a scarecrow.",
+      "Cacturne's body is mostly dry fibers and thorns, and it needs very little water. A pack will gather quietly under a full moon."
     ]
   },
   "Swablu": {
@@ -1875,6 +2337,34 @@
       "It nests on high mountain ledges, building beds of feathers and moss. In stormy weather it shelters its young beneath its wide, downy wings."
     ]
   },
+  "Zangoose": {
+    "habitat": "Grassland",
+    "entries": [
+      "It tears into battle with claws spread wide, ruffling its white fur and showing its fierce red markings. It is quick to anger, and quick to leap.",
+      "Zangoose lives in grassy valleys and treats a certain snake as its lifelong rival. The two never pass without a scuffle."
+    ]
+  },
+  "Seviper": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its tail ends in a blade that it sharpens against stones. It rears up and hisses when it spots anything that looks like its old rival.",
+      "Seviper slides through tall grass without a sound and strikes from cover. A scar across its body is a trophy of old fights."
+    ]
+  },
+  "Lunatone": {
+    "habitat": "Cave",
+    "entries": [
+      "It floats in the dead of night with a pale glow, and its power grows stronger when the moon is full. Locals say it fell from the sky long ago.",
+      "Lunatone's blank stare gives nothing away. It hovers in caves, and the more the moon waxes, the more restless it becomes."
+    ]
+  },
+  "Solrock": {
+    "habitat": "Cave",
+    "entries": [
+      "It basks in sunshine and glows warmly when the sun is high. It is a patient, quiet traveler that spins slowly as it rests.",
+      "Solrock's rays can warm a cold cavern, and it floats toward any sunny spot. Some people say it came here from far beyond the sky."
+    ]
+  },
   "Barboach": {
     "habitat": "WatersEdge",
     "entries": [
@@ -1889,6 +2379,62 @@
       "An old Whiscash may live in the same pond for many decades. Villagers give them names and speak of them like respected neighbours."
     ]
   },
+  "Corphish": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It is tough enough to live in dirty ponds where nothing else can. Its sturdy pincers clamp onto an enemy and refuse to let go.",
+      "Corphish was brought in from overseas and spread quickly through the waterways. It will snap at a finger offered carelessly."
+    ]
+  },
+  "Crawdaunt": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It claims a pond as its own and fights off anything that wanders in. Its claws are so strong they can snap a plank.",
+      "Crawdaunt is cranky and tends to lash out first. After a victory, it sheds its old shell and grows a bigger one."
+    ]
+  },
+  "Baltoy": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It spins on its single foot and glides across the ground without a trace. Old ruins hold many of them, standing in rows.",
+      "Baltoy sleeps standing upright. In a gentle breeze it wobbles a bit, and if it tips it simply rights itself."
+    ]
+  },
+  "Claydol": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It was made long ago and has outlived its makers, and it seems to remember nothing. Strange beams shoot from its hands.",
+      "Claydol floats over ancient floors with its eyes unblinking. Scholars still debate what it is for."
+    ]
+  },
+  "Lileep": {
+    "habitat": "Sea",
+    "entries": [
+      "It lived on the sea floor in ancient times and waited, rooted to a rock, for food to drift by. It has now come back from fossils.",
+      "Lileep's petal-like arms wave gently in the current. Its body is anchored to a stone while its mouth catches what the water brings."
+    ]
+  },
+  "Cradily": {
+    "habitat": "Sea",
+    "entries": [
+      "It sways its long, flowing arms to catch fish, and its tentacles lash out at anything that grazes its anchor. It rarely moves around.",
+      "Cradily was once at home in warm shallows. Revived from a fossil, it still keeps close to the water."
+    ]
+  },
+  "Anorith": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Eight tiny claws drag it across the sea floor, and two larger ones scoop up prey. It was once a lively swimmer in shallow seas.",
+      "Anorith is tough but hesitant, and it curls its tail under when faced with something big. It is revived from an ancient stone."
+    ]
+  },
+  "Armaldo": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It once walked on land and sea alike, and its armor shows many battle scars. The plates on its body are as hard as rock.",
+      "Armaldo swings its heavy claws and rarely misses. When angry, it rises on two legs and stands tall."
+    ]
+  },
   "Feebas": {
     "habitat": "WatersEdge",
     "entries": [
@@ -1901,6 +2447,34 @@
     "entries": [
       "Its long, shimmering body glides through deep lakes like a ribbon of light. Those who see one surface at sunset speak of it for the rest of their lives.",
       "Milotic rest in the calmest part of a lake, their tails gently curled. The water around a resting Milotic is always perfectly clear."
+    ]
+  },
+  "Castform": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its body looks like a cloud and changes with the weather around it, becoming sunny, rainy or snowy. Each change is quick and complete.",
+      "Castform is delicate and drifts easily in the air. Weather watchers carry one along to check the forecast."
+    ]
+  },
+  "Kecleon": {
+    "habitat": "Forest",
+    "entries": [
+      "It changes its coloring to match its surroundings and vanishes from sight. The only part that stays is the zigzag mark on its belly.",
+      "Kecleon sneaks up on insects while hidden, then flicks out its long tongue. When it is surprised, it goes red with embarrassment."
+    ]
+  },
+  "Shuppet": {
+    "habitat": "Urban",
+    "entries": [
+      "It drifts toward dark houses and feeds on the gloomy feelings of the people inside. Its single horn is said to attract such feelings.",
+      "Shuppet hides in the shadows and peers from behind curtains. A good laugh sends it scurrying away."
+    ]
+  },
+  "Banette": {
+    "habitat": "Urban",
+    "entries": [
+      "It is a discarded plaything that has come alive, and it searches for the child who threw it away. Its mouth is held shut by a zipper.",
+      "Banette is a restless wanderer that moves at night. If it is hugged and treated well, its anger can melt away."
     ]
   },
   "Duskull": {
@@ -1938,6 +2512,13 @@
       "An Absol keeps watch from high crags for hours without moving. Mountain folk who once feared it now leave food on the rocks where it rests."
     ]
   },
+  "Wynaut": {
+    "habitat": "Cave",
+    "entries": [
+      "It likes to huddle with others in quiet places, and it gets cross if it is left alone. Its tail wags when it is pleased.",
+      "Wynaut hops up and down to stay warm, and it grins at nearly everyone. It sticks together with its fellows in dark caves."
+    ]
+  },
   "Snorunt": {
     "habitat": "Cave",
     "entries": [
@@ -1950,6 +2531,174 @@
     "entries": [
       "It drifts through frozen caves with its great jaw hanging open, and the walls glisten with fresh frost as it passes. Its roar cracks icicles from the ceiling.",
       "A Glalie rests for weeks in the coldest chamber it can find, hardly moving at all. Cavers who mistake it for a boulder of ice get a nasty fright."
+    ]
+  },
+  "Spheal": {
+    "habitat": "Sea",
+    "entries": [
+      "It is round enough to roll along the ice, and it claps its flippers together for joy. Its fur is thick and keeps out the cold.",
+      "Spheal likes to bob in icy water and flick drops at passersby. A rolling Spheal will follow a family down a snowy hill."
+    ]
+  },
+  "Sealeo": {
+    "habitat": "Sea",
+    "entries": [
+      "It plays by balancing things on its nose, and it licks the object to learn what it is. It can keep a ball in the air for ages.",
+      "Sealeo hunts through cracks in the ice. The fat on its body is thick and keeps it comfortable even in deep frost."
+    ]
+  },
+  "Walrein": {
+    "habitat": "Sea",
+    "entries": [
+      "Its long tusks can smash through thick ice, and its blubber makes it nearly impervious to the cold. It leads its family through frozen seas.",
+      "Walrein is protective of its young and charges at anything that comes close. It stays calm and quiet at other times."
+    ]
+  },
+  "Clamperl": {
+    "habitat": "Sea",
+    "entries": [
+      "It rests deep underwater inside a hard shell, which snaps shut at the slightest threat. A gem is said to form within it as it ages.",
+      "Clamperl sits in a bed of sand and rarely opens up. It grows a precious stone, slowly, over many years."
+    ]
+  },
+  "Huntail": {
+    "habitat": "Sea",
+    "entries": [
+      "Its tail looks like a small fish, and it uses it to lure prey out of the murk far below. Whatever follows the lure never sees the long body behind it.",
+      "Huntail slips through narrow cracks in sunken wrecks, its long body bending to fit wherever the fish are hiding. It swallows its meal whole."
+    ]
+  },
+  "Gorebyss": {
+    "habitat": "Sea",
+    "entries": [
+      "It uses its slender mouth like a straw to drink what lies inside a small creature's shell. Its pink body glows faintly beneath the waves.",
+      "Gorebyss swims through warm, sunny seas, gliding with an elegant, easy motion. The color of its body fades after it feeds."
+    ]
+  },
+  "Relicanth": {
+    "habitat": "Sea",
+    "entries": [
+      "It has lived on the deep sea floor for ages with little change. Its scaly body resists the crushing weight of the water.",
+      "Relicanth moves little and eats slowly, and scientists value it for what it shows about the distant past."
+    ]
+  },
+  "Luvdisc": {
+    "habitat": "Sea",
+    "entries": [
+      "Its body is shaped like a heart, and couples of sailors take it as a lucky sign to see two swimming side by side. It darts away at the first splash.",
+      "Luvdisc keeps to warm, shallow waters and swims in tidy pairs. Small and quick, it slips between the coral without a ripple."
+    ]
+  },
+  "Bagon": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It dreams of flying and leaps from cliffs again and again, only to tumble and bruise its hard head. It never seems to learn from the falls.",
+      "Bagon butts its head against boulders to wear them down. Its stubborn temper makes it hard to train, but it is loyal in the end."
+    ]
+  },
+  "Shelgon": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "A shell of heavy plates covers its body, and it hides in a cave for long stretches while it changes inside. Nothing it meets can scratch it.",
+      "Shelgon rarely moves and eats little. Under its armor, something large is being built piece by piece."
+    ]
+  },
+  "Salamence": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "At last its wish has come true and it soars on great wings, with a fierce rage that burns whenever it is cornered. It swoops down on anything below.",
+      "Salamence flies in tight loops and spits fire in the air in sheer joy of flying. Its roar echoes over the peaks."
+    ]
+  },
+  "Beldum": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its body is a heavy ball of iron with a single red eye. It floats using magnetism and clusters of them cling together for company.",
+      "Beldum rests in the air with its claws folded in. When it spots something, it stares for a long time before making a move."
+    ]
+  },
+  "Metang": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Two Beldum have fused together by magnetism, and the new body is bigger, heavier and smarter. It floats with its claws tucked up against its chest.",
+      "Metang thinks by combining the minds of its two halves. It flies in absolute silence, trailing a faint hum."
+    ]
+  },
+  "Metagross": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Four legs, four brains and a crushing weight: it solves problems faster than a computer. It pins down prey under one foot and finishes it with another.",
+      "Metagross hovers above ground and drops onto foes like a falling anvil. It is coolly efficient and rarely shows any emotion."
+    ]
+  },
+  "Regirock": {
+    "habitat": "Cave",
+    "entries": [
+      "An ancient figure built entirely from stones and boulders. When damaged, it repairs itself with fresh rocks gathered from around it.",
+      "Regirock sleeps in a cavern deep underground and wakes only to answer a call. A single, faint glow shines from its face."
+    ]
+  },
+  "Regice": {
+    "habitat": "Cave",
+    "entries": [
+      "Frost that never thaws forms the whole of its body, cold enough to turn the air around it into glittering dust. Fire hardly scratches it.",
+      "Regice stands motionless in a frigid hall. A thin fog of frost curls from its shoulders and drifts along the floor."
+    ]
+  },
+  "Registeel": {
+    "habitat": "Cave",
+    "entries": [
+      "Legend holds that its frame was forged deep under the ground from a metal harder than any other. Nothing known can pierce it.",
+      "Registeel sits silent in a chamber, with a line of lights across its face. It is thought to be an ancient guardian."
+    ]
+  },
+  "Latias": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It is clever and can understand human speech. It folds its wings to become nearly invisible and glides low over the waves.",
+      "Latias is gentle and shy, and it is said to grow close to those it trusts. It flies faster than a jet when it wants to."
+    ]
+  },
+  "Latios": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It can link its mind with people and show them pictures from far away. It is a swift, proud flyer that rarely lands.",
+      "Latios tucks its arms in as it speeds across the sky. It keeps a close eye on its sibling from a distance."
+    ]
+  },
+  "Kyogre": {
+    "habitat": "Sea",
+    "entries": [
+      "Legends say it enlarged the oceans by calling down storms for ages. It sleeps in the deepest trench, and rain falls when it stirs.",
+      "Kyogre's markings glow when it uses its power. Its mighty form fills the whole sea whenever it wakes."
+    ]
+  },
+  "Groudon": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It is said to have raised the land itself and dried the earth with scorching heat. It sleeps in a molten pit beneath a volcano.",
+      "Groudon's red armor sheds burning dust, and its mighty claws can tear the ground apart. Droughts follow in its wake."
+    ]
+  },
+  "Rayquaza": {
+    "habitat": "Rare",
+    "entries": [
+      "It has lived for ages in the ozone layer, high above the clouds, and is almost never seen from the ground. It eats only the water and dust of the sky.",
+      "Rayquaza is said to calm the two great titans of land and sea when they clash. Its long body glides through the air like a green ribbon."
+    ]
+  },
+  "Jirachi": {
+    "habitat": "Mountain",
+    "entries": [
+      "It sleeps for a thousand years and wakes for a short week when the pure of heart sing to it. A third eye opens on its belly when it is time to grant a wish.",
+      "Jirachi wears small paper strips on its head that are said to carry wishes. When it dozes, it tucks itself into a ball."
+    ]
+  },
+  "Deoxys": {
+    "habitat": "Rare",
+    "entries": [
+      "A strange life form that came from a virus out in space, it can shift its shape to fight or defend. The crystal in its chest is its core.",
+      "Deoxys fires beams of light from the crystal, and its body takes on different forms in an instant. It was last seen after a meteor fell."
     ]
   },
   "Turtwig": {
@@ -2638,6 +3387,20 @@
       "The pearls on its shoulders pulse with a soft pink light when it is stirred. Ancient carvings depict it with its arms spread wide, as if holding the world apart."
     ]
   },
+  "Heatran": {
+    "habitat": "Rare",
+    "entries": [
+      "It lives in the molten heart of a volcano and walks the rock walls on feet that melt solid stone. Steel in its body shines like polished metal.",
+      "Heatran's footprints are cut deep into the cave ceiling. When it grows angry, magma pours from its cracked hide."
+    ]
+  },
+  "Regigigas": {
+    "habitat": "Rare",
+    "entries": [
+      "Legends tell of how it pulled whole continents with ropes and shaped the land. It is calm and dozy until the three ancient golems call it awake.",
+      "Regigigas sits in a hall of ice, its enormous arms resting on its knees. When woken, it moves slowly but strikes with great force."
+    ]
+  },
   "Giratina": {
     "habitat": "Rare",
     "entries": [
@@ -2645,11 +3408,1138 @@
       "Giratina's body is so vast that it seems to fill whatever space it enters. Those who have glimpsed it say the ground beneath their feet feels unsteady."
     ]
   },
+  "Cresselia": {
+    "habitat": "Rare",
+    "entries": [
+      "The glittering wings it wears are said to look like a crescent moon. Those who sleep near it dream peaceful dreams.",
+      "Cresselia shines in the dark and glides overhead on quiet nights. Its trail of light is said to ward off bad dreams."
+    ]
+  },
+  "Phione": {
+    "habitat": "Sea",
+    "entries": [
+      "Its small body floats on the open sea, held up by a round tube on its head. Schools drift together in warm currents, sometimes for months.",
+      "Phione blows bubbles from its tube and bobs around on the swells. When the water turns cold, it heads toward warmer seas."
+    ]
+  },
   "Manaphy": {
     "habitat": "Sea",
     "entries": [
       "It drifts with warm ocean currents, its antennae twitching as it swims. Sailors say that following one leads to calm, clear waters.",
       "A Manaphy can feel the moods of those around it and responds with its own little gestures. It glows softly when it is happy."
+    ]
+  },
+  "Darkrai": {
+    "habitat": "Rare",
+    "entries": [
+      "It drifts into the dreams of those who sleep and fills them with terrible nightmares. It appears on moonless nights and fades at dawn.",
+      "Darkrai seems to want to be left alone, and is said to guard its dark island. It is sad and cold, though few ever see that side."
+    ]
+  },
+  "Shaymin": {
+    "habitat": "Rare",
+    "entries": [
+      "It blooms in fields of flowers and spreads a gratitude that turns scorched earth green. It is kind and quiet, though it hides when it sees people.",
+      "Shaymin's back is covered with grass that bursts into flowers when it is happy. In the sky, it spreads its soft petals and glides."
+    ]
+  },
+  "Arceus": {
+    "habitat": "Rare",
+    "entries": [
+      "In the oldest stories, it came before everything else and shaped the world with its thousand arms. Many believe every living creature descends from it.",
+      "Arceus is believed to have formed the skies, land and sea. Its pale body is ringed by a golden wheel."
+    ]
+  },
+  "Victini": {
+    "habitat": "Rare",
+    "entries": [
+      "It brings victory to those who stand beside it. Energy streams from its two ears and gives its partner endless strength.",
+      "Victini is playful and daring and loves a challenge. When it feels the spirit of a fight, its body warms with fire."
+    ]
+  },
+  "Snivy": {
+    "habitat": "Forest",
+    "entries": [
+      "It soaks up sunlight to power itself, and it moves quickly and quietly when the sun is warm. A cold, cloudy day makes it sluggish and prickly.",
+      "Snivy holds its head high and rarely lets anyone see it hurry. It deflects blows with the flick of its tail."
+    ]
+  },
+  "Servine": {
+    "habitat": "Forest",
+    "entries": [
+      "It slips between branches without a rustle, holding its curled tail aloft. Quick to shed its skin, it grows more composed each time.",
+      "Servine hides in the shade and strikes with vines from the cover of leaves. It will not move to fight unless it has to."
+    ]
+  },
+  "Serperior": {
+    "habitat": "Forest",
+    "entries": [
+      "It curls like a length of vine around a tree and stares calmly at the world. Its glare alone can make opponents hesitate.",
+      "Serperior glides with elegant grace and rarely hurries. Its patience is such that fights are usually decided before they begin."
+    ]
+  },
+  "Tepig": {
+    "habitat": "Grassland",
+    "entries": [
+      "A warm snort of flame leaves its nose when it sneezes or laughs, and it sometimes chars a berry before eating it. Roasting is a favorite pastime.",
+      "Tepig likes to nose around for nuts under dry leaves and snuggles up to its trainer on cold nights. Its curly tail wiggles when it is pleased."
+    ]
+  },
+  "Pignite": {
+    "habitat": "Grassland",
+    "entries": [
+      "It puffs out thick smoke with every stout breath. Its round belly is warm to the touch, and its fiery heart makes it eager to dash.",
+      "Pignite charges straight ahead, trusting to its heavy frame. It is not good at holding back, but it is a hard worker."
+    ]
+  },
+  "Emboar": {
+    "habitat": "Mountain",
+    "entries": [
+      "Flames burst from its chin when it is angry and heat rolls off in waves. It has the strength to flatten a boulder and the heart to lift a friend.",
+      "Emboar sets its fists ablaze and pounds the earth in a rhythm. It is fiercely loyal and always puts its partner first."
+    ]
+  },
+  "Oshawott": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It carries a smooth scallop on its belly and uses it to open shells and to clear a path. The shell is polished daily and is its pride.",
+      "Oshawott floats on its back along rivers and enjoys the sun. It practices with its shell near the water at dawn."
+    ]
+  },
+  "Dewott": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Two shells are held in its hands like twin swords, and it slices through the air as it practices. It trains with great discipline every day.",
+      "Dewott knows its own skill and bears itself with dignity. It will duel only on fair ground and never in a hurry."
+    ]
+  },
+  "Samurott": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A long blade extends from each of its forelegs, and with the horn on its brow it fights with a steady calm. It values honor above victory.",
+      "Samurott stares down an opponent without a flinch. Its big, strong body shrugs off most blows."
+    ]
+  },
+  "Patrat": {
+    "habitat": "Grassland",
+    "entries": [
+      "Rising onto its hind legs, it scans the area around it and warns the others of anything strange. Its cheeks bulge with seeds stored away for later.",
+      "Patrat lives in burrows dug at the edge of fields. It is a careful watcher that rarely wanders far from home."
+    ]
+  },
+  "Watchog": {
+    "habitat": "Grassland",
+    "entries": [
+      "When it spots trouble, its stripes glow and it stands at attention. It communicates with signals made with its long tail.",
+      "Watchog stays alert with its eyes wide open, even while it eats. It takes its role as a lookout extremely seriously."
+    ]
+  },
+  "Lillipup": {
+    "habitat": "Urban",
+    "entries": [
+      "It is a brave little pup that stands its ground against bigger dogs. It is quick to bark but easy to train and eager to please.",
+      "Lillipup tags along behind the family it likes and wags its tail. It sniffs out lost objects and brings them back proudly."
+    ]
+  },
+  "Herdier": {
+    "habitat": "Urban",
+    "entries": [
+      "It stays loyal to its trainer without question and will guard a home or lead lost travelers back. Its thick fur gives it the look of a shaggy rug.",
+      "Herdier follows commands calmly and carries things in its mouth. In a crowd it never loses track of its owner."
+    ]
+  },
+  "Stoutland": {
+    "habitat": "Urban",
+    "entries": [
+      "It is known for finding people lost in the snow. Its long coat keeps it warm, and it digs down with its big paws to reach a person buried underneath.",
+      "Stoutland has a calm, gentle manner that puts nervous people at ease. It sniffs out trails even after heavy rain."
+    ]
+  },
+  "Purrloin": {
+    "habitat": "Urban",
+    "entries": [
+      "It acts sweet and innocent, then snatches a snack from your hand and darts away. Its sly eyes gleam when it is up to something.",
+      "Purrloin slinks through alleys in search of leftovers. It likes to curl up where it can be seen yet not caught."
+    ]
+  },
+  "Liepard": {
+    "habitat": "Urban",
+    "entries": [
+      "It prowls at night without making a sound, and its eyes glow in the gloom. Sleek muscles make it a wildly fast sprinter.",
+      "Liepard approaches prey from behind, patient and silent. A cool beauty, it keeps its distance from strangers."
+    ]
+  },
+  "Pansage": {
+    "habitat": "Forest",
+    "entries": [
+      "The leafy tuft on its head is fragrant and tasty, and it is fond of sharing food with friends. It grumbles if no one wants a taste.",
+      "Pansage plucks berries from the treetops and passes them down to its pals. Its tail flicks when it is happy."
+    ]
+  },
+  "Simisage": {
+    "habitat": "Forest",
+    "entries": [
+      "Its thorny tail is both a whip and a weapon. It is short tempered and will lash out at any who disturb its trees.",
+      "Simisage crashes through the foliage with a mighty whoop, hauling bunches of fruit. Its ferocity is a bluff more often than not."
+    ]
+  },
+  "Pansear": {
+    "habitat": "Mountain",
+    "entries": [
+      "A flame flickers at the end of its tail and never dies out, warm enough to heat a small room. It enjoys cooking berries and gets sulky if they burn.",
+      "Pansear is a hot-blooded little monkey that gets overheated easily. It sits in the shade between bursts of energy."
+    ]
+  },
+  "Simisear": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its head is crowned with a bright blaze that flares when it fights. It stokes the fire by blowing on it and rubbing its paws together.",
+      "Simisear loves spicy food and spits embers when it laughs. It is bold and mischievous and enjoys a prank."
+    ]
+  },
+  "Panpour": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Water gathers in the tuft on its head, and it sprays the contents in a fine mist to cool its friends on a hot day. It dozes off when the tuft runs dry.",
+      "Panpour fusses over its tuft and rinses it in clean streams. A leaky, dirty one leaves it sulky and out of sorts."
+    ]
+  },
+  "Simipour": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its tail draws water up from the ground and lets it go as a strong jet. It brings fresh water to dry places and puts out small fires.",
+      "Simipour is stubborn and sharp-tongued, always ready to scold a lazy friend. It hates to see good water wasted."
+    ]
+  },
+  "Munna": {
+    "habitat": "Forest",
+    "entries": [
+      "It drifts through the night and gobbles up dreams, leaving pink mist behind. If it eats a sweet dream, the mist turns brightly colored.",
+      "Munna naps often and hangs on to whoever is nearest. Its forehead mark gives off a soft glow when it feeds."
+    ]
+  },
+  "Musharna": {
+    "habitat": "Forest",
+    "entries": [
+      "The mist rising from its forehead shows the dreams it has gathered, and the pictures drift above it like small clouds. It lives in a haze of sleep.",
+      "Musharna slumbers through most of its life, and its dream smoke can lull a whole town. It moves only when it must."
+    ]
+  },
+  "Pidove": {
+    "habitat": "Urban",
+    "entries": [
+      "It bobs its head as it walks and is not shy of crowds. Parks and plazas are its favorite haunts, where it picks up crumbs.",
+      "Pidove can find its way home from far away. It makes a soft, cooing sound whenever it feels safe and well fed."
+    ]
+  },
+  "Tranquill": {
+    "habitat": "Urban",
+    "entries": [
+      "It never loses its way, even when carried a long distance in the dark. People used to send messages on its wings.",
+      "Tranquill glides over rooftops and tall buildings without effort. Its sense of direction is excellent."
+    ]
+  },
+  "Unfezant": {
+    "habitat": "Grassland",
+    "entries": [
+      "The male struts about with a bright head crest and fans it out to impress, while the female flies with swift, precise turns.",
+      "Unfezant takes long strides and prefers to run before it takes off. Its glossy plumage is cleaned many times each day."
+    ]
+  },
+  "Blitzle": {
+    "habitat": "Grassland",
+    "entries": [
+      "The stripes along its mane spark when it gallops, and it takes off at the first rumble of thunder. It is skittish and quick to bolt.",
+      "Blitzle gathers static as it runs and lets it go in a flicker. It enjoys racing with the wind and the rain."
+    ]
+  },
+  "Zebstrika": {
+    "habitat": "Grassland",
+    "entries": [
+      "It gallops so swiftly that its hooves are almost silent, and a thunderclap booms behind it. It can outrun almost any foe.",
+      "Zebstrika's mane glows bright when it is angry. In a storm it stands on a hilltop and neighs at the flashes."
+    ]
+  },
+  "Roggenrola": {
+    "habitat": "Cave",
+    "entries": [
+      "It has no ears, but it can sense sounds through the vibration of the ground. A faint tapping comes from within its body as it rolls about.",
+      "Roggenrola lives under the earth and sometimes tumbles out of the walls of a cave. Its shell is every bit as tough as the stone around it."
+    ]
+  },
+  "Boldore": {
+    "habitat": "Cave",
+    "entries": [
+      "Orange crystals sprout from its back, and the harder it fights, the brighter they glow. Miners treasure the energy they hold.",
+      "Boldore rolls along tunnels with a deep rumbling. When angry, it hurls sharp stones from its crystals."
+    ]
+  },
+  "Gigalith": {
+    "habitat": "Mountain",
+    "entries": [
+      "It soaks up sunlight in its crystals and fires it out in a beam that can bore through solid rock. Its huge body is as sturdy as a mountain.",
+      "Gigalith's crown of crystals pulses with light as it fights. It is gentle at heart and stays close to its mine."
+    ]
+  },
+  "Woobat": {
+    "habitat": "Cave",
+    "entries": [
+      "It hangs upside down by the dozen on the ceilings of caves, and if you meet one, it may leave a heart-shaped mark on you. It is a very social flyer.",
+      "Woobat settles on the walls of dark places and hums softly. A strange smell clings to its fur."
+    ]
+  },
+  "Swoobat": {
+    "habitat": "Cave",
+    "entries": [
+      "Its wings send out sound waves that you cannot hear but that can make rocks crack. It flutters in the air to show it likes someone.",
+      "Swoobat swoops down from its perch with a gentle flap. Its noise blasts can bring down an entire cave roof."
+    ]
+  },
+  "Drilbur": {
+    "habitat": "Cave",
+    "entries": [
+      "It spins its claws like a drill and tunnels faster than a person can follow. It leaves long, curved trenches behind it.",
+      "Drilbur is as eager as a young digger on his first day of work. It likes to pop up from underground and surprise travelers."
+    ]
+  },
+  "Excadrill": {
+    "habitat": "Cave",
+    "entries": [
+      "Two steel drills at its head rotate at high speed to tunnel through rock, and it can dig a mile in a single day. It loves nothing more than digging.",
+      "Excadrill burrows in the dark, using its large claws as picks. It has a fierce, restless temper."
+    ]
+  },
+  "Audino": {
+    "habitat": "Forest",
+    "entries": [
+      "Its feelers can hear a heartbeat from a distance, and it loves to check on how others feel. Hurt creatures often find their way to its side.",
+      "Audino is a kind, caring creature, and its soft fur is pleasant to touch. It carries an extra spare of food for those who are hungry."
+    ]
+  },
+  "Timburr": {
+    "habitat": "Urban",
+    "entries": [
+      "It carries a stout piece of lumber around with it as a tool and a toy. Builders appreciate its help hauling beams.",
+      "Timburr wields a log with ease and swings it at any obstacle. Work makes it happy, and idleness makes it fidgety."
+    ]
+  },
+  "Gurdurr": {
+    "habitat": "Urban",
+    "entries": [
+      "Its steel beam is carried everywhere, and it can hold up whole buildings. Hard labor builds up its muscles day after day.",
+      "Gurdurr gathers with others at building sites and trains in teams. Its eye looks sharply upon anyone who slacks."
+    ]
+  },
+  "Conkeldurr": {
+    "habitat": "Urban",
+    "entries": [
+      "It wields two big concrete pillars, and swings them with mighty force. Some say it is the master of building, and its help is much sought after.",
+      "Conkeldurr is a stern but kind veteran, always ready to lend a hand. Its muscles ripple as it works."
+    ]
+  },
+  "Tympole": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It sings by vibrating its tail, and the sound carries underwater to others. Its fellows join the chorus until the whole pond is humming.",
+      "Tympole drums softly against a rock to call its friends. A cold, rainy night is its favorite time for a concert."
+    ]
+  },
+  "Palpitoad": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The bumps on its body give out gentle pulses and make the water around it ripple. It lives near still lakes with soft mud.",
+      "Palpitoad's tongue is long and sticky, and it uses it to snag insects on the wing. In the evening, it slips out of the water to hunt."
+    ]
+  },
+  "Seismitoad": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It strikes the ground with the knobs on its arms and sends out quakes that numb its foes. Its pulses are felt through the whole swamp.",
+      "Seismitoad flings sticky toxin from its skin. Its steady, thundering song rolls over the marsh at night."
+    ]
+  },
+  "Throh": {
+    "habitat": "Mountain",
+    "entries": [
+      "It grabs its foe by the belt and flings it over its shoulder. It tightens its belt before a fight, and a loose belt means it has lost its nerve.",
+      "Throh trains in the hills with a group of friends. Only a worthy challenger is invited to a bout."
+    ]
+  },
+  "Sawk": {
+    "habitat": "Mountain",
+    "entries": [
+      "It trains by punching and kicking at the stone and bark. The sharp snap of its blows echoes among the trees.",
+      "Sawk tightens its belt and bows before a match. It will not stop until it is truly defeated."
+    ]
+  },
+  "Sewaddle": {
+    "habitat": "Forest",
+    "entries": [
+      "After hatching, it stitches leaves into a cozy cloak. It nibbles on the stitching when it is hungry, and sews a bigger one when it grows.",
+      "Sewaddle moves along leaf stems and chews through the veins. In the evening it rests wrapped up in its garment."
+    ]
+  },
+  "Swadloon": {
+    "habitat": "Forest",
+    "entries": [
+      "It hides in a snug bundle of leaves to stay safe while it changes. The wrap is turned to the sun to keep it warm.",
+      "Swadloon almost never moves, but its leafy shell gives off a gentle, fresh scent. It prefers the shade."
+    ]
+  },
+  "Leavanny": {
+    "habitat": "Forest",
+    "entries": [
+      "It makes clothes for its young by stitching leaves with thread from its mouth. The layers it makes keep the little ones warm.",
+      "Leavanny watches over smaller bug Pokémon and brings them food. Its sharp claws work with great skill."
+    ]
+  },
+  "Venipede": {
+    "habitat": "Forest",
+    "entries": [
+      "It is quick to strike with its venomous fangs and scurries through leaf litter in all directions. It has a short fuse and a fiery spirit.",
+      "Venipede crawls among stones looking for a meal. Its many legs drum against the ground when it is angry."
+    ]
+  },
+  "Whirlipede": {
+    "habitat": "Forest",
+    "entries": [
+      "It curls up inside its shell and spins like a wheel, charging forward with great speed. Its spiky armor repels a bite.",
+      "Whirlipede rests in a tight coil and builds up energy for the change to come. Touching it carelessly can bring a nasty sting."
+    ]
+  },
+  "Scolipede": {
+    "habitat": "Forest",
+    "entries": [
+      "Its body is long and strong, and it ties foes up with its coils. It jabs with venom from two sharp horns at the front.",
+      "Scolipede hunts down its prey with a relentless drive. Its speed is amazing, even over rough ground."
+    ]
+  },
+  "Cottonee": {
+    "habitat": "Grassland",
+    "entries": [
+      "It floats in the wind like a bit of fluff and sneaks into homes through open windows. A soft breeze carries it along.",
+      "Cottonee likes to gather in great white drifts. A strong gust can blow it away, but it simply drifts back."
+    ]
+  },
+  "Whimsicott": {
+    "habitat": "Grassland",
+    "entries": [
+      "It plays tricks and slips away like the wind. If caught, it leaves tufts of cotton behind and vanishes.",
+      "Whimsicott flies on a breeze and hides in clouds. The cottony puffs it leaves can spoil anything they land on."
+    ]
+  },
+  "Petilil": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its leaves soak up sunlight and use it to grow, and a gloomy day makes it sulky. It plants itself in the earth for a nap and drinks the rain.",
+      "Petilil is gentle and shy, with a lovely, soft scent. A sweet bud on its head blooms when it is happy."
+    ]
+  },
+  "Lilligant": {
+    "habitat": "Grassland",
+    "entries": [
+      "It carries itself like a dancer and sways with graceful steps. Folk tales say the bloom on its head brings good luck to those who see it.",
+      "Lilligant has a sweet fragrance that calms those around it. It is an elegant, delicate creature that looks after its petals."
+    ]
+  },
+  "Basculin": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A big school of them can turn a quiet lake into a boiling froth. They are aggressive and will attack anything that comes into their territory.",
+      "Basculin has a sharp temper and a strong jaw. It is easily recognizable by the red or blue stripe across its body."
+    ]
+  },
+  "Sandile": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It hides under the sand with only its eyes poking out, watching for something to eat. Thick skin keeps in its moisture in the heat of the day.",
+      "Sandile has a bad habit of nipping at people. It swims through the dunes as though they were water."
+    ]
+  },
+  "Krokorok": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its eyes are shielded from the sun and the sand, and it can see well in the dark. It scrambles after prey in a pack.",
+      "Krokorok's tail swings when it hunts. It grabs onto its prey, and does not let go."
+    ]
+  },
+  "Krookodile": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It is a ferocious hunter that tears through prey with powerful jaws. Its glare is so fierce that others back away.",
+      "Krookodile's pulling power is immense, and it can tow a loaded truck. It sees almost everything as a threat."
+    ]
+  },
+  "Darumaka": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It rolls about like a ball and is round and lively. At bedtime it tucks in its limbs, and the fire inside it shrinks to a flicker.",
+      "Darumaka is hot-blooded and takes pride in its stubborn spirit. It bounces back every time it is knocked over."
+    ]
+  },
+  "Darmanitan": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It has a fiery temper and powerful fists, and it pounds the ground in rage. After a fight, it sits in a meditative pose to calm down.",
+      "Darmanitan lives in the desert and wears a thick mane of flame. When pressed, it flies into a frenzy."
+    ]
+  },
+  "Maractus": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It dances on dry plains and shakes the seeds on its arms like maracas. The rhythms it makes can be heard from far away.",
+      "Maractus loves a lively beat and grows stronger when there is music. Its wide flower blossoms in warm sun."
+    ]
+  },
+  "Dwebble": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It digs out a rock and takes it as a home, and then it carries its shelter wherever it goes. It uses the shell's size as a measure of its worth.",
+      "Dwebble leaves its stone to feed in the cool of the evening. A very good rock draws arguments with its neighbors."
+    ]
+  },
+  "Crustle": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It bears a massive boulder on its back and stands firm against all comers. Two of them will heave their rocks at each other to settle who is stronger.",
+      "Crustle's rock home has been in its care for years. It moves slowly under the weight but cannot be shifted."
+    ]
+  },
+  "Scraggy": {
+    "habitat": "Urban",
+    "entries": [
+      "It wears its baggy skin like a loose pair of trousers, and kicks up a fuss if someone tries to tug it. A rough crowd is its typical company.",
+      "Scraggy has a hard head that it uses to knock down obstacles. It runs in gangs and is always looking for a scrap."
+    ]
+  },
+  "Scrafty": {
+    "habitat": "Urban",
+    "entries": [
+      "It holds a leader's place among a gang of troublemakers, and its kicks are swift and heavy. A tough crest keeps its head safe in a scrap.",
+      "Scrafty rules the back alleys with a dry stare. Its loose hide is an excellent shield and lets it shrug off blows."
+    ]
+  },
+  "Sigilyph": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It circles over a ruined city on a set route and swoops down on anyone who strays beneath. The patterns on its wings look like old carvings.",
+      "Sigilyph guards a place that has been long forgotten. Its strange eyes flash as it hovers on the wind."
+    ]
+  },
+  "Yamask": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It clutches a mask that looks like a face from long ago, and if it gazes into it, it weeps. It drifts among old stones in the evening.",
+      "Yamask rarely lets anyone see what its mask hides. Its sad, silent steps never leave a track."
+    ]
+  },
+  "Cofagrigus": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its golden casket is painted with elaborate designs and holds a hidden figure. It moves with a slow tread and its lid creaks shut over its prey.",
+      "Cofagrigus lingers in tombs and keeps an old, hollow stare. Its four arms are rarely still."
+    ]
+  },
+  "Tirtouga": {
+    "habitat": "Sea",
+    "entries": [
+      "It swam in ancient seas and ate shellfish that lay on the sea floor. Brought back from a fossil, it has a dull, gentle look.",
+      "Tirtouga retreats into its shell when threatened, then pushes out its head to bite. It is a strong swimmer in cold water."
+    ]
+  },
+  "Carracosta": {
+    "habitat": "Sea",
+    "entries": [
+      "Its shell is armor that has weathered countless seas, and it dives deep to hunt. It walks on two legs when on land.",
+      "Carracosta's powerful jaws can crack open hard-shelled prey. It carries its heavy shell with ease."
+    ]
+  },
+  "Archen": {
+    "habitat": "Mountain",
+    "entries": [
+      "It cannot truly fly, but it can glide from cliff tops. Fossil hunters have revived it from long-buried stone.",
+      "Archen lived in trees and leapt from branch to branch. It flaps its wings wildly but doesn't get far."
+    ]
+  },
+  "Archeops": {
+    "habitat": "Mountain",
+    "entries": [
+      "It runs on strong legs and takes off to hunt in the sky. Its whole body is heavy, though, and it tires quickly when it flies.",
+      "Archeops lands with a thud and a loud cry. It fights with sharp claws and its feather crest."
+    ]
+  },
+  "Trubbish": {
+    "habitat": "Urban",
+    "entries": [
+      "It lives in back lots where people leave their garbage, and it feeds on what others discard. A foul smell clings to it.",
+      "Trubbish carries a bag of junk and does not mind the stink. It is quite at home among old cans and broken toys."
+    ]
+  },
+  "Garbodor": {
+    "habitat": "Urban",
+    "entries": [
+      "Poison seeps from the trash heap on its back, and its arms drip with sludge. It lumbers through the dump in search of a meal.",
+      "Garbodor grows larger when the dump is full of good things. It does not seem to notice its own smell."
+    ]
+  },
+  "Zorua": {
+    "habitat": "Forest",
+    "entries": [
+      "It can take on the form of a person or Pokémon to trick those who wander too close. The disguise falls away when it is frightened.",
+      "Zorua plays pranks on people in the woods and then watches them from the bushes. It can look like anyone, but its tail always shows."
+    ]
+  },
+  "Zoroark": {
+    "habitat": "Forest",
+    "entries": [
+      "It uses illusions to protect its family, and it creates whole landscapes to confuse hunters. A lone traveler may wander in circles for hours.",
+      "Zoroark is fiercely devoted to its pack. It moves with a silent stride and then vanishes in a blur."
+    ]
+  },
+  "Minccino": {
+    "habitat": "Grassland",
+    "entries": [
+      "It sweeps its home clean with its long, soft tail and keeps it spotless. If it finds dust, it starts to tidy up on the spot.",
+      "Minccino loves a neat nest and gets upset when anything is out of place. Its fur is sleek and silky."
+    ]
+  },
+  "Cinccino": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its coat is covered in a fine oil that repels dust and dirt. It wraps its tail around itself like a scarf and wears it with pride.",
+      "Cinccino is elegant and graceful and slaps its foes with its tail in quick, light flurries. It holds a grudge against messy spaces."
+    ]
+  },
+  "Gothita": {
+    "habitat": "Urban",
+    "entries": [
+      "It stares at things for a long time with big, unblinking eyes. In the dark it may look at nothing in particular, and that makes people uneasy.",
+      "Gothita wears a ribbon-like bow on its head and moves quietly. It is shy, but it follows people about at a distance."
+    ]
+  },
+  "Gothorita": {
+    "habitat": "Urban",
+    "entries": [
+      "It is said to watch the stars at night and read the future in them. Its gaze seems to follow you wherever you go.",
+      "Gothorita holds its arms out as it moves, and its mind is hard to read. A small bow of dark hair sways above its eyes."
+    ]
+  },
+  "Gothitelle": {
+    "habitat": "Urban",
+    "entries": [
+      "It looks to the heavens on clear nights and can sense the paths of the stars. Some insist it can read what the future holds.",
+      "Gothitelle wears a gown of black and hides its eyes in the shadows. Its mysterious power draws many towards it."
+    ]
+  },
+  "Solosis": {
+    "habitat": "Urban",
+    "entries": [
+      "It floats in a bubble of fluid that shields it from harm, and it lets out thoughts that people can sense. It is a quiet and thoughtful being.",
+      "Solosis can talk through its mind and communicates in short bursts. A tiny cell drifts slowly through the air."
+    ]
+  },
+  "Duosion": {
+    "habitat": "Urban",
+    "entries": [
+      "Two minds are better than one, and each half of it thinks independently. When they disagree, it seems to freeze in place.",
+      "Duosion hovers silently and lets its thoughts drift about. Strangers find it hard to read."
+    ]
+  },
+  "Reuniclus": {
+    "habitat": "Urban",
+    "entries": [
+      "It shakes hands to link minds and share thoughts. Its brain is so large that it can work out a complex puzzle in an instant.",
+      "Reuniclus is calm and wise, but its power is strong. It is said that its gel cells let it send waves of force."
+    ]
+  },
+  "Ducklett": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It splashes in the shallows and makes a fine bubbling chatter. Wet or dry, it is much better at swimming than flying.",
+      "Ducklett dives for water plants and paddles through the reeds. A mother will lead her flock in a tidy line."
+    ]
+  },
+  "Swanna": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It begins its dance at dawn and rises on its wings like a graceful ballerina. Its white feathers are brushed back and kept clean.",
+      "Swanna is known for gliding gently over lakes. It shows great pride in its pure plumage."
+    ]
+  },
+  "Vanillite": {
+    "habitat": "Mountain",
+    "entries": [
+      "Born from fresh snow, it drinks in cold air and breathes out a fine powder of ice. It likes to bask in the cold and melts if it grows warm.",
+      "Vanillite is a sweet little treat that floats about on chilly days. Children think it looks like a cone of ice cream."
+    ]
+  },
+  "Vanillish": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its twin heads draw in cold air and breathe it out as a harsh blizzard. It is safe only in a place where the air stays frosty.",
+      "Vanillish glitters in the sun, but the sparkle is only frozen water. It becomes sluggish when the weather gets warm."
+    ]
+  },
+  "Vanilluxe": {
+    "habitat": "Mountain",
+    "entries": [
+      "The twin heads fight against each other and make blasts of snow when their tempers rise. The cold from its body can freeze the ground.",
+      "Vanilluxe builds up a storm inside itself and breathes it out. It comes from a distant mountain of ice."
+    ]
+  },
+  "Deerling": {
+    "habitat": "Forest",
+    "entries": [
+      "Its coat shifts in color with the seasons, matching the pink of spring, the green of summer, the red of autumn or the gray of winter.",
+      "Deerling lives in woodlands and its fur smells of flowers. Its soft step makes no sound on the forest floor."
+    ]
+  },
+  "Sawsbuck": {
+    "habitat": "Forest",
+    "entries": [
+      "Its antlers sprout in a new array of flowers or leaves in each season. It leaps through the trees with a gait full of grace.",
+      "Sawsbuck herds travel together and signal the change of season with the colors of their coats. Their antlers are admired by all."
+    ]
+  },
+  "Emolga": {
+    "habitat": "Forest",
+    "entries": [
+      "It stores electricity in its cheeks and releases it in a spark when it is spooked. Its flaps of skin let it glide between trees.",
+      "Emolga plays in the tops of the trees and sleeps in a hole in the trunk. It gets shocked if it eats too many nuts."
+    ]
+  },
+  "Karrablast": {
+    "habitat": "Forest",
+    "entries": [
+      "Whenever it spots one particular rival, it charges with no thought at all. When they are near, its jaws snap open in a fury.",
+      "Karrablast lives in the dark depths of the woods and can't help but rush into danger. Its tiny jaws are tough and sharp."
+    ]
+  },
+  "Escavalier": {
+    "habitat": "Forest",
+    "entries": [
+      "Its armor is stolen from another and worn like a suit of iron, and it guards itself with a lance. It fights fiercely without letting go of its weapon.",
+      "Escavalier thrusts with its twin lances in rapid strokes. Its stiff steel plates make it very hard to hurt."
+    ]
+  },
+  "Foongus": {
+    "habitat": "Forest",
+    "entries": [
+      "Its cap is patterned like a ball left lying on the forest floor, and it waits for the curious to come close. When they reach down to pick it up, it releases a cloud of spores.",
+      "Foongus sits patiently among the ferns and plays at being a toy. It dances when no one is watching."
+    ]
+  },
+  "Amoonguss": {
+    "habitat": "Forest",
+    "entries": [
+      "It sways its arms to lure prey in with a hypnotic dance. The pattern on its cap draws the eye while it blasts a cloud of toxic spores.",
+      "Amoonguss prefers to stay on the ground and wait for a meal to come by. Its odd shape confuses hungry newcomers."
+    ]
+  },
+  "Frillish": {
+    "habitat": "Sea",
+    "entries": [
+      "It floats on the ocean currents and wraps its frilly arms around any ship that comes too near. Its eerie glow draws curious people into the water.",
+      "Frillish drifts around in the warm seas, slowly pulsing. It is said that the male and the female can be told apart by their color."
+    ]
+  },
+  "Jellicent": {
+    "habitat": "Sea",
+    "entries": [
+      "It drags lost ships down to the depths and keeps them in its watery lair. Sailors say it haunts shipwrecks at night.",
+      "Jellicent lives in the dark of the ocean where it hides sunken treasure. Its massive form fills the water with a pale glow."
+    ]
+  },
+  "Alomomola": {
+    "habitat": "Sea",
+    "entries": [
+      "It heals sick or injured fish with a special mucus, and it seeks out those who need help. It swims close to the wounded and nudges them along.",
+      "Alomomola is a gentle healer that never fights. Its pale pink body hovers among the waves, always looking for someone in need."
+    ]
+  },
+  "Joltik": {
+    "habitat": "Forest",
+    "entries": [
+      "It clings to larger creatures and takes a little of their static to store in a sac on its body. A swarm can hide a whole tree trunk.",
+      "Joltik is small, but a pinprick of its electricity is a nasty surprise. It likes to hitch rides on the backs of other Pokémon."
+    ]
+  },
+  "Galvantula": {
+    "habitat": "Forest",
+    "entries": [
+      "It spins a web of electric threads and waits for prey to touch them. When it senses a tug, it shoots out a stinging charge.",
+      "Galvantula runs along the web with a skittering rush. The charged strands crackle and spit in a thunderstorm."
+    ]
+  },
+  "Ferroseed": {
+    "habitat": "Cave",
+    "entries": [
+      "It clings to the roof of a cave and sucks iron from the rock. When threatened, it fires spikes in all directions.",
+      "Ferroseed has a body of hard metal and spiny quills. It may seem harmless, but its prickly coat is a warning."
+    ]
+  },
+  "Ferrothorn": {
+    "habitat": "Cave",
+    "entries": [
+      "It hangs by its vines from cave ceilings and lashes out with whip-like tentacles. Its spiky shell is covered in thorns.",
+      "Ferrothorn hardly moves, and it weighs more than it appears. When angry, it whips about with a clanging rattle."
+    ]
+  },
+  "Klink": {
+    "habitat": "Urban",
+    "entries": [
+      "Two gears mesh in its body, and when they turn it hums. It is peaceful and unlikely to cause trouble.",
+      "Klink looks for a gear that fits its own and spins with it in perfect time. If they don't match, it gets upset and clicks about."
+    ]
+  },
+  "Klang": {
+    "habitat": "Urban",
+    "entries": [
+      "Its pair of gears are matched and turn against each other to power its body. They never leave one another's side.",
+      "Klang can fire a spinning gear at a target. The hard shell is cold and smooth to the touch."
+    ]
+  },
+  "Klinklang": {
+    "habitat": "Urban",
+    "entries": [
+      "The red core rotates and holds energy in reserve. Its gears are one of the oldest designs in the world.",
+      "Klinklang fires a beam of focused power from the core. The drive that turns its great gears makes a regular, ringing beat."
+    ]
+  },
+  "Tynamo": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Alone it is feeble, but in large groups the sparks it makes can fry a whole boat. It swims in schools near the shore.",
+      "Tynamo is the tiniest of electric fish, and it gives off a faint glow. It seems to enjoy storms."
+    ]
+  },
+  "Eelektrik": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It wraps around its prey and zaps it, and its mouth shows rows of tiny, sharp teeth. It slips out of the water and slithers over the ground.",
+      "Eelektrik gives off powerful charges, and it uses the lights on its body to see in the dark. In the wild, it lives in caves with water."
+    ]
+  },
+  "Eelektross": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It crawls from the water and takes hold of a foe with its limbs and fangs. Then it blasts it with a surge of power.",
+      "Eelektross uses its strong arms to grip. Even a short touch from its fangs is enough to numb a hand."
+    ]
+  },
+  "Elgyem": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its big head holds a mind that can send out waves to nudge its surroundings. It hums quietly to itself and rarely looks anyone in the eye.",
+      "Elgyem is reported to have fallen from the sky. When it is curious, its eyes glow a mild yellow-green."
+    ]
+  },
+  "Beheeyem": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It points its long fingers and lights them up to talk in flashes of color. A pale beam of the same glow can twist the memory of a witness.",
+      "Beheeyem sits in the dark of a field and takes in its surroundings. Farmers who meet one tend to lose the thread of their memories."
+    ]
+  },
+  "Litwick": {
+    "habitat": "Urban",
+    "entries": [
+      "It sheds a faint, cold glow, but the flame on its head draws the spirit from those it burns. It likes to shine near places where people have died.",
+      "Litwick glides into view at dusk, a little wax candle moving by itself. Travelers who follow its light end up lost."
+    ]
+  },
+  "Lampent": {
+    "habitat": "Urban",
+    "entries": [
+      "It haunts hospitals and houses where someone is about to die. It floats close by, patiently waiting.",
+      "Lampent glows with a ghostly blue fire and goes quiet when it is spotted. It sucks in the spirit of anyone it sees falling ill."
+    ]
+  },
+  "Chandelure": {
+    "habitat": "Urban",
+    "entries": [
+      "Its fire is the color of a ghost, and it entices travelers with a swaying dance. Anyone who gazes into the flames is lost.",
+      "Chandelure waves its arms and sets alight the souls it has gathered. Its eerie elegance is a feature of old, dim mansions."
+    ]
+  },
+  "Axew": {
+    "habitat": "Mountain",
+    "entries": [
+      "The tusks on its jaw grow back after they fall off, and it sharpens them on stone to keep them keen. It scratches marks on trees to show its territory.",
+      "Axew likes to chew on anything hard. It cuts a deep scar into the ground when it digs in its heels."
+    ]
+  },
+  "Fraxure": {
+    "habitat": "Mountain",
+    "entries": [
+      "It trims its tusks against a rock to keep them in prime condition. It is proud of them and loses its temper if they are snapped.",
+      "Fraxure is a fighter that charges any rival that crosses its path. Its sharp tusks can slice through a thick trunk."
+    ]
+  },
+  "Haxorus": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its massive tusks could cut through steel, and yet it is calm unless it is provoked. It is a fair fighter that will not strike a defenseless foe.",
+      "Haxorus is feared across the mountains, but it can be kind and protective of those it knows. Its tusks are fit for a king."
+    ]
+  },
+  "Cubchoo": {
+    "habitat": "Mountain",
+    "entries": [
+      "The icicle under its nose grows long when it is healthy and fresh. It sniffles in cold weather, and its snot freezes in a flash.",
+      "Cubchoo gets sick if its nose runs dry. When winter sets in, it trudges about looking for a hearty meal."
+    ]
+  },
+  "Beartic": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its breath turns to a freezing wind and makes ice crystals on its fur. It scales icy cliffs with a firm grip of its claws.",
+      "Beartic stalks the frozen sea in search of fish. It grows a thick coat of icicles and holds its ground in the blizzard."
+    ]
+  },
+  "Cryogonal": {
+    "habitat": "Mountain",
+    "entries": [
+      "It is formed of ice crystals, and it flows across the sky with a trail of snow. It hides in clouds, and it falls only to catch something to eat.",
+      "Cryogonal is a six-sided shape of pure frost. When it is held, it freezes the hand and shatters if dropped."
+    ]
+  },
+  "Shelmet": {
+    "habitat": "Forest",
+    "entries": [
+      "It wears a hard shell like a helmet and cannot move well without a partner. It does best when it works with another Pokémon.",
+      "Shelmet is slow and sticky and leaves a trail of goo as it creeps. Its shell is nice and warm."
+    ]
+  },
+  "Accelgor": {
+    "habitat": "Forest",
+    "entries": [
+      "Without its heavy shell it moves like a flash, and it hurls its body around in rapid bursts. Its strikes are too fast to see.",
+      "Accelgor flings itself about and leaves a spray of liquid in its wake. It avoids attacks by leaping out of the way at the last second."
+    ]
+  },
+  "Stunfisk": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It lies buried in mud with only its eyes showing, and waits until a victim steps on it. It zaps its meal with a jolt of power.",
+      "Stunfisk keeps its mouth turned up in a permanent frown. It has a flat body that lets it blend into the muck."
+    ]
+  },
+  "Mienfoo": {
+    "habitat": "Mountain",
+    "entries": [
+      "It practices by flinging its limbs at the air and is quick to learn new moves. Its supple body lets it strike from many angles.",
+      "Mienfoo sets itself in a stance and bows. Its steps are light, and it dodges blows with a twist of its waist."
+    ]
+  },
+  "Mienshao": {
+    "habitat": "Mountain",
+    "entries": [
+      "The fur on its arms is used like a whip and cracks through the air. Its kicks and strikes are lightning fast.",
+      "Mienshao keeps up a constant flow of strikes. Its trained body is flexible and hardy, and its mind is calm."
+    ]
+  },
+  "Druddigon": {
+    "habitat": "Cave",
+    "entries": [
+      "It lives in a cave and ambushes whoever passes. It lies in wait with its mouth shut, then lunges with a roar.",
+      "Druddigon has a rough, red hide that is tough as rock. It sleeps in the sun to warm its body, and its wings are used as a cloak."
+    ]
+  },
+  "Golett": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It was made out of clay by someone long ago, and it moves on a strange, slow march. No one knows why it was built or who built it.",
+      "Golett roams around ancient ruins with a blank, dull stare. When it gets going, its stiff legs thump on the ground."
+    ]
+  },
+  "Golurk": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It guards its home with a steady watch, and a plate set into its chest is what holds its wild power back. It flies when it is sent after a threat.",
+      "Golurk stomps forth with a heavy tread. Legend says it protects the people that live near its ruins."
+    ]
+  },
+  "Pawniard": {
+    "habitat": "Urban",
+    "entries": [
+      "Its body is covered in blades that it keeps sharp, and a gang of them will fight as one. It gladly follows a strong leader.",
+      "Pawniard slashes at its foes with its arms and head. It rubs its blades against each other to hone them."
+    ]
+  },
+  "Bisharp": {
+    "habitat": "Urban",
+    "entries": [
+      "It rules over a pack of lesser blades and commands them with cold looks. A leader of cold steel, it will cut down anyone who disobeys.",
+      "Bisharp shows no mercy, and it fights without pity. Its sharp arms can shear iron plates."
+    ]
+  },
+  "Bouffalant": {
+    "habitat": "Grassland",
+    "entries": [
+      "It charges head first with its great curly afro and shrugs off blows that would topple a wall. It will wreck a truck with its thick skull.",
+      "Bouffalant herds are stubborn and will not give way. It prefers to settle disputes by butting heads."
+    ]
+  },
+  "Rufflet": {
+    "habitat": "Mountain",
+    "entries": [
+      "Small as it is, it picks fights with much bigger rivals and often loses. It trains by diving at foes again and again.",
+      "Rufflet is bold and reckless and flaps its wings loudly. It gets back up and tries again."
+    ]
+  },
+  "Braviary": {
+    "habitat": "Mountain",
+    "entries": [
+      "It is a brave flyer that fights to the end to defend its flock. Even when it is wounded, it stays in the air.",
+      "Braviary is a symbol of courage and protects its friends. It dives with great speed and grabs prey in its talons."
+    ]
+  },
+  "Vullaby": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It wears a bone on its tail as a diaper of sorts, and the young one cannot fly well. It gets by on carrion and leftover scraps.",
+      "Vullaby lurks among the rocks until a bigger predator leaves its meal. It flaps awkwardly and often falls."
+    ]
+  },
+  "Mandibuzz": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It circles over its territory, looking for scraps. It carries bones for the wear of its young and uses them as weapons.",
+      "Mandibuzz keeps a cool eye on the landscape below. It hunts the sick or weakened and never wastes a thing."
+    ]
+  },
+  "Heatmor": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its tongue is a flame that it uses to hunt for ants, and it licks them up with a hiss. It lives where it can find its favorite prey.",
+      "Heatmor slurps up anything it can reach. A flame burns inside its mouth, and it snorts out a stream of fire."
+    ]
+  },
+  "Durant": {
+    "habitat": "Cave",
+    "entries": [
+      "It lives in colonies in deep burrows and bites with steel jaws. A group will team up to take on prey much bigger than themselves.",
+      "Durant digs endless tunnels through the rock. Its enemy is a certain large insect that raids its nest."
+    ]
+  },
+  "Deino": {
+    "habitat": "Cave",
+    "entries": [
+      "It has no sight and bumps into everything, and it tries to bite whatever it touches. It is a danger to anyone who is nearby.",
+      "Deino is a hungry little fellow that gnaws at anything within reach. Its roughness comes from not knowing what it is chewing."
+    ]
+  },
+  "Zweilous": {
+    "habitat": "Cave",
+    "entries": [
+      "Each head has a mind of its own, and the two are always bickering. When they pull in different directions, it goes in circles.",
+      "Zweilous feeds twice as much as other Pokémon and fights for each bite. It lives in the dark and bites the unwary."
+    ]
+  },
+  "Hydreigon": {
+    "habitat": "Cave",
+    "entries": [
+      "Three heads and six wings make it a fearsome sight. It rampages over towns, eating everything it meets, and then flies on in a rage.",
+      "Hydreigon's heads work together to devour a foe. It is called a brutal beast, and no one dares to stand in its way."
+    ]
+  },
+  "Larvesta": {
+    "habitat": "Mountain",
+    "entries": [
+      "It basks in the heat of a volcano and spits out fireballs when angry. Its body is as warm as a heater and its sting is hot enough to burn.",
+      "Larvesta is wrapped in white fluff. When it is time, it gathers heat and heads up in search of a place to sleep."
+    ]
+  },
+  "Volcarona": {
+    "habitat": "Mountain",
+    "entries": [
+      "It scatters a fiery dust as it flaps and lights the sky like a little sun. Long ago, it is said to have shone in place of the sun when it was hidden.",
+      "Volcarona's six wings beat in a steady rhythm and keep the air around it hot. It is a gentle sight when it floats in the dusk."
+    ]
+  },
+  "Cobalion": {
+    "habitat": "Rare",
+    "entries": [
+      "It is said to protect Pokémon from the cruelty of people, and it appears as a blue knight with steel horns. Its body is tough as a shield.",
+      "Cobalion has a kind heart and a stern gaze. It leads its allies with firm and calm confidence."
+    ]
+  },
+  "Terrakion": {
+    "habitat": "Rare",
+    "entries": [
+      "It once smashed a castle wall to save its friends, and its charge can break through any rock. It has a powerful, muscular frame.",
+      "Terrakion lives high in the cliffs and clears away obstacles with a charge. It has a strong sense of justice."
+    ]
+  },
+  "Virizion": {
+    "habitat": "Rare",
+    "entries": [
+      "It moves through the grass like the wind and can slash with the sharp horns on its head. It does not make a sound as it runs.",
+      "Virizion is a graceful, gentle fighter, and strong enough to make a foe back off without a word. It gets along with those who treat nature with care."
+    ]
+  },
+  "Tornadus": {
+    "habitat": "Rare",
+    "entries": [
+      "It flies through the sky on a whirl of wind and brings storms wherever it goes. It spins its tail like a propeller and makes a roaring gale.",
+      "Tornadus has a wild temper and vanishes in a blink. Its swirling winds can rip roofs from houses."
+    ]
+  },
+  "Thundurus": {
+    "habitat": "Rare",
+    "entries": [
+      "It is a restless thing that rides the clouds, and where its bolts strike, the ground is scorched. It flies at the center of its own storm.",
+      "Thundurus cackles and darts about, flinging lightning. Its tail glows like a spark in the dark."
+    ]
+  },
+  "Reshiram": {
+    "habitat": "Rare",
+    "entries": [
+      "A white dragon that is said to represent truth. Its tail ignites with a flame so powerful it can scorch the very sky.",
+      "Reshiram's flames can melt the strongest stone. It is said to have helped build a land with an ideal of truth."
+    ]
+  },
+  "Zekrom": {
+    "habitat": "Rare",
+    "entries": [
+      "A black dragon that is said to represent ideals. Its tail is a generator of lightning, and it can shake the sky with thunder.",
+      "Zekrom is a mighty creature that is said to have helped a hero. Where it flies, the clouds turn dark."
+    ]
+  },
+  "Landorus": {
+    "habitat": "Rare",
+    "entries": [
+      "It brings a good harvest wherever it passes, and its soil is rich and fruitful. Farmers revere it as a god of the fields.",
+      "Landorus stays low over the land and steers the winds to bring rain. Fields it has crossed are known to flourish."
+    ]
+  },
+  "Kyurem": {
+    "habitat": "Rare",
+    "entries": [
+      "It sleeps in a freezing cave and has a body that is hollow like a gaping void. It freezes anything that comes near.",
+      "Kyurem exhales a breath so cold it can turn the air to ice. Its empty frame hungers for something to fill it."
+    ]
+  },
+  "Keldeo": {
+    "habitat": "Rare",
+    "entries": [
+      "It is a swift colt that runs across the water as if on land, and it fights fiercely for its friends. A keen, sharp horn rises from its brow.",
+      "Keldeo's speed is incredible, and its hooves skim above the waves. It is a loyal and brave fighter."
+    ]
+  },
+  "Meloetta": {
+    "habitat": "Rare",
+    "entries": [
+      "Its voice is an enchanting melody that can lift the spirits of all who hear it. It dances on a gentle breeze and its songs can change a mood.",
+      "Meloetta sings with such beauty that it soothes the angriest of hearts. When it dances, its form shifts to match the rhythm."
+    ]
+  },
+  "Genesect": {
+    "habitat": "Rare",
+    "entries": [
+      "An ancient bug brought back with a cannon on its back, it was altered by some unknown party. It flies with great speed and fires a beam of energy.",
+      "Genesect was a fearsome hunter long ago, and now a rebuilt one roams the world. Its body is armored in strong steel."
     ]
   }
 }
