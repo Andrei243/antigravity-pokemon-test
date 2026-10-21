@@ -27,7 +27,9 @@ public enum BattleMenuState
     /// <summary>A Pokémon wants a fifth move: a question of Yes and No, or which move to forget (plan 06 · R10).</summary>
     LearnMove,
     /// <summary>The information panel over the main menu (plan 12 · Q11): the field's state and each Pokémon's, as far as the player has been told.</summary>
-    Info
+    Info,
+    /// <summary>A Pokémon of the team's summary, opened from the switching cards (plan 08 · P4).</summary>
+    Summary
 }
 
 public class BattleHUD

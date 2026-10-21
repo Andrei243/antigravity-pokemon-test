@@ -895,7 +895,7 @@ public class CapsuleTests
         screen.Confirm(party);
         screen.Confirm(party);
         Assert.True(screen.ShowSummary);
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.BattleMovesPage, PartyScreen.ContestMovesPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
         // (The ribbons are the last page: one step back from the first wraps round to them)
         screen.TurnSummaryPage(-1);
         Assert.Equal(PartyScreen.RibbonsPage, screen.SummaryPage);
@@ -911,7 +911,7 @@ public class CapsuleTests
         Assert.Equal(-1, screen.RibbonCursor);
         // With the Contest Hall visited the condition's page stands before the ribbons
         screen.ShowCondition = true;
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.BattleMovesPage, PartyScreen.ContestMovesPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
         screen.TurnSummaryPage(1);
         Assert.Equal(PartyScreen.StatsPage, screen.SummaryPage);
         screen.TurnSummaryPage(-1);

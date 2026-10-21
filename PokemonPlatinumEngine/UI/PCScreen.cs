@@ -10,7 +10,7 @@ namespace PokemonPlatinumEngine.UI;
 public enum StorageZone { Party, BoxName, Box }
 
 /// <summary>What can be done with the Pokémon under the cursor (the box application's menu, plan 06 · R12).</summary>
-public enum PcAction { Move, Withdraw, Store, Mark, Release, Cancel }
+public enum PcAction { Move, Withdraw, Store, Summary, Mark, Release, Cancel }
 
 /// <summary>What can be done with the box whose name is under the cursor.</summary>
 public enum PcBoxAction { Name, Wallpaper, Cancel }
@@ -65,6 +65,16 @@ public class PCScreen
     public Markings? Marking { get; private set; }
     public int MarkIndex { get; set; }
 
+    /// <summary>The summary of the Pokémon under the cursor while it is open over the boxes (SUMMARY, plan 08 · P4); its pages and cursors are <see cref="View"/>'s.</summary>
+    public bool Summarizing { get; private set; }
+
+    public SummaryView View { get; } = new();
+
+    /// <summary>Whether the summary has a page for the contest condition: the game sets it as it opens the PC, as it does the team's menu.</summary>
+    public bool ShowCondition { get => View.HasCondition; set => View.HasCondition = value; }
+
+    private float summaryAge;
+
     /// <summary>A release waiting for its yes (RELEASE asks first).</summary>
     public bool AskingRelease { get; private set; }
 
@@ -102,7 +112,7 @@ public class PCScreen
     }
 
     /// <summary>Whether one of the screen's own menus or questions is open over the boxes.</summary>
-    public bool Busy => Menu != null || BoxMenu != null || Marking != null || AskingRelease || Naming != null;
+    public bool Busy => Menu != null || BoxMenu != null || Marking != null || AskingRelease || Naming != null || Summarizing;
 
     /// <summary>The place in the boxes that the cursor's place stands for, counted from the first box.</summary>
     public int StoredIndex => Box * BoxSize + Cell;
@@ -206,8 +216,8 @@ public class PCScreen
 
     /// <summary>What the menu offers for the Pokémon under the cursor.</summary>
     public IReadOnlyList<PcAction> ActionsFor(StorageZone zone) => zone == StorageZone.Party
-        ? new[] { PcAction.Move, PcAction.Store, PcAction.Mark, PcAction.Release, PcAction.Cancel }
-        : new[] { PcAction.Move, PcAction.Withdraw, PcAction.Mark, PcAction.Release, PcAction.Cancel };
+        ? new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel }
+        : new[] { PcAction.Move, PcAction.Withdraw, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel };
 
     /// <summary>
     /// The A button: with a Pokémon picked up, puts it down where the cursor is; on a Pokémon, opens what can be
@@ -261,10 +271,49 @@ public class PCScreen
         AudioManager.PlaySound("select");
     }
 
+    /// <summary>Goes to the next or the previous Pokémon of the team, or of the box on the screen (the summary's up and down).</summary>
+    public void StepSummary(Party party, PcBoxes pc, int dy)
+    {
+        if (!Summarizing || dy == 0) return;
+        int step = Math.Sign(dy);
+        if (Zone == StorageZone.Party)
+        {
+            if (party.Count == 0) return;
+            PartyIndex = UiNav.Wrap(Math.Min(PartyIndex, party.Count - 1), step, party.Count);
+        }
+        else
+        {
+            for (int i = 1; i <= BoxSize; i++)
+            {
+                int cell = UiNav.Wrap(Cell, step * i, BoxSize);
+                if (pc[Box, cell] == null) continue;
+                Cell = cell;
+                break;
+            }
+        }
+        View.PutCursorsAway();
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>The place of the Pokémon shown among those that can be stepped through, and how many there are.</summary>
+    public (int Index, int Count) SummaryPlace(Party party, PcBoxes pc)
+    {
+        if (Zone == StorageZone.Party) return (PartyIndex, party.Count);
+        int index = 0, count = 0;
+        for (int cell = 0; cell < BoxSize; cell++)
+        {
+            if (pc[Box, cell] == null) continue;
+            if (cell == Cell) index = count;
+            count++;
+        }
+        return (index, count);
+    }
+
     /// <summary>The B button: closes what is open, or puts a Pokémon carried back where it came from; false when there was nothing to back out of.</summary>
     public bool Cancel(Party party, PcBoxes pc)
     {
-        if (Naming != null) Naming = null;
+        if (Summarizing) Summarizing = false;
+        else if (Naming != null) Naming = null;
         else if (AskingRelease) AskingRelease = false;
         else if (Marking != null) Marking = null;
         else if (Menu != null || BoxMenu != null) { Menu = null; BoxMenu = null; }
@@ -320,6 +369,13 @@ public class PCScreen
                 onNotification(Text.Of("boxes.putIn", ("name", pokemon.DisplayName), ("box", pc.ShownName(box))));
                 break;
             }
+            case PcAction.Summary:
+                Summarizing = true;
+                View.Open();
+                summaryAge = 0f;
+                AudioManager.PlaySound("select");
+                if (!pokemon.IsEgg) AudioManager.PlayCry(pokemon);
+                break;
             case PcAction.Mark:
                 Marking = (Markings)pokemon.Marks;
                 MarkIndex = 0;
@@ -483,6 +539,19 @@ public class PCScreen
             return;
         }
 
+        // The summary open over the boxes has the same keys as the team's (plan 08 · P4)
+        if (Summarizing)
+        {
+            summaryAge += dt;
+            int sx = (InputManager.IsActionPressed(GameAction.Right) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Left) ? 1 : 0);
+            int sy = (InputManager.IsActionPressed(GameAction.Down) ? 1 : 0) - (InputManager.IsActionPressed(GameAction.Up) ? 1 : 0);
+            if (sx == 0) sx = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
+            var pressed = View.Press(Under(party, pc), sx, sy);
+            if (pressed.Close) Summarizing = false;
+            else if (pressed.Step != 0) StepSummary(party, pc, pressed.Step);
+            return;
+        }
+
         // A key kept down at the box's name runs on through the boxes; anywhere else only a press counts
         tick.Update(dt);
         bool runs = Zone == StorageZone.BoxName && !Busy;
@@ -508,6 +577,13 @@ public class PCScreen
     public void Draw(int screenWidth, int screenHeight, Party party, PcBoxes pc)
     {
         if (!IsActive) return;
+        if (Summarizing && Under(party, pc) is { } shown)
+        {
+            var (index, count) = SummaryPlace(party, pc);
+            ModernUi.DrawSummary(screenWidth, screenHeight, shown, index, count, Math.Clamp(summaryAge / 0.25f, 0f, 1f), (int)View.Page,
+                View.RibbonCursor, View.MarkCursor, View.MoveSelection);
+            return;
+        }
         ModernUi.DrawStorage(screenWidth, screenHeight, this, party, pc, Math.Clamp(openAge / AppearTime, 0f, 1f));
     }
 }

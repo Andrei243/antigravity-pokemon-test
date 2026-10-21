@@ -957,7 +957,7 @@ public class MenuScreenTests
 
         // A on a member of the team opens what can be done with it; STORE puts it in the box on the screen
         screen.Confirm(party, pc, notes.Add);
-        Assert.Equal(new[] { PcAction.Move, PcAction.Store, PcAction.Mark, PcAction.Release, PcAction.Cancel }, screen.Menu);
+        Assert.Equal(new[] { PcAction.Move, PcAction.Store, PcAction.Summary, PcAction.Mark, PcAction.Release, PcAction.Cancel }, screen.Menu);
         screen.Choose(PcAction.Store, party, pc, notes.Add);
         Assert.Equal(new[] { starly }, party.Members);
         Assert.Same(turtwig, pc[0, 0]);

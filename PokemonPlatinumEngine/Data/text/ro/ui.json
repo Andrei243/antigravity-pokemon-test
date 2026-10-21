@@ -443,6 +443,37 @@
     "accuracy": "PRECIZIE",
     "pp": "PP",
     "ppValue": "{pp} / {max}",
+    "contest": {
+      "appeal": "FARMEC",
+      "stat": "CALITATE",
+      "noContest": "Această mișcare nu are rând pe scena concursului.",
+      "effect": {
+        "None": "Nimic aparte: își aduce inimile și atât.",
+        "FirstNextTurn": "Îl lasă pe interpret să intre primul în runda următoare.",
+        "LastNextTurn": "Îl trimite pe interpret ultimul în runda următoare.",
+        "DoubledJudge": "Juratul vizat o numără de două ori.",
+        "TwoHeartsWhenVoltageUp": "Aduce două inimi în plus când ridică tensiunea unui jurat.",
+        "Basic": "O prezentare simplă și de încredere a mișcării.",
+        "UniqueJudge": "Câștigă mai mult unde nimeni altul n-a mulțumit juratul.",
+        "ConsecutiveUse": "Poate fi arătată rundă după rundă fără să-și piardă strălucirea.",
+        "Voltage": "Ridică tensiunea tuturor juraților.",
+        "AllSameJudge": "Îi mulțumește la fel pe toți jurații.",
+        "LowersVoltage": "Îi liniștește puțin pe jurați.",
+        "DoubleNextTurn": "Face ca mișcarea din runda următoare să conteze dublu.",
+        "StealVoltage": "Ia tensiune de la cel care a arătat înaintea ei.",
+        "SuppressVoltage": "Ține în jos tensiunea celorlalți.",
+        "RandomOrder": "Amestecă ordinea rundei următoare.",
+        "DoubleFinalAct": "Valorează dublu dacă e arătată în ultima rundă.",
+        "LowVoltageAdvantage": "Se descurcă cel mai bine cât jurații sunt încă calmi.",
+        "FirstPerformanceAdvantage": "Se descurcă cel mai bine ca prima arătată.",
+        "FinalPerformanceAdvantage": "Se descurcă cel mai bine ca ultima arătată.",
+        "NoVoltageDown": "Nu lasă tensiunea să scadă.",
+        "TwoVoltageInARowAdvantage": "Se descurcă cel mai bine după două mișcări de același fel.",
+        "HighScoreLaterTurn": "Aduce mai mult cu cât vine mai târziu în spectacol.",
+        "MaxVoltageAdvantage": "Se descurcă cel mai bine când jurații sunt la tensiune maximă.",
+        "PityPoints": "Aduce câteva inimi chiar și când iese prost."
+      }
+    },
     "memo": {
       "trainer": "ANTRENOR",
       "id": "ID nr.",
@@ -724,7 +755,7 @@
       "12": "Centru Poké", "13": "Mașinărie", "14": "Carouri", "15": "Simplu", "16": "Distorsiune", "17": "Concurs",
       "18": "Nostalgic", "19": "Croagunk", "20": "Trio", "21": "PikaPika", "22": "Legendă", "23": "Echipa Galactic"
     },
-    "action": { "Move": "MUTĂ", "Withdraw": "SCOATE", "Store": "DEPUNE", "Mark": "MARCHEAZĂ", "Release": "ELIBEREAZĂ", "Cancel": "ANULEAZĂ" },
+    "action": { "Move": "MUTĂ", "Withdraw": "SCOATE", "Store": "DEPUNE", "Summary": "REZUMAT", "Mark": "MARCHEAZĂ", "Release": "ELIBEREAZĂ", "Cancel": "ANULEAZĂ" },
     "release": {
       "question": "Îl eliberezi pe {name}?",
       "body": "Odată ce se întoarce în sălbăticie, nu mai vine înapoi la tine.",
@@ -2717,6 +2748,7 @@
     "comingOutNext": "Urmează {pokemon}. Pe cine trimiți?",
     "sendOutWhich": "Pe cine trimiți?",
     "hint": {
+      "summary": "Rezumat",
       "sendOut": "Trimite",
       "stayIn": "Rămâi",
       "superEffective": "FOARTE EFICIENTĂ",

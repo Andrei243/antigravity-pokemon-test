@@ -68,9 +68,9 @@ public class TrainerMemoTests
     public void TheMemoPageFollowsTheFirstAndTheOthersStayInTheirOrder()
     {
         var screen = new PartyScreen();
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.RibbonsPage }, screen.SummaryPages.ToArray());
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.BattleMovesPage, PartyScreen.ContestMovesPage, PartyScreen.RibbonsPage }, screen.SummaryPages.ToArray());
         screen.ShowCondition = true;
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages.ToArray());
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.SkillsPage, PartyScreen.BattleMovesPage, PartyScreen.ContestMovesPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages.ToArray());
     }
 
     [Fact]

@@ -38,7 +38,7 @@ public class SummaryViewTests
         Assert.Equal(screen.View.Pages, seen);
         // Round once, back where it began
         Assert.Equal(SummaryPage.Info, screen.View.Page);
-        Assert.Equal(new[] { SummaryPage.Info, SummaryPage.Memo, SummaryPage.Skills, SummaryPage.Ribbons }, screen.View.Pages);
+        Assert.Equal(new[] { SummaryPage.Info, SummaryPage.Memo, SummaryPage.Skills, SummaryPage.BattleMoves, SummaryPage.ContestMoves, SummaryPage.Ribbons }, screen.View.Pages);
     }
 
     [Fact]

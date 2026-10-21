@@ -145,7 +145,7 @@ internal static partial class ModernUi
     /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
     /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
     /// <param name="title">The screen's title where it is neither the team's nor a rental's (the Battle Castle's counters, plan 06 · R18c).</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, bool rental = false, string? title = null)
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, int moveCursor = -1, bool rental = false, string? title = null, bool canMark = true)
     {
         Backdrop(sw, sh);
         ScreenTitle(title ?? Text.Of(rental ? "summary.rental" : "summary.title"));
@@ -153,7 +153,9 @@ internal static partial class ModernUi
         var page2 = Hint("shared.keys.leftRight", "shared.hints.page");
         var next = Hint("shared.keys.upDown", "shared.hints.nextPokemon");
         if (page == PartyScreen.StatsPage && markCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.leftRight", "shared.hints.mark"), Hint("shared.keys.z", "shared.hints.mark"), esc);
-        else if (page == PartyScreen.StatsPage && !p.IsEgg && !rental) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.marks"), page2, next, esc);
+        else if (page == PartyScreen.StatsPage && !p.IsEgg && !rental && canMark) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.marks"), page2, next, esc);
+        else if (page is PartyScreen.BattleMovesPage or PartyScreen.ContestMovesPage && !p.IsEgg && moveCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.upDown", "shared.hints.moves"), esc);
+        else if (page is PartyScreen.BattleMovesPage or PartyScreen.ContestMovesPage && !p.IsEgg) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.look"), page2, next, esc);
         else if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.arrows", "shared.hints.ribbon"), esc);
         else if (page == PartyScreen.RibbonsPage && !p.IsEgg && p.Ribbons.Count > 0) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.look"), page2, esc);
         else if (page >= 0 && !p.IsEgg && count > 1) Hints(sw - 64, 44, page2, next, esc);
@@ -258,36 +260,69 @@ internal static partial class ModernUi
             return;
         }
 
-        // ---- The first page keeps the held item and the marks above the moves; a summary of one page (a rental's) keeps the stats there
-        var upper = new Rectangle(696 + slide, 132, 1160, 400);
-        Panel(upper, 34);
+        // ---- The moves, on two pages of their own (plan 08 · P4): as a battle has them, and as the contest stage does
+        if (page is PartyScreen.BattleMovesPage or PartyScreen.ContestMovesPage)
+        {
+            bool contest = page == PartyScreen.ContestMovesPage;
+            MovesPanel(new Rectangle(696 + slide, 132, 1160, 476), p, moveCursor, contest);
+            MoveTextPanel(new Rectangle(696 + slide, 632, 1160, 400), p, Math.Max(0, moveCursor), contest);
+            return;
+        }
+
+        // ---- The first page: the held item and, under it, the six marks
         if (page == PartyScreen.StatsPage)
         {
-            Label(Text.Of("summary.heldItem"), upper.X + 44, upper.Y + 30);
-            UiFonts.Draw(p.HeldItem?.DisplayName ?? Text.Of("summary.none"), upper.X + 44, upper.Y + 62, 40, Ink, UiWeight.Black);
-            if (p.HeldItem is { } held) DrawWrapped(held.DisplayDescription, upper.X + 44, upper.Y + 118, upper.Width - 88, 30, Muted, 40, UiWeight.Bold);
-            UiShapes.Fill(new Rectangle(upper.X + 44, upper.Y + 232, upper.Width - 88, 3), 1.5f, Rule);
-            Label(Text.Of("summary.marks"), upper.X + 44, upper.Y + 262);
+            var item = new Rectangle(696 + slide, 132, 1160, 400);
+            Panel(item, 34);
+            Label(Text.Of("summary.heldItem"), item.X + 44, item.Y + 30);
+            UiFonts.Draw(p.HeldItem?.DisplayName ?? Text.Of("summary.none"), item.X + 44, item.Y + 62, 40, Ink, UiWeight.Black);
+            if (p.HeldItem is { } held) DrawWrapped(held.DisplayDescription, item.X + 44, item.Y + 118, item.Width - 88, 30, Muted, 40, UiWeight.Bold);
+
+            var marks = new Rectangle(696 + slide, 556, 1160, 476);
+            Panel(marks, 34);
+            Label(Text.Of("summary.marks"), marks.X + 44, marks.Y + 30);
             for (int m = 0; m < MarkCount; m++)
             {
-                var at = new Vector2(upper.X + 44 + 52 + m * 120, upper.Y + 340);
+                var at = new Vector2(marks.X + 44 + 52 + m * 120, marks.Y + 250);
                 if (m == markCursor) UiShapes.Shape(new Rectangle(at.X - 48, at.Y - 48, 96, 96), 24, Lighter(Selection, 0.88f), Lighter(Selection, 0.8f), Selection, 4);
                 MarkShape(at, 52, m, SummaryView.HasMark(p, m) ? Ink : Rule);
             }
+            return;
         }
-        else StatRows(upper, p, 92, 52);
 
-        // ---- Moves
-        var moves = new Rectangle(696 + slide, 556, 1160, 476);
+        // ---- A summary of one page (a rental's, the Battle Hall's): the stats above the moves
+        var upper = new Rectangle(696 + slide, 132, 1160, 400);
+        Panel(upper, 34);
+        StatRows(upper, p, 92, 52);
+        MovesPanel(new Rectangle(696 + slide, 556, 1160, 476), p, -1, false);
+    }
+
+    /// <summary>
+    /// A Pokémon's four moves as rows in a panel (plan 08 · P4): type, name and category, and power, accuracy and PP; or,
+    /// for the contest stage's page, its quality and the hearts it earns by itself. The row under the cursor has a
+    /// Selection rim.
+    /// </summary>
+    private static void MovesPanel(Rectangle moves, Pokemon p, int cursor, bool contest)
+    {
         Panel(moves, 34);
         Label(Text.Of("summary.moves"), moves.X + 44, moves.Y + 30);
-        Label(Text.Of("summary.power"), moves.X + 664, moves.Y + 30);
-        Label(Text.Of("summary.accuracy"), moves.X + 808, moves.Y + 30);
-        string ppLabel = Text.Of("summary.pp");
-        Label(ppLabel, moves.X + moves.Width - 44 - UiFonts.Measure(ppLabel, 20, UiWeight.Black), moves.Y + 30);
+        if (contest)
+        {
+            Label(Text.Of("summary.contest.stat"), moves.X + 664, moves.Y + 30);
+            string appeal = Text.Of("summary.contest.appeal");
+            Label(appeal, moves.X + moves.Width - 44 - UiFonts.Measure(appeal, 20, UiWeight.Black), moves.Y + 30);
+        }
+        else
+        {
+            Label(Text.Of("summary.power"), moves.X + 664, moves.Y + 30);
+            Label(Text.Of("summary.accuracy"), moves.X + 808, moves.Y + 30);
+            string ppLabel = Text.Of("summary.pp");
+            Label(ppLabel, moves.X + moves.Width - 44 - UiFonts.Measure(ppLabel, 20, UiWeight.Black), moves.Y + 30);
+        }
         for (int i = 0; i < 4; i++)
         {
             var row = new Rectangle(moves.X + 28, moves.Y + 68 + i * 98, moves.Width - 56, 86);
+            bool chosen = i == cursor;
             if (i >= p.Moves.Count)
             {
                 UiShapes.Shape(row, 24, new Color(240, 244, 250, 255), new Color(232, 238, 246, 255), Rule, 3);
@@ -296,10 +331,21 @@ internal static partial class ModernUi
             }
 
             var move = p.Moves[i];
-            UiShapes.Shape(row, 24, new Color(248, 250, 253, 255), new Color(236, 241, 248, 255), Rule, 3);
+            if (chosen) UiShapes.Shape(row, 24, Lighter(Selection, 0.9f), Lighter(Selection, 0.82f), Selection, 5);
+            else UiShapes.Shape(row, 24, new Color(248, 250, 253, 255), new Color(236, 241, 248, 255), Rule, 3);
             float cy = row.Y + row.Height / 2f;
             TypePill(row.X + 16, cy - 22, move.Type, 44, 150);
             UiFonts.DrawCentered(move.DisplayName, row.X + 190, cy - 12, 32, Ink, UiWeight.Black);
+            if (contest)
+            {
+                var quality = move.Data.Contest;
+                UiFonts.DrawCentered(Words.Category(move.Category), row.X + 190, cy + 22, 18, Muted, UiWeight.Black);
+                UiFonts.DrawCentered(quality != null ? Text.Of($"condition.quality.{quality.Type}") : "—", moves.X + 664, cy, 30, Ink, UiWeight.Black);
+                int hearts = quality?.Hearts ?? 0;
+                for (int h = 0; h < 3; h++)
+                    MarkShape(new Vector2(moves.X + moves.Width - 44 - 26 - (2 - h) * 52, cy), 40, 3, h < hearts ? Red : Rule);
+                continue;
+            }
             UiFonts.DrawCentered(Words.Category(move.Category), row.X + 190, cy + 22, 18, Muted, UiWeight.Black);
             UiFonts.DrawCentered(move.Power > 0 ? move.Power.ToString() : "—", moves.X + 664, cy, 32, Ink, UiWeight.Black);
             UiFonts.DrawCentered(move.Accuracy > 0 ? move.Accuracy.ToString() : "—", moves.X + 808, cy, 32, Ink, UiWeight.Black);
@@ -308,6 +354,25 @@ internal static partial class ModernUi
         }
     }
 
+    /// <summary>The move chosen, in words (plan 08 · P4): its name and what it does, or what its effect is on the contest stage.</summary>
+    private static void MoveTextPanel(Rectangle r, Pokemon p, int index, bool contest)
+    {
+        Panel(r, 34);
+        if (index >= p.Moves.Count) return;
+        var move = p.Moves[index];
+        UiFonts.Draw(move.DisplayName, r.X + 44, r.Y + 34, 44, Ink, UiWeight.Black);
+        if (contest)
+        {
+            var quality = move.Data.Contest;
+            string line = quality == null ? Text.Of("summary.contest.noContest") : Text.Of($"summary.contest.effect.{quality.Effect}");
+            DrawWrapped(line, r.X + 44, r.Y + 112, r.Width - 88, 32, Ink, 44, UiWeight.ExtraBold);
+            return;
+        }
+        TypePill(r.X + 44, r.Y + 106, move.Type, 44, 150);
+        float after = r.X + 44 + 150 + 20;
+        UiFonts.Draw(Words.Category(move.Category), after, r.Y + 116, 26, Muted, UiWeight.Black);
+        DrawWrapped(move.DisplayDescription, r.X + 44, r.Y + 188, r.Width - 88, 32, Ink, 44, UiWeight.ExtraBold);
+    }
     /// <summary>The six stats as rows in a panel: the value, and a bar whose length and colour follow the species' base stat (HP shows its current share).</summary>
     private static void StatRows(Rectangle panel, Pokemon p, float first, float pitch)
     {
