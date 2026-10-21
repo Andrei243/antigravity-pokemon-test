@@ -10,11 +10,11 @@ namespace PokemonPlatinumTests;
 /// (they are the player's, and not ours to keep): every file here is built byte by byte from the layouts the
 /// decompilation's code reads, and read back.
 /// </summary>
-public class MigrationTests
+public partial class MigrationTests
 {
     // ------------------------------------------------------------------ the bytes of files
 
-    private static byte[] GbaText(string text, int length, int language = MigrationDatabase.English)
+    internal static byte[] GbaText(string text, int length, int language = MigrationDatabase.English)
     {
         var table = MigrationDatabase.Data.GbaChars[language];
         var bytes = new byte[length];
@@ -23,7 +23,7 @@ public class MigrationTests
         return bytes;
     }
 
-    private static void DsText(byte[] into, int at, string text, int length)
+    internal static void DsText(byte[] into, int at, string text, int length)
     {
         var inverse = new Dictionary<string, int>();
         foreach (var (code, character) in MigrationDatabase.Data.DsChars) inverse.TryAdd(character, code);
@@ -31,10 +31,10 @@ public class MigrationTests
             BitConverter.TryWriteBytes(into.AsSpan(at + i * 2), (ushort)(i < text.Length ? inverse[text[i].ToString()] : 0xFFFF));
     }
 
-    private static void Put16(byte[] data, int at, int value) => BitConverter.TryWriteBytes(data.AsSpan(at), (ushort)value);
-    private static void Put32(byte[] data, int at, uint value) => BitConverter.TryWriteBytes(data.AsSpan(at), value);
+    internal static void Put16(byte[] data, int at, int value) => BitConverter.TryWriteBytes(data.AsSpan(at), (ushort)value);
+    internal static void Put32(byte[] data, int at, uint value) => BitConverter.TryWriteBytes(data.AsSpan(at), value);
 
-    private static readonly byte[][] Orders =
+    internal static readonly byte[][] Orders =
     {
         new byte[] { 0, 1, 2, 3 }, new byte[] { 0, 1, 3, 2 }, new byte[] { 0, 2, 1, 3 }, new byte[] { 0, 3, 1, 2 },
         new byte[] { 0, 2, 3, 1 }, new byte[] { 0, 3, 2, 1 }, new byte[] { 1, 0, 2, 3 }, new byte[] { 1, 0, 3, 2 },
@@ -45,13 +45,13 @@ public class MigrationTests
     };
 
     /// <summary>What a test says of a GBA Pokémon before it is laid into 80 bytes.</summary>
-    private sealed record GbaSpec(
+    internal sealed record GbaSpec(
         uint Personality = 0x12345678, uint OtId = 0x0A0B0C0D, int Species = 277, int Item = 0, int Exp = 0, int Friendship = 200,
         int[]? Moves = null, string Nickname = "", string Ot = "RED", int Language = MigrationDatabase.English,
         int AbilityBit = 0, bool Egg = false, int Ball = 4, int MetLevel = 5, int MetGame = 3, int OtGirl = 0, int Markings = 0,
         int Ppbonus = 0, uint Ivs = 0x1F | 0x1E << 5 | 0x1D << 10 | 0x1C << 15 | 0x1B << 20 | 0x1A << 25, int[]? Evs = null);
 
-    private static byte[] BuildGba(GbaSpec s, bool encrypt = true, bool breakChecksum = false)
+    internal static byte[] BuildGba(GbaSpec s, bool encrypt = true, bool breakChecksum = false)
     {
         var data = new byte[80];
         Put32(data, 0, s.Personality);
@@ -93,13 +93,13 @@ public class MigrationTests
         return data;
     }
 
-    private sealed record DsSpec(
+    internal sealed record DsSpec(
         uint Personality = 0x00ABCDEF, uint OtId = 0x01020304, int Species = 25, int Item = 0, int Exp = 0, int Friendship = 120, int Ability = 9,
         int[]? Moves = null, string Nickname = "", string Ot = "DAWN", int Language = MigrationDatabase.English, int Form = 0, bool Egg = false,
         bool HasNickname = false, int Ball = 4, int MetLevel = 7, int MetGame = 12, int Year = 8, int Month = 3, int Day = 14, int Pokerus = 0x22,
         uint Ivs = 0x1F | 0x1E << 5 | 0x1D << 10 | 0x1C << 15 | 0x1B << 20 | 0x1A << 25);
 
-    private static byte[] BuildDs(DsSpec s, bool encrypt = true, bool breakChecksum = false)
+    internal static byte[] BuildDs(DsSpec s, bool encrypt = true, bool breakChecksum = false)
     {
         var data = new byte[136];
         Put32(data, 0, s.Personality);
@@ -150,7 +150,7 @@ public class MigrationTests
         return data;
     }
 
-    private static byte[] EmptyDs()
+    internal static byte[] EmptyDs()
     {
         var data = new byte[136];
         uint seed = 0;
@@ -164,9 +164,9 @@ public class MigrationTests
 
     // ------------------------------------------------------------------ saves
 
-    private const int Sector = 4096, SectorData = 3968;
+    internal const int Sector = 4096, SectorData = 3968;
 
-    private static ushort SectorChecksum(byte[] sector, int size)
+    internal static ushort SectorChecksum(byte[] sector, int size)
     {
         uint sum = 0;
         for (int i = 0; i < size / 4; i++) sum += BitConverter.ToUInt32(sector, i * 4);
@@ -174,7 +174,7 @@ public class MigrationTests
     }
 
     /// <summary>One slot of a GBA save: the fourteen sectors, the first at the place <paramref name="shift"/> turns them to.</summary>
-    private static byte[] GbaSlot(GbaGame game, byte[] storage, string trainer, uint trainerId, uint counter, int shift = 0)
+    internal static byte[] GbaSlot(GbaGame game, byte[] storage, string trainer, uint trainerId, uint counter, int shift = 0)
     {
         var slot = new byte[14 * Sector];
         for (int id = 0; id < 14; id++)
@@ -212,7 +212,7 @@ public class MigrationTests
         return slot;
     }
 
-    private static byte[] GbaStorage(Dictionary<(int Box, int Slot), byte[]> mons, string? boxName = null)
+    internal static byte[] GbaStorage(Dictionary<(int Box, int Slot), byte[]> mons, string? boxName = null)
     {
         var storage = new byte[33744];
         foreach (var ((box, slot), mon) in mons) mon.CopyTo(storage, 4 + (box * 30 + slot) * 80);
@@ -221,7 +221,7 @@ public class MigrationTests
         return storage;
     }
 
-    private static byte[] GbaFile(byte[] first, byte[]? second = null)
+    internal static byte[] GbaFile(byte[] first, byte[]? second = null)
     {
         var file = new byte[0x20000];
         first.CopyTo(file, 0);
@@ -230,9 +230,9 @@ public class MigrationTests
     }
 
     // The blocks' sizes are the multiples of four the game pads its tables to (PCBoxes: a box number, 18 x 30 Pokémon, 18 names, 18 wallpapers)
-    private const int PlatinumNormal = 49416, PlatinumBoxes = 74184 + 20;
+    internal const int PlatinumNormal = 49416, PlatinumBoxes = 74184 + 20;
 
-    private static byte[] PlatinumBlock(int id, int size, uint global, uint block, byte[] body, bool reflected = false)
+    internal static byte[] PlatinumBlock(int id, int size, uint global, uint block, byte[] body, bool reflected = false)
     {
         var data = new byte[size];
         body.CopyTo(data, 0);
@@ -247,7 +247,7 @@ public class MigrationTests
         return data;
     }
 
-    private static ushort Ccitt(ReadOnlySpan<byte> bytes)
+    internal static ushort Ccitt(ReadOnlySpan<byte> bytes)
     {
         int crc = 0xFFFF;
         foreach (byte b in bytes)
@@ -258,7 +258,7 @@ public class MigrationTests
         return (ushort)crc;
     }
 
-    private static ushort Reflected(ReadOnlySpan<byte> bytes)
+    internal static ushort Reflected(ReadOnlySpan<byte> bytes)
     {
         int crc = 0xFFFF;
         foreach (byte b in bytes)
@@ -269,7 +269,7 @@ public class MigrationTests
         return (ushort)crc;
     }
 
-    private static byte[] PlatinumBody(string trainer, uint id, Dictionary<(int Box, int Slot), byte[]> mons, out byte[] boxBody)
+    internal static byte[] PlatinumBody(string trainer, uint id, Dictionary<(int Box, int Slot), byte[]> mons, out byte[] boxBody)
     {
         var normal = new byte[PlatinumNormal - 20];
         DsText(normal, 0x68, trainer, 8);
@@ -284,7 +284,7 @@ public class MigrationTests
     }
 
     /// <summary>A Platinum save: each copy a normal block and a boxes block, the counters given for the primary and the backup.</summary>
-    private static byte[] PlatinumFile(byte[] normalBody, byte[] boxBody, uint primary, uint backup, bool reflected = false, uint? backupBlock = null)
+    internal static byte[] PlatinumFile(byte[] normalBody, byte[] boxBody, uint primary, uint backup, bool reflected = false, uint? backupBlock = null)
     {
         var file = new byte[0x80000];
         PlatinumBlock(0, PlatinumNormal, primary, primary, normalBody, reflected).CopyTo(file, 0);
@@ -544,7 +544,7 @@ public class MigrationTests
 
     // ------------------------------------------------------------------ the GBA's saves
 
-    private static Dictionary<(int, int), byte[]> TwoGbaMons() => new()
+    internal static Dictionary<(int, int), byte[]> TwoGbaMons() => new()
     {
         [(0, 0)] = BuildGba(new GbaSpec(Species: 277, Exp: 1000, Nickname: "ONE")),
         [(13, 29)] = BuildGba(new GbaSpec(Personality: 99, Species: 25, Exp: 2000, Nickname: "LAST"))
@@ -634,7 +634,7 @@ public class MigrationTests
 
     // ------------------------------------------------------------------ Platinum's saves
 
-    private static Dictionary<(int, int), byte[]> TwoDsMons() => new()
+    internal static Dictionary<(int, int), byte[]> TwoDsMons() => new()
     {
         [(0, 0)] = BuildDs(new DsSpec(Species: 25, Exp: 1000, Nickname: "FIRST", HasNickname: true)),
         [(17, 29)] = BuildDs(new DsSpec(Personality: 0x5A5A5A, Species: 479, Form: 1, Exp: 2000))
@@ -695,7 +695,7 @@ public class MigrationTests
 
     // ------------------------------------------------------------------ the door
 
-    private static string Scratch(string name, byte[] bytes)
+    internal static string Scratch(string name, byte[] bytes)
     {
         string folder = Path.Combine(Path.GetTempPath(), "migration-tests-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(folder);

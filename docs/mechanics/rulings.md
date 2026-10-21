@@ -4109,3 +4109,46 @@ give plain data and write nothing, and nothing in the game calls them yet. No sa
 - **Left out**: a party Pokémon's extra bytes (HP, stats, status: nothing of them is read), the party itself, Pal Park's and a cartridge's
   other tables, Ruby against Sapphire and FireRed against LeafGreen, and every file of another kind (a `.dsv`, a Showdown text, a Pokémon
   Bank file) — a file of a size none of the four kinds has is refused at once.
+
+## Pal Park's migration (2026-10-21, plan 08 · P21)
+
+Platinum's own migration brings six Pokémon out of a Game Boy Advance cartridge into Pal Park, where the Catching Show lets the player
+catch them again (`src/main_menu/gba_migrator.c`, `pal_park_transfers.c`). Here the cartridge is the player's own files in a `migrate`
+folder beside the saves (`SavePaths.Migrate`), read by plan 08 · P20's readers; the rules are `Models/Migration.cs` and the ledger
+`PalParkLedger`, and the screen is the title's MIGRATE.
+
+- **What is Platinum's** (`Migration.WhyNotFrom`, in the original's order where it has one): only once the save has the National
+  Pokédex; a source that gave in the last day waits for the rest of it (`CANNOT_MIGRATE_WAIT_FOR_FULL_DAY`: a source is told by its
+  trainer's ID, twenty are remembered and the oldest forgotten, `PalParkLedger.Remember`); fewer than six Pokémon in its boxes
+  (`CANNOT_MIGRATE_LESS_THAN_6_IN_GBA_BOXES`, counted as the original counts them: every Pokémon with a species, an Egg too); six
+  that came before and still wait in the park (`CANNOT_MIGRATE_ALREADY_STOCKED`). Of a Pokémon: no Egg, none that knows an HM of the
+  GBA's (Cut, Fly, Surf, Strength, Flash, Rock Smash, Waterfall, Dive), none that holds one of the GBA's key items or machines,
+  and only a species the two games share (`IsGBASpeciesInvalid`). **Six exactly** are chosen, as the original's screen asks.
+- **What is ours**: a Pokémon that has come over before doesn't come twice (its personality and its original trainer's ID, kept in the
+  save as `PastimesSave.Came`), and none that **the legality check** refuses (`Migration.Impossible`: a species in the data, EXP no higher
+  than a level 100's on its curve, effort of at most 255 a stat and 510 in all, IVs 0 to 31, an item this game has, and moves its data can
+  teach it — the level-up learnset, Egg moves, the tutors', the machines and the starters' last move: `Legality.Learnable`). Nature,
+  gender and ability follow from the personality, so they can't be wrong. **A Pokémon of the DS games** (a Platinum save, a `.pk4`) is
+  refused for none of the GBA's three checks (an HM move, a key item and a species number are the GBA's concern), but for an Egg, for
+  having come before and for the legality check. **A folder of loose Pokémon files counts as one source** (`ForeignKind.Files`,
+  `Migration.Combine`, remembered under `Migration.LooseFilesId`).
+- **What is left out**: `CANNOT_MIGRATE_DIFFERENT_CONSOLE` and `CANNOT_MIGRATE_INTERNAL_CLOCK_ALTERED` (the console's MAC address and
+  its clock's offset: a computer has nothing to stand for them, and a clock a player could set back was never a guard that kept
+  anything), and the cartridge read error (a file the readers refuse is told by its own notice). **The time** is an argument
+  (`WallClock.UtcNow` in the game, a fixed time in a test or a tool).
+- **The legality check lets through what a data list can't say**: a Pokémon with a move only an event gave it (a Celebi's, a Jirachi's) is
+  refused, since the data has no list of event moves; a player with such a Pokémon can carry it over as a `.pk4` from a tool that
+  makes it legal. The check is no stricter than that: it doesn't read the Pokémon's origin, ribbons or the PP it was kept with.
+- **What is kept of a Pokémon** is `SavedPokemonData` (`ForeignPokemon.ToSaved`: P20's conversion), so the original trainer's name, ID
+  and gender, the nickname, EXP, effort, IVs, moves with their PP Ups, the held item, the ball (until it goes to the boxes as a Park
+  Ball, `PalParkState.TakeSix`), Pokérus, markings, the met level and the date (a DS Pokémon's) and the condition. What this game has no
+  field for (ribbons, the game of origin, the GBA's contest ranks but beauty) is dropped, as P20's rulings say.
+- **Where they wait**: the six go into `PalParkState.Waiting` of the receiving save (`PastimesSave.Waiting`), where the Catching Show,
+  the lobby's worker and the daily visitors (plan 03 · D12a, who yield to them) already look. **The title doesn't load a game**: the
+  save is read afresh from its slot, the six brought into it (`Migration.Bring(SaveData…)`) and the slot written (`SaveSlots.Write`),
+  and the title's own copy takes the new park only once the write succeeded (`GameEngine.CarryOutMigration`); a save that can't be
+  read or written leaves everything as it was and says so (`MigrationBlock.CouldNotSave`).
+- **Reading is all that is done to the folder**: `MigrationFolder.Read` lists it (never makes it), `ForeignFile.Open` opens each file read-only,
+  and a test and the harness (`title` mode, "the migrate folder is as it was") hold the files' bytes and times unchanged after a whole
+  migration. MIGRATE is on the title's menu only while the folder holds a file the readers know and a save can be read, so a
+  game without the folder has the title it has always had.

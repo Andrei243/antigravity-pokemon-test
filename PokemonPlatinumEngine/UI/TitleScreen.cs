@@ -93,7 +93,7 @@ public sealed record TitleNotice(string Heading, string Body)
 /// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
 /// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
 /// </summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -129,7 +129,7 @@ public sealed class TitleScreen
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested, noticeOverMenu;
+    private bool optionsRequested, migrateRequested, noticeOverMenu, migrateOffered;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
     // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
@@ -191,6 +191,21 @@ public sealed class TitleScreen
         Lay();
     }
 
+    /// <summary>
+    /// Whether the migrate folder holds something the readers know (plan 08 · P21): MIGRATE is on the menu only then, and
+    /// only with a save to bring Pokémon to, as Platinum's shows only with a cartridge in the slot. The menu without it
+    /// is the menu the title has always had.
+    /// </summary>
+    public void OfferMigration(bool offered)
+    {
+        if (migrateOffered == offered) return;
+        migrateOffered = offered;
+        var kept = SelectedIndex < entries.Count ? entries[SelectedIndex] : TitleChoice.None;
+        Lay();
+        int at = entries.IndexOf(kept);
+        SelectedIndex = at >= 0 ? at : Math.Min(SelectedIndex, entries.Count - 1);
+    }
+
     // The menu from top to bottom: a card for each slot that holds something, then the rows
     private void Lay()
     {
@@ -198,6 +213,8 @@ public sealed class TitleScreen
         foreach (var card in cards) entries.Add(card.Save != null ? TitleChoice.Continue : TitleChoice.Unreadable);
         entries.Add(TitleChoice.NewGame);
         if (cards.Count > 0) entries.Add(TitleChoice.Delete);
+        // Pal Park's migration (plan 08 · P21) needs a save to bring the Pokémon to, and something to bring them from
+        if (migrateOffered && cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Migrate);
         entries.Add(TitleChoice.Options);
         entries.Add(TitleChoice.Quit);
     }
@@ -292,6 +309,7 @@ public sealed class TitleScreen
                         Enter(TitlePhase.ChooseDelete);
                         break;
                     case TitleChoice.Options: optionsRequested = true; break;
+                    case TitleChoice.Migrate: migrateRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
                 break;
@@ -421,6 +439,11 @@ public sealed class TitleScreen
         {
             optionsRequested = false;
             return TitleChoice.Options;
+        }
+        if (migrateRequested)
+        {
+            migrateRequested = false;
+            return TitleChoice.Migrate;
         }
         if (Phase == TitlePhase.Leaving && phaseTime >= LeaveTime && chosen != TitleChoice.None)
         {
@@ -637,7 +660,9 @@ public sealed class TitleScreen
     public IReadOnlyList<Rectangle> EntryRects()
     {
         bool saves = cards.Count > 0;
-        float row = saves ? 76 : 92, gap = saves ? 18 : 20;
+        // MIGRATE is a fifth row beside the cards, which the column holds by slimming its rows
+        bool tight = entries.Contains(TitleChoice.Migrate);
+        float row = tight ? 68 : saves ? 76 : 92, gap = tight ? 14 : saves ? 18 : 20;
         float card = LoneCard ? LoneCardHeight : ShortCardHeight;
         float total = cards.Count * card + (entries.Count - cards.Count) * row + (entries.Count - 1) * gap;
         float y = saves ? 590 - total / 2f : (1080 - total) / 2f + 40;
@@ -674,6 +699,7 @@ public sealed class TitleScreen
             {
                 TitleChoice.NewGame => Text.Of("title.menu.newGame"),
                 TitleChoice.Delete => Text.Of(Phase == TitlePhase.ChooseDelete ? "title.menu.deleteWhich" : "title.menu.delete"),
+                TitleChoice.Migrate => Text.Of("title.menu.migrate"),
                 TitleChoice.Options => Text.Of("title.menu.options"),
                 _ => Text.Of("title.menu.quit")
             };

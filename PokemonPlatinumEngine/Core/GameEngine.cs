@@ -84,6 +84,8 @@ public enum GameState
     Phrases,
     /// <summary>The Vs. Recorder's list of the battles it kept (plan 08 · P11); a recording watched is a <see cref="Battle"/>.</summary>
     ReplayList,
+    /// <summary>The title's MIGRATE: Pokémon from the player's own files, brought to a save's Pal Park (plan 08 · P21).</summary>
+    Migrate,
     Transition,
     /// <summary>
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
@@ -281,6 +283,8 @@ public partial class GameEngine
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
             flow.TitleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
+            // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
+            using (Log.Phase("migrate folder")) OfferMigration();
         }
     }
 
@@ -897,6 +901,9 @@ public partial class GameEngine
                         flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed), NewGameRegionRecord);
                         AudioManager.PlayMusic(MusicRole.Introduction);
                         break;
+                    case TitleChoice.Migrate:
+                        OpenMigrate();
+                        break;
                     case TitleChoice.Options:
                         flow.OptionsReturn = GameState.Title;
                         flow.State = GameState.Options;
@@ -1159,6 +1166,9 @@ public partial class GameEngine
                 break;
             case GameState.ReplayList:
                 UpdateReplayList(dt);
+                break;
+            case GameState.Migrate:
+                UpdateMigrate(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -2478,6 +2488,9 @@ public partial class GameEngine
                 break;
             case GameState.ReplayList:
                 flow.ReplayListScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Migrate:
+                flow.MigrateScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);

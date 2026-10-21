@@ -258,6 +258,14 @@ public partial class GameEngine
         public bool AskingToRecord => game.flow.RecordAsked;
         /// <summary>The Vs. Recorder's list of the battles it kept (plan 08 · P11).</summary>
         public ReplayListScreen ReplayList => game.flow.ReplayListScreen;
+        /// <summary>The migration's screen (plan 08 · P21), the folder it reads and the clock it is done by.</summary>
+        public MigrateScreen Migrate => game.flow.MigrateScreen;
+        public string MigrateFolder { get => game.MigrateFolder; set => game.MigrateFolder = value; }
+        public Func<DateTime>? MigrationClock { get => game.MigrationClock; set => game.MigrationClock = value; }
+        /// <summary>The title's menu offers MIGRATE as the folder stands now.</summary>
+        public void OfferMigration() => game.OfferMigration();
+        /// <summary>Opens the migration as the title's MIGRATE does.</summary>
+        public void OpenMigrate() => game.OpenMigrate();
         /// <summary>The last recording watched broke off before its end (its answers ran out or were refused).</summary>
         public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>

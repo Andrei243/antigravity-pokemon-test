@@ -277,6 +277,7 @@
       "newGame": "JOC NOU",
       "delete": "ȘTERGE O SALVARE",
       "deleteWhich": "CE SALVARE ȘTERGI?",
+      "migrate": "MIGRARE",
       "options": "OPȚIUNI",
       "quit": "IEȘIRE"
     },
@@ -3263,6 +3264,77 @@
         "hello": "salut",
         "goodbye": "pa"
       }
+    }
+  },
+  "migrate": {
+    "title": "MIGRARE",
+    "hints": { "bring": "Adu" },
+    "keyBoxes": "Q / E",
+    "slot": "SLOT {slot}",
+    "national": { "yes": "POKÉDEX NAȚIONAL", "no": "FĂRĂ POKÉDEX NAȚIONAL" },
+    "parkLabel": "PAL PARK",
+    "park": { "waiting": "{n} Pokémon așteaptă acolo Concursul de Capturare.", "empty": "Încă nu așteaptă nimic acolo." },
+    "pokemonLabel": "POKÉMON",
+    "empty": "Nu este nimic în dosarul migrate de unde să aduci Pokémon.",
+    "cantread": "NU SE CITEȘTE",
+    "trainer": "ANTRENOR",
+    "pokemon": { "count": "{n} în cutii" },
+    "ready": "GATA",
+    "waits": "NU ACUM",
+    "badEgg": "OU STRICAT",
+    "egg": "OU",
+    "chosen": "{n} / {of} ALEȘI",
+    "emptyPlace": "Aici nu este nimic.",
+    "levelOf": "Niv. {level} {species}",
+    "ot": "ANTRENOR INIȚIAL",
+    "picked": "ALES",
+    "canCome": "POATE VENI",
+    "cantCome": "NU POATE VENI",
+    "six": "CEI ȘASE",
+    "confirm": {
+      "title": "Îi aduci pe acești {n}?",
+      "body": "Vor aștepta în Pal Park Concursul de Capturare, iar {who} nu mai dă nimic o zi. Fișierul rămâne cum este.",
+      "no": "NU, AȘTEPT",
+      "yes": "DA, ADU-I"
+    },
+    "working": { "title": "Se aduc", "body": "Se salvează jocul." },
+    "result": {
+      "done": { "title": "Sunt pe drum", "body": "{n} Pokémon așteaptă în Pal Park Concursul de Capturare." },
+      "refused": { "title": "Nu s-a adus nimic" },
+      "ok": "OK"
+    },
+    "kind": { "gba": "SALVARE GBA", "platinum": "SALVARE PLATINUM", "files": "{n} FIȘIERE POKÉMON", "file": "FIȘIER POKÉMON", "unknown": "FIȘIER" },
+    "refused": {
+      "size": "Acest fișier nu este nicio salvare și niciun fișier Pokémon pe care jocul le cunoaște.",
+      "save": "Această salvare este deteriorată: nicio copie a ei nu este întreagă, așa că nu s-a citit nimic din ea.",
+      "pokemon": "Acest fișier Pokémon este gol sau deteriorat, așa că nu s-a citit nimic din el.",
+      "unreadable": "Jocul nu a putut deschide acest fișier."
+    },
+    "files": { "name": "Fișiere Pokémon", "box": "FIȘIERE {n}" },
+    "why": {
+      "egg": "Un ou nu poate veni.",
+      "hm": "Știe o mișcare din jocurile mai vechi pe care parcul nu o primește: Cut, Fly, Surf, Strength, Flash, Rock Smash, Waterfall sau Dive.",
+      "item": "Ține un obiect-cheie sau o mașină din jocurile mai vechi.",
+      "species": "Parcul nu are un asemenea Pokémon.",
+      "before": "A mai venit o dată.",
+      "impossible": "{why}"
+    },
+    "impossible": {
+      "species": "Specia lui nu există în acest joc.",
+      "exp": "Are mai multă EXP decât poate avea un Pokémon de nivel 100.",
+      "effort": "Efortul lui e mai mare decât poate avea orice Pokémon.",
+      "ivs": "IV-urile lui sunt în afara limitelor.",
+      "item": "Ține ceva ce acest joc nu are.",
+      "move": "Știe {move}, pe care nu o poate învăța."
+    },
+    "block": {
+      "national": "Pal Park primește Pokémon numai după ce salvarea are Pokédex-ul Național.",
+      "tooFew": "În cutiile lui sunt mai puțin de {n} Pokémon.",
+      "stocked": "Pokémonii veniți înainte încă așteaptă în Pal Park Concursul de Capturare.",
+      "wait": "Acesta a dat Pokémon în ultima zi. Încearcă din nou peste {hours} h.",
+      "notSix": "Trebuie aleși {n} Pokémon diferiți.",
+      "refused": "Unul dintre Pokémonii aleși nu poate veni.",
+      "notSaved": "Salvarea nu a putut fi scrisă, așa că nu s-a adus nimic."
     }
   },
   "replays": {

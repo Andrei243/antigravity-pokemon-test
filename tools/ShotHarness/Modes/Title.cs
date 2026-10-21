@@ -1,5 +1,111 @@
 partial class Harness
 {
+    // ---------------------------------------------------------------- the title's MIGRATE (plan 08 · P21)
+
+    // Last of the title mode, so that nothing before it moves: a save with the National Pokédex, a GBA save built byte by
+    // byte and written into this out dir's migrate folder (with a folder of Pokémon files and a file that is damaged), and
+    // the screen through its steps. The folder is read only; the harness prints that it is as it was
+    void MigrateShots(Action<float> seconds, Func<SaveData?, TitleNotice, TitleScreen> newTitle)
+    {
+        var noon = new DateTime(2026, 10, 21, 12, 0, 0, DateTimeKind.Utc);
+        var migrate = SavePaths.Current.Migrate;
+        Directory.CreateDirectory(migrate);
+        int[] MovesOf(int dex) => PokemonDatabase.GetByDex(dex)!.Learnset.Select(m => MoveDatabase.Get(m.MoveName)).Where(m => m != null && m.Id is > 0 and <= 354)
+            .Select(m => m!.Id).Distinct().Take(2).Concat(new[] { 0, 0, 0, 0 }).Take(4).ToArray();
+        byte[] Legal(uint personality, int dex, string nickname = "", int item = 0) =>
+            MigrateFixtures.Pokemon(personality, dex, Pokemon.GetExpForLevel(18 + (int)(personality % 9), PokemonDatabase.GetByDex(dex)!.GrowthRate), MovesOf(dex), nickname, item: item);
+
+        var mons = new Dictionary<(int, int), byte[]>
+        {
+            [(0, 0)] = Legal(1001, 1), [(0, 1)] = Legal(1002, 4, "EMBER"), [(0, 2)] = Legal(1003, 7), [(0, 3)] = Legal(1004, 25, "VOLT"),
+            [(0, 4)] = Legal(1005, 39), [(0, 5)] = Legal(1006, 52),
+            // Refused, each for another reason: an Egg, a move the park won't take, a key item, a species the games don't share
+            [(0, 6)] = MigrateFixtures.Pokemon(1007, 25, 0, new[] { 0, 0, 0, 0 }, egg: true),
+            [(0, 7)] = MigrateFixtures.Pokemon(1008, 129, 1500, new[] { 15, 0, 0, 0 }, "CUTTER"),
+            [(0, 8)] = Legal(1009, 63, "KEYS", MigrationDatabase.Data.InvalidItems[0]),
+            [(0, 9)] = MigrateFixtures.Pokemon(1010, 252, 0, new[] { 0, 0, 0, 0 }),
+            [(0, 10)] = Legal(1011, 133), [(0, 11)] = Legal(1012, 143, "SNORE"),
+            [(1, 0)] = Legal(1013, 94), [(1, 1)] = Legal(1014, 150)
+        };
+        File.WriteAllBytes(Path.Combine(migrate, "emerald.sav"), MigrateFixtures.Save(mons, "TRAVEL", "BRENDAN", 0x1111_2222, 3));
+        File.WriteAllBytes(Path.Combine(migrate, "damaged.sav"), new byte[0x20000]);
+        var before = Directory.GetFiles(migrate).OrderBy(f => f).Select(f => (f, Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(f))))).ToList();
+
+        var receiving = new SaveData
+        {
+            PlayerName = "Lucas", CurrentMapName = "SandgemTown", PlayTimeSeconds = 12 * 3600 + 34 * 60 + 20, Badges = 0b0000_0111, NationalPokedex = true,
+            CaughtSpecies = Enumerable.Range(387, 14).ToList(),
+            Party = new[] { ("Grotle", 24), ("Staravia", 22) }.Select(p => SavedPokemonData.FromPokemon(new Pokemon(PokemonDatabase.Get(p.Item1)!, p.Item2))).ToList()
+        };
+
+        // The title's menu with MIGRATE, the cursor on it
+        var title = newTitle(receiving, null!);
+        title.OfferMigration(true);
+        title.PressConfirm();
+        seconds(1.2f);
+        title.PressConfirm();
+        seconds(1f);
+        title.Move(title.Entries.ToList().IndexOf(TitleChoice.Migrate) - title.SelectedIndex);
+        seconds(0.2f); Shot("title_17_migrate_entry");
+        Console.WriteLine($"the menu: {string.Join(", ", title.Entries)}");
+
+        // The files: the save and the damaged one (and what a file that has to wait looks like, further down)
+        var targets = new[] { new MigrateTarget(1, receiving) };
+        var screen = game.Migrate;
+        game.MigrationClock = () => noon;
+        screen.Open(targets, MigrationFolder.Read(migrate), () => noon);
+        game.State = GameState.Migrate;
+        seconds(0.5f); Shot("title_17b_migrate_files");
+        Console.WriteLine($"the files: {string.Join("; ", screen.Sources.Select(s => $"{s.Name} ({s.Kind}, {(s.Readable ? screen.BlockOf(s).ToString() : s.Refusal.ToString())})"))}");
+
+        // The first box: three chosen, then the cursor on each of the four that can't come (an Egg, a move the park won't
+        // take, a key item, a species the games don't share), then six chosen
+        void Go(int place) => screen.Move(place % MigrateScreen.Columns - screen.Place % MigrateScreen.Columns, place / MigrateScreen.Columns - screen.Place / MigrateScreen.Columns);
+        void Told()
+        {
+            Console.WriteLine($"under the cursor: {(screen.Under?.IsEgg == true ? "an Egg" : screen.Under?.SpeciesData?.Name)} → {(screen.VerdictOf(screen.Under!).Allowed ? "can come" : Migration.Words(screen.VerdictOf(screen.Under!)))}");
+        }
+        screen.Confirm();
+        // The icons are baked from the models the first time a screen asks for them, a few a frame
+        seconds(12f);
+        for (int i = 0; i < 3; i++) { Go(i); screen.Confirm(); }
+        Go(6);
+        seconds(0.3f); Shot("title_17c_migrate_box"); Told();
+        Go(7);
+        seconds(0.2f); Shot("title_17c2_migrate_box_a_move"); Told();
+        Go(8);
+        seconds(0.2f); Shot("title_17c3_migrate_box_a_key_item"); Told();
+        Go(9);
+        seconds(0.2f); Shot("title_17c4_migrate_box_no_such_species"); Told();
+
+        // Six chosen, and the question
+        for (int i = 3; i < 6; i++) { Go(i); screen.Confirm(); }
+        seconds(0.3f); Shot("title_17c5_migrate_six_chosen");
+        Console.WriteLine($"chosen: {screen.ChosenCount} ({string.Join(", ", screen.Six.Select(p => p.SpeciesData?.Name))})");
+        screen.Done();
+        seconds(0.3f); Shot("title_17d_migrate_confirm");
+        screen.Move(1, 0);
+        seconds(0.2f); Shot("title_17d2_migrate_confirm_yes");
+
+        // Carried out as the engine carries it out (on the save in hand; the harness's slots are not the title's)
+        screen.Confirm();
+        var request = screen.TakeRequest()!;
+        var block = Migration.Bring(receiving, request.Source.Save!, request.Six, noon, Ruleset.Modern);
+        screen.Finish(block);
+        seconds(0.3f); Shot("title_17e_migrate_done");
+        Console.WriteLine($"brought: {block}; waiting in the park: {receiving.Pastimes?.Waiting?.Count}; sources remembered: {receiving.Pastimes?.Sources?.Count}; came: {receiving.Pastimes?.Came?.Count}");
+
+        // The same file again, three hours on: it waits, and its row says so
+        screen.Confirm();
+        screen.Open(targets, MigrationFolder.Read(migrate), () => noon.AddHours(3));
+        seconds(0.5f); Shot("title_17f_migrate_waits");
+        Console.WriteLine($"the file again: {screen.BlockOf(screen.Sources[0])} — {screen.BlockWords(screen.Sources[0])}");
+
+        var after = Directory.GetFiles(migrate).OrderBy(f => f).Select(f => (f, Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(f))))).ToList();
+        Console.WriteLine($"the migrate folder is as it was: {before.SequenceEqual(after)}");
+        screen.Close();
+    }
+
     // ---------------------------------------------------------------- title screen
     public void TitleMode()
     {
@@ -259,6 +365,8 @@ partial class Harness
         several.PressConfirm();
         Seconds(0.5f); Shot("title_42_slots_notice_crashed");
         Console.WriteLine($"after a crash with two saves: {several.Notice?.Body}");
+
+        MigrateShots(Seconds, NewTitle);
 
         game.State = GameState.Overworld;
     }

@@ -115,6 +115,9 @@ public sealed class SavePaths
     /// <summary>The folder the Vs. Recorder keeps its battles in (plan 08 · P10, <see cref="Battle.Sim.BattleRecordFile"/>).</summary>
     public const string ReplaysName = "replays";
 
+    /// <summary>The folder a player drops their own saves and Pokémon files in for the migration (plan 08 · P21): read, and never written.</summary>
+    public const string MigrateName = "migrate";
+
     /// <summary>The folder everything is in, as a full path.</summary>
     public string Folder { get; }
 
@@ -146,6 +149,7 @@ public sealed class SavePaths
     public string Autosave => Path.Combine(Folder, AutosaveName);
     public string Screenshots => Path.Combine(Folder, ScreenshotsName);
     public string Replays => Path.Combine(Folder, ReplaysName);
+    public string Migrate => Path.Combine(Folder, MigrateName);
 
     /// <summary>The game as it stood at a crash (<see cref="CrashReport.SaveName"/>), and the folder of the crash reports.</summary>
     public string CrashSave => Path.Combine(Folder, CrashReport.SaveName);
@@ -225,6 +229,7 @@ public sealed class SavePaths
         Row($"{CrashReport.FolderName}/", "a report for each time the game stopped unexpectedly");
         Row(CrashReport.SaveName, "the game as it stood the last time it did");
         Row($"{ReplaysName}/", "the battles kept on the Vs. Recorder");
+        Row($"{MigrateName}/", "your own saves and Pokémon files, for the migration: read, never written");
         text.Append($"\nAn old {OldSaveName} found there becomes the first empty slot's save, slot 1 unless that is taken, the next time the game starts.\n");
         text.Append($"--save <folder> names another folder; --portable, or an empty {PortableMarker} beside the game, keeps everything beside the game.");
         return text.ToString();
