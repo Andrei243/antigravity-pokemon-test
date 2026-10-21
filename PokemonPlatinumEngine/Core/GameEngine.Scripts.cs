@@ -1171,8 +1171,8 @@ public partial class GameEngine
         public bool Trade(string trade, int slot)
         {
             if (NpcTrades.Get(trade) is not { } t || NpcTrades.Trade(t, game.flow.Party, slot, GameClock.Today) is not { } received) return false;
-            game.flow.Pokedex.RegisterSeen(received.Species.DexNumber);
-            game.flow.Pokedex.RegisterCaught(received.Species.DexNumber);
+            game.flow.Pokedex.RegisterSeen(received);
+            game.flow.Pokedex.RegisterCaught(received);
             game.flow.Poketch.Remember(received);
             AudioManager.PlayFanfare(MusicRole.FanfarePokemon);
             return true;
@@ -1180,8 +1180,8 @@ public partial class GameEngine
 
         public bool GivePokemon(Pokemon pokemon)
         {
-            game.flow.Pokedex.RegisterSeen(pokemon.Species.DexNumber);
-            game.flow.Pokedex.RegisterCaught(pokemon.Species.DexNumber);
+            game.flow.Pokedex.RegisterSeen(pokemon);
+            game.flow.Pokedex.RegisterCaught(pokemon);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)
             pokemon.Met(game.PlaceName(), GameClock.Today);
             game.flow.Poketch.Remember(pokemon);
@@ -1374,7 +1374,7 @@ public partial class GameEngine
 
         public bool Hatch() => game.HatchFirstEgg();
 
-        public void Seen(PokemonSpecies species) => game.flow.Pokedex.RegisterSeen(species.DexNumber);
+        public void Seen(PokemonSpecies species) => game.flow.Pokedex.RegisterSeen(species, null, Gender.Genderless);
 
         // A number registered: the jingle and the word over the field (plan 20 · J3; dropped while a scene is skipped)
         public void ContactAdded(PhoneContact contact)

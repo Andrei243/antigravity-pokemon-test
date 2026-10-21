@@ -57,7 +57,7 @@ public partial class GameEngine
             if (!contest.IsPractice)
             {
                 foreach (var rival in contest.Contestants.Where(c => !c.IsPlayer))
-                    flow.Pokedex.RegisterSeen(rival.Pokemon.Species.DexNumber);
+                    flow.Pokedex.RegisterSeen(rival.Pokemon);
                 if (outcome.Won)
                 {
                     flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.WonContest);

@@ -546,5 +546,24 @@ partial class Harness
         team.Members.RemoveAt(0);
         engine.Settings.RecordBattles = false;
         engine.ApplySettings(window: false);
+
+        // ---- the Pokédex's upgrade (plan 08 · P19), the very last: Professor Rowan's assistant in the gate between
+        // Route 218 and Canalave City, spoken to where he stands, his first line and the one after the Pokédex has been
+        // upgraded. It prints the flag that adds FORMS to the Pokédex before and after
+        At("Route218GateToCanalaveCity", 5, 8, Direction.Up);
+        Frames(10);
+        Console.WriteLine($"upgrade: the flag {story.Has(StoryState.FormDetectionFlag)} before");
+        Talk();
+        var upgrade = new List<string>();
+        for (int i = 0; i < 12 && Box().IsActive && !Box().IsQuestion; i++)
+        {
+            Whole();
+            upgrade.Add(Box().CurrentLine);
+            if (i == 0) Shot("st9f_pokedex_upgrade");
+            if (story.Has(StoryState.FormDetectionFlag) && !upgrade.Contains("done")) { Shot("st9g_pokedex_upgraded"); upgrade.Add("done"); }
+            Next();
+        }
+        Until(() => !engine.ScriptRunning, "the assistant's words to end", 300);
+        Console.WriteLine($"upgrade: {upgrade.Count - 1} lines said, the flag {story.Has(StoryState.FormDetectionFlag)} after");
     }
 }

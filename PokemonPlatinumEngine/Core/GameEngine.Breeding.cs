@@ -53,8 +53,7 @@ public partial class GameEngine
     {
         if (flow.HatchScreen.Pokemon is { IsEgg: false } hatched)
         {
-            flow.Pokedex.RegisterSeen(hatched.Species.DexNumber);
-            flow.Pokedex.RegisterCaught(hatched.Species.DexNumber);
+            flow.Pokedex.RegisterCaught(hatched);
             flow.Poketch.Remember(hatched);
             flow.TrainerScore = TrainerScore.Add(flow.TrainerScore, TrainerScore.HatchedEgg);
         }

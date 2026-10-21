@@ -759,6 +759,110 @@ public class MenuScreenTests
     }
 
     [Fact]
+    public void TheFormsPageWaitsForTheUpgradeAndShowsEachLookSeenAsACard()
+    {
+        Pokemon Seen(string species, Gender gender, string? form = null)
+        {
+            var p = Scenario.Mon(species, 20, "Tackle");
+            p.Gender = gender;
+            if (form != null) p.ChangeForm(form);
+            return p;
+        }
+        var pokedex = new Pokedex();
+        pokedex.RegisterSeen(Seen("Shellos", Gender.Female, "Shellos-East"));
+        pokedex.RegisterSeen(Seen("Shellos", Gender.Male, "Shellos-East"));
+        pokedex.RegisterSeen(Seen("Shellos", Gender.Male));
+        foreach (var letter in Enumerable.Range(0, 28).Select(i => i == 0 ? null : PokemonDatabase.Get("Unown")!.Forms!.ElementAt(i - 1).Name))
+            pokedex.RegisterSeen(Seen("Unown", Gender.Genderless, letter));
+        pokedex.RegisterSeen(Scenario.Mon("Bidoof", 5, "Tackle"));
+
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        void Pick(string name) => dex.SelectedIndex = dex.Rows.ToList().FindIndex(r => r.Species.Name == name);
+        Pick("Shellos");
+        dex.Confirm();
+
+        // Before the upgrade there are four pages and none is FORMS
+        Assert.Equal(4, dex.PagesOf(dex.Selected).Count);
+        Assert.DoesNotContain(PokedexPage.Forms, dex.PagesOf(dex.Selected));
+        dex.Cancel();
+
+        // After it, FORMS is the fifth
+        dex.FormsKnown = true;
+        dex.Open(pokedex);
+        Pick("Shellos");
+        dex.Confirm();
+        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size, PokedexPage.Forms }, dex.PagesOf(dex.Selected));
+        for (int i = 0; i < 4; i++) dex.Sideways(1);
+        Assert.Equal(PokedexPage.Forms, dex.Page);
+
+        // A moves into the cards: a card for each look, in the order seen, a sea and a gender each
+        dex.Confirm();
+        Assert.Equal(PokedexFocus.Forms, dex.Focus);
+        Assert.Equal(new[] { new SeenLook("Shellos-East", Gender.Female), new SeenLook("Shellos-East", Gender.Male), new SeenLook("Shellos", Gender.Male) }, dex.Looks);
+        Assert.Equal(dex.Looks[0], dex.LookChosen);
+        dex.Sideways(1);
+        Assert.Equal(1, dex.FormsIndex);
+        dex.Sideways(1); dex.Sideways(1);
+        Assert.Equal(0, dex.FormsIndex);
+        dex.Sideways(-1);
+        Assert.Equal(2, dex.FormsIndex);
+        // Three cards are one row: up and down stay where they are
+        dex.Move(1); dex.Move(-1);
+        Assert.Equal(2, dex.FormsIndex);
+        // A turns to the look's next written entry
+        Assert.Equal(0, dex.FormsEntry);
+        dex.Confirm();
+        Assert.Equal(1, dex.FormsEntry);
+        dex.Sideways(1);
+        Assert.Equal(0, dex.FormsEntry);
+
+        // B goes back to the tabs, B again to the list
+        dex.Cancel();
+        Assert.Equal((PokedexFocus.Entry, PokedexPage.Forms), (dex.Focus, dex.Page));
+        dex.Cancel();
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+
+        // Unown's twenty-eight marks fill four rows of eight, the grid scrolling two at a time; up and down stop at its ends
+        Pick("Unown");
+        dex.Confirm();
+        while (dex.Page != PokedexPage.Forms) dex.Sideways(1);
+        dex.Confirm();
+        Assert.Equal(28, dex.Looks.Count);
+        Assert.Equal((0, 0), (dex.FormsIndex, dex.FormsFirstRow));
+        dex.Move(1);
+        Assert.Equal((8, 0), (dex.FormsIndex, dex.FormsFirstRow));
+        dex.Move(1);
+        Assert.Equal((16, 1), (dex.FormsIndex, dex.FormsFirstRow));
+        dex.Move(1);
+        Assert.Equal((24, 2), (dex.FormsIndex, dex.FormsFirstRow));
+        dex.Move(1);
+        Assert.Equal((24, 2), (dex.FormsIndex, dex.FormsFirstRow));
+        dex.Move(-1);
+        Assert.Equal((16, 2), (dex.FormsIndex, dex.FormsFirstRow));
+        // The last row holds four, so a card past them takes the last
+        dex.Sideways(1); dex.Sideways(1); dex.Sideways(1); dex.Sideways(1); dex.Sideways(1);
+        dex.Move(1);
+        Assert.Equal(27, dex.FormsIndex);
+        Assert.Equal("Unown", dex.Looks[0].Name);
+        Assert.Equal(28, dex.Looks.Select(l => l.Name).Distinct().Count());
+
+        // Moving to another species forgets the cursor, and a species seen with one look has one card
+        dex.Cancel();
+        dex.Move(1);
+        Assert.Equal(0, dex.FormsIndex);
+        Pick("Bidoof");
+        dex.Move(0);
+        dex.Cancel();
+        dex.Cancel();
+        Pick("Bidoof");
+        dex.Confirm();
+        while (dex.Page != PokedexPage.Forms) dex.Sideways(1);
+        dex.Confirm();
+        Assert.Single(dex.Looks);
+    }
+
+    [Fact]
     public void AKeyHeldInThePokedexRunsToTheEndAndStopsThere()
     {
         var pokedex = new Pokedex();

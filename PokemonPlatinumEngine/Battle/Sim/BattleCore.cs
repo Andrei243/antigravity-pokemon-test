@@ -523,7 +523,7 @@ public sealed partial class BattleCore : IBattleContext
     {
         var foes = EnemySlots.Where(b => b.Pokemon != null).ToList();
         var mine = PlayerSlots.Where(b => b.Pokemon != null).ToList();
-        foreach (var foe in foes) Emit(new Seen(foe.Pokemon!.Species));
+        foreach (var foe in foes) Emit(Seen.Of(foe.Pokemon!));
 
         if (IsTrainerBattle)
         {

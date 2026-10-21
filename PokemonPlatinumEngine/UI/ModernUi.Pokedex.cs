@@ -17,10 +17,17 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>The pages of an entry as tabs: INFO in Blue, AREA in Green, SIZE in Gold.</summary>
-    private static (string Label, UiIcon Icon, Color Color)[] DexPages => new[]
+    private static (string Label, UiIcon Icon, Color Color) DexTab(PokedexPage page) => page switch
     {
-        (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue), (Text.Of("pokedex.page.Area"), UiIcon.Pin, Green), (Text.Of("pokedex.page.Cry"), UiIcon.Radio, CryPurple), (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold)
+        PokedexPage.Area => (Text.Of("pokedex.page.Area"), UiIcon.Pin, Green),
+        PokedexPage.Cry => (Text.Of("pokedex.page.Cry"), UiIcon.Radio, CryPurple),
+        PokedexPage.Size => (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold),
+        PokedexPage.Forms => (Text.Of("pokedex.page.Forms"), UiIcon.Letter, FormsTeal),
+        _ => (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue)
     };
+
+    /// <summary>The forms page's tab colour (plan 08 · P19): a teal beside Blue, Green, violet and Gold.</summary>
+    private static readonly Color FormsTeal = new(32, 160, 168, 255);
 
     /// <summary>The cry page's tab colour (plan 08 · P18): a violet of its own beside Blue, Green and Gold.</summary>
     private static readonly Color CryPurple = new(142, 96, 200, 255);
@@ -55,6 +62,12 @@ internal static partial class ModernUi
             case PokedexFocus.Entry when dex.Page == PokedexPage.Cry:
                 Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
+            case PokedexFocus.Entry when dex.Page == PokedexPage.Forms:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
+                break;
+            case PokedexFocus.Forms:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.entry"), Hint("shared.keys.leftRight", "shared.hints.look"), Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
+                break;
             case PokedexFocus.Cry:
                 Hints(sw - Margin, 44, Hint("shared.keys.z", dex.CryRow is PokedexCryRow.Stereo or PokedexCryRow.Room ? "shared.hints.mode" : dex.CryRow == PokedexCryRow.Loop ? "shared.hints.change" : "shared.hints.play"),
                     Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
@@ -84,14 +97,16 @@ internal static partial class ModernUi
             if (!pokedex.IsSeen(entry.Species.DexNumber)) DexUnseen(detail, entry);
             else
             {
-                var page = dex.Focus is PokedexFocus.Entry or PokedexFocus.Cry ? dex.Page : PokedexPage.Info;
-                Tabs(new Rectangle(detail.X + 32, detail.Y + 28, detail.Width - 64, 64), DexPages, dex.PagesOf(entry).ToList().IndexOf(page));
+                var page = dex.Focus is PokedexFocus.Entry or PokedexFocus.Cry or PokedexFocus.Forms ? dex.Page : PokedexPage.Info;
+                var pages = dex.PagesOf(entry).ToList();
+                Tabs(new Rectangle(detail.X + 32, detail.Y + 28, detail.Width - 64, 64), pages.Select(DexTab).ToList(), pages.IndexOf(page));
                 bool owned = pokedex.IsCaught(entry.Species.DexNumber);
                 switch (page)
                 {
                     case PokedexPage.Area: DexArea(detail, entry.Species, dex.AreaRegion); break;
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
                     case PokedexPage.Cry: DexCry(detail, dex); break;
+                    case PokedexPage.Forms: DexForms(detail, dex, entry); break;
                     default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species)); break;
                 }
             }
@@ -300,6 +315,86 @@ internal static partial class ModernUi
         for (int i = 0; i < rows.Length; i++)
             ValueRow(new Rectangle(detail.X + 44, y + i * pitchY, detail.Width - 88, 76), rows[i].Label, rows[i].Value, inRows && (int)dex.CryRow == i, 420);
         if (!inRows) UiFonts.Draw(Text.Of("pokedex.cry.hint"), detail.X + 52, y + rows.Length * pitchY + 6, 24, Muted, UiWeight.ExtraBold);
+    }
+
+    /// <summary>The name a look is shown by: the species' own, or its form's display name.</summary>
+    public static string LookName(PokemonSpecies species, SeenLook look) =>
+        look.Name == species.Name ? species.DisplayName : species.Forms?.FirstOrDefault(f => f.Name == look.Name)?.DisplayName(species.Name) ?? look.Name;
+
+    /// <summary>
+    /// FORMS (plan 08 · P19): the looks seen of the species as cards, Unown's marks in the order met, and the look under
+    /// the cursor large, from the front and from behind, with its name, gender and written entry. Nothing is shown of a
+    /// look not seen, and a female shows the species' sculpt until plan 09 · L8 gives her own.
+    /// </summary>
+    private static void DexForms(Rectangle detail, PokedexScreen dex, PokedexEntry entry)
+    {
+        var s = entry.Species;
+        var looks = dex.Looks;
+        bool inCards = dex.Focus == PokedexFocus.Forms;
+        var chosen = dex.LookChosen ?? new SeenLook(s.Name, Gender.Genderless);
+
+        // The look from the front and from behind, each on a disc
+        float left = detail.X + 44;
+        var front = new Vector2(left + 135, detail.Y + 250);
+        var back = new Vector2(left + 425, detail.Y + 250);
+        BallDisc(front, 130);
+        BallDisc(back, 130);
+        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Name, isBack: false), front, 2, Hop(inCards) * 2);
+        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Name, isBack: true), back, 2, Hop(inCards) * 2);
+        UiFonts.DrawCentered(Text.Of("pokedex.forms.front"), front.X, front.Y + 160, 22, Muted, UiWeight.Black);
+        UiFonts.DrawCentered(Text.Of("pokedex.forms.back"), back.X, back.Y + 160, 22, Muted, UiWeight.Black);
+
+        // Its name, number and gender beside them
+        float x = left + 600, room = detail.X + detail.Width - 44 - x;
+        UiFonts.Draw(DexNumber(entry.Number), x, detail.Y + 168, 28, Muted, UiWeight.Black);
+        string name = LookName(s, chosen);
+        float size = 44, nameW = UiFonts.Measure(name, size, UiWeight.Black);
+        var lines = nameW > room ? Wrap(name, room, size) : new List<string> { name };
+        if (lines.Count > 2) { size = 30; lines = Wrap(name, room, size); }
+        for (int i = 0; i < lines.Count; i++) UiFonts.Draw(lines[i], x, detail.Y + 212 + i * (size + 8), size, Ink, UiWeight.Black);
+        float gy = detail.Y + 212 + lines.Count * (size + 8) + 24;
+        if (chosen.Gender != Gender.Genderless)
+        {
+            UiIcons.GenderMark(new Vector2(x + 16, gy + 6), 32, chosen.Gender);
+            UiFonts.Draw(Text.Of(chosen.Gender == Gender.Male ? "pokedex.forms.male" : "pokedex.forms.female"), x + 48, gy - 12, 26, Ink, UiWeight.ExtraBold);
+            gy += 44;
+        }
+        UiFonts.Draw(Text.Of("pokedex.forms.looks", ("n", looks.Count)), x, gy, 24, Muted, UiWeight.ExtraBold);
+
+        // Its written entry under a rule, with a dot for each of its entries as INFO has
+        float ruleY = detail.Y + 440;
+        int count = DexEntries.CountForLook(s, chosen.Name);
+        float dots = count > 1 ? (count - 1) * 26 + 16 + 20 : 0, last = detail.X + detail.Width - 44 - 8;
+        UiShapes.Fill(new Rectangle(detail.X + 44, ruleY, detail.Width - 88 - dots, 3), 1.5f, Rule);
+        for (int i = 0; i < count && count > 1; i++)
+            UiShapes.Circle(new Vector2(last - (count - 1 - i) * 26, ruleY + 1.5f), 8, i == dex.FormsEntry % count ? FormsTeal : Rule);
+        DrawWrapped(DexEntries.EntryForLook(s, chosen.Name, dex.FormsEntry), detail.X + 44, ruleY + 28, detail.Width - 88, 28, Ink, 40);
+
+        // The cards: eight to a row, two rows showing
+        const float cardW = 104, cardH = 104, pitchX = 114, pitchY = 112;
+        float top = detail.Y + 600;
+        for (int row = 0; row < PokedexScreen.FormsVisibleRows; row++)
+            for (int col = 0; col < PokedexScreen.FormsColumns; col++)
+            {
+                int index = (dex.FormsFirstRow + row) * PokedexScreen.FormsColumns + col;
+                if (index >= looks.Count) break;
+                var look = looks[index];
+                bool selected = index == dex.FormsIndex;
+                var r = new Rectangle(left + col * pitchX, top + row * pitchY, cardW, cardH);
+                Card(r, 20, selected && inCards);
+                var centre = new Vector2(r.X + r.Width / 2f, r.Y + r.Height / 2f + 4);
+                PixelArt(PixelArtGenerator.GetPokemonIcon(look.Name), centre, 2, selected && inCards ? Hop(true) * 2 : 0, selected || !inCards ? Color.White : new Color(255, 255, 255, 215));
+                if (look.Gender != Gender.Genderless) UiIcons.GenderMark(new Vector2(r.X + r.Width - 20, r.Y + 20), 22, look.Gender);
+            }
+        int rows = (looks.Count + PokedexScreen.FormsColumns - 1) / PokedexScreen.FormsColumns;
+        if (rows > PokedexScreen.FormsVisibleRows)
+        {
+            float barX = left + PokedexScreen.FormsColumns * pitchX - 4;
+            float barH = PokedexScreen.FormsVisibleRows * pitchY - 8;
+            UiShapes.Fill(new Rectangle(barX, top, 6, barH), 3, Rule);
+            float thumb = barH * PokedexScreen.FormsVisibleRows / rows;
+            UiShapes.Fill(new Rectangle(barX, top + (barH - thumb) * dex.FormsFirstRow / (rows - PokedexScreen.FormsVisibleRows), 6, thumb), 3, FormsTeal);
+        }
     }
 
     /// <summary>A place's name from its key: <c>eterna_city</c> is Eterna City.</summary>

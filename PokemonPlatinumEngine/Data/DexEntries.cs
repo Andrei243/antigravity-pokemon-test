@@ -68,6 +68,21 @@ public static class DexEntries
         return entries[((which % n) + n) % n];
     }
 
+    /// <summary>
+    /// A look's written entries (plan 08 · P19): the form's own (<see cref="EntriesOf"/> of its name, P17), or its
+    /// species' where the file has none; the <paramref name="which"/>th of them, round, or the generated sentence.
+    /// </summary>
+    public static string EntryForLook(PokemonSpecies species, string lookName, int which = 0)
+    {
+        var entries = EntriesOf(lookName);
+        if (entries == null || entries.Count == 0) return EntryFor(species, which);
+        int n = entries.Count;
+        return entries[((which % n) + n) % n];
+    }
+
+    /// <summary>How many entries a look has to show (at least one).</summary>
+    public static int CountForLook(PokemonSpecies species, string lookName) => EntriesOf(lookName) is { Count: > 0 } own ? own.Count : CountFor(species);
+
     /// <summary>The habitat as the INFO page says it: "Water's edge", "Rough terrain".</summary>
     // The words are the string table's (plan 17 · N6), so the page says them in the language chosen.
     public static string Word(DexHabitat habitat) => Core.Text.Of($"pokedex.habitatWord.{habitat}");

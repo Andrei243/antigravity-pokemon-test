@@ -335,6 +335,15 @@ public class SaveData
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
 
+    /// <summary>
+    /// The looks the Pokédex has seen, species by species in the order first seen (plan 08 · P19); empty in a save from
+    /// before, which is rebuilt as it loads from the Pokémon the player has (<see cref="Models.Pokedex.RebuildLooksFrom"/>).
+    /// </summary>
+    public List<SavedLook> SeenLooks { get; set; } = new();
+
+    /// <summary>The first Spinda met's personality, from which its spots are drawn (plan 08 · P19); null until one was met.</summary>
+    public uint? SpindaPersonality { get; set; }
+
     /// <summary>Whether the Pokédex has been upgraded to the National Pokédex (false in older saves).</summary>
     public bool NationalPokedex { get; set; }
 
@@ -1001,4 +1010,14 @@ public class SavedHallOfFameEntry
 
     public static SavedHallOfFameEntry From(HallOfFameEntry entry) => new() { Date = entry.Date, Team = entry.Team.ToList() };
     public HallOfFameEntry ToEntry() => new(Date, Team);
+}
+
+/// <summary>One look of a species the Pokédex has seen, as a save keeps it (plan 08 · P19): the model's name and the gender.</summary>
+public class SavedLook
+{
+    public string Name { get; set; } = string.Empty;
+    public Gender Gender { get; set; }
+
+    /// <summary>The species a look's name belongs to: the species of that name, or the one a form of that name is a form of.</summary>
+    public static PokemonSpecies? SpeciesOf(string name) => PokemonDatabase.Get(name) ?? PokemonDatabase.SpeciesOfForm(name);
 }

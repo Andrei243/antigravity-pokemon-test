@@ -11,7 +11,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Coalossal L32 Female Mild Steam Engine @nothing | Tackle, Rock Polish, Ancient Power, Incinerate | HP 112 Atk 62 Def 81 SpA 62 SpD 71 Spe 24
   foe#2 Claydol L11 Genderless Serious Levitate @nothing | Harden, Teleport, Hyper Beam, Rock Tomb | HP 35 Atk 22 Def 29 SpA 22 SpD 34 Spe 23
 log:
-  Seen Species=Marowak
+  Seen Species=Marowak Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Marowak!
@@ -89,7 +89,7 @@ log:
     + Recalled E0
   Left E0 Ran=false
   say Ace Trainer Tester sent out Coalossal!
-    + Seen Species=Coalossal
+    + Seen Species=Coalossal Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Coalossal FromBall=true
   say Gyarados must recharge!
   say Gyarados used Thrash!
@@ -129,7 +129,7 @@ log:
     + Confused P0
     + VolatileChanged P0 Confused=true InLove=false
   say Ace Trainer Tester sent out Claydol!
-    + Seen Species=Claydol
+    + Seen Species=Claydol Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Claydol FromBall=true
   say Gyarados is confused!
     + Confused P0
@@ -144,7 +144,7 @@ log:
   say Gyarados gained 50 EXP. Points!
   ExpGained Pokemon=mine#2 Gyarados Amount=50
   say Ace Trainer Tester sent out Marowak!
-    + Seen Species=Marowak
+    + Seen Species=Marowak Form=none Gender=Female
     + Entered E0 Pokemon=foe#0 Marowak FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Gyarados must recharge!
@@ -173,8 +173,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Scovillain L53 Male Gentle Insomnia @Ring Target | Crunch, Seed Bomb, Overheat, Solar Beam | HP 137 Atk 123 Def 75 SpA 120 SpD 89 Spe 84
   foe#2 Terapagos L56 Female Naughty Tera Shift @Power Belt | Headbutt, Protect, Earth Power, Heavy Slam | HP 178 Atk 95 Def 112 SpA 91 SpD 102 Spe 78
 log:
-  Seen Species=Oinkologne
-  Seen Species=Scovillain
+  Seen Species=Oinkologne Form=none Gender=Male
+  Seen Species=Scovillain Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Oinkologne and Scovillain!
@@ -261,7 +261,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Gigalith L30 Male Sassy Sand Stream @Toxic Orb | Smack Down, Iron Defense, Headbutt, Rock Slide | HP 93 Atk 92 Def 89 SpA 45 SpD 68 Spe 18
   foe#2 Honedge L25 Female Timid No Guard @nothing | Aerial Ace, Metal Sound, Slash, Night Slash | HP 57 Atk 45 Def 61 SpA 22 SpD 30 Spe 23
 log:
-  Seen Species=Staravia
+  Seen Species=Staravia Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Staravia!
@@ -462,7 +462,7 @@ log:
   say Bonsly gained 165 EXP. Points!
   ExpGained Pokemon=mine#1 Bonsly Amount=165
   say Ace Trainer Tester sent out Honedge!
-    + Seen Species=Honedge
+    + Seen Species=Honedge Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Honedge FromBall=true
   say Foe Honedge was caught in a sticky web!
   say Foe Honedge's Speed fell!
@@ -526,7 +526,7 @@ log:
   say Bonsly gained 79 EXP. Points!
   ExpGained Pokemon=mine#1 Bonsly Amount=79
   say Ace Trainer Tester sent out Gigalith!
-    + Seen Species=Gigalith
+    + Seen Species=Gigalith Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Gigalith FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Gigalith was caught in a sticky web!
@@ -576,7 +576,7 @@ mine:
 foe: Worker Mason (worker_mason), ai Basic, items none
   foe#0 Geodude L9 Male Brave Rock Head @nothing | Defense Curl, Tackle, Mud Sport, Rock Polish | HP 26 Atk 20 Def 23 SpA 10 SpD 10 Spe 7
 log:
-  Seen Species=Geodude
+  Seen Species=Geodude Form=none Gender=Male
   TrainersStand First=Worker Second=none
   say Worker Mason wants to battle!
   say Worker Mason sent out Geodude!
@@ -756,8 +756,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Comfey L9 Female Rash Flower Veil @Water Memory | Wrap, Vine Whip, Helping Hand, Draining Kiss | HP 28 Atk 16 Def 23 SpA 22 SpD 24 Spe 23
   foe#2 Okidogi L39 Male Serious Toxic Chain @Dark Memory | Howl, Poison Fang, Force Palm, Counter | HP 127 Atk 114 Def 96 SpA 56 SpD 82 Spe 67
 log:
-  Seen Species=Floatzel
-  Seen Species=Comfey
+  Seen Species=Floatzel Form=none Gender=Female
+  Seen Species=Comfey Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Floatzel and Comfey!
@@ -852,7 +852,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Medicham L67 Female Naive Pure Power @Light Clay | Power Trick, Recover, Axe Kick, Counter | HP 158 Atk 100 Def 115 SpA 88 SpD 113 Spe 127
   foe#2 Ledyba L11 Male Brave Swarm @Luminous Moss | Tackle, Supersonic, Swift | HP 32 Atk 13 Def 14 SpA 14 SpD 25 Spe 17
 log:
-  Seen Species=Milcery
+  Seen Species=Milcery Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Milcery!
@@ -1105,7 +1105,7 @@ log:
   say Electivire gained 358 EXP. Points!
   ExpGained Pokemon=mine#2 Electivire Amount=358
   say Ace Trainer Tester sent out Medicham!
-    + Seen Species=Medicham
+    + Seen Species=Medicham Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Medicham FromBall=true
   say Electivire must recharge!
   say Foe Medicham used Counter!
@@ -1131,7 +1131,7 @@ log:
   say Electivire gained 1734 EXP. Points!
   ExpGained Pokemon=mine#2 Electivire Amount=1734
   say Ace Trainer Tester sent out Ledyba!
-    + Seen Species=Ledyba
+    + Seen Species=Ledyba Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Ledyba FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Electivire used Thunderbolt!
@@ -1163,7 +1163,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Anorith L17 Male Quirky Battle Armor @nothing | Water Gun, Smack Down, Metal Claw, Ancient Power | HP 43 Atk 42 Def 27 SpA 22 SpD 25 Spe 35
   foe#2 Cutiefly L13 Female Hardy Shield Dust @Toxic Plate | Fairy Wind, Absorb, Stun Spore, Sweet Scent | HP 36 Atk 16 Def 18 SpA 22 SpD 19 Spe 29
 log:
-  Seen Species=Wartortle
+  Seen Species=Wartortle Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Wartortle!
@@ -1263,7 +1263,7 @@ log:
   say Croagunk used Taunt!
   say But there was no target...
   say Ace Trainer Tester sent out Anorith!
-    + Seen Species=Anorith
+    + Seen Species=Anorith Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Anorith FromBall=true
   say Foe Anorith used Ancient Power!
     + Lunged E0 Category=Special
@@ -1355,7 +1355,7 @@ log:
   say Sableye gained 89 EXP. Points!
   ExpGained Pokemon=mine#2 Sableye Amount=89
   say Ace Trainer Tester sent out Cutiefly!
-    + Seen Species=Cutiefly
+    + Seen Species=Cutiefly Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Cutiefly FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Croagunk used Taunt!
@@ -1465,8 +1465,8 @@ foe: Ace Trainer Shannon (ace_trainer_shannon), ai Basic EvalAttack Expert, item
   foe#1 Azumarill L34 Female Relaxed Thick Fat @nothing | Double-Edge, Bubble Beam, Aqua Ring | HP 114 Atk 41 Def 67 SpA 47 SpD 61 Spe 36
   foe#2 Lopunny L35 Female Naughty Cute Charm @nothing | Jump Kick, Quick Attack, Charm | HP 92 Atk 66 Def 65 SpA 44 SpD 66 Spe 80
 log:
-  Seen Species=Cherrim
-  Seen Species=Azumarill
+  Seen Species=Cherrim Form=none Gender=Female
+  Seen Species=Azumarill Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Shannon wants to battle!
   say Ace Trainer Shannon sent out Cherrim and Azumarill!
@@ -1591,7 +1591,7 @@ log:
   say Foe Azumarill's veil of water restored its HP!
     + HpChanged E1 Hp=31 Healed=true
   say Ace Trainer Shannon sent out Lopunny!
-    + Seen Species=Lopunny
+    + Seen Species=Lopunny Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Lopunny FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Lopunny used Jump Kick!
@@ -1652,7 +1652,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Donphan L53 Female Adamant Sturdy @nothing | Stomping Tantrum, Scary Face, Earthquake, Giga Impact | HP 159 Atk 161 Def 132 SpA 70 SpD 69 Spe 63
   foe#2 Greninja L68 Male Serious Torrent @Heat Rock | Substitute, Extrasensory, Double Team, Hydro Pump | HP 183 Atk 136 Def 113 SpA 155 SpD 119 Spe 181
 log:
-  Seen Species=Barboach
+  Seen Species=Barboach Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Barboach!
@@ -1692,7 +1692,7 @@ log:
   say Jigglypuff gained 458 EXP. Points!
   ExpGained Pokemon=mine#2 Jigglypuff Amount=458
   say Ace Trainer Tester sent out Donphan!
-    + Seen Species=Donphan
+    + Seen Species=Donphan Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Donphan FromBall=true
   say Regice used Zap Cannon!
     + Lunged P0 Category=Special
@@ -1762,7 +1762,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Mudsdale L49 Male Jolly Own Tempo @nothing | High Horsepower, Heavy Slam, Earthquake, Mega Kick | HP 170 Atk 142 Def 106 SpA 56 SpD 96 Spe 44
   foe#2 Greninja L5 Male Lonely Torrent @Figy Berry | Pound, Haze, Role Play, Night Slash | HP 23 Atk 16 Def 10 SpA 15 SpD 13 Spe 18
 log:
-  Seen Species=Celesteela
+  Seen Species=Celesteela Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Celesteela!
@@ -1844,7 +1844,7 @@ log:
   say Ursaluna gained 698 EXP. Points!
   ExpGained Pokemon=mine#2 Ursaluna Amount=698
   say Ace Trainer Tester sent out Mudsdale!
-    + Seen Species=Mudsdale
+    + Seen Species=Mudsdale Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Mudsdale FromBall=true
   say Gorebyss used Hydro Pump!
     + Lunged P0 Category=Special
@@ -1861,7 +1861,7 @@ log:
   say Ursaluna gained 550 EXP. Points!
   ExpGained Pokemon=mine#2 Ursaluna Amount=550
   say Ace Trainer Tester sent out Greninja!
-    + Seen Species=Greninja
+    + Seen Species=Greninja Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Greninja FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Gorebyss used Aqua Tail!
@@ -1895,8 +1895,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Sirfetch'd L77 Male Brave Steadfast @nothing | Leaf Blade, Final Gambit, Brave Bird, Meteor Assault | HP 184 Atk 253 Def 152 SpA 115 SpD 133 Spe 103
   foe#2 Iron Hands L7 Genderless Naive Quark Drive @Razor Claw | Focus Energy, Tackle, Sand Attack, Fake Out | HP 38 Atk 25 Def 20 SpA 12 SpD 14 Spe 13
 log:
-  Seen Species=Wingull
-  Seen Species=Sirfetch'd
+  Seen Species=Wingull Form=none Gender=Female
+  Seen Species=Sirfetch'd Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Wingull and Sirfetch'd!
@@ -1987,7 +1987,7 @@ log:
     + Recalled E0
   Left E0 Ran=false
   say Ace Trainer Tester sent out Iron Hands!
-    + Seen Species=Iron Hands
+    + Seen Species=Iron Hands Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Iron Hands FromBall=true
   say Butterfree is confused!
     + Confused P0
@@ -2005,7 +2005,7 @@ log:
   say Butterfree gained 2946 EXP. Points!
   ExpGained Pokemon=mine#2 Butterfree Amount=2946
   say Ace Trainer Tester sent out Wingull!
-    + Seen Species=Wingull
+    + Seen Species=Wingull Form=none Gender=Female
     + Entered E1 Pokemon=foe#0 Wingull FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Butterfree snapped out of confusion!
@@ -2045,7 +2045,7 @@ foe: Swimmer Crystal (swimmer_crystal), ai Basic, items none
   foe#0 Wingull L42 Female Brave Keen Eye @nothing | Roost, Pursuit, Agility, Aerial Ace | HP 85 Atk 33 Def 30 SpA 51 SpD 30 Spe 68
   foe#1 Seaking L44 Female Serious Swift Swim @nothing | Flail, Aqua Ring, Fury Attack, Waterfall | HP 124 Atk 85 Def 62 SpA 62 SpD 75 Spe 64
 log:
-  Seen Species=Wingull
+  Seen Species=Wingull Form=none Gender=Female
   TrainersStand First=Swimmer Second=none
   say Swimmer Crystal wants to battle!
   say Swimmer Crystal sent out Wingull!
@@ -2067,7 +2067,7 @@ log:
   say Hariyama gained 292 EXP. Points!
   ExpGained Pokemon=mine#2 Hariyama Amount=292
   say Swimmer Crystal sent out Seaking!
-    + Seen Species=Seaking
+    + Seen Species=Seaking Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Seaking FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Croconaw used Thrash!
@@ -2117,7 +2117,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Gengar L26 Male Quirky Levitate @Shell Bell | Payback, Spite, Curse, Hex | HP 71 Atk 45 Def 37 SpA 77 SpD 52 Spe 69
   foe#2 Sandy Shocks L9 Genderless Rash Protosynthesis @Power Herb | Supersonic, Electric Terrain, Thunder Wave, Spark | HP 37 Atk 21 Def 24 SpA 29 SpD 18 Spe 23
 log:
-  Seen Species=Yamask
+  Seen Species=Yamask Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Yamask!
@@ -2141,7 +2141,7 @@ log:
   say Delibird gained 25 EXP. Points!
   ExpGained Pokemon=mine#2 Delibird Amount=25
   say Ace Trainer Tester sent out Gengar!
-    + Seen Species=Gengar
+    + Seen Species=Gengar Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Gengar FromBall=true
   say Jolteon used Discharge!
     + Lunged P0 Category=Special
@@ -2159,7 +2159,7 @@ log:
   LevelRose Pokemon=mine#2 Delibird Level=13 Before=31/18/16/17/15/20 After=38/21/19/20/18/24
   say Delibird grew to Lv. 13!
   say Ace Trainer Tester sent out Sandy Shocks!
-    + Seen Species=Sandy Shocks
+    + Seen Species=Sandy Shocks Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Sandy Shocks FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Jolteon used Discharge!
@@ -2202,8 +2202,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Cosmoem L63 Genderless Sassy Sturdy @nothing | Cosmic Power, Teleport | HP 129 Atk 60 Def 181 SpA 54 SpD 190 Spe 55
   foe#2 Dudunsparce L66 Female Impish Serene Grace @Electric Seed | Double-Edge, Endeavor, Hurricane, Boomburst | HP 246 Atk 146 Def 135 SpA 118 SpD 122 Spe 94
 log:
-  Seen Species=Ponyta
-  Seen Species=Cosmoem
+  Seen Species=Ponyta Form=none Gender=Male
+  Seen Species=Cosmoem Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Ponyta and Cosmoem!
@@ -2460,7 +2460,7 @@ log:
   say The strange room faded, and held items work again!
     + FieldConditionChanged Condition=MagicRoom Up=false
   say Ace Trainer Tester sent out Dudunsparce!
-    + Seen Species=Dudunsparce
+    + Seen Species=Dudunsparce Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Dudunsparce FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Dudunsparce used Double-Edge!
@@ -2489,7 +2489,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Komala L74 Female Mild Comatose @Light Clay | Sucker Punch, Psych Up, Wood Hammer, Thrash | HP 201 Atk 186 Def 106 SpA 143 SpD 146 Spe 121
   foe#2 Ferroseed L78 Male Lax Iron Barbs @nothing | Iron Defense, Curse, Gyro Ball, Explosion | HP 175 Atk 83 Def 181 SpA 60 SpD 141 Spe 25
 log:
-  Seen Species=Crabrawler
+  Seen Species=Crabrawler Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Crabrawler!
@@ -2641,7 +2641,7 @@ log:
   say The sunlight is strong.
     + WeatherContinues Weather=Sun
   say Ace Trainer Tester sent out Komala!
-    + Seen Species=Komala
+    + Seen Species=Komala Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Komala FromBall=true
   say Foe Komala is drowsing!
   say Foe Komala used Wood Hammer!
@@ -2669,7 +2669,7 @@ mine:
 foe: School Kid Harrison (school_kid_harrison), ai Basic Expert, items X Attack
   foe#0 Starly L6 Male Timid Keen Eye @nothing | Quick Attack | HP 20 Atk 9 Def 8 SpA 8 SpD 8 Spe 13
 log:
-  Seen Species=Starly
+  Seen Species=Starly Form=none Gender=Male
   TrainersStand First=School Kid Second=none
   say School Kid Harrison wants to battle!
   say School Kid Harrison sent out Starly!
@@ -2724,8 +2724,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Noibat L74 Male Timid Infiltrator @Black Glasses | Screech, Roost, Tailwind, Hurricane | HP 145 Atk 47 Def 59 SpA 73 SpD 70 Spe 112
   foe#2 Sealeo L9 Female Bold Ice Body @nothing | Growl, Defense Curl, Rollout, Swagger | HP 36 Atk 15 Def 22 SpA 18 SpD 20 Spe 14
 log:
-  Seen Species=Purrloin
-  Seen Species=Noibat
+  Seen Species=Purrloin Form=none Gender=Male
+  Seen Species=Noibat Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Purrloin and Noibat!
@@ -2806,7 +2806,7 @@ log:
     + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=80 Healed=false
   say Ace Trainer Tester sent out Sealeo!
-    + Seen Species=Sealeo
+    + Seen Species=Sealeo Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Sealeo FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Flamigo is confused!
@@ -2862,7 +2862,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Charizard L36 Male Calm Blaze @Tanga Berry | Dragon Breath, Fire Fang, Slash, Flamethrower | HP 103 Atk 63 Def 68 SpA 93 SpD 75 Spe 85
   foe#2 Kilowattrel L11 Male Brave Volt Absorb @Soothe Bell | Growl, Thunder Shock, Quick Attack, Pluck | HP 37 Atk 24 Def 21 SpA 29 SpD 18 Spe 30
 log:
-  Seen Species=Pancham
+  Seen Species=Pancham Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Pancham!
@@ -2912,7 +2912,7 @@ log:
   say Sylveon gained 876 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=876
   say Ace Trainer Tester sent out Charizard!
-    + Seen Species=Charizard
+    + Seen Species=Charizard Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Charizard FromBall=true
   say Sylveon used Last Resort!
   say But it failed!
@@ -2975,7 +2975,7 @@ log:
   say Sylveon gained 619 EXP. Points!
   ExpGained Pokemon=mine#2 Sylveon Amount=619
   say Ace Trainer Tester sent out Kilowattrel!
-    + Seen Species=Kilowattrel
+    + Seen Species=Kilowattrel Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Kilowattrel FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Sylveon used Skill Swap!
@@ -3016,7 +3016,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Mismagius L70 Male Rash Levitate @nothing | Magical Leaf, Astonish, Spite, Growl | HP 184 Atk 96 Def 93 SpA 172 SpD 153 Spe 166
   foe#2 Salazzle L53 Female Relaxed Corrosion @Rocky Helmet | Incinerate, Venoshock, Dragon Pulse, Flamethrower | HP 142 Atk 85 Def 83 SpA 127 SpD 69 Spe 128
 log:
-  Seen Species=Magneton
+  Seen Species=Magneton Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Magneton!
@@ -3039,7 +3039,7 @@ log:
   say Tirtouga gained 363 EXP. Points!
   ExpGained Pokemon=mine#2 Tirtouga Amount=363
   say Ace Trainer Tester sent out Mismagius!
-    + Seen Species=Mismagius
+    + Seen Species=Mismagius Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Mismagius FromBall=true
   say Foe Mismagius used Magical Leaf!
     + Lunged E0 Category=Special
@@ -3142,8 +3142,8 @@ foe: Galactic Grunt (galactic_grunt_spear_pillar_2), ai Basic, items none
   foe#0 Stunky L41 Female Hasty Stench @nothing | Slash, Toxic, Night Slash, Memento | HP 103 Atk 57 Def 39 SpA 39 SpD 39 Spe 72
   foe#1 Glameow L41 Female Timid Limber @nothing | Assist, Captivate, Slash, Sucker Punch | HP 92 Atk 45 Def 40 SpA 40 SpD 36 Spe 82
 log:
-  Seen Species=Stunky
-  Seen Species=Glameow
+  Seen Species=Stunky Form=none Gender=Female
+  Seen Species=Glameow Form=none Gender=Female
   TrainersStand First=Galactic Second=none
   say Galactic Grunt wants to battle!
   say Galactic Grunt sent out Stunky and Glameow!
@@ -3335,7 +3335,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Chatot L10 Male Serious Tangled Feet @Fire Gem | Chatter, Hyper Voice, Growl, Mirror Move | HP 37 Atk 19 Def 15 SpA 24 SpD 16 Spe 26
   foe#2 Carvanha L34 Female Rash Rough Skin @Choice Specs | Ice Fang, Screech, Swagger, Crunch | HP 77 Atk 70 Def 19 SpA 64 SpD 22 Spe 54
 log:
-  Seen Species=Vanilluxe
+  Seen Species=Vanilluxe Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Vanilluxe!
@@ -3374,7 +3374,7 @@ log:
   say Snow continues to fall.
     + WeatherContinues Weather=Snow
   say Ace Trainer Tester sent out Carvanha!
-    + Seen Species=Carvanha
+    + Seen Species=Carvanha Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Carvanha FromBall=true
   say Heliolisk used Eerie Impulse!
     + Lunged P0 Category=Status
@@ -3405,7 +3405,7 @@ log:
   say Snow continues to fall.
     + WeatherContinues Weather=Snow
   say Ace Trainer Tester sent out Chatot!
-    + Seen Species=Chatot
+    + Seen Species=Chatot Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Chatot FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Heliolisk used Discharge!
@@ -3439,7 +3439,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Pupitar L8 Male Sassy Shed Skin @nothing | Rock Throw, Leer, Payback, Tackle | HP 29 Atk 18 Def 17 SpA 15 SpD 18 Spe 13
   foe#2 Dunsparce L48 Male Serious Serene Grace @Sticky Barb | Roost, Dragon Rush, Coil, Double-Edge | HP 159 Atk 73 Def 85 SpA 77 SpD 81 Spe 59
 log:
-  Seen Species=Pupitar
+  Seen Species=Pupitar Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Pupitar!
@@ -3489,7 +3489,7 @@ log:
   say Piloswine gained 161 EXP. Points!
   ExpGained Pokemon=mine#2 Piloswine Amount=161
   say Ace Trainer Tester sent out Dunsparce!
-    + Seen Species=Dunsparce
+    + Seen Species=Dunsparce Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Dunsparce FromBall=true
   say Foe Dunsparce used Coil!
     + Lunged E0 Category=Status
@@ -3536,7 +3536,7 @@ log:
   say Piloswine grew to Lv. 15!
   MoveWanted Pokemon=mine#2 Piloswine Move=Ice Shard
   say Ace Trainer Tester sent out Pupitar!
-    + Seen Species=Pupitar
+    + Seen Species=Pupitar Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Pupitar FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Lickitung used Power Whip!
@@ -3579,8 +3579,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Klink L60 Genderless Mild Minus @nothing | Lock-On, Shift Gear, Zap Cannon, Hyper Beam | HP 118 Atk 72 Def 83 SpA 77 SpD 80 Spe 44
   foe#2 Misdreavus L76 Female Careful Levitate @nothing | Payback, Shadow Ball, Perish Song, Power Gem | HP 196 Atk 110 Def 112 SpA 123 SpD 147 Spe 152
 log:
-  Seen Species=Quagsire
-  Seen Species=Klink
+  Seen Species=Quagsire Form=none Gender=Male
+  Seen Species=Klink Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Quagsire and Klink!
@@ -3908,7 +3908,7 @@ foe: Pokémon Ranger Taylor (ranger_taylor_rematch_3), ai Basic EvalAttack Exper
   foe#1 Luxray L62 Male Quiet Rivalry @nothing | Thunder Fang, Crunch, Scary Face, Discharge | HP 174 Atk 157 Def 106 SpA 138 SpD 106 Spe 85
   foe#2 Dewgong L58 Male Rash Thick Fat @nothing | Dive, Aqua Tail, Ice Beam, Safeguard | HP 175 Atk 89 Def 101 SpA 97 SpD 106 Spe 89
 log:
-  Seen Species=Carnivine
+  Seen Species=Carnivine Form=none Gender=Male
   TrainersStand First=Pokémon Ranger Second=none
   say Pokémon Ranger Taylor wants to battle!
   say Pokémon Ranger Taylor sent out Carnivine!
@@ -3972,7 +3972,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Meowstic L14 Male Docile Infiltrator @nothing | Disarming Voice, Mean Look, Confusion, Helping Hand | HP 44 Atk 21 Def 28 SpA 28 SpD 29 Spe 38
   foe#2 Dracovish L25 Genderless Hasty Water Absorb @Razor Fang | Tackle, Protect, Brutal Swing, Ancient Power | HP 83 Atk 53 Def 55 SpA 46 SpD 46 Spe 53
 log:
-  Seen Species=Ribombee
+  Seen Species=Ribombee Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Ribombee!
@@ -4037,7 +4037,7 @@ log:
   say Sneasler gained 312 EXP. Points!
   ExpGained Pokemon=mine#2 Sneasler Amount=312
   say Ace Trainer Tester sent out Dracovish!
-    + Seen Species=Dracovish
+    + Seen Species=Dracovish Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Dracovish FromBall=true
   say Foe Dracovish used Brutal Swing!
     + Lunged E0 Category=Physical
@@ -4421,8 +4421,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Burmy L69 Male Jolly Shed Skin @nothing | Protect, Tackle, Bug Bite, Hidden Power | HP 152 Atk 54 Def 77 SpA 55 SpD 82 Spe 63
   foe#2 Dragonair L69 Male Quirky Shed Skin @nothing | Safeguard, Rain Dance, Dragon Dance, Outrage | HP 168 Atk 137 Def 111 SpA 109 SpD 112 Spe 121
 log:
-  Seen Species=Malamar
-  Seen Species=Burmy
+  Seen Species=Malamar Form=none Gender=Male
+  Seen Species=Burmy Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Malamar and Burmy!
@@ -4514,7 +4514,7 @@ log:
   say Crabrawler's Defense sharply rose!
     + StageChanged P1 Stat=Defense Stage=2 Rose=true
   say Ace Trainer Tester sent out Dragonair!
-    + Seen Species=Dragonair
+    + Seen Species=Dragonair Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Dragonair FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Burmy used Protect!
@@ -4630,7 +4630,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Amaura L62 Male Hasty Refrigerate @Hearthflame Mask | Light Screen, Hail, Blizzard, Hyper Beam | HP 186 Atk 80 Def 63 SpA 99 SpD 93 Spe 69
   foe#2 Pinsir L15 Male Naughty Mold Breaker @Quick Claw | Vise Grip, Focus Energy, Bind, Seismic Toss | HP 45 Atk 50 Def 37 SpA 21 SpD 26 Spe 31
 log:
-  Seen Species=Spinarak
+  Seen Species=Spinarak Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Spinarak!
@@ -4653,7 +4653,7 @@ log:
   say Machamp gained 28 EXP. Points!
   ExpGained Pokemon=mine#2 Machamp Amount=28
   say Ace Trainer Tester sent out Amaura!
-    + Seen Species=Amaura
+    + Seen Species=Amaura Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Amaura FromBall=true
   say Illumise used Play Rough!
     + Lunged P0 Category=Physical
@@ -4704,7 +4704,7 @@ log:
   say Machamp gained 699 EXP. Points!
   ExpGained Pokemon=mine#2 Machamp Amount=699
   say Ace Trainer Tester sent out Pinsir!
-    + Seen Species=Pinsir
+    + Seen Species=Pinsir Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Pinsir FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Pinsir breaks the mold!
@@ -4760,7 +4760,7 @@ foe: Psychic Corbin (psychic_corbin_rematch), ai Basic Expert, items none
   foe#0 Xatu L60 Male Naive Synchronize @nothing | Ominous Wind, Guard Swap, Power Swap, Psychic | HP 148 Atk 95 Def 89 SpA 119 SpD 80 Spe 130
   foe#1 Gallade L60 Male Docile Steadfast @nothing | Feint, False Swipe, Protect, Close Combat | HP 151 Atk 155 Def 83 SpA 83 SpD 143 Spe 101
 log:
-  Seen Species=Xatu
+  Seen Species=Xatu Form=none Gender=Male
   TrainersStand First=Psychic Second=none
   say Psychic Corbin wants to battle!
   say Psychic Corbin sent out Xatu!
@@ -4783,7 +4783,7 @@ log:
   say Snivy gained 1305 EXP. Points!
   ExpGained Pokemon=mine#2 Snivy Amount=1305
   say Psychic Corbin sent out Gallade!
-    + Seen Species=Gallade
+    + Seen Species=Gallade Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Gallade FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Gallade used Feint!
@@ -4873,8 +4873,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Octillery L25 Female Modest Suction Cups @nothing | Psybeam, Aurora Beam, Bubble Beam, Lock-On | HP 77 Atk 57 Def 48 SpA 62 SpD 44 Spe 29
   foe#2 Nidorino L62 Male Gentle Poison Point @Grass Gem | Horn Attack, Helping Hand, Toxic, Flatter | HP 161 Atk 111 Def 82 SpA 84 SpD 101 Spe 86
 log:
-  Seen Species=Meganium
-  Seen Species=Octillery
+  Seen Species=Meganium Form=none Gender=Male
+  Seen Species=Octillery Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Meganium and Octillery!
@@ -4966,7 +4966,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Spewpa L29 Male Naughty Shed Skin @Pixie Plate | Protect, Harden | HP 66 Atk 23 Def 47 SpA 27 SpD 24 Spe 23
   foe#2 Clawitzer L11 Female Adamant Mega Launcher @Mirror Herb | Dark Pulse, Flail, Splash, Water Gun | HP 39 Atk 25 Def 24 SpA 29 SpD 27 Spe 19
 log:
-  Seen Species=Mesprit
+  Seen Species=Mesprit Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Mesprit!
@@ -5009,7 +5009,7 @@ log:
   say Yanma gained 2087 EXP. Points!
   ExpGained Pokemon=mine#2 Yanma Amount=2087
   say Ace Trainer Tester sent out Clawitzer!
-    + Seen Species=Clawitzer
+    + Seen Species=Clawitzer Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Clawitzer FromBall=true
   say Pyroar snapped out of confusion!
     + VolatileChanged P0 Confused=false InLove=false
@@ -5027,7 +5027,7 @@ log:
   say Yanma gained 33 EXP. Points!
   ExpGained Pokemon=mine#2 Yanma Amount=33
   say Ace Trainer Tester sent out Spewpa!
-    + Seen Species=Spewpa
+    + Seen Species=Spewpa Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Spewpa FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Pyroar used Hyper Voice!
@@ -5060,7 +5060,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Farigiraf L67 Female Naive Armor Tail @Lucky Punch | Crunch, Baton Pass, Nasty Plot, Psychic | HP 242 Atk 143 Def 104 SpA 163 SpD 99 Spe 100
   foe#2 Suicune L13 Genderless Hardy Pressure @nothing | Leer, Gust, Water Pulse, Bite | HP 51 Atk 28 Def 34 SpA 31 SpD 38 Spe 28
 log:
-  Seen Species=Kabuto
+  Seen Species=Kabuto Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Kabuto!
@@ -5169,8 +5169,8 @@ foe: Rival Cedric (rival_survival_area_unused_piplup), ai Basic EvalAttack Exper
   foe#4 Snorlax L73 Male Lonely Immunity @nothing | Body Slam, Crunch, Earthquake, Zen Headbutt | HP 338 Atk 205 Def 108 SpA 121 SpD 187 Spe 70
   foe#5 Torterra L75 Male Sassy Overgrow @Sitrus Berry | Leaf Storm, Earthquake, Crunch, Stone Edge | HP 250 Atk 191 Def 185 SpA 140 SpD 170 Spe 99
 log:
-  Seen Species=Staraptor
-  Seen Species=Floatzel
+  Seen Species=Staraptor Form=none Gender=Male
+  Seen Species=Floatzel Form=none Gender=Male
   TrainersStand First=Rival Second=none
   say Rival Cedric wants to battle!
   say Rival Cedric sent out Staraptor and Floatzel!
@@ -5226,7 +5226,7 @@ log:
   Recalled E0
   Left E0 Ran=false
   say Rival Cedric sent out Heracross!
-    + Seen Species=Heracross
+    + Seen Species=Heracross Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Heracross FromBall=true
   say Grumpig used Psyshock!
     + Lunged P0 Category=Special
@@ -5258,7 +5258,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Larvesta L11 Female Relaxed Flame Body @Haban Berry | String Shot, Ember, Flame Charge | HP 34 Atk 26 Def 18 SpA 18 SpD 18 Spe 16
   foe#2 Purrloin L14 Female Quirky Limber @nothing | Scratch, Sand Attack, Fake Out, Fury Swipes | HP 38 Atk 22 Def 18 SpA 20 SpD 15 Spe 24
 log:
-  Seen Species=Magmar
+  Seen Species=Magmar Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Magmar!
@@ -5303,7 +5303,7 @@ log:
   say Solgaleo gained 591 EXP. Points!
   ExpGained Pokemon=mine#2 Solgaleo Amount=591
   say Ace Trainer Tester sent out Purrloin!
-    + Seen Species=Purrloin
+    + Seen Species=Purrloin Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Purrloin FromBall=true
   say Iron Boulder used Swords Dance!
     + Lunged P0 Category=Status
@@ -5334,7 +5334,7 @@ log:
   say Solgaleo gained 8 EXP. Points!
   ExpGained Pokemon=mine#2 Solgaleo Amount=8
   say Ace Trainer Tester sent out Larvesta!
-    + Seen Species=Larvesta
+    + Seen Species=Larvesta Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Larvesta FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Iron Boulder used Mighty Cleave!
@@ -5368,7 +5368,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Sprigatito L77 Male Brave Overgrow @nothing | Worry Seed, Slash, Energy Ball, Play Rough | HP 153 Atk 110 Def 108 SpA 97 SpD 90 Spe 103
   foe#2 Hoothoot L59 Male Mild Insomnia @Tanga Berry | Roost, Moonblast, Hypnosis, Dream Eater | HP 139 Atk 58 Def 48 SpA 64 SpD 71 Spe 67
 log:
-  Seen Species=Trubbish
+  Seen Species=Trubbish Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Trubbish!
@@ -5445,7 +5445,7 @@ log:
   say Braviary gained 431 EXP. Points!
   ExpGained Pokemon=mine#2 Braviary Amount=431
   say Ace Trainer Tester sent out Sprigatito!
-    + Seen Species=Sprigatito
+    + Seen Species=Sprigatito Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Sprigatito FromBall=true
   say Skuntank used Sucker Punch!
     + Lunged P0 Category=Physical
@@ -5506,8 +5506,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Stonjourner L42 Female Adamant Power Spot @nothing | Stomp, Stealth Rock, Rock Slide, Body Slam | HP 139 Atk 129 Def 120 SpA 25 SpD 26 Spe 67
   foe#2 Kubfu L49 Female Naive Inner Focus @nothing | Iron Head, Dynamic Punch, Counter, Close Combat | HP 126 Atk 95 Def 64 SpA 57 SpD 61 Spe 89
 log:
-  Seen Species=Venonat
-  Seen Species=Stonjourner
+  Seen Species=Venonat Form=none Gender=Male
+  Seen Species=Stonjourner Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Venonat and Stonjourner!
@@ -5546,7 +5546,7 @@ log:
   say Probopass is paralyzed! It may be unable to move!
     + StatusChanged P1 Status=Paralyze
   say Ace Trainer Tester sent out Kubfu!
-    + Seen Species=Kubfu
+    + Seen Species=Kubfu Form=none Gender=Female
     + Entered E1 Pokemon=foe#2 Kubfu FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Frosmoth used Blizzard!
@@ -5587,7 +5587,7 @@ mine:
 foe: Maid Clare (maid_clare), ai Basic, items none
   foe#0 Clefairy L33 Female Lonely Cute Charm @nothing | Metronome, Bounce, Meteor Mash, Endure | HP 89 Atk 37 Def 32 SpA 44 SpD 47 Spe 28
 log:
-  Seen Species=Clefairy
+  Seen Species=Clefairy Form=none Gender=Female
   TrainersStand First=Maid Second=none
   say Maid Clare wants to battle!
   say Maid Clare sent out Clefairy!
@@ -5704,7 +5704,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Dewgong L73 Male Docile Thick Fat @Cleanse Tag | Aqua Tail, Ice Beam, Safeguard, Snowscape | HP 218 Atk 121 Def 129 SpA 113 SpD 152 Spe 113
   foe#2 Zweilous L77 Male Hasty Hustle @Rock Memory | Hyper Voice, Dragon Rush, Nasty Plot, Outrage | HP 217 Atk 145 Def 102 SpA 126 SpD 130 Spe 125
 log:
-  Seen Species=Nidoran♂
+  Seen Species=Nidoran♂ Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Nidoran♂!
@@ -5792,7 +5792,7 @@ log:
   say Zeraora gained 589 EXP. Points!
   ExpGained Pokemon=mine#2 Zeraora Amount=589
   say Ace Trainer Tester sent out Zweilous!
-    + Seen Species=Zweilous
+    + Seen Species=Zweilous Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Zweilous FromBall=true
   say Zeraora used Discharge!
     + Lunged P0 Category=Special
@@ -5904,7 +5904,7 @@ log:
   say Gorebyss gained 3823 EXP. Points!
   ExpGained Pokemon=mine#1 Gorebyss Amount=3823
   say Ace Trainer Tester sent out Dewgong!
-    + Seen Species=Dewgong
+    + Seen Species=Dewgong Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Dewgong FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Dewgong used Aqua Tail!
@@ -5932,8 +5932,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Inkay L51 Female Hasty Contrary @nothing | Switcheroo, Foul Play, Topsy-Turvy, Superpower | HP 116 Atk 61 Def 58 SpA 53 SpD 66 Spe 59
   foe#2 Komala L42 Male Modest Comatose @Iapapa Berry | Flail, Sucker Punch, Psych Up, Wood Hammer | HP 119 Atk 94 Def 61 SpA 78 SpD 90 Spe 66
 log:
-  Seen Species=Nymble
-  Seen Species=Inkay
+  Seen Species=Nymble Form=none Gender=Male
+  Seen Species=Inkay Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Nymble and Inkay!
@@ -6229,7 +6229,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Poochyena L28 Female Brave Run Away @nothing | Swagger, Assurance, Scary Face, Taunt | HP 57 Atk 44 Def 28 SpA 22 SpD 25 Spe 23
   foe#2 Xerneas L40 Genderless Impish Fairy Aura @Expert Belt | Aromatherapy, Psych Up, Horn Leech, Misty Terrain | HP 152 Atk 118 Def 100 SpA 101 SpD 90 Spe 96
 log:
-  Seen Species=Spearow
+  Seen Species=Spearow Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Spearow!
@@ -6273,7 +6273,7 @@ log:
   say Finizen gained 3 EXP. Points!
   ExpGained Pokemon=mine#2 Finizen Amount=3
   say Ace Trainer Tester sent out Xerneas!
-    + Seen Species=Xerneas
+    + Seen Species=Xerneas Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Xerneas FromBall=true
   say Foe Xerneas is radiating a fairy aura!
     + AbilityShown E0 Ability=Fairy Aura
@@ -6440,7 +6440,7 @@ log:
   say Finizen gained 1250 EXP. Points!
   ExpGained Pokemon=mine#2 Finizen Amount=1250
   say Ace Trainer Tester sent out Poochyena!
-    + Seen Species=Poochyena
+    + Seen Species=Poochyena Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Poochyena FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Steelix used Double-Edge!
@@ -6471,7 +6471,7 @@ mine:
 foe: Lass Cassidy (lass_cassidy), ai Basic, items none
   foe#0 Buneary L22 Female Careful Run Away @nothing | Splash, Endure, Frustration, Quick Attack | HP 56 Atk 34 Def 24 SpA 21 SpD 31 Spe 42
 log:
-  Seen Species=Buneary
+  Seen Species=Buneary Form=none Gender=Female
   TrainersStand First=Lass Second=none
   say Lass Cassidy wants to battle!
   say Lass Cassidy sent out Buneary!
@@ -6579,8 +6579,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Paras L35 Male Hardy Effect Spore @Blank Plate | Fury Cutter, Spore, Slash, Growth | HP 72 Atk 64 Def 48 SpA 43 SpD 52 Spe 30
   foe#2 Urshifu L10 Male Modest Unseen Fist @nothing | Leer, Rock Smash, Sucker Punch, Endure | HP 40 Atk 28 Def 25 SpA 19 SpD 19 Spe 25
 log:
-  Seen Species=Squirtle
-  Seen Species=Paras
+  Seen Species=Squirtle Form=none Gender=Female
+  Seen Species=Paras Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Squirtle and Paras!
@@ -6615,7 +6615,7 @@ log:
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Ace Trainer Tester sent out Urshifu!
-    + Seen Species=Urshifu
+    + Seen Species=Urshifu Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Urshifu FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Sneasel used Beat Up!
@@ -6690,7 +6690,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Ledian L11 Male Jolly Early Bird @Psychic Memory | Tackle, Supersonic, Swift | HP 35 Atk 14 Def 19 SpA 17 SpD 30 Spe 25
   foe#2 Scovillain L35 Female Naughty Insomnia @Soothe Bell | Bullet Seed, Headbutt, Zen Headbutt, Worry Seed | HP 94 Atk 95 Def 52 SpA 88 SpD 54 Spe 62
 log:
-  Seen Species=Octillery
+  Seen Species=Octillery Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Octillery!
@@ -6771,7 +6771,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Skiddo L55 Male Quirky Sap Sipper @Aguav Berry | Bulk Up, Double-Edge, Horn Leech, Leaf Blade | HP 145 Atk 81 Def 72 SpA 79 SpD 81 Spe 75
   foe#2 Eelektross L31 Female Serious Levitate @nothing | Acid, Thrash, Headbutt, Wild Charge | HP 100 Atk 78 Def 61 SpA 76 SpD 56 Spe 40
 log:
-  Seen Species=Hoothoot
+  Seen Species=Hoothoot Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Hoothoot!
@@ -6827,7 +6827,7 @@ log:
   say Cranidos fainted!
     + Fainted P0
   say Ace Trainer Tester sent out Skiddo!
-    + Seen Species=Skiddo
+    + Seen Species=Skiddo Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Skiddo FromBall=true
   say Go! Venomoth!
     + Entered P0 Pokemon=mine#2 Venomoth FromBall=true
@@ -6914,8 +6914,8 @@ foe: Beauty Devon (beauty_devon), ai Basic, items none
   foe#1 Wormadam-Sandy L24 Female Jolly Anticipation @nothing | Protect, Bug Bite, Hidden Power, Confusion | HP 62 Atk 42 Def 55 SpA 29 SpD 45 Spe 24
   foe#2 Wormadam-Trash L24 Female Jolly Anticipation @nothing | Protect, Bug Bite, Hidden Power, Confusion | HP 62 Atk 38 Def 50 SpA 34 SpD 50 Spe 24
 log:
-  Seen Species=Wormadam
-  Seen Species=Wormadam
+  Seen Species=Wormadam Form=none Gender=Female
+  Seen Species=Wormadam Form=Wormadam-Sandy Gender=Female
   TrainersStand First=Beauty Second=none
   say Beauty Devon wants to battle!
   say Beauty Devon sent out Wormadam and Wormadam!
@@ -6953,7 +6953,7 @@ log:
     ! Struck P1 Hp=63 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Beauty Devon sent out Wormadam!
-    + Seen Species=Wormadam
+    + Seen Species=Wormadam Form=Wormadam-Trash Gender=Female
     + Entered E1 Pokemon=foe#2 Wormadam FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Foe Wormadam shuddered!
@@ -7028,7 +7028,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Vigoroth L8 Female Careful Vital Spirit @nothing | Uproar, Encore, Focus Energy, Scratch | HP 31 Atk 19 Def 19 SpA 14 SpD 17 Spe 21
   foe#2 Electivire L24 Male Modest Motor Drive @Wiki Berry | Swift, Shock Wave, Thunder Wave, Screech | HP 71 Atk 63 Def 41 SpA 58 SpD 46 Spe 56
 log:
-  Seen Species=Volcanion
+  Seen Species=Volcanion Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Volcanion!
@@ -7119,7 +7119,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Heatran L23 Female Gentle Flash Fire @Dragon Gem | Leer, Metal Claw, Ancient Power, Fire Fang | HP 79 Atk 52 Def 47 SpA 71 SpD 66 Spe 42
   foe#2 Starmie L70 Genderless Gentle Natural Cure @nothing | Psybeam, Swift, Minimize, Rapid Spin | HP 178 Atk 128 Def 124 SpA 158 SpD 138 Spe 180
 log:
-  Seen Species=Heatran
+  Seen Species=Heatran Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Heatran!
@@ -7221,7 +7221,7 @@ log:
     + Recalled E0
   Left E0 Ran=false
   say Ace Trainer Tester sent out Heatran!
-    + Seen Species=Heatran
+    + Seen Species=Heatran Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Heatran FromBall=true
   say Wigglytuff used Stockpile!
     + Lunged P0 Category=Status
@@ -7310,7 +7310,7 @@ log:
   say Wigglytuff gained 394 EXP. Points!
   ExpGained Pokemon=mine#1 Wigglytuff Amount=394
   say Ace Trainer Tester sent out Heatran!
-    + Seen Species=Heatran
+    + Seen Species=Heatran Form=none Gender=Female
     + Entered E0 Pokemon=foe#0 Heatran FromBall=true
   say Foe Heatran used Lava Plume!
     + Lunged E0 Category=Special
@@ -7336,8 +7336,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Totodile L43 Female Quiet Torrent @nothing | Slash, Screech, Thrash, Aqua Tail | HP 108 Atk 67 Def 60 SpA 53 SpD 55 Spe 37
   foe#2 Combusken L22 Male Bold Blaze @nothing | Flame Charge, Detect, Sand Attack, Aerial Ace | HP 61 Atk 43 Def 35 SpA 44 SpD 36 Spe 35
 log:
-  Seen Species=Flutter Mane
-  Seen Species=Totodile
+  Seen Species=Flutter Mane Form=none Gender=Genderless
+  Seen Species=Totodile Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Flutter Mane and Totodile!
@@ -7388,7 +7388,7 @@ foe: Sailor Luther (sailor_luther), ai Basic, items none
   foe#1 Machoke L42 Male Modest Guts @nothing | Vital Throw, Submission, Wake-Up Slap, Cross Chop | HP 119 Atk 80 Def 63 SpA 51 SpD 55 Spe 42
   foe#2 Gastrodon L43 Male Bashful Sticky Hold @nothing | Hidden Power, Rain Dance, Body Slam, Muddy Water | HP 148 Atk 76 Def 63 SpA 84 SpD 75 Spe 38
 log:
-  Seen Species=Wingull
+  Seen Species=Wingull Form=none Gender=Male
   TrainersStand First=Sailor Second=none
   say Sailor Luther wants to battle!
   say Sailor Luther sent out Wingull!
@@ -7446,7 +7446,7 @@ log:
   say Roserade gained 278 EXP. Points!
   ExpGained Pokemon=mine#2 Roserade Amount=278
   say Sailor Luther sent out Gastrodon!
-    + Seen Species=Gastrodon
+    + Seen Species=Gastrodon Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Gastrodon FromBall=true
   say Alcremie used Recover!
     + Lunged P0 Category=Status
@@ -7614,7 +7614,7 @@ log:
   say Roserade gained 1684 EXP. Points!
   ExpGained Pokemon=mine#2 Roserade Amount=1684
   say Sailor Luther sent out Machoke!
-    + Seen Species=Machoke
+    + Seen Species=Machoke Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Roserade used Mega Drain!
@@ -7754,7 +7754,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Hariyama L32 Male Bashful Guts @Pecha Berry | Knock Off, Bulk Up, Belly Drum, Detect | HP 138 Atk 83 Def 45 SpA 32 SpD 48 Spe 40
   foe#2 Weezing L53 Male Naughty Levitate @Starf Berry | Sludge Bomb, Toxic, Belch, Explosion | HP 145 Atk 111 Def 134 SpA 100 SpD 72 Spe 72
 log:
-  Seen Species=Dondozo
+  Seen Species=Dondozo Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Dondozo!
@@ -7792,7 +7792,7 @@ log:
   say Chandelure gained 348 EXP. Points!
   ExpGained Pokemon=mine#2 Chandelure Amount=348
   say Ace Trainer Tester sent out Hariyama!
-    + Seen Species=Hariyama
+    + Seen Species=Hariyama Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Hariyama FromBall=true
   say Cloyster used Shell Smash!
     + Lunged P0 Category=Status
@@ -7860,7 +7860,7 @@ log:
   LevelRose Pokemon=mine#2 Chandelure Level=17 Before=45/24/31/53/34/29 After=50/26/35/59/38/32
   say Chandelure grew to Lv. 17!
   say Ace Trainer Tester sent out Weezing!
-    + Seen Species=Weezing
+    + Seen Species=Weezing Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Weezing FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Cloyster used Ice Shard!
@@ -7945,8 +7945,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Simisage L71 Male Rash Gluttony @Power Weight | Seed Bomb, Fury Swipes, Lick, Leer | HP 188 Atk 166 Def 95 SpA 168 SpD 90 Spe 149
   foe#2 Kirlia L60 Male Naive Trace @Bug Gem | Psychic, Heal Pulse, Dream Eater, Future Sight | HP 128 Atk 53 Def 57 SpA 88 SpD 72 Spe 86
 log:
-  Seen Species=Snover
-  Seen Species=Simisage
+  Seen Species=Snover Form=none Gender=Female
+  Seen Species=Simisage Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Snover and Simisage!
@@ -8043,7 +8043,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Scolipede L14 Male Modest Swarm @Draco Plate | Poison Sting, Baton Pass, Iron Defense, Poison Tail | HP 41 Atk 30 Def 30 SpA 24 SpD 26 Spe 38
   foe#2 Scizor L39 Female Adamant Technician @nothing | Slash, Focus Energy, Iron Defense, Iron Head | HP 103 Atk 125 Def 87 SpA 52 SpD 78 Spe 56
 log:
-  Seen Species=Scrafty
+  Seen Species=Scrafty Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Scrafty!
@@ -8134,7 +8134,7 @@ foe: Rival Cedric (rival_pastoria_city_piplup), ai Basic EvalAttack Expert, item
   foe#2 Ponyta L32 Male Serious Run Away @nothing | Ember, Stomp, Tail Whip, Growl | HP 76 Atk 62 Def 43 SpA 49 SpD 49 Spe 65
   foe#3 Grotle L36 Male Docile Overgrow @nothing | Razor Leaf, Bite, Mega Drain, Withdraw | HP 103 Atk 72 Def 69 SpA 47 SpD 55 Spe 34
 log:
-  Seen Species=Staravia
+  Seen Species=Staravia Form=none Gender=Male
   TrainersStand First=Rival Second=none
   say Rival Cedric wants to battle!
   say Rival Cedric sent out Staravia!
@@ -8208,7 +8208,7 @@ log:
   say Ogerpon gained 329 EXP. Points!
   ExpGained Pokemon=mine#2 Ogerpon Amount=329
   say Rival Cedric sent out Ponyta!
-    + Seen Species=Ponyta
+    + Seen Species=Ponyta Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Ponyta FromBall=true
   say Arceus used Gravity!
     + Lunged P0 Category=Status
@@ -8264,7 +8264,7 @@ log:
   say Ogerpon gained 389 EXP. Points!
   ExpGained Pokemon=mine#2 Ogerpon Amount=389
   say Rival Cedric sent out Grotle!
-    + Seen Species=Grotle
+    + Seen Species=Grotle Form=none Gender=Male
     + Entered E0 Pokemon=foe#3 Grotle FromBall=true
   say Arceus used Earth Power!
     + Lunged P0 Category=Special
@@ -8339,7 +8339,7 @@ log:
   say Ogerpon gained 464 EXP. Points!
   ExpGained Pokemon=mine#2 Ogerpon Amount=464
   say Rival Cedric sent out Buizel!
-    + Seen Species=Buizel
+    + Seen Species=Buizel Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Buizel FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Buizel used Aqua Jet!
@@ -8387,8 +8387,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Goodra L80 Male Bold Sap Sipper @Sticky Barb | Curse, Body Slam, Muddy Water, Power Whip | HP 243 Atk 166 Def 144 SpA 191 SpD 249 Spe 138
   foe#2 Zekrom L10 Genderless Modest Teravolt @Wise Glasses | Thunder Fang, Ancient Power, Dragon Breath, Slash | HP 42 Atk 32 Def 29 SpA 33 SpD 26 Spe 24
 log:
-  Seen Species=Klawf
-  Seen Species=Goodra
+  Seen Species=Klawf Form=none Gender=Female
+  Seen Species=Goodra Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Klawf and Goodra!
@@ -8456,7 +8456,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Inkay L51 Female Jolly Suction Cups @nothing | Switcheroo, Foul Play, Topsy-Turvy, Superpower | HP 119 Atk 63 Def 62 SpA 42 SpD 65 Spe 57
   foe#2 Espeon L12 Male Quirky Synchronize @nothing | Take Down, Tackle, Sand Attack, Quick Attack | HP 39 Atk 22 Def 20 SpA 38 SpD 30 Spe 32
 log:
-  Seen Species=Nidoqueen
+  Seen Species=Nidoqueen Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Nidoqueen!
@@ -8478,7 +8478,7 @@ log:
   say Melmetal gained 4 EXP. Points!
   ExpGained Pokemon=mine#2 Melmetal Amount=4
   say Ace Trainer Tester sent out Inkay!
-    + Seen Species=Inkay
+    + Seen Species=Inkay Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Inkay FromBall=true
   say Makuhita used Endure!
     + Lunged P0 Category=Status
@@ -8507,7 +8507,7 @@ log:
   say Melmetal gained 173 EXP. Points!
   ExpGained Pokemon=mine#2 Melmetal Amount=173
   say Ace Trainer Tester sent out Espeon!
-    + Seen Species=Espeon
+    + Seen Species=Espeon Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Espeon FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Makuhita used Reversal!
@@ -8541,7 +8541,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Watchog L27 Female Bold Keen Eye @nothing | Crunch, Hypnosis, Super Fang, After You | HP 71 Atk 45 Def 48 SpA 39 SpD 48 Spe 47
   foe#2 Minior L14 Genderless Modest Shields Down @nothing | Tackle, Defense Curl, Rollout, Confuse Ray | HP 42 Atk 22 Def 33 SpA 23 SpD 33 Spe 22
 log:
-  Seen Species=Umbreon
+  Seen Species=Umbreon Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Umbreon!
@@ -8689,7 +8689,7 @@ log:
   say Jangmo-o gained 142 EXP. Points!
   ExpGained Pokemon=mine#2 Jangmo-o Amount=142
   say Ace Trainer Tester sent out Minior!
-    + Seen Species=Minior
+    + Seen Species=Minior Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Minior FromBall=true
   say Marshadow snapped out of confusion!
     + VolatileChanged P0 Confused=false InLove=false
@@ -8717,7 +8717,7 @@ log:
   say Jangmo-o gained 30 EXP. Points!
   ExpGained Pokemon=mine#2 Jangmo-o Amount=30
   say Ace Trainer Tester sent out Watchog!
-    + Seen Species=Watchog
+    + Seen Species=Watchog Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Watchog FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Marshadow used Drain Punch!
@@ -8751,8 +8751,8 @@ foe: Artist William (artist_william_rematch_3), ai Basic, items none
   foe#1 Mr. Mime L57 Male Jolly Soundproof @nothing | Psychic, Light Screen, Reflect, Mimic | HP 112 Atk 56 Def 79 SpA 107 SpD 141 Spe 117
   foe#2 Sudowoodo L57 Male Rash Sturdy @nothing | Rock Throw, Flail, Sucker Punch, Mimic | HP 146 Atk 119 Def 136 SpA 42 SpD 71 Spe 39
 log:
-  Seen Species=Smeargle
-  Seen Species=Mr. Mime
+  Seen Species=Smeargle Form=none Gender=Male
+  Seen Species=Mr. Mime Form=none Gender=Male
   TrainersStand First=Artist Second=none
   say Artist William wants to battle!
   say Artist William sent out Smeargle and Mr. Mime!
@@ -8815,7 +8815,7 @@ log:
     + MomentShown E1 Moment=Burned From=none
     + HpChanged E1 Hp=8 Healed=false
   say Artist William sent out Sudowoodo!
-    + Seen Species=Sudowoodo
+    + Seen Species=Sudowoodo Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Sudowoodo FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Sudowoodo used Sucker Punch!
@@ -8862,7 +8862,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Brambleghast L53 Female Adamant Wind Rider @nothing | Phantom Force, Giga Drain, Curse, Pain Split | HP 128 Atk 146 Def 89 SpA 90 SpD 83 Spe 106
   foe#2 Gastrodon L35 Female Rash Storm Drain @nothing | Water Pulse, Ancient Power, Body Slam, Muddy Water | HP 132 Atk 70 Def 57 SpA 79 SpD 57 Spe 34
 log:
-  Seen Species=Rhyperior
+  Seen Species=Rhyperior Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Rhyperior!
@@ -8896,7 +8896,7 @@ log:
   say Electivire gained 19 EXP. Points!
   ExpGained Pokemon=mine#2 Electivire Amount=19
   say Ace Trainer Tester sent out Brambleghast!
-    + Seen Species=Brambleghast
+    + Seen Species=Brambleghast Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Brambleghast FromBall=true
   say Foe Brambleghast vanished instantly!
     + Lunged E0 Category=Status
@@ -9032,7 +9032,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Smoochum L15 Female Quiet Oblivious @nothing | Lick, Powder Snow, Copycat, Confusion | HP 40 Atk 17 Def 10 SpA 35 SpD 25 Spe 23
   foe#2 Rapidash L80 Female Naughty Flash Fire @Dark Gem | Take Down, Inferno, Fire Blast, Flare Blitz | HP 200 Atk 202 Def 131 SpA 147 SpD 124 Spe 173
 log:
-  Seen Species=Vullaby
+  Seen Species=Vullaby Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Vullaby!
@@ -9102,7 +9102,7 @@ log:
   say Duskull gained 199 EXP. Points!
   ExpGained Pokemon=mine#2 Duskull Amount=199
   say Ace Trainer Tester sent out Smoochum!
-    + Seen Species=Smoochum
+    + Seen Species=Smoochum Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Smoochum FromBall=true
   say Foe Smoochum used Copycat!
     + Lunged E0 Category=Status
@@ -9157,7 +9157,7 @@ log:
   say The foe's team's tailwind petered out!
     + SideConditionChanged Side=Enemy Condition=Tailwind Layers=0
   say Ace Trainer Tester sent out Rapidash!
-    + Seen Species=Rapidash
+    + Seen Species=Rapidash Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Rapidash FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Rapidash used Take Down!
@@ -9186,8 +9186,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Altaria L59 Male Quirky Natural Cure @Lucky Egg | Take Down, Moonblast, Perish Song, Sky Attack | HP 172 Atk 103 Def 111 SpA 91 SpD 141 Spe 107
   foe#2 Salazzle L50 Female Timid Corrosion @Power Weight | Nasty Plot, Incinerate, Venoshock, Dragon Pulse | HP 138 Atk 73 Def 76 SpA 128 SpD 68 Spe 149
 log:
-  Seen Species=Sandaconda
-  Seen Species=Altaria
+  Seen Species=Sandaconda Form=none Gender=Female
+  Seen Species=Altaria Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Sandaconda and Altaria!
@@ -9229,7 +9229,7 @@ log:
     + MomentShown E1 Moment=LeechSeed From=P1
     + HpChanged E1 Hp=139 Healed=false
   say Ace Trainer Tester sent out Salazzle!
-    + Seen Species=Salazzle
+    + Seen Species=Salazzle Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Salazzle FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Altaria used Take Down!
@@ -9314,7 +9314,7 @@ foe: Policeman Danny (policeman_danny_rematch_1), ai Basic, items none
   foe#0 Hoothoot L32 Male Rash Insomnia @nothing | Reflect, Confusion, Take Down, Air Slash | HP 80 Atk 24 Def 24 SpA 30 SpD 36 Spe 37
   foe#1 Machoke L34 Male Serious Guts @nothing | Seismic Toss, Revenge, Vital Throw, Submission | HP 98 Atk 73 Def 52 SpA 39 SpD 45 Spe 35
 log:
-  Seen Species=Hoothoot
+  Seen Species=Hoothoot Form=none Gender=Male
   TrainersStand First=Policeman Second=none
   say Policeman Danny wants to battle!
   say Policeman Danny sent out Hoothoot!
@@ -9526,7 +9526,7 @@ log:
   Recalled E0
   Left E0 Ran=false
   say Foe Machoke was dragged out!
-    + Seen Species=Machoke
+    + Seen Species=Machoke Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Machoke FromBall=true
   say The foe's team's Reflect wore off!
     + SideConditionChanged Side=Enemy Condition=Reflect Layers=0
@@ -9600,7 +9600,7 @@ log:
   say Scyther gained 1026 EXP. Points!
   ExpGained Pokemon=mine#2 Scyther Amount=1026
   say Policeman Danny sent out Hoothoot!
-    + Seen Species=Hoothoot
+    + Seen Species=Hoothoot Form=none Gender=Male
     + Entered E0 Pokemon=foe#0 Hoothoot FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Scyther used Focus Energy!
@@ -9639,7 +9639,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Hoothoot L25 Male Mild Insomnia @nothing | Defog, Air Slash, Extrasensory, Take Down | HP 68 Atk 20 Def 22 SpA 33 SpD 35 Spe 34
   foe#2 Machoke L64 Male Serious No Guard @Poison Gem | Bulk Up, Seismic Toss, Dynamic Punch, Cross Chop | HP 184 Atk 152 Def 95 SpA 74 SpD 86 Spe 76
 log:
-  Seen Species=Eldegoss
+  Seen Species=Eldegoss Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Eldegoss!
@@ -9818,7 +9818,7 @@ log:
   say Centiskorch gained 81 EXP. Points!
   ExpGained Pokemon=mine#2 Centiskorch Amount=81
   say Ace Trainer Tester sent out Hoothoot!
-    + Seen Species=Hoothoot
+    + Seen Species=Hoothoot Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Hoothoot FromBall=true
   say Foe Hoothoot used Air Slash!
     + Lunged E0 Category=Special
@@ -9856,7 +9856,7 @@ log:
     + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=202 Healed=false
   say Ace Trainer Tester sent out Machoke!
-    + Seen Species=Machoke
+    + Seen Species=Machoke Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Machoke FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Centiskorch used Crunch!
@@ -9961,8 +9961,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Rockruff L57 Female Careful Keen Eye @nothing | Crunch, Scary Face, Stealth Rock, Stone Edge | HP 133 Atk 80 Def 60 SpA 38 SpD 60 Spe 84
   foe#2 Bergmite L77 Male Naive Own Tempo @Protective Pads | Crunch, Take Down, Blizzard, Double-Edge | HP 195 Atk 129 Def 151 SpA 64 SpD 73 Spe 63
 log:
-  Seen Species=Petilil
-  Seen Species=Rockruff
+  Seen Species=Petilil Form=none Gender=Female
+  Seen Species=Rockruff Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Petilil and Rockruff!
@@ -10063,7 +10063,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Centiskorch L11 Male Impish Flash Fire @nothing | Wrap, Smokescreen, Ember, Inferno | HP 45 Atk 32 Def 22 SpA 21 SpD 27 Spe 19
   foe#2 Silcoon L6 Female Docile Shed Skin @Ground Gem | Harden | HP 22 Atk 10 Def 12 SpA 9 SpD 8 Spe 7
 log:
-  Seen Species=Huntail
+  Seen Species=Huntail Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Huntail!
@@ -10103,7 +10103,7 @@ log:
     + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=44 Healed=false
   say Ace Trainer Tester sent out Centiskorch!
-    + Seen Species=Centiskorch
+    + Seen Species=Centiskorch Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Centiskorch FromBall=true
   say Dustox used Psybeam!
     + Lunged P0 Category=Special
@@ -10154,7 +10154,7 @@ log:
     + MomentShown P0 Moment=HeldItem From=none
     + HpChanged P0 Hp=5 Healed=false
   say Ace Trainer Tester sent out Silcoon!
-    + Seen Species=Silcoon
+    + Seen Species=Silcoon Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Silcoon FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Dustox used Silver Wind!
@@ -10197,7 +10197,7 @@ foe: Parasol Lady Alexa (parasol_lady_alexa_rematch_2), ai Basic, items none
   foe#1 Bibarel L42 Female Quiet Simple @nothing | Hyper Fang, Yawn, Amnesia, Take Down | HP 118 Atk 76 Def 55 SpA 56 SpD 55 Spe 57
   foe#2 Seaking L42 Female Bashful Swift Swim @nothing | Flail, Aqua Ring, Fury Attack, Waterfall | HP 119 Atk 82 Def 59 SpA 59 SpD 72 Spe 62
 log:
-  Seen Species=Hippowdon
+  Seen Species=Hippowdon Form=none Gender=Female
   TrainersStand First=Parasol Lady Second=none
   say Parasol Lady Alexa wants to battle!
   say Parasol Lady Alexa sent out Hippowdon!
@@ -10288,7 +10288,7 @@ log:
   say Woobat gained 902 EXP. Points!
   ExpGained Pokemon=mine#2 Woobat Amount=902
   say Parasol Lady Alexa sent out Bibarel!
-    + Seen Species=Bibarel
+    + Seen Species=Bibarel Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Bibarel FromBall=true
   say Dewgong used Brine!
     + Lunged P0 Category=Special
@@ -10372,8 +10372,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Luxio L73 Female Lonely Intimidate @Lum Berry | Crunch, Discharge, Swagger, Wild Charge | HP 180 Atk 158 Def 83 SpA 96 SpD 87 Spe 109
   foe#2 Starly L10 Female Mild Keen Eye @Zoom Lens | Growl, Tackle, Quick Attack, Wing Attack | HP 28 Atk 16 Def 9 SpA 13 SpD 13 Spe 17
 log:
-  Seen Species=Amaura
-  Seen Species=Luxio
+  Seen Species=Amaura Form=none Gender=Male
+  Seen Species=Luxio Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Amaura and Luxio!
@@ -10486,7 +10486,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Hoopa L35 Genderless Hasty Magician @Throat Spray | Skill Swap, Power Split, Guard Split, Phantom Force | HP 106 Atk 82 Def 44 SpA 120 SpD 101 Spe 68
   foe#2 Flamigo L12 Male Quirky Scrappy @nothing | Peck, Double Kick, Detect, Wing Attack | HP 41 Atk 34 Def 23 SpA 26 SpD 21 Spe 27
 log:
-  Seen Species=Guzzlord
+  Seen Species=Guzzlord Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Guzzlord!
@@ -10554,7 +10554,7 @@ log:
   say Linoone gained 94 EXP. Points!
   ExpGained Pokemon=mine#2 Linoone Amount=94
   say Ace Trainer Tester sent out Hoopa!
-    + Seen Species=Hoopa
+    + Seen Species=Hoopa Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#1 Hoopa FromBall=true
   say Foe Hoopa used Guard Split!
     + Lunged E0 Category=Status
@@ -10591,7 +10591,7 @@ log:
   say Linoone gained 437 EXP. Points!
   ExpGained Pokemon=mine#2 Linoone Amount=437
   say Ace Trainer Tester sent out Flamigo!
-    + Seen Species=Flamigo
+    + Seen Species=Flamigo Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Flamigo FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Machamp used Knock Off!
@@ -10652,7 +10652,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Butterfree L22 Male Hardy Compound Eyes @Absorb Bulb | Stun Spore, Poison Powder, Psybeam, Whirlwind | HP 61 Atk 28 Def 32 SpA 50 SpD 43 Spe 41
   foe#2 Boldore L14 Female Modest Weak Armor @Everstone | Tackle, Sand Attack, Power Gem, Mud-Slap | HP 47 Atk 33 Def 35 SpA 20 SpD 18 Spe 11
 log:
-  Seen Species=Cosmog
+  Seen Species=Cosmog Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Cosmog!
@@ -10674,7 +10674,7 @@ log:
   say Ledyba gained 189 EXP. Points!
   ExpGained Pokemon=mine#2 Ledyba Amount=189
   say Ace Trainer Tester sent out Butterfree!
-    + Seen Species=Butterfree
+    + Seen Species=Butterfree Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Butterfree FromBall=true
   say Clefable used Moonblast!
     + Lunged P0 Category=Special
@@ -10690,7 +10690,7 @@ log:
   say Ledyba gained 86 EXP. Points!
   ExpGained Pokemon=mine#2 Ledyba Amount=86
   say Ace Trainer Tester sent out Boldore!
-    + Seen Species=Boldore
+    + Seen Species=Boldore Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Boldore FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Clefable used Meteor Mash!
@@ -10723,8 +10723,8 @@ foe: Hiker Alexander (hiker_alexander), ai Basic PrioritizeExtremes, items none
   foe#0 Graveler L38 Male Adamant Rock Head @nothing | Rollout, Rock Blast, Earthquake, Explosion | HP 89 Atk 84 Def 92 SpA 35 SpD 39 Spe 31
   foe#1 Probopass L40 Male Quiet Sturdy @nothing | Block, Thunder Wave, Rock Slide, Sandstorm | HP 98 Atk 49 Def 121 SpA 71 SpD 125 Spe 33
 log:
-  Seen Species=Graveler
-  Seen Species=Probopass
+  Seen Species=Graveler Form=none Gender=Male
+  Seen Species=Probopass Form=none Gender=Male
   TrainersStand First=Hiker Second=none
   say Hiker Alexander wants to battle!
   say Hiker Alexander sent out Graveler and Probopass!
@@ -10854,7 +10854,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Skuntank L62 Male Serious Aftermath @nothing | Memento, Night Slash, Belch, Explosion | HP 203 Atk 130 Def 103 SpA 98 SpD 96 Spe 118
   foe#2 Mimikyu L74 Male Impish Disguise @Amulet Coin | Shadow Claw, Charm, Play Rough, Pain Split | HP 175 Atk 139 Def 157 SpA 82 SpD 167 Spe 158
 log:
-  Seen Species=Komala
+  Seen Species=Komala Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Komala!
@@ -10969,7 +10969,7 @@ log:
   say Perrserker gained 542 EXP. Points!
   ExpGained Pokemon=mine#2 Perrserker Amount=542
   say Ace Trainer Tester sent out Skuntank!
-    + Seen Species=Skuntank
+    + Seen Species=Skuntank Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Skuntank FromBall=true
   say Foe Skuntank used Explosion!
     + Lunged E0 Category=Physical
@@ -10988,7 +10988,7 @@ log:
   LevelRose Pokemon=mine#2 Perrserker Level=29 Before=78/72/65/33/43/41 After=80/74/67/34/44/42
   say Perrserker grew to Lv. 29!
   say Ace Trainer Tester sent out Mimikyu!
-    + Seen Species=Mimikyu
+    + Seen Species=Mimikyu Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Mimikyu FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Go! Perrserker!
@@ -11061,7 +11061,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Blastoise L39 Male Quiet Torrent @nothing | Protect, Rain Dance, Aqua Tail, Shell Smash | HP 112 Atk 69 Def 93 SpA 86 SpD 90 Spe 64
   foe#2 Jangmo-o L72 Male Rash Bulletproof @Silk Scarf | Dragon Claw, Noble Roar, Dragon Dance, Outrage | HP 160 Atk 94 Def 110 SpA 92 SpD 72 Spe 89
 log:
-  Seen Species=Togekiss
+  Seen Species=Togekiss Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Togekiss!
@@ -11116,7 +11116,7 @@ log:
   say Type: Null gained 795 EXP. Points!
   ExpGained Pokemon=mine#2 Type: Null Amount=795
   say Ace Trainer Tester sent out Blastoise!
-    + Seen Species=Blastoise
+    + Seen Species=Blastoise Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Blastoise FromBall=true
   say Chimchar used Flamethrower!
     + Lunged P0 Category=Special
@@ -11217,7 +11217,7 @@ log:
   say Rain continues to fall.
     + WeatherContinues Weather=Rain
   say Ace Trainer Tester sent out Jangmo-o!
-    + Seen Species=Jangmo-o
+    + Seen Species=Jangmo-o Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Jangmo-o FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Wingull used Mist!
@@ -11260,8 +11260,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Grovyle L46 Male Lax Overgrow @nothing | Slam, Double Team, Leaf Blade, Screech | HP 109 Atk 66 Def 63 SpA 83 SpD 66 Spe 106
   foe#2 Quilladin L60 Male Naive Overgrow @nothing | Bulk Up, Body Slam, Pain Split, Wood Hammer | HP 148 Atk 112 Def 131 SpA 86 SpD 72 Spe 88
 log:
-  Seen Species=Seismitoad
-  Seen Species=Grovyle
+  Seen Species=Seismitoad Form=none Gender=Female
+  Seen Species=Grovyle Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Seismitoad and Grovyle!
@@ -11325,7 +11325,7 @@ log:
   say Thievul fainted!
     + Fainted P0
   say Ace Trainer Tester sent out Quilladin!
-    + Seen Species=Quilladin
+    + Seen Species=Quilladin Form=none Gender=Male
     + Entered E1 Pokemon=foe#2 Quilladin FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Go! Klang!
@@ -11402,7 +11402,7 @@ mine:
 foe: Jogger Wyatt (jogger_wyatt), ai Basic, items none
   foe#0 Pikachu L24 Male Sassy Static @nothing | Thunder Wave, Quick Attack, Double Team, Slam | HP 50 Atk 31 Def 24 SpA 29 SpD 31 Spe 43
 log:
-  Seen Species=Pikachu
+  Seen Species=Pikachu Form=none Gender=Male
   TrainersStand First=Jogger Second=none
   say Jogger Wyatt wants to battle!
   say Jogger Wyatt sent out Pikachu!
@@ -11457,7 +11457,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Boltund L24 Male Brave Strong Jaw @nothing | Tackle, Electrify, Roar, Spark | HP 67 Atk 58 Def 38 SpA 53 SpD 36 Spe 57
   foe#2 Quaquaval L78 Male Hardy Torrent @nothing | Liquidation, Feather Dance, Close Combat, Wave Crash | HP 222 Atk 198 Def 138 SpA 141 SpD 128 Spe 151
 log:
-  Seen Species=Milcery
+  Seen Species=Milcery Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Milcery!
@@ -11479,7 +11479,7 @@ log:
   say Lunatone gained 232 EXP. Points!
   ExpGained Pokemon=mine#2 Lunatone Amount=232
   say Ace Trainer Tester sent out Quaquaval!
-    + Seen Species=Quaquaval
+    + Seen Species=Quaquaval Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Quaquaval FromBall=true
   say Foe Quaquaval used Feather Dance!
     + Lunged E0 Category=Status
@@ -11552,8 +11552,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Natu L56 Female Sassy Early Bird @nothing | Psychic, Guard Swap, Wish, Future Sight | HP 120 Atk 66 Def 61 SpA 92 SpD 73 Spe 76
   foe#2 Tornadus L44 Male Impish Prankster @Quick Claw | Agility, Tailwind, Air Slash, Crunch | HP 129 Atk 119 Def 73 SpA 108 SpD 80 Spe 115
 log:
-  Seen Species=Houndoom
-  Seen Species=Natu
+  Seen Species=Houndoom Form=none Gender=Male
+  Seen Species=Natu Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Houndoom and Natu!
@@ -11632,7 +11632,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Victini L18 Genderless Relaxed Victory Star @Jaboca Berry | Quick Attack, V-create, Work Up, Incinerate | HP 67 Atk 45 Def 49 SpA 42 SpD 45 Spe 36
   foe#2 Pidgeot L6 Female Gentle Keen Eye @Petaya Berry | Gust, Tackle, Hurricane, Sand Attack | HP 27 Atk 15 Def 12 SpA 15 SpD 15 Spe 17
 log:
-  Seen Species=Igglybuff
+  Seen Species=Igglybuff Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Igglybuff!
@@ -11657,7 +11657,7 @@ log:
   say Geodude gained 33 EXP. Points!
   ExpGained Pokemon=mine#2 Geodude Amount=33
   say Ace Trainer Tester sent out Victini!
-    + Seen Species=Victini
+    + Seen Species=Victini Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#1 Victini FromBall=true
   say Foe Victini used Quick Attack!
     + Lunged E0 Category=Physical
@@ -11678,7 +11678,7 @@ log:
   say Geodude gained 69 EXP. Points!
   ExpGained Pokemon=mine#2 Geodude Amount=69
   say Ace Trainer Tester sent out Pidgeot!
-    + Seen Species=Pidgeot
+    + Seen Species=Pidgeot Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Pidgeot FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Joltik used Discharge!
@@ -11711,7 +11711,7 @@ foe: Guitarist Tony (guitarist_tony), ai Basic, items none
   foe#0 Kricketune L33 Male Bashful Swarm @nothing | Sing, Focus Energy, Slash, X-Scissor | HP 93 Atk 61 Def 38 SpA 41 SpD 38 Spe 47
   foe#1 Magnemite L33 Genderless Hasty Magnet Pull @nothing | Spark, Lock-On, Magnet Bomb, Screech | HP 59 Atk 28 Def 45 SpA 67 SpD 41 Spe 37
 log:
-  Seen Species=Kricketune
+  Seen Species=Kricketune Form=none Gender=Male
   TrainersStand First=Guitarist Second=none
   say Guitarist Tony wants to battle!
   say Guitarist Tony sent out Kricketune!
@@ -11817,7 +11817,7 @@ log:
   say Jirachi gained 525 EXP. Points!
   ExpGained Pokemon=mine#2 Jirachi Amount=525
   say Guitarist Tony sent out Magnemite!
-    + Seen Species=Magnemite
+    + Seen Species=Magnemite Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#1 Magnemite FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Vivillon used Bug Buzz!
@@ -11896,8 +11896,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Ninetales L42 Male Docile Flash Fire @Chople Berry | Tail Whip, Flamethrower, Quick Attack | HP 120 Atk 75 Def 79 SpA 85 SpD 99 Spe 91
   foe#2 Dragonair L10 Female Brave Shed Skin @Fairy Feather | Twister, Thunder Wave, Leer, Wrap | HP 33 Atk 24 Def 19 SpA 20 SpD 20 Spe 17
 log:
-  Seen Species=Hoopa
-  Seen Species=Ninetales
+  Seen Species=Hoopa Form=none Gender=Genderless
+  Seen Species=Ninetales Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Hoopa and Ninetales!
@@ -12019,7 +12019,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Banette L28 Male Calm Frisk @Draco Plate | Will-O-Wisp, Shadow Sneak, Hex, Curse | HP 78 Atk 69 Def 44 SpA 58 SpD 51 Spe 43
   foe#2 Litten L12 Male Jolly Blaze @nothing | Ember, Lick, Roar, Fury Swipes | HP 34 Atk 22 Def 16 SpA 19 SpD 17 Spe 24
 log:
-  Seen Species=Beheeyem
+  Seen Species=Beheeyem Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Beheeyem!
@@ -12041,7 +12041,7 @@ log:
   say Skiddo gained 242 EXP. Points!
   ExpGained Pokemon=mine#2 Skiddo Amount=242
   say Ace Trainer Tester sent out Litten!
-    + Seen Species=Litten
+    + Seen Species=Litten Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Litten FromBall=true
   say Toedscruel used Growth!
     + Lunged P0 Category=Status
@@ -12077,7 +12077,7 @@ log:
     + MomentShown P0 Moment=Burned From=none
     + HpChanged P0 Hp=165 Healed=false
   say Ace Trainer Tester sent out Banette!
-    + Seen Species=Banette
+    + Seen Species=Banette Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Banette FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Banette frisked Skiddo and found its Flame Orb!
@@ -12112,7 +12112,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Glaceon L13 Male Adamant Snow Cloak @nothing | Tackle, Charm, Sand Attack, Quick Attack | HP 42 Atk 23 Def 35 SpA 36 SpD 33 Spe 24
   foe#2 Pignite L52 Male Lax Blaze @Yache Berry | Flamethrower, Head Smash, Roar, Flare Blitz | HP 170 Atk 115 Def 82 SpA 83 SpD 69 Spe 67
 log:
-  Seen Species=Klefki
+  Seen Species=Klefki Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Klefki!
@@ -12151,7 +12151,7 @@ log:
   say Braviary gained 1063 EXP. Points!
   ExpGained Pokemon=mine#2 Braviary Amount=1063
   say Ace Trainer Tester sent out Pignite!
-    + Seen Species=Pignite
+    + Seen Species=Pignite Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Pignite FromBall=true
   say Veluza used Liquidation!
     + Lunged P0 Category=Physical
@@ -12169,7 +12169,7 @@ log:
   say Braviary grew to Lv. 24!
   MoveWanted Pokemon=mine#2 Braviary Move=Scary Face
   say Ace Trainer Tester sent out Glaceon!
-    + Seen Species=Glaceon
+    + Seen Species=Glaceon Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Glaceon FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Glaceon used Quick Attack!
@@ -12205,8 +12205,8 @@ foe: Sailor Marc (sailor_marc_rematch_2), ai Basic, items none
   foe#1 Machoke L58 Male Bashful Guts @nothing | Wake-Up Slap, Cross Chop, Scary Face, Dynamic Punch | HP 160 Atk 121 Def 86 SpA 63 SpD 74 Spe 57
   foe#2 Lanturn L58 Male Relaxed Volt Absorb @nothing | Discharge, Aqua Ring, Hydro Pump, Charge | HP 213 Atk 72 Def 79 SpA 93 SpD 93 Spe 73
 log:
-  Seen Species=Mantine
-  Seen Species=Machoke
+  Seen Species=Mantine Form=none Gender=Male
+  Seen Species=Machoke Form=none Gender=Male
   TrainersStand First=Sailor Second=none
   say Sailor Marc wants to battle!
   say Sailor Marc sent out Mantine and Machoke!
@@ -12316,7 +12316,7 @@ log:
   say Ogerpon gained 1537 EXP. Points!
   ExpGained Pokemon=mine#1 Ogerpon Amount=1537
   say Sailor Marc sent out Lanturn!
-    + Seen Species=Lanturn
+    + Seen Species=Lanturn Form=none Gender=Male
     + Entered E1 Pokemon=foe#2 Lanturn FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Foe Mantine sprang up!
@@ -12365,7 +12365,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Calyrex L75 Genderless Calm Unnerve @Poison Gem | Energy Ball, Psychic, Leech Seed, Heal Pulse | HP 241 Atk 121 Def 134 SpA 131 SpD 144 Spe 144
   foe#2 Terrakion L57 Genderless Timid Justified @nothing | Rock Slide, Take Down, Sacred Sword, Swords Dance | HP 181 Atk 140 Def 108 SpA 92 SpD 116 Spe 140
 log:
-  Seen Species=Squirtle
+  Seen Species=Squirtle Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Squirtle!
@@ -12430,7 +12430,7 @@ log:
   say Impidimp gained 213 EXP. Points!
   ExpGained Pokemon=mine#2 Impidimp Amount=213
   say Ace Trainer Tester sent out Terrakion!
-    + Seen Species=Terrakion
+    + Seen Species=Terrakion Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Terrakion FromBall=true
   say Wingull used Mist!
     + Lunged P0 Category=Status
@@ -12468,7 +12468,7 @@ log:
     + Recalled E0
   Left E0 Ran=false
   say Ace Trainer Tester sent out Calyrex!
-    + Seen Species=Calyrex
+    + Seen Species=Calyrex Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#1 Calyrex FromBall=true
   say Foe Calyrex's Unnerve makes its foes too nervous to eat Berries!
     + AbilityShown E0 Ability=Unnerve
@@ -12532,7 +12532,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Swinub L21 Male Naughty Oblivious @nothing | Powder Snow, Flail, Ice Shard, Mist | HP 54 Atk 31 Def 27 SpA 21 SpD 18 Spe 29
   foe#2 Rayquaza L45 Genderless Timid Air Lock @nothing | Dragon Dance, Extreme Speed, Dragon Pulse, Hyper Voice | HP 154 Atk 126 Def 99 SpA 147 SpD 91 Spe 106
 log:
-  Seen Species=Cleffa
+  Seen Species=Cleffa Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Cleffa!
@@ -12604,7 +12604,7 @@ log:
   say Magneton gained 38 EXP. Points!
   ExpGained Pokemon=mine#2 Magneton Amount=38
   say Ace Trainer Tester sent out Swinub!
-    + Seen Species=Swinub
+    + Seen Species=Swinub Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Swinub FromBall=true
   say Yveltal used Disable!
     + Lunged P0 Category=Status
@@ -12630,7 +12630,7 @@ log:
   say Magneton gained 40 EXP. Points!
   ExpGained Pokemon=mine#2 Magneton Amount=40
   say Ace Trainer Tester sent out Rayquaza!
-    + Seen Species=Rayquaza
+    + Seen Species=Rayquaza Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#2 Rayquaza FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Rayquaza used Dragon Dance!
@@ -12758,8 +12758,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Quaxly L39 Male Naive Torrent @nothing | Air Slash, Focus Energy, Acrobatics, Liquidation | HP 99 Atk 67 Def 51 SpA 54 SpD 45 Spe 53
   foe#2 Chandelure L71 Male Bashful Flame Body @Kasib Berry | Minimize, Night Shade, Fire Spin, Ember | HP 186 Atk 96 Def 144 SpA 226 SpD 142 Spe 135
 log:
-  Seen Species=Claydol
-  Seen Species=Quaxly
+  Seen Species=Claydol Form=none Gender=Genderless
+  Seen Species=Quaxly Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Claydol and Quaxly!
@@ -12855,7 +12855,7 @@ log:
     + MomentShown E0 Moment=Poisoned From=none
     + HpChanged E0 Hp=84 Healed=false
   say Ace Trainer Tester sent out Chandelure!
-    + Seen Species=Chandelure
+    + Seen Species=Chandelure Form=none Gender=Male
     + Entered E1 Pokemon=foe#2 Chandelure FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Foe Chandelure used Night Shade!
@@ -12984,7 +12984,7 @@ mine:
 foe: Fisherman Joseph (fisherman_joseph_rematch_2), ai Basic, items none
   foe#0 Seaking L54 Male Naive Swift Swim @nothing | Aqua Ring, Fury Attack, Waterfall, Horn Drill | HP 150 Atk 104 Def 75 SpA 75 SpD 81 Spe 85
 log:
-  Seen Species=Seaking
+  Seen Species=Seaking Form=none Gender=Male
   TrainersStand First=Fisherman Second=none
   say Fisherman Joseph wants to battle!
   say Fisherman Joseph sent out Seaking!
@@ -13033,7 +13033,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Nidoran♂ L30 Male Serious Poison Point @nothing | Fury Attack, Toxic Spikes, Double Kick, Horn Attack | HP 69 Atk 39 Def 29 SpA 36 SpD 38 Spe 40
   foe#2 Cascoon L38 Male Docile Shed Skin @nothing | Harden | HP 95 Atk 33 Def 47 SpA 33 SpD 34 Spe 24
 log:
-  Seen Species=Klinklang
+  Seen Species=Klinklang Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Klinklang!
@@ -13119,7 +13119,7 @@ log:
   say Glastrier gained 1700 EXP. Points!
   ExpGained Pokemon=mine#2 Glastrier Amount=1700
   say Ace Trainer Tester sent out Nidoran♂!
-    + Seen Species=Nidoran♂
+    + Seen Species=Nidoran♂ Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Nidoran♂ FromBall=true
   say Bruxish used Aqua Tail!
     + Lunged P0 Category=Physical
@@ -13138,7 +13138,7 @@ log:
     + MomentShown P0 Moment=Poisoned From=none
     + HpChanged P0 Hp=145 Healed=false
   say Ace Trainer Tester sent out Cascoon!
-    + Seen Species=Cascoon
+    + Seen Species=Cascoon Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Cascoon FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Bruxish used Aqua Tail!
@@ -13169,8 +13169,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Mewtwo L40 Genderless Rash Pressure @Stone Plate | Psycho Cut, Safeguard, Amnesia, Aura Sphere | HP 142 Atk 96 Def 77 SpA 144 SpD 78 Spe 112
   foe#2 Fomantis L17 Female Modest Leaf Guard @nothing | Fury Cutter, Growth, Ingrain, Razor Leaf | HP 42 Atk 23 Def 17 SpA 28 SpD 17 Spe 17
 log:
-  Seen Species=Turtonator
-  Seen Species=Mewtwo
+  Seen Species=Turtonator Form=none Gender=Female
+  Seen Species=Mewtwo Form=none Gender=Genderless
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Turtonator and Mewtwo!
@@ -13198,7 +13198,7 @@ log:
   Recalled E0
   Left E0 Ran=false
   say Ace Trainer Tester sent out Fomantis!
-    + Seen Species=Fomantis
+    + Seen Species=Fomantis Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Fomantis FromBall=true
   say Palkia used Aqua Ring!
     + Lunged P0 Category=Status
@@ -13239,7 +13239,7 @@ log:
   say Electrike gained 32 EXP. Points!
   ExpGained Pokemon=mine#2 Electrike Amount=32
   say Ace Trainer Tester sent out Turtonator!
-    + Seen Species=Turtonator
+    + Seen Species=Turtonator Form=none Gender=Female
     + Entered E0 Pokemon=foe#0 Turtonator FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Turtonator set a shell trap!
@@ -13311,7 +13311,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Arboliva L16 Male Modest Seed Sower @Fairy Memory | Growth, Razor Leaf, Helping Hand, Flail | HP 54 Atk 24 Def 33 SpA 50 SpD 43 Spe 18
   foe#2 Gurdurr L34 Male Calm Guts @Air Balloon | Bulk Up, Rock Slide, Slam, Scary Face | HP 105 Atk 77 Def 66 SpA 34 SpD 53 Spe 35
 log:
-  Seen Species=Krokorok
+  Seen Species=Krokorok Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Krokorok!
@@ -13368,7 +13368,7 @@ mine:
 foe: Clown Mickey (dummy_803), ai Basic, items none
   foe#0 Rattata L5 Male Lax Run Away @nothing | Tail Whip, Tackle, Quick Attack | HP 18 Atk 10 Def 8 SpA 7 SpD 7 Spe 12
 log:
-  Seen Species=Rattata
+  Seen Species=Rattata Form=none Gender=Male
   TrainersStand First=Clown Second=none
   say Clown Mickey wants to battle!
   say Clown Mickey sent out Rattata!
@@ -13430,8 +13430,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Patrat L44 Female Quiet Run Away @nothing | Nasty Plot, Mean Look, Baton Pass, Slam | HP 103 Atk 63 Def 40 SpA 41 SpD 45 Spe 40
   foe#2 Tandemaus L10 Genderless Brave Run Away @Power Herb | Baby-Doll Eyes, Pound, Echoed Voice, Helping Hand | HP 33 Atk 16 Def 15 SpA 15 SpD 16 Spe 18
 log:
-  Seen Species=Tyranitar
-  Seen Species=Patrat
+  Seen Species=Tyranitar Form=none Gender=Female
+  Seen Species=Patrat Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Tyranitar and Patrat!
@@ -13460,7 +13460,7 @@ log:
   Recalled E1
   Left E1 Ran=false
   say Ace Trainer Tester sent out Tandemaus!
-    + Seen Species=Tandemaus
+    + Seen Species=Tandemaus Form=none Gender=Genderless
     + Entered E1 Pokemon=foe#2 Tandemaus FromBall=true
   say Pointed stones dug into Foe Tandemaus!
     + HpChanged E1 Hp=29 Healed=false
@@ -13504,7 +13504,7 @@ log:
   say The sandstorm rages.
     + WeatherContinues Weather=Sandstorm
   say Ace Trainer Tester sent out Patrat!
-    + Seen Species=Patrat
+    + Seen Species=Patrat Form=none Gender=Female
     + Entered E1 Pokemon=foe#1 Patrat FromBall=true
     + TrainerReacts E1 Cue=LastPokemon
   say Pointed stones dug into Foe Patrat!
@@ -13657,7 +13657,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Camerupt L20 Female Jolly Magma Armor @nothing | Tackle, Bulldoze, Incinerate, Amnesia | HP 63 Atk 48 Def 33 SpA 43 SpD 36 Spe 24
   foe#2 Dusknoir L12 Female Naive Pressure @nothing | Thunder Punch, Ice Punch, Fire Punch, Confuse Ray | HP 36 Atk 30 Def 39 SpA 24 SpD 34 Spe 16
 log:
-  Seen Species=Wormadam
+  Seen Species=Wormadam Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Wormadam!
@@ -13705,7 +13705,7 @@ log:
   say Nymble grew to Lv. 11!
   MoveWanted Pokemon=mine#2 Nymble Move=Double Kick
   say Ace Trainer Tester sent out Camerupt!
-    + Seen Species=Camerupt
+    + Seen Species=Camerupt Form=none Gender=Female
     + Entered E0 Pokemon=foe#1 Camerupt FromBall=true
   say Spidops used Bug Bite!
     + Lunged P0 Category=Physical
@@ -13754,7 +13754,7 @@ log:
   LevelRose Pokemon=mine#2 Nymble Level=12 Before=28/15/17/12/11/15 After=30/16/18/12/12/16
   say Nymble grew to Lv. 12!
   say Ace Trainer Tester sent out Dusknoir!
-    + Seen Species=Dusknoir
+    + Seen Species=Dusknoir Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Dusknoir FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Dusknoir is exerting its Pressure!
@@ -13884,7 +13884,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Relicanth L59 Male Naive Rock Head @Electirizer | Flail, Hydro Pump, Double-Edge, Head Smash | HP 199 Atk 115 Def 159 SpA 64 SpD 75 Spe 93
   foe#2 Nidoran♀ L14 Female Hasty Rivalry @Lucky Egg | Poison Sting, Growl, Scratch, Tail Whip | HP 42 Atk 21 Def 18 SpA 17 SpD 18 Spe 22
 log:
-  Seen Species=Panpour
+  Seen Species=Panpour Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Panpour!
@@ -13980,8 +13980,8 @@ foe: Bird Keeper Krystal (bird_keeper_krystal), ai Basic, items none
   foe#1 Fearow L57 Female Gentle Keen Eye @nothing | Agility, Assurance, Roost, Drill Peck | HP 141 Atk 107 Def 71 SpA 74 SpD 81 Spe 119
   foe#2 Noctowl L59 Female Bold Insomnia @nothing | Extrasensory, Psycho Shift, Roost, Dream Eater | HP 187 Atk 57 Def 70 SpA 106 SpD 118 Spe 87
 log:
-  Seen Species=Staravia
-  Seen Species=Fearow
+  Seen Species=Staravia Form=none Gender=Female
+  Seen Species=Fearow Form=none Gender=Female
   TrainersStand First=Bird Keeper Second=none
   say Bird Keeper Krystal wants to battle!
   say Bird Keeper Krystal sent out Staravia and Fearow!
@@ -14024,7 +14024,7 @@ log:
     ! Struck E1 Hp=44 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Bird Keeper Krystal sent out Noctowl!
-    + Seen Species=Noctowl
+    + Seen Species=Noctowl Form=none Gender=Female
     + Entered E0 Pokemon=foe#2 Noctowl FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Fearow used Drill Peck!
@@ -14147,7 +14147,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Crabrawler L26 Male Sassy Iron Fist @Toxic Plate | Bubble Beam, Protect, Brick Break, Slam | HP 60 Atk 49 Def 41 SpA 28 SpD 38 Spe 38
   foe#2 Salamence L7 Male Serious Intimidate @nothing | Ember, Dragon Tail, Dragon Breath, Roost | HP 32 Atk 25 Def 17 SpA 22 SpD 17 Spe 19
 log:
-  Seen Species=Sizzlipede
+  Seen Species=Sizzlipede Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Sizzlipede!
@@ -14240,7 +14240,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Armaldo L76 Male Careful Battle Armor @Tanga Berry | Crush Claw, Rock Blast, Protect, X-Scissor | HP 221 Atk 199 Def 179 SpA 103 SpD 158 Spe 88
   foe#2 Dipplin L18 Female Hardy Gluttony @nothing | Dragon Tail, Growth, Dragon Breath, Protect | HP 56 Atk 37 Def 46 SpA 41 SpD 35 Spe 20
 log:
-  Seen Species=Sentret
+  Seen Species=Sentret Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Sentret!
@@ -14292,7 +14292,7 @@ log:
   say Sobble gained 206 EXP. Points!
   ExpGained Pokemon=mine#2 Sobble Amount=206
   say Ace Trainer Tester sent out Armaldo!
-    + Seen Species=Armaldo
+    + Seen Species=Armaldo Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Armaldo FromBall=true
   say Pidgeot used Wing Attack!
     + Lunged P0 Category=Physical
@@ -14390,8 +14390,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Axew L8 Male Quirky Rivalry @nothing | Leer, Scratch, Bite, False Swipe | HP 27 Atk 21 Def 14 SpA 11 SpD 11 Spe 14
   foe#2 Archen L6 Male Lonely Defeatist @Liechi Berry | Leer, Quick Attack, Rock Throw, Wing Attack | HP 23 Atk 20 Def 9 SpA 15 SpD 11 Spe 13
 log:
-  Seen Species=Mew
-  Seen Species=Axew
+  Seen Species=Mew Form=none Gender=Genderless
+  Seen Species=Axew Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Mew and Axew!
@@ -14453,7 +14453,7 @@ log:
     ! Struck P0 Hp=21 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Ace Trainer Tester sent out Archen!
-    + Seen Species=Archen
+    + Seen Species=Archen Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Archen FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Nacli used Stone Edge!
@@ -14531,7 +14531,7 @@ mine:
 foe: Swimmer Mickey (dummy_351), ai Basic, items none
   foe#0 Rattata L5 Male Careful Run Away @nothing | Tail Whip, Tackle, Quick Attack | HP 18 Atk 10 Def 8 SpA 6 SpD 8 Spe 12
 log:
-  Seen Species=Rattata
+  Seen Species=Rattata Form=none Gender=Male
   TrainersStand First=Swimmer Second=none
   say Swimmer Mickey wants to battle!
   say Swimmer Mickey sent out Rattata!
@@ -14584,7 +14584,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Slugma L32 Male Careful Magma Armor @nothing | Clear Smog, Ancient Power, Incinerate, Rock Slide | HP 74 Atk 37 Def 31 SpA 46 SpD 36 Spe 18
   foe#2 Ursaluna L20 Male Timid Bulletproof @Maranga Berry | Fake Tears, Fury Swipes, Payback, Sweet Scent | HP 83 Atk 58 Def 51 SpA 23 SpD 40 Spe 33
 log:
-  Seen Species=Pidove
+  Seen Species=Pidove Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Pidove!
@@ -14606,7 +14606,7 @@ log:
   say Kadabra gained 427 EXP. Points!
   ExpGained Pokemon=mine#2 Kadabra Amount=427
   say Ace Trainer Tester sent out Slugma!
-    + Seen Species=Slugma
+    + Seen Species=Slugma Form=none Gender=Male
     + Entered E0 Pokemon=foe#1 Slugma FromBall=true
   say Shelgon used Outrage!
     + Lunged P0 Category=Physical
@@ -14622,7 +14622,7 @@ log:
   say Kadabra gained 78 EXP. Points!
   ExpGained Pokemon=mine#2 Kadabra Amount=78
   say Ace Trainer Tester sent out Ursaluna!
-    + Seen Species=Ursaluna
+    + Seen Species=Ursaluna Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Ursaluna FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Shelgon used Outrage!
@@ -14655,8 +14655,8 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Sprigatito L41 Male Lonely Overgrow @nothing | Worry Seed, Slash, Energy Ball, Play Rough | HP 88 Atk 60 Def 44 SpA 42 SpD 50 Spe 67
   foe#2 Wyrdeer L9 Female Naughty Intimidate @Dragon Gem | Psyshield Bash, Tackle, Leer, Astonish | HP 39 Atk 26 Def 18 SpA 25 SpD 18 Spe 18
 log:
-  Seen Species=Terapagos
-  Seen Species=Sprigatito
+  Seen Species=Terapagos Form=none Gender=Female
+  Seen Species=Sprigatito Form=none Gender=Male
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Terapagos and Sprigatito!
@@ -14746,7 +14746,7 @@ foe: Ace Trainer Tester, ai Basic, items none
   foe#1 Phione L57 Genderless Hasty Hydration @nothing | Acid Armor, Whirlpool, Water Pulse, Aqua Ring | HP 161 Atk 111 Def 90 SpA 112 SpD 98 Spe 112
   foe#2 Whimsicott L6 Male Gentle Prankster @nothing | Energy Ball, Cotton Guard, Hurricane, Moonblast | HP 24 Atk 14 Def 14 SpA 14 SpD 16 Spe 19
 log:
-  Seen Species=Mudbray
+  Seen Species=Mudbray Form=none Gender=Female
   TrainersStand First=Ace Trainer Second=none
   say Ace Trainer Tester wants to battle!
   say Ace Trainer Tester sent out Mudbray!
@@ -14788,7 +14788,7 @@ log:
   say Steenee gained 216 EXP. Points!
   ExpGained Pokemon=mine#2 Steenee Amount=216
   say Ace Trainer Tester sent out Whimsicott!
-    + Seen Species=Whimsicott
+    + Seen Species=Whimsicott Form=none Gender=Male
     + Entered E0 Pokemon=foe#2 Whimsicott FromBall=true
   say Vigoroth is tightening its focus!
   say Foe Whimsicott used Cotton Guard!
@@ -14811,7 +14811,7 @@ log:
   say Steenee gained 13 EXP. Points!
   ExpGained Pokemon=mine#2 Steenee Amount=13
   say Ace Trainer Tester sent out Phione!
-    + Seen Species=Phione
+    + Seen Species=Phione Form=none Gender=Genderless
     + Entered E0 Pokemon=foe#1 Phione FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
   say Foe Phione used Whirlpool!
@@ -15029,7 +15029,7 @@ mine:
 foe: Scientist Mickey (dummy_198), ai Basic, items none
   foe#0 Rattata L5 Male Lonely Run Away @nothing | Tail Whip, Tackle, Quick Attack | HP 18 Atk 11 Def 7 SpA 7 SpD 8 Spe 12
 log:
-  Seen Species=Rattata
+  Seen Species=Rattata Form=none Gender=Male
   TrainersStand First=Scientist Second=none
   say Scientist Mickey wants to battle!
   say Scientist Mickey sent out Rattata!
