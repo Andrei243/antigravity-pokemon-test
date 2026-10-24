@@ -211,6 +211,12 @@ public sealed class GameSettings
     /// </summary>
     public RulesDefault FieldHelpers { get; set; } = RulesDefault.Rules;
 
+    /// <summary>
+    /// Whether a Pokémon's party menu has REMEMBER and RENAME (plan 12 · Q19): <see cref="RulesDefault.Rules"/> unless chosen,
+    /// kept as it is, so a game played by Platinum's rules keeps its menu and the modern rules give Scarlet and Violet's.
+    /// </summary>
+    public RulesDefault PartyTools { get; set; } = RulesDefault.Rules;
+
     /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
     private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 

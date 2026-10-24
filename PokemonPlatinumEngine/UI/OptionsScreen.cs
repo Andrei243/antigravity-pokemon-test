@@ -25,6 +25,7 @@ public enum OptionRow
     NextObjective,
     Season,
     FieldHelpers,
+    PartyTools,
     Controls,
     Help
 }
@@ -250,6 +251,10 @@ public class OptionsScreen
                 // Off, as the rules have it, On (plan 12 · Q18), and round again
                 s.FieldHelpers = (RulesDefault)Wrap((int)s.FieldHelpers + step, 3);
                 break;
+            case OptionRow.PartyTools:
+                // Off, as the rules have it, On (plan 12 · Q19), and round again
+                s.PartyTools = (RulesDefault)Wrap((int)s.PartyTools + step, 3);
+                break;
         }
     }
 
@@ -294,6 +299,7 @@ public class OptionsScreen
         OptionRow.Season => (Text.Of("options.season.label"), s.Season is { } season ? Words.Season(season) : Text.Of("options.season.value.Calendar"),
             Text.Of(s.Season.HasValue ? "options.season.help.fixed" : "options.season.help.calendar")),
         OptionRow.FieldHelpers => (Text.Of("options.fieldHelpers.label"), Text.Of($"options.fieldHelpers.value.{s.FieldHelpers}"), Text.Of($"options.fieldHelpers.help.{s.FieldHelpers}")),
+        OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

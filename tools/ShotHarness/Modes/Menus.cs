@@ -675,5 +675,68 @@ partial class Harness
         dexScreen.Cancel();
         Frames(10); Shot("26za_pokedex_list_still");
         game.State = GameState.Overworld;
+
+        // Remembering and renaming from the party menu (plan 12 · Q19), last so that nothing before it moves: the menu with
+        // its two entries, the list of moves to remember, the choice of a move to forget when four are known, the
+        // keyboard for a name and the menu with the new name. The lead is a level 30 Turtwig knowing one move, and put back.
+        {
+            var lead = party.Members[0];
+            var movesBefore = lead.Moves.ToList();
+            int levelBefore = lead.Level;
+            string nicknameBefore = lead.Nickname;
+            var toolsBefore = engine.Settings.PartyTools;
+            engine.Settings.PartyTools = RulesDefault.On;
+            lead.LevelTo(30);
+            lead.Moves.Clear();
+            lead.Moves.Add(MoveDatabase.Create("Tackle"));
+            lead.Nickname = string.Empty;
+
+            game.State = GameState.PartyMenu;
+            partyScreen.Open();
+            Frames(40);
+            partyScreen.Confirm(party);
+            int atRemember = partyScreen.Actions!.ToList().FindIndex(a => a.Kind == PartyActionKind.Remember);
+            partyScreen.MoveAction(atRemember);
+            Frames(6); Shot("20r0_party_menu_tools");
+            partyScreen.Confirm(party);
+            partyScreen.MoveRemember(1);
+            Frames(12); Shot("20r_party_remember");
+            Console.WriteLine($"remember: {string.Join(", ", partyScreen.RememberMoves)} for a level {lead.Level} knowing {lead.Moves.Count} move");
+            partyScreen.Cancel();
+            partyScreen.Cancel();
+            partyScreen.Message = null;
+
+            foreach (var name in new[] { "Withdraw", "Absorb", "Growl" }) lead.TryLearn(name);
+            partyScreen.Confirm(party);
+            partyScreen.MoveAction(atRemember);
+            partyScreen.Confirm(party);
+            partyScreen.Confirm(party);
+            Frames(12); Shot("20s_party_remember_forget");
+            Console.WriteLine($"forget for {partyScreen.ForgetFor}: knows {string.Join(", ", lead.Moves.Select(m => m.Name))}");
+            partyScreen.Cancel();
+            partyScreen.Cancel();
+            partyScreen.Cancel();
+
+            game.Nickname.Open(lead);
+            foreach (char c in "Shelly") game.Nickname.Entry!.Type(c);
+            game.State = GameState.Nickname;
+            Frames(30); Shot("20t_party_rename");
+            game.Nickname.ToDone();
+            game.Nickname.Confirm();
+            Frames(2);
+            lead.Nickname = game.Nickname.Nickname ?? lead.Nickname;
+            game.State = GameState.PartyMenu;
+            partyScreen.Message = Text.Of("party.rename.done", ("name", lead.DisplayName));
+            Frames(12); Shot("20u_party_renamed");
+            Console.WriteLine($"renamed: {lead.DisplayName}");
+
+            partyScreen.Close();
+            lead.Moves.Clear();
+            lead.Moves.AddRange(movesBefore);
+            lead.LevelTo(levelBefore);
+            lead.Nickname = nicknameBefore;
+            engine.Settings.PartyTools = toolsBefore;
+            game.State = GameState.Overworld;
+        }
     }
 }

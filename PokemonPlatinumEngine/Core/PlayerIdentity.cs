@@ -156,8 +156,8 @@ public static class PlayerIdentity
     public static string Fill(string text, string name, PlayerLook look, string? rival = null) =>
         text.Contains('{') ? text.Replace("{player}", name).Replace("{assistant}", DefaultName(Other(look))).Replace("{rival}", rival ?? DefaultRivalName) : text;
 
-    /// <summary>A name as it may be kept: trimmed, at most seven characters, nothing that would break a line.</summary>
-    public static string Clean(string? name)
+    /// <summary>A name as it may be kept: trimmed, at most <paramref name="max"/> characters (seven for a trainer, ten for a Pokémon: plan 12 · Q19), nothing that would break a line.</summary>
+    public static string Clean(string? name, int max = MaxNameLength)
     {
         if (string.IsNullOrWhiteSpace(name)) return "";
         var kept = new System.Text.StringBuilder();
@@ -165,7 +165,7 @@ public static class PlayerIdentity
         {
             if (char.IsControl(c) || c is '{' or '}') continue;
             kept.Append(c);
-            if (kept.Length == MaxNameLength) break;
+            if (kept.Length == max) break;
         }
         return kept.ToString().TrimEnd();
     }
