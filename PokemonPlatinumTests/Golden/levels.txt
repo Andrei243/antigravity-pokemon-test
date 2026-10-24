@@ -1005,6 +1005,12 @@ grass 4-8
 Oreburgh Mine
 grass 5-9
 trainers 2, 6-9: worker_colin 8, worker_mason 9
+=== pacifidlog_town
+Pacifidlog Town
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
 === pallet_town
 Pallet Town
 surf 5-40
@@ -1345,6 +1351,13 @@ old rod 5-10
 good rod 10-30
 super rod 30-45
 trainers 7, 31-36: hoenn_alexa 34, hoenn_carlee 35, hoenn_harrison 35, hoenn_isaiah_1 35, hoenn_katelyn_1 35, hoenn_ruben 34, hoenn_wayne 36
+=== route_129
+Route 129
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 5, 26-34: hoenn_allison 33, hoenn_chase 34, hoenn_clarence 34, hoenn_reed 33, hoenn_tisha 34
 === route_13
 Route 13
 grass 22-30
@@ -1353,6 +1366,21 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 10, 24-30: kanto_beauty_lola 27, kanto_beauty_sheila 29, kanto_biker_jared 28, kanto_bird_keeper_perry 25, kanto_bird_keeper_robert 26, kanto_bird_keeper_sebastian 29, kanto_picnicker_alma 28, kanto_picnicker_gwen 27, kanto_picnicker_susie 24, kanto_picnicker_valerie 30
+=== route_130
+Route 130
+grass 5-50
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 3, 33-34: hoenn_katie 33, hoenn_rodney 34, hoenn_santiago 33
+=== route_131
+Route 131
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 7, 33-35: hoenn_herman 33, hoenn_kara 34, hoenn_kevin 34, hoenn_reli_and_ian 35, hoenn_richard 34, hoenn_susie 34, hoenn_talia 34
 === route_14
 Route 14
 grass 22-30
@@ -2163,6 +2191,15 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 6, 46-50: kanto_aroma_lady_rose 49, kanto_hiker_earl 49, kanto_juggler_edward 48, kanto_swimmer_female_denise 49, kanto_swimmer_male_samir 50, kanto_twins_miu_mia 50
+=== sky_pillar_1f
+Sky Pillar
+grass 33-38
+=== sky_pillar_3f
+Sky Pillar
+grass 33-38
+=== sky_pillar_5f
+Sky Pillar
+grass 33-39
 === slateport_city
 Slateport City
 surf 5-35
@@ -2260,6 +2297,9 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 5-45
+=== sootopolis_city_gym_b1f
+Sootopolis City
+trainers 10, 35-40: hoenn_andrea 40, hoenn_annika 39, hoenn_bethany 39, hoenn_brianna 40, hoenn_bridget 40, hoenn_connie 40, hoenn_crissy 39, hoenn_daphne 39, hoenn_olivia 39, hoenn_tiffany 39
 === spear_pillar
 Spear Pillar
 trainers 4, 39-46: commander_jupiter_spear_pillar 46, commander_mars_spear_pillar 46, galactic_grunt_spear_pillar_1 43, galactic_grunt_spear_pillar_2 41
@@ -2530,6 +2570,22 @@ super rod 40
 === violet_gym
 Violet City
 trainers 2, 7-9: johto_bird_keeper_gs_abe 9, johto_bird_keeper_gs_rod 7
+=== virbank_city
+Virbank City
+surf 5-15
+super rod 40-70
+=== virbank_city_gym_2
+Virbank City
+trainers 2, 14: unova_guitarist_billy_jo 14, unova_roughneck_nicky 14
+=== virbank_complex
+Virbank Complex
+grass 10-13
+surf 5-15
+super rod 40-70
+=== virbank_complex_2
+Virbank Complex
+grass 10-13
+trainers 6, 12-13: unova_lass_daya 13, unova_worker_isaac 12, unova_worker_mitchell 12, unova_worker_nathan 12, unova_youngster_masahiro 13, unova_youngster_waylon 13
 === viridian_city
 Viridian City
 surf 20-40

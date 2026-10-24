@@ -8830,6 +8830,11 @@ way -
   + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
   + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
   + FLAG_HOENN_CHAPTER_EIGHT_B
+=== common.HoennChapterEleven
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+  + FLAG_HOENN_CHAPTER_ELEVEN
 === common.HoennChapterFive
 from a trainer with lines of their own
 way -
@@ -9067,6 +9072,7 @@ way -
   + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
   + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
   + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  + FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
   + FLAG_HIDE_SKY_PILLAR_WALLACE
   + FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
   + FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
@@ -9100,6 +9106,7 @@ way -
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
   + FLAG_HOENN_CHAPTER_EIGHT
   + FLAG_HOENN_CHAPTER_EIGHT_B
+  + FLAG_HOENN_CHAPTER_ELEVEN
   + FLAG_HOENN_CHAPTER_NINE
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
@@ -9834,15 +9841,21 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
   = VAR_UNOVA_ASPERTIA 0 -> 7
   = VAR_UNOVA_HOUSE 0 -> 1
   = VAR_UNOVA_OUTLOOK 0 -> 1
@@ -9852,13 +9865,19 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
 way -
@@ -9874,6 +9893,15 @@ way -
   = VAR_UNOVA_HOUSE 0 -> 1
   = VAR_UNOVA_OUTLOOK 0 -> 1
   = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaVirbank
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
 from an obstacle, with every field move and every badge
 way -
@@ -19016,6 +19044,35 @@ way -
 from the tile read at 9,1 of SixIsland_WaterPath_House1
 way -
   > A chart for writing down Heracross sizes. Nothing is written on it yet.
+=== sky_pillar_outside.Wallace
+from Wallace at 13,7 of SkyPillar_Outside
+way -
+  Wallace> Sky Pillar... Rayquaza must be at its top. Let's hurry!
+=== sky_pillar_top.Awaken
+from the trigger at 14,9 of SkyPillar_Top
+way -
+  > The awakened Rayquaza flew off...
+  * scene sky_pillar_top.Rayquaza wakes
+  * music stop
+  * camera Pan 14 6
+  * walk Rayquaza onspot left
+  * cry Rayquaza
+  * camera Shake
+  * cry Rayquaza
+  * camera Shake
+  * sound warp
+  * camera Release
+  * music area
+  * endscene
+  + FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
+  = VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 0 -> 1
+  = VAR_SKY_PILLAR_STATE 0 -> 1
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 5
+  + seen sky_pillar_top.Rayquaza wakes
+=== sky_pillar_top.Sleeping
+from Rayquaza at 14,7 of SkyPillar_Top
+way -
+  > A huge green Pokémon lies coiled here, fast asleep.
 === slateport_city.CaptStern
 from Captain Stern at 228,273 of Hoenn
 way -
@@ -19354,6 +19411,63 @@ from Woman at 47,33 of SootopolisCity
 way -
   Woman> The sky was clear this morning... then black clouds rolled in, rain came down in sheets, and the thunder started!
   Woman> Then it's scorching hot, and then it pours again. Is it all because of those Pokémon?
+=== sootopolis_city_gym_1f.GymGuide
+from Gym Guide at 7,24 of SootopolisCity_Gym_1F
+way -
+  Gym Guide> Yo, champ in the making! Juan's a master of Water Pokémon, so bring Grass and Electric moves.
+  Gym Guide> And mind the ice on the way to him! Step on a tile twice and down you go. Cross every tile once to clear the stairs.
+=== sootopolis_city_gym_1f.Juan
+from Juan at 8,2 of SootopolisCity_Gym_1F
+way 0
+  Juan> Ah, a visitor. Let me tell you something, if I may. It was I who taught Wallace everything he knows.
+  Juan> Once I was the Gym Leader here, then he took my place. Now that he has gone off, the Gym is mine again.
+  Juan> Water Pokémon and I move as one, like a dance upon the waves. Let me show you our grace!
+  Juan> Ahahaha, splendid! You are a talent as rare as Wallace himself. I yield.
+  Juan> Please, take this Badge. It is yours by right.
+  > Lucas received the Rain Badge from Juan!
+  Juan> With the Rain Badge, every Pokémon obeys you, whatever its level, and Waterfall can be used to climb a waterfall.
+  Juan> And please, accept this as well.
+  > Lucas received the TM03!
+  > TM03 holds the move Water Pulse.
+  > Lucas put it away in the TMs & HMs pocket.
+  Juan> TM03 holds Water Pulse. It strikes with waves of sound, and may leave the foe confused.
+  * scene sootopolis_city_gym_1f.Juan
+  * battle hoenn_juan_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_andrea
+  * defeat hoenn_crissy
+  * defeat hoenn_brianna
+  * defeat hoenn_connie
+  * defeat hoenn_bridget
+  * defeat hoenn_olivia
+  * defeat hoenn_tiffany
+  * defeat hoenn_bethany
+  * defeat hoenn_annika
+  * defeat hoenn_daphne
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_SOOTOPOLIS_GYM
+  + FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  + FLAG_RECEIVED_TM_WATER_PULSE
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 6
+  + beaten hoenn_andrea
+  + beaten hoenn_annika
+  + beaten hoenn_bethany
+  + beaten hoenn_brianna
+  + beaten hoenn_bridget
+  + beaten hoenn_connie
+  + beaten hoenn_crissy
+  + beaten hoenn_daphne
+  + beaten hoenn_juan_1
+  + beaten hoenn_olivia
+  + beaten hoenn_tiffany
+  = badges Hoenn 0 -> 10000000
+  + seen sootopolis_city_gym_1f.Juan
+way 1, from answer 1
+  * battle hoenn_juan_1 Lost
+  * scene over, unseen
 === sootopolis_city_house_1.BlackBelt
 from Black Belt at 2,4 of SootopolisCity_House1
 way -
@@ -20683,6 +20797,30 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   = VAR_UNOVA_ROUTE_20 0 -> 3
   + seen unova_route_20.Cheren on Route 20
+=== unova_route_20.Grunt
+from Grunt at 155,667 of Unova
+way 0
+  Grunt> Ugh, you again?! I really hate it when people won't let things go!
+  Grunt> Hmm... if I keep running this way, there's nobody to back me up. I'd better head for the sea!
+  Grunt> So with that settled... I'm running away again! Goodbye, Virbank City!
+  Barry> Well, they're good at running away, I'll give them that...
+  Barry> But she just told us something useful! They must be getting around by boat.
+  Barry> Castelia City has a big port. Maybe they headed there!
+  Barry> Right! Back to Virbank, Lucas. Someone at the docks must know about ships. There was a place to board them, I'm sure of it.
+  * scene unova_route_20.The grunt on Route 20
+  * music unova/eye_plasma
+  * battle unova_team_plasma_grunt_48 Won
+  * music area
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  = VAR_UNOVA_ROUTE_20 0 -> 6
+  = VAR_UNOVA_VIRBANK 0 -> 7
+  + beaten unova_team_plasma_grunt_48
+  + seen unova_route_20.The grunt on Route 20
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_48 Lost
+  * scene over, unseen
 === unova_route_20.Hiker
 from Hiker at 159,645 of Unova
 way -
@@ -21258,6 +21396,216 @@ way -
   Aide> Keep it on your team and walk with it. The professor would love to hear what hatches!
   + FLAG_GOT_TOGEPI_EGG
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
+=== virbank_city.Captain
+from Captain at 211,651 of Unova
+way -
+  Captain> Make way, make way! A star is on his way to the studios!
+=== virbank_city.DockGrunt
+from Grunt at 241,670 of Unova
+way 0.0
+  Grunt> What, you think you can beat me?
+  Grunt> Ha! In a minute your Pokémon will be working for Team Plasma!
+  Grunt> No way... beaten by a bunch of kids? Forget this. Run for it!
+  Barry> Tch! What a bunch of creeps!
+  Roxie> We'll split up! I'll search the docks. You two, check Route 20 in case they double back that way!
+  Roxie> And thanks. If I'd lost, my Pokémon would be in their hands right now. Here, take this!
+  > Lucas received the HM01!
+  > HM01 holds the move Cut.
+  > Lucas put it away in the TMs & HMs pocket.
+  Barry> That's a Hidden Machine, isn't it? Cut! A Pokémon that knows it can chop down thin trees in your way.
+  Barry> Come on, Lucas! Let's find that grunt on Route 20 before they get away!
+  ? What, you think you can beat me? = Yes
+  * scene virbank_city.The grunts at the dock
+  * battle unova_team_plasma_grunt_44 Won
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  = VAR_UNOVA_ROUTE_20 0 -> 5
+  = VAR_UNOVA_VIRBANK 0 -> 6
+  + beaten unova_team_plasma_grunt_44
+  + seen virbank_city.The grunts at the dock
+way 0.1, from answer 2
+  * battle unova_team_plasma_grunt_44 Lost
+  * scene over, unseen
+way 1, from answer 1
+  Grunt> Smart kid. Don't mess with Team Plasma!
+  ? What, you think you can beat me? = No
+=== virbank_city.DockGrunts
+from Grunt at 242,669 of Unova
+from Grunt at 242,671 of Unova
+way -
+  Grunt> Talk to the one in charge, kid. We're just here to look tough.
+=== virbank_city.HughOnTheDock
+from {rival} at 238,671 of Unova
+way -
+  Barry> Thieves... Every last one of them.
+=== virbank_city.PlasmaAtTheDock
+from the trigger at 237,669 of Unova
+way -
+  Roxie> So you lot are Team Plasma, huh?
+  Grunt> That's right! Two years ago the king we served turned his back on us, and our plans for Unova fell apart.
+  Grunt> But we're not done. This time we'll gather the Pokémon we need, and nobody will get in our way!
+  Barry> Save it! You talk about freeing Pokémon, but all you ever do is steal them!
+  Barry> I'll never forgive Team Plasma. Not ever!
+  Grunt> Ugh. First a Lillipup chases us all round the ranch, and now this lot...
+  Grunt> This is getting to be a real drag.
+  Grunt> Relax. We'll just take their Pokémon too. Go on then, kids. Whenever you're ready!
+  Barry> Let's crush them, Lucas! Them and whatever they're scheming!
+  * scene virbank_city.Team Plasma at the dock
+  * music unova/eye_plasma
+  * music area
+  * endscene
+  = VAR_UNOVA_VIRBANK 0 -> 5
+  + seen virbank_city.Team Plasma at the dock
+=== virbank_city.RoxieAndTheCaptain
+from the trigger at 205,650 of Unova
+way -
+  Captain> Don't try to stop me, Roxie! Pokéstar Studios is calling, and this old sea dog is answering!
+  Captain> A captain who stars in films! Now that's a dream worth chasing!
+  Roxie> Are you kidding me?! You're already a captain! If that ship of yours doesn't sail, half the town's stuck on the quay!
+  Captain> Now, now, my girl. You run a Gym and sing in a band, don't you? If you can do two things, so can your old dad!
+  Roxie> ARGH! You stubborn, stuck-up, thick-headed old... DUNCE!
+  Roxie> Two jobs aren't the problem! Leaving everybody stranded is the problem!
+  * scene virbank_city.Roxie and the captain
+  * endscene
+  + FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  = VAR_UNOVA_VIRBANK 0 -> 2
+  + seen virbank_city.Roxie and the captain
+=== virbank_city.RoxieInTown
+from Roxie at 209,651 of Unova
+way -
+  Roxie> That stubborn old man!
+=== virbank_city.RoxieOnTheDock
+from Roxie at 239,669 of Unova
+way -
+  Roxie> Lucas! Get over here and lend a hand!
+=== virbank_city.StudioHand
+from Studio Hand at 217,642 of Unova
+way -
+  Studio Hand> Through here is the dream factory, Pokéstar Studios! But they're holding auditions, so no visitors just now.
+  Studio Hand> They're giving the captain of Virbank's ship a screen test, can you believe it? Come back another time!
+=== virbank_city.StudiosClosed
+from the trigger at 215,642 of Unova
+way -
+  Studio Hand> Through here is the dream factory, Pokéstar Studios! But they're holding auditions, so no visitors just now.
+  Studio Hand> They're giving the captain of Virbank's ship a screen test, can you believe it? Come back another time!
+=== virbank_city.TheCaptainSails
+from the trigger at 237,669 of Unova
+way -
+  Roxie> So? I saw your film. It wasn't bad, you know.
+  Captain> You saw it... Then you know. It wasn't the film, my girl. It was me.
+  Captain> I was so excited I forgot to become the hero. I was just a captain in a costume.
+  Roxie> Oh, come on, don't mope! You can keep auditioning and still sail your ship.
+  Roxie> As long as you don't leave people stranded, I won't yell at you. Much.
+  Roxie> Oh, Lucas! Did you hear all that? Looks like every one of those Plasma creeps got away.
+  Roxie> I hate letting them go, but at least they're out of Virbank. And Dad's back where he belongs!
+  Captain> Right you are! I'll thrill my passengers by charging through the roughest waves on the sea!
+  Captain> Anyone bound for Castelia City, come and find me in the terminal!
+  Roxie> Thanks for everything, Lucas. Come by the club whenever you like!
+  * scene virbank_city.The captain sails again
+  * endscene
+  + FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  = VAR_UNOVA_VIRBANK 0 -> 8
+  + seen virbank_city.The captain sails again
+=== virbank_city_2.AudinoFan
+from Girl at 6,5 of VirbankCity_House1
+way -
+  Girl> I can't wait for Pokéstar Studios to open its doors! My darling Audino is going to be in the movies!
+=== virbank_city_5.Captain
+from Captain at 6,5 of VirbankCity_Terminal
+way -
+  Captain> Ha ha! She's raring to go, but her engines went cold while I was off at the studios.
+  Captain> Give me a little while to warm them through, and we'll charge across to Castelia City!
+=== virbank_city_5.Hugh
+from {rival} at 6,7 of VirbankCity_Terminal
+way -
+  Barry> Lucas! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!
+  Barry> Hey, Captain! Show us this ship you're so proud of!
+  Captain> Ha ha! She's raring to go, but her engines went cold while I was off at the studios.
+  Captain> Give me a little while to warm them through, and we'll charge across to Castelia City!
+=== virbank_city_5.OldWoman
+from Old Woman at 2,6 of VirbankCity_Terminal
+way -
+  Old Woman> Your life is your own, dear. Work hard at one thing, or try your hand at many. Just mind the people waiting on you.
+=== virbank_city_gym.GuideGreets
+from the trigger at 8,3 of VirbankCity_Gym
+way -
+  Gym Guide> Welcome! This is a Pokémon Gym, and a rock club too! Roxie and her band are rehearsing downstairs.
+  Gym Guide> Take on everyone in there! Oh, and stay hydrated. It gets hot under those stage lights.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  = VAR_UNOVA_VIRBANK_GYM 0 -> 1
+=== virbank_city_gym.GymGuide
+from Gym Guide at 7,3 of VirbankCity_Gym
+way -
+  Gym Guide> The Trainers here all use Poison types. Grass and Bug moves don't work well against them, so watch out!
+  Gym Guide> And if your Pokémon get poisoned, an Antidote or a Pecha Berry will sort them out.
+=== virbank_city_gym_2.Roxie
+from Roxie at 8,3 of VirbankCity_GymStage
+from Roxie at 8,3 of VirbankCity_GymStage
+way -
+  Roxie> ...!
+  > The music's too loud! She can't hear a word over the band.
+=== virbank_city_gym_2.Scout
+from Scout at 11,14 of VirbankCity_GymStage
+way -
+  Scout> Roxie puts on a show, doesn't she? If only she'd come to the studios... She's always too busy with her band.
+=== virbank_city_gym_2.TheScout
+from the trigger at 3,6 of VirbankCity_GymStage
+way -
+  Scout> Hey, you there! Watching you battle Roxie, I just knew it. You've got star quality!
+  Scout> I'm a talent scout for Pokéstar Studios. Come and see us! Well... once the auditions are done. They're shooting nonstop right now.
+  Roxie> Pokéstar Studios?! Oh, no, I forgot about the old man! I have to drag him back to his ship!
+  Scout> Oh dear. I hope the captain's audition is over before she gets there... See you at the studios one day!
+  * scene virbank_city_gym_2.The scout and Roxie
+  * endscene
+  + FLAG_UNOVA_HIDE_POKESTAR_GUARD
+  + FLAG_UNOVA_HIDE_ROXIE_GYM
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_VIRBANK_SCOUT
+  = VAR_UNOVA_VIRBANK 0 -> 4
+  + seen virbank_city_gym_2.The scout and Roxie
+=== virbank_city_pokemon_center.BadgeTalk
+from Worker at 11,13 of VirbankCity_PokemonCenter
+way -
+  Worker> The more Gym Badges you have, the more the Poké Mart will sell you. I never knew that till today!
+=== virbank_complex.BallTrade
+from Roughneck at 213,681 of Unova
+way 0
+  Roughneck> Yo! Here's a good deal for you. Swap me a Poké Ball for my Great Ball?
+  Roughneck> Trade a Poké Ball for a Great Ball?
+  Roughneck> Seriously? You haven't got a single Poké Ball on you?
+  ? Trade a Poké Ball for a Great Ball? = Yes
+way 1, from answer 1
+  Roughneck> Seriously? Most people jump at a deal like this!
+  ? Trade a Poké Ball for a Great Ball? = No
+=== virbank_complex_2.Foreman
+from Foreman at 15,26 of VirbankComplex
+way -
+  Foreman> Hey there, Trainer! Your Pokémon look full of beans. My new workers, not so much.
+  Foreman> There are three of them dawdling round the complex. Battle them and get them going, would you?
+=== virbank_complex_2.Scientist
+from Scientist at 29,32 of VirbankComplex
+way -
+  Scientist> Heat crude oil, and it separates into all its parts. That's what the tall tower over there is for!
+  Scientist> Oh! You heard all that? My knowledge just overflows sometimes.
+  = VAR_UNOVA_COMPLEX_TALK 0 -> 1
+=== virbank_gate.GateGift
+from the trigger at 13,4 of VirbankGate
+way -
+  Guard> Hello there! Oh, you're a Trainer, aren't you?
+  Guard> Just the one Pokémon with you? You two must be close. But you'll want more friends when the going gets tough!
+  Guard> Here, these will help you make some new ones.
+  > Lucas received 2 × Great Ball!
+  > Lucas put them away in the Poké Balls pocket.
+  Guard> You know what they say. Good company makes the road shorter!
+  * fanfare FanfareItem
+  = VAR_UNOVA_VIRBANK_GATE 0 -> 1
+=== virbank_gate.Guard
+from Guard at 13,2 of VirbankGate
+way -
+  Guard> Good company makes the road shorter! Virbank City is just through here.
 === viridian_city.Granddaughter
 from Woman at 68,192 of Kanto
 way -
