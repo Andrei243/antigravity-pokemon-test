@@ -195,6 +195,11 @@ public partial class GameEngine
             game.flow.State = GameState.Overworld;
         }
 
+        /// <summary>Crosses to another region as the attendant's travel does (plan 18 · W4, part b), behind a fade.</summary>
+        public void TravelTo(string region) => game.TravelTo(RegionDatabase.Get(region)!);
+        /// <summary>The keyboard naming a region's rival (plan 18 · W4, part b).</summary>
+        public UI.RivalNamingScreen RivalNaming => game.flow.RivalNamingScreen;
+
         public void StartWildBattle(WildEncounterEntry entry) => game.StartWildBattle(entry);
         public void StartTrainerBattle(NPC trainer, NPC? second = null, Trainer? partner = null, bool firstBattle = false) =>
             game.StartTrainerBattle(trainer, second, partner, firstBattle);

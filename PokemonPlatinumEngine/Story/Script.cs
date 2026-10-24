@@ -117,6 +117,8 @@ public enum Op
     Pose,
     // What to do next (plan 12 · Q14): the objective the story is at, stored as VAR_OBJECTIVE
     Objective,
+    // The keyboard for the rival of the region the script plays in (plan 18 · W4, part b): a region crossed into names its own
+    NameRival,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

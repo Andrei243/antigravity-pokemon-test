@@ -366,6 +366,8 @@ public sealed partial class ScriptRunner
         Op.TownMap => true,
         // A phrase is the player's own to choose
         Op.Phrase => true,
+        // and so is a rival's name (plan 18 · W4, part b)
+        Op.NameRival => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -880,6 +882,11 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Travel:
                 host.Open(ScriptScreen.Travel, Subject);
+                afterBusy = () => Result = host.Answer;
+                break;
+            case Op.NameRival:
+                // The keyboard for the rival of the script's region (plan 18 · W4, part b); RESULT 1 once named
+                host.Open(ScriptScreen.NameRival, Subject);
                 afterBusy = () => Result = host.Answer;
                 break;
             case Op.ChoosePokemon:

@@ -13,7 +13,9 @@ public enum Transport
 {
     /// <summary>Not chosen yet: each later link gets its own way of travelling when its region is built.</summary>
     Undecided,
-    Boat
+    Boat,
+    /// <summary>By air (plan 18 · W4, part b): the later regions' links, Unova's to Kalos and on, once their plans name a departure.</summary>
+    Plane
 }
 
 /// <summary>
@@ -130,6 +132,20 @@ public sealed class RegionLink
 
     /// <summary>The map in <see cref="From"/> where the attendant who takes the player across stands.</summary>
     public string? DepartureMap { get; init; }
+
+    /// <summary>
+    /// What the attendant calls the way across, our own word (plan 18 · W4, part b: <c>ship</c>, <c>ferry</c>, <c>plane</c>);
+    /// when the link names none, the transport's own (a boat's ship, a plane's plane), and "way" while it is undecided.
+    /// </summary>
+    public string? Vessel { get; init; }
+
+    /// <summary>The word the attendant's lines use for the way across.</summary>
+    public string VesselWord => Vessel is { Length: > 0 } v ? v : Transport switch
+    {
+        Transport.Boat => "ship",
+        Transport.Plane => "plane",
+        _ => "way"
+    };
 }
 
 /// <summary>What happens when the player asks to travel along a link.</summary>
@@ -634,20 +650,23 @@ public static class RegionDatabase
 
     private static readonly RegionLink[] links =
     {
-        // Sinnoh first: the way on from its Hall of Fame, to the stand-in Kanto until plan 19 builds it. It has no
-        // attendant yet; plan 18 · W5 gives the crossing its vessel and its scene.
-        new() { From = Sinnoh, To = Kanto, Transport = Transport.Undecided },
+        // Sinnoh first: the way on from its Hall of Fame, by ship from Canalave's pier, where W8 makes Sinnoh's harbour.
+        // Its captain stands at the end of the pier beside Sailor Eldritch once the Hall of Fame is entered (plan 18 · W4,
+        // part b: Canalave's overlay, common.Attendant on the map of Sinnoh); plan 18 · W5 gives the crossing its scene.
+        new() { From = Sinnoh, To = Kanto, Transport = Transport.Boat, Vessel = "ship", DepartureMap = "Sinnoh" },
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
         // Its captain stands on the quay in Vermilion City (plan 19 · K8: Vermilion's overlay, common.Attendant on the map of Kanto).
-        new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
+        new() { From = Kanto, To = Johto, Transport = Transport.Boat, Vessel = "ship", DepartureMap = "Kanto" },
         // From Johto by sea too: its sailor stands before the quay in Olivine's port hall (plan 20 · J12: the hall's overlay,
-        // common.Attendant), where HeartGold's S.S. Aqua leaves from
-        new() { From = Johto, To = Hoenn, Transport = Transport.Boat, DepartureMap = "Olivine_PortHall" },
+        // common.Attendant), where HeartGold's S.S. Aqua leaves from; a ferry, as plan 18's table has it
+        new() { From = Johto, To = Hoenn, Transport = Transport.Boat, Vessel = "ferry", DepartureMap = "Olivine_PortHall" },
+        // Plan 21 names Hoenn's departure (the table proposed a ship from Slateport) once Hoenn's Hall of Fame is written
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
-        new() { From = Unova, To = Kalos, Transport = Transport.Undecided },
-        new() { From = Kalos, To = Alola, Transport = Transport.Undecided },
-        new() { From = Alola, To = Galar, Transport = Transport.Undecided },
-        new() { From = Galar, To = Paldea, Transport = Transport.Undecided }
+        // The later regions by air, as the table proposes; their plans (23) name where they leave from
+        new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane" },
+        new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane" },
+        new() { From = Alola, To = Galar, Transport = Transport.Plane, Vessel = "plane" },
+        new() { From = Galar, To = Paldea, Transport = Transport.Plane, Vessel = "plane" }
     };
 
     /// <summary>Every region, in the order of the journey: Sinnoh, then generation order from Kanto.</summary>
@@ -682,7 +701,7 @@ public static class RegionDatabase
     {
         var from = Get(link.From)!;
         var to = Get(link.To)!;
-        string vessel = link.Transport == Transport.Boat ? "ship" : "way";
+        string vessel = link.VesselWord;
         return check switch
         {
             TravelCheck.StoryUnfinished => new()
@@ -698,7 +717,8 @@ public static class RegionDatabase
             _ => new()
             {
                 $"Congratulations, Champion of {from.Name}! The {vessel} to {to.Name} is ready.",
-                "All aboard!"
+                // Under option B the whole team crosses (plan 18 · W4, part b), and the attendant says so before anyone agrees
+                "Your Pokémon are welcome aboard, every one of them. All aboard!"
             }
         };
     }

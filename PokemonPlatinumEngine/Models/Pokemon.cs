@@ -479,6 +479,16 @@ public class Pokemon
     /// </summary>
     public Guid Id { get; set; }
 
+    /// <summary>
+    /// The region it belongs to (plan 18 · W4, part b): the region it was caught, given, hatched or received by a
+    /// trade in, by id (<c>Sinnoh</c>, <c>Kanto</c>). A Pokémon of the player's that has none is given the region the
+    /// player stands in by the engine as it is saved, loaded or received and before a crossing
+    /// (<c>GameEngine.GiveIds</c>), so it is never stamped with a region it wasn't met in; one traded joins the
+    /// receiver's. Null for one that is nobody's, and in an older save, where it reads as the save's region. Under the
+    /// user's option B nothing rests in the boxes for it (<see cref="Crossing"/>): it is what the Pokémon came from.
+    /// </summary>
+    public string? Region { get; set; }
+
     /// <summary>The ball it was caught in (null for one that wasn't caught). A Luxury Ball makes friendship grow faster.</summary>
     public string? Ball { get; set; }
 
@@ -1258,6 +1268,7 @@ public class Pokemon
     public void CopyStateFrom(Pokemon other)
     {
         Id = other.Id;
+        Region = other.Region;
         Species = other.Species;
         Form = other.Form;
         Nickname = other.Nickname;

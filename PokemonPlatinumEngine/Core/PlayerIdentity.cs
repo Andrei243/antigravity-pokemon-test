@@ -40,9 +40,62 @@ public static class PlayerIdentity
     /// </summary>
     public static string DefaultRivalName => Data.RegionDatabase.Get(Data.RegionDatabase.Sinnoh)?.Rival ?? "Barry";
 
-    /// <summary>Names the rival; an empty name takes the region's own (Sinnoh's when none is given).</summary>
-    public static void SetRival(string? name, string? regionsOwn = null) =>
+    /// <summary>
+    /// Names the rival; an empty name takes the region's own (Sinnoh's when none is given). With a region (plan 18 · W4,
+    /// part b), the name is that region's rival's and the region is the one the player is in; with none, every region's
+    /// name is forgotten and this is the one rival (what a test puts back as it ends).
+    /// </summary>
+    public static void SetRival(string? name, string? regionsOwn = null, string? region = null)
+    {
         RivalName = Clean(name) is { Length: > 0 } given ? given : regionsOwn is { Length: > 0 } own ? own : DefaultRivalName;
+        if (region == null)
+        {
+            rivals.Clear();
+            RivalRegion = null;
+            return;
+        }
+        rivals[region] = RivalName;
+        RivalRegion = region;
+    }
+
+    // Each region's rival as the player named them (plan 18 · W4, part b), by the region's id
+    private static readonly System.Collections.Generic.Dictionary<string, string> rivals = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>The names the player gave each region's rival, by the region's id: the introduction's for the region the game began in, a <c>namerival</c>'s for the others.</summary>
+    public static System.Collections.Generic.IReadOnlyDictionary<string, string> RivalNames => rivals;
+
+    /// <summary>The region whose rival <see cref="RivalName"/> is: the one the player is in (<see cref="InRegion"/>); null before any.</summary>
+    public static string? RivalRegion { get; private set; }
+
+    /// <summary>
+    /// Every region's rival as a save keeps them (plan 18 · W4, part b). An older save's one name, <c>RivalName</c>, is
+    /// the rival of the region it began in, which is the one its introduction asked about.
+    /// </summary>
+    public static void RestoreRivals(System.Collections.Generic.IReadOnlyDictionary<string, string>? names, string? oldName, string oldRegion)
+    {
+        rivals.Clear();
+        if (names != null)
+            foreach (var (region, given) in names)
+                if (Clean(given) is { Length: > 0 } kept) rivals[region] = kept;
+        if (!rivals.ContainsKey(oldRegion) && Clean(oldName) is { Length: > 0 } old) rivals[oldRegion] = old;
+    }
+
+    /// <summary>The rival of a region: the name the player gave them, or the region's own (the hero the player isn't, where that is the rival).</summary>
+    public static string RivalOf(Data.Region region) =>
+        rivals.TryGetValue(region.Id, out var given) ? given : region.RivalFor(Look) ?? DefaultRivalName;
+
+    /// <summary>Whether the player has named a region's rival yet.</summary>
+    public static bool HasNamedRival(string region) => rivals.ContainsKey(region);
+
+    /// <summary>
+    /// The player is in a region (plan 18 · W4, part b): <c>{rival}</c> names its rival from now on. The engine calls it
+    /// on every arrival, as a game begins and as it loads.
+    /// </summary>
+    public static void InRegion(Data.Region region)
+    {
+        RivalRegion = region.Id;
+        RivalName = RivalOf(region);
+    }
 
     /// <summary>Sets who the player is; an empty name takes the look's own.</summary>
     public static void Set(string? name, PlayerLook look)
