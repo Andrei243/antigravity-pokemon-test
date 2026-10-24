@@ -4066,6 +4066,41 @@ battles and Ho-Oh, and the small gifts are left (plan 20's J11 record says why).
   the way east as the Badge is given; here only the shrine's own state (`FLAG_UNK_998`, `FLAG_UNK_0EA`, `VAR_UNK_40C3`)
   and Clair's in the Den are set, and J12 writes the scenes those start.
 
+## Johto's fifth chapter: Victory Road, the League and the Hall of Fame (2026-10-24, plan 20 · J12, part a)
+
+Elm's Master Ball, the red-haired boy's last challenge in Victory Road, the Elite Four, Lance and Johto's Hall of Fame,
+played by scripts of ours on HeartGold's beats (`scr_seq_T20R0101`, `D43R0103`, `T10R0101` to `T10R0701`) and flags.
+
+- **Elm's Master Ball asks the Badge, not the shrine**: HeartGold sets `VAR_SCENE_ELMS_LAB` 8 as the Rising Badge is
+  given and Elm hands the Master Ball over on the next visit. Here the lab's arrival asks the Badge itself and a flag of
+  ours (`FLAG_GOT_MASTER_BALL_FROM_ELM`) and sets the variable as it gives the ball, so a save past the shrine from
+  before this session needs no story version. HeartGold's rival's-room scene in New Bark Town is not played.
+- **The rival in Victory Road is brought in by his scene**: HeartGold's new game hides him (`FLAG_HIDE_VICTORY_ROAD_RIVAL`);
+  here the third floor's arrival sets the flag, and the scene (the first trigger, on `VAR_UNK_40C5` 0) places him two
+  tiles behind the player, whichever of the corridor's three tiles they stepped on. His team beats the starter, as every
+  earlier battle of his (`johto_rival_silver_5`, `_9`, `_13`).
+- **The Elite Four's doors are their exits' flags**: HeartGold hides each room's door ahead by `FLAG_HIDE_<WHO>S_ROOM_EXIT`
+  as its master is beaten; the same flags open the overlay's doors here (`openedBy`), and the way back is locked. The
+  master is spoken to, as in Kanto's League (plan 19 · K7); HeartGold walks the challenger up to them. Lance's door is a
+  flag of ours (`FLAG_HIDE_LANCES_ROOM_EXIT`), and Mary and Oak stand in his room only from his defeat
+  (`FLAG_LANCES_ROOM_VISITORS`, ours). The hall's arrival puts the League back whenever it is come into, as HeartGold's
+  white-out and its Hall of Fame leave it. The rematch teams (`_2`) are J15's.
+- **The rooms take their master's type** (`arenaType`: Psychic, Poison, Fighting, Dark and Dragon), as Kanto's League's
+  do: their halls' own looks are J14's.
+- **Home after the Hall of Fame**: the scene warps to the player's room in New Bark Town, saves and rolls the credits,
+  as the other regions' do; Johto's own ceremony and credits songs are not written (the common ones play). Elm rings the
+  first time the Champion comes downstairs (`common.JohtoChampionCall`, `FLAG_ELM_CALLED_THE_CHAMPION`, ours). HeartGold's
+  call is about the S.S. Aqua to Kanto and the S.S. Ticket; here the journey goes on to Hoenn (plan 18 · W10), so Elm tells
+  of the ship that sails there from Olivine's port, and no ticket is given.
+- **The ship to Hoenn sails from Olivine's port hall**: the sailor before the quay is the region's attendant
+  (`RegionDatabase`'s link from Johto, `Transport.Boat`, `DepartureMap` `Olivine_PortHall`), where HeartGold's S.S. Aqua
+  leaves from. The quay itself and the voyage to Kanto stay J15's.
+- **The gate's door to Route 22** lets a Champion of Johto (`JohtoHallOfFame`) through and puts its trigger to rest
+  (`VAR_UNK_4121` 1). Kanto beyond it is only the stretch of Route 22 J10 opened.
+- **Left**: the reunion with a Kanto team (plan 18 · W4 and W5's crossing is not built, so there is no `Crossing.CanTake`
+  to ask), the rival's room in New Bark Town, the post-game rival on the Plateau (`FLAG_HIDE_INDIGO_PLATEAU_RIVAL`), and
+  the rematches.
+
 ## Reading the player's own files (2026-10-21, plan 08 · P20)
 
 The migration of Pal Park (P21) needs the player's Pokémon out of files the player owns. P20 is only the readers: they take bytes,

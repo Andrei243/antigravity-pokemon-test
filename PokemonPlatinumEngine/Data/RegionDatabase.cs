@@ -612,7 +612,9 @@ public static class RegionDatabase
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
         // Its captain stands on the quay in Vermilion City (plan 19 · K8: Vermilion's overlay, common.Attendant on the map of Kanto).
         new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
-        new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
+        // From Johto by sea too: its sailor stands before the quay in Olivine's port hall (plan 20 · J12: the hall's overlay,
+        // common.Attendant), where HeartGold's S.S. Aqua leaves from
+        new() { From = Johto, To = Hoenn, Transport = Transport.Boat, DepartureMap = "Olivine_PortHall" },
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
         new() { From = Unova, To = Kalos, Transport = Transport.Undecided },
         new() { From = Kalos, To = Alola, Transport = Transport.Undecided },

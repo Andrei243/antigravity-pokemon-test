@@ -7,7 +7,13 @@
 
 
 script OnEnter
-  if var VAR_SCENE_PLAYERS_HOUSE_1F != 0 end
+  if var VAR_SCENE_PLAYERS_HOUSE_1F == 0 goto FirstMorning
+  # Home from the Hall of Fame (plan 20 · J12): the first time the Champion comes downstairs, Elm rings
+  if not flag JohtoHallOfFame end
+  if flag FLAG_ELM_CALLED_THE_CHAMPION end
+  call JohtoChampionCall
+  end
+label FirstMorning
   scene "Mom and the Pokegear"
   face player down
   speaker "Mom"

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t10r0701_wataru": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You've earned your place here, {player}."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

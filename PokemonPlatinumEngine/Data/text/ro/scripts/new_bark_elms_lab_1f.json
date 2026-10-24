@@ -351,6 +351,54 @@
       "text": [
         "Aruncă unul spre un Pokémon sălbatic după ce l-ai obosit și s-ar putea să fie al tău."
       ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I heard the news from Blackthorn City. Eight Badges! I knew you could do it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've seen nearly all of Johto now. There's only one place left for a trainer like you: the Pokémon League."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I want you to take this with you. I was given it for my research, but it belongs with someone who will use it well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's the Master Ball, the finest ball there is. It will catch any Pokémon at all, without fail."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The League is reached by Route 27, east of here across the water, and then Victory Road. Good luck, {player}!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Elm": [
@@ -408,6 +456,30 @@
       ],
       "text": [
         "Oul e acum la asistentul meu. Mă bucur tare că tu o să crești ce iese din el."
+      ]
+    },
+    {
+      "en": [
+        "Route 27 is east of town, across the water. Victory Road and the League are beyond it. I'm cheering for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Champion of the Pokémon League, from my own lab! I still can't quite believe it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you're thinking of going further, the ship at Olivine's port sails for Hoenn. Champions only, they tell me."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

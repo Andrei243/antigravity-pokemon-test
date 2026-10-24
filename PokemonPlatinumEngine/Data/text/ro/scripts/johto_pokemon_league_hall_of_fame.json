@@ -1,0 +1,52 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Hall of Fame. Every trainer who has beaten the League is honoured here, with the Pokémon who stood beside them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every one of them came here as you have, not alone, but with partners they believed in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, today your name and your Pokémon's join theirs. Let's record your team, so the League never forgets it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

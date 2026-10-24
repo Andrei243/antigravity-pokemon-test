@@ -5,7 +5,7 @@
 # row before him is the area's first trigger, which waits on VAR_UNK_4110 as HeartGold counts it (1 once he has seen
 # them), and a trainer without them is turned back a step. The guard at the door to Route 22 keeps Kanto shut to
 # anyone who hasn't stood before the League's Champion: his line of tiles is the third trigger, which turns everyone
-# back until plan 20 · J12 gives it the Champion's victory to ask after. Route 28's door, toward Mt. Silver, is locked
+# back but a Champion of Johto (plan 20 · J12). Route 28's door, toward Mt. Silver, is locked
 # in the overlay.
 
 
@@ -34,9 +34,27 @@ label Passed
   end
 
 
+# Since plan 20 · J12 a Champion of Johto (JohtoHallOfFame) is let through, and the trigger is put to rest
+# (VAR_UNK_4121 1, as HeartGold's gate does once the player may pass)
 script KantoShut
   face r22r0101_policeman_3 player
   speaker "Guard"
+  if flag JohtoHallOfFame goto Champion
   say "Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion."
   walk player left 1
+  end
+label Champion
+  say "You're the new Champion! Of course you may pass. Route 22 and Kanto are through this door."
+  setvar VAR_UNK_4121 1
+  end
+
+
+# The guard at the door to Route 22
+script KantoGuard
+  speaker "Guard"
+  if flag JohtoHallOfFame goto Champion
+  say "Through this door is Route 22, and Kanto beyond it. It opens to those who have stood before the Champion."
+  end
+label Champion
+  say "Through this door is Route 22, and Kanto beyond it. Safe travels, Champion."
   end
