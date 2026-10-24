@@ -217,6 +217,12 @@ public sealed class GameSettings
     /// </summary>
     public RulesDefault PartyTools { get; set; } = RulesDefault.Rules;
 
+    /// <summary>
+    /// Whether the start menu has BOXES, which opens the PC anywhere the map allows, and the bag can be put in order (plan 12 · Q13):
+    /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is, so a game played by Platinum's rules keeps its menu and bag.
+    /// </summary>
+    public RulesDefault BoxesAnywhere { get; set; } = RulesDefault.Rules;
+
     /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
     private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 

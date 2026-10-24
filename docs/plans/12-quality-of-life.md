@@ -166,6 +166,8 @@ Written 2026-10-06, before any session.
 - Tests in `MenuScreenTests`: each order; the TM pocket by name is by number; the order survives a save; the boxes refuse where the map says so, and the entry isn't there before the first Pokémon. Shots: `menus` with the entry, the bag sorted by name and by quantity (`22h_bag_sorted_*`).
 - **Done when** a Modern game opens the boxes from the start menu and a Platinum game's menu is unchanged.
 
+**Outcome (2026-10-24, wave 46).** Built: the options row `OptionRow.BoxesAnywhere` (`GameSettings.BoxesAnywhere`, `RulesDefault.Rules`, before Controls), one row for both halves. `StartMenuChoice.Boxes` and the start menu's BOXES entry after POKéMON (`StartMenu.HasBoxes`, shown only with a Pokémon; `UiIcon.Boxes`), opened by `GameEngine.OpenBoxesFromMenu` (`Core/GameEngine.BoxLink.cs`) as a script's PC opens; refused with the error sound and a notice (`start.noBoxLink`), the menu left up, in a room whose map file says `noBoxLink` (`Map.NoBoxLink`, `MapFile.NoBoxLink`), in a Safari Game and in the Bug-Catching Contest. `Inventory.OrderOf`/`SetOrder`/`NextOrder` with `BagOrder` (Taken, Name, Quantity), the TM pocket by name by number (TMs before HMs); `SaveData.BagOrder` (no version raised); in `BagScreen` the item button (C) turns the order (`CycleOrder`), PageLeft and PageRight jump by letter in A TO Z and by a page otherwise (`JumpLetter`) while Left and Right turn the pocket, the order tag on the detail panel. Tests: `MenuScreenTests` (orders, machines, cycle, letter jump, save, start menu, row) and `BoxLinkTests`; shots `09d`, `09e`, `22h_bag_sorted_*` at the end of `menus`. Written, not run. Left: no map file says `noBoxLink` yet (the Frontier's challenge rooms are the candidates); Romanian for `start.boxes`, `start.noBoxLink`, `bag.order.*`, `shared.hints.order` and `options.boxesAnywhere`.
+
 ### Q14 · What to do next, and rumours
 - The line's place in the style guide's "Field menus and notices" (the start menu) and "Menu screens (G10)" (the Trainer Card, the save's summary) first. `objective` (a new `Op`, a case in the parser and the runner, a method of both hosts, a line in `ScriptTests.EveryCommandHasItsLine`, its row in `docs/scripts.md`), `Objectives` and `VAR_OBJECTIVE`, the objectives of plan 02 · S4's opening (the player's house, Twinleaf Town, Route 201, the lake, Sandgem Town and the lab), written here because S4 came first, and a step of `StoryMigration` (`StoryState.CurrentVersion` raised from 2) that gives an older save the objective its flags imply, `NextObjective` on the three panels, the `{objective}` placeholder, `common.Rumour` and the opt-in.
 - Tests: every way through every chapter's scripts leaves an objective set (`StoryTests`, `HeadlessScriptHost`), the opening's first (`OpeningTests`); a save of story version 2 loads with an objective; every rumour's condition names a flag that exists; the line is filled in. Shots: `menus` with the line on the start menu and the card.
@@ -360,7 +362,7 @@ Written 2026-10-06, before any session.
 - [x] Q10 What a move will do, and HELP (2026-10-10)
 - [x] Q11 The information panel (2026-10-12)
 - [ ] Q12 Auto-battle
-- [ ] Q13 Boxes anywhere and a sorted bag
+- [x] Q13 Boxes anywhere and a sorted bag
 - [x] Q14 What to do next, and rumours (2026-10-24; Sinnoh's part, the other regions' objectives are left)
 - [ ] Q15 The jukebox
 - [ ] Q16 The screenshot key and photo mode in the field

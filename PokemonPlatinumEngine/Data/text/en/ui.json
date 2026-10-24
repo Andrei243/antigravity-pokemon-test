@@ -35,6 +35,7 @@
       "ribbon": "Ribbon",
       "marks": "Marks",
       "pocket": "Pocket",
+      "order": "Order",
       "buy": "Buy",
       "sell": "Sell",
       "toss": "Toss",
@@ -161,6 +162,15 @@
       "help": {
         "on": "A line on the start menu, the Trainer Card and the save's summary says where the story goes next, and Mom and the Pokémon Center nurse remind you when asked.",
         "off": "Nothing says where the story goes next: you find your own way, as in the original."
+      }
+    },
+    "boxesAnywhere": {
+      "label": "Boxes anywhere and a sorted bag",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "The PC's boxes are reached only at a PC, and the bag keeps its items in the order you took them.",
+        "Rules": "Platinum's rules keep both as they are; the modern rules add BOXES to the start menu where the place allows it, and let each pocket of the bag be put in order.",
+        "On": "The start menu has BOXES, which opens the PC anywhere the place allows it, and each pocket of the bag can be put in order by name or by how many, with a letter jump."
       }
     },
     "partyTools": {
@@ -377,6 +387,8 @@
   "start": {
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
+    "boxes": "BOXES",
+    "noBoxLink": "The boxes can't be reached from here.",
     "bag": "BAG",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
@@ -616,6 +628,13 @@
 
   "bag": {
     "title": "BAG",
+    "order": {
+      "label": "ORDER",
+      "Taken": "AS TAKEN",
+      "Name": "A TO Z",
+      "NameMachines": "BY NUMBER",
+      "Quantity": "MOST FIRST"
+    },
     "pocket": {
       "Items": "ITEMS",
       "Medicine": "MEDICINE",

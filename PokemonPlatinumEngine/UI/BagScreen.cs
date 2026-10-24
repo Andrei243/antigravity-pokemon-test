@@ -216,6 +216,62 @@ public class BagScreen
         taughtByCandy = null;
     }
 
+    // ---------------------------------------------------------------- the pocket's order (plan 12 · Q13)
+
+    /// <summary>Whether the pockets can be put in order and the shoulders jump by letter: the options' BOXES ANYWHERE row, set each frame by the engine.</summary>
+    public bool Sorting { get; set; }
+
+    /// <summary>Turns the pocket to its next order (as taken, A to Z, most first), the cursor staying on the item it was on.</summary>
+    public void CycleOrder(Inventory inventory)
+    {
+        if (!Sorting || Actions != null || Tossing || choosingFor != null) return;
+        var items = inventory.GetPocketItems(CurrentPocket);
+        var kept = items.Count > 0 ? items[Math.Min(SelectedIndex, items.Count - 1)] : null;
+        inventory.SetOrder(CurrentPocket, inventory.NextOrder(CurrentPocket));
+        var after = inventory.GetPocketItems(CurrentPocket);
+        SelectedIndex = kept == null ? 0 : Math.Max(0, after.IndexOf(kept));
+        Follow(after.Count);
+        AudioManager.PlaySound("page");
+    }
+
+    /// <summary>The initial a name is filed under.</summary>
+    internal static char InitialOf(ItemStack stack) => stack.Data.DisplayName.Length > 0 ? char.ToUpperInvariant(stack.Data.DisplayName[0]) : ' ';
+
+    /// <summary>
+    /// A shoulder button in the list (plan 12 · Q13): in A TO Z to the first item of the next or the previous initial letter (the
+    /// first of the letter it is on when it is further down), in any other order a page of rows on. Stops at either end.
+    /// </summary>
+    public void JumpLetter(Inventory inventory, int step)
+    {
+        if (!Sorting || step == 0 || Actions != null || Tossing || choosingFor != null) return;
+        var items = inventory.GetPocketItems(CurrentPocket);
+        if (items.Count == 0) return;
+        int from = Math.Min(SelectedIndex, items.Count - 1), to = from;
+        if (inventory.OrderOf(CurrentPocket) == BagOrder.Name && CurrentPocket != ItemPocket.TMsAndHMs)
+        {
+            char here = InitialOf(items[from]);
+            if (step > 0)
+            {
+                while (to < items.Count - 1 && InitialOf(items[to]) == here) to++;
+                if (InitialOf(items[to]) == here) to = from;
+            }
+            else
+            {
+                while (to > 0 && InitialOf(items[to - 1]) == here) to--;
+                if (to == from && to > 0)
+                {
+                    char before = InitialOf(items[to - 1]);
+                    while (to > 0 && InitialOf(items[to - 1]) == before) to--;
+                }
+            }
+        }
+        else to = Math.Clamp(from + step * VisibleRows, 0, items.Count - 1);
+        if (to == from) return;
+        SelectedIndex = to;
+        Follow(items.Count);
+        AudioManager.PlaySound("cursor");
+    }
+
     // ---------------------------------------------------------------- moving about
 
     /// <summary>To the next or the previous pocket, wrapping round; each keeps its own cursor.</summary>
@@ -481,9 +537,11 @@ public class BagScreen
         }
 
         // The page buttons turn the pocket too (plan 12 · Q5)
+        // With the bag in order (plan 12 · Q13) they jump by letter instead, and the item button turns the order
         int pages = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
-        if (dx != 0) MovePocket(dx);
-        else if (pages != 0 && dy == 0) MovePocket(pages);
+        if (Sorting && InputManager.IsActionPressed(GameAction.Item)) CycleOrder(inventory);
+        else if (dx != 0) MovePocket(dx);
+        else if (pages != 0 && dy == 0) { if (Sorting) JumpLetter(inventory, pages); else MovePocket(pages); }
         else if (dy != 0)
         {
             int count = inventory.GetPocketItems(CurrentPocket).Count;

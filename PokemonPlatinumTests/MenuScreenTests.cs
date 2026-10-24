@@ -1871,4 +1871,160 @@ public class MenuScreenTests
         Assert.True(PokemonModels.HasModel(intro.ShownSpecies));
         Assert.NotNull(PokemonDatabase.Get(intro.ShownSpecies));
     }
+
+    // ------------------------------------------------------------------ boxes anywhere and a sorted bag (plan 12 · Q13)
+
+    private static string[] Names(Inventory bag, ItemPocket pocket) => bag.GetPocketItems(pocket).Select(i => i.Name).ToArray();
+
+    [Fact]
+    public void APocketIsKeptAsTakenByNameOrByHowMany()
+    {
+        var bag = Bag(("Potion", 3), ("Antidote", 9), ("Full Heal", 5), ("Awakening", 5));
+        var taken = Names(bag, ItemPocket.Medicine);
+        Assert.Equal(new[] { "Potion", "Antidote", "Full Heal", "Awakening" }, taken);
+        Assert.Equal(BagOrder.Taken, bag.OrderOf(ItemPocket.Medicine));
+
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Name);
+        Assert.Equal(new[] { "Antidote", "Awakening", "Full Heal", "Potion" }, Names(bag, ItemPocket.Medicine));
+
+        // The most first, the names breaking a tie
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Quantity);
+        Assert.Equal(new[] { "Antidote", "Awakening", "Full Heal", "Potion" }, Names(bag, ItemPocket.Medicine));
+        bag.AddItem(Item("Potion"), 20);
+        Assert.Equal("Potion", Names(bag, ItemPocket.Medicine)[0]);
+
+        // Back to the order things were taken in, and another pocket was never touched
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Taken);
+        Assert.Equal(taken, Names(bag, ItemPocket.Medicine));
+        Assert.Equal(BagOrder.Taken, bag.OrderOf(ItemPocket.Items));
+        Assert.Equal(BagOrder.Name, bag.NextOrder(ItemPocket.Items));
+    }
+
+    [Fact]
+    public void TheMachinePocketByNameIsByNumberTheTmsBeforeTheHms()
+    {
+        var bag = Bag(("HM01", 1), ("TM10", 1), ("TM02", 1), ("HM02", 1), ("TM01", 1));
+        bag.SetOrder(ItemPocket.TMsAndHMs, BagOrder.Name);
+        Assert.Equal(new[] { "TM01", "TM02", "TM10", "HM01", "HM02" }, Names(bag, ItemPocket.TMsAndHMs));
+    }
+
+    [Fact]
+    public void TheCycleOfOrdersGoesRoundAndTheCursorStaysOnItsItem()
+    {
+        var bag = Bag(("Potion", 3), ("Antidote", 9), ("Awakening", 5));
+        var screen = new BagScreen { Sorting = true };
+        screen.Open();
+        screen.CurrentPocket = ItemPocket.Medicine;
+        screen.SelectedIndex = 0; // the Potion
+        screen.CycleOrder(bag);
+        Assert.Equal(BagOrder.Name, bag.OrderOf(ItemPocket.Medicine));
+        Assert.Equal("Potion", bag.GetPocketItems(ItemPocket.Medicine)[screen.SelectedIndex].Name);
+        screen.CycleOrder(bag);
+        Assert.Equal(BagOrder.Quantity, bag.OrderOf(ItemPocket.Medicine));
+        Assert.Equal("Potion", bag.GetPocketItems(ItemPocket.Medicine)[screen.SelectedIndex].Name);
+        screen.CycleOrder(bag);
+        Assert.Equal(BagOrder.Taken, bag.OrderOf(ItemPocket.Medicine));
+
+        // With the row off nothing turns
+        var plain = new BagScreen();
+        plain.Open();
+        plain.CurrentPocket = ItemPocket.Medicine;
+        plain.CycleOrder(bag);
+        Assert.Equal(BagOrder.Taken, bag.OrderOf(ItemPocket.Medicine));
+    }
+
+    [Fact]
+    public void TheShouldersJumpToTheNextAndThePreviousLetterInAToZ()
+    {
+        var bag = Bag(("Potion", 1), ("Antidote", 1), ("Awakening", 1), ("Full Heal", 1), ("Super Potion", 1), ("Max Potion", 1));
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Name);
+        var names = bag.GetPocketItems(ItemPocket.Medicine).Select(i => i.Data.DisplayName).ToList();
+        var screen = new BagScreen { Sorting = true };
+        screen.Open();
+        screen.CurrentPocket = ItemPocket.Medicine;
+        screen.SelectedIndex = 0;
+        char Initial() => char.ToUpperInvariant(names[screen.SelectedIndex][0]);
+
+        screen.JumpLetter(bag, 1);
+        Assert.Equal('F', Initial());
+        screen.JumpLetter(bag, 1);
+        Assert.Equal('M', Initial());
+        screen.JumpLetter(bag, 1);
+        screen.JumpLetter(bag, 1);
+        Assert.Equal('S', Initial());
+        screen.JumpLetter(bag, 1); // the last letter: stays
+        Assert.Equal('S', Initial());
+
+        // Back: the first of the letter it is on, when it is further down; otherwise the previous letter's first
+        screen.SelectedIndex = names.Count - 1;
+        screen.JumpLetter(bag, -1);
+        Assert.Equal('P', Initial());
+        screen.JumpLetter(bag, -1);
+        Assert.Equal('M', Initial());
+        screen.JumpLetter(bag, -1);
+        Assert.Equal('F', Initial());
+        screen.JumpLetter(bag, -1);
+        Assert.Equal(0, screen.SelectedIndex);
+        screen.SelectedIndex = 1; // the second of the A's
+        screen.JumpLetter(bag, -1);
+        Assert.Equal(0, screen.SelectedIndex);
+
+        // Not in A TO Z: a page of rows
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Quantity);
+        screen.SelectedIndex = 0;
+        screen.JumpLetter(bag, 1);
+        Assert.Equal(Math.Min(BagScreen.VisibleRows, names.Count - 1), screen.SelectedIndex);
+    }
+
+    [Fact]
+    public void TheBagsOrdersSurviveASave()
+    {
+        var bag = Bag(("Potion", 3), ("Antidote", 9));
+        bag.SetOrder(ItemPocket.Medicine, BagOrder.Quantity);
+        bag.SetOrder(ItemPocket.TMsAndHMs, BagOrder.Name);
+        var save = new SaveData { BagOrder = bag.Orders.ToDictionary(o => o.Key.ToString(), o => o.Value.ToString()) };
+        var read = JsonSerializer.Deserialize<SaveData>(JsonSerializer.Serialize(save))!;
+        Assert.Equal(new Dictionary<string, string> { ["Medicine"] = "Quantity", ["TMsAndHMs"] = "Name" }, read.BagOrder);
+
+        // A save from before has none, and every pocket is as taken
+        Assert.Empty(JsonSerializer.Deserialize<SaveData>("{\"PlayerName\":\"Lucas\"}")!.BagOrder);
+
+        // Clearing the bag (a game loaded) forgets the orders
+        bag.Clear();
+        Assert.Empty(bag.Orders);
+    }
+
+    [Fact]
+    public void TheStartMenuHasBoxesOnlyWithTheRowOnAndAPokemon()
+    {
+        var menu = new StartMenu();
+        Assert.False(menu.HasBoxes);
+        int without = menu.EntryCount;
+        menu.HasBoxes = true;
+        Assert.Equal(without + 1, menu.EntryCount);
+        menu.HasPokemon = false;
+        Assert.Equal(without - 1, menu.EntryCount); // no POKéMON and no BOXES before the first Pokémon
+
+        // BOXES stands after POKéMON, and A on it answers Boxes
+        menu.HasPokemon = true;
+        menu.Open();
+        menu.Move(2);
+        Assert.Equal(StartMenuChoice.Boxes, menu.Confirm());
+        menu.Hide();
+    }
+
+    [Fact]
+    public void TheRowIsByTheRulesLikeTheOtherHelps()
+    {
+        var settings = new GameSettings();
+        Assert.Equal(RulesDefault.Rules, settings.BoxesAnywhere);
+        OptionsScreen.Change(settings, OptionRow.BoxesAnywhere, 1);
+        Assert.Equal(RulesDefault.On, settings.BoxesAnywhere);
+        OptionsScreen.Change(settings, OptionRow.BoxesAnywhere, 1);
+        Assert.Equal(RulesDefault.Off, settings.BoxesAnywhere);
+        OptionsScreen.Change(settings, OptionRow.BoxesAnywhere, 1);
+        Assert.Equal(RulesDefault.Rules, settings.BoxesAnywhere);
+        Assert.True(RulesDefault.Rules.Holds(RulesPreset.Modern));
+        Assert.False(RulesDefault.Rules.Holds(RulesPreset.Platinum));
+    }
 }

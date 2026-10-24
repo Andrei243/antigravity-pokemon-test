@@ -37,7 +37,10 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("bag.title"));
-        Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.pocket"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
+        if (bag.Sorting)
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.pocket"), Hint("shared.keys.c", "shared.hints.order"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
+        else
+            Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.pocket"), Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
 
         int pocket = Math.Max(0, Array.IndexOf(BagScreen.Pockets, bag.CurrentPocket));
         Tabs(new Rectangle(Margin, ContentTop, sw - Margin * 2, 76), PocketTabs, pocket);
@@ -66,6 +69,15 @@ internal static partial class ModernUi
         // ---- The chosen item
         var detail = new Rectangle(Margin + 920 + Gutter + slide, top, sw - Margin * 2 - 920 - Gutter, ContentBottom - top);
         Panel(detail, 34);
+        if (bag.Sorting)
+        {
+            // The pocket's order as a tag at the detail panel's top right (plan 12 · Q13)
+            var order = inventory.OrderOf(bag.CurrentPocket);
+            string key = order == BagOrder.Name && bag.CurrentPocket == ItemPocket.TMsAndHMs ? "NameMachines" : order.ToString();
+            string word = Text.Of("bag.order.label") + ": " + Text.Of($"bag.order.{key}");
+            float tagW = UiFonts.Measure(word, 38 * 0.58f, UiWeight.Black) + 38 * 0.9f;
+            Tag(detail.X + detail.Width - 44 - tagW, detail.Y + 10, word, Gold, 38);
+        }
         if (items.Count == 0 || bag.SelectedIndex >= items.Count) return;
         var item = items[bag.SelectedIndex].Data;
         ItemDetail(detail, item, PocketTab(item.Pocket), item.Pocket == ItemPocket.KeyItems ? null : (Text.Of("bag.inBag"), Text.Of("bag.count", ("n", items[bag.SelectedIndex].Quantity))));

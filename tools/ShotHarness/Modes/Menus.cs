@@ -738,5 +738,42 @@ partial class Harness
             engine.Settings.PartyTools = toolsBefore;
             game.State = GameState.Overworld;
         }
+
+        // Boxes anywhere and a sorted bag (plan 12 · Q13): the start menu with BOXES after POKéMON (the row on), the bag's
+        // Medicine pocket as taken, by name and by how many (22h_bag_sorted_*), and put back as it was. Written, not run.
+        {
+            var boxesBefore = engine.Settings.BoxesAnywhere;
+            engine.Settings.BoxesAnywhere = RulesDefault.On;
+            GoTo("TwinleafTown", 11, 8, Direction.Down);
+            startMenu.HasPokedex = true;
+            startMenu.HasPokemon = party.Count > 0;
+            startMenu.HasBoxes = engine.BoxLinkOn;
+            startMenu.Open();
+            Frames(30); Shot("09d_startmenu_boxes");
+            startMenu.Move(2);
+            Frames(2); Shot("09e_startmenu_boxes_chosen");
+            startMenu.Hide();
+            startMenu.HasBoxes = false;
+
+            game.State = GameState.BagMenu;
+            bag.Sorting = true;
+            bag.Open();
+            bag.CurrentPocket = ItemPocket.Medicine;
+            inventory.SetOrder(ItemPocket.Medicine, BagOrder.Taken);
+            Frames(30); Shot("22h_bag_sorted_taken");
+            bag.CycleOrder(inventory);
+            Frames(8); Shot("22h_bag_sorted_name");
+            bag.JumpLetter(inventory, 1);
+            Frames(8); Shot("22h_bag_sorted_letter");
+            bag.CycleOrder(inventory);
+            Frames(8); Shot("22h_bag_sorted_quantity");
+            Console.WriteLine($"bag order: {inventory.OrderOf(ItemPocket.Medicine)}, first: {inventory.GetPocketItems(ItemPocket.Medicine).FirstOrDefault()?.Name}");
+
+            inventory.SetOrder(ItemPocket.Medicine, BagOrder.Taken);
+            bag.Sorting = false;
+            bag.Close();
+            engine.Settings.BoxesAnywhere = boxesBefore;
+            game.State = GameState.Overworld;
+        }
     }
 }
