@@ -1,5 +1,6 @@
 using System;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
 
@@ -116,8 +117,9 @@ public sealed class NicknameScreen
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!IsActive || Entry == null || Target == null) return;
-        ModernUi.DrawNameEntry(screenWidth, screenHeight, Entry, null, PlayerIdentity.Look,
+        // The Pokémon being named stands on the plate where the introduction shows the player, at its summary's scale
+        ModernUi.DrawNameEntry(screenWidth, screenHeight, Entry, PixelArtGenerator.SpriteOf(Target), PlayerIdentity.Look,
             UiMotion.EaseOut(Math.Clamp(Age / AppearTime, 0f, 1f)), Text.Of("party.rename.title", ("name", Target.DisplayName.ToUpperInvariant())),
-            SpeciesName, Text.Of("party.rename.blurb", ("species", SpeciesName)));
+            SpeciesName, Text.Of("party.rename.blurb", ("species", SpeciesName)), spriteScale: 3);
     }
 }

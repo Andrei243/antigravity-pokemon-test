@@ -78,7 +78,7 @@ partial class Harness
         At("Route35_NationalParkGate", 6, 4, Direction.Left);
         Frames(20);
         Shot("at01_dome_door");
-        At("PokeathlonDome", 42, 30, Direction.Up);
+        At("PokeathlonDome", 42, 27, Direction.Up);
         Frames(30);
         Shot("at01c_dome_square");
         At("PokeathlonDome_1F", 23, 13, Direction.Up);

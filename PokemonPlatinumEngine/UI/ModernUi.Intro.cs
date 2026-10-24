@@ -159,7 +159,7 @@ internal static partial class ModernUi
     /// far in seven slots over the keyboard.
     /// </summary>
     public static void DrawNameEntry(int sw, int sh, NameEntry entry, Texture2D? sprite, PlayerLook look, float appear = 1f,
-        string? title = null, string? fallbackName = null, string? blurb = null)
+        string? title = null, string? fallbackName = null, string? blurb = null, int spriteScale = 6)
     {
         ScreenTitle(title ?? Text.Of("intro.yourName"));
         Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.x", "shared.hints.delete"), Hint("shared.keys.enter", "shared.hints.toOk"));
@@ -173,7 +173,7 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(plate.X + 36, plate.Y + plate.Height - 76, plate.Width - 72, 16), 8, Rule);
         if (sprite is { } figure)
         {
-            const int scale = 6;
+            int scale = spriteScale;
             float w = figure.Width * scale, h = figure.Height * scale;
             Raylib.DrawTexturePro(figure, new Rectangle(0, 0, figure.Width, figure.Height),
                 new Rectangle(MathF.Round(plate.X + (plate.Width - w) / 2f), MathF.Round(plate.Y + plate.Height - 52 - h), w, h), Vector2.Zero, 0f, Color.White);
