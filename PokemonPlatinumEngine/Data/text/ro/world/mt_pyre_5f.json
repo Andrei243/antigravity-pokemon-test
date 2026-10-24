@@ -1,0 +1,31 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Atsushi"
+        ],
+        "text": [
+          "Atsushi"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Atsushi: I train among the graves to steady my heart. Nothing frightens me now. Come!"
+        ],
+        "text": [
+          "Centură Neagră Atsushi: Mă antrenez printre morminte ca să-mi liniștesc inima. Nimic nu mă mai sperie. Vino!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Atsushi: My heart was steady, but my fists were not."
+        ],
+        "text": [
+          "Centură Neagră Atsushi: Inima mea era liniștită, dar pumnii nu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

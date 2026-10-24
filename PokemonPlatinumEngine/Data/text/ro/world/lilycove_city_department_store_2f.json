@@ -1,0 +1,79 @@
+{
+  "people": {
+    "woman_3_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I go travelling, I pack enough food for a week. You can never have too many Potions, either!"
+        ],
+        "text": [
+          "Când plec în călătorii, îmi iau mâncare pentru o săptămână. Nici Poțiuni nu poți avea prea multe!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Great Balls, Ultra Balls... I can never decide which to buy, so I buy both."
+        ],
+        "text": [
+          "Super Ball, Ultra Ball... Nu mă pot decide pe care s-o cumpăr, așa că le cumpăr pe amândouă."
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A sailor needs plenty of Repel. Sea Pokémon pop up whenever you least want them!"
+        ],
+        "text": [
+          "Un marinar are nevoie de mult Spray. Pokémonii de mare apar tocmai când te aștepți mai puțin!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -5,7 +5,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is the Hall of Fame. Every trainer who has beaten the League is honoured here, with the Pokémon who stood beside them."
       ],
       "text": [
-        ""
+        "Asta e Sala Faimei. Fiecare antrenor care a învins Liga e cinstit aici, împreună cu Pokémonii care au stat alături de el."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Every one of them came here as you have, not alone, but with partners they believed in."
       ],
       "text": [
-        ""
+        "Fiecare a ajuns aici ca tine, nu singur, ci cu parteneri în care a crezut."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}, today your name and your Pokémon's join theirs. Let's record your team, so the League never forgets it."
       ],
       "text": [
-        ""
+        "{player}, azi numele tău și al Pokémonilor tăi se alătură lor. Hai să înregistrăm echipa ta, ca Liga să n-o uite niciodată."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} saved the game."
       ],
       "text": [
-        ""
+        "{player} a salvat jocul."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "The game could not be saved."
       ],
       "text": [
-        ""
+        "Jocul nu a putut fi salvat."
       ]
     }
   ]

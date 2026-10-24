@@ -1,0 +1,15 @@
+{
+  "people": {
+    "move_deleter": {
+      "name": {
+        "en": [
+          "Move Deleter"
+        ],
+        "text": [
+          "Ștergătorul de Mișcări"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

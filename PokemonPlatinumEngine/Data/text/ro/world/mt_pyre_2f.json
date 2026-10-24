@@ -1,0 +1,171 @@
+{
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I lost my Pokémon, I didn't think I'd ever stop crying. Coming here helps, little by little."
+        ],
+        "text": [
+          "Când mi-am pierdut Pokémonul, n-am crezut că voi înceta vreodată să plâng. A veni aici ajută, încet-încet."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The floors up here have holes in them. Step into one and you'll land on the floor below. Mind your feet!"
+        ],
+        "text": [
+          "Podelele de aici sus au găuri. Calcă într-una și vei ateriza pe etajul de jos. Ai grijă pe unde pășești!"
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Mark"
+        ],
+        "text": [
+          "Mark"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémaniac Mark: There might be a rare Pokémon's grave up here. And a rare trainer to battle, too!"
+        ],
+        "text": [
+          "Pasionat Pokémon Mark: S-ar putea să fie mormântul unui Pokémon rar aici sus. Și un antrenor rar cu care să lupți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémaniac Mark: Rare indeed. Rarely does anyone beat me that badly."
+        ],
+        "text": [
+          "Pasionat Pokémon Mark: Rar, într-adevăr. Rar mă bate cineva atât de rău."
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Dez & Luke"
+        ],
+        "text": [
+          "Dez & Luke"
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Dez & Luke: We came to pay our respects together. Now we'll battle together, too!"
+        ],
+        "text": [
+          "Cuplu tânăr Dez & Luke: Am venit să ne aducem omagiul împreună. Acum vom lupta și împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Dez & Luke: We lost together. That's something, isn't it?"
+        ],
+        "text": [
+          "Cuplu tânăr Dez & Luke: Am pierdut împreună. Măcar atât, nu?"
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Dez & Luke"
+        ],
+        "text": [
+          "Dez & Luke"
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Dez & Luke: We came to pay our respects together. Now we'll battle together, too!"
+        ],
+        "text": [
+          "Cuplu tânăr Dez & Luke: Am venit să ne aducem omagiul împreună. Acum vom lupta și împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Dez & Luke: We lost together. That's something, isn't it?"
+        ],
+        "text": [
+          "Cuplu tânăr Dez & Luke: Am pierdut împreună. Măcar atât, nu?"
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Zander"
+        ],
+        "text": [
+          "Zander"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Zander: I climb this tower every day to train my legs and my spirit. Hiyah!"
+        ],
+        "text": [
+          "Centură Neagră Zander: Urc turnul ăsta în fiecare zi ca să-mi antrenez picioarele și spiritul. Hiyah!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Zander: My spirit needs more training than my legs."
+        ],
+        "text": [
+          "Centură Neagră Zander: Spiritul meu are nevoie de mai mult antrenament decât picioarele."
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Leah"
+        ],
+        "text": [
+          "Leah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Leah: The spirits whispered that you would come... They want to see you battle..."
+        ],
+        "text": [
+          "Maniac ocult Leah: Spiritele mi-au șoptit că vei veni... Vor să te vadă luptând..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Leah: The spirits are pleased with you..."
+        ],
+        "text": [
+          "Maniac ocult Leah: Spiritele sunt mulțumite de tine..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

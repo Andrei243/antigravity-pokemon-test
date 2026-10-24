@@ -1,0 +1,105 @@
+{
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Quadruplets! Every day is four times the fun. And four times the noise."
+        ],
+        "text": [
+          "Cvadruplete! Fiecare zi e de patru ori mai distractivă. Și de patru ori mai gălăgioasă."
+        ]
+      }
+    },
+    "gameboy_kid_4": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're going to enter a contest together, all four of us!"
+        ],
+        "text": [
+          "O să intrăm împreună într-un concurs, toți patru!"
+        ]
+      }
+    },
+    "gameboy_kid_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're blending berries into Pokéblocks. Mine always come out lumpy."
+        ],
+        "text": [
+          "Amestecăm boabe în Pokéblock-uri. Ale mele ies mereu cu cocoloașe."
+        ]
+      }
+    },
+    "gameboy_kid_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're practising for double battles. Two of us against the other two!"
+        ],
+        "text": [
+          "Ne exersăm pentru luptele duble. Doi contra doi!"
+        ]
+      }
+    },
+    "gameboy_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We swap stories about the trainers we've met. I've got the best ones!"
+        ],
+        "text": [
+          "Schimbăm povești despre antrenorii pe care i-am întâlnit. Eu le am pe cele mai bune!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

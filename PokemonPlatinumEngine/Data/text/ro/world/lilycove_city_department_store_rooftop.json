@@ -1,0 +1,69 @@
+{
+  "people": {
+    "man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From up here you can see the whole cove. On a clear day I swear I can see Mossdeep."
+        ],
+        "text": [
+          "De aici de sus se vede tot golfulețul. Într-o zi senină jur că văd Mossdeep."
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm so thirsty... The drinks machine's right there, but I've spent all my money downstairs."
+        ],
+        "text": [
+          "Mi-e tare sete... Automatul e chiar acolo, dar mi-am cheltuit toți banii la parter."
+        ]
+      }
+    },
+    "rooftop_sale_woman": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our clearance sale is over for today. Thank you!"
+        ],
+        "text": [
+          "Reducerile noastre s-au încheiat pe azi. Mulțumim!"
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

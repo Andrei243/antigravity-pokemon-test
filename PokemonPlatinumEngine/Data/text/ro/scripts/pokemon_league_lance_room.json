@@ -5,7 +5,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I've been waiting for you, {player}."
       ],
       "text": [
-        ""
+        "Te-am așteptat, {player}."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I knew that one day you would stand here. Ever since the Lake of Rage, I've wanted to see how far you would go."
       ],
       "text": [
-        ""
+        "Știam că într-o zi vei ajunge aici. Încă de la Lacul Furiei am vrut să văd cât de departe vei merge."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "We fought side by side once. Today I stand in your way, as the League's Champion should."
       ],
       "text": [
-        ""
+        "Am luptat umăr la umăr cândva. Azi îți stau în cale, așa cum se cuvine Campionului Ligii."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "My dragons have never been beaten in this room. Show me everything you have!"
       ],
       "text": [
-        ""
+        "Dragonii mei nu au fost niciodată învinși în camera asta. Arată-mi tot ce ai!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "...It's over. I've lost."
       ],
       "text": [
-        ""
+        "...S-a terminat. Am pierdut."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "You and your Pokémon have a bond I've rarely seen. You trusted each other, and that trust won through."
       ],
       "text": [
-        ""
+        "Tu și Pokémonii tăi aveți o legătură pe care rareori o văd. Aveți încredere unii în alții, iar încrederea asta a învins."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "As the Champion, I'm proud to say it: you are the new Champion of the Pokémon League!"
       ],
       "text": [
-        ""
+        "Ca Campion, spun cu mândrie: ești noul Campion al Ligii Pokémon!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Mary"
       ],
       "text": [
-        ""
+        "Mary"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Oh, wait! Wait for us, please!"
       ],
       "text": [
-        ""
+        "Oh, așteptați! Așteptați-ne, vă rog!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Mary"
       ],
       "text": [
-        ""
+        "Mary"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Is it over already? We've missed the whole thing! I'm Mary, from Pokémon Talk on the radio. I came to interview the new Champion!"
       ],
       "text": [
-        ""
+        "S-a terminat deja? Am ratat tot! Sunt Mary, de la Discuții Pokémon la radio. Am venit să iau un interviu noului Campion!"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Prof. Oak"
       ],
       "text": [
-        ""
+        "Profesorul Oak"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Calm yourself, Mary. {player}, you've won. I heard it from the doorway. Congratulations, Champion!"
       ],
       "text": [
-        ""
+        "Liniștește-te, Mary. {player}, ai câștigat. Am auzit de la ușă. Felicitări, Campionule!"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "When I handed you that Pokédex, I never dreamt you'd be standing here so soon. Your Pokémon trust you. That's the strength of a true trainer."
       ],
       "text": [
-        ""
+        "Când ți-am dat Pokédexul ăla, nu mi-am închipuit că vei fi aici atât de curând. Pokémonii tăi au încredere în tine. Asta e puterea unui adevărat antrenor."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "{player}, come with me. There is one room left, where the League keeps the names of its Champions."
       ],
       "text": [
-        ""
+        "{player}, vino cu mine. Mai e o singură cameră, unde Liga păstrează numele Campionilor ei."
       ]
     }
   ],
@@ -151,7 +151,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "Come, {player}. The Hall of Fame is through here."
       ],
       "text": [
-        ""
+        "Vino, {player}. Sala Faimei e pe aici."
       ]
     }
   ]

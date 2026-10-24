@@ -1,0 +1,167 @@
+{
+  "people": {
+    "trainer_fan_club_lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're the Pokémon Trainer Fan Club! We cheer for the best trainers in Hoenn."
+        ],
+        "text": [
+          "Suntem Clubul de Fani ai Antrenorilor Pokémon! Îi încurajăm pe cei mai buni antrenori din Hoenn."
+        ]
+      }
+    },
+    "trainer_fan_club_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone here has a favourite trainer. Mine changes every week!"
+        ],
+        "text": [
+          "Fiecare de aici are un antrenor preferat. Al meu se schimbă în fiecare săptămână!"
+        ]
+      }
+    },
+    "trainer_fan_club_pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you keep winning battles, maybe we'll be cheering for you one day."
+        ],
+        "text": [
+          "Dacă continui să câștigi lupte, poate te vom încuraja și pe tine într-o zi."
+        ]
+      }
+    },
+    "trainer_fan_club_little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to be a famous trainer, so people make a fan club for me!"
+        ],
+        "text": [
+          "Vreau să fiu un antrenor faimos, ca să-mi facă lumea un club de fani!"
+        ]
+      }
+    },
+    "trainer_fan_club_ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard there's a trainer going round beating every Gym Leader. That's who I'm a fan of!"
+        ],
+        "text": [
+          "Am auzit că un antrenor merge din Arenă în Arenă și bate toți Liderii. Pe ăla îl admir eu!"
+        ]
+      }
+    },
+    "trainer_fan_club_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My favourite trainer has the coolest Pokémon. Don't you agree?"
+        ],
+        "text": [
+          "Antrenorul meu preferat are cei mai tari Pokémoni. Nu crezi și tu?"
+        ]
+      }
+    },
+    "trainer_fan_club_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A trainer who's kind to Pokémon is the best kind of trainer. That's who I cheer for."
+        ],
+        "text": [
+          "Un antrenor bun cu Pokémonii e cel mai bun fel de antrenor. Pe ăla îl încurajez."
+        ]
+      }
+    },
+    "trainer_fan_club_expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been a member since this club began. Trainers come and go, but we cheer them all."
+        ],
+        "text": [
+          "Sunt membru de când a început clubul. Antrenorii vin și pleacă, dar îi încurajăm pe toți."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Interviewer"
+        ],
+        "text": [
+          "Intervievator"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm writing about the Fan Club's favourite trainers. Maybe you'll be in my next story!"
+        ],
+        "text": [
+          "Scriu despre antrenorii preferați ai Clubului de Fani. Poate vei fi în următoarea mea poveste!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

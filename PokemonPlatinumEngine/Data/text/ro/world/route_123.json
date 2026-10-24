@@ -1,0 +1,456 @@
+{
+  "people": {
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Wendy"
+        ],
+        "text": [
+          "Wendy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Wendy: My Pokémon and I have trained on every route in Hoenn. Ready to see the result?"
+        ],
+        "text": [
+          "Antrenoare As Wendy: Pokémonii mei și cu mine ne-am antrenat pe fiecare rută din Hoenn. Ești gata să vezi rezultatul?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Wendy: Every route, and I still lost. Time for another lap."
+        ],
+        "text": [
+          "Antrenoare As Wendy: Pe fiecare rută și tot am pierdut. E timpul pentru încă un tur."
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Braxton"
+        ],
+        "text": [
+          "Braxton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Braxton: Five Pokémon, five types, no weak spots. Try and find one!"
+        ],
+        "text": [
+          "Antrenor As Braxton: Cinci Pokémoni, cinci tipuri, nicio slăbiciune. Încearcă să găsești una!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Braxton: You found one. You found several, actually."
+        ],
+        "text": [
+          "Antrenor As Braxton: Ai găsit una. De fapt, ai găsit mai multe."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Violet"
+        ],
+        "text": [
+          "Violet"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Violet: Smell the flowers along this road! My Pokémon are just as sweet. And just as thorny!"
+        ],
+        "text": [
+          "Doamna Aromelor Violet: Miroase florile de pe drumul ăsta! Pokémonii mei sunt la fel de dulci. Și la fel de țepoși!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Violet: Oh dear. My flowers have wilted."
+        ],
+        "text": [
+          "Doamna Aromelor Violet: Vai de mine. Florile mele s-au ofilit."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Miu & Yuki"
+        ],
+        "text": [
+          "Miu & Yuki"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Miu & Yuki: We do everything together, so we'll battle together too!"
+        ],
+        "text": [
+          "Gemene Miu & Yuki: Facem totul împreună, așa că vom lupta și împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Miu & Yuki: We lost together, too..."
+        ],
+        "text": [
+          "Gemene Miu & Yuki: Am pierdut și noi împreună..."
+        ]
+      }
+    },
+    "twin_2": {
+      "name": {
+        "en": [
+          "Miu & Yuki"
+        ],
+        "text": [
+          "Miu & Yuki"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Miu & Yuki: We do everything together, so we'll battle together too!"
+        ],
+        "text": [
+          "Gemene Miu & Yuki: Facem totul împreună, așa că vom lupta și împreună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Miu & Yuki: We lost together, too..."
+        ],
+        "text": [
+          "Gemene Miu & Yuki: Am pierdut și noi împreună..."
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          "Cameron"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Cameron: I can see the future. In it, you lose. Shall we make it come true?"
+        ],
+        "text": [
+          "Medium Cameron: Văd viitorul. În el, pierzi. Să-l facem să se împlinească?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Cameron: The future was cloudy, it seems."
+        ],
+        "text": [
+          "Medium Cameron: Se pare că viitorul era înnorat."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Jacki"
+        ],
+        "text": [
+          "Jacki"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Jacki: My Pokémon can bend spoons with their minds. What can yours do?"
+        ],
+        "text": [
+          "Medium Jacki: Pokémonii mei pot îndoi linguri cu mintea. Ce pot ai tăi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Jacki: Yours can win. I see."
+        ],
+        "text": [
+          "Medium Jacki: Ai tăi pot câștiga. Înțeleg."
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Kindra"
+        ],
+        "text": [
+          "Kindra"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Kindra: The ghosts of Mt. Pyre follow me down the road... They want to battle you..."
+        ],
+        "text": [
+          "Maniac ocult Kindra: Fantomele de pe Muntele Pyre mă urmează pe drum... Vor să lupte cu tine..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Kindra: The ghosts are going home now..."
+        ],
+        "text": [
+          "Maniac ocult Kindra: Fantomele se întorc acasă acum..."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Jonas"
+        ],
+        "text": [
+          "Jonas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Jonas: You walked right past me! I was hiding as a tree. Now, battle!"
+        ],
+        "text": [
+          "Băiat ninja Jonas: Ai trecut chiar pe lângă mine! Eram ascuns ca un copac. Acum, luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Jonas: I should have stayed a tree."
+        ],
+        "text": [
+          "Băiat ninja Jonas: Ar fi trebuit să rămân copac."
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Kayley"
+        ],
+        "text": [
+          "Kayley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Kayley: Rain or shine, my parasol and I are ready. And so is my Castform!"
+        ],
+        "text": [
+          "Doamna cu umbrelă Kayley: Ploaie sau soare, umbrela mea și cu mine suntem pregătite. Și Castform-ul meu la fel!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Kayley: Clouds have rolled over my sunny mood."
+        ],
+        "text": [
+          "Doamna cu umbrelă Kayley: Norii mi-au acoperit buna dispoziție."
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Ed"
+        ],
+        "text": [
+          "Ed"
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Ed: Zangoose and Seviper together! Do you know how hard that was? Look!"
+        ],
+        "text": [
+          "Colecționar Ed: Zangoose și Seviper împreună! Știi cât de greu a fost? Uită-te!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Ed: At least my collection's still the best."
+        ],
+        "text": [
+          "Colecționar Ed: Măcar colecția mea tot cea mai bună e."
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Fernando"
+        ],
+        "text": [
+          "Fernando"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Fernando: My guitar and my Pokémon make the loudest band on Route 123! Let's rock!"
+        ],
+        "text": [
+          "Chitarist Fernando: Chitara mea și Pokémonii mei fac cea mai zgomotoasă trupă de pe Ruta 123! Hai la rock!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Fernando: My strings snapped. My spirit, too."
+        ],
+        "text": [
+          "Chitarist Fernando: Mi s-au rupt corzile. Și moralul."
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Alberto"
+        ],
+        "text": [
+          "Alberto"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Alberto: My birds have flown all the way here from the sea. They're ready for anything!"
+        ],
+        "text": [
+          "Crescător de păsări Alberto: Păsările mele au zburat până aici de la mare. Sunt gata de orice!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Alberto: My birds are tired from the flight, that's all."
+        ],
+        "text": [
+          "Crescător de păsări Alberto: Păsările mele sunt obosite de zbor, atât."
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Fredrick"
+        ],
+        "text": [
+          "Fredrick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Expert Fredrick: I've battled on this road since before you were born. Let's see what the young can do!"
+        ],
+        "text": [
+          "Expert Fredrick: Lupt pe drumul ăsta de dinainte să te naști. Să vedem ce pot cei tineri!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Expert Fredrick: The young can do plenty, it seems."
+        ],
+        "text": [
+          "Expert Fredrick: Cei tineri pot destule, se pare."
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Jazmyn"
+        ],
+        "text": [
+          "Jazmyn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Jazmyn: My Absol and I are never wrong about trouble. Today, the trouble is you!"
+        ],
+        "text": [
+          "Antrenoare As Jazmyn: Absol-ul meu și cu mine nu ne înșelăm niciodată în privința necazurilor. Azi, necazul ești tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Jazmyn: We were right. You were trouble."
+        ],
+        "text": [
+          "Antrenoare As Jazmyn: Am avut dreptate. Ai fost un necaz."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Davis"
+        ],
+        "text": [
+          "Davis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Davis: I caught a Pinsir in the Safari Zone! Want to see how strong it is?"
+        ],
+        "text": [
+          "Vânător de insecte Davis: Am prins un Pinsir în Zona Safari! Vrei să vezi cât de puternic e?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Davis: It's strong. Just not as strong as yours."
+        ],
+        "text": [
+          "Vânător de insecte Davis: E puternic. Doar că nu atât de puternic ca al tău."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route123_EventScript_RouteSignMtPyre": {
+      "en": [
+        "Route 123\nEast: Mt. Pyre and Route 122"
+      ],
+      "text": [
+        "Ruta 123\nEst: Muntele Pyre și Ruta 122"
+      ]
+    },
+    "Route123_EventScript_RouteSign": {
+      "en": [
+        "Route 123\nWest: Route 118"
+      ],
+      "text": [
+        "Ruta 123\nVest: Ruta 118"
+      ]
+    },
+    "Route123_EventScript_BerryMastersHouseSign": {
+      "en": [
+        "The Berry Master's House\nWhere every berry is a treasure"
+      ],
+      "text": [
+        "Casa Maestrului Boabelor\nUnde fiecare boabă e o comoară"
+      ]
+    }
+  }
+}

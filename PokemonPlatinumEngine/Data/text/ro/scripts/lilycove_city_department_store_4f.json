@@ -1,0 +1,54 @@
+{
+  "ClerkLeft": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! These machines teach the strongest attacks there are."
+      ],
+      "text": [
+        "Bine ai venit! Aparatele astea învață cele mai puternice atacuri care există."
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ],
+  "ClerkRight": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! These machines teach moves that protect your team."
+      ],
+      "text": [
+        "Bine ai venit! Aparatele astea învață mișcări care îți apără echipa."
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ]
+}

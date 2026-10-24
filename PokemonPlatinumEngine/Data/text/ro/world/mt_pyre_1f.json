@@ -1,0 +1,51 @@
+{
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Zigzagoon rests here. Every year I come back and tell it how everyone has been."
+        ],
+        "text": [
+          "Zigzagoon-ul meu se odihnește aici. În fiecare an revin și îi povestesc cum le-a mers tuturor."
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say if you listen closely up here, you can hear the Pokémon who are gone. I like to think it's true."
+        ],
+        "text": [
+          "Se zice că dacă asculți atent aici sus, îi auzi pe Pokémonii care nu mai sunt. Îmi place să cred că e adevărat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

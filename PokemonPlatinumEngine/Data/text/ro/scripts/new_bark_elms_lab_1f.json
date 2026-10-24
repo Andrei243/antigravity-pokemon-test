@@ -357,7 +357,7 @@
         "Prof. Elm"
       ],
       "text": [
-        ""
+        "Profesorul Elm"
       ]
     },
     {
@@ -365,7 +365,7 @@
         "{player}! I heard the news from Blackthorn City. Eight Badges! I knew you could do it!"
       ],
       "text": [
-        ""
+        "{player}! Am auzit vestea din Blackthorn City. Opt Insigne! Știam că poți!"
       ]
     },
     {
@@ -373,7 +373,7 @@
         "You've seen nearly all of Johto now. There's only one place left for a trainer like you: the Pokémon League."
       ],
       "text": [
-        ""
+        "Ai văzut aproape tot Johto acum. A mai rămas un singur loc pentru un antrenor ca tine: Liga Pokémon."
       ]
     },
     {
@@ -381,7 +381,7 @@
         "I want you to take this with you. I was given it for my research, but it belongs with someone who will use it well."
       ],
       "text": [
-        ""
+        "Vreau să iei asta cu tine. Mi-a fost dată pentru cercetare, dar îi aparține cuiva care o va folosi bine."
       ]
     },
     {
@@ -389,7 +389,7 @@
         "It's the Master Ball, the finest ball there is. It will catch any Pokémon at all, without fail."
       ],
       "text": [
-        ""
+        "E Master Ball, cea mai bună minge care există. Prinde orice Pokémon, fără greș."
       ]
     },
     {
@@ -397,7 +397,7 @@
         "The League is reached by Route 27, east of here across the water, and then Victory Road. Good luck, {player}!"
       ],
       "text": [
-        ""
+        "La Ligă se ajunge pe Ruta 27, la est de aici, peste apă, apoi prin Drumul Victoriei. Succes, {player}!"
       ]
     }
   ],
@@ -463,7 +463,7 @@
         "Route 27 is east of town, across the water. Victory Road and the League are beyond it. I'm cheering for you!"
       ],
       "text": [
-        ""
+        "Ruta 27 e la est de oraș, peste apă. Drumul Victoriei și Liga sunt dincolo de ea. Țin pumnii pentru tine!"
       ]
     },
     {
@@ -471,7 +471,7 @@
         "The Champion of the Pokémon League, from my own lab! I still can't quite believe it."
       ],
       "text": [
-        ""
+        "Campionul Ligii Pokémon, din propriul meu laborator! Încă nu-mi vine să cred."
       ]
     },
     {
@@ -479,7 +479,7 @@
         "If you're thinking of going further, the ship at Olivine's port sails for Hoenn. Champions only, they tell me."
       ],
       "text": [
-        ""
+        "Dacă te gândești să mergi mai departe, corabia din portul Olivine pleacă spre Hoenn. Doar pentru Campioni, mi se spune."
       ]
     }
   ],

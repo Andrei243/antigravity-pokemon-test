@@ -1,0 +1,165 @@
+{
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "mt_pyre_summit_old_lady": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    },
+    "mt_pyre_summit_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          "Archie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Archie: The sea will cover everything. You just wait."
+        ],
+        "text": [
+          "Archie: Marea va acoperi totul. Doar așteaptă."
+        ]
+      }
+    },
+    "mt_pyre_summit_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          "Maxie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maxie: ..."
+        ],
+        "text": [
+          "Maxie: ..."
+        ]
+      }
+    },
+    "mt_pyre_summit_grunt_1": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: The boss is up top, and nobody bothers the boss. Especially not you!"
+        ],
+        "text": [
+          "Aqua Grunt: Șeful e sus și pe șef nu-l deranjează nimeni. Mai ales nu tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Fine, you won. You still shouldn't be up here."
+        ],
+        "text": [
+          "Aqua Grunt: Bine, ai câștigat. Tot nu ar trebui să fii aici sus."
+        ]
+      }
+    },
+    "mt_pyre_summit_grunt_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: We came up here for the orb, and we're not leaving without it!"
+        ],
+        "text": [
+          "Aqua Grunt: Am venit aici pentru glob și nu plecăm fără el!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Ugh. Lost to a kid on a mountain full of ghosts."
+        ],
+        "text": [
+          "Aqua Grunt: Ugh. Am pierdut în fața unui copil pe un munte plin de fantome."
+        ]
+      }
+    },
+    "mt_pyre_summit_grunt_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: It's so foggy up here I can barely see you. Doesn't matter, I'll still beat you!"
+        ],
+        "text": [
+          "Aqua Grunt: E atâta ceață aici sus că abia te văd. N-are importanță, tot te bat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: I didn't see that coming, either."
+        ],
+        "text": [
+          "Aqua Grunt: Nici asta n-am văzut-o venind."
+        ]
+      }
+    },
+    "mt_pyre_summit_grunt_4": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Did Team Magma send you? No? Then you're just in the way!"
+        ],
+        "text": [
+          "Aqua Grunt: Te-a trimis Echipa Magma? Nu? Atunci doar ești în drum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Whoever sent you, you're tough."
+        ],
+        "text": [
+          "Aqua Grunt: Oricine te-a trimis, ești puternic."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

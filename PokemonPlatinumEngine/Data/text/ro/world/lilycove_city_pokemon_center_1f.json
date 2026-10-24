@@ -1,0 +1,69 @@
+{
+  "people": {
+    "lilycove_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "How many kinds of Pokémon are there in the whole world? I want to see every single one!"
+        ],
+        "text": [
+          "Câte feluri de Pokémoni există în toată lumea? Vreau să-i văd pe fiecare!"
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard a gang of rotten scoundrels has a hideout somewhere round here. Nobody's seen them come or go, though."
+        ],
+        "text": [
+          "Am auzit că o bandă de ticăloși are o ascunzătoare pe undeva prin zonă. Nimeni nu i-a văzut venind sau plecând, totuși."
+        ]
+      }
+    },
+    "lilycove_lady": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          "Doamna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lilycove is a city of contests and art. I'm always looking for a Pokémon with real flair. Come and talk to me another time!"
+        ],
+        "text": [
+          "Lilycove e un oraș al concursurilor și al artei. Caut mereu un Pokémon cu adevărat stilat. Vino să vorbim altă dată!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

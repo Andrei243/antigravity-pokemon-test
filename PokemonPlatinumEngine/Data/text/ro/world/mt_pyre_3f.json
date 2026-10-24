@@ -1,0 +1,83 @@
+{
+  "people": {
+    "psychic_m": {
+      "name": {
+        "en": [
+          "William"
+        ],
+        "text": [
+          "William"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic William: I sense a powerful will in you. Let me test it with my mind!"
+        ],
+        "text": [
+          "Medium William: Simt o voință puternică în tine. Lasă-mă s-o pun la încercare cu mintea mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic William: My mind was no match for your will."
+        ],
+        "text": [
+          "Medium William: Mintea mea n-a avut nicio șansă în fața voinței tale."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Kayla"
+        ],
+        "text": [
+          "Kayla"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Kayla: I saw you coming in a dream last night. In the dream, I won."
+        ],
+        "text": [
+          "Medium Kayla: Te-am văzut venind într-un vis aseară. În vis, am câștigat eu."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Kayla: Dreams don't always come true, I suppose."
+        ],
+        "text": [
+          "Medium Kayla: Visele nu se împlinesc mereu, cred."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Gabrielle"
+        ],
+        "text": [
+          "Gabrielle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Breeder Gabrielle: I raised these six from Eggs. They're all grown up and ready to battle!"
+        ],
+        "text": [
+          "Crescător Pokémon Gabrielle: I-am crescut pe cei șase din Ouă. Sunt mari acum și gata de luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Breeder Gabrielle: They did their best. I'm proud of them anyway."
+        ],
+        "text": [
+          "Crescător Pokémon Gabrielle: Au făcut tot ce-au putut. Sunt mândră de ei oricum."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

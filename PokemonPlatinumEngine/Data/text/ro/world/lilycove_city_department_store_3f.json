@@ -1,0 +1,79 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "woman_3_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "running_triathlete_m": {
+      "name": {
+        "en": [
+          "Triathlete"
+        ],
+        "text": [
+          "Triatlonist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Protein, Iron, Carbos... I give my Pokémon a balanced diet, same as I eat myself!"
+        ],
+        "text": [
+          "Proteină, Fier, Carbos... Le dau Pokémonilor mei o dietă echilibrată, ca mine!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "X Attack and X Speed in battle can turn a losing fight around. Trust me, I've done it!"
+        ],
+        "text": [
+          "Atac X și Viteză X în luptă pot întoarce o luptă pierdută. Crede-mă, am făcut-o!"
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vitamins make a Pokémon stronger for good. They cost a lot, but they're worth every coin."
+        ],
+        "text": [
+          "Vitaminele îi fac pe Pokémoni mai puternici pentru totdeauna. Costă mult, dar merită fiecare bănuț."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

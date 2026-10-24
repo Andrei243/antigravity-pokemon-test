@@ -1,0 +1,79 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "woman_3_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that knows Protect can hold on for a turn while its partner does the work. Very elegant."
+        ],
+        "text": [
+          "Un Pokémon care știe Protecție poate rezista o tură cât timp partenerul face treaba. Foarte elegant."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fire Blast, Thunder, Blizzard... Such powerful moves! But they don't always hit, you know."
+        ],
+        "text": [
+          "Foc Năprasnic, Tunet, Viscol... Mișcări puternice! Dar nu lovesc mereu, să știi."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hyper Beam is the strongest move there is! My Pokémon just needs a rest afterwards."
+        ],
+        "text": [
+          "Hiper Rază e cea mai puternică mișcare! Pokémonul meu doar că trebuie să se odihnească după."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

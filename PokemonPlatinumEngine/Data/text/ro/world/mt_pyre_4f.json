@@ -1,0 +1,31 @@
+{
+  "people": {
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Tasha"
+        ],
+        "text": [
+          "Tasha"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Tasha: Hehehe... Do you want to join the spirits of this tower? Let's battle and find out..."
+        ],
+        "text": [
+          "Maniac ocult Tasha: Hehehe... Vrei să te alături spiritelor turnului ăstuia? Să luptăm și să aflăm..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Tasha: The spirits don't want you yet, it seems..."
+        ],
+        "text": [
+          "Maniac ocult Tasha: Se pare că spiritele nu te vor încă..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

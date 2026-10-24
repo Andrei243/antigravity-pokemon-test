@@ -1,0 +1,268 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Fancy meeting you here. I came to Lilycove to stock up at the Department Store."
+      ],
+      "text": [
+        "{player}! Ce coincidență! Am venit în Lilycove să-mi fac provizii la Magazinul Universal."
+      ]
+    },
+    {
+      "en": [
+        "But now that you're here... how about a battle? Let's see how far our teams have come!"
+      ],
+      "text": [
+        "Dar acum că ești aici... ce zici de o luptă? Să vedem cât de departe au ajuns echipele noastre!"
+      ]
+    },
+    {
+      "en": [
+        "Changed your mind yet? Come on, battle me!"
+      ],
+      "text": [
+        "Te-ai răzgândit? Hai, luptă-te cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "Great! I won't go easy on you, so don't hold back either!"
+      ],
+      "text": [
+        "Grozav! N-o să mă îndur de tine, așa că nici tu să nu te reții!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Whew... You really are something, {player}. I think I'll head home to Littleroot for a while and help out at the lab."
+      ],
+      "text": [
+        "Uf... Chiar ești ceva, {player}. Cred că mă duc acasă, în Littleroot, o vreme și ajut la laborator."
+      ]
+    },
+    {
+      "en": [
+        "You're going after every Badge in Hoenn, aren't you? Then I'll be cheering for you. Don't let me down!"
+      ],
+      "text": [
+        "Mergi după toate Insignele din Hoenn, nu-i așa? Atunci te voi încuraja. Să nu mă dezamăgești!"
+      ]
+    },
+    {
+      "en": [
+        "Aw, really? Fine. I'll be right here if you change your mind."
+      ],
+      "text": [
+        "Ah, serios? Bine. Sunt chiar aici dacă te răzgândești."
+      ]
+    }
+  ],
+  "Wailmer": [
+    {
+      "en": [
+        "A Wailmer is floating in the water, blocking the way. It doesn't look like it's going to move."
+      ],
+      "text": [
+        "Un Wailmer plutește în apă și blochează calea. Nu pare că o să se miște."
+      ]
+    }
+  ],
+  "WailmerGrunt": [
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        "Aqua Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Watch my Wailmer leap! They're the pride of Team Aqua. Nobody gets past them out to sea."
+      ],
+      "text": [
+        "Uită-te cum sar Wailmerii mei! Sunt mândria Echipei Aqua. Nimeni nu trece de ei spre larg."
+      ]
+    },
+    {
+      "en": [
+        "Hey, what are you staring at? Clear off, you're putting them off their training!"
+      ],
+      "text": [
+        "Hei, la ce te holbezi? Pleacă, îi distragi de la antrenament!"
+      ]
+    },
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        "Aqua Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Leap, Wailmer, leap! Higher! Splash them all!"
+      ],
+      "text": [
+        "Sari, Wailmer, sari! Mai sus! Stropește-i pe toți!"
+      ]
+    }
+  ],
+  "Sailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Team Aqua's been training Wailmer right in the channel. No boat can get out east past them."
+      ],
+      "text": [
+        "Echipa Aqua își antrenează Wailmerii chiar în canal. Nicio barcă nu poate ieși spre est pe lângă ei."
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        "Fata"
+      ]
+    },
+    {
+      "en": [
+        "There's a strange cave over in the cove. People in blue and white keep going in and out of it."
+      ],
+      "text": [
+        "E o peșteră ciudată acolo, în golfuleț. Niște oameni în albastru și alb intră și ies mereu din ea."
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Somebody stole my Pokémon! I just know it was those Team Aqua people. What do I do?"
+      ],
+      "text": [
+        "Mi-a furat cineva Pokémonul! Sunt sigură că au fost oamenii ăia de la Echipa Aqua. Ce mă fac?"
+      ]
+    }
+  ],
+  "OldManCove": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "That cove used to be a quiet cavern. Then Team Aqua moved in and dug it out into some kind of base."
+      ],
+      "text": [
+        "Golfulețul ăla era o peșteră liniștită. Apoi a venit Echipa Aqua și a transformat-o într-un fel de bază."
+      ]
+    }
+  ],
+  "SchoolKid": [
+    {
+      "en": [
+        "School Kid"
+      ],
+      "text": [
+        "Școlărița"
+      ]
+    },
+    {
+      "en": [
+        "Do you know about the Berry Blender? You put berries in and spin them together."
+      ],
+      "text": [
+        "Știi ce e Mixerul de Boabe? Pui boabe înăuntru și le învârți împreună."
+      ]
+    },
+    {
+      "en": [
+        "Then you know the faster everyone spins, the better the Pokéblocks come out!"
+      ],
+      "text": [
+        "Atunci știi că cu cât se învârt toți mai repede, cu atât ies Pokéblock-urile mai bune!"
+      ]
+    },
+    {
+      "en": [
+        "You put berries in and everyone spins together. Out come Pokéblocks, treats that make Pokémon shine in contests."
+      ],
+      "text": [
+        "Pui boabe înăuntru și se învârt toți împreună. Ies Pokéblock-uri, gustări care îi fac pe Pokémoni să strălucească la concursuri."
+      ]
+    }
+  ],
+  "BerryGentleman": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        "Gentlemanul"
+      ]
+    },
+    {
+      "en": [
+        "Ah, a trainer. A berry suits a trainer, I always say. Here, take one with my compliments."
+      ],
+      "text": [
+        "A, un antrenor. O boabă se potrivește unui antrenor, zic mereu. Ia una, cu complimentele mele."
+      ]
+    },
+    {
+      "en": [
+        "Because you're a trainer, you see. Do come back tomorrow."
+      ],
+      "text": [
+        "Pentru că ești antrenor, vezi tu. Mai vino și mâine."
+      ]
+    },
+    {
+      "en": [
+        "Berries are lovely, but Pokéblocks made from them suit Pokémon even better."
+      ],
+      "text": [
+        "Boabele sunt minunate, dar Pokéblock-urile făcute din ele li se potrivesc Pokémonilor și mai bine."
+      ]
+    }
+  ]
+}
