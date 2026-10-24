@@ -40,8 +40,12 @@ internal static class NatureArt
     }
 
     /// <summary>Tall grass: 32x16, two clumps of five blades each. Repeats along a row.</summary>
-    public static PixelCanvas TallGrass()
+    public static PixelCanvas TallGrass() => TallGrass(null);
+
+    /// <summary>Tall grass in a season's shades (plan 22 · U3; the field's own with none).</summary>
+    public static PixelCanvas TallGrass(SeasonPalette? season)
     {
+        var shades = season?.TallGrass ?? TallShades;
         var c = new PixelCanvas(32, 16);
         (int Base, int Tip, int Height)[][] clumps =
         {
@@ -49,7 +53,7 @@ internal static class NatureArt
             new[] { (2, 0, 8), (13, 15, 11), (5, 4, 12), (10, 11, 15), (7, 7, 14) }
         };
         for (int k = 0; k < clumps.Length; k++)
-            foreach (var (b, tip, height) in clumps[k]) Blade(c, k * 16, b, tip, height, TallShades, 2, 4);
+            foreach (var (b, tip, height) in clumps[k]) Blade(c, k * 16, b, tip, height, shades, 2, 4);
         return c;
     }
 
@@ -91,23 +95,27 @@ internal static class NatureArt
     }
 
     /// <summary>A lawn tuft: 16x12, four short blades in the lawn's shades.</summary>
-    public static PixelCanvas LawnTuft()
+    public static PixelCanvas LawnTuft() => LawnTuft(null);
+
+    /// <summary>A lawn tuft in a season's shades (plan 22 · U3; the field's own with none).</summary>
+    public static PixelCanvas LawnTuft(SeasonPalette? season)
     {
+        var shades = season?.Tufts ?? LawnShades;
         var c = new PixelCanvas(16, 12);
         foreach (var (b, tip, height) in new[] { (5, 2, 7), (10, 13, 8), (7, 6, 10), (8, 9, 11) })
-            Blade(c, 0, b, tip, height, LawnShades, 1, 3);
+            Blade(c, 0, b, tip, height, shades, 1, 3);
         return c;
     }
 
     /// <summary>Flowers: three 16x16 frames side by side (white, red, yellow), each a stem, two leaves and a blossom.</summary>
-    public static PixelCanvas Flowers()
+    public static PixelCanvas Flowers() => Flowers(null);
+
+    /// <summary>Flowers in a season's three kinds (plan 22 · U3; the field's own white, red and yellow with none).</summary>
+    public static PixelCanvas Flowers(SeasonPalette? season)
     {
         var c = new PixelCanvas(48, 16);
         var stem = Rgb(60, 146, 76);
-        (Color Petal, Color Shade)[] kinds =
-        {
-            (Rgb(252, 252, 252), Rgb(200, 214, 236)), (Rgb(236, 84, 96), Rgb(186, 56, 72)), (Rgb(250, 210, 76), Rgb(214, 160, 48))
-        };
+        var kinds = (season ?? SeasonPalette.Default).Flowers;
         for (int k = 0; k < kinds.Length; k++)
         {
             int ox = k * 16;

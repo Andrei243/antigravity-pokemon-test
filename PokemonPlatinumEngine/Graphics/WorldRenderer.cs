@@ -42,13 +42,27 @@ public sealed class WorldRenderer
     private MapScene GetScene(Map map)
     {
         string key = map.Name;
+        var season = map.IsIndoors ? null : SeasonOf(map);
+        if (scenes.TryGetValue(key, out var stale) && stale.Season != season)
+        {
+            scenes.Remove(key);
+            stale.Unload();
+        }
         if (!scenes.TryGetValue(key, out var scene))
         {
-            scene = MapScene.Build(map, shaders);
+            scene = MapScene.Build(map, shaders, season);
             scenes[key] = scene;
         }
         return scene;
     }
+
+    /// <summary>
+    /// The season a map's field is drawn in (plan 22 · U3; style guide, "Seasons"): null for a map of a region without
+    /// seasons, which is every map unless the engine says otherwise. The engine answers with the season it holds for
+    /// the field (<c>GameEngine.SeasonHere</c>'s), which moves only behind a fade; a scene baked in another season is let
+    /// go and made again as it is next drawn.
+    /// </summary>
+    public Func<Map, Core.Season?> SeasonOf { get; set; } = _ => null;
 
     // ------------------------------------------------------------------ streamed maps
 
@@ -71,6 +85,8 @@ public sealed class WorldRenderer
     // ready to draw (Scene)
     private sealed class ChunkSlot
     {
+        // The season it is baked in (plan 22 · U3)
+        public Core.Season? Season;
         public Task<MapScene.Prepared>? Pending;
         public Queue<Action>? Uploading;
         public MapScene? Arriving;
@@ -153,6 +169,8 @@ public sealed class WorldRenderer
             drawn.Add(GetScene(map));
             return drawn;
         }
+        // A season that has turned (Unova's, plan 22 · U3) makes every chunk of the map again
+        DropOtherSeasons(map);
 
         // Whatever of the block isn't there yet starts baking on other threads: first the chunks the camera
         // sees, which the frame will wait for, then the rest
@@ -163,7 +181,7 @@ public sealed class WorldRenderer
                 var window = MapScene.ChunkWindow(map, x, y);
                 if (pass == 0 && view != null && !InView(window, view.Value)) continue;
                 MapScene.Warm(map, window);
-                chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+                chunks[(map, x, y)] = StartBaking(map, window);
             }
         // ... and so does whatever lies past the block and reaches into a wider lens's view
         if (ahead is { } wide)
@@ -172,7 +190,7 @@ public sealed class WorldRenderer
                 if (chunks.ContainsKey((map, x, y))) continue;
                 var window = MapScene.ChunkWindow(map, x, y);
                 MapScene.Warm(map, window);
-                chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+                chunks[(map, x, y)] = StartBaking(map, window);
             }
 
         // What the camera sees must be there now: on arriving somewhere this waits for the bake and uploads it
@@ -229,12 +247,13 @@ public sealed class WorldRenderer
     internal void MakeReady(Map map, float focusX, float focusZ)
     {
         if (!map.IsStreamed) return;
+        DropOtherSeasons(map);
         foreach (var (x, y) in ChunksAround(map, focusX, focusZ, ChunkReach))
         {
             if (chunks.ContainsKey((map, x, y))) continue;
             var window = MapScene.ChunkWindow(map, x, y);
             MapScene.Warm(map, window);
-            chunks[(map, x, y)] = new ChunkSlot { Pending = Task.Run(() => Bake(map, window)) };
+            chunks[(map, x, y)] = StartBaking(map, window);
         }
     }
 
@@ -249,14 +268,41 @@ public sealed class WorldRenderer
     /// Bakes a chunk on a worker thread, which gives way while it does: the thread that draws, and the graphics
     /// driver's own, must not wait for a core behind nine chunks baking at once.
     /// </summary>
-    private static MapScene.Prepared Bake(Map map, TileWindow window)
+    private ChunkSlot StartBaking(Map map, TileWindow window)
+    {
+        var season = SeasonOf(map);
+        return new ChunkSlot { Season = season, Pending = Task.Run(() => Bake(map, window, season)) };
+    }
+
+    /// <summary>
+    /// Lets go of every chunk of a map baked in another season than the one it is drawn in now (plan 22 · U3): they
+    /// are made again as they come into view. The engine moves a season only behind a fade, so this is a load.
+    /// </summary>
+    private void DropOtherSeasons(Map map)
+    {
+        var season = SeasonOf(map);
+        List<(Map, int, int)>? stale = null;
+        foreach (var (key, slot) in chunks)
+            if (key.Map == map && slot.Season != season) (stale ??= new()).Add(key);
+        if (stale == null) return;
+        foreach (var key in stale)
+        {
+            var slot = chunks[key];
+            slot.Pending?.Wait();
+            slot.Arriving?.Unload();
+            slot.Scene?.Unload();
+            chunks.Remove(key);
+        }
+    }
+
+    private static MapScene.Prepared Bake(Map map, TileWindow window, Core.Season? season)
     {
         var thread = System.Threading.Thread.CurrentThread;
         var priority = thread.Priority;
         thread.Priority = System.Threading.ThreadPriority.BelowNormal;
         try
         {
-            return MapScene.Prepare(map, window);
+            return MapScene.Prepare(map, window, season);
         }
         finally
         {
@@ -478,6 +524,8 @@ public sealed class WorldRenderer
         climateMap = map;
         if (climateMix > 0f) rig = LightRig.Lerp(rig, ArtLook.InClimate(rig, climateNow, map.IsCave), climateMix);
         rig = ArtLook.Weathered(rig, weather);
+        // A season's light (Unova's, plan 22 · U3), in the open alone; every other region's map has none
+        if (!indoors && !map.IsCave && !map.IsVoid) rig = ArtLook.Seasoned(rig, SeasonOf(map));
         var light = rig.Light;
         weatherLight = Brightness(rig);
 

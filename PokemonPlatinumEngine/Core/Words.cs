@@ -40,6 +40,9 @@ public static class Words
         return Text.Of($"summary.month.{month}");
     }
 
+    /// <summary>A season's name (plan 22 · U3): Spring to Winter.</summary>
+    public static string Season(Season season) => Text.Of($"seasons.name.{season}");
+
     /// <summary>A day's name: Monday to Sunday.</summary>
     public static string Weekday(DateTime day) => Weekday(day.DayOfWeek);
 

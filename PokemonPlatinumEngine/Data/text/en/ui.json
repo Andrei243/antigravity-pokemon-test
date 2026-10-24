@@ -260,6 +260,14 @@
         "game": "As if {game} were in the console's second slot: once you have the National Pokédex, two of its Pokémon are met in the grass of the routes that have them."
       }
     },
+    "season": {
+      "label": "Season",
+      "value": { "Calendar": "Calendar" },
+      "help": {
+        "calendar": "Unova's seasons follow the calendar, a month each: spring in January, May and September, then summer, autumn and winter.",
+        "fixed": "Unova stays in this season. No other region has seasons."
+      }
+    },
     "controls": {
       "label": "Controls",
       "value": "Open",
@@ -845,6 +853,15 @@
     "skip": "SKIP",
     "safariBalls": "SAFARI BALLS",
     "steps": "STEPS"
+  },
+  "seasons": {
+    "name": { "Spring": "Spring", "Summer": "Summer", "Autumn": "Autumn", "Winter": "Winter" },
+    "arrived": {
+      "Spring": "Spring has come to {region}.",
+      "Summer": "Summer has come to {region}.",
+      "Autumn": "Autumn has come to {region}.",
+      "Winter": "Winter has come to {region}."
+    }
   },
   "alphPuzzle": {
     "title": "STONE PANEL",

@@ -126,8 +126,16 @@ internal static class PixelGround
     /// tiles round it are baked too and cut off, and the noise and the scattered details are seeded by the map's
     /// own tile coordinates (<paramref name="worldSeeds"/>), so the chunk meets its neighbours without a seam.
     /// </summary>
-    public static PixelCanvas Bake(Map map, TileWindow window, int pad, bool worldSeeds, out PixelCanvas? waterMask)
+    public static PixelCanvas Bake(Map map, TileWindow window, int pad, bool worldSeeds, out PixelCanvas? waterMask) =>
+        Bake(map, window, pad, worldSeeds, null, out waterMask);
+
+    /// <summary>
+    /// The same, in a season's look (plan 22 · U3; style guide, "Seasons"): the lawn, its tufts and flowers, the forest
+    /// floor and the tall grass's ground in the season's palette. No season, or spring, is the field's own, texel for texel.
+    /// </summary>
+    public static PixelCanvas Bake(Map map, TileWindow window, int pad, bool worldSeeds, Core.Season? season, out PixelCanvas? waterMask)
     {
+        var palette = SeasonPalette.For(season);
         int tw = window.Width + pad * 2, th = window.Height + pad * 2;
         int w = tw * T, h = th * T;
         // The map tile under the canvas's first tile
@@ -213,9 +221,9 @@ internal static class PixelGround
 
                 // Lawn: flat base with clean-edged lighter patches (in the Distortion World, its stone; in a cave, its
                 // floor, which shows where the rounded corners of the rock and of a way out leave a gap between them)
-                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : icy ? IceBase : dusty ? Sand : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? GrassLight : Grass;
-                if (forest != null && forest[i] >= 0.5f) col = Forest;
-                if (tall != null && tall[i] >= 0.5f) col = TallGround;
+                var col = nothing ? Kinds[^1].Base : cave ? CaveFloorBase : icy ? IceBase : dusty ? Sand : lawn.At(gx / 3.5f, gy / 3.5f) > 0.6f ? palette.GrassLight : palette.Grass;
+                if (forest != null && forest[i] >= 0.5f) col = palette.Forest;
+                if (tall != null && tall[i] >= 0.5f) col = palette.TallGround;
 
                 // Stepped contact shade along walls
                 float wall = walls != null ? walls[i] : 0f;
@@ -260,9 +268,9 @@ internal static class PixelGround
                 // What is scattered on a tile is chosen by the tile's seed, not by where it lies on this canvas
                 int sx = tx + seedX, sy = ty + seedY;
                 if (IsPath(tx, ty)) Pebbles(c, path!, w, ox, oy, sx, sy);
-                else if (t == TileType.FlowerGrass) Flowers(c, ox, oy, sx, sy);
+                else if (t == TileType.FlowerGrass) Flowers(c, palette, ox, oy, sx, sy);
                 else if (t is TileType.Grass or TileType.Tree or TileType.TreeTrunk or TileType.LedgeDown or TileType.LedgeLeft or TileType.LedgeRight
-                    && !IsBuilding(tx, ty)) Tufts(c, path, water, w, ox, oy, sx, sy);
+                    && !IsBuilding(tx, ty)) Tufts(c, palette, path, water, w, ox, oy, sx, sy);
                 else
                 {
                     for (int k = 0; k < Kinds.Length; k++)
@@ -662,8 +670,10 @@ internal static class PixelGround
     // ------------------------------------------------------------------ placed details
 
     /// <summary>Two or three little "v" tufts per tile on a jittered grid, dark with a light tip.</summary>
-    private static void Tufts(PixelCanvas c, float[]? path, float[]? water, int w, int ox, int oy, int tx, int ty)
+    private static void Tufts(PixelCanvas c, SeasonPalette season, float[]? path, float[]? water, int w, int ox, int oy, int tx, int ty)
     {
+        // The season's darkest and lightest shades of a tuft (the field's own Tuft and TuftTip with none)
+        Color Tuft = season.Tufts[0], TuftTip = season.Tufts[3];
         int count = 2 + (SoftCanvas.Rand(tx, ty, 21) < 0.4f ? 1 : 0);
         for (int k = 0; k < count; k++)
         {
@@ -693,16 +703,18 @@ internal static class PixelGround
     }
 
     /// <summary>Flower-bed tiles: four flowers with four petals, a centre and two leaves each.</summary>
-    private static void Flowers(PixelCanvas c, int ox, int oy, int tx, int ty)
+    private static void Flowers(PixelCanvas c, SeasonPalette season, int ox, int oy, int tx, int ty)
     {
         var leaf = new Color(60, 146, 76, 255);
+        // The season's three kinds: most of the first, a few of the second and third (white, red and yellow with none)
+        var kinds = season.Flowers;
         for (int k = 0; k < 4; k++)
         {
             int x = ox + 6 + (k % 2) * 14 + (int)(SoftCanvas.Rand(tx, ty, 41 + k) * 6);
             int y = oy + 6 + (k / 2) * 14 + (int)(SoftCanvas.Rand(tx, ty, 45 + k) * 6);
             float r = SoftCanvas.Rand(tx, ty, 49 + k);
-            var petal = r < 0.15f ? new Color(236, 84, 96, 255) : r < 0.25f ? new Color(250, 210, 76, 255) : new Color(252, 252, 252, 255);
-            var petalShade = r < 0.25f ? PixelCanvas.Shadow(petal, 0.25f) : new Color(200, 214, 236, 255);
+            var petal = r < 0.15f ? kinds[1].Petal : r < 0.25f ? kinds[2].Petal : kinds[0].Petal;
+            var petalShade = r < 0.25f ? PixelCanvas.Shadow(petal, 0.25f) : kinds[0].Shade;
             c.SetRaw(x - 2, y + 2, leaf); c.SetRaw(x + 2, y + 2, leaf); c.SetRaw(x, y + 2, leaf);
             c.SetRaw(x, y - 1, petal); c.SetRaw(x - 1, y, petal); c.SetRaw(x + 1, y, petal); c.SetRaw(x, y + 1, petalShade);
             c.SetRaw(x, y, new Color(250, 196, 64, 255));
