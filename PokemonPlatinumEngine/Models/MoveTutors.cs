@@ -161,6 +161,9 @@ public static class MoveTutors
         // FortreeCity_House2_EventScript_SleepTalkTutor; plan 21 · H6, part b), whose move is TM82's. The table serves
         // every region's tutor of one move once in a game, whatever its name says
         ["Sleep Talk"] = "Sleep Talk",
+        // The black belt of Mossdeep City (Emerald's MossdeepCity_EventScript_DynamicPunchTutor; plan 21 · H8): Dynamic
+        // Punch is no machine of Platinum's, and its nearest kin among them is Focus Punch (TM01), the other slow fist
+        ["Dynamic Punch"] = "Focus Punch",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

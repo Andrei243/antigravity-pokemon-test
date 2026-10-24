@@ -1,0 +1,31 @@
+{
+  "key": "mossdeep_city_pokemon_center_2f",
+  "index": 187,
+  "name": "Mossdeep City",
+  "matrix": 136,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 6, "to": "mossdeep_city_pokemon_center_1f", "toWarp": 2 },
+    { "x": 5, "z": 1, "to": "union_room", "toWarp": 0 },
+    { "x": 9, "z": 1, "to": "trade_center", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "teala", "looks": "teala", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Common_EventScript_UnionRoomAttendant" },
+    { "id": "teala_2", "looks": "teala", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Common_EventScript_WirelessClubAttendant" },
+    { "id": "teala_3", "looks": "teala", "movement": "look_south", "x": 10, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Common_EventScript_DirectCornerAttendant" },
+    { "id": "mystery_gift_man", "looks": "mystery_gift_man", "movement": "look_south", "x": 1, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN", "script": "CableClub_EventScript_MysteryGiftMan" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "wander_west_and_east", "x": 11, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_PokemonCenter_2F_EventScript_Woman5" }
+  ],
+  "signs": [],
+  "triggers": []
+}

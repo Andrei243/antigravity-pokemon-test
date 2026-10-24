@@ -1864,6 +1864,7 @@ script HoennNewGame
   call HoennChapterSevenC
   call HoennChapterEight
   call HoennChapterEightB
+  call HoennChapterNine
   return
 
 
@@ -2098,6 +2099,28 @@ script HoennChapterEightB
   setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
   setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
   setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
+  return
+
+
+# What a new game of Emerald sets for the ninth stretch, Mossdeep City (plan 21 · H8, part a), as Emerald's own new game
+# sets it: Team Magma before the Space Center and on its two floors until the Mind Badge, Steven upstairs in the Space
+# Center until then (downstairs he stands from the start), and in Steven's house Steven himself until the Space Center
+# is saved, the Beldum's ball and his letter until the Hall of Fame (plan 21 · H9), and Mr. Briney at Stern's shipyard
+# in Slateport until the Mind Badge, where he comes to help Dock (H3 had left him there). FLAG_HOENN_CHAPTER_NINE, a flag of
+# ours, says it has run. HoennNewGame calls it; a save from before it was written runs it from Mossdeep City's own
+# arrival script, the only way to the city and its rooms, so no story version is raised for it. It may only set flags
+# and variables, and ends in return.
+script HoennChapterNine
+  setflag FLAG_HOENN_CHAPTER_NINE
+  setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+  setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+  setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
+  if flag FLAG_DEFEATED_MOSSDEEP_GYM return
+  setflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
   return
 
 

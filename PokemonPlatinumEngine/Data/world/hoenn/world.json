@@ -210,9 +210,29 @@
     { "name": "AquaHideout_1F", "matrix": 210, "area": "aqua_hideout_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "AquaHideout_B1F", "matrix": 211, "area": "aqua_hideout_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "AquaHideout_B2F", "matrix": 212, "area": "aqua_hideout_b2f", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H8, part a: Mossdeep City's rooms (the Gym, whose switches turn the people standing on its coloured
+    // arrows, world.json's puzzle MossdeepTiles; the Pokémon Center, the Mart, Steven's house, the Space Center's two
+    // floors and four houses: the Game Corner, Emerald's room of link games, stays shut) and the treasure hunter's
+    // house on Route 124
+    { "name": "MossdeepCity_Gym", "matrix": 132, "area": "mossdeep_city_gym", "trees": "Round", "setting": "Indoors", "puzzle": "MossdeepTiles" },
+    { "name": "MossdeepCity_House1", "matrix": 133, "area": "mossdeep_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_House2", "matrix": 134, "area": "mossdeep_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_PokemonCenter_1F", "matrix": 135, "area": "mossdeep_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_PokemonCenter_2F", "matrix": 136, "area": "mossdeep_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_Mart", "matrix": 137, "area": "mossdeep_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_House3", "matrix": 138, "area": "mossdeep_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_StevensHouse", "matrix": 139, "area": "mossdeep_city_stevens_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_House4", "matrix": 140, "area": "mossdeep_city_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_SpaceCenter_1F", "matrix": 141, "area": "mossdeep_city_space_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MossdeepCity_SpaceCenter_2F", "matrix": 142, "area": "mossdeep_city_space_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route124_DivingTreasureHuntersHouse", "matrix": 460, "area": "route_124_diving_treasure_hunters_house", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
-    // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
-    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
+    // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
+    // plan 21 · H8 (128's, with the Seafloor Cavern's way in, waits for part b)
+    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" },
+    // Plan 21 · H8, part a: the sea floor under Route 125, which joins no other floor and is a map of its own, laid
+    // under its route as the others are
+    { "name": "HoennUnderwaterRoute125", "matrix": 5, "trees": "Round", "setting": "Underwater" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -295,6 +315,14 @@
     // Plan 21 · H7, part b: the two teams' hideouts
     "magma_hideout_1f", "magma_hideout_2f_1r", "magma_hideout_2f_2r", "magma_hideout_2f_3r", "magma_hideout_3f_1r",
     "magma_hideout_3f_2r", "magma_hideout_3f_3r", "magma_hideout_4f",
-    "aqua_hideout_1f", "aqua_hideout_b1f", "aqua_hideout_b2f"
+    "aqua_hideout_1f", "aqua_hideout_b1f", "aqua_hideout_b2f",
+    // Plan 21 · H8, part a: Routes 125 to 127 round Mossdeep City and their sea floors, the city and its rooms, and the
+    // treasure hunter's house on Route 124 (Shoal Cave, Route 128, the Seafloor Cavern and Sootopolis are part b's)
+    "route_125", "route_126", "route_127", "mossdeep_city",
+    "underwater_route_125", "underwater_route_126", "underwater_route_127",
+    "mossdeep_city_gym", "mossdeep_city_house_1", "mossdeep_city_house_2", "mossdeep_city_house_3", "mossdeep_city_house_4",
+    "mossdeep_city_pokemon_center_1f", "mossdeep_city_pokemon_center_2f", "mossdeep_city_mart",
+    "mossdeep_city_stevens_house", "mossdeep_city_space_center_1f", "mossdeep_city_space_center_2f",
+    "route_124_diving_treasure_hunters_house"
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "key": "mossdeep_city_house_1",
+  "index": 184,
+  "name": "Mossdeep City",
+  "matrix": 133,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "mossdeep_city", "toWarp": 0 },
+    { "x": 4, "z": 7, "to": "mossdeep_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "black_belt", "looks": "black_belt", "movement": "wander_north_and_south", "x": 3, "z": 3, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_House1_EventScript_BlackBelt" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_House1_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

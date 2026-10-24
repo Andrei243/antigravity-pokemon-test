@@ -86,6 +86,8 @@ public abstract class GymPuzzle
         SunyshoreGears.Room3Name => new SunyshoreGears(2),
         // Emerald's Fortree Gym (plan 21 · H6), named by its room's entry in Hoenn's world.json
         FortreeGates.PuzzleName => new FortreeGates(),
+        // Emerald's Mossdeep Gym (plan 21 · H8): the floor of turning arrows, moved by the room's switches
+        MossdeepTiles.PuzzleName => new MossdeepTiles(),
         // HeartGold's Blackthorn Gym (plan 20 · J11, part c), named by its room's entry in Johto's world.json
         BlackthornPlatforms.PuzzleName => new BlackthornPlatforms(),
         // The League's platform lifts (plan 01 · M9, part 2d), one name to a shaft

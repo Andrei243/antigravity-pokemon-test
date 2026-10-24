@@ -185,5 +185,32 @@
     "class": "Cooltrainer",
     "trainer": "hoenn_cristin_1",
     "area": "route_121"
+  },
+  {
+    "id": "tate_and_liza",
+    "type": 12,
+    "class": "Leader",
+    "area": "mossdeep_city_gym"
+  },
+  {
+    "id": "hoenn_ernest",
+    "type": 0,
+    "class": "Sailor",
+    "trainer": "hoenn_ernest_1",
+    "area": "route_125"
+  },
+  {
+    "id": "hoenn_pablo",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_pablo_1",
+    "area": "route_126"
+  },
+  {
+    "id": "hoenn_koji",
+    "type": 0,
+    "class": "Black Belt",
+    "trainer": "hoenn_koji_1",
+    "area": "route_127"
   }
 ]

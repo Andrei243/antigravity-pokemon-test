@@ -1,0 +1,25 @@
+# Route 127 (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route127/scripts.inc). Koji, the black belt on the sandbar, swaps numbers for the PokéNav once beaten.
+
+
+script Koji
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_KOJI goto Known
+label Ask
+  speaker "Koji"
+  say "Hah! You hit as hard as the waves. Give me your number. I'll tell you when I've grown stronger!"
+  ask "Register Koji in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_koji
+  say "Hah! I'll call when I'm ready for a rematch."
+  end
+label Refused
+  say "Hah! Then I'll train alone on this sandbar."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

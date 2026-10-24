@@ -1,0 +1,8 @@
+{
+  // A house in Mossdeep City (plan 21 · H8, part a): the fisherman who gives the Super Rod (mossdeep_city_house_3.txt)
+  "area": "mossdeep_city_house_3",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "fisherman": { "name": "Fisherman", "script": "SuperRod", "still": true }
+  }
+}

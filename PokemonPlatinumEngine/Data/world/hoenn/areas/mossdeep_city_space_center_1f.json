@@ -1,0 +1,37 @@
+{
+  "key": "mossdeep_city_space_center_1f",
+  "index": 192,
+  "name": "Mossdeep City",
+  "matrix": 141,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 9, "to": "mossdeep_city", "toWarp": 8 },
+    { "x": 8, "z": 9, "to": "mossdeep_city", "toWarp": 8 },
+    { "x": 13, "z": 1, "to": "mossdeep_city_space_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "space_center_1f_scientist_1", "looks": "scientist_1", "movement": "look_north", "x": 7, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_1F_EventScript_RocketLaunchCounter" },
+    { "id": "space_center_1f_scientist_2", "looks": "scientist_1", "movement": "look_north", "x": 2, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_1F_EventScript_Scientist" },
+    { "id": "space_center_1f_sailor", "looks": "sailor", "movement": "look_west", "x": 6, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_1F_EventScript_SunStoneMan" },
+    { "id": "space_center_1f_old_man", "looks": "old_man", "movement": "look_north", "x": 10, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_1F_EventScript_OldMan" },
+    { "id": "space_center_1f_woman", "looks": "woman_4", "movement": "wander_north_and_south", "x": 14, "z": 7, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_SpaceCenter_1F_EventScript_Woman" },
+    { "id": "magma_member_f", "looks": "magma_member_f", "movement": "look_west", "x": 12, "z": 9, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA", "script": "TRAINER_GRUNT_SPACE_CENTER_3" },
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "look_west", "x": 11, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA", "script": "TRAINER_GRUNT_SPACE_CENTER_1" },
+    { "id": "magma_member_m_2", "looks": "magma_member_m", "movement": "look_south", "x": 10, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA", "script": "TRAINER_GRUNT_SPACE_CENTER_4" },
+    { "id": "space_center_1f_stair_grunt", "looks": "magma_member_m", "movement": "look_south", "x": 13, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA", "script": "TRAINER_GRUNT_SPACE_CENTER_2" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "invisible", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE", "script": "MossdeepCity_SpaceCenter_1F_EventScript_MagmaNote" },
+    { "id": "steven", "looks": "steven", "movement": "look_south", "x": 1, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN", "script": "MossdeepCity_SpaceCenter_1F_EventScript_Steven" }
+  ],
+  "signs": [],
+  "triggers": []
+}

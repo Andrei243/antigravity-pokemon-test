@@ -196,6 +196,22 @@
     "description": "A medal-like emblem bearing Team Magma's mark. It was dropped on the summit of Mt. Pyre.",
     "cantBeTossed": true
   },
+  // Hoenn's HM for Dive, which Steven gives in his house in Mossdeep City (plan 21 · H8; Emerald's HM08). Platinum's
+  // eight HMs keep their numbers, so Hoenn's Dive is the ninth; the species that learn it are those that learn Dive by a
+  // machine in any game (Importer.AddHoennMachines)
+  "HM09": {
+    "id": 9113,
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dive to a compatible Pokémon. The user dives under the water on the first turn and strikes on the next.",
+    "teachesMove": "Dive",
+    "cantBeTossed": true,
+    "fieldUse": "TmHm"
+  },
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {

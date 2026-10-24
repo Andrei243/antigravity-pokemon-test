@@ -1,0 +1,9 @@
+{
+  // The sea floor under Route 125 (plan 21 · H8, part a): a map of its own (HoennUnderwaterRoute125), laid tile for tile
+  // under its route as the other floors are, since it joins none of them. Its two ways into the Marine Cave are the
+  // post-game's (plan 21 · H12) and lead nowhere yet
+  "area": "underwater_route_125",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round"
+}

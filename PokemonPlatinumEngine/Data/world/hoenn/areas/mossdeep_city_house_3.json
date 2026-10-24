@@ -1,0 +1,26 @@
+{
+  "key": "mossdeep_city_house_3",
+  "index": 189,
+  "name": "Mossdeep City",
+  "matrix": 138,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "mossdeep_city", "toWarp": 5 },
+    { "x": 4, "z": 7, "to": "mossdeep_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_House3_EventScript_SuperRodFisherman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,15 @@
+{
+  // Steven's house in Mossdeep City (plan 21 · H8, part a): his collection of rare stones in cases along the walls.
+  // He waits here once the Space Center is saved and gives HM09, Dive, as the player comes in (mossdeep_city_stevens_house.txt).
+  // The Beldum's ball on his desk and his letter beside it are the Hall of Fame's (plan 21 · H9), hidden until then
+  "area": "mossdeep_city_stevens_house",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "stevens_house_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
+    "stevens_house_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Beldum", "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL", "still": true },
+    "ninja_boy": { "name": "Letter", "npcType": "Unseen", "script": "Letter" }
+  },
+  "signs": {
+    "MossdeepCity_StevensHouse_EventScript_RockDisplay": "A collection of rare rocks and stones that Steven has gathered."
+  }
+}

@@ -249,6 +249,11 @@ public enum PropType
     /// player comes in.
     /// </summary>
     IceBlock,
+    /// <summary>
+    /// A stone statue of the Mossdeep Gym's puzzle (plan 21 · H8: Emerald's Trick House statue): a thing of the map
+    /// (<see cref="NPC.GymStatueType"/>), drawn as a card, which a floor switch moves a step round its loop of arrows.
+    /// </summary>
+    GymStatue,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

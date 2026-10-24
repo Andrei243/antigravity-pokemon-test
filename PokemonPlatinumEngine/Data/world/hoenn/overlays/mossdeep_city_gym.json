@@ -1,0 +1,63 @@
+{
+  // Mossdeep City's Gym (plan 21 · H8, part a): Tate and Liza's hall of floor islands joined by warp pads, where loops
+  // of coloured arrows carry the trainers and the stone statues standing on them round a step whenever a switch of their
+  // colour is stepped on (world.json's puzzle, MossdeepTiles; the triggers below say `rotatetiles`). The statues are
+  // things of the map (GymStatue), drawn as cards. Twelve trainers stand between the door and the twins
+  // (mossdeep_city_gym.txt), and the pad beside the twins sends the player back to the door
+  "area": "mossdeep_city_gym",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Psychic",
+  "triggers": [
+    { "trigger": 0, "script": "YellowSwitch" },
+    { "trigger": 1, "script": "BlueSwitch" },
+    { "trigger": 2, "script": "BlueSwitch" },
+    { "trigger": 3, "script": "GreenSwitch" },
+    { "trigger": 4, "script": "PurpleSwitch" },
+    { "trigger": 5, "script": "PurpleSwitch" },
+    { "trigger": 6, "script": "RedSwitch" },
+    { "trigger": 7, "script": "BackToTheDoor" },
+    { "trigger": 8, "script": "YellowSwitch" }
+  ],
+  "people": {
+    "tate": { "name": "Tate", "npcType": "tate", "script": "TateAndLiza", "still": true },
+    "liza": { "name": "Liza", "npcType": "liza", "script": "TateAndLiza", "still": true },
+    "man_2": { "name": "Gym Guide", "script": "GymGuide", "still": true },
+    "psychic_m": { "name": "Preston", "trainer": { "dialogueBefore": "Psychic Preston: A battle is won by the stronger will. A wavering mind never wins!", "dialogueAfter": "Psychic Preston: My will wavered. Back to training it." } },
+    "psychic_m_2": { "name": "Blake", "trainer": { "dialogueBefore": "Psychic Blake: Watch me lift a Poké Ball with my mind alone! Hnnngh... Hm. It's a bad day.", "dialogueAfter": "Psychic Blake: My battling's having a bad day too." } },
+    "lass": { "name": "Maura", "trainer": { "dialogueBefore": "Psychic Maura: The arrows under your feet will turn you round. And so will I!", "dialogueAfter": "Psychic Maura: You found your way after all." } },
+    "lass_2": { "name": "Samantha", "trainer": { "dialogueBefore": "Psychic Samantha: I already know how this battle ends. Shall I show you?", "dialogueAfter": "Psychic Samantha: Funny. It ended differently in my head." } },
+    "psychic_m_3": { "name": "Virgil", "trainer": { "dialogueBefore": "Psychic Virgil: Show me what talent you have, challenger!", "dialogueAfter": "Psychic Virgil: Talent to spare. Remarkable." } },
+    "lass_3": { "name": "Hannah", "trainer": { "dialogueBefore": "Psychic Hannah: Don't feel bad when you lose. It isn't that you're weak. I'm just strong!", "dialogueAfter": "Psychic Hannah: It's me who feels bad now." } },
+    "gentleman": { "name": "Nate", "trainer": { "dialogueBefore": "Gentleman Nate: Ho ho. The twins send their students to meet their guests. I am one.", "dialogueAfter": "Gentleman Nate: Ho ho. You may go on." } },
+    "hex_maniac": { "name": "Sylvia", "trainer": { "dialogueBefore": "Hex Maniac Sylvia: The statues watch you go round and round... and so do I...", "dialogueAfter": "Hex Maniac Sylvia: The statues saw that. How embarrassing." } },
+    "gentleman_2": { "name": "Clifford", "trainer": { "dialogueBefore": "Gentleman Clifford: I have studied the mind for forty years. Let us see what yours can do.", "dialogueAfter": "Gentleman Clifford: Forty years, and still a student." } },
+    "lass_4": { "name": "Macey", "trainer": { "dialogueBefore": "Psychic Macey: Tate and Liza never lose in practice. Can you beat their pupil first?", "dialogueAfter": "Psychic Macey: I'll have to practise harder." } },
+    "hex_maniac_2": { "name": "Kathleen", "trainer": { "dialogueBefore": "Hex Maniac Kathleen: I saw you coming in my dreams last night. You were very small...", "dialogueAfter": "Hex Maniac Kathleen: Dreams aren't always right, it seems." } },
+    "psychic_m_4": { "name": "Nicholas", "trainer": { "dialogueBefore": "Psychic Nicholas: The twins are close now. Close enough to feel their minds. Can you?", "dialogueAfter": "Psychic Nicholas: Go on. They're expecting you." } },
+    "trick_house_statue": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_2": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_3": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_4": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_5": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_6": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_7": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_8": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_9": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_10": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_11": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_12": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_13": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_14": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_15": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_16": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_17": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_18": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_19": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_20": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] },
+    "trick_house_statue_21": { "name": "Statue", "npcType": "GymStatue", "still": true, "dialog": [ "A stone statue of someone lost in thought." ] }
+  },
+  "signs": {
+    "MossdeepCity_Gym_EventScript_LeftGymStatue": "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza",
+    "MossdeepCity_Gym_EventScript_RightGymStatue": "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza"
+  }
+}

@@ -1,0 +1,154 @@
+# Mossdeep City's Gym (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MossdeepCity_Gym/scripts.inc).
+#
+# Tate and Liza battle together as one trainer of two (hoenn_tate_and_liza_1, a double battle) for the Mind Badge
+# (FLAG_BADGE07_GET, `givebadge mind`), which lets Dive be used outside battle, and give TM04, Calm Mind
+# (FLAG_RECEIVED_TM_CALM_MIND). The Badge counts the Gym's twelve trainers beaten and sets Team Magma on the Space Center
+# going, as Emerald's does: Maxie and his grunts before it (VAR_MOSSDEEP_CITY_STATE 1), its two floors held, Steven
+# moved upstairs (VAR_MOSSDEEP_SPACE_CENTER_STATE 1). It also hides Team Aqua's hideout's grunts for good and brings the
+# patrons back to Slateport's harbour (FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS cleared), and with the PokéNav the twins
+# are registered in Match Call (FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL).
+#
+# The floor's switches each move whoever stands on their colour's arrows a step round the loop (`rotatetiles`; the
+# room's puzzle, MossdeepTiles): Emerald's floor of switches, which these coordinate events run every time they are
+# stepped on. The pad beside the twins takes the player back to the door.
+
+
+script TateAndLiza
+  face tate player
+  face liza player
+  if badge mind goto Won
+  scene "Tate and Liza"
+  speaker "Tate"
+  say "Hehehe... Surprised?"
+  speaker "Liza"
+  say "Fufufu... Surprised?"
+  speaker "Tate"
+  say "That there are two of us?"
+  speaker "Liza"
+  say "Two Gym Leaders! We're twins, you see."
+  speaker "Tate"
+  say "We don't need words. Each of us knows what..."
+  speaker "Liza"
+  say "...the other is thinking. All in our heads!"
+  speaker "Tate"
+  say "Our combination, two minds as one..."
+  speaker "Liza"
+  say "...can you break it?"
+  battle tate as "hoenn_tate_and_liza_1"
+  speaker "Tate"
+  say "What? Our combination..."
+  speaker "Liza"
+  say "...came apart! You've won. Take this as proof."
+  givebadge mind
+  text "{player} received the Mind Badge from Tate and Liza!"
+  speaker "Tate"
+  say "The Mind Badge makes your Pokémon's special moves stronger and their guard against them firmer."
+  speaker "Liza"
+  say "And with it, your Pokémon can use Dive outside of battle."
+  setflag FLAG_DEFEATED_MOSSDEEP_GYM
+  setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+  clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
+  defeat "hoenn_preston"
+  defeat "hoenn_blake"
+  defeat "hoenn_maura"
+  defeat "hoenn_samantha"
+  defeat "hoenn_virgil"
+  defeat "hoenn_hannah"
+  defeat "hoenn_nate"
+  defeat "hoenn_sylvia"
+  defeat "hoenn_clifford"
+  defeat "hoenn_macey"
+  defeat "hoenn_kathleen"
+  defeat "hoenn_nicholas"
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+  setvar VAR_MOSSDEEP_CITY_STATE 1
+  setvar VAR_MOSSDEEP_SPACE_CENTER_STATE 1
+  speaker "Tate"
+  say "You should take this too."
+  give "TM04"
+  setflag FLAG_RECEIVED_TM_CALM_MIND
+  call CalmMind
+  if flag FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL goto Done
+  if not flag FLAG_SYS_POKENAV_GET goto Done
+  speaker "Liza"
+  say "Let's swap numbers! We'll call you. Both of us. At once."
+  addcontact tate_and_liza
+  setflag FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL
+  text "Registered Gym Leaders Tate and Liza in the PokéNav."
+label Done
+  endscene
+  end
+label Won
+  if flag FLAG_RECEIVED_TM_CALM_MIND goto Proud
+  give "TM04"
+  setflag FLAG_RECEIVED_TM_CALM_MIND
+  call CalmMind
+  end
+label Proud
+  speaker "Tate"
+  say "The bond between you and your Pokémon is stronger than the one we share as twins."
+  speaker "Liza"
+  say "You'll grow stronger still. We battled you, so we know!"
+  end
+
+
+# What the twins say of TM04, a word each
+script CalmMind
+  speaker "Tate"
+  say "TM04 holds..."
+  speaker "Liza"
+  say "...Calm Mind! It raises Special Attack and..."
+  speaker "Tate"
+  say "...Special Defense! Just right for a Psychic Pokémon!"
+  return
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_MOSSDEEP_GYM goto Won
+  say "Yo, champ in the making! The Leaders here use Psychic Pokémon. Bug, Ghost and Dark moves will serve you well."
+  say "And watch for the switches on the floor. Each one turns everyone standing on its colour of arrows. Plan your way!"
+  end
+label Won
+  say "Wow, you're amazing! You beat the twins' combination!"
+  end
+
+
+# The floor's switches, by colour
+script YellowSwitch
+  sound "select"
+  rotatetiles yellow
+  end
+
+script BlueSwitch
+  sound "select"
+  rotatetiles blue
+  end
+
+script GreenSwitch
+  sound "select"
+  rotatetiles green
+  end
+
+script PurpleSwitch
+  sound "select"
+  rotatetiles purple
+  end
+
+script RedSwitch
+  sound "select"
+  rotatetiles red
+  end
+
+
+# The pad beside the twins, back to the floor by the door
+script BackToTheDoor
+  sound "warp"
+  warp "MossdeepCity_Gym" 7 30 down
+  end

@@ -166,6 +166,11 @@
     // with white trim; Shelly, Team Aqua's admin, a mane of dark red hair under the team's blue bandana, a black and
     // blue top and dark trousers
     "winona": { "hairColor": "#b8a8d8", "hair": "Long", "top": "#6aa0d8", "accent": "#f2f2f6", "bottom": "#4a78b0", "shoes": "#2a3448", "eyes": "#3a3a6a", "lashes": true, "build": "Adult", "height": 1.04 },
+    // Plan 21 · H8 (our own takes): Tate and Liza, Mossdeep's twin Gym Leaders, children with dark navy hair in two
+    // matching outfits, his a red top with a gold star's yellow at the collar and dark shorts, hers the same in rose
+    // with a skirt and her hair in bunches
+    "tate": { "hairColor": "#2a2e4a", "hair": "Spiky", "top": "#c83a3a", "accent": "#f0c840", "bottom": "#2e3046", "shoes": "#2a2224", "eyes": "#3a2e4a", "shorts": true, "shortSleeves": true, "build": "Little", "blush": true },
+    "liza": { "hairColor": "#2a2e4a", "hair": "Bunches", "top": "#e0507a", "accent": "#f0c840", "bottom": "#2e3046", "shoes": "#2a2224", "eyes": "#3a2e4a", "skirt": true, "shortSleeves": true, "build": "Little", "lashes": true, "blush": true },
     "shelly": { "hairColor": "#8a2a2e", "hair": "Long", "hat": "Cap", "hatColor": "#2a5ab0", "hatBand": "#f2f2f6", "top": "#24263a", "accent": "#2a5ab0", "bottom": "#24346a", "shoes": "#1e1e24", "eyes": "#4a2e3a", "lashes": true, "build": "Adult", "height": 1.0 },
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "glasses": "#3a3a46", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the

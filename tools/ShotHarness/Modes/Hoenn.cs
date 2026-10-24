@@ -181,11 +181,26 @@ partial class Harness
             ("h162_aqua_hideout_panels", "AquaHideout_B1F", 45, 11, Direction.Up),
             ("h163_aqua_hideout_b2f", "AquaHideout_B2F", 24, 19, Direction.Left),
             ("h164_lilycove_cove", "Hoenn", 550, 78, Direction.Up),
+            // Plan 21 · H8, part a: Mossdeep City and its rooms, the sea round it and the treasure hunter's house
+            ("h165_mossdeep_city", "Hoenn", 668, 118, Direction.Up),
+            ("h166_mossdeep_space_center", "Hoenn", 702, 120, Direction.Up),
+            ("h167_mossdeep_east", "Hoenn", 690, 128, Direction.Up),
+            ("h168_mossdeep_gym", "MossdeepCity_Gym", 7, 32, Direction.Up),
+            ("h169_mossdeep_gym_arrows", "MossdeepCity_Gym", 3, 31, Direction.Up),
+            ("h170_mossdeep_gym_twins", "MossdeepCity_Gym", 22, 9, Direction.Up),
+            ("h171_space_center_1f", "MossdeepCity_SpaceCenter_1F", 7, 8, Direction.Up),
+            ("h172_space_center_2f", "MossdeepCity_SpaceCenter_2F", 8, 6, Direction.Up),
+            ("h173_stevens_house", "MossdeepCity_StevensHouse", 4, 6, Direction.Up),
+            ("h174_mossdeep_center", "MossdeepCity_PokemonCenter_1F", 7, 6, Direction.Up),
+            ("h175_mossdeep_mart", "MossdeepCity_Mart", 4, 6, Direction.Up),
+            ("h176_mossdeep_house", "MossdeepCity_House2", 3, 7, Direction.Up),
+            ("h177_treasure_hunters_house", "Route124_DivingTreasureHuntersHouse", 3, 7, Direction.Up),
+            ("h178_route127_sandbar", "Hoenn", 682, 163, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -206,6 +221,7 @@ partial class Harness
         At("HoennSafariZone", 72, 75, Direction.Down); Frames(2); Shot("h132_safari_night");
         At("Hoenn", 507, 80, Direction.Up); Frames(2); Shot("h153_lilycove_night");
         At("MtPyre_Summit", 23, 12, Direction.Up); Frames(2); Shot("h154_mt_pyre_summit_night");
+        At("Hoenn", 668, 118, Direction.Up); Frames(2); Shot("h179_mossdeep_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

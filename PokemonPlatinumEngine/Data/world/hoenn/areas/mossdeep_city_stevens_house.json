@@ -1,0 +1,33 @@
+{
+  "key": "mossdeep_city_stevens_house",
+  "index": 190,
+  "name": "Mossdeep City",
+  "matrix": 139,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "mossdeep_city", "toWarp": 6 },
+    { "x": 4, "z": 7, "to": "mossdeep_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "stevens_house_steven", "looks": "steven", "movement": "look_east", "x": 9, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN", "script": "MossdeepCity_StevensHouse_EventScript_Steven" },
+    { "id": "stevens_house_ball", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL", "script": "MossdeepCity_StevensHouse_EventScript_BeldumPokeball" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "invisible", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY", "script": "MossdeepCity_StevensHouse_EventScript_Letter" }
+  ],
+  "signs": [
+    { "x": 0, "z": 1, "type": 0, "script": "MossdeepCity_StevensHouse_EventScript_RockDisplay" },
+    { "x": 1, "z": 1, "type": 0, "script": "MossdeepCity_StevensHouse_EventScript_RockDisplay" },
+    { "x": 10, "z": 4, "type": 0, "script": "MossdeepCity_StevensHouse_EventScript_RockDisplay" },
+    { "x": 10, "z": 6, "type": 0, "script": "MossdeepCity_StevensHouse_EventScript_RockDisplay" }
+  ],
+  "triggers": []
+}

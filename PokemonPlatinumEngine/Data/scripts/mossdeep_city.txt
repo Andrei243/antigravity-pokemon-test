@@ -1,0 +1,169 @@
+# Mossdeep City (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/MossdeepCity/scripts.inc).
+#
+# The island city of the Space Center. Coming here runs the ninth stretch's hiding for a save from before it
+# (HoennChapterNine); the four steps onto the town from the west mark it visited (FLAG_VISITED_MOSSDEEP_CITY). Scott
+# wonders about the town once, then leaves (VAR_SCOTT_STATE). The boy by Steven's house gives away a King's Rock. Once
+# Tate and Liza's Mind Badge is won (VAR_MOSSDEEP_CITY_STATE 1), Maxie and four grunts stand before the Space Center and
+# file off into it the first time the player comes near (the area's triggers 4 to 9, VAR_MOSSDEEP_CITY_STATE 2,
+# FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA). The sailor and the woman by the Center talk of it, and of the letter Team Magma
+# sent, until Steven has given HM09 (FLAG_RECEIVED_HM_DIVE). The black belt by the shore teaches Dynamic Punch once.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_NINE call HoennChapterNine
+  end
+
+
+# The steps onto the town from Route 124, once a visit (the temporary variable goes with the place)
+script Visited
+  setflag FLAG_VISITED_MOSSDEEP_CITY
+  setvar VAR_TEMP_1 1
+  end
+
+
+script Sailor
+  face self player
+  speaker "Sailor"
+  if flag FLAG_RECEIVED_HM_DIVE goto Calm
+  say "A sailor pal told me Team Aqua set up in Lilycove, and somebody sent them packing."
+  say "But it's Team Magma who've got their eye on Mossdeep. Want to know what they're after? Ask at the Space Center."
+  end
+label Calm
+  say "The sea's my life, but after a long voyage, setting foot on land again is a relief all the same."
+  end
+
+
+script PokefanF
+  face self player
+  speaker "Woman"
+  if flag FLAG_RECEIVED_HM_DIVE goto Calm
+  say "The Space Center on this island launches great big rockets. There's been an uproar about some letter they got."
+  end
+label Calm
+  say "The Space Center on this island launches great big rockets. It's quite a sight when one goes up!"
+  end
+
+
+script Man
+  face self player
+  speaker "Man"
+  say "A ship is a fine way to cross the sea. But riding a Pokémon with Surf? Now that's a thrill. Don't you agree?"
+  end
+
+
+# The boy by Steven's house, who has a rock he doesn't want
+script KingsRockBoy
+  face self player
+  speaker "Boy"
+  if flag FLAG_RECEIVED_KINGS_ROCK goto Given
+  ask "Steven gave me this rock. He called it a King's Rock, I think. I don't know what it's for. Do you want it?"
+  if no goto Kept
+  say "Really? You're strange. You can have it, but don't tell Steven."
+  give "King's Rock"
+  setflag FLAG_RECEIVED_KINGS_ROCK
+  end
+label Given
+  say "Steven's house is right over there!"
+  end
+label Kept
+  say "See? Nobody knows what to do with a weird old rock."
+  end
+
+
+# Scott, come to see Mossdeep's Gym Leaders, who goes on his way once spoken to
+script Scott
+  face self player
+  speaker "Scott"
+  say "{player}! Feeling good? I came to see Mossdeep's Gym Leaders for myself. They're said to be quite something."
+  say "But something's off about this town. People keep talking about a warning letter and the Space Center..."
+  say "Well, I don't suppose it's any of my business. See you!"
+  if facing up goto North
+  if facing right goto East
+  goto Gone
+label North
+  face player left
+  walk mossdeep_scott left 9
+  goto Gone
+label East
+  face player left
+  walk mossdeep_scott down 1 left 9
+label Gone
+  addvar VAR_SCOTT_STATE 1
+  hide self
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+  end
+
+
+# Maxie and his grunts before the Space Center, once the Mind Badge is won: Maxie points the way, and they file off
+# into it one after another
+script MagmaEntersSpaceCenter
+  scene "Team Magma at the Space Center"
+  face mossdeep_maxie right
+  face mossdeep_grunt_1 right
+  face mossdeep_grunt_2 right
+  face mossdeep_grunt_3 right
+  face mossdeep_grunt_4 right
+  wait 0.8
+  face mossdeep_maxie left
+  speaker "Maxie"
+  say "The fuel is in that building. Go!"
+  move mossdeep_maxie down 1 right 2 down 3 right 7
+  wait 0.4
+  move mossdeep_grunt_1 down 3 right 3 down 3 right 7
+  move mossdeep_grunt_2 down 2 right 3 down 3 right 7
+  move mossdeep_grunt_3 down 1 right 3 down 3 right 7
+  move mossdeep_grunt_4 right 3 down 3 right 7
+  waitmoves
+  hide mossdeep_maxie
+  hide mossdeep_grunt_1
+  hide mossdeep_grunt_2
+  hide mossdeep_grunt_3
+  hide mossdeep_grunt_4
+  wait 0.5
+  setvar VAR_MOSSDEEP_CITY_STATE 2
+  setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  endscene
+  end
+
+
+# The black belt who teaches Dynamic Punch to one Pokémon, once in a game, for nothing (`tutor once`;
+# FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, Emerald's name)
+script DynamicPunchTutor
+  face self player
+  speaker "Black Belt"
+  if flag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH goto Taught
+  ask "A punch that leaves the foe dizzy! Shall I teach one of your Pokémon Dynamic Punch?"
+  if no goto Later
+  say "Good! Which one?"
+  choosepokemon
+  tutor once "Dynamic Punch"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
+label Taught
+  say "It doesn't always land, but when it does, the foe can't tell up from down!"
+  end
+label Later
+  say "Suit yourself. The offer won't run off."
+  end
+label Egg
+  say "An Egg can't throw a punch yet!"
+  end
+label Cannot
+  say "Hmm, that one can't learn Dynamic Punch."
+  end
+label Knows
+  say "That one already knows {thing}."
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

@@ -1,0 +1,63 @@
+{
+  "key": "route_125",
+  "index": 43,
+  "name": "Route 125",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE120",
+  "nightMusic": "MUS_ROUTE120",
+  "encounters": "route_125",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "dive": "underwater_route_125",
+  "warps": [
+    { "x": 662, "z": 79, "to": "shoal_cave_low_tide_entrance_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "walk_east_and_west", "x": 647, "z": 91, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_NOLEN" },
+    { "id": "swimmer_m_2", "looks": "swimmer_m", "movement": "look_east", "x": 685, "z": 69, "facing": 3, "rangeX": 2, "rangeZ": 5, "trainer": "normal", "sight": 2, "script": "TRAINER_STAN" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "walk_east_and_west", "x": 678, "z": 84, "facing": 3, "rangeX": 6, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TANYA" },
+    { "id": "swimmer_f_2", "looks": "swimmer_f", "movement": "walk_sequence_east_south_west_north", "x": 670, "z": 88, "facing": 3, "rangeX": 9, "rangeZ": 9, "trainer": "normal", "sight": 3, "script": "TRAINER_SHARON" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_south_and_north", "x": 661, "z": 90, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ERNEST_1" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 657, "z": 79, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_KIM_AND_IRIS" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 658, "z": 79, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_KIM_AND_IRIS" },
+    { "id": "man_5", "looks": "man_5", "movement": "walk_east_and_west", "x": 683, "z": 79, "facing": 3, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PRESLEY" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "walk_west_and_east", "x": 688, "z": 79, "facing": 2, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_AURON" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 686, "z": 77, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_125_BIG_PEARL", "item": "Big Pearl", "script": "Route125_EventScript_ItemBigPearl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

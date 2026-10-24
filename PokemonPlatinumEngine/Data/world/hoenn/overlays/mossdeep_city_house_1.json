@@ -1,0 +1,10 @@
+{
+  // A house in Mossdeep City (plan 21 · H8, part a): a black belt who can tell what a Pokémon likes to eat, and his
+  // wife. Pokéblocks are plan 21 · H11's, so he says only what he sees
+  "area": "mossdeep_city_house_1",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "black_belt": { "name": "Black Belt", "dialog": [ "Hmm. Your Pokémon has a sharp look about it. I can always tell what kind of treat a Pokémon likes best." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "My husband can tell what any Pokémon likes to eat just by looking at it. Isn't that something?" ] }
+  }
+}

@@ -761,7 +761,71 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     of the teams' grunts); the submarine's shadow as a picture; Emerald's Jagged Pass ash after the hideout
     (`VAR_JAGGED_PASS_ASH_WEATHER`); the crowd round Stern's interview; the Pichu doll in the rival's room; the harbour's
     patrons back after Mossdeep's Gym (H8).
-- [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
+- [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
+  to Dive; tests and shots written, not run; what is left is listed under "Left for part b")
+  - **Opened** (19 areas, 231 in all): Routes 125, 126 and 127 above water and the sea floors under them
+    (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, which joins no other, a map of its own,
+    `HoennUnderwaterRoute125`, matrix 5), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
+    metatiles sandy paths in `GbaCover.HoennRanges`) with its Gym, Pokémon Center on both floors, Mart (Emerald's stock,
+    marts.json's `mossdeep`), Steven's house, the Space Center's two floors and four houses, and the treasure hunter's
+    house on Route 124 (its `locked` taken off). A spawn for Mossdeep (9). Shut: Mossdeep's Game Corner (Emerald's room
+    of link games), Shoal Cave (Route 125's warp `locked`, part b), Route 128 and on, Sootopolis, the Marine Cave's ways
+    from the floors. Every map is in `RegionDatabase`'s Hoenn list. Emerald's shallows are now water to look at over
+    all of Hoenn (`GbaCover.Of`; twenty chunks of the earlier areas moved, the shallows of Routes 109 and Lavaridge's
+    springs among them); Route 124 plays `hoenn/route120`, as the whole eastern sea does.
+  - **Played**: Scott wondering about the town and leaving (`VAR_SCOTT_STATE`); the King's Rock, the Super Rod
+    (`FLAG_HOENN_RECEIVED_SUPER_ROD`), the Sun Stone and Dynamic Punch once each; Tate and Liza as one trainer of two
+    (`hoenn_tate_and_liza_1`, now "Tate & Liza"), the Mind Badge, TM04, their Match Call, the Gym's twelve trainers
+    beaten, the harbour's patrons back in Slateport and Mr. Briney at Stern's shipyard; the Gym's floor of arrows
+    (`MossdeepTiles`, the new command `rotatetiles`, the statues things of the map, `GymStatue`); Team Magma filing into
+    the Space Center (`VAR_MOSSDEEP_CITY_STATE` 1 to 2), the visitors pressed back, the grunt on the stairs stepping
+    aside, the three grunts upstairs one after another (or the player sent back down), Steven and Maxie, the battle
+    beside Steven against Maxie and Tabitha (`hoenn_steven_partner`, Emerald's `sStevenMons`), Maxie's doubt and Team
+    Magma gone (state 3), Steven at home and **HM09, Dive** (Platinum's eight HMs keep their numbers; `Importer.
+    AddHoennMachines`), the Wingull's errand finished and the Mental Herb, the treasure hunter's four trades, Ernest,
+    Pablo and Koji in Match Call. Every scene a `scene`. **No story version raised**: `common.HoennChapterNine`
+    (`FLAG_HOENN_CHAPTER_NINE`), called by `HoennNewGame` and by Mossdeep City's arrival. Rulings: "Mossdeep City".
+  - **Engine**: `Overworld/MossdeepTiles.cs` (a `GymPuzzle`, its arrows and switches; `Turns`, `Anticlockwise`), the
+    script command `rotatetiles <colour>` (`Op.RotateTiles` at the enum's end, both hosts' `RotateTiles`, `StopsAHurry`,
+    `ScriptTests.EveryCommand`, `docs/scripts.md`), `NPC.GymStatueType` and `PropType.GymStatue` (at the enum's end)
+    with `GymArt.PaintGymStatue`, the arrows and switches drawn by `GymPieces` (`GymArt.PaintFloorArrow`,
+    `PaintFloorSwitch`; the style guide's "The Mossdeep Gym's arrows"), `Architecture.Starward`, `MoveTutors.Kanto`'s
+    Dynamic Punch, `TrainerDatabase.OthersOfTheRivalsClass` (Steven and Wally keep their names), the reader's
+    `GbaTables.EmeraldPartners` and a pair's names kept apart at an ampersand (`Titled`). Items: HM09 (id 9113, its
+    Romanian name and description written).
+  - **Looks**: `tate` and `liza` in `characters.json` (our own takes). No new music: Mossdeep and its rooms play
+    `hoenn/rustboro` and the eastern sea `hoenn/route120`, as Emerald's do.
+  - **Tests** (written, not run): `HoennTests` (`MossdeepCityIsOpenWithItsFlySpotItsGymAndItsRooms`,
+    `TheTwinsAndStevensTeamOfTheSpaceCenterAreEmeralds`, `TheMossdeepGymsSwitchesTurnWhoeverStandsOnTheirArrows`, and
+    `TheSeaFloorLiesTileForTileUnderTheSeaItIsDivedTo` taking Route 125's floor); `HoennStoryTests`
+    (`TheTwinsBattleTogetherForTheMindBadgeAndTeamMagmaComesForTheFuel`,
+    `TheGymsSwitchesMoveThePeopleOnTheirArrowsUntilTheRoomIsComeToAgain`,
+    `StevenAndThePlayerBeatMaxieAndTabithaAndStevenGivesDiveAtHome`, `TheThreeGruntsSendAPlayerWhoSaysNoBackDownstairs`,
+    `FortreesWingullDeliversItsLetterInMossdeepAndTheBoyGivesTheMentalHerb`,
+    `MossdeepsPeopleGiveTheirGiftsOnceAndScottGoesOnHisWay`, `TheTreasureHunterTradesAStoneForEachShard`,
+    `ANewGameOfHoennHidesTheNinthStretchsPeopleAndAnOlderSaveIsGivenThemInMossdeep`); `ScriptTests.EveryCommand`
+    (`rotatetiles`). The content check finds nothing. `scripts.txt` of the golden files moves (common.txt, the new
+    places' scripts, Fortree's fourth house, Stern's shipyard, phone.txt): accept it. `species.json` moved (HM09 on
+    every species that learns Dive by a machine), `items.json`, `marts.json` and `coverage.md` with it.
+  - **Shots** (written, not taken): the `hoenn` mode's `h165`–`h178` (Mossdeep's streets, the Space Center from
+    outside and the east shore, the Gym from its door, its arrows with a `_native` crop and the twins' corner, the
+    Space Center's two floors, Steven's house, the Center, the Mart, a house, the treasure hunter's house, Route 127's
+    sandbar) and `h179_mossdeep_night`; the scenes `hs200`–`hs226` at the end of `HoennScenes` (Scott, the yellow
+    switch before and as it turns, Tate and Liza and their double battle, the Mind Badge, Team Magma filing in, the held
+    ground floor and its stairs, the three grunts, Maxie's plan, the battle beside Steven, Maxie's doubt, Steven's thanks,
+    HM09 given at home, the Wingull flying home and the Mental Herb, the treasure hunter). `HoennSeaShots` keeps its
+    diver on Route 124's own dark water.
+  - **Left for part b**: Shoal Cave and its tide (two layouts by the hour through a new command behind the warp's fade,
+    as the plan says; its Shoal Salt and Shells and the Shell Bell), Route 128 and its sea floor, the Seafloor Cavern by
+    Dive (its guard, `FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT`, already set by Steven's gift) and Kyogre's waking,
+    Sootopolis reached by surfacing in its crater (matrix 1, `Underwater_SootopolisCity`), the titans' clash under
+    `HeavyRain` and a new `FieldWeather.Drought` (the style guide's "Life" first), Wallace, the Cave of Origin, Routes
+    129 to 131 and Pacifidlog, Sky Pillar and Rayquaza's descent, Juan and the Rain Badge, the songs `sootopolis`,
+    `abnormal_weather` and `rayquaza_appears`, and Sootopolis's and Pacifidlog's `Architecture` rows; Rayquaza's Match
+    Call warning from the rival that Emerald plays on Mossdeep's Space Center's second floor
+    (`MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall`); the Space Center's launch count by the game's weeks;
+    Emerald's choice of three Pokémon for the battle beside Steven; the Beldum and Steven's letter (written, shown by the
+    Hall of Fame, H9); the Ancient Tomb's Registeel and the Sealed Chamber (H12 or later).
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks

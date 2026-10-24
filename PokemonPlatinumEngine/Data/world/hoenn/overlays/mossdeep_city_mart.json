@@ -1,0 +1,12 @@
+{
+  // Mossdeep City's Poké Mart (plan 21 · H8, part a): Emerald's stock, with Net and Dive Balls for the sea round the
+  // island (marts.json's mossdeep, mossdeep_city_mart.txt)
+  "area": "mossdeep_city_mart",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "mossdeep_mart_clerk": { "name": "Clerk", "script": "MossdeepClerk" },
+    "woman_5": { "name": "Woman", "dialog": [ "Reviving a Pokémon costs a lot. A single Revive is dearer than a Hyper Potion!" ] },
+    "boy_2": { "name": "Boy", "dialog": [ "The Dive Balls sold here work best on Pokémon that live under the water. Perfect for the sea round Mossdeep!" ] },
+    "sailor": { "name": "Sailor", "dialog": [ "A Net Ball's the thing for Water and Bug Pokémon. Every sailor keeps a few on board." ] }
+  }
+}

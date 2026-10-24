@@ -1,0 +1,130 @@
+# The ground floor of Mossdeep's Space Center (plan 21 · H8, part a). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/MossdeepCity_SpaceCenter_1F/scripts.inc).
+#
+# Before the Mind Badge, Steven stands by Team Magma's letter, which lies open on a desk and may be read (it goes once
+# the Space Center is saved, FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE). While Team Magma holds the building
+# (VAR_MOSSDEEP_CITY_STATE 2) the visitors stand back against the west wall, turned toward the grunts, and the grunt on
+# the stairs, beaten, steps aside: west of them if the player came at him from the east, else east, and stays there
+# (VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE 1 or 3; Emerald's own script means to do the same, and by a slip sends
+# him east whatever the player's side, which is not followed). The man by the window gives a Sun Stone once.
+
+
+script OnEnter
+  if var VAR_MOSSDEEP_CITY_STATE != 2 end
+  place space_center_1f_sailor 1 9 right
+  place space_center_1f_woman 0 8 right
+  place space_center_1f_old_man 1 6 right
+  place space_center_1f_scientist_1 3 4 right
+  face space_center_1f_scientist_2 right
+  if var VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE == 1 place space_center_1f_stair_grunt 12 2 down
+  if var VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE == 3 place space_center_1f_stair_grunt 14 2 down
+  end
+
+
+# The launch counter: how many rockets have gone up, one a week of the game
+script LaunchCounter
+  face self player
+  speaker "Scientist"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 say "Things are a bit of a mess in here right now, I know, but..."
+  say "The next rocket launch is coming up soon! Every one so far has flown safely."
+  end
+
+
+script Scientist
+  face self player
+  speaker "Scientist"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+  say "A launch has to be perfect. If one part in a hundred fails, the whole rocket fails."
+  say "And still we keep at it. Why? Because the dream of space never ends."
+  end
+label Magma
+  say "Those Team Magma thugs want our Space Center. But nothing that small will stop our launch!"
+  face self right
+  end
+
+
+# The man who found a stone on the beach
+script SunStoneMan
+  face self player
+  speaker "Sailor"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+  if flag FLAG_RECEIVED_SUN_STONE_MOSSDEEP goto Given
+  say "I found this on a walk along the beach. I've no use for it, so you have it."
+  give "Sun Stone"
+  setflag FLAG_RECEIVED_SUN_STONE_MOSSDEEP
+label Given
+  say "Hoenn has been famous for its meteor showers for as long as anyone can remember."
+  end
+label Magma
+  if flag FLAG_RECEIVED_SUN_STONE_MOSSDEEP goto Scared
+  say "Team Magma can't be allowed to take the fuel! Oh, and here, take this stone I found on the beach."
+  give "Sun Stone"
+  setflag FLAG_RECEIVED_SUN_STONE_MOSSDEEP
+label Scared
+  say "With Team Magma about, I don't suppose a walk on the beach is safe any more."
+  face self right
+  end
+
+
+script Woman
+  face self player
+  speaker "Woman"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+label Normal
+  say "Some people say Pokémon first came here from space. Could it be true?"
+  end
+label Magma
+  say "Team Aqua ought to deal with Team Magma! But then Team Aqua would get full of themselves, wouldn't they?"
+  end
+
+
+script OldMan
+  face self player
+  speaker "Old Man"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+label Normal
+  say "A great lump of metal bursts through the sky and flies off into space... It boggles the mind!"
+  end
+label Magma
+  say "A great lump of metal flying off into space... and Team Magma wants to spoil that dream of mine!"
+  say "Well, I won't stand for it!"
+  end
+
+
+script Steven
+  face self player
+  speaker "Steven"
+  say "{player}, have you read that letter? Team Magma means to take the rocket fuel stored on this island."
+  say "I can't think what they want it for, but they mustn't have it. I'll keep watch here a while longer."
+  say "Why don't you have a look around the town in the meantime?"
+  end
+
+
+# Team Magma's letter, open on a desk
+script MagmaNote
+  speaker none
+  text "It's a letter... A notice that something is to be stolen?"
+  text "'To the staff of the Space Center. We hope you are well. We are very well.'"
+  text "'We will soon come to take your rocket fuel. Please do not try to stop us. We will take it all the same.'"
+  text "'More land for everyone! Team Magma'"
+  end
+
+
+# The grunt on the stairs, who steps aside once beaten
+script StairGrunt
+  if defeated self goto Beaten
+  face self player
+  trainerline before
+  battle self
+  if facing left goto West
+  walk self back right
+  setvar VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE 3
+  end
+label West
+  walk self back left
+  setvar VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE 1
+  end
+label Beaten
+  face self player
+  trainerline after
+  end

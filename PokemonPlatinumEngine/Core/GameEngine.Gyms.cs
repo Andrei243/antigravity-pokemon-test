@@ -263,6 +263,20 @@ public partial class GameEngine
             if (water.Moving) AudioManager.PlaySound("surf");
         }
 
+        public void RotateTiles(MossdeepTiles.Colour colour)
+        {
+            var map = game.flow.Map;
+            if (map.Puzzle is not MossdeepTiles) return;
+            // Each turns to the way they will face and slides a step keeping it (the original locks the facing for the
+            // step and turns after it); all of them at once, the script waiting as for a walk
+            foreach (var (who, step, facing) in MossdeepTiles.Turns(colour, (x, y) => map.NPCs.At(x, y)))
+            {
+                StopWalk(who);
+                who.Facing = facing;
+                game.flow.NpcWalks.Add(new NpcWalk(who, new[] { new ScriptStep(step, ScriptStepKind.Back) }, false));
+            }
+        }
+
         public void PressGearButton(SunyshoreGears.Button kind)
         {
             if (game.flow.Map.Puzzle is not SunyshoreGears gears) return;

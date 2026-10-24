@@ -1,0 +1,77 @@
+# The diving treasure hunter's house on Route 124 (plan 21 · H8, part a). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc).
+#
+# The hunter introduces himself once (FLAG_MET_DIVING_TREASURE_HUNTER) and trades a stone for each shard the player
+# brings: a Fire Stone for a Red Shard, a Thunder Stone for a Yellow, a Water Stone for a Blue, a Leaf Stone for a Green.
+# Emerald's menu shows only the shards in the bag; here all four are offered and one not in the bag is turned down.
+
+
+script TreasureHunter
+  face self player
+  speaker "Treasure Hunter"
+  if flag FLAG_MET_DIVING_TREASURE_HUNTER goto Again
+  say "I'm the diving treasure hunter! I'm the fellow who dives to the bottom of the sea for the treasures lying there."
+  setflag FLAG_MET_DIVING_TREASURE_HUNTER
+  goto Look
+label Again
+  say "Tell me, have you come across any shards? Pieces of tools from long, long ago?"
+label Look
+  if item "Red Shard" goto HasShard
+  if item "Yellow Shard" goto HasShard
+  if item "Blue Shard" goto HasShard
+  if item "Green Shard" goto HasShard
+  say "No treasure for me, huh... If you find a shard, like a Red Shard, you've got to trade it with me!"
+  end
+label HasShard
+  say "Hey! That's a shard! I'm looking for those! Trade it to me, and I'll give you something good!"
+label Choose
+  choose "What do you want to trade?" "Red Shard" "Yellow Shard" "Blue Shard" "Green Shard" "Nothing"
+  if result == 0 goto Red
+  if result == 1 goto Yellow
+  if result == 2 goto Blue
+  if result == 3 goto Green
+  goto Declined
+label Red
+  if not item "Red Shard" goto Missing
+  ask "Your Red Shard for my Fire Stone, then?"
+  if no goto Declined
+  take "Red Shard" 1
+  give "Fire Stone"
+  goto Deal
+label Yellow
+  if not item "Yellow Shard" goto Missing
+  ask "Your Yellow Shard for my Thunder Stone, then?"
+  if no goto Declined
+  take "Yellow Shard" 1
+  give "Thunder Stone"
+  goto Deal
+label Blue
+  if not item "Blue Shard" goto Missing
+  ask "Your Blue Shard for my Water Stone, then?"
+  if no goto Declined
+  take "Blue Shard" 1
+  give "Water Stone"
+  goto Deal
+label Green
+  if not item "Green Shard" goto Missing
+  ask "Your Green Shard for my Leaf Stone, then?"
+  if no goto Declined
+  take "Green Shard" 1
+  give "Leaf Stone"
+label Deal
+  say "It's a deal! Use it wisely!"
+  if item "Red Shard" goto More
+  if item "Yellow Shard" goto More
+  if item "Blue Shard" goto More
+  if item "Green Shard" goto More
+  end
+label More
+  ask "Want to trade something else?"
+  if yes goto Choose
+  goto Declined
+label Missing
+  say "Huh? You haven't got one of those. Come back when you've found one!"
+  end
+label Declined
+  say "No? That's a shame. Well, come back if you change your mind."
+  end

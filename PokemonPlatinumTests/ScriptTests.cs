@@ -551,6 +551,8 @@ public class ScriptTests
           namerival
           travel go
           if var CROSSED_IN == 1 end
+          rotatetiles yellow
+          rotatetiles red
         script Other
           end
         """;
@@ -1615,6 +1617,7 @@ public class ScriptTests
         public void TurnClock(int from, int to) { }
         public void PressButton(PastoriaWater.Button button) { }
         public void PressGearButton(SunyshoreGears.Button kind) { }
+        public void RotateTiles(MossdeepTiles.Colour colour) { }
         public bool TriggerLift() => false;
         public bool LiftNotUsed() => true;
         public void TravelWith(NPC? who, string? trainerId) { }

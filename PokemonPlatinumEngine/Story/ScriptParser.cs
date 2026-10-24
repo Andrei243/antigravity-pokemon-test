@@ -865,6 +865,10 @@ public static class ScriptParser
             // A region's rival named on the introduction's keyboard (plan 18 · W4, part b)
             case "namerival":
                 return new Instruction { Op = Op.NameRival, Line = line };
+            // A floor switch of the Mossdeep Gym (plan 21 · H8): "rotatetiles yellow" moves whoever stands on the
+            // colour's arrows a step round their loop and turns them a quarter
+            case "rotatetiles":
+                return new Instruction { Op = Op.RotateTiles, Line = line, Name = r.OneOf("yellow", "blue", "green", "purple", "red") };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

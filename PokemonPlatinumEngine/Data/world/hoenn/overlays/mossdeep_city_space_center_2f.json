@@ -1,0 +1,19 @@
+{
+  // The upper floor of Mossdeep's Space Center (plan 21 · H8, part a): the observation room, where Maxie and Tabitha
+  // corner Steven by the fuel stores while three grunts block the stairs (mossdeep_city_space_center_2f.txt). Maxie and
+  // Tabitha are battled together, beside Steven (hoenn_maxie_mossdeep, hoenn_tabitha_mossdeep and Steven's own team of
+  // the multi battle, hoenn_steven_partner); the three grunts one after another as the player comes up
+  "area": "mossdeep_city_space_center_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "space_center_2f_rich_boy": { "name": "Boy", "script": "RichBoy", "still": true },
+    "space_center_2f_gentleman": { "name": "Gentleman", "script": "Gentleman", "still": true },
+    "space_center_2f_scientist": { "name": "Scientist", "npcType": "scientist", "script": "Scientist" },
+    "space_center_2f_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
+    "space_center_grunt_5": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "Grunt5", "still": true },
+    "space_center_grunt_6": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "Grunt6", "still": true },
+    "space_center_grunt_7": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "Grunt7", "still": true },
+    "space_center_tabitha": { "name": "Tabitha", "npcType": "tabitha", "script": "Tabitha", "still": true, "trainer": { "id": "hoenn_tabitha_mossdeep", "dialogueBefore": "Tabitha: I'm with the boss, all the way!", "dialogueAfter": "Tabitha: I'm with the boss, all the way..." } },
+    "space_center_maxie": { "name": "Maxie", "npcType": "maxie", "script": "Maxie", "still": true }
+  }
+}

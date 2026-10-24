@@ -1,0 +1,25 @@
+# A house of Mossdeep City (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MossdeepCity_House2/scripts.inc).
+#
+# The other half of the Fortree boy's errand (fortree_city_house_4.txt): his Wingull is here once he has sent it off
+# (FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL cleared there). Spoken to, it cries, the letter delivered
+# (FLAG_WINGULL_DELIVERED_MAIL), and flies out of the door and home (FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL cleared),
+# where the boy now gives the Mental Herb.
+
+
+script Wingull
+  face self player
+  cry "Wingull"
+  speaker "Wingull"
+  say "Wingull: Pihyoh!"
+  setflag FLAG_WINGULL_DELIVERED_MAIL
+  clearflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  if facing left goto West
+  walk self right 1 down 2 left 1 down 1 fast
+  goto Gone
+label West
+  walk self down 3 fast
+label Gone
+  hide self
+  setflag FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  end

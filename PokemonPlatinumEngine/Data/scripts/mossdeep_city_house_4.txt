@@ -1,0 +1,9 @@
+# A house of Mossdeep City (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own.
+
+
+script Skitty
+  face self player
+  cry "Skitty"
+  speaker "Skitty"
+  say "Skitty: Miyao?"
+  end

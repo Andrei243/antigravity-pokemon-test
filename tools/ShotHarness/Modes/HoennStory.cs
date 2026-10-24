@@ -927,5 +927,105 @@ partial class Harness
         At("Hoenn", 552, 84, Direction.Right); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs19c_the_channel_open");
         At("LittlerootTown_MaysHouse_2F", 3, 4, Direction.Up); Frames(20); Shot("hs19d_the_rival_at_home");
         Hideouts("the rival at home");
+
+        // ---- Plan 21 · H8, part a: Mossdeep City (hs200 to hs229)
+        void Mossdeep(string what) =>
+            Console.WriteLine($"  {what}: mind badge {story.HasBadge("Hoenn", "Mind")}, mossdeep {story.Var("VAR_MOSSDEEP_CITY_STATE")}, "
+                + $"space center {story.Var("VAR_MOSSDEEP_SPACE_CENTER_STATE")}, stairs {story.Var("VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE")}, "
+                + $"steven's house {story.Var("VAR_STEVENS_HOUSE_STATE")}, magma hidden {story.Has("FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA")}, "
+                + $"dive {story.Has("FLAG_RECEIVED_HM_DIVE")}, mental herb {story.Has("FLAG_RECEIVED_MENTAL_HERB")}, "
+                + $"on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        void Where(string key)
+        {
+            var who = game.Map.NPCs.FirstOrDefault(n => n.Key == key);
+            Console.WriteLine($"    {key}: {(who == null ? "gone" : $"({who.GridX}, {who.GridY}) facing {who.Facing}")}");
+        }
+
+        // The town: Scott, who goes on his way
+        At("Hoenn", 668, 118, Direction.Up); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs200_mossdeep");
+        Mossdeep("in Mossdeep");
+        TalkTo("Hoenn", "mossdeep_scott");
+        ReadTo("something's off about this town"); Frames(10); Shot("hs201_scott");
+        ReadTo(null); Frames(20); Shot("hs202_scott_gone");
+
+        // The Gym: a switch turns the people on its arrows; Tate and Liza; the Mind Badge
+        ComeThrough("MossdeepCity_Gym", 7, 32, Direction.Up); Frames(20); Shot("hs203_the_gym");
+        At("MossdeepCity_Gym", 3, 31, Direction.Up); Frames(10);
+        Where("psychic_m");
+        Shot("hs204_before_the_yellow_switch");
+        StepOnto("MossdeepCity_Gym", 3, 30, Direction.Up);
+        Frames(8); Shot("hs205_the_arrows_turning");
+        ReadTo(null); Frames(10); Shot("hs206_the_arrows_turned");
+        Where("psychic_m");
+        At("MossdeepCity_Gym", 23, 9, Direction.Up); Frames(20); Shot("hs207_tate_and_liza");
+        TalkTo("MossdeepCity_Gym", "tate");
+        ReadTo("We're twins"); Frames(10); Shot("hs208_the_twins");
+        IntoBattle("Tate and Liza's battle");
+        ToMainMenu(game.Battle); Shot("hs209_the_twins_double_battle");
+        Win();
+        ReadTo("received the Mind Badge"); Frames(10); Shot("hs20a_the_mind_badge");
+        ReadTo(null);
+        Mossdeep("the Mind Badge");
+
+        // Team Magma before the Space Center, and in through its door
+        At("Hoenn", 680, 121, Direction.Up); Frames(20); Shot("hs210_magma_before_the_space_center");
+        StepOnto("Hoenn", 681, 122, Direction.Right);
+        ReadTo("The fuel is in that building"); Frames(10); Shot("hs211_maxie_points");
+        Box().Advance(); Frames(40); Shot("hs212_magma_filing_in");
+        ReadTo(null); Frames(20); Shot("hs213_magma_gone_in");
+        Mossdeep("Team Magma in the Space Center");
+
+        // The ground floor held, the grunt on the stairs and the letter
+        ComeThrough("MossdeepCity_SpaceCenter_1F", 7, 8, Direction.Up); Frames(20); Shot("hs214_space_center_held");
+        TalkTo("MossdeepCity_SpaceCenter_1F", "space_center_1f_stair_grunt", 1, 0);
+        IntoBattle("the grunt on the stairs");
+        ToMainMenu(game.Battle); Win();
+        ReadTo(null); Frames(20); Shot("hs215_the_stairs_clear");
+        Where("space_center_1f_stair_grunt");
+
+        // Upstairs: the three grunts, Steven, Maxie's plan and the battle beside Steven
+        ComeThrough("MossdeepCity_SpaceCenter_2F", 13, 1, Direction.Down);
+        ReadTo("three of us to one of you"); Frames(10); Shot("hs216_three_grunts");
+        IntoBattle("the first of three grunts");
+        ToMainMenu(game.Battle); Win();
+        ReadTo(null); Frames(20); Shot("hs217_three_grunts_beaten");
+        TalkTo("MossdeepCity_SpaceCenter_2F", "space_center_2f_steven", 1, 0);
+        ReadTo("pour every drop"); Frames(10); Shot("hs218_maxies_plan");
+        ReadTo(null);
+        TalkTo("MossdeepCity_SpaceCenter_2F", "space_center_2f_steven", 1, 0);
+        ReadTo("side by side"); Frames(10); Shot("hs219_steven_asks");
+        IntoBattle("the battle beside Steven");
+        ToMainMenu(game.Battle); Shot("hs21a_beside_steven");
+        Win();
+        ReadTo("might Team Aqua's wish"); Frames(10); Shot("hs21b_maxie_doubts");
+        ReadTo("come and see me at home"); Frames(10); Shot("hs21c_steven_thanks");
+        ReadTo(null); Frames(20); Shot("hs21d_space_center_saved");
+        Mossdeep("the Space Center saved");
+
+        // Steven's house: HM09, Dive
+        ComeThrough("MossdeepCity_StevensHouse", 3, 7, Direction.Up);
+        Frames(60); Shot("hs220_steven_comes_over");
+        ReadTo("It's an HM"); Frames(10); Shot("hs221_hm_dive");
+        ReadTo(null); Frames(20); Shot("hs222_stevens_house_after");
+        Mossdeep("Dive given");
+
+        // The Wingull's errand: from Fortree's boy to Mossdeep and home with the Mental Herb
+        TalkTo("FortreeCity_House4", "boy_3");
+        ReadTo(null);
+        ComeThrough("MossdeepCity_House2", 3, 7, Direction.Up); Frames(20); Shot("hs223_the_wingull_in_mossdeep");
+        TalkTo("MossdeepCity_House2", "mossdeep_house_wingull", 0, 1);
+        Frames(30); Shot("hs224_the_wingull_flies_home");
+        ReadTo(null);
+        ComeThrough("FortreeCity_House4", 3, 6, Direction.Up);
+        TalkTo("FortreeCity_House4", "boy_3");
+        ReadTo("Thanks for keeping an eye on it"); Frames(10); Shot("hs225_the_mental_herb");
+        ReadTo(null);
+        Mossdeep("the Wingull home");
+
+        // The treasure hunter's house on Route 124
+        ComeThrough("Route124_DivingTreasureHuntersHouse", 3, 7, Direction.Up);
+        TalkTo("Route124_DivingTreasureHuntersHouse", "man_5", -1, 0);
+        ReadTo("diving treasure hunter"); Frames(10); Shot("hs226_the_treasure_hunter");
+        ReadTo(null);
     }
 }

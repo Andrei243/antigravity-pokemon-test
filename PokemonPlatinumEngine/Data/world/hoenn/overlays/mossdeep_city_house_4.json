@@ -1,0 +1,11 @@
+{
+  // A house in Mossdeep City (plan 21 · H8, part a): a boy who loves secret bases, his sister and their Skitty. Secret
+  // bases are plan 21 · H10's, so the boy only tells of them
+  "area": "mossdeep_city_house_4",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "woman_2": { "name": "Woman", "dialog": [ "My little brother is always off looking for places to make secret bases. He comes home covered in leaves!" ] },
+    "ninja_boy": { "name": "Boy", "dialog": [ "A Pokémon that knows Secret Power can open up a hollow in a tree or a rock for a base. Have you made one yet?" ] },
+    "skitty": { "name": "Skitty", "npcType": "Pokemon", "species": "Skitty", "script": "Skitty", "still": true }
+  }
+}

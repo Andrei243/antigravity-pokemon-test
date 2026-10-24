@@ -1,0 +1,33 @@
+{
+  "key": "mossdeep_city_space_center_2f",
+  "index": 193,
+  "name": "Mossdeep City",
+  "matrix": 142,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 1, "to": "mossdeep_city_space_center_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "space_center_2f_rich_boy", "looks": "rich_boy", "movement": "look_north", "x": 6, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_2F_EventScript_RichBoy" },
+    { "id": "space_center_2f_gentleman", "looks": "gentleman", "movement": "look_north", "x": 11, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_SpaceCenter_2F_EventScript_Gentleman" },
+    { "id": "space_center_2f_scientist", "looks": "scientist_1", "movement": "wander_around", "x": 5, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_SpaceCenter_2F_EventScript_Scientist" },
+    { "id": "space_center_2f_steven", "looks": "steven", "movement": "look_south", "x": 1, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Steven" },
+    { "id": "space_center_grunt_6", "looks": "magma_member_m", "movement": "look_east", "x": 12, "z": 2, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Grunt6" },
+    { "id": "space_center_grunt_5", "looks": "magma_member_m", "movement": "look_north", "x": 13, "z": 3, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Grunt5" },
+    { "id": "space_center_grunt_7", "looks": "magma_member_m", "movement": "look_west", "x": 14, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Grunt7" },
+    { "id": "space_center_tabitha", "looks": "magma_member_m", "movement": "look_east", "x": 0, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Tabitha" },
+    { "id": "space_center_maxie", "looks": "maxie", "movement": "look_north", "x": 1, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "script": "MossdeepCity_SpaceCenter_2F_EventScript_Maxie" }
+  ],
+  "signs": [],
+  "triggers": []
+}

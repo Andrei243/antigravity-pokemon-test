@@ -1,0 +1,18 @@
+{
+  // Route 127 (plan 21 · H8, part a): the sea south of Mossdeep City, with fishermen on its sandbars. Its dark water
+  // goes down to the sea floor; the way south to Route 128 and the Seafloor Cavern is part b's. The black belt Koji
+  // swaps numbers for the PokéNav once beaten (route_127.txt)
+  "area": "route_127",
+  "bgmTrack": "hoenn/route120",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Camden", "trainer": { "dialogueBefore": "Triathlete Camden: Running, cycling, swimming... and battling. Let's see your stamina!", "dialogueAfter": "Triathlete Camden: My stamina ran out first." } },
+    "swimmer_f": { "name": "Donny", "trainer": { "dialogueBefore": "Triathlete Donny: Ugh, salt water up my nose again! A battle will clear my head!", "dialogueAfter": "Triathlete Donny: It's clearer, but now I'm sad." } },
+    "fisherman": { "name": "Jonah", "trainer": { "dialogueBefore": "Fisherman Jonah: You scared my fish away! You'll have to make it up to me with a battle.", "dialogueAfter": "Fisherman Jonah: Now the fish are laughing at me." } },
+    "fisherman_2": { "name": "Roger", "trainer": { "dialogueBefore": "Fisherman Roger: The big ones bite out here on the open sea. So do I!", "dialogueAfter": "Fisherman Roger: I'm the one who got reeled in." } },
+    "fisherman_3": { "name": "Henry", "trainer": { "dialogueBefore": "Fisherman Henry: Fishing's all about patience. Battling isn't. Here I come!", "dialogueAfter": "Fisherman Henry: Should've stayed patient." } },
+    "man_5": { "name": "Aidan", "trainer": { "dialogueBefore": "Bird Keeper Aidan: My birds fish out here with their beaks. Want to see them hunt?", "dialogueAfter": "Bird Keeper Aidan: They came home with nothing today." } },
+    "black_belt": { "name": "Koji", "script": "Koji", "trainer": { "dialogueBefore": "Black Belt Koji: Training on a sandbar in the middle of the sea builds a strong body. Hah!", "dialogueAfter": "Black Belt Koji: My body's strong, but my battling needs work." } },
+    "woman_5": { "name": "Athena", "trainer": { "dialogueBefore": "Cooltrainer Athena: You've come a long way to reach the open sea. Show me what you've learned!", "dialogueAfter": "Cooltrainer Athena: You've learned plenty." } }
+  }
+}

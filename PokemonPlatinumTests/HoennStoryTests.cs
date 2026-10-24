@@ -2214,4 +2214,236 @@ public class HoennStoryTests
         Assert.True(MusicLibrary.Exists("hoenn/awaken_legend"));
         Assert.False(MusicLibrary.Get("hoenn/awaken_legend")!.Loops);
     }
+
+    // ------------------------------------------------------------------ plan 21 · H8, part a: Mossdeep City
+
+    /// <summary>A game past Team Aqua's hideout, its submarine gone, standing by Mossdeep City's Pokémon Center.</summary>
+    private static Game AtMossdeep()
+    {
+        var game = PastTheMagmaHideout();
+        game.Story.Set("FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE");
+        game.Story.SetVar("VAR_SLATEPORT_HARBOR_STATE", 2);
+        game.Arrive("Hoenn", 668, 117);
+        return game;
+    }
+
+    /// <summary>A game with the Mind Badge won, Team Magma gone into the Space Center.</summary>
+    private static Game MagmaInTheSpaceCenter()
+    {
+        var game = AtMossdeep();
+        game.Arrive("MossdeepCity_Gym", 23, 9);
+        game.Talk("tate");
+        game.Arrive("Hoenn", 668, 117);
+        game.Step("MagmaEntersSpaceCenter");
+        return game;
+    }
+
+    [Fact]
+    public void TheTwinsBattleTogetherForTheMindBadgeAndTeamMagmaComesForTheFuel()
+    {
+        var game = AtMossdeep();
+        Assert.True(game.Story.Has("FLAG_HOENN_CHAPTER_NINE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA"));
+        Assert.Null(game.Present("mossdeep_maxie"));
+
+        game.Arrive("MossdeepCity_Gym", 23, 9);
+        var gym = game.Talk("tate");
+        Assert.Contains(gym.Log, l => l.StartsWith("battle hoenn_tate_and_liza_1 Won"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Mind"));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_TM_CALM_MIND"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM04")!));
+        foreach (string trainer in new[] { "hoenn_preston", "hoenn_blake", "hoenn_maura", "hoenn_samantha", "hoenn_virgil", "hoenn_hannah",
+                     "hoenn_nate", "hoenn_sylvia", "hoenn_clifford", "hoenn_macey", "hoenn_kathleen", "hoenn_nicholas" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+        // The Badge sets Team Magma on the Space Center and brings Slateport's harbour back to life
+        Assert.Equal(1, game.Story.Var("VAR_MOSSDEEP_CITY_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_MOSSDEEP_SPACE_CENTER_STATE"));
+        Assert.False(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN"));
+        // With the PokéNav, the twins are in Match Call
+        Assert.True(game.Story.Has("FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL"));
+        // Spoken to again, they only talk
+        Assert.DoesNotContain(game.Talk("liza").Log, l => l.StartsWith("battle"));
+
+        game.Arrive("Hoenn", 668, 117);
+        Assert.NotNull(game.Present("mossdeep_maxie"));
+        Assert.True(game.Fires("MagmaEntersSpaceCenter"));
+        game.Step("MagmaEntersSpaceCenter");
+        Assert.Equal(2, game.Story.Var("VAR_MOSSDEEP_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA"));
+        game.Arrive("Hoenn", 668, 117);
+        Assert.Null(game.Present("mossdeep_maxie"));
+        Assert.False(game.Fires("MagmaEntersSpaceCenter"));
+    }
+
+    [Fact]
+    public void TheGymsSwitchesMoveThePeopleOnTheirArrowsUntilTheRoomIsComeToAgain()
+    {
+        var game = AtMossdeep();
+        game.Arrive("MossdeepCity_Gym", 7, 30);
+        var preston = game.Present("psychic_m")!;
+        Assert.Equal((1, 30), (preston.GridX, preston.GridY));
+        var switched = game.StepAt(3, 30);
+        Assert.NotNull(switched);
+        Assert.Contains(switched!.Log, l => l == "rotatetiles yellow");
+        Assert.Equal((2, 30), (preston.GridX, preston.GridY));
+        Assert.Equal(Direction.Right, preston.Facing);
+        // Round again: up the loop's east side, facing north
+        game.Story.SetVar("VAR_TEMP_1", 0);
+        game.StepAt(3, 30);
+        Assert.Equal((2, 29), (preston.GridX, preston.GridY));
+        Assert.Equal(Direction.Up, preston.Facing);
+        // Come in again, everyone is where they first stood
+        game.Arrive("MossdeepCity_Gym", 7, 30);
+        Assert.Equal((1, 30), (preston.GridX, preston.GridY));
+        // The pad by the twins takes the player back to the door
+        var back = game.StepAt(21, 6);
+        Assert.Contains(back!.Log, l => l.StartsWith("warp MossdeepCity_Gym 7 30"));
+    }
+
+    [Fact]
+    public void StevenAndThePlayerBeatMaxieAndTabithaAndStevenGivesDiveAtHome()
+    {
+        var game = MagmaInTheSpaceCenter();
+        // The ground floor held: the visitors pressed west, the grunt on the stairs beaten and stepping aside
+        game.Arrive("MossdeepCity_SpaceCenter_1F", 7, 8);
+        Assert.Equal((1, 9), (game.Present("space_center_1f_sailor")!.GridX, game.Present("space_center_1f_sailor")!.GridY));
+        var stairs = game.Talk("space_center_1f_stair_grunt");
+        Assert.Contains(stairs.Log, l => l.StartsWith("battle hoenn_grunt_space_center_2 Won"));
+        Assert.Equal(3, game.Story.Var("VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE"));
+        game.Arrive("MossdeepCity_SpaceCenter_1F", 7, 8);
+        Assert.Equal((14, 2), (game.Present("space_center_1f_stair_grunt")!.GridX, game.Present("space_center_1f_stair_grunt")!.GridY));
+
+        // Upstairs the three grunts, one after another
+        game.Arrive("MossdeepCity_SpaceCenter_2F", 13, 1);
+        var three = game.Last;
+        foreach (string grunt in new[] { "hoenn_grunt_space_center_5", "hoenn_grunt_space_center_6", "hoenn_grunt_space_center_7" })
+            Assert.Contains(three.Log, l => l.StartsWith($"battle {grunt} Won"));
+        Assert.Equal(2, game.Story.Var("VAR_MOSSDEEP_SPACE_CENTER_STATE"));
+
+        // Steven asks Maxie, then fights beside the player
+        Assert.DoesNotContain(game.Talk("space_center_2f_steven").Log, l => l.StartsWith("battle"));
+        Assert.True(game.Story.Has("FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER"));
+        var multi = game.Talk("space_center_2f_steven");
+        Assert.Contains(multi.Log, l => l.StartsWith("battle hoenn_maxie_mossdeep and hoenn_tabitha_mossdeep with hoenn_steven_partner Won"));
+        Assert.Equal(3, game.Story.Var("VAR_MOSSDEEP_CITY_STATE"));
+        Assert.Equal(3, game.Story.Var("VAR_MOSSDEEP_SPACE_CENTER_STATE"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_MAGMA_SPACE_CENTER"));
+        Assert.Equal(1, game.Story.Var("VAR_STEVENS_HOUSE_STATE"));
+        Assert.Null(game.Present("space_center_maxie"));
+        Assert.Null(game.Present("space_center_2f_steven"));
+
+        // Steven at home: HM09, Dive
+        game.Arrive("MossdeepCity_StevensHouse", 3, 7);
+        Assert.True(game.Story.Has("FLAG_RECEIVED_HM_DIVE"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM09")!));
+        Assert.Equal(2, game.Story.Var("VAR_STEVENS_HOUSE_STATE"));
+        game.Arrive("MossdeepCity_StevensHouse", 3, 7);
+        var steven = game.Present("stevens_house_steven")!;
+        Assert.Equal((6, 5), (steven.GridX, steven.GridY));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM09")!));
+        // The Beldum and the letter wait for the Hall of Fame
+        Assert.Null(game.Present("stevens_house_ball"));
+    }
+
+    [Fact]
+    public void TheThreeGruntsSendAPlayerWhoSaysNoBackDownstairs()
+    {
+        var game = MagmaInTheSpaceCenter();
+        game.Decide = (_, _) => 1;
+        game.Arrive("MossdeepCity_SpaceCenter_2F", 13, 1);
+        Assert.Equal("MossdeepCity_SpaceCenter_1F", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_MOSSDEEP_SPACE_CENTER_STATE"));
+        Assert.DoesNotContain(game.Played.SelectMany(p => p.Host.Log), l => l.StartsWith("battle hoenn_grunt_space_center_5"));
+    }
+
+    [Fact]
+    public void FortreesWingullDeliversItsLetterInMossdeepAndTheBoyGivesTheMentalHerb()
+    {
+        var game = AtMossdeep();
+        game.Arrive("FortreeCity_House4", 3, 6);
+        game.Talk("boy_3");
+        Assert.True(game.Story.Has("FLAG_WINGULL_SENT_ON_ERRAND"));
+        // Not yet seen in Mossdeep: the bird is still away
+        Assert.DoesNotContain(game.Talk("boy_3").Log, l => l.StartsWith("give"));
+
+        game.Arrive("MossdeepCity_House2", 3, 7);
+        Assert.NotNull(game.Present("mossdeep_house_wingull"));
+        game.Talk("mossdeep_house_wingull");
+        Assert.True(game.Story.Has("FLAG_WINGULL_DELIVERED_MAIL"));
+        game.Arrive("MossdeepCity_House2", 3, 7);
+        Assert.Null(game.Present("mossdeep_house_wingull"));
+
+        game.Arrive("FortreeCity_House4", 3, 6);
+        Assert.NotNull(game.Present("fortree_house_wingull"));
+        game.Talk("boy_3");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_MENTAL_HERB"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Mental Herb")!));
+        game.Talk("boy_3");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Mental Herb")!));
+    }
+
+    [Fact]
+    public void MossdeepsPeopleGiveTheirGiftsOnceAndScottGoesOnHisWay()
+    {
+        var game = AtMossdeep();
+        game.Talk("boy_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("King's Rock")!));
+        game.Talk("boy_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("King's Rock")!));
+
+        int scott = game.Story.Var("VAR_SCOTT_STATE");
+        Assert.NotNull(game.Present("mossdeep_scott"));
+        game.Talk("mossdeep_scott");
+        Assert.Equal(scott + 1, game.Story.Var("VAR_SCOTT_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_SCOTT"));
+
+        game.Arrive("MossdeepCity_House3", 3, 7);
+        game.Talk("fisherman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Super Rod")!));
+        Assert.True(game.Story.Has("FLAG_HOENN_RECEIVED_SUPER_ROD"));
+
+        game.Arrive("MossdeepCity_SpaceCenter_1F", 7, 8);
+        game.Talk("space_center_1f_sailor");
+        game.Talk("space_center_1f_sailor");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Sun Stone")!));
+    }
+
+    [Fact]
+    public void TheTreasureHunterTradesAStoneForEachShard()
+    {
+        var game = AtMossdeep();
+        game.Arrive("Route124_DivingTreasureHuntersHouse", 3, 8);
+        // With nothing to trade he only says so
+        Assert.DoesNotContain(game.Talk("man_5").Log, l => l.StartsWith("give"));
+        Assert.True(game.Story.Has("FLAG_MET_DIVING_TREASURE_HUNTER"));
+        game.Bag.AddItem(ItemDatabase.Get("Red Shard")!, 1);
+        game.Decide = (_, _) => 0;
+        game.Talk("man_5");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Red Shard")!));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Fire Stone")!));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheNinthStretchsPeopleAndAnOlderSaveIsGivenThemInMossdeep()
+    {
+        string[] hidden =
+        {
+            "FLAG_HOENN_CHAPTER_NINE", "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA",
+            "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA", "FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN",
+            "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN", "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL",
+            "FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY"
+        };
+        var fresh = new Game();
+        foreach (string flag in hidden) Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN"));
+
+        // A save from before: Mossdeep City's arrival runs it, and no story version is raised
+        var old = PastTheMagmaHideout();
+        foreach (string flag in hidden) old.Story.Unset(flag);
+        old.Arrive("Hoenn", 668, 117);
+        foreach (string flag in hidden) Assert.True(old.Story.Has(flag), flag);
+    }
 }

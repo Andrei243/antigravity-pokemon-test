@@ -1,0 +1,8 @@
+{
+  // The sea floor under Route 126 (plan 21 · H8, part a), round the foot of Sootopolis's crater. Its shards, pearls and
+  // vitamins are hidden in the sand; the passage under the crater's wall into Sootopolis is part b's and leads nowhere yet
+  "area": "underwater_route_126",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round"
+}

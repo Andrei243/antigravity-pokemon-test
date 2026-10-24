@@ -1,0 +1,28 @@
+{
+  "key": "route_124_diving_treasure_hunters_house",
+  "index": 517,
+  "name": "Route 124",
+  "matrix": 460,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "route_124", "toWarp": 0 },
+    { "x": 4, "z": 8, "to": "route_124", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_5", "looks": "man_5", "movement": "look_west", "x": 5, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route124_DivingTreasureHuntersHouse_EventScript_TreasureHunter" }
+  ],
+  "signs": [
+    { "x": 7, "z": 1, "type": 0, "script": "Route124_DivingTreasureHuntersHouse_EventScript_ShardTradeBoard" }
+  ],
+  "triggers": []
+}

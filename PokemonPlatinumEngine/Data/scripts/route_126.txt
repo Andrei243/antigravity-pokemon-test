@@ -1,0 +1,25 @@
+# Route 126 (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route126/scripts.inc). Pablo, the triathlete, swaps numbers for the PokéNav once beaten.
+
+
+script Pablo
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_PABLO goto Known
+label Ask
+  speaker "Pablo"
+  say "You're tougher than a double race! Let's keep in touch and push each other on."
+  ask "Register Pablo in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_pablo
+  say "Great! I'll call you between laps."
+  end
+label Refused
+  say "Oh well. Back to my laps, then!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
