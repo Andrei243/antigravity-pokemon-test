@@ -123,9 +123,14 @@ partial class Harness
             var npc = m.NPCs.First(n => n.Key == key);
             var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
             At(map, npc.GridX + dx, npc.GridY + dy, facing);
-            // (Put down, the player stands on the ground: someone spoken to from the water, Steven on Route 120's bridge,
-            // whose deck the import doesn't lay, is spoken to by a surfer)
-            if (m.DeckAt(npc.GridX + dx, npc.GridY + dy) == null && m.IsDeepWater(npc.GridX + dx, npc.GridY + dy))
+            // (Put down, the player stands on the ground: someone who stands on a bridge's deck, Route 120's Steven, is
+            // spoken to from the deck, and someone spoken to from the water by a surfer)
+            if (m.DeckAt(npc.GridX + dx, npc.GridY + dy) is { } deck && npc.Level is { } level && MathF.Abs(level - deck) < 0.5f)
+            {
+                game.Player.SetHeight(deck);
+                Frames(2);
+            }
+            else if (m.DeckAt(npc.GridX + dx, npc.GridY + dy) == null && m.IsDeepWater(npc.GridX + dx, npc.GridY + dy))
             {
                 game.Player.SetMode(TravelMode.Surfing);
                 Frames(2);
@@ -668,9 +673,7 @@ partial class Harness
         ReadTo(null);
 
         // Route 120: Steven, the Devon Scope, the Kecleon on the bridge shown and battled, the Scope handed over
-        // (From the water east of him: the import lays no deck on this bridge, so its planks are water at two heights,
-        // and only the tile east of Steven is level with him)
-        TalkTo("Hoenn", "route120_steven", 1, 0);
+        TalkTo("Hoenn", "route120_steven");
         ReadTo("nobody can see"); Frames(10); Shot("hs129_steven_on_route_120");
         ReadTo("This is the Devon Scope"); Frames(10); Shot("hs130_the_devon_scope");
         Box().Advance(); Frames(20); Shot("hs131_the_kecleon_shows_itself");
@@ -1149,5 +1152,96 @@ partial class Harness
         ComeThrough("SootopolisCity", 31, 20, Direction.Up); Frames(10);
         TalkTo("SootopolisCity", "sootopolis_expert");
         ReadTo(null); Frames(20); Shot("hs24b_the_way_in_open");
+
+        // ---- Plan 21 · H8, part c: Sky Pillar, Rayquaza, Sootopolis calmed, Waterfall and Juan (hs250 to hs27x)
+        void Pillar(string what) =>
+            Console.WriteLine($"  {what}: sootopolis {story.Var("VAR_SOOTOPOLIS_CITY_STATE")}, sky pillar {story.Var("VAR_SKY_PILLAR_STATE")}, "
+                + $"cry done {story.Var("VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE")}, weather taken {story.Has("FLAG_SYS_WEATHER_CTRL")}, "
+                + $"clash seen {story.Has("FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN")}, titans in the city {story.Has("FLAG_LEGENDARIES_IN_SOOTOPOLIS")}, "
+                + $"leaders gone {story.Has("FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE")}, waterfall {story.Has("FLAG_RECEIVED_HM_WATERFALL")}, "
+                + $"wallace {story.Var("VAR_SOOTOPOLIS_WALLACE_STATE")}, rain badge {story.HasBadge(RegionDatabase.Hoenn, "Rain")}, "
+                + $"weather here {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}, song {game.Map.BgmTrackAt(game.Player.GridX, game.Player.GridY)}, "
+                + $"on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), {game.Player.Mode}");
+        // One step a way, taken as the player takes it, and the field let settle
+        void Stride(Direction way)
+        {
+            var from = (game.Player.GridX, game.Player.GridY, game.Map.Name);
+            engine.Steering = (way, false);
+            for (int i = 0; i < 60 && (game.Player.GridX, game.Player.GridY, game.Map.Name) == from && !engine.ScriptRunning; i++) Frames(1);
+            engine.Steering = null;
+            for (int i = 0; i < 60 && game.Player.IsMoving; i++) Frames(1);
+            Frames(4);
+        }
+
+        // Route 131's shore before Sky Pillar's cave, and up through it to the island: Wallace comes over, the quake
+        At("Hoenn", 536, 268, Direction.Up); game.EnterArea(); Frames(20); Shot("hs250_route131_sky_pillar");
+        ComeThrough("SkyPillar_Outside", 17, 14, Direction.Down);
+        ReadTo("I was in such a hurry that I left you behind"); Frames(10); Shot("hs251_wallace_at_sky_pillar");
+        ReadTo("An earthquake! We haven't a moment to spare!"); Frames(10); Shot("hs252_the_earthquake");
+        ReadTo("Even here, the weather has gone wrong"); Frames(10); Shot("hs253_the_weather_spreads");
+        ReadTo(null); Frames(20); Shot("hs254_wallace_gone_back");
+        Pillar("Wallace at Sky Pillar");
+        At("SkyPillar_Outside", 14, 6, Direction.Up); Frames(10); Shot("hs255_the_door_open");
+
+        // Inside: the first floor, and the fourth's cracked floor giving way into the third's middle
+        ComeThrough("SkyPillar_1F", 6, 12, Direction.Up); Frames(10); Shot("hs256_sky_pillar_1f");
+        ComeThrough("SkyPillar_4F", 5, 4, Direction.Right); Frames(10); Shot("hs257_the_cracked_floor");
+        Stride(Direction.Right);
+        Until(() => game.Map.Name == "SkyPillar_3F" && State() == GameState.Overworld, "the fall to the third floor", 300);
+        Frames(20); Shot("hs258_fallen_to_the_third_floor");
+        Pillar("through Sky Pillar's floor");
+
+        // The top: Rayquaza asleep, and the step before it
+        ComeThrough("SkyPillar_Top", 14, 11, Direction.Up); Frames(20); Shot("hs259_rayquaza_asleep");
+        StepOnto("SkyPillar_Top", 14, 9, Direction.Up);
+        Frames(90); Shot("hs25a_rayquaza_stirs");
+        ReadTo("The awakened Rayquaza flew off..."); Frames(10); Shot("hs25b_rayquaza_flies_off");
+        ReadTo(null); Frames(20); Shot("hs25c_the_top_empty");
+        Pillar("Rayquaza woken");
+
+        // Sootopolis: Rayquaza comes down, the titans go, the storm breaks
+        ComeThrough("SootopolisCity", 43, 32, Direction.Up);
+        Frames(150); Shot("hs260_rayquaza_over_sootopolis");
+        ReadTo("Rayquaza's roar rang round the crater"); Frames(10); Shot("hs261_the_storm_breaks");
+        ShotCrop("hs261_the_storm_breaks_native", 640, 300, 640, 360, 2);
+        ReadTo("Rayquaza flew off into the clear sky..."); Frames(10); Shot("hs262_rayquaza_gone");
+        ReadTo(null); Frames(30); Shot("hs263_sootopolis_calm");
+        Pillar("Rayquaza come");
+
+        // By the Gym: Maxie and Archie have their say and go; Wallace gives Waterfall and steps aside
+        TalkTo("SootopolisCity", "sootopolis_maxie");
+        ReadTo("All our schemes"); Frames(10); Shot("hs264_maxie");
+        ReadTo(null);
+        TalkTo("SootopolisCity", "sootopolis_archie");
+        ReadTo("What we tried to do meant nothing"); Frames(10); Shot("hs265_archie");
+        ReadTo(null); Frames(20); Shot("hs266_the_leaders_gone");
+        TalkTo("SootopolisCity", "sootopolis_wallace");
+        ReadTo("Please, take this as a token of my gratitude."); Frames(10); Shot("hs267_wallaces_thanks");
+        ReadTo("That holds Waterfall"); Frames(10); Shot("hs268_hm07_waterfall");
+        ReadTo(null); Frames(20); Shot("hs269_the_gym_door_open");
+        Pillar("Waterfall given");
+
+        // Juan's Gym: the first field of ice crossed tile by tile, its stairs coming clear, and a tile stepped on twice
+        ComeThrough("SootopolisCity_Gym_1F", 8, 24, Direction.Up); Frames(20); Shot("hs270_the_gym_of_ice");
+        At("SootopolisCity_Gym_1F", 8, 20, Direction.Up); Frames(4);
+        foreach (var way in new[] { Direction.Up, Direction.Left, Direction.Up, Direction.Right, Direction.Right, Direction.Up, Direction.Left })
+            Stride(way);
+        Frames(60); Shot("hs271_the_first_field_crossed");
+        if (game.Map.Puzzle is SootopolisIce ice)
+            Console.WriteLine($"  the ice: count {ice.Count}, flights open {ice.FlightsOpen}, cracked {ice.Cracked.Count}");
+        Stride(Direction.Down);
+        Until(() => game.Map.Name == SootopolisIce.Basement && State() == GameState.Overworld, "the fall to the basement", 300);
+        Frames(20); Shot("hs272_fallen_through_the_ice");
+
+        // Juan, his battle and the Rain Badge
+        ComeThrough("SootopolisCity_Gym_1F", 8, 24, Direction.Up); Frames(4);
+        TalkTo("SootopolisCity_Gym_1F", "juan");
+        ReadTo("It was I who taught Wallace everything he knows."); Frames(10); Shot("hs273_juan");
+        IntoBattle("Juan's battle");
+        ToMainMenu(game.Battle); Shot("hs274_juans_battle");
+        Win();
+        ReadTo("received the Rain Badge from Juan!"); Frames(10); Shot("hs275_the_rain_badge");
+        ReadTo(null); Frames(20); Shot("hs276_juan_after");
+        Pillar("the Rain Badge");
     }
 }

@@ -1,0 +1,31 @@
+{
+  "key": "pacifidlog_town_pokemon_center_1f",
+  "index": 97,
+  "name": "Pacifidlog Town",
+  "matrix": 46,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "pacifidlog_town", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "pacifidlog_town", "toWarp": 0 },
+    { "x": 1, "z": 6, "to": "pacifidlog_town_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pacifidlog_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_west", "x": 10, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_PokemonCenter_1F_EventScript_OldMan" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "look_north", "x": 2, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_PokemonCenter_1F_EventScript_Girl" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_around", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_PokemonCenter_1F_EventScript_Woman" },
+    { "id": "man_5", "looks": "man_5", "movement": "look_north", "x": 12, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_PokemonCenter_1F_EventScript_ExplosionTutor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

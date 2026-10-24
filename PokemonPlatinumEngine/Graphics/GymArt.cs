@@ -14,6 +14,55 @@ internal static class GymArt
 {
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
 
+    /// <summary>
+    /// A crack across a tile of the Sootopolis Gym's thin ice, 32 by 32 (plan 21 · H8, part c; style guide, "Gyms", "The
+    /// Sootopolis Gym's ice"): dark lines from a broken middle out to the edges, with a pale rim on their lit side, over
+    /// nothing, so the ice shows through.
+    /// </summary>
+    public static void PaintIceCrack(PixelCanvas c)
+    {
+        var dark = Rgb(74, 108, 140);
+        var rim = Rgb(232, 246, 252);
+        // Five runs from the broken middle, each a step at a time toward an edge
+        (int dx, int dy)[][] runs =
+        {
+            new[] { (1, 0), (1, -1), (1, 0), (1, 0), (1, -1), (1, 0), (1, 0), (1, 0), (1, -1), (1, 0), (1, 0), (1, 0) },
+            new[] { (0, 1), (-1, 1), (0, 1), (0, 1), (-1, 1), (0, 1), (0, 1), (-1, 1), (0, 1), (0, 1), (0, 1) },
+            new[] { (-1, 0), (-1, 0), (-1, 1), (-1, 0), (-1, 0), (-1, 0), (-1, 1), (-1, 0), (-1, 0), (-1, 0) },
+            new[] { (0, -1), (1, -1), (0, -1), (0, -1), (0, -1), (1, -1), (0, -1), (0, -1), (0, -1), (0, -1) },
+            new[] { (1, 1), (1, 1), (1, 0), (1, 1), (1, 1), (1, 1), (0, 1) },
+        };
+        foreach (var run in runs)
+        {
+            int x = 15, y = 16;
+            foreach (var (dx, dy) in run)
+            {
+                x += dx; y += dy;
+                if (x < 1 || y < 1 || x > 30 || y > 30) break;
+                c.Set(x, y, dark);
+                c.Set(x - 1, y - 1, rim);
+            }
+        }
+        // The broken middle: a star of chips
+        for (int y = 14; y < 19; y++)
+            for (int x = 13; x < 18; x++)
+                if (Math.Abs(x - 15) + Math.Abs(y - 16) <= 2) c.Set(x, y, (x + y) % 2 == 0 ? dark : rim);
+    }
+
+    /// <summary>
+    /// A glaze of ice over a step of the Sootopolis Gym's stairs, 32 by 32: pale blue ice, lighter along its top and with
+    /// a glint, that slides whoever climbs it back down until the floor below has all been crossed.
+    /// </summary>
+    public static void PaintIceGlaze(PixelCanvas c)
+    {
+        var ice = Tone.Of(176, 214, 236, 222, 242, 252, 132, 176, 210);
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
+                c.Set(x, y, y < 2 ? ice.Light : y > 29 ? ice.Dark : ice.Base);
+        for (int i = 0; i < 6; i++) c.Set(6 + i, 6 + i / 2, ice.Light);
+        for (int i = 0; i < 3; i++) c.Set(22 + i, 20 + i, ice.Light);
+    }
+
     /// <summary>A punching bag of red leather hanging from its chain, banded at top and foot, 24 by 44.</summary>
     public static void PaintPunchingBag(PixelCanvas c)
     {

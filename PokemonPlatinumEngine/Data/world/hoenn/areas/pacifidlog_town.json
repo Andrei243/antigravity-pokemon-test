@@ -1,0 +1,64 @@
+{
+  "key": "pacifidlog_town",
+  "index": 37,
+  "name": "Pacifidlog Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "encounters": "pacifidlog_town",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 488, "z": 275, "to": "pacifidlog_town_pokemon_center_1f", "toWarp": 0 },
+    { "x": 496, "z": 273, "to": "pacifidlog_town_house_1", "toWarp": 0 },
+    { "x": 483, "z": 282, "to": "pacifidlog_town_house_2", "toWarp": 0 },
+    { "x": 492, "z": 284, "to": "pacifidlog_town_house_3", "toWarp": 0 },
+    { "x": 482, "z": 272, "to": "pacifidlog_town_house_4", "toWarp": 0 },
+    { "x": 497, "z": 281, "to": "pacifidlog_town_house_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl_1", "looks": "girl_1", "movement": "look_west", "x": 490, "z": 283, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_EventScript_Girl" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 491, "z": 274, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_EventScript_Fisherman" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "look_south", "x": 489, "z": 276, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_EventScript_NinjaBoy" }
+  ],
+  "signs": [
+    { "x": 489, "z": 275, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 487, "z": 276, "type": 0, "script": "PacifidlogTown_EventScript_TownSign" },
+    { "x": 490, "z": 275, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" }
+  ],
+  "triggers": []
+}

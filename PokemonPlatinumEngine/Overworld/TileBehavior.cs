@@ -359,7 +359,11 @@ public static class TileBehaviors
             => (BehaviourSupport.Ruled, "Ridden only on the Acro Bike, hopping along its length and never across (FieldMovement.RailRunsNorthSouth; plan 21 · H3); never walked."),
         TileBehavior.BumpySlope
             => (BehaviourSupport.Ruled, "Hopped up only on the Acro Bike (plan 21 · H3); anyone goes down it."),
-        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.SecretBaseSpot
+        TileBehavior.ThinIce
+            => (BehaviourSupport.Ruled, "In the Sootopolis Gym (its puzzle, SootopolisIce; plan 21 · H8, part c) it cracks under a first step and gives way under a second, dropping the walker to the floor below, and a field crossed tile by tile clears the glazed stairs above it; walked like plain ground anywhere else."),
+        TileBehavior.CrackedFloor
+            => (BehaviourSupport.Ruled, "Gives way under a walker where its area names the floor below, dropping them onto the same tile there (Map.HoleTargetAt, Emerald's setholewarp: Sky Pillar; plan 21 · H8, part c); ridden over on the Bicycle, and walked like plain ground anywhere else."),
+        TileBehavior.SecretBaseSpot
             or TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest

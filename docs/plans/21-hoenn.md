@@ -763,7 +763,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     patrons back after Mossdeep's Gym (H8).
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
   to Dive; part b done 2026-10-24, wave 44: Route 128, the Seafloor Cavern, Kyogre, Sootopolis and its clash, Wallace;
-  tests and shots written, not run; what is left is listed under "Left for part c")
+  tests and shots written, not run; part c done 2026-10-24, wave 45: Routes 129 to 131, Pacifidlog, Sky Pillar and
+  Rayquaza, Sootopolis calmed, Waterfall and Juan's Rain Badge; what is left is listed under "Left for part d")
   - **Opened** (18 areas, 230 in all): Routes 125, 126 and 127 above water and the sea floors under them
     (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, matrix 5, is the post-game's: Route 125 has no dark
     water until Emerald's abnormal weather lays it for the Marine Cave, plan 21 · H12), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
@@ -903,6 +904,57 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     under the titans) and the rough water Rayquaza's scene lays; Steven's walk across the terraces in his guide (a fade
     here); the Wailmer Doll (H10); and part a's leftovers (the rival's Rayquaza call on the Space Center's second floor,
     the launch count by weeks, Emerald's choice of three beside Steven, the Beldum and the letter, the Ancient Tomb).
+  - **Part c** (done 2026-10-24, wave 45: Sky Pillar to the Rain Badge; tests written and run with `--filter`, the
+    `hoenn` mode shot once; what is left is listed under "Left for part d")
+  - **Opened** (21 areas, 280 in all): Routes 129, 130 and 131 (Route 131 laid with Sky Pillar's island, as its own script
+    always lays it), Pacifidlog Town (`Architecture.Raft`, the style guide's row first; its log walkways a deck of logs in
+    `GbaCover.HoennRanges`) with its Pokémon Center on both floors and five houses, Sky Pillar's cave, island, five floors
+    and top (laid clean, `GbaMaps.FirstLayouts`; its stone floors and rock walls in `GbaCover.HoennRanges`), and Juan's Gym
+    with its basement. Every map is in `RegionDatabase`'s Hoenn list. Shut: Route 132 and on, Shoal Cave, Mirage Island,
+    the Mystery Events house, the sea floor under Route 129 (the Marine Cave's, H12).
+  - **Played**: Wallace at Sky Pillar's door, the quake, the weather spreading and Wallace gone back to Sootopolis (state
+    4); the door into the tower (the overlay's `doors`, opened by `FLAG_WALLACE_GOES_TO_SKY_PILLAR`); the fourth floor's
+    cracked floor dropping into the third's middle; Rayquaza woken on the top (state 5, `VAR_SKY_PILLAR_STATE` 1) and flown
+    off; Rayquaza over Sootopolis's harbour, the titans gone and the weather cleared (`FLAG_SYS_WEATHER_CTRL`,
+    `FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN`, `FLAG_LEGENDARIES_IN_SOOTOPOLIS` cleared, `VAR_SKY_PILLAR_STATE` 2) to the new
+    `hoenn/rayquaza_appears`; Steven, Wallace, Archie and Maxie by the Gym, the townsfolk's lines of Rayquaza, Archie and
+    Maxie leaving (`FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE`, which opens the Gym), Wallace's HM07 (`FLAG_RECEIVED_HM_WATERFALL`)
+    and his step aside (`VAR_SOOTOPOLIS_WALLACE_STATE`); Juan's ice, his battle (`hoenn_juan_1`), the Rain Badge, TM03,
+    the basement's ten trainers beaten, his Match Call, and the city calm for good (state 6). Every scene a `scene`. **No
+    story version raised**: `common.HoennChapterEleven` (`FLAG_HOENN_CHAPTER_ELEVEN`). Rulings: "Sky Pillar, Rayquaza and
+    the Rain Badge".
+  - **Engine**: `Overworld/SootopolisIce.cs` (a `GymPuzzle`: `StepOn`, `Count`, `FlightsOpen`, `Cracked`, `Glazed`; the
+    engine tells it each tile the player comes onto, `GameEngine.WalkTheIce`, and drops a faller to the basement), drawn by
+    `GymPieces.BuildSootopolis` (`GymArt.PaintIceCrack`, `PaintIceGlaze`; the style guide's "The Sootopolis Gym's ice");
+    cracked floors that drop to the floor below (the overlay's `holeTo`, `MapArea.HoleTo`, `Map.HoleTargetAt`,
+    `GameEngine.FallThroughCrackedFloor`, followed by `WorldWalk`); `TileBehavior.ThinIce` and `CrackedFloor` ruled;
+    `RegionSpawn.Map` (a spawn on a map of its own: Sootopolis, which Fly reaches from the town map's middle of Route 126,
+    and the importer writes it for every heal location off the overworld) and Fly's places reachable on their own maps
+    (`GameEngine.Reachable`); `Architecture.Raft`. The GBA import: water a bridge crosses at the lowest level of its
+    shores and a bridge's run read to its ends (Route 120's, 119's and 104's decks), an object of a bridge's elevation on
+    its deck (Route 120's Steven, Route 119's rival on his bike), a plank of no behaviour on a deck drawn as the deck, and
+    the shallows out at sea a sandbar to look at (Route 128's islet); 16 chunks of the earlier areas moved for it, and
+    the harness's `TalkTo` speaks to Steven from the deck again.
+  - **Looks and music**: `juan` in `characters.json` (our own take); `hoenn/rayquaza_appears` (17.1 s, played once,
+    −18.8 LUFS, clash-free, not yet heard).
+  - **Tests** (run with `--filter`): `HoennStoryTests` (`RayquazaWakesOnSkyPillarAndComesDownOverSootopolisEndingTheClash`,
+    `TheSootopolisGymsIceOpensItsStairsFieldByFieldAndDropsWhoeverStepsTwice`, `JuanBattlesForTheRainBadgeAndCalmsSootopolisForGood`),
+    `HoennTests` (`PacifidlogSkyPillarAndJuansGymAreOpen`, `RouteOneTwentysBridgeIsADeckOverItsPondAndStevenStandsOnIt`; the
+    walk of the whole game reaches every new room, down through the fourth floor's crack), `FieldMovementTests` (thin ice
+    and a cracked floor ruled). Golden `scripts.txt` moves (common.txt, the new places' scripts, Sootopolis's, phone.txt);
+    `RomanianTests.TheTownMapSaysWhatEachPlaceIsInRomanian` wants Sootopolis's new town map line in Romanian (the merge's).
+  - **Shots**: the `hoenn` mode's `h196`–`h209` (Route 129, Pacifidlog and two rooms, Route 131's beach before the cave,
+    Sky Pillar's cave, island, first and fourth floors and top, Juan's Gym and its basement, Route 120's bridge from its
+    deck, Route 128's sandbar) and `h210_pacifidlog_night`; the scenes `hs250`–`hs276` at the end of `HoennScenes`
+    (Wallace at Sky Pillar and the quake, the open door, the first floor, the fall through the fourth, Rayquaza asleep,
+    stirring and gone, Rayquaza over Sootopolis with a `_native` crop, the calm, Maxie, Archie, Wallace's HM07, the Gym of
+    ice, the first field crossed and the fall, Juan, his battle and the Rain Badge).
+  - **Left for part d**: Shoal Cave and its tide (two layouts by the hour through a new command behind the warp's fade;
+    the Shoal Salt and Shells and the Shell Bell); Route 132 to 134 back to Slateport; Emerald's clash layout and the rough
+    water Rayquaza's scene lays, and its white flash; Archie and Maxie at Mt. Pyre's summit giving back the orbs
+    (`VAR_MT_PYRE_STATE` 2); Pacifidlog's daily Return or Frustration, its trade and the Explosion tutor; Mirage Island;
+    the abnormal weather over Ever Grande City (H9 opens it); the Mach Bike's climb of the cracked floors and Rayquaza's
+    battle (H12); and parts a's and b's leftovers above but Sootopolis's spawn, which is done.
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks

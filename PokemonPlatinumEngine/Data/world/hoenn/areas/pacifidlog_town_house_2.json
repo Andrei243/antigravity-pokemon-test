@@ -1,0 +1,28 @@
+{
+  "key": "pacifidlog_town_house_2",
+  "index": 100,
+  "name": "Pacifidlog Town",
+  "matrix": 49,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "pacifidlog_town", "toWarp": 2 },
+    { "x": 5, "z": 8, "to": "pacifidlog_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_House2_EventScript_FanClubYoungerBrother" },
+    { "id": "azurill", "looks": "azurill", "movement": "look_around", "x": 8, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_House2_EventScript_HappyAzurill" },
+    { "id": "azurill_2", "looks": "azurill", "movement": "look_around", "x": 1, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_House2_EventScript_UnhappyAzurill" }
+  ],
+  "signs": [],
+  "triggers": []
+}

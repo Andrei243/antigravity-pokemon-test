@@ -34,7 +34,7 @@ public static class SpawnLocations
 
     /// <summary>A region's spawn locations as its file lists them (plan 18 · W1), numbered as the file numbers them.</summary>
     public static IReadOnlyList<SpawnLocation> Of(Region region) =>
-        (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, region.OverworldMap ?? "Sinnoh")).ToList();
+        (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, p.Map ?? region.OverworldMap ?? "Sinnoh")).ToList();
 
     /// <summary>
     /// Sinnoh's twenty, from <c>regions/sinnoh.json</c>: the places the members with no region speak of. Fly's choice
@@ -71,7 +71,7 @@ public static class SpawnLocations
         if (System.IO.File.Exists(GameDataFiles.PathOf(path)))
             foreach (var p in GameDataFiles.Load<List<RegionSpawn>>(path))
                 if (list.All(s => s.Id != p.Id))
-                    list.Add(new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, region.OverworldMap ?? "Sinnoh"));
+                    list.Add(new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, p.Map ?? region.OverworldMap ?? "Sinnoh"));
         return list.OrderBy(s => s.Id).ToList();
     }
 

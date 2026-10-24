@@ -258,6 +258,27 @@
     { "name": "CaveOfOrigin_Entrance", "matrix": 224, "area": "cave_of_origin_entrance", "trees": "Round", "setting": "Cave" },
     { "name": "CaveOfOrigin_1F", "matrix": 225, "area": "cave_of_origin_1f", "trees": "Round", "setting": "Cave" },
     { "name": "CaveOfOrigin_B1F", "matrix": 229, "area": "cave_of_origin_b1f", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H8, part c: Juan's Gym (its floor of thin ice, world.json's puzzle SootopolisIce, and the basement a
+    // fall through it lands in), Pacifidlog Town's Pokémon Center and five houses on their logs, and Sky Pillar, from
+    // its door on Route 131 to the top where Rayquaza sleeps (laid clean, as Emerald lays it until Rayquaza comes down:
+    // GbaMaps.FirstLayouts)
+    { "name": "SootopolisCity_Gym_1F", "matrix": 145, "area": "sootopolis_city_gym_1f", "trees": "Round", "setting": "Indoors", "puzzle": "SootopolisIce" },
+    { "name": "SootopolisCity_Gym_B1F", "matrix": 146, "area": "sootopolis_city_gym_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_PokemonCenter_1F", "matrix": 46, "area": "pacifidlog_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_PokemonCenter_2F", "matrix": 47, "area": "pacifidlog_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_House1", "matrix": 48, "area": "pacifidlog_town_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_House2", "matrix": 49, "area": "pacifidlog_town_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_House3", "matrix": 50, "area": "pacifidlog_town_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_House4", "matrix": 51, "area": "pacifidlog_town_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "PacifidlogTown_House5", "matrix": 52, "area": "pacifidlog_town_house_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "SkyPillar_Outside", "matrix": 265, "area": "sky_pillar_outside", "trees": "Round" },
+    { "name": "SkyPillar_Entrance", "matrix": 264, "area": "sky_pillar_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_1F", "matrix": 266, "area": "sky_pillar_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_2F", "matrix": 267, "area": "sky_pillar_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_3F", "matrix": 268, "area": "sky_pillar_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_4F", "matrix": 269, "area": "sky_pillar_4f", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_5F", "matrix": 271, "area": "sky_pillar_5f", "trees": "Round", "setting": "Cave" },
+    { "name": "SkyPillar_Top", "matrix": 272, "area": "sky_pillar_top", "trees": "Round" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
@@ -363,6 +384,14 @@
     "sootopolis_city_pokemon_center_1f", "sootopolis_city_pokemon_center_2f", "sootopolis_city_mart",
     "sootopolis_city_house_1", "sootopolis_city_house_2", "sootopolis_city_house_3", "sootopolis_city_house_4",
     "sootopolis_city_house_5", "sootopolis_city_house_6", "sootopolis_city_house_7", "sootopolis_city_lotad_and_seedot_house",
-    "cave_of_origin_entrance", "cave_of_origin_1f", "cave_of_origin_b1f"
+    "cave_of_origin_entrance", "cave_of_origin_1f", "cave_of_origin_b1f",
+    // Plan 21 · H8, part c: Routes 129 to 131 and Pacifidlog Town with its rooms, Sky Pillar, and Juan's Gym (Shoal Cave
+    // and its tide, and the sea floor under Route 129, are left for later)
+    "route_129", "route_130", "route_131", "pacifidlog_town",
+    "pacifidlog_town_pokemon_center_1f", "pacifidlog_town_pokemon_center_2f", "pacifidlog_town_house_1",
+    "pacifidlog_town_house_2", "pacifidlog_town_house_3", "pacifidlog_town_house_4", "pacifidlog_town_house_5",
+    "sky_pillar_outside", "sky_pillar_entrance", "sky_pillar_1f", "sky_pillar_2f", "sky_pillar_3f", "sky_pillar_4f",
+    "sky_pillar_5f", "sky_pillar_top",
+    "sootopolis_city_gym_1f", "sootopolis_city_gym_b1f"
   ]
 }

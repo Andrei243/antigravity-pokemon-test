@@ -1,0 +1,60 @@
+{
+  "key": "route_131",
+  "index": 39,
+  "name": "Route 131",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE119",
+  "nightMusic": "MUS_ROUTE119",
+  "encounters": "route_131",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 536, "z": 266, "to": "sky_pillar_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "walk_sequence_north_east_west_south", "x": 541, "z": 292, "facing": 0, "rangeX": 5, "rangeZ": 7, "trainer": "normal", "sight": 3, "script": "TRAINER_RICHARD" },
+    { "id": "swimmer_m_2", "looks": "swimmer_m", "movement": "look_south_west_and_east", "x": 518, "z": 279, "facing": 1, "rangeX": 0, "rangeZ": 7, "trainer": "normal", "sight": 4, "script": "TRAINER_HERMAN" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "look_south_north_and_east", "x": 510, "z": 282, "facing": 1, "rangeX": 6, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_SUSIE" },
+    { "id": "swimmer_f_2", "looks": "swimmer_f", "movement": "walk_sequence_west_south_east_north", "x": 531, "z": 285, "facing": 2, "rangeX": 3, "rangeZ": 5, "trainer": "normal", "sight": 3, "script": "TRAINER_KARA" },
+    { "id": "swimmer_f_3", "looks": "swimmer_f", "movement": "look_south", "x": 509, "z": 276, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_RELI_AND_IAN" },
+    { "id": "tuber_m_swimming", "looks": "tuber_m_swimming", "movement": "look_south", "x": 508, "z": 276, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_RELI_AND_IAN" },
+    { "id": "swimmer_m_3", "looks": "swimmer_m", "movement": "walk_south_and_north", "x": 552, "z": 280, "facing": 1, "rangeX": 1, "rangeZ": 3, "trainer": "normal", "sight": 5, "script": "TRAINER_KEVIN" },
+    { "id": "swimmer_f_4", "looks": "swimmer_f", "movement": "walk_north_and_south", "x": 552, "z": 287, "facing": 0, "rangeX": 1, "rangeZ": 3, "trainer": "normal", "sight": 5, "script": "TRAINER_TALIA" }
+  ],
+  "signs": [],
+  "triggers": []
+}

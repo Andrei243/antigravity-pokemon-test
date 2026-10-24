@@ -1,0 +1,40 @@
+{
+  "key": "sky_pillar_5f",
+  "index": 322,
+  "name": "Sky Pillar",
+  "matrix": 271,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "sky_pillar_5f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Sableye", "level": 33 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Sableye", "level": 34 },
+    { "species": "Claydol", "level": 36 },
+    { "species": "Banette", "level": 37 },
+    { "species": "Banette", "level": 38 },
+    { "species": "Claydol", "level": 36 },
+    { "species": "Claydol", "level": 37 },
+    { "species": "Altaria", "level": 38 },
+    { "species": "Altaria", "level": 39 },
+    { "species": "Altaria", "level": 39 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 3, "z": 1, "to": "sky_pillar_4f", "toWarp": 2 },
+    { "x": 10, "z": 1, "to": "sky_pillar_top", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

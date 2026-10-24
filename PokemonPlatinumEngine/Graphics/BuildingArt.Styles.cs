@@ -125,6 +125,7 @@ internal static partial class BuildingArt
             Architecture.Bellfield => Pitched(WallKind.Boards, Rgb(196, 112, 58)) with { Chimney = true, FlowerBoxes = true },
             Architecture.Dockyard => Pitched(WallKind.Brick, Rgb(104, 82, 124)) with { Chimney = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
+            Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

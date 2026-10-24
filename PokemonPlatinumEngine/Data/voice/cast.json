@@ -396,6 +396,10 @@
       "note": "first spoken at phone.txt(50)",
       "provisional": true
     },
+    "juan": {
+      "note": "first spoken at phone.txt(405)",
+      "provisional": true
+    },
     "jupiter": {},
     "karen": {
       "note": "first spoken at pokemon_league_karen_room.txt(10)",
@@ -1088,6 +1092,7 @@
     "Jeffrey": "jeffrey",
     "Jessica": "jessica",
     "Joey": "joey",
+    "Juan": "juan",
     "Jupiter": "jupiter",
     "Karen": "karen",
     "Katelyn": "katelyn",

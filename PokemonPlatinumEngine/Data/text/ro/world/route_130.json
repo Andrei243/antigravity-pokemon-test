@@ -1,0 +1,83 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Rodney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Rodney: They say an island appears out here now and then. I've been waiting for weeks!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Rodney: Still no island. Just you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Katie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Katie: The water's so calm out here. Let's make some waves!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Katie: That was more of a splash."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Santiago"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Santiago: Pacifidlog's not far now. Beat me and you'll get there sooner!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Santiago: Go on, it's just west of here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

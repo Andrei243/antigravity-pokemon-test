@@ -1295,6 +1295,7 @@ public static class WorldMapBuilder
             // And the one place below or above an area whose floor is no map of the sea's (plan 21 · H8, part b)
             DiveSpot = SpotOf(world, overlay?.DiveTo),
             EmergeSpot = SpotOf(world, overlay?.EmergeTo),
+            HoleTo = overlay?.HoleTo,
             EastSea = file?.EastSea ?? false,
             UnownTable = file?.UnownTable ?? 0
         };

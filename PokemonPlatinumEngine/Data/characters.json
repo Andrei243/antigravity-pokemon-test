@@ -143,6 +143,9 @@
     // Wallace (plan 21 · H8, part b; our own take), once Sootopolis's Gym Leader: swept sea-green hair, a long white coat
     // over a pale lilac shirt with a sea-blue scarf, white trousers
     "wallace": { "hairColor": "#5ab4b0", "hair": "Swept", "top": "#f2f2f6", "accent": "#3a7ac0", "bottom": "#eeeef4", "shoes": "#3a4a6a", "eyes": "#3a5a7a", "coat": true, "scarf": true, "build": "Adult", "height": 1.1 },
+    // Juan (plan 21 · H8, part c; our own take), Sootopolis's Gym Leader and Wallace's mentor: swept black hair and a
+    // trim mustache, a dark navy tailcoat over a white shirt with a violet bow, dark trousers
+    "juan": { "hairColor": "#22222e", "hair": "Swept", "top": "#26304e", "accent": "#7a4ab0", "bottom": "#22283e", "shoes": "#141418", "eyes": "#2e2a3a", "mustache": true, "coat": true, "build": "Adult", "height": 1.06 },
     // Captain Stern of Slateport's shipyard: short dark hair and a full beard, a white lab coat with a sea-blue collar
     "capt_stern": { "hairColor": "#3e3028", "top": "#f0f2f6", "accent": "#3a6a9a", "bottom": "#4a4e5a", "shoes": "#2e2a28", "eyes": "#3a2e28", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
     // Archie, the leader of Team Aqua: a black bandana over dark hair, a beard, a dark diver's suit with a gold chain

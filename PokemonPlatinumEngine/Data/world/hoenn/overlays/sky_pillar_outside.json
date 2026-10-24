@@ -1,0 +1,18 @@
+{
+  // Sky Pillar's island (plan 21 · H8, part c): the ledge round the foot of the tower, come to through the cave from
+  // Route 131's shore. Its door is shut (Emerald's closed door, a blocked tile the import leaves leading nowhere) until
+  // Wallace opens it (FLAG_WALLACE_GOES_TO_SKY_PILLAR: the overlay's door into the first floor). Wallace waits here once
+  // he has left the Cave of Origin, and the first time the player comes (VAR_SOOTOPOLIS_CITY_STATE 3) he comes over,
+  // the ground shakes, and he goes back to Sootopolis, leaving the climb to the player (sky_pillar_outside.txt). The
+  // titans' weather spreads even here while the story keeps it (FLAG_SYS_WEATHER_CTRL)
+  "area": "sky_pillar_outside",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "doors": [ { "warp": 1, "map": "SkyPillar_1F", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_WALLACE_GOES_TO_SKY_PILLAR" } ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "people": {
+    "sky_pillar_wallace": { "name": "Wallace", "npcType": "wallace", "script": "Wallace", "still": true }
+  }
+}

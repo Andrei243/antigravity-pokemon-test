@@ -52,6 +52,10 @@ internal sealed class GymPieces
     // The Blackthorn Gym's (plan 20 · J11, part c): a slab of each size, built unturned round its middle button
     private Piece? slabWide, slabNarrow;
 
+    // The Sootopolis Gym's (plan 21 · H8, part c): a crack laid on a tile of its thin ice, and a glaze over a step of its
+    // stairs, each drawn on the tiles the ice has them
+    private Piece? iceCrack, iceGlaze;
+
     // The League's rooms (plan 01 · M9, part 2d): what stands still (carpets, rails, piers, the machine, the Pokémon
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
@@ -151,6 +155,15 @@ internal sealed class GymPieces
                         yield return (rail, Matrix4x4.CreateRotationY(-way * MathF.PI / 2f) * pivot);
                 i++;
             }
+            yield break;
+        }
+        if (map.Puzzle is SootopolisIce ice)
+        {
+            // A crack on each tile of thin ice stepped on, and a glaze over each step of the stairs not yet clear
+            if (iceCrack != null)
+                foreach (var (x, y) in ice.Cracked) yield return (iceCrack, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, y + 0.5f), y));
+            if (iceGlaze != null)
+                foreach (var (x, y) in ice.Glazed) yield return (iceGlaze, Matrix4x4.CreateTranslation(x, Relief.At(map, x + 0.5f, y + 0.5f), y));
             yield break;
         }
         if (map.Puzzle is MossdeepTiles)
@@ -266,6 +279,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is FortreeGates) BuildFortree(map);
         else if (map.Puzzle is BlackthornPlatforms) BuildBlackthorn(map);
         else if (map.Puzzle is MossdeepTiles) BuildMossdeep(map);
+        else if (map.Puzzle is SootopolisIce) BuildSootopolis(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         return true;
@@ -872,6 +886,26 @@ internal sealed class GymPieces
         stillParts = Make(still);
     }
 
+    // ------------------------------------------------------------------ the Sootopolis Gym
+
+    /// <summary>
+    /// The Sootopolis Gym's ice (plan 21 · H8, part c; style guide, "Gyms", "The Sootopolis Gym's ice"): a crack lying a
+    /// hair over a tile of thin ice once it has been stepped on, and a glaze of ice over a step of the stairs above a field
+    /// not yet crossed, each built at its own origin and laid on every tile the ice has it.
+    /// </summary>
+    private void BuildSootopolis(Map map)
+    {
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var crack = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        crack.Decal(0, 32, 0, 32, 0.012f, crack.Face("ice.crack", 32, 32, GymArt.PaintIceCrack));
+        var glaze = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        glaze.Decal(0, 32, 0, 32, 0.016f, glaze.Face("ice.glaze", 32, 32, GymArt.PaintIceGlaze));
+        art = Upload(sheet);
+        iceCrack = Make(crack);
+        iceGlaze = Make(glaze);
+    }
+
     // ------------------------------------------------------------------ the Blackthorn Gym
 
     /// <summary>A slab's lift over the floor and its depth, in texels.</summary>
@@ -1351,6 +1385,7 @@ internal sealed class GymPieces
         snowball = null;
         gatePost = gateArm = gateLongArm = null;
         slabWide = slabNarrow = null;
+        iceCrack = iceGlaze = null;
         league = false;
         doorShut = doorOpen = gate = liftPlatform = machineBall = machineBallLit = null;
         sockets.Clear();

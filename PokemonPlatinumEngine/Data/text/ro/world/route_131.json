@@ -1,0 +1,213 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Richard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Richard: My Pelipper carries my lunch while I swim. Want to see what else it can do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Richard: It dropped my lunch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Herman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Herman: That tower on the island to the north... nobody's been to the top in ages."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Herman: Maybe you'll be the first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Susie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Susie: My Luvdisc is the cutest thing in the sea. Don't you dare be mean to it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Susie: You were a little mean."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Kara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kara: I swim here from Pacifidlog every day. My Seaking keeps me company."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kara: It's swimming home without me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_3": {
+      "name": {
+        "en": [
+          "Reli"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Reli: My little brother and I always battle together. Ready, Ian?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Reli: Sorry, Ian. We'll do better next time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_swimming": {
+      "name": {
+        "en": [
+          "Ian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ian: My sister's the best swimmer in Pacifidlog! We'll beat you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ian: Waaah! My sister lost too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_3": {
+      "name": {
+        "en": [
+          "Kevin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kevin: Spheal rolls on the ice, but it rolls on the sea too. Watch this!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kevin: It rolled the wrong way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_4": {
+      "name": {
+        "en": [
+          "Talia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Talia: Swim, ride, run and battle. I never stop!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Talia: I'll stop for a minute, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

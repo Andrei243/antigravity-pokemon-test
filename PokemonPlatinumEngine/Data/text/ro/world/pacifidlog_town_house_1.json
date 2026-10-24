@@ -1,0 +1,41 @@
+{
+  "people": {
+    "man_5": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandfather told of a Pokémon that came down from the sky to calm a terrible storm. Just an old tale, I thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When the sea is rough the whole house rocks, but the logs hold. They always have."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

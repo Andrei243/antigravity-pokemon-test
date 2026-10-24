@@ -1,0 +1,76 @@
+{
+  "people": {
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea round Pacifidlog is full of Corsola. My grandma says the whole town grew up on their reef."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The currents out west are fierce. Surfing against them, you'll go nowhere at all!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a tall tower on an island east of here. People say something sleeps at the very top."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PacifidlogTown_EventScript_TownSign": {
+      "en": [
+        "Pacifidlog Town\nWhere the morning sun smiles on the waters."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

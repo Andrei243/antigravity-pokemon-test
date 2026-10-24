@@ -3651,6 +3651,59 @@ why:
   white stone floor paving (`GbaCover.HoennRanges`). Its spawn for Fly and a white-out (Emerald's heal location 10) stands
   on a map of its own, which the region's spawns can't yet say: it waits for part c (or plan 18 · W9's maps for Fly).
 
+## Sky Pillar, Rayquaza and the Rain Badge (2026-10-24, plan 21 · H8, its third part)
+
+Routes 129 to 131 and Pacifidlog Town with its Pokémon Center and five houses, Sky Pillar from the cave on Route 131's
+shore to its top, and Juan's Gym with its basement are open, and the stretch from Wallace at Sky Pillar's door to the
+Rain Badge is scripts of ours on Emerald's beats (`sky_pillar_outside.txt`, `sky_pillar_top.txt`, `sootopolis_city.txt`,
+`sootopolis_city_gym_1f.txt`), under Emerald's flags and variables (`VAR_SOOTOPOLIS_CITY_STATE` 3 to 6,
+`VAR_SKY_PILLAR_STATE`, `VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE`, `VAR_SOOTOPOLIS_WALLACE_STATE`, `FLAG_MET_MAXIE_SOOTOPOLIS`,
+`FLAG_MET_ARCHIE_SOOTOPOLIS`, `FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE`, `FLAG_RECEIVED_HM_WATERFALL`,
+`FLAG_RECEIVED_TM_WATER_PULSE`). **No story version is raised**: `common.HoennChapterEleven` (`FLAG_HOENN_CHAPTER_ELEVEN`)
+hides Rayquaza come back to the top, `HoennNewGame` calls it, and Sootopolis's and Sky Pillar's top's arrivals call it for
+a save that never ran it. What differs, and why:
+
+- **Sky Pillar is laid clean**, as Emerald's floors' own scripts lay them until Rayquaza has come down
+  (`GbaMaps.FirstLayouts`: each floor's `LAYOUT_SKY_PILLAR_*_CLEAN`, and Route 131 always with the island, as its
+  `ON_TRANSITION` lays it). The clean fourth floor keeps five cracked tiles, and they are the way on: a cracked floor whose
+  area names the floor below (the overlay's `holeTo`, Emerald's `setholewarp`) drops whoever walks onto it to the same
+  tile there (`Map.HoleTargetAt`), into the third floor's middle, whose stairs lead to the fifth. On the Bicycle it is
+  ridden over (Emerald asks the Mach Bike's speed; here any bicycle). The floors cracked all over after the descent, the
+  Mach Bike's climb and Rayquaza's battle are the post-game's (plan 21 · H12).
+- **Wallace at the door** walks over and speaks where he stands; Emerald walks both a few steps toward the door before the
+  second quake. The door is the overlay's (`doors`, opened by `FLAG_WALLACE_GOES_TO_SKY_PILLAR`), since the import leaves
+  Emerald's closed door (a blocked tile no behaviour names) leading nowhere.
+- **Rayquaza wakes** with no battle, as Emerald's does: the camera on it, its roars, the tower shaking, and it gone. Its
+  coming over Sootopolis is the city's own arrival the first time after (`VAR_SKY_PILLAR_STATE` 1): the camera to the
+  harbour, the titans gone behind a fade, Rayquaza over the water to `hoenn/rayquaza_appears` (ours, played once), its
+  roars, and the weather clearing with Emerald's three flags and ours (`FLAG_SYS_WEATHER_CTRL`,
+  `FLAG_LEGENDARIES_IN_SOOTOPOLIS`, `FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN` cleared; `VAR_SKY_PILLAR_STATE` 2). Emerald lays rough
+  water under it and warps the player out of a white flash to a fixed tile; here the player stays where they came in, and
+  a line tells of the storm breaking.
+- **Archie and Maxie** leave once both have been spoken to (Emerald's `MaxieArchieLeave`) behind a fade; Emerald then sends
+  them to Mt. Pyre's summit to give back the orbs (`VAR_MT_PYRE_STATE` 2), which is left for the session that writes that
+  scene, since the summit stands them both on one tile. Their leaving opens the Gym (the overlay's door, opened by
+  `FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE`, Emerald's `LockGymDoor`); the houses open as the titans go, where Emerald waits for
+  the leaders too.
+- **Juan's ice** is Emerald's step callback and the room's scripts (`SootopolisIce`): thin ice cracks under a first step
+  and counts, a second step drops the player to the basement onto the same tile, the count is one on every arrival, and
+  the glazed stairs (Emerald's `MB_SLIDE_SOUTH`, which slides a climber back down) become plain stairs at 8, 28 and 67. The
+  cracks and the glaze are drawn by the room's pieces (style guide, "The Sootopolis Gym's ice"). Juan's Badge counts the
+  basement's ten trainers beaten, gives TM03 and registers him in Match Call, and calms the city for good (state 6).
+- **Sootopolis's spawn** names its own map (`RegionSpawn.Map`, written by the importer for a heal location off the
+  overworld; Littleroot's two houses, the Southern Island and the Battle Frontier gain theirs the same way), and the town map
+  puts the city on the middle of Route 126's cells with a Fly spot. A white-out in Hoenn still wakes at home (plan 18 · W9).
+- **Pacifidlog** is built as Raft (logs under straw-gold gable roofs; the style guide's row), its log walkways a deck of
+  logs (`GbaCover.HoennRanges`). Its people talk; the Fan Club's younger brother's daily Return or Frustration (a reading of
+  the lead's friendship by a script), the trader's trade, the Explosion tutor and Mirage Island wait for their sessions.
+  Routes 129 to 131 lie under the titans' weather while it lasts, as the rest of the eastern sea.
+- **The import's bridges and shallows** (found by the wave 44 run): water that a bridge crosses now lies at the lowest level
+  of its shores, and a bridge's run is read to its ends however long (Route 120's pond took its west half's level from
+  the bridge's raised ends, and the middle of its sixteen tiles no deck), so Route 120's bridge is a deck over its pond,
+  with Steven standing on it (an object of a bridge's elevation over a deck stands on the deck), and Route 119's and
+  Route 104's decks over their rivers with it. Emerald's shallows out at sea that touch no shore are a sandbar to look at
+  (Route 128's islet, where Archie, Maxie and Steven stand), where part a made every shallow water to look at.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

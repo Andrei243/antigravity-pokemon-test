@@ -1187,6 +1187,9 @@ public class FieldMovementTests
             // Nor does lava: what refuses a step onto it is the Blackthorn Gym's puzzle, where no slab stands over it
             // (BlackthornPlatforms.Refuses, plan 20 · J11, part c)
             changes |= behaviour == TileBehavior.Magma;
+            // Nor do thin ice and a cracked floor: what gives way under a walker is the Sootopolis Gym's puzzle
+            // (SootopolisIce) and a fall to the floor below its area names (Map.HoleTargetAt, plan 21 · H8, part c)
+            changes |= behaviour is TileBehavior.ThinIce or TileBehavior.CrackedFloor;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

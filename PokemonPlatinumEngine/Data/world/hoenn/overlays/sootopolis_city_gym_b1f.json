@@ -1,0 +1,19 @@
+{
+  // The basement under Sootopolis City's Gym (plan 21 · H8, part c): where a fall through the ice above lands, on the
+  // same tile, with Juan's ten trainers on its three levels and a flight of stairs back up to the door's hall
+  "area": "sootopolis_city_gym_b1f",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Water",
+  "people": {
+    "lass": { "name": "Andrea", "trainer": { "dialogueBefore": "Lass Andrea: I fell through the ice on my first try too. Now I guard the bottom!", "dialogueAfter": "Lass Andrea: Back up the stairs with you, then." } },
+    "beauty": { "name": "Connie", "trainer": { "dialogueBefore": "Beauty Connie: Juan taught me that a battle should be as lovely as water. Watch closely.", "dialogueAfter": "Beauty Connie: That was lovely. For you." } },
+    "woman_2": { "name": "Brianna", "trainer": { "dialogueBefore": "Lady Brianna: Falling down here was hardly graceful, was it? Let me show you grace.", "dialogueAfter": "Lady Brianna: Graceful, and strong too." } },
+    "beauty_2": { "name": "Bridget", "trainer": { "dialogueBefore": "Beauty Bridget: The ice up there cracks under careless feet. Are you careful in battle too?", "dialogueAfter": "Beauty Bridget: Very careful, it seems." } },
+    "beauty_3": { "name": "Tiffany", "trainer": { "dialogueBefore": "Beauty Tiffany: My Sharpedo has sharp teeth and a sharper temper!", "dialogueAfter": "Beauty Tiffany: Its temper's even worse now." } },
+    "pokefan_f": { "name": "Bethany", "trainer": { "dialogueBefore": "Pokéfan Bethany: Azurill, Marill, Azumarill... I raised the whole family!", "dialogueAfter": "Pokéfan Bethany: The whole family's tired now." } },
+    "lass_2": { "name": "Crissy", "trainer": { "dialogueBefore": "Lass Crissy: Juan's Gym is the last before the League. You won't get past me!", "dialogueAfter": "Lass Crissy: You got past me easily." } },
+    "beauty_4": { "name": "Olivia", "trainer": { "dialogueBefore": "Beauty Olivia: Water shapes stone, given time. Let's see what it does to you!", "dialogueAfter": "Beauty Olivia: You're harder than stone." } },
+    "woman_2_2": { "name": "Daphne", "trainer": { "dialogueBefore": "Lady Daphne: Two Luvdisc, two hearts beating as one. Do try to keep up.", "dialogueAfter": "Lady Daphne: My hearts are broken." } },
+    "pokefan_f_2": { "name": "Annika", "trainer": { "dialogueBefore": "Pokéfan Annika: Everyone calls Feebas plain. I think they're beautiful!", "dialogueAfter": "Pokéfan Annika: They're still beautiful to me." } }
+  }
+}

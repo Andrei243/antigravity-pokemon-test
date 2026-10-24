@@ -1,0 +1,13 @@
+{
+  // Pacifidlog Town's Pokémon Center (plan 21 · H8, part c). Emerald's man who teaches Explosion is a move tutor of the
+  // later tutors' session, and only talks for now
+  "area": "pacifidlog_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "pacifidlog_nurse": { "name": "Nurse", "script": "Nurse" },
+    "old_man": { "name": "Old Man", "dialog": [ "Long ago, people here lived on boats. Then we lashed logs together and built a town that floats." ] },
+    "girl_2": { "name": "Girl", "dialog": [ "Every house here sways a little when the waves come in. I can't sleep anywhere that stays still!" ] },
+    "woman_1": { "name": "Woman", "dialog": [ "The sky to the east has gone so strange. Rain one minute, blazing sun the next..." ] },
+    "man_5": { "name": "Man", "dialog": [ "I know a move that goes off with a bang. Come back when I've decided who's worthy of it!" ] }
+  }
+}

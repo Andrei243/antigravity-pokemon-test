@@ -639,6 +639,12 @@ public static class RegionDatabase
                 "SootopolisCity_Mart", "SootopolisCity_House1", "SootopolisCity_House2", "SootopolisCity_House3",
                 "SootopolisCity_House4", "SootopolisCity_House5", "SootopolisCity_House6", "SootopolisCity_House7",
                 "SootopolisCity_LotadAndSeedotHouse", "CaveOfOrigin_Entrance", "CaveOfOrigin_1F", "CaveOfOrigin_B1F",
+                // Plan 21 · H8, part c: Juan's Gym, Pacifidlog Town's rooms and Sky Pillar
+                "SootopolisCity_Gym_1F", "SootopolisCity_Gym_B1F",
+                "PacifidlogTown_PokemonCenter_1F", "PacifidlogTown_PokemonCenter_2F", "PacifidlogTown_House1",
+                "PacifidlogTown_House2", "PacifidlogTown_House3", "PacifidlogTown_House4", "PacifidlogTown_House5",
+                "SkyPillar_Outside", "SkyPillar_Entrance", "SkyPillar_1F", "SkyPillar_2F", "SkyPillar_3F", "SkyPillar_4F",
+                "SkyPillar_5F", "SkyPillar_Top",
             }
         },
         new()

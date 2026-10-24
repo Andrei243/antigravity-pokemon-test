@@ -1866,6 +1866,7 @@ script HoennNewGame
   call HoennChapterEightB
   call HoennChapterNine
   call HoennChapterTen
+  call HoennChapterEleven
   return
 
 
@@ -2150,6 +2151,15 @@ script HoennChapterTen
   setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
   setflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
   setflag FLAG_HIDE_SKY_PILLAR_WALLACE
+  return
+
+
+# What Emerald's new game hides for the eleventh stretch (plan 21 · H8, part c: Sky Pillar and Rayquaza): Rayquaza back on
+# the top to be battled, which is the post-game's (plan 21 · H12). No story version is raised: HoennNewGame calls it, and
+# Sootopolis's and the top of Sky Pillar's arrivals call it for a save that never ran it (FLAG_HOENN_CHAPTER_ELEVEN)
+script HoennChapterEleven
+  setflag FLAG_HOENN_CHAPTER_ELEVEN
+  setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
   return
 
 

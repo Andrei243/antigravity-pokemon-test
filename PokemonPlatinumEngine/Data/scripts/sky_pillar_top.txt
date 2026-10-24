@@ -1,0 +1,51 @@
+# The top of Sky Pillar (plan 21 · H8, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SkyPillar_Top/scripts.inc).
+#
+# Rayquaza sleeps coiled at the middle of the top. The first step onto the tile before it (the area's trigger 0, while
+# VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE is 0) wakes it, as Emerald's SkyPillar_Top_EventScript_AwakenRayquaza: the camera looks
+# up at it, it stirs and roars, the tower shakes twice, and it flies off toward Sootopolis (FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA,
+# Emerald's removeobject). VAR_SOOTOPOLIS_CITY_STATE goes to 5 and VAR_SKY_PILLAR_STATE to 1, which Sootopolis's own
+# arrival reads to play Rayquaza's coming (sootopolis_city.txt). Rayquaza back on the top to be battled
+# (FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL) is the post-game's, plan 21 · H12.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_ELEVEN call HoennChapterEleven
+  end
+
+
+script Awaken
+  if var VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE != 0 end
+  scene "Rayquaza wakes"
+  music stop
+  face player up
+  camera pan 14 6 1.5
+  wait 0.5
+  walk rayquaza_sleeping onspot left 1
+  wait 0.6
+  cry "Rayquaza"
+  camera shake 0.8
+  wait 0.8
+  cry "Rayquaza"
+  camera shake 1
+  wait 1.2
+  walk rayquaza_sleeping up 1 fast
+  sound "warp"
+  hide rayquaza_sleeping
+  setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA
+  speaker none
+  text "The awakened Rayquaza flew off..."
+  camera release 1.5
+  music area
+  setvar VAR_SOOTOPOLIS_CITY_STATE 5
+  setvar VAR_SKY_PILLAR_STATE 1
+  setvar VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE 1
+  endscene
+  end
+
+
+# Rayquaza asleep, looked at before the step that wakes it (Emerald gives it no script: its tile is in the way)
+script Sleeping
+  speaker none
+  text "A huge green Pokémon lies coiled here, fast asleep."
+  end

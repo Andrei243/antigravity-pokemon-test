@@ -1,0 +1,9 @@
+{
+  // A house of Pacifidlog Town (plan 21 · H8, part c): a couple who remember the old days of the sea
+  "area": "pacifidlog_town_house_1",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "man_5": { "name": "Man", "dialog": [ "My grandfather told of a Pokémon that came down from the sky to calm a terrible storm. Just an old tale, I thought." ] },
+    "woman_4": { "name": "Woman", "dialog": [ "When the sea is rough the whole house rocks, but the logs hold. They always have." ] }
+  }
+}

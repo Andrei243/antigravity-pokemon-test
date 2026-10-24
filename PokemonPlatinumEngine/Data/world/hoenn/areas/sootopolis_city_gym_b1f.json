@@ -1,0 +1,34 @@
+{
+  "key": "sootopolis_city_gym_b1f",
+  "index": 197,
+  "name": "Sootopolis City",
+  "matrix": 146,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 22, "to": "sootopolis_city_gym_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 7, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ANDREA" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_west", "x": 9, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_CONNIE" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 12, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_BRIANNA" },
+    { "id": "beauty_2", "looks": "beauty", "movement": "look_north", "x": 11, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_BRIDGET" },
+    { "id": "beauty_3", "looks": "beauty", "movement": "look_south", "x": 5, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_TIFFANY" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_east", "x": 7, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BETHANY" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_east", "x": 4, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_CRISSY" },
+    { "id": "beauty_4", "looks": "beauty", "movement": "look_south", "x": 9, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_OLIVIA" },
+    { "id": "woman_2_2", "looks": "woman_2", "movement": "look_east", "x": 6, "z": 13, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_DAPHNE" },
+    { "id": "pokefan_f_2", "looks": "pokefan_f", "movement": "look_west", "x": 10, "z": 13, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ANNIKA" }
+  ],
+  "signs": [],
+  "triggers": []
+}

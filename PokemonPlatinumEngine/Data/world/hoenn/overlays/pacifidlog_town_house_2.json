@@ -1,0 +1,12 @@
+{
+  // A house of Pacifidlog Town (plan 21 · H8, part c): the younger brother of the Pokémon Fan Club's chairman and his two
+  // Azurill. Emerald's daily TM for a Pokémon that loves its trainer (Return) or doesn't (Frustration) waits for a way to
+  // read the lead's friendship from a script; he talks about it for now
+  "area": "pacifidlog_town_house_2",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "gentleman": { "name": "Gentleman", "dialog": [ "My big brother runs the Pokémon Fan Club. I can tell at a glance how much a Pokémon loves its trainer." ] },
+    "azurill": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "dialog": [ "Azurill: Rii! Riiri!" ] },
+    "azurill_2": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "dialog": [ "Azurill: ...Rii." ] }
+  }
+}

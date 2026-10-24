@@ -1,0 +1,28 @@
+{
+  "key": "pacifidlog_town_house_4",
+  "index": 102,
+  "name": "Pacifidlog Town",
+  "matrix": 51,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "pacifidlog_town", "toWarp": 4 },
+    { "x": 5, "z": 8, "to": "pacifidlog_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_south", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_House4_EventScript_Woman" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 7, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_House4_EventScript_LittleGirl" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 7, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PacifidlogTown_House4_EventScript_Boy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

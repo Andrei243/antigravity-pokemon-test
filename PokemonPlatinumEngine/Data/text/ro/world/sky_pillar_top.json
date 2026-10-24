@@ -1,0 +1,33 @@
+{
+  "people": {
+    "rayquaza_sleeping": {
+      "name": {
+        "en": [
+          "Rayquaza"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rayquaza_still": {
+      "name": {
+        "en": [
+          "Rayquaza"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rayquaza is watching you closely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

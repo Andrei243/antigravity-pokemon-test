@@ -1,0 +1,9 @@
+{
+  // Sky Pillar's fourth floor (plan 21 · H8, part c): laid clean, as Emerald lays it until Rayquaza has come down. A
+  // cracked floor gives way under whoever walks onto it, down onto the same tile of the floor below (holeTo, Emerald's
+  // setholewarp): the fourth floor's, the way into the middle of the third, whose stairs lead on up; the
+  // floors cracked all over once Rayquaza has come, crossed only on the Mach Bike, are the post-game's (plan 21 · H12)
+  "area": "sky_pillar_4f",
+  "bgmTrack": "hoenn/mt_chimney",
+  "holeTo": "SkyPillar_3F"
+}

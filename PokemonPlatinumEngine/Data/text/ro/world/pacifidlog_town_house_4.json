@@ -1,0 +1,59 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People say a Pokémon in the sky keeps the land and the sea at peace. I hope it's watching over us now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw a green shape flying high, high over the sea! Was it a Pokémon?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I'm older I'll swim all the way to Slateport. The currents won't stop me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

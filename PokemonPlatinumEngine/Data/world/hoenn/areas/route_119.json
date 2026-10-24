@@ -86,7 +86,7 @@
     { "id": "item_ball_6", "looks": "item_ball", "movement": "look_around", "x": 313, "z": 117, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_119_HYPER_POTION_1", "item": "Hyper Potion", "script": "Route119_EventScript_ItemHyperPotion" },
     { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "look_east", "x": 293, "z": 33, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "Route119_EventScript_BridgeAquaGrunt1" },
     { "id": "aqua_member_m_2", "looks": "aqua_member_m", "movement": "look_east", "x": 293, "z": 34, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "Route119_EventScript_BridgeAquaGrunt2" },
-    { "id": "route119_rival_on_bike", "looks": "var_3", "movement": "look_north", "x": 297, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE", "script": "" },
+    { "id": "route119_rival_on_bike", "looks": "var_3", "movement": "look_north", "x": 297, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 2, "hiddenBy": "FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE", "script": "" },
     { "id": "boy_3", "looks": "boy_3", "movement": "look_south", "x": 311, "z": 109, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route119_EventScript_Boy1" },
     { "id": "berry_tree_4", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 288, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 172, "script": "BerryTreeScript" },
     { "id": "berry_tree_5", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 289, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 173, "script": "BerryTreeScript" },

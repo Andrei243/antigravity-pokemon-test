@@ -381,6 +381,21 @@ public static class GbaCover
             // into the terraces between the houses (0x244, 0x245), and the stone before the Cave of Origin's mouth and
             // the houses' doors (0x221, 0x229, 0x238). The crater's walls and the houses are blocked and left to the rock
             // and to the doors
+            // Plan 21 · H8, part c: Pacifidlog Town's rafts of logs (the metatiles its people walk with no running, a deck
+            // of logs) and Sky Pillar, which shares the tileset: its floors of worn stone tiles inside and on its top,
+            // the blocked metatiles of its walls, pillars and outside cliffs rock (the town's are other metatiles)
+            ["gTileset_Pacifidlog"] = new (int, int, TerrainCover)[]
+            {
+                (0x210, 0x210, TerrainCover.Bridge), (0x214, 0x214, TerrainCover.Bridge), (0x218, 0x218, TerrainCover.Bridge),
+                (0x21C, 0x21C, TerrainCover.Bridge), (0x220, 0x221, TerrainCover.Bridge), (0x224, 0x224, TerrainCover.Bridge),
+                (0x22A, 0x22A, TerrainCover.Bridge),
+                (0x207, 0x207, TerrainCover.Rock), (0x20F, 0x20F, TerrainCover.Rock), (0x217, 0x217, TerrainCover.Rock),
+                (0x21F, 0x21F, TerrainCover.Rock), (0x227, 0x227, TerrainCover.Rock), (0x22F, 0x22F, TerrainCover.Rock),
+                (0x234, 0x237, TerrainCover.Paving), (0x238, 0x24D, TerrainCover.Rock), (0x25B, 0x25B, TerrainCover.Rock),
+                (0x264, 0x264, TerrainCover.Paving), (0x26A, 0x26E, TerrainCover.Rock), (0x29D, 0x29E, TerrainCover.Paving),
+                (0x2A0, 0x2B9, TerrainCover.Rock), (0x2BC, 0x2BC, TerrainCover.Rock), (0x2BD, 0x2BE, TerrainCover.Paving),
+                (0x2C1, 0x2C1, TerrainCover.Paving),
+            },
             ["gTileset_Sootopolis"] = new (int, int, TerrainCover)[]
             {
                 (0x2D9, 0x2D9, TerrainCover.Paving), (0x244, 0x245, TerrainCover.Paving),

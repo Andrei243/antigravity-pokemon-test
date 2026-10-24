@@ -1,0 +1,75 @@
+# Sootopolis City's Gym (plan 21 · H8, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SootopolisCity_Gym_1F/scripts.inc).
+#
+# Juan battles for the Rain Badge (FLAG_BADGE08_GET, `givebadge rain`), which lets Waterfall be used outside battle and
+# makes every Pokémon obey, and gives TM03, Water Pulse (FLAG_RECEIVED_TM_WATER_PULSE). His Badge counts the basement's
+# ten trainers beaten, and calms the city for good (VAR_SOOTOPOLIS_CITY_STATE 6: the townsfolk back indoors,
+# FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS; Steven and Wallace gone; the man by the houses out again). With the PokéNav he is
+# registered in Match Call (FLAG_ENABLE_JUAN_MATCH_CALL). The ice between the door and him is the room's puzzle
+# (SootopolisIce).
+
+
+script Juan
+  face juan player
+  speaker "Juan"
+  if badge rain goto Won
+  scene "Juan"
+  say "Ah, a visitor. Let me tell you something, if I may. It was I who taught Wallace everything he knows."
+  say "Once I was the Gym Leader here, then he took my place. Now that he has gone off, the Gym is mine again."
+  say "Water Pokémon and I move as one, like a dance upon the waves. Let me show you our grace!"
+  battle self as "hoenn_juan_1"
+  say "Ahahaha, splendid! You are a talent as rare as Wallace himself. I yield."
+  say "Please, take this Badge. It is yours by right."
+  givebadge rain
+  text "{player} received the Rain Badge from Juan!"
+  say "With the Rain Badge, every Pokémon obeys you, whatever its level, and Waterfall can be used to climb a waterfall."
+  setflag FLAG_DEFEATED_SOOTOPOLIS_GYM
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  setvar VAR_SOOTOPOLIS_CITY_STATE 6
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
+  defeat "hoenn_andrea"
+  defeat "hoenn_crissy"
+  defeat "hoenn_brianna"
+  defeat "hoenn_connie"
+  defeat "hoenn_bridget"
+  defeat "hoenn_olivia"
+  defeat "hoenn_tiffany"
+  defeat "hoenn_bethany"
+  defeat "hoenn_annika"
+  defeat "hoenn_daphne"
+  say "And please, accept this as well."
+  give "TM03"
+  setflag FLAG_RECEIVED_TM_WATER_PULSE
+  say "TM03 holds Water Pulse. It strikes with waves of sound, and may leave the foe confused."
+  if flag FLAG_ENABLE_JUAN_MATCH_CALL goto Done
+  if not flag FLAG_SYS_POKENAV_GET goto Done
+  say "May I have your number? I should like to hear how your journey turns out."
+  addcontact juan
+  setflag FLAG_ENABLE_JUAN_MATCH_CALL
+  text "Registered Juan in the PokéNav."
+label Done
+  endscene
+  end
+label Won
+  if flag FLAG_RECEIVED_TM_WATER_PULSE goto Proud
+  give "TM03"
+  setflag FLAG_RECEIVED_TM_WATER_PULSE
+  say "TM03 holds Water Pulse. It strikes with waves of sound, and may leave the foe confused."
+  end
+label Proud
+  say "The Pokémon League waits beyond Ever Grande City. Go, and show them the beauty I saw today."
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_SOOTOPOLIS_GYM goto Won
+  say "Yo, champ in the making! Juan's a master of Water Pokémon, so bring Grass and Electric moves."
+  say "And mind the ice on the way to him! Step on a tile twice and down you go. Cross every tile once to clear the stairs."
+  end
+label Won
+  say "You beat Juan! Check your Trainer Card: with every Badge, you're ready for the Pokémon League!"
+  end

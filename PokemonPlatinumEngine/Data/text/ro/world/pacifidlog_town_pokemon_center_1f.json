@@ -1,0 +1,87 @@
+{
+  "people": {
+    "pacifidlog_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Long ago, people here lived on boats. Then we lashed logs together and built a town that floats."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every house here sways a little when the waves come in. I can't sleep anywhere that stays still!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sky to the east has gone so strange. Rain one minute, blazing sun the next..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I know a move that goes off with a bang. Come back when I've decided who's worthy of it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
