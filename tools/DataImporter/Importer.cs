@@ -837,6 +837,8 @@ public sealed partial class Importer
             Generation = row.Int("generation_id"),
             Legendary = row.Bool("is_legendary"),
             Mythical = row.Bool("is_mythical"),
+            // Whether the females look different (plan 09 · L6): the flag alone, the look is our own sculpt
+            GenderDifferences = row.Bool("has_gender_differences"),
             Height = p.Int("height") / 10f,
             Weight = p.Int("weight") / 10f,
             Color = api.Color(row.Int("color_id")),

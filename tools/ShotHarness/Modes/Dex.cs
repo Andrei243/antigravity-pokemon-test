@@ -11,13 +11,19 @@ partial class Harness
         bool back = args.Skip(2).Contains("--back");
         // --shiny: every model in its shiny colours (plan 09 · L1), boards 94_dex_shiny_NN
         bool shiny = args.Skip(2).Contains("--shiny");
-        var named = args.Skip(2).Where(a => a != "--back" && a != "--shiny").ToArray();
-        var list = named.Length > 0 ? named : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
+        // --females: every species with a female look (plan 09 · L6), each male with its female beside it, boards
+        // 94_dex_females_NN (or only the species named, each with its female where it has one)
+        bool females = args.Skip(2).Contains("--females");
+        var named = args.Skip(2).Where(a => a != "--back" && a != "--shiny" && a != "--females").ToArray();
+        var list = named.Length > 0 ? named : females ? PokemonModels.Females.ToArray() : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
+        if (females) list = list.SelectMany(s => PokemonLook.HasFemale(s) ? new[] { s, s + PokemonLook.FemaleSuffix } : new[] { s }).ToArray();
         const int Cols = 10, Rows = 6, Box = 192;
         var watch = System.Diagnostics.Stopwatch.StartNew();
         for (int page = 0; page * Cols * Rows < list.Length; page++)
         {
-            string name = (back, shiny) switch { (true, true) => $"94_dex_shiny_back_{page + 1:00}", (true, false) => $"94_dex_back_{page + 1:00}", (false, true) => $"94_dex_shiny_{page + 1:00}", _ => $"94_dex_{page + 1:00}" };
+            string kind = (back ? "back_" : "") + (shiny ? "shiny_" : "");
+            string name = females ? $"94_dex_females_{kind}{page + 1:00}"
+                : (back, shiny) switch { (true, true) => $"94_dex_shiny_back_{page + 1:00}", (true, false) => $"94_dex_back_{page + 1:00}", (false, true) => $"94_dex_shiny_{page + 1:00}", _ => $"94_dex_{page + 1:00}" };
             if (!Wanted(name)) continue;
             var board = Raylib.GenImageColor(Cols * Box, Rows * Box, new Color(206, 218, 232, 255));
             for (int i = 0; i < Cols * Rows && page * Cols * Rows + i < list.Length; i++)

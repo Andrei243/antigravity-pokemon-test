@@ -464,7 +464,7 @@ public partial class GameEngine
     private List<string> PrepareModels(IEnumerable<Pokemon> foes)
     {
         var all = foes.Concat(flow.Party.Members).ToList();
-        var species = all.Select(p => p.LookName).Concat(all.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.IsShiny)))).Distinct().ToList();
+        var species = all.Select(p => p.LookName).Concat(all.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.Gender == Gender.Female, p.IsShiny)))).Distinct().ToList();
         foreach (var name in species) flow.WantModel(name);
         return species;
     }

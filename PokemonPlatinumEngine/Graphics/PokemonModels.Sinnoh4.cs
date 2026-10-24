@@ -350,7 +350,8 @@ internal static partial class PokemonModels
         }
     }
 
-    private static PokeBuilder Rhyhorn()
+    /// <param name="female">A female (plan 09 · L6): a smaller horn.</param>
+    private static PokeBuilder Rhyhorn(bool female = false)
     {
         var b = new PokeBuilder("Rhyhorn", 0.8f, BodyPlan.Quadruped, V(0, 0.24f, -0.03f)) { Coat = Shell };
         var gray = Rgb(164, 172, 192);
@@ -380,14 +381,16 @@ internal static partial class PokemonModels
         b.Ell(head, c, r, gray);
         b.Ell(head, V(0, 0.22f, 0.37f), V(0.08f, 0.068f, 0.075f), gray, blend: 0.03f);
         b.PaintEll(head, V(0, 0.18f, 0.33f), V(0.085f, 0.04f, 0.11f), pale);
-        b.Spike(head, V(0, 0.27f, 0.39f), V(0, 0.41f, 0.43f), 0.042f, pale, mat: Shell);
+        if (female) b.Spike(head, V(0, 0.27f, 0.39f), V(0, 0.355f, 0.415f), 0.034f, pale, mat: Shell);
+        else b.Spike(head, V(0, 0.27f, 0.39f), V(0, 0.41f, 0.43f), 0.042f, pale, mat: Shell);
         PokeBuilder.Both(s => Blade(b, head, V(0.07f * s, 0.3f, 0.2f), V(0.12f * s, 0.41f, 0.12f), 0.04f, pale, V(0.6f * s, 0, 0.8f), 0.35f));
         b.Mark(head, V(0, 0.195f, 0.443f), V(0, -0.1f, 1f), 0.03f, 0.006f, Rgb(80, 84, 100), MarkShape.Bar);
         PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.078f * s, 0.27f), V(0.85f * s, 0.1f, 0.5f), 0.018f, Rgb(220, 40, 50), glare: true));
         return b;
     }
 
-    private static PokeBuilder Rhydon()
+    /// <param name="female">A female (plan 09 · L6): a smaller horn.</param>
+    private static PokeBuilder Rhydon(bool female = false)
     {
         var b = new PokeBuilder("Rhydon", 0.92f, BodyPlan.Biped, V(0, 0.44f, 0)) { Coat = Shell };
         var gray = Rgb(160, 170, 192);
@@ -424,7 +427,8 @@ internal static partial class PokemonModels
         b.Ell(head, c, r, gray);
         b.Ell(head, V(0, 0.645f, 0.19f), V(0.078f, 0.06f, 0.08f), gray, blend: 0.03f);
         Grin(b, head, V(0, 0.615f, 0.235f), V(0.055f, 0.024f, 0.03f), Rgb(220, 120, 130));
-        Drill(b, head, V(0, 0.69f, 0.22f), V(0, 0.81f, 0.32f), 0.048f, cream, Rgb(150, 140, 120));
+        if (female) Drill(b, head, V(0, 0.69f, 0.22f), V(0, 0.765f, 0.283f), 0.04f, cream, Rgb(150, 140, 120));
+        else Drill(b, head, V(0, 0.69f, 0.22f), V(0, 0.81f, 0.32f), 0.048f, cream, Rgb(150, 140, 120));
         PokeBuilder.Both(s =>
         {
             b.Spike(head, V(0.075f * s, 0.73f, 0.04f), V(0.13f * s, 0.84f, -0.03f), 0.037f, pale, 0.6f);
@@ -719,7 +723,8 @@ internal static partial class PokemonModels
         Blade(b, bone, mid - (mid - root) * 0.12f, tip, width * 0.95f, color, facing, 0.22f, Metal);
     }
 
-    private static PokeBuilder Scyther()
+    /// <param name="female">A female (plan 09 · L6): a bigger abdomen.</param>
+    private static PokeBuilder Scyther(bool female = false)
     {
         var b = new PokeBuilder("Scyther", 0.9f, BodyPlan.Biped, V(0, 0.42f, 0)) { Coat = Shell };
         var green = Rgb(112, 192, 88);
@@ -737,8 +742,17 @@ internal static partial class PokemonModels
             b.Spike(leg, V(0.1f * s, 0.03f, -0.02f), V(0.1f * s, 0.01f, -0.07f), 0.012f, Claw, mat: Shell, blend: 0.004f);
         });
         // A cream-banded abdomen, a green thorax with a cream chest
-        b.Ell(Body, V(0, 0.36f, -0.05f), V(0.075f, 0.075f, 0.095f), green);
-        foreach (float y in new[] { 0.33f, 0.37f }) b.PaintEll(Body, V(0, y, 0.0f), V(0.07f, 0.012f, 0.08f), cream);
+        if (female)
+        {
+            // Hers is bigger and rounder, swelling out behind her
+            b.Ell(Body, V(0, 0.35f, -0.075f), V(0.09f, 0.088f, 0.125f), green);
+            foreach (float y in new[] { 0.32f, 0.365f }) b.PaintEll(Body, V(0, y, -0.02f), V(0.085f, 0.013f, 0.11f), cream);
+        }
+        else
+        {
+            b.Ell(Body, V(0, 0.36f, -0.05f), V(0.075f, 0.075f, 0.095f), green);
+            foreach (float y in new[] { 0.33f, 0.37f }) b.PaintEll(Body, V(0, y, 0.0f), V(0.07f, 0.012f, 0.08f), cream);
+        }
         b.Ell(Body, V(0, 0.48f, 0.02f), V(0.08f, 0.1f, 0.075f), green);
         b.PaintEll(Body, V(0, 0.47f, 0.08f), V(0.055f, 0.07f, 0.03f), cream);
         // Two pairs of pale wings on its back

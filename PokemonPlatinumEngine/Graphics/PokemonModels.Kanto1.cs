@@ -248,12 +248,20 @@ internal static partial class PokemonModels
         return flower;
     }
 
-    private static PokeBuilder Venusaur()
+    /// <param name="female">A female (plan 09 · L6): a seed sits in the middle of her flower, on its golden crown.</param>
+    private static PokeBuilder Venusaur(bool female = false)
     {
         var b = new PokeBuilder("Venusaur", 0.95f, BodyPlan.Quadruped, V(0, 0.38f, -0.04f)) { Coat = Scales };
         VenusaurBody(b, Rgb(102, 174, 170), Rgb(58, 116, 116));
         // The flower on its back, opened in full
-        Blossom(b, V(0, 0.6f, -0.08f), 1f, Rgb(240, 126, 138), Rgb(74, 152, 86), Rgb(128, 90, 62), Rgb(246, 206, 72));
+        int flower = Blossom(b, V(0, 0.6f, -0.08f), 1f, Rgb(240, 126, 138), Rgb(74, 152, 86), Rgb(128, 90, 62), Rgb(246, 206, 72));
+        if (female)
+        {
+            // A plump green seed, pale at its crown, sitting in the ring of the crown's points
+            var seed = V(0, 0.95f, -0.1f);
+            b.Ell(flower, seed, V(0.062f, 0.07f, 0.062f), Rgb(150, 196, 104), mat: Leaf, blend: 0.01f);
+            b.PaintEll(flower, seed + V(0, 0.05f, 0), V(0.04f, 0.03f, 0.04f), Rgb(198, 228, 150));
+        }
         return b;
     }
 
@@ -735,7 +743,8 @@ internal static partial class PokemonModels
         return head;
     }
 
-    private static PokeBuilder Butterfree()
+    /// <param name="female">A female (plan 09 · L6): a black spot on each of her lower wings.</param>
+    private static PokeBuilder Butterfree(bool female = false)
     {
         var b = new PokeBuilder("Butterfree", 0.76f, BodyPlan.Bird, V(0, 0.42f, 0)) { Coat = Fur }.Hover();
         // White wings rimmed in black, the upper pair broad and the lower small
@@ -745,6 +754,7 @@ internal static partial class PokemonModels
             FlatWing(b, w, V(0.24f * s, 0.6f, -0.035f), 0.22f, 0.15f, 22f * s, Rgb(248, 248, 252), Rgb(40, 38, 48), 0.026f);
             b.Mark(w, V(0.22f * s, 0.6f, -0.02f), V(0, 0, 1f), 0.11f, 0.009f, Rgb(60, 58, 70), MarkShape.Bar, 22f * s);
             FlatWing(b, w, V(0.16f * s, 0.36f, -0.04f), 0.13f, 0.1f, -42f * s, Rgb(248, 248, 252), Rgb(40, 38, 48), 0.022f);
+            if (female) b.Mark(w, V(0.17f * s, 0.345f, -0.025f), V(0, 0, 1f), 0.026f, 0.026f, Rgb(40, 38, 48));
         });
         ButterfreeBody(b, Rgb(86, 78, 142));
         return Lift(b);
@@ -1069,7 +1079,8 @@ internal static partial class PokemonModels
     /// <summary>
     /// Rattata, and its Alolan form: a crouching rat with big round ears, a curled tail, buck teeth and whiskers.
     /// </summary>
-    private static PokeBuilder RattataBuild(bool alola)
+    /// <param name="female">A female (plan 09 · L6): shorter whiskers.</param>
+    private static PokeBuilder RattataBuild(bool alola, bool female = false)
     {
         var b = new PokeBuilder(alola ? "Rattata-Alola" : "Rattata", 0.52f, BodyPlan.Quadruped, V(0, 0.17f, -0.04f)) { Coat = Fur };
         var fur = alola ? Rgb(64, 66, 80) : Rgb(172, 140, 204);
@@ -1098,7 +1109,7 @@ internal static partial class PokemonModels
         if (alola) PokeBuilder.Both(s => b.Ell(head, V(0.075f * s, 0.215f, 0.22f), V(0.05f, 0.04f, 0.045f), cream, blend: 0.02f));
         b.Ell(head, V(0, 0.255f, 0.31f), V(0.02f, 0.016f, 0.015f), alola ? Rgb(40, 34, 40) : Rgb(170, 110, 140), blend: 0.006f);
         BuckTeeth(b, head, V(0, 0.2f, 0.29f), 0.028f, 0.04f);
-        Whiskers(b, head, V(0.045f, 0.23f, 0.28f), alola ? 0.1f : 0.12f, alola ? Rgb(220, 214, 200) : Rgb(70, 60, 80));
+        Whiskers(b, head, V(0.045f, 0.23f, 0.28f), (alola ? 0.1f : 0.12f) * (female ? 0.6f : 1f), alola ? Rgb(220, 214, 200) : Rgb(70, 60, 80));
         PokeBuilder.Both(s =>
         {
             int ear = b.Ear(head, s, V(0.06f * s, 0.32f, 0.13f));
@@ -1115,7 +1126,8 @@ internal static partial class PokemonModels
     /// Raticate, and its Alolan form: a heavy rat sitting up on big hind feet, buck teeth, whiskers and a long scaly
     /// tail; the Alolan one is fat with great pale cheeks.
     /// </summary>
-    private static PokeBuilder RaticateBuild(bool alola)
+    /// <param name="female">A female (plan 09 · L6): shorter whiskers.</param>
+    private static PokeBuilder RaticateBuild(bool alola, bool female = false)
     {
         var b = new PokeBuilder(alola ? "Raticate-Alola" : "Raticate", 0.74f, BodyPlan.Biped, V(0, 0.27f, 0)) { Coat = Fur };
         var fur = alola ? Rgb(62, 60, 72) : Rgb(200, 150, 90);
@@ -1157,7 +1169,7 @@ internal static partial class PokemonModels
         else b.PaintEll(head, V(0, 0.46f, 0.17f), V(0.07f, 0.045f, 0.06f), cream);
         b.Ell(head, V(0, 0.5f, 0.215f), V(0.022f, 0.018f, 0.016f), Rgb(60, 40, 40), blend: 0.006f);
         BuckTeeth(b, head, V(0, 0.44f, 0.2f), 0.034f, 0.058f);
-        Whiskers(b, head, V(0.05f, 0.48f, 0.2f), 0.17f, alola ? Rgb(240, 236, 226) : Rgb(244, 232, 210), 0.007f);
+        Whiskers(b, head, V(0.05f, 0.48f, 0.2f), female ? 0.1f : 0.17f, alola ? Rgb(240, 236, 226) : Rgb(244, 232, 210), 0.007f);
         PokeBuilder.Both(s =>
         {
             int ear = b.Ear(head, s, V(0.08f * s, 0.6f, 0.02f));
@@ -1748,7 +1760,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Gloom()
+    /// <param name="female">A female (plan 09 · L6): bigger pale spots on her petals.</param>
+    private static PokeBuilder Gloom(bool female = false)
     {
         var b = new PokeBuilder("Gloom", 0.68f, BodyPlan.Biped, V(0, 0.22f, 0)) { Coat = Fur };
         var blue = Rgb(74, 108, 178);
@@ -1773,7 +1786,7 @@ internal static partial class PokemonModels
             float a = i * MathF.Tau / 5f;
             var at = V(MathF.Sin(a) * 0.085f, 0.42f, -MathF.Cos(a) * 0.085f - 0.01f);
             b.Ell(top, at, V(0.075f, 0.065f, 0.075f), bud, blend: 0.02f);
-            b.PaintEll(top, at + V(MathF.Sin(a) * 0.04f, 0.04f, -MathF.Cos(a) * 0.04f), V(0.022f, 0.02f, 0.022f), spot);
+            b.PaintEll(top, at + V(MathF.Sin(a) * 0.04f, 0.04f, -MathF.Cos(a) * 0.04f), female ? V(0.036f, 0.032f, 0.036f) : V(0.022f, 0.02f, 0.022f), spot);
         }
         b.Ell(top, V(0, 0.48f, -0.01f), V(0.06f, 0.05f, 0.06f), bud, blend: 0.02f);
         PokeBuilder.Both(s =>
@@ -1788,7 +1801,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Vileplume()
+    /// <param name="female">A female (plan 09 · L6): bigger white spots on her petals.</param>
+    private static PokeBuilder Vileplume(bool female = false)
     {
         var b = new PokeBuilder("Vileplume", 0.88f, BodyPlan.Biped, V(0, 0.22f, 0)) { Coat = Fur };
         var blue = Rgb(74, 108, 178);
@@ -1814,7 +1828,7 @@ internal static partial class PokemonModels
             var root = V(0, 0.42f, 0) + dir * 0.06f;
             Frond(b, top, root, root + dir * 0.36f - V(0, 0.05f, 0), 0.17f, petal, V(0, 1f, 0) + dir * 0.2f, 0.2f, Leaf, 0.02f);
             foreach (var (along, side) in new[] { (0.16f, 0.05f), (0.24f, -0.06f), (0.3f, 0.02f) })
-                b.PaintEll(top, root + dir * along + Vector3.Cross(V(0, 1f, 0), dir) * side + V(0, 0.01f, 0), V(0.022f, 0.04f, 0.022f), White);
+                b.PaintEll(top, root + dir * along + Vector3.Cross(V(0, 1f, 0), dir) * side + V(0, 0.01f, 0), female ? V(0.034f, 0.058f, 0.034f) : V(0.022f, 0.04f, 0.022f), White);
         }
         b.Torus(top, V(0, 0.45f, 0), 0.06f, 0.025f, core, mat: Leaf, blend: 0.012f);
         b.PaintEll(top, V(0, 0.47f, 0), V(0.04f, 0.02f, 0.04f), Rgb(110, 70, 40));

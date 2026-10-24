@@ -218,6 +218,13 @@ public class PokemonSpecies
     public bool Legendary { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool Mythical { get; set; }
+
+    /// <summary>
+    /// Whether its females look different from its males (PokeAPI's flag, plan 09 · L6): a flag only, never a picture.
+    /// The female look itself is a sculpt of ours, listed in <see cref="PokemonLook.Females"/>.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool GenderDifferences { get; set; }
     public PokemonType PrimaryType { get; set; }
     public PokemonType? SecondaryType { get; set; }
     public int BaseHP { get; set; }
@@ -735,11 +742,12 @@ public class Pokemon
     public string ModelName => Form ?? Species.Name;
 
     /// <summary>
-    /// The name this very Pokémon's look is asked for by (plan 09 · L1): its <see cref="ModelName"/>, with
-    /// <c>+s</c> after it when it is shiny (<see cref="PokemonLook"/>). Whatever shows a particular Pokémon (its model in
-    /// battle, its menu sprites, its field sprite) asks by this; a cry, a size or the data go by <see cref="ModelName"/>.
+    /// The name this very Pokémon's look is asked for by (plan 09 · L1, L6): its <see cref="ModelName"/>, with
+    /// <c>+f</c> after it when it is female and its model has a female look, then <c>+s</c> when it is shiny
+    /// (<see cref="PokemonLook"/>). Whatever shows a particular Pokémon (its model in battle, its menu sprites, its
+    /// field sprite) asks by this; a cry, a size or the data go by <see cref="ModelName"/>.
     /// </summary>
-    public string LookName => IsShiny && !IsEgg ? PokemonLook.Shiny(ModelName) : ModelName;
+    public string LookName => IsEgg ? ModelName : PokemonLook.Of(ModelName, Gender == Gender.Female, IsShiny);
     /// <summary>Down and out, or an Egg: either way it can't be sent into battle or chosen to fight.</summary>
     public bool IsFainted => IsEgg || CurrentHP <= 0 || Status == StatusCondition.Faint;
 

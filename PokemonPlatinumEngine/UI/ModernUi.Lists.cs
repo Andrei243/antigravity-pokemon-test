@@ -384,7 +384,7 @@ internal static partial class ModernUi
         Label(Text.Of("saving.party"), x, r.Y + 340);
         for (int i = 0; i < save.Party.Count && i < 6; i++)
         {
-            var icon = PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(save.Party[i].Form ?? save.Party[i].SpeciesName, save.Party[i].IsShiny));
+            var icon = PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(save.Party[i].Form ?? save.Party[i].SpeciesName, save.Party[i].Gender == Gender.Female, save.Party[i].IsShiny));
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
                 new Rectangle(x + 96 + i * 100, r.Y + 346, icon.Width * 2, icon.Height * 2), Vector2.Zero, 0f, Color.White);
         }    }

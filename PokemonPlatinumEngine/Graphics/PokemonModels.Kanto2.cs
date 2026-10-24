@@ -1130,11 +1130,15 @@ internal static partial class PokemonModels
         });
     }
 
-    private static PokeBuilder Doduo()
+    /// <summary>A female Doduo's or Dodrio's necks (plan 09 · L6): beige where the male's are black.</summary>
+    private static readonly Color FemaleBirdNeck = Rgb(214, 186, 146);
+
+    /// <param name="female">A female (plan 09 · L6): beige necks.</param>
+    private static PokeBuilder Doduo(bool female = false)
     {
         var b = new PokeBuilder("Doduo", 0.78f, BodyPlan.Biped, V(0, 0.36f, 0)) { Coat = Fur };
         var fur = Rgb(190, 136, 96);
-        var neck = Rgb(44, 40, 44);
+        var neck = female ? FemaleBirdNeck : Rgb(44, 40, 44);
         var beak = Rgb(232, 212, 180);
         BirdLegs(b, 0.045f, 0.3f, 0, 0.015f, Rgb(224, 198, 160));
         var c = V(0, 0.36f, 0);
@@ -1149,12 +1153,13 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Dodrio()
+    /// <param name="female">A female (plan 09 · L6): beige necks.</param>
+    private static PokeBuilder Dodrio(bool female = false)
     {
         var b = new PokeBuilder("Dodrio", 0.92f, BodyPlan.Biped, V(0, 0.44f, 0)) { Coat = Fur };
         var fur = Rgb(192, 136, 96);
         var dark = Rgb(58, 50, 52);
-        var neck = Rgb(44, 40, 44);
+        var neck = female ? FemaleBirdNeck : Rgb(44, 40, 44);
         var beak = Rgb(232, 212, 180);
         var plume = Rgb(232, 132, 128);
         BirdLegs(b, 0.055f, 0.36f, 0, 0.019f, Rgb(224, 198, 160));
@@ -1397,7 +1402,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Hypno()
+    /// <param name="female">A female (plan 09 · L6): a bigger collar of white fluff.</param>
+    private static PokeBuilder Hypno(bool female = false)
     {
         var b = new PokeBuilder("Hypno", 0.92f, BodyPlan.Biped, V(0, 0.5f, 0)) { Coat = Fur };
         var yellow = Rgb(250, 214, 82);
@@ -1413,7 +1419,7 @@ internal static partial class PokemonModels
         b.Ell(Body, V(0, 0.5f, 0), V(0.12f, 0.16f, 0.1f), yellow);
         // A collar of white fluff round its neck
         var rc = V(0, 0.64f, 0);
-        var rr = V(0.15f, 0.06f, 0.12f);
+        var rr = female ? V(0.19f, 0.08f, 0.15f) : V(0.15f, 0.06f, 0.12f);
         b.Ell(Body, rc, rr, ruff);
         FurTufts(b, Body, rc, rr, 26, 0.04f, 0.022f, ruff, 2f, -0.9f, 0.8f);
         // It swings a pendulum on a string from its hand
