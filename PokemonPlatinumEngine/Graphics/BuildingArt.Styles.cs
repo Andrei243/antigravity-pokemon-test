@@ -134,6 +134,8 @@ internal static partial class BuildingArt
                 Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 2, Window = WindowKind.Ribbon,
                 Home = true, Accent = roof ?? MetropolisBlue, Gear = RoofGear.Vents
             },
+            // Nimbasa's houses (plan 22 · U6): white clapboard under cherry-red gables with shutters, the funfair's colours
+            Architecture.Funfair => Pitched(WallKind.Clapboard, Rgb(222, 64, 88)) with { Shutters = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }

@@ -252,6 +252,16 @@
     "burgh": { "hairColor": "#8a5a3a", "hair": "Curls", "top": "#e8dcc2", "accent": "#5a9a4a", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a4a2a", "coat": true, "build": "Adult", "height": 1.06 },
     "iris": { "hairColor": "#6a3a8a", "hair": "Long", "top": "#f0a0c0", "accent": "#f6f0e0", "bottom": "#f2f2ee", "shoes": "#d86a9a", "eyes": "#5a2a6a", "shorts": true, "lashes": true, "blush": true, "height": 0.92 },
     "colress": { "hairColor": "#e8e0c4", "hair": "Swept", "top": "#f2f4f8", "accent": "#3a3e58", "bottom": "#2e3040", "shoes": "#2a2a30", "eyes": "#4a5a7a", "glasses": "#3a3a46", "coat": true, "build": "Adult", "height": 1.08 },
+    // Nimbasa City's (plan 22 · U6; our own takes, stand-ins until plan 22 · U12): Elesa, the Gym Leader who models, short
+    // pale gold hair and a black and lightning-yellow outfit; Ingo and Emmet, the Subway Bosses, grey-haired twins in long
+    // conductor's coats and caps, Ingo in black and Emmet in white; and the young Trainer who battles beside the player
+    // there, the hero the player isn't: Rosa, brown hair in bunches under a white visor, a blue top and yellow shorts, and
+    // Nate, brown hair standing up under a red visor and a blue jacket
+    "elesa": { "hairColor": "#f2dc8c", "hair": "Short", "top": "#26262e", "accent": "#f0d040", "bottom": "#26262e", "shoes": "#f0d040", "eyes": "#3a4a6a", "build": "Adult", "lashes": true, "height": 1.06 },
+    "ingo": { "hairColor": "#c8c8ce", "hat": "Cap", "hatColor": "#22222a", "hatBand": "#e8c45a", "top": "#22222a", "accent": "#f4f4f6", "bottom": "#22222a", "shoes": "#2a2420", "eyes": "#5a5a66", "coat": true, "build": "Adult", "height": 1.1 },
+    "emmet": { "hairColor": "#c8c8ce", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8c45a", "top": "#f4f4f6", "accent": "#22222a", "bottom": "#f4f4f6", "shoes": "#2a2420", "eyes": "#5a5a66", "coat": true, "build": "Adult", "height": 1.1 },
+    "rosa": { "hairColor": "#6a442c", "hair": "Bunches", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e86a9a", "top": "#3a8ad0", "accent": "#f4f4f6", "bottom": "#f2cc48", "shoes": "#e86a9a", "eyes": "#3a2a2a", "shorts": true, "lashes": true, "blush": true },
+    "nate": { "hairColor": "#5a3a26", "hair": "Spiky", "hat": "Cap", "hatColor": "#d83a3a", "hatBand": "#22222a", "top": "#3a62c0", "accent": "#f4f4f6", "bottom": "#26262e", "shoes": "#c83a3a", "eyes": "#3a2a2a" },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -686,6 +696,16 @@
     "Harlequin": "clown",
     "Doctor": [ "scientist" ],
     "Leader Burgh": "burgh",
-    "Pokémon Trainer Colress": "colress"
+    "Pokémon Trainer Colress": "colress",
+    // Plan 22 · U6: the desert's and Route 4's classes, folded onto the nearest looks until plan 22 · U12, and Nimbasa's
+    // cast as themselves
+    "Backpacker": [ "hiker", "picnicker" ],
+    "Nurse": [ "nurse" ],
+    "Hooligans": "roughneck",
+    "Leader Elesa": "elesa",
+    "Subway Boss Ingo": "ingo",
+    "Subway Boss Emmet": "emmet",
+    "Pokémon Trainer Rosa": "rosa",
+    "Pokémon Trainer Nate": "nate"
   }
 }

@@ -1,16 +1,100 @@
 {
-  // Route 4 (plan 22 · U5, part c): Black 2's sandy road north from Castelia City, opened for Colress's scene by the
-  // gate. A row of Crustle (12 to 14, 17 to 24, FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4) blocks the way north, taken for
-  // boulders, until Colress (15, FLAG_UNOVA_HIDE_COLRESS_ROUTE_4) wakes them with his machine, battles the player and
-  // goes on (unova_route_4.txt). The route's trainers, its houses and works, Join Avenue and the desert beyond are plan
-  // 22 · U6's: only the people listed here stand on it
+  // Route 4 (plan 22 · U5, part c, and U6): Black 2's sandy road north from Castelia City to Join Avenue and Nimbasa
+  // City, our words. A row of Crustle (12 to 14, 17 to 24, FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4) blocks the way north, taken
+  // for boulders, until Colress (15, FLAG_UNOVA_HIDE_COLRESS_ROUTE_4) wakes them with his machine, battles the player and
+  // goes on (unova_route_4.txt). Since plan 22 · U6 the route's trainers, its five houses of flats (unova_route_4_2 to
+  // _10), Join Avenue at its north end and the Desert Resort to its north-west are open. The Braviary that only comes on
+  // Thursdays (25) is left for later
   "area": "unova_route_4",
-  "bgmTrack": "unova/route19",
-  "locked": [ 0, 1, 2, 3, 4, 6, 9, 10 ],
+  "bgmTrack": "unova/route4",
   "triggers": [
     { "script": "ColressWaits", "x": 427, "z": 584, "width": 6, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 11 }
   ],
   "people": {
+    "0": {
+      "name": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Fishing in a canal by a building site? Laugh all you like, the Basculin here bite like crazy!",
+        "dialogueAfter": "Snapped my line AND my pride."
+      }
+    },
+    "1": {
+      "name": "Fisherman",
+      "trainer": {
+        "dialogueBefore": "Shh! You'll scare off the fish! ...Too late. Fine, you'll have to do instead!",
+        "dialogueAfter": "That one got away too."
+      }
+    },
+    "2": {
+      "name": "Policeman",
+      "trainer": {
+        "dialogueBefore": "I patrol the works by day. Halt! Let's see your Trainer's skills!",
+        "dialogueAfter": "All in order. Carry on, then."
+      }
+    },
+    "3": {
+      "name": "Hooligan",
+      "trainer": {
+        "dialogueBefore": "This half-built road's our turf! You want through, you go through the both of us!",
+        "dialogueAfter": "Oi, that's not how it was meant to go!"
+      }
+    },
+    "4": {
+      "name": "Hooligan",
+      "trainer": {
+        "dialogueBefore": "Yeah! What he said! Two on two, let's go!",
+        "dialogueAfter": "We look tough, but that's about it..."
+      }
+    },
+    "5": {
+      "name": "Biker",
+      "trainer": {
+        "dialogueBefore": "Nobody's laid tarmac here yet, so I ride on the sand. Watch me spin!",
+        "dialogueAfter": "Sand in my engine, sand in my teeth..."
+      }
+    },
+    "6": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "My Pokémon and I came all the way from Castelia on foot. We're tough now!",
+        "dialogueAfter": "I guess we needed a few more steps."
+      }
+    },
+    "7": {
+      "name": "Roughneck",
+      "trainer": {
+        "dialogueBefore": "Hey! You looking at me? Then you're battling me!",
+        "dialogueAfter": "Fine, fine. Look all you want."
+      }
+    },
+    "8": {
+      "name": "Roughneck",
+      "trainer": {
+        "dialogueBefore": "The workers took a break, so I'm guarding the road. For free!",
+        "dialogueAfter": "Some guard I turned out to be."
+      }
+    },
+    "9": {
+      "name": "Policeman",
+      "trainer": {
+        "dialogueBefore": "There's been trouble with hooligans round here. You're not one of them, are you?",
+        "dialogueAfter": "No hooligan battles that well. My mistake!"
+      }
+    },
+    "10": {
+      "name": "Policeman",
+      "trainer": {
+        "dialogueBefore": "Stop right there! Keeping the peace takes strong Pokémon, and I'll show you mine!",
+        "dialogueAfter": "Peace kept... by you, mostly."
+      }
+    },
+    "11": {
+      "name": "Pokémon Breeder",
+      "trainer": {
+        "dialogueBefore": "I raise my Pokémon to love sand and sun alike. Shall we see how they do?",
+        "dialogueAfter": "They did well. I'm proud of them all the same."
+      }
+    },
     "12": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
     "13": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
     "14": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
@@ -24,10 +108,20 @@
     "22": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
     "23": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
     "24": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "30": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [ "Every old place round here gets built over sooner or later. One day nobody will remember what stood here before." ]
+    },
     "31": {
       "name": "Hiker",
       "npcType": "hiker",
-      "dialog": [ "The sand blows in off the desert up north. Close your eyes, keep walking, and trust your feet!" ]
+      "dialog": [ "See the darker patches of sand? Pokémon hide in those. Walk into them and something might pop out!" ]
+    },
+    "32": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Out in the desert, the sand is swallowing an old castle a little more every year. Isn't that sad?" ]
     }
   },
   "signs": {

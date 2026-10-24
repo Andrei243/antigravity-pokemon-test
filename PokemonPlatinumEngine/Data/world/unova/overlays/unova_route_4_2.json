@@ -1,0 +1,18 @@
+{
+  // Route 4's first house of flats, downstairs (plan 22 · U6): Black 2's room, our words. Black 2's woman who rewards a
+  // fast Pokémon each day only talks of it for now
+  "area": "unova_route_4_2",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "I adore fast Pokémon! Speedy ones, quick on their feet... Show me a really quick one some day, won't you?" ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "My partner's all about speed. Me? I like taking my time. We somehow make it work." ]
+    }
+  }
+}

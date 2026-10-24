@@ -1,0 +1,64 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Ampère"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Nikola"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Fleming"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Elesa"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "11": {
+      "en": [
+        "Nimbasa City Pokémon Gym\nLeader: Elesa, the shining beauty"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  // The Desert Resort (plan 22 · U6): Black 2's desert beyond the gate house, in its thick sandstorm (the zone's header),
+  // our words. Its trainers, the man who tells of the Relic Castle and gives Soft Sand (0, desert_resort_2.txt) and a
+  // few who only talk; the Relic Castle's door stands shut until plan 22 · U6, part b opens the castle
+  "area": "desert_resort_2",
+  "bgmTrack": "unova/desert_resort",
+  "people": {
+    "0": { "name": "Archaeologist", "npcType": "ruin_maniac", "script": "SoftSand", "still": true },
+    "1": {
+      "name": "Psychic",
+      "trainer": {
+        "dialogueBefore": "The sand whispers to me... It says you will battle me. Who am I to argue with sand?",
+        "dialogueAfter": "The sand didn't mention I'd lose."
+      }
+    },
+    "2": {
+      "name": "Backpacker",
+      "trainer": {
+        "dialogueBefore": "I've crossed deserts on three continents! This one's my favourite. Battle me in it!",
+        "dialogueAfter": "Four continents' worth of defeat, then."
+      }
+    },
+    "3": {
+      "name": "Pokémon Ranger",
+      "trainer": {
+        "dialogueBefore": "Rangers keep an eye on the desert's Pokémon. And on visitors! Show me what you can do!",
+        "dialogueAfter": "You and your Pokémon work well together. I'll note that down."
+      }
+    },
+    "4": {
+      "name": "Pokémon Ranger",
+      "trainer": {
+        "dialogueBefore": "Lost in the sandstorm? No? Then you won't mind a battle!",
+        "dialogueAfter": "You know your way around, all right."
+      }
+    },
+    "5": {
+      "name": "Nurse",
+      "trainer": {
+        "dialogueBefore": "I'm out here to help anyone the heat has got to. But first, a quick check-up battle!",
+        "dialogueAfter": "Healthy as can be. You don't need me at all!"
+      }
+    },
+    "6": {
+      "name": "Psychic",
+      "trainer": {
+        "dialogueBefore": "I saw you coming in a vision! In the vision, I won. Let's make it come true!",
+        "dialogueAfter": "Visions can be wrong. Who knew?"
+      }
+    },
+    "7": {
+      "name": "Backpacker",
+      "trainer": {
+        "dialogueBefore": "Water's running low, but my fighting spirit's full! Let's go!",
+        "dialogueAfter": "Now both are running low..."
+      }
+    },
+    "8": {
+      "name": "Backpacker",
+      "trainer": {
+        "dialogueBefore": "Every step in this sand is training! Want to see how strong it made my Pokémon?",
+        "dialogueAfter": "Back to the sand for more steps, then."
+      }
+    },
+    "9": {
+      "name": "Backpacker",
+      "trainer": {
+        "dialogueBefore": "My map says there's treasure out here! Help me look? After a battle, of course!",
+        "dialogueAfter": "Maybe the treasure was the battle all along. ...No, I want real treasure."
+      }
+    },
+    "18": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "dialog": [ "I came all this way to train in the sand, and now I wish I'd brought a Water-type Pokémon to cool off with!" ]
+    },
+    "19": {
+      "name": "Backpacker",
+      "npcType": "hiker",
+      "dialog": [ "A whole sea of sand! I've heard of a desert in Hoenn where a tower appears and disappears. Nothing like that here... I hope." ]
+    },
+    "20": {
+      "name": "Pokémon Ranger",
+      "npcType": "ranger_m",
+      "dialog": [ "A buried castle in an endless desert. If there's no treasure here, there's no treasure anywhere!" ]
+    }
+  }
+}

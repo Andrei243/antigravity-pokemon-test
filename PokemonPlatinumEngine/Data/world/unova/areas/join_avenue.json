@@ -1,0 +1,58 @@
+{
+  "key": "join_avenue",
+  "index": 490,
+  "name": "Join Avenue",
+  "matrix": 376,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "44",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_REZO_RIZO",
+  "nightMusic": "BGM_REZO_RIZO",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 11, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 12, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 10, "z": 70, "to": "join_avenue_2", "toWarp": 0 },
+    { "x": 12, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 13, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 14, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 15, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 16, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 17, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 18, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 19, "z": 78, "to": "unova_route_4", "toWarp": 6 },
+    { "x": 12, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 13, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 14, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 15, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 16, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 17, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 18, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 19, "z": 78, "to": "unova_route_4_16", "toWarp": 6 },
+    { "x": 13, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 14, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 15, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 16, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 17, "z": 9, "to": "nimbasa_city", "toWarp": 0 },
+    { "x": 18, "z": 9, "to": "nimbasa_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "clerk_m_67", "movement": "none", "x": 15, "z": 70, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2000" },
+    { "id": "1", "looks": "ace_trainer_f", "movement": "none", "x": 15, "z": 68, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "2", "looks": "ace_trainer_m", "movement": "none", "x": 14, "z": 68, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "3", "looks": "clerk_f", "movement": "none", "x": 16, "z": 70, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "4", "looks": "clerk_f", "movement": "none", "x": 14, "z": 70, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [
+    { "x": 11, "z": 69, "type": 0, "script": "8" }
+  ],
+  "triggers": [
+    { "x": 11, "z": 73, "width": 10, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x410b", "value": "0" }
+  ]
+}

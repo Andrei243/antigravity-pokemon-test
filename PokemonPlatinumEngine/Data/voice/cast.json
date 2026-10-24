@@ -22,6 +22,14 @@
       "note": "first spoken at floccesy_town.txt(22)",
       "provisional": true
     },
+    "ampere": {
+      "note": "first spoken at nimbasa_city_gym.txt(74)",
+      "provisional": true
+    },
+    "archaeologist": {
+      "note": "first spoken at desert_resort_2.txt(9)",
+      "provisional": true
+    },
     "archer": {
       "note": "first spoken at goldenrod_radio_tower_observation_deck.txt(27)",
       "provisional": true
@@ -277,6 +285,14 @@
       "note": "first spoken at sprout_tower_3f.txt(12)",
       "provisional": true
     },
+    "elesa": {
+      "note": "first spoken at nimbasa_city_gym.txt(97)",
+      "provisional": true
+    },
+    "emmet": {
+      "note": "first spoken at nimbasa_city.txt(55)",
+      "provisional": true
+    },
     "energy_guru": {
       "note": "first spoken at slateport_city.txt(38)",
       "provisional": true
@@ -316,6 +332,10 @@
     },
     "flannery": {
       "note": "first spoken at lavaridge_town_gym_1f.txt(12)",
+      "provisional": true
+    },
+    "fleming": {
+      "note": "first spoken at nimbasa_city_gym.txt(58)",
       "provisional": true
     },
     "flint": {},
@@ -382,6 +402,10 @@
     },
     "hostess": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
+      "provisional": true
+    },
+    "ingo": {
+      "note": "first spoken at nimbasa_city.txt(52)",
       "provisional": true
     },
     "iris": {
@@ -640,6 +664,10 @@
       "note": "first spoken at littleroot_town_mays_house_1f.txt(13)",
       "provisional": true
     },
+    "nikola": {
+      "note": "first spoken at nimbasa_city_gym.txt(42)",
+      "provisional": true
+    },
     "norman": {},
     "officer": {
       "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
@@ -761,6 +789,10 @@
     "roark": {},
     "robert": {
       "note": "first spoken at phone.txt(322)",
+      "provisional": true
+    },
+    "rosa": {
+      "note": "first spoken at nimbasa_city.txt(30)",
       "provisional": true
     },
     "rose": {
@@ -893,6 +925,10 @@
       "note": "first spoken at EternaUndergroundManHouse.txt(13)",
       "provisional": true
     },
+    "unova_nate": {
+      "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
+      "provisional": true
+    },
     "valet": {
       "note": "first spoken at BattleCastleBattleRoom.txt(130)",
       "provisional": true
@@ -1001,8 +1037,10 @@
     "Agatha": "agatha",
     "Aide": "look:aide",
     "Alder": "alder",
+    "Ampère": "ampere",
     "Announcer": "look:announcer",
     "Apprentice": "look:apprentice",
+    "Archaeologist": "archaeologist",
     "Archer": "archer",
     "Archie": "archie",
     "Argenta": "argenta",
@@ -1080,6 +1118,8 @@
     "Edwin": "edwin",
     "Elder": "elder",
     "Elder Li": "elder_li",
+    "Elesa": "elesa",
+    "Emmet": "emmet",
     "Energy Guru": "energy_guru",
     "Erika": "erika",
     "Ernest": "ernest",
@@ -1092,6 +1132,7 @@
     "Fisherman": "look:fisherman",
     "Fishing Guru": "fishing_guru",
     "Flannery": "flannery",
+    "Fleming": "fleming",
     "Flint": "flint",
     "Florist": "florist",
     "Foreman": "foreman",
@@ -1121,6 +1162,7 @@
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Ingo": "ingo",
     "Iris": "iris",
     "Isaac": "isaac",
     "Isabel": "isabel",
@@ -1193,6 +1235,7 @@
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
     "Neighbour": "neighbour",
+    "Nikola": "nikola",
     "Norman": "norman",
     "Nurse": "look:nurse",
     "Officer": "officer",
@@ -1231,6 +1274,7 @@
     "Riley": "riley",
     "Roark": "roark",
     "Robert": "robert",
+    "Rosa": "rosa",
     "Rose": "rose",
     "Roughneck": "roughneck",
     "Roxanne": "roxanne",

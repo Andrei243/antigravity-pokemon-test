@@ -36,6 +36,8 @@ public class UnovaStoryTests
         public int Starter { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public string? BeganIn { get; init; }
+        /// <summary>Whom the player plays as (plan 22 · U6: Nimbasa's young Trainer is the hero the player isn't).</summary>
+        public PlayerLook Look { get; set; } = PlayerLook.Boy;
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
 
@@ -108,7 +110,8 @@ public class UnovaStoryTests
                 RivalName = "Hugh",
                 Fight = _ => Fight,
                 NeedsPokemon = true,
-                BeganInRegion = BeganIn
+                BeganInRegion = BeganIn,
+                PlayerLook = Look
             };
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
@@ -491,6 +494,80 @@ public class UnovaStoryTests
         Assert.Equal(12, game.Story.Var("VAR_UNOVA_CASTELIA"));
         Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4"));
         Assert.Null(game.Present("12", "unova_route_4"));
+
+        PlayTheNimbasaChapter(game);
+    }
+
+    /// <summary>
+    /// Unova's Nimbasa chapter (plan 22 · U6), played on from Route 4: the rest house, the Desert Resort's Soft Sand, the
+    /// Subway Bosses beside the hero the player isn't and the Vs. Recorder, the Nimbasa Gym's three models, Elesa and
+    /// the Bolt Badge, and Hugh against Team Plasma on the street to Route 5.
+    /// </summary>
+    private static void PlayTheNimbasaChapter(Game game)
+    {
+        // Route 4's trainers stand on the road now, and its rest house sees to the team
+        Assert.NotNull(game.Present("0", "unova_route_4"));
+        game.Arrive("Route4_RestHouse", 4, 9);
+        var lead = game.Party.Members[0];
+        lead.CurrentHP = 1;
+        game.Talk("1", "unova_route_4_3");
+        Assert.Equal(lead.MaxHP, lead.CurrentHP);
+
+        // The Desert Resort beyond its gate house: the archaeologist's Soft Sand, once
+        game.Arrive("DesertResort", 75, 49);
+        game.Talk("0", "desert_resort_2");
+        game.Talk("0", "desert_resort_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Soft Sand")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_SOFT_SAND"));
+
+        // Nimbasa City, in from Join Avenue: Rosa before the Gear Station (the player is a boy), and nobody of Team Plasma
+        game.Arrive("Unova", 430, 477);
+        Assert.NotNull(game.Present("5", "nimbasa_city"));
+        Assert.Null(game.Present("nate", "nimbasa_city"));
+        Assert.Null(game.Present("3", "nimbasa_city"));
+        Assert.Null(game.Present("0", "nimbasa_city"));
+
+        // Beside Rosa against the Subway Bosses, and her Vs. Recorder
+        var subway = game.Talk("5", "nimbasa_city");
+        Assert.Contains(subway.Log, l => l.StartsWith("battle ") && l.Contains("unova_subway_boss_ingo"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Vs. Recorder")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_SUBWAY_BOSSES"));
+        Assert.Null(game.Present("5", "nimbasa_city"));
+        Assert.Null(game.Present("6", "nimbasa_city"));
+
+        // The Gym in the amusement park: the guide's Fresh Water, the three models down the runway, Elesa and the Bolt Badge
+        game.Arrive("NimbasaCity_Gym", 15, 59);
+        Assert.False(game.Fires("Fleming"));
+        game.Talk("1", "nimbasa_city_gym");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_WATER_NIMBASA"));
+        // (before the runway is walked Elesa only waits)
+        var early = game.Talk("4", "nimbasa_city_gym");
+        Assert.DoesNotContain(early.Log, l => l.StartsWith("battle "));
+        Assert.Contains(game.Step("Nikola").Log, l => l.StartsWith("battle unova_beauty_nikola "));
+        Assert.Contains(game.Step("Fleming").Log, l => l.StartsWith("battle unova_beauty_fleming "));
+        Assert.Contains(game.Step("Ampere").Log, l => l.StartsWith("battle unova_beauty_amp_re "));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_NIMBASA_GYM"));
+        var elesa = game.Talk("4", "nimbasa_city_gym");
+        Assert.Contains(elesa.Log, l => l.StartsWith("battle unova_leader_elesa "));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Bolt"));
+        Assert.Equal(4, game.Story.BadgeCount(RegionDatabase.Unova));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM72")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_NIMBASA"));
+        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRoleOf("Leader Elesa"));
+
+        // The street to Route 5: Hugh and Team Plasma, the two grunts beaten, and Hugh's word of his sister's Purrloin
+        game.Arrive("Unova", 420, 438);
+        Assert.NotNull(game.Present("3", "nimbasa_city"));
+        Assert.NotNull(game.Present("0", "nimbasa_city"));
+        var plasma = game.Step("HughAndPlasma");
+        Assert.Contains(plasma.Log, l => l.StartsWith("battle unova_team_plasma_grunt_4 "));
+        Assert.Contains(plasma.Log, l => l.StartsWith("battle unova_team_plasma_grunt_47 "));
+        Assert.Contains(plasma.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Purrloin"));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_NIMBASA"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_NIMBASA_PLASMA"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_NIMBASA"));
+        Assert.Null(game.Present("3", "nimbasa_city"));
+        Assert.False(game.Fires("HughAndPlasma"));
     }
 
     [Fact]
@@ -505,7 +582,9 @@ public class UnovaStoryTests
                      "FLAG_UNOVA_HIDE_ROXIE_SCENE", "FLAG_UNOVA_HIDE_VIRBANK_DOCK", "FLAG_UNOVA_HIDE_ROUTE_20_GRUNT",
                      "FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL", "FLAG_UNOVA_HIDE_HUGH_TERMINAL", "FLAG_UNOVA_VIRBANK_BEGUN",
                      "FLAG_UNOVA_HIDE_HUGH_PIER", "FLAG_UNOVA_HIDE_IRIS_GYM_STREET", "FLAG_UNOVA_HIDE_SEWER_GRUNTS", "FLAG_UNOVA_HIDE_BURGH_GYM",
-                     "FLAG_UNOVA_HIDE_COLRESS_PLAZA", "FLAG_UNOVA_HIDE_COLRESS_ROUTE_4", "FLAG_UNOVA_CASTELIA_BEGUN" })
+                     "FLAG_UNOVA_HIDE_COLRESS_PLAZA", "FLAG_UNOVA_HIDE_COLRESS_ROUTE_4", "FLAG_UNOVA_CASTELIA_BEGUN",
+                     "FLAG_UNOVA_HIDE_HUGH_NIMBASA", "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "FLAG_UNOVA_HIDE_ROSA_NIMBASA",
+                     "FLAG_UNOVA_HIDE_NATE_NIMBASA", "FLAG_UNOVA_NIMBASA_BEGUN" })
             Assert.True(game.Story.Has(flag), flag);
         // Mom at home, Hugh and his sister, Bianca at the outlook and Alder in the open from the start
         foreach (string flag in new[] { "FLAG_UNOVA_HIDE_MOM_HOME", "FLAG_UNOVA_HIDE_HUGH_ASPERTIA", "FLAG_UNOVA_HIDE_HUGHS_SISTER",
@@ -541,10 +620,12 @@ public class UnovaStoryTests
     {
         bool Exists(string id) => File.Exists(GameDataFiles.PathOf(Path.Combine("music", id + ".mml")));
         foreach (string song in new[] { "aspertia", "route19", "floccesy", "gym", "battle_wild", "battle_trainer", "battle_rival", "battle_gym",
-                     "victory_trainer", "victory_gym", "eye_boy", "eye_girl", "virbank", "eye_plasma", "castelia" })
+                     "victory_trainer", "victory_gym", "eye_boy", "eye_girl", "virbank", "eye_plasma", "castelia",
+                     "route4", "nimbasa", "desert_resort" })
             Assert.True(Exists("unova/" + song), song);
         Assert.Equal("unova/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, RegionDatabase.Unova, Exists));
-        foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town", "virbank_city", "virbank_complex_2", "castelia_city_3", "castelia_city_10" })
+        foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town", "virbank_city", "virbank_complex_2", "castelia_city_3", "castelia_city_10",
+                     "unova_route_4", "nimbasa_city", "nimbasa_city_2", "join_avenue", "desert_resort_2" })
             Assert.StartsWith("unova/", Unova.Value.Overlay(key)!.BgmTrack);
         // Team Plasma's grunts bring a song of Unova's own when they spot the player (plan 22 · U5, part b)
         Assert.Equal("unova/eye_plasma", MusicDirector.EyeSong("Team Plasma Grunt", RegionDatabase.Unova, Exists));
@@ -585,5 +666,53 @@ public class UnovaStoryTests
         // and the chapter waits for the voyage: the captain sails nowhere before Hugh has asked
         Assert.Equal(0, game.Story.Var("VAR_UNOVA_CASTELIA"));
         Assert.Equal(8, game.Story.Var("VAR_UNOVA_VIRBANK"));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheNimbasaChapterIsGivenItsHiddenPeople()
+    {
+        // A save of part c's: Colress beaten on Route 4, nothing of Nimbasa's set
+        var game = new Game(begin: false);
+        foreach (string flag in new[] { "FLAG_UNOVA_STORY_BEGUN", "FLAG_UNOVA_VIRBANK_BEGUN", "FLAG_UNOVA_CASTELIA_BEGUN" }) game.Story.Set(flag);
+        game.Story.SetVar("VAR_UNOVA_ASPERTIA", 7);
+        game.Story.SetVar("VAR_UNOVA_CASTELIA", 12);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("Unova", 430, 477);
+        Assert.True(game.Story.Has("FLAG_UNOVA_NIMBASA_BEGUN"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_NIMBASA_PLASMA"));
+        Assert.Null(game.Present("3", "nimbasa_city"));
+        Assert.Null(game.Present("0", "nimbasa_city"));
+        // the young Trainer before the Gear Station is shown as the city is come to, and Castelia's count stands
+        Assert.NotNull(game.Present("5", "nimbasa_city"));
+        Assert.Equal(12, game.Story.Var("VAR_UNOVA_CASTELIA"));
+    }
+
+    [Fact]
+    public void AGirlBattlesTheSubwayBossesBesideNate()
+    {
+        var game = new Game(starter: 2) { Look = PlayerLook.Girl };
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Oshawott")!, 25));
+        game.Story.ChooseStarter("Oshawott");
+        game.Arrive("Unova", 430, 477);
+        Assert.NotNull(game.Present("nate", "nimbasa_city"));
+        Assert.Null(game.Present("5", "nimbasa_city"));
+        var subway = game.Talk("nate", "nimbasa_city");
+        // Nate brings the starter neither the player (Oshawott) nor Hugh took, as Black 2's TRAINER_NATE_3 does
+        Assert.Contains(subway.Log, l => l.StartsWith("battle unova_subway_boss_ingo and unova_subway_boss_emmet with unova_nate_3 "));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Vs. Recorder")!));
+        Assert.Null(game.Present("nate", "nimbasa_city"));
+        // Said no, the Bosses wait for another time
+        var other = new Game() { Look = PlayerLook.Girl };
+        other.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 25));
+        other.Arrive("Unova", 430, 477);
+        var npc = other.Present("nate", "nimbasa_city")!;
+        other.Tile = (npc.GridX, npc.GridY + 1);
+        var host = new HeadlessScriptHost(other.Story, other.Party, other.Bag) { Map = other.Map, PlayerTile = other.Tile, PlayerLook = PlayerLook.Girl, NeedsPokemon = true };
+        host.Answers.Enqueue(1);
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find(FieldScripts.For(npc)!, "nimbasa_city")!, npc);
+        runner.RunToEnd();
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("battle "));
+        Assert.False(other.Story.Has("FLAG_UNOVA_HIDE_SUBWAY_BOSSES"));
     }
 }

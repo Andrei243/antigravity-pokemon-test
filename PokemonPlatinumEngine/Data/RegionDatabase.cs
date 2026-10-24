@@ -677,6 +677,11 @@ public static class RegionDatabase
                 "CasteliaCity_ModeStreet", "CasteliaCity_NarrowStreet", "CasteliaCity_GymStreet", "CasteliaCity_Plaza",
                 "CasteliaCity_NorthStreet", "CasteliaCity_PokemonCenter", "CasteliaCity_Gym",
                 "CasteliaGate", "CasteliaSewers",
+                // Plan 22 · U6: Route 4's houses of flats, Join Avenue, the Desert Resort's gate and the desert, and
+                // Nimbasa City's Pokémon Center, amusement park and Gym
+                "Route4_House1_1F", "Route4_House1_2F", "Route4_RestHouse", "Route4_House2_1F", "Route4_House2_2F",
+                "Route4_House3_1F", "Route4_House3_2F", "Route4_House4_1F", "Route4_House4_2F", "JoinAvenue",
+                "DesertResortGate", "DesertResort", "NimbasaCity_PokemonCenter", "NimbasaCity_AmusementPark", "NimbasaCity_Gym",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

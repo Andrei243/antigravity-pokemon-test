@@ -1,0 +1,13 @@
+{
+  // Route 4's second house of flats, upstairs (plan 22 · U6): Black 2's room, our words, and a Wide Lens in its ball
+  "area": "unova_route_4_6",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "When I'm feeling down, I just look into my Lillipup's big round eyes. Works every time." ]
+    },
+    "1": { "name": "Lillipup", "npcType": "Pokemon", "species": "Lillipup", "dialog": [ "Lillipup: Yip! Yip!" ] }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "key": "unova_route_4_6",
+  "index": 521,
+  "name": "Route 4",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_C_SP",
+  "nightMusic": "BGM_R_C_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "unova_route_4_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "artist", "movement": "none", "x": 10, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "306", "movement": "wander_around", "x": 7, "z": 6, "facing": 3, "rangeX": 2, "rangeZ": 2, "script": "2" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x047f", "item": "Wide Lens", "script": "7051" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,167 @@
+# Nimbasa City (plan 22 · U6). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/nimbasa_city.s, read for the order alone).
+# VAR_UNOVA_NIMBASA is the city's count: 0 until the Bolt Badge, 1 with Hugh and Team Plasma waiting on the street to
+# Route 5 (nimbasa_city_gym.txt sets it), 2 once their scene is played.
+#
+# Before the Gear Station the Subway Bosses, Ingo (6) and Emmet (7), wait for a two-on-two battle beside a young
+# Trainer, the hero the player isn't (Black 2's TRAINER_ROSA or TRAINER_NATE, with the starter the player and Hugh
+# didn't take): Rosa (5) for a boy, Nate (nate) for a girl, shown by the OnEnter below. Spoken to, they ask the player
+# to battle beside them (Black 2's multi battle, 732 and 733); won, the Bosses go back into the station and the
+# partner gives a Vs. Recorder (FLAG_UNOVA_HIDE_SUBWAY_BOSSES). Once the Bolt Badge is won, Hugh (3) faces four of Team
+# Plasma (0, 1, 2, 4) on the street west to Route 5; our trigger (409, 437 to 440, at 1) plays it: the player battles
+# two of them (Black 2's TRAINER_TEAM_PLASMA_GRUNT_4 and _47), they flee, and Hugh tells of his sister's Purrloin,
+# heals the team and goes on.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if flag FLAG_UNOVA_HIDE_SUBWAY_BOSSES goto Done
+  if girl clearflag FLAG_UNOVA_HIDE_NATE_NIMBASA
+  if boy clearflag FLAG_UNOVA_HIDE_ROSA_NIMBASA
+label Done
+  end
+
+
+# The young Trainer before the Gear Station: Rosa (5) or Nate (nate)
+script Partner
+  face self player
+  scene "The Subway Bosses"
+  if girl goto NateAsks
+  speaker "Rosa"
+  say "I came to try the Battle Subway, and guess who turned up? The Subway Bosses themselves!"
+  say "They'll battle out here, but only two on two. I need a partner!"
+  ask "Will you battle the Subway Bosses beside me?"
+  if no goto Later
+  say "Really? Thanks! I'm Rosa. Let's be the best partners ever!"
+  if starter "Snivy" partner 5 "unova_rosa"
+  if starter "Tepig" partner 5 "unova_rosa_2"
+  if starter "Oshawott" partner 5 "unova_rosa_3"
+  goto Battle
+label NateAsks
+  speaker unova_nate "Nate"
+  say "I came to try the Battle Subway, and guess who turned up? The Subway Bosses themselves!"
+  say "They'll battle out here, but only two on two. I need a partner!"
+  ask "Will you battle the Subway Bosses beside me?"
+  if no goto Later
+  say "Really? Thanks! I'm Nate. You and me together, we'll be better than perfect!"
+  if starter "Snivy" partner nate "unova_nate"
+  if starter "Tepig" partner nate "unova_nate_2"
+  if starter "Oshawott" partner nate "unova_nate_3"
+label Battle
+  face 6 player
+  speaker "Ingo"
+  say "A battle in the open air instead of aboard our trains? Most irregular! Still, new scenery may teach me something."
+  say "Emmet, have you anything to add?"
+  speaker "Emmet"
+  say "Two on two, rules are rules! Destination: victory. All aboard!"
+  battle 6 and 7 with partner
+  speaker "Ingo"
+  say "Bravo! You and your Pokémon make a truly splendid team!"
+  speaker "Emmet"
+  say "I'm Emmet. We lost, but I had fun! Let's battle again sometime!"
+  speaker "Ingo"
+  say "Next time, ride the Battle Subway and challenge us aboard! Now we must be off. All aboard!"
+  walk 6 up 1
+  hide 6
+  walk 7 up 1
+  hide 7
+  if girl goto NateThanks
+  speaker "Rosa"
+  say "Even holding back, they were so strong! That's the Subway Bosses for you. Thanks, {player}! This is for you!"
+  goto Gift
+label NateThanks
+  speaker unova_nate "Nate"
+  say "Even holding back, they were so strong! That's the Subway Bosses for you. Thanks, {player}! This is for you!"
+label Gift
+  partner off
+  give "Vs. Recorder"
+  say "With a Vs. Recorder you can keep your battles and watch them again. I had a great time battling beside you. See you!"
+  setflag FLAG_UNOVA_HIDE_SUBWAY_BOSSES
+  if girl goto NateLeaves
+  walk 5 up 3
+  hide 5
+  setflag FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  endscene
+  end
+label NateLeaves
+  walk nate up 3
+  hide nate
+  setflag FLAG_UNOVA_HIDE_NATE_NIMBASA
+  endscene
+  end
+label Later
+  say "Not ready yet? That's OK! I'll keep them talking. Come back when you are!"
+  endscene
+  end
+
+
+script Ingo
+  face 6 player
+  speaker "Ingo"
+  say "I am Ingo, a Subway Boss. Usually you'll find me battling aboard the trains that leave from the Gear Station."
+  end
+
+
+script Emmet
+  face 7 player
+  speaker "Emmet"
+  say "I'm Emmet, a Subway Boss! I love Double Battles. Two Pokémon working as one, that's the best!"
+  end
+
+
+script Hugh
+  face 3 player
+  speaker "{rival}"
+  say "{player}! Cover me!"
+  end
+
+
+# The street west to Route 5 once the Bolt Badge is won (our trigger on 409, 437 to 440, at 1)
+script HughAndPlasma
+  scene "Hugh and Team Plasma in Nimbasa"
+  place player 409 439 left
+  face 3 left
+  speaker "{rival}"
+  say "Hold it! What are you lot up to here?"
+  speaker "Grunt"
+  say "Up to? Nothing. We're just standing about. So why are you bothering us?"
+  speaker "{rival}"
+  say "Maybe you haven't done anything to me. But I'll never forgive Pokémon thieves like you. Never!"
+  speaker "Grunt"
+  say "Kids these days. You think your Pokémon's strength is your own? I don't like being pushed around!"
+  face 3 player
+  speaker "{rival}"
+  say "{player}! Cover me!"
+  speaker "Grunt"
+  say "Heh heh! I stole this Pokémon two years ago and I've trained it hard ever since. It's tough!"
+  battle 0 as "unova_team_plasma_grunt_4"
+  say "What?! I toughened it up for two whole years!"
+  speaker "Grunt"
+  say "My turn! And I show no mercy!"
+  battle 2 as "unova_team_plasma_grunt_47"
+  say "We give up! Beaten by two kids... Fine. Since you're so strong, I'll tell you this much."
+  say "Team Plasma is searching for something. Once we find it, our secret weapon will show its true power!"
+  say "Farewell!"
+  walk 4 left 11 fast
+  hide 4
+  walk 1 left 11 fast
+  hide 1
+  walk 0 left 11 fast
+  hide 0
+  walk 2 left 11 fast
+  hide 2
+  setflag FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  face 3 player
+  speaker "{rival}"
+  say "Five years ago, Team Plasma stole my little sister's Purrloin. It was a present."
+  say "I was just a kid. I couldn't do a thing. That's why I have to get stronger!"
+  say "Good work back there. I knew you had good instincts! Here, let me see to your team."
+  heal
+  text "{rival} healed your Pokémon."
+  say "Listen. Fill up that Pokédex, keep getting stronger, and keep backing me up. I'm counting on you!"
+  walk 3 right 13 fast
+  hide 3
+  setflag FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  setvar VAR_UNOVA_NIMBASA 2
+  endscene
+  end

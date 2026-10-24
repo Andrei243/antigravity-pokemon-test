@@ -1,0 +1,14 @@
+# Route 4's rest house (plan 22 · U6). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/route_4_3.s, read for the order alone).
+#
+# The woman of the house (1) lets a tired Trainer rest and sees to the team, as often as asked.
+
+
+script Rest
+  face 1 player
+  speaker "Woman"
+  say "Goodness, you look worn out! Sit down and rest a while. Your Pokémon too."
+  heal
+  text "{player} and the team had a good rest."
+  say "There! With that much energy you could walk straight through a sandstorm."
+  end
