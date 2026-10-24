@@ -241,6 +241,10 @@
       "note": "first spoken at slateport_city_sterns_shipyard_1f.txt(11)",
       "provisional": true
     },
+    "dragon_tamer": {
+      "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
+      "provisional": true
+    },
     "dusty": {
       "note": "first spoken at cinnabar_island_gym.txt(95)",
       "provisional": true
@@ -401,6 +405,10 @@
       "provisional": true
     },
     "jupiter": {},
+    "karate_master": {
+      "note": "first spoken at mount_mortar_b1f.txt(12)",
+      "provisional": true
+    },
     "karen": {
       "note": "first spoken at pokemon_league_karen_room.txt(10)",
       "provisional": true
@@ -1039,6 +1047,7 @@
     "Devon Employee": "devon_employee",
     "Director": "director",
     "Dock": "dock",
+    "Dragon Tamer": "dragon_tamer",
     "Dusty": "dusty",
     "Dylan": "dylan",
     "Edwin": "edwin",
@@ -1094,6 +1103,7 @@
     "Joey": "joey",
     "Juan": "juan",
     "Jupiter": "jupiter",
+    "Karate Master": "karate_master",
     "Karen": "karen",
     "Katelyn": "katelyn",
     "Keira": "keira",

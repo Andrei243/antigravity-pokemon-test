@@ -54,6 +54,17 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=partb shoots only plan 20 · J13, part b (Mt. Mortar's Tyrogue, Blackthorn's house of moves)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partb")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoPartBShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         engine.NewGameRegion = "Johto";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -164,6 +175,8 @@ partial class Harness
         JohtoLeagueShots();
         // And last the second chapter played by its own scripts, in a new game of its own (plan 20 · J7: jst30 to jst59)
         JohtoScenes(second: true);
+        // And last plan 20 · J13, part b: Mt. Mortar's Tyrogue and Blackthorn's house of moves
+        JohtoPartBShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

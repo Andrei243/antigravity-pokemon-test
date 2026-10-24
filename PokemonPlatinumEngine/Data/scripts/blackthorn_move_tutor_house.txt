@@ -1,0 +1,89 @@
+# The house of moves in Blackthorn City (plan 20 · J13, part b). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats.
+#
+# The father makes a Pokémon forget a move for good, an HM's too, as Fuchsia's and Canalave's do (Models/MoveTutors.cs;
+# `tutor forget` and `tutor delete`): never an Egg's, and never a Pokémon's last. The old man teaches Draco Meteor to a
+# Dragon-type Pokémon that trusts its Trainer fully (friendship 255) and doesn't know the move (`tutor special
+# dracometeor`), for nothing, as Grandma Wilma does in Sinnoh.
+
+
+script Deleter
+  speaker "Move Deleter"
+  say "Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it."
+  ask "Shall I make one of your Pokémon forget a move?"
+  if no goto Later
+  say "Which Pokémon?"
+  choosepokemon
+  tutor forget
+  if result == 3 goto Egg
+  if result == 2 goto OnlyOne
+  if result != 1 goto Later
+  ask "{thing}? Should that move be forgotten?"
+  if no goto Later
+  tutor delete
+  say "There! {wearer} has forgotten {thing} completely."
+  end
+label Later
+  say "Come again if there are moves you'd like forgotten."
+  end
+label Egg
+  say "That's an Egg. It doesn't know any moves to forget!"
+  end
+label OnlyOne
+  say "That Pokémon knows only one move. I can't make it forget that one."
+  end
+
+
+script DragonTamer
+  speaker "Dragon Tamer"
+  if flag FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER goto Again
+  setflag FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER
+  say "Hm. A visitor to the dragon tamers' town. We keep a secret here: the mightiest of all the Dragon-type moves."
+  ask "Would you have me teach it to one of your Pokémon?"
+  goto Answer
+label Again
+  ask "Back again? Shall I teach the best Dragon-type move I know to one of your Pokémon?"
+label Answer
+  if no goto ComeBack
+  tutor dragons
+  if result == 0 goto NoDragons
+  say "Good. Choose the Pokémon I am to teach."
+  choosepokemon
+  tutor special dracometeor
+  if result == 1 goto ComeBack
+  if result == 2 goto Egg
+  if result == 3 goto CantLearn
+  if result == 4 goto Knows
+  if result == 5 goto NotClose
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  say "Its power to destroy is a fearsome thing to see." "Mind, though: using it lowers the user's own Special Attack."
+  end
+label ComeBack
+  say "Well, should you change your mind, do come back."
+  end
+label NoDragons
+  say "Not one of the Pokémon with you now can learn this move. Bring a Dragon, and come back."
+  end
+label Egg
+  say "Teaching a move to an Egg is a feat beyond anyone."
+  end
+label CantLearn
+  say "I'm sorry. That Pokémon cannot learn this move."
+  end
+label Knows
+  say "Oh? That Pokémon knows {thing} already."
+  end
+label NotClose
+  say "That Pokémon could learn this move, but it hasn't come to trust you fully yet." "Until it does, I can't make it learn."
+  end
+label GaveUp
+  say "{wearer} did not learn {thing}."
+  goto ComeBack
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+  goto ComeBack
