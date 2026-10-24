@@ -1,0 +1,210 @@
+{
+  "Deleter": [
+    {
+      "en": [
+        "Move Deleter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I make one of your Pokémon forget a move?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{thing}? Should that move be forgotten?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! {wearer} has forgotten {thing} completely."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come again if there are moves you'd like forgotten."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's an Egg. It doesn't know any moves to forget!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon knows only one move. I can't make it forget that one."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DragonTamer": [
+    {
+      "en": [
+        "Dragon Tamer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm. A visitor to the dragon tamers' town. We keep a secret here: the mightiest of all the Dragon-type moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you have me teach it to one of your Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back again? Shall I teach the best Dragon-type move I know to one of your Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good. Choose the Pokémon I am to teach."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Its power to destroy is a fearsome thing to see.",
+        "Mind, though: using it lowers the user's own Special Attack."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, should you change your mind, do come back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not one of the Pokémon with you now can learn this move. Bring a Dragon, and come back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Teaching a move to an Egg is a feat beyond anyone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. That Pokémon cannot learn this move."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh? That Pokémon knows {thing} already."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon could learn this move, but it hasn't come to trust you fully yet.",
+        "Until it does, I can't make it learn."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not learn {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

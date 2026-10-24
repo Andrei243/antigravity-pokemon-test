@@ -1,0 +1,38 @@
+# Mt. Mortar's lowest floor (plan 20 · J13, part b). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (D38R0104_000, the karate master).
+#
+# He trains where no one can disturb him. He battles whoever asks (Kiyo's Hitmonlee and Hitmonchan) and, beaten, gives
+# the player a Tyrogue, once. FLAG_BEAT_MORTAR_KARATE_MASTER: his battle is won; FLAG_GOT_TYROGUE_FROM_KIYO: the gift
+# is taken.
+
+
+# D38R0104_000
+script Karate
+  speaker "Karate Master"
+  if flag FLAG_GOT_TYROGUE_FROM_KIYO goto After
+  if flag FLAG_BEAT_MORTAR_KARATE_MASTER goto Gift
+  say "Hah! I train down here where no one can disturb me. Few ever find their way this deep."
+  ask "You have the eyes of someone who wants to test their fists. Will you fight me?"
+  if no goto Later
+  say "Good! Show me what you and your Pokémon are made of!"
+  battle self as "johto_black_belt_kiyo"
+  setflag FLAG_BEAT_MORTAR_KARATE_MASTER
+  say "Hah! Well fought! Your Pokémon fight as one with you."
+label Gift
+  if party >= 6 goto NoRoom
+  say "I have a young fighter that needs a Trainer with a strong heart. Take it, and teach it well."
+  givepokemon "Tyrogue" 10
+  fanfare pokemon
+  text "{player} received Tyrogue from the Karate Master!"
+  setflag FLAG_GOT_TYROGUE_FROM_KIYO
+  say "It has the makings of three different fighters. Which one it becomes depends on how you raise it."
+  end
+label NoRoom
+  say "Your team is full. Make room, and I will give you my young fighter."
+  end
+label Later
+  say "Then leave me to my training. Come back when your fists are ready."
+  end
+label After
+  say "How is the young fighter? Train it hard, and it will repay you."
+  end
