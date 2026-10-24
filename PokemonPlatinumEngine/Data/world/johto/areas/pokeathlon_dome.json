@@ -1,0 +1,56 @@
+{
+  "key": "pokeathlon_dome",
+  "index": 280,
+  "name": "Pokeathlon Dome",
+  "matrix": 153,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 42, "z": 54, "to": "route_35_national_park_pokeathalon_gatehouse", "toWarp": 2 },
+    { "x": 42, "z": 22, "to": "pokeathlon_dome_interior_1f", "toWarp": 0 },
+    { "x": 41, "z": 22, "to": "pokeathlon_dome_interior_1f", "toWarp": 0 },
+    { "x": 43, "z": 22, "to": "pokeathlon_dome_interior_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d49_thlonowner", "looks": "thlonowner", "movement": "0", "x": 42, "z": 42, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_225", "script": "0" },
+    { "id": "d49_tsure_poke_static_poliwrath", "looks": "follower_mon_static_poliwrath", "movement": "0", "x": 41, "z": 42, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_225", "script": "0" },
+    { "id": "d49_gsboy2", "looks": "gsboy2", "movement": "0", "x": 36, "z": 23, "facing": 2, "rangeX": 3, "rangeZ": 4, "script": "D49_001+1" },
+    { "id": "d49_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 30, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49_002+1" },
+    { "id": "d49_tsure_poke_static_meowth", "looks": "follower_mon_static_meowth", "movement": "0", "x": 29, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49_008+1" },
+    { "id": "d49_gsman3", "looks": "gsman3", "movement": "0", "x": 20, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49_006+1" },
+    { "id": "d49_tsure_poke_static_psyduck", "looks": "follower_mon_static_psyduck", "movement": "20", "x": 18, "z": 14, "facing": 3, "rangeX": 4, "rangeZ": 0, "script": "D49_014+1" },
+    { "id": "d49_tsure_poke_static_slowpoke", "looks": "follower_mon_static_slowpoke", "movement": "20", "x": 18, "z": 12, "facing": 3, "rangeX": 5, "rangeZ": 0, "script": "D49_012+1" },
+    { "id": "d49_tsure_poke_static_oddish", "looks": "follower_mon_static_oddish", "movement": "0", "x": 35, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49_007+1" },
+    { "id": "d49_middlewoman1_2", "looks": "middlewoman1_2", "movement": "20", "x": 27, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 6, "script": "D49_003+1" },
+    { "id": "d49_tsure_poke_static_pidgey", "looks": "follower_mon_static_pidgey", "movement": "20", "x": 26, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 6, "script": "D49_009+1" },
+    { "id": "d49_gswoman1", "looks": "gswoman1", "movement": "0", "x": 21, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49_004+1" },
+    { "id": "d49_tsure_poke_static_slowbro", "looks": "follower_mon_static_slowbro", "movement": "3", "x": 23, "z": 49, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "D49_010+1" },
+    { "id": "d49_gsman3_2", "looks": "gsman3", "movement": "0", "x": 11, "z": 40, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49_005+1" },
+    { "id": "d49_tsure_poke_static_machop", "looks": "follower_mon_static_machop", "movement": "0", "x": 11, "z": 41, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D49_011+1" },
+    { "id": "d49_tsure_poke_static_farfetchd", "looks": "follower_mon_static_farfetchd", "movement": "20", "x": 22, "z": 13, "facing": 2, "rangeX": 4, "rangeZ": 0, "script": "D49_013+1" },
+    { "id": "d49_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 19, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D49_016+1" },
+    { "id": "d49_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 41, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_27F", "script": "D49_017+1" },
+    { "id": "d49_shopm1_2", "looks": "shopm1_2", "movement": "0", "x": 22, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49_015+1" }
+  ],
+  "signs": [
+    { "x": 52, "z": 16, "type": 2, "script": "std_hiddenitem_d49_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_D49_PP_UP" },
+    { "x": 20, "z": 34, "type": 2, "script": "std_hiddenitem_d49_protein", "item": "Protein", "flag": "FLAG_HIDDEN_ITEM_D49_PROTEIN" },
+    { "x": 19, "z": 24, "type": 0, "script": "D49_019+1" },
+    { "x": 20, "z": 24, "type": 0, "script": "D49_020+1" },
+    { "x": 21, "z": 24, "type": 0, "script": "D49_021+1" },
+    { "x": 18, "z": 24, "type": 1, "script": "D49_022+1" },
+    { "x": 46, "z": 25, "type": 1, "script": "D49_023+1" }
+  ],
+  "triggers": [
+    { "x": 39, "z": 47, "width": 7, "depth": 1, "script": "D49_000+1", "variable": "VAR_UNK_40DB", "value": "0" }
+  ]
+}

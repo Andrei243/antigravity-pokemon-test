@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "The National Park is through the north door. The Pokéathlon Dome is through the west one, but it isn't open yet."
+          "The National Park is through the north door. The Pokéathlon Dome is through the west one!"
         ],
         "text": [
-          "Parcul Național e pe ușa de nord. Domul Pokéathlon e pe cea de vest, dar încă nu e deschis."
+          ""
         ]
       }
     },
@@ -27,15 +27,69 @@
           "Polițistul"
         ]
       }
+    },
+    "r35r0201_gsfighter": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In the Pokéathlon it isn't strength alone that counts. Speed, skill, stamina and jumping all have their turn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35r0201_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon lost every battle, but it won a race at the Pokéathlon! Now it walks with its head held high."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35r0201_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to watch the Bug-Catching Contest and found the Pokéathlon on the other side. Now I can't decide which to watch!"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
     "R35R0201_006+1": {
       "en": [
-        "A poster of the Pokéathlon. It says \"Coming soon!\""
+        "A poster of the Pokéathlon. It says \"Through the west door!\""
       ],
       "text": [
-        "Un afiș al Pokéathlonului. Scrie „În curând!”"
+        ""
       ]
     },
     "R35R0201_007+1": {

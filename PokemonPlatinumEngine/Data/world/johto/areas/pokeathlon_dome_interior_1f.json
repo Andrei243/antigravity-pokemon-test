@@ -1,0 +1,54 @@
+{
+  "key": "pokeathlon_dome_interior_1f",
+  "index": 281,
+  "name": "Pokeathlon Dome",
+  "matrix": 154,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building2",
+  "dayMusic": "GS_PT_ENTR",
+  "nightMusic": "GS_PT_ENTR",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 23, "z": 23, "to": "pokeathlon_dome", "toWarp": 1 },
+    { "x": 29, "z": 4, "to": "pokeathlon_dome_interior_b1f_solidarity_room", "toWarp": 1 },
+    { "x": 16, "z": 4, "to": "pokeathlon_dome_interior_2f_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d49r0101_pcwoman1", "looks": "pcwoman1", "movement": "0", "x": 23, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "9850" },
+    { "id": "d49r0101_gsleader3", "looks": "gsleader3", "movement": "0", "x": 23, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_RECEPTION_WHITNEY", "script": "0" },
+    { "id": "d49r0101_pcwoman1_2", "looks": "pcwoman1", "movement": "0", "x": 11, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "9852" },
+    { "id": "d49r0101_pcwoman1_3", "looks": "pcwoman1", "movement": "0", "x": 36, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0101_001+1" },
+    { "id": "d49r0101_pcwoman1_4", "looks": "pcwoman1", "movement": "0", "x": 25, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0101_002+1" },
+    { "id": "d49r0101_gsboy1", "looks": "gsboy1", "movement": "2", "x": 15, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D49R0101_015+1" },
+    { "id": "d49r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "3", "x": 33, "z": 13, "facing": 3, "rangeX": 2, "rangeZ": 1, "script": "D49R0101_017+1" },
+    { "id": "d49r0101_gswoman1", "looks": "gswoman1", "movement": "3", "x": 15, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "D49R0101_016+1" },
+    { "id": "d49r0101_gsman1", "looks": "gsman1", "movement": "0", "x": 32, "z": 9, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "D49R0101_018+1" },
+    { "id": "d49r0101_gsbigman", "looks": "gsbigman", "movement": "3", "x": 40, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 2, "script": "D49R0101_019+1" },
+    { "id": "d49r0101_pcwoman1_5", "looks": "pcwoman1", "movement": "0", "x": 21, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_POKEATHLON_SUPREME_CUP_RECEPTIONIST", "script": "9851" },
+    { "id": "d49r0101_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 5, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0101_021+1" },
+    { "id": "d49r0101_gsman2", "looks": "gsman2", "movement": "0", "x": 41, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D49R0101_022+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 7, "type": 0, "script": "D49R0101_014+1" },
+    { "x": 12, "z": 19, "type": 1, "script": "D49R0101_004+1" },
+    { "x": 14, "z": 16, "type": 1, "script": "D49R0101_005+1" },
+    { "x": 16, "z": 19, "type": 1, "script": "D49R0101_006+1" },
+    { "x": 18, "z": 16, "type": 1, "script": "D49R0101_007+1" },
+    { "x": 20, "z": 19, "type": 1, "script": "D49R0101_008+1" },
+    { "x": 26, "z": 19, "type": 1, "script": "D49R0101_009+1" },
+    { "x": 28, "z": 16, "type": 1, "script": "D49R0101_010+1" },
+    { "x": 30, "z": 19, "type": 1, "script": "D49R0101_011+1" },
+    { "x": 32, "z": 16, "type": 1, "script": "D49R0101_012+1" },
+    { "x": 34, "z": 19, "type": 1, "script": "D49R0101_013+1" },
+    { "x": 26, "z": 9, "type": 0, "script": "D49R0101_020+1" }
+  ],
+  "triggers": [
+    { "x": 23, "z": 10, "width": 1, "depth": 1, "script": "D49R0101_000+1", "variable": "VAR_UNK_40E2", "value": "0" }
+  ]
+}

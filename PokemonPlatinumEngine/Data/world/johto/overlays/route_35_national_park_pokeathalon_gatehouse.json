@@ -1,16 +1,13 @@
 {
   // The gate house between Route 35, the National Park and the Pokéathlon Dome (plan 20 · J5, part b). The way to the
-  // Pokéathlon Dome (warp 2) stays shut until the Pokéathlon (plan 15); its enthusiasts are left out with it
+  // Pokéathlon Dome's square (warp 2) is open since plan 20 · J13, and the enthusiasts on its west side with it
   "area": "route_35_national_park_pokeathalon_gatehouse",
   "bgmTrack": "johto/route34",
-  "locked": [
-    2
-  ],
   "people": {
     "r35r0201_gsboy2": {
       "name": "Boy",
       "dialog": [
-        "The National Park is through the north door. The Pokéathlon Dome is through the west one, but it isn't open yet."
+        "The National Park is through the north door. The Pokéathlon Dome is through the west one!"
       ]
     },
     "r35r0201_counterm": {
@@ -18,10 +15,29 @@
       "still": true,
       "script": "Officer",
       "hiddenBy": ""
+    },
+    "r35r0201_gsfighter": {
+      "name": "Black Belt",
+      "still": true,
+      "dialog": [
+        "In the Pokéathlon it isn't strength alone that counts. Speed, skill, stamina and jumping all have their turn."
+      ]
+    },
+    "r35r0201_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "My Pokémon lost every battle, but it won a race at the Pokéathlon! Now it walks with its head held high."
+      ]
+    },
+    "r35r0201_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "I came to watch the Bug-Catching Contest and found the Pokéathlon on the other side. Now I can't decide which to watch!"
+      ]
     }
   },
   "signs": {
-    "R35R0201_006+1": "A poster of the Pokéathlon. It says \"Coming soon!\"",
+    "R35R0201_006+1": "A poster of the Pokéathlon. It says \"Through the west door!\"",
     "R35R0201_007+1": "A poster of the Pokéathlon's events: racing, jumping, throwing and more."
   }
 }

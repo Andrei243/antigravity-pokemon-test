@@ -30,6 +30,11 @@ public static class HgCover
         ("^ms10_01", TerrainCover.Rock),
         ("^ms05_|^ms06_|^ms04_|^ms10_", TerrainCover.Cliff),
         ("^msg_\\d", TerrainCover.Building),                      // the zone's gate, drawn into the ground behind its door
+        // The Pokéathlon Dome's square (plan 20 · J13), by `--unknown`'s counts: its running track walked all round,
+        // the kerbs along it, the railings, benches and the stands' low walls, all blocked
+        ("^pk_track", TerrainCover.Path),
+        ("^pk_sakai", TerrainCover.Paving),
+        ("^pk_saku|^poke_c_bench|^poke_c_obj\\d", TerrainCover.Fence),
         ("^overpass|_br$|_br\\d", TerrainCover.Bridge),
         ("^sea_|^pond_|^river|_wf\\d", TerrainCover.Water),       // the sea, ponds and their edges, rivers, waterfalls
         ("^flower", TerrainCover.Flowers),

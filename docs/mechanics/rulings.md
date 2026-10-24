@@ -4743,6 +4743,9 @@ our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own f
   score is kept with the runs and the wins (`SaveData.Athlon`). *Cut down*: HeartGold's medals, its bonuses for what a
   Pokémon did in an event and its records board are plan 15 · E8's; the events are played on a board of their own, not
   in the dome's arena, and the player's team is drawn as menu icons.
-- **Where**: HeartGold's dome is its lobby room, entered from Route 35's gate house through its west door (warp 2,
-  `MAP_POKEATHLON_DOME`), so there is no dome building outside to draw and plan 15's `BuildingKind.Dome` is not made.
-  Its clerk is `common.AthlonDesk`, which nobody runs until plan 20 · J13 opens the dome's rooms.
+- **Where** (plan 20 · J13): Route 35's gate house's west door (warp 2) leads onto HeartGold's own square
+  (`MAP_POKEATHLON_DOME`, the map `PokeathlonDome`), a map of its own with the dome at its head, drawn as a `Hall` by
+  Johto's catalogue (`poke_c_dome`; plan 15's `BuildingKind.Dome` is not made, and nothing of the dome stands on the
+  overworld). Its three doors lead into the lobby (`PokeathlonDome_1F`), where the clerk in the middle of the long desk
+  runs `common.AthlonDesk`. *Cut down*: the lobby's ways down to the event rooms and up to the stands stay shut, since
+  the events are played on their own board; the owner's welcome on a first visit and Whitney's visits are left out.

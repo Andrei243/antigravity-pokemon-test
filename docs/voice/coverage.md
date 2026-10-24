@@ -11,8 +11,8 @@ A **line** is one string a character says in a text box (a script's `say` and th
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1209 | 1180 | 29 | 1 | 0 |
 | Scripts (`script:`) | 7068 | 6735 | 333 | 17 | 0 |
-| People of the world (`world:`) | 4876 | 4828 | 48 | 4 | 0 |
-| **All** | 13233 | 12823 | 410 | 22 | 0 |
+| People of the world (`world:`) | 4901 | 4853 | 48 | 4 | 0 |
+| **All** | 13258 | 12848 | 410 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,9 +20,9 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 152 |
+| a Pokémon's cry | 161 |
 | a question's answers | 362 |
-| a sign | 1204 |
+| a sign | 1221 |
 | the game's own voice (speaker none) | 223 |
 | the game's own voice (text) | 935 |
 
@@ -40,14 +40,14 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1757 | 123 |
-| `look:gentleman (any)` | 559 | 12 |
+| `look:gentleman (any)` | 569 | 12 |
 | `look:grunt (any)` | 500 | 0 |
 | `rival` | 405 | 16 |
-| `look:youngster (any)` | 313 | 11 |
-| `look:lady (any)` | 305 | 1 |
-| `look:lass (any)` | 252 | 8 |
-| `look:clerk (any)` | 202 | 5 |
-| `look:nurse (any)` | 167 | 0 |
+| `look:youngster (any)` | 315 | 11 |
+| `look:lady (any)` | 308 | 1 |
+| `look:lass (any)` | 254 | 8 |
+| `look:clerk (any)` | 203 | 5 |
+| `look:nurse (any)` | 171 | 0 |
 | `look:attendant (any)` | 165 | 2 |
 | `cynthia` | 157 | 1 |
 | `rowan` | 147 | 12 |
@@ -76,11 +76,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `prof_oak` | 78 | 3 |
 | `look:man (any)` | 76 | 0 |
 | `look:sailor (any)` | 76 | 0 |
+| `look:trainer (any)` | 72 | 0 |
+| `black_belt` | 71 | 12 |
 | `look:old_man (any)` | 71 | 4 |
-| `black_belt` | 70 | 12 |
 | `class:bug_catcher (any)` | 70 | 0 |
 | `class:swimmer_f (any)` | 70 | 0 |
-| `look:trainer (any)` | 70 | 0 |
 | `look:old_woman (any)` | 68 | 5 |
 | `class:camper (any)` | 62 | 0 |
 | `underground_man` | 62 | 0 |
