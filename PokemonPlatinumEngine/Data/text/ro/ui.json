@@ -275,6 +275,15 @@
         "fixed": "Unova rămâne în acest anotimp. Nicio altă regiune nu are anotimpuri."
       }
     },
+    "fieldHelpers": {
+      "label": "Ajutoare pe teren",
+      "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
+      "help": {
+        "Off": "Tăiere, Zbor, Surf, Forță, Risipire, Spărgător de Pietre, Cascadă și Cățărare au nevoie de un Pokémon din echipă care le știe.",
+        "Rules": "Regulile din Platinum păstrează HM-urile cum sunt; regulile moderne lasă un ajutor sălbatic să facă aceste opt mișcări odată ce ai Insigna și HM-ul.",
+        "On": "Cu Insigna și HM-ul în rucsac, un ajutor sălbatic face pentru tine Tăiere, Zbor, Surf, Forță, Risipire, Spărgător de Pietre, Cascadă și Cățărare."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -397,7 +406,24 @@
     "welcome": "Pokémonii tăi sunt bineveniți la bord, toți până la unul. Îmbarcarea!"
   },
   "crossing": {
-    "rivalName": "NUMELE RIVALULUI TĂU"
+    "rivalName": "NUMELE RIVALULUI TĂU",
+    "voyage": {
+      "ship": "Vaporul navighează toată noaptea. Până dimineață, țărmurile din {to} se văd la orizont.",
+      "ferry": "Feribotul se leagănă ușor pe valuri. Nu peste mult timp, portul din {to} se vede în depărtare.",
+      "plane": "Avionul urcă deasupra norilor și zboară mai departe. În sfârșit, {to} se întinde dedesubt.",
+      "way": "Călătoria ține multă vreme. În sfârșit, {to} se află în față."
+    }
+  },
+
+  "bugContest": {
+    "title": "CONCURSUL DE PRINS INSECTE",
+    "sportBalls": "SPORT BALL-URI",
+    "timeLeft": "TIMP RĂMAS",
+    "place": "{n}.",
+    "nothing": "Nimic prins",
+    "winner": "CÂȘTIGĂTOR",
+    "judging": "Jurații anunță câștigătorii…",
+    "yourScore": "Pokémonul tău a obținut {score} puncte."
   },
 
   "objectives": {
@@ -1823,6 +1849,7 @@
     }
   },
   "fieldMoves": {
+    "helped": "Un {name} sălbatic a dat o mână de ajutor. A folosit {move}!",
     "why": {
       "badge": "E nevoie de o Insignă nouă ca să poată fi folosită în afara luptei.",
       "partner": "Nu cât timp cineva călătorește cu tine.",
@@ -2008,6 +2035,8 @@
   },
 
   "battle": {
+    "sportBallsAreFor": "Sport Ball-urile sunt pentru Concursul de Prins Insecte.",
+    "youveThrownYourLastSport": "Ai aruncat ultimul Sport Ball!",
     "isDisabled": "Mișcarea {move} a lui {pokemon} e blocată!",
     "cantUseTheSame": "{pokemon} nu poate folosi aceeași mișcare de două ori la rând din cauza chinului!",
     "cantUseAfterThe": "{pokemon} nu poate folosi {move} după provocare!",
@@ -2812,6 +2841,7 @@
   },
 
   "battleMenu": {
+    "sportBall": "SPORT BALL ×{n}",
     "later": {
       "mega": "Megaevoluție",
       "zPower": "Puterea Z",
