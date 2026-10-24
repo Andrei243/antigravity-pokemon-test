@@ -864,6 +864,7 @@ public partial class GameEngine
 
         public StoryState Story => game.flow.Story;
         public string Region => game.Here.Id;
+        public bool ShowsObjectives => game.NextObjectiveOn;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;

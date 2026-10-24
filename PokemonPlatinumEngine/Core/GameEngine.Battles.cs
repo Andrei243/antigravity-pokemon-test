@@ -411,6 +411,12 @@ public partial class GameEngine
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
     private bool MoveHintsOn => Settings.MoveHints.Holds(Ruleset.Current.Preset);
 
+    /// <summary>Whether the game says what to do next: the option, with Rules following the game's own rules (plan 12 · Q14).</summary>
+    internal bool NextObjectiveOn => Settings.NextObjective.Holds(Ruleset.Current.Preset);
+
+    /// <summary>The line that says what to do next, for the region the player is in; empty when the option is off or the region has none.</summary>
+    internal string NextObjectiveLine => NextObjectiveOn ? Objectives.Line(flow.Story, Here.Id) : "";
+
     /// <summary>Whether the trainers across the field speak in battle: the option, with Rules following the game's own rules (plan 11 · C12).</summary>
     private bool TrainerLinesOn => Settings.TrainerLines.Holds(Ruleset.Current.Preset);
 

@@ -54,6 +54,9 @@ public class StartMenu
 
     public int EntryCount => Shown.Length;
 
+    /// <summary>The line that says what to do next, in a panel under the menu's (plan 12 · Q14); empty for none. Set by the engine as the menu opens.</summary>
+    public string Objective { get; set; } = "";
+
     public void Open()
     {
         IsActive = true;
@@ -184,7 +187,7 @@ public class StartMenu
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!reveal.Visible) return;
-        ModernUi.DrawStartMenu(screenWidth, Shown.Select(Describe).ToList(), SelectedIndex, reveal.Shown);
+        ModernUi.DrawStartMenu(screenWidth, Shown.Select(Describe).ToList(), SelectedIndex, reveal.Shown, Objective);
 
         if (!prompt.Visible) return;
         ModernUi.Prompt(screenWidth, screenHeight, Text.Of("start.quit.heading"), Text.Of("start.quit.body"),

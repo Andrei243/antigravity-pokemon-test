@@ -400,6 +400,7 @@ public class ScriptTests
           broadcast
           broadcast interview
           townmap
+          objective roark
           tutor moves "route_212"
           tutor afford
           tutor pay
@@ -600,6 +601,8 @@ public class ScriptTests
               if time morning end
               if weekday friday end
               if nationaldex end
+              if objective end
+              if not objective end
               if movebadge "Cut" end
               if region "Kanto" end
               if subject "pushable_boulder_2" end

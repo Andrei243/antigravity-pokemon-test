@@ -113,12 +113,20 @@ internal static partial class ModernUi
     /// The start menu: a panel on the right that slides in, one row per entry with its icon on a coloured chip.
     /// The selected row is a filled pill; the last entry (leaving the game) sits under a rule.
     /// </summary>
-    public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown)
+    public static void DrawStartMenu(int sw, IReadOnlyList<(string Label, UiIcon Icon, Color Color)> entries, int selected, float shown, string objective = "")
     {
         const float width = 440, row = 74;
         float height = 40 + entries.Count * row + 18;
         var panel = new Rectangle(sw - 40 - width + (1f - shown) * (width + 80), 40, width, height);
         Panel(panel, 34);
+
+        // What to do next (plan 12 · Q14): a smaller panel under the menu's, its line wrapped to the panel's width
+        if (objective.Length > 0)
+        {
+            var next = new Rectangle(panel.X, panel.Y + height + 16, width, NextPanelHeight(objective, width - 56));
+            Panel(next, 30);
+            NextLine(new Rectangle(next.X + 28, next.Y + 18, width - 56, next.Height - 28), objective);
+        }
 
         for (int i = 0; i < entries.Count; i++)
         {

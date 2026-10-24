@@ -44,6 +44,8 @@ public static class Lines
     private static readonly Lazy<string> widestMove = new(() => Widest(MoveDatabase.GetAll().Select(m => m.Name)));
     private static readonly Lazy<string> widestTrainer = new(() => Widest(TrainerDatabase.All.Select(t => $"{t.Class} {t.Name}")));
 
+    private static readonly Lazy<string> widestObjective = new(() => Widest(PokemonPlatinumEngine.Story.Objectives.All.Select(o => Filled(Text.Of(o.Key)))));
+
     private static readonly Regex Placeholder = new(@"\{([a-z]+)(?::([A-Z0-9_]+))?\}", RegexOptions.Compiled);
 
     /// <summary>
@@ -59,6 +61,8 @@ public static class Lines
             or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" => widestSpecies.Value,
         // A move
         "forgotten" or "allymove" => widestMove.Value,
+        // What to do next (plan 12 · Q14): the widest of the story's lines, with the names in it at their widest
+        "objective" => widestObjective.Value,
         // A phrase of two words (plan 08 · P9), whose widest are a Pokémon's name and a move's
         "phrase" => widestSpecies.Value + " " + widestMove.Value,
         // A trainer by class and name, or two of them
