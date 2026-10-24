@@ -3370,6 +3370,49 @@ the motel's game designers, the roof's sale woman), `HoennNewGame` calls it, and
   `gTileset_Lilycove`), as Lavaridge's rows are read; the cove's open ground in the General tileset is left to the
   builder's guess, since those rows are shared by all of Hoenn.
 
+## Team Magma's and Team Aqua's hideouts (2026-10-24, plan 21 · H7, its second part)
+
+Jagged Pass's way in, Team Magma's hideout, Slateport's harbour scene and Team Aqua's hideout are scripts of ours on
+Emerald's beats (`jagged_pass.txt`, `magma_hideout_4f.txt`, `slateport_city.txt`, `slateport_city_harbor.txt`,
+`aqua_hideout_1f.txt`, `aqua_hideout_b1f.txt`, `aqua_hideout_b2f.txt`), under Emerald's flags and variables
+(`VAR_JAGGED_PASS_STATE`, `FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS`, `FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT`,
+`FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS`, `VAR_SLATEPORT_CITY_STATE`, `VAR_SLATEPORT_HARBOR_STATE`, `FLAG_MET_TEAM_AQUA_HARBOR`,
+`FLAG_DEFEATED_ELECTRODE_*_AQUA_HIDEOUT`, `FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`, `FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS`).
+**No story or save version is raised**: `common.HoennChapterEightB` hides what Emerald's new game hides for them
+(Groudon awake, Captain Stern and Gabby and Ty in Slateport's street, Stern, Archie and his grunt in its harbour),
+`HoennNewGame` calls it, and Jagged Pass's, Slateport City's and Lilycove City's arrivals call it for a save that never
+ran it (`FLAG_HOENN_CHAPTER_EIGHT_B`). What differs, and why:
+
+- **The rock on Jagged Pass is a way that the story opens**: Emerald draws rock over the hideout's mouth until
+  `VAR_JAGGED_PASS_STATE` is 2 (`setmetatile`). Here the warp is an overlay's `switches` entry there `from`
+  `FLAG_HOENN_MAGMA_HIDEOUT_OPEN`, a flag of ours the shaking scene sets with the variable, so its tile is a wall until
+  then; the mouth is drawn as the import has it, open, in both states.
+- **Groudon wakes and is gone with no battle**, as Emerald has it: the orb's light is the scene effects' sparkles and a
+  burst, its rising and going two walks and the camera shaken twice, and both of Emerald's Groudon objects are hidden
+  for good. `hoenn/awaken_legend` (ours) plays once under it through `music`, since `fanfare` knows only the item kinds.
+  Maxie battles once spoken to (`hoenn_maxie_magma_hideout`) and sets what Emerald sets: Slateport's two scenes ready.
+- **Captain Stern's interview is short**: Emerald moves Slateport's crowd to stand round the camera and gives each a line
+  of it; here Stern, Gabby and Ty stand where Emerald's objects stand, the crowd keeps its places and lines, and the
+  street's scene warps the player into the harbour as Emerald's does.
+- **The submarine is not drawn**: Emerald draws only its shadow in the water (`submarine_shadow`), at Slateport's berth
+  and in the hideout's pen; this game has no such picture, so Archie and his grunt leave the quay and a line says the
+  submarine slid away, and so does Matt's. The harbour's patrons are hidden from Groudon's waking on
+  (`FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS`), and Emerald brings them back after Mossdeep's Gym (plan 21 · H8).
+- **The two Electrode look like Poké Balls**, as Emerald's do: they are item balls of the overlay with a script of their
+  own, which cries, says what the ball was and battles (level 30); won, run from or caught, each is gone for good.
+- **The channel east of Lilycove is shut on Emerald's twelve tiles**: the three Wailmer stand on the tiles of their
+  heads and the other nine tiles of their two-by-two bodies are things in the way that are not drawn (`Unseen`), all
+  hidden by `FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`. No gate of ours is added beyond them: the reader's sea is open further
+  from the city, and whatever lies past it (Mossdeep, the east sea) is shut until plan 21 · H8 anyway.
+- **Matt notices the player** on the area's two triggers by a temporary variable (`VAR_TEMP_1`), which the room's arrival
+  sets back to 0, or to 1 once the submarine has gone, as Emerald's temporary variables are cleared on a map's load.
+- **The rival is home after Lilycove**: the battle before the Department Store clears
+  `FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM` (the rival's family is always the east house's here), and the rival
+  has a line of their own there. Emerald's Pichu doll in the room is left.
+- **The hideouts' music** is one song of ours for both, `hoenn/aqua_magma_hideout`, as Emerald plays one. Team Magma's
+  halls take the volcanic climate's light (`climate: Volcanic`); Team Aqua's are rooms (`Indoors`), their warp panels
+  the reader's `WarpPanel` tiles.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

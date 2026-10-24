@@ -4,15 +4,18 @@
 # The city at the end of the land. Coming here marks it visited (FLAG_VISITED_LILYCOVE_CITY, where Fly lands) and runs
 # the eighth stretch's hiding for a save from before it (HoennChapterEight). The rival waits before the Department
 # Store: asked, they battle with the team of the starter they took, then go home to Littleroot (FLAG_MET_RIVAL_LILYCOVE;
-# a no is remembered, FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, and asked again). Emerald's rival flies off on a bird; here
-# the picture goes dark and the rival is gone. Team Aqua's grunts stand about the town and their Wailmer lie in the
-# channel east until the submarine has sailed (FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, plan 21 · H7, part b), and the
-# town's people say what they see of it. The gentleman by the houses gives a berry a day.
+# a no is remembered, FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, and asked again) and are found in their bedroom there
+# (FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM cleared, plan 21 · H7, part b). Emerald's rival flies off on a
+# bird; here the picture goes dark and the rival is gone. Team Aqua's grunts stand about the town and their Wailmer lie
+# in the channel east until the submarine has sailed from the hideout in the cove (FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,
+# aqua_hideout_b2f.txt), and the town's people say what they see of it. The arrival also runs the eighth stretch's
+# second hiding for a save from before it (HoennChapterEightB). The gentleman by the houses gives a berry a day.
 
 
 script OnEnter
   setflag FLAG_VISITED_LILYCOVE_CITY
   if not flag FLAG_HOENN_CHAPTER_EIGHT call HoennChapterEight
+  if not flag FLAG_HOENN_CHAPTER_EIGHT_B call HoennChapterEightB
   end
 
 
@@ -58,6 +61,7 @@ label Beaten
   hide self
   setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
   setflag FLAG_MET_RIVAL_LILYCOVE
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
   music area
   fade in
   end
@@ -92,25 +96,41 @@ label Again
 
 script Sailor
   speaker "Sailor"
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
   say "Team Aqua's been training Wailmer right in the channel. No boat can get out east past them."
+  end
+label Gone
+  say "Those Wailmer have cleared off out of the channel at last. Boats can head east again, out to the open sea."
   end
 
 
 script Girl
   speaker "Girl"
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
   say "There's a strange cave over in the cove. People in blue and white keep going in and out of it."
+  end
+label Gone
+  say "The people in blue and white haven't come out of the cave in the cove for a while. Have they all gone?"
   end
 
 
 script Woman
   speaker "Woman"
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
   say "Somebody stole my Pokémon! I just know it was those Team Aqua people. What do I do?"
+  end
+label Gone
+  say "Team Aqua have left town, but my Pokémon never came back. I'll find it myself if I have to."
   end
 
 
 script OldManCove
   speaker "Old Man"
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
   say "That cove used to be a quiet cavern. Then Team Aqua moved in and dug it out into some kind of base."
+  end
+label Gone
+  say "They say a submarine sailed out from under the cove. Team Aqua had dug a way right down to the sea."
   end
 
 

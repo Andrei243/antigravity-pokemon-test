@@ -1,0 +1,10 @@
+{
+  // Team Magma's hideout, the third floor's second hall (plan 21 · H7, part b): a grunt with doubts
+  "area": "magma_hideout_3f_2r",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic",
+  "people": {
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: I believe in the boss, really. But waking an ancient Pokémon, stealing a meteorite... Aren't we going a bit far?", "dialogueAfter": "Team Magma Grunt: Losing to you has cleared my head. Next time I see the boss, I'm going to ask him some questions." } }
+  }
+}

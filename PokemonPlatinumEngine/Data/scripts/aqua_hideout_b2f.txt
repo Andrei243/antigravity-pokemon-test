@@ -1,0 +1,63 @@
+# Team Aqua's hideout, its lower basement (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/AquaHideout_B2F/scripts.inc).
+#
+# Matt, Team Aqua's admin, waits by the submarine's pen. The first step onto one of the area's two triggers beside the
+# pen makes him turn (VAR_TEMP_1, which every arrival sets back to 0 as Emerald's temporary variables are, and to 1
+# once the submarine has gone). Spoken to, he battles as Team Aqua's admin; beaten, he laughs that he only had to keep
+# the player busy: Archie has sailed off in Captain Stern's submarine to a cave under the sea. That is
+# FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, the end of the eighth stretch: Team Aqua's grunts leave Lilycove City
+# (FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS) and their Wailmer the channel east of it, so the sea to Route 124 is open.
+
+
+script OnEnter
+  setvar VAR_TEMP_1 0
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE setvar VAR_TEMP_1 1
+  end
+
+
+script MattNotices
+  if var VAR_TEMP_1 != 0 end
+  emote aqua_hideout_matt exclaim
+  face aqua_hideout_matt player
+  setvar VAR_TEMP_1 1
+  end
+
+
+script Matt
+  face self player
+  speaker "Matt"
+  if defeated "hoenn_matt" goto Beaten
+  scene "Team Aqua's submarine sails"
+  music "hoenn/eye_galactic"
+  say "Hehehe... Here already, are you? We didn't think you'd get this far!"
+  say "But this is where it ends. I'm no ordinary grunt. I'm not stalling you, either. I'm going to flatten you!"
+  battle self as "hoenn_matt"
+  speaker "Matt"
+  say "Hehehe... So I lost too."
+  face self left
+  wait 0.4
+  face self player
+  say "Hehehe! But while you were playing with me, the boss finished getting ready!"
+  face self left
+  speaker none
+  text "With a churn of water, the submarine slid out of its pen and was gone under the waves!"
+  sound "dive"
+  wait 0.6
+  face self player
+  setflag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
+  setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
+  setflag FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
+  call Gone
+  music area
+  endscene
+  end
+label Beaten
+  call Gone
+  end
+
+
+script Gone
+  speaker "Matt"
+  say "Hehehe! The boss is already on his way to a certain cave under the sea!"
+  say "If you want to chase him, you'd better search the wide sea beyond Lilycove. Not that you'll ever find it! Hehehe!"
+  return

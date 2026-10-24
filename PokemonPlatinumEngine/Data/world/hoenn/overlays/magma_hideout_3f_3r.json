@@ -1,0 +1,7 @@
+{
+  // Team Magma's hideout, the third floor's last hall (plan 21 · H7, part b): the way round to the top floor's back
+  "area": "magma_hideout_3f_3r",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic"
+}

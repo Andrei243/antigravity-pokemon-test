@@ -1,0 +1,19 @@
+# A legendary Pokémon wakes (Emerald's MUS_AWAKEN_LEGEND): a slow swell from a low rumble of timpani and brass to a
+# great held chord in C minor, ringing out over the choir. Plays once, under the scene that calls it; the scene then
+# brings back the music of the place. Original composition for this game (plan 21 · H7, part b).
+title A Legend Awakens
+tempo 72
+meter 4/4
+reverb 0.5
+
+track brass brass vol=0.6 pan=-0.1 rev=0.44
+  o3 c2 c4 e-4 | o3 f2 d4 f4 | o3 a-2 g2 | o4 c1 |
+
+track choir choir vol=0.36 pan=0.2 rev=0.6
+  o4 (c e- g)1 | o4 (d f a-)1 | o4 (c f a-)2 (d g b)2 | o4 (c e- g >c)1 |
+
+track horn horn vol=0.42 pan=0.3 rev=0.46
+  o4 g1 | o4 a-1 | o4 f2 g2 | o5 c1 |
+
+track rumble timpani vol=0.7 rev=0.3
+  o2 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 c16 | o2 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 f16 | o2 f4 f4 g4 g4 | o2 c1 |

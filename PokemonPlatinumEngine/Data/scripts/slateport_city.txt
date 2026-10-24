@@ -8,6 +8,7 @@
 
 
 script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_EIGHT_B call HoennChapterEightB
   setflag FLAG_VISITED_SLATEPORT_CITY
   setvar VAR_SLATEPORT_MUSEUM_1F_STATE 0
   if var VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE != 1 end
@@ -29,6 +30,60 @@ label Leave
   hide slateport_scott
   setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 2
   endscene
+  end
+
+
+# Captain Stern before the harbour's door (plan 21 · H7, part b; Emerald's SlateportCity_EventScript_CaptStern). Once
+# Groudon has woken in Team Magma's hideout (VAR_SLATEPORT_CITY_STATE 1) he is back from the sea floor's survey and
+# Gabby and Ty have him in front of their camera. Spoken to, he finishes the interview and the pair leave; he tells the
+# player of what his team found down there, and a shout comes from the harbour: Team Aqua is taking his submarine. He
+# runs in with the player behind him (VAR_SLATEPORT_CITY_STATE 2; the harbour's Stern, Archie and grunt shown), and
+# the harbour's own triggers play the rest (slateport_city_harbor.txt).
+script CaptStern
+  if var VAR_SLATEPORT_CITY_STATE != 1 end
+  scene "Captain Stern's interview"
+  speaker "Captain Stern"
+  say "...So, yes, we'll go on with the survey of the sea floor, a little deeper every time."
+  speaker "Gabby"
+  say "Wonderful! Thank you so much for talking to us, Captain. Come on, Ty, we've got our story!"
+  face slateport_gabby right
+  face slateport_ty down
+  walk slateport_gabby down 2 right 3
+  hide slateport_gabby
+  walk slateport_ty down 3 right 2
+  hide slateport_ty
+  setflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+  face slateport_capt_stern player
+  speaker "Captain Stern"
+  say "Phew... My first interview. I was so nervous my knees were shaking."
+  say "Oh, {player}! Listen to this. On the sea floor we found a cave, and inside it a Pokémon that may be the one in the legends!"
+  music "hoenn/eye_galactic"
+  speaker none
+  text "Out of the way! Team Aqua is taking charge of this submarine!"
+  face slateport_capt_stern down
+  speaker "Captain Stern"
+  say "What was that just now?"
+  emote slateport_capt_stern exclaim
+  face slateport_capt_stern up
+  say "That came from the harbour! Somebody's trying to take my submarine!"
+  say "{player}, please, come with me!"
+  walk slateport_capt_stern up 1
+  hide slateport_capt_stern
+  setflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+  clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+  clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
+  clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
+  clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
+  setvar VAR_SLATEPORT_CITY_STATE 2
+  warp "SlateportCity_Harbor" 11 13 up
+  endscene
+  end
+
+
+# Gabby and Ty in front of Captain Stern, busy with their interview
+script Interviewer
+  speaker "Gabby"
+  say "Shh! We're rolling! The captain's telling us all about the sea floor."
   end
 
 

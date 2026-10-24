@@ -1,0 +1,45 @@
+{
+  "key": "magma_hideout_3f_1r",
+  "index": 327,
+  "name": "Magma Hideout",
+  "matrix": 276,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_3f_1r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 7, "z": 21, "to": "magma_hideout_4f", "toWarp": 0 },
+    { "x": 21, "z": 9, "to": "magma_hideout_3f_2r", "toWarp": 0 },
+    { "x": 23, "z": 3, "to": "magma_hideout_2f_1r", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "look_east", "x": 2, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_9" },
+    { "id": "magma_member_f", "looks": "magma_member_f", "movement": "look_west", "x": 21, "z": 21, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_16" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 9, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_3F_1R_NUGGET", "item": "Nugget", "script": "MagmaHideout_3F_1R_EventScript_ItemNugget" }
+  ],
+  "signs": [],
+  "triggers": []
+}

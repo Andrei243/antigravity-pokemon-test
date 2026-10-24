@@ -440,4 +440,30 @@ public class HoennTests
         // Shuppet haunt the tower's halls
         Assert.Contains(Hoenn.Area("mt_pyre_1f")!.Land!, e => e.Species == "Shuppet");
     }
+
+    [Fact]
+    public void TheTwoTeamsHideoutsAreOpenWithTheirTrainersAndTheirSong()
+    {
+        // Team Magma's eight halls, come to from Jagged Pass, and Team Aqua's three floors, from Lilycove's cove
+        string[] magma = { "MagmaHideout_1F", "MagmaHideout_2F_1R", "MagmaHideout_2F_2R", "MagmaHideout_2F_3R",
+            "MagmaHideout_3F_1R", "MagmaHideout_3F_2R", "MagmaHideout_3F_3R", "MagmaHideout_4F" };
+        string[] aqua = { "AquaHideout_1F", "AquaHideout_B1F", "AquaHideout_B2F" };
+        foreach (string room in magma.Concat(aqua))
+        {
+            Assert.True(BuiltMaps.Value.ContainsKey(room), room);
+            Assert.Equal("hoenn/aqua_magma_hideout", BuiltMaps.Value[room].BgmTrackAt(5, 5));
+        }
+        Assert.Contains(BuiltMaps.Value["JaggedPass"].Warps, w => w.TargetMap == "MagmaHideout_1F");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "AquaHideout_1F");
+
+        // Sixteen grunts and Tabitha in Team Magma's, eight grunts in Team Aqua's, all of Emerald's table
+        Assert.Equal(16, magma.Sum(r => BuiltMaps.Value[r].Everyone.Count(n => n.TrainerData?.Id.StartsWith("hoenn_grunt_magma_hideout_") == true)));
+        Assert.Contains(BuiltMaps.Value["MagmaHideout_4F"].Everyone, n => n.TrainerData?.Id == "hoenn_tabitha_magma_hideout");
+        Assert.Equal(8, aqua.Sum(r => BuiltMaps.Value[r].Everyone.Count(n => n.TrainerData?.Id.StartsWith("hoenn_grunt_aqua_hideout_") == true)));
+
+        // Team Aqua's first basement is a maze of warp panels that lead about the same floor
+        var b1f = BuiltMaps.Value["AquaHideout_B1F"];
+        Assert.True(b1f.Warps.Count(w => w.TargetMap == "AquaHideout_B1F") >= 15);
+        Assert.Contains(b1f.Warps, w => b1f.BehaviourAt(w.SourceX, w.SourceY) == TileBehavior.WarpPanel);
+    }
 }

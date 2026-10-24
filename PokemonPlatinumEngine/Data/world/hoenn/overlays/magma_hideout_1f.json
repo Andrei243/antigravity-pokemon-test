@@ -1,0 +1,13 @@
+{
+  // Team Magma's hideout, its ground floor (plan 21 · H7, part b): dug into Mt. Chimney from Jagged Pass, its halls
+  // hot with the volcano's heat, Strength's three boulders in its west corner. Its grunts go with Maxie once Groudon
+  // has fled (FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS, magma_hideout_4f.txt)
+  "area": "magma_hideout_1f",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic",
+  "people": {
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: We line up for our posts in the order we turn up. I'm always last, so I get the corner nobody wants!", "dialogueAfter": "Team Magma Grunt: Last in line and last in battle too..." } },
+    "magma_member_m_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: The boss had us dig into the mountain, and we found something amazing down here! Beat me and maybe I'll tell you what.", "dialogueAfter": "Team Magma Grunt: Nope, not telling. You'll see for yourself soon enough. Surprises are better that way." } }
+  }
+}

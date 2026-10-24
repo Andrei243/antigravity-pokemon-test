@@ -1,0 +1,20 @@
+{
+  // Team Magma's hideout, its top floor (plan 21 · H7, part b): the hall over the magma where Groudon sleeps, Tabitha
+  // and three grunts on the way to it, and Maxie before it with the Blue Orb. Spoken to, Maxie wakes Groudon, which
+  // flees into the mountain; he battles the player and goes after it with all of Team Magma (magma_hideout_4f.txt). The
+  // sleeping Groudon is hidden by FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP once it has woken, the waking one by
+  // FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON, which a new game sets (HoennChapterEightB)
+  "area": "magma_hideout_4f",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic",
+  "people": {
+    "magma_hideout_4f_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Everyone gets to see Groudon but me! Not even the tip of its tail... Oh no, I said Groudon out loud!", "dialogueAfter": "Team Magma Grunt: Does Groudon even have a tail, I wonder?" } },
+    "magma_hideout_4f_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Fuhahaha! Any moment now, Team Magma's great goal will be reached!", "dialogueAfter": "Team Magma Grunt: Boss! Boss! Somebody's coming your way!" } },
+    "magma_hideout_4f_grunt_3": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: You're not finished yet! I'm not letting you past that easily!", "dialogueAfter": "Team Magma Grunt: Come on, one more go..." } },
+    "magma_hideout_4f_tabitha": { "name": "Tabitha", "npcType": "tabitha", "trainer": { "dialogueBefore": "Tabitha: Hehehe! Come all this way, have you? Then I'll let you in on it. Groudon sleeps right up ahead, and the boss has just gone to wake it!", "dialogueAfter": "Tabitha: Hehe... And while you were busy with me, the boss will have woken Groudon." } },
+    "magma_hideout_4f_maxie": { "name": "Maxie", "npcType": "maxie", "script": "Maxie", "still": true },
+    "magma_hideout_4f_groudon_sleeping": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "script": "SleepingGroudon", "still": true },
+    "magma_hideout_4f_groudon": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "still": true }
+  }
+}

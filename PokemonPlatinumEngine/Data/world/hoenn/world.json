@@ -197,6 +197,19 @@
     { "name": "MtPyre_6F", "matrix": 207, "area": "mt_pyre_6f", "trees": "Round", "setting": "Indoors" },
     { "name": "MtPyre_Exterior", "matrix": 208, "area": "mt_pyre_exterior", "trees": "Round" },
     { "name": "MtPyre_Summit", "matrix": 209, "area": "mt_pyre_summit", "trees": "Round" },
+    // Plan 21 · H7, part b: Team Magma's hideout inside Mt. Chimney, come to from Jagged Pass once the Magma Emblem
+    // has opened its rock, and Team Aqua's hideout in Lilycove's cove
+    { "name": "MagmaHideout_1F", "matrix": 273, "area": "magma_hideout_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_2F_1R", "matrix": 274, "area": "magma_hideout_2f_1r", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_2F_2R", "matrix": 275, "area": "magma_hideout_2f_2r", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_3F_1R", "matrix": 276, "area": "magma_hideout_3f_1r", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_3F_2R", "matrix": 277, "area": "magma_hideout_3f_2r", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_4F", "matrix": 278, "area": "magma_hideout_4f", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_3F_3R", "matrix": 279, "area": "magma_hideout_3f_3r", "trees": "Round", "setting": "Cave" },
+    { "name": "MagmaHideout_2F_3R", "matrix": 280, "area": "magma_hideout_2f_3r", "trees": "Round", "setting": "Cave" },
+    { "name": "AquaHideout_1F", "matrix": 210, "area": "aqua_hideout_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AquaHideout_B1F", "matrix": 211, "area": "aqua_hideout_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "AquaHideout_B2F", "matrix": 212, "area": "aqua_hideout_b2f", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
     { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
@@ -278,6 +291,10 @@
     "lilycove_city_lilycove_museum_1f", "lilycove_city_lilycove_museum_2f", "lilycove_city_pokemon_trainer_fan_club",
     "lilycove_city_move_deleters_house", "lilycove_city_house_1", "lilycove_city_house_2", "lilycove_city_house_3",
     "lilycove_city_house_4", "route_123_berry_masters_house",
-    "mt_pyre_1f", "mt_pyre_2f", "mt_pyre_3f", "mt_pyre_4f", "mt_pyre_5f", "mt_pyre_6f", "mt_pyre_exterior", "mt_pyre_summit"
+    "mt_pyre_1f", "mt_pyre_2f", "mt_pyre_3f", "mt_pyre_4f", "mt_pyre_5f", "mt_pyre_6f", "mt_pyre_exterior", "mt_pyre_summit",
+    // Plan 21 · H7, part b: the two teams' hideouts
+    "magma_hideout_1f", "magma_hideout_2f_1r", "magma_hideout_2f_2r", "magma_hideout_2f_3r", "magma_hideout_3f_1r",
+    "magma_hideout_3f_2r", "magma_hideout_3f_3r", "magma_hideout_4f",
+    "aqua_hideout_1f", "aqua_hideout_b1f", "aqua_hideout_b2f"
   ]
 }

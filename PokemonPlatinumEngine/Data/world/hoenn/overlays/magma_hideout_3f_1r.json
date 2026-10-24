@@ -1,0 +1,11 @@
+{
+  // Team Magma's hideout, the third floor's first hall (plan 21 · H7, part b): two grunts by the way up to the top floor
+  "area": "magma_hideout_3f_1r",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic",
+  "people": {
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Why do I always get the post right next to the magma? My ear's practically cooking!", "dialogueAfter": "Team Magma Grunt: I think I've got heatstroke..." } },
+    "magma_member_f": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: We joined to help the boss make his dream real. Team Aqua or just some kid, nobody gets in the way of that!", "dialogueAfter": "Team Magma Grunt: Team Magma is right, you hear me? Don't believe a word Team Aqua tells you!" } }
+  }
+}

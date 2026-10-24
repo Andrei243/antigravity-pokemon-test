@@ -1,0 +1,55 @@
+# Jagged Pass (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/JaggedPass/scripts.inc).
+#
+# Team Magma has dug its hideout into the mountain's side and hidden the way in behind the rock. Coming here with the
+# Magma Emblem in the bag readies the rock (VAR_JAGGED_PASS_STATE 1, as Emerald's arrival does); the first step onto
+# one of the area's five triggers near the spot shakes the mountain and the rock gives way (VAR_JAGGED_PASS_STATE 2
+# and FLAG_HOENN_MAGMA_HIDEOUT_OPEN, a flag of ours that opens the way in, where Emerald sets its metatiles). Until Mt.
+# Pyre's old woman has given the emblem a grunt stands on guard by the spot and battles once
+# (FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS); the summit's scene takes him away (FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD).
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_EIGHT_B call HoennChapterEightB
+  if var VAR_JAGGED_PASS_STATE != 0 end
+  if not item "Magma Emblem" end
+  setvar VAR_JAGGED_PASS_STATE 1
+  end
+
+
+script OpenHideout
+  if var VAR_JAGGED_PASS_STATE != 1 end
+  scene "The rock opens on Jagged Pass"
+  camera shake 0.6
+  wait 0.6
+  speaker none
+  text "The Magma Emblem is shaking in the bag! The rock nearby seems to be shaking in answer!"
+  camera shake 1
+  sound "rock_smash"
+  wait 1
+  setflag FLAG_HOENN_MAGMA_HIDEOUT_OPEN
+  setvar VAR_JAGGED_PASS_STATE 2
+  text "A hole has opened in the rock face!"
+  endscene
+  end
+
+
+script Guard
+  if flag FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS goto Beaten
+  emote self exclaim
+  face self player
+  music "hoenn/eye_magma"
+  speaker "Team Magma Grunt"
+  say "Huh? What are you doing up here? There's nothing to see on this bit of the mountain. Nothing at all!"
+  say "Hey, don't go poking at the rock! I said there's nothing there! Fine, then. You'll have to get past me!"
+  battle self as "hoenn_grunt_jagged_pass"
+  setflag FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS
+  speaker "Team Magma Grunt"
+  say "Ugh... I'm still not moving. Standing guard is the one thing I'm good at."
+  music area
+  end
+label Beaten
+  face self player
+  speaker "Team Magma Grunt"
+  say "Go wherever you want. Without the right thing on you, there's nothing on this mountain for you to find."
+  end

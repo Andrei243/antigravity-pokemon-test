@@ -1,0 +1,14 @@
+{
+  // Team Aqua's hideout, its entrance hall (plan 21 · H7, part b): dug into the cave in Lilycove City's cove. Two
+  // grunts block the way in and drop hints of where Archie is until Team Aqua has taken Captain Stern's submarine
+  // from Slateport (FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE and _2_, slateport_city_harbor.txt). Its grunts
+  // stay after the submarine has gone, as Emerald keeps them until Mossdeep's Gym (plan 21 · H8)
+  "area": "aqua_hideout_1f",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "people": {
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "script": "Guard1", "still": true },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "script": "Guard2", "still": true },
+    "aqua_member_m_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Hey! How did a kid get in here? This is Team Aqua's base, and you're not leaving it!", "dialogueAfter": "Team Aqua Grunt: Fine, go on in. The others'll sort you out. Probably." } }
+  }
+}
