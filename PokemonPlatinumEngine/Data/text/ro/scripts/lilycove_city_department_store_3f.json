@@ -1,0 +1,54 @@
+{
+  "ClerkLeft": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Our vitamins make your Pokémon stronger for good."
+      ],
+      "text": [
+        "Bine ai venit! Vitaminele noastre îi fac pe Pokémoni mai puternici pentru totdeauna."
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ],
+  "ClerkRight": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Our battle items give your Pokémon the edge when it counts."
+      ],
+      "text": [
+        "Bine ai venit! Obiectele noastre de luptă dau Pokémonilor tăi avantajul la momentul potrivit."
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "people": {
+    "scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          "Scott"
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Game Designer"
+        ],
+        "text": [
+          "Designer de jocuri"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I design games. Fill your Pokédex with every Pokémon of Hoenn and show me, and I'll have something for you."
+        ],
+        "text": [
+          "Fac jocuri. Umple-ți Pokédexul cu toți Pokémonii din Hoenn și arată-mi-l, și voi avea ceva pentru tine."
+        ]
+      }
+    },
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I draw the pictures for our games. I'm here for the sea views."
+        ],
+        "text": [
+          "Desenez imaginile pentru jocurile noastre. Sunt aici pentru priveliștea mării."
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're on holiday. Well, the others are. I'm thinking about my next game."
+        ],
+        "text": [
+          "Suntem în vacanță. Adică, ceilalți sunt. Eu mă gândesc la următorul meu joc."
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Programmer"
+        ],
+        "text": [
+          "Programatorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the programmer. If something goes wrong in a game, it's my fault. Probably."
+        ],
+        "text": [
+          "Sunt programatorul. Dacă ceva merge prost într-un joc, e vina mea. Probabil."
+        ]
+      }
+    },
+    "gameboy_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I never go anywhere without my games. Not even on holiday!"
+        ],
+        "text": [
+          "Nu merg nicăieri fără jocurile mele. Nici măcar în vacanță!"
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea breeze tickles my heart. Doesn't it tickle yours?"
+        ],
+        "text": [
+          "Briza mării mă gâdilă la inimă. Pe tine nu te gâdilă?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

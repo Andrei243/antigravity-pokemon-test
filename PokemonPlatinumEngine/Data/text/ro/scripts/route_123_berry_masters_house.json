@@ -1,0 +1,86 @@
+{
+  "BerryMaster": [
+    {
+      "en": [
+        "Berry Master"
+      ],
+      "text": [
+        "Maestrul Boabelor"
+      ]
+    },
+    {
+      "en": [
+        "Ah, you have the look of someone who deserves a berry. Here, have one of mine."
+      ],
+      "text": [
+        "A, ai înfățișarea cuiva care merită o boabă. Na, ia una de-a mea."
+      ]
+    },
+    {
+      "en": [
+        "Why be stingy? Take another!"
+      ],
+      "text": [
+        "Să fiu zgârcit? Ia încă una!"
+      ]
+    },
+    {
+      "en": [
+        "If you have berries to spare, the Pretty Petal flower shop on Route 104 will teach you how to grow them."
+      ],
+      "text": [
+        "Dacă ai boabe de prisos, florăria Pretty Petal de pe Ruta 104 te învață cum să le cultivi."
+      ]
+    },
+    {
+      "en": [
+        "That's all for today. Come back tomorrow and I'll have more for you."
+      ],
+      "text": [
+        "Asta e tot pe azi. Revino mâine și voi avea mai multe pentru tine."
+      ]
+    }
+  ],
+  "BerryMastersWife": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        "Bătrâna"
+      ]
+    },
+    {
+      "en": [
+        "Have you heard a good saying lately? Tell me one, would you?"
+      ],
+      "text": [
+        "Ai auzit vreo vorbă bună în ultima vreme? Spune-mi una, vrei?"
+      ]
+    },
+    {
+      "en": [
+        "{phrase:BERRY_MASTERS_WIFE}... What a lovely saying! It makes me feel young again. Take this."
+      ],
+      "text": [
+        "{phrase:BERRY_MASTERS_WIFE}... Ce vorbă frumoasă! Mă face să mă simt iar tânără. Ia asta."
+      ]
+    },
+    {
+      "en": [
+        "Ah. Never mind, dear. Joy never seems to leave this house, saying or no saying."
+      ],
+      "text": [
+        "Ah. Nu-i nimic, dragă. Bucuria pare să nu părăsească niciodată casa asta, cu vorbă sau fără."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for that saying earlier. It's still making me smile."
+      ],
+      "text": [
+        "Mulțumesc pentru vorba de mai devreme. Mă face să zâmbesc și acum."
+      ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "You've earned your place here, {player}."
         ],
         "text": [
-          ""
+          "Ți-ai câștigat locul aici, {player}."
         ]
       }
     }

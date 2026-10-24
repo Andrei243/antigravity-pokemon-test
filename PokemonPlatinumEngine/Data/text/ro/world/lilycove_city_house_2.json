@@ -1,0 +1,15 @@
+{
+  "people": {
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

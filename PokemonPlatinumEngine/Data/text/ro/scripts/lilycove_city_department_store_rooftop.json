@@ -1,0 +1,174 @@
+{
+  "Vending": [
+    {
+      "en": [
+        "A drinks machine. Which drink would you like?",
+        "FRESH WATER  200",
+        "SODA POP  300",
+        "LEMONADE  350",
+        "NONE"
+      ],
+      "text": [
+        "Un automat de băuturi. Ce băutură vrei?",
+        "APĂ PROASPĂTĂ  200",
+        "SUC ACIDULAT  300",
+        "LIMONADĂ  350",
+        "NIMIC"
+      ]
+    },
+    {
+      "en": [
+        "Decided not to buy a drink."
+      ],
+      "text": [
+        "Te-ai hotărât să nu cumperi nimic."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A bottle of Fresh Water dropped down."
+      ],
+      "text": [
+        "Clang! A căzut o sticlă de Apă Proaspătă."
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another bottle of Fresh Water dropped down."
+      ],
+      "text": [
+        "Noroc! A mai căzut o sticlă de Apă Proaspătă."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Soda Pop dropped down."
+      ],
+      "text": [
+        "Clinc! A căzut o doză de Suc Acidulat."
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another can of Soda Pop dropped down."
+      ],
+      "text": [
+        "Noroc! A mai căzut o doză de Suc Acidulat."
+      ]
+    },
+    {
+      "en": [
+        "Clang! A can of Lemonade dropped down."
+      ],
+      "text": [
+        "Clinc! A căzut o doză de Limonadă."
+      ]
+    },
+    {
+      "en": [
+        "Lucky! Another can of Lemonade dropped down."
+      ],
+      "text": [
+        "Noroc! A mai căzut o doză de Limonadă."
+      ]
+    },
+    {
+      "en": [
+        "Not enough money..."
+      ],
+      "text": [
+        "Nu ai destui bani..."
+      ]
+    }
+  ],
+  "SubstituteTutor": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that can make a decoy of itself is a tricky one to beat. Shall I teach one of yours Substitute?"
+      ],
+      "text": [
+        "Un Pokémon care-și poate face un dublu e greu de învins. Să-i învăț Substitut unuia dintre ai tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Lovely! Which one?"
+      ],
+      "text": [
+        "Minunat! Care dintre ei?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "{wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Substitute costs a little HP, but the decoy takes the hits in its place. Use it wisely!"
+      ],
+      "text": [
+        "Substitut costă puțin HP, dar dublura încasează loviturile în locul lui. Folosește-l cu cap!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, never mind, then. I'll be up here enjoying the breeze."
+      ],
+      "text": [
+        "A, lasă, atunci. Rămân aici sus să mă bucur de briză."
+      ]
+    },
+    {
+      "en": [
+        "That's an Egg! It can't learn anything until it hatches."
+      ],
+      "text": [
+        "Ăsta e un Ou! Nu poate învăța nimic până nu eclozează."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, that one can't learn Substitute, I'm afraid."
+      ],
+      "text": [
+        "Hmm, mă tem că acela nu poate învăța Substitut."
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}."
+      ],
+      "text": [
+        "Ăsta știe deja {thing}."
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
+      ]
+    }
+  ]
+}

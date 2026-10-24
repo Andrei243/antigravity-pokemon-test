@@ -1,0 +1,36 @@
+{
+  "Scott": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        "Scott"
+      ]
+    },
+    {
+      "en": [
+        "Mm... Oh! {player}! You caught me napping. I've been out watching trainers all day."
+      ],
+      "text": [
+        "Mm... A! {player}! M-ai prins moțăind. Am urmărit antrenori toată ziua."
+      ]
+    },
+    {
+      "en": [
+        "I'd much rather be watching a battle than sleeping, mind you. Have you been to the Contest Hall yet?"
+      ],
+      "text": [
+        "Aș prefera să urmăresc o luptă decât să dorm, de fapt. Ai fost deja la Sala Concursurilor?"
+      ]
+    },
+    {
+      "en": [
+        "Lilycove's full of strong trainers. You'll have no shortage of battles here, {player}."
+      ],
+      "text": [
+        "Lilycove e plin de antrenori puternici. N-o să duci lipsă de lupte aici, {player}."
+      ]
+    }
+  ]
+}

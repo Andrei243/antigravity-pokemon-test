@@ -1,0 +1,114 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Greeter"
+        ],
+        "text": [
+          "Gazda"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Lilycove Department Store! Five floors and a roof garden of everything a trainer could want."
+        ],
+        "text": [
+          "Bun venit la Magazinul Universal Lilycove! Cinci etaje și o grădină pe acoperiș cu tot ce-și poate dori un antrenor."
+        ]
+      }
+    },
+    "lottery_clerk": {
+      "name": {
+        "en": [
+          "Lottery Clerk"
+        ],
+        "text": [
+          "Funcționara de la Loterie"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here every weekend. I always end up buying more than I meant to!"
+        ],
+        "text": [
+          "Vin aici în fiecare weekend. Ajung mereu să cumpăr mai mult decât voiam!"
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mummy said I can pick one thing from the store. I want a big Pokémon doll!"
+        ],
+        "text": [
+          "Mami a zis că pot alege un singur lucru din magazin. Vreau o păpușă Pokémon mare!"
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Azumarill likes to come shopping with me. It carries the bags on its tail!"
+        ],
+        "text": [
+          "Azumarill-ul meu vine la cumpărături cu mine. Cară sacoșele pe coadă!"
+        ]
+      }
+    },
+    "azumarill": {
+      "name": {
+        "en": [
+          "Azumarill"
+        ],
+        "text": [
+          "Azumarill"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Azumarill: Rurii!"
+        ],
+        "text": [
+          "Azumarill: Rurii!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LilycoveCity_DepartmentStore_1F_EventScript_FloorNamesSign": {
+      "en": [
+        "Floor guide: 1F Lottery Corner, 2F Trainer's Zone, 3F Battle Collection, 4F TM Corner, 5F Pokédolls, and the Rooftop Plaza."
+      ],
+      "text": [
+        "Ghidul etajelor: Et. 1 Colțul Loteriei, Et. 2 Zona Antrenorului, Et. 3 Colecția de Luptă, Et. 4 Colțul TM, Et. 5 Poképăpuși și Terasa de pe acoperiș."
+      ]
+    }
+  }
+}

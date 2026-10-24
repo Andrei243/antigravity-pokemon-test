@@ -325,6 +325,186 @@
       ]
     }
   ],
+  "NextHint": [
+    {
+      "en": [
+        "By the way, would you like a reminder of what to do next?"
+      ],
+      "text": [
+        "Apropo, vrei să-ți amintesc ce ai de făcut mai departe?"
+      ]
+    },
+    {
+      "en": [
+        "Let me see... {objective}"
+      ],
+      "text": [
+        "Stai să văd... {objective}"
+      ]
+    }
+  ],
+  "Rumour": [
+    {
+      "en": [
+        "They say the first Gym is in a mining town, and its Leader is as fond of rocks as the miners are of coal."
+      ],
+      "text": [
+        "Se zice că prima Arenă e într-un oraș minier, iar Liderul ei iubește pietrele cum iubesc minerii cărbunele."
+      ]
+    },
+    {
+      "en": [
+        "Strangers in odd uniforms have been asking about Pokémon in the big city. I didn't care for their manners."
+      ],
+      "text": [
+        "Niște străini în uniforme ciudate au tot întrebat de Pokémoni în orașul mare. N-am prea apreciat manierele lor."
+      ]
+    },
+    {
+      "en": [
+        "Floaroma's meadow is lovely, but some strangers have been making a nuisance of themselves out there."
+      ],
+      "text": [
+        "Pajiștea din Floaroma e minunată, dar niște străini îi cam fac probleme pe-acolo."
+      ]
+    },
+    {
+      "en": [
+        "There's a forest up north where every path seems to bend back on itself. Go in with a friend, I say."
+      ],
+      "text": [
+        "Mai la nord e o pădure unde fiecare potecă pare să se întoarcă din drum. Eu zic să intri acolo cu un prieten."
+      ]
+    },
+    {
+      "en": [
+        "A great building in Eterna City has been shut up tight, with strangers in matching clothes going in and out."
+      ],
+      "text": [
+        "O clădire mare din Eterna City a fost încuiată bine, iar niște străini în haine la fel intră și ies din ea."
+      ]
+    },
+    {
+      "en": [
+        "Hearthome's Contest Hall is packed these days. People come from all over Sinnoh to show off their Pokémon."
+      ],
+      "text": [
+        "Sala Concursurilor din Hearthome e plină zilele astea. Lumea vine din tot Sinnoh-ul să-și arate Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Someone told me the Gym in Veilstone is all sandbags and kicking. Quite a workout, I hear."
+      ],
+      "text": [
+        "Mi-a spus cineva că Arena din Veilstone e numai saci de nisip și lovituri. Antrenament pe cinste, aud."
+      ]
+    },
+    {
+      "en": [
+        "They say the marsh to the south has Pokémon in it that you can't find anywhere else, and different ones each day."
+      ],
+      "text": [
+        "Se zice că în mlaștina din sud sunt Pokémoni pe care nu-i găsești nicăieri altundeva, și în fiecare zi alții."
+      ]
+    },
+    {
+      "en": [
+        "Visitors say the lakes are not as they were. The water looks lower than it should, somehow."
+      ],
+      "text": [
+        "Vizitatorii spun că lacurile nu mai sunt ca altădată. Apa pare mai joasă decât ar trebui, cumva."
+      ]
+    },
+    {
+      "en": [
+        "Cynthia was through here again, they say. She is always off to some old ruin or other."
+      ],
+      "text": [
+        "Cynthia a mai trecut pe aici, se zice. E mereu pornită spre vreo ruină veche."
+      ]
+    },
+    {
+      "en": [
+        "Canalave has a library as tall as a lighthouse, and a Gym Leader who keeps disappearing to dig on an island."
+      ],
+      "text": [
+        "Canalave are o bibliotecă înaltă cât un far și un Lider de Arenă care tot dispare ca să sape pe o insulă."
+      ]
+    },
+    {
+      "en": [
+        "There was a bang somewhere in the west. Windows rattled all the way over here, and nobody will say why."
+      ],
+      "text": [
+        "S-a auzit o bubuitură undeva în vest. Ferestrele au zăngănit până aici și nimeni nu vrea să spună de ce."
+      ]
+    },
+    {
+      "en": [
+        "Far in the north there's a town buried in snow. They say the Pokémon Center there keeps blankets stacked to the roof."
+      ],
+      "text": [
+        "Departe, în nord, e un oraș îngropat în zăpadă. Se zice că la Centrul Pokémon de acolo păturile sunt stivuite până în tavan."
+      ]
+    },
+    {
+      "en": [
+        "Those uniformed people are everywhere now. Can't a person take a quiet walk any more?"
+      ],
+      "text": [
+        "Oamenii ăia în uniforme sunt peste tot acum. Nu se mai poate face o plimbare liniștită?"
+      ]
+    },
+    {
+      "en": [
+        "The city in the far east has a lighthouse with a long, long climb. The view, they say, is worth every step."
+      ],
+      "text": [
+        "Orașul din estul îndepărtat are un far cu un urcuș lung, lung. Priveliștea, se zice, merită fiecare treaptă."
+      ]
+    },
+    {
+      "en": [
+        "Everything has felt strange since the sky went odd. The whole of Sinnoh is on edge."
+      ],
+      "text": [
+        "Totul pare ciudat de când cerul a luat-o razna. Tot Sinnoh-ul e încordat."
+      ]
+    },
+    {
+      "en": [
+        "All Eight Badges! Then it's Victory Road for you. It's a long way, and dark in places."
+      ],
+      "text": [
+        "Toate cele opt Insigne! Atunci urmează Drumul Victoriei. E cale lungă și pe alocuri întunecată."
+      ]
+    },
+    {
+      "en": [
+        "They say the Pokémon League lets nobody through who can't show every Badge, and the guard counts them himself."
+      ],
+      "text": [
+        "Se zice că Liga Pokémon nu lasă pe nimeni să treacă fără să arate toate Insignele, iar paznicul le numără el însuși."
+      ]
+    },
+    {
+      "en": [
+        "A new Champion! Everyone is talking about it. Well done, truly."
+      ],
+      "text": [
+        "Un nou Campion! Toată lumea vorbește despre asta. Felicitări, pe bune."
+      ]
+    },
+    {
+      "en": [
+        "They say there's a ship at Snowpoint now that goes somewhere none of us has been. Odd, isn't it?"
+      ],
+      "text": [
+        "Se zice că la Snowpoint e acum o corabie care merge undeva unde nu a fost nimeni dintre noi. Ciudat, nu?"
+      ]
+    }
+  ],
   "Clerk": [
     {
       "en": [
@@ -1583,7 +1763,7 @@
         "Brrrring! Brrrring! It's the Pokégear..."
       ],
       "text": [
-        ""
+        "Țârrr! Țârrr! E Pokégearul..."
       ]
     },
     {
@@ -1591,7 +1771,7 @@
         "Prof. Elm"
       ],
       "text": [
-        ""
+        "Profesorul Elm"
       ]
     },
     {
@@ -1599,7 +1779,7 @@
         "{player}! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!"
       ],
       "text": [
-        ""
+        "{player}! Am auzit la radio. Ești Campionul Ligii Pokémon! Felicitări!"
       ]
     },
     {
@@ -1607,7 +1787,7 @@
         "Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly."
       ],
       "text": [
-        ""
+        "Și Profesorul Oak m-a sunat imediat. Zice că n-a mai văzut un antrenor care să crească atât de repede."
       ]
     },
     {
@@ -1615,7 +1795,7 @@
         "Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League."
       ],
       "text": [
-        ""
+        "Acum ascultă. De la portul Olivine pleacă o corabie spre Hoenn, departe în sud, și ia doar antrenori care au învins o Ligă."
       ]
     },
     {
@@ -1623,7 +1803,7 @@
         "There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!"
       ],
       "text": [
-        ""
+        "Acolo sunt Pokémoni pe care nimeni din Johto nu i-a văzut vreodată. Dacă pleci, sună-mă din când în când și povestește-mi tot!"
       ]
     },
     {
@@ -1631,7 +1811,7 @@
         "Click... The call has ended."
       ],
       "text": [
-        ""
+        "Clic... Convorbirea s-a încheiat."
       ]
     }
   ],

@@ -1,0 +1,131 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Pokédoll Floor! Our dolls and cushions are for decorating a secret base. We'll have them out for you soon!"
+        ],
+        "text": [
+          "Bun venit la Etajul Poképăpușilor! Păpușile și pernele noastre sunt pentru decorarea unei baze secrete. Le vom scoate curând pentru tine!"
+        ]
+      }
+    },
+    "woman_3_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mats and posters for your secret base will be on sale shortly. Thank you for waiting!"
+        ],
+        "text": [
+          "Covorașele și posterele pentru baza ta secretă vor fi puse în vânzare în curând. Mulțumim pentru răbdare!"
+        ]
+      }
+    },
+    "woman_3_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Big dolls are our pride and joy. They're coming soon, so please look in again!"
+        ],
+        "text": [
+          "Păpușile mari sunt mândria noastră. Vin în curând, așa că mai trece pe aici!"
+        ]
+      }
+    },
+    "woman_3_4": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our display cases are being stocked right now. Do come back!"
+        ],
+        "text": [
+          "Vitrinele noastre se umplu chiar acum. Revino!"
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to fill my secret base with dolls. Every single kind!"
+        ],
+        "text": [
+          "O să-mi umplu baza secretă cu păpuși. Cu fiecare fel în parte!"
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A secret base is like a little home of your own. Decorating it is half the fun."
+        ],
+        "text": [
+          "O bază secretă e ca o căsuță a ta. Decorarea ei e jumătate din distracție."
+        ]
+      }
+    },
+    "department_store_stairs_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rooftop is lovely on a sunny day. There's a drinks machine up there, too."
+        ],
+        "text": [
+          "Acoperișul e minunat într-o zi însorită. Și e un automat cu băuturi acolo sus."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

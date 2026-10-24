@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hold it."
       ],
       "text": [
-        ""
+        "Stai pe loc."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "So you're going to take on the Pokémon League. Not before you've dealt with me."
       ],
       "text": [
-        ""
+        "Deci te duci să înfrunți Liga Pokémon. Nu înainte să te lupți cu mine."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I've been thinking about what that dragon tamer said. I'm not saying he was right. But I'm not the same as I was."
       ],
       "text": [
-        ""
+        "M-am tot gândit la ce a spus dresorul de dragoni. Nu zic că a avut dreptate. Dar nu mai sunt cel de dinainte."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player}! This time, I win!"
       ],
       "text": [
-        ""
+        "{player}! De data asta câștig eu!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "...I lost. Again. But it doesn't feel the way it used to."
       ],
       "text": [
-        ""
+        "...Am pierdut. Din nou. Dar nu mai simt ca înainte."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "My Pokémon fought for me today. Not because I told them to. I couldn't have done that before."
       ],
       "text": [
-        ""
+        "Pokémonii mei s-au luptat pentru mine azi. Nu pentru că le-am cerut eu. Înainte n-aș fi putut face asta."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Go on, then. Go and take the League. I'm going to train somewhere nobody bothers me, and when I come back I'll be stronger than all of you."
       ],
       "text": [
-        ""
+        "Hai, du-te. Du-te și cucerește Liga. Eu mă duc să mă antrenez undeva unde nu mă deranjează nimeni, și când mă întorc voi fi mai puternic decât voi toți."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "What are you waiting for? The League's that way."
       ],
       "text": [
-        ""
+        "Ce mai aștepți? Liga e într-acolo."
       ]
     }
   ]

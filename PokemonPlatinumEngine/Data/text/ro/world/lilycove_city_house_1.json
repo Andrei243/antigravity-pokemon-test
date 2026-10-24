@@ -1,0 +1,41 @@
+{
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon are partners, not tools. My Kecleon and I have lived together for thirty years."
+        ],
+        "text": [
+          "Pokémonii sunt parteneri, nu unelte. Kecleon-ul meu și cu mine trăim împreună de treizeci de ani."
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          "Kecleon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kecleon: Kek, kekeke!"
+        ],
+        "text": [
+          "Kecleon: Kek, kekeke!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

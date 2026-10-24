@@ -1,0 +1,54 @@
+{
+  "ClerkLeft": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! What can I get for you?"
+      ],
+      "text": [
+        "Bun venit! Cu ce vă pot servi?"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ],
+  "ClerkRight": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! What can I get for you?"
+      ],
+      "text": [
+        "Bun venit! Cu ce vă pot servi?"
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        "Să mai treci!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "motel_owner": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          "Proprietarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Cove Lily Motel! Our guests come to see the sea, and Pokémon from all over the world. Mind the television, it's showing my favourite programme."
+        ],
+        "text": [
+          "Bun venit la Motelul Cove Lily! Oaspeții noștri vin să vadă marea și Pokémoni din toată lumea. Ai grijă la televizor, dă emisiunea mea preferată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

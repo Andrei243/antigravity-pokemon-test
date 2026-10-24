@@ -1,0 +1,422 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Contest Hall here is where the very best Pokémon come to show off. Only a Master Rank winner is anybody in Lilycove!"
+        ],
+        "text": [
+          "Sala Concursurilor de aici e locul unde vin să se arate cei mai buni Pokémoni. În Lilycove nu e nimeni dacă nu a câștigat Rangul Maestru!"
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all the way from Kanto to see Hoenn's Pokémon. The sea air here is something else!"
+        ],
+        "text": [
+          "Am venit tocmai din Kanto să văd Pokémonii din Hoenn. Aerul mării de aici e altceva!"
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I deal in paintings. The museum here has a collection I'd give anything to get my hands on."
+        ],
+        "text": [
+          "Fac comerț cu picturi. Muzeul de aici are o colecție pe care aș da orice s-o pun mâna."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea doesn't age, you know. Sixty years I've looked at it, and it's as young as the day I first saw it."
+        ],
+        "text": [
+          "Marea nu îmbătrânește, să știi. De șaizeci de ani mă uit la ea și e tânără ca în ziua în care am văzut-o întâia oară."
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband asked me to marry him right here, sixty years ago. We still come to watch the waves together."
+        ],
+        "text": [
+          "Soțul meu m-a cerut în căsătorie chiar aici, acum șaizeci de ani. Tot venim să privim valurile împreună."
+        ]
+      }
+    },
+    "expert_m_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once the whole world is the sea's, there'll be beaches everywhere. Won't that be great?"
+        ],
+        "text": [
+          "Când toată lumea va fi a mării, vor fi plaje peste tot. Nu va fi grozav?"
+        ]
+      }
+    },
+    "aqua_member_m_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We carried the last of the gear into the hideout this morning. My back is killing me."
+        ],
+        "text": [
+          "Am cărat azi dimineață ultimele echipamente în ascunzătoare. Mă doare spatele de moarte."
+        ]
+      }
+    },
+    "aqua_member_m_4": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Being in Team Aqua means we get to do big things. Things that change the whole world!"
+        ],
+        "text": [
+          "Să fii în Echipa Aqua înseamnă că facem lucruri mari. Lucruri care schimbă lumea întreagă!"
+        ]
+      }
+    },
+    "aqua_member_m_5": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey. Don't go poking about the cave in the cove. Nothing to see there. Nothing at all."
+        ],
+        "text": [
+          "Hei. Nu mai scotoci prin peștera din golfuleț. N-ai ce vedea acolo. Absolut nimic."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      }
+    },
+    "var_0": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      }
+    },
+    "lilycove_woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We came here on our honeymoon. We promised each other we'd see a rare Pokémon before we went home!"
+        ],
+        "text": [
+          "Am venit aici în luna de miere. Ne-am promis că vom vedea un Pokémon rar înainte să plecăm acasă!"
+        ]
+      }
+    },
+    "lilycove_man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'd only just stepped off the ferry when I saw a Pokémon I've never seen before. Lilycove's a lucky place!"
+        ],
+        "text": [
+          "Abia coborâsem de pe feribot când am văzut un Pokémon pe care nu-l mai văzusem. Lilycove e un loc norocos!"
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've heard tell of a tower out at sea, past Pacifidlog. The Sky Pillar, they call it. Never seen it myself."
+        ],
+        "text": [
+          "Am auzit de un turn în larg, dincolo de Pacifidlog. Îi zic Stâlpul Cerului. Nu l-am văzut niciodată."
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw a tall tower on Route 131 from the deck of a boat once. It went right up into the clouds!"
+        ],
+        "text": [
+          "Am văzut odată un turn înalt pe Ruta 131 de pe puntea unei bărci. Urca drept în nori!"
+        ]
+      }
+    },
+    "wailmer_1": {
+      "name": {
+        "en": [
+          "Wailmer"
+        ],
+        "text": [
+          "Wailmer"
+        ]
+      }
+    },
+    "wailmer_2": {
+      "name": {
+        "en": [
+          "Wailmer"
+        ],
+        "text": [
+          "Wailmer"
+        ]
+      }
+    },
+    "wailmer_3": {
+      "name": {
+        "en": [
+          "Wailmer"
+        ],
+        "text": [
+          "Wailmer"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LilycoveCity_EventScript_CitySign": {
+      "en": [
+        "Lilycove City\nWhere the land ends and the sea begins"
+      ],
+      "text": [
+        "Orașul Lilycove\nUnde se termină uscatul și începe marea"
+      ]
+    },
+    "LilycoveCity_EventScript_MuseumSign": {
+      "en": [
+        "Lilycove Museum\nArt that makes the heart race, in every room"
+      ],
+      "text": [
+        "Muzeul Lilycove\nArtă care face inima să bată mai tare, în fiecare sală"
+      ]
+    },
+    "LilycoveCity_EventScript_DepartmentStoreSign": {
+      "en": [
+        "Lilycove Department Store\nHoenn's grandest selection, all under one roof!"
+      ],
+      "text": [
+        "Magazinul Universal Lilycove\nCea mai mare ofertă din Hoenn, sub un singur acoperiș!"
+      ]
+    },
+    "LilycoveCity_EventScript_ContestHallSign": {
+      "en": [
+        "Pokémon Contest Hall\nThe stage of the Master Rank"
+      ],
+      "text": [
+        "Sala Concursurilor Pokémon\nScena Rangului Maestru"
+      ]
+    },
+    "LilycoveCity_EventScript_MotelSign": {
+      "en": [
+        "Cove Lily Motel\nRest and remember Lilycove"
+      ],
+      "text": [
+        "Motelul Cove Lily\nOdihnește-te și amintește-ți Lilycove"
+      ]
+    },
+    "LilycoveCity_EventScript_HarborSign": {
+      "en": [
+        "Lilycove Harbor\nThe ferry service is not yet running. We apologise for any trouble."
+      ],
+      "text": [
+        "Portul Lilycove\nFeribotul nu circulă încă. Ne cerem scuze pentru neplăcere."
+      ]
+    },
+    "LilycoveCity_EventScript_TrainerFanClubSign": {
+      "en": [
+        "Pokémon Trainer Fan Club\nWe cheer on the strongest trainers in Hoenn!"
+      ],
+      "text": [
+        "Clubul de Fani ai Antrenorilor Pokémon\nÎi încurajăm pe cei mai puternici antrenori din Hoenn!"
+      ]
+    },
+    "LilycoveCity_EventScript_MoveDeletersHouseSign": {
+      "en": [
+        "Move Deleter's House\nUnwanted moves forgotten here"
+      ],
+      "text": [
+        "Casa Ștergătorului de Mișcări\nMișcările nedorite se uită aici"
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
+      ]
+    }
+  }
+}

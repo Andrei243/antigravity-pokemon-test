@@ -1,0 +1,57 @@
+{
+  "people": {
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          "Valerie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Valerie: When I'm here, I feel the spirits all around me... Let them watch us battle..."
+        ],
+        "text": [
+          "Maniac ocult Valerie: Când sunt aici, simt spiritele peste tot în jurul meu... Să ne privească cum luptăm..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Valerie: The spirits have gone quiet... Did you frighten them?"
+        ],
+        "text": [
+          "Maniac ocult Valerie: Spiritele au amuțit... Le-ai speriat?"
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Cedric"
+        ],
+        "text": [
+          "Cedric"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Cedric: Few come this high. My Pokémon will show you why."
+        ],
+        "text": [
+          "Medium Cedric: Puțini ajung atât de sus. Pokémonii mei îți vor arăta de ce."
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Cedric: I see now why you came so far."
+        ],
+        "text": [
+          "Medium Cedric: Acum înțeleg de ce ai ajuns atât de departe."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

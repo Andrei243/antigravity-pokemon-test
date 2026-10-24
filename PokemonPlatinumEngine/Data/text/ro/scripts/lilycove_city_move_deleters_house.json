@@ -1,0 +1,76 @@
+{
+  "Deleter": [
+    {
+      "en": [
+        "Move Deleter"
+      ],
+      "text": [
+        "Ștergătorul de Mișcări"
+      ]
+    },
+    {
+      "en": [
+        "Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it."
+      ],
+      "text": [
+        "Ehem! Sunt Ștergătorul de Mișcări. Pot să fac un Pokémon să uite o mișcare, chiar și una învățată dintr-un Hidden Machine."
+      ]
+    },
+    {
+      "en": [
+        "Shall I make one of your Pokémon forget a move?"
+      ],
+      "text": [
+        "Să fac unul dintre Pokémonii tăi să uite o mișcare?"
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon?"
+      ],
+      "text": [
+        "Care Pokémon?"
+      ]
+    },
+    {
+      "en": [
+        "{thing}? Should that move be forgotten?"
+      ],
+      "text": [
+        "{thing}? Să fie uitată mișcarea asta?"
+      ]
+    },
+    {
+      "en": [
+        "There! {wearer} has forgotten {thing} completely."
+      ],
+      "text": [
+        "Gata! {wearer} a uitat complet {thing}."
+      ]
+    },
+    {
+      "en": [
+        "Come again if there are moves you'd like forgotten."
+      ],
+      "text": [
+        "Revino dacă vrei să uiți vreo mișcare."
+      ]
+    },
+    {
+      "en": [
+        "That's an Egg. It doesn't know any moves to forget!"
+      ],
+      "text": [
+        "Ăsta e un Ou. Nu știe nicio mișcare de uitat!"
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon knows only one move. I can't make it forget that one."
+      ],
+      "text": [
+        "Pokémonul ăsta știe o singură mișcare. Nu-l pot face s-o uite."
+      ]
+    }
+  ]
+}

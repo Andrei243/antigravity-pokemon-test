@@ -1,0 +1,126 @@
+{
+  "people": {
+    "museum_2f_curator": {
+      "name": {
+        "en": [
+          "Curator"
+        ],
+        "text": [
+          "Curatorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This gallery is kept for paintings of Pokémon that win at the Contest Hall. The frames are empty for now, but not for long, I hope!"
+        ],
+        "text": [
+          "Galeria asta e rezervată picturilor cu Pokémoni care câștigă la Sala Concursurilor. Ramele sunt goale deocamdată, dar sper că nu pentru mult!"
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One day my Pokémon will be in a painting up here. I just know it!"
+        ],
+        "text": [
+          "Într-o zi, Pokémonul meu va fi într-o pictură aici sus. Știu sigur!"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've toured museums all over the world. This one has the friendliest Pokémon paintings of them all."
+        ],
+        "text": [
+          "Am vizitat muzee în toată lumea. Ăsta are cele mai prietenoase picturi cu Pokémoni dintre toate."
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          "Băiat bogat"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy says he'll buy me a painting. I told him I'd rather win a contest!"
+        ],
+        "text": [
+          "Tati zice că-mi cumpără o pictură. I-am spus că aș prefera să câștig un concurs!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_CutePainting": {
+      "en": [
+        "An empty frame. A card beneath it reads: Cuteness."
+      ],
+      "text": [
+        "O ramă goală. Un card dedesubt scrie: Drăgălășenie."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_ToughPainting": {
+      "en": [
+        "An empty frame. A card beneath it reads: Toughness."
+      ],
+      "text": [
+        "O ramă goală. Un card dedesubt scrie: Duritate."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_CoolPainting": {
+      "en": [
+        "An empty frame. A card beneath it reads: Coolness."
+      ],
+      "text": [
+        "O ramă goală. Un card dedesubt scrie: Stil."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_BeautyPainting": {
+      "en": [
+        "An empty frame. A card beneath it reads: Beauty."
+      ],
+      "text": [
+        "O ramă goală. Un card dedesubt scrie: Frumusețe."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_SmartPainting": {
+      "en": [
+        "An empty frame. A card beneath it reads: Smartness."
+      ],
+      "text": [
+        "O ramă goală. Un card dedesubt scrie: Istețime."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture": {
+      "en": [
+        "A sculpture of a bird Pokémon with its wings spread wide."
+      ],
+      "text": [
+        "O sculptură a unui Pokémon-pasăre cu aripile larg desfăcute."
+      ]
+    }
+  }
+}

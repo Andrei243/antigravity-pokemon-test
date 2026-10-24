@@ -1,0 +1,250 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Greeter"
+        ],
+        "text": [
+          "Gazda"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Lilycove Museum. Please, take your time and enjoy the works on display."
+        ],
+        "text": [
+          "Bun venit la Muzeul Lilycove. Te rog, nu te grăbi și bucură-te de lucrările expuse."
+        ]
+      }
+    },
+    "museum_1f_curator": {
+      "name": {
+        "en": [
+          "Curator"
+        ],
+        "text": [
+          "Curatorul"
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          "Școlărița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We came here on a school trip. I'm supposed to write about my favourite painting!"
+        ],
+        "text": [
+          "Am venit într-o excursie școlară. Trebuie să scriu despre pictura mea preferată!"
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every time I look at these paintings, I want to go home and paint something of my own."
+        ],
+        "text": [
+          "De fiecare dată când mă uit la picturile astea, vreau să merg acasă și să pictez ceva al meu."
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That painting looks like a Pokémon battle. Or a storm. I can't tell which!"
+        ],
+        "text": [
+          "Pictura aia seamănă cu o luptă Pokémon. Sau cu o furtună. Nu-mi dau seama care!"
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The colours in this one... I could stand here all day."
+        ],
+        "text": [
+          "Culorile din asta... Aș putea sta aici toată ziua."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all this way to see the new paintings upstairs. They're wonderful!"
+        ],
+        "text": [
+          "Am venit de departe să văd picturile noi de la etaj. Sunt minunate!"
+        ]
+      }
+    },
+    "museum_1f_artist_2": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          "Artistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Someone's Pokémon in the gallery upstairs inspired me to start a new piece."
+        ],
+        "text": [
+          "Pokémonul cuiva din galeria de sus m-a inspirat să încep o lucrare nouă."
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Tourist"
+        ],
+        "text": [
+          "Turist"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lilycove's museum is famous all over the world. We're on a tour of it!"
+        ],
+        "text": [
+          "Muzeul din Lilycove e faimos în toată lumea. Facem un tur al lui!"
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Art speaks to the mind. These paintings are positively shouting."
+        ],
+        "text": [
+          "Arta vorbește minții. Picturile astea chiar strigă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_FantasyPainting": {
+      "en": [
+        "A fantasy of Pokémon dancing in a moonlit forest."
+      ],
+      "text": [
+        "O fantezie cu Pokémoni dansând într-o pădure scăldată de lună."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_BerryPainting": {
+      "en": [
+        "A still life of berries in a bowl, so ripe they look ready to eat."
+      ],
+      "text": [
+        "O natură moartă cu boabe într-un bol, atât de coapte încât par gata de mâncat."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_OldPainting": {
+      "en": [
+        "A very old painting, its colours dark with age. A great Pokémon looks down from the clouds."
+      ],
+      "text": [
+        "O pictură foarte veche, cu culorile întunecate de vreme. Un Pokémon măreț privește din nori."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_WomanPainting": {
+      "en": [
+        "A painting of a woman holding a Pokémon close, smiling."
+      ],
+      "text": [
+        "O pictură cu o femeie care ține strâns un Pokémon, zâmbind."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture": {
+      "en": [
+        "A sculpture of a bird Pokémon with its wings spread wide."
+      ],
+      "text": [
+        "O sculptură a unui Pokémon-pasăre cu aripile larg desfăcute."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_GrassPokemonPainting": {
+      "en": [
+        "A painting of Grass Pokémon basking on a sunny hill."
+      ],
+      "text": [
+        "O pictură cu Pokémoni de tip Iarbă la soare pe un deal."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_StoneTablet": {
+      "en": [
+        "An ancient stone tablet carved with Pokémon and a language nobody can read."
+      ],
+      "text": [
+        "O tăbliță străveche de piatră, gravată cu Pokémoni și o limbă pe care n-o poate citi nimeni."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_LegendaryPokemonPainting": {
+      "en": [
+        "A painting of a legendary Pokémon rising from the sea in a burst of light."
+      ],
+      "text": [
+        "O pictură cu un Pokémon legendar ieșind din mare într-un val de lumină."
+      ]
+    },
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_PokeBallSculpture": {
+      "en": [
+        "A sculpture of an enormous Poké Ball. Is it about to open?"
+      ],
+      "text": [
+        "O sculptură a unei Poké Ball uriașe. Oare e pe cale să se deschidă?"
+      ]
+    }
+  }
+}

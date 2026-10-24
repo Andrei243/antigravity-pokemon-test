@@ -1,0 +1,41 @@
+{
+  "people": {
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are mysteries at the bottom of the sea that nobody has ever seen. I'd love to dive down and look."
+        ],
+        "text": [
+          "Sunt taine pe fundul mării pe care nu le-a văzut nimeni. Mi-ar plăcea să mă scufund și să mă uit."
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say there's a deep trench under the sea between Mossdeep and Sootopolis. Something sleeps down there, I'm sure of it."
+        ],
+        "text": [
+          "Se zice că sub mare, între Mossdeep și Sootopolis, e o groapă adâncă. Ceva doarme acolo, sunt sigur."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

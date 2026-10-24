@@ -1,0 +1,25 @@
+{
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Berry Master"
+        ],
+        "text": [
+          "Maestrul Boabelor"
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

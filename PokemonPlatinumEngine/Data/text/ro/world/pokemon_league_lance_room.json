@@ -6,7 +6,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Prof. Oak"
         ],
         "text": [
-          ""
+          "Profesorul Oak"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Congratulations, {player}! What a battle that was."
         ],
         "text": [
-          ""
+          "Felicitări, {player}! Ce luptă a fost!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Mary"
         ],
         "text": [
-          ""
+          "Mary"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "This is going out on Pokémon Talk tonight. Smile, Champion!"
         ],
         "text": [
-          ""
+          "Asta merge diseară la Discuții Pokémon. Zâmbește, Campionule!"
         ]
       }
     }
