@@ -277,6 +277,8 @@ public enum Architecture
     Crater,
     /// <summary>Logs under straw-gold gable roofs with shutters: the town of houses on rafts of logs moored out at sea (Pacifidlog, plan 21 · H8, part c).</summary>
     Raft,
+    /// <summary>Pale stone under rose hip roofs with flower boxes: the city of flowers on the terraces at the League's foot (Ever Grande, plan 21 · H9).</summary>
+    Bloomstone,
 
     // Unova (plan 22): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White stucco under slate-teal gable roofs with shutters: the town on the hill over the outlook (Aspertia, plan 22 · U5).</summary>

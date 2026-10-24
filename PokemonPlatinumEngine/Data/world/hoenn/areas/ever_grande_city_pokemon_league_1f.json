@@ -1,0 +1,32 @@
+{
+  "key": "ever_grande_city_pokemon_league_1f",
+  "index": 221,
+  "name": "Ever Grande City",
+  "matrix": 170,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "ever_grande_city", "toWarp": 0 },
+    { "x": 10, "z": 11, "to": "ever_grande_city", "toWarp": 0 },
+    { "x": 9, "z": 1, "to": "ever_grande_city_hall_5", "toWarp": 0 },
+    { "x": 10, "z": 1, "to": "ever_grande_city_hall_5", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "ever_grande_city_pokemon_league_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "league_nurse", "looks": "nurse", "movement": "look_south", "x": 3, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_PokemonLeague_1F_EventScript_Nurse" },
+    { "id": "mart_employee", "looks": "mart_employee", "movement": "look_south", "x": 16, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_PokemonLeague_1F_EventScript_Clerk" },
+    { "id": "league_guard_1", "looks": "man_3", "movement": "look_south", "x": 8, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard" },
+    { "id": "league_guard_2", "looks": "man_3", "movement": "look_south", "x": 11, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "EverGrandeCity_PokemonLeague_1F_EventScript_DoorGuard" }
+  ],
+  "signs": [],
+  "triggers": []
+}

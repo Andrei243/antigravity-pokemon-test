@@ -1,0 +1,15 @@
+{
+  // Victory Road's lowest floor (plan 21 · H9): six trainers, two of them watching one bank together, and the ways back
+  // up to the middle floor
+  "area": "hoenn_victory_road_b2f",
+  "name": "Victory Road",
+  "bgmTrack": "hoenn/victory_road",
+  "people": {
+    "man_3": { "name": "Vito", "trainer": { "dialogueBefore": "Cooltrainer Vito: I was told the bottom of Victory Road is where the real trainers are. I'm one of them!", "dialogueAfter": "Cooltrainer Vito: Maybe the real ones are further up after all." } },
+    "man_3_2": { "name": "Owen", "trainer": { "dialogueBefore": "Cooltrainer Owen: The water down here is freezing. A battle will warm me up!", "dialogueAfter": "Cooltrainer Owen: I'm colder than ever now." } },
+    "woman_5": { "name": "Caroline", "trainer": { "dialogueBefore": "Cooltrainer Caroline: You found the way down here? Then you've earned a battle with me!", "dialogueAfter": "Cooltrainer Caroline: You've earned more than that. Go on up." } },
+    "woman_5_2": { "name": "Julie", "trainer": { "dialogueBefore": "Cooltrainer Julie: I trained under that waterfall for a month. My Pokémon are as tough as rock now!", "dialogueAfter": "Cooltrainer Julie: Back under the falls for another month." } },
+    "woman_5_3": { "name": "Dianne", "trainer": { "dialogueBefore": "Cooltrainer Dianne: The two of us watch this bank together. You'll have to go through me first!", "dialogueAfter": "Cooltrainer Dianne: Felix, it's your turn now." } },
+    "man_3_3": { "name": "Felix", "trainer": { "dialogueBefore": "Cooltrainer Felix: Dianne didn't stop you? Then I will!", "dialogueAfter": "Cooltrainer Felix: Neither of us stopped you. Well done." } }
+  }
+}

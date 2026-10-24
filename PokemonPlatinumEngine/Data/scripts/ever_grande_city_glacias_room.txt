@@ -1,0 +1,25 @@
+# Glacia's room, the third of Hoenn's Elite Four (plan 21 · H9). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/EverGrandeCity_GlaciasRoom/scripts.inc). As Sidney's room: spoken to, she
+# battles; beaten, the door behind her opens onto the hall to Drake's room (FLAG_DEFEATED_ELITE_4_GLACIA).
+
+
+script Glacia
+  face glacia player
+  speaker "Glacia"
+  if flag FLAG_DEFEATED_ELITE_4_GLACIA goto Beaten
+  scene "Glacia"
+  music "common/eye_elite_four"
+  say "Welcome. I am Glacia of the Elite Four. I came to Hoenn from far away, hoping to meet a trainer worth my ice."
+  say "So far, I have found only disappointment. I do hope you will be different."
+  say "Show me the heat of your spirit. My Ice-type Pokémon and I will freeze it, if we can."
+  battle self as "hoenn_glacia"
+  speaker "Glacia"
+  say "Such fire... You melted my ice completely. I have not felt this in a long time."
+  setflag FLAG_DEFEATED_ELITE_4_GLACIA
+  sound "door_open"
+  say "Go on. The last of the Elite Four waits ahead, and he is not as gentle as I am."
+  endscene
+  end
+label Beaten
+  say "Keep that fire burning. You will need all of it for what lies ahead."
+  end

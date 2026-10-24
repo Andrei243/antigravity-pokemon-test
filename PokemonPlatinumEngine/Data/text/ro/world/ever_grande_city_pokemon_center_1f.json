@@ -1,0 +1,61 @@
+{
+  "people": {
+    "ever_grande_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon League is past Victory Road, up at the very top of the city. Only trainers with every Badge get through."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Believe in your Pokémon, and they'll believe in you. That's all there is to it, in the end."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ever_grande_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -146,6 +146,15 @@
     // Juan (plan 21 · H8, part c; our own take), Sootopolis's Gym Leader and Wallace's mentor: swept black hair and a
     // trim mustache, a dark navy tailcoat over a white shirt with a violet bow, dark trousers
     "juan": { "hairColor": "#22222e", "hair": "Swept", "top": "#26304e", "accent": "#7a4ab0", "bottom": "#22283e", "shoes": "#141418", "eyes": "#2e2a3a", "mustache": true, "coat": true, "build": "Adult", "height": 1.06 },
+    // Plan 21 · H9 (our own takes), Hoenn's Elite Four: Sidney, a swaggering Dark-type trainer with a tall red pompadour,
+    // a black leather jacket over a white vest and black jeans; Phoebe, a Ghost-type trainer from Mt. Pyre, short black
+    // hair, a dark plum dress with a pale sash and bare feet in sandals; Glacia, an Ice-type trainer from far away, long
+    // pale blue hair, a long white coat over an ice-blue dress; Drake, an old sailor who trains dragons, white hair and
+    // beard, a dark green captain's coat over a grey shirt
+    "sidney": { "hairColor": "#c8342e", "hair": "Spiky", "top": "#1e1e24", "accent": "#f2f2f6", "bottom": "#24242c", "shoes": "#141418", "eyes": "#3a2a24", "coat": true, "build": "Adult", "height": 1.06 },
+    "phoebe": { "hairColor": "#2a2630", "hair": "Short", "top": "#5a2e5e", "accent": "#e8dcc8", "bottom": "#5a2e5e", "shoes": "#6a4a32", "eyes": "#4a3a5a", "skirt": true, "build": "Adult", "blush": true, "lashes": true, "height": 0.92 },
+    "glacia": { "hairColor": "#bcd8ec", "hair": "Long", "top": "#f2f4f8", "accent": "#7ab4dc", "bottom": "#9ac8e8", "shoes": "#5a7a9a", "eyes": "#4a6a8a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    "drake": { "hairColor": "#e6e6ea", "hair": "Short", "top": "#2a4a3a", "accent": "#8a8e96", "bottom": "#3a3a44", "shoes": "#2a2420", "eyes": "#3a3a3a", "beard": true, "coat": true, "build": "Adult", "height": 1.1 },
     // Captain Stern of Slateport's shipyard: short dark hair and a full beard, a white lab coat with a sea-blue collar
     "capt_stern": { "hairColor": "#3e3028", "top": "#f0f2f6", "accent": "#3a6a9a", "bottom": "#4a4e5a", "shoes": "#2e2a28", "eyes": "#3a2e28", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
     // Archie, the leader of Team Aqua: a black bandana over dark hair, a beard, a dark diver's suit with a gold chain

@@ -1,0 +1,16 @@
+{
+  // The first of the Elite Four's rooms (plan 21 · H9), Sidney's, as Emerald lays it out. The way back to the hall is
+  // shut behind the player, as Emerald closes it once the challenger is in; the door ahead opens once he is beaten
+  // (FLAG_DEFEATED_ELITE_4_SIDNEY) onto the hall to Phoebe's room. ever_grande_city_sidneys_room.txt has his battle
+  "area": "ever_grande_city_sidneys_room",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "arenaType": "Dark",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_Hall1", "x": 5, "y": 11, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_SIDNEY" }
+  ],
+  "people": {
+    "sidney": { "name": "Sidney", "npcType": "sidney", "script": "Sidney", "still": true }
+  }
+}

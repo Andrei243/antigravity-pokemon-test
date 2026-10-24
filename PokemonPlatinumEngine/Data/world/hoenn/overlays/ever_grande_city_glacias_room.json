@@ -1,0 +1,15 @@
+{
+  // The third of the Elite Four's rooms (plan 21 · H9), Glacia's: as Sidney's, the door ahead opening once she is beaten
+  // (FLAG_DEFEATED_ELITE_4_GLACIA). ever_grande_city_glacias_room.txt has her battle
+  "area": "ever_grande_city_glacias_room",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "arenaType": "Ice",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_Hall3", "x": 5, "y": 11, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_GLACIA" }
+  ],
+  "people": {
+    "glacia": { "name": "Glacia", "npcType": "glacia", "script": "Glacia", "still": true }
+  }
+}

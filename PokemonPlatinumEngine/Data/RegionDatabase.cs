@@ -648,6 +648,12 @@ public static class RegionDatabase
                 // Plan 21 · H8, part d: Shoal Cave and its tide
                 "ShoalCave_LowTideEntranceRoom", "ShoalCave_LowTideInnerRoom", "ShoalCave_LowTideStairsRoom",
                 "ShoalCave_LowTideLowerRoom", "ShoalCave_LowTideIceRoom",
+                // Plan 21 · H9: Ever Grande City's rooms, Victory Road and the Pokémon League
+                "EverGrandeCity_PokemonCenter_1F", "EverGrandeCity_PokemonCenter_2F", "EverGrandeCity_PokemonLeague_1F",
+                "EverGrandeCity_PokemonLeague_2F", "EverGrandeCity_Hall5", "EverGrandeCity_SidneysRoom", "EverGrandeCity_Hall1",
+                "EverGrandeCity_PhoebesRoom", "EverGrandeCity_Hall2", "EverGrandeCity_GlaciasRoom", "EverGrandeCity_Hall3",
+                "EverGrandeCity_DrakesRoom", "EverGrandeCity_Hall4", "EverGrandeCity_ChampionsRoom", "EverGrandeCity_HallOfFame",
+                "HoennVictoryRoad_1F", "HoennVictoryRoad_B1F", "HoennVictoryRoad_B2F",
             }
         },
         new()

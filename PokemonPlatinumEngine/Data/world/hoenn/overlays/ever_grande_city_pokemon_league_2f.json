@@ -1,0 +1,11 @@
+{
+  // The floor above the Pokémon League's hall (plan 21 · H9): the wireless link is down, as in every Center
+  // (decision 06 · 7)
+  "area": "ever_grande_city_pokemon_league_2f",
+  "bgmTrack": "hoenn/ever_grande",
+  "people": {
+    "teala": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "teala_2": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "teala_3": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] }
+  }
+}

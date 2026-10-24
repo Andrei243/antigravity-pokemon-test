@@ -1,0 +1,163 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "victory_road_entrance_wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Edgar"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Edgar: Everyone who reaches Victory Road has eight Badges. So we're equals. Let's see who's more equal!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Edgar: All right, you're the more equal one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Hope"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Hope: This cave is where dreams of the League are made, or broken. Which will yours be?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Hope: Mine were the ones that broke."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Albert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Albert: I've walked this road a hundred times and never reached the end. Maybe you'll be my hundred-and-first try!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Albert: Back to the start for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Katelynn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Katelynn: Only the strongest leave this cave at the top. Prove you're one of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Katelynn: You've proved it to me, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_3": {
+      "name": {
+        "en": [
+          "Quincy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Quincy: My team and I have trained our whole lives for the League. You won't stop us here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Quincy: We'll train a little longer, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

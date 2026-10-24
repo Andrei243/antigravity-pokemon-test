@@ -1,0 +1,15 @@
+{
+  // The last of the Elite Four's rooms (plan 21 · H9), Drake's: as Sidney's, the door ahead opening once he is beaten
+  // (FLAG_DEFEATED_ELITE_4_DRAKE) onto the long hall to the Champion's room. ever_grande_city_drakes_room.txt has his battle
+  "area": "ever_grande_city_drakes_room",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "arenaType": "Dragon",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_Hall4", "x": 5, "y": 32, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_DRAKE" }
+  ],
+  "people": {
+    "drake": { "name": "Drake", "npcType": "drake", "script": "Drake", "still": true }
+  }
+}

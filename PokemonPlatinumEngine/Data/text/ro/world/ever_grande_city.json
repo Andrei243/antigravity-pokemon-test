@@ -1,0 +1,37 @@
+{
+  "people": {},
+  "signs": {
+    "EverGrandeCity_EventScript_VictoryRoadSign": {
+      "en": [
+        "Victory Road\nThe last trial before the Pokémon League"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "EverGrandeCity_EventScript_CitySign": {
+      "en": [
+        "Ever Grande City\nWhere flowers, the sea and Pokémon meet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "EverGrandeCity_EventScript_PokemonLeagueSign": {
+      "en": [
+        "The Pokémon League\nThe gate to the Elite Four and the Champion"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

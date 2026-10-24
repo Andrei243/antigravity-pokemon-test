@@ -1,0 +1,80 @@
+# Victory Road's upper floor (plan 21 · H9). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/VictoryRoad_1F/scripts.inc).
+#
+# Wally catches the player up as they first come up the west passage (VAR_VICTORY_ROAD_1F_STATE 0, the two triggers):
+# he runs in along the passage below, battles (hoenn_wally_vr_1), and waits there afterwards, where he stopped (the
+# variable 1 or 2, which the floor's arrival reads to put him back, as Emerald's setobjectxyperm does), until the Hall of
+# Fame. From the Hall of Fame on he waits by the way out to the League instead (FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY
+# cleared) and battles once more (hoenn_wally_vr_2). A save from before this stretch is given its hiding here
+# (common.HoennChapterTwelve).
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TWELVE call HoennChapterTwelve
+  if var VAR_VICTORY_ROAD_1F_STATE == 1 place victory_road_entrance_wally 2 24 down
+  if var VAR_VICTORY_ROAD_1F_STATE == 2 place victory_road_entrance_wally 3 24 down
+  end
+
+
+# The west tile of the passage: Wally runs ten tiles along the passage below and up to the player
+script WallyTrigger1
+  scene "Wally on Victory Road from the west"
+  place victory_road_entrance_wally 12 25 left
+  show victory_road_entrance_wally
+  walk victory_road_entrance_wally left 10 up 1
+  call Battle
+  setvar VAR_VICTORY_ROAD_1F_STATE 1
+  endscene
+  end
+
+
+# The east tile of the passage: nine tiles along, and up
+script WallyTrigger2
+  scene "Wally on Victory Road from the east"
+  place victory_road_entrance_wally 12 25 left
+  show victory_road_entrance_wally
+  walk victory_road_entrance_wally left 9 up 1
+  call Battle
+  setvar VAR_VICTORY_ROAD_1F_STATE 2
+  endscene
+  end
+
+
+# His words and his battle (a battle lost ends the scene there, and he is back below to try again)
+script Battle
+  face player down
+  face victory_road_entrance_wally player
+  speaker "Wally"
+  say "{player}! I got every Badge too, just like you. I came all this way to tell you something."
+  say "I'm not the boy who couldn't even catch a Pokémon any more. I've trained hard with my partners."
+  say "So this time I won't lose. Not to anyone, not even to you!"
+  battle victory_road_entrance_wally as "hoenn_wally_vr_1"
+  speaker "Wally"
+  say "I lost again... But it doesn't feel the same as the first time. I gave it everything I had."
+  say "You go on ahead, {player}. I'm going to rest here a little, and then I'll follow you to the League!"
+  clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+  setflag FLAG_DEFEATED_WALLY_VICTORY_ROAD
+  return
+
+
+# Wally by the passage after his battle, until the Hall of Fame
+script EntranceWally
+  face self player
+  speaker "Wally"
+  say "You go on ahead, {player}. I'll follow you to the League once I've rested!"
+  end
+
+
+# Wally by the way out, after the Hall of Fame: one more battle, then a word
+script ExitWally
+  face self player
+  speaker "Wally"
+  if defeated "hoenn_wally_vr_2" goto Beaten
+  say "{player}! I heard you became the Champion. Congratulations! I knew you would."
+  say "I've been training here ever since, so I could battle the Champion. Will you show me what that's like?"
+  battle self as "hoenn_wally_vr_2"
+  speaker "Wally"
+  say "Wow... So that's the strength of a Champion. I've still got a long way to go."
+label Beaten
+  say "I'll keep training on Victory Road. One day I'll catch up with you, {player}. Just you wait!"
+  end

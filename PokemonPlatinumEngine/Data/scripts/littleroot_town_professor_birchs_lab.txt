@@ -54,6 +54,7 @@ label Pokedex
 
 
 script Birch
+  if flag HoennHallOfFame goto Champion
   if var VAR_BIRCH_LAB_STATE >= 5 goto Dex
   if var VAR_BIRCH_LAB_STATE >= 3 goto Rival
   say "Phew, what a morning! Thank you again, {player}."
@@ -63,6 +64,25 @@ label Rival
   end
 label Dex
   say "Pokémon live in every corner of Hoenn. Fill that Pokédex for me, {player}, and tell me all about them!"
+  end
+# The Champion back home (plan 21 · H9; Emerald's LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex,
+# which waits for the Hall of Fame and nothing else, as the region's file's nationalUnlock has it): the Pokédex made the
+# National one, once
+label Champion
+  if nationaldex goto Wide
+  scene "The National Pokedex"
+  face birchs_lab_birch player
+  say "{player}! The Champion of Hoenn, in my own lab! I've been waiting for you to come home."
+  say "You've seen so much of Hoenn that I think it's time your Pokédex saw the rest of the world too."
+  say "Let me have it for a moment... There! I've upgraded it to the National Pokédex."
+  nationaldex
+  fanfare keyitem
+  text "{player}'s Pokédex was upgraded to the National Pokédex!"
+  say "Now it can record Pokémon from far beyond Hoenn. There are so many more out there, {player}. Go and find them!"
+  endscene
+  end
+label Wide
+  say "The world is a lot bigger than Hoenn, {player}. Fill that National Pokédex for me!"
   end
 
 

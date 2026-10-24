@@ -169,6 +169,54 @@
       "text": [
         "Pokémonii trăiesc în fiecare colț din Hoenn. Umple Pokédexul ăla pentru mine, {player}, și povestește-mi totul despre ei!"
       ]
+    },
+    {
+      "en": [
+        "{player}! The Champion of Hoenn, in my own lab! I've been waiting for you to come home."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've seen so much of Hoenn that I think it's time your Pokédex saw the rest of the world too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let me have it for a moment... There! I've upgraded it to the National Pokédex."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokédex was upgraded to the National Pokédex!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now it can record Pokémon from far beyond Hoenn. There are so many more out there, {player}. Go and find them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The world is a lot bigger than Hoenn, {player}. Fill that National Pokédex for me!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Rival": [

@@ -1,0 +1,25 @@
+# Drake's room, the last of Hoenn's Elite Four (plan 21 · H9). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/EverGrandeCity_DrakesRoom/scripts.inc). As Sidney's room: spoken to, he battles;
+# beaten, the door behind him opens onto the long hall to the Champion's room (FLAG_DEFEATED_ELITE_4_DRAKE).
+
+
+script Drake
+  face drake player
+  speaker hoenn_drake "Drake"
+  if flag FLAG_DEFEATED_ELITE_4_DRAKE goto Beaten
+  scene "Drake"
+  music "common/eye_elite_four"
+  say "I am Drake, the last of the Elite Four. I sailed the seas for many years before I came to the dragons."
+  say "To command Dragon-type Pokémon, a trainer needs one thing above all. Do you know what it is?"
+  say "If you don't, you will not get past me. Come! Show me what you have!"
+  battle self as "hoenn_drake"
+  speaker hoenn_drake "Drake"
+  say "Superb. You have it, the thing my dragons and I look for in a trainer: a true bond with your Pokémon."
+  setflag FLAG_DEFEATED_ELITE_4_DRAKE
+  sound "door_open"
+  say "Go on through. The Champion waits at the end of the hall. Give it everything you have."
+  endscene
+  end
+label Beaten
+  say "Why do you linger here? The Champion is waiting for you."
+  end

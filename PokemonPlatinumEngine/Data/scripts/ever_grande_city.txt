@@ -1,0 +1,10 @@
+# Ever Grande City (plan 21 · H9). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/EverGrandeCity/scripts.inc).
+#
+# The city's own arrival gives a save from before this stretch its hiding (common.HoennChapterTwelve); the titans'
+# weather over it while it lasts is the overlay's zone (FLAG_SYS_WEATHER_CTRL), as Emerald's ON_TRANSITION sets it.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TWELVE call HoennChapterTwelve
+  end

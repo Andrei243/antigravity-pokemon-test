@@ -1,0 +1,34 @@
+# Sidney's room, the first of Hoenn's Elite Four (plan 21 · H9). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/EverGrandeCity_SidneysRoom/scripts.inc).
+#
+# Coming in, Scott is missed for good (FLAG_MET_SCOTT_IN_EVERGRANDE, as Emerald's ON_TRANSITION sets it). Spoken to,
+# Sidney battles (a battle lost ends it there, and the game wakes the player in the League's hall, which puts the four
+# rooms back); beaten, he opens the door behind him (FLAG_DEFEATED_ELITE_4_SIDNEY, which the room's door is opened by).
+
+
+script OnEnter
+  setflag FLAG_MET_SCOTT_IN_EVERGRANDE
+  setflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  end
+
+
+script Sidney
+  face sidney player
+  speaker "Sidney"
+  if flag FLAG_DEFEATED_ELITE_4_SIDNEY goto Beaten
+  scene "Sidney"
+  music "common/eye_elite_four"
+  say "Well, look at you! I'm Sidney of the Elite Four. You came all this way, so I like you already."
+  say "But liking you won't stop me. I play dirty, and I play to win. Can you keep up with that?"
+  say "No more talking. Let's have a battle we'll both remember!"
+  battle self as "hoenn_sidney"
+  speaker "Sidney"
+  say "Ha! That's it, I'm beaten. And I don't even mind. That was a battle and a half!"
+  setflag FLAG_DEFEATED_ELITE_4_SIDNEY
+  sound "door_open"
+  say "Go on through. The rest of the Elite Four won't go easy on you. Show them what you showed me!"
+  endscene
+  end
+label Beaten
+  say "Don't look back now. The next room is waiting for you. Go and win it!"
+  end

@@ -1,0 +1,11 @@
+{
+  // The long hall from Drake's room to the Champion's (plan 21 · H9): no way back, the way on onto the Champion's floor,
+  // where the room's own scene walks the player up to Wallace
+  "area": "ever_grande_city_hall_4",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_ChampionsRoom", "x": 6, "y": 11, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_DRAKE" }
+  ]
+}

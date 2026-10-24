@@ -1,0 +1,143 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "man_3": {
+      "name": {
+        "en": [
+          "Samuel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Samuel: You moved those boulders to get here? Then you can move this battle along too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Samuel: I've been moved aside like a boulder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Shannon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Shannon: It's so dark and quiet down here. A battle will liven it up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Shannon: Lively, all right. Too lively for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Michelle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Michelle: I've been waiting for a challenger who could get this far. Don't disappoint me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Michelle: Not disappointed at all. Just beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Mitchell"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Mitchell: The League starts here, as far as I'm concerned. Get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Mitchell: Go on, then. The League's waiting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_3": {
+      "name": {
+        "en": [
+          "Halle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Halle: Every trainer here dreams of beating the Champion. Let's see whose dream is bigger!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Halle: Yours, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

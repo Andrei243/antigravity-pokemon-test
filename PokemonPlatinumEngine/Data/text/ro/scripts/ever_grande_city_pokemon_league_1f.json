@@ -1,0 +1,78 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beyond this door wait the Elite Four. Only a trainer who has won every Badge of Hoenn may pass."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show us your Badges, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every one of them! Go forth, challenger, and may your Pokémon carry you through."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You haven't won every Badge of Hoenn yet. We can't let you through. Come back once you have them all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go forth, challenger. The Elite Four are waiting."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Stock up well. Once you go through that door, there's no coming back to buy more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good luck in there!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  // Ever Grande City's Pokémon Center (plan 21 · H9), by the shore below Victory Road. Scott waits here for whoever has
+  // the Feather Badge, until he has said his piece or the player has gone on into the League
+  // (ever_grande_city_pokemon_center_1f.txt)
+  "area": "ever_grande_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/ever_grande",
+  "people": {
+    "ever_grande_nurse": { "name": "Nurse", "script": "Nurse" },
+    "woman_5": { "name": "Woman", "dialog": [ "The Pokémon League is past Victory Road, up at the very top of the city. Only trainers with every Badge get through." ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "Believe in your Pokémon, and they'll believe in you. That's all there is to it, in the end." ] },
+    "ever_grande_scott": { "name": "Scott", "npcType": "scott", "script": "Scott", "still": true }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "ever_grande_city_hall_2",
+  "index": 217,
+  "name": "Ever Grande City",
+  "matrix": 166,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "ever_grande_city_phoebes_room", "toWarp": 1 },
+    { "x": 5, "z": 2, "to": "ever_grande_city_glacias_room", "toWarp": 0 },
+    { "x": 4, "z": 12, "to": "ever_grande_city_phoebes_room", "toWarp": 1 },
+    { "x": 6, "z": 12, "to": "ever_grande_city_phoebes_room", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}
