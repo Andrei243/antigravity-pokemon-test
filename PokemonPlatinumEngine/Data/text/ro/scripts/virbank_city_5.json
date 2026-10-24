@@ -13,7 +13,7 @@
         "{player}! You're heading to Castelia City too, right?"
       ],
       "text": [
-        ""
+        "{player}! Mergi și tu la Castelia City, nu?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Huh? You've still got things to do here? Go and finish them, then."
       ],
       "text": [
-        ""
+        "Hă? Mai ai de făcut lucruri aici? Atunci du-te și termină-le."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Even once we're in Castelia, we can always come back to Virbank, you know."
       ],
       "text": [
-        ""
+        "Chiar și odată ajunși în Castelia, ne putem întoarce oricând în Virbank, știi."
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Captain"
       ],
       "text": [
-        ""
+        "Căpitanul"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Where to, young Trainer? Shall we set sail for Castelia City?"
       ],
       "text": [
-        ""
+        "Încotro, tinere Antrenor? Pornim spre Castelia City?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Right you are! Step this way!"
       ],
       "text": [
-        ""
+        "Perfect! Pe aici!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Whenever you're ready. The old girl's engines are always warm now!"
       ],
       "text": [
-        ""
+        "Când ești gata. Motoarele bătrânei sunt acum mereu calde!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "She's all warmed up and raring to go! Your friend's been pacing the deck since I got back."
       ],
       "text": [
-        ""
+        "E încălzită și gata de drum! Prietenul tău se plimbă pe punte de când m-am întors."
       ]
     }
   ],

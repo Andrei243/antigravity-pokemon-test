@@ -5,7 +5,7 @@
         "Move Deleter"
       ],
       "text": [
-        ""
+        "Ștergătorul de Mișcări"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it."
       ],
       "text": [
-        ""
+        "Hm! Sunt Ștergătorul de Mișcări. Pot face un Pokémon să uite o mișcare, chiar și una învățată dintr-o Mașină Ascunsă."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall I make one of your Pokémon forget a move?"
       ],
       "text": [
-        ""
+        "Să fac unul dintre Pokémonii tăi să uite o mișcare?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Which Pokémon?"
       ],
       "text": [
-        ""
+        "Care Pokémon?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{thing}? Should that move be forgotten?"
       ],
       "text": [
-        ""
+        "{thing}? Chiar să uite mișcarea asta?"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "There! {wearer} has forgotten {thing} completely."
       ],
       "text": [
-        ""
+        "Gata! {wearer} a uitat de tot {thing}."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Come again if there are moves you'd like forgotten."
       ],
       "text": [
-        ""
+        "Revino dacă mai ai mișcări pe care vrei să le uiți."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "That's an Egg. It doesn't know any moves to forget!"
       ],
       "text": [
-        ""
+        "Ăsta e un Ou. Nu știe nicio mișcare de uitat!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "That Pokémon knows only one move. I can't make it forget that one."
       ],
       "text": [
-        ""
+        "Pokémonul ăsta știe o singură mișcare. Pe aceea nu o pot face să o uite."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Dragon Tamer"
       ],
       "text": [
-        ""
+        "Dresorul de Dragoni"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Hm. A visitor to the dragon tamers' town. We keep a secret here: the mightiest of all the Dragon-type moves."
       ],
       "text": [
-        ""
+        "Hm. Un vizitator în orașul dresorilor de dragoni. Păstrăm aici un secret: cea mai puternică dintre toate mișcările de tip Dragon."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Would you have me teach it to one of your Pokémon?"
       ],
       "text": [
-        ""
+        "Vrei să o învăț pe unul dintre Pokémonii tăi?"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Back again? Shall I teach the best Dragon-type move I know to one of your Pokémon?"
       ],
       "text": [
-        ""
+        "Iar aici? Să învăț unul dintre Pokémonii tăi cea mai bună mișcare de tip Dragon pe care o știu?"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Good. Choose the Pokémon I am to teach."
       ],
       "text": [
-        ""
+        "Bine. Alege Pokémonul pe care să-l învăț."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "One, two, and... poof! {wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "Unu, doi și... pof! {wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -136,8 +136,8 @@
         "Mind, though: using it lowers the user's own Special Attack."
       ],
       "text": [
-        "",
-        ""
+        "Puterea ei de a distruge e un lucru înfricoșător de văzut.",
+        "Atenție, însă: folosind-o, Atacul Special al celui care o folosește scade."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Well, should you change your mind, do come back."
       ],
       "text": [
-        ""
+        "Ei bine, dacă te răzgândești, revino negreșit."
       ]
     },
     {
@@ -153,7 +153,7 @@
         "Not one of the Pokémon with you now can learn this move. Bring a Dragon, and come back."
       ],
       "text": [
-        ""
+        "Niciunul dintre Pokémonii pe care îi ai la tine nu poate învăța mișcarea asta. Adu un Dragon și revino."
       ]
     },
     {
@@ -161,7 +161,7 @@
         "Teaching a move to an Egg is a feat beyond anyone."
       ],
       "text": [
-        ""
+        "Să înveți un Ou o mișcare e o faptă peste puterile oricui."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "I'm sorry. That Pokémon cannot learn this move."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Pokémonul acela nu poate învăța mișcarea asta."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Oh? That Pokémon knows {thing} already."
       ],
       "text": [
-        ""
+        "Oh? Pokémonul acela știe deja {thing}."
       ]
     },
     {
@@ -186,8 +186,8 @@
         "Until it does, I can't make it learn."
       ],
       "text": [
-        "",
-        ""
+        "Pokémonul acela ar putea învăța mișcarea asta, dar încă nu are deplină încredere în tine.",
+        "Până nu o are, nu-l pot face să învețe."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "{wearer} did not learn {thing}."
       ],
       "text": [
-        ""
+        "{wearer} nu a învățat {thing}."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "{forgotten} isn't a move that can be given up like that. {wearer} did not learn {thing}."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare care poate fi lăsată așa. {wearer} nu a învățat {thing}."
       ]
     }
   ]

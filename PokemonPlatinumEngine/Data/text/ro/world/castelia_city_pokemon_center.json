@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I came to Castelia for business forty years ago and never left. Every year the towers grow a little taller."
         ],
         "text": [
-          ""
+          "Am venit în Castelia pentru afaceri acum patruzeci de ani și nu am mai plecat. În fiecare an turnurile cresc puțin mai mult."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Burgh's Bug types look gentle, but they hit hard. Bring something that flies or burns, if you can!"
         ],
         "text": [
-          ""
+          "Pokémonii de tip Insectă ai lui Burgh par blânzi, dar lovesc tare. Adu ceva care zboară sau arde, dacă poți!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "The ferry from Prime Pier runs all day. Virbank City is only a short trip across the bay."
         ],
         "text": [
-          ""
+          "Feribotul de la Debarcaderul Prim circulă toată ziua. Virbank City e doar o scurtă călătorie peste golf."
         ]
       }
     }
