@@ -107,7 +107,7 @@ internal static partial class ModernUi
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
                     case PokedexPage.Cry: DexCry(detail, dex); break;
                     case PokedexPage.Forms: DexForms(detail, dex, entry); break;
-                    default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species)); break;
+                    default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species), dex.LookingAtEntry ? dex.EntriesOpened : -1); break;
                 }
             }
         }
@@ -168,6 +168,14 @@ internal static partial class ModernUi
 
     // ------------------------------------------------------------------ the pages of an entry
 
+    /// <summary>How long an opened entry's sprite is up in its one hop (plan 09 · L5): an icon's quick hop, 0.16 s.</summary>
+    internal const double EntryHopSeconds = 0.16;
+
+    // Which opening of an entry the INFO page last drew, and when it first did (FrameClock's seconds): the drawing's own
+    // note, so the screen reads no clock
+    private static int entryOpening = -1;
+    private static double entryOpenedAt;
+
     /// <summary>A species not yet seen: a question mark on the disc and dashes for its name.</summary>
     private static void DexUnseen(Rectangle detail, PokedexEntry entry)
     {
@@ -187,12 +195,28 @@ internal static partial class ModernUi
     /// (<see cref="DexEntries"/>; the <paramref name="which"/>th of its entries, the generated sentence where the file
     /// has none), with a dot for each entry at the rule's right end, the one shown lit.
     /// </summary>
-    private static void DexInfo(Rectangle detail, PokedexEntry entry, bool owned, int which = 0)
+    /// <param name="opening">The count of entries opened while the entry is open on its own, -1 while the list has the
+    /// cursor: an opened entry's sprite hops once and then breathes (plan 09 · L5), the list's hops as an icon does.</param>
+    private static void DexInfo(Rectangle detail, PokedexEntry entry, bool owned, int which = 0, int opening = -1)
     {
         var s = entry.Species;
         var disc = new Vector2(detail.X + 44 + 180, detail.Y + 120 + 180);
         BallDisc(disc, 180);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false), disc, 3, Hop(true) * 3);
+        var still = PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false);
+        if (opening < 0) PixelArt(still, disc, 3, Hop(true) * 3);
+        else
+        {
+            // The moment this opening was first drawn is when its hop began: up for 0.16 s, then the breath
+            if (opening != entryOpening)
+            {
+                entryOpening = opening;
+                entryOpenedAt = FrameClock.Now;
+            }
+            // The strip is asked for only once the hop has landed: entries walked through with a key held are opened
+            // faster than that, and ask for none
+            bool landed = FrameClock.Now - entryOpenedAt >= EntryHopSeconds;
+            Breathing(still, landed ? PixelArtGenerator.StripOf(s.Name) : null, disc, 3, landed ? 0 : 3 * 3);
+        }
 
         float x = detail.X + 44 + 360 + 44;
         UiFonts.DrawCentered(DexNumber(entry.Number), x, detail.Y + 160, 30, Muted, UiWeight.Black);

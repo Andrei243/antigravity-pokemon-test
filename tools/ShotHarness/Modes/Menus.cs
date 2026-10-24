@@ -645,5 +645,35 @@ partial class Harness
         engine.Settings.NextObjective = RulesDefault.On;
         story.SetVar(PokemonPlatinumEngine.Story.Objectives.Variable, storedBefore);
         game.State = GameState.Overworld;
+
+        // Sprites that move (plan 09 · L5), last so that nothing before them moves: the summary's sprite at two moments
+        // of its breath, and an entry of the Pokédex in its hop and then breathing at two moments
+        void Breath(string look) => Console.WriteLine(PokemonSprites.GetStrip(look) is { } s
+            ? $"  {look}: frame {s.FrameAt(FrameClock.Now) + 1} of {PokemonSprites.StripFrames}, a breath of {s.Period:F2} s, {PokemonSprites.StripCount} strips held"
+            : $"  !! {look}: no strip yet, the still shows");
+        game.State = GameState.PartyMenu;
+        partyScreen.Open();
+        partyScreen.ShowSummary = true;
+        Frames(30); Shot("20m_summary_breathing_a");
+        Breath(party.Members[0].LookName);
+        Frames(27); Shot("20n_summary_breathing_b");
+        Breath(party.Members[0].LookName);
+        partyScreen.ShowSummary = false;
+        partyScreen.Close();
+
+        game.State = GameState.PokedexMenu;
+        dexScreen.Open(pokedex, game.World.Portrait(PlayerIdentity.Character));
+        Pick("Turtwig");
+        Frames(2);
+        dexScreen.Confirm();
+        Frames(4); Shot("26x_pokedex_entry_hopping");
+        Frames(30); Shot("26y_pokedex_entry_breathing_a");
+        Breath("Turtwig");
+        Frames(27); Shot("26z_pokedex_entry_breathing_b");
+        Breath("Turtwig");
+        // The list beside an entry not opened keeps the still, and asks for no strip
+        dexScreen.Cancel();
+        Frames(10); Shot("26za_pokedex_list_still");
+        game.State = GameState.Overworld;
     }
 }

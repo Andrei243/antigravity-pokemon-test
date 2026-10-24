@@ -50,6 +50,15 @@ public static class PixelArtGenerator
         p.IsEgg ? Cached("egg_sprite", () => EggArt(PokemonSprites.Size).ToTexture()) : GetPokemonSprite(p.LookName, isBack);
 
     /// <summary>
+    /// The breathing strip of the one Pokémon a screen looks at (plan 09 · L5), or null while it isn't baked (the still
+    /// stands in) and for an Egg, which rocks as it always did. Lists never ask for one.
+    /// </summary>
+    internal static PokemonSprites.Strip? StripOf(Pokemon p) => p.IsEgg ? null : PokemonSprites.GetStrip(p.LookName);
+
+    /// <summary>A look's breathing strip by its name (a species the Pokédex or the starter choice shows), or null.</summary>
+    internal static PokemonSprites.Strip? StripOf(string look) => PokemonSprites.GetStrip(look);
+
+    /// <summary>
     /// An Egg in pixels (plan 06 · R15; style guide, "Eggs"), at the size of the menu sprites and icons: a cream shell
     /// with green spots and a shine, outlined like the baked Pokémon, standing on the canvas's floor.
     /// </summary>

@@ -379,7 +379,11 @@ internal static partial class ModernUi
 
             var disc = new Vector2(r.X + r.Width / 2f, r.Y + 44 + 196);
             BallDisc(disc, 196);
-            PixelArt(PixelArtGenerator.GetPokemonSprite(species.Name, isBack: false), disc, 3, Hop(selected, !selected) * 3);
+            // The chosen one breathes in place of hopping (plan 09 · L5); the others stand still
+            var still = PixelArtGenerator.GetPokemonSprite(species.Name, isBack: false);
+            var strip = selected ? PixelArtGenerator.StripOf(species.Name) : null;
+            if (selected) Breathing(still, strip, disc, 3, strip == null ? Hop(true) * 3 : 0);
+            else PixelArt(still, disc, 3);
 
             float nameW = UiFonts.Measure(species.DisplayName, 48, UiWeight.Black);
             UiFonts.DrawCentered(species.DisplayName, r.X + (r.Width - nameW) / 2f, r.Y + 480, 48, Ink, UiWeight.Black);

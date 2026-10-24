@@ -15,6 +15,26 @@ internal static class PokemonAnimation
     /// <summary>Radians per second of the idle loop: one breath every 1.7 s at tempo 1.</summary>
     internal const float Beat = MathF.Tau / 1.7f;
 
+    /// <summary>The seconds of one breath of a model's idle loop: 1.7 s at tempo 1 (plan 09 · L5's strip spans one).</summary>
+    internal static float BreathSeconds(PokeModel m) => MathF.Tau / Beat / MathF.Max(0.1f, m.Tempo);
+
+    /// <summary>
+    /// Frame <paramref name="frame"/> of <paramref name="frames"/> of the menus' strip (plan 09 · L5; style guide,
+    /// "Pokémon in menus"): the idle loop at <paramref name="start"/> plus that share of a breath, blended toward the
+    /// loop a breath earlier by the same share. The breath repeats, but the slower sways, the ears' flicks and the
+    /// flames don't: the blend folds them back, so frame <paramref name="frames"/> (the one after the last) is frame 0
+    /// exactly, and the strip loops with no jump. Frame 0 is the still's pose. <paramref name="behind"/> is scratch.
+    /// </summary>
+    internal static void StripPose(PokeModel m, int frame, int frames, float start, SkeletonPose into, SkeletonPose behind)
+    {
+        float period = BreathSeconds(m), share = Math.Clamp(frame / (float)frames, 0f, 1f);
+        float t = start + period * share;
+        Apply(m, new PokePose { Time = t }, into);
+        if (share <= 0f) return;
+        Apply(m, new PokePose { Time = t - period }, behind);
+        into.BlendToward(behind, share);
+    }
+
     /// <summary>
     /// Which eyes the pose shows: the first that holds, in the order the style guide keeps ("The pose's fields and
     /// the eyes' order"; plan 09 · L2). Plan 25 · Y5's and plan 10 · F6's and F10's cases go in the places it names.

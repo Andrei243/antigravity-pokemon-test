@@ -222,8 +222,18 @@ public class PokedexScreen
     /// <summary>How many times a species' entry has been opened.</summary>
     public int Openings(PokemonSpecies species) => openings.GetValueOrDefault(species.DexNumber);
 
+    /// <summary>
+    /// How many times any entry has been opened while the game runs (plan 09 · L5): the drawing notes the moment it
+    /// changes, from which the INFO page hops once and then breathes. No clock is read here.
+    /// </summary>
+    public int EntriesOpened { get; private set; }
+
+    /// <summary>Whether the entry is open on its own (not the list beside it): only then does its sprite breathe.</summary>
+    public bool LookingAtEntry => Focus == PokedexFocus.Entry;
+
     private void Opened()
     {
+        EntriesOpened++;
         StopCry();
         ResetForms();
         if (Selected is { } entry) openings[entry.Species.DexNumber] = openings.GetValueOrDefault(entry.Species.DexNumber) + 1;
