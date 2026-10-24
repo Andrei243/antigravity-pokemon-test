@@ -489,6 +489,10 @@
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
       "provisional": true
     },
+    "matt": {
+      "note": "first spoken at aqua_hideout_b2f.txt(28)",
+      "provisional": true
+    },
     "maxie": {
       "note": "first spoken at mt_chimney.txt(17)",
       "provisional": true
@@ -1026,6 +1030,7 @@
     "Marley": "marley",
     "Mars": "mars",
     "Mary": "mary",
+    "Matt": "matt",
     "Maxie": "maxie",
     "Maylene": "maylene",
     "Member": "member",

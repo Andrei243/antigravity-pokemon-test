@@ -267,6 +267,14 @@
         "off": "Nimic nu spune încotro merge povestea: îți găsești singur drumul, ca în original."
       }
     },
+    "season": {
+      "label": "Anotimp",
+      "value": { "Calendar": "Calendar" },
+      "help": {
+        "calendar": "Anotimpurile din Unova urmează calendarul, câte o lună fiecare: primăvara în ianuarie, mai și septembrie, apoi vara, toamna și iarna.",
+        "fixed": "Unova rămâne în acest anotimp. Nicio altă regiune nu are anotimpuri."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -367,6 +375,20 @@
       "saveAndQuit": "SALVEAZĂ ȘI IEȘI",
       "quit": "IEȘI"
     }
+  },
+
+  "seasons": {
+    "name": { "Spring": "Primăvară", "Summer": "Vară", "Autumn": "Toamnă", "Winter": "Iarnă" },
+    "arrived": {
+      "Spring": "A venit primăvara în {region}.",
+      "Summer": "A venit vara în {region}.",
+      "Autumn": "A venit toamna în {region}.",
+      "Winter": "A venit iarna în {region}."
+    }
+  },
+
+  "crossing": {
+    "rivalName": "NUMELE RIVALULUI TĂU"
   },
 
   "objectives": {
