@@ -700,6 +700,19 @@ public static class RegionDatabase
     }
 
     /// <summary>What the person who takes the player across says, for each outcome of <see cref="CheckTravel"/>.</summary>
+    /// <summary>
+    /// The sound the dark of a crossing opens with (plan 18 · W5): a plane's engine, or a ship's horn for whatever sails
+    /// (a ship, a ferry, and a way still undecided).
+    /// </summary>
+    public static string CrossingSound(RegionLink link) => link.VesselWord == "plane" ? "crossing_engine" : "crossing_horn";
+
+    /// <summary>The one line said over the dark of a crossing (plan 18 · W5), by the vessel, naming where it goes.</summary>
+    public static string VoyageLine(RegionLink link)
+    {
+        string word = link.VesselWord;
+        return Core.Text.Of($"crossing.voyage.{word}", ("to", Get(link.To)!.Name));
+    }
+
     public static List<string> AttendantLines(RegionLink link, TravelCheck check)
     {
         // The string table's attendant words (plan 17), the vessel's word among them

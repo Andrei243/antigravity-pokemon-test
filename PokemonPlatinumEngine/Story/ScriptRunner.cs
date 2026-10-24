@@ -886,6 +886,13 @@ public sealed partial class ScriptRunner
                 host.EnterHallOfFame();
                 break;
             case Op.Travel:
+                // "travel go": the vessel's sound and its line over the dark, then the crossing (plan 18 · W5); the
+                // script goes on in the region arrived in once the arrival's fade has opened
+                if (i.Name == "go")
+                {
+                    host.Open(ScriptScreen.Crossing, Subject);
+                    break;
+                }
                 host.Open(ScriptScreen.Travel, Subject);
                 afterBusy = () => Result = host.Answer;
                 break;
@@ -1907,6 +1914,9 @@ public sealed partial class ScriptRunner
         "FAINTED" => host.Party.Members.Count(p => !p.IsEgg && p.IsFainted),
         "LEAD_SPECIES" => AbleSpecies(0),
         "SECOND_SPECIES" => AbleSpecies(1),
+        // Whether the script plays in a region the game didn't begin in (plan 18 · W5): a region's opening names its
+        // rival with namerival for a Champion who crossed into it, whose introduction named another region's
+        "CROSSED_IN" => string.Equals(host.Region, host.BeganIn, StringComparison.OrdinalIgnoreCase) ? 0 : 1,
         _ => host.Story.Var(variable)
     };
 

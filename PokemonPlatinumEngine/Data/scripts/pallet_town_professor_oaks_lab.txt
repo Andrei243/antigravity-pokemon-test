@@ -21,6 +21,8 @@ script OnEnter
   walk player up 8
   face oaks_lab_rival up
   music area
+  # A Champion who crossed into Kanto (plan 18 · W5) was never asked this rival's name: Oak asks it now
+  if var CROSSED_IN == 1 call NameTheRival
   speaker "{rival}"
   say "Gramps! Finally! I've been standing here for ages!"
   speaker "Prof. Oak"
@@ -259,3 +261,12 @@ label Parcel
   setvar VAR_MAP_SCENE_ROUTE22 1
   endscene
   end
+
+
+# The rival's name for a Champion who crossed into Kanto (plan 18 · W5; called by OnEnter where CROSSED_IN is 1): a game
+# begun in Kanto named him in its introduction, and one begun elsewhere named only its own region's rival.
+script NameTheRival
+  speaker "Prof. Oak"
+  say "Ah, and that impatient one by the table is my grandson. Hm... now what was his name again?"
+  namerival
+  return

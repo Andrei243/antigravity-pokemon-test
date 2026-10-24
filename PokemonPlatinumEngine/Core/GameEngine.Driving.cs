@@ -130,6 +130,8 @@ public partial class GameEngine
         public BattleRenderer BattleRenderer => game.battleRenderer;
         public DialogueManager Dialogue { get => game.flow.Dialogue; set => game.flow.Dialogue = value; }
         public LocationSign LocationSign => game.flow.LocationSign;
+        /// <summary>A script's own black screen (the crossing's dark, plan 18 · W5): how far it has closed.</summary>
+        public UI.Kit.ScreenFade ScriptFade => game.flow.ScriptFade;
         public TitleScreen Title { get => game.flow.TitleScreen; set => game.flow.TitleScreen = value; }
         public IntroScreen Intro => game.flow.IntroScreen;
         public StartMenu StartMenu => game.flow.StartMenu;

@@ -126,6 +126,8 @@ label Theft
   ask "Did you meet the thief?"
   if no goto NotSeen
   say "You battled him? Then you'd know him again. Did he give you a name?"
+  # A Champion who crossed into Johto (plan 18 · W5) was never asked the boy's name: the player gives it now
+  if var CROSSED_IN == 1 namerival
   text "{player} told the officer the name the boy had boasted of: {rival}."
   say "{rival}... I'll make a note of it. Thank you, that's a real help."
   goto Leaves

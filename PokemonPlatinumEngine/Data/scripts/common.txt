@@ -788,11 +788,30 @@ script Briefcase
   end
 
 
-# Whoever takes travellers on to the next region. Where no way leads on from here, they only talk.
+# Whoever takes travellers on to the next region. Where no way leads on from here, they only talk; once a Champion
+# of this region may sail, the crossing (plan 18 · W5).
 script Attendant
   travel
   if result == 0 sayown
+  if result == 2 call Crossing
   end
+
+
+# The journey to the next region on screen (plan 18 · W5): the attendant's question, the field to black, the vessel's
+# own sound and one line over the dark (travel go), then the arrival with the new region's name sign and its music,
+# through the arrival's own fade, and the dark lifted. The question and the dark have the shape of Sailor Eldritch's
+# Ferry (canalave_city.txt), a person's script that asks and then warps.
+script Crossing
+  ask "Shall we set off, then?"
+  if no goto Stay
+  say "Right this way. Mind your step as you come aboard!"
+  fade out 0.8
+  travel go
+  fade in 0.8
+  return
+label Stay
+  say "Take all the time you need. We'll be here when you're ready."
+  return
 
 
 # A trainer: the challenge and the battle. Spoken to again once beaten, they say what they have left to say.

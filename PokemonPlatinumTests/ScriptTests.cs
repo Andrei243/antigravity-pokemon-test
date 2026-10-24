@@ -549,6 +549,8 @@ public class ScriptTests
           scene "All of it"
           endscene
           namerival
+          travel go
+          if var CROSSED_IN == 1 end
         script Other
           end
         """;

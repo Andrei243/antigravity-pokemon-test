@@ -2074,6 +2074,8 @@ public partial class GameEngine
             flow.Map = MapDatabase.Get(spot.Map);
             flow.Player.SetPosition(spot.X, spot.Y, spot.Facing);
             flow.TrainersLookOnArrival = true;
+            // Nothing of the field left behind comes along (a door, a print), as on a script's warp
+            world.Life.Clear();
             Crossing.Arrive(region, flow.Pokedex);
             ArriveOnMap();
             AnnounceLocation();

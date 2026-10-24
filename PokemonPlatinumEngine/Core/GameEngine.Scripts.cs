@@ -867,6 +867,7 @@ public partial class GameEngine
         public StoryState Story => game.flow.Story;
         public string Region => game.Here.Id;
         public IReadOnlyCollection<FieldMove> Granted => game.GrantedMoves;
+        public string BeganIn => game.flow.BeganIn;
         public bool ShowsObjectives => game.NextObjectiveOn;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
@@ -1175,15 +1176,31 @@ public partial class GameEngine
                     game.OpenRivalNaming();
                     break;
                 case ScriptScreen.Travel:
-                    // The way to the next region, where this map has one: the attendant says how things stand,
-                    // and the ship leaves when the story of this region is done
+                {
+                    // The way to the next region, where this map has one: the attendant says how things stand, and
+                    // the script hears 2 when the story of this region is done and the vessel may leave (plan 18 · W5:
+                    // common.Crossing asks, and crosses with "travel go"), 1 when it may not
                     if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) break;
                     var check = RegionDatabase.CheckTravel(link, game.flow.Story);
-                    game.flow.ScriptAnswer = 1;
-                    game.flow.Dialogue.ShowDialogue(subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name), RegionDatabase.AttendantLines(link, check),
-                        check == TravelCheck.Ready ? () => game.TravelTo(RegionDatabase.Get(link.To)!) : null);
+                    game.flow.ScriptAnswer = check == TravelCheck.Ready ? 2 : 1;
+                    game.flow.Dialogue.ShowDialogue(subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name), RegionDatabase.AttendantLines(link, check));
                     game.flow.State = GameState.Dialogue;
                     break;
+                }
+                case ScriptScreen.Crossing:
+                {
+                    // The journey on screen (plan 18 · W5), over the script's dark: the field's music stops, the vessel
+                    // is heard and its one line is said, and as the line is put away the crossing is made; the script
+                    // waits through the arrival's own fade. Where no way leads on now nothing happens
+                    if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link
+                        || RegionDatabase.CheckTravel(link, game.flow.Story) != TravelCheck.Ready) break;
+                    var to = RegionDatabase.Get(link.To)!;
+                    AudioManager.StopMusic();
+                    AudioManager.PlaySound(RegionDatabase.CrossingSound(link));
+                    game.flow.Dialogue.ShowDialogue("", new[] { RegionDatabase.VoyageLine(link) }, () => game.TravelTo(to));
+                    game.flow.State = GameState.Dialogue;
+                    break;
+                }
             }
         }
 

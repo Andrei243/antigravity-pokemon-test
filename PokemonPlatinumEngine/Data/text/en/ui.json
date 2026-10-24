@@ -3492,7 +3492,13 @@
     "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!"
   },
   "crossing": {
-    "rivalName": "YOUR RIVAL'S NAME"
+    "rivalName": "YOUR RIVAL'S NAME",
+    "voyage": {
+      "ship": "The ship sails on through the night. By morning, the shores of {to} are in sight.",
+      "ferry": "The ferry rocks gently over the waves. Before long, {to}'s harbour comes into view.",
+      "plane": "The plane climbs above the clouds and flies on. At last, {to} spreads out below.",
+      "way": "The journey goes on for a long while. At last, {to} lies ahead."
+    }
   },
   "placeWords": {
     "the": "the {place}",

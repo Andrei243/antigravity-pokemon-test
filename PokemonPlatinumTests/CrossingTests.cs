@@ -188,6 +188,84 @@ public class CrossingTests
     }
 
     [Fact]
+    public void TheCrossingAsksFirstAndAChampionMayStay()
+    {
+        // Plan 18 · W5: once the vessel may leave, common.Crossing asks; a no keeps the player on the quay
+        var (host, runner, captain) = AtVermilionsQuay();
+        host.Story.CompleteRegion(RegionDatabase.Kanto);
+        host.Answers.Enqueue(1);
+        runner.Start(ScriptLibrary.Default.Find(FieldScripts.Attendant)!, captain);
+        runner.RunToEnd();
+        Assert.Empty(host.Crossings);
+        Assert.Equal("Kanto", host.Map!.Name);
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("sound crossing_"));
+        Assert.Contains(host.Transcript, l => l.Text.Contains("when you're ready"));
+    }
+
+    [Fact]
+    public void TheCrossingIsHeardAndToldOverTheDark()
+    {
+        // Plan 18 · W5: a yes, the field to black, the vessel's horn and its one line, the crossing, the dark lifted
+        var (host, runner, captain) = AtVermilionsQuay();
+        host.Story.CompleteRegion(RegionDatabase.Kanto);
+        runner.Start(ScriptLibrary.Default.Find(FieldScripts.Attendant)!, captain);
+        runner.RunToEnd();
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Kanto)!;
+        string voyage = RegionDatabase.VoyageLine(link);
+        Assert.Contains("Johto", voyage);
+        int said = host.Transcript.FindIndex(l => l.Text == voyage);
+        Assert.True(said > 0, "the voyage's line was never said");
+        Assert.Null(host.Transcript[said].Speaker);
+        // The question came before it, and the horn with it
+        Assert.Contains(host.Transcript.Take(said), l => l.Text.Contains("aboard"));
+        int horn = host.Log.IndexOf("sound crossing_horn");
+        int travelled = host.Log.IndexOf($"travel {RegionDatabase.Johto}");
+        Assert.InRange(horn, 0, travelled);
+        Assert.Equal(new[] { RegionDatabase.Johto }, host.Crossings);
+        // The game crossed into Johto began elsewhere: Johto's opening may ask its rival's name
+        Assert.Equal(RegionDatabase.Kanto, host.BeganIn);
+    }
+
+    [Fact]
+    public void ARegionCrossedIntoKnowsIt()
+    {
+        // Plan 18 · W5: CROSSED_IN is 1 where the script plays in a region the game didn't begin in
+        var library = ScriptLibrary.FromSources(("common", "script Ask\n  if var CROSSED_IN == 1 say \"crossed\"\n  end"));
+        var crossed = new HeadlessScriptHost { Region = RegionDatabase.Kanto, BeganInRegion = RegionDatabase.Sinnoh };
+        var runner = new ScriptRunner(library, crossed);
+        runner.Start(library.Find("common.Ask")!);
+        runner.RunToEnd();
+        Assert.Contains(crossed.Transcript, l => l.Text == "crossed");
+
+        var home = new HeadlessScriptHost { Region = RegionDatabase.Kanto };
+        var again = new ScriptRunner(library, home);
+        again.Start(library.Find("common.Ask")!);
+        again.RunToEnd();
+        Assert.Empty(home.Transcript);
+    }
+
+    [Fact]
+    public void OaksLabAsksTheRivalsNameOfAChampionWhoCrossedIn()
+    {
+        // Plan 18 · W5: Kanto's opening names Kanto's rival with namerival for a game begun elsewhere, and only then
+        var lab = MapDatabase.Get("PalletTown_ProfessorOaksLab");
+        foreach (bool crossed in new[] { true, false })
+        {
+            var host = new HeadlessScriptHost
+            {
+                Map = lab, Region = RegionDatabase.Kanto, RivalNameGiven = "Gary",
+                BeganInRegion = crossed ? RegionDatabase.Sinnoh : null
+            };
+            host.Story.SetVar("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 1);
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find("OnEnter", "pallet_town_professor_oaks_lab")!);
+            runner.RunToEnd();
+            Assert.Equal(crossed, host.Log.Any(l => l.StartsWith("open NameRival")));
+            if (crossed) Assert.Equal("Gary", host.RivalNames[RegionDatabase.Kanto]);
+        }
+    }
+
+    [Fact]
     public void TheHeadlessHostNamesARegionsRival()
     {
         var host = new HeadlessScriptHost { Region = RegionDatabase.Johto, RivalNameGiven = "Kamon" };
