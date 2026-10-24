@@ -5,7 +5,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Things are a bit of a mess in here right now, I know, but..."
       ],
       "text": [
-        ""
+        "Știu că e dezordine pe aici acum, dar..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The next rocket launch is coming up soon! Every one so far has flown safely."
       ],
       "text": [
-        ""
+        "Următoarea lansare de rachetă e aproape! Toate de până acum au zburat în siguranță."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "A launch has to be perfect. If one part in a hundred fails, the whole rocket fails."
       ],
       "text": [
-        ""
+        "O lansare trebuie să fie perfectă. Dacă una din o sută de piese cedează, cedează toată racheta."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "And still we keep at it. Why? Because the dream of space never ends."
       ],
       "text": [
-        ""
+        "Și totuși perseverăm. De ce? Pentru că visul spațiului nu se sfârșește niciodată."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Those Team Magma thugs want our Space Center. But nothing that small will stop our launch!"
       ],
       "text": [
-        ""
+        "Bandiții de la Echipa Magma vor Centrul nostru Spațial. Dar nimic atât de mărunt nu ne va opri lansarea!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinar"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "I found this on a walk along the beach. I've no use for it, so you have it."
       ],
       "text": [
-        ""
+        "Am găsit asta la o plimbare pe plajă. N-am ce face cu ea, așa că ia-o tu."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Hoenn has been famous for its meteor showers for as long as anyone can remember."
       ],
       "text": [
-        ""
+        "Hoenn e faimos pentru ploile de meteoriți de când își amintește cineva."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Team Magma can't be allowed to take the fuel! Oh, and here, take this stone I found on the beach."
       ],
       "text": [
-        ""
+        "Nu putem lăsa Echipa Magma să ia combustibilul! Ah, și ia piatra asta pe care am găsit-o pe plajă."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "With Team Magma about, I don't suppose a walk on the beach is safe any more."
       ],
       "text": [
-        ""
+        "Cu Echipa Magma prin preajmă, nu cred că mai e sigur să te plimbi pe plajă."
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Some people say Pokémon first came here from space. Could it be true?"
       ],
       "text": [
-        ""
+        "Unii spun că Pokémonii au venit aici prima oară din spațiu. Să fie adevărat?"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Team Aqua ought to deal with Team Magma! But then Team Aqua would get full of themselves, wouldn't they?"
       ],
       "text": [
-        ""
+        "Echipa Aqua ar trebui să se ocupe de Echipa Magma! Dar atunci Echipa Aqua s-ar umfla în pene, nu-i așa?"
       ]
     }
   ],
@@ -133,7 +133,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrânul"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "A great lump of metal bursts through the sky and flies off into space... It boggles the mind!"
       ],
       "text": [
-        ""
+        "O uriașă bucată de metal țâșnește prin cer și zboară în spațiu... Îți taie răsuflarea!"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "A great lump of metal flying off into space... and Team Magma wants to spoil that dream of mine!"
       ],
       "text": [
-        ""
+        "O uriașă bucată de metal zboară în spațiu... iar Echipa Magma vrea să-mi strice visul!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Well, I won't stand for it!"
       ],
       "text": [
-        ""
+        "Ei bine, eu nu las asta să se întâmple!"
       ]
     }
   ],
@@ -167,7 +167,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -175,7 +175,7 @@
         "{player}, have you read that letter? Team Magma means to take the rocket fuel stored on this island."
       ],
       "text": [
-        ""
+        "{player}, ai citit scrisoarea aceea? Echipa Magma vrea să ia combustibilul de rachetă depozitat pe insulă."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "I can't think what they want it for, but they mustn't have it. I'll keep watch here a while longer."
       ],
       "text": [
-        ""
+        "Nu-mi dau seama ce vor cu el, dar nu trebuie să-l primească. Mai stau de pază aici o vreme."
       ]
     },
     {
@@ -191,7 +191,7 @@
         "Why don't you have a look around the town in the meantime?"
       ],
       "text": [
-        ""
+        "Între timp, de ce nu arunci o privire prin oraș?"
       ]
     }
   ],
@@ -201,7 +201,7 @@
         "It's a letter... A notice that something is to be stolen?"
       ],
       "text": [
-        ""
+        "E o scrisoare... Un anunț că ceva urmează să fie furat?"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "'To the staff of the Space Center. We hope you are well. We are very well.'"
       ],
       "text": [
-        ""
+        "'Către personalul Centrului Spațial. Sperăm că sunteți bine. Noi suntem foarte bine.'"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "'We will soon come to take your rocket fuel. Please do not try to stop us. We will take it all the same.'"
       ],
       "text": [
-        ""
+        "'În curând vom veni să luăm combustibilul vostru de rachetă. Vă rugăm să nu încercați să ne opriți. Îl vom lua oricum.'"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "'More land for everyone! Team Magma'"
       ],
       "text": [
-        ""
+        "'Mai mult pământ pentru toți! Echipa Magma'"
       ]
     }
   ]

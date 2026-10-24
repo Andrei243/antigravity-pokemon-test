@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Everything that lives needs the sea, even what makes its home on land. And the sea always reaches the shore."
         ],
         "text": [
-          ""
+          "Tot ce trăiește are nevoie de mare, chiar și ce-și face casa pe uscat. Iar marea ajunge mereu la țărm."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "You can see wild Wailmer from the beach here! It's called... um... Wai-Wai-Wailmer watching!"
         ],
         "text": [
-          ""
+          "De pe plaja de aici poți vedea Wailmer sălbatici! Se cheamă... ăă... uitat-la-Wai-Wai-Wailmer!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Wouldn't it be lovely if the whole world were covered in flowers, just like this island?"
         ],
         "text": [
-          ""
+          "Nu ar fi minunat ca întreaga lume să fie acoperită de flori, ca insula asta?"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -98,7 +98,7 @@
           "The people of the Space Center put that white rock there as a wish for their rockets to fly safely."
         ],
         "text": [
-          ""
+          "Oamenii de la Centrul Spațial au pus piatra aceea albă acolo ca dorință ca rachetele lor să zboare în siguranță."
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -126,7 +126,7 @@
           "Team Magma Grunt: The boss is about to give the word!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Șeful e pe punctul de a da ordinul!"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -144,7 +144,7 @@
           "Team Magma Grunt: Rocket fuel, here we come!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Combustibil de rachetă, venim după tine!"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -162,7 +162,7 @@
           "Team Magma Grunt: We sent them a letter. That makes it polite!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Le-am trimis o scrisoare. Asta e politicos!"
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -180,7 +180,7 @@
           "Team Magma Grunt: Out of the way, kid!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Din drum, puștiule!"
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Maxie"
         ],
         "text": [
-          ""
+          "Maxie"
         ]
       },
       "dialog": {
@@ -198,7 +198,7 @@
           "Maxie: The fuel stored in that building is ours. Stand aside."
         ],
         "text": [
-          ""
+          "Maxie: Combustibilul depozitat în clădirea aceea e al nostru. Dă-te la o parte."
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       }
     },
@@ -228,7 +228,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -236,7 +236,7 @@
           "The waves feel good on my feet. They say Sootopolis's Gym has a new Leader, one who taught Wallace himself."
         ],
         "text": [
-          ""
+          "Valurile îmi fac bine la picioare. Se zice că Arena din Sootopolis are un nou Lider, unul care l-a învățat chiar pe Wallace."
         ]
       }
     }
@@ -247,7 +247,7 @@
         "Mossdeep City\nOur motto: Cherish Pokémon!"
       ],
       "text": [
-        ""
+        "Orașul Mossdeep\nMotto-ul nostru: Prețuiește Pokémonii!"
       ]
     },
     "MossdeepCity_EventScript_GymSign": {
@@ -255,7 +255,7 @@
         "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza\nTwo minds that fight as one!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Mossdeep\nLideri: Tate și Liza\nDouă minți care luptă ca una!"
       ]
     },
     "MossdeepCity_EventScript_SpaceCenterSign": {
@@ -263,7 +263,7 @@
         "Mossdeep Space Center\nAs close to the stars as you can get on foot."
       ],
       "text": [
-        ""
+        "Centrul Spațial Mossdeep\nCât de aproape de stele poți ajunge pe jos."
       ]
     },
     "MossdeepCity_EventScript_WhiteRock": {
@@ -271,7 +271,7 @@
         "A smooth white rock."
       ],
       "text": [
-        ""
+        "O piatră albă și netedă."
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -279,7 +279,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -287,7 +287,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

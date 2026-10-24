@@ -545,3 +545,13 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **The player without gender**: lines to the player use no gendered adjective ("Ce încăpățânare", "cât m-ai ținut ocupat", "Ai mai multă forță decât pari").
   - **Seen**: not run (no tests, no harness this wave).
   - **Left**: whatever wave 43's other lanes write in English (E5, H8, U4, W5, Q18, L1), the next slice.
+
+- [x] N6s Hoenn's H8 part a, Johto's Bug-Catching Contest and the crossing in Romanian (done 2026-10-24, wave 44)
+
+- **N6s, done 2026-10-24 (wave 44)**: everything written in English in wave 43 and not yet translated, at the commit the wave started from (843e7026).
+  - **The lines**: 547 entries in 326 distinct lines by hand (66 more distinct lines by the translation memory of the earlier slices): plan 21 · H8 part a's Mossdeep City with its Gym (Tate and Liza, the Mind Badge, TM04, the psychics and hex maniacs), Pokémon Center, Mart, houses, Space Center (the letter, Team Magma's grunts, Maxie and Tabitha beside Steven, Dynamic Punch), Steven's house and HM09, Routes 125 to 127 with their trainers and Match Call, the Route 124 treasure hunter's shard trades; plan 15 · E5's Bug-Catching Contest (the gate officers and the contest's lines in `common`, with its prizes and places); plan 18 · W5's crossing question. `extract ro --update` had nothing to add; the stale `world/underwater_route_125.json` (no overlay any more) was removed. The report: nothing untranslated, stale, unknown or wrong. The content check measured 30,346 lines: nothing found.
+  - **`ui.json`**: no key was missing; five places added to `places`: Orașul Mossdeep, Centrul Spațial Mossdeep, Ruta 125, Ruta 126, Ruta 127.
+  - **Names in the lines**: the contest "Concursul de Prins Insecte", Sport Ball "Ball Sport", the Mind Badge "Insigna Minte", Dynamic Punch "Pumn Dinamic", Dive "Scufundare", the shards and stones by `names.items.json`, Team Magma "Echipa Magma" and its grunt "Magma Grunt:", the Space Center "Centrul Spațial", trainer prefixes Medium (Psychic), Maniac ocult, Gentleman, Înotător/Înotătoare, Triatlonist/Triatlonistă, Pescar, Crescător de păsări, Centură Neagră, Expert, Mare și mic, Marinar, Antrenor/Antrenoare As.
+  - **The player without gender**: no line gives the player a gendered adjective ("Ești grozav", "Ai potențial de campion").
+  - **Seen**: not run (no tests, no harness this wave).
+  - **Left**: whatever wave 44's other lanes write in English (E6, H8 part b, U5, W9, Q18's rest, L5), the next slice.

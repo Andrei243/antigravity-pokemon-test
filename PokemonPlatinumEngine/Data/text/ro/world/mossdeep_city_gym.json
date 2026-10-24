@@ -6,7 +6,7 @@
           "Tate"
         ],
         "text": [
-          ""
+          "Tate"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Liza"
         ],
         "text": [
-          ""
+          "Liza"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Preston"
         ],
         "text": [
-          ""
+          "Preston"
         ]
       },
       "before": {
@@ -44,7 +44,7 @@
           "Psychic Preston: A battle is won by the stronger will. A wavering mind never wins!"
         ],
         "text": [
-          ""
+          "Medium Preston: O luptă se câștigă prin voința mai puternică. O minte șovăielnică nu câștigă niciodată!"
         ]
       },
       "after": {
@@ -52,7 +52,7 @@
           "Psychic Preston: My will wavered. Back to training it."
         ],
         "text": [
-          ""
+          "Medium Preston: Voința mi-a șovăit. Înapoi la antrenat-o."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Blake"
         ],
         "text": [
-          ""
+          "Blake"
         ]
       },
       "before": {
@@ -70,7 +70,7 @@
           "Psychic Blake: Watch me lift a Poké Ball with my mind alone! Hnnngh... Hm. It's a bad day."
         ],
         "text": [
-          ""
+          "Medium Blake: Privește-mă cum ridic un Poké Ball doar cu mintea! Hnnngh... Hm. E o zi proastă."
         ]
       },
       "after": {
@@ -78,7 +78,7 @@
           "Psychic Blake: My battling's having a bad day too."
         ],
         "text": [
-          ""
+          "Medium Blake: Și luptele mele au o zi proastă."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Maura"
         ],
         "text": [
-          ""
+          "Maura"
         ]
       },
       "before": {
@@ -96,7 +96,7 @@
           "Psychic Maura: The arrows under your feet will turn you round. And so will I!"
         ],
         "text": [
-          ""
+          "Medium Maura: Săgețile de sub picioare te vor învârti. La fel și eu!"
         ]
       },
       "after": {
@@ -104,7 +104,7 @@
           "Psychic Maura: You found your way after all."
         ],
         "text": [
-          ""
+          "Medium Maura: Totuși ți-ai găsit drumul."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Samantha"
         ],
         "text": [
-          ""
+          "Samantha"
         ]
       },
       "before": {
@@ -122,7 +122,7 @@
           "Psychic Samantha: I already know how this battle ends. Shall I show you?"
         ],
         "text": [
-          ""
+          "Medium Samantha: Știu deja cum se termină lupta asta. Să ți-o arăt?"
         ]
       },
       "after": {
@@ -130,7 +130,7 @@
           "Psychic Samantha: Funny. It ended differently in my head."
         ],
         "text": [
-          ""
+          "Medium Samantha: Ciudat. În mintea mea s-a terminat altfel."
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Virgil"
         ],
         "text": [
-          ""
+          "Virgil"
         ]
       },
       "before": {
@@ -148,7 +148,7 @@
           "Psychic Virgil: Show me what talent you have, challenger!"
         ],
         "text": [
-          ""
+          "Medium Virgil: Arată-mi ce talent ai, provocatorule!"
         ]
       },
       "after": {
@@ -156,7 +156,7 @@
           "Psychic Virgil: Talent to spare. Remarkable."
         ],
         "text": [
-          ""
+          "Medium Virgil: Talent din belșug. Remarcabil."
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Hannah"
         ],
         "text": [
-          ""
+          "Hannah"
         ]
       },
       "before": {
@@ -174,7 +174,7 @@
           "Psychic Hannah: Don't feel bad when you lose. It isn't that you're weak. I'm just strong!"
         ],
         "text": [
-          ""
+          "Medium Hannah: Nu te simți rău când pierzi. Nu e că ești slab. Eu sunt pur și simplu puternică!"
         ]
       },
       "after": {
@@ -182,7 +182,7 @@
           "Psychic Hannah: It's me who feels bad now."
         ],
         "text": [
-          ""
+          "Medium Hannah: Acum eu mă simt rău."
         ]
       }
     },
@@ -192,7 +192,7 @@
           "Nate"
         ],
         "text": [
-          ""
+          "Nate"
         ]
       },
       "before": {
@@ -200,7 +200,7 @@
           "Gentleman Nate: Ho ho. The twins send their students to meet their guests. I am one."
         ],
         "text": [
-          ""
+          "Gentleman Nate: Ho ho. Gemenii își trimit elevii să-și întâmpine oaspeții. Eu sunt unul."
         ]
       },
       "after": {
@@ -208,7 +208,7 @@
           "Gentleman Nate: Ho ho. You may go on."
         ],
         "text": [
-          ""
+          "Gentleman Nate: Ho ho. Poți merge mai departe."
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Sylvia"
         ],
         "text": [
-          ""
+          "Sylvia"
         ]
       },
       "before": {
@@ -226,7 +226,7 @@
           "Hex Maniac Sylvia: The statues watch you go round and round... and so do I..."
         ],
         "text": [
-          ""
+          "Maniac ocult Sylvia: Statuile te privesc cum te învârți și te tot învârți... și eu la fel..."
         ]
       },
       "after": {
@@ -234,7 +234,7 @@
           "Hex Maniac Sylvia: The statues saw that. How embarrassing."
         ],
         "text": [
-          ""
+          "Maniac ocult Sylvia: Statuile au văzut asta. Ce rușine."
         ]
       }
     },
@@ -244,7 +244,7 @@
           "Clifford"
         ],
         "text": [
-          ""
+          "Clifford"
         ]
       },
       "before": {
@@ -252,7 +252,7 @@
           "Gentleman Clifford: I have studied the mind for forty years. Let us see what yours can do."
         ],
         "text": [
-          ""
+          "Gentleman Clifford: Studiez mintea de patruzeci de ani. Să vedem ce poate a ta."
         ]
       },
       "after": {
@@ -260,7 +260,7 @@
           "Gentleman Clifford: Forty years, and still a student."
         ],
         "text": [
-          ""
+          "Gentleman Clifford: Patruzeci de ani și tot elev."
         ]
       }
     },
@@ -270,7 +270,7 @@
           "Macey"
         ],
         "text": [
-          ""
+          "Macey"
         ]
       },
       "before": {
@@ -278,7 +278,7 @@
           "Psychic Macey: Tate and Liza never lose in practice. Can you beat their pupil first?"
         ],
         "text": [
-          ""
+          "Medium Macey: Tate și Liza nu pierd niciodată la antrenament. Poți s-o învingi mai întâi pe eleva lor?"
         ]
       },
       "after": {
@@ -286,7 +286,7 @@
           "Psychic Macey: I'll have to practise harder."
         ],
         "text": [
-          ""
+          "Medium Macey: Va trebui să exersez mai mult."
         ]
       }
     },
@@ -296,7 +296,7 @@
           "Kathleen"
         ],
         "text": [
-          ""
+          "Kathleen"
         ]
       },
       "before": {
@@ -304,7 +304,7 @@
           "Hex Maniac Kathleen: I saw you coming in my dreams last night. You were very small..."
         ],
         "text": [
-          ""
+          "Maniac ocult Kathleen: Te-am văzut venind în visul de azi-noapte. Erai foarte mic..."
         ]
       },
       "after": {
@@ -312,7 +312,7 @@
           "Hex Maniac Kathleen: Dreams aren't always right, it seems."
         ],
         "text": [
-          ""
+          "Maniac ocult Kathleen: Visele nu au mereu dreptate, se pare."
         ]
       }
     },
@@ -322,7 +322,7 @@
           "Nicholas"
         ],
         "text": [
-          ""
+          "Nicholas"
         ]
       },
       "before": {
@@ -330,7 +330,7 @@
           "Psychic Nicholas: The twins are close now. Close enough to feel their minds. Can you?"
         ],
         "text": [
-          ""
+          "Medium Nicholas: Gemenii sunt aproape acum. Destul de aproape cât să le simți mințile. Poți?"
         ]
       },
       "after": {
@@ -338,7 +338,7 @@
           "Psychic Nicholas: Go on. They're expecting you."
         ],
         "text": [
-          ""
+          "Medium Nicholas: Mergi. Te așteaptă."
         ]
       }
     },
@@ -348,7 +348,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -356,7 +356,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -366,7 +366,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -374,7 +374,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -384,7 +384,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -392,7 +392,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -402,7 +402,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -410,7 +410,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -420,7 +420,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -428,7 +428,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -438,7 +438,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -446,7 +446,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -456,7 +456,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -464,7 +464,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -474,7 +474,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -482,7 +482,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -492,7 +492,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -500,7 +500,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -510,7 +510,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -518,7 +518,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -528,7 +528,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -536,7 +536,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -546,7 +546,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -554,7 +554,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -564,7 +564,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -572,7 +572,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -582,7 +582,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -590,7 +590,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -600,7 +600,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -608,7 +608,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -618,7 +618,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -626,7 +626,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -636,7 +636,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -644,7 +644,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -654,7 +654,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -662,7 +662,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -672,7 +672,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -680,7 +680,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -690,7 +690,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -698,7 +698,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     },
@@ -708,7 +708,7 @@
           "Statue"
         ],
         "text": [
-          ""
+          "Statuie"
         ]
       },
       "dialog": {
@@ -716,7 +716,7 @@
           "A stone statue of someone lost in thought."
         ],
         "text": [
-          ""
+          "O statuie de piatră înfățișând pe cineva pierdut pe gânduri."
         ]
       }
     }
@@ -727,7 +727,7 @@
         "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Mossdeep\nLideri: Tate și Liza"
       ]
     },
     "MossdeepCity_Gym_EventScript_RightGymStatue": {
@@ -735,7 +735,7 @@
         "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Mossdeep\nLideri: Tate și Liza"
       ]
     }
   }
