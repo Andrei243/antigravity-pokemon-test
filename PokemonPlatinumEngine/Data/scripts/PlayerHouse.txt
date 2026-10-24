@@ -127,6 +127,8 @@ label Rest
   sayown
   heal
   fanfare heal
+  # Plan 12 · Q14: she can say what to do next, if asked
+  call NextHint
   # Plan 02 · S10: once Lake Valor has blown she asks after the tremor, until the Distortion World is behind the
   # player (the original's TwinleafTownPlayerHouse1F_IsEverythingAllRight: VAR_EXITED_DISTORTION_WORLD_STATE 2, which
   # Sendoff Spring sets; plan 02 · S13)

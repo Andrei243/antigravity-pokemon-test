@@ -36,6 +36,7 @@
     },
     "cowgirl_1": {
       "name": "Cowgirl",
+      "script": "Rumour",
       "dialog": [
         "Welcome to Solaceon Town! Nothing here is in a hurry, and we like it that way.",
         "Have a wander round. The old ruins at the east end of town are well worth a look."
