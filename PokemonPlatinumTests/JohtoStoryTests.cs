@@ -1426,6 +1426,9 @@ public class JohtoStoryTests
         game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Johto)!.Starters[starter]);
         game.Story.GiveBadge("Johto", "Rising");
         game.Story.Set("FLAG_UNK_0EA");
+        // (Mom has had her word on the first morning long before, as in any game this far: home after the Hall of Fame
+        // goes to Elm's call, not the first morning's scene)
+        game.Story.SetVar("VAR_SCENE_PLAYERS_HOUSE_1F", 1);
 
         // The lab: Elm's Master Ball, once
         var lab = Johto.Value.Area("new_bark_elms_lab_1f")!.Warps[0];

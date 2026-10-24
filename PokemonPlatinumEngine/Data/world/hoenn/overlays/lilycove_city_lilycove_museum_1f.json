@@ -6,7 +6,7 @@
   "bgmTrack": "hoenn/lilycove",
   "people": {
     "beauty": { "name": "Greeter", "dialog": ["Welcome to the Lilycove Museum. Please, take your time and enjoy the works on display."] },
-    "museum_1f_curator": { "name": "Curator", "dialog": ["Ah, a visitor! Our second floor is waiting for new works. Paintings of Pokémon from the Contest Hall, perhaps..."] },
+    "museum_1f_curator": { "name": "Curator", "script": "Curator" },
     "school_kid_m": { "name": "School Kid", "dialog": ["We came here on a school trip. I'm supposed to write about my favourite painting!"] },
     "artist": { "name": "Artist", "dialog": ["Every time I look at these paintings, I want to go home and paint something of my own."] },
     "ninja_boy": { "name": "Boy", "dialog": ["That painting looks like a Pokémon battle. Or a storm. I can't tell which!"] },

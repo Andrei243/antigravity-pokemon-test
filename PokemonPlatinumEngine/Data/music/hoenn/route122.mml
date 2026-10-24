@@ -10,15 +10,23 @@ nighttempo 0.94
 track lead flute night=clarinet vol=0.68 pan=0.05 rev=0.36
   L o5 e4 a8 b8 o6 c4 o5 b8 a8 | o5 a4 f8 a8 o6 c4 o5 a4 | o5 g4 e8 g8 o6 c4 e4 | o6 d2. r4 |
   o6 c4 o5 b8 a8 e4 a4 | o5 f4 a8 o6 c8 f4 e8 d8 | o6 d4 o5 b8 g8 d4 g4 | o5 a2. r4 |
+  o5 a4 o6 c8 d8 c4 o5 a4 | o5 g4 e8 g8 o6 c4 e4 | o6 f4 e8 d8 o5 a4 f4 | o5 g+4 b8 o6 d8 o5 b2 |
+  o6 c4 o5 a8 f8 a4 o6 c4 | o6 e4 d8 c8 o5 g4 o6 e4 | o6 d4 f4 e4 o5 b4 | o5 a2. r4 |
 
 track swell harp vol=0.34 pan=-0.3 rev=0.4
   L o4 a8 o5 c8 e8 c8 o4 a8 o5 c8 e8 c8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 o5 c8 o4 a8 | o4 g8 o5 c8 e8 c8 o4 g8 o5 c8 e8 c8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 |
   o4 a8 o5 c8 e8 c8 o4 a8 o5 c8 e8 c8 | o4 f8 a8 o5 c8 o4 a8 f8 a8 o5 c8 o4 a8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 a8 o5 c8 e8 c8 o4 a2 |
+  o4 f8 a8 o5 c8 o4 a8 f8 a8 o5 c8 o4 a8 | o4 g8 o5 c8 e8 c8 o4 g8 o5 c8 e8 c8 | o4 f8 a8 o5 d8 o4 a8 f8 a8 o5 d8 o4 a8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 |
+  o4 f8 a8 o5 c8 o4 a8 f8 a8 o5 c8 o4 a8 | o4 g8 o5 c8 e8 c8 o4 g8 o5 c8 e8 c8 | o4 f8 a8 o5 d8 o4 a8 g+8 b8 o5 e8 o4 b8 | o4 a8 o5 c8 e8 c8 o4 a2 |
 
 track pad strings night=pad vol=0.2 pan=0.25 rev=0.46
   L o4 (a >c e)1 | (f a >c)1 | (e g >c)1 | (d g b)1 |
   (a >c e)1 | (f a >c)1 | (d g b)1 | (e a >c)1 |
+  o4 (f a >c)1 | (e g >c)1 | (d f a)1 | (e g+ b)1 |
+  (f a >c)1 | (e g >c)1 | (d f a)2 (e g+ b)2 | (e a >c)1 |
 
 track bass bass vol=0.56 rev=0.14
   L o2 a2 e2 | o2 f2 o3 c2 | o2 c2 g2 | o2 g2 d2 |
   o2 a2 e2 | o2 f2 o3 c2 | o2 g2 d2 | o2 a1 |
+  o2 f2 o3 c2 | o2 c2 g2 | o2 d2 a2 | o2 e2 b2 |
+  o2 f2 o3 c2 | o2 c2 g2 | o2 d2 e2 | o2 a1 |

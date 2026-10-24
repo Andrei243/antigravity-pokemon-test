@@ -45,7 +45,8 @@ script Lance
   say "{player}, come with me. There is one room left, where the League keeps the names of its Champions."
   setflag FLAG_HIDE_LANCES_ROOM_EXIT
   sound "door_open"
-  walk t10r0601_wataru up 7
+  # (to the doorway's foot: the door's own tile, 6, 2, is the way through, which he goes by as the player does)
+  walk t10r0601_wataru up 6
   hide t10r0601_wataru
   sound "door_open"
   warp "IndigoLeague_HallOfFame" 6 21 up

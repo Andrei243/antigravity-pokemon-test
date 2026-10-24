@@ -105,7 +105,8 @@ public class StarkMountainAndTheLegendaryPokemonTests
 
         // Stark Mountain's foot: the two grunts on the way round the lava, there from the start; Looker and Buck before
         // the mouth, hidden until Charon is caught
-        Assert.Equal((742, 232, "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS", "Grunt"), (Of(sinnoh, "stark_mountain_outside", "grunt_m_1").GridX, Of(sinnoh, "stark_mountain_outside", "grunt_m_1").GridY,
+        // (their look the original's own, grunt_m, since plan 11 · C2 gave every person a look of their own)
+        Assert.Equal((742, 232, "FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_GRUNTS", "grunt_m"), (Of(sinnoh, "stark_mountain_outside", "grunt_m_1").GridX, Of(sinnoh, "stark_mountain_outside", "grunt_m_1").GridY,
             Of(sinnoh, "stark_mountain_outside", "grunt_m_1").HiddenBy, Of(sinnoh, "stark_mountain_outside", "grunt_m_1").NpcType));
         Assert.Equal((742, 233), (Of(sinnoh, "stark_mountain_outside", "grunt_m_2").GridX, Of(sinnoh, "stark_mountain_outside", "grunt_m_2").GridY));
         // (Looker east of the tile the player is put down on, 751, 233, where the original stands him north of it, behind the player's head)

@@ -180,11 +180,11 @@ public class ObjectiveTests
     public void EveryRumourIsFromTheCommonScriptAndSaysNothingThatIsNotInTheFiles()
     {
         // Every label of the script is reached by a condition on Badges or the Hall of Fame: nine stages and the
-        // Champion's, each told two ways
+        // Champion's, each told two ways (which of the two is the die's, `random 2` and its result)
         var rumour = ScriptLibrary.Default.Find("Rumour")!;
         Assert.Equal(20, rumour.Everything().Count(i => i.Op == Op.Say));
         foreach (var i in rumour.Everything().Where(i => i.Op == Op.If))
-            Assert.True(i.Condition!.Query is Query.Badges or Query.Flag, "a rumour asks only the Badges and the Hall of Fame");
+            Assert.True(i.Condition!.Query is Query.Badges or Query.Flag or Query.Result, "a rumour asks only the Badges, the Hall of Fame and its die");
     }
 
     [Fact]

@@ -3239,7 +3239,11 @@
     "TeamPlasmaShadow": "Team Plasma",
     "TeamPlasmaZinzolin": "Team Plasma",
     "Worker26": "Worker",
-    "Worker44": "Worker"
+    "Worker44": "Worker",
+    "BossTrainer": "Boss Trainer",
+    "Harlequin": "Harlequin",
+    "NoData": "Trainer",
+    "PokemonTrainerColress": "Pokémon Trainer"
   },
   "broadcast": {
     "clock": {
