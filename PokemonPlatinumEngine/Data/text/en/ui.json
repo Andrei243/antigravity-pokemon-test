@@ -901,7 +901,9 @@
     "youAre": "YOU ARE",
     "youAreIn": "YOU ARE IN",
     "offTheMap": "Somewhere off the map",
-    "wilds": "The wilds"
+    "wilds": "The wilds",
+    "hintRegion": "Region",
+    "inRegion": "{place}, {region}"
   },
   "field": {
     "skip": "SKIP",

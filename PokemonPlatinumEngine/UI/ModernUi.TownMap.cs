@@ -23,6 +23,13 @@ internal static partial class ModernUi
     /// <summary>How far the frame stands out round the picture: enough for its round corners to cover the picture's square ones.</summary>
     public const float MapFrameWidth = 8f;
 
+    /// <summary>Fly's row of regions over the place's words (plan 18 · W9): the bag's tabs' height, and the gap under it.</summary>
+    public const float RegionTabHeight = 76f, RegionTabGap = 16f;
+
+    /// <summary>A region's colour on its tab: its Pokédex's (Sinnoh blue, Kanto green), gold for one with no colour yet.</summary>
+    public static Color RegionColour(string region) =>
+        DexColour(RegionDatabase.Get(region)?.Dex ?? "");
+
     /// <summary>
     /// A region's map in a rectangle: its picture inside a dark frame. <paramref name="cells"/> is the part of the
     /// region's view shown, in cells from the view's top left (all of it when null); <paramref name="small"/> draws
@@ -96,7 +103,9 @@ internal static partial class ModernUi
         var mode = screen.Mode;
         ScreenTitle(Text.Of($"townMap.title.{mode}"));
         string zoom = screen.Zoomed ? "shared.hints.wholeMap" : "shared.hints.zoomIn";
-        if (fly) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        if (fly && screen.HasTabs)
+            Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("pokegear.keys.shoulders", "townMap.hintRegion"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
+        else if (fly) Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.fly"), Hint("shared.keys.enter", zoom), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", zoom), Hint("shared.keys.esc", "shared.hints.close"));
         float slide = (1f - UiMotion.EaseOut(appear)) * 60f;
 
@@ -208,6 +217,14 @@ internal static partial class ModernUi
 
         // ---- The place under the cursor
         var info = new Rectangle(Margin + panel.Width + Gutter + slide, ContentTop, sw - Margin * 2 - panel.Width - Gutter, ContentBottom - ContentTop);
+        // Fly's choice across regions (plan 18 · W9; style guide, "The Town Map", "Fly between regions"): a row of tabs
+        // over the place's words, one to a region, the panel under it
+        if (screen.HasTabs)
+        {
+            var row = new Rectangle(info.X, info.Y, info.Width, RegionTabHeight);
+            Tabs(row, screen.Tabs.Select(t => (RegionDatabase.Get(t.Region.Region)?.Name ?? t.Region.Region, UiIcon.MapCard, RegionColour(t.Region.Region))).ToList(), screen.Tab);
+            info = new Rectangle(info.X, info.Y + RegionTabHeight + RegionTabGap, info.Width, info.Height - RegionTabHeight - RegionTabGap);
+        }
         Panel(info, 34);
         float x0 = info.X + 44, wide = info.Width - 88, ty = info.Y + 44;
         var block = screen.Hovered;
@@ -293,10 +310,14 @@ internal static partial class ModernUi
             Raylib.EndScissorMode();
         }
         UiShapes.Fill(new Rectangle(x0, foot - 108, wide, 3), 1.5f, Rule);
-        Label(Text.Of(state.Here == null ? "townMap.youAre" : "townMap.youAreIn"), x0, foot - 84);
+        // (on another region's tab the player is still where the home tab has them: plan 18 · W9)
+        var home = screen.HasTabs ? screen.Tabs[screen.HomeTab] : state;
+        Label(Text.Of(home.Here == null ? "townMap.youAre" : "townMap.youAreIn"), x0, foot - 84);
         UiShapes.Circle(new Vector2(x0 + 14, foot - 26), 13, Red);
         UiShapes.Circle(new Vector2(x0 + 14, foot - 26), 5, Color.White);
-        UiFonts.DrawCentered(state.HereName ?? Text.Of(state.Here == null ? "townMap.offTheMap" : "townMap.wilds"), x0 + 40, foot - 26, 36, Ink, UiWeight.Black);
+        string where = home.HereName ?? Text.Of(home.Here == null ? "townMap.offTheMap" : "townMap.wilds");
+        if (home != state) where = Text.Of("townMap.inRegion", ("place", where), ("region", RegionDatabase.Get(home.Region.Region)?.Name ?? home.Region.Region));
+        UiFonts.DrawCentered(where, x0 + 40, foot - 26, 36, Ink, UiWeight.Black);
     }
 
     /// <summary>A paragraph of a place's words, Bold 30 on 42 leading; returns where the next line would begin.</summary>

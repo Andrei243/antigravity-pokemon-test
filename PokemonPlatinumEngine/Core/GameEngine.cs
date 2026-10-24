@@ -2083,11 +2083,17 @@ public partial class GameEngine
     /// Pokémon is given the region it is leaving if it has none, the party departs by <see cref="Crossing.Depart"/>
     /// (whole, under option B) and the region is arrived in by <see cref="Crossing.Arrive"/>.
     /// </summary>
-    private void TravelTo(Region region)
+    private void TravelTo(Region region) => CrossTo(region, region.ArrivalSpot!);
+
+    /// <summary>
+    /// Goes into another region at a place of it (plan 18 · W9): the one way both the vessel (<see cref="TravelTo"/>,
+    /// at the region's arrival) and Fly (at a town's spawn) cross, under one fade. The region's music and name sign
+    /// come with the arrival, and its levels follow the region by themselves (<see cref="LevelHere"/>).
+    /// </summary>
+    private void CrossTo(Region region, MapSpot spot)
     {
         GiveIds();
         Crossing.Depart(flow.Party, flow.Boxes, region, flow.Story);
-        var spot = region.ArrivalSpot!;
         PlayAreaMusic(MapDatabase.Get(spot.Map), spot.X, spot.Y);
         StartTransition(GameState.Overworld, () =>
         {
@@ -2335,7 +2341,7 @@ public partial class GameEngine
             : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
         flow.Player.SetMode(TravelMode.OnFoot);
         flow.Player.SetPosition(x, y, facing);
-        if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
+        if (SpawnLocations.Get(Here.Id, flow.Story.Var(SpawnLocations.VariableOf(Here.Id))) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
         // A scene the battle was lost in left its camera, its bars and its pace behind with the place (plan 09 · L4)
         world.Camera.Reset();
         flow.CameraSent = false;

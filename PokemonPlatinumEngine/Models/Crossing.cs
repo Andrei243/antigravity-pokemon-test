@@ -74,6 +74,37 @@ public static class Crossing
         PlayerIdentity.InRegion(region);
     }
 
+    /// <summary>
+    /// Whether the player has been in a region (plan 18 · W9), by what the save already keeps, as the Trainer Card
+    /// counts it: its regional Pokédex entered (<see cref="Arrive"/> enters it), a badge of it, or its Hall of Fame. A
+    /// region with no Pokédex of its own is entered only by its badges or its Hall of Fame.
+    /// </summary>
+    public static bool HasEntered(Region region, StoryState story, IEnumerable<string> dexesEntered) =>
+        story.BadgeMask(region.Id) != 0 || story.IsRegionComplete(region.Id)
+        || (region.Dex is { } dex && dexesEntered.Contains(dex));
+
+    /// <summary>
+    /// Whether Fly may take the player from <paramref name="from"/> to another region (plan 18 · W9; the README's
+    /// "Regions": nothing leads back by harbour, and Fly goes back to any region already entered): the other region is
+    /// built, has a map of its own to choose a town on, and has been entered. Nothing is asked of either region's Hall
+    /// of Fame: a region is left by its vessel only once its story is over, so a region behind the player is always
+    /// finished, and the one ahead, once entered, may be flown back to. Fly's own check where the player stands (the
+    /// badge, a partner, the place) is the field move's, in the region the player is in.
+    /// </summary>
+    public static bool CanFly(Region from, Region to, StoryState story, IEnumerable<string> dexesEntered) =>
+        !string.Equals(from.Id, to.Id, StringComparison.OrdinalIgnoreCase) && to.IsBuilt && to.OverworldMap != null
+        && RegionMap.Of(to.Id) != null && HasEntered(to, story, dexesEntered);
+
+    /// <summary>
+    /// The regions Fly's choice shows a tab for, in the chain's order: the one the player is in and every other
+    /// <see cref="CanFly"/> allows. One region alone is a choice with no tabs.
+    /// </summary>
+    public static IReadOnlyList<Region> FlyRegions(Region here, StoryState story, IEnumerable<string> dexesEntered)
+    {
+        var entered = dexesEntered as ICollection<string> ?? dexesEntered.ToList();
+        return RegionDatabase.All.Where(r => r == here || CanFly(here, r, story, entered)).ToList();
+    }
+
     /// <summary>Whether a Pokémon belongs to a region; one that belongs to none (an older save's) to <paramref name="savesOwn"/>.</summary>
     public static bool BelongsTo(Pokemon pokemon, string region, string savesOwn) =>
         string.Equals(pokemon.Region ?? savesOwn, region, StringComparison.OrdinalIgnoreCase);

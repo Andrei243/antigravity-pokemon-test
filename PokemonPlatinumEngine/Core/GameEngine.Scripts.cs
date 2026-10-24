@@ -247,8 +247,10 @@ public partial class GameEngine
         var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, flow.Story);
         // Dig needs a way out to lead to, and Fly a place on the region's map that is open to fly to
-        var regionMap = move == FieldMove.Fly ? TownMapNow() : null;
-        if (error == FieldMoveError.None && ((move == FieldMove.Dig && flow.ExitSpot == null) || (move == FieldMove.Fly && regionMap?.Spots.Any(s => s.Open) != true)))
+        // (in any region Fly can reach from here, plan 18 · W9)
+        var flyChoice = move == FieldMove.Fly ? FlyChoiceNow() : default;
+        if (error == FieldMoveError.None && ((move == FieldMove.Dig && flow.ExitSpot == null)
+            || (move == FieldMove.Fly && !flyChoice.Tabs.Any(t => t.Spots.Any(s => s.Open)))))
             error = FieldMoveError.Location;
         if (error != FieldMoveError.None)
         {
@@ -262,7 +264,7 @@ public partial class GameEngine
         {
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
-            flow.TownMapScreen.Open(regionMap!, TownMapMode.Fly, index);
+            flow.TownMapScreen.Open(flyChoice.Tabs, flyChoice.Home, TownMapMode.Fly, index);
             flow.State = GameState.FlyMap;
             return;
         }
@@ -284,7 +286,9 @@ public partial class GameEngine
     {
         if (flow.Map.Name == "Sinnoh" && warp.TargetMap != "Sinnoh")
             flow.ExitSpot = new MapSpot("Sinnoh", flow.Player.GridX, flow.Player.GridY + (flow.Player.Facing == Direction.Up ? 1 : 0), flow.Player.Facing);
-        if (SpawnLocations.OfRoom(warp.TargetMap) is { } center) flow.Story.SetVar(SpawnLocations.Variable, center.Id);
+        // (in its own region: a Pokémon Center of Kanto is Kanto's place to come back to, plan 18 · W9)
+        if (SpawnLocations.OfRoomAnywhere(warp.TargetMap) is { } center)
+            flow.Story.SetVar(SpawnLocations.VariableOf(RegionDatabase.RegionOfMap(warp.TargetMap)?.Id), center.Id);
     }
 
     /// <summary>Arriving in a town for the first time is what lets one fly there (<c>TryUnlockFlyLocationByMap</c>).</summary>
@@ -1294,18 +1298,22 @@ public partial class GameEngine
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
-            // ...to the overworld of the town's own region (plan 20 · J9)
-            game.WarpTo(town.Map, town.X, town.Y, Direction.Down);
+            // ...to the overworld of the town's own region (plan 20 · J9); a town of another region is a crossing
+            // there, under Fly's own fade (plan 18 · W9)
+            if (RegionDatabase.RegionOfMap(town.Map) is { } to && !string.Equals(to.Id, game.Here.Id, StringComparison.OrdinalIgnoreCase))
+                game.CrossTo(to, new MapSpot(town.Map, town.X, town.Y, Direction.Down));
+            else game.WarpTo(town.Map, town.X, town.Y, Direction.Down);
             return true;
         }
 
         public bool Teleport()
         {
-            var town = SpawnLocations.Respawn(game.flow.Story);
+            // (the region's own place to come back to, on its own overworld: plan 18 · W9)
+            if (SpawnLocations.Respawn(game.flow.Story, game.Here.Id) is not { } town) return false;
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // So does Teleport (FieldSystem_SetTeleportFlags)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
-            game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
+            game.WarpTo(town.Map, town.X, town.Y, Direction.Down);
             return true;
         }
 
