@@ -8,10 +8,10 @@ A line is one string a language may translate. A line is **translated** when its
 
 | Kind | Files | Lines |
 |---|---|---|
-| Scripts (`scripts/<file>.json`) | 679 | 10953 |
-| Overlays (`world/<key>.json`) | 1030 | 11124 |
+| Scripts (`scripts/<file>.json`) | 683 | 11102 |
+| Overlays (`world/<key>.json`) | 1047 | 11346 |
 | Hand-made maps (`maps/<Name>.json`) | 299 | 3125 |
-| Data files' lines (`data.json`: the professors, the trainers in battle, the radio, the Town Map's words about each place) | 1 | 446 |
+| Data files' lines (`data.json`: the professors, the trainers in battle, the radio, the Town Map's words about each place) | 1 | 449 |
 
 ## Languages
 
@@ -19,14 +19,14 @@ Each cell of a kind of file is translated / lines; a language with no file for a
 
 | Language | `ui.json` | Names | Scripts | Overlays | Maps | Data | Stale | Unknown |
 |---|---|---|---|---|---|---|---|---|
-| Română (`ro`) | 3635 | yes | 10605 / 10953 | 10811 / 11124 | 3107 / 3125 | 446 / 446 | 0 | 0 |
-| Français (`fr`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| Deutsch (`de`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| Español (`es`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| Italiano (`it`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| 日本語 (`ja`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| 한국어 (`ko`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| 繁體中文 (`zh-Hant`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
-| 简体中文 (`zh-Hans`) | 0 | yes | 0 / 10953 | 0 / 11124 | 0 / 3125 | 0 / 446 | 0 | 0 |
+| Română (`ro`) | 3705 | yes | 10849 / 11102 | 11023 / 11346 | 3125 / 3125 | 449 / 449 | 0 | 0 |
+| Français (`fr`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| Deutsch (`de`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| Español (`es`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| Italiano (`it`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| 日本語 (`ja`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| 한국어 (`ko`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| 繁體中文 (`zh-Hant`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
+| 简体中文 (`zh-Hans`) | 0 | yes | 0 / 11102 | 0 / 11346 | 0 / 3125 | 0 / 449 | 0 | 0 |
 
 The overlays and maps are found by the key or name of the file; a place both an overlay and a map name is looked for as an overlay first.
