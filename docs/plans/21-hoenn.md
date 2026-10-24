@@ -1001,7 +1001,60 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     summit giving back the orbs (`VAR_MT_PYRE_STATE` 2); Mirage Island; the abnormal weather over Ever Grande City (H9);
     the Mach Bike's climb of the cracked floors and Rayquaza's battle (H12); Route 134's Sealed Chamber (H12); Match Call
     for Routes 132 to 134's rematch trainers; and parts a's and b's leftovers above but Sootopolis's spawn.
-- [ ] H9 Ever Grande and the League
+- [ ] H9 Ever Grande and the League (part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
+  the Hall of Fame and the National Pokédex; tests written and run with `--filter`, shots written and not taken; what is
+  left is listed under "Left for part b")
+  - **Opened** (19 areas, 307 in all): Ever Grande City (`Architecture.Bloomstone`, the style guide's row first; its pale
+    walks, the steps down its terraces, the square round the Pokémon Center and its flower beds in
+    `GbaCover.HoennRanges`; the League's hall found at its door as `BuildingKind.League`, `MapStructures.KindOfDoor`, with a
+    style of its own in `BuildingArt.Styles.cs`), its Pokémon Center on both floors, Victory Road's three floors
+    (`HoennVictoryRoad_1F`, `_B1F`, `_B2F`: Kanto's maps are `VictoryRoad_*`), the League's hall on both floors with its
+    counter (Emerald's stock, marts.json's `ever_grande_league`), the five halls, the Elite Four's four rooms, the
+    Champion's room and the Hall of Fame. Every map is in `RegionDatabase`'s Hoenn list. The titans' weather lies over the
+    city while `FLAG_SYS_WEATHER_CTRL` is set (the overlay's zone, as Route 128's). Spawns 11 (the Center) and 20 (the
+    League's hall, flown to once `FLAG_LANDMARK_POKEMON_LEAGUE`: the town map's top two Ever Grande cells) in `hoenn.json`.
+  - **Played**: Scott in the Center for a player with the Feather Badge, once (`FLAG_MET_SCOTT_IN_EVERGRANDE`, which
+    Sidney's room sets too); Wally's battle in Victory Road's west passage (`hoenn_wally_vr_1`, `VAR_VICTORY_ROAD_1F_STATE`
+    1 or 2, where he waits after); Victory Road's sixteen trainers with lines of ours; the guards shoulder to shoulder before
+    the door and the Feather Badge looked for (`FLAG_ENTERED_ELITE_FOUR`); Sidney, Phoebe, Glacia and Drake, each opening the
+    door ahead (`FLAG_DEFEATED_ELITE_4_*`), every way back shut and the hall's arrival putting it all back; the Champion's
+    room as one scene (Wallace and `hoenn_wallace`, `FLAG_HOENN_DEFEATED_WALLACE`, ours, the rival by look and Professor
+    Birch, Wallace leading on); the Hall of Fame (`halloffame`, `HoennHallOfFame`, `FLAG_IS_CHAMPION`, the team's entry,
+    home to the bedroom, the save and the credits) with what Emerald's `SetGameClearFlags` leaves that this game has places
+    for (Wally to the way out and his second battle, the Safari Zone's expansion, Steven gone and his letter and Beldum);
+    Birch's National Pokédex in his lab. Every scene a `scene`. **No story version raised**: `common.HoennChapterTwelve`
+    (`FLAG_HOENN_CHAPTER_TWELVE`), called by `HoennNewGame` and by the arrivals of Ever Grande City, its Center, Victory Road
+    and the Champion's room. Rulings: "Ever Grande City and the League".
+  - **The reader**: Emerald's Victory Road's item flags take the region's name (`GbaEvents.ItemFlag`:
+    `FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL` is FireRed's too, which `StoryTests` found).
+  - **Looks and music**: `sidney`, `phoebe`, `glacia` and `drake` in `characters.json` (our own takes; the `Elite Four` class
+    draws the person's look); Drake speaks as `hoenn_drake` in the voice cast, apart from Sinnoh's Dragon Tamer Drake.
+    Songs (ours, rendered clash-free with MusicRender, −18.9 to −19.4 LUFS, not yet heard): `hoenn/ever_grande` (36.9 s,
+    the city, its Center and the League's hall), `hoenn/victory_road` (29.1 s, the cave and the League's rooms),
+    `hoenn/hall_of_fame` (48.0 s, the room and the ceremony, `MusicDirector.SceneSong`) and `hoenn/credits` (76.8 s). The
+    Elite Four's and the Champion's battles and eye themes are the common ones.
+  - **Tests** (run with `--filter`): `HoennTests.EverGrandeCityVictoryRoadAndTheLeagueAreOpen` (and the walk of the whole
+    game reaches every new room, the Hall of Fame by the doors the Four open); `HoennStoryTests`
+    (`WallyBattlesOnVictoryRoadAndWaitsWhereHeStopped`, `TheLeaguesGuardsStandAsideOnlyForEveryBadge`,
+    `TheEliteFourAndWallaceFallAndHoennsHallOfFameSendsTheChampionHome` by look, with `CheckTravel` ready and the National
+    Pokédex, `ABattleLostToWallaceLeavesTheHallOfFameShut`, `ScottWaitsInEverGrandesCenterForAPlayerWithTheFeatherBadgeOnce`,
+    `ANewGameOfHoennHidesTheTwelfthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay`,
+    `TheSongsOfEverGrandeVictoryRoadAndTheHallOfFameAreThere`). The content check finds nothing. Golden `scripts.txt` moves
+    (common.txt's new script, the new places' scripts, Birch's lab) and `levels.txt` (Victory Road's wild Pokémon and
+    trainers, the League's): accept them.
+  - **Shots** (written, not taken): the `hoenn` mode's `h222`–`h236` (Ever Grande City with a `_native` crop, the League's
+    gate and the terraces, the Center, Victory Road's three floors, the League's hall, the four rooms, the long hall, the
+    Champion's room with a crop and the Hall of Fame) and `h237_ever_grande_night`; the scenes `hs290`–`hs2a9` at the end of
+    `HoennScenes` (Wally and his battle, the guards, Sidney's room, battle and door, Phoebe's, Glacia's and Drake's battles,
+    Wallace and his battle, the rival and the professor, the Hall of Fame, the team's entry, home, and Birch's National
+    Pokédex), printing the League's flags after each stage.
+  - **Left for part b**: home after the credits (Dad at home with the S.S. Ticket, Mom's news), the television's report and
+    the eon choice with a Latias or Latios roaming Hoenn (Hoenn routes in `Overworld/Roamers.cs`, plan 06 · R13's way), the
+    harbour's ship on to the next region (Lilycove's harbour room and its attendant; `RegionDatabase`'s Hoenn link still
+    `Undecided`, and `RegionTests` expects it so), the Battle Frontier pass from Scott, Wally's and the Four's rematches
+    through Match Call, Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet), the bands of
+    Hoenn's Leaders, Four and Champion (plan 09 · L15's way, as Kanto's `KantoBands`), and still from H8: the abnormal
+    weather's post-game places, Mirage Island, Mt. Pyre's orbs, Rayquaza's battle.
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks
 - [ ] H12 The Frontier island and the post-game

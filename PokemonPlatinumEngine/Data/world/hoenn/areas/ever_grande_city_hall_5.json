@@ -1,0 +1,26 @@
+{
+  "key": "ever_grande_city_hall_5",
+  "index": 220,
+  "name": "Ever Grande City",
+  "matrix": 169,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "ever_grande_city_pokemon_league_1f", "toWarp": 2 },
+    { "x": 5, "z": 2, "to": "ever_grande_city_sidneys_room", "toWarp": 0 },
+    { "x": 4, "z": 12, "to": "ever_grande_city_pokemon_league_1f", "toWarp": 2 },
+    { "x": 6, "z": 12, "to": "ever_grande_city_pokemon_league_1f", "toWarp": 2 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

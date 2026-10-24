@@ -231,6 +231,8 @@ public static class MapStructures
         string t when t.Contains('_') && (t.EndsWith("_Gym") || t.Contains("_Gym_")) => BuildingKind.Gym,
         // Plan 19 · K5: Lavender Town's Pokémon Tower, FireRed's seven floors
         string t when t.StartsWith("PokemonTower_") => BuildingKind.Tower,
+        // Plan 21 · H9: Hoenn's Pokémon League at the top of Ever Grande City, its hall the Center's counter and the Mart's
+        "EverGrandeCity_PokemonLeague_1F" => BuildingKind.League,
         _ => null
     };
 

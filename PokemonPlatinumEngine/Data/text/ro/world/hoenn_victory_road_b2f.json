@@ -1,0 +1,169 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "man_3": {
+      "name": {
+        "en": [
+          "Vito"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Vito: I was told the bottom of Victory Road is where the real trainers are. I'm one of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Vito: Maybe the real ones are further up after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Owen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Owen: The water down here is freezing. A battle will warm me up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Owen: I'm colder than ever now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Caroline"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Caroline: You found the way down here? Then you've earned a battle with me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Caroline: You've earned more than that. Go on up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Julie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Julie: I trained under that waterfall for a month. My Pokémon are as tough as rock now!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Julie: Back under the falls for another month."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_3": {
+      "name": {
+        "en": [
+          "Dianne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Dianne: The two of us watch this bank together. You'll have to go through me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Dianne: Felix, it's your turn now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_3": {
+      "name": {
+        "en": [
+          "Felix"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Felix: Dianne didn't stop you? Then I will!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Felix: Neither of us stopped you. Well done."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

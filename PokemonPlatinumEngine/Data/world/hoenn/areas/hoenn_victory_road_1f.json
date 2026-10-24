@@ -1,0 +1,58 @@
+{
+  "key": "hoenn_victory_road_1f",
+  "index": 281,
+  "name": "Victory Road",
+  "matrix": 230,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "encounters": "hoenn_victory_road_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 40 },
+    { "species": "Hariyama", "level": 40 },
+    { "species": "Lairon", "level": 40 },
+    { "species": "Loudred", "level": 40 },
+    { "species": "Zubat", "level": 36 },
+    { "species": "Makuhita", "level": 36 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Hariyama", "level": 38 },
+    { "species": "Aron", "level": 36 },
+    { "species": "Whismur", "level": 36 },
+    { "species": "Aron", "level": 36 },
+    { "species": "Whismur", "level": 36 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 15, "z": 40, "to": "ever_grande_city", "toWarp": 2 },
+    { "x": 39, "z": 5, "to": "ever_grande_city", "toWarp": 3 },
+    { "x": 21, "z": 32, "to": "hoenn_victory_road_b1f", "toWarp": 5 },
+    { "x": 42, "z": 38, "to": "hoenn_victory_road_b1f", "toWarp": 2 },
+    { "x": 9, "z": 14, "to": "hoenn_victory_road_b1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_south", "x": 33, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_EDGAR" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_west", "x": 6, "z": 15, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HOPE" },
+    { "id": "man_3_2", "looks": "man_3", "movement": "look_south_and_east", "x": 27, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ALBERT" },
+    { "id": "victory_road_entrance_wally", "looks": "wally", "movement": "look_south", "x": 12, "z": 25, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY", "script": "VictoryRoad_1F_EventScript_EntranceWally" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 40, "z": 26, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_HOENN_VICTORY_ROAD_1F_MAX_ELIXIR", "item": "Max Elixir", "script": "VictoryRoad_1F_EventScript_ItemMaxElixir" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 37, "z": 39, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_HOENN_VICTORY_ROAD_1F_PP_UP", "item": "PP Up", "script": "VictoryRoad_1F_EventScript_ItemPPUp" },
+    { "id": "wally", "looks": "wally", "movement": "look_around", "x": 31, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY", "script": "VictoryRoad_1F_EventScript_ExitWally" },
+    { "id": "woman_5_2", "looks": "woman_5", "movement": "look_east", "x": 29, "z": 17, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_KATELYNN" },
+    { "id": "man_3_3", "looks": "man_3", "movement": "look_west", "x": 32, "z": 17, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_QUINCY" }
+  ],
+  "signs": [
+    { "x": 30, "z": 39, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_HOENN_VICTORY_ROAD_1F_ULTRA_BALL" }
+  ],
+  "triggers": [
+    { "x": 2, "z": 23, "width": 1, "depth": 1, "script": "VictoryRoad_1F_EventScript_WallyBattleTrigger1", "variable": "VAR_VICTORY_ROAD_1F_STATE", "value": "0" },
+    { "x": 3, "z": 23, "width": 1, "depth": 1, "script": "VictoryRoad_1F_EventScript_WallyBattleTrigger2", "variable": "VAR_VICTORY_ROAD_1F_STATE", "value": "0" }
+  ]
+}

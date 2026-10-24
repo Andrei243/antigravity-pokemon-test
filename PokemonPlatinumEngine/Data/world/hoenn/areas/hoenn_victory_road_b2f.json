@@ -1,0 +1,80 @@
+{
+  "key": "hoenn_victory_road_b2f",
+  "index": 283,
+  "name": "Victory Road",
+  "matrix": 232,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "DarkFlash",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "encounters": "hoenn_victory_road_b2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 40 },
+    { "species": "Sableye", "level": 40 },
+    { "species": "Lairon", "level": 40 },
+    { "species": "Lairon", "level": 40 },
+    { "species": "Golbat", "level": 42 },
+    { "species": "Sableye", "level": 42 },
+    { "species": "Golbat", "level": 44 },
+    { "species": "Sableye", "level": 44 },
+    { "species": "Lairon", "level": 42 },
+    { "species": "Mawile", "level": 42 },
+    { "species": "Lairon", "level": 44 },
+    { "species": "Mawile", "level": 44 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Golbat", "level": 30, "maxLevel": 35 },
+    { "species": "Golbat", "level": 25, "maxLevel": 30 },
+    { "species": "Golbat", "level": 35, "maxLevel": 40 },
+    { "species": "Golbat", "level": 35, "maxLevel": 40 },
+    { "species": "Golbat", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Barboach", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Barboach", "level": 25, "maxLevel": 30 },
+    { "species": "Barboach", "level": 30, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 35, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 30, "z": 25, "to": "hoenn_victory_road_b1f", "toWarp": 0 },
+    { "x": 43, "z": 2, "to": "hoenn_victory_road_b1f", "toWarp": 3 },
+    { "x": 19, "z": 12, "to": "hoenn_victory_road_b1f", "toWarp": 1 },
+    { "x": 5, "z": 26, "to": "hoenn_victory_road_b1f", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_south", "x": 15, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_VITO" },
+    { "id": "man_3_2", "looks": "man_3", "movement": "look_north", "x": 43, "z": 14, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_OWEN" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_south", "x": 2, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CAROLINE" },
+    { "id": "woman_5_2", "looks": "woman_5", "movement": "look_west", "x": 35, "z": 22, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_JULIE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 13, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_HOENN_VICTORY_ROAD_B2F_FULL_HEAL", "item": "Full Heal", "script": "VictoryRoad_B2F_EventScript_ItemFullHeal" },
+    { "id": "woman_5_3", "looks": "woman_5", "movement": "look_south", "x": 25, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_DIANNE" },
+    { "id": "man_3_3", "looks": "man_3", "movement": "look_north", "x": 25, "z": 21, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_FELIX" }
+  ],
+  "signs": [
+    { "x": 28, "z": 5, "type": 2, "script": "", "item": "Elixir", "flag": "FLAG_HIDDEN_ITEM_HOENN_VICTORY_ROAD_B2F_ELIXIR" },
+    { "x": 37, "z": 1, "type": 2, "script": "", "item": "Max Repel", "flag": "FLAG_HIDDEN_ITEM_HOENN_VICTORY_ROAD_B2F_MAX_REPEL" }
+  ],
+  "triggers": []
+}

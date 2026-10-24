@@ -1,0 +1,113 @@
+# The Champion's room (plan 21 · H9). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/EverGrandeCity_ChampionsRoom/scripts.inc).
+#
+# The whole room is one scene, played as the challenger comes in: up the room to Wallace, the Champion, his words and his
+# battle (hoenn_wallace). Beaten, he opens the door behind him (FLAG_HOENN_DEFEATED_WALLACE, a flag of ours: Emerald
+# swaps the door's tiles). Then the rival runs in (May for a boy, Brendan for a girl), has a word of advice and finds
+# it is too late for it; Professor Birch comes in after, and says what the Pokédex has come to; and Wallace leads the
+# player through the door to the Hall of Fame, the rival and the professor waiting behind. A battle lost ends it there,
+# as every battle lost does, and the League's hall puts the four rooms back. A save from before this stretch is given its
+# hiding here (common.HoennChapterTwelve).
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TWELVE call HoennChapterTwelve
+  if flag FLAG_HOENN_DEFEATED_WALLACE end
+  scene "The Champion"
+  walk player up 3
+  wait 0.6
+  walk player up 2
+  music "common/eye_champion"
+  face champions_room_wallace player
+  speaker "Wallace"
+  say "Welcome, {player}. I am Wallace, the Champion of the Hoenn region."
+  say "Do you remember the day you won the Rain Badge from Juan? Something in the way you battled stayed with me."
+  say "I wondered then whether you would make it all the way here. And now here you stand."
+  say "Then let me show you what a Champion is. You and your Pokémon will see a battle like no other!"
+  battle champions_room_wallace as "hoenn_wallace"
+  speaker "Wallace"
+  say "I, the Champion, have been beaten... You and your Pokémon were simply magnificent."
+  setflag FLAG_HOENN_DEFEATED_WALLACE
+  sound "door_open"
+  say "You fought with everything you had, and your Pokémon fought for you. That is a true Champion's battle."
+  # The rival runs in from the hall behind
+  sound "door_open"
+  music "hoenn/rival"
+  clearflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+  place champions_room_rival 6 11 up
+  show champions_room_rival
+  walk champions_room_rival up 4 left 1 up 1
+  face champions_room_rival right
+  face player left
+  speaker "{rival}"
+  if girl goto BrendanAdvice
+  say "{player}! I came as fast as I could. Listen, about the Champion, I've got some advice for you..."
+  emote champions_room_rival exclaim
+  face champions_room_rival up
+  wait 0.3
+  face champions_room_rival right
+  say "Wait... Is it already over? You beat the Champion? Oh, {player}, that's amazing!"
+  goto Professor
+label BrendanAdvice
+  say "{player}! I ran all the way here. Look, before you take on the Champion, you need to know..."
+  emote champions_room_rival exclaim
+  face champions_room_rival up
+  wait 0.3
+  face champions_room_rival right
+  say "Hang on. It's over already? You won? Seriously? ...Yeah. Of course you did."
+label Professor
+  # The professor comes in after
+  clearflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+  place champions_room_birch 6 11 up
+  show champions_room_birch
+  walk champions_room_birch up 4 right 1 up 1
+  face champions_room_birch left
+  face player right
+  speaker "Prof. Birch"
+  say "Phew! There you are, {player}! I came to see how my Pokédex was getting along, and look what I've walked into."
+  say "You've filled it with so many Pokémon on your journey. It's done more for my research than I ever hoped."
+  say "And you've become the Champion as well! Congratulations, {player}! I couldn't be prouder."
+  face champions_room_wallace up
+  wait 0.3
+  face champions_room_wallace player
+  speaker "Wallace"
+  say "{player}, there is somewhere I must take you. Come with me, please."
+  walk champions_room_wallace up 2
+  face champions_room_wallace down
+  walk player up 2
+  face champions_room_birch up
+  walk champions_room_rival right 1 up 1
+  face player down
+  say "I'm sorry, but only the new Champion may come through this door. Would the two of you wait out here?"
+  speaker "{rival}"
+  say "Of course! Go on, {player}. We'll be right here when you come back!"
+  face player up
+  sound "door_open"
+  hide champions_room_wallace
+  walk player up 1
+  setflag FLAG_HIDE_PETALBURG_GYM_GREETER
+  warp "EverGrandeCity_HallOfFame" 7 15 up
+  endscene
+  end
+
+
+# Wallace, the rival and the professor, where nobody stands but in the scene
+script Wallace
+  face self player
+  speaker "Wallace"
+  say "You are the Champion now, {player}. Carry it well."
+  end
+
+
+script Rival
+  face self player
+  speaker "{rival}"
+  say "We'll wait here, {player}. Go on!"
+  end
+
+
+script Birch
+  face self player
+  speaker "Prof. Birch"
+  say "Go on, {player}. We'll be right here."
+  end

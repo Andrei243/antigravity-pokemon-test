@@ -29,6 +29,18 @@ public static class GbaEvents
     /// once beaten, so the warp under it is never taken: it is written as a landing, which leads nowhere and shuts
     /// nothing, or it would be a way nobody can reach.
     /// </summary>
+    /// <summary>
+    /// The flag of an item on the ground or hidden in it. Emerald's Victory Road names its items after the place as
+    /// FireRed's does, and one of them is the same flag (FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL): the region's name
+    /// goes into the flags of a Victory Road that is not the first game's to open, as it goes into the maps' keys (plan 21
+    /// · H9), so that an item found in one region is not gone from the other. FireRed's keep their names, which saves hold.
+    /// </summary>
+    public static string ItemFlag(GbaMap map, string flag) =>
+        map.KeyPrefix == "hoenn_" && map.Name.StartsWith("VictoryRoad", StringComparison.Ordinal)
+            && (flag.StartsWith("FLAG_ITEM_", StringComparison.Ordinal) || flag.StartsWith("FLAG_HIDDEN_ITEM_", StringComparison.Ordinal))
+            ? Regex.Replace(flag, "^(FLAG_(?:HIDDEN_)?ITEM_)", "$1HOENN_")
+            : flag;
+
     public static bool BuriedOn(GbaMap map, int x, int y) =>
         map.Objects.Any(o => o.X == x && o.Y == y && o.TrainerType == "TRAINER_TYPE_BURIED");
 
@@ -70,7 +82,7 @@ public static class GbaEvents
             {
                 Id = unique, Looks = looks, Movement = movement, X = ox + o.X, Z = oy + o.Y, Facing = facing,
                 RangeX = o.RangeX, RangeZ = o.RangeY,
-                HiddenBy = o.Flag is "" or "0" ? null : o.Flag,
+                HiddenBy = o.Flag is "" or "0" ? null : ItemFlag(map, o.Flag),
                 Script = o.Script is "" or "0x0" ? "" : o.Script
             };
             // Someone the original stands on a bridge (Route 120's Steven: his elevation the bridge's ends', over the
@@ -113,7 +125,7 @@ public static class GbaEvents
                 area.Signs.Add(new AreaSign
                 {
                     X = ox + b.X, Z = oy + b.Y, Type = AreaSign.HiddenItem, Script = "",
-                    Item = GbaNames.Item(b.Item) ?? b.Item, Count = b.Quantity > 1 ? b.Quantity : null, Flag = b.Flag
+                    Item = GbaNames.Item(b.Item) ?? b.Item, Count = b.Quantity > 1 ? b.Quantity : null, Flag = ItemFlag(map, b.Flag)
                 });
             else if (b.Type == "sign")
                 area.Signs.Add(new AreaSign { X = ox + b.X, Z = oy + b.Y, Type = 0, Script = b.Script });

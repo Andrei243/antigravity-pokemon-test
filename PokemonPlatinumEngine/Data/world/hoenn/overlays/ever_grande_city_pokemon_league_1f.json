@@ -1,0 +1,19 @@
+{
+  // The Pokémon League's hall at the top of Ever Grande City (plan 21 · H9), with a Pokémon Center's counter and a Mart's
+  // (Emerald's stock, marts.json's ever_grande_league). Two guards stand shoulder to shoulder before the door to the
+  // Elite Four until the player shows them the Badges (FLAG_ENTERED_ELITE_FOUR); from then on they stand aside. The door
+  // leads into the hall before Sidney's room, whose floor the player comes in on facing it. Coming in puts the four rooms
+  // back as they were (ever_grande_city_pokemon_league_1f.txt): whoever goes through the door faces all four again
+  "area": "ever_grande_city_pokemon_league_1f",
+  "bgmTrack": "hoenn/ever_grande",
+  "doors": [
+    { "warp": 2, "map": "EverGrandeCity_Hall5", "x": 5, "y": 11, "facing": "Up" },
+    { "warp": 3, "map": "EverGrandeCity_Hall5", "x": 5, "y": 11, "facing": "Up" }
+  ],
+  "people": {
+    "league_nurse": { "name": "Nurse", "script": "Nurse" },
+    "mart_employee": { "name": "Clerk", "script": "Clerk", "still": true },
+    "league_guard_1": { "name": "Guard", "script": "Guard", "still": true },
+    "league_guard_2": { "name": "Guard", "script": "Guard", "still": true }
+  }
+}

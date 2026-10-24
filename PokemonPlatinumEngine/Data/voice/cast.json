@@ -376,6 +376,10 @@
       "note": "first spoken at rocket_hideout_b4f.txt(66)",
       "provisional": true
     },
+    "glacia": {
+      "note": "first spoken at ever_grande_city_glacias_room.txt(8)",
+      "provisional": true
+    },
     "glass_worker": {
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
@@ -394,6 +398,10 @@
     },
     "herdier": {
       "note": "first spoken at floccesy_ranch_2.txt(140)",
+      "provisional": true
+    },
+    "hoenn_drake": {
+      "note": "first spoken at ever_grande_city_drakes_room.txt(8): Hoenn's Elite Four, apart from Sinnoh's Dragon Tamer Drake",
       "provisional": true
     },
     "honey_man": {
@@ -709,6 +717,10 @@
       "note": "first spoken at cianwood_pharmacy.txt(12)",
       "provisional": true
     },
+    "phoebe": {
+      "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
+      "provisional": true
+    },
     "pikachu": {
       "note": "first spoken at route_218.txt(35)",
       "provisional": true
@@ -858,6 +870,10 @@
     },
     "shop_boy": {
       "note": "first spoken at EternaCycleShop.txt(30)",
+      "provisional": true
+    },
+    "sidney": {
+      "note": "first spoken at ever_grande_city_sidneys_room.txt(17)",
       "provisional": true
     },
     "sign": {
@@ -1148,6 +1164,7 @@
     "Gideon": "gideon",
     "Giovanni": "giovanni",
     "Girl": "look:girl",
+    "Glacia": "glacia",
     "Glass Worker": "glass_worker",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
@@ -1250,6 +1267,7 @@
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
+    "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
@@ -1294,6 +1312,7 @@
     "Selphy": "selphy",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
+    "Sidney": "sidney",
     "Sign": "sign",
     "Skitty": "skitty",
     "Slowbro": "slowbro",

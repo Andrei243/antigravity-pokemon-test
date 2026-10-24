@@ -1,0 +1,234 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome, {player}. I am Wallace, the Champion of the Hoenn region."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you remember the day you won the Rain Badge from Juan? Something in the way you battled stayed with me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I wondered then whether you would make it all the way here. And now here you stand."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then let me show you what a Champion is. You and your Pokémon will see a battle like no other!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I, the Champion, have been beaten... You and your Pokémon were simply magnificent."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You fought with everything you had, and your Pokémon fought for you. That is a true Champion's battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I came as fast as I could. Listen, about the Champion, I've got some advice for you..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wait... Is it already over? You beat the Champion? Oh, {player}, that's amazing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I ran all the way here. Look, before you take on the Champion, you need to know..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hang on. It's over already? You won? Seriously? ...Yeah. Of course you did."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phew! There you are, {player}! I came to see how my Pokédex was getting along, and look what I've walked into."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've filled it with so many Pokémon on your journey. It's done more for my research than I ever hoped."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you've become the Champion as well! Congratulations, {player}! I couldn't be prouder."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, there is somewhere I must take you. Come with me, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but only the new Champion may come through this door. Would the two of you wait out here?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Of course! Go on, {player}. We'll be right here when you come back!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wallace": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You are the Champion now, {player}. Carry it well."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll wait here, {player}. Go on!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Birch": [
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on, {player}. We'll be right here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -678,6 +678,53 @@ public class HoennTests
     }
 
     [Fact]
+    public void EverGrandeCityVictoryRoadAndTheLeagueAreOpen()
+    {
+        // Plan 21 · H9: Ever Grande City, its Pokémon Center, Victory Road and the Pokémon League's rooms
+        foreach (string key in new[] { "ever_grande_city", "ever_grande_city_pokemon_center_1f", "hoenn_victory_road_1f", "hoenn_victory_road_b1f",
+                     "hoenn_victory_road_b2f", "ever_grande_city_pokemon_league_1f", "ever_grande_city_hall_5", "ever_grande_city_sidneys_room",
+                     "ever_grande_city_drakes_room", "ever_grande_city_hall_4", "ever_grande_city_champions_room", "ever_grande_city_hall_of_fame" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var hoenn = RegionDatabase.Get(RegionDatabase.Hoenn)!;
+        foreach (string map in new[] { "EverGrandeCity_PokemonLeague_1F", "EverGrandeCity_SidneysRoom", "EverGrandeCity_ChampionsRoom",
+                     "EverGrandeCity_HallOfFame", "HoennVictoryRoad_1F", "HoennVictoryRoad_B2F" })
+            Assert.Contains(map, hoenn.Maps);
+        // Kanto's Victory Road keeps its name: Hoenn's is named apart
+        Assert.DoesNotContain("VictoryRoad_1F", hoenn.Maps);
+
+        // The city: its flowers, its song, the League's hall at the top and Victory Road's two mouths
+        Assert.Equal(Architecture.Bloomstone, Overworld.ArchitectureAt(778, 195));
+        Assert.Equal("hoenn/ever_grande", Overworld.BgmTrackAt(778, 195));
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "EverGrandeCity_PokemonLeague_1F");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "EverGrandeCity_PokemonCenter_1F");
+        Assert.Equal(2, Overworld.Warps.Count(w => w.TargetMap == "HoennVictoryRoad_1F"));
+        Assert.Contains(Overworld.PlacedBuildings, b => b.Kind == BuildingKind.League && b.X0 <= 778 && 778 <= b.X1 && b.Y0 <= 185 && 185 <= b.Y1);
+        Assert.Equal(TerrainCover.Paving, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_EverGrande", 0x23D, MapImporter.Gba.GbaGame.Emerald));
+        Assert.Equal(TerrainCover.Flowers, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_EverGrande", 0x28A, MapImporter.Gba.GbaGame.Emerald));
+
+        // The League: a room's door ahead waits for its master, none leads back, the halls lead only on, and the Champion's
+        // door to the Hall of Fame waits for Wallace
+        var sidney = BuiltMaps.Value["EverGrandeCity_SidneysRoom"];
+        Assert.Contains(sidney.Warps, w => w.TargetMap == "EverGrandeCity_Hall1" && w.OpenedBy == "FLAG_DEFEATED_ELITE_4_SIDNEY");
+        Assert.DoesNotContain(sidney.Warps, w => w.TargetMap == "EverGrandeCity_Hall5");
+        Assert.Equal(new[] { "EverGrandeCity_PhoebesRoom" }, BuiltMaps.Value["EverGrandeCity_Hall1"].Warps.Select(w => w.TargetMap).Distinct());
+        Assert.Contains(BuiltMaps.Value["EverGrandeCity_DrakesRoom"].Warps, w => w.TargetMap == "EverGrandeCity_Hall4" && w.OpenedBy == "FLAG_DEFEATED_ELITE_4_DRAKE");
+        Assert.Contains(BuiltMaps.Value["EverGrandeCity_ChampionsRoom"].Warps, w => w.TargetMap == "EverGrandeCity_HallOfFame" && w.OpenedBy == "FLAG_HOENN_DEFEATED_WALLACE");
+        Assert.Empty(BuiltMaps.Value["EverGrandeCity_HallOfFame"].Warps);
+        foreach (var (room, look) in new[] { ("EverGrandeCity_SidneysRoom", "sidney"), ("EverGrandeCity_PhoebesRoom", "phoebe"),
+                     ("EverGrandeCity_GlaciasRoom", "glacia"), ("EverGrandeCity_DrakesRoom", "drake"), ("EverGrandeCity_ChampionsRoom", "wallace") })
+            Assert.Contains(BuiltMaps.Value[room].Everyone, n => string.Equals(n.NpcType, look, StringComparison.OrdinalIgnoreCase));
+        Assert.Single(BuiltMaps.Value["EverGrandeCity_PokemonLeague_1F"].Everyone, n => n.Script == "Nurse");
+
+        // Where a battle lost in the League wakes the player, and the Center by the shore
+        var spawns = SpawnLocations.In(RegionDatabase.Hoenn);
+        Assert.Contains(spawns, s => s.Id == 20 && s.Room == "EverGrandeCity_PokemonLeague_1F");
+        Assert.Contains(spawns, s => s.Id == 11 && s.Room == "EverGrandeCity_PokemonCenter_1F");
+        foreach (string song in new[] { "victory_road", "ever_grande", "hall_of_fame", "credits" })
+            Assert.True(File.Exists(Path.Combine(AppContext.BaseDirectory, "Data", "music", "hoenn", song + ".mml")), song);
+    }
+
+    [Fact]
     public void ShoalCaveAndTheRoutesOfCurrentsBackToSlateportAreOpen()
     {
         // Plan 21 · H8, part d: Shoal Cave's five rooms and Routes 132 to 134

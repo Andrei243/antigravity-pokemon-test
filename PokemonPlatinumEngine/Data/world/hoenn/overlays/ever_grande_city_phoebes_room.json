@@ -1,0 +1,15 @@
+{
+  // The second of the Elite Four's rooms (plan 21 · H9), Phoebe's: as Sidney's, the door ahead opening once she is beaten
+  // (FLAG_DEFEATED_ELITE_4_PHOEBE). ever_grande_city_phoebes_room.txt has her battle
+  "area": "ever_grande_city_phoebes_room",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "arenaType": "Ghost",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_Hall2", "x": 5, "y": 11, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_PHOEBE" }
+  ],
+  "people": {
+    "phoebe": { "name": "Phoebe", "npcType": "phoebe", "script": "Phoebe", "still": true }
+  }
+}

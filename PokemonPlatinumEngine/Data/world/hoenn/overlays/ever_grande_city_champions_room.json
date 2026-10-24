@@ -1,0 +1,19 @@
+{
+  // The Champion's room (plan 21 · H9). Wallace stands at its head. The whole room is one scene as the challenger comes in
+  // (ever_grande_city_champions_room.txt): up to him, his battle, the rival and Professor Birch come in once he is beaten
+  // (FLAG_HIDE_CHAMPIONS_ROOM_RIVAL, FLAG_HIDE_CHAMPIONS_ROOM_BIRCH), and Wallace leads the player through the door behind
+  // to the Hall of Fame (FLAG_HOENN_DEFEATED_WALLACE, a flag of ours, opens it; the scene warps). The way back is shut
+  "area": "ever_grande_city_champions_room",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "arenaType": "Water",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_HallOfFame", "x": 7, "y": 15, "facing": "Up", "openedBy": "FLAG_HOENN_DEFEATED_WALLACE" }
+  ],
+  "people": {
+    "champions_room_wallace": { "name": "Wallace", "npcType": "wallace", "script": "Wallace", "still": true },
+    "champions_room_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
+    "champions_room_birch": { "name": "Prof. Birch", "npcType": "prof_birch", "script": "Birch", "still": true }
+  }
+}

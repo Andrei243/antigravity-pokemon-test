@@ -1,0 +1,25 @@
+# Phoebe's room, the second of Hoenn's Elite Four (plan 21 · H9). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/EverGrandeCity_PhoebesRoom/scripts.inc). As Sidney's room: spoken to, she
+# battles; beaten, the door behind her opens onto the hall to Glacia's room (FLAG_DEFEATED_ELITE_4_PHOEBE).
+
+
+script Phoebe
+  face phoebe player
+  speaker "Phoebe"
+  if flag FLAG_DEFEATED_ELITE_4_PHOEBE goto Beaten
+  scene "Phoebe"
+  music "common/eye_elite_four"
+  say "Hi there! I'm Phoebe of the Elite Four. I trained at the top of Mt. Pyre, among the spirits who rest there."
+  say "Up there, I learned to share my heart with Ghost-type Pokémon. We understand each other completely."
+  say "Let's see if your bond with your Pokémon can match ours!"
+  battle self as "hoenn_phoebe"
+  speaker "Phoebe"
+  say "Oh... we lost. Your bond with your Pokémon must run very deep."
+  setflag FLAG_DEFEATED_ELITE_4_PHOEBE
+  sound "door_open"
+  say "Go on to the next room. I'll be cheering for you, quietly, the way the spirits do."
+  endscene
+  end
+label Beaten
+  say "The way on is open. Keep that bond strong, and you'll go far."
+  end

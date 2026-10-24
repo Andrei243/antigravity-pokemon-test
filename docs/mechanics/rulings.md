@@ -3852,6 +3852,52 @@ to Slateport City are open; Route 125's way into the cave is no longer locked. W
   Mail, which the item table hasn't got (NpcTrades `seasor`). **The Explosion tutor** in the Pokémon Center teaches once in
   a game, by `MoveTutors.Kanto`'s table, Explosion being TM64's move (`FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION`).
 
+## Ever Grande City and the League (2026-10-25, plan 21 · H9, its first part)
+
+Ever Grande City (`Architecture.Bloomstone`, its walks, steps and flower beds in `GbaCover.HoennRanges`), its Pokémon
+Center on both floors, Victory Road's three floors and the Pokémon League's hall, halls, four rooms, Champion's room and
+Hall of Fame are open, with scripts of ours on Emerald's beats (`ever_grande_city*.txt`, `hoenn_victory_road_1f.txt`). What
+differs from Emerald, and why:
+
+- **Victory Road is named apart.** Kanto's maps are called `VictoryRoad_1F` and the rest, so Hoenn's are
+  `HoennVictoryRoad_1F`, `_B1F` and `_B2F` (their keys `hoenn_victory_road_*`, as the importer already prefixed them), and
+  its items' flags take the region's name (`FLAG_ITEM_HOENN_VICTORY_ROAD_1F_PP_UP`, `FLAG_HIDDEN_ITEM_HOENN_…`;
+  `GbaEvents.ItemFlag`): Emerald's `FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL` is also FireRed's, and an Ultra Ball found
+  in one region would have been gone from the other. FireRed's flags keep their names, which saves hold.
+- **Wally** runs in along the passage below the west passage's two trigger tiles and battles (`hoenn_wally_vr_1`), and
+  waits where he stopped (`VAR_VICTORY_ROAD_1F_STATE` 1 or 2, which the floor's arrival reads, Emerald's
+  `setobjectxyperm`). A battle lost leaves the variable at nought and him below to try again. From the Hall of Fame he
+  waits by the way out instead and battles once (`hoenn_wally_vr_2`); his Match Call rematches are not read.
+- **The guards** stand shoulder to shoulder before the door (the hall's arrival puts them there until
+  `FLAG_ENTERED_ELITE_FOUR`) and look for the Feather Badge alone, as Emerald's do (the only Badge a challenger can come
+  without). The hall's arrival sets `FLAG_LANDMARK_POKEMON_LEAGUE`, by which Fly lands at the League's door from then on
+  (the town map's Ever Grande cells split: the top two the League's, Emerald's `sMapFlyDestinations`), and makes the hall
+  the place a battle lost wakes the player in (spawn 20, Emerald's `HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE`).
+- **The League's rooms** are walked as Kanto's are: the way back out of each room and each hall is shut once the player is
+  through (Emerald closes the room's door behind the challenger and swaps its tiles), the way ahead opens with the room's
+  master beaten (`FLAG_DEFEATED_ELITE_4_SIDNEY` to `_DRAKE`, Emerald's; the Champion's door by `FLAG_HOENN_DEFEATED_WALLACE`,
+  ours, where Emerald swaps the door's tiles in the scene), and the hall's arrival puts all of it back, the rival and the
+  professor out of the Champion's room too, as Emerald's white-out and Hall of Fame do. Each way ahead puts the player on
+  the next floor's first open row facing it, where Emerald stands them on the door and walks them in (`VAR_ELITE_4_STATE`'s
+  scenes are not played). The four battle when spoken to, with Emerald's teams; there is no rematch team, as in Emerald.
+- **The Champion's room** is one scene as the challenger comes in: up the room, Wallace and his battle, the rival running in
+  with advice too late (May's lines for a boy, Brendan's for a girl), Professor Birch after, and Wallace leading on. Wallace
+  goes through the door ahead and the scene warps the player into the Hall of Fame, where Emerald walks both through.
+  Birch's rating of the Pokédex is a line, not Emerald's `ProfBirch_EventScript_RatePokedex` count.
+- **The Hall of Fame**'s floor is Emerald's polished one (`MB_ICE`), so nobody walks there: Wallace is put beside the
+  player and turns to them. The team is recorded, `HoennHallOfFame` and Emerald's `FLAG_IS_CHAMPION` set, the scene of the
+  team's entry played, the team healed, the player sent home to the bedroom (Emerald's `setrespawn` to the 2F of the house)
+  and the game saved before the credits, as Kanto's and Johto's are. Of Emerald's `SetGameClearFlags` the game keeps what it
+  has places for: Wally to the way out, the Safari Zone's expansion opened (its builders gone, its attendant back), Steven
+  gone travelling from his house with his letter and his Beldum's ball on the desk (the ball only for a player who has none
+  of it yet), and the League's rooms put back. `FLAG_SYS_GAME_CLEAR` is FireRed's name too and is not set here.
+- **The National Pokédex** is Birch's in his lab once Hoenn's Hall of Fame is entered, and asks nothing else, as Emerald's
+  `LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex` (the region file's `nationalUnlock` is `HallOfFame`).
+- **Left for the second part**: home after the credits (Dad back at home and his S.S. Ticket, Mom's news), the television's
+  report and the choice of Latias or Latios (a roamer of Hoenn's routes, which `Overworld/Roamers.cs` does not have yet), the
+  harbour's ship on to the next region (`RegionDatabase`'s Hoenn link is still undecided), Scott's Battle Frontier pass,
+  Wally's and the Four's rematches through Match Call, and the abnormal weather's other places of the post-game.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

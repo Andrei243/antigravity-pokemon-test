@@ -1,0 +1,10 @@
+{
+  // The hall from the League's door to Sidney's room (plan 21 · H9): the way back down to the League's counter is open
+  // until the first room is entered, as Emerald's is; the way on puts the player on the first room's floor, facing it
+  "area": "ever_grande_city_hall_5",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_SidneysRoom", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_ENTERED_ELITE_FOUR" }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "key": "ever_grande_city_hall_of_fame",
+  "index": 222,
+  "name": "Ever Grande City",
+  "matrix": 171,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_HALL_OF_FAME_ROOM",
+  "nightMusic": "MUS_HALL_OF_FAME_ROOM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 11, "to": "ever_grande_city_champions_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "hall_of_fame_wallace", "looks": "wallace", "movement": "look_north", "x": 6, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

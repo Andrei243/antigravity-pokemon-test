@@ -237,6 +237,23 @@ partial class Harness
             ("h215_shoal_cave_inner_low", "ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up),
             ("h216_shoal_cave_lower", "ShoalCave_LowTideLowerRoom", 17, 5, Direction.Left),
             ("h217_shoal_cave_ice", "ShoalCave_LowTideIceRoom", 17, 9, Direction.Up),
+            // Plan 21 · H9: Ever Grande City, its Pokémon Center, Victory Road's three floors and the Pokémon League's
+            // rooms (h236 is the Hall of Fame; h237 the city after dark, below)
+            ("h222_ever_grande_city", "Hoenn", 779, 233, Direction.Up),
+            ("h223_ever_grande_league_gate", "Hoenn", 778, 190, Direction.Up),
+            ("h224_ever_grande_terraces", "Hoenn", 783, 200, Direction.Up),
+            ("h225_ever_grande_center", "EverGrandeCity_PokemonCenter_1F", 7, 6, Direction.Up),
+            ("h226_victory_road_1f", "HoennVictoryRoad_1F", 15, 39, Direction.Up),
+            ("h227_victory_road_b1f", "HoennVictoryRoad_B1F", 36, 12, Direction.Right),
+            ("h228_victory_road_b2f", "HoennVictoryRoad_B2F", 43, 13, Direction.Down),
+            ("h229_league_hall", "EverGrandeCity_PokemonLeague_1F", 9, 6, Direction.Up),
+            ("h230_sidneys_room", "EverGrandeCity_SidneysRoom", 6, 11, Direction.Up),
+            ("h231_phoebes_room", "EverGrandeCity_PhoebesRoom", 6, 11, Direction.Up),
+            ("h232_glacias_room", "EverGrandeCity_GlaciasRoom", 6, 11, Direction.Up),
+            ("h233_drakes_room", "EverGrandeCity_DrakesRoom", 6, 11, Direction.Up),
+            ("h234_league_long_hall", "EverGrandeCity_Hall4", 5, 20, Direction.Up),
+            ("h235_champions_room", "EverGrandeCity_ChampionsRoom", 6, 9, Direction.Up),
+            ("h236_hall_of_fame", "EverGrandeCity_HallOfFame", 7, 14, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -244,7 +261,7 @@ partial class Harness
             // (On a bridge, on its deck: Route 120's, plan 21 · H8, part c)
             if (name == "h208_route120_bridge" && game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
             Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour" or "h197_pacifidlog_town" or "h205_sky_pillar_top" or "h206_sootopolis_gym" or "h215_shoal_cave_inner_low") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour" or "h197_pacifidlog_town" or "h205_sky_pillar_top" or "h206_sootopolis_gym" or "h215_shoal_cave_inner_low" or "h222_ever_grande_city" or "h235_champions_room") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         // Shoal Cave at high tide (plan 21 · H8, part d): the flag the entrance's OnTransition sets, its chunks laid by
@@ -287,6 +304,7 @@ partial class Harness
         At("Hoenn", 668, 118, Direction.Up); Frames(2); Shot("h179_mossdeep_night");
         At("SootopolisCity", 43, 33, Direction.Up); Frames(2); Shot("h195_sootopolis_night");
         At("Hoenn", 488, 277, Direction.Up); Frames(2); Shot("h210_pacifidlog_night");
+        At("Hoenn", 779, 233, Direction.Up); Frames(2); Shot("h237_ever_grande_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

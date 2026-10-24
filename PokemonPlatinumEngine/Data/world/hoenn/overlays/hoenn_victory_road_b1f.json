@@ -1,0 +1,14 @@
+{
+  // Victory Road's middle floor (plan 21 · H9): its boulders for Strength and its cracked rocks for Rock Smash, which come
+  // back as the player comes in again (FLAG_TEMP_*), and five trainers
+  "area": "hoenn_victory_road_b1f",
+  "name": "Victory Road",
+  "bgmTrack": "hoenn/victory_road",
+  "people": {
+    "man_3": { "name": "Samuel", "trainer": { "dialogueBefore": "Cooltrainer Samuel: You moved those boulders to get here? Then you can move this battle along too!", "dialogueAfter": "Cooltrainer Samuel: I've been moved aside like a boulder." } },
+    "woman_5": { "name": "Shannon", "trainer": { "dialogueBefore": "Cooltrainer Shannon: It's so dark and quiet down here. A battle will liven it up!", "dialogueAfter": "Cooltrainer Shannon: Lively, all right. Too lively for me." } },
+    "woman_5_2": { "name": "Michelle", "trainer": { "dialogueBefore": "Cooltrainer Michelle: I've been waiting for a challenger who could get this far. Don't disappoint me!", "dialogueAfter": "Cooltrainer Michelle: Not disappointed at all. Just beaten." } },
+    "man_3_2": { "name": "Mitchell", "trainer": { "dialogueBefore": "Cooltrainer Mitchell: The League starts here, as far as I'm concerned. Get past me first!", "dialogueAfter": "Cooltrainer Mitchell: Go on, then. The League's waiting." } },
+    "woman_5_3": { "name": "Halle", "trainer": { "dialogueBefore": "Cooltrainer Halle: Every trainer here dreams of beating the Champion. Let's see whose dream is bigger!", "dialogueAfter": "Cooltrainer Halle: Yours, it seems." } }
+  }
+}

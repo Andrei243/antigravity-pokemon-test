@@ -1,0 +1,24 @@
+{
+  "key": "ever_grande_city_hall_4",
+  "index": 219,
+  "name": "Ever Grande City",
+  "matrix": 168,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 33, "to": "ever_grande_city_drakes_room", "toWarp": 1 },
+    { "x": 5, "z": 2, "to": "ever_grande_city_champions_room", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

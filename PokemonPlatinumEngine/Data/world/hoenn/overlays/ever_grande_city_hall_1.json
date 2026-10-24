@@ -1,0 +1,10 @@
+{
+  // The hall from Sidney's room to Phoebe's (plan 21 · H9): no way back, the way on onto Phoebe's floor
+  "area": "ever_grande_city_hall_1",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "locked": [ 0, 2, 3 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_PhoebesRoom", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_SIDNEY" }
+  ]
+}

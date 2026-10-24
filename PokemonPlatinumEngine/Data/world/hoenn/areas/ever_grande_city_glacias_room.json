@@ -1,0 +1,26 @@
+{
+  "key": "ever_grande_city_glacias_room",
+  "index": 213,
+  "name": "Ever Grande City",
+  "matrix": 162,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 13, "to": "ever_grande_city_hall_2", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "glacia", "looks": "glacia", "movement": "look_south", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_GlaciasRoom_EventScript_Glacia" }
+  ],
+  "signs": [],
+  "triggers": []
+}
