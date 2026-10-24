@@ -332,4 +332,12 @@ public class RouteThirtyTwoWeekTests
         Assert.Equal("silver", Who("t21_gsrivel").NpcType, ignoreCase: true);
         Assert.Equal("falkner", Who("t22gym0101_gsleader1").NpcType, ignoreCase: true);
     }
+
+    [Fact]
+    public void EveryContactOfEveryBookHasAName()
+    {
+        // (a name the string table lacks shows as its key in brackets: Juan, Flannery and Winona did, on the toast)
+        foreach (var contact in PhoneBook.All.Concat(PhoneBook.Hoenn))
+            Assert.False(contact.Name.StartsWith("["), $"{contact.Id} has no name: {contact.Name}");
+    }
 }
