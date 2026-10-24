@@ -91,7 +91,9 @@ public enum GameState
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
     /// (<see cref="GameEngine.RequestClose"/>).
     /// </summary>
-    WindowClosing
+    WindowClosing,
+    /// <summary>A script's <c>namerival</c>: the keyboard for the rival of the region it plays in, over the field (plan 18 · W4, part b).</summary>
+    RivalNaming
 }
 
 public partial class GameEngine
@@ -352,7 +354,7 @@ public partial class GameEngine
         flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
-        PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look));
+        PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look), NewGameRegionRecord.Id);
         flow.Wardrobe.Clear();
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         flow.TrainerId = fieldRandom.Next(0, 65536);
@@ -580,7 +582,10 @@ public partial class GameEngine
         flow.Money = save.Money;
         flow.PlayTime = save.PlayTimeSeconds;
         PlayerIdentity.Set(save.PlayerName, save.Look);
-        PlayerIdentity.SetRival(save.RivalName);
+        // Each region's rival (plan 18 · W4, part b): an older save's one name is the region it began in's, and the
+        // rival of the region the player stands in is the one {rival} names
+        PlayerIdentity.RestoreRivals(save.RivalNames, save.RivalName, save.BeganInOrHere());
+        PlayerIdentity.InRegion(Here);
         // What the player wears: a save from before the wardrobe is the look's own clothes
         flow.Wardrobe.Restore(save.Outfit, save.Wardrobe);
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
@@ -632,8 +637,11 @@ public partial class GameEngine
         {
             PlayerName = playerName,
             Look = PlayerIdentity.Look,
-            RivalName = PlayerIdentity.RivalName,
-            Outfit = flow.Wardrobe.Worn.IsOwn ? null : flow.Wardrobe.Worn,
+            // The rival the introduction named, the region the game began in's; the others only once there are any (plan 18 · W4, part b)
+            RivalName = PlayerIdentity.RivalOf(RegionDatabase.Get(flow.BeganIn) ?? RegionDatabase.First),
+            RivalNames = PlayerIdentity.RivalNames.Keys.Any(r => !string.Equals(r, flow.BeganIn, StringComparison.OrdinalIgnoreCase))
+                ? new Dictionary<string, string>(PlayerIdentity.RivalNames, StringComparer.OrdinalIgnoreCase) : null,
+            Outfit =flow.Wardrobe.Worn.IsOwn ? null : flow.Wardrobe.Worn,
             Wardrobe = flow.Wardrobe.Owned.Count > 0 ? flow.Wardrobe.Owned.ToList() : null,
             TrainerId = flow.TrainerId,
             Started = flow.AdventureStarted,
@@ -1127,6 +1135,11 @@ public partial class GameEngine
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
                 flow.PhraseScreen.Update(dt);
                 if (!flow.PhraseScreen.IsActive) ClosePhrases();
+                break;
+            case GameState.RivalNaming:
+                // The script that asked hears 1 once the region's rival is named (plan 18 · W4, part b)
+                flow.RivalNamingScreen.Update(dt);
+                if (!flow.RivalNamingScreen.IsActive) CloseRivalNaming();
                 break;
             case GameState.SuperContest:
                 UpdateContest(dt);
@@ -1768,6 +1781,8 @@ public partial class GameEngine
 
         received.Friendship = received.Species.BaseFriendship;
         flow.Pokedex.RegisterCaught(received);
+        // A Pokémon traded joins the receiver's region, wherever it came from (plan 18 · W4, part b)
+        Crossing.Join(received, Here.Id);
 
         GiveIds();
 
@@ -1800,6 +1815,8 @@ public partial class GameEngine
         uint next = flow.PokemonIdsIssued;
         int given = PokemonIds.Give(OwnedPokemon(), TrainerNumber, ref next);
         flow.PokemonIdsIssued = next;
+        // and the region it belongs to, the one the player stands in, to every one that has none (plan 18 · W4, part b)
+        Crossing.Belong(OwnedPokemon(), Here.Id);
         return given;
     }
 
@@ -2030,9 +2047,15 @@ public partial class GameEngine
     /// <summary>Brings the field's camera back to the player.</summary>
     public void ReleaseCamera(float seconds) => world.ReleaseCamera(seconds);
 
-    /// <summary>Crosses to another region, landing where arrivals from the previous region come in.</summary>
+    /// <summary>
+    /// Crosses to another region, landing where arrivals from the previous region come in (plan 18 · W4, part b): every
+    /// Pokémon is given the region it is leaving if it has none, the party departs by <see cref="Crossing.Depart"/>
+    /// (whole, under option B) and the region is arrived in by <see cref="Crossing.Arrive"/>.
+    /// </summary>
     private void TravelTo(Region region)
     {
+        GiveIds();
+        Crossing.Depart(flow.Party, flow.Boxes, region, flow.Story);
         var spot = region.ArrivalSpot!;
         PlayAreaMusic(MapDatabase.Get(spot.Map), spot.X, spot.Y);
         StartTransition(GameState.Overworld, () =>
@@ -2040,7 +2063,7 @@ public partial class GameEngine
             flow.Map = MapDatabase.Get(spot.Map);
             flow.Player.SetPosition(spot.X, spot.Y, spot.Facing);
             flow.TrainersLookOnArrival = true;
-            flow.Pokedex.Enter(region);
+            Crossing.Arrive(region, flow.Pokedex);
             ArriveOnMap();
             AnnounceLocation();
         });
@@ -2370,7 +2393,7 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -2528,6 +2551,11 @@ public partial class GameEngine
                 // Over the field, which stays under it as under a question (plan 08 · P9)
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
                 flow.PhraseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.RivalNaming:
+                // Over the field, as the phrase picker is
+                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                flow.RivalNamingScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
                 flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

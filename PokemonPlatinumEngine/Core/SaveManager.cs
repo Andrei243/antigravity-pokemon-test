@@ -61,6 +61,14 @@ public class SaveData
     public string RivalName { get; set; } = PlayerIdentity.DefaultRivalName;
 
     /// <summary>
+    /// Each region's rival as the player named them, by the region's id (plan 18 · W4, part b): the region the game
+    /// began in has <see cref="RivalName"/>'s, and a region crossed into the name its <c>namerival</c> gave. Null while
+    /// only the first region's rival has a name, and in older saves (no version raised).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, string>? RivalNames { get; set; }
+
+    /// <summary>
     /// What the player wears (plan 11 · C9): a garment of <c>clothes.json</c> in each slot or the look's own. Null in
     /// older saves and where nothing was ever changed: the look's own clothes.
     /// </summary>
@@ -554,6 +562,11 @@ public class SavedPokemonData
 
     /// <summary>The PC's marks on it (plan 06 · R12), where it was met and on what day at what level, and its language when foreign.</summary>
     public int Marks { get; set; }
+
+    /// <summary>The region it belongs to (plan 18 · W4, part b; <see cref="Models.Pokemon.Region"/>); left out of an older save, where it reads as the save's region.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? Region { get; set; }
+
     public string? MetLocation { get; set; }
     public int MetLevel { get; set; }
     public DateTime? MetDate { get; set; }
@@ -633,6 +646,7 @@ public class SavedPokemonData
             Pokerus = p.Pokerus,
             Marks = p.Marks,
             MetLocation = p.MetLocation,
+            Region = p.Region,
             MetLevel = p.MetLevel,
             MetDate = p.MetDate,
             Language = p.Language,
@@ -692,6 +706,7 @@ public class SavedPokemonData
             Pokerus = Pokerus,
             Marks = Marks,
             MetLocation = MetLocation,
+            Region = Region,
             MetLevel = MetLevel,
             MetDate = MetDate,
             Language = Language,

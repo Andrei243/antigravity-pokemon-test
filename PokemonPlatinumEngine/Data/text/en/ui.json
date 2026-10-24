@@ -3455,6 +3455,9 @@
     "free": "{name}   free",
     "noPokemonToBattle": "{player} has no Pokémon that can battle!"
   },
+  "crossing": {
+    "rivalName": "YOUR RIVAL'S NAME"
+  },
   "placeWords": {
     "the": "the {place}",
     "on": "on {place}",

@@ -48,6 +48,7 @@ public sealed partial class GameFlow
     public PokeNavScreen PokeNavScreen { get; } = new();
     public AlphPuzzleScreen AlphPuzzleScreen { get; } = new();
     public PhraseScreen PhraseScreen { get; } = new();
+    public RivalNamingScreen RivalNamingScreen { get; } = new();
     public SuperContestScreen SuperContestScreen { get; } = new();
     public SlotMachineScreen SlotMachineScreen { get; } = new();
     public MiningScreen MiningScreen { get; } = new();

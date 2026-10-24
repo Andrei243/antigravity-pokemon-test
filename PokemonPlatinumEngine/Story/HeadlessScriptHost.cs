@@ -745,6 +745,17 @@ public sealed class HeadlessScriptHost : IScriptHost
             Answer = ChosenItem != null ? 1 : 0;
             Log[^1] = $"open {screen} {what} {ChosenItem ?? "none"}";
         }
+        // The way to the next region (plan 18 · W4, part b): played as the game plays it, so tests cross
+        if (screen == ScriptScreen.Travel) Travel(subject);
+        // A region's rival named: the name the test gives, or the region's own (plan 18 · W4, part b)
+        if (screen == ScriptScreen.NameRival)
+        {
+            var here = RegionDatabase.Get(Region) ?? RegionDatabase.First;
+            RivalName = PlayerIdentity.Clean(RivalNameGiven) is { Length: > 0 } given ? given : here.RivalFor(PlayerLook) ?? PlayerIdentity.DefaultRivalName;
+            RivalNames[here.Id] = RivalName;
+            Log[^1] = $"open {screen} {here.Id} {RivalName}";
+            Answer = 1;
+        }
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
@@ -755,6 +766,54 @@ public sealed class HeadlessScriptHost : IScriptHost
         GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, 5));
         Story.ChooseStarter(species);
         Answer = choice;
+    }
+
+    /// <summary>The name a test gives a region's rival at <c>namerival</c>; null (or empty) takes the region's own.</summary>
+    public string? RivalNameGiven { get; set; }
+
+    /// <summary>Each region's rival as the player named them, by the region's id (plan 18 · W4, part b).</summary>
+    public Dictionary<string, string> RivalNames { get; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>The regions crossed into, in order (plan 18 · W4, part b).</summary>
+    public List<string> Crossings { get; } = new();
+
+    /// <summary>
+    /// The attendant's travel as the game plays it (plan 18 · W4, part b): with no way on from the map's region the
+    /// script hears 0 and says its own lines; otherwise it hears 1, the attendant says how things stand, and once the
+    /// region's Hall of Fame is entered and the next region is built the player crosses: every Pokémon given the region
+    /// it leaves, the team departing by <see cref="Crossing.CanTake"/> (whole, under option B), and the player put down
+    /// on the next region's arrival, with its rival the one <c>{rival}</c> names.
+    /// </summary>
+    private void Travel(NPC? subject)
+    {
+        if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) return;
+        Answer = 1;
+        var check = RegionDatabase.CheckTravel(link, Story);
+        Talks++;
+        foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((subject != null ? Named(subject.Name) : null, Named(line)));
+        if (check != TravelCheck.Ready) return;
+
+        var to = RegionDatabase.Get(link.To)!;
+        Crossing.Belong(Party.Members.Concat(Boxes), here.Id);
+        foreach (var member in Party.Members.ToList())
+        {
+            if (Crossing.CanTake(member, to, Story)) continue;
+            Party.Remove(member);
+            Boxes.Add(member);
+        }
+        Log.Add($"travel {to.Id}");
+        Crossings.Add(to.Id);
+        var spot = to.ArrivalSpot!;
+        if (MapNamed?.Invoke(spot.Map) is { } target)
+        {
+            Map = target;
+            Map.ForgetForced();
+            Map.ApplyPresence(Story.Has);
+        }
+        PlayerTile = (spot.X, spot.Y);
+        PlayerFacing = spot.Facing;
+        if (region != null) region = to.Id;
+        RivalName = RivalNames.TryGetValue(to.Id, out var named) ? named : to.RivalFor(PlayerLook) ?? PlayerIdentity.DefaultRivalName;
     }
 
     /// <summary>The Hall of Fame the script entered teams into.</summary>

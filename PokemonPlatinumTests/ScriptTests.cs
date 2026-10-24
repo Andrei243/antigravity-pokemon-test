@@ -548,6 +548,7 @@ public class ScriptTests
           flicker player 4
           scene "All of it"
           endscene
+          namerival
         script Other
           end
         """;

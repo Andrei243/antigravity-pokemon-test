@@ -4326,3 +4326,37 @@ well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W
 - **Not yet**: the post-games of the later regions climb on past their Champions on the same line (Johto's Red, 88 in
   HeartGold, comes to 161), which a region's plan may bend with a third pair. The Battle Hall takes a Pokémon at its own
   level and draws its foes to 100 at most: a Pokémon past 100 entered there is plan 06's to rule on.
+
+## Regions (2026-10-24, plan 18 · W4, part b)
+
+What a crossing from one region to the next does, under the user's option B (2026-10-21). The rules are
+`Models/Crossing.cs`; the journey on screen (the vessel's dark screen and its line) is W5's, the way back W8's.
+
+- **What crosses**: everything. The whole team at full strength (`Crossing.CanTake` allows every Pokémon,
+  `Crossing.Depart` leaves the party as it is), the boxes, money, the bag, every region's badges, the Pokédex, the
+  Trainer Card, the Hall of Fame's records and the story's flags. *Our ruling*: under option B **nothing waits in the
+  boxes**, so the greyed rows of decision 2's fresh journey and the shot `30e_pc_resting` are not built; `CanTake` stays
+  the one place a later choice would ask (W8's harbours sort the party by it).
+- **What changes is the region the player is in**: its Pokédex is entered (W3), `{rival}` names its rival
+  (`PlayerIdentity.InRegion`, on every arrival), and its Pokémon are met at its mapped levels (`GameEngine.LevelHere`,
+  part a): a crossing sets nothing of the levels itself.
+- **A Pokémon belongs to a region** (`Pokemon.Region`, saved as `SavedPokemonData.Region`). *Our ruling*: it is given
+  the region the player stands in by the one sweep that gives ids (`GameEngine.GiveIds`: as a game begins, loads and
+  saves, as a Pokémon is received and before a crossing), so a Pokémon caught, given or hatched belongs to the region it
+  came in, never the one it crosses into; a Pokémon received by a trade joins the receiver's region whatever it says.
+  An older save has none, and its Pokémon read as the save's own region (the region it began in, which is where it
+  stands, since no crossing existed). Nothing reads it in play yet: it is the met data plan 07 · O2 and W8 build on.
+- **Each region has its own rival.** The introduction names the rival of the region the game begins in; a region
+  crossed into has its own (Kanto's Blue, Johto's Silver, the hero the player isn't in Hoenn) until its opening asks
+  with `namerival`, the introduction's keyboard over the field (OK with nothing typed keeps the region's own; B only
+  deletes a letter, since a rival must be called something). The save keeps the introduction's name as `RivalName` and
+  the others as `RivalNames` (a region to a name, written only once a second region's rival has one; no version
+  raised); an older save's one name is the rival of the region it began in.
+- **The links' vessels** (plan 18's table, our own words): Sinnoh to Kanto by **ship** from Canalave's pier, its captain
+  at the end of the pier beside Sailor Eldritch, shown only by `SinnohHallOfFame` so Platinum's Canalave is as it was
+  until the post-game (a person of our own, `overlays/canalave_city.json`'s `npcs`); Kanto to Johto by ship from
+  Vermilion's quay; Johto to Hoenn by **ferry** from Olivine's port hall; Hoenn to Unova undecided until plan 21 writes
+  Hoenn's Hall of Fame and its harbour; Unova on to Paldea by **plane** (`Transport.Plane`), their departures plan 23's.
+  The attendant, ready to sail, says the whole team is welcome aboard before the player agrees.
+- **A game in one region never meets any of it**: nobody crosses before the region's Hall of Fame, and a game begun
+  elsewhere by `--region` keeps its own game's levels (part a).

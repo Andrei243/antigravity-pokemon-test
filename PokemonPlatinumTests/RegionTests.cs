@@ -119,14 +119,48 @@ public class RegionTests
     [Fact]
     public void TestEveryBuiltRegionWithAWayOnHasAnAttendantAtItsDeparture()
     {
+        // Plan 18 · W4, part b: strict for every link between two built regions. Each names its departure, a map of its
+        // own region, with an attendant on it (asked of Everyone: Sinnoh's captain waits for the Hall of Fame's flag),
+        // but for the one whose region's plan hasn't decided its way across yet
+        var undecided = new List<string>();
         foreach (var region in RegionDatabase.All.Where(r => r.IsBuilt))
         {
             var link = RegionDatabase.LinkFrom(region.Id);
-            if (link?.DepartureMap == null) continue;
+            if (link == null || !RegionDatabase.Get(link.To)!.IsBuilt) continue;
+            if (link.Transport == Transport.Undecided)
+            {
+                undecided.Add($"{link.From}>{link.To}");
+                Assert.Null(link.DepartureMap);
+                continue;
+            }
 
+            Assert.NotNull(link.DepartureMap);
             Assert.Contains(link.DepartureMap, region.Maps);
-            Assert.Contains(MapDatabase.Get(link.DepartureMap).NPCs, n => n.IsTransportAttendant);
+            Assert.Contains(MapDatabase.Get(link.DepartureMap!).Everyone, n => n.IsTransportAttendant);
         }
+        // Hoenn's departure is plan 21's, once Hoenn's Hall of Fame is written; a link added undecided between two
+        // built regions is a finding
+        Assert.Equal(new[] { "Hoenn>Unova" }, undecided);
+    }
+
+    [Fact]
+    public void TestEveryLinkSaysWhatCarriesThePlayer()
+    {
+        // Plan 18 · W4, part b: the vessels of plan 18's table, our own words, and the attendant's lines say them
+        Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Sinnoh)!.VesselWord);
+        Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Kanto)!.VesselWord);
+        Assert.Equal("ferry", RegionDatabase.LinkFrom(RegionDatabase.Johto)!.VesselWord);
+        Assert.Equal("way", RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!.VesselWord);
+        Assert.Equal(Transport.Plane, RegionDatabase.LinkFrom(RegionDatabase.Unova)!.Transport);
+        Assert.Equal("plane", RegionDatabase.LinkFrom(RegionDatabase.Galar)!.VesselWord);
+        foreach (var link in RegionDatabase.Links)
+            foreach (var check in new[] { TravelCheck.StoryUnfinished, TravelCheck.DestinationNotBuilt, TravelCheck.Ready })
+                Assert.Contains(RegionDatabase.AttendantLines(link, check), l => l.Contains(link.VesselWord) || check == TravelCheck.Ready && l.Contains("aboard"));
+        // Sinnoh's captain is on Canalave's pier, beside Sailor Eldritch, and only once Sinnoh's Hall of Fame is entered
+        var captain = MapDatabase.Get("Sinnoh").Everyone.Single(n => n.IsTransportAttendant);
+        Assert.Equal((45, 751), (captain.GridX, captain.GridY));
+        Assert.Equal("SinnohHallOfFame", captain.ShownBy);
+        Assert.True(MapDatabase.Get("Sinnoh").IsWalkable(44, 751), "the captain is spoken to from the pier");
     }
 
     [Fact]

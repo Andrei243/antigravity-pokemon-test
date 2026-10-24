@@ -90,5 +90,20 @@
     "signboard_canalave_dock": "Canalave Harbour\nFerries leave from the end of this pier.",
     "signboard_sailor_eldritchs_house": "Sailor Eldritch's House\nHome of the Iron Island ferry's skipper.",
     "signboard_harbor_inn": "Harbour Inn\nA warm bed, a hot meal, and the sound of the sea."
-  }
+  },
+  // The captain who takes a Champion of Sinnoh on to Kanto (plan 18 · W4, part b; RegionDatabase's link from Sinnoh,
+  // common.Attendant), at the end of the pier beside Sailor Eldritch. He comes only with the Hall of Fame, so
+  // Platinum's Canalave is as it was until the post-game
+  "npcs": [
+    {
+      "id": "canalave_city.Captain",
+      "name": "Captain",
+      "npcType": "captain",
+      "x": 45,
+      "y": 751,
+      "facing": "Left",
+      "isTransportAttendant": true,
+      "shownBy": "SinnohHallOfFame"
+    }
+  ]
 }

@@ -854,6 +854,9 @@ public static class ScriptParser
                 if (Objectives.Find(name) == null) throw r.Error($"'{name}' is not an objective: Story/Objectives.cs lists them");
                 return new Instruction { Op = Op.Objective, Line = line, Name = name };
             }
+            // A region's rival named on the introduction's keyboard (plan 18 · W4, part b)
+            case "namerival":
+                return new Instruction { Op = Op.NameRival, Line = line };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

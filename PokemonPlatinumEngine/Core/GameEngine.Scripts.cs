@@ -129,6 +129,8 @@ public partial class GameEngine
         flow.Story.Unset(BicycleRules.ForcedInGateFlag);
         ChangePlace();
         NoteTheTrailOnArrival();
+        // {rival} names the rival of the region the player has come to (plan 18 · W4, part b)
+        PlayerIdentity.InRegion(Here);
         // A Pokémon out of its ball stays in Amity Square (plan 06 · R16c)
         LeaveStrollBehind();
         // Another map ends the Poké Radar's chain (RadarChain_Clear), and the roamers note where the player is (plan 06 · R13)
@@ -1166,6 +1168,10 @@ public partial class GameEngine
                 // away; where the region has no map nothing opens and the script hears 0
                 case ScriptScreen.TownMap:
                     game.flow.ScriptAnswer = game.OpenTownMap(TownMapMode.Wall, fromBag: false) ? 1 : 0;
+                    break;
+                // A region's rival named (plan 18 · W4, part b): the introduction's keyboard over the field
+                case ScriptScreen.NameRival:
+                    game.OpenRivalNaming();
                     break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,
