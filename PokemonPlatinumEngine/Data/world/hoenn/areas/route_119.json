@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Zigzagoon", "level": 25 },
     { "species": "Linoone", "level": 25 },

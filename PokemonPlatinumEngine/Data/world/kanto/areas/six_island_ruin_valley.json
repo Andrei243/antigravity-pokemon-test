@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Natu", "level": 15 },
     { "species": "Spearow", "level": 44 },

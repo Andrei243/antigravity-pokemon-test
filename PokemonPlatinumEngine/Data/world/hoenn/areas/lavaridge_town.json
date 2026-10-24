@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 152, "z": 75, "to": "lavaridge_town_herb_shop", "toWarp": 0 },
     { "x": 145, "z": 75, "to": "lavaridge_town_gym_1f", "toWarp": 0 },

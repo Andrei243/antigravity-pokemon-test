@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 95, "z": 15, "to": "fallarbor_town_mart", "toWarp": 0 },
     { "x": 88, "z": 7, "to": "fallarbor_town_battle_tent_lobby", "toWarp": 0 },

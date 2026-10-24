@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": true,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Caterpie", "level": 4 },
     { "species": "Weedle", "level": 4 },

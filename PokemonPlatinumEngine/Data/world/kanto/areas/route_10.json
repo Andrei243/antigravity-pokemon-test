@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Spearow", "level": 16 },
     { "species": "Voltorb", "level": 16 },

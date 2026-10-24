@@ -666,7 +666,10 @@ public sealed class GbaWorld
         NightMusic = map.Music,
         Bike = map.Cycling,
         Running = map.Running,
-        EscapeRope = map.Escaping
+        EscapeRope = map.Escaping,
+        // Fly and Teleport go from a town, a city, a route or a sea route, by the map's type alone
+        // (Overworld_MapTypeAllowsTeleportAndFly); the header has no flag of its own for them
+        Fly = map.MapType is "MAP_TYPE_TOWN" or "MAP_TYPE_CITY" or "MAP_TYPE_ROUTE" or "MAP_TYPE_OCEAN_ROUTE"
     };
 
     /// <summary><c>MAPSEC_PALLET_TOWN</c> to "Pallet Town", <c>MAPSEC_ROUTE_1</c> to "Route 1".</summary>

@@ -141,7 +141,7 @@ partial class Harness
         choice.Move(1);
         Frames(20);
         InputManager.Feed(ActionFrame.Press(GameAction.Confirm)); Frames(1); InputManager.Feed(null);
-        ReadTo("your very own Pokédex"); Frames(10); Shot("us08_the_pokedex");
+        ReadTo("Your very own Pokédex"); Frames(10); Shot("us08_the_pokedex");
         ReadTo("How long were you going to leave me"); Frames(10); Shot("us09_hugh_comes_up");
         IntoBattle("Hugh's first battle");
         ToMainMenu(game.Battle); Shot("us10_hughs_first_battle");

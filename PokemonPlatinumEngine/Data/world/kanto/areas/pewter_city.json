@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 65, "z": 66, "to": "pewter_city_museum_1f", "toWarp": 1 },
     { "x": 73, "z": 64, "to": "pewter_city_museum_1f", "toWarp": 3 },

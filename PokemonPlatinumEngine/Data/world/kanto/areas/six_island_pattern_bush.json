@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": true,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Spinarak", "level": 9 },
     { "species": "Kakuna", "level": 9 },

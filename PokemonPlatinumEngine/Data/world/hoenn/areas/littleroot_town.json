@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 134, "z": 290, "to": "littleroot_town_mays_house_1f", "toWarp": 1 },
     { "x": 125, "z": 290, "to": "littleroot_town_brendans_house_1f", "toWarp": 1 },

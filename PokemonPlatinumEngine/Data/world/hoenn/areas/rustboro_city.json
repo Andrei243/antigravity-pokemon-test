@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 27, "z": 141, "to": "rustboro_city_gym", "toWarp": 0 },
     { "x": 13, "z": 152, "to": "rustboro_city_flat_1_1f", "toWarp": 0 },

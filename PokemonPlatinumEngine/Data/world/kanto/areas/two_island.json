@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 39, "z": 49, "to": "two_island_joyful_game_corner", "toWarp": 0 },
     { "x": 33, "z": 49, "to": "two_island_house", "toWarp": 0 },

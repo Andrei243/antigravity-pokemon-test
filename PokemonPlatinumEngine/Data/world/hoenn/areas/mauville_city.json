@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 208, "z": 145, "to": "mauville_city_gym", "toWarp": 0 },
     { "x": 222, "z": 145, "to": "mauville_city_pokemon_center_1f", "toWarp": 0 },

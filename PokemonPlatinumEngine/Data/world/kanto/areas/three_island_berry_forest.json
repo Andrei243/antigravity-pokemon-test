@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": true,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Pidgeotto", "level": 37 },
     { "species": "Gloom", "level": 35 },

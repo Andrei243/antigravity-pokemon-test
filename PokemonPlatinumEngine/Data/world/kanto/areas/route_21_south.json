@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Tangela", "level": 22 },
     { "species": "Tangela", "level": 23 },

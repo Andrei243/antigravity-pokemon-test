@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Poochyena", "level": 4 },
     { "species": "Wurmple", "level": 4 },

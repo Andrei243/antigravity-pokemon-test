@@ -19,7 +19,8 @@ namespace PokemonPlatinumEngine.UI;
 internal static partial class ModernUi
 {
     /// <summary>The four teams' colours: the player's in the selection's colour, the rivals blue, green and gold.</summary>
-    public static readonly Color[] AthlonTeamColors = { Selection, Blue, Green, Gold };
+    // (a property: a static array made of the tokens of ModernUi's other files would be made before them, all four transparent)
+    public static Color[] AthlonTeamColors => new[] { Selection, Blue, Green, Gold };
 
     /// <summary>The dome's own colour: the title band and the stars of a stat.</summary>
     public static readonly Color AthlonSky = new(58, 150, 214, 255);

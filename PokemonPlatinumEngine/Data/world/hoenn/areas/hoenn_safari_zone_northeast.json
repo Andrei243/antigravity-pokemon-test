@@ -14,7 +14,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "land": [
     { "species": "Aipom", "level": 33 },
     { "species": "Teddiursa", "level": 34 },

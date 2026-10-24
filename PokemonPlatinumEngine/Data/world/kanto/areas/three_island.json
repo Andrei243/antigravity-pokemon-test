@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 99, "z": 31, "to": "three_island_house_1", "toWarp": 0 },
     { "x": 110, "z": 27, "to": "three_island_pokemon_center_1f", "toWarp": 0 },

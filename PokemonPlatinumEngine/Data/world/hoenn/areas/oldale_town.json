@@ -13,7 +13,7 @@
   "bike": true,
   "running": true,
   "escapeRope": false,
-  "fly": false,
+  "fly": true,
   "warps": [
     { "x": 125, "z": 249, "to": "oldale_town_house_1", "toWarp": 0 },
     { "x": 135, "z": 258, "to": "oldale_town_house_2", "toWarp": 0 },
