@@ -36,7 +36,10 @@ public static class SpawnLocations
     public static IReadOnlyList<SpawnLocation> Of(Region region) =>
         (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, region.OverworldMap ?? "Sinnoh")).ToList();
 
-    /// <summary>Sinnoh's twenty, from <c>regions/sinnoh.json</c>: the places the rest of this class speaks of until Fly is region by region (plan 18 · W9).</summary>
+    /// <summary>
+    /// Sinnoh's twenty, from <c>regions/sinnoh.json</c>: the places the members with no region speak of. Fly's choice
+    /// and the place to come back to are region by region (<see cref="In"/>, <see cref="VariableOf"/>, plan 18 · W9).
+    /// </summary>
     public static readonly IReadOnlyList<SpawnLocation> All = Of(RegionDatabase.Get(RegionDatabase.Sinnoh)!);
 
     private static readonly Dictionary<string, IReadOnlyList<SpawnLocation>> byRegion = new(StringComparer.OrdinalIgnoreCase);
@@ -88,6 +91,33 @@ public static class SpawnLocations
 
     /// <summary>Where Teleport takes the player: the town of the Pokémon Center they last went into, Twinleaf Town before any.</summary>
     public static SpawnLocation Respawn(StoryState story) => Get(story.Var(Variable)) ?? All[0];
+
+    /// <summary>
+    /// The variable that keeps a region's place to come back to (plan 18 · W9): Sinnoh's is the original's
+    /// <see cref="Variable"/>, every other region's its own (<c>VAR_SPAWN_LOCATION_KANTO</c>), so a flight to
+    /// another region and back leaves each region's last Pokémon Center as it was.
+    /// </summary>
+    public static string VariableOf(string? regionId) =>
+        regionId == null || string.Equals(regionId, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase)
+            ? Variable : Variable + "_" + regionId.ToUpperInvariant();
+
+    /// <summary>The place a room of any region makes the one to come back to there, on going into it; null for any other room.</summary>
+    public static SpawnLocation? OfRoomAnywhere(string mapName) =>
+        RegionDatabase.RegionOfMap(mapName) is { } region && !string.Equals(region.Id, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase)
+            ? In(region.Id).FirstOrDefault(s => s.Room == mapName)
+            : OfRoom(mapName);
+
+    /// <summary>
+    /// Where Teleport takes the player in a region (plan 18 · W9): the town of its Pokémon Center they last went into,
+    /// by the region's own variable, else its first spawn (Sinnoh's Twinleaf Town, Kanto's Pallet Town). Null for a
+    /// region with no spawns.
+    /// </summary>
+    public static SpawnLocation? Respawn(StoryState story, string? regionId)
+    {
+        var list = In(regionId);
+        if (list.Count == 0) return null;
+        return Get(regionId, story.Var(VariableOf(regionId))) ?? list[0];
+    }
 
     /// <summary>
     /// The places Fly can go to: those the region's map has open (<see cref="FlyFlag"/>), among the areas that are

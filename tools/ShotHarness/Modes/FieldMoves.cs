@@ -208,7 +208,65 @@ partial class Harness
             var fight = game.Battle;
             ToMainMenu(fight);
             Shot("fm26_fish_battle");
+            // (the battle is left where it stands: the field is taken back for the flights below)
+            game.State = GameState.Overworld;
+            Frames(2);
         }
+
+        // ---- Fly between regions (plan 18 · W9), last so nothing before it moves: a Champion of Sinnoh who has been
+        // in Kanto flies from Jubilife City to Pallet Town and back, the flags forced for the pictures and taken back
+        var sinnohRegion = RegionDatabase.Get(RegionDatabase.Sinnoh)!;
+        var kanto = RegionDatabase.Get(RegionDatabase.Kanto)!;
+        story.Set(sinnohRegion.StoryCompleteFlag);
+        story.SetBadges(RegionDatabase.Kanto, 0xFF);
+        game.Pokedex.Enter(kanto);
+        var pallet = SpawnLocations.In(RegionDatabase.Kanto)[0];
+        var jubilife = SpawnLocations.ArrivedIn("jubilife_city")!;
+        story.Set(SpawnLocations.FlyFlag(pallet));
+        void FlyFrom(string map, int x, int y)
+        {
+            At(map, x, y, Direction.Down);
+            game.ChooseFromStartMenu(StartMenuChoice.Pokemon);
+            Frames(30);
+            partyMenu.SelectedIndex = 1;
+            partyMenu.Confirm(team);
+            partyMenu.MoveAction(1);
+            partyMenu.Confirm(team);
+            Frames(20);
+        }
+        void CursorTo(SpawnLocation town)
+        {
+            var screen = game.TownMapScreen;
+            var cell = screen.State!.Region.FlySpots.First(f => f.Spawn == town.Id).Cells[0];
+            for (int i = 0; i < 60 && screen.HoveredSpot?.Town != town; i++)
+                screen.Move(Math.Sign(cell.X - screen.CursorX), Math.Sign(cell.Y - screen.CursorY));
+        }
+        void Land(string shot, string what)
+        {
+            game.TownMapScreen.Confirm(); Frames(2);
+            Whole(); Next();
+            Until(() => !engine.ScriptRunning && State() == GameState.Overworld, what, 600);
+            Frames(20); Shot(shot);
+            Console.WriteLine($"fly across: at {me.GridX},{me.GridY} of {game.Map.Name} in {RegionDatabase.RegionOfMap(game.Map.Name)?.Id}, a team of {team.Members.Count}");
+        }
+
+        FlyFrom(jubilife.Map, jubilife.X, jubilife.Y);
+        var tabs = game.TownMapScreen;
+        Console.WriteLine($"fly across: {tabs.Tabs.Count} tabs ({string.Join(", ", tabs.Tabs.Select(t => t.Region.Region))}), on {tabs.Tab}");
+        tabs.ChangeTab(1);
+        CursorTo(pallet);
+        Frames(10); Shot("fm14b_fly_two_regions");
+        Land("fm16b_flown_to_kanto", "the flight to Kanto");
+
+        FlyFrom(game.Map.Name, me.GridX, me.GridY);
+        tabs.ChangeTab(-1);
+        CursorTo(jubilife);
+        Frames(10); Shot("fm14c_fly_back_to_sinnoh");
+        Land("fm16c_flown_back", "the flight back to Sinnoh");
+
+        story.Unset(sinnohRegion.StoryCompleteFlag);
+        story.SetBadges(RegionDatabase.Kanto, 0);
+        story.Unset(SpawnLocations.FlyFlag(pallet));
 
         // ---- field helpers (plan 12 · Q18): the options' row on, a team that knows none of the moves, the Badges and the HMs held.
         // fm30 a tree's question answered by a helper's line, fm31 the cut-in, fm32 the party's strip, fm33 Fly's map with a flier

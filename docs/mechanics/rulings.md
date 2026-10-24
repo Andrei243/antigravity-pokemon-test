@@ -4525,6 +4525,31 @@ How a crossing is seen and heard. The rules of what crosses are "Regions", above
   asks his grandson's name, as FireRed's introduction does); Johto's is the officer's question in Elm's lab, where the
   player gives the thief's name (HeartGold asks it there too). A game begun in the region never meets either.
 
+## Fly between regions (2026-10-24, plan 18 · W9)
+
+The one way back to a region left: the README's "Regions" (the user's answer of 2026-10-12) has one way on by vessel and
+nothing back by harbour (W8 left out), and Fly back to any region already entered.
+
+- **Which regions** (`Crossing.CanFly`, `FlyRegions`): every other region the player has been in, as the Trainer Card
+  counts it (`Crossing.HasEntered`: its Pokédex entered, a badge of it, or its Hall of Fame), built and with a map of its
+  own to choose a town on. *Our ruling*: nothing is asked of either region's Hall of Fame, though plan 18's first draft
+  of W9 asked both to be finished. A region is left by its vessel only once its story is over, so whatever lies behind
+  the player is finished anyway; the README's words ask only that the region was entered, so a Champion back in Sinnoh
+  may fly on to a Kanto still in the middle of its story, which the vessel would take them to as well.
+- **Where Fly is used** is asked as ever, in the region the player stands in: its badge for Fly (the region's `gates`),
+  no partner along, outdoors. A town of another region is open to Fly by its own flag, as in its own region.
+- **The choice** is the Town Map's Fly mode with a tab per region (style guide, "The Town Map", "Fly between regions");
+  Q and E change the region, the arrows the cursor. The original has one region and no such row: it is ours.
+- **A flight to another region is a crossing** (`GameEngine.CrossTo`, which the vessel's `TravelTo` also goes through):
+  every Pokémon given the region it leaves, the party sorted by `Crossing.Depart` (whole, under option B), the region's
+  Pokédex entered and its rival the one `{rival}` names, the music and name sign of the town landed in, the region's
+  levels by themselves. It is seen as Fly's own flight and fade: no vessel, no dark screen, no line.
+- **Each region's place to come back to** (`SpawnLocations.VariableOf`): Sinnoh's is the original's `VAR_SPAWN_LOCATION`;
+  every other region keeps its own (`VAR_SPAWN_LOCATION_KANTO`), set on going into one of its Pokémon Centers, so a
+  flight away and back leaves each region's as it was. Teleport goes to the region's own (its first spawn before any);
+  a white-out outside Sinnoh still wakes at the region's home, as plan 19 · K1 ruled. Nothing new is saved: the
+  regions entered, the towns' flags and the variables were already in the save, so no save version was raised.
+
 ## The Bug-Catching Contest (2026-10-24, plan 15 · E5)
 
 HeartGold's own, read from pret/pokeheartgold's `src/overlay_bug_contest.c` (and its header), with its two tables,

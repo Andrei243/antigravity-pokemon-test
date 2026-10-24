@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -48,21 +49,69 @@ public sealed class TownMapScreen
     /// <summary>The Pokémon that uses Fly, one of the team or a wild helper (plan 12 · Q18) (Fly's mode).</summary>
     public Pokemon? Flier { get; private set; }
 
+    /// <summary>
+    /// The regions the screen can show, one tab each (plan 18 · W9: Fly's choice across the regions entered); a
+    /// screen opened on one region alone has that one and no tabs are drawn.
+    /// </summary>
+    public IReadOnlyList<TownMapState> Tabs { get; private set; } = Array.Empty<TownMapState>();
+
+    /// <summary>The tab shown now, whose region <see cref="State"/> is.</summary>
+    public int Tab { get; private set; }
+
+    /// <summary>The tab of the region the player stands in, the one the screen opened on.</summary>
+    public int HomeTab { get; private set; }
+
+    /// <summary>Whether there is more than one region to choose between.</summary>
+    public bool HasTabs => Tabs.Count > 1;
+
     public void Open(TownMapState state, TownMapMode mode, Pokemon? flier = null)
     {
-        State = state;
+        Tabs = new[] { state };
+        Tab = HomeTab = 0;
+        Show(state);
         Mode = mode;
         Flier = flier;
-        (CursorX, CursorY) = state.FirstCursor();
-        Zoomed = false;
         chosen = null;
         age = 0f;
+        IsActive = true;
+        AudioManager.PlaySound("page");
+    }
+
+    /// <summary>
+    /// Opens on several regions, a tab each, on <paramref name="home"/>'s (plan 18 · W9): Fly's choice once more than
+    /// one region can be flown to. One region alone opens as <see cref="Open(TownMapState, TownMapMode, Pokemon)"/> does.
+    /// </summary>
+    public void Open(IReadOnlyList<TownMapState> tabs, int home, TownMapMode mode, Pokemon? flier = null)
+    {
+        Open(tabs[home], mode, flier);
+        Tabs = tabs;
+        Tab = HomeTab = home;
+    }
+
+    /// <summary>
+    /// Shows the next region's map or the one before (the shoulder buttons; the arrows move the cursor): the cursor
+    /// at its first place there, the map whole. It stops at either end. Returns whether the tab changed.
+    /// </summary>
+    public bool ChangeTab(int step)
+    {
+        int to = Math.Clamp(Tab + Math.Sign(step), 0, Tabs.Count - 1);
+        if (to == Tab || !IsActive) return false;
+        Tab = to;
+        Show(Tabs[to]);
+        AudioManager.PlaySound("page");
+        return true;
+    }
+
+    // One region's map on the screen: the cursor at its first place, the map whole
+    private void Show(TownMapState state)
+    {
+        State = state;
+        (CursorX, CursorY) = state.FirstCursor();
+        Zoomed = false;
         sinceMove = zoomAge = 1f;
         across.Release();
         down.Release();
         (shownX, shownY) = ZoomTarget();
-        IsActive = true;
-        AudioManager.PlaySound("page");
     }
 
     /// <summary>The block under the cursor; null over open sea, forest, and a place the story has not revealed.</summary>
@@ -190,7 +239,10 @@ public sealed class TownMapScreen
         for (int step = Math.Max(Math.Abs(sx), Math.Abs(sy)); step > 0; step--)
             Move(Math.Abs(sx) >= step ? sx : 0, Math.Abs(sy) >= step ? sy : 0, held: across.Repeating || down.Repeating);
 
-        if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
+        // The shoulders change the region (plan 18 · W9)
+        if (HasTabs && InputManager.IsActionPressed(GameAction.PageLeft)) ChangeTab(-1);
+        else if (HasTabs && InputManager.IsActionPressed(GameAction.PageRight)) ChangeTab(1);
+        else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
         else if (InputManager.IsActionPressed(GameAction.Menu)) ToggleZoom();
     }

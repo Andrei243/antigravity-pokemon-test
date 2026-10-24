@@ -1210,7 +1210,7 @@ public class JohtoStoryTests
             Assert.Equal(spawn.Room, overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
         }
         // A flight lands on Johto's map, not Sinnoh's
-        var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { FlyTo = olivine };
+        var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { FlyTo = olivine, Region = RegionDatabase.Johto };
         Assert.True(host.Fly());
         Assert.Contains(host.Log, l => l.StartsWith("warp Johto 272 258"));
         // Sinnoh's are as they were

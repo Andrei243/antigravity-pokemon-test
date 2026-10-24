@@ -821,6 +821,17 @@ public sealed class HeadlessScriptHost : IScriptHost
         BeganInRegion ??= here.Id;
 
         var to = RegionDatabase.Get(link.To)!;
+        Log.Add($"travel {to.Id}");
+        CrossTo(here, to, to.ArrivalSpot!);
+    }
+
+    /// <summary>
+    /// Into another region at a place of it, as the game's <c>CrossTo</c> goes (plan 18 · W9: the vessel's crossing and
+    /// a flight to a town of another region): the Pokémon given the region they leave, the team departing by
+    /// <see cref="Crossing.CanTake"/>, the region noted in <see cref="Crossings"/>, and the player put down there.
+    /// </summary>
+    private void CrossTo(Region here, Region to, MapSpot spot)
+    {
         Crossing.Belong(Party.Members.Concat(Boxes), here.Id);
         foreach (var member in Party.Members.ToList())
         {
@@ -828,9 +839,7 @@ public sealed class HeadlessScriptHost : IScriptHost
             Party.Remove(member);
             Boxes.Add(member);
         }
-        Log.Add($"travel {to.Id}");
         Crossings.Add(to.Id);
-        var spot = to.ArrivalSpot!;
         if (MapNamed?.Invoke(spot.Map) is { } target)
         {
             Map = target;
@@ -991,6 +1000,14 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("fly");
         NeverInAHurry("a flight");
         if (FlyTo is not { } town) return false;
+        // A town of another region is a crossing there (plan 18 · W9)
+        if (RegionDatabase.RegionOfMap(town.Map) is { } to && !string.Equals(to.Id, Region, StringComparison.OrdinalIgnoreCase)
+            && RegionDatabase.Get(Region) is { } here)
+        {
+            Log.Add($"fly {to.Id}");
+            CrossTo(here, to, new MapSpot(town.Map, town.X, town.Y, Direction.Down));
+            return true;
+        }
         Warp(town.Map, town.X, town.Y, Direction.Down);
         return true;
     }
@@ -999,8 +1016,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         Shown("teleport");
         NeverInAHurry("Teleport");
-        var town = SpawnLocations.Respawn(Story);
-        Warp("Sinnoh", town.X, town.Y, Direction.Down);
+        if (SpawnLocations.Respawn(Story, Region) is not { } town) return false;
+        Warp(town.Map, town.X, town.Y, Direction.Down);
         return true;
     }
 

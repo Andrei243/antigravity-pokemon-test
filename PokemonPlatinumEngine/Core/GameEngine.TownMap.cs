@@ -49,6 +49,36 @@ public partial class GameEngine
     }
 
     /// <summary>
+    /// What the game has put on a region's map (plan 18 · W9): the region the player is in as <see cref="TownMapNow"/>
+    /// has it, and another with no player and no way come on it, its places open by its own flags. Null where the
+    /// region has no map.
+    /// </summary>
+    private TownMapState? TownMapOf(Region region)
+    {
+        if (string.Equals(region.Id, Here.Id, StringComparison.OrdinalIgnoreCase)) return TownMapNow();
+        if (RegionMap.Of(region.Id) is not { } map) return null;
+        var overworld = MapDatabase.Get(map.Map);
+        return new TownMapState(map, flow.Story, reachable: town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
+    }
+
+    /// <summary>
+    /// Fly's choice now (plan 18 · W9): a tab for the region the player is in and for every other
+    /// <see cref="Crossing.CanFly"/> allows, in the chain's order, and which tab is the player's own.
+    /// </summary>
+    private (IReadOnlyList<TownMapState> Tabs, int Home) FlyChoiceNow()
+    {
+        var tabs = new List<TownMapState>();
+        int home = 0;
+        foreach (var region in Crossing.FlyRegions(Here, flow.Story, flow.Pokedex.Entered))
+        {
+            if (TownMapOf(region) is not { } state) continue;
+            if (string.Equals(region.Id, Here.Id, StringComparison.OrdinalIgnoreCase)) home = tabs.Count;
+            tabs.Add(state);
+        }
+        return (tabs, home);
+    }
+
+    /// <summary>
     /// Opens the map of the region to be looked at: the Town Map out of the bag (it goes back to the bag) or off
     /// the item button, or a map on a wall. False where the region has no map.
     /// </summary>
