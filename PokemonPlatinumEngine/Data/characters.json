@@ -352,7 +352,32 @@
     "dragon_tamer": { "hairColor": "#8a2a2a", "hair": "Spiky", "top": "#26262c", "accent": "#d8383c", "bottom": "#3a2a2a", "shoes": "#1e1e22", "coat": true, "bushyBrows": true, "build": "Adult", "height": 1.1 },
     "ranger_m": { "hairColor": "#3a2a24", "hat": "Cap", "hatColor": "#d8403c", "hatBand": "#26262c", "top": "#d8403c", "accent": "#f6f6f8", "bottom": "#26262c", "shoes": "#2a2a30", "coat": true, "build": "Adult", "height": 1.06 },
     "ranger_f": { "hairColor": "#a8582e", "hair": "Ponytail", "hatBand": "#f6f6f8", "hat": "Visor", "hatColor": "#3a6ad0", "top": "#3a6ad0", "accent": "#f6f6f8", "bottom": "#26262c", "shoes": "#2a2a30", "shorts": true, "build": "Adult", "lashes": true },
-    "pi": { "hairColor": "#4a3428", "hat": "Fedora", "hatColor": "#b49a6a", "hatBand": "#5a4430", "top": "#c4a872", "accent": "#5a4430", "bottom": "#4a4250", "shoes": "#3a2c24", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 }
+    "pi": { "hairColor": "#4a3428", "hat": "Fedora", "hatColor": "#b49a6a", "hatBand": "#5a4430", "top": "#c4a872", "accent": "#5a4430", "bottom": "#4a4250", "shoes": "#3a2c24", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
+    // Plan 20 · J14: Johto's named cast, our own designs after the characters. Bugsy, Chuck, Pryce and Clair; Will, Karen
+    // (Koga, Bruno and Lance are Kanto's looks); Kurt, Eusine, the friend, Mr. Pokémon and Red
+    "bugsy": { "hairColor": "#b4cc62", "hair": "Bowl", "top": "#6a9a42", "accent": "#f2f2e6", "bottom": "#e4e0c4", "shoes": "#6a4c34", "eyes": "#3a5a2a", "shortSleeves": true, "bag": "#8ab04e", "blush": true, "height": 0.98 },
+    "chuck": { "hairColor": "#3a2a24", "hair": "Bald", "top": "#d8cfba", "accent": "#26262c", "bottom": "#3a5a8a", "shoes": "#2a2a30", "eyes": "#2a2024", "bushyBrows": true, "shortSleeves": true, "build": "Adult", "height": 1.18 },
+    "pryce": { "hairColor": "#e6e8f0", "hair": "Swept", "top": "#3a5aa0", "accent": "#f2f4fa", "bottom": "#35354c", "shoes": "#2a2a36", "eyes": "#4a5a7a", "beard": true, "coat": true, "scarf": true, "build": "Elder", "height": 0.94 },
+    "clair": { "hairColor": "#3a3a8a", "hair": "Ponytail", "top": "#3a4aa0", "accent": "#e2c254", "bottom": "#2a2a4a", "shoes": "#e2c254", "eyes": "#8a3a4a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    "will": { "hairColor": "#7a5ab4", "hair": "Swept", "top": "#ece6f4", "accent": "#7a3ab4", "bottom": "#3a2a5a", "shoes": "#2a2236", "eyes": "#5a3a8a", "coat": true, "build": "Adult", "height": 1.06 },
+    "karen": { "hairColor": "#1e1c26", "hair": "Long", "top": "#26222e", "accent": "#c84a4a", "bottom": "#26222e", "shoes": "#1e1c24", "eyes": "#b03a3a", "skirt": true, "build": "Adult", "lashes": true, "height": 1.06 },
+    "kurt": { "hairColor": "#dcdce0", "hat": "Headband", "hatColor": "#f4f4f6", "hatBand": "#c8463c", "top": "#c8b88c", "accent": "#7a5a3a", "bottom": "#5a4a3a", "shoes": "#3a2a24", "eyes": "#3a2a24", "apron": "#7a5a3a", "mustache": true, "bushyBrows": true, "build": "Elder", "height": 0.96 },
+    "eusine": { "hairColor": "#4a5a9a", "hair": "Long", "top": "#ecece8", "accent": "#6a4ab0", "bottom": "#3a4a7a", "shoes": "#2a2a36", "eyes": "#3a4a7a", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    "lyra": { "hairColor": "#6a4030", "hair": "Ponytail", "hat": "WideHat", "hatColor": "#f6f2ea", "hatBand": "#e0586a", "top": "#e0586a", "accent": "#f6f2ea", "bottom": "#4a5a9a", "shoes": "#f0ece4", "eyes": "#6a4a2a", "shorts": true, "shortSleeves": true, "bag": "#e0a84a", "lashes": true, "blush": true },
+    "mr_pokemon": { "hairColor": "#d0d0d8", "hair": "Short", "top": "#d8683a", "accent": "#f4f4f6", "bottom": "#5a4a42", "shoes": "#3a2a24", "eyes": "#3a3036", "glasses": "#3a3036", "coat": true, "mustache": true, "build": "Elder", "height": 0.96 },
+    "red": { "hairColor": "#2a2428", "hat": "Cap", "hatColor": "#d8383c", "hatBand": "#f6f6fa", "top": "#d8383c", "accent": "#f6f6fa", "bottom": "#3a4a7a", "shoes": "#2a2a30", "eyes": "#6a2a2a", "bag": "#e8d070", "sole": "#f0ece4", "shortSleeves": true, "height": 1.02 },
+    // Team Rocket's four executives in white under the red mark, and the woman grunt
+    "proton": { "hairColor": "#4a4a5c", "hair": "Short", "top": "#ececf0", "accent": "#c43a3a", "bottom": "#3a3a44", "shoes": "#26262c", "eyes": "#3a3440", "coat": true, "build": "Adult", "height": 1.04 },
+    "petrel": { "hairColor": "#9a82c4", "hair": "Spiky", "top": "#ececf0", "accent": "#c43a3a", "bottom": "#3a3a44", "shoes": "#26262c", "eyes": "#5a4a7a", "coat": true, "build": "Adult", "height": 1.0 },
+    "ariana": { "hairColor": "#d03a52", "hair": "Ponytail", "top": "#ececf0", "accent": "#c43a3a", "bottom": "#ececf0", "shoes": "#26262c", "eyes": "#8a2a3a", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    "archer": { "hairColor": "#2a2a3a", "hair": "Swept", "top": "#ececf0", "accent": "#c43a3a", "bottom": "#2e2e38", "shoes": "#1e1e24", "eyes": "#2a2a3a", "mustache": true, "coat": true, "build": "Adult", "height": 1.12 },
+    "rocket_f": { "hairColor": "#2e2a30", "hair": "Ponytail", "hat": "Cap", "hatColor": "#26262c", "hatBand": "#c43a3a", "top": "#26262c", "accent": "#ececf0", "bottom": "#26262c", "shoes": "#ececf0", "eyes": "#3a3440", "skirt": true, "build": "Adult", "lashes": true },
+    // The classes new to Johto: a Firebreather in a headband and a red shirt, a Poké Maniac in a brown hat and glasses with a
+    // pack, a Boarder in a beanie and goggles, a Teacher in glasses with her hair up
+    "firebreather": { "hairColor": "#3a2a24", "hat": "Headband", "hatColor": "#f0c040", "hatBand": "#c8402a", "top": "#c8402a", "accent": "#f0c040", "bottom": "#3a2a24", "shoes": "#2a2224", "eyes": "#2a2024", "bushyBrows": true, "shortSleeves": true, "build": "Adult", "height": 1.04 },
+    "poke_maniac": { "hairColor": "#5a4a3a", "hat": "WideHat", "hatColor": "#7a5a3a", "hatBand": "#e8d6a8", "top": "#e8e0c8", "accent": "#7a5a3a", "bottom": "#4a4a52", "shoes": "#3a2c24", "eyes": "#2a2024", "glasses": "#2a2a30", "bag": "#a84a3a", "build": "Adult", "height": 1.0 },
+    "boarder": { "hairColor": "#4a3428", "hat": "Beanie", "hatColor": "#3a8ad8", "hatBand": "#f6f6f8", "top": "#e85a2a", "accent": "#f6f6f8", "bottom": "#2a3046", "shoes": "#2a2a30", "eyes": "#2a2024", "glasses": "#f0c040", "build": "Adult", "height": 1.04 },
+    "teacher": { "hairColor": "#5a3a2c", "hair": "Bun", "top": "#f0e8e0", "accent": "#4a7a5a", "bottom": "#4a5a52", "shoes": "#3a2a2c", "eyes": "#3a2a2c", "glasses": "#3a3036", "skirt": true, "build": "Adult", "lashes": true }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
@@ -389,7 +414,7 @@
     "old_man_2": "Gentleman",
     "rocket_m": "rocket",
     // HeartGold's looks (plan 20 · J2), until plan 20 · J14 gives Johto's classes and cast their own
-    "gsrivel": "Rival",
+    "gsrivel": "silver",
     "gsmama": "Mom",
     "doctor": "Rowan",
     "ookido": "prof_oak",
@@ -425,7 +450,7 @@
     // Plan 20 · J4: Sprout Tower, Violet's Gym and Route 32
     "bozu": "sage",
     "chourou": "sage",
-    "gsleader1": "Youngster",
+    "gsleader1": "falkner",
     "sunglasses": "Gentleman",
     "picnicgirl_2": "Lass",
     "campboy_2": "Youngster",
@@ -452,13 +477,13 @@
     "preschooler_f": "Lass", "janitor": "Gentleman", "pkmn_ranger_m": "Youngster", "pkmn_ranger_f": "Lass",
     "pkmn_breeder_m": "Gentleman", "pkmn_breeder_f": "Lady", "team_plasma_grunt_m": "Grunt", "team_plasma_grunt_f": "Grunt",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
-    "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
+    "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
     "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
     "mount_2": "Gentleman", "fire": "Youngster", "mania": "Gentleman", "mystery_2": "Youngster",
     // Plan 20 · J5, part b: Ilex Forest to Ecruteak City (Whitney, Morty, the Kimono Girls and the Sages stand as looks
     // of their own, above)
-    "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "Gentleman",
-    "masaki": "Gentleman", "kurumi": "Lass", "workman": "Gentleman", "babyboy1_2": "Youngster",
+    "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "eusine",
+    "masaki": "Gentleman", "kurumi": "lyra", "workman": "Gentleman", "babyboy1_2": "Youngster",
     // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
     "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt",
     // Plan 21 · H4, part a: Team Magma's grunts have a look of their own; the old woman, the cook, a girl, the
@@ -466,14 +491,17 @@
     "magma_member_m": "magma_grunt", "magma_member_f": "magma_grunt", "cook": "Gentleman",
     "girl_2": "Lass", "reporter_f": "reporter",
     // Plan 20 · J7: the Slowpoke Well's executive and its woman grunt, and Bugsy, until plan 20 · J14's looks
-    "rkanbum3": "rocket", "rocketw": "rocket", "gsleader2": "Youngster",
+    "rkanbum3": "proton", "rocketw": "rocket_f", "gsleader2": "bugsy",
     // Plan 20 · J8: the west and the sea (Jasmine stands as Platinum's own Jasmine, the sailors as captains in their caps,
     // the black belts of Chuck's Gym and Chuck himself as black belts), until plan 20 · J14's looks
-    "seaman_2": "captain", "gsswimmerm": "Youngster", "gsswimmerw": "Lass", "gsleader6": "jasmine", "gsleader5": "blackbelt",
+    "seaman_2": "captain", "gsswimmerm": "Youngster", "gsswimmerw": "Lass", "gsleader6": "jasmine", "gsleader5": "chuck",
     "babyboy1_8": "Youngster",
     // Plan 20 · J11, part a: Lance and Giovanni stand as their own looks; the Team Rocket Hideout's two executives as
     // grunts and Pryce as the nearest look, until plan 20 · J14's
-    "wataru": "lance", "sakaki": "giovanni", "rkanbuw": "rocket", "rkanbum2": "rocket", "gsleader7": "Gentleman"
+    "wataru": "lance", "sakaki": "giovanni", "rkanbuw": "ariana", "rkanbum2": "petrel", "gsleader7": "pryce",
+    // Plan 20 · J14: the rest of the named cast (HeartGold's Leaders, its Elite Four, the Radio Tower's executive) have looks of their own
+    "gsleader8": "clair", "gsleader9": "lt_surge", "gsbigfour1": "will", "gsbigfour2": "koga", "gsbigfour3": "bruno", "gsbigfour4": "karen",
+    "rkanbum": "archer", "skierw": "skier_f", "thief": "burglar"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
@@ -540,7 +568,39 @@
     "Belle & Pa": [ "lass", "middle_aged_man" ],
     "Double Team": [ "ace_trainer_f", "ace_trainer_m" ],
     "Young Couple": [ "ace_trainer_m", "ace_trainer_f" ],
-    "Rival": [ "rival", "blue", "may", "brendan", "wally" ],
+    "Rival": [ "rival", "blue", "may", "brendan", "wally", "silver" ],
+    // Plan 20 · J14: the classes HeartGold has that Platinum and FireRed lack, on looks of the kit, and the Johto cast's
+    "Team Rocket F": "rocket_f",
+    "Rocket Boss": "giovanni",
+    "Executive Proton": "proton",
+    "Executive Petrel": "petrel",
+    "Executive Ariana": "ariana",
+    "Executive Archer": "archer",
+    "Firebreather": "firebreather",
+    "Poke Maniac": "poke_maniac",
+    "Medium": "channeler",
+    "Sage": "sage",
+    "Elder": "sage",
+    "Kimono Girl": "kimono_girl",
+    "Boarder": "boarder",
+    "Teacher": "teacher",
+    "Passerby": [ "youngster", "lass" ],
+    "Mystery Man": "eusine",
+    "Ace Trainer M": "ace_trainer_m",
+    "Ace Trainer F": "ace_trainer_f",
+    "Bird Keeper Gs": "bird_keeper",
+    "Pokefan": [ "pokefan_m", "pokefan_f" ],
+    "Pokefan M": "pokefan_m",
+    "Psychic M": "psychic",
+    "School Kid M": "school_kid_m",
+    "Scientist Gs": "scientist",
+    "Pkmn Trainer Lance": "lance",
+    "Pkmn Trainer Red": "red",
+    "Pkmn Trainer Buck": null,
+    "Pkmn Trainer Cheryl": null,
+    "Pkmn Trainer Marley": null,
+    "Pkmn Trainer Mira": null,
+    "Pkmn Trainer Riley": null,
     // Emerald's classes of plan 21 · H3, part b, folded onto the nearest look until their own are made
     "Bug Maniac": [ "youngster" ],
     "Sr And Jr": [ "lass" ],

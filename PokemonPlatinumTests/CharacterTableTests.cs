@@ -286,12 +286,53 @@ public class CharacterTableTests
         // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas; 63 after C3 drew the rest; 41 after C4 drew the rest of Platinum's)
         Assert.True(plain.Count <= 41, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
         // What is left is the later regions' (their plans draw them): Platinum's classes all stand as looks of their own since C4
-        Assert.Contains("Medium", plain);
+        // Plan 20 · J14 drew Johto's classes: none of them stands in the plain default any more
+        foreach (string johto in new[] { "Medium", "Kimono Girl", "Firebreather", "Poke Maniac", "Sage", "Boarder", "Teacher", "Executive Proton" })
+            Assert.DoesNotContain(johto, plain);
         foreach (string platinum in TrainerDatabase.All.Select(t => t.Class).Distinct()) Assert.DoesNotContain(platinum, plain);
         // Plan 11 · C2 drew these
         Assert.DoesNotContain("Hiker", plain);
         Assert.DoesNotContain("Ace Trainer", plain);
         Assert.DoesNotContain("Lass", plain);
+    }
+
+    /// <summary>
+    /// Plan 20 · J14: every trainer class of Johto's records stands on the platform as a look of the table (or, for the
+    /// classes that name nobody in particular, as the person), and the named cast of HeartGold's objects are looks of their own.
+    /// </summary>
+    [Fact]
+    public void EveryClassOfJohtoIsALookAndTheNamedCastAreThemselves()
+    {
+        using var trainers = JsonDocument.Parse(File.ReadAllText(GameDataFiles.PathOf("world/johto/trainers.json")));
+        var plain = new SortedSet<string>(StringComparer.Ordinal);
+        foreach (var trainer in trainers.RootElement.EnumerateArray())
+        {
+            string trainerClass = trainer.GetProperty("class").GetString()!;
+            if (!Table.Classes.TryGetValue(trainerClass, out var looks)) { plain.Add(trainerClass); continue; }
+            foreach (string look in looks ?? Array.Empty<string>()) Assert.True(Table.Has(look), $"{trainerClass} is drawn as '{look}', which is no look");
+        }
+        Assert.True(plain.Count == 0, "Johto's classes without a look: " + string.Join(", ", plain));
+
+        // The cast, by the names of HeartGold's objects: each is a look of its own, not a class's stand-in
+        var cast = new Dictionary<string, string>
+        {
+            ["gsleader1"] = "falkner", ["gsleader2"] = "bugsy", ["gsleader3"] = "whitney", ["gsleader4"] = "morty",
+            ["gsleader5"] = "chuck", ["gsleader6"] = "jasmine", ["gsleader7"] = "pryce", ["gsleader8"] = "clair",
+            ["gsbigfour1"] = "will", ["gsbigfour2"] = "koga", ["gsbigfour3"] = "bruno", ["gsbigfour4"] = "karen",
+            ["wataru"] = "lance", ["gantetsu"] = "kurt", ["minaki"] = "eusine", ["kurumi"] = "lyra", ["gsrivel"] = "silver",
+            ["rkanbum3"] = "proton", ["rkanbum2"] = "petrel", ["rkanbuw"] = "ariana", ["rkanbum"] = "archer", ["dancer"] = "kimono_girl"
+        };
+        foreach (var (gfx, look) in cast)
+        {
+            Assert.Equal(look, Table.CharacterFor(gfx));
+            Assert.True(Table.Has(look), look);
+        }
+        // The Elite Four and the Leaders are drawn as the person; the executives, the Sages and the Kimono Girls as themselves
+        Assert.Equal("will", Table.InBattle("Elite Four", Table.CharacterFor("gsbigfour1")));
+        Assert.Equal("clair", Table.InBattle("Leader", Table.CharacterFor("gsleader8")));
+        Assert.Equal("proton", Table.InBattle("Executive Proton", null));
+        Assert.Equal("silver", Table.InBattle("Rival", "silver"));
+        Assert.Equal("rival", Table.InBattle("Rival", "rival"));
     }
 
     [Fact]
@@ -307,11 +348,10 @@ public class CharacterTableTests
         // ...a class plan 11 · C2 drew stands as its own look whatever the person wears...
         Assert.Equal("hiker", Table.InBattle("Hiker", "Gentleman"));
         Assert.Equal("grunt_f", Table.InBattle("Galactic", "grunt_f"));
-        // ...and a class with no look yet stands in the plain default it always did, under its own name (Johto's Medium,
-        // until plan 20 · J14 draws her; plan 11 · C4 drew the Sailor)
+        // ...and a class with no look yet stands in the plain default it always did, under its own name (plan 20 · J14 drew
+        // Johto's Medium; plan 11 · C4 drew the Sailor)
         Assert.Equal("sailor", Table.InBattle("Sailor", "Gentleman"));
-        Assert.Equal("Medium", Table.InBattle("Medium", "Gentleman"));
-        Assert.False(Table.Has("Medium"));
+        Assert.Equal("channeler", Table.InBattle("Medium", "Gentleman"));
         // A trainer nobody carries (a test's, the harness's) stands as the class
         Assert.Equal("Leader", Table.InBattle("Leader", null));
 
