@@ -28,6 +28,12 @@ public sealed partial class GameFlow
     /// <summary>The Trainer Card's ID (saved).</summary>
     public int TrainerId { get; set; }
 
+    /// <summary>
+    /// The region the game began in (plan 18 · W4; saved): every other region's levels are its file's mapping
+    /// (<see cref="Data.Region.Levels"/>), met by a team that crossed into it. Sinnoh for any game begun from the title.
+    /// </summary>
+    public string BeganIn { get; set; } = Data.RegionDatabase.Sinnoh;
+
     /// <summary>How many ids the game has given its Pokémon (plan 07 · O2, <see cref="PokemonIds"/>; saved).</summary>
     public uint PokemonIdsIssued { get; set; }
 

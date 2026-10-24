@@ -1,0 +1,14 @@
+{
+  // The Department Store's third floor (plan 21 · H7, part a): the Battle Collection, its vitamins and its
+  // battle items (marts.json's lilycove_3f_vitamins and lilycove_3f_battle)
+  "area": "lilycove_city_department_store_3f",
+  "bgmTrack": "hoenn/lilycove",
+  "locked": [ 2 ],
+  "people": {
+    "woman_3": { "name": "Clerk", "script": "ClerkLeft" },
+    "woman_3_2": { "name": "Clerk", "script": "ClerkRight" },
+    "running_triathlete_m": { "name": "Triathlete", "dialog": ["Protein, Iron, Carbos... I give my Pokémon a balanced diet, same as I eat myself!"] },
+    "pokefan_m": { "name": "Man", "dialog": ["X Attack and X Speed in battle can turn a losing fight around. Trust me, I've done it!"] },
+    "woman_5": { "name": "Woman", "dialog": ["Vitamins make a Pokémon stronger for good. They cost a lot, but they're worth every coin."] }
+  }
+}

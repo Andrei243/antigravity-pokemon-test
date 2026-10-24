@@ -100,6 +100,12 @@ Thirty-one shapes in all, drawn by `SceneTransition` and answered for by `Covers
 - Tests: every code parses and strips to plain text; `{player}` colours by look; the ring; `StoryTests` holding every line's codes valid; a line's typing time with a pause. Harness: `story` shows a line of each kind and the backlog open.
 - **Done when** "{player}" is blue for a boy and red for a girl in every talk, a pause can be written, and a closed line can be read again.
 
+**Outcome (2026-10-24).**
+- **Built**: `UI/Kit/RichText.cs` (GPU-free: `Parse` into a `RichLine` of plain text, `RunSpan`s and `TextEvent`s; `Plain`, `Problems`, `Pieces` for the draw; `RichLine.TypingSeconds`, `Skip`), `Overworld/DialogueLog.cs` (a ring of fifty), `DialogueManager` rewritten around a `RichLine` (`Prepare` colours `{player}` by look and drops a speaker's prefix, `Type` honours pauses, speeds and sounds, `FinishLine` passes them, the backlog's `OpenBacklog`/`ScrollBacklog`/`CloseBacklog` on Up while a plain line is whole), `ModernUi.DrawRuns`, `RunInk` and `DrawBacklog`, `HeadlessScriptHost` stripping markup from its transcript, `ScriptLibrary.Problems` and `ContentCheck` reporting bad codes and unknown sounds and measuring rows on the stripped text. Style guide: "Text box markup" and "The backlog" under "Field menus and notices", written first.
+- **Decisions**: `{red:…}`, `{blue:…}`, `{name:…}`, `{money N}`, `{pause S}`, `{speed N}`, `{br}`, `{sfx name}`; anything else in braces is left as written (other parts' placeholders such as `{money}`, `{var:X}` and `{lead}` must not be taken), so a bad argument to an owned code is the only error. Pauses are seconds, not scaled by the text speed (the plan-08 · P2 factor can scale them when it lands). `{rival}` and `{assistant}` stay plain; only the player's name is coloured. `{money N}` draws "P" and the number in gold (the crossed P is not drawn inside running text: still a gap). The backlog is five rows of the plain text, newest at the bottom, and opens only over a whole plain line. Portraits (decision 1) were left out.
+- **Not done**: the prize line of `BattleCore` still says "$" (the battle's box takes no markup, and its tests read the "$"); no line of the game uses a code yet (the lines keep their English to the character, so the ContentCheck rows are unchanged); the player's name is not coloured in the battle's box, the intro's talk shows it coloured because it shares `DialogueManager`.
+- **Tests**: `TextBoxMarkupTests` (every code parses and strips, non-markup left alone, bad codes reported, the colours by look, a speaker prefix, typing time, the box held at a pause, unchanged plain typing, the pieces of a row, the ring of fifty, the backlog's entries and when it opens, every script line's markup sound). Not run, per the wave's rules. Harness: `story` ends with `st9h_markup_runs`, `st9i_markup_pause`, `st9j_backlog`, not run either.
+
 ### L4 · The camera kit and the attract loop
 - `Overworld/CameraRig.cs`; `CameraMove` gains `Zoom`, `Follow` and `Path`, `IScriptHost` gains `Letterbox` and `SlowMotion`, with `camera zoom 1.5 [0.8]`, `camera follow <who>`, `camera path X Y X Y … [tiles a second]`, `letterbox on|off [0.4]` and `slowmo 0.25 [2]` as Ops (`IScriptHost.Camera` taking the zoom's factor, the person followed and the path's tiles besides its spot): a case in `ScriptParser` and `ScriptRunner`, a method of `GameEngine.FieldHost` and `HeadlessScriptHost`, a line in `ScriptTests.EveryCommand`, a row in `docs/scripts.md`. `camera release` brings everything back.
 - `TitleScreen`: `Idle` back to `Journey` after thirty seconds.
@@ -271,7 +277,7 @@ Thirty-one shapes in all, drawn by `SceneTransition` and answered for by `Covers
 
 - [ ] L1 Shiny Pokémon
 - [x] L2 A condition on the model (2026-10-12)
-- [ ] L3 The text box
+- [x] L3 The text box (2026-10-24)
 - [x] L4 The camera kit and the attract loop
 - [ ] L5 Sprites that move
 - [ ] L6 Female looks: the key and Kanto

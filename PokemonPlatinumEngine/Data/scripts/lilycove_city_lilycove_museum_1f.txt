@@ -1,0 +1,20 @@
+# The Lilycove Museum's ground floor (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/LilycoveCity_LilycoveMuseum_1F/scripts.inc): the curator stands before the stairs
+# and, asked, leads the player up to the gallery, whose frames wait for the Contest Hall's winners (plan 21 · H11),
+# and stays up there with it (his flag is set; the gallery has a curator of its own).
+
+
+script Curator
+  face self player
+  speaker "Curator"
+  ask "Ah, a visitor! Our second floor is a gallery for paintings of Pokémon from the Contest Hall. Would you like to see it?"
+  if no goto Later
+  say "Splendid! Do come this way."
+  walk self up 1
+  hide self
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR
+  warp "LilycoveCity_LilycoveMuseum_2F" 13 2 down
+  end
+label Later
+  say "Of course. Enjoy the works down here, and ask me whenever you like."
+  end

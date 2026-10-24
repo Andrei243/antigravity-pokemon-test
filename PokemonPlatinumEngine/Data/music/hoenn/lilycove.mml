@@ -1,0 +1,28 @@
+# Lilycove City (and its rooms): the city at the end of the land, a bright marimba tune in D major that leans on the
+# sea breeze, over held strings, a walking bass and a light beat. Original composition for this game (plan 21 · H7).
+title Lilycove City
+tempo 104
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead marimba night=flute vol=0.76 pan=0.05 rev=0.3
+  L o5 d4 f+8 a8 o6 d4 c+8 o5 b8 | o5 b4 g8 b8 o6 d4 o5 b4 | o5 a4 e8 a8 o6 c+4 o5 a4 | o5 f+2. r4 |
+  o5 f+4 d8 f+8 b4 a8 g8 | o5 g4 b8 o6 d8 e4 d4 | o6 e4 d8 c+8 o5 b4 a4 | o5 d2. r4 |
+  o5 b4 a8 g8 b4 o6 d4 | o6 d4 c+8 o5 b8 a2 | o5 g4 b8 o6 e8 d4 o5 b4 | o5 a4 o6 c+8 e8 c+4 o5 a4 |
+  o6 d4 o5 b8 g8 b4 o6 d4 | o6 f+4 e8 d8 o5 a4 f+4 | o5 g4 b8 o6 e8 c+4 e4 | o6 d2. r4 |
+
+track pad strings night=pad vol=0.27 pan=-0.25 rev=0.42
+  L o4 (d f+ a)1 | (d g b)1 | (c+ e a)1 | (d f+ a)1 |
+  (d f+ b)1 | (d g b)1 | (e g b)2 (c+ e a)2 | (d f+ a)1 |
+  o4 (d g b)1 | (d f+ a)1 | (e g b)1 | (c+ e a)1 |
+  (d g b)1 | (d f+ a)1 | (e g b)2 (c+ e a)2 | (d f+ a)1 |
+
+track bass bass vol=0.7 rev=0.1
+  L o2 d4 a4 d4 a4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 a4 o3 e4 o2 a4 o3 e4 | o2 d4 a4 d4 a4 |
+  o2 b4 o3 f+4 o2 b4 o3 f+4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 e4 b4 a4 o3 e4 | o2 d4 a4 d2 |
+  o2 g4 o3 d4 o2 g4 o3 d4 | o2 d4 a4 d4 a4 | o2 e4 b4 e4 b4 | o2 a4 o3 e4 o2 a4 o3 e4 |
+  o2 g4 o3 d4 o2 g4 o3 d4 | o2 d4 a4 d4 a4 | o2 e4 b4 a4 o3 e4 | o2 d4 a4 d2 |
+
+track drums kit vol=0.35 rev=0.16
+  v58 L [ b4 h8 h8 s4 h8 h8 | ]16

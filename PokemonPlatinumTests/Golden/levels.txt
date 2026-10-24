@@ -660,6 +660,12 @@ trainers 4, 23: hoenn_axle 23, hoenn_cole 23, hoenn_danielle 23, hoenn_gerald 23
 === lavaridge_town_gym_b1f
 Lavaridge Town
 trainers 4, 22-23: hoenn_eli 23, hoenn_jace 23, hoenn_jeff 22, hoenn_keegan 23
+=== lilycove_city
+Lilycove City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
 === mahogany_gym_leader_room
 Mahogany Town
 trainers 3, 25-29: johto_boarder_deandre 26, johto_boarder_gerardo 26, johto_skier_jill 29
@@ -837,6 +843,36 @@ grass 5-10
 Mt Moon
 grass 8-12
 trainers 4, 11-13: kanto_team_rocket_grunt 13, kanto_team_rocket_grunt_2 11, kanto_team_rocket_grunt_3 11, kanto_team_rocket_grunt_4 13
+=== mt_pyre_1f
+Mt Pyre
+grass 22-29
+=== mt_pyre_2f
+Mt Pyre
+grass 22-29
+trainers 4, 31: hoenn_dez_and_luke 31, hoenn_leah 31, hoenn_mark 31, hoenn_zander 31
+=== mt_pyre_3f
+Mt Pyre
+grass 22-29
+trainers 3, 26: hoenn_gabrielle_1 26, hoenn_kayla 26, hoenn_william 26
+=== mt_pyre_4f
+Mt Pyre
+grass 22-29
+trainers 1, 32: hoenn_tasha 32
+=== mt_pyre_5f
+Mt Pyre
+grass 22-29
+trainers 1, 32: hoenn_atsushi 32
+=== mt_pyre_6f
+Mt Pyre
+grass 22-29
+trainers 2, 32: hoenn_cedric 32, hoenn_valerie_1 32
+=== mt_pyre_exterior
+Mt Pyre
+grass 25-29
+=== mt_pyre_summit
+Mt Pyre
+grass 24-30
+trainers 4, 30-32: hoenn_grunt_mt_pyre_1 32, hoenn_grunt_mt_pyre_2 32, hoenn_grunt_mt_pyre_3 30, hoenn_grunt_mt_pyre_4 30
 === national_park
 National Park
 grass 10-14
@@ -1197,6 +1233,20 @@ old rod 5-10
 good rod 10-30
 super rod 20-45
 trainers 10, 25-32: hoenn_cale 29, hoenn_cristin_1 29, hoenn_jessica_1 29, hoenn_kate_and_joy 32, hoenn_marcel 29, hoenn_myles 25, hoenn_pat 25, hoenn_tammy 29, hoenn_vanessa 30, hoenn_walter_1 29
+=== route_122
+Route 122
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+=== route_123
+Route 123
+grass 25-28
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 15, 26-31: hoenn_alberto 30, hoenn_braxton 28, hoenn_cameron_1 31, hoenn_davis 27, hoenn_ed 30, hoenn_fernando_1 30, hoenn_fredrick 30, hoenn_jacki_1 30, hoenn_jazmyn 27, hoenn_jonas 31, hoenn_kayley 31, hoenn_kindra 30, hoenn_miu_and_yuki 26, hoenn_violet 26, hoenn_wendy 29
 === route_124
 Route 124
 surf 5-35

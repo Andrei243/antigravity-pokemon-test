@@ -257,7 +257,25 @@ public sealed class WorldMatrixFile
     /// <summary>How high each chunk sits, in half tiles, in the same layout; left out when all sit at zero.</summary>
     public List<string>? Altitudes { get; set; }
 
+    /// <summary>
+    /// The chunks another season lays in place of the matrix's own (plan 22 · U2, part b; Black 2's chunks the
+    /// decompilation names by season, <c>autumn04_20</c>, <c>winter05_04</c>): each a grid in the layout of
+    /// <see cref="Chunks"/>, <c>-</c> wherever the matrix's own chunk serves. The matrix's own chunks are spring's.
+    /// Left out where one chunk serves all four seasons, so no other region's files change; read by nothing until
+    /// plan 22 · U4 builds a season's layout (<see cref="ChunkAt(int, int, string)"/>).
+    /// </summary>
+    public List<MatrixSeason>? Seasons { get; set; }
+
     public int ChunkAt(int x, int y) => Cell(Chunks, x, y) is "-" ? NoChunk : int.Parse(Cell(Chunks, x, y), CultureInfo.InvariantCulture);
+
+    /// <summary>The chunk at a cell in a season (<c>Summer</c>, <c>Autumn</c>, <c>Winter</c>; anything else is spring's): the season's own where it has one, the matrix's otherwise.</summary>
+    public int ChunkAt(int x, int y, string? season)
+    {
+        if (Seasons?.Find(s => string.Equals(s.Season, season, StringComparison.OrdinalIgnoreCase)) is { } own
+            && Cell(own.Chunks, x, y) is var cell and not "-")
+            return int.Parse(cell, CultureInfo.InvariantCulture);
+        return ChunkAt(x, y);
+    }
 
     public string? AreaAt(int x, int y) =>
         Areas == null || AreaKeys == null || Cell(Areas, x, y) is "-" ? null : AreaKeys[int.Parse(Cell(Areas, x, y), CultureInfo.InvariantCulture)];
@@ -283,6 +301,16 @@ public sealed class WorldMatrixFile
         }
         return row.ToString();
     }
+}
+
+/// <summary>One season's chunks of a matrix (plan 22 · U2, part b): <see cref="WorldMatrixFile.Seasons"/>.</summary>
+public sealed class MatrixSeason
+{
+    /// <summary><c>Summer</c>, <c>Autumn</c> or <c>Winter</c>: spring's chunks are the matrix's own.</summary>
+    public string Season { get; set; } = "";
+
+    /// <summary>Chunk ids in the matrix's layout, <c>-</c> where the matrix's own chunk serves.</summary>
+    public List<string> Chunks { get; set; } = new();
 }
 
 /// <summary>

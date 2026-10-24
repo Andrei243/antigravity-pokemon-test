@@ -1,0 +1,25 @@
+{
+  // Mt. Pyre's summit (plan 21 · H7, part a): the old couple's shrine, where the Red Orb and the Blue Orb are kept, in
+  // the mountain's mist. Team Aqua holds it the first time the player comes up: four grunts on the way and Archie before
+  // the shrine, gone at the first step onto the row below him, after which the old woman gives the Magma Emblem
+  // (mt_pyre_summit.txt). Maxie stands beside Archie only when the two bring the orbs back (plan 21 · H8), and the
+  // triggers for that scene (3 to 5) wait for it
+  "area": "mt_pyre_summit",
+  "bgmTrack": "hoenn/mt_pyre_exterior",
+  "trees": "Round",
+  "triggers": [
+    { "trigger": 0, "script": "AquaTrigger0" },
+    { "trigger": 1, "script": "AquaTrigger1" },
+    { "trigger": 2, "script": "AquaTrigger2" }
+  ],
+  "people": {
+    "old_man": { "name": "Old Man", "script": "OldMan" },
+    "mt_pyre_summit_old_lady": { "name": "Old Woman", "script": "OldWoman" },
+    "mt_pyre_summit_archie": { "name": "Archie", "npcType": "archie", "still": true, "dialog": ["Archie: The sea will cover everything. You just wait."] },
+    "mt_pyre_summit_maxie": { "name": "Maxie", "npcType": "maxie", "still": true, "dialog": ["Maxie: ..."] },
+    "mt_pyre_summit_grunt_1": { "name": "Team Aqua Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: The boss is up top, and nobody bothers the boss. Especially not you!", "dialogueAfter": "Team Aqua Grunt: Fine, you won. You still shouldn't be up here." } },
+    "mt_pyre_summit_grunt_2": { "name": "Team Aqua Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: We came up here for the orb, and we're not leaving without it!", "dialogueAfter": "Team Aqua Grunt: Ugh. Lost to a kid on a mountain full of ghosts." } },
+    "mt_pyre_summit_grunt_3": { "name": "Team Aqua Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: It's so foggy up here I can barely see you. Doesn't matter, I'll still beat you!", "dialogueAfter": "Team Aqua Grunt: I didn't see that coming, either." } },
+    "mt_pyre_summit_grunt_4": { "name": "Team Aqua Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Did Team Magma send you? No? Then you're just in the way!", "dialogueAfter": "Team Aqua Grunt: Whoever sent you, you're tough." } }
+  }
+}

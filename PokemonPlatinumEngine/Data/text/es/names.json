@@ -4051,6 +4051,7 @@
     "Tri-Pass": "Tri-Ticket",
     "Ruby": "Rubí",
     "Rainbow Pass": "Iris-Ticket",
+    "Sapphire": "Zafiro",
     "Letter": "Carta a Máximo",
     "Devon Goods": "Piezas Devon",
     "Wailmer Pail": "Wailmegadera",
@@ -4060,7 +4061,11 @@
     "Go-Goggles": "Gafas Aislantes",
     "Soot Sack": "Saco Hollín",
     "Harbor Mail": "Carta Puerto",
-    "Meteorite": "Meteorito"
+    "Meteorite": "Meteorito",
+    "Devon Scope": "Detector Devon",
+    "Magma Emblem": "Signo Magma",
+    "Basement Key": "Llave Sótano",
+    "Rainbow Wing": "Ala Arcoíris"
   },
   "types": {
     "Normal": "Normal",

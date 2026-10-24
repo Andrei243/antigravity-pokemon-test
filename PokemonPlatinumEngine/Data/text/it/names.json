@@ -4058,6 +4058,7 @@
     "Tri-Pass": "Tris Pass",
     "Ruby": "Rubino",
     "Rainbow Pass": "Sette Pass",
+    "Sapphire": "Zaffiro",
     "Letter": "Lettera",
     "Devon Goods": "Merce Devon",
     "Wailmer Pail": "Vaso Wailmer",
@@ -4067,7 +4068,11 @@
     "Go-Goggles": "Occhialoni",
     "Soot Sack": "Sacco cenere",
     "Harbor Mail": "Mess. Porto",
-    "Meteorite": "Meteorite"
+    "Meteorite": "Meteorite",
+    "Devon Scope": "Devonscopio",
+    "Magma Emblem": "Stemma Magma",
+    "Basement Key": "Chiave sotterr.",
+    "Rainbow Wing": "Ala d'Iride"
   },
   "types": {
     "Normal": "Normale",

@@ -1,0 +1,31 @@
+{
+  "key": "lilycove_city_department_store_2f",
+  "index": 177,
+  "name": "Lilycove City",
+  "matrix": 126,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 1, "to": "lilycove_city_department_store_1f", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "lilycove_city_department_store_3f", "toWarp": 0 },
+    { "x": 2, "z": 1, "to": "lilycove_city_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "cook", "looks": "cook", "movement": "look_south", "x": 8, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_2F_EventScript_Cook" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "wander_around", "x": 0, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_2F_EventScript_PokefanF" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 13, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_2F_EventScript_Sailor" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_north", "x": 10, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_2F_EventScript_ClerkRight" },
+    { "id": "woman_3_2", "looks": "woman_3", "movement": "look_north", "x": 7, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_2F_EventScript_ClerkLeft" }
+  ],
+  "signs": [],
+  "triggers": []
+}

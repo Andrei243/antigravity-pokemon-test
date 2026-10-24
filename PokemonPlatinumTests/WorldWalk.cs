@@ -288,13 +288,10 @@ internal static class WorldWalk
 
     /// <summary>
     /// Places of a region opened before the way to them: a walk of the whole game sets out from these too, until the
-    /// session that opens the way takes its line out. Route 124 (plan 21 · H5, the sea over Dive's first floor) is
-    /// reached by sea from Lilycove City, which is plan 21 · H7's: the sand before the treasure hunter's house.
+    /// session that opens the way takes its line out. None is, today: Route 124 (plan 21 · H5, the sea over Dive's first
+    /// floor) was, until plan 21 · H7, part a opened Lilycove City, from whose sea it is come to.
     /// </summary>
-    public static readonly MapSpot[] OpenedAhead =
-    {
-        new("Hoenn", 630, 109, Direction.Down),
-    };
+    public static readonly MapSpot[] OpenedAhead = { };
 
     /// <summary>
     /// Floors reached only by falling through the one above, which the field doesn't do yet: the walk sets out from where

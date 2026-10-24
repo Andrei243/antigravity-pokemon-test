@@ -109,7 +109,8 @@ public static class Migration
     {
         var species = PokemonDatabase.Get(saved.SpeciesName) ?? PokemonDatabase.GetByDex(saved.DexNumber);
         if (species == null) return Text.Of("migrate.impossible.species");
-        if (saved.CurrentExp < 0 || saved.CurrentExp > Pokemon.GetExpForLevel(100, species.GrowthRate)) return Text.Of("migrate.impossible.exp");
+        // A save of this game's may hold a level past 100 (plan 18 · W4): the highest any rules allow is the bound
+        if (saved.CurrentExp < 0 || saved.CurrentExp > Pokemon.GetExpForLevel(Ruleset.HighestLevel, species.GrowthRate)) return Text.Of("migrate.impossible.exp");
         int[] evs = { saved.EvHP, saved.EvAttack, saved.EvDefense, saved.EvSpeed, saved.EvSpAttack, saved.EvSpDefense };
         if (evs.Any(e => e is < 0 or > 255) || evs.Sum() > 510) return Text.Of("migrate.impossible.effort");
         int[] ivs = { saved.IvHP, saved.IvAttack, saved.IvDefense, saved.IvSpeed, saved.IvSpAttack, saved.IvSpDefense };

@@ -67,7 +67,9 @@ public static class Formulas
     public static int BaseDamage(int level, int power, int attack, int defense, bool burned, bool spread, bool screened, bool sharedScreen,
         BattleWeather weather, PokemonType moveType, bool dimmedBeam, bool flashFire)
     {
-        int damage = attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50;
+        // In a long, so that no stat, power or level any rules allow can overflow it (plan 18 · W4); every step is the
+        // whole number it was, so nothing under 100 moves
+        int damage = (int)((long)attack * power * (level * 2 / 5 + 2) / Math.Max(1, defense) / 50);
         if (burned) damage /= 2;
         if (screened) damage = sharedScreen ? damage * 2 / 3 : damage / 2;
         if (spread) damage = damage * 3 / 4;

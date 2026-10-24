@@ -1,0 +1,47 @@
+{
+  "key": "mt_pyre_4f",
+  "index": 256,
+  "name": "Mt Pyre",
+  "matrix": 205,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "mt_pyre_4f",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 23 },
+    { "species": "Shuppet", "level": 22 },
+    { "species": "Duskull", "level": 27 },
+    { "species": "Duskull", "level": 27 },
+    { "species": "Duskull", "level": 25 },
+    { "species": "Duskull", "level": 29 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 1, "to": "mt_pyre_5f", "toWarp": 1 },
+    { "x": 2, "z": 5, "to": "mt_pyre_3f", "toWarp": 1 },
+    { "x": 12, "z": 10, "to": "mt_pyre_5f", "toWarp": 3, "landing": true },
+    { "x": 12, "z": 12, "to": "mt_pyre_5f", "toWarp": 4, "landing": true },
+    { "x": 9, "z": 10, "to": "mt_pyre_3f", "toWarp": 2 },
+    { "x": 2, "z": 12, "to": "mt_pyre_3f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "hex_maniac", "looks": "hex_maniac", "movement": "rotate_clockwise", "x": 11, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_TASHA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE", "item": "Sea Incense", "script": "MtPyre_4F_EventScript_ItemSeaIncense" }
+  ],
+  "signs": [],
+  "triggers": []
+}

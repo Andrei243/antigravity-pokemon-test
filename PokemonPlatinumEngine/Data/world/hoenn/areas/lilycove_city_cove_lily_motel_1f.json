@@ -1,0 +1,29 @@
+{
+  "key": "lilycove_city_cove_lily_motel_1f",
+  "index": 160,
+  "name": "Lilycove City",
+  "matrix": 109,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "lilycove_city", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "lilycove_city", "toWarp": 1 },
+    { "x": 2, "z": 1, "to": "lilycove_city_cove_lily_motel_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "motel_owner", "looks": "man_1", "movement": "look_north", "x": 10, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_CoveLilyMotel_1F_EventScript_MotelOwner" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 10, "z": 2, "width": 1, "depth": 1, "script": "LilycoveCity_CoveLilyMotel_1F_EventScript_BlockingTV", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

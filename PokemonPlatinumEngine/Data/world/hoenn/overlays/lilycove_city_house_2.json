@@ -1,0 +1,9 @@
+{
+  // A house in Lilycove City (plan 21 · H7, part a): the man who gives TM44, Rest, once
+  // (lilycove_city_house_2.txt)
+  "area": "lilycove_city_house_2",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "fat_man": { "name": "Man", "script": "RestMan" }
+  }
+}

@@ -196,6 +196,14 @@ public sealed class GameSettings
     public RulesDefault TrainerLines { get => trainerLines; set => trainerLines = Modern(value); }
     private RulesDefault trainerLines = RulesDefault.On;
 
+    /// <summary>
+    /// Whether a line says what to do next (plan 12 · Q14): on the start menu, the Trainer Card and the save's summary, and
+    /// as an aside from Mom and the nurse. The newest games keep such a log, so it is on unless the player turns it off;
+    /// <see cref="RulesDefault.Rules"/> reads as on, as for the move hints.
+    /// </summary>
+    public RulesDefault NextObjective { get => nextObjective; set => nextObjective = Modern(value); }
+    private RulesDefault nextObjective = RulesDefault.On;
+
     /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
     private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 

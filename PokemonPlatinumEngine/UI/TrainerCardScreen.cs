@@ -31,6 +31,9 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
     /// <summary>How many of the five things that colour the card are done (its stars).</summary>
     public int Stars { get; init; }
 
+    /// <summary>The line that says what to do next (plan 12 · Q14); empty for none, which leaves the front as it was.</summary>
+    public string NextObjective { get; init; } = "";
+
     /// <summary>The back: when the player first entered the Hall of Fame, and their link battles and trades (none until plan 07).</summary>
     public DateTime? HallOfFameDebut { get; init; }
     public int LinkWins { get; init; }

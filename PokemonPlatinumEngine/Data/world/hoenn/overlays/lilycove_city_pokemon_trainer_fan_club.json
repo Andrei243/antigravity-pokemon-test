@@ -1,0 +1,18 @@
+{
+  // Lilycove's Pokémon Trainer Fan Club (plan 21 · H7, part a): its members cheer for whichever trainer is the
+  // talk of the town. Emerald's fans who take the player's side or another's by the player's battles, and the
+  // interviewer who comes once the player has fans, wait for later; the members only talk
+  "area": "lilycove_city_pokemon_trainer_fan_club",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "trainer_fan_club_lass": { "name": "Lass", "dialog": ["We're the Pokémon Trainer Fan Club! We cheer for the best trainers in Hoenn."] },
+    "trainer_fan_club_man": { "name": "Man", "dialog": ["Everyone here has a favourite trainer. Mine changes every week!"] },
+    "trainer_fan_club_pokefan_m": { "name": "Man", "dialog": ["If you keep winning battles, maybe we'll be cheering for you one day."] },
+    "trainer_fan_club_little_girl": { "name": "Little Girl", "dialog": ["I want to be a famous trainer, so people make a fan club for me!"] },
+    "trainer_fan_club_ninja_boy": { "name": "Boy", "dialog": ["I heard there's a trainer going round beating every Gym Leader. That's who I'm a fan of!"] },
+    "trainer_fan_club_boy": { "name": "Boy", "dialog": ["My favourite trainer has the coolest Pokémon. Don't you agree?"] },
+    "trainer_fan_club_woman": { "name": "Woman", "dialog": ["A trainer who's kind to Pokémon is the best kind of trainer. That's who I cheer for."] },
+    "trainer_fan_club_expert_f": { "name": "Old Woman", "dialog": ["I've been a member since this club began. Trainers come and go, but we cheer them all."] },
+    "boy_1": { "name": "Interviewer", "dialog": ["I'm writing about the Fan Club's favourite trainers. Maybe you'll be in my next story!"] }
+  }
+}

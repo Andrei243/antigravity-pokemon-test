@@ -1,0 +1,9 @@
+{
+  // A house in Lilycove City (plan 21 · H7, part a): two men who talk of the sea
+  "area": "lilycove_city_house_4",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "man_4": { "name": "Man", "dialog": ["There are mysteries at the bottom of the sea that nobody has ever seen. I'd love to dive down and look."] },
+    "man_1": { "name": "Man", "dialog": ["They say there's a deep trench under the sea between Mossdeep and Sootopolis. Something sleeps down there, I'm sure of it."] }
+  }
+}

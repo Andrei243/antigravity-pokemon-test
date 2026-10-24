@@ -1,0 +1,9 @@
+{
+  // The Cove Lily Motel's ground floor (plan 21 · H7, part a): its owner by the television, and the stairs up to the
+  // rooms. Emerald's trigger before the television, the owner keeping the player from the set, is left out
+  "area": "lilycove_city_cove_lily_motel_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "motel_owner": { "name": "Owner", "dialog": ["Welcome to the Cove Lily Motel! Our guests come to see the sea, and Pokémon from all over the world. Mind the television, it's showing my favourite programme."] }
+  }
+}

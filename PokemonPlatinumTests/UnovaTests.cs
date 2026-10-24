@@ -172,6 +172,44 @@ public class UnovaTests
     }
 
     [Fact]
+    public void Route20sAutumnChunksAreWrittenBesideItsOwn()
+    {
+        // Plan 22 · U2, part b: Black 2's autumn04_20 to autumn05_21 lie over Route 20 in autumn; the matrix names them
+        // and their files are there, while spring's (the matrix's own) stay where they were
+        var over = Unova.Matrix(0);
+        Assert.NotNull(over.Seasons);
+        Assert.Equal(new[] { "Summer", "Autumn", "Winter" }, over.Seasons!.Select(s => s.Season));
+        int changed = 0;
+        for (int y = 0; y < over.Height; y++)
+            for (int x = 0; x < over.Width; x++)
+            {
+                int spring = over.ChunkAt(x, y);
+                Assert.Equal(spring, over.ChunkAt(x, y, "Spring"));
+                Assert.Equal(spring, over.ChunkAt(x, y, null));
+                foreach (var season in over.Seasons)
+                {
+                    int own = over.ChunkAt(x, y, season.Season);
+                    if (own == spring) continue;
+                    changed++;
+                    Assert.NotEqual(WorldMatrixFile.NoChunk, spring);
+                    // a season's chunk in view of an open area is written, as its spring's is
+                    if (Unova.Chunk(spring) != null) Assert.NotNull(Unova.Chunk(own));
+                }
+            }
+        Assert.True(changed >= 4, $"only {changed} cells change with the season");
+        string route20 = FirstAreas[3];
+        bool autumnOnRoute20 = false;
+        for (int y = 0; y < over.Height; y++)
+            for (int x = 0; x < over.Width; x++)
+                if (over.AreaAt(x, y) == route20 && over.ChunkAt(x, y, "Autumn") != over.ChunkAt(x, y)) autumnOnRoute20 = true;
+        Assert.True(autumnOnRoute20, "Route 20 has no autumn chunk");
+        // No other region's matrix has seasons
+        foreach (var world in World.LoadAll().Where(w => w.Index.Region != "Unova"))
+            foreach (int id in world.Index.Maps.Select(m => m.Matrix).Distinct())
+                Assert.Null(world.Matrix(id).Seasons);
+    }
+
+    [Fact]
     public void EveryModelOnUnovasChunksIsInItsCatalogue()
     {
         var unknown = new SortedSet<string>(StringComparer.Ordinal);

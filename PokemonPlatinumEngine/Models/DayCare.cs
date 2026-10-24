@@ -108,7 +108,7 @@ public sealed class DayCare
     public int Fee(int place) => LevelsGained(place) * FeePerLevel + BaseFee;
 
     /// <summary>
-    /// Gives a Pokémon back to the team (<c>Daycare_MoveToPartyFromDaycareMon</c>): below level 100 its steps are
+    /// Gives a Pokémon back to the team (<c>Daycare_MoveToPartyFromDaycareMon</c>): below the level cap its steps are
     /// added to its EXP and it grows into the levels they reach, learning each level's moves into a free place or
     /// pushing its first move out; its steps start again from nought and the other Pokémon moves into the first place
     /// (<c>Daycare_ShiftMonSlots</c>). The fee is the script's to take. Null, with nothing changed, when the place is
@@ -117,7 +117,7 @@ public sealed class DayCare
     public Pokemon? TakeBack(Party party, int place)
     {
         if (this[place] is not { } p || party.IsFull) return null;
-        if (p.Level < 100) Grow(p, steps[place]);
+        if (!p.AtTheCap) Grow(p, steps[place]);
         pokemon[place] = null;
         steps[place] = 0;
         party.Add(p);
@@ -135,9 +135,9 @@ public sealed class DayCare
     /// </summary>
     public static void Grow(Pokemon p, int exp)
     {
-        if (exp <= 0 || p.Level >= 100) return;
+        if (exp <= 0 || p.AtTheCap) return;
         int target = LevelForExp(p, p.CurrentExp + exp);
-        int max = Pokemon.GetExpForLevel(100, p.Species.GrowthRate);
+        int max = Pokemon.GetExpForLevel(Pokemon.Cap, p.Species.GrowthRate);
         int oldMax = p.MaxHP;
         p.CurrentExp = Math.Min(p.CurrentExp + exp, max);
         while (p.Level < target)
@@ -149,11 +149,11 @@ public sealed class DayCare
         if (p.CurrentHP > 0) p.CurrentHP = Math.Clamp(p.CurrentHP + p.MaxHP - oldMax, 1, p.MaxHP);
     }
 
-    /// <summary>The level a Pokémon's EXP reaches, at most 100 (<c>Pokemon_GetLevelAt</c>).</summary>
+    /// <summary>The level a Pokémon's EXP reaches, at most the game's level cap (<c>Pokemon_GetLevelAt</c>; 100 in Platinum, plan 18 · W4's 260 by the modern rules).</summary>
     public static int LevelForExp(Pokemon p, int exp)
     {
         int level = p.Level;
-        while (level < 100 && exp >= Pokemon.GetExpForLevel(level + 1, p.Species.GrowthRate)) level++;
+        while (level < Pokemon.Cap && exp >= Pokemon.GetExpForLevel(level + 1, p.Species.GrowthRate)) level++;
         return level;
     }
 

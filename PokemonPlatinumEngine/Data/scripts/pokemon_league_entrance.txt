@@ -1,12 +1,24 @@
 # The Pokémon League's hall on the Indigo Plateau (plan 20 · J10, part b). docs/scripts.md describes the language; the
 # lines are our own. The guard before the Elite Four's door stands in the doorway itself, as HeartGold's does; spoken to
 # with Johto's eight Badges he steps out of it, as Sinnoh's guard does (PokemonLeagueNorthPokemonCenter.txt), and
-# FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY, a flag of ours, keeps him aside. The rival who waits here and the League's
-# battles are plan 20 · J12's.
+# FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY, a flag of ours, keeps him aside. The League's battles are its rooms'
+# (plan 20 · J12); the rival who waits here after the Hall of Fame (HeartGold's FLAG_HIDE_INDIGO_PLATEAU_RIVAL) is
+# the post-game's, plan 20 · J15.
 
 
-# Coming in again finds the guard where he stepped to
+# Coming in again finds the guard where he stepped to; and whoever comes in faces the Elite Four from the first again
+# (plan 20 · J12): the four rooms' doors shut and their masters unbeaten (FLAG_HIDE_<WHO>S_ROOM_EXIT, which each room
+# sets as its master is beaten), Lance on his dais with nobody come in (VAR_UNK_40C7 0, FLAG_LANCES_ROOM_VISITORS and
+# FLAG_HIDE_LANCES_ROOM_EXIT cleared), as HeartGold puts the League back whenever it is left. Nobody comes back out
+# through a room's door here: a battle lost or the Hall of Fame takes the player elsewhere.
 script OnEnter
+  clearflag FLAG_HIDE_WILLS_ROOM_EXIT
+  clearflag FLAG_HIDE_KOGAS_ROOM_EXIT
+  clearflag FLAG_HIDE_BRUNOS_ROOM_EXIT
+  clearflag FLAG_HIDE_KARENS_ROOM_EXIT
+  clearflag FLAG_HIDE_LANCES_ROOM_EXIT
+  clearflag FLAG_LANCES_ROOM_VISITORS
+  setvar VAR_UNK_40C7 0
   if flag FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY place t10r0101_counterm 12 8 down
   end
 

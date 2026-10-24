@@ -216,7 +216,8 @@ internal static partial class ModernUi
             Label(Text.Of("summary.expPoints"), x + 260, who.Y + 752);
             UiFonts.Draw(p.CurrentExp.ToString("N0"), x + 260, who.Y + 776, 34, Ink, UiWeight.Black);
 
-            bool top = p.Level >= 100;
+            // At the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
+            bool top = p.AtTheCap;
             Label(top ? Text.Of("summary.topLevel") : Text.Of("summary.toLevel", ("level", p.Level + 1)), x, who.Y + 834);
             string toNext = top ? "" : Math.Max(0, p.ExpForNextLevel - p.CurrentExp).ToString("N0");
             UiFonts.Draw(toNext, who.X + who.Width - 44 - UiFonts.Measure(toNext, 24, UiWeight.Black), who.Y + 830, 24, Ink, UiWeight.Black);

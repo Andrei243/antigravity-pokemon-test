@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Core;
 
 namespace PokemonPlatinumEngine.Models;
@@ -9,7 +10,28 @@ public class Trainer
     public string Id { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string TrainerClass { get; set; } = "Trainer"; // e.g. "Youngster", "Lass", "Rival", "Champion"
-    public Party Party { get; init; } = new();
+    public Party Party { get => party; init => party = value; }
+
+    private Party party = new();
+
+    /// <summary>
+    /// The trainer as a battle in a region the game crossed into meets them (plan 18 · W4): a copy whose team is copies,
+    /// each put at the level <paramref name="levelOf"/> gives for its own (<see cref="Pokemon.Relevel"/>). The trainer of
+    /// the map keeps their own team at their game's levels, so a rematch or a refreshed team is mapped afresh, never twice.
+    /// </summary>
+    public Trainer Relevelled(Func<int, int> levelOf)
+    {
+        var copy = (Trainer)MemberwiseClone();
+        copy.party = new Party();
+        foreach (var p in party.Members)
+        {
+            var mine = p.Clone();
+            mine.Relevel(levelOf(p.Level));
+            copy.party.Add(mine);
+        }
+        copy.Items = Items.ToList();
+        return copy;
+    }
     public int PrizeMoney { get; set; } = 300;
     public string DialogueBefore { get; set; } = string.Empty;
     public string DialogueAfter { get; set; } = string.Empty;

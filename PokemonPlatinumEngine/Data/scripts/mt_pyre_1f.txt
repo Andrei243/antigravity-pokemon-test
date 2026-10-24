@@ -1,0 +1,17 @@
+# Mt. Pyre's ground floor (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MtPyre_1F/scripts.inc): the old woman by the stairs gives a Cleanse Tag once
+# (FLAG_RECEIVED_CLEANSE_TAG).
+
+
+script CleanseTagWoman
+  face self player
+  speaker "Old Woman"
+  if flag FLAG_RECEIVED_CLEANSE_TAG goto Given
+  say "Ghost Pokémon wander these halls, child. Some of them would rather you weren't here at all."
+  say "Here, take this. It will keep the wilder ones away from you."
+  give "Cleanse Tag"
+  setflag FLAG_RECEIVED_CLEANSE_TAG
+  end
+label Given
+  say "Let one of your Pokémon hold that Cleanse Tag at the head of your team, and wild Pokémon will keep their distance."
+  end

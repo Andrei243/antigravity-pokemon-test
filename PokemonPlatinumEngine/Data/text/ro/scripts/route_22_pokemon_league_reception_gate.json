@@ -83,6 +83,40 @@
       "text": [
         "Îmi pare rău, ușa asta spre Ruta 22 e închisă. Kanto e deschis doar antrenorilor care au stat în fața Campionului Ligii."
       ]
+    },
+    {
+      "en": [
+        "You're the new Champion! Of course you may pass. Route 22 and Kanto are through this door."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KantoGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Through this door is Route 22, and Kanto beyond it. It opens to those who have stood before the Champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Through this door is Route 22, and Kanto beyond it. Safe travels, Champion."
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }

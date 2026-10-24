@@ -1,0 +1,55 @@
+{
+  // Lilycove City (plan 21 · H7, part a): the city at the end of the land, with its Department Store, Contest Hall,
+  // museum, motel and harbour, and the cove in its east where Team Aqua has made its hideout (lilycove_city.txt). The
+  // rival waits before the Department Store to battle once. Team Aqua's grunts stand about the town and the cove, and
+  // their Wailmer lie in the water east of the city (people of our own on the tiles where Emerald draws
+  // them, npcs below) until Team Aqua's submarine has gone (FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, part b). The Contest Hall
+  // (H11), Team Aqua's hideout (part b) and the harbour (H9) stay shut
+  "area": "lilycove_city",
+  "bgmTrack": "hoenn/lilycove",
+  "trees": "Round",
+  "locked": [ 4, 6, 12 ],
+  "people": {
+    "sailor": { "name": "Sailor", "script": "Sailor" },
+    "girl_1": { "name": "Girl", "script": "Girl" },
+    "man_1": { "name": "Man", "dialog": [ "The Contest Hall here is where the very best Pokémon come to show off. Only a Master Rank winner is anybody in Lilycove!" ] },
+    "rich_boy": { "name": "Rich Boy", "dialog": [ "I came all the way from Kanto to see Hoenn's Pokémon. The sea air here is something else!" ] },
+    "man_2": { "name": "Man", "dialog": [ "I deal in paintings. The museum here has a collection I'd give anything to get my hands on." ] },
+    "woman_2": { "name": "Woman", "script": "Woman" },
+    "expert_m": { "name": "Old Man", "dialog": [ "The sea doesn't age, you know. Sixty years I've looked at it, and it's as young as the day I first saw it." ] },
+    "expert_f": { "name": "Old Woman", "dialog": [ "My husband asked me to marry him right here, sixty years ago. We still come to watch the waves together." ] },
+    "expert_m_2": { "name": "Old Man", "script": "OldManCove" },
+    "aqua_member_m": { "name": "Team Aqua Grunt", "script": "WailmerGrunt" },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "dialog": [ "Once the whole world is the sea's, there'll be beaches everywhere. Won't that be great?" ] },
+    "aqua_member_m_3": { "name": "Team Aqua Grunt", "dialog": [ "We carried the last of the gear into the hideout this morning. My back is killing me." ] },
+    "aqua_member_m_4": { "name": "Team Aqua Grunt", "dialog": [ "Being in Team Aqua means we get to do big things. Things that change the whole world!" ] },
+    "aqua_member_m_5": { "name": "Team Aqua Grunt", "dialog": [ "Hey. Don't go poking about the cave in the cove. Nothing to see there. Nothing at all." ] },
+    "gentleman": { "name": "Gentleman", "script": "BerryGentleman" },
+    "var_0": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
+    "school_kid_m": { "name": "School Kid", "script": "SchoolKid" },
+    "lilycove_woman_1": { "name": "Woman", "dialog": [ "We came here on our honeymoon. We promised each other we'd see a rare Pokémon before we went home!" ] },
+    "lilycove_man_1": { "name": "Man", "dialog": [ "I'd only just stepped off the ferry when I saw a Pokémon I've never seen before. Lilycove's a lucky place!" ] },
+    "sailor_2": { "name": "Sailor", "dialog": [ "I've heard tell of a tower out at sea, past Pacifidlog. The Sky Pillar, they call it. Never seen it myself." ] },
+    "fat_man": { "name": "Man", "dialog": [ "I saw a tall tower on Route 131 from the deck of a boat once. It went right up into the clouds!" ] }
+  },
+  // Team Aqua's Wailmer in the water east of the city (LilycoveCity_EventScript_SetWailmerMetatiles): three, on the tiles
+  // where Emerald draws each one's head. The reader's map leaves the rest of the sea east to Route 124 open round them,
+  // so they are in the way only on their own tiles (docs/mechanics/rulings.md, "Lilycove City and Mt. Pyre"); part b
+  // takes them away with FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, which nothing sets yet
+  "npcs": [
+    { "id": "wailmer_1", "name": "Wailmer", "npcType": "Pokemon", "species": "Wailmer", "x": 556, "y": 82, "facing": "Down", "script": "Wailmer" },
+    { "id": "wailmer_2", "name": "Wailmer", "npcType": "Pokemon", "species": "Wailmer", "x": 556, "y": 84, "facing": "Down", "script": "Wailmer" },
+    { "id": "wailmer_3", "name": "Wailmer", "npcType": "Pokemon", "species": "Wailmer", "x": 557, "y": 86, "facing": "Down", "script": "Wailmer" }
+  ],
+  "signs": {
+    "LilycoveCity_EventScript_CitySign": "Lilycove City\nWhere the land ends and the sea begins",
+    "LilycoveCity_EventScript_MuseumSign": "Lilycove Museum\nArt that makes the heart race, in every room",
+    "LilycoveCity_EventScript_DepartmentStoreSign": "Lilycove Department Store\nHoenn's grandest selection, all under one roof!",
+    "LilycoveCity_EventScript_ContestHallSign": "Pokémon Contest Hall\nThe stage of the Master Rank",
+    "LilycoveCity_EventScript_MotelSign": "Cove Lily Motel\nRest and remember Lilycove",
+    "LilycoveCity_EventScript_HarborSign": "Lilycove Harbor\nThe ferry service is not yet running. We apologise for any trouble.",
+    "LilycoveCity_EventScript_TrainerFanClubSign": "Pokémon Trainer Fan Club\nWe cheer on the strongest trainers in Hoenn!",
+    "LilycoveCity_EventScript_MoveDeletersHouseSign": "Move Deleter's House\nUnwanted moves forgotten here",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
+  }
+}

@@ -3433,10 +3433,15 @@ way -
   = VAR_PLAYER_HOUSE_STATE 0 -> 2
 === PlayerHouse.Mom
 from Mom at 7,8 of PlayerHouse
-way -
+way 0
   Mom> Mom: Welcome home, honey! You and your Pokémon look like you could use a rest.
   Mom> Mom: ...There! Everyone's fit and well again.
+  Mom> By the way, would you like a reminder of what to do next?
+  Mom> Let me see... Go downstairs. Mom is wondering where you have got to.
+  ? By the way, would you like a reminder of what to do next? = Yes
   * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
 === PlayerHouse.TV
 from the sign at 6,5 of PlayerHouse
 from the sign at 7,5 of PlayerHouse
@@ -8381,9 +8386,14 @@ way -
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
 === common.Healer
 from a trainer with lines of their own
-way -
+way 0
   Anyone> A line of its own.
+  Anyone> By the way, would you like a reminder of what to do next?
+  Anyone> Let me see... Go downstairs. Mom is wondering where you have got to.
+  ? By the way, would you like a reminder of what to do next? = Yes
   * fanfare FanfareHeal
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
 === common.HiddenItem
 from a hidden item
 way -
@@ -8391,6 +8401,19 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennChapterEight
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN
+  + FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER
+  + FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
+  + FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
+  + FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
+  + FLAG_HOENN_CHAPTER_EIGHT
 === common.HoennChapterFive
 from a trainer with lines of their own
 way -
@@ -8509,6 +8532,14 @@ way -
   + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
   + FLAG_HIDE_LANETTES_HOUSE_LANETTE
   + FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+  + FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN
+  + FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER
+  + FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
+  + FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
+  + FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
@@ -8526,6 +8557,7 @@ way -
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
   + FLAG_HIDE_MT_CHIMNEY_TRAINERS
+  + FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   + FLAG_HIDE_PETALBURG_CITY_SCOTT
   + FLAG_HIDE_PETALBURG_CITY_WALLY
@@ -8586,6 +8618,7 @@ way -
   + FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  + FLAG_HOENN_CHAPTER_EIGHT
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
@@ -8669,6 +8702,17 @@ way -
   * fanfare FanfareItem
   * journal ItemWasObtained Potion
   + FLAG_OBTAINED_TEST_POTION
+=== common.JohtoChampionCall
+from a trainer with lines of their own
+way -
+  > Brrrring! Brrrring! It's the Pokégear...
+  Prof. Elm> Lucas! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!
+  Prof. Elm> Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly.
+  Prof. Elm> Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League.
+  Prof. Elm> There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!
+  > Click... The call has ended.
+  * sound select
+  + FLAG_ELM_CALLED_THE_CHAMPION
 === common.JohtoChapterTwo
 from a trainer with lines of their own
 way -
@@ -8793,16 +8837,30 @@ way -
   = VAR_MAP_SCENE_ROUTE22 0 -> 1
   = VAR_MAP_SCENE_VIRIDIAN_CITY_MART 0 -> 2
   = VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 0 -> 2
-=== common.Nurse
+=== common.NextHint
 from a trainer with lines of their own
 way 0
+  Anyone> By the way, would you like a reminder of what to do next?
+  Anyone> Let me see... Go downstairs. Mom is wondering where you have got to.
+  ? By the way, would you like a reminder of what to do next? = Yes
+way 1, from answer 1
+  ? By the way, would you like a reminder of what to do next? = No
+=== common.Nurse
+from a trainer with lines of their own
+way 0.0
   Anyone> Good day! You've come to a Pokémon Center.
   Anyone> Your Pokémon look as if they could do with a rest. Shall I see to them?
   Anyone> Leave them with me. It won't take a moment.
   Anyone> There we are! Every one of them is fit and well again.
+  Anyone> By the way, would you like a reminder of what to do next?
+  Anyone> Let me see... Go downstairs. Mom is wondering where you have got to.
   Anyone> Take care out there, and come back whenever you need us!
   ? Your Pokémon look as if they could do with a rest. Shall I see to them? = Yes
+  ? By the way, would you like a reminder of what to do next? = Yes
   * anim heal 1
+way 0.1, from answer 2
+  Anyone> Take care out there, and come back whenever you need us!
+  ? By the way, would you like a reminder of what to do next? = No
 way 1, from answer 1
   Anyone> Take care out there, and come back whenever you need us!
   ? Your Pokémon look as if they could do with a rest. Shall I see to them? = No
@@ -9028,6 +9086,10 @@ way 1, from answer 1
 from an obstacle, with no field move and no badge
 way -
   > A steep, rough wall of rock. A Pokémon might be able to scale it.
+=== common.Rumour
+from a trainer with lines of their own
+way -
+  Anyone> They say the first Gym is in a mining town, and its Leader is as fond of rocks as the miners are of coal.
 === common.SafariOutOfBalls
 from a trainer with lines of their own
 way -
@@ -11670,6 +11732,32 @@ way -
 from Riley at 34,3 of IronIslandB2FLeft
 way -
   Riley> I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up.
+=== johto_victory_road_3f.Gone
+from {rival} at 33,29 of IndigoVictoryRoad_3F
+way -
+  Barry> What are you waiting for? The League's that way.
+=== johto_victory_road_3f.Rival
+from the trigger at 37,21 of IndigoVictoryRoad_3F
+way 0
+  Barry> Hold it.
+  Barry> So you're going to take on the Pokémon League. Not before you've dealt with me.
+  Barry> I've been thinking about what that dragon tamer said. I'm not saying he was right. But I'm not the same as I was.
+  Barry> Lucas! This time, I win!
+  Barry> ...I lost. Again. But it doesn't feel the way it used to.
+  Barry> My Pokémon fought for me today. Not because I told them to. I couldn't have done that before.
+  Barry> Go on, then. Go and take the League. I'm going to train somewhere nobody bothers me, and when I come back I'll be stronger than all of you.
+  * scene johto_victory_road_3f.The rival in Victory Road
+  * music johto/rival
+  * battle johto_rival_silver_5 Won
+  * music area
+  * endscene
+  + FLAG_HIDE_VICTORY_ROAD_RIVAL
+  = VAR_UNK_40C5 0 -> 1
+  + beaten johto_rival_silver_5
+  + seen johto_victory_road_3f.The rival in Victory Road
+way 1, from answer 1
+  * battle johto_rival_silver_5 Lost
+  * scene over, unseen
 === jubilife_city.Cameraman
 from Cameraman at 169,753 of Sinnoh
 way -
@@ -12091,6 +12179,246 @@ way -
   Mr. Fuji> There's a huge Pokémon asleep on the road, I hear. The flute should rouse it.
   * fanfare FanfareKeyItem
   + FLAG_GOT_POKE_FLUTE
+=== lilycove_city.BerryGentleman
+from Gentleman at 530,77 of Hoenn
+way -
+  Gentleman> Ah, a trainer. A berry suits a trainer, I always say. Here, take one with my compliments.
+  > Lucas received the Cheri Berry!
+  > Lucas put it away in the Berries pocket.
+  Gentleman> Because you're a trainer, you see. Do come back tomorrow.
+  * fanfare FanfareItem
+  + FLAG_DAILY_LILYCOVE_RECEIVED_BERRY
+=== lilycove_city.Girl
+from Girl at 495,88 of Hoenn
+way -
+  Girl> There's a strange cave over in the cove. People in blue and white keep going in and out of it.
+=== lilycove_city.OldManCove
+from Old Man at 537,87 of Hoenn
+way -
+  Old Man> That cove used to be a quiet cavern. Then Team Aqua moved in and dug it out into some kind of base.
+=== lilycove_city.Rival
+from {rival} at 507,77 of Hoenn
+way 0.0
+  Barry> Lucas! Fancy meeting you here. I came to Lilycove to stock up at the Department Store.
+  Barry> But now that you're here... how about a battle? Let's see how far our teams have come!
+  Barry> Great! I won't go easy on you, so don't hold back either!
+  Barry> Whew... You really are something, Lucas. I think I'll head home to Littleroot for a while and help out at the lab.
+  Barry> You're going after every Badge in Hoenn, aren't you? Then I'll be cheering for you. Don't let me down!
+  ? But now that you're here... how about a battle? Let's see how far our teams have come! = Yes
+  * music hoenn/rival
+  * battle hoenn_may_lilycove_mudkip Won
+  * fade out
+  * music area
+  * fade in
+  + FLAG_HIDE_LILYCOVE_CITY_RIVAL
+  + FLAG_MET_RIVAL_LILYCOVE
+  + beaten hoenn_may_lilycove_mudkip
+way 0.1, from answer 2
+  * battle hoenn_may_lilycove_mudkip Lost
+way 1, from answer 1
+  Barry> Aw, really? Fine. I'll be right here if you change your mind.
+  ? But now that you're here... how about a battle? Let's see how far our teams have come! = No
+  * music area
+  + FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+=== lilycove_city.Sailor
+from Sailor at 512,90 of Hoenn
+way -
+  Sailor> Team Aqua's been training Wailmer right in the channel. No boat can get out east past them.
+=== lilycove_city.SchoolKid
+from School Kid at 496,93 of Hoenn
+way 0
+  School Kid> Do you know about the Berry Blender? You put berries in and spin them together.
+  School Kid> Then you know the faster everyone spins, the better the Pokéblocks come out!
+  ? Do you know about the Berry Blender? You put berries in and spin them together. = Yes
+way 1, from answer 1
+  School Kid> You put berries in and everyone spins together. Out come Pokéblocks, treats that make Pokémon shine in contests.
+  ? Do you know about the Berry Blender? You put berries in and spin them together. = No
+=== lilycove_city.Wailmer
+from Wailmer at 556,82 of Hoenn
+from Wailmer at 556,84 of Hoenn
+from Wailmer at 557,86 of Hoenn
+way -
+  > A Wailmer is floating in the water, blocking the way. It doesn't look like it's going to move.
+=== lilycove_city.WailmerGrunt
+from Team Aqua Grunt at 553,85 of Hoenn
+way -
+  Team Aqua Grunt> Watch my Wailmer leap! They're the pride of Team Aqua. Nobody gets past them out to sea.
+  Team Aqua Grunt> Hey, what are you staring at? Clear off, you're putting them off their training!
+  + FLAG_MET_WAILMER_TRAINER
+=== lilycove_city.Woman
+from Woman at 515,97 of Hoenn
+way -
+  Woman> Somebody stole my Pokémon! I just know it was those Team Aqua people. What do I do?
+=== lilycove_city_cove_lily_motel_2f.Scott
+from Scott at 1,7 of LilycoveCity_CoveLilyMotel_2F
+way -
+  Scott> Mm... Oh! Lucas! You caught me napping. I've been out watching trainers all day.
+  Scott> I'd much rather be watching a battle than sleeping, mind you. Have you been to the Contest Hall yet?
+  + FLAG_MET_SCOTT_IN_LILYCOVE
+  = VAR_SCOTT_STATE 0 -> 1
+=== lilycove_city_department_store_1f.LotteryClerk
+from Lottery Clerk at 10,2 of LilycoveCity_DepartmentStore_1F
+way 0
+  Lottery Clerk> This is the Lilycove Department Store's Lottery Corner!
+  Lottery Clerk> We draw one ticket a day. If its number matches the ID number of any of your Pokémon, you win a prize! Will you draw?
+  Lottery Clerk> Your ticket's number is 65252! Please wait while I check it against your Pokémon...
+  Lottery Clerk> I'm sorry. None of the numbers matched closely enough to win.
+  Lottery Clerk> Please try again tomorrow!
+  ? We draw one ticket a day. If its number matches the ID number of any of your Pokémon, you win a prize! Will you draw? = Yes
+  + FLAG_DAILY_PICKED_LOTO_TICKET
+way 1, from answer 1
+  Lottery Clerk> Please visit us again!
+  ? We draw one ticket a day. If its number matches the ID number of any of your Pokémon, you win a prize! Will you draw? = No
+=== lilycove_city_department_store_2f.ClerkLeft
+from Clerk at 7,6 of LilycoveCity_DepartmentStore_2F
+way -
+  Clerk> Welcome! What can I get for you?
+  Clerk> Please come again!
+  * open Shop lilycove_2f_balls
+=== lilycove_city_department_store_2f.ClerkRight
+from Clerk at 10,6 of LilycoveCity_DepartmentStore_2F
+way -
+  Clerk> Welcome! What can I get for you?
+  Clerk> Please come again!
+  * open Shop lilycove_2f_medicine
+=== lilycove_city_department_store_3f.ClerkLeft
+from Clerk at 8,2 of LilycoveCity_DepartmentStore_3F
+way -
+  Clerk> Welcome! Our vitamins make your Pokémon stronger for good.
+  Clerk> Please come again!
+  * open Shop lilycove_3f_vitamins
+=== lilycove_city_department_store_3f.ClerkRight
+from Clerk at 10,2 of LilycoveCity_DepartmentStore_3F
+way -
+  Clerk> Welcome! Our battle items give your Pokémon the edge when it counts.
+  Clerk> Please come again!
+  * open Shop lilycove_3f_battle
+=== lilycove_city_department_store_4f.ClerkLeft
+from Clerk at 7,6 of LilycoveCity_DepartmentStore_4F
+way -
+  Clerk> Welcome! These machines teach the strongest attacks there are.
+  Clerk> Please come again!
+  * open Shop lilycove_4f_attack
+=== lilycove_city_department_store_4f.ClerkRight
+from Clerk at 9,6 of LilycoveCity_DepartmentStore_4F
+way -
+  Clerk> Welcome! These machines teach moves that protect your team.
+  Clerk> Please come again!
+  * open Shop lilycove_4f_defense
+=== lilycove_city_department_store_rooftop.SubstituteTutor
+from Woman at 15,5 of LilycoveCity_DepartmentStoreRooftop
+way 0
+  Woman> A Pokémon that can make a decoy of itself is a tricky one to beat. Shall I teach one of yours Substitute?
+  Woman> Lovely! Which one?
+  Woman> Turtwig learned Substitute!
+  Woman> Substitute costs a little HP, but the decoy takes the hits in its place. Use it wisely!
+  ? A Pokémon that can make a decoy of itself is a tricky one to beat. Shall I teach one of yours Substitute? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE
+way 1, from answer 1
+  Woman> Oh, never mind, then. I'll be up here enjoying the breeze.
+  ? A Pokémon that can make a decoy of itself is a tricky one to beat. Shall I teach one of yours Substitute? = No
+=== lilycove_city_department_store_rooftop.Vending
+from the tile read at 10,1 of LilycoveCity_DepartmentStoreRooftop
+from the tile read at 9,1 of LilycoveCity_DepartmentStoreRooftop
+way 0
+  > A drinks machine. Which drink would you like?
+  > Clang! A bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = FRESH WATER  200
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 3, from answer 1
+  > Decided not to buy a drink.
+  ? A drinks machine. Which drink would you like? = NONE
+way 2, from answer 1
+  > Clang! A can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = LEMONADE  350
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 1, from answer 1
+  > Clang! A can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = SODA POP  300
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+=== lilycove_city_house_2.RestMan
+from Man at 0,4 of LilycoveCity_House2
+way -
+  Man> Huh? I was just about to have a lie-down. Nothing beats a good rest, you know. Here, take this. Sleep on it!
+  > Lucas received the TM44!
+  > TM44 holds the move Rest.
+  > Lucas put it away in the TMs & HMs pocket.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_REST
+=== lilycove_city_house_3.PokeblockMother
+from Woman at 7,4 of LilycoveCity_House3
+way 0
+  Woman> Would you like to learn about Pokéblocks from a master of the Berry Blender?
+  Woman> Pokéblocks are treats made by blending berries. Each has a flavour that brings out a Pokémon's coolness, beauty, cuteness, smartness or toughness.
+  Woman> A Pokémon that likes the flavour shines all the more on a contest stage. My four blend berries every day!
+  ? Would you like to learn about Pokéblocks from a master of the Berry Blender? = Yes
+way 1, from answer 1
+  Woman> Oh, are you sure? Well, ask me any time.
+  ? Would you like to learn about Pokéblocks from a master of the Berry Blender? = No
+=== lilycove_city_lilycove_museum_1f.Curator
+from Curator at 16,2 of LilycoveCity_LilycoveMuseum_1F
+way 0
+  Curator> Ah, a visitor! Our second floor is a gallery for paintings of Pokémon from the Contest Hall. Would you like to see it?
+  Curator> Splendid! Do come this way.
+  ? Ah, a visitor! Our second floor is a gallery for paintings of Pokémon from the Contest Hall. Would you like to see it? = Yes
+  * warp LilycoveCity_LilycoveMuseum_2F 13 2
+  + FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR
+way 1, from answer 1
+  Curator> Of course. Enjoy the works down here, and ask me whenever you like.
+  ? Ah, a visitor! Our second floor is a gallery for paintings of Pokémon from the Contest Hall. Would you like to see it? = No
+=== lilycove_city_move_deleters_house.Deleter
+from Move Deleter at 4,4 of LilycoveCity_MoveDeletersHouse
+way 0.0.0
+  Move Deleter> Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it.
+  Move Deleter> Shall I make one of your Pokémon forget a move?
+  Move Deleter> Which Pokémon?
+  Move Deleter> Which move should be forgotten?
+  Move Deleter> Tackle? Should that move be forgotten?
+  Move Deleter> There! Turtwig has forgotten Tackle completely.
+  ? Shall I make one of your Pokémon forget a move? = Yes
+  ? Which move should be forgotten? = Tackle
+  ? Tackle? Should that move be forgotten? = Yes
+  * open ChoosePokemon
+way 0.0.1, from answer 3
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Tackle? Should that move be forgotten? = No
+way 0.2, from answer 2
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Which move should be forgotten? = Cancel
+way 0.1.0, from answer 2
+  Move Deleter> Withdraw? Should that move be forgotten?
+  Move Deleter> There! Turtwig has forgotten Withdraw completely.
+  ? Which move should be forgotten? = Withdraw
+  ? Withdraw? Should that move be forgotten? = Yes
+way 0.1.1, from answer 3
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Withdraw? Should that move be forgotten? = No
+way 1, from answer 1
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Shall I make one of your Pokémon forget a move? = No
 === littleroot_town.GoSaveBirch
 from the trigger at 131,283 of Hoenn
 way -
@@ -12785,6 +13113,108 @@ way 0
 way 1, from answer 1
   * battle kanto_super_nerd_miguel Lost
   * scene over, unseen
+=== mt_pyre_1f.CleanseTagWoman
+from Old Woman at 21,2 of MtPyre_1F
+way -
+  Old Woman> Ghost Pokémon wander these halls, child. Some of them would rather you weren't here at all.
+  Old Woman> Here, take this. It will keep the wilder ones away from you.
+  > Lucas received the Cleanse Tag!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_CLEANSE_TAG
+=== mt_pyre_summit.AquaTrigger0
+from the trigger at 22,7 of MtPyre_Summit
+way -
+  Archie> Hm? You again. You turn up everywhere, don't you?
+  Archie> Too late this time. The Red Orb is ours, and with it the power to wake the master of the sea.
+  Archie> Team Magma took the Blue Orb before us, but no matter. Team Aqua will widen the seas and give the world back to the Pokémon of the deep. Let's go!
+  Old Woman> Oh, what a terrible thing. Both of the orbs are gone.
+  Old Woman> The Red Orb and the Blue Orb must never be parted from this mountain. Together they keep the two great Pokémon of land and sea asleep.
+  Old Woman> Those people in red were here before the blue ones, and they snatched the Blue Orb. In their hurry they dropped this.
+  > Lucas received the Magma Emblem!
+  > Lucas put it away in the Key Items pocket.
+  Old Woman> Their mark is on it. Whoever they are, that emblem may lead you to where they hide.
+  Old Woman> Please, find them before the orbs are put to some dreadful use.
+  * scene mt_pyre_summit.Team Aqua leaves the summit west
+  * music hoenn/eye_galactic
+  * fade out
+  * music area
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+  + FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  + FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+  + FLAG_RECEIVED_RED_OR_BLUE_ORB
+  = VAR_MT_PYRE_STATE 0 -> 1
+  + seen mt_pyre_summit.Team Aqua leaves the summit west
+=== mt_pyre_summit.AquaTrigger1
+from the trigger at 23,7 of MtPyre_Summit
+way -
+  Archie> Hm? You again. You turn up everywhere, don't you?
+  Archie> Too late this time. The Red Orb is ours, and with it the power to wake the master of the sea.
+  Archie> Team Magma took the Blue Orb before us, but no matter. Team Aqua will widen the seas and give the world back to the Pokémon of the deep. Let's go!
+  Old Woman> Oh, what a terrible thing. Both of the orbs are gone.
+  Old Woman> The Red Orb and the Blue Orb must never be parted from this mountain. Together they keep the two great Pokémon of land and sea asleep.
+  Old Woman> Those people in red were here before the blue ones, and they snatched the Blue Orb. In their hurry they dropped this.
+  > Lucas received the Magma Emblem!
+  > Lucas put it away in the Key Items pocket.
+  Old Woman> Their mark is on it. Whoever they are, that emblem may lead you to where they hide.
+  Old Woman> Please, find them before the orbs are put to some dreadful use.
+  * scene mt_pyre_summit.Team Aqua leaves the summit middle
+  * music hoenn/eye_galactic
+  * fade out
+  * music area
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+  + FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  + FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+  + FLAG_RECEIVED_RED_OR_BLUE_ORB
+  = VAR_MT_PYRE_STATE 0 -> 1
+  + seen mt_pyre_summit.Team Aqua leaves the summit middle
+=== mt_pyre_summit.AquaTrigger2
+from the trigger at 24,7 of MtPyre_Summit
+way -
+  Archie> Hm? You again. You turn up everywhere, don't you?
+  Archie> Too late this time. The Red Orb is ours, and with it the power to wake the master of the sea.
+  Archie> Team Magma took the Blue Orb before us, but no matter. Team Aqua will widen the seas and give the world back to the Pokémon of the deep. Let's go!
+  Old Woman> Oh, what a terrible thing. Both of the orbs are gone.
+  Old Woman> The Red Orb and the Blue Orb must never be parted from this mountain. Together they keep the two great Pokémon of land and sea asleep.
+  Old Woman> Those people in red were here before the blue ones, and they snatched the Blue Orb. In their hurry they dropped this.
+  > Lucas received the Magma Emblem!
+  > Lucas put it away in the Key Items pocket.
+  Old Woman> Their mark is on it. Whoever they are, that emblem may lead you to where they hide.
+  Old Woman> Please, find them before the orbs are put to some dreadful use.
+  * scene mt_pyre_summit.Team Aqua leaves the summit east
+  * music hoenn/eye_galactic
+  * fade out
+  * music area
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+  + FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  + FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+  + FLAG_RECEIVED_RED_OR_BLUE_ORB
+  = VAR_MT_PYRE_STATE 0 -> 1
+  + seen mt_pyre_summit.Team Aqua leaves the summit east
+=== mt_pyre_summit.OldMan
+from Old Man at 22,5 of MtPyre_Summit
+way 0
+  Old Man> Will you hear out an old man's tale of the two Pokémon that shaped Hoenn?
+  Old Man> Long ago, a Pokémon of the land raised the continents, and a Pokémon of the sea filled the oceans.
+  Old Man> The two clashed, land against sea, and the world shook with their fury until a great light calmed them.
+  Old Man> They fell into a deep sleep. The orbs kept on this summit hold the memory of that light.
+  ? Will you hear out an old man's tale of the two Pokémon that shaped Hoenn? = Yes
+way 1, from answer 1
+  Old Man> I see. Well, that is fine too. The mountain will keep the tale until you want it.
+  ? Will you hear out an old man's tale of the two Pokémon that shaped Hoenn? = No
+=== mt_pyre_summit.OldWoman
+from Old Woman at 23,5 of MtPyre_Summit
+way -
+  Old Woman> The orbs have been taken from this summit. I pray no harm comes of it.
 === new_bark.Friend
 from {assistant} at 694,400 of Johto
 way -
@@ -13574,6 +14004,24 @@ way 0
 way 1, from answer 1
   * battle kanto_elite_four_agatha Lost
   * scene over, unseen
+=== pokemon_league_bruno_room.Bruno
+from Bruno at 6,10 of IndigoLeague_BrunoRoom
+way 0
+  Bruno> I am Bruno of the Elite Four! My Pokémon and I have trained together until we move as one.
+  Bruno> We will smash anything that stands in our way, with all the strength our bodies hold!
+  Bruno> Hoo hah! Come on!
+  Bruno> Our strength... wasn't enough? Hah! Then we have a long way still to climb.
+  Bruno> The door is open. Go on, and don't you dare lose after beating us.
+  * scene pokemon_league_bruno_room.Bruno
+  * battle johto_elite_four_bruno_bruno Won
+  * sound door_open
+  * endscene
+  + FLAG_HIDE_BRUNOS_ROOM_EXIT
+  + beaten johto_elite_four_bruno_bruno
+  + seen pokemon_league_bruno_room.Bruno
+way 1, from answer 1
+  * battle johto_elite_four_bruno_bruno Lost
+  * scene over, unseen
 === pokemon_league_brunos_room.Bruno
 from Bruno at 6,5 of PokemonLeague_BrunosRoom
 way 0
@@ -13600,6 +14048,76 @@ from Guard at 11,8 of IndigoLeague_PokemonCenter_1F
 way -
   Guard> Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Johto's Gym Badges goes through.
   Guard> Come back when you have all eight. The Elite Four won't see anyone with fewer.
+=== pokemon_league_karen_room.Karen
+from Karen at 6,10 of IndigoLeague_KarenRoom
+way 0
+  Karen> I am Karen of the Elite Four. You're Lucas? How amusing.
+  Karen> My Pokémon are of the Dark type. Untamed, hard to read, and far tougher than they look.
+  Karen> Think you can take them? Just try to entertain me. Let's go.
+  Karen> Well, aren't you good. I like that in a trainer.
+  Karen> People love to sort Pokémon into the strong and the weak. I've never had much patience for that. The best trainers win with the ones they love.
+  Karen> You fight like someone who knows it. Go on. The Champion is waiting.
+  * scene pokemon_league_karen_room.Karen
+  * battle johto_elite_four_karen_karen Won
+  * sound door_open
+  * endscene
+  + FLAG_HIDE_KARENS_ROOM_EXIT
+  + beaten johto_elite_four_karen_karen
+  + seen pokemon_league_karen_room.Karen
+way 1, from answer 1
+  * battle johto_elite_four_karen_karen Lost
+  * scene over, unseen
+=== pokemon_league_koga_room.Koga
+from Koga at 6,11 of IndigoLeague_KogaRoom
+way 0
+  Koga> So, another challenger slips past Will. I am Koga of the Elite Four, master of the ninja's arts.
+  Koga> My poisons do not strike all at once. They wear the strongest down a little at a time.
+  Koga> Confusion, sleep and venom... Let us see how long your Pokémon last!
+  Koga> Ah! You have proven your worth in full.
+  Koga> Go on. The next of us is waiting, and he fights with nothing but his fists.
+  * scene pokemon_league_koga_room.Koga
+  * battle johto_elite_four_koga_koga Won
+  * sound door_open
+  * endscene
+  + FLAG_HIDE_KOGAS_ROOM_EXIT
+  + beaten johto_elite_four_koga_koga
+  + seen pokemon_league_koga_room.Koga
+way 1, from answer 1
+  * battle johto_elite_four_koga_koga Lost
+  * scene over, unseen
+=== pokemon_league_lance_room.Champion
+from Lance at 6,6 of IndigoLeague_LanceRoom
+way -
+  Lance> Come, Lucas. The Hall of Fame is through here.
+=== pokemon_league_lance_room.Lance
+from the trigger at 5,10 of IndigoLeague_LanceRoom
+way 0
+  Lance> I've been waiting for you, Lucas.
+  Lance> I knew that one day you would stand here. Ever since the Lake of Rage, I've wanted to see how far you would go.
+  Lance> We fought side by side once. Today I stand in your way, as the League's Champion should.
+  Lance> My dragons have never been beaten in this room. Show me everything you have!
+  Lance> ...It's over. I've lost.
+  Lance> You and your Pokémon have a bond I've rarely seen. You trusted each other, and that trust won through.
+  Lance> As the Champion, I'm proud to say it: you are the new Champion of the Pokémon League!
+  Mary> Oh, wait! Wait for us, please!
+  Mary> Is it over already? We've missed the whole thing! I'm Mary, from Pokémon Talk on the radio. I came to interview the new Champion!
+  Prof. Oak> Calm yourself, Mary. Lucas, you've won. I heard it from the doorway. Congratulations, Champion!
+  Prof. Oak> When I handed you that Pokédex, I never dreamt you'd be standing here so soon. Your Pokémon trust you. That's the strength of a true trainer.
+  Lance> Lucas, come with me. There is one room left, where the League keeps the names of its Champions.
+  * scene pokemon_league_lance_room.Lance
+  * battle johto_champion_lance Won
+  * sound door_open
+  * sound door_open
+  * warp IndigoLeague_HallOfFame 6 21
+  * endscene
+  + FLAG_HIDE_LANCES_ROOM_EXIT
+  + FLAG_LANCES_ROOM_VISITORS
+  = VAR_UNK_40C7 0 -> 1
+  + beaten johto_champion_lance
+  + seen pokemon_league_lance_room.Lance
+way 1, from answer 1
+  * battle johto_champion_lance Lost
+  * scene over, unseen
 === pokemon_league_lances_room.Lance
 from Lance at 6,8 of PokemonLeague_LancesRoom
 way 0
@@ -13635,6 +14153,24 @@ way 0
   + seen pokemon_league_loreleis_room.Lorelei
 way 1, from answer 1
   * battle kanto_elite_four_lorelei Lost
+  * scene over, unseen
+=== pokemon_league_will_room.Will
+from Will at 6,10 of IndigoLeague_WillRoom
+way 0
+  Will> Welcome to the Pokémon League. I am Will of the Elite Four.
+  Will> My Psychic-type Pokémon and I have honed our minds in every corner of the world, and the League called us here at last.
+  Will> I will not lose to you. Prepare yourself!
+  Will> I... can't believe it. My psychic power was not enough.
+  Will> Go on to the next room. You will learn there what the Elite Four truly are.
+  * scene pokemon_league_will_room.Will
+  * battle johto_elite_four_will_will Won
+  * sound door_open
+  * endscene
+  + FLAG_HIDE_WILLS_ROOM_EXIT
+  + beaten johto_elite_four_will_will
+  + seen pokemon_league_will_room.Will
+way 1, from answer 1
+  * battle johto_elite_four_will_will Lost
   * scene over, unseen
 === pokemon_tower_2f.Rival
 from the trigger at 16,6 of PokemonTower_2F
@@ -15056,6 +15592,34 @@ from Attendant at 17,9 of Route121_SafariZoneEntrance
 way -
   Attendant> Welcome to the Safari Zone! Pokémon you'll hardly ever see in Hoenn live here in the wild.
   Attendant> And trainers may catch them to keep. Come in and enjoy yourself!
+=== route_123.GigaDrainGirl
+from Girl at 428,153 of Hoenn
+way -
+  Girl> I love Grass Pokémon! They drink the sunshine and grow and grow, just like these berry trees.
+  Girl> Oh, you don't have a Grass Pokémon with you? That's a shame. Come back when you do!
+=== route_123_berry_masters_house.BerryMaster
+from Berry Master at 4,4 of Route123_BerryMastersHouse
+way -
+  Berry Master> Ah, you have the look of someone who deserves a berry. Here, have one of mine.
+  > Lucas received the Pomeg Berry!
+  > Lucas put it away in the Berries pocket.
+  Berry Master> Why be stingy? Take another!
+  > Lucas received the Pomeg Berry!
+  > Lucas put it away in the Berries pocket.
+  Berry Master> If you have berries to spare, the Pretty Petal flower shop on Route 104 will teach you how to grow them.
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+  + FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
+=== route_123_berry_masters_house.BerryMastersWife
+from Old Woman at 7,4 of Route123_BerryMastersHouse
+way -
+  Old Woman> Have you heard a good saying lately? Tell me one, would you?
+  Old Woman> happy together... What a lovely saying! It makes me feel young again. Take this.
+  > Lucas received the Cheri Berry!
+  > Lucas put it away in the Berries pocket.
+  * open Phrase BERRY_MASTERS_WIFE feelings:happy small:together
+  * fanfare FanfareItem
+  + FLAG_DAILY_BERRY_MASTERS_WIFE
 === route_12_fishing_house.Board
 from the tile read at 9,1 of Route12_FishingHouse
 way -
@@ -15734,6 +16298,10 @@ way -
 from Guard at 9,16 of Route22_LeagueReceptionGate
 way -
   Guard> Only a trainer with all eight of Johto's Badges may take the road north to Victory Road.
+=== route_22_pokemon_league_reception_gate.KantoGuard
+from Guard at 14,9 of Route22_LeagueReceptionGate
+way -
+  Guard> Through this door is Route 22, and Kanto beyond it. It opens to those who have stood before the Champion.
 === route_22_pokemon_league_reception_gate.KantoShut
 from the trigger at 14,8 of Route22_LeagueReceptionGate
 way -

@@ -1201,8 +1201,9 @@ public sealed partial class BattleCore : IBattleContext
     /// The EXP a fainted foe leaves (<c>Task_GiveExperience</c>; <see cref="Formulas.ExpShares"/>): shared among the
     /// player's Pokémon that fought it and are still standing, with the Exp. Share's half for its holders, and the
     /// Lucky Egg's, a trainer battle's and another trainer's Pokémon's bonus on each one's part. Whoever gains EXP
-    /// gains the foe's effort too (<see cref="EffortRules.Gain"/>); a Pokémon at level 100 gains neither. By the
-    /// modern rules the whole party gains by the scaled formula (<see cref="Formulas.ScaledExp"/>).
+    /// gains the foe's effort too (<see cref="EffortRules.Gain"/>); a Pokémon at the rules' level cap gains neither
+    /// (100 in Platinum; plan 18 · W4's 260 by the modern rules, where effort still comes). By the modern rules the
+    /// whole party gains by the scaled formula (<see cref="Formulas.ScaledExp"/>).
     /// </summary>
     private void AwardExp(Battler defeated)
     {
@@ -1217,9 +1218,9 @@ public sealed partial class BattleCore : IBattleContext
             foreach (var p in standing)
             {
                 bool traded = Obedience.IsOutsider(p, Conditions.Player);
-                if (p.Level >= 100)
+                if (p.Level >= Rules.LevelCap)
                 {
-                    if (Rules.EvsAtLevel100) EffortRules.Gain(p, foe.EvYield, Rules);
+                    if (Rules.EvsAtTheCap) EffortRules.Gain(p, foe.EvYield, Rules);
                     continue;
                 }
                 bool past = p.Species.LevelEvolution is { } next && p.Level >= next.Level;
@@ -1236,7 +1237,7 @@ public sealed partial class BattleCore : IBattleContext
         var (share, shared) = Formulas.ExpShares(foe.BaseExpYield, foe.Level, fought.Count, holders.Count);
         foreach (var p in standing)
         {
-            if (p.Level >= 100) continue;
+            if (p.Level >= Rules.LevelCap) continue;
             int part = (fought.Contains(p) ? share : 0) + (holders.Contains(p) ? shared : 0);
             if (part == 0) continue;
             bool traded = Obedience.IsOutsider(p, Conditions.Player);
@@ -1254,7 +1255,7 @@ public sealed partial class BattleCore : IBattleContext
         EffortRules.Gain(p, foe.EvYield, Rules);
         // The stats it had, for the level-up panel (plan 08 · P5): effort changes none of them until a level reckons them again
         var before = p.Stats();
-        bool rose = p.GainExp(exp, out var learned, out var wanted);
+        bool rose = p.GainExp(exp, out var learned, out var wanted, Rules.LevelCap);
         Emit(new ExpGained(p, exp));
         if (!rose) return;
 

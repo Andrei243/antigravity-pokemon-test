@@ -48,6 +48,7 @@
     },
     "pokefan_f": {
       "name": "Pokéfan",
+      "script": "Rumour",
       "dialog": [
         "All the walkways in town are covered in solar panels. They drink in the sunshine all day long.",
         "A city this bright needs a lot of power, and the sun gives us every bit of it!"

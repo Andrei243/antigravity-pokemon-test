@@ -1,0 +1,59 @@
+# Victory Road's third floor (plan 20 · J12). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D43R0103).
+#
+# The red-haired boy's last challenge: the first time the player comes up the corridor to the Indigo Plateau (the
+# area's first trigger, on VAR_UNK_40C5 0), he comes up behind them and battles with the team that beats the
+# player's starter, then goes on ahead. HeartGold keeps him off the floor by FLAG_HIDE_VICTORY_ROAD_RIVAL, which its
+# new game sets; here the floor's arrival sets it, so a save of Johto from before this session needs no story version,
+# and the scene brings him in where the player stands.
+
+
+script OnEnter
+  setflag FLAG_HIDE_VICTORY_ROAD_RIVAL
+  end
+
+
+# HeartGold's D43R0103_000: he catches up two tiles behind the player
+script Rival
+  scene "The rival in Victory Road"
+  music "johto/rival"
+  if var PLAYER_X == 37 place d43r0103_gsrivel 37 24 up
+  if var PLAYER_X == 38 place d43r0103_gsrivel 38 24 up
+  if var PLAYER_X == 39 place d43r0103_gsrivel 39 24 up
+  clearflag FLAG_HIDE_VICTORY_ROAD_RIVAL
+  show d43r0103_gsrivel
+  speaker "{rival}"
+  say "Hold it."
+  face player down
+  walk d43r0103_gsrivel up 2
+  say "So you're going to take on the Pokémon League. Not before you've dealt with me."
+  say "I've been thinking about what that dragon tamer said. I'm not saying he was right. But I'm not the same as I was."
+  say "{player}! This time, I win!"
+  if starter "Chikorita" goto VsTyphlosion
+  if starter "Cyndaquil" goto VsFeraligatr
+  battle d43r0103_gsrivel as "johto_rival_silver_5"
+  goto Won
+label VsTyphlosion
+  battle d43r0103_gsrivel as "johto_rival_silver_9"
+  goto Won
+label VsFeraligatr
+  battle d43r0103_gsrivel as "johto_rival_silver_13"
+label Won
+  speaker "{rival}"
+  say "...I lost. Again. But it doesn't feel the way it used to."
+  say "My Pokémon fought for me today. Not because I told them to. I couldn't have done that before."
+  say "Go on, then. Go and take the League. I'm going to train somewhere nobody bothers me, and when I come back I'll be stronger than all of you."
+  walk d43r0103_gsrivel down 3 fast
+  hide d43r0103_gsrivel
+  setflag FLAG_HIDE_VICTORY_ROAD_RIVAL
+  setvar VAR_UNK_40C5 1
+  music area
+  endscene
+  end
+
+
+# Spoken to in the moment between his battle and his going (nobody stands here otherwise)
+script Gone
+  speaker "{rival}"
+  say "What are you waiting for? The League's that way."
+  end

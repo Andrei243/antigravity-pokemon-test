@@ -1,0 +1,18 @@
+# Mt. Pyre's halls of graves: a slow, hushed hymn in E minor, a choir holding each chord while a bell lets fall a few
+# notes, over a deep bass, the same by day and night. Original composition for this game (plan 21 · H7).
+title Mt. Pyre
+tempo 66
+meter 4/4
+reverb 0.52
+night none
+
+track air choir vol=0.7 pan=-0.1 rev=0.5
+  L o4 (e g b)1 | (c e g)1 | (a >c e)1 | (b >d+ f+)1 |
+  (e g b)1 | (c e a)1 | (f+ a >c)1 | (b >d+ f+)1 |
+
+track toll bell vol=0.66 pan=0.25 rev=0.56
+  L o5 b4 r4 g4 r4 | o5 e2 r2 | o5 a4 r4 o6 c4 r4 | o5 b2. r4 |
+  o5 b4 r4 o6 e4 r4 | o6 c2 o5 a2 | o5 a4 r4 f+4 r4 | o5 d+2. r4 |
+
+track drone contrabass vol=0.95 rev=0.32
+  L o2 e1 | c1 | a1 | b1 | e1 | c1 | f+1 | b1 |

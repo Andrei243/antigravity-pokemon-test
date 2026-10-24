@@ -36,7 +36,8 @@ public partial class GameEngine
         }
         var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
         Random rng = fieldRandom;
-        int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
+        // At the region's mapped level in a region the game crossed into (plan 18 · W4), drawn as ever
+        int lvl = LevelHere(rng.Next(entry.MinLevel, entry.MaxLevel + 1));
         // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize); a Poké
         // Radar patch's sparkle is a personality found shiny for the player (plan 06 · R15)
         var wild = entry.Shiny
@@ -56,7 +57,7 @@ public partial class GameEngine
                 return;
             }
             var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
-            second = new Pokemon(otherSpecies, other.MinLevel, gender: other.Gender, nature: other.Nature);
+            second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
             if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
@@ -320,6 +321,20 @@ public partial class GameEngine
         return trainer;
     }
 
+    /// <summary>
+    /// The levels of the region the player stands in for a team that crossed into it (plan 18 · W4, the region file's
+    /// <c>levels</c>): null in the region the game began in, where its own game's levels stand, and where the file maps
+    /// none (Sinnoh).
+    /// </summary>
+    private LevelMapping? CrossedLevels()
+    {
+        var here = Here;
+        return string.Equals(here.Id, flow.BeganIn, StringComparison.OrdinalIgnoreCase) ? null : here.Levels;
+    }
+
+    /// <summary>The level a Pokémon of the region's own game's <paramref name="level"/> is met at where the player stands (plan 18 · W4).</summary>
+    private int LevelHere(int level) => CrossedLevels()?.Map(level) ?? level;
+
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => flow.Party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
@@ -350,6 +365,14 @@ public partial class GameEngine
             partner.Look ??= (this.partner is { } beside && beside.TrainerId == partner.Id ? beside.Who : flow.Map.Everyone.FirstOrDefault(n => n.TrainerData == partner))?.NpcType;
         CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
             .Select(t => CharacterStyles.Default.InBattle(t)));
+        // In a region the game crossed into, everyone fights at the region's mapped levels (plan 18 · W4): the battle is
+        // handed copies, and the trainers of the map keep their teams at their game's levels
+        if (CrossedLevels() is { } levels)
+        {
+            trainers = trainers.Select(t => t.Relevelled(levels.Map)).ToList();
+            trainer = trainers[0];
+            partner = partner?.Relevelled(levels.Map);
+        }
 
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
@@ -410,6 +433,12 @@ public partial class GameEngine
 
     /// <summary>Whether the move cards say how a move will do: the option, with Rules following the game's own rules (plan 12 · Q10).</summary>
     private bool MoveHintsOn => Settings.MoveHints.Holds(Ruleset.Current.Preset);
+
+    /// <summary>Whether the game says what to do next: the option, with Rules following the game's own rules (plan 12 · Q14).</summary>
+    internal bool NextObjectiveOn => Settings.NextObjective.Holds(Ruleset.Current.Preset);
+
+    /// <summary>The line that says what to do next, for the region the player is in; empty when the option is off or the region has none.</summary>
+    internal string NextObjectiveLine => NextObjectiveOn ? Objectives.Line(flow.Story, Here.Id) : "";
 
     /// <summary>Whether the trainers across the field speak in battle: the option, with Rules following the game's own rules (plan 11 · C12).</summary>
     private bool TrainerLinesOn => Settings.TrainerLines.Holds(Ruleset.Current.Preset);

@@ -451,6 +451,8 @@ public partial class GameEngine
     private void InitializeNewGame()
     {
         var region = NewGameRegionRecord;
+        // Every other region's levels are mapped for a team that crossed into it (plan 18 · W4)
+        flow.BeganIn = region.Id;
         var start = region.Start ?? RegionDatabase.First.Start!;
         flow.Map = MapDatabase.Get(start.Map);
         flow.Player = new Player(start.X, start.Y);
@@ -595,6 +597,8 @@ public partial class GameEngine
         // save from before the opening, two that came to hold one id) takes the next
         flow.PokemonIdsIssued = save.PokemonIdsIssued;
         GiveIds();
+        // Where the game began, which decides whose levels are mapped (plan 18 · W4); an older save began where it stands
+        flow.BeganIn = save.BeganInOrHere();
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.TrainerScore = save.TrainerScore;
@@ -668,6 +672,7 @@ public partial class GameEngine
             WorldVersion = SaveData.CurrentWorld,
             SaveVersion = SaveData.CurrentSave,
             PokemonIdsIssued = flow.PokemonIdsIssued,
+            BeganIn = flow.BeganIn,
             LinkBattles = flow.LinkBattles.ToSave(),
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),
@@ -1371,6 +1376,7 @@ public partial class GameEngine
             flow.StartMenu.HasPokemon = flow.Party.Count > 0;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
+            flow.StartMenu.Objective = NextObjectiveLine;
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
@@ -2132,6 +2138,7 @@ public partial class GameEngine
                 // The save as it will be, with the question under it
                 flow.State = GameState.SaveMenu;
                 flow.SaveScreen.Open(BuildSave(), flow.SaveSlot);
+                flow.SaveScreen.Objective = NextObjectiveLine;
                 break;
             case StartMenuChoice.SaveAndQuit:
                 SaveCurrentGame();
@@ -2196,6 +2203,7 @@ public partial class GameEngine
             Regions = regions,
             Score = flow.TrainerScore,
             Stars = stars,
+            NextObjective = NextObjectiveLine,
             Colour = TrainerCardRules.Colour(flow.Story.Has(StoryState.PokedexFlag), stars),
             HallOfFameDebut = flow.HallOfFame.Debut,
             ContestsEntered = flow.ContestRecords.Entered,

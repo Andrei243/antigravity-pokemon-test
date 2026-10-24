@@ -616,5 +616,34 @@ partial class Harness
         story.SetBadges("Kanto", kantoBefore);
         if (!championBefore) story.Unset(RegionDatabase.Get("Sinnoh")!.StoryCompleteFlag);
         game.State = GameState.Overworld;
+
+        // What to do next (plan 12 · Q14), last: the start menu with the line under it as the game opens it (the shots
+        // above open it by hand, so they keep their old look; the Trainer Card's `28*` and the save's `31*` shots do
+        // carry the line, the option being on unless turned off), the line at its longest, and the option off
+        GoTo("TwinleafTown", 11, 8, Direction.Down);
+        var next = PokemonPlatinumEngine.Story.Objectives.Current(story, "Sinnoh");
+        Console.WriteLine($"what to do next: {next?.Name}: \"{engine.NextObjectiveLine}\"");
+        startMenu.Objective = engine.NextObjectiveLine;
+        startMenu.Open();
+        Frames(30); Shot("09d_startmenu_next");
+        startMenu.Hide();
+        int storedBefore = story.Var(PokemonPlatinumEngine.Story.Objectives.Variable);
+        story.SetVar(PokemonPlatinumEngine.Story.Objectives.Variable, PokemonPlatinumEngine.Story.Objectives.Find("afterwards")!.Id);
+        startMenu.Objective = engine.NextObjectiveLine;
+        Console.WriteLine($"what to do next, the longest: \"{startMenu.Objective}\"");
+        startMenu.Open();
+        Frames(30); Shot("09e_startmenu_next_long");
+        startMenu.Hide();
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        Frames(40); Shot("28i_trainer_card_next_long");
+        game.TrainerCard.Close();
+        engine.Settings.NextObjective = RulesDefault.Off;
+        Console.WriteLine($"what to do next, the option off: \"{engine.NextObjectiveLine}\" (empty)");
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        Frames(40); Shot("28j_trainer_card_next_off");
+        game.TrainerCard.Close();
+        engine.Settings.NextObjective = RulesDefault.On;
+        story.SetVar(PokemonPlatinumEngine.Story.Objectives.Variable, storedBefore);
+        game.State = GameState.Overworld;
     }
 }

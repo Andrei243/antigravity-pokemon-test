@@ -4173,6 +4173,7 @@
     "Tri-Pass": "トライパス",
     "Ruby": "ルビー",
     "Rainbow Pass": "レインボーパス",
+    "Sapphire": "サファイア",
     "Letter": "ダイゴへのてがみ",
     "Devon Goods": "デボンのにもつ",
     "Wailmer Pail": "ホエルコじょうろ",
@@ -4182,7 +4183,11 @@
     "Go-Goggles": "ゴーゴーゴーグル",
     "Soot Sack": "はいぶくろ",
     "Harbor Mail": "ハーバーメール",
-    "Meteorite": "いんせき"
+    "Meteorite": "いんせき",
+    "Devon Scope": "デボンスコープ",
+    "Magma Emblem": "マグマのしるし",
+    "Basement Key": "ちかのかぎ",
+    "Rainbow Wing": "にじいろのはね"
   },
   "types": {
     "Normal": "ノーマル",

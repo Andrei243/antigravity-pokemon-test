@@ -1,0 +1,27 @@
+{
+  "key": "route_123_berry_masters_house",
+  "index": 513,
+  "name": "Route 123",
+  "matrix": 456,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "route_123", "toWarp": 0 },
+    { "x": 4, "z": 7, "to": "route_123", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route123_BerryMastersHouse_EventScript_BerryMaster" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route123_BerryMastersHouse_EventScript_BerryMastersWife" }
+  ],
+  "signs": [],
+  "triggers": []
+}

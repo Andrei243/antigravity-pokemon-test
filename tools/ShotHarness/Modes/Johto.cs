@@ -19,6 +19,8 @@ partial class Harness
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "takeover") { JohtoScenes(takeover: true); engine.NewGameRegion = "Sinnoh"; return; }
         // JOHTO_FROM=rising plays only the fourth chapter's part c (plan 20 · J11), in a game set as part b leaves it
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "rising") { JohtoScenes(rising: true); engine.NewGameRegion = "Sinnoh"; return; }
+        // JOHTO_FROM=champion plays only the fifth chapter (plan 20 · J12), in a game set as part c leaves it
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "champion") { JohtoScenes(champion: true); engine.NewGameRegion = "Sinnoh"; return; }
         // JOHTO_FROM=west shoots only the west and the sea (plan 20 · J8), in a new game of its own
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "west")
         {
