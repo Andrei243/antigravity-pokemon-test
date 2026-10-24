@@ -142,6 +142,8 @@ public partial class GameEngine
 
     // The slot the title's NEW GAME chose, until the game it is for begins
     private int? newGameSlot;
+    // The ways to play the title asked for, kept between the title and the introduction (plan 13 · V1)
+    private RunRules? newGameRun;
 
     /// <summary>The close button's question (plan 12 · Q1); the state it was asked over is the flow's.</summary>
     private readonly ClosePrompt closePrompt = new();
@@ -321,7 +323,7 @@ public partial class GameEngine
     /// Starts a new game as the character and under the name chosen in the introduction. Every game is played by the
     /// modern rules (plan 06 · R19): Platinum's are the baseline the code writes them against, and no game's.
     /// </summary>
-    public void StartNewGame(string? name, PlayerLook look, string? rival = null)
+    public void StartNewGame(string? name, PlayerLook look, string? rival = null, RunRules? run = null)
     {
         // The new game is saved in the slot the title chose for it, the first empty one; a game begun without the
         // title (a test, a tool) takes the first empty one too, and with none keeps the slot it had (plan 12 · Q2)
@@ -384,6 +386,7 @@ public partial class GameEngine
         KeepTrainerNumber();
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
+        flow.Run = RunRules.Current = run ?? RunRules.Normal;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
         flow.Journal = new Journal();
@@ -639,6 +642,7 @@ public partial class GameEngine
         flow.BeganIn = save.BeganInOrHere();
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
+        flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
         flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
@@ -678,6 +682,7 @@ public partial class GameEngine
             Wardrobe = flow.Wardrobe.Owned.Count > 0 ? flow.Wardrobe.Owned.ToList() : null,
             TrainerId = flow.TrainerId,
             Started = flow.AdventureStarted,
+            Run = flow.Run.IsNormal ? null : flow.Run,
             TrainerScore = flow.TrainerScore,
             HallOfFameTotal = flow.HallOfFame.Total,
             HallOfFameDebut = flow.HallOfFame.Debut,
@@ -952,6 +957,7 @@ public partial class GameEngine
                         // The professor's welcome comes first; the game begins when it ends, in the slot the title
                         // found empty
                         newGameSlot = flow.TitleScreen.Slot;
+                        newGameRun = flow.TitleScreen.ChosenRun;
                         flow.State = GameState.Intro;
                         flow.IntroScreen.Open(GameSettings.CharactersPerSecond(Settings.TextSpeed), NewGameRegionRecord);
                         AudioManager.PlayMusic(MusicRole.Introduction);
@@ -974,7 +980,8 @@ public partial class GameEngine
                 if (flow.IntroScreen.Phase == IntroPhase.Done)
                 {
                     flow.IntroScreen.Close();
-                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName);
+                    StartNewGame(flow.IntroScreen.Name, flow.IntroScreen.Look, flow.IntroScreen.RivalName, newGameRun);
+                    newGameRun = null;
                 }
                 break;
             case GameState.Overworld:
@@ -2225,7 +2232,7 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
-                flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character), TrainerCardNow().RegionPages.Count);
+                flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character), TrainerCardNow().RegionPages.Count, TrainerCardNow().Run != null);
                 break;
             case StartMenuChoice.Options:
                 flow.OptionsReturn = GameState.Overworld;
@@ -2299,6 +2306,7 @@ public partial class GameEngine
             regions.First(r => r.Id == Here.Id), flow.AdventureStarted)
         {
             Regions = regions,
+            Run = flow.Run.IsNormal ? null : flow.Run,
             Score = flow.TrainerScore,
             Stars = stars,
             NextObjective = NextObjectiveLine,

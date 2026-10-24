@@ -256,7 +256,7 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("card.title"));
-        if (info.RegionPages.Count > 0)
+        if (info.RegionPages.Count > 0 || info.Run != null)
             Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "card.page"), Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
         else Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.turnOver"), Hint("shared.keys.esc", "shared.hints.back"));
 
@@ -299,6 +299,9 @@ internal static partial class ModernUi
 
         switch (side.Page)
         {
+            case CardPage.Run when info.Run != null:
+                CardRun(card, info.Run);
+                break;
             case CardPage.Back:
                 CardBack(card, info, colour);
                 break;
@@ -347,7 +350,7 @@ internal static partial class ModernUi
         // The badges of the region the player is in (plan 18 · W2), at the eight places' spacing from the left
         var here = info.Here;
         Label(Text.Of("card.badges", ("count", here.Count), ("of", here.BadgeNames.Count)), card.X + 72, by + 24);
-        if (info.RegionPages.Count > 0)
+        if (info.RegionPages.Count > 0 || info.Run != null)
         {
             string region = RegionName(here);
             UiFonts.Draw(region, card.X + card.Width - 72 - UiFonts.Measure(region, 26, UiWeight.Black), by + 24, 26, Muted, UiWeight.Black);
@@ -407,6 +410,30 @@ internal static partial class ModernUi
         UiShapes.Fill(new Rectangle(x, y, right - x, 3), 1.5f, Rule);
         Field(Text.Of("card.regionSeen"), Text.Of("card.outOf", ("count", dex.Seen), ("of", dex.Of)), x, y + 40);
         Field(Text.Of("card.regionCaught"), Text.Of("card.outOf", ("count", dex.Caught), ("of", dex.Of)), x + 440, y + 40);
+    }
+
+    /// <summary>
+    /// The page for how the game is played (plan 13 · V1; only a game that isn't Normal has one): the preset's name and
+    /// every choice that differs from Platinum's, two columns of a caption and its value.
+    /// </summary>
+    private static void CardRun(Rectangle card, RunRules run)
+    {
+        float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 176;
+        UiFonts.Draw(Text.Of($"run.preset.{run.PresetKey}"), x, top, 64, Ink, UiWeight.Black);
+        UiFonts.Draw(Text.Of("card.runSub"), x, top + 82, 28, Muted, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, top + 128, right - x, 3), 1.5f, Rule);
+        var shown = RunPanel.Showing(run);
+        var plain = RunPanel.Showing(RunRules.Normal);
+        int n = 0;
+        foreach (var row in shown.Rows)
+        {
+            if (row is RunRow.Preset or RunRow.Start) continue;
+            string value = shown.ValueText(row);
+            if (value == plain.ValueText(row)) continue;
+            float cx = x + (n % 2) * 640, cy = top + 160 + (n / 2) * 120;
+            Field(RunRowName(row).ToUpperInvariant(), value, cx, cy, 36);
+            n++;
+        }
     }
 
     private static void CardBack(Rectangle card, TrainerCardInfo info, Color colour)

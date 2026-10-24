@@ -228,9 +228,12 @@ public class TitleScreenTests
         // Every game is played by the modern rules (plan 06 · R19): the question of whose rules is gone
         var title = AtMenu(null);
         title.PressConfirm();
+        Assert.Equal(TitlePhase.ChooseRun, title.Phase);
+        title.PressConfirm(); // the ways to play (plan 13 V1): Normal leaves at once
         Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal(TitleChoice.NewGame, title.TakeChoice());
+        Assert.True(title.ChosenRun.IsNormal);
         Assert.DoesNotContain("ChooseRules", Enum.GetNames<TitlePhase>());
     }
 
@@ -254,6 +257,8 @@ public class TitleScreenTests
         title.PressConfirm();
         title.Move(1);
         Assert.True(title.ConfirmYes);
+        title.PressConfirm();
+        Assert.Equal(TitlePhase.ChooseRun, title.Phase);
         title.PressConfirm();
         Assert.Equal(TitlePhase.Leaving, title.Phase);
         Run(title, TitleScreen.LeaveTime + 0.05f);
@@ -482,6 +487,7 @@ public class TitleScreenTests
         // With nothing saved it is slot 1, and nothing is asked
         var fresh = AtMenu(null);
         fresh.PressConfirm();
+        fresh.PressConfirm(); // the ways to play: Normal
         Run(fresh, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal((TitleChoice.NewGame, 1), (fresh.TakeChoice(), fresh.Slot));
 
@@ -497,6 +503,7 @@ public class TitleScreenTests
         Assert.Equal("It will be saved in slot 2. The save you have is kept as it is.", TitleScreen.NewGameBlurb(2, 1));
         title.Move(1);
         title.PressConfirm();
+        title.PressConfirm(); // the ways to play: Normal
         Run(title, TitleScreen.LeaveTime + 0.05f);
         Assert.Equal((TitleChoice.NewGame, 2), (title.TakeChoice(), title.Slot));
     }

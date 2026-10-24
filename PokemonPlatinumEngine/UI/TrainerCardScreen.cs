@@ -52,13 +52,16 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
 
     /// <summary>The regions that have a page: every one, once there are two or more.</summary>
     public IReadOnlyList<CardRegion> RegionPages => Regions.Count > 1 ? Regions : Array.Empty<CardRegion>();
+
+    /// <summary>The ways the game is played (plan 13 · V1); null for Normal, which gives the card no page for it.</summary>
+    public Models.RunRules? Run { get; init; }
 }
 
 /// <summary>
 /// The pages of the Trainer Card (plan 18 · W2; plan 13 · V1, V13 add theirs at the end): the front, its back, and a
 /// page for each region the player has been in.
 /// </summary>
-public enum CardPage { Front, Back, Region }
+public enum CardPage { Front, Back, Run, Region }
 
 /// <summary>
 /// The Trainer Card: who the player is, what they have, how long they have played and the badges they have
@@ -88,12 +91,21 @@ public class TrainerCardScreen
     public CardPage Page => PageOf(page);
 
     /// <summary>On a region's page, which of <see cref="TrainerCardInfo.RegionPages"/> it is; -1 elsewhere.</summary>
-    public int RegionShown => page >= 2 ? page - 2 : -1;
+    public int RegionShown => RegionOf(page);
+
+    // 0 is the front, 1 the back, then the run's page when the game is played some way of its own (plan 13 · V1), then the regions'
+    private int FirstRegionPage => hasRun ? 3 : 2;
+    private int RegionOf(int index) => index >= FirstRegionPage ? index - FirstRegionPage : -1;
+    private int LastPage => FirstRegionPage - 1 + RegionPages;
+
+    /// <summary>Whether the card has a page for the ways the game is played (plan 13 · V1): only when they are not Normal.</summary>
+    public bool HasRunPage => hasRun;
+    private bool hasRun;
 
     /// <summary>Whether the card is turned over to its back (A turns it, as in the original).</summary>
     public bool ShowingBack => Page == CardPage.Back;
 
-    private static CardPage PageOf(int index) => index switch { 0 => CardPage.Front, 1 => CardPage.Back, _ => CardPage.Region };
+    private CardPage PageOf(int index) => index switch { 0 => CardPage.Front, 1 => CardPage.Back, 2 when hasRun => CardPage.Run, _ => CardPage.Region };
 
     /// <summary>Turns the card over: the front to its back and the back to its front; a region's page goes back to the front.</summary>
     public void Flip() => TurnTo(page == 0 ? 1 : 0);
@@ -102,7 +114,7 @@ public class TrainerCardScreen
     public bool Turn(int step)
     {
         int to = page + Math.Sign(step);
-        if (RegionPages == 0 || step == 0 || to < 0 || to > 1 + RegionPages) return false;
+        if (LastPage <= 1 || step == 0 || to < 0 || to > LastPage) return false;
         TurnTo(to);
         return true;
     }
@@ -117,7 +129,7 @@ public class TrainerCardScreen
 
     /// <param name="portrait">The player's field sprite (baked outside any texture mode); none in tests.</param>
     /// <param name="regionPages">How many regions' pages the card has (<see cref="TrainerCardInfo.RegionPages"/>).</param>
-    public void Open(Texture2D? portrait = null, int regionPages = 0)
+    public void Open(Texture2D? portrait = null, int regionPages = 0, bool hasRun = false)
     {
         IsActive = true;
         page = from = 0;
@@ -125,6 +137,7 @@ public class TrainerCardScreen
         flipAge = FlipTime;
         this.portrait = portrait;
         RegionPages = Math.Max(0, regionPages);
+        this.hasRun = hasRun;
     }
 
     public void Close() => IsActive = false;
@@ -152,7 +165,7 @@ public class TrainerCardScreen
     {
         if (!IsActive) return;
         ModernUi.DrawTrainerCard(screenWidth, screenHeight, info, portrait, Math.Clamp(openAge / AppearTime, 0f, 1f),
-            new CardSide(Page, RegionShown), new CardSide(PageOf(from), from >= 2 ? from - 2 : -1), Math.Clamp(flipAge / FlipTime, 0f, 1f));
+            new CardSide(Page, RegionShown), new CardSide(PageOf(from), RegionOf(from)), Math.Clamp(flipAge / FlipTime, 0f, 1f));
     }
 }
 

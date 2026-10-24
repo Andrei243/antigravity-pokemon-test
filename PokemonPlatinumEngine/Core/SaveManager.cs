@@ -164,6 +164,13 @@ public class SaveData
     public Models.AthlonRecords? Athlon { get; set; }
 
     /// <summary>
+    /// The ways to play chosen at NEW GAME (plan 13 · V1), kept whole and never changed. Null for Normal and in every save
+    /// from before it, which reads as Normal, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.RunRules? Run { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>
