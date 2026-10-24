@@ -1,0 +1,25 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

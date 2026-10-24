@@ -1,0 +1,241 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Isaiah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Isaiah: I swim round this reef a hundred times a day. You're my hundred-and-first lap!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Isaiah: That lap was slower than all the others."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Katelyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Katelyn: Out here the only thing to beat is the sea. Or you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Katelyn: The sea won't beat me like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route128_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Steven: Sootopolis may have the answer to all this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route128_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Archie: What have I done...?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route128_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maxie: This is no time to stand about."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Wayne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Wayne: The reef keeps the big fish in. They're mine, and so's this battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Wayne: The fish got away and so did the win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Ruben"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Ruben: A trainer who's come this far out to sea must be worth battling."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Ruben: Worth it, and then some."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Alexa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Alexa: Ever Grande City lies east of here. Are you strong enough for its road?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Alexa: You might just be."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Carlee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Carlee: The water over the reef is so warm. Stay and battle a while!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Carlee: I'm cold all of a sudden."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Harrison"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Harrison: I dive down to the reef to look at the fish. Then I come up to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Harrison: Back down to the fish, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

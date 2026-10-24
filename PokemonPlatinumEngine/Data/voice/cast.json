@@ -18,6 +18,10 @@
       "note": "first spoken at pokemon_league_agathas_room.txt(8)",
       "provisional": true
     },
+    "alder": {
+      "note": "first spoken at floccesy_town.txt(22)",
+      "provisional": true
+    },
     "archer": {
       "note": "first spoken at goldenrod_radio_tower_observation_deck.txt(27)",
       "provisional": true
@@ -81,6 +85,10 @@
       "provisional": true
     },
     "bertha": {},
+    "bianca": {
+      "note": "first spoken at aspertia_city.txt(128)",
+      "provisional": true
+    },
     "big_man": {
       "note": "first spoken at four_island_house_1.txt(9)",
       "provisional": true
@@ -145,6 +153,10 @@
       "provisional": true
     },
     "charon": {},
+    "cheren": {
+      "note": "first spoken at aspertia_city.txt(286)",
+      "provisional": true
+    },
     "cheryl": {},
     "chuck": {
       "note": "first spoken at cianwood_gym.txt(17)",
@@ -334,6 +346,10 @@
     },
     "gym_trainer": {
       "note": "first spoken at goldenrod.txt(163)",
+      "provisional": true
+    },
+    "herdier": {
+      "note": "first spoken at floccesy_ranch_2.txt(140)",
       "provisional": true
     },
     "honey_man": {
@@ -698,6 +714,10 @@
     "rival_mom": {
       "note": "The rival's mother."
     },
+    "rivals_sister": {
+      "note": "first spoken at aspertia_city.txt(51)",
+      "provisional": true
+    },
     "roark": {},
     "robert": {
       "note": "first spoken at phone.txt(322)",
@@ -887,6 +907,10 @@
       "note": "first spoken at goldenrod_gym.txt(11)",
       "provisional": true
     },
+    "wife": {
+      "note": "first spoken at floccesy_ranch_2.txt(70)",
+      "provisional": true
+    },
     "will": {
       "note": "first spoken at pokemon_league_will_room.txt(12)",
       "provisional": true
@@ -913,12 +937,14 @@
     "{assistant}": "assistant",
     "{rival}": "rival",
     "{rival}'s Mom": "rival_mom",
+    "{rival}'s Sister": "rivals_sister",
     "Aaron": "aaron",
     "Abigail": "abigail",
     "Ace Trainer": "ace_trainer",
     "Admin": "admin",
     "Agatha": "agatha",
     "Aide": "look:aide",
+    "Alder": "alder",
     "Announcer": "look:announcer",
     "Apprentice": "look:apprentice",
     "Archer": "archer",
@@ -936,6 +962,7 @@
     "Benjamin": "benjamin",
     "Berry Master": "berry_master",
     "Bertha": "bertha",
+    "Bianca": "bianca",
     "Big Man": "big_man",
     "Biker": "look:biker",
     "Bill": "bill",
@@ -959,6 +986,7 @@
     "Chairman": "chairman",
     "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
+    "Cheren": "cheren",
     "Cheryl": "cheryl",
     "Chuck": "chuck",
     "Clair": "clair",
@@ -1026,6 +1054,7 @@
     "Guitarist": "look:guitarist",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
+    "Herdier": "herdier",
     "Hiker": "look:hiker",
     "Honey Man": "honey_man",
     "Host": "look:host",
@@ -1189,6 +1218,7 @@
     "Warden": "warden",
     "Wattson": "wattson",
     "Whitney": "whitney",
+    "Wife": "wife",
     "Will": "will",
     "Wingull": "wingull",
     "Winona": "winona",

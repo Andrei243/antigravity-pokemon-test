@@ -1,0 +1,57 @@
+{
+  "people": {
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Who let a kid in here? Was it you, that grunt by the entrance? No, he lost too..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Nobody let you in. You just came."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_f": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Don't you know where you are? This is the bottom of the sea! Go home!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: You're at home anywhere, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

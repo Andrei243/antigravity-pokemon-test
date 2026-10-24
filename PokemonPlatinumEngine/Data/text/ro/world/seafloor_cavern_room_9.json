@@ -1,0 +1,97 @@
+{
+  "people": {
+    "seafloor_cavern_kyogre_sleeping": {
+      "name": {
+        "en": [
+          "Kyogre"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "seafloor_cavern_kyogre": {
+      "name": {
+        "en": [
+          "Kyogre"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "seafloor_cavern_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Archie: Kyogre... where have you gone?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "seafloor_cavern_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maxie: Outside, all of you. Now!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "seafloor_cavern_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: The boss says we're getting out of here!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "seafloor_cavern_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: Is the sea going to swallow the land?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

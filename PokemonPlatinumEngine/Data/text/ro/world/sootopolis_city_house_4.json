@@ -1,0 +1,51 @@
+{
+  "people": {
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Treasures from long ago lie on the sea floor, they say. The sea floor round Hoenn is full of mysteries."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband and I take our Azumarill for walks along the sea floor. Its bubbles are lovely in the light."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "azumarill": {
+      "name": {
+        "en": [
+          "Azumarill"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

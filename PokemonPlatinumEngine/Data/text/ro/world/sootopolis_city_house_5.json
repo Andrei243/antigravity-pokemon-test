@@ -1,0 +1,41 @@
+{
+  "people": {
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The people of Sootopolis and of Mt. Pyre are bound by an old tie. Both keep watch over something that sleeps."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big brother used to study the sea. He said the water under the city goes down and down forever."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

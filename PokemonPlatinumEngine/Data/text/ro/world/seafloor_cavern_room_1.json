@@ -1,0 +1,57 @@
+{
+  "people": {
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: We came all the way down here in a stolen submarine. Nobody follows us that far!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: You followed us that far..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: The boss is close to it now, the Pokémon that will grow the sea. Don't you dare get in his way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: There's no stopping you, is there?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

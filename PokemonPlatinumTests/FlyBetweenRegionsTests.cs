@@ -88,11 +88,12 @@ public class FlyBetweenRegionsTests
         var tabs = new[] { new TownMapState(sinnohMap, story, RegionMap.CellOf(305, 540)), new TownMapState(kantoMap, story) };
 
         var screen = new TownMapScreen();
-        screen.Open(tabs, 0, TownMapMode.Fly, flier: 1);
+        var flier = new Pokemon(PokemonDatabase.Get("Staravia")!, 20);
+        screen.Open(tabs, 0, TownMapMode.Fly, flier: flier);
         Assert.True(screen.HasTabs);
         Assert.Equal(0, screen.Tab);
         Assert.Equal(0, screen.HomeTab);
-        Assert.Equal(1, screen.Flier);
+        Assert.Same(flier, screen.Flier);
         Assert.Same(tabs[0], screen.State);
         // Nothing before the first tab
         Assert.False(screen.ChangeTab(-1));

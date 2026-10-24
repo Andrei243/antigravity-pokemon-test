@@ -2334,5 +2334,71 @@
         "Mulțumim pentru participare! Concursul are loc în fiecare marți, joi și sâmbătă."
       ]
     }
+  ],
+  "AthlonDesk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Pokéathlon Dome! Here Pokémon test themselves in races and games instead of battles."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a course?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well run! With a little more training, first place will be yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First place! Your team is the champion of the course. Congratulations!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You now have {result} Athlete Points. Come back and compete any time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A team of the Pokéathlon is three Pokémon, and Eggs can't compete. Please come back with three."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever your Pokémon feel like a run!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

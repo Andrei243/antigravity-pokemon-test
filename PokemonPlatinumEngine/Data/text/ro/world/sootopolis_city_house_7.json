@@ -1,0 +1,41 @@
+{
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sootopolis was built in the crater of a volcano that erupted long, long ago. The sea filled the crater, and people came after."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cave of Origin was made to keep something, they say. Something that must never wake."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

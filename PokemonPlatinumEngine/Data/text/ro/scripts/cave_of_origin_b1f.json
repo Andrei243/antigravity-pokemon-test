@@ -1,0 +1,132 @@
+{
+  "Wallace": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, you must be {player}. I've heard about what you've done."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My name is Wallace. I was Sootopolis's Gym Leader once, but other matters called me away, and I left the Gym in my mentor Juan's hands."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "......"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Groudon and Kyogre, the two raging out there, are ancient Pokémon from long before people."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But they're not the only ones. There is a third, somewhere: an ancient Pokémon named Rayquaza."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's said that long ago it was Rayquaza that calmed the other two's fighting. But even I have no idea where it is now..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, do you know where Rayquaza might be? If you do, please tell me.",
+        "Sky Pillar",
+        "Mt. Pyre",
+        "The Cave of Origin",
+        "I don't remember"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sky Pillar? Of course... It must be Sky Pillar!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, there isn't a moment to lose! We're going to Sky Pillar right away!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mt. Pyre? But when I saw the old woman there, she said nothing of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I can't believe she would hide something from me... Could you think about it a little harder?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Cave of Origin? But that's right here! I need you to do better than that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, think hard about where Rayquaza might be right now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You don't remember? Hmm... That's a problem. Can't you remember somehow?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

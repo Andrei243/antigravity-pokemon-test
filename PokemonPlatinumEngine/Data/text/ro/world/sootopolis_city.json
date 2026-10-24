@@ -1,0 +1,218 @@
+{
+  "people": {
+    "sootopolis_expert": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kiri": {
+      "name": {
+        "en": [
+          "Kiri"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_groudon": {
+      "name": {
+        "en": [
+          "Groudon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_kyogre": {
+      "name": {
+        "en": [
+          "Kyogre"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_rayquaza": {
+      "name": {
+        "en": [
+          "Rayquaza"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sootopolis_wallace": {
+      "name": {
+        "en": [
+          "Wallace"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SootopolisCity_EventScript_GymSign": {
+      "en": [
+        "Sootopolis City Pokémon Gym\nLeader: Juan\nThe Leader as clear as the water!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SootopolisCity_EventScript_CitySign": {
+      "en": [
+        "Sootopolis City\nThe city where history sleeps."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Archie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What... what has happened? What is this wretched sight?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did I... Have I made some terrible mistake?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I only... I only wanted..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you see it now, Archie? Do you see what your dream has turned into?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We have no time. Something must be done before this is past anyone's power to stop!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, say nothing. I know I have no right to judge Archie."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And I doubt that people like us can do anything against power like this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But we can't stand here and watch. Putting an end to it is our task, Archie's and mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those ancient Pokémon... Their power is beyond anything we imagined. They have thrown all of nature off its balance..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! What is going on here?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is terrible... First a heat wave, and now this downpour."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If it doesn't stop, it will drown all of Hoenn. No, the whole world."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These storm clouds are spreading from over Sootopolis City. What on earth is happening there?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's no sense standing here wondering. Sootopolis may have the answer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... I don't know what you mean to do, but don't do anything reckless."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right. I'm going to Sootopolis."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Isaiah": [
+    {
+      "en": [
+        "Isaiah"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You swim like you battle: fast and hard. Let's keep pushing each other!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Isaiah in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Great! I'll call you from the reef."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fair enough. Another hundred laps for me, then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Katelyn": [
+    {
+      "en": [
+        "Katelyn"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat me fair and square. I want a rematch once I've trained some more!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Katelyn in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll call you the moment I'm faster!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then I'll just have to find you out here again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

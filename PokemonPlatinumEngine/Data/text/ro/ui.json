@@ -415,6 +415,61 @@
     }
   },
 
+  "athlon": {
+    "title": "POKÉATHLON",
+    "courses": "TRASEE",
+    "events": "PROBE",
+    "best": "Record {score}",
+    "noBest": "Încă nealergat",
+    "leans": "Se bazează pe {stat}",
+    "points": "Puncte de Atlet: {points}",
+    "egg": "Ou",
+    "performance": "PERFORMANȚĂ",
+    "chooseThree": "Alege trei Pokémoni care să concureze. ({n}/3)",
+    "start": "Start",
+    "eventOf": "PROBA {n} DIN {of}",
+    "go": "START!",
+    "finished": "Terminat în {time} s",
+    "leg": "Etapa {n}/{of}",
+    "blocks": "BLOCURI",
+    "knocks": "Împinși afară: {n}",
+    "falls": "Căderi: {n}",
+    "scoreboard": "CLASAMENT",
+    "total": "TOTAL",
+    "earned": "Ai câștigat {points} Puncte de Atlet. Ai {all} în total.",
+    "newRecord": "RECORD NOU!",
+    "course": {
+      "practice": "Traseu de antrenament"
+    },
+    "event": {
+      "hurdleDash": "Sprint cu Obstacole",
+      "blockSmash": "Spart Blocuri",
+      "ringDrop": "Ieșit din Ring"
+    },
+    "howTo": {
+      "hurdleDash": "Cei trei aleargă câte o etapă peste șapte obstacole. Apasă {key:confirm} ca să sari chiar înainte de obstacol: cine aterizează pe unul se împiedică. Echipa cea mai rapidă în toate trei etapele câștigă.",
+      "blockSmash": "Apasă {key:confirm} ca să spargi blocurile din fața ta, după ce s-a terminat fiecare lovitură. Fiecare lovitură îți obosește Pokémonul: apasă {key:cancel} ca să-l trimiți pe următorul cât timp cel obosit își trage sufletul.",
+      "ringDrop": "Împinge-i pe ceilalți afară din ring cu săgețile și apasă {key:confirm} ca să te repezi. Cine împinge pe cineva afară câștigă puncte, cine cade pierde puncte, iar cel căzut e înlocuit de următorul din echipa lui."
+    },
+    "stat": {
+      "speed": "Viteză",
+      "power": "Putere",
+      "skill": "Abilitate",
+      "stamina": "Rezistență",
+      "jump": "Săritură"
+    },
+    "rivals": {
+      "ace": "Echipa As",
+      "bolt": "Echipa Fulger",
+      "comet": "Echipa Cometă",
+      "dash": "Echipa Avânt",
+      "ember": "Echipa Jar",
+      "flint": "Echipa Cremene",
+      "gale": "Echipa Vijelie",
+      "hazel": "Echipa Alun"
+    }
+  },
+
   "bugContest": {
     "title": "CONCURSUL DE PRINS INSECTE",
     "sportBalls": "SPORT BALL-URI",
@@ -503,6 +558,7 @@
   },
 
   "party": {
+    "helpers": "AJUTOARE",
     "title": "POKÉMON",
     "hp": "HP",
     "level": "Nv",
@@ -930,6 +986,8 @@
   },
 
   "townMap": {
+    "hintRegion": "Regiune",
+    "inRegion": "{place}, {region}",
     "title": { "Item": "HARTA REGIUNII", "Fly": "ZBOR", "Wall": "HARTĂ", "Card": "CARDUL HĂRȚII" },
     "flyTo": "Unde zbori?",
     "legend": { "you": "Tu", "visited": "Vizitat", "notVisited": "Nevizitat încă", "trail": "Drumul pe care ai venit" },
@@ -1077,6 +1135,8 @@
     }
   },
   "poketch": {
+    "hiddenMoves": "MIȘCĂRI ASCUNSE",
+    "hiddenNone": "NICIUN AJUTOR",
     "noApps": "Încă nicio aplicație.",
     "steps": "PAȘI",
     "reset": "RESET",
@@ -3745,6 +3805,14 @@
     "MossdeepSpaceCenter": "Centrul Spațial Mossdeep",
     "Route125": "Ruta 125",
     "Route126": "Ruta 126",
-    "Route127": "Ruta 127"
+    "Route127": "Ruta 127",
+    "SootopolisCity": "Orașul Sootopolis",
+    "Route128": "Ruta 128",
+    "SeafloorCavern": "Caverna de pe Fundul Mării",
+    "CaveOfOrigin": "Peștera Originilor",
+    "Underwater125": "Sub apă 125",
+    "Underwater126": "Sub apă 126",
+    "Underwater127": "Sub apă 127",
+    "Underwater128": "Sub apă 128"
   }
 }

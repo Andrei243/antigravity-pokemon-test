@@ -1,0 +1,152 @@
+{
+  "Gentleman": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Everyone in town has shut themselves indoors. Even I'd rather not set foot outside just now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say Wallace is the strongest trainer in all of Hoenn. And this town's Gym is led by the man who taught him!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But the Elite Four are said to be stronger still. How strong can they be?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aren't Pokémon our friends? Why are they raging like this?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whatever happens, wherever I am, I'll always be friends with Pokémon. Being with them is the best fun there is!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DoubleEdgeTutor": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which one shall learn it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Double-Edge hurts the one who uses it too. Save it for when it matters most."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. I'll be here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't learn anything until it hatches."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid that one can't learn it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one knows it already!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That move can't be forgotten here. Another time, perhaps."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

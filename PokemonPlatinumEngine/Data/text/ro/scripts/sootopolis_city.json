@@ -1,0 +1,542 @@
+{
+  "Expert": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beyond here lies the Cave of Origin, where the spirits of Pokémon are said to rest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nobody may go in. Please, turn back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven told me of you. Go on: Wallace is down there, and he has need of you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon of legend, raging in our harbour... Only someone strong enough to stand before them may enter the cave now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Steven": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sky Pillar... I've never been there. Where could it be, I wonder?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I think you have just what it takes to help him..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those Pokémon... Groudon and Kyogre, the two ancient Pokémon, woken from their long sleep..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And now they're hurling all their power at each other, and nothing can stop it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...{player}. If you're here now, I'll take it you're ready to be part of this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then there's someone I'd like you to meet. Come with me, please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tell me, {player}. Seeing Groudon and Kyogre, do you think Pokémon are things to be afraid of?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They're not. Pokémon are so much more than that... But why am I asking you? You know that already."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here we are. Inside, you'll find a man named Wallace."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I think you have just what it takes to help him..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Titan": [
+    {
+      "en": [
+        "Two enormous Pokémon are locked in battle. The water heaves and the air crackles round them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Maxie": [
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "G-Groudon... Please, stop! I understand your power now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you go on like this, it won't be only Sootopolis. All of Hoenn will be ruined!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Archie": [
+    {
+      "en": [
+        "Archie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kyogre! What's wrong? Look here, it's the Red Orb! Calm down! Kyogre!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "......"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's no use. It doesn't hear me at all!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wallace": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... The leaders of Team Magma and Team Aqua didn't mean any harm, I think."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It wouldn't hurt to hear them out."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Kiri": [
+    {
+      "en": [
+        "Kiri"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Big, big Pokémon are fighting! I'm scared..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! I'm Kiri. Here, you can have one of these!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And this one too!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When you make a wish, what do you wish for?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you like the season you were born in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Me too! But I love autumn most of all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh. Well, it doesn't really matter."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Woman2": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sky was clear this morning... then black clouds rolled in, rain came down in sheets, and the thunder started!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then it's scorching hot, and then it pours again. Is it all because of those Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Woman1": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sootopolis grew up inside the crater of a volcano. Look up, and you see the crater's rim all round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All you see of the sky is a circle. That's why the sky over Sootopolis is the loveliest of all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When two Pokémon that huge fight that fiercely, there's nothing any of us can do."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "NinjaBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've never been out of this city. I wonder what the world's like on the other side of the round sky?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa, this is wild!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Boy1": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Diving in the sea, climbing up and down stairs all day... Live here and you can't help getting fit."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those giant Pokémon just appeared in the middle of the city! I've never seen them before!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Why are they smashing into each other like that? Why can't they be friends?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Man": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You don't look like an ordinary tourist. What brings you all the way into the crater?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Maniac": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pokémon of legend, right before my eyes! I never thought I'd see them for myself!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If they keep this up, Sootopolis will be smashed to pieces!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlackBelt": [
+    {
+      "en": [
+        "Black Belt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go, red one! Go, blue one! Hit him harder!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Hey, do you know those Pokémon's names?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Boy2": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I don't think those two Pokémon are angry, somehow. I think... they just can't hold their own power back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ShutDoor": [
+    {
+      "en": [
+        "The door is shut tight."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymDoor": [
+    {
+      "en": [
+        "The door is shut tight."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
