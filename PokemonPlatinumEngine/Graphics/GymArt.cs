@@ -124,6 +124,97 @@ internal static class GymArt
         Pix.Outline(c, 0.3f);
     }
 
+    /// <summary>
+    /// A statue of the Mossdeep Gym, 22 by 38 (plan 21 · H8; style guide, "Gyms"): a small figure of pale lilac stone
+    /// with its hands joined before it, as someone deep in thought, on a squared plinth of the same stone a step darker.
+    /// Lit from the upper left; nothing of it is white.
+    /// </summary>
+    public static void PaintGymStatue(PixelCanvas c)
+    {
+        var stone = Tone.Of(186, 176, 208, 214, 206, 230, 132, 120, 160);
+        var plinth = Tone.Of(150, 140, 176, 180, 172, 202, 104, 94, 130);
+        // The plinth, its lit top and its front
+        for (int y = 29; y < 37; y++)
+            for (int x = 3; x < 19; x++)
+                c.Set(x, y, y < 31 ? plinth.Light : x > 15 ? plinth.Dark : plinth.Base);
+        // The robe, widening to its foot
+        for (int y = 13; y < 29; y++)
+        {
+            int half = 4 + (y - 13) / 4;
+            for (int x = 11 - half; x < 11 + half; x++)
+            {
+                float u = (x + 0.5f - 11f) / half;
+                c.Set(x, y, u < -0.45f ? stone.Light : u > 0.5f ? stone.Dark : stone.Base);
+            }
+        }
+        // The head, round, and the joined hands before the chest
+        for (int y = 3; y < 13; y++)
+            for (int x = 6; x < 16; x++)
+            {
+                float u = (x + 0.5f - 11f) / 4.6f, v = (y + 0.5f - 8f) / 4.8f;
+                if (u * u + v * v > 1f) continue;
+                c.Set(x, y, u + v < -0.6f ? stone.Light : u + v > 0.7f ? stone.Dark : stone.Base);
+            }
+        c.Rect(9, 17, 4, 3, stone.Light);
+        c.HLine(9, 20, 4, stone.Dark);
+        // The fold down the robe's middle
+        for (int y = 21; y < 28; y += 2) c.Set(11, y, stone.Dark);
+        Pix.Outline(c, 0.3f);
+    }
+
+    /// <summary>The colours of the Mossdeep Gym's arrows and switches (style guide, "Gyms"), each a tone round its base.</summary>
+    public static Tone ArrowTone(Overworld.MossdeepTiles.Colour colour) => colour switch
+    {
+        Overworld.MossdeepTiles.Colour.Yellow => Tone.Of(226, 186, 60, 246, 216, 110, 168, 132, 36),
+        Overworld.MossdeepTiles.Colour.Blue => Tone.Of(72, 124, 206, 116, 162, 234, 44, 82, 150),
+        Overworld.MossdeepTiles.Colour.Green => Tone.Of(78, 160, 92, 122, 196, 128, 48, 112, 62),
+        Overworld.MossdeepTiles.Colour.Purple => Tone.Of(144, 92, 184, 182, 136, 214, 98, 58, 132),
+        _ => Tone.Of(200, 70, 62, 232, 112, 98, 144, 42, 42)
+    };
+
+    /// <summary>
+    /// An arrow tile of the Mossdeep Gym, 28 by 28: a square plate of its colour with a bevelled rim and a pale arrow
+    /// (`236,232,244`) pointing the way the tile carries whoever stands on it.
+    /// </summary>
+    public static void PaintFloorArrow(PixelCanvas c, Overworld.MossdeepTiles.Colour colour, Data.Direction way)
+    {
+        var tone = ArrowTone(colour);
+        var pale = Rgb(236, 232, 244);
+        for (int y = 0; y < 28; y++)
+            for (int x = 0; x < 28; x++)
+                c.Set(x, y, x == 0 || y == 0 ? tone.Light : x == 27 || y == 27 ? tone.Dark : tone.Base);
+        // The arrow drawn pointing north (a head and a shaft), then turned to its way
+        for (int y = 4; y < 24; y++)
+            for (int x = 4; x < 24; x++)
+            {
+                // (u, v): across and along the arrow, v from its tip (0) to its tail (1)
+                (float u, float v) = way switch
+                {
+                    Data.Direction.Down => (x - 13.5f, (23f - y) / 19f),
+                    Data.Direction.Left => (y - 13.5f, (x - 4f) / 19f),
+                    Data.Direction.Right => (y - 13.5f, (23f - x) / 19f),
+                    _ => (x - 13.5f, (y - 4f) / 19f)
+                };
+                bool head = v < 0.45f && MathF.Abs(u) <= v * 20f;
+                bool shaft = v >= 0.45f && MathF.Abs(u) <= 3f;
+                if (head || shaft) c.Set(x, y, pale);
+            }
+    }
+
+    /// <summary>A floor switch of the Mossdeep Gym, 24 by 24: a round plate of its colour with a raised boss in the middle.</summary>
+    public static void PaintFloorSwitch(PixelCanvas c, Overworld.MossdeepTiles.Colour colour)
+    {
+        var tone = ArrowTone(colour);
+        for (int y = 0; y < 24; y++)
+            for (int x = 0; x < 24; x++)
+            {
+                float u = (x + 0.5f - 12f) / 11.5f, v = (y + 0.5f - 12f) / 11.5f, r = u * u + v * v;
+                if (r > 1f) continue;
+                c.Set(x, y, r < 0.18f ? (u + v < 0f ? tone.Light : tone.Base) : r > 0.8f ? tone.Dark : tone.Base);
+            }
+        Pix.Outline(c, 0.3f);
+    }
+
     /// <summary>A bollard of dark polished stone with a gilded cap, 16 by 28.</summary>
     public static void PaintBollard(PixelCanvas c)
     {

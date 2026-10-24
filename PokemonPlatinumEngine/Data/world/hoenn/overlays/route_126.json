@@ -1,0 +1,18 @@
+{
+  // Route 126 (plan 21 · H8, part a): the sea round the outside of Sootopolis City's crater, west of Mossdeep. Its dark
+  // water goes down to the sea floor, where a passage under the crater's wall comes up inside Sootopolis (part b). The
+  // triathlete Pablo swaps numbers for the PokéNav once beaten (route_126.txt)
+  "area": "route_126",
+  "bgmTrack": "hoenn/route120",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Barry", "trainer": { "dialogueBefore": "Swimmer Barry: The water round that big crater is the deepest in Hoenn. Fancy a dip?", "dialogueAfter": "Swimmer Barry: I sank, all right." } },
+    "swimmer_m_2": { "name": "Dean", "trainer": { "dialogueBefore": "Swimmer Dean: I swim round the crater every day. Someday I'll find a way in!", "dialogueAfter": "Swimmer Dean: Maybe the way in is under the water..." } },
+    "swimmer_f": { "name": "Nikki", "trainer": { "dialogueBefore": "Swimmer Nikki: Out here, it's just me, the sea and my Pokémon. And now you!", "dialogueAfter": "Swimmer Nikki: Back to just me and the sea." } },
+    "swimmer_f_2": { "name": "Brenda", "trainer": { "dialogueBefore": "Swimmer Brenda: The sun on the water's so bright today. Shall we battle under it?", "dialogueAfter": "Swimmer Brenda: I'm seeing spots now." } },
+    "swimmer_f_3": { "name": "Sienna", "trainer": { "dialogueBefore": "Swimmer Sienna: I saw you coming from way over there. I've been waiting!", "dialogueAfter": "Swimmer Sienna: That was worth the wait." } },
+    "swimmer_m_3": { "name": "Pablo", "script": "Pablo", "trainer": { "dialogueBefore": "Triathlete Pablo: Swim, cycle, run, and battle! I'm training for all four!", "dialogueAfter": "Triathlete Pablo: I need to train the fourth one harder." } },
+    "swimmer_f_4": { "name": "Isobel", "trainer": { "dialogueBefore": "Triathlete Isobel: The sea is the hardest leg of my race. You're my rest stop!", "dialogueAfter": "Triathlete Isobel: Some rest stop. I'm worn out." } },
+    "swimmer_m_4": { "name": "Leonardo", "trainer": { "dialogueBefore": "Swimmer Leonardo: I swim with my eyes open so I don't miss a single trainer. Found you!", "dialogueAfter": "Swimmer Leonardo: I should've kept them shut." } }
+  }
+}

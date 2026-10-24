@@ -392,6 +392,17 @@
       "TM20",
       "TM33",
       "TM16"
+    ],
+    "mossdeep": [
+      "Ultra Ball",
+      "Net Ball",
+      "Dive Ball",
+      "Hyper Potion",
+      "Full Heal",
+      "Revive",
+      "Max Repel",
+      "X Attack",
+      "X Defense"
     ]
   }
 }

@@ -153,6 +153,12 @@ internal sealed class GymPieces
             }
             yield break;
         }
+        if (map.Puzzle is MossdeepTiles)
+        {
+            // The arrows and the switches lie still on the floor: what moves over them is the room's people
+            if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
+            yield break;
+        }
         if (map.Puzzle is BlackthornPlatforms slabs)
         {
             // Each slab where it stands, turned about its middle button; the one moving as far along or round as it has got
@@ -259,6 +265,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is SunyshoreGears turning) BuildSunyshore(map, turning);
         else if (map.Puzzle is FortreeGates) BuildFortree(map);
         else if (map.Puzzle is BlackthornPlatforms) BuildBlackthorn(map);
+        else if (map.Puzzle is MossdeepTiles) BuildMossdeep(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         return true;
@@ -835,6 +842,34 @@ internal sealed class GymPieces
         gatePost = Make(post);
         gateArm = Make(arm);
         gateLongArm = Make(longArm);
+    }
+
+    // ------------------------------------------------------------------ the Mossdeep Gym
+
+    /// <summary>
+    /// The Mossdeep Gym's floor (plan 21 · H8; style guide, "Gyms", "The Mossdeep Gym's arrows"): each arrow tile a
+    /// square plate of its colour lying a hair over the floor with a pale arrow on it the way it points, and each floor
+    /// switch a round plate of its colour with a raised boss. Nothing on them moves.
+    /// </summary>
+    private void BuildMossdeep(Map map)
+    {
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var still = new KitBuilder(sheet, vs);
+        foreach (var a in MossdeepTiles.Arrows)
+        {
+            still.Origin = new Vector3(a.X, Relief.At(map, a.X + 0.5f, a.Y + 0.5f), a.Y);
+            var face = still.Face($"arrow.{a.Colour}.{a.Way}", 28, 28, c => GymArt.PaintFloorArrow(c, a.Colour, a.Way));
+            still.Decal(2, 30, 2, 30, 0.012f, face);
+        }
+        foreach (var (x, y, colour) in MossdeepTiles.Switches)
+        {
+            still.Origin = new Vector3(x, Relief.At(map, x + 0.5f, y + 0.5f), y);
+            var face = still.Face($"switch.{colour}", 24, 24, c => GymArt.PaintFloorSwitch(c, colour));
+            still.Decal(4, 28, 4, 28, 0.014f, face);
+        }
+        art = Upload(sheet);
+        stillParts = Make(still);
     }
 
     // ------------------------------------------------------------------ the Blackthorn Gym

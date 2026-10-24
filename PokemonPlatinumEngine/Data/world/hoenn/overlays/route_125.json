@@ -1,0 +1,20 @@
+{
+  // Route 125 (plan 21 · H8, part a): the sea north of Mossdeep City, with Shoal Cave on its islet in the north-east,
+  // whose tide comes and goes (part b; its way in is locked until then). Its dark water goes down to its own sea floor,
+  // which joins no other. The sailor Ernest swaps numbers for the PokéNav once beaten (route_125.txt)
+  "area": "route_125",
+  "bgmTrack": "hoenn/route120",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "people": {
+    "swimmer_m": { "name": "Nolen", "trainer": { "dialogueBefore": "Swimmer Nolen: The current up here pulls you north. Fight it, or battle me!", "dialogueAfter": "Swimmer Nolen: I think I'll just float for a bit." } },
+    "swimmer_m_2": { "name": "Stan", "trainer": { "dialogueBefore": "Swimmer Stan: I swim this route every morning. You're new here, aren't you?", "dialogueAfter": "Swimmer Stan: New, and strong. Welcome, I guess." } },
+    "swimmer_f": { "name": "Tanya", "trainer": { "dialogueBefore": "Swimmer Tanya: Is that the cave on the islet you're after? Get past me first!", "dialogueAfter": "Swimmer Tanya: Go on, then. Mind the tide." } },
+    "swimmer_f_2": { "name": "Sharon", "trainer": { "dialogueBefore": "Swimmer Sharon: Swimming in the sea makes my skin so smooth. Battling makes me strong!", "dialogueAfter": "Swimmer Sharon: Smooth skin, bruised pride." } },
+    "sailor": { "name": "Ernest", "script": "Ernest", "trainer": { "dialogueBefore": "Sailor Ernest: Ahoy! A sailor's Pokémon are as tough as the sea itself!", "dialogueAfter": "Sailor Ernest: Rough seas today. For me, anyway." } },
+    "lass": { "name": "Kim & Iris", "trainer": { "dialogueBefore": "Sr. and Jr. Kim & Iris: We're out for a swim, the two of us! Shall we make it a double battle?", "dialogueAfter": "Sr. and Jr. Kim & Iris: We'll swim back and try again!" } },
+    "lass_2": { "name": "Kim & Iris", "trainer": { "dialogueBefore": "Sr. and Jr. Kim & Iris: We're out for a swim, the two of us! Shall we make it a double battle?", "dialogueAfter": "Sr. and Jr. Kim & Iris: We'll swim back and try again!" } },
+    "man_5": { "name": "Presley", "trainer": { "dialogueBefore": "Bird Keeper Presley: My birds fly out over the sea every day. Today they'll fly at you!", "dialogueAfter": "Bird Keeper Presley: They'll fly home and rest now." } },
+    "expert_m": { "name": "Auron", "trainer": { "dialogueBefore": "Expert Auron: I've watched the tide on this islet for fifty years. Let's see how you hold against it!", "dialogueAfter": "Expert Auron: You're a strong current yourself." } }
+  }
+}

@@ -13909,6 +13909,20 @@
     "cantBeTossed": true
   },
   {
+    "id": 9113,
+    "name": "HM09",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dive to a compatible Pokémon. The user dives under the water on the first turn and strikes on the next.",
+    "teachesMove": "Dive",
+    "cantBeTossed": true,
+    "fieldUse": "TmHm"
+  },
+  {
     "id": 9200,
     "name": "SquirtBottle",
     "pocket": "KeyItems",

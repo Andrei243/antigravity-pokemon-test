@@ -1,6 +1,7 @@
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumTests;
@@ -125,8 +126,10 @@ public class HoennTests
             for (int x = 0; x < Overworld.Width; x++)
             {
                 if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below) continue;
-                Assert.Equal("HoennUnderwater", below);
-                Assert.True(floor.InBounds(x, y) && !floor.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
+                // (Route 125's floor joins no other and is a map of its own since plan 21 · H8)
+                Assert.Contains(below, new[] { "HoennUnderwater", "HoennUnderwaterRoute125" });
+                var under = BuiltMaps.Value[below];
+                Assert.True(under.InBounds(x, y) && !under.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
                 down++;
             }
         for (int y = 0; y < floor.Height; y++)
@@ -468,5 +471,106 @@ public class HoennTests
         var b1f = BuiltMaps.Value["AquaHideout_B1F"];
         Assert.True(b1f.Warps.Count(w => w.TargetMap == "AquaHideout_B1F") >= 15);
         Assert.Contains(b1f.Warps, w => b1f.BehaviourAt(w.SourceX, w.SourceY) == TileBehavior.WarpPanel);
+    }
+
+    // ------------------------------------------------------------------ plan 21 · H8, part a: Mossdeep City
+
+    [Fact]
+    public void MossdeepCityIsOpenWithItsFlySpotItsGymAndItsRooms()
+    {
+        foreach (string key in new[] { "route_125", "route_126", "route_127", "mossdeep_city", "mossdeep_city_gym",
+                     "mossdeep_city_space_center_1f", "mossdeep_city_space_center_2f", "mossdeep_city_stevens_house",
+                     "route_124_diving_treasure_hunters_house", "underwater_route_125", "underwater_route_126", "underwater_route_127" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var mossdeep = SpawnLocations.Of(RegionDatabase.Get(RegionDatabase.Hoenn)!).Single(s => s.Area == "mossdeep_city");
+        Assert.Equal("MossdeepCity_PokemonCenter_1F", mossdeep.Room);
+        Assert.True(Overworld.IsWalkable(mossdeep.X, mossdeep.Y), $"nobody can land at {mossdeep.X},{mossdeep.Y}");
+        Assert.Equal(Architecture.Starward, Overworld.ArchitectureAt(mossdeep.X, mossdeep.Y));
+        Assert.Equal("hoenn/rustboro", Overworld.BgmTrackAt(mossdeep.X, mossdeep.Y));
+        Assert.Single(BuiltMaps.Value["MossdeepCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
+        // The eastern sea plays Route 120's song, Route 124's too now that it is written
+        Assert.Equal("hoenn/route120", Overworld.BgmTrackAt(647, 91));
+        Assert.Equal("route_125", Overworld.AreaAt(647, 91)?.Key);
+        // The Game Corner (Emerald's room of link games) and Shoal Cave (part b) stay shut; the treasure hunter's house
+        // on Route 124 is open
+        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == "MossdeepCity_GameCorner_1F" && !w.Shut);
+        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("ShoalCave", StringComparison.Ordinal) && !w.Shut);
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "Route124_DivingTreasureHuntersHouse" && !w.Shut);
+        // The Space Center's two floors are joined by their stairs
+        Assert.Contains(BuiltMaps.Value["MossdeepCity_SpaceCenter_1F"].Warps, w => w.TargetMap == "MossdeepCity_SpaceCenter_2F");
+        // Route 125's floor is a map of its own, laid under its route
+        var floor125 = BuiltMaps.Value["HoennUnderwaterRoute125"];
+        Assert.True(floor125.IsUnderwater);
+        // Mossdeep's open metatiles are its sandy paths, and Emerald's shallows are water to look at
+        var emerald = MapImporter.Gba.GbaGame.Emerald;
+        Assert.Equal(TerrainCover.Path, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Mossdeep", 0x2F0, emerald));
+        Assert.Equal(TerrainCover.Water, MapImporter.Gba.GbaCover.Of(TileBehavior.ShallowWater, null, "gTileset_General", 0x19E, emerald));
+    }
+
+    [Fact]
+    public void TheTwinsAndStevensTeamOfTheSpaceCenterAreEmeralds()
+    {
+        // Tate and Liza are one trainer of two, a double battle, their name kept apart by its ampersand
+        var twins = TrainerDatabase.Get("hoenn_tate_and_liza_1")!;
+        Assert.Equal("Tate & Liza", twins.Name);
+        Assert.True(twins.DoubleBattle);
+        Assert.Equal("Tate & Liza", MapImporter.Gba.GbaTables.Titled("TATE&LIZA"));
+        Assert.Equal("Miu & Yuki", MapImporter.Gba.GbaTables.Titled("MIU & YUKI"));
+        // Steven's own three of the multi battle beside him (Emerald's sStevenMons)
+        var steven = TrainerDatabase.Get("hoenn_steven_partner")!;
+        Assert.Equal(new[] { "Metang", "Skarmory", "Aggron" }, steven.Party.Select(p => p.Species));
+        Assert.Equal(new[] { 42, 43, 44 }, steven.Party.Select(p => p.Level));
+        Assert.All(steven.Party, p => Assert.Equal(255, p.IvScale));
+        Assert.Equal(new[] { 2, 8, 3 }, steven.Party.Select(p => (int)(p.Personality % 25)));
+        // Steven and Wally are of the rival's class in Emerald, and keep their own names
+        var trainer = new Trainer { Id = steven.Id };
+        TrainerDatabase.Fill(trainer, steven);
+        Assert.Equal("Steven", trainer.Name);
+        var wally = new Trainer { Id = "hoenn_wally_mauville" };
+        TrainerDatabase.Fill(wally, TrainerDatabase.Get("hoenn_wally_mauville")!);
+        Assert.Equal("Wally", wally.Name);
+        // Steven's HM is the ninth, Dive, learned by whoever learns Dive by a machine in any game
+        var hm = ItemDatabase.Get("HM09")!;
+        Assert.Equal("Dive", hm.TeachesMove);
+        Assert.True(MoveTeaching.IsHm(hm));
+        Assert.Contains("HM09", PokemonDatabase.Get("Wailmer")!.TmMoves!);
+        Assert.Contains("HM09", PokemonDatabase.Get("Buizel")!.TmMoves ?? new());
+        Assert.DoesNotContain("HM09", PokemonDatabase.Get("Charmander")!.TmMoves ?? new());
+    }
+
+    [Fact]
+    public void TheMossdeepGymsSwitchesTurnWhoeverStandsOnTheirArrows()
+    {
+        var gym = BuiltMaps.Value["MossdeepCity_Gym"];
+        Assert.IsType<MossdeepTiles>(gym.Puzzle);
+        // Eleven loops of four arrows, each pointing on round its loop the other way to a clock's hands
+        Assert.Equal(44, MossdeepTiles.Arrows.Count);
+        foreach (var arrow in MossdeepTiles.Arrows)
+        {
+            var (dx, dy) = FieldMovement.Delta(arrow.Way);
+            var next = MossdeepTiles.ArrowAt(arrow.X + dx, arrow.Y + dy);
+            Assert.True(next != null, $"the arrow at {arrow.X},{arrow.Y} points off its loop");
+            Assert.Equal(arrow.Colour, next!.Value.Colour);
+            Assert.False(gym.IsSolid(arrow.X, arrow.Y), $"the arrow at {arrow.X},{arrow.Y} lies on a wall");
+        }
+        // Each switch is a trigger of the room running its colour's script
+        foreach (var (x, y, colour) in MossdeepTiles.Switches)
+            Assert.Contains(gym.Triggers, t => t.X == x && t.Y == y && t.Script == $"{colour}Switch");
+        // The statues are things of the map, drawn as cards
+        var statues = gym.Everyone.Where(n => n.NpcType == NPC.GymStatueType).ToList();
+        Assert.Equal(21, statues.Count);
+        Assert.All(statues, s => Assert.Equal(PropType.GymStatue, s.GymThing));
+        // The yellow switch moves the eight on yellow arrows: Preston steps east and turns from south to east
+        var preston = gym.Everyone.Single(n => n.TrainerData?.Id == "hoenn_preston");
+        Assert.Equal((1, 30), (preston.GridX, preston.GridY));
+        var turns = MossdeepTiles.Turns(MossdeepTiles.Colour.Yellow, (x, y) => gym.NPCs.At(x, y));
+        Assert.Equal(8, turns.Count);
+        var his = turns.Single(t => t.Who == preston);
+        Assert.Equal(Direction.Right, his.Step);
+        Assert.Equal(MossdeepTiles.Anticlockwise(preston.Facing), his.Facing);
+        Assert.Equal(Direction.Up, MossdeepTiles.Anticlockwise(Direction.Right));
+        Assert.Equal(Direction.Left, MossdeepTiles.Anticlockwise(Direction.Up));
+        // Nobody is on the red arrows but Sylvia and the statues beside her
+        Assert.Contains(MossdeepTiles.Turns(MossdeepTiles.Colour.Red, (x, y) => gym.NPCs.At(x, y)), t => t.Who.TrainerData?.Id == "hoenn_sylvia");
     }
 }

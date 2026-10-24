@@ -1,0 +1,11 @@
+{
+  // A house in Mossdeep City (plan 21 · H8, part a): the other end of the Fortree boy's errand. His Wingull comes here
+  // with a letter, flies home once the player has seen it, and the boy gives the Mental Herb (mossdeep_city_house_2.txt)
+  "area": "mossdeep_city_house_2",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "man_4": { "name": "Man", "dialog": [ "My little sister trades letters with a boy in Fortree. They use a Wingull to carry them back and forth!" ] },
+    "twin": { "name": "Girl", "dialog": [ "A Wingull brings me letters from my friend in Fortree. Pokémon can carry letters for us, you know!" ] },
+    "mossdeep_house_wingull": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "script": "Wingull", "still": true }
+  }
+}

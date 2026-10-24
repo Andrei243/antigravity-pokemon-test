@@ -65,6 +65,27 @@ public sealed partial class Importer
     }
 
     /// <summary>
+    /// The machines of the regions after Sinnoh that Platinum's table has no number for (plan 21 · H8: Hoenn's HM09,
+    /// Dive, Emerald's HM08): an override's machine (an id of 9000 and up in the TMs pocket) goes at the end of the
+    /// <see cref="PokemonSpecies.TmMoves"/> of every species that learns its move by a machine in any game PokeAPI
+    /// lists, Platinum's own species too, since Platinum taught Dive by none.
+    /// </summary>
+    public void AddHoennMachines(List<PokemonSpecies> species, List<ItemData> items)
+    {
+        var machines = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 9000 && i.TeachesMove != null).OrderBy(i => i.Id).ToList();
+        if (machines.Count == 0) return;
+        var byMachine = api.Table("pokemon_moves").Where(r => r.Int("pokemon_move_method_id") == 4)
+            .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.Select(r => api.MoveName(r.Int("move_id"))).ToHashSet());
+        foreach (var s in species)
+        {
+            if (!byMachine.TryGetValue(s.DexNumber, out var moves)) continue;
+            var learned = machines.Where(m => moves.Contains(m.TeachesMove!) && s.TmMoves?.Contains(m.Name) != true).Select(m => m.Name).ToList();
+            if (learned.Count == 0) continue;
+            s.TmMoves = (s.TmMoves ?? new()).Concat(learned).ToList();
+        }
+    }
+
+    /// <summary>
     /// The later items used on a Pokémon outside a battle (plan 06 · R28b): what the bag does with each, by a field use
     /// of our own (<c>Models/LaterItemUse.cs</c>), and the effort the feathers, mochi and Legends: Arceus's candies give
     /// as Platinum's vitamins' use parameters, which <c>EffortRules</c> carries out. A feather gives one point, a mochi

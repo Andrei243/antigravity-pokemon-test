@@ -67,6 +67,7 @@ importer.AddLaterItemEffects(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 importer.AddLaterMachines(species, items);
 importer.AddTechnicalRecords(species, items);
+importer.AddHoennMachines(species, items);
 var marts = importer.Marts();
 // Counters of other regions's own (plan 20 · J7: the Goldenrod Department Store's, from HeartGold's src/scrcmd_mart.c), which
 // Platinum's lists don't have: Overrides/marts.json's specialties, laid over the imported ones

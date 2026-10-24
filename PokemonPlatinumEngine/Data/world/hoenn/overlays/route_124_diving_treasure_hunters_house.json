@@ -1,0 +1,12 @@
+{
+  // The diving treasure hunter's house on Route 124 (plan 21 · H8, part a): he trades an evolution stone for each shard
+  // brought up from the sea floor (route_124_diving_treasure_hunters_house.txt)
+  "area": "route_124_diving_treasure_hunters_house",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "man_5": { "name": "Treasure Hunter", "script": "TreasureHunter", "still": true }
+  },
+  "signs": {
+    "Route124_DivingTreasureHuntersHouse_EventScript_ShardTradeBoard": "Wanted, and what I'll trade for it:\nRed Shard: Fire Stone. Yellow Shard: Thunder Stone.\nBlue Shard: Water Stone. Green Shard: Leaf Stone."
+  }
+}

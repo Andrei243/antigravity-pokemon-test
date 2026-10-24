@@ -1,0 +1,70 @@
+# Steven's house in Mossdeep City (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/MossdeepCity_StevensHouse/scripts.inc).
+#
+# Once the Space Center is saved (VAR_STEVENS_HOUSE_STATE 1), Steven sees the player come in, walks over and gives HM09,
+# Dive (FLAG_RECEIVED_HM_DIVE: Emerald's HM08, ninth here since Platinum's eight HMs keep their numbers), then goes back
+# to his desk (state 2, where he stands from then on). It also clears the Seafloor Cavern's guard off its way in for the
+# next stretch (FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT, plan 21 · H8, part b) and sends Scott on. The Beldum's ball
+# and Steven's letter are for after the Hall of Fame (plan 21 · H9), which shows them.
+
+
+script OnEnter
+  if var VAR_STEVENS_HOUSE_STATE == 2 place stevens_house_steven 6 5 up
+  if var VAR_STEVENS_HOUSE_STATE != 1 end
+  scene "Steven gives Dive"
+  face stevens_house_steven left
+  emote stevens_house_steven exclaim
+  wait 0.8
+  walk stevens_house_steven left 6
+  face stevens_house_steven down
+  face player up
+  speaker "Steven"
+  say "{player}... There isn't much here, as you can see, but this is my home."
+  say "Thank you for everything you've done. Please take this as my thanks. It's an HM. You've earned it."
+  give "HM09"
+  setflag FLAG_RECEIVED_HM_DIVE
+  setflag FLAG_OMIT_DIVE_FROM_STEVEN_LETTER
+  say "When you're out on the water with Surf, look for patches where the sea turns dark."
+  say "Use Dive there and you'll sink down to the sea floor. Use it again to come back up."
+  say "There are places down there where you can't come up, though. Keep that in mind."
+  walk stevens_house_steven up 1 right 3
+  face stevens_house_steven up
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT
+  setvar VAR_STEVENS_HOUSE_STATE 2
+  endscene
+  end
+
+
+script Steven
+  face self player
+  speaker "Steven"
+  say "They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine."
+  end
+
+
+# The Beldum's ball on the desk, once Steven has gone travelling (after the Hall of Fame, plan 21 · H9)
+script Beldum
+  speaker none
+  ask "{player} looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?"
+  if no goto Leave
+  givepokemon "Beldum" 5
+  hide self
+  setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+  setflag FLAG_RECEIVED_BELDUM
+  fanfare pokemon
+  text "{player} received a Beldum!"
+  end
+label Leave
+  text "{player} left the Poké Ball where it was."
+  end
+
+
+# Steven's letter on the desk, after the Hall of Fame
+script Letter
+  speaker none
+  text "It's a letter."
+  text "'{player}, I've decided to travel for a while and train on the road. I won't be home for some time.'"
+  text "'I have a favour to ask. Please take the Poké Ball on the desk. Inside is Beldum, my favourite Pokémon.'"
+  text "'I'm counting on you. May our paths cross again someday. Steven Stone'"
+  end

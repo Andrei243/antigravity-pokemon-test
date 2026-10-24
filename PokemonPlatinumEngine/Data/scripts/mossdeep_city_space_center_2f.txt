@@ -1,0 +1,211 @@
+# The upper floor of Mossdeep's Space Center (plan 21 · H8, part a). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc).
+#
+# While Team Magma holds the building (VAR_MOSSDEEP_CITY_STATE 2) the visitors stand back to the west, and three grunts
+# wait round the top of the stairs: the first time the player comes up (VAR_MOSSDEEP_SPACE_CENTER_STATE 1) they ask
+# whether the player means to take all three on. No, and the player goes back down; yes, and they battle one after
+# another, each stepping back once beaten (state 2, where they stay). Spoken to, Steven asks Maxie what the fuel is for,
+# and Maxie means to pour it into Mt. Chimney and make it erupt (FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER, which Emerald
+# clears whenever the room is come to in that state); spoken to again, Steven asks whether the player is ready, and the
+# two of them battle Maxie and Tabitha together (Emerald's multi battle beside Steven, SPECIAL_BATTLE_STEVEN; here the
+# player's whole team fights, as in every battle beside a partner of this game). Beaten, Maxie doubts his team's goal
+# and leaves with all of Team Magma (VAR_MOSSDEEP_CITY_STATE 3, state 3, FLAG_DEFEATED_MAGMA_SPACE_CENTER), and Steven
+# asks the player to his house, where he waits (VAR_STEVENS_HOUSE_STATE 1).
+
+
+script OnEnter
+  if var VAR_MOSSDEEP_CITY_STATE != 2 end
+  clearflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
+  place space_center_2f_scientist 5 3 right
+  place space_center_2f_rich_boy 3 2 right
+  place space_center_2f_gentleman 1 3 right
+  if var VAR_MOSSDEEP_SPACE_CENTER_STATE == 1 goto ThreeGrunts
+  if var VAR_MOSSDEEP_SPACE_CENTER_STATE != 2 end
+  place space_center_grunt_6 11 2 right
+  place space_center_grunt_7 15 2 left
+  place space_center_grunt_5 13 4 up
+  end
+
+
+# The three grunts at the top of the stairs
+label ThreeGrunts
+  scene "Three grunts on the stairs"
+  emote player exclaim
+  wait 0.8
+  speaker "Team Magma Grunt"
+  ask "What's with you? It's three of us to one of you, and you still want to take us on?"
+  if yes goto Fight
+  say "Good answer! That's what a smart kid does!"
+  endscene
+  warp "MossdeepCity_SpaceCenter_1F" 13 2 down
+  end
+label Fight
+  say "A real go-getter, huh? Fine. I'll go first!"
+  battle space_center_grunt_5 as "hoenn_grunt_space_center_5"
+  speaker "Team Magma Grunt"
+  say "I lost! But..."
+  walk space_center_grunt_5 back down
+  face player left
+  say "Don't relax yet! I'm next!"
+  battle space_center_grunt_6 as "hoenn_grunt_space_center_6"
+  speaker "Team Magma Grunt"
+  say "Me too! But..."
+  walk space_center_grunt_6 back left
+  face player right
+  say "Bet you'd like a breather. Too bad!"
+  battle space_center_grunt_7 as "hoenn_grunt_space_center_7"
+  speaker "Team Magma Grunt"
+  say "We should've taken a breather ourselves..."
+  walk space_center_grunt_7 back right
+  setvar VAR_MOSSDEEP_SPACE_CENTER_STATE 2
+  endscene
+  end
+
+
+script Grunt5
+  speaker "Team Magma Grunt"
+  say "Are we any use to the boss at all, I wonder?"
+  end
+
+script Grunt6
+  speaker "Team Magma Grunt"
+  say "Three of us, and look at the mess we got into."
+  end
+
+script Grunt7
+  speaker "Team Magma Grunt"
+  say "Three of us losing like this. It looks three times as bad!"
+  end
+
+
+script Tabitha
+  face self player
+  speaker "Tabitha"
+  say "Hehehe! We come all this way for a little fuel and get bothered again!"
+  say "Want to get in the way too? Then we'll deal with you at the same time!"
+  face self right
+  end
+
+
+script Maxie
+  speaker "Maxie"
+  say "Out of the way! Don't you dare interfere!"
+  end
+
+
+# Steven, cornered by the fuel stores with Maxie and Tabitha
+script Steven
+  if flag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER goto Ready
+  setflag FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
+  scene "Steven and Maxie"
+  speaker "Steven"
+  say "Team Magma... What can you possibly want with rocket fuel?"
+  speaker "Maxie"
+  say "Fufufu... Since you're so curious, I'll tell you. We will pour every drop of it into Mt. Chimney!"
+  say "With Groudon gone, that heap of a mountain is no use to us. So the fuel will make it erupt!"
+  say "Oh, it will be savage!"
+  sound "bump"
+  if facing down goto South
+  walk space_center_2f_steven back up 2
+  wait 0.5
+  walk space_center_2f_steven down 2
+  endscene
+  end
+label South
+  face space_center_2f_steven left
+  walk space_center_2f_steven back right 2
+  wait 0.5
+  walk space_center_2f_steven left 2
+  face space_center_2f_steven down
+  endscene
+  end
+label Ready
+  face self player
+  speaker "Steven"
+  ask "{player}! You'll help me? Then let's battle side by side! Are you ready?"
+  if no goto NotYet
+  scene "Beside Steven against Maxie"
+  face self down
+  battle space_center_maxie as "hoenn_maxie_mossdeep" and space_center_tabitha with "hoenn_steven_partner"
+  speaker "Maxie"
+  say "We failed to make the volcano erupt... We failed to tame Groudon once it woke..."
+  say "Is our wish for more land misguided? ......"
+  say "And if we, Team Magma, are wrong... might Team Aqua's wish for more sea be wrong as well?"
+  face space_center_maxie left
+  face space_center_tabitha down
+  wait 1.0
+  face space_center_maxie up
+  face space_center_tabitha right
+  say "Very well. We will give up on the fuel. There are more important matters I must look into."
+  setvar VAR_MOSSDEEP_CITY_STATE 3
+  music area
+  fade out
+  setvar VAR_MOSSDEEP_SPACE_CENTER_STATE 3
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+  setflag FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  hide space_center_grunt_5
+  hide space_center_grunt_6
+  hide space_center_grunt_7
+  hide space_center_tabitha
+  hide space_center_maxie
+  place space_center_2f_scientist 5 6 down
+  place space_center_2f_gentleman 11 8 up
+  place space_center_2f_rich_boy 6 2 up
+  face space_center_2f_steven player
+  fade in
+  speaker "Steven"
+  say "Whew, that was tense. {player}, thank you."
+  say "I'd like to give you something for your help. Please come and see me at home after this."
+  say "Oh, I don't live in Rustboro, by the way. My house is right here on this island."
+  fade out
+  setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
+  hide space_center_2f_steven
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_MAGMA_NOTE
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  setvar VAR_STEVENS_HOUSE_STATE 1
+  setflag FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+  fade in
+  endscene
+  end
+label NotYet
+  say "Then hurry! Get ready, quickly!"
+  face self down
+  end
+
+
+script Scientist
+  face self player
+  speaker "Scientist"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+label Normal
+  say "Mossdeep is sunny most of the year and its winds are steady. It's the perfect place to launch rockets."
+  end
+label Magma
+  say "Why would Team Magma want to steal our rocket fuel in the first place?"
+  end
+
+
+script Gentleman
+  face self player
+  speaker "Gentleman"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+label Normal
+  say "If only I were a little younger, I'd have liked to be an astronaut... No! It isn't too late! I'll try!"
+  end
+label Magma
+  say "If Team Magma takes the rocket fuel, I'll never get to space! It's an outrage!"
+  end
+
+
+script RichBoy
+  face self player
+  speaker "Boy"
+  if var VAR_MOSSDEEP_CITY_STATE == 2 goto Magma
+label Normal
+  say "I wish ordinary people could go to space someday..."
+  end
+label Magma
+  say "Team Magma... Do they want to go to space too?"
+  end

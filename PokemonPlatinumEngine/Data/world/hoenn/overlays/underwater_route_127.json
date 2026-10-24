@@ -1,0 +1,8 @@
+{
+  // The sea floor under Route 127 (plan 21 · H8, part a), south of Mossdeep City. Its two ways into the Marine Cave are
+  // the post-game's (plan 21 · H12) and lead nowhere yet
+  "area": "underwater_route_127",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round"
+}

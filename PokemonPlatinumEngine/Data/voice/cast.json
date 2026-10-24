@@ -257,6 +257,10 @@
       "note": "first spoken at celadon_city_gym.txt(10)",
       "provisional": true
     },
+    "ernest": {
+      "note": "first spoken at phone.txt(370)",
+      "provisional": true
+    },
     "eusine": {
       "note": "first spoken at burned_tower_1f.txt(14)",
       "provisional": true
@@ -389,6 +393,10 @@
       "note": "first spoken at saffron_city_dojo.txt(14)",
       "provisional": true
     },
+    "koji": {
+      "note": "first spoken at phone.txt(384)",
+      "provisional": true
+    },
     "kurt": {
       "note": "first spoken at azalea_kurt_house.txt(14)",
       "provisional": true
@@ -415,6 +423,10 @@
     },
     "liz": {
       "note": "first spoken at phone.txt(81)",
+      "provisional": true
+    },
+    "liza": {
+      "note": "first spoken at mossdeep_city_gym.txt(24)",
       "provisional": true
     },
     "lola": {
@@ -571,6 +583,10 @@
     },
     "owner": {
       "note": "first spoken at goldenrod_bike_shop.txt(8)",
+      "provisional": true
+    },
+    "pablo": {
+      "note": "first spoken at phone.txt(377)",
       "provisional": true
     },
     "palmer": {
@@ -745,6 +761,14 @@
       "provisional": true
     },
     "steven": {},
+    "tabitha": {
+      "note": "first spoken at mossdeep_city_space_center_2f.txt(83)",
+      "provisional": true
+    },
+    "tate": {
+      "note": "first spoken at mossdeep_city_gym.txt(22)",
+      "provisional": true
+    },
     "teala": {
       "note": "first spoken at BattleTower.txt(288)",
       "provisional": true
@@ -755,6 +779,10 @@
     },
     "thorton": {
       "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
+      "provisional": true
+    },
+    "treasure_hunter": {
+      "note": "first spoken at route_124_diving_treasure_hunters_house.txt(11)",
       "provisional": true
     },
     "trick_master": {
@@ -950,6 +978,7 @@
     "Elder Li": "elder_li",
     "Energy Guru": "energy_guru",
     "Erika": "erika",
+    "Ernest": "ernest",
     "Eusine": "eusine",
     "Factory Staff": "factory_staff",
     "Falkner": "falkner",
@@ -998,6 +1027,7 @@
     "Kimono Girl": "kimono_girl",
     "Koga": "koga",
     "Koichi": "koichi",
+    "Koji": "koji",
     "Kurt": "kurt",
     "Lady": "look:lady",
     "Lady Celeste": "lady_celeste",
@@ -1008,6 +1038,7 @@
     "Little Boy": "little_boy",
     "Little Girl": "look:little_girl",
     "Liz": "liz",
+    "Liza": "liza",
     "Lola": "lola",
     "Looker": "looker",
     "Lorelei": "lorelei",
@@ -1055,6 +1086,7 @@
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
     "Owner": "owner",
+    "Pablo": "pablo",
     "Palmer": "palmer",
     "Papa": "papa",
     "Park Attendant": "park_attendant",
@@ -1106,11 +1138,14 @@
     "Slowbro": "slowbro",
     "Socialite": "socialite",
     "Steven": "steven",
+    "Tabitha": "tabitha",
+    "Tate": "tate",
     "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
     "Temple Guard": "temple_guard",
     "Thorton": "thorton",
+    "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
     "TV": "tv",
     "TV Producer": "tv_producer",

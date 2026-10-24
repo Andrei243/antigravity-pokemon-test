@@ -1,0 +1,42 @@
+{
+  "key": "underwater_route_126",
+  "index": 51,
+  "name": "Underwater 126",
+  "matrix": 2,
+  "kind": "Underwater",
+  "sign": "None",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_UNDERWATER",
+  "nightMusic": "MUS_UNDERWATER",
+  "encounters": "underwater_route_126",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Clamperl", "level": 20, "maxLevel": 30 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 30 },
+    { "species": "Clamperl", "level": 30, "maxLevel": 35 },
+    { "species": "Relicanth", "level": 30, "maxLevel": 35 },
+    { "species": "Relicanth", "level": 30, "maxLevel": 35 }
+  ],
+  "waterRate": 4,
+  "emerge": "route_126",
+  "warps": [
+    { "x": 605, "z": 205, "to": "underwater_sootopolis_city", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 590, "z": 157, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_HEART_SCALE" },
+    { "x": 601, "z": 159, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_ULTRA_BALL" },
+    { "x": 623, "z": 159, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_STARDUST" },
+    { "x": 570, "z": 176, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_PEARL" },
+    { "x": 571, "z": 179, "type": 2, "script": "", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_IRON" },
+    { "x": 572, "z": 175, "type": 2, "script": "", "item": "Yellow Shard", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_YELLOW_SHARD" },
+    { "x": 625, "z": 200, "type": 2, "script": "", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_BIG_PEARL" },
+    { "x": 569, "z": 217, "type": 2, "script": "", "item": "Blue Shard", "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_126_BLUE_SHARD" }
+  ],
+  "triggers": []
+}

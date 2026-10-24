@@ -68,7 +68,9 @@
     // Plan 21 · H6: Fortree's
     { "id": 7, "area": "fortree_city", "x": 325, "y": 7, "room": "FortreeCity_PokemonCenter_1F" },
     // Plan 21 · H7, part a: Lilycove's
-    { "id": 8, "area": "lilycove_city", "x": 504, "y": 85, "room": "LilycoveCity_PokemonCenter_1F" }
+    { "id": 8, "area": "lilycove_city", "x": 504, "y": 85, "room": "LilycoveCity_PokemonCenter_1F" },
+    // Plan 21 · H8, part a: Mossdeep's
+    { "id": 9, "area": "mossdeep_city", "x": 668, "y": 117, "room": "MossdeepCity_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: Emerald's levels for a team that crossed from Johto, from Lance's 136 on the first route to a
   // Champion at 162 (the study's fair climb); the post-game climbs on past him on the same line

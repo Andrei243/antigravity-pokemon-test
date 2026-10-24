@@ -5,6 +5,7 @@
   "bgmTrack": "hoenn/slateport",
   "people": {
     "dock": { "name": "Dock", "script": "Dock", "still": true },
+    "expert_m": { "name": "Mr. Briney", "npcType": "briney", "script": "Briney" },
     "scientist_1": { "name": "Scientist", "npcType": "scientist", "dialog": [ "A submarine that dives to the sea floor... The captain's dream is nearly built." ] },
     "scientist_1_2": { "name": "Scientist", "npcType": "scientist", "dialog": [ "These blueprints need one more part from Devon. Then we can start on the hull." ] }
   }

@@ -7213,7 +7213,7 @@
   },
   {
     "id": "hoenn_tate_and_liza_1",
-    "name": "Tate&liza",
+    "name": "Tate & Liza",
     "class": "Leader",
     "ai": [
       "Basic",
@@ -22449,7 +22449,7 @@
   },
   {
     "id": "hoenn_tate_and_liza_2",
-    "name": "Tate&liza",
+    "name": "Tate & Liza",
     "class": "Leader",
     "ai": [
       "Basic",
@@ -22531,7 +22531,7 @@
   },
   {
     "id": "hoenn_tate_and_liza_3",
-    "name": "Tate&liza",
+    "name": "Tate & Liza",
     "class": "Leader",
     "ai": [
       "Basic",
@@ -22625,7 +22625,7 @@
   },
   {
     "id": "hoenn_tate_and_liza_4",
-    "name": "Tate&liza",
+    "name": "Tate & Liza",
     "class": "Leader",
     "ai": [
       "Basic",
@@ -22719,7 +22719,7 @@
   },
   {
     "id": "hoenn_tate_and_liza_5",
-    "name": "Tate&liza",
+    "name": "Tate & Liza",
     "class": "Leader",
     "ai": [
       "Basic",
@@ -24702,6 +24702,56 @@
         "level": 5,
         "ivScale": 0,
         "personality": 459384
+      }
+    ]
+  },
+  {
+    "id": "hoenn_steven_partner",
+    "name": "Steven",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Metang",
+        "level": 42,
+        "ivScale": 255,
+        "personality": 152,
+        "moves": [
+          "Light Screen",
+          "Psychic",
+          "Reflect",
+          "Metal Claw"
+        ]
+      },
+      {
+        "species": "Skarmory",
+        "level": 43,
+        "ivScale": 255,
+        "personality": 133,
+        "moves": [
+          "Toxic",
+          "Aerial Ace",
+          "Protect",
+          "Steel Wing"
+        ]
+      },
+      {
+        "species": "Aggron",
+        "level": 44,
+        "ivScale": 255,
+        "personality": 153,
+        "moves": [
+          "Thunder",
+          "Protect",
+          "Solar Beam",
+          "Dragon Claw"
+        ]
       }
     ]
   }

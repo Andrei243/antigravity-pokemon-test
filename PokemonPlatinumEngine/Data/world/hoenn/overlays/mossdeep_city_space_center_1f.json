@@ -1,0 +1,21 @@
+{
+  // The ground floor of Mossdeep's Space Center (plan 21 · H8, part a): the launch counter, the staff and visitors, and
+  // Steven keeping watch over Team Magma's letter, which lies open on a desk (the thing nobody sees at 2,5). Once Team
+  // Magma has come in (VAR_MOSSDEEP_CITY_STATE 2) its grunts hold the floor, the visitors pressed back against the west
+  // wall, and one guards the stairs up (mossdeep_city_space_center_1f.txt)
+  "area": "mossdeep_city_space_center_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "space_center_1f_scientist_1": { "name": "Scientist", "npcType": "scientist", "script": "LaunchCounter", "still": true },
+    "space_center_1f_scientist_2": { "name": "Scientist", "npcType": "scientist", "script": "Scientist", "still": true },
+    "space_center_1f_sailor": { "name": "Sailor", "script": "SunStoneMan", "still": true },
+    "space_center_1f_old_man": { "name": "Old Man", "script": "OldMan", "still": true },
+    "space_center_1f_woman": { "name": "Woman", "script": "Woman" },
+    "magma_member_f": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: We said we'd come for the rocket fuel, and here we are!", "dialogueAfter": "Team Magma Grunt: Don't think one win makes you unstoppable!" } },
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: We warned you fair and square! Nothing sneaky about Team Magma!", "dialogueAfter": "Team Magma Grunt: Next time we'll skip the letter and just show up." } },
+    "magma_member_m_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: The fuel in storage here? We're taking every last drop!", "dialogueAfter": "Team Magma Grunt: What's it for? Ask the boss upstairs. I just carry the cans." } },
+    "space_center_1f_stair_grunt": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "StairGrunt", "still": true, "trainer": { "dialogueBefore": "Team Magma Grunt: The boss said nobody gets past me. Nobody!", "dialogueAfter": "Team Magma Grunt: Tell the boss I never left my post. I held on to the very end!" } },
+    "ninja_boy": { "name": "Letter", "npcType": "Unseen", "script": "MagmaNote" },
+    "steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true }
+  }
+}

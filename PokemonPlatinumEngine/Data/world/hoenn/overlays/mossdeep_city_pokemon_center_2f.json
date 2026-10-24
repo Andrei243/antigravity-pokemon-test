@@ -1,0 +1,12 @@
+{
+  // The floor above Mossdeep City's Pokémon Center (plan 21 · H8, part a): the wireless link is down, as in every Center
+  // (decision 06 · 7)
+  "area": "mossdeep_city_pokemon_center_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "teala": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "teala_2": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "teala_3": { "name": "Receptionist", "dialog": ["I'm sorry, the link to other players is closed for now."] },
+    "woman_5": { "name": "Woman", "dialog": [ "People link up in the rooms through there to trade and battle. I just come up here for the quiet." ] }
+  }
+}

@@ -368,6 +368,8 @@ public sealed partial class ScriptRunner
         Op.Phrase => true,
         // and so is a rival's name (plan 18 · W4, part b)
         Op.NameRival => true,
+        // The Mossdeep Gym's people step round their arrows while the field waits (plan 21 · H8)
+        Op.RotateTiles => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -888,6 +890,12 @@ public sealed partial class ScriptRunner
                 // The keyboard for the rival of the script's region (plan 18 · W4, part b); RESULT 1 once named
                 host.Open(ScriptScreen.NameRival, Subject);
                 afterBusy = () => Result = host.Answer;
+                break;
+            // A floor switch of the Mossdeep Gym (plan 21 · H8): the host steps everyone on the colour's arrows round
+            // their loop and turns them, and the script waits for the steps as it waits for a walk
+            case Op.RotateTiles:
+                host.RotateTiles(MossdeepTiles.ColourOf(Array.IndexOf(new[] { "yellow", "blue", "green", "purple", "red" }, i.Name)));
+                waitingForWalks = true;
                 break;
             case Op.ChoosePokemon:
             {

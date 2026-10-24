@@ -1,0 +1,49 @@
+{
+  // Mossdeep City (plan 21 · H8, part a): the flowering island of the Space Center, with Tate and Liza's Gym and
+  // Steven's house (mossdeep_city.txt). Once the Mind Badge is won, Maxie and four grunts gather before the Space
+  // Center and file in at the first step onto the triggers (4 to 9, VAR_MOSSDEEP_CITY_STATE 1). Emerald's Game Corner
+  // here is a room of link games and stays shut
+  "area": "mossdeep_city",
+  "bgmTrack": "hoenn/rustboro",
+  "trees": "Round",
+  "architecture": "Starward",
+  "locked": [ 9 ],
+  "triggers": [
+    { "trigger": 0, "script": "Visited" },
+    { "trigger": 1, "script": "Visited" },
+    { "trigger": 2, "script": "Visited" },
+    { "trigger": 3, "script": "Visited" },
+    { "trigger": 4, "script": "MagmaEntersSpaceCenter" },
+    { "trigger": 5, "script": "MagmaEntersSpaceCenter" },
+    { "trigger": 6, "script": "MagmaEntersSpaceCenter" },
+    { "trigger": 7, "script": "MagmaEntersSpaceCenter" },
+    { "trigger": 8, "script": "MagmaEntersSpaceCenter" },
+    { "trigger": 9, "script": "MagmaEntersSpaceCenter" }
+  ],
+  "people": {
+    "sailor": { "name": "Sailor", "script": "Sailor" },
+    "expert_m": { "name": "Old Man", "dialog": [ "Everything that lives needs the sea, even what makes its home on land. And the sea always reaches the shore." ] },
+    "pokefan_f": { "name": "Woman", "script": "PokefanF" },
+    "ninja_boy": { "name": "Boy", "dialog": [ "You can see wild Wailmer from the beach here! It's called... um... Wai-Wai-Wailmer watching!" ] },
+    "girl_1": { "name": "Girl", "dialog": [ "Wouldn't it be lovely if the whole world were covered in flowers, just like this island?" ] },
+    "man_1": { "name": "Man", "script": "Man" },
+    "woman_1": { "name": "Woman", "dialog": [ "The people of the Space Center put that white rock there as a wish for their rockets to fly safely." ] },
+    "boy_2": { "name": "Boy", "script": "KingsRockBoy" },
+    "mossdeep_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: The boss is about to give the word!" ] },
+    "mossdeep_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: Rocket fuel, here we come!" ] },
+    "mossdeep_grunt_3": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: We sent them a letter. That makes it polite!" ] },
+    "mossdeep_grunt_4": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: Out of the way, kid!" ] },
+    "mossdeep_maxie": { "name": "Maxie", "npcType": "maxie", "still": true, "dialog": [ "Maxie: The fuel stored in that building is ours. Stand aside." ] },
+    "black_belt": { "name": "Black Belt", "script": "DynamicPunchTutor" },
+    "mossdeep_scott": { "name": "Scott", "npcType": "scott", "script": "Scott", "still": true },
+    "black_belt_2": { "name": "Black Belt", "dialog": [ "The waves feel good on my feet. They say Sootopolis's Gym has a new Leader, one who taught Wallace himself." ] }
+  },
+  "signs": {
+    "MossdeepCity_EventScript_CitySign": "Mossdeep City\nOur motto: Cherish Pokémon!",
+    "MossdeepCity_EventScript_GymSign": "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza\nTwo minds that fight as one!",
+    "MossdeepCity_EventScript_SpaceCenterSign": "Mossdeep Space Center\nAs close to the stars as you can get on foot.",
+    "MossdeepCity_EventScript_WhiteRock": "A smooth white rock.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

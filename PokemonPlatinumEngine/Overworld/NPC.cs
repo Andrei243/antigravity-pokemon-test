@@ -336,6 +336,13 @@ public class NPC
     /// <summary>A block of ice the player pushes (<see cref="IceBlockType"/>).</summary>
     public bool IsIceBlock => NpcType == IceBlockType;
 
+    /// <summary>
+    /// A statue of a Gym's puzzle (plan 21 · H8; Emerald's <c>OBJ_EVENT_GFX_TRICK_HOUSE_STATUE</c> in the Mossdeep Gym):
+    /// a thing of the map, in the way like a person, which a floor switch moves round its loop of arrows as it moves
+    /// the trainers (<see cref="MossdeepTiles"/>). Drawn as a card.
+    /// </summary>
+    public const string GymStatueType = "GymStatue";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -357,6 +364,7 @@ public class NPC
         PokedexType => PropType.DeskPokedex,
         TownMapType => PropType.RolledTownMap,
         IceBlockType => PropType.IceBlock,
+        GymStatueType => PropType.GymStatue,
         _ => null
     };
 

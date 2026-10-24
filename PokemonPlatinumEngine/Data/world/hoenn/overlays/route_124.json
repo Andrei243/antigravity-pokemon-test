@@ -1,12 +1,11 @@
 {
   // Route 124 (plan 21 · H5): the open sea west of Mossdeep City, whose dark trenches go down to the sea floor with Dive
   // (the Mind Badge, Mossdeep City's Gym's). Its swimmers wait for a surfer; the treasure hunter's house on its islet is
-  // shut until the east sea's rooms are built (plan 21 · H8), and the way here by water from Lilycove City is plan 21
-  // · H7's. Emerald plays Route 120's song here, which this game hasn't written yet: Route 104's sea stands in.
+  // open since plan 21 · H8, and the way here by water from Lilycove City is plan 21 · H7's. Emerald plays Route 120's
+  // song here, as it does over the whole eastern sea (plan 21 · H8: Route 104's sea stood in until H6 wrote it).
   "area": "route_124",
-  "bgmTrack": "hoenn/route104",
+  "bgmTrack": "hoenn/route120",
   "trees": "Round",
-  "locked": [ 0 ],
   "people": {
     "swimmer_m": { "name": "Spencer", "trainer": { "dialogueBefore": "Swimmer Spencer: The water's so clear out here, I can see right down to the bottom!", "dialogueAfter": "Swimmer Spencer: All I can see now is defeat." } },
     "swimmer_m_2": { "name": "Roland", "trainer": { "dialogueBefore": "Swimmer Roland: Out in the open sea, you can't run from a battle. Ready?", "dialogueAfter": "Swimmer Roland: I'd swim away if I had any energy left." } },

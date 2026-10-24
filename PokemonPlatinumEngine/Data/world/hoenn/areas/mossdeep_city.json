@@ -1,0 +1,98 @@
+{
+  "key": "mossdeep_city",
+  "index": 44,
+  "name": "Mossdeep City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "encounters": "mossdeep_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 668, "z": 109, "to": "mossdeep_city_house_1", "toWarp": 0 },
+    { "x": 678, "z": 109, "to": "mossdeep_city_gym", "toWarp": 0 },
+    { "x": 668, "z": 116, "to": "mossdeep_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 707, "z": 125, "to": "mossdeep_city_house_2", "toWarp": 0 },
+    { "x": 677, "z": 118, "to": "mossdeep_city_mart", "toWarp": 0 },
+    { "x": 689, "z": 106, "to": "mossdeep_city_house_3", "toWarp": 0 },
+    { "x": 659, "z": 110, "to": "mossdeep_city_stevens_house", "toWarp": 0 },
+    { "x": 658, "z": 116, "to": "mossdeep_city_house_4", "toWarp": 1 },
+    { "x": 704, "z": 115, "to": "mossdeep_city_space_center_1f", "toWarp": 0 },
+    { "x": 676, "z": 124, "to": "mossdeep_city_game_corner_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 678, "z": 112, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_EventScript_Sailor" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "wander_west_and_east", "x": 690, "z": 134, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "MossdeepCity_EventScript_ExpertM" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "wander_around", "x": 672, "z": 112, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_EventScript_PokefanF" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "wander_north_and_south", "x": 666, "z": 121, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "MossdeepCity_EventScript_NinjaBoy" },
+    { "id": "girl_1", "looks": "girl_1", "movement": "look_west", "x": 685, "z": 118, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_EventScript_Girl" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 702, "z": 135, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_MOSSDEEP_CITY_NET_BALL", "item": "Net Ball", "script": "MossdeepCity_EventScript_ItemNetBall" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_north", "x": 695, "z": 105, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "MossdeepCity_EventScript_Man" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_east", "x": 696, "z": 121, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_EventScript_Woman" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "wander_around", "x": 663, "z": 113, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MossdeepCity_EventScript_KingsRockBoy" },
+    { "id": "mossdeep_grunt_1", "looks": "magma_member_m", "movement": "look_south", "x": 684, "z": 123, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "script": "" },
+    { "id": "mossdeep_grunt_2", "looks": "magma_member_m", "movement": "look_north", "x": 684, "z": 124, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "script": "" },
+    { "id": "mossdeep_grunt_3", "looks": "magma_member_m", "movement": "look_south", "x": 684, "z": 125, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "script": "" },
+    { "id": "mossdeep_grunt_4", "looks": "magma_member_m", "movement": "look_north", "x": 684, "z": 126, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "script": "" },
+    { "id": "mossdeep_maxie", "looks": "maxie", "movement": "look_west", "x": 685, "z": 125, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA", "script": "" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "walk_in_place_south", "x": 659, "z": 125, "facing": 1, "rangeX": 3, "rangeZ": 3, "script": "MossdeepCity_EventScript_DynamicPunchTutor" },
+    { "id": "mossdeep_scott", "looks": "scott", "movement": "look_south_and_west", "x": 701, "z": 129, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MOSSDEEP_CITY_SCOTT", "script": "MossdeepCity_EventScript_Scott" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "walk_in_place_south", "x": 671, "z": 129, "facing": 1, "rangeX": 3, "rangeZ": 3, "script": "MossdeepCity_EventScript_BlackBelt" }
+  ],
+  "signs": [
+    { "x": 665, "z": 116, "type": 0, "script": "MossdeepCity_EventScript_CitySign" },
+    { "x": 674, "z": 109, "type": 0, "script": "MossdeepCity_EventScript_GymSign" },
+    { "x": 669, "z": 116, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 678, "z": 118, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 706, "z": 116, "type": 0, "script": "MossdeepCity_EventScript_SpaceCenterSign" },
+    { "x": 670, "z": 116, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 679, "z": 118, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 697, "z": 121, "type": 0, "script": "MossdeepCity_EventScript_WhiteRock" }
+  ],
+  "triggers": [
+    { "x": 665, "z": 125, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_VisitedMossdeep", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 666, "z": 125, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_VisitedMossdeep", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 672, "z": 127, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_VisitedMossdeep", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 673, "z": 127, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_VisitedMossdeep", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 682, "z": 121, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" },
+    { "x": 681, "z": 122, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" },
+    { "x": 681, "z": 123, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" },
+    { "x": 681, "z": 124, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" },
+    { "x": 680, "z": 125, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" },
+    { "x": 680, "z": 126, "width": 1, "depth": 1, "script": "MossdeepCity_EventScript_TeamMagmaEnterSpaceCenter", "variable": "VAR_MOSSDEEP_CITY_STATE", "value": "1" }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  // Mossdeep City's Pokémon Center (plan 21 · H8, part a)
+  "area": "mossdeep_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "mossdeep_nurse": { "name": "Nurse", "script": "Nurse" },
+    "woman_2": { "name": "Woman", "dialog": [ "The Gym Leaders here are twins. They say they can read each other's minds in the middle of a battle!" ] },
+    "girl_1": { "name": "Girl", "dialog": [ "When I grow up, I want to work at the Space Center and send rockets up to the stars!" ] }
+  }
+}

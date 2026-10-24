@@ -27,7 +27,9 @@ partial class Harness
         var dives = new List<(int X, int Y)>();
         for (int y = 0; y < hoenn.Height; y++)
             for (int x = 0; x < hoenn.Width; x++)
-                if (hoenn.BehaviourAt(x, y) == TileBehavior.DiveWater && hoenn.DiveAt(x, y) != null && !floor.IsSolid(x, y)
+                // (Route 124's alone: plan 21 · H8 opened the floors under Routes 125 to 127, which would move the diver)
+                if (hoenn.BehaviourAt(x, y) == TileBehavior.DiveWater && hoenn.DiveAt(x, y) == "HoennUnderwater"
+                    && hoenn.AreaAt(x, y)?.Key == "route_124" && !floor.IsSolid(x, y)
                     && FieldMovement.CanSurface(floor, x, y) && floor.GetGroundTile(x, y) != TileType.Kelp)
                     dives.Add((x, y));
         if (dives.Count == 0) { Console.WriteLine("!! no dark water over an open floor on Route 124"); return; }

@@ -3413,6 +3413,66 @@ ran it (`FLAG_HOENN_CHAPTER_EIGHT_B`). What differs, and why:
   halls take the volcanic climate's light (`climate: Volcanic`); Team Aqua's are rooms (`Indoors`), their warp panels
   the reader's `WarpPanel` tiles.
 
+## Mossdeep City (2026-10-24, plan 21 · H8, its first part)
+
+Routes 125 to 127 above water and their sea floors, Mossdeep City and its rooms and the treasure hunter's house on
+Route 124 are open, and the stretch from Mossdeep's Gym to Dive is scripts of ours on Emerald's beats
+(`mossdeep_city*.txt`, `route_124_diving_treasure_hunters_house.txt`, `route_125.txt` to `route_127.txt`), under
+Emerald's flags and variables (`VAR_MOSSDEEP_CITY_STATE`, `VAR_MOSSDEEP_SPACE_CENTER_STATE`,
+`VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE`, `VAR_STEVENS_HOUSE_STATE`, `FLAG_DEFEATED_MAGMA_SPACE_CENTER`,
+`FLAG_RECEIVED_HM_DIVE`, `FLAG_WINGULL_DELIVERED_MAIL`). **No story or save version is raised**:
+`common.HoennChapterNine` hides what Emerald's new game hides for them (Team Magma before the Space Center and on its
+two floors, Steven upstairs there and at home, the Beldum's ball and his letter, and Mr. Briney at Stern's shipyard
+until the Mind Badge), `HoennNewGame` calls it, and Mossdeep City's arrival calls it for a save that never ran it
+(`FLAG_HOENN_CHAPTER_NINE`). What differs, and why:
+
+- **Dive is HM09**: Emerald's HM08 is Dive, but Platinum's eight HMs keep their numbers (HM08 is Rock Climb), so
+  Steven gives a ninth, an item of the importer's overrides (`HM09`, id 9113). Whoever learns Dive by a machine in any
+  game PokeAPI lists may learn it (`Importer.AddHoennMachines`), Platinum's own species too, since Platinum taught Dive
+  by none; like every HM it can't be forgotten to make room.
+- **The Gym's floor of arrows** is the room's puzzle (`MossdeepTiles`, Emerald's `rotating_tile_puzzle.c`): eleven loops
+  of four arrows in five colours, their tiles hand-written from the layout (numbers), and a switch of a colour (the
+  room's coordinate events, a new script command, `rotatetiles`) moves everyone standing on that colour's arrows one step
+  the way the arrow points, keeping their facing, and turns each a quarter anticlockwise, all at once. Emerald turns them
+  after the step; here they turn as they set off. Where they stand lasts until the room is come to again, as Emerald's
+  copies of its objects do. The stone statues are things of the map (`GymStatue`), drawn as cards, and the pad by the
+  twins sends the player back to the door. Emerald's leftover switches of Ruby and Sapphire (`FLAG_MOSSDEEP_GYM_SWITCH_*`)
+  are not followed.
+- **Tate and Liza are one trainer of two** (`hoenn_tate_and_liza_1`, a double battle), as Emerald's are, their name in
+  the table "Tate & Liza" (the reader now keeps a pair's names apart at an ampersand with no spaces). Emerald refuses the
+  battle to a team with one Pokémon able to fight; here a team of one fights it, as every double battle of this game does.
+  Their Badge sets what Emerald's does: the twelve trainers beaten, Team Magma before the Space Center and on both its
+  floors, Steven upstairs, Slateport's harbour full again and Mr. Briney helping Dock at the shipyard.
+- **Team Magma files into the Space Center** at the first step onto Emerald's six triggers once the Badge is won, with a
+  line of Maxie's that Emerald's scene doesn't have.
+- **The grunt on the stairs steps aside** west of himself when the player comes at him from the east and east otherwise,
+  as Emerald's script means to (`VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE` 1 or 3); by a slip Emerald sends him east
+  whatever the player's side, and a game returning finds him at 13,3, which is not followed.
+- **The battle beside Steven** is the game's tag battle (`battle maxie as … and tabitha with "hoenn_steven_partner"`):
+  Emerald asks the player to choose three Pokémon and fights with those; here the whole team fights, as in every battle
+  beside a partner of this game. Steven's own three are Emerald's `sStevenMons` (Metang, Skarmory and Aggron at 42 to
+  44, every IV at its most, Brave, Impish and Adamant), which `trainers.h` doesn't hold: the reader writes them as
+  `hoenn_steven_partner` from the numbers of `src/battle_tower.c`. Steven and Wally are of the rival's class in Emerald's
+  table and keep their own names (`TrainerDatabase.OthersOfTheRivalsClass`), where the class alone had named them
+  `{rival}` (Wally's battle in Mauville City was named so).
+- **The three grunts upstairs** ask whether the player will take them on, as Emerald's do, and send a player who says no
+  back down to the foot of the stairs (Emerald puts them on the stairs' own tile; here the tile before them).
+- **The launch counter** says only that the next launch is soon: Emerald counts the launches by the weeks of the game,
+  which this game doesn't count.
+- **Mossdeep's people** who talk of Pokéblocks and secret bases only talk (plan 21 · H10 and H11), the Super Rod has a
+  flag of Hoenn's own (`FLAG_HOENN_RECEIVED_SUPER_ROD`, since Sinnoh's Fight Area gives one under Emerald's name), the
+  King's Rock and the Sun Stone are given once, and the black belt by the shore teaches Dynamic Punch once (`tutor once`,
+  its nearest kin among Platinum's machines Focus Punch). The Game Corner, Emerald's room of link games, stays shut.
+- **The Wingull's errand** is whole: the Wingull of the house in Mossdeep, there once Fortree's boy has sent it off, cries
+  and flies home when spoken to (`FLAG_WINGULL_DELIVERED_MAIL`), and the boy gives a Mental Herb once.
+- **The treasure hunter** offers all four shards in one question and turns down one not in the bag, where Emerald's menu
+  lists only those the bag holds.
+- **The eastern sea** plays Route 120's song, Route 124 too now that it is written. Route 125's sea floor joins no other
+  and is a map of its own (`HoennUnderwaterRoute125`), laid under its route as the others are. Emerald's shallows
+  (`MB_SHALLOW_WATER`) are water to look at over all of Hoenn (`GbaCover.Of`), where they had taken the nearest ground.
+- **Mossdeep is built as Starward** (white stucco under sky-blue hip roofs, shutters and flower boxes; the style guide's
+  row), and its open metatiles are its sandy paths (`GbaCover.HoennRanges`).
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

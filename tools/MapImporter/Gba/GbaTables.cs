@@ -80,6 +80,8 @@ public sealed class GbaTables
                 Wild[map] = wild;
         if (File.Exists(Path_("src", "data", "trainers.h")) && File.Exists(Path_("src", "data", "trainer_parties.h")))
             Trainers.AddRange(ParseTrainers(File.ReadAllText(Path_("src", "data", "trainers.h")), File.ReadAllText(Path_("src", "data", "trainer_parties.h")), Problems, trainerPrefix, moneyRates));
+        // Emerald's partner of the Space Center's multi battle, whom trainers.h doesn't hold (plan 21 · H8)
+        if (ReferenceEquals(moneyRates, EmeraldMoneyRates)) Trainers.AddRange(EmeraldPartners(trainerPrefix));
         if (File.Exists(Path_("src", "data", "heal_locations.json")))
             HealLocations.AddRange(ParseHealLocations(File.ReadAllText(Path_("src", "data", "heal_locations.json"))));
     }
@@ -269,6 +271,31 @@ public sealed class GbaTables
     }
 
     /// <summary>
+    /// Steven as he battles beside the player in Mossdeep's Space Center (plan 21 · H8): Emerald builds him from
+    /// <c>sStevenMons</c> of <c>src/battle_tower.c</c> (<c>TRAINER_STEVEN_PARTNER</c>), which the checkout's folders
+    /// don't hold, so its numbers are written here as the source has them: each Pokémon's species, level and moves, every
+    /// IV at its most (an IV share of 255), and a personality of the nature Emerald draws for (Brave, Impish, Adamant:
+    /// the personality's remainder by 25), on the high side of its low byte. Prize money is none: a partner pays nothing.
+    /// </summary>
+    public static IEnumerable<TrainerRecord> EmeraldPartners(string idPrefix)
+    {
+        yield return new TrainerRecord
+        {
+            Id = idPrefix + "steven_partner",
+            Name = "Steven",
+            Class = "Rival",
+            Ai = new List<string> { "Basic", "EvalAttack", "Expert" },
+            Items = new List<string>(),
+            Party = new List<TrainerPokemonRecord>
+            {
+                new() { Species = "Metang", Level = 42, IvScale = 255, Personality = 152, Moves = new() { "Light Screen", "Psychic", "Reflect", "Metal Claw" } },
+                new() { Species = "Skarmory", Level = 43, IvScale = 255, Personality = 133, Moves = new() { "Toxic", "Aerial Ace", "Protect", "Steel Wing" } },
+                new() { Species = "Aggron", Level = 44, IvScale = 255, Personality = 153, Moves = new() { "Thunder", "Protect", "Solar Beam", "Dragon Claw" } }
+            }
+        };
+    }
+
+    /// <summary>
     /// FireRed's <c>gTrainerMoneyTable</c> (<c>src/battle_main.c</c>) for the classes of Kanto, which the checkout's
     /// folders don't hold: the factor of a trainer's prize. A class it doesn't list takes the table's last row, 5.
     /// </summary>
@@ -351,8 +378,9 @@ public sealed class GbaTables
     };
 
     /// <summary>"YOUNGSTER" to "Youngster", "PKMN TRAINER 1" to "Pkmn Trainer 1": the data's capitals in ours.</summary>
+    // A pair's two names are kept apart by the ampersand with a space either side (Emerald's TATE&LIZA is Tate & Liza)
     public static string Titled(string upper) =>
-        string.Join(' ', upper.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+        string.Join(' ', upper.Replace("&", " & ", StringComparison.Ordinal).Split(' ', StringSplitOptions.RemoveEmptyEntries)
             .Select(w => w.Length == 0 ? w : char.ToUpperInvariant(w[0]) + w[1..].ToLowerInvariant()));
 }
 

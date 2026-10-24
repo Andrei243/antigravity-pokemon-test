@@ -4,11 +4,13 @@
 # Dock, the foreman, is puzzling over the submarine's plans. Shown the Devon Goods, he sends the player on to the
 # Oceanic Museum, where the captain has gone (FLAG_DOCK_REJECTED_DEVON_GOODS); and Team Aqua, who were queuing at the
 # museum's door, go inside (FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA). Once the goods are delivered he waits for a veteran
-# sailor's advice, which is a later chapter's.
+# sailor's advice, and Mr. Briney comes to give it once Mossdeep's Mind Badge is won (plan 21 · H8: the Gym's script
+# clears FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY, which HoennChapterNine sets, as Emerald's new game does).
 
 
 script Dock
   speaker "Dock"
+  if badge mind goto Briney
   if flag FLAG_DELIVERED_DEVON_GOODS goto Veteran
   if flag FLAG_DOCK_REJECTED_DEVON_GOODS goto FindStern
   say "Hmm... If we put the engine here, the hull bends there... I can't make heads or tails of these plans."
@@ -25,4 +27,15 @@ label FindStern
 label Veteran
   face self player
   say "Thanks to those parts, the submarine's coming along. But I could use the advice of an old sea hand."
+  end
+label Briney
+  face self player
+  say "Hi! Mr. Briney has joined us to lend a hand. With an old sea hand's know-how, the work's going twice as fast!"
+  end
+
+
+# Mr. Briney, come to help once the Mind Badge is won
+script Briney
+  speaker "Mr. Briney"
+  say "Hm? Ah, it's you! I've decided to help Dock here. A ship needs an old salt's touch, after all!"
   end

@@ -119,6 +119,8 @@ public enum Op
     Objective,
     // The keyboard for the rival of the region the script plays in (plan 18 · W4, part b): a region crossed into names its own
     NameRival,
+    // A floor switch of the Mossdeep Gym (plan 21 · H8): everyone on the colour's arrows steps round their loop and turns
+    RotateTiles,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

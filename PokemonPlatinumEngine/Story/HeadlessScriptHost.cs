@@ -1019,6 +1019,20 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (Map?.Puzzle is PastoriaWater water) water.Settle(button);
     }
 
+    public void RotateTiles(MossdeepTiles.Colour colour)
+    {
+        NeverInAHurry("the Mossdeep Gym's arrows");
+        Log.Add($"rotatetiles {colour.ToString().ToLowerInvariant()}");
+        if (Map?.Puzzle is not MossdeepTiles) return;
+        // Everyone steps at once: where each is going is worked out before anyone moves
+        foreach (var (who, step, facing) in MossdeepTiles.Turns(colour, (x, y) => Map.NPCs.At(x, y)))
+        {
+            var (dx, dy) = FieldMovement.Delta(step);
+            (who.GridX, who.GridY) = (who.GridX + dx, who.GridY + dy);
+            Face(who, facing);
+        }
+    }
+
     public void PressGearButton(SunyshoreGears.Button kind)
     {
         NeverInAHurry("the Sunyshore Gym's gears");

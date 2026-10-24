@@ -1,0 +1,22 @@
+# A house of Mossdeep City (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MossdeepCity_House3/scripts.inc). The fisherman gives the Super Rod once
+# (FLAG_HOENN_RECEIVED_SUPER_ROD).
+
+
+script SuperRod
+  face self player
+  speaker "Fisherman"
+  if flag FLAG_HOENN_RECEIVED_SUPER_ROD goto Given
+  ask "Hey there, trainer! A Super Rod is truly super, you know. Do you want one?"
+  if no goto Declined
+  say "Ha! A trainer after my own heart. Here you go!"
+  give "Super Rod"
+  setflag FLAG_HOENN_RECEIVED_SUPER_ROD
+  say "Drop it into any water you like, and see what bites. The deeper the water, the bigger the catch!"
+  end
+label Given
+  say "Go after the Pokémon of the sea floor with that rod of yours!"
+  end
+label Declined
+  say "What, don't you like fishing?"
+  end

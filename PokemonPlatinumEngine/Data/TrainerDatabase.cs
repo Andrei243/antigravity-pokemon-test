@@ -220,6 +220,13 @@ public static class TrainerDatabase
     public static bool IsRivalAsChampion(TrainerRecord record) =>
         record.Class == "Champion" && record.Id.StartsWith("kanto_champion_", StringComparison.Ordinal);
 
+    /// <summary>
+    /// Emerald's own people of the rival's class who are not the rival (plan 21 · H8): Wally and Steven, whom
+    /// <c>TRAINER_CLASS_RIVAL</c> also holds. They keep their names.
+    /// </summary>
+    public static bool OthersOfTheRivalsClass(TrainerRecord record) =>
+        record.Id.StartsWith("hoenn_wally", StringComparison.Ordinal) || record.Id.StartsWith("hoenn_steven", StringComparison.Ordinal);
+
     /// <summary>A trainer by its id (<c>youngster_tristan</c>) or its constant (<c>TRAINER_YOUNGSTER_TRISTAN</c>); null for none.</summary>
     public static TrainerRecord? Get(string? idOrConstant)
     {
@@ -249,7 +256,7 @@ public static class TrainerDatabase
         {
             if (string.IsNullOrEmpty(trainer.Name)) trainer.Name = record.Name;
             // The rival's name is the one the player gives him, not the data's
-            if ((IsRival(record.Class) || IsRivalAsChampion(record)) && trainer.Name == record.Name) trainer.Name = "{rival}";
+            if ((IsRival(record.Class) && !OthersOfTheRivalsClass(record) || IsRivalAsChampion(record)) && trainer.Name == record.Name) trainer.Name = "{rival}";
             // FireRed splits its rival's class in two (RIVAL_EARLY, RIVAL_LATE, plan 19 · K3): both are the rival's class here
             if (string.IsNullOrEmpty(trainer.TrainerClass) || trainer.TrainerClass == "Trainer") trainer.TrainerClass = IsRival(record.Class) ? RivalClass : record.Class;
             trainer.PrizeMoney = record.PrizeMoney;

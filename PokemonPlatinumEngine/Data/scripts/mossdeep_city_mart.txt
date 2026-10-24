@@ -1,0 +1,11 @@
+# Mossdeep City's Poké Mart (plan 21 · H8, part a). docs/scripts.md describes the language; the lines are our own. The
+# clerk sells Emerald's stock for the town (marts.json's mossdeep), Net and Dive Balls among it.
+
+
+script MossdeepClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome! What can I get for you?"
+  shop "mossdeep"
+  say "Thank you! Do come again."
+  end

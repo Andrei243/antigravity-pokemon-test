@@ -119,6 +119,7 @@ internal static partial class BuildingArt
             Architecture.Isle => Pitched(WallKind.Stucco, Rgb(46, 150, 160), RoofShape.Hip) with { Shutters = true },
             Architecture.Spa => Pitched(WallKind.Clapboard, Rgb(214, 112, 48)) with { Chimney = true, Shutters = true },
             Architecture.Treetop => Pitched(WallKind.Boards, Rgb(84, 138, 70)) with { Shutters = true },
+            Architecture.Starward => Pitched(WallKind.Stucco, Rgb(86, 150, 214), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

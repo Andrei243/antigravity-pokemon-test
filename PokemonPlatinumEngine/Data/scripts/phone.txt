@@ -142,7 +142,7 @@ label Owner
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
 # Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach, and its second part Wattson and eight
 # trainers of Routes 110 and 117; plan 21 · H4, part b Flannery; plan 21 · H6 Winona and six trainers of Routes 118
-# to 120.
+# to 120; plan 21 · H8 Tate and Liza and three trainers of Routes 125 to 127.
 
 # Mom, at home in Littleroot Town
 script HoennMom
@@ -349,4 +349,38 @@ script HoennJessica
 script HoennCristin
   speaker "Cristin"
   say "Cristin here. I've been training every day since our battle. Don't think I've forgotten!"
+  end
+
+
+# Tate and Liza, Mossdeep's Gym Leaders, registered with their Badge (plan 21 · H8, part a): a word each
+script TateAndLiza
+  speaker "Tate"
+  say "Hello, {player}! It's Tate..."
+  speaker "Liza"
+  say "...and Liza! We're both on the line. We always are."
+  speaker "Tate"
+  say "We've been working on a new combination..."
+  speaker "Liza"
+  say "...and you'll be the first to see it!"
+  end
+
+
+# Ernest, the sailor of Route 125
+script HoennErnest
+  speaker "Ernest"
+  say "Ahoy, it's Ernest! A Wailmer surfaced right beside my boat today and soaked me through. What a laugh!"
+  end
+
+
+# Pablo, the triathlete of Route 126
+script HoennPablo
+  speaker "Pablo"
+  say "Pablo here! I swam round the whole crater this morning. Next time, I'll beat you too!"
+  end
+
+
+# Koji, the black belt of Route 127
+script HoennKoji
+  speaker "Koji"
+  say "Koji here! I punched a hundred waves today. The sea didn't flinch, but I'm getting stronger. Hah!"
   end

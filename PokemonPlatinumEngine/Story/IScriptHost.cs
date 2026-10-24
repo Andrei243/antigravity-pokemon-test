@@ -329,6 +329,14 @@ public interface IScriptHost
     void PressButton(PastoriaWater.Button button);
 
     /// <summary>
+    /// A floor switch of the Mossdeep Gym is stepped on (plan 21 · H8; Emerald's <c>moverotatingtileobjects</c> and
+    /// <c>turnrotatingtileobjects</c>): everyone standing on the colour's arrows steps the way their arrow points, keeping
+    /// their facing, and turns a quarter anticlockwise (<see cref="MossdeepTiles.Turns"/>); the script waits for the
+    /// steps as for a walk (<see cref="Walking"/>). Nothing where the place has no such floor.
+    /// </summary>
+    void RotateTiles(MossdeepTiles.Colour colour);
+
+    /// <summary>
     /// A button of the Sunyshore Gym is stepped on (<c>PressSunyshoreGymButton</c>): every gear of the room turns on a
     /// quarter, back a quarter or on a half (<see cref="SunyshoreGears"/>); the script waits while they turn (<see cref="Busy"/>).
     /// </summary>

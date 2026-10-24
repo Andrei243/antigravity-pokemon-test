@@ -270,7 +270,9 @@ public enum Architecture
     /// <summary>White clapboard under ember-orange gable roofs with a chimney and shutters: the hot-spring town on the volcano's slope (Lavaridge, plan 21 · H4, part b).</summary>
     Spa,
     /// <summary>Weathered boards under leaf-green gable roofs with shutters: the city of houses built in the treetops (Fortree, plan 21 · H6).</summary>
-    Treetop
+    Treetop,
+    /// <summary>White stucco under sky-blue hip roofs with shutters and flower boxes: the flowering island city of the Space Center (Mossdeep, plan 21 · H8).</summary>
+    Starward
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

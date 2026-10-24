@@ -362,6 +362,20 @@ public static class GbaCover
                 (0x27A, 0x27A, TerrainCover.Paving), (0x28A, 0x28C, TerrainCover.Paving), (0x294, 0x294, TerrainCover.Paving),
                 (0x2C0, 0x2C2, TerrainCover.Paving), (0x2E7, 0x2E7, TerrainCover.Paving), (0x348, 0x34A, TerrainCover.Paving),
             },
+            // Plan 21 · H8, part a: Mossdeep City, read from what is walked as Lilycove's rows are: every metatile of the
+            // tileset no behaviour or label names that is open more often than blocked is the island's sandy path (the
+            // walks between its lawns, round the Space Center's yard and down to the shore); what is blocked is left to
+            // the houses, found at their doors, and to the white rock. Its beach is the primary tileset's, whose open
+            // metatiles nothing names take the nearest ground, the sand beside them
+            ["gTileset_Mossdeep"] = new (int, int, TerrainCover)[]
+            {
+                (0x294, 0x295, TerrainCover.Path), (0x297, 0x297, TerrainCover.Path), (0x2A6, 0x2A6, TerrainCover.Path),
+                (0x2F0, 0x2F1, TerrainCover.Path), (0x2FA, 0x2FB, TerrainCover.Path), (0x301, 0x305, TerrainCover.Path),
+                (0x30A, 0x30A, TerrainCover.Path), (0x30C, 0x30C, TerrainCover.Path), (0x31A, 0x31B, TerrainCover.Path),
+                (0x31E, 0x31F, TerrainCover.Path), (0x358, 0x35A, TerrainCover.Path), (0x371, 0x376, TerrainCover.Path),
+                (0x379, 0x37E, TerrainCover.Path), (0x381, 0x386, TerrainCover.Path), (0x389, 0x38C, TerrainCover.Path),
+                (0x38E, 0x38E, TerrainCover.Path), (0x391, 0x396, TerrainCover.Path), (0x399, 0x39E, TerrainCover.Path),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges
@@ -386,6 +400,9 @@ public static class GbaCover
         if (OfBehaviour(behaviour) is { } shown) return shown;
         if (game == GbaGame.Emerald)
         {
+            // Water ankle deep is water to look at, walked through (plan 21 · H8, part a: the wide shallows round
+            // Mossdeep City and the islets of the eastern sea, whose metatiles nothing else named)
+            if (behaviour == TileBehavior.ShallowWater) return TerrainCover.Water;
             if (HoennRanges.TryGetValue(tileset, out var hoenn))
                 foreach (var (from, to, cover) in hoenn)
                     if (metatile >= from && metatile <= to) return cover;
