@@ -755,6 +755,21 @@ grass 20-24
 === mirage_tower_4f
 Mirage Tower
 grass 20-24
+=== mossdeep_city
+Mossdeep City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+=== mossdeep_city_gym
+Mossdeep City
+trainers 12, 36: hoenn_blake 36, hoenn_clifford 36, hoenn_hannah 36, hoenn_kathleen 36, hoenn_macey 36, hoenn_maura 36, hoenn_nate 36, hoenn_nicholas 36, hoenn_preston 36, hoenn_samantha 36, hoenn_sylvia 36, hoenn_virgil 36
+=== mossdeep_city_space_center_1f
+Mossdeep City
+trainers 4, 26-32: hoenn_grunt_space_center_1 32, hoenn_grunt_space_center_2 30, hoenn_grunt_space_center_3 31, hoenn_grunt_space_center_4 32
+=== mossdeep_city_space_center_2f
+Mossdeep City
+trainers 1, 36-40: hoenn_tabitha_mossdeep 40
 === mount_mortar_1f_back
 Mt. Mortar
 grass 13-15
@@ -1293,6 +1308,27 @@ old rod 5-10
 good rod 10-30
 super rod 25-45
 trainers 8, 33-34: hoenn_chad 33, hoenn_declan 34, hoenn_grace 34, hoenn_isabella 34, hoenn_jenny_1 34, hoenn_lila_and_roy_1 34, hoenn_roland 34, hoenn_spencer 33
+=== route_125
+Route 125
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 8, 32-35: hoenn_auron 33, hoenn_ernest_1 33, hoenn_kim_and_iris 35, hoenn_nolen 34, hoenn_presley 33, hoenn_sharon 34, hoenn_stan 34, hoenn_tanya 34
+=== route_126
+Route 126
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 8, 31-34: hoenn_barry 34, hoenn_brenda 34, hoenn_dean 31, hoenn_isobel 34, hoenn_leonardo 34, hoenn_nikki 33, hoenn_pablo_1 33, hoenn_sienna 33
+=== route_127
+Route 127
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 8, 15-35: hoenn_aidan 32, hoenn_athena 32, hoenn_camden 33, hoenn_donny 34, hoenn_henry 34, hoenn_jonah 32, hoenn_koji_1 34, hoenn_roger 35
 === route_13
 Route 13
 grass 22-30
@@ -2330,6 +2366,9 @@ old rod 5
 good rod 5-15
 super rod 15-35
 === underwater_route_124
+Underwater
+surf 20-35
+=== underwater_route_126
 Underwater
 surf 20-35
 === union_cave_1f

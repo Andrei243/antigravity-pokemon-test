@@ -7685,6 +7685,81 @@ from a trainer with lines of their own
 way -
   * open Starter
   = starters none/none -> Turtwig/Chimchar
+=== common.BugContestDesk
+from a trainer with lines of their own
+way -
+  Officer> The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays.
+  Officer> Bug Catchers come from all over Johto for it. Do take part!
+=== common.BugContestJudging
+from a trainer with lines of their own
+way -
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
+=== common.BugContestOutOfBalls
+from a trainer with lines of their own
+way -
+  > You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate.
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  * warp Route35_NationalParkGate 23 4
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
+=== common.BugContestReturn
+from a trainer with lines of their own
+way -
+=== common.BugContestSwap
+from a trainer with lines of their own
+way 0
+  > You're already holding on to  for the contest.
+  > Enter the  you just caught instead?
+  >  was set free.  is your entry now.
+  > You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate.
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  ? Enter the  you just caught instead? = Yes
+  * warp Route35_NationalParkGate 23 4
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
+way 1, from answer 1
+  >  was set free.
+  > You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate.
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  ? Enter the  you just caught instead? = No
+  * warp Route35_NationalParkGate 23 4
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
+=== common.BugContestTimeUp
+from a trainer with lines of their own
+way -
+  > Ding-dong! Time's up! The Bug-Catching Contest is over. All contestants, please make your way to the gate.
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  * warp Route35_NationalParkGate 23 4
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
+=== common.BugContestToTheGate
+from a trainer with lines of their own
+way -
+  Officer> You didn't catch anything? That's a shame. You're still in the running, though.
+  Officer> And now, the results of today's Bug-Catching Contest!
+  Officer> You didn't make the top three this time, Lucas. Here's a little something for taking part.
+  Officer> Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday.
+  * warp Route35_NationalParkGate 23 4
+  * open BugContestResults
+  = VAR_BUG_CONTEST_PLACE 0 -> 3
 === common.CampaignOver
 from a trainer with lines of their own
 way -
@@ -8314,6 +8389,18 @@ way -
   Anyone> A line of its own.
   Anyone> Thank you! Do come again.
   * open Shop
+=== common.Crossing
+from a trainer with lines of their own
+way 0
+  Anyone> Shall we set off, then?
+  Anyone> Right this way. Mind your step as you come aboard!
+  ? Shall we set off, then? = Yes
+  * fade out
+  * open Crossing
+  * fade in
+way 1, from answer 1
+  Anyone> Take all the time you need. We'll be here when you're ready.
+  ? Shall we set off, then? = No
 === common.CutTree
 from an obstacle, with every field move and every badge
 way 0
@@ -8513,6 +8600,18 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+=== common.HoennChapterNine
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  + FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  + FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
+  + FLAG_HOENN_CHAPTER_NINE
 === common.HoennChapterSeven
 from a trainer with lines of their own
 way -
@@ -8626,6 +8725,13 @@ way -
   + FLAG_HIDE_MAUVILLE_CITY_WATTSON
   + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
   + FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  + FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
   + FLAG_HIDE_MT_CHIMNEY_TRAINERS
@@ -8687,6 +8793,7 @@ way -
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
   + FLAG_HIDE_SLATEPORT_CITY_SCOTT
+  + FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
   + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
   + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   + FLAG_HIDE_VERDANTURF_TOWN_SCOTT
@@ -8699,6 +8806,7 @@ way -
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
   + FLAG_HOENN_CHAPTER_EIGHT
   + FLAG_HOENN_CHAPTER_EIGHT_B
+  + FLAG_HOENN_CHAPTER_NINE
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
@@ -13051,6 +13159,326 @@ way 0
 way 1, from answer 1
   > Lucas left the Root Fossil where it lay.
   ? Take the Root Fossil anyway? = No
+=== mossdeep_city.DynamicPunchTutor
+from Black Belt at 659,125 of Hoenn
+way 0
+  Black Belt> A punch that leaves the foe dizzy! Shall I teach one of your Pokémon Dynamic Punch?
+  Black Belt> Good! Which one?
+  Black Belt> Hmm, that one can't learn Dynamic Punch.
+  ? A punch that leaves the foe dizzy! Shall I teach one of your Pokémon Dynamic Punch? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Black Belt> Suit yourself. The offer won't run off.
+  ? A punch that leaves the foe dizzy! Shall I teach one of your Pokémon Dynamic Punch? = No
+=== mossdeep_city.KingsRockBoy
+from Boy at 663,113 of Hoenn
+way 0
+  Boy> Steven gave me this rock. He called it a King's Rock, I think. I don't know what it's for. Do you want it?
+  Boy> Really? You're strange. You can have it, but don't tell Steven.
+  > Lucas received the King's Rock!
+  > Lucas put it away in the Items pocket.
+  ? Steven gave me this rock. He called it a King's Rock, I think. I don't know what it's for. Do you want it? = Yes
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_KINGS_ROCK
+way 1, from answer 1
+  Boy> See? Nobody knows what to do with a weird old rock.
+  ? Steven gave me this rock. He called it a King's Rock, I think. I don't know what it's for. Do you want it? = No
+=== mossdeep_city.MagmaEntersSpaceCenter
+from the trigger at 680,125 of Hoenn
+from the trigger at 680,126 of Hoenn
+from the trigger at 681,122 of Hoenn
+from the trigger at 681,123 of Hoenn
+from the trigger at 681,124 of Hoenn
+from the trigger at 682,121 of Hoenn
+way -
+  Maxie> The fuel is in that building. Go!
+  * scene mossdeep_city.Team Magma at the Space Center
+  * endscene
+  + FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA
+  = VAR_MOSSDEEP_CITY_STATE 0 -> 2
+  + seen mossdeep_city.Team Magma at the Space Center
+=== mossdeep_city.Man
+from Man at 695,105 of Hoenn
+way -
+  Man> A ship is a fine way to cross the sea. But riding a Pokémon with Surf? Now that's a thrill. Don't you agree?
+=== mossdeep_city.PokefanF
+from Woman at 672,112 of Hoenn
+way -
+  Woman> The Space Center on this island launches great big rockets. There's been an uproar about some letter they got.
+=== mossdeep_city.Sailor
+from Sailor at 678,112 of Hoenn
+way -
+  Sailor> A sailor pal told me Team Aqua set up in Lilycove, and somebody sent them packing.
+  Sailor> But it's Team Magma who've got their eye on Mossdeep. Want to know what they're after? Ask at the Space Center.
+=== mossdeep_city.Scott
+from Scott at 701,129 of Hoenn
+way -
+  Scott> Lucas! Feeling good? I came to see Mossdeep's Gym Leaders for myself. They're said to be quite something.
+  Scott> But something's off about this town. People keep talking about a warning letter and the Space Center...
+  Scott> Well, I don't suppose it's any of my business. See you!
+  + FLAG_HIDE_MOSSDEEP_CITY_SCOTT
+  = VAR_SCOTT_STATE 0 -> 1
+=== mossdeep_city.Visited
+from the trigger at 665,125 of Hoenn
+from the trigger at 666,125 of Hoenn
+from the trigger at 672,127 of Hoenn
+from the trigger at 673,127 of Hoenn
+way -
+  + FLAG_VISITED_MOSSDEEP_CITY
+  = VAR_TEMP_1 0 -> 1
+=== mossdeep_city_gym.BackToTheDoor
+from the trigger at 21,6 of MossdeepCity_Gym
+way -
+  * sound warp
+  * warp MossdeepCity_Gym 7 30
+=== mossdeep_city_gym.BlueSwitch
+from the trigger at 6,7 of MossdeepCity_Gym
+from the trigger at 8,10 of MossdeepCity_Gym
+way -
+  * sound select
+  * rotatetiles blue
+=== mossdeep_city_gym.GreenSwitch
+from the trigger at 15,34 of MossdeepCity_Gym
+way -
+  * sound select
+  * rotatetiles green
+=== mossdeep_city_gym.GymGuide
+from Gym Guide at 5,33 of MossdeepCity_Gym
+way -
+  Gym Guide> Yo, champ in the making! The Leaders here use Psychic Pokémon. Bug, Ghost and Dark moves will serve you well.
+  Gym Guide> And watch for the switches on the floor. Each one turns everyone standing on its colour of arrows. Plan your way!
+=== mossdeep_city_gym.PurpleSwitch
+from the trigger at 23,21 of MossdeepCity_Gym
+from the trigger at 23,24 of MossdeepCity_Gym
+way -
+  * sound select
+  * rotatetiles purple
+=== mossdeep_city_gym.RedSwitch
+from the trigger at 8,6 of MossdeepCity_Gym
+way -
+  * sound select
+  * rotatetiles red
+=== mossdeep_city_gym.TateAndLiza
+from Liza at 24,7 of MossdeepCity_Gym
+from Tate at 23,7 of MossdeepCity_Gym
+way 0
+  Tate> Hehehe... Surprised?
+  Liza> Fufufu... Surprised?
+  Tate> That there are two of us?
+  Liza> Two Gym Leaders! We're twins, you see.
+  Tate> We don't need words. Each of us knows what...
+  Liza> ...the other is thinking. All in our heads!
+  Tate> Our combination, two minds as one...
+  Liza> ...can you break it?
+  Tate> What? Our combination...
+  Liza> ...came apart! You've won. Take this as proof.
+  > Lucas received the Mind Badge from Tate and Liza!
+  Tate> The Mind Badge makes your Pokémon's special moves stronger and their guard against them firmer.
+  Liza> And with it, your Pokémon can use Dive outside of battle.
+  Tate> You should take this too.
+  > Lucas received the TM04!
+  > TM04 holds the move Calm Mind.
+  > Lucas put it away in the TMs & HMs pocket.
+  Tate> TM04 holds...
+  Liza> ...Calm Mind! It raises Special Attack and...
+  Tate> ...Special Defense! Just right for a Psychic Pokémon!
+  * scene mossdeep_city_gym.Tate and Liza
+  * battle hoenn_tate_and_liza_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_preston
+  * defeat hoenn_blake
+  * defeat hoenn_maura
+  * defeat hoenn_samantha
+  * defeat hoenn_virgil
+  * defeat hoenn_hannah
+  * defeat hoenn_nate
+  * defeat hoenn_sylvia
+  * defeat hoenn_clifford
+  * defeat hoenn_macey
+  * defeat hoenn_kathleen
+  * defeat hoenn_nicholas
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_MOSSDEEP_GYM
+  + FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
+  + FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
+  + FLAG_RECEIVED_TM_CALM_MIND
+  = VAR_MOSSDEEP_CITY_STATE 0 -> 1
+  = VAR_MOSSDEEP_SPACE_CENTER_STATE 0 -> 1
+  + beaten hoenn_blake
+  + beaten hoenn_clifford
+  + beaten hoenn_hannah
+  + beaten hoenn_kathleen
+  + beaten hoenn_macey
+  + beaten hoenn_maura
+  + beaten hoenn_nate
+  + beaten hoenn_nicholas
+  + beaten hoenn_preston
+  + beaten hoenn_samantha
+  + beaten hoenn_sylvia
+  + beaten hoenn_tate_and_liza_1
+  + beaten hoenn_virgil
+  = badges Hoenn 0 -> 1000000
+  + seen mossdeep_city_gym.Tate and Liza
+way 1, from answer 1
+  * battle hoenn_tate_and_liza_1 Lost
+  * scene over, unseen
+=== mossdeep_city_gym.YellowSwitch
+from the trigger at 2,21 of MossdeepCity_Gym
+from the trigger at 3,30 of MossdeepCity_Gym
+way -
+  * sound select
+  * rotatetiles yellow
+=== mossdeep_city_house_2.Wingull
+from Wingull at 4,5 of MossdeepCity_House2
+way -
+  Wingull> Wingull: Pihyoh!
+  * cry Wingull
+  + FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  + FLAG_WINGULL_DELIVERED_MAIL
+=== mossdeep_city_house_3.SuperRod
+from Fisherman at 4,4 of MossdeepCity_House3
+way 0
+  Fisherman> Hey there, trainer! A Super Rod is truly super, you know. Do you want one?
+  Fisherman> Ha! A trainer after my own heart. Here you go!
+  > Lucas received the Super Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> Drop it into any water you like, and see what bites. The deeper the water, the bigger the catch!
+  ? Hey there, trainer! A Super Rod is truly super, you know. Do you want one? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_HOENN_RECEIVED_SUPER_ROD
+way 1, from answer 1
+  Fisherman> What, don't you like fishing?
+  ? Hey there, trainer! A Super Rod is truly super, you know. Do you want one? = No
+=== mossdeep_city_house_4.Skitty
+from Skitty at 2,4 of MossdeepCity_House4
+way -
+  Skitty> Skitty: Miyao?
+  * cry Skitty
+=== mossdeep_city_mart.MossdeepClerk
+from Clerk at 1,3 of MossdeepCity_Mart
+way -
+  Clerk> Welcome! What can I get for you?
+  Clerk> Thank you! Do come again.
+  * open Shop mossdeep
+=== mossdeep_city_space_center_1f.LaunchCounter
+from Scientist at 7,2 of MossdeepCity_SpaceCenter_1F
+way -
+  Scientist> The next rocket launch is coming up soon! Every one so far has flown safely.
+=== mossdeep_city_space_center_1f.MagmaNote
+from Letter at 2,5 of MossdeepCity_SpaceCenter_1F
+way -
+  > It's a letter... A notice that something is to be stolen?
+  > 'To the staff of the Space Center. We hope you are well. We are very well.'
+  > 'We will soon come to take your rocket fuel. Please do not try to stop us. We will take it all the same.'
+  > 'More land for everyone! Team Magma'
+=== mossdeep_city_space_center_1f.OldMan
+from Old Man at 10,2 of MossdeepCity_SpaceCenter_1F
+way -
+  Old Man> A great lump of metal bursts through the sky and flies off into space... It boggles the mind!
+=== mossdeep_city_space_center_1f.Scientist
+from Scientist at 2,2 of MossdeepCity_SpaceCenter_1F
+way -
+  Scientist> A launch has to be perfect. If one part in a hundred fails, the whole rocket fails.
+  Scientist> And still we keep at it. Why? Because the dream of space never ends.
+=== mossdeep_city_space_center_1f.StairGrunt
+from Team Magma Grunt at 13,2 of MossdeepCity_SpaceCenter_1F
+way 0
+  Team Magma Grunt> Team Magma Grunt: The boss said nobody gets past me. Nobody!
+  * battle hoenn_grunt_space_center_2 Won
+  * walk Team Magma Grunt back right
+  = VAR_MOSSDEEP_SPACE_CENTER_STAIR_GUARD_STATE 0 -> 3
+  + beaten hoenn_grunt_space_center_2
+way 1, from answer 1
+  * battle hoenn_grunt_space_center_2 Lost
+=== mossdeep_city_space_center_1f.Steven
+from Steven at 1,4 of MossdeepCity_SpaceCenter_1F
+way -
+  Steven> Lucas, have you read that letter? Team Magma means to take the rocket fuel stored on this island.
+  Steven> I can't think what they want it for, but they mustn't have it. I'll keep watch here a while longer.
+  Steven> Why don't you have a look around the town in the meantime?
+=== mossdeep_city_space_center_1f.SunStoneMan
+from Sailor at 6,6 of MossdeepCity_SpaceCenter_1F
+way -
+  Sailor> I found this on a walk along the beach. I've no use for it, so you have it.
+  > Lucas received the Sun Stone!
+  > Lucas put it away in the Items pocket.
+  Sailor> Hoenn has been famous for its meteor showers for as long as anyone can remember.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_SUN_STONE_MOSSDEEP
+=== mossdeep_city_space_center_1f.Woman
+from Woman at 14,7 of MossdeepCity_SpaceCenter_1F
+way -
+  Woman> Some people say Pokémon first came here from space. Could it be true?
+=== mossdeep_city_space_center_2f.Gentleman
+from Gentleman at 11,8 of MossdeepCity_SpaceCenter_2F
+way -
+  Gentleman> If only I were a little younger, I'd have liked to be an astronaut... No! It isn't too late! I'll try!
+=== mossdeep_city_space_center_2f.Grunt5
+from Team Magma Grunt at 13,3 of MossdeepCity_SpaceCenter_2F
+way -
+  Team Magma Grunt> Are we any use to the boss at all, I wonder?
+=== mossdeep_city_space_center_2f.Grunt6
+from Team Magma Grunt at 12,2 of MossdeepCity_SpaceCenter_2F
+way -
+  Team Magma Grunt> Three of us, and look at the mess we got into.
+=== mossdeep_city_space_center_2f.Grunt7
+from Team Magma Grunt at 14,2 of MossdeepCity_SpaceCenter_2F
+way -
+  Team Magma Grunt> Three of us losing like this. It looks three times as bad!
+=== mossdeep_city_space_center_2f.Maxie
+from Maxie at 1,9 of MossdeepCity_SpaceCenter_2F
+way -
+  Maxie> Out of the way! Don't you dare interfere!
+=== mossdeep_city_space_center_2f.RichBoy
+from Boy at 6,2 of MossdeepCity_SpaceCenter_2F
+way -
+  Boy> I wish ordinary people could go to space someday...
+=== mossdeep_city_space_center_2f.Scientist
+from Scientist at 5,6 of MossdeepCity_SpaceCenter_2F
+way -
+  Scientist> Mossdeep is sunny most of the year and its winds are steady. It's the perfect place to launch rockets.
+=== mossdeep_city_space_center_2f.Steven
+from Steven at 1,8 of MossdeepCity_SpaceCenter_2F
+way -
+  Steven> Team Magma... What can you possibly want with rocket fuel?
+  Maxie> Fufufu... Since you're so curious, I'll tell you. We will pour every drop of it into Mt. Chimney!
+  Maxie> With Groudon gone, that heap of a mountain is no use to us. So the fuel will make it erupt!
+  Maxie> Oh, it will be savage!
+  * scene mossdeep_city_space_center_2f.Steven and Maxie
+  * sound bump
+  * walk Steven back right back right
+  * endscene
+  + FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER
+  + seen mossdeep_city_space_center_2f.Steven and Maxie
+=== mossdeep_city_space_center_2f.Tabitha
+from Tabitha at 0,8 of MossdeepCity_SpaceCenter_2F
+way -
+  Tabitha> Hehehe! We come all this way for a little fuel and get bothered again!
+  Tabitha> Want to get in the way too? Then we'll deal with you at the same time!
+=== mossdeep_city_stevens_house.Beldum
+from Poké Ball at 4,3 of MossdeepCity_StevensHouse
+way 0
+  > Lucas looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?
+  > Lucas received a Beldum!
+  ? Lucas looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+  + FLAG_RECEIVED_BELDUM
+way 1, from answer 1
+  > Lucas left the Poké Ball where it was.
+  ? Lucas looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball? = No
+=== mossdeep_city_stevens_house.Letter
+from Letter at 6,4 of MossdeepCity_StevensHouse
+way -
+  > It's a letter.
+  > 'Lucas, I've decided to travel for a while and train on the road. I won't be home for some time.'
+  > 'I have a favour to ask. Please take the Poké Ball on the desk. Inside is Beldum, my favourite Pokémon.'
+  > 'I'm counting on you. May our paths cross again someday. Steven Stone'
+=== mossdeep_city_stevens_house.Steven
+from Steven at 9,6 of MossdeepCity_StevensHouse
+way -
+  Steven> They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine.
 === mt_chimney.Archie
 from Archie at 24,19 of MtChimney
 way -
@@ -15779,6 +16207,66 @@ way -
   * open Phrase BERRY_MASTERS_WIFE feelings:happy small:together
   * fanfare FanfareItem
   + FLAG_DAILY_BERRY_MASTERS_WIFE
+=== route_124_diving_treasure_hunters_house.TreasureHunter
+from Treasure Hunter at 5,4 of Route124_DivingTreasureHuntersHouse
+way -
+  Treasure Hunter> I'm the diving treasure hunter! I'm the fellow who dives to the bottom of the sea for the treasures lying there.
+  Treasure Hunter> No treasure for me, huh... If you find a shard, like a Red Shard, you've got to trade it with me!
+  + FLAG_MET_DIVING_TREASURE_HUNTER
+=== route_125.Ernest
+from Ernest at 661,90 of Hoenn
+way 0.0
+  Sailor Ernest> Sailor Ernest: Ahoy! A sailor's Pokémon are as tough as the sea itself!
+  Ernest> That was a fine battle, as rough and fair as the open sea. Let's swap numbers, shall we?
+  Ernest> Register Ernest in the PokéNav's Match Call?
+  Ernest> Aye. I'll ring you when the sea has a story to tell.
+  ? Register Ernest in the PokéNav's Match Call? = Yes
+  * battle hoenn_ernest_1 Won
+  * addcontact hoenn_ernest
+  + FLAG_PHONE_CONTACT_HOENN_ERNEST
+  + beaten hoenn_ernest_1
+way 0.1, from answer 2
+  Ernest> No? Then may the wind be at your back.
+  ? Register Ernest in the PokéNav's Match Call? = No
+  + beaten hoenn_ernest_1
+way 1, from answer 1
+  * battle hoenn_ernest_1 Lost
+=== route_126.Pablo
+from Pablo at 567,206 of Hoenn
+way 0.0
+  Triathlete Pablo> Triathlete Pablo: Swim, cycle, run, and battle! I'm training for all four!
+  Pablo> You're tougher than a double race! Let's keep in touch and push each other on.
+  Pablo> Register Pablo in the PokéNav's Match Call?
+  Pablo> Great! I'll call you between laps.
+  ? Register Pablo in the PokéNav's Match Call? = Yes
+  * battle hoenn_pablo_1 Won
+  * addcontact hoenn_pablo
+  + FLAG_PHONE_CONTACT_HOENN_PABLO
+  + beaten hoenn_pablo_1
+way 0.1, from answer 2
+  Pablo> Oh well. Back to my laps, then!
+  ? Register Pablo in the PokéNav's Match Call? = No
+  + beaten hoenn_pablo_1
+way 1, from answer 1
+  * battle hoenn_pablo_1 Lost
+=== route_127.Koji
+from Koji at 703,203 of Hoenn
+way 0.0
+  Black Belt Koji> Black Belt Koji: Training on a sandbar in the middle of the sea builds a strong body. Hah!
+  Koji> Hah! You hit as hard as the waves. Give me your number. I'll tell you when I've grown stronger!
+  Koji> Register Koji in the PokéNav's Match Call?
+  Koji> Hah! I'll call when I'm ready for a rematch.
+  ? Register Koji in the PokéNav's Match Call? = Yes
+  * battle hoenn_koji_1 Won
+  * addcontact hoenn_koji
+  + FLAG_PHONE_CONTACT_HOENN_KOJI
+  + beaten hoenn_koji_1
+way 0.1, from answer 2
+  Koji> Hah! Then I'll train alone on this sandbar.
+  ? Register Koji in the PokéNav's Match Call? = No
+  + beaten hoenn_koji_1
+way 1, from answer 1
+  * battle hoenn_koji_1 Lost
 === route_12_fishing_house.Board
 from the tile read at 9,1 of Route12_FishingHouse
 way -
@@ -16724,6 +17212,11 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
   ? Would you like a rod of your own? = No
+=== route_35_national_park_pokeathalon_gatehouse.Officer
+from Officer at 21,4 of Route35_NationalParkGate
+way -
+  Officer> The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays.
+  Officer> Bug Catchers come from all over Johto for it. Do take part!
 === route_36.Arthur
 from Arthur at 431,244 of Johto
 way -
@@ -16751,6 +17244,12 @@ from Strange Tree at 415,246 of Johto
 way -
   > It's a weird tree. It's wiggling ever so slightly... and it's blocking the way.
   * sound bump
+=== route_36_national_park_gatehouse.Officer
+from Officer at 5,4 of Route36_NationalParkGate
+way -
+  Officer> The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays.
+  Officer> Bug Catchers come from all over Johto for it. Do take part!
+  = VAR_BUG_CONTEST_GATE 0 -> 1
 === route_39_moomoo_farm_house.Farmer
 from Farmer at 6,4 of Route39_MoomooFarmHouse
 way -
@@ -17987,6 +18486,10 @@ from Zigzagoon at 3,9 of SlateportCity_PokemonFanClub
 way -
   > Zigzagoon: Gugugu!
   * cry Zigzagoon
+=== slateport_city_sterns_shipyard_1f.Briney
+from Mr. Briney at 12,11 of SlateportCity_SternsShipyard_1F
+way -
+  Mr. Briney> Hm? Ah, it's you! I've decided to help Dock here. A ship needs an old salt's touch, after all!
 === slateport_city_sterns_shipyard_1f.Dock
 from Dock at 5,5 of SlateportCity_SternsShipyard_1F
 way -
