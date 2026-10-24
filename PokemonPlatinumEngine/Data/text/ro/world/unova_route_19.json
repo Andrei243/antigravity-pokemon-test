@@ -6,7 +6,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Wild Pokémon jump out of the tall grass. If yours gets tired, head back up the hill to heal."
         ],
         "text": [
-          ""
+          "Pokémonii sălbatici sar din iarba înaltă. Dacă al tău obosește, urcă înapoi pe deal ca să-l vindeci."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I walk this route every day. Some Pokémon only come out in certain seasons, you know."
         ],
         "text": [
-          ""
+          "Merg pe ruta asta în fiecare zi. Unii Pokémon apar doar în anumite anotimpuri, să știi."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Route 19\nAspertia City - Floccesy Town"
       ],
       "text": [
-        ""
+        "Ruta 19\nAspertia City - Floccesy Town"
       ]
     },
     "5": {
@@ -51,7 +51,7 @@
         "Route 19\nFloccesy Town is just ahead."
       ],
       "text": [
-        ""
+        "Ruta 19\nFloccesy Town e chiar în față."
       ]
     },
     "6": {
@@ -59,7 +59,7 @@
         "TRAINER TIPS\nThrow a Poké Ball at a weakened wild Pokémon\nto catch it."
       ],
       "text": [
-        ""
+        "SFATURILE ANTRENORULUI\nAruncă o Poké Ball spre un Pokémon sălbatic slăbit\nca să-l capturezi."
       ]
     }
   }

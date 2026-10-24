@@ -6,7 +6,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The grass here hides all sorts of Pokémon. Some of them even drop from the trees!"
         ],
         "text": [
-          ""
+          "Iarba de aici ascunde tot felul de Pokémon. Unii cad chiar din copaci!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Hey, you! My Patrat and I just started out. Let's see who's ahead!"
         ],
         "text": [
-          ""
+          "Hei, tu! Eu și Patrat-ul meu abia am pornit. Să vedem cine e în față!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "You're way ahead. I'll catch up!"
         ],
         "text": [
-          ""
+          "Ești mult în față. O să te ajung din urmă!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemenii"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "We do everything together! Even battles!"
         ],
         "text": [
-          ""
+          "Facem totul împreună! Chiar și luptele!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "We lost together, too..."
         ],
         "text": [
-          ""
+          "Am pierdut tot împreună..."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemenii"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "We do everything together! Even battles!"
         ],
         "text": [
-          ""
+          "Facem totul împreună! Chiar și luptele!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "We lost together, too..."
         ],
         "text": [
-          ""
+          "Am pierdut tot împreună..."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Preschooler"
         ],
         "text": [
-          ""
+          "Preșcolarul"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "My Psyduck is the bestest! Battle me!"
         ],
         "text": [
-          ""
+          "Psyduck-ul meu e cel mai bun! Luptă-te cu mine!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Waaah! I'm telling my teacher!"
         ],
         "text": [
-          ""
+          "Buhuuu! Mă plâng învățătoarei!"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Preschooler"
         ],
         "text": [
-          ""
+          "Preșcolarul"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "I'm a big girl now, so I can battle too!"
         ],
         "text": [
-          ""
+          "Sunt mare acum, deci pot să mă lupt și eu!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "That was fun! Can we go again later?"
         ],
         "text": [
-          ""
+          "A fost distractiv! Mai putem o dată mai târziu?"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Nursery Aide"
         ],
         "text": [
-          ""
+          "Educatoarea"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "Looking after little ones is hard work. Battling you will be a nice rest!"
         ],
         "text": [
-          ""
+          "Să ai grijă de cei mici e muncă grea. Lupta cu tine va fi o odihnă plăcută!"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "Oh my, you're strong. That was no rest at all!"
         ],
         "text": [
-          ""
+          "Vai, ești puternic. N-a fost deloc odihnă!"
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "Our eyes met! That means we battle. Them's the rules!"
         ],
         "text": [
-          ""
+          "Ne-am privit în ochi! Înseamnă că ne luptăm. Așa sunt regulile!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "I didn't make the rules. I just lose by them."
         ],
         "text": [
-          ""
+          "Nu eu am făcut regulile. Doar pierd conform lor."
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "before": {
@@ -214,7 +214,7 @@
           "I caught my Purrloin right here on this route. Want to see what it can do?"
         ],
         "text": [
-          ""
+          "Am prins Purrloin-ul ăsta chiar pe ruta asta. Vrei să vezi ce poate?"
         ]
       },
       "after": {
@@ -222,7 +222,7 @@
           "It can do a lot, just not enough today."
         ],
         "text": [
-          ""
+          "Poate multe, dar nu destul de multe azi."
         ]
       }
     },
@@ -232,7 +232,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -240,7 +240,7 @@
           "Floccesy Ranch is just over there. The owners don't mind if you have a look round."
         ],
         "text": [
-          ""
+          "Ferma Floccesy e chiar acolo. Proprietarii nu se supără dacă te uiți prin jur."
         ]
       }
     }
@@ -251,7 +251,7 @@
         "Route 20\nFloccesy Town - Virbank City"
       ],
       "text": [
-        ""
+        "Ruta 20\nFloccesy Town - Virbank City"
       ]
     }
   }

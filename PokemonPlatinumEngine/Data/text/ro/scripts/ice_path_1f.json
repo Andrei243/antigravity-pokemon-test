@@ -5,7 +5,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh! You gave me a fright. There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
       ],
       "text": [
-        ""
+        "Oh! M-ai speriat. Acolo e un HM, vezi? Eu nu pot să-l folosesc, dar tu poți. Ia-l!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
       ],
       "text": [
-        ""
+        "Waterfall le permite Pokémonilor tăi să înoate chiar pe o cascadă. Cu Insigna Rising o poți folosi și în afara luptei."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
       ],
       "text": [
-        ""
+        "Acolo e un HM, vezi? Eu nu pot să-l folosesc, dar tu poți. Ia-l!"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
       ],
       "text": [
-        ""
+        "Waterfall le permite Pokémonilor tăi să înoate chiar pe o cascadă. Cu Insigna Rising o poți folosi și în afara luptei."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Kimono Girl"
       ],
       "text": [
-        ""
+        "Fată în kimono"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Oh, {player}! I've been standing here so long my feet have frozen to the ice. Would you give me a push?"
       ],
       "text": [
-        ""
+        "Oh, {player}! Stau aici de atât de mult încât mi-au înghețat picioarele de gheață. M-ai împinge puțin?"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Please don't leave me here! I can't move at all. Just one little push?"
       ],
       "text": [
-        ""
+        "Te rog, nu mă lăsa aici! Nu mă pot mișca deloc. Doar o împingere mică?"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Oh... Then I'll just have to wait for the spring."
       ],
       "text": [
-        ""
+        "Oh... Atunci va trebui să aștept primăvara."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Here goes... Whee!"
       ],
       "text": [
-        ""
+        "Aici începe... Uiii!"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Thank you, {player}! I'm free! I'll see you again soon, I'm sure of it."
       ],
       "text": [
-        ""
+        "Mulțumesc, {player}! Sunt liberă! Ne vedem curând, sunt sigură!"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Oh, {player}! My feet are frozen to the ice. If someone pushed me from behind, I might slide free."
       ],
       "text": [
-        ""
+        "Oh, {player}! Mi-au înghețat picioarele de gheață. Dacă m-ar împinge cineva din spate, aș putea aluneca liberă."
       ]
     }
   ]

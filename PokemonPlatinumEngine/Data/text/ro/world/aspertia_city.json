@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Climb to the lookout at the top of town. On a clear day you can see halfway across Unova from there."
         ],
         "text": [
-          ""
+          "Urcă la belvedere, în capătul de sus al orașului. Într-o zi senină se vede de acolo jumătate din Unova."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come up here every morning to paint the hills. The light is never the same twice."
         ],
         "text": [
-          ""
+          "Vin aici în fiecare dimineață să pictez dealurile. Lumina nu e niciodată aceeași de două ori."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "That's the Trainers' School. The Gym is right behind it: you go through the school to get there."
         ],
         "text": [
-          ""
+          "Aceea e Școala de Antrenori. Arena e chiar în spatele ei: treci prin școală ca să ajungi acolo."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfana"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Aspertia is so high up that the clouds sometimes drift right down the street."
         ],
         "text": [
-          ""
+          "Aspertia e atât de sus, încât uneori norii coboară chiar pe stradă."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The gate in the north of town leads to Route 19. Wild Pokémon hide in the tall grass along it."
         ],
         "text": [
-          ""
+          "Poarta din nordul orașului duce la Ruta 19. Pokémonii sălbatici se ascund în iarba înaltă de pe drum."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I'll be a Trainer as soon as I'm old enough. Then it's straight down the hill and off on a journey!"
         ],
         "text": [
-          ""
+          "O să fiu Antrenor imediat ce voi fi destul de mare. Atunci o iau drept la vale și plec în călătorie!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "If your Pokémon are tired, take them to the Pokémon Center. It heals them for free."
         ],
         "text": [
-          ""
+          "Dacă Pokémonii tăi sunt obosiți, du-i la Centrul Pokémon. Îi vindecă gratuit."
         ]
       }
     }
@@ -133,7 +133,7 @@
         "TRAINER TIPS\nOpen the menu to check on your Pokémon\nand the things in your bag."
       ],
       "text": [
-        ""
+        "SFATURILE ANTRENORULUI\nDeschide meniul ca să vezi cum stau Pokémonii\nși lucrurile din rucsac."
       ]
     },
     "15": {
@@ -141,7 +141,7 @@
         "{player}'s House"
       ],
       "text": [
-        ""
+        "Casa lui {player}"
       ]
     },
     "16": {
@@ -149,7 +149,7 @@
         "Aspertia City\nA hillside town with a view that goes on forever."
       ],
       "text": [
-        ""
+        "Aspertia City\nUn oraș de pe versant, cu o priveliște fără sfârșit."
       ]
     },
     "17": {
@@ -157,7 +157,7 @@
         "Aspertia City Trainers' School\nThe Gym is through the back of the school."
       ],
       "text": [
-        ""
+        "Școala de Antrenori din Aspertia City\nArena se află prin spatele școlii."
       ]
     }
   }
