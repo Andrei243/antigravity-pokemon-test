@@ -238,6 +238,12 @@ public sealed class GameSettings
     public SlotTwoGame SlotTwo { get; set; } = SlotTwoGame.None;
 
     /// <summary>
+    /// A season fixed for the regions that have seasons (plan 22 · U3: Unova alone), or null to follow the calendar
+    /// as Black 2 does, a month each (<see cref="GameClock.SeasonOf"/>).
+    /// </summary>
+    public Season? Season { get; set; }
+
+    /// <summary>
     /// The scenes this machine has seen played to their end, in any game (plan 12 · Q20), each by its key
     /// (<see cref="Story.SceneSkip.Key"/>), in the order of their keys: what a second game may skip under
     /// <see cref="SkipScenes.Seen"/>. Kept whatever the row says, so that choosing it later knows what was seen.

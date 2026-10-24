@@ -65,6 +65,14 @@ internal sealed class MapScene
 
     /// <summary>The chunk of a streamed map this scene is; null for the scene of a whole map.</summary>
     public TileWindow? Chunk { get; }
+
+    /// <summary>
+    /// The season this scene was baked in (plan 22 · U3; style guide, "Seasons"): null for a region without seasons,
+    /// whose field is drawn as it always was. <see cref="WorldRenderer"/> lets the scene go when its map's season moves.
+    /// </summary>
+    public Core.Season? Season { get; private init; }
+
+    private SeasonPalette Palette => SeasonPalette.For(Season);
     public bool Indoors => Map.IsIndoors;
     public float PitchDeg { get; }
 
@@ -172,7 +180,7 @@ internal sealed class MapScene
     // ------------------------------------------------------------------ building the scene
 
     /// <summary>The whole of a map, built in one go.</summary>
-    public static MapScene Build(Map map, FieldShaders shaders) => Finish(Prepare(map), shaders);
+    public static MapScene Build(Map map, FieldShaders shaders, Core.Season? season = null) => Finish(Prepare(map, null, season), shaders);
 
     /// <summary>
     /// A scene that is baked, laid out and packed for the GPU but not yet on it: the art of its own as images,
@@ -223,15 +231,16 @@ internal sealed class MapScene
     /// Bakes and lays out a map, or one chunk of a streamed map, without touching the GPU (the shared textures
     /// it looks up must exist: see <see cref="Warm"/>).
     /// </summary>
-    public static Prepared Prepare(Map map, TileWindow? chunk = null)
+    /// <param name="season">The season the field is baked in (plan 22 · U3): null for a region without seasons. A room takes none.</param>
+    public static Prepared Prepare(Map map, TileWindow? chunk = null, Core.Season? season = null)
     {
-        var scene = new MapScene(map, chunk);
+        var scene = new MapScene(map, chunk) { Season = map.IsIndoors ? null : season };
         var batches = new MeshBatches();
 
         PixelCanvas? waterMask = null;
         PixelCanvas ground;
         if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
-        else if (chunk is { } window) ground = PixelGround.Bake(map, window, PixelGround.ChunkPad, worldSeeds: true, out waterMask);
+        else if (chunk is { } window) ground = PixelGround.Bake(map, window, PixelGround.ChunkPad, worldSeeds: true, scene.Season, out waterMask);
         else ground = PixelGround.Bake(map, scene.Margin, MapStructures.BuildingsOf(map), out waterMask);
 
         // Buildings and props are painted face by face into one sheet of art for the scene
@@ -250,7 +259,7 @@ internal sealed class MapScene
             if (waterMask != null) scene.AddWater(waterMesh, batches);
             scene.AddFaces(batches);
             scene.AddTrees(batches);
-            scene.AddTallGrass(batches.For(SceneTextures.TallGrass, MeshPass.Ground));
+            scene.AddTallGrass(batches.For(SceneTextures.TallGrassIn(scene.Season), MeshPass.Ground));
             if (map.IsUnderwater) scene.AddKelp(batches.For(SceneTextures.Kelp, MeshPass.Ground));
             scene.AddLawnDetail(batches);
             scene.AddLedges(batches);
@@ -748,8 +757,8 @@ internal sealed class MapScene
                 float cz = ty + 0.5f + (Rand(tx, ty, 2) - 0.5f) * 0.12f;
                 // Trees are most of a map's geometry, so they are kept in chunks and only those in view are drawn
                 batches.Chunk = MeshBatches.ChunkOf(tx, ty);
-                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty, y0: Y(cx, cz), snow: Map.AreaAt(tx, ty)?.Snowbound == true);
-                else TreeModels.Round(batches, cx, cz, tx, ty, y0: Y(cx, cz));
+                if (StyleOfTree(tx, ty) == TreeStyle.Pine) TreeModels.Pine(batches, cx, cz, tx, ty, y0: Y(cx, cz), snow: Map.AreaAt(tx, ty)?.Snowbound == true, season: Palette);
+                else TreeModels.Round(batches, cx, cz, tx, ty, y0: Y(cx, cz), season: Palette);
             }
         }
         batches.Chunk = 0;
@@ -833,8 +842,8 @@ internal sealed class MapScene
     private void AddLawnDetail(MeshBatches batches)
     {
         // Like the tall grass, these are in the ground pass: they take shadows but cast none (theirs would be specks)
-        var tufts = batches.For(SceneTextures.LawnTuft, MeshPass.Ground);
-        var flowers = batches.For(SceneTextures.Flowers, MeshPass.Ground);
+        var tufts = batches.For(SceneTextures.LawnTuftIn(Season), MeshPass.Ground);
+        var flowers = batches.For(SceneTextures.FlowersIn(Season), MeshPass.Ground);
         const float texel = 1f / GroundBaker.ArtTile;
         for (int ty = content.Y; ty < content.Bottom; ty++)
         {

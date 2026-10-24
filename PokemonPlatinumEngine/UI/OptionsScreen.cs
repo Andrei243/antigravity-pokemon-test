@@ -23,6 +23,7 @@ public enum OptionRow
     RecordBattles,
     SlotTwo,
     NextObjective,
+    Season,
     Controls,
     Help
 }
@@ -238,6 +239,12 @@ public class OptionsScreen
                 // None, Ruby, Sapphire, Emerald, FireRed, LeafGreen, and round again (plan 08 · P23)
                 s.SlotTwo = (SlotTwoGame)Wrap((int)s.SlotTwo + step, 6);
                 break;
+            case OptionRow.Season:
+                // The calendar, then the four seasons in the order the months bring them (plan 22 · U3)
+                int season = s.Season.HasValue ? (int)s.Season.Value + 1 : 0;
+                season = Wrap(season + step, 5);
+                s.Season = season == 0 ? null : (Season)(season - 1);
+                break;
         }
     }
 
@@ -279,6 +286,8 @@ public class OptionsScreen
         OptionRow.SlotTwo => (Text.Of("options.slotTwo.label"), Text.Of($"options.slotTwo.value.{s.SlotTwo}"),
             Text.Of(s.SlotTwo == SlotTwoGame.None ? "options.slotTwo.help.None" : "options.slotTwo.help.game", ("game", Text.Of($"options.slotTwo.value.{s.SlotTwo}")))),
         OptionRow.NextObjective => (Text.Of("options.nextObjective.label"), OnOff(s.NextObjective != RulesDefault.Off), Text.Of(s.NextObjective != RulesDefault.Off ? "options.nextObjective.help.on" : "options.nextObjective.help.off")),
+        OptionRow.Season => (Text.Of("options.season.label"), s.Season is { } season ? Words.Season(season) : Text.Of("options.season.value.Calendar"),
+            Text.Of(s.Season.HasValue ? "options.season.help.fixed" : "options.season.help.calendar")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

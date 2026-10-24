@@ -13,11 +13,19 @@ public sealed class LocationSign
     private float time = -1f;
 
     public string Name { get; private set; } = "";
+
+    /// <summary>The season told on the sign's second line (Unova's, plan 22 · U3); null where the region has none, and the sign is one line.</summary>
+    public Core.Season? Season { get; private set; }
+
+    /// <summary>The sign's second line, or null: the season's name in a region with seasons.</summary>
+    public string? SecondLine => Season is { } season ? Core.Words.Season(season) : null;
+
     public bool Visible => time >= 0f;
 
-    public void Show(string name)
+    public void Show(string name, Core.Season? season = null)
     {
         Name = name;
+        Season = season;
         time = 0f;
     }
 
@@ -39,7 +47,7 @@ public sealed class LocationSign
 
     public void Draw()
     {
-        if (Visible) ModernUi.DrawLocationSign(Name, Shown);
+        if (Visible) ModernUi.DrawLocationSign(Name, Shown, SecondLine);
     }
 }
 

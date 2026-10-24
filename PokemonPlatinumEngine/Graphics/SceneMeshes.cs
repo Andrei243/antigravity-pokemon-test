@@ -230,8 +230,11 @@ internal static class TreeModels
     /// <summary>Sinnoh pine: four tiers of needled cones with serrated, cut-out rims.</summary>
     /// <param name="y0">The height of the ground the tree stands on.</param>
     /// <param name="snow">Snow lies on it: each tier is white at its tip, fading into its green toward the rim.</param>
-    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f, bool snow = false)
+    /// <param name="season">A season's palette (plan 22 · U3): its pines' greens, and in winter snow on every tier; null is the field's own.</param>
+    public static void Pine(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f, bool snow = false, SeasonPalette? season = null)
     {
+        season ??= SeasonPalette.Default;
+        snow |= season.Snow;
         if (soft)
         {
             SoftFoliage.Pine(batches, cx, cz, seedX, seedY, scale);
@@ -240,7 +243,7 @@ internal static class TreeModels
         float s = (0.92f + Rand(seedX, seedY, 3) * 0.16f) * scale;
         batches.For(SceneTextures.Bark).Cylinder(new(cx, y0, cz), 0.12f * scale, 0.08f * scale, 1.1f * s, 7, Color.White, cap: false);
 
-        var tint = PixelCanvas.Mix(new Color(104, 178, 118, 255), new Color(126, 196, 128, 255), Rand(seedX, seedY, 4));
+        var tint = PixelCanvas.Mix(season.PineFrom, season.PineTo, Rand(seedX, seedY, 4));
         var b = batches.For(SceneTextures.Needles);
         (float BaseY, float ApexY, float R)[] tiers =
         {
@@ -278,8 +281,10 @@ internal static class TreeModels
 
     /// <summary>Round broadleaf tree: a few leafy clumps on a short trunk.</summary>
     /// <param name="y0">The height of the ground the tree stands on.</param>
-    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f)
+    /// <param name="season">A season's palette (plan 22 · U3): its crowns' tints, gold in autumn and snow in winter; null is the field's own.</param>
+    public static void Round(MeshBatches batches, float cx, float cz, int seedX, int seedY, float scale = 1f, bool soft = false, float y0 = 0f, SeasonPalette? season = null)
     {
+        season ??= SeasonPalette.Default;
         if (soft)
         {
             SoftFoliage.Round(batches, cx, cz, seedX, seedY, scale);
@@ -289,7 +294,7 @@ internal static class TreeModels
         batches.For(SceneTextures.Bark).Cylinder(new(cx, y0, cz), 0.14f * scale, 0.1f * scale, 0.9f * s, 7, Color.White, cap: false);
 
         // The crown hangs low over a short trunk, so trees cut off by the top of the screen still read as foliage
-        var tint = PixelCanvas.Mix(new Color(96, 176, 104, 255), new Color(118, 192, 108, 255), Rand(seedX, seedY, 4));
+        var tint = PixelCanvas.Mix(season.RoundFrom, season.RoundTo, Rand(seedX, seedY, 4));
         LeafBall(batches, new Vector3(cx, y0 + 1.45f * s, cz), 0.74f * s, 0.86f * s, tint, 0.25f);
         LeafBall(batches, new Vector3(cx - 0.22f * scale, y0 + 2.05f * s, cz + 0.06f * scale), 0.5f * s, 0.58f * s, PixelCanvas.Light1(tint, 0.08f), 0.4f);
         LeafBall(batches, new Vector3(cx + 0.26f * scale, y0 + 1.85f * s, cz - 0.1f * scale), 0.46f * s, 0.52f * s, tint, 0.35f);

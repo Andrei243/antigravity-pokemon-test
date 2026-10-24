@@ -42,6 +42,9 @@ partial class Harness
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
         engine.Settings.Muted = true;
         engine.Settings.TimeOfDay = TimeOfDay.Day;
+        // ... and in spring whatever the fixed date's month (plan 22 · U3): only Unova has seasons, and the first of June
+        // would give every mode its summer (the "seasons" mode sets the others)
+        engine.Settings.Season = Season.Spring;
         // SHOTS_LANGUAGE=xx shoots in another language (plan 17 · N1): the pseudo-language brackets every string, so a
         // word the table doesn't give shows bare
         if (Environment.GetEnvironmentVariable("SHOTS_LANGUAGE") is { Length: > 0 } language) engine.Settings.Language = language;

@@ -277,14 +277,23 @@ internal static partial class ModernUi
         : Muted;
 
     /// <summary>The sign that drops in at the top left on arriving somewhere, as in the games: the place's name on a slanted plate.</summary>
-    public static void DrawLocationSign(string name, float shown)
+    /// <param name="second">A second line under the name (the season in Unova, plan 22 · U3; style guide, "Location sign"), or null for the one-line sign.</param>
+    public static void DrawLocationSign(string name, float shown, string? second = null)
     {
         float textW = UiFonts.Measure(name, 44, UiWeight.Black);
-        var r = new Rectangle(48, 40 - (1f - shown) * 190, Math.Max(380, textW + 150), 96);
+        if (second != null) textW = Math.Max(textW, UiFonts.Measure(second, 28, UiWeight.Bold));
+        float height = second != null ? 132 : 96;
+        var r = new Rectangle(48, 40 - (1f - shown) * (height + 94), Math.Max(380, textW + 150), height);
         Panel(r, 24, skew: -0.2f);
         var color = PlaceColor(name);
         UiShapes.Shape(new Rectangle(r.X + 26, r.Y + 16, 22, r.Height - 32), 11, Lighter(color, 0.15f), Darker(color, 0.1f), skew: -0.2f);
-        UiFonts.DrawCentered(name, r.X + 76, r.Y + r.Height / 2f, 44, Ink, UiWeight.Black);
+        if (second == null)
+        {
+            UiFonts.DrawCentered(name, r.X + 76, r.Y + r.Height / 2f, 44, Ink, UiWeight.Black);
+            return;
+        }
+        UiFonts.DrawCentered(name, r.X + 76, r.Y + 50, 44, Ink, UiWeight.Black);
+        UiFonts.DrawCentered(second, r.X + 76, r.Y + 96, 28, Muted, UiWeight.Bold);
     }
 
     /// <summary>

@@ -28,6 +28,11 @@ internal static class SceneTextures
         _ = LeagueFace(LeagueArt.Stone.Slate); _ = LeagueFace(LeagueArt.Stone.Basalt); _ = LeagueFace(LeagueArt.Stone.Marble);
         _ = LeagueFace(LeagueArt.Stone.Sandstone); _ = RoomFace;
         _ = LightPool; _ = LampGlow; _ = WindowLight;
+        // Unova's seasons' plants (plan 22 · U3): small sheets, made once, so a chunk baked in any season finds them
+        foreach (var season in Enum.GetValues<Core.Season>())
+        {
+            _ = TallGrassIn(season); _ = LawnTuftIn(season); _ = FlowersIn(season);
+        }
     }
 
     // A texture is made by OpenGL, which belongs to one thread. Asking for a new one from another is a mistake
@@ -109,6 +114,18 @@ internal static class SceneTextures
 
     /// <summary>Three flowers side by side (white, red, yellow), one frame each.</summary>
     public static Texture2D Flowers => Get("flowers", NatureArt.Flowers, repeat: false);
+
+    /// <summary>The tall grass in a season's shades (plan 22 · U3): <see cref="TallGrass"/> itself with no season or in spring.</summary>
+    public static Texture2D TallGrassIn(Core.Season? season) =>
+        Get(SeasonPalette.SheetKey("tall_grass", season), () => NatureArt.TallGrass(SeasonPalette.For(season)), repeat: true);
+
+    /// <summary>A lawn's tuft in a season's shades: <see cref="LawnTuft"/> itself with no season or in spring.</summary>
+    public static Texture2D LawnTuftIn(Core.Season? season) =>
+        Get(SeasonPalette.SheetKey("lawn_tuft", season), () => NatureArt.LawnTuft(SeasonPalette.For(season)), repeat: false);
+
+    /// <summary>A season's three flowers: <see cref="Flowers"/> itself with no season or in spring.</summary>
+    public static Texture2D FlowersIn(Core.Season? season) =>
+        Get(SeasonPalette.SheetKey("flowers", season), () => NatureArt.Flowers(SeasonPalette.For(season)), repeat: false);
 
     public static Texture2D LedgeFace => Get("ledge_face", NatureArt.LedgeFace, repeat: true);
     public static Texture2D RockLedgeFace => Get("rock_ledge_face", NatureArt.RockLedgeFace, repeat: true);

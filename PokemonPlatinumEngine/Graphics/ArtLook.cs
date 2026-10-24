@@ -245,6 +245,47 @@ internal static class ArtLook
     }
 
     /// <summary>
+    /// The light of a season (plan 22 · U3; style guide, "Seasons"), laid over the rig after the weather's: spring is
+    /// the hour's own, summer a stronger, warmer sun, autumn a golden one, winter a pale, cold light with snow's bloom
+    /// held down. No season (every region but Unova) is the rig itself.
+    /// </summary>
+    public static LightRig Seasoned(LightRig rig, Core.Season? season) => season switch
+    {
+        Core.Season.Summer => rig with
+        {
+            Light = rig.Light with { SunColor = rig.Light.SunColor * 1.04f * V(1.03f, 1.0f, 0.94f) },
+            Post = rig.Post with { Saturation = rig.Post.Saturation * 1.06f }
+        },
+        Core.Season.Autumn => rig with
+        {
+            Light = rig.Light with
+            {
+                SunColor = rig.Light.SunColor * V(1.08f, 0.98f, 0.86f),
+                SkyAmbient = rig.Light.SkyAmbient * V(1.04f, 0.98f, 0.92f)
+            },
+            Post = rig.Post with { Saturation = rig.Post.Saturation * 1.04f, HighlightTint = rig.Post.HighlightTint * V(1.06f, 1.0f, 0.90f) }
+        },
+        Core.Season.Winter => rig with
+        {
+            Light = rig.Light with
+            {
+                SunColor = rig.Light.SunColor * 0.86f * V(0.94f, 0.98f, 1.06f),
+                SkyAmbient = rig.Light.SkyAmbient * V(0.96f, 0.99f, 1.05f),
+                GroundAmbient = rig.Light.GroundAmbient * 1.1f
+            },
+            FogColor = Vector3.Lerp(rig.FogColor, V(0.82f, 0.88f, 0.96f), 0.3f),
+            Post = rig.Post with
+            {
+                Saturation = rig.Post.Saturation * 0.92f,
+                BloomThreshold = MathF.Max(rig.Post.BloomThreshold, 0.95f),
+                BloomStrength = rig.Post.BloomStrength * 0.6f,
+                ShadowTint = rig.Post.ShadowTint * V(0.90f, 0.94f, 1.12f)
+            }
+        },
+        _ => rig
+    };
+
+    /// <summary>
     /// The light in snow country (style guide, the areas' table: a low sun and cold grading), laid over the hour's
     /// rig: the sun lower, dimmer and cooler, more light bounced up off the snow, colder fog and grading, and bloom
     /// only on what is brighter than the snow, which would otherwise glow to a blank by day.

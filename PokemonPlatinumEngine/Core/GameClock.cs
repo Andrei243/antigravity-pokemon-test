@@ -60,4 +60,22 @@ public static class GameClock
     /// a set day at that hour, so a tool's pictures are the same every run.
     /// </summary>
     public static DateTime Clock() => Fixed == null ? WallClock.Local : new DateTime(2009, 3, 22).AddHours(Hour);
+
+    /// <summary>A season fixed in the options (plan 22 · U3); null follows the calendar.</summary>
+    public static Season? FixedSeason { get; set; }
+
+    /// <summary>
+    /// The season of a day as Black 2 and White 2 count them: a month each, round and round (January spring,
+    /// February summer, March autumn, April winter, May spring again), so <c>(month − 1) mod 4</c>.
+    /// </summary>
+    public static Season SeasonOf(DateTime day) => (Season)((day.Month - 1) % 4);
+
+    /// <summary>
+    /// Today's season, or the one the options fix. It is the calendar's alone: whether a place has seasons at all is
+    /// its region's (<c>Region.HasSeasons</c>), and what the field shows is <c>GameEngine.SeasonHere</c>.
+    /// </summary>
+    public static Season Season => FixedSeason ?? SeasonOf(Today);
 }
+
+/// <summary>Unova's four seasons (plan 22 · U3), in the order the months bring them.</summary>
+public enum Season { Spring, Summer, Autumn, Winter }
