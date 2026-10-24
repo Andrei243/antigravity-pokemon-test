@@ -58,7 +58,7 @@ public static class Lines
         "assistant" => Widest(new[] { PlayerIdentity.DefaultName(PlayerLook.Boy), PlayerIdentity.DefaultName(PlayerLook.Girl) }),
         // A Pokémon by its name
         "lead" or "starter" or "rivalstarter" or "assistantstarter" or "user" or "member" or "swarm" or "trophygarden" or "marsh" or "winner"
-            or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" => widestSpecies.Value,
+            or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" or "bugmon" or "bugnew" => widestSpecies.Value,
         // A move
         "forgotten" or "allymove" => widestMove.Value,
         // What to do next (plan 12 · Q14): the widest of the story's lines, with the names in it at their widest
@@ -68,7 +68,7 @@ public static class Lines
         // A trainer by class and name, or two of them
         "foe" or "struck" => widestTrainer.Value,
         // A number: a variable, an amount of money or of points, a level, a price
-        "var" or "money" or "result" or "yield" or "ticket" or "level" or "grown" or "fee" or "seals" or "coins" or "price" or "number" or "points" or "rank" or "cp" => "888,888",
+        "var" or "money" or "result" or "yield" or "ticket" or "level" or "grown" or "fee" or "seals" or "coins" or "price" or "number" or "points" or "rank" or "cp" or "score" => "888,888",
         // Anything else is a thing by its name: an item, a berry, an accessory, a Seal, a ribbon, a place
         _ => widestItem.Value
     });

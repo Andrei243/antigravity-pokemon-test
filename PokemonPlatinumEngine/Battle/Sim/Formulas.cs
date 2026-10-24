@@ -318,4 +318,11 @@ public sealed class BattleConditions
 
     /// <summary>The wild Pokémon was hooked on a rod (plan 06 · R28a: what the Lure Ball asks).</summary>
     public bool Fishing { get; init; }
+
+    /// <summary>
+    /// The one ball the battle may throw, and nothing else from the bag (plan 15 · E5: the Bug-Catching Contest's
+    /// Sport Ball). The battle is fought with the player's own Pokémon, the balls counted by <c>SpecialBalls</c>, and a
+    /// catch is the contest's, not the team's. Null in every other battle, where that ball is refused.
+    /// </summary>
+    public string? OnlyBall { get; init; }
 }

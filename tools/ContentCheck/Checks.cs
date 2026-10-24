@@ -64,6 +64,8 @@ public static class Checks
             written.UnionWith(GameEngine.PastimeFlags);
             written.Add(GameEngine.ContestHallVisitedFlag);
             written.Add(BicycleRules.ForcedInGateFlag);
+            // ...and the Bug-Catching Contest's, which `bugcontest` sets and clears itself (plan 15 · E5)
+            written.UnionWith(PokemonPlatinumEngine.Story.ScriptRunner.BugContestFlags);
         }
 
         public bool IsSet(string flag) => written.Contains(flag);

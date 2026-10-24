@@ -284,6 +284,18 @@ public partial class BattleEngine
                     Refuse(BattleCore.NoItemsRefusal, BattleMenuState.Main);
                     return;
                 }
+                // The Bug-Catching Contest throws its Sport Ball in place of opening the bag (plan 15 · E5)
+                if (OnlyBall is { } only)
+                {
+                    if (core.WhyNot(BattleChoice.UseItem(MenuBattler.Place, only)) is { } why)
+                    {
+                        Refuse(why, BattleMenuState.Main);
+                        return;
+                    }
+                    AudioManager.PlaySound("select");
+                    Commit(BattleChoice.UseItem(MenuBattler.Place, only));
+                    return;
+                }
                 HUD.MenuState = BattleMenuState.SelectBagPocket;
                 break;
             case 2:

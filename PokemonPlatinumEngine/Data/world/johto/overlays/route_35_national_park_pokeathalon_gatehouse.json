@@ -16,9 +16,7 @@
     "r35r0201_counterm": {
       "name": "Officer",
       "still": true,
-      "dialog": [
-        "Welcome! The National Park is just to the north. Do enjoy your visit."
-      ],
+      "script": "Officer",
       "hiddenBy": ""
     }
   },

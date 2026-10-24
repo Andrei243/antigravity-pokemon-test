@@ -863,6 +863,13 @@ public static class ScriptParser
             // A region's rival named on the introduction's keyboard (plan 18 · W4, part b)
             case "namerival":
                 return new Instruction { Op = Op.NameRival, Line = line };
+            // The National Park's Bug-Catching Contest (plan 15 · E5)
+            case "bugcontest":
+                return new Instruction
+                {
+                    Op = Op.BugContest, Line = line,
+                    Name = r.OneOf("open", "on", "start", "balls", "caught", "keep", "release", "judge", "results", "prize", "end")
+                };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

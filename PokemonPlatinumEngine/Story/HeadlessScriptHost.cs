@@ -25,6 +25,8 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Inventory Bag { get; }
     public Poketch Poketch { get; } = new();
     public SafariGame Safari { get; } = new();
+    public BugContest BugContest { get; } = new();
+    public void PutInBox(Pokemon pokemon) => Box.Add(pokemon);
     public int SeenInSinnoh { get; set; }
     public int Caught { get; set; }
     public int Money { get; set; } = 3000;

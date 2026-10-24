@@ -871,6 +871,9 @@ public partial class GameEngine
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;
         public SafariGame Safari => game.flow.Safari;
+        public BugContest BugContest => game.flow.BugContest;
+        public void PutInBox(Pokemon pokemon) => game.flow.Boxes.Store(pokemon);
+        public int LevelHere(int level) => game.LevelHere(level);
         public int SeenInSinnoh => game.flow.Pokedex.SeenIn(Pokedex.Sinnoh);
         public int Caught => game.flow.Pokedex.CaughtCount;
 
@@ -1172,6 +1175,10 @@ public partial class GameEngine
                 // A region's rival named (plan 18 · W4, part b): the introduction's keyboard over the field
                 case ScriptScreen.NameRival:
                     game.OpenRivalNaming();
+                    break;
+                // The Bug-Catching Contest's board of results (plan 15 · E5)
+                case ScriptScreen.BugContestResults:
+                    game.OpenBugContestResults();
                     break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,

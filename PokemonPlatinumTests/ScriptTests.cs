@@ -549,6 +549,17 @@ public class ScriptTests
           scene "All of it"
           endscene
           namerival
+          bugcontest open
+          bugcontest on
+          bugcontest start
+          bugcontest balls
+          bugcontest caught
+          bugcontest keep
+          bugcontest release
+          bugcontest judge
+          bugcontest results
+          bugcontest prize
+          bugcontest end
         script Other
           end
         """;
@@ -1529,6 +1540,8 @@ public class ScriptTests
         public Inventory Bag => inner.Bag;
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
+        public BugContest BugContest => inner.BugContest;
+        public void PutInBox(Pokemon pokemon) => inner.PutInBox(pokemon);
         public int SeenInSinnoh => inner.SeenInSinnoh;
         public SpecialEncounters Encounters => inner.Encounters;
         public BerryPatches Berries => inner.Berries;

@@ -299,6 +299,12 @@ public partial class BattleEngine
     /// <summary>Nothing may be used from the bag (plan 14 · B14, a Master Trainer's battle): BAG is greyed and says why.</summary>
     public bool BagClosed => core.NoBattleItems;
 
+    /// <summary>
+    /// The one ball this battle throws in place of the bag (plan 15 · E5: the Bug-Catching Contest's Sport Ball, counted
+    /// by <see cref="SpecialBalls"/>); null in every other battle.
+    /// </summary>
+    public string? OnlyBall => core.Conditions.OnlyBall;
+
     /// <summary>The trainer beside the player in a tag battle (their Pokémon stand in the player's second place).</summary>
     public Trainer? Partner { get; }
 
@@ -889,6 +895,8 @@ public partial class BattleEngine
                 mine.Met(place, GameClock.Today);
                 // A Pokémon caught in Pal Park stays the Catching Show's until the show is over (plan 06 · R16b)
                 if (Kind == BattleKind.PalPark) break;
+                // ...and one caught in the Bug-Catching Contest the contest's, until it is judged (plan 15 · E5)
+                if (OnlyBall != null) break;
                 if (caught.ToBox) pcBoxStorage?.Store(mine);
                 else PlayerParty.Add(mine);
                 break;

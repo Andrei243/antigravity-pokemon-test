@@ -154,6 +154,7 @@ public sealed class BattleRecordFile
                 Player = conditions.Player,
                 Inverse = conditions.Inverse,
                 Fishing = conditions.Fishing,
+                OnlyBall = conditions.OnlyBall,
                 // The only species a battle asks about having caught is the wild one's (the Repeat Ball)
                 Caught = setup.WildPokemon.Select(p => p.Species).Distinct().Where(conditions.HasCaught).Select(s => s.DexNumber).ToList()
             }
@@ -221,7 +222,8 @@ public sealed class BattleRecordFile
                 Money = Conditions.Money,
                 Player = Conditions.Player,
                 Inverse = Conditions.Inverse,
-                Fishing = Conditions.Fishing
+                Fishing = Conditions.Fishing,
+                OnlyBall = Conditions.OnlyBall
             },
             PlayerName = PlayerName,
             PlayerController = null,
@@ -432,6 +434,7 @@ public sealed class RecordedConditions
     public TrainerMark? Player { get; set; }
     public bool Inverse { get; set; }
     public bool Fishing { get; set; }
+    public string? OnlyBall { get; set; }
 
     /// <summary>The wild species met that the player had caught before, by their National Pokédex numbers (the Repeat Ball).</summary>
     public List<int> Caught { get; set; } = new();

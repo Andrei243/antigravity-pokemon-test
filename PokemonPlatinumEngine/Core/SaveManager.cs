@@ -152,6 +152,12 @@ public class SaveData
     public SafariSave? Safari { get; set; }
 
     /// <summary>
+    /// A Bug-Catching Contest under way in the National Park (plan 15 · E5): its balls and minutes, the team set aside,
+    /// the catch kept and the five others. Null when none is, and in every older save.
+    /// </summary>
+    public Models.BugContestSave? BugContest { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>

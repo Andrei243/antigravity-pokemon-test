@@ -119,6 +119,8 @@ public enum Op
     Objective,
     // The keyboard for the rival of the region the script plays in (plan 18 · W4, part b): a region crossed into names its own
     NameRival,
+    // The National Park's Bug-Catching Contest (plan 15 · E5): begun, asked about, judged and ended
+    BugContest,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

@@ -76,6 +76,20 @@ public sealed partial class BattleCore
         Say(Text.Of("battle.theWildIsKeeping", ("pokemon", p.DisplayName)));
     }
 
+    /// <summary>The Bug-Catching Contest's Sport Ball (plan 15 · E5): thrown only there, and nowhere else.</summary>
+    public const string BugContestBall = "Sport Ball";
+
+    /// <summary>
+    /// The last Sport Ball of a Bug-Catching Contest thrown and missed (plan 15 · E5): the battle is over, as the Great
+    /// Marsh's is with its last ball, and the field ends the contest.
+    /// </summary>
+    private void ContestBallsGone()
+    {
+        if (SpecialBalls > 0) return;
+        Say(Text.Of("battle.youveThrownYourLastSport"));
+        End(BattleResult.PlayerRan);
+    }
+
     /// <summary><c>BtlCmd_CheckSafariGameDone</c>: with no Safari Ball left, or nowhere to put a catch, the game in the Marsh is over.</summary>
     private void SafariGameOver()
     {

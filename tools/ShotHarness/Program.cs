@@ -185,6 +185,7 @@ if (mode == "unova") h.UnovaMode();
 if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();
 if (mode == "skips") h.SkipsMode();
+if (mode == "contest") h.BugContestMode();
 
 h.Close();
 Raylib.CloseWindow();

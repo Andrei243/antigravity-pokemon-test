@@ -27,6 +27,8 @@ internal static partial class ModernUi
     {
         BattleKind.Safari => (Text.Of("battleMenu.safariBall", ("n", battle.SpecialBalls)), new[] { Text.Of("battleMenu.bait"), Text.Of("battleMenu.mud"), Text.Of("battleMenu.run") }),
         BattleKind.PalPark => (Text.Of("battleMenu.parkBall", ("n", battle.SpecialBalls)), new[] { "", "", Text.Of("battleMenu.run") }),
+        // The Bug-Catching Contest's Sport Balls stand where the bag does (plan 15 · E5)
+        _ when battle.OnlyBall != null => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.sportBall", ("n", battle.SpecialBalls)), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") }),
         _ => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") })
     };
 
