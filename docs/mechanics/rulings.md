@@ -2531,6 +2531,17 @@ leaves a choice.
   differs, whole, in `WorldAreaFile.Seasons`. Nothing reads them until U4's calendar of seasons: until then every game
   meets spring's. The dark grass, the shaking grass and the rippling water are read and kept beside them, and U4 gives
   them their rules. Unova alone has seasons (`RegionFile.HasSeasons`).
+- **The seasons' chunks** (plan 22 · U2, part b). Black 2 lays 26 chunks of its own in place of others in a season
+  (Route 20's four in autumn, six cells of the north-west in winter, two cells of the east coast in each of summer,
+  autumn and winter, and Twist Mountain's and the Moor of Icirrus's floors in winter and Pledge Grove's in autumn). Its table of the
+  swaps (`map_replace.c`'s archive) is not extracted by the decompilation, so the reader takes the swap from the names,
+  which say it: `winter05_04` lies over the overworld's `overworld_2_map05_04` (column 5, row 4) and `winter0701_01_00`
+  over the cave's `…_m_dun0701_01_00`. The matrix's own chunks are spring's, and `WorldMatrixFile.Seasons` names the
+  other seasons' where they differ; a season's chunk keeps its spring chunk's warps. Nothing reads them until U4.
+- **Trainers' teams** (part b). A Pokémon of a form (`form` above 0: two Basculin, a Wormadam and Colress's Rotom) is
+  that form by Generation 5's numbering (`Bw2World.FormName`). A class number the decompilation gives only to tell two
+  classes of one name apart (`TRAINER_CLASS_WORKER_44`) is not part of the class's name. A team's `gender` and
+  `ability` are not read yet: the personality is worked out as HeartGold's, which gives each its own.
 - **Where the textures lie.** By the user's decision of 2026-10-20, each chunk's `model.glb` is read past its JSON chunk
   into its binary one, as plain numbers, only to find which texture covers each tile (`Bw2Geometry`). Only a
   `TerrainCover` code a tile is kept. `Bw2Cover` sorts the names, buildings take the tiles under their props' boxes, and

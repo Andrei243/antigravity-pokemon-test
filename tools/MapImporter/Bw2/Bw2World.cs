@@ -193,7 +193,8 @@ public sealed class Bw2World
         var layers = Maps.Terrain(folder);
         var land = layers.Length > 0 ? layers[0] : null;
         var look = CoverOf(folder);
-        var overrides = warpTiles.GetValueOrDefault(folder);
+        // A season's chunk stands where its spring's does, under the same warps
+        var overrides = warpTiles.GetValueOrDefault(folder) ?? (BaseOf(folder) is { } spring ? warpTiles.GetValueOrDefault(spring) : null);
         var behaviour = new TileBehavior[T * T];
         var solid = new bool[T * T];
         var height = new float[T * T];
@@ -316,6 +317,74 @@ public sealed class Bw2World
         return seen;
     }
 
+    // ---------------------------------------------------------------- seasons' chunks
+
+    /// <summary>The seasons a chunk folder's name may begin with: the matrix's own chunks are spring's.</summary>
+    public static readonly string[] LaterSeasons = { "Summer", "Autumn", "Winter" };
+
+    private static readonly System.Text.RegularExpressions.Regex SeasonalName =
+        new(@"^(summer|autumn|winter)(\d\d_\d\d|\d{4}_\d\d_\d\d)$", System.Text.RegularExpressions.RegexOptions.Compiled);
+
+    /// <summary>
+    /// What a chunk folder named by season stands in for (plan 22 · U2, part b): its season (<c>Winter</c>) and the
+    /// ending of the folder it takes the place of. Black 2 swaps them through a table of its own (<c>map_replace.c</c>,
+    /// archive 10, which the decompilation keeps as binary data and doesn't extract), so the swap is read from the
+    /// names, which say it: <c>winter05_04</c> is the overworld's <c>overworld_2_map05_04</c> (column 5, row 4), and
+    /// <c>winter0701_01_00</c> the cave's <c>…_m_dun0701_01_00</c> (Twist Mountain's). Null for any other folder.
+    /// </summary>
+    public static (string Season, string Replaces)? SeasonalOf(string folder)
+    {
+        var m = SeasonalName.Match(folder);
+        if (!m.Success) return null;
+        string season = char.ToUpperInvariant(m.Groups[1].Value[0]) + m.Groups[1].Value[1..];
+        string rest = m.Groups[2].Value;
+        return (season, rest.Length == 5 ? "_map" + rest : "_m_dun" + rest);
+    }
+
+    private Dictionary<string, string>? seasonalBase;
+
+    /// <summary>The folder each seasonal chunk takes the place of, worked out from the matrices (<see cref="SeasonalChunks"/>).</summary>
+    public string? BaseOf(string seasonalFolder)
+    {
+        if (seasonalBase == null)
+        {
+            seasonalBase = new(StringComparer.Ordinal);
+            foreach (var (constant, _) in Maps.Matrices)
+                foreach (var (_, _, _, folder, own) in SeasonalChunks(constant)) seasonalBase.TryAdd(folder, own);
+        }
+        return seasonalBase.GetValueOrDefault(seasonalFolder);
+    }
+
+    /// <summary>
+    /// The cells of a matrix another season lays a chunk of its own in: each with its season, the seasonal folder and
+    /// the folder it replaces. A seasonal folder whose name matches a cell's chunk is laid there; an overworld chunk's
+    /// name gives its column and row, which must be the cell's, or it is a problem of the report's.
+    /// </summary>
+    public List<(string Season, int X, int Y, string Folder, string Base)> SeasonalChunks(string constant)
+    {
+        var result = new List<(string, int, int, string, string)>();
+        var matrix = Maps.Matrix(constant);
+        foreach (string folder in Maps.Chunks)
+        {
+            if (SeasonalOf(folder) is not { } s) continue;
+            for (int y = 0; y < matrix.Height; y++)
+                for (int x = 0; x < matrix.Width; x++)
+                {
+                    if (matrix.ModelAt(x, y) is not { } model) continue;
+                    string own = Bw2Matrix.Folder(model);
+                    if (SeasonalOf(own) != null || !own.EndsWith(s.Replaces, StringComparison.Ordinal)) continue;
+                    if (s.Replaces.StartsWith("_map", StringComparison.Ordinal)
+                        && s.Replaces != $"_map{x:00}_{y:00}")
+                    {
+                        Note($"{folder} stands for {own}, which {constant} has at {x},{y}, not where its name says");
+                        continue;
+                    }
+                    result.Add((s.Season, x, y, folder, own));
+                }
+        }
+        return result;
+    }
+
     public WorldMatrixFile MatrixFile(string constant)
     {
         var (id, matrix) = Maps.Matrices[constant];
@@ -333,6 +402,18 @@ public sealed class Bw2World
                     matrix.ModelAt(x, y) != null && matrix.ZoneAt(x, y) is { } z ? keys.IndexOf(KeyOf(z)).ToString(CultureInfo.InvariantCulture) : "-"), areaWidth));
         }
         file.AreaKeys = keys;
+        var seasonal = SeasonalChunks(constant);
+        int seasonWidth = seasonal.Select(s => ChunkId(s.Folder).ToString(CultureInfo.InvariantCulture).Length).Append(chunkWidth).Max();
+        foreach (string season in LaterSeasons)
+        {
+            var mine = seasonal.Where(s => s.Season == season && ChunkId(s.Folder) >= 0).ToList();
+            if (mine.Count == 0) continue;
+            var grid = new MatrixSeason { Season = season };
+            for (int y = 0; y < matrix.Height; y++)
+                grid.Chunks.Add(WorldMatrixFile.Row(Enumerable.Range(0, matrix.Width).Select(x =>
+                    mine.FirstOrDefault(s => s.X == x && s.Y == y) is { Folder: { } f } ? ChunkId(f).ToString(CultureInfo.InvariantCulture) : "-"), seasonWidth));
+            (file.Seasons ??= new()).Add(grid);
+        }
         return file;
     }
 
@@ -577,6 +658,8 @@ public sealed class Bw2World
                     Species = species, Level = level, IvScale = difficulty,
                     Personality = HgssTrainers.Personality(difficulty, level, dex, number, classNumber, ref gender)
                 };
+                if (Int(p, "form") is var form and > 0)
+                    member.Form = FormName(species, form) ?? Note($"{record.Id}: {species}'s form {form} has no name here", null!);
                 if (p.TryGetProperty("item", out var held) && held.GetString() is { } h && h != "ITEM_NONE")
                     member.Item = GbaNames.Item(h) ?? Note($"{record.Id}: {h} is not in the game's data", h);
                 if (p.TryGetProperty("moves", out var moves) && moves.ValueKind == JsonValueKind.Array)
@@ -594,10 +677,34 @@ public sealed class Bw2World
         return records;
     }
 
-    /// <summary>A class constant in our capitals: <c>TRAINER_CLASS_PKMN_RANGER_M</c> is "Pokémon Ranger".</summary>
+    /// <summary>
+    /// A form's name by Black 2's number of it in a trainer's team (<c>form</c>; plan 22 · U2, part b): the forms the
+    /// region's trainers use, in Generation 5's order. Null for one this table doesn't know, which the report names.
+    /// </summary>
+    public static string? FormName(string species, int form) => (species, form) switch
+    {
+        ("Basculin", 1) => "Basculin-Blue-Striped",
+        ("Rotom", 1) => "Rotom-Heat",
+        ("Rotom", 2) => "Rotom-Wash",
+        ("Rotom", 3) => "Rotom-Frost",
+        ("Rotom", 4) => "Rotom-Fan",
+        ("Rotom", 5) => "Rotom-Mow",
+        ("Wormadam", 1) => "Wormadam-Sandy",
+        ("Wormadam", 2) => "Wormadam-Trash",
+        ("Shellos" or "Gastrodon", 1) => species + "-East",
+        _ => null
+    };
+
+    /// <summary>
+    /// A class constant in our capitals: <c>TRAINER_CLASS_PKMN_RANGER_M</c> is "Pokémon Ranger". A number the
+    /// decompilation gives a class only to tell two of one name apart (<c>TRAINER_CLASS_WORKER_44</c>,
+    /// <c>TRAINER_CLASS_SCIENTIST_F_46</c>) is not part of its name (plan 22 · U2, part b).
+    /// </summary>
     public static string ClassName(string constant)
     {
         string upper = constant.StartsWith("TRAINER_CLASS_", StringComparison.Ordinal) ? constant["TRAINER_CLASS_".Length..] : constant;
+        int last = upper.LastIndexOf('_');
+        if (last > 0 && upper[(last + 1)..].All(char.IsDigit)) upper = upper[..last];
         if (upper.EndsWith("_M", StringComparison.Ordinal) || upper.EndsWith("_F", StringComparison.Ordinal)) upper = upper[..^2];
         return string.Join(' ', upper.Split('_', StringSplitOptions.RemoveEmptyEntries).Select(w =>
             w == "PKMN" ? "Pokémon" : w.All(char.IsDigit) ? w : char.ToUpperInvariant(w[0]) + w[1..].ToLowerInvariant()));
