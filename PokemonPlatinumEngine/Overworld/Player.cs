@@ -592,7 +592,7 @@ public class Player
         bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : onWater == TileBehaviors.IsSurfable(underfoot);
         if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where)
         {
-            bool thick = underfoot == TileBehavior.VeryTallGrass || Mode == TravelMode.Cycling;
+            bool thick = underfoot is TileBehavior.VeryTallGrass or TileBehavior.VeryTallDarkGrass || Mode == TravelMode.Cycling;
             var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead, Moment?.Invoke());
             if (wild != null)
             {

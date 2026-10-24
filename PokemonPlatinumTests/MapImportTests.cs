@@ -1251,7 +1251,9 @@ public class Bw2ImportTests
         foreach (var behaviour in own)
         {
             Assert.True(TileBehaviors.IsKnown((byte)behaviour), $"{behaviour} has no meaning");
-            Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(behaviour).Support);
+            // The dark grass has its rules since plan 22 · U4; the rest wait for theirs
+            if (behaviour is TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass) Assert.NotEqual(BehaviourSupport.Waiting, TileBehaviors.InGame(behaviour).Support);
+            else Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(behaviour).Support);
             Assert.Contains($"| `0x{(int)behaviour:X2}` | `{behaviour}` |", section);
             // Each has a look but the boulder's hole, whose look is the ground round it
             if (behaviour != TileBehavior.StrengthHole) Assert.NotNull(Bw2Cover.OfBehaviour(behaviour));

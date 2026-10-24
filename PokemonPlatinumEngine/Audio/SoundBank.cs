@@ -76,7 +76,7 @@ public static partial class SoundBank
         TileBehavior.Puddle => "step_puddle",
         TileBehavior.ShallowWater => "step_shallows",
         TileBehavior.Mud => "step_mud",
-        TileBehavior.VeryTallGrass => "grass",
+        TileBehavior.VeryTallGrass or TileBehavior.VeryTallDarkGrass => "grass",
         _ => null
     };
 

@@ -2565,6 +2565,42 @@ leaves a choice.
 - **The buildings** are stand-ins in Sinnoh's ways of building (`WorldModels.Unova`, each with its `StandInUntil`),
   until U5 gives each town a way of its own.
 
+## Seasons in Unova (2026-10-24, plan 22 · U4)
+
+What a season does beside the field's look (U3). Only a region whose record has `hasSeasons` has a season
+(`GameEngine.SeasonHere`), so nothing of this reaches Sinnoh, Kanto, Johto or Hoenn: their matrices name no season's
+chunks, their areas no season's tables, and a coat is never changed on their maps.
+
+- **The layouts.** Black 2 swaps a season's chunks into the matrix (`map_replace.c`); here each map of a matrix with
+  `seasons` is built once more round each season's cells (`World.SeasonalSwaps`, `WorldMapBuilder.BuildSwapped`) and
+  keeps both grounds, as a swap of the story's does (`Map.AddSeasonalPlace`, a `SwappedPlace` with a `Season`). The
+  engine lays the field's season on every map whenever it takes or turns one (`GameEngine.LayTheSeason`,
+  `Map.ApplySeason`): as a game is begun or taken up, when the options fix a season, and behind the next fade once the
+  calendar has turned, so the ground never changes under the player's eyes. Spring's chunks are the matrix's own. A
+  cell whose season's chunk the importer hasn't written (an area not open yet) keeps spring's; a cell whose buildings
+  differ between the two is kept too, since a swap carries no building, while one whose buildings are the same (the
+  gate of Floccesy Ranch on Route 20) changes its ground alone. The story's own swaps never move a season's chunks.
+  Today that is Route 20's four autumn cells, which open some two hundred tiles spring's trees shut; Icirrus City's frozen marsh and
+  the drifts of Route 7 come with their areas (U10).
+- **The wild Pokémon.** An area's own tables are spring's, and a season after it that differs has its tables whole
+  (`MapArea.SeasonTables`, `TablesFor`). The moment carries the season (`EncounterMoment.Season`, null outside Unova),
+  and the grass, the water and the Super Rod are met from the season's tables. The Old and Good Rods are the area's all
+  year (Black 2 has one rod).
+- **The dark grass** (`DarkGrass`, `VeryTallDarkGrass`) is grass with its own table and rate (`WorldAreaFile.DarkGrass`),
+  met in each season; the very tall kind is thicker, as tall grass is, and stops a Bicycle. A Pokémon met there comes
+  with a second one time in ten (`Map.DarkGrassPairChance`) to a player with two able to fight, as a wild double battle
+  (the core's, as a partner's grass brings); a second the lead scares off leaves the first alone. **The one in ten is
+  our own number**, until a session reads Black 2's from the decompilation's field code. Nothing is drawn off the dark
+  grass, so no other place's chance moves. The dark grass is drawn as tall grass until its look is written (the style
+  guide's "Grass, flowers, trees, ledges and rocks").
+- **Not yet**: the shaking grass's, the rippling water's and its rod's tables are read into each area and met by
+  nothing, until plan 10 · F12's patches; the habitats' seasons and the Pokédex's AREA page line for them.
+- **Deerling and Sawsbuck** (`Models/Seasons.cs`, `SeasonalForms`) wear the season: spring is the species itself, the
+  other three its coats (`Deerling-Summer`…). The team's are put in the season's coat as a game is begun or taken up,
+  as the season turns or is fixed, and as the PC is closed (one taken out of a box), and a wild one is met in it; only
+  where `SeasonHere` is a season, so a coat taken out of Unova stays what it is, as the later games keep it. An
+  evolution carries the coat over (the data's `fromForm` and `targetForm`), and the save keeps it as any form.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

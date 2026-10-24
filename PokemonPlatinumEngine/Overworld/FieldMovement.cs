@@ -237,7 +237,7 @@ public static class FieldMovement
 
     /// <summary>Ground a Bicycle can't be ridden onto (deep water aside): snow, marsh mud and grass taller than the rider.</summary>
     public static bool StopsBicycles(TileBehavior behaviour) => behaviour is TileBehavior.DeepSnow or TileBehavior.DeeperSnow
-        or TileBehavior.DeepestSnow or TileBehavior.ShallowSnow or TileBehavior.VeryTallGrass or TileBehavior.Mud or TileBehavior.DeepMud
+        or TileBehavior.DeepestSnow or TileBehavior.ShallowSnow or TileBehavior.VeryTallGrass or TileBehavior.VeryTallDarkGrass or TileBehavior.Mud or TileBehavior.DeepMud
         or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass;
 
     private static bool IsMudSlope(TileBehavior behaviour) => behaviour is TileBehavior.BikeSlopeTop or TileBehavior.BikeSlopeBottom;
