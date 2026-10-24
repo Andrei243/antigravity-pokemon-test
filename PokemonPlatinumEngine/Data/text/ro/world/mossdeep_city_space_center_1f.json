@@ -6,7 +6,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -64,7 +64,7 @@
           "Team Magma Grunt: We said we'd come for the rocket fuel, and here we are!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Am zis că venim după combustibilul de rachetă și iată-ne!"
         ]
       },
       "after": {
@@ -72,7 +72,7 @@
           "Team Magma Grunt: Don't think one win makes you unstoppable!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Să nu crezi că o victorie te face de neoprit!"
         ]
       }
     },
@@ -82,7 +82,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -90,7 +90,7 @@
           "Team Magma Grunt: We warned you fair and square! Nothing sneaky about Team Magma!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Te-am avertizat cinstit! Echipa Magma nu face nimic pe ascuns!"
         ]
       },
       "after": {
@@ -98,7 +98,7 @@
           "Team Magma Grunt: Next time we'll skip the letter and just show up."
         ],
         "text": [
-          ""
+          "Magma Grunt: Data viitoare sărim peste scrisoare și apărem pur și simplu."
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -116,7 +116,7 @@
           "Team Magma Grunt: The fuel in storage here? We're taking every last drop!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Combustibilul din depozitul de aici? Îl luăm până la ultima picătură!"
         ]
       },
       "after": {
@@ -124,7 +124,7 @@
           "Team Magma Grunt: What's it for? Ask the boss upstairs. I just carry the cans."
         ],
         "text": [
-          ""
+          "Magma Grunt: La ce folosește? Întreabă-l pe șeful de sus. Eu doar car bidoanele."
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -142,7 +142,7 @@
           "Team Magma Grunt: The boss said nobody gets past me. Nobody!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Șeful a zis că nimeni nu trece de mine. Nimeni!"
         ]
       },
       "after": {
@@ -150,7 +150,7 @@
           "Team Magma Grunt: Tell the boss I never left my post. I held on to the very end!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Spune-i șefului că nu mi-am părăsit postul. Am rezistat până la capăt!"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Letter"
         ],
         "text": [
-          ""
+          "Scrisoare"
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Steven"
         ],
         "text": [
-          ""
+          "Steven"
         ]
       }
     }

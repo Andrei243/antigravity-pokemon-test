@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Reviving a Pokémon costs a lot. A single Revive is dearer than a Hyper Potion!"
         ],
         "text": [
-          ""
+          "Reînvierea unui Pokémon costă mult. O singură Reînviere e mai scumpă decât o Hiperpoțiune!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The Dive Balls sold here work best on Pokémon that live under the water. Perfect for the sea round Mossdeep!"
         ],
         "text": [
-          ""
+          "Ball-urile Scafandru vândute aici merg cel mai bine pe Pokémonii care trăiesc sub apă. Perfect pentru marea din jurul Mossdeep!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "A Net Ball's the thing for Water and Bug Pokémon. Every sailor keeps a few on board."
         ],
         "text": [
-          ""
+          "Un Ball Plasă e ce trebuie pentru Pokémonii de tip Apă și Insectă. Fiecare marinar ține câteva la bord."
         ]
       }
     }

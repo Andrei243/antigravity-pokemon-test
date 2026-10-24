@@ -5,7 +5,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}... There isn't much here, as you can see, but this is my home."
       ],
       "text": [
-        ""
+        "{player}... Nu e mare lucru aici, cum vezi, dar asta e casa mea."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Thank you for everything you've done. Please take this as my thanks. It's an HM. You've earned it."
       ],
       "text": [
-        ""
+        "Îți mulțumesc pentru tot ce ai făcut. Primește asta drept mulțumire. E un HM. L-ai meritat."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "When you're out on the water with Surf, look for patches where the sea turns dark."
       ],
       "text": [
-        ""
+        "Când ești pe apă cu Surf, caută petice unde marea se întunecă."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Use Dive there and you'll sink down to the sea floor. Use it again to come back up."
       ],
       "text": [
-        ""
+        "Folosește Scufundare acolo și te vei afunda pe fundul mării. Folosește-o din nou ca să urci."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "There are places down there where you can't come up, though. Keep that in mind."
       ],
       "text": [
-        ""
+        "Sunt însă locuri acolo jos de unde nu poți ieși la suprafață. Ține minte asta."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine."
       ],
       "text": [
-        ""
+        "Se zice că există o peșteră subacvatică între Mossdeep și Sootopolis. Cea pe care a găsit-o Căpitanul Stern în submarinul lui."
       ]
     }
   ],
@@ -73,7 +73,7 @@
         "{player} looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?"
       ],
       "text": [
-        ""
+        "{player} s-a uitat la Poké Ball. Înăuntru e un Beldum. Iei Poké Ball-ul?"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "{player} received a Beldum!"
       ],
       "text": [
-        ""
+        "{player} a primit un Beldum!"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "{player} left the Poké Ball where it was."
       ],
       "text": [
-        ""
+        "{player} a lăsat Poké Ball-ul unde era."
       ]
     }
   ],
@@ -99,7 +99,7 @@
         "It's a letter."
       ],
       "text": [
-        ""
+        "E o scrisoare."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "'{player}, I've decided to travel for a while and train on the road. I won't be home for some time.'"
       ],
       "text": [
-        ""
+        "'{player}, am hotărât să călătoresc o vreme și să mă antrenez pe drum. Nu voi fi acasă o bună bucată de timp.'"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "'I have a favour to ask. Please take the Poké Ball on the desk. Inside is Beldum, my favourite Pokémon.'"
       ],
       "text": [
-        ""
+        "'Am o rugăminte. Te rog, ia Poké Ball-ul de pe birou. Înăuntru e Beldum, Pokémonul meu preferat.'"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "'I'm counting on you. May our paths cross again someday. Steven Stone'"
       ],
       "text": [
-        ""
+        "'Mă bizui pe tine. Să ne mai întâlnim cândva. Steven Stone'"
       ]
     }
   ]

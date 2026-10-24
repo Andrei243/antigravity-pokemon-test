@@ -5,7 +5,7 @@
         "Treasure Hunter"
       ],
       "text": [
-        ""
+        "Vânător de comori"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I'm the diving treasure hunter! I'm the fellow who dives to the bottom of the sea for the treasures lying there."
       ],
       "text": [
-        ""
+        "Sunt vânătorul de comori care se scufundă! Eu sunt cel care coboară pe fundul mării după comorile de acolo."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Tell me, have you come across any shards? Pieces of tools from long, long ago?"
       ],
       "text": [
-        ""
+        "Spune-mi, ai dat peste vreun ciob? Bucăți de unelte din vremuri străvechi?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "No treasure for me, huh... If you find a shard, like a Red Shard, you've got to trade it with me!"
       ],
       "text": [
-        ""
+        "Nicio comoară pentru mine, deci... Dacă găsești un ciob, ca un Ciob Roșu, trebuie să faci schimb cu mine!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Hey! That's a shard! I'm looking for those! Trade it to me, and I'll give you something good!"
       ],
       "text": [
-        ""
+        "Hei! Ăla e un ciob! Pe astea le caut! Dă-mi-l la schimb și îți dau ceva bun!"
       ]
     },
     {
@@ -50,12 +50,12 @@
         "Nothing"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să schimbi?",
+        "Ciob Roșu",
+        "Ciob Galben",
+        "Ciob Albastru",
+        "Ciob Verde",
+        "Nimic"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Your Red Shard for my Fire Stone, then?"
       ],
       "text": [
-        ""
+        "Ciobul tău Roșu pe Piatra mea a Focului, atunci?"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Your Yellow Shard for my Thunder Stone, then?"
       ],
       "text": [
-        ""
+        "Ciobul tău Galben pe Piatra mea a Fulgerului, atunci?"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Your Blue Shard for my Water Stone, then?"
       ],
       "text": [
-        ""
+        "Ciobul tău Albastru pe Piatra mea a Apei, atunci?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Your Green Shard for my Leaf Stone, then?"
       ],
       "text": [
-        ""
+        "Ciobul tău Verde pe Piatra mea a Frunzei, atunci?"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "It's a deal! Use it wisely!"
       ],
       "text": [
-        ""
+        "Afacerea e încheiată! Folosește-o cu cap!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Want to trade something else?"
       ],
       "text": [
-        ""
+        "Vrei să schimbi altceva?"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Huh? You haven't got one of those. Come back when you've found one!"
       ],
       "text": [
-        ""
+        "Hă? Nu ai așa ceva. Revino când găsești unul!"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "No? That's a shame. Well, come back if you change your mind."
       ],
       "text": [
-        ""
+        "Nu? Păcat. Ei bine, revino dacă te răzgândești."
       ]
     }
   ]

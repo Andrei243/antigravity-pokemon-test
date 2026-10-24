@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Steven"
         ],
         "text": [
-          ""
+          "Steven"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Tabitha"
         ],
         "text": [
-          ""
+          "Tabitha"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Tabitha: I'm with the boss, all the way!"
         ],
         "text": [
-          ""
+          "Tabitha: Sunt alături de șef, până la capăt!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Tabitha: I'm with the boss, all the way..."
         ],
         "text": [
-          ""
+          "Tabitha: Sunt alături de șef, până la capăt..."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Maxie"
         ],
         "text": [
-          ""
+          "Maxie"
         ]
       }
     }

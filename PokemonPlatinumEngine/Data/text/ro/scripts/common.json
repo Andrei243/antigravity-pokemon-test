@@ -631,7 +631,7 @@
         "Shall we set off, then?"
       ],
       "text": [
-        ""
+        "Pornim, atunci?"
       ]
     },
     {
@@ -639,7 +639,7 @@
         "Right this way. Mind your step as you come aboard!"
       ],
       "text": [
-        ""
+        "Pe aici. Ai grijă la pas când urci la bord!"
       ]
     },
     {
@@ -647,7 +647,7 @@
         "Take all the time you need. We'll be here when you're ready."
       ],
       "text": [
-        ""
+        "Ia-ți tot timpul de care ai nevoie. Te așteptăm aici când ești gata."
       ]
     }
   ],
@@ -2089,7 +2089,7 @@
         "Officer"
       ],
       "text": [
-        ""
+        "Polițistul"
       ]
     },
     {
@@ -2097,7 +2097,7 @@
         "Today's the Bug-Catching Contest! Whoever catches the finest Bug Pokémon in the park wins a prize."
       ],
       "text": [
-        ""
+        "Azi e Concursul de Prins Insecte! Cine prinde cel mai frumos Pokémon de tip Insectă din parc câștigă un premiu."
       ]
     },
     {
@@ -2105,7 +2105,7 @@
         "Would you like to take part?"
       ],
       "text": [
-        ""
+        "Vrei să participi?"
       ]
     },
     {
@@ -2113,7 +2113,7 @@
         "Only the first Pokémon of your team that can battle may come along. We'll look after the rest for you."
       ],
       "text": [
-        ""
+        "Doar primul Pokémon din echipa ta care poate lupta are voie să vină cu tine. Ne ocupăm noi de ceilalți."
       ]
     },
     {
@@ -2121,7 +2121,7 @@
         "Here are twenty Sport Balls. You have twenty minutes to catch the best Bug Pokémon you can. Good luck!"
       ],
       "text": [
-        ""
+        "Poftim douăzeci de Ball-uri Sport. Ai douăzeci de minute să prinzi cel mai bun Pokémon de tip Insectă. Mult noroc!"
       ]
     },
     {
@@ -2129,7 +2129,7 @@
         "No? Well, maybe next time. The contest is held every Tuesday, Thursday and Saturday."
       ],
       "text": [
-        ""
+        "Nu? Poate data viitoare. Concursul are loc în fiecare marți, joi și sâmbătă."
       ]
     },
     {
@@ -2137,7 +2137,7 @@
         "Oh, none of your Pokémon can battle right now. Please heal them first."
       ],
       "text": [
-        ""
+        "Vai, niciunul dintre Pokémonii tăi nu poate lupta acum. Te rog, vindecă-i mai întâi."
       ]
     },
     {
@@ -2145,7 +2145,7 @@
         "The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays."
       ],
       "text": [
-        ""
+        "Concursul de Prins Insecte are loc în parc marțea, joia și sâmbăta."
       ]
     },
     {
@@ -2153,7 +2153,7 @@
         "Bug Catchers come from all over Johto for it. Do take part!"
       ],
       "text": [
-        ""
+        "Vânători de insecte din tot Johto vin la el. Participă și tu!"
       ]
     },
     {
@@ -2161,7 +2161,7 @@
         "Today's contest is over. Thanks for taking part! The next one is on the next contest day."
       ],
       "text": [
-        ""
+        "Concursul de azi s-a terminat. Mulțumim pentru participare! Următorul e în următoarea zi de concurs."
       ]
     }
   ],
@@ -2171,7 +2171,7 @@
         "Officer"
       ],
       "text": [
-        ""
+        "Polițistul"
       ]
     },
     {
@@ -2179,7 +2179,7 @@
         "There's still time left in the contest. Are you finished catching?"
       ],
       "text": [
-        ""
+        "Mai e timp în concurs. Ai terminat de prins?"
       ]
     },
     {
@@ -2187,7 +2187,7 @@
         "Then back you go! Good luck!"
       ],
       "text": [
-        ""
+        "Atunci, înapoi cu tine! Mult noroc!"
       ]
     }
   ],
@@ -2197,7 +2197,7 @@
         "Ding-dong! Time's up! The Bug-Catching Contest is over. All contestants, please make your way to the gate."
       ],
       "text": [
-        ""
+        "Ding-dong! Timpul a expirat! Concursul de Prins Insecte s-a încheiat. Toți concurenții sunt rugați să vină la poartă."
       ]
     }
   ],
@@ -2207,7 +2207,7 @@
         "You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate."
       ],
       "text": [
-        ""
+        "Ai folosit ultimul Ball Sport. Participarea ta la concurs s-a încheiat. Te rugăm să vii la poartă."
       ]
     }
   ],
@@ -2217,7 +2217,7 @@
         "You're already holding on to {bugmon} for the contest."
       ],
       "text": [
-        ""
+        "Îl ai deja pe {bugmon} pentru concurs."
       ]
     },
     {
@@ -2225,7 +2225,7 @@
         "Enter the {bugnew} you just caught instead?"
       ],
       "text": [
-        ""
+        "Îl înscrii în schimb pe {bugnew}, pe care tocmai l-ai prins?"
       ]
     },
     {
@@ -2233,7 +2233,7 @@
         "{bugnew} was set free."
       ],
       "text": [
-        ""
+        "{bugnew} a fost eliberat."
       ]
     },
     {
@@ -2241,7 +2241,7 @@
         "{bugmon} was set free. {bugnew} is your entry now."
       ],
       "text": [
-        ""
+        "{bugmon} a fost eliberat. Acum {bugnew} e înscrisul tău."
       ]
     }
   ],
@@ -2251,7 +2251,7 @@
         "Officer"
       ],
       "text": [
-        ""
+        "Polițistul"
       ]
     },
     {
@@ -2259,7 +2259,7 @@
         "So you caught {bugmon}! Let's have the judges take a look."
       ],
       "text": [
-        ""
+        "Deci l-ai prins pe {bugmon}! Să-l vadă și jurații."
       ]
     },
     {
@@ -2267,7 +2267,7 @@
         "You didn't catch anything? That's a shame. You're still in the running, though."
       ],
       "text": [
-        ""
+        "N-ai prins nimic? Păcat. Încă ești în joc, totuși."
       ]
     },
     {
@@ -2275,7 +2275,7 @@
         "And now, the results of today's Bug-Catching Contest!"
       ],
       "text": [
-        ""
+        "Și acum, rezultatele Concursului de Prins Insecte de azi!"
       ]
     },
     {
@@ -2283,7 +2283,7 @@
         "You didn't make the top three this time, {player}. Here's a little something for taking part."
       ],
       "text": [
-        ""
+        "Nu te-ai clasat în primii trei de data asta, {player}. Poftim un mic dar pentru participare."
       ]
     },
     {
@@ -2291,7 +2291,7 @@
         "First place goes to {player}, with a score of {score}! Your prize is a {prize}. Congratulations!"
       ],
       "text": [
-        ""
+        "Locul întâi: {player}, cu scorul {score}! Premiul tău: {prize}. Felicitări!"
       ]
     },
     {
@@ -2299,7 +2299,7 @@
         "Second place goes to {player}, with a score of {score}! Your prize is an {prize}. Well done!"
       ],
       "text": [
-        ""
+        "Locul doi: {player}, cu scorul {score}! Premiul tău: {prize}. Bravo!"
       ]
     },
     {
@@ -2307,7 +2307,7 @@
         "Third place goes to {player}, with a score of {score}! Your prize is a {prize}. Well done!"
       ],
       "text": [
-        ""
+        "Locul trei: {player}, cu scorul {score}! Premiul tău: {prize}. Bravo!"
       ]
     },
     {
@@ -2315,7 +2315,7 @@
         "{player}'s Pokémon came back, along with the one caught in the contest."
       ],
       "text": [
-        ""
+        "Pokémonul lui {player} s-a întors, împreună cu cel prins în concurs."
       ]
     },
     {
@@ -2323,7 +2323,7 @@
         "{player}'s Pokémon came back. The team was full, so the one caught in the contest was sent to the PC."
       ],
       "text": [
-        ""
+        "Pokémonul lui {player} s-a întors. Echipa era plină, așa că cel prins în concurs a fost trimis la PC."
       ]
     },
     {
@@ -2331,7 +2331,7 @@
         "Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday."
       ],
       "text": [
-        ""
+        "Mulțumim pentru participare! Concursul are loc în fiecare marți, joi și sâmbătă."
       ]
     }
   ]

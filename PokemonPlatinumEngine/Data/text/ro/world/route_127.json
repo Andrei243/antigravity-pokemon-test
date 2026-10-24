@@ -6,7 +6,7 @@
           "Camden"
         ],
         "text": [
-          ""
+          "Camden"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Triathlete Camden: Running, cycling, swimming... and battling. Let's see your stamina!"
         ],
         "text": [
-          ""
+          "Triatlonist Camden: Alergare, ciclism, înot... și luptă. Să-ți vedem rezistența!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Triathlete Camden: My stamina ran out first."
         ],
         "text": [
-          ""
+          "Triatlonist Camden: Rezistența mea s-a terminat prima."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Donny"
         ],
         "text": [
-          ""
+          "Donny"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Triathlete Donny: Ugh, salt water up my nose again! A battle will clear my head!"
         ],
         "text": [
-          ""
+          "Triatlonist Donny: Uf, iar mi-a intrat apă sărată în nas! O luptă îmi va limpezi mintea!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Triathlete Donny: It's clearer, but now I'm sad."
         ],
         "text": [
-          ""
+          "Triatlonist Donny: Mi s-a limpezit, dar acum sunt trist."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Jonah"
         ],
         "text": [
-          ""
+          "Jonah"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Fisherman Jonah: You scared my fish away! You'll have to make it up to me with a battle."
         ],
         "text": [
-          ""
+          "Pescar Jonah: Mi-ai speriat peștii! Va trebui să te revanșezi cu o luptă."
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Fisherman Jonah: Now the fish are laughing at me."
         ],
         "text": [
-          ""
+          "Pescar Jonah: Acum peștii râd de mine."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Roger"
         ],
         "text": [
-          ""
+          "Roger"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Fisherman Roger: The big ones bite out here on the open sea. So do I!"
         ],
         "text": [
-          ""
+          "Pescar Roger: Cei mari mușcă în larg. La fel și eu!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Fisherman Roger: I'm the one who got reeled in."
         ],
         "text": [
-          ""
+          "Pescar Roger: Eu am fost cel prins în undiță."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Henry"
         ],
         "text": [
-          ""
+          "Henry"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Fisherman Henry: Fishing's all about patience. Battling isn't. Here I come!"
         ],
         "text": [
-          ""
+          "Pescar Henry: Pescuitul înseamnă răbdare. Lupta, nu. Vin!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Fisherman Henry: Should've stayed patient."
         ],
         "text": [
-          ""
+          "Pescar Henry: Trebuia să rămân răbdător."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Aidan"
         ],
         "text": [
-          ""
+          "Aidan"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Bird Keeper Aidan: My birds fish out here with their beaks. Want to see them hunt?"
         ],
         "text": [
-          ""
+          "Crescător de păsări Aidan: Păsările mele pescuiesc aici cu ciocul. Vrei să le vezi la vânătoare?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Bird Keeper Aidan: They came home with nothing today."
         ],
         "text": [
-          ""
+          "Crescător de păsări Aidan: Au venit acasă cu mâinile goale azi."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Koji"
         ],
         "text": [
-          ""
+          "Koji"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Black Belt Koji: Training on a sandbar in the middle of the sea builds a strong body. Hah!"
         ],
         "text": [
-          ""
+          "Centură Neagră Koji: Antrenamentul pe un banc de nisip în mijlocul mării îți face corpul puternic. Hah!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Black Belt Koji: My body's strong, but my battling needs work."
         ],
         "text": [
-          ""
+          "Centură Neagră Koji: Corpul meu e puternic, dar luptele mele mai au de lucru."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Athena"
         ],
         "text": [
-          ""
+          "Athena"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Cooltrainer Athena: You've come a long way to reach the open sea. Show me what you've learned!"
         ],
         "text": [
-          ""
+          "Antrenoare As Athena: Ai venit de departe până în marea deschisă. Arată-mi ce ai învățat!"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "Cooltrainer Athena: You've learned plenty."
         ],
         "text": [
-          ""
+          "Antrenoare As Athena: Ai învățat multe."
         ]
       }
     }
