@@ -1,0 +1,390 @@
+{
+  "people": {
+    "d49_thlonowner": {
+      "name": {
+        "en": [
+          "Dome Owner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Pokéathlon Dome! I built it so that every Pokémon, strong in battle or not, has a place to shine.",
+          "The reception is inside. Bring three Pokémon and enter a course!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_poliwrath": {
+      "name": {
+        "en": [
+          "Poliwrath"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poliwrath flexed its arms. It looks ready for any event."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Oddish isn't fast and isn't strong, but it can jump! Every Pokémon is good at something here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_oddish": {
+      "name": {
+        "en": [
+          "Oddish"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oddish hopped on the spot."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Meowth and I practise every morning on this square. Today we'll beat our best score!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Meowth stretched, as if warming up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokéathlon scores a Pokémon on five things: Speed, Power, Skill, Stamina and Jump. Which is your team best at?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psyduck held its head. It seems to be thinking about the course."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_slowpoke": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowpoke yawned. It doesn't look like a racer."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_farfetchd": {
+      "name": {
+        "en": [
+          "Farfetch'd"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Farfetch'd waved its leek like a baton."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pidgey and I walk round the square before every course. It loosens up its wings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_pidgey": {
+      "name": {
+        "en": [
+          "Pidgey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pidgey flapped its wings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Slowbro came last in every race. It doesn't mind at all, and neither do I!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_slowbro": {
+      "name": {
+        "en": [
+          "Slowbro"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowbro gazed into the distance."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsman3_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop is all Power. In Block Smash nobody comes near it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_tsure_poke_static_machop": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machop punched the air."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I run a lap of the square every day. If my Pokémon train, so should I!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The dome was built where the old road ran to the National Park. The cheering carries all the way to the gate!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49_shopm1_2": {
+      "name": {
+        "en": [
+          "Stall Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the Athlete Shop's stall. The goods for Athlete Points haven't come in yet. Do come back!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D49_019+1": {
+      "en": [
+        "The Athlete Shop. Goods for Athlete Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49_020+1": {
+      "en": [
+        "The Athlete Shop. Goods for Athlete Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49_021+1": {
+      "en": [
+        "The Athlete Shop. Goods for Athlete Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49_022+1": {
+      "en": [
+        "The Pokéathlon Dome's square. The dome is straight ahead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49_023+1": {
+      "en": [
+        "Pokéathlon Dome\nWhere Pokémon run, jump and throw!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

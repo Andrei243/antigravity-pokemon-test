@@ -1,7 +1,9 @@
 using MapImporter.Hg;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.Story;
 
 namespace PokemonPlatinumTests;
 
@@ -594,6 +596,45 @@ public class JohtoTests
         var spawn = SpawnLocations.ArrivedIn(RegionDatabase.Johto, "indigo_plateau")!;
         Assert.Equal("IndigoLeague_PokemonCenter_1F", spawn.Room);
         Assert.Equal(spawn.Room, Overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
+    }
+
+    [Fact]
+    public void ThePokeathlonDomeIsReachedThroughRoute35sGateAndItsClerkRunsTheDesk()
+    {
+        // Plan 20 · J13: the gate house's west door (warp 2) leads onto the dome's square, HeartGold's own map, and the
+        // dome's three doors into its lobby, where the clerk in the middle of the desk runs plan 15 · E6's course
+        var walked = Walked.Value;
+        foreach (string name in new[] { "Route35_NationalParkGate", "PokeathlonDome", "PokeathlonDome_1F" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        var west = Johto.Area("route_35_national_park_pokeathalon_gatehouse")!.Warps[2];
+        Assert.Equal("PokeathlonDome", MapNamed("Route35_NationalParkGate").GetWarpAt(west.X, west.Z)?.TargetMap);
+        var square = MapNamed("PokeathlonDome");
+        foreach (var door in Johto.Area("pokeathlon_dome")!.Warps.Skip(1))
+            Assert.Equal("PokeathlonDome_1F", square.GetWarpAt(door.X, door.Z)?.TargetMap);
+        Assert.Equal(BuildingKind.Hall, WorldModels.Of("poke_c_dome", "johto")!.Kind);
+        Assert.Contains(square.PlacedBuildings, b => b.Kind == BuildingKind.Hall);
+
+        var lobby = MapNamed("PokeathlonDome_1F");
+        var clerk = Assert.Single(lobby.Everyone, n => n.Script == "AthlonDesk");
+        Assert.Equal((23, 8), (clerk.GridX, clerk.GridY));
+        var found = ScriptLibrary.Default.Find(clerk.Script!, "pokeathlon_dome_interior_1f");
+        Assert.NotNull(found);
+        Assert.Equal(GameEngine.AthlonDeskScript, $"{found!.File}.{found.Name}");
+
+        // The ways down to the event rooms and up to the stands stay shut: the events are played on their own board
+        foreach (var shut in Johto.Area("pokeathlon_dome_interior_1f")!.Warps.Skip(1))
+            Assert.Null(lobby.GetWarpAt(shut.X, shut.Z));
+
+        // Spoken to, the clerk asks about a course and runs one for a team of three
+        var host = new HeadlessScriptHost { AthlonPlace = 1 };
+        foreach (string species in new[] { "Pikachu", "Machop", "Pidgey" })
+            host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 20));
+        var runner = new ScriptRunner(ScriptLibrary.Default, host);
+        runner.Start(found);
+        runner.RunToEnd();
+        Assert.Contains(host.Log, line => line.StartsWith("open Athlon"));
+        Assert.Equal(host.AthlonScore, host.Athlon.Points);
     }
 
     [Fact]

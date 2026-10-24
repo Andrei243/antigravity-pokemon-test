@@ -340,6 +340,18 @@ public static partial class WorldModels
         Furniture("scope01", PropType.Binoculars, "a pair of binoculars on the Radio Tower's observation deck"),
         Ground("radio_sky", "the sky round the Radio Tower's observation deck (no model of its own: the sky is the field's)"),
         Ground("snap_came_in", "a camera on its stand in a studio of the Radio Tower: the room's floor stands for it"),
+
+        // ---------------------------------------------------------------- plan 20 · J13: the Pokéathlon Dome (d49_) and its lobby
+        Built("poke_c_dome", BuildingKind.Hall, "the Pokéathlon Dome, the hall at the head of its square", sign: "DOME"),
+        Ground("poke_c_dome2", "the Pokéathlon Dome's great roof over the arena: the hall's own roof stands for it"),
+        Door("poke_c_door"),
+        Thing("poke_c_light", PropType.LampPost, "a floodlight of the Pokéathlon Dome's square"),
+        Ground("poke_c_obj", "the Pokéathlon Dome's square, its track and its stands: its own ground draws them"),
+        Furniture("psentry_obj", PropType.Counter, "the Pokéathlon Dome's long reception desk"),
+        Ground("psentry_rode", "the stripes of the track across the lobby's floor: the floor draws them"),
+        Ground("psentry_d", "a bell on a desk of the Pokéathlon Dome's reception"),
+        Furniture("pc03", PropType.Computer, "a PC on a desk"),
+        Furniture("stair_pc_u01", PropType.SideStairsUp, "stairs up"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

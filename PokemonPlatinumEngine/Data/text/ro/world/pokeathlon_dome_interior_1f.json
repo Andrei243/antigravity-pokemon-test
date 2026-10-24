@@ -1,0 +1,310 @@
+{
+  "people": {
+    "d49r0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_pcwoman1_5": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This desk keeps every course's best score. Enter a course at the desk beside me and set a record!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_pcwoman1_4": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Athlete Points are earned in every course. The Athlete Shop on the square will take them once its goods come in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_pcwoman1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Downstairs are the rooms where the events are held. Today the courses run from the main desk, in the middle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_pcwoman1_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The stands upstairs are closed today. Every seat will be filled when the big courses come!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hurdle Dash is all about the timing of your jumps. Jump too soon and you land right on the hurdle!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In Block Smash, switch your Pokémon when one gets tired. A tired Pokémon hits much more weakly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In Ring Drop, keep away from the edge! A heavy push near the rim and you're off the platform."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that never wins a battle can still win a course. That's what I love about this place."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I don't compete. I just come for the cheering!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In my day we only had battles. Races and games for Pokémon! What a time to be young."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d49r0101_gsman2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three Pokémon make a team, and no Eggs. Pick three that are good at different things!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D49R0101_014+1": {
+      "en": [
+        "The Pokéathlon Dome's lobby. The course reception is at the middle of the desk."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_020+1": {
+      "en": [
+        "A PC for the dome's records. Only the staff may use it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_004+1": {
+      "en": [
+        "A trophy of the Pokéathlon: Speed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_005+1": {
+      "en": [
+        "A trophy of the Pokéathlon: Power."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_006+1": {
+      "en": [
+        "A trophy of the Pokéathlon: Skill."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_007+1": {
+      "en": [
+        "A trophy of the Pokéathlon: Stamina."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_008+1": {
+      "en": [
+        "A trophy of the Pokéathlon: Jump."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_009+1": {
+      "en": [
+        "A photograph of a course's winners, beaming on the podium."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_010+1": {
+      "en": [
+        "A photograph of a Pokémon clearing a hurdle in mid-air."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_011+1": {
+      "en": [
+        "A photograph of a Pokémon smashing a stack of blocks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_012+1": {
+      "en": [
+        "A photograph of two Pokémon pushing on a ring's edge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D49R0101_013+1": {
+      "en": [
+        "A photograph of the dome on its opening day, every seat filled."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

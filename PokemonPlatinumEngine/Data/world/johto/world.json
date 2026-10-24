@@ -223,7 +223,10 @@
     { "name": "IndigoLeague_BrunoRoom", "matrix": 167, "area": "pokemon_league_bruno_room", "trees": "Round", "setting": "Indoors" },
     { "name": "IndigoLeague_KarenRoom", "matrix": 168, "area": "pokemon_league_karen_room", "trees": "Round", "setting": "Indoors" },
     { "name": "IndigoLeague_LanceRoom", "matrix": 169, "area": "pokemon_league_lance_room", "trees": "Round", "setting": "Indoors" },
-    { "name": "IndigoLeague_HallOfFame", "matrix": 170, "area": "johto_pokemon_league_hall_of_fame", "trees": "Round", "setting": "Indoors" }
+    { "name": "IndigoLeague_HallOfFame", "matrix": 170, "area": "johto_pokemon_league_hall_of_fame", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J13: the Pokéathlon Dome's square, west of Route 35's gate house, and its lobby
+    { "name": "PokeathlonDome", "matrix": 153, "area": "pokeathlon_dome", "trees": "Round" },
+    { "name": "PokeathlonDome_1F", "matrix": 154, "area": "pokeathlon_dome_interior_1f", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -307,6 +310,8 @@
     "johto_victory_road_1f", "johto_victory_road_2f", "johto_victory_road_3f",
     "indigo_plateau", "pokemon_league_entrance", "pokemon_league_entrance_wifi_room",
     "pokemon_league_will_room", "pokemon_league_koga_room", "pokemon_league_bruno_room", "pokemon_league_karen_room",
-    "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame"
+    "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame",
+    // Plan 20 · J13: the Pokéathlon Dome's square and its lobby
+    "pokeathlon_dome", "pokeathlon_dome_interior_1f"
   ]
 }

@@ -74,13 +74,21 @@ partial class Harness
             Frames(20);
         }
 
-        // ---- The gate house, before the dome's door
+        // ---- The gate house, before the dome's door (open since plan 20 · J13), the dome's square and its lobby
         At("Route35_NationalParkGate", 6, 4, Direction.Left);
         Frames(20);
         Shot("at01_dome_door");
+        At("PokeathlonDome", 42, 30, Direction.Up);
+        Frames(30);
+        Shot("at01c_dome_square");
+        At("PokeathlonDome_1F", 23, 13, Direction.Up);
+        Frames(30);
+        Shot("at01d_dome_lobby");
 
-        // ---- The clerk's question and the course choice
-        engine.StartScript(GameEngine.AthlonDeskScript);
+        // ---- The clerk's question, across the middle of the desk, and the course choice
+        At("PokeathlonDome_1F", 23, 10, Direction.Up);
+        Frames(10);
+        game.Interact();
         Frames(3);
         ReadOn("enter a course", "at01b_clerk_asks");
         Until(() => game.State == GameState.Athlon, "the Pokéathlon's screen", 300);

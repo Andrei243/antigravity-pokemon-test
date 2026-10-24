@@ -1,0 +1,107 @@
+{
+  // The Pokéathlon Dome's lobby (plan 20 · J13): HeartGold's MAP_POKEATHLON_DOME_INTERIOR_1F. The course reception in
+  // the middle of the long desk runs plan 15 · E6's clerk (common.AthlonDesk); the desks beside it (the data card and
+  // the records, HeartGold's other receptionists) only talk until plan 15 · E8. The way down to the event rooms
+  // (warp 1) and the stairs up to the stands (warp 2) stay shut: the events are played on their own board (rulings, "The
+  // Pokéathlon"). Whitney, who visits the lobby in HeartGold behind a flag nothing sets here, is left out
+  "area": "pokeathlon_dome_interior_1f",
+  "bgmTrack": "johto/route34",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "d49r0101_pcwoman1": {
+      "name": "Clerk",
+      "still": true,
+      "script": "AthlonDesk"
+    },
+    "d49r0101_pcwoman1_5": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [
+        "This desk keeps every course's best score. Enter a course at the desk beside me and set a record!"
+      ]
+    },
+    "d49r0101_pcwoman1_4": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [
+        "Athlete Points are earned in every course. The Athlete Shop on the square will take them once its goods come in."
+      ]
+    },
+    "d49r0101_pcwoman1_2": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [
+        "Downstairs are the rooms where the events are held. Today the courses run from the main desk, in the middle."
+      ]
+    },
+    "d49r0101_pcwoman1_3": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [
+        "The stands upstairs are closed today. Every seat will be filled when the big courses come!"
+      ]
+    },
+    "d49r0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Hurdle Dash is all about the timing of your jumps. Jump too soon and you land right on the hurdle!"
+      ]
+    },
+    "d49r0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "In Block Smash, switch your Pokémon when one gets tired. A tired Pokémon hits much more weakly."
+      ]
+    },
+    "d49r0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "In Ring Drop, keep away from the edge! A heavy push near the rim and you're off the platform."
+      ]
+    },
+    "d49r0101_gsman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "A Pokémon that never wins a battle can still win a course. That's what I love about this place."
+      ]
+    },
+    "d49r0101_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [
+        "I don't compete. I just come for the cheering!"
+      ]
+    },
+    "d49r0101_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "In my day we only had battles. Races and games for Pokémon! What a time to be young."
+      ]
+    },
+    "d49r0101_gsman2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Three Pokémon make a team, and no Eggs. Pick three that are good at different things!"
+      ]
+    }
+  },
+  "signs": {
+    "D49R0101_014+1": "The Pokéathlon Dome's lobby. The course reception is at the middle of the desk.",
+    "D49R0101_020+1": "A PC for the dome's records. Only the staff may use it.",
+    "D49R0101_004+1": "A trophy of the Pokéathlon: Speed.",
+    "D49R0101_005+1": "A trophy of the Pokéathlon: Power.",
+    "D49R0101_006+1": "A trophy of the Pokéathlon: Skill.",
+    "D49R0101_007+1": "A trophy of the Pokéathlon: Stamina.",
+    "D49R0101_008+1": "A trophy of the Pokéathlon: Jump.",
+    "D49R0101_009+1": "A photograph of a course's winners, beaming on the podium.",
+    "D49R0101_010+1": "A photograph of a Pokémon clearing a hurdle in mid-air.",
+    "D49R0101_011+1": "A photograph of a Pokémon smashing a stack of blocks.",
+    "D49R0101_012+1": "A photograph of two Pokémon pushing on a ring's edge.",
+    "D49R0101_013+1": "A photograph of the dome on its opening day, every seat filled."
+  }
+}

@@ -1,0 +1,146 @@
+{
+  // The Pokéathlon Dome's square (plan 20 · J13), west of Route 35's gate house: HeartGold's own map of it
+  // (MAP_POKEATHLON_DOME), the dome at its head and its lobby behind the three doors. The dome's owner stands by the
+  // way in with his Poliwrath, where HeartGold has him greet a first visit (his scene and its flag, FLAG_UNK_225, are
+  // left out: he stays to talk). The stall's keeper sells nothing until the dome's shop (plan 15 · E8). The square's song
+  // is Route 34's, as HeartGold's is
+  "area": "pokeathlon_dome",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "d49_thlonowner": {
+      "name": "Dome Owner",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [
+        "Welcome to the Pokéathlon Dome! I built it so that every Pokémon, strong in battle or not, has a place to shine.",
+        "The reception is inside. Bring three Pokémon and enter a course!"
+      ]
+    },
+    "d49_tsure_poke_static_poliwrath": {
+      "name": "Poliwrath",
+      "npcType": "Pokemon",
+      "species": "Poliwrath",
+      "still": true,
+      "hiddenBy": "",
+      "dialog": [ "Poliwrath flexed its arms. It looks ready for any event." ]
+    },
+    "d49_gsboy2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "My Oddish isn't fast and isn't strong, but it can jump! Every Pokémon is good at something here."
+      ]
+    },
+    "d49_tsure_poke_static_oddish": {
+      "name": "Oddish",
+      "npcType": "Pokemon",
+      "species": "Oddish",
+      "still": true,
+      "dialog": [ "Oddish hopped on the spot." ]
+    },
+    "d49_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "Meowth and I practise every morning on this square. Today we'll beat our best score!"
+      ]
+    },
+    "d49_tsure_poke_static_meowth": {
+      "name": "Meowth",
+      "npcType": "Pokemon",
+      "species": "Meowth",
+      "still": true,
+      "dialog": [ "Meowth stretched, as if warming up." ]
+    },
+    "d49_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "The Pokéathlon scores a Pokémon on five things: Speed, Power, Skill, Stamina and Jump. Which is your team best at?"
+      ]
+    },
+    "d49_tsure_poke_static_psyduck": {
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "species": "Psyduck",
+      "dialog": [ "Psyduck held its head. It seems to be thinking about the course." ]
+    },
+    "d49_tsure_poke_static_slowpoke": {
+      "name": "Slowpoke",
+      "npcType": "Pokemon",
+      "species": "Slowpoke",
+      "dialog": [ "Slowpoke yawned. It doesn't look like a racer." ]
+    },
+    "d49_tsure_poke_static_farfetchd": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "dialog": [ "Farfetch'd waved its leek like a baton." ]
+    },
+    "d49_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [
+        "My Pidgey and I walk round the square before every course. It loosens up its wings."
+      ]
+    },
+    "d49_tsure_poke_static_pidgey": {
+      "name": "Pidgey",
+      "npcType": "Pokemon",
+      "species": "Pidgey",
+      "dialog": [ "Pidgey flapped its wings." ]
+    },
+    "d49_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My Slowbro came last in every race. It doesn't mind at all, and neither do I!"
+      ]
+    },
+    "d49_tsure_poke_static_slowbro": {
+      "name": "Slowbro",
+      "npcType": "Pokemon",
+      "species": "Slowbro",
+      "dialog": [ "Slowbro gazed into the distance." ]
+    },
+    "d49_gsman3_2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Machop is all Power. In Block Smash nobody comes near it!"
+      ]
+    },
+    "d49_tsure_poke_static_machop": {
+      "name": "Machop",
+      "npcType": "Pokemon",
+      "species": "Machop",
+      "still": true,
+      "dialog": [ "Machop punched the air." ]
+    },
+    "d49_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "I run a lap of the square every day. If my Pokémon train, so should I!"
+      ]
+    },
+    "d49_gsmiddleman1_2": {
+      "name": "Man",
+      "dialog": [
+        "The dome was built where the old road ran to the National Park. The cheering carries all the way to the gate!"
+      ]
+    },
+    "d49_shopm1_2": {
+      "name": "Stall Keeper",
+      "still": true,
+      "dialog": [
+        "This is the Athlete Shop's stall. The goods for Athlete Points haven't come in yet. Do come back!"
+      ]
+    }
+  },
+  "signs": {
+    "D49_019+1": "The Athlete Shop. Goods for Athlete Points.",
+    "D49_020+1": "The Athlete Shop. Goods for Athlete Points.",
+    "D49_021+1": "The Athlete Shop. Goods for Athlete Points.",
+    "D49_022+1": "The Pokéathlon Dome's square. The dome is straight ahead.",
+    "D49_023+1": "Pokéathlon Dome\nWhere Pokémon run, jump and throw!"
+  }
+}

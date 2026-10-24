@@ -537,6 +537,8 @@ public static class RegionDatabase
                 "IndigoLeague_PokemonCenter_1F", "IndigoLeague_PokemonCenter_B1F", "IndigoLeague_WillRoom",
                 "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom", "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom",
                 "IndigoLeague_HallOfFame",
+                // Plan 20 · J13: the Pokéathlon Dome's square west of Route 35's gate house, and its lobby
+                "PokeathlonDome", "PokeathlonDome_1F",
                 // Plan 20 · J11, part a: the Team Rocket Hideout under Mahogany's souvenir shop
                 "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F",
                 // Plan 20 · J11, part b: Goldenrod's takeover, the Radio Tower's upper floors and the ways under the city
