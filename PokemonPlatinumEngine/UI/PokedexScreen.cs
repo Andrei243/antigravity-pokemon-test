@@ -73,9 +73,18 @@ public class PokedexScreen
     /// The looks of the species selected, in the order they were first seen. A species seen with no look recorded
     /// (a save rebuilt without one) has its own form, no gender known, so the page is never empty.
     /// </summary>
-    public IReadOnlyList<SeenLook> Looks => Selected is { } entry
-        ? pokedex.LooksOf(entry.Species.DexNumber) is { Count: > 0 } seen ? seen : new[] { new SeenLook(entry.Species.Name, Gender.Genderless) }
-        : System.Array.Empty<SeenLook>();
+    public IReadOnlyList<SeenLook> Looks => Selected is { } entry ? LooksOf(entry.Species) : System.Array.Empty<SeenLook>();
+
+    /// <summary>
+    /// A species' looks as its FORMS page shows them: those seen, and after them its shiny look once one has been
+    /// caught shiny (plan 09 · L1; its name is the species' look name, <c>Gyarados+s</c>).
+    /// </summary>
+    private IReadOnlyList<SeenLook> LooksOf(PokemonSpecies species)
+    {
+        IReadOnlyList<SeenLook> seen = pokedex.LooksOf(species.DexNumber) is { Count: > 0 } looks ? looks : new[] { new SeenLook(species.Name, Gender.Genderless) };
+        if (!pokedex.IsCaughtShiny(species.DexNumber)) return seen;
+        return seen.Append(new SeenLook(PokemonLook.Shiny(species.Name), Gender.Genderless)).ToList();
+    }
 
     /// <summary>The look the cursor is on.</summary>
     public SeenLook? LookChosen => Looks.Count == 0 ? null : Looks[Math.Clamp(FormsIndex, 0, Looks.Count - 1)];

@@ -112,6 +112,10 @@ internal static partial class MoveFx
             case CueKind.Tera:
                 Terastallization(c, fx);
                 break;
+            // A shiny Pokémon's sparkle as it comes out (plan 09 · L1)
+            case CueKind.Shiny:
+                ShinySparkle(c, fx);
+                break;
         }
     }
 

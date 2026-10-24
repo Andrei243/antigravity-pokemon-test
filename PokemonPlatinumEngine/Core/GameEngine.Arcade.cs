@@ -23,8 +23,8 @@ public partial class GameEngine
         // Both threes stand beside the board: their pictures are asked for as it opens
         foreach (var pokemon in flow.Arcade.Team.Members.Concat(flow.Arcade.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
-            flow.WantModel(pokemon.ModelName);
-            Graphics.PokemonSprites.Request(pokemon.ModelName);
+            flow.WantModel(pokemon.LookName);
+            Graphics.PokemonSprites.Request(pokemon.LookName);
         }
         flow.ArcadeBoardScreen.Open(flow.Arcade);
         flow.State = GameState.ArcadeBoard;

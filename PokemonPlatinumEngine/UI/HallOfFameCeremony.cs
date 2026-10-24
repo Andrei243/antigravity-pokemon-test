@@ -246,9 +246,9 @@ public sealed class HallOfFameCeremony
         {
             if (!(together ? TeamSlide(i) > 0.01f : i == Member)) continue;
             // The models were asked for and waited on behind the fade that opened the scene
-            if (!PokemonModels.TryGet(team[i].ModelName, out var model))
+            if (!PokemonModels.TryGet(team[i].LookName, out var model))
             {
-                PokemonModels.Request(team[i].ModelName);
+                PokemonModels.Request(team[i].LookName);
                 continue;
             }
             PokemonSprites.Render(renderContext, model, SpriteView.Front, new PokePose { Time = time + i * 0.37f }, pictures[i]);

@@ -51,7 +51,7 @@ public sealed class Follower
     public static void Dress(NPC body, Pokemon pokemon)
     {
         body.NpcType = NPC.PokemonType;
-        body.Species = pokemon.ModelName;
+        body.Species = pokemon.LookName;
         body.Name = pokemon.DisplayName;
     }
 

@@ -35,6 +35,19 @@ public class Pokedex
     public HashSet<int> SeenSpecies { get; } = new();
     public HashSet<int> CaughtSpecies { get; } = new();
 
+    /// <summary>The species caught shiny, by National number (plan 09 · L1): an entry can show their shiny look. Saved as a list of numbers.</summary>
+    public HashSet<int> CaughtShiny { get; } = new();
+
+    /// <summary>A species caught shiny: caught, and its shiny look known (a save's list, read back).</summary>
+    public void RegisterCaughtShiny(int dexNumber)
+    {
+        RegisterCaught(dexNumber);
+        CaughtShiny.Add(dexNumber);
+    }
+
+    /// <summary>Whether one of a species has been caught shiny.</summary>
+    public bool IsCaughtShiny(int dexNumber) => CaughtShiny.Contains(dexNumber);
+
     public int SeenCount => SeenSpecies.Count;
     public int CaughtCount => CaughtSpecies.Count;
 
@@ -86,6 +99,7 @@ public class Pokedex
     {
         RegisterSeen(pokemon);
         RegisterCaught(pokemon.Species.DexNumber);
+        if (pokemon.IsShiny && !pokemon.IsEgg) CaughtShiny.Add(pokemon.Species.DexNumber);
     }
 
     /// <summary>A look met without a Pokémon in hand (the battle log's <see cref="Battle.Seen"/>: a species, its form and gender).</summary>
@@ -132,6 +146,7 @@ public class Pokedex
     {
         SeenSpecies.Clear();
         CaughtSpecies.Clear();
+        CaughtShiny.Clear();
         looks.Clear();
         SpindaPersonality = null;
         NationalUnlocked = false;

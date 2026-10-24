@@ -169,7 +169,7 @@ public sealed class BattleRenderer
                 var shown = slot < anim.Slots ? anim[s, slot].Shown : null;
                 if (shown != null)
                 {
-                    var model = PokemonModels.Get(shown.ModelName);
+                    var model = PokemonModels.Get(shown.LookName);
                     // A Dynamaxed Pokémon stands giant, and the effects are sized for it (plan 25 · Y15)
                     float scale = ModelScale(model, isPlayer, anim) * BattleAnimator.GiantOf(anim[s, slot], isPlayer);
                     height = model.Height * scale;
@@ -283,10 +283,10 @@ public sealed class BattleRenderer
         {
             var foe = anim[BattleSide.Enemy, slot];
             if (foe.Present && foe.Shown != null && Appear(anim, foe, false).Visible)
-                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.ModelName).Fill);
+                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.LookName).Fill);
             var mine = anim[BattleSide.Player, slot];
             if (mine.Present && mine.Shown != null && Appear(anim, mine, true).Visible)
-                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.ModelName).Fill);
+                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.LookName).Fill);
             for (int side = 0; side < 2; side++)
             {
                 var s = (BattleSide)side;
@@ -803,7 +803,7 @@ public sealed class BattleRenderer
         var a = Appear(anim, v, isPlayer);
         if (!a.Visible) return;
 
-        var model = PokemonModels.Get(v.Shown.ModelName);
+        var model = PokemonModels.Get(v.Shown.LookName);
         var view = isPlayer ? SpriteView.Back : SpriteView.Front;
         var framing = PokemonSprites.Framing(model, view, PokemonSprites.Size);
         var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);

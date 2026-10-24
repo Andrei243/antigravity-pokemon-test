@@ -566,6 +566,10 @@ public partial class BattleEngine
                     Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
                     AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side));
                 }
+                // A shiny one sparkles as it comes out (plan 09 · L1): the screen's alone, as the Seals are; with the
+                // scene off, as the original's other animations that are no moves, it doesn't
+                if (pokemon.IsShiny && !pokemon.IsEgg && Scene && Anim.ShinySparkle(entered.Place.Side, entered.Place.Slot, entered.FromBall) is { } sparkle)
+                    After(sparkle.Lead, () => Sound("shiny", entered.Place.Side));
                 break;
             }
             case CameInWith brought:

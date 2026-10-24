@@ -733,6 +733,13 @@ public class Pokemon
 
     /// <summary>The name its model and sprites are asked for by: its form's, or its species'.</summary>
     public string ModelName => Form ?? Species.Name;
+
+    /// <summary>
+    /// The name this very Pokémon's look is asked for by (plan 09 · L1): its <see cref="ModelName"/>, with
+    /// <c>+s</c> after it when it is shiny (<see cref="PokemonLook"/>). Whatever shows a particular Pokémon (its model in
+    /// battle, its menu sprites, its field sprite) asks by this; a cry, a size or the data go by <see cref="ModelName"/>.
+    /// </summary>
+    public string LookName => IsShiny && !IsEgg ? PokemonLook.Shiny(ModelName) : ModelName;
     /// <summary>Down and out, or an Egg: either way it can't be sent into battle or chosen to fight.</summary>
     public bool IsFainted => IsEgg || CurrentHP <= 0 || Status == StatusCondition.Faint;
 

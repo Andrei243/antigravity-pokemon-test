@@ -318,8 +318,12 @@ internal static partial class ModernUi
     }
 
     /// <summary>The name a look is shown by: the species' own, or its form's display name.</summary>
-    public static string LookName(PokemonSpecies species, SeenLook look) =>
-        look.Name == species.Name ? species.DisplayName : species.Forms?.FirstOrDefault(f => f.Name == look.Name)?.DisplayName(species.Name) ?? look.Name;
+    public static string LookName(PokemonSpecies species, SeenLook look)
+    {
+        // A shiny look is named as its model is, the star beside it telling it apart (plan 09 · L1)
+        string name = PokemonLook.Base(look.Name);
+        return name == species.Name ? species.DisplayName : species.Forms?.FirstOrDefault(f => f.Name == name)?.DisplayName(species.Name) ?? name;
+    }
 
     /// <summary>
     /// FORMS (plan 08 · P19): the looks seen of the species as cards, Unown's marks in the order met, and the look under
@@ -352,6 +356,9 @@ internal static partial class ModernUi
         var lines = nameW > room ? Wrap(name, room, size) : new List<string> { name };
         if (lines.Count > 2) { size = 30; lines = Wrap(name, room, size); }
         for (int i = 0; i < lines.Count; i++) UiFonts.Draw(lines[i], x, detail.Y + 212 + i * (size + 8), size, Ink, UiWeight.Black);
+        // The shiny look's star after its name (plan 09 · L1)
+        if (PokemonLook.IsShiny(chosen.Name))
+            ShinyStarAfter(x + UiFonts.Measure(lines[^1], size, UiWeight.Black), detail.Y + 212 + (lines.Count - 1) * (size + 8) + size * 0.55f, size);
         float gy = detail.Y + 212 + lines.Count * (size + 8) + 24;
         if (chosen.Gender != Gender.Genderless)
         {
@@ -385,6 +392,7 @@ internal static partial class ModernUi
                 var centre = new Vector2(r.X + r.Width / 2f, r.Y + r.Height / 2f + 4);
                 PixelArt(PixelArtGenerator.GetPokemonIcon(look.Name), centre, 2, selected && inCards ? Hop(true) * 2 : 0, selected || !inCards ? Color.White : new Color(255, 255, 255, 215));
                 if (look.Gender != Gender.Genderless) UiIcons.GenderMark(new Vector2(r.X + r.Width - 20, r.Y + 20), 22, look.Gender);
+                if (PokemonLook.IsShiny(look.Name)) UiIcons.ShinyStar(new Vector2(r.X + 20, r.Y + 20), 24);
             }
         int rows = (looks.Count + PokedexScreen.FormsColumns - 1) / PokedexScreen.FormsColumns;
         if (rows > PokedexScreen.FormsVisibleRows)

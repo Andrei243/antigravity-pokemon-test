@@ -363,6 +363,9 @@ public class SaveData
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
 
+    /// <summary>The species caught shiny, by National number (plan 09 · L1): the Pokédex can show their shiny look. Empty in a save from before.</summary>
+    public List<int> CaughtShiny { get; set; } = new();
+
     /// <summary>
     /// The looks the Pokédex has seen, species by species in the order first seen (plan 08 · P19); empty in a save from
     /// before, which is rebuilt as it loads from the Pokémon the player has (<see cref="Models.Pokedex.RebuildLooksFrom"/>).

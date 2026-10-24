@@ -479,7 +479,7 @@ internal static partial class ModernUi
         UiShapes.Fill(picture, 0, QualityColor(photo.Category) with { A = 36 });
 
         var c = new Vector2(picture.X + picture.Width / 2f, picture.Y + picture.Height * 0.62f);
-        string model = photo.Form ?? photo.Species;
+        string model = PokemonLook.Of(photo.Form ?? photo.Species, photo.Shiny);
         var sprite = PixelArtGenerator.GetPokemonSprite(model, false);
         const int scale = 4;
         var worn = photo.Accessories.Select(SuperContestDatabase.Accessory).Where(a => a >= 0).ToList();

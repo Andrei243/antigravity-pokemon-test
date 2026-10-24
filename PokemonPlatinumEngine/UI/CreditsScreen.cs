@@ -285,9 +285,9 @@ public sealed class CreditsScreen
         var pokemon = team[look.Member];
         // A model that isn't built is asked for and waited on behind the fade that opened the credits; one let go of
         // since is simply not shown until it is back
-        if (!PokemonModels.TryGet(pokemon.ModelName, out var model))
+        if (!PokemonModels.TryGet(pokemon.LookName, out var model))
         {
-            PokemonModels.Request(pokemon.ModelName);
+            PokemonModels.Request(pokemon.LookName);
             pictured = -1;
             return;
         }

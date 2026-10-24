@@ -88,8 +88,8 @@ public sealed class EvolutionScreen
         this.context = context;
         Cancellable = cancellable;
         // The models shown: the forms it is in and goes into, where it has one (plan 03 · D11)
-        fromSpecies = pokemon.ModelName;
-        toSpecies = Evolution.ModelAfter(pokemon, evolution);
+        fromSpecies = pokemon.LookName;
+        toSpecies = PokemonLook.Of(Evolution.ModelAfter(pokemon, evolution), pokemon.IsShiny);
         oldName = pokemon.DisplayName;
         Outcome = null;
         MoveToLearn = null;

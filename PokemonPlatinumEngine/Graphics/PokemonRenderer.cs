@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using Raylib_cs;
 
@@ -20,8 +21,10 @@ internal static class PokemonRenderer
             return;
         }
         int bones = m.Skeleton.Count;
-        m.Body = SkinnedModel.Upload(m.Mesh, bones);
-        m.Outline = SkinnedModel.Upload(m.Shell, bones);
+        // A shiny look puts the same mesh up in its palette's colours (plan 09 · L1); the mesh itself is never changed
+        Func<Color, Color>? recolor = m.Palette is { } palette ? palette.Map : null;
+        m.Body = SkinnedModel.Upload(m.Mesh, bones, recolor: recolor);
+        m.Outline = SkinnedModel.Upload(m.Shell, bones, recolor: recolor);
         if (m.DecalPatch != null && m.DecalUVs != null && m.DecalPatch.TriangleCount > 0)
         {
             m.DecalModel = SkinnedModel.Upload(m.DecalPatch, bones, m.DecalUVs, _ => Color.White);

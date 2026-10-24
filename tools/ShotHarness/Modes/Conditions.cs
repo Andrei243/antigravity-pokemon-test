@@ -29,6 +29,11 @@ partial class Harness
             LaterFieldMode();
             return;
         }
+        if (Environment.GetEnvironmentVariable("CONDITIONS_FROM") == "shiny")
+        {
+            ShinyMode();
+            return;
+        }
         if (Environment.GetEnvironmentVariable("CONDITIONS_FROM") == "speaks")
         {
             SpeakingMode();
@@ -164,6 +169,8 @@ partial class Harness
         BodiesMode();
         // The field of the later games (plan 06 · R19b, Modes/ConditionsLater.cs), after it for the same reason
         LaterFieldMode();
+        // Shiny Pokémon and their sparkle (plan 09 · L1, Modes/ConditionsShiny.cs), after it for the same reason
+        ShinyMode();
     }
 
     // A battle with the scene off (plan 08 · P1): in the rain, whose layer comes in with no cue (96_scene_off_menu); a

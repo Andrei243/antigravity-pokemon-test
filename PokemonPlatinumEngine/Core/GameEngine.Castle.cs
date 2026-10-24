@@ -38,8 +38,8 @@ public partial class GameEngine
         if (flow.Castle == null) return;
         foreach (var pokemon in flow.Castle.Team.Members.Concat(flow.Castle.Foe?.Pokemon ?? Enumerable.Empty<Models.Pokemon>()))
         {
-            flow.WantModel(pokemon.ModelName);
-            Graphics.PokemonSprites.Request(pokemon.ModelName);
+            flow.WantModel(pokemon.LookName);
+            Graphics.PokemonSprites.Request(pokemon.LookName);
         }
     }
 
