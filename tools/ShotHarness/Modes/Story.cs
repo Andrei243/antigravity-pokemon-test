@@ -565,5 +565,30 @@ partial class Harness
         }
         Until(() => !engine.ScriptRunning, "the assistant's words to end", 300);
         Console.WriteLine($"upgrade: {upgrade.Count - 1} lines said, the flag {story.Has(StoryState.FormDetectionFlag)} after");
+
+        // ---- the text box's markup (plan 09 · L3), the very last so that nothing before it moves: a line of each kind
+        // put straight into the box (the player's name coloured by look, red and blue runs, a break, an amount of money),
+        // a line held at its pause half way, and the backlog opened over the last line. It prints what the box has
+        // typed at each moment and how many lines the backlog holds
+        At("Sinnoh", tx, ty + 3, Direction.Up);
+        Frames(10);
+        var markup = Box();
+        markup.ShowDialogue("Barry", new[]
+        {
+            "Hey, {player}! This is {red:red}, this is {blue:blue}{br}and {money 1500} of mine.",
+            "Wait for it...{pause 2} there!"
+        });
+        Frames(1);
+        Whole(); Shot("st9h_markup_runs");
+        markup.Advance();
+        Frames(30);
+        Console.WriteLine($"markup: typed so far \"{markup.VisibleText}\" before the pause");
+        Shot("st9i_markup_pause");
+        Whole();
+        Console.WriteLine($"markup: backlog holds {markup.Log.Count} lines");
+        markup.OpenBacklog(); Frames(4); Shot("st9j_backlog");
+        markup.CloseBacklog();
+        markup.Close();
+        Frames(2);
     }
 }

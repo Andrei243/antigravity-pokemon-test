@@ -85,7 +85,10 @@ public static class Lines
             found.Add(new Finding(Kind.EmptyLine, file, name, "an empty line: the text box would come up with nothing in it"));
             return;
         }
-        string filled = Filled(line);
+        // The markup (plan 09 · L3) is checked as written and then taken out: the box wraps what is read
+        foreach (string problem in RichText.Problems(line))
+            found.Add(new Finding(Kind.TooWide, file, name, $"the text box's markup is wrong: {problem}: \"{Short(line)}\""));
+        string filled = Filled(RichText.Plain(line));
         foreach (string? speaker in speakers)
             if (speaker is { Length: > 0 } && filled.StartsWith(Filled(speaker) + ": ", StringComparison.Ordinal))
             {

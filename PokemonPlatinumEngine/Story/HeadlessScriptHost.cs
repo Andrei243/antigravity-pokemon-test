@@ -378,7 +378,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool PcOn { get; private set; }
     public int MachineBalls { get; private set; }
 
-    private string Named(string text) => PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName);
+    private string Named(string text) => PokemonPlatinumEngine.UI.Kit.RichText.Plain(PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName));
 
     // ------------------------------------------------------------------ the field
 
