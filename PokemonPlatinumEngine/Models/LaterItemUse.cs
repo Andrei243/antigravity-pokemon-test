@@ -61,7 +61,7 @@ public static class LaterItemUse
             case Mint:
                 return MintOf(item) is { } nature && p.StatNature != nature;
             case ExpCandy:
-                return p.Level < 100 && ExpOf(item) > 0;
+                return !p.AtTheCap && ExpOf(item) > 0;
             case AbilityCapsule:
                 // Between its two, never from or to the hidden one
                 return Regular(p).Count >= 2 && p.AbilityName != null && Regular(p).Contains(p.AbilityName);
@@ -95,7 +95,7 @@ public static class LaterItemUse
             {
                 int friendship = p.Friendship, oldMax = p.MaxHP, oldLevel = p.Level;
                 bool fainted = p.IsFainted;
-                int exp = Math.Min(ExpOf(item), Math.Max(0, Pokemon.GetExpForLevel(100, p.Species.GrowthRate) - p.CurrentExp));
+                int exp = Math.Min(ExpOf(item), Math.Max(0, Pokemon.GetExpForLevel(Pokemon.Cap, p.Species.GrowthRate) - p.CurrentExp));
                 p.GainExp(exp, out var learned, out var wanted);
                 // As a Rare Candy: the levels' own friendship is a battle's, and a fainted Pokémon comes round with what they added
                 p.Friendship = friendship;

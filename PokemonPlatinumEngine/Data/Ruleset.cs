@@ -166,8 +166,22 @@ public sealed class Ruleset
     /// <summary>How far a vitamin raises a stat's effort: 100 in Platinum, the stat's cap from Generation 8.</summary>
     public int VitaminLimit { get; private init; } = 100;
 
-    /// <summary>Whether a Pokémon at level 100 still gains effort from a battle (Generation 5 on); in Platinum it gains nothing.</summary>
-    public bool EvsAtLevel100 { get; private init; }
+    /// <summary>Whether a Pokémon at the level cap still gains effort from a battle (Generation 5 on); in Platinum it gains nothing.</summary>
+    public bool EvsAtTheCap { get; private init; }
+
+    /// <summary>
+    /// The highest level any rules let a Pokémon reach (plan 18 · W4, the user's ruling of 2026-10-21): 260, the study's
+    /// fair climb under the modern EXP, so that a team carried from Sinnoh to Paldea stays a step ahead of every
+    /// region's Champion. Whatever level a Pokémon is made or loaded at is held between 1 and this.
+    /// </summary>
+    public const int HighestLevel = 260;
+
+    /// <summary>
+    /// The level no Pokémon grows past under these rules (plan 18 · W4): 100 in Platinum, <see cref="HighestLevel"/> by
+    /// the modern rules, under which each later region's levels climb past 100 (the region file's <c>levels</c>,
+    /// <see cref="LevelMapping"/>). A battle's EXP, the Rare Candy, the EXP Candies and the Day Care stop there.
+    /// </summary>
+    public int LevelCap { get; private init; } = 100;
 
     /// <summary>One wild or new Pokémon in how many is shiny: 8,192 in Platinum, 4,096 from Generation 6.</summary>
     public int ShinyOdds { get; private init; } = 8192;
@@ -310,7 +324,8 @@ public sealed class Ruleset
         ScaledExp = true,
         EvStatCap = 252,
         VitaminLimit = 252,
-        EvsAtLevel100 = true,
+        EvsAtTheCap = true,
+        LevelCap = HighestLevel,
         ShinyOdds = 4096,
         PoisonInTheField = false,
         EverstoneAlwaysPassesNature = true,
