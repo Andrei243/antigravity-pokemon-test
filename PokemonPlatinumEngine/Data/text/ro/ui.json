@@ -284,6 +284,15 @@
         "On": "Cu Insigna și HM-ul în rucsac, un ajutor sălbatic face pentru tine Tăiere, Zbor, Surf, Forță, Risipire, Spărgător de Pietre, Cascadă și Cățărare."
       }
     },
+    "partyTools": {
+      "label": "Amintire și redenumire",
+      "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
+      "help": {
+        "Off": "Meniul unui Pokémon din echipă are doar rezumatul, mișcările de teren și SCHIMBĂ.",
+        "Rules": "Regulile din Platinum lasă meniul cum este; regulile moderne adaugă AMINTEȘTE, care îi reînvață o mișcare uitată, și REDENUMEȘTE.",
+        "On": "Meniul unui Pokémon din echipă are și AMINTEȘTE, care îi reînvață gratuit o mișcare pe care ar fi putut-o învăța până acum, și REDENUMEȘTE pentru Pokémonii tăi."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -414,6 +423,56 @@
       "way": "Călătoria ține multă vreme. În sfârșit, {to} se află în față."
     }
   },
+
+  "run": {
+    "heading": "MODURI DE JOC",
+    "sub": "Alese o singură dată, doar pentru acest joc. Normal este jocul așa cum a fost făcut.",
+    "none": "Niciunul",
+    "shinyOwn": "După reguli",
+    "shinyOdds": "1 din {n}",
+    "preset": { "normal": "NORMAL", "nuzlocke": "NUZLOCKE", "hardcore": "HARDCORE", "custom": "PERSONALIZAT" },
+    "difficulty": { "Easy": "Ușor", "Normal": "Normal", "Challenge": "Provocare" },
+    "hint": { "start": "Start" },
+    "row": {
+      "Preset": "Presetare",
+      "Difficulty": "Dificultate",
+      "LevelCap": "Limită de nivel după Insignă",
+      "ScaleTrainers": "Antrenorii se potrivesc echipei",
+      "Nuzlocke": "Nuzlocke",
+      "DupesClause": "Clauza duplicatelor",
+      "ShinyClause": "Clauza shiny",
+      "GiftsCount": "Darurile contează ca prindere",
+      "Monotype": "Un singur tip",
+      "PartyLimit": "Mărimea echipei",
+      "NoBattleItems": "Fără obiecte în luptă",
+      "NoCenter": "Fără Centru Pokémon",
+      "NoCatching": "Fără prinderi",
+      "NoRunning": "Fără fugă",
+      "SetStyle": "Doar lupte Fixe",
+      "ShinyOdds": "Șansa de shiny",
+      "Start": "START"
+    },
+    "help": {
+      "Preset": "Un set de alegeri cu care să începi. Normal nu schimbă nimic. Apăsând A aici începi jocul așa cum e ales.",
+      "Difficulty": "Ușor și Provocare schimbă cât de puternici sunt antrenorii. Provocare le dă celor importanți și mai mulți Pokémoni și obiecte.",
+      "LevelCap": "Pokémonii nu mai primesc Exp. peste nivelul următorului Lider de Sală până când ai Insigna.",
+      "ScaleTrainers": "Antrenorii sunt ridicați sau coborâți ca să rămână aproape de nivelul Pokémonului tău din față.",
+      "Nuzlocke": "Un Pokémon care leșină e pierdut pentru totdeauna și doar primul Pokémon sălbatic din fiecare zonă poate fi prins.",
+      "DupesClause": "O specie pe care o ai deja, sau una care evoluează din ea, nu consumă singura prindere a zonei.",
+      "ShinyClause": "Un Pokémon shiny poate fi prins oricând, oricare ar fi prinderea zonei.",
+      "GiftsCount": "Un Pokémon primit în dar contează ca prinderea zonei.",
+      "Monotype": "Fiecare Pokémon pe care îl folosești trebuie să fie de acest tip.",
+      "PartyLimit": "Câți Pokémoni poți purta. Ceilalți merg în PC.",
+      "NoBattleItems": "Nicio parte nu poate folosi obiecte în luptă.",
+      "NoCenter": "Centrele Pokémon nu îți vindecă echipa.",
+      "NoCatching": "Pokémonii sălbatici nu pot fi prinși.",
+      "NoRunning": "Nu poți fugi din luptele cu Pokémoni sălbatici.",
+      "SetStyle": "Stilul de luptă este Fix, iar schimbarea nu e oferită niciodată.",
+      "ShinyOdds": "Cât de des e un Pokémon shiny. „După reguli” este șansa obișnuită a jocului.",
+      "Start": "Începe jocul cu aceste alegeri. Nu mai pot fi schimbate după aceea."
+    }
+  },
+
 
   "athlon": {
     "title": "POKÉATHLON",
@@ -565,7 +624,20 @@
     "hpValue": "{hp} / {max}",
     "lead": "PRIMUL",
     "waitingToHatch": "Așteaptă să eclozeze",
-    "action": { "summary": "REZUMAT", "switch": "SCHIMBĂ", "cancel": "ANULEAZĂ" },
+    "action": { "summary": "REZUMAT", "switch": "SCHIMBĂ", "cancel": "ANULEAZĂ", "remember": "AMINTEȘTE", "rename": "REDENUMEȘTE" },
+    "remember": {
+      "title": "MIȘCĂRI DE REAMINTIT",
+      "prompt": "Ce mișcare să-și amintească?",
+      "nothing": "{name} nu are nicio mișcare de reamintit.",
+      "learned": "{name} și-a amintit {move}.",
+      "count": "{n} / {total}"
+    },
+    "rename": {
+      "title": "NUME PENTRU {name}",
+      "blurb": "Cel mult zece litere. Lasă gol ca să revii la {species}.",
+      "done": "{name} are un nume nou.",
+      "reset": "{name} și-a primit înapoi numele."
+    },
     "tag": {
       "able": "POATE",
       "notAble": "NU POATE",
@@ -893,6 +965,7 @@
     "Basic": "Bază", "Toxic": "Toxic", "Insect": "Insectă", "Bolt": "Fulger", "Quake": "Cutremur", "Jet": "Jet", "Legend": "Legendă", "Wave": "Val"
   },
   "card": {
+    "runSub": "Cum se joacă acest joc. Ales la început și neschimbat apoi.",
     "title": "CARD DE ANTRENOR",
     "id": "Nr. ID {id}",
     "money": "BANI",
@@ -3808,7 +3881,7 @@
     "SootopolisCity": "Orașul Sootopolis",
     "Route128": "Ruta 128",
     "SeafloorCavern": "Caverna de pe Fundul Mării",
-    "CaveOfOrigin": "Peștera Originilor",
+    "CaveOfOrigin": "Peștera Originii",
     "Underwater126": "Sub apă 126",
     "Underwater127": "Sub apă 127",
     "Underwater128": "Sub apă 128"
