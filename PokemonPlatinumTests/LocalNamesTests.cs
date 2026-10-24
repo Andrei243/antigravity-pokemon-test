@@ -73,7 +73,7 @@ public class LocalNamesTests
         // (plan 06 · R29 brought eleven items in: the key items that change a form and Legends: Arceus's three)
         // (and plan 21 · H3, part b three more: the Mach and Acro Bikes and the Orange Mail; and plan 21 · H4, part a four:
         // the Go-Goggles, the Soot Sack, the Harbor Mail and the Meteorite; plan 19 · K7 the Tri-Pass; plan 19 · K9, part a the Ruby and the Rainbow Pass; and five whose names the import of wave 41 found: plan 19 · K9's Sapphire, plan 21 · H6's Devon Scope and H7's Magma Emblem, plan 20 · J11's Basement Key and Rainbow Wing)
-        Assert.Equal((764, 305, 556), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
+        Assert.Equal((764, 305, 561), (LocalNames.Section("fr", "descriptions.moves").Count, LocalNames.Section("fr", "descriptions.abilities").Count,
             LocalNames.Section("fr", "descriptions.items").Count));
         Assert.Equal(191, LocalNames.Section("de", "descriptions.abilities").Count);
         Assert.Empty(LocalNames.Section("es", "descriptions.moves"));

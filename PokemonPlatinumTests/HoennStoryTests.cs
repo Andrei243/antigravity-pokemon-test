@@ -2151,7 +2151,8 @@ public class HoennStoryTests
 
         game.Arrive("Hoenn", 507, 80);
         foreach (string who in new[] { "wailmer_1", "wailmer_1b", "wailmer_2", "wailmer_3d", "aqua_member_m", "aqua_member_m_5" })
-            Assert.Null(game.Present(who));
+            // (Lilycove's own: other areas of the overworld have an aqua_member_m of their own)
+            Assert.True(!game.Map.NPCs.Any(n => n.Key == who && game.Map.ScriptFileAt(n.GridX, n.GridY) == "lilycove_city"), $"{who} is still in Lilycove City");
         Assert.Contains(game.Talk("sailor").Transcript, l => l.Text.Contains("east"));
     }
 

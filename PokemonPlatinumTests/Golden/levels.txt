@@ -120,6 +120,15 @@ trainers 4, 23-28: black_belt_colby 27, black_belt_darren 25, black_belt_jeffery
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== aqua_hideout_1f
+Aqua Hideout
+trainers 1, 32: hoenn_grunt_aqua_hideout_1 32
+=== aqua_hideout_b1f
+Aqua Hideout
+trainers 4, 31-32: hoenn_grunt_aqua_hideout_2 31, hoenn_grunt_aqua_hideout_3 32, hoenn_grunt_aqua_hideout_5 32, hoenn_grunt_aqua_hideout_7 31
+=== aqua_hideout_b2f
+Aqua Hideout
+trainers 3, 32: hoenn_grunt_aqua_hideout_4 32, hoenn_grunt_aqua_hideout_6 32, hoenn_grunt_aqua_hideout_8 32
 === aspertia_city
 Aspertia City
 surf 5-15
@@ -666,6 +675,36 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+=== magma_hideout_1f
+Magma Hideout
+grass 27-33
+trainers 2, 29: hoenn_grunt_magma_hideout_1 29, hoenn_grunt_magma_hideout_2 29
+=== magma_hideout_2f_1r
+Magma Hideout
+grass 27-33
+trainers 4, 28-29: hoenn_grunt_magma_hideout_14 29, hoenn_grunt_magma_hideout_3 29, hoenn_grunt_magma_hideout_4 28, hoenn_grunt_magma_hideout_5 28
+=== magma_hideout_2f_2r
+Magma Hideout
+grass 27-33
+trainers 4, 29: hoenn_grunt_magma_hideout_15 29, hoenn_grunt_magma_hideout_6 29, hoenn_grunt_magma_hideout_7 29, hoenn_grunt_magma_hideout_8 29
+=== magma_hideout_2f_3r
+Magma Hideout
+grass 27-33
+=== magma_hideout_3f_1r
+Magma Hideout
+grass 27-33
+trainers 2, 29: hoenn_grunt_magma_hideout_16 29, hoenn_grunt_magma_hideout_9 29
+=== magma_hideout_3f_2r
+Magma Hideout
+grass 27-33
+trainers 1, 29: hoenn_grunt_magma_hideout_10 29
+=== magma_hideout_3f_3r
+Magma Hideout
+grass 27-33
+=== magma_hideout_4f
+Magma Hideout
+grass 27-33
+trainers 4, 26-33: hoenn_grunt_magma_hideout_11 29, hoenn_grunt_magma_hideout_12 29, hoenn_grunt_magma_hideout_13 29, hoenn_tabitha_magma_hideout 33
 === mahogany_gym_leader_room
 Mahogany Town
 trainers 3, 25-29: johto_boarder_deandre 26, johto_boarder_gerardo 26, johto_skier_jill 29

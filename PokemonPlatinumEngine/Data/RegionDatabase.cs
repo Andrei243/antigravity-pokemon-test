@@ -621,6 +621,9 @@ public static class RegionDatabase
                 "LilycoveCity_PokemonTrainerFanClub", "LilycoveCity_MoveDeletersHouse", "LilycoveCity_House1", "LilycoveCity_House2",
                 "LilycoveCity_House3", "LilycoveCity_House4", "Route123_BerryMastersHouse", "MtPyre_1F", "MtPyre_2F", "MtPyre_3F",
                 "MtPyre_4F", "MtPyre_5F", "MtPyre_6F", "MtPyre_Exterior", "MtPyre_Summit",
+                // Plan 21 · H7, part b: Team Magma's and Team Aqua's hideouts
+                "MagmaHideout_1F", "MagmaHideout_2F_1R", "MagmaHideout_2F_2R", "MagmaHideout_2F_3R", "MagmaHideout_3F_1R",
+                "MagmaHideout_3F_2R", "MagmaHideout_3F_3R", "MagmaHideout_4F", "AquaHideout_1F", "AquaHideout_B1F", "AquaHideout_B2F",
             }
         },
         new()
@@ -699,26 +702,28 @@ public static class RegionDatabase
     /// <summary>What the person who takes the player across says, for each outcome of <see cref="CheckTravel"/>.</summary>
     public static List<string> AttendantLines(RegionLink link, TravelCheck check)
     {
-        var from = Get(link.From)!;
-        var to = Get(link.To)!;
-        string vessel = link.VesselWord;
+        // The string table's attendant words (plan 17), the vessel's word among them
+        string from = Get(link.From)!.Name;
+        string to = Get(link.To)!.Name;
+        string word = link.VesselWord;
+        string vessel = Core.Text.Of($"attendant.vessel.{word}");
         return check switch
         {
             TravelCheck.StoryUnfinished => new()
             {
-                $"This {vessel} goes to {to.Name}.",
-                $"Only trainers who have entered {from.Name}'s Hall of Fame may come aboard. Come back when you're Champion!"
+                Core.Text.Of("attendant.goes", ("vessel", vessel), ("to", to)),
+                Core.Text.Of("attendant.championsOnly", ("from", from))
             },
             TravelCheck.DestinationNotBuilt => new()
             {
-                $"Congratulations, Champion of {from.Name}!",
-                $"The {vessel} to {to.Name} isn't ready to leave yet. Check back another time."
+                Core.Text.Of("attendant.congratulations", ("from", from)),
+                Core.Text.Of("attendant.notReady", ("vessel", vessel), ("to", to))
             },
             _ => new()
             {
-                $"Congratulations, Champion of {from.Name}! The {vessel} to {to.Name} is ready.",
+                Core.Text.Of("attendant.ready", ("from", from), ("vessel", vessel), ("to", to)),
                 // Under option B the whole team crosses (plan 18 · W4, part b), and the attendant says so before anyone agrees
-                "Your Pokémon are welcome aboard, every one of them. All aboard!"
+                Core.Text.Of("attendant.welcome")
             }
         };
     }

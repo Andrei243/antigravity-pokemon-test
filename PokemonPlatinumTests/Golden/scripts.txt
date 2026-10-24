@@ -5907,6 +5907,64 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== aqua_hideout_1f.Guard1
+from Team Aqua Grunt at 13,11 of AquaHideout_1F
+way -
+  Team Aqua Grunt> What? What do you want with Team Aqua? The boss isn't here. He's off to grab something important!
+  Team Aqua Grunt> Where? Wahaha! As if I'd tell you something like that!
+=== aqua_hideout_1f.Guard2
+from Team Aqua Grunt at 14,11 of AquaHideout_1F
+way -
+  Team Aqua Grunt> What? What do you want with Team Aqua? The boss isn't here. He's on his way to Mt. Pyre, on Route 122!
+  Team Aqua Grunt> Why? Wahaha! As if I'd tell you something like that!
+=== aqua_hideout_b1f.Electrode1
+from Poké Ball at 16,9 of AquaHideout_B1F
+way 0
+  > The Poké Ball was an Electrode!
+  * cry Electrode
+  * wildbattle Electrode 30 Won
+  + FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT
+way 1, from answer 1
+  * wildbattle Electrode 30 Lost
+=== aqua_hideout_b1f.Electrode2
+from Poké Ball at 16,10 of AquaHideout_B1F
+way 0
+  > The Poké Ball was an Electrode!
+  * cry Electrode
+  * wildbattle Electrode 30 Won
+  + FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT
+way 1, from answer 1
+  * wildbattle Electrode 30 Lost
+=== aqua_hideout_b2f.Matt
+from Matt at 23,19 of AquaHideout_B2F
+way 0
+  Matt> Hehehe... Here already, are you? We didn't think you'd get this far!
+  Matt> But this is where it ends. I'm no ordinary grunt. I'm not stalling you, either. I'm going to flatten you!
+  Matt> Hehehe... So I lost too.
+  Matt> Hehehe! But while you were playing with me, the boss finished getting ready!
+  > With a churn of water, the submarine slid out of its pen and was gone under the waves!
+  Matt> Hehehe! The boss is already on his way to a certain cave under the sea!
+  Matt> If you want to chase him, you'd better search the wide sea beyond Lilycove. Not that you'll ever find it! Hehehe!
+  * scene aqua_hideout_b2f.Team Aqua's submarine sails
+  * music hoenn/eye_galactic
+  * battle hoenn_matt Won
+  * sound dive
+  * music area
+  * endscene
+  + FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW
+  + FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
+  + FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE
+  + beaten hoenn_matt
+  + seen aqua_hideout_b2f.Team Aqua's submarine sails
+way 1, from answer 1
+  * battle hoenn_matt Lost
+  * scene over, unseen
+=== aqua_hideout_b2f.MattNotices
+from the trigger at 28,16 of AquaHideout_B2F
+from the trigger at 28,17 of AquaHideout_B2F
+way -
+  * emote Matt Exclaim
+  = VAR_TEMP_1 0 -> 1
 === azalea.Charcoal
 from Man at 407,464 of Johto
 way -
@@ -7449,7 +7507,8 @@ way -
 === common.Attendant
 from a trainer with lines of their own
 way -
-  Anyone> A line of its own.
+  Anyone> This ship goes to Kanto.
+  Anyone> Only trainers who have entered Sinnoh's Hall of Fame may come aboard. Come back when you're Champion!
   * open Travel
 === common.BerryPatch
 from a berry patch at Blooming, Growth mulch, faced Left, a bag of what it takes
@@ -8414,6 +8473,18 @@ way -
   + FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
   + FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
   + FLAG_HOENN_CHAPTER_EIGHT
+=== common.HoennChapterEightB
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  + FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+  + FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
+  + FLAG_HOENN_CHAPTER_EIGHT_B
 === common.HoennChapterFive
 from a trainer with lines of their own
 way -
@@ -8550,6 +8621,7 @@ way -
   + FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
   + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
   + FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
   + FLAG_HIDE_MAUVILLE_CITY_SCOTT
   + FLAG_HIDE_MAUVILLE_CITY_WATTSON
   + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
@@ -8604,6 +8676,13 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
   + FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
+  + FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+  + FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
+  + FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
@@ -8619,6 +8698,7 @@ way -
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
   + FLAG_HOENN_CHAPTER_EIGHT
+  + FLAG_HOENN_CHAPTER_EIGHT_B
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
@@ -11732,6 +11812,27 @@ way -
 from Riley at 34,3 of IronIslandB2FLeft
 way -
   Riley> I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up.
+=== jagged_pass.Guard
+from Team Magma Grunt at 16,19 of JaggedPass
+way 0
+  Team Magma Grunt> Huh? What are you doing up here? There's nothing to see on this bit of the mountain. Nothing at all!
+  Team Magma Grunt> Hey, don't go poking at the rock! I said there's nothing there! Fine, then. You'll have to get past me!
+  Team Magma Grunt> Ugh... I'm still not moving. Standing guard is the one thing I'm good at.
+  * emote Team Magma Grunt Exclaim
+  * music hoenn/eye_magma
+  * battle hoenn_grunt_jagged_pass Won
+  * music area
+  + FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS
+  + beaten hoenn_grunt_jagged_pass
+way 1, from answer 1
+  * battle hoenn_grunt_jagged_pass Lost
+=== jagged_pass.OpenHideout
+from the trigger at 13,15 of JaggedPass
+from the trigger at 14,15 of JaggedPass
+from the trigger at 21,15 of JaggedPass
+from the trigger at 21,20 of JaggedPass
+from the trigger at 22,20 of JaggedPass
+way -
 === johto_victory_road_3f.Gone
 from {rival} at 33,29 of IndigoVictoryRoad_3F
 way -
@@ -12235,8 +12336,17 @@ way 1, from answer 1
   ? Do you know about the Berry Blender? You put berries in and spin them together. = No
 === lilycove_city.Wailmer
 from Wailmer at 556,82 of Hoenn
+from Wailmer at 556,83 of Hoenn
 from Wailmer at 556,84 of Hoenn
+from Wailmer at 556,85 of Hoenn
+from Wailmer at 557,82 of Hoenn
+from Wailmer at 557,83 of Hoenn
+from Wailmer at 557,84 of Hoenn
+from Wailmer at 557,85 of Hoenn
 from Wailmer at 557,86 of Hoenn
+from Wailmer at 557,87 of Hoenn
+from Wailmer at 558,86 of Hoenn
+from Wailmer at 558,87 of Hoenn
 way -
   > A Wailmer is floating in the water, blocking the way. It doesn't look like it's going to move.
 === lilycove_city.WailmerGrunt
@@ -12507,6 +12617,55 @@ way -
 from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
 way -
   Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
+=== magma_hideout_4f.Maxie
+from Maxie at 16,21 of MagmaHideout_4F
+way 0
+  Maxie> Groudon... Asleep for so long in your bed of magma, where nothing could reach you.
+  Maxie> This is the Blue Orb. It is what you were waiting for, isn't it? I have brought it to you.
+  Maxie> Let its light wake you! And show me... show me all that your power can do!
+  Maxie> Groudon! What is the matter with you?
+  Maxie> Wasn't the Blue Orb the key? Groudon! Where have you gone?
+  Maxie> So it was you. I've seen you nosing about wherever Team Magma has business...
+  Maxie> Now I see it. You must have played some cheap trick on us!
+  Maxie> How can a child handle Pokémon so well?
+  Maxie> There must be some reason Groudon fled. That's what you would tell me, isn't it?
+  Maxie> ......
+  Maxie> Hmph. Do you think I don't know that already?
+  Maxie> With Groudon gone, I have no more use for this wretched volcano. I am going after Groudon. This is where we part.
+  * scene magma_hideout_4f.Groudon wakes in Team Magma's hideout
+  * music hoenn/eye_magma
+  * effect Sparkles 16 17
+  * music hoenn/awaken_legend
+  * effect Burst 16 17
+  * cry Groudon
+  * walk Groudon onspot down onspot down
+  * camera Shake
+  * walk Groudon onspot up onspot up
+  * camera Shake
+  * music hoenn/eye_magma
+  * emote Maxie Exclaim
+  * battle hoenn_maxie_magma_hideout Won
+  * fade out
+  * music area
+  * fade in
+  * endscene
+  + FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP
+  + FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+  = VAR_SLATEPORT_CITY_STATE 0 -> 1
+  = VAR_SLATEPORT_HARBOR_STATE 0 -> 1
+  + beaten hoenn_maxie_magma_hideout
+  + seen magma_hideout_4f.Groudon wakes in Team Magma's hideout
+way 1, from answer 1
+  * battle hoenn_maxie_magma_hideout Lost
+  * scene over, unseen
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  + FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP
+=== magma_hideout_4f.SleepingGroudon
+from Groudon at 16,17 of MagmaHideout_4F
+way -
+  > Groudon is sleeping, curled in the magma. It doesn't stir at all.
 === mahogany_gym_leader_room.Pryce
 from Pryce at 7,4 of Mahogany_Gym_3
 way 0
@@ -17734,12 +17893,36 @@ way -
 from the tile read at 9,1 of SixIsland_WaterPath_House1
 way -
   > A chart for writing down Heracross sizes. Nothing is written on it yet.
+=== slateport_city.CaptStern
+from Captain Stern at 228,273 of Hoenn
+way -
 === slateport_city.EnergyGuru
 from Energy Guru at 205,307 of Hoenn
 way -
   Energy Guru> Welcome! I'm the Energy Guru! I sell whatever your Pokémon needs to grow strong!
   Energy Guru> Come back whenever your Pokémon need a boost!
   * open Shop slateport_energy_guru
+=== slateport_city.Interviewer
+from Gabby at 228,274 of Hoenn
+from Ty at 229,273 of Hoenn
+way -
+  Gabby> Shh! We're rolling! The captain's telling us all about the sea floor.
+=== slateport_city_harbor.AquaEscape0
+from the trigger at 8,11 of SlateportCity_Harbor
+way -
+=== slateport_city_harbor.AquaEscape1
+from the trigger at 8,12 of SlateportCity_Harbor
+way -
+=== slateport_city_harbor.AquaEscape2
+from the trigger at 8,13 of SlateportCity_Harbor
+way -
+=== slateport_city_harbor.AquaEscape3
+from the trigger at 8,14 of SlateportCity_Harbor
+way -
+=== slateport_city_harbor.Stern
+from Captain Stern at 6,13 of SlateportCity_Harbor
+way -
+  Captain Stern> Those people tried to rob the museum, and now they've taken my submarine. I'll never forgive them!
 === slateport_city_mart.Clerk
 from Clerk at 1,3 of SlateportCity_Mart
 way 0

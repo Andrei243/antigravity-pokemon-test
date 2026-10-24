@@ -1040,8 +1040,10 @@ public class StoryTests
         Assert.Equal(("Piplup", "Turtwig"), (briefcase.Story.PlayerStarter, briefcase.Story.RivalStarter));
         Assert.Equal(2, runner.Result);
 
-        // Nowhere to sail from a map with no screen: the attendant falls back on what they have to say
-        var (attendant, _) = Play(FieldScripts.Attendant, new NPC { Name = "Sailor", IsTransportAttendant = true, DialogLines = { "The sea is calm today." } });
+        // Nowhere to sail from (the last region of the chain, which no link leaves; plan 18 · W4, part b sails from every
+        // other): the attendant falls back on what they have to say
+        var (attendant, _) = Play(FieldScripts.Attendant, new NPC { Name = "Sailor", IsTransportAttendant = true, DialogLines = { "The sea is calm today." } },
+            before: h => h.Region = RegionDatabase.Paldea);
         Assert.Equal(new[] { "open Travel" }, attendant.Log);
         Assert.Equal("The sea is calm today.", attendant.Transcript.Single().Text);
     }

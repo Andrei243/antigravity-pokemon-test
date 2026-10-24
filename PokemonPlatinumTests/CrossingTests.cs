@@ -93,7 +93,7 @@ public class CrossingTests
             PlayerIdentity.RestoreRivals(null, "Kit", RegionDatabase.Sinnoh);
             PlayerIdentity.InRegion(sinnoh);
             Assert.Equal("Kit", PlayerIdentity.RivalName);
-            Assert.Equal("Kit", PlayerIdentity.Fill("{rival}!"));
+            Assert.Equal("Kit!", PlayerIdentity.Fill("{rival}!"));
 
             // In Kanto {rival} names Kanto's rival, the region's own until a namerival names him
             PlayerIdentity.InRegion(kanto);

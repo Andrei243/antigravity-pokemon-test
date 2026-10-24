@@ -3472,6 +3472,15 @@
     "free": "{name}   free",
     "noPokemonToBattle": "{player} has no Pokémon that can battle!"
   },
+  "attendant": {
+    "vessel": { "ship": "ship", "ferry": "ferry", "plane": "plane", "way": "way" },
+    "goes": "This {vessel} goes to {to}.",
+    "championsOnly": "Only trainers who have entered {from}'s Hall of Fame may come aboard. Come back when you're Champion!",
+    "congratulations": "Congratulations, Champion of {from}!",
+    "notReady": "The {vessel} to {to} isn't ready to leave yet. Check back another time.",
+    "ready": "Congratulations, Champion of {from}! The {vessel} to {to} is ready.",
+    "welcome": "Your Pokémon are welcome aboard, every one of them. All aboard!"
+  },
   "crossing": {
     "rivalName": "YOUR RIVAL'S NAME"
   },

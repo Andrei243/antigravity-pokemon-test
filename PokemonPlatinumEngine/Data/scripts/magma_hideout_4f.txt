@@ -32,10 +32,11 @@ script Maxie
   show magma_hideout_4f_groudon
   cry "Groudon"
   wait 1
-  walk magma_hideout_4f_groudon down 2
+  # (it stands in the magma, where nobody walks: its lunge and its turn back are steps on the spot)
+  walk magma_hideout_4f_groudon onspot down 2
   camera shake 1.2
   wait 1.2
-  walk magma_hideout_4f_groudon up 2
+  walk magma_hideout_4f_groudon onspot up 2
   hide magma_hideout_4f_groudon
   setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
   camera shake 1.2

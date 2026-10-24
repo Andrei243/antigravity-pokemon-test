@@ -174,7 +174,10 @@ public class HoennTests
             {
                 // (someone of the story may stand on it for a while: Team Aqua queues at the Oceanic Museum's door until
                 // the shipyard sends them in, plan 21 · H3, and nobody comes out of the museum before then)
+                // (or the water, which the player comes out onto riding: Team Aqua's hideout, left by Surf as in Emerald,
+                // plan 21 · H7, part b; Player.ComeDownOn)
                 Assert.True(Overworld.IsWalkable(warp.TargetX, warp.TargetY) || Overworld.GetWarpAt(warp.TargetX, warp.TargetY) != null
+                    || TileBehaviors.IsSurfable(Overworld.BehaviourAt(warp.TargetX, warp.TargetY))
                     || (!Overworld.IsSolid(warp.TargetX, warp.TargetY) && Overworld.GetNpcAt(warp.TargetX, warp.TargetY) is { HiddenBy: not null }),
                     $"{room.Name}'s way out lands on {warp.TargetX},{warp.TargetY}, which is shut");
                 Assert.Contains(Overworld.Warps, w => w.TargetMap == room.Name);
@@ -406,9 +409,9 @@ public class HoennTests
         Assert.True(Overworld.IsWalkable(lilycove.X, lilycove.Y), $"nobody can land at {lilycove.X},{lilycove.Y}");
         Assert.Equal("hoenn/lilycove", Overworld.BgmTrackAt(507, 80));
         Assert.Single(BuiltMaps.Value["LilycoveCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
-        // The Contest Hall (plan 21 · H11), Team Aqua's hideout (part b) and the harbour (H9) stay shut, and so does the
-        // store's lift on every floor
-        foreach (string target in new[] { "LilycoveCity_ContestLobby", "AquaHideout_1F", "LilycoveCity_Harbor" })
+        // The Contest Hall (plan 21 · H11) and the harbour (H9) stay shut, and so does the store's lift on every floor
+        // (Team Aqua's hideout opened with part b)
+        foreach (string target in new[] { "LilycoveCity_ContestLobby", "LilycoveCity_Harbor" })
             Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == target && !w.Shut);
         foreach (string floor in new[] { "1F", "2F", "3F", "4F", "5F" })
             Assert.DoesNotContain(BuiltMaps.Value[$"LilycoveCity_DepartmentStore_{floor}"].Warps,
