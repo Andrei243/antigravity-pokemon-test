@@ -1212,6 +1212,8 @@ public partial class GameEngine
                 if (!flow.PCScreen.IsActive)
                 {
                     if (flow.PCScreen.Changed) flow.Journal.Tell(new JournalEvent(JournalEventKind.UsedPcBox));
+                    // A Deerling or Sawsbuck taken out of a box wears the season here (plan 22 · U4)
+                    KeepTheCoats();
                     flow.State = GameState.Overworld;
                 }
                 break;

@@ -43,7 +43,9 @@ public partial class GameEngine
             Height = flow.Player.HeightOn(flow.Map),
             State = flow.Encounters,
             // The song the Pokégear's radio plays over the field (plan 20 · J3)
-            Radio = radioSong
+            Radio = radioSong,
+            // Unova's season, whose tables an area may have (plan 22 · U4); null in every other region
+            Season = SeasonHere
         };
     }
 

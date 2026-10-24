@@ -98,8 +98,8 @@ public sealed class RegionFile
 
     /// <summary>
     /// Whether the region's places change with the seasons (plan 22 · U2: Unova's, whose wild Pokémon and some of whose
-    /// chunks go by the month, <see cref="AreaSeason"/>). No other region has seasons, and nothing reads it yet but the
-    /// tests: plan 22 · U3 hands the season to the encounters and the chunks.
+    /// chunks go by the month, <see cref="AreaSeason"/>). No other region has seasons: plan 22 · U3 hands the season to the look and the sign, and U4
+    /// to the chunks, the wild Pokémon and Deerling's coats.
     /// </summary>
     public bool HasSeasons { get; set; }
 

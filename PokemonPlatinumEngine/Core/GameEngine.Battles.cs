@@ -46,19 +46,30 @@ public partial class GameEngine
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
+        // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
+        DressForTheSeason(wild);
         // Beside a partner every Pokémon of the grass comes with a second (TryGenerateGrassEncounter_DoubleBattle): both
-        // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet
+        // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet. In Black 2's dark
+        // grass a second comes now and then by itself, to a player with two able to fight (plan 22 · U4)
         Pokemon? second = null;
-        if (partner != null && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active)
+        bool darkPair = partner == null && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active
+            && Overworld.Map.DarkGrassPairs(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Party.Members.Count(p => !p.IsFainted), rng);
+        if ((partner != null || darkPair) && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active)
         {
-            if (flow.Map.MeetAnother(flow.Player.GridX, flow.Player.GridY, flow.Player.Lead, EncounterMomentNow()) is not { } other)
+            // A pair of the dark grass whose second the lead scared off is one Pokémon, met alone
+            var other = flow.Map.MeetAnother(flow.Player.GridX, flow.Player.GridY, flow.Player.Lead, EncounterMomentNow());
+            if (other == null && !darkPair)
             {
                 flow.FieldEncounter = false;
                 return;
             }
-            var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
-            second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
-            if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
+            if (other != null)
+            {
+                var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
+                second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
+                if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
+                DressForTheSeason(second);
+            }
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
         MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second);
@@ -228,7 +239,7 @@ public partial class GameEngine
         switch (b)
         {
             case TileBehavior.Ice: return Battle.Sim.BattleTerrain.Ice;
-            case TileBehavior.TallGrass or TileBehavior.VeryTallGrass: return Battle.Sim.BattleTerrain.Grass;
+            case TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass: return Battle.Sim.BattleTerrain.Grass;
             case TileBehavior.Sand: return Battle.Sim.BattleTerrain.Sand;
             case TileBehavior.ShallowSnow or TileBehavior.ShadedSnow or TileBehavior.DeepSnow or TileBehavior.DeeperSnow or TileBehavior.DeepestSnow:
                 return Battle.Sim.BattleTerrain.Snow;

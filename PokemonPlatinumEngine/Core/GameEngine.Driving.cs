@@ -226,6 +226,14 @@ public partial class GameEngine
         public void ChooseFromStartMenu(StartMenuChoice choice) => game.HandleStartMenuChoice(choice);
         public void UseFieldItem(ItemData item) => game.UseFieldItem(item);
         public EncounterMoment EncounterMomentNow() => game.EncounterMomentNow();
+        /// <summary>
+        /// What the field does behind a fade once the calendar has turned (plan 22 · U3, U4): the season taken, its
+        /// chunks laid, the team's coats changed and the notice shown. A tool that moves the calendar calls it in place
+        /// of waiting for the next door.
+        /// </summary>
+        public void TurnTheSeason() => game.TurnTheSeason();
+        /// <summary>The season the field holds now, whatever region the player is in (plan 22 · U3).</summary>
+        public Season FieldSeason => game.season;
         public void KeepPartnerAlong() => game.KeepPartnerAlong();
         /// <summary>The trainer who travels with the player now (plan 02 · S6), or null with nobody along.</summary>
         public string? PartnerAlong => game.partner?.TrainerId;

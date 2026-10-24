@@ -31,6 +31,13 @@ public static partial class MapDatabase
     public static List<(Map Map, Map.SwappedPlace Place)> ApplySwappedPlaces(System.Func<string, int> variable, System.Func<string, bool>? flag = null) =>
         Maps.Values.SelectMany(map => map.ApplySwappedPlaces(variable, flag).Select(place => (map, place))).ToList();
 
+    /// <summary>
+    /// Lays a season's chunks on every map that has any (<see cref="Map.ApplySeason"/>, plan 22 · U4); what changed.
+    /// Nothing is loaded for it: before the maps are, there is nothing to lay.
+    /// </summary>
+    public static List<(Map Map, Map.SwappedPlace Place)> ApplySeason(Core.Season? season) =>
+        maps is { } loaded ? loaded.Values.SelectMany(map => map.ApplySeason(season).Select(place => (map, place))).ToList() : new();
+
     public static void ApplyPresence(System.Func<string, bool> flagSet, bool forget = false)
     {
         foreach (var map in Maps.Values)

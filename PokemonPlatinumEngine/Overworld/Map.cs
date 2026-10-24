@@ -137,6 +137,65 @@ public sealed class MapArea
     /// </summary>
     public List<WildEncounterEntry> RockSmashEncounters { get; } = new();
     public int RockSmashRate { get; set; }
+
+    /// <summary>
+    /// Black 2's tables beside the grass's and the water's (plan 22 · U4; <c>WorldAreaFile.DarkGrass</c> and its
+    /// kin): the dark grass's, the grass that shakes, the water that ripples and a rod cast into it. Empty in every
+    /// place of the other regions. The dark grass's is met on its tiles; the other three wait for plan 10 · F12's
+    /// patches.
+    /// </summary>
+    public List<WildEncounterEntry> DarkGrassEncounters { get; } = new();
+    public int DarkGrassRate { get; set; }
+    public List<WildEncounterEntry> ShakingGrassEncounters { get; } = new();
+    public int ShakingGrassRate { get; set; }
+    public List<WildEncounterEntry> RipplingWaterEncounters { get; } = new();
+    public int RipplingWaterRate { get; set; }
+    public List<WildEncounterEntry> RipplingRodEncounters { get; } = new();
+    public int RipplingRodRate { get; set; }
+
+    /// <summary>
+    /// The tables of the seasons after spring where they differ (plan 22 · U4; <c>WorldAreaFile.Seasons</c>), each
+    /// whole. Empty for an area whose wild Pokémon are the same all year, which is every area but some of Unova's.
+    /// </summary>
+    public Dictionary<Core.Season, WildTables> SeasonTables { get; } = new();
+
+    /// <summary>
+    /// The tables met in a season (plan 22 · U4): the season's own where the area has them, the area's own otherwise,
+    /// which are spring's and those of every place without seasons (<paramref name="season"/> null).
+    /// </summary>
+    public WildTables TablesFor(Core.Season? season) =>
+        season is { } s && SeasonTables.TryGetValue(s, out var own) ? own : new WildTables
+        {
+            Land = WildEncounters, LandRate = LandRate, Water = WaterEncounters, WaterRate = WaterRate,
+            SuperRod = RodEncounters[(int)FishingRod.Super], SuperRodRate = RodRates[(int)FishingRod.Super],
+            DarkGrass = DarkGrassEncounters, DarkGrassRate = DarkGrassRate,
+            ShakingGrass = ShakingGrassEncounters, ShakingGrassRate = ShakingGrassRate,
+            RipplingWater = RipplingWaterEncounters, RipplingWaterRate = RipplingWaterRate,
+            RipplingRod = RipplingRodEncounters, RipplingRodRate = RipplingRodRate
+        };
+}
+
+/// <summary>
+/// One season's wild Pokémon of an area (plan 22 · U4; <see cref="MapArea.TablesFor"/>): the land's, the water's, the
+/// Super Rod's and Black 2's own three, each with its rate. The Old and Good Rods are the area's all year (Black 2 has
+/// one rod).
+/// </summary>
+public sealed class WildTables
+{
+    public IReadOnlyList<WildEncounterEntry> Land { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int LandRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> Water { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int WaterRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> SuperRod { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int SuperRodRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> DarkGrass { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int DarkGrassRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> ShakingGrass { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int ShakingGrassRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> RipplingWater { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int RipplingWaterRate { get; init; }
+    public IReadOnlyList<WildEncounterEntry> RipplingRod { get; init; } = Array.Empty<WildEncounterEntry>();
+    public int RipplingRodRate { get; init; }
 }
 
 public class Map
@@ -1048,6 +1107,12 @@ public class Map
         /// <summary>A flag in place of the variable (plan 19 · K6, part b): swapped while it is set.</summary>
         public string? Flag { get; init; }
 
+        /// <summary>
+        /// A season in place of the story (plan 22 · U4: Unova's chunks of summer, autumn and winter): the cells lie in
+        /// the season's chunks while the field is in it (<see cref="ApplySeason"/>), and the story never moves them.
+        /// </summary>
+        public Core.Season? Season { get; init; }
+
         /// <summary>The cells swapped, by chunk column and row.</summary>
         public IReadOnlyList<(int X, int Y)> Cells { get; init; } = Array.Empty<(int, int)>();
 
@@ -1143,6 +1208,8 @@ public class Map
         var changed = new List<SwappedPlace>();
         foreach (var place in SwappedPlaces)
         {
+            // A season's chunks are the season's to lay (plan 22 · U4), never the story's
+            if (place.Season != null) continue;
             bool swap = place.Flag != null ? flag?.Invoke(place.Flag) == true : variable(place.Var) == place.Value;
             if (swap == place.Swapped) continue;
             for (int i = 0; i < place.Cells.Count; i++)
@@ -1153,6 +1220,59 @@ public class Map
         }
         return changed;
     }
+
+    /// <summary>
+    /// Keeps a season's ground of the cells given beside the map's own, which is spring's (plan 22 · U4; Black 2's
+    /// chunks named by season, <see cref="Data.WorldMatrixFile.Seasons"/>): <paramref name="swapped"/> is the map built
+    /// with the season's chunks in those cells. A cell whose buildings of the world's models differ between the two is
+    /// left as it is, since a swap doesn't carry a building; one whose buildings are the same changes its ground alone.
+    /// Null when no cell is left.
+    /// </summary>
+    public SwappedPlace? AddSeasonalPlace(Core.Season season, IEnumerable<(int X, int Y)> cells, Map swapped)
+    {
+        if (swapped.Width != Width || swapped.Height != Height) throw new ArgumentException("The season's map is not this map's size.", nameof(swapped));
+        // The buildings that reach into a cell, by where they stand and what they are
+        List<(int, int, int, int, string, BuildingKind)> Built(Map on, (int X, int Y) c) => (on.PlacedBuildings ?? new())
+            .Where(b => b.X0 / ChunkTiles <= c.X && b.X1 / ChunkTiles >= c.X && b.Y0 / ChunkTiles <= c.Y && b.Y1 / ChunkTiles >= c.Y)
+            .Select(b => (b.X0, b.Y0, b.X1, b.Y1, b.Model, b.Kind)).OrderBy(b => b).ToList();
+        // A cell whose buildings are the same in both is only ground that changes (Route 20's ranch gate stands in autumn too)
+        var kept = cells.Where(c => Built(this, c).SequenceEqual(Built(swapped, c))).ToList();
+        if (kept.Count == 0) return null;
+        var place = new SwappedPlace { Var = "", Season = season, Cells = kept };
+        place.Before = kept.Select(c => CopyChunk(c.X, c.Y)).ToArray();
+        place.After = kept.Select(c => swapped.CopyChunk(c.X, c.Y)).ToArray();
+        SwappedPlaces.Add(place);
+        return place;
+    }
+
+    /// <summary>
+    /// Lays down a season's chunks where the map has any, and spring's everywhere it had another season's (plan 22 ·
+    /// U4): spring and null are the map's own. Returns the places whose ground changed. Every season is put back before
+    /// the one asked for is laid, so two seasons that change one cell never leave a mix of both.
+    /// </summary>
+    public List<SwappedPlace> ApplySeason(Core.Season? season)
+    {
+        var changed = new List<SwappedPlace>();
+        foreach (var place in SwappedPlaces)
+        {
+            if (place.Season == null || !place.Swapped || place.Season == season) continue;
+            for (int i = 0; i < place.Cells.Count; i++) PutChunk(place.Cells[i].X, place.Cells[i].Y, place.Before[i]);
+            place.Swapped = false;
+            changed.Add(place);
+        }
+        foreach (var place in SwappedPlaces)
+        {
+            if (place.Season == null || place.Swapped || place.Season != season) continue;
+            for (int i = 0; i < place.Cells.Count; i++) PutChunk(place.Cells[i].X, place.Cells[i].Y, place.After[i]);
+            place.Swapped = true;
+            changed.Add(place);
+        }
+        if (changed.Count > 0) BuildingCache = null;
+        return changed;
+    }
+
+    /// <summary>The season whose chunks the map shows now (plan 22 · U4); null where it shows its own, spring's.</summary>
+    public Core.Season? SeasonLaid => SwappedPlaces.FirstOrDefault(p => p.Season != null && p.Swapped)?.Season;
 
     public void SetSolid(int x, int y, bool isSolid)
     {
@@ -1186,7 +1306,26 @@ public class Map
     /// <summary>A ledge that is hopped over, whichever way it faces.</summary>
     public bool IsLedge(int x, int y) => FieldMovement.LedgeDirection(BehaviourAt(x, y)) != null;
 
-    public bool IsTallGrass(int x, int y) => BehaviourAt(x, y) is TileBehavior.TallGrass or TileBehavior.VeryTallGrass;
+    public bool IsTallGrass(int x, int y) => BehaviourAt(x, y) is TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass;
+
+    /// <summary>Black 2's dark grass (plan 22 · U4), where the area's own table of it is met and two may come at once.</summary>
+    public bool IsDarkGrass(int x, int y) => BehaviourAt(x, y) is TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass;
+
+    /// <summary>
+    /// The chance in a hundred that a Pokémon met in dark grass comes with a second (plan 22 · U4). Our own number until
+    /// a session reads Black 2's from the decompilation's field code (<c>docs/mechanics/rulings.md</c>, "Seasons in Unova").
+    /// </summary>
+    public const int DarkGrassPairChance = 10;
+
+    /// <summary>
+    /// Whether a Pokémon just met at a tile comes with a second as dark grass's do (plan 22 · U4): only on dark grass of
+    /// an area with a table of it, and only to a player with two able to fight. Nothing is drawn anywhere else, so no
+    /// other place's chance moves.
+    /// </summary>
+    public static bool DarkGrassPairs(Map map, int x, int y, int ableToFight, Random rng) =>
+        ableToFight >= 2 && map.IsDarkGrass(x, y) && map.AreaAt(x, y) is { } area
+        && (area.DarkGrassEncounters.Count > 0 || area.SeasonTables.Values.Any(t => t.DarkGrass.Count > 0))
+        && rng.Next(100) < DarkGrassPairChance;
 
     /// <summary>Water deep enough to need Surf.</summary>
     public bool IsDeepWater(int x, int y) => TileBehaviors.IsSurfable(BehaviourAt(x, y));
@@ -1273,7 +1412,15 @@ public class Map
     public (IReadOnlyList<WildEncounterEntry> Table, int Rate) WildAt(int x, int y, bool water = false, EncounterMoment? moment = null)
     {
         if (AreaAt(x, y) is { } area)
-            return water ? (area.WaterEncounters, area.WaterRate) : (moment == null ? area.WildEncounters : EncounterSlots.Grass(area, moment), area.LandRate);
+        {
+            // The season's tables where the area has them, and on dark grass its own (plan 22 · U4); every other place
+            // is met from its own, as ever
+            var tables = area.TablesFor(moment?.Season);
+            if (water) return (tables.Water, tables.WaterRate);
+            bool dark = tables.DarkGrass.Count > 0 && IsDarkGrass(x, y);
+            var land = dark ? tables.DarkGrass : tables.Land;
+            return (moment == null ? land : EncounterSlots.Grass(area, moment, land), dark ? tables.DarkGrassRate : tables.LandRate);
+        }
         return water ? (Array.Empty<WildEncounterEntry>(), 0) : (WildEncounters, EncounterRate);
     }
 
@@ -1289,6 +1436,9 @@ public class Map
         if (AreaAt(x, y) is not { } area) return null;
         IReadOnlyList<WildEncounterEntry> table = area.RodEncounters[(int)rod];
         int rate = area.RodRates[(int)rod];
+        // The Super Rod's of the season, where the area's change with it (plan 22 · U4)
+        if (rod == FishingRod.Super && moment?.Season is { } season && area.SeasonTables.TryGetValue(season, out var tables))
+            (table, rate) = (tables.SuperRod, tables.SuperRodRate);
         if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
         if (rod == FishingRod.Super) table = EncounterSlots.SuperRod(area, table, moment);
         var feebas = SpecialEncounterTables.Sinnoh.Feebas;

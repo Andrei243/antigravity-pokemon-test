@@ -466,8 +466,8 @@ The values of Black 2's own, and what the game does with each today:
 
 | Value | Name | What it is | In the game |
 |---|---|---|---|
-| `0xB0` | `DarkGrass` | Dark grass, where wild Pokémon may come two at a time (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
-| `0xB1` | `VeryTallDarkGrass` | Grass taller than the walker where wild Pokémon may come two at a time; no Bicycles (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB0` | `DarkGrass` | Dark grass, where wild Pokémon may come two at a time (Black 2's). | Walked on; wild Pokémon from the area's dark grass table, now and then two at once (plan 22 · U4). |
+| `0xB1` | `VeryTallDarkGrass` | Grass taller than the walker where wild Pokémon may come two at a time; no Bicycles (Black 2's). | **Rule.** Wild Pokémon from the area's dark grass table, more often than in dark grass and now and then two at once; no Bicycles (plan 22 · U4). |
 | `0xB2` | `GrottoGrass` | The grass before a Hidden Grotto's way in; no Bicycles (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
 | `0xB3` | `DeepSand` | Deep sand (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
 | `0xB4` | `Quicksand` | Quicksand, which pulls whoever stands in it down (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |

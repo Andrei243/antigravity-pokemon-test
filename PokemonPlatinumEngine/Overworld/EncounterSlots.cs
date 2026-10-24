@@ -60,6 +60,12 @@ public sealed record EncounterMoment
     /// something and the Lullaby less, the Hoenn and Sinnoh Sounds bring their species into the grass. None in Sinnoh.
     /// </summary>
     public RadioSong Radio { get; init; }
+
+    /// <summary>
+    /// The season of the place (plan 22 · U4): an Unova area whose wild Pokémon change with it is met from the season's
+    /// tables (<see cref="MapArea.TablesFor"/>). Null in every region without seasons, where the area's own are met.
+    /// </summary>
+    public Season? Season { get; init; }
 }
 
 /// <summary>
@@ -75,9 +81,11 @@ public static class EncounterSlots
     public const string TrophyGarden = "trophy_garden";
 
     /// <summary>The grass's table at a moment: a copy of the area's own with the moment's species in their slots.</summary>
-    public static List<WildEncounterEntry> Grass(MapArea area, EncounterMoment? moment)
+    public static List<WildEncounterEntry> Grass(MapArea area, EncounterMoment? moment, IReadOnlyList<WildEncounterEntry>? table = null)
     {
-        var slots = area.WildEncounters.Select(Copy).ToList();
+        // The table the moment is laid over: the area's own, or the one the season or the dark grass gives (plan 22 · U4)
+        var basis = table ?? area.WildEncounters;
+        var slots = basis.Select(Copy).ToList();
         if (moment == null) return slots;
         void Put(int slot, string? species)
         {
@@ -89,7 +97,7 @@ public static class EncounterSlots
         // any length: the Johto Safari Zone's grass is ten slots met alike (plan 20 · J8, part b)
         for (int slot = 0; slot < slots.Count; slot++)
         {
-            var own = area.WildEncounters[slot];
+            var own = basis[slot];
             Put(slot, moment.Time switch
             {
                 TimeOfDay.Day or TimeOfDay.Twilight => own.DaySpecies,

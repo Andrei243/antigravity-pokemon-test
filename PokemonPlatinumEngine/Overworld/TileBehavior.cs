@@ -317,7 +317,7 @@ public static class TileBehaviors
     public static bool HasEncounters(TileBehavior b) => b is TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.CaveFloor
         or TileBehavior.OldChateauFloor or TileBehavior.River or TileBehavior.Sea or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass
         or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.DiveWater or TileBehavior.Seaweed
-        or TileBehavior.SeaweedNoSurfacing;
+        or TileBehavior.SeaweedNoSurfacing or TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass;
 
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea or TileBehavior.Whirlpool
@@ -418,7 +418,9 @@ public static class TileBehaviors
         TileBehavior.Magma => (BehaviourSupport.Ruled, "Lava: walked only on a slab of the Blackthorn Gym's that stands over it (BlackthornPlatforms.Refuses; plan 20 · J11, part c)."),
         TileBehavior.StopSliding or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),
-        TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass or TileBehavior.GrottoGrass or TileBehavior.DeepSand
+        TileBehavior.DarkGrass => (BehaviourSupport.Plain, "Walked on; wild Pokémon from the area's dark grass table, now and then two at once (plan 22 · U4)."),
+        TileBehavior.VeryTallDarkGrass => (BehaviourSupport.Ruled, "Wild Pokémon from the area's dark grass table, more often than in dark grass and now and then two at once; no Bicycles (plan 22 · U4)."),
+        TileBehavior.GrottoGrass or TileBehavior.DeepSand
             or TileBehavior.Quicksand or TileBehavior.StrengthHole or TileBehavior.ChargedFloor or TileBehavior.SurfEdge or TileBehavior.Catwalk
             => (BehaviourSupport.Waiting, "A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")

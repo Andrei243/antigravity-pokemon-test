@@ -261,8 +261,8 @@ public sealed class WorldMatrixFile
     /// The chunks another season lays in place of the matrix's own (plan 22 · U2, part b; Black 2's chunks the
     /// decompilation names by season, <c>autumn04_20</c>, <c>winter05_04</c>): each a grid in the layout of
     /// <see cref="Chunks"/>, <c>-</c> wherever the matrix's own chunk serves. The matrix's own chunks are spring's.
-    /// Left out where one chunk serves all four seasons, so no other region's files change; read by nothing until
-    /// plan 22 · U4 builds a season's layout (<see cref="ChunkAt(int, int, string)"/>).
+    /// Left out where one chunk serves all four seasons, so no other region's files change; laid by the season since
+    /// plan 22 · U4 (<c>World.SeasonalSwaps</c>, <c>Map.ApplySeason</c>) (<see cref="ChunkAt(int, int, string)"/>).
     /// </summary>
     public List<MatrixSeason>? Seasons { get; set; }
 
@@ -445,8 +445,8 @@ public sealed class WorldAreaFile
     /// <summary>
     /// Black 2's tables beside the grass's and the water's (plan 22 · U2), each of the slots and rate of its own: the
     /// dark grass's twelve, where two wild Pokémon may come at once; the twelve of a patch of grass that shakes; the
-    /// five of a patch of water that ripples, surfed and fished. Read by nothing yet (plan 22 · U4 gives them their
-    /// rules); left out where the area has none.
+    /// five of a patch of water that ripples, surfed and fished. The dark grass's is met on its tiles since plan 22 · U4 (<c>MapArea.TablesFor</c>); the other three wait for plan 10 · F12's
+    /// patches. Left out where the area has none.
     /// </summary>
     public List<AreaEncounter>? DarkGrass { get; set; }
     public int? DarkGrassRate { get; set; }
@@ -460,8 +460,8 @@ public sealed class WorldAreaFile
     /// <summary>
     /// The other seasons' tables of an area whose wild Pokémon change with the season (plan 22 · U2; Black 2's
     /// <c>spring</c>, <c>summer</c>, <c>autumn</c> and <c>winter</c>): the area's own fields are spring's, and each
-    /// season after it that differs is here, whole. Left out for an area whose Pokémon are the same all year, and read
-    /// by nothing until plan 22 · U4's calendar of seasons.
+    /// season after it that differs is here, whole. Left out for an area whose Pokémon are the same all year, and met
+    /// in their season since plan 22 · U4 (<c>MapArea.TablesFor</c>).
     /// </summary>
     public List<AreaSeason>? Seasons { get; set; }
 

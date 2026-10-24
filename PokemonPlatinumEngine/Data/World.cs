@@ -150,6 +150,30 @@ public sealed class World
         return id != WorldMatrixFile.NoChunk && Chunk(id) is { } chunk ? (chunk, x % t, z % t) : null;
     }
 
+    /// <summary>
+    /// The seasons' chunks of a map's matrix as swaps (plan 22 · U4; <see cref="WorldMatrixFile.Seasons"/>): for each
+    /// season but spring, the cells whose chunk differs from the matrix's own and whose file the game has. A cell whose
+    /// chunk the importer hasn't written (an area not open yet) keeps spring's, and a matrix with no seasons gives none.
+    /// </summary>
+    public IEnumerable<(Core.Season Season, WorldSwap Swap)> SeasonalSwaps(WorldMapEntry entry)
+    {
+        var matrix = Matrix(entry.Matrix);
+        if (matrix.Seasons == null) yield break;
+        foreach (var own in matrix.Seasons)
+        {
+            if (!Enum.TryParse<Core.Season>(own.Season, ignoreCase: true, out var season) || season == Core.Season.Spring) continue;
+            var swap = new WorldSwap { Map = entry.Name };
+            for (int cy = 0; cy < matrix.Height; cy++)
+                for (int cx = 0; cx < matrix.Width; cx++)
+                {
+                    int id = matrix.ChunkAt(cx, cy, own.Season);
+                    if (id != WorldMatrixFile.NoChunk && id != matrix.ChunkAt(cx, cy) && Chunk(id) != null)
+                        swap.Cells.Add(new WorldSwapCell { ChunkX = cx, ChunkY = cy, Chunk = id });
+                }
+            if (swap.Cells.Count > 0) yield return (season, swap);
+        }
+    }
+
     public TileBehavior BehaviourAt(int matrixId, int x, int z) =>
         ChunkAt(matrixId, x, z) is { } at ? at.Chunk.BehaviourAt(at.X, at.Z) : TileBehavior.None;
 
@@ -163,6 +187,11 @@ public sealed class World
         foreach (var swap in Index.Swaps)
             if (maps.FirstOrDefault(m => m.Name == swap.Map) is { } map && Index.Maps.FirstOrDefault(e => e.Name == swap.Map) is { } entry)
                 map.AddSwappedPlace(swap.Var, swap.Value, swap.Cells.Select(c => (c.ChunkX, c.ChunkY)), WorldMapBuilder.BuildSwapped(this, entry, swap), swap.Flag);
+        // And a season's chunks the same way (plan 22 · U4: Unova's summer, autumn and winter), laid by the season
+        foreach (var entry in Index.Maps)
+            if (maps.FirstOrDefault(m => m.Name == entry.Name) is { } map)
+                foreach (var (season, swap) in SeasonalSwaps(entry))
+                    map.AddSeasonalPlace(season, swap.Cells.Select(c => (c.ChunkX, c.ChunkY)), WorldMapBuilder.BuildSwapped(this, entry, swap));
         // Turnback Cave's doors are aimed as the player comes into each room: they learn here where each door leads
         foreach (string area in TurnbackCave.Everywhere)
             for (int door = 0; door < TurnbackCave.Doors.Count; door++)
@@ -1307,6 +1336,37 @@ public static class WorldMapBuilder
         // two met 90 and 10 times in a hundred
         Fill(area.RockSmashEncounters, file?.RockSmash, file?.RockSmash?.Count == 2 ? RockSmashPairWeights : WorldAreaFile.WaterSlotWeights);
         area.RockSmashRate = file?.RockSmashRate ?? 0;
+        // Black 2's tables beside them (plan 22 · U4): the dark grass's met as the grass's, the shaking grass's too,
+        // the rippling water's and its rod's as the water's
+        Fill(area.DarkGrassEncounters, file?.DarkGrass, WorldAreaFile.LandSlotWeights);
+        area.DarkGrassRate = file?.DarkGrassRate ?? 0;
+        Fill(area.ShakingGrassEncounters, file?.ShakingGrass, WorldAreaFile.LandSlotWeights);
+        area.ShakingGrassRate = file?.ShakingGrassRate ?? 0;
+        Fill(area.RipplingWaterEncounters, file?.RipplingWater, WorldAreaFile.WaterSlotWeights);
+        area.RipplingWaterRate = file?.RipplingWaterRate ?? 0;
+        Fill(area.RipplingRodEncounters, file?.RipplingRod, WorldAreaFile.RodSlotWeights);
+        area.RipplingRodRate = file?.RipplingRodRate ?? 0;
+        // And the seasons' after spring, each whole, where the area's change with the season (plan 22 · U4)
+        foreach (var own in file?.Seasons ?? new())
+        {
+            if (!Enum.TryParse<Core.Season>(own.Season, ignoreCase: true, out var season) || season == Core.Season.Spring) continue;
+            List<WildEncounterEntry> Table(List<AreaEncounter>? slots, int[] weights)
+            {
+                var table = new List<WildEncounterEntry>();
+                Fill(table, slots, weights);
+                return table;
+            }
+            area.SeasonTables[season] = new WildTables
+            {
+                Land = Table(own.Land, WorldAreaFile.LandSlotWeights), LandRate = own.LandRate ?? 0,
+                Water = Table(own.Water, WorldAreaFile.WaterSlotWeights), WaterRate = own.WaterRate ?? 0,
+                SuperRod = Table(own.SuperRod, WorldAreaFile.RodSlotWeights), SuperRodRate = own.SuperRodRate ?? 0,
+                DarkGrass = Table(own.DarkGrass, WorldAreaFile.LandSlotWeights), DarkGrassRate = own.DarkGrassRate ?? 0,
+                ShakingGrass = Table(own.ShakingGrass, WorldAreaFile.LandSlotWeights), ShakingGrassRate = own.ShakingGrassRate ?? 0,
+                RipplingWater = Table(own.RipplingWater, WorldAreaFile.WaterSlotWeights), RipplingWaterRate = own.RipplingWaterRate ?? 0,
+                RipplingRod = Table(own.RipplingRod, WorldAreaFile.RodSlotWeights), RipplingRodRate = own.RipplingRodRate ?? 0
+            };
+        }
         return area;
     }
 
