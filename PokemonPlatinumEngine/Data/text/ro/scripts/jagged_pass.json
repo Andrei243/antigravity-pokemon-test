@@ -1,0 +1,78 @@
+{
+  "OpenHideout": [
+    {
+      "en": [
+        "The Magma Emblem is shaking in the bag! The rock nearby seems to be shaking in answer!"
+      ],
+      "text": [
+        "Emblema Magma tremură în rucsac! Stânca din apropiere pare să tremure în răspuns!"
+      ]
+    },
+    {
+      "en": [
+        "A hole has opened in the rock face!"
+      ],
+      "text": [
+        "S-a deschis o gaură în peretele de stâncă!"
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        "Magma Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Huh? What are you doing up here? There's nothing to see on this bit of the mountain. Nothing at all!"
+      ],
+      "text": [
+        "Hm? Ce cauți aici sus? Nu e nimic de văzut pe porțiunea asta de munte. Absolut nimic!"
+      ]
+    },
+    {
+      "en": [
+        "Hey, don't go poking at the rock! I said there's nothing there! Fine, then. You'll have to get past me!"
+      ],
+      "text": [
+        "Hei, nu umbla la stâncă! Ți-am spus că nu e nimic acolo! Bine, atunci. Va trebui să treci peste mine!"
+      ]
+    },
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        "Magma Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Ugh... I'm still not moving. Standing guard is the one thing I'm good at."
+      ],
+      "text": [
+        "Uf... Tot nu mă mișc. Să stau de pază e singurul lucru la care mă pricep."
+      ]
+    },
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        "Magma Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Go wherever you want. Without the right thing on you, there's nothing on this mountain for you to find."
+      ],
+      "text": [
+        "Mergi unde vrei. Fără ce trebuie la tine, nu ai ce găsi pe muntele ăsta."
+      ]
+    }
+  ]
+}

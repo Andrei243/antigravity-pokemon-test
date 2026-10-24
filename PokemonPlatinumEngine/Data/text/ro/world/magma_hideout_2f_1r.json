@@ -1,0 +1,109 @@
+{
+  "people": {
+    "magma_member_f": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Who are you? You're not in uniform, and only Team Magma's allowed in here. I don't like the look of you!"
+        ],
+        "text": [
+          "Magma Grunt: Cine ești? Nu porți uniformă, iar aici are voie doar Echipa Magma. Nu-mi place deloc cum arăți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: My pride as a member of Team Magma... in tatters."
+        ],
+        "text": [
+          "Magma Grunt: Mândria mea de membru al Echipei Magma... făcută țăndări."
+        ]
+      }
+    },
+    "magma_member_m_3": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Stop right there! You think I'll just stand aside and let you stroll past?"
+        ],
+        "text": [
+          "Magma Grunt: Stai pe loc! Crezi că mă dau la o parte și te las să te plimbi pe aici?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Maybe I should have let you stroll past after all."
+        ],
+        "text": [
+          "Magma Grunt: Poate că trebuia să te las să treci până la urmă."
+        ]
+      }
+    },
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: An intruder! Sound the alarm! Well, after I've beaten you."
+        ],
+        "text": [
+          "Magma Grunt: Un intrus! Dați alarma! Ei bine, după ce te înving."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Do I still have to walk my rounds now I've lost?"
+        ],
+        "text": [
+          "Magma Grunt: Mai trebuie să-mi fac rondul acum că am pierdut?"
+        ]
+      }
+    },
+    "magma_member_m_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Whoa, whoa! Somebody who isn't one of us!"
+        ],
+        "text": [
+          "Magma Grunt: Hopa, hopa! Cineva care nu e de-al nostru!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Truth is, battling isn't really my thing..."
+        ],
+        "text": [
+          "Magma Grunt: Adevărul e că luptele nu prea sunt pentru mine..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

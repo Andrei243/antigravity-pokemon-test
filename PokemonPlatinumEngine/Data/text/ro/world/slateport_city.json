@@ -549,6 +549,36 @@
           "Sunt mereu în căutare de Antrenori puternici."
         ]
       }
+    },
+    "slateport_capt_stern": {
+      "name": {
+        "en": [
+          "Captain Stern"
+        ],
+        "text": [
+          "Căpitanul Stern"
+        ]
+      }
+    },
+    "slateport_gabby": {
+      "name": {
+        "en": [
+          "Gabby"
+        ],
+        "text": [
+          "Gabby"
+        ]
+      }
+    },
+    "slateport_ty": {
+      "name": {
+        "en": [
+          "Ty"
+        ],
+        "text": [
+          "Ty"
+        ]
+      }
     }
   },
   "signs": {

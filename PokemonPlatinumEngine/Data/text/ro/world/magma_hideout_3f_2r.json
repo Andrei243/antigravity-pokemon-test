@@ -1,0 +1,31 @@
+{
+  "people": {
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: I believe in the boss, really. But waking an ancient Pokémon, stealing a meteorite... Aren't we going a bit far?"
+        ],
+        "text": [
+          "Magma Grunt: Cred în șef, serios. Dar să trezim un Pokémon străvechi, să furăm un meteorit... Nu cumva mergem prea departe?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Losing to you has cleared my head. Next time I see the boss, I'm going to ask him some questions."
+        ],
+        "text": [
+          "Magma Grunt: Înfrângerea în fața ta mi-a limpezit mintea. Data viitoare când îl văd pe șef, am să-i pun câteva întrebări."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

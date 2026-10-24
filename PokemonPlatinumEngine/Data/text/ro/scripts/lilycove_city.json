@@ -141,6 +141,14 @@
       "text": [
         "Echipa Aqua își antrenează Wailmerii chiar în canal. Nicio barcă nu poate ieși spre est pe lângă ei."
       ]
+    },
+    {
+      "en": [
+        "Those Wailmer have cleared off out of the channel at last. Boats can head east again, out to the open sea."
+      ],
+      "text": [
+        "Wailmerii ăia au plecat în sfârșit din canal. Bărcile pot merge din nou spre est, spre larg."
+      ]
     }
   ],
   "Girl": [
@@ -158,6 +166,14 @@
       ],
       "text": [
         "E o peșteră ciudată acolo, în golfuleț. Niște oameni în albastru și alb intră și ies mereu din ea."
+      ]
+    },
+    {
+      "en": [
+        "The people in blue and white haven't come out of the cave in the cove for a while. Have they all gone?"
+      ],
+      "text": [
+        "Oamenii în albastru și alb nu au mai ieșit de ceva vreme din peștera din golf. Or fi plecat cu toții?"
       ]
     }
   ],
@@ -177,6 +193,14 @@
       "text": [
         "Mi-a furat cineva Pokémonul! Sunt sigură că au fost oamenii ăia de la Echipa Aqua. Ce mă fac?"
       ]
+    },
+    {
+      "en": [
+        "Team Aqua have left town, but my Pokémon never came back. I'll find it myself if I have to."
+      ],
+      "text": [
+        "Echipa Aqua a plecat din oraș, dar Pokémonul meu nu s-a mai întors. Îl găsesc singur dacă trebuie."
+      ]
     }
   ],
   "OldManCove": [
@@ -194,6 +218,14 @@
       ],
       "text": [
         "Golfulețul ăla era o peșteră liniștită. Apoi a venit Echipa Aqua și a transformat-o într-un fel de bază."
+      ]
+    },
+    {
+      "en": [
+        "They say a submarine sailed out from under the cove. Team Aqua had dug a way right down to the sea."
+      ],
+      "text": [
+        "Se zice că un submarin a ieșit de sub golf. Echipa Aqua săpase un drum drept până la mare."
       ]
     }
   ],

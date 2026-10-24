@@ -1,0 +1,129 @@
+{
+  "people": {
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Lost in our maze of panels, are you? Then you've walked straight into me!"
+        ],
+        "text": [
+          "Aqua Grunt: Te-ai rătăcit în labirintul nostru de panouri? Atunci ai dat chiar peste mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Took me ages to learn where every panel goes. Now you're beating me with it."
+        ],
+        "text": [
+          "Aqua Grunt: Mi-a luat o veșnicie să învăț unde duce fiecare panou. Și acum mă învingi chiar cu ele."
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: You're the one who keeps getting in the boss's way! Not this time!"
+        ],
+        "text": [
+          "Aqua Grunt: Tu ești mereu în calea șefului! Nu și de data asta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: The boss is going to be furious with me..."
+        ],
+        "text": [
+          "Aqua Grunt: Șeful o să fie furios pe mine..."
+        ]
+      }
+    },
+    "aqua_member_f": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Round and round I go, keeping watch. Oh! Somebody new to battle!"
+        ],
+        "text": [
+          "Aqua Grunt: Mă învârt de colo până colo, făcând de pază. Oh! Cineva nou cu care să lupt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Now I'm dizzy as well as beaten."
+        ],
+        "text": [
+          "Aqua Grunt: Acum sunt și amețit, și învins."
+        ]
+      }
+    },
+    "aqua_member_f_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Those Poké Balls lying about? Take one if you dare. Hehe..."
+        ],
+        "text": [
+          "Aqua Grunt: Poké Ball-urile alea de pe jos? Ia unul, dacă îndrăznești. Hehe..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Fine, fine. You're tougher than you look."
+        ],
+        "text": [
+          "Aqua Grunt: Bine, bine. Ai mai multă forță decât pari."
+        ]
+      }
+    },
+    "item_ball_3": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "item_ball_5": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

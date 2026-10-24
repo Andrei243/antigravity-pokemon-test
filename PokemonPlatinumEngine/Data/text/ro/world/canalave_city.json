@@ -185,6 +185,16 @@
           "L-am văzut urcând și coborând în fiecare zi a vieții mele, și tot mă opresc să mă uit."
         ]
       }
+    },
+    "canalave_city.Captain": {
+      "name": {
+        "en": [
+          "Captain"
+        ],
+        "text": [
+          "Căpitanul"
+        ]
+      }
     }
   },
   "signs": {

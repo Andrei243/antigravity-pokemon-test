@@ -1,0 +1,139 @@
+{
+  "people": {
+    "magma_hideout_4f_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Everyone gets to see Groudon but me! Not even the tip of its tail... Oh no, I said Groudon out loud!"
+        ],
+        "text": [
+          "Magma Grunt: Toți îl văd pe Groudon, mai puțin eu! Nici măcar vârful cozii... Vai, am zis Groudon cu voce tare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Does Groudon even have a tail, I wonder?"
+        ],
+        "text": [
+          "Magma Grunt: Oare are Groudon măcar coadă?"
+        ]
+      }
+    },
+    "magma_hideout_4f_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Fuhahaha! Any moment now, Team Magma's great goal will be reached!"
+        ],
+        "text": [
+          "Magma Grunt: Fuhahaha! Din clipă în clipă, marele țel al Echipei Magma va fi atins!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Boss! Boss! Somebody's coming your way!"
+        ],
+        "text": [
+          "Magma Grunt: Șefule! Șefule! Vine cineva spre tine!"
+        ]
+      }
+    },
+    "magma_hideout_4f_grunt_3": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: You're not finished yet! I'm not letting you past that easily!"
+        ],
+        "text": [
+          "Magma Grunt: Încă nu s-a terminat! Nu te las să treci atât de ușor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Come on, one more go..."
+        ],
+        "text": [
+          "Magma Grunt: Hai, încă o încercare..."
+        ]
+      }
+    },
+    "magma_hideout_4f_tabitha": {
+      "name": {
+        "en": [
+          "Tabitha"
+        ],
+        "text": [
+          "Tabitha"
+        ]
+      },
+      "before": {
+        "en": [
+          "Tabitha: Hehehe! Come all this way, have you? Then I'll let you in on it. Groudon sleeps right up ahead, and the boss has just gone to wake it!"
+        ],
+        "text": [
+          "Tabitha: Hehehe! Ai venit până aici, nu-i așa? Atunci îți spun. Groudon doarme chiar în față, iar șeful tocmai a mers să-l trezească!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Tabitha: Hehe... And while you were busy with me, the boss will have woken Groudon."
+        ],
+        "text": [
+          "Tabitha: Hehe... Iar cât m-ai ținut ocupat, șeful l-a trezit pe Groudon."
+        ]
+      }
+    },
+    "magma_hideout_4f_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          "Maxie"
+        ]
+      }
+    },
+    "magma_hideout_4f_groudon_sleeping": {
+      "name": {
+        "en": [
+          "Groudon"
+        ],
+        "text": [
+          "Groudon"
+        ]
+      }
+    },
+    "magma_hideout_4f_groudon": {
+      "name": {
+        "en": [
+          "Groudon"
+        ],
+        "text": [
+          "Groudon"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

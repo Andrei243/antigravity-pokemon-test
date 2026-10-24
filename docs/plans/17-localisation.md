@@ -535,3 +535,13 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **The player without gender**: no line gives the player an adjective or a masculine vocative; Mary's and Oak's "Champion" is a noun, the rival's lines use none.
   - **Seen**: not run (no harness this wave; the user runs it locally).
   - **Left**: whatever wave 42's other lanes write in English (Johto J14, Hoenn H7 part b, Unova U3, W4 part b, V1, L10), which is the next slice.
+
+- [x] N6r Hoenn's H7 part b in Romanian (done 2026-10-24, wave 43)
+
+- **N6r, done 2026-10-24 (wave 43)**: everything written in English in wave 42 and not yet translated, at the commit the wave started from (98612230).
+  - **The lines**: 188 entries in 128 distinct lines (the speakers' tags and shared names by the memory, the rest by hand): plan 21 · H7 part b's Jagged Pass guard and the Magma Emblem's hole, the six floors of Team Magma's hideout (Tabitha, Maxie and Groudon on the fourth), Slateport's harbour (Captain Stern, Gabby and Ty's interview, Archie's grab at the submarine, Matt in the Aqua hideout's lower floor), Team Aqua's hideout (three floors), Lilycove's people after the submarine and the rival home again in Littleroot. `extract ro --update` wrote 23 files, none lost. Johto's J14, Unova's U3 and W4 part b left no untranslated line beyond these. The report: nothing untranslated, stale, unknown or wrong. The content check measured 29,668 lines: nothing found.
+  - **`ui.json`**: no key was missing; two places added to `places`: Ascunzătoarea Magma and Ascunzătoarea Aqua (Jagged Pass and Slateport City already had theirs).
+  - **Names in the lines**: "Aqua Grunt:" and "Magma Grunt:" as prefixes and names, "Căpitanul Stern", "Globul Albastru", "Emblema Magma", the boss "șeful", Archie, Maxie, Tabitha, Matt, Gabby, Ty and Groudon unchanged.
+  - **The player without gender**: lines to the player use no gendered adjective ("Ce încăpățânare", "cât m-ai ținut ocupat", "Ai mai multă forță decât pari").
+  - **Seen**: not run (no tests, no harness this wave).
+  - **Left**: whatever wave 43's other lanes write in English (E5, H8, U4, W5, Q18, L1), the next slice.

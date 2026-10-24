@@ -1,0 +1,109 @@
+{
+  "people": {
+    "magma_member_f": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Nothing personal. I just do what I'm told, and I'm told to stop you!"
+        ],
+        "text": [
+          "Magma Grunt: Nimic personal. Fac doar ce mi se spune, iar mie mi s-a spus să te opresc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: I lost, but we've got the Blue Orb! Soon the boss will... Hehehe, you'll see."
+        ],
+        "text": [
+          "Magma Grunt: Am pierdut, dar noi avem Globul Albastru! În curând șeful va... Hehehe, o să vezi."
+        ]
+      }
+    },
+    "magma_member_m_3": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: I can't stand the heat in here. Maybe I picked the wrong team..."
+        ],
+        "text": [
+          "Magma Grunt: Nu mai suport căldura de aici. Poate că am ales echipa greșită..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Don't you miss the sea air, stuck in a place like this?"
+        ],
+        "text": [
+          "Magma Grunt: Nu-ți lipsește aerul mării într-un loc ca ăsta?"
+        ]
+      }
+    },
+    "magma_member_m_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Sometimes the floor shakes. Is it the volcano, or is it Grou... Never mind! You heard nothing!"
+        ],
+        "text": [
+          "Magma Grunt: Uneori podeaua se cutremură. E vulcanul sau e Grou... Las-o baltă! N-ai auzit nimic!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Lucky win. It changes nothing. The boss's dream is nearly here!"
+        ],
+        "text": [
+          "Magma Grunt: Victorie norocoasă. Nu schimbă nimic. Visul șefului e aproape aici!"
+        ]
+      }
+    },
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: One of the lads lost his Magma Emblem and has been in a right state ever since... Wait. Did you find it?"
+        ],
+        "text": [
+          "Magma Grunt: Unul dintre băieți și-a pierdut Emblema Magma și de atunci e dat peste cap... Stai. Nu cumva ai găsit-o tu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: I've got a bad feeling about how this plan's going to end..."
+        ],
+        "text": [
+          "Magma Grunt: Am un presentiment prost despre cum se va sfârși planul ăsta..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -49,6 +49,122 @@
       ]
     }
   ],
+  "CaptStern": [
+    {
+      "en": [
+        "Captain Stern"
+      ],
+      "text": [
+        "Căpitanul Stern"
+      ]
+    },
+    {
+      "en": [
+        "...So, yes, we'll go on with the survey of the sea floor, a little deeper every time."
+      ],
+      "text": [
+        "...Deci, da, vom continua cercetarea fundului mării, puțin mai adânc de fiecare dată."
+      ]
+    },
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        "Gabby"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! Thank you so much for talking to us, Captain. Come on, Ty, we've got our story!"
+      ],
+      "text": [
+        "Minunat! Vă mulțumim mult că ați vorbit cu noi, Căpitane. Hai, Ty, avem reportajul!"
+      ]
+    },
+    {
+      "en": [
+        "Captain Stern"
+      ],
+      "text": [
+        "Căpitanul Stern"
+      ]
+    },
+    {
+      "en": [
+        "Phew... My first interview. I was so nervous my knees were shaking."
+      ],
+      "text": [
+        "Pfiu... Primul meu interviu. Eram atât de emoționat încât îmi tremurau genunchii."
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! Listen to this. On the sea floor we found a cave, and inside it a Pokémon that may be the one in the legends!"
+      ],
+      "text": [
+        "Oh, {player}! Ascultă. Pe fundul mării am găsit o peșteră, iar înăuntru un Pokémon care ar putea fi cel din legende!"
+      ]
+    },
+    {
+      "en": [
+        "Out of the way! Team Aqua is taking charge of this submarine!"
+      ],
+      "text": [
+        "La o parte! Echipa Aqua preia comanda acestui submarin!"
+      ]
+    },
+    {
+      "en": [
+        "Captain Stern"
+      ],
+      "text": [
+        "Căpitanul Stern"
+      ]
+    },
+    {
+      "en": [
+        "What was that just now?"
+      ],
+      "text": [
+        "Ce a fost asta adineauri?"
+      ]
+    },
+    {
+      "en": [
+        "That came from the harbour! Somebody's trying to take my submarine!"
+      ],
+      "text": [
+        "Zgomotul a venit din port! Cineva încearcă să-mi ia submarinul!"
+      ]
+    },
+    {
+      "en": [
+        "{player}, please, come with me!"
+      ],
+      "text": [
+        "{player}, te rog, vino cu mine!"
+      ]
+    }
+  ],
+  "Interviewer": [
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        "Gabby"
+      ]
+    },
+    {
+      "en": [
+        "Shh! We're rolling! The captain's telling us all about the sea floor."
+      ],
+      "text": [
+        "Ssst! Filmăm! Căpitanul ne povestește totul despre fundul mării."
+      ]
+    }
+  ],
   "EnergyGuru": [
     {
       "en": [
