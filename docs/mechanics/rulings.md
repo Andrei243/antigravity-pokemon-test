@@ -4523,3 +4523,45 @@ How a crossing is seen and heard. The rules of what crosses are "Regions", above
   `namerival`. Kanto's is Oak's lab (`pallet_town_professor_oaks_lab.NameTheRival`, as the player first walks in: Oak
   asks his grandson's name, as FireRed's introduction does); Johto's is the officer's question in Elm's lab, where the
   player gives the thief's name (HeartGold asks it there too). A game begun in the region never meets either.
+
+## The Bug-Catching Contest (2026-10-24, plan 15 · E5)
+
+HeartGold's own, read from pret/pokeheartgold's `src/overlay_bug_contest.c` (and its header), with its two tables,
+`files/data/mushi/mushi_encount.csv` and `mushi_trainer.csv`, copied as numbers into `Data/world/johto/bug-contest.json`.
+Plan 15's decision 5 recommended Serebii's numbers and a judging of our own; plan 20 · J1's pin of pret/pokeheartgold
+came first, so the judging is HeartGold's and the decision's alternative is what was done.
+
+- **Where and when**: the National Park, entered at the counter of either gate house into it (Route 35's and Route
+  36's), on Tuesdays, Thursdays and Saturdays, once a day (`FLAG_DAILY_BUG_CONTEST_ENTERED`). The park is the one map
+  (`NationalPark`): HeartGold's second park of the contest (`D22R0102`) is not imported; its five contestants are the
+  overlay's `npcs` on that map's tiles, each shown by a flag of ours, and the park's own people and Trainers are hidden
+  by `FLAG_BUG_CONTEST_UNDER_WAY` (HeartGold's `FLAG_UNK_24E`), both set and cleared by `bugcontest` alone.
+- **Who goes in** (`BugContest_BackUpParty`): the first Pokémon of the team able to fight, alone; the rest wait at the
+  counter and come back in their places with it as the park left it (`BugContest_RestoreParty_RetrieveCaughtPokemon`).
+  HeartGold asks no question of which: neither does this game. A team with nobody able is turned away.
+- **The stay**: twenty Sport Balls and twenty minutes of the game's own time, counted while the field (a script over
+  it too) or a contest battle is on screen, never in a menu. The time running out in the park, or the last Sport Ball
+  missed, ends it: an announcement and the player is brought to the gate they came in by for the judging. Walking out
+  of the park into a gate asks whether the player is done (no sends them back in).
+- **The battles**: ordinary wild battles with the player's own Pokémon, the field's step rate as the park's grass has
+  it, the species and level from the day's table (`BugContest_GetEncounterSlot`: a roll of a hundred, the first row
+  whose rate it reaches; the table is the first before the National Pokédex and after it the weekday halved:
+  Tuesday's, Thursday's or Saturday's). BAG is the Sport Ball (`BattleConditions.OnlyBall`, the balls counted by
+  `SpecialBalls`); nothing else of the bag may be used, and a Sport Ball is refused in any other battle. A Pokémon
+  caught goes to neither team nor PC: the contest keeps it, and a second catch asks which to keep (the other is set
+  free). *Cut down*: HeartGold shows the Sport Balls on the
+  touch screen's button in the bag's place; ours is the small button where BAG stands, labelled with the count.
+- **The others** (`BugContest_InitOpponents`): five of the ten (Don, Ed, Abby, William, Benny, Barry, Cindy, Josh,
+  Samuel, Kipp), none twice, each a row of their eight fit for the day and the Pokédex, its score moved by
+  `rand % (2 × spread) − spread`.
+- **The judging** (`BugContest_JudgePlayerMon`): the species' worth from the table, plus the level × 100 ÷ the table's
+  highest level for the species, plus the six IVs' sum × 100 ÷ 186, plus the HP left × 100 ÷ its most, each rounded
+  down; nothing caught scores nothing. The six are put in order by HeartGold's selection sort, in which a later
+  entrant takes a tie: the player is the last, so the player wins any tie. A level of a region crossed into is judged
+  against the table's highest as that region maps it (plan 18 · W4).
+- **The prizes** (`BugContest_Judge`): first a Sun Stone, or after the National Pokédex one drawn of ten (the Sun,
+  Moon, Fire, Thunder, Water and Leaf Stones, then the Shiny, Dusk and Dawn Stones and an Oval Stone); second an
+  Everstone; third a Sitrus Berry; anyone else a Shed Shell. *Cut down*: the results are a board of the six, told
+  third, second and first, where HeartGold's announcer reads each out in the park with the contestants lined up.
+- **Afterwards** the catch joins the team, or the PC when the team was full; the others go home. A battle lost in the
+  park gives the contest up: the team is put back and the catch let go before the player wakes up.

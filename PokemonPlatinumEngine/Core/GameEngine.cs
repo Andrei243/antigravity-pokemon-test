@@ -93,7 +93,9 @@ public enum GameState
     /// </summary>
     WindowClosing,
     /// <summary>A script's <c>namerival</c>: the keyboard for the rival of the region it plays in, over the field (plan 18 · W4, part b).</summary>
-    RivalNaming
+    RivalNaming,
+    /// <summary>The Bug-Catching Contest's board of results, a script's <c>bugcontest results</c> waiting on it (plan 15 · E5).</summary>
+    BugContestResults
 }
 
 public partial class GameEngine
@@ -322,6 +324,7 @@ public partial class GameEngine
         flow.Poketch.Clear();
         flow.PoketchView.Hide();
         flow.Safari.End();
+        flow.BugContest.Reset();
         flow.EncounterAids.RepelSteps = 0;
         flow.EncounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
@@ -556,6 +559,9 @@ public partial class GameEngine
             flow.Pokedex.RegisterCaught(fallback);
         }
 
+        // A Bug-Catching Contest under way comes back with its team set aside (plan 15 · E5)
+        ResumeBugContest(save.BugContest);
+
         // Each stored Pokémon in its own place; a save from before the boxes had places lays its list out in them
         flow.Boxes = save.Boxes?.ToBoxes() ?? PcBoxes.FromList(save.BoxStorage.Select(p => p.ToPokemon()));
 
@@ -677,6 +683,7 @@ public partial class GameEngine
             RepelSteps = flow.EncounterAids.RepelSteps,
             Poketch = flow.Poketch.Save(),
             Safari = flow.Safari.Active ? new SafariSave(flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Caught) : null,
+            BugContest = flow.BugContest.ToSave(),
             Encounters = flow.Encounters,
             Berries = flow.Berries,
             Poffins = flow.PoffinCase.Count > 0 ? flow.PoffinCase.All.ToList() : null,
@@ -954,6 +961,8 @@ public partial class GameEngine
                 UpdateOverworld(dt);
                 // The Catching Show's clock (plan 06 · R16b)
                 TickPalPark(dt);
+                // The Bug-Catching Contest's minutes, and its end when they run out (plan 15 · E5)
+                TickBugContest(dt);
                 break;
             case GameState.Dialogue:
                 UpdateDialogue(dt * Pace);
@@ -963,6 +972,8 @@ public partial class GameEngine
                 {
                     flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
                     flow.Battle.Update(dt * Pace);
+                    // The Bug-Catching Contest's minutes go on in its battles (plan 15 · E5)
+                    if (flow.Battle.OnlyBall != null) flow.BugContest.Tick(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
@@ -1141,6 +1152,11 @@ public partial class GameEngine
                     flow.ScriptAnswer = flow.AlphPuzzleScreen.Outcome == true ? 1 : 0;
                     flow.State = GameState.Overworld;
                 }
+                break;
+            case GameState.BugContestResults:
+                // The Bug-Catching Contest's board (plan 15 · E5): the script that opened it goes on once it is read
+                flow.BugContestResultsScreen.Update(dt);
+                if (!flow.BugContestResultsScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -1444,8 +1460,8 @@ public partial class GameEngine
         flow.Player.Autorun = Settings.Autorun;
         flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
-        if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);
-        else flow.Player.Update(dt, flow.Map, StartWildBattle, HandleWarp, OnStep);
+        if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, MeetInTheField, HandleWarp, OnStep);
+        else flow.Player.Update(dt, flow.Map, MeetInTheField, HandleWarp, OnStep);
         // A snowball the slide broke bursts as it happens (plan 01 · M9, part 2b)
         ShatterSnowball();
 
@@ -2487,6 +2503,7 @@ public partial class GameEngine
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) flow.PoketchView.Draw(VirtualWidth, VirtualHeight, flow.Poketch, PoketchNow());
                 if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
+                DrawBugContestCount();
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();
@@ -2563,6 +2580,9 @@ public partial class GameEngine
                 break;
             case GameState.AlphPuzzle:
                 flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.BugContestResults:
+                flow.BugContestResultsScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Phrases:
                 // Over the field, which stays under it as under a question (plan 08 · P9)

@@ -151,7 +151,8 @@ public partial class GameEngine
                 CannotFlee = cannotFlee,
                 PlayerName = name,
                 PlayerLook = lessonLook,
-                SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
+                SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0
+                    : kind == BattleKind.Normal && InBugContest ? flow.BugContest.Balls : 0,
                 MoveHints = MoveHintsOn,
                 Scene = Settings.BattleScene
             });
@@ -180,7 +181,9 @@ public partial class GameEngine
         Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
         Badges = flow.Story.BadgeCount(Here.Id),
         Money = flow.Money,
-        Player = PlayerMark
+        Player = PlayerMark,
+        // The Bug-Catching Contest throws its Sport Balls and nothing else (plan 15 · E5)
+        OnlyBall = InBugContest ? Battle.Sim.BattleCore.BugContestBall : null
     };
 
     /// <summary>
@@ -533,6 +536,7 @@ public partial class GameEngine
             }
             else if (isDefeat)
             {
+                AbandonBugContest();
                 WhiteOut();
             }
             PlayFieldMusic();
@@ -544,6 +548,8 @@ public partial class GameEngine
             }
             // A catch in Pal Park is the Catching Show's next (plan 06 · R16b)
             AfterParkBattle();
+            // A battle of the Bug-Catching Contest: its balls, its catch, its last ball (plan 15 · E5)
+            AfterContestBattle();
         });
     }
 }

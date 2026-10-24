@@ -1,0 +1,166 @@
+// The Bug-Catching Contest's numbers (plan 15 · E5): HeartGold's own, read from pret/pokeheartgold's
+// files/data/mushi/mushi_encount.csv and mushi_trainer.csv as numbers, by hand; nothing else of the original is here.
+// `encounters` are its four tables of ten: the first before the National Pokédex, then Tuesday's, Thursday's and
+// Saturday's after it (BugContest_InitEncounters: the weekday halved). A row's `rate` is where the slot begins on a
+// roll of a hundred, the first row whose rate the roll reaches being the one met (BugContest_GetEncounterSlot), and its
+// `score` is what the species is worth to the judges. `contestants` are the ten the original draws five of
+// (sBugContestOpponentClasses, in its order), each with eight rows of what they may have caught: `national` rows only
+// once the player has the National Pokédex, a `day` of 7 any day and otherwise only on that weekday (0 Sunday), and a
+// score spread either way by up to `spread` (BugContest_InitOpponents).
+{
+  "days": [ 2, 4, 6 ],
+  "balls": 20,
+  "minutes": 20,
+  "encounters": [
+    [
+      { "species": "Caterpie", "minLevel": 7, "maxLevel": 18, "rate": 80, "score": 60 },
+      { "species": "Weedle", "minLevel": 7, "maxLevel": 18, "rate": 60, "score": 60 },
+      { "species": "Metapod", "minLevel": 9, "maxLevel": 18, "rate": 50, "score": 60 },
+      { "species": "Kakuna", "minLevel": 9, "maxLevel": 18, "rate": 40, "score": 60 },
+      { "species": "Butterfree", "minLevel": 12, "maxLevel": 15, "rate": 30, "score": 80 },
+      { "species": "Beedrill", "minLevel": 12, "maxLevel": 15, "rate": 20, "score": 80 },
+      { "species": "Venonat", "minLevel": 10, "maxLevel": 16, "rate": 15, "score": 80 },
+      { "species": "Paras", "minLevel": 10, "maxLevel": 17, "rate": 10, "score": 80 },
+      { "species": "Scyther", "minLevel": 13, "maxLevel": 14, "rate": 5, "score": 100 },
+      { "species": "Pinsir", "minLevel": 13, "maxLevel": 14, "rate": 0, "score": 100 }
+    ],
+    [
+      { "species": "Caterpie", "minLevel": 24, "maxLevel": 36, "rate": 80, "score": 60 },
+      { "species": "Weedle", "minLevel": 24, "maxLevel": 36, "rate": 60, "score": 60 },
+      { "species": "Metapod", "minLevel": 26, "maxLevel": 36, "rate": 50, "score": 60 },
+      { "species": "Kakuna", "minLevel": 26, "maxLevel": 36, "rate": 40, "score": 60 },
+      { "species": "Butterfree", "minLevel": 27, "maxLevel": 30, "rate": 30, "score": 80 },
+      { "species": "Beedrill", "minLevel": 27, "maxLevel": 30, "rate": 20, "score": 80 },
+      { "species": "Venonat", "minLevel": 25, "maxLevel": 32, "rate": 15, "score": 80 },
+      { "species": "Paras", "minLevel": 27, "maxLevel": 34, "rate": 10, "score": 80 },
+      { "species": "Scyther", "minLevel": 27, "maxLevel": 28, "rate": 5, "score": 100 },
+      { "species": "Pinsir", "minLevel": 27, "maxLevel": 28, "rate": 0, "score": 100 }
+    ],
+    [
+      { "species": "Wurmple", "minLevel": 24, "maxLevel": 36, "rate": 80, "score": 60 },
+      { "species": "Silcoon", "minLevel": 24, "maxLevel": 36, "rate": 60, "score": 60 },
+      { "species": "Nincada", "minLevel": 26, "maxLevel": 36, "rate": 50, "score": 80 },
+      { "species": "Volbeat", "minLevel": 26, "maxLevel": 36, "rate": 40, "score": 80 },
+      { "species": "Kricketot", "minLevel": 27, "maxLevel": 30, "rate": 30, "score": 60 },
+      { "species": "Kricketune", "minLevel": 27, "maxLevel": 30, "rate": 20, "score": 80 },
+      { "species": "Dustox", "minLevel": 25, "maxLevel": 32, "rate": 15, "score": 80 },
+      { "species": "Combee", "minLevel": 27, "maxLevel": 34, "rate": 10, "score": 80 },
+      { "species": "Scyther", "minLevel": 27, "maxLevel": 28, "rate": 5, "score": 100 },
+      { "species": "Pinsir", "minLevel": 27, "maxLevel": 28, "rate": 0, "score": 100 }
+    ],
+    [
+      { "species": "Wurmple", "minLevel": 24, "maxLevel": 36, "rate": 80, "score": 60 },
+      { "species": "Cascoon", "minLevel": 24, "maxLevel": 36, "rate": 60, "score": 60 },
+      { "species": "Nincada", "minLevel": 26, "maxLevel": 36, "rate": 50, "score": 80 },
+      { "species": "Illumise", "minLevel": 26, "maxLevel": 36, "rate": 40, "score": 80 },
+      { "species": "Kricketot", "minLevel": 27, "maxLevel": 30, "rate": 30, "score": 60 },
+      { "species": "Kricketune", "minLevel": 27, "maxLevel": 30, "rate": 20, "score": 80 },
+      { "species": "Beautifly", "minLevel": 25, "maxLevel": 32, "rate": 15, "score": 80 },
+      { "species": "Combee", "minLevel": 27, "maxLevel": 34, "rate": 10, "score": 80 },
+      { "species": "Scyther", "minLevel": 27, "maxLevel": 28, "rate": 5, "score": 100 },
+      { "species": "Pinsir", "minLevel": 27, "maxLevel": 28, "rate": 0, "score": 100 }
+    ]
+  ],
+  "contestants": [
+    { "name": "Don", "class": "Bug Catcher", "look": "bug_catcher", "rows": [
+      { "national": false, "day": 7, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": false, "day": 7, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": true, "day": 2, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": true, "day": 2, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": true, "day": 4, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": true, "day": 4, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": true, "day": 6, "species": "Pinsir", "score": 320, "spread": 20 },
+      { "national": true, "day": 6, "species": "Scyther", "score": 300, "spread": 30 }
+    ] },
+    { "name": "Ed", "class": "Bug Catcher", "look": "bug_catcher", "rows": [
+      { "national": false, "day": 7, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": false, "day": 7, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": true, "day": 2, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": true, "day": 2, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": true, "day": 4, "species": "Pinsir", "score": 300, "spread": 30 },
+      { "national": true, "day": 4, "species": "Scyther", "score": 320, "spread": 20 },
+      { "national": true, "day": 6, "species": "Scyther", "score": 300, "spread": 30 },
+      { "national": true, "day": 6, "species": "Pinsir", "score": 320, "spread": 20 }
+    ] },
+    { "name": "Abby", "class": "Ace Trainer", "look": "ace_trainer_f", "rows": [
+      { "national": false, "day": 7, "species": "Paras", "score": 280, "spread": 50 },
+      { "national": false, "day": 7, "species": "Venonat", "score": 280, "spread": 50 },
+      { "national": true, "day": 2, "species": "Paras", "score": 280, "spread": 50 },
+      { "national": true, "day": 2, "species": "Paras", "score": 280, "spread": 50 },
+      { "national": true, "day": 4, "species": "Combee", "score": 280, "spread": 50 },
+      { "national": true, "day": 4, "species": "Volbeat", "score": 280, "spread": 50 },
+      { "national": true, "day": 6, "species": "Kricketune", "score": 280, "spread": 50 },
+      { "national": true, "day": 6, "species": "Illumise", "score": 280, "spread": 50 }
+    ] },
+    { "name": "William", "class": "Pokéfan", "look": "pokefan_m", "rows": [
+      { "national": false, "day": 7, "species": "Venonat", "score": 280, "spread": 50 },
+      { "national": false, "day": 7, "species": "Paras", "score": 280, "spread": 50 },
+      { "national": true, "day": 2, "species": "Venonat", "score": 280, "spread": 50 },
+      { "national": true, "day": 2, "species": "Venonat", "score": 280, "spread": 50 },
+      { "national": true, "day": 4, "species": "Volbeat", "score": 280, "spread": 50 },
+      { "national": true, "day": 4, "species": "Combee", "score": 280, "spread": 50 },
+      { "national": true, "day": 6, "species": "Illumise", "score": 280, "spread": 50 },
+      { "national": true, "day": 6, "species": "Kricketune", "score": 280, "spread": 50 }
+    ] },
+    { "name": "Benny", "class": "Bug Catcher", "look": "bug_catcher", "rows": [
+      { "national": false, "day": 7, "species": "Beedrill", "score": 260, "spread": 50 },
+      { "national": false, "day": 7, "species": "Butterfree", "score": 260, "spread": 50 },
+      { "national": true, "day": 2, "species": "Beedrill", "score": 260, "spread": 50 },
+      { "national": true, "day": 2, "species": "Butterfree", "score": 260, "spread": 50 },
+      { "national": true, "day": 4, "species": "Kricketune", "score": 260, "spread": 50 },
+      { "national": true, "day": 4, "species": "Nincada", "score": 260, "spread": 50 },
+      { "national": true, "day": 6, "species": "Combee", "score": 260, "spread": 50 },
+      { "national": true, "day": 6, "species": "Nincada", "score": 260, "spread": 50 }
+    ] },
+    { "name": "Barry", "class": "Camper", "look": "camper", "rows": [
+      { "national": false, "day": 7, "species": "Butterfree", "score": 260, "spread": 50 },
+      { "national": false, "day": 7, "species": "Beedrill", "score": 260, "spread": 50 },
+      { "national": true, "day": 2, "species": "Butterfree", "score": 260, "spread": 50 },
+      { "national": true, "day": 2, "species": "Beedrill", "score": 260, "spread": 50 },
+      { "national": true, "day": 4, "species": "Nincada", "score": 260, "spread": 50 },
+      { "national": true, "day": 4, "species": "Kricketune", "score": 260, "spread": 50 },
+      { "national": true, "day": 6, "species": "Nincada", "score": 260, "spread": 50 },
+      { "national": true, "day": 6, "species": "Combee", "score": 260, "spread": 50 }
+    ] },
+    { "name": "Cindy", "class": "Picnicker", "look": "picnicker", "rows": [
+      { "national": false, "day": 7, "species": "Kakuna", "score": 240, "spread": 90 },
+      { "national": false, "day": 7, "species": "Metapod", "score": 240, "spread": 90 },
+      { "national": true, "day": 2, "species": "Kakuna", "score": 240, "spread": 90 },
+      { "national": true, "day": 2, "species": "Metapod", "score": 240, "spread": 90 },
+      { "national": true, "day": 4, "species": "Kricketot", "score": 240, "spread": 90 },
+      { "national": true, "day": 4, "species": "Dustox", "score": 240, "spread": 90 },
+      { "national": true, "day": 6, "species": "Kricketot", "score": 240, "spread": 90 },
+      { "national": true, "day": 6, "species": "Beautifly", "score": 240, "spread": 90 }
+    ] },
+    { "name": "Josh", "class": "Bug Catcher", "look": "bug_catcher", "rows": [
+      { "national": false, "day": 7, "species": "Metapod", "score": 240, "spread": 90 },
+      { "national": false, "day": 7, "species": "Kakuna", "score": 240, "spread": 90 },
+      { "national": true, "day": 2, "species": "Metapod", "score": 240, "spread": 90 },
+      { "national": true, "day": 2, "species": "Kakuna", "score": 240, "spread": 90 },
+      { "national": true, "day": 4, "species": "Dustox", "score": 240, "spread": 90 },
+      { "national": true, "day": 4, "species": "Kricketot", "score": 240, "spread": 90 },
+      { "national": true, "day": 6, "species": "Beautifly", "score": 240, "spread": 90 },
+      { "national": true, "day": 6, "species": "Kricketot", "score": 240, "spread": 90 }
+    ] },
+    { "name": "Samuel", "class": "Youngster", "look": "youngster", "rows": [
+      { "national": false, "day": 7, "species": "Weedle", "score": 220, "spread": 110 },
+      { "national": false, "day": 7, "species": "Caterpie", "score": 220, "spread": 110 },
+      { "national": true, "day": 2, "species": "Weedle", "score": 220, "spread": 110 },
+      { "national": true, "day": 2, "species": "Caterpie", "score": 220, "spread": 110 },
+      { "national": true, "day": 4, "species": "Silcoon", "score": 220, "spread": 110 },
+      { "national": true, "day": 4, "species": "Wurmple", "score": 220, "spread": 110 },
+      { "national": true, "day": 6, "species": "Cascoon", "score": 220, "spread": 110 },
+      { "national": true, "day": 6, "species": "Wurmple", "score": 220, "spread": 110 }
+    ] },
+    { "name": "Kipp", "class": "School Kid", "look": "school_kid_m", "rows": [
+      { "national": false, "day": 7, "species": "Caterpie", "score": 220, "spread": 110 },
+      { "national": false, "day": 7, "species": "Weedle", "score": 220, "spread": 110 },
+      { "national": true, "day": 2, "species": "Caterpie", "score": 220, "spread": 110 },
+      { "national": true, "day": 2, "species": "Weedle", "score": 220, "spread": 110 },
+      { "national": true, "day": 4, "species": "Wurmple", "score": 220, "spread": 110 },
+      { "national": true, "day": 4, "species": "Silcoon", "score": 220, "spread": 110 },
+      { "national": true, "day": 6, "species": "Wurmple", "score": 220, "spread": 110 },
+      { "national": true, "day": 6, "species": "Cascoon", "score": 220, "spread": 110 }
+    ] }
+  ]
+}

@@ -896,7 +896,7 @@ public sealed partial class BattleCore : IBattleContext
         // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH)
         int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage,
             Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon);
-        if (ball.Name == "Safari Ball") SpecialBalls = Math.Max(0, SpecialBalls - 1);
+        if (ball.Name == "Safari Ball" || ball.Name == Conditions.OnlyBall) SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes));
         if (shakes < 4)
         {
@@ -908,6 +908,11 @@ public sealed partial class BattleCore : IBattleContext
                 _ => Text.Of("battle.gahItWasSo")
             });
             if (Kind == BattleKind.Safari) SafariGameOver();
+            if (Conditions.OnlyBall != null)
+            {
+                ContestBallsGone();
+                if (Result != BattleResult.None) return;
+            }
             // Ball Fetch picks the first ball that failed up (plan 06 · R27b)
             FetchTheBall(ball);
             return;
@@ -926,6 +931,14 @@ public sealed partial class BattleCore : IBattleContext
         foe.Ball = ball.Name;
         // A Heal Ball makes it whole and a Friend Ball its friend (plan 06 · R28a)
         CatchCalculator.AfterTheCatch(foe, ball);
+        // The Bug-Catching Contest keeps its catch for itself: it joins neither the team nor the PC here (plan 15 · E5)
+        if (Conditions.OnlyBall != null)
+        {
+            Emit(new Caught(foe, ball.Name, ToBox: false));
+            Say(Text.Of("battle.gotchaWasCaught", ("foe", foe.DisplayName)));
+            End(BattleResult.EnemyCaught);
+            return;
+        }
         bool toBox = PlayerParty.IsFull;
         if (!toBox) PlayerParty.Add(foe);
         Emit(new Caught(foe, ball.Name, toBox));

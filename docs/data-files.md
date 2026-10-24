@@ -631,3 +631,7 @@ A battle kept on the Vs. Recorder (plan 08 · P10; `Battle/Sim/BattleRecordFile.
 - `seed` (the battle's `BattleRandom`), `answers` (each request's choices: `side`, `slot`, `kind`, `move`, `targetSide`, `targetSlot`, `switchTo`, `item`, and the later mechanics' flags), `result` and `turns`.
 
 A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of the three refusals it is and `Notice` the line a list shows for it.
+
+## The Bug-Catching Contest
+
+`Data/world/johto/bug-contest.json` (plan 15 · E5; `BugContestVenue`) is the National Park's contest as numbers, written by hand from pret/pokeheartgold's `files/data/mushi/mushi_encount.csv` and `mushi_trainer.csv`: `days` (the weekdays it is held, 0 Sunday), `balls` and `minutes`; `encounters`, four tables of ten rows (`species`, `minLevel`, `maxLevel`, `rate`, where a slot begins on a roll of a hundred, and `score`, the species' worth to the judges), the first before the National Pokédex and then Tuesday's, Thursday's and Saturday's; and `contestants`, the ten in HeartGold's order (`name`, `class` as the trainer table writes it, `look` of `characters.json`), each with eight `rows` (`national`, `day` with 7 for any, `species`, `score`, `spread`). Comments are allowed. Nothing else of the original is in it.

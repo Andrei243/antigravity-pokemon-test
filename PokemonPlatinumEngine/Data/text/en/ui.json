@@ -2296,6 +2296,7 @@
     "onlyTheBallsYou": "Only the balls you were given can be used here.",
     "youHaveNoBalls": "You have no balls left!",
     "safariBallsAreFor": "Safari Balls are for the Great Marsh.",
+    "sportBallsAreFor": "Sport Balls are for the Bug-Catching Contest.",
     "theTrainerBlockedThe": "The Trainer blocked the Ball! Don't be a thief!",
     "thereAreTwoPokemon": "There are two Pokémon out! The Ball can't be aimed!",
     "thereATimeAnd": "There's a time and place for everything, but not now.",
@@ -2365,6 +2366,7 @@
     "theWildFled": "The wild {pokemon} fled!",
     "theWildIsKeeping": "The wild {pokemon} is keeping a close eye on you.",
     "youveThrownYourLast": "You've thrown your last Safari Ball!",
+    "youveThrownYourLastSport": "You've thrown your last Sport Ball!",
     "thatTheEndOf": "That's the end of your time in the Great Marsh.",
     "finallyGotGoing": "{pokemon} finally got going!",
     "comeBack": "Come back, {pokemon}!",
@@ -2935,6 +2937,7 @@
     "mud": "MUD",
     "safariBall": "SAFARI BALL ×{n}",
     "parkBall": "PARK BALL ×{n}",
+    "sportBall": "SPORT BALL ×{n}",
     "whatWill": "What will {name} do?",
     "useOnWhichMove": "Use the {item} on which move?",
     "yes": "Yes",
@@ -3499,6 +3502,16 @@
       "plane": "The plane climbs above the clouds and flies on. At last, {to} spreads out below.",
       "way": "The journey goes on for a long while. At last, {to} lies ahead."
     }
+  },
+  "bugContest": {
+    "title": "BUG-CATCHING CONTEST",
+    "sportBalls": "SPORT BALLS",
+    "timeLeft": "TIME LEFT",
+    "place": "{n}.",
+    "nothing": "Nothing caught",
+    "winner": "WINNER",
+    "judging": "The judges announce the winners…",
+    "yourScore": "Your Pokémon scored {score} points."
   },
   "placeWords": {
     "the": "the {place}",

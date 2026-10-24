@@ -869,6 +869,13 @@ public static class ScriptParser
             // colour's arrows a step round their loop and turns them a quarter
             case "rotatetiles":
                 return new Instruction { Op = Op.RotateTiles, Line = line, Name = r.OneOf("yellow", "blue", "green", "purple", "red") };
+            // The National Park's Bug-Catching Contest (plan 15 · E5)
+            case "bugcontest":
+                return new Instruction
+                {
+                    Op = Op.BugContest, Line = line,
+                    Name = r.OneOf("open", "on", "start", "balls", "caught", "keep", "release", "judge", "results", "prize", "end")
+                };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

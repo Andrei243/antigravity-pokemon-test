@@ -1,7 +1,8 @@
 {
-  // The National Park (plan 20 · J5, part b): its lawns, its fountain and its Trainers. The Bug-Catching Contest is the
-  // next chapter's (plan 20 · J7, through plan 15 · E5): its contestants, who stand off the park's ground until a
-  // contest, are left out with its warden. The old gate house to the north (warps 4 to 6) stays shut
+  // The National Park (plan 20 · J5, part b): its lawns, its fountain and its Trainers. During a Bug-Catching Contest
+  // (plan 15 · E5) its own people and Trainers keep away (FLAG_BUG_CONTEST_UNDER_WAY, HeartGold's FLAG_UNK_24E turned
+  // to a flag of ours) and the five contestants drawn stand where HeartGold's park of the contest (D22R0102) has them,
+  // each shown by a flag of ours that `bugcontest start` sets. The old gate house to the north (warps 4 to 6) stays shut
   "area": "national_park",
   "bgmTrack": "johto/national_park",
   "trees": "Round",
@@ -16,7 +17,7 @@
       "dialog": [
         "I love lying on the grass here and watching the clouds go by."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_middlewoman1_2": {
       "name": "Woman",
@@ -24,7 +25,7 @@
       "dialog": [
         "The Bug-Catching Contest is held here on certain days. The whole park fills with Bug Catchers."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsboy1": {
       "name": "Boy",
@@ -32,7 +33,7 @@
       "dialog": [
         "My brother and I race each other round the fountain. I always win!"
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsboy1_2": {
       "name": "Boy",
@@ -40,7 +41,7 @@
       "dialog": [
         "He always cheats. I'll win next time!"
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsdsboy": {
       "name": "Boy",
@@ -48,7 +49,7 @@
       "dialog": [
         "People come from all over Johto to walk their Pokémon in this park."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gswoman1": {
       "name": "Woman",
@@ -56,7 +57,7 @@
       "dialog": [
         "My Persian loves its walks in the park. It's the only time it's ever in a good mood."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_tsure_poke_static_persian": {
       "name": "Persian",
@@ -66,14 +67,14 @@
       "dialog": [
         "Persian: Fufufu..."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gswoman2": {
       "name": "Woman",
       "dialog": [
         "The park's grass is long. Bug Pokémon love to hide in it."
       ],
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_middlewoman1_2_2": {
       "name": "Beverly",
@@ -81,7 +82,7 @@
         "dialogueBefore": "Pokéfan Beverly: My Snubbull is the sweetest thing. Look at its little face!",
         "dialogueAfter": "Pokéfan Beverly: Its little face is so sad now..."
       },
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsgirl1_2": {
       "name": "Krise",
@@ -89,7 +90,7 @@
         "dialogueBefore": "Lass Krise: You look like you'd be fun to battle. Let's go!",
         "dialogueAfter": "Lass Krise: That was fun, even though I lost."
       },
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsmiddleman1_2": {
       "name": "William",
@@ -97,7 +98,7 @@
         "dialogueBefore": "Pokéfan William: My Raichu and I have been together for years. We're a team!",
         "dialogueAfter": "Pokéfan William: Still a team, just a beaten one."
       },
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     },
     "d22r0101_gsboy1_4": {
       "name": "Jack",
@@ -105,9 +106,31 @@
         "dialogueBefore": "School Kid Jack: I've read every book on battling. Let me show you what I know!",
         "dialogueAfter": "School Kid Jack: The books didn't cover that."
       },
-      "hiddenBy": ""
+      "hiddenBy": "FLAG_BUG_CONTEST_UNDER_WAY"
     }
   },
+  "npcs": [
+    { "id": "bug_contestant_don", "name": "Don", "npcType": "bug_catcher", "x": 51, "y": 55, "facing": "Left",
+      "dialog": [ "I'm after a Scyther. Nothing else will do!" ], "shownBy": "FLAG_BUG_CONTESTANT_DON" },
+    { "id": "bug_contestant_ed", "name": "Ed", "npcType": "bug_catcher", "x": 49, "y": 24, "facing": "Down",
+      "dialog": [ "Shh! There's something rustling in this grass. Don't scare it off!" ], "shownBy": "FLAG_BUG_CONTESTANT_ED" },
+    { "id": "bug_contestant_abby", "name": "Abby", "npcType": "ace_trainer_f", "x": 38, "y": 38, "facing": "Up",
+      "dialog": [ "I train hard for battles, but catching is a different skill. It's good practice." ], "shownBy": "FLAG_BUG_CONTESTANT_ABBY" },
+    { "id": "bug_contestant_william", "name": "William", "npcType": "pokefan_m", "x": 40, "y": 29, "facing": "Down",
+      "dialog": [ "I entered for fun, but I'd still like to win something for my grandkids." ], "shownBy": "FLAG_BUG_CONTESTANT_WILLIAM" },
+    { "id": "bug_contestant_benny", "name": "Benny", "npcType": "bug_catcher", "x": 66, "y": 32, "facing": "Down",
+      "dialog": [ "Every Bug Pokémon in this park is mine. Well, one of them is." ], "shownBy": "FLAG_BUG_CONTESTANT_BENNY" },
+    { "id": "bug_contestant_barry", "name": "Barry", "npcType": "camper", "x": 59, "y": 26, "facing": "Down",
+      "dialog": [ "The judges like a big, healthy Pokémon. Don't battle yours down too far!" ], "shownBy": "FLAG_BUG_CONTESTANT_BARRY" },
+    { "id": "bug_contestant_cindy", "name": "Cindy", "npcType": "picnicker", "x": 41, "y": 51, "facing": "Down",
+      "dialog": [ "I don't really like bugs... but the prizes are so nice!" ], "shownBy": "FLAG_BUG_CONTESTANT_CINDY" },
+    { "id": "bug_contestant_josh", "name": "Josh", "npcType": "bug_catcher", "x": 36, "y": 46, "facing": "Down",
+      "dialog": [ "I've got a good feeling about today. This is my contest!" ], "shownBy": "FLAG_BUG_CONTESTANT_JOSH" },
+    { "id": "bug_contestant_samuel", "name": "Samuel", "npcType": "youngster", "x": 60, "y": 52, "facing": "Down",
+      "dialog": [ "Twenty minutes isn't much. I'd better hurry up!" ], "shownBy": "FLAG_BUG_CONTESTANT_SAMUEL" },
+    { "id": "bug_contestant_kipp", "name": "Kipp", "npcType": "school_kid_m", "x": 66, "y": 46, "facing": "Down",
+      "dialog": [ "My teacher says a Pokémon's hidden strength counts with the judges. I wonder how they can tell." ], "shownBy": "FLAG_BUG_CONTESTANT_KIPP" }
+  ],
   "signs": {
     "D22R0101_001+1": "National Park\nA place of rest for people and Pokémon.",
     "D22R0101_002+1": "Trainer Tips\nPrint out Pokémon you've caught on your Pokédex... or just admire them here.",

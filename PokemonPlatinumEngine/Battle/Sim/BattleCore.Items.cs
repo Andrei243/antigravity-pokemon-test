@@ -344,6 +344,15 @@ public sealed partial class BattleCore
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
             return item.Name != "Safari Ball" ? Text.Of("battle.onlyTheBallsYou") : SpecialBalls <= 0 ? Text.Of("battle.youHaveNoBalls") : null;
         if (item.Name == "Safari Ball") return Text.Of("battle.safariBallsAreFor");
+        // The Bug-Catching Contest's Sport Balls and nothing else, and those only there (plan 15 · E5)
+        if (Conditions.OnlyBall is { } only)
+        {
+            if (item.Name != only) return Text.Of("battle.onlyTheBallsYou");
+            if (SpecialBalls <= 0) return Text.Of("battle.youHaveNoBalls");
+            if (EnemySlots.Count(f => f.IsActive) > 1) return Text.Of("battle.thereAreTwoPokemon");
+            return null;
+        }
+        if (item.Name == BugContestBall) return Text.Of("battle.sportBallsAreFor");
         if (item.Pocket == ItemPocket.PokeBalls)
         {
             if (IsTrainerBattle) return Text.Of("battle.theTrainerBlockedThe");

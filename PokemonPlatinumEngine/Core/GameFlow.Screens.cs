@@ -47,6 +47,8 @@ public sealed partial class GameFlow
     public PokegearScreen PokegearScreen { get; } = new();
     public PokeNavScreen PokeNavScreen { get; } = new();
     public AlphPuzzleScreen AlphPuzzleScreen { get; } = new();
+    /// <summary>The Bug-Catching Contest's board of results (plan 15 · E5).</summary>
+    public BugContestResultsScreen BugContestResultsScreen { get; } = new();
     public PhraseScreen PhraseScreen { get; } = new();
     public RivalNamingScreen RivalNamingScreen { get; } = new();
     public SuperContestScreen SuperContestScreen { get; } = new();

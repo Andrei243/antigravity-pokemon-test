@@ -121,6 +121,8 @@ public enum Op
     NameRival,
     // A floor switch of the Mossdeep Gym (plan 21 · H8): everyone on the colour's arrows steps round their loop and turns
     RotateTiles,
+    // The National Park's Bug-Catching Contest (plan 15 · E5): begun, asked about, judged and ended
+    BugContest,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

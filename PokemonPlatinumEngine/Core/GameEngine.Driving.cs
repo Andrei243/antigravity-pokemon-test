@@ -55,6 +55,9 @@ public partial class GameEngine
         public Poketch Poketch => game.flow.Poketch;
         /// <summary>The Great Marsh's Safari Game (plan 01 · M7; its catches, plan 01 · M11, part b).</summary>
         public SafariGame Safari => game.flow.Safari;
+        /// <summary>The National Park's Bug-Catching Contest, and its board of results (plan 15 · E5).</summary>
+        public BugContest BugContest => game.flow.BugContest;
+        public BugContestResultsScreen BugContestResults => game.flow.BugContestResultsScreen;
         public SpecialEncounters Encounters => game.flow.Encounters;
         public BerryPatches Berries => game.flow.Berries;
         public PoffinCase Poffins => game.flow.PoffinCase;

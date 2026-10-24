@@ -1,0 +1,15 @@
+# The gate house between Route 35, the National Park and the Pokéathlon Dome (plan 15 · E5): its officer keeps the
+# Bug-Catching Contest's counter, and coming in from the park while a contest is under way asks whether the player is
+# done.
+
+script Officer
+  setvar VAR_BUG_CONTEST_GATE 0
+  call BugContestDesk
+  end
+
+script OnEnter
+  bugcontest on
+  if result == 0 end
+  setvar VAR_BUG_CONTEST_GATE 0
+  call BugContestReturn
+  end

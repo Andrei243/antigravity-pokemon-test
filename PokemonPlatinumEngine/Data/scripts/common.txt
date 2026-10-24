@@ -2364,3 +2364,159 @@ script HoennKecleonFound
   hide self
   setflag own
   return
+
+
+# The Bug-Catching Contest (plan 15 · E5), on HeartGold's beats in our own words. Both gates into the National Park
+# keep its counter, and each says which it is (VAR_BUG_CONTEST_GATE: 0 Route 35's, 1 Route 36's) before it calls
+# BugContestDesk: on a Tuesday, Thursday or Saturday the officer offers a place, sets the team aside but for its first
+# Pokémon able to fight, hands over twenty Sport Balls and sends the player into the park, once a day.
+script BugContestDesk
+  speaker "Officer"
+  bugcontest on
+  if result == 1 goto Under
+  if flag FLAG_DAILY_BUG_CONTEST_ENTERED goto Done
+  bugcontest open
+  if result == 0 goto Closed
+  say "Today's the Bug-Catching Contest! Whoever catches the finest Bug Pokémon in the park wins a prize."
+  ask "Would you like to take part?"
+  if no goto Declined
+  bugcontest start
+  if result == 0 goto NoPokemon
+  setflag FLAG_DAILY_BUG_CONTEST_ENTERED
+  say "Only the first Pokémon of your team that can battle may come along. We'll look after the rest for you."
+  say "Here are twenty Sport Balls. You have twenty minutes to catch the best Bug Pokémon you can. Good luck!"
+  if var VAR_BUG_CONTEST_GATE == 1 goto FromRoute36
+  warp "NationalPark" 40 85 up
+  end
+label FromRoute36
+  warp "NationalPark" 74 39 left
+  end
+label Under
+  call BugContestReturn
+  end
+label Declined
+  say "No? Well, maybe next time. The contest is held every Tuesday, Thursday and Saturday."
+  end
+label NoPokemon
+  say "Oh, none of your Pokémon can battle right now. Please heal them first."
+  end
+label Closed
+  say "The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays."
+  say "Bug Catchers come from all over Johto for it. Do take part!"
+  end
+label Done
+  say "Today's contest is over. Thanks for taking part! The next one is on the next contest day."
+  end
+
+
+# Coming back into a gate from the park while a contest is under way (the gate's own arrival script): the officer asks
+# whether the player is done. Yes goes to the judging; no sends the player back into the park by the gate they came in.
+script BugContestReturn
+  bugcontest on
+  if result == 0 end
+  speaker "Officer"
+  ask "There's still time left in the contest. Are you finished catching?"
+  if yes goto Judge
+  say "Then back you go! Good luck!"
+  if var VAR_BUG_CONTEST_GATE == 1 goto FromRoute36
+  warp "NationalPark" 40 85 up
+  end
+label FromRoute36
+  warp "NationalPark" 74 39 left
+  end
+label Judge
+  call BugContestJudging
+  end
+
+
+# The contest's twenty minutes are up while the player is in the park (the game starts it): an announcement, and the
+# player is brought to the gate they came in by for the judging.
+script BugContestTimeUp
+  speaker none
+  text "Ding-dong! Time's up! The Bug-Catching Contest is over. All contestants, please make your way to the gate."
+  call BugContestToTheGate
+  end
+
+
+# The last Sport Ball thrown (the game starts it, or BugContestSwap): the same, with its own announcement.
+script BugContestOutOfBalls
+  speaker none
+  text "You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate."
+  call BugContestToTheGate
+  end
+
+
+script BugContestToTheGate
+  if var VAR_BUG_CONTEST_GATE == 1 goto FromRoute36
+  warp "Route35_NationalParkGate" 23 4 left
+  call BugContestJudging
+  return
+label FromRoute36
+  warp "Route36_NationalParkGate" 5 6 up
+  call BugContestJudging
+  return
+
+
+# A second Pokémon caught while one is kept (the game starts it after the battle): only one may be entered, so the
+# player chooses which, and the other is set free. The last Sport Ball thrown ends the contest afterwards.
+script BugContestSwap
+  speaker none
+  text "You're already holding on to {bugmon} for the contest."
+  ask "Enter the {bugnew} you just caught instead?"
+  if yes goto Switch
+  text "{bugnew} was set free."
+  bugcontest release
+  goto Balls
+label Switch
+  text "{bugmon} was set free. {bugnew} is your entry now."
+  bugcontest keep
+label Balls
+  bugcontest balls
+  if result == 0 goto Out
+  end
+label Out
+  call BugContestOutOfBalls
+  end
+
+
+# The judging, in the gate (BugContest_Judge): the player's catch is looked at, the six are judged and the board shows
+# them third, second and first; the prize for the player's place, the team given back with the catch, and the others
+# gone home.
+script BugContestJudging
+  speaker "Officer"
+  bugcontest caught
+  if result == 0 goto Nothing
+  say "So you caught {bugmon}! Let's have the judges take a look."
+  goto Judge
+label Nothing
+  say "You didn't catch anything? That's a shame. You're still in the running, though."
+label Judge
+  bugcontest judge
+  setvar VAR_BUG_CONTEST_PLACE RESULT
+  say "And now, the results of today's Bug-Catching Contest!"
+  bugcontest results
+  if var VAR_BUG_CONTEST_PLACE == 0 goto First
+  if var VAR_BUG_CONTEST_PLACE == 1 goto Second
+  if var VAR_BUG_CONTEST_PLACE == 2 goto Third
+  say "You didn't make the top three this time, {player}. Here's a little something for taking part."
+  goto Prize
+label First
+  say "First place goes to {player}, with a score of {score}! Your prize is a {prize}. Congratulations!"
+  goto Prize
+label Second
+  say "Second place goes to {player}, with a score of {score}! Your prize is an {prize}. Well done!"
+  goto Prize
+label Third
+  say "Third place goes to {player}, with a score of {score}! Your prize is a {prize}. Well done!"
+label Prize
+  bugcontest prize
+  bugcontest end
+  if result == 0 goto Bye
+  if result == 2 goto Boxed
+  text "{player}'s Pokémon came back, along with the one caught in the contest."
+  goto Bye
+label Boxed
+  text "{player}'s Pokémon came back. The team was full, so the one caught in the contest was sent to the PC."
+label Bye
+  say "Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday."
+  end

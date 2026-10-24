@@ -81,6 +81,9 @@ public sealed partial class GameFlow
     /// <summary>The Great Marsh's Safari Game, while one is on (plan 01 · M7; saved).</summary>
     public SafariGame Safari { get; } = new();
 
+    /// <summary>The National Park's Bug-Catching Contest, while one is on (plan 15 · E5; saved).</summary>
+    public BugContest BugContest { get; } = new();
+
     /// <summary>The Repel's steps and the flute played here (plan 06 · R11); the Repel's steps are saved.</summary>
     public EncounterAids EncounterAids { get; } = new();
 

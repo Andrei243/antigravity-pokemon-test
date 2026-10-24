@@ -1,14 +1,13 @@
 {
-  // The gate house between the National Park and Route 36 (plan 20 · J5, part b)
+  // The gate house between the National Park and Route 36 (plan 20 · J5, part b). Its officer keeps the Bug-Catching
+  // Contest's counter (plan 15 · E5: scripts/route_36_national_park_gatehouse.txt)
   "area": "route_36_national_park_gatehouse",
   "bgmTrack": "johto/route34",
   "people": {
     "r36r0201_counterm": {
       "name": "Officer",
       "still": true,
-      "dialog": [
-        "The National Park is to the west. Route 36 runs east toward Violet City."
-      ],
+      "script": "Officer",
       "hiddenBy": ""
     }
   }

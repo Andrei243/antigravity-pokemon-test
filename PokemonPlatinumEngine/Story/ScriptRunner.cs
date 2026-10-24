@@ -370,6 +370,9 @@ public sealed partial class ScriptRunner
         Op.NameRival => true,
         // The Mossdeep Gym's people step round their arrows while the field waits (plan 21 · H8)
         Op.RotateTiles => true,
+        // The Bug-Catching Contest's board is the player's to read; the rest is asked and changed without a screen, and
+        // its prize is given as a gift is (plan 15 · E5)
+        Op.BugContest => i.Name == "results",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -908,6 +911,9 @@ public sealed partial class ScriptRunner
             case Op.RotateTiles:
                 host.RotateTiles(MossdeepTiles.ColourOf(Array.IndexOf(new[] { "yellow", "blue", "green", "purple", "red" }, i.Name)));
                 waitingForWalks = true;
+                break;
+            case Op.BugContest:
+                BugContestCommand(i);
                 break;
             case Op.ChoosePokemon:
             {
@@ -2133,6 +2139,11 @@ public sealed partial class ScriptRunner
             "walker" => lastWalker,
             // A phrase the player gave, by its name, as the chosen language says it (plan 08 · P9)
             "phrase" when argument.Length > 0 => PhraseGroups.Shown(host.Story.PhraseOf(argument) ?? Array.Empty<string>()),
+            // The Bug-Catching Contest (plan 15 · E5): the Pokémon kept and the one just caught, the score and the prize
+            "bugmon" => host.BugContest.Caught?.DisplayName ?? "",
+            "bugnew" => host.BugContest.Pending?.DisplayName ?? "",
+            "score" => host.BugContest.Score.ToString(),
+            "prize" => NameOfItem(host.BugContest.Prize),
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };
