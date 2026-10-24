@@ -3316,6 +3316,48 @@ ours). What differs, and why:
 - **What waits**: the metatile swap of the bridge once Fortree's Kecleon has fled (an alternate chunk of the importer's);
   the Wingull's return and Mental Herb (H8).
 
+## Lilycove City and Mt. Pyre (2026-10-24, plan 21 · H7, its first part)
+
+Lilycove City, Routes 122 and 123 and Mt. Pyre are scripts of ours on Emerald's beats (`lilycove_city.txt`, the
+store's floors, the motel, the Move Deleter's, two houses, `route_122.txt`, `route_123.txt`, the Berry Master's house,
+`mt_pyre_1f.txt`, `mt_pyre_summit.txt`), under Emerald's flags and variables (`FLAG_VISITED_LILYCOVE_CITY`,
+`FLAG_MET_RIVAL_LILYCOVE`, `FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE`, `VAR_MT_PYRE_STATE`, `FLAG_RECEIVED_RED_OR_BLUE_ORB`,
+`FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE`, `FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA`, `FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD`, the daily
+`FLAG_DAILY_*` of the berries and the lottery). **No story or save version is raised**: `common.HoennChapterEight` hides
+what Emerald's new game hides here (Maxie on the summit, the museum's patrons and tourists, the Fan Club's interviewer,
+the motel's game designers, the roof's sale woman), `HoennNewGame` calls it, and Lilycove City's, Route 122's and Route
+123's arrivals call it for a save that never ran it (`FLAG_HOENN_CHAPTER_EIGHT`, a flag of ours). What differs, and why:
+
+- **The rival leaves on foot**: Emerald's rival flies off on a bird (`FLDEFF_NPCFLY_OUT`); here the picture goes dark
+  and the rival is gone, as on Route 119. Emerald also puts the rival back in their bedroom at home afterwards
+  (`FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM` cleared); that bedroom's lines are part b's to write, so the flag
+  is left.
+- **The Wailmer are in the way only on their own tiles**: Emerald draws Team Aqua's three Wailmer into Lilycove's
+  metatiles east of the city (`LilycoveCity_EventScript_SetWailmerMetatiles`, local 76 to 78, 12 to 17). The reader's
+  map leaves the sea round those tiles open, wide enough to sail east to Route 124 past them, so the three stand as
+  Pokémon of the map on the tiles of their heads and the sea to Route 124 is open from Lilycove (Route 124 is no longer
+  `WorldWalk.OpenedAhead`). Mossdeep and the east sea are shut anyway until plan 21 · H8; part b decides whether the
+  channel needs a gate of ours, and takes the Wailmer away with `FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`.
+- **The store's lift is shut**: Emerald's lift is a menu of floors that the stairs reach as well; its doors are
+  `locked` on every floor. The fifth floor's clerks, who sell decorations for secret bases, only talk until plan 21 · H10.
+  The roof's clearance sale (a woman shown on some days) stays hidden.
+- **The Lottery Corner is Jubilife TV's draw** (`lottery draw`, `Models/Lottery.cs`), with Emerald's prizes: two digits a
+  PP Up, three an Exp. Share, four a Max Revive, five a Master Ball; one digit wins nothing, as in Emerald.
+- **The Giga Drain girl asks the team's species**: Emerald asks whether a Grass type is on the team
+  (`IsGrassTypeInParty`); a script here asks species by name, so she looks for the Grass Pokémon of Hoenn's routes so far
+  (the Treecko, Lotad, Seedot, Shroomish, Oddish, Cacnea and Lileep lines, Roselia and Tropius).
+- **The Berry Master's wife takes a phrase of two words** (`phrase BERRY_MASTERS_WIFE`), where Emerald takes one of its
+  easy-chat sayings; Emerald's five sayings that bring a rare berry once (Spelon, Pamtre, Watmel, Durin, Belue) are words
+  the picker does not have, and wait for part b. Her ordinary berry is one of Cheri to Sitrus, by a die of ten.
+- **Mt. Pyre's summit plays once**: the old woman gives the **Magma Emblem** (a key item of ours, 9112, in the
+  importer's overrides), Team Aqua is gone and `VAR_MT_PYRE_STATE` is 1. Emerald's second scene there (state 2, the two
+  leaders bringing the orbs back after Sootopolis) is plan 21 · H8's; its triggers are left without scripts, and the old
+  couple's later lines with them. The mountainside's fog stands above its middle as a zone (Emerald's fog and sun
+  triggers), and the summit is in its header's fog.
+- **Lilycove's ground**: every metatile of its tileset that is open more often than blocked is paving (`GbaCover.HoennRanges`'
+  `gTileset_Lilycove`), as Lavaridge's rows are read; the cove's open ground in the General tileset is left to the
+  builder's guess, since those rows are shared by all of Hoenn.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

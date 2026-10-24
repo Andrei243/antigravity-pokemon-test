@@ -1,0 +1,15 @@
+{
+  // Mt. Pyre's second floor (plan 21 · H7, part a): graves and the trainers who come to visit them, with the holes in
+  // the floor that drop to the floor below
+  "area": "mt_pyre_2f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "woman_1": { "name": "Woman", "dialog": ["When I lost my Pokémon, I didn't think I'd ever stop crying. Coming here helps, little by little."] },
+    "pokefan_m": { "name": "Man", "dialog": ["The floors up here have holes in them. Step into one and you'll land on the floor below. Mind your feet!"] },
+    "maniac": { "name": "Mark", "trainer": { "dialogueBefore": "Pokémaniac Mark: There might be a rare Pokémon's grave up here. And a rare trainer to battle, too!", "dialogueAfter": "Pokémaniac Mark: Rare indeed. Rarely does anyone beat me that badly." } },
+    "woman_4": { "name": "Dez & Luke", "trainer": { "dialogueBefore": "Young Couple Dez & Luke: We came to pay our respects together. Now we'll battle together, too!", "dialogueAfter": "Young Couple Dez & Luke: We lost together. That's something, isn't it?" } },
+    "man_4": { "name": "Dez & Luke", "trainer": { "dialogueBefore": "Young Couple Dez & Luke: We came to pay our respects together. Now we'll battle together, too!", "dialogueAfter": "Young Couple Dez & Luke: We lost together. That's something, isn't it?" } },
+    "black_belt": { "name": "Zander", "trainer": { "dialogueBefore": "Black Belt Zander: I climb this tower every day to train my legs and my spirit. Hiyah!", "dialogueAfter": "Black Belt Zander: My spirit needs more training than my legs." } },
+    "hex_maniac": { "name": "Leah", "trainer": { "dialogueBefore": "Hex Maniac Leah: The spirits whispered that you would come... They want to see you battle...", "dialogueAfter": "Hex Maniac Leah: The spirits are pleased with you..." } }
+  }
+}

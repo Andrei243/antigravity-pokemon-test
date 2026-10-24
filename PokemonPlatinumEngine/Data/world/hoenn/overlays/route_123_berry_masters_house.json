@@ -1,0 +1,10 @@
+{
+  // The Berry Master's house on Route 123 (plan 21 · H7, part a): he gives a berry a day, and his wife another
+  // (route_123_berry_masters_house.txt)
+  "area": "route_123_berry_masters_house",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "expert_m": { "name": "Berry Master", "script": "BerryMaster" },
+    "old_woman": { "name": "Old Woman", "script": "BerryMastersWife" }
+  }
+}

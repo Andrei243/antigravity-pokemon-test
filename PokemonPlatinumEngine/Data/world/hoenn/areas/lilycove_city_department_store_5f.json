@@ -1,0 +1,33 @@
+{
+  "key": "lilycove_city_department_store_5f",
+  "index": 180,
+  "name": "Lilycove City",
+  "matrix": 129,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 1, "to": "lilycove_city_department_store_4f", "toWarp": 1 },
+    { "x": 2, "z": 1, "to": "lilycove_city_department_store_elevator", "toWarp": 0 },
+    { "x": 16, "z": 1, "to": "lilycove_city_department_store_rooftop", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 1, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_5F_EventScript_LittleGirl" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_south_and_west", "x": 7, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_5F_EventScript_PokefanF" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft" },
+    { "id": "woman_3_2", "looks": "woman_3", "movement": "look_south", "x": 9, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidLeft" },
+    { "id": "woman_3_3", "looks": "woman_3", "movement": "look_west", "x": 15, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_5F_EventScript_ClerkMidRight" },
+    { "id": "woman_3_4", "looks": "woman_3", "movement": "look_north", "x": 17, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarRight" },
+    { "id": "department_store_stairs_woman", "looks": "woman_2", "movement": "look_east", "x": 9, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_5F_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

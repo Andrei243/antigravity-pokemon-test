@@ -1,0 +1,32 @@
+{
+  // Route 123 (plan 21 · H7, part a): from the foot of Mt. Pyre's island west along the coast to Route 118, with the
+  // Berry Master's house and his garden at its west end. Its ledges are taken one way, down from Route 118's side; the
+  // girl by the berry trees gives TM19 once to a trainer with a Grass Pokémon (route_123.txt)
+  "area": "route_123",
+  "bgmTrack": "hoenn/route122",
+  "trees": "Round",
+  "people": {
+    "girl_3": { "name": "Girl", "script": "GigaDrainGirl" },
+    "woman_5": { "name": "Wendy", "trainer": { "dialogueBefore": "Cooltrainer Wendy: My Pokémon and I have trained on every route in Hoenn. Ready to see the result?", "dialogueAfter": "Cooltrainer Wendy: Every route, and I still lost. Time for another lap." } },
+    "man_3": { "name": "Braxton", "trainer": { "dialogueBefore": "Cooltrainer Braxton: Five Pokémon, five types, no weak spots. Try and find one!", "dialogueAfter": "Cooltrainer Braxton: You found one. You found several, actually." } },
+    "woman_2": { "name": "Violet", "trainer": { "dialogueBefore": "Aroma Lady Violet: Smell the flowers along this road! My Pokémon are just as sweet. And just as thorny!", "dialogueAfter": "Aroma Lady Violet: Oh dear. My flowers have wilted." } },
+    "twin": { "name": "Miu & Yuki", "trainer": { "dialogueBefore": "Twins Miu & Yuki: We do everything together, so we'll battle together too!", "dialogueAfter": "Twins Miu & Yuki: We lost together, too..." } },
+    "twin_2": { "name": "Miu & Yuki", "trainer": { "dialogueBefore": "Twins Miu & Yuki: We do everything together, so we'll battle together too!", "dialogueAfter": "Twins Miu & Yuki: We lost together, too..." } },
+    "psychic_m": { "name": "Cameron", "trainer": { "dialogueBefore": "Psychic Cameron: I can see the future. In it, you lose. Shall we make it come true?", "dialogueAfter": "Psychic Cameron: The future was cloudy, it seems." } },
+    "lass": { "name": "Jacki", "trainer": { "dialogueBefore": "Psychic Jacki: My Pokémon can bend spoons with their minds. What can yours do?", "dialogueAfter": "Psychic Jacki: Yours can win. I see." } },
+    "hex_maniac": { "name": "Kindra", "trainer": { "dialogueBefore": "Hex Maniac Kindra: The ghosts of Mt. Pyre follow me down the road... They want to battle you...", "dialogueAfter": "Hex Maniac Kindra: The ghosts are going home now..." } },
+    "ninja_boy": { "name": "Jonas", "trainer": { "dialogueBefore": "Ninja Boy Jonas: You walked right past me! I was hiding as a tree. Now, battle!", "dialogueAfter": "Ninja Boy Jonas: I should have stayed a tree." } },
+    "woman_2_2": { "name": "Kayley", "trainer": { "dialogueBefore": "Parasol Lady Kayley: Rain or shine, my parasol and I are ready. And so is my Castform!", "dialogueAfter": "Parasol Lady Kayley: Clouds have rolled over my sunny mood." } },
+    "maniac": { "name": "Ed", "trainer": { "dialogueBefore": "Collector Ed: Zangoose and Seviper together! Do you know how hard that was? Look!", "dialogueAfter": "Collector Ed: At least my collection's still the best." } },
+    "man_5": { "name": "Fernando", "trainer": { "dialogueBefore": "Guitarist Fernando: My guitar and my Pokémon make the loudest band on Route 123! Let's rock!", "dialogueAfter": "Guitarist Fernando: My strings snapped. My spirit, too." } },
+    "man_5_2": { "name": "Alberto", "trainer": { "dialogueBefore": "Bird Keeper Alberto: My birds have flown all the way here from the sea. They're ready for anything!", "dialogueAfter": "Bird Keeper Alberto: My birds are tired from the flight, that's all." } },
+    "expert_m": { "name": "Fredrick", "trainer": { "dialogueBefore": "Expert Fredrick: I've battled on this road since before you were born. Let's see what the young can do!", "dialogueAfter": "Expert Fredrick: The young can do plenty, it seems." } },
+    "woman_5_2": { "name": "Jazmyn", "trainer": { "dialogueBefore": "Cooltrainer Jazmyn: My Absol and I are never wrong about trouble. Today, the trouble is you!", "dialogueAfter": "Cooltrainer Jazmyn: We were right. You were trouble." } },
+    "youngster": { "name": "Davis", "trainer": { "dialogueBefore": "Bug Catcher Davis: I caught a Pinsir in the Safari Zone! Want to see how strong it is?", "dialogueAfter": "Bug Catcher Davis: It's strong. Just not as strong as yours." } }
+  },
+  "signs": {
+    "Route123_EventScript_RouteSignMtPyre": "Route 123\nEast: Mt. Pyre and Route 122",
+    "Route123_EventScript_RouteSign": "Route 123\nWest: Route 118",
+    "Route123_EventScript_BerryMastersHouseSign": "The Berry Master's House\nWhere every berry is a treasure"
+  }
+}

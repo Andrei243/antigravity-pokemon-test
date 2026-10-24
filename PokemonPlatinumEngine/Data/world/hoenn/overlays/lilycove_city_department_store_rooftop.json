@@ -1,0 +1,15 @@
+{
+  // The Department Store's roof (plan 21 · H7, part a): its drinks machine and the woman who teaches Substitute once
+  // (lilycove_city_department_store_rooftop.txt). Emerald's clearance sale on the roof is left with its woman hidden
+  "area": "lilycove_city_department_store_rooftop",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "man_2": { "name": "Man", "dialog": ["From up here you can see the whole cove. On a clear day I swear I can see Mossdeep."] },
+    "man_3": { "name": "Man", "dialog": ["I'm so thirsty... The drinks machine's right there, but I've spent all my money downstairs."] },
+    "rooftop_sale_woman": { "name": "Clerk", "dialog": ["Our clearance sale is over for today. Thank you!"] },
+    "woman_3": { "name": "Woman", "script": "SubstituteTutor" }
+  },
+  "read": {
+    "LilycoveCity_DepartmentStoreRooftop_EventScript_VendingMachine": "Vending"
+  }
+}

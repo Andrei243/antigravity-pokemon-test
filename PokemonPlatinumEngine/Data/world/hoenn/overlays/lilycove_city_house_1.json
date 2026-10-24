@@ -1,0 +1,9 @@
+{
+  // A house in Lilycove City (plan 21 · H7, part a): an old man and his Kecleon
+  "area": "lilycove_city_house_1",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "expert_m": { "name": "Old Man", "dialog": ["Pokémon are partners, not tools. My Kecleon and I have lived together for thirty years."] },
+    "kecleon": { "name": "Kecleon", "dialog": ["Kecleon: Kek, kekeke!"] }
+  }
+}

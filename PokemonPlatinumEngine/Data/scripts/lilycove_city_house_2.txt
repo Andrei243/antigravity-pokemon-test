@@ -1,0 +1,16 @@
+# A house in Lilycove City (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LilycoveCity_House2/scripts.inc): the man inside gives TM44, Rest, once
+# (FLAG_RECEIVED_TM_REST).
+
+
+script RestMan
+  face self player
+  speaker "Man"
+  if flag FLAG_RECEIVED_TM_REST goto Given
+  say "Huh? I was just about to have a lie-down. Nothing beats a good rest, you know. Here, take this. Sleep on it!"
+  give "TM44"
+  setflag FLAG_RECEIVED_TM_REST
+  end
+label Given
+  say "Rest puts a Pokémon to sleep, but it wakes up good as new. Sleep is the best medicine there is."
+  end

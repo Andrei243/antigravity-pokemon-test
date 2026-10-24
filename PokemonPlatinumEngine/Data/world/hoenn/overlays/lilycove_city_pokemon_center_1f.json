@@ -1,0 +1,12 @@
+{
+  // Lilycove City's Pokémon Center (plan 21 · H7, part a). The lady by the window and her Pokémon (Emerald's
+  // Lilycove Lady, whose quiz, favourite and contest come round in turn) only talk until the contests are built (plan 21 · H11)
+  "area": "lilycove_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "lilycove_nurse": { "name": "Nurse", "script": "Nurse" },
+    "boy_1": { "name": "Boy", "dialog": ["How many kinds of Pokémon are there in the whole world? I want to see every single one!"] },
+    "maniac": { "name": "Man", "dialog": ["I heard a gang of rotten scoundrels has a hideout somewhere round here. Nobody's seen them come or go, though."] },
+    "lilycove_lady": { "name": "Lady", "dialog": ["Lilycove is a city of contests and art. I'm always looking for a Pokémon with real flair. Come and talk to me another time!"] }
+  }
+}

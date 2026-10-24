@@ -1,0 +1,10 @@
+{
+  // Mt. Pyre's third floor (plan 21 · H7, part a)
+  "area": "mt_pyre_3f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "psychic_m": { "name": "William", "trainer": { "dialogueBefore": "Psychic William: I sense a powerful will in you. Let me test it with my mind!", "dialogueAfter": "Psychic William: My mind was no match for your will." } },
+    "lass": { "name": "Kayla", "trainer": { "dialogueBefore": "Psychic Kayla: I saw you coming in a dream last night. In the dream, I won.", "dialogueAfter": "Psychic Kayla: Dreams don't always come true, I suppose." } },
+    "woman_2": { "name": "Gabrielle", "trainer": { "dialogueBefore": "Pkmn Breeder Gabrielle: I raised these six from Eggs. They're all grown up and ready to battle!", "dialogueAfter": "Pkmn Breeder Gabrielle: They did their best. I'm proud of them anyway." } }
+  }
+}

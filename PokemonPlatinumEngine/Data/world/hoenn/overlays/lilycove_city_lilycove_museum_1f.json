@@ -1,0 +1,30 @@
+{
+  // The Lilycove Museum's ground floor (plan 21 · H7, part a): its greeter, its visitors and its paintings. The curator
+  // and his gallery for the Contest Hall's winners upstairs are plan 21 · H11's; the patrons and tourists who come
+  // once the player's painting hangs there are hidden until then
+  "area": "lilycove_city_lilycove_museum_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "beauty": { "name": "Greeter", "dialog": ["Welcome to the Lilycove Museum. Please, take your time and enjoy the works on display."] },
+    "museum_1f_curator": { "name": "Curator", "dialog": ["Ah, a visitor! Our second floor is waiting for new works. Paintings of Pokémon from the Contest Hall, perhaps..."] },
+    "school_kid_m": { "name": "School Kid", "dialog": ["We came here on a school trip. I'm supposed to write about my favourite painting!"] },
+    "artist": { "name": "Artist", "dialog": ["Every time I look at these paintings, I want to go home and paint something of my own."] },
+    "ninja_boy": { "name": "Boy", "dialog": ["That painting looks like a Pokémon battle. Or a storm. I can't tell which!"] },
+    "woman_4": { "name": "Woman", "dialog": ["The colours in this one... I could stand here all day."] },
+    "woman_2": { "name": "Woman", "dialog": ["I came all this way to see the new paintings upstairs. They're wonderful!"] },
+    "museum_1f_artist_2": { "name": "Artist", "dialog": ["Someone's Pokémon in the gallery upstairs inspired me to start a new piece."] },
+    "fat_man": { "name": "Tourist", "dialog": ["Lilycove's museum is famous all over the world. We're on a tour of it!"] },
+    "psychic_m": { "name": "Man", "dialog": ["Art speaks to the mind. These paintings are positively shouting."] }
+  },
+  "signs": {
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_FantasyPainting": "A fantasy of Pokémon dancing in a moonlit forest.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_BerryPainting": "A still life of berries in a bowl, so ripe they look ready to eat.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_OldPainting": "A very old painting, its colours dark with age. A great Pokémon looks down from the clouds.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_WomanPainting": "A painting of a woman holding a Pokémon close, smiling.",
+    "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture": "A sculpture of a bird Pokémon with its wings spread wide.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_GrassPokemonPainting": "A painting of Grass Pokémon basking on a sunny hill.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_StoneTablet": "An ancient stone tablet carved with Pokémon and a language nobody can read.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_LegendaryPokemonPainting": "A painting of a legendary Pokémon rising from the sea in a burst of light.",
+    "LilycoveCity_LilycoveMuseum_1F_EventScript_PokeBallSculpture": "A sculpture of an enormous Poké Ball. Is it about to open?"
+  }
+}

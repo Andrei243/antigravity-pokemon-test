@@ -1,0 +1,20 @@
+{
+  // The Lilycove Museum's upper floor (plan 21 · H7, part a): the gallery whose five frames wait for the Contest
+  // Hall's winners (plan 21 · H11), empty until then
+  "area": "lilycove_city_lilycove_museum_2f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "museum_2f_curator": { "name": "Curator", "dialog": ["This gallery is kept for paintings of Pokémon that win at the Contest Hall. The frames are empty for now, but not for long, I hope!"] },
+    "girl_2": { "name": "Girl", "dialog": ["One day my Pokémon will be in a painting up here. I just know it!"] },
+    "expert_m": { "name": "Old Man", "dialog": ["I've toured museums all over the world. This one has the friendliest Pokémon paintings of them all."] },
+    "rich_boy": { "name": "Rich Boy", "dialog": ["Daddy says he'll buy me a painting. I told him I'd rather win a contest!"] }
+  },
+  "signs": {
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_CutePainting": "An empty frame. A card beneath it reads: Cuteness.",
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_ToughPainting": "An empty frame. A card beneath it reads: Toughness.",
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_CoolPainting": "An empty frame. A card beneath it reads: Coolness.",
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_BeautyPainting": "An empty frame. A card beneath it reads: Beauty.",
+    "LilycoveCity_LilycoveMuseum_2F_EventScript_SmartPainting": "An empty frame. A card beneath it reads: Smartness.",
+    "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture": "A sculpture of a bird Pokémon with its wings spread wide."
+  }
+}

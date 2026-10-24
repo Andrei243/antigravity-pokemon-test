@@ -1785,4 +1785,182 @@ public class HoennStoryTests
         Assert.True(old.Story.Has("FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1"));
         Assert.False(old.Story.Has("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL"));
     }
+
+    // ------------------------------------------------------------------ plan 21 · H7, part a: Lilycove City and Mt. Pyre
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheRivalBattlesOnceBeforeLilycovesDepartmentStore(int starter, PlayerLook look)
+    {
+        var game = PastNorman(starter, look);
+        string mine = RegionDatabase.Get(RegionDatabase.Hoenn)!.Starters[starter];
+        game.Arrive("Hoenn", 507, 80);
+        Assert.True(game.Story.Has("FLAG_VISITED_LILYCOVE_CITY"));
+        Assert.NotNull(game.Present("var_0"));
+
+        // Said no, the rival stays and asks again
+        game.Decide = (_, _) => 1;
+        var no = game.Talk("var_0");
+        Assert.True(game.Story.Has("FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE"));
+        Assert.DoesNotContain(no.Log, l => l.StartsWith("battle "));
+        Assert.NotNull(game.Present("var_0"));
+
+        // Said yes, the battle with the team of the starter taken, and the rival goes home for good
+        game.Decide = null;
+        var yes = game.Talk("var_0");
+        Assert.Contains(yes.Log, l => l.StartsWith($"battle hoenn_{game.Rival.ToLowerInvariant()}_lilycove_{mine.ToLowerInvariant()}"));
+        Assert.True(game.Story.Has("FLAG_MET_RIVAL_LILYCOVE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_LILYCOVE_CITY_RIVAL"));
+        game.Arrive("Hoenn", 507, 80);
+        Assert.Null(game.Present("var_0"));
+    }
+
+    [Theory]
+    [InlineData(22)]
+    [InlineData(23)]
+    [InlineData(24)]
+    public void TeamAquaLeavesMtPyresSummitAndTheOldWomanGivesTheMagmaEmblem(int column)
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("MtPyre_Summit", 23, 30);
+        Assert.NotNull(game.Present("mt_pyre_summit_archie"));
+        Assert.NotNull(game.Present("mt_pyre_summit_grunt_1"));
+        Assert.Null(game.Present("mt_pyre_summit_maxie"));
+
+        var scene = game.StepAt(column, 7);
+        Assert.NotNull(scene);
+        Assert.Contains(scene!.Transcript, l => l.Text.Contains("Red Orb"));
+        Assert.Equal(1, game.Story.Var("VAR_MT_PYRE_STATE"));
+        foreach (string flag in new[] { "FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE", "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA",
+                     "FLAG_RECEIVED_RED_OR_BLUE_ORB", "FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Magma Emblem")!));
+        foreach (string who in new[] { "mt_pyre_summit_archie", "mt_pyre_summit_grunt_1", "mt_pyre_summit_grunt_2",
+                     "mt_pyre_summit_grunt_3", "mt_pyre_summit_grunt_4" })
+            Assert.Null(game.Present(who));
+
+        // Once is all: the row below the shrine starts nothing again
+        Assert.Null(game.StepAt(column, 7));
+        game.Arrive("MtPyre_Summit", 23, 30);
+        Assert.Null(game.Present("mt_pyre_summit_archie"));
+    }
+
+    [Fact]
+    public void MtPyreIsClimbedFromRouteOneTwentyTwoToItsSummit()
+    {
+        // Every floor of the tower and the mountainside are rooms of Hoenn, joined by their stairs, with the old woman's
+        // Cleanse Tag on the ground floor once
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("MtPyre_1F", 17, 17);
+        game.Talk("old_woman");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_CLEANSE_TAG"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Cleanse Tag")!));
+        Assert.DoesNotContain(game.Talk("old_woman").Log, l => l.StartsWith("give"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Cleanse Tag")!));
+
+        game.Through("MtPyre_2F");
+        game.Through("MtPyre_3F");
+        game.Through("MtPyre_4F");
+        game.Through("MtPyre_5F");
+        game.Through("MtPyre_6F");
+        Assert.Equal("MtPyre_6F", game.Map.Name);
+        game.Arrive("MtPyre_1F", 3, 7);
+        game.Through("MtPyre_Exterior");
+        game.Through("MtPyre_Summit");
+        Assert.Equal("MtPyre_Summit", game.Map.Name);
+    }
+
+    [Fact]
+    public void LilycovesStoreSellsEmeraldsStockAndItsLotteryDrawsOnceADay()
+    {
+        foreach (var (key, item) in new[] { ("lilycove_2f_balls", "Fluffy Tail"), ("lilycove_2f_medicine", "Max Repel"),
+                     ("lilycove_3f_vitamins", "HP Up"), ("lilycove_3f_battle", "X Accuracy"), ("lilycove_4f_attack", "TM15"),
+                     ("lilycove_4f_defense", "TM17") })
+            Assert.Contains(item, MartDatabase.Specialties[key]);
+
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("LilycoveCity_DepartmentStore_1F", 10, 3);
+        var draw = game.Talk("lottery_clerk");
+        Assert.True(game.Story.Has("FLAG_DAILY_PICKED_LOTO_TICKET"));
+        Assert.Contains(draw.Transcript, l => l.Text.Contains("ticket"));
+        var again = game.Talk("lottery_clerk");
+        Assert.Empty(again.Asked);
+    }
+
+    [Fact]
+    public void LilycovesRoofTeachesSubstituteOnceAndRestIsGivenOnce()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 20));
+        game.Arrive("LilycoveCity_DepartmentStoreRooftop", 15, 6);
+        game.Talk("woman_3");
+        Assert.True(game.Party.Members[0].Knows("Substitute"));
+        Assert.True(game.Story.Has("FLAG_MOVE_TUTOR_TAUGHT_SUBSTITUTE"));
+        Assert.Empty(game.Talk("woman_3").Asked);
+
+        game.Arrive("LilycoveCity_House2", 2, 5);
+        game.Talk("fat_man");
+        game.Talk("fat_man");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM44")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_TM_REST"));
+    }
+
+    [Fact]
+    public void TheBerryMasterGivesTwoBerriesADayAndTheGirlOfRouteOneTwentyThreeWantsAGrassPokemon()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("Route123_BerryMastersHouse", 4, 5);
+        int before = game.Bag.AllItems.Sum(s => s.Quantity);
+        game.Talk("expert_m");
+        Assert.True(game.Story.Has("FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY"));
+        // (the headless die rolls 0: two Pomeg Berries)
+        Assert.Equal(2, game.Bag.GetQuantity(ItemDatabase.Get("Pomeg Berry")!));
+        game.Talk("expert_m");
+        Assert.Equal(before + 2, game.Bag.AllItems.Sum(s => s.Quantity));
+
+        // The girl by the berry trees: nothing without a Grass Pokémon, TM19 with one, and once
+        var girl = PastNorman(1, PlayerLook.Boy);
+        girl.Party.Members.Clear();
+        girl.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 30));
+        girl.Arrive("Hoenn", 427, 153);
+        girl.Talk("girl_3");
+        Assert.False(girl.Story.Has("FLAG_RECEIVED_TM_GIGA_DRAIN"));
+        girl.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Shroomish")!, 30));
+        girl.Talk("girl_3");
+        Assert.True(girl.Story.Has("FLAG_RECEIVED_TM_GIGA_DRAIN"));
+        Assert.Equal(1, girl.Bag.GetQuantity(ItemDatabase.Get("TM19")!));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheEighthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay()
+    {
+        string[] hidden =
+        {
+            "FLAG_HOENN_CHAPTER_EIGHT", "FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE", "FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1",
+            "FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS", "FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER", "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS"
+        };
+        var fresh = new Game();
+        foreach (string flag in hidden) Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE"));
+
+        // A save from before part a never ran its script: Lilycove's, Route 122's and Route 123's arrivals run it, and no
+        // story version is raised
+        foreach (var (x, y) in new[] { (507, 80), (442, 130), (333, 152) })
+        {
+            var old = PastNorman(0, PlayerLook.Boy);
+            foreach (string flag in hidden) old.Story.Unset(flag);
+            old.Arrive("Hoenn", x, y);
+            foreach (string flag in hidden) Assert.True(old.Story.Has(flag), $"{flag} at {x},{y}");
+        }
+    }
+
+    [Fact]
+    public void TheSongsOfLilycoveAndMtPyreAreThere()
+    {
+        foreach (string song in new[] { "hoenn/lilycove", "hoenn/route122", "hoenn/mt_pyre", "hoenn/mt_pyre_exterior" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Equal(9112, ItemDatabase.Get("Magma Emblem")!.Id);
+    }
 }

@@ -1,0 +1,8 @@
+# Route 122 (plan 21 · H7, part a). docs/scripts.md describes the language. The sea round Mt. Pyre, south of Route
+# 121's pier: Emerald's route has nothing of its own but the island's door. Coming here runs the eighth stretch's
+# hiding for a save from before it (common.HoennChapterEight), since the mountain is reached from here.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_EIGHT call HoennChapterEight
+  end

@@ -1,0 +1,49 @@
+{
+  "key": "mt_pyre_3f",
+  "index": 255,
+  "name": "Mt Pyre",
+  "matrix": 204,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "mt_pyre_3f",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 23 },
+    { "species": "Shuppet", "level": 22 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 1, "to": "mt_pyre_2f", "toWarp": 1 },
+    { "x": 2, "z": 1, "to": "mt_pyre_4f", "toWarp": 1 },
+    { "x": 9, "z": 10, "to": "mt_pyre_4f", "toWarp": 4, "landing": true },
+    { "x": 1, "z": 12, "to": "mt_pyre_4f", "toWarp": 5, "landing": true },
+    { "x": 10, "z": 12, "to": "mt_pyre_2f", "toWarp": 2 },
+    { "x": 6, "z": 12, "to": "mt_pyre_2f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "psychic_m", "looks": "psychic_m", "movement": "look_south_and_east", "x": 1, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_WILLIAM" },
+    { "id": "lass", "looks": "lass", "movement": "look_south_and_west", "x": 11, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_KAYLA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 0, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MT_PYRE_3F_SUPER_REPEL", "item": "Super Repel", "script": "MtPyre_3F_EventScript_ItemSuperRepel" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west_and_east", "x": 6, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_GABRIELLE_1" }
+  ],
+  "signs": [],
+  "triggers": []
+}
