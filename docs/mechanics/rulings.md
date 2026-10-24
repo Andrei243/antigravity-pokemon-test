@@ -4853,7 +4853,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 
 | Choice | Meaning | Session |
 |---|---|---|
-| Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 |
+| Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
 | Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 |
 | Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
@@ -4865,3 +4865,25 @@ items in battle and Set) are records with some fields set; a run that matches no
 the Nuzlocke is on and are cleared when it is turned off. `RunRules.Current` is the run in force, set by the engine as a
 game begins or loads, for the one rule with no caller to hand it to (the shiny roll). No region is chosen here: every game
 begins in Sinnoh (plan 18 · W10).
+
+### Challenge and Easy (plan 13 · V2)
+
+Our own numbers: Platinum has one difficulty. `Models/DifficultyRules.cs` (GPU-free) is all of it, and **Normal changes
+nothing**: `Prepare` hands back the very trainer it was given, the EXP and the prices are the rules' own.
+
+- **Trainers** are changed on a copy, in `GameEngine.StartTrainerBattle` after a crossed region's mapping, so the maps, the
+  seeded `Dice` and every shot are as before. The first battle of a game (the rival's lesson beside the player's first
+  Pokémon) and a Master Trainer's are left as they are.
+- **Levels** move by the trainer's class: a Gym Leader, one of the Elite Four and the Champion by 4, the rival, a Commander
+  and a Galactic Boss by 3, everyone else by 1. Challenge raises (never past the rules' level cap), Easy lowers (never
+  below 2, or 1 where a Pokémon was).
+- **Challenge** also: gives a Leader, one of the Elite Four and the Champion with fewer than six one more Pokémon, the
+  first species of their own `_rematch` team (Platinum's, `trainers.json`) whose line isn't on the team, at the level of
+  their best and at the stage that level allows (a Golem is a Geodude below 25, a Graveler below 30: a level evolution
+  needs its level, friendship 16 and any other 30), knowing what that level taught it, before the team's last; gives the
+  best Pokémon of a Leader, the League, the Champion, the rival, a Commander and a Galactic Boss a Sitrus Berry where it
+  holds nothing, and the extra Pokémon Leftovers; thinks with every routine of the AI (Basic to Harassment; not the tag
+  battle's, which the battle adds); and pays half as much again.
+- **Easy** also: three halves of the EXP a battle gives (`BattleCore.Give`, from `CoreSetup.Difficulty`; a recorded battle
+  keeps it and refuses to be replayed under another) and a quarter off what a counter asks (`ShopScreen.PriceOf`; selling
+  is unchanged, so buying and selling back never earns).

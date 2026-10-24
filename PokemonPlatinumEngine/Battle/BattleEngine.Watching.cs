@@ -85,6 +85,7 @@ public partial class BattleEngine
             Frontier = rules.Frontier,
             NoBattleItems = rules.NoBattleItems,
             OffersSwitch = rules.OffersSwitch,
+            Difficulty = rules.Difficulty,
             Scene = scene
         };
         return new BattleEngine(setup, file);

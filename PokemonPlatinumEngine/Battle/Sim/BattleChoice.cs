@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Models;
 using System.Collections.Generic;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
@@ -90,7 +91,7 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// plain chart's. So does a battle that offered Battle Style Shift's switch (plan 08 · P1), whose answers include
 /// each offer's: a record written before the flag reads as a battle that offered none.
 /// </summary>
-public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false);
+public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

@@ -32,6 +32,19 @@ public class Trainer
         copy.Items = Items.ToList();
         return copy;
     }
+    /// <summary>
+    /// A copy that shares nothing with the original: the team is clones and the items a list of its own (plan 13 · V2, the
+    /// trainer a difficulty raises or lowers; the trainer of the map keeps its team as the import made it).
+    /// </summary>
+    public Trainer Copied()
+    {
+        var copy = (Trainer)MemberwiseClone();
+        copy.party = new Party();
+        foreach (var p in party.Members) copy.party.Add(p.Clone());
+        copy.Items = Items.ToList();
+        return copy;
+    }
+
     public int PrizeMoney { get; set; } = 300;
     public string DialogueBefore { get; set; } = string.Empty;
     public string DialogueAfter { get; set; } = string.Empty;

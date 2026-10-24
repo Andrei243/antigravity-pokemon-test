@@ -106,11 +106,17 @@ public class ShopScreen
         BagScreen.Pockets.SelectMany(p => inventory.GetPocketItems(p)).Select(s => s.Data).Where(CanSell).ToList();
 
     /// <summary>The most of an item this money buys at once: none if even one is too dear.</summary>
-    public static int MostAffordable(ItemData item, int money) =>
-        item.Price <= 0 ? MostAtOnce : Math.Clamp(money / item.Price, 0, MostAtOnce);
+    public static int MostAffordable(ItemData item, int money, Difficulty difficulty = Difficulty.Normal) =>
+        item.Price <= 0 ? MostAtOnce : Math.Clamp(money / DifficultyRules.ShopPrice(item.Price, difficulty), 0, MostAtOnce);
+
+    /// <summary>The difficulty the counter charges under (plan 13 · V2): Easy takes a quarter off what it asks, set by the game as the counter opens.</summary>
+    public Difficulty Difficulty { get; set; } = Difficulty.Normal;
+
+    /// <summary>What the counter asks for one of an item: its price, less a quarter under Easy.</summary>
+    public int PriceOf(ItemData item) => DifficultyRules.ShopPrice(item.Price, Difficulty);
 
     private int MostOf(ItemData item, int money, Inventory? inventory) =>
-        Mode == ShopMode.Selling ? Math.Min(MostAtOnce, inventory?.GetQuantity(item) ?? 0) : MostAffordable(item, money);
+        Mode == ShopMode.Selling ? Math.Min(MostAtOnce, inventory?.GetQuantity(item) ?? 0) : MostAffordable(item, money, Difficulty);
 
     /// <summary>
     /// Up and down the first question or the list; while "how many?" is up, left and right change the number by
@@ -187,7 +193,7 @@ public class ShopScreen
         if (Selected is not { } item) return 0;
         if (!ChoosingQuantity)
         {
-            if (Mode == ShopMode.Buying && MostAffordable(item, money) < 1)
+            if (Mode == ShopMode.Buying && MostAffordable(item, money, Difficulty) < 1)
             {
                 onNotification(Text.Of("shop.notEnoughMoney"));
                 AudioManager.PlaySound("error");
@@ -217,7 +223,7 @@ public class ShopScreen
             return earned;
         }
 
-        int cost = count * item.Price;
+        int cost = count * PriceOf(item);
         if (cost > money) return 0;
         inventory.AddItem(item, count);
         Purchases = count > 1 ? 2 : Purchases + 1;
