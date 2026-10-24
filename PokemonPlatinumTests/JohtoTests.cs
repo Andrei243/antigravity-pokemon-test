@@ -468,7 +468,8 @@ public class JohtoTests
         Assert.Contains(MapNamed("Blackthorn_Gym").Everyone, n => n.Name == "Clair");
         Assert.Contains(MapNamed("DragonsDen").Everyone, n => n.Name == "Clair");
         Assert.Contains(MapNamed("DragonsDen_Shrine").Everyone, n => n.Name == "Clair");
-        Assert.DoesNotContain(MapNamed("DragonsDen").Everyone, n => n.Name == "Lance");
+        // Lance in the Den is part c of J13's post-game, shown by its scene alone (hidden by FLAG_HIDE_DRAGONS_DEN_LANCE)
+        Assert.Contains(MapNamed("DragonsDen").Everyone, n => n.Name == "Lance" && n.HiddenBy == "FLAG_HIDE_DRAGONS_DEN_LANCE");
         Assert.IsType<BlackthornPlatforms>(MapNamed("Blackthorn_Gym").Puzzle);
 
         // Mahogany and Blackthorn are built their own ways, with songs of their own, as are the roads, the Ice Path and

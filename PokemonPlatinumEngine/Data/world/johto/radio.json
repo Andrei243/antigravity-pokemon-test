@@ -15,6 +15,11 @@
     "Professor Oak's Pokémon Talk! We're thinking of {species} today. Ever met one in {place}?",
     "The more you look, the more you find. {species} is out there in {place} right now."
   ],
+  "PokemonTalkSwarm": [
+    "Professor Oak here with a bulletin: a crowd of {swarm} has been seen on {swarmplace} today. Don't miss it!",
+    "Big news, listeners! {swarm} are swarming on {swarmplace}. Go and see for yourself while it lasts!",
+    "Professor Oak's Pokémon Talk, special report: {swarm} everywhere on {swarmplace} today. A fine day for a trip!"
+  ],
   "TrainerProfiles": [
     "Trainer Profiles: a Youngster on Route 30 says shorts are the only way to battle.",
     "Trainer Profiles: today, a Bug Catcher who never leaves home without a spare net.",

@@ -27,6 +27,9 @@ public sealed record EncounterMoment
     /// <summary>The area whose swarm is out today; null while swarms haven't begun.</summary>
     public string? SwarmArea { get; init; }
 
+    /// <summary>How the day's swarm is met (plan 20 · J13, part c): Johto's come in the grass, on the water or on a line; Sinnoh's in the grass alone.</summary>
+    public SwarmWay SwarmWay { get; init; }
+
     /// <summary>Whether the player has the National Pokédex: the Trophy Garden's two come only with it, and the Great Marsh draws from its other list.</summary>
     public bool NationalDex { get; init; }
 
@@ -67,6 +70,9 @@ public sealed record EncounterMoment
     /// </summary>
     public Season? Season { get; init; }
 }
+
+/// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>
+public enum SwarmWay { Grass, Surf, Fish }
 
 /// <summary>
 /// A place's table of wild Pokémon at a moment (plan 06 · R13), the original's replacements in the grass's twelve
@@ -119,7 +125,7 @@ public static class EncounterSlots
             Put(3, timed[1]);
         }
         // WildEncounters_ReplaceSwarmEncounters
-        if (moment.SwarmArea == area.Key && area.SwarmSlots.Count == 2)
+        if (moment.SwarmArea == area.Key && moment.SwarmWay == SwarmWay.Grass && area.SwarmSlots.Count == 2)
         {
             Put(0, area.SwarmSlots[0]);
             Put(1, area.SwarmSlots[1]);
@@ -181,6 +187,32 @@ public static class EncounterSlots
         return slots;
     }
 
+    /// <summary>
+    /// The water's table with a swarm in it (plan 20 · J13, part c; <c>EncSlots_Update_SurfingSwarm</c>): the swarm's
+    /// species in the first slot, where the day's swarm is this area's and is met on the water.
+    /// </summary>
+    public static IReadOnlyList<WildEncounterEntry> Surf(MapArea area, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
+    {
+        if (moment?.SwarmArea != area.Key || moment.SwarmWay != SwarmWay.Surf || string.IsNullOrEmpty(area.SurfSwarm) || table.Count == 0) return table;
+        var slots = table.Select(Copy).ToList();
+        slots[0].SpeciesName = area.SurfSwarm;
+        return slots;
+    }
+
+    /// <summary>
+    /// A rod's table with a swarm in it (<c>EncSlots_Update_FishingSwarm</c>): the swarm's species in the old rod's
+    /// third slot, the good rod's first, third and fourth and all five of the super rod's.
+    /// </summary>
+    public static IReadOnlyList<WildEncounterEntry> Rod(MapArea area, FishingRod rod, IReadOnlyList<WildEncounterEntry> table, EncounterMoment? moment)
+    {
+        if (moment?.SwarmArea != area.Key || moment.SwarmWay != SwarmWay.Fish || string.IsNullOrEmpty(area.FishSwarm) || table.Count == 0) return table;
+        int[] which = rod switch { FishingRod.Old => new[] { 2 }, FishingRod.Good => new[] { 0, 2, 3 }, _ => new[] { 0, 1, 2, 3, 4 } };
+        var slots = table.Select(Copy).ToList();
+        foreach (int slot in which)
+            if (slot < slots.Count) slots[slot].SpeciesName = area.FishSwarm;
+        return slots;
+    }
+
     /// <summary>The Poké Radar's hard shake puts its four in slots 4, 5, 10 and 11 (<c>TryGenerateGrassEncounter_WithRadar</c>).</summary>
     public static void PutRadarSpecies(List<WildEncounterEntry> slots, MapArea area)
     {
@@ -223,6 +255,19 @@ public static class Swarms
 
     /// <summary>The species that swarms at a place, as it is told (<c>Swarm_GetMapIdAndSpecies</c>); empty for a place swarms never come to.</summary>
     public static string Species(string area) => SpecialEncounterTables.Sinnoh.Swarms.FirstOrDefault(s => s.Area == area)?.Species ?? "";
+
+    /// <summary>The places swarms come to in a region, in its game's order (Sinnoh's twenty-two, Johto's twenty: HeartGold's <c>sSwarmMapLUT</c>).</summary>
+    public static IReadOnlyList<SwarmPlace> Places(string? region) => SpecialEncounterTables.Of(region).Swarms;
+
+    /// <summary>The place of the day's swarm in a region, with how it is met (plan 20 · J13, part c); null while swarms haven't begun.</summary>
+    public static SwarmPlace? PlaceToday(SpecialEncounters state, string? region) => state.SwarmsOn ? PlaceOf(state.SwarmDaily, region) : null;
+
+    /// <summary>The place of the day's swarm in a region by the day's number alone (what a line of a script or the radio tells).</summary>
+    public static SwarmPlace? PlaceOf(uint swarmDaily, string? region)
+    {
+        var places = Places(region);
+        return places.Count > 0 ? places[(int)(swarmDaily % (uint)places.Count)] : null;
+    }
 
     /// <summary>The name of a place swarms come to.</summary>
     public static string PlaceName(string area) => SpecialEncounterTables.Sinnoh.Swarms.FirstOrDefault(s => s.Area == area)?.Name ?? "";

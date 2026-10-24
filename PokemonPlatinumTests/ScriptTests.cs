@@ -411,6 +411,7 @@ public class ScriptTests
           tutor learn
           tutor forget
           tutor delete
+          tutor remember
           team first
           team nature serious
           team size "Remoraid"

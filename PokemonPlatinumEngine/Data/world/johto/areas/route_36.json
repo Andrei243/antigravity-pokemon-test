@@ -30,6 +30,10 @@
     { "species": "Pidgey", "level": 15, "day": "Growlithe", "night": "Hoothoot" }
   ],
   "landRate": 25,
+  "swarm": [
+    "Nidoran♂",
+    "Nidoran♂"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"

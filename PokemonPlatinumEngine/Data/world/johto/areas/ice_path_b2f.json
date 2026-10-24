@@ -30,6 +30,10 @@
     { "species": "Jynx", "level": 23 }
   ],
   "landRate": 5,
+  "swarm": [
+    "Swinub",
+    "Swinub"
+  ],
   "hoennSounds": [
     "Absol",
     "Makuhita"

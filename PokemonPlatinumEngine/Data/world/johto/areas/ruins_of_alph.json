@@ -30,6 +30,12 @@
     { "species": "Smeargle", "level": 22 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Natu",
+    "Natu"
+  ],
+  "surfSwarm": "Wooper",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Wooper", "level": 10, "maxLevel": 20 },
     { "species": "Quagsire", "level": 15, "maxLevel": 25 },

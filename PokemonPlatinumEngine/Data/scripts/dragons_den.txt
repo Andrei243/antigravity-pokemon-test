@@ -4,13 +4,39 @@
 # Once Clair has given the Rising Badge in the shrine (VAR_UNK_40C4 1, dragons_den_shrine.txt) she waits by the way
 # out; the first steps onto the row before her (trigger 0) bring her over to give TM59, Dragon Pulse
 # (FLAG_GOT_TM59_FROM_CLAIR), and she goes back to her Gym (VAR_UNK_40C4 2; blackthorn.txt does the same for a player
-# who leaves the Den another way, and blackthorn_gym.txt gives the TM there). HeartGold shows her here again only after
-# the Hall of Fame, for her phone number and her trips here, which this game has not yet: the Den's own arrival hides
-# her (FLAG_HIDE_VICTORY_ROAD_CLAIR, HeartGold's own) unless she is waiting with the TM.
+# who leaves the Den another way, and blackthorn_gym.txt gives the TM there). The Den's own arrival hides her
+# (FLAG_HIDE_VICTORY_ROAD_CLAIR, HeartGold's own) unless she is waiting with the TM.
+#
+# After the Hall of Fame (plan 20 · J13, part c): HeartGold begins the Den's post-game with the rival's battle in Mt.
+# Moon (VAR_UNK_40FC 1), which this game has not yet (Kanto's part of Johto is J15's), so the first arrival here once
+# JohtoHallOfFame is set begins it instead (docs/mechanics/rulings.md, "The Dragon's Den after the League"). The
+# red-haired boy waits by the lake's shrine and the first step onto the row before him (trigger 1) brings Lance and Clair
+# for a double battle, the player beside the boy (VAR_UNK_40FC 2). From then on the boy trains here on Tuesdays and
+# Thursdays, and Clair walks the island on her mornings until her number is in the Pokégear and then on her afternoons
+# (HeartGold's hours 6 to 9 and 16 to 18, the time of day here), to swap numbers. Her photograph and her rematch hours
+# (the Pokégear's, J3) are not part of this.
 
 
 script OnEnter
-  if var VAR_UNK_40C4 != 1 setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+  setflag FLAG_HIDE_DRAGONS_DEN_LANCE
+  setflag FLAG_HIDE_DRAGONS_DEN_CLAIR_TAG
+  setflag FLAG_HIDE_DRAGONS_DEN_RIVAL
+  if var VAR_UNK_40C4 == 1 end
+  setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  if not flag JohtoHallOfFame end
+  if var VAR_UNK_40FC == 0 setvar VAR_UNK_40FC 1
+  if var VAR_UNK_40FC != 1 goto Later
+  clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL
+  end
+label Later
+  if weekday tuesday clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+  if weekday thursday clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+  if flag FLAG_PHONE_CONTACT_CLAIR goto Registered
+  if time morning clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  end
+label Registered
+  if time day clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
   end
 
 
@@ -43,9 +69,121 @@ script Clair
   end
 
 
-# Clair, spoken to while she waits
+# D44R0102_003: Clair, spoken to while she waits with the TM, and after the Hall of Fame (her number)
 script ClairTalk
   face d44r0102_gsleader8 player
   speaker "Clair"
+  if var VAR_UNK_40C4 == 1 goto Waiting
+  if flag FLAG_PHONE_CONTACT_CLAIR goto Registered
+  say "Hm? You're up early, with nothing to do already? I may have time to listen to you."
+  ask "If you insist, we can swap numbers, too! What do you say?"
+  if no goto Declined
+  say "Fine. Here's my number, {player}."
+  addcontact clair
+  text "Registered Clair in the Pokégear."
+  say "I can battle you on Friday nights, if you insist!"
+  fade out 0.6
+  hide d44r0102_gsleader8
+  setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  wait 0.4
+  fade in 0.6
+  end
+label Declined
+  say "..."
+  end
+label Registered
+  say "You again? Friday nights, remember, if it's a battle you're after. Until then, let me train."
+  end
+label Waiting
   say "Hm? What is it? I'm on my way back to the Gym."
+  end
+
+
+# D44R0102_001: the red-haired boy, training on the island's west bank
+script RivalTalk
+  face d44r0102_gsrivel player
+  speaker "{rival}"
+  if flag FLAG_UNK_0E2 goto Again
+  setflag FLAG_UNK_0E2
+  say "...What? Yes, I'm training my Pokémon here. You can laugh at me now, but it has to be done."
+  say "My Pokémon aren't ready to beat you yet. I can't push them too hard. I have to be strict with myself to become the greatest Trainer."
+  end
+label Again
+  say "...Whew. Learn to stay out of my way."
+  end
+
+
+# D44R0102_004: the player's first step onto the row before the boy after the Hall of Fame. Lance and Clair come down
+# behind the player, and the boy is dared into a double battle beside the player against the two of them (the partner
+# is HeartGold's by the starter: TRAINER_PARTNER_RIVAL_2 for Chikorita, _3 for Cyndaquil, _1 otherwise). Won, Lance
+# leaves, then Clair, then the boy is left alone with his pledge (VAR_UNK_40FC 2)
+script Rival
+  scene "The Dragon's Den's double battle"
+  emote d44r0102_gsrivel_2 exclaim
+  face d44r0102_gsrivel_2 up
+  if var PLAYER_X == 24 walk player down 2
+  if var PLAYER_X != 24 walk player down 1 left 1 down 1
+  face player down
+  speaker "{rival}"
+  say "...What? Have you come all this way to laugh at my training? Humph!"
+  say "I came here to learn the Master's secrets, and he makes a mystery of everything. So I'm training my Pokémon here myself."
+  place d44r0102_wataru 28 34 down
+  place d44r0102_gsleader8_2 28 33 down
+  clearflag FLAG_HIDE_DRAGONS_DEN_LANCE
+  clearflag FLAG_HIDE_DRAGONS_DEN_CLAIR_TAG
+  show d44r0102_wataru
+  show d44r0102_gsleader8_2
+  move d44r0102_wataru down 7 left 3 down 3
+  move d44r0102_gsleader8_2 down 7 left 4 down 4
+  waitmoves
+  face d44r0102_gsrivel_2 up
+  speaker "Lance"
+  say "Hello, {player}! And you, too. We met at the Team Rocket hideout."
+  emote d44r0102_gsrivel_2 exclaim
+  speaker "{rival}"
+  say "You! Where have you been all this time? Prepare to lose. I challenge you!"
+  speaker "Lance"
+  say "Calm down. I was in a hurry then, and I'm sorry for it." "But I never turn down a challenger! How about a Double Battle?"
+  speaker "{rival}"
+  say "Humph! You can't beat me one on one, can you?"
+  speaker "Lance"
+  say "Come on, a Double Battle isn't so bad. {player}, you'll be on my side!"
+  speaker "Clair"
+  say "Well, then. You over there, will you team up with me?"
+  speaker "{rival}"
+  say "You can't be serious! Me, with that show-off in the strange costume? No way!"
+  say "{player}! Come to my side! We'll beat Lance together!"
+  walk player right 1 down 2
+  face player up
+  if starter "Chikorita" goto WithSecond
+  if starter "Cyndaquil" goto WithThird
+  battle d44r0102_wataru and d44r0102_gsleader8_2 with "johto_partner_rival_1"
+  goto Won
+label WithSecond
+  battle d44r0102_wataru and d44r0102_gsleader8_2 with "johto_partner_rival_2"
+  goto Won
+label WithThird
+  battle d44r0102_wataru and d44r0102_gsleader8_2 with "johto_partner_rival_3"
+label Won
+  speaker "Lance"
+  say "Just as I expected. You two make quite a team." "Going alone is one way to aim for the top. But that isn't all there is to a Pokémon battle, though I don't suppose either of you needs reminding." "See you another time, {player}!"
+  move d44r0102_wataru up 4 right 3 up 7
+  waitmoves
+  hide d44r0102_wataru
+  speaker "Clair"
+  say "I must excuse myself. ...{player}, that was a fun battle. And that goes for you too, wise guy."
+  move d44r0102_gsleader8_2 up 3 right 4 up 7
+  face d44r0102_gsrivel_2 right
+  face player left
+  waitmoves
+  hide d44r0102_gsleader8_2
+  speaker "{rival}"
+  say "{player}... It wasn't supposed to go this way. Anyway, I'm not giving up on beating you!"
+  say "I'll train my Pokémon, and my own heart too. I'll come back as the toughest challenge you've ever had!"
+  fade out 0.8
+  hide d44r0102_gsrivel_2
+  wait 0.5
+  fade in 0.8
+  setvar VAR_UNK_40FC 2
+  endscene
   end

@@ -10,6 +10,86 @@
         ]
       }
     },
+    "d44r0102_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_gsrivel_2": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "...Humph!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_wataru": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lance: Dragons are at their best when their Trainers are."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lance: Just as I expected."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_gsleader8_2": {
+      "name": {
+        "en": [
+          "Clair"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Clair: Don't just stand there. Get ready."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Clair: That was a fun battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "d44r0102_gsman3": {
       "name": {
         "en": [

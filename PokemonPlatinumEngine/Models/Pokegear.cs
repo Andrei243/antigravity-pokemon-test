@@ -303,6 +303,16 @@ public static class RadioShows
     public static IReadOnlyList<string> Of(RadioStation station) =>
         lines.Value.TryGetValue(station.ToString(), out var list) ? list : (IReadOnlyList<string>)Array.Empty<string>();
 
+    /// <summary>
+    /// Professor Oak's bulletin of the day's swarm (plan 20 · J13, part c; <c>RadioShow_PokemonTalk_Init</c> reads the
+    /// outbreak and tells it): the Pokémon and the place filled in, a line drawn from the English and said in the language's own words.
+    /// </summary>
+    public static string SwarmLine(Random rng, string species, string place)
+    {
+        if (!lines.Value.TryGetValue("PokemonTalkSwarm", out var all) || all.Count == 0) return "";
+        return Text.OfData(all[rng.Next(all.Count)]).Replace("{swarm}", species).Replace("{swarmplace}", place);
+    }
+
     /// <summary>Every line of every station, as its English is written: a language translates them in its <c>data.json</c> (plan 17 · N6f).</summary>
     public static IEnumerable<string> AllLines => lines.Value.Values.SelectMany(l => l).Where(l => l.Length > 0);
 

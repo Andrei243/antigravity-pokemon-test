@@ -30,6 +30,12 @@
     { "species": "Marill", "level": 15 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Marill",
+    "Marill"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Goldeen", "level": 15, "maxLevel": 25 },
     { "species": "Goldeen", "level": 10, "maxLevel": 20 },

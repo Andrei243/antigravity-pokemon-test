@@ -30,6 +30,10 @@
     { "species": "Pidgey", "level": 14, "night": "Hoothoot" }
   ],
   "landRate": 25,
+  "swarm": [
+    "Caterpie",
+    "Caterpie"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"

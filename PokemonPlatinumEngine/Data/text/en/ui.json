@@ -3577,6 +3577,7 @@
     "whichPiece": "Which piece will it be?",
     "whichMove": "Which move should {pokemon} be taught?",
     "whichForgotten": "Which move should be forgotten?",
+    "whichRemembered": "Which move should {pokemon} remember?",
     "knowsFour": "{pokemon} knows four moves already. Which is to make room for {move}?",
     "moveRow": "{move}   {price}",
     "tmRow": "{item} {move}",

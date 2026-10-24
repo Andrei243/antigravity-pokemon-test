@@ -30,6 +30,10 @@
     { "species": "Rattata", "level": 4 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"

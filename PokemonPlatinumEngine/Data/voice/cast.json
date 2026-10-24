@@ -601,6 +601,10 @@
       "note": "first spoken at fuchsia_city_house_3.txt(9)",
       "provisional": true
     },
+    "move_relearner": {
+      "note": "first spoken at blackthorn_move_tutor_house.txt(41)",
+      "provisional": true
+    },
     "mr_briney": {
       "note": "first spoken at dewford_town.txt(15)",
       "provisional": true
@@ -1180,6 +1184,7 @@
     "Mom": "mom",
     "Morty": "morty",
     "Move Deleter": "move_deleter",
+    "Move Relearner": "move_relearner",
     "Mr. Briney": "mr_briney",
     "Mr. Fuego": "mr_fuego",
     "Mr. Fuji": "mr_fuji",

@@ -1,15 +1,39 @@
 {
   // The Dragon's Den (plan 20 · J10): its water, crossed by Surf and Whirlpool, round the Dragon Shrine's island, and its
   // trainers by their own records (Clea and Gil one trainer on two people). Since plan 20 · J11, part c Clair, who waits
-  // by the way out with TM59 once she has given the Rising Badge (trigger 0; scripts/dragons_den.txt). Lance, Clair's
-  // trips here after the Hall of Fame and the red-haired boy wait for plan 20 · J12 and are left out
+  // by the way out with TM59 once she has given the Rising Badge (trigger 0; scripts/dragons_den.txt). Since plan 20 ·
+  // J13, part c the Den has its post-game too: the red-haired boy trains here, and the tag battle with Lance and Clair
+  // (trigger 1) waits for the player's first visit after the Hall of Fame; Clair comes back on her own hours
   "area": "dragons_den",
   "bgmTrack": "johto/dragons_den",
   "triggers": [
-    { "trigger": 0, "script": "Clair" }
+    { "trigger": 0, "script": "Clair" },
+    { "trigger": 1, "script": "Rival" }
   ],
   "people": {
     "d44r0102_gsleader8": { "name": "Clair", "script": "ClairTalk", "still": true },
+    "d44r0102_gsrivel": { "name": "{rival}", "npcType": "Silver", "script": "RivalTalk", "still": true },
+    "d44r0102_gsrivel_2": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "...Humph!" ] },
+    "d44r0102_wataru": {
+      "name": "Lance",
+      "hiddenBy": "FLAG_HIDE_DRAGONS_DEN_LANCE",
+      "still": true,
+      "trainer": {
+        "id": "johto_champion_lance_3",
+        "dialogueBefore": "Lance: Dragons are at their best when their Trainers are.",
+        "dialogueAfter": "Lance: Just as I expected."
+      }
+    },
+    "d44r0102_gsleader8_2": {
+      "name": "Clair",
+      "hiddenBy": "FLAG_HIDE_DRAGONS_DEN_CLAIR_TAG",
+      "still": true,
+      "trainer": {
+        "id": "johto_leader_clair_clair_3",
+        "dialogueBefore": "Clair: Don't just stand there. Get ready.",
+        "dialogueAfter": "Clair: That was a fun battle."
+      }
+    },
     "d44r0102_gsman3": {
       "name": "Kobe",
       "trainer": {

@@ -30,6 +30,10 @@
     { "species": "Steelix", "level": 23 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
   "rockSmash": [
     { "species": "Krabby", "level": 20, "maxLevel": 26 },
     { "species": "Kingler", "level": 28, "maxLevel": 31 }

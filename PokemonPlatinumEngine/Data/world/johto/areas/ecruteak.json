@@ -15,6 +15,8 @@
   "running": true,
   "escapeRope": false,
   "fly": true,
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Poliwag", "level": 15, "maxLevel": 25 },
     { "species": "Poliwag", "level": 10, "maxLevel": 20 },

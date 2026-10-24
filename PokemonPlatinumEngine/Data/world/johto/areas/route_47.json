@@ -30,6 +30,12 @@
     { "species": "Ditto", "level": 40 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Ditto",
+    "Ditto"
+  ],
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Tentacool", "level": 15, "maxLevel": 25 },
     { "species": "Seel", "level": 10, "maxLevel": 20 },

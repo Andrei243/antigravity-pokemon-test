@@ -115,6 +115,10 @@ public sealed class MapArea
     public List<string> DaySlots { get; } = new();
     public List<string> NightSlots { get; } = new();
     public List<string> SwarmSlots { get; } = new();
+
+    /// <summary>The species a swarm puts in the water's first slot and in the rods' slots (plan 20 · J13, part c; HeartGold's); null for none.</summary>
+    public string? SurfSwarm { get; set; }
+    public string? FishSwarm { get; set; }
     public List<string> RadarSlots { get; } = new();
 
     /// <summary>The two species the Pokégear's Hoenn Sound and Sinnoh Sound bring into slots 2 and 3, and 4 and 5 (plan 20 · J3).</summary>
@@ -1472,7 +1476,7 @@ public class Map
             // The season's tables where the area has them, and on dark grass its own (plan 22 · U4); every other place
             // is met from its own, as ever
             var tables = area.TablesFor(moment?.Season);
-            if (water) return (tables.Water, tables.WaterRate);
+            if (water) return (EncounterSlots.Surf(area, tables.Water, moment), tables.WaterRate);
             bool dark = tables.DarkGrass.Count > 0 && IsDarkGrass(x, y);
             var land = dark ? tables.DarkGrass : tables.Land;
             return (moment == null ? land : EncounterSlots.Grass(area, moment, land), dark ? tables.DarkGrassRate : tables.LandRate);
@@ -1497,6 +1501,7 @@ public class Map
             (table, rate) = (tables.SuperRod, tables.SuperRodRate);
         if (table.Count == 0 || rate <= 0 || rng.Next(100) >= rate) return null;
         if (rod == FishingRod.Super) table = EncounterSlots.SuperRod(area, table, moment);
+        table = EncounterSlots.Rod(area, rod, table, moment);
         var feebas = SpecialEncounterTables.Sinnoh.Feebas;
         if (moment?.State is { } state && feebas.Area == area.Key
             && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))

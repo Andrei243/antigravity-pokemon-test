@@ -30,6 +30,12 @@
     { "species": "Dodrio", "level": 30, "night": "Quagsire" }
   ],
   "landRate": 25,
+  "swarm": [
+    "Doduo",
+    "Doduo"
+  ],
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Tentacool", "level": 30, "maxLevel": 30 },
     { "species": "Tentacool", "level": 25, "maxLevel": 25 },

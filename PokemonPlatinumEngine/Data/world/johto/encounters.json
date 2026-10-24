@@ -1,0 +1,39 @@
+{
+  "honeyTrees": {
+    "common": [],
+    "uncommon": [],
+    "rare": []
+  },
+  "greatMarsh": {
+    "local": [],
+    "national": []
+  },
+  "trophyGarden": [],
+  "feebas": {
+    "area": "",
+    "species": "",
+    "tiles": ""
+  },
+  "swarms": [
+    { "area": "route_1", "name": "Route 1", "species": "Poochyena" },
+    { "area": "route_3", "name": "Route 3", "species": "Baltoy" },
+    { "area": "route_9", "name": "Route 9", "species": "Sableye" },
+    { "area": "route_12", "name": "Route 12", "species": "Relicanth", "way": "fish" },
+    { "area": "route_13", "name": "Route 13", "species": "Chansey" },
+    { "area": "route_19", "name": "Route 19", "species": "Clamperl", "way": "surf" },
+    { "area": "route_32", "name": "Route 32", "species": "Qwilfish", "way": "fish" },
+    { "area": "route_25", "name": "Route 25", "species": "Buneary" },
+    { "area": "route_27", "name": "Route 27", "species": "Luvdisc", "way": "surf" },
+    { "area": "route_34", "name": "Route 34", "species": "Ralts" },
+    { "area": "route_35", "name": "Route 35", "species": "Yanma" },
+    { "area": "route_38", "name": "Route 38", "species": "Snubbull" },
+    { "area": "route_44", "name": "Route 44", "species": "Remoraid", "way": "fish" },
+    { "area": "route_45", "name": "Route 45", "species": "Swablu" },
+    { "area": "route_47", "name": "Route 47", "species": "Ditto" },
+    { "area": "mount_mortar_1f_entrance", "name": "Mt. Mortar", "species": "Marill" },
+    { "area": "dark_cave_route_31_side", "name": "Dark Cave", "species": "Dunsparce" },
+    { "area": "viridian_forest", "name": "Viridian Forest", "species": "Kricketot" },
+    { "area": "vermilion", "name": "Vermilion City", "species": "Wingull", "way": "surf" },
+    { "area": "violet", "name": "Violet City", "species": "Whiscash", "way": "fish" }
+  ]
+}

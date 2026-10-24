@@ -20,6 +20,8 @@ script OnEnter
   fade out 0.8
   halloffame
   setflag JohtoHallOfFame
+  # Johto's swarms begin with the Champion (plan 20 · J13, part c; HeartGold turns them on in Professor Oak's lab)
+  swarms on
   halloffame show
   heal
   warp "NewBark_PlayersHouse_2F" 4 9 up
