@@ -1,0 +1,14 @@
+{
+  // Castelia City's street north from the plaza to the gate for Route 4 (plan 22 · U5, part c): Black 2's street of
+  // towers, our words. Its ways onto the plaza and into the gate are the import's own; its towers' doors stay shut
+  "area": "castelia_city_4",
+  "bgmTrack": "unova/castelia",
+  "locked": [ 1, 2, 3 ],
+  "people": {
+    "0": { "name": "Clerk", "npcType": "Clerk", "dialog": [ "Route 4 is just past the gate. The wind out there blows sand right into the city sometimes." ] },
+    "1": { "name": "Ace Trainer", "npcType": "ace_trainer_f", "dialog": [ "Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!" ] }
+  },
+  "signs": {
+    "1": "North: Route 4\nSouth: Castelia City Central Plaza"
+  }
+}

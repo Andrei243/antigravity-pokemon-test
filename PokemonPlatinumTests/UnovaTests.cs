@@ -210,6 +210,44 @@ public class UnovaTests
     }
 
     [Fact]
+    public void CasteliasStreetsMeetTheAvenueAndThePlazaOfOurs()
+    {
+        // The avenue along the bay stands on Black 2's rails, which the reader leaves out: a map of ours stands there
+        // (plan 22 · U5, part c), each street's mouth leading into its street and the street's south end back onto it
+        var avenue = MapNamed("CasteliaCity");
+        Assert.Equal("CasteliaCity", avenue.Name);
+        Assert.Contains("CasteliaCity", RegionDatabase.Get(RegionDatabase.Unova)!.Maps);
+        Assert.Equal(Architecture.Metropolis, avenue.Architecture);
+        foreach (var (street, x) in new[] { ("CasteliaCity_CasteliaStreet", 16), ("CasteliaCity_ModeStreet", 38), ("CasteliaCity_NarrowStreet", 60), ("CasteliaCity_GymStreet", 82) })
+        {
+            var way = avenue.GetWarpAt(x, 0);
+            Assert.Equal(street, way?.TargetMap);
+            var into = MapNamed(street);
+            Assert.True(into.IsWalkable(way!.TargetX, way.TargetY), $"{street}'s way in from the avenue is blocked");
+            Assert.Contains(into.Warps, w => w.TargetMap == "CasteliaCity" && avenue.IsWalkable(w.TargetX, w.TargetY));
+            // and its north end opens onto the plaza, whose rim leads back
+            Assert.Contains(into.Warps, w => w.TargetMap == "CasteliaCity_Plaza" && MapNamed("CasteliaCity_Plaza").IsWalkable(w.TargetX, w.TargetY));
+            Assert.Contains(MapNamed("CasteliaCity_Plaza").Warps, w => w.TargetMap == street);
+        }
+        // The piers' mouths and the Pokémon Center's door
+        Assert.Equal("CasteliaCity_PrimePier", avenue.GetWarpAt(38, 13)?.TargetMap);
+        Assert.Equal("CasteliaCity_ThumbPier", avenue.GetWarpAt(4, 13)?.TargetMap);
+        Assert.Equal("CasteliaCity_PokemonCenter", avenue.GetWarpAt(28, 5)?.TargetMap);
+        Assert.Contains(MapNamed("CasteliaCity_PokemonCenter").Warps, w => w.TargetMap == "CasteliaCity");
+        // Castelia's towers are props of ours on the streets' chunks, built as towers of the town's own way of building
+        var gymStreet = MapNamed("CasteliaCity_GymStreet");
+        Assert.Contains(gymStreet.PlacedBuildings, b => b.Kind == BuildingKind.Tower && b.Town == Architecture.Metropolis);
+        Assert.Contains(gymStreet.PlacedBuildings, b => b.Kind == BuildingKind.Gym);
+        Assert.Equal(PokemonType.Bug, WorldModels.GymTheme("castelia_city_3"));
+        Assert.Contains(gymStreet.Warps, w => w.TargetMap == "CasteliaCity_Gym");
+        // The ship from Virbank comes in at Prime Pier, and beyond the gate Route 4 is open with its row of Crustle
+        Assert.True(MapNamed("CasteliaCity_PrimePier").IsWalkable(12, 10));
+        Assert.Contains("unova_route_4", Unova.Index.Areas);
+        Assert.Equal(11, Overworld.Everyone.Count(n => n.Species == "Crustle" && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_4"));
+        Assert.Contains(MapNamed("CasteliaGate").Warps, w => w.TargetMap == "Unova");
+    }
+
+    [Fact]
     public void EveryModelOnUnovasChunksIsInItsCatalogue()
     {
         var unknown = new SortedSet<string>(StringComparer.Ordinal);
@@ -227,7 +265,8 @@ public class UnovaTests
         foreach (var m in WorldModels.Unova.Where(m => m.Role == ModelRole.Building))
         {
             if (m.Name.StartsWith("c12_", StringComparison.Ordinal) || m.Name.StartsWith("t06_", StringComparison.Ordinal)
-                || m.Name.StartsWith("c13_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool")
+                || m.Name.StartsWith("c13_", StringComparison.Ordinal) || m.Name.StartsWith("c03_", StringComparison.Ordinal)
+                || m.Name.StartsWith("c3_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

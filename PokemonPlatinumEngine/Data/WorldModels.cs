@@ -318,6 +318,8 @@ public static partial class WorldModels
         "sunyshore_city" => PokemonType.Electric,
         // Unova (plan 22 · U5, part b): Roxie's club
         "virbank_city" => PokemonType.Poison,
+        // and Burgh's Gym on Castelia's Gym Street (plan 22 · U5, part c)
+        "castelia_city_3" => PokemonType.Bug,
         _ => null
     };
 }

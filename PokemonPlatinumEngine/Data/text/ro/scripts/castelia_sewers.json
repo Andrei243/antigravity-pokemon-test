@@ -1,0 +1,376 @@
+{
+  "HughJoins": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Team Plasma's down here somewhere, I just know it. Taking them on alone would be too much, even for me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So we'll do it together! First, let me patch up your team."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival} healed your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK! Let's find Team Plasma!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma's down here. Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PlasmaInTheSewers": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh? What do you want?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma! You rotten crooks!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Crooks? How rude! We're freeing Pokémon. Don't get in the way of our noble work!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Freeing them? Don't make me laugh! You steal Pokémon, and then you use them like tools!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shut it! Now hand over your Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's do this, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh, they're tough! Whatever. We've got the Pokémon we came for. Let's get out of here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch! They ran off like a bunch of Patrat! Come on, there might be more of them further in!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I don't think there's any need for that, you two."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are you... Burgh, the Gym Leader?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Burgh"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One and the same! I'm Burgh. And there's nobody suspicious further in, I've just looked."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma worries me too, but let's get out of here, shall we? This sewer is full of Bug Pokémon... Actually, that part I like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh... Didn't you and the other Gym Leaders fight Team Plasma two years ago?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for helping out, {player}. Here, take this!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll find the rest of those Team Plasma punks. I'll never forgive Pokémon thieves. Never!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Burgh"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He's gone..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was a remarkable display of battling. The way you drew out your Pokémon's power against Team Plasma..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Simply fascinating. I'll be watching with interest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Burgh"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who... was that?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, never mind. What will you do now? You could stay down here and train your Pokémon..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Or you could come and challenge me at my Gym! I'll be waiting, my muse and I!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ta-da! The cocoon splits open, and out pops... me! Now, a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiding away dulls a performer's instincts, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Honey, cocoons and a Harlequin! Burgh's Gym is a work of art, and so am I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A masterpiece, ruined by a single brushstroke."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Stuck in the honey? Then I'll battle you right where you stand!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You slipped free of the honey AND of me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Clyde"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "burgh": {
+      "name": {
+        "en": [
+          "Burgh"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "9": {
+      "en": [
+        "Castelia City Pokémon Gym\nLeader: Burgh, the artist of Bug types"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

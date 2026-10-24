@@ -245,6 +245,13 @@
     "roxie": { "hairColor": "#eeeef4", "hair": "Ponytail", "hatBand": "#b05ad0", "top": "#3a2a48", "accent": "#b05ad0", "bottom": "#26222e", "shoes": "#5a3a6a", "eyes": "#4a2a5a", "stripes": true, "shorts": true, "lashes": true, "blush": true },
     "virbank_captain": { "hairColor": "#e6e2dc", "hat": "Cap", "hatColor": "#283656", "hatBand": "#f2f2f6", "top": "#283656", "accent": "#e8c45a", "bottom": "#283656", "shoes": "#2a2420", "eyes": "#3a3a4a", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
     "plasma_grunt": { "hairColor": "#3a3a46", "hat": "Beanie", "hatColor": "#4a5a7a", "hatBand": "#e8e8f0", "top": "#5a6a8a", "accent": "#e8e8f0", "bottom": "#7a8090", "shoes": "#2a2e38", "eyes": "#2a2a3a", "build": "Adult" },
+    // Castelia City's (plan 22 · U5, part c; our own takes, stand-ins until plan 22 · U12): Burgh, the Gym Leader who paints,
+    // tousled brown hair and a green scarf over a smock spattered with paint; Iris, the girl from the Village of Dragons,
+    // a great mane of violet hair, a pink top and white shorts; Colress, the scientist, pale swept hair, square glasses
+    // and a long white coat over dark clothes
+    "burgh": { "hairColor": "#8a5a3a", "hair": "Curls", "top": "#e8dcc2", "accent": "#5a9a4a", "bottom": "#4a4a58", "shoes": "#3a2e28", "eyes": "#3a4a2a", "coat": true, "build": "Adult", "height": 1.06 },
+    "iris": { "hairColor": "#6a3a8a", "hair": "Long", "top": "#f0a0c0", "accent": "#f6f0e0", "bottom": "#f2f2ee", "shoes": "#d86a9a", "eyes": "#5a2a6a", "shorts": true, "lashes": true, "blush": true, "height": 0.92 },
+    "colress": { "hairColor": "#e8e0c4", "hair": "Swept", "top": "#f2f4f8", "accent": "#3a3e58", "bottom": "#2e3040", "shoes": "#2a2a30", "eyes": "#4a5a7a", "glasses": "#3a3a46", "coat": true, "build": "Adult", "height": 1.08 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -501,6 +508,8 @@
     "backers_m": "Youngster", "backers_f": "Lass", "nursery_aide": "Lady", "preschooler_m": "Youngster",
     "preschooler_f": "Lass", "janitor": "Gentleman", "pkmn_ranger_m": "Youngster", "pkmn_ranger_f": "Lass",
     "pkmn_breeder_m": "Gentleman", "pkmn_breeder_f": "Lady", "team_plasma_grunt_m": "plasma_grunt", "team_plasma_grunt_f": "plasma_grunt",
+    // Plan 22 · U5, part c: Castelia's Harlequins stand as clowns until plan 22 · U12
+    "harlequin_233": "clown", "harlequin_32": "clown", "harlequin": "clown", "doctor": "scientist",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
     "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
@@ -672,6 +681,11 @@
     // Plan 22 · U2: Black 2's first trainers, folded onto the nearest looks until their own are made
     "Preschooler": [ "youngster", "lass" ],
     "Nursery Aide": [ "nurse" ],
-    "Janitor": [ "clerk" ]
+    "Janitor": [ "clerk" ],
+    // Plan 22 · U5, part c: Castelia's classes, folded onto the nearest looks until plan 22 · U12, and its cast as themselves
+    "Harlequin": "clown",
+    "Doctor": [ "scientist" ],
+    "Leader Burgh": "burgh",
+    "Pokémon Trainer Colress": "colress"
   }
 }

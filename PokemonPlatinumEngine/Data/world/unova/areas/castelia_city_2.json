@@ -1,0 +1,36 @@
+{
+  "key": "castelia_city_2",
+  "index": 30,
+  "name": "Castelia City",
+  "matrix": 1,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "7",
+  "battleBackground": "",
+  "dayMusic": "BGM_C_03",
+  "nightMusic": "BGM_C_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 13, "z": 0, "to": "castelia_city_4", "toWarp": 4 },
+    { "x": 14, "z": 0, "to": "castelia_city_4", "toWarp": 4 },
+    { "x": 15, "z": 0, "to": "castelia_city_4", "toWarp": 4 },
+    { "x": 16, "z": 0, "to": "castelia_city_4", "toWarp": 4 },
+    { "x": 17, "z": 0, "to": "castelia_city_4", "toWarp": 4 },
+    { "x": 18, "z": 0, "to": "castelia_city_4", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "250", "movement": "none", "x": 15, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02f4", "script": "2000" },
+    { "id": "1", "looks": "artist", "movement": "wander_around", "x": 8, "z": 12, "facing": 2, "rangeX": 3, "rangeZ": 3, "script": "4" }
+  ],
+  "signs": [
+    { "x": 11, "z": 4, "type": 0, "script": "1" }
+  ],
+  "triggers": [
+    { "x": 12, "z": 5, "width": 1, "depth": 5, "script": "3", "variable": "VAR_UNOVA_0x40b4", "value": "1" },
+    { "x": 18, "z": 5, "width": 1, "depth": 4, "script": "3", "variable": "VAR_UNOVA_0x40b4", "value": "1" }
+  ]
+}

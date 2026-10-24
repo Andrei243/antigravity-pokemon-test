@@ -1,0 +1,24 @@
+{
+  // Castelia City's Narrow Street (plan 22 · U5, part c): Black 2's alley between the towers, our words. Its ends lead
+  // onto Black 2's rails (the plaza's south-east, the avenue's mouth), so every tile of each leads where ours lie; the
+  // café's door stays shut
+  "area": "castelia_city_7",
+  "bgmTrack": "unova/castelia",
+  "doors": [
+    { "warp": 2, "map": "CasteliaCity_Plaza", "x": 20, "y": 21, "facing": "Up" },
+    { "warp": 6, "map": "CasteliaCity_Plaza", "x": 20, "y": 21, "facing": "Up" },
+    { "warp": 7, "map": "CasteliaCity_Plaza", "x": 20, "y": 21, "facing": "Up" },
+    { "warp": 8, "map": "CasteliaCity_Plaza", "x": 20, "y": 21, "facing": "Up" },
+    { "warp": 0, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" },
+    { "warp": 3, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" },
+    { "warp": 4, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" },
+    { "warp": 5, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" },
+    { "warp": 9, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" },
+    { "warp": 10, "map": "CasteliaCity", "x": 61, "y": 1, "facing": "Down" }
+  ],
+  "locked": [ 1 ],
+  "people": {
+    "1": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "This alley's ours. ...Fine, walk through if you have to. Just don't stare." ] },
+    "2": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "There's a café round here that hardly anyone knows about. Keep it that way." ] }
+  }
+}

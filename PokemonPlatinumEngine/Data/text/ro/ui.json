@@ -35,6 +35,7 @@
       "ribbon": "Panglică",
       "marks": "Semne",
       "pocket": "Buzunar",
+      "order": "Ordine",
       "buy": "Cumpără",
       "sell": "Vinde",
       "toss": "Aruncă",
@@ -284,6 +285,15 @@
         "On": "Cu Insigna și HM-ul în rucsac, un ajutor sălbatic face pentru tine Tăiere, Zbor, Surf, Forță, Risipire, Spărgător de Pietre, Cascadă și Cățărare."
       }
     },
+    "boxesAnywhere": {
+      "label": "Cutii oriunde și rucsac ordonat",
+      "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
+      "help": {
+        "Off": "Cutiile PC-ului se deschid doar de la un PC, iar rucsacul păstrează obiectele în ordinea în care le-ai luat.",
+        "Rules": "Regulile din Platinum le lasă pe amândouă cum sunt; regulile moderne adaugă CUTII în meniul de start acolo unde locul o permite și îți lasă fiecare buzunar al rucsacului să fie pus în ordine.",
+        "On": "Meniul de start are CUTII, care deschide PC-ul oriunde locul o permite, iar fiecare buzunar al rucsacului poate fi ordonat după nume sau după câte ai, cu salt la literă."
+      }
+    },
     "partyTools": {
       "label": "Amintire și redenumire",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -378,6 +388,8 @@
   "start": {
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
+    "boxes": "CUTII",
+    "noBoxLink": "Cutiile nu pot fi deschise de aici.",
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
     "pokenav": "POKéNAV",
@@ -767,6 +779,13 @@
 
   "bag": {
     "title": "RUCSAC",
+    "order": {
+      "label": "ORDINE",
+      "Taken": "CUM AU VENIT",
+      "Name": "DE LA A LA Z",
+      "NameMachines": "DUPĂ NUMĂR",
+      "Quantity": "CELE MAI MULTE"
+    },
     "pocket": {
       "Items": "OBIECTE",
       "Medicine": "MEDICAMENTE",

@@ -2685,6 +2685,70 @@ the scenes, who stands where, the battles and the gifts, and nothing of their te
   row) is walked into whatever its tile's cover says (`World.PlaceEvents`).
 - **Songs** of our own: `unova/virbank` (the town, its rooms, gates and the complex) and `unova/eye_plasma`.
 
+## Unova's first chapter, part c (2026-10-24, plan 22 · U5, part c)
+
+Black 2's Castelia chapter, from the voyage out of Virbank to Colress on Route 4, in our own words on the beats of the
+decompilation's scripts (`res/field/scripts/virbank_city_5.s`, `castelia_*.s`, `route_4.s`), read for the order of the
+scenes, who stands where, the battles and the gifts, and nothing of their text.
+
+- **The chapter**: Hugh in the ship terminal asks whether the player is coming, and the captain takes them both across
+  the bay (a line over the dark and the ship's horn, as the crossing's journey is told); ashore at Prime Pier Hugh sees a
+  ship with black sails leave the bay and runs off; on the avenue a Harlequin welcomes a first-time visitor with a
+  Bicycle; at the Gym's door Clyde, its guide, says Burgh has gone off after some trouble, and Iris, looking for Burgh,
+  hears the player is after Team Plasma and runs to help; on the avenue she calls the player on to Thumb Pier, where
+  Hugh comes running and goes down into the sewers; inside them Hugh heals the team and comes along, and the two beat
+  Team Plasma's grunts side by side (`unova_team_plasma_grunt` and `_3`, Hugh as `unova_rival_13`, `_14` or `_15` by the
+  player's starter); the grunts flee, Burgh comes along the passage, Hugh hands over HM04 and goes after the rest of
+  Team Plasma, a stranger in a white coat praises the battle and slips away, and Burgh goes back to his Gym; Iris, back on
+  Thumb Pier, sends the player to the Gym, whose door Clyde leaves; Burgh's battle (`unova_leader_burgh`) gives the
+  Insect Badge and TM76; on the plaza the stranger looks over the team, names himself Colress and goes to wait on Route
+  4, where he wakes the row of Crustle everyone took for boulders, battles the player (`unova_colress`), gives a Protein
+  and goes on north.
+- **Castelia's avenue and the street across its north stand on Black 2's rails.** Black 2 lays both out on rails, whose
+  data the decompilation keeps outside its text, and puts every event there by a place along a rail; the reader leaves
+  them out (as it did before). So the avenue along the bay is a map of ours, `CasteliaCity` (`Data/maps/CasteliaCity.json`,
+  92 by 14): a road between a row of towers and the bay, with the four streets' mouths, the Pokémon Center's door and
+  the two open piers' mouths in the order Black 2's rails have them (Thumb Pier, Castelia Street over the closed Cruise
+  Dock, the Pokémon Center, Mode Street over Prime Pier, Narrow Street over the closed Unity Pier, Gym Street over the
+  closed Liberty Pier); its west end, where the gate to the Skyarrow Bridge stands, is shut. The street across the north
+  is left out: each street's north end opens straight onto the plaza's rim (exits of ours on its west, south-west,
+  south-east and east edges). Every tile of a way that leads onto a rail is a door of ours (an overlay's `doors`) to the
+  map of ours or the plaza's rim. The avenue's people, signs and the scenes there (the Harlequin, Iris) are ours, on the
+  beats of `castelia_city.s`.
+- **Castelia's towers** are drawn into each street's own model with no prop of their own: the reader writes a prop of
+  ours, `c3_tower`, for each rectangle of the blocked tiles their textures lie over (`Bw2Cover.Towers`, at most ten
+  tiles across, its height the tallest roof's), and on the five streets for every blocked tile of plain ground, since
+  Black 2 draws only the faces the camera sees; a street's two chunks each model part of the other's, so a Castelia
+  chunk is read with its matrix's other chunks moved into its frame (`WithNeighbours`). The streets lie half a tile
+  under the walking surface their terrain grids give, so a tile there with nothing on or over it takes the look of
+  what lies under it (judged on Castelia's chunks alone: the areas opened before keep the look their sessions saw). The
+  towers are `Architecture.Metropolis`'s, a skyscraper each (the style guide's row).
+- **The Gym**: Black 2 hides its three Harlequins in cocoons that burst as the player pushes through the honey, and
+  reaches Burgh's own room through the honey by a script's warp; the room is cut to what its ways in reach, so Burgh's
+  room has nothing. The honey's puzzle is left for later: the Harlequins stand in the hall (two moved off the walls
+  their cocoons hang over), and Burgh waits at the head of it (a person of ours, `FLAG_UNOVA_HIDE_BURGH_GYM`, shown once
+  he is back from the sewers). The hall is Bug's (`arenaType`), the Gym's building Bug's colour. TM76 is our data's TM76
+  (Platinum's table), as Roxie's TM09.
+- **Left out, for later sessions**: the Castelia Harlequin Hunt (its medals are plan 13 · V9's; its Bicycle is the beat
+  kept, and a Champion who brought one of their own is told so); Mode Street's ice-cream stand and its daily sale (its
+  queue stands); the towers' rooms, the Cruise Dock, Unity and Liberty Piers, the Skyarrow Bridge's gate, the sewers'
+  other rooms and the Relic Passage; Black 2's girl in the sewers who drops something; Route 4's trainers, houses, works,
+  Join Avenue and the desert (plan 22 · U6's: the route is open for Colress's scene with only its listed people on it).
+  Castelia's Pokémon Center is no spawn of the region yet (Virbank's isn't either), so a white-out in Castelia wakes in
+  the last one the record names.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_CASTELIA` is the city's one count (Black 2's
+  `0x40ae` 1 and 2, `0x40e2` 1 and 2, `0x40b1` 1 to 3, `0x40b2` 1 to 4, `0x40b3`, `0x40b4` 1 and 2, `0x40b6` 1 to 3 in
+  one line: 1 on the voyage, 2 ashore, 3 the Bicycle, 4 Iris on Gym Street, 5 Iris on the avenue, 6 Hugh down the
+  sewers, 7 Hugh along, 8 the sewers' scene, 9 Iris's word, 10 the Insect Badge, 11 Colress on the plaza, 12 his
+  battle); `FLAG_UNOVA_HIDE_HUGH_PIER` is `0x02ec`, `_HUGH_THUMB` `0x02f2`, `_HUGH_SEWERS` `0x02f3`, `_IRIS_AVENUE`
+  `0x02ef`, `_IRIS_PIER` `0x02f1`, `_IRIS_GYM_STREET` and `_BURGH_GYM` ours, `_SEWER_GRUNTS`, `_SEWERS_BURGH` and
+  `_SEWERS_COLRESS` `0x02f7`, `_CLYDE_STREET` `0x02f0`, `_COLRESS_PLAZA` `0x02f4`, `_COLRESS_ROUTE_4` `0x02f6`,
+  `_CRUSTLE_ROUTE_4` `0x02f5`; `FLAG_UNOVA_GOT_WATER_CASTELIA` and `_GOT_TM76` are the gifts'. `common.UnovaCastelia`
+  hides the chapter's people (`FLAG_UNOVA_CASTELIA_BEGUN`), run by `UnovaVirbank` and, for a save of part b's, by
+  `UnovaCatchUp`, with no story version raised.
+- **Songs**: `unova/castelia` (the city, its gate and Prime Pier's and Thumb Pier's waits); the sewers keep Sinnoh's
+  `cave` and Route 4 `unova/route19` until their own. Burgh's and Colress's battles are the Gym Leader's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

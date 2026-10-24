@@ -1,0 +1,186 @@
+{
+  "people": {
+    "12": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Colress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been waiting for you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "22": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "24": {
+      "name": {
+        "en": [
+          "Crustle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "31": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sand blows in off the desert up north. Close your eyes, keep walking, and trust your feet!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 4\nNorth: Nimbasa City. South: Castelia City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Route 4\nRoadworks ahead: mind the sand"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Trainer Tips\nWhen a move runs out of PP it can't be used. That's the time to visit a Pokémon Center!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

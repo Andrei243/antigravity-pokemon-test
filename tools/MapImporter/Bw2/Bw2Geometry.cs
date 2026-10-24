@@ -199,7 +199,11 @@ public static class Bw2Geometry
     }
 
     /// <summary>What lies over the middle of each tile of a chunk, by texture name: on the walking surface, and above it.</summary>
-    public sealed record Layers(string?[] Ground, string?[] Above, float[] AboveHeight);
+    public sealed record Layers(string?[] Ground, string?[] Above, float[] AboveHeight)
+    {
+        /// <summary>The topmost texture under the walking surface, where neither of the others lies (the sea below a pier's edge: plan 22 · U5, part c).</summary>
+        public string?[] Below { get; init; } = Array.Empty<string?>();
+    }
 
     /// <summary>How far, in the original's units, a level triangle may sit from the walking surface and still be its ground.</summary>
     public const float GroundTolerance = 4f;
@@ -218,6 +222,9 @@ public static class Bw2Geometry
         var above = new string?[count];
         var groundTop = new float[count];
         var aboveTop = new float[count];
+        var below = new string?[count];
+        var belowTop = new float[count];
+        Array.Fill(belowTop, float.NegativeInfinity);
         Array.Fill(groundTop, float.NegativeInfinity);
         Array.Fill(aboveTop, float.NegativeInfinity);
         float halfX = width * unit / 2f, halfZ = depth * unit / 2f;
@@ -239,9 +246,10 @@ public static class Bw2Geometry
                     bool onGround = walked == null || MathF.Abs(height - walked.Value) <= GroundTolerance;
                     if (onGround && height > groundTop[i]) { groundTop[i] = height; ground[i] = p.Texture; }
                     if (!onGround && height > (walked ?? 0) && height > aboveTop[i]) { aboveTop[i] = height; above[i] = p.Texture; }
+                    if (!onGround && walked is { } level && height < level && height > belowTop[i]) { belowTop[i] = height; below[i] = p.Texture; }
                 }
         }
-        return new Layers(ground, above, aboveTop);
+        return new Layers(ground, above, aboveTop) { Below = below };
     }
 
     private static bool Inside(Triangle p, float x, float z, out float height)

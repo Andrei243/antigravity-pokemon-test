@@ -27,6 +27,9 @@ internal static partial class BuildingArt
     public static readonly Color RibbonRose = Rgb(214, 104, 150);
     private static readonly Color Teal = Rgb(52, 166, 138), Red = Rgb(214, 82, 66);
 
+    /// <summary>The steel blue of Castelia City's towers' bands (plan 22 · U5, part c).</summary>
+    public static readonly Color MetropolisBlue = Rgb(86, 120, 168);
+
     /// <summary>The Battle Frontier's colours (plan 01 · M10, part b): the Tower's blue, the Castle's violet, the Factory's orange, the Arcade's magenta, the Hall's gold.</summary>
     public static readonly Color FrontierBlue = Rgb(58, 92, 170), CastleViolet = Rgb(124, 98, 170), FactoryOrange = Rgb(232, 140, 52),
         ArcadeMagenta = Rgb(214, 92, 150), HallGold = Rgb(214, 170, 72);
@@ -50,6 +53,7 @@ internal static partial class BuildingArt
         PokemonType.Ice => Rgb(126, 200, 220),
         PokemonType.Electric => Rgb(236, 196, 64),
         PokemonType.Poison => Rgb(150, 92, 178),
+        PokemonType.Bug => Rgb(168, 184, 64),
         _ =>Rgb(150, 128, 100)
     };
 
@@ -124,6 +128,12 @@ internal static partial class BuildingArt
             Architecture.Hillside => Pitched(WallKind.Stucco, Rgb(70, 104, 122)) with { Shutters = true },
             Architecture.Bellfield => Pitched(WallKind.Boards, Rgb(196, 112, 58)) with { Chimney = true, FlowerBoxes = true },
             Architecture.Dockyard => Pitched(WallKind.Brick, Rgb(104, 82, 124)) with { Chimney = true },
+            // Castelia's few low buildings are panel blocks under flat roofs (its towers are BuildingKind.Tower's)
+            Architecture.Metropolis => new BuildingStyle
+            {
+                Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 2, Window = WindowKind.Ribbon,
+                Home = true, Accent = roof ?? MetropolisBlue, Gear = RoofGear.Vents
+            },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
@@ -243,6 +253,14 @@ internal static partial class BuildingArt
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FrontierBlue, Window = WindowKind.Arched, GlassDoor = true,
                 Band = true, Accent = FrontierBlue, Shaft = 288, StageCount = 4, Gear = RoofGear.Beacon
+            },
+            // Castelia City's skyscrapers (plan 22 · U5, part c): a ground stage of pale panels as wide as the block, a
+            // shaft of three stages stepping in, ribbon windows that burn all night and a band of steel blue round each
+            // stage's top, and a flat top with vents, no cap
+            BuildingKind.Tower when town == Architecture.Metropolis => new BuildingStyle
+            {
+                Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Window = WindowKind.Ribbon, GlassDoor = true,
+                Band = true, Accent = MetropolisBlue, Shaft = 160, StageCount = 3, FlatTop = true, Gear = RoofGear.Vents
             },
             // Lavender Town's Pokémon Tower (plan 19 · K5): grey stone under a lilac cap, the town's own colour, its narrow
             // windows arched as a chapel's

@@ -1,0 +1,144 @@
+{
+  "ColressWaits": [
+    {
+      "en": [
+        "Colress"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been waiting for you! What's the matter? Curious about what's behind me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those aren't rocks at all. They're Crustle, carrying their boulders on their backs. Now, observe."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This machine of mine was made to draw out a Pokémon's energy. Let's see what it does for them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those Crustle... Were they lying here all along, too worn out to move, boulders and all?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma once said that to bring out the potential of Pokémon, people must let them go free. I disagree."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Science is what will draw out their power. That is what I believe, and why I study."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come to think of it, I never asked your name. ...{player}. I'll remember it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now, let me see whether you're a Trainer who can draw out a Pokémon's hidden strength!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see! Like the Gym Leaders, or the Elite Four and the Champion of the Pokémon League, you bring out your Pokémon's strength by battling at their side."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, take this. Consider it my thanks for the data!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How frustrating! If only we could talk with Pokémon, drawing out their power might be simple. But that's hardly science, is it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Until we meet again, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Crustle": [
+    {
+      "en": [
+        "A row of boulders blocks the road. Strength won't shift them... Are they breathing?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These boulders just turned up all in a line one morning. Strength won't shift them an inch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Crustle, all along! If you want to see more of them, they live out in the desert to the north."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

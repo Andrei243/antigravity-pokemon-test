@@ -122,6 +122,10 @@
       "note": "first spoken at azalea_gym.txt(12)",
       "provisional": true
     },
+    "burgh": {
+      "note": "first spoken at castelia_city_gym.txt(36)",
+      "provisional": true
+    },
     "byron": {},
     "cameraman": {
       "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
@@ -170,8 +174,16 @@
       "note": "first spoken at route_218.txt(23)",
       "provisional": true
     },
+    "clyde": {
+      "note": "first spoken at castelia_city_3.txt(18)",
+      "provisional": true
+    },
     "collector": {
       "note": "first spoken at valor_lakefront.txt(138)",
+      "provisional": true
+    },
+    "colress": {
+      "note": "first spoken at castelia_city_2.txt(29)",
       "provisional": true
     },
     "cook": {
@@ -356,6 +368,10 @@
       "note": "first spoken at goldenrod.txt(163)",
       "provisional": true
     },
+    "harlequin": {
+      "note": "first spoken at CasteliaCity.txt(22)",
+      "provisional": true
+    },
     "herdier": {
       "note": "first spoken at floccesy_ranch_2.txt(140)",
       "provisional": true
@@ -366,6 +382,10 @@
     },
     "hostess": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
+      "provisional": true
+    },
+    "iris": {
+      "note": "first spoken at CasteliaCity.txt(51)",
       "provisional": true
     },
     "isaac": {
@@ -1007,6 +1027,7 @@
     "Buck": "buck",
     "Bug Catcher": "look:bug_catcher",
     "Bugsy": "bugsy",
+    "Burgh": "burgh",
     "Butler": "look:butler",
     "Byron": "byron",
     "Cameraman": "cameraman",
@@ -1024,7 +1045,9 @@
     "Clair": "clair",
     "Clefairy": "clefairy",
     "Clerk": "look:clerk",
+    "Clyde": "clyde",
     "Collector": "collector",
+    "Colress": "colress",
     "Commander Jupiter": "jupiter",
     "Commander Mars": "mars",
     "Commander Saturn": "saturn",
@@ -1088,11 +1111,13 @@
     "Guitarist": "look:guitarist",
     "Gym Guide": "look:gym_guide",
     "Gym Trainer": "gym_trainer",
+    "Harlequin": "harlequin",
     "Herdier": "herdier",
     "Hiker": "look:hiker",
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Iris": "iris",
     "Isaac": "isaac",
     "Isabel": "isabel",
     "Isaiah": "isaiah",

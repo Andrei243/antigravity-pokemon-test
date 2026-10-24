@@ -1328,6 +1328,40 @@ way 1, from answer 1
 from Youngster at 3,7 of CanalaveLibrary3F
 way -
   Youngster> There's one book I'm after, and it's out on loan every single time I come. Every time!
+=== CasteliaCity.Harlequin
+from Harlequin at 44,8 of CasteliaCity
+way -
+  Harlequin> Castelia City never sleeps! Five streets, four piers and more towers than anyone has ever counted.
+=== CasteliaCity.HarlequinScene
+from the trigger at 38,11 of CasteliaCity
+way -
+  Harlequin> Welcome, welcome! Is this your very first time in Castelia City? I can always tell!
+  Harlequin> Every first-time visitor gets a gift from the city, and yours is a Bicycle! These avenues go on and on, you know.
+  > Lucas received the Bicycle!
+  > Lucas put it away in the Key Items pocket.
+  Harlequin> Ride it anywhere outside! Up Gym Street to the north-east, there's a Pokémon Gym worth a visit, too.
+  * scene CasteliaCity.The Harlequin's welcome
+  * emote Harlequin Exclaim
+  * fanfare FanfareKeyItem
+  * endscene
+  = VAR_UNOVA_CASTELIA 0 -> 3
+  + seen CasteliaCity.The Harlequin's welcome
+=== CasteliaCity.IrisAvenue
+from Iris at 6,9 of CasteliaCity
+way -
+  Iris> Thumb Pier's just down there. Hurry!
+=== CasteliaCity.IrisCalls
+from the trigger at 11,6 of CasteliaCity
+way -
+  Iris> Hey, over here! Come on, come on!
+  Iris> If Team Plasma were hiding in Castelia, there are only two places I can think of: Narrow Street, and Thumb Pier, right down there!
+  Iris> Narrow Street's always crowded, so... Thumb Pier! Let's go have a look!
+  * scene CasteliaCity.Iris on the avenue
+  * emote Iris Exclaim
+  * endscene
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  = VAR_UNOVA_CASTELIA 0 -> 5
+  + seen CasteliaCity.Iris on the avenue
 === CelesticPokemonCenter.Pokefan
 from Pokéfan at 3,8 of CelesticPokemonCenter
 way -
@@ -6591,6 +6625,48 @@ way -
 from Gym Guide at 15,82 of Blackthorn_Gym
 way -
   Gym Guide> Clair's Pokémon are dragons, and dragons shrug off most attacks. Ice moves are what they hate. And mind the lava!
+=== blackthorn_move_tutor_house.Deleter
+from Move Deleter at 1,4 of Blackthorn_MoveTutorHouse
+way 0.0.0
+  Move Deleter> Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it.
+  Move Deleter> Shall I make one of your Pokémon forget a move?
+  Move Deleter> Which Pokémon?
+  Move Deleter> Which move should be forgotten?
+  Move Deleter> Tackle? Should that move be forgotten?
+  Move Deleter> There! Turtwig has forgotten Tackle completely.
+  ? Shall I make one of your Pokémon forget a move? = Yes
+  ? Which move should be forgotten? = Tackle
+  ? Tackle? Should that move be forgotten? = Yes
+  * open ChoosePokemon
+way 0.0.1, from answer 3
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Tackle? Should that move be forgotten? = No
+way 0.2, from answer 2
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Which move should be forgotten? = Cancel
+way 0.1.0, from answer 2
+  Move Deleter> Withdraw? Should that move be forgotten?
+  Move Deleter> There! Turtwig has forgotten Withdraw completely.
+  ? Which move should be forgotten? = Withdraw
+  ? Withdraw? Should that move be forgotten? = Yes
+way 0.1.1, from answer 3
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Withdraw? Should that move be forgotten? = No
+way 1, from answer 1
+  Move Deleter> Come again if there are moves you'd like forgotten.
+  ? Shall I make one of your Pokémon forget a move? = No
+=== blackthorn_move_tutor_house.DragonTamer
+from Dragon Tamer at 8,5 of Blackthorn_MoveTutorHouse
+way 0
+  Dragon Tamer> Hm. A visitor to the dragon tamers' town. We keep a secret here: the mightiest of all the Dragon-type moves.
+  Dragon Tamer> Would you have me teach it to one of your Pokémon?
+  Dragon Tamer> Not one of the Pokémon with you now can learn this move. Bring a Dragon, and come back.
+  ? Would you have me teach it to one of your Pokémon? = Yes
+  + FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER
+way 1, from answer 1
+  Dragon Tamer> Well, should you change your mind, do come back.
+  ? Would you have me teach it to one of your Pokémon? = No
+  + FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER
 === burned_tower_1f.Eusine
 from the trigger at 19,23 of BurnedTower_1F
 way -
@@ -6735,6 +6811,212 @@ from Prof. Rowan at 38,720 of Sinnoh
 way -
   Prof. Rowan> What is taking place at the lakes? Something is very wrong, and I mean to find out what.
   Prof. Rowan> Lake Valor lies east of Pastoria City, Lucas. Go, and be careful.
+=== castelia_city_10.Captain
+from Captain at 11,10 of CasteliaCity_PrimePier
+way 0
+  Captain> Shall we sail back to Virbank City?
+  Captain> Right you are! Step this way!
+  > The ship pulls away from the pier and heads back across the bay toward Virbank City...
+  ? Shall we sail back to Virbank City? = Yes
+  * fade out
+  * music stop
+  * sound crossing_horn
+  * warp VirbankCity_Terminal 6 6
+  * fade in
+way 1, from answer 1
+  Captain> Come and find me whenever you fancy a trip. I'm always on this pier!
+  ? Shall we sail back to Virbank City? = No
+=== castelia_city_12.IrisAfterward
+from the trigger at 2,9 of CasteliaCity_ThumbPier
+from the trigger at 9,19 of CasteliaCity_ThumbPier
+way -
+  Iris> There you are! Your friend came back up looking really cross. Did everything go all right down there?
+  Iris> So what now? You met Burgh in the sewers, didn't you? Then you should go and challenge his Gym. See how strong you've got!
+  * scene castelia_city_12.Iris after the sewers
+  * endscene
+  + FLAG_UNOVA_HIDE_CLYDE_STREET
+  = VAR_UNOVA_CASTELIA 0 -> 9
+  + seen castelia_city_12.Iris after the sewers
+=== castelia_city_12.IrisPier
+from Iris at 10,14 of CasteliaCity_ThumbPier
+way -
+  Iris> The sewers are the perfect place to hide. Hurry, before your friend runs into trouble on his own!
+=== castelia_city_12.Worker
+from Worker at 12,19 of CasteliaCity_ThumbPier
+way -
+  Worker> The sewers? Go on down if you must, but mind the wild Pokémon. Some Trainers go down there on purpose to train!
+=== castelia_city_2.Colress
+from the trigger at 13,3 of CasteliaCity_Plaza
+way 0.0
+  ???> Pardon me. If it isn't too much trouble, might I have a look at your Pokémon?
+  ???> I'm most grateful for your cooperation!
+  ???> Oh! How very interesting! Your Turtwig carries itself with more confidence than others of its kind.
+  ???> And you a Trainer with only three Badges...
+  ???> Fantastic! I couldn't tell you how you're doing it, but you're drawing out the power of your Pokémon!
+  Colress> Ah, forgive me. I'm a scientist, and my name is Colress. The subject of my research is a single question: how does one bring out a Pokémon's full power?
+  Colress> Is it the bond a Pokémon shares with its Trainer? Or is there some other way entirely? That's what I intend to find out.
+  Colress> I'd like to test my theory in a battle with you. Would you find that acceptable?
+  Colress> Either way, I'll be waiting for you on Route 4. It's just past the gate up ahead!
+  ? Pardon me. If it isn't too much trouble, might I have a look at your Pokémon? = Yes
+  ? I'd like to test my theory in a battle with you. Would you find that acceptable? = Yes
+  * scene castelia_city_2.Colress on the plaza
+  * endscene
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  = VAR_UNOVA_CASTELIA 0 -> 11
+  + seen castelia_city_2.Colress on the plaza
+way 0.1, from answer 2
+  Colress> Either way, I'll be waiting for you on Route 4. It's just past the gate up ahead!
+  ? I'd like to test my theory in a battle with you. Would you find that acceptable? = No
+  * endscene
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  = VAR_UNOVA_CASTELIA 0 -> 11
+  + seen castelia_city_2.Colress on the plaza
+way 1.0, from answer 1
+  ???> Oh, come now. It's all in the name of science!
+  ???> Oh! How very interesting! Your Turtwig carries itself with more confidence than others of its kind.
+  ???> And you a Trainer with only three Badges...
+  ???> Fantastic! I couldn't tell you how you're doing it, but you're drawing out the power of your Pokémon!
+  Colress> Ah, forgive me. I'm a scientist, and my name is Colress. The subject of my research is a single question: how does one bring out a Pokémon's full power?
+  Colress> Is it the bond a Pokémon shares with its Trainer? Or is there some other way entirely? That's what I intend to find out.
+  Colress> I'd like to test my theory in a battle with you. Would you find that acceptable?
+  Colress> Either way, I'll be waiting for you on Route 4. It's just past the gate up ahead!
+  ? Pardon me. If it isn't too much trouble, might I have a look at your Pokémon? = No
+  ? I'd like to test my theory in a battle with you. Would you find that acceptable? = Yes
+  * endscene
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  = VAR_UNOVA_CASTELIA 0 -> 11
+  + seen castelia_city_2.Colress on the plaza
+way 1.1, from answer 2
+  Colress> Either way, I'll be waiting for you on Route 4. It's just past the gate up ahead!
+  ? I'd like to test my theory in a battle with you. Would you find that acceptable? = No
+  * endscene
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  = VAR_UNOVA_CASTELIA 0 -> 11
+  + seen castelia_city_2.Colress on the plaza
+=== castelia_city_3.Clyde
+from Clyde at 24,48 of CasteliaCity_GymStreet
+way -
+  Clyde> Here to challenge Burgh? I'm sorry, he isn't here. He said there might be trouble somewhere in the city, and off he went!
+  ???> Huh? Burgh's gone wandering off again?
+  Clyde> Oh! Hello, Iris. Something came up, and Burgh isn't in right now.
+  Iris> Hmm... But isn't Burgh always disappearing? He says he can't think of anything to paint and goes wandering out of his Gym.
+  Iris> Hi there! Who are you? ...You're looking for Team Plasma? But Team Plasma broke up two years ago!
+  Iris> Oh, never mind that! You've got a problem, so I'll help you look!
+  Iris> Hmm... Now where would shady people go to hide?
+  Iris> I've got it! I bet that's where they are!
+  Clyde> Good grief... Burgh and Iris are as bad as each other. She ran off toward the avenue, by the look of it.
+  Clyde> Head down to the avenue and go west past the Pokémon Center. You're sure to catch her up.
+  * scene castelia_city_3.Burgh away from his Gym
+  * emote Iris Exclaim
+  * endscene
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  = VAR_UNOVA_CASTELIA 0 -> 4
+  + seen castelia_city_3.Burgh away from his Gym
+=== castelia_city_3.IrisGymStreet
+from Iris at 20,58 of CasteliaCity_GymStreet
+way -
+  Iris> Where would shady people hide...?
+=== castelia_city_gym.Burgh
+from Burgh at 14,2 of CasteliaCity_Gym
+way 0
+  Burgh> Welcome! I've just got back from the sewers, and do you know what? My muse came back with me!
+  Burgh> I'm Burgh, Leader of this Gym and painter of Bug Pokémon. I'll paint our battle onto the canvas of your memory!
+  Burgh> Oh ho... You're strong, all right. I suppose losing was no surprise. Here, the Insect Badge! I think it suits you!
+  > Lucas received the Insect Badge from Burgh!
+  Burgh> And, well, have this too. Take it as thanks for the inspiration!
+  > Lucas received the TM76!
+  > TM76 holds the move Stealth Rock.
+  > Lucas put it away in the TMs & HMs pocket.
+  Burgh> The Insect Badge looks even better on you than I imagined. Route 4 is north of the plaza, through the gate. Off you go!
+  * scene castelia_city_gym.Burgh
+  * battle unova_leader_burgh Won
+  * fanfare FanfareBadge
+  * defeat unova_harlequin_clarence
+  * defeat unova_harlequin_gary
+  * defeat unova_harlequin_anders
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_GOT_TM76
+  = VAR_UNOVA_CASTELIA 0 -> 10
+  + beaten unova_harlequin_anders
+  + beaten unova_harlequin_clarence
+  + beaten unova_harlequin_gary
+  + beaten unova_leader_burgh
+  = badges Unova 0 -> 100
+  + seen castelia_city_gym.Burgh
+way 1, from answer 1
+  * battle unova_leader_burgh Lost
+  * scene over, unseen
+=== castelia_city_gym.GymGuide
+from Clyde at 19,18 of CasteliaCity_Gym
+way -
+  Clyde> Hey there, future champ! Welcome to the Castelia Gym. Burgh's taste in decoration is... sticky. Mind the honey!
+  Clyde> Burgh's Bug types fold to Fire, Flying and Rock moves. Here, have a drink before you start!
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_CASTELIA
+=== castelia_sewers.Hugh
+from {rival} at 81,20 of CasteliaSewers
+way -
+  Barry> Team Plasma's down here. Let's go!
+=== castelia_sewers.HughJoins
+from the trigger at 83,20 of CasteliaSewers
+way -
+  Barry> Lucas! Team Plasma's down here somewhere, I just know it. Taking them on alone would be too much, even for me.
+  Barry> So we'll do it together! First, let me patch up your team.
+  > Barry healed your Pokémon.
+  Barry> OK! Let's find Team Plasma!
+  * scene castelia_sewers.Hugh in the sewers
+  * partner {rival} unova_rival_15
+  * endscene
+  = VAR_UNOVA_CASTELIA 0 -> 7
+  + seen castelia_sewers.Hugh in the sewers
+=== castelia_sewers.PlasmaInTheSewers
+from the trigger at 50,9 of CasteliaSewers
+way 0
+  Barry> Hey!
+  Grunt> Huh? What do you want?
+  Barry> Team Plasma! You rotten crooks!
+  Grunt> Crooks? How rude! We're freeing Pokémon. Don't get in the way of our noble work!
+  Barry> Freeing them? Don't make me laugh! You steal Pokémon, and then you use them like tools!
+  Grunt> Shut it! Now hand over your Pokémon!
+  Barry> Let's do this, Lucas!
+  Grunt> Ugh, they're tough! Whatever. We've got the Pokémon we came for. Let's get out of here!
+  Barry> Tch! They ran off like a bunch of Patrat! Come on, there might be more of them further in!
+  ???> I don't think there's any need for that, you two.
+  Barry> Are you... Burgh, the Gym Leader?
+  Burgh> One and the same! I'm Burgh. And there's nobody suspicious further in, I've just looked.
+  Burgh> Team Plasma worries me too, but let's get out of here, shall we? This sewer is full of Bug Pokémon... Actually, that part I like.
+  Barry> Huh... Didn't you and the other Gym Leaders fight Team Plasma two years ago?
+  Barry> Thanks for helping out, Lucas. Here, take this!
+  > Lucas received the HM04!
+  > HM04 holds the move Strength.
+  > Lucas put it away in the TMs & HMs pocket.
+  Barry> I'll find the rest of those Team Plasma punks. I'll never forgive Pokémon thieves. Never!
+  Burgh> He's gone...
+  ???> You there!
+  ???> That was a remarkable display of battling. The way you drew out your Pokémon's power against Team Plasma...
+  ???> Simply fascinating. I'll be watching with interest!
+  Burgh> Who... was that?
+  Burgh> Well, never mind. What will you do now? You could stay down here and train your Pokémon...
+  Burgh> Or you could come and challenge me at my Gym! I'll be waiting, my muse and I!
+  * scene castelia_sewers.Team Plasma in the sewers
+  * battle unova_team_plasma_grunt and unova_team_plasma_grunt_3 Won
+  * partner off
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  = VAR_UNOVA_CASTELIA 0 -> 8
+  + beaten unova_team_plasma_grunt
+  + beaten unova_team_plasma_grunt_3
+  + seen castelia_sewers.Team Plasma in the sewers
+way 1, from answer 1
+  * battle unova_team_plasma_grunt and unova_team_plasma_grunt_3 Lost
+  * scene over, unseen
 === cave_of_origin_b1f.Wallace
 from Wallace at 9,13 of CaveOfOrigin_B1F
 way 0
@@ -9833,26 +10115,55 @@ way 1, from answer 1
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.UnovaCastelia
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
 === common.UnovaCatchUp
 from a trainer with lines of their own
 way -
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -9863,18 +10174,31 @@ way -
 === common.UnovaNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -9896,10 +10220,23 @@ way -
 === common.UnovaVirbank
 from a trainer with lines of their own
 way -
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
@@ -14018,6 +14355,27 @@ way -
 from Steven at 9,6 of MossdeepCity_StevensHouse
 way -
   Steven> They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine.
+=== mount_mortar_b1f.Karate
+from Karate Master at 41,18 of MtMortar_B1F
+way 0.0
+  Karate Master> Hah! I train down here where no one can disturb me. Few ever find their way this deep.
+  Karate Master> You have the eyes of someone who wants to test their fists. Will you fight me?
+  Karate Master> Good! Show me what you and your Pokémon are made of!
+  Karate Master> Hah! Well fought! Your Pokémon fight as one with you.
+  Karate Master> I have a young fighter that needs a Trainer with a strong heart. Take it, and teach it well.
+  > Lucas received Tyrogue from the Karate Master!
+  Karate Master> It has the makings of three different fighters. Which one it becomes depends on how you raise it.
+  ? You have the eyes of someone who wants to test their fists. Will you fight me? = Yes
+  * battle johto_black_belt_kiyo Won
+  * fanfare FanfarePokemon
+  + FLAG_BEAT_MORTAR_KARATE_MASTER
+  + FLAG_GOT_TYROGUE_FROM_KIYO
+  + beaten johto_black_belt_kiyo
+way 0.1, from answer 2
+  * battle johto_black_belt_kiyo Lost
+way 1, from answer 1
+  Karate Master> Then leave me to my training. Come back when your fists are ready.
+  ? You have the eyes of someone who wants to test their fists. Will you fight me? = No
 === mt_chimney.Archie
 from Archie at 24,19 of MtChimney
 way -
@@ -14693,6 +15051,48 @@ way -
   + FLAG_HIDE_OREBURGH_MINE_B2F_ROARK
   + FLAG_ROARK_RETURNED_TO_OREBURGH_GYM
   + seen oreburgh_mine_b2f.Roark down the mine
+=== pacifidlog_town_house_2.FanClubYoungerBrother
+from Gentleman at 3,5 of PacifidlogTown_House2
+way -
+  Gentleman> I'm the younger brother of the Pokémon Fan Club's chairman. I've come out to Pacifidlog for a long holiday.
+  Gentleman> Let me have a look at the Pokémon you're with...
+  Gentleman> Hmm, neither here nor there. Spend more time together, and come back to show me.
+  + FLAG_MET_FANCLUB_YOUNGER_BROTHER
+=== pacifidlog_town_house_2.HappyAzurill
+from Azurill at 8,6 of PacifidlogTown_House2
+way -
+  Azurill> Rurii!
+  > It looks very fond of its trainer.
+  * cry Azurill
+=== pacifidlog_town_house_2.UnhappyAzurill
+from Azurill at 1,7 of PacifidlogTown_House2
+way -
+  Azurill> ...Rii.
+  > It doesn't seem very fond of its trainer.
+  * cry Azurill
+=== pacifidlog_town_house_3.Trader
+from Man at 4,2 of PacifidlogTown_House3
+way 0
+  Man> I've a Horsea here, but what I've always wanted is a Bagon. Would you trade me one?
+  Man> Which Pokémon will you trade?
+  Man> That's no Bagon. I'll only take a real Bagon, I'm afraid.
+  ? I've a Horsea here, but what I've always wanted is a Bagon. Would you trade me one? = Yes
+  * open ChoosePokemon
+  * trade seasor refused
+way 1, from answer 1
+  Man> Not today? I'm in no hurry. Bagon will come along some day.
+  ? I've a Horsea here, but what I've always wanted is a Bagon. Would you trade me one? = No
+=== pacifidlog_town_pokemon_center_1f.ExplosionTutor
+from Man at 12,8 of PacifidlogTown_PokemonCenter_1F
+way 0
+  Man> I know a move that goes off with an almighty bang. Shall I teach one of your Pokémon Explosion?
+  Man> Splendid! Which one?
+  Man> Ah, that one can't learn Explosion, I'm afraid.
+  ? I know a move that goes off with an almighty bang. Shall I teach one of your Pokémon Explosion? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Man> No? A move like that is best not rushed.
+  ? I know a move that goes off with an almighty bang. Shall I teach one of your Pokémon Explosion? = No
 === pal_park.RetireAtGate
 from the trigger at 22,48 of PalPark
 way 0
@@ -18739,6 +19139,75 @@ way -
   * sound select
   + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7
   = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== shoal_cave_low_tide_entrance_room.ShellBellExpert
+from Old Man at 18,15 of ShoalCave_LowTideEntranceRoom
+way -
+  Old Man> Going in? The sea comes and goes in this cave twice a day. Some corners are dry only while the tide is out.
+=== shoal_cave_low_tide_inner_room.ShoalSalt1
+from the tile read at 31,8 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Salt!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SALT_1
+=== shoal_cave_low_tide_inner_room.ShoalSalt2
+from the tile read at 14,26 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Salt!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SALT_2
+=== shoal_cave_low_tide_inner_room.ShoalShell1
+from the tile read at 41,20 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Shell!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SHELL_1
+=== shoal_cave_low_tide_inner_room.ShoalShell2
+from the tile read at 41,10 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Shell!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SHELL_2
+=== shoal_cave_low_tide_inner_room.ShoalShell3
+from the tile read at 6,9 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Shell!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SHELL_3
+=== shoal_cave_low_tide_inner_room.ShoalShell4
+from the tile read at 16,13 of ShoalCave_LowTideInnerRoom
+way -
+  > Lucas found the Shoal Shell!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SHELL_4
+=== shoal_cave_low_tide_lower_room.BlackBelt
+from Black Belt at 11,4 of ShoalCave_LowTideLowerRoom
+way -
+  Black Belt> The cold down here creeps into your bones and ruins a good day's training. A focused mind shrugs it off!
+  Black Belt> Here, take this Focus Band. Tie it on tight and stand firm against the chill!
+  > Lucas received the Focus Band!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_FOCUS_BAND
+=== shoal_cave_low_tide_lower_room.ShoalSalt4
+from the tile read at 18,2 of ShoalCave_LowTideLowerRoom
+way -
+  > Lucas found the Shoal Salt!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SALT_4
+=== shoal_cave_low_tide_stairs_room.ShoalSalt3
+from the tile read at 11,11 of ShoalCave_LowTideStairsRoom
+way -
+  > Lucas found the Shoal Salt!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_RECEIVED_SHOAL_SALT_3
 === silph_co_10f.Door
 from Locked door at 12,11 of SilphCo_10F
 from Locked door at 12,12 of SilphCo_10F
@@ -20845,6 +21314,55 @@ way 1, from answer 1
 from {rival} at 173,648 of Unova
 way -
   Barry> I have to get stronger than Team Plasma!
+=== unova_route_4.ColressWaits
+from the trigger at 427,584 of Unova
+way 0
+  Colress> I've been waiting for you! What's the matter? Curious about what's behind me?
+  Colress> Those aren't rocks at all. They're Crustle, carrying their boulders on their backs. Now, observe.
+  Colress> This machine of mine was made to draw out a Pokémon's energy. Let's see what it does for them!
+  Colress> Those Crustle... Were they lying here all along, too worn out to move, boulders and all?
+  Colress> Team Plasma once said that to bring out the potential of Pokémon, people must let them go free. I disagree.
+  Colress> Science is what will draw out their power. That is what I believe, and why I study.
+  Colress> Come to think of it, I never asked your name. ...Lucas. I'll remember it.
+  Colress> Now, let me see whether you're a Trainer who can draw out a Pokémon's hidden strength!
+  Colress> I see! Like the Gym Leaders, or the Elite Four and the Champion of the Pokémon League, you bring out your Pokémon's strength by battling at their side.
+  Colress> Please, take this. Consider it my thanks for the data!
+  > Lucas received the Protein!
+  > Lucas put it away in the Medicine pocket.
+  Colress> How frustrating! If only we could talk with Pokémon, drawing out their power might be simple. But that's hardly science, is it?
+  Colress> Until we meet again, Lucas!
+  * scene unova_route_4.Colress on Route 4
+  * cry Crustle
+  * battle unova_colress Won
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4
+  = VAR_UNOVA_CASTELIA 0 -> 12
+  + beaten unova_colress
+  + seen unova_route_4.Colress on Route 4
+way 1, from answer 1
+  * battle unova_colress Lost
+  * scene over, unseen
+  + FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4
+=== unova_route_4.Crustle
+from Crustle at 427,581 of Unova
+from Crustle at 428,580 of Unova
+from Crustle at 428,581 of Unova
+from Crustle at 429,580 of Unova
+from Crustle at 429,581 of Unova
+from Crustle at 430,579 of Unova
+from Crustle at 430,581 of Unova
+from Crustle at 431,581 of Unova
+from Crustle at 432,581 of Unova
+from Crustle at 433,580 of Unova
+from Crustle at 433,581 of Unova
+way -
+  > A row of boulders blocks the road. Strength won't shift them... Are they breathing?
+=== unova_route_4.Worker
+from Worker at 427,585 of Unova
+way -
+  Worker> These boulders just turned up all in a line one morning. Strength won't shift them an inch!
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -
@@ -21514,15 +22032,30 @@ way -
 === virbank_city_5.Captain
 from Captain at 6,5 of VirbankCity_Terminal
 way -
-  Captain> Ha ha! She's raring to go, but her engines went cold while I was off at the studios.
-  Captain> Give me a little while to warm them through, and we'll charge across to Castelia City!
+  Captain> She's all warmed up and raring to go! Your friend's been pacing the deck since I got back.
 === virbank_city_5.Hugh
 from {rival} at 6,7 of VirbankCity_Terminal
-way -
-  Barry> Lucas! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!
+way 0
+  Barry> Lucas! You're heading to Castelia City too, right?
+  Barry> Then let's go! I'm going after Team Plasma. I'll never let them get away!
   Barry> Hey, Captain! Show us this ship you're so proud of!
-  Captain> Ha ha! She's raring to go, but her engines went cold while I was off at the studios.
-  Captain> Give me a little while to warm them through, and we'll charge across to Castelia City!
+  Captain> Ha ha! With pleasure! All aboard for Castelia City, the pair of you!
+  > The ship slips out of the harbour and churns across the bay toward the towers of Castelia City...
+  ? Lucas! You're heading to Castelia City too, right? = Yes
+  * scene virbank_city_5.The voyage to Castelia City
+  * fade out
+  * music stop
+  * sound crossing_horn
+  * warp CasteliaCity_PrimePier 12 10
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  = VAR_UNOVA_CASTELIA 0 -> 1
+  + seen virbank_city_5.The voyage to Castelia City
+way 1, from answer 1
+  Barry> Huh? You've still got things to do here? Go and finish them, then.
+  Barry> Even once we're in Castelia, we can always come back to Virbank, you know.
+  ? Lucas! You're heading to Castelia City too, right? = No
 === virbank_city_5.OldWoman
 from Old Woman at 2,6 of VirbankCity_Terminal
 way -

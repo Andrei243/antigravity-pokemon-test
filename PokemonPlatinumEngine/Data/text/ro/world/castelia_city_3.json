@@ -1,0 +1,106 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Clyde"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wanting to get stronger as a Trainer is a fine thing. Some people work with their Pokémon, some just play with them. Both are fine!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody loves their Pokémon more than I do! I only hope my Pokémon know it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've got a whole bag of Potions! With these, the Gym Leader doesn't stand a chance. Probably."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Burgh's Gym is full of honey. Sticky walls everywhere! He says it's art."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "iris": {
+      "name": {
+        "en": [
+          "Iris"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Castelia City Pokémon Gym\nLeader: Burgh, the artist of Bug types"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

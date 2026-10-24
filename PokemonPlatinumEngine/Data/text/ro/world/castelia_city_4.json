@@ -1,0 +1,50 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 4 is just past the gate. The wind out there blows sand right into the city sometimes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "North: Route 4\nSouth: Castelia City Central Plaza"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -259,6 +259,15 @@ public sealed class Bw2World
                     Height = box is { } c ? Round((c.Max.Y - c.Min.Y) / LandData.TileUnits) : 0f
                 };
             }).ToList();
+        // Castelia City's towers, which Black 2 draws into the street's own model with no prop of their own (plan 22 · U5,
+        // part c): a prop of ours for each block of them, as tall as the tallest of its tiles
+        foreach (var (x0, z0, x1, z1, tall) in Bw2Cover.Towers(Maps, folder, overrides?.Keys))
+            file.Props.Add(new ChunkProp
+            {
+                Model = -1, Name = Bw2Cover.TowerProp,
+                X = Round((x0 + x1 + 1) / 2f), Y = 0f, Z = Round((z0 + z1 + 1) / 2f),
+                BoxX = x0, BoxZ = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1, Height = Round(tall)
+            });
         return file;
     }
 

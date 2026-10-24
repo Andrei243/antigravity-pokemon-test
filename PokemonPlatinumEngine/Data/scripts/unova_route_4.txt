@@ -1,0 +1,68 @@
+# Route 4 (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/route_4.s, read for the order alone).
+# VAR_UNOVA_CASTELIA is Castelia's count (castelia_city_10.txt has it whole).
+#
+# Just north of the gate a row of Crustle, taken by everyone for boulders, blocks the road (FLAG_UNOVA_HIDE_CRUSTLE_
+# ROUTE_4). Once Colress has said he would wait here (11), he stops the player before them (our trigger on 427 to 432,
+# 584), wakes them with his machine, battles the player (Black 2's TRAINER_COLRESS), hands over a Protein and goes on
+# north (12). The worker (16) talks of the boulders before and of the Crustle after.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script ColressWaits
+  scene "Colress on Route 4"
+  face 15 player
+  speaker "Colress"
+  say "I've been waiting for you! What's the matter? Curious about what's behind me?"
+  say "Those aren't rocks at all. They're Crustle, carrying their boulders on their backs. Now, observe."
+  say "This machine of mine was made to draw out a Pokémon's energy. Let's see what it does for them!"
+  cry "Crustle"
+  hide 12
+  hide 13
+  hide 14
+  hide 17
+  hide 18
+  hide 19
+  hide 20
+  hide 21
+  hide 22
+  hide 23
+  hide 24
+  setflag FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4
+  say "Those Crustle... Were they lying here all along, too worn out to move, boulders and all?"
+  say "Team Plasma once said that to bring out the potential of Pokémon, people must let them go free. I disagree."
+  say "Science is what will draw out their power. That is what I believe, and why I study."
+  say "Come to think of it, I never asked your name. ...{player}. I'll remember it."
+  say "Now, let me see whether you're a Trainer who can draw out a Pokémon's hidden strength!"
+  battle 15 as "unova_colress"
+  say "I see! Like the Gym Leaders, or the Elite Four and the Champion of the Pokémon League, you bring out your Pokémon's strength by battling at their side."
+  say "Please, take this. Consider it my thanks for the data!"
+  give "Protein"
+  say "How frustrating! If only we could talk with Pokémon, drawing out their power might be simple. But that's hardly science, is it?"
+  say "Until we meet again, {player}!"
+  walk 15 up 3 fast
+  hide 15
+  setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  setvar VAR_UNOVA_CASTELIA 12
+  endscene
+  end
+
+
+script Crustle
+  text "A row of boulders blocks the road. Strength won't shift them... Are they breathing?"
+  end
+
+
+script Worker
+  face 16 player
+  speaker "Worker"
+  if var VAR_UNOVA_CASTELIA >= 12 goto After
+  say "These boulders just turned up all in a line one morning. Strength won't shift them an inch!"
+  end
+label After
+  say "Crustle, all along! If you want to see more of them, they live out in the desert to the north."
+  end

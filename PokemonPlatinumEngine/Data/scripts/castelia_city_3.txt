@@ -1,0 +1,62 @@
+# Castelia City's Gym Street (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/castelia_city_3.s, read for the order alone).
+# VAR_UNOVA_CASTELIA is the city's count (castelia_city_10.txt has it whole).
+#
+# Clyde, the Gym's guide (0), stands at its door: Burgh has gone off after some trouble in the city, and as he says so
+# Iris (iris, ours, FLAG_UNOVA_HIDE_IRIS_GYM_STREET) comes up the street looking for him, hears that the player is
+# after Team Plasma and runs off to help (4). Once the sewers are behind the player and Iris has had her word on Thumb
+# Pier (9), Clyde has gone in (FLAG_UNOVA_HIDE_CLYDE_STREET) and the Gym is open.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script Clyde
+  face 0 player
+  speaker "Clyde"
+  if var VAR_UNOVA_CASTELIA >= 4 goto After
+  scene "Burgh away from his Gym"
+  say "Here to challenge Burgh? I'm sorry, he isn't here. He said there might be trouble somewhere in the city, and off he went!"
+  clearflag FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  place iris 20 58 up
+  show iris
+  speaker "???"
+  say "Huh? Burgh's gone wandering off again?"
+  walk iris up 9
+  face iris right
+  face 0 iris
+  speaker "Clyde"
+  say "Oh! Hello, Iris. Something came up, and Burgh isn't in right now."
+  speaker "Iris"
+  say "Hmm... But isn't Burgh always disappearing? He says he can't think of anything to paint and goes wandering out of his Gym."
+  face iris player
+  say "Hi there! Who are you? ...You're looking for Team Plasma? But Team Plasma broke up two years ago!"
+  say "Oh, never mind that! You've got a problem, so I'll help you look!"
+  face iris up
+  say "Hmm... Now where would shady people go to hide?"
+  face iris player
+  emote iris exclaim
+  say "I've got it! I bet that's where they are!"
+  walk iris down 9 fast
+  hide iris
+  setflag FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  clearflag FLAG_UNOVA_HIDE_IRIS_AVENUE
+  face 0 player
+  speaker "Clyde"
+  say "Good grief... Burgh and Iris are as bad as each other. She ran off toward the avenue, by the look of it."
+  say "Head down to the avenue and go west past the Pokémon Center. You're sure to catch her up."
+  setvar VAR_UNOVA_CASTELIA 4
+  endscene
+  end
+label After
+  say "Iris ran off toward the avenue. Go west past the Pokémon Center and you're sure to catch her up."
+  end
+
+
+script IrisGymStreet
+  face iris player
+  speaker "Iris"
+  say "Where would shady people hide...?"
+  end

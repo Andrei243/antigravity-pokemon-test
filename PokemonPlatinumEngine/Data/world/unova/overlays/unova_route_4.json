@@ -1,0 +1,38 @@
+{
+  // Route 4 (plan 22 · U5, part c): Black 2's sandy road north from Castelia City, opened for Colress's scene by the
+  // gate. A row of Crustle (12 to 14, 17 to 24, FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4) blocks the way north, taken for
+  // boulders, until Colress (15, FLAG_UNOVA_HIDE_COLRESS_ROUTE_4) wakes them with his machine, battles the player and
+  // goes on (unova_route_4.txt). The route's trainers, its houses and works, Join Avenue and the desert beyond are plan
+  // 22 · U6's: only the people listed here stand on it
+  "area": "unova_route_4",
+  "bgmTrack": "unova/route19",
+  "locked": [ 0, 1, 2, 3, 4, 6, 9, 10 ],
+  "triggers": [
+    { "script": "ColressWaits", "x": 427, "z": 584, "width": 6, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 11 }
+  ],
+  "people": {
+    "12": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "13": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "14": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "15": { "name": "Colress", "npcType": "colress", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_ROUTE_4", "dialog": [ "I've been waiting for you!" ] },
+    "16": { "name": "Worker", "npcType": "worker", "script": "Worker", "still": true },
+    "17": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "18": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "19": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "20": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "21": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "22": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "23": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "24": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4" },
+    "31": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "dialog": [ "The sand blows in off the desert up north. Close your eyes, keep walking, and trust your feet!" ]
+    }
+  },
+  "signs": {
+    "1": "Route 4\nNorth: Nimbasa City. South: Castelia City",
+    "2": "Route 4\nRoadworks ahead: mind the sand",
+    "3": "Trainer Tips\nWhen a move runs out of PP it can't be used. That's the time to visit a Pokémon Center!"
+  }
+}

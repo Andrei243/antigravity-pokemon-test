@@ -1,0 +1,154 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here's the way down into the sewers! Pretty suspicious, don't you think? Nobody would ever look down there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Did you find Team Plasma?!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh... Thanks for looking, anyway."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I knew it! Those rotten Pokémon thieves!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then the only place I haven't checked yet is... the sewers! {player}, give me a hand down there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right! The sewers are the perfect place to hide. Go on, catch up with him!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "IrisAfterward": [
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! Your friend came back up looking really cross. Did everything go all right down there?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So what now? You met Burgh in the sewers, didn't you? Then you should go and challenge his Gym. See how strong you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "IrisPier": [
+    {
+      "en": [
+        "Iris"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sewers are the perfect place to hide. Hurry, before your friend runs into trouble on his own!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Burgh's back in his Gym on Gym Street. Go and show him what you can do!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Worker": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sewers? Go on down if you must, but mind the wild Pokémon. Some Trainers go down there on purpose to train!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the tide high, the sewers sometimes flood. It changes with the season, they say."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

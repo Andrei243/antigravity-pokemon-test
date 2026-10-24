@@ -1,0 +1,41 @@
+{
+  // Castelia City's Castelia Street (plan 22 · U5, part c): Black 2's street of towers, our words. Its ends lead onto
+  // Black 2's rails (the plaza's west side, the avenue's mouth), so every tile of each leads where ours lie; its
+  // towers' doors stay shut
+  "area": "castelia_city_6",
+  "bgmTrack": "unova/castelia",
+  "doors": [
+    { "warp": 3, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 14, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 15, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 16, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 17, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 18, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 19, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 20, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 21, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 22, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 23, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 24, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 25, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 26, "map": "CasteliaCity_Plaza", "x": 2, "y": 16, "facing": "Right" },
+    { "warp": 0, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 4, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 5, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 6, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 7, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 8, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 9, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 27, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 28, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 29, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 30, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 31, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 32, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" },
+    { "warp": 33, "map": "CasteliaCity", "x": 17, "y": 1, "facing": "Down" }
+  ],
+  "locked": [ 1, 2, 10, 11, 12, 13 ],
+  "signs": {
+    "1": "Castelia Street\nThe way from the avenue to the plaza"
+  }
+}
