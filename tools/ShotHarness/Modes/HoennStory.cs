@@ -19,6 +19,16 @@ partial class Harness
             for (int i = 0; i < most && !holds(); i++) Frames(1);
             if (!holds()) Console.WriteLine($"  !! never happened: {what}");
         }
+        // Reads on, a line at a time, until something holds (a picker or a question opened past the lines before it)
+        void ReadUntil(Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++)
+            {
+                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
         void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
         void ReadTo(string? text, int most = 2400)
         {
@@ -31,6 +41,13 @@ partial class Harness
                 if (text != null && idle > 90) break;
                 if (text == null && idle > 30) return;
                 if (State() == GameState.Battle) { Win(); continue; }
+                // A phrase asked for again (Gabby and Ty's second interview): the one given last time, kept
+                if (State() == GameState.Phrases && game.Phrases.IsActive)
+                {
+                    Frames(10); game.Phrases.ToDone(); game.Phrases.Confirm(); Frames(4);
+                    if (game.Phrases.IsActive) { game.Phrases.Cancel(); game.Phrases.Cancel(); Frames(4); }
+                    continue;
+                }
                 if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
                 else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
                 else Frames(1);
@@ -47,11 +64,25 @@ partial class Harness
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     if (fight.EnemyPokemon is { } met) met.CurrentHP = Math.Min(met.CurrentHP, 1);
+                    // (In a double battle the lead's partner is a Pokémon of the twenties against Leaders of the forties,
+                    // felled at full HP by one blow: the foes are left only Struggle, as the arcade mode leaves its Star's)
+                    if (fight.IsDouble)
+                        foreach (var foe in (fight.EnemyParty?.Members ?? new List<Pokemon>()).Concat(fight.EnemySlots.Select(s => s.Pokemon)))
+                            if (foe != null) foreach (var move in foe.Moves) move.CurrentPP = 0;
                     var lead = fight.PlayerPokemon;
-                    if (lead != null) lead.CurrentHP = lead.MaxHP;
+                    // (Whoever stands for the player is kept whole, both of a double battle's, and a long chapter's
+                    // battles spend their PP: they are kept able, as the other modes keep theirs)
+                    foreach (var mine in fight.PlayerSlots.Select(s => s.Pokemon).Append(lead))
+                        if (mine != null && !mine.IsFainted)
+                        {
+                            mine.CurrentHP = mine.MaxHP;
+                            foreach (var move in mine.Moves) move.CurrentPP = move.MaxPP;
+                        }
                     fight.SelectMainMenuOption(0);
                     int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
                     fight.SelectMove(hurts);
+                    // (A double battle asks which foe the move is for: Gabby and Ty's)
+                    if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 }
                 else Confirm(fight);
                 Skip(0.5);
@@ -92,6 +123,13 @@ partial class Harness
             var npc = m.NPCs.First(n => n.Key == key);
             var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
             At(map, npc.GridX + dx, npc.GridY + dy, facing);
+            // (Put down, the player stands on the ground: someone spoken to from the water, Steven on Route 120's bridge,
+            // whose deck the import doesn't lay, is spoken to by a surfer)
+            if (m.DeckAt(npc.GridX + dx, npc.GridY + dy) == null && m.IsDeepWater(npc.GridX + dx, npc.GridY + dy))
+            {
+                game.Player.SetMode(TravelMode.Surfing);
+                Frames(2);
+            }
             game.Interact();
         }
         void Left(string what) =>
@@ -630,7 +668,9 @@ partial class Harness
         ReadTo(null);
 
         // Route 120: Steven, the Devon Scope, the Kecleon on the bridge shown and battled, the Scope handed over
-        TalkTo("Hoenn", "route120_steven");
+        // (From the water east of him: the import lays no deck on this bridge, so its planks are water at two heights,
+        // and only the tile east of Steven is level with him)
+        TalkTo("Hoenn", "route120_steven", 1, 0);
         ReadTo("nobody can see"); Frames(10); Shot("hs129_steven_on_route_120");
         ReadTo("This is the Devon Scope"); Frames(10); Shot("hs130_the_devon_scope");
         Box().Advance(); Frames(20); Shot("hs131_the_kecleon_shows_itself");
@@ -729,6 +769,10 @@ partial class Harness
         ChooseFirst();
         ReadTo("learned"); Frames(10); Shot("hs154_sleep_talk_learned");
         ReadTo(null);
+        // (The Slakoth came only to learn: the Swampert leads again, or a level 9 Slakoth leads the battles to come and faints)
+        var strongest = game.Party.Members.First(p => p.Species.Name == "Swampert");
+        game.Party.Members.Remove(strongest);
+        game.Party.Members.Insert(0, strongest);
         Safari("Fortree's second house");
 
         // ---- Plan 21 · H6, part c: Gabby and Ty, Fortree's Wingull and the plank bridges (hs155 to hs167)
@@ -753,7 +797,7 @@ partial class Harness
         ReadTo("We lost! Wow"); Frames(10); Shot("hs159_gabby_beaten");
         ReadTo("who ARE you"); Frames(10); Shot("hs15a_the_interview_asked");
         ReadTo("tell us in two words"); Frames(10);
-        Until(() => State() == GameState.Phrases, "the phrase picker", 300);
+        ReadUntil(() => State() == GameState.Phrases, "the phrase picker", 300);
         var phrasePicker = game.Phrases;
         Frames(15); Shot("hs15b_the_phrase_picker");
         phrasePicker.Confirm(); phrasePicker.Move(1, 0); phrasePicker.Move(0, 1); Frames(4);
@@ -1048,7 +1092,8 @@ partial class Harness
         Titans("in the Seafloor Cavern");
 
         // Shelly among the boulders
-        TalkTo("SeafloorCavern_Room3", "aqua_member_f", -1, 0);
+        // (From behind her: on her west the grunt across the hall sees the player, and his walk up carried into Kyogre's hall)
+        TalkTo("SeafloorCavern_Room3", "aqua_member_f", 1, 0);
         ReadTo("keep anybody who came this far busy"); Frames(10); Shot("hs232_shelly");
         IntoBattle("Shelly's battle");
         ToMainMenu(game.Battle); Win();
@@ -1096,7 +1141,7 @@ partial class Harness
         ComeThrough("CaveOfOrigin_B1F", 9, 15, Direction.Up); Frames(20);
         TalkTo("CaveOfOrigin_B1F", "cave_of_origin_wallace");
         ReadTo("My name is Wallace"); Frames(10); Shot("hs248_wallace");
-        Until(() => engine.Choice.IsOpen, "Wallace's question"); Frames(20); Shot("hs249_where_is_rayquaza");
+        ReadUntil(() => engine.Choice.IsOpen, "Wallace's question"); Frames(20); Shot("hs249_where_is_rayquaza");
         ReadTo(null); Frames(20); Shot("hs24a_wallace_gone");
         Titans("Wallace gone to Sky Pillar");
 
