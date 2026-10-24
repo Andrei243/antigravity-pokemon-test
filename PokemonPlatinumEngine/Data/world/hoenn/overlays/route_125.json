@@ -1,7 +1,8 @@
 {
   // Route 125 (plan 21 · H8, part a): the sea north of Mossdeep City, with Shoal Cave on its islet in the north-east,
-  // whose tide comes and goes (part b; its way in is locked until then). Its dark water goes down to its own sea floor,
-  // which joins no other. The sailor Ernest swaps numbers for the PokéNav once beaten (route_125.txt)
+  // whose tide comes and goes (part b; its way in is locked until then). It has no dark water until the post-game's
+  // Marine Cave (plan 21 · H12), whose sea floor is its. The sailor Ernest swaps numbers for the PokéNav once beaten
+  // (route_125.txt)
   "area": "route_125",
   "bgmTrack": "hoenn/route120",
   "trees": "Round",

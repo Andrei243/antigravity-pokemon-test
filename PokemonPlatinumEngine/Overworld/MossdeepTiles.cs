@@ -100,4 +100,24 @@ public sealed class MossdeepTiles : GymPuzzle
 
     // Nothing closes or opens: the statues and the trainers are the walls that move
     public override void Apply(Map map, StoryState story) { }
+
+    // Where each one moved stood and faced as the room was come into: the trainers and the statues keep still, so the
+    // field's own laying out of those who wander doesn't put them back
+    private readonly Dictionary<NPC, (int X, int Y, Direction Facing)> homes = new();
+
+    /// <summary>Notes where someone stands before a switch first moves them, to put them back as the room is come into.</summary>
+    public void Remember(NPC who) => homes.TryAdd(who, (who.GridX, who.GridY, who.Facing));
+
+    /// <summary>The room is come into: everyone a switch moved stands and faces as at first, as Emerald reads its objects afresh.</summary>
+    public override void Arrive(Map map, StoryState story, Random rng)
+    {
+        foreach (var (who, (x, y, facing)) in homes)
+        {
+            who.GridX = x;
+            who.GridY = y;
+            who.Facing = facing;
+            who.StepOffsetX = who.StepOffsetY = 0f;
+        }
+        homes.Clear();
+    }
 }

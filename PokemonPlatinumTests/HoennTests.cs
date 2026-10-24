@@ -126,10 +126,8 @@ public class HoennTests
             for (int x = 0; x < Overworld.Width; x++)
             {
                 if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below) continue;
-                // (Route 125's floor joins no other and is a map of its own since plan 21 · H8)
-                Assert.Contains(below, new[] { "HoennUnderwater", "HoennUnderwaterRoute125" });
-                var under = BuiltMaps.Value[below];
-                Assert.True(under.InBounds(x, y) && !under.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
+                Assert.Equal("HoennUnderwater", below);
+                Assert.True(floor.InBounds(x, y) && !floor.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
                 down++;
             }
         for (int y = 0; y < floor.Height; y++)
@@ -480,7 +478,7 @@ public class HoennTests
     {
         foreach (string key in new[] { "route_125", "route_126", "route_127", "mossdeep_city", "mossdeep_city_gym",
                      "mossdeep_city_space_center_1f", "mossdeep_city_space_center_2f", "mossdeep_city_stevens_house",
-                     "route_124_diving_treasure_hunters_house", "underwater_route_125", "underwater_route_126", "underwater_route_127" })
+                     "route_124_diving_treasure_hunters_house", "underwater_route_126", "underwater_route_127" })
             Assert.Contains(key, Hoenn.Index.Areas);
         var mossdeep = SpawnLocations.Of(RegionDatabase.Get(RegionDatabase.Hoenn)!).Single(s => s.Area == "mossdeep_city");
         Assert.Equal("MossdeepCity_PokemonCenter_1F", mossdeep.Room);
@@ -498,9 +496,10 @@ public class HoennTests
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "Route124_DivingTreasureHuntersHouse" && !w.Shut);
         // The Space Center's two floors are joined by their stairs
         Assert.Contains(BuiltMaps.Value["MossdeepCity_SpaceCenter_1F"].Warps, w => w.TargetMap == "MossdeepCity_SpaceCenter_2F");
-        // Route 125's floor is a map of its own, laid under its route
-        var floor125 = BuiltMaps.Value["HoennUnderwaterRoute125"];
-        Assert.True(floor125.IsUnderwater);
+        // Route 125 has no dark water until the post-game's Marine Cave (Emerald's abnormal weather lays it), so its sea
+        // floor is the post-game's too
+        Assert.False(BuiltMaps.Value.ContainsKey("HoennUnderwaterRoute125"));
+        Assert.DoesNotContain("underwater_route_125", Hoenn.Index.Areas);
         // Mossdeep's open metatiles are its sandy paths, and Emerald's shallows are water to look at
         var emerald = MapImporter.Gba.GbaGame.Emerald;
         Assert.Equal(TerrainCover.Path, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Mossdeep", 0x2F0, emerald));

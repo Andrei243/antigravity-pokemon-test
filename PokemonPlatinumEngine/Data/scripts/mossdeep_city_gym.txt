@@ -49,6 +49,7 @@ script TateAndLiza
   setflag FLAG_DEFEATED_MOSSDEEP_GYM
   setflag FLAG_HIDE_AQUA_HIDEOUT_GRUNTS
   clearflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
+  clearflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
   defeat "hoenn_preston"
   defeat "hoenn_blake"
   defeat "hoenn_maura"

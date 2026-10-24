@@ -763,9 +763,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     patrons back after Mossdeep's Gym (H8).
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
   to Dive; tests and shots written, not run; what is left is listed under "Left for part b")
-  - **Opened** (19 areas, 231 in all): Routes 125, 126 and 127 above water and the sea floors under them
-    (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, which joins no other, a map of its own,
-    `HoennUnderwaterRoute125`, matrix 5), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
+  - **Opened** (18 areas, 230 in all): Routes 125, 126 and 127 above water and the sea floors under them
+    (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, matrix 5, is the post-game's: Route 125 has no dark
+    water until Emerald's abnormal weather lays it for the Marine Cave, plan 21 · H12), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
     metatiles sandy paths in `GbaCover.HoennRanges`) with its Gym, Pokémon Center on both floors, Mart (Emerald's stock,
     marts.json's `mossdeep`), Steven's house, the Space Center's two floors and four houses, and the treasure hunter's
     house on Route 124 (its `locked` taken off). A spawn for Mossdeep (9). Shut: Mossdeep's Game Corner (Emerald's room
@@ -797,7 +797,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     `hoenn/rustboro` and the eastern sea `hoenn/route120`, as Emerald's do.
   - **Tests** (written, not run): `HoennTests` (`MossdeepCityIsOpenWithItsFlySpotItsGymAndItsRooms`,
     `TheTwinsAndStevensTeamOfTheSpaceCenterAreEmeralds`, `TheMossdeepGymsSwitchesTurnWhoeverStandsOnTheirArrows`, and
-    `TheSeaFloorLiesTileForTileUnderTheSeaItIsDivedTo` taking Route 125's floor); `HoennStoryTests`
+    `TheSeaFloorLiesTileForTileUnderTheSeaItIsDivedTo`); `HoennStoryTests`
     (`TheTwinsBattleTogetherForTheMindBadgeAndTeamMagmaComesForTheFuel`,
     `TheGymsSwitchesMoveThePeopleOnTheirArrowsUntilTheRoomIsComeToAgain`,
     `StevenAndThePlayerBeatMaxieAndTabithaAndStevenGivesDiveAtHome`, `TheThreeGruntsSendAPlayerWhoSaysNoBackDownstairs`,
@@ -815,6 +815,11 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     ground floor and its stairs, the three grunts, Maxie's plan, the battle beside Steven, Maxie's doubt, Steven's thanks,
     HM09 given at home, the Wingull flying home and the Mental Herb, the treasure hunter). `HoennSeaShots` keeps its
     diver on Route 124's own dark water.
+  - **Fixed after the merge** (wave 43): the Gym's script had left out clearing Mr. Briney's shipyard flag (Emerald clears
+    it); the people a switch moves stand still and are not laid out again by the field, so `MossdeepTiles` notes where
+    each stood and puts them back as the room is come into (`Remember`, `Arrive`; the test game's arrival now lays out a
+    room's puzzle as `GameEngine.ArrivePuzzle` does); and Route 125's sea floor was taken off again, since Route 125 has
+    no dark water before the post-game and nobody could reach it.
   - **Left for part b**: Shoal Cave and its tide (two layouts by the hour through a new command behind the warp's fade,
     as the plan says; its Shoal Salt and Shells and the Shell Bell), Route 128 and its sea floor, the Seafloor Cavern by
     Dive (its guard, `FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT`, already set by Steven's gift) and Kyogre's waking,
