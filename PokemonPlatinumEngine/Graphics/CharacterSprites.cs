@@ -354,7 +354,8 @@ internal static class CharacterSprites
     /// rlgl and the default shader inside the scene pass, as the blob shadows are; given the field's camera, each
     /// corner on raised ground is moved where the scenery's shader puts the ground (<see cref="WorldRenderer.Straighten"/>).
     /// </summary>
-    public static void DrawReflection(CharacterRig rig, CharacterPose pose, float yaw, Vector3 feet, float pitchDeg, float reach, Camera3D? straight)
+    /// <param name="tint">The reflection's colour and its strength at the feet: a puddle's or a polished floor's (<see cref="Reflections.TintOf"/>).</param>
+    public static void DrawReflection(CharacterRig rig, CharacterPose pose, float yaw, Vector3 feet, float pitchDeg, float reach, Camera3D? straight, Reflections.Tint tint)
     {
         if (!Cache.TryGetValue(KeyOf(rig, pose, yaw), out var baked)) return;
         float sin = MathF.Sin(pitchDeg * MathF.PI / 180f);
@@ -368,18 +369,18 @@ internal static class CharacterSprites
         float x0 = WorldRenderer.SnapToTexel(feet.X) - FrameW / 2f, x1 = x0 + FrameW;
         float z0 = WorldRenderer.SnapToTexel(feet.Z), z1 = z0 + MathF.Round(shown * TexelsPerUnit) / TexelsPerUnit;
         float y = feet.Y + 0.012f;
-        byte near = 115, far = (byte)(near * Math.Clamp(1f - shown / length, 0f, 1f));
+        byte near = tint.Near, far = (byte)(near * Math.Clamp(1f - shown / length, 0f, 1f));
 
         float X(float x, float z) => straight is { } cam && feet.Y != 0f ? WorldRenderer.Straighten(cam, pitchDeg, x, y, z) : x;
         Rlgl.CheckRenderBatchLimit(4);
         Rlgl.SetTexture(baked.Texture.Id);
         Rlgl.Begin(DrawMode.Quads);
-        Rlgl.Color4ub(150, 170, 196, near);
+        Rlgl.Color4ub(tint.R, tint.G, tint.B, near);
         Rlgl.TexCoord2f(0, footV); Rlgl.Vertex3f(X(x0, z0), y, z0);
-        Rlgl.Color4ub(150, 170, 196, far);
+        Rlgl.Color4ub(tint.R, tint.G, tint.B, far);
         Rlgl.TexCoord2f(0, endV); Rlgl.Vertex3f(X(x0, z1), y, z1);
         Rlgl.TexCoord2f(1, endV); Rlgl.Vertex3f(X(x1, z1), y, z1);
-        Rlgl.Color4ub(150, 170, 196, near);
+        Rlgl.Color4ub(tint.R, tint.G, tint.B, near);
         Rlgl.TexCoord2f(1, footV); Rlgl.Vertex3f(X(x1, z0), y, z0);
         Rlgl.End();
         FrameProfiler.Count(2);

@@ -15,6 +15,8 @@ public enum FrameSection
     Prepare,
     /// <summary>The shadow map, from the sun.</summary>
     Shadows,
+    /// <summary>What stands by the water, mirrored about its plane into a target of its own (plan 09 · L10).</summary>
+    Reflections,
     /// <summary>The 3D scene into its target.</summary>
     Scene,
     /// <summary>The blurred copy of the scene that depth of field reads.</summary>

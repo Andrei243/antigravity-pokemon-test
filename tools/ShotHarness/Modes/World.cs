@@ -113,6 +113,26 @@ partial class Harness
             Frames(2);
         }
 
+        // Lake Verity's water mirroring the player and the trees of its shore (plan 09 · L10), by day and after dark;
+        // after everything above, so none of their shots moves (wd6_route212_puddles is the puddles' as it was)
+        {
+            void Mirror(string name)
+            {
+                var plane = game.World.Mirrored;
+                Console.WriteLine($"  {name}: {(plane is { } p ? $"the water mirrors at {p:F2}" : "nothing mirrored in the water")}");
+            }
+            At("LakeVerity", 44, 46, Direction.Up); Frames(2); Shot("wk0_lake_verity_mirror"); Mirror("wk0");
+            ShotCrop("wk0b_lake_verity_mirror_native", 640, 200, 640, 360, 2);
+            At("LakeVerity", 51, 40, Direction.Left); Frames(2); Shot("wk1_lake_verity_east_mirror"); Mirror("wk1");
+            engine.Settings.TimeOfDay = TimeOfDay.Night;
+            engine.ApplySettings(window: false);
+            At("LakeVerity", 44, 46, Direction.Up); Frames(2); Shot("wk2_lake_verity_mirror_night"); Mirror("wk2");
+            ShotCrop("wk2b_lake_verity_mirror_night_native", 640, 200, 640, 360, 2);
+            engine.Settings.TimeOfDay = TimeOfDay.Day;
+            engine.ApplySettings(window: false);
+            Frames(2);
+        }
+
         if (args.Length > 2)
             Boards(args[2], new[] { "w01_twinleaf", "w02_twinleaf_home", "w06_route201_grass", "w08_sandgem", "w09_sandgem_lab", "w13_route202", "w14_route202_north", "w16_lake", "w20_twinleaf_night" });
 
