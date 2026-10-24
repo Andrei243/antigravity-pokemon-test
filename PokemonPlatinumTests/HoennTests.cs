@@ -16,8 +16,23 @@ public class HoennTests
     // Maps of this class's own, so nothing another test does to the database's maps shows here. Read only.
     private static readonly Lazy<World> LoadedWorld = new(() => World.LoadAll().Single(w => w.Index.Region == "Hoenn"));
     private static readonly Lazy<Dictionary<string, Map>> BuiltMaps = new(() => LoadedWorld.Value.BuildMaps().ToDictionary(m => m.Name));
-    private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked =
-        new(() => WorldWalk.From(MapNamed, WorldWalk.OpenedAhead.Where(s => s.Map == "Hoenn").Prepend(RegionDatabase.Get(RegionDatabase.Hoenn)!.Start!).ToArray()));
+    private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked = new(() =>
+    {
+        var starts = WorldWalk.OpenedAhead.Where(s => s.Map == "Hoenn").Prepend(RegionDatabase.Get(RegionDatabase.Hoenn)!.Start!).ToArray();
+        var walked = WorldWalk.From(MapNamed, starts);
+        // Shoal Cave's tide comes and goes (plan 21 · H8, part d): some of its rooms are reached only by surfing at high
+        // tide, and the ice room below only on foot at low tide. The walk is made again on maps of its own with the high
+        // tide's chunks laid, and what it reaches is added to the low tide's, map by map
+        var flooded = LoadedWorld.Value.BuildMaps().ToDictionary(m => m.Name);
+        foreach (var map in flooded.Values) map.ApplySwappedPlaces(_ => 0, f => f == ShoalTide.Flag);
+        foreach (var (map, tiles) in WorldWalk.From(name => flooded.TryGetValue(name, out var m) ? m : MapDatabase.Get(name), starts))
+        {
+            var same = BuiltMaps.Value.TryGetValue(map.Name, out var built) ? built : map;
+            if (walked.TryGetValue(same, out var had)) had.UnionWith(tiles);
+            else walked[same] = tiles;
+        }
+        return walked;
+    });
 
     private static World Hoenn => LoadedWorld.Value;
     private static Map Overworld => BuiltMaps.Value["Hoenn"];
@@ -490,10 +505,9 @@ public class HoennTests
         // The eastern sea plays Route 120's song, Route 124's too now that it is written
         Assert.Equal("hoenn/route120", Overworld.BgmTrackAt(647, 91));
         Assert.Equal("route_125", Overworld.AreaAt(647, 91)?.Key);
-        // The Game Corner (Emerald's room of link games) and Shoal Cave (part b) stay shut; the treasure hunter's house
-        // on Route 124 is open
+        // The Game Corner (Emerald's room of link games) stays shut (Shoal Cave opened with plan 21 · H8, part d); the
+        // treasure hunter's house on Route 124 is open
         Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == "MossdeepCity_GameCorner_1F" && !w.Shut);
-        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("ShoalCave", StringComparison.Ordinal) && !w.Shut);
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "Route124_DivingTreasureHuntersHouse" && !w.Shut);
         // The Space Center's two floors are joined by their stairs
         Assert.Contains(BuiltMaps.Value["MossdeepCity_SpaceCenter_1F"].Warps, w => w.TargetMap == "MossdeepCity_SpaceCenter_2F");
@@ -661,6 +675,55 @@ public class HoennTests
         Assert.Equal("SootopolisCity", spawn.Map);
         Assert.False(BuiltMaps.Value["SootopolisCity"].IsSolid(spawn.X, spawn.Y));
         Assert.Contains(RegionMap.Of(RegionDatabase.Hoenn)!.FlySpots, f => f.Spawn == spawn.Id);
+    }
+
+    [Fact]
+    public void ShoalCaveAndTheRoutesOfCurrentsBackToSlateportAreOpen()
+    {
+        // Plan 21 · H8, part d: Shoal Cave's five rooms and Routes 132 to 134
+        foreach (string key in new[] { "shoal_cave_low_tide_entrance_room", "shoal_cave_low_tide_inner_room", "shoal_cave_low_tide_stairs_room",
+                     "shoal_cave_low_tide_lower_room", "shoal_cave_low_tide_ice_room", "route_132", "route_133", "route_134" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var hoenn = RegionDatabase.Get(RegionDatabase.Hoenn)!;
+        foreach (string map in new[] { "ShoalCave_LowTideEntranceRoom", "ShoalCave_LowTideInnerRoom", "ShoalCave_LowTideStairsRoom",
+                     "ShoalCave_LowTideLowerRoom", "ShoalCave_LowTideIceRoom" })
+            Assert.Contains(map, hoenn.Maps);
+        // Route 125's islet leads into the cave, no longer locked; the lower room leads down to the ice
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "ShoalCave_LowTideEntranceRoom" && !w.Shut);
+        Assert.Contains(BuiltMaps.Value["ShoalCave_LowTideLowerRoom"].Warps, w => w.TargetMap == "ShoalCave_LowTideIceRoom");
+        Assert.Equal("hoenn/mt_pyre", BuiltMaps.Value["ShoalCave_LowTideEntranceRoom"].BgmTrackAt(20, 29));
+        // The salt and the shells are read where Emerald has them
+        Assert.Equal("ShoalShell1", BuiltMaps.Value["ShoalCave_LowTideInnerRoom"].TileScripts[(41, 20)]);
+        Assert.Equal("ShoalSalt4", BuiltMaps.Value["ShoalCave_LowTideLowerRoom"].TileScripts[(18, 2)]);
+        // Emerald's currents run through the three routes
+        int currents = 0;
+        for (int x = 250; x < 470; x++)
+            for (int y = 255; y < 300; y++)
+                if (Overworld.AreaAt(x, y)?.Key is "route_132" or "route_133" or "route_134"
+                    && Overworld.BehaviourAt(x, y) is TileBehavior.CurrentWest or TileBehavior.CurrentEast or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth)
+                    currents++;
+        Assert.True(currents > 100, $"only {currents} tiles of current on Routes 132 to 134");
+    }
+
+    [Fact]
+    public void ShoalCavesTwoUpperRoomsLieUnderTheTideWhileItsFlagIsSet()
+    {
+        // Emerald lays the high tide's layouts over the entrance and inner rooms (setmaplayoutindex): the reader writes
+        // their chunks and world.json swaps them in by FLAG_SYS_SHOAL_TIDE
+        foreach (string name in new[] { "ShoalCave_LowTideEntranceRoom", "ShoalCave_LowTideInnerRoom" })
+        {
+            var map = LoadedWorld.Value.BuildMaps().Single(m => m.Name == name);
+            int Water() => Enumerable.Range(0, map.Width).SelectMany(x => Enumerable.Range(0, map.Height).Select(y => map.BehaviourAt(x, y)))
+                .Count(TileBehaviors.IsSurfable);
+            var place = Assert.Single(map.SwappedPlaces);
+            Assert.Equal(ShoalTide.Flag, place.Flag);
+            int low = Water();
+            Assert.Empty(map.ApplySwappedPlaces(_ => 0, _ => false));
+            Assert.Single(map.ApplySwappedPlaces(_ => 0, f => f == ShoalTide.Flag));
+            Assert.True(Water() > low, $"{name} has no more water at high tide ({low})");
+            // The way in from Route 125 stays dry at high tide
+            if (name == "ShoalCave_LowTideEntranceRoom") Assert.False(map.IsSolid(20, 29));
+        }
     }
 
     [Fact]

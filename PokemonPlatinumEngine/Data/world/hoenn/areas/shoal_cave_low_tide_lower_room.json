@@ -1,0 +1,47 @@
+{
+  "key": "shoal_cave_low_tide_lower_room",
+  "index": 287,
+  "name": "Shoal Cave",
+  "matrix": 236,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "shoal_cave_low_tide_lower_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 26 },
+    { "species": "Spheal", "level": 26 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Spheal", "level": 28 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Spheal", "level": 30 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 7, "z": 2, "to": "shoal_cave_low_tide_inner_room", "toWarp": 3 },
+    { "x": 2, "z": 6, "to": "shoal_cave_low_tide_inner_room", "toWarp": 4 },
+    { "x": 19, "z": 11, "to": "shoal_cave_low_tide_inner_room", "toWarp": 5 },
+    { "x": 28, "z": 11, "to": "shoal_cave_low_tide_ice_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 25, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_StrengthBoulder" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "wander_around", "x": 11, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ShoalCave_LowTideLowerRoom_EventScript_BlackBelt" }
+  ],
+  "signs": [
+    { "x": 18, "z": 2, "type": 0, "script": "ShoalCave_LowTideLowerRoom_EventScript_ShoalSalt4" }
+  ],
+  "triggers": []
+}

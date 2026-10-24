@@ -1,0 +1,19 @@
+{
+  // Route 134 (plan 21 · H8, part d): the last of the routes of currents, which carry a surfer west to Slateport City's
+  // eastern shore. Its dark water and the Sealed Chamber under it are the post-game's (plan 21 · H12): the area names
+  // no floor to dive to
+  "area": "route_134",
+  "bgmTrack": "hoenn/route119",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Jack", "trainer": { "dialogueBefore": "Swimmer Jack: The current here runs all the way to Slateport. Battle me before it sweeps you off!", "dialogueAfter": "Swimmer Jack: Off you go, then. Slateport's that way." } },
+    "swimmer_f": { "name": "Laurel", "trainer": { "dialogueBefore": "Swimmer Laurel: There's something strange down in the dark water here. Old ruins, people say.", "dialogueAfter": "Swimmer Laurel: I'd love to dive and see them one day." } },
+    "man_3": { "name": "Aaron", "trainer": { "dialogueBefore": "Dragon Tamer Aaron: Dragons fear nothing, not even the sea! Face my team!", "dialogueAfter": "Dragon Tamer Aaron: Maybe dragons fear you." } },
+    "man_5": { "name": "Alex", "trainer": { "dialogueBefore": "Bird Keeper Alex: From up high my birds spot every trainer on the waves. They spotted you!", "dialogueAfter": "Bird Keeper Alex: They should have looked the other way." } },
+    "black_belt": { "name": "Hitoshi", "trainer": { "dialogueBefore": "Black Belt Hitoshi: Reyna and I train together on this rock. One at a time, if you please!", "dialogueAfter": "Black Belt Hitoshi: Your turn, Reyna. Good luck." } },
+    "woman_5": { "name": "Marley", "trainer": { "dialogueBefore": "Cooltrainer Marley: Aaron's dragons are tough, but my team's tougher. Want to find out?", "dialogueAfter": "Cooltrainer Marley: Don't tell Aaron about this." } },
+    "sailor": { "name": "Kelvin", "trainer": { "dialogueBefore": "Sailor Kelvin: Ahoy! I can see Slateport's harbour from here. One battle, then home!", "dialogueAfter": "Sailor Kelvin: Home it is. Without a win." } },
+    "girl_3": { "name": "Reyna", "trainer": { "dialogueBefore": "Battle Girl Reyna: Hitoshi taught me everything I know. Now let me show you!", "dialogueAfter": "Battle Girl Reyna: I've got more to learn, it seems." } },
+    "sailor_2": { "name": "Hudson", "trainer": { "dialogueBefore": "Sailor Hudson: I've sailed every current of this sea. Let's see if you can ride this one!", "dialogueAfter": "Sailor Hudson: You rode it like an old sea dog." } }
+  }
+}

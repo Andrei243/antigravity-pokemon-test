@@ -1,0 +1,14 @@
+{
+  // Shoal Cave's lower room (plan 21 · H8, part d), come to only at low tide: a Strength boulder, a pile of Shoal Salt
+  // found once a day, the way on to the ice room, and a Black Belt who gives the Focus Band once
+  // (shoal_cave_low_tide_lower_room.txt)
+  "area": "shoal_cave_low_tide_lower_room",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "people": {
+    "black_belt": { "name": "Black Belt", "script": "BlackBelt" }
+  },
+  "read": {
+    "ShoalCave_LowTideLowerRoom_EventScript_ShoalSalt4": "ShoalSalt4"
+  }
+}

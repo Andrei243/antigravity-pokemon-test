@@ -164,6 +164,9 @@ public static class MoveTutors
         // The black belt of Mossdeep City (Emerald's MossdeepCity_EventScript_DynamicPunchTutor; plan 21 · H8): Dynamic
         // Punch is no machine of Platinum's, and its nearest kin among them is Focus Punch (TM01), the other slow fist
         ["Dynamic Punch"] = "Focus Punch",
+        // The man in Pacifidlog Town's Pokémon Center (Emerald's PacifidlogTown_PokemonCenter_1F_EventScript_
+        // ExplosionTutor; plan 21 · H8, part d), whose move is TM64's
+        ["Explosion"] = "Explosion",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

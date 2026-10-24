@@ -375,6 +375,8 @@ public sealed partial class ScriptRunner
         Op.BugContest => i.Name == "results",
         // A course of the Pokéathlon is the player's to run; the rest only asks (plan 15 · E6)
         Op.Athlon => i.Name == "open",
+        // The tide is only a flag (plan 21 · H8, part d)
+        Op.Tide => false,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -933,6 +935,15 @@ public sealed partial class ScriptRunner
                         host.Open(ScriptScreen.Athlon, Subject);
                         afterBusy = () => Result = host.Answer;
                         break;
+                }
+                break;
+            // Shoal Cave's tide (plan 21 · H8, part d; Emerald's UpdateShoalTideFlag): read by the hour only when the
+            // player has come in from outdoors, so it never turns under them inside the cave
+            case Op.Tide:
+                if (host.CameInFromOutdoors)
+                {
+                    if (ShoalTide.HighAt(host.Hour)) host.Story.Set(ShoalTide.Flag);
+                    else host.Story.Unset(ShoalTide.Flag);
                 }
                 break;
             case Op.ChoosePokemon:

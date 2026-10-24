@@ -44,7 +44,13 @@ public static class NpcTrades
         // is the one above. Emerald's Plusle holds Wood Mail, which the item table hasn't got: it holds Grass Mail
         new NpcTrade("pluses", "Volbeat", "Plusle", "Pluses", "Roman", 73996, PlayerLook.Boy, 0x6F, "Grass Mail",
             new[] { 4, 4, 4, 5, 5, 4 }, Nature.Hasty, "Plus", Gender.Female,
-            Conditions: new[] { 5, 5, 30, 5, 5 }, Sheen: 10)
+            Conditions: new[] { 5, 5, 30, 5, 5 }, Sheen: 10),
+        // Emerald's INGAME_TRADE_HORSEA (plan 21 · H8, part d): the man of Pacifidlog Town's third house wants a Bagon.
+        // Its personality 0x7F gives a Brave male with its first ability. Emerald's Horsea holds Wave Mail, which the
+        // item table hasn't got: it holds Bubble Mail, the sea's
+        new NpcTrade("seasor", "Bagon", "Horsea", "Seasor", "Skylar", 46285, PlayerLook.Boy, 0x7F, "Bubble Mail",
+            new[] { 5, 4, 4, 4, 5, 4 }, Nature.Brave, "Swift Swim", Gender.Male,
+            Conditions: new[] { 5, 5, 5, 5, 30 }, Sheen: 10)
     };
 
     public static NpcTrade? Get(string id) => All.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase));

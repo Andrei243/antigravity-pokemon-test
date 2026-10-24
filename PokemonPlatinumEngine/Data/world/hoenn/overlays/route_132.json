@@ -1,0 +1,17 @@
+{
+  // Route 132 (plan 21 · H8, part d): the sea west of Pacifidlog Town, where Emerald's strong currents carry a surfer
+  // west toward Route 133 (its CurrentWest tiles), past a reef of rocks with trainers standing on them
+  "area": "route_132",
+  "bgmTrack": "hoenn/route119",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Gilbert", "trainer": { "dialogueBefore": "Swimmer Gilbert: Fighting the current all day builds muscle! Let me show you how strong I've got!", "dialogueAfter": "Swimmer Gilbert: The current won that one. And so did you." } },
+    "swimmer_f": { "name": "Dana", "trainer": { "dialogueBefore": "Swimmer Dana: Once the current has you, there's no turning back. Same goes for this battle!", "dialogueAfter": "Swimmer Dana: I'll let it carry me home." } },
+    "black_belt": { "name": "Kiyo", "trainer": { "dialogueBefore": "Black Belt Kiyo: I train on this rock where the waves break hardest. Come, test yourself!", "dialogueAfter": "Black Belt Kiyo: The waves never knocked me down like that." } },
+    "fisherman": { "name": "Ronald", "trainer": { "dialogueBefore": "Fisherman Ronald: The fish out here fight the current too, so they're tough. Want to see?", "dialogueAfter": "Fisherman Ronald: Reeled in and thrown back." } },
+    "expert_m": { "name": "Paxton", "trainer": { "dialogueBefore": "Expert Paxton: I've swum these seas since before you were born. Let an old hand teach you something!", "dialogueAfter": "Expert Paxton: Ha! You taught me something instead." } },
+    "woman_5": { "name": "Darcy", "trainer": { "dialogueBefore": "Cooltrainer Darcy: I came all this way to train where nobody bothers me. Until now.", "dialogueAfter": "Cooltrainer Darcy: Fine. Bother me again some time." } },
+    "expert_f": { "name": "Makayla", "trainer": { "dialogueBefore": "Expert Makayla: The sea teaches patience. Battles teach the rest. Shall we?", "dialogueAfter": "Expert Makayla: I'll be patient about this loss." } },
+    "man_3": { "name": "Jonathan", "trainer": { "dialogueBefore": "Cooltrainer Jonathan: Only the best trainers make it this far out. Prove you're one of them!", "dialogueAfter": "Cooltrainer Jonathan: Proved. Thoroughly." } }
+  }
+}

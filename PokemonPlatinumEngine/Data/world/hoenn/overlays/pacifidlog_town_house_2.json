@@ -1,12 +1,13 @@
 {
   // A house of Pacifidlog Town (plan 21 · H8, part c): the younger brother of the Pokémon Fan Club's chairman and his two
-  // Azurill. Emerald's daily TM for a Pokémon that loves its trainer (Return) or doesn't (Frustration) waits for a way to
-  // read the lead's friendship from a script; he talks about it for now
+  // Azurill. He reads how fond of the player the first of the team is (LEAD_FRIENDSHIP) and gives TM27 Return for a
+  // loving one, TM21 Frustration for a cold one and nothing between, once a day (plan 21 · H8, part d:
+  // pacifidlog_town_house_2.txt; Emerald gives it once a week)
   "area": "pacifidlog_town_house_2",
   "bgmTrack": "hoenn/lilycove",
   "people": {
-    "gentleman": { "name": "Gentleman", "dialog": [ "My big brother runs the Pokémon Fan Club. I can tell at a glance how much a Pokémon loves its trainer." ] },
-    "azurill": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "dialog": [ "Azurill: Rii! Riiri!" ] },
-    "azurill_2": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "dialog": [ "Azurill: ...Rii." ] }
+    "gentleman": { "name": "Gentleman", "script": "FanClubYoungerBrother" },
+    "azurill": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "script": "HappyAzurill" },
+    "azurill_2": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "still": true, "script": "UnhappyAzurill" }
   }
 }

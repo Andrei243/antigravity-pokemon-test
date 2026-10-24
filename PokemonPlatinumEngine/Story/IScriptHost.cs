@@ -439,6 +439,15 @@ public interface IScriptHost
     /// <summary>The day of the week today (<see cref="GameClock.Today"/>).</summary>
     System.DayOfWeek Weekday { get; }
 
+    /// <summary>The hour of the day now, 0 to 23 (<see cref="GameClock.Hour"/>): what Shoal Cave's <c>tide</c> reads (plan 21 · H8, part d).</summary>
+    int Hour { get; }
+
+    /// <summary>
+    /// Whether the player has just come to this place from outdoors (Emerald's <c>IsMapTypeOutdoors(GetLastUsedWarpMapType())</c>):
+    /// only then does <c>tide</c> read the hour (plan 21 · H8, part d).
+    /// </summary>
+    bool CameInFromOutdoors { get; }
+
     /// <summary>Every Pokémon in the PC's boxes, box by box and place by place (the lottery's draw reads them).</summary>
     IEnumerable<Pokemon> Boxed { get; }
 

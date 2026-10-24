@@ -645,6 +645,9 @@ public static class RegionDatabase
                 "PacifidlogTown_House2", "PacifidlogTown_House3", "PacifidlogTown_House4", "PacifidlogTown_House5",
                 "SkyPillar_Outside", "SkyPillar_Entrance", "SkyPillar_1F", "SkyPillar_2F", "SkyPillar_3F", "SkyPillar_4F",
                 "SkyPillar_5F", "SkyPillar_Top",
+                // Plan 21 · H8, part d: Shoal Cave and its tide
+                "ShoalCave_LowTideEntranceRoom", "ShoalCave_LowTideInnerRoom", "ShoalCave_LowTideStairsRoom",
+                "ShoalCave_LowTideLowerRoom", "ShoalCave_LowTideIceRoom",
             }
         },
         new()

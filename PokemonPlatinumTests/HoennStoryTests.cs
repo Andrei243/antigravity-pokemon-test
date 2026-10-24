@@ -2817,4 +2817,153 @@ public class HoennStoryTests
         Assert.Null(game.Present("sootopolis_maniac"));
         Assert.NotNull(game.Present("man_1"));
     }
+
+    // ------------------------------------------------------------------ plan 21 · H8, part d: Shoal Cave and Pacifidlog
+
+    /// <summary>Shoal Cave's entrance room's <c>OnTransition</c>, as the game runs it behind the warp's fade: a host that shows nothing.</summary>
+    private static void ComeIntoShoalCave(Game game, int hour, bool fromOutdoors)
+    {
+        var host = new HeadlessScriptHost(game.Story) { ShowsNothing = true, Hour = hour, CameInFromOutdoors = fromOutdoors };
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find(ScriptLibrary.OnTransition, "shoal_cave_low_tide_entrance_room")!);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+    }
+
+    [Fact]
+    public void ShoalCavesTideIsReadByTheHourOnlyAsThePlayerComesInFromOutdoors()
+    {
+        // Emerald's table: high from midnight to three, nine to three and nine to midnight
+        foreach (int hour in Enumerable.Range(0, 24))
+            Assert.Equal(hour is < 3 or (>= 9 and < 15) or >= 21, ShoalTide.HighAt(hour));
+
+        var game = new Game();
+        ComeIntoShoalCave(game, 4, fromOutdoors: true);
+        Assert.False(game.Story.Has(ShoalTide.Flag));
+        ComeIntoShoalCave(game, 10, fromOutdoors: true);
+        Assert.True(game.Story.Has(ShoalTide.Flag));
+        // From the inner room the tide is left as it was, whatever the hour: it never turns under the player
+        ComeIntoShoalCave(game, 16, fromOutdoors: false);
+        Assert.True(game.Story.Has(ShoalTide.Flag));
+        ComeIntoShoalCave(game, 16, fromOutdoors: true);
+        Assert.False(game.Story.Has(ShoalTide.Flag));
+    }
+
+    [Fact]
+    public void TheShoalSaltAndShellsMakeAShellBellAndComeBackWithTheDay()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 50));
+        var salt = ItemDatabase.Get("Shoal Salt")!;
+        var shell = ItemDatabase.Get("Shoal Shell")!;
+
+        // At high tide the inner room's two piles are under the water; the shells are not
+        game.Story.Set(ShoalTide.Flag);
+        game.Arrive("ShoalCave_LowTideInnerRoom", 34, 28);
+        game.Read(31, 8);
+        Assert.Equal(0, game.Bag.GetQuantity(salt));
+        game.Read(41, 20);
+        Assert.Equal(1, game.Bag.GetQuantity(shell));
+
+        // At low tide all eight are found about the cave, once each
+        game.Story.Unset(ShoalTide.Flag);
+        game.Arrive("ShoalCave_LowTideInnerRoom", 34, 28);
+        foreach (var (x, y) in new[] { (31, 8), (14, 26), (41, 20), (41, 10), (6, 9), (16, 13) }) game.Read(x, y);
+        game.Arrive("ShoalCave_LowTideStairsRoom", 3, 11);
+        game.Read(11, 11);
+        game.Arrive("ShoalCave_LowTideLowerRoom", 3, 6);
+        game.Read(18, 2);
+        Assert.Equal(4, game.Bag.GetQuantity(salt));
+        Assert.Equal(4, game.Bag.GetQuantity(shell));
+        game.Arrive("ShoalCave_LowTideInnerRoom", 34, 28);
+        game.Read(41, 10);
+        Assert.Equal(4, game.Bag.GetQuantity(shell));
+
+        // The old man makes them into a Shell Bell
+        game.Arrive("ShoalCave_LowTideEntranceRoom", 20, 29);
+        var bell = game.Talk("expert_m");
+        Assert.Single(bell.Asked);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Shell Bell")!));
+        Assert.Equal(0, game.Bag.GetQuantity(salt));
+        Assert.Equal(0, game.Bag.GetQuantity(shell));
+        Assert.Empty(game.Talk("expert_m").Asked);
+
+        // A new day lays them out again
+        game.Story.ClearDaily();
+        game.Arrive("ShoalCave_LowTideInnerRoom", 34, 28);
+        game.Read(41, 10);
+        Assert.Equal(1, game.Bag.GetQuantity(shell));
+    }
+
+    [Fact]
+    public void ShoalCavesBlackBeltGivesTheFocusBandOnce()
+    {
+        var game = new Game();
+        game.Arrive("ShoalCave_LowTideLowerRoom", 3, 6);
+        game.Talk("black_belt");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_FOCUS_BAND"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Focus Band")!));
+        game.Talk("black_belt");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Focus Band")!));
+    }
+
+    [Theory]
+    [InlineData(255, "TM27")]
+    [InlineData(100, null)]
+    [InlineData(10, "TM21")]
+    public void PacifidlogsFanClubBrotherGivesReturnOrFrustrationOnceADay(int friendship, string? tm)
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 50) { Friendship = friendship });
+        game.Arrive("PacifidlogTown_House2", 3, 4);
+        game.Talk("gentleman");
+        Assert.True(game.Story.Has("FLAG_MET_FANCLUB_YOUNGER_BROTHER"));
+        int Tms() => game.Bag.GetQuantity(ItemDatabase.Get("TM27")!) + game.Bag.GetQuantity(ItemDatabase.Get("TM21")!);
+        Assert.Equal(tm == null ? 0 : 1, Tms());
+        if (tm != null) Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get(tm)!));
+        Assert.Equal(tm != null, game.Story.Has("FLAG_DAILY_PACIFIDLOG_RECEIVED_TM"));
+        // Once a day: the same day gives nothing more, the next another
+        game.Talk("gentleman");
+        Assert.Equal(tm == null ? 0 : 1, Tms());
+        game.Story.ClearDaily();
+        game.Talk("gentleman");
+        Assert.Equal(tm == null ? 0 : 2, Tms());
+    }
+
+    [Fact]
+    public void PacifidlogsManTradesSeasorForABagonOnce()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Bagon")!, 20));
+        game.Arrive("PacifidlogTown_House3", 3, 4);
+        game.Talk("man_3");
+        Assert.True(game.Story.Has("FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED"));
+        var seasor = game.Party.Members[0];
+        Assert.Equal("Horsea", seasor.Species.Name);
+        Assert.Equal("Seasor", seasor.Nickname);
+        Assert.Equal(Nature.Brave, seasor.Nature);
+        Assert.Equal((5, 5, 5, 5, 30, 10), (seasor.Cool, seasor.Beauty, seasor.Cute, seasor.Smart, seasor.Tough, seasor.Sheen));
+        Assert.Empty(game.Talk("man_3").Asked);
+
+        // One who brings no Bagon keeps their own
+        var other = new Game();
+        other.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 50));
+        other.Arrive("PacifidlogTown_House3", 3, 4);
+        other.Talk("man_3");
+        Assert.False(other.Story.Has("FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED"));
+        Assert.Equal("Swampert", other.Party.Members[0].Species.Name);
+    }
+
+    [Fact]
+    public void PacifidlogsTutorTeachesExplosionOnce()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 10));
+        game.Arrive("PacifidlogTown_PokemonCenter_1F", 7, 8);
+        game.Talk("man_5");
+        Assert.True(game.Party.Members[0].Knows("Explosion"));
+        Assert.True(game.Story.Has("FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION"));
+        Assert.Empty(game.Talk("man_5").Asked);
+        Assert.Equal(TutorAnswer.NotAble, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 10), "Explosion"));
+    }
 }

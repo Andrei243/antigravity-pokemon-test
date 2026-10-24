@@ -3704,6 +3704,40 @@ a save that never ran it. What differs, and why:
   Route 104's decks over their rivers with it. Emerald's shallows out at sea that touch no shore are a sandbar to look at
   (Route 128's islet, where Archie, Maxie and Steven stand), where part a made every shallow water to look at.
 
+## Shoal Cave and its tide, Routes 132 to 134 and Pacifidlog's three (2026-10-24, plan 21 · H8, its fourth part)
+
+Shoal Cave's five rooms (the entrance, inner, stairs, lower and ice rooms) and Routes 132 to 134 west of Pacifidlog back
+to Slateport City are open; Route 125's way into the cave is no longer locked. What differs from Emerald, and why:
+
+- **The tide** is Emerald's `UpdateShoalTideFlag` (`src/time_events.c`; `Overworld/ShoalTide.cs`): high from midnight to
+  three, nine to three and nine to midnight, low in the six hours between, and read only as the player comes in from
+  outdoors (`GetLastUsedWarpMapType`), so it never turns under them inside. It is the script command `tide`, run by the
+  entrance room's `OnTransition`, a place's script the game now runs to its end behind the warp's fade before anything of
+  the place is drawn (Emerald's `MAP_SCRIPT_ON_TRANSITION`; `GameEngine.RunTransitionScript`, on a host that shows
+  nothing), and `FLAG_SYS_SHOAL_TIDE` lays Emerald's high-tide layouts over the entrance and inner rooms through
+  `world.json`'s `swaps` (the reader's `GbaWorld.Alternates`), where Emerald's `setmaplayoutindex` swaps the whole layout.
+  The game's own "came from outdoors" is the place left being open country and no cave; a loaded save comes from nowhere
+  and keeps the tide it was saved with, where Emerald reads the saved last warp's map type.
+- **The Shoal Salt and Shells** lie where Emerald has them (two salt piles and four shells in the inner room, a pile in the
+  stairs room and one in the lower room, read in the ground), each found once a day under a flag of ours,
+  `FLAG_DAILY_RECEIVED_SHOAL_SALT_1` to `_4` and `_SHELL_1` to `_4`, which the new day clears: Emerald's
+  `FLAG_RECEIVED_SHOAL_*` are cleared only when the Shell Bell's old man is next spoken to after the day changed
+  (`FLAG_SYS_SHOAL_ITEM`). The two inner piles are under the water at high tide (Emerald leaves their large piles off
+  then). The piles and stones are not drawn larger or smaller as Emerald's `setmetatile` draws them. The old man makes a
+  Shell Bell of four and four as often as they are brought; the lower room's Black Belt gives the Focus Band once.
+- **The arrow warp at the lower room's west end**, whose tile says "out to the north" with rock there, puts whoever comes
+  down it on the open tile beside it, as Johto's ways that face a wall do (`World.Join`, now for Hoenn too).
+- **Routes 132 to 134** are Emerald's currents, carrying a surfer west (`TileBehavior.Current*`, plan 19 · K6), with their
+  trainers and items; Route 134's dark water and the Sealed Chamber under it stay the post-game's (plan 21 · H12): the area
+  names no floor to dive to.
+- **Pacifidlog's Fan Club brother** reads the lead's friendship (`LEAD_FRIENDSHIP`, Emerald's `GetLeadMonFriendshipScore`:
+  150 or more gives TM27 Return, under 50 TM21 Frustration, between nothing), **once a day** (`FLAG_DAILY_PACIFIDLOG_RECEIVED_TM`)
+  where Emerald gives one a week (`VAR_PACIFIDLOG_TM_RECEIVED_DAY`, seven days): the plan's own word, and the game has no
+  count of days a script can read. **The trader's** Horsea is Emerald's `INGAME_TRADE_HORSEA` (Seasor, Skylar's, 46285,
+  personality 0x7F: a Brave male with Swift Swim; tough 30 and the rest 5, sheen 10) holding Bubble Mail for Emerald's Wave
+  Mail, which the item table hasn't got (NpcTrades `seasor`). **The Explosion tutor** in the Pokémon Center teaches once in
+  a game, by `MoveTutors.Kanto`'s table, Explosion being TM64's move (`FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION`).
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

@@ -701,7 +701,7 @@ public class StoryTests
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
         foreach (var script in Scripts.All)
         {
-            if (script.Name == ScriptLibrary.OnEnter) started.Add(script.FullName);
+            if (script.Name is ScriptLibrary.OnEnter or ScriptLibrary.OnTransition) started.Add(script.FullName);
             foreach (var call in script.Everything().Where(i => i.Op == Op.Call))
                 started.Add(Scripts.Find(call.Name, script.File)!.FullName);
         }

@@ -1,0 +1,16 @@
+{
+  // Shoal Cave's inner room (plan 21 · H8, part d): laid at high tide with the entrance room (world.json's swaps on
+  // FLAG_SYS_SHOAL_TIDE), its stairs down to the lower room under water then. Two piles of Shoal Salt, uncovered only
+  // at low tide, and four Shoal Shells, found once a day each (shoal_cave_low_tide_inner_room.txt)
+  "area": "shoal_cave_low_tide_inner_room",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "read": {
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalSalt1": "ShoalSalt1",
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalSalt2": "ShoalSalt2",
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalShell1": "ShoalShell1",
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalShell2": "ShoalShell2",
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalShell3": "ShoalShell3",
+    "ShoalCave_LowTideInnerRoom_EventScript_ShoalShell4": "ShoalShell4"
+  }
+}

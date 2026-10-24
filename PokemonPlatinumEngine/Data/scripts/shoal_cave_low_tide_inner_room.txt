@@ -1,0 +1,81 @@
+# Shoal Cave's inner room (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/ShoalCave_LowTideInnerRoom/scripts.inc).
+#
+# Two piles of Shoal Salt, bare only at low tide (the tide covers them while FLAG_SYS_SHOAL_TIDE is set), and four Shoal
+# Shells in the rock, each found once a day (FLAG_DAILY_RECEIVED_SHOAL_..., which the day clears where Emerald clears
+# its flags once the Shell Bell's old man is next spoken to after a new day). The room is laid at high tide by
+# world.json's swaps on the same flag; it reads the tide the entrance room set and never sets it.
+
+
+script ShoalSalt1
+  speaker none
+  if flag FLAG_SYS_SHOAL_TIDE goto Tide
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SALT_1 goto Gone
+  find "Shoal Salt"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SALT_1
+  end
+label Tide
+  text "The sea has come in over the sand. Whatever lay here is under the water."
+  end
+label Gone
+  text "A little Shoal Salt was here, but there's none left now."
+  end
+
+
+script ShoalSalt2
+  speaker none
+  if flag FLAG_SYS_SHOAL_TIDE goto Tide
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SALT_2 goto Gone
+  find "Shoal Salt"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SALT_2
+  end
+label Tide
+  text "The sea has come in over the sand. Whatever lay here is under the water."
+  end
+label Gone
+  text "A little Shoal Salt was here, but there's none left now."
+  end
+
+
+script ShoalShell1
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SHELL_1 goto Gone
+  find "Shoal Shell"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SHELL_1
+  end
+label Gone
+  text "A Shoal Shell was wedged in the rock here, but it's gone now."
+  end
+
+
+script ShoalShell2
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SHELL_2 goto Gone
+  find "Shoal Shell"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SHELL_2
+  end
+label Gone
+  text "A Shoal Shell was wedged in the rock here, but it's gone now."
+  end
+
+
+script ShoalShell3
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SHELL_3 goto Gone
+  find "Shoal Shell"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SHELL_3
+  end
+label Gone
+  text "A Shoal Shell was wedged in the rock here, but it's gone now."
+  end
+
+
+script ShoalShell4
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SHELL_4 goto Gone
+  find "Shoal Shell"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SHELL_4
+  end
+label Gone
+  text "A Shoal Shell was wedged in the rock here, but it's gone now."
+  end

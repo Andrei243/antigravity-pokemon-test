@@ -1,0 +1,30 @@
+# Shoal Cave's lower room (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/ShoalCave_LowTideLowerRoom/scripts.inc).
+#
+# A pile of Shoal Salt, found once a day (FLAG_DAILY_RECEIVED_SHOAL_SALT_4), and a Black Belt who gives the Focus Band
+# once (FLAG_RECEIVED_FOCUS_BAND, Emerald's name).
+
+
+script ShoalSalt4
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SALT_4 goto Gone
+  find "Shoal Salt"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SALT_4
+  end
+label Gone
+  text "A little Shoal Salt was here, but there's none left now."
+  end
+
+
+script BlackBelt
+  face self player
+  speaker "Black Belt"
+  if flag FLAG_RECEIVED_FOCUS_BAND goto Done
+  say "The cold down here creeps into your bones and ruins a good day's training. A focused mind shrugs it off!"
+  say "Here, take this Focus Band. Tie it on tight and stand firm against the chill!"
+  give "Focus Band"
+  setflag FLAG_RECEIVED_FOCUS_BAND
+  end
+label Done
+  say "Focus first. The rest follows on its own!"
+  end

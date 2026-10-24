@@ -764,7 +764,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
   to Dive; part b done 2026-10-24, wave 44: Route 128, the Seafloor Cavern, Kyogre, Sootopolis and its clash, Wallace;
   tests and shots written, not run; part c done 2026-10-24, wave 45: Routes 129 to 131, Pacifidlog, Sky Pillar and
-  Rayquaza, Sootopolis calmed, Waterfall and Juan's Rain Badge; what is left is listed under "Left for part d")
+  Rayquaza, Sootopolis calmed, Waterfall and Juan's Rain Badge; part d done 2026-10-24, wave 46: Shoal Cave and its tide,
+  Routes 132 to 134 and Pacifidlog's three; tests and shots written, the tests run with `--filter`, the shots not taken;
+  what is left is listed under "Left after part d")
   - **Opened** (18 areas, 230 in all): Routes 125, 126 and 127 above water and the sea floors under them
     (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, matrix 5, is the post-game's: Route 125 has no dark
     water until Emerald's abnormal weather lays it for the Marine Cave, plan 21 · H12), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
@@ -955,6 +957,50 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`VAR_MT_PYRE_STATE` 2); Pacifidlog's daily Return or Frustration, its trade and the Explosion tutor; Mirage Island;
     the abnormal weather over Ever Grande City (H9 opens it); the Mach Bike's climb of the cracked floors and Rayquaza's
     battle (H12); and parts a's and b's leftovers above but Sootopolis's spawn, which is done.
+  - **Part d** (done 2026-10-24, wave 46: Shoal Cave and its tide, Routes 132 to 134 and Pacifidlog's three; tests written
+    and run with `--filter`, shots written and not taken; what is left is listed under "Left after part d")
+  - **Opened** (8 areas, 288 in all): Shoal Cave's entrance, inner, stairs, lower and ice rooms (matrices 233 to 236 and
+    270, `Cave`; Emerald plays Mt. Pyre's song in them) and Routes 132, 133 and 134 (their currents Emerald's, west to
+    Slateport City). Route 125's way into the cave is no longer `locked`. Every map is in `RegionDatabase`'s Hoenn list.
+    Shut still: Route 134's sea floor and the Sealed Chamber (H12), Mirage Island.
+  - **The tide** (decided): Emerald's `UpdateShoalTideFlag` (`Overworld/ShoalTide.cs`, its hour table) as the script
+    command `tide` (`Op.Tide` at the enum's end, both hosts' new `Hour` and `CameInFromOutdoors`, `StopsAHurry`,
+    `ScriptTests.EveryCommand`, `docs/scripts.md`), run by the entrance room's **`OnTransition`**, a new place entry the
+    engine runs to its end behind the warp's fade (`ScriptLibrary.OnTransition`, `GameEngine.RunTransitionScript` from
+    `ArriveOnMap`, on a `HeadlessScriptHost` that shows nothing, then `RefreshPresence`, so the swapped chunks are laid
+    before the place's first frame). `FLAG_SYS_SHOAL_TIDE` lays Emerald's two high-tide layouts (`GbaWorld.Alternates`,
+    chunks 813 to 820) over the entrance and inner rooms by `world.json`'s first `swaps` for Hoenn. Some rooms are reached
+    only by surfing at high tide and the ice room only on foot at low tide, so `HoennTests`' walk of the whole game walks
+    a second time with the high tide laid and adds what it reaches. `ScriptLibrary.FlagsWritten` counts `tide` as writing
+    the flag. An arrow warp that faces rock in Hoenn puts its traveller on the open tile beside it (`World.Join`, as Johto's).
+  - **Played**: the Shoal Salt (four piles; the inner room's two under the water at high tide) and Shoal Shells (four),
+    each once a day (`FLAG_DAILY_RECEIVED_SHOAL_SALT_1` to `_4`, `_SHELL_1` to `_4`, ours), the old man's Shell Bell of four
+    and four, the lower room's Black Belt and the Focus Band (`FLAG_RECEIVED_FOCUS_BAND`); Pacifidlog's Fan Club brother
+    reading `LEAD_FRIENDSHIP` for TM27 Return or TM21 Frustration once a day (`FLAG_DAILY_PACIFIDLOG_RECEIVED_TM`, ruled for
+    Emerald's week), the trader's Horsea Seasor for a Bagon (NpcTrades `seasor`, Emerald's `INGAME_TRADE_HORSEA`,
+    `FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED`), the Explosion tutor (`MoveTutors.Kanto`'s `Explosion`,
+    `FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION`); Routes 132 to 134's 24 trainers with lines of ours. No story version raised.
+    Rulings: "Shoal Cave and its tide, Routes 132 to 134 and Pacifidlog's three".
+  - **Tests** (run with `--filter`): `HoennTests` (`ShoalCaveAndTheRoutesOfCurrentsBackToSlateportAreOpen`,
+    `ShoalCavesTwoUpperRoomsLieUnderTheTideWhileItsFlagIsSet`; the walk of the whole game at both tides);
+    `HoennStoryTests` (`ShoalCavesTideIsReadByTheHourOnlyAsThePlayerComesInFromOutdoors`,
+    `TheShoalSaltAndShellsMakeAShellBellAndComeBackWithTheDay`, `ShoalCavesBlackBeltGivesTheFocusBandOnce`,
+    `PacifidlogsFanClubBrotherGivesReturnOrFrustrationOnceADay`, `PacifidlogsManTradesSeasorForABagonOnce`,
+    `PacifidlogsTutorTeachesExplosionOnce`); `ScriptTests.EveryCommand` (`tide`); `StoryTests` counts `OnTransition` as
+    started. The content check finds nothing. `scripts.txt` of the golden files moves (the new places' scripts and
+    Pacifidlog's three) and `levels.txt` (the new places' wild Pokémon and trainers): accept them.
+  - **Shots** (written, not taken): the `hoenn` mode's `h211`–`h217` (Routes 132, 133 and 134 by Slateport, Shoal Cave's
+    entrance and inner room at low tide with a `_native` crop, the lower and ice rooms), `h218`–`h220` at high tide (the
+    entrance, the inner room with a crop, its flooded west) and `h221` the inner room back at low tide, printing the tide's
+    flag and the swapped places; the scenes `hs280`–`hs28b` at the end of `HoennScenes` (a pile of salt read, the Shell
+    Bell's offer and the bell, the Focus Band, the Fan Club brother, Return for a loving lead, "come back tomorrow", the
+    Bagon trade's offer and Seasor, the Explosion tutor and Explosion learned), printing the salt, shells, bell, TMs, trade
+    and tutor after each.
+  - **Left after part d**: the large and small piles and stones Emerald's `setmetatile` draws for the salt and shells;
+    Emerald's clash layout and the rough water Rayquaza's scene lays, and its white flash; Archie and Maxie at Mt. Pyre's
+    summit giving back the orbs (`VAR_MT_PYRE_STATE` 2); Mirage Island; the abnormal weather over Ever Grande City (H9);
+    the Mach Bike's climb of the cracked floors and Rayquaza's battle (H12); Route 134's Sealed Chamber (H12); Match Call
+    for Routes 132 to 134's rematch trainers; and parts a's and b's leftovers above but Sootopolis's spawn.
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks

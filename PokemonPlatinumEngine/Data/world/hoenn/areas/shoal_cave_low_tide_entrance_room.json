@@ -1,0 +1,72 @@
+{
+  "key": "shoal_cave_low_tide_entrance_room",
+  "index": 284,
+  "name": "Shoal Cave",
+  "matrix": 233,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "shoal_cave_low_tide_entrance_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 26 },
+    { "species": "Spheal", "level": 26 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Spheal", "level": 28 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Spheal", "level": 30 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Zubat", "level": 5, "maxLevel": 35 },
+    { "species": "Spheal", "level": 25, "maxLevel": 30 },
+    { "species": "Spheal", "level": 25, "maxLevel": 30 },
+    { "species": "Spheal", "level": 25, "maxLevel": 35 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 20, "z": 30, "to": "route_125", "toWarp": 0 },
+    { "x": 19, "z": 5, "to": "shoal_cave_low_tide_inner_room", "toWarp": 0 },
+    { "x": 6, "z": 2, "to": "shoal_cave_low_tide_inner_room", "toWarp": 6 },
+    { "x": 27, "z": 2, "to": "shoal_cave_low_tide_inner_room", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 30, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SHOAL_CAVE_ENTRANCE_BIG_PEARL", "item": "Big Pearl", "script": "ShoalCave_LowTideEntranceRoom_EventScript_ItemBigPearl" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_west", "x": 18, "z": 15, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ShoalCave_LowTideEntranceRoom_EventScript_ShellBellExpert" }
+  ],
+  "signs": [],
+  "triggers": []
+}
