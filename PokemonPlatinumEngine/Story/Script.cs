@@ -123,6 +123,8 @@ public enum Op
     RotateTiles,
     // The National Park's Bug-Catching Contest (plan 15 · E5): begun, asked about, judged and ended
     BugContest,
+    // The Pokéathlon (plan 15 · E6): whether three may go in, the courses run, the Athlete Points
+    Athlon,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

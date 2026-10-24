@@ -26,6 +26,14 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Poketch Poketch { get; } = new();
     public SafariGame Safari { get; } = new();
     public BugContest BugContest { get; } = new();
+    public AthlonRecords Athlon { get; } = new();
+
+    /// <summary>
+    /// The place a test's course of the Pokéathlon comes to (plan 15 · E6): 1 to 4, or 0 for the screen backed out
+    /// of. A course run earns <see cref="AthlonScore"/> points, recorded under the Practice Course.
+    /// </summary>
+    public int AthlonPlace { get; set; } = 1;
+    public int AthlonScore { get; set; } = 120;
     public void PutInBox(Pokemon pokemon) => Box.Add(pokemon);
     public int SeenInSinnoh { get; set; }
     public int Caught { get; set; }
@@ -761,6 +769,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.Travel) Travel(subject);
         // The crossing itself, over the dark (plan 18 · W5)
         if (screen == ScriptScreen.Crossing) Cross();
+        // The Pokéathlon (plan 15 · E6): the place the test says, the points recorded as a course run would
+        if (screen == ScriptScreen.Athlon)
+        {
+            Answer = AthlonRun.CanEnter(Party) ? Math.Clamp(AthlonPlace, 0, AthlonRun.TeamCount) : 0;
+            if (Answer > 0) Athlon.Record(AthlonCourses.Practice.Key, AthlonScore, Answer);
+            Log[^1] = $"open {screen} {Answer}";
+        }
         // A region's rival named: the name the test gives, or the region's own (plan 18 · W4, part b)
         if (screen == ScriptScreen.NameRival)
         {

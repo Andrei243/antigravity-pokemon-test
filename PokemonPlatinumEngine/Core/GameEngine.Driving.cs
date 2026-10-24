@@ -57,6 +57,9 @@ public partial class GameEngine
         public SafariGame Safari => game.flow.Safari;
         /// <summary>The National Park's Bug-Catching Contest, and its board of results (plan 15 · E5).</summary>
         public BugContest BugContest => game.flow.BugContest;
+        /// <summary>The Pokéathlon's records and its screen (plan 15 · E6).</summary>
+        public AthlonRecords Athlon => game.flow.Athlon;
+        public AthlonScreen AthlonScreen => game.flow.AthlonScreen;
         public BugContestResultsScreen BugContestResults => game.flow.BugContestResultsScreen;
         public SpecialEncounters Encounters => game.flow.Encounters;
         public BerryPatches Berries => game.flow.Berries;

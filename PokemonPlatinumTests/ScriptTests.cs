@@ -564,6 +564,9 @@ public class ScriptTests
           bugcontest results
           bugcontest prize
           bugcontest end
+          athlon able
+          athlon open
+          athlon points
         script Other
           end
         """;
@@ -1546,6 +1549,7 @@ public class ScriptTests
         public Poketch Poketch => inner.Poketch;
         public SafariGame Safari => inner.Safari;
         public BugContest BugContest => inner.BugContest;
+        public AthlonRecords Athlon => inner.Athlon;
         public void PutInBox(Pokemon pokemon) => inner.PutInBox(pokemon);
         public int SeenInSinnoh => inner.SeenInSinnoh;
         public SpecialEncounters Encounters => inner.Encounters;

@@ -2520,3 +2520,32 @@ label Boxed
 label Bye
   say "Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday."
   end
+
+
+# The Pokéathlon Dome's counter (plan 15 · E6): the clerk offers a course, checks for three who may go in, and the
+# course is run on its own screen; what the clerk says after it goes by the place. Nobody stands at the counter until
+# plan 20 · J13 opens the dome's rooms behind Route 35's gate house.
+script AthlonDesk
+  speaker "Clerk"
+  say "Welcome to the Pokéathlon Dome! Here Pokémon test themselves in races and games instead of battles."
+  ask "Would you like to enter a course?"
+  if no goto Declined
+  athlon able
+  if result == 0 goto TooFew
+  athlon open
+  if result == 0 goto Declined
+  if result == 1 goto Won
+  say "Well run! With a little more training, first place will be yours."
+  goto Points
+label Won
+  say "First place! Your team is the champion of the course. Congratulations!"
+label Points
+  athlon points
+  say "You now have {result} Athlete Points. Come back and compete any time!"
+  end
+label TooFew
+  say "A team of the Pokéathlon is three Pokémon, and Eggs can't compete. Please come back with three."
+  end
+label Declined
+  say "Come back whenever your Pokémon feel like a run!"
+  end

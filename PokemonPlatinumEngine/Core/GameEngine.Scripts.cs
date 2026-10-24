@@ -874,6 +874,7 @@ public partial class GameEngine
         public Poketch Poketch => game.flow.Poketch;
         public SafariGame Safari => game.flow.Safari;
         public BugContest BugContest => game.flow.BugContest;
+        public AthlonRecords Athlon => game.flow.Athlon;
         public void PutInBox(Pokemon pokemon) => game.flow.Boxes.Store(pokemon);
         public int LevelHere(int level) => game.LevelHere(level);
         public int SeenInSinnoh => game.flow.Pokedex.SeenIn(Pokedex.Sinnoh);
@@ -1181,6 +1182,13 @@ public partial class GameEngine
                 // The Bug-Catching Contest's board of results (plan 15 · E5)
                 case ScriptScreen.BugContestResults:
                     game.OpenBugContestResults();
+                    break;
+                // The Pokéathlon (plan 15 · E6): the courses on the run's own generator; the script hears the place
+                case ScriptScreen.Athlon:
+                    game.flow.ScriptAnswer = 0;
+                    game.flow.AthlonScreen.Open(game.flow.Party, game.flow.Athlon, Dice.New());
+                    foreach (var p in game.flow.Party.Members) if (!p.IsEgg) PokemonSprites.Request(AthleteStats.SpeciesOf(p).Name);
+                    game.flow.State = GameState.Athlon;
                     break;
                 case ScriptScreen.Travel:
                 {

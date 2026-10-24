@@ -1435,6 +1435,49 @@ Plan 06 · R18d.
 - **The game board** (`ArcadeBoardScreen`, `ModernUi.DrawArcadeBoard`) is one screen in the menus' look, titled BATTLE ARCADE: sixteen panels in four rows of four at the screen's middle, each 200 by 154 with 16 between, the challenger's three in a column of cards at its left and the trainer's three at its right. **A panel's colour says whom its event falls on**, and nothing else does: red for the trainer to come, blue for the challenger, green for both (the battle and the board), gold for a bonus; a row of four tags over the board (FOE, YOU, BOTH, BONUS) is the key. A panel is a card with a band of its colour 96 tall holding the event's sign in white, drawn from the kit's shapes (our own signs: a bar and an arrow for HP down, a drop, a bolt, a flame, Zzz, a flake, a berry, a box, an arrow and "+3", a sun, a cloud with drops or with stones, drifts of sand, bars of fog, a turned square, chevrons, a die, two arrows, a coin with its number, a crossed ring, a dash), and the event's name under it in Black 24. While the panels count down each is a plain card with the digit in Black 96 in the rule colour. The cursor is the selection's border 8 wide round a panel, with the selection's glow behind; once it is stopped every panel shows the event it stopped on, as the original's do, and the foot names it. A side's card is 420 by 154 (what the board leaves of the screen, less the margin): the Pokémon's menu sprite on a pale disc, its name in ExtraBold 28, its level in muted Black 22, and what it holds as a small tag (muted NOTHING HELD otherwise); the side's heading (YOU, or the trainer's name) is in white Black 28 over the column. The foot panel is 116 tall: what is to be done in ExtraBold 38 (the count, "Press Z to stop the cursor!", the event's name), and at its right under captions the cursor's speed as eight pips 16 across (filled in the selection's colour up to the speed; RANDOM in a gold tag 26 tall beside the caption when it jumps), BATTLE (n / 7) and STREAK in Black 44. A bar 8 tall along the foot's top edge runs down with the thirty seconds the cursor may run.
 - **The Arcade's rows on the board of records** are two, a streak each and nothing beside it.
 
+### The Pokéathlon
+
+Plan 15 · E6 (`AthlonScreen`, `ModernUi.DrawAthlon`). Our own throughout: nothing of HeartGold's dome, events or
+screens is drawn. One screen in the menus' look, titled POKÉATHLON (the course's name over an event). **A team's colour
+says whose a thing is**, and nothing else does: the player's in the selection's colour, the rivals blue, green and gold
+in the order drawn; a team is named on a chip of its colour (the player's name, or TEAM and a name of ours). The dome's
+own colour is a sky blue (58, 150, 214): an event card's band, a stat's stars and the clock's bar.
+
+- **The course choice**: a list panel 860 wide at the content's left, captioned COURSES, a row for each course with its
+  best score at the right (NOT RUN YET until it has one); at the right a panel captioned EVENTS with a card 150 tall for
+  each of the course's three on a pale wash of the dome's blue, its number in Black 64 in that blue, its name in Black 40
+  and the stat it leans on in muted ExtraBold 26; along the foot the Athlete Points.
+- **The team**: the team's rows (an Egg muted, with EGG at its right), each chosen one with a green tag 64 by 44 holding
+  its place (1, 2, 3); at the right the one under the cursor on a pale disc at twice its icon's size, its name in Black
+  44, PERFORMANCE in muted Black 24, and its five stats as rows: the stat's name in ExtraBold 32 and five discs 30 across,
+  filled in the dome's blue up to the stat and in the rule colour after it. The foot counts the three chosen.
+- **An event's briefing**: a card 1240 by 780 at the screen's middle, its top 130 a band of the dome's blue with EVENT
+  n OF 3 in white Black 26, the event's name in white Black 60 and what it leans on at the band's right; under it how it
+  is played in Bold 34, wrapped to the card; and the player's three in a row, each on a pale disc 80 in radius with its
+  name and its stars in the stat the event leans on.
+- **An event** fills the screen under a bar 92 tall with the event's name in Black 40 and the clock in Black 44 at its
+  right (Red in the last five seconds), a line of the dome's blue along its foot running down with the time. The count
+  before it is a dark disc 190 in radius at the middle with the digit (then GO!) in white Black, shrinking within each
+  second. Each Pokémon is its menu icon at twice its size.
+  - **Hurdle Dash**: four lanes 176 tall, alternate brick reds (206, 112, 82) and (196, 102, 74), a white line along each
+  floor; hurdles white posts with a gold bar, hand-over lines faint white and the finish solid white; the view follows
+  the player's runner, a unit of the track 1.2 of the layout; a runner rises in a parabola 90 high through its jump and
+  is half faded while it gets up from a trip; one out of the view is an arrow of its team's colour at the lane's edge.
+  Each lane's chip at its top left and its leg (or the time it finished in) beside it.
+  - **Block Smash**: four columns, each a panel (the player's framed in its colour) with the team's chip, the blocks
+  broken in Black 72, a stack of five tan blocks 180 by 56 whose top one cracks in dark strokes as it is hit and shakes
+  four units for the frames after a hit, the hitter under it (faded while it is changed), and the three's breath as bars
+  in the rule colour (the hitter's in the team's colour, a tired one's Red).
+  - **Ring Drop**: the platform at the stage's middle, a unit 3.6 of the layout: a sand disc on a dark rim with a blue
+  ring near its edge and a paler one at its middle; each Pokémon on a disc of its team's colour with a white face, a
+  glow behind it while it lunges; each team's corner panel (the player's at the bottom right) with its chip, its
+  knock-offs and falls, and, while it is off, the next of its three faded.
+- **An event's points**: a row 152 tall for each team (the player's on a pale wash of its colour), its chip, its three,
+  and a bar of its colour growing over 0.8 s to its points, the number in Black 56 at the right.
+- **The scoreboard**: SCOREBOARD; the four in order, each a row 144 tall with its place in Black 64 (gold for the
+  first), its chip and three, its points in each event under the events' names and its total in Black 56; along the
+  foot the points earned and held, and a gold NEW RECORD! pill when the course's best was beaten.
+
 ### Badges
 
 - Round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art. A row holds the region's own count (plan 18 · W2: the names its file lists, none to eight), so Sinnoh's and Kanto's rows show eight and a region with fewer shows fewer; the colours and marks go by the place in the row.

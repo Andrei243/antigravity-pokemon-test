@@ -186,6 +186,7 @@ if (mode == "seasons") h.SeasonsMode();
 if (mode == "pokegear") h.PokegearMode();
 if (mode == "skips") h.SkipsMode();
 if (mode == "contest") h.BugContestMode();
+if (mode == "athlon") h.AthlonMode();
 
 h.Close();
 Raylib.CloseWindow();

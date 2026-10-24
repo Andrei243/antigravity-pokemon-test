@@ -876,6 +876,9 @@ public static class ScriptParser
                     Op = Op.BugContest, Line = line,
                     Name = r.OneOf("open", "on", "start", "balls", "caught", "keep", "release", "judge", "results", "prize", "end")
                 };
+            // The Pokéathlon (plan 15 · E6)
+            case "athlon":
+                return new Instruction { Op = Op.Athlon, Line = line, Name = r.OneOf("able", "open", "points") };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

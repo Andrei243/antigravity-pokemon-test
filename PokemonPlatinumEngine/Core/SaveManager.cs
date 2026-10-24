@@ -158,6 +158,12 @@ public class SaveData
     public Models.BugContestSave? BugContest { get; set; }
 
     /// <summary>
+    /// The Pokéathlon (plan 15 · E6): the Athlete Points, each course's best score, the courses run and won. Null until
+    /// a course is run, and in every older save.
+    /// </summary>
+    public Models.AthlonRecords? Athlon { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>
