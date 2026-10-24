@@ -40,6 +40,13 @@ public sealed class HeadlessScriptHost : IScriptHost
     }
     private string? region;
 
+    /// <summary>
+    /// The region the game began in (plan 18 · W5: what <c>CROSSED_IN</c> asks): the one a test sets, else the one the
+    /// first crossing left, else the region the script plays in.
+    /// </summary>
+    public string? BeganInRegion { get; set; }
+    public string BeganIn => BeganInRegion ?? Region;
+
     /// <summary>Whether the player's options let the game say what to do next (plan 12 · Q14); a test turns it off.</summary>
     public bool ShowObjectives { get; set; } = true;
     public bool ShowsObjectives => ShowObjectives;
@@ -747,6 +754,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
         // The way to the next region (plan 18 · W4, part b): played as the game plays it, so tests cross
         if (screen == ScriptScreen.Travel) Travel(subject);
+        // The crossing itself, over the dark (plan 18 · W5)
+        if (screen == ScriptScreen.Crossing) Cross();
         // A region's rival named: the name the test gives, or the region's own (plan 18 · W4, part b)
         if (screen == ScriptScreen.NameRival)
         {
@@ -778,20 +787,33 @@ public sealed class HeadlessScriptHost : IScriptHost
     public List<string> Crossings { get; } = new();
 
     /// <summary>
-    /// The attendant's travel as the game plays it (plan 18 · W4, part b): with no way on from the map's region the
-    /// script hears 0 and says its own lines; otherwise it hears 1, the attendant says how things stand, and once the
-    /// region's Hall of Fame is entered and the next region is built the player crosses: every Pokémon given the region
-    /// it leaves, the team departing by <see cref="Crossing.CanTake"/> (whole, under option B), and the player put down
-    /// on the next region's arrival, with its rival the one <c>{rival}</c> names.
+    /// The attendant's travel as the game plays it (plan 18 · W4, part b; W5): with no way on from the map's region the
+    /// script hears 0 and says its own lines; otherwise the attendant says how things stand and the script hears 2 once
+    /// the region's Hall of Fame is entered and the next region is built, when <c>common.Crossing</c> asks and crosses
+    /// (<see cref="Cross"/>), and 1 before.
     /// </summary>
     private void Travel(NPC? subject)
     {
         if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) return;
-        Answer = 1;
         var check = RegionDatabase.CheckTravel(link, Story);
+        Answer = check == TravelCheck.Ready ? 2 : 1;
         Talks++;
         foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((subject != null ? Named(Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name)) : null, Named(line)));
-        if (check != TravelCheck.Ready) return;
+    }
+
+    /// <summary>
+    /// <c>travel go</c> as the game plays it (plan 18 · W5): the vessel's sound and its line over the dark, then the
+    /// crossing: every Pokémon given the region it leaves, the team departing by <see cref="Crossing.CanTake"/> (whole,
+    /// under option B), and the player put down on the next region's arrival, with its rival the one <c>{rival}</c> names.
+    /// Where no way leads on now nothing happens.
+    /// </summary>
+    private void Cross()
+    {
+        if (RegionDatabase.Get(Region) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link
+            || RegionDatabase.CheckTravel(link, Story) != TravelCheck.Ready) return;
+        Log.Add($"sound {RegionDatabase.CrossingSound(link)}");
+        Transcript.Add((null, Named(RegionDatabase.VoyageLine(link))));
+        BeganInRegion ??= here.Id;
 
         var to = RegionDatabase.Get(link.To)!;
         Crossing.Belong(Party.Members.Concat(Boxes), here.Id);

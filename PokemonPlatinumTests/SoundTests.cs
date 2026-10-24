@@ -327,6 +327,20 @@ public class SoundTests
     }
 
     [Fact]
+    public void ACrossingIsHeardByItsVessel()
+    {
+        // Plan 18 · W5: the dark of a crossing opens on the vessel's own sound, a horn for whatever sails and an engine
+        // for a plane, each a sound of the field long enough to be heard under the line said over the dark
+        foreach (string name in new[] { "crossing_horn", "crossing_engine" })
+        {
+            Assert.Equal(SoundGroup.Field, SoundBank.Entries.Single(e => e.Name == name).Group);
+            Assert.InRange(SoundBank.Get(name)!.Duration, 1.5f, 4f);
+        }
+        foreach (var link in RegionDatabase.Links)
+            Assert.Equal(link.VesselWord == "plane" ? "crossing_engine" : "crossing_horn", RegionDatabase.CrossingSound(link));
+    }
+
+    [Fact]
     public void ADiverIsHeardOnceABreath()
     {
         // Plan 21 · H5: the bubbles of a breath on the sea floor are one sound of the field, over before the next breath

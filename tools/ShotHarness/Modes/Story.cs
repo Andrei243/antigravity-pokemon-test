@@ -590,5 +590,26 @@ partial class Harness
         markup.CloseBacklog();
         markup.Close();
         Frames(2);
+
+        // ---- the journey on screen (plan 18 · W5), the very last since it leaves Sinnoh: Sinnoh's Hall of Fame forced
+        // so that the captain stands on Canalave's pier beside Sailor Eldritch, his lines and his question, the dark with
+        // the ship's line over it, and the arrival in Kanto under its name sign once the dark has lifted. It prints the
+        // answer travel gave, the region and the tile arrived on and the team, which crosses whole
+        story.Set(RegionDatabase.Get(RegionDatabase.Sinnoh)!.StoryCompleteFlag);
+        At("Sinnoh", 44, 751, Direction.Right);
+        Frames(10);
+        int crossingTeam = team.Count;
+        Talk();
+        ReadOn();
+        Whole(); Until(() => engine.Choice.IsOpen, "the captain's question"); Frames(20); Shot("st42_crossing_asked");
+        engine.Choice.Confirm(); Frames(4);
+        ReadOn();
+        Until(() => Box().IsActive && game.ScriptFade.Level >= 1f, "the line over the dark", 300);
+        Whole(); Shot("st43_crossing_dark");
+        Next();
+        Until(() => !engine.ScriptRunning && State() == GameState.Overworld, "the arrival", 900);
+        Frames(30); Shot("st44_crossing_arrived");
+        Console.WriteLine($"crossing: arrived in {engine.Here.Id} on {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, " +
+            $"the team {team.Count} of {crossingTeam}, the sign \"{game.LocationSign.Name}\"");
     }
 }

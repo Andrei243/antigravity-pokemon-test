@@ -42,6 +42,8 @@ public static partial class SoundBank
         Add("dive", SoundGroup.Field, null, "Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5).");
         Add("bubbles", SoundGroup.Field, null, "A diver on the sea floor breathes out: three low bubbles, every 2.8 seconds (plan 21 · H5).");
         Add("bridge_walk", SoundGroup.Field, null, "A step on, along or off a plank bridge of Hoenn: a dry wooden knock and a short creak as the plank gives (Emerald's SE_BRIDGE_WALK; plan 21 · H6, part c).");
+        Add("crossing_horn", SoundGroup.Field, null, "A ship or a ferry leaves for another region: two long, low blasts of its horn over the engine's throb, as the crossing's dark begins (plan 18 · W5).");
+        Add("crossing_engine", SoundGroup.Field, null, "A plane leaves for another region: its engines spool up from a low rumble to a steady roar as the crossing's dark begins (plan 18 · W5).");
         Add("save", SoundGroup.Field, "SEQ_SE_DP_SAVE", "The game is saved.");
         Add("pc_on", SoundGroup.Field, "SEQ_SE_DP_PC_LOGIN", "A PC is switched on.");
         Add("pc_off", SoundGroup.Field, "SEQ_SE_DP_PC_LOGOFF", "A PC is switched off.");
@@ -314,6 +316,23 @@ public static partial class SoundBank
                 d.Noise(0, 0.04f, Filter.Band, 1500f, 900f, 0.8f, 0.9f, 0.05f, 2f);
                 d.Tone(0.02f, 0.15f, Wave.Triangle, N(62), N(57), 0.18f, 0.08f, 2.2f);
                 return Finish(d.S, 0.34f);
+            case "crossing_horn":
+                // A ship's horn: two long blasts, each a low saw and a fifth over it, gathering and dying, over the
+                // engine's slow throb under the whole
+                d = new SoundDesign(2.8f, 0x5A11u);
+                d.Noise(0, 2.8f, Filter.Low, 180f, 140f, 0.35f, 0.8f, 0.3f, 1.2f, flutterHz: 5f, flutterDepth: 0.5f);
+                d.Tone(0.05f, 1.05f, Wave.Saw, 98f, 96f, 0.5f, 0.12f, 1.2f, vibratoHz: 4f, vibratoDepth: 0.004f);
+                d.Tone(0.05f, 1.05f, Wave.Saw, 147f, 144f, 0.28f, 0.12f, 1.2f, vibratoHz: 4f, vibratoDepth: 0.004f);
+                d.Tone(1.4f, 1.3f, Wave.Saw, 98f, 94f, 0.5f, 0.12f, 1.6f, vibratoHz: 4f, vibratoDepth: 0.004f);
+                d.Tone(1.4f, 1.3f, Wave.Saw, 147f, 141f, 0.28f, 0.12f, 1.6f, vibratoHz: 4f, vibratoDepth: 0.004f);
+                return Finish(d.S, 0.42f);
+            case "crossing_engine":
+                // A plane's engines: a rumble that swells, and a whine climbing over it to a steady pitch
+                d = new SoundDesign(2.8f, 0xE461u);
+                d.Noise(0, 2.8f, Filter.Low, 200f, 700f, 0.7f, 0.8f, 0.6f, 1.2f, flutterHz: 9f, flutterDepth: 0.25f);
+                d.Noise(0.2f, 2.6f, Filter.Band, 900f, 2600f, 0.25f, 2f, 0.9f, 1f);
+                d.Tone(0.1f, 2.7f, Wave.Sine, 320f, 1100f, 0.16f, 1.2f, 0.9f, vibratoHz: 7f, vibratoDepth: 0.006f);
+                return Finish(d.S, 0.4f);
             case "thunder":
                 // A crack that splits into a long, falling roll
                 d = new SoundDesign(2.6f, 0x7A11u);

@@ -45,6 +45,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `dive` | — | Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5). |
 | `bridge_walk` | — | A step on, along or off a plank bridge of Hoenn: a dry wooden knock and a short creak as the plank gives (Emerald's `SE_BRIDGE_WALK`; plan 21 · H6, part c). The dip of the walker's sprite is `FieldLife.PlankRows`'s. |
 | `bubbles` | — | A diver on the sea floor breathes out: a soft low rush and three bubbles a tenth of a second apart, every 2.8 seconds, as the field shows them (`FieldLife.Bubbles`, plan 21 · H5). |
+| `crossing_horn` | — | A ship or a ferry leaves for another region: two long, low blasts of its horn over the engine's throb, as the crossing's dark begins (`travel go` in `common.Crossing`, `RegionDatabase.CrossingSound`; plan 18 · W5). The field's music stops under it, and the region arrived in plays its own. |
+| `crossing_engine` | — | A plane leaves for another region: its engines spool up from a low rumble to a steady roar as the crossing's dark begins (plan 18 · W5). |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off: as its screen goes dark in the field (`anim pc off`). |

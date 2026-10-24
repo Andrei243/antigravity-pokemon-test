@@ -28,6 +28,7 @@ public static class ScriptParser
         "CYCLING",
         "CAUGHT",
         "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
+        "CROSSED_IN",
     };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
@@ -584,7 +585,8 @@ public static class ScriptParser
                 // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
                 return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
             case "travel":
-                return new Instruction { Op = Op.Travel, Line = line };
+                // "travel go" is the crossing itself, over a script's dark (plan 18 · W5: common.Crossing)
+                return new Instruction { Op = Op.Travel, Line = line, Name = r.More ? r.OneOf("go") : "" };
             case "choosepokemon":
                 // "choosepokemon "Bidoof"" lets only that species be chosen (plan 14 · B14: a Master Trainer's)
                 return new Instruction { Op = Op.ChoosePokemon, Line = line, Name = r.More ? r.Text("a species' name") : "" };

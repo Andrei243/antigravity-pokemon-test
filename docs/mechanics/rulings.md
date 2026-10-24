@@ -4403,3 +4403,27 @@ What a crossing from one region to the next does, under the user's option B (202
   The attendant, ready to sail, says the whole team is welcome aboard before the player agrees.
 - **A game in one region never meets any of it**: nobody crosses before the region's Hall of Fame, and a game begun
   elsewhere by `--region` keeps its own game's levels (part a).
+
+## The journey on screen (2026-10-24, plan 18 · W5)
+
+How a crossing is seen and heard. The rules of what crosses are "Regions", above.
+
+- **A script, not a screen**: `common.Attendant` asks `travel`, which says the attendant's lines and answers 0 (no way
+  on from here: the person's own lines), 1 (not yet) or 2 (ready); on 2 it calls `common.Crossing`, which asks "Shall
+  we set off, then?", closes the script's black screen over the field and crosses with `travel go`. *Our ruling*: the
+  question is plain Yes and No, the destination having been named by the attendant's lines; W8's harbours put their
+  choice of regions in its place. A no leaves the player on the quay with a line, and the attendant asks again next time.
+- **The dark** is the script's own black screen with one line over it (`crossing.voyage.<vessel>`, our own words: a
+  ship sails through the night, a ferry rocks over the waves, a plane climbs above the clouds) and the vessel's sound
+  (`crossing_horn` for whatever sails, `crossing_engine` for a plane; both our own, `SoundDesign`). The field's music
+  stops under it; the region arrived in plays its own as the line is put away. Nothing is drawn of the vessel or the
+  way: *our ruling*, so a crossing looks the same between any two regions and no region needs art for it. A region
+  that wants a deck to walk (HeartGold's S.S. Aqua) builds it as a map of its own; the link's `Scene` that would point
+  at it is not built, since no region asks for one yet.
+- **The arrival** is `TravelTo`'s, unchanged but for the field's life cleared as on any warp: the region's arrival
+  tile, its music and its name sign, under the dark that `common.Crossing` then lifts.
+- **The rival of a region crossed into is named in its opening**: the built-in variable `CROSSED_IN` is 1 where the
+  script plays in a region the game didn't begin in (`GameFlow.BeganIn`), and a region's opening asks it before
+  `namerival`. Kanto's is Oak's lab (`pallet_town_professor_oaks_lab.NameTheRival`, as the player first walks in: Oak
+  asks his grandson's name, as FireRed's introduction does); Johto's is the officer's question in Elm's lab, where the
+  player gives the thief's name (HeartGold asks it there too). A game begun in the region never meets either.

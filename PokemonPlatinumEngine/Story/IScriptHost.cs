@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -42,6 +42,13 @@ public interface IScriptHost
     /// <c>if badges</c> and <c>BADGE_COUNT</c> mean. Sinnoh's unless a host says otherwise.
     /// </summary>
     string Region => RegionDatabase.Sinnoh;
+
+    /// <summary>
+    /// The region the game began in, by its id (plan 18 · W5): the built-in variable <c>CROSSED_IN</c> is 1 where the
+    /// script plays in another, which a region's opening asks before it names the region's rival with <c>namerival</c>.
+    /// The region the player is in unless a host says otherwise.
+    /// </summary>
+    string BeganIn => Region;
 
     /// <summary>
     /// Whether the player's options let the game say what to do next (plan 12 · Q14): <c>if objective</c> is false when
