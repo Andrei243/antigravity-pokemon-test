@@ -101,7 +101,7 @@ internal static partial class PokemonModels
     /// Meganium and its Mega Evolution: a long-necked green beast with a great pink flower round its neck and two
     /// feelers on its head; the Mega's flower doubled into a red heart in a pink ring tipped white, its feelers ringed.
     /// </summary>
-    private static PokeBuilder MeganiumBuild(bool mega)
+    private static PokeBuilder MeganiumBuild(bool mega, bool female = false)
     {
         var b = new PokeBuilder(mega ? "Meganium-Mega" : "Meganium", mega ? 1f : 0.92f, BodyPlan.Quadruped, V(0, 0.3f, -0.06f)) { Coat = Fur };
         var green = Rgb(150, 206, 112);
@@ -149,7 +149,12 @@ internal static partial class PokemonModels
                 b.Tube(head, Smooth(3, root, root + V(0.03f * s, 0.07f, 0), root + V(0.05f * s, 0.12f, 0.0f)), 0.008f, 0.007f, Rgb(70, 130, 60), blend: 0f);
                 b.Torus(head, root + V(0.07f * s, 0.15f, 0), 0.03f, 0.008f, yellow, V(90f, 0, 0));
             }
-            else Antenna(b, head, root, root + V(0.03f * s, 0.08f, 0.01f), root + V(0.05f * s, 0.14f, 0.0f), 0.008f, Rgb(80, 140, 70), yellow, 0.014f);
+            else
+            {
+                // A female's feelers are shorter (plan 09 · L7)
+                float f = female ? 0.6f : 1f;
+                Antenna(b, head, root, root + V(0.03f * s, 0.08f, 0.01f) * f, root + V(0.05f * s, 0.14f, 0.0f) * f, 0.008f, Rgb(80, 140, 70), yellow, 0.014f);
+            }
         });
         PokeBuilder.Both(s =>
         {
@@ -159,7 +164,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Meganium() => MeganiumBuild(false);
+    /// <param name="female">A female (plan 09 · L7): shorter feelers.</param>
+    private static PokeBuilder Meganium(bool female = false) => MeganiumBuild(false, female);
 
     // ------------------------------------------------------------------ Cyndaquil line
 
@@ -500,7 +506,7 @@ internal static partial class PokemonModels
     /// The ladybugs: Ledyba, a red shell with a cream belly and six arms tipped with white mitts, its face below the
     /// shell's rim; Ledian flying, a red head with great blue eyes, wings out of its shell and four arms in white gloves.
     /// </summary>
-    private static PokeBuilder LadybugBuild(bool ledian)
+    private static PokeBuilder LadybugBuild(bool ledian, bool female = false)
     {
         var b = new PokeBuilder(ledian ? "Ledian" : "Ledyba", ledian ? 0.86f : 0.56f, BodyPlan.Biped, V(0, 0.3f, 0)) { Coat = Shell }.Hover();
         var red = Rgb(226, 74, 66);
@@ -546,8 +552,15 @@ internal static partial class PokemonModels
         var hr = ledian ? V(0.08f, 0.075f, 0.08f) * k : V(0.09f, 0.075f, 0.07f);
         b.Ell(head, hc, hr, ledian ? red : cream);
         if (!ledian) b.PaintEll(head, hc + V(0, 0.05f, 0), V(0.1f, 0.04f, 0.09f), red);
-        PokeBuilder.Both(s => b.Tube(head, Smooth(3, hc + V(0.03f * s, hr.Y * 0.8f, -0.01f), hc + V(0.06f * s, hr.Y + 0.08f, -0.01f), hc + V(0.08f * s, hr.Y + 0.14f, 0.02f)),
-            0.012f, 0.009f, black, blend: 0f));
+        if (female)
+        {
+            // A female's antennae are shorter (plan 09 · L7)
+            PokeBuilder.Both(s => b.Tube(head, Smooth(3, hc + V(0.03f * s, hr.Y * 0.8f, -0.01f), hc + V(0.05f * s, hr.Y + 0.065f, -0.01f), hc + V(0.07f * s, hr.Y + 0.11f, 0.01f)),
+                0.012f, 0.009f, black, blend: 0f));
+        }
+        else
+            PokeBuilder.Both(s => b.Tube(head, Smooth(3, hc + V(0.03f * s, hr.Y * 0.8f, -0.01f), hc + V(0.06f * s, hr.Y + 0.08f, -0.01f), hc + V(0.08f * s, hr.Y + 0.14f, 0.02f)),
+                0.012f, 0.009f, black, blend: 0f));
         PokeBuilder.Both(s =>
         {
             var look = V(0.45f * s, 0.05f, 1f);
@@ -557,9 +570,11 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
-    private static PokeBuilder Ledyba() => LadybugBuild(false);
+    /// <param name="female">A female (plan 09 · L7): shorter antennae.</param>
+    private static PokeBuilder Ledyba(bool female = false) => LadybugBuild(false, female);
 
-    private static PokeBuilder Ledian() => LadybugBuild(true);
+    /// <param name="female">A female (plan 09 · L7): shorter antennae.</param>
+    private static PokeBuilder Ledian(bool female = false) => LadybugBuild(true, female);
 
     // ------------------------------------------------------------------ Spinarak line
 
@@ -742,7 +757,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Xatu()
+    /// <param name="female">A female (plan 09 · L7): one band fewer on her cloak, the black one.</param>
+    private static PokeBuilder Xatu(bool female = false)
     {
         var b = new PokeBuilder("Xatu", 0.9f, BodyPlan.Bird, V(0, 0.4f, 0)) { Coat = Fur };
         var green = Rgb(110, 190, 74);
@@ -755,7 +771,7 @@ internal static partial class PokemonModels
         b.Ell(Body, c, r, white);
         b.PaintEll(Body, V(0, 0.15f, 0), V(0.2f, 0.06f, 0.2f), Rgb(80, 160, 90));
         b.PaintEll(Body, V(0, 0.2f, 0), V(0.2f, 0.015f, 0.2f), red, soft: 0.006f);
-        b.PaintEll(Body, V(0, 0.23f, 0), V(0.2f, 0.01f, 0.2f), Black, soft: 0.006f);
+        if (!female) b.PaintEll(Body, V(0, 0.23f, 0), V(0.2f, 0.01f, 0.2f), Black, soft: 0.006f);
         PokeBuilder.Both(s =>
         {
             b.PaintEll(Body, On(c, r, 0.07f * s, 0.5f), V(0.03f, 0.04f, 0.04f), Rgb(80, 180, 90));
@@ -1001,7 +1017,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Politoed
 
     /// <summary>Politoed: a green frog standing on bent legs, a green swirl on its yellow belly, a curl of blue on its head.</summary>
-    private static PokeBuilder Politoed()
+    /// <param name="female">A female (plan 09 · L7): a smaller curl on her head.</param>
+    private static PokeBuilder Politoed(bool female = false)
     {
         var b = new PokeBuilder("Politoed", 0.72f, BodyPlan.Biped, V(0, 0.3f, 0)) { Coat = Scales };
         var green = Rgb(110, 196, 84);
@@ -1037,9 +1054,11 @@ internal static partial class PokemonModels
         b.Ell(head, hc, hr, green);
         b.PaintEll(head, hc + V(0, -0.055f, 0.06f), V(0.11f, 0.045f, 0.08f), yellow);
         // The curl: a stalk up from the top of its head, wound round at its end
-        var top = hc + V(0, hr.Y + 0.07f, -0.01f);
+        // A female's curl is smaller (plan 09 · L7)
+        float cr = female ? 0.022f : 0.035f;
+        var top = hc + V(0, hr.Y + (female ? 0.045f : 0.07f), -0.01f);
         b.Tube(head, new[] { hc + V(0, hr.Y * 0.85f, -0.01f), top }, 0.011f, 0.01f, curl);
-        Curl(b, head, top, top + V(0.035f, 0, 0), V(-1f, 0, 0), V(0, 1f, 0), 0.035f, 1.3f, 0.01f, curl);
+        Curl(b, head, top, top + V(cr, 0, 0), V(-1f, 0, 0), V(0, 1f, 0), cr, 1.3f, 0.01f, curl);
         PokeBuilder.Both(s =>
         {
             var look = V(0.65f * s, 0.45f, 0.6f);
@@ -1277,7 +1296,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Wobbuffet
 
     /// <summary>Wobbuffet: a tall blue blob, arms raised and eyes shut tight, its black tail behind it watching with two eyes of its own.</summary>
-    private static PokeBuilder Wobbuffet()
+    /// <param name="female">A female (plan 09 · L7): red lips round her mouth.</param>
+    private static PokeBuilder Wobbuffet(bool female = false)
     {
         var b = new PokeBuilder("Wobbuffet", 0.8f, BodyPlan.Biped, V(0, 0.34f, 0)) { Coat = Scales };
         var blue = Rgb(92, 172, 222);
@@ -1299,6 +1319,8 @@ internal static partial class PokemonModels
             b.Limb(arm, V(0.2f * s, 0.6f, 0), hand, 0.04f, 0.038f, blue);
             b.Ell(arm, hand, V(0.042f, 0.035f, 0.04f), blue);
         });
+        // A female's mouth is ringed in red, like lipstick (plan 09 · L7)
+        if (female) b.PaintEll(Body, On(c, r, 0, 0.42f), V(0.07f, 0.045f, 0.04f) * 1.4f, Rgb(214, 40, 70));
         Grin(b, Body, On(c, r, 0, 0.42f), V(0.07f, 0.045f, 0.04f), Rgb(222, 112, 132));
         PokeBuilder.Both(s =>
         {
@@ -1641,7 +1663,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Ursaring()
+    /// <param name="female">A female (plan 09 · L7): a longer collar of fur over her shoulders.</param>
+    private static PokeBuilder Ursaring(bool female = false)
     {
         var b = new PokeBuilder("Ursaring", 1f, BodyPlan.Biped, V(0, 0.42f, 0)) { Coat = Fur };
         var brown = Rgb(132, 92, 62);
@@ -1662,7 +1685,9 @@ internal static partial class PokemonModels
         {
             float a = (i + 0.5f) * MathF.Tau / 10f;
             var o = V(MathF.Sin(a), 0, MathF.Cos(a));
-            Frond(b, Body, V(0, 0.6f, 0) + o * V(0.13f, 0, 0.1f), V(0, 0.5f, 0) + o * V(0.21f, 0, 0.18f), 0.05f, brown, o + V(0, 0.5f, 0), 0.25f, Fur);
+            // A female's collar is longer (plan 09 · L7)
+            if (female) Frond(b, Body, V(0, 0.6f, 0) + o * V(0.13f, 0, 0.1f), V(0, 0.46f, 0) + o * V(0.25f, 0, 0.22f), 0.055f, brown, o + V(0, 0.5f, 0), 0.25f, Fur);
+            else Frond(b, Body, V(0, 0.6f, 0) + o * V(0.13f, 0, 0.1f), V(0, 0.5f, 0) + o * V(0.21f, 0, 0.18f), 0.05f, brown, o + V(0, 0.5f, 0), 0.25f, Fur);
         }
         PokeBuilder.Both(s =>
         {

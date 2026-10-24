@@ -736,6 +736,48 @@ The camera target and every sprite snap to the texel grid (1/32 unit), so pixel 
   | Gyarados | white whiskers where the male's are pale blue (the male's were white before L6, which is the female's look) |
   | Eevee | the cream at the tail's tip a heart: two lobes over a point, a cleft of brown at the top |
 
+  Johto's 22 and Hoenn's 18 (L7):
+
+  | Species | The female |
+  |---|---|
+  | Meganium | feelers about three fifths as long |
+  | Ledyba, Ledian | antennae shorter, their tips nearer the head |
+  | Xatu | one band fewer low on her cloak (no black band over the red) |
+  | Sudowoodo | a smaller branch on her head |
+  | Politoed | a smaller curl on her head, on a shorter stalk |
+  | Aipom | a shorter tuft of hair |
+  | Wooper | smaller gills |
+  | Quagsire | a smaller, thinner fin along the tail |
+  | Murkrow | a smaller hat, its crown shorter |
+  | Wobbuffet | red lips round the mouth, like lipstick |
+  | Girafarig | the brown of the hindquarters reaching further forward |
+  | Gligar | a smaller stinger |
+  | Steelix | teeth of another shape: two square teeth rising from the front of her jaw |
+  | Scizor | a fuller abdomen, swelling out behind |
+  | Heracross | the horn ending in a heart (two lobes, a cleft at the top, a point into the stem) where the male's is forked |
+  | Sneasel | a shorter feather off her ear |
+  | Ursaring | a longer collar of fur over her shoulders |
+  | Piloswine, Donphan | shorter tusks |
+  | Octillery | a smaller head |
+  | Houndoom | shorter horns, wound less far |
+  | Torchic | no black spot low on her back, which the male has (the male's spot came with L7) |
+  | Combusken | a smaller crest |
+  | Blaziken | shorter feathers on her head |
+  | Beautifly | smaller red spots on her upper wings |
+  | Dustox | smaller antennae |
+  | Ludicolo | thinner, finer zigzags, twelve to a band where the male has ten |
+  | Nuzleaf, Shiftry | a smaller leaf, or crown of leaves, on her head |
+  | Meditite | smaller puffs at the sides of her head |
+  | Medicham | a smaller bulb atop her headdress |
+  | Roselia | the leaf down her chest longer |
+  | Gulpin | a shorter feather on her head |
+  | Swalot | shorter whiskers |
+  | Numel | a bigger hump |
+  | Camerupt | bigger volcanoes on her back |
+  | Cacturne | pale diamonds in a line down her front, where the male's are dark and scattered |
+  | Milotic | longer red brows, curling on down behind her head |
+  | Relicanth | smaller dark patches |
+
 - **Clips** (`PokemonAnimation`), layered over the idle loop: *idle* (breathing, head sway, tail swish, ear flicks every few seconds, wings flapping when airborne, flames flickering); *physical* (drawn back, then a strike forward with the jaw open, arms swung through and a lunge across the field); *special* (rears up gathering power with arms and wings spread, then thrusts toward the target with a cry, without moving from its place); *status* (a hop and a nod); *hit* (recoil, squash, limbs flung out); *faint* (the legs give way, then a biped topples onto its front, a quadruped sinks onto its belly with its legs splayed, a flier drops onto its side; then it sinks into the platform); *entry* (lands with a squash out of the ball, then stands tall with a cry). A physical strike and a special move's release peak when the damage lands, 0.35 s into a 0.65 s move.
   - **Bodies that answer** (plan 25 · Y5; Platinum draws none of these, so they are our own): *dodge*, as a move that misses passes it, 0.8 s with its peak at the impact (0.35 s): a biped or a quadruped hops aside, a bird banks and slips aside, a fish or a floater dips and slips aside, a serpent coils, drawing its head in and leaning aside; each comes back to where it stood. The way aside is away from the miss's path (a miss flies wide on one side of its target; the dodge takes the other), a third of the body's height for one that hops, a quarter for one that banks or dips and a fifth for a serpent, which mostly coils. *Tired*, for as long as its HP bar is in the red (a fifth or less, as the bar shows it, never the rules' HP): the head lowers, the arms, wings, ears and tail droop, a flier hangs lower, and a slow deep breath (one every 2.6 s) takes over from most of the idle's; it eases in and out over 0.6 s as the bar crosses the line. *Cheer*, 1.2 s: two hops with the head thrown back and the arms, wings and tail up, for the player's Pokémon on the field as the battle is won or a Pokémon caught, and for the foe's as the player loses. *Charge*, through a charge turn (Solar Beam's light, Skull Bash's tuck, Sky Attack's glow), from the line that tells of it until the move is let go next turn: the body gathers itself low, the head down and drawn in, the arms and wings folded, a little tremble in it; it eases in over 0.4 s and goes as the move's own lunge begins, and a type's aura gathers round it (the move's charge half; each charge move's own comes with its batch of Y6 to Y10). Every one starts and ends at the idle pose with the feet where they were.
 - **The pose's fields and the eyes' order** (plan 09 · L2 keeps this list; plan 25 · Y5 and plan 10 · F2, F6 and F10 add to it in the places given here, whichever lands first).

@@ -225,7 +225,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Donphan: an armoured elephant, the dark plates on its back ridged like a tyre, white tusks and long ear-flaps.</summary>
-    private static PokeBuilder Donphan()
+    /// <param name="female">A female (plan 09 · L7): shorter tusks.</param>
+    private static PokeBuilder Donphan(bool female = false)
     {
         var b = new PokeBuilder("Donphan", 0.85f, BodyPlan.Quadruped, V(0, 0.3f, -0.03f)) { Coat = Shell };
         var gray = Rgb(148, 162, 186);
@@ -254,7 +255,9 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             var root = V(0.055f * s, 0.22f, 0.31f);
-            b.Tube(head, Smooth(3, root, V(0.1f * s, 0.2f, 0.42f), V(0.13f * s, 0.24f, 0.5f)), 0.024f, 0.01f, Claw, Shell, 0f);
+            // A female's tusks are shorter (plan 09 · L7)
+            if (female) b.Tube(head, Smooth(3, root, V(0.085f * s, 0.205f, 0.39f), V(0.1f * s, 0.225f, 0.44f)), 0.024f, 0.011f, Claw, Shell, 0f);
+            else b.Tube(head, Smooth(3, root, V(0.1f * s, 0.2f, 0.42f), V(0.13f * s, 0.24f, 0.5f)), 0.024f, 0.01f, Claw, Shell, 0f);
             int ear = b.Ear(head, s, V(0.12f * s, 0.34f, 0.2f));
             var ec = V(0.17f * s, 0.28f, 0.17f);
             b.Ell(ear, ec, V(0.02f, 0.09f, 0.13f), armour, V(-10f, 0, 8f * s), blend: 0.02f);

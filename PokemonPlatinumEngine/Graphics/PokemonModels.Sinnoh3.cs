@@ -464,15 +464,17 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
-    private static PokeBuilder Octillery()
+    /// <param name="female">A female (plan 09 · L7): a smaller head.</param>
+    private static PokeBuilder Octillery(bool female = false)
     {
         var b = new PokeBuilder("Octillery", 0.76f, BodyPlan.Floating, V(0, 0.34f, 0)) { Coat = Scales };
         var red = Rgb(228, 56, 50);
         var yellow = Rgb(250, 208, 62);
 
         // An octopus with a gun-barrel snout, standing on tentacles that curl out round it, yellow suckers at their tips
-        var c = V(0, 0.36f, -0.02f);
-        var r = V(0.16f, 0.19f, 0.16f);
+        // A female's head is smaller on top (plan 09 · L7)
+        var c = female ? V(0, 0.35f, -0.02f) : V(0, 0.36f, -0.02f);
+        var r = female ? V(0.155f, 0.175f, 0.155f) : V(0.16f, 0.19f, 0.16f);
         b.Ell(Body, c, r, red);
         var muzzle = V(0, 0.57f, 0.21f);
         var aim = Vector3.Normalize(V(0, 0.07f, 0.04f));
@@ -672,7 +674,8 @@ internal static partial class PokemonModels
         return Lift(b);
     }
 
-    private static PokeBuilder Milotic()
+    /// <param name="female">A female (plan 09 · L7): longer red brows.</param>
+    private static PokeBuilder Milotic(bool female = false)
     {
         var b = new PokeBuilder("Milotic", 1f, BodyPlan.Serpent, V(0.05f, 0.1f, -0.28f)) { Coat = Scales };
         var cream = Rgb(246, 232, 196);
@@ -718,7 +721,9 @@ internal static partial class PokemonModels
         b.Spike(head, V(0, 0.81f, 0.05f), V(0, 0.98f, -0.06f), 0.03f, cream, 0.5f);
         PokeBuilder.Both(s =>
         {
-            b.Tube(head, Smooth(4, V(0.03f * s, 0.81f, 0.12f), V(0.06f * s, 0.9f, 0.1f), V(0.1f * s, 0.95f, 0.02f), V(0.14f * s, 0.9f, -0.04f)), 0.006f, 0.004f, Rgb(214, 54, 78));
+            // A female's brows are longer, curling on down behind her head (plan 09 · L7)
+            if (female) b.Tube(head, Smooth(4, V(0.03f * s, 0.81f, 0.12f), V(0.06f * s, 0.9f, 0.1f), V(0.1f * s, 0.95f, 0.02f), V(0.15f * s, 0.9f, -0.05f), V(0.17f * s, 0.82f, -0.09f)), 0.006f, 0.004f, Rgb(214, 54, 78));
+            else b.Tube(head, Smooth(4, V(0.03f * s, 0.81f, 0.12f), V(0.06f * s, 0.9f, 0.1f), V(0.1f * s, 0.95f, 0.02f), V(0.14f * s, 0.9f, -0.04f)), 0.006f, 0.004f, Rgb(214, 54, 78));
             var root = V(0.045f * s, 0.79f, 0.04f);
             Petal(b, head, root, V(0.13f * s, 0.46f, -0.04f), 0.045f, pink, Fur, 0.01f);
             Petal(b, head, V(0.045f * s, 0.78f, 0.01f), V(0.11f * s, 0.52f, -0.12f), 0.038f, pink, Fur, 0.01f);
@@ -890,7 +895,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Sneasel line
 
-    private static PokeBuilder Sneasel()
+    /// <param name="female">A female (plan 09 · L7): a shorter feather off her ear.</param>
+    private static PokeBuilder Sneasel(bool female = false)
     {
         var b = new PokeBuilder("Sneasel", 0.7f, BodyPlan.Biped, V(0, 0.4f, 0)) { Coat = Fur };
         var dark = Rgb(46, 66, 98);
@@ -930,7 +936,8 @@ internal static partial class PokemonModels
             int ear = b.Ear(head, s, V(0.06f * s, 0.67f, 0.0f));
             b.Spike(ear, V(0.06f * s, 0.66f, 0.0f), V(0.11f * s, 0.77f, -0.03f), 0.04f, dark, 0.5f);
         });
-        Blade(b, head, V(0.07f, 0.68f, -0.02f), V(0.16f, 0.9f, -0.06f), 0.04f, red, V(0, 0, 1f), 0.3f);
+        // A female's feather is shorter (plan 09 · L7)
+        Blade(b, head, V(0.07f, 0.68f, -0.02f), female ? V(0.13f, 0.83f, -0.05f) : V(0.16f, 0.9f, -0.06f), 0.04f, red, V(0, 0, 1f), 0.3f);
         b.Ell(head, V(0, 0.665f, 0.1f), V(0.016f, 0.02f, 0.012f), gold, mat: Shell, blend: 0.006f);
         PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.042f * s, 0.6f), V(0.4f * s, 0.1f, 1f), 0.022f, Rgb(220, 50, 70), glare: true));
         return b;
@@ -1023,7 +1030,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Gligar line
 
-    private static PokeBuilder Gligar()
+    /// <param name="female">A female (plan 09 · L7): a smaller stinger.</param>
+    private static PokeBuilder Gligar(bool female = false)
     {
         var b = new PokeBuilder("Gligar", 0.76f, BodyPlan.Bird, V(0, 0.38f, 0)) { Coat = Fur }.Hover();
         var pink = Rgb(222, 122, 222);
@@ -1034,8 +1042,17 @@ internal static partial class PokemonModels
         b.Ell(Body, V(0, 0.38f, -0.02f), V(0.085f, 0.11f, 0.08f), pink);
         int tail = b.Tail(V(0, 0.3f, -0.06f));
         b.Tube(tail, Smooth(3, V(0, 0.3f, -0.06f), V(0, 0.2f, -0.12f), V(0.02f, 0.1f, -0.1f), V(0.04f, 0.05f, -0.02f)), 0.03f, 0.02f, pink);
-        b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.08f, 0.03f, 0.04f), 0.022f, pink);
-        b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.0f, 0.02f, 0.05f), 0.022f, pink);
+        // A female's stinger is smaller (plan 09 · L7)
+        if (female)
+        {
+            b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.065f, 0.037f, 0.02f), 0.018f, pink);
+            b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.015f, 0.032f, 0.025f), 0.018f, pink);
+        }
+        else
+        {
+            b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.08f, 0.03f, 0.04f), 0.022f, pink);
+            b.Spike(tail, V(0.04f, 0.05f, -0.02f), V(0.0f, 0.02f, 0.05f), 0.022f, pink);
+        }
         PokeBuilder.Both(s =>
         {
             int leg = b.Leg(s, V(0.05f * s, 0.3f, 0.0f));
@@ -1912,7 +1929,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Houndoom()
+    /// <param name="female">A female (plan 09 · L7): shorter horns.</param>
+    private static PokeBuilder Houndoom(bool female = false)
     {
         var b = new PokeBuilder("Houndoom", 0.88f, BodyPlan.Quadruped, V(0, 0.32f, -0.03f)) { Coat = Fur };
         var black = Rgb(50, 50, 60);
@@ -1924,7 +1942,10 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             var root = V(0.04f * s, 0.6f, 0.2f);
-            var coil = Spiral(V(0.08f * s, 0.6f, 0.14f), V(0, 1f, 0), V(0, 0, -1f), 0.065f, 0.025f, 0.2f, MathF.PI * 1.75f, 14)
+            // A female's horns are shorter (plan 09 · L7): a tighter coil, not wound so far
+            var coil = (female
+                    ? Spiral(V(0.075f * s, 0.6f, 0.15f), V(0, 1f, 0), V(0, 0, -1f), 0.05f, 0.025f, 0.2f, MathF.PI * 1.35f, 12)
+                    : Spiral(V(0.08f * s, 0.6f, 0.14f), V(0, 1f, 0), V(0, 0, -1f), 0.065f, 0.025f, 0.2f, MathF.PI * 1.75f, 14))
                 .Select((p, i) => p + V(0.005f * i * s, 0, 0)).ToArray();
             b.Tube(head, new[] { root }.Concat(coil).ToArray(), 0.028f, 0.014f, Rgb(214, 214, 214), Shell, 0.004f);
             int ear = b.Ear(head, s, V(0.055f * s, 0.6f, 0.17f));

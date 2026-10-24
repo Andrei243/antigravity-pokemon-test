@@ -221,7 +221,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Torchic line
 
     /// <summary>Torchic: a round orange chick with a crest of three yellow plumes, little yellow wings and a beak.</summary>
-    private static PokeBuilder Torchic()
+    /// <param name="female">A female (plan 09 · L7): no black spot on her back, which the male has.</param>
+    private static PokeBuilder Torchic(bool female = false)
     {
         var b = new PokeBuilder("Torchic", 0.5f, BodyPlan.Bird, V(0, 0.22f, 0)) { Coat = Fur };
         var orange = Rgb(244, 140, 52);
@@ -239,6 +240,8 @@ internal static partial class PokemonModels
         // A ruff of yellow down on its chest, and stubby yellow wings
         FurTufts(b, Body, V(0, 0.24f, 0.02f), V(0.08f, 0.04f, 0.1f), 5, 0.04f, 0.014f, yellow, 0.95f, -0.9f, 0.6f);
         b.PaintEll(Body, V(0, 0.22f, 0.09f), V(0.07f, 0.04f, 0.04f), yellow);
+        // A male has a black spot low on his back, which a female hasn't (plan 09 · L7)
+        if (!female) b.PaintEll(Body, V(0, 0.17f, -0.1f), V(0.028f, 0.028f, 0.03f), Rgb(44, 36, 40), soft: 0.006f);
         PokeBuilder.Both(s =>
         {
             int wing = b.Wing(s, V(0.11f * s, 0.25f, 0));
@@ -262,7 +265,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Combusken: a lanky fighting chick, orange below and yellow above, with a crest of two plumes and grey talons.</summary>
-    private static PokeBuilder Combusken()
+    /// <param name="female">A female (plan 09 · L7): a smaller crest.</param>
+    private static PokeBuilder Combusken(bool female = false)
     {
         var b = new PokeBuilder("Combusken", 0.8f, BodyPlan.Biped, V(0, 0.4f, 0)) { Coat = Fur };
         var orange = Rgb(232, 116, 54);
@@ -295,8 +299,9 @@ internal static partial class PokemonModels
         var c = V(0, 0.62f, 0.03f);
         var r = V(0.075f, 0.07f, 0.075f);
         b.Ell(head, c, r, yellow);
+        // A female's crest is smaller (plan 09 · L7)
         foreach (var x in new[] { -0.03f, 0.03f })
-            Blade(b, head, c + V(x * 0.5f, 0.05f, -0.01f), c + V(x * 2f, 0.17f, -0.05f), 0.035f, orange, V(0, 0, 1f), 0.3f);
+            Blade(b, head, c + V(x * 0.5f, 0.05f, -0.01f), female ? c + V(x * 1.6f, 0.13f, -0.04f) : c + V(x * 2f, 0.17f, -0.05f), female ? 0.03f : 0.035f, orange, V(0, 0, 1f), 0.3f);
         b.Spike(head, On(c, r, 0, 0.6f) - V(0, 0, 0.02f), On(c, r, 0, 0.6f) + V(0, -0.015f, 0.05f), 0.024f, Rgb(244, 196, 72), 0.6f, Shell);
         PokeBuilder.Both(s =>
         {
@@ -310,7 +315,7 @@ internal static partial class PokemonModels
     /// Blaziken and its Mega Evolution: a tall red fighter, a cream mane falling down its back from a red face, cream
     /// chest and arms, yellow fluff at its wrists and shins; the Mega's wrists burn and black runs down its legs.
     /// </summary>
-    private static PokeBuilder BlazikenBuild(bool mega)
+    private static PokeBuilder BlazikenBuild(bool mega, bool female = false)
     {
         var b = new PokeBuilder(mega ? "Blaziken-Mega" : "Blaziken", 1f, BodyPlan.Biped, V(0, 0.6f, 0)) { Coat = Fur };
         var red = Rgb(212, 66, 52);
@@ -354,7 +359,8 @@ internal static partial class PokemonModels
         var r = V(0.08f, 0.082f, 0.082f);
         b.Ell(head, c, r, red);
         b.Spike(head, On(c, r, 0, 0.82f) - V(0, 0, 0.02f), On(c, r, 0, 0.82f) + V(0, -0.02f, 0.06f), 0.026f, Rgb(244, 196, 72), 0.6f, Shell);
-        PokeBuilder.Both(s => b.Spike(head, c + V(0.03f * s, 0.05f, 0.02f), c + V(0.07f * s, 0.13f, -0.03f), 0.02f, red, blend: 0.008f));
+        // A female's two head feathers are shorter (plan 09 · L7)
+        PokeBuilder.Both(s => b.Spike(head, c + V(0.03f * s, 0.05f, 0.02f), female ? c + V(0.055f * s, 0.1f, -0.01f) : c + V(0.07f * s, 0.13f, -0.03f), 0.02f, red, blend: 0.008f));
         var mane = Smooth(3, c + V(0, 0.06f, -0.03f), c + V(0, 0.04f, -0.12f), c + V(0, -0.1f, -0.16f), c + V(0, mega ? -0.36f : -0.3f, -0.14f));
         b.Tube(head, mane, 0.065f, 0.035f, cream, blend: 0.015f);
         PokeBuilder.Both(s => b.Tube(head, Smooth(3, c + V(0.04f * s, 0.03f, -0.04f), c + V(0.08f * s, -0.04f, -0.1f), c + V(0.08f * s, -0.2f, -0.12f)), 0.04f, 0.022f, cream, blend: 0.015f));
@@ -366,7 +372,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Blaziken() => BlazikenBuild(false);
+    /// <param name="female">A female (plan 09 · L7): shorter feathers on her head.</param>
+    private static PokeBuilder Blaziken(bool female = false) => BlazikenBuild(false, female);
 
     // ------------------------------------------------------------------ Mudkip line
 
@@ -802,7 +809,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Ludicolo: a dancing pineapple of a duck, yellow with green zigzags, green limbs and a sombrero of a lily pad.</summary>
-    private static PokeBuilder Ludicolo()
+    /// <param name="female">A female (plan 09 · L7): thinner zigzag stripes.</param>
+    private static PokeBuilder Ludicolo(bool female = false)
     {
         var b = new PokeBuilder("Ludicolo", 0.9f, BodyPlan.Biped, V(0, 0.36f, 0)) { Coat = Fur };
         var yellow = Rgb(246, 226, 140);
@@ -820,12 +828,14 @@ internal static partial class PokemonModels
         var br = V(0.15f, 0.21f, 0.13f);
         b.Ell(Body, bc, br, yellow);
         // Zigzag bands round its body, like a pineapple's
+        // A female's are thinner, finer zigzags (plan 09 · L7), twelve to a band
+        int zigs = female ? 12 : 10;
         foreach (float y in new[] { 0.28f, 0.4f })
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < zigs; i++)
             {
-                float a = MathF.Tau * i / 10f;
+                float a = MathF.Tau * i / zigs;
                 var n = V(MathF.Sin(a), (y - bc.Y) / br.Y, MathF.Cos(a));
-                b.Mark(Body, Out(bc, br, default, n), n, 0.04f, 0.02f, zig, MarkShape.Zigzag);
+                b.Mark(Body, Out(bc, br, default, n), n, female ? 0.034f : 0.04f, female ? 0.012f : 0.02f, zig, MarkShape.Zigzag);
             }
         // Arms out wide, palms up
         PokeBuilder.Both(s =>
@@ -895,7 +905,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Nuzleaf: a brown imp with a long pointed nose, a leaf on its head, pale bulging shorts and a pink mouth.</summary>
-    private static PokeBuilder Nuzleaf()
+    /// <param name="female">A female (plan 09 · L7): a smaller leaf on her head.</param>
+    private static PokeBuilder Nuzleaf(bool female = false)
     {
         var b = new PokeBuilder("Nuzleaf", 0.75f, BodyPlan.Biped, V(0, 0.32f, 0)) { Coat = Fur };
         var brown = Rgb(166, 118, 82);
@@ -929,7 +940,8 @@ internal static partial class PokemonModels
         b.PaintEll(head, c + V(0, 0.015f, 0.04f), V(0.07f, 0.025f, 0.05f), Rgb(110, 76, 56));
         b.Spike(head, c + V(0, 0.01f, 0.05f), c + V(0, 0.02f, 0.17f), 0.03f, pale, blend: 0.01f);
         b.Mark(head, On(c, r, 0, 0.435f), V(0, -0.3f, 1f), 0.014f, 0.014f, Rgb(232, 140, 150));
-        Blade(b, head, c + V(0, 0.06f, 0), c + V(0.02f, 0.13f, -0.1f), 0.04f, leaf, V(0, 1f, 0.2f), 0.2f, Leaf);
+        // A female's leaf is smaller (plan 09 · L7)
+        Blade(b, head, c + V(0, 0.06f, 0), female ? c + V(0.012f, 0.105f, -0.065f) : c + V(0.02f, 0.13f, -0.1f), female ? 0.032f : 0.04f, leaf, V(0, 1f, 0.2f), 0.2f, Leaf);
         PokeBuilder.Both(s =>
         {
             var at = On(c, r, 0.04f * s, 0.49f);
@@ -939,7 +951,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Shiftry: a long-nosed tengu with a white mane, a leaf crown, great leaf fans for hands and clogs for feet.</summary>
-    private static PokeBuilder Shiftry()
+    /// <param name="female">A female (plan 09 · L7): a smaller crown of leaves.</param>
+    private static PokeBuilder Shiftry(bool female = false)
     {
         var b = new PokeBuilder("Shiftry", 0.9f, BodyPlan.Biped, V(0, 0.42f, 0)) { Coat = Fur };
         var brown = Rgb(160, 110, 74);
@@ -981,8 +994,9 @@ internal static partial class PokemonModels
         b.Ell(head, c, r, white);
         b.PaintEll(head, c + V(0, -0.02f, 0.05f), V(0.06f, 0.04f, 0.03f), brown);
         b.Spike(head, c + V(0, -0.005f, 0.04f), c + V(0, 0.02f, 0.22f), 0.025f, brown, blend: 0.01f);
+        // A female's crown of leaves is smaller (plan 09 · L7)
         foreach (var x in new[] { -0.04f, 0f, 0.04f })
-            PointedLeaf(b, head, c + V(x, 0.06f, -0.01f), c + V(x * 2.5f, 0.17f, -0.05f), 0.035f, leaf, V(0, 0, 1f), 0.16f);
+            PointedLeaf(b, head, c + V(x, 0.06f, -0.01f), female ? c + V(x * 2f, 0.135f, -0.04f) : c + V(x * 2.5f, 0.17f, -0.05f), female ? 0.03f : 0.035f, leaf, V(0, 0, 1f), 0.16f);
         PokeBuilder.Both(s =>
         {
             var at = On(c, r, 0.035f * s, 0.635f);
