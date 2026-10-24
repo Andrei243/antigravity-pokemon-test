@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The little ones are napping, so keep your voice down, please."
         ],
         "text": [
-          ""
+          "Cei mici dorm, așa că vorbește mai încet, te rog."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm not sleepy! I want to go and see the Pokémon in the grass on Route 19."
         ],
         "text": [
-          ""
+          "Nu mi-e somn! Vreau să merg să văd Pokémonii din iarbă de pe Ruta 19."
         ]
       }
     }

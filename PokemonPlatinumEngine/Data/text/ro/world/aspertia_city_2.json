@@ -6,7 +6,7 @@
           "Mom"
         ],
         "text": [
-          ""
+          "Mama"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "There, all better. Off you go, and be careful out there!"
         ],
         "text": [
-          "",
-          ""
+          "Mi se pare că ai nevoie de o pauză. Stai jos un minut și lasă-ți Pokémonii să se odihnească.",
+          "Gata, ca nou. Pleacă și ai grijă pe drum!"
         ]
       }
     }
@@ -27,7 +27,7 @@
         "The PC is on. There's a message from a friend\nasking how the journey is going."
       ],
       "text": [
-        ""
+        "PC-ul e pornit. Are un mesaj de la un prieten\ncare întreabă cum merge călătoria."
       ]
     },
     "7": {
@@ -35,7 +35,7 @@
         "A tidy kitchen. Something good is in the oven."
       ],
       "text": [
-        ""
+        "O bucătărie ordonată. Se coace ceva bun în cuptor."
       ]
     },
     "8": {
@@ -43,7 +43,7 @@
         "A potted plant. Someone waters it every day."
       ],
       "text": [
-        ""
+        "O plantă în ghiveci. Cineva o udă în fiecare zi."
       ]
     },
     "14": {
@@ -51,7 +51,7 @@
         "A map of Unova. Aspertia City is marked\nin the bottom corner."
       ],
       "text": [
-        ""
+        "O hartă a Unovei. Aspertia City e marcată\nîn colțul de jos."
       ]
     },
     "15": {
@@ -59,7 +59,7 @@
         "A calendar. The days of the seasons are\nmarked in four colours."
       ],
       "text": [
-        ""
+        "Un calendar. Zilele anotimpurilor sunt\nmarcate în patru culori."
       ]
     }
   }
