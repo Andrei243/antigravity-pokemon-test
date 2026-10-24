@@ -108,7 +108,7 @@ internal static class PokemonSprites
     /// <summary>Renders one frame of a Pokémon into <paramref name="target"/>. Call outside any other texture mode.</summary>
     /// <param name="flash">Blends the body toward a flat colour by this much (the white of an evolving Pokémon).</param>
     public static void Render(RenderContext context, PokeModel model, SpriteView view, PokePose pose, RenderTexture2D target, bool hullOutline = true,
-        (Color Color, float Amount)? flash = null)
+        (Color Color, float Amount)? flash = null, int stripFrame = -1)
     {
         context.EnsureLoaded();
         int size = target.Texture.Width;
@@ -127,9 +127,16 @@ internal static class PokemonSprites
 
         var turn = Matrix4x4.CreateRotationY(framing.Yaw);
         Rlgl.DisableBackfaceCulling();
-        PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Color);
+        // A frame of the strip (plan 09 · L5) is posed once, and both passes draw it as it stands
+        bool posed = stripFrame >= 0;
+        if (posed)
+        {
+            PokemonRenderer.EnsureUploaded(model, shaders);
+            model.AnimateStrip(stripFrame, StripFrames, StripStart);
+        }
+        PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Color, posed);
         if (flash != null) shaders.SetFlash(default, 0f);
-        if (hullOutline) PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Outline);
+        if (hullOutline) PokemonRenderer.Draw(context, model, pose, turn, CharacterPass.Outline, posed);
         Rlgl.EnableBackfaceCulling();
 
         Raylib.EndMode3D();
@@ -201,7 +208,6 @@ internal static class PokemonSprites
         // Between frames, when nothing drawn is still on its way to the screen: the sprites longest unasked for go
         Ledger.Tick();
         foreach (var name in Ledger.Overflow()) Forget(name);
-        if (Waiting.Count == 0) return;
         var clock = System.Diagnostics.Stopwatch.StartNew();
         int rounds = Waiting.Count;
         for (int i = 0; i < rounds && clock.Elapsed.TotalMilliseconds < budgetMs; i++)
@@ -216,13 +222,31 @@ internal static class PokemonSprites
             {
                 BakeAndKeep(context, name, model);
                 Queued.Remove(name);
-                // A model built for these sprites alone has done its work (plan 03 · D13)
-                PokemonModels.Return(name);
+                // A model built for these sprites alone has done its work (plan 03 · D13), unless its strip waits for it
+                if (!QueuedStrips.Contains(name)) PokemonModels.Return(name);
                 continue;
             }
             // (one already on its way, for this or for the game, is waited for; a new one is asked for while few are)
             if (!PokemonModels.Holds(name) && PokemonModels.OnLoan < MostOnLoan) PokemonModels.Borrow(name);
             Waiting.Enqueue(name);
+        }
+        // The strips (plan 09 · L5) after the stills, in what is left of the budget: a list's stills come first
+        ServiceStrips(context, clock, budgetMs);
+    }
+
+    /// <summary>Waits until every strip asked for is ready (the harness, before it shoots a screen that plays one).</summary>
+    public static void FlushStrips(RenderContext context)
+    {
+        while (WaitingStrips.Count > 0)
+        {
+            var name = WaitingStrips.Dequeue();
+            QueuedStrips.Remove(name);
+            if (Strips.ContainsKey(StripKey(name)) || TryLoadStrip(name)) continue;
+            bool passing = !PokemonModels.Holds(name);
+            BakeStrip(context, name, PokemonModels.Get(name));
+            // (one borrowed for its sake while it waited in the game's queue is given back)
+            if (passing) PokemonModels.Release(name);
+            else PokemonModels.Return(name);
         }
     }
 
@@ -306,7 +330,7 @@ internal static class PokemonSprites
 
     private static PixelCanvas Bake(RenderContext context, PokeModel model, SpriteView view, RenderTexture2D target, bool hull)
     {
-        Render(context, model, view, new PokePose { Time = 0.35f }, target, hull);
+        Render(context, model, view, new PokePose { Time = StripStart }, target, hull);
         var image = Raylib.LoadImageFromTexture(target.Texture);
         Raylib.ImageFlipVertical(ref image);
         var canvas = PixelCanvas.FromImage(image);
@@ -336,6 +360,191 @@ internal static class PokemonSprites
         foreach (var view in Views)
             if (Baked.Remove(Key(name, view), out var tex)) Raylib.UnloadTexture(tex);
         Ledger.Forget(name);
+    }
+
+    // ------------------------------------------------------------------ strips: the front sprite breathing (plan 09 · L5)
+
+    /// <summary>The frames of a strip: one breath of the idle loop in eight (style guide, "Pokémon in menus").</summary>
+    public const int StripFrames = 8;
+
+    /// <summary>The moment of the idle loop the still is baked at, and the strip's first frame.</summary>
+    public const float StripStart = 0.35f;
+
+    /// <summary>
+    /// Raise when a strip's baking changes. A strip has a version of its own beside <see cref="BakeVersion"/>, so that
+    /// the strips came in without baking every still again (plan 09 · L5's decision).
+    /// </summary>
+    public const int StripVersion = 1;
+
+    /// <summary>
+    /// How many strips are held at once. A strip is eight stills' texture (512 KB), and only the one Pokémon looked at
+    /// on a screen plays one: the Pokédex's entry, the summary, the chosen starter, with room for the one just left.
+    /// </summary>
+    public const int StripsKept = 4;
+
+    /// <summary>A strip held: its texture (the frames side by side) and the seconds of the breath it plays over.</summary>
+    public readonly record struct Strip(Texture2D Texture, float Period)
+    {
+        /// <summary>The frame shown at <paramref name="seconds"/> of <see cref="FrameClock"/>.</summary>
+        public int FrameAt(double seconds) => StripFrameAt(seconds, Period);
+
+        /// <summary>Where frame <paramref name="frame"/> lies on the texture.</summary>
+        public Rectangle Source(int frame) => new(frame * Size, 0, Size, Size);
+    }
+
+    private static readonly Dictionary<string, Strip> Strips = new(StringComparer.OrdinalIgnoreCase);
+    /// <summary>The frames a strip is kept for after it was last asked for: half a second, since one plays only while its screen is open.</summary>
+    public const int StripFreshFrames = 30;
+
+    private static readonly SpriteLedger StripLedger = new(StripsKept, StripFreshFrames);
+    private static readonly Queue<string> WaitingStrips = new();
+    private static readonly HashSet<string> QueuedStrips = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// For a tool (the harness): every strip asked for in a frame is made ready by the next frame's
+    /// <see cref="Service"/>, whatever it takes, so a screen breathes from the same frame every run, as
+    /// <see cref="FieldSprites.Patient"/> does for the field's sprites. The game leaves it off.
+    /// </summary>
+    public static bool PatientStrips { get; set; }
+
+    /// <summary>How many strips are held now.</summary>
+    public static int StripCount => Strips.Count;
+
+    /// <summary>The frame of a strip over a breath of <paramref name="period"/> seconds shown at <paramref name="seconds"/>. No GPU calls.</summary>
+    public static int StripFrameAt(double seconds, float period)
+    {
+        double step = Math.Max(0.01, period) / StripFrames;
+        long frame = (long)Math.Floor(seconds / step) % StripFrames;
+        return (int)(frame < 0 ? frame + StripFrames : frame);
+    }
+
+    /// <summary>The key a strip is held under: the look's name and the frame count.</summary>
+    public static string StripKey(string name) => $"{name}|strip{StripFrames}";
+
+    /// <summary>
+    /// The cache file of a strip: the look's name, the frame count, the signature and the breath's length in
+    /// milliseconds (which a strip read back from the cache can't ask of a model it hasn't built).
+    /// </summary>
+    public static string StripFile(string name, string signature, float period) =>
+        Path.Combine(CacheFolder, $"{StripStem(name)}{signature}-{(int)MathF.Round(period * 1000f)}.png");
+
+    private static string StripStem(string name)
+    {
+        var safe = new System.Text.StringBuilder();
+        foreach (char c in name) safe.Append(char.IsLetterOrDigit(c) && c < 128 ? char.ToLowerInvariant(c) : '_');
+        return $"{safe}-strip{StripFrames}-";
+    }
+
+    private static string StripSignatureOf(string name) => $"{PokemonModels.Signature(name)}{BakeVersion}s{StripVersion}";
+
+    /// <summary>
+    /// A look's strip for the one Pokémon a screen looks at, or null while it isn't ready (asking starts it, as for
+    /// <see cref="GetBaked"/>; the still is shown meanwhile). Never asked for by a list: <see cref="StripsKept"/> are held.
+    /// </summary>
+    public static Strip? GetStrip(string name)
+    {
+        if (name == Fallback) return null;
+        if (Strips.TryGetValue(StripKey(name), out var strip))
+        {
+            StripLedger.Touch(name);
+            return strip;
+        }
+        if (QueuedStrips.Add(name)) WaitingStrips.Enqueue(name);
+        return null;
+    }
+
+    /// <summary>Loads or bakes the strips asked for, within what is left of <see cref="Service"/>'s budget.</summary>
+    private static void ServiceStrips(RenderContext context, System.Diagnostics.Stopwatch clock, double budgetMs)
+    {
+        StripLedger.Tick();
+        foreach (var name in StripLedger.Overflow()) ForgetStrip(name);
+        if (PatientStrips)
+        {
+            FlushStrips(context);
+            return;
+        }
+        int rounds = WaitingStrips.Count;
+        for (int i = 0; i < rounds && clock.Elapsed.TotalMilliseconds < budgetMs; i++)
+        {
+            var name = WaitingStrips.Dequeue();
+            if (Strips.ContainsKey(StripKey(name)) || TryLoadStrip(name))
+            {
+                QueuedStrips.Remove(name);
+                continue;
+            }
+            if (PokemonModels.TryGet(name, out var model))
+            {
+                BakeStrip(context, name, model);
+                QueuedStrips.Remove(name);
+                PokemonModels.Return(name);
+                continue;
+            }
+            if (!PokemonModels.Holds(name) && PokemonModels.OnLoan < MostOnLoan) PokemonModels.Borrow(name);
+            WaitingStrips.Enqueue(name);
+        }
+    }
+
+    private static bool TryLoadStrip(string name)
+    {
+        if (!CacheEnabled || !Directory.Exists(CacheFolder)) return false;
+        string signature = StripSignatureOf(name), stem = StripStem(name) + signature + "-";
+        var file = Directory.GetFiles(CacheFolder, stem + "*.png").FirstOrDefault();
+        if (file == null) return false;
+        if (!int.TryParse(Path.GetFileNameWithoutExtension(file)[stem.Length..], out int ms) || ms <= 0) return false;
+        var tex = Raylib.LoadTexture(file);
+        if (tex.Id == 0) return false;
+        if (tex.Width != Size * StripFrames || tex.Height != Size)
+        {
+            Raylib.UnloadTexture(tex);
+            return false;
+        }
+        Raylib.SetTextureFilter(tex, TextureFilter.Point);
+        KeepStrip(name, new Strip(tex, ms / 1000f));
+        return true;
+    }
+
+    /// <summary>Bakes a look's strip frame by frame as the stills are baked, keeps it and writes it to the cache.</summary>
+    private static void BakeStrip(RenderContext context, string name, PokeModel model)
+    {
+        if (!targetsLoaded)
+        {
+            bakeBig = Raylib.LoadRenderTexture(Size, Size);
+            bakeSmall = Raylib.LoadRenderTexture(IconSize, IconSize);
+            targetsLoaded = true;
+        }
+        var strip = new PixelCanvas(Size * StripFrames, Size);
+        for (int f = 0; f < StripFrames; f++)
+        {
+            Render(context, model, SpriteView.Front, new PokePose { Time = StripStart }, bakeBig, hullOutline: true, stripFrame: f);
+            var image = Raylib.LoadImageFromTexture(bakeBig.Texture);
+            Raylib.ImageFlipVertical(ref image);
+            var canvas = PixelCanvas.FromImage(image);
+            Raylib.UnloadImage(image);
+            canvas.OutlinePass(innerSeams: false);
+            // Copied texel for texel, as the still is kept: no blending of what isn't opaque
+            for (int y = 0; y < Size; y++)
+                for (int x = 0; x < Size; x++) strip.SetRaw(f * Size + x, y, canvas.Get(x, y));
+        }
+        float period = PokemonAnimation.BreathSeconds(model);
+        KeepStrip(name, new Strip(strip.ToTexture(), period));
+        if (!CacheEnabled) return;
+        string file = StripFile(name, StripSignatureOf(name), period);
+        var png = PngWriter.Encode(strip);
+        CacheFolders.Write(file, stream => stream.Write(png), () => Directory.GetFiles(CacheFolder, StripStem(name) + "*.png"), CacheFolders.Prunes);
+    }
+
+    private static void KeepStrip(string name, Strip strip)
+    {
+        if (Strips.TryGetValue(StripKey(name), out var old)) Raylib.UnloadTexture(old.Texture);
+        Strips[StripKey(name)] = strip;
+        StripLedger.Keep(name);
+    }
+
+    /// <summary>Forgets a look's strip (and frees it).</summary>
+    public static void ForgetStrip(string name)
+    {
+        if (Strips.Remove(StripKey(name), out var strip)) Raylib.UnloadTexture(strip.Texture);
+        StripLedger.Forget(name);
     }
 }
 

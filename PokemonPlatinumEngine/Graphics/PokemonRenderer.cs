@@ -57,12 +57,13 @@ internal static class PokemonRenderer
     }
 
     /// <param name="root">Places the feet and turns the model (System.Numerics row-vector convention).</param>
-    public static void Draw(RenderContext context, PokeModel m, PokePose pose, Matrix4x4 root, CharacterPass pass)
+    /// <param name="posed">The skeleton is posed already (<see cref="PokeModel.AnimateStrip"/>): it is drawn as it stands.</param>
+    public static void Draw(RenderContext context, PokeModel m, PokePose pose, Matrix4x4 root, CharacterPass pass, bool posed = false)
     {
         EnsureUploaded(m, context.Shaders);
         if (m.Imported != null)
         {
-            m.Animate(pose);
+            if (!posed) m.Animate(pose);
             if (pass == CharacterPass.Outline)
             {
                 context.Shaders.SetOutlineWidth(0f);
@@ -76,7 +77,7 @@ internal static class PokemonRenderer
             return;
         }
         if (m.Body == null) return;
-        m.Animate(pose);
+        if (!posed) m.Animate(pose);
         switch (pass)
         {
             case CharacterPass.Depth:

@@ -37,6 +37,8 @@ partial class Harness
         engine.PeopleStayPut = true;
         // A Pokémon standing in the field waits for its sprite rather than showing a Poké Ball for a few frames (plan 10 · F1)
         FieldSprites.Patient = true;
+        // The one Pokémon a menu looks at breathes from the frame after it is asked for, every run (plan 09 · L5)
+        PokemonSprites.PatientStrips = true;
         startMs = startClock.Elapsed.TotalMilliseconds;
 
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)

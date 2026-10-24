@@ -209,6 +209,24 @@ internal static partial class ModernUi
             new Rectangle(MathF.Round(c.X - w / 2f), MathF.Round(c.Y - h / 2f - hop), w, h), Vector2.Zero, 0f, tint ?? Color.White);
     }
 
+    /// <summary>
+    /// The one Pokémon a screen looks at (plan 09 · L5; style guide, "Pokémon in menus"): its strip breathing, a frame
+    /// by <see cref="FrameClock"/>, at the same whole-number scale and place as <see cref="PixelArt"/> draws the still,
+    /// which stands in for it until the strip is baked. Only the Pokédex's entry, the summary and the chosen starter
+    /// call it; a list never does.
+    /// </summary>
+    public static void Breathing(Texture2D still, PokemonSprites.Strip? strip, Vector2 c, int scale, float hop = 0f)
+    {
+        if (strip is not { } s)
+        {
+            PixelArt(still, c, scale, hop);
+            return;
+        }
+        float w = PokemonSprites.Size * scale, h = PokemonSprites.Size * scale;
+        Raylib.DrawTexturePro(s.Texture, s.Source(s.FrameAt(FrameClock.Now)),
+            new Rectangle(MathF.Round(c.X - w / 2f), MathF.Round(c.Y - h / 2f - hop), w, h), Vector2.Zero, 0f, Color.White);
+    }
+
     /// <summary>How far a Pokémon's icon or sprite is lifted now, in its own pixels: the chosen one hops quickly and high, the rest gently.</summary>
     public static int Hop(bool selected, bool still = false)
     {

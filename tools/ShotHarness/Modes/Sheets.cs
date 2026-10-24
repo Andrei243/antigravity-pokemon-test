@@ -25,6 +25,41 @@ partial class Harness
         Save(img, "90_pokemon_sheet");
         Raylib.UnloadRenderTexture(sheet);
 
+        // The strips (plan 09 · L5): eight frames of one breath, side by side, for one Pokémon of each way of idling,
+        // with the still beside each to hold its first frame against
+        string[] breathers = { "Turtwig", "Chimchar", "Piplup", "Gastly", "Starly", "Dratini", "Magikarp", "Pikachu" };
+        if (Wanted("90_pokemon_strip"))
+        {
+            foreach (var sp in breathers)
+            {
+                PokemonSprites.Request(sp);
+                PokemonSprites.GetStrip(sp);
+            }
+            PokemonSprites.Flush(game.RenderContext);
+            PokemonSprites.FlushStrips(game.RenderContext);
+            var strips = Raylib.LoadRenderTexture(1920, 1080);
+            Raylib.BeginTextureMode(strips);
+            Raylib.ClearBackground(new Color(200, 220, 240, 255));
+            for (int i = 0; i < breathers.Length; i++)
+            {
+                int y = i * 134;
+                Raylib.DrawTexture(PixelArtGenerator.GetPokemonSprite(breathers[i], false), 8, y, Color.White);
+                if (PokemonSprites.GetStrip(breathers[i]) is { } strip)
+                {
+                    Raylib.DrawTexture(strip.Texture, 160, y, Color.White);
+                    Raylib.DrawText($"{breathers[i]}  {strip.Period:F2} s", 1196, y + 56, 20, Color.Black);
+                    Console.WriteLine($"  strip of {breathers[i]}: {PokemonSprites.StripFrames} frames over {strip.Period:F2} s, {strip.Texture.Width}x{strip.Texture.Height}");
+                }
+                else Console.WriteLine($"  !! no strip of {breathers[i]}");
+            }
+            Raylib.EndTextureMode();
+            var stripImage = Raylib.LoadImageFromTexture(strips.Texture);
+            Raylib.ImageFlipVertical(ref stripImage);
+            Save(stripImage, "90_pokemon_strip");
+            Raylib.UnloadRenderTexture(strips);
+            Console.WriteLine($"  strips held: {PokemonSprites.StripCount} (at most {PokemonSprites.StripsKept} once they go unasked for)");
+        }
+
         // On its own, the mode goes on through every species in Pokédex order, sixty to a page: the front sprite with the
         // icon beside it (plan 03 · D5). The first run bakes them all (and meshes their models), later runs read the cache
         if (mode == "sheets")

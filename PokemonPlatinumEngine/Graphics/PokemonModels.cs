@@ -221,6 +221,22 @@ internal sealed class PokeModel
         Skeleton.Evaluate(Pose, Skin);
     }
 
+    /// <summary>
+    /// Poses the skeleton for frame <paramref name="frame"/> of the menus' strip (plan 09 · L5,
+    /// <see cref="PokemonAnimation.StripPose"/>). A model with clips of its own plays its idle at the frame's moment,
+    /// unblended. Main thread, like <see cref="Animate"/>.
+    /// </summary>
+    public void AnimateStrip(int frame, int frames, float start)
+    {
+        if (Imported != null)
+        {
+            ImportedModels.Animate(this, new PokePose { Time = start + PokemonAnimation.BreathSeconds(this) * frame / frames });
+            return;
+        }
+        PokemonAnimation.StripPose(this, frame, frames, start, Pose, new SkeletonPose(Skeleton.Count));
+        Skeleton.Evaluate(Pose, Skin);
+    }
+
     /// <summary>The first bone with this role (-1 if there is none).</summary>
     public int Find(PokeRole role) => Bones.FindIndex(b => b.Role == role);
 }
