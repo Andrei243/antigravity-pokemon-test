@@ -333,7 +333,7 @@ every chapter from the first scene to the Pokémon League and after.
 
 ## Status
 
-- [ ] V1 The catalogue, the cast and the keys
+- [x] V1 The catalogue, the cast and the keys
 - [ ] V2 Playing a voice
 - [ ] V3 The samples and Barry's first chapter
 - [ ] V4 The synthesised cast, the trial
@@ -341,3 +341,14 @@ every chapter from the first scene to the Pokémon League and after.
 - [ ] V6 The face and the stage
 - [ ] V7 onward: each chapter as it is written
 - [ ] V8 Other languages
+
+## V1 as built (2026-10-24)
+
+- **Keys** are plan 17 · N4's, as it was built (`Text.ScriptLineKey`, `Text.PersonLineKey`); the introduction's are `intro:<region>.<Property>.0` (`RegionIntroLines`' property names; V6 maps them to the screen's phases).
+- **Catalogue**: `Data/VoiceCatalogue.cs` (GPU-free, in the engine so the tests run it in memory) writes `Data/voice/lines.json` (a line to a row; about 12,400 lines over every region's scripts, overlays and maps) and `docs/voice/coverage.md` through `tools/VoiceTool catalogue`. Regenerate with `dotnet run --project tools/VoiceTool -- catalogue --add-missing` after anything that adds or rewrites a line; it lists new, stale, recast and gone keys. `--check` writes nothing.
+- **Kept across runs**: `direction`, `notes`, and a spoken text (or a decision to leave a line shown only) written by hand with `"manual": true`, while the line's `hash` holds. Everything else is made afresh.
+- **Spoken text** (`Data/SpokenText.cs`): `{player}`, `{rival}` and any free placeholder are dropped with the comma round them where that reads well; a line that cannot lose one is `shownOnly` (about 3% today) until written by hand. `{assistant}` (Lucas, Dawn) and `{starter}`/`{rivalstarter}` (the file's region's three) stay in the spoken text and get a variant per value (`~starter=Piplup`). The text box's markup (plan 09 · L3) is stripped, `{money N}` says its number. `~named` takes (default names kept) are by hand only; nothing generates them yet.
+- **Cast** (`Data/voice/cast.json`, `Data/VoiceCast.cs`): `voices` (named ids; `rival` carries `clone`, `assistant` `chooses` boy or girl at run time), `names` (a script's speaker name, or a person's name, to a voice id or an archetype), `looks` (an `npcType` that stands for a named character), `people` (`place.key` overrides), `archetypes` (voice counts; default 3). An archetype voice is `look:lass#2` or `class:youngster#1`, picked by an FNV-1a hash of place and key. A person is resolved in the order people, named look, named name, rival class, trainer's own name, class, look, generic name, `look:person`. **A name nobody has cast gets a provisional voice of its own** (`catalogue --add-missing`, 200 today, one per display name across all regions: two regions' "Mom" share one until a `speaker <id>` or `people` entry splits them), and the test fails until that has run.
+- **`speaker <id> "Name"`** is in the language (`Instruction.VoiceId`; `docs/scripts.md`); no script uses it yet, the names do the work.
+- **Static speaker rule**: a line's voice is the last `speaker` written before it in the script; a script starts as `self`, which is the one voice of the people whose `script` it is, else `@self`, decided at run time (V2) by the person spoken to. Called scripts are not followed. `text` lines, `speaker none`, answers, signs and Pokémon (`npcType` Pokemon) are unvoiced and counted. `sayown`, `trainerline` and `broadcast` lines are not catalogued (a person's own before/after lines are); `Data/trainer-lines.json` (plan 11 · C12) is V6's.
+- **Left for V2**: nothing plays; `IScriptHost.Say` does not carry keys yet; `Listen` has no voice lines.
