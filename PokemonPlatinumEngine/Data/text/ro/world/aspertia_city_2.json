@@ -1,22 +1,12 @@
 {
   "people": {
-    "aspertia_city_2.Mom": {
+    "0": {
       "name": {
         "en": [
           "Mom"
         ],
         "text": [
-          "Mama"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "You look tired out, dear. Sit down for a minute and let your Pokémon rest.",
-          "There, all better. Off you go, and be careful out there!"
-        ],
-        "text": [
-          "Mi se pare că ai nevoie de o pauză. Stai jos un minut și lasă-ți Pokémonii să se odihnească.",
-          "Gata, ca nou. Pleacă și ai grijă pe drum!"
+          ""
         ]
       }
     }

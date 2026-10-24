@@ -1,0 +1,170 @@
+{
+  "BiancasLesson": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heeey! Over here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This kind of reminds me of the day I set out on Route 1..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK, here's how it works. The Pokédex fills in by itself whenever you meet a Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And when you catch one, it records even more about it! So, watch closely. I'll catch one now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phew! I did it! OK, the important part: weaken a wild Pokémon first, then throw a Poké Ball."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If it's healthy it'll just break out. A tired Pokémon is much easier to catch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're taking that Town Map down to your friend, right? Floccesy Town is straight down this road."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bye for now! Meet lots of Pokémon, and catch lots of them, OK?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlderMeets": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You there! Young Trainer!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The name's Alder! I go where the wind takes me, and I tell everyone I meet how good it is to walk with Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And who might you be? {player}, from Aspertia City! Ha! Up the hill, eh?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your {starter} is a fine-looking Pokémon. But you're not quite a seasoned Trainer yet, are you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right! I'll give you a little training. Follow me to Floccesy Town!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Alder": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm? Out walking with a Pokémon? Good, good! There's no better way to spend a day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bianca": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Weaken it first, then throw the ball! You can do it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+# Alder's house in Floccesy Town (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/floccesy_town_2.s, read for the order of the scene alone).
+#
+# Alder's lesson, played as the player is brought in on VAR_UNOVA_FLOCCESY 4: two of the Trainers' School's pupils
+# battle the player in turn, each with one of the three elemental monkeys (Black 2's TRAINER_SCHOOL_KID_SEYMOUR and
+# _CASSIE, _2 and _3 by the starter the player took: Seymour's is weak to it, Cassie's strong). Then Alder's talk of
+# types, the team healed, five Oran Berries, and the player sent back up the hill to Cheren's Gym (5; Route 19's
+# VAR_UNOVA_ROUTE_19 3). The people: 0 the girl (Cassie), 1 the boy (Seymour), 2 Alder.
+
+
+script OnEnter
+  if var VAR_UNOVA_FLOCCESY != 4 end
+  scene "Alder's lesson"
+  speaker "Girl"
+  say "Oh! Are we going to help train this Trainer, sir?"
+  speaker "Boy"
+  say "Really? But they look really tough!"
+  face 2 player
+  speaker "Alder"
+  say "Exactly! This Trainer may be tough, but there's as much to learn from losing as from winning."
+  say "And haven't I always told you? What matters most is that you and your Pokémon enjoy yourselves!"
+  say "So, {player}! Please be their opponent."
+  speaker "Boy"
+  face 1 player
+  say "OK! I'll show you what's cool about my Pokémon!"
+  if starter "Snivy" goto SeymourSnivy
+  if starter "Tepig" goto SeymourTepig
+  battle 1 as "unova_school_kid_seymour_3" canlose
+  goto Seymoured
+label SeymourSnivy
+  battle 1 as "unova_school_kid_seymour" canlose
+  goto Seymoured
+label SeymourTepig
+  battle 1 as "unova_school_kid_seymour_2" canlose
+label Seymoured
+  speaker "Alder"
+  say "A fine battle, both of you! Now, before the next one, let's see to your Pokémon, {player}."
+  heal
+  fanfare heal
+  speaker "Girl"
+  face 0 player
+  say "Some battles are decided by type matchups. Let me show you!"
+  if starter "Snivy" goto CassieSnivy
+  if starter "Tepig" goto CassieTepig
+  battle 0 as "unova_school_kid_cassie_3" canlose
+  goto Cassied
+label CassieSnivy
+  battle 0 as "unova_school_kid_cassie" canlose
+  goto Cassied
+label CassieTepig
+  battle 0 as "unova_school_kid_cassie_2" canlose
+label Cassied
+  speaker "Alder"
+  say "Now that was a rousing battle! I could tell every one of the Pokémon was enjoying itself."
+  say "Well, {player}? Types matter a great deal in battle. Water beats Fire, Fire beats Grass, Grass beats Water."
+  say "But listen! When a Pokémon uses a move of its own type, the move hits even harder. Remember that!"
+  say "Let's heal these hard-working Pokémon. {starter}! You did a great job for {player}!"
+  heal
+  fanfare heal
+  say "One more thing before you go. Take these!"
+  give "Oran Berry" 5
+  say "Give a Pokémon an Oran Berry to hold, and it'll eat it by itself when its HP runs low in battle."
+  say "Now, the Gym Leader in Aspertia is a very strong Trainer. But don't worry. You'll do just fine!"
+  say "After that, take on stronger Trainers, and the Gym Leader of every city. Grow together with your Pokémon!"
+  say "Meeting Pokémon and people you'd never have met otherwise. That's the best thing about travelling!"
+  setvar VAR_UNOVA_FLOCCESY 5
+  setvar VAR_UNOVA_ROUTE_19 3
+  endscene
+  end
+
+
+script Alder
+  speaker "Alder"
+  if badge basic goto Badge
+  say "Go and show Aspertia's Gym Leader what you and your Pokémon can do!"
+  end
+label Badge
+  say "Oho! You won a Gym Badge! That comes of understanding your Pokémon and drawing out their strength."
+  end
+
+script Girl
+  speaker "Girl"
+  say "My dream is to train my Pokémon here, and become the strongest Trainer in Unova!"
+  end
+
+script Boy
+  speaker "Boy"
+  say "I want to go to lots of places and learn all about Pokémon. Then I'll get even stronger!"
+  end

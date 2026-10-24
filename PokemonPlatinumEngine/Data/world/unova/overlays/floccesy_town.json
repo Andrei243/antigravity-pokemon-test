@@ -1,10 +1,20 @@
 {
-  // Floccesy Town (plan 22 · U2): Black 2's town under its bell tower, our words. Alder at the town's edge, the way to
-  // the Pledge Grove and the town's triggers are later sessions'
+  // Floccesy Town (plan 22 · U2, U5): Black 2's town under its bell tower, our words. Alder (0) meets the player at the
+  // town's edge, waits at the top of the street and sends them on to the ranch with Hugh's Town Map
+  // (floccesy_town.txt). The way to the Pledge Grove and Bianca's Habitat List are later sessions'
   "area": "floccesy_town",
-  "bgmTrack": "sinnoh/floaroma",
+  "bgmTrack": "unova/floccesy",
   "trees": "Round",
+  "architecture": "Bellfield",
+  "triggers": [
+    { "script": "AlderWelcome", "x": 108, "z": 694, "width": 1, "depth": 4, "variable": "VAR_UNOVA_FLOCCESY", "value": 0 },
+    { "script": "AlderTownMaps", "x": 112, "z": 670, "width": 3, "depth": 1, "variable": "VAR_UNOVA_FLOCCESY", "value": 1 },
+    { "script": "AlderWaits", "x": 111, "z": 668, "width": 1, "depth": 3, "variable": "VAR_UNOVA_FLOCCESY", "value": 2 },
+    { "script": "AlderHome", "x": 112, "z": 667, "width": 4, "depth": 1, "variable": "VAR_UNOVA_FLOCCESY", "value": 3 },
+    { "script": "AlderHome", "x": 112, "z": 670, "width": 4, "depth": 1, "variable": "VAR_UNOVA_FLOCCESY", "value": 3 }
+  ],
   "people": {
+    "0": { "name": "Alder", "npcType": "alder", "script": "Alder", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ALDER_FLOCCESY" },
     "2": {
       "name": "Boy",
       "npcType": "Youngster",

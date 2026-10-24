@@ -1,0 +1,73 @@
+# Route 19 (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_19.s, read for the order of the scenes alone).
+#
+# VAR_UNOVA_ROUTE_19, the route's count as Black 2 keeps it: 0 Bianca waiting past the gate; 1 her lesson given; 2 Alder
+# met, gone ahead to Floccesy Town; 3 his training given at home (floccesy_town_2.txt). The people: 5 Bianca
+# (FLAG_UNOVA_HIDE_BIANCA_ROUTE_19), 1 Alder (FLAG_UNOVA_HIDE_ALDER_ROUTE_19).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# Past the gate (the route's trigger 0, on 0): Bianca shows how a Pokémon is caught, catching one with her own
+# Munna, and goes back up the hill. Mom is home again and Hugh's sister with her.
+script BiancasLesson
+  scene "Bianca's lesson"
+  clearflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  show 5
+  face 5 player
+  speaker "Bianca"
+  say "Heeey! Over here!"
+  say "This kind of reminds me of the day I set out on Route 1..."
+  say "OK, here's how it works. The Pokédex fills in by itself whenever you meet a Pokémon."
+  say "And when you catch one, it records even more about it! So, watch closely. I'll catch one now."
+  catchinglesson "Patrat" 2 by "Bianca" "Munna" 7
+  say "Phew! I did it! OK, the important part: weaken a wild Pokémon first, then throw a Poké Ball."
+  say "If it's healthy it'll just break out. A tired Pokémon is much easier to catch!"
+  say "You're taking that Town Map down to your friend, right? Floccesy Town is straight down this road."
+  say "Bye for now! Meet lots of Pokémon, and catch lots of them, OK?"
+  walk 5 up 3
+  hide 5
+  setflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  setflag FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_HUGHS_SISTER
+  clearflag FLAG_UNOVA_HIDE_MOM_HOME
+  setvar VAR_UNOVA_ROUTE_19 1
+  endscene
+  end
+
+
+# The bottom of the route (trigger 1, on 1): Alder, once Champion of Unova, stops the player, looks the new partner
+# over and goes ahead to Floccesy Town to give a lesson.
+script AlderMeets
+  scene "Alder on Route 19"
+  speaker "???"
+  say "You there! Young Trainer!"
+  walk 1 down 2
+  face 1 player
+  face player 1
+  speaker "Alder"
+  say "The name's Alder! I go where the wind takes me, and I tell everyone I meet how good it is to walk with Pokémon."
+  say "And who might you be? {player}, from Aspertia City! Ha! Up the hill, eh?"
+  say "Your {starter} is a fine-looking Pokémon. But you're not quite a seasoned Trainer yet, are you?"
+  say "Right! I'll give you a little training. Follow me to Floccesy Town!"
+  walk 1 right 6
+  hide 1
+  setflag FLAG_UNOVA_HIDE_ALDER_ROUTE_19
+  setvar VAR_UNOVA_ROUTE_19 2
+  endscene
+  end
+
+
+script Alder
+  speaker "Alder"
+  say "Hm? Out walking with a Pokémon? Good, good! There's no better way to spend a day."
+  end
+
+
+script Bianca
+  speaker "Bianca"
+  say "Weaken it first, then throw the ball! You can do it!"
+  end

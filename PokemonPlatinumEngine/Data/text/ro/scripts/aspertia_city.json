@@ -1,0 +1,992 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! Got yourself a Pokémon yet? There's nobody to battle round here. I'm bored out of my mind!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Wait. A girl called Bianca is coming to give you one? Seriously?!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... when you get your Pokémon, be really, really kind to it. OK?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Yeah."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right! There's something I have to do, and I can't do it alone. I need someone I can trust."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Besides my partner, I mean. Someone like you. So let's go find this Bianca!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Head home, sis."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK, big brother! Bye-bye, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll check the Pokémon Center and the school. You look round the rest of town. Whoever finds her first, shouts!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "NotYet": [
+    {
+      "en": [
+        "{player} hasn't found Bianca yet. Better look round Aspertia before heading out of town."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughCatchesUp": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Hang on!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She wasn't at the Center, or the school. Then it hit me. The outlook! It's the best-known spot in town."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Anyone new to Aspertia goes up there first. Go on, get up there and get your Pokémon! I'll wait here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughTurnsBack": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, wrong way! I'm telling you, she's up there. Go and get your Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bianca": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's sooo pretty up here. I could look at this view all day!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow... It's sooo pretty! You can see all the way to the sea from here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Hi there! Isn't this view something?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Bianca! I help Professor Juniper with her Pokémon research."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm looking for someone, actually. Do you know a Trainer called {player}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Hmm. They told me what to look for... Wait a sec. That's you, isn't it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You do? Oh! Wait, it's you! You're {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wooow, you're exactly like they told me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've got a really important favour to ask. Will you help us complete the Pokédex?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "N-no way. I must have heard that wrong. This is really, really important, you know!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yay, thank you! Your help is going to move the professor's research along so much."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And filling in the Pokédex is super fun, I promise! OK then... ta-daaa!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One of the Pokémon in here is going to be your partner. Go on, choose!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} chose {starter}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, wow! You and {starter} look perfect together!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now you've got a Pokémon, you get this too. Your very own Pokédex!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It notes down every Pokémon you meet, all by itself. The professor wants you to see as many as you can!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heeey! How long were you going to leave me waiting down there?!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So that's your partner? Nice! Like my sister said: look after it really, really well. Got it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey... what's that you're holding?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a Pokédex!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give me one too! Please! I want to get stronger, and if I know more about Pokémon, I'll be tougher. Right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Um... sorry, who are you again?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm {rival}! I'm going to travel all over Unova with my partner. I'm looking for something really important."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, OK! I don't totally get it, but a journey's always a good idea. And I just happen to have a spare!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca gave {rival} a Pokédex."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ooh, I've had a brilliant idea! You've both got Pokémon now. Why don't you have a battle?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yeah! Let's see what kind of Trainer you are. I'll use the {rivalstarter} I raised from an Egg!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I lost... Battling a Trainer is nothing like battling wild Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whatever. Now I know you're a Trainer I can count on, and that's what matters."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not bad at all for your first battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right, I'm heading off first. Get stronger, OK?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Both your Pokémon tried so hard! But your partner's still small, so battle a lot and help it grow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now let's get it fixed up at the Pokémon Center. It's the best place ever for Pokémon tired out from battling!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TheGifts": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! You must be Bianca. Nice to meet you! And {player} has chosen {starter}. Don't they look good together?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, I nearly forgot! Here, take these. They're Running Shoes!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a pair of Running Shoes!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A perfect fit! Hold the run button down and you'll go faster than ever. Off you go, run to your heart's content!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Um... and these are from me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh? Why are there two Town Maps?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The other one's for my big brother. He ran off without one! Will you give it to him, {player}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} put {rival}'s Town Map away to give him later."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What a lovely idea. Even when there's only one road down to the sea, a Town Map is good to have."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aww, you guys! Just watching this makes me happy!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK, next stop: Route 19! I'll show you how to catch a Pokémon. Come find me past the gate!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CherenAndHugh": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heeey!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How did it go with the Gym Leader? Oh! Is that the Basic Badge? Amazing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You only just set out, and you've already won a Badge! Here, take this to celebrate."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It holds Return. The closer a Pokémon is to its Trainer, the harder that move hits!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still, Cheren..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca! It's been two years, hasn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren! Wow, look at you. A real Gym Leader!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, Bianca and I set out on our own journeys from Nuvema Town, far to the east of here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you ever want to talk about types or Abilities, ask me. I'm a teacher now, after all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! You there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are you the Gym Leader? One, two, three, let's battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look like a tough Trainer. Very well. Come into my Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's it? What kind of answer is that?! I'm taking you down!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Being a Gym Leader is even harder than I thought..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Anyway! The next Gym is in Virbank City, east along Route 20 past Floccesy Town. Good luck, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca, Bianca... where could she be?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She's up at the outlook, I'm sure of it. Go on!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MomOutside": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sister": [
+    {
+      "en": [
+        "{rival}'s Sister"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Be good friends with your Pokémon, OK?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CherenOutside": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Trainer who knows why they battle grows faster. Think about what you want from your journey."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+# Inside a Gym of Unova (Cheren's first): a determined brass march in A minor, a dotted step over a walking tuba and
+# snare rolls, turning through F and G before it digs in again. Original composition for this game (plan 22 · U5).
+title Pokémon Gym (Unova)
+tempo 140
+meter 4/4
+reverb 0.24
+night none
+
+track lead trumpet vol=0.64 pan=0.05 rev=0.24
+  L o5 a4. e8 a4 o6 c4 | o5 a4 f8 a8 o6 c4 o5 a4 | o5 g4 d8 g8 b4 g4 | o5 a2 e4 r4 |
+  o6 c4. o5 b8 a4 e4 | o5 f4 a8 o6 c8 f4 c4 | o6 d4 o5 b8 g8 d4 g4 | o5 g+2 b4 r4 |
+  o5 a4. o6 c8 f4 c4 | o5 b4. o6 d8 g4 d4 | o5 e4 g8 b8 o6 e4 o5 b4 | o5 a2. r4 |
+  o5 f4 a8 o6 c8 o5 a4 f4 | o5 g4 b8 o6 d8 o5 b4 g4 | o5 a4 f4 b4 g4 | o5 a2. r4 |
+
+track pad brass vol=0.28 pan=-0.25 rev=0.28
+  L o4 (a c e)1 | (f a c)1 | (g b d)1 | (a c e)1 |
+  (a c e)1 | (f a c)1 | (g b d)1 | (e g+ b)1 |
+  (f a c)1 | (g b d)1 | (e g b)1 | (a c e)1 |
+  (f a c)1 | (g b d)1 | (f a c)2 (g b d)2 | (a c e)1 |
+
+track bass tuba vol=0.56 rev=0.1
+  L o3 a4 e4 a4 e4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 a4 e4 a4 e4 |
+  o3 a4 e4 a4 e4 | o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 e4 b4 e4 g+4 |
+  o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 e4 b4 e4 b4 | o3 a4 e4 a4 e4 |
+  o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 | o3 f4 c4 g4 d4 | o3 a4 e4 a2 |
+
+track drums kit vol=0.4 rev=0.12
+  L v84 [ b4 s8. s16 b4 s4 | ]7 b4 s16 s16 s16 s16 s8 s8 s4 | [ b4 s8. s16 b4 s4 | ]7 b4 s16 s16 s16 s16 s8 s8 s4 |

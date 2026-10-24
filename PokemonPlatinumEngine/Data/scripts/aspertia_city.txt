@@ -1,0 +1,350 @@
+# Aspertia City (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/aspertia_city.s, aspertia_city_pokemon_center.s and aspertia_city_gym.s, read for
+# the order of the scenes alone; docs/mechanics/rulings.md, "Unova's first chapter").
+#
+# VAR_UNOVA_ASPERTIA, the town's count as Black 2 keeps it, and ours where we tell the beats another way: 0 a new game;
+# 1 Hugh met at his door and the two of them looking for Bianca; 2 Hugh waiting at the foot of the outlook's steps; 5
+# the starter, the Pokédex and Hugh's first battle had, off to the Pokémon Center; 6 shown round the Pokémon Center;
+# 7 Mom's Running Shoes and the Town Maps given, Bianca gone ahead to Route 19. (3 and 4 are Black 2's steps between,
+# which our telling plays in one scene.) VAR_UNOVA_OUTLOOK is 1 once Hugh has caught up at the steps.
+#
+# The people: 0 Hugh (FLAG_UNOVA_HIDE_HUGH_ASPERTIA), 1 Mom outside the Pokémon Center (FLAG_UNOVA_HIDE_MOM_ASPERTIA), 2 Bianca
+# (FLAG_UNOVA_HIDE_BIANCA_ASPERTIA), 3 Hugh's sister (FLAG_UNOVA_HIDE_HUGHS_SISTER), 7 Cheren before the school (FLAG_UNOVA_HIDE_CHEREN_ASPERTIA).
+
+
+# Where everyone stands by the story, and the scenes that play as the player comes out of a door
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_ASPERTIA == 0 goto AtTheirDoor
+  if var VAR_UNOVA_ASPERTIA == 2 goto HughWaits
+  if var VAR_UNOVA_ASPERTIA == 6 goto Gifts
+  if var VAR_UNOVA_ASPERTIA >= 7 goto AfterTheBadge
+  end
+label AtTheirDoor
+  place 3 42 751 down
+  place 0 43 751 down
+  if var PLAYER_X != 47 end
+  if var PLAYER_Y != 762 end
+  goto HughAtTheDoor
+label HughWaits
+  place 0 37 721 up
+  end
+label Gifts
+  place 2 47 741 up
+  if var PLAYER_X != 48 end
+  if var PLAYER_Y != 740 end
+  call TheGifts
+label AfterTheBadge
+  if not badge basic end
+  if flag FLAG_UNOVA_AFTER_THE_BASIC_BADGE end
+  if var PLAYER_X != 39 end
+  if var PLAYER_Y != 739 end
+  call CherenAndHugh
+
+
+# Out of the front door for the first time (Black 2's script 18, played as the player comes out): Hugh and his little
+# sister come down from their house. He has heard of Bianca, sends his sister home and goes looking on his own side
+# of town.
+label HughAtTheDoor
+  if var CROSSED_IN == 1 namerival
+  scene "Hugh at the door"
+  speaker "{rival}'s Sister"
+  say "Hi, {player}!"
+  move 3 down 11 right 2
+  walk 0 down 11 right 3
+  waitmoves
+  face player left
+  face 0 player
+  speaker "{rival}"
+  say "Hey! Got yourself a Pokémon yet? There's nobody to battle round here. I'm bored out of my mind!"
+  emote 0 dots
+  say "...Wait. A girl called Bianca is coming to give you one? Seriously?!"
+  speaker "{rival}'s Sister"
+  say "{player}... when you get your Pokémon, be really, really kind to it. OK?"
+  speaker "{rival}"
+  emote 0 dots
+  say "...Yeah."
+  say "Right! There's something I have to do, and I can't do it alone. I need someone I can trust."
+  say "Besides my partner, I mean. Someone like you. So let's go find this Bianca!"
+  face 0 left
+  say "Head home, sis."
+  speaker "{rival}'s Sister"
+  say "OK, big brother! Bye-bye, {player}!"
+  walk 3 left 2 up 11
+  hide 3
+  setflag FLAG_UNOVA_HIDE_HUGHS_SISTER
+  speaker "{rival}"
+  face 0 player
+  say "I'll check the Pokémon Center and the school. You look round the rest of town. Whoever finds her first, shouts!"
+  walk 0 left 3 up 11 fast
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  setvar VAR_UNOVA_ASPERTIA 1
+  endscene
+  end
+
+
+# The gate to Route 19 before there is a Pokémon to go with (the area's trigger 8, on 1)
+script NotYet
+  text "{player} hasn't found Bianca yet. Better look round Aspertia before heading out of town."
+  walk player down 1
+  end
+
+
+# The foot of the outlook's steps (trigger 6, on VAR_UNOVA_OUTLOOK 0): Hugh runs up behind the player. He has worked
+# out where a visitor would go first.
+script HughCatchesUp
+  if var VAR_UNOVA_ASPERTIA != 1 end
+  scene "Hugh catches up"
+  clearflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  place 0 37 723 up
+  show 0
+  speaker "{rival}"
+  say "{player}! Hang on!"
+  walk 0 up 2
+  face player down
+  say "She wasn't at the Center, or the school. Then it hit me. The outlook! It's the best-known spot in town."
+  say "Anyone new to Aspertia goes up there first. Go on, get up there and get your Pokémon! I'll wait here."
+  face player up
+  setvar VAR_UNOVA_OUTLOOK 1
+  setvar VAR_UNOVA_ASPERTIA 2
+  endscene
+  end
+
+
+# Back down the steps without the Pokémon (trigger 4, on 2)
+script HughTurnsBack
+  face 0 player
+  speaker "{rival}"
+  say "Hey, wrong way! I'm telling you, she's up there. Go and get your Pokémon!"
+  walk player up 1
+  end
+
+
+# Bianca at the outlook (her object's script): the meeting, the three Pokémon, the Pokédex, Hugh coming up the steps
+# for one of his own, and the first battle between the two of them. Black 2's TRAINER_RIVAL, _2 and _3 are Hugh's team
+# for each starter the player can take (his is the one strong against it: Snivy is met with Tepig).
+script Bianca
+  speaker "Bianca"
+  if var VAR_UNOVA_ASPERTIA == 2 goto Meeting
+  say "It's sooo pretty up here. I could look at this view all day!"
+  end
+label Meeting
+  scene "Bianca at the outlook"
+  speaker "???"
+  say "Wow... It's sooo pretty! You can see all the way to the sea from here."
+  face 2 player
+  emote 2 exclaim
+  say "Oh! Hi there! Isn't this view something?"
+  speaker "Bianca"
+  say "I'm Bianca! I help Professor Juniper with her Pokémon research."
+  ask "I'm looking for someone, actually. Do you know a Trainer called {player}?"
+  if yes goto ItsYou
+  say "No? Hmm. They told me what to look for... Wait a sec. That's you, isn't it!"
+  goto Described
+label ItsYou
+  say "You do? Oh! Wait, it's you! You're {player}!"
+label Described
+  say "Wooow, you're exactly like they told me!"
+label Favour
+  ask "I've got a really important favour to ask. Will you help us complete the Pokédex?"
+  if yes goto Thanks
+  emote 2 sweat
+  say "N-no way. I must have heard that wrong. This is really, really important, you know!"
+  goto Favour
+label Thanks
+  say "Yay, thank you! Your help is going to move the professor's research along so much."
+  say "And filling in the Pokédex is super fun, I promise! OK then... ta-daaa!"
+  say "One of the Pokémon in here is going to be your partner. Go on, choose!"
+  starter
+  text "{player} chose {starter}!"
+  say "Oh, wow! You and {starter} look perfect together!"
+  say "Now you've got a Pokémon, you get this too. Your very own Pokédex!"
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex!"
+  say "It notes down every Pokémon you meet, all by itself. The professor wants you to see as many as you can!"
+  speaker "{rival}"
+  say "Heeey! How long were you going to leave me waiting down there?!"
+  walk 0 up 11 fast
+  face 0 player
+  emote 0 exclaim
+  say "So that's your partner? Nice! Like my sister said: look after it really, really well. Got it?"
+  say "Hey... what's that you're holding?"
+  speaker "Bianca"
+  say "It's a Pokédex!"
+  face 0 2
+  speaker "{rival}"
+  say "Give me one too! Please! I want to get stronger, and if I know more about Pokémon, I'll be tougher. Right?"
+  speaker "Bianca"
+  say "Um... sorry, who are you again?"
+  speaker "{rival}"
+  say "I'm {rival}! I'm going to travel all over Unova with my partner. I'm looking for something really important."
+  speaker "Bianca"
+  say "Well, OK! I don't totally get it, but a journey's always a good idea. And I just happen to have a spare!"
+  text "Bianca gave {rival} a Pokédex."
+  say "Ooh, I've had a brilliant idea! You've both got Pokémon now. Why don't you have a battle?"
+  speaker "{rival}"
+  face 0 player
+  say "Yeah! Let's see what kind of Trainer you are. I'll use the {rivalstarter} I raised from an Egg!"
+  if starter "Snivy" goto AgainstSnivy
+  if starter "Tepig" goto AgainstTepig
+  battle 0 as "unova_rival_3" canlose
+  goto Fought
+label AgainstSnivy
+  battle 0 as "unova_rival" canlose
+  goto Fought
+label AgainstTepig
+  battle 0 as "unova_rival_2" canlose
+label Fought
+  heal
+  speaker "{rival}"
+  if lost goto HughWon
+  say "I lost... Battling a Trainer is nothing like battling wild Pokémon!"
+  say "Whatever. Now I know you're a Trainer I can count on, and that's what matters."
+  goto HughOff
+label HughWon
+  say "Not bad at all for your first battle!"
+label HughOff
+  say "Right, I'm heading off first. Get stronger, OK?"
+  walk 0 down 11 fast
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  speaker "Bianca"
+  face 2 player
+  say "Both your Pokémon tried so hard! But your partner's still small, so battle a lot and help it grow."
+  say "Now let's get it fixed up at the Pokémon Center. It's the best place ever for Pokémon tired out from battling!"
+  fade out
+  clearflag FLAG_UNOVA_HIDE_BIANCA_CENTER
+  setvar VAR_UNOVA_ASPERTIA 5
+  warp "AspertiaCity_PokemonCenter" 7 18 up
+  endscene
+  end
+
+
+# Outside the Pokémon Center after its tour (the town's arrival on 6, as the player comes out of its door): Mom and
+# Hugh's sister have come to meet Bianca. The Running Shoes, and two Town Maps, one of them for Hugh; then Bianca goes
+# ahead to Route 19.
+script TheGifts
+  scene "Mom and the Town Maps"
+  face player left
+  speaker "Mom"
+  say "Oh! You must be Bianca. Nice to meet you! And {player} has chosen {starter}. Don't they look good together?"
+  say "Oh, I nearly forgot! Here, take these. They're Running Shoes!"
+  setflag FLAG_HAS_RUNNING_SHOES
+  fanfare keyitem
+  text "{player} received a pair of Running Shoes!"
+  say "A perfect fit! Hold the run button down and you'll go faster than ever. Off you go, run to your heart's content!"
+  speaker "{rival}'s Sister"
+  say "Um... and these are from me!"
+  give "Town Map"
+  speaker "Bianca"
+  say "Huh? Why are there two Town Maps?"
+  speaker "{rival}'s Sister"
+  say "The other one's for my big brother. He ran off without one! Will you give it to him, {player}?"
+  text "{player} put {rival}'s Town Map away to give him later."
+  setflag FLAG_UNOVA_HUGHS_TOWN_MAP
+  speaker "Mom"
+  say "What a lovely idea. Even when there's only one road down to the sea, a Town Map is good to have."
+  speaker "Bianca"
+  say "Aww, you guys! Just watching this makes me happy!"
+  say "OK, next stop: Route 19! I'll show you how to catch a Pokémon. Come find me past the gate!"
+  walk 2 right 5 up 3
+  hide 2
+  setflag FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  clearflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  speaker "Mom"
+  say "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
+  setvar VAR_UNOVA_ASPERTIA 7
+  endscene
+  end
+
+
+# Out of the school with the Basic Badge (the town's arrival, once): Bianca's congratulations and TM27, Cheren
+# coming out to see her, and Hugh arriving to challenge Cheren, who takes him inside. The hiker on Route 20 lets the
+# player by from now on (VAR_UNOVA_ROUTE_20 1).
+script CherenAndHugh
+  scene "Cheren and Hugh"
+  clearflag FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  place 2 39 742 up
+  show 2
+  speaker "Bianca"
+  say "Heeey!"
+  walk 2 up 2
+  face player down
+  say "How did it go with the Gym Leader? Oh! Is that the Basic Badge? Amazing!"
+  say "You only just set out, and you've already won a Badge! Here, take this to celebrate."
+  give "TM27"
+  say "It holds Return. The closer a Pokémon is to its Trainer, the harder that move hits!"
+  say "Still, Cheren..."
+  walk player right 1
+  face player left
+  clearflag FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  place 7 39 738 down
+  show 7
+  walk 7 down 1
+  speaker "Cheren"
+  say "Bianca! It's been two years, hasn't it?"
+  speaker "Bianca"
+  emote 2 exclaim
+  say "Cheren! Wow, look at you. A real Gym Leader!"
+  speaker "Cheren"
+  face 7 player
+  say "{player}, Bianca and I set out on our own journeys from Nuvema Town, far to the east of here."
+  say "If you ever want to talk about types or Abilities, ask me. I'm a teacher now, after all."
+  speaker "{rival}"
+  clearflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  place 0 44 741 left
+  show 0
+  say "Hey! You there!"
+  walk 0 left 3
+  face 7 0
+  say "Are you the Gym Leader? One, two, three, let's battle!"
+  speaker "Cheren"
+  say "You look like a tough Trainer. Very well. Come into my Gym."
+  walk 7 up 1
+  hide 7
+  setflag FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  speaker "{rival}"
+  emote 0 exclaim
+  say "That's it? What kind of answer is that?! I'm taking you down!"
+  walk 0 left 1
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  speaker "Bianca"
+  face 2 player
+  say "Being a Gym Leader is even harder than I thought..."
+  say "Anyway! The next Gym is in Virbank City, east along Route 20 past Floccesy Town. Good luck, {player}!"
+  walk 2 down 3
+  hide 2
+  setflag FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  setflag FLAG_UNOVA_AFTER_THE_BASIC_BADGE
+  if var VAR_UNOVA_ROUTE_20 == 0 setvar VAR_UNOVA_ROUTE_20 1
+  endscene
+  end
+
+
+# The people of the town by how far the story has come
+script Hugh
+  speaker "{rival}"
+  if var VAR_UNOVA_ASPERTIA >= 2 goto Outlook
+  say "Bianca, Bianca... where could she be?"
+  end
+label Outlook
+  say "She's up at the outlook, I'm sure of it. Go on!"
+  end
+
+script MomOutside
+  speaker "Mom"
+  say "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
+  end
+
+script Sister
+  speaker "{rival}'s Sister"
+  say "Be good friends with your Pokémon, OK?"
+  end
+
+script CherenOutside
+  speaker "Cheren"
+  say "A Trainer who knows why they battle grows faster. Think about what you want from your journey."
+  end

@@ -1,0 +1,148 @@
+{
+  "AlderWelcome": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Floccesy Town! Now then, {player}. How are your Pokémon feeling?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They always give their best for you. Look after them in return!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My house is just up the street. Stop in at the Pokémon Center first, if you like."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlderTownMaps": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! This way, and we'll start your training. Hm? Why are you carrying two Town Maps?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oho! It's your friend's, is it? The lad with the {rivalstarter}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He went by not long ago, all fired up. I believe he was heading for the ranch off Route 20."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Deliver that map first, then come back to me. Just follow this road east, it goes to Route 20."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlderWaits": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Follow the road east to Route 20. I'll wait here until you've given your friend his map."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AlderHome": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah! You've given your friend his map. You were only gone a little while, but you both look a bit stronger."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on in, then. Time for some training!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Alder": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you rested your Pokémon? My house is just up the street."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take that map to your friend first. Route 20 is east of here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

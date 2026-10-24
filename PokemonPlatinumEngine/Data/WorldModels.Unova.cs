@@ -9,23 +9,22 @@ namespace PokemonPlatinumEngine.Data;
 /// Unova's catalogue (plan 22 · U2): Black 2's props by the names the decompilation's folders give them, as they stand on
 /// the chunks of the areas open so far and the ring round them, and what each is here. Every building is a stand-in in
 /// one of Sinnoh's ways of building (<see cref="WorldModel.StandInUntil"/>) until the session that gives its town a way
-/// of its own, a row of the style guide's "Buildings" first (plan 22's design, "Unova's world folder"). What stands in a
+/// of its own, a row of the style guide's "Buildings" first (plan 22's design, "Unova's world folder"): Aspertia's
+/// (<see cref="Architecture.Hillside"/>) and Floccesy's (<see cref="Architecture.Bellfield"/>) since plan 22 · U5. What stands in a
 /// room is a piece of furniture, as Johto's are. Unova looks in no other region's table: Black 2's names are its own.
 /// </summary>
 public static partial class WorldModels
 {
-    private const string AspertiaLook = "plan 22 · U5 (Aspertia City's hillside houses)";
-    private const string FloccesyLook = "plan 22 · U5 (Floccesy Town's cottages and the ranch)";
-    private const string VirbankLook = "plan 22 · U5 (Virbank City's docks)";
+    private const string VirbankLook = "plan 22 · U5, part b (Virbank City's docks)";
 
     private static readonly WorldModel[] UnovaTable =
     {
         // ---------------------------------------------------------------- Aspertia City (c12_)
-        Built("c12_build", BuildingKind.House, "the player's house in Aspertia City", Architecture.Plaster, until: AspertiaLook),
-        Built("c12_house", BuildingKind.House, "a house of Aspertia City", Architecture.Plaster, until: AspertiaLook),
-        Built("c12_gym", BuildingKind.School, "Aspertia's Trainers' School, with the Gym behind it", Architecture.Plaster, until: AspertiaLook),
-        Built("pc", BuildingKind.PokemonCenter, "a Pokémon Center of Unova", until: AspertiaLook),
-        Built("gate", BuildingKind.Gate, "a gate house between a town and a route", until: AspertiaLook),
+        Built("c12_build", BuildingKind.House, "the player's house in Aspertia City", Architecture.Hillside),
+        Built("c12_house", BuildingKind.House, "a house of Aspertia City", Architecture.Hillside),
+        Built("c12_gym", BuildingKind.School, "Aspertia's Trainers' School, with the Gym behind it", Architecture.Hillside),
+        Built("pc", BuildingKind.PokemonCenter, "a Pokémon Center of Unova"),
+        Built("gate", BuildingKind.Gate, "a gate house between a town and a route"),
         Ground("c12_sky", "the sky over the Aspertia Outlook (no model of its own: the sky is the field's)"),
         Ground("c12_cloud01", "the clouds below the Aspertia Outlook (no model of its own: the sky is the field's)"),
 
@@ -40,9 +39,9 @@ public static partial class WorldModels
         Ground("sign04", "a signpost: the sign event's tile draws it"),
 
         // ---------------------------------------------------------------- Floccesy Town (t06_) and the ranch (d22_)
-        Built("t06_house", BuildingKind.House, "a house of Floccesy Town", Architecture.Cottage, until: FloccesyLook),
-        Built("t06_ctower", BuildingKind.Tower, "Floccesy Town's bell tower", Architecture.Cottage, until: FloccesyLook),
-        Built("d22_farm", BuildingKind.House, "the farmhouse of Floccesy Ranch", Architecture.Farm, until: FloccesyLook),
+        Built("t06_house", BuildingKind.House, "a house of Floccesy Town", Architecture.Bellfield),
+        Built("t06_ctower", BuildingKind.Tower, "Floccesy Town's bell tower", Architecture.Bellfield),
+        Built("d22_farm", BuildingKind.House, "the farmhouse of Floccesy Ranch", Architecture.Farm),
         Thing("cart", PropType.Crates, "a cart of the ranch's hay"),
 
         // ---------------------------------------------------------------- Virbank City (c13_), in view from Route 20's east end

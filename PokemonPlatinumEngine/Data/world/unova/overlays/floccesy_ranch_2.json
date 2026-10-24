@@ -3,14 +3,25 @@
   // Pokémon, Team Plasma's grunt and the field's triggers are plan 22 · U4's. The Pokémon that roam the field stand as
   // Mareep, the ranch's own flock in our telling
   "area": "floccesy_ranch_2",
-  "bgmTrack": "sinnoh/route205",
+  "bgmTrack": "unova/route19",
   "trees": "Round",
+  // Plan 22 · U5: Hugh's battle, the owners and their lost Herdier, found in the grove with Team Plasma's first grunt
+  // (floccesy_ranch_2.txt). The owners (1, 2) and their other Herdier (10) come out to the gate during the first scene
+  "triggers": [
+    { "script": "HughAtTheRanch", "x": 41, "z": 45, "width": 1, "depth": 2, "variable": "VAR_UNOVA_RANCH", "value": 0 },
+    { "script": "HughNorth", "x": 21, "z": 33, "width": 3, "depth": 1, "variable": "VAR_UNOVA_RANCH", "value": 1 },
+    { "script": "HughShares", "x": 23, "z": 11, "width": 1, "depth": 3, "variable": "VAR_UNOVA_RANCH", "value": 2 },
+    { "script": "ACry", "x": 43, "z": 12, "width": 1, "depth": 2, "variable": "VAR_UNOVA_RANCH", "value": 3 },
+    { "script": "TheHerdier", "x": 50, "z": 24, "width": 3, "depth": 1, "variable": "VAR_UNOVA_RANCH", "value": 4 },
+    { "script": "ACry", "x": 41, "z": 14, "width": 2, "depth": 1, "variable": "VAR_UNOVA_RANCH", "value": 3 }
+  ],
   "people": {
-    "3": {
-      "name": "Rancher",
-      "npcType": "Gentleman",
-      "dialog": [ "Mind the fences! The Pokémon here are friendly, but they don't like being startled." ]
-    },
+    "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_RANCH" },
+    "1": { "name": "Owner", "npcType": "Gentleman", "script": "Owner", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
+    "2": { "name": "Wife", "npcType": "Lady", "script": "Wife", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
+    "3": { "name": "Herdier", "npcType": "Pokemon", "species": "Herdier", "script": "Herdier", "still": true },
+    "10": { "name": "Herdier", "npcType": "Pokemon", "species": "Herdier", "script": "Herdier", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_OWNERS" },
+    "16": { "name": "Grunt", "npcType": "Grunt", "still": true, "dialog": [ "Get lost, kid!" ], "hiddenBy": "FLAG_UNOVA_HIDE_RANCH_GRUNT" },
     "4": {
       "name": "Lass",
       "trainer": {

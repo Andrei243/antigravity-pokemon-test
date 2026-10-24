@@ -1,0 +1,212 @@
+# Floccesy Ranch's field (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/floccesy_ranch_2.s, read for the order of the scenes alone).
+#
+# VAR_UNOVA_RANCH, the ranch's count as Black 2 keeps it: 0 Hugh training in the field; 1 his battle had, the Town
+# Map given and the owners met, their Herdier missing; 2 Hugh gone to look by the north fence; 3 on to the grove in the
+# east; 4 a cry heard, the player sent deeper in; 5 the Herdier found with Team Plasma's grunt, who ran, and the
+# Herdier home (Floccesy Town's VAR_UNOVA_FLOCCESY 3). The people: 0 Hugh (FLAG_UNOVA_HIDE_HUGH_RANCH), 1 the owner, 2 his wife
+# and 10 their other Herdier at the gate (FLAG_UNOVA_HIDE_RANCH_OWNERS), 3 the lost Herdier in the grove, 16 the grunt
+# (FLAG_UNOVA_HIDE_RANCH_GRUNT). Black 2's TRAINER_RIVAL_4, _5 and _6 are Hugh's team by the player's starter.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_RANCH == 0 end
+  if var VAR_UNOVA_RANCH == 5 goto Home
+  place 1 43 46 up
+  place 2 43 45 up
+  place 10 44 46 up
+  if var VAR_UNOVA_RANCH == 1 place 0 22 32 down
+  if var VAR_UNOVA_RANCH == 2 place 0 22 13 down
+  if var VAR_UNOVA_RANCH == 3 place 0 47 13 down
+  end
+label Home
+  place 1 46 42 up
+  place 2 47 42 up
+  place 10 45 40 right
+  place 3 47 40 down
+  end
+
+
+# Into the field (trigger 0, on 0): Hugh, training, wants a battle; the Town Map from his sister; then the ranch's
+# owners, whose Herdier has gone missing, and Hugh's anger at how lightly they take it.
+script HughAtTheRanch
+  scene "Hugh at the ranch"
+  emote 0 exclaim
+  speaker "{rival}"
+  say "Oh! Nice! You've come here to toughen up too, huh?"
+  walk 0 right 15
+  face 0 player
+  say "Right, then let's see how much stronger you've got! Come on!"
+  if starter "Snivy" goto AgainstSnivy
+  if starter "Tepig" goto AgainstTepig
+  battle 0 as "unova_rival_6"
+  goto Fought
+label AgainstSnivy
+  battle 0 as "unova_rival_4"
+  goto Fought
+label AgainstTepig
+  battle 0 as "unova_rival_5"
+label Fought
+  say "Not bad... You think about how to bring out your Pokémon's strength. I've got to step it up."
+  if not flag FLAG_UNOVA_HUGHS_TOWN_MAP goto Owners
+  text "{player} handed over the Town Map!"
+  clearflag FLAG_UNOVA_HUGHS_TOWN_MAP
+  say "Tch... she didn't have to do that. But thanks. We've barely set out and you're already helping me."
+label Owners
+  clearflag FLAG_UNOVA_HIDE_RANCH_OWNERS
+  place 1 43 46 up
+  place 2 43 45 up
+  place 10 44 46 up
+  show 1
+  show 2
+  show 10
+  speaker "???"
+  say "I thought I heard a commotion! A Pokémon battle, was it? Ah, to be young!"
+  speaker "{rival}"
+  say "Who are you?"
+  speaker "Owner"
+  say "Who am I? Why, I own this ranch! And this is my wife."
+  speaker "Wife"
+  say "You should always heal your Pokémon after a battle. Here, take one of these, both of you."
+  give "Potion"
+  say "Potions are good to have when you're far from a Pokémon Center."
+  speaker "Owner"
+  say "Say, you didn't see a Herdier anywhere about, did you? It's wandered off, and I can't think where."
+  say "I'm a little worried, to tell the truth."
+  speaker "{rival}"
+  emote 0 exclaim
+  say "A LITTLE worried? Are you kidding me?! Your Pokémon could be gone forever!"
+  say "I'll find it myself! {player}, help me look!"
+  walk 0 left 15 up 13 fast
+  place 0 22 32 down
+  speaker "Owner"
+  say "My, what got into him? I'm sure it's just off playing somewhere on the ranch."
+  speaker "Wife"
+  say "I wonder... Oh, and dear, if your Pokémon get hurt, come and see me. I'll make them feel better."
+  setvar VAR_UNOVA_RANCH 1
+  endscene
+  end
+
+
+# Hugh at the north fence (trigger 1, on 1)
+script HughNorth
+  scene "Hugh looks north"
+  face 0 player
+  speaker "{rival}"
+  say "Did the Herdier wander up this way? Let's look!"
+  walk 0 up 19 fast
+  place 0 22 13 down
+  setvar VAR_UNOVA_RANCH 2
+  endscene
+  end
+
+
+# Hugh at the far side (trigger 2, on 2): a Paralyze Heal, and his fear that the Herdier is in trouble
+script HughShares
+  scene "Hugh shares"
+  face 0 player
+  speaker "{rival}"
+  say "It's not up here either. Oh! Here, I'll share something good with you."
+  give "Paralyze Heal"
+  say "If your Pokémon gets paralysed, use that on it."
+  say "Still, Pokémon don't just wander off by themselves. If it's mixed up in some kind of trouble..."
+  walk 0 right 25 fast
+  place 0 47 13 down
+  setvar VAR_UNOVA_RANCH 3
+  endscene
+  end
+
+
+# A cry from the grove (triggers 3 and 5, on 3)
+script ACry
+  scene "A cry in the grove"
+  cry "Herdier"
+  speaker "{rival}"
+  emote 0 exclaim
+  say "Did you hear that just now?"
+  face 0 player
+  say "I'll check round here. You go deeper into the grove and look!"
+  setvar VAR_UNOVA_RANCH 4
+  endscene
+  end
+
+
+# Deep in the grove (trigger 4, on 4): the Herdier, cornered by a grunt of Team Plasma, who runs when Hugh comes, and
+# leaves something behind. The owners come for their Herdier, and Hugh goes off angry.
+script TheHerdier
+  scene "The lost Herdier"
+  cry "Herdier"
+  speaker "Herdier"
+  say "Yaaarp..."
+  speaker "{rival}"
+  clearflag FLAG_UNOVA_HIDE_RANCH_GRUNT
+  show 16
+  say "That cry! You found it! What a relief! I'll go and get its Trainer. You stay here!"
+  face 16 player
+  emote 16 exclaim
+  speaker "Grunt"
+  say "Tch! You little pest! Do you know who you're dealing with?"
+  say "We're the group that tried to take over Unova two years ago, to set Pokémon free from people like you!"
+  say "Not that a kid like you would understand. First I get lost chasing this mutt, and now this..."
+  say "Fine! I'll take this chance to get out of here!"
+  walk 16 right 3 up 6 fast
+  hide 16
+  setflag FLAG_UNOVA_HIDE_RANCH_GRUNT
+  text "Something was left lying where the grunt stood."
+  find "TM21"
+  place 1 48 24 up
+  place 2 49 24 up
+  place 0 50 25 up
+  speaker "Owner"
+  say "Herdier! What were you doing all the way out here? I can't thank you enough, the both of you!"
+  speaker "{rival}"
+  face 0 1
+  say "You're awfully calm about this! Your Pokémon could have been gone for good! Take better care of it!"
+  walk 0 down 8 fast
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_RANCH
+  speaker "Owner"
+  face 1 player
+  say "Hmm... I wonder if something happened to that boy. It's as if he's afraid of losing Pokémon..."
+  say "Come on, Herdier. Let's go home."
+  fade out
+  place 1 46 42 up
+  place 2 47 42 up
+  place 10 45 40 right
+  place 3 47 40 down
+  fade in
+  setvar VAR_UNOVA_RANCH 5
+  setvar VAR_UNOVA_FLOCCESY 3
+  endscene
+  end
+
+
+# The people of the ranch by how far the story has come
+script Hugh
+  speaker "{rival}"
+  say "Where could that Herdier have got to? We have to find it!"
+  end
+
+script Owner
+  speaker "Owner"
+  if var VAR_UNOVA_RANCH == 5 goto Found
+  say "It's strange for Herdier to wander off. It always plays with the other one, or helps out on the ranch."
+  end
+label Found
+  say "Thanks to you and your Pokémon, Herdier is home safe! Did Alder train you, by any chance?"
+  end
+
+script Wife
+  speaker "Wife"
+  say "You and your Pokémon look a little worn out. Rest a minute. You won't get far tired like that!"
+  heal
+  fanfare heal
+  say "There! You're both full of energy again."
+  end
+
+script Herdier
+  cry "Herdier"
+  speaker "Herdier"
+  say "Bawoof! Ba-woof!"
+  end

@@ -1,0 +1,118 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK! I'll show you round the Pokémon Center!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pokémon Centers heal your Pokémon for free! Bring them here whenever they're worn out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nurse"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! I'll take your Pokémon for a moment."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All done! Your Pokémon are full of energy again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next, the PC! That's the square machine by the wall. Any Trainer can use it for free."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You can leave Pokémon in it when your team is full, and take them out again whenever you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And the counters on the other side are the Poké Mart! You can buy and sell all kinds of items there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Poké Balls you catch Pokémon with are sold there too. Here, {player}, I'll give you some to start!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next up, I'll show you how to use them! Meet me on Route 19, past the gate at the top of town!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bianca": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon Center is the same wherever you go. Isn't that handy?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

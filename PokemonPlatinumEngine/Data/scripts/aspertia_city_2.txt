@@ -1,0 +1,72 @@
+# The player's house in Aspertia City (plan 22 · U5). docs/scripts.md describes the language; the lines are our own,
+# on Black 2's beats (the decompilation's res/field/scripts/aspertia_city_2.s, read for the order of the scene alone).
+#
+# VAR_UNOVA_HOUSE, the house's count as Black 2 keeps it: 0 a new game, nothing said yet; 1 Mom's questions asked
+# and the player sent to find Bianca. (2 and 3 are the professor's father's visit after the Hall of Fame, plan 22 · U9.)
+# Mom is the room's own person 0, at the table; FLAG_UNOVA_HIDE_MOM_HOME takes her off the map while she is out in town.
+
+
+# A save from before the story was written is brought up to date as it comes here (common.UnovaCatchUp)
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The foot of the stairs (the room's trigger 0, on 0): Mom walks over with two questions that only have one answer,
+# and sends the player out to look for the professor's assistant in her big green hat.
+script MomQuestions
+  scene "Mom's questions"
+  emote 0 exclaim
+  walk 0 down 3 right 5
+  face 0 player
+  face player 0
+  speaker "Mom"
+  say "Oh, good, you're up! Listen, have you heard of Professor Juniper? She studies Pokémon. She's quite famous."
+  say "We were friends years ago, and she called me this morning, out of the blue!"
+label Pokemon
+  ask "So, {player}... how would you like a Pokémon of your very own?"
+  if yes goto Pokedex
+  emote 0 question
+  say "Really? You don't mean that! Every child in Aspertia dreams of having a partner."
+  goto Pokemon
+label Pokedex
+  say "I knew it! That's the first part sorted, then."
+  ask "Next question. Do you know what a Pokédex is?"
+  if yes goto Knew
+  say "It's a little machine that notes down every kind of Pokémon you come across, all by itself."
+  goto WantOne
+label Knew
+  say "Of course you do. It writes down every Pokémon you meet, all on its own. Clever thing."
+label WantOne
+  ask "And you'd like one of those too, wouldn't you?"
+  if yes goto Sent
+  say "Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?"
+  goto WantOne
+label Sent
+  say "Then that's settled. The professor has sent her assistant all the way up here to meet you."
+  say "Her name is Bianca. I'm told you can't miss her: just look for a big green hat."
+  say "She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!"
+  walk 0 left 5 up 3
+  face 0 down
+  setvar VAR_UNOVA_HOUSE 1
+  endscene
+  end
+
+
+# Mom spoken to: before the questions she sees to the team as anyone's mother would (common.Healer's way); once the
+# player has gone looking, she says where to look first.
+script Mom
+  speaker "Mom"
+  if var PARTY_COUNT == 0 goto NoTeam
+  say "You look worn out, dear. Sit down for a minute and let your Pokémon rest."
+  heal
+  fanfare heal
+  say "There, all better. Off you go, and be careful out there!"
+  end
+label NoTeam
+  if var VAR_UNOVA_HOUSE == 0 goto Morning
+  say "Bianca's somewhere in town. Try the high places: visitors always want to see the view."
+  end
+label Morning
+  say "Good morning, sleepyhead. Come here a moment, I've got something to ask you."
+  end

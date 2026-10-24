@@ -1,5 +1,45 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "{rival}'s Sister"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "4": {
       "name": {
         "en": [
@@ -51,6 +91,16 @@
         ],
         "text": [
           "Aceea e Școala de Antrenori. Arena e chiar în spatele ei: treci prin școală ca să ajungi acolo."
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
         ]
       }
     },

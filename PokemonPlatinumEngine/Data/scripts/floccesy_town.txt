@@ -1,0 +1,80 @@
+# Floccesy Town (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/floccesy_town.s, read for the order of the scenes alone).
+#
+# VAR_UNOVA_FLOCCESY, the town's count as Black 2 keeps it: 0 Alder waiting at the town's edge; 1 told to rest at the
+# Pokémon Center first, and waiting at the top of the street; 2 the Town Maps noticed, and the player sent on to Hugh
+# on Route 20; 3 the Town Map given to Hugh at the ranch (floccesy_ranch_2.txt); 4 asked in, and his lesson at home;
+# 5 the lesson given (floccesy_town_2.txt). Alder outside is the area's person 0 (FLAG_UNOVA_HIDE_ALDER_FLOCCESY).
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_FLOCCESY == 0 end
+  if var VAR_UNOVA_FLOCCESY >= 4 end
+  place 0 112 667 down
+  end
+
+
+# The town's edge (trigger 0, on 0)
+script AlderWelcome
+  scene "Alder in Floccesy Town"
+  face 0 player
+  speaker "Alder"
+  say "Welcome to Floccesy Town! Now then, {player}. How are your Pokémon feeling?"
+  say "They always give their best for you. Look after them in return!"
+  say "My house is just up the street. Stop in at the Pokémon Center first, if you like."
+  walk 0 right 2 up 28
+  place 0 112 667 down
+  setvar VAR_UNOVA_FLOCCESY 1
+  endscene
+  end
+
+
+# The top of the street (trigger 1, on 1): Alder notices two Town Maps, and sends the player on with the second.
+script AlderTownMaps
+  scene "The second Town Map"
+  face 0 player
+  speaker "Alder"
+  say "There you are! This way, and we'll start your training. Hm? Why are you carrying two Town Maps?"
+  emote 0 dots
+  say "Oho! It's your friend's, is it? The lad with the {rivalstarter}?"
+  say "He went by not long ago, all fired up. I believe he was heading for the ranch off Route 20."
+  say "Deliver that map first, then come back to me. Just follow this road east, it goes to Route 20."
+  setvar VAR_UNOVA_FLOCCESY 2
+  endscene
+  end
+
+
+# Towards Alder's house before the map is delivered (trigger 2, on 2)
+script AlderWaits
+  face 0 player
+  speaker "Alder"
+  say "Follow the road east to Route 20. I'll wait here until you've given your friend his map."
+  walk player right 1
+  end
+
+
+# Back from the ranch (triggers 3 and 4, on 3): Alder sees it went well, and asks the player in for their lesson.
+script AlderHome
+  scene "Alder asks the player in"
+  face 0 player
+  speaker "Alder"
+  say "Ah! You've given your friend his map. You were only gone a little while, but you both look a bit stronger."
+  say "Come on in, then. Time for some training!"
+  fade out
+  hide 0
+  setflag FLAG_UNOVA_HIDE_ALDER_FLOCCESY
+  setvar VAR_UNOVA_FLOCCESY 4
+  warp "FloccesyTown_AldersHouse" 6 11 up
+  endscene
+  end
+
+
+script Alder
+  speaker "Alder"
+  if var VAR_UNOVA_FLOCCESY >= 2 goto Map
+  say "Have you rested your Pokémon? My house is just up the street."
+  end
+label Map
+  say "Take that map to your friend first. Route 20 is east of here."
+  end

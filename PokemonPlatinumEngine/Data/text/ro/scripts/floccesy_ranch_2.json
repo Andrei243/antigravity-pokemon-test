@@ -1,0 +1,508 @@
+{
+  "HughAtTheRanch": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Nice! You've come here to toughen up too, huh?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right, then let's see how much stronger you've got! Come on!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not bad... You think about how to bring out your Pokémon's strength. I've got to step it up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Town Map!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch... she didn't have to do that. But thanks. We've barely set out and you're already helping me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I thought I heard a commotion! A Pokémon battle, was it? Ah, to be young!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who are you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who am I? Why, I own this ranch! And this is my wife."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wife"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You should always heal your Pokémon after a battle. Here, take one of these, both of you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Potions are good to have when you're far from a Pokémon Center."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Say, you didn't see a Herdier anywhere about, did you? It's wandered off, and I can't think where."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm a little worried, to tell the truth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A LITTLE worried? Are you kidding me?! Your Pokémon could be gone forever!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll find it myself! {player}, help me look!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My, what got into him? I'm sure it's just off playing somewhere on the ranch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wife"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I wonder... Oh, and dear, if your Pokémon get hurt, come and see me. I'll make them feel better."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughNorth": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did the Herdier wander up this way? Let's look!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughShares": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's not up here either. Oh! Here, I'll share something good with you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If your Pokémon gets paralysed, use that on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still, Pokémon don't just wander off by themselves. If it's mixed up in some kind of trouble..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ACry": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you hear that just now?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll check round here. You go deeper into the grove and look!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TheHerdier": [
+    {
+      "en": [
+        "Herdier"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yaaarp..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That cry! You found it! What a relief! I'll go and get its Trainer. You stay here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch! You little pest! Do you know who you're dealing with?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're the group that tried to take over Unova two years ago, to set Pokémon free from people like you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not that a kid like you would understand. First I get lost chasing this mutt, and now this..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine! I'll take this chance to get out of here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something was left lying where the grunt stood."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Herdier! What were you doing all the way out here? I can't thank you enough, the both of you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're awfully calm about this! Your Pokémon could have been gone for good! Take better care of it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm... I wonder if something happened to that boy. It's as if he's afraid of losing Pokémon..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, Herdier. Let's go home."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where could that Herdier have got to? We have to find it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Owner": [
+    {
+      "en": [
+        "Owner"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's strange for Herdier to wander off. It always plays with the other one, or helps out on the ranch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks to you and your Pokémon, Herdier is home safe! Did Alder train you, by any chance?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wife": [
+    {
+      "en": [
+        "Wife"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You and your Pokémon look a little worn out. Rest a minute. You won't get far tired like that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! You're both full of energy again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Herdier": [
+    {
+      "en": [
+        "Herdier"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bawoof! Ba-woof!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

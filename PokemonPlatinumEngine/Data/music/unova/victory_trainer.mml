@@ -1,0 +1,29 @@
+# Victory over a trainer of Unova: a bright fanfare in G and a loop where the square lead strolls home with a horn
+# under it. Original composition for this game (plan 22 · U5).
+title Victory! Trainer (Unova)
+tempo 138
+meter 4/4
+reverb 0.22
+
+track lead square vol=0.76 pan=0 rev=0.24
+  o5 g8 r16 g16 g8 r8 b4 o6 d4 | o6 g2. r4 | L o5 b4 o6 d8 o5 b8 g4 d4 | o5 c4 e8 g8 o6 c4 o5 g4 |
+  o5 b4 g8 b8 o6 d4 o5 b4 | o5 a4 f+8 a8 d4 f+4 | o5 g4 b8 o6 d8 g4 d4 | o5 e4 g8 o6 c8 o5 g4 e4 |
+  o5 f+4 a4 d4 f+4 | o5 g2. r4 |
+
+track horn horn vol=0.32 pan=-0.3 rev=0.3
+  o4 b2 r2 | o4 b2 r2 | L o4 b1 | o4 c1 |
+  o4 d1 | o4 d1 | o4 b1 | o4 c1 |
+  o4 a1 | o4 b1 |
+
+track pad pizzicato vol=0.36 pan=0.3 rev=0.3
+  o4 (g b d)2 r2 | (g b d)2 r2 | L [ (g b d)4 ]4 | [ (c e g)4 ]4 |
+  [ (g b d)4 ]4 | [ (d f+ a)4 ]4 | [ (g b d)4 ]4 | [ (c e g)4 ]4 |
+  [ (d f+ a)4 ]4 | (g b d)2. r4 |
+
+track bass bass vol=0.6 rev=0.08
+  o3 g8 r8 g8 r8 g4 d4 | o3 g2. r4 | L o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 | o3 c4 g4 c4 g4 |
+  o3 d4 a4 d4 a4 | o3 g4 d4 g2 |
+
+track drums kit vol=0.42 rev=0.12
+  v88 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L [ b4 s4 b8 b8 s4 | ]7 b4 s4 s16 s16 s16 s16 s8 s8 |

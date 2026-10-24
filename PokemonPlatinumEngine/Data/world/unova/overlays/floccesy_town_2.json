@@ -1,22 +1,12 @@
 {
-  // The house at the top of Floccesy Town (plan 22 · U2): Black 2's room, our words. Its master is home and talks; his
-  // part in the story is plan 22 · U4's
+  // Alder's house at the top of Floccesy Town (plan 22 · U2, U5): Black 2's room, our words. Alder (2) gives his lesson
+  // here as the player is brought in from the street, two pupils of the Trainers' School (0 and 1) battling the player
+  // in turn (floccesy_town_2.txt). Benga's visit after the Hall of Fame is a later session's
   "area": "floccesy_town_2",
-  "bgmTrack": "sinnoh/floaroma",
+  "bgmTrack": "unova/floccesy",
   "people": {
-    "0": {
-      "name": "Schoolgirl",
-      "dialog": [ "We came to ask the old Champion for advice. He told us to go and play with our Pokémon!" ]
-    },
-    "1": {
-      "name": "Schoolboy",
-      "dialog": [ "He says the best training is just spending time together. Is that really it?" ]
-    },
-    "2": {
-      "name": "Alder",
-      "npcType": "Gentleman",
-      "still": true,
-      "dialog": [ "Ha! A young Trainer, eh? Get out there and see the world with your Pokémon. That's the best lesson." ]
-    }
+    "0": { "name": "Girl", "npcType": "school_kid_f", "script": "Girl", "still": true },
+    "1": { "name": "Boy", "npcType": "school_kid_m", "script": "Boy", "still": true },
+    "2": { "name": "Alder", "npcType": "alder", "script": "Alder", "still": true }
   }
 }

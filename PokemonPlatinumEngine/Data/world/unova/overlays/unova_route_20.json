@@ -1,15 +1,21 @@
 {
   // Route 20 (plan 22 · U2): Black 2's road from Floccesy Town towards Virbank City, its trainers and their lines ours.
-  // The Pokémon Rangers who come in a later season, Team Plasma's grunt, the route's triggers and the gates to Virbank
-  // City and the Cave of Being are later sessions'
+  // The Pokémon Rangers who come in a later season, Team Plasma's grunt (the Virbank chapter's), and the gates to
+  // Virbank City and the Cave of Being are later sessions'
   "area": "unova_route_20",
-  "bgmTrack": "sinnoh/route201",
+  "bgmTrack": "unova/route19",
   "trees": "Round",
+  // Plan 22 · U5: the hiker who wants a Badge before he lets anyone east, and Cheren with Hugh past him
+  // (unova_route_20.txt)
+  "triggers": [
+    { "script": "CherensAdvice", "x": 160, "z": 660, "width": 6, "depth": 1, "variable": "VAR_UNOVA_ROUTE_20", "value": 2 },
+    { "script": "HikerBlocks", "x": 159, "z": 644, "width": 1, "depth": 3, "variable": "VAR_UNOVA_ROUTE_20", "value": 0 },
+    { "script": "HikerChallenge", "x": 158, "z": 644, "width": 1, "depth": 3, "variable": "VAR_UNOVA_ROUTE_20", "value": 1 }
+  ],
   "people": {
-    "0": {
-      "name": "Hiker",
-      "dialog": [ "The grass here hides all sorts of Pokémon. Some of them even drop from the trees!" ]
-    },
+    "0": { "name": "Hiker", "script": "Hiker", "still": true },
+    "21": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_20" },
+    "23": { "name": "Cheren", "npcType": "cheren", "script": "Cheren", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_20" },
     "1": {
       "name": "Youngster",
       "trainer": {

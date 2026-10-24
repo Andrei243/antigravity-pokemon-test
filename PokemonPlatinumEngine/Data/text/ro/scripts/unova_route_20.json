@@ -1,0 +1,214 @@
+{
+  "HikerBlocks": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it! A kid without a single Gym Badge, heading on past here? Not on my watch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battle the Trainers and Pokémon round here, then battle some more. Come back with a Badge!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HikerChallenge": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! That shiny thing is the Basic Badge! Don't let it go to your head. It's a rough world out there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let me show you just how rough!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right, I'm beaten! With Pokémon you can count on like that, even a kid can hold their own."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CherensAdvice": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Wait!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come with me, you two."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See the darker grass here? Now and then two Pokémon jump out of it at once."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And the Pokémon that live in it can be quite rare. Keep your eyes open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you're going to challenge the next Gym, that's Virbank's. These might help."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And some for you too, {rival}. Both of you, do your best! If you need anything, come and find me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren really knows his stuff. And he's fought Team Plasma, too..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's it, I've decided! I'm going to get stronger than him!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you... do your best! Fill up that Pokédex, and watch my back. Got it?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hiker": [
+    {
+      "en": [
+        "Hiker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The grass round here hides all sorts of Pokémon. Some of them even drop out of the trees!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've got a good team there. Mind you look after them on the road to Virbank!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have to get stronger than Team Plasma!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cheren": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two Pokémon from one patch of grass. Make sure your team is ready for it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,20 +1,73 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Wife"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "3": {
       "name": {
         "en": [
-          "Rancher"
+          "Herdier"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Fermierul"
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Herdier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
         ]
       },
       "dialog": {
         "en": [
-          "Mind the fences! The Pokémon here are friendly, but they don't like being startled."
+          "Get lost, kid!"
         ],
         "text": [
-          "Ai grijă la garduri! Pokémonii de aici sunt prietenoși, dar nu le place să fie speriați."
+          ""
         ]
       }
     },

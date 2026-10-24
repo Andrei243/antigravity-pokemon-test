@@ -1,18 +1,24 @@
 {
-  // Route 19 (plan 22 · U2): Black 2's road down from Aspertia City, our words. The friend who shows how to catch a
-  // Pokémon and the route's triggers are plan 22 · U4's
+  // Route 19 (plan 22 · U2, U5): Black 2's road down from Aspertia City, our words. Bianca (5) shows how a Pokémon is
+  // caught past the gate, and Alder (1) stops the player at the bottom of the hill (unova_route_19.txt)
   "area": "unova_route_19",
-  "bgmTrack": "sinnoh/route201",
+  "bgmTrack": "unova/route19",
   "trees": "Round",
+  "triggers": [
+    { "script": "BiancasLesson", "x": 51, "z": 699, "width": 5, "depth": 1, "variable": "VAR_UNOVA_ROUTE_19", "value": 0 },
+    { "script": "AlderMeets", "x": 91, "z": 693, "width": 1, "depth": 6, "variable": "VAR_UNOVA_ROUTE_19", "value": 1 }
+  ],
   "people": {
     "0": {
       "name": "Youngster",
       "dialog": [ "Wild Pokémon jump out of the tall grass. If yours gets tired, head back up the hill to heal." ]
     },
+    "1": { "name": "Alder", "npcType": "alder", "script": "Alder", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ALDER_ROUTE_19" },
     "4": {
       "name": "Lass",
       "dialog": [ "I walk this route every day. Some Pokémon only come out in certain seasons, you know." ]
-    }
+    },
+    "5": { "name": "Bianca", "npcType": "bianca", "script": "Bianca", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ROUTE_19" }
   },
   "signs": {
     "4": "Route 19\nAspertia City - Floccesy Town",

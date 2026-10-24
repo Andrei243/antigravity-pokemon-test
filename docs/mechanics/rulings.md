@@ -2601,6 +2601,51 @@ chunks, their areas no season's tables, and a coat is never changed on their map
   where `SeasonHere` is a season, so a coat taken out of Unova stays what it is, as the later games keep it. An
   evolution carries the coat over (the data's `fromForm` and `targetForm`), and the save keeps it as any form.
 
+## Unova's first chapter (2026-10-24, plan 22 · U5, part a)
+
+Black 2's story from the player's room to Route 20's end, in our own words on the beats of the decompilation's
+scripts (`res/field/scripts/aspertia_city*.s`, `route_19.s`, `floccesy_*.s`, `route_20.s`), read for the order of the
+scenes, who stands where, the battles and the gifts, and nothing of their text.
+
+- **A new game in Unova begins in the player's room with nothing** (`unova.json`'s `hasStory`): Mom asks her
+  questions at the foot of the stairs, Hugh and his sister meet the player at their door, Bianca waits at the outlook
+  with the three Pokémon and the Pokédex, Hugh's first battle follows (`canlose`, as Black 2's), then the Pokémon
+  Center's tour and ten Poké Balls, Mom's Running Shoes and the sister's Town Map outside it, the gate's Potion, Bianca's
+  catching lesson on Route 19 (her Munna and a Patrat), Alder on Route 19 and in Floccesy Town, Hugh's battle at the
+  ranch and the Town Map handed over, the owners' lost Herdier found in the grove beside Team Plasma's first grunt, who
+  runs and leaves TM21 behind, Alder's lesson at home (two of the school's pupils, Seymour's monkey weak to the starter
+  and Cassie's strong, then five Oran Berries), Cheren's Gym (Pedro and Serena first, then `unova_leader_cheren`, the
+  Basic Badge and TM83), Bianca's TM27 and Cheren taking Hugh's challenge outside the school, the hiker on Route 20 who
+  wants a Badge, and Cheren's dark-grass advice and three Pecha Berries. Hugh's teams are `unova_rival`, `_2` and `_3`
+  (then `_4` to `_6`) by the starter: his is the one strong against it.
+- **Our tellings where Black 2's are another's.** Hugh doesn't follow the player round town (Black 2's follower walk):
+  he looks on his own side and catches up at the outlook's steps. The Town Map is one item; the second is a flag of
+  ours (`FLAG_UNOVA_HUGHS_TOWN_MAP`) until it is handed over. The C-Gear, the Xtransceiver's numbers, the nickname
+  question and Bianca's Habitat List are left out (no such device or screen yet). Cheren's TM83 is our data's TM83
+  (Platinum's table, Natural Gift), not Black 2's Work Up: the item table is Platinum's. The gate's guard turns back a
+  player with no Pokémon in the gate house as well as the town's own row (`VAR_UNOVA_ASPERTIA` 1).
+- **Flags and variables.** The decompilation's are by value (`EVENT_FLAG_0x02e9`), which the importer writes as
+  `FLAG_UNOVA_0x02e9` and no script may name (a flag's name is capitals). So each story person's overlay gives a flag
+  of ours in place of the import's, and the scripts name variables of ours on triggers of the overlay's own tiles:
+  `VAR_UNOVA_HOUSE` is Black 2's `0x40a0`, `_ASPERTIA` `0x40a1`, `_OUTLOOK` `0x40a4`, `_ROUTE_19` `0x40a3`, `_FLOCCESY`
+  `0x40a5`, `_RANCH` `0x40a7`, `_ROUTE_20` `0x40ab`, `_GATE` `0x40e0`, each counted as Black 2 counts it where the
+  beats are the same; `FLAG_UNOVA_HIDE_MOM_HOME` is `0x02e4`, `_HUGH_ASPERTIA` `0x02e9`, `_MOM_ASPERTIA` `0x02e7`,
+  `_BIANCA_ASPERTIA` `0x02e6`, `_HUGHS_SISTER` `0x02e8`, `_CHEREN_ASPERTIA` `0x02e5`, `_BIANCA_CENTER` `0x02dc`,
+  `_BIANCA_ROUTE_19` `0x03db`, `_ALDER_ROUTE_19` `0x02e2`, `_ALDER_FLOCCESY` `0x02db`, `_HUGH_RANCH` `0x02d9`,
+  `_RANCH_OWNERS` `0x02d7`, `_RANCH_GRUNT` `0x02d8`, `_HUGH_ROUTE_20` `0x02bd`, `_CHEREN_ROUTE_20` `0x02bf`.
+- **What a game starts with** is `common.UnovaNewGame` (run for every new game); `FLAG_UNOVA_STORY_BEGUN` says it has
+  run. A save made before the story was written is brought up to date by the chapter's arrival scripts
+  (`common.UnovaCatchUp`), with no story version raised: one whose game began in Unova with a team (plan 22 · U2's) is
+  taken past the opening (`common.UnovaOpeningDone`), so nobody hands it a second starter; a Champion who crossed in
+  plays the opening all the same, naming Hugh at the door (`namerival` where `CROSSED_IN`).
+- **Hugh is the rival**: Black 2's class "Pokémon Trainer Rival" counts as the rival's (`TrainerDatabase.IsRival`), so
+  he is called by the name the player gave him and fights to the rival's song.
+- **The places' looks**: Aspertia's houses and school are `Architecture.Hillside`, Floccesy's houses and bell tower
+  `Bellfield` (the style guide's rows); the Pokémon Center and the gate house are every region's. Virbank's two, in view
+  from Route 20's end, stay stand-ins for part b.
+- **Songs** of our own in `Data/music/unova/`: `aspertia`, `route19` (also Route 20, the ranch and the gate), `floccesy`,
+  `gym`, the four battles, two victories and two eye themes; the rest of the roles fall back to `common`.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

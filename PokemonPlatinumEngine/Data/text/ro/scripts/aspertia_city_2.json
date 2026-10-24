@@ -1,0 +1,158 @@
+{
+  "MomQuestions": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, good, you're up! Listen, have you heard of Professor Juniper? She studies Pokémon. She's quite famous."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We were friends years ago, and she called me this morning, out of the blue!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So, {player}... how would you like a Pokémon of your very own?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Really? You don't mean that! Every child in Aspertia dreams of having a partner."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I knew it! That's the first part sorted, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next question. Do you know what a Pokédex is?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a little machine that notes down every kind of Pokémon you come across, all by itself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Of course you do. It writes down every Pokémon you meet, all on its own. Clever thing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you'd like one of those too, wouldn't you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then that's settled. The professor has sent her assistant all the way up here to meet you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Her name is Bianca. I'm told you can't miss her: just look for a big green hat."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look worn out, dear. Sit down for a minute and let your Pokémon rest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There, all better. Off you go, and be careful out there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca's somewhere in town. Try the high places: visitors always want to see the view."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good morning, sleepyhead. Come here a moment, I've got something to ask you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
