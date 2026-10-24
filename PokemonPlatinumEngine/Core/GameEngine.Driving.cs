@@ -260,6 +260,9 @@ public partial class GameEngine
         public void WalkWith(NPC body, Pokemon pokemon) => game.WalkWith(body, pokemon);
         /// <summary>The game written to its slot's save where the player stands, as the save screen writes it.</summary>
         public bool Save() => game.WriteSave();
+
+        /// <summary>The ways to play this game was begun with (plan 13 · V1).</summary>
+        public Models.RunRules Run => game.flow.Run;
         /// <summary>
         /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
         /// run left in its folder sets it.

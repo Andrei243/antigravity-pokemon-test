@@ -6,6 +6,7 @@ using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
@@ -18,7 +19,7 @@ namespace PokemonPlatinumEngine.UI;
 /// plan 12 · Q1), one <see cref="TitleNotice"/> at a time. Deleting a save (plan 12 · Q2) is <see cref="ChooseDelete"/>,
 /// the cursor on the saves' cards alone, and <see cref="ConfirmDelete"/>, the question that names the slot.
 /// </summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving, Warning, ChooseDelete, ConfirmDelete }
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving, Warning, ChooseDelete, ConfirmDelete, ChooseRun }
 
 /// <summary>
 /// A slot the title has a card for (plan 12 · Q2): its number from 1 and the game saved in it, or no game for a
@@ -249,7 +250,7 @@ public sealed class TitleScreen
         totalTime += dt;
         skipFlash = Math.Max(0f, skipFlash - dt);
         bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.Leaving
-            or TitlePhase.ChooseDelete or TitlePhase.ConfirmDelete || Phase == TitlePhase.Warning && noticeOverMenu;
+            or TitlePhase.ChooseDelete or TitlePhase.ChooseRun or TitlePhase.ConfirmDelete || Phase == TitlePhase.Warning && noticeOverMenu;
         menuBlend = Math.Clamp(menuBlend + (menuUp ? dt : -dt) / 0.45f, 0f, 1f);
 
         switch (Phase)
@@ -300,7 +301,7 @@ public sealed class TitleScreen
                         ConfirmYes = false;
                         Enter(TitlePhase.ConfirmNewGame);
                         break;
-                    case TitleChoice.NewGame: BeginNewGame(); break;
+                    case TitleChoice.NewGame: OpenRunPanel(); break;
                     // With one save there is no asking which
                     case TitleChoice.Delete when cards.Count == 1: AskDelete(cards[0].Number); break;
                     case TitleChoice.Delete:
@@ -315,8 +316,13 @@ public sealed class TitleScreen
                 break;
             case TitlePhase.ConfirmNewGame:
                 AudioManager.PlaySound(ConfirmYes ? "select" : "cancel");
-                if (ConfirmYes) BeginNewGame();
+                if (ConfirmYes) OpenRunPanel();
                 else Enter(TitlePhase.Menu);
+                break;
+            case TitlePhase.ChooseRun:
+                AudioManager.PlaySound("select");
+                Run.Confirm();
+                if (Run.Done) BeginNewGame();
                 break;
             case TitlePhase.ChooseDelete:
                 AudioManager.PlaySound("select");
@@ -380,7 +386,32 @@ public sealed class TitleScreen
     private void BeginNewGame()
     {
         Slot = FreeSlot ?? 1;
+        ChosenRun = Run.Rules;
         Leave(TitleChoice.NewGame);
+    }
+
+    /// <summary>
+    /// NEW GAME was chosen (and, with saves in the way, agreed to): the ways to play are asked next (plan 13 · V1), in a
+    /// panel of rows with the preset first. Confirm on Normal leaves at once; B goes back to the menu.
+    /// </summary>
+    private void OpenRunPanel()
+    {
+        Run.Open();
+        Enter(TitlePhase.ChooseRun);
+    }
+
+    /// <summary>The panel of the ways to play (plan 13 · V1), open in <see cref="TitlePhase.ChooseRun"/>.</summary>
+    public RunPanel Run { get; } = new();
+
+    /// <summary>The ways to play the new game handed over was started with: Normal unless the panel chose otherwise.</summary>
+    public RunRules ChosenRun { get; private set; } = RunRules.Normal;
+
+    /// <summary>Left and right in the panel of the ways to play: the selected row's next value.</summary>
+    public void Change(int direction)
+    {
+        if (Phase != TitlePhase.ChooseRun) return;
+        Run.Change(direction);
+        AudioManager.PlaySound("cursor");
     }
 
     /// <summary>A notice read: the next one, or the menu once none is left.</summary>
@@ -401,6 +432,8 @@ public sealed class TitleScreen
             return;
         }
         if (Phase == TitlePhase.ConfirmNewGame) Enter(TitlePhase.Menu);
+        // Out of the ways to play to the menu NEW GAME was chosen on (plan 13 · V1)
+        else if (Phase == TitlePhase.ChooseRun) Enter(TitlePhase.Menu);
         // Out of the delete question to where it was asked; out of the choice of a save to the row that asked for it
         else if (Phase == TitlePhase.ConfirmDelete) Enter(deleteFrom);
         else if (Phase == TitlePhase.ChooseDelete)
@@ -419,6 +452,7 @@ public sealed class TitleScreen
         if (step == 0) return;
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
         else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
+        else if (Phase == TitlePhase.ChooseRun) Run.Move(step);
         else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete) ConfirmYes = !ConfirmYes;
         else return;
         AudioManager.PlaySound("cursor");
@@ -459,6 +493,8 @@ public sealed class TitleScreen
         Advance(dt);
         if (InputManager.IsActionPressed(GameAction.Confirm) || InputManager.IsActionPressed(GameAction.Menu)) PressConfirm();
         else if (InputManager.IsActionPressed(GameAction.Cancel)) PressCancel();
+        else if (Phase == TitlePhase.ChooseRun && InputManager.IsActionPressed(GameAction.Left)) Change(-1);
+        else if (Phase == TitlePhase.ChooseRun && InputManager.IsActionPressed(GameAction.Right)) Change(1);
         else if (InputManager.IsActionPressed(GameAction.Up) || InputManager.IsActionPressed(GameAction.Left)) Move(-1);
         else if (InputManager.IsActionPressed(GameAction.Down) || InputManager.IsActionPressed(GameAction.Right)) Move(1);
     }
@@ -539,6 +575,7 @@ public sealed class TitleScreen
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
         if (Phase == TitlePhase.ConfirmDelete) DrawDelete(sw, sh);
+        if (Phase == TitlePhase.ChooseRun) ModernUi.RunChoice(sw, sh, Run, Smooth(0f, 0.2f, phaseTime));
         if (Phase == TitlePhase.Warning && Notice is { } notice)
             ModernUi.Notice(sw, sh, notice.Heading, notice.Body, Text.Of("shared.ok"), Smooth(0f, 0.18f, phaseTime));
 

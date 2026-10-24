@@ -4746,3 +4746,27 @@ our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own f
 - **Where**: HeartGold's dome is its lobby room, entered from Route 35's gate house through its west door (warp 2,
   `MAP_POKEATHLON_DOME`), so there is no dome building outside to draw and plan 15's `BuildingKind.Dome` is not made.
   Its clerk is `common.AthlonDesk`, which nobody runs until plan 20 · J13 opens the dome's rooms.
+
+## Ways to play (2026-10-24, plan 13 · V1)
+
+NEW GAME asks one more thing, after "start a new game?" when there are saves: how the game is to be played. The answer is
+a `RunRules` record (`Models/RunRules.cs`) kept whole in the save (`SaveData.Run`) and never changed. Normal, which is
+every choice off, is Platinum's game exactly and is what the panel opens on, so the usual NEW GAME is one more press of A.
+A save from before the choice has no `Run` and reads as Normal; a Normal game writes no field, so no save version was raised.
+
+What each choice will change, and which session gives it effect (V1 only asks and remembers; **nothing is enforced yet**):
+
+| Choice | Meaning | Session |
+|---|---|---|
+| Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 |
+| Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 |
+| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
+| Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
+| No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
+| Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 |
+
+Presets (NORMAL, NUZLOCKE: the Nuzlocke with the dupes and shiny clauses; HARDCORE: that plus Challenge, the level cap, no
+items in battle and Set) are records with some fields set; a run that matches none is CUSTOM. The clauses show only while
+the Nuzlocke is on and are cleared when it is turned off. `RunRules.Current` is the run in force, set by the engine as a
+game begins or loads, for the one rule with no caller to hand it to (the shiny roll). No region is chosen here: every game
+begins in Sinnoh (plan 18 · W10).

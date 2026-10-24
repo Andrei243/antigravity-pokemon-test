@@ -47,6 +47,9 @@ public sealed partial class GameFlow
     /// <summary>The day the adventure began (saved).</summary>
     public DateTime? AdventureStarted { get; set; }
 
+    /// <summary>The ways to play chosen at NEW GAME (plan 13 · V1; saved as <c>SaveData.Run</c>, Normal when none).</summary>
+    public Models.RunRules Run { get; set; } = Models.RunRules.Normal;
+
     /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
     public HallOfFame HallOfFame { get; set; } = new();
 

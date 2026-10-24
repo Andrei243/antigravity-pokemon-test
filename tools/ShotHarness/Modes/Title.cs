@@ -233,6 +233,8 @@ partial class Harness
         // so that nothing after them moves
         saved.Move(1);
         saved.PressConfirm();
+        // (Since plan 13 · V1 the ways to play come next; Confirm on Normal leaves at once, so this shot is what it was)
+        saved.PressConfirm();
         Seconds(0.2f); Shot("title_12_new_game_leaving");
         Seconds(0.2f);
         var again = NewTitle(save);
@@ -439,6 +441,40 @@ partial class Harness
         Console.WriteLine($"after a crash with two saves: {several.Notice?.Body}");
 
         MigrateShots(Seconds, NewTitle);
+
+        // Last of the title mode, so that nothing before it moves (plan 13 · V1): the ways to play that NEW GAME asks next
+        var fresh = NewTitle(null);
+        fresh.PressConfirm();
+        Seconds(1.2f);
+        fresh.PressConfirm();
+        Seconds(1f);
+        fresh.PressConfirm();
+        Seconds(0.5f); Shot("title_43_run_preset");
+        Console.WriteLine($"the ways to play: phase {fresh.Phase}, rows {fresh.Run.Rows.Count}, on {fresh.Run.SelectedRow}, preset {fresh.Run.Rules.PresetKey}, normal {fresh.Run.Rules.IsNormal}");
+        fresh.Change(1);
+        Seconds(0.2f); Shot("title_44_run_nuzlocke");
+        Console.WriteLine($"one step right: preset {fresh.Run.Rules.PresetKey}, rows {fresh.Run.Rows.Count}");
+        while (fresh.Run.SelectedRow != PokemonPlatinumEngine.UI.Kit.RunRow.NoRunning) fresh.Move(1);
+        fresh.Change(1);
+        Seconds(0.2f); Shot("title_45_run_flag");
+        Console.WriteLine($"a flag on: preset {fresh.Run.Rules.PresetKey}, on {fresh.Run.SelectedRow}, window from {fresh.Run.First}");
+        while (fresh.Run.SelectedRow != PokemonPlatinumEngine.UI.Kit.RunRow.Start) fresh.Move(1);
+        Seconds(0.2f); Shot("title_46_run_start");
+        fresh.PressConfirm();
+        Seconds(0.2f);
+        Console.WriteLine($"START: phase {fresh.Phase}, chosen {fresh.ChosenRun.PresetKey}, no running {fresh.ChosenRun.NoRunning}");
+
+        // A game saved with one of them is marked on its card and its summary
+        save.Run = RunRules.NuzlockePreset;
+        var marked = NewTitle(save);
+        marked.PressConfirm();
+        Seconds(1.2f);
+        marked.PressConfirm();
+        Seconds(1f);
+        Shot("title_47_run_marked_card");
+        Console.WriteLine($"the card of a game played as a Nuzlocke: mark \"{ModernUi.RunMark(save.Run)}\"");
+        ShotCrop("title_47b_run_marked_native", 1016, (int)marked.EntryRects()[0].Y, 824, 452, 2);
+        save.Run = null;
 
         game.State = GameState.Overworld;
     }

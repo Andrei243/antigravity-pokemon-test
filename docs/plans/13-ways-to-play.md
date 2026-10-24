@@ -284,7 +284,7 @@ Written 2026-10-06, before any session. V15 to V26 were added the same day from 
 
 ## Status
 
-- [ ] V1 The choice at NEW GAME
+- [x] V1 The choice at NEW GAME (2026-10-24). Built: `Models/RunRules.cs` (record, `Difficulty`, presets Normal / Nuzlocke / Hardcore, `IsNormal`, `PresetKey`, `Current`), `UI/Kit/RunPanel.cs` (GPU-free rows and edits), `TitlePhase.ChooseRun` after NEW GAME (and its YES), `ModernUi.RunChoice`, `StartNewGame(..., run)` and `GameFlow.Run`, `SaveData.Run` (null for Normal; no save version raised, so no fixtures to copy), `ModernUi.RunMark` on the CONTINUE summary and slot cards, `CardPage.Run` (only for a non-Normal game, after the back). No region question (W10). Decided: `ShinyDenominator` 0 means the rules' own (the modern rules already differ from 8192), Confirm on a Normal run starts at once on any row, clauses hidden while the Nuzlocke is off, no Randomizer field yet (V6 adds it), nothing is enforced. Left: the harness's `28b_trainer_card_run` shot in `menus` (the card page is tested, not shot), the pad hints on the panel.
 - [ ] V2 Challenge and Easy
 - [ ] V3 The level cap and scaling
 - [ ] V4 Nuzlocke
