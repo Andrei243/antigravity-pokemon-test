@@ -1,0 +1,8 @@
+{
+  // Team Magma's hideout, the second floor's third hall (plan 21 · H7, part b): a passage between the ground floor and
+  // the third floor's last hall
+  "area": "magma_hideout_2f_3r",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic"
+}

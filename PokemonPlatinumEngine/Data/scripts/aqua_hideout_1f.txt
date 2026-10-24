@@ -1,0 +1,42 @@
+# Team Aqua's hideout, its entrance hall (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/AquaHideout_1F/scripts.inc).
+#
+# Two grunts block the way in until Team Aqua has taken Captain Stern's submarine at Slateport (their flags set by
+# slateport_city_harbor.txt). Each lets slip where Archie is by how far the story has gone: before the orbs are taken,
+# after the Magma Emblem (FLAG_RECEIVED_RED_OR_BLUE_ORB) and after Groudon has woken (FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT).
+
+
+script Guard1
+  face self player
+  speaker "Team Aqua Grunt"
+  if flag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT goto Submarine
+  if flag FLAG_RECEIVED_RED_OR_BLUE_ORB goto MagmaHideout
+  say "What? What do you want with Team Aqua? The boss isn't here. He's off to grab something important!"
+  say "Where? Wahaha! As if I'd tell you something like that!"
+  end
+label MagmaHideout
+  say "What? Are you one of Team Magma's? I heard they're trying to wake some mighty Pokémon in their hideout."
+  say "But where is their hideout, anyway?"
+  end
+label Submarine
+  say "What? What do you want with Team Aqua? The boss isn't here. He's gone to take a submarine for himself!"
+  say "Where? Wahaha! As if I'd tell you something like that!"
+  end
+
+
+script Guard2
+  face self player
+  speaker "Team Aqua Grunt"
+  if flag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT goto Slateport
+  if flag FLAG_RECEIVED_RED_OR_BLUE_ORB goto MtChimney
+  say "What? What do you want with Team Aqua? The boss isn't here. He's on his way to Mt. Pyre, on Route 122!"
+  say "Why? Wahaha! As if I'd tell you something like that!"
+  end
+label MtChimney
+  say "What? Are you one of Team Magma's? I heard they're after some mighty Pokémon at Mt. Chimney."
+  say "What's that Pokémon like, I wonder?"
+  end
+label Slateport
+  say "What? What do you want with Team Aqua? The boss isn't here. He's on his way to Slateport City!"
+  say "Why? Wahaha! As if I'd tell you something like that!"
+  end

@@ -1,0 +1,90 @@
+# Team Magma's hideout, its top floor (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/MagmaHideout_4F/scripts.inc).
+#
+# Maxie stands before Groudon, asleep in the magma, with the Blue Orb taken from Mt. Pyre. Spoken to, he holds the orb
+# up to it: its light wakes Groudon, which rises, shakes the hall and is gone into the mountain. There is no battle with
+# Groudon, as Emerald has none here: it is taken off the map (FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP and
+# FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON both set). Maxie, at a loss, turns on the player and battles; beaten, he goes after
+# Groudon with all of Team Magma (FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS). What Emerald sets with it is set here: the
+# awakening (FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT), Captain Stern back in Slateport City and interviewed outside its
+# harbour by Gabby and Ty (VAR_SLATEPORT_CITY_STATE 1, FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN and
+# FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY cleared) and Team Aqua ready to take his submarine from the harbour
+# (VAR_SLATEPORT_HARBOR_STATE 1; slateport_city.txt, slateport_city_harbor.txt).
+
+
+script Maxie
+  if flag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT end
+  scene "Groudon wakes in Team Magma's hideout"
+  music "hoenn/eye_magma"
+  speaker "Maxie"
+  say "Groudon... Asleep for so long in your bed of magma, where nothing could reach you."
+  say "This is the Blue Orb. It is what you were waiting for, isn't it? I have brought it to you."
+  say "Let its light wake you! And show me... show me all that your power can do!"
+  wait 0.3
+  effect sparkles 16 17 wait
+  music "hoenn/awaken_legend"
+  effect burst 16 17
+  face player up
+  wait 2.5
+  hide magma_hideout_4f_groudon_sleeping
+  setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP
+  clearflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  show magma_hideout_4f_groudon
+  cry "Groudon"
+  wait 1
+  walk magma_hideout_4f_groudon down 2
+  camera shake 1.2
+  wait 1.2
+  walk magma_hideout_4f_groudon up 2
+  hide magma_hideout_4f_groudon
+  setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  camera shake 1.2
+  wait 1.4
+  face magma_hideout_4f_maxie left
+  wait 0.3
+  face magma_hideout_4f_maxie right
+  wait 0.3
+  face magma_hideout_4f_maxie left
+  wait 0.3
+  face magma_hideout_4f_maxie up
+  wait 0.5
+  music "hoenn/eye_magma"
+  speaker "Maxie"
+  say "Groudon! What is the matter with you?"
+  say "Wasn't the Blue Orb the key? Groudon! Where have you gone?"
+  face player magma_hideout_4f_maxie
+  wait 0.5
+  face magma_hideout_4f_maxie player
+  emote magma_hideout_4f_maxie exclaim
+  say "So it was you. I've seen you nosing about wherever Team Magma has business..."
+  say "Now I see it. You must have played some cheap trick on us!"
+  battle self as "hoenn_maxie_magma_hideout"
+  speaker "Maxie"
+  say "How can a child handle Pokémon so well?"
+  say "There must be some reason Groudon fled. That's what you would tell me, isn't it?"
+  say "......"
+  say "Hmph. Do you think I don't know that already?"
+  say "With Groudon gone, I have no more use for this wretched volcano. I am going after Groudon. This is where we part."
+  setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
+  clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+  clearflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+  setvar VAR_SLATEPORT_CITY_STATE 1
+  setvar VAR_SLATEPORT_HARBOR_STATE 1
+  fade out
+  hide magma_hideout_4f_maxie
+  hide magma_hideout_4f_grunt_1
+  hide magma_hideout_4f_grunt_2
+  hide magma_hideout_4f_grunt_3
+  hide magma_hideout_4f_tabitha
+  setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
+  music area
+  fade in
+  endscene
+  end
+
+
+# Groudon asleep, looked at before Maxie has woken it
+script SleepingGroudon
+  speaker none
+  text "Groudon is sleeping, curled in the magma. It doesn't stir at all."
+  end

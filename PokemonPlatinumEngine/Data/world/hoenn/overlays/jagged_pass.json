@@ -1,17 +1,24 @@
 {
   // Jagged Pass (plan 21 · H4, part b): the rough way down Mt. Chimney's south face, from the summit to Route 112 by
   // Lavaridge Town, its ledges taken one way going down and with the Acro Bike's hops going up. Team Magma's hideout
-  // opens in its side once the Magma Emblem is shown (plan 21 · H7), so its way in stays shut and its guard and the
-  // triggers that open it wait for that part
+  // opens in its side once the Magma Emblem is shown (plan 21 · H7, part b; jagged_pass.txt): its way in is a wall until
+  // the rock has shaken open (FLAG_HOENN_MAGMA_HIDEOUT_OPEN, a flag of ours in place of Emerald's metatiles set by
+  // VAR_JAGGED_PASS_STATE 2), and the grunt who guards the spot battles until Mt. Pyre's old woman has given the emblem
+  // (FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD, set on the summit)
   "area": "jagged_pass",
   "bgmTrack": "hoenn/petalburg_woods",
   "trees": "Round",
-  "locked": [ 4 ],
+  "switches": [ { "warp": 4, "from": "FLAG_HOENN_MAGMA_HIDEOUT_OPEN" } ],
+  "triggers": [
+    { "trigger": 0, "script": "OpenHideout" }, { "trigger": 1, "script": "OpenHideout" }, { "trigger": 2, "script": "OpenHideout" },
+    { "trigger": 3, "script": "OpenHideout" }, { "trigger": 4, "script": "OpenHideout" }
+  ],
   "people": {
     "hiker": { "name": "Eric", "trainer": { "dialogueBefore": "Hiker Eric: Jagged Pass lives up to its name. Every step's a battle, so here's one more!", "dialogueAfter": "Hiker Eric: I tripped over my own feet on that one." } },
     "camper": { "name": "Ethan", "trainer": { "dialogueBefore": "Camper Ethan: I'm training on the steepest path in Hoenn. My Pokémon are tougher for it!", "dialogueAfter": "Camper Ethan: Not tough enough, it seems." } },
     "picnicker": { "name": "Diana", "trainer": { "dialogueBefore": "Picnicker Diana: Lunch with a view of the volcano! Want to battle while my sandwich cools?", "dialogueAfter": "Picnicker Diana: My sandwich is cold now, and I lost." } },
     "picnicker_2": { "name": "Autumn", "trainer": { "dialogueBefore": "Picnicker Autumn: The ash makes everything look like autumn up here. Fitting, don't you think?", "dialogueAfter": "Picnicker Autumn: I fell like a leaf." } },
-    "cycling_triathlete_m": { "name": "Julio", "trainer": { "dialogueBefore": "Triathlete Julio: Riding down Jagged Pass is the ultimate test of nerve! Let's see yours!", "dialogueAfter": "Triathlete Julio: I hit the brakes too late." } }
+    "cycling_triathlete_m": { "name": "Julio", "trainer": { "dialogueBefore": "Triathlete Julio: Riding down Jagged Pass is the ultimate test of nerve! Let's see yours!", "dialogueAfter": "Triathlete Julio: I hit the brakes too late." } },
+    "magma_hideout_guard": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "Guard", "still": true }
   }
 }

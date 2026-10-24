@@ -42,7 +42,15 @@ label JustABall
   end
 
 
-# The rival once back from Route 103 and in the lab, when they come home
+# The rival once back from Route 103 and in the lab, when they come home; and home again after the battle before
+# Lilycove's Department Store (FLAG_MET_RIVAL_LILYCOVE, plan 21 · H7, part b), as Emerald puts them back in this room
 script Rival
+  face self player
+  speaker "{rival}"
+  if flag FLAG_MET_RIVAL_LILYCOVE goto Home
   say "Our house is right next to yours, {player}. Come over any time!"
+  end
+label Home
+  say "{player}! I came home to help Dad sort through all the data from my journey."
+  say "Hearing how far you've got makes me want to go back out there. Keep going, all right? I'm cheering for you!"
   end

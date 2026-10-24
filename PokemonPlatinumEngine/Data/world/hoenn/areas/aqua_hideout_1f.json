@@ -1,0 +1,29 @@
+{
+  "key": "aqua_hideout_1f",
+  "index": 261,
+  "name": "Aqua Hideout",
+  "matrix": 210,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 27, "to": "lilycove_city", "toWarp": 6 },
+    { "x": 14, "z": 27, "to": "lilycove_city", "toWarp": 6 },
+    { "x": 22, "z": 1, "to": "aqua_hideout_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "look_south", "x": 13, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE", "script": "AquaHideout_1F_EventScript_HideoutEntranceGrunt1" },
+    { "id": "aqua_member_m_2", "looks": "aqua_member_m", "movement": "look_south", "x": 14, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE", "script": "AquaHideout_1F_EventScript_HideoutEntranceGrunt2" },
+    { "id": "aqua_member_m_3", "looks": "aqua_member_m", "movement": "walk_sequence_south_west_north_east", "x": 20, "z": 4, "facing": 1, "rangeX": 13, "rangeZ": 5, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_AQUA_HIDEOUT_1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

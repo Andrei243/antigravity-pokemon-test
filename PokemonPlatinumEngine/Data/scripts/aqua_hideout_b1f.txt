@@ -1,0 +1,26 @@
+# Team Aqua's hideout, its first basement (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/AquaHideout_B1F/scripts.inc).
+#
+# Two of the Poké Balls lying among the floor's items are Electrode, a level 30 each. Looked at, one cries and battles;
+# whatever comes of the battle, won, run from or caught, it is gone for good (FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT and
+# _2_, which the overlay hides it by, as Emerald's arrival shows it only until then).
+
+
+script Electrode1
+  cry "Electrode"
+  speaker none
+  text "The Poké Ball was an Electrode!"
+  wildbattle "Electrode" 30
+  setflag FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT
+  hide self
+  end
+
+
+script Electrode2
+  cry "Electrode"
+  speaker none
+  text "The Poké Ball was an Electrode!"
+  wildbattle "Electrode" 30
+  setflag FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT
+  hide self
+  end

@@ -1963,4 +1963,254 @@ public class HoennStoryTests
             Assert.True(MusicLibrary.Exists(song), song);
         Assert.Equal(9112, ItemDatabase.Get("Magma Emblem")!.Id);
     }
+
+    // ------------------------------------------------------------------ plan 21 · H7, part b: the two teams' hideouts
+
+    /// <summary>Past Mt. Pyre's summit: the Magma Emblem in the bag and Jagged Pass's guard gone, as the summit leaves them.</summary>
+    private static Game PastMtPyre(int starter = 0, PlayerLook look = PlayerLook.Boy)
+    {
+        var game = PastNorman(starter, look);
+        game.Bag.AddItem(ItemDatabase.Get("Magma Emblem")!);
+        game.Story.Set("FLAG_RECEIVED_RED_OR_BLUE_ORB");
+        game.Story.Set("FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD");
+        game.Story.SetVar("VAR_MT_PYRE_STATE", 1);
+        return game;
+    }
+
+    [Fact]
+    public void TheGuardOnJaggedPassBattlesOnceBeforeTheEmblem()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("JaggedPass", 16, 22);
+        Assert.NotNull(game.Present("magma_hideout_guard"));
+        var first = game.Talk("magma_hideout_guard");
+        Assert.Contains(first.Log, l => l.StartsWith("battle hoenn_grunt_jagged_pass"));
+        Assert.True(game.Story.Has("FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS"));
+        Assert.DoesNotContain(game.Talk("magma_hideout_guard").Log, l => l.StartsWith("battle"));
+
+        // Without the emblem the rock stays shut and the triggers do nothing
+        Assert.Equal(0, game.Story.Var("VAR_JAGGED_PASS_STATE"));
+        Assert.Null(game.StepAt(21, 15));
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "MagmaHideout_1F"), w => Assert.True(w.Shut));
+    }
+
+    [Theory]
+    [InlineData(21, 15)]
+    [InlineData(22, 20)]
+    [InlineData(13, 15)]
+    public void TheMagmaEmblemShakesTheRockOpenOnJaggedPass(int x, int y)
+    {
+        var game = PastMtPyre();
+        game.Arrive("JaggedPass", 16, 22);
+        Assert.Null(game.Present("magma_hideout_guard"));
+        Assert.Equal(1, game.Story.Var("VAR_JAGGED_PASS_STATE"));
+        var scene = game.StepAt(x, y);
+        Assert.NotNull(scene);
+        Assert.Equal(2, game.Story.Var("VAR_JAGGED_PASS_STATE"));
+        Assert.True(game.Story.Has("FLAG_HOENN_MAGMA_HIDEOUT_OPEN"));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "MagmaHideout_1F" && !w.Shut);
+        // Once: the triggers start nothing again
+        Assert.Null(game.StepAt(x, y));
+        game.Through("MagmaHideout_1F");
+        Assert.Equal("MagmaHideout_1F", game.Map.Name);
+    }
+
+    [Fact]
+    public void GroudonWakesAndFleesAndMaxieGoesAfterItWithTeamMagma()
+    {
+        var game = PastMtPyre();
+        game.Story.SetVar("VAR_JAGGED_PASS_STATE", 2);
+        game.Story.Set("FLAG_HOENN_MAGMA_HIDEOUT_OPEN");
+        game.Arrive("MagmaHideout_4F", 20, 21);
+        Assert.NotNull(game.Present("magma_hideout_4f_groudon_sleeping"));
+        Assert.Null(game.Present("magma_hideout_4f_groudon"));
+        Assert.NotNull(game.Present("magma_hideout_4f_tabitha"));
+
+        var scene = game.Talk("magma_hideout_4f_maxie");
+        Assert.Contains(scene.Log, l => l.StartsWith("battle hoenn_maxie_magma_hideout"));
+        // No battle with Groudon: it is woken and gone
+        Assert.DoesNotContain(scene.Log, l => l.StartsWith("wildbattle"));
+        foreach (string flag in new[] { "FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT", "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON",
+                     "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP", "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.False(game.Story.Has("FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN"));
+        Assert.Equal(1, game.Story.Var("VAR_SLATEPORT_CITY_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_SLATEPORT_HARBOR_STATE"));
+
+        game.Arrive("MagmaHideout_4F", 20, 21);
+        foreach (string who in new[] { "magma_hideout_4f_maxie", "magma_hideout_4f_tabitha", "magma_hideout_4f_groudon",
+                     "magma_hideout_4f_groudon_sleeping", "magma_hideout_4f_grunt_1" })
+            Assert.Null(game.Present(who));
+        game.Arrive("MagmaHideout_1F", 10, 33);
+        Assert.Null(game.Present("magma_member_m"));
+    }
+
+    /// <summary>Past Team Magma's hideout: Groudon woken and Slateport's two scenes ready.</summary>
+    private static Game PastTheMagmaHideout()
+    {
+        var game = PastMtPyre();
+        foreach (string flag in new[] { "FLAG_HOENN_MAGMA_HIDEOUT_OPEN", "FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT",
+                     "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP" })
+            game.Story.Set(flag);
+        game.Story.Unset("FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN");
+        game.Story.Unset("FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY");
+        game.Story.SetVar("VAR_JAGGED_PASS_STATE", 2);
+        game.Story.SetVar("VAR_SLATEPORT_CITY_STATE", 1);
+        game.Story.SetVar("VAR_SLATEPORT_HARBOR_STATE", 1);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(8, 11)]
+    [InlineData(8, 12)]
+    [InlineData(8, 13)]
+    [InlineData(8, 14)]
+    public void TeamAquaTakesCaptainSternsSubmarineFromSlateportsHarbour(int x, int y)
+    {
+        var game = PastTheMagmaHideout();
+        game.Arrive("Hoenn", 227, 274);
+        Assert.NotNull(game.Present("slateport_capt_stern"));
+        Assert.NotNull(game.Present("slateport_gabby"));
+
+        game.Talk("slateport_capt_stern");
+        Assert.Equal("SlateportCity_Harbor", game.Map.Name);
+        Assert.Equal(2, game.Story.Var("VAR_SLATEPORT_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY"));
+        Assert.NotNull(game.Present("slateport_harbor_archie"));
+        Assert.NotNull(game.Present("slateport_harbor_capt_stern"));
+        Assert.Null(game.Present("beauty"));
+
+        var scene = game.StepAt(x, y);
+        Assert.NotNull(scene);
+        Assert.Contains(scene!.Transcript, l => l.Text.Contains("Lilycove"));
+        Assert.Equal(2, game.Story.Var("VAR_SLATEPORT_HARBOR_STATE"));
+        foreach (string flag in new[] { "FLAG_MET_TEAM_AQUA_HARBOR", "FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE",
+                     "FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT", "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE",
+                     "FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE", "FLAG_HIDE_LILYCOVE_MOTEL_SCOTT" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Null(game.Present("slateport_harbor_archie"));
+        Assert.Null(game.StepAt(x, y));
+
+        // The street's Stern is gone into the harbour, and the hideout's way in is clear
+        game.Arrive("Hoenn", 227, 274);
+        Assert.Null(game.Present("slateport_capt_stern"));
+        game.Arrive("AquaHideout_1F", 13, 26);
+        Assert.Null(game.Present("aqua_member_m"));
+        Assert.Null(game.Present("aqua_member_m_2"));
+    }
+
+    [Fact]
+    public void TheHideoutsGuardsHintWhereArchieIsByHowFarTheStoryHasGone()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("AquaHideout_1F", 13, 26);
+        Assert.Contains(game.Talk("aqua_member_m_2").Transcript, l => l.Text.Contains("Mt. Pyre"));
+        game.Story.Set("FLAG_RECEIVED_RED_OR_BLUE_ORB");
+        Assert.Contains(game.Talk("aqua_member_m_2").Transcript, l => l.Text.Contains("Mt. Chimney"));
+        game.Story.Set("FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT");
+        Assert.Contains(game.Talk("aqua_member_m_2").Transcript, l => l.Text.Contains("Slateport"));
+    }
+
+    [Theory]
+    [InlineData("item_ball_3", "FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT")]
+    [InlineData("item_ball_5", "FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT")]
+    public void TwoOfTheBallsInTeamAquasHideoutAreElectrode(string ball, string flag)
+    {
+        var game = PastTheMagmaHideout();
+        game.Arrive("AquaHideout_B1F", 29, 2);
+        Assert.NotNull(game.Present(ball));
+        var battle = game.Talk(ball);
+        Assert.Contains(battle.Log, l => l.StartsWith("wildbattle Electrode 30"));
+        Assert.True(game.Story.Has(flag));
+        // (it was never a ball: nothing is found)
+        Assert.DoesNotContain(battle.Log, l => l.StartsWith("find") || l.StartsWith("give"));
+        game.Arrive("AquaHideout_B1F", 29, 2);
+        Assert.Null(game.Present(ball));
+    }
+
+    [Fact]
+    public void MattKeepsThePlayerBusyWhileTheSubmarineSailsAndLilycovesChannelOpens()
+    {
+        var game = PastTheMagmaHideout();
+        game.Story.SetVar("VAR_SLATEPORT_HARBOR_STATE", 2);
+        game.Arrive("Hoenn", 507, 80);
+        Assert.NotNull(game.Present("wailmer_1"));
+        Assert.NotNull(game.Present("wailmer_1b"));
+        Assert.NotNull(game.Present("aqua_member_m"));
+
+        game.Arrive("AquaHideout_B2F", 32, 19);
+        Assert.Equal(0, game.Story.Var("VAR_TEMP_1"));
+        var scene = game.Talk("aqua_hideout_matt");
+        Assert.Contains(scene.Log, l => l.StartsWith("battle hoenn_matt"));
+        Assert.True(game.Story.Has("FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS"));
+        // Spoken to again, he only laughs
+        Assert.DoesNotContain(game.Talk("aqua_hideout_matt").Log, l => l.StartsWith("battle"));
+        game.Arrive("AquaHideout_B2F", 32, 19);
+        Assert.Equal(1, game.Story.Var("VAR_TEMP_1"));
+
+        game.Arrive("Hoenn", 507, 80);
+        foreach (string who in new[] { "wailmer_1", "wailmer_1b", "wailmer_2", "wailmer_3d", "aqua_member_m", "aqua_member_m_5" })
+            Assert.Null(game.Present(who));
+        Assert.Contains(game.Talk("sailor").Transcript, l => l.Text.Contains("east"));
+    }
+
+    [Fact]
+    public void LilycovesWailmerShutTheChannelOnEmeraldsTwelveTiles()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("Hoenn", 507, 80);
+        foreach (var (x, y) in new[] { (556, 82), (557, 82), (556, 83), (557, 83), (556, 84), (557, 84), (556, 85), (557, 85),
+                     (557, 86), (558, 86), (557, 87), (558, 87) })
+            Assert.Contains(game.Map.NPCs, n => n.GridX == x && n.GridY == y && n.HiddenBy == "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE");
+        // Only three of them are drawn: the rest of each Wailmer is nobody to be seen
+        Assert.Equal(3, game.Map.NPCs.Count(n => n.HiddenBy == "FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE" && n.IsPokemon));
+    }
+
+    [Fact]
+    public void TheRivalIsHomeInTheirBedroomAfterLilycove()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("LittlerootTown_MaysHouse_2F", 4, 5);
+        Assert.Null(game.Present("rivals_house_2f_rival"));
+        game.Arrive("Hoenn", 507, 80);
+        game.Talk("var_0");
+        Assert.False(game.Story.Has("FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM"));
+        game.Arrive("LittlerootTown_MaysHouse_2F", 4, 5);
+        Assert.NotNull(game.Present("rivals_house_2f_rival"));
+        Assert.Contains(game.Talk("rivals_house_2f_rival").Transcript, l => l.Text.Contains("cheering"));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheHideoutsPeopleAndAnOlderSaveIsGivenThemOnTheWay()
+    {
+        string[] hidden =
+        {
+            "FLAG_HOENN_CHAPTER_EIGHT_B", "FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON", "FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN",
+            "FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY", "FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN",
+            "FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE", "FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT"
+        };
+        var fresh = new Game();
+        foreach (string flag in hidden) Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_ASLEEP"));
+
+        // A save from before part b: Jagged Pass's, Slateport City's and Lilycove City's arrivals run it, and no story
+        // version is raised
+        foreach (var (map, x, y) in new[] { ("JaggedPass", 16, 22), ("Hoenn", 227, 280), ("Hoenn", 507, 80) })
+        {
+            var old = PastNorman(0, PlayerLook.Boy);
+            foreach (string flag in hidden) old.Story.Unset(flag);
+            old.Arrive(map, x, y);
+            foreach (string flag in hidden) Assert.True(old.Story.Has(flag), $"{flag} at {map} {x},{y}");
+        }
+    }
+
+    [Fact]
+    public void TheSongsOfTheHideoutsAreThere()
+    {
+        Assert.True(MusicLibrary.Exists("hoenn/aqua_magma_hideout"));
+        Assert.True(MusicLibrary.Get("hoenn/aqua_magma_hideout")!.Loops);
+        Assert.True(MusicLibrary.Exists("hoenn/awaken_legend"));
+        Assert.False(MusicLibrary.Get("hoenn/awaken_legend")!.Loops);
+    }
 }

@@ -170,11 +170,22 @@ partial class Harness
             ("h150_mt_pyre_mountainside", "MtPyre_Exterior", 20, 30, Direction.Up),
             ("h151_mt_pyre_mist", "MtPyre_Exterior", 20, 12, Direction.Up),
             ("h152_mt_pyre_summit", "MtPyre_Summit", 23, 12, Direction.Up),
+            // Plan 21 · H7, part b: the two teams' hideouts and the way into Team Magma's on Jagged Pass
+            ("h155_jagged_pass_hideout", "JaggedPass", 16, 21, Direction.Up),
+            ("h156_magma_hideout_1f", "MagmaHideout_1F", 10, 30, Direction.Up),
+            ("h157_magma_hideout_2f", "MagmaHideout_2F_1R", 12, 18, Direction.Up),
+            ("h158_magma_hideout_3f", "MagmaHideout_3F_1R", 10, 12, Direction.Up),
+            ("h159_magma_hideout_groudon", "MagmaHideout_4F", 16, 22, Direction.Up),
+            ("h160_aqua_hideout_1f", "AquaHideout_1F", 13, 20, Direction.Up),
+            ("h161_aqua_hideout_b1f", "AquaHideout_B1F", 30, 8, Direction.Up),
+            ("h162_aqua_hideout_panels", "AquaHideout_B1F", 45, 11, Direction.Up),
+            ("h163_aqua_hideout_b2f", "AquaHideout_B2F", 24, 19, Direction.Left),
+            ("h164_lilycove_cove", "Hoenn", 550, 78, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;

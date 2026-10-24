@@ -661,8 +661,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Pokéblock feeders and the Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in
     the chamber's middle and Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in
     the harness, and Fortree's bridges looked at as decks over the forest floor in `h108` and `h109`.
-- [ ] H7 Lilycove, Mt. Pyre and the hideouts (part a done 2026-10-24, wave 41: Lilycove City and its rooms, Routes 122
-  and 123 and Mt. Pyre to the Magma Emblem; what is left is listed under "Left for part b")
+- [x] H7 Lilycove, Mt. Pyre and the hideouts (part a done 2026-10-24, wave 41: Lilycove City and its rooms, Routes 122
+  and 123 and Mt. Pyre to the Magma Emblem; part b done 2026-10-24, wave 42: the two hideouts, its record below part
+  a's; tests and shots written, not run)
   - **Opened** (30 areas, 201 in all): Lilycove City (`gTileset_Lilycove`'s open metatiles paving in
     `GbaCover.HoennRanges`) with its Pokémon Center on both floors, the Department Store's five floors and roof, the Cove
     Lily Motel's two floors, the museum's two, the Pokémon Trainer Fan Club, the Move Deleter's house and four houses;
@@ -713,6 +714,53 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     the rematch trainers of Mt. Pyre and Route 123 (Gabrielle, Valerie, Cameron, Jacki, Fernando); the looks of Archie's
     and Maxie's grunts as Emerald's (the Aqua grunt's stand-in); then the "Done when": the Aqua hideout's last scene, and
     the way to Mossdeep.
+  - **Part b, opened** (wave 42; 11 areas, 212 in all): Team Magma's hideout, its eight halls (`MagmaHideout_1F` to
+    `_4F`, matrices 273 to 280, `Cave`, `climate: Volcanic`), come to from Jagged Pass by a way that is a wall until the
+    rock opens (`switches` from `FLAG_HOENN_MAGMA_HIDEOUT_OPEN`, a flag of ours); Team Aqua's hideout, its three floors
+    (`AquaHideout_1F`, `_B1F`, `_B2F`, matrices 210 to 212, `Indoors`, the basements' warp panels the reader's), from
+    Lilycove's cove (its warp 6 no longer `locked`).
+  - **Part b, played**: Jagged Pass's guard battles once before the emblem (`FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS`); the
+    emblem readies the rock as the pass is come to (`VAR_JAGGED_PASS_STATE` 1) and any of its five triggers shakes it
+    open (2); sixteen grunts and Tabitha in Team Magma's halls; Maxie before the sleeping Groudon, the Blue Orb's light,
+    Groudon woken, the hall shaken and Groudon gone with no battle, Maxie's battle and Team Magma gone
+    (`FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT`, `FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS`); Captain Stern interviewed by Gabby and Ty
+    before Slateport's harbour, the shout from inside and the warp in (`VAR_SLATEPORT_CITY_STATE` 1 to 2); Archie and his
+    grunt taking the submarine from its berth from any of the harbour's four triggers, Stern beside himself, the
+    hideout's two guards gone from its door (`VAR_SLATEPORT_HARBOR_STATE` 2, `FLAG_MET_TEAM_AQUA_HARBOR`); the guards'
+    hints by how far the story has gone; eight grunts, the two Electrode that look like Poké Balls; Matt noticing the
+    player, his battle and the submarine sailing (`FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`), which takes Lilycove's grunts
+    and its Wailmer away and turns four of its people's lines; the rival home in their bedroom after Lilycove. Every
+    scene a `scene`. **No story version raised**: `common.HoennChapterEightB` (called by `HoennNewGame`, and by the
+    arrivals of Jagged Pass, Slateport City and Lilycove City, `FLAG_HOENN_CHAPTER_EIGHT_B`). Rulings: "Team Magma's and
+    Team Aqua's hideouts".
+  - **Part b, decisions**: the channel east of Lilycove needs no gate of ours beyond Emerald's own twelve tiles, which
+    the three Wailmer and nine things in the way that are not drawn (`Unseen`) now block, all going with the submarine;
+    the submarine is not drawn (Emerald draws only its shadow); the street's crowd keeps its places through the
+    interview; `awaken_legend` plays through `music`.
+  - **Part b, music** (ours, rendered clash-free with MusicRender, not yet heard): `aqua_magma_hideout` (both hideouts,
+    33.1 s loop, −19.9 LUFS), `awaken_legend` (once, 13.3 s, −17.6 LUFS).
+  - **Part b, tests** (written, not run): `HoennTests.TheTwoTeamsHideoutsAreOpenWithTheirTrainersAndTheirSong`;
+    `HoennStoryTests` (`TheGuardOnJaggedPassBattlesOnceBeforeTheEmblem`, `TheMagmaEmblemShakesTheRockOpenOnJaggedPass`
+    from three triggers, `GroudonWakesAndFleesAndMaxieGoesAfterItWithTeamMagma`,
+    `TeamAquaTakesCaptainSternsSubmarineFromSlateportsHarbour` from each of the four triggers,
+    `TheHideoutsGuardsHintWhereArchieIsByHowFarTheStoryHasGone`, `TwoOfTheBallsInTeamAquasHideoutAreElectrode`,
+    `MattKeepsThePlayerBusyWhileTheSubmarineSailsAndLilycovesChannelOpens`, `LilycovesWailmerShutTheChannelOnEmeraldsTwelveTiles`,
+    `TheRivalIsHomeInTheirBedroomAfterLilycove`, `ANewGameOfHoennHidesTheHideoutsPeopleAndAnOlderSaveIsGivenThemOnTheWay`,
+    `TheSongsOfTheHideoutsAreThere`). The content check finds nothing. `scripts.txt` of the golden files moves (common.txt,
+    Jagged Pass, the hideouts' scripts, Slateport City and its harbour, Lilycove City, the rival's bedroom): accept it.
+  - **Part b, shots** (written, not taken): the `hoenn` mode's `h155`–`h164` (the hideout's mouth on Jagged Pass, Team
+    Magma's halls and Groudon's, with a `_native` crop, Team Aqua's three floors and the panels' maze, with a crop, the
+    cove) and the scenes `hs178`–`hs19d` at the end of `HoennScenes` (the rock shaken open, the hideout, Tabitha, Maxie
+    and Groudon, the orb's light, Groudon waking and gone, Maxie's battle and Team Magma gone, Stern's interview, the
+    shout, the harbour, Archie at the berth, the submarine gone, Stern, Team Aqua's hideout and its panels, an Electrode,
+    Matt and his battle, the submarine sailing, the channel open, the rival at home), printing the stretch's flags and
+    variables after each stage.
+  - **Left after part b**: the Berry Master's wife's five rare berries; the museum's curator and gallery and the Lilycove
+    Lady (H11); the Fan Club's fans by the player's battles; the motel owner's television trigger; Match Call for Mt.
+    Pyre's and Route 123's rematch trainers; Emerald's own looks for Matt, Tabitha's grunts and the female grunts (stand-ins
+    of the teams' grunts); the submarine's shadow as a picture; Emerald's Jagged Pass ash after the hideout
+    (`VAR_JAGGED_PASS_ASH_WEATHER`); the crowd round Stern's interview; the Pichu doll in the rival's room; the harbour's
+    patrons back after Mossdeep's Gym (H8).
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases

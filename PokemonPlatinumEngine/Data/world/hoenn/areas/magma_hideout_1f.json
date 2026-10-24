@@ -1,0 +1,49 @@
+{
+  "key": "magma_hideout_1f",
+  "index": 324,
+  "name": "Magma Hideout",
+  "matrix": 273,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 34, "to": "jagged_pass", "toWarp": 4 },
+    { "x": 25, "z": 34, "to": "magma_hideout_2f_1r", "toWarp": 1 },
+    { "x": 31, "z": 3, "to": "magma_hideout_2f_2r", "toWarp": 1 },
+    { "x": 20, "z": 22, "to": "magma_hideout_2f_3r", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "look_east", "x": 4, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_1F_RARE_CANDY", "item": "Rare Candy", "script": "MagmaHideout_1F_EventScript_ItemRareCandy" },
+    { "id": "magma_member_m_2", "looks": "magma_member_m", "movement": "look_west", "x": 30, "z": 20, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_2" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 5, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 7, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 6, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,30 @@
+# The two teams' hideouts (Emerald's MUS_AQUA_MAGMA_HIDEOUT): a creeping, watchful theme in D minor, a muted brass
+# line stalking over pulsing low strings, a ticking hi-hat like footsteps in a corridor and a bass that keeps
+# climbing back to the same dark note. Inside, so the same by day and night. Original composition for this game (plan
+# 21 · H7, part b).
+title Team Hideout
+tempo 116
+meter 4/4
+reverb 0.3
+night none
+
+track lead trumpet vol=0.7 pan=0.05 rev=0.3
+  L o4 d4 r8 f8 e4 d4 | o4 c+2 r2 | o4 d4 r8 f8 g4 a4 | o4 g2 f4 e4 |
+  o4 d4 r8 f8 e4 d4 | o4 c+2 o3 a2 | o4 b-4 a4 g4 f4 | o4 e2. r4 |
+  o4 a4 r8 a8 b-4 a4 | o4 g2 f2 | o4 g4 r8 g8 a4 g4 | o4 g2 e2 |
+  o4 d4 f4 a4 o5 d4 | o5 c+2 o4 a2 | o4 b-4 g4 e4 c+4 | o4 d2. r4 |
+
+track pulse strings vol=0.44 pan=-0.25 rev=0.28
+  L [ o3 d8 a8 d8 a8 d8 a8 d8 a8 | ]2 [ o3 d8 a8 d8 a8 d8 b-8 d8 b-8 | ]2
+  [ o3 d8 a8 d8 a8 d8 a8 d8 a8 | ]2 o3 g8 b-8 g8 b-8 g8 b-8 g8 b-8 | o3 a8 c+8 a8 c+8 a8 c+8 a8 c+8 |
+  [ o3 f8 a8 f8 a8 f8 a8 f8 a8 | ]2 [ o3 e8 g8 e8 g8 e8 g8 e8 g8 | ]2
+  [ o3 d8 a8 d8 a8 d8 a8 d8 a8 | ]2 o3 g8 b-8 g8 b-8 a8 c+8 a8 c+8 | o3 d8 a8 d8 a8 d8 a8 d8 a8 |
+
+track bass contrabass vol=0.86 rev=0.14
+  L o2 d2 d4 e4 | o2 f2 e2 | o2 d2 d4 e4 | o2 g2 a2 |
+  o2 d2 d4 e4 | o2 f2 a2 | o2 g2 g2 | o2 a2 a2 |
+  o2 f2 f4 g4 | o2 c2 c2 | o2 e2 e4 f4 | o2 a2 a2 |
+  o2 d2 d4 e4 | o2 f2 a2 | o2 g2 a2 | o2 d1 |
+
+track drums kit vol=0.44 rev=0.1
+  v80 L [ b4 h8 h8 s4 h8 h8 | ]15 b8 b8 s8 b8 s4 s4 |

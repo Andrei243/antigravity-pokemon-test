@@ -1,0 +1,46 @@
+{
+  "key": "magma_hideout_2f_1r",
+  "index": 325,
+  "name": "Magma Hideout",
+  "matrix": 274,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_2f_1r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 11, "z": 23, "to": "magma_hideout_2f_2r", "toWarp": 0 },
+    { "x": 8, "z": 2, "to": "magma_hideout_1f", "toWarp": 1 },
+    { "x": 17, "z": 33, "to": "magma_hideout_3f_1r", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "walk_sequence_west_north_east_south", "x": 18, "z": 19, "facing": 2, "rangeX": 5, "rangeZ": 4, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_4" },
+    { "id": "magma_member_m_2", "looks": "magma_member_m", "movement": "walk_sequence_south_east_north_west", "x": 12, "z": 14, "facing": 1, "rangeX": 7, "rangeZ": 6, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_5" },
+    { "id": "magma_member_f", "looks": "magma_member_f", "movement": "look_east", "x": 8, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_14" },
+    { "id": "magma_member_m_3", "looks": "magma_member_m", "movement": "look_north", "x": 21, "z": 11, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

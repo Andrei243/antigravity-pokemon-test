@@ -1,0 +1,14 @@
+{
+  // Team Magma's hideout, the second floor's first hall (plan 21 · H7, part b): two grunts walking their rounds and two
+  // on watch
+  "area": "magma_hideout_2f_1r",
+  "bgmTrack": "hoenn/aqua_magma_hideout",
+  "trees": "Round",
+  "climate": "Volcanic",
+  "people": {
+    "magma_member_f": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Who are you? You're not in uniform, and only Team Magma's allowed in here. I don't like the look of you!", "dialogueAfter": "Team Magma Grunt: My pride as a member of Team Magma... in tatters." } },
+    "magma_member_m_3": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Stop right there! You think I'll just stand aside and let you stroll past?", "dialogueAfter": "Team Magma Grunt: Maybe I should have let you stroll past after all." } },
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: An intruder! Sound the alarm! Well, after I've beaten you.", "dialogueAfter": "Team Magma Grunt: Do I still have to walk my rounds now I've lost?" } },
+    "magma_member_m_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "trainer": { "dialogueBefore": "Team Magma Grunt: Whoa, whoa! Somebody who isn't one of us!", "dialogueAfter": "Team Magma Grunt: Truth is, battling isn't really my thing..." } }
+  }
+}

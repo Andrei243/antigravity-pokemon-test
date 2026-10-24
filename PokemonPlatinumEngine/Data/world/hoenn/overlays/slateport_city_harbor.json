@@ -1,13 +1,21 @@
 {
-  // Slateport's harbour (plan 21 · H3): the ferry's quay and its attendant. The S.S. Tidal and Captain Stern's
-  // submarine, with what Team Aqua does there, are later chapters' (plan 21 · H7, H9); its people stand by until then
+  // Slateport's harbour (plan 21 · H3, H7): the ferry's quay and its attendant. Once Groudon has woken (plan 21 · H7,
+  // part b) Team Aqua takes Captain Stern's submarine from its berth here as the player comes in behind him
+  // (slateport_city_harbor.txt): Archie and a grunt stand by the submarine and its patrons are gone
+  // (FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS, which Emerald clears again after Mossdeep's Gym, plan 21 · H8). The S.S.
+  // Tidal is plan 21 · H9's. The submarine itself is not drawn: Emerald draws only its shadow in the water, which this
+  // game has no picture of, and the scene says where it goes
   "area": "slateport_city_harbor",
   "bgmTrack": "hoenn/slateport",
   // The quay's way out onto the open water by the submarine's berth is a surfer's (Route 134's side of the harbour): shut until then
   "locked": [ 2, 3 ],
+  "triggers": [ { "trigger": 0, "script": "AquaEscape0" }, { "trigger": 1, "script": "AquaEscape1" }, { "trigger": 2, "script": "AquaEscape2" }, { "trigger": 3, "script": "AquaEscape3" } ],
   "people": {
-    "beauty": { "name": "Attendant", "hiddenBy": "", "dialog": [ "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket." ] },
-    "sailor": { "name": "Sailor", "hiddenBy": "", "dialog": [ "The captain's submarine will be launched from here one day. What a sight that'll be!" ] },
-    "fat_man": { "name": "Man", "hiddenBy": "", "dialog": [ "I'm waiting for my ferry. I've been waiting a long time." ] }
+    "beauty": { "name": "Attendant", "dialog": [ "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "The captain's submarine will be launched from here one day. What a sight that'll be!" ] },
+    "fat_man": { "name": "Man", "dialog": [ "I'm waiting for my ferry. I've been waiting a long time." ] },
+    "slateport_harbor_capt_stern": { "name": "Captain Stern", "npcType": "capt_stern", "script": "Stern" },
+    "slateport_harbor_archie": { "name": "Archie", "npcType": "archie", "still": true, "dialog": [ "..." ] },
+    "slateport_harbor_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "..." ] }
   }
 }

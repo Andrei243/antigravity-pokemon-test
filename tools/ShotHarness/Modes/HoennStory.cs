@@ -853,5 +853,79 @@ partial class Harness
         TalkTo("MtPyre_Summit", "old_man");
         ReadTo("hear out an old man"); Frames(10); Shot("hs177_the_old_mans_tale");
         ReadTo(null);
+
+        // ---- Plan 21 · H7, part b: the two teams' hideouts (hs178 to hs199)
+        void Hideouts(string what) =>
+            Console.WriteLine($"  {what}: jagged pass {story.Var("VAR_JAGGED_PASS_STATE")}, hideout open {story.Has("FLAG_HOENN_MAGMA_HIDEOUT_OPEN")}, "
+                + $"groudon awake {story.Has("FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT")}, magma grunts hidden {story.Has("FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS")}, "
+                + $"slateport {story.Var("VAR_SLATEPORT_CITY_STATE")}, harbour {story.Var("VAR_SLATEPORT_HARBOR_STATE")}, "
+                + $"aqua guards hidden {story.Has("FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE")}, "
+                + $"electrode {story.Has("FLAG_DEFEATED_ELECTRODE_1_AQUA_HIDEOUT")}/{story.Has("FLAG_DEFEATED_ELECTRODE_2_AQUA_HIDEOUT")}, "
+                + $"submarine gone {story.Has("FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE")}, lilycove grunts hidden {story.Has("FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS")}, "
+                + $"rival home {!story.Has("FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM")}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+
+        // Jagged Pass: the Magma Emblem shakes the rock open
+        At("JaggedPass", 16, 22, Direction.Up); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs178_jagged_pass_the_rock");
+        Hideouts("onto Jagged Pass");
+        StepOnto("JaggedPass", 21, 15, Direction.Left);
+        Frames(15); Shot("hs179_the_mountain_shakes");
+        ReadTo("hole has opened"); Frames(10); Shot("hs17a_the_way_in");
+        ReadTo(null);
+        Hideouts("the rock opened");
+
+        // Team Magma's hideout: the ground floor, Tabitha, Maxie before the sleeping Groudon and its waking
+        ComeThrough("MagmaHideout_1F", 10, 33, Direction.Up); Frames(20); Shot("hs180_magma_hideout");
+        At("MagmaHideout_4F", 22, 6, Direction.Up); Frames(20); Shot("hs181_tabitha");
+        At("MagmaHideout_4F", 16, 22, Direction.Up); Frames(20); Shot("hs182_maxie_and_groudon");
+        TalkTo("MagmaHideout_4F", "magma_hideout_4f_maxie");
+        ReadTo("This is the Blue Orb"); Frames(10); Shot("hs183_the_blue_orb");
+        ReadTo("Let its light wake you"); Box().Advance();
+        Frames(60); Shot("hs184_the_orbs_light");
+        Frames(150); Shot("hs185_groudon_wakes");
+        Frames(80); Shot("hs186_the_hall_shakes");
+        ReadTo("What is the matter"); Frames(10); Shot("hs187_groudon_gone");
+        ReadTo("cheap trick");
+        IntoBattle("Maxie's battle in the hideout");
+        ToMainMenu(game.Battle); Shot("hs188_maxies_battle");
+        Win();
+        ReadTo("This is where we part"); Frames(10); Shot("hs189_maxie_goes_after_groudon");
+        ReadTo(null);
+        Frames(30); Shot("hs18a_the_hall_empty");
+        Hideouts("Groudon woken");
+
+        // Slateport: Captain Stern's interview, and Team Aqua takes his submarine from the harbour
+        At("Hoenn", 227, 273, Direction.Right); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs190_sterns_interview");
+        TalkTo("Hoenn", "slateport_capt_stern", -1, 0);
+        ReadTo("My first interview"); Frames(10); Shot("hs191_stern_and_the_player");
+        ReadTo("taking charge of this submarine"); Frames(10); Shot("hs192_a_shout_from_the_harbour");
+        ReadTo(null);
+        Frames(40); Shot("hs193_into_the_harbour");
+        Hideouts("into the harbour");
+        StepOnto("SlateportCity_Harbor", 8, 13, Direction.Left);
+        ReadTo("hideout in Lilycove"); Frames(10); Shot("hs194_archie_at_the_berth");
+        ReadTo("slid out of the harbour"); Frames(10); Shot("hs195_the_submarine_gone");
+        ReadTo("I don't know what to do"); Frames(10); Shot("hs196_captain_stern");
+        ReadTo(null);
+        Hideouts("the submarine taken");
+
+        // Team Aqua's hideout: the way in clear, an Electrode, Matt and the submarine sailing, and Lilycove after
+        At("AquaHideout_1F", 13, 20, Direction.Up); Frames(20); Shot("hs197_aqua_hideout");
+        At("AquaHideout_B1F", 16, 12, Direction.Up); Frames(20); Shot("hs198_aqua_hideout_panels");
+        TalkTo("AquaHideout_B1F", "item_ball_3", 0, -1);
+        ReadTo("was an Electrode"); Frames(10); Shot("hs198b_an_electrode");
+        IntoBattle("an Electrode in the hideout");
+        ToMainMenu(game.Battle); Win();
+        ReadTo(null);
+        At("AquaHideout_B2F", 24, 19, Direction.Left); Frames(20); Shot("hs199_matt");
+        TalkTo("AquaHideout_B2F", "aqua_hideout_matt", 1, 0);
+        IntoBattle("Matt's battle");
+        ToMainMenu(game.Battle); Shot("hs19a_matts_battle");
+        Win();
+        ReadTo("slid out of its pen"); Frames(10); Shot("hs19b_the_submarine_sails");
+        ReadTo(null);
+        Hideouts("the submarine sailed");
+        At("Hoenn", 552, 84, Direction.Right); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs19c_the_channel_open");
+        At("LittlerootTown_MaysHouse_2F", 3, 4, Direction.Up); Frames(20); Shot("hs19d_the_rival_at_home");
+        Hideouts("the rival at home");
     }
 }

@@ -1,0 +1,42 @@
+{
+  "key": "magma_hideout_3f_3r",
+  "index": 330,
+  "name": "Magma Hideout",
+  "matrix": 279,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_3f_3r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 16, "z": 1, "to": "magma_hideout_2f_3r", "toWarp": 1 },
+    { "x": 16, "z": 21, "to": "magma_hideout_4f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 9, "z": 19, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_3F_3R_ECAPE_ROPE", "item": "Escape Rope", "script": "MagmaHideout_3F_3R_EventScript_ItemEscapeRope" }
+  ],
+  "signs": [],
+  "triggers": []
+}

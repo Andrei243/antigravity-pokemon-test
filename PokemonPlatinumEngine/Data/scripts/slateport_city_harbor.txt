@@ -1,0 +1,121 @@
+# Slateport City's harbour (plan 21 · H7, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SlateportCity_Harbor/scripts.inc).
+#
+# Once Groudon has woken in Team Magma's hideout (VAR_SLATEPORT_HARBOR_STATE 1), Captain Stern brings the player in
+# from the street (slateport_city.txt): Archie and a grunt are at the submarine's berth, and the harbour's patrons are
+# gone (FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS). The first step west onto one of the area's four triggers turns
+# Archie round: he names Team Aqua's hideout in Lilycove and dares the player to come, and the two dive into the
+# submarine, which sails off out of the harbour. Stern comes to the player, beside themself, and the hideout's two
+# guards leave their posts (FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE and _2_). VAR_SLATEPORT_HARBOR_STATE
+# goes to 2 and Scott leaves the Cove Lily Motel (FLAG_HIDE_LILYCOVE_MOTEL_SCOTT), as Emerald has it.
+
+
+script OnEnter
+  if var VAR_SLATEPORT_HARBOR_STATE != 1 end
+  place slateport_harbor_capt_stern 12 13 left
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS
+  hide beauty
+  hide sailor
+  hide fat_man
+  music "hoenn/eye_galactic"
+  end
+
+
+script AquaEscape0
+  if var VAR_SLATEPORT_HARBOR_STATE != 1 end
+  scene "Team Aqua takes the submarine north"
+  call ArchieSpeaks
+  walk slateport_harbor_capt_stern left 4 up 1
+  face player down
+  call SternSpeaks
+  endscene
+  end
+
+
+script AquaEscape1
+  if var VAR_SLATEPORT_HARBOR_STATE != 1 end
+  scene "Team Aqua takes the submarine middle"
+  call ArchieSpeaks
+  walk slateport_harbor_capt_stern left 2 up 1 left 1
+  face player right
+  call SternSpeaks
+  endscene
+  end
+
+
+script AquaEscape2
+  if var VAR_SLATEPORT_HARBOR_STATE != 1 end
+  scene "Team Aqua takes the submarine south"
+  call ArchieSpeaks
+  walk slateport_harbor_capt_stern left 3
+  face player right
+  call SternSpeaks
+  endscene
+  end
+
+
+script AquaEscape3
+  if var VAR_SLATEPORT_HARBOR_STATE != 1 end
+  scene "Team Aqua takes the submarine far south"
+  walk player up 1
+  call ArchieSpeaks
+  walk slateport_harbor_capt_stern left 3
+  face player right
+  call SternSpeaks
+  endscene
+  end
+
+
+# Archie at the berth, and Team Aqua gone with the submarine
+script ArchieSpeaks
+  face slateport_harbor_archie down
+  face slateport_harbor_grunt down
+  face player up
+  speaker "Archie"
+  say "Oh? Not you again. You're a stubborn one, following us all the way here."
+  say "But I'll tell you something. We're taking this submarine to find what we need: the Pokémon that sleeps under the sea."
+  say "If you want to stop us, come to our hideout in Lilycove. We'll be waiting! Hahaha!"
+  wait 0.3
+  hide slateport_harbor_grunt
+  sound "surf"
+  wait 0.3
+  hide slateport_harbor_archie
+  sound "surf"
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
+  speaker none
+  text "Archie and the grunt jumped down into the submarine, and it slid out of the harbour and away under the waves!"
+  setvar VAR_SLATEPORT_HARBOR_STATE 2
+  setflag FLAG_MET_TEAM_AQUA_HARBOR
+  setflag FLAG_HIDE_LILYCOVE_MOTEL_SCOTT
+  music area
+  return
+
+
+# Captain Stern, robbed of his submarine
+script SternSpeaks
+  face slateport_harbor_capt_stern player
+  speaker "Captain Stern"
+  say "{player}... What were they thinking? The submarine was built for exploring the sea floor, not for this!"
+  say "What could Team Aqua want with it? It can't be anything good. I'm sorry, I don't know what to do..."
+  setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE
+  setflag FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE
+  return
+
+
+# Captain Stern on the quay afterwards
+script Stern
+  face self player
+  speaker "Captain Stern"
+  if flag FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE goto Gone
+  if var VAR_SLATEPORT_HARBOR_STATE == 2 goto Stolen
+  say "Those people tried to rob the museum, and now they've taken my submarine. I'll never forgive them!"
+  end
+label Stolen
+  say "Why would Team Aqua steal my submarine? I've told the police, but they could be anywhere in the sea by now."
+  end
+label Gone
+  say "They took the submarine out of their hideout in Lilycove and dived away, you say? Then it's somewhere at the bottom of the sea."
+  say "If only somebody could follow them down there..."
+  end

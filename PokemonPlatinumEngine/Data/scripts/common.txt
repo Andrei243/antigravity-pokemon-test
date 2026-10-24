@@ -1834,6 +1834,7 @@ script HoennNewGame
   call HoennChapterSevenB
   call HoennChapterSevenC
   call HoennChapterEight
+  call HoennChapterEightB
   return
 
 
@@ -2048,6 +2049,26 @@ script HoennChapterEight
   setflag FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER
   setflag FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
   setflag FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN
+  return
+
+
+# What a new game of Emerald sets for the second half of the eighth stretch, the two teams' hideouts (plan 21 · H7, part
+# b), as Emerald's own new game sets it: Groudon awake in Team Magma's hideout until Maxie wakes it, Captain Stern and
+# Gabby and Ty before Slateport's harbour until then, and in the harbour Captain Stern, Archie, his grunt, the
+# submarine's shadow and the S.S. Tidal until their scenes. FLAG_HOENN_CHAPTER_EIGHT_B, a flag of ours, says it has run.
+# HoennNewGame calls it; a save from before it was written runs it from Jagged Pass's, Slateport City's and Lilycove
+# City's own arrival scripts, the only ways to the two hideouts and the harbour, so no story version is raised for it.
+# It may only set flags and variables, and ends in return.
+script HoennChapterEightB
+  setflag FLAG_HOENN_CHAPTER_EIGHT_B
+  setflag FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON
+  setflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
+  setflag FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW
+  setflag FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL
   return
 
 

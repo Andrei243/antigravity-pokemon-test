@@ -1,0 +1,47 @@
+{
+  "key": "magma_hideout_2f_2r",
+  "index": 326,
+  "name": "Magma Hideout",
+  "matrix": 275,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_2f_2r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 22, "to": "magma_hideout_2f_1r", "toWarp": 0 },
+    { "x": 36, "z": 4, "to": "magma_hideout_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "look_west", "x": 29, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_8" },
+    { "id": "magma_member_m_2", "looks": "magma_member_m", "movement": "look_east", "x": 25, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_7" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 21, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_MAX_ELIXIR", "item": "Max Elixir", "script": "MagmaHideout_2F_2R_EventScript_ItemMaxElixir" },
+    { "id": "magma_member_m_3", "looks": "magma_member_m", "movement": "look_south", "x": 8, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_6" },
+    { "id": "magma_member_f", "looks": "magma_member_f", "movement": "look_east", "x": 7, "z": 13, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_15" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 14, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_2F_2R_FULL_RESTORE", "item": "Full Restore", "script": "MagmaHideout_2F_2R_EventScript_ItemFullRestore" }
+  ],
+  "signs": [],
+  "triggers": []
+}

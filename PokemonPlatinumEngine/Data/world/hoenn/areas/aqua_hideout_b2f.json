@@ -1,0 +1,42 @@
+{
+  "key": "aqua_hideout_b2f",
+  "index": 263,
+  "name": "Aqua Hideout",
+  "matrix": 212,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 18, "z": 1, "to": "aqua_hideout_b1f", "toWarp": 1 },
+    { "x": 12, "z": 1, "to": "aqua_hideout_b1f", "toWarp": 2 },
+    { "x": 3, "z": 3, "to": "aqua_hideout_b1f", "toWarp": 3 },
+    { "x": 31, "z": 8, "to": "aqua_hideout_b2f", "toWarp": 5 },
+    { "x": 8, "z": 8, "to": "aqua_hideout_b2f", "toWarp": 8 },
+    { "x": 5, "z": 8, "to": "aqua_hideout_b2f", "toWarp": 3 },
+    { "x": 18, "z": 13, "to": "aqua_hideout_b2f", "toWarp": 7 },
+    { "x": 12, "z": 13, "to": "aqua_hideout_b2f", "toWarp": 6 },
+    { "x": 31, "z": 17, "to": "aqua_hideout_b2f", "toWarp": 4 },
+    { "x": 32, "z": 20, "to": "aqua_hideout_b1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "aqua_hideout_matt", "looks": "aqua_member_m", "movement": "look_west", "x": 23, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS", "script": "AquaHideout_B2F_EventScript_Matt" },
+    { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "walk_sequence_north_west_south_east", "x": 23, "z": 10, "facing": 0, "rangeX": 4, "rangeZ": 3, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_AQUA_HIDEOUT_4" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL", "item": "Nest Ball", "script": "AquaHideout_B2F_EventScript_ItemNestBall" },
+    { "id": "aqua_hideout_submarine", "looks": "submarine_shadow", "movement": "look_west", "x": 19, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW", "script": "" },
+    { "id": "aqua_member_f", "looks": "aqua_member_f", "movement": "look_east", "x": 7, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_AQUA_HIDEOUT_6" },
+    { "id": "aqua_member_m_2", "looks": "aqua_member_m", "movement": "look_west", "x": 13, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_AQUA_HIDEOUT_8" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 28, "z": 17, "width": 1, "depth": 1, "script": "AquaHideout_B2F_EventScript_MattNoticePlayer", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 28, "z": 16, "width": 1, "depth": 1, "script": "AquaHideout_B2F_EventScript_MattNoticePlayer", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

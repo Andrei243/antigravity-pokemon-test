@@ -1,0 +1,42 @@
+{
+  "key": "magma_hideout_3f_2r",
+  "index": 328,
+  "name": "Magma Hideout",
+  "matrix": 277,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "nightMusic": "MUS_AQUA_MAGMA_HIDEOUT",
+  "encounters": "magma_hideout_3f_2r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 27 },
+    { "species": "Torkoal", "level": 28 },
+    { "species": "Geodude", "level": 28 },
+    { "species": "Torkoal", "level": 30 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Geodude", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 30 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Graveler", "level": 33 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 12, "z": 15, "to": "magma_hideout_3f_1r", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "magma_member_m", "looks": "magma_member_m", "movement": "look_south_and_west", "x": 16, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS", "script": "TRAINER_GRUNT_MAGMA_HIDEOUT_10" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 5, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAGMA_HIDEOUT_3F_2R_PP_MAX", "item": "PP Max", "script": "MagmaHideout_3F_2R_EventScript_ItemPPMax" }
+  ],
+  "signs": [],
+  "triggers": []
+}

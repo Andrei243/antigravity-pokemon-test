@@ -40,7 +40,12 @@
     "woman_5_2": { "name": "Woman", "dialog": [ "Your Pokémon looks like it's working hard. Keep at it, and it'll be the best it can be!" ] },
     "slateport_energy_guru": { "name": "Energy Guru", "script": "EnergyGuru" },
     "pokefan_f_2": { "name": "Woman", "dialog": [ "Berry powder? Oh, that comes from crushing berries. Not that I'd know how." ] },
-    "slateport_scott": { "name": "Scott", "npcType": "scott", "still": true, "dialog": [ "I'm always on the lookout for strong trainers." ] }
+    "slateport_scott": { "name": "Scott", "npcType": "scott", "still": true, "dialog": [ "I'm always on the lookout for strong trainers." ] },
+    // Plan 21 · H7, part b: Captain Stern before the harbour's door, interviewed by Gabby and Ty, once Groudon has woken
+    // (VAR_SLATEPORT_CITY_STATE 1); he brings the player into the harbour, where Team Aqua takes his submarine
+    "slateport_capt_stern": { "name": "Captain Stern", "npcType": "capt_stern", "script": "CaptStern", "still": true },
+    "slateport_gabby": { "name": "Gabby", "npcType": "reporter", "script": "Interviewer", "still": true },
+    "slateport_ty": { "name": "Ty", "npcType": "cameraman", "script": "Interviewer", "still": true }
   },
   "signs": {
     "SlateportCity_EventScript_NameRatersHouseSign": "Name Rater's House\nPokémon nicknames rated",
