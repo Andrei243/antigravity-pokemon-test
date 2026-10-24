@@ -1,0 +1,12 @@
+# A house of Virbank City (plan 22 · U5, part b). The lines are our own, on Black 2's beats (the decompilation's
+# res/field/scripts/virbank_city_2.s): a girl who wants her Audino in a film.
+
+
+script AudinoFan
+  speaker "Girl"
+  if var VAR_UNOVA_VIRBANK >= 4 goto Debut
+  say "I can't wait for Pokéstar Studios to open its doors! My darling Audino is going to be in the movies!"
+  end
+label Debut
+  say "My darling Audino will be a star at Pokéstar Studios one day. Just you wait!"
+  end

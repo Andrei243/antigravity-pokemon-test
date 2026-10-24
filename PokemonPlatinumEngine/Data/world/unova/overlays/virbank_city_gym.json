@@ -1,0 +1,17 @@
+{
+  // The Virbank Gym's way down (plan 22 · U5, part b): Black 2's stairs and landing under the street, our words. The
+  // guide (0) greets a challenger at the top of the landing with a bottle of Fresh Water (virbank_city_gym.txt); the
+  // club itself is the next room, virbank_city_gym_2
+  "area": "virbank_city_gym",
+  "bgmTrack": "unova/gym",
+  "triggers": [
+    { "script": "GuideGreets", "x": 8, "z": 3, "width": 3, "depth": 1, "variable": "VAR_UNOVA_VIRBANK_GYM", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "Gym Guide", "npcType": "Gentleman", "script": "GymGuide", "still": true }
+  },
+  "signs": {
+    "5": "Virbank City Pokémon Gym\nLeader: Roxie",
+    "6": "Singer seeks a band!\nAsk for Roxie downstairs"
+  }
+}

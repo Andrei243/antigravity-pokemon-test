@@ -1,0 +1,49 @@
+# The Virbank Complex (plan 22 · U5, part b). The lines are our own, on Black 2's beats (the decompilation's
+# res/field/scripts/virbank_complex_2.s). Black 2's foreman asks the player to rouse three new workers, who battle
+# only once asked; ours battle when spoken to, and the foreman thanks whoever has beaten all three. The scientist
+# tells of the distillation tower, the stacks and the gas holders in turn (VAR_UNOVA_COMPLEX_TALK, Black 2's 0x40dd),
+# and gives an Ether the third time (FLAG_UNOVA_GOT_COMPLEX_ETHER).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script Foreman
+  face 3 player
+  speaker "Foreman"
+  if not defeated "unova_worker_isaac" goto Ask
+  if not defeated "unova_worker_mitchell" goto Ask
+  if not defeated "unova_worker_nathan" goto Ask
+  say "Ha! You got all three of my new workers fired up. Nothing like a battle to get the blood pumping!"
+  end
+label Ask
+  say "Hey there, Trainer! Your Pokémon look full of beans. My new workers, not so much."
+  say "There are three of them dawdling round the complex. Battle them and get them going, would you?"
+  end
+
+
+script Scientist
+  face 7 player
+  speaker "Scientist"
+  if var VAR_UNOVA_COMPLEX_TALK == 1 goto Stacks
+  if var VAR_UNOVA_COMPLEX_TALK == 2 goto Holders
+  say "Heat crude oil, and it separates into all its parts. That's what the tall tower over there is for!"
+  say "Oh! You heard all that? My knowledge just overflows sometimes."
+  setvar VAR_UNOVA_COMPLEX_TALK 1
+  end
+label Stacks
+  say "The smokestacks rise right into the sky! Breathtaking, aren't they? They burn off the waste gas, you know."
+  setvar VAR_UNOVA_COMPLEX_TALK 2
+  end
+label Holders
+  say "Those round gas holders are so harmonious! A sphere stands up best to the pressure inside it."
+  if flag FLAG_UNOVA_GOT_COMPLEX_ETHER goto Buddy
+  say "You keep listening to me! Does that make us complex buddies? Here, a present for my new friend!"
+  give "Ether"
+  setflag FLAG_UNOVA_GOT_COMPLEX_ETHER
+label Buddy
+  say "The foreman wanted to hire me, but I'm happy just looking at the place!"
+  setvar VAR_UNOVA_COMPLEX_TALK 0
+  end

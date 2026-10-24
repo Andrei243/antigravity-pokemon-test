@@ -1,0 +1,32 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5": {
+      "en": [
+        "Virbank City Pokémon Gym\nLeader: Roxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "6": {
+      "en": [
+        "Singer seeks a band!\nAsk for Roxie downstairs"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

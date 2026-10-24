@@ -49,7 +49,8 @@ internal static partial class BuildingArt
         PokemonType.Steel => Rgb(138, 150, 170),
         PokemonType.Ice => Rgb(126, 200, 220),
         PokemonType.Electric => Rgb(236, 196, 64),
-        _ => Rgb(150, 128, 100)
+        PokemonType.Poison => Rgb(150, 92, 178),
+        _ =>Rgb(150, 128, 100)
     };
 
     /// <summary>The colour of a hall's roof and entrance, by what it is.</summary>
@@ -122,6 +123,7 @@ internal static partial class BuildingArt
             Architecture.Starward => Pitched(WallKind.Stucco, Rgb(86, 150, 214), RoofShape.Hip) with { Shutters = true, FlowerBoxes = true },
             Architecture.Hillside => Pitched(WallKind.Stucco, Rgb(70, 104, 122)) with { Shutters = true },
             Architecture.Bellfield => Pitched(WallKind.Boards, Rgb(196, 112, 58)) with { Chimney = true, FlowerBoxes = true },
+            Architecture.Dockyard => Pitched(WallKind.Brick, Rgb(104, 82, 124)) with { Chimney = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };

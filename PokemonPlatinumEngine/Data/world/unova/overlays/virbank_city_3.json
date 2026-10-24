@@ -1,0 +1,37 @@
+{
+  // The long house by the water in Virbank City (plan 22 · U5, part b): Black 2's nursery for the workers' children,
+  // our words
+  "area": "virbank_city_3",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "0": {
+      "name": "Worker",
+      "dialog": [ "My Pokémon used to be scrawny. A few months hauling things round the complex, and look at them now!" ]
+    },
+    "1": {
+      "name": "Nursery Aide",
+      "npcType": "Lady",
+      "dialog": [ "The children teach me something new every day. I think your Pokémon do the same for you." ]
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "Every Poké Mart clerk sells different things. You have to visit them all to see!" ]
+    },
+    "3": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Use a Repel, and wild Pokémon mostly leave you alone. Did you know that?" ]
+    },
+    "4": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "The first Pokémon on your team is the one that jumps out in a battle. Put a weak one first, then switch it out!" ]
+    },
+    "5": {
+      "name": "Nursery Aide",
+      "npcType": "Lady",
+      "dialog": [ "The workers drop their children here before their shifts. It's noisy, but I love it." ]
+    }
+  }
+}

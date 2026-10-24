@@ -1,7 +1,7 @@
 {
   // Route 20 (plan 22 · U2): Black 2's road from Floccesy Town towards Virbank City, its trainers and their lines ours.
-  // The Pokémon Rangers who come in a later season, Team Plasma's grunt (the Virbank chapter's), and the gates to
-  // Virbank City and the Cave of Being are later sessions'
+  // The Pokémon Rangers who come in a later season and the Cave of Being are later sessions'; the gate to Virbank City
+  // and Team Plasma's grunt are plan 22 · U5, part b's
   "area": "unova_route_20",
   "bgmTrack": "unova/route19",
   "trees": "Round",
@@ -16,6 +16,8 @@
     "0": { "name": "Hiker", "script": "Hiker", "still": true },
     "21": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_20" },
     "23": { "name": "Cheren", "npcType": "cheren", "script": "Cheren", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_20" },
+    // Plan 22 · U5, part b: the grunt who fled from Virbank's dock, in the dark grass (unova_route_20.txt)
+    "22": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROUTE_20_GRUNT" },
     "1": {
       "name": "Youngster",
       "trainer": {

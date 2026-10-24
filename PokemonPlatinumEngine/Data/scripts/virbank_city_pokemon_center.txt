@@ -1,0 +1,18 @@
+# Virbank City's Pokémon Center (plan 22 · U5, part b). The lines are our own, on Black 2's beats (the decompilation's
+# res/field/scripts/virbank_city_pokemon_center.s).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The worker by the counter (person 7): the more Badges, the more the Poké Mart sells
+script BadgeTalk
+  speaker "Worker"
+  if var BADGE_COUNT == 0 goto None
+  say "You've got Badges already? Then the Poké Mart must sell you all sorts. The more Badges, the more they stock!"
+  end
+label None
+  say "The more Gym Badges you have, the more the Poké Mart will sell you. I never knew that till today!"
+  end

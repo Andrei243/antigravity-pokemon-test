@@ -1,0 +1,21 @@
+{
+  // A house of Virbank City (plan 22 · U5, part b): Black 2's room, our words
+  "area": "virbank_city_4",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "0": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "I'm going to be a hero and make friends with a legendary Pokémon! ...Which one? Um, I haven't decided." ]
+    },
+    "1": {
+      "name": "Artist",
+      "dialog": [ "Two years ago a group called Team Plasma tried to take over Unova. Now they're back, they say. I hope it's only talk." ]
+    },
+    "2": {
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "dialog": [ "Oh, a Trainer? My grandson went round the Gyms collecting Badges too. Now he works in the complex." ]
+    }
+  }
+}

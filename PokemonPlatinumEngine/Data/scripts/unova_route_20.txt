@@ -3,12 +3,48 @@
 #
 # VAR_UNOVA_ROUTE_20, the route's count as Black 2 keeps it: 0 the hiker turns back anyone without a Badge; 1 the Basic
 # Badge won (aspertia_city_gym.txt, aspertia_city.txt), and he wants a battle; 2 the hiker beaten; 3 Cheren's advice
-# on the dark grass and his Pecha Berries, Hugh gone on ahead to Virbank City. (4 to 6 are the Virbank chapter's,
-# plan 22 · U5, part b.) The people: 0 the hiker Jerome, 21 Hugh (FLAG_UNOVA_HIDE_HUGH_ROUTE_20), 23 Cheren (FLAG_UNOVA_HIDE_CHEREN_ROUTE_20).
+# on the dark grass and his Pecha Berries, Hugh gone on ahead to Virbank City; (Black 2's 4 is not used) 5 the grunts
+# beaten on Virbank's dock, Hugh searching the route for the one who fled this way (virbank_city.txt); 6 that grunt
+# beaten and gone to sea, Hugh back to Virbank's docks (VAR_UNOVA_VIRBANK 7). The people: 0 the hiker Jerome, 21 Hugh
+# (FLAG_UNOVA_HIDE_HUGH_ROUTE_20), 22 the grunt (FLAG_UNOVA_HIDE_ROUTE_20_GRUNT), 23 Cheren (FLAG_UNOVA_HIDE_CHEREN_ROUTE_20).
 
 
 script OnEnter
   call UnovaCatchUp
+  if var VAR_UNOVA_ROUTE_20 == 5 place 21 153 645 left
+  end
+
+
+# The grunt who fled from Virbank's dock, in the dark grass (person 22, there on 5): the battle, the grunt off to sea,
+# and Hugh's guess that Team Plasma travels by boat
+script Grunt
+  face 22 player
+  speaker "Grunt"
+  scene "The grunt on Route 20"
+  music "unova/eye_plasma"
+  say "Ugh, you again?! I really hate it when people won't let things go!"
+  battle 22 as "unova_team_plasma_grunt_48"
+  say "Hmm... if I keep running this way, there's nobody to back me up. I'd better head for the sea!"
+  say "So with that settled... I'm running away again! Goodbye, Virbank City!"
+  hide 22
+  setflag FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  music area
+  clearflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  place 21 155 663 down
+  show 21
+  face player 21
+  speaker "{rival}"
+  say "Well, they're good at running away, I'll give them that..."
+  say "But she just told us something useful! They must be getting around by boat."
+  say "Castelia City has a big port. Maybe they headed there!"
+  say "Right! Back to Virbank, {player}. Someone at the docks must know about ships. There was a place to board them, I'm sure of it."
+  walk 21 up 2 left 4 fast
+  hide 21
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  setvar VAR_UNOVA_ROUTE_20 6
+  setvar VAR_UNOVA_VIRBANK 7
+  clearflag FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  endscene
   end
 
 
@@ -91,7 +127,12 @@ label Beaten
 
 script Hugh
   speaker "{rival}"
+  if var VAR_UNOVA_ROUTE_20 == 5 goto Searching
   say "I have to get stronger than Team Plasma!"
+  end
+label Searching
+  face 21 player
+  say "{player}! Help me search Route 20! One of those grunts ran this way, I know it."
   end
 
 

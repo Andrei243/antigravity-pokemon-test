@@ -1,0 +1,32 @@
+# The road from Virbank City into the Virbank Complex (plan 22 · U5, part b). The lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/virbank_complex.s). The roughneck by the road (person 2) swaps a Poké Ball
+# for a Great Ball once a day (FLAG_DAILY_UNOVA_BALL_SWAP, cleared each new day).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script BallTrade
+  speaker "Roughneck"
+  if flag FLAG_DAILY_UNOVA_BALL_SWAP goto Done
+  say "Yo! Here's a good deal for you. Swap me a Poké Ball for my Great Ball?"
+  ask "Trade a Poké Ball for a Great Ball?"
+  if no goto Refused
+  if not item "Poké Ball" goto NoBall
+  take "Poké Ball"
+  additem "Great Ball"
+  text "{player} traded a Poké Ball for a Great Ball!"
+  say "Heh, thanks! Enjoy that Great Ball. We can trade again tomorrow if you like!"
+  setflag FLAG_DAILY_UNOVA_BALL_SWAP
+  end
+label Refused
+  say "Seriously? Most people jump at a deal like this!"
+  end
+label NoBall
+  say "Seriously? You haven't got a single Poké Ball on you?"
+  end
+label Done
+  say "Good deal, right? Come back tomorrow and we'll trade again!"
+  end

@@ -1,0 +1,32 @@
+{
+  "key": "virbank_city_3",
+  "index": 450,
+  "name": "Virbank City",
+  "matrix": 358,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 11, "to": "virbank_city", "toWarp": 3 },
+    { "x": 5, "z": 11, "to": "virbank_city", "toWarp": 3 },
+    { "x": 6, "z": 11, "to": "virbank_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "worker_26", "movement": "none", "x": 3, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "nursery_aide", "movement": "wander_around", "x": 3, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "2" },
+    { "id": "2", "looks": "8", "movement": "wander_around", "x": 7, "z": 7, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "4" },
+    { "id": "3", "looks": "twins", "movement": "look_around", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "4", "looks": "twins", "movement": "wander_around", "x": 9, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "6" },
+    { "id": "5", "looks": "nursery_aide", "movement": "none", "x": 11, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

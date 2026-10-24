@@ -316,6 +316,8 @@ public static partial class WorldModels
         "canalave_city" => PokemonType.Steel,
         "snowpoint_city" => PokemonType.Ice,
         "sunyshore_city" => PokemonType.Electric,
+        // Unova (plan 22 · U5, part b): Roxie's club
+        "virbank_city" => PokemonType.Poison,
         _ => null
     };
 }

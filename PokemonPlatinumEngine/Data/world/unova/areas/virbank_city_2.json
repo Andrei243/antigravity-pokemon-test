@@ -1,0 +1,30 @@
+{
+  "key": "virbank_city_2",
+  "index": 449,
+  "name": "Virbank City",
+  "matrix": 261,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "virbank_city", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "virbank_city", "toWarp": 2 },
+    { "x": 7, "z": 9, "to": "virbank_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "battle_girl", "movement": "none", "x": 9, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "backers_f", "movement": "look_around", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "312", "movement": "wander_around", "x": 5, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "3" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 8, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0462", "item": "ITEM_POKE_TOY", "script": "7022" }
+  ],
+  "signs": [],
+  "triggers": []
+}

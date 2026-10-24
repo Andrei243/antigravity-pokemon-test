@@ -1,0 +1,17 @@
+{
+  // Virbank City's ship terminal (plan 22 · U5, part b): Black 2's hall, our words. The captain (2) and Hugh (3) wait
+  // here once the captain is back from Pokéstar Studios (virbank_city_5.txt). Black 2 stands the captain at the gangway,
+  // on a tile of the hall the import cuts away with the berth behind it, so ours stands at the top of the hall
+  "area": "virbank_city_5",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "0": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "dialog": [ "The ship to Castelia City sails from this terminal. She'll cross seas no swimming Pokémon could manage!" ]
+    },
+    "1": { "name": "Old Woman", "npcType": "Lady", "script": "OldWoman" },
+    "2": { "name": "Captain", "npcType": "virbank_captain", "script": "Captain", "still": true, "at": [ 6, 5 ], "hiddenBy": "FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL" },
+    "3": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "at": [ 6, 7 ], "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_TERMINAL" }
+  }
+}

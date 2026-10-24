@@ -1,0 +1,21 @@
+{
+  // The gate between Route 20 and Virbank City (plan 22 · U5, part b): Black 2's room, our words. Its guard stops whoever
+  // first walks east through it and gives them two Great Balls (virbank_gate.txt)
+  "area": "virbank_gate",
+  "bgmTrack": "unova/route19",
+  "triggers": [
+    { "script": "GateGift", "x": 13, "z": 4, "width": 1, "depth": 5, "variable": "VAR_UNOVA_VIRBANK_GATE", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "Guard", "npcType": "Gentleman", "script": "Guard", "still": true },
+    "1": {
+      "name": "Ace Trainer",
+      "dialog": [ "Ever heard of Audino hiding in rustling grass? Battle one and your team learns a lot. I wonder why?" ]
+    },
+    "2": {
+      "name": "Lass",
+      "npcType": "Lass",
+      "dialog": [ "When we walk past, the grass rustles! It's like playing hide-and-seek with the Pokémon!" ]
+    }
+  }
+}

@@ -310,6 +310,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | One Island (Isle) | white stucco | hip, sea turquoise `46,150,160` | shutters: the warm port of the first Sevii Island, all sea light and sun-bleached walls (plan 19 · K7; the other Sevii towns take it until their own sessions) |
 | Aspertia (Hillside) | white stucco | gable, slate teal `70,104,122` | shutters: the town on the hill over the outlook, clean walls under cool roofs that sit low against the sky; its Trainers' School is Aspertia's too (plan 22 · U5) |
 | Floccesy (Bellfield) | boards | gable, rust orange `196,112,58` | a chimney, flower boxes: the quiet town under its bell tower, fenced in wood; its bell tower is Floccesy's too, and the ranch's farmhouse keeps Solaceon's Farm (plan 22 · U5) |
+| Virbank (Dockyard) | dark brick | gable, violet grey `104,82,124` | a chimney: the harbour and works town of the complex and Roxie's club, containers on its quays and the ship to Castelia at the pier; its long house by the water and the club's stairs down are Virbank's too (plan 22 · U5, part b) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):
@@ -317,7 +318,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Kind | Walls, roof | Marks it out |
 |---|---|---|
 | Pokémon Center, Mart, lab | plaster, hip roof (orange, blue, cyan) | the entrance block with its roundel or name |
-| Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64` | an entrance block 84 wide in that colour, signed `GYM` |
+| Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64`, and in Unova Poison `150,92,178` (Virbank's club, a small block over its stairs down) | an entrance block 84 wide in that colour, signed `GYM` |
 | Gate house | stone, hip roof green-grey `104,146,122` | an open porch where the road goes through north and south; a door in each end wall where it goes east and west |
 | The League's reception gate (Route 22, Johto, plan 20 · J10, part b) | a gate house | one room seen from three roads: a face on Route 26 to the south, on Route 22 to the east and on Route 28 to the west, each built as a gate house of its own |
 | Shop (flower shop, cycle shop, café, market, Game Corner, Day Care, Fan Club) | its town's house | an entrance block wide enough for its name, in the roof's colour |

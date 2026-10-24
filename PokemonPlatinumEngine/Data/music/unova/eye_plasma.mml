@@ -1,0 +1,24 @@
+# Team Plasma steps out (a grunt's eyes meet the player's, and their scenes): a solemn, marching brass figure in C
+# minor that climbs like a herald's call and falls back on the leading note, over a heavy, stamping beat. Original
+# composition for this game (plan 22 · U5, part b).
+title Team Plasma appears
+tempo 138
+meter 4/4
+reverb 0.22
+night none
+
+track lead brass vol=0.66 pan=0.05 rev=0.24
+  L o5 c4 e-4 g4 o6 c4 | o5 b-4 a-8 g8 f2 | o5 e-4 g4 o6 c4 e-4 | o6 d4 d8 o5 b8 g2 |
+  o5 a-4 o6 c4 e-4 c4 | o5 b-4 o6 d4 f4 d4 | o5 g4 b4 o6 d4 o5 b4 | o5 c2 g2 |
+
+track bass synthbass vol=0.66 rev=0.08
+  L o2 c8 c8 g8 c8 c8 c8 g8 c8 | o2 f8 f8 o3 c8 o2 f8 f8 f8 o3 c8 o2 f8 | o2 c8 c8 g8 c8 c8 c8 g8 c8 | o2 g8 g8 o3 d8 o2 g8 g8 g8 o3 d8 o2 g8 |
+  o2 a-8 a-8 o3 e-8 o2 a-8 a-8 a-8 o3 e-8 o2 a-8 | o2 b-8 b-8 o3 f8 o2 b-8 b-8 b-8 o3 f8 o2 b-8 |
+  o2 g8 g8 o3 d8 o2 g8 g8 g8 o3 d8 o2 g8 | o2 c8 c8 g8 c8 c8 c8 g8 c8 |
+
+track pad strings vol=0.22 pan=-0.25 rev=0.3
+  L o4 (c e- g)1 | o4 (f a- >c)1 | o4 (c e- g)1 | o4 (g b >d)1 |
+  o4 (a- >c e-)1 | o4 (b- >d f)1 | o4 (g b >d f)1 | o4 (c e- g)1 |
+
+track drums kit vol=0.46 rev=0.12
+  v95 L [ b4 s8 b8 b8 b8 s4 | ]7 b8 b8 s8 b8 s16 s16 s16 s16 s4 |

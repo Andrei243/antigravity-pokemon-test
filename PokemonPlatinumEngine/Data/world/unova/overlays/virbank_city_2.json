@@ -1,0 +1,15 @@
+{
+  // A house of Virbank City (plan 22 · U5, part b): Black 2's room, our words
+  "area": "virbank_city_2",
+  "bgmTrack": "unova/virbank",
+  // Black 2's Poké Toy (its item ball, 3) is an item our data's table doesn't have: left out until a session adds it
+  "heldBack": [ "3" ],
+  "people": {
+    "0": {
+      "name": "Battle Girl",
+      "dialog": [ "A Pokémon that evolves grows stronger and changes its looks. Hold it back, though, and it learns its moves sooner!" ]
+    },
+    "1": { "name": "Girl", "npcType": "Lass", "script": "AudinoFan" },
+    "2": { "name": "Audino", "npcType": "Pokemon", "species": "Audino", "dialog": [ "Audino: Brrrm... brrrm." ] }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  // Virbank City's Pokémon Center (plan 22 · U5, part b): the same floor as Aspertia's, with the town's own people
+  "area": "virbank_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "people": {
+    "0": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "1": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "2": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "Ships, smokestacks and a rock club under the street. Virbank never sleeps, and neither do I, it seems." ]
+    },
+    "3": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "4": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "6": {
+      "name": "Twins",
+      "dialog": [ "Fight Poison types with Poison types! At least, that's what Roxie says. She plays the guitar AND battles!" ]
+    },
+    "7": { "name": "Worker", "script": "BadgeTalk" },
+    "8": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Can I ask you something? Do you like playing outside, or at home? ...Outside? I knew it, you look sporty!" ]
+    }
+  }
+}

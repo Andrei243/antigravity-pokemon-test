@@ -6,7 +6,10 @@ partial class Harness
     /// the outlook's steps, Bianca at the outlook and the choice of three, the Pokédex, Hugh's first battle, the Pokémon
     /// Center's tour, Mom's Running Shoes and the Town Maps, the gate's Potion, Bianca's lesson on Route 19, Alder, the
     /// ranch's Hugh, the lost Herdier and Team Plasma's grunt, Alder's lesson at home, Cheren's Gym and the Basic Badge,
-    /// Cheren and Hugh outside the school, the hiker and Cheren's advice on Route 20 (<c>us01</c> to <c>us30</c>), through
+    /// Cheren and Hugh outside the school, the hiker and Cheren's advice on Route 20 (<c>us01</c> to <c>us30</c>), and the
+    /// Virbank chapter of part b (<c>us31</c> to <c>us46</c>: the gate's Great Balls, Roxie and the captain, the studios' man,
+    /// the Gym's guide, Roxie's band and the Toxic Badge, the scout, Team Plasma at the dock and HM01, the grunt on Route 20,
+    /// the captain back and the ship terminal), through
     /// the game's own steps, <c>TryInteract</c> and arrivals. It wins every battle a scene starts and prints what each
     /// scene left behind.
     /// </summary>
@@ -233,5 +236,75 @@ partial class Harness
         ReadTo("See the darker grass here?"); Frames(10); Shot("us30_cherens_advice");
         ReadTo(null);
         Left("Route 20");
+
+        // Plan 22 · U5, part b: Virbank City, from the gate's Great Balls to the ship terminal
+        void Virbank(string what) =>
+            Console.WriteLine($"  {what}: virbank {story.Var("VAR_UNOVA_VIRBANK")}, route 20 {story.Var("VAR_UNOVA_ROUTE_20")}, "
+                + $"gate {story.Var("VAR_UNOVA_VIRBANK_GATE")}, gym {story.Var("VAR_UNOVA_VIRBANK_GYM")}, "
+                + $"Toxic Badge {story.HasBadge(RegionDatabase.Unova, "Toxic")}, dock hidden {story.Has("FLAG_UNOVA_HIDE_VIRBANK_DOCK")}, "
+                + $"grunt hidden {story.Has("FLAG_UNOVA_HIDE_ROUTE_20_GRUNT")}, terminal hidden {story.Has("FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL")}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- the gate from Route 20, and Roxie and her father in the street
+        StepOnto("VirbankGate", 13, 5, Direction.Right);
+        ReadTo("Here, these will help you make some new ones."); Frames(10); Shot("us31_the_gates_great_balls");
+        ReadTo(null);
+        StepOnto("Unova", 205, 651, Direction.Right);
+        ReadTo("Pokéstar Studios is calling"); Frames(10); Shot("us32_roxie_and_the_captain");
+        ReadTo("ARGH! You stubborn"); Frames(10); Shot("us33_roxie_furious");
+        ReadTo(null);
+        StepOnto("Unova", 216, 642, Direction.Up);
+        ReadTo("so no visitors just now"); Frames(10); Shot("us34_the_studios_closed");
+        ReadTo(null);
+        Virbank("Virbank City");
+
+        // ---- the Gym: the guide, Roxie's band and the Toxic Badge, the scout on the way out
+        StepOnto("VirbankCity_Gym", 8, 3, Direction.Up);
+        ReadTo("a rock club too"); Frames(10); Shot("us35_the_gym_guide");
+        ReadTo(null);
+        TalkTo("VirbankCity_GymStage", "1", "virbank_city_gym_2");
+        IntoBattle("Nicky"); Win(); ReadTo(null);
+        TalkTo("VirbankCity_GymStage", "2", "virbank_city_gym_2");
+        IntoBattle("Billy Jo"); Win(); ReadTo(null);
+        TalkTo("VirbankCity_GymStage", "0", "virbank_city_gym_2", -1, 0);
+        ReadTo("singer of this band"); Frames(10); Shot("us36_roxie");
+        IntoBattle("Roxie");
+        ToMainMenu(game.Battle); Shot("us37_roxies_battle");
+        Win();
+        ReadTo("Here, the Toxic Badge!"); Frames(10); Shot("us38_the_toxic_badge");
+        ReadTo(null);
+        StepOnto("VirbankCity_GymStage", 3, 6, Direction.Down);
+        ReadTo("You've got star quality!"); Frames(10); Shot("us39_the_scout");
+        ReadTo("I have to drag him back to his ship!"); Frames(10); Shot("us40_roxie_runs_off");
+        ReadTo(null);
+        Virbank("the Toxic Badge");
+
+        // ---- the dock: Team Plasma, the grunt's battle and HM01
+        StepOnto("Unova", 237, 670, Direction.Right);
+        ReadTo("Two years ago the king we served"); Frames(10); Shot("us41_team_plasma_at_the_dock");
+        ReadTo(null);
+        TalkTo("Unova", "9", "virbank_city", -1, 0);
+        IntoBattle("the grunt at the dock");
+        ToMainMenu(game.Battle); Shot("us42_the_grunts_battle");
+        Win();
+        ReadTo("Here, take this!"); Frames(10); Shot("us43_roxies_hm01");
+        ReadTo(null);
+        Virbank("the dock");
+
+        // ---- Route 20: the grunt in the dark grass, and Hugh's guess
+        TalkTo("Unova", "22", "unova_route_20");
+        IntoBattle("the grunt on Route 20"); Win();
+        ReadTo("They must be getting around by boat."); Frames(10); Shot("us44_hugh_guesses_the_boat");
+        ReadTo(null);
+
+        // ---- the dock again: the captain back, and the ship terminal
+        StepOnto("Unova", 237, 670, Direction.Right);
+        ReadTo("I was just a captain in a costume."); Frames(10); Shot("us45_the_captain_back");
+        ReadTo(null);
+        TalkTo("VirbankCity_Terminal", "3", "virbank_city_5");
+        ReadTo("we'll charge across to Castelia City!"); Frames(10); Shot("us46_the_ship_terminal");
+        ReadTo(null);
+        Virbank("the ship terminal");
     }
 }

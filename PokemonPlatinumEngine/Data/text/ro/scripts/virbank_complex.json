@@ -1,0 +1,68 @@
+{
+  "BallTrade": [
+    {
+      "en": [
+        "Roughneck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo! Here's a good deal for you. Swap me a Poké Ball for my Great Ball?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Trade a Poké Ball for a Great Ball?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} traded a Poké Ball for a Great Ball!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heh, thanks! Enjoy that Great Ball. We can trade again tomorrow if you like!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seriously? Most people jump at a deal like this!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seriously? You haven't got a single Poké Ball on you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good deal, right? Come back tomorrow and we'll trade again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

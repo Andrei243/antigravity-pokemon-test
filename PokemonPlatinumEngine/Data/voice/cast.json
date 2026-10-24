@@ -307,6 +307,10 @@
       "note": "first spoken at goldenrod_flower_shop.txt(10)",
       "provisional": true
     },
+    "foreman": {
+      "note": "first spoken at virbank_complex_2.txt(15)",
+      "provisional": true
+    },
     "fossil_maniac": {
       "note": "first spoken at route_114_fossil_maniacs_tunnel.txt(7)",
       "provisional": true
@@ -727,11 +731,19 @@
       "note": "first spoken at phone.txt(294)",
       "provisional": true
     },
+    "roughneck": {
+      "note": "first spoken at virbank_complex.txt(12)",
+      "provisional": true
+    },
     "rowan": {
       "note": "Professor Rowan, also the introduction's professor."
     },
     "roxanne": {
       "note": "first spoken at rustboro_city_gym.txt(12)",
+      "provisional": true
+    },
+    "roxie": {
+      "note": "first spoken at virbank_city.txt(39)",
       "provisional": true
     },
     "rydel": {
@@ -764,6 +776,10 @@
       "provisional": true
     },
     "scott": {},
+    "scout": {
+      "note": "first spoken at virbank_city_gym_2.txt(63)",
+      "provisional": true
+    },
     "selphy": {
       "note": "first spoken at five_island_lost_cave_room_10.txt(17)",
       "provisional": true
@@ -793,6 +809,10 @@
       "provisional": true
     },
     "steven": {},
+    "studio_hand": {
+      "note": "first spoken at virbank_city.txt(72)",
+      "provisional": true
+    },
     "tabitha": {
       "note": "first spoken at mossdeep_city_space_center_2f.txt(83)",
       "provisional": true
@@ -1034,6 +1054,7 @@
     "Flannery": "flannery",
     "Flint": "flint",
     "Florist": "florist",
+    "Foreman": "foreman",
     "Fossil Maniac": "fossil_maniac",
     "Frieda": "frieda",
     "Gabby": "gabby",
@@ -1166,7 +1187,9 @@
     "Roark": "roark",
     "Robert": "robert",
     "Rose": "rose",
+    "Roughneck": "roughneck",
     "Roxanne": "roxanne",
+    "Roxie": "roxie",
     "Rydel": "rydel",
     "Sabrina": "sabrina",
     "Sailor": "look:sailor",
@@ -1178,6 +1201,7 @@
     "Schoolgirl": "schoolgirl",
     "Scientist": "look:scientist",
     "Scott": "scott",
+    "Scout": "scout",
     "Selphy": "selphy",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
@@ -1186,6 +1210,7 @@
     "Slowbro": "slowbro",
     "Socialite": "socialite",
     "Steven": "steven",
+    "Studio Hand": "studio_hand",
     "Tabitha": "tabitha",
     "Tate": "tate",
     "Teala": "teala",

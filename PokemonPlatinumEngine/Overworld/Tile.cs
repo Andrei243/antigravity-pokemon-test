@@ -280,7 +280,9 @@ public enum Architecture
     /// <summary>White stucco under slate-teal gable roofs with shutters: the town on the hill over the outlook (Aspertia, plan 22 · U5).</summary>
     Hillside,
     /// <summary>Boards under rust-orange gable roofs with a chimney and flower boxes: the quiet town under its bell tower (Floccesy, plan 22 · U5).</summary>
-    Bellfield
+    Bellfield,
+    /// <summary>Dark brick under violet-grey gable roofs with a chimney: the harbour and works town of the complex and the club (Virbank, plan 22 · U5, part b).</summary>
+    Dockyard
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

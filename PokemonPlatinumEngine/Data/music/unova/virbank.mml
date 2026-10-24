@@ -1,0 +1,29 @@
+# Virbank City (and its rooms, the gates and the complex): the harbour and works town of Roxie's club, a swaggering
+# guitar line in D minor over a walking bass and electric piano, a dock-side backbeat under it. Original composition
+# for this game (plan 22 · U5, part b).
+title Virbank City
+tempo 116
+meter 4/4
+reverb 0.28
+nighttempo 0.92
+
+track lead guitar night=vibraphone vol=0.72 pan=0.1 rev=0.26
+  L o5 d8 f8 a8 o6 c8 o5 a4 f4 | o5 g8 b8 o6 d8 f8 d4 o5 b4 | o5 a4. g8 f4 d4 | o5 f4 g8 b8 o6 d2 |
+  o5 f8 a8 o6 d8 f8 d4 o5 a4 | o5 e8 g8 a8 o6 c+8 e4 o5 a4 | o5 f4 a4 o6 d4 o5 a4 | o5 c+4 e4 g4 e4 |
+  o6 d8 c8 o5 a8 f8 d4 f4 | o5 g8 b8 o6 d8 o5 b8 g4 f4 | o5 a4 o6 c4 f4 c4 | o5 g4 o6 c4 e4 c4 |
+  o5 f4 b-4 o6 d4 o5 b-4 | o5 g4 o6 c4 e4 o5 g4 | o6 e4 c+4 o5 a4 g4 | o5 f4 e8 f8 d2 |
+
+track keys epiano night=pad vol=0.36 pan=-0.25 rev=0.3
+  L o4 (d f a >c)1 | o3 (g b >d f)1 | o4 (d f a >c)1 | o3 (g b >d f)1 |
+  o3 (b- >d f a)1 | o3 (a >c+ e g)1 | o4 (d f a)1 | o3 (a >c+ e g)1 |
+  o4 (d f a >c)1 | o3 (g b >d f)1 | o4 (f a >c)1 | o4 (c e g)1 |
+  o3 (b- >d f)1 | o4 (c e g)1 | o3 (a >c+ e g)1 | o4 (d f a)1 |
+
+track bass synthbass vol=0.62 rev=0.08
+  L o3 d4 f4 a4 f4 | o3 g4 b4 o4 d4 o3 b4 | o3 d4 f4 a4 o4 c4 | o3 g4 d4 f4 d4 |
+  o2 b-4 o3 d4 f4 d4 | o2 a4 o3 c+4 e4 c+4 | o3 d4 a4 f4 a4 | o2 a4 o3 e4 g4 e4 |
+  o3 d4 f4 a4 f4 | o3 g4 b4 o4 d4 o3 b4 | o3 f4 a4 o4 c4 o3 a4 | o3 c4 e4 g4 e4 |
+  o2 b-4 o3 d4 f4 d4 | o3 c4 e4 g4 e4 | o2 a4 o3 c+4 e4 g4 | o3 d4 a4 d2 |
+
+track drums kit vol=0.4 rev=0.1
+  L v84 [ b8 h8 s8 h8 b8 b8 s8 h8 | ]15 b8 h8 s8 b8 s16 s16 s16 s16 s8 h8 |

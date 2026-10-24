@@ -1,0 +1,97 @@
+{
+  "key": "virbank_complex",
+  "index": 456,
+  "name": "Virbank Complex",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "encounters": "ENCOUNTERS_VIRBANK_COMPLEX",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Patrat", "level": 10 },
+    { "species": "Pidove", "level": 10 },
+    { "species": "Magby", "level": 10 },
+    { "species": "Magnemite", "level": 10 },
+    { "species": "Patrat", "level": 11 },
+    { "species": "Pidove", "level": 11 },
+    { "species": "Magby", "level": 11 },
+    { "species": "Magnemite", "level": 11 },
+    { "species": "Patrat", "level": 12 },
+    { "species": "Pidove", "level": 12 },
+    { "species": "Patrat", "level": 13 },
+    { "species": "Pidove", "level": 13 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Finneon", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Krabby", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Finneon", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Qwilfish", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Qwilfish", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Audino", "level": 10 },
+    { "species": "Audino", "level": 10 },
+    { "species": "Audino", "level": 11 },
+    { "species": "Audino", "level": 11 },
+    { "species": "Audino", "level": 12 },
+    { "species": "Audino", "level": 12 },
+    { "species": "Audino", "level": 13 },
+    { "species": "Audino", "level": 13 },
+    { "species": "Audino", "level": 13 },
+    { "species": "Audino", "level": 13 },
+    { "species": "Audino", "level": 13 },
+    { "species": "Audino", "level": 13 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Jellicent", "level": 5, "maxLevel": 15 },
+    { "species": "Jellicent", "level": 5, "maxLevel": 15 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 208, "z": 693, "to": "virbank_complex_2", "toWarp": 0 },
+    { "x": 209, "z": 693, "to": "virbank_complex_2", "toWarp": 0 },
+    { "x": 210, "z": 693, "to": "virbank_complex_2", "toWarp": 0 },
+    { "x": 211, "z": 693, "to": "virbank_complex_2", "toWarp": 0 },
+    { "x": 212, "z": 693, "to": "virbank_complex_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 203, "z": 677, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x045d", "item": "Silk Scarf", "script": "7017" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 205, "z": 682, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x045f", "item": "X Accuracy", "script": "7019" },
+    { "id": "2", "looks": "roughneck", "movement": "none", "x": 213, "z": 681, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [
+    { "x": 222, "z": 673, "type": 2, "script": "8084", "item": "Pearl", "flag": "FLAG_UNOVA_0x0b58" },
+    { "x": 207, "z": 674, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

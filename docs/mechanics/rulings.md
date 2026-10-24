@@ -2646,6 +2646,45 @@ scenes, who stands where, the battles and the gifts, and nothing of their text.
 - **Songs** of our own in `Data/music/unova/`: `aspertia`, `route19` (also Route 20, the ranch and the gate), `floccesy`,
   `gym`, the four battles, two victories and two eye themes; the rest of the roles fall back to `common`.
 
+## Unova's first chapter, part b (2026-10-24, plan 22 · U5, part b)
+
+Black 2's Virbank chapter, from Route 20's end to the ship terminal, in our own words on the beats of the
+decompilation's scripts (`res/field/scripts/virbank_*.s`, `route_20.s`, `pokestar_studios.s`), read for the order of
+the scenes, who stands where, the battles and the gifts, and nothing of their text.
+
+- **The chapter**: the gate's guard gives two Great Balls; Roxie and her father, the captain of Virbank's ship, argue
+  in the street as the player comes in, and he leaves for Pokéstar Studios; the studios' man turns the player back at
+  the north gate until the Toxic Badge; the Gym's guide gives Fresh Water; Roxie can't hear a challenger over her band
+  until Nicky and Billy Jo are beaten, then battles (`unova_leader_roxie`) for the Toxic Badge and TM09; on the way out
+  the studios' scout stops the player and Roxie runs to fetch her father; Team Plasma's three grunts face Roxie and Hugh
+  on the dock, the player beats the one in charge (`unova_team_plasma_grunt_44`), the grunts flee and Roxie gives HM01;
+  Hugh searches Route 20, where the grunt who ran that way is beaten in the dark grass (`unova_team_plasma_grunt_48`)
+  and leaves for the sea, and Hugh guesses Team Plasma moves by boat; the captain, back from his screen test, takes up
+  his ship again, and he and Hugh wait in the ship terminal.
+- **Our tellings where Black 2's are another's.** Pokéstar Studios is a door (plan 22's decision 7): Black 2 plays the
+  studios' first visit and the captain's audition between the Badge and the dock, ours tells of it in the scout's and
+  Roxie's words. The Xtransceiver's call as the player comes in is left out. The grunts on the dock flee east along the
+  quay, where Black 2 runs them west through the town past the player. The terminal's captain stands at the top of the
+  hall: Black 2's tile is cut away with the berth behind it. The voyage to Castelia City is part c's (Castelia's streets
+  stand on rails the importer doesn't read yet): until then the captain is still warming his engines. TM09 is our data's
+  TM09 (Platinum's table). The Poké Toy's item ball is held back: our item table has no such item. The complex's three
+  workers battle when spoken to, without waiting for the foreman to ask.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_VIRBANK` is `0x40ac` (0, 2 to 8 as Black 2
+  counts them, its 1 being the call), `_VIRBANK_GYM` `0x40aa`, `_VIRBANK_GATE` `0x4151`, `_COMPLEX_TALK` `0x40dd`, and
+  `VAR_UNOVA_ROUTE_20` goes on to 5 and 6 (Black 2's 4 unused); `FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN` is `0x02d6`,
+  `_POKESTAR_GUARD` `0x02d5`, `_VIRBANK_DOCK` `0x02d4`, `_ROXIE_GYM` Roxie's stage self once she has gone,
+  `_ROXIE_SCENE` `0x02d1`, `_VIRBANK_SCOUT` `0x02d0`, `_ROUTE_20_GRUNT` `0x02be`, `_CAPTAIN_TERMINAL` `0x02d3`,
+  `_HUGH_TERMINAL` `0x02d2`; `FLAG_DAILY_UNOVA_BALL_SWAP` is the complex's daily swap. `common.UnovaVirbank` sets what
+  a game starts with for the chapter (`FLAG_UNOVA_VIRBANK_BEGUN` says it has run), from `UnovaNewGame` and, for a save
+  of part a's, from `UnovaCatchUp`, with no story version raised.
+- **Team Plasma** brings the Galactic eye and battle roles by class (`sound-map.json`) and, in Unova, a song of its
+  own as its eye song (`unova/eye_plasma`); the dock's speech plays it too. Roxie's battle is the Gym Leader's.
+- **The places' looks**: Virbank's houses, its long house by the water and the club's way down are
+  `Architecture.Dockyard`; the club is a Gym in Poison's colour; the ship at the quay is a boat, the complex's tanks,
+  stacks and towers headframes. An opening walked into in Unova (a gate's on an east-west road, a door in a room's back
+  row) is walked into whatever its tile's cover says (`World.PlaceEvents`).
+- **Songs** of our own: `unova/virbank` (the town, its rooms, gates and the complex) and `unova/eye_plasma`.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
