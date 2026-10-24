@@ -100,6 +100,8 @@ partial class Harness
                 Timing("unova " + label);
             }
         }
+        // And last the first chapter, in a new game of its own (plan 22 · U5, part a: us01 to us30)
+        UnovaScenes();
         engine.NewGameRegion = "Sinnoh";
     }
 }

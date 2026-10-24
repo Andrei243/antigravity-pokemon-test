@@ -1,16 +1,16 @@
 {
-  // The player's house in Aspertia City (plan 22 · U2), Black 2's room. The two who come calling as the story begins
-  // are plan 22 · U4's; Mom is ours, at the table, and sees to the team whenever she is spoken to, as in FireRed
+  // The player's house in Aspertia City (plan 22 · U2, U5), Black 2's room. Mom is the room's own person 0, at the
+  // table, off the map while she is out in town (FLAG_UNOVA_HIDE_MOM_HOME); she asks her questions at the foot of the stairs
+  // as a new game begins (aspertia_city_2.txt) and sees to the team whenever she is spoken to. The professor's father,
+  // who comes calling after the Hall of Fame, is plan 22 · U9's
   "area": "aspertia_city_2",
-  "bgmTrack": "sinnoh/twinleaf",
-  "npcs": [
-    { "id": "aspertia_city_2.Mom", "name": "Mom", "npcType": "Mom", "x": 4, "y": 5, "facing": "Down", "script": "Healer",
-      "isHealingNurse": true,
-      "dialog": [
-        "You look tired out, dear. Sit down for a minute and let your Pokémon rest.",
-        "There, all better. Off you go, and be careful out there!"
-      ] }
+  "bgmTrack": "unova/aspertia",
+  "triggers": [
+    { "script": "MomQuestions", "x": 10, "z": 8, "width": 1, "depth": 1, "variable": "VAR_UNOVA_HOUSE", "value": 0 }
   ],
+  "people": {
+    "0": { "name": "Mom", "npcType": "Mom", "script": "Mom", "isHealingNurse": true, "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_MOM_HOME" }
+  },
   "signs": {
     "6": "The PC is on. There's a message from a friend\nasking how the journey is going.",
     "7": "A tidy kitchen. Something good is in the oven.",

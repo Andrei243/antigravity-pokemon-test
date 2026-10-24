@@ -1,13 +1,13 @@
 {
-  // The gate between Aspertia City and Route 19 (plan 22 · U2): Black 2's room, our words. Its trigger is the story's
+  // The gate between Aspertia City and Route 19 (plan 22 · U2, U5): Black 2's room, our words. Its trigger is the
+  // guard's: a player with no Pokémon is turned back, one with a Pokémon given a Potion (aspertia_gate.txt)
   "area": "aspertia_gate",
-  "bgmTrack": "sinnoh/route201",
+  "bgmTrack": "unova/route19",
+  "triggers": [
+    { "script": "GateGift", "x": 1, "z": 11, "width": 7, "depth": 1, "variable": "VAR_UNOVA_GATE", "value": 0 }
+  ],
   "people": {
-    "0": {
-      "name": "Guard",
-      "npcType": "Gentleman",
-      "dialog": [ "Beyond this gate is Route 19. Floccesy Town is a short walk down the hill." ]
-    },
+    "0": { "name": "Guard", "npcType": "Gentleman", "script": "Guard", "still": true },
     "1": {
       "name": "Woman",
       "npcType": "Lady",

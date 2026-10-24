@@ -1,0 +1,22 @@
+# A girl of Unova spots the player (Lasses, Twins and their like): a sweet, skipping tune in E on the glockenspiel
+# over a soft pad. Original composition for this game (plan 22 · U5).
+title Eyes Meet: Girl (Unova)
+tempo 140
+meter 4/4
+reverb 0.2
+night none
+
+track lead glockenspiel vol=0.68 pan=0.05 rev=0.2
+  o4 b8 o5 e8 g+8 b8 r4 g+4 | L o4 e8 g+8 b8 g+8 a4 f+4 | o4 e8 g+8 b8 o5 c+8 o4 b4 g+4 |
+  o4 a8 o5 c+8 e8 c+8 o4 b4 d+4 | o4 e4 b4 e4 r4 |
+
+track pad pad vol=0.24 pan=-0.25 rev=0.24
+  o4 (e g+ b)1 | L (e g+ b)2 (b d+ f+)2 | (e g+ b)1 |
+  (a c+ e)2 (b d+ f+)2 | (e g+ b)1 |
+
+track bass synthbass vol=0.6 rev=0.05
+  o3 e8 r8 e8 r8 b4 b4 | L o2 e8 o3 e8 o2 e8 o3 e8 o2 b8 o3 b8 o2 b8 o3 b8 | [ o2 e8 o3 e8 ]4 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 b8 o3 b8 o2 b8 o3 b8 | [ o2 e8 o3 e8 ]4 |
+
+track drums kit vol=0.4 rev=0.1
+  v84 b8 r8 h8 r8 (b c)4 h4 | L [ b8 h8 s8 h8 b8 h8 s8 h8 | ]3 b8 h8 s8 b8 s16 s16 s16 s16 s8 s8 |

@@ -1,7 +1,7 @@
 {
   // Another house of Floccesy Town (plan 22 · U2): Black 2's room, our words
   "area": "floccesy_town_4",
-  "bgmTrack": "sinnoh/floaroma",
+  "bgmTrack": "unova/floccesy",
   "people": {
     "0": {
       "name": "Woman",

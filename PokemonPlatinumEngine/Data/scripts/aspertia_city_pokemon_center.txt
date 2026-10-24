@@ -1,0 +1,49 @@
+# Aspertia City's Pokémon Center (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/aspertia_city_pokemon_center.s, read for the order alone).
+#
+# Bianca's tour: the room's own person 8 (FLAG_UNOVA_HIDE_BIANCA_CENTER), shown as the outlook's scene warps the player in on
+# VAR_UNOVA_ASPERTIA 5. The nurse heals the team, Bianca shows the PC and the Poké Mart's counters and gives ten Poké
+# Balls, and goes on ahead (6), so that Mom and Hugh's sister are waiting outside (aspertia_city.txt).
+
+
+script OnEnter
+  if var VAR_UNOVA_ASPERTIA != 5 end
+  scene "The Center's tour"
+  face 8 player
+  speaker "Bianca"
+  say "OK! I'll show you round the Pokémon Center!"
+  fade out
+  place player 7 5 up
+  place 8 6 5 right
+  fade in
+  say "Pokémon Centers heal your Pokémon for free! Bring them here whenever they're worn out."
+  speaker "Nurse"
+  say "Welcome! I'll take your Pokémon for a moment."
+  anim heal
+  heal
+  say "All done! Your Pokémon are full of energy again."
+  speaker "Bianca"
+  face player left
+  say "Next, the PC! That's the square machine by the wall. Any Trainer can use it for free."
+  say "You can leave Pokémon in it when your team is full, and take them out again whenever you like."
+  say "And the counters on the other side are the Poké Mart! You can buy and sell all kinds of items there."
+  say "The Poké Balls you catch Pokémon with are sold there too. Here, {player}, I'll give you some to start!"
+  give "Poké Ball" 10
+  say "Next up, I'll show you how to use them! Meet me on Route 19, past the gate at the top of town!"
+  fade out
+  hide 8
+  setflag FLAG_UNOVA_HIDE_BIANCA_CENTER
+  clearflag FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  clearflag FLAG_UNOVA_HIDE_HUGHS_SISTER
+  setflag FLAG_UNOVA_HIDE_MOM_HOME
+  setvar VAR_UNOVA_ASPERTIA 6
+  fade in
+  endscene
+  end
+
+
+# Bianca spoken to before the tour begins (she starts it at once on arrival, so this is only the save's case)
+script Bianca
+  speaker "Bianca"
+  say "The Pokémon Center is the same wherever you go. Isn't that handy?"
+  end

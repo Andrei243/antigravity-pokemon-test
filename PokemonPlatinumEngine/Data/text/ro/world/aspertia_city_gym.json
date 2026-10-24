@@ -1,5 +1,15 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "1": {
       "name": {
         "en": [
@@ -9,12 +19,20 @@
           "Puștiul"
         ]
       },
-      "dialog": {
+      "before": {
         "en": [
-          "The Gym Leader is out right now. I'm getting in some extra practice while I wait."
+          "Cheren saw potential in me and made me a Trainer of this Gym! Get past me first!"
         ],
         "text": [
-          "Liderul Arenei e plecat acum. Fac niște antrenament în plus cât aștept."
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Maybe he picked me because nobody else asked... No! I just have to get stronger!"
+        ],
+        "text": [
+          ""
         ]
       }
     },
@@ -27,12 +45,20 @@
           "Domnișoara"
         ]
       },
-      "dialog": {
+      "before": {
         "en": [
-          "This Gym's Leader likes Normal-type Pokémon. Fighting types should do well here."
+          "Now I'll show you everything Cheren has taught me!"
         ],
         "text": [
-          "Liderului acestei Arene îi plac Pokémonii de tip Normal. Cei de tip Luptă ar trebui să se descurce bine aici."
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're pretty good. But can you beat Cheren?"
+        ],
+        "text": [
+          ""
         ]
       }
     },
@@ -43,14 +69,6 @@
         ],
         "text": [
           "Ghidul Arenei"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Hey there, challenger! The Leader isn't in yet. Come back once you've trained up a bit."
-        ],
-        "text": [
-          "Salut, provocatorule! Liderul nu e încă aici. Revino după ce te mai antrenezi puțin."
         ]
       }
     }

@@ -1,11 +1,24 @@
 {
-  // Aspertia City (plan 22 · U2): Black 2's town on the hill, our words. Its story (the lookout, the starters, Hugh at
-  // the door, Cheren's Gym) is plan 22 · U4's, so the people of its scenes are left out, and the triggers with them.
-  // Unova has no songs of its own yet: Sinnoh's stand in until plan 22's music session
+  // Aspertia City (plan 22 · U2, U5): Black 2's town on the hill, our words. Its first chapter (aspertia_city.txt):
+  // Hugh and his sister at their door as the player first comes out, Hugh catching up at the foot of the outlook's
+  // steps, Bianca at the outlook with the three Pokémon and the Pokédex, Hugh's first battle, Mom and Hugh's sister
+  // with their gifts outside the Pokémon Center, and Bianca, Cheren and Hugh outside the school once the Basic Badge
+  // is won. The people of those scenes are the area's own objects (0 Hugh, 1 Mom, 2 Bianca, 3 Hugh's sister, 7
+  // Cheren), each hidden by a flag of ours (the decompilation names theirs by value, which no script can)
   "area": "aspertia_city",
-  "bgmTrack": "sinnoh/twinleaf",
+  "bgmTrack": "unova/aspertia",
   "trees": "Round",
+  "architecture": "Hillside",
+  "triggers": [
+    { "script": "HughCatchesUp", "x": 36, "z": 719, "width": 3, "depth": 1, "variable": "VAR_UNOVA_OUTLOOK", "value": 0 },
+    { "script": "HughTurnsBack", "x": 36, "z": 720, "width": 3, "depth": 1, "variable": "VAR_UNOVA_ASPERTIA", "value": 2 },
+    { "script": "NotYet", "x": 52, "z": 711, "width": 3, "depth": 1, "variable": "VAR_UNOVA_ASPERTIA", "value": 1 }
+  ],
   "people": {
+    "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ASPERTIA" },
+    "1": { "name": "Mom", "npcType": "Mom", "script": "MomOutside", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_MOM_ASPERTIA" },
+    "2": { "name": "Bianca", "npcType": "bianca", "script": "Bianca", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ASPERTIA" },
+    "3": { "name": "{rival}'s Sister", "npcType": "hugh_sister", "script": "Sister", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGHS_SISTER" },
     "4": {
       "name": "Boy",
       "dialog": [ "Climb to the lookout at the top of town. On a clear day you can see halfway across Unova from there." ]
@@ -20,6 +33,7 @@
       "still": true,
       "dialog": [ "That's the Trainers' School. The Gym is right behind it: you go through the school to get there." ]
     },
+    "7": { "name": "Cheren", "npcType": "cheren", "script": "CherenOutside", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ASPERTIA" },
     "9": {
       "name": "Pokéfan",
       "dialog": [ "Aspertia is so high up that the clouds sometimes drift right down the street." ]

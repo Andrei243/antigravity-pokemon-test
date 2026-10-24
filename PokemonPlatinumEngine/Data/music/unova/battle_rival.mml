@@ -1,0 +1,33 @@
+# Hugh, the rival of Unova (Black 2's rival battle): a headlong E minor charge, the square lead racing over galloping
+# octaves, a B major turn at the end of each round that throws it back in. Original composition for this game
+# (plan 22 · U5).
+title Battle! Rival (Unova)
+tempo 176
+meter 4/4
+lowhptempo 1.08
+reverb 0.16
+
+track lead square lowhp=sawlead vol=0.84 pan=0.05 rev=0.18
+  o5 e8 g8 b8 o6 e8 d8 o5 b8 g8 f+8 | o5 e2 b4 r4 | L o5 e4. f+8 g4 b4 | o6 c4 o5 g8 a8 g4 e4 |
+  o5 f+4. a8 d4 f+4 | o5 e2 b4 g4 | o5 b4. o6 d8 e4 g4 | o6 e4 d8 c8 o5 a4 o6 c4 |
+  o5 d+4 f+8 b8 f+4 d+4 | o5 e2 g2 |
+
+track pad strings unless=lowhp vol=0.26 pan=-0.25 rev=0.22
+  r1 | r1 | L o4 (e g b)1 | (c e g)1 |
+  (d f+ a)1 | (e g b)1 | (e g b)1 | (a c e)1 |
+  (b d+ f+)1 | (e g b)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 d8 o2 d8 | o2 e4 e4 b4 r4 | L [ o2 e8 o3 e8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 b8 o3 b8 ]4 | [ o2 e8 o3 e8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 b8 s8 b8 s8 b8 s8 b8 s8 | (b c)4 (b c)4 (b c)4 r4 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.4 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 b16 r16 b16 r16 r4 b16 r16 b16 r16 r4 | ]8

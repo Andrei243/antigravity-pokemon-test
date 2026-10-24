@@ -2,7 +2,7 @@
   // Aspertia City's Trainers' School (plan 22 · U2): Black 2's hall, our words. The Gym is through its north door. The
   // Gym Leader's visit is plan 22 · U4's
   "area": "aspertia_city_9",
-  "bgmTrack": "sinnoh/twinleaf",
+  "bgmTrack": "unova/aspertia",
   "people": {
     "0": {
       "name": "Girl",

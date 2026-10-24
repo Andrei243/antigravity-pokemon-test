@@ -1573,7 +1573,7 @@ public static class WorldMapBuilder
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
             or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage or Architecture.Islet
-            or Architecture.Glade or Architecture.Hayloft or Architecture.Treetop;
+            or Architecture.Glade or Architecture.Hayloft or Architecture.Treetop or Architecture.Bellfield;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go

@@ -225,6 +225,14 @@
     // over a green top and a pale skirt; Hugh, the friend from Aspertia, dark blue hair standing up and a red jacket
     "prof_juniper": { "hairColor": "#a8784a", "hair": "Bun", "top": "#4e9a6a", "accent": "#f4f4f6", "bottom": "#e6dcc2", "shoes": "#c8463c", "eyes": "#3e5a3a", "coat": true, "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
     "hugh": { "hairColor": "#2a3460", "hair": "Spiky", "top": "#c8383a", "accent": "#26262c", "bottom": "#2a2a36", "shoes": "#3a3a4a", "eyes": "#2a3a5a", "bushyBrows": true },
+    // The first chapter's cast of Aspertia (plan 22 · U5; our own takes, stand-ins until plan 22 · U12 designs them):
+    // Bianca, the professor's assistant, pale blonde hair under a wide green hat and an orange top over a white skirt;
+    // Cheren, the new Gym Leader, black hair swept back, glasses and a dark jacket over a white shirt; Alder, the old
+    // Champion, a mane of red hair, a beard and a warm orange poncho; Hugh's little sister, dark blue hair in bunches
+    "bianca": { "hairColor": "#f0dc8c", "hair": "Short", "hat": "WideHat", "hatColor": "#4e9a52", "hatBand": "#f4f4f6", "top": "#ee9a3c", "accent": "#f4f4f6", "bottom": "#f2f2ee", "shoes": "#d86a3a", "eyes": "#3a5a3a", "skirt": true, "lashes": true, "blush": true },
+    "cheren": { "hairColor": "#1e1e26", "hair": "Swept", "top": "#2c2e3c", "accent": "#f4f4f6", "bottom": "#2a2a34", "shoes": "#3a2c28", "eyes": "#2a2a3a", "glasses": "#2a2a34", "coat": true, "build": "Adult" },
+    "alder": { "hairColor": "#c8402e", "hair": "Spiky", "top": "#d8783a", "accent": "#f0e0b4", "bottom": "#5a4636", "shoes": "#4a3428", "eyes": "#3a2a24", "beard": true, "bushyBrows": true, "build": "Adult", "height": 1.08 },
+    "hugh_sister": { "hairColor": "#2a3460", "hair": "Bunches", "top": "#f2a6c0", "accent": "#f6f6fa", "bottom": "#e86a9a", "shoes": "#c84a6a", "eyes": "#2a3a5a", "skirt": true, "lashes": true, "blush": true, "height": 0.86 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },

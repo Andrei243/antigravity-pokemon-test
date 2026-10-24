@@ -2520,3 +2520,60 @@ label Boxed
 label Bye
   say "Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday."
   end
+
+
+# ------------------------------------------------------------------ Unova (plan 22 · U5)
+
+# What every game starts with in Unova, as Black 2's new game leaves its first chapter's people: Mom at home, Hugh and
+# his sister before their door, Bianca at the outlook and Alder on Route 19 and in Floccesy Town shown; Mom outside
+# the Pokémon Center, Cheren before the school, Bianca in the Pokémon Center and on Route 19, the ranch's owners and
+# Team Plasma's grunt, Route 20's three of the Virbank chapter, the school's door keeper and Benga hidden until their
+# scenes. The flags are the decompilation's, by value (docs/mechanics/rulings.md, "Unova's first chapter").
+# FLAG_UNOVA_STORY_BEGUN, a flag of ours, says it has run. Run with no screen after NewGame for every new game
+# (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame); a save from before Unova's story was written
+# runs it from UnovaCatchUp as it comes to one of the chapter's places. It may only set flags and variables, and ends
+# in return.
+script UnovaNewGame
+  setflag FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_BIANCA_CENTER
+  setflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  setflag FLAG_UNOVA_HIDE_RANCH_OWNERS
+  setflag FLAG_UNOVA_HIDE_RANCH_GRUNT
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  setflag FLAG_UNOVA_STORY_BEGUN
+  return
+
+
+# What Unova's first steps leave behind once they are played (plan 22 · U5), for a game that began in Unova before its
+# story was written, with a Pokémon and a few items already (plan 22 · U2): Mom's questions, the outlook and the
+# Pokédex, the Pokémon Center's tour, the Running Shoes and Bianca's lesson are counted as had, so nobody hands over a
+# second starter; Alder on Route 19, the ranch, Cheren's Gym and Route 20 are left to be played. It may only set
+# flags and variables, and ends in return.
+script UnovaOpeningDone
+  setvar VAR_UNOVA_HOUSE 1
+  setvar VAR_UNOVA_ASPERTIA 7
+  setvar VAR_UNOVA_OUTLOOK 1
+  setvar VAR_UNOVA_ROUTE_19 1
+  setflag FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_HUGHS_SISTER
+  setflag FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  setflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  setflag FLAG_UNOVA_HIDE_BIANCA_CENTER
+  setflag FLAG_HAS_POKEDEX
+  setflag FLAG_HAS_RUNNING_SHOES
+  return
+
+
+# Called by the arrival scripts of the first chapter's places: a save from before Unova's story was written is given
+# what a new game starts with, and one whose game began in Unova with a Pokémon is taken past the opening (above).
+# A Champion who crossed in has a team too, and plays the opening all the same (CROSSED_IN).
+script UnovaCatchUp
+  if not flag FLAG_UNOVA_STORY_BEGUN call UnovaNewGame
+  if var VAR_UNOVA_ASPERTIA != 0 return
+  if var CROSSED_IN == 1 return
+  if var PARTY_COUNT == 0 return
+  call UnovaOpeningDone
+  return

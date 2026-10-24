@@ -272,7 +272,13 @@ public enum Architecture
     /// <summary>Weathered boards under leaf-green gable roofs with shutters: the city of houses built in the treetops (Fortree, plan 21 · H6).</summary>
     Treetop,
     /// <summary>White stucco under sky-blue hip roofs with shutters and flower boxes: the flowering island city of the Space Center (Mossdeep, plan 21 · H8).</summary>
-    Starward
+    Starward,
+
+    // Unova (plan 22): each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>White stucco under slate-teal gable roofs with shutters: the town on the hill over the outlook (Aspertia, plan 22 · U5).</summary>
+    Hillside,
+    /// <summary>Boards under rust-orange gable roofs with a chimney and flower boxes: the quiet town under its bell tower (Floccesy, plan 22 · U5).</summary>
+    Bellfield
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

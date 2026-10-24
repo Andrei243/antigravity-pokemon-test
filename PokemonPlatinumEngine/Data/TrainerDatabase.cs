@@ -209,9 +209,15 @@ public static class TrainerDatabase
     /// <summary>The rival's trainer class: his data's name stands for the one the player gives him.</summary>
     public const string RivalClass = "Rival";
 
-    /// <summary>The rival's class, or one of FireRed's two of him ("Rival Early", "Rival Late"; plan 19 · K3).</summary>
+    /// <summary>
+    /// The rival's class, or one of FireRed's two of him ("Rival Early", "Rival Late"; plan 19 · K3), or Black 2's,
+    /// whose class the import names as the game does ("Pokémon Trainer Rival"; plan 22 · U5: Hugh).
+    /// </summary>
     public static bool IsRival(string trainerClass) =>
-        trainerClass == RivalClass || trainerClass.StartsWith(RivalClass + " ", StringComparison.Ordinal);
+        trainerClass == RivalClass || trainerClass.StartsWith(RivalClass + " ", StringComparison.Ordinal) || trainerClass == UnovaRivalClass;
+
+    /// <summary>Black 2's class of the rival as the import writes it (plan 22 · U5).</summary>
+    public const string UnovaRivalClass = "Pokémon Trainer Rival";
 
     /// <summary>
     /// Kanto's Champion, who is the rival (plan 19 · K7): FireRed's TRAINER_CHAMPION_FIRST_* and _REMATCH_* are of the

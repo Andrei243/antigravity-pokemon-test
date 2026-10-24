@@ -1,0 +1,258 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Are we going to help train this Trainer, sir?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Really? But they look really tough!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Exactly! This Trainer may be tough, but there's as much to learn from losing as from winning."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And haven't I always told you? What matters most is that you and your Pokémon enjoy yourselves!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So, {player}! Please be their opponent."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK! I'll show you what's cool about my Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine battle, both of you! Now, before the next one, let's see to your Pokémon, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Some battles are decided by type matchups. Let me show you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now that was a rousing battle! I could tell every one of the Pokémon was enjoying itself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, {player}? Types matter a great deal in battle. Water beats Fire, Fire beats Grass, Grass beats Water."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But listen! When a Pokémon uses a move of its own type, the move hits even harder. Remember that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's heal these hard-working Pokémon. {starter}! You did a great job for {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One more thing before you go. Take these!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give a Pokémon an Oran Berry to hold, and it'll eat it by itself when its HP runs low in battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now, the Gym Leader in Aspertia is a very strong Trainer. But don't worry. You'll do just fine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "After that, take on stronger Trainers, and the Gym Leader of every city. Grow together with your Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Meeting Pokémon and people you'd never have met otherwise. That's the best thing about travelling!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Alder": [
+    {
+      "en": [
+        "Alder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go and show Aspertia's Gym Leader what you and your Pokémon can do!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oho! You won a Gym Badge! That comes of understanding your Pokémon and drawing out their strength."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My dream is to train my Pokémon here, and become the strongest Trainer in Unova!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Boy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I want to go to lots of places and learn all about Pokémon. Then I'll get even stronger!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

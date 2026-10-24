@@ -1,0 +1,60 @@
+# The Aspertia Gym (plan 22 · U5), behind the Trainers' School. docs/scripts.md describes the language; the lines are
+# our own, on Black 2's beats (the decompilation's res/field/scripts/aspertia_city_gym.s, read for the order alone).
+#
+# Cheren, its new Leader (the room's person 0), battles once both his pupils are beaten (1, the youngster Pedro; 2,
+# the lass Serena); the Basic Badge is the region's first, `givebadge basic`, and he gives TM83 (FLAG_UNOVA_GOT_TM83),
+# which our data's table, Platinum's, fills with its own move. The guide by the door gives a bottle of Fresh Water
+# once (FLAG_UNOVA_GOT_FRESH_WATER). Black 2's TRAINER_LEADER_CHEREN is the Leader of the game's usual difficulty; his
+# _2 is the Challenge Mode's, plan 13's. The Badge also lets the hiker on Route 20 battle (VAR_UNOVA_ROUTE_20 1).
+
+
+script Cheren
+  face 0 player
+  speaker "Cheren"
+  if badge basic goto Won
+  if not defeated "unova_youngster_pedro" goto Pupils
+  if not defeated "unova_lass_serena" goto Pupils
+  scene "Cheren"
+  say "Welcome to the Aspertia Gym. I'm Cheren, its Leader. Well... I suppose I'm still a Leader in training."
+  say "This is your first Gym challenge, and it's my very first battle as a Gym Leader."
+  say "Let's both do our best!"
+  battle self as "unova_leader_cheren"
+  say "That battle made me really glad you were my first challenger."
+  say "Here is your first Gym Badge, the Basic Badge. It's an important first step. Wear it with pride!"
+  givebadge basic
+  text "{player} received the Basic Badge from Cheren!"
+  defeat "unova_youngster_pedro"
+  defeat "unova_lass_serena"
+  if var VAR_UNOVA_ROUTE_20 == 0 setvar VAR_UNOVA_ROUTE_20 1
+label Tm
+  say "Take this too. Use it however you think best."
+  give "TM83"
+  setflag FLAG_UNOVA_GOT_TM83
+  say "There are eight Gyms in Unova, and eight Badges. Where you go from here is up to you, {player}."
+  say "Don't worry about losing your way. You have your Pokémon beside you."
+  endscene
+  end
+label Pupils
+  say "We have a challenger! If you can beat my two pupils first, I'll be your opponent."
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM83 goto Tm
+  say "I hope you'll always remember the moment you received that Badge."
+  end
+
+
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_UNOVA_GOT_FRESH_WATER goto Advice
+  say "Hello! I'm Clyde, guide to every Trainer who takes on a Pokémon Gym. Thanks for taking this one on!"
+  say "Here, have this to mark the occasion."
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_FRESH_WATER
+label Advice
+  if badge basic goto Won
+  say "Gyms test what Trainers can do. Beat the Leader, and you'll have proved yourself a strong Trainer!"
+  say "If every Pokémon you have faints, you lose. So it helps to bring a few along!"
+  end
+label Won
+  say "I hope you'll always remember the moment you won that Badge!"
+  end

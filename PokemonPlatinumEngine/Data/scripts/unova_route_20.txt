@@ -1,0 +1,101 @@
+# Route 20 (plan 22 · U5). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_20.s, read for the order of the scenes alone).
+#
+# VAR_UNOVA_ROUTE_20, the route's count as Black 2 keeps it: 0 the hiker turns back anyone without a Badge; 1 the Basic
+# Badge won (aspertia_city_gym.txt, aspertia_city.txt), and he wants a battle; 2 the hiker beaten; 3 Cheren's advice
+# on the dark grass and his Pecha Berries, Hugh gone on ahead to Virbank City. (4 to 6 are the Virbank chapter's,
+# plan 22 · U5, part b.) The people: 0 the hiker Jerome, 21 Hugh (FLAG_UNOVA_HIDE_HUGH_ROUTE_20), 23 Cheren (FLAG_UNOVA_HIDE_CHEREN_ROUTE_20).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The way east without a Badge (trigger 1, on 0)
+script HikerBlocks
+  face 0 player
+  speaker "Hiker"
+  if badge basic goto Ready
+  say "Hold it! A kid without a single Gym Badge, heading on past here? Not on my watch!"
+  say "Battle the Trainers and Pokémon round here, then battle some more. Come back with a Badge!"
+  walk player left 1
+  end
+label Ready
+  setvar VAR_UNOVA_ROUTE_20 1
+  call HikerChallenge
+  end
+
+
+# The way east with the Basic Badge (trigger 2, on 1): the hiker tests the new Badge
+script HikerChallenge
+  face 0 player
+  speaker "Hiker"
+  say "Hey! That shiny thing is the Basic Badge! Don't let it go to your head. It's a rough world out there!"
+  say "Let me show you just how rough!"
+  battle 0 as "unova_hiker_jerome"
+  say "All right, I'm beaten! With Pokémon you can count on like that, even a kid can hold their own."
+  setvar VAR_UNOVA_ROUTE_20 2
+  end
+
+
+# Past the hiker (trigger 0, on 2): Cheren catches up with the player and Hugh at the dark grass, gives Pecha Berries
+# for Virbank's Gym, and goes back; Hugh decides to grow stronger than him, and goes on ahead.
+script CherensAdvice
+  scene "Cheren on Route 20"
+  speaker "Cheren"
+  say "{player}! Wait!"
+  clearflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  clearflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  place 21 160 650 down
+  place 23 161 650 down
+  show 21
+  show 23
+  move 23 down 8
+  walk 21 down 8
+  waitmoves
+  face player up
+  say "Come with me, you two."
+  face 23 player
+  say "See the darker grass here? Now and then two Pokémon jump out of it at once."
+  say "And the Pokémon that live in it can be quite rare. Keep your eyes open."
+  say "If you're going to challenge the next Gym, that's Virbank's. These might help."
+  give "Pecha Berry" 3
+  face 23 21
+  say "And some for you too, {rival}. Both of you, do your best! If you need anything, come and find me."
+  walk 23 up 8
+  hide 23
+  setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  speaker "{rival}"
+  face 21 player
+  say "Cheren really knows his stuff. And he's fought Team Plasma, too..."
+  say "That's it, I've decided! I'm going to get stronger than him!"
+  say "And you... do your best! Fill up that Pokédex, and watch my back. Got it?"
+  walk 21 right 2 down 8 fast
+  hide 21
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  setvar VAR_UNOVA_ROUTE_20 3
+  endscene
+  end
+
+
+script Hiker
+  speaker "Hiker"
+  if var VAR_UNOVA_ROUTE_20 >= 2 goto Beaten
+  say "The grass round here hides all sorts of Pokémon. Some of them even drop out of the trees!"
+  end
+label Beaten
+  say "You've got a good team there. Mind you look after them on the road to Virbank!"
+  end
+
+
+script Hugh
+  speaker "{rival}"
+  say "I have to get stronger than Team Plasma!"
+  end
+
+
+script Cheren
+  speaker "Cheren"
+  say "Two Pokémon from one patch of grass. Make sure your team is ready for it."
+  end

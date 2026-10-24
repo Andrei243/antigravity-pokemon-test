@@ -1,0 +1,62 @@
+{
+  "GateGift": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on, {player}! You can't go out there without... Oh? You've got a Pokémon with you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well then, have a going-away present. Don't be shy, take it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When your Pokémon get hurt, take it easy and stop in at a Pokémon Center."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on, {player}! Wild Pokémon live in the grass out there. Don't go without a Pokémon of your own!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beyond this gate is Route 19. Floccesy Town is a short walk down the hill."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

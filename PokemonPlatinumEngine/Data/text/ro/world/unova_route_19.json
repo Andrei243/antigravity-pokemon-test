@@ -18,6 +18,16 @@
         ]
       }
     },
+    "1": {
+      "name": {
+        "en": [
+          "Alder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "4": {
       "name": {
         "en": [
@@ -33,6 +43,16 @@
         ],
         "text": [
           "Merg pe ruta asta în fiecare zi. Unii Pokémon apar doar în anumite anotimpuri, să știi."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
         ]
       }
     }

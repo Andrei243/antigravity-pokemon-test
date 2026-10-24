@@ -8,13 +8,25 @@
         "text": [
           "Drumețul"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "21": {
+      "name": {
         "en": [
-          "The grass here hides all sorts of Pokémon. Some of them even drop from the trees!"
+          "{rival}"
         ],
         "text": [
-          "Iarba de aici ascunde tot felul de Pokémon. Unii cad chiar din copaci!"
+          ""
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
         ]
       }
     },

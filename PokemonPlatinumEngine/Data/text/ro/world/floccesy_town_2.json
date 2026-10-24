@@ -3,36 +3,26 @@
     "0": {
       "name": {
         "en": [
-          "Schoolgirl"
+          "Girl"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Școlărița"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "We came to ask the old Champion for advice. He told us to go and play with our Pokémon!"
-        ],
-        "text": [
-          "Am venit să-l întrebăm pe vechiul Campion de sfaturi. Ne-a spus să mergem să ne jucăm cu Pokémonii!"
         ]
       }
     },
     "1": {
       "name": {
         "en": [
-          "Schoolboy"
+          "Boy"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Școlarul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "He says the best training is just spending time together. Is that really it?"
-        ],
-        "text": [
-          "Zice că cel mai bun antrenament e doar să petreci timp împreună. Chiar așa să fie?"
         ]
       }
     },
@@ -43,14 +33,6 @@
         ],
         "text": [
           "Alder"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Ha! A young Trainer, eh? Get out there and see the world with your Pokémon. That's the best lesson."
-        ],
-        "text": [
-          "Ha! Un tânăr Antrenor, ei? Ieși în lume și vezi-o împreună cu Pokémonii tăi. Asta e cea mai bună lecție."
         ]
       }
     }

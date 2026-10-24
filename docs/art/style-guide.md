@@ -307,6 +307,8 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Fortree (Treetop) | weathered boards | gable, leaf green `84,138,70` | shutters: the city in the treetops, each house on a plank platform up a ladder and the platforms joined by walkways over the forest floor, which wanders under them; Route 119's house is Fortree's too (plan 21 · H6) |
 | Mossdeep (Starward) | white stucco | hip, sky blue `86,150,214` | shutters, flower boxes: the flowering island city of the Space Center under its clear skies and steady winds, its yards walled low (plan 21 · H8) |
 | One Island (Isle) | white stucco | hip, sea turquoise `46,150,160` | shutters: the warm port of the first Sevii Island, all sea light and sun-bleached walls (plan 19 · K7; the other Sevii towns take it until their own sessions) |
+| Aspertia (Hillside) | white stucco | gable, slate teal `70,104,122` | shutters: the town on the hill over the outlook, clean walls under cool roofs that sit low against the sky; its Trainers' School is Aspertia's too (plan 22 · U5) |
+| Floccesy (Bellfield) | boards | gable, rust orange `196,112,58` | a chimney, flower boxes: the quiet town under its bell tower, fenced in wood; its bell tower is Floccesy's too, and the ranch's farmhouse keeps Solaceon's Farm (plan 22 · U5) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):

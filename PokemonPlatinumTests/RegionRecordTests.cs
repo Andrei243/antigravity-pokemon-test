@@ -61,7 +61,7 @@ public class RegionRecordTests
     {
         // Plan 22 · U2: Black 2's places have a table for each season; no other region's file says so
         Assert.True(Of(RegionDatabase.Unova).HasSeasons);
-        Assert.False(Of(RegionDatabase.Unova).HasStory);
+        Assert.True(Of(RegionDatabase.Unova).HasStory);
         Assert.Equal(new[] { "Snivy", "Tepig", "Oshawott" }, Of(RegionDatabase.Unova).Starters);
         foreach (var region in RegionDatabase.All.Where(r => r.Id != RegionDatabase.Unova))
             Assert.False(region.HasSeasons, $"{region.Id} says it has seasons");

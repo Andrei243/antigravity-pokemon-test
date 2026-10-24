@@ -60,8 +60,8 @@ public class UnovaTests
         var home = BuiltMaps.Value[start.Map];
         Assert.True(home.IsIndoors);
         Assert.True(home.IsWalkable(start.X, start.Y));
-        // Mom is at the table, and sees to the team as a nurse would until Unova's story is written
-        Assert.Contains(home.NPCs, n => n.Name == "Mom" && n.IsHealingNurse);
+        // Mom is at the table (the room's own person 0, plan 22 · U5), and sees to the team as a nurse would
+        Assert.Contains(home.NPCs, n => n.Name == "Mom" && n.Key == "0" && n.IsHealingNurse);
 
         // A Champion who comes over steps out before the house
         var arrival = unova.ArrivalSpot!;
@@ -76,8 +76,8 @@ public class UnovaTests
             Assert.True(Overworld.IsWalkable(spawn.X, spawn.Y), $"spawn {spawn.Id} stands on a blocked tile");
             Assert.Equal(spawn.Room, Overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
         }
-        // The region has no story yet, its starters are Black 2's, and it alone changes with the seasons
-        Assert.False(unova.HasStory);
+        // The region's story is written (plan 22 · U5), its starters are Black 2's, and it alone changes with the seasons
+        Assert.True(unova.HasStory);
         Assert.True(unova.HasSeasons);
     }
 
@@ -221,9 +221,19 @@ public class UnovaTests
         }
         Assert.True(unknown.Count == 0, "the catalogue doesn't know " + string.Join(", ", unknown));
         Assert.Same(WorldModels.Unova, WorldModels.Catalogue("unova"));
-        // Every building is a stand-in until plan 22 · U5 gives its town a way of its own
-        Assert.All(WorldModels.Unova.Where(m => m.Role == ModelRole.Building), m => Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in"));
-        Assert.Equal(Architecture.Plaster, Overworld.ArchitectureAt(47, 762));
+        // Aspertia's and Floccesy's buildings are built in ways of their own since plan 22 · U5 (the Pokémon Center and
+        // the gate as every region's are); Virbank's, in view from Route 20's end, are stand-ins until its chapter
+        foreach (var m in WorldModels.Unova.Where(m => m.Role == ModelRole.Building))
+        {
+            if (m.Name.StartsWith("c12_", StringComparison.Ordinal) || m.Name.StartsWith("t06_", StringComparison.Ordinal)
+                || m.Name is "pc" or "gate" or "d22_farm")
+                Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
+            else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
+        }
+        Assert.Equal(Architecture.Hillside, WorldModels.Of("c12_house", "unova")!.Town);
+        Assert.Equal(Architecture.Bellfield, WorldModels.Of("t06_house", "unova")!.Town);
+        Assert.Equal(Architecture.Hillside, Overworld.ArchitectureAt(47, 762));
+        Assert.Equal(Architecture.Bellfield, Overworld.ArchitectureAt(110, 690));
         // Unova's names are its own: Sinnoh never looks in its table
         Assert.Null(WorldModels.Of("c12_house"));
     }

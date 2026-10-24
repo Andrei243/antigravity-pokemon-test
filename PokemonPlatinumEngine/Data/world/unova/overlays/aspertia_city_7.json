@@ -1,7 +1,7 @@
 {
   // The third house of Aspertia City, downstairs (plan 22 · U2): Black 2's room, our words
   "area": "aspertia_city_7",
-  "bgmTrack": "sinnoh/twinleaf",
+  "bgmTrack": "unova/aspertia",
   "people": {
     "0": {
       "name": "Boy",

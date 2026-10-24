@@ -1,0 +1,29 @@
+# The gate between Aspertia City and Route 19 (plan 22 · U5). The lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/aspertia_gate.s). Its guard stops whoever walks north through it the first time:
+# with no Pokémon he sends them back into town, and with one he gives them a Potion for the road
+# (VAR_UNOVA_GATE 1 once given).
+
+
+# The row across the gate's floor (the room's trigger 0, on 0)
+script GateGift
+  face 0 player
+  speaker "Guard"
+  if var PARTY_COUNT == 0 goto NoPokemon
+  scene "The guard's gift"
+  say "Hold on, {player}! You can't go out there without... Oh? You've got a Pokémon with you!"
+  say "Well then, have a going-away present. Don't be shy, take it!"
+  give "Potion"
+  say "When your Pokémon get hurt, take it easy and stop in at a Pokémon Center."
+  setvar VAR_UNOVA_GATE 1
+  endscene
+  end
+label NoPokemon
+  say "Hold on, {player}! Wild Pokémon live in the grass out there. Don't go without a Pokémon of your own!"
+  walk player down 1
+  end
+
+
+script Guard
+  speaker "Guard"
+  say "Beyond this gate is Route 19. Floccesy Town is a short walk down the hill."
+  end
