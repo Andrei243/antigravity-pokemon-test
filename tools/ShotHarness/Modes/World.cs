@@ -215,10 +215,38 @@ partial class Harness
                 queue.Enqueue(next);
             }
         }
-        if (!came.ContainsKey(to)) throw new InvalidOperationException($"No way on foot from {from} to {to}");
+        if (!came.ContainsKey(to))
+        {
+            // (said with whoever stands in the way of the way there would be without them, which is what has broken it before)
+            string inTheWay = from == to ? "" : string.Join(", ", PeopleInTheWay(map, from, to));
+            throw new InvalidOperationException($"No way on foot from {from} to {to}" + (inTheWay.Length > 0 ? $"; in the way: {inTheWay}" : "")
+                + $"; {came.Count} tiles reached, the nearest {came.Keys.MinBy(k => Math.Abs(k.Item1 - to.X) + Math.Abs(k.Item2 - to.Y))}");
+        }
         var path = new List<(int X, int Y)>();
         for (var at = to; at != from; at = came[at]) path.Add(at);
         path.Reverse();
         return path;
+    }
+
+    // Who stands on the shortest way between two tiles that only people block
+    static IEnumerable<string> PeopleInTheWay(Map map, (int X, int Y) from, (int X, int Y) to)
+    {
+        var came = new Dictionary<(int, int), (int, int)> { [from] = from };
+        var queue = new Queue<(int X, int Y)>();
+        queue.Enqueue(from);
+        while (queue.Count > 0 && !came.ContainsKey(to))
+        {
+            var (x, y) = queue.Dequeue();
+            foreach (var next in new[] { (x, y - 1), (x + 1, y), (x - 1, y), (x, y + 1) })
+            {
+                bool open = map.IsWalkable(next.Item1, next.Item2) || map.NPCs.At(next.Item1, next.Item2) != null && !map.IsSolid(next.Item1, next.Item2);
+                if (came.ContainsKey(next) || !(open || next == to)) continue;
+                came[next] = (x, y);
+                queue.Enqueue(next);
+            }
+        }
+        if (!came.ContainsKey(to)) yield break;
+        for (var at = to; at != from; at = came[at])
+            if (map.NPCs.At(at.Item1, at.Item2) is { } who) yield return $"{who.Key ?? who.Name} at {at}";
     }
 }

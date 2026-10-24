@@ -82,8 +82,13 @@ partial class Harness
         TalkTo("Blackthorn_MoveTutorHouse", "t30r0601_gsoldman1");
         ReadTo("Would you have me teach it"); Frames(10); Shot("jpb12_the_dragon_tamer");
         ReadTo("Choose the Pokémon"); Frames(10); Shot("jpb13_choose_the_pokemon");
-        Until(() => game.State != GameState.Overworld || engine.ScriptRunning, "the party screen", 300);
+        // (the line is read on to the team, where the Gible is chosen: waiting for a state other than the field's found
+        // the line itself, and the team was never opened)
+        box.Advance(); Frames(2);
+        Until(() => game.State == GameState.PartyMenu, "the party screen", 300);
         Frames(20); Shot("jpb14_the_team_screen");
+        game.PartyScreen.SelectedIndex = game.Party.Members.IndexOf(gible);
+        game.PartyScreen.Confirm(game.Party); Frames(3);
         ReadTo("learned Draco Meteor"); Frames(10); Shot("jpb15_draco_meteor_learned");
         ReadTo(null);
         Console.WriteLine($"  Gible: {string.Join(", ", gible.Moves.Select(m => m.Name))}; knows Draco Meteor {gible.Knows("Draco Meteor")}");

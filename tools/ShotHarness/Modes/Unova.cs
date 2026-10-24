@@ -61,15 +61,15 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
-        // The walk the plan asks for: from the player's door in Aspertia City through its gate and down Route 19 to
-        // Floccesy Town's Pokémon Center, tile by tile at running pace, every frame timed and held to a sixtieth of a
-        // second as the screen holds it
+        // The walk the plan asks for, from the north door of Aspertia City's gate (the gate is a room since plan 22 · U5, so a
+        // walk on the map of Unova starts past it) down Route 19 to Floccesy Town's Pokémon Center, tile by tile at running
+        // pace, every frame timed and held to a sixtieth of a second as the screen holds it
         if (filter.Length == 0 || Environment.GetEnvironmentVariable("SHOTS_TIMING") == "1")
         {
             var unova = MapDatabase.Get("Unova");
-            var path = WalkingPath(unova, (47, 762), (105, 694));
+            var path = WalkingPath(unova, (52, 702), (105, 694));
             var renderer = game.World;
-            At("Unova", 47, 762, Direction.Down); Frames(30);
+            At("Unova", 52, 702, Direction.Up); Frames(30);
             renderer.ResetStreamingStats();
             double total = 0, worst = 0;
             int frames = 0, mostChunks = 0;
@@ -91,7 +91,7 @@ partial class Harness
                 }
                 mostChunks = Math.Max(mostChunks, renderer.LoadedChunks);
             }
-            Console.WriteLine($"walk from the player's door in Aspertia City to Floccesy Town's Pokémon Center: {path.Count} tiles, {total / Math.Max(1, frames):F2} ms/frame, "
+            Console.WriteLine($"walk from Aspertia City's gate to Floccesy Town's Pokémon Center: {path.Count} tiles, {total / Math.Max(1, frames):F2} ms/frame, "
                 + $"worst frame {worst:F1} ms at ({worstAt.X}, {worstAt.Y}), at most {mostChunks} chunks loaded");
             Console.WriteLine($"  streaming: {renderer.Streaming}");
             foreach (var (label, x, y) in new[] { ("aspertia city", 48, 739), ("route 19", 73, 693), ("floccesy town", 113, 678), ("route 20", 157, 656) })

@@ -1310,6 +1310,8 @@ partial class Harness
         ReadTo("learned"); Frames(10); Shot("hs28a_explosion_learned");
         ReadTo(null);
         Lead(lead);
+        // (the Geodude was only lent for the lesson: left in, the team stood at seven)
+        game.Party.Members.RemoveAll(p => p.Species.Name == "Geodude");
         Frames(10); Shot("hs28b_pacifidlog_center_after");
         Shoal("the Explosion tutor");
     }
