@@ -5,7 +5,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hi, {player}!"
       ],
       "text": [
-        ""
+        "Bună, {player}!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Hey! Got yourself a Pokémon yet? There's nobody to battle round here. I'm bored out of my mind!"
       ],
       "text": [
-        ""
+        "Hei! Ai primit deja un Pokémon? Pe aici nu e nimeni cu care să te lupți. Mor de plictiseală!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "...Wait. A girl called Bianca is coming to give you one? Seriously?!"
       ],
       "text": [
-        ""
+        "...Stai. O fată pe nume Bianca vine să-ți dea unul? Pe bune?!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player}... when you get your Pokémon, be really, really kind to it. OK?"
       ],
       "text": [
-        ""
+        "{player}... când primești Pokémonul, fii foarte, foarte bun cu el. Bine?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "...Yeah."
       ],
       "text": [
-        ""
+        "...Da."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Right! There's something I have to do, and I can't do it alone. I need someone I can trust."
       ],
       "text": [
-        ""
+        "Gata! Am ceva de făcut și nu pot singur. Am nevoie de cineva în care să am încredere."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Besides my partner, I mean. Someone like you. So let's go find this Bianca!"
       ],
       "text": [
-        ""
+        "În afară de partenerul meu, adică. Cineva ca tine. Hai s-o găsim pe Bianca asta!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Head home, sis."
       ],
       "text": [
-        ""
+        "Du-te acasă, surioară."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "OK, big brother! Bye-bye, {player}!"
       ],
       "text": [
-        ""
+        "Bine, frățioare! Pa, {player}!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "I'll check the Pokémon Center and the school. You look round the rest of town. Whoever finds her first, shouts!"
       ],
       "text": [
-        ""
+        "Eu mă uit la Centrul Pokémon și la școală. Tu cercetează restul orașului. Cine o găsește primul, strigă!"
       ]
     }
   ],
@@ -135,7 +135,7 @@
         "{player} hasn't found Bianca yet. Better look round Aspertia before heading out of town."
       ],
       "text": [
-        ""
+        "{player} n-a găsit-o încă pe Bianca. Mai bine cercetează Aspertia înainte să pleci din oraș."
       ]
     }
   ],
@@ -145,7 +145,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -153,7 +153,7 @@
         "{player}! Hang on!"
       ],
       "text": [
-        ""
+        "{player}! Stai puțin!"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "She wasn't at the Center, or the school. Then it hit me. The outlook! It's the best-known spot in town."
       ],
       "text": [
-        ""
+        "N-a fost nici la Centru, nici la școală. Și atunci mi-am dat seama. Belvedere! E cel mai cunoscut loc din oraș."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Anyone new to Aspertia goes up there first. Go on, get up there and get your Pokémon! I'll wait here."
       ],
       "text": [
-        ""
+        "Oricine ajunge nou în Aspertia urcă mai întâi acolo. Hai, urcă și ia-ți Pokémonul! Eu aștept aici."
       ]
     }
   ],
@@ -179,7 +179,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Hey, wrong way! I'm telling you, she's up there. Go and get your Pokémon!"
       ],
       "text": [
-        ""
+        "Hei, nu pe-acolo! Îți spun, e sus. Du-te și ia-ți Pokémonul!"
       ]
     }
   ],
@@ -197,7 +197,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "It's sooo pretty up here. I could look at this view all day!"
       ],
       "text": [
-        ""
+        "E atât de frumos aici sus. Aș sta ore întregi să mă uit la priveliște!"
       ]
     },
     {
@@ -213,7 +213,7 @@
         "???"
       ],
       "text": [
-        ""
+        "???"
       ]
     },
     {
@@ -221,7 +221,7 @@
         "Wow... It's sooo pretty! You can see all the way to the sea from here."
       ],
       "text": [
-        ""
+        "Uau... E atât de frumos! Se vede marea până departe de aici."
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Oh! Hi there! Isn't this view something?"
       ],
       "text": [
-        ""
+        "Oh! Bună! Nu-i așa că priveliștea e ceva de speriat?"
       ]
     },
     {
@@ -237,7 +237,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -245,7 +245,7 @@
         "I'm Bianca! I help Professor Juniper with her Pokémon research."
       ],
       "text": [
-        ""
+        "Sunt Bianca! O ajut pe Profesoara Juniper în cercetările ei despre Pokémon."
       ]
     },
     {
@@ -253,7 +253,7 @@
         "I'm looking for someone, actually. Do you know a Trainer called {player}?"
       ],
       "text": [
-        ""
+        "De fapt, caut pe cineva. Știi cumva un Antrenor pe nume {player}?"
       ]
     },
     {
@@ -261,7 +261,7 @@
         "No? Hmm. They told me what to look for... Wait a sec. That's you, isn't it!"
       ],
       "text": [
-        ""
+        "Nu? Hmm. Mi-au spus ce să caut... Stai puțin. Tu ești, nu-i așa!"
       ]
     },
     {
@@ -269,7 +269,7 @@
         "You do? Oh! Wait, it's you! You're {player}!"
       ],
       "text": [
-        ""
+        "Știi? Oh! Stai, tu ești! Tu ești {player}!"
       ]
     },
     {
@@ -277,7 +277,7 @@
         "Wooow, you're exactly like they told me!"
       ],
       "text": [
-        ""
+        "Uaaau, ești exact cum mi-au spus!"
       ]
     },
     {
@@ -285,7 +285,7 @@
         "I've got a really important favour to ask. Will you help us complete the Pokédex?"
       ],
       "text": [
-        ""
+        "Am de cerut o favoare foarte importantă. M-ai ajuta să completăm Pokédexul?"
       ]
     },
     {
@@ -293,7 +293,7 @@
         "N-no way. I must have heard that wrong. This is really, really important, you know!"
       ],
       "text": [
-        ""
+        "N-nu se poate. Probabil am auzit greșit. E foarte, foarte important, să știi!"
       ]
     },
     {
@@ -301,7 +301,7 @@
         "Yay, thank you! Your help is going to move the professor's research along so much."
       ],
       "text": [
-        ""
+        "Ura, mulțumesc! Ajutorul tău va împinge cercetările profesoarei mult înainte."
       ]
     },
     {
@@ -309,7 +309,7 @@
         "And filling in the Pokédex is super fun, I promise! OK then... ta-daaa!"
       ],
       "text": [
-        ""
+        "Și să completezi Pokédexul e super distractiv, promit! Bine, atunci... ta-daaa!"
       ]
     },
     {
@@ -317,7 +317,7 @@
         "One of the Pokémon in here is going to be your partner. Go on, choose!"
       ],
       "text": [
-        ""
+        "Unul dintre Pokémonii de aici va fi partenerul tău. Hai, alege!"
       ]
     },
     {
@@ -325,7 +325,7 @@
         "{player} chose {starter}!"
       ],
       "text": [
-        ""
+        "{player} a ales {starter}!"
       ]
     },
     {
@@ -333,7 +333,7 @@
         "Oh, wow! You and {starter} look perfect together!"
       ],
       "text": [
-        ""
+        "Oh, uau! Tu și {starter} arătați perfect împreună!"
       ]
     },
     {
@@ -341,7 +341,7 @@
         "Now you've got a Pokémon, you get this too. Your very own Pokédex!"
       ],
       "text": [
-        ""
+        "Acum că ai un Pokémon, primești și asta. Pokédexul tău!"
       ]
     },
     {
@@ -349,7 +349,7 @@
         "{player} received the Pokédex!"
       ],
       "text": [
-        ""
+        "{player} a primit Pokédexul!"
       ]
     },
     {
@@ -357,7 +357,7 @@
         "It notes down every Pokémon you meet, all by itself. The professor wants you to see as many as you can!"
       ],
       "text": [
-        ""
+        "Notează singur fiecare Pokémon pe care îl întâlnești. Profesoara vrea să vezi cât mai mulți!"
       ]
     },
     {
@@ -365,7 +365,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -373,7 +373,7 @@
         "Heeey! How long were you going to leave me waiting down there?!"
       ],
       "text": [
-        ""
+        "Heeei! Cât aveai de gând să mă lași să aștept jos?!"
       ]
     },
     {
@@ -381,7 +381,7 @@
         "So that's your partner? Nice! Like my sister said: look after it really, really well. Got it?"
       ],
       "text": [
-        ""
+        "Deci ăsta e partenerul tău? Frumos! Cum a zis sora mea: ai grijă de el foarte, foarte bine. Am înțeles?"
       ]
     },
     {
@@ -389,7 +389,7 @@
         "Hey... what's that you're holding?"
       ],
       "text": [
-        ""
+        "Hei... ce ții acolo?"
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -405,7 +405,7 @@
         "It's a Pokédex!"
       ],
       "text": [
-        ""
+        "E un Pokédex!"
       ]
     },
     {
@@ -413,7 +413,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -421,7 +421,7 @@
         "Give me one too! Please! I want to get stronger, and if I know more about Pokémon, I'll be tougher. Right?"
       ],
       "text": [
-        ""
+        "Dă-mi și mie unul! Te rog! Vreau să devin mai puternic, iar dacă știu mai multe despre Pokémon, voi fi mai tare. Nu?"
       ]
     },
     {
@@ -429,7 +429,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -437,7 +437,7 @@
         "Um... sorry, who are you again?"
       ],
       "text": [
-        ""
+        "Hm... scuze, tu cine ești, de fapt?"
       ]
     },
     {
@@ -445,7 +445,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -453,7 +453,7 @@
         "I'm {rival}! I'm going to travel all over Unova with my partner. I'm looking for something really important."
       ],
       "text": [
-        ""
+        "Sunt {rival}! Voi călători prin toată Unova cu partenerul meu. Caut ceva foarte important."
       ]
     },
     {
@@ -461,7 +461,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -469,7 +469,7 @@
         "Well, OK! I don't totally get it, but a journey's always a good idea. And I just happen to have a spare!"
       ],
       "text": [
-        ""
+        "Ei bine, bine! Nu prea înțeleg, dar o călătorie e întotdeauna o idee bună. Și tocmai am unul de rezervă!"
       ]
     },
     {
@@ -477,7 +477,7 @@
         "Bianca gave {rival} a Pokédex."
       ],
       "text": [
-        ""
+        "Bianca i-a dat lui {rival} un Pokédex."
       ]
     },
     {
@@ -485,7 +485,7 @@
         "Ooh, I've had a brilliant idea! You've both got Pokémon now. Why don't you have a battle?"
       ],
       "text": [
-        ""
+        "Ooh, am o idee grozavă! Amândoi aveți Pokémon acum. De ce nu vă luptați?"
       ]
     },
     {
@@ -493,7 +493,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -501,7 +501,7 @@
         "Yeah! Let's see what kind of Trainer you are. I'll use the {rivalstarter} I raised from an Egg!"
       ],
       "text": [
-        ""
+        "Da! Să vedem ce fel de Antrenor ești. Îl voi folosi pe {rivalstarter}, crescut de mine din Ou!"
       ]
     },
     {
@@ -509,7 +509,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -517,7 +517,7 @@
         "I lost... Battling a Trainer is nothing like battling wild Pokémon!"
       ],
       "text": [
-        ""
+        "Am pierdut... A te lupta cu un Antrenor nu seamănă deloc cu a te lupta cu Pokémon sălbatici!"
       ]
     },
     {
@@ -525,7 +525,7 @@
         "Whatever. Now I know you're a Trainer I can count on, and that's what matters."
       ],
       "text": [
-        ""
+        "Las-o baltă. Acum știu că ești un Antrenor pe care mă pot baza, și asta contează."
       ]
     },
     {
@@ -533,7 +533,7 @@
         "Not bad at all for your first battle!"
       ],
       "text": [
-        ""
+        "Deloc rău pentru prima ta luptă!"
       ]
     },
     {
@@ -541,7 +541,7 @@
         "Right, I'm heading off first. Get stronger, OK?"
       ],
       "text": [
-        ""
+        "Bun, plec eu primul. Prinde putere, bine?"
       ]
     },
     {
@@ -549,7 +549,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -557,7 +557,7 @@
         "Both your Pokémon tried so hard! But your partner's still small, so battle a lot and help it grow."
       ],
       "text": [
-        ""
+        "Amândoi Pokémonii voștri s-au străduit mult! Dar partenerul tău e încă mic, așa că luptă mult și ajută-l să crească."
       ]
     },
     {
@@ -565,7 +565,7 @@
         "Now let's get it fixed up at the Pokémon Center. It's the best place ever for Pokémon tired out from battling!"
       ],
       "text": [
-        ""
+        "Acum să-i punem la punct la Centrul Pokémon. E cel mai bun loc pentru Pokémonii obosiți de lupte!"
       ]
     }
   ],
@@ -575,7 +575,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -583,7 +583,7 @@
         "Oh! You must be Bianca. Nice to meet you! And {player} has chosen {starter}. Don't they look good together?"
       ],
       "text": [
-        ""
+        "Oh! Tu trebuie să fii Bianca. Încântată! Iar {player} l-a ales pe {starter}. Nu arată bine împreună?"
       ]
     },
     {
@@ -591,7 +591,7 @@
         "Oh, I nearly forgot! Here, take these. They're Running Shoes!"
       ],
       "text": [
-        ""
+        "Oh, era să uit! Ia-le pe astea. Sunt Pantofi de Alergare!"
       ]
     },
     {
@@ -599,7 +599,7 @@
         "{player} received a pair of Running Shoes!"
       ],
       "text": [
-        ""
+        "{player} a primit o pereche de Pantofi de Alergare!"
       ]
     },
     {
@@ -607,7 +607,7 @@
         "A perfect fit! Hold the run button down and you'll go faster than ever. Off you go, run to your heart's content!"
       ],
       "text": [
-        ""
+        "Perfect pe măsură! Ține apăsat butonul de alergare și vei merge mai repede ca oricând. Du-te, aleargă cât îți place!"
       ]
     },
     {
@@ -615,7 +615,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -623,7 +623,7 @@
         "Um... and these are from me!"
       ],
       "text": [
-        ""
+        "Hm... și astea sunt de la mine!"
       ]
     },
     {
@@ -631,7 +631,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -639,7 +639,7 @@
         "Huh? Why are there two Town Maps?"
       ],
       "text": [
-        ""
+        "Hă? De ce sunt două Hărți ale Orașelor?"
       ]
     },
     {
@@ -647,7 +647,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -655,7 +655,7 @@
         "The other one's for my big brother. He ran off without one! Will you give it to him, {player}?"
       ],
       "text": [
-        ""
+        "Cealaltă e pentru fratele meu. A fugit fără ea! I-o dai tu, {player}?"
       ]
     },
     {
@@ -663,7 +663,7 @@
         "{player} put {rival}'s Town Map away to give him later."
       ],
       "text": [
-        ""
+        "{player} a pus deoparte Harta Orașelor a lui {rival} ca să i-o dea mai târziu."
       ]
     },
     {
@@ -671,7 +671,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -679,7 +679,7 @@
         "What a lovely idea. Even when there's only one road down to the sea, a Town Map is good to have."
       ],
       "text": [
-        ""
+        "Ce idee frumoasă. Chiar dacă e un singur drum până la mare, o Hartă a Orașelor e bine de avut."
       ]
     },
     {
@@ -687,7 +687,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -695,7 +695,7 @@
         "Aww, you guys! Just watching this makes me happy!"
       ],
       "text": [
-        ""
+        "Aww, voi doi! Doar uitându-mă la voi mă simt fericită!"
       ]
     },
     {
@@ -703,7 +703,7 @@
         "OK, next stop: Route 19! I'll show you how to catch a Pokémon. Come find me past the gate!"
       ],
       "text": [
-        ""
+        "Bine, următoarea oprire: Ruta 19! Vă arăt cum se prinde un Pokémon. Veniți la mine dincolo de poartă!"
       ]
     },
     {
@@ -711,7 +711,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -719,7 +719,7 @@
         "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
       ],
       "text": [
-        ""
+        "Drum bun! Du-te și vezi cât mai mulți Pokémon și oameni, cu ochii tăi."
       ]
     }
   ],
@@ -729,7 +729,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -737,7 +737,7 @@
         "Heeey!"
       ],
       "text": [
-        ""
+        "Heeei!"
       ]
     },
     {
@@ -745,7 +745,7 @@
         "How did it go with the Gym Leader? Oh! Is that the Basic Badge? Amazing!"
       ],
       "text": [
-        ""
+        "Cum a fost cu Liderul de Arenă? Oh! Aia e Insigna Bazică? Minunat!"
       ]
     },
     {
@@ -753,7 +753,7 @@
         "You only just set out, and you've already won a Badge! Here, take this to celebrate."
       ],
       "text": [
-        ""
+        "Abia ai pornit și ai câștigat deja o Insignă! Ia asta ca să sărbătorești."
       ]
     },
     {
@@ -761,7 +761,7 @@
         "It holds Return. The closer a Pokémon is to its Trainer, the harder that move hits!"
       ],
       "text": [
-        ""
+        "Conține Return. Cu cât un Pokémon e mai apropiat de Antrenorul lui, cu atât mișcarea lovește mai tare!"
       ]
     },
     {
@@ -769,7 +769,7 @@
         "Still, Cheren..."
       ],
       "text": [
-        ""
+        "Totuși, Cheren..."
       ]
     },
     {
@@ -777,7 +777,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -785,7 +785,7 @@
         "Bianca! It's been two years, hasn't it?"
       ],
       "text": [
-        ""
+        "Bianca! Au trecut doi ani, nu?"
       ]
     },
     {
@@ -793,7 +793,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -801,7 +801,7 @@
         "Cheren! Wow, look at you. A real Gym Leader!"
       ],
       "text": [
-        ""
+        "Cheren! Uau, uită-te la tine. Un adevărat Lider de Arenă!"
       ]
     },
     {
@@ -809,7 +809,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -817,7 +817,7 @@
         "{player}, Bianca and I set out on our own journeys from Nuvema Town, far to the east of here."
       ],
       "text": [
-        ""
+        "{player}, eu și Bianca ne-am început călătoriile din Orășelul Nuvema, departe la est de aici."
       ]
     },
     {
@@ -825,7 +825,7 @@
         "If you ever want to talk about types or Abilities, ask me. I'm a teacher now, after all."
       ],
       "text": [
-        ""
+        "Dacă vrei vreodată să vorbim despre tipuri sau Abilități, întreabă-mă. Până la urmă, acum sunt profesor."
       ]
     },
     {
@@ -833,7 +833,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -841,7 +841,7 @@
         "Hey! You there!"
       ],
       "text": [
-        ""
+        "Hei! Tu de acolo!"
       ]
     },
     {
@@ -849,7 +849,7 @@
         "Are you the Gym Leader? One, two, three, let's battle!"
       ],
       "text": [
-        ""
+        "Ești Liderul de Arenă? Unu, doi, trei, să ne luptăm!"
       ]
     },
     {
@@ -857,7 +857,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -865,7 +865,7 @@
         "You look like a tough Trainer. Very well. Come into my Gym."
       ],
       "text": [
-        ""
+        "Pari un Antrenor puternic. Foarte bine. Intră în Arena mea."
       ]
     },
     {
@@ -873,7 +873,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -881,7 +881,7 @@
         "That's it? What kind of answer is that?! I'm taking you down!"
       ],
       "text": [
-        ""
+        "Asta e tot? Ce fel de răspuns e ăsta?! Te doboară!"
       ]
     },
     {
@@ -889,7 +889,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -897,7 +897,7 @@
         "Being a Gym Leader is even harder than I thought..."
       ],
       "text": [
-        ""
+        "A fi Lider de Arenă e și mai greu decât credeam..."
       ]
     },
     {
@@ -905,7 +905,7 @@
         "Anyway! The next Gym is in Virbank City, east along Route 20 past Floccesy Town. Good luck, {player}!"
       ],
       "text": [
-        ""
+        "Oricum! Următoarea Arenă e în Orașul Virbank, spre est pe Ruta 20, dincolo de Orășelul Floccesy. Succes, {player}!"
       ]
     }
   ],
@@ -915,7 +915,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -923,7 +923,7 @@
         "Bianca, Bianca... where could she be?"
       ],
       "text": [
-        ""
+        "Bianca, Bianca... unde o fi?"
       ]
     },
     {
@@ -931,7 +931,7 @@
         "She's up at the outlook, I'm sure of it. Go on!"
       ],
       "text": [
-        ""
+        "E sus la belvedere, sunt sigur. Du-te!"
       ]
     }
   ],
@@ -941,7 +941,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -949,7 +949,7 @@
         "Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes."
       ],
       "text": [
-        ""
+        "Drum bun! Du-te și vezi cât mai mulți Pokémon și oameni, cu ochii tăi."
       ]
     }
   ],
@@ -959,7 +959,7 @@
         "{rival}'s Sister"
       ],
       "text": [
-        ""
+        "Sora lui {rival}"
       ]
     },
     {
@@ -967,7 +967,7 @@
         "Be good friends with your Pokémon, OK?"
       ],
       "text": [
-        ""
+        "Fii prieten bun cu Pokémonii tăi, bine?"
       ]
     }
   ],
@@ -977,7 +977,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -985,7 +985,7 @@
         "A Trainer who knows why they battle grows faster. Think about what you want from your journey."
       ],
       "text": [
-        ""
+        "Un Antrenor care știe de ce se luptă crește mai repede. Gândește-te ce vrei de la călătoria ta."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Hiker"
       ],
       "text": [
-        ""
+        "Drumețul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Do you know Seedot? You hardly ever see one in Sootopolis. I love big Seedot. The bigger the better!"
       ],
       "text": [
-        ""
+        "Știi Seedot? Aproape că nu vezi niciunul în Sootopolis. Ador Seedoții mari. Cu cât mai mari, cu atât mai bine!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "My little brother says Lotad are bigger. Silly! Seedot are bigger, everyone knows that."
       ],
       "text": [
-        ""
+        "Fratele meu mai mic spune că Lotad sunt mai mari. Prostii! Seedot sunt mai mari, știe toată lumea."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Huh? You have a Seedot with you? P-please, show me!"
       ],
       "text": [
-        ""
+        "Hă? Ai un Seedot cu tine? T-te rog, arată-mi-l!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{size}! Wow, that's a big one! It might even beat the Lotad my brother saw!"
       ],
       "text": [
-        ""
+        "{size}! Uau, ăsta e mare! Poate chiar îl bate pe Lotadul văzut de fratele meu!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Thanks for showing me. Here's my thanks!"
       ],
       "text": [
-        ""
+        "Mulțumesc că mi l-ai arătat. Ține, mulțumirea mea!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "The biggest Seedot ever! Bigger than any Lotad!"
       ],
       "text": [
-        ""
+        "Cel mai mare Seedot din toate! Mai mare decât orice Lotad!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{size}, is it? Hmm... I've seen a bigger Seedot than that."
       ],
       "text": [
-        ""
+        "{size}, zici? Hmm... Am văzut un Seedot mai mare decât ăsta."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Well, this is something... But it isn't a Seedot!"
       ],
       "text": [
-        ""
+        "Păi, e ceva... Dar nu e un Seedot!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "No big Seedot? That's a shame. If you find a big one, come and show me."
       ],
       "text": [
-        ""
+        "Niciun Seedot mare? Păcat. Dacă găsești unul mare, vino să mi-l arăți."
       ]
     }
   ],
@@ -87,7 +87,7 @@
         "Fisherman"
       ],
       "text": [
-        ""
+        "Pescarul"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Do you know Lotad? They're rare in Sootopolis. I love big Lotad, I mean really love them!"
       ],
       "text": [
-        ""
+        "Știi Lotad? Sunt rari în Sootopolis. Ador Lotadii mari, chiar îi ador!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "My big brother says Seedot are bigger. Wrong! Everybody knows Lotad are way bigger."
       ],
       "text": [
-        ""
+        "Fratele meu mai mare spune că Seedot sunt mai mari. Greșit! Toată lumea știe că Lotad sunt cu mult mai mari."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Huh? Have you got a Lotad? P-please show me!"
       ],
       "text": [
-        ""
+        "Hă? Ai un Lotad? T-te rog, arată-mi-l!"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "{size}! Wow, that is big! It might be bigger than the huge Seedot my brother saw!"
       ],
       "text": [
-        ""
+        "{size}! Uau, ăsta chiar e mare! Poate e mai mare decât Seedotul uriaș văzut de fratele meu!"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Thanks for showing me! Here's my thanks!"
       ],
       "text": [
-        ""
+        "Mulțumesc că mi l-ai arătat! Ține, mulțumirea mea!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "The biggest Lotad ever! Bigger than any Seedot!"
       ],
       "text": [
-        ""
+        "Cel mai mare Lotad din toate! Mai mare decât orice Seedot!"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "{size}? Hmm... I've seen a bigger Lotad than this one."
       ],
       "text": [
-        ""
+        "{size}? Hmm... Am văzut un Lotad mai mare decât ăsta."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Well, isn't that something! But it's not a Lotad!"
       ],
       "text": [
-        ""
+        "Păi, nu-i ceva! Dar nu e un Lotad!"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "No big Lotad? How disappointing... If you get a big one, come and show me!"
       ],
       "text": [
-        ""
+        "Niciun Lotad mare? Ce dezamăgire... Dacă prinzi unul mare, vino să mi-l arăți!"
       ]
     }
   ]

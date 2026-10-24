@@ -6,7 +6,7 @@
           "Isaiah"
         ],
         "text": [
-          ""
+          "Isaiah"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Triathlete Isaiah: I swim round this reef a hundred times a day. You're my hundred-and-first lap!"
         ],
         "text": [
-          ""
+          "Triatlonist Isaiah: Înot în jurul recifului ăstuia de o sută de ori pe zi. Tu ești tura numărul o sută unu!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Triathlete Isaiah: That lap was slower than all the others."
         ],
         "text": [
-          ""
+          "Triatlonist Isaiah: Tura aceea a fost mai lentă decât toate celelalte."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Katelyn"
         ],
         "text": [
-          ""
+          "Katelyn"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Triathlete Katelyn: Out here the only thing to beat is the sea. Or you!"
         ],
         "text": [
-          ""
+          "Triatlonistă Katelyn: Aici afară, singurul lucru de învins e marea. Sau tu!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Triathlete Katelyn: The sea won't beat me like that."
         ],
         "text": [
-          ""
+          "Triatlonistă Katelyn: Marea nu mă va învinge așa."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Steven"
         ],
         "text": [
-          ""
+          "Steven"
         ]
       },
       "dialog": {
@@ -66,7 +66,7 @@
           "Steven: Sootopolis may have the answer to all this."
         ],
         "text": [
-          ""
+          "Steven: Poate Sootopolis are răspunsul la toate astea."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Archie"
         ],
         "text": [
-          ""
+          "Archie"
         ]
       },
       "dialog": {
@@ -84,7 +84,7 @@
           "Archie: What have I done...?"
         ],
         "text": [
-          ""
+          "Archie: Ce am făcut...?"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Maxie"
         ],
         "text": [
-          ""
+          "Maxie"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "Maxie: This is no time to stand about."
         ],
         "text": [
-          ""
+          "Maxie: Nu e momentul să stăm degeaba."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Wayne"
         ],
         "text": [
-          ""
+          "Wayne"
         ]
       },
       "before": {
@@ -120,7 +120,7 @@
           "Fisherman Wayne: The reef keeps the big fish in. They're mine, and so's this battle!"
         ],
         "text": [
-          ""
+          "Pescar Wayne: Recifele țin peștii mari înăuntru. Sunt ai mei, la fel și lupta asta!"
         ]
       },
       "after": {
@@ -128,7 +128,7 @@
           "Fisherman Wayne: The fish got away and so did the win."
         ],
         "text": [
-          ""
+          "Pescar Wayne: Peștele a scăpat și victoria la fel."
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Ruben"
         ],
         "text": [
-          ""
+          "Ruben"
         ]
       },
       "before": {
@@ -146,7 +146,7 @@
           "Cooltrainer Ruben: A trainer who's come this far out to sea must be worth battling."
         ],
         "text": [
-          ""
+          "Antrenor As Ruben: Un antrenor care a ajuns atât de departe pe mare merită o luptă."
         ]
       },
       "after": {
@@ -154,7 +154,7 @@
           "Cooltrainer Ruben: Worth it, and then some."
         ],
         "text": [
-          ""
+          "Antrenor As Ruben: Merită, și încă cum."
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Alexa"
         ],
         "text": [
-          ""
+          "Alexa"
         ]
       },
       "before": {
@@ -172,7 +172,7 @@
           "Cooltrainer Alexa: Ever Grande City lies east of here. Are you strong enough for its road?"
         ],
         "text": [
-          ""
+          "Antrenoare As Alexa: Orașul Ever Grande e la est de aici. Ai destulă putere pentru drumul lui?"
         ]
       },
       "after": {
@@ -180,7 +180,7 @@
           "Cooltrainer Alexa: You might just be."
         ],
         "text": [
-          ""
+          "Antrenoare As Alexa: Se pare că da."
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Carlee"
         ],
         "text": [
-          ""
+          "Carlee"
         ]
       },
       "before": {
@@ -198,7 +198,7 @@
           "Swimmer Carlee: The water over the reef is so warm. Stay and battle a while!"
         ],
         "text": [
-          ""
+          "Înotătoare Carlee: Apa de deasupra recifului e atât de caldă. Rămâi și luptă-te puțin!"
         ]
       },
       "after": {
@@ -206,7 +206,7 @@
           "Swimmer Carlee: I'm cold all of a sudden."
         ],
         "text": [
-          ""
+          "Înotătoare Carlee: Mi-e frig brusc."
         ]
       }
     },
@@ -216,7 +216,7 @@
           "Harrison"
         ],
         "text": [
-          ""
+          "Harrison"
         ]
       },
       "before": {
@@ -224,7 +224,7 @@
           "Swimmer Harrison: I dive down to the reef to look at the fish. Then I come up to battle!"
         ],
         "text": [
-          ""
+          "Înotător Harrison: Mă scufund la recif să mă uit la pești. Apoi ies la suprafață să lupt!"
         ]
       },
       "after": {
@@ -232,7 +232,7 @@
           "Swimmer Harrison: Back down to the fish, then."
         ],
         "text": [
-          ""
+          "Înotător Harrison: Înapoi la pești, atunci."
         ]
       }
     }

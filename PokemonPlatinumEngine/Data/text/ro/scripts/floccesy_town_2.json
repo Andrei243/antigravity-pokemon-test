@@ -5,7 +5,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh! Are we going to help train this Trainer, sir?"
       ],
       "text": [
-        ""
+        "Oh! Îl ajutăm să se antreneze pe acest Antrenor, domnule?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Really? But they look really tough!"
       ],
       "text": [
-        ""
+        "Serios? Dar par foarte puternici!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Exactly! This Trainer may be tough, but there's as much to learn from losing as from winning."
       ],
       "text": [
-        ""
+        "Exact! Acest Antrenor poate fi puternic, dar se învață la fel de mult din înfrângere ca din victorie."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "And haven't I always told you? What matters most is that you and your Pokémon enjoy yourselves!"
       ],
       "text": [
-        ""
+        "Și nu ți-am spus mereu? Cel mai important e ca tu și Pokémonii tăi să vă distrați!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "So, {player}! Please be their opponent."
       ],
       "text": [
-        ""
+        "Deci, {player}! Fii adversarul lor, te rog."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "OK! I'll show you what's cool about my Pokémon!"
       ],
       "text": [
-        ""
+        "Bine! Vă arăt ce e grozav la Pokémonii mei!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "A fine battle, both of you! Now, before the next one, let's see to your Pokémon, {player}."
       ],
       "text": [
-        ""
+        "O luptă frumoasă, amândoi! Acum, înainte de următoarea, să-i îngrijim Pokémonii, {player}."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Some battles are decided by type matchups. Let me show you!"
       ],
       "text": [
-        ""
+        "Unele lupte se hotărăsc prin avantajele de tip. Lasă-mă să-ți arăt!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Now that was a rousing battle! I could tell every one of the Pokémon was enjoying itself."
       ],
       "text": [
-        ""
+        "Asta a fost o luptă înflăcărată! Am văzut că fiecare Pokémon se bucura."
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Well, {player}? Types matter a great deal in battle. Water beats Fire, Fire beats Grass, Grass beats Water."
       ],
       "text": [
-        ""
+        "Ei bine, {player}? Tipurile contează foarte mult în luptă. Apa bate Focul, Focul bate Iarba, Iarba bate Apa."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "But listen! When a Pokémon uses a move of its own type, the move hits even harder. Remember that!"
       ],
       "text": [
-        ""
+        "Dar ascultă! Când un Pokémon folosește o mișcare de propriul tip, mișcarea lovește și mai tare. Ține minte!"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "Let's heal these hard-working Pokémon. {starter}! You did a great job for {player}!"
       ],
       "text": [
-        ""
+        "Să vindecăm acești Pokémon harnici. {starter}! Ai făcut o treabă grozavă pentru {player}!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "One more thing before you go. Take these!"
       ],
       "text": [
-        ""
+        "Încă ceva înainte să pleci. Ia-le pe astea!"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Give a Pokémon an Oran Berry to hold, and it'll eat it by itself when its HP runs low in battle."
       ],
       "text": [
-        ""
+        "Dă unui Pokémon o Boabă Oran în mână și o va mânca singur când HP-ul îi scade în luptă."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Now, the Gym Leader in Aspertia is a very strong Trainer. But don't worry. You'll do just fine!"
       ],
       "text": [
-        ""
+        "Acum, Liderul Arenei din Aspertia e un Antrenor foarte puternic. Dar nu-ți face griji. Te vei descurca bine!"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "After that, take on stronger Trainers, and the Gym Leader of every city. Grow together with your Pokémon!"
       ],
       "text": [
-        ""
+        "După aceea, înfruntă Antrenori mai puternici și Liderul fiecărui oraș. Crește alături de Pokémonii tăi!"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Meeting Pokémon and people you'd never have met otherwise. That's the best thing about travelling!"
       ],
       "text": [
-        ""
+        "Să întâlnești Pokémon și oameni pe care altfel nu i-ai fi cunoscut. Asta e cel mai frumos la călătorii!"
       ]
     }
   ],
@@ -199,7 +199,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Go and show Aspertia's Gym Leader what you and your Pokémon can do!"
       ],
       "text": [
-        ""
+        "Du-te și arată-i Liderului Arenei din Aspertia ce poți tu și Pokémonii tăi!"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "Oho! You won a Gym Badge! That comes of understanding your Pokémon and drawing out their strength."
       ],
       "text": [
-        ""
+        "Oho! Ai câștigat o Insignă de Arenă! Asta vine din înțelegerea Pokémonilor tăi și din scoaterea la iveală a forței lor."
       ]
     }
   ],
@@ -225,7 +225,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "My dream is to train my Pokémon here, and become the strongest Trainer in Unova!"
       ],
       "text": [
-        ""
+        "Visul meu e să-mi antrenez Pokémonii aici și să devin cel mai puternic Antrenor din Unova!"
       ]
     }
   ],
@@ -243,7 +243,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -251,7 +251,7 @@
         "I want to go to lots of places and learn all about Pokémon. Then I'll get even stronger!"
       ],
       "text": [
-        ""
+        "Vreau să merg în multe locuri și să învăț totul despre Pokémon. Apoi voi deveni și mai puternic!"
       ]
     }
   ]

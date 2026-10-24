@@ -6,7 +6,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Team Aqua Grunt: Who let a kid in here? Was it you, that grunt by the entrance? No, he lost too..."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Cine a lăsat un copil să intre aici? Tu ai fost, grunt-ul de lângă intrare? Nu, și el a pierdut..."
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Team Aqua Grunt: Nobody let you in. You just came."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Nimeni nu te-a lăsat să intri. Ai venit și gata."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Aqua Grunt: Don't you know where you are? This is the bottom of the sea! Go home!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Nu știi unde ești? Suntem pe fundul mării! Mergi acasă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Aqua Grunt: You're at home anywhere, it seems."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Ești ca acasă oriunde, pare-se."
         ]
       }
     }

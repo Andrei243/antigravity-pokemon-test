@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Mom"
         ],
         "text": [
-          ""
+          "Mama"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "{rival}'s Sister"
         ],
         "text": [
-          ""
+          "Sora lui {rival}"
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Cheren"
         ],
         "text": [
-          ""
+          "Cheren"
         ]
       }
     },
