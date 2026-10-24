@@ -84,6 +84,9 @@ public sealed partial class GameFlow
     /// <summary>The National Park's Bug-Catching Contest, while one is on (plan 15 · E5; saved).</summary>
     public BugContest BugContest { get; } = new();
 
+    /// <summary>The Pokéathlon's Athlete Points and records (plan 15 · E6; saved).</summary>
+    public AthlonRecords Athlon { get; set; } = new();
+
     /// <summary>The Repel's steps and the flute played here (plan 06 · R11); the Repel's steps are saved.</summary>
     public EncounterAids EncounterAids { get; } = new();
 

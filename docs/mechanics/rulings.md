@@ -4700,3 +4700,49 @@ came first, so the judging is HeartGold's and the decision's alternative is what
 - **The party menu** lists a strip of the granted moves that nobody on the team knows, under the cards; choosing one hands the game the move with place -1 (`PartyScreen.HelperUser`), and the game checks it where the player stands (`FieldMoveRules.Check`) exactly as it checks a team member's. The script that runs says that a wild Pokémon lent a hand (`usemove`) and the cut-in shows the helper.
 - **Fly** keeps its flier on the map screen as a `Pokemon` (`TownMapScreen.Flier`), the team's member or the helper, and `common.UseFly` is started with it. Where Fly may go is the Fly screen's own business (plan 18 · W9).
 - **The Pokétch's Hidden Moves app** (`PoketchApp.HiddenMoves`, last in the enum) shows while the row is on and is refused by `Poketch.Register`, so no save holds it and nobody gives it. It lists the granted moves.
+
+## The Pokéathlon (2026-10-24, plan 15 · E6)
+
+HeartGold's venue, kept by the user on 2026-10-12. pret/pokeheartgold has the Pokéathlon's save (`PokeathlonSave`,
+`include/pokeathlon/pokeathlon_save.h`) in C but its events still in assembly (overlay 96), so the events' numbers are
+our own on HeartGold's shapes, and the stats are plan 15's decision 6 (our own formula, no table from the games).
+
+- **The stats** (`AthleteStats.Of`): Speed, Power, Skill, Stamina and Jump, one to five each, from a species' (or its
+  form's) data. Speed is its base Speed in bands at 45, 65, 85 and 105; Power (twice its stronger attacking stat and
+  once the other, over three) at 55, 75, 95 and 115; Stamina (HP and both defences, over three) at 55, 70, 85 and 100;
+  Skill (Special Attack, Special Defence and Speed, over three) at 50, 65, 80 and 95, one more for a Humanoid or Arms
+  shape and one less for a Ball, Fish, Blob, Squiggle or Heads; Jump starts at 3, one more under 10 kg, one less from
+  100 kg and again from 300 kg, one less at 3 m or more, one more for a flier (Flying type, wings, Levitate), one less
+  for a Fish, Squiggle or Blob that doesn't fly, one more for fast (base Speed 90 or more) legs. *Cut down*: HeartGold's
+  stats have a range each that Aprijuice moves the Pokémon within; ours are one number, and Aprijuice waits for plan 20's
+  Apricorns.
+- **A course**: the player's three (no Egg; the team needs three that may go in) against three rival teams drawn on the
+  course's own generator: a name each of eight of ours, three different species of Johto's Pokédex (no legendary or
+  mythical Pokémon) and a knack between 0.45 and 0.85 that says how well they play. Three events, thirty frames a
+  second as the original's, each a pure function of its seed (drawn from the course's generator as it begins) and the
+  player's presses. The points earned are the player's total; the most a save holds is HeartGold's 99,999. *Stand-in*:
+  the Practice Course of the three events built so far is the only course until plan 15 · E8 brings HeartGold's five.
+- **Hurdle Dash** (Speed): each of the three runs a leg of 1,200 units over seven hurdles 150 apart; a runner gathers
+  speed at 0.1 + 0.04 × Stamina a frame to 3 + 0.6 × Speed, a jump keeps it up 10 + 3 × Jump frames, and a hurdle met
+  on the ground stops it dead for 24 − 3 × Skill frames. A minute at most; a team through scores a point for every
+  twelve frames left of the minute, one still running 30 × the share of the way it came.
+- **Block Smash** (Power): forty seconds at a stack of blocks of 40 each. A press hits once the last swing is over
+  (8 − Speed frames) for 2 × Power, one more if pressed within Skill frames of the swing's end; every hit tires the
+  hitter by 12 − 2 × Stamina out of 100, and at 100 it hits for its Power alone; the two resting get a point back a
+  frame; a switch (the cancel button) sends the next in and takes twelve frames. Two points a block.
+- **Ring Drop** (Power): a minute on a platform of radius 100, one of each team's three on it at a time; the arrows push
+  at 0.12 + 0.05 × Speed a frame (a tenth lost a frame), the button lunges at 1.5 + 0.5 × Power and rests
+  30 − 3 × Skill frames, and two that meet part as heavy things do, each as heavy as 2 + Stamina + Power ÷ 2 (harder
+  while either lunges). Whoever leaves the platform is out for a second and a half and the next of the team comes on at
+  its own edge; the knock-off is the last toucher's if it touched within three seconds. Fifteen points a knock-off, five
+  off a fall, never below nought.
+- **The rivals** play by the same rules, each frame's input their own mind's on the event's generator: a hurdler aims
+  its jump at the middle of the leap, off by more the less its knack, and now and then forgets; a smasher presses on
+  most frames and changes a tired hitter for a rested one; a pusher goes for the nearest and back from the edge.
+- **The scoreboard**: the four by their totals, a tie to the player and then to the team named first; a course's best
+  score is kept with the runs and the wins (`SaveData.Athlon`). *Cut down*: HeartGold's medals, its bonuses for what a
+  Pokémon did in an event and its records board are plan 15 · E8's; the events are played on a board of their own, not
+  in the dome's arena, and the player's team is drawn as menu icons.
+- **Where**: HeartGold's dome is its lobby room, entered from Route 35's gate house through its west door (warp 2,
+  `MAP_POKEATHLON_DOME`), so there is no dome building outside to draw and plan 15's `BuildingKind.Dome` is not made.
+  Its clerk is `common.AthlonDesk`, which nobody runs until plan 20 · J13 opens the dome's rooms.

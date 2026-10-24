@@ -373,6 +373,8 @@ public sealed partial class ScriptRunner
         // The Bug-Catching Contest's board is the player's to read; the rest is asked and changed without a screen, and
         // its prize is given as a gift is (plan 15 · E5)
         Op.BugContest => i.Name == "results",
+        // A course of the Pokéathlon is the player's to run; the rest only asks (plan 15 · E6)
+        Op.Athlon => i.Name == "open",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -914,6 +916,24 @@ public sealed partial class ScriptRunner
                 break;
             case Op.BugContest:
                 BugContestCommand(i);
+                break;
+            // The Pokéathlon (plan 15 · E6): `able` is 1 when the team has three that may go in (no Eggs), `points` the
+            // Athlete Points, and `open` runs a course on the screen while the script waits, RESULT the player's place
+            // (1 to 4) or 0 when the screen was left before a course began
+            case Op.Athlon:
+                switch (i.Name)
+                {
+                    case "able":
+                        Result = Models.AthlonRun.CanEnter(host.Party) ? 1 : 0;
+                        break;
+                    case "points":
+                        Result = host.Athlon.Points;
+                        break;
+                    default:
+                        host.Open(ScriptScreen.Athlon, Subject);
+                        afterBusy = () => Result = host.Answer;
+                        break;
+                }
                 break;
             case Op.ChoosePokemon:
             {

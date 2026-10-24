@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -64,6 +64,9 @@ public interface IScriptHost
 
     /// <summary>The National Park's Bug-Catching Contest, while one is under way (plan 15 · E5).</summary>
     BugContest BugContest { get; }
+
+    /// <summary>The Pokéathlon's Athlete Points and records (plan 15 · E6).</summary>
+    AthlonRecords Athlon { get; }
 
     /// <summary>
     /// A Pokémon of the player's own that the team has no room for goes to the PC as it is: the Bug-Catching Contest's

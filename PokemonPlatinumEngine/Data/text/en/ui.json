@@ -3518,6 +3518,60 @@
     "judging": "The judges announce the winners…",
     "yourScore": "Your Pokémon scored {score} points."
   },
+  "athlon": {
+    "title": "POKÉATHLON",
+    "courses": "COURSES",
+    "events": "EVENTS",
+    "best": "Best {score}",
+    "noBest": "Not run yet",
+    "leans": "Leans on {stat}",
+    "points": "Athlete Points: {points}",
+    "egg": "Egg",
+    "performance": "PERFORMANCE",
+    "chooseThree": "Choose three Pokémon to compete. ({n}/3)",
+    "start": "Start",
+    "eventOf": "EVENT {n} OF {of}",
+    "go": "GO!",
+    "finished": "Finished in {time} s",
+    "leg": "Leg {n}/{of}",
+    "blocks": "BLOCKS",
+    "knocks": "Knock-offs: {n}",
+    "falls": "Falls: {n}",
+    "scoreboard": "SCOREBOARD",
+    "total": "TOTAL",
+    "earned": "You earned {points} Athlete Points. You have {all} in all.",
+    "newRecord": "NEW RECORD!",
+    "course": {
+      "practice": "Practice Course"
+    },
+    "event": {
+      "hurdleDash": "Hurdle Dash",
+      "blockSmash": "Block Smash",
+      "ringDrop": "Ring Drop"
+    },
+    "howTo": {
+      "hurdleDash": "Your three run a leg each over seven hurdles. Press {key:confirm} to jump just before a hurdle: land on one and your runner trips. The fastest team through all three legs wins.",
+      "blockSmash": "Press {key:confirm} to smash the blocks before you, once each swing is over. Every hit tires your Pokémon: press {key:cancel} to send the next one in while the tired one gets its breath back.",
+      "ringDrop": "Push the others off the ring with the arrows and press {key:confirm} to lunge. A knock-off scores, a fall loses points, and whoever falls is replaced by the next of their team."
+    },
+    "stat": {
+      "speed": "Speed",
+      "power": "Power",
+      "skill": "Skill",
+      "stamina": "Stamina",
+      "jump": "Jump"
+    },
+    "rivals": {
+      "ace": "Team Ace",
+      "bolt": "Team Bolt",
+      "comet": "Team Comet",
+      "dash": "Team Dash",
+      "ember": "Team Ember",
+      "flint": "Team Flint",
+      "gale": "Team Gale",
+      "hazel": "Team Hazel"
+    }
+  },
   "placeWords": {
     "the": "the {place}",
     "on": "on {place}",

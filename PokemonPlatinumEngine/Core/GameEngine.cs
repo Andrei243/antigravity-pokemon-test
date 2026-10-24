@@ -95,7 +95,9 @@ public enum GameState
     /// <summary>A script's <c>namerival</c>: the keyboard for the rival of the region it plays in, over the field (plan 18 · W4, part b).</summary>
     RivalNaming,
     /// <summary>The Bug-Catching Contest's board of results, a script's <c>bugcontest results</c> waiting on it (plan 15 · E5).</summary>
-    BugContestResults
+    BugContestResults,
+    /// <summary>The Pokéathlon's courses, team and events, a script's <c>athlon open</c> waiting on it (plan 15 · E6).</summary>
+    Athlon
 }
 
 public partial class GameEngine
@@ -332,6 +334,7 @@ public partial class GameEngine
         flow.PoketchView.Hide();
         flow.Safari.End();
         flow.BugContest.Reset();
+        flow.Athlon = new AthlonRecords();
         flow.EncounterAids.RepelSteps = 0;
         flow.EncounterAids.Flute = Flute.None;
         // What the game remembers of its wild Pokémon starts over: the day's numbers drawn, no roamer loose (plan 06 · R13)
@@ -568,6 +571,8 @@ public partial class GameEngine
 
         // A Bug-Catching Contest under way comes back with its team set aside (plan 15 · E5)
         ResumeBugContest(save.BugContest);
+        // The Pokéathlon's points and records (plan 15 · E6); none in an older save
+        flow.Athlon = save.Athlon?.Copy() ?? new AthlonRecords();
 
         // Each stored Pokémon in its own place; a save from before the boxes had places lays its list out in them
         flow.Boxes = save.Boxes?.ToBoxes() ?? PcBoxes.FromList(save.BoxStorage.Select(p => p.ToPokemon()));
@@ -692,6 +697,7 @@ public partial class GameEngine
             Poketch = flow.Poketch.Save(),
             Safari = flow.Safari.Active ? new SafariSave(flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Caught) : null,
             BugContest = flow.BugContest.ToSave(),
+            Athlon = flow.Athlon.Runs > 0 || flow.Athlon.Points > 0 ? flow.Athlon.Copy() : null,
             Encounters = flow.Encounters,
             Berries = flow.Berries,
             Poffins = flow.PoffinCase.Count > 0 ? flow.PoffinCase.All.ToList() : null,
@@ -1169,6 +1175,15 @@ public partial class GameEngine
                 // The Bug-Catching Contest's board (plan 15 · E5): the script that opened it goes on once it is read
                 flow.BugContestResultsScreen.Update(dt);
                 if (!flow.BugContestResultsScreen.IsActive) flow.State = GameState.Overworld;
+                break;
+            case GameState.Athlon:
+                // The Pokéathlon (plan 15 · E6): the script that opened it hears the player's place, 0 when backed out of
+                flow.AthlonScreen.Update(dt);
+                if (!flow.AthlonScreen.IsActive)
+                {
+                    flow.ScriptAnswer = flow.AthlonScreen.Outcome;
+                    flow.State = GameState.Overworld;
+                }
                 break;
             case GameState.Phrases:
                 // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
@@ -2603,6 +2618,9 @@ public partial class GameEngine
                 break;
             case GameState.BugContestResults:
                 flow.BugContestResultsScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Athlon:
+                flow.AthlonScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Phrases:
                 // Over the field, which stays under it as under a question (plan 08 · P9)
