@@ -56,7 +56,8 @@ In the `Ruleset` today, because the engine already runs these rules:
 | EXP | by the foe's level alone (base × level / 7), shared among those who fought, half to Exp. Share holders | scaled by the two levels (Generation 7's formula), the whole team gets some, half for those who didn't fight, a fifth more past the level it would evolve at |
 | Effort in a stat | at most 255 | at most 252 |
 | A vitamin raises effort | up to 100 | up to the stat's limit |
-| A level-100 Pokémon | gains no effort from battles | still gains effort |
+| The level cap (plan 18 · W4) | 100 | 260 (`Ruleset.LevelCap`; "The level cap past 100", below) |
+| A Pokémon at the level cap | gains no effort from battles | still gains effort |
 | A shiny Pokémon | 1 in 8,192: the personality's and the trainer's halves exclusive-or'd under 8 | 1 in 4,096: under 16 |
 | An Everstone in breeding (plan 06 · R15) | the mother's or Ditto's nature one time in two | the holder's nature, always, whichever parent |
 | The IVs an Egg inherits | three picks that can fall on the same stat; no item changes them | three different stats, five with a Destiny Knot, a Power item's from its holder |
@@ -4193,3 +4194,47 @@ files written by `Core/MigrationOut.cs`.
   number is taken); the folder is made when the first file is written, and nothing else in `migrate/` is written, renamed or moved.
 - **Offered** when the folder holds a file the readers know, or when two saves can be read (one to move from, one to move to). With
   one save and no folder there is nothing to offer, and the player makes the folder to write out.
+
+## The level cap past 100 and a region's levels (2026-10-24, plan 18 · W4)
+
+The user chose on 2026-10-21 that the team crosses from region to region at full strength, with the level cap raised
+well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W4 built:
+
+- **The cap is 260 by the modern rules** (`Ruleset.LevelCap`; `Ruleset.HighestLevel` is the highest any rules allow) and
+  stays 100 by Platinum's, so the baseline (`battles-platinum.txt`) can't move. 260 is the study's fair climb under the
+  modern EXP: Paldea's Champion at about 258 with the team a step ahead. The simulation was not run again in W4: the
+  new moves (plan 06 · R31) and evolutions (plan 03 · D14) that fill the levels past 100 are not built, and the number
+  is to be checked once they are.
+- **What stopped at 100 stops at the cap**: a battle's EXP and effort (by the battle's own rules, `Rules.LevelCap`), the
+  EXP bar and the summary's TOP LEVEL, the Rare Candy and the EXP Candies, the Day Care's growing (the game's cap,
+  `Pokemon.Cap`). A Pokémon is made or loaded at any level from 1 to 260 whatever the game's cap, so **a save holding a
+  level past 100 loads as it was**; the save's format didn't change.
+- **The curves past 100.** Fast, Medium Fast, Medium Slow and Slow go on as their formulas do. *Our ruling*: Erratic's
+  last branch, `level³ × (160 − level) / 100`, falls after 100 and turns negative at 160, and Fluctuating means nothing
+  past 100, so past 100 each keeps the share of Medium Fast's cube it has at 100: Erratic 600,000 × (level / 100)³
+  and Fluctuating 1,640,000 × (level / 100)³, rounded down. Both rise level by level to 260, and Platinum's values up to
+  100 are untouched. At 260 the dearest curve, Fluctuating, is about 28.8 million EXP, well inside its number.
+- **The damage formula at the cap**: Platinum's base damage is worked out in a long (the modern one already was), so a
+  stat of a few thousand at level 260 can't overflow it; nothing under 100 moves.
+- **The Day-Care Checker** shows a level to 260, still three figures. **A `.pk4` written out** (plan 08 · P22) of a
+  Pokémon past 100 is written at 100's EXP, since Platinum's level is its EXP's. A save's own Pokémon moved between
+  slots may be past 100. A foreign file's Pokémon are still held to 100.
+- **A region's levels.** A region file's `levels` (`LevelMapping`) is pairs of its own game's level and the level met
+  here: a straight line between pairs, on past either end, rounded half up and held to 1 to 260. Each region's first
+  route is met at the Champion's level of the region before it and its own Champion at the study's fair climb:
+  Kanto `[[2, 62], [63, 104]]`, Johto `[[2, 104], [50, 136]]`, Hoenn `[[2, 136], [58, 162]]`, Unova
+  `[[2, 162], [59, 185]]`. The regions to come take theirs from the same table: Kalos's Champion at 205, Alola's at
+  224, Galar's at 242 and Paldea's at 258, each region beginning at the last one's. Sinnoh has none.
+- *Our ruling*: **the region files keep their own game's levels**, and the mapping is applied as a Pokémon is met
+  (`GameEngine.LevelHere`): a wild Pokémon's level as drawn, every trainer's team (the battle fights copies,
+  `Trainer.Relevelled`, so the trainer of the map keeps their team and a rematch is never mapped twice), a partner's, a
+  script's `wildbattle` and `givepokemon` (`Pokemon.Relevel`: moves chosen for it kept, moves that are only its level's
+  those of the new level, HP keeping its share). Scripts go on writing their game's levels (1 to 100). Not mapped: an
+  Egg, a roamer, the Battle Frontier.
+- *Our ruling*: **only in a region the game didn't begin in.** A game remembers where it began (`SaveData.BeganIn`; a save
+  from before began where it stands, since no crossing was built then): every game from the title begins in Sinnoh,
+  and a game begun elsewhere by `--region` or a tool plays that region at its own game's levels, which is how the
+  harness's `kanto`, `johto`, `hoenn` and `unova` modes stay as they were.
+- **Not yet**: the post-games of the later regions climb on past their Champions on the same line (Johto's Red, 88 in
+  HeartGold, comes to 161), which a region's plan may bend with a third pair. The Battle Hall takes a Pokémon at its own
+  level and draws its foes to 100 at most: a Pokémon past 100 entered there is plan 06's to rule on.

@@ -90,6 +90,26 @@ public sealed class Region
 
     public RegionProfessor? Professor => File?.Professor;
 
+    /// <summary>
+    /// The region's levels for a team that crossed into it (plan 18 · W4; the file's <c>levels</c>): what its wild
+    /// Pokémon, trainers and gifts are met at in a game begun in another region. Null where the file maps none.
+    /// </summary>
+    public LevelMapping? Levels
+    {
+        get
+        {
+            if (!levelsRead)
+            {
+                levels = LevelMapping.From(File?.Levels);
+                levelsRead = true;
+            }
+            return levels;
+        }
+    }
+
+    private LevelMapping? levels;
+    private bool levelsRead;
+
     /// <summary>The starter the rival takes when the player takes this one: the next in the briefcase, round (grass is answered with fire).</summary>
     public string RivalStarterFor(string playerStarter)
     {

@@ -451,6 +451,8 @@ public partial class GameEngine
     private void InitializeNewGame()
     {
         var region = NewGameRegionRecord;
+        // Every other region's levels are mapped for a team that crossed into it (plan 18 · W4)
+        flow.BeganIn = region.Id;
         var start = region.Start ?? RegionDatabase.First.Start!;
         flow.Map = MapDatabase.Get(start.Map);
         flow.Player = new Player(start.X, start.Y);
@@ -595,6 +597,8 @@ public partial class GameEngine
         // save from before the opening, two that came to hold one id) takes the next
         flow.PokemonIdsIssued = save.PokemonIdsIssued;
         GiveIds();
+        // Where the game began, which decides whose levels are mapped (plan 18 · W4); an older save began where it stands
+        flow.BeganIn = save.BeganInOrHere();
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.TrainerScore = save.TrainerScore;
@@ -668,6 +672,7 @@ public partial class GameEngine
             WorldVersion = SaveData.CurrentWorld,
             SaveVersion = SaveData.CurrentSave,
             PokemonIdsIssued = flow.PokemonIdsIssued,
+            BeganIn = flow.BeganIn,
             LinkBattles = flow.LinkBattles.ToSave(),
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),

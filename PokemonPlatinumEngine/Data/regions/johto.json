@@ -54,5 +54,8 @@
     { "id": 9, "area": "mahogany", "x": 534, "y": 184, "room": "Mahogany_PokemonCenter_1F" },
     { "id": 10, "area": "blackthorn", "x": 674, "y": 177, "room": "Blackthorn_PokemonCenter_1F" },
     { "id": 11, "area": "indigo_plateau", "x": 912, "y": 201, "room": "IndigoLeague_PokemonCenter_1F" }
-  ]
+  ],
+  // Plan 18 · W4: HeartGold's levels for a team that crossed from Kanto, from Kanto's Champion's 104 on the first
+  // route to Lance at 136 (the study's fair climb); the post-game climbs on past him on the same line, Red to 161
+  "levels": [[2, 104], [50, 136]]
 }

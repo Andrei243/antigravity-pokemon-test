@@ -48,13 +48,14 @@ public sealed class DayCareCheckerApp : PoketchAppState
     private int mosaicFrames;
 
     /// <summary>
-    /// The level a Pokémon is shown at: its own, at most 100 (<c>SetLevelSprites</c>, which shows the hundreds only
-    /// from 100 and the tens only from 10).
+    /// The level a Pokémon is shown at: its own (<c>SetLevelSprites</c>, which shows the hundreds only from 100 and the
+    /// tens only from 10). The original's three figures reach 100; ours reach the highest level any rules allow (plan
+    /// 18 · W4), still three figures.
     /// </summary>
-    public static int LevelOf(Pokemon pokemon) => Math.Clamp(pokemon.Level, 1, 100);
+    public static int LevelOf(Pokemon pokemon) => Math.Clamp(pokemon.Level, 1, Data.Ruleset.HighestLevel);
 
     /// <summary>The figures of a level as shown: no leading noughts.</summary>
-    public static string Figures(int level) => Math.Clamp(level, 0, 100).ToString();
+    public static string Figures(int level) => Math.Clamp(level, 0, Data.Ruleset.HighestLevel).ToString();
 
     public override IReadOnlyList<PoketchButton> Buttons(PoketchContext context) => buttons;
 

@@ -1,6 +1,6 @@
 # The level curve for a team carried from region to region
 
-*Plan 18 · W4, the study part. Written 2026-10-18 for the user's decision; decided 2026-10-21 (option B, below). Nothing has been built and no code or data has changed.*
+*Plan 18 · W4, the study part. Written 2026-10-18 for the user's decision; decided 2026-10-21 (option B, below). Built as W4's part a on 2026-10-24: the cap of 260 and the four built regions' mappings of section 4's fair climb ([plan 18](18-regions.md), W4; `docs/mechanics/rulings.md`, "The level cap past 100 and a region's levels").*
 
 ## The decision (2026-10-21)
 

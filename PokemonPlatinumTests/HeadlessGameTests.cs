@@ -132,6 +132,41 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void ARegionCrossedIntoMeetsThePlayerAtItsMappedLevels()
+    {
+        // Plan 18 · W4: a game begun in Sinnoh meets Kanto's wild Pokémon at Kanto's mapped levels (FireRed's 3 is 63:
+        // 62 + 42 / 61, rounded), and one begun in Kanto at FireRed's own
+        var paths = SavePaths.Current;
+        try
+        {
+            Dice.Seed(12);
+            foreach (var (began, expected) in new[] { ("Sinnoh", 63), ("Kanto", 3) })
+            {
+                var engine = Headless();
+                var game = engine.Drive;
+                engine.NewGameRegion = began;
+                engine.StartNewGame();
+                game.Party.Clear();
+                game.Party.Add(new Pokemon(PokemonDatabase.Get("Turtwig")!, 70));
+                game.State = GameState.Overworld;
+                Assert.Equal(began, game.BuildSave().BeganIn);
+
+                game.Place(MapDatabase.Get("Kanto"), 66, 268, Direction.Down);
+                game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Rattata", MinLevel = 3, MaxLevel = 3, Weight = 100 });
+                Until(engine, () => game.State == GameState.Battle, "the battle");
+                Assert.Equal(expected, game.Battle!.EnemyPokemon.Level);
+            }
+        }
+        finally
+        {
+            InputManager.Feed(null);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            SavePaths.Current = paths;
+        }
+    }
+
+    [Fact]
     public void TheSignOverTheFieldNamesTheAreaInTheChosenLanguage()
     {
         // Plan 17 · N6b, slice 4: walking into an area showed its English name under every language
