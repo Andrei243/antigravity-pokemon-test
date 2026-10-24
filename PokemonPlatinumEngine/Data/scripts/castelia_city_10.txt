@@ -1,0 +1,62 @@
+# Castelia City's Prime Pier, where the ship from Virbank comes in (plan 22 · U5, part c). docs/scripts.md describes
+# the language; the lines are our own, on Black 2's beats (the decompilation's res/field/scripts/castelia_city_10.s,
+# read for the order alone).
+#
+# VAR_UNOVA_CASTELIA, the city's count of ours (Black 2 keeps it in several: 0x40ae, 0x40e2, 0x40b1, 0x40b2, 0x40b4,
+# 0x40b6; the rulings' "Unova's first chapter, part c" maps each): 1 on the voyage from Virbank (virbank_city_5.txt);
+# 2 come ashore, Hugh run off after a black-sailed ship; 3 the Bicycle from the avenue's Harlequin (CasteliaCity.txt);
+# 4 Burgh away from his Gym and Iris met on Gym Street (castelia_city_3.txt); 5 Iris on the avenue, off to Thumb Pier;
+# 6 Hugh gone down into the sewers from Thumb Pier (castelia_city_12.txt); 7 Hugh along in the sewers; 8 Team
+# Plasma's grunts beaten beside him, Burgh met, HM04, a stranger watching (castelia_sewers.txt); 9 Iris's word back on
+# Thumb Pier, the Gym's door clear; 10 the Insect Badge (castelia_city_gym_2.txt); 11 Colress on the plaza
+# (castelia_city_2.txt); 12 Colress's battle on Route 4 (unova_route_4.txt).
+#
+# The people: 0 the captain, who sails back to Virbank whenever asked; 1 Hugh, here for the arrival alone
+# (FLAG_UNOVA_HIDE_HUGH_PIER).
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_CASTELIA == 1 goto Ashore
+  end
+label Ashore
+  scene "Ashore at Castelia City"
+  clearflag FLAG_UNOVA_HIDE_HUGH_PIER
+  place player 12 10 left
+  place 1 12 9 down
+  show 1
+  speaker "Captain"
+  say "And here we are! Castelia City, the biggest city in all of Unova!"
+  face player up
+  face 1 player
+  speaker "{rival}"
+  say "Whoa... So this is Castelia. The towers go on forever! Team Plasma could be hiding anywhere in a place like this."
+  face 1 left
+  emote 1 exclaim
+  say "Hey, look out there! That ship with the black sails, heading out of the bay... Something about it feels wrong."
+  say "I'm going to have a look around. See you, {player}!"
+  walk 1 up 8 fast
+  hide 1
+  setflag FLAG_UNOVA_HIDE_HUGH_PIER
+  setvar VAR_UNOVA_CASTELIA 2
+  endscene
+  end
+
+
+# The captain: back across the bay to Virbank City (Black 2's Script_1)
+script Captain
+  face 0 player
+  speaker "Captain"
+  ask "Shall we sail back to Virbank City?"
+  if no goto Stay
+  say "Right you are! Step this way!"
+  fade out 0.8
+  music stop
+  sound "crossing_horn"
+  text "The ship pulls away from the pier and heads back across the bay toward Virbank City..."
+  warp "VirbankCity_Terminal" 6 6 up
+  fade in
+  end
+label Stay
+  say "Come and find me whenever you fancy a trip. I'm always on this pier!"
+  end

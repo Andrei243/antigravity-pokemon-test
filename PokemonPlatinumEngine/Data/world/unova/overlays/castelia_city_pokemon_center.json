@@ -1,0 +1,39 @@
+{
+  // Castelia City's Pokémon Center (plan 22 · U5, part c): the same floor as Aspertia's and Virbank's, with the city's
+  // own people. Its door opens onto the avenue, which is a map of ours (CasteliaCity), so the three tiles of its way
+  // out lead there by hand
+  "area": "castelia_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "doors": [
+    { "warp": 0, "map": "CasteliaCity", "x": 28, "y": 6, "facing": "Down" },
+    { "warp": 1, "map": "CasteliaCity", "x": 28, "y": 6, "facing": "Down" },
+    { "warp": 2, "map": "CasteliaCity", "x": 28, "y": 6, "facing": "Down" }
+  ],
+  "people": {
+    "0": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "1": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "2": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "3": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "I came to Castelia for business forty years ago and never left. Every year the towers grow a little taller." ]
+    },
+    "4": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "8": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "dialog": [ "Burgh's Bug types look gentle, but they hit hard. Bring something that flies or burns, if you can!" ]
+    },
+    "11": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "dialog": [ "The ferry from Prime Pier runs all day. Virbank City is only a short trip across the bay." ]
+    }
+  }
+}

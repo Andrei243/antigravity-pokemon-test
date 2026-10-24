@@ -1,0 +1,33 @@
+{
+  // Castelia City's central plaza (plan 22 · U5, part c): Black 2's plaza round its fountain, our words. Black 2 joins it
+  // to the four streets' north ends along a street on rails; ours opens each straight onto the plaza's rim (exits of
+  // ours on its west, south-west, south-east and east edges), and its own way north to the gate street stands as the
+  // import has it. Colress (0, FLAG_UNOVA_HIDE_COLRESS_PLAZA) stops the player in the passage north once the Insect
+  // Badge is won (castelia_city_2.txt)
+  "area": "castelia_city_2",
+  "bgmTrack": "unova/castelia",
+  "exits": [
+    { "x": 1, "z": 16, "map": "CasteliaCity_CasteliaStreet", "toX": 15, "toY": 17, "facing": "Down" },
+    { "x": 1, "z": 17, "map": "CasteliaCity_CasteliaStreet", "toX": 15, "toY": 17, "facing": "Down" },
+    { "x": 12, "z": 22, "map": "CasteliaCity_ModeStreet", "toX": 15, "toY": 17, "facing": "Down" },
+    { "x": 13, "z": 22, "map": "CasteliaCity_ModeStreet", "toX": 15, "toY": 17, "facing": "Down" },
+    { "x": 19, "z": 22, "map": "CasteliaCity_NarrowStreet", "toX": 16, "toY": 30, "facing": "Down" },
+    { "x": 20, "z": 22, "map": "CasteliaCity_NarrowStreet", "toX": 16, "toY": 30, "facing": "Down" },
+    { "x": 30, "z": 16, "map": "CasteliaCity_GymStreet", "toX": 15, "toY": 17, "facing": "Down" },
+    { "x": 30, "z": 17, "map": "CasteliaCity_GymStreet", "toX": 15, "toY": 17, "facing": "Down" }
+  ],
+  "triggers": [
+    { "script": "Colress", "x": 13, "z": 3, "width": 6, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 10 }
+  ],
+  "people": {
+    "0": { "name": "???", "npcType": "colress", "still": true, "at": [ 15, 1 ], "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_PLAZA", "dialog": [ "..." ] },
+    "1": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "The fountain, the towers, the people rushing past... There's a painting in every corner of this plaza." ]
+    }
+  },
+  "signs": {
+    "1": "Castelia City Central Plaza\nThe heart of the city of towers"
+  }
+}

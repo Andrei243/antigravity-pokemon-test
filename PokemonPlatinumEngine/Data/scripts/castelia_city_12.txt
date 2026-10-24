@@ -1,0 +1,84 @@
+# Castelia City's Thumb Pier (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/castelia_city_12.s, read for the order alone).
+# VAR_UNOVA_CASTELIA is the city's count (castelia_city_10.txt has it whole).
+#
+# Coming onto the pier after Iris (5), the player meets her by the way down into the sewers and Hugh comes running
+# after Team Plasma and goes down (6). Coming back up once the grunts below are beaten (8), Iris asks how it went and
+# sends the player to the Gym, whose door Clyde leaves (9). The people: 0 the worker by the stairs, 1 Iris
+# (FLAG_UNOVA_HIDE_IRIS_PIER), 2 Hugh (FLAG_UNOVA_HIDE_HUGH_THUMB), 3 a roughneck.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_CASTELIA == 5 goto TheSewers
+  end
+label TheSewers
+  scene "Hugh at Thumb Pier"
+  place 1 10 14 left
+  place player 2 14 right
+  walk player right 6
+  face 1 player
+  speaker "Iris"
+  say "Here's the way down into the sewers! Pretty suspicious, don't you think? Nobody would ever look down there."
+  clearflag FLAG_UNOVA_HIDE_HUGH_THUMB
+  place 2 2 14 right
+  show 2
+  walk 2 right 5 down 1
+  face 2 player
+  face player down
+  speaker "{rival}"
+  ask "{player}! Did you find Team Plasma?!"
+  if yes goto Found
+  say "Huh... Thanks for looking, anyway."
+  goto Down
+label Found
+  say "I knew it! Those rotten Pokémon thieves!"
+label Down
+  say "Then the only place I haven't checked yet is... the sewers! {player}, give me a hand down there!"
+  walk 2 right 3 down 6 right 9 up 4 left 1 fast
+  hide 2
+  setflag FLAG_UNOVA_HIDE_HUGH_THUMB
+  clearflag FLAG_UNOVA_HIDE_HUGH_SEWERS
+  clearflag FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  face player right
+  face 1 player
+  speaker "Iris"
+  say "Right! The sewers are the perfect place to hide. Go on, catch up with him!"
+  setvar VAR_UNOVA_CASTELIA 6
+  endscene
+  end
+
+
+# Back up from the sewers with the grunts beaten (our triggers, at 8): Iris asks how it went
+script IrisAfterward
+  scene "Iris after the sewers"
+  face 1 player
+  speaker "Iris"
+  say "There you are! Your friend came back up looking really cross. Did everything go all right down there?"
+  say "So what now? You met Burgh in the sewers, didn't you? Then you should go and challenge his Gym. See how strong you've got!"
+  setflag FLAG_UNOVA_HIDE_CLYDE_STREET
+  setvar VAR_UNOVA_CASTELIA 9
+  endscene
+  end
+
+
+script IrisPier
+  face 1 player
+  speaker "Iris"
+  if var VAR_UNOVA_CASTELIA >= 9 goto Gym
+  say "The sewers are the perfect place to hide. Hurry, before your friend runs into trouble on his own!"
+  end
+label Gym
+  say "Burgh's back in his Gym on Gym Street. Go and show him what you can do!"
+  end
+
+
+script Worker
+  face 0 player
+  speaker "Worker"
+  if var VAR_UNOVA_CASTELIA >= 9 goto Tide
+  say "The sewers? Go on down if you must, but mind the wild Pokémon. Some Trainers go down there on purpose to train!"
+  end
+label Tide
+  say "With the tide high, the sewers sometimes flood. It changes with the season, they say."
+  end

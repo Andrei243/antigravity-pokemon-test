@@ -89,6 +89,12 @@ internal sealed record BuildingStyle
     /// <summary>How many stages a tower's shaft has; nought for the kit's three (a lighthouse's two).</summary>
     public int StageCount { get; init; }
 
+    /// <summary>
+    /// A tower whose last stage ends flat, under a roof slab a little wider than it, with vents, where any other tower
+    /// ends in a pointed cap: a skyscraper of Castelia City (plan 22 · U5, part c).
+    /// </summary>
+    public bool FlatTop { get; init; }
+
     public bool Pitched => Roof != RoofShape.Flat;
 
     /// <summary>Height of the walls in texels.</summary>
@@ -358,7 +364,9 @@ internal static partial class BuildingArt
 
         int bays = Math.Max(1, w / Bay);
         bool HasDoor(int cx) => doorsAt != null && doorsAt.Any(d => Math.Abs(d - cx) < Bay);
-        foreach (int at in doorsAt ?? Array.Empty<int>()) Door(c, Math.Clamp(at, 20, w - 20), h, s, ArtSheet.PublicLight);
+        // (a wall narrower than two doors' margins, a Castelia tower's flank one tile deep, keeps its door in the middle)
+        int nearest = Math.Min(20, w / 2), furthest = Math.Max(nearest, w - 20);
+        foreach (int at in doorsAt ?? Array.Empty<int>()) Door(c, Math.Clamp(at, nearest, furthest), h, s, ArtSheet.PublicLight);
 
         if (s.Pitched)
         {

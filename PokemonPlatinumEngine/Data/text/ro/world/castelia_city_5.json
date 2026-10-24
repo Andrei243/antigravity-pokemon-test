@@ -1,0 +1,130 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mode Street is the place to be seen! Everyone dresses up just to walk from one end to the other."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been in this queue since the sun came up. The ice cream here is worth it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm on my lunch break. If the queue doesn't move, I'll be late back to the office..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon love it as much as I do. We always share!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walked all the way down from the mountains for one of these. Don't you dare cut in!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The stand sells out by noon most days. Fingers crossed!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Mode Street\nCastelia's street of fashion"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Ice cream stand\nToday's flavour: sold out by noon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

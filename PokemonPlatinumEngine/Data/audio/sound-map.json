@@ -132,7 +132,9 @@
     "Preschooler": "kid",
     "Nursery Aide": "girl",
     "Janitor": "fun",
-    "Team Plasma Grunt": "galactic"
+    "Team Plasma Grunt": "galactic",
+    "Harlequin": "fun",
+    "Doctor": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -162,7 +164,9 @@
     "Aqua Leader": "galacticBoss",
     "Leader Cheren": "gym",
     "Leader Roxie": "gym",
-    "Team Plasma Grunt": "galactic"
+    "Team Plasma Grunt": "galactic",
+    "Leader Burgh": "gym",
+    "Pokémon Trainer Colress": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

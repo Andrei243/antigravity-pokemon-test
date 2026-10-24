@@ -1,0 +1,50 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "???"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The fountain, the towers, the people rushing past... There's a painting in every corner of this plaza."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Castelia City Central Plaza\nThe heart of the city of towers"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

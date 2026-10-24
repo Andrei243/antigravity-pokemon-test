@@ -55,6 +55,31 @@ public static partial class WorldModels
         Thing("d23_obj", PropType.Headframe, "a tank, a stack or a tower of the Virbank Complex, steel as tall as its model"),
         Thing("d7_inaba", PropType.Container, "a storage shed in the Virbank Complex"),
 
+        // ---------------------------------------------------------------- Castelia City (c03_, c3_)
+        // Plan 22 · U5, part c: Castelia's way of building (Architecture.Metropolis). Its towers are drawn into each
+        // street's own model with no prop of their own; the reader writes a prop of ours for each block of them
+        Built("c3_tower", BuildingKind.Tower, "a tower of Castelia City, drawn into its street's own model (a prop of ours, plan 22 · U5, part c)", Architecture.Metropolis),
+        Built("c03_gym", BuildingKind.Gym, "Castelia's Pokémon Gym, Burgh's", Architecture.Metropolis),
+        Thing("c03_slamp", PropType.LampPost, "a street lamp of Castelia"),
+        Thing("c03_ship", PropType.Boat, "a ship at one of Castelia's piers"),
+        Thing("c03_fountain", PropType.Fountain, "the fountain in the middle of Castelia's plaza"),
+        Thing("out_vender01", PropType.VendingMachine, "a vending machine in the street"),
+        Ground("c03_cloud", "the clouds over Castelia's piers (no model of its own: the sky is the field's)"),
+        Ground("c03_kanban", "a sign on a tower's face: the sign event's tile draws it"),
+        Ground("door_bar", "the door of a café on Narrow Street (the warp's tile draws it)"),
+
+        // ---------------------------------------------------------------- Route 4 and the edge of Nimbasa City (r4_, c04)
+        // Opened for Colress's scene (plan 22 · U5, part c); the route's works and Nimbasa's buildings are plan 22 · U6's
+        Built("r4_build", BuildingKind.House, "a building of Route 4's works", until: "plan 22 · U6"),
+        Built("buill", BuildingKind.Apartments, "a block of offices by Route 4 and Nimbasa City", Architecture.Metropolis, until: "plan 22 · U6"),
+        Built("jagate", BuildingKind.Gate, "the gate into Join Avenue", until: "plan 22 · U6"),
+        Built("c4_gate", BuildingKind.Gate, "a gate of Nimbasa City", until: "plan 22 · U6"),
+        Built("c04station", BuildingKind.Terminal, "Nimbasa City's Gear Station", until: "plan 22 · U6"),
+        Thing("roadcone", PropType.Bollard, "a road cone of Route 4's works"),
+        Thing("sandbag", PropType.Crates, "sandbags of Route 4's works"),
+        Thing("fream", PropType.Crates, "a frame of scaffolding of Route 4's works"),
+        Thing("fountain", PropType.Fountain, "a fountain by Nimbasa City's gate"),
+
         // ---------------------------------------------------------------- rooms: the houses
         Furniture("chair01", PropType.Chair, "a chair"),
         Furniture("chair03", PropType.Chair, "a chair"),
@@ -94,6 +119,9 @@ public static partial class WorldModels
         Ground("mado_in5gym","the windows over the Trainers' School's hall (the room's walls are its own)"),
         Ground("c13gym_kabe1", "a wall of the Virbank Gym's stairs down (the room's walls are its own)"),
         Ground("door_c13gym", "the door from the Virbank Gym's stairs into the club (the warp's tile draws it)"),
+        Furniture("m_gym03_mayu01", PropType.Column, "a cocoon of honey in the Castelia Gym"),
+        Furniture("m_gym03_mayu02", PropType.Column, "a cocoon of honey in the Castelia Gym"),
+        Furniture("m_gym03_mayu03", PropType.Column, "a cocoon of honey in the Castelia Gym"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

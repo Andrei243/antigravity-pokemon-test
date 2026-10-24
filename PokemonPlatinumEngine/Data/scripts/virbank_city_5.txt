@@ -1,11 +1,12 @@
-# Virbank City's ship terminal (plan 22 · U5, part b). docs/scripts.md describes the language; the lines are our own,
-# on Black 2's beats (the decompilation's res/field/scripts/virbank_city_5.s, read for the order alone).
+# Virbank City's ship terminal (plan 22 · U5, part b, and the voyage, part c). docs/scripts.md describes the language;
+# the lines are our own, on Black 2's beats (the decompilation's res/field/scripts/virbank_city_5.s, read for the
+# order alone).
 #
 # The captain (2, FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL) and Hugh (3, FLAG_UNOVA_HIDE_HUGH_TERMINAL) are here once the
-# captain has gone back to his ship (VAR_UNOVA_VIRBANK 8, virbank_city.txt). Black 2's next beat is the voyage itself:
-# Hugh asks whether the player is coming, the captain takes them both aboard and the ship sails into Castelia City
-# (Black 2's 0x40ae 1). Castelia's streets stand on rails the importer doesn't read yet, so the voyage is plan 22 · U5,
-# part c's: until then the captain is still warming his engines.
+# captain has gone back to his ship (VAR_UNOVA_VIRBANK 8, virbank_city.txt). Black 2's next beat is the voyage itself
+# (its 0x40ae 1): Hugh asks whether the player is coming, the captain takes them both aboard, and the ship crosses the
+# bay to Castelia City's Prime Pier, where the city's chapter begins (VAR_UNOVA_CASTELIA 1, castelia_city_10.txt).
+# Afterwards the captain sails either way whenever he is asked (Black 2's Script_3), and Hugh has gone on ahead.
 
 
 script OnEnter
@@ -16,24 +17,52 @@ script OnEnter
 script Hugh
   face 3 player
   speaker "{rival}"
-  say "{player}! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!"
+  ask "{player}! You're heading to Castelia City too, right?"
+  if no goto NotYet
+  scene "The voyage to Castelia City"
+  say "Then let's go! I'm going after Team Plasma. I'll never let them get away!"
   face 3 2
   say "Hey, Captain! Show us this ship you're so proud of!"
   face 2 3
-  call CaptainLines
+  speaker "Captain"
+  say "Ha ha! With pleasure! All aboard for Castelia City, the pair of you!"
+  setflag FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  setvar VAR_UNOVA_CASTELIA 1
+  call Voyage
+  endscene
+  end
+label NotYet
+  say "Huh? You've still got things to do here? Go and finish them, then."
+  say "Even once we're in Castelia, we can always come back to Virbank, you know."
   end
 
 
 script Captain
   face 2 player
-  call CaptainLines
+  speaker "Captain"
+  if var VAR_UNOVA_CASTELIA == 0 goto Waiting
+  ask "Where to, young Trainer? Shall we set sail for Castelia City?"
+  if no goto Stay
+  say "Right you are! Step this way!"
+  call Voyage
+  end
+label Stay
+  say "Whenever you're ready. The old girl's engines are always warm now!"
+  end
+label Waiting
+  say "She's all warmed up and raring to go! Your friend's been pacing the deck since I got back."
   end
 
 
-script CaptainLines
-  speaker "Captain"
-  say "Ha ha! She's raring to go, but her engines went cold while I was off at the studios."
-  say "Give me a little while to warm them through, and we'll charge across to Castelia City!"
+# The crossing itself, over the dark: the field's music stops, the ship's horn, a line, and the pier at the other side
+# (Black 2 plays a film of the ship crossing the bay here; ours is the dark and the sound of it)
+script Voyage
+  fade out 0.8
+  music stop
+  sound "crossing_horn"
+  text "The ship slips out of the harbour and churns across the bay toward the towers of Castelia City..."
+  warp "CasteliaCity_PrimePier" 12 10 left
+  fade in
   return
 
 

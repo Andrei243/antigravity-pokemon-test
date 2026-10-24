@@ -668,6 +668,12 @@ public static class RegionDatabase
                 // and the Virbank Complex
                 "VirbankGate", "VirbankCity_House1", "VirbankCity_House2", "VirbankCity_House3", "VirbankCity_Terminal",
                 "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "VirbankComplex",
+                // Plan 22 · U5, part c: Castelia City, its avenue a map of ours (Data/maps/CasteliaCity.json, Black 2's
+                // standing on rails), its piers, streets, plaza and rooms the import's, the gate to Route 4 and the sewers
+                "CasteliaCity", "CasteliaCity_PrimePier", "CasteliaCity_ThumbPier", "CasteliaCity_CasteliaStreet",
+                "CasteliaCity_ModeStreet", "CasteliaCity_NarrowStreet", "CasteliaCity_GymStreet", "CasteliaCity_Plaza",
+                "CasteliaCity_NorthStreet", "CasteliaCity_PokemonCenter", "CasteliaCity_Gym",
+                "CasteliaGate", "CasteliaSewers",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

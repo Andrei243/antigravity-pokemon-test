@@ -1,0 +1,31 @@
+{
+  // Castelia City's Thumb Pier (plan 22 · U5, part c): Black 2's pier at the city's west end, where the way down into
+  // the old sewers is, our words. Its way west onto the avenue is on Black 2's rails, so every tile of it leads onto
+  // ours (the pier's mouth). Iris (1, FLAG_UNOVA_HIDE_IRIS_PIER) waits here once she has run on from the avenue, and
+  // Hugh (2, FLAG_UNOVA_HIDE_HUGH_THUMB) comes running and goes down into the sewers (castelia_city_12.txt)
+  "area": "castelia_city_12",
+  "bgmTrack": "unova/castelia",
+  "doors": [
+    { "warp": 0, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 1, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 3, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 4, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 5, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 6, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 7, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 8, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 9, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 10, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" },
+    { "warp": 11, "map": "CasteliaCity", "x": 5, "y": 12, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "IrisAfterward", "x": 2, "z": 9, "width": 1, "depth": 11, "variable": "VAR_UNOVA_CASTELIA", "value": 8 },
+    { "script": "IrisAfterward", "x": 9, "z": 19, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 8 }
+  ],
+  "people": {
+    "0": { "name": "Worker", "npcType": "worker", "script": "Worker" },
+    "1": { "name": "Iris", "npcType": "iris", "script": "IrisPier", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_IRIS_PIER" },
+    "2": { "name": "{rival}", "npcType": "hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_THUMB", "dialog": [ "..." ] },
+    "3": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "Stick your thumb up and curl your fingers. That's a thumbs-up! Well done, you've learned something." ] }
+  }
+}

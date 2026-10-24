@@ -1,0 +1,94 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Captain"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And here we are! Castelia City, the biggest city in all of Unova!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa... So this is Castelia. The towers go on forever! Team Plasma could be hiding anywhere in a place like this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, look out there! That ship with the black sails, heading out of the bay... Something about it feels wrong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going to have a look around. See you, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Captain": [
+    {
+      "en": [
+        "Captain"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we sail back to Virbank City?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right you are! Step this way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ship pulls away from the pier and heads back across the bay toward Virbank City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come and find me whenever you fancy a trip. I'm always on this pier!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

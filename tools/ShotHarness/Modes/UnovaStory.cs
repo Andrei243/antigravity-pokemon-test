@@ -9,7 +9,9 @@ partial class Harness
     /// Cheren and Hugh outside the school, the hiker and Cheren's advice on Route 20 (<c>us01</c> to <c>us30</c>), and the
     /// Virbank chapter of part b (<c>us31</c> to <c>us46</c>: the gate's Great Balls, Roxie and the captain, the studios' man,
     /// the Gym's guide, Roxie's band and the Toxic Badge, the scout, Team Plasma at the dock and HM01, the grunt on Route 20,
-    /// the captain back and the ship terminal), through
+    /// the captain back and the ship terminal), and the Castelia chapter of part c (<c>us46</c> to <c>us80</c>: the voyage, Prime Pier,
+    /// the Harlequin's Bicycle, Clyde and Iris, Thumb Pier, the sewers beside Hugh, Burgh and the Insect Badge, Colress on the
+    /// plaza and on Route 4), through
     /// the game's own steps, <c>TryInteract</c> and arrivals. It wins every battle a scene starts and prints what each
     /// scene left behind.
     /// </summary>
@@ -303,8 +305,104 @@ partial class Harness
         ReadTo("I was just a captain in a costume."); Frames(10); Shot("us45_the_captain_back");
         ReadTo(null);
         TalkTo("VirbankCity_Terminal", "3", "virbank_city_5");
-        ReadTo("we'll charge across to Castelia City!"); Frames(10); Shot("us46_the_ship_terminal");
-        ReadTo(null);
+        ReadTo("You're heading to Castelia City too, right?"); Frames(10); Shot("us46_the_ship_terminal");
         Virbank("the ship terminal");
+
+        // Plan 22 · U5, part c: the voyage and Castelia City, from Prime Pier to Colress on Route 4
+        void Castelia(string what) =>
+            Console.WriteLine($"  {what}: castelia {story.Var("VAR_UNOVA_CASTELIA")}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, "
+                + $"Insect Badge {story.HasBadge(RegionDatabase.Unova, "Insect")}, partner {game.PartnerAlong ?? "none"}, "
+                + $"Clyde hidden {story.Has("FLAG_UNOVA_HIDE_CLYDE_STREET")}, Burgh hidden {story.Has("FLAG_UNOVA_HIDE_BURGH_GYM")}, "
+                + $"Crustle hidden {story.Has("FLAG_UNOVA_HIDE_CRUSTLE_ROUTE_4")}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- the voyage across the bay, and ashore at Prime Pier
+        ReadTo("All aboard for Castelia City"); Frames(10); Shot("us47_all_aboard");
+        ReadTo("churns across the bay"); Frames(10); Shot("us48_the_voyage");
+        ReadTo("the biggest city in all of Unova!"); Frames(10); Shot("us49_ashore_at_prime_pier");
+        ReadTo("That ship with the black sails"); Frames(10); Shot("us50_the_black_sails");
+        ReadTo(null);
+        Castelia("ashore");
+
+        // ---- the avenue: the Harlequin's Bicycle, and the avenue itself
+        StepOnto("CasteliaCity", 39, 11, Direction.Up);
+        ReadTo("Is this your very first time in Castelia City?"); Frames(10); Shot("us51_the_harlequin");
+        ReadTo(null);
+        At("CasteliaCity", 28, 8, Direction.Down); Frames(30); Shot("us52_the_avenue");
+        At("CasteliaCity", 84, 3, Direction.Up); Frames(30); Shot("us53_the_mouth_of_gym_street");
+        Castelia("the Bicycle");
+
+        // ---- Gym Street: Clyde at the door, and Iris
+        At("CasteliaCity_GymStreet", 15, 40, Direction.Up); Frames(30); Shot("us54_gym_street");
+        TalkTo("CasteliaCity_GymStreet", "0", "castelia_city_3", -1, 0);
+        ReadTo("I'm sorry, he isn't here."); Frames(10); Shot("us55_clyde");
+        ReadTo("Burgh's gone wandering off again?"); Frames(10); Shot("us56_iris_arrives");
+        ReadTo("so I'll help you look!"); Frames(10); Shot("us57_iris_helps");
+        ReadTo(null);
+        Castelia("Gym Street");
+
+        // ---- the avenue: Iris calls the player on to Thumb Pier
+        StepOnto("CasteliaCity", 11, 8, Direction.Left);
+        ReadTo("Hey, over here! Come on, come on!"); Frames(10); Shot("us58_iris_on_the_avenue");
+        ReadTo(null);
+
+        // ---- Thumb Pier: Hugh comes running and goes down into the sewers
+        ComeThrough("CasteliaCity_ThumbPier", 2, 14, Direction.Right);
+        ReadTo("Here's the way down into the sewers!"); Frames(10); Shot("us59_thumb_pier");
+        ReadTo("Did you find Team Plasma?!"); Frames(10); Shot("us60_hugh_at_thumb_pier");
+        ReadTo(null);
+        Castelia("Thumb Pier");
+
+        // ---- the sewers: Hugh comes along, Team Plasma's grunts, Burgh, HM04 and the stranger
+        StepOnto("CasteliaSewers", 83, 20, Direction.Left);
+        ReadTo("Team Plasma's down here somewhere"); Frames(10); Shot("us61_hugh_in_the_sewers");
+        ReadTo(null);
+        At("CasteliaSewers", 60, 10, Direction.Left); Frames(30); Shot("us62_the_sewers");
+        StepOnto("CasteliaSewers", 51, 9, Direction.Up);
+        ReadTo("Huh? What do you want?"); Frames(10); Shot("us63_plasma_in_the_sewers");
+        IntoBattle("the grunts in the sewers");
+        ToMainMenu(game.Battle); Shot("us64_the_tag_battle");
+        Win();
+        ReadTo("One and the same! I'm Burgh."); Frames(10); Shot("us65_burgh_in_the_sewers");
+        ReadTo("Here, take this!"); Frames(10); Shot("us66_hughs_hm04");
+        ReadTo("That was a remarkable display of battling."); Frames(10); Shot("us67_the_stranger");
+        ReadTo("my muse and I!"); Frames(10); Shot("us68_burgh_goes_back");
+        ReadTo(null);
+        Castelia("the sewers");
+
+        // ---- Thumb Pier again: Iris's word
+        StepOnto("CasteliaCity_ThumbPier", 10, 19, Direction.Up);
+        ReadTo("Did everything go all right down there?"); Frames(10); Shot("us69_iris_afterward");
+        ReadTo(null);
+
+        // ---- the Gym: Burgh's battle and the Insect Badge
+        ComeThrough("CasteliaCity_Gym", 16, 19, Direction.Up); Frames(30); Shot("us70_the_castelia_gym");
+        TalkTo("CasteliaCity_Gym", "burgh", "castelia_city_gym");
+        ReadTo("painter of Bug Pokémon"); Frames(10); Shot("us71_burgh");
+        IntoBattle("Burgh");
+        ToMainMenu(game.Battle); Shot("us72_burghs_battle");
+        Win();
+        ReadTo("Here, the Insect Badge!"); Frames(10); Shot("us73_the_insect_badge");
+        ReadTo(null);
+        Castelia("the Insect Badge");
+
+        // ---- the plaza: Colress
+        At("CasteliaCity_Plaza", 16, 14, Direction.Up); Frames(30); Shot("us74_the_plaza");
+        StepOnto("CasteliaCity_Plaza", 15, 3, Direction.Up);
+        ReadTo("might I have a look at your Pokémon?"); Frames(10); Shot("us75_colress");
+        ReadTo("my name is Colress"); Frames(10); Shot("us76_colress_names_himself");
+        ReadTo(null);
+
+        // ---- Route 4: the Crustle woken and Colress's battle
+        StepOnto("Unova", 430, 584, Direction.Up);
+        ReadTo("Curious about what's behind me?"); Frames(10); Shot("us77_colress_on_route_4");
+        ReadTo("Were they lying here all along"); Frames(10); Shot("us78_the_crustle_woken");
+        IntoBattle("Colress");
+        ToMainMenu(game.Battle); Shot("us79_colress_battle");
+        Win();
+        ReadTo("Until we meet again"); Frames(10); Shot("us80_colress_goes_on");
+        ReadTo(null);
+        Castelia("Route 4");
     }
 }

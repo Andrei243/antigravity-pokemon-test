@@ -1,0 +1,131 @@
+# The Castelia Sewers (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/castelia_sewers.s, read for the order alone).
+# VAR_UNOVA_CASTELIA is the city's count (castelia_city_10.txt has it whole).
+#
+# Hugh (0) waits inside the way down and comes along (7): he heals the team and walks behind the player, his team the
+# one strong against the player's starter (Black 2's TRAINER_RIVAL_13, _14 and _15). In the north passage two grunts
+# of Team Plasma (1, 2) are battled side by side, Hugh beside the player (Black 2's multi battle, 342 and 356); they
+# run, Burgh (20) comes along the passage from the west, Hugh hands over HM04 and goes after the rest of Team Plasma,
+# a stranger in a white coat (19, Colress, who names himself on the plaza later) praises the battle and slips away,
+# and Burgh heads back to his Gym (8). Black 2's dropped-item girl (21) is left out.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# Inside the way down from Thumb Pier (our trigger on 83, 20 and 21, at 6)
+script HughJoins
+  scene "Hugh in the sewers"
+  face 0 player
+  speaker "{rival}"
+  say "{player}! Team Plasma's down here somewhere, I just know it. Taking them on alone would be too much, even for me."
+  say "So we'll do it together! First, let me patch up your team."
+  heal
+  text "{rival} healed your Pokémon."
+  say "OK! Let's find Team Plasma!"
+  if starter "Snivy" goto WithPignite
+  if starter "Tepig" goto WithDewott
+  partner 0 "unova_rival_15"
+  goto Along
+label WithPignite
+  partner 0 "unova_rival_13"
+  goto Along
+label WithDewott
+  partner 0 "unova_rival_14"
+label Along
+  setvar VAR_UNOVA_CASTELIA 7
+  endscene
+  end
+
+
+script Hugh
+  face 0 player
+  speaker "{rival}"
+  say "Team Plasma's down here. Let's go!"
+  end
+
+
+# The passage north, where two of Team Plasma are talking (our trigger on 50 to 52, 9, at 7)
+script PlasmaInTheSewers
+  scene "Team Plasma in the sewers"
+  place player 52 8 up
+  place 0 50 8 up
+  speaker "{rival}"
+  say "Hey!"
+  face 1 down
+  face 2 down
+  speaker "Grunt"
+  say "Huh? What do you want?"
+  speaker "{rival}"
+  say "Team Plasma! You rotten crooks!"
+  speaker "Grunt"
+  say "Crooks? How rude! We're freeing Pokémon. Don't get in the way of our noble work!"
+  speaker "{rival}"
+  say "Freeing them? Don't make me laugh! You steal Pokémon, and then you use them like tools!"
+  speaker "Grunt"
+  say "Shut it! Now hand over your Pokémon!"
+  speaker "{rival}"
+  say "Let's do this, {player}!"
+  battle 1 and 2 with partner
+  speaker "Grunt"
+  say "Ugh, they're tough! Whatever. We've got the Pokémon we came for. Let's get out of here!"
+  walk 1 down 1 left 9 fast
+  hide 1
+  walk 2 left 2 down 1 left 9 fast
+  hide 2
+  setflag FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  speaker "{rival}"
+  say "Tch! They ran off like a bunch of Patrat! Come on, there might be more of them further in!"
+  speaker "???"
+  say "I don't think there's any need for that, you two."
+  clearflag FLAG_UNOVA_HIDE_SEWERS_BURGH
+  place 20 41 7 right
+  show 20
+  walk 20 right 8
+  face player left
+  face 0 left
+  speaker "{rival}"
+  say "Are you... Burgh, the Gym Leader?"
+  speaker "Burgh"
+  say "One and the same! I'm Burgh. And there's nobody suspicious further in, I've just looked."
+  say "Team Plasma worries me too, but let's get out of here, shall we? This sewer is full of Bug Pokémon... Actually, that part I like."
+  speaker "{rival}"
+  say "Huh... Didn't you and the other Gym Leaders fight Team Plasma two years ago?"
+  face 0 player
+  say "Thanks for helping out, {player}. Here, take this!"
+  partner off
+  give "HM04"
+  say "I'll find the rest of those Team Plasma punks. I'll never forgive Pokémon thieves. Never!"
+  walk 0 down 2 right 6 fast
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_SEWERS
+  face player left
+  speaker "Burgh"
+  say "He's gone..."
+  speaker "???"
+  say "You there!"
+  clearflag FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  place 19 51 4 down
+  show 19
+  walk 19 down 1
+  face player up
+  face 20 19
+  say "That was a remarkable display of battling. The way you drew out your Pokémon's power against Team Plasma..."
+  say "Simply fascinating. I'll be watching with interest!"
+  walk 19 up 1 fast
+  hide 19
+  setflag FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  face 20 player
+  speaker "Burgh"
+  say "Who... was that?"
+  say "Well, never mind. What will you do now? You could stay down here and train your Pokémon..."
+  say "Or you could come and challenge me at my Gym! I'll be waiting, my muse and I!"
+  walk 20 left 8 fast
+  hide 20
+  setflag FLAG_UNOVA_HIDE_SEWERS_BURGH
+  clearflag FLAG_UNOVA_HIDE_BURGH_GYM
+  setvar VAR_UNOVA_CASTELIA 8
+  endscene
+  end

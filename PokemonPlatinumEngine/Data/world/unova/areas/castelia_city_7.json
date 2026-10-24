@@ -1,0 +1,39 @@
+{
+  "key": "castelia_city_7",
+  "index": 35,
+  "name": "Castelia City",
+  "matrix": 6,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "6",
+  "battleBackground": "",
+  "dayMusic": "BGM_C_03",
+  "nightMusic": "BGM_C_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 13, "z": 63, "to": "castelia_city", "toWarp": 18 },
+    { "x": 20, "z": 46, "to": "castelia_city_22", "toWarp": 0 },
+    { "x": 15, "z": 29, "to": "castelia_city_2", "toWarp": 2 },
+    { "x": 16, "z": 63, "to": "castelia_city", "toWarp": 5 },
+    { "x": 14, "z": 63, "to": "castelia_city", "toWarp": 18 },
+    { "x": 15, "z": 63, "to": "castelia_city", "toWarp": 18 },
+    { "x": 16, "z": 29, "to": "castelia_city_2", "toWarp": 2 },
+    { "x": 17, "z": 29, "to": "castelia_city_2", "toWarp": 2 },
+    { "x": 18, "z": 29, "to": "castelia_city_2", "toWarp": 2 },
+    { "x": 17, "z": 63, "to": "castelia_city", "toWarp": 5 },
+    { "x": 18, "z": 63, "to": "castelia_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "83", "movement": "none", "x": 13, "z": 48, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "roughneck", "movement": "none", "x": 18, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "2", "looks": "roughneck", "movement": "none", "x": 18, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 14, "z": 48, "width": 5, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4137", "value": "0" }
+  ]
+}

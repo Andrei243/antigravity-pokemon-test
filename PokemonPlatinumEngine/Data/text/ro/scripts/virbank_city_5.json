@@ -10,7 +10,15 @@
     },
     {
       "en": [
-        "{player}! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!"
+        "{player}! You're heading to Castelia City too, right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then let's go! I'm going after Team Plasma. I'll never let them get away!"
       ],
       "text": [
         ""
@@ -23,9 +31,7 @@
       "text": [
         ""
       ]
-    }
-  ],
-  "CaptainLines": [
+    },
     {
       "en": [
         "Captain"
@@ -36,7 +42,7 @@
     },
     {
       "en": [
-        "Ha ha! She's raring to go, but her engines went cold while I was off at the studios."
+        "Ha ha! With pleasure! All aboard for Castelia City, the pair of you!"
       ],
       "text": [
         ""
@@ -44,7 +50,67 @@
     },
     {
       "en": [
-        "Give me a little while to warm them through, and we'll charge across to Castelia City!"
+        "Huh? You've still got things to do here? Go and finish them, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even once we're in Castelia, we can always come back to Virbank, you know."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Captain": [
+    {
+      "en": [
+        "Captain"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where to, young Trainer? Shall we set sail for Castelia City?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right you are! Step this way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whenever you're ready. The old girl's engines are always warm now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She's all warmed up and raring to go! Your friend's been pacing the deck since I got back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Voyage": [
+    {
+      "en": [
+        "The ship slips out of the harbour and churns across the bay toward the towers of Castelia City..."
       ],
       "text": [
         ""

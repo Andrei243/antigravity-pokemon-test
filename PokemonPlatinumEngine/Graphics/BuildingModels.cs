@@ -250,6 +250,9 @@ internal static class BuildingModels
         bool beacon = lighthouse || s.Gear.HasFlag(RoofGear.Beacon);
         int count = s.StageCount > 0 ? s.StageCount : lighthouse ? 2 : 3;
         int total = Math.Clamp((int)MathF.Round(b.Height * GroundBaker.ArtTile / kit.VS), 150, great ? 380 : 300);
+        // A skyscraper's model is cut off where the camera stops seeing it (Castelia's towers end in roofs a few tiles up):
+        // it stands at least as tall as a great tower's middle
+        if (s.FlatTop) total = Math.Max(total, 300);
         const int lantern = 24, capRows = 30;
         int rows = Math.Max(30, (total - h - (beacon ? lantern + 6 : 0)) / count);
 
@@ -278,6 +281,13 @@ internal static class BuildingModels
             kit.Box(cx - lw / 2, cx + lw / 2, cz - ld / 2, cz + ld / 2, y, y + lantern, south: glass, west: glassSide, east: glassSide);
             y += lantern;
             width = lw + 8; depthOf = ld + 8;
+        }
+
+        // A skyscraper (Castelia's) ends flat: a roof slab a little wider than its last stage, in the roof's grey
+        if (s.FlatTop)
+        {
+            Stage(kit, s with { Window = WindowKind.None, Band = false }, id + ".roof", cx - width / 2 - 3, cx + width / 2 + 3, cz - depthOf / 2 - 2, cz + depthOf / 2 + 3, y, y + 4);
+            return;
         }
 
         // The cap: four slopes to a point, in the roof's own tiles

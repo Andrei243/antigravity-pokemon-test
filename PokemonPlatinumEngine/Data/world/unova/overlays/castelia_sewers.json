@@ -1,0 +1,87 @@
+{
+  // The Castelia Sewers (plan 22 · U5, part c): Black 2's tunnels under the city, our words; only the way up to Thumb
+  // Pier is open (the others lead into rooms and passages later chapters open). Hugh (0, FLAG_UNOVA_HIDE_HUGH_SEWERS)
+  // waits inside the entrance and comes along; two grunts of Team Plasma (1, 2, FLAG_UNOVA_HIDE_SEWER_GRUNTS) are
+  // battled beside him, and Burgh (20, FLAG_UNOVA_HIDE_SEWERS_BURGH) and a stranger (19, FLAG_UNOVA_HIDE_SEWERS_COLRESS)
+  // turn up afterwards (castelia_sewers.txt). The triggers are on tiles of ours, each with VAR_UNOVA_CASTELIA
+  "area": "castelia_sewers",
+  "bgmTrack": "sinnoh/cave",
+  "locked": [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ],
+  "triggers": [
+    { "script": "HughJoins", "x": 83, "z": 20, "width": 1, "depth": 2, "variable": "VAR_UNOVA_CASTELIA", "value": 6 },
+    { "script": "PlasmaInTheSewers", "x": 50, "z": 9, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 7 }
+  ],
+  "people": {
+    "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_SEWERS" },
+    "1": {
+      "name": "Grunt",
+      "npcType": "plasma_grunt",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_SEWER_GRUNTS",
+      "trainer": { "id": "unova_team_plasma_grunt", "dialogueBefore": "Hand over your Pokémon!", "dialogueAfter": "We've got what we came for, anyway!" }
+    },
+    "2": {
+      "name": "Grunt",
+      "npcType": "plasma_grunt",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_SEWER_GRUNTS",
+      "trainer": { "id": "unova_team_plasma_grunt_3", "dialogueBefore": "You won't get in our way!", "dialogueAfter": "Run for it!" }
+    },
+    "12": {
+      "name": "Doctor",
+      "trainer": {
+        "dialogueBefore": "I patrol these tunnels in case anyone gets hurt down here. Let's check your Pokémon's health the hard way!",
+        "dialogueAfter": "A clean bill of health! Yours, not mine."
+      }
+    },
+    "13": {
+      "name": "Janitor",
+      "trainer": {
+        "dialogueBefore": "These sewers don't clean themselves, you know! Stand back, I'm sweeping you out!",
+        "dialogueAfter": "Swept away... Back to mopping, then."
+      }
+    },
+    "14": {
+      "name": "Worker",
+      "trainer": {
+        "dialogueBefore": "Hard hat on, Pokémon ready! A worker's always prepared for trouble underground!",
+        "dialogueAfter": "Trouble came, all right. It was you."
+      }
+    },
+    "15": {
+      "name": "Scientist",
+      "trainer": {
+        "dialogueBefore": "I'm studying the Pokémon that live in the city's waterways. You'll make a fine test subject!",
+        "dialogueAfter": "Noted: the test subject was stronger than the scientist."
+      }
+    },
+    "16": {
+      "name": "Worker",
+      "trainer": {
+        "dialogueBefore": "I've been fixing pipes down here all morning. A battle's just the break I need!",
+        "dialogueAfter": "Some break. I'm more worn out than before!"
+      }
+    },
+    "17": {
+      "name": "Scientist",
+      "trainer": {
+        "dialogueBefore": "The damp down here suits some Pokémon very well. Let me show you my findings!",
+        "dialogueAfter": "My findings... need further study."
+      }
+    },
+    "18": {
+      "name": "Janitor",
+      "trainer": {
+        "dialogueBefore": "Mind the puddles! And mind my Pokémon, while you're at it!",
+        "dialogueAfter": "I slipped. That's my excuse, and I'm sticking to it."
+      }
+    },
+    "19": { "name": "???", "npcType": "colress", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_SEWERS_COLRESS", "dialog": [ "..." ] },
+    "20": { "name": "Burgh", "npcType": "burgh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_SEWERS_BURGH", "dialog": [ "..." ] },
+    "22": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "dialog": [ "I came down here to think, and now I can't find the way back up. Every tunnel looks the same!" ]
+    }
+  }
+}
