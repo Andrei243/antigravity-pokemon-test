@@ -1577,6 +1577,64 @@
       ]
     }
   ],
+  "JohtoChampionCall": [
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "GabbyAndTyGabby": [
     {
       "en": [

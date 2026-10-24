@@ -1778,6 +1778,23 @@ script JohtoTakeoverCall
   return
 
 
+# Professor Elm's call to the new Champion (plan 20 · J12): the first time the player comes downstairs at home after
+# Johto's Hall of Fame (new_bark_player_house_1f.txt), as HeartGold rings the Pokégear once the Champion is home. In
+# HeartGold he speaks of the S.S. Aqua to Kanto; here the journey goes on to Hoenn (plan 18 · W10), and the ship that
+# takes a Champion there sails from Olivine's port (RegionDatabase's link from Johto).
+script JohtoChampionCall
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Prof. Elm"
+  say "{player}! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!"
+  say "Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly."
+  say "Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League."
+  say "There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!"
+  text "Click... The call has ended."
+  setflag FLAG_ELM_CALLED_THE_CHAMPION
+  return
+
+
 # ------------------------------------------------------------------ Hoenn (plan 21 · H2)
 
 # What every game starts with in Hoenn, as Emerald's new game and its moving van set it, for the people of the first

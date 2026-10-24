@@ -1,0 +1,51 @@
+{
+  "people": {
+    "t10r0601_wataru": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0601_ookido": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Congratulations, {player}! What a battle that was."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0601_kurumi": {
+      "name": {
+        "en": [
+          "Mary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is going out on Pokémon Talk tonight. Smile, Champion!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

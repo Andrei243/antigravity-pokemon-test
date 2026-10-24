@@ -105,6 +105,11 @@ script AideStops
 # Balls for the road. The thief was named when the game began (the introduction's last question), so the policeman
 # only has that name confirmed (docs/mechanics/rulings.md, "Johto's first chapter").
 script OnEnter
+  # Back with the Rising Badge (plan 20 · J12): HeartGold's VAR_SCENE_ELMS_LAB 8, Elm's Master Ball. A flag of ours
+  # (FLAG_GOT_MASTER_BALL_FROM_ELM) and the Badge itself ask, so a save from before this session needs no story version.
+  if flag FLAG_GOT_MASTER_BALL_FROM_ELM goto Theft
+  if badge rising goto MasterBall
+label Theft
   if var VAR_SCENE_ELMS_LAB != 3 end
   scene "The theft"
   walk player up 6
@@ -148,11 +153,28 @@ label Leaves
   setvar VAR_UNK_408B 1
   endscene
   end
+label MasterBall
+  scene "The Master Ball"
+  walk player up 6
+  face t20r0101_doctor player
+  speaker "Prof. Elm"
+  say "{player}! I heard the news from Blackthorn City. Eight Badges! I knew you could do it!"
+  say "You've seen nearly all of Johto now. There's only one place left for a trainer like you: the Pokémon League."
+  say "I want you to take this with you. I was given it for my research, but it belongs with someone who will use it well."
+  give "Master Ball" 1
+  say "It's the Master Ball, the finest ball there is. It will catch any Pokémon at all, without fail."
+  say "The League is reached by Route 27, east of here across the water, and then Victory Road. Good luck, {player}!"
+  setflag FLAG_GOT_MASTER_BALL_FROM_ELM
+  setvar VAR_SCENE_ELMS_LAB 8
+  endscene
+  end
 
 
 # Professor Elm, by how far the chapter has come; before the starter he has the choice to offer too.
 script Elm
   speaker "Prof. Elm"
+  if flag JohtoHallOfFame goto Champion
+  if var VAR_SCENE_ELMS_LAB >= 8 goto League
   if var VAR_SCENE_ELMS_LAB >= 5 goto Hatched
   if var VAR_SCENE_ELMS_LAB == 4 goto Egg
   if var VAR_SCENE_ELMS_LAB >= 1 goto Errand
@@ -173,6 +195,13 @@ label Egg
   end
 label Hatched
   say "The Egg is in my aide's hands now. I'm so glad you'll be the one to raise what comes out of it."
+  end
+label League
+  say "Route 27 is east of town, across the water. Victory Road and the League are beyond it. I'm cheering for you!"
+  end
+label Champion
+  say "The Champion of the Pokémon League, from my own lab! I still can't quite believe it."
+  say "If you're thinking of going further, the ship at Olivine's port sails for Hoenn. Champions only, they tell me."
   end
 
 

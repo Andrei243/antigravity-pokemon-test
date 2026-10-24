@@ -1413,6 +1413,119 @@ public class JohtoStoryTests
         Assert.Single(game.Party.Members, p => p.Species.Name == "Dratini");
     }
 
+    [Theory]
+    [InlineData(0, "johto_rival_silver_9")]
+    [InlineData(1, "johto_rival_silver_13")]
+    [InlineData(2, "johto_rival_silver_5")]
+    public void TheFifthChapterPlaysFromElmsMasterBallToTheHallOfFame(int starter, string rival)
+    {
+        // Plan 20 · J12: Elm's Master Ball for the eighth Badge, the rival's last challenge in Victory Road with the team
+        // that beats the player's starter, the Elite Four's doors opening one by one with no way back, Lance, the Hall of
+        // Fame and the credits, home to New Bark Town and Elm's call, and the gate's door to Kanto open to the Champion
+        var game = PastTheTakeover();
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Johto)!.Starters[starter]);
+        game.Story.GiveBadge("Johto", "Rising");
+        game.Story.Set("FLAG_UNK_0EA");
+
+        // The lab: Elm's Master Ball, once
+        var lab = Johto.Value.Area("new_bark_elms_lab_1f")!.Warps[0];
+        game.Arrive("NewBark_ElmsLab", lab.X, lab.Z - 1);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!));
+        Assert.True(game.Story.Has("FLAG_GOT_MASTER_BALL_FROM_ELM"));
+        Assert.Equal(8, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+        game.Arrive("NewBark_ElmsLab", lab.X, lab.Z - 1);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!));
+
+        // Victory Road: the rival is off the floor until his scene, battles once and goes on ahead
+        game.Arrive("IndigoVictoryRoad_3F", 38, 25);
+        Assert.Null(game.Present("d43r0103_gsrivel"));
+        Assert.True(game.Fires("Rival"));
+        var road = game.Step("Rival");
+        Assert.Contains(road.Log, l => l.StartsWith($"battle {rival} Won"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40C5"));
+        Assert.False(game.Fires("Rival"));
+        game.Arrive("IndigoVictoryRoad_3F", 38, 25);
+        Assert.Null(game.Present("d43r0103_gsrivel"));
+
+        // The hall puts the League back whenever it is come into
+        game.Story.Set("FLAG_HIDE_WILLS_ROOM_EXIT");
+        game.Story.SetVar("VAR_UNK_40C7", 1);
+        game.Arrive("IndigoLeague_PokemonCenter_1F", 11, 24);
+        Assert.False(game.Story.Has("FLAG_HIDE_WILLS_ROOM_EXIT"));
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40C7"));
+        foreach (var (room, who, id, flag, next) in new[]
+                 {
+                     ("IndigoLeague_WillRoom", "t10r0201_gsbigfour1", "johto_elite_four_will_will", "FLAG_HIDE_WILLS_ROOM_EXIT", "IndigoLeague_KogaRoom"),
+                     ("IndigoLeague_KogaRoom", "t10r0301_gsbigfour2", "johto_elite_four_koga_koga", "FLAG_HIDE_KOGAS_ROOM_EXIT", "IndigoLeague_BrunoRoom"),
+                     ("IndigoLeague_BrunoRoom", "t10r0401_gsbigfour3", "johto_elite_four_bruno_bruno", "FLAG_HIDE_BRUNOS_ROOM_EXIT", "IndigoLeague_KarenRoom"),
+                     ("IndigoLeague_KarenRoom", "t10r0501_gsbigfour4", "johto_elite_four_karen_karen", "FLAG_HIDE_KARENS_ROOM_EXIT", "IndigoLeague_LanceRoom")
+                 })
+        {
+            game.Through(room);
+            var ahead = game.Map.Warps.Where(w => w.TargetMap == next).ToList();
+            Assert.NotEmpty(ahead);
+            // The door ahead is shut until the master of the room is beaten, and there is no way back to the hall
+            Assert.All(ahead, w => Assert.True(game.Map.IsSolid(w.SourceX, w.SourceY), room));
+            Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "IndigoLeague_PokemonCenter_1F");
+            var battle = game.Talk(who);
+            Assert.Contains(battle.Log, l => l.StartsWith($"battle {id} Won"));
+            Assert.True(game.Story.Has(flag));
+            Assert.All(ahead, w => Assert.False(game.Map.IsSolid(w.SourceX, w.SourceY), room));
+            Assert.DoesNotContain(game.Talk(who).Log, l => l.StartsWith("battle"));
+        }
+
+        // The Champion's room: Lance on the dais, his battle, Mary and Oak, and on through the door he opens
+        game.Through("IndigoLeague_LanceRoom");
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "IndigoLeague_KarenRoom");
+        Assert.Null(game.Present("t10r0601_ookido"));
+        Assert.True(game.Fires("Lance"));
+        var lance = game.Step("Lance");
+        Assert.Contains(lance.Log, l => l.StartsWith("battle johto_champion_lance Won"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40C7"));
+        Assert.True(game.Story.Has("FLAG_HIDE_LANCES_ROOM_EXIT"));
+        Assert.True(game.Story.Has("FLAG_LANCES_ROOM_VISITORS"));
+
+        // The Hall of Fame: the team recorded, Johto's story ended, the credits, and home
+        var hall = game.Played.Single(p => p.Script.Contains("johto_pokemon_league_hall_of_fame") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(hall.Log, l => l.StartsWith("halloffame"));
+        Assert.Contains(hall.Log, l => l == "open Credits");
+        Assert.True(game.Story.Has(RegionDatabase.Get(RegionDatabase.Johto)!.StoryCompleteFlag));
+        Assert.Equal("NewBark_PlayersHouse_2F", game.Map.Name);
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Johto)!, game.Story));
+
+        // Downstairs Elm rings, once
+        game.Through("NewBark_PlayersHouse_1F");
+        Assert.True(game.Story.Has("FLAG_ELM_CALLED_THE_CHAMPION"));
+        int plays = game.Played.Count;
+        game.Through("NewBark_PlayersHouse_2F");
+        game.Through("NewBark_PlayersHouse_1F");
+        Assert.DoesNotContain(game.Played.Skip(plays), p => p.Host.Transcript.Any(t => t.Text.Contains("Brrrring")));
+
+        // The gate's door to Route 22 lets the Champion through and turns nobody back again
+        game.Arrive("Route22_LeagueReceptionGate", 11, 22);
+        Assert.True(game.Fires("KantoShut"));
+        var gate = game.Step("KantoShut");
+        Assert.DoesNotContain(gate.Log, l => l.StartsWith("walk player"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4121"));
+        Assert.False(game.Fires("KantoShut"));
+    }
+
+    [Fact]
+    public void TheLeaguesDoorsStayShutToWhoeverHasNotBeatenTheRoomsMaster()
+    {
+        // Plan 20 · J12: a battle lost in Will's room leaves his door shut, and the hall's arrival puts it all back
+        var game = PastTheTakeover();
+        game.Story.GiveBadge("Johto", "Rising");
+        game.Fight = BattleOutcome.Lost;
+        game.Arrive("IndigoLeague_PokemonCenter_1F", 11, 24);
+        game.Through("IndigoLeague_WillRoom");
+        game.Talk("t10r0201_gsbigfour1");
+        Assert.False(game.Story.Has("FLAG_HIDE_WILLS_ROOM_EXIT"));
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "IndigoLeague_KogaRoom"), w => Assert.True(game.Map.IsSolid(w.SourceX, w.SourceY)));
+        // and the Hall of Fame's flag is not had for the asking
+        Assert.False(game.Story.Has("JohtoHallOfFame"));
+    }
+
     [Fact]
     public void EveryAnswerRightGivesADratiniThatKnowsExtremeSpeedAndClairGivesTheTMInHerGym()
     {

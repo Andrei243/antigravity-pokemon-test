@@ -1,7 +1,10 @@
 {
-  // The Hall of Fame (plan 20 · J10, part b), a place for now: Lance, the machine's ceremony and JohtoHallOfFame are
-  // plan 20 · J12's. Its key takes Johto's prefix, since FireRed's Hall of Fame is pokemon_league_hall_of_fame
+  // The Hall of Fame (plan 20 · J10, part b; J12). Its scene plays as the new Champion comes in behind Lance
+  // (johto_pokemon_league_hall_of_fame.txt): his words, the team's entry, the credits, and home. Its key takes Johto's
+  // prefix, since FireRed's Hall of Fame is pokemon_league_hall_of_fame
   "area": "johto_pokemon_league_hall_of_fame",
   "bgmTrack": "johto/indigo_plateau",
-  "people": {}
+  "people": {
+    "t10r0701_wataru": { "name": "Lance", "still": true, "dialog": [ "You've earned your place here, {player}." ] }
+  }
 }

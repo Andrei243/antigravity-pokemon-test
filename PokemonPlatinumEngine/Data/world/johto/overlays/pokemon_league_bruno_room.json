@@ -1,10 +1,20 @@
 {
-  // Bruno's room, the third of the Elite Four's (plan 20 · J10, part b), a place for now: Bruno, the door that shuts behind the
-  // challenger and the door on that opens once Bruno is beaten are plan 20 · J12's, so both ways stand open
+  // Bruno's room, the third of the Elite Four's (plan 20 · J10, part b; J12). The way back is shut behind the
+  // challenger, and the door ahead opens onto Karen's room once Bruno is beaten (FLAG_HIDE_BRUNOS_ROOM_EXIT).
+  // pokemon_league_bruno_room.txt has his battle
   "area": "pokemon_league_bruno_room",
   "bgmTrack": "johto/indigo_plateau",
-  // HeartGold walks the challenger in through the doorway at the room's foot, whose tile is a wall to a step: until
-  // J12's scene does, a step into the doorway comes out beyond it
+  "arenaType": "Fighting",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "IndigoLeague_KarenRoom", "x": 6, "y": 21, "facing": "Up", "openedBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT" },
+    { "warp": 2, "map": "IndigoLeague_KarenRoom", "x": 6, "y": 21, "facing": "Up", "openedBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT" },
+    { "warp": 3, "map": "IndigoLeague_KarenRoom", "x": 6, "y": 21, "facing": "Up", "openedBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT" }
+  ],
+  // HeartGold walks the challenger in through the doorway at the room's foot, whose tile is a wall to a step: a step
+  // into the doorway comes out beyond it, and a step back into it from the room only comes out there again
   "exits": [ { "x": 6, "z": 20, "map": "IndigoLeague_BrunoRoom", "toX": 6, "toY": 18, "facing": "Up" } ],
-  "people": {}
+  "people": {
+    "t10r0401_gsbigfour3": { "name": "Bruno", "script": "Bruno", "still": true }
+  }
 }
