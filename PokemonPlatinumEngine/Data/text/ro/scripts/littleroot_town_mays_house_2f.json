@@ -60,10 +60,37 @@
   "Rival": [
     {
       "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ],
+      "was": [
+        "Casa noastră e chiar lângă a ta, {player}. Treci pe la noi oricând!"
+      ]
+    },
+    {
+      "en": [
         "Our house is right next to yours, {player}. Come over any time!"
       ],
       "text": [
         "Casa noastră e chiar lângă a ta, {player}. Treci pe la noi oricând!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I came home to help Dad sort through all the data from my journey."
+      ],
+      "text": [
+        "{player}! Am venit acasă să-l ajut pe tata să treacă prin toate datele din călătoria mea."
+      ]
+    },
+    {
+      "en": [
+        "Hearing how far you've got makes me want to go back out there. Keep going, all right? I'm cheering for you!"
+      ],
+      "text": [
+        "Când aud cât de departe ai ajuns, îmi vine să plec din nou. Mergi mai departe, bine? Țin pumnii pentru tine!"
       ]
     }
   ]

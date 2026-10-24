@@ -1,0 +1,57 @@
+{
+  "people": {
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: We line up for our posts in the order we turn up. I'm always last, so I get the corner nobody wants!"
+        ],
+        "text": [
+          "Magma Grunt: Ne alegem posturile în ordinea în care apărem. Eu sunt mereu ultimul, așa că primesc colțul pe care nu-l vrea nimeni!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Last in line and last in battle too..."
+        ],
+        "text": [
+          "Magma Grunt: Ultimul la rând și ultimul și în luptă..."
+        ]
+      }
+    },
+    "magma_member_m_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: The boss had us dig into the mountain, and we found something amazing down here! Beat me and maybe I'll tell you what."
+        ],
+        "text": [
+          "Magma Grunt: Șeful ne-a pus să săpăm în munte, și am găsit ceva uluitor aici jos! Învinge-mă și poate îți spun ce."
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Nope, not telling. You'll see for yourself soon enough. Surprises are better that way."
+        ],
+        "text": [
+          "Magma Grunt: Nu, nu-ți spun. O să vezi singur în curând. Surprizele sunt mai frumoase așa."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

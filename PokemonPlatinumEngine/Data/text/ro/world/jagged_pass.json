@@ -129,6 +129,16 @@
           "Triatlonist Julio: Am frânat prea târziu."
         ]
       }
+    },
+    "magma_hideout_guard": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      }
     }
   },
   "signs": {}

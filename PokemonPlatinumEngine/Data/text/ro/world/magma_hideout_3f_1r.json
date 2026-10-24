@@ -1,0 +1,57 @@
+{
+  "people": {
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Why do I always get the post right next to the magma? My ear's practically cooking!"
+        ],
+        "text": [
+          "Magma Grunt: De ce primesc mereu postul chiar lângă magmă? Urechea mea aproape că se prăjește!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: I think I've got heatstroke..."
+        ],
+        "text": [
+          "Magma Grunt: Cred că am făcut insolație..."
+        ]
+      }
+    },
+    "magma_member_f": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          "Magma Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: We joined to help the boss make his dream real. Team Aqua or just some kid, nobody gets in the way of that!"
+        ],
+        "text": [
+          "Magma Grunt: Ne-am alăturat ca să-l ajutăm pe șef să-și împlinească visul. Echipa Aqua sau un copil oarecare, nimeni nu are voie să stea în calea asta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Team Magma is right, you hear me? Don't believe a word Team Aqua tells you!"
+        ],
+        "text": [
+          "Magma Grunt: Echipa Magma are dreptate, m-ai auzit? Să nu crezi o vorbă din ce-ți spune Echipa Aqua!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

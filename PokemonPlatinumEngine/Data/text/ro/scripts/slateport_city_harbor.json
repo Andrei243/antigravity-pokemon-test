@@ -1,0 +1,112 @@
+{
+  "ArchieSpeaks": [
+    {
+      "en": [
+        "Archie"
+      ],
+      "text": [
+        "Archie"
+      ]
+    },
+    {
+      "en": [
+        "Oh? Not you again. You're a stubborn one, following us all the way here."
+      ],
+      "text": [
+        "Oh? Iar tu. Ce încăpățânare, să ne urmărești până aici."
+      ]
+    },
+    {
+      "en": [
+        "But I'll tell you something. We're taking this submarine to find what we need: the Pokémon that sleeps under the sea."
+      ],
+      "text": [
+        "Dar îți spun ceva. Luăm submarinul ăsta ca să găsim ce ne trebuie: Pokémonul care doarme sub mare."
+      ]
+    },
+    {
+      "en": [
+        "If you want to stop us, come to our hideout in Lilycove. We'll be waiting! Hahaha!"
+      ],
+      "text": [
+        "Dacă vrei să ne oprești, vino la ascunzătoarea noastră din Lilycove. Te așteptăm! Hahaha!"
+      ]
+    },
+    {
+      "en": [
+        "Archie and the grunt jumped down into the submarine, and it slid out of the harbour and away under the waves!"
+      ],
+      "text": [
+        "Archie și grunt-ul au sărit în submarin, iar acesta a ieșit din port și a dispărut sub valuri!"
+      ]
+    }
+  ],
+  "SternSpeaks": [
+    {
+      "en": [
+        "Captain Stern"
+      ],
+      "text": [
+        "Căpitanul Stern"
+      ]
+    },
+    {
+      "en": [
+        "{player}... What were they thinking? The submarine was built for exploring the sea floor, not for this!"
+      ],
+      "text": [
+        "{player}... La ce se gândeau? Submarinul a fost construit pentru explorarea fundului mării, nu pentru asta!"
+      ]
+    },
+    {
+      "en": [
+        "What could Team Aqua want with it? It can't be anything good. I'm sorry, I don't know what to do..."
+      ],
+      "text": [
+        "Ce ar putea vrea Echipa Aqua cu el? Nu poate fi nimic bun. Îmi pare rău, nu știu ce să fac..."
+      ]
+    }
+  ],
+  "Stern": [
+    {
+      "en": [
+        "Captain Stern"
+      ],
+      "text": [
+        "Căpitanul Stern"
+      ]
+    },
+    {
+      "en": [
+        "Those people tried to rob the museum, and now they've taken my submarine. I'll never forgive them!"
+      ],
+      "text": [
+        "Oamenii ăia au încercat să jefuiască muzeul, iar acum mi-au luat submarinul. N-am să-i iert niciodată!"
+      ]
+    },
+    {
+      "en": [
+        "Why would Team Aqua steal my submarine? I've told the police, but they could be anywhere in the sea by now."
+      ],
+      "text": [
+        "De ce mi-ar fura Echipa Aqua submarinul? Am anunțat poliția, dar acum ar putea fi oriunde în mare."
+      ]
+    },
+    {
+      "en": [
+        "They took the submarine out of their hideout in Lilycove and dived away, you say? Then it's somewhere at the bottom of the sea."
+      ],
+      "text": [
+        "Spui că au scos submarinul din ascunzătoarea lor din Lilycove și s-au scufundat? Atunci e undeva pe fundul mării."
+      ]
+    },
+    {
+      "en": [
+        "If only somebody could follow them down there..."
+      ],
+      "text": [
+        "Dacă ar putea cineva să-i urmeze acolo jos..."
+      ]
+    }
+  ]
+}

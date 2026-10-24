@@ -1,0 +1,51 @@
+{
+  "people": {
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      }
+    },
+    "aqua_member_m_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Hey! How did a kid get in here? This is Team Aqua's base, and you're not leaving it!"
+        ],
+        "text": [
+          "Aqua Grunt: Hei! Cum a intrat un copil aici? Asta e baza Echipei Aqua, și nu mai ieși de aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Fine, go on in. The others'll sort you out. Probably."
+        ],
+        "text": [
+          "Aqua Grunt: Bine, intră. Ceilalți se vor ocupa de tine. Probabil."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

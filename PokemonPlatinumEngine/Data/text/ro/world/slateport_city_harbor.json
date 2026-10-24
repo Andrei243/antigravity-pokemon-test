@@ -53,6 +53,52 @@
           "Îmi aștept feribotul. Îl aștept de mult."
         ]
       }
+    },
+    "slateport_harbor_capt_stern": {
+      "name": {
+        "en": [
+          "Captain Stern"
+        ],
+        "text": [
+          "Căpitanul Stern"
+        ]
+      }
+    },
+    "slateport_harbor_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          "Archie"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "slateport_harbor_grunt": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
     }
   },
   "signs": {}

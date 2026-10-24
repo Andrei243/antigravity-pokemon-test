@@ -1,5 +1,23 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon."
+        ],
+        "text": [
+          "O revistă lăsată pe bancă, deschisă la o pagină despre Agatha de la Elita celor Patru și Pokémonii ei de tip Fantomă."
+        ]
+      }
+    },
     "seven_island_nurse": {
       "name": {
         "en": [
@@ -61,24 +79,6 @@
         ],
         "text": [
           "Turnul Antrenorilor din nord nu e deschis încă. Îl mai pregătesc. Abia aștept!"
-        ]
-      }
-    },
-    "0": {
-      "name": {
-        "en": [
-          "Notice"
-        ],
-        "text": [
-          "Anunț"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon."
-        ],
-        "text": [
-          "O revistă lăsată pe bancă, deschisă la o pagină despre Agatha de la Elita celor Patru și Pokémonii ei de tip Fantomă."
         ]
       }
     },

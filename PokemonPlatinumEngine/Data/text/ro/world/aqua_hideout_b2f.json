@@ -1,0 +1,93 @@
+{
+  "people": {
+    "aqua_hideout_matt": {
+      "name": {
+        "en": [
+          "Matt"
+        ],
+        "text": [
+          "Matt"
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Halt! The boss is busy, and nobody bothers the boss while he's busy!"
+        ],
+        "text": [
+          "Aqua Grunt: Stai! Șeful e ocupat, și nimeni nu-l deranjează pe șef cât timp e ocupat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Go on, then. You're too late anyway, I reckon."
+        ],
+        "text": [
+          "Aqua Grunt: Hai, treci. Oricum ai întârziat, cred."
+        ]
+      }
+    },
+    "aqua_member_f": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: The sea gave life to everything. Team Aqua will give it back the land! Got a problem with that?"
+        ],
+        "text": [
+          "Aqua Grunt: Marea a dat viață a tot ce există. Echipa Aqua îi va da înapoi uscatul! Ai ceva împotrivă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: You've got a problem with it, all right."
+        ],
+        "text": [
+          "Aqua Grunt: Ai ceva împotrivă, se vede."
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          "Aqua Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: I stood guard here all night. You'd better be worth staying awake for!"
+        ],
+        "text": [
+          "Aqua Grunt: Am stat de pază aici toată noaptea. Să meriți că am rămas treaz!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Worth it, but not in the way I meant."
+        ],
+        "text": [
+          "Aqua Grunt: Ai meritat, dar nu în felul în care voiam eu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
