@@ -1,0 +1,22 @@
+{
+  // Route 4's third house of flats, downstairs (plan 22 · U6): Black 2's room, our words
+  "area": "unova_route_4_7",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "Welcome, welcome! I'm afraid there's nothing to see here. We've barely unpacked." ]
+    },
+    "1": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "On Thursdays a big bird Pokémon lands out on the road. I've seen it with my own eyes!" ]
+    },
+    "2": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Stand next to a big Pokémon and you look tiny by comparison. That's my secret to looking slim!" ]
+    }
+  }
+}

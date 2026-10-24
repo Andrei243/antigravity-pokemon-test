@@ -1,0 +1,21 @@
+{
+  // The Desert Resort's edge (plan 22 · U6): Black 2's sandy stretch north-west of Route 4 up to the gate house, in its
+  // sandstorm (the zone's header), our words
+  "area": "desert_resort",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [ "The desert's big and its Pokémon are tough. The perfect place to test yourself, if you don't mind sand in your shoes!" ]
+    },
+    "1": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "dialog": [ "Through the gate and straight on! That's the way to the Relic Castle. Or so my teacher says." ]
+    }
+  },
+  "signs": {
+    "1": "Desert Resort ahead\nA desert with a little something extra!"
+  }
+}

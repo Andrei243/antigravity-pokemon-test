@@ -1,0 +1,58 @@
+{
+  // Nimbasa City's amusement park (plan 22 · U6): Black 2's park east of the city's squares, our words, with Elesa's Gym
+  // at its east end. The Ferris wheel's ride is plan 22 · U6, part b's, and its door stays shut
+  "area": "nimbasa_city_2",
+  "bgmTrack": "unova/nimbasa",
+  "architecture": "Funfair",
+  "people": {
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "I came for the rides and stayed for the battles. The Gym at the end of the park is something else!" ]
+    },
+    "2": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "dialog": [ "Step right up! The amusement park never sleeps, and neither does this Harlequin!" ]
+    },
+    "3": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "From the top of the Ferris wheel you can see all of Nimbasa. Shame it's so busy today!" ]
+    },
+    "4": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "My children ran off to the roller coaster an hour ago. I'll wait right here, with a nice cold drink." ]
+    },
+    "5": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "We're queuing for the Ferris wheel. We've been queuing a long time." ]
+    },
+    "6": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "He promised me a ride on the Ferris wheel! The queue had better move soon..." ]
+    },
+    "7": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [ "I've watched this park light up every night for fifty years. Still gives me a thrill." ]
+    },
+    "8": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "dialog": [ "Elesa's Pokémon are as quick as lightning! You'll need to be quicker still." ]
+    },
+    "13": {
+      "name": "Lady",
+      "npcType": "Lady",
+      "dialog": [ "Elesa walks the runway in her own Gym. Imagine battling in a fashion show!" ]
+    }
+  },
+  "signs": {
+    "1": "Nimbasa City Pokémon Gym\nLeader: Elesa, the shining beauty",
+    "2": "Ferris Wheel\nSee all of Nimbasa from above!"
+  }
+}

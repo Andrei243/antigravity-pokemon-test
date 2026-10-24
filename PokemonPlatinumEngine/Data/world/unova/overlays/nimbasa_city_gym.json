@@ -1,0 +1,25 @@
+{
+  // The Nimbasa Gym (plan 22 · U6): Black 2's runway in the amusement park, our words. Three models wait along the
+  // catwalk, Nikola (2), Fleming (3) and Ampère (0); each steps down to meet a challenger who comes up level with our
+  // trigger before her (the rows 54, 39 and 24, VAR_UNOVA_NIMBASA_GYM 0, 1 and 2) and battles as her trainer of the data.
+  // Elesa (4) waits on the stage at the runway's head for the Bolt Badge; the guide (1) gives Fresh Water at the door
+  // (nimbasa_city_gym.txt). Black 2's lights and the models' walk with the player afterwards are left out
+  "area": "nimbasa_city_gym",
+  "bgmTrack": "unova/gym",
+  "arenaType": "Electric",
+  "triggers": [
+    { "script": "Nikola", "x": 14, "z": 54, "width": 3, "depth": 1, "variable": "VAR_UNOVA_NIMBASA_GYM", "value": 0 },
+    { "script": "Fleming", "x": 14, "z": 39, "width": 3, "depth": 1, "variable": "VAR_UNOVA_NIMBASA_GYM", "value": 1 },
+    { "script": "Ampere", "x": 14, "z": 24, "width": 3, "depth": 1, "variable": "VAR_UNOVA_NIMBASA_GYM", "value": 2 }
+  ],
+  "people": {
+    "0": { "name": "Ampère", "npcType": "beauty", "script": "Model", "still": true },
+    "1": { "name": "Guide", "npcType": "gym_guide", "script": "GymGuide", "still": true },
+    "2": { "name": "Nikola", "npcType": "beauty", "script": "Model", "still": true },
+    "3": { "name": "Fleming", "npcType": "beauty", "script": "Model", "still": true },
+    "4": { "name": "Elesa", "npcType": "elesa", "script": "Elesa", "still": true }
+  },
+  "signs": {
+    "11": "Nimbasa City Pokémon Gym\nLeader: Elesa, the shining beauty"
+  }
+}

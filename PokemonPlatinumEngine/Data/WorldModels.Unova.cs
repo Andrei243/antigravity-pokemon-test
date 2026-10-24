@@ -68,13 +68,27 @@ public static partial class WorldModels
         Ground("c03_kanban", "a sign on a tower's face: the sign event's tile draws it"),
         Ground("door_bar", "the door of a café on Narrow Street (the warp's tile draws it)"),
 
-        // ---------------------------------------------------------------- Route 4 and the edge of Nimbasa City (r4_, c04)
-        // Opened for Colress's scene (plan 22 · U5, part c); the route's works and Nimbasa's buildings are plan 22 · U6's
-        Built("r4_build", BuildingKind.House, "a building of Route 4's works", until: "plan 22 · U6"),
-        Built("buill", BuildingKind.Apartments, "a block of offices by Route 4 and Nimbasa City", Architecture.Metropolis, until: "plan 22 · U6"),
-        Built("jagate", BuildingKind.Gate, "the gate into Join Avenue", until: "plan 22 · U6"),
-        Built("c4_gate", BuildingKind.Gate, "a gate of Nimbasa City", until: "plan 22 · U6"),
-        Built("c04station", BuildingKind.Terminal, "Nimbasa City's Gear Station", until: "plan 22 · U6"),
+        // ---------------------------------------------------------------- Route 4 and Nimbasa City (r4_, c04, c4_)
+        // Route 4 opened for Colress's scene (plan 22 · U5, part c); its houses of flats, Join Avenue's gate and Nimbasa
+        // City since plan 22 · U6: the flats are Castelia's panel blocks, Nimbasa builds in its own way (Architecture.Funfair)
+        Built("r4_build", BuildingKind.Apartments, "a house of flats on Route 4, built as the road grows", Architecture.Metropolis),
+        Built("buill", BuildingKind.Apartments, "a block of flats by Nimbasa City's squares", Architecture.Funfair),
+        Built("jagate", BuildingKind.Gate, "the gate into Join Avenue"),
+        // (an archway walked under, at the amusement park's way in from the city and inside it: its ground is the way's)
+        Ground("c4_gate", "an archway of Nimbasa's amusement park, walked under (no model of its own: the way through is open ground)"),
+        Built("c04station", BuildingKind.Terminal, "Nimbasa City's Gear Station", Architecture.Funfair),
+        Built("thouse", BuildingKind.House, "a house of Nimbasa City", Architecture.Funfair),
+        Built("c04ballpark", BuildingKind.Hall, "Nimbasa City's Big Stadium", Architecture.Funfair, sign: "STADIUM"),
+        Built("c04tcourt", BuildingKind.Hall, "Nimbasa City's Small Court", Architecture.Funfair, sign: "COURT"),
+        Built("c04theater", BuildingKind.Hall, "Nimbasa City's Musical Theater", Architecture.Funfair, sign: "MUSICAL"),
+        Built("c04_gym", BuildingKind.Gym, "Nimbasa City's Pokémon Gym, Elesa's, in the amusement park", Architecture.Funfair),
+        Built("c04_poke01", BuildingKind.Shop, "a stall of Nimbasa's amusement park", Architecture.Funfair),
+        Built("c04_poke02", BuildingKind.Shop, "a stall of Nimbasa's amusement park", Architecture.Funfair),
+        Built("c04_fwheel", BuildingKind.Hall, "the amusement park's Ferris wheel (a hall stands in until its wheel is drawn)", Architecture.Funfair,
+            sign: "FERRIS WHEEL", until: "plan 22 · U6, part b"),
+        Thing("c04_plant", PropType.Planter, "a planter of the amusement park"),
+        // ---------------------------------------------------------------- the Desert Resort (d4_)
+        Thing("d4_ruins", PropType.Outcrop, "ruins half buried in the Desert Resort's sand"),
         Thing("roadcone", PropType.Bollard, "a road cone of Route 4's works"),
         Thing("sandbag", PropType.Crates, "sandbags of Route 4's works"),
         Thing("fream", PropType.Crates, "a frame of scaffolding of Route 4's works"),
@@ -83,6 +97,7 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- rooms: the houses
         Furniture("chair01", PropType.Chair, "a chair"),
         Furniture("chair03", PropType.Chair, "a chair"),
+        Furniture("chushion01", PropType.Cushion, "a floor cushion"),
         Furniture("chushion02", PropType.Cushion, "a floor cushion"),
         Furniture("table01", PropType.Table, "a table"),
         Furniture("desk01", PropType.Table, "a desk"),
@@ -109,6 +124,7 @@ public static partial class WorldModels
         // A room's props are numbered apart from the open country's (plan 22 · U2): pc01 here is a computer, where the
         // open country's Pokémon Center is pc
         Furniture("pc01", PropType.Computer, "a PC on its desk"),
+        Furniture("pcdesk01", PropType.Computer, "a desk with a PC on it"),
         Furniture("pcmachine01", PropType.Statue, "the round machine in the middle of a Pokémon Center"),
         Furniture("pcev01", PropType.Bookshelf, "one of the tall units along a Pokémon Center's back wall"),
         Furniture("pcchair01", PropType.Chair, "a chair in the Pokémon Center"),

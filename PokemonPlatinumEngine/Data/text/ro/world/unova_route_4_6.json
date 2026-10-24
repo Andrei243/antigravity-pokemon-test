@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I'm feeling down, I just look into my Lillipup's big round eyes. Works every time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Lillipup"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lillipup: Yip! Yip!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

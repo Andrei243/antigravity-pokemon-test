@@ -404,5 +404,78 @@ partial class Harness
         ReadTo("Until we meet again"); Frames(10); Shot("us80_colress_goes_on");
         ReadTo(null);
         Castelia("Route 4");
+
+        // Plan 22 · U6: Route 4's rest house, the Desert Resort, Nimbasa City's Subway Bosses, Elesa's Gym and Hugh
+        // against Team Plasma
+        void Nimbasa(string what) =>
+            Console.WriteLine($"  {what}: nimbasa {story.Var("VAR_UNOVA_NIMBASA")}, runway {story.Var("VAR_UNOVA_NIMBASA_GYM")}, "
+                + $"map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, Bolt Badge {story.HasBadge(RegionDatabase.Unova, "Bolt")}, "
+                + $"partner {game.PartnerAlong ?? "none"}, bosses hidden {story.Has("FLAG_UNOVA_HIDE_SUBWAY_BOSSES")}, "
+                + $"Rosa hidden {story.Has("FLAG_UNOVA_HIDE_ROSA_NIMBASA")}, Nate hidden {story.Has("FLAG_UNOVA_HIDE_NATE_NIMBASA")}, "
+                + $"Hugh hidden {story.Has("FLAG_UNOVA_HIDE_HUGH_NIMBASA")}, Plasma hidden {story.Has("FLAG_UNOVA_HIDE_NIMBASA_PLASMA")}, "
+                + $"weather here {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- Route 4's rest house, and the Desert Resort's archaeologist
+        TalkTo("Route4_RestHouse", "1", "unova_route_4_3");
+        ReadTo("Sit down and rest a while."); Frames(10); Shot("us81_the_rest_house");
+        ReadTo(null);
+        TalkTo("DesertResort", "0", "desert_resort_2");
+        ReadTo("built long ago by a hero"); Frames(10); Shot("us82_the_desert_resort");
+        ReadTo(null);
+        Nimbasa("the desert");
+
+        // ---- Nimbasa City, in from Join Avenue: Rosa and the Subway Bosses, and the Vs. Recorder
+        ComeThrough("Unova", 429, 478, Direction.Up); Frames(30); Shot("us83_nimbasa_city");
+        TalkTo("Unova", "5", "nimbasa_city");
+        ReadTo("I need a partner!"); Frames(10); Shot("us84_rosa_and_the_subway_bosses");
+        ReadTo("Destination: victory. All aboard!"); Frames(10); Shot("us85_emmet");
+        IntoBattle("the Subway Bosses");
+        ToMainMenu(game.Battle); Shot("us86_the_subway_bosses_battle");
+        Win();
+        ReadTo("make a truly splendid team!"); Frames(10); Shot("us87_ingo_after");
+        ReadTo("This is for you!"); Frames(10); Shot("us88_the_vs_recorder");
+        ReadTo(null);
+        Nimbasa("the Subway Bosses");
+
+        // ---- the Gym in the amusement park: the guide, the three models down the runway, Elesa and the Bolt Badge
+        ComeThrough("NimbasaCity_Gym", 15, 59, Direction.Up); Frames(30); Shot("us89_the_nimbasa_gym");
+        TalkTo("NimbasaCity_Gym", "1", "nimbasa_city_gym", -1, 0);
+        ReadTo("Here, a drink before the show!"); Frames(10); Shot("us90_the_guide");
+        ReadTo(null);
+        StepOnto("NimbasaCity_Gym", 15, 54, Direction.Up);
+        ReadTo("you are walking in it!"); Frames(10); Shot("us91_nikola");
+        IntoBattle("Nikola"); Win();
+        ReadTo(null);
+        StepOnto("NimbasaCity_Gym", 15, 39, Direction.Up);
+        ReadTo("how beautiful you are as a Trainer!"); Frames(10); Shot("us92_fleming");
+        IntoBattle("Fleming"); Win();
+        ReadTo(null);
+        StepOnto("NimbasaCity_Gym", 15, 24, Direction.Up);
+        ReadTo("share the stage with Elesa!"); Frames(10); Shot("us93_ampere");
+        IntoBattle("Ampère"); Win();
+        ReadTo(null);
+        TalkTo("NimbasaCity_Gym", "4", "nimbasa_city_gym");
+        ReadTo("whose light shines brightest!"); Frames(10); Shot("us94_elesa");
+        IntoBattle("Elesa");
+        ToMainMenu(game.Battle); Shot("us95_elesas_battle");
+        Win();
+        ReadTo("Here, this is yours!"); Frames(10); Shot("us96_the_bolt_badge");
+        ReadTo(null);
+        Nimbasa("the Bolt Badge");
+
+        // ---- the street to Route 5: Hugh and Team Plasma
+        StepOnto("Unova", 409, 439, Direction.Left);
+        ReadTo("What are you lot up to here?"); Frames(10); Shot("us97_hugh_and_plasma");
+        ReadTo("Cover me!"); Frames(10); Shot("us98_cover_me");
+        IntoBattle("the first grunt");
+        ToMainMenu(game.Battle); Shot("us99_the_grunts_battle");
+        Win();
+        ReadTo("Team Plasma is searching for something."); Frames(10); Shot("us100_plasma_searching");
+        ReadTo("my little sister's Purrloin"); Frames(10); Shot("us101_hughs_sister");
+        ReadTo("I'm counting on you!"); Frames(10); Shot("us102_hugh_goes_on");
+        ReadTo(null);
+        Nimbasa("Hugh and Team Plasma");
     }
 }

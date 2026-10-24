@@ -1,0 +1,10 @@
+{
+  // Route 4's rest house (plan 22 · U6): Black 2's room, our words. The woman (1) lets a tired Trainer rest and sees to
+  // the team (unova_route_4_3.txt); her Tympole (0) gurgles
+  "area": "unova_route_4_3",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": { "name": "Tympole", "npcType": "Pokemon", "species": "Tympole", "dialog": [ "Tympole: Glub-glub!" ] },
+    "1": { "name": "Woman", "npcType": "middle_aged_woman", "script": "Rest", "still": true }
+  }
+}

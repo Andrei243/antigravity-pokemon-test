@@ -320,6 +320,8 @@ public static partial class WorldModels
         "virbank_city" => PokemonType.Poison,
         // and Burgh's Gym on Castelia's Gym Street (plan 22 · U5, part c)
         "castelia_city_3" => PokemonType.Bug,
+        // and Elesa's in Nimbasa's amusement park (plan 22 · U6)
+        "nimbasa_city_2" => PokemonType.Electric,
         _ => null
     };
 }

@@ -1,0 +1,12 @@
+{
+  // Route 4's third house of flats, upstairs (plan 22 · U6): Black 2's room, our words
+  "area": "unova_route_4_8",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "dialog": [ "I train against the sandstorm out in the desert. Every grain is a little opponent!" ]
+    }
+  }
+}

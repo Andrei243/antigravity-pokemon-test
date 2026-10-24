@@ -1,0 +1,25 @@
+{
+  "key": "unova_route_4_10",
+  "index": 525,
+  "name": "Route 4",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_C_SP",
+  "nightMusic": "BGM_R_C_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "unova_route_4_9", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "policeman", "movement": "wander_around", "x": 10, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

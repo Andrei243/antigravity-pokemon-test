@@ -20,5 +20,9 @@
   "people": {
     "1": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "This alley's ours. ...Fine, walk through if you have to. Just don't stare." ] },
     "2": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "There's a café round here that hardly anyone knows about. Keep it that way." ] }
+  },
+  // The café's sign, read since plan 22 · U6 (a sign of Black 2's other condition)
+  "signs": {
+    "1": "Café Sonata"
   }
 }

@@ -1,0 +1,104 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Join Avenue! As you see, there's nothing here yet but empty shopfronts. One day this street will be the liveliest in Unova!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The owner is looking for someone to run the avenue. Shops, visitors, the lot! It's a big job."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nimbasa City is just through the north gate. Big crowds, big stadiums, and a Gym like a fashion show!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Shop Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our shop isn't open yet. Come back once the avenue's up and running!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Shop Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm practising my welcome. ...Welcome! How was that?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8": {
+      "en": [
+        "Join Avenue's office\nManager wanted. Apply within!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

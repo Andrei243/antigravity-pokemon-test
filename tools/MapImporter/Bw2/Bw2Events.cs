@@ -81,6 +81,12 @@ public sealed record Bw2Events(List<Bw2Npc> Npcs, List<Bw2Warp> Warps, List<Bw2B
     public const int Read = 0, Hidden = 2;
 
     /// <summary>
+    /// A sign's other condition that is read (plan 22 · U6): Nimbasa City's signs and the Desert Resort's are of it, and
+    /// the gate houses' news boards indoors, which the reader leaves out (<see cref="Bw2World.Area"/>).
+    /// </summary>
+    public const int ReadToo = 1;
+
+    /// <summary>
     /// What each script of a global file sets before it calls the common one, by the script's number from 0: the item ball
     /// file's <c>WorkSetConst 0x800c, item</c> and <c>0x800d, count</c>, the hidden items' <c>WorkSet 0x8000, item</c>,
     /// <c>0x8001, count</c> and <c>0x8002, flag</c>. A script that sets none of them is left out.

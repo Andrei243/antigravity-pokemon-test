@@ -1,0 +1,13 @@
+{
+  // Route 4's fourth house of flats, downstairs (plan 22 · U6): Black 2's room, our words. Black 2's waitress who mimics
+  // a Pokémon of the team for a quiz only talks of it for now
+  "area": "unova_route_4_9",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [ "I can copy any Pokémon's cry! Bring me a full team some day and I'll test whether you know your partners' voices." ]
+    }
+  }
+}

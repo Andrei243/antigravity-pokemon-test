@@ -1,5 +1,317 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fishing in a canal by a building site? Laugh all you like, the Basculin here bite like crazy!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Snapped my line AND my pride."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Shh! You'll scare off the fish! ...Too late. Fine, you'll have to do instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "That one got away too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I patrol the works by day. Halt! Let's see your Trainer's skills!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "All in order. Carry on, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Hooligan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "This half-built road's our turf! You want through, you go through the both of us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Oi, that's not how it was meant to go!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Hooligan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Yeah! What he said! Two on two, let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "We look tough, but that's about it..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Nobody's laid tarmac here yet, so I ride on the sand. Watch me spin!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sand in my engine, sand in my teeth..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My Pokémon and I came all the way from Castelia on foot. We're tough now!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I guess we needed a few more steps."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hey! You looking at me? Then you're battling me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fine, fine. Look all you want."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The workers took a break, so I'm guarding the road. For free!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Some guard I turned out to be."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "There's been trouble with hooligans round here. You're not one of them, are you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "No hooligan battles that well. My mistake!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Stop right there! Keeping the peace takes strong Pokémon, and I'll show you mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Peace kept... by you, mostly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I raise my Pokémon to love sand and sun alike. Shall we see how they do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "They did well. I'm proud of them all the same."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "12": {
       "name": {
         "en": [
@@ -138,6 +450,24 @@
         ]
       }
     },
+    "30": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every old place round here gets built over sooner or later. One day nobody will remember what stood here before."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "31": {
       "name": {
         "en": [
@@ -149,7 +479,25 @@
       },
       "dialog": {
         "en": [
-          "The sand blows in off the desert up north. Close your eyes, keep walking, and trust your feet!"
+          "See the darker patches of sand? Pokémon hide in those. Walk into them and something might pop out!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "32": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Out in the desert, the sand is swallowing an old castle a little more every year. Isn't that sad?"
         ],
         "text": [
           ""

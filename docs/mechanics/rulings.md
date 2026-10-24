@@ -2749,6 +2749,56 @@ scenes, who stands where, the battles and the gifts, and nothing of their text.
 - **Songs**: `unova/castelia` (the city, its gate and Prime Pier's and Thumb Pier's waits); the sewers keep Sinnoh's
   `cave` and Route 4 `unova/route19` until their own. Burgh's and Colress's battles are the Gym Leader's.
 
+## Unova's second chapter, part a: the desert to Nimbasa (2026-10-25, plan 22 · U6)
+
+Black 2's road from Route 4 to the Bolt Badge, in our own words on the beats of the decompilation's scripts
+(`res/field/scripts/route_4*.s`, `desert_resort*.s`, `route_gate.s`, `join_avenue.s`, `nimbasa_city.s`,
+`nimbasa_city_gym.s`), read for the order of the scenes, who stands where, the battles and the gifts, and nothing of
+their text.
+
+- **The chapter**: Route 4's trainers (its two fishermen, the Hooligans, three policemen, a biker, a youngster, two
+  roughnecks and a Breeder) stand on the road, and its five houses of flats are open, the rest house's woman seeing to the
+  team; the Desert Resort's edge, its gate house and the desert beyond lie in their sandstorm, the desert's archaeologist
+  giving Soft Sand; Join Avenue is a street of empty shopfronts between Route 4 and Nimbasa City; in Nimbasa, before the
+  Gear Station, the Subway Bosses Ingo and Emmet battle two on two (`unova_subway_boss_ingo` and `_emmet`) beside the
+  hero the player isn't, Rosa for a boy and Nate for a girl, whose team is the starter neither the player nor Hugh took
+  (`unova_rosa`, `_2`, `_3` and `unova_nate`, `_2`, `_3` for Snivy, Tepig and Oshawott, Black 2's `0x4030`), and who
+  gives a Vs. Recorder; in the amusement park the Nimbasa Gym's guide gives Fresh Water, three models step down the
+  runway to battle in turn (`unova_beauty_nikola`, `_fleming`, `_amp_re`), and Elesa (`unova_leader_elesa`) gives the
+  Bolt Badge and TM72; back in the city Hugh faces four of Team Plasma on the street west to Route 5, the player beats
+  two (`unova_team_plasma_grunt_4` and `_47`), they flee, and Hugh tells of his sister's Purrloin, heals the team and
+  goes on.
+- **Our tellings where Black 2's are another's.** The Gym's runway is three triggers of ours, each model stepping down
+  three tiles to the challenger and back, where Black 2 walks each down the whole catwalk and plays the lights; the
+  models' walk out with the player afterwards is left out. Black 2's guide stops the challenger at the door; ours is
+  spoken to. Hugh's scene is one scene: Black 2 has the player speak to each grunt after Hugh's "Cover me!"; ours plays
+  both battles straight after it, the grunts flee west along the street and Hugh east. The young Trainer's battle is
+  begun by speaking to them, as Black 2's. Join Avenue's owner, who asks the first visitor to manage the avenue and fill
+  it with shops, only talks: the avenue's shops are left. The daily gifts and games of Route 4's houses (the fast
+  Pokémon's reward, the Cottonee for Petilil trade, the waitress's cry quiz) only talk of themselves. The Braviary that
+  lands on Route 4 on Thursdays, the Anville delivery man and his Pokémon, the Battle Institute's girl and the Gym
+  guide at the park's door are left out. TM72 is our data's TM72 (Platinum's table), as Burgh's TM76.
+- **The places**: Nimbasa builds in a way of its own (`Architecture.Funfair`, the style guide's row); its stadiums,
+  theater and Ferris wheel are halls (the wheel a hall until it is drawn as one, part b), and the park's two archways
+  (`c4_gate`) are ground walked under, since a gate house there shut the Gym away. Route 4's houses of flats are
+  Castelia's panel blocks. A sign of Black 2's second condition (1) is read outdoors (Nimbasa's, the desert's, Narrow
+  Street's café); indoors it is a gate house's news board, which the reader leaves out. Black 2's weathers 3 and 12 are
+  the sandstorm (the desert's edge and the desert).
+- **Left for part b**: Routes 5 and 16 beyond the city's gates, the Lostlorn Forest, Anville Town and the Gear Station
+  with the Battle Subway's desks, the Musical Theater, the stadiums, Nimbasa's houses, the Ferris wheel's scene, the
+  Relic Castle and the Relic Passage, the Drawbridge, Driftveil City with Clay and the Quake Badge, the World Tournament
+  and the Plasma Frigate.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_NIMBASA` is the city's count (Black 2's
+  `0x40c0` 1 and 4 in one line: 1 once the Bolt Badge is won, 2 once Hugh's scene is played), `VAR_UNOVA_NIMBASA_GYM`
+  the runway's (`0x409b`, 0 to 3); `FLAG_UNOVA_HIDE_HUGH_NIMBASA` is `0x02f9`, `_NIMBASA_PLASMA` `0x02fa`,
+  `_SUBWAY_BOSSES` `0x02fc`, `_ROSA_NIMBASA` and `_NATE_NIMBASA` ours (Black 2 has one object, dressed by the player's
+  look); `FLAG_UNOVA_GOT_WATER_NIMBASA`, `_GOT_TM72` and `_GOT_SOFT_SAND` are the gifts'. `common.UnovaNimbasa` hides
+  the chapter's people (`FLAG_UNOVA_NIMBASA_BEGUN`), run by `UnovaCastelia` and, for a save of part c's, by
+  `UnovaCatchUp`, with no story version raised; Nimbasa's arrival shows Rosa or Nate.
+- **Songs** of our own: `unova/route4` (the route, its houses, the desert's edge and its gate house), `unova/desert_resort`
+  and `unova/nimbasa` (the city, the park and Join Avenue). Elesa's and the Subway Bosses'
+  battles are the Gym Leader's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

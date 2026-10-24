@@ -1,0 +1,23 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I can copy any Pokémon's cry! Bring me a full team some day and I'll test whether you know your partners' voices."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

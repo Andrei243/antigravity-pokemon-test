@@ -2619,6 +2619,20 @@ script UnovaCastelia
   setflag FLAG_UNOVA_HIDE_COLRESS_PLAZA
   setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   setflag FLAG_UNOVA_CASTELIA_BEGUN
+  call UnovaNimbasa
+  return
+
+
+# What Unova's Nimbasa chapter hides until its scenes (plan 22 · U6): Hugh and Team Plasma's grunts on the street to
+# Route 5 until the Bolt Badge, and the two young Trainers before the Gear Station, of whom Nimbasa City's arrival shows
+# the one who is the hero the player isn't. UnovaCastelia runs it, for a new game and for a save of part c's
+# (UnovaCatchUp), with no story version raised. It may only set flags and variables, and ends in return.
+script UnovaNimbasa
+  setflag FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  setflag FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  setflag FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  setflag FLAG_UNOVA_HIDE_NATE_NIMBASA
+  setflag FLAG_UNOVA_NIMBASA_BEGUN
   return
 
 
@@ -2650,6 +2664,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_STORY_BEGUN call UnovaNewGame
   if not flag FLAG_UNOVA_VIRBANK_BEGUN call UnovaVirbank
   if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
+  if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

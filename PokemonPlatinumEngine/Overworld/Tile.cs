@@ -286,7 +286,9 @@ public enum Architecture
     /// <summary>Dark brick under violet-grey gable roofs with a chimney: the harbour and works town of the complex and the club (Virbank, plan 22 · U5, part b).</summary>
     Dockyard,
     /// <summary>Glass and pale stone in towers of stages stepping in, under flat roofs: the city of skyscrapers on the bay (Castelia, plan 22 · U5, part c).</summary>
-    Metropolis
+    Metropolis,
+    /// <summary>White clapboard under cherry-red gable roofs with shutters: the city of the amusement park, the stadiums and the Gear Station (Nimbasa, plan 22 · U6).</summary>
+    Funfair
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

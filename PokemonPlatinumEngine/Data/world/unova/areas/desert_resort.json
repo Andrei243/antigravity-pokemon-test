@@ -1,0 +1,46 @@
+{
+  "key": "desert_resort",
+  "index": 157,
+  "name": "Desert Resort",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "Sandstorm",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_C_SP",
+  "nightMusic": "BGM_R_C_SP",
+  "encounters": "ENCOUNTERS_DESERT_RESORT",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Sandile", "level": 18 },
+    { "species": "Darumaka", "level": 18 },
+    { "species": "Sandile", "level": 19 },
+    { "species": "Darumaka", "level": 19 },
+    { "species": "Maractus", "level": 19 },
+    { "species": "Scraggy", "level": 19 },
+    { "species": "Sandshrew", "level": 19 },
+    { "species": "Dwebble", "level": 19 },
+    { "species": "Sandshrew", "level": 20 },
+    { "species": "Dwebble", "level": 21 },
+    { "species": "Sandshrew", "level": 20 },
+    { "species": "Dwebble", "level": 21 }
+  ],
+  "landRate": 13,
+  "warps": [
+    { "x": 370, "z": 488, "to": "unova_route_gate", "toWarp": 0 },
+    { "x": 371, "z": 488, "to": "unova_route_gate", "toWarp": 0 },
+    { "x": 372, "z": 488, "to": "unova_route_gate", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pokefan_m", "movement": "none", "x": 386, "z": 490, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "school_kid_m", "movement": "none", "x": 385, "z": 490, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [
+    { "x": 374, "z": 491, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

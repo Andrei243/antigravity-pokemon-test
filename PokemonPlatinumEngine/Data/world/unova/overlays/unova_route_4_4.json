@@ -1,0 +1,22 @@
+{
+  // Route 4's first house of flats, upstairs (plan 22 · U6): Black 2's room, our words
+  "area": "unova_route_4_4",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "We moved in because they said the whole road would be built up soon. Still waiting!" ]
+    },
+    "1": {
+      "name": "Man",
+      "npcType": "middle_aged_man",
+      "dialog": [ "With the works never finished, those rowdy types hang about outside. Mind how you go." ]
+    },
+    "2": {
+      "name": "Girl",
+      "npcType": "school_kid_f",
+      "dialog": [ "I like living here! Castelia's to the south and Nimbasa's to the north. Shopping or fun, you pick!" ]
+    }
+  }
+}

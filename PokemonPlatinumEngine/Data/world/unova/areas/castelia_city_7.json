@@ -32,7 +32,9 @@
     { "id": "1", "looks": "roughneck", "movement": "none", "x": 18, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" },
     { "id": "2", "looks": "roughneck", "movement": "none", "x": 18, "z": 33, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" }
   ],
-  "signs": [],
+  "signs": [
+    { "x": 18, "z": 45, "type": 0, "script": "1" }
+  ],
   "triggers": [
     { "x": 14, "z": 48, "width": 5, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4137", "value": "0" }
   ]

@@ -1,0 +1,30 @@
+{
+  "key": "unova_route_4_5",
+  "index": 520,
+  "name": "Route 4",
+  "matrix": 26,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_C_SP",
+  "nightMusic": "BGM_R_C_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 2, "to": "unova_route_4_6", "toWarp": 0 },
+    { "x": 6, "z": 10, "to": "unova_route_4", "toWarp": 2 },
+    { "x": 7, "z": 10, "to": "unova_route_4", "toWarp": 2 },
+    { "x": 8, "z": 10, "to": "unova_route_4", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "worker_26", "movement": "none", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "325", "movement": "wander_around", "x": 5, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "lass", "movement": "none", "x": 10, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

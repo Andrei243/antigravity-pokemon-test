@@ -1,0 +1,18 @@
+{
+  // The Desert Resort's gate house (plan 22 · U6): Black 2's room between the desert's edge and the desert itself, our
+  // words
+  "area": "unova_route_gate",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Guide",
+      "npcType": "Gentleman",
+      "dialog": [ "Beyond this gate lies the Relic Castle. One look and you can tell how many centuries the sand has worn at it." ]
+    },
+    "1": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "dialog": [ "Did you know? Out in the desert you can meet wild Pokémon anywhere, not just in the grass. Like in a cave!" ]
+    }
+  }
+}

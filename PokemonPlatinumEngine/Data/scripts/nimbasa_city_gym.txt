@@ -1,0 +1,123 @@
+# The Nimbasa Gym (plan 22 · U6). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/nimbasa_city_gym.s, read for the order alone).
+#
+# The guide (1) gives a challenger Fresh Water at the door (FLAG_UNOVA_GOT_WATER_NIMBASA). Up the runway three models
+# step down in turn to meet the challenger (our triggers on the rows 54, 39 and 24; VAR_UNOVA_NIMBASA_GYM counts them,
+# Black 2's 0x409b): Nikola (2, Black 2's TRAINER_BEAUTY_NIKOLA), Fleming (3) and Ampère (0). Elesa (4) waits on the
+# stage: her battle (Black 2's TRAINER_LEADER_ELESA; _2 is the Challenge Mode's, plan 13's), the Bolt Badge, the
+# region's fourth (`givebadge bolt`), and TM72 (FLAG_UNOVA_GOT_TM72), which our data's table, Platinum's, fills with its
+# own move; Nimbasa's count moves on (VAR_UNOVA_NIMBASA 1), and Hugh and Team Plasma wait on the street to Route 5
+# (FLAG_UNOVA_HIDE_HUGH_NIMBASA and FLAG_UNOVA_HIDE_NIMBASA_PLASMA cleared).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script GymGuide
+  face 1 player
+  speaker "Guide"
+  if not flag FLAG_UNOVA_GOT_WATER_NIMBASA goto Water
+  if badge bolt goto Won
+  say "Win your way up the runway, and Elesa waits at the top. Ground moves hit her Electric types hard, but not her Emolga!"
+  end
+label Water
+  say "Surprised? This Gym is a fashion show and a battle all at once, on a runway lit up like a stage!"
+  say "Here, a drink before the show!"
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_NIMBASA
+  say "The models on the catwalk will battle you one by one. Ground moves hit Electric types hard, but Emolga flies above them!"
+  end
+label Won
+  say "Your team outshone Elesa's lightning! That was a show the crowd won't forget."
+  end
+
+
+# The first model, as the challenger reaches the foot of the runway (our trigger on 14 to 16, 54, at 0)
+script Nikola
+  scene "Nikola on the runway"
+  face 2 player
+  walk 2 down 3
+  speaker "Nikola"
+  say "Welcome to the Nimbasa Gym! The show is about to begin, and you are walking in it!"
+  battle 2 as "unova_beauty_nikola"
+  say "My, what a debut! Go on, the runway is yours."
+  walk 2 up 3
+  face 2 down
+  setvar VAR_UNOVA_NIMBASA_GYM 1
+  endscene
+  end
+
+
+# The second, half way up (our trigger on 14 to 16, 39, at 1)
+script Fleming
+  scene "Fleming on the runway"
+  face 3 player
+  walk 3 down 3
+  speaker "Fleming"
+  say "Beauty on the outside is easy. Let's see how beautiful you are as a Trainer!"
+  battle 3 as "unova_beauty_fleming"
+  say "Beautiful and strong. That's a rare look!"
+  walk 3 up 3
+  face 3 down
+  setvar VAR_UNOVA_NIMBASA_GYM 2
+  endscene
+  end
+
+
+# The last, before the stage (our trigger on 14 to 16, 24, at 2)
+script Ampere
+  scene "Ampere on the runway"
+  face 0 player
+  walk 0 down 3
+  speaker "Ampère"
+  say "The show is nearly over. Let's see whether you deserve to share the stage with Elesa!"
+  battle 0 as "unova_beauty_amp_re"
+  say "You do. The stage is waiting."
+  walk 0 up 3
+  face 0 down
+  setvar VAR_UNOVA_NIMBASA_GYM 3
+  endscene
+  end
+
+
+script Model
+  face self player
+  if var VAR_UNOVA_NIMBASA_GYM >= 3 goto After
+  say "Elesa is more than a pretty face, you know. Don't let the lights fool you."
+  end
+label After
+  say "You and your Pokémon sparkled out there! Elesa's waiting on the stage."
+  end
+
+
+script Elesa
+  face 4 player
+  speaker "Elesa"
+  if badge bolt goto Won
+  if var VAR_UNOVA_NIMBASA_GYM < 3 goto Wait
+  scene "Elesa"
+  say "Welcome to the main stage. My Pokémon and yours are about to compete, and we'll see whose light shines brightest!"
+  battle 4 as "unova_leader_elesa"
+  say "Well... You're even more dazzling than I thought. Your battling swept me off my feet. Here, this is yours!"
+  givebadge bolt
+  text "{player} received the Bolt Badge from Elesa!"
+  if var VAR_UNOVA_NIMBASA < 1 setvar VAR_UNOVA_NIMBASA 1
+  clearflag FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  clearflag FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+label Tm
+  say "And a move I'm fond of. Use it if you like it as much as I do."
+  give "TM72"
+  setflag FLAG_UNOVA_GOT_TM72
+  say "A model has to make other people's dreams come true without losing sight of herself. Trainers do the same for their Pokémon."
+  say "Keep shining, and the Pokémon League will see you coming a long way off!"
+  endscene
+  end
+label Wait
+  say "The show starts at the foot of the runway. Walk it first, and I'll be waiting here."
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM72 goto Tm
+  say "My Pokémon and I want to shine together like two suns. I think you and yours already do."
+  end

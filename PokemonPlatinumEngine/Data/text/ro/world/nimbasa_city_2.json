@@ -1,0 +1,184 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for the rides and stayed for the battles. The Gym at the end of the park is something else!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Step right up! The amusement park never sleeps, and neither does this Harlequin!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From the top of the Ferris wheel you can see all of Nimbasa. Shame it's so busy today!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My children ran off to the roller coaster an hour ago. I'll wait right here, with a nice cold drink."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're queuing for the Ferris wheel. We've been queuing a long time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He promised me a ride on the Ferris wheel! The queue had better move soon..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've watched this park light up every night for fifty years. Still gives me a thrill."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Elesa's Pokémon are as quick as lightning! You'll need to be quicker still."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Elesa walks the runway in her own Gym. Imagine battling in a fashion show!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Nimbasa City Pokémon Gym\nLeader: Elesa, the shining beauty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Ferris Wheel\nSee all of Nimbasa from above!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

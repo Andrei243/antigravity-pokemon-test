@@ -1,0 +1,468 @@
+{
+  "Partner": [
+    {
+      "en": [
+        "Rosa"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to try the Battle Subway, and guess who turned up? The Subway Bosses themselves!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They'll battle out here, but only two on two. I need a partner!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you battle the Subway Bosses beside me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Really? Thanks! I'm Rosa. Let's be the best partners ever!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to try the Battle Subway, and guess who turned up? The Subway Bosses themselves!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They'll battle out here, but only two on two. I need a partner!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you battle the Subway Bosses beside me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Really? Thanks! I'm Nate. You and me together, we'll be better than perfect!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle in the open air instead of aboard our trains? Most irregular! Still, new scenery may teach me something."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet, have you anything to add?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two on two, rules are rules! Destination: victory. All aboard!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bravo! You and your Pokémon make a truly splendid team!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Emmet. We lost, but I had fun! Let's battle again sometime!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Next time, ride the Battle Subway and challenge us aboard! Now we must be off. All aboard!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rosa"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even holding back, they were so strong! That's the Subway Bosses for you. Thanks, {player}! This is for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even holding back, they were so strong! That's the Subway Bosses for you. Thanks, {player}! This is for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With a Vs. Recorder you can keep your battles and watch them again. I had a great time battling beside you. See you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not ready yet? That's OK! I'll keep them talking. Come back when you are!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ingo": [
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I am Ingo, a Subway Boss. Usually you'll find me battling aboard the trains that leave from the Gear Station."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Emmet": [
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Emmet, a Subway Boss! I love Double Battles. Two Pokémon working as one, that's the best!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Cover me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughAndPlasma": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it! What are you lot up to here?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Up to? Nothing. We're just standing about. So why are you bothering us?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maybe you haven't done anything to me. But I'll never forgive Pokémon thieves like you. Never!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kids these days. You think your Pokémon's strength is your own? I don't like being pushed around!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Cover me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heh heh! I stole this Pokémon two years ago and I've trained it hard ever since. It's tough!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What?! I toughened it up for two whole years!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My turn! And I show no mercy!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We give up! Beaten by two kids... Fine. Since you're so strong, I'll tell you this much."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma is searching for something. Once we find it, our secret weapon will show its true power!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Farewell!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Five years ago, Team Plasma stole my little sister's Purrloin. It was a present."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was just a kid. I couldn't do a thing. That's why I have to get stronger!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good work back there. I knew you had good instincts! Here, let me see to your team."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival} healed your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Listen. Fill up that Pokédex, keep getting stronger, and keep backing me up. I'm counting on you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
