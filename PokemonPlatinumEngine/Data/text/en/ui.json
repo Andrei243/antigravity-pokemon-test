@@ -463,6 +463,7 @@
 
   "party": {
     "title": "POKÉMON",
+    "helpers": "HELPERS",
     "hp": "HP",
     "level": "Lv",
     "hpValue": "{hp} / {max}",
@@ -1044,6 +1045,8 @@
   },
   "poketch": {
     "noApps": "No apps yet.",
+    "hiddenMoves": "HIDDEN MOVES",
+    "hiddenNone": "NO HELPERS",
     "steps": "STEPS",
     "reset": "RESET",
     "start": "START",

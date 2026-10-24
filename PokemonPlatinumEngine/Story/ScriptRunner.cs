@@ -801,7 +801,7 @@ public sealed partial class ScriptRunner
                     : FieldMoveRules.Knower(host.Party, move)
                       ?? (host.Granted.Contains(move) ? FieldHelp.HelperFor(move) : null)
                       ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
-                helped = !host.Party.Members.Contains(user) && user != ownPokemon;
+                helped = !host.Party.Members.Contains(user);
                 lastUser = user.DisplayName;
                 host.Say(null, new[] { Text.Of(helped ? "fieldMoves.helped" : "fieldMoves.used", ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
                 afterBusy = () => host.UseMove(move, user, Subject);

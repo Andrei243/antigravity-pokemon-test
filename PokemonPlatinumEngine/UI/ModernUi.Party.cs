@@ -17,7 +17,7 @@ internal static partial class ModernUi
     /// <param name="actions">The chosen Pokémon's menu while it is open (style guide, "Menu screens"): a panel beside its card.</param>
     /// <param name="giver">The Pokémon giving HP with Milk Drink or Soft-Boiled, whose card is marked while another is chosen.</param>
     public static void DrawParty(int sw, int sh, Party party, int selected, int? swapping, float appear = 1f, string? prompt = null,
-        IReadOnlyList<string>? actions = null, int actionIndex = 0, int? giver = null)
+        IReadOnlyList<string>? actions = null, int actionIndex = 0, int? giver = null, IReadOnlyList<string>? helpers = null, int helperIndex = -1)
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("party.title"));
@@ -33,11 +33,32 @@ internal static partial class ModernUi
             else PartyCard(r, party.Members[i], i == selected, i == swapping || i == giver, i == 0);
         }
 
+        if (helpers is { Count: > 0 }) PartyHelpers(helpers, helperIndex);
+
         var box = new Rectangle(64, 920, 1792, 112);
         Panel(box, 30);
         UiFonts.DrawCentered(prompt ?? Text.Of(swapping.HasValue ? "party.prompt.moveTo" : "party.prompt.choose"), box.X + 52, box.Y + box.Height / 2f, 40, Ink, UiWeight.ExtraBold);
 
         if (actions != null) PartyActions(sw, chosen, box, actions, actionIndex);
+    }
+
+    /// <summary>
+    /// The strip under the cards (plan 12 · Q18; style guide, "Menu screens"): the field moves the options grant that nobody on
+    /// the team knows, one pill each after a small label, the one under the cursor lit.
+    /// </summary>
+    private static void PartyHelpers(IReadOnlyList<string> moves, int selected)
+    {
+        const float y = 880, height = 38;
+        string label = Text.Of("party.helpers");
+        float x = 72;
+        UiFonts.DrawCentered(label, x, y + height / 2f, 24, Muted, UiWeight.ExtraBold);
+        x += UiFonts.Measure(label, 24, UiWeight.ExtraBold) + 24;
+        for (int i = 0; i < moves.Count; i++)
+        {
+            float w = UiFonts.Measure(moves[i], 24, UiWeight.ExtraBold) + 40;
+            Button(new Rectangle(x, y, w, height), 19, Selection, moves[i], 24, i == selected);
+            x += w + 14;
+        }
     }
 
     /// <summary>

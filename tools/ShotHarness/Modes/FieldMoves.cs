@@ -209,5 +209,49 @@ partial class Harness
             ToMainMenu(fight);
             Shot("fm26_fish_battle");
         }
+
+        // ---- field helpers (plan 12 · Q18): the options' row on, a team that knows none of the moves, the Badges and the HMs held.
+        // fm30 a tree's question answered by a helper's line, fm31 the cut-in, fm32 the party's strip, fm33 Fly's map with a flier
+        // outside the team, fm34 the Pokétch's Hidden Moves app. With the row off none of this exists and fm01 to fm26 are unchanged.
+        engine.Settings.FieldHelpers = RulesDefault.On;
+        team.Clear();
+        team.Add(Knowing("Bidoof", "Tackle"));
+        story.SetBadges("Sinnoh", 0xFF);
+        foreach (var hm in new[] { "HM01", "HM02", "HM03", "HM04", "HM05", "HM06", "HM07", "HM08" }) bag.AddItem(ItemDatabase.Get(hm)!, 1);
+        game.State = GameState.Overworld;
+        var otherTree = sinnoh.Everyone.FirstOrDefault(n => n.Obstacle == PropType.CutTree && n != tree && n.HiddenBy != null && !story.Has(n.HiddenBy));
+        if (otherTree != null)
+        {
+            var (hx, hy, hf) = Beside(sinnoh, otherTree.GridX, otherTree.GridY);
+            At("Sinnoh", hx, hy, hf);
+            Frames(10);
+            Talk(); Whole(); Until(() => engine.Choice.IsOpen, "the tree's question, helped"); Frames(20); Shot("fm30_helpers_tree_asks");
+            engine.Choice.Confirm(); Frames(4);
+            Whole(); Next(); Frames(26); Shot("fm31_helpers_cut_in");
+            Until(() => !engine.ScriptRunning, "the helped tree's script to end"); Frames(10);
+            Console.WriteLine($"helpers: tree gone {!sinnoh.NPCs.Contains(otherTree)}, team knows Cut: {FieldMoveRules.Knower(team, FieldMove.Cut) != null}");
+        }
+        else Console.WriteLine("  !! no second tree to cut");
+        At("Sinnoh", 116, 888, Direction.Down);
+        game.ChooseFromStartMenu(StartMenuChoice.Pokemon);
+        Frames(30);
+        partyMenu.MoveCursor(0, 1, team.Count);
+        Frames(6); Shot("fm32_helpers_party_strip");
+        Console.WriteLine($"helpers: on the strip {partyMenu.OnStrip}, {string.Join(", ", partyMenu.Helpers)}");
+        for (int i = 0; i < partyMenu.Helpers.Count && partyMenu.Helpers[partyMenu.StripIndex] != FieldMove.Fly; i++) partyMenu.MoveCursor(1, 0, team.Count);
+        partyMenu.Confirm(team);
+        Frames(20);
+        if (State() == GameState.FlyMap)
+        {
+            Frames(10); Shot("fm33_helpers_fly_map");
+            Console.WriteLine($"helpers: the flier is {game.TownMapScreen.Flier?.DisplayName}, of the team: {team.Members.Contains(game.TownMapScreen.Flier!)}");
+        }
+        else Console.WriteLine($"  !! Fly's map did not open ({State()})");
+        game.State = GameState.Overworld;
+        poketch.Enabled = true;
+        At("Sinnoh", 116, 888, Direction.Down);
+        watch.Toggle(poketch); Frames(4);
+        for (int i = 0; i < 40 && poketch.Current != PoketchApp.HiddenMoves; i++) { watch.NextApp(poketch); Frames(2); }
+        Frames(20); Shot("fm34_helpers_poketch");
     }
 }

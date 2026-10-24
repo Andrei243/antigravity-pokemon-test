@@ -628,7 +628,8 @@ public class FieldMoveTests
         story.Set(SpawnLocations.ArrivedIn("floaroma_town")!.ArrivalFlag);
         var region = RegionMap.Sinnoh!;
         var screen = new TownMapScreen();
-        screen.Open(new TownMapState(region, story, RegionMap.CellOf(305, 540)), TownMapMode.Fly, flier: 2);
+        var flier = new Pokemon(PokemonDatabase.Get("Staravia")!, 20, new Random(1));
+        screen.Open(new TownMapState(region, story, RegionMap.CellOf(305, 540)), TownMapMode.Fly, flier: flier);
         Assert.Equal((9, 16), (screen.CursorX, screen.CursorY));
         Assert.Equal("eterna_city", screen.HoveredSpot!.Town.Area);
 
@@ -643,7 +644,7 @@ public class FieldMoveTests
         Assert.False(screen.IsActive);
         Assert.Equal("eterna_city", screen.TakeChoice()!.Area);
         Assert.Null(screen.TakeChoice());
-        Assert.Equal(2, screen.Flier);
+        Assert.Same(flier, screen.Flier);
     }
 
     [Fact]

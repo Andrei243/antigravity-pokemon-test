@@ -10,7 +10,9 @@ public enum PoketchApp
 {
     DigitalWatch, Calculator, MemoPad, Pedometer, PartyStatus, FriendshipChecker, DowsingMachine, BerrySearcher,
     DayCareChecker, PokemonHistory, Counter, AnalogWatch, MarkingMap, LinkSearcher, CoinToss, MoveTester, Calendar,
-    DotArt, Roulette, TrainerCounter, KitchenTimer, ColorChanger, MatchupChecker, Stopwatch, AlarmClock
+    DotArt, Roulette, TrainerCounter, KitchenTimer, ColorChanger, MatchupChecker, Stopwatch, AlarmClock,
+    // Ours (plan 12 · Q18): the field moves a wild helper does; never given, never saved (Poketch.ShowsHiddenMoves)
+    HiddenMoves
 }
 
 /// <summary>
@@ -67,7 +69,13 @@ public sealed class Poketch
     public static bool Runs(PoketchApp app) => app is not (PoketchApp.Stopwatch or PoketchApp.AlarmClock);
 
     /// <summary>The apps that can be shown, in the order they came.</summary>
-    public IReadOnlyList<PoketchApp> Shown => apps.Where(Runs).ToList();
+    public IReadOnlyList<PoketchApp> Shown => apps.Where(Runs).Concat(ShowsHiddenMoves ? new[] { PoketchApp.HiddenMoves } : Array.Empty<PoketchApp>()).ToList();
+
+    /// <summary>
+    /// Whether the Hidden Moves app is on the Pokétch (plan 12 · Q18): set by the game while the options' FIELD HELPERS row
+    /// is on, and never saved, so it comes and goes with the row and is no app anyone was given.
+    /// </summary>
+    public bool ShowsHiddenMoves { get; set; }
 
     /// <summary>The app on the screen; null when none that runs has been given.</summary>
     public PoketchApp? Current
@@ -97,7 +105,8 @@ public sealed class Poketch
     /// <summary>Puts an app on the Pokétch; false if it was there already.</summary>
     public bool Register(PoketchApp app)
     {
-        if (apps.Contains(app)) return false;
+        // The Hidden Moves app comes with the options' row, not from anyone (plan 12 · Q18)
+        if (app == PoketchApp.HiddenMoves || apps.Contains(app)) return false;
         apps.Add(app);
         return true;
     }

@@ -101,6 +101,7 @@ internal static partial class ModernUi
             case KitchenTimerApp app: PoketchKitchenTimer(screen, app, context); break;
             case FriendshipCheckerApp app: PoketchFriendshipChecker(screen, app, context); break;
             case DayCareCheckerApp app: PoketchDayCareChecker(screen, app, context); break;
+            case HiddenMovesApp app: PoketchHiddenMoves(screen, app, context); break;
             case PokemonHistoryApp app: PoketchPokemonHistory(screen, app, context); break;
             case MoveTesterApp app: PoketchMoveTester(screen, app, context); break;
             case MatchupCheckerApp app: PoketchMatchupChecker(screen, app, context); break;
