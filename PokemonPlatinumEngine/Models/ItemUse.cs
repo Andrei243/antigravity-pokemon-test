@@ -94,7 +94,8 @@ public static class ItemUse
             if (!p.IsFainted && p.CurrentHP < p.MaxHP) return true;
         }
 
-        if (Has(item, "levelUp") && p.Level < 100) return true;
+        // A Rare Candy up to the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
+        if (Has(item, "levelUp") && !p.AtTheCap) return true;
         if ((Has(item, "ppUp") || Has(item, "ppMax")) && MoveIn(p, moveSlot) is { } raised && CanTakePPUp(raised)) return true;
         if (Has(item, "ppRestored") && !Has(item, "restorePPAllMoves") && MissingPP(p, moveSlot)) return true;
         if (Has(item, "restorePPAllMoves") && Enumerable.Range(0, p.Moves.Count).Any(i => MissingPP(p, i))) return true;
@@ -176,7 +177,7 @@ public static class ItemUse
         IReadOnlyList<string> learned = Array.Empty<string>(), wanted = Array.Empty<string>();
         if (Has(item, "levelUp"))
         {
-            if (p.Level < 100)
+            if (!p.AtTheCap)
             {
                 int oldMax = p.MaxHP, friendship = p.Friendship;
                 p.GainExp(p.ExpForNextLevel - p.CurrentExp, out var newMoves, out var movesWanted);

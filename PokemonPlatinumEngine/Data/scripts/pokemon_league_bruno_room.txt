@@ -1,0 +1,25 @@
+# Bruno's room, the third of Johto's Elite Four (plan 20 · J12). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_T10R0401).
+#
+# As Will's room (pokemon_league_will_room.txt): beaten, Bruno opens the door behind him (FLAG_HIDE_BRUNOS_ROOM_EXIT).
+
+
+script Bruno
+  face t10r0401_gsbigfour3 player
+  speaker "Bruno"
+  if flag FLAG_HIDE_BRUNOS_ROOM_EXIT goto Beaten
+  scene "Bruno"
+  say "I am Bruno of the Elite Four! My Pokémon and I have trained together until we move as one."
+  say "We will smash anything that stands in our way, with all the strength our bodies hold!"
+  say "Hoo hah! Come on!"
+  battle self as "johto_elite_four_bruno_bruno"
+  speaker "Bruno"
+  say "Our strength... wasn't enough? Hah! Then we have a long way still to climb."
+  setflag FLAG_HIDE_BRUNOS_ROOM_EXIT
+  sound "door_open"
+  say "The door is open. Go on, and don't you dare lose after beating us."
+  endscene
+  end
+label Beaten
+  say "You beat us fairly. My Pokémon and I will be back on the mountain tomorrow, training harder than ever."
+  end

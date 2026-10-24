@@ -6,7 +6,7 @@
           "Rancher"
         ],
         "text": [
-          ""
+          "Fermierul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Mind the fences! The Pokémon here are friendly, but they don't like being startled."
         ],
         "text": [
-          ""
+          "Ai grijă la garduri! Pokémonii de aici sunt prietenoși, dar nu le place să fie speriați."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "I come to the ranch to train where nobody can see me lose. Oops, now you can!"
         ],
         "text": [
-          ""
+          "Vin la fermă să mă antrenez unde nu mă vede nimeni pierzând. Hopa, acum mă vezi!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Well, at least only you saw that."
         ],
         "text": [
-          ""
+          "Măcar tu ai văzut."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Janitor"
         ],
         "text": [
-          ""
+          "Îngrijitorul"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "I sweep up after the Pokémon here. A battle makes a nice change!"
         ],
         "text": [
-          ""
+          "Eu strâng după Pokémonii de aici. O luptă e o schimbare plăcută!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Back to sweeping, I suppose."
         ],
         "text": [
-          ""
+          "Înapoi la măturat, presupun."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "I'm the toughest Trainer on the whole ranch! Probably!"
         ],
         "text": [
-          ""
+          "Sunt cel mai puternic Antrenor de pe toată ferma! Probabil!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Second toughest. Definitely second."
         ],
         "text": [
-          ""
+          "Al doilea ca putere. Sigur al doilea."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Mareep"
         ],
         "text": [
-          ""
+          "Mareep"
         ]
       },
       "dialog": {
@@ -110,7 +110,7 @@
           "Mareep: Baaah!"
         ],
         "text": [
-          ""
+          "Mareep: Baaah!"
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Mareep"
         ],
         "text": [
-          ""
+          "Mareep"
         ]
       },
       "dialog": {
@@ -128,7 +128,7 @@
           "Mareep: Baa-baah!"
         ],
         "text": [
-          ""
+          "Mareep: Baa-baah!"
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Mareep"
         ],
         "text": [
-          ""
+          "Mareep"
         ]
       },
       "dialog": {
@@ -146,7 +146,7 @@
           "Mareep: Mrrbaah?"
         ],
         "text": [
-          ""
+          "Mareep: Mrrbaah?"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Mareep"
         ],
         "text": [
-          ""
+          "Mareep"
         ]
       },
       "dialog": {
@@ -164,7 +164,7 @@
           "Mareep: Baaah!"
         ],
         "text": [
-          ""
+          "Mareep: Baaah!"
         ]
       }
     },
@@ -174,7 +174,7 @@
           "Mareep"
         ],
         "text": [
-          ""
+          "Mareep"
         ]
       },
       "dialog": {
@@ -182,7 +182,7 @@
           "Mareep: Baa?"
         ],
         "text": [
-          ""
+          "Mareep: Baa?"
         ]
       }
     }
@@ -193,7 +193,7 @@
         "Floccesy Ranch\nPlease close the gate behind you."
       ],
       "text": [
-        ""
+        "Ferma Floccesy\nTe rog, închide poarta în urma ta."
       ]
     }
   }

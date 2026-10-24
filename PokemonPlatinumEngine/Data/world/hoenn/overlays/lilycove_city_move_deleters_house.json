@@ -1,0 +1,9 @@
+{
+  // The Move Deleter's house in Lilycove City (plan 21 · H7, part a): he makes a Pokémon forget a move, as Fuchsia's
+  // and Canalave's do (lilycove_city_move_deleters_house.txt)
+  "area": "lilycove_city_move_deleters_house",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "move_deleter": { "name": "Move Deleter", "script": "Deleter" }
+  }
+}

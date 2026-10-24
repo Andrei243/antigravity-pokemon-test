@@ -241,6 +241,9 @@ public class PoketchPokemonTests
     [InlineData(5, "5")]
     [InlineData(42, "42")]
     [InlineData(100, "100")]
+    // Past 100 by the modern rules (plan 18 · W4), still three figures, to the highest level any rules allow
+    [InlineData(187, "187")]
+    [InlineData(999, "260")]
     public void ALevelIsShownWithoutLeadingNoughts(int level, string figures) =>
         Assert.Equal(figures, DayCareCheckerApp.Figures(level));
 

@@ -1,0 +1,33 @@
+# The Move Deleter's house in Lilycove City (plan 21 · H7, part a). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/LilycoveCity_MoveDeletersHouse/scripts.inc).
+#
+# He makes a Pokémon forget a move for good, an HM's too, as Fuchsia's and Canalave's do (Models/MoveTutors.cs; `tutor
+# forget` and `tutor delete`): never an Egg's, and never a Pokémon's last.
+
+
+script Deleter
+  face self player
+  speaker "Move Deleter"
+  say "Ahem! I'm the Move Deleter. I can make a Pokémon forget a move, even one a Hidden Machine taught it."
+  ask "Shall I make one of your Pokémon forget a move?"
+  if no goto Later
+  say "Which Pokémon?"
+  choosepokemon
+  tutor forget
+  if result == 3 goto Egg
+  if result == 2 goto OnlyOne
+  if result != 1 goto Later
+  ask "{thing}? Should that move be forgotten?"
+  if no goto Later
+  tutor delete
+  say "There! {wearer} has forgotten {thing} completely."
+  end
+label Later
+  say "Come again if there are moves you'd like forgotten."
+  end
+label Egg
+  say "That's an Egg. It doesn't know any moves to forget!"
+  end
+label OnlyOne
+  say "That Pokémon knows only one move. I can't make it forget that one."
+  end

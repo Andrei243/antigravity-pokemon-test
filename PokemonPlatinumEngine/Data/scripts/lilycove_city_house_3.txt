@@ -1,0 +1,15 @@
+# A house in Lilycove City (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LilycoveCity_House3/scripts.inc): the mother of four tells what Pokéblocks are, if asked.
+
+
+script PokeblockMother
+  face self player
+  speaker "Woman"
+  ask "Would you like to learn about Pokéblocks from a master of the Berry Blender?"
+  if no goto Declined
+  say "Pokéblocks are treats made by blending berries. Each has a flavour that brings out a Pokémon's coolness, beauty, cuteness, smartness or toughness."
+  say "A Pokémon that likes the flavour shines all the more on a contest stage. My four blend berries every day!"
+  end
+label Declined
+  say "Oh, are you sure? Well, ask me any time."
+  end

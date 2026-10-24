@@ -1,0 +1,62 @@
+# The Champion's room (plan 20 · J12). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T10R0601).
+#
+# As the challenger comes up to the dais (the area's first trigger, on VAR_UNK_40C7 0), Lance comes down to meet them:
+# his words and his battle (a battle lost ends it there, and the hall's arrival puts the League back); then Mary of
+# the radio runs in with Professor Oak for the new Champion (FLAG_LANCES_ROOM_VISITORS, ours), and Lance leads the
+# player through the door behind him (FLAG_HIDE_LANCES_ROOM_EXIT, ours) to the Hall of Fame. His rematch teams are
+# plan 20 · J15's.
+
+
+script Lance
+  scene "Lance"
+  if var PLAYER_X == 5 walk player right 1
+  if var PLAYER_X == 7 walk player left 1
+  face player up
+  speaker "Lance"
+  say "I've been waiting for you, {player}."
+  walk t10r0601_wataru down 3
+  say "I knew that one day you would stand here. Ever since the Lake of Rage, I've wanted to see how far you would go."
+  say "We fought side by side once. Today I stand in your way, as the League's Champion should."
+  say "My dragons have never been beaten in this room. Show me everything you have!"
+  battle t10r0601_wataru as "johto_champion_lance"
+  speaker "Lance"
+  say "...It's over. I've lost."
+  say "You and your Pokémon have a bond I've rarely seen. You trusted each other, and that trust won through."
+  say "As the Champion, I'm proud to say it: you are the new Champion of the Pokémon League!"
+  setvar VAR_UNK_40C7 1
+  setflag FLAG_LANCES_ROOM_VISITORS
+  show t10r0601_kurumi
+  show t10r0601_ookido
+  place t10r0601_kurumi 5 24 up
+  place t10r0601_ookido 7 24 up
+  speaker "Mary"
+  say "Oh, wait! Wait for us, please!"
+  walk t10r0601_kurumi up 13 fast
+  walk t10r0601_ookido up 13
+  face player down
+  speaker "Mary"
+  say "Is it over already? We've missed the whole thing! I'm Mary, from Pokémon Talk on the radio. I came to interview the new Champion!"
+  speaker "Prof. Oak"
+  say "Calm yourself, Mary. {player}, you've won. I heard it from the doorway. Congratulations, Champion!"
+  say "When I handed you that Pokédex, I never dreamt you'd be standing here so soon. Your Pokémon trust you. That's the strength of a true trainer."
+  face player up
+  speaker "Lance"
+  say "{player}, come with me. There is one room left, where the League keeps the names of its Champions."
+  setflag FLAG_HIDE_LANCES_ROOM_EXIT
+  sound "door_open"
+  # (to the doorway's foot: the door's own tile, 6, 2, is the way through, which he goes by as the player does)
+  walk t10r0601_wataru up 6
+  hide t10r0601_wataru
+  sound "door_open"
+  warp "IndigoLeague_HallOfFame" 6 21 up
+  endscene
+  end
+
+
+# Lance, in the moment between his battle and his going (nobody speaks to him otherwise: the trigger stops the
+# challenger first)
+script Champion
+  speaker "Lance"
+  say "Come, {player}. The Hall of Fame is through here."
+  end

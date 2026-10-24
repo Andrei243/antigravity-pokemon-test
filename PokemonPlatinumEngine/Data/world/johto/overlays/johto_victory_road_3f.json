@@ -1,7 +1,13 @@
 {
-  // Victory Road's third floor (plan 20 · J10, part b): its rocks smashed, and the way out onto the Indigo Plateau. The
-  // rival's last challenge here, and the triggers that bring him on, are plan 20 · J12's story
+  // Victory Road's third floor (plan 20 · J10, part b; J12): its rocks smashed, and the way out onto the Indigo Plateau.
+  // The red-haired boy's last challenge is the first trigger's (VAR_UNK_40C5), johto_victory_road_3f.txt: he stands on
+  // the floor only while the scene has him, since the floor's arrival sets FLAG_HIDE_VICTORY_ROAD_RIVAL
   "area": "johto_victory_road_3f",
   "bgmTrack": "johto/victory_road",
-  "people": {}
+  "triggers": [
+    { "trigger": 0, "script": "Rival" }
+  ],
+  "people": {
+    "d43r0103_gsrivel": { "name": "{rival}", "script": "Gone", "still": true }
+  }
 }

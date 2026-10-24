@@ -40,6 +40,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     }
     private string? region;
 
+    /// <summary>Whether the player's options let the game say what to do next (plan 12 · Q14); a test turns it off.</summary>
+    public bool ShowObjectives { get; set; } = true;
+    public bool ShowsObjectives => ShowObjectives;
+
     /// <summary>Where Pokémon go when the team is full.</summary>
     public List<Pokemon> Box { get; } = new();
 
@@ -374,7 +378,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool PcOn { get; private set; }
     public int MachineBalls { get; private set; }
 
-    private string Named(string text) => PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName);
+    private string Named(string text) => PokemonPlatinumEngine.UI.Kit.RichText.Plain(PlayerIdentity.Fill(text, PlayerName, PlayerLook, RivalName));
 
     // ------------------------------------------------------------------ the field
 

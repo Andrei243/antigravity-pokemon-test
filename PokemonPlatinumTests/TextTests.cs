@@ -74,6 +74,12 @@ public class TextTests
         ["UI/StartMenu.cs"] = new[] { "Trainer" },
         // The address of a translated line, which is a key and no word (plan 17 · N4)
         ["Core/Text.Lines.cs"] = new[] { "script:{script}#{index}.{k}" },
+        // The text box's markup problems, which ScriptLibrary.Problems and the content check tell whoever writes a line, never the screen (plan 09 · L3)
+        ["UI/Kit/RichText.cs"] = new[]
+        {
+            "a '{' is never closed", "{{{body}}} has no text to colour", "{{{body}}} needs a good number after it",
+            "{{{body}}} needs a sound's name after it", "{{{body}}}: a break takes no argument"
+        },
         // The items' own names and the uses the item table gives them, which the bag goes by
         ["UI/BagScreen.cs"] = new[]
         {

@@ -553,11 +553,12 @@ public class JohtoTests
         Assert.Equal("johto_pokemon_league_hall_of_fame", HgWorld.KeyOf("MAP_POKEMON_LEAGUE_HALL_OF_FAME"));
         Assert.Equal("route_26", HgWorld.KeyOf("MAP_ROUTE_26"));
 
-        // The league's places are places only for now: nobody of the Elite Four, the Champion or the Hall of Fame stands
-        // in them (plan 20 · J12), and every door between them stands open
-        foreach (string name in new[] { "IndigoLeague_WillRoom", "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom",
-                     "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom", "IndigoLeague_HallOfFame" })
-            Assert.Empty(MapNamed(name).Everyone);
+        // Since plan 20 · J12 each of the League's rooms has its master (and the Champion's Mary and Oak, who come in after
+        // his battle), and its door ahead waits for them to be beaten (JohtoStoryTests plays it)
+        foreach (var (name, who) in new[] { ("IndigoLeague_WillRoom", "Will"), ("IndigoLeague_KogaRoom", "Koga"),
+                     ("IndigoLeague_BrunoRoom", "Bruno"), ("IndigoLeague_KarenRoom", "Karen"), ("IndigoLeague_LanceRoom", "Lance"),
+                     ("IndigoLeague_HallOfFame", "Lance") })
+            Assert.Contains(MapNamed(name).Everyone, n => n.Name == who);
         var hall = MapNamed("IndigoLeague_PokemonCenter_1F");
         Assert.Equal(InteriorStyle.PokemonCenter, hall.Interior);
         Assert.Contains(hall.Everyone, n => n.Script == "Nurse");

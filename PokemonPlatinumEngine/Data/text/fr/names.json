@@ -4660,6 +4660,7 @@
     "Tri-Pass": "Tri-Passe",
     "Ruby": "Rubis",
     "Rainbow Pass": "Passe Prisme",
+    "Sapphire": "Saphir",
     "Letter": "Lettre à Pierre",
     "Devon Goods": "Pack Devon",
     "Wailmer Pail": "Wailmerrosoir",
@@ -4669,7 +4670,11 @@
     "Go-Goggles": "Lunettes Sable",
     "Soot Sack": "Sac à Suie",
     "Harbor Mail": "Lettre Port",
-    "Meteorite": "Météorite"
+    "Meteorite": "Météorite",
+    "Devon Scope": "Devon Scope",
+    "Magma Emblem": "Sceau Magma",
+    "Basement Key": "Clé Sous-Sol",
+    "Rainbow Wing": "Arc-en-Ci'Aile"
   },
   "types": {
     "Normal": "Normal",
@@ -7299,6 +7304,7 @@
       "Tri-Pass": "Permet d'accéder aux trois premières Îles Sevii.",
       "Ruby": "À donner à Cliéo dans Saphir pour activer le Centre Réseau Pokémon et avoir le Passe Prisme.",
       "Rainbow Pass": "Permet d'accéder à toutes les Îles Sevii.",
+      "Sapphire": "À donner à Cliéo dans Rubis pour activer le Centre Réseau Pokémon et avoir le Passe Prisme.",
       "Letter": "Une lettre pour Rochard de la part du président de la Devon SARL.",
       "Devon Goods": "Contient les pièces mécaniques à livrer au Capitaine Poupe.",
       "Wailmer Pail": "Utilisé pour arroser les baies.",
@@ -7308,7 +7314,11 @@
       "Go-Goggles": "Permet de traverser les déserts venteux.",
       "Soot Sack": "Stocke les cendres volcaniques de la Route 113.",
       "Harbor Mail": "Permet au Dresseur d'écrire un message et de l'envoyer via un échange Pokémon.",
-      "Meteorite": "FL: À livrer au père de Lostelle. RSE: À échanger au Professeur Kosmo contre la CT27 (Retour)."
+      "Meteorite": "FL: À livrer au père de Lostelle. RSE: À échanger au Professeur Kosmo contre la CT27 (Retour).",
+      "Devon Scope": "Permet de détecter les Kecleon invisibles.",
+      "Magma Emblem": "Permet d'accéder à la Planque Magma au Sentier Sinuroc.",
+      "Basement Key": "HS: Clé du tunnel sous Doublonville. Gén III: Clé pour New Lavandia.",
+      "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon."
     }
   }
 }

@@ -320,7 +320,7 @@ public sealed partial class ScriptRunner
         Op.Ask or Op.Choose => true,
         // Where the script goes, and what the story remembers
         Op.If or Op.Goto or Op.Call or Op.Return or Op.End => false,
-        Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings => false,
+        Op.SetFlag or Op.ClearFlag or Op.SetVar or Op.AddVar or Op.ClearGreetings or Op.Objective => false,
         // What is given and taken: the fanfare and the lines are dropped, the bag and the team are as ever
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
         Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
@@ -489,6 +489,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.AddVar:
                 story.AddVar(i.Name, i.Number);
+                break;
+            case Op.Objective:
+                story.SetVar(Objectives.Variable, Objectives.Find(i.Name)!.Id);
                 break;
 
             case Op.Give:
@@ -1949,6 +1952,7 @@ public sealed partial class ScriptRunner
             Query.Weekday => host.Weekday.ToString() == c.Name,
             // GetNationalDexEnabled (plan 02 · S14)
             Query.NationalDex => host.NationalDex,
+            Query.Objective => host.ShowsObjectives && Objectives.Current(host.Story, host.Region) != null,
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;
@@ -2038,6 +2042,8 @@ public sealed partial class ScriptRunner
             "species" when argument.Length > 0 => NameOfSpecies(PokemonDatabase.GetByDex(Value(argument))?.Name ?? ""),
             // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)
             "swarm" => NameOfSpecies(Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily))),
+            // What to do next (plan 12 · Q14): the line for the region the host is in, or nothing where there is none
+            "objective" => Objectives.Line(host.Story, host.Region),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
             "trophygarden" => NameOfSpecies(TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden)),
             // The Pokémon the day has put in one of the Great Marsh's six areas, {marsh:1} to {marsh:6} (plan 01 · M11,

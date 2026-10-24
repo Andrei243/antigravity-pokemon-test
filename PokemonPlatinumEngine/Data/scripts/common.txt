@@ -574,6 +574,7 @@ script Nurse
   face self down
   heal
   say "There we are! Every one of them is fit and well again."
+  call NextHint
   # The first time one of the team has Pokérus, she says what it is (CommonScript_NurseCheckPokerus)
   if flag FLAG_POKECENTER_IDENTIFIED_POKERUS goto Goodbye
   if not pokerus goto Goodbye
@@ -591,6 +592,111 @@ script Healer
   sayown
   heal
   fanfare heal
+  call NextHint
+  end
+
+
+# Plan 12 · Q14: an aside after being looked after, asked before it is given, and only while the options let the game
+# say what to do next and the region has something to say. The line is the story's own (Story/Objectives.cs).
+script NextHint
+  if not objective return
+  ask "By the way, would you like a reminder of what to do next?"
+  if no return
+  say "Let me see... {objective}"
+  return
+
+
+# Townsfolk with no tale of their own tell what the road is saying (plan 12 · Q14). What they say follows the story:
+# the Badges won, and the Hall of Fame, in Sinnoh's order. An overlay opts a person in with "script": "Rumour"; one of
+# two rumours for the stage is drawn on the game's own chance.
+script Rumour
+  if flag FLAG_GAME_COMPLETED goto Champion
+  if badges >= 8 goto Eight
+  if badges >= 7 goto Seven
+  if badges >= 6 goto Six
+  if badges >= 5 goto Five
+  if badges >= 4 goto Four
+  if badges >= 3 goto Three
+  if badges >= 2 goto Two
+  if badges >= 1 goto One
+  random 2
+  if result == 1 goto ZeroB
+  say "They say the first Gym is in a mining town, and its Leader is as fond of rocks as the miners are of coal."
+  end
+label ZeroB
+  say "Strangers in odd uniforms have been asking about Pokémon in the big city. I didn't care for their manners."
+  end
+label One
+  random 2
+  if result == 1 goto OneB
+  say "Floaroma's meadow is lovely, but some strangers have been making a nuisance of themselves out there."
+  end
+label OneB
+  say "There's a forest up north where every path seems to bend back on itself. Go in with a friend, I say."
+  end
+label Two
+  random 2
+  if result == 1 goto TwoB
+  say "A great building in Eterna City has been shut up tight, with strangers in matching clothes going in and out."
+  end
+label TwoB
+  say "Hearthome's Contest Hall is packed these days. People come from all over Sinnoh to show off their Pokémon."
+  end
+label Three
+  random 2
+  if result == 1 goto ThreeB
+  say "Someone told me the Gym in Veilstone is all sandbags and kicking. Quite a workout, I hear."
+  end
+label ThreeB
+  say "They say the marsh to the south has Pokémon in it that you can't find anywhere else, and different ones each day."
+  end
+label Four
+  random 2
+  if result == 1 goto FourB
+  say "Visitors say the lakes are not as they were. The water looks lower than it should, somehow."
+  end
+label FourB
+  say "Cynthia was through here again, they say. She is always off to some old ruin or other."
+  end
+label Five
+  random 2
+  if result == 1 goto FiveB
+  say "Canalave has a library as tall as a lighthouse, and a Gym Leader who keeps disappearing to dig on an island."
+  end
+label FiveB
+  say "There was a bang somewhere in the west. Windows rattled all the way over here, and nobody will say why."
+  end
+label Six
+  random 2
+  if result == 1 goto SixB
+  say "Far in the north there's a town buried in snow. They say the Pokémon Center there keeps blankets stacked to the roof."
+  end
+label SixB
+  say "Those uniformed people are everywhere now. Can't a person take a quiet walk any more?"
+  end
+label Seven
+  random 2
+  if result == 1 goto SevenB
+  say "The city in the far east has a lighthouse with a long, long climb. The view, they say, is worth every step."
+  end
+label SevenB
+  say "Everything has felt strange since the sky went odd. The whole of Sinnoh is on edge."
+  end
+label Eight
+  random 2
+  if result == 1 goto EightB
+  say "All Eight Badges! Then it's Victory Road for you. It's a long way, and dark in places."
+  end
+label EightB
+  say "They say the Pokémon League lets nobody through who can't show every Badge, and the guard counts them himself."
+  end
+label Champion
+  random 2
+  if result == 1 goto ChampionB
+  say "A new Champion! Everyone is talking about it. Well done, truly."
+  end
+label ChampionB
+  say "They say there's a ship at Snowpoint now that goes somewhere none of us has been. Odd, isn't it?"
   end
 
 
@@ -1672,6 +1778,23 @@ script JohtoTakeoverCall
   return
 
 
+# Professor Elm's call to the new Champion (plan 20 · J12): the first time the player comes downstairs at home after
+# Johto's Hall of Fame (new_bark_player_house_1f.txt), as HeartGold rings the Pokégear once the Champion is home. In
+# HeartGold he speaks of the S.S. Aqua to Kanto; here the journey goes on to Hoenn (plan 18 · W10), and the ship that
+# takes a Champion there sails from Olivine's port (RegionDatabase's link from Johto).
+script JohtoChampionCall
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Prof. Elm"
+  say "{player}! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!"
+  say "Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly."
+  say "Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League."
+  say "There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!"
+  text "Click... The call has ended."
+  setflag FLAG_ELM_CALLED_THE_CHAMPION
+  return
+
+
 # ------------------------------------------------------------------ Hoenn (plan 21 · H2)
 
 # What every game starts with in Hoenn, as Emerald's new game and its moving van set it, for the people of the first
@@ -1710,6 +1833,7 @@ script HoennNewGame
   call HoennChapterSeven
   call HoennChapterSevenB
   call HoennChapterSevenC
+  call HoennChapterEight
   return
 
 
@@ -1902,6 +2026,28 @@ script HoennChapterSevenC
   setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
   setflag FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
   if not flag FLAG_WINGULL_SENT_ON_ERRAND clearflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  return
+
+
+# What a new game of Emerald sets for the eighth stretch, Lilycove City and Mt. Pyre (plan 21 · H7, part a), as
+# Emerald's own new game sets it: Maxie at Mt. Pyre's summit until the two leaders bring the orbs back (plan 21 · H8),
+# the museum's patrons and tourists until the player's painting hangs there (plan 21 · H11), the Trainer Fan Club's
+# interviewer, the game designers of the Cove Lily Motel until the Hall of Fame (plan 21 · H9) and the rooftop's
+# clearance-sale woman. FLAG_HOENN_CHAPTER_EIGHT, a flag of ours, says it has run. HoennNewGame calls it; a save from
+# before it was written runs it from Lilycove City's, Route 122's and Route 123's own arrival scripts, the only ways to
+# the city and the mountain, so no story version is raised for it. It may only set flags and variables, and ends in
+# return.
+script HoennChapterEight
+  setflag FLAG_HOENN_CHAPTER_EIGHT
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
+  setflag FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER
+  setflag FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
+  setflag FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN
   return
 
 

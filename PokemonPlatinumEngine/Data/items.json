@@ -13897,6 +13897,18 @@
     "cantBeTossed": true
   },
   {
+    "id": 9112,
+    "name": "Magma Emblem",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A medal-like emblem bearing Team Magma's mark. It was dropped on the summit of Mt. Pyre.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9200,
     "name": "SquirtBottle",
     "pocket": "KeyItems",

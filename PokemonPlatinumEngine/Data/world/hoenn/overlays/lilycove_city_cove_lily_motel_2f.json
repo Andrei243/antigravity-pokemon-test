@@ -1,0 +1,15 @@
+{
+  // The Cove Lily Motel's upper floor (plan 21 · H7, part a): Scott asleep in one room (lilycove_city_cove_lily_motel_2f.txt),
+  // and the game designers who come to stay once Hoenn's Hall of Fame is entered (plan 21 · H9), hidden until then
+  "area": "lilycove_city_cove_lily_motel_2f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "scott": { "name": "Scott", "script": "Scott" },
+    "man_3": { "name": "Game Designer", "dialog": ["I design games. Fill your Pokédex with every Pokémon of Hoenn and show me, and I'll have something for you."] },
+    "scientist_1": { "name": "Artist", "dialog": ["I draw the pictures for our games. I'm here for the sea views."] },
+    "fat_man": { "name": "Man", "dialog": ["We're on holiday. Well, the others are. I'm thinking about my next game."] },
+    "man_4": { "name": "Programmer", "dialog": ["I'm the programmer. If something goes wrong in a game, it's my fault. Probably."] },
+    "gameboy_kid": { "name": "Boy", "dialog": ["I never go anywhere without my games. Not even on holiday!"] },
+    "woman_2": { "name": "Woman", "dialog": ["The sea breeze tickles my heart. Doesn't it tickle yours?"] }
+  }
+}

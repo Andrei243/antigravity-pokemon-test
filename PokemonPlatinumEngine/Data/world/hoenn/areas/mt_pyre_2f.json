@@ -1,0 +1,52 @@
+{
+  "key": "mt_pyre_2f",
+  "index": 254,
+  "name": "Mt Pyre",
+  "matrix": 203,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "mt_pyre_2f",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 23 },
+    { "species": "Shuppet", "level": 22 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 2, "z": 1, "to": "mt_pyre_1f", "toWarp": 4 },
+    { "x": 10, "z": 1, "to": "mt_pyre_3f", "toWarp": 0 },
+    { "x": 10, "z": 12, "to": "mt_pyre_3f", "toWarp": 4, "landing": true },
+    { "x": 6, "z": 12, "to": "mt_pyre_3f", "toWarp": 5, "landing": true },
+    { "x": 11, "z": 9, "to": "mt_pyre_1f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "maniac", "looks": "maniac", "movement": "look_east", "x": 3, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_MARK" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 0, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL", "item": "Ultra Ball", "script": "MtPyre_2F_EventScript_ItemUltraBall" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_east", "x": 9, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "MtPyre_2F_EventScript_Woman" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_south", "x": 12, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MtPyre_2F_EventScript_PokefanM" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_south", "x": 2, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_DEZ_AND_LUKE" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 3, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_DEZ_AND_LUKE" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_north", "x": 6, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_ZANDER" },
+    { "id": "hex_maniac", "looks": "hex_maniac", "movement": "look_south_and_west", "x": 6, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LEAH" }
+  ],
+  "signs": [],
+  "triggers": []
+}

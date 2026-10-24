@@ -57,6 +57,7 @@
     },
     "expert_m": {
       "name": "Old Man",
+      "script": "Rumour",
       "dialog": [
         "Eterna City is nothing like the town I grew up in.",
         "Back in my day, you could hear the forest from every street."

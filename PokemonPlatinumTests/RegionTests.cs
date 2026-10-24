@@ -176,6 +176,13 @@ public class RegionTests
         var link = RegionDatabase.LinkFrom(RegionDatabase.Kanto)!;
         Assert.Equal(RegionDatabase.Johto, link.To);
         Assert.Contains(MapDatabase.Get(link.DepartureMap!).NPCs, n => n.IsTransportAttendant);
+        // Plan 20 · J12: and from Johto the ship to Hoenn sails from Olivine's port hall, its sailor before the quay
+        var onward = RegionDatabase.LinkFrom(RegionDatabase.Johto)!;
+        Assert.Equal(RegionDatabase.Hoenn, onward.To);
+        Assert.Equal(Transport.Boat, onward.Transport);
+        Assert.Equal("Olivine_PortHall", onward.DepartureMap);
+        Assert.Contains(onward.DepartureMap, johto.Maps);
+        Assert.Contains(MapDatabase.Get(onward.DepartureMap!).NPCs, n => n.IsTransportAttendant);
     }
 
     [Fact]

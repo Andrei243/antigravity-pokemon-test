@@ -1,0 +1,20 @@
+# The Lilycove Department Store's fourth floor (plan 21 · H7, part a), the TM Corner. docs/scripts.md describes the
+# language; Emerald's beats (data/maps/LilycoveCity_DepartmentStore_4F/scripts.inc): the left counter sells four
+# machines of attack, Fire Blast, Thunder, Blizzard and Hyper Beam, the right one four of defence, Protect, Safeguard,
+# Reflect and Light Screen (marts.json's lilycove_4f_attack and lilycove_4f_defense).
+
+
+script ClerkLeft
+  speaker "Clerk"
+  say "Welcome! These machines teach the strongest attacks there are."
+  shop "lilycove_4f_attack"
+  say "Please come again!"
+  end
+
+
+script ClerkRight
+  speaker "Clerk"
+  say "Welcome! These machines teach moves that protect your team."
+  shop "lilycove_4f_defense"
+  say "Please come again!"
+  end

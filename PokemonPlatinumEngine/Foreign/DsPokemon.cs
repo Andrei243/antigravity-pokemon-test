@@ -173,7 +173,9 @@ public static class DsPokemon
         int item = pokemon.HeldItem?.Id ?? 0;
         BitConverter.TryWriteBytes(a.AsSpan(2), (ushort)(item is > 0 and <= HighestItem ? item : 0));
         BitConverter.TryWriteBytes(a.AsSpan(4), otId);
-        BitConverter.TryWriteBytes(a.AsSpan(8), (uint)Math.Max(0, pokemon.CurrentExp));
+        // Platinum's level is its EXP's, and its curves stop at 100: a Pokémon past 100 (plan 18 · W4) is written at 100
+        int exp = pokemon.Level > 100 ? Math.Min(pokemon.CurrentExp, Pokemon.GetExpForLevel(100, pokemon.Species.GrowthRate)) : pokemon.CurrentExp;
+        BitConverter.TryWriteBytes(a.AsSpan(8), (uint)Math.Max(0, exp));
         a[0xC] = (byte)Math.Clamp(pokemon.Friendship, 0, 255);
         int ability = AbilityDatabase.IdOf(pokemon.AbilityName);
         a[0xD] = (byte)(ability is > 0 and <= HighestAbility ? ability : 0);

@@ -149,11 +149,32 @@ partial class Harness
             ("h129_ancient_tomb_chamber", "AncientTomb", 8, 10, Direction.Up),
             ("h130_scorched_slab", "ScorchedSlab", 7, 15, Direction.Up),
             ("h131_fortree_house_2", "FortreeCity_House2", 4, 4, Direction.Up),
+            // Plan 21 · H7, part a: Lilycove City and its rooms, Routes 122 and 123, the Berry Master's house and Mt. Pyre
+            ("h133_lilycove_city", "Hoenn", 507, 80, Direction.Up),
+            ("h134_lilycove_cove", "Hoenn", 545, 86, Direction.Right),
+            ("h135_lilycove_beach", "Hoenn", 520, 100, Direction.Down),
+            ("h136_lilycove_center", "LilycoveCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("h137_store_1f", "LilycoveCity_DepartmentStore_1F", 8, 6, Direction.Up),
+            ("h138_store_4f", "LilycoveCity_DepartmentStore_4F", 8, 5, Direction.Down),
+            ("h139_store_rooftop", "LilycoveCity_DepartmentStoreRooftop", 10, 4, Direction.Up),
+            ("h140_motel", "LilycoveCity_CoveLilyMotel_1F", 5, 7, Direction.Up),
+            ("h141_museum", "LilycoveCity_LilycoveMuseum_1F", 9, 12, Direction.Up),
+            ("h142_museum_gallery", "LilycoveCity_LilycoveMuseum_2F", 12, 8, Direction.Up),
+            ("h143_fan_club", "LilycoveCity_PokemonTrainerFanClub", 5, 12, Direction.Up),
+            ("h144_route122", "Hoenn", 442, 130, Direction.Up),
+            ("h145_route123", "Hoenn", 400, 150, Direction.Up),
+            ("h146_berry_masters_house", "Route123_BerryMastersHouse", 3, 6, Direction.Up),
+            ("h147_mt_pyre_1f", "MtPyre_1F", 17, 17, Direction.Up),
+            ("h148_mt_pyre_3f", "MtPyre_3F", 6, 8, Direction.Up),
+            ("h149_mt_pyre_6f", "MtPyre_6F", 6, 6, Direction.Up),
+            ("h150_mt_pyre_mountainside", "MtPyre_Exterior", 20, 30, Direction.Up),
+            ("h151_mt_pyre_mist", "MtPyre_Exterior", 20, 12, Direction.Up),
+            ("h152_mt_pyre_summit", "MtPyre_Summit", 23, 12, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -172,6 +193,8 @@ partial class Harness
         At("Hoenn", 335, 10, Direction.Up); Frames(2); Shot("h118_fortree_night");
         At("Hoenn", 300, 60, Direction.Up); Frames(2); Shot("h119_route119_rain_night");
         At("HoennSafariZone", 72, 75, Direction.Down); Frames(2); Shot("h132_safari_night");
+        At("Hoenn", 507, 80, Direction.Up); Frames(2); Shot("h153_lilycove_night");
+        At("MtPyre_Summit", 23, 12, Direction.Up); Frames(2); Shot("h154_mt_pyre_summit_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

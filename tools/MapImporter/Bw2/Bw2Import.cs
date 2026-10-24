@@ -113,6 +113,7 @@ public static class Bw2Import
             if (id < 0) continue;
             var areas = world.AreasOn(constant).ToList();
             if (!areas.Any(a => open.Contains(Bw2World.KeyOf(a.Constant)))) continue;
+            var seasonal = world.SeasonalChunks(constant);
             for (int cy = 0; cy < matrix.Height; cy++)
                 for (int cx = 0; cx < matrix.Width; cx++)
                 {
@@ -125,6 +126,10 @@ public static class Bw2Import
                     string folder = Bw2Matrix.Folder(model);
                     int chunk = world.ChunkId(folder);
                     if (inView && chunk >= 0) wanted[chunk] = folder;
+                    // The chunks another season lays there are in view with it (plan 22 · U2, part b)
+                    if (inView)
+                        foreach (var s in seasonal.Where(s => s.X == cx && s.Y == cy))
+                            if (world.ChunkId(s.Folder) is var other and >= 0) wanted[other] = s.Folder;
                 }
             Write("matrices", id.ToString("000", CultureInfo.InvariantCulture), world.MatrixFile(constant));
             foreach (var zone in areas)
@@ -362,6 +367,31 @@ public static class Bw2Import
                 """);
             foreach (var (name, count) in unsortedTiles.OrderByDescending(kv => kv.Value).ThenBy(kv => kv.Key, StringComparer.Ordinal).Take(120))
                 list.Append(CultureInfo.InvariantCulture, $"| `{name}` | {count:N0} |\n");
+            list.Append('\n');
+            text.Insert(problemsAt, list.ToString());
+        }
+        // The seasons' chunks (plan 22 · U2, part b): what each stands in for, as WorldMatrixFile.Seasons writes it
+        var seasonal = maps.Chunks.Where(c => Bw2World.SeasonalOf(c) != null).ToList();
+        if (seasonal.Count > 0)
+        {
+            int problemsAt = text.ToString().IndexOf("## Problems", StringComparison.Ordinal);
+            var list = new StringBuilder();
+            list.Append(CultureInfo.InvariantCulture, $"""
+                ## The seasons' chunks
+
+                {seasonal.Count} chunk folders are named by a season; each takes the place, in that season, of the chunk whose name ends as its own does (`WorldMatrixFile.Seasons`). Black 2's own table of the swaps (`map_replace.c`'s archive) is not extracted by the decompilation.
+
+                | Chunk | Season | In place of |
+                |---|---|---|
+
+                """);
+            foreach (string folder in seasonal)
+            {
+                var (season, replaces) = Bw2World.SeasonalOf(folder)!.Value;
+                var bases = maps.Matrices.Values.SelectMany(m => m.Matrix.Models)
+                    .Select(Bw2Matrix.Folder).Where(f => Bw2World.SeasonalOf(f) == null && f.EndsWith(replaces, StringComparison.Ordinal)).Distinct().ToList();
+                list.Append(CultureInfo.InvariantCulture, $"| `{folder}` | {season} | {(bases.Count == 0 ? "nothing (a problem)" : string.Join(", ", bases.Select(b => $"`{b}`")))} |\n");
+            }
             list.Append('\n');
             text.Insert(problemsAt, list.ToString());
         }

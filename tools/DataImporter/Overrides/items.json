@@ -183,6 +183,19 @@
     "description": "A scope made by the Devon Corporation. It shows a Pokémon that has hidden itself by blending in.",
     "cantBeTossed": true
   },
+  // Team Magma's emblem, which the old woman of Mt. Pyre's summit gives and which opens the way into Team Magma's
+  // hideout on Jagged Pass (plan 21 · H7)
+  "Magma Emblem": {
+    "id": 9112,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A medal-like emblem bearing Team Magma's mark. It was dropped on the summit of Mt. Pyre.",
+    "cantBeTossed": true
+  },
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {

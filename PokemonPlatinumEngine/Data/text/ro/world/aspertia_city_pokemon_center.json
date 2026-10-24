@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "In Unova the Poké Mart is right inside the Pokémon Center. Heal up and stock up in one trip!"
         ],
         "text": [
-          ""
+          "În Unova, Poké Mart-ul e chiar în Centrul Pokémon. Îți vindeci Pokémonii și te aprovizionezi dintr-o singură oprire!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I'm waiting for my Pokémon to be healed. It battled five times in a row today!"
         ],
         "text": [
-          ""
+          "Aștept să mi se vindece Pokémonul. A luptat de cinci ori la rând azi!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "The PC by the counter keeps Pokémon you can't carry safe in boxes. Anyone can use it."
         ],
         "text": [
-          ""
+          "PC-ul de lângă tejghea păstrează în siguranță, în boxe, Pokémonii pe care nu-i poți purta cu tine. Oricine îl poate folosi."
         ]
       }
     }

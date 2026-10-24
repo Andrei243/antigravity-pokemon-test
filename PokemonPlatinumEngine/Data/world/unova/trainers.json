@@ -169,7 +169,7 @@
   {
     "id": "unova_worker_matthew",
     "name": "Matthew",
-    "class": "Worker 44",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -459,7 +459,7 @@
   {
     "id": "unova_clerk_m_chaz",
     "name": "Chaz",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -483,7 +483,7 @@
   {
     "id": "unova_clerk_m_fredric",
     "name": "Fredric",
-    "class": "Clerk M 67",
+    "class": "Clerk",
     "ai": [
       "Basic",
       "Expert"
@@ -2894,7 +2894,7 @@
   {
     "id": "unova_scientist_simon",
     "name": "Simon",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -2921,7 +2921,7 @@
   {
     "id": "unova_scientist_blythe",
     "name": "Blythe",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -3180,7 +3180,7 @@
   {
     "id": "unova_worker_tyler",
     "name": "Tyler",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -3252,7 +3252,7 @@
   {
     "id": "unova_clerk_m_nelson",
     "name": "Nelson",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -3557,7 +3557,7 @@
   {
     "id": "unova_harlequin_charley",
     "name": "Charley",
-    "class": "Harlequin 32",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -3793,7 +3793,7 @@
   {
     "id": "unova_scientist_dudley",
     "name": "Dudley",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -5864,7 +5864,7 @@
   {
     "id": "unova_boss_trainer_elie",
     "name": "Elie",
-    "class": "Boss Trainer F 163",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -5917,7 +5917,7 @@
   {
     "id": "unova_boss_trainer_ellas",
     "name": "Ellas",
-    "class": "Boss Trainer M 162",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -6182,7 +6182,7 @@
   {
     "id": "unova_boss_trainer_harmon",
     "name": "Harmon",
-    "class": "Boss Trainer M 161",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -6235,7 +6235,7 @@
   {
     "id": "unova_boss_trainer_harmony",
     "name": "Harmony",
-    "class": "Boss Trainer F 164",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -6288,7 +6288,7 @@
   {
     "id": "unova_boss_trainer_iria",
     "name": "Iria",
-    "class": "Boss Trainer F 163",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -6341,7 +6341,7 @@
   {
     "id": "unova_boss_trainer_ira",
     "name": "Ira",
-    "class": "Boss Trainer M 162",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -6500,7 +6500,7 @@
   {
     "id": "unova_worker_isaac",
     "name": "Isaac",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -6534,7 +6534,7 @@
   {
     "id": "unova_worker_mitchell",
     "name": "Mitchell",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -6558,7 +6558,7 @@
   {
     "id": "unova_worker_nathan",
     "name": "Nathan",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -6710,6 +6710,7 @@
       },
       {
         "species": "Basculin",
+        "form": "Basculin-Blue-Striped",
         "level": 16,
         "ivScale": 0,
         "personality": 2518920
@@ -7890,7 +7891,7 @@
   {
     "id": "unova_scientist_jacques",
     "name": "Jacques",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -7911,7 +7912,7 @@
   {
     "id": "unova_scientist_marissa",
     "name": "Marissa",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -8178,7 +8179,7 @@
   {
     "id": "unova_harlequin_pat",
     "name": "Pat",
-    "class": "Harlequin 32",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -8196,7 +8197,7 @@
   {
     "id": "unova_harlequin_ian",
     "name": "Ian",
-    "class": "Harlequin 32",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -9202,7 +9203,7 @@
   {
     "id": "unova_worker_maynard",
     "name": "Maynard",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9220,7 +9221,7 @@
   {
     "id": "unova_worker_pasqual",
     "name": "Pasqual",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9244,7 +9245,7 @@
   {
     "id": "unova_worker_tibor",
     "name": "Tibor",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9268,7 +9269,7 @@
   {
     "id": "unova_worker_niel",
     "name": "Niel",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9292,7 +9293,7 @@
   {
     "id": "unova_worker_tavarius",
     "name": "Tavarius",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9322,7 +9323,7 @@
   {
     "id": "unova_worker_noel",
     "name": "Noel",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -9340,7 +9341,7 @@
   {
     "id": "unova_worker_friedrich",
     "name": "Friedrich",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -10208,6 +10209,7 @@
       },
       {
         "species": "Basculin",
+        "form": "Basculin-Blue-Striped",
         "level": 46,
         "ivScale": 100,
         "personality": 2512776
@@ -10342,7 +10344,7 @@
   {
     "id": "unova_colress",
     "name": "Colress",
-    "class": "Pokémon Trainer Colress 195",
+    "class": "Pokémon Trainer Colress",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -11674,6 +11676,7 @@
     "party": [
       {
         "species": "Wormadam",
+        "form": "Wormadam-Sandy",
         "level": 66,
         "ivScale": 200,
         "personality": 8306808,
@@ -13577,7 +13580,7 @@
   {
     "id": "unova_scientist_clarke",
     "name": "Clarke",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -13598,7 +13601,7 @@
   {
     "id": "unova_scientist_caroline",
     "name": "Caroline",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -13619,7 +13622,7 @@
   {
     "id": "unova_worker_zack",
     "name": "Zack",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -13637,7 +13640,7 @@
   {
     "id": "unova_worker_scott",
     "name": "Scott",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14159,7 +14162,7 @@
   {
     "id": "unova_worker_morgann",
     "name": "Morgann",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14183,7 +14186,7 @@
   {
     "id": "unova_worker_herman",
     "name": "Herman",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14207,7 +14210,7 @@
   {
     "id": "unova_worker_paul",
     "name": "Paul",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14237,7 +14240,7 @@
   {
     "id": "unova_worker_cliff",
     "name": "Cliff",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14659,7 +14662,7 @@
   {
     "id": "unova_clerk_m_clemens",
     "name": "Clemens",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -14677,7 +14680,7 @@
   {
     "id": "unova_clerk_m_warren",
     "name": "Warren",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -14731,7 +14734,7 @@
   {
     "id": "unova_boss_trainer_jariel",
     "name": "Jariel",
-    "class": "Boss Trainer M 161",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -14784,7 +14787,7 @@
   {
     "id": "unova_boss_trainer_janna",
     "name": "Janna",
-    "class": "Boss Trainer F 164",
+    "class": "Boss Trainer",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -14837,7 +14840,7 @@
   {
     "id": "unova_worker_leo",
     "name": "Leo",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -14867,7 +14870,7 @@
   {
     "id": "unova_worker_brand",
     "name": "Brand",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15339,7 +15342,7 @@
   {
     "id": "unova_worker_cairn",
     "name": "Cairn",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15369,7 +15372,7 @@
   {
     "id": "unova_worker_gus",
     "name": "Gus",
-    "class": "Worker 26",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15399,7 +15402,7 @@
   {
     "id": "unova_worker_victor",
     "name": "Victor",
-    "class": "Worker 44",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15423,7 +15426,7 @@
   {
     "id": "unova_worker_patton",
     "name": "Patton",
-    "class": "Worker 44",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15447,7 +15450,7 @@
   {
     "id": "unova_worker_ryan",
     "name": "Ryan",
-    "class": "Worker 44",
+    "class": "Worker",
     "ai": [
       "Basic"
     ],
@@ -15927,7 +15930,7 @@
   {
     "id": "unova_scientist_ronald",
     "name": "Ronald",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -15948,7 +15951,7 @@
   {
     "id": "unova_scientist_lumi",
     "name": "Lumi",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -16537,7 +16540,7 @@
   {
     "id": "unova_scientist_terrance",
     "name": "Terrance",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -16558,7 +16561,7 @@
   {
     "id": "unova_scientist_lumina",
     "name": "Lumina",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -18357,7 +18360,7 @@
   {
     "id": "unova_no_data_616",
     "name": "    ",
-    "class": "No Data M 231",
+    "class": "No Data",
     "ai": [
       "Basic"
     ],
@@ -18375,7 +18378,7 @@
   {
     "id": "unova_no_data_617",
     "name": "    ",
-    "class": "No Data M 231",
+    "class": "No Data",
     "ai": [
       "Basic"
     ],
@@ -18393,7 +18396,7 @@
   {
     "id": "unova_no_data_618",
     "name": "    ",
-    "class": "No Data M 231",
+    "class": "No Data",
     "ai": [
       "Basic"
     ],
@@ -18411,7 +18414,7 @@
   {
     "id": "unova_no_data_619",
     "name": "    ",
-    "class": "No Data M 231",
+    "class": "No Data",
     "ai": [
       "Basic"
     ],
@@ -18429,7 +18432,7 @@
   {
     "id": "unova_no_data_620",
     "name": "    ",
-    "class": "No Data M 231",
+    "class": "No Data",
     "ai": [
       "Basic"
     ],
@@ -18489,7 +18492,7 @@
   {
     "id": "unova_clerk_m_chaz_2",
     "name": "Chaz",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -19415,7 +19418,7 @@
   {
     "id": "unova_scientist_marie",
     "name": "Marie",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -20564,7 +20567,7 @@
   {
     "id": "unova_clerk_m_gilligan",
     "name": "Gilligan",
-    "class": "Clerk M 67",
+    "class": "Clerk",
     "ai": [
       "Basic",
       "Expert"
@@ -22421,7 +22424,7 @@
   {
     "id": "unova_harlequin_clarence",
     "name": "Clarence",
-    "class": "Harlequin 233",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -22445,7 +22448,7 @@
   {
     "id": "unova_harlequin_jack",
     "name": "Jack",
-    "class": "Harlequin 233",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -22469,7 +22472,7 @@
   {
     "id": "unova_harlequin_gary",
     "name": "Gary",
-    "class": "Harlequin 233",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -22499,7 +22502,7 @@
   {
     "id": "unova_harlequin_anders",
     "name": "Anders",
-    "class": "Harlequin 233",
+    "class": "Harlequin",
     "ai": [
       "Basic"
     ],
@@ -22641,7 +22644,7 @@
   {
     "id": "unova_scientist_athena",
     "name": "Athena",
-    "class": "Scientist F 46",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -22668,7 +22671,7 @@
   {
     "id": "unova_scientist_franklin",
     "name": "Franklin",
-    "class": "Scientist M 52",
+    "class": "Scientist",
     "ai": [
       "Basic",
       "Expert"
@@ -25389,7 +25392,7 @@
   {
     "id": "unova_clerk_m_augustin",
     "name": "Augustin",
-    "class": "Clerk M 66",
+    "class": "Clerk",
     "ai": [
       "Basic"
     ],
@@ -25588,7 +25591,7 @@
   {
     "id": "unova_colress_2",
     "name": "Colress",
-    "class": "Pokémon Trainer Colress 235",
+    "class": "Pokémon Trainer Colress",
     "ai": [
       "Basic",
       "EvalAttack",
@@ -25616,6 +25619,7 @@
       },
       {
         "species": "Rotom",
+        "form": "Rotom-Wash",
         "level": 72,
         "ivScale": 250,
         "personality": 9673352,

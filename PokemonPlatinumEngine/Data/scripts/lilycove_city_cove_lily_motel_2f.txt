@@ -1,0 +1,17 @@
+# The Cove Lily Motel's upper floor (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.inc): Scott is taking a nap in one of the
+# rooms, and the first time he is woken he counts it as a meeting (FLAG_MET_SCOTT_IN_LILYCOVE, VAR_SCOTT_STATE).
+
+
+script Scott
+  face self player
+  speaker "Scott"
+  if flag FLAG_MET_SCOTT_IN_LILYCOVE goto Met
+  say "Mm... Oh! {player}! You caught me napping. I've been out watching trainers all day."
+  say "I'd much rather be watching a battle than sleeping, mind you. Have you been to the Contest Hall yet?"
+  addvar VAR_SCOTT_STATE 1
+  setflag FLAG_MET_SCOTT_IN_LILYCOVE
+  end
+label Met
+  say "Lilycove's full of strong trainers. You'll have no shortage of battles here, {player}."
+  end

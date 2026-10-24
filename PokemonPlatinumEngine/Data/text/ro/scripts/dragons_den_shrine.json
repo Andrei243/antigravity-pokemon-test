@@ -5,7 +5,7 @@
         "Elder"
       ],
       "text": [
-        ""
+        "Bătrâna înțeleaptă"
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "Elder"
       ],
       "text": [
-        ""
+        "Bătrâna înțeleaptă"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong."
       ],
       "text": [
-        ""
+        "Bun venit la Sanctuarul Dragonilor. Aici îmblânzitorii de dragoni din Blackthorn învață ce înseamnă să fii puternic."
       ]
     },
     {
@@ -31,7 +31,7 @@
         "When the time is right, I will ask you some questions. Not yet."
       ],
       "text": [
-        ""
+        "Când va veni vremea, îți voi pune niște întrebări. Încă nu."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
       ],
       "text": [
-        ""
+        "Ai auzit de Lugia? Se spune că a trăit odinioară prin Insulele Whirl... Nu-ți face griji. Sunt doar divagările unui bătrân."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Ah, good, you came back. I have something for you. Take this Dratini as a sign that I know your worth."
       ],
       "text": [
-        ""
+        "A, bine că te-ai întors. Am ceva pentru tine. Ia acest Dratini ca semn că știu cât valorezi."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} received Dratini from the elder!"
       ],
       "text": [
-        ""
+        "{player} a primit un Dratini de la bătrânul înțelept!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Dragons stand for our clan. You have shown that one can be trusted to you."
       ],
       "text": [
-        ""
+        "Dragonii sunt simbolul clanului nostru. Ai arătat că i se poate încredința unul."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Clair seems to have learned something worth knowing from you. I thank you, as her grandfather."
       ],
       "text": [
-        ""
+        "Se pare că Clair a învățat de la tine ceva care merită știut. Îți mulțumesc, ca bunic al ei."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Hm. Good to see you. You needn't tell me why you're here: Clair sent you. That girl is a handful."
       ],
       "text": [
-        ""
+        "Hm. Mă bucur să te văd. Nu e nevoie să-mi spui de ce ai venit: te-a trimis Clair. Fata aceea e o bătaie de cap."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "I'm sorry, but I must test you. Don't worry: you need only answer a few questions. Ready?"
       ],
       "text": [
-        ""
+        "Îmi pare rău, dar trebuie să te pun la încercare. Nu-ți face griji: trebuie doar să răspunzi la câteva întrebări. Ești gata?"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Shall we go on? I believe I was asking you..."
       ],
       "text": [
-        ""
+        "Continuăm? Cred că te întrebam..."
       ]
     },
     {
@@ -108,10 +108,10 @@
         "Partners"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce sunt Pokémonii pentru tine?",
+        "Prieteni",
+        "Unelte",
+        "Parteneri"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "I see..."
       ],
       "text": [
-        ""
+        "Înțeleg..."
       ]
     },
     {
@@ -130,10 +130,10 @@
         "Luck alone"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce te ajută să câștigi lupte?",
+        "Planificarea",
+        "Munca în echipă",
+        "Doar norocul"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "I see..."
       ],
       "text": [
-        ""
+        "Înțeleg..."
       ]
     },
     {
@@ -152,10 +152,10 @@
         "Anyone at all"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Cu ce fel de antrenor vrei să te lupți?",
+        "Cu cei slabi",
+        "Cu cei puternici",
+        "Cu oricine"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "I see..."
       ],
       "text": [
-        ""
+        "Înțeleg..."
       ]
     },
     {
@@ -174,10 +174,10 @@
         "Patience"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ce contează cel mai mult când crești Pokémon?",
+        "Dragostea",
+        "Ordinele stricte",
+        "Răbdarea"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "I see..."
       ],
       "text": [
-        ""
+        "Înțeleg..."
       ]
     },
     {
@@ -196,10 +196,10 @@
         "Both alike"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pokémon puternici sau slabi: care contează mai mult?",
+        "Cei puternici",
+        "Cei slabi",
+        "Deopotrivă"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Hm... I see. You care deeply for Pokémon. That is the conviction that matters most."
       ],
       "text": [
-        ""
+        "Hm... Înțeleg. Ții foarte mult la Pokémon. Aceasta e convingerea care contează cel mai mult."
       ]
     },
     {
@@ -215,7 +215,7 @@
         "{player}, hold on to it. It will carry you through the Pokémon League."
       ],
       "text": [
-        ""
+        "{player}, păstreaz-o. Te va duce prin Liga Pokémon."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -231,7 +231,7 @@
         "Well? How did it go? There's no point asking, I suppose. You failed, didn't you? ...What? You passed?"
       ],
       "text": [
-        ""
+        "Ei bine? Cum a mers? Nu are rost să întreb, presupun. N-ai trecut, nu-i așa? ...Ce? Ai trecut?"
       ]
     },
     {
@@ -239,7 +239,7 @@
         "That's impossible!"
       ],
       "text": [
-        ""
+        "Imposibil!"
       ]
     },
     {
@@ -247,7 +247,7 @@
         "You're lying! Even I've never had his approval!"
       ],
       "text": [
-        ""
+        "Minți! Nici eu n-am avut vreodată aprobarea lui!"
       ]
     },
     {
@@ -255,7 +255,7 @@
         "Elder"
       ],
       "text": [
-        ""
+        "Bătrâna înțeleaptă"
       ]
     },
     {
@@ -263,7 +263,7 @@
         "Clair! This child has no flaw, in skill or in heart. Accept your defeat and give the Rising Badge... or must I tell Lance about this?"
       ],
       "text": [
-        ""
+        "Clair! Acest copil nu are niciun cusur, nici în îndemânare, nici în inimă. Acceptă-ți înfrângerea și dă-i Insigna Rising... sau trebuie să-i spun lui Lance despre asta?"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -279,7 +279,7 @@
         "I... I understand."
       ],
       "text": [
-        ""
+        "Eu... Înțeleg."
       ]
     },
     {
@@ -287,7 +287,7 @@
         "Here. This is the Rising Badge. Hurry up and take it!"
       ],
       "text": [
-        ""
+        "Poftim. Asta e Insigna Rising. Grăbește-te și ia-o!"
       ]
     },
     {
@@ -295,7 +295,7 @@
         "{player} received the Rising Badge from Clair!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Rising de la Clair!"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "With it your Pokémon can climb waterfalls, and every Pokémon you have will obey you without question."
       ],
       "text": [
-        ""
+        "Cu ea Pokémonii tăi pot urca pe cascade, iar toți Pokémonii pe care îi ai te vor asculta fără șovăire."
       ]
     },
     {
@@ -311,7 +311,7 @@
         "Elder"
       ],
       "text": [
-        ""
+        "Bătrâna înțeleaptă"
       ]
     },
     {
@@ -319,7 +319,7 @@
         "Clair... Think about what this child has, and what you lack."
       ],
       "text": [
-        ""
+        "Clair... Gândește-te la ce are acest copil și la ce îți lipsește ție."
       ]
     },
     {
@@ -327,7 +327,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -335,7 +335,7 @@
         "..."
       ],
       "text": [
-        ""
+        "..."
       ]
     },
     {
@@ -343,7 +343,7 @@
         "Elder"
       ],
       "text": [
-        ""
+        "Bătrâna înțeleaptă"
       ]
     },
     {
@@ -351,7 +351,7 @@
         "By the way... have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
       ],
       "text": [
-        ""
+        "Apropo... ai auzit de Lugia? Se spune că a trăit odinioară prin Insulele Whirl... Nu-ți face griji. Sunt doar divagările unui bătrân."
       ]
     },
     {
@@ -359,7 +359,7 @@
         "Hm? I didn't quite catch that..."
       ],
       "text": [
-        ""
+        "Hm? N-am prins bine..."
       ]
     },
     {
@@ -367,7 +367,7 @@
         "What was it you said? Think it over, and speak to me again when you're ready."
       ],
       "text": [
-        ""
+        "Ce ai spus? Gândește-te și vorbește-mi din nou când ești gata."
       ]
     }
   ]

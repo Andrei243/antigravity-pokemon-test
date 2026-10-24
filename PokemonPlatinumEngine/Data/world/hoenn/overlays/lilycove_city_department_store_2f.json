@@ -1,0 +1,14 @@
+{
+  // The Department Store's second floor (plan 21 · H7, part a): the Trainer's Zone, its two counters' stock
+  // Emerald's (marts.json's lilycove_2f_balls and lilycove_2f_medicine)
+  "area": "lilycove_city_department_store_2f",
+  "bgmTrack": "hoenn/lilycove",
+  "locked": [ 2 ],
+  "people": {
+    "woman_3_2": { "name": "Clerk", "script": "ClerkLeft" },
+    "woman_3": { "name": "Clerk", "script": "ClerkRight" },
+    "cook": { "name": "Cook", "dialog": ["When I go travelling, I pack enough food for a week. You can never have too many Potions, either!"] },
+    "pokefan_f": { "name": "Woman", "dialog": ["Great Balls, Ultra Balls... I can never decide which to buy, so I buy both."] },
+    "sailor": { "name": "Sailor", "dialog": ["A sailor needs plenty of Repel. Sea Pokémon pop up whenever you least want them!"] }
+  }
+}

@@ -260,6 +260,13 @@
         "game": "Ca și cum {game} ar fi în al doilea slot al consolei: cu Pokédexul Național, doi dintre Pokémonii lui se întâlnesc în iarba rutelor care îi au."
       }
     },
+    "nextObjective": {
+      "label": "Ce urmează",
+      "help": {
+        "on": "Un rând în meniul de start, pe Cardul de Antrenor și în rezumatul salvării spune încotro merge povestea, iar mama și asistenta de la Centrul Pokémon îți amintesc când le întrebi.",
+        "off": "Nimic nu spune încotro merge povestea: îți găsești singur drumul, ca în original."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -352,6 +359,7 @@
     "options": "OPȚIUNI",
     "close": "ÎNCHIDE",
     "quitGame": "IEȘI DIN JOC",
+    "next": "URMEAZĂ",
     "quit": {
       "heading": "Ieși din joc?",
       "body": "Tot ce s-a întâmplat de la ultima salvare se pierde, dacă nu salvezi întâi.",
@@ -359,6 +367,43 @@
       "saveAndQuit": "SALVEAZĂ ȘI IEȘI",
       "quit": "IEȘI"
     }
+  },
+
+  "objectives": {
+    "downstairs": "Coboară scările. Mama se întreabă unde ai rămas.",
+    "rivalHome": "Treci pe la {rival}, alături. Se grăbește tare din cauza a ceva.",
+    "route201": "Mergi după {rival} pe Ruta 201, unde Profesorul Rowan așteaptă lângă iarba înaltă.",
+    "shoes": "Du-ți noul Pokémon acasă și arată-l mamei.",
+    "lake": "Găsește-l pe {rival} la Lacul Verity, pe poteca de la nord de Orășelul Twinleaf.",
+    "lab": "Mergi spre sud, la laboratorul Profesorului Rowan din Orășelul Sandgem.",
+    "parcel": "Mama lui {rival} are un colet pentru el. Treci pe acasă la el.",
+    "school": "Du coletul lui {rival}, care pleca spre Școala de Antrenori din Orașul Jubilife.",
+    "poketch": "Strânge trei cupoane prin Orașul Jubilife și schimbă-le pe un Pokétch.",
+    "roark": "Mergi spre est prin Poarta Oreburgh până în Orașul Oreburgh și câștigă Insigna Cărbune de la Roark.",
+    "worksKey": "Mergi mai departe în Orășelul Floaroma. Echipa Galactic pune ceva la cale în pajiște.",
+    "forest": "Eliberează Centrala Eoliană, apoi străbate Pădurea Eterna până în Orașul Eterna.",
+    "gardenia": "În Orașul Eterna, câștigă Insigna Pădure de la Gardenia.",
+    "galacticBuilding": "Echipa Galactic a pus stăpânire pe o clădire din Orașul Eterna. Du-te să vezi ce vor.",
+    "bicycle": "Ia o bicicletă de la magazinul de biciclete din Orașul Eterna.",
+    "fantina": "Mergi pe Drumul Bicicliștilor până în Orașul Hearthome și câștigă Insigna Relicvă de la Fantina.",
+    "maylene": "Orașul Veilstone e la est, după Ruta 215. Câștigă Insigna Pavaj de la Maylene.",
+    "wake": "Mergi spre sud, în Orașul Pastoria, și câștigă Insigna Mlaștină de la Crasher Wake.",
+    "oldCharm": "Du Talismanul Vechi primit de la Cynthia bătrânei din Orășelul Celestic.",
+    "ironIsland": "Byron a plecat pe Insula de Fier. Navighează până acolo din Orașul Canalave.",
+    "byron": "Câștigă Insigna Mină de la Byron, în Orașul Canalave.",
+    "lakes": "Se întâmplă ceva la lacuri. Începe cu Malul Valor.",
+    "candice": "Orașul Snowpoint e departe, în nord. Câștigă Insigna Țurțure de la Candice.",
+    "storageKey": "Urmele Echipei Galactic duc în Orașul Veilstone și la depozitul ei.",
+    "headquarters": "Croiește-ți drum prin cartierul general al Echipei Galactic.",
+    "coronet": "Urcă pe Muntele Coronet. Echipa Galactic se îndreaptă spre Coloana Suliței.",
+    "spearPillar": "Oprește-l pe Cyrus la Coloana Suliței și urmeaz-o pe Cynthia oriunde ar duce drumul.",
+    "volkner": "Orașul Sunyshore, departe în est, are ultima Arenă. Câștigă Insigna Far de la Volkner.",
+    "beach": "Te mai așteaptă ceva pe plaja din Orașul Sunyshore.",
+    "victoryRoad": "Pornește spre Drumul Victoriei și Liga Pokémon.",
+    "leagueGuard": "Arată-i paznicului de la ușa Ligii insignele tale și ai grijă la {rival}.",
+    "champion": "Înfruntă Elita celor Patru și Campionul.",
+    "afterwards": "Navighează din Orașul Snowpoint spre Ținutul Luptelor sau vezi ce se mișcă pe Muntele Stark.",
+    "free": "Nimic nu te grăbește. Battle Frontier, Battleground și Pal Park îți stau deschise."
   },
 
   "close": {
@@ -3083,7 +3128,11 @@
     "TeamPlasmaShadow": "Echipa Plasma",
     "TeamPlasmaZinzolin": "Echipa Plasma",
     "Worker26": "Muncitor",
-    "Worker44": "Muncitor"
+    "Worker44": "Muncitor",
+    "BossTrainer": "Antrenor-Șef",
+    "Harlequin": "Arlechin",
+    "NoData": "Antrenor",
+    "PokemonTrainerColress": "Antrenor Pokémon"
   },
   "broadcast": {
     "clock": {

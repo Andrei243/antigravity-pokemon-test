@@ -166,6 +166,37 @@
     { "name": "HoennSafariZone_RestHouse", "matrix": 364, "area": "hoenn_safari_zone_rest_house", "trees": "Round", "setting": "Indoors" },
     { "name": "AncientTomb", "matrix": 255, "area": "ancient_tomb", "trees": "Round", "setting": "Cave" },
     { "name": "ScorchedSlab", "matrix": 260, "area": "scorched_slab", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H7, part a: Lilycove City's rooms (its Pokémon Center, the Department Store's five floors and roof, the
+    // Cove Lily Motel, the museum, the Move Deleter's, the Trainer Fan Club and four houses: the Contest Hall, the
+    // harbour, the store's lift and Team Aqua's hideout stay shut), Route 123's Berry Master's house, and Mt. Pyre:
+    // the tower's six floors, its mountainside and its summit
+    { "name": "LilycoveCity_PokemonCenter_1F", "matrix": 115, "area": "lilycove_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_PokemonCenter_2F", "matrix": 116, "area": "lilycove_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStore_1F", "matrix": 125, "area": "lilycove_city_department_store_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStore_2F", "matrix": 126, "area": "lilycove_city_department_store_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStore_3F", "matrix": 127, "area": "lilycove_city_department_store_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStore_4F", "matrix": 128, "area": "lilycove_city_department_store_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStore_5F", "matrix": 129, "area": "lilycove_city_department_store_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_DepartmentStoreRooftop", "matrix": 130, "area": "lilycove_city_department_store_rooftop", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_CoveLilyMotel_1F", "matrix": 109, "area": "lilycove_city_cove_lily_motel_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_CoveLilyMotel_2F", "matrix": 110, "area": "lilycove_city_cove_lily_motel_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_LilycoveMuseum_1F", "matrix": 111, "area": "lilycove_city_lilycove_museum_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_LilycoveMuseum_2F", "matrix": 112, "area": "lilycove_city_lilycove_museum_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_PokemonTrainerFanClub", "matrix": 118, "area": "lilycove_city_pokemon_trainer_fan_club", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_MoveDeletersHouse", "matrix": 120, "area": "lilycove_city_move_deleters_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_House1", "matrix": 121, "area": "lilycove_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_House2", "matrix": 122, "area": "lilycove_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_House3", "matrix": 123, "area": "lilycove_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_House4", "matrix": 124, "area": "lilycove_city_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route123_BerryMastersHouse", "matrix": 456, "area": "route_123_berry_masters_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_1F", "matrix": 202, "area": "mt_pyre_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_2F", "matrix": 203, "area": "mt_pyre_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_3F", "matrix": 204, "area": "mt_pyre_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_4F", "matrix": 205, "area": "mt_pyre_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_5F", "matrix": 206, "area": "mt_pyre_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_6F", "matrix": 207, "area": "mt_pyre_6f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtPyre_Exterior", "matrix": 208, "area": "mt_pyre_exterior", "trees": "Round" },
+    { "name": "MtPyre_Summit", "matrix": 209, "area": "mt_pyre_summit", "trees": "Round" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
     { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
@@ -236,6 +267,17 @@
     "route_121", "route_121_safari_zone_entrance",
     "hoenn_safari_zone_south", "hoenn_safari_zone_southwest", "hoenn_safari_zone_north", "hoenn_safari_zone_northwest",
     "hoenn_safari_zone_northeast", "hoenn_safari_zone_southeast", "hoenn_safari_zone_rest_house",
-    "ancient_tomb", "scorched_slab"
+    "ancient_tomb", "scorched_slab",
+    // Plan 21 · H7, part a: Lilycove City and its rooms, Routes 122 and 123 with the Berry Master's house, and Mt. Pyre
+    // (the way east by sea stays behind Lilycove's Wailmer until Team Aqua's submarine has gone, part b)
+    "lilycove_city", "route_122", "route_123",
+    "lilycove_city_pokemon_center_1f", "lilycove_city_pokemon_center_2f",
+    "lilycove_city_department_store_1f", "lilycove_city_department_store_2f", "lilycove_city_department_store_3f",
+    "lilycove_city_department_store_4f", "lilycove_city_department_store_5f", "lilycove_city_department_store_rooftop",
+    "lilycove_city_cove_lily_motel_1f", "lilycove_city_cove_lily_motel_2f",
+    "lilycove_city_lilycove_museum_1f", "lilycove_city_lilycove_museum_2f", "lilycove_city_pokemon_trainer_fan_club",
+    "lilycove_city_move_deleters_house", "lilycove_city_house_1", "lilycove_city_house_2", "lilycove_city_house_3",
+    "lilycove_city_house_4", "route_123_berry_masters_house",
+    "mt_pyre_1f", "mt_pyre_2f", "mt_pyre_3f", "mt_pyre_4f", "mt_pyre_5f", "mt_pyre_6f", "mt_pyre_exterior", "mt_pyre_summit"
   ]
 }

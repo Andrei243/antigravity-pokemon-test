@@ -806,5 +806,52 @@ partial class Harness
             Console.WriteLine($"  plank: tile ({plankAt.X}, {plankAt.Y}), rows now {game.World.Life.PlankRows(fortreeMap, plankAt.X + 0.5f, plankAt.Y + 0.5f)}");
         }
         else Console.WriteLine("  !! no plank tile found round Fortree City");
+
+        // ---- Plan 21 · H7, part a: Lilycove City and Mt. Pyre (hs168 to hs17b)
+        void Pyre(string what) =>
+            Console.WriteLine($"  {what}: lilycove visited {story.Has("FLAG_VISITED_LILYCOVE_CITY")}, chapter eight {story.Has("FLAG_HOENN_CHAPTER_EIGHT")}, "
+                + $"rival met {story.Has("FLAG_MET_RIVAL_LILYCOVE")}, declined {story.Has("FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE")}, "
+                + $"mt pyre {story.Var("VAR_MT_PYRE_STATE")}, orbs taken {story.Has("FLAG_RECEIVED_RED_OR_BLUE_ORB")}, "
+                + $"archie hidden {story.Has("FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE")}, aqua hidden {story.Has("FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA")}, "
+                + $"magma guard hidden {story.Has("FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD")}, emblem {game.Bag.GetQuantity(ItemDatabase.Get("Magma Emblem")!)}, "
+                + $"cleanse tag {game.Bag.GetQuantity(ItemDatabase.Get("Cleanse Tag")!)}, loto today {story.Has("FLAG_DAILY_PICKED_LOTO_TICKET")}, "
+                + $"on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+
+        // Lilycove City: the rival before the Department Store, the battle and the rival gone home
+        At("Hoenn", 507, 80, Direction.Up); game.EnterArea(); ReadTo(null); Frames(20); Shot("hs168_lilycove_and_the_rival");
+        Pyre("into Lilycove");
+        TalkTo("Hoenn", "var_0");
+        ReadTo("how about a battle"); Frames(10); Shot("hs169_the_rivals_challenge");
+        IntoBattle("the rival's battle in Lilycove");
+        ToMainMenu(game.Battle); Shot("hs16a_the_rival_in_lilycove");
+        Win();
+        ReadTo("head home to Littleroot"); Frames(10); Shot("hs16b_the_rival_beaten");
+        ReadTo(null);
+        Frames(20); Shot("hs16c_the_rival_gone");
+        Pyre("the rival in Lilycove");
+
+        // The Lottery Corner on the store's ground floor
+        TalkTo("LilycoveCity_DepartmentStore_1F", "lottery_clerk");
+        ReadTo("Will you draw"); Frames(10); Shot("hs16d_the_lottery_corner");
+        ReadTo(null);
+        Pyre("the Lottery Corner");
+
+        // Mt. Pyre: the old woman's Cleanse Tag, the summit held by Team Aqua, Archie's words and the Magma Emblem
+        TalkTo("MtPyre_1F", "old_woman");
+        ReadTo("keep the wilder ones away"); Frames(10); Shot("hs16e_the_cleanse_tag");
+        ReadTo(null);
+        ComeThrough("MtPyre_Summit", 23, 9, Direction.Up); Frames(20); Shot("hs170_team_aqua_on_the_summit");
+        StepOnto("MtPyre_Summit", 23, 7, Direction.Up);
+        ReadTo("You turn up everywhere"); Frames(10); Shot("hs171_archie_turns");
+        ReadTo("The Red Orb is ours"); Frames(10); Shot("hs172_the_red_orb");
+        ReadTo("Both of the orbs are gone"); Frames(10); Shot("hs173_team_aqua_gone");
+        ReadTo("they dropped this"); Frames(10); Shot("hs174_the_old_woman");
+        ReadTo("received"); Frames(10); Shot("hs175_the_magma_emblem");
+        ReadTo(null);
+        Frames(20); Shot("hs176_the_summit_after");
+        Pyre("Mt. Pyre's summit");
+        TalkTo("MtPyre_Summit", "old_man");
+        ReadTo("hear out an old man"); Frames(10); Shot("hs177_the_old_mans_tale");
+        ReadTo(null);
     }
 }

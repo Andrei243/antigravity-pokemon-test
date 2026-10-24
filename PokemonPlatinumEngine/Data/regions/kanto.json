@@ -45,5 +45,8 @@
   "spawns": [
     { "id": 1, "area": "pallet_town", "x": 66, "y": 268, "room": "PalletTown_PlayersHouse_1F" },
     { "id": 2, "area": "viridian_city", "x": 74, "y": 207, "room": "ViridianCity_PokemonCenter_1F" }
-  ]
+  ],
+  // Plan 18 · W4: FireRed's levels for a team that crossed from Sinnoh, from Cynthia's 62 on the first route to a
+  // Champion at 104 (the study's fair climb); the Sevii Islands climb on past it on the same line
+  "levels": [[2, 62], [63, 104]]
 }

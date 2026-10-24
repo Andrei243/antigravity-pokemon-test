@@ -1,0 +1,179 @@
+# Lilycove City (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/LilycoveCity/scripts.inc).
+#
+# The city at the end of the land. Coming here marks it visited (FLAG_VISITED_LILYCOVE_CITY, where Fly lands) and runs
+# the eighth stretch's hiding for a save from before it (HoennChapterEight). The rival waits before the Department
+# Store: asked, they battle with the team of the starter they took, then go home to Littleroot (FLAG_MET_RIVAL_LILYCOVE;
+# a no is remembered, FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE, and asked again). Emerald's rival flies off on a bird; here
+# the picture goes dark and the rival is gone. Team Aqua's grunts stand about the town and their Wailmer lie in the
+# channel east until the submarine has sailed (FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE, plan 21 · H7, part b), and the
+# town's people say what they see of it. The gentleman by the houses gives a berry a day.
+
+
+script OnEnter
+  setflag FLAG_VISITED_LILYCOVE_CITY
+  if not flag FLAG_HOENN_CHAPTER_EIGHT call HoennChapterEight
+  end
+
+
+script Rival
+  face self player
+  music "hoenn/rival"
+  speaker "{rival}"
+  if flag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE goto AskAgain
+  say "{player}! Fancy meeting you here. I came to Lilycove to stock up at the Department Store."
+  ask "But now that you're here... how about a battle? Let's see how far our teams have come!"
+  goto Answer
+label AskAgain
+  ask "Changed your mind yet? Come on, battle me!"
+label Answer
+  if no goto Declined
+  say "Great! I won't go easy on you, so don't hold back either!"
+  if girl goto Brendan
+  if starter "Treecko" goto MayTreecko
+  if starter "Torchic" goto MayTorchic
+  battle self as "hoenn_may_lilycove_mudkip"
+  goto Beaten
+label MayTreecko
+  battle self as "hoenn_may_lilycove_treecko"
+  goto Beaten
+label MayTorchic
+  battle self as "hoenn_may_lilycove_torchic"
+  goto Beaten
+label Brendan
+  if starter "Treecko" goto BrendanTreecko
+  if starter "Torchic" goto BrendanTorchic
+  battle self as "hoenn_brendan_lilycove_mudkip"
+  goto Beaten
+label BrendanTreecko
+  battle self as "hoenn_brendan_lilycove_treecko"
+  goto Beaten
+label BrendanTorchic
+  battle self as "hoenn_brendan_lilycove_torchic"
+label Beaten
+  speaker "{rival}"
+  say "Whew... You really are something, {player}. I think I'll head home to Littleroot for a while and help out at the lab."
+  say "You're going after every Badge in Hoenn, aren't you? Then I'll be cheering for you. Don't let me down!"
+  fade out
+  hide self
+  setflag FLAG_HIDE_LILYCOVE_CITY_RIVAL
+  setflag FLAG_MET_RIVAL_LILYCOVE
+  music area
+  fade in
+  end
+label Declined
+  setflag FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE
+  say "Aw, really? Fine. I'll be right here if you change your mind."
+  music area
+  end
+
+
+# Team Aqua's Wailmer lying in the channel east of the city
+script Wailmer
+  speaker none
+  text "A Wailmer is floating in the water, blocking the way. It doesn't look like it's going to move."
+  end
+
+
+# The grunt at the water's edge who trains the Wailmer
+script WailmerGrunt
+  if flag FLAG_MET_WAILMER_TRAINER goto Again
+  face self player
+  speaker "Team Aqua Grunt"
+  say "Watch my Wailmer leap! They're the pride of Team Aqua. Nobody gets past them out to sea."
+  say "Hey, what are you staring at? Clear off, you're putting them off their training!"
+  setflag FLAG_MET_WAILMER_TRAINER
+  end
+label Again
+  speaker "Team Aqua Grunt"
+  say "Leap, Wailmer, leap! Higher! Splash them all!"
+  end
+
+
+script Sailor
+  speaker "Sailor"
+  say "Team Aqua's been training Wailmer right in the channel. No boat can get out east past them."
+  end
+
+
+script Girl
+  speaker "Girl"
+  say "There's a strange cave over in the cove. People in blue and white keep going in and out of it."
+  end
+
+
+script Woman
+  speaker "Woman"
+  say "Somebody stole my Pokémon! I just know it was those Team Aqua people. What do I do?"
+  end
+
+
+script OldManCove
+  speaker "Old Man"
+  say "That cove used to be a quiet cavern. Then Team Aqua moved in and dug it out into some kind of base."
+  end
+
+
+script SchoolKid
+  speaker "School Kid"
+  ask "Do you know about the Berry Blender? You put berries in and spin them together."
+  if no goto Explain
+  say "Then you know the faster everyone spins, the better the Pokéblocks come out!"
+  end
+label Explain
+  say "You put berries in and everyone spins together. Out come Pokéblocks, treats that make Pokémon shine in contests."
+  end
+
+
+# The gentleman by the houses: a berry a day, drawn by the original's die of ten
+# (LilycoveCity_EventScript_BerryGentleman: Cheri to Leppa)
+script BerryGentleman
+  face self player
+  speaker "Gentleman"
+  if flag FLAG_DAILY_LILYCOVE_RECEIVED_BERRY goto Tomorrow
+  say "Ah, a trainer. A berry suits a trainer, I always say. Here, take one with my compliments."
+  setflag FLAG_DAILY_LILYCOVE_RECEIVED_BERRY
+  random 10
+  if result == 1 goto Chesto
+  if result == 2 goto Pecha
+  if result == 3 goto Rawst
+  if result == 4 goto Aspear
+  if result == 5 goto Leppa
+  if result == 6 goto Oran
+  if result == 7 goto Persim
+  if result == 8 goto Lum
+  if result == 9 goto Sitrus
+  give "Cheri Berry"
+  goto Given
+label Chesto
+  give "Chesto Berry"
+  goto Given
+label Pecha
+  give "Pecha Berry"
+  goto Given
+label Rawst
+  give "Rawst Berry"
+  goto Given
+label Aspear
+  give "Aspear Berry"
+  goto Given
+label Leppa
+  give "Leppa Berry"
+  goto Given
+label Oran
+  give "Oran Berry"
+  goto Given
+label Persim
+  give "Persim Berry"
+  goto Given
+label Lum
+  give "Lum Berry"
+  goto Given
+label Sitrus
+  give "Sitrus Berry"
+label Given
+  say "Because you're a trainer, you see. Do come back tomorrow."
+  end
+label Tomorrow
+  say "Berries are lovely, but Pokéblocks made from them suit Pokémon even better."
+  end

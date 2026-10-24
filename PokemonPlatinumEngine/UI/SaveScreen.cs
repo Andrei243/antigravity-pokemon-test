@@ -29,6 +29,9 @@ public class SaveScreen
     /// <summary>The answer the cursor is on: SAVE first, since nothing is lost by saving.</summary>
     public int AnswerIndex { get; private set; }
 
+    /// <summary>The line that says what to do next, shown under the summary (plan 12 · Q14); empty for none. Set by the engine as the panel opens.</summary>
+    public string Objective { get; set; } = "";
+
     /// <summary>What the panel shows: the game as it is being saved.</summary>
     public SaveData? Summary { get; private set; }
 
@@ -126,6 +129,6 @@ public class SaveScreen
     public void Draw(int screenWidth, int screenHeight)
     {
         if (!reveal.Visible || Summary == null) return;
-        ModernUi.DrawSave(screenWidth, screenHeight, Summary, Slot, AnswerIndex, Saved, reveal.Shown);
+        ModernUi.DrawSave(screenWidth, screenHeight, Summary, Slot, AnswerIndex, Saved, reveal.Shown, Objective);
     }
 }

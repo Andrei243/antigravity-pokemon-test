@@ -229,6 +229,18 @@ public class SaveData
     /// </summary>
     public uint PokemonIdsIssued { get; set; }
 
+    /// <summary>
+    /// The region the game began in (plan 18 · W4): every other region's levels are mapped for a team that crossed into
+    /// it. Null in a save from before, which began where it stands, since no crossing was built yet
+    /// (<see cref="BeganInOrHere"/>).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? BeganIn { get; set; }
+
+    /// <summary>The region the game began in: <see cref="BeganIn"/>, or for a save from before it, the region of the map it stands on.</summary>
+    public string BeganInOrHere() =>
+        BeganIn ?? Data.RegionDatabase.RegionOfMap(CurrentMapName)?.Id ?? Data.RegionDatabase.First.Id;
+
     /// <summary>The link battles' record (plan 07 · O2): wins, losses and draws by friend code. Null while empty, and in older saves.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public LinkBattleRecord? LinkBattles { get; set; }

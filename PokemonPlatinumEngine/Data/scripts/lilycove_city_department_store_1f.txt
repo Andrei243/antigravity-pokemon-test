@@ -1,0 +1,65 @@
+# The Lilycove Department Store's ground floor (plan 21 · H7, part a). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/LilycoveCity_DepartmentStore_1F/scripts.inc).
+#
+# The Lottery Corner: once a day (FLAG_DAILY_PICKED_LOTO_TICKET, cleared with the day) the clerk draws a ticket and
+# matches it, digit by digit from the right, against the ID numbers of the player's Pokémon, on the team and in the
+# boxes (Models/Lottery.cs, as Jubilife TV's corner does). Emerald's prizes: two digits a PP Up, three an Exp. Share,
+# four a Max Revive, all five a Master Ball; one digit wins nothing.
+
+
+script LotteryClerk
+  speaker "Lottery Clerk"
+  if flag FLAG_DAILY_PICKED_LOTO_TICKET goto Tomorrow
+  say "This is the Lilycove Department Store's Lottery Corner!"
+  ask "We draw one ticket a day. If its number matches the ID number of any of your Pokémon, you win a prize! Will you draw?"
+  if no goto Later
+  setflag FLAG_DAILY_PICKED_LOTO_TICKET
+  say "Your ticket's number is {ticket}! Please wait while I check it against your Pokémon..."
+  lottery draw
+  if result == 5 goto Five
+  if result == 4 goto Four
+  if result == 3 goto Three
+  if result == 2 goto Two
+  say "I'm sorry. None of the numbers matched closely enough to win."
+  say "Please try again tomorrow!"
+  end
+label Two
+  call Whose
+  say "The last two digits match! You win the fourth prize."
+  give "PP Up"
+  goto Thanks
+label Three
+  call Whose
+  say "The last three digits match! You win the third prize."
+  give "Exp. Share"
+  goto Thanks
+label Four
+  call Whose
+  say "The last four digits match! You win the second prize!"
+  give "Max Revive"
+  goto Thanks
+label Five
+  call Whose
+  say "All five digits match! That's the first prize!"
+  give "Master Ball"
+label Thanks
+  speaker "Lottery Clerk"
+  say "Congratulations! Please visit us again."
+  end
+label Tomorrow
+  say "Today's ticket has been drawn. Please come back tomorrow for another!"
+  end
+label Later
+  say "Please visit us again!"
+  end
+
+
+# Whose ID number won: on the team, or in the boxes
+script Whose
+  lottery boxed
+  if result == 1 goto Boxed
+  say "Oh! The ID number of {winner}, on your team, is a match!"
+  return
+label Boxed
+  say "Oh! The ID number of {winner}, in your PC Boxes, is a match!"
+  return

@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false, bool takeover = false, bool rising = false)
+    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false, bool takeover = false, bool rising = false, bool champion = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -104,7 +104,7 @@ partial class Harness
         // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end; the
         // third (plan 20 · J9) goes on from where the second ends, or by itself (JOHTO_FROM=sea) in a game set as the
         // second leaves it
-        if (second || third || fourth || takeover || rising)
+        if (second || third || fourth || takeover || rising || champion)
         {
             engine.NewGameRegion = "Johto";
             engine.StartNewGame();
@@ -120,25 +120,31 @@ partial class Harness
             story.ChooseStarter("Cyndaquil");
             story.GiveBadge("Johto", "Zephyr");
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
-            if (!third && !fourth && !takeover && !rising) goto ChapterTwo;
+            if (!third && !fourth && !takeover && !rising && !champion) goto ChapterTwo;
             foreach (string badge in new[] { "Hive", "Plain", "Fog" }) story.GiveBadge("Johto", badge);
             story.SetVar("VAR_UNK_4079", 4);
             game.Bag.AddItem(ItemDatabase.Get("HM03")!, 1);
-            if (!fourth && !takeover && !rising) goto ChapterThree;
+            if (!fourth && !takeover && !rising && !champion) goto ChapterThree;
             foreach (string badge in new[] { "Storm", "Mineral" }) story.GiveBadge("Johto", badge);
             story.Set("FLAG_GOT_HM02");
             game.Bag.AddItem(ItemDatabase.Get("HM02")!, 1);
-            if (!takeover && !rising) goto ChapterFour;
+            if (!takeover && !rising && !champion) goto ChapterFour;
             story.GiveBadge("Johto", "Glacier");
             story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 1);
             story.Set("FLAG_ROCKET_HIDEOUT_CLEARED");
-            if (!rising) goto Takeover;
+            if (!rising && !champion) goto Takeover;
             // JOHTO_FROM=rising: as the takeover leaves the game (plan 20 · J11, part b)
             story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 5);
             story.Set("FLAG_BEAT_RADIO_TOWER_ROCKETS");
             story.Set("FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT");
             story.Unset("FLAG_ROCKET_TAKEOVER_ACTIVE");
-            goto Rising;
+            if (!champion) goto Rising;
+            // JOHTO_FROM=champion: as part c leaves the game (plan 20 · J12), with a team that faces the League in one sitting
+            story.GiveBadge("Johto", "Rising");
+            foreach (string flag in new[] { "FLAG_UNK_0D1", "FLAG_UNK_998", "FLAG_UNK_0EA" }) story.Set(flag);
+            story.SetVar("VAR_UNK_40C3", 1);
+            game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Lugia")!, 100));
+            goto Champion;
         }
 
         // A new game of Johto, from its first step
@@ -857,5 +863,98 @@ partial class Harness
         ReadTo("received Dratini"); Frames(10); Shot("jstaj_the_elders_dratini");
         ReadTo(null);
         Risen("the chapter's part c");
+
+    // ================= The fifth chapter (plan 20 · J12): Elm's Master Ball, Victory Road, the League and the Hall of Fame (jstb0 to jstbm)
+    Champion:
+        void Championed(string what) =>
+            Console.WriteLine($"  {what}: Master Ball {game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!)} {story.Has("FLAG_GOT_MASTER_BALL_FROM_ELM")}, "
+                + $"lab {story.Var("VAR_SCENE_ELMS_LAB")}, rival {story.Var("VAR_UNK_40C5")}, doors {story.Has("FLAG_HIDE_WILLS_ROOM_EXIT")} "
+                + $"{story.Has("FLAG_HIDE_KOGAS_ROOM_EXIT")} {story.Has("FLAG_HIDE_BRUNOS_ROOM_EXIT")} {story.Has("FLAG_HIDE_KARENS_ROOM_EXIT")} "
+                + $"{story.Has("FLAG_HIDE_LANCES_ROOM_EXIT")}, Lance {story.Var("VAR_UNK_40C7")}, JohtoHallOfFame {story.Has("JohtoHallOfFame")}, "
+                + $"entries {game.HallOfFame.Total}, Elm's call {story.Has("FLAG_ELM_CALLED_THE_CHAMPION")}, gate {story.Var("VAR_UNK_4121")}, "
+                + $"the player on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        var championLead = game.Party.Members[0];
+        championLead.CurrentHP = championLead.MaxHP;
+
+        // ---- Elm's lab: the Master Ball for the eighth Badge
+        var labDoor = MapDatabase.Get("Johto").Warps.First(w => w.TargetMap == "NewBark_ElmsLab");
+        ComeThrough("NewBark_ElmsLab", labDoor.TargetX, labDoor.TargetY, Direction.Up);
+        ReadTo("Eight Badges"); Frames(10); Shot("jstb0_elm_and_the_eighth_badge");
+        ReadTo("It's the Master Ball"); Frames(10); Shot("jstb1_the_master_ball");
+        ReadTo(null);
+        Championed("the lab");
+
+        // ---- Victory Road: the rival's last challenge
+        StepOnto("IndigoVictoryRoad_3F", 38, 21, Direction.Up);
+        ReadTo("Hold it."); Frames(20); Shot("jstb2_the_rival_in_victory_road");
+        ReadTo("This time, I win"); Frames(10); Shot("jstb3_this_time_i_win");
+        IntoBattle("the rival's battle in Victory Road");
+        ToMainMenu(game.Battle); Shot("jstb4_the_rivals_battle");
+        Win();
+        ReadTo("My Pokémon fought for me"); Frames(10); Shot("jstb5_the_rival_beaten");
+        ReadTo(null);
+        Championed("Victory Road");
+
+        // ---- the Elite Four, a room at a time: each master, the battle, the door opened
+        ComeThrough("IndigoLeague_PokemonCenter_1F", 11, 24, Direction.Up);
+        foreach (var (room, key, said, name, y) in new[]
+                 {
+                     ("IndigoLeague_WillRoom", "t10r0201_gsbigfour1", "I am Will", "jstb6_will", 11),
+                     ("IndigoLeague_KogaRoom", "t10r0301_gsbigfour2", "I am Koga", "jstb8_koga", 12),
+                     ("IndigoLeague_BrunoRoom", "t10r0401_gsbigfour3", "I am Bruno", "jstba_bruno", 11),
+                     ("IndigoLeague_KarenRoom", "t10r0501_gsbigfour4", "I am Karen", "jstbc_karen", 11)
+                 })
+        {
+            ComeThrough(room, 6, 18, Direction.Up);
+            Frames(10); Shot(name + "_room");
+            TalkTo(room, key);
+            ReadTo(said); Frames(10); Shot(name);
+            IntoBattle(name);
+            ToMainMenu(game.Battle); Shot(name + "_battle");
+            Win();
+            ReadTo(null);
+            championLead.CurrentHP = championLead.MaxHP;
+            Frames(10); Shot(name + "_door_open");
+            Console.WriteLine($"  {room}: the player at ({game.Player.GridX}, {game.Player.GridY}), (6, {y}) below the master");
+        }
+        Championed("the Four");
+
+        // ---- Lance, Mary and Oak, and the Hall of Fame
+        ComeThrough("IndigoLeague_LanceRoom", 6, 24, Direction.Up);
+        Frames(10); Shot("jstbe_the_champions_room");
+        StepOnto("IndigoLeague_LanceRoom", 6, 10, Direction.Up);
+        ReadTo("I've been waiting for you"); Frames(20); Shot("jst13_lance");
+        IntoBattle("Lance's battle");
+        ToMainMenu(game.Battle); Shot("jstbf_lances_battle");
+        Win();
+        ReadTo("you are the new Champion"); Frames(10); Shot("jstbg_lance_beaten");
+        ReadTo("Wait for us"); Frames(30); Shot("jstbh_mary_and_oak");
+        ReadTo("I heard it from the doorway"); Frames(10); Shot("jstbi_oak_congratulates");
+        for (int i = 0; i < 1500 && game.Map.Name != "IndigoLeague_HallOfFame"; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        ReadTo("This is the Hall of Fame"); Frames(10); Shot("jst14_hall_of_fame");
+        for (int i = 0; i < 2400 && State() != GameState.HallOfFameCeremony; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
+        Skip(3.0); Shot("jstbj_the_teams_entry");
+        Championed("the Hall of Fame");
+
+        // ---- home: Elm's call downstairs, and the gate's door to Route 22
+        var downstairs = MapDatabase.Get("NewBark_PlayersHouse_2F").Warps.First(w => w.TargetMap == "NewBark_PlayersHouse_1F");
+        ComeThrough("NewBark_PlayersHouse_1F", downstairs.TargetX, downstairs.TargetY, Direction.Down);
+        ReadTo("You're the Champion"); Frames(10); Shot("jstbk_elms_call");
+        ReadTo(null);
+        StepOnto("Route22_LeagueReceptionGate", 14, 8, Direction.Right);
+        ReadTo("You're the new Champion"); Frames(10); Shot("jstbl_the_gate_to_kanto");
+        ReadTo(null);
+        TalkTo("Olivine_PortHall", "ss_aqua_olivine_port_interior.Sailor", 0, -1);
+        ReadTo("is ready"); Frames(10); Shot("jstbm_the_ship_to_hoenn");
+        Championed("the chapter's end");
     }
 }

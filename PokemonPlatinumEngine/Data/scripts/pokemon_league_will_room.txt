@@ -1,0 +1,28 @@
+# Will's room, the first of Johto's Elite Four (plan 20 · J12). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T10R0201).
+#
+# The way back to the hall is shut behind the challenger (the overlay locks it, and the doorway at the room's foot
+# carries whoever steps into it back up). Spoken to, Will battles; beaten, he opens the door behind him
+# (FLAG_HIDE_WILLS_ROOM_EXIT, HeartGold's, which hides its door there and opens the overlay's door here). The hall's
+# arrival puts him and the doors back (pokemon_league_entrance.txt). His rematch team is plan 20 · J15's.
+
+
+script Will
+  face t10r0201_gsbigfour1 player
+  speaker "Will"
+  if flag FLAG_HIDE_WILLS_ROOM_EXIT goto Beaten
+  scene "Will"
+  say "Welcome to the Pokémon League. I am Will of the Elite Four."
+  say "My Psychic-type Pokémon and I have honed our minds in every corner of the world, and the League called us here at last."
+  say "I will not lose to you. Prepare yourself!"
+  battle self as "johto_elite_four_will_will"
+  speaker "Will"
+  say "I... can't believe it. My psychic power was not enough."
+  setflag FLAG_HIDE_WILLS_ROOM_EXIT
+  sound "door_open"
+  say "Go on to the next room. You will learn there what the Elite Four truly are."
+  endscene
+  end
+label Beaten
+  say "Even having lost, I won't change my course. I'll keep training until I can see where your strength comes from."
+  end

@@ -66,6 +66,7 @@
     },
     "pokefan_f": {
       "name": "Woman",
+      "script": "Rumour",
       "dialog": [
         "The whole city is proud of its mine.",
         "The galleries run out under the sea these days. Under the sea! Imagine it."

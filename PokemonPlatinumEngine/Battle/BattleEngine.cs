@@ -833,7 +833,7 @@ public partial class BattleEngine
                 break;
             case ExpGained exp:
                 var gaining = mirror.Shown(exp.Pokemon);
-                gaining.GainExp(exp.Amount, out _);
+                gaining.GainExp(exp.Amount, out _, out _, Rules.LevelCap);
                 // The bar fills only under a Pokémon on the field
                 if (Enumerable.Range(0, Anim.Slots).Any(s => Anim[BattleSide.Player, s].Shown == gaining))
                     AudioManager.PlaySound("exp", -0.3f);

@@ -156,6 +156,13 @@
       "label": "Trainers speak",
       "help": "In battle, Gym Leaders, your rival and other bosses say a line when their last Pokémon comes out, when their first one falls and when their last one is in the red."
     },
+    "nextObjective": {
+      "label": "What to do next",
+      "help": {
+        "on": "A line on the start menu, the Trainer Card and the save's summary says where the story goes next, and Mom and the Pokémon Center nurse remind you when asked.",
+        "off": "Nothing says where the story goes next: you find your own way, as in the original."
+      }
+    },
     "focusPause": {
       "label": "Pause in the background",
       "help": {
@@ -359,6 +366,7 @@
     "options": "OPTIONS",
     "close": "CLOSE",
     "quitGame": "QUIT GAME",
+    "next": "NEXT",
     "quit": {
       "heading": "Quit the game?",
       "body": "Anything since your last save will be lost unless you save first.",
@@ -366,6 +374,43 @@
       "saveAndQuit": "SAVE AND QUIT",
       "quit": "QUIT"
     }
+  },
+
+  "objectives": {
+    "downstairs": "Go downstairs. Mom is wondering where you have got to.",
+    "rivalHome": "Look in on {rival} next door. He is in a great hurry about something.",
+    "route201": "Follow {rival} up Route 201, where Professor Rowan is waiting by the tall grass.",
+    "shoes": "Take your new Pokémon home and show Mom.",
+    "lake": "Find {rival} at Lake Verity, up the path north of Twinleaf Town.",
+    "lab": "Go south to Sandgem Town and Professor Rowan's lab.",
+    "parcel": "{rival}'s mother has a parcel for him. Look in at home.",
+    "school": "Take the parcel to {rival}, who was heading for Jubilife's Trainers' School.",
+    "poketch": "Collect three coupons around Jubilife City and trade them for a Pokétch.",
+    "roark": "Go east through Oreburgh Gate to Oreburgh City and win the Coal Badge from Roark.",
+    "worksKey": "Go on to Floaroma Town. Team Galactic is up to something in the meadow.",
+    "forest": "Take back the Valley Windworks, then work through Eterna Forest to Eterna City.",
+    "gardenia": "In Eterna City, win the Forest Badge from Gardenia.",
+    "galacticBuilding": "Team Galactic has taken over a building in Eterna City. Go and see what they want.",
+    "bicycle": "Pick up a Bicycle at Eterna City's cycle shop.",
+    "fantina": "Ride the Cycling Road to Hearthome City and win the Relic Badge from Fantina.",
+    "maylene": "Veilstone City is east, past Route 215. Win the Cobble Badge from Maylene.",
+    "wake": "Go south to Pastoria City and win the Fen Badge from Crasher Wake.",
+    "oldCharm": "Take the Old Charm Cynthia gave you to the elder in Celestic Town.",
+    "ironIsland": "Byron has gone to Iron Island. Sail there from Canalave City.",
+    "byron": "Win the Mine Badge from Byron in Canalave City.",
+    "lakes": "Trouble is brewing at the lakes. Start at Valor Lakefront.",
+    "candice": "Snowpoint City lies far in the north. Win the Icicle Badge from Candice.",
+    "storageKey": "Team Galactic's trail leads to Veilstone City and its warehouse.",
+    "headquarters": "Fight your way through Team Galactic's headquarters.",
+    "coronet": "Climb Mt. Coronet. Team Galactic is heading for Spear Pillar.",
+    "spearPillar": "Stop Cyrus at Spear Pillar, and follow Cynthia wherever it leads.",
+    "volkner": "Sunyshore City, far to the east, is the last Gym. Win the Beacon Badge from Volkner.",
+    "beach": "There is more waiting for you on Sunyshore City's beach.",
+    "victoryRoad": "Head for Victory Road and the Pokémon League.",
+    "leagueGuard": "Show the guard at the League's door your Badges, and mind {rival}.",
+    "champion": "Face the Elite Four and the Champion.",
+    "afterwards": "Sail from Snowpoint City to the Battle Zone, or see what stirs at Stark Mountain.",
+    "free": "Nothing presses. The Battle Frontier, the Battleground and Pal Park are open to you."
   },
 
   "close": {
@@ -3211,7 +3256,11 @@
     "TeamPlasmaShadow": "Team Plasma",
     "TeamPlasmaZinzolin": "Team Plasma",
     "Worker26": "Worker",
-    "Worker44": "Worker"
+    "Worker44": "Worker",
+    "BossTrainer": "Boss Trainer",
+    "Harlequin": "Harlequin",
+    "NoData": "Trainer",
+    "PokemonTrainerColress": "Pokémon Trainer"
   },
   "broadcast": {
     "clock": {

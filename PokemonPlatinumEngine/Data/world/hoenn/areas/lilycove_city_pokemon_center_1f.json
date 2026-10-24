@@ -1,0 +1,31 @@
+{
+  "key": "lilycove_city_pokemon_center_1f",
+  "index": 166,
+  "name": "Lilycove City",
+  "matrix": 115,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "lilycove_city", "toWarp": 2 },
+    { "x": 6, "z": 8, "to": "lilycove_city", "toWarp": 2 },
+    { "x": 1, "z": 6, "to": "lilycove_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lilycove_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "look_east", "x": 10, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonCenter_1F_EventScript_Boy" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 11, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonCenter_1F_EventScript_Maniac" },
+    { "id": "lilycove_lady", "looks": "var_0", "movement": "look_south", "x": 1, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonCenter_1F_EventScript_LilycoveLady" },
+    { "id": "lilycove_ladys_mon", "looks": "var_1", "movement": "look_south", "x": 2, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_POKEMON_CENTER_CONTEST_LADY_MON", "script": "LilycoveCity_PokemonCenter_1F_EventScript_ContestLadyMon" }
+  ],
+  "signs": [],
+  "triggers": []
+}

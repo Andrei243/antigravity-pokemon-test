@@ -973,8 +973,9 @@ public class StoryTests
     public void TheNurseAsksFirstAndHealsOnlyWhenToldTo()
     {
         var nurse = new NPC { Name = "Nurse Joy", IsHealingNurse = true };
+        // (Her reminder of what to do next after healing is plan 12 · Q14's, which ObjectiveTests holds: off here)
 
-        var (yes, _) = Play(FieldScripts.For(nurse)!, nurse, before: h => h.Party.Add(Hurt()));
+        var (yes, _) = Play(FieldScripts.For(nurse)!, nurse, before: h => { h.ShowObjectives = false; h.Party.Add(Hurt()); });
         Assert.Equal(yes.Party.Members[0].MaxHP, yes.Party.Members[0].CurrentHP);
         // She turns to her machine, which lays a ball for the one Pokémon and lights it to the heal's fanfare (plan 09 · L12)
         Assert.Equal(new[] { "anim heal 1" }, yes.Log);
@@ -984,6 +985,7 @@ public class StoryTests
 
         var (no, _) = Play(FieldScripts.For(nurse)!, nurse, before: h =>
         {
+            h.ShowObjectives = false;
             h.Party.Add(Hurt());
             h.Answers.Enqueue(1);
         });
@@ -1000,7 +1002,8 @@ public class StoryTests
         foreach (string house in new[] { "PlayerHouse" })
         {
             var mom = Walk.OwnMaps[house].Everyone.Single(n => n.IsHealingNurse);
-            var (host, _) = Play(FieldScripts.For(mom)!, mom, before: h => h.Party.Add(Hurt()), file: house);
+            // (Her reminder of what to do next is plan 12 · Q14's, which ObjectiveTests holds: off here)
+            var (host, _) = Play(FieldScripts.For(mom)!, mom, before: h => { h.ShowObjectives = false; h.Party.Add(Hurt()); }, file: house);
 
             Assert.Equal(mom.DialogLines.Select(l => PlayerIdentity.Fill(l, host.PlayerName, host.PlayerLook)), host.Transcript.Select(t => t.Text));
             Assert.Equal(host.Party.Members[0].MaxHP, host.Party.Members[0].CurrentHP);
