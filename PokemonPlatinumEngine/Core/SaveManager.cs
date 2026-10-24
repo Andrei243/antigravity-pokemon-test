@@ -379,6 +379,9 @@ public class SaveData
     /// <summary>The PC's boxes, each Pokémon in its place (plan 06 · R12); null in a save from before.</summary>
     public SavedBoxes? Boxes { get; set; }
     public List<SavedItemData> Inventory { get; set; } = new();
+
+    /// <summary>The order each bag pocket is kept in (plan 12 · Q13), by the pocket's name: "Name" or "Quantity"; empty (as taken) in a save from before, with no version raised.</summary>
+    public Dictionary<string, string> BagOrder { get; set; } = new();
     public List<int> SeenSpecies { get; set; } = new();
     public List<int> CaughtSpecies { get; set; } = new();
 

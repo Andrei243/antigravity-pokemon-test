@@ -183,6 +183,7 @@ public partial class GameEngine
     {
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
+        flow.BagScreen.Sorting = BoxLinkOn;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -592,6 +593,8 @@ public partial class GameEngine
                 flow.Bag.AddItem(itemDef, itData.Quantity);
             }
         }
+        foreach (var (pocketName, orderName) in save.BagOrder)
+            if (Enum.TryParse<ItemPocket>(pocketName, out var orderedPocket) && Enum.TryParse<BagOrder>(orderName, out var order)) flow.Bag.SetOrder(orderedPocket, order);
 
         flow.Pokedex.Clear();
         foreach (var seen in save.SeenSpecies) flow.Pokedex.RegisterSeen(seen);
@@ -725,6 +728,7 @@ public partial class GameEngine
             Party = flow.Party.Members.Select(SavedPokemonData.FromPokemon).ToList(),
             Boxes = SavedBoxes.From(flow.Boxes),
             Inventory = flow.Bag.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
+            BagOrder = flow.Bag.Orders.ToDictionary(o => o.Key.ToString(), o => o.Value.ToString()),
             SeenSpecies = flow.Pokedex.SeenSpecies.ToList(),
             CaughtSpecies = flow.Pokedex.CaughtSpecies.ToList(),
             CaughtShiny = flow.Pokedex.CaughtShiny.OrderBy(n => n).ToList(),
@@ -1460,6 +1464,7 @@ public partial class GameEngine
         {
             flow.StartMenu.HasPokedex = flow.Story.Has(StoryState.PokedexFlag);
             flow.StartMenu.HasPokemon = flow.Party.Count > 0;
+            flow.StartMenu.HasBoxes = BoxLinkOn;
             flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.HasPokeNav = HasPokeNav;
             flow.StartMenu.Objective = NextObjectiveLine;
@@ -2220,6 +2225,9 @@ public partial class GameEngine
                 // The summary's condition page, once the Contest Hall has been visited (plan 06 · R14c)
                 flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
                 break;
+            case StartMenuChoice.Boxes:
+                OpenBoxesFromMenu();
+                return;
             case StartMenuChoice.Bag:
                 flow.State = GameState.BagMenu;
                 flow.BagScreen.Registered = flow.RegisteredItem;

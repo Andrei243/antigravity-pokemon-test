@@ -51,6 +51,9 @@ public sealed class MapFile
     /// </summary>
     public bool? Bike { get; set; }
 
+    /// <summary>True for a room that refuses the start menu's BOXES (plan 12 · Q13): a place where reaching the PC would be wrong (a Battle Frontier challenge's rooms); left out for every other.</summary>
+    public bool? NoBoxLink { get; set; }
+
     public int Width { get; set; }
     public int Height { get; set; }
 
@@ -269,6 +272,7 @@ public sealed class MapFile
         };
         if (EncounterRate is { } rate) map.EncounterRate = rate;
         map.BikeAllowed = Bike == true;
+        map.NoBoxLink = NoBoxLink == true;
 
         CheckRows(Ground, "ground");
         CheckRows(Solid, "solid");
@@ -544,6 +548,7 @@ public sealed class MapFile
             Weather = map.Weather == FieldWeather.Clear ? null : map.Weather,
             EncounterRate = map.EncounterRate == new Map(1, 1).EncounterRate ? null : map.EncounterRate,
             Bike = map.BikeAllowed ? true : null,
+            NoBoxLink = map.NoBoxLink ? true : null,
             Width = map.Width,
             Height = map.Height
         };

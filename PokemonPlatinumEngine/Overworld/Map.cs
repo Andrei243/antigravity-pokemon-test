@@ -1535,6 +1535,9 @@ public class Map
     /// </summary>
     public bool BikeAllowed { get; set; }
 
+    /// <summary>A room that refuses the start menu's BOXES (plan 12 · Q13; a map file's <c>noBoxLink</c>): the PC cannot be reached from it.</summary>
+    public bool NoBoxLink { get; set; }
+
     /// <summary>
     /// Whether the Bicycle may be ridden at a tile: as its area's header says, and outdoors on a small map; in a room
     /// only where the room says so.

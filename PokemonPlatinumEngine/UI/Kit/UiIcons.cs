@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio, Star }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio, Star, Boxes }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -172,6 +172,17 @@ internal static class UiIcons
             case UiIcon.Star:
                 // A five-pointed star (plan 09 · L1: a shiny's mark)
                 FillStar(c, 0.95f * s, ink);
+                break;
+            case UiIcon.Boxes:
+                // Three crates, two below and one on top of them (plan 12 · Q13: the start menu's BOXES)
+                UiShapes.Fill(new Rectangle(c.X - 0.9f * s, c.Y + 0.04f * s, 0.84f * s, 0.84f * s), 0.12f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X + 0.06f * s, c.Y + 0.04f * s, 0.84f * s, 0.84f * s), 0.12f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.42f * s, c.Y - 0.86f * s, 0.84f * s, 0.84f * s), 0.12f * s, ink);
+                for (int i = 0; i < 3; i++)
+                {
+                    float x = i == 0 ? -0.48f : i == 1 ? 0.48f : 0f, y = i == 2 ? -0.44f : 0.46f;
+                    UiShapes.Line(c + new Vector2(x - 0.2f, y) * s, c + new Vector2(x + 0.2f, y) * s, 0.12f * s, back);
+                }
                 break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);
