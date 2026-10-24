@@ -163,6 +163,15 @@
         "off": "Nothing says where the story goes next: you find your own way, as in the original."
       }
     },
+    "fieldHelpers": {
+      "label": "Field move helpers",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "Cut, Fly, Surf, Strength, Defog, Rock Smash, Waterfall and Rock Climb need a Pokémon on the team that knows them.",
+        "Rules": "Platinum's rules keep the HMs as they are; the modern rules let a wild helper do those eight moves once you have the Badge and the HM.",
+        "On": "With the Badge and the HM in the bag, a wild helper does Cut, Fly, Surf, Strength, Defog, Rock Smash, Waterfall and Rock Climb for you."
+      }
+    },
     "focusPause": {
       "label": "Pause in the background",
       "help": {
@@ -1929,7 +1938,8 @@
       "state": "That's already being done.",
       "location": "There's nothing here to use it on."
     },
-    "used": "{name} used {move}!"
+    "used": "{name} used {move}!",
+    "helped": "A wild {name} lent a hand. It used {move}!"
   },
   "fishing": {
     "landed": "Hooked one! Here it comes!",

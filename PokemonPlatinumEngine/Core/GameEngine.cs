@@ -170,6 +170,10 @@ public partial class GameEngine
     /// <summary>The record of the region a new game starts in: <see cref="NewGameRegion"/>'s, or the chain's first.</summary>
     private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
+    /// <summary>The field moves a wild helper does now (plan 12 · Q18), worked out afresh and never stored.</summary>
+    public IReadOnlyCollection<FieldMove> GrantedMoves =>
+        FieldHelp.Granted(Settings.FieldHelpers, Ruleset.Current.Preset, flow.Story, flow.Bag, Here.Id);
+
     /// <summary>
     /// The region the player stands in (plan 18 · W1): the one that lists the map they are on, the chain's first
     /// before a game is loaded. What belongs to a region (its starters, its professor, its spawns) is asked of this,
@@ -1434,7 +1438,7 @@ public partial class GameEngine
         if (!PeopleStayPut) flow.Wandering.Update(dt, flow.Map, (flow.Player.GridX, flow.Player.GridY), flow.Player.Heading, peopleRandom ??= Dice.New());
 
         // Overworld Player Movement
-        flow.Player.Moves = FieldMovement.MovesOf(flow.Party);
+        flow.Player.Moves = FieldMovement.MovesOf(flow.Party) | FieldHelp.Moves(GrantedMoves);
         flow.Player.Autorun = Settings.Autorun;
         flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
@@ -1945,7 +1949,7 @@ public partial class GameEngine
         else if ((spot.Dive || spot.Surface) && FieldMoveRules.Check(FieldMove.Dive, spot, flow.Story) == FieldMoveError.None)
             StartScript(spot.Surface ? FieldScripts.Surface : FieldScripts.Dive);
         else if (spot.RockFace && flow.Player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
-        else if (spot.Water && FieldMoveRules.Knower(flow.Party, FieldMove.Surf) != null
+        else if (spot.Water && FieldHelp.CanUse(FieldMove.Surf, flow.Party, GrantedMoves)
                  && FieldMoveRules.Check(FieldMove.Surf, spot, flow.Story) == FieldMoveError.None) StartScript(FieldScripts.Water);
     }
 

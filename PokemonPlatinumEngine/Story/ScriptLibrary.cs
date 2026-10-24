@@ -351,6 +351,9 @@ public sealed class ScriptLibrary
                     case Query.Has or Query.Starter when c.Name.Length > 0 && PokemonDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no species '{c.Name}'");
                         break;
+                    case Query.Granted when Overworld.FieldMoveRules.Of(c.Name) == null:
+                        Wrong(i, $"'{c.Name}' is no field move");
+                        break;
                     case Query.Knows when MoveDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no move '{c.Name}'");
                         break;

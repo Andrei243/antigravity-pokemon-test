@@ -195,6 +195,12 @@ Written 2026-10-06, before any session.
 - Shots: the `fieldmoves` mode again with the row on and the team's moves taken away (`fm30_helpers_tree_asks`, `fm31_helpers_cut_in`, `fm32_helpers_party_strip`, `fm33_helpers_fly_map`, `fm34_helpers_poketch`); with the row off that mode's shots are unchanged.
 - **Done when** a Modern game with the badges and the HMs crosses Sinnoh's obstacles with a team that knows none of the moves, and `diff` of a Platinum game with the defaults is empty.
 
+**Outcome (2026-10-24, wave 43), a first piece.** The rules, the row and the scripts are built; the screens and the shots are left.
+
+- **Built.** `OptionRow.FieldHelpers` (before `Controls`; `GameSettings.FieldHelpers`, `RulesDefault.Rules` by default and **not** turned into On as the other rows' `Rules` is, so a Platinum-preset game keeps its HMs: `RulesDefault.Holds(preset)`). `Overworld/FieldHelp.cs`: `Helped` (the eight), `HmOf` (found by the item's `TeachesMove`), `Granted(row, preset, story, bag, region)` (the Badge by `FieldMoveRules.BadgeFor` and the HM in the bag; empty with the row off; never stored), `Moves` (to `FieldMoves`), `CanUse`, `SpeciesFor`/`HelperFor` (a Bidoof, a Bibarel for Surf and Waterfall, a Staravia for Fly, level 20, from a `Random` seeded by the move, nothing from `Dice`). `GameEngine.GrantedMoves` and `IScriptHost.Granted` (a default member; `HeadlessScriptHost.FieldHelpers`, Off by default, is a test's row); `player.Moves` is `MovesOf(party) | FieldHelp.Moves(...)` in both; `TryInteract`'s water asks `FieldHelp.CanUse`. The script question `granted "<move>"` (`Query.Granted`, last in the enum) is asked beside `knows` by `CutTree`, `Rock`, `Boulder`, `RockFace` and `Waterfall` of `common.txt`, Rusturf Tunnel's two rocks and Six Island's braille door; `usemove` falls back to the helper, in `fieldMoves.helped`'s line. `FieldHelpTests` hold it (written, not run).
+- **Left.** The party screen's strip of granted moves and `PartyScreen.TakeFieldMove` naming its user; Fly with a flier outside the party (`FlyScreen.Flier` as a `Pokemon`, `common.UseFly`); `PoketchApp.HiddenMoves`; the style guide's bullets for the strip, the band and the app (change the guide first); `docs/mechanics/rulings.md`'s line; the `fieldmoves` mode's `fm30` to `fm34` shots; Romanian for `options.fieldHelpers.*` and `fieldMoves.helped`; the follower hand-over of plan 10 · F3. Whirlpool, Dive and Flash are not helped, as the design says.
+- **Watch at the merge.** Two option-row lists in tests (`PadInputTests`, `FocusAndFrameCapTests`) now count `FieldHelpers`; a session that adds a row after it moves them again. The harness runs on default options, so under `Rules` its modern games now grant helpers wherever a mode has a Badge and an HM in but no knower: `diff` `fieldmoves` and `story`.
+
 ### Q19 · Remembering and renaming from the party menu
 - Can run any time; after plan 13 · V4 it opens V4's prompt instead of building it.
 - The style guide first: the party bullet of "Menu screens (G10)" (the two entries, the list of moves to remember) and its keyboard bullet (the prompt's heading). `OptionRow.PartyTools`; `PartyActionKind.Remember` and `Rename` in `PartyScreen.ActionsFor` while it is on; `Models/Relearning.cs` (`Relearning.MovesFor(pokemon)`: the `Learnset`'s level-up moves at or below its level that it doesn't know, each once, in level order); the list, and the forgetting through `ModernUi.MoveChoice`; `GameState.Nickname` on `NameEntry` (written here if V4 hasn't, and V4 then reads it as done), offered for the player's own Pokémon (`OriginalTrainer` null).
@@ -352,7 +358,7 @@ Written 2026-10-06, before any session.
 - [ ] Q15 The jukebox
 - [ ] Q16 The screenshot key and photo mode in the field
 - [ ] Q17 Photo mode in battle
-- [ ] Q18 Field moves without a party member who knows them
+- [~] Q18 Field moves without a party member who knows them (the rules, row, `granted` and `usemove` helper are built; the party strip, Fly with a helper, the Pokétch app and the shots are left, see its outcome)
 - [ ] Q19 Remembering and renaming from the party menu
 - [x] Q20 Skipping a scene already seen (2026-10-12)
 - [ ] Q21 Requests

@@ -577,6 +577,7 @@ public class ScriptTests
               if item "Potion" >= 3 end
               if party < 6 end
               if knows "Cut" end
+              if granted "Cut" end
               if has "Starly" end
               if has "Geodude" met "Safari Zone" end
               if has var VAR_A end

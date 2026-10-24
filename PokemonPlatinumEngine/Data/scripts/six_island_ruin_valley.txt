@@ -22,7 +22,9 @@ script DottedHoleDoor
   ask "There's a door in the rock, covered in raised dots. Look at it more closely?"
   if no goto Leave
   text "The dots spell a single word: CUT."
-  if not knows "Cut" end
+  if knows "Cut" goto Able
+  if not granted "Cut" end
+label Able
   if not movebadge "Cut" end
   ask "Use Cut on the door?"
   if no end

@@ -336,7 +336,7 @@ public class PadInputTests
     {
         var rows = Enum.GetValues<OptionRow>();
         // (The Vs. Recorder's row, plan 08 · P10, the second slot's, P23, the next objective's, plan 12 · Q14, and the season's, plan 22 · U3, went in after them, before CONTROLS, as every new row does)
-        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.Controls, OptionRow.Help }, rows[^9..]);
+        Assert.Equal(new[] { OptionRow.ButtonMode, OptionRow.StickDeadZone, OptionRow.Gamepad, OptionRow.RecordBattles, OptionRow.SlotTwo, OptionRow.NextObjective, OptionRow.Season, OptionRow.FieldHelpers, OptionRow.Controls, OptionRow.Help }, rows[^10..]);
 
         var s = new GameSettings();
         OptionsScreen.Change(s, OptionRow.ButtonMode, 1);
