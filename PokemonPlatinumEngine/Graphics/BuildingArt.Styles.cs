@@ -180,6 +180,13 @@ internal static partial class BuildingArt
                 _ => brickBlock
             },
 
+            // Castelia's Gym is flat on top as the city's blocks are: its block runs deep behind the front, and a hip roof
+            // over it was a slope of tiles as wide as the street
+            BuildingKind.Gym when town == Architecture.Metropolis => shop with
+            {
+                Roof = RoofShape.Flat, RoofColor = GymColor(b.Theme), Accent = PixelCanvas.Shadow(GymColor(b.Theme), 0.12f),
+                Sign = SignKind.Text, SignText = "GYM", Portal = 84, Gear = RoofGear.Vents
+            },
             BuildingKind.Gym => shop with
             {
                 RoofColor = snowy ? SnowRoof : GymColor(b.Theme), Accent = PixelCanvas.Shadow(GymColor(b.Theme), 0.12f),
