@@ -6,7 +6,7 @@
           "Dome Owner"
         ],
         "text": [
-          ""
+          "Proprietarul Domului"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "The reception is inside. Bring three Pokémon and enter a course!"
         ],
         "text": [
-          "",
-          ""
+          "Bun venit la Pokéathlon Dome! L-am construit ca fiecare Pokémon, puternic în luptă sau nu, să aibă un loc în care să strălucească.",
+          "Recepția e înăuntru. Adu trei Pokémoni și înscrie-te la un traseu!"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Poliwrath"
         ],
         "text": [
-          ""
+          "Poliwrath"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Poliwrath flexed its arms. It looks ready for any event."
         ],
         "text": [
-          ""
+          "Poliwrath și-a încordat brațele. Pare gata pentru orice probă."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "My Oddish isn't fast and isn't strong, but it can jump! Every Pokémon is good at something here."
         ],
         "text": [
-          ""
+          "Oddish-ul meu nu e rapid și nici puternic, dar știe să sară! Aici fiecare Pokémon se pricepe la ceva."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Oddish"
         ],
         "text": [
-          ""
+          "Oddish"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Oddish hopped on the spot."
         ],
         "text": [
-          ""
+          "Oddish a sărit pe loc."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "Meowth and I practise every morning on this square. Today we'll beat our best score!"
         ],
         "text": [
-          ""
+          "Meowth și cu mine ne antrenăm în fiecare dimineață pe această piață. Azi ne depășim cel mai bun scor!"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Meowth"
         ],
         "text": [
-          ""
+          "Meowth"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Meowth stretched, as if warming up."
         ],
         "text": [
-          ""
+          "Meowth s-a întins, ca și cum s-ar încălzi."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -124,7 +124,7 @@
           "The Pokéathlon scores a Pokémon on five things: Speed, Power, Skill, Stamina and Jump. Which is your team best at?"
         ],
         "text": [
-          ""
+          "Pokéathlon notează un Pokémon la cinci lucruri: Viteză, Putere, Îndemânare, Rezistență și Săritură. La care e echipa ta cea mai bună?"
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Psyduck"
         ],
         "text": [
-          ""
+          "Psyduck"
         ]
       },
       "dialog": {
@@ -142,7 +142,7 @@
           "Psyduck held its head. It seems to be thinking about the course."
         ],
         "text": [
-          ""
+          "Psyduck s-a apucat de cap. Parcă se gândește la traseu."
         ]
       }
     },
@@ -152,7 +152,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       },
       "dialog": {
@@ -160,7 +160,7 @@
           "Slowpoke yawned. It doesn't look like a racer."
         ],
         "text": [
-          ""
+          "Slowpoke a căscat. Nu pare un alergător."
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Farfetch'd"
         ],
         "text": [
-          ""
+          "Farfetch'd"
         ]
       },
       "dialog": {
@@ -178,7 +178,7 @@
           "Farfetch'd waved its leek like a baton."
         ],
         "text": [
-          ""
+          "Farfetch'd și-a fluturat prazul ca pe o baghetă."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -196,7 +196,7 @@
           "My Pidgey and I walk round the square before every course. It loosens up its wings."
         ],
         "text": [
-          ""
+          "Pidgey al meu și cu mine ne plimbăm prin piață înaintea fiecărui traseu. Îi dezmorțește aripile."
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Pidgey"
         ],
         "text": [
-          ""
+          "Pidgey"
         ]
       },
       "dialog": {
@@ -214,7 +214,7 @@
           "Pidgey flapped its wings."
         ],
         "text": [
-          ""
+          "Pidgey și-a fâlfâit aripile."
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -232,7 +232,7 @@
           "My Slowbro came last in every race. It doesn't mind at all, and neither do I!"
         ],
         "text": [
-          ""
+          "Slowbro al meu a ieșit ultimul la toate cursele. Nu-l deranjează deloc, și nici pe mine!"
         ]
       }
     },
@@ -242,7 +242,7 @@
           "Slowbro"
         ],
         "text": [
-          ""
+          "Slowbro"
         ]
       },
       "dialog": {
@@ -250,7 +250,7 @@
           "Slowbro gazed into the distance."
         ],
         "text": [
-          ""
+          "Slowbro s-a uitat în depărtare."
         ]
       }
     },
@@ -260,7 +260,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -268,7 +268,7 @@
           "Machop is all Power. In Block Smash nobody comes near it!"
         ],
         "text": [
-          ""
+          "Machop e doar Putere. La Block Smash nimeni nu se apropie de el!"
         ]
       }
     },
@@ -278,7 +278,7 @@
           "Machop"
         ],
         "text": [
-          ""
+          "Machop"
         ]
       },
       "dialog": {
@@ -286,7 +286,7 @@
           "Machop punched the air."
         ],
         "text": [
-          ""
+          "Machop a lovit aerul cu pumnul."
         ]
       }
     },
@@ -296,7 +296,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -304,7 +304,7 @@
           "I run a lap of the square every day. If my Pokémon train, so should I!"
         ],
         "text": [
-          ""
+          "Alerg un tur al pieței în fiecare zi. Dacă Pokémonii mei se antrenează, trebuie și eu!"
         ]
       }
     },
@@ -314,7 +314,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -322,7 +322,7 @@
           "The dome was built where the old road ran to the National Park. The cheering carries all the way to the gate!"
         ],
         "text": [
-          ""
+          "Domul a fost construit unde vechiul drum ducea spre Parcul Național. Ovațiile se aud până la poartă!"
         ]
       }
     },
@@ -332,7 +332,7 @@
           "Stall Keeper"
         ],
         "text": [
-          ""
+          "Vânzător"
         ]
       },
       "dialog": {
@@ -340,7 +340,7 @@
           "This is the Athlete Shop's stall. The goods for Athlete Points haven't come in yet. Do come back!"
         ],
         "text": [
-          ""
+          "Aceasta e tarabă Magazinului Atleților. Mărfurile pentru Puncte de Atlet nu au sosit încă. Revino!"
         ]
       }
     }
@@ -351,7 +351,7 @@
         "The Athlete Shop. Goods for Athlete Points."
       ],
       "text": [
-        ""
+        "Magazinul Atleților. Mărfuri pentru Puncte de Atlet."
       ]
     },
     "D49_020+1": {
@@ -359,7 +359,7 @@
         "The Athlete Shop. Goods for Athlete Points."
       ],
       "text": [
-        ""
+        "Magazinul Atleților. Mărfuri pentru Puncte de Atlet."
       ]
     },
     "D49_021+1": {
@@ -367,7 +367,7 @@
         "The Athlete Shop. Goods for Athlete Points."
       ],
       "text": [
-        ""
+        "Magazinul Atleților. Mărfuri pentru Puncte de Atlet."
       ]
     },
     "D49_022+1": {
@@ -375,7 +375,7 @@
         "The Pokéathlon Dome's square. The dome is straight ahead."
       ],
       "text": [
-        ""
+        "Piața Pokéathlon Dome. Domul este chiar în față."
       ]
     },
     "D49_023+1": {
@@ -383,7 +383,7 @@
         "Pokéathlon Dome\nWhere Pokémon run, jump and throw!"
       ],
       "text": [
-        ""
+        "Pokéathlon Dome\nUnde Pokémonii aleargă, sar și aruncă!"
       ]
     }
   }

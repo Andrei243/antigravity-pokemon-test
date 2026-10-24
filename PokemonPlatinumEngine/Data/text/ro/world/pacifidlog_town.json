@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The sea round Pacifidlog is full of Corsola. My grandma says the whole town grew up on their reef."
         ],
         "text": [
-          ""
+          "Marea din jurul Pacifidlogului e plină de Corsola. Bunica spune că tot orașul a crescut pe recifurile lor."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The currents out west are fierce. Surfing against them, you'll go nowhere at all!"
         ],
         "text": [
-          ""
+          "Curenții din vest sunt puternici. Dacă navighezi împotriva lor, nu ajungi nicăieri!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "There's a tall tower on an island east of here. People say something sleeps at the very top."
         ],
         "text": [
-          ""
+          "E un turn înalt pe o insulă la est de aici. Se spune că ceva doarme chiar în vârf."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "Pacifidlog Town\nWhere the morning sun smiles on the waters."
       ],
       "text": [
-        ""
+        "Orașul Pacifidlog\nUnde soarele dimineții zâmbește apei."
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -69,7 +69,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     }
   }

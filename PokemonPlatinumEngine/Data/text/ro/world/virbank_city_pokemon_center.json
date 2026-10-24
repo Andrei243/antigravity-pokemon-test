@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Ships, smokestacks and a rock club under the street. Virbank never sleeps, and neither do I, it seems."
         ],
         "text": [
-          ""
+          "Vapoare, coșuri de fabrică și un club de rock sub stradă. Virbank nu doarme niciodată, și se pare că nici eu."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționeră"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemeni"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Fight Poison types with Poison types! At least, that's what Roxie says. She plays the guitar AND battles!"
         ],
         "text": [
-          ""
+          "Luptă cu tipurile Otravă folosind tipuri Otravă! Cel puțin așa spune Roxie. Ea cântă la chitară ȘI luptă!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -142,7 +142,7 @@
           "Can I ask you something? Do you like playing outside, or at home? ...Outside? I knew it, you look sporty!"
         ],
         "text": [
-          ""
+          "Pot să te întreb ceva? Îți place să te joci afară sau acasă? ...Afară? Știam eu, arăți sportiv!"
         ]
       }
     }

@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!"
       ],
       "text": [
-        ""
+        "{player}! Mergi și tu spre Castelia City, nu? Eu pornesc după Echipa Plasma. Nu-i las niciodată să scape!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hey, Captain! Show us this ship you're so proud of!"
       ],
       "text": [
-        ""
+        "Hei, Căpitane! Arată-ne vaporul de care ești atât de mândru!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Captain"
       ],
       "text": [
-        ""
+        "Căpitan"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Ha ha! She's raring to go, but her engines went cold while I was off at the studios."
       ],
       "text": [
-        ""
+        "Ha ha! E nerăbdătoare să plece, dar motoarele i s-au răcit cât am fost eu pe la studiouri."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Give me a little while to warm them through, and we'll charge across to Castelia City!"
       ],
       "text": [
-        ""
+        "Dă-mi puțin timp să le încălzesc și ne vom avânta spre Castelia City!"
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Old Woman"
       ],
       "text": [
-        ""
+        "Bătrână"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Your life is your own, dear. Work hard at one thing, or try your hand at many. Just mind the people waiting on you."
       ],
       "text": [
-        ""
+        "Viața e a ta, dragă. Muncește din greu la un singur lucru sau încearcă mai multe. Doar ai grijă de cei care te așteaptă."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Looking for the captain? He's gone off to Pokéstar Studios, of all places! Thinks he can be a star like his daughter."
       ],
       "text": [
-        ""
+        "Îl cauți pe căpitan? A plecat la Pokéstar Studios, dintre toate locurile! Crede că poate fi vedetă ca fiica lui."
       ]
     }
   ]

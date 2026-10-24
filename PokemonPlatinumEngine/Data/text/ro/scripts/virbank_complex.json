@@ -5,7 +5,7 @@
         "Roughneck"
       ],
       "text": [
-        ""
+        "Bătăuș"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Yo! Here's a good deal for you. Swap me a Poké Ball for my Great Ball?"
       ],
       "text": [
-        ""
+        "Hei! Am o ofertă bună pentru tine. Schimbi un Poké Ball pe Great Ball-ul meu?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Trade a Poké Ball for a Great Ball?"
       ],
       "text": [
-        ""
+        "Schimbi un Poké Ball pe un Great Ball?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} traded a Poké Ball for a Great Ball!"
       ],
       "text": [
-        ""
+        "{player} a schimbat un Poké Ball pe un Great Ball!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Heh, thanks! Enjoy that Great Ball. We can trade again tomorrow if you like!"
       ],
       "text": [
-        ""
+        "Heh, mulțumesc! Bucură-te de Great Ball. Putem face schimb din nou mâine, dacă vrei!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Seriously? Most people jump at a deal like this!"
       ],
       "text": [
-        ""
+        "Serios? Majoritatea sar la o ofertă ca asta!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Seriously? You haven't got a single Poké Ball on you?"
       ],
       "text": [
-        ""
+        "Serios? N-ai niciun Poké Ball la tine?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Good deal, right? Come back tomorrow and we'll trade again!"
       ],
       "text": [
-        ""
+        "Ofertă bună, nu? Revino mâine și facem schimb din nou!"
       ]
     }
   ]

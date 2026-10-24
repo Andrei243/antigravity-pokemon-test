@@ -6,7 +6,7 @@
           "Juan"
         ],
         "text": [
-          ""
+          "Juan"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghid de Arenă"
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Sootopolis City Pokémon Gym\nLeader: Juan"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Sootopolis City\nLider: Juan"
       ]
     },
     "SootopolisCity_Gym_1F_EventScript_RightGymStatue": {
@@ -35,7 +35,7 @@
         "Sootopolis City Pokémon Gym\nLeader: Juan"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Sootopolis City\nLider: Juan"
       ]
     }
   }

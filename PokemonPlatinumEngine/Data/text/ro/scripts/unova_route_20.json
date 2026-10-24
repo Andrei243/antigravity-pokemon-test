@@ -5,7 +5,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Recrut"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Ugh, you again?! I really hate it when people won't let things go!"
       ],
       "text": [
-        ""
+        "Iar tu?! Chiar urăsc când lumea nu lasă lucrurile baltă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hmm... if I keep running this way, there's nobody to back me up. I'd better head for the sea!"
       ],
       "text": [
-        ""
+        "Hmm... dacă tot fug așa, nu mai are cine să mă acopere. Mai bine o iau spre mare!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "So with that settled... I'm running away again! Goodbye, Virbank City!"
       ],
       "text": [
-        ""
+        "Deci, odată lămurit asta... fug din nou! Rămas-bun, Virbank City!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Well, they're good at running away, I'll give them that..."
       ],
       "text": [
-        ""
+        "Ei bine, la fugit se pricep, trebuie să le recunosc."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "But she just told us something useful! They must be getting around by boat."
       ],
       "text": [
-        ""
+        "Dar tocmai ne-a spus ceva util! Probabil se deplasează cu vaporul."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Castelia City has a big port. Maybe they headed there!"
       ],
       "text": [
-        ""
+        "Castelia City are un port mare. Poate că s-au dus acolo!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Right! Back to Virbank, {player}. Someone at the docks must know about ships. There was a place to board them, I'm sure of it."
       ],
       "text": [
-        ""
+        "Așa! Înapoi la Virbank, {player}. Cineva de la docuri trebuie să știe de vapoare. Era un loc de îmbarcare, sunt sigur."
       ]
     }
   ],
@@ -271,7 +271,7 @@
         "{player}! Help me search Route 20! One of those grunts ran this way, I know it."
       ],
       "text": [
-        ""
+        "{player}! Ajută-mă să caut pe Ruta 20! Unul dintre recruți a fugit încoace, știu sigur."
       ]
     }
   ],
