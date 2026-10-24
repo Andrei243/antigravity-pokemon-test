@@ -324,6 +324,9 @@ internal static partial class ModernUi
         Field(Text.Of("card.caught"), dex ? info.Caught.ToString() : "—", x, y + 124);
         Field(Text.Of("card.seen"), dex ? info.Seen.ToString() : "—", x + 440, y + 124);
         Field(Text.Of("card.score"), info.Score.ToString("N0", CultureInfo.InvariantCulture), x, y + 248);
+        // What to do next (plan 12 · Q14), in the free corner between the score and the portrait's plate
+        if (info.NextObjective.Length > 0)
+            NextLine(new Rectangle(x + 440, y + 252, card.Width - 948, 4 * NextLineHeight + 30), info.NextObjective);
 
         // ---- The player's own field sprite, on a pale plate
         var plate = new Rectangle(card.X + card.Width - 72 - 340, card.Y + 160, 340, 392);
@@ -446,15 +449,18 @@ internal static partial class ModernUi
     /// saying so. <paramref name="shown"/> slides the panel up into place. The slot the game is saved in is named
     /// after the heading and in the question (plan 12 · Q2).
     /// </summary>
-    public static void DrawSave(int sw, int sh, SaveData save, int slot, int answer, bool saved, float shown)
+    public static void DrawSave(int sw, int sh, SaveData save, int slot, int answer, bool saved, float shown, string next = "")
     {
         Dim(sw, sh, (int)(150 * shown));
-        var r = new Rectangle(sw / 2f - 540, 140 + (1f - shown) * 60f, 1080, 780);
+        // What to do next (plan 12 · Q14) takes a band of its own under the summary, and the panel grows by it
+        float band = next.Length > 0 ? NextPanelHeight(next, 1080 - 96) - 12 : 0;
+        var r = new Rectangle(sw / 2f - 540, 140 + (1f - shown) * 60f, 1080, 780 + band);
         Panel(r, 36);
         SaveSummary(new Rectangle(r.X, r.Y, r.Width, SaveSummaryHeight), save, Text.Of("saving.heading"), slot);
-        UiShapes.Fill(new Rectangle(r.X + 48, r.Y + SaveSummaryHeight + 12, r.Width - 96, 3), 1.5f, Rule);
+        if (band > 0) NextLine(new Rectangle(r.X + 48, r.Y + SaveSummaryHeight - 8, r.Width - 96, band), next);
+        UiShapes.Fill(new Rectangle(r.X + 48, r.Y + SaveSummaryHeight + 12 + band, r.Width - 96, 3), 1.5f, Rule);
 
-        float cy = r.Y + SaveSummaryHeight + 82;
+        float cy = r.Y + SaveSummaryHeight + 82 + band;
         if (saved)
         {
             float tw = Tag(r.X + 56, cy + 34, Text.Of("saving.saved"), Green, 52);

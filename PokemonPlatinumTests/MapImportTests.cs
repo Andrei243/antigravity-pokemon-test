@@ -1478,6 +1478,33 @@ public class Bw2ImportTests
     }
 
     [Fact]
+    public void AChunkNamedByASeasonStandsInForTheChunkItsNameEndsLike()
+    {
+        // Plan 22 · U2, part b: the overworld's by column and row, a cave's by its dungeon's number
+        Assert.Equal(("Winter", "_map05_04"), Bw2World.SeasonalOf("winter05_04"));
+        Assert.Equal(("Autumn", "_map04_20"), Bw2World.SeasonalOf("autumn04_20"));
+        Assert.Equal(("Winter", "_m_dun0701_01_00"), Bw2World.SeasonalOf("winter0701_01_00"));
+        Assert.Null(Bw2World.SeasonalOf("overworld_2_map05_04"));
+        Assert.Null(Bw2World.SeasonalOf("wellspring_cave_m_dun1401_00_00"));
+        Assert.Null(Bw2World.SeasonalOf("spring05_04"));
+
+        // A matrix's seasons, written and read back: a season's own chunk where it has one, spring's elsewhere
+        var file = new WorldMatrixFile
+        {
+            Id = 0, Width = 2, Height = 1, Chunks = { WorldMatrixFile.Row(new[] { "10", "11" }, 2) },
+            Seasons = new() { new MatrixSeason { Season = "Winter", Chunks = { WorldMatrixFile.Row(new[] { "-", "99" }, 2) } } }
+        };
+        var back = GameDataFiles.Deserialize<WorldMatrixFile>(GameDataFiles.Serialize(file));
+        Assert.Equal(10, back.ChunkAt(0, 0, "Winter"));
+        Assert.Equal(99, back.ChunkAt(1, 0, "Winter"));
+        Assert.Equal(11, back.ChunkAt(1, 0, "Summer"));
+        Assert.Equal(11, back.ChunkAt(1, 0, null));
+        Assert.Equal(11, back.ChunkAt(1, 0));
+        // A matrix the same all year writes no seasons
+        Assert.DoesNotContain("seasons", GameDataFiles.Serialize(new WorldMatrixFile { Chunks = { "1" }, Width = 1, Height = 1 }));
+    }
+
+    [Fact]
     public void UnovasKeysAndTrainerClassesAreOurs()
     {
         Assert.Equal("aspertia_city", Bw2World.KeyOf("ZONE_ASPERTIA_CITY"));
@@ -1485,6 +1512,17 @@ public class Bw2ImportTests
         Assert.Equal("unova_victory_road", Bw2World.KeyOf("ZONE_VICTORY_ROAD"));
         Assert.Equal("Pokémon Ranger", Bw2World.ClassName("TRAINER_CLASS_PKMN_RANGER_M"));
         Assert.Equal("Youngster", Bw2World.ClassName("TRAINER_CLASS_YOUNGSTER"));
+        // A number that only tells two classes of one name apart is no part of the name (plan 22 · U2, part b)
+        Assert.Equal("Worker", Bw2World.ClassName("TRAINER_CLASS_WORKER_44"));
+        Assert.Equal("Scientist", Bw2World.ClassName("TRAINER_CLASS_SCIENTIST_F_46"));
+        Assert.Equal("Clerk", Bw2World.ClassName("TRAINER_CLASS_CLERK_M_66"));
+        // A form in a trainer's team, by Black 2's number of it
+        Assert.Equal("Basculin-Blue-Striped", Bw2World.FormName("Basculin", 1));
+        Assert.Equal("Rotom-Wash", Bw2World.FormName("Rotom", 2));
+        Assert.Equal("Wormadam-Trash", Bw2World.FormName("Wormadam", 2));
+        Assert.Null(Bw2World.FormName("Patrat", 1));
+        foreach (var (species, form) in new[] { ("Basculin", 1), ("Rotom", 1), ("Rotom", 5), ("Wormadam", 1), ("Shellos", 1) })
+            Assert.NotNull(PokemonPlatinumEngine.Data.PokemonDatabase.SpeciesOfForm(Bw2World.FormName(species, form)!));
         // Nothing the importer writes for Unova carries the decompilation's message ids, which are made of the original's
         // words: a person's lines are their overlay's, in our own
         foreach (string folder in new[] { "areas", "overlays" })

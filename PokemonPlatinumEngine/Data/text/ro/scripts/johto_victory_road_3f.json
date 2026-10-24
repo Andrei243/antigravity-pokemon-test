@@ -1,0 +1,94 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're going to take on the Pokémon League. Not before you've dealt with me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been thinking about what that dragon tamer said. I'm not saying he was right. But I'm not the same as I was."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! This time, I win!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...I lost. Again. But it doesn't feel the way it used to."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon fought for me today. Not because I told them to. I couldn't have done that before."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on, then. Go and take the League. I'm going to train somewhere nobody bothers me, and when I come back I'll be stronger than all of you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gone": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What are you waiting for? The League's that way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

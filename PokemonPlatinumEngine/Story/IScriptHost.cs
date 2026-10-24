@@ -43,6 +43,12 @@ public interface IScriptHost
     /// </summary>
     string Region => RegionDatabase.Sinnoh;
 
+    /// <summary>
+    /// Whether the player's options let the game say what to do next (plan 12 · Q14): <c>if objective</c> is false when
+    /// they do not. On unless a host says otherwise.
+    /// </summary>
+    bool ShowsObjectives => true;
+
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
 

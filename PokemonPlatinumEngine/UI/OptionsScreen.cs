@@ -22,6 +22,7 @@ public enum OptionRow
     ButtonMode, StickDeadZone, Gamepad,
     RecordBattles,
     SlotTwo,
+    NextObjective,
     Controls,
     Help
 }
@@ -182,6 +183,9 @@ public class OptionsScreen
             case OptionRow.TrainerLines:
                 s.TrainerLines = s.TrainerLines == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
                 break;
+            case OptionRow.NextObjective:
+                s.NextObjective = s.NextObjective == RulesDefault.Off ? RulesDefault.On : RulesDefault.Off;
+                break;
             case OptionRow.FocusPause:
                 s.FocusPause = !s.FocusPause;
                 break;
@@ -274,6 +278,7 @@ public class OptionsScreen
         OptionRow.RecordBattles => (Text.Of("options.recordBattles.label"), OnOff(s.RecordBattles), Text.Of(s.RecordBattles ? "options.recordBattles.help.on" : "options.recordBattles.help.off")),
         OptionRow.SlotTwo => (Text.Of("options.slotTwo.label"), Text.Of($"options.slotTwo.value.{s.SlotTwo}"),
             Text.Of(s.SlotTwo == SlotTwoGame.None ? "options.slotTwo.help.None" : "options.slotTwo.help.game", ("game", Text.Of($"options.slotTwo.value.{s.SlotTwo}")))),
+        OptionRow.NextObjective => (Text.Of("options.nextObjective.label"), OnOff(s.NextObjective != RulesDefault.Off), Text.Of(s.NextObjective != RulesDefault.Off ? "options.nextObjective.help.on" : "options.nextObjective.help.off")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

@@ -1,0 +1,31 @@
+{
+  "key": "lilycove_city_cove_lily_motel_2f",
+  "index": 161,
+  "name": "Lilycove City",
+  "matrix": 110,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 1, "to": "lilycove_city_cove_lily_motel_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_west", "x": 4, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_GameDesigner" },
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_east", "x": 1, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_GraphicArtist" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_east", "x": 7, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_FatMan" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_west", "x": 10, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_Programmer" },
+    { "id": "gameboy_kid", "looks": "gameboy_kid", "movement": "look_south", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_GameBoyKid" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 4, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_Woman" },
+    { "id": "scott", "looks": "scott", "movement": "look_east", "x": 1, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_MOTEL_SCOTT", "script": "LilycoveCity_CoveLilyMotel_2F_EventScript_Scott" }
+  ],
+  "signs": [],
+  "triggers": []
+}

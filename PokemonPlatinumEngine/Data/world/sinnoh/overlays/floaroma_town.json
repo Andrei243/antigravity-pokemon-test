@@ -14,6 +14,7 @@
   "people": {
     "pokemon_breeder_f": {
       "name": "Woman",
+      "script": "Rumour",
       "dialog": [
         "Welcome to Floaroma Town! Flowers, flowers, and then more flowers!",
         "You ought to plant a few yourself. There's nothing like it."

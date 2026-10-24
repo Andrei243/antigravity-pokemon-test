@@ -1,0 +1,10 @@
+{
+  // Mt. Pyre's mountainside (plan 21 · H7, part a): the way round the outside of the tower from its upper door to the
+  // summit, in mist above its middle and in sun below it (its zone, by the rows Emerald's fog and sun triggers mark)
+  "area": "mt_pyre_exterior",
+  "bgmTrack": "hoenn/mt_pyre_exterior",
+  "trees": "Round",
+  "zones": [
+    { "x": 0, "z": 0, "width": 64, "depth": 22, "weather": "Fog", "bgmTrack": "hoenn/mt_pyre_exterior" }
+  ]
+}

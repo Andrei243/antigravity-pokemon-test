@@ -1,0 +1,48 @@
+{
+  "key": "mt_pyre_1f",
+  "index": 253,
+  "name": "Mt Pyre",
+  "matrix": 202,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "mt_pyre_1f",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 23 },
+    { "species": "Shuppet", "level": 22 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 17, "z": 18, "to": "route_122", "toWarp": 0 },
+    { "x": 3, "z": 6, "to": "mt_pyre_exterior", "toWarp": 0 },
+    { "x": 18, "z": 18, "to": "route_122", "toWarp": 0 },
+    { "x": 4, "z": 6, "to": "mt_pyre_exterior", "toWarp": 0 },
+    { "x": 11, "z": 1, "to": "mt_pyre_2f", "toWarp": 0 },
+    { "x": 20, "z": 9, "to": "mt_pyre_2f", "toWarp": 4, "landing": true }
+  ],
+  "objects": [
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south", "x": 21, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MtPyre_1F_EventScript_CleanseTagWoman" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_north", "x": 17, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "MtPyre_1F_EventScript_PokefanF" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_west", "x": 13, "z": 10, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "MtPyre_1F_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

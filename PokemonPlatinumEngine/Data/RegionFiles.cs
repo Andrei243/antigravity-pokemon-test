@@ -123,6 +123,13 @@ public sealed class RegionFile
 
     public RegionProfessor Professor { get; set; } = new();
     public List<RegionSpawn> Spawns { get; set; } = new();
+
+    /// <summary>
+    /// The region's levels for a team that crossed into it (plan 18 · W4): pairs of a level of the region's own game and
+    /// the level it is met at, <c>[[2, 62], [63, 104]]</c> (<see cref="LevelMapping"/>). None for Sinnoh, whose levels
+    /// are Platinum's and where every game begins.
+    /// </summary>
+    public List<int[]>? Levels { get; set; }
 }
 
 /// <summary>The kinds of rule that open the National Pokédex (plan 18 · W3).</summary>

@@ -1,23 +1,5 @@
 {
   "people": {
-    "p01r0101_seaman_2": {
-      "name": {
-        "en": [
-          "Sailor"
-        ],
-        "text": [
-          "Marinar"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to Olivine Port! The S.S. Aqua isn't sailing just now, I'm afraid. Come back another time."
-        ],
-        "text": [
-          "Bine ai venit în Portul Olivine! Mă tem că S.S. Aqua nu navighează acum. Revino altă dată."
-        ]
-      }
-    },
     "p01r0101_gswoman3": {
       "name": {
         "en": [
@@ -51,6 +33,16 @@
         ],
         "text": [
           "S.S. Aqua e cel mai rapid vas din lume! Într-o zi o să merg cu el."
+        ]
+      }
+    },
+    "ss_aqua_olivine_port_interior.Sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
         ]
       }
     }

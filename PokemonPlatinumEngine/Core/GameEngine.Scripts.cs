@@ -864,6 +864,7 @@ public partial class GameEngine
 
         public StoryState Story => game.flow.Story;
         public string Region => game.Here.Id;
+        public bool ShowsObjectives => game.NextObjectiveOn;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;
@@ -1080,6 +1081,8 @@ public partial class GameEngine
         {
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
+            // A script writes its game's own level; a region crossed into meets it at the mapped one (plan 18 · W4)
+            if (kind != BattleKind.CatchingLesson) wild.Relevel(game.LevelHere(wild.Level));
             game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher);
         }
 
@@ -1195,6 +1198,8 @@ public partial class GameEngine
 
         public bool GivePokemon(Pokemon pokemon)
         {
+            // A gift of a region crossed into comes at the region's mapped level (plan 18 · W4); an Egg hatches at its own
+            if (!pokemon.IsEgg) pokemon.Relevel(game.LevelHere(pokemon.Level));
             game.flow.Pokedex.RegisterSeen(pokemon);
             game.flow.Pokedex.RegisterCaught(pokemon);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)

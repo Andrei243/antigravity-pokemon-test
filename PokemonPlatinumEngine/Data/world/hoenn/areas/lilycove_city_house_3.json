@@ -1,0 +1,31 @@
+{
+  "key": "lilycove_city_house_3",
+  "index": 174,
+  "name": "Lilycove City",
+  "matrix": 123,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "lilycove_city", "toWarp": 10 },
+    { "x": 4, "z": 7, "to": "lilycove_city", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "gameboy_kid", "looks": "gameboy_kid", "movement": "look_south", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_House3_EventScript_GameBoyKid4" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_House3_EventScript_PokefanF" },
+    { "id": "gameboy_kid_2", "looks": "gameboy_kid", "movement": "look_south", "x": 1, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_House3_EventScript_GameBoyKid2" },
+    { "id": "gameboy_kid_3", "looks": "gameboy_kid", "movement": "look_north", "x": 2, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_House3_EventScript_GameBoyKid3" },
+    { "id": "gameboy_kid_4", "looks": "gameboy_kid", "movement": "look_south", "x": 2, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_House3_EventScript_GameBoyKid1" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_west", "x": 7, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_House3_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

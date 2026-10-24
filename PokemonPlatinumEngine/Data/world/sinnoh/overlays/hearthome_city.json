@@ -82,6 +82,7 @@
     },
     "pokefan_f": {
       "name": "Woman",
+      "script": "Rumour",
       "dialog": [
         "How many kinds of Pokémon do you suppose there are in the world?",
         "Every time I think I've met them all, a new one turns up."

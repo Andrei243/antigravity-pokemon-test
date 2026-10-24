@@ -115,6 +115,8 @@ public enum Op
     Phrase,
     // Someone set to sit, to sit on the ground, to lie or to stand (plan 11 · C7)
     Pose,
+    // What to do next (plan 12 · Q14): the objective the story is at, stored as VAR_OBJECTIVE
+    Objective,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -133,7 +135,9 @@ public enum Query
     /// <c>subject "pushable_boulder_2"</c>, for a script many things share that does something of each's own (a
     /// Seafoam boulder down a hole shows a boulder of its own on the floor below).
     /// </summary>
-    Subject
+    Subject,
+    /// <summary>The story has something to say of what to do next here, and the player's options allow it (plan 12 · Q14): <c>objective</c>, before a line that says <c>{objective}</c>.</summary>
+    Objective
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

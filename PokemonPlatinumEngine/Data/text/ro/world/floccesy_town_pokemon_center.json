@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Floccesy is a quiet town, but people come from all over to see the ranch's Pokémon."
         ],
         "text": [
-          ""
+          "Floccesy e un oraș liniștit, dar oamenii vin de peste tot să vadă Pokémonii fermei."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Route 20 is lovely this time of year. Mind the Trainers in the tall grass, though."
         ],
         "text": [
-          ""
+          "Ruta 20 e minunată în perioada asta a anului. Ai grijă totuși la Antrenorii din iarba înaltă."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Schoolgirl"
         ],
         "text": [
-          ""
+          "Școlărița"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "My Pokémon fainted on Route 20, so I ran all the way back here. Never again without Potions!"
         ],
         "text": [
-          ""
+          "Pokémonul meu a leșinat pe Ruta 20, așa că am fugit tot drumul înapoi aici. Niciodată din nou fără Potions!"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "The ranch to the north has loads of Pokémon. The owners let you walk among them."
         ],
         "text": [
-          ""
+          "Ferma din nord are o grămadă de Pokémon. Proprietarii te lasă să te plimbi printre ei."
         ]
       }
     }

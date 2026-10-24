@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Lessons are over for today, but the students always stay behind to battle."
         ],
         "text": [
-          ""
+          "Lecțiile s-au terminat pentru azi, dar elevii rămân mereu să se lupte."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Did you know? A Pokémon's type decides which moves hurt it most. It's all on the board up there."
         ],
         "text": [
-          ""
+          "Știai? Tipul unui Pokémon hotărăște ce atacuri îl rănesc cel mai tare. Totul e pe tabla de acolo."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Schoolboy"
         ],
         "text": [
-          ""
+          "Școlarul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Normal moves can't touch a Ghost type, and Ghost moves can't touch a Normal type. Weird, right?"
         ],
         "text": [
-          ""
+          "Atacurile de tip Normal nu pot atinge un Pokémon Fantomă, iar atacurile Fantomă nu pot atinge un Pokémon Normal. Ciudat, nu?"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The door at the back goes into the Gym. Go on, if you think you're ready!"
         ],
         "text": [
-          ""
+          "Ușa din spate duce în Arenă. Du-te, dacă te crezi pregătit!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Schoolgirl"
         ],
         "text": [
-          ""
+          "Școlărița"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I'm studying status conditions. A sleeping Pokémon can't attack, but it wakes up in the end."
         ],
         "text": [
-          ""
+          "Studiez stările alterate. Un Pokémon adormit nu poate ataca, dar până la urmă se trezește."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "The blackboard is covered in notes about\nwhich types are strong against which."
       ],
       "text": [
-        ""
+        "Tabla e plină de notițe despre\nce tipuri sunt puternice împotriva altora."
       ]
     },
     "7": {
@@ -105,7 +105,7 @@
         "A notice about the Gym through the door:\nchallengers welcome at any time."
       ],
       "text": [
-        ""
+        "Un anunț despre Arena de dincolo de ușă:\nprovocatorii sunt bineveniți oricând."
       ]
     }
   }

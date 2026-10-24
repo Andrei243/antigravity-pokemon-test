@@ -56,7 +56,8 @@ In the `Ruleset` today, because the engine already runs these rules:
 | EXP | by the foe's level alone (base × level / 7), shared among those who fought, half to Exp. Share holders | scaled by the two levels (Generation 7's formula), the whole team gets some, half for those who didn't fight, a fifth more past the level it would evolve at |
 | Effort in a stat | at most 255 | at most 252 |
 | A vitamin raises effort | up to 100 | up to the stat's limit |
-| A level-100 Pokémon | gains no effort from battles | still gains effort |
+| The level cap (plan 18 · W4) | 100 | 260 (`Ruleset.LevelCap`; "The level cap past 100", below) |
+| A Pokémon at the level cap | gains no effort from battles | still gains effort |
 | A shiny Pokémon | 1 in 8,192: the personality's and the trainer's halves exclusive-or'd under 8 | 1 in 4,096: under 16 |
 | An Everstone in breeding (plan 06 · R15) | the mother's or Ditto's nature one time in two | the holder's nature, always, whichever parent |
 | The IVs an Egg inherits | three picks that can fall on the same stat; no item changes them | three different stats, five with a Destiny Knot, a Power item's from its holder |
@@ -2531,6 +2532,17 @@ leaves a choice.
   differs, whole, in `WorldAreaFile.Seasons`. Nothing reads them until U4's calendar of seasons: until then every game
   meets spring's. The dark grass, the shaking grass and the rippling water are read and kept beside them, and U4 gives
   them their rules. Unova alone has seasons (`RegionFile.HasSeasons`).
+- **The seasons' chunks** (plan 22 · U2, part b). Black 2 lays 26 chunks of its own in place of others in a season
+  (Route 20's four in autumn, six cells of the north-west in winter, two cells of the east coast in each of summer,
+  autumn and winter, and Twist Mountain's and the Moor of Icirrus's floors in winter and Pledge Grove's in autumn). Its table of the
+  swaps (`map_replace.c`'s archive) is not extracted by the decompilation, so the reader takes the swap from the names,
+  which say it: `winter05_04` lies over the overworld's `overworld_2_map05_04` (column 5, row 4) and `winter0701_01_00`
+  over the cave's `…_m_dun0701_01_00`. The matrix's own chunks are spring's, and `WorldMatrixFile.Seasons` names the
+  other seasons' where they differ; a season's chunk keeps its spring chunk's warps. Nothing reads them until U4.
+- **Trainers' teams** (part b). A Pokémon of a form (`form` above 0: two Basculin, a Wormadam and Colress's Rotom) is
+  that form by Generation 5's numbering (`Bw2World.FormName`). A class number the decompilation gives only to tell two
+  classes of one name apart (`TRAINER_CLASS_WORKER_44`) is not part of the class's name. A team's `gender` and
+  `ability` are not read yet: the personality is worked out as HeartGold's, which gives each its own.
 - **Where the textures lie.** By the user's decision of 2026-10-20, each chunk's `model.glb` is read past its JSON chunk
   into its binary one, as plain numbers, only to find which texture covers each tile (`Bw2Geometry`). Only a
   `TerrainCover` code a tile is kept. `Bw2Cover` sorts the names, buildings take the tiles under their props' boxes, and
@@ -3316,6 +3328,48 @@ ours). What differs, and why:
 - **What waits**: the metatile swap of the bridge once Fortree's Kecleon has fled (an alternate chunk of the importer's);
   the Wingull's return and Mental Herb (H8).
 
+## Lilycove City and Mt. Pyre (2026-10-24, plan 21 · H7, its first part)
+
+Lilycove City, Routes 122 and 123 and Mt. Pyre are scripts of ours on Emerald's beats (`lilycove_city.txt`, the
+store's floors, the motel, the Move Deleter's, two houses, `route_122.txt`, `route_123.txt`, the Berry Master's house,
+`mt_pyre_1f.txt`, `mt_pyre_summit.txt`), under Emerald's flags and variables (`FLAG_VISITED_LILYCOVE_CITY`,
+`FLAG_MET_RIVAL_LILYCOVE`, `FLAG_DECLINED_RIVAL_BATTLE_LILYCOVE`, `VAR_MT_PYRE_STATE`, `FLAG_RECEIVED_RED_OR_BLUE_ORB`,
+`FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE`, `FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA`, `FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD`, the daily
+`FLAG_DAILY_*` of the berries and the lottery). **No story or save version is raised**: `common.HoennChapterEight` hides
+what Emerald's new game hides here (Maxie on the summit, the museum's patrons and tourists, the Fan Club's interviewer,
+the motel's game designers, the roof's sale woman), `HoennNewGame` calls it, and Lilycove City's, Route 122's and Route
+123's arrivals call it for a save that never ran it (`FLAG_HOENN_CHAPTER_EIGHT`, a flag of ours). What differs, and why:
+
+- **The rival leaves on foot**: Emerald's rival flies off on a bird (`FLDEFF_NPCFLY_OUT`); here the picture goes dark
+  and the rival is gone, as on Route 119. Emerald also puts the rival back in their bedroom at home afterwards
+  (`FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM` cleared); that bedroom's lines are part b's to write, so the flag
+  is left.
+- **The Wailmer are in the way only on their own tiles**: Emerald draws Team Aqua's three Wailmer into Lilycove's
+  metatiles east of the city (`LilycoveCity_EventScript_SetWailmerMetatiles`, local 76 to 78, 12 to 17). The reader's
+  map leaves the sea round those tiles open, wide enough to sail east to Route 124 past them, so the three stand as
+  Pokémon of the map on the tiles of their heads and the sea to Route 124 is open from Lilycove (Route 124 is no longer
+  `WorldWalk.OpenedAhead`). Mossdeep and the east sea are shut anyway until plan 21 · H8; part b decides whether the
+  channel needs a gate of ours, and takes the Wailmer away with `FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`.
+- **The store's lift is shut**: Emerald's lift is a menu of floors that the stairs reach as well; its doors are
+  `locked` on every floor. The fifth floor's clerks, who sell decorations for secret bases, only talk until plan 21 · H10.
+  The roof's clearance sale (a woman shown on some days) stays hidden.
+- **The Lottery Corner is Jubilife TV's draw** (`lottery draw`, `Models/Lottery.cs`), with Emerald's prizes: two digits a
+  PP Up, three an Exp. Share, four a Max Revive, five a Master Ball; one digit wins nothing, as in Emerald.
+- **The Giga Drain girl asks the team's species**: Emerald asks whether a Grass type is on the team
+  (`IsGrassTypeInParty`); a script here asks species by name, so she looks for the Grass Pokémon of Hoenn's routes so far
+  (the Treecko, Lotad, Seedot, Shroomish, Oddish, Cacnea and Lileep lines, Roselia and Tropius).
+- **The Berry Master's wife takes a phrase of two words** (`phrase BERRY_MASTERS_WIFE`), where Emerald takes one of its
+  easy-chat sayings; Emerald's five sayings that bring a rare berry once (Spelon, Pamtre, Watmel, Durin, Belue) are words
+  the picker does not have, and wait for part b. Her ordinary berry is one of Cheri to Sitrus, by a die of ten.
+- **Mt. Pyre's summit plays once**: the old woman gives the **Magma Emblem** (a key item of ours, 9112, in the
+  importer's overrides), Team Aqua is gone and `VAR_MT_PYRE_STATE` is 1. Emerald's second scene there (state 2, the two
+  leaders bringing the orbs back after Sootopolis) is plan 21 · H8's; its triggers are left without scripts, and the old
+  couple's later lines with them. The mountainside's fog stands above its middle as a zone (Emerald's fog and sun
+  triggers), and the summit is in its header's fog.
+- **Lilycove's ground**: every metatile of its tileset that is open more often than blocked is paving (`GbaCover.HoennRanges`'
+  `gTileset_Lilycove`), as Lavaridge's rows are read; the cove's open ground in the General tileset is left to the
+  builder's guess, since those rows are shared by all of Hoenn.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
@@ -4066,6 +4120,41 @@ battles and Ho-Oh, and the small gifts are left (plan 20's J11 record says why).
   the way east as the Badge is given; here only the shrine's own state (`FLAG_UNK_998`, `FLAG_UNK_0EA`, `VAR_UNK_40C3`)
   and Clair's in the Den are set, and J12 writes the scenes those start.
 
+## Johto's fifth chapter: Victory Road, the League and the Hall of Fame (2026-10-24, plan 20 · J12, part a)
+
+Elm's Master Ball, the red-haired boy's last challenge in Victory Road, the Elite Four, Lance and Johto's Hall of Fame,
+played by scripts of ours on HeartGold's beats (`scr_seq_T20R0101`, `D43R0103`, `T10R0101` to `T10R0701`) and flags.
+
+- **Elm's Master Ball asks the Badge, not the shrine**: HeartGold sets `VAR_SCENE_ELMS_LAB` 8 as the Rising Badge is
+  given and Elm hands the Master Ball over on the next visit. Here the lab's arrival asks the Badge itself and a flag of
+  ours (`FLAG_GOT_MASTER_BALL_FROM_ELM`) and sets the variable as it gives the ball, so a save past the shrine from
+  before this session needs no story version. HeartGold's rival's-room scene in New Bark Town is not played.
+- **The rival in Victory Road is brought in by his scene**: HeartGold's new game hides him (`FLAG_HIDE_VICTORY_ROAD_RIVAL`);
+  here the third floor's arrival sets the flag, and the scene (the first trigger, on `VAR_UNK_40C5` 0) places him two
+  tiles behind the player, whichever of the corridor's three tiles they stepped on. His team beats the starter, as every
+  earlier battle of his (`johto_rival_silver_5`, `_9`, `_13`).
+- **The Elite Four's doors are their exits' flags**: HeartGold hides each room's door ahead by `FLAG_HIDE_<WHO>S_ROOM_EXIT`
+  as its master is beaten; the same flags open the overlay's doors here (`openedBy`), and the way back is locked. The
+  master is spoken to, as in Kanto's League (plan 19 · K7); HeartGold walks the challenger up to them. Lance's door is a
+  flag of ours (`FLAG_HIDE_LANCES_ROOM_EXIT`), and Mary and Oak stand in his room only from his defeat
+  (`FLAG_LANCES_ROOM_VISITORS`, ours). The hall's arrival puts the League back whenever it is come into, as HeartGold's
+  white-out and its Hall of Fame leave it. The rematch teams (`_2`) are J15's.
+- **The rooms take their master's type** (`arenaType`: Psychic, Poison, Fighting, Dark and Dragon), as Kanto's League's
+  do: their halls' own looks are J14's.
+- **Home after the Hall of Fame**: the scene warps to the player's room in New Bark Town, saves and rolls the credits,
+  as the other regions' do; Johto's own ceremony and credits songs are not written (the common ones play). Elm rings the
+  first time the Champion comes downstairs (`common.JohtoChampionCall`, `FLAG_ELM_CALLED_THE_CHAMPION`, ours). HeartGold's
+  call is about the S.S. Aqua to Kanto and the S.S. Ticket; here the journey goes on to Hoenn (plan 18 · W10), so Elm tells
+  of the ship that sails there from Olivine's port, and no ticket is given.
+- **The ship to Hoenn sails from Olivine's port hall**: the sailor before the quay is the region's attendant
+  (`RegionDatabase`'s link from Johto, `Transport.Boat`, `DepartureMap` `Olivine_PortHall`), where HeartGold's S.S. Aqua
+  leaves from. The quay itself and the voyage to Kanto stay J15's.
+- **The gate's door to Route 22** lets a Champion of Johto (`JohtoHallOfFame`) through and puts its trigger to rest
+  (`VAR_UNK_4121` 1). Kanto beyond it is only the stretch of Route 22 J10 opened.
+- **Left**: the reunion with a Kanto team (plan 18 · W4 and W5's crossing is not built, so there is no `Crossing.CanTake`
+  to ask), the rival's room in New Bark Town, the post-game rival on the Plateau (`FLAG_HIDE_INDIGO_PLATEAU_RIVAL`), and
+  the rematches.
+
 ## Reading the player's own files (2026-10-21, plan 08 · P20)
 
 The migration of Pal Park (P21) needs the player's Pokémon out of files the player owns. P20 is only the readers: they take bytes,
@@ -4193,3 +4282,47 @@ files written by `Core/MigrationOut.cs`.
   number is taken); the folder is made when the first file is written, and nothing else in `migrate/` is written, renamed or moved.
 - **Offered** when the folder holds a file the readers know, or when two saves can be read (one to move from, one to move to). With
   one save and no folder there is nothing to offer, and the player makes the folder to write out.
+
+## The level cap past 100 and a region's levels (2026-10-24, plan 18 · W4)
+
+The user chose on 2026-10-21 that the team crosses from region to region at full strength, with the level cap raised
+well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W4 built:
+
+- **The cap is 260 by the modern rules** (`Ruleset.LevelCap`; `Ruleset.HighestLevel` is the highest any rules allow) and
+  stays 100 by Platinum's, so the baseline (`battles-platinum.txt`) can't move. 260 is the study's fair climb under the
+  modern EXP: Paldea's Champion at about 258 with the team a step ahead. The simulation was not run again in W4: the
+  new moves (plan 06 · R31) and evolutions (plan 03 · D14) that fill the levels past 100 are not built, and the number
+  is to be checked once they are.
+- **What stopped at 100 stops at the cap**: a battle's EXP and effort (by the battle's own rules, `Rules.LevelCap`), the
+  EXP bar and the summary's TOP LEVEL, the Rare Candy and the EXP Candies, the Day Care's growing (the game's cap,
+  `Pokemon.Cap`). A Pokémon is made or loaded at any level from 1 to 260 whatever the game's cap, so **a save holding a
+  level past 100 loads as it was**; the save's format didn't change.
+- **The curves past 100.** Fast, Medium Fast, Medium Slow and Slow go on as their formulas do. *Our ruling*: Erratic's
+  last branch, `level³ × (160 − level) / 100`, falls after 100 and turns negative at 160, and Fluctuating means nothing
+  past 100, so past 100 each keeps the share of Medium Fast's cube it has at 100: Erratic 600,000 × (level / 100)³
+  and Fluctuating 1,640,000 × (level / 100)³, rounded down. Both rise level by level to 260, and Platinum's values up to
+  100 are untouched. At 260 the dearest curve, Fluctuating, is about 28.8 million EXP, well inside its number.
+- **The damage formula at the cap**: Platinum's base damage is worked out in a long (the modern one already was), so a
+  stat of a few thousand at level 260 can't overflow it; nothing under 100 moves.
+- **The Day-Care Checker** shows a level to 260, still three figures. **A `.pk4` written out** (plan 08 · P22) of a
+  Pokémon past 100 is written at 100's EXP, since Platinum's level is its EXP's. A save's own Pokémon moved between
+  slots may be past 100. A foreign file's Pokémon are still held to 100.
+- **A region's levels.** A region file's `levels` (`LevelMapping`) is pairs of its own game's level and the level met
+  here: a straight line between pairs, on past either end, rounded half up and held to 1 to 260. Each region's first
+  route is met at the Champion's level of the region before it and its own Champion at the study's fair climb:
+  Kanto `[[2, 62], [63, 104]]`, Johto `[[2, 104], [50, 136]]`, Hoenn `[[2, 136], [58, 162]]`, Unova
+  `[[2, 162], [59, 185]]`. The regions to come take theirs from the same table: Kalos's Champion at 205, Alola's at
+  224, Galar's at 242 and Paldea's at 258, each region beginning at the last one's. Sinnoh has none.
+- *Our ruling*: **the region files keep their own game's levels**, and the mapping is applied as a Pokémon is met
+  (`GameEngine.LevelHere`): a wild Pokémon's level as drawn, every trainer's team (the battle fights copies,
+  `Trainer.Relevelled`, so the trainer of the map keeps their team and a rematch is never mapped twice), a partner's, a
+  script's `wildbattle` and `givepokemon` (`Pokemon.Relevel`: moves chosen for it kept, moves that are only its level's
+  those of the new level, HP keeping its share). Scripts go on writing their game's levels (1 to 100). Not mapped: an
+  Egg, a roamer, the Battle Frontier.
+- *Our ruling*: **only in a region the game didn't begin in.** A game remembers where it began (`SaveData.BeganIn`; a save
+  from before began where it stands, since no crossing was built then): every game from the title begins in Sinnoh,
+  and a game begun elsewhere by `--region` or a tool plays that region at its own game's levels, which is how the
+  harness's `kanto`, `johto`, `hoenn` and `unova` modes stay as they were.
+- **Not yet**: the post-games of the later regions climb on past their Champions on the same line (Johto's Red, 88 in
+  HeartGold, comes to 161), which a region's plan may bend with a third pair. The Battle Hall takes a Pokémon at its own
+  level and draws its foes to 100 at most: a Pokémon past 100 entered there is plan 06's to rule on.

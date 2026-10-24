@@ -4526,6 +4526,7 @@
     "Tri-Pass": "Tri-Pass",
     "Ruby": "Rubin",
     "Rainbow Pass": "Bunt-Pass",
+    "Sapphire": "Saphir",
     "Letter": "Brief an Troy",
     "Devon Goods": "Devon-Waren",
     "Wailmer Pail": "Wailmerkanne",
@@ -4535,7 +4536,11 @@
     "Go-Goggles": "Wüstenbrille",
     "Soot Sack": "Aschetasche",
     "Harbor Mail": "Hafenbrief",
-    "Meteorite": "Meteorit"
+    "Meteorite": "Meteorit",
+    "Devon Scope": "Devon-Scope",
+    "Magma Emblem": "Magmaemblem",
+    "Basement Key": "Kelleröffner",
+    "Rainbow Wing": "Buntschwinge"
   },
   "types": {
     "Normal": "Normal",

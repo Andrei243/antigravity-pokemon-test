@@ -1,0 +1,53 @@
+{
+  "key": "mt_pyre_exterior",
+  "index": 259,
+  "name": "Mt Pyre",
+  "matrix": 208,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE_EXTERIOR",
+  "nightMusic": "MUS_MT_PYRE_EXTERIOR",
+  "encounters": "mt_pyre_exterior",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Vulpix", "level": 29 },
+    { "species": "Vulpix", "level": 27 },
+    { "species": "Vulpix", "level": 29 },
+    { "species": "Vulpix", "level": 25 },
+    { "species": "Wingull", "level": 27 },
+    { "species": "Wingull", "level": 27 },
+    { "species": "Wingull", "level": 26 },
+    { "species": "Wingull", "level": 28 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 42, "to": "mt_pyre_1f", "toWarp": 1 },
+    { "x": 19, "z": 10, "to": "mt_pyre_summit", "toWarp": 1 },
+    { "x": 20, "z": 10, "to": "mt_pyre_summit", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 27, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_MT_PYRE_EXTERIOR_MAX_POTION", "item": "Max Potion", "script": "MtPyre_Exterior_EventScript_ItemMaxPotion" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 19, "z": 40, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_MT_PYRE_EXTERIOR_TM_SKILL_SWAP", "item": "TM48", "script": "MtPyre_Exterior_EventScript_ItemTMSkillSwap" }
+  ],
+  "signs": [
+    { "x": 9, "z": 8, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_ULTRA_BALL" },
+    { "x": 16, "z": 22, "type": 2, "script": "", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_EXTERIOR_MAX_ETHER" }
+  ],
+  "triggers": [
+    { "x": 24, "z": 21, "width": 1, "depth": 1, "script": "MtPyre_Exterior_EventScript_FogTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 25, "z": 21, "width": 1, "depth": 1, "script": "MtPyre_Exterior_EventScript_FogTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 22, "z": 27, "width": 1, "depth": 1, "script": "MtPyre_Exterior_EventScript_SunTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 23, "z": 28, "width": 1, "depth": 1, "script": "MtPyre_Exterior_EventScript_SunTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 26, "z": 21, "width": 1, "depth": 1, "script": "MtPyre_Exterior_EventScript_FogTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" }
+  ]
+}

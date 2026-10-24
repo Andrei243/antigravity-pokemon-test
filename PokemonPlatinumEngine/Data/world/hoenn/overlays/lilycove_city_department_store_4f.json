@@ -1,0 +1,14 @@
+{
+  // The Department Store's fourth floor (plan 21 · H7, part a): the TM Corner, a counter of attacks and one of
+  // defences (marts.json's lilycove_4f_attack and lilycove_4f_defense)
+  "area": "lilycove_city_department_store_4f",
+  "bgmTrack": "hoenn/lilycove",
+  "locked": [ 2 ],
+  "people": {
+    "woman_3": { "name": "Clerk", "script": "ClerkLeft" },
+    "woman_3_2": { "name": "Clerk", "script": "ClerkRight" },
+    "gentleman": { "name": "Gentleman", "dialog": ["A Pokémon that knows Protect can hold on for a turn while its partner does the work. Very elegant."] },
+    "woman_2": { "name": "Woman", "dialog": ["Fire Blast, Thunder, Blizzard... Such powerful moves! But they don't always hit, you know."] },
+    "youngster": { "name": "Youngster", "dialog": ["Hyper Beam is the strongest move there is! My Pokémon just needs a rest afterwards."] }
+  }
+}

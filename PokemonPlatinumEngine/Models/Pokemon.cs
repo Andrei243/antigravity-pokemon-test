@@ -636,11 +636,20 @@ public class Pokemon
     public int CurrentExp { get; set; }
     public int ExpForCurrentLevel => GetExpForLevel(Level, Species.GrowthRate);
     public int ExpForNextLevel => GetExpForLevel(Level + 1, Species.GrowthRate);
+    /// <summary>
+    /// The level no Pokémon grows past in the game in progress (plan 18 · W4): the rules' <see cref="Ruleset.LevelCap"/>,
+    /// 100 in Platinum and <see cref="Ruleset.HighestLevel"/> by the modern rules. A battle asks its own rules instead.
+    /// </summary>
+    public static int Cap => Ruleset.Current.LevelCap;
+
+    /// <summary>Whether it has reached the level cap of the game in progress: no more EXP, no Rare Candy.</summary>
+    public bool AtTheCap => Level >= Cap;
+
     public float ExpProgressRatio
     {
         get
         {
-            if (Level >= 100) return 1.0f;
+            if (AtTheCap) return 1.0f;
             int baseExp = ExpForCurrentLevel;
             int nextExp = ExpForNextLevel;
             int span = nextExp - baseExp;
@@ -742,7 +751,9 @@ public class Pokemon
     private Pokemon(PokemonSpecies species, int level, uint personality, Random rng, Gender? gender, Nature? nature, bool choose)
     {
         Species = species;
-        Level = Math.Clamp(level, 1, 100);
+        // Held to the highest level any rules allow, whatever the game's own cap (plan 18 · W4): a save made with a
+        // level past 100 loads as it was
+        Level = Math.Clamp(level, 1, Ruleset.HighestLevel);
         Personality = choose ? Models.Personality.Choose(species, rng, gender, nature) : personality;
         // A gender the species can't help having is its own whatever the personality (Cute Charm on one of them)
         Gender = Models.Personality.GenderOf(species, Personality);
@@ -774,7 +785,7 @@ public class Pokemon
     public Pokemon(PokemonSpecies species, int level, Gender gender, Nature nature, bool isShiny)
     {
         Species = species;
-        Level = Math.Clamp(level, 1, 100);
+        Level = Math.Clamp(level, 1, Ruleset.HighestLevel);
         Gender = gender;
         Form = FormOfGender();
         Nature = nature;
@@ -819,7 +830,27 @@ public class Pokemon
     public void CalculateStats() => RecalculateStats();
 
     /// <summary>Puts it at a level without anything a level brings (the Day Care's growing, <see cref="DayCare.Grow"/>).</summary>
-    internal void LevelTo(int level) => Level = Math.Clamp(level, 1, 100);
+    internal void LevelTo(int level) => Level = Math.Clamp(level, 1, Ruleset.HighestLevel);
+
+    /// <summary>
+    /// Puts a Pokémon not yet anyone's at another level, as if it had been made there (plan 18 · W4: a region's levels
+    /// mapped for a team that crossed into it, <see cref="Data.LevelMapping"/>): its EXP is the level's, its stats are
+    /// worked out again and its HP keeps its share. Moves chosen for it are kept; moves that are only what its old level
+    /// taught it are those of the new level.
+    /// </summary>
+    public void Relevel(int level)
+    {
+        level = Math.Clamp(level, 1, Ruleset.HighestLevel);
+        if (level == Level) return;
+        bool byLevel = Moves.Select(m => m.Name).SequenceEqual(MovesLearnedBy(Level));
+        bool whole = CurrentHP >= MaxHP;
+        float share = MaxHP > 0 ? (float)CurrentHP / MaxHP : 1f;
+        Level = level;
+        CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
+        RecalculateStats();
+        CurrentHP = whole ? MaxHP : CurrentHP <= 0 ? 0 : Math.Clamp((int)MathF.Round(MaxHP * share), 1, MaxHP);
+        if (byLevel) PopulateMovesForLevel();
+    }
 
     /// <summary>
     /// Works its stats out again and moves its HP by what its maximum moved (<c>Pokemon_CalcStats</c>): what the
@@ -937,9 +968,21 @@ public class Pokemon
         };
     }
 
+    /// <summary>
+    /// The EXP a level starts at (<c>Pokemon_GetExpToLevel</c>'s six curves). Past 100 (plan 18 · W4) the four cubic
+    /// curves go on as they are; Erratic's last branch would fall after 100 and turn negative at 160, and Fluctuating has
+    /// no meaning there, so by a rule of our own both keep the share of Medium Fast's cube they have at 100: Erratic
+    /// 600,000 × (level / 100)³ and Fluctuating 1,640,000 × (level / 100)³, rounded down (<c>docs/mechanics/rulings.md</c>,
+    /// "The level cap past 100").
+    /// </summary>
     public static int GetExpForLevel(int level, GrowthRate growthRate)
     {
         if (level <= 1) return 0;
+        if (level > 100 && growthRate is GrowthRate.Erratic or GrowthRate.Fluctuating)
+        {
+            long atHundred = GetExpForLevel(100, growthRate);
+            return (int)(atHundred * level * level * level / 1_000_000L);
+        }
         double n = level;
         return growthRate switch
         {
@@ -964,25 +1007,28 @@ public class Pokemon
         };
     }
 
+    /// <summary>The moves a Pokémon made at a level knows (<see cref="PopulateMovesForLevel"/>): the last four it would have learned, each once, or Tackle.</summary>
+    private List<string> MovesLearnedBy(int level)
+    {
+        var names = Learnset
+            .Where(m => m.Level <= level)
+            .OrderByDescending(m => m.Level)
+            .DistinctBy(m => m.MoveName)
+            .Take(4)
+            .Reverse()
+            .Select(m => m.MoveName)
+            .ToList();
+        if (names.Count == 0) names.Add("Tackle");
+        return names;
+    }
+
     public void PopulateMovesForLevel()
     {
         Moves.Clear();
         // The last four it would have learned by now, each move once
-        var availableMoves = Learnset
-            .Where(m => m.Level <= Level)
-            .OrderByDescending(m => m.Level)
-            .DistinctBy(m => m.MoveName)
-            .Take(4)
-            .Reverse();
-
-        foreach (var m in availableMoves)
+        foreach (var name in MovesLearnedBy(Level))
         {
-            Moves.Add(MoveDatabase.Create(m.MoveName));
-        }
-
-        if (Moves.Count == 0)
-        {
-            Moves.Add(MoveDatabase.Create("Tackle"));
+            Moves.Add(MoveDatabase.Create(name));
         }
     }
 
@@ -1043,16 +1089,21 @@ public class Pokemon
     /// Those it couldn't, knowing four already: the game asks which move to forget for each (the original's
     /// <c>LEARNSET_ALL_SLOTS_FILLED</c>). A move it knows already is neither.
     /// </param>
-    public bool GainExp(int expGained, out List<string> newMovesLearned, out List<string> movesWanted)
+    /// <param name="cap">
+    /// The level it grows no further than: a battle's own rules' (<see cref="Ruleset.LevelCap"/>), or the game's
+    /// (<see cref="Cap"/>) when none is given (plan 18 · W4).
+    /// </param>
+    public bool GainExp(int expGained, out List<string> newMovesLearned, out List<string> movesWanted, int? cap = null)
     {
         newMovesLearned = new List<string>();
         movesWanted = new List<string>();
-        if (Level >= 100) return false;
+        int top = Math.Min(cap ?? Cap, Ruleset.HighestLevel);
+        if (Level >= top) return false;
 
         CurrentExp += expGained;
         bool leveledUp = false;
 
-        while (Level < 100 && CurrentExp >= ExpForNextLevel)
+        while (Level < top && CurrentExp >= ExpForNextLevel)
         {
             Level++;
             leveledUp = true;

@@ -1577,10 +1577,10 @@
       ]
     }
   ],
-  "GabbyAndTyGabby": [
+  "JohtoChampionCall": [
     {
       "en": [
-        "Gabby"
+        "Brrrring! Brrrring! It's the Pokégear..."
       ],
       "text": [
         ""
@@ -1588,10 +1588,68 @@
     },
     {
       "en": [
-        "There you are! Ty, get the camera rolling. We've been hoping to run into this trainer again!"
+        "Prof. Elm"
       ],
       "text": [
         ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I heard it on the radio. You're the Champion of the Pokémon League! Congratulations!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Professor Oak called me straight away, too. He says he's never seen a trainer grow so quickly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now listen. A ship sails from Olivine's port for Hoenn, far to the south, and it takes only trainers who have beaten a League."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are Pokémon over there nobody in Johto has ever seen. If you go, call me now and then and tell me everything!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GabbyAndTyGabby": [
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        "Gabby"
+      ]
+    },
+    {
+      "en": [
+        "There you are! Ty, get the camera rolling. We've been hoping to run into this trainer again!"
+      ],
+      "text": [
+        "Aici erai! Ty, pornește camera. Speram să dăm din nou peste acest antrenor!"
       ]
     },
     {
@@ -1600,8 +1658,8 @@
         "We're the reporters Gabby and Ty. Give us a battle for the cameras, two against two?"
       ],
       "text": [
-        "",
-        ""
+        "Stai, stai! Ty, camera! Un antrenor cu Pokémon alături, iar noi căutăm antrenori!",
+        "Noi suntem reporterii Gabby și Ty. Ne dai o luptă pentru camere, doi contra doi?"
       ]
     },
     {
@@ -1609,7 +1667,7 @@
         "Gabby"
       ],
       "text": [
-        ""
+        "Gabby"
       ]
     },
     {
@@ -1617,7 +1675,7 @@
         "Oh, we lost again! Still, that's the footage the viewers like."
       ],
       "text": [
-        ""
+        "Am pierdut iar! Dar tocmai asemenea imagini le plac telespectatorilor."
       ]
     },
     {
@@ -1625,7 +1683,7 @@
         "We lost! Wow, that was a battle! Ty, tell me you got all of that."
       ],
       "text": [
-        ""
+        "Am pierdut! Uau, ce luptă! Ty, spune-mi că ai filmat tot."
       ]
     },
     {
@@ -1633,7 +1691,7 @@
         "We'll be keeping an eye out for you. Keep up the good work out there!"
       ],
       "text": [
-        ""
+        "Te vom căuta în continuare. Așa mai departe!"
       ]
     },
     {
@@ -1641,7 +1699,7 @@
         "A double battle's what we're after, and you've only one Pokémon to fight with. Come back with two!"
       ],
       "text": [
-        ""
+        "Noi vrem o luptă dublă, iar tu ai un singur Pokémon. Revino cu doi!"
       ]
     }
   ],
@@ -1651,7 +1709,7 @@
         "Ty"
       ],
       "text": [
-        ""
+        "Ty"
       ]
     },
     {
@@ -1659,7 +1717,7 @@
         "Gabby, it's the trainer from before! I'm rolling. Let's see how they do this time."
       ],
       "text": [
-        ""
+        "Gabby, e antrenorul de data trecută! Filmez. Să vedem cum se descurcă de data asta."
       ]
     },
     {
@@ -1667,7 +1725,7 @@
         "Gabby's spotted you, and when she does, I film. Two against two, for the cameras. Ready?"
       ],
       "text": [
-        ""
+        "Gabby te-a văzut, iar când o face, eu filmez. Doi contra doi, pentru camere. Gata?"
       ]
     },
     {
@@ -1675,7 +1733,7 @@
         "Ty"
       ],
       "text": [
-        ""
+        "Ty"
       ]
     },
     {
@@ -1683,7 +1741,7 @@
         "We lost again, and I got it all on tape. Not bad for the viewers."
       ],
       "text": [
-        ""
+        "Am pierdut iar, dar am filmat tot. Nu-i rău pentru telespectatori."
       ]
     },
     {
@@ -1691,7 +1749,7 @@
         "We lost, but I got every bit of it. That'll be good footage."
       ],
       "text": [
-        ""
+        "Am pierdut, dar am filmat fiecare clipă. Va fi un material bun."
       ]
     },
     {
@@ -1699,7 +1757,7 @@
         "That was a good battle. I got it all on tape."
       ],
       "text": [
-        ""
+        "A fost o luptă bună. Am filmat totul."
       ]
     },
     {
@@ -1707,7 +1765,7 @@
         "Gabby wants a double battle, and one Pokémon makes only half of one. Come back with two."
       ],
       "text": [
-        ""
+        "Gabby vrea o luptă dublă, iar un singur Pokémon e doar jumătate de luptă. Revino cu doi."
       ]
     }
   ],
@@ -1717,7 +1775,7 @@
         "Gabby"
       ],
       "text": [
-        ""
+        "Gabby"
       ]
     },
     {
@@ -1725,7 +1783,7 @@
         "We never got an interview out of you last time. How about it now?"
       ],
       "text": [
-        ""
+        "Data trecută n-am reușit să luăm un interviu de la tine. Ce zici acum?"
       ]
     },
     {
@@ -1733,7 +1791,7 @@
         "By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind?"
       ],
       "text": [
-        ""
+        "Apropo, cine EȘTI? Un antrenor care se luptă așa merită un interviu. Te superi?"
       ]
     },
     {
@@ -1741,7 +1799,7 @@
         "Last time you told us, \"{phrase:GABBY_AND_TY}\". The viewers loved it!"
       ],
       "text": [
-        ""
+        "Data trecută ne-ai spus: „{phrase:GABBY_AND_TY}”. Telespectatorilor le-a plăcut!"
       ]
     },
     {
@@ -1749,7 +1807,7 @@
         "Care to be interviewed again?"
       ],
       "text": [
-        ""
+        "Vrei să mai dai un interviu?"
       ]
     },
     {
@@ -1757,7 +1815,7 @@
         "And you flattened us so fast that Ty had barely started filming! How about another interview?"
       ],
       "text": [
-        ""
+        "Și ne-ai învins atât de repede, încât Ty abia începuse să filmeze! Ce zici de un alt interviu?"
       ]
     },
     {
@@ -1765,7 +1823,7 @@
         "And you lost a Pokémon and still won, which made us look rather good. How about another interview?"
       ],
       "text": [
-        ""
+        "Și ai pierdut un Pokémon și tot ai câștigat, ceea ce ne-a prins foarte bine. Ce zici de un alt interviu?"
       ]
     },
     {
@@ -1773,7 +1831,7 @@
         "Wonderful! Then tell us in two words: how did that battle feel?"
       ],
       "text": [
-        ""
+        "Minunat! Atunci spune-ne în două cuvinte: cum a fost lupta?"
       ]
     },
     {
@@ -1781,7 +1839,7 @@
         "Perfect! That's just what the viewers want. We'll be seeing you!"
       ],
       "text": [
-        ""
+        "Perfect! Exact asta vor telespectatorii. Ne vedem!"
       ]
     },
     {
@@ -1789,7 +1847,7 @@
         "Oh, no interview? We won't give up. We'll find you again!"
       ],
       "text": [
-        ""
+        "Fără interviu? Nu renunțăm. Te vom găsi din nou!"
       ]
     }
   ],

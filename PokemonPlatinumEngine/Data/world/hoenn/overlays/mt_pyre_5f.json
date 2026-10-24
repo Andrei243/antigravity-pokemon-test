@@ -1,0 +1,8 @@
+{
+  // Mt. Pyre's fifth floor (plan 21 · H7, part a)
+  "area": "mt_pyre_5f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "black_belt": { "name": "Atsushi", "trainer": { "dialogueBefore": "Black Belt Atsushi: I train among the graves to steady my heart. Nothing frightens me now. Come!", "dialogueAfter": "Black Belt Atsushi: My heart was steady, but my fists were not." } }
+  }
+}

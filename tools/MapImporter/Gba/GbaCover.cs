@@ -350,6 +350,18 @@ public static class GbaCover
                 (0x250, 0x253, TerrainCover.Tree), (0x25C, 0x25D, TerrainCover.Tree), (0x263, 0x265, TerrainCover.Tree),
                 (0x26D, 0x26D, TerrainCover.Tree), (0x270, 0x270, TerrainCover.Tree), (0x272, 0x273, TerrainCover.Tree),
             },
+            // Plan 21 · H7, part a: Lilycove City, read from what is walked, as Lavaridge's rows are: every metatile of
+            // the tileset no behaviour or label names that is open more often than blocked is the city's paving (the
+            // squares before the Department Store and the Contest Hall, the streets that cross between the houses, the
+            // steps down to the beach); what is blocked is left to the houses, found at their doors, and to the rock
+            ["gTileset_Lilycove"] = new (int, int, TerrainCover)[]
+            {
+                (0x20A, 0x20B, TerrainCover.Paving), (0x212, 0x213, TerrainCover.Paving), (0x21A, 0x21B, TerrainCover.Paving),
+                (0x222, 0x223, TerrainCover.Paving), (0x22A, 0x22F, TerrainCover.Paving), (0x232, 0x234, TerrainCover.Paving),
+                (0x23A, 0x23C, TerrainCover.Paving), (0x240, 0x240, TerrainCover.Paving), (0x260, 0x262, TerrainCover.Paving),
+                (0x27A, 0x27A, TerrainCover.Paving), (0x28A, 0x28C, TerrainCover.Paving), (0x294, 0x294, TerrainCover.Paving),
+                (0x2C0, 0x2C2, TerrainCover.Paving), (0x2E7, 0x2E7, TerrainCover.Paving), (0x348, 0x34A, TerrainCover.Paving),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

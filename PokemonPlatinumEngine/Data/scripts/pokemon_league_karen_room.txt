@@ -1,0 +1,27 @@
+# Karen's room, the last of Johto's Elite Four (plan 20 · J12). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_T10R0501).
+#
+# As Will's room (pokemon_league_will_room.txt): beaten, Karen opens the door to the Champion's room
+# (FLAG_HIDE_KARENS_ROOM_EXIT).
+
+
+script Karen
+  face t10r0501_gsbigfour4 player
+  speaker "Karen"
+  if flag FLAG_HIDE_KARENS_ROOM_EXIT goto Beaten
+  scene "Karen"
+  say "I am Karen of the Elite Four. You're {player}? How amusing."
+  say "My Pokémon are of the Dark type. Untamed, hard to read, and far tougher than they look."
+  say "Think you can take them? Just try to entertain me. Let's go."
+  battle self as "johto_elite_four_karen_karen"
+  speaker "Karen"
+  say "Well, aren't you good. I like that in a trainer."
+  setflag FLAG_HIDE_KARENS_ROOM_EXIT
+  sound "door_open"
+  say "People love to sort Pokémon into the strong and the weak. I've never had much patience for that. The best trainers win with the ones they love."
+  say "You fight like someone who knows it. Go on. The Champion is waiting."
+  endscene
+  end
+label Beaten
+  say "The Champion is through that door. Go on. Don't keep him waiting."
+  end

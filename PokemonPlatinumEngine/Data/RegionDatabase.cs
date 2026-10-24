@@ -90,6 +90,26 @@ public sealed class Region
 
     public RegionProfessor? Professor => File?.Professor;
 
+    /// <summary>
+    /// The region's levels for a team that crossed into it (plan 18 · W4; the file's <c>levels</c>): what its wild
+    /// Pokémon, trainers and gifts are met at in a game begun in another region. Null where the file maps none.
+    /// </summary>
+    public LevelMapping? Levels
+    {
+        get
+        {
+            if (!levelsRead)
+            {
+                levels = LevelMapping.From(File?.Levels);
+                levelsRead = true;
+            }
+            return levels;
+        }
+    }
+
+    private LevelMapping? levels;
+    private bool levelsRead;
+
     /// <summary>The starter the rival takes when the player takes this one: the next in the briefcase, round (grass is answered with fire).</summary>
     public string RivalStarterFor(string playerStarter)
     {
@@ -577,6 +597,14 @@ public static class RegionDatabase
                 // Plan 21 · H6, part b: Route 121's gate, the Safari Zone and its rest house, the Ancient Tomb and the
                 // Scorched Slab
                 "Route121_SafariZoneEntrance", "HoennSafariZone", "HoennSafariZone_RestHouse", "AncientTomb", "ScorchedSlab",
+                // Plan 21 · H7, part a: Lilycove City's rooms, Route 123's Berry Master's house and Mt. Pyre
+                "LilycoveCity_PokemonCenter_1F", "LilycoveCity_PokemonCenter_2F", "LilycoveCity_DepartmentStore_1F",
+                "LilycoveCity_DepartmentStore_2F", "LilycoveCity_DepartmentStore_3F", "LilycoveCity_DepartmentStore_4F",
+                "LilycoveCity_DepartmentStore_5F", "LilycoveCity_DepartmentStoreRooftop", "LilycoveCity_CoveLilyMotel_1F",
+                "LilycoveCity_CoveLilyMotel_2F", "LilycoveCity_LilycoveMuseum_1F", "LilycoveCity_LilycoveMuseum_2F",
+                "LilycoveCity_PokemonTrainerFanClub", "LilycoveCity_MoveDeletersHouse", "LilycoveCity_House1", "LilycoveCity_House2",
+                "LilycoveCity_House3", "LilycoveCity_House4", "Route123_BerryMastersHouse", "MtPyre_1F", "MtPyre_2F", "MtPyre_3F",
+                "MtPyre_4F", "MtPyre_5F", "MtPyre_6F", "MtPyre_Exterior", "MtPyre_Summit",
             }
         },
         new()
@@ -612,7 +640,9 @@ public static class RegionDatabase
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
         // Its captain stands on the quay in Vermilion City (plan 19 · K8: Vermilion's overlay, common.Attendant on the map of Kanto).
         new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
-        new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
+        // From Johto by sea too: its sailor stands before the quay in Olivine's port hall (plan 20 · J12: the hall's overlay,
+        // common.Attendant), where HeartGold's S.S. Aqua leaves from
+        new() { From = Johto, To = Hoenn, Transport = Transport.Boat, DepartureMap = "Olivine_PortHall" },
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
         new() { From = Unova, To = Kalos, Transport = Transport.Undecided },
         new() { From = Kalos, To = Alola, Transport = Transport.Undecided },

@@ -25,6 +25,13 @@
     // Slateport Mart's mail counter (plan 21 · H3, part c): the Harbor Mail Mauville's Coin Case is traded for
     "slateport_mail": [ "Harbor Mail" ],
     // Lavaridge Town's herb shop (plan 21 · H4, part b), in Emerald's order (LavaridgeTown_HerbShop_Pokemart)
-    "lavaridge_herb_shop": [ "Energy Powder", "Energy Root", "Heal Powder", "Revival Herb" ]
+    "lavaridge_herb_shop": [ "Energy Powder", "Energy Root", "Heal Powder", "Revival Herb" ],
+    // The Lilycove Department Store (plan 21 · H7, part a), in Emerald's order (LilycoveCity_DepartmentStore_*F_Pokemart*)
+    "lilycove_2f_balls": [ "Poké Ball", "Great Ball", "Ultra Ball", "Escape Rope", "Full Heal", "Antidote", "Paralyze Heal", "Burn Heal", "Ice Heal", "Awakening", "Fluffy Tail" ],
+    "lilycove_2f_medicine": [ "Potion", "Super Potion", "Hyper Potion", "Max Potion", "Revive", "Repel", "Super Repel", "Max Repel" ],
+    "lilycove_3f_vitamins": [ "Protein", "Calcium", "Iron", "Zinc", "Carbos", "HP Up" ],
+    "lilycove_3f_battle": [ "X Speed", "X Sp. Atk", "X Attack", "X Defense", "Dire Hit", "Guard Spec.", "X Accuracy" ],
+    "lilycove_4f_attack": [ "TM38", "TM25", "TM14", "TM15" ],
+    "lilycove_4f_defense": [ "TM17", "TM20", "TM33", "TM16" ]
   }
 }

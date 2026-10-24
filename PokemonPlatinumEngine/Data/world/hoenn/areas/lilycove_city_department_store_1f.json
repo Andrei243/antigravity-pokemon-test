@@ -1,0 +1,35 @@
+{
+  "key": "lilycove_city_department_store_1f",
+  "index": 176,
+  "name": "Lilycove City",
+  "matrix": 125,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 7, "to": "lilycove_city", "toWarp": 0 },
+    { "x": 9, "z": 7, "to": "lilycove_city", "toWarp": 0 },
+    { "x": 16, "z": 1, "to": "lilycove_city_department_store_2f", "toWarp": 0 },
+    { "x": 2, "z": 1, "to": "lilycove_city_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 8, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_1F_EventScript_Greeter" },
+    { "id": "lottery_clerk", "looks": "beauty", "movement": "look_south", "x": 10, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_DepartmentStore_1F_EventScript_LotteryClerk" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "wander_around", "x": 14, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_1F_EventScript_PokefanF" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 4, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_1F_EventScript_LittleGirl" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_around", "x": 3, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_1F_EventScript_PokefanM" },
+    { "id": "azumarill", "looks": "azumarill", "movement": "look_around", "x": 2, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_DepartmentStore_1F_EventScript_Azumarill" }
+  ],
+  "signs": [
+    { "x": 0, "z": 8, "type": 0, "script": "LilycoveCity_DepartmentStore_1F_EventScript_FloorNamesSign" }
+  ],
+  "triggers": []
+}

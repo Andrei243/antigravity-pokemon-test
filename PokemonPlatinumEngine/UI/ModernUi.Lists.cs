@@ -294,6 +294,36 @@ internal static partial class ModernUi
 
     public const float SaveSummaryHeight = 460;
 
+    // ------------------------------------------------------------------ what to do next (plan 12 · Q14)
+
+    /// <summary>The size and line height of the line that says what to do next, and the most lines it takes.</summary>
+    public const float NextSize = 24, NextLineHeight = 32;
+    public const int NextMaxLines = 4;
+
+    private static List<string> NextLines(string line, float width)
+    {
+        var lines = Wrap(line, width, NextSize, UiWeight.ExtraBold);
+        return lines.Count > NextMaxLines ? lines.GetRange(0, NextMaxLines) : lines;
+    }
+
+    /// <summary>The height of a panel that holds the line under its NEXT caption, for a text <paramref name="width"/> wide.</summary>
+    public static float NextPanelHeight(string line, float width) => 28 + 30 + NextLines(line, width).Count * NextLineHeight + 12;
+
+    /// <summary>
+    /// What to do next, as the start menu, the Trainer Card and the save's summary show it: the caption NEXT in small
+    /// capitals and the line under it, wrapped to <paramref name="r"/>'s width and cut at <see cref="NextMaxLines"/>.
+    /// </summary>
+    public static void NextLine(Rectangle r, string line)
+    {
+        Label(Text.Of("start.next"), r.X, r.Y);
+        float y = r.Y + 30;
+        foreach (var text in NextLines(line, r.Width))
+        {
+            UiFonts.Draw(text, r.X, y, NextSize, Ink, UiWeight.ExtraBold);
+            y += NextLineHeight;
+        }
+    }
+
     /// <summary>
     /// A saved game at a glance, as the title's CONTINUE card and the save panel show it: who and where, time
     /// played, the Pokédex, badges won and the party. It draws its content only; the caller draws what it is on.
@@ -339,8 +369,7 @@ internal static partial class ModernUi
             var icon = PixelArtGenerator.GetPokemonIcon(save.Party[i].Form ?? save.Party[i].SpeciesName);
             Raylib.DrawTexturePro(icon, new Rectangle(0, 0, icon.Width, icon.Height),
                 new Rectangle(x + 96 + i * 100, r.Y + 346, icon.Width * 2, icon.Height * 2), Vector2.Zero, 0f, Color.White);
-        }
-    }
+        }    }
 
     /// <summary>A slot as its tag and its caption name it: SLOT 2.</summary>
     public static string SlotLabel(int slot) => Text.Of("saving.slot", ("slot", slot));

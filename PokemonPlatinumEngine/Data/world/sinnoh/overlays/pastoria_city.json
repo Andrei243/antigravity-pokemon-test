@@ -36,6 +36,7 @@
     "grunt_m": { "name": "Grunt", "script": "Grunt" },
     "picnicker": {
       "name": "Picnicker",
+      "script": "Rumour",
       "dialog": [
         "I spent all morning at the top of the observatory, looking out over the Great Marsh.",
         "Different Pokémon come out to play in the mud every day. I could watch them for hours!"

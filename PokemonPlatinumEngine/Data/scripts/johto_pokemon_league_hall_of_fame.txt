@@ -1,0 +1,35 @@
+# Johto's Hall of Fame (plan 20 · J12). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T10R0701, and its Hall of Fame's ending).
+#
+# One scene, played as the new Champion comes in behind Lance: his words, the team recorded (halloffame), Johto's
+# story ended (JohtoHallOfFame, the region's flag, which opens the way on to Hoenn from Olivine's port and the gate's
+# door to Route 22), the scene of the team's entry, the team healed, home to the player's room in New Bark Town, the
+# game saved there, and the credits. Professor Elm's call comes once the player is downstairs
+# (new_bark_player_house_1f.txt).
+
+
+script OnEnter
+  scene "Johto's Hall of Fame"
+  face t10r0701_wataru player
+  speaker "Lance"
+  say "This is the Hall of Fame. Every trainer who has beaten the League is honoured here, with the Pokémon who stood beside them."
+  say "Every one of them came here as you have, not alone, but with partners they believed in."
+  say "{player}, today your name and your Pokémon's join theirs. Let's record your team, so the League never forgets it."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag JohtoHallOfFame
+  halloffame show
+  heal
+  warp "NewBark_PlayersHouse_2F" 4 9 up
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end

@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The bell in the tower rings every morning. You get used to it. Mostly."
         ],
         "text": [
-          ""
+          "Clopotul din turn sună în fiecare dimineață. Te obișnuiești. Mai mult sau mai puțin."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfana"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The ranch north of here raises all kinds of Pokémon. I could watch them all day."
         ],
         "text": [
-          ""
+          "Ferma din nord crește tot felul de Pokémon. I-aș putea privi toată ziua."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Floccesy's flowers are at their best in spring. In winter it's all white, and just as pretty."
         ],
         "text": [
-          ""
+          "Florile din Floccesy sunt în floare primăvara. Iarna totul e alb și la fel de frumos."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A famous Trainer lives in the house at the top of town. He's always out walking, though."
         ],
         "text": [
-          ""
+          "Un Antrenor celebru locuiește în casa din capătul de sus al orașului. Dar e mereu plecat la plimbare."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Route 20 goes east to Virbank City. It's a long walk, but the grass is full of Pokémon."
         ],
         "text": [
-          ""
+          "Ruta 20 duce spre est, până în Virbank City. E o plimbare lungă, dar iarba e plină de Pokémon."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I'm saving up for a Bicycle. Then I'll ride all the way down to the sea!"
         ],
         "text": [
-          ""
+          "Strâng bani pentru o Bicicletă. Apoi cobor pe ea tot drumul până la mare!"
         ]
       }
     }
@@ -115,7 +115,7 @@
         "Floccesy Town\nA quiet town where the bell rings out."
       ],
       "text": [
-        ""
+        "Floccesy Town\nUn orășel liniștit unde răsună clopotul."
       ]
     },
     "15": {
@@ -123,7 +123,7 @@
         "TRAINER TIPS\nA Pokémon Center heals your team and sells\nwhat you need for the road."
       ],
       "text": [
-        ""
+        "SFATURILE ANTRENORULUI\nUn Centru Pokémon îți vindecă echipa și vinde\nce îți trebuie pe drum."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Gym Leader is out right now. I'm getting in some extra practice while I wait."
         ],
         "text": [
-          ""
+          "Liderul Arenei e plecat acum. Fac niște antrenament în plus cât aștept."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "This Gym's Leader likes Normal-type Pokémon. Fighting types should do well here."
         ],
         "text": [
-          ""
+          "Liderului acestei Arene îi plac Pokémonii de tip Normal. Cei de tip Luptă ar trebui să se descurce bine aici."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Hey there, challenger! The Leader isn't in yet. Come back once you've trained up a bit."
         ],
         "text": [
-          ""
+          "Salut, provocatorule! Liderul nu e încă aici. Revino după ce te mai antrenezi puțin."
         ]
       }
     }

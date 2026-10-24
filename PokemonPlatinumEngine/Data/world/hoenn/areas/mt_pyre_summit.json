@@ -1,0 +1,60 @@
+{
+  "key": "mt_pyre_summit",
+  "index": 260,
+  "name": "Mt Pyre",
+  "matrix": 209,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE_EXTERIOR",
+  "nightMusic": "MUS_MT_PYRE_EXTERIOR",
+  "encounters": "mt_pyre_summit",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 30 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Duskull", "level": 28 },
+    { "species": "Duskull", "level": 26 },
+    { "species": "Duskull", "level": 30 },
+    { "species": "Chimecho", "level": 28 },
+    { "species": "Chimecho", "level": 28 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 22, "z": 31, "to": "mt_pyre_exterior", "toWarp": 1 },
+    { "x": 23, "z": 31, "to": "mt_pyre_exterior", "toWarp": 1 },
+    { "x": 24, "z": 31, "to": "mt_pyre_exterior", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "old_man", "looks": "old_man", "movement": "look_south", "x": 22, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MtPyre_Summit_EventScript_OldMan" },
+    { "id": "mt_pyre_summit_archie", "looks": "archie", "movement": "look_north", "x": 23, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE", "script": "" },
+    { "id": "mt_pyre_summit_old_lady", "looks": "expert_f", "movement": "look_south", "x": 23, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MtPyre_Summit_EventScript_OldLady" },
+    { "id": "mt_pyre_summit_grunt_1", "looks": "aqua_member_m", "movement": "look_east", "x": 21, "z": 15, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA", "script": "TRAINER_GRUNT_MT_PYRE_1" },
+    { "id": "mt_pyre_summit_grunt_2", "looks": "aqua_member_m", "movement": "look_west", "x": 25, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA", "script": "TRAINER_GRUNT_MT_PYRE_2" },
+    { "id": "mt_pyre_summit_grunt_3", "looks": "aqua_member_m", "movement": "look_east", "x": 21, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA", "script": "TRAINER_GRUNT_MT_PYRE_3" },
+    { "id": "mt_pyre_summit_grunt_4", "looks": "aqua_member_f", "movement": "look_west", "x": 25, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA", "script": "TRAINER_GRUNT_MT_PYRE_4" },
+    { "id": "mt_pyre_summit_maxie", "looks": "maxie", "movement": "look_north", "x": 23, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE", "script": "" }
+  ],
+  "signs": [
+    { "x": 9, "z": 25, "type": 2, "script": "", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_ZINC" },
+    { "x": 37, "z": 7, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_MT_PYRE_SUMMIT_RARE_CANDY" }
+  ],
+  "triggers": [
+    { "x": 22, "z": 7, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_TeamAquaTrigger0", "variable": "VAR_MT_PYRE_STATE", "value": "0" },
+    { "x": 23, "z": 7, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_TeamAquaTrigger1", "variable": "VAR_MT_PYRE_STATE", "value": "0" },
+    { "x": 24, "z": 7, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_TeamAquaTrigger2", "variable": "VAR_MT_PYRE_STATE", "value": "0" },
+    { "x": 22, "z": 9, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger0", "variable": "VAR_MT_PYRE_STATE", "value": "2" },
+    { "x": 23, "z": 9, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger1", "variable": "VAR_MT_PYRE_STATE", "value": "2" },
+    { "x": 24, "z": 9, "width": 1, "depth": 1, "script": "MtPyre_Summit_EventScript_ArchieMaxieTrigger2", "variable": "VAR_MT_PYRE_STATE", "value": "2" }
+  ]
+}

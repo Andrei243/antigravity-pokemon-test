@@ -1,6 +1,8 @@
 {
   // Olivine's port hall (plan 20 · J8), where the S.S. Aqua's passengers wait. The ship and its quay (warps 1 and 2)
-  // wait for the voyage to Kanto (plan 20 · J15), and Professor Oak's visit for its chapter
+  // wait for the voyage to Kanto (plan 20 · J15), and Professor Oak's visit for its chapter. The sailor before the quay
+  // is the region's attendant since plan 20 · J12 (RegionDatabase's link from Johto, common.Attendant): he takes a
+  // Champion of Johto on to Hoenn, and tells anyone else who may come aboard
   "area": "ss_aqua_olivine_port_interior",
   "bgmTrack": "johto/olivine",
   "locked": [
@@ -8,13 +10,6 @@
     2
   ],
   "people": {
-    "p01r0101_seaman_2": {
-      "name": "Sailor",
-      "still": true,
-      "dialog": [
-        "Welcome to Olivine Port! The S.S. Aqua isn't sailing just now, I'm afraid. Come back another time."
-      ]
-    },
     "p01r0101_gswoman3": {
       "name": "Woman",
       "dialog": [
@@ -27,5 +22,16 @@
         "The S.S. Aqua's the fastest ship in the world! One day I'll ride on it."
       ]
     }
-  }
+  },
+  "npcs": [
+    {
+      "id": "ss_aqua_olivine_port_interior.Sailor",
+      "name": "Sailor",
+      "npcType": "captain",
+      "x": 7,
+      "y": 9,
+      "facing": "Up",
+      "isTransportAttendant": true
+    }
+  ]
 }

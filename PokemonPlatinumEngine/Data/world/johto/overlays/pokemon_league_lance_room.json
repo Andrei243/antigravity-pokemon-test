@@ -1,10 +1,35 @@
 {
-  // The Champion's room (plan 20 · J10, part b), a place for now: Lance, Professor Oak and Mary who come in after his
-  // battle, the door to the Hall of Fame and the scene that opens it are plan 20 · J12's, so the way on stands open
+  // The Champion's room (plan 20 · J10, part b; J12). Lance waits on the dais; the row before it is the area's first
+  // trigger (VAR_UNK_40C7), which plays his scene. Once he is beaten Mary and Professor Oak come in (they stand in
+  // the room only while FLAG_LANCES_ROOM_VISITORS, ours, is set) and Lance opens the door to the Hall of Fame
+  // (FLAG_HIDE_LANCES_ROOM_EXIT, ours). The way back to Karen's room is shut. pokemon_league_lance_room.txt has the
+  // scene
   "area": "pokemon_league_lance_room",
   "bgmTrack": "johto/indigo_plateau",
-  // HeartGold walks the challenger in through the doorway at the room's foot, whose tile is a wall to a step: until
-  // J12's scene does, a step into the doorway comes out beyond it
+  "arenaType": "Dragon",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "IndigoLeague_HallOfFame", "x": 6, "y": 21, "facing": "Up", "openedBy": "FLAG_HIDE_LANCES_ROOM_EXIT" }
+  ],
+  // HeartGold walks the challenger in through the doorway at the room's foot, whose tile is a wall to a step: a step
+  // into the doorway comes out beyond it
   "exits": [ { "x": 6, "z": 26, "map": "IndigoLeague_LanceRoom", "toX": 6, "toY": 24, "facing": "Up" } ],
-  "people": {}
+  "triggers": [
+    { "trigger": 0, "script": "Lance" }
+  ],
+  "people": {
+    "t10r0601_wataru": { "name": "Lance", "script": "Champion", "still": true },
+    "t10r0601_ookido": {
+      "name": "Prof. Oak",
+      "still": true,
+      "shownBy": "FLAG_LANCES_ROOM_VISITORS",
+      "dialog": [ "Congratulations, {player}! What a battle that was." ]
+    },
+    "t10r0601_kurumi": {
+      "name": "Mary",
+      "still": true,
+      "shownBy": "FLAG_LANCES_ROOM_VISITORS",
+      "dialog": [ "This is going out on Pokémon Talk tonight. Smile, Champion!" ]
+    }
+  }
 }

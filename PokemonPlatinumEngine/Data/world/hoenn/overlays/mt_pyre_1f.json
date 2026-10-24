@@ -1,0 +1,12 @@
+{
+  // Mt. Pyre's ground floor (plan 21 · H7, part a): the hall of graves where Hoenn remembers its Pokémon, entered from
+  // Route 122, with the stairs up and the door out onto the mountainside. The old woman gives a Cleanse Tag once
+  // (mt_pyre_1f.txt)
+  "area": "mt_pyre_1f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "old_woman": { "name": "Old Woman", "script": "CleanseTagWoman" },
+    "pokefan_f": { "name": "Woman", "dialog": ["My Zigzagoon rests here. Every year I come back and tell it how everyone has been."] },
+    "man_4": { "name": "Man", "dialog": ["They say if you listen closely up here, you can hear the Pokémon who are gone. I like to think it's true."] }
+  }
+}

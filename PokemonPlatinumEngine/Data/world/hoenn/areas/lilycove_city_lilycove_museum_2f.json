@@ -1,0 +1,41 @@
+{
+  "key": "lilycove_city_lilycove_museum_2f",
+  "index": 163,
+  "name": "Lilycove City",
+  "matrix": 112,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE_MUSEUM",
+  "nightMusic": "MUS_LILYCOVE_MUSEUM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 1, "to": "lilycove_city_lilycove_museum_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "museum_2f_curator", "looks": "gentleman", "movement": "look_north", "x": 10, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_Curator" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "wander_around", "x": 19, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2", "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_Girl" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "wander_around", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS", "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_ExpertM" },
+    { "id": "rich_boy", "looks": "rich_boy", "movement": "wander_around", "x": 14, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS", "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_RichBoy" }
+  ],
+  "signs": [
+    { "x": 14, "z": 10, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_CutePainting" },
+    { "x": 15, "z": 10, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_CutePainting" },
+    { "x": 3, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_ToughPainting" },
+    { "x": 2, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_ToughPainting" },
+    { "x": 10, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_CoolPainting" },
+    { "x": 11, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_CoolPainting" },
+    { "x": 19, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_BeautyPainting" },
+    { "x": 18, "z": 6, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_BeautyPainting" },
+    { "x": 6, "z": 10, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_SmartPainting" },
+    { "x": 7, "z": 10, "type": 0, "script": "LilycoveCity_LilycoveMuseum_2F_EventScript_SmartPainting" },
+    { "x": 11, "z": 2, "type": 0, "script": "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture" },
+    { "x": 15, "z": 2, "type": 0, "script": "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture" }
+  ],
+  "triggers": []
+}

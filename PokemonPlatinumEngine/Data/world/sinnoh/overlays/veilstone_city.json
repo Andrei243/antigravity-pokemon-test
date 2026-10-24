@@ -77,6 +77,7 @@
     },
     "pokefan_m": {
       "name": "Man",
+      "script": "Rumour",
       "dialog": [
         "Been to the Department Store yet?",
         "You could spend a whole day in there and still not see every floor."

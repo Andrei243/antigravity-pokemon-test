@@ -853,6 +853,13 @@ public static class ScriptParser
             }
             case "townmap":
                 return new Instruction { Op = Op.TownMap, Line = line };
+            // What to do next (plan 12 · Q14): "objective roark", a name of Story/Objectives.cs
+            case "objective":
+            {
+                string name = r.Identifier("the objective's name");
+                if (Objectives.Find(name) == null) throw r.Error($"'{name}' is not an objective: Story/Objectives.cs lists them");
+                return new Instruction { Op = Op.Objective, Line = line, Name = name };
+            }
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
@@ -1103,6 +1110,8 @@ public static class ScriptParser
             // The National Pokédex is the player's (plan 02 · S14; the original's GetNationalDexEnabled)
             case "nationaldex":
                 return new Condition { Query = Query.NationalDex, Negated = negated };
+            case "objective":
+                return new Condition { Query = Query.Objective, Negated = negated };
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

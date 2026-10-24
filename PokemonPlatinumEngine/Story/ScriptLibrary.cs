@@ -254,6 +254,14 @@ public sealed class ScriptLibrary
 
             foreach (var i in script.Everything())
             {
+                // The text box's markup (plan 09 · L3): a code written wrong, or a sound that isn't one
+                foreach (string line in i.Lines)
+                {
+                    if (!line.Contains('{')) continue;
+                    foreach (string what in UI.Kit.RichText.Problems(line)) Wrong(i, $"the text box's markup is wrong: {what}");
+                    foreach (var e in UI.Kit.RichText.Parse(line).Events)
+                        if (e.Kind == UI.Kit.TextEventKind.Sound && soundExists != null && !soundExists(e.Sound)) Wrong(i, $"there is no sound '{e.Sound}'");
+                }
                 switch (i.Op)
                 {
                     case Op.Call when Find(i.Name, script.File) == null:
