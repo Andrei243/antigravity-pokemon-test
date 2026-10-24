@@ -40,6 +40,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     }
     private string? region;
 
+    /// <summary>The options' row for field move helpers (plan 12 · Q18); off here, so a test turns it on.</summary>
+    public RulesDefault FieldHelpers { get; set; } = RulesDefault.Off;
+    public IReadOnlyCollection<FieldMove> Granted => FieldHelp.Granted(FieldHelpers, Ruleset.Current.Preset, Story, Bag, Region);
+
     /// <summary>Whether the player's options let the game say what to do next (plan 12 · Q14); a test turns it off.</summary>
     public bool ShowObjectives { get; set; } = true;
     public bool ShowsObjectives => ShowObjectives;
@@ -1077,7 +1081,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
         var (x, y) = PlayerTile;
         var step = FieldMovement.Step(Map, x, y, PlayerFacing,
-            new Walker(PlayerMode, Map.HeightAt(x, y), Moves: FieldMovement.MovesOf(Party), Climbing: true));
+            new Walker(PlayerMode, Map.HeightAt(x, y), Moves: FieldMovement.MovesOf(Party) | FieldHelp.Moves(Granted), Climbing: true));
         if (step.Kind != StepKind.Climb)
         {
             Log.Add("climb nowhere");

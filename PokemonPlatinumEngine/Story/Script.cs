@@ -139,7 +139,9 @@ public enum Query
     /// </summary>
     Subject,
     /// <summary>The story has something to say of what to do next here, and the player's options allow it (plan 12 · Q14): <c>objective</c>, before a line that says <c>{objective}</c>.</summary>
-    Objective
+    Objective,
+    /// <summary>A wild helper does this field move now, the options' row on and the Badge and HM held (plan 12 · Q18): <c>granted "Cut"</c>, asked beside <c>knows</c>.</summary>
+    Granted
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

@@ -284,6 +284,13 @@ public interface IScriptHost
     /// </summary>
     void UseMove(FieldMove move, Pokemon user, NPC? subject);
 
+    /// <summary>
+    /// The field moves done by a wild helper now (plan 12 · Q18): worked out from the options' row, the rules, the Badges and
+    /// the bag each time it is asked, and empty with the row off. <c>if granted</c> in a script asks it; <c>usemove</c> falls
+    /// back to the helper when nobody on the team knows the move.
+    /// </summary>
+    IReadOnlyCollection<FieldMove> Granted => System.Array.Empty<FieldMove>();
+
     /// <summary>Sets out onto the water the player faces, on a Pokémon's back. False when there is no water there to surf on.</summary>
     bool Surf();
 

@@ -131,7 +131,9 @@ script TunnelClear
 # too, for rocks broken from the party menu
 script TunnelRock1
   speaker none
-  if not knows "Rock Smash" goto Cannot
+  if knows "Rock Smash" goto Able
+  if not granted "Rock Smash" goto Cannot
+label Able
   if not movebadge "Rock Smash" goto Cannot
   ask "The rock is riddled with cracks. Use Rock Smash?"
   if no end
@@ -146,7 +148,9 @@ label Cannot
 
 script TunnelRock2
   speaker none
-  if not knows "Rock Smash" goto Cannot
+  if knows "Rock Smash" goto Able
+  if not granted "Rock Smash" goto Cannot
+label Able
   if not movebadge "Rock Smash" goto Cannot
   ask "The rock is riddled with cracks. Use Rock Smash?"
   if no end

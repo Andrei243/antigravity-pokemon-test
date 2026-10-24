@@ -832,7 +832,9 @@ script TrainerPair
 # A thin tree in the way. Cut clears it, with the Forest Badge.
 script CutTree
   speaker none
-  if not knows "Cut" goto Cannot
+  if knows "Cut" goto Able
+  if not granted "Cut" goto Cannot
+label Able
   if not movebadge "Cut" goto Cannot
   ask "This thin tree could be cut down. Use Cut?"
   if no end
@@ -855,7 +857,9 @@ script UseCut
 # A rock smashed may let out a wild Pokémon of the place's rockSmash table (plan 20 · J9: `rocksmash`; none in Sinnoh).
 script Rock
   speaker none
-  if not knows "Rock Smash" goto Cannot
+  if knows "Rock Smash" goto Able
+  if not granted "Rock Smash" goto Cannot
+label Able
   if not movebadge "Rock Smash" goto NoBadge
   ask "The rock is riddled with cracks. Use Rock Smash?"
   if no end
@@ -890,7 +894,9 @@ script UseRockSmash
 script Boulder
   speaker none
   if flag FLAG_STRENGTH_ACTIVE goto Ready
-  if not knows "Strength" goto Cannot
+  if knows "Strength" goto Able
+  if not granted "Strength" goto Cannot
+label Able
   if not movebadge "Strength" goto Cannot
   ask "A heavy boulder. Use Strength to shift it?"
   if no end
@@ -920,7 +926,9 @@ script StrengthOn
 
 # A rock face along its grain. Rock Climb goes up or down it, with the region's Badge for it (movebadge).
 script RockFace
-  if not knows "Rock Climb" goto Cannot
+  if knows "Rock Climb" goto Able
+  if not granted "Rock Climb" goto Cannot
+label Able
   if not movebadge "Rock Climb" goto Cannot
   ask "The rock face is rough enough to grip. Use Rock Climb?"
   if no end
@@ -954,7 +962,9 @@ script UseSurf
 
 # A waterfall, faced from the water below it. Waterfall goes up it, with the region's Badge for it (movebadge).
 script Waterfall
-  if not knows "Waterfall" goto Cannot
+  if knows "Waterfall" goto Able
+  if not granted "Waterfall" goto Cannot
+label Able
   if not movebadge "Waterfall" goto Cannot
   ask "A great waterfall. Use Waterfall to go up it?"
   if no end

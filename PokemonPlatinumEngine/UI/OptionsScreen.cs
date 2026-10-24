@@ -24,6 +24,7 @@ public enum OptionRow
     SlotTwo,
     NextObjective,
     Season,
+    FieldHelpers,
     Controls,
     Help
 }
@@ -245,6 +246,10 @@ public class OptionsScreen
                 season = Wrap(season + step, 5);
                 s.Season = season == 0 ? null : (Season)(season - 1);
                 break;
+            case OptionRow.FieldHelpers:
+                // Off, as the rules have it, On (plan 12 · Q18), and round again
+                s.FieldHelpers = (RulesDefault)Wrap((int)s.FieldHelpers + step, 3);
+                break;
         }
     }
 
@@ -288,6 +293,7 @@ public class OptionsScreen
         OptionRow.NextObjective => (Text.Of("options.nextObjective.label"), OnOff(s.NextObjective != RulesDefault.Off), Text.Of(s.NextObjective != RulesDefault.Off ? "options.nextObjective.help.on" : "options.nextObjective.help.off")),
         OptionRow.Season => (Text.Of("options.season.label"), s.Season is { } season ? Words.Season(season) : Text.Of("options.season.value.Calendar"),
             Text.Of(s.Season.HasValue ? "options.season.help.fixed" : "options.season.help.calendar")),
+        OptionRow.FieldHelpers => (Text.Of("options.fieldHelpers.label"), Text.Of($"options.fieldHelpers.value.{s.FieldHelpers}"), Text.Of($"options.fieldHelpers.help.{s.FieldHelpers}")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

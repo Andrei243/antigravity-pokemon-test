@@ -204,6 +204,13 @@ public sealed class GameSettings
     public RulesDefault NextObjective { get => nextObjective; set => nextObjective = Modern(value); }
     private RulesDefault nextObjective = RulesDefault.On;
 
+    /// <summary>
+    /// Whether the eight moves the HMs teach are done by a helper when no Pokémon of the team knows them (plan 12 · Q18):
+    /// <see cref="RulesDefault.Rules"/> unless chosen, kept as it is (not turned into on, unlike the rows above), so a
+    /// game played by Platinum's rules keeps its HMs and the modern rules give the later games' helpers; either can be chosen.
+    /// </summary>
+    public RulesDefault FieldHelpers { get; set; } = RulesDefault.Rules;
+
     /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
     private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 

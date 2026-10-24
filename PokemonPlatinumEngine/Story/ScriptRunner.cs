@@ -790,10 +790,15 @@ public sealed partial class ScriptRunner
             {
                 // The Pokémon chosen in the party menu, or the first of the team that knows the move (FindPartySlotWithMove)
                 var move = FieldMoveRules.Of(i.Name) ?? throw Wrong(i, $"'{i.Name}' is no field move");
+                // ...or, when nobody knows it and the options grant it, a wild helper (plan 12 · Q18)
+                bool helped = false;
                 var user = ownPokemon != null && ownPokemon.Moves.Any(m => m.Name == i.Name) ? ownPokemon
-                    : FieldMoveRules.Knower(host.Party, move) ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
+                    : FieldMoveRules.Knower(host.Party, move)
+                      ?? (host.Granted.Contains(move) ? FieldHelp.HelperFor(move) : null)
+                      ?? throw Wrong(i, $"nobody on the team knows {i.Name}");
+                helped = !host.Party.Members.Contains(user) && user != ownPokemon;
                 lastUser = user.DisplayName;
-                host.Say(null, new[] { Text.Of("fieldMoves.used", ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
+                host.Say(null, new[] { Text.Of(helped ? "fieldMoves.helped" : "fieldMoves.used", ("name", user.DisplayName), ("move", LocalNames.Move(i.Name))) });
                 afterBusy = () => host.UseMove(move, user, Subject);
                 break;
             }
@@ -1930,6 +1935,7 @@ public sealed partial class ScriptRunner
             Query.Item => Condition.Holds(ItemDatabase.Get(c.Name) is { } item ? host.Bag.GetQuantity(item) : 0, c.Compare, c.Number),
             Query.Party => Condition.Holds(host.Party.Count, c.Compare, c.Number),
             Query.Knows => host.Party.Members.Any(p => p.Moves.Any(m => m.Name == c.Name)),
+            Query.Granted => FieldMoveRules.Of(c.Name) is { } grantedMove && host.Granted.Contains(grantedMove),
             // "has var VAR_X" asks after the species whose National Pokédex number the variable holds (plan 19 · K9, part c)
             Query.Has => SpeciesAskedAbout(c) is { } asked && host.Party.Members.Any(p => p.Species.Name == asked && (c.Place == null || p.MetLocation == c.Place)),
             Query.Yes => Result == 1,
