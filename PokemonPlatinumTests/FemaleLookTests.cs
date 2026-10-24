@@ -36,7 +36,8 @@ public class FemaleLookTests
     [Theory]
     [InlineData(152, 251, 22)] // Johto: Meganium to Donphan (plan 09 · L7)
     [InlineData(252, 386, 18)] // Hoenn: Torchic to Relicanth (plan 09 · L7)
-    public void EveryFlaggedSpeciesOfJohtoAndHoennHasAFemaleLook(int first, int last, int count)
+    [InlineData(387, 493, 31)] // Sinnoh: Starly to Mamoswine (plan 09 · L8)
+    public void EveryFlaggedSpeciesOfJohtoHoennAndSinnohHasAFemaleLook(int first, int last, int count)
     {
         var flagged = PokemonDatabase.GetAll().Where(s => s.GenderDifferences && s.DexNumber >= first && s.DexNumber <= last).Select(s => s.Name).ToList();
         Assert.Equal(count, flagged.Count);
@@ -46,6 +47,90 @@ public class FemaleLookTests
             Assert.True(PokemonModels.HasModel(name), $"{name} has no hand-built model");
             Assert.True(PokemonLook.HasFemale(name), $"{name}'s females look different, and it has no female look");
         }
+    }
+
+    [Fact]
+    public void EveryFlaggedSpeciesHasAFemaleLookBySculptRuleOrForm()
+    {
+        // Plan 09 · L8, done when: all 1,025 species, each flagged one's female drawn as hers
+        var flagged = PokemonDatabase.GetAll().Where(s => s.GenderDifferences).ToList();
+        Assert.Equal(102, flagged.Count);
+        int sculpted = 0, forms = 0;
+        foreach (var s in flagged)
+        {
+            if (s.Form(s.Name + "-Female") is { } form)
+            {
+                // Her own form (Meowstic, Pyroar, Basculegion...), which is a model of its own already
+                Assert.Equal(form.Name, Pokemon.FormOfGender(s, Gender.Female));
+                Assert.False(PokemonLook.HasFemale(s.Name), $"{s.Name}'s female is a form, and it has a look besides");
+                forms++;
+                continue;
+            }
+            Assert.True(PokemonLook.HasFemale(s.Name), $"{s.Name}'s females look different, and it has no female look");
+            if (PokemonModels.HasModel(s.Name))
+            {
+                Assert.Contains(s.Name, PokemonLook.Females);
+                sculpted++;
+            }
+            else
+                // The rule's net: a generated species' female is her male's genome made female
+                Assert.True(PokemonGenomes.For(s.Name + PokemonLook.FemaleSuffix) is { Female: true }, $"{s.Name} has no female by the rule");
+        }
+        Assert.Equal(95, sculpted);
+        Assert.Equal(7, forms);
+    }
+
+    [Fact]
+    public void UnfezantsFemaleIsOfUnovaAndHerFormIsNoneOfHerOwn()
+    {
+        Assert.True(PokemonLook.HasFemale("Unfezant"));
+        Assert.Contains("Unfezant", PokemonLook.Females);
+        // She is browner and has no pink: fewer of her colours are the male's pink plume's
+        static int Pink(PokeModel m) => m.Mesh.Colors.Count(c => c.R > 190 && c.G < 120 && c.B > 90 && c.B < 150);
+        Assert.True(Pink(PokemonModels.Build("Unfezant")) > 0);
+        Assert.Equal(0, Pink(PokemonModels.Build("Unfezant+f")));
+    }
+
+    [Fact]
+    public void AFemaleByTheRuleIsHerMalesGenomeWithASmallerHead()
+    {
+        // The rule (plan 09 · L8) for a flagged species nobody sculpted: tried on a flagged species' genome
+        var male = PokemonGenomes.For("Rhyperior")!;
+        var female = PokemonGenomes.For("Rhyperior+f")!;
+        Assert.False(male.Female);
+        Assert.True(female.Female);
+        Assert.NotEqual(male.Describe(), female.Describe());
+        Assert.EndsWith(",female", female.Describe());
+        Assert.Equal(male.HeadScale * PokemonGenomes.FemaleHeadScale, female.HeadScale);
+        Assert.Equal(male.Kind, female.Kind);
+        Assert.Equal(male.Seed, female.Seed);
+        // The male's genome is never changed by asking for her
+        Assert.Equal(male.Describe(), PokemonGenomes.For("Rhyperior")!.Describe());
+        // Only a species with a female look has one
+        Assert.Null(PokemonGenomes.For("Turtwig+f"));
+        Assert.Null(PokemonGenomes.For("Meowstic+f"));
+
+        // Generated, she is the same creature with another shape
+        var m = PokemonModels.Finish(PokemonGenerator.Build("Rhyperior")!);
+        var f = PokemonModels.Finish(PokemonGenerator.Build("Rhyperior+f")!);
+        Assert.False(m.Mesh.Positions.AsSpan().SequenceEqual(f.Mesh.Positions));
+        Assert.Equal(m.Plan, f.Plan);
+        Assert.Equal(m.Skeleton.Count, f.Skeleton.Count);
+        Assert.Equal(m.Decals.Count(d => d.IsEye), f.Decals.Count(d => d.IsEye));
+        Assert.InRange(f.Height / m.Height, 0.9f, 1.1f);
+    }
+
+    [Fact]
+    public void ThePokedexDrawsAFemaleSeenInHerOwnLook()
+    {
+        // The FORMS page (plan 08 · P19) draws each look seen; a female's is hers (plan 09 · L8)
+        Assert.Equal("Shinx+f", new SeenLook("Shinx", Gender.Female).Look);
+        Assert.Equal("Shinx", new SeenLook("Shinx", Gender.Male).Look);
+        Assert.Equal("Shinx", new SeenLook("Shinx", Gender.Genderless).Look);
+        Assert.Equal("Gyarados+s", new SeenLook("Gyarados+s", Gender.Genderless).Look);
+        Assert.Equal("Turtwig", new SeenLook("Turtwig", Gender.Female).Look);
+        Assert.Equal("Meowstic-Female", new SeenLook("Meowstic-Female", Gender.Female).Look);
+        Assert.Equal("Pikachu-Belle", new SeenLook("Pikachu-Belle", Gender.Female).Look);
     }
 
     [Fact]
@@ -85,9 +170,9 @@ public class FemaleLookTests
         female.Form = "Pikachu-Belle";
         Assert.Equal("Pikachu-Belle", female.LookName);
         // A species whose females look like its males has no female look
-        var bidoof = Mon("Starly", 20);
-        bidoof.Gender = Gender.Female;
-        Assert.Equal("Starly", bidoof.LookName);
+        var turtwig = Mon("Turtwig", 20);
+        turtwig.Gender = Gender.Female;
+        Assert.Equal("Turtwig", turtwig.LookName);
         // An Egg shows no look of its own
         var egg = Mon("Eevee", 1);
         egg.Gender = Gender.Female;
@@ -115,7 +200,7 @@ public class FemaleLookTests
     {
         Assert.Equal("Rhydon+f", PokemonLook.Of("Rhydon", true, false));
         Assert.Equal("Rhydon", PokemonLook.Of("Rhydon", false, false));
-        Assert.Equal("Rhyperior", PokemonLook.Of("Rhyperior", true, false));
+        Assert.Equal("Nidoking", PokemonLook.Of("Nidoking", true, false));
         // The two-argument form keeps a female look as it is
         Assert.Equal("Rhydon+f+s", PokemonLook.Of("Rhydon+f", true));
         Assert.Equal("Rhydon+f", PokemonLook.Of("Rhydon+f+s", false));

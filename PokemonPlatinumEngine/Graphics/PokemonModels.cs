@@ -1053,7 +1053,43 @@ internal static partial class PokemonModels
         "CACTURNE" => Cacturne(female: true),
         "MILOTIC" => Milotic(female: true),
         "RELICANTH" => Relicanth(female: true),
-        _ => Create(species)
+        // Plan 09 · L8: Sinnoh
+        "STARLY" => Bird(0, female: true),
+        "STARAVIA" => Bird(1, female: true),
+        "STARAPTOR" => Bird(2, female: true),
+        "BIDOOF" => Bidoof(female: true),
+        "BIBAREL" => Bibarel(female: true),
+        "KRICKETOT" => Kricketot(female: true),
+        "KRICKETUNE" => Kricketune(female: true),
+        "SHINX" => Cat(0, female: true),
+        "LUXIO" => Cat(1, female: true),
+        "LUXRAY" => Cat(2, female: true),
+        "ROSERADE" => Roserade(female: true),
+        "COMBEE" => Combee(female: true),
+        "PACHIRISU" => Pachirisu(female: true),
+        "BUIZEL" => Buizel(female: true),
+        "FLOATZEL" => Floatzel(female: true),
+        "AMBIPOM" => Ambipom(female: true),
+        "GIBLE" => Gible(female: true),
+        "GABITE" => Garchomp(false, female: true),
+        "GARCHOMP" => Garchomp(true, female: true),
+        "HIPPOPOTAS" => Hippopotas(female: true),
+        "HIPPOWDON" => Hippowdon(female: true),
+        "CROAGUNK" => Croagunk(female: true),
+        "TOXICROAK" => Toxicroak(female: true),
+        "FINNEON" => Finneon(female: true),
+        "LUMINEON" => Lumineon(female: true),
+        "SNOVER" => Snover(female: true),
+        "ABOMASNOW" => Abomasnow(female: true),
+        "WEAVILE" => Weavile(female: true),
+        "RHYPERIOR" => Rhyperior(female: true),
+        "TANGROWTH" => Tangrowth(female: true),
+        "MAMOSWINE" => Mamoswine(female: true),
+        // Plan 09 · L8: Unova's one whose female isn't a form of her own
+        "UNFEZANT" => Unfezant(female: true),
+        // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
+        // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
+        _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)
     };
 
     /// <summary>A model for each body plan, including the ones no hand-built species uses yet (for tests and the harness).</summary>
@@ -2839,7 +2875,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Starly line
 
-    private static PokeBuilder Bird(int stage)
+    /// <param name="female">A female (plan 09 · L8): a smaller white forehead, her mask lower over the brow.</param>
+    private static PokeBuilder Bird(int stage, bool female = false)
     {
         string name = stage switch { 0 => "Starly", 1 => "Staravia", _ => "Staraptor" };
         float s1 = 1f + stage * 0.2f;
@@ -2877,7 +2914,8 @@ internal static partial class PokemonModels
         float hy = 0.54f * s1;
         b.Ell(head, V(0, hy, 0.1f * s1), V(0.15f * s1, 0.14f * s1, 0.14f * s1), dark);
         // White face mask around the eyes
-        b.Ell(head, V(0, hy - 0.02f * s1, 0.17f * s1), V(0.13f * s1, 0.09f * s1, 0.09f * s1), White);
+        if (female) b.Ell(head, V(0, hy - 0.03f * s1, 0.17f * s1), V(0.13f * s1, 0.075f * s1, 0.09f * s1), White);
+        else b.Ell(head, V(0, hy - 0.02f * s1, 0.17f * s1), V(0.13f * s1, 0.09f * s1, 0.09f * s1), White);
         b.Spike(head, V(0, hy - 0.02f * s1, 0.24f * s1), V(0, hy - 0.06f * s1, 0.36f * s1), 0.045f * s1, orange, 0.8f, Shell);
         if (stage == 0)
         {
@@ -2897,7 +2935,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Bidoof line
 
-    private static PokeBuilder Bidoof()
+    /// <param name="female">A female (plan 09 · L8): a smaller, plainer tail, where the male's has more to it.</param>
+    private static PokeBuilder Bidoof(bool female = false)
     {
         var b = new PokeBuilder("Bidoof", 0.6f, BodyPlan.Quadruped, V(0, 0.3f, -0.02f)) { Coat = Fur };
         var brown = Rgb(176, 122, 68);
@@ -2912,7 +2951,8 @@ internal static partial class PokemonModels
             });
         b.Ell(Body, V(0, 0.3f, -0.02f), V(0.34f, 0.3f, 0.34f), brown);
         int tail = b.Tail(V(0, 0.22f, -0.3f));
-        b.Ell(tail, V(0, 0.2f, -0.36f), V(0.07f, 0.06f, 0.06f), dark);
+        if (female) b.Ell(tail, V(0, 0.2f, -0.345f), V(0.05f, 0.045f, 0.045f), dark);
+        else b.Ell(tail, V(0, 0.2f, -0.36f), V(0.07f, 0.06f, 0.06f), dark);
 
         int head = b.Head(V(0, 0.3f, 0.1f));
         // Darker ruff framing the face, tan muzzle, red nose and big buck teeth
@@ -2930,7 +2970,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Bibarel()
+    /// <param name="female">A female (plan 09 · L8): a smaller tan muzzle, so a smaller face.</param>
+    private static PokeBuilder Bibarel(bool female = false)
     {
         var b = new PokeBuilder("Bibarel", 0.78f, BodyPlan.Biped, V(0, 0.36f, 0)) { Coat = Fur };
         var brown = Rgb(156, 104, 62);
@@ -2957,7 +2998,7 @@ internal static partial class PokemonModels
 
         int head = b.Head(V(0, 0.62f, 0.02f));
         b.Ell(head, V(0, 0.74f, 0.04f), V(0.22f, 0.19f, 0.19f), brown);
-        b.Ell(head, V(0, 0.69f, 0.15f), V(0.15f, 0.1f, 0.09f), tan);
+        b.Ell(head, V(0, 0.69f, 0.15f), female ? V(0.12f, 0.085f, 0.085f) : V(0.15f, 0.1f, 0.09f), tan);
         b.Ell(head, V(0, 0.74f, 0.23f), V(0.04f, 0.03f, 0.03f), dark, mat: Scales, blend: 0.01f);
         PokeBuilder.Both(s => b.Box(head, V(0.022f * s, 0.615f, 0.215f), V(0.019f, 0.038f, 0.015f), 0.01f, White, mat: Shell, blend: 0.004f));
         PokeBuilder.Both(s =>
@@ -2978,7 +3019,8 @@ internal static partial class PokemonModels
             b.Spike(bone, at, at + d * r, r * 0.45f, color, 0.5f, blend: r * 0.12f);
     }
 
-    private static PokeBuilder Cat(int stage)
+    /// <param name="female">A female (plan 09 · L8): shorter hair on her head, Shinx's tuft and the evolutions' mane.</param>
+    private static PokeBuilder Cat(int stage, bool female = false)
     {
         string name = stage switch { 0 => "Shinx", 1 => "Luxio", _ => "Luxray" };
         float s1 = 1f + stage * 0.22f;
@@ -3018,7 +3060,7 @@ internal static partial class PokemonModels
         // Mane: a tuft on Shinx, a shaggy black collar on the evolutions
         if (stage == 0)
         {
-            b.Spike(head, V(0, hy + hr * 0.8f, 0.15f * s1), V(0, hy + hr * 1.25f, 0.25f * s1), 0.07f, black);
+            b.Spike(head, V(0, hy + hr * 0.8f, 0.15f * s1), female ? V(0, hy + hr * 1.12f, 0.22f * s1) : V(0, hy + hr * 1.25f, 0.25f * s1), 0.07f, black);
         }
         else
         {
@@ -3026,7 +3068,9 @@ internal static partial class PokemonModels
             for (int i = 0; i < 5; i++)
             {
                 float a = -0.9f + i * 0.45f;
-                b.Spike(head, V(MathF.Sin(a) * hr * 0.9f, hy + hr * 0.2f, 0.02f * s1), V(MathF.Sin(a) * hr * 1.6f, hy + hr * (0.4f + 0.3f * MathF.Cos(a)), -0.18f * s1), 0.09f * s1, black);
+                // A female's mane is shorter (plan 09 · L8)
+                float reach = female ? 1.4f : 1.6f, back = female ? -0.13f : -0.18f;
+                b.Spike(head, V(MathF.Sin(a) * hr * 0.9f, hy + hr * 0.2f, 0.02f * s1), V(MathF.Sin(a) * hr * reach, hy + hr * (0.4f + 0.3f * MathF.Cos(a)) * (female ? 0.85f : 1f), back * s1), 0.09f * s1, black);
             }
         }
         PokeBuilder.Both(s =>
@@ -3180,7 +3224,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Gible line
 
-    private static PokeBuilder Gible()
+    /// <param name="female">A female (plan 09 · L8): her dorsal fin whole, with no notch.</param>
+    private static PokeBuilder Gible(bool female = false)
     {
         var b = new PokeBuilder("Gible", 0.56f, BodyPlan.Biped, V(0, 0.27f, -0.02f)) { Coat = Scales };
         var navy = Rgb(82, 104, 164);
@@ -3215,13 +3260,14 @@ internal static partial class PokemonModels
             b.Spike(head, V(i * 0.06f, hy - 0.04f, 0.27f - MathF.Abs(i) * 0.02f), V(i * 0.06f, hy - 0.1f, 0.28f - MathF.Abs(i) * 0.02f), 0.018f, Claw, mat: Shell, blend: 0.004f);
         // Dorsal fin with a notch
         b.Spike(head, V(0, hy + 0.14f, 0.0f), V(0, hy + 0.36f, -0.06f), 0.1f, navy, 0.35f);
-        b.Mark(head, V(0, hy + 0.3f, 0.02f), V(0.05f, 0.2f, 1f), 0.02f, 0.04f, fin);
+        if (!female) b.Mark(head, V(0, hy + 0.3f, 0.02f), V(0.05f, 0.2f, 1f), 0.02f, 0.04f, fin);
         PokeBuilder.Both(s => b.Ell(head, V(0.2f * s, hy + 0.08f, 0.02f), V(0.05f, 0.05f, 0.04f), fin, blend: 0.015f));
         PokeBuilder.Both(s => b.Eye(head, V(0.12f * s, hy + 0.06f, 0.24f), V(0.45f * s, 0.2f, 1f), 0.045f, yellow));
         return b;
     }
 
-    private static PokeBuilder Garchomp(bool big)
+    /// <param name="female">A female (plan 09 · L8): the fin on the back of her head whole and broader, where the male's is grooved.</param>
+    private static PokeBuilder Garchomp(bool big, bool female = false)
     {
         var b = new PokeBuilder(big ? "Garchomp" : "Gabite", big ? 0.95f : 0.76f, BodyPlan.Biped, V(0, 0.62f, 0)) { Coat = Scales };
         var navy = big ? Rgb(64, 80, 140) : Rgb(84, 90, 162);
@@ -3258,7 +3304,7 @@ internal static partial class PokemonModels
         b.Ell(jaw, V(0, hy - 0.06f, 0.14f), V(0.11f, 0.04f, 0.14f), red, blend: 0.006f);
         PokeBuilder.Both(s => b.Ell(head, V(0.18f * s, hy + 0.02f, 0.0f), V(0.12f, 0.03f, 0.12f), navy, V(0, 30f * s, -20f * s), blend: 0.015f));
         if (big) b.Mark(head, V(0, hy + 0.08f, 0.14f), V(0, 1f, 0.35f), 0.045f, 0.045f, yellow, MarkShape.Star);
-        b.Spike(head, V(0, hy + 0.06f, -0.06f), V(0, hy + 0.12f, -0.26f), 0.05f, navy, 0.4f);
+        b.Spike(head, V(0, hy + 0.06f, -0.06f), V(0, hy + 0.12f, -0.26f), female ? 0.062f : 0.05f, navy, female ? 0.55f : 0.4f);
         PokeBuilder.Both(s => b.Eye(head, V(0.09f * s, hy + 0.03f, 0.2f), V(0.7f * s, 0.05f, 1f), 0.03f, yellow));
         return b;
     }

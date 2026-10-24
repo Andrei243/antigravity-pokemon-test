@@ -108,6 +108,12 @@ internal sealed class PokeGenome
     /// <summary>A number the sculptor draws its own small variations from.</summary>
     public uint Seed;
 
+    /// <summary>Whether this is a female look made by the rule (plan 09 · L8, <see cref="PokemonGenomes.FemaleOf"/>).</summary>
+    public bool Female;
+
+    /// <summary>A copy to change: the cached genome is shared and never changed.</summary>
+    public PokeGenome Copy() => (PokeGenome)MemberwiseClone();
+
     /// <summary>All of it as text: two species with the same text would look the same (tests compare them).</summary>
     public string Describe()
     {
@@ -121,6 +127,8 @@ internal sealed class PokeGenome
             .Append(Cheeks).Append(Claws).Append(Fangs).Append(Rocky).Append(Icy).Append(Metallic).Append(Robot).Append(OneEye).Append(Whiskers).Append(',')
             .Append(HeadShape).Append(Tips).Append(Ruff).Append(Gloves).Append(Saddle).Append(',')
             .Append(Spikes).Append(',').Append(Heads).Append(',').Append(LegPairs).Append(',').Append(Tentacles).Append(',').Append(Segments).Append(',').Append(Seed);
+        // Only a female's text is marked, so no other genome's text moves
+        if (Female) sb.Append(",female");
         return sb.ToString();
     }
 }
@@ -184,13 +192,38 @@ internal static class PokemonGenomes
             if (Cache.TryGetValue(species, out var g)) return g;
         }
         PokeGenome? made = null;
-        if (PokemonDatabase.Get(species) is { } data) made = Make(data.Under(Ruleset.Platinum), data);
+        // A female look (plan 09 · L8) of a species with one is her male's genome by the rule
+        if (PokemonLook.IsFemale(species) && !PokemonLook.IsShiny(species))
+        {
+            string male = PokemonLook.Base(species);
+            if (!PokemonLook.HasFemale(male) || For(male) is not { } his) return null;
+            made = FemaleOf(his);
+        }
+        else if (PokemonDatabase.Get(species) is { } data) made = Make(data.Under(Ruleset.Platinum), data);
         else if (PokemonDatabase.SpeciesOfForm(species) is { } owner && owner.Under(Ruleset.Platinum) is var platinum && platinum.Form(species) is { } form)
             made = Make(platinum.AsForm(form), owner);
         if (made == null) return null;
         lock (Gate) Cache[species] = made;
         return made;
     }
+
+    /// <summary>
+    /// The rule for a female no sculptor has made (plan 09 · L8; style guide, "Female looks"): the net under
+    /// <see cref="PokemonLook.Females"/> for a flagged species that is generated. She is her male with a head a
+    /// little smaller, and with it whatever grows on her head (a horn, a crest, a tuft, a crown), which is the
+    /// commonest of the originals' differences and never bigger than any of them; the same plan, skeleton, eyes and
+    /// seed, so she is the same creature at a glance.
+    /// </summary>
+    public static PokeGenome FemaleOf(PokeGenome male)
+    {
+        var female = male.Copy();
+        female.Female = true;
+        female.HeadScale = male.HeadScale * FemaleHeadScale;
+        return female;
+    }
+
+    /// <summary>How much smaller a generated female's head is than her male's.</summary>
+    public const float FemaleHeadScale = 0.92f;
 
     // ------------------------------------------------------------------ families
 

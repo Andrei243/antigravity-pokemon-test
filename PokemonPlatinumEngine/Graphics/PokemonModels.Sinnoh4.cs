@@ -114,7 +114,8 @@ internal static partial class PokemonModels
         }
     }
 
-    private static PokeBuilder Tangrowth()
+    /// <param name="female">A female (plan 09 · L8): bigger hands, her red fingers longer and thicker.</param>
+    private static PokeBuilder Tangrowth(bool female = false)
     {
         var b = new PokeBuilder("Tangrowth", 0.92f, BodyPlan.Biped, V(0, 0.44f, 0)) { Coat = Leaf };
         var blue = Rgb(58, 132, 214);
@@ -149,7 +150,7 @@ internal static partial class PokemonModels
             var path = Smooth(3, V(0.22f * s, 0.55f, 0.02f), V(0.36f * s, 0.55f, 0.08f), V(0.44f * s, 0.44f, 0.12f), V(0.46f * s, 0.3f, 0.12f));
             b.Tube(arm, path, 0.04f, 0.034f, deep, blend: 0f);
             Wound(b, arm, path, 0.03f, 3, 1.5f, 0.02f, blue);
-            Digits(b, arm, V(0.46f * s, 0.29f, 0.12f), V(0, -1f, 0.15f), V(0.45f * s, 0, 0.2f), 0.07f, 0.026f, red, Fur);
+            Digits(b, arm, V(0.46f * s, 0.29f, 0.12f), V(0, -1f, 0.15f), V(0.45f * s, 0, 0.2f), female ? 0.088f : 0.07f, female ? 0.032f : 0.026f, red, Fur);
         });
         int head = b.Head(V(0, 0.7f, 0));
         b.Tube(head, Smooth(3, V(-0.06f, 0.72f, 0.02f), V(-0.04f, 0.8f, 0.0f), V(0.04f, 0.81f, -0.03f), V(0.07f, 0.75f, -0.02f)), 0.026f, 0.022f, blue, blend: 0.004f);
@@ -438,7 +439,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Rhyperior()
+    /// <param name="female">A female (plan 09 · L8): smaller horns, the drill on her nose and the horn above it.</param>
+    private static PokeBuilder Rhyperior(bool female = false)
     {
         var b = new PokeBuilder("Rhyperior", 1f, BodyPlan.Biped, V(0, 0.46f, 0)) { Coat = Shell };
         var brown = Rgb(116, 100, 98);
@@ -495,8 +497,16 @@ internal static partial class PokemonModels
         b.PaintEll(head, V(0, 0.625f, 0.24f), V(0.07f, 0.03f, 0.06f), Rgb(196, 192, 196));
         foreach (float x in new[] { -0.04f, 0f, 0.04f })
             b.Spike(head, V(x, 0.635f, 0.29f), V(x, 0.615f, 0.3f), 0.01f, White, mat: Shell, blend: 0.003f);
-        Drill(b, head, V(0, 0.71f, 0.25f), V(0, 0.82f, 0.39f), 0.05f, horn, Rgb(150, 150, 160));
-        b.Spike(head, V(0, 0.78f, 0.16f), V(0, 0.88f, 0.17f), 0.03f, horn, mat: Shell);
+        if (female)
+        {
+            Drill(b, head, V(0, 0.71f, 0.25f), V(0, 0.79f, 0.35f), 0.044f, horn, Rgb(150, 150, 160));
+            b.Spike(head, V(0, 0.78f, 0.16f), V(0, 0.85f, 0.167f), 0.026f, horn, mat: Shell);
+        }
+        else
+        {
+            Drill(b, head, V(0, 0.71f, 0.25f), V(0, 0.82f, 0.39f), 0.05f, horn, Rgb(150, 150, 160));
+            b.Spike(head, V(0, 0.78f, 0.16f), V(0, 0.88f, 0.17f), 0.03f, horn, mat: Shell);
+        }
         PokeBuilder.Both(s => b.Eye(head, On(hc, hr, 0.07f * s, 0.725f), V(0.8f * s, 0.15f, 0.6f), 0.017f, Rgb(220, 40, 50), glare: true));
         return b;
     }
@@ -1268,7 +1278,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Mamoswine()
+    /// <param name="female">A female (plan 09 · L8): smaller tusks.</param>
+    private static PokeBuilder Mamoswine(bool female = false)
     {
         var b = new PokeBuilder("Mamoswine", 1f, BodyPlan.Quadruped, V(0, 0.42f, -0.04f)) { Coat = Fur };
         var brown = Rgb(130, 82, 50);
@@ -1304,7 +1315,10 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             b.Mark(head, V(0.02f * s, 0.45f, 0.394f), V(0, 0, 1f), 0.01f, 0.014f, Rgb(120, 70, 70));
-            b.Tube(head, Smooth(3, V(0.09f * s, 0.43f, 0.32f), V(0.17f * s, 0.3f, 0.36f), V(0.22f * s, 0.24f, 0.46f), V(0.21f * s, 0.32f, 0.54f)), 0.045f, 0.015f, White, Shell, 0f);
+            if (female)
+                b.Tube(head, Smooth(3, V(0.09f * s, 0.43f, 0.32f), V(0.155f * s, 0.33f, 0.35f), V(0.19f * s, 0.29f, 0.43f), V(0.18f * s, 0.35f, 0.49f)), 0.04f, 0.013f, White, Shell, 0f);
+            else
+                b.Tube(head, Smooth(3, V(0.09f * s, 0.43f, 0.32f), V(0.17f * s, 0.3f, 0.36f), V(0.22f * s, 0.24f, 0.46f), V(0.21f * s, 0.32f, 0.54f)), 0.045f, 0.015f, White, Shell, 0f);
         });
         PokeBuilder.Both(s => b.Eye(head, On(hc, hr, 0.06f * s, 0.545f), V(0.45f * s, 0.05f, 1f), 0.018f));
         return b;
