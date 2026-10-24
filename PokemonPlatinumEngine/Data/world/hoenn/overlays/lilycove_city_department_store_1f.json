@@ -1,0 +1,19 @@
+{
+  // The Lilycove Department Store's ground floor (plan 21 · H7, part a): the greeter, the Lottery Corner's counter
+  // (lilycove_city_department_store_1f.txt), the stairs up and the lift, whose doors stay shut until it carries anyone
+  // (Emerald's lift is a menu of floors, which the stairs reach as well)
+  "area": "lilycove_city_department_store_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "locked": [ 3 ],
+  "people": {
+    "beauty": { "name": "Greeter", "dialog": ["Welcome to the Lilycove Department Store! Five floors and a roof garden of everything a trainer could want."] },
+    "lottery_clerk": { "name": "Lottery Clerk", "script": "LotteryClerk" },
+    "pokefan_f": { "name": "Woman", "dialog": ["I come here every weekend. I always end up buying more than I meant to!"] },
+    "little_girl": { "name": "Little Girl", "dialog": ["Mummy said I can pick one thing from the store. I want a big Pokémon doll!"] },
+    "pokefan_m": { "name": "Man", "dialog": ["My Azumarill likes to come shopping with me. It carries the bags on its tail!"] },
+    "azumarill": { "name": "Azumarill", "dialog": ["Azumarill: Rurii!"] }
+  },
+  "signs": {
+    "LilycoveCity_DepartmentStore_1F_EventScript_FloorNamesSign": "Floor guide: 1F Lottery Corner, 2F Trainer's Zone, 3F Battle Collection, 4F TM Corner, 5F Pokédolls, and the Rooftop Plaza."
+  }
+}

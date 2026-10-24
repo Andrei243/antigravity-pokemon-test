@@ -1,0 +1,14 @@
+{
+  // A house in Lilycove City (plan 21 · H7, part a): a family of four children and their parents, who know about
+  // Pokéblocks
+  "area": "lilycove_city_house_3",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "pokefan_f": { "name": "Woman", "script": "PokeblockMother" },
+    "man_1": { "name": "Man", "dialog": ["Quadruplets! Every day is four times the fun. And four times the noise."] },
+    "gameboy_kid_4": { "name": "Boy", "dialog": ["We're going to enter a contest together, all four of us!"] },
+    "gameboy_kid_2": { "name": "Boy", "dialog": ["We're blending berries into Pokéblocks. Mine always come out lumpy."] },
+    "gameboy_kid_3": { "name": "Boy", "dialog": ["We're practising for double battles. Two of us against the other two!"] },
+    "gameboy_kid": { "name": "Boy", "dialog": ["We swap stories about the trainers we've met. I've got the best ones!"] }
+  }
+}

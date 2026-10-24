@@ -158,12 +158,12 @@ public class HoennTests
     [Fact]
     public void TheWalkDivesToTheSeaFloorAndComesBackUp()
     {
-        // From Route 124 (WorldWalk.OpenedAhead until plan 21 · H7 opens the way by sea), down to the floor and up again
+        // From Route 124, come to by sea from Lilycove City since plan 21 · H7, part a, down to the floor and up again
         var floor = Walked.Value.Single(kv => kv.Key.Name == "HoennUnderwater").Value;
         Assert.True(floor.Count >= 400, $"only {floor.Count} tiles of the sea floor swum");
         var outside = Walked.Value.Single(kv => kv.Key.Name == "Hoenn").Value;
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_124" && Overworld.BehaviourAt(t.X, t.Y) == TileBehavior.DiveWater);
-        Assert.Contains(WorldWalk.OpenedAhead, s => s.Map == "Hoenn" && Overworld.AreaAt(s.X, s.Y)?.Key == "route_124");
+        Assert.Empty(WorldWalk.OpenedAhead);
     }
 
     [Fact]
@@ -391,5 +391,53 @@ public class HoennTests
         Assert.True(gym.Warps.Single(w => w.X == 5 && w.Z == 14).Landing != true);
         var b1f = Hoenn.Area("lavaridge_town_gym_b1f")!;
         Assert.Contains(b1f.Warps, w => w.Landing == true);
+    }
+
+    // ------------------------------------------------------------------ plan 21 · H7, part a: Lilycove City and Mt. Pyre
+
+    [Fact]
+    public void LilycoveCityIsOpenWithItsFlySpotItsStoreAndItsShutDoors()
+    {
+        foreach (string key in new[] { "lilycove_city", "route_122", "route_123", "lilycove_city_department_store_1f",
+                     "lilycove_city_department_store_rooftop", "lilycove_city_lilycove_museum_2f", "route_123_berry_masters_house" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var lilycove = SpawnLocations.Of(RegionDatabase.Get(RegionDatabase.Hoenn)!).Single(s => s.Area == "lilycove_city");
+        Assert.Equal("LilycoveCity_PokemonCenter_1F", lilycove.Room);
+        Assert.True(Overworld.IsWalkable(lilycove.X, lilycove.Y), $"nobody can land at {lilycove.X},{lilycove.Y}");
+        Assert.Equal("hoenn/lilycove", Overworld.BgmTrackAt(507, 80));
+        Assert.Single(BuiltMaps.Value["LilycoveCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
+        // The Contest Hall (plan 21 · H11), Team Aqua's hideout (part b) and the harbour (H9) stay shut, and so does the
+        // store's lift on every floor
+        foreach (string target in new[] { "LilycoveCity_ContestLobby", "AquaHideout_1F", "LilycoveCity_Harbor" })
+            Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == target && !w.Shut);
+        foreach (string floor in new[] { "1F", "2F", "3F", "4F", "5F" })
+            Assert.DoesNotContain(BuiltMaps.Value[$"LilycoveCity_DepartmentStore_{floor}"].Warps,
+                w => w.TargetMap == "LilycoveCity_DepartmentStoreElevator" && !w.Shut);
+        // The floors are joined by their stairs, up to the roof
+        Assert.Contains(BuiltMaps.Value["LilycoveCity_DepartmentStore_5F"].Warps, w => w.TargetMap == "LilycoveCity_DepartmentStoreRooftop");
+        // Team Aqua's Wailmer lie in the water east of the city, on the tiles Emerald draws them on
+        Assert.Equal(3, Overworld.Everyone.Count(n => n.Species == "Wailmer" && n.GridX >= 556 && n.GridY >= 82 && n.GridY <= 87));
+        // Lilycove's open metatiles are its paving
+        var emerald = MapImporter.Gba.GbaGame.Emerald;
+        Assert.Equal(TerrainCover.Paving, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Lilycove", 0x22B, emerald));
+    }
+
+    [Fact]
+    public void MtPyreIsOpenFromRouteOneTwentyTwoToItsSummit()
+    {
+        foreach (string floor in new[] { "MtPyre_1F", "MtPyre_2F", "MtPyre_3F", "MtPyre_4F", "MtPyre_5F", "MtPyre_6F", "MtPyre_Exterior", "MtPyre_Summit" })
+            Assert.True(BuiltMaps.Value.ContainsKey(floor), floor);
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "MtPyre_1F" && !w.Shut);
+        Assert.Equal("hoenn/mt_pyre", BuiltMaps.Value["MtPyre_3F"].BgmTrackAt(6, 6));
+        // The summit is in mist, and the mountainside above its middle too
+        Assert.Equal(FieldWeather.Fog, BuiltMaps.Value["MtPyre_Summit"].WeatherAt(23, 20));
+        Assert.Equal(FieldWeather.Fog, BuiltMaps.Value["MtPyre_Exterior"].WeatherAt(20, 12));
+        Assert.NotEqual(FieldWeather.Fog, BuiltMaps.Value["MtPyre_Exterior"].WeatherAt(10, 40));
+        // Team Aqua's four grunts are trainers of Emerald's table on the way up
+        var summit = BuiltMaps.Value["MtPyre_Summit"];
+        Assert.Equal(4, summit.Everyone.Count(n => n.TrainerData?.Id.StartsWith("hoenn_grunt_mt_pyre_") == true));
+        Assert.Contains(summit.Triggers, t => t.Script == "AquaTrigger1" && t.X == 23 && t.Y == 7);
+        // Shuppet haunt the tower's halls
+        Assert.Contains(Hoenn.Area("mt_pyre_1f")!.Land!, e => e.Species == "Shuppet");
     }
 }

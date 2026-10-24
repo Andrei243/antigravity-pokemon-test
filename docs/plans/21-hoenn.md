@@ -661,7 +661,58 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Pokéblock feeders and the Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in
     the chamber's middle and Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in
     the harness, and Fortree's bridges looked at as decks over the forest floor in `h108` and `h109`.
-- [ ] H7 Lilycove, Mt. Pyre and the hideouts
+- [ ] H7 Lilycove, Mt. Pyre and the hideouts (part a done 2026-10-24, wave 41: Lilycove City and its rooms, Routes 122
+  and 123 and Mt. Pyre to the Magma Emblem; what is left is listed under "Left for part b")
+  - **Opened** (30 areas, 201 in all): Lilycove City (`gTileset_Lilycove`'s open metatiles paving in
+    `GbaCover.HoennRanges`) with its Pokémon Center on both floors, the Department Store's five floors and roof, the Cove
+    Lily Motel's two floors, the museum's two, the Pokémon Trainer Fan Club, the Move Deleter's house and four houses;
+    Routes 122 and 123 with the Berry Master's house; Mt. Pyre's six floors (`Indoors`), its mountainside (fog above its
+    middle as an overlay zone) and its summit. A spawn for Lilycove (8, whose Fly place the Town Map had). Shut: the
+    Contest Lobby and Hall (H11), the harbour (H9), Team Aqua's hideout (part b) and the store's lift on every floor.
+    **Route 124 is reached by sea from Lilycove**, so `WorldWalk.OpenedAhead` is empty (rulings: the Wailmer stand only
+    on their own tiles).
+  - **Played**: the rival before the Department Store, asked and refused and asked again (`FLAG_DECLINED_RIVAL_BATTLE_
+    LILYCOVE`), battled with the team of the starter taken (`hoenn_may_lilycove_*`, `hoenn_brendan_lilycove_*`) and gone
+    (`FLAG_MET_RIVAL_LILYCOVE`); the berry gentleman's berry a day; the Wailmer grunt; the Lottery Corner once a day
+    (Jubilife's draw, Emerald's prizes); the store's six counters (marts.json's `lilycove_2f_*` to `lilycove_4f_*`); the
+    roof's drinks machine and Substitute tutor once; the Move Deleter; TM44 Rest once; Scott napping in the motel
+    (`FLAG_MET_SCOTT_IN_LILYCOVE`, `VAR_SCOTT_STATE`); the Cleanse Tag on Mt. Pyre's ground floor; the summit: Team Aqua's
+    four grunts, Archie's words at the first step below the shrine from any of its three tiles, Team Aqua gone behind the
+    dark, the old woman's tale of the two orbs and the **Magma Emblem** (9112, `FLAG_RECEIVED_RED_OR_BLUE_ORB`,
+    `FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD`, `VAR_MT_PYRE_STATE` 1), and the old man's tale; Route 123's TM19 for a trainer
+    with a Grass Pokémon; the Berry Master's two berries a day and his wife's for a phrase. Every scene a `scene`.
+    **No story version raised**: `common.HoennChapterEight` (called by `HoennNewGame`, and by the arrivals of Lilycove City
+    and Routes 122 and 123, `FLAG_HOENN_CHAPTER_EIGHT`). Rulings: "Lilycove City and Mt. Pyre".
+  - **Music** (ours, rendered clash-free, −18.2 to −20.1 LUFS, not yet heard): `lilycove` (the city and its rooms),
+    `route122` (Routes 122 and 123), `mt_pyre` (the tower's floors), `mt_pyre_exterior` (the mountainside and the
+    summit). The Berry Master's house plays Rustboro's song, as Emerald's does.
+  - **Tests** (written, not run): `HoennTests` (`LilycoveCityIsOpenWithItsFlySpotItsStoreAndItsShutDoors`,
+    `MtPyreIsOpenFromRouteOneTwentyTwoToItsSummit`, and `TheWalkDivesToTheSeaFloorAndComesBackUp` with Route 124 come to
+    by sea); `HoennStoryTests` (`TheRivalBattlesOnceBeforeLilycovesDepartmentStore` three ways,
+    `TeamAquaLeavesMtPyresSummitAndTheOldWomanGivesTheMagmaEmblem` from each of the three tiles,
+    `MtPyreIsClimbedFromRouteOneTwentyTwoToItsSummit`, `LilycovesStoreSellsEmeraldsStockAndItsLotteryDrawsOnceADay`,
+    `LilycovesRoofTeachesSubstituteOnceAndRestIsGivenOnce`,
+    `TheBerryMasterGivesTwoBerriesADayAndTheGirlOfRouteOneTwentyThreeWantsAGrassPokemon`,
+    `ANewGameOfHoennHidesTheEighthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay`, `TheSongsOfLilycoveAndMtPyreAreThere`).
+    The content check finds nothing. `scripts.txt` of the golden files moves (common.txt and the new places' scripts).
+  - **Shots** (written, not taken): the `hoenn` mode's `h133`–`h152` (Lilycove, its cove and beach, the Center, the
+    store's ground and fourth floors and roof, the motel, the museum's two floors, the Fan Club, Routes 122 and 123, the
+    Berry Master's house, Mt. Pyre's ground, third and top floors, its mountainside in sun and in mist and its summit,
+    with `_native` crops of Lilycove and the summit) and after dark `h153_lilycove_night`, `h154_mt_pyre_summit_night`;
+    the scenes `hs168`–`hs177` at the end of `HoennScenes` (the rival in Lilycove, the challenge, the battle, beaten and
+    gone, the Lottery Corner, the Cleanse Tag, Team Aqua on the summit, Archie turning, the Red Orb, Team Aqua gone, the
+    old woman, the Magma Emblem, the summit after and the old man's tale).
+  - **Left for part b**: Team Magma's hideout (Jagged Pass's way in, `locked` in its overlay, opened by the Magma
+    Emblem and its guard's flag; the hideout's eight rooms, Tabitha, Maxie and Groudon waking as a scene with no battle,
+    `FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT`, `FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON`; `aqua_magma_hideout` and `awaken_legend`),
+    Team Aqua's hideout in Lilycove's cove (warp 6, its three floors, the Electrode, Matt, the submarine,
+    `FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE`, which then hides Lilycove's grunts and Wailmer and turns the town's lines), and
+    whether the sea east of Lilycove needs a gate of ours until then; the rival back in their bedroom at home after
+    Lilycove; the Berry Master's wife's five rare berries for Emerald's sayings; the museum's curator and gallery and the
+    Lilycove Lady (H11); the Fan Club's fans by the player's battles; the motel owner's television trigger; Match Call for
+    the rematch trainers of Mt. Pyre and Route 123 (Gabrielle, Valerie, Cameron, Jacki, Fernando); the looks of Archie's
+    and Maxie's grunts as Emerald's (the Aqua grunt's stand-in); then the "Done when": the Aqua hideout's last scene, and
+    the way to Mossdeep.
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases

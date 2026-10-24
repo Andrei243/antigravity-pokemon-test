@@ -1,0 +1,19 @@
+# The Lilycove Department Store's third floor (plan 21 · H7, part a), the Battle Collection. docs/scripts.md
+# describes the language; Emerald's beats (data/maps/LilycoveCity_DepartmentStore_3F/scripts.inc): the left counter
+# sells the vitamins, the right one the battle items (marts.json's lilycove_3f_vitamins and lilycove_3f_battle).
+
+
+script ClerkLeft
+  speaker "Clerk"
+  say "Welcome! Our vitamins make your Pokémon stronger for good."
+  shop "lilycove_3f_vitamins"
+  say "Please come again!"
+  end
+
+
+script ClerkRight
+  speaker "Clerk"
+  say "Welcome! Our battle items give your Pokémon the edge when it counts."
+  shop "lilycove_3f_battle"
+  say "Please come again!"
+  end

@@ -1,0 +1,120 @@
+# Mt. Pyre's summit (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MtPyre_Summit/scripts.inc).
+#
+# Team Aqua holds the summit: four grunts on the way up, and Archie before the shrine where the old couple keep the
+# Red Orb and the Blue Orb. At the first step onto the row below him (the area's triggers 0 to 2, VAR_MT_PYRE_STATE 0)
+# Archie turns, says Team Aqua has what it came for, and the picture goes dark: Team Aqua is gone (FLAG_HIDE_MT_PYRE_
+# SUMMIT_ARCHIE, FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA). The old woman comes down to the player: both orbs are taken, the
+# Red by Team Aqua and the Blue by Team Magma, who dropped something in their hurry. She gives the Magma Emblem, which
+# shows the way into Team Magma's hideout on Jagged Pass (FLAG_RECEIVED_RED_OR_BLUE_ORB; the guard there stands aside,
+# FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD; plan 21 · H7, part b). VAR_MT_PYRE_STATE goes to 1. The two leaders bringing the
+# orbs back (state 2 and 3) are plan 21 · H8's, after Sootopolis.
+
+
+script AquaTrigger0
+  if var VAR_MT_PYRE_STATE != 0 end
+  scene "Team Aqua leaves the summit west"
+  call Archie
+  walk mt_pyre_summit_archie left 1
+  face mt_pyre_summit_archie down
+  call ArchieSpeaks
+  walk mt_pyre_summit_old_lady down 2
+  face mt_pyre_summit_old_lady left
+  face player right
+  call OldLady
+  endscene
+  end
+
+
+script AquaTrigger1
+  if var VAR_MT_PYRE_STATE != 0 end
+  scene "Team Aqua leaves the summit middle"
+  call Archie
+  call ArchieSpeaks
+  walk mt_pyre_summit_old_lady down 1
+  face mt_pyre_summit_old_lady down
+  call OldLady
+  endscene
+  end
+
+
+script AquaTrigger2
+  if var VAR_MT_PYRE_STATE != 0 end
+  scene "Team Aqua leaves the summit east"
+  call Archie
+  walk mt_pyre_summit_archie right 1
+  face mt_pyre_summit_archie down
+  call ArchieSpeaks
+  walk mt_pyre_summit_old_lady down 2
+  face mt_pyre_summit_old_lady right
+  face player left
+  call OldLady
+  endscene
+  end
+
+
+# Team Aqua's song, the player looking up and Archie turning round
+script Archie
+  music "hoenn/eye_galactic"
+  face player up
+  face mt_pyre_summit_archie down
+  wait 0.8
+  return
+
+
+# Archie's words, and Team Aqua gone behind the dark
+script ArchieSpeaks
+  speaker "Archie"
+  say "Hm? You again. You turn up everywhere, don't you?"
+  say "Too late this time. The Red Orb is ours, and with it the power to wake the master of the sea."
+  say "Team Magma took the Blue Orb before us, but no matter. Team Aqua will widen the seas and give the world back to the Pokémon of the deep. Let's go!"
+  fade out
+  hide mt_pyre_summit_archie
+  hide mt_pyre_summit_grunt_1
+  hide mt_pyre_summit_grunt_2
+  hide mt_pyre_summit_grunt_3
+  hide mt_pyre_summit_grunt_4
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA
+  music area
+  fade in
+  wait 0.4
+  setvar VAR_MT_PYRE_STATE 1
+  return
+
+
+# The old woman of the shrine, and the Magma Emblem
+script OldLady
+  speaker "Old Woman"
+  say "Oh, what a terrible thing. Both of the orbs are gone."
+  say "The Red Orb and the Blue Orb must never be parted from this mountain. Together they keep the two great Pokémon of land and sea asleep."
+  say "Those people in red were here before the blue ones, and they snatched the Blue Orb. In their hurry they dropped this."
+  give "Magma Emblem"
+  setflag FLAG_RECEIVED_RED_OR_BLUE_ORB
+  setflag FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD
+  say "Their mark is on it. Whoever they are, that emblem may lead you to where they hide."
+  say "Please, find them before the orbs are put to some dreadful use."
+  return
+
+
+# The old man of the shrine, who tells the tale of the two great Pokémon
+script OldMan
+  face self player
+  speaker "Old Man"
+  ask "Will you hear out an old man's tale of the two Pokémon that shaped Hoenn?"
+  if no goto Declined
+  say "Long ago, a Pokémon of the land raised the continents, and a Pokémon of the sea filled the oceans."
+  say "The two clashed, land against sea, and the world shook with their fury until a great light calmed them."
+  say "They fell into a deep sleep. The orbs kept on this summit hold the memory of that light."
+  end
+label Declined
+  say "I see. Well, that is fine too. The mountain will keep the tale until you want it."
+  end
+
+
+# The old woman, spoken to afterwards
+script OldWoman
+  face self player
+  speaker "Old Woman"
+  say "The orbs have been taken from this summit. I pray no harm comes of it."
+  end

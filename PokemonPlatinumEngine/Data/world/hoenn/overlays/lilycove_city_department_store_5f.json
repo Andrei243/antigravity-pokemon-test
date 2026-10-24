@@ -1,0 +1,16 @@
+{
+  // The Department Store's fifth floor (plan 21 · H7, part a): the Pokédoll Floor, whose four counters sell what
+  // dresses up a secret base. Its clerks only talk until secret bases are built (plan 21 · H10)
+  "area": "lilycove_city_department_store_5f",
+  "bgmTrack": "hoenn/lilycove",
+  "locked": [ 1 ],
+  "people": {
+    "woman_3": { "name": "Clerk", "dialog": ["Welcome to the Pokédoll Floor! Our dolls and cushions are for decorating a secret base. We'll have them out for you soon!"] },
+    "woman_3_2": { "name": "Clerk", "dialog": ["Mats and posters for your secret base will be on sale shortly. Thank you for waiting!"] },
+    "woman_3_3": { "name": "Clerk", "dialog": ["Big dolls are our pride and joy. They're coming soon, so please look in again!"] },
+    "woman_3_4": { "name": "Clerk", "dialog": ["Our display cases are being stocked right now. Do come back!"] },
+    "little_girl": { "name": "Little Girl", "dialog": ["I'm going to fill my secret base with dolls. Every single kind!"] },
+    "pokefan_f": { "name": "Woman", "dialog": ["A secret base is like a little home of your own. Decorating it is half the fun."] },
+    "department_store_stairs_woman": { "name": "Woman", "dialog": ["The rooftop is lovely on a sunny day. There's a drinks machine up there, too."] }
+  }
+}

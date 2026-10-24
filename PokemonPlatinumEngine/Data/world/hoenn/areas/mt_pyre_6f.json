@@ -1,0 +1,44 @@
+{
+  "key": "mt_pyre_6f",
+  "index": 258,
+  "name": "Mt Pyre",
+  "matrix": 207,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "mt_pyre_6f",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Shuppet", "level": 27 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Shuppet", "level": 25 },
+    { "species": "Shuppet", "level": 29 },
+    { "species": "Shuppet", "level": 24 },
+    { "species": "Shuppet", "level": 23 },
+    { "species": "Shuppet", "level": 22 },
+    { "species": "Duskull", "level": 27 },
+    { "species": "Duskull", "level": 27 },
+    { "species": "Duskull", "level": 25 },
+    { "species": "Duskull", "level": 29 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 2, "z": 1, "to": "mt_pyre_5f", "toWarp": 0 },
+    { "x": 1, "z": 10, "to": "mt_pyre_5f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "hex_maniac", "looks": "hex_maniac", "movement": "rotate_counterclockwise", "x": 6, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_VALERIE_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 6, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MT_PYRE_6F_TM_SHADOW_BALL", "item": "TM30", "script": "MtPyre_6F_EventScript_ItemTMShadowBall" },
+    { "id": "psychic_m", "looks": "psychic_m", "movement": "rotate_clockwise", "x": 10, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CEDRIC" }
+  ],
+  "signs": [],
+  "triggers": []
+}

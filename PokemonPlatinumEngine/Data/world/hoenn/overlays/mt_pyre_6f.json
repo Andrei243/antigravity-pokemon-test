@@ -1,0 +1,9 @@
+{
+  // Mt. Pyre's top floor (plan 21 · H7, part a): the last graves under the roof, beyond which the way goes on outside
+  "area": "mt_pyre_6f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "hex_maniac": { "name": "Valerie", "trainer": { "dialogueBefore": "Hex Maniac Valerie: When I'm here, I feel the spirits all around me... Let them watch us battle...", "dialogueAfter": "Hex Maniac Valerie: The spirits have gone quiet... Did you frighten them?" } },
+    "psychic_m": { "name": "Cedric", "trainer": { "dialogueBefore": "Psychic Cedric: Few come this high. My Pokémon will show you why.", "dialogueAfter": "Psychic Cedric: I see now why you came so far." } }
+  }
+}

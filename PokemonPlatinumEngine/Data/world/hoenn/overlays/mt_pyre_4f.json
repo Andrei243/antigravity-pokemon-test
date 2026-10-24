@@ -1,0 +1,8 @@
+{
+  // Mt. Pyre's fourth floor (plan 21 · H7, part a)
+  "area": "mt_pyre_4f",
+  "bgmTrack": "hoenn/mt_pyre",
+  "people": {
+    "hex_maniac": { "name": "Tasha", "trainer": { "dialogueBefore": "Hex Maniac Tasha: Hehehe... Do you want to join the spirits of this tower? Let's battle and find out...", "dialogueAfter": "Hex Maniac Tasha: The spirits don't want you yet, it seems..." } }
+  }
+}

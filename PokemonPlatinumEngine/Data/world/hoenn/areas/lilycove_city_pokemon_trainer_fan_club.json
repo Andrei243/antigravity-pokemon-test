@@ -1,0 +1,34 @@
+{
+  "key": "lilycove_city_pokemon_trainer_fan_club",
+  "index": 169,
+  "name": "Lilycove City",
+  "matrix": 118,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 13, "to": "lilycove_city", "toWarp": 5 },
+    { "x": 5, "z": 13, "to": "lilycove_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "trainer_fan_club_lass", "looks": "lass", "movement": "look_north", "x": 3, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_Lass" },
+    { "id": "trainer_fan_club_man", "looks": "man_4", "movement": "look_west", "x": 8, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_Man" },
+    { "id": "trainer_fan_club_pokefan_m", "looks": "pokefan_m", "movement": "look_north", "x": 6, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_PokefanM" },
+    { "id": "trainer_fan_club_little_girl", "looks": "little_girl", "movement": "look_south", "x": 5, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_LittleGirl" },
+    { "id": "trainer_fan_club_ninja_boy", "looks": "ninja_boy", "movement": "look_north", "x": 7, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FANCLUB_LITTLE_BOY", "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_NinjaBoy" },
+    { "id": "trainer_fan_club_boy", "looks": "boy_2", "movement": "look_south", "x": 1, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FANCLUB_BOY", "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_Boy" },
+    { "id": "trainer_fan_club_woman", "looks": "woman_3", "movement": "look_east", "x": 3, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FANCLUB_LADY", "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_Woman" },
+    { "id": "trainer_fan_club_expert_f", "looks": "expert_f", "movement": "look_west", "x": 10, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FANCLUB_OLD_LADY", "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_ExpertF" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER", "script": "LilycoveCity_PokemonTrainerFanClub_EventScript_Interviewer" }
+  ],
+  "signs": [],
+  "triggers": []
+}

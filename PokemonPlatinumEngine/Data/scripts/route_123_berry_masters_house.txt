@@ -1,0 +1,123 @@
+# The Berry Master's house on Route 123 (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/Route123_BerryMastersHouse/scripts.inc).
+#
+# The Berry Master gives two berries a day (FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY), each drawn by the original's die
+# of ten among Pomeg to Nomel. His wife asks for a good saying, chosen with the phrase picker (`phrase`, two words
+# where Emerald takes an easy-chat phrase of its own), and gives a berry for it once a day (FLAG_DAILY_BERRY_MASTERS_
+# WIFE), drawn among Cheri to Sitrus. Emerald's five sayings that bring a rare berry once (Spelon, Pamtre, Watmel,
+# Durin and Belue) are words of its easy chat that the picker does not have: plan 21 · H7, part b decides them.
+
+
+script BerryMaster
+  face self player
+  speaker "Berry Master"
+  if flag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY goto Tomorrow
+  say "Ah, you have the look of someone who deserves a berry. Here, have one of mine."
+  call Draw
+  setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
+  say "Why be stingy? Take another!"
+  call Draw
+  say "If you have berries to spare, the Pretty Petal flower shop on Route 104 will teach you how to grow them."
+  end
+label Tomorrow
+  say "That's all for today. Come back tomorrow and I'll have more for you."
+  end
+
+
+# One of Pomeg to Nomel, by the original's die of ten
+script Draw
+  random 10
+  if result == 1 goto Kelpsy
+  if result == 2 goto Qualot
+  if result == 3 goto Hondew
+  if result == 4 goto Grepa
+  if result == 5 goto Tamato
+  if result == 6 goto Cornn
+  if result == 7 goto Magost
+  if result == 8 goto Rabuta
+  if result == 9 goto Nomel
+  give "Pomeg Berry"
+  return
+label Kelpsy
+  give "Kelpsy Berry"
+  return
+label Qualot
+  give "Qualot Berry"
+  return
+label Hondew
+  give "Hondew Berry"
+  return
+label Grepa
+  give "Grepa Berry"
+  return
+label Tamato
+  give "Tamato Berry"
+  return
+label Cornn
+  give "Cornn Berry"
+  return
+label Magost
+  give "Magost Berry"
+  return
+label Rabuta
+  give "Rabuta Berry"
+  return
+label Nomel
+  give "Nomel Berry"
+  return
+
+
+script BerryMastersWife
+  face self player
+  speaker "Old Woman"
+  if flag FLAG_DAILY_BERRY_MASTERS_WIFE goto Tomorrow
+  say "Have you heard a good saying lately? Tell me one, would you?"
+  phrase BERRY_MASTERS_WIFE
+  if result != 1 goto Nothing
+  say "{phrase:BERRY_MASTERS_WIFE}... What a lovely saying! It makes me feel young again. Take this."
+  setflag FLAG_DAILY_BERRY_MASTERS_WIFE
+  random 10
+  if result == 1 goto Chesto
+  if result == 2 goto Pecha
+  if result == 3 goto Rawst
+  if result == 4 goto Aspear
+  if result == 5 goto Leppa
+  if result == 6 goto Oran
+  if result == 7 goto Persim
+  if result == 8 goto Lum
+  if result == 9 goto Sitrus
+  give "Cheri Berry"
+  end
+label Chesto
+  give "Chesto Berry"
+  end
+label Pecha
+  give "Pecha Berry"
+  end
+label Rawst
+  give "Rawst Berry"
+  end
+label Aspear
+  give "Aspear Berry"
+  end
+label Leppa
+  give "Leppa Berry"
+  end
+label Oran
+  give "Oran Berry"
+  end
+label Persim
+  give "Persim Berry"
+  end
+label Lum
+  give "Lum Berry"
+  end
+label Sitrus
+  give "Sitrus Berry"
+  end
+label Nothing
+  say "Ah. Never mind, dear. Joy never seems to leave this house, saying or no saying."
+  end
+label Tomorrow
+  say "Thank you for that saying earlier. It's still making me smile."
+  end

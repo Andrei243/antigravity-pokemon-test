@@ -597,6 +597,14 @@ public static class RegionDatabase
                 // Plan 21 · H6, part b: Route 121's gate, the Safari Zone and its rest house, the Ancient Tomb and the
                 // Scorched Slab
                 "Route121_SafariZoneEntrance", "HoennSafariZone", "HoennSafariZone_RestHouse", "AncientTomb", "ScorchedSlab",
+                // Plan 21 · H7, part a: Lilycove City's rooms, Route 123's Berry Master's house and Mt. Pyre
+                "LilycoveCity_PokemonCenter_1F", "LilycoveCity_PokemonCenter_2F", "LilycoveCity_DepartmentStore_1F",
+                "LilycoveCity_DepartmentStore_2F", "LilycoveCity_DepartmentStore_3F", "LilycoveCity_DepartmentStore_4F",
+                "LilycoveCity_DepartmentStore_5F", "LilycoveCity_DepartmentStoreRooftop", "LilycoveCity_CoveLilyMotel_1F",
+                "LilycoveCity_CoveLilyMotel_2F", "LilycoveCity_LilycoveMuseum_1F", "LilycoveCity_LilycoveMuseum_2F",
+                "LilycoveCity_PokemonTrainerFanClub", "LilycoveCity_MoveDeletersHouse", "LilycoveCity_House1", "LilycoveCity_House2",
+                "LilycoveCity_House3", "LilycoveCity_House4", "Route123_BerryMastersHouse", "MtPyre_1F", "MtPyre_2F", "MtPyre_3F",
+                "MtPyre_4F", "MtPyre_5F", "MtPyre_6F", "MtPyre_Exterior", "MtPyre_Summit",
             }
         },
         new()

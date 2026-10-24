@@ -1,0 +1,20 @@
+# The Lilycove Department Store's second floor (plan 21 · H7, part a), the Trainer's Zone. docs/scripts.md describes
+# the language; Emerald's beats (data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc): the left counter sells balls,
+# Escape Ropes, cures and the Fluffy Tail, the right one potions, Revives and Repels (marts.json's lilycove_2f_balls
+# and lilycove_2f_medicine; Emerald's Wave Mail and Mech Mail are no items of this game).
+
+
+script ClerkLeft
+  speaker "Clerk"
+  say "Welcome! What can I get for you?"
+  shop "lilycove_2f_balls"
+  say "Please come again!"
+  end
+
+
+script ClerkRight
+  speaker "Clerk"
+  say "Welcome! What can I get for you?"
+  shop "lilycove_2f_medicine"
+  say "Please come again!"
+  end

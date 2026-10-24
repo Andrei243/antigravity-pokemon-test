@@ -1,0 +1,7 @@
+{
+  // Route 122 (plan 21 · H7, part a): the sea south of Route 121's pier, round the island of Mt. Pyre, whose door opens
+  // onto the water. Its arrival runs the eighth stretch's hiding for a save from before it (route_122.txt)
+  "area": "route_122",
+  "bgmTrack": "hoenn/route122",
+  "trees": "Round"
+}

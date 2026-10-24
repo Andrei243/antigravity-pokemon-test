@@ -1,0 +1,52 @@
+# Route 123 (plan 21 · H7, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route123/scripts.inc).
+#
+# The coast road from Route 118 to the foot of Mt. Pyre's island, with the Berry Master's house at its west end.
+# Coming here runs the eighth stretch's hiding for a save from before it (common.HoennChapterEight). The girl among
+# the berry trees gives TM19, Giga Drain, once to a trainer with a Grass Pokémon on the team (FLAG_RECEIVED_TM_GIGA_
+# DRAIN). Emerald asks the team's types (IsGrassTypeInParty); a script here asks the team's species, so she looks for
+# the Grass Pokémon a trainer can have caught or raised in Hoenn by now (docs/mechanics/rulings.md, "Lilycove City
+# and Mt. Pyre").
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_EIGHT call HoennChapterEight
+  end
+
+
+script GigaDrainGirl
+  face self player
+  speaker "Girl"
+  if flag FLAG_RECEIVED_TM_GIGA_DRAIN goto Given
+  say "I love Grass Pokémon! They drink the sunshine and grow and grow, just like these berry trees."
+  if has "Treecko" goto Grass
+  if has "Grovyle" goto Grass
+  if has "Sceptile" goto Grass
+  if has "Lotad" goto Grass
+  if has "Lombre" goto Grass
+  if has "Ludicolo" goto Grass
+  if has "Seedot" goto Grass
+  if has "Nuzleaf" goto Grass
+  if has "Shiftry" goto Grass
+  if has "Shroomish" goto Grass
+  if has "Breloom" goto Grass
+  if has "Roselia" goto Grass
+  if has "Oddish" goto Grass
+  if has "Gloom" goto Grass
+  if has "Vileplume" goto Grass
+  if has "Bellossom" goto Grass
+  if has "Cacnea" goto Grass
+  if has "Cacturne" goto Grass
+  if has "Tropius" goto Grass
+  if has "Lileep" goto Grass
+  if has "Cradily" goto Grass
+  say "Oh, you don't have a Grass Pokémon with you? That's a shame. Come back when you do!"
+  end
+label Grass
+  say "Oh! You have a Grass Pokémon with you! Then you should have this. It suits them perfectly."
+  give "TM19"
+  setflag FLAG_RECEIVED_TM_GIGA_DRAIN
+  end
+label Given
+  say "Giga Drain drinks a foe's strength to heal the user. Isn't that just like a plant soaking up the sun?"
+  end

@@ -1833,6 +1833,7 @@ script HoennNewGame
   call HoennChapterSeven
   call HoennChapterSevenB
   call HoennChapterSevenC
+  call HoennChapterEight
   return
 
 
@@ -2025,6 +2026,28 @@ script HoennChapterSevenC
   setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
   setflag FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
   if not flag FLAG_WINGULL_SENT_ON_ERRAND clearflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  return
+
+
+# What a new game of Emerald sets for the eighth stretch, Lilycove City and Mt. Pyre (plan 21 · H7, part a), as
+# Emerald's own new game sets it: Maxie at Mt. Pyre's summit until the two leaders bring the orbs back (plan 21 · H8),
+# the museum's patrons and tourists until the player's painting hangs there (plan 21 · H11), the Trainer Fan Club's
+# interviewer, the game designers of the Cove Lily Motel until the Hall of Fame (plan 21 · H9) and the rooftop's
+# clearance-sale woman. FLAG_HOENN_CHAPTER_EIGHT, a flag of ours, says it has run. HoennNewGame calls it; a save from
+# before it was written runs it from Lilycove City's, Route 122's and Route 123's own arrival scripts, the only ways to
+# the city and the mountain, so no story version is raised for it. It may only set flags and variables, and ends in
+# return.
+script HoennChapterEight
+  setflag FLAG_HOENN_CHAPTER_EIGHT
+  setflag FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
+  setflag FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
+  setflag FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER
+  setflag FLAG_HIDE_LILYCOVE_MOTEL_GAME_DESIGNERS
+  setflag FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN
   return
 
 
