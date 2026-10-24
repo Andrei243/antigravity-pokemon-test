@@ -221,6 +221,12 @@ public class BagScreen
     /// <summary>Whether the pockets can be put in order and the shoulders jump by letter: the options' BOXES ANYWHERE row, set each frame by the engine.</summary>
     public bool Sorting { get; set; }
 
+    /// <summary>
+    /// The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none, set each frame by the engine:
+    /// a Rare Candy or an Exp. Candy refuses a Pokémon on the cap's level and says why, and is NOT ABLE on its card.
+    /// </summary>
+    public int? RunCap { get; set; }
+
     /// <summary>Turns the pocket to its next order (as taken, A to Z, most first), the cursor staying on the item it was on.</summary>
     public void CycleOrder(Inventory inventory)
     {
@@ -634,7 +640,7 @@ public class BagScreen
         else if (ItemUse.NeedsMove(item))
         {
             // An Ether, a PP Up, a Leppa Berry: on to the Pokémon's moves
-            if (!ItemUse.WouldHelpAnyMove(item, target))
+            if (!ItemUse.WouldHelpAnyMove(item, target, runCap: RunCap))
             {
                 onNotification(Text.Of("bag.noEffect"));
                 AudioManager.PlaySound("error");
@@ -690,7 +696,7 @@ public class BagScreen
             // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects); the later
             // games' mints, Exp. Candies, capsules, patches and nectars by their own rules (plan 06 · R28b)
             var before = target.Stats();
-            var result = LaterItemUse.Handles(item) ? LaterItemUse.Apply(item, target) : ItemUse.Apply(item, target);
+            var result = LaterItemUse.Handles(item) ? LaterItemUse.Apply(item, target, RunCap) : ItemUse.Apply(item, target, runCap: RunCap);
             if (!result.Applied)
             {
                 onNotification(result.Message);
@@ -766,7 +772,7 @@ public class BagScreen
     {
         if (!ChoosingMove || choosingFor is not { } item || TargetIndex >= party.Count) return;
         var target = party.Members[TargetIndex];
-        var result = ItemUse.Apply(item, target, MoveIndex);
+        var result = ItemUse.Apply(item, target, MoveIndex, runCap: RunCap);
         if (!result.Applied)
         {
             onNotification(result.Message);
@@ -875,9 +881,9 @@ public class BagScreen
             return Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null;
         }
         if (item.FieldUse == "Gracidea") return FormRules.CanTakeToTheSky(p, (int)GameClock.Hour);
-        if (LaterItemUse.Handles(item)) return LaterItemUse.WouldHelp(item, p);
+        if (LaterItemUse.Handles(item)) return LaterItemUse.WouldHelp(item, p, RunCap);
         if (FormChanges.Handles(item)) return FormChanges.WouldHelp(item, p, probe.Party);
-        if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item)) return ItemUse.WouldHelpAnyMove(item, p);
+        if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item)) return ItemUse.WouldHelpAnyMove(item, p, runCap: RunCap);
         return null;
     }
 

@@ -77,17 +77,22 @@ public static class DifficultyRules
 
     /// <summary>
     /// The trainer a battle is fought with under <paramref name="rules"/>: <paramref name="trainer"/> itself when the
-    /// difficulty touches nothing (Normal, or no rules), otherwise a copy. Challenge raises every Pokémon by the table,
+    /// difficulty touches nothing and the team isn't scaled to <paramref name="leadLevel"/> (<see cref="ScaleTo"/>, the
+    /// run's <see cref="RunRules.ScaleTrainers"/>; 0 for no lead) (Normal, or no rules), otherwise a copy. Challenge raises every Pokémon by the table,
     /// gives a leader, one of the League and the Champion one more from the team the original gives them for a rematch,
     /// gives important trainers a held item, thinks with every routine of the AI and pays half as much again; Easy
     /// lowers the levels by the same table and changes nothing else of the trainer.
     /// </summary>
-    public static Trainer Prepare(Trainer trainer, RunRules? rules)
+    public static Trainer Prepare(Trainer trainer, RunRules? rules, int leadLevel = 0)
     {
         var difficulty = rules?.Difficulty ?? Difficulty.Normal;
-        if (difficulty == Difficulty.Normal) return trainer;
+        bool scale = rules is { ScaleTrainers: true } && leadLevel > 0 && trainer.Party.Count > 0;
+        if (difficulty == Difficulty.Normal && !scale) return trainer;
 
         var copy = trainer.Copied();
+        // Scaled to the lead first, so the difficulty's levels are laid on the scaled team (plan 13 · V3)
+        if (scale) ScaleTo(copy, leadLevel);
+        if (difficulty == Difficulty.Normal) return copy;
         var tier = TierOf(trainer.TrainerClass);
         int by = LevelsOf(tier);
         int cap = Ruleset.Current.LevelCap;
@@ -105,6 +110,20 @@ public static class DifficultyRules
         copy.Ai |= EveryRoutine;
         copy.PrizeMoney = PrizeMoney(copy.PrizeMoney, difficulty);
         return copy;
+    }
+
+    /// <summary>
+    /// <see cref="RunRules.ScaleTrainers"/> (plan 13 · V3): the team's best Pokémon is brought to the lead's level and every
+    /// other by the same number of levels, so the team keeps its spread (a Youngster's 5 and 7 meet a lead of 30 at 28
+    /// and 30). Up or down, as the options' help says, and never below 1 nor
+    /// past the rules' cap. A copy only: the caller hands it a copy.
+    /// </summary>
+    public static void ScaleTo(Trainer copy, int leadLevel)
+    {
+        int shift = leadLevel - copy.Party.Members.Max(p => p.Level);
+        if (shift == 0) return;
+        int cap = Ruleset.Current.LevelCap;
+        foreach (var p in copy.Party.Members) p.Relevel(Math.Clamp(p.Level + shift, 1, cap));
     }
 
     /// <summary>

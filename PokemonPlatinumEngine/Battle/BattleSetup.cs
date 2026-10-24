@@ -145,6 +145,12 @@ public sealed class BattleSetup
     public Difficulty Difficulty { get; init; } = Difficulty.Normal;
 
     /// <summary>
+    /// The level the run's cap holds the player's Pokémon to (plan 13 · V3; <see cref="Sim.CoreSetup.RunLevelCap"/>), 0 for
+    /// none. The game hands it over from <see cref="Models.LevelCaps.For"/>; a battle a test or a tool builds is uncapped.
+    /// </summary>
+    public int RunLevelCap { get; init; }
+
+    /// <summary>
     /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
     /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
     /// never read by the rules.

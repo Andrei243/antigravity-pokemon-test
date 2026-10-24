@@ -4952,7 +4952,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 | Choice | Meaning | Session |
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
-| Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 |
+| Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
 | Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
 | No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
@@ -4985,3 +4985,24 @@ nothing**: `Prepare` hands back the very trainer it was given, the EXP and the p
 - **Easy** also: three halves of the EXP a battle gives (`BattleCore.Give`, from `CoreSetup.Difficulty`; a recorded battle
   keeps it and refuses to be replayed under another) and a quarter off what a counter asks (`ShopScreen.PriceOf`; selling
   is unchanged, so buying and selling back never earns).
+
+### The level cap and trainers scaled to the lead (plan 13 · V3)
+
+Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a trainer is the very object it was.
+
+- **The cap** (`Models/LevelCaps.cs`, GPU-free) is the next Gym Leader's best Pokémon by the Badges held in the region the
+  player stands in: Sinnoh's 14, 22, 26, 32, 37, 41, 44 and 50 (plan 02's pacing targets, held to `trainers.json` by a
+  test), then the Champion's 62 once all eight are held, and none once the region's Hall of Fame is entered. A region with
+  no table (every other one until its own plan writes it) is uncapped.
+- **EXP** (`BattleCore.Give`, from `CoreSetup.RunLevelCap`, which the engine fills from `GameEngine.CurrentLevelCap()`):
+  after Easy's three halves, only what takes the Pokémon to the start of the cap's level goes in (`LevelCaps.Allowed`), so a
+  capped Turtwig stops at exactly 14 with no progress towards 15; one on or past the cap gains nothing and no gain is told.
+  Each capped Pokémon that fought hears "can't grow past Lv. N yet." once a battle, after its level's line. Effort still
+  comes (a capped Pokémon is not a level-100 one). A recorded battle keeps the cap and refuses to be replayed under another.
+- **Candies**: a Rare Candy or an Exp. Candy on a Pokémon on the cap's level is NOT ABLE in the bag and says the same line;
+  the Exp. Candy gives no more than the way to the cap. The Day Care's levels are not held (plan 13 asks for the battle and
+  the candy only).
+- **Scaling** (`DifficultyRules.ScaleTo`, from `Prepare(trainer, rules, leadLevel)`): the team's best Pokémon becomes the
+  level of the player's lead and every other moves the same number of levels, so the spread is kept; up or down, as the
+  panel's help says. It is laid first, so Challenge's and Easy's levels sit on the scaled team. The first battle and a Master
+  Trainer's are left alone, as for the difficulty. A Pokémon is not evolved to suit its new level.

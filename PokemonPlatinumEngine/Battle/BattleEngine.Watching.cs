@@ -86,6 +86,7 @@ public partial class BattleEngine
             NoBattleItems = rules.NoBattleItems,
             OffersSwitch = rules.OffersSwitch,
             Difficulty = rules.Difficulty,
+            RunLevelCap = rules.RunLevelCap,
             Scene = scene
         };
         return new BattleEngine(setup, file);
