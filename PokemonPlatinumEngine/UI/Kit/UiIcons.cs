@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio, Star }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -169,12 +169,57 @@ internal static class UiIcons
                 UiShapes.Line(c + new Vector2(0.24f, 0.02f) * s, c + new Vector2(0.62f, 0.02f) * s, 0.12f * s, back);
                 UiShapes.Line(c + new Vector2(0.24f, 0.38f) * s, c + new Vector2(0.62f, 0.38f) * s, 0.12f * s, back);
                 break;
+            case UiIcon.Star:
+                // A five-pointed star (plan 09 · L1: a shiny's mark)
+                FillStar(c, 0.95f * s, ink);
+                break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);
                 UiShapes.Fill(new Rectangle(c.X - 0.34f * s, c.Y - 1.0f * s, 0.68f * s, 0.8f * s), 0f, back);
                 UiShapes.Line(c + new Vector2(0, -0.88f) * s, c + new Vector2(0, -0.06f) * s, 0.22f * s, ink);
                 break;
         }
+    }
+
+    /// <summary>The gold of a shiny's star and its rim (style guide, "Pokémon in menus").</summary>
+    public static readonly Color StarGold = new(240, 176, 40, 255), StarRim = new(176, 112, 20, 255);
+
+    /// <summary>
+    /// The ten corners of a five-pointed star round <paramref name="c"/>, points and the hollows between them in turn,
+    /// the first point straight up (no GPU calls: a test holds them).
+    /// </summary>
+    public static Vector2[] StarPoints(Vector2 c, float outer)
+    {
+        var points = new Vector2[10];
+        float inner = outer * 0.45f;
+        for (int i = 0; i < 10; i++)
+        {
+            float a = -MathF.PI / 2f + i * MathF.PI / 5f, r = i % 2 == 0 ? outer : inner;
+            points[i] = c + new Vector2(MathF.Cos(a), MathF.Sin(a)) * r;
+        }
+        return points;
+    }
+
+    private static void FillStar(Vector2 c, float outer, Color color)
+    {
+        var p = StarPoints(c, outer);
+        for (int i = 0; i < 10; i += 2)
+        {
+            // Each point, and the wedge of the middle between its two hollows
+            UiShapes.Triangle(p[(i + 9) % 10], p[i], p[i + 1], color);
+            UiShapes.Triangle(c, p[(i + 9) % 10], p[i + 1], color);
+        }
+    }
+
+    /// <summary>
+    /// A shiny Pokémon's star (plan 09 · L1; style guide, "Pokémon in menus"), about <paramref name="size"/> tall: gold
+    /// with a darker rim a tenth of its size wide.
+    /// </summary>
+    public static void ShinyStar(Vector2 c, float size)
+    {
+        float outer = size * 0.55f;
+        FillStar(c, outer, StarRim);
+        FillStar(c, outer - size * 0.1f, StarGold);
     }
 
     /// <summary>The ♂ or ♀ mark as shapes (Nunito has no such glyphs), about <paramref name="size"/> tall. Draws nothing for genderless Pokémon.</summary>

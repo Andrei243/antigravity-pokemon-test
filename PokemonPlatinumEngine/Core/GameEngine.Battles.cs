@@ -464,7 +464,7 @@ public partial class GameEngine
     private List<string> PrepareModels(IEnumerable<Pokemon> foes)
     {
         var all = foes.Concat(flow.Party.Members).ToList();
-        var species = all.Select(p => p.ModelName).Concat(all.SelectMany(BattleShapesOf)).Distinct().ToList();
+        var species = all.Select(p => p.LookName).Concat(all.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.IsShiny)))).Distinct().ToList();
         foreach (var name in species) flow.WantModel(name);
         return species;
     }
@@ -529,7 +529,7 @@ public partial class GameEngine
         StartTransition(GameState.Overworld, () =>
         {
             // The foes' models are no longer needed; the team's stay for the next battle
-            PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
+            PokemonModels.Trim(flow.Party.Members.Select(p => p.LookName));
             if (goesOn)
             {
                 flow.Party.HealAll();

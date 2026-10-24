@@ -34,7 +34,7 @@ public class BattleMomentTests
     {
         ("ASLEEP", "moment"), ("POISONED", "moment"), ("BURNED", "moment"), ("FROZEN", "moment"), ("PARALYZED", "moment"),
         ("CONFUSED", "moment"), ("INFATUATED", "moment"), ("LEVEL_UP", "moment"), ("BAG_ITEM", "moment"), ("HELD_ITEM", "moment"),
-        ("SHINY", "plan 09 · L1"), ("STAT_BOOST", "CueKind.StatUp"), ("STAT_DROP", "CueKind.StatDown"), ("RESTORE_HP", "CueKind.Heal"),
+        ("SHINY", "CueKind.Shiny"), ("STAT_BOOST", "CueKind.StatUp"), ("STAT_DROP", "CueKind.StatDown"), ("RESTORE_HP", "CueKind.Heal"),
         ("SUB_OUT", "the doll"), ("SUB_IN", "the doll"), ("ITEM_ESCAPE", "moment"),
         ("WEATHER_FOG", "CueKind.Weather"), ("WEATHER_RAIN", "CueKind.Weather"), ("WEATHER_HAIL", "CueKind.Weather"),
         ("WEATHER_SAND", "CueKind.Weather"), ("WEATHER_SUN", "CueKind.Weather"),

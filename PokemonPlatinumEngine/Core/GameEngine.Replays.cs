@@ -64,7 +64,7 @@ public partial class GameEngine
         var setup = file.ToSetup();
         var shown = setup.PlayerParty.Members.Concat(setup.WildPokemon).Concat(setup.Trainers.SelectMany(t => t.Party.Members))
             .Concat(setup.Partner?.Party.Members ?? Enumerable.Empty<Pokemon>()).ToList();
-        var models = shown.Select(p => p.ModelName).Concat(shown.SelectMany(BattleShapesOf)).Distinct().ToList();
+        var models = shown.Select(p => p.LookName).Concat(shown.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.IsShiny)))).Distinct().ToList();
         foreach (string name in models) flow.WantModel(name);
         CharacterModels.Preload(setup.Trainers.Concat(setup.Partner == null ? Enumerable.Empty<Trainer>() : new[] { setup.Partner })
             .Select(t => CharacterStyles.Default.InBattle(t)));
@@ -92,7 +92,7 @@ public partial class GameEngine
         StartTransition(GameState.ReplayList, () =>
         {
             flow.Battle = null;
-            PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
+            PokemonModels.Trim(flow.Party.Members.Select(p => p.LookName));
             PlayFieldMusic();
             flow.ReplayListScreen.Resume();
             if (ReplayBroke) ShowNotification(Text.Of("replays.broke"));

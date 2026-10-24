@@ -40,14 +40,14 @@ public static class PixelArtGenerator
         PokemonSprites.GetBaked(name, SpriteView.Icon) ?? PokemonSprites.GetBaked(PokemonSprites.Fallback, SpriteView.Icon) ?? SceneTextures.White;
 
     /// <summary>A Pokémon's menu icon, or an Egg's while it is one (plan 06 · R15).</summary>
-    public static Texture2D IconOf(Pokemon p) => p.IsEgg ? EggIcon : GetPokemonIcon(p.ModelName);
+    public static Texture2D IconOf(Pokemon p) => p.IsEgg ? EggIcon : GetPokemonIcon(p.LookName);
 
     /// <summary>An Egg's menu icon (<see cref="EggArt"/>).</summary>
     public static Texture2D EggIcon => Cached("egg_icon", () => EggArt(PokemonSprites.IconSize).ToTexture());
 
     /// <summary>A Pokémon's front sprite, or an Egg's while it is one (plan 06 · R15).</summary>
     public static Texture2D SpriteOf(Pokemon p, bool isBack = false) =>
-        p.IsEgg ? Cached("egg_sprite", () => EggArt(PokemonSprites.Size).ToTexture()) : GetPokemonSprite(p.ModelName, isBack);
+        p.IsEgg ? Cached("egg_sprite", () => EggArt(PokemonSprites.Size).ToTexture()) : GetPokemonSprite(p.LookName, isBack);
 
     /// <summary>
     /// An Egg in pixels (plan 06 · R15; style guide, "Eggs"), at the size of the menu sprites and icons: a cream shell

@@ -578,6 +578,7 @@ public partial class GameEngine
         flow.Pokedex.Clear();
         foreach (var seen in save.SeenSpecies) flow.Pokedex.RegisterSeen(seen);
         foreach (var caught in save.CaughtSpecies) flow.Pokedex.RegisterCaught(caught);
+        foreach (var shiny in save.CaughtShiny ?? new List<int>()) flow.Pokedex.RegisterCaughtShiny(shiny);
         flow.Pokedex.Restore(save.NationalPokedex, save.Diplomas.Select(Pokedex.FromDiplomaKey), save.DexesEntered);
         // A save that had the National Pokédex before the PC grew with it (plan 03 · D13) is given the boxes now
         if (flow.Pokedex.NationalUnlocked) flow.Boxes.Grow();
@@ -705,6 +706,7 @@ public partial class GameEngine
             Inventory = flow.Bag.AllItems.Select(i => new SavedItemData { ItemName = i.Name, Quantity = i.Quantity }).ToList(),
             SeenSpecies = flow.Pokedex.SeenSpecies.ToList(),
             CaughtSpecies = flow.Pokedex.CaughtSpecies.ToList(),
+            CaughtShiny = flow.Pokedex.CaughtShiny.OrderBy(n => n).ToList(),
             SeenLooks = flow.Pokedex.AllLooks().Select(l => new SavedLook { Name = l.Look.Name, Gender = l.Look.Gender }).ToList(),
             SpindaPersonality = flow.Pokedex.SpindaPersonality,
             NationalPokedex = flow.Pokedex.NationalUnlocked,
@@ -1422,7 +1424,7 @@ public partial class GameEngine
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
-            foreach (var member in flow.Party.Members.Where(p => !p.IsEgg)) PokemonSprites.Request(member.ModelName);
+            foreach (var member in flow.Party.Members.Where(p => !p.IsEgg)) PokemonSprites.Request(member.LookName);
             return;
         }
 
@@ -1738,8 +1740,8 @@ public partial class GameEngine
         foreach (var request in requests)
         {
             flow.Evolutions.Enqueue(request);
-            shown.Add(request.Pokemon.ModelName);
-            shown.Add(Evolution.ModelAfter(request.Pokemon, request.Evolution));
+            shown.Add(request.Pokemon.LookName);
+            shown.Add(PokemonLook.Of(Evolution.ModelAfter(request.Pokemon, request.Evolution), request.Pokemon.IsShiny));
         }
         foreach (var name in shown) flow.WantModel(name);
         flow.EvolutionReturn = returnTo;

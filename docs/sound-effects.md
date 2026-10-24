@@ -96,6 +96,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 |---|---|---|
 | `send_out` | `SEQ_SE_DP_BOWA4` | A ball opens and a Pokémon comes out. |
 | `recall` | — | A Pokémon is called back into its ball. |
+| `shiny` | `SEQ_SE_DP_REAPOKE` | A shiny Pokémon sparkles as it comes out of its ball or appears (plan 09 · L1): a run of bright bell notes as the first stars burst. |
 | `run_away` | `SEQ_SE_DP_NIGERU` | Getting away from a wild Pokémon. |
 | `ball_throw` | `SEQ_SE_DP_NAGERU` | A ball thrown. |
 | `ball_shake` | `SEQ_SE_DP_KON` | Each wobble of a thrown ball; each rock of an Egg about to hatch (plan 06 · R15). |

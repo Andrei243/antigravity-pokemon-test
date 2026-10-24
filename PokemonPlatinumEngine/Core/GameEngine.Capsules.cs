@@ -27,7 +27,7 @@ public partial class GameEngine
         capsulesFromBag = fromBag;
         flow.State = GameState.SealCase;
         flow.SealCaseScreen.Open(flow.SealCase, flow.Party);
-        foreach (var p in flow.Party.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.ModelName);
+        foreach (var p in flow.Party.Members.Where(p => !p.IsEgg)) Graphics.PokemonSprites.Request(p.LookName);
     }
 
     private void UpdateBallCapsules(float dt)
@@ -70,7 +70,7 @@ public partial class GameEngine
     {
         if (flow.ContestRecords.PhotoOf(category) is not { } photo) return;
         fashionFromBag = false;
-        Graphics.PokemonSprites.Request(photo.Form ?? photo.Species);
+        Graphics.PokemonSprites.Request(PokemonLook.Of(photo.Form ?? photo.Species, photo.Shiny));
         flow.State = GameState.FashionCase;
         flow.FashionCaseScreen.OpenPhoto(photo);
     }

@@ -71,6 +71,8 @@ internal static partial class ModernUi
             PixelArt(PixelArtGenerator.IconOf(p), c + new Vector2(0, -3), 2, Hop(selected, p.IsFainted) * 2,
                 p.IsFainted ? new Color(170, 170, 190, 255) : Color.White);
             UiFonts.DrawCentered(p.DisplayName, r.X + 136, r.Y + 42, 32, Ink, UiWeight.Black);
+            // A shiny's star after its name (plan 09 · L1)
+            if (p.IsShiny && !p.IsEgg) ShinyStarAfter(r.X + 136 + UiFonts.Measure(p.DisplayName, 32, UiWeight.Black), r.Y + 42, 32);
             Level(r.X + r.Width - 28, r.Y + 42, p.Level, 30);
             HpBar(r.X + 136, r.Y + 78, r.Width - 136 - 28, 22, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
         }

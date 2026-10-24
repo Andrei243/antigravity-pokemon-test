@@ -121,6 +121,21 @@ internal sealed class PokeDecal
 
     /// <summary>The surface colour under the decal (found when it is projected), for lids drawn over an eye.</summary>
     public Color Under = Color.White;
+
+    /// <summary>
+    /// The decal in a shiny palette's colours (plan 09 · L1): a mark's colour and the lid painted in the colour under
+    /// it follow the body; the eye's own colours stay. A copy: the model's own decal is never changed.
+    /// </summary>
+    public PokeDecal Shined(ShinyPalette palette)
+    {
+        var copy = (PokeDecal)MemberwiseClone();
+        copy.Color = palette.Map(Color);
+        copy.Under = palette.Map(Under);
+        copy.Iris = Iris is { } iris ? palette.MapEye(iris) : null;
+        copy.Pupil = Pupil is { } pupil ? palette.MapEye(pupil) : null;
+        copy.White = White is { } white ? palette.MapEye(white) : null;
+        return copy;
+    }
 }
 
 /// <summary>
@@ -170,6 +185,12 @@ internal sealed class PokeModel
     public SdfMesh? DecalPatch;
     public Vector2[]? DecalUVs;
     public int AtlasColumns = 1, AtlasRows = 1;
+
+    /// <summary>
+    /// For a shiny look (plan 09 · L1, a model asked for as <c>X+s</c>): the colours its mesh and its marks are mapped
+    /// to as they are put on the GPU. Null for the model's own colours. The mesh itself is never changed.
+    /// </summary>
+    public ShinyPalette? Palette;
 
     // On the GPU (see PokemonRenderer.EnsureUploaded)
     public SkinnedModel? Body;
@@ -566,6 +587,15 @@ internal static partial class PokemonModels
     public static string Signature(string species) => Signatures.GetOrAdd(species, s =>
     {
         string text;
+        // A shiny look (plan 09 · L1) is its model's signature and its palette's: a plain model's signature is never
+        // touched, so no sprite of a Pokémon that isn't shiny is baked again
+        if (PokemonPlatinumEngine.Models.PokemonLook.IsShiny(s))
+        {
+            string model = PokemonPlatinumEngine.Models.PokemonLook.Base(s);
+            text = $"shiny|{ShinyPalettes.Version}|{Signature(model)}|{ShinyPalettes.Describe(model)}";
+            var shinyHash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
+            return Convert.ToHexString(shinyHash, 0, 8).ToLowerInvariant();
+        }
         if (ModelOverrides.Find(s) is { } file)
         {
             var info = new FileInfo(file);
@@ -884,6 +914,15 @@ internal static partial class PokemonModels
     /// </summary>
     internal static PokeModel Build(string species)
     {
+        // A shiny look is its model built as ever (from the mesh cache) with a palette to put it on the GPU in
+        // (plan 09 · L1): the sculpt and its genome are never asked for anything else
+        if (PokemonPlatinumEngine.Models.PokemonLook.IsShiny(species))
+        {
+            string model = PokemonPlatinumEngine.Models.PokemonLook.Base(species);
+            var shiny = Build(model);
+            shiny.Palette = ShinyPalettes.For(model, shiny.Mesh.Colors);
+            return shiny;
+        }
         if (ModelOverrides.Find(species) is { } file)
         {
             try

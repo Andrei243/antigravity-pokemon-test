@@ -44,6 +44,8 @@ internal static class FieldSprites
     /// <summary>A species' or a form's height in metres, from its data; half a metre for a name the data doesn't know.</summary>
     public static float MetresOf(string name)
     {
+        // A shiny look stands as tall as its model (plan 09 · L1)
+        name = PokemonPlatinumEngine.Models.PokemonLook.Base(name);
         if (PokemonDatabase.Get(name) is { } species) return species.Height;
         if (PokemonDatabase.SpeciesOfForm(name) is { } of) return of.Form(name)?.Height ?? of.Height;
         return 0.5f;

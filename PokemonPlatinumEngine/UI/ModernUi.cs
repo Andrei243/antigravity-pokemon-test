@@ -131,10 +131,23 @@ internal static partial class ModernUi
     {
         UiFonts.DrawCentered(p.DisplayName, x, centerY, size, Ink, UiWeight.Black);
         float w = UiFonts.Measure(p.DisplayName, size, UiWeight.Black);
-        // An Egg shows no gender (plan 06 · R15)
-        if (p.IsEgg || p.Gender is not (Gender.Male or Gender.Female)) return w;
-        UiIcons.GenderMark(new Vector2(x + w + size * 0.5f, centerY), size * 0.74f, p.Gender);
-        return w + size * 0.9f;
+        // An Egg shows no gender (plan 06 · R15), nor a shiny's star
+        if (p.IsEgg) return w;
+        if (p.Gender is Gender.Male or Gender.Female)
+        {
+            UiIcons.GenderMark(new Vector2(x + w + size * 0.5f, centerY), size * 0.74f, p.Gender);
+            w += size * 0.9f;
+        }
+        // A shiny's star after it (plan 09 · L1)
+        if (p.IsShiny) w += ShinyStarAfter(x + w, centerY, size);
+        return w;
+    }
+
+    /// <summary>A shiny's star after a name ending at <paramref name="x"/> (plan 09 · L1); returns the width it takes.</summary>
+    public static float ShinyStarAfter(float x, float centerY, float size)
+    {
+        UiIcons.ShinyStar(new Vector2(x + size * 0.5f, centerY), size * 0.7f);
+        return size * 0.9f;
     }
 
     /// <summary>A type's name on a pill of its colour; returns the pill's width.</summary>

@@ -446,6 +446,13 @@ partial class Harness
     // A Pokémon of a species, or of a species' form by the form's name (Meowth-Galar, Charizard-Mega-X)
     static Pokemon Meet(string name, int level)
     {
+        // A look name met shiny (plan 09 · L1: versus Gyarados+s Milotic): the Pokémon as ever, then shiny, so no draw moves
+        if (PokemonLook.IsShiny(name))
+        {
+            var shiny = Meet(PokemonLook.Base(name), level);
+            shiny.IsShiny = true;
+            return shiny;
+        }
         if (PokemonDatabase.Get(name) is { } species) return new Pokemon(species, level);
         // (with the form's own moves, where it has a learnset of its own: plan 03 · D13)
         return Pokemon.InForm(PokemonDatabase.SpeciesOfForm(name) ?? throw new ArgumentException($"No species or form is called {name}"), name, level);

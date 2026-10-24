@@ -573,7 +573,7 @@ public partial class GameEngine
     {
         // On the water after a save is loaded, nobody has said whose Surf it was: the first of the team who knows it
         if (flow.Player.Mount != null && flow.Player.Carrier == null)
-            flow.Player.Carrier = flow.Party.Members.FirstOrDefault(p => p.Moves.Any(m => m.Name == "Surf"))?.ModelName;
+            flow.Player.Carrier = flow.Party.Members.FirstOrDefault(p => p.Moves.Any(m => m.Name == "Surf"))?.LookName;
         flow.Player.PushesBoulders = flow.Story.Has(FieldMoveRules.StrengthFlag);
         flow.Player.HasRunningShoes = flow.Story.Has(StoryState.RunningShoesFlag);
         flow.Map.Lit = flow.Story.Has(FieldMoveRules.FlashFlag);
@@ -583,9 +583,9 @@ public partial class GameEngine
     /// <summary>A field move is used: its cut-in plays (with the Pokémon's cry, as the original's), and the script waits for it.</summary>
     private void StartCutIn(FieldMove move, Pokemon user, NPC? subject)
     {
-        flow.CutIn = new FieldCutIn(user.ModelName, move);
+        flow.CutIn = new FieldCutIn(user.LookName, move);
         flow.CutInSubject = subject;
-        PokemonSprites.GetBaked(user.ModelName, SpriteView.Front);
+        PokemonSprites.GetBaked(user.LookName, SpriteView.Front);
         AudioManager.PlayCry(user);
     }
 
@@ -1267,7 +1267,7 @@ public partial class GameEngine
         {
             game.flow.Journal.Tell(new JournalEvent(JournalEventKind.UsedFieldMove, FieldMoveRules.MoveName(move)));
             // Whose Surf it is carries the player (plan 10 · F1)
-            if (move is FieldMove.Surf or FieldMove.Dive) game.flow.Player.Carrier = user.ModelName;
+            if (move is FieldMove.Surf or FieldMove.Dive) game.flow.Player.Carrier = user.LookName;
             // (A hurry begun while the move's own line was being read uses the move without its cut-in)
             if (Skipping) return;
             game.StartCutIn(move, user, subject);

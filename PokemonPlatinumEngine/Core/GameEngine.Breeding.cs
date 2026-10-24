@@ -37,12 +37,12 @@ public partial class GameEngine
     private bool HatchFirstEgg()
     {
         if (flow.Party.Members.FirstOrDefault(p => p.IsEgg && p.EggCycles == 0) is not { } egg) return false;
-        flow.WantModel(egg.ModelName);
+        flow.WantModel(PokemonLook.Of(egg.ModelName, egg.IsShiny));
         string place = PlaceName();
         var day = GameClock.Today;
         StartTransition(GameState.Hatch, () =>
         {
-            AwaitModels(new[] { egg.ModelName });
+            AwaitModels(new[] { PokemonLook.Of(egg.ModelName, egg.IsShiny) });
             flow.HatchScreen.Begin(egg, place, day);
         });
         return true;

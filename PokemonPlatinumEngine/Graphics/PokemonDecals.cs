@@ -145,6 +145,8 @@ internal static class PokemonDecals
         for (int d = 0; d < m.Decals.Count; d++)
         {
             var decal = m.Decals[d];
+            // A shiny look paints its marks in its palette's colours (plan 09 · L1): the second atlas
+            if (m.Palette is { } palette) decal = decal.Shined(palette);
             var center = new Vector2((d % cols + 0.5f) * Cell, (d / cols + 0.5f) * Cell);
             // Pixels per model unit across and down the cell (a decal's square can be taller than it is wide)
             var k = new Vector2(Cell * 0.5f / decal.Half.X, Cell * 0.5f / decal.Half.Y);

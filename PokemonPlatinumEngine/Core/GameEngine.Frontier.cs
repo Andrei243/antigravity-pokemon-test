@@ -227,7 +227,7 @@ public partial class GameEngine
         KeepTheRecord(flow.Battle);
         StartTransition(GameState.Overworld, () =>
         {
-            PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));
+            PokemonModels.Trim(flow.Party.Members.Select(p => p.LookName));
             PlayFieldMusic();
         });
     }

@@ -141,7 +141,7 @@ public sealed class SubstituteView
 }
 
 /// <summary>What an effect cue shows: a move, something that happens to one Pokémon, the weather over the field, or a moment of the turn (plan 25 · Y3).</summary>
-public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower, Dynamax, DynamaxEnd, Tera }
+public enum CueKind { Move, StatUp, StatDown, Heal, Status, Seals, Weather, Moment, Mega, UltraBurst, ZPower, Dynamax, DynamaxEnd, Tera, Shiny }
 
 /// <summary>
 /// An effect for the renderer to play (plan 04 · G8): a move from one place to another and how it landed, or a
@@ -175,6 +175,13 @@ public sealed class EffectCue
 
     /// <summary>For the held item's moment: the item that went off is a berry, eaten; anything else only glints.</summary>
     public bool Berry { get; init; }
+
+    /// <summary>
+    /// For <see cref="CueKind.Shiny"/> (plan 09 · L1): how long after the cue begins its sparkle does, while the
+    /// Pokémon comes out of its ball (<see cref="BattleAnimator.ShinyFromBall"/>) or appears
+    /// (<see cref="BattleAnimator.ShinyFromAppearing"/>).
+    /// </summary>
+    public float Lead { get; init; }
 
     /// <summary>For <see cref="CueKind.Mega"/> (plan 25 · Y14): a Primal Reversion, in its own colour (<see cref="Type"/>: Water for Kyogre, Ground for Groudon).</summary>
     public bool Primal { get; init; }
@@ -250,6 +257,7 @@ public sealed class EffectCue
         CueKind.UltraBurst => BattleAnimator.UltraBurstTime,
         CueKind.ZPower => BattleAnimator.ZPowerTime,
         CueKind.Seals => BattleAnimator.SealTime,
+        CueKind.Shiny => Lead + BattleAnimator.ShinyTime,
         CueKind.Weather => BattleAnimator.WeatherCueTime,
         CueKind.Moment => BattleAnimator.MomentTime,
         _ => BattleAnimator.MarkTime
@@ -293,6 +301,15 @@ public sealed class BattleAnimator
 
     /// <summary>A Ball Capsule's Seals: from the throw to the last piece of the last Seal (plan 06 · R17b; <see cref="Graphics.SealFx.Length"/> after the ball opens).</summary>
     public const float SealTime = SendOutBallTime + Graphics.SealFx.Length;
+
+    /// <summary>A shiny Pokémon's sparkle (plan 09 · L1; style guide, "Shiny Pokémon"): 1.1 s from its first stars to its last.</summary>
+    public const float ShinyTime = 1.1f;
+
+    /// <summary>The sparkle begins once a Pokémon sent out has grown out of its ball…</summary>
+    public const float ShinyFromBall = SendOutTime;
+
+    /// <summary>…or half a second after a wild one appears.</summary>
+    public const float ShinyFromAppearing = 0.5f;
     // A physical strike and a special move's release peak about when the damage lands (the engine's hit delay)
     public const float AttackTime = 0.65f;
     public const float HitTime = 0.55f;
@@ -986,6 +1003,26 @@ public sealed class BattleAnimator
             Kind = CueKind.Seals, Capsule = capsule, FromSide = side, FromSlot = slot,
             ToSide = side == BattleSide.Player ? BattleSide.Enemy : BattleSide.Player, ToSlot = 0
         });
+
+    /// <summary>
+    /// A shiny Pokémon's sparkle as it comes out (plan 09 · L1): stars burst out of it once it has grown out of its
+    /// ball, or a moment after it appears (<paramref name="fromBall"/> false). It counts for itself, so no move's
+    /// seed moves, and it isn't started about a Pokémon that can't be seen; null then.
+    /// </summary>
+    public EffectCue? ShinySparkle(BattleSide side, int slot, bool fromBall)
+    {
+        var cue = new EffectCue
+        {
+            Kind = CueKind.Shiny, Lead = fromBall ? ShinyFromBall : ShinyFromAppearing,
+            FromSide = side, FromSlot = slot, ToSide = side, ToSlot = slot,
+            Seed = ++shinyCount * 3911 + slot * 29 + (int)side
+        };
+        if (!InSight(side, slot)) return null;
+        cues.Add(cue);
+        return cue;
+    }
+
+    private int shinyCount;
 
     // ------------------------------------------------------------------ a battle's answers (plan 25 · Y5)
 

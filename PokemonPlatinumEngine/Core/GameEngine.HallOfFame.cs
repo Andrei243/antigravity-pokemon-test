@@ -28,7 +28,7 @@ public partial class GameEngine
     /// <summary>The team's models, asked for before a fade and waited on at its midpoint, as a battle's are.</summary>
     private System.Collections.Generic.List<string> ChampionsModels()
     {
-        var shown = flow.Party.Members.Where(p => !p.IsEgg).Select(p => p.ModelName).Distinct().ToList();
+        var shown = flow.Party.Members.Where(p => !p.IsEgg).Select(p => p.LookName).Distinct().ToList();
         foreach (string name in shown) flow.WantModel(name);
         return shown;
     }

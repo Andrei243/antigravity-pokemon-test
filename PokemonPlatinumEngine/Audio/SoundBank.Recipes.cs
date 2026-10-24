@@ -87,6 +87,7 @@ public static partial class SoundBank
         // ---- Battles
         Add("send_out", SoundGroup.Battle, "SEQ_SE_DP_BOWA4", "A ball opens and a Pokémon comes out.");
         Add("recall", SoundGroup.Battle, null, "A Pokémon is called back into its ball.");
+        Add("shiny", SoundGroup.Battle, "SEQ_SE_DP_REAPOKE", "A shiny Pokémon sparkles as it comes out of its ball or appears (plan 09 · L1).");
         Add("run_away", SoundGroup.Battle, "SEQ_SE_DP_NIGERU", "Getting away from a wild Pokémon.");
         Add("ball_throw", SoundGroup.Battle, "SEQ_SE_DP_NAGERU", "A ball thrown.");
         Add("ball_shake", SoundGroup.Battle, "SEQ_SE_DP_KON", "Each wobble of a thrown ball.");
@@ -601,6 +602,15 @@ public static partial class SoundBank
                 d.Bell(0.08f, 0.38f, N(96), 2.01f, 1.4f, 0.18f);
                 d.Bell(0.14f, 0.34f, N(100), 2.01f, 1.4f, 0.14f);
                 return Finish(d.S, 0.45f);
+            case "shiny":
+                // A run of bright bell notes climbing and falling back, as the stars burst (plan 09 · L1)
+                d = new SoundDesign(0.75f, 0x5A1u);
+                d.Bell(0.00f, 0.42f, N(100), 2.01f, 1.6f, 0.16f);
+                d.Bell(0.07f, 0.42f, N(104), 2.01f, 1.6f, 0.15f);
+                d.Bell(0.14f, 0.42f, N(107), 2.01f, 1.6f, 0.14f);
+                d.Bell(0.24f, 0.46f, N(112), 2.01f, 1.6f, 0.13f);
+                d.Bell(0.34f, 0.38f, N(107), 2.01f, 1.4f, 0.09f);
+                return Finish(d.S, 0.4f);
             case "recall":
                 // A beam of red light drawing in: a falling zap
                 d = new SoundDesign(0.38f, 0xEC);
