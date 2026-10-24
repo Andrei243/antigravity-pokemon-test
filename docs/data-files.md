@@ -381,6 +381,8 @@ The original keeps two things of the Distortion World outside its map files, in 
 
 One string per row of the grid, cells separated by spaces. `chunks` holds chunk ids (`-` for none), `areas` an index into `areaKeys` for the area each chunk belongs to, `altitudes` how high the chunk sits in half tiles. Matrix 0 is the overworld. A matrix without `areas` belongs whole to the area that names it; one without `altitudes` sits at zero. The same chunk can fill many cells: the overworld's 468 filled cells use 176 different chunks.
 
+`seasons` (plan 22 · U2, part b; Unova's alone, left out everywhere else): the chunks another season lays in place of the matrix's own, which are spring's, as a list of `{ "season": "Autumn", "chunks": [ … ] }`, each grid in the layout of `chunks` with `-` wherever the matrix's own chunk serves. `WorldMatrixFile.ChunkAt(x, y, season)` gives a season's chunk at a cell; nothing reads it until plan 22 · U4 builds a season's layout.
+
 ### `areas/<key>.json`
 
 One area: a town, a route, a cave floor, a room. `key` is its name in lower case (`twinleaf_town`), `index` the original's number for it, `name` what a player reads on arriving, `matrix` the grid it lies on. `kind` is `Town`, `Outdoors`, `Cave`, `Indoors`, `PokemonCenter` or `Underground`; `sign` the style of the arrival sign; `weather`, `camera` and `battleBackground` name the original's settings (the field shows the weather: `Weathers.Of` reads the name, and the five places whose weather follows Platinum's calendar have, until the calendar is imported, what they have on most days); `dayMusic` and `nightMusic` the roles of its music; `encounters` its table of wild Pokémon (left out when it has none); `bike`, `running`, `escapeRope` and `fly` what is allowed there.
