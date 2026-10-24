@@ -52,7 +52,7 @@ public partial class GameEngine
     /// Opens the map of the region to be looked at: the Town Map out of the bag (it goes back to the bag) or off
     /// the item button, or a map on a wall. False where the region has no map.
     /// </summary>
-    private bool OpenTownMap(TownMapMode mode, bool fromBag, int flier = -1)
+    private bool OpenTownMap(TownMapMode mode, bool fromBag, Pokemon? flier = null)
     {
         if (TownMapNow() is not { } state) return false;
         townMapFromBag = fromBag;

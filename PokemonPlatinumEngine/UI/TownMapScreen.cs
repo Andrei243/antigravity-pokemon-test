@@ -45,10 +45,10 @@ public sealed class TownMapScreen
     /// <summary>Whether the map is looked at from near.</summary>
     public bool Zoomed { get; private set; }
 
-    /// <summary>Which of the team uses Fly: its place in the party (Fly's mode).</summary>
-    public int Flier { get; private set; }
+    /// <summary>The Pokémon that uses Fly, one of the team or a wild helper (plan 12 · Q18) (Fly's mode).</summary>
+    public Pokemon? Flier { get; private set; }
 
-    public void Open(TownMapState state, TownMapMode mode, int flier = -1)
+    public void Open(TownMapState state, TownMapMode mode, Pokemon? flier = null)
     {
         State = state;
         Mode = mode;

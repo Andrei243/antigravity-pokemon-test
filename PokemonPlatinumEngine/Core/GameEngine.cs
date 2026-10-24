@@ -172,6 +172,13 @@ public partial class GameEngine
     /// <summary>The record of the region a new game starts in: <see cref="NewGameRegion"/>'s, or the chain's first.</summary>
     private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
+    /// <summary>The strip of the party menu and the Pokétch's app: the granted moves nobody on the team knows (plan 12 · Q18).</summary>
+    private void KeepTheHelpersInView()
+    {
+        flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
+        flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
+    }
+
     /// <summary>The field moves a wild helper does now (plan 12 · Q18), worked out afresh and never stored.</summary>
     public IReadOnlyCollection<FieldMove> GrantedMoves =>
         FieldHelp.Granted(Settings.FieldHelpers, Ruleset.Current.Preset, flow.Story, flow.Bag, Here.Id);
@@ -1025,6 +1032,7 @@ public partial class GameEngine
                 }
                 break;
             case GameState.PartyMenu:
+                KeepTheHelpersInView();
                 flow.PartyScreen.Update(flow.Party, dt);
                 if (flow.PartyScreen.TakeFieldMove() is var (move, index)) UseFieldMoveFromMenu(move, index);
                 else if (!flow.PartyScreen.IsActive)
@@ -1041,7 +1049,7 @@ public partial class GameEngine
                 {
                     flow.FlyTarget = town;
                     flow.State = GameState.Overworld;
-                    StartScript("common.UseFly", pokemon: flow.Party.Members[flow.TownMapScreen.Flier]);
+                    StartScript("common.UseFly", pokemon: flow.TownMapScreen.Flier);
                 }
                 else if (!flow.TownMapScreen.IsActive) CloseTownMap();
                 break;
@@ -1304,6 +1312,7 @@ public partial class GameEngine
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
+        flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
         if (flow.Poketch.Enabled) flow.Poketch.State?.Update(dt, PoketchNow());
         // The radar's chains count toward the Trainer Counter's records whichever app is showing
         if (flow.Poketch.Has(PoketchApp.TrainerCounter) && (flow.Radar.Count, flow.Radar.Species, flow.Radar.Active) != radarFollowed)
@@ -1554,6 +1563,7 @@ public partial class GameEngine
         c.Radar = flow.Radar;
         c.Berries = flow.Berries;
         c.Rng = fieldRandom;
+        c.Granted = GrantedMoves.ToList();
         // The Day Care's two, at the levels their steps have brought them to, and whether an Egg waits (plan 06 · R15)
         c.DayCare = flow.DayCare.Left;
         c.DayCareLevels = Enumerable.Range(0, DayCare.Places).Where(i => flow.DayCare[i] != null).Select(flow.DayCare.LevelNow).ToList();

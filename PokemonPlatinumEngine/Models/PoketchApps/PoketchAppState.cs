@@ -69,6 +69,9 @@ public sealed class PoketchContext
 
     /// <summary>Plays a Pokémon's cry.</summary>
     public Action<Pokemon> Cry { get; set; } = _ => { };
+
+    /// <summary>The field moves a wild helper does now, for the Hidden Moves app (plan 12 · Q18).</summary>
+    public IReadOnlyList<FieldMove> Granted { get; set; } = Array.Empty<FieldMove>();
 }
 
 /// <summary>
@@ -131,6 +134,7 @@ public abstract class PoketchAppState
         PoketchApp.KitchenTimer => new KitchenTimerApp(),
         PoketchApp.ColorChanger => new ColorChangerApp(),
         PoketchApp.MatchupChecker => new MatchupCheckerApp(),
+        PoketchApp.HiddenMoves => new HiddenMovesApp(),
         _ => new UnavailableApp(app)
     };
 }

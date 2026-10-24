@@ -98,6 +98,19 @@ public class PartyScreen
     private (FieldMove Move, int Index)? chosenMove;
 
     /// <summary>
+    /// The field moves the options' helpers grant that nobody on the team knows (plan 12 · Q18): a strip under the cards,
+    /// which the cursor reaches by going down from the last row. Set by the game while the menu is open; empty with the row off.
+    /// </summary>
+    public IReadOnlyList<FieldMove> Helpers { get; set; } = Array.Empty<FieldMove>();
+
+    /// <summary>Whether the cursor is on the strip of helpers, and which of them.</summary>
+    public bool OnStrip { get; private set; }
+    public int StripIndex { get; private set; }
+
+    /// <summary>The place <see cref="TakeFieldMove"/> gives for a move a wild helper does: no Pokémon of the team.</summary>
+    public const int HelperUser = -1;
+
+    /// <summary>
     /// Open for a script to have a Pokémon of the team chosen (plan 06 · R12: the one to trade): A chooses the one
     /// under the cursor and closes, B closes with none. <see cref="Chosen"/> is the place chosen, or
     /// <see cref="NoneChosen"/>.
@@ -171,6 +184,8 @@ public class PartyScreen
         Actions = null;
         Sharing = null;
         Message = null;
+        OnStrip = false;
+        StripIndex = 0;
         chosenMove = null;
         openAge = 0f;
     }
@@ -178,6 +193,7 @@ public class PartyScreen
     public void Close()
     {
         IsActive = false;
+        OnStrip = false;
         SwapSourceIndex = null;
         ShowSummary = false;
         Actions = null;
@@ -224,6 +240,12 @@ public class PartyScreen
     public void Confirm(Party party)
     {
         Message = null;
+        if (OnStrip && StripIndex < Helpers.Count)
+        {
+            chosenMove = (Helpers[StripIndex], HelperUser);
+            AudioManager.PlaySound("select");
+            return;
+        }
         if (SelectedIndex >= party.Count) return;
         if (Entering)
         {
@@ -319,6 +341,11 @@ public class PartyScreen
     {
         Message = null;
         AudioManager.PlaySound("cancel");
+        if (OnStrip)
+        {
+            OnStrip = false;
+            return;
+        }
         if (Entering && Entered.Count > 0)
         {
             Entered.RemoveAt(Entered.Count - 1);
@@ -371,6 +398,22 @@ public class PartyScreen
     public void MoveCursor(int dx, int dy, int count)
     {
         if (count <= 0 || (dx == 0 && dy == 0)) return;
+        if (OnStrip)
+        {
+            if (dy < 0) OnStrip = false;
+            else if (dx != 0 && Helpers.Count > 1) StripIndex = ((StripIndex + dx) % Helpers.Count + Helpers.Count) % Helpers.Count;
+            else return;
+            AudioManager.PlaySound("cursor");
+            return;
+        }
+        // Down from the last row of cards goes on to the helpers the options grant (plan 12 · Q18)
+        if (dy > 0 && !ShowSummary && Helpers.Count > 0 && SelectedIndex + 2 >= count && !Entering && !Choosing && Sharing == null && !SwapSourceIndex.HasValue)
+        {
+            OnStrip = true;
+            StripIndex = Math.Min(StripIndex, Helpers.Count - 1);
+            AudioManager.PlaySound("cursor");
+            return;
+        }
         int next = ShowSummary
             ? ((SelectedIndex + (dy != 0 ? dy : dx)) % count + count) % count
             : UiNav.Grid(SelectedIndex, count, 2, dx, dy);
@@ -448,7 +491,8 @@ public class PartyScreen
         else
         {
             ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex, Math.Clamp(openAge / AppearTime, 0f, 1f),
-                Prompt, Actions?.Select(a => a.Label).ToList(), ActionIndex, Sharing?.Giver);
+                Prompt, Actions?.Select(a => a.Label).ToList(), ActionIndex, Sharing?.Giver,
+                Helpers.Select(m => LocalNames.Move(FieldMoveRules.MoveName(m)).ToUpperInvariant()).ToList(), OnStrip ? StripIndex : -1);
         }
     }
 }

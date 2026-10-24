@@ -4566,3 +4566,10 @@ came first, so the judging is HeartGold's and the decision's alternative is what
   third, second and first, where HeartGold's announcer reads each out in the park with the contestants lined up.
 - **Afterwards** the catch joins the team, or the PC when the team was full; the others go home. A battle lost in the
   park gives the contest up: the team is put back and the catch let go before the player wakes up.
+
+## Field moves without a knower, the screens (2026-10-24, plan 12 · Q18, part b)
+
+- **Who does the move.** A granted move (`FieldHelp.Granted`: the region's Badge held and the HM in the bag, the options' row on for the rules in force) is done by a helper of the game's own, made by `FieldHelp.HelperFor` from a generator seeded by the move, so it is the same Pokémon each time and `Dice` is not touched: a Staravia for Fly, a Bibarel for Surf and Waterfall, a Bidoof for the rest, level 20. It is never added to the team, the Pokédex or the save. A move a Pokémon of the team knows is still done by that Pokémon first.
+- **The party menu** lists a strip of the granted moves that nobody on the team knows, under the cards; choosing one hands the game the move with place -1 (`PartyScreen.HelperUser`), and the game checks it where the player stands (`FieldMoveRules.Check`) exactly as it checks a team member's. The script that runs says that a wild Pokémon lent a hand (`usemove`) and the cut-in shows the helper.
+- **Fly** keeps its flier on the map screen as a `Pokemon` (`TownMapScreen.Flier`), the team's member or the helper, and `common.UseFly` is started with it. Where Fly may go is the Fly screen's own business (plan 18 · W9).
+- **The Pokétch's Hidden Moves app** (`PoketchApp.HiddenMoves`, last in the enum) shows while the row is on and is refused by `Poketch.Register`, so no save holds it and nobody gives it. It lists the granted moves.

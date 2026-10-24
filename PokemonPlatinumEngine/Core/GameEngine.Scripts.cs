@@ -242,7 +242,7 @@ public partial class GameEngine
     /// </summary>
     private void UseFieldMoveFromMenu(FieldMove move, int index)
     {
-        var user = flow.Party.Members[index];
+        var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move); // index -1: a wild helper (plan 12 · Q18)
         var walker = new Walker(flow.Player.Mode, flow.Player.HeightOn(flow.Map), Moves: flow.Player.Moves);
         var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
         var error = FieldMoveRules.Check(move, spot, flow.Story);
@@ -262,7 +262,7 @@ public partial class GameEngine
         {
             // Fly's choice is the map of the region in its own mode (TOWN_MAP_MODE_FLY; plan 01 · M12)
             townMapFromBag = false;
-            flow.TownMapScreen.Open(regionMap!, TownMapMode.Fly, index);
+            flow.TownMapScreen.Open(regionMap!, TownMapMode.Fly, user);
             flow.State = GameState.FlyMap;
             return;
         }
