@@ -1,0 +1,40 @@
+{
+  "key": "cave_of_origin_1f",
+  "index": 276,
+  "name": "Cave Of Origin",
+  "matrix": 225,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CAVE_OF_ORIGIN",
+  "nightMusic": "MUS_CAVE_OF_ORIGIN",
+  "encounters": "cave_of_origin_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Sableye", "level": 30 },
+    { "species": "Sableye", "level": 32 },
+    { "species": "Sableye", "level": 34 },
+    { "species": "Zubat", "level": 33 },
+    { "species": "Zubat", "level": 34 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 36 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 11, "z": 17, "to": "cave_of_origin_entrance", "toWarp": 1 },
+    { "x": 14, "z": 5, "to": "cave_of_origin_b1f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

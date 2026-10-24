@@ -1,0 +1,51 @@
+{
+  "key": "seafloor_cavern_room_2",
+  "index": 267,
+  "name": "Seafloor Cavern",
+  "matrix": 216,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "seafloor_cavern_room_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Zubat", "level": 33 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Zubat", "level": 34 },
+    { "species": "Zubat", "level": 35 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 36 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 10, "z": 7, "to": "seafloor_cavern_room_1", "toWarp": 2 },
+    { "x": 4, "z": 10, "to": "seafloor_cavern_room_4", "toWarp": 0 },
+    { "x": 6, "z": 1, "to": "seafloor_cavern_room_6", "toWarp": 0 },
+    { "x": 11, "z": 1, "to": "seafloor_cavern_room_7", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 13, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 10, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 13, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 4, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_5", "looks": "pushable_boulder", "movement": "look_around", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_StrengthBoulder" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 8, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_18", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_around", "x": 9, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_19", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder_6", "looks": "pushable_boulder", "movement": "look_around", "x": 4, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [],
+  "triggers": []
+}

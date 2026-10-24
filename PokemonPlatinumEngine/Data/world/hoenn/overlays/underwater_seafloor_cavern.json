@@ -1,0 +1,15 @@
+{
+  // The pool under the sea before the Seafloor Cavern (plan 21 · H8, part b): Team Aqua's stolen submarine is moored
+  // here, its hull read on four tiles (underwater_seafloor_cavern.txt) until Kyogre has gone
+  // (FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE). Coming up anywhere in it comes up in the cavern's mouth,
+  // Emerald's setdivewarp (emergeTo); its passage leads back to Route 128's floor
+  "area": "underwater_seafloor_cavern",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "seafloor_cavern_entrance", "x": 10, "z": 17, "facing": "Up" },
+  "readAt": [
+    { "x": 5, "z": 4, "script": "Submarine" }, { "x": 6, "z": 4, "script": "Submarine" },
+    { "x": 7, "z": 4, "script": "Submarine" }, { "x": 8, "z": 4, "script": "Submarine" }
+  ]
+}

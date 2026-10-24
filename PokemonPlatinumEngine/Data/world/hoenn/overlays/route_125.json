@@ -5,6 +5,9 @@
   // (route_125.txt)
   "area": "route_125",
   "bgmTrack": "hoenn/route120",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
   "trees": "Round",
   "locked": [ 0 ],
   "people": {

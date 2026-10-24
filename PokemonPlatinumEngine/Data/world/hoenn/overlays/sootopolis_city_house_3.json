@@ -1,0 +1,9 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): a woman who asks whether the player has fans, and her daughter
+  "area": "sootopolis_city_house_3",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "woman_4": { "name": "Woman", "script": "Woman" },
+    "girl_2": { "name": "Girl", "dialog": [ "I went to Lilycove's Trainer Fan Club once. The fans there went wild over every trainer who walked in!" ] }
+  }
+}

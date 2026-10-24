@@ -1,0 +1,10 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): a couple who walk the sea floor with their Azumarill
+  "area": "sootopolis_city_house_4",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "man_1": { "name": "Man", "dialog": [ "Treasures from long ago lie on the sea floor, they say. The sea floor round Hoenn is full of mysteries." ] },
+    "woman_4": { "name": "Woman", "dialog": [ "My husband and I take our Azumarill for walks along the sea floor. Its bubbles are lovely in the light." ] },
+    "azumarill": { "name": "Azumarill", "npcType": "Pokemon", "species": "Azumarill", "script": "Azumarill", "still": true }
+  }
+}

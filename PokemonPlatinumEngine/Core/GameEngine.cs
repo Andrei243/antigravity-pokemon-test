@@ -878,6 +878,8 @@ public partial class GameEngine
             // Slow motion slows the field's own time (plan 09 · L4); the camera's clock, the text, a bubble and a
             // script's waits keep the clock's
             world.Life.Advance(FieldTime(dt));
+            // The titans' clash turns its weather by the field's own clock (plan 21 · H8, part b)
+            flow.Map.WeatherClock = world.Life.Now;
             world.RunCamera(dt);
             // The set pieces playing are heard as they go, by the field's own clock (plan 09 · L12)
             RunTheSetPieces();

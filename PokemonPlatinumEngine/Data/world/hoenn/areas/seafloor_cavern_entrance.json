@@ -1,0 +1,54 @@
+{
+  "key": "seafloor_cavern_entrance",
+  "index": 265,
+  "name": "Seafloor Cavern",
+  "matrix": 214,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "seafloor_cavern_entrance",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Zubat", "level": 5, "maxLevel": 35 },
+    { "species": "Zubat", "level": 30, "maxLevel": 35 },
+    { "species": "Golbat", "level": 30, "maxLevel": 35 },
+    { "species": "Golbat", "level": 30, "maxLevel": 35 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 10, "z": 18, "to": "underwater_route_128", "toWarp": 0 },
+    { "x": 10, "z": 1, "to": "seafloor_cavern_room_1", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "seafloor_cavern_entrance_grunt", "looks": "aqua_member_m", "movement": "look_north", "x": 10, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT", "script": "SeafloorCavern_Entrance_EventScript_Grunt" }
+  ],
+  "signs": [],
+  "triggers": []
+}

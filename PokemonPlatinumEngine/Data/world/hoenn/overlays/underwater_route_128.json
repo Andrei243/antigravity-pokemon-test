@@ -1,0 +1,8 @@
+{
+  // The sea floor under Route 128 (plan 21 · H8, part b), east of Sootopolis's crater. A passage in its rock leads into
+  // the pool under the sea that opens on the Seafloor Cavern (underwater_seafloor_cavern), Team Aqua's way in
+  "area": "underwater_route_128",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round"
+}

@@ -1,0 +1,11 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): two brothers who each measure one species, the Seedot and the
+  // Lotad (VAR_SEEDOT_SIZE_RECORD and VAR_LOTAD_SIZE_RECORD, Emerald's; Models/SizeContest.cs), and give an Elixir for
+  // a bigger one (sootopolis_city_lotad_and_seedot_house.txt)
+  "area": "sootopolis_city_lotad_and_seedot_house",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "hiker": { "name": "Hiker", "script": "SeedotBrother" },
+    "fisherman": { "name": "Fisherman", "script": "LotadBrother" }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "key": "sootopolis_city_house_5",
+  "index": 205,
+  "name": "Sootopolis City",
+  "matrix": 154,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SOOTOPOLIS",
+  "nightMusic": "MUS_SOOTOPOLIS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "sootopolis_city", "toWarp": 8 },
+    { "x": 4, "z": 6, "to": "sootopolis_city", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "maniac", "looks": "maniac", "movement": "look_east", "x": 3, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_House5_EventScript_Maniac" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_west", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_House5_EventScript_Girl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

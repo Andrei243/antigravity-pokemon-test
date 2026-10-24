@@ -1,0 +1,60 @@
+{
+  // Sootopolis City (plan 21 · H8, part b): the city inside the crater of an old volcano, its white houses cut into the
+  // terraces round a harbour of deep water. Nobody comes to it but by the sea: Dive from Route 126's floor through the
+  // passage under the crater's wall, and up into the harbour (Emerald's setdivewarp: Underwater_SootopolisCity comes up
+  // at 29, 53, and the harbour's dark water dives down to its 9, 6; diveTo). The old man before the Cave of Origin turns
+  // everyone back. Once Kyogre has woken (VAR_SOOTOPOLIS_CITY_STATE 1) Groudon and Kyogre clash in the harbour under the
+  // downpour, the residents come out to watch, and the scene of their clash plays as the player first arrives
+  // (sootopolis_city.txt); after it the downpour and the drought take turns over the city (FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN,
+  // a flag of ours that the scene sets and Rayquaza's coming will clear, plan 21 · H8, part c) with Emerald's song of the
+  // titans' weather. Steven leads the player to the Cave of Origin, where Wallace waits. The houses' doors stay shut while
+  // the titans are in the city (switches until FLAG_LEGENDARIES_IN_SOOTOPOLIS); Juan's Gym is part c's (its door shut until
+  // then) and the Mystery Events house stays shut
+  "area": "sootopolis_city",
+  "bgmTrack": "hoenn/sootopolis",
+  "trees": "Round",
+  "architecture": "Crater",
+  "diveTo": { "area": "underwater_sootopolis_city", "x": 9, "z": 6, "facing": "Up" },
+  "locked": [ 2, 12 ],
+  "switches": [
+    { "warp": 4, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }, { "warp": 5, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" },
+    { "warp": 6, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }, { "warp": 7, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" },
+    { "warp": 8, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }, { "warp": 9, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" },
+    { "warp": 10, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }, { "warp": 11, "until": "FLAG_LEGENDARIES_IN_SOOTOPOLIS" }
+  ],
+  "readAt": [
+    { "x": 9, "z": 6, "script": "ShutDoor" }, { "x": 45, "z": 6, "script": "ShutDoor" }, { "x": 9, "z": 17, "script": "ShutDoor" },
+    { "x": 44, "z": 17, "script": "ShutDoor" }, { "x": 9, "z": 26, "script": "ShutDoor" }, { "x": 53, "z": 28, "script": "ShutDoor" },
+    { "x": 8, "z": 35, "script": "ShutDoor" }, { "x": 48, "z": 25, "script": "ShutDoor" }, { "x": 31, "z": 32, "script": "GymDoor" }
+  ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "people": {
+    "sootopolis_expert": { "name": "Old Man", "script": "Expert", "still": true },
+    "sootopolis_woman_2": { "name": "Woman", "script": "Woman2" },
+    "kiri": { "name": "Kiri", "script": "Kiri" },
+    "sootopolis_ninja_boy": { "name": "Boy", "script": "NinjaBoy" },
+    "sootopolis_boy_1": { "name": "Boy", "script": "Boy1" },
+    "man_1": { "name": "Man", "script": "Man" },
+    "sootopolis_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
+    "sootopolis_woman_1": { "name": "Woman", "script": "Woman1" },
+    "sootopolis_groudon": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "script": "Titan", "still": true },
+    "sootopolis_kyogre": { "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "script": "Titan", "still": true },
+    "sootopolis_rayquaza": { "name": "Rayquaza", "npcType": "Pokemon", "species": "Rayquaza", "still": true },
+    "sootopolis_maniac": { "name": "Man", "script": "Maniac" },
+    "sootopolis_girl": { "name": "Girl", "script": "Girl" },
+    "sootopolis_black_belt": { "name": "Black Belt", "script": "BlackBelt" },
+    "sootopolis_boy_2": { "name": "Boy", "script": "Boy2" },
+    "sootopolis_maxie": { "name": "Maxie", "npcType": "maxie", "script": "Maxie", "still": true },
+    "sootopolis_archie": { "name": "Archie", "npcType": "archie", "script": "Archie", "still": true },
+    "sootopolis_wallace": { "name": "Wallace", "npcType": "wallace", "script": "Wallace", "still": true }
+  },
+  "signs": {
+    "SootopolisCity_EventScript_GymSign": "Sootopolis City Pokémon Gym\nLeader: Juan\nThe Leader as clear as the water!",
+    "SootopolisCity_EventScript_CitySign": "Sootopolis City\nThe city where history sleeps.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

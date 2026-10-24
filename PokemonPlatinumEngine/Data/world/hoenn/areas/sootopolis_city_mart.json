@@ -1,0 +1,28 @@
+{
+  "key": "sootopolis_city_mart",
+  "index": 200,
+  "name": "Sootopolis City",
+  "matrix": 149,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "sootopolis_city", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "sootopolis_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "sootopolis_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_Mart_EventScript_Clerk" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_east", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_Mart_EventScript_FatMan" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 9, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_Mart_EventScript_Gentleman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

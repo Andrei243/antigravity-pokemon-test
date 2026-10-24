@@ -226,9 +226,41 @@
     { "name": "MossdeepCity_SpaceCenter_1F", "matrix": 141, "area": "mossdeep_city_space_center_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "MossdeepCity_SpaceCenter_2F", "matrix": 142, "area": "mossdeep_city_space_center_2f", "trees": "Round", "setting": "Indoors" },
     { "name": "Route124_DivingTreasureHuntersHouse", "matrix": 460, "area": "route_124_diving_treasure_hunters_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H8, part b: the Seafloor Cavern, come to by the passage of Route 128's sea floor (its pool under the sea,
+    // Underwater_SeafloorCavern, a floor of its own that comes up into the cavern's mouth), its nine rooms and Kyogre's
+    // hall; Sootopolis City inside its crater (a map of its own, matrix 1, reached by coming up from the floor under it,
+    // Underwater_SootopolisCity, which a passage joins to Route 126's floor) with its Pokémon Center, Mart and houses
+    // (the Gym is part c's, and the Mystery Events house stays shut); and the Cave of Origin's three rooms
+    { "name": "Underwater_SeafloorCavern", "matrix": 213, "area": "underwater_seafloor_cavern", "trees": "Round", "setting": "Underwater" },
+    { "name": "SeafloorCavern_Entrance", "matrix": 214, "area": "seafloor_cavern_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room1", "matrix": 215, "area": "seafloor_cavern_room_1", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room2", "matrix": 216, "area": "seafloor_cavern_room_2", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room3", "matrix": 217, "area": "seafloor_cavern_room_3", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room4", "matrix": 218, "area": "seafloor_cavern_room_4", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room5", "matrix": 219, "area": "seafloor_cavern_room_5", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room6", "matrix": 220, "area": "seafloor_cavern_room_6", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room7", "matrix": 221, "area": "seafloor_cavern_room_7", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room8", "matrix": 222, "area": "seafloor_cavern_room_8", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafloorCavern_Room9", "matrix": 223, "area": "seafloor_cavern_room_9", "trees": "Round", "setting": "Cave" },
+    { "name": "SootopolisCity", "matrix": 1, "area": "sootopolis_city", "trees": "Round" },
+    { "name": "Underwater_SootopolisCity", "matrix": 192, "area": "underwater_sootopolis_city", "trees": "Round", "setting": "Underwater" },
+    { "name": "SootopolisCity_PokemonCenter_1F", "matrix": 147, "area": "sootopolis_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_PokemonCenter_2F", "matrix": 148, "area": "sootopolis_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_Mart", "matrix": 149, "area": "sootopolis_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House1", "matrix": 150, "area": "sootopolis_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House2", "matrix": 151, "area": "sootopolis_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House3", "matrix": 152, "area": "sootopolis_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House4", "matrix": 153, "area": "sootopolis_city_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House5", "matrix": 154, "area": "sootopolis_city_house_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House6", "matrix": 155, "area": "sootopolis_city_house_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_House7", "matrix": 156, "area": "sootopolis_city_house_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "SootopolisCity_LotadAndSeedotHouse", "matrix": 157, "area": "sootopolis_city_lotad_and_seedot_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "CaveOfOrigin_Entrance", "matrix": 224, "area": "cave_of_origin_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "CaveOfOrigin_1F", "matrix": 225, "area": "cave_of_origin_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "CaveOfOrigin_B1F", "matrix": 229, "area": "cave_of_origin_b1f", "trees": "Round", "setting": "Cave" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
-    // plan 21 · H8 (128's, with the Seafloor Cavern's way in, waits for part b)
+    // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
     { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
   ],
   "areas": [
@@ -320,6 +352,17 @@
     "mossdeep_city_gym", "mossdeep_city_house_1", "mossdeep_city_house_2", "mossdeep_city_house_3", "mossdeep_city_house_4",
     "mossdeep_city_pokemon_center_1f", "mossdeep_city_pokemon_center_2f", "mossdeep_city_mart",
     "mossdeep_city_stevens_house", "mossdeep_city_space_center_1f", "mossdeep_city_space_center_2f",
-    "route_124_diving_treasure_hunters_house"
+    "route_124_diving_treasure_hunters_house",
+    // Plan 21 · H8, part b: Route 128 and its sea floor, the Seafloor Cavern, Sootopolis City with the floor under it and
+    // its rooms, and the Cave of Origin (Routes 129 to 131, Pacifidlog, Sky Pillar, Shoal Cave and Juan's Gym are part c's)
+    "route_128", "underwater_route_128", "underwater_seafloor_cavern", "seafloor_cavern_entrance",
+    "seafloor_cavern_room_1", "seafloor_cavern_room_2", "seafloor_cavern_room_3", "seafloor_cavern_room_4",
+    "seafloor_cavern_room_5", "seafloor_cavern_room_6", "seafloor_cavern_room_7", "seafloor_cavern_room_8",
+    "seafloor_cavern_room_9",
+    "sootopolis_city", "underwater_sootopolis_city",
+    "sootopolis_city_pokemon_center_1f", "sootopolis_city_pokemon_center_2f", "sootopolis_city_mart",
+    "sootopolis_city_house_1", "sootopolis_city_house_2", "sootopolis_city_house_3", "sootopolis_city_house_4",
+    "sootopolis_city_house_5", "sootopolis_city_house_6", "sootopolis_city_house_7", "sootopolis_city_lotad_and_seedot_house",
+    "cave_of_origin_entrance", "cave_of_origin_1f", "cave_of_origin_b1f"
   ]
 }

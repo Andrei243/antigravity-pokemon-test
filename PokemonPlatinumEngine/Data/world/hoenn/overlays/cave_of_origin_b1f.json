@@ -1,0 +1,11 @@
+{
+  // The Cave of Origin's lowest floor (plan 21 · H8, part b): Wallace waits here while the titans clash, asks where
+  // Rayquaza might be and, once told Sky Pillar, goes there ahead of the player (cave_of_origin_b1f.txt;
+  // VAR_SOOTOPOLIS_CITY_STATE 3, FLAG_WALLACE_GOES_TO_SKY_PILLAR). Emerald plays no song here; the cave's own goes on
+  "area": "cave_of_origin_b1f",
+  "bgmTrack": "hoenn/cave_of_origin",
+  "trees": "Round",
+  "people": {
+    "cave_of_origin_wallace": { "name": "Wallace", "npcType": "wallace", "script": "Wallace", "still": true }
+  }
+}

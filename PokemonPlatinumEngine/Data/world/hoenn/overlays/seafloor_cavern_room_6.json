@@ -1,0 +1,6 @@
+{
+  // The Seafloor Cavern, its sixth room (plan 21 · H8, part b): a long hall of water, with the hole back to the mouth
+  "area": "seafloor_cavern_room_6",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round"
+}

@@ -1,0 +1,30 @@
+{
+  "key": "sootopolis_city_pokemon_center_1f",
+  "index": 198,
+  "name": "Sootopolis City",
+  "matrix": 147,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "sootopolis_city", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "sootopolis_city", "toWarp": 0 },
+    { "x": 1, "z": 6, "to": "sootopolis_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sootopolis_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_around", "x": 12, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SootopolisCity_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "wander_west_and_east", "x": 4, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "SootopolisCity_PokemonCenter_1F_EventScript_Woman" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_around", "x": 2, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -273,6 +273,8 @@ public enum Architecture
     Treetop,
     /// <summary>White stucco under sky-blue hip roofs with shutters and flower boxes: the flowering island city of the Space Center (Mossdeep, plan 21 · H8).</summary>
     Starward,
+    /// <summary>Pale stone under deep sea-blue hip roofs with shutters: the white city cut into an old crater's terraces round its harbour (Sootopolis, plan 21 · H8, part b).</summary>
+    Crater,
 
     // Unova (plan 22): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White stucco under slate-teal gable roofs with shutters: the town on the hill over the outlook (Aspertia, plan 22 · U5).</summary>

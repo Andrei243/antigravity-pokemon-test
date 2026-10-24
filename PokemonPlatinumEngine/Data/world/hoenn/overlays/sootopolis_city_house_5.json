@@ -1,0 +1,9 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): a man who knows the old tales of Sootopolis and Mt. Pyre
+  "area": "sootopolis_city_house_5",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "maniac": { "name": "Man", "dialog": [ "The people of Sootopolis and of Mt. Pyre are bound by an old tie. Both keep watch over something that sleeps." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "My big brother used to study the sea. He said the water under the city goes down and down forever." ] }
+  }
+}

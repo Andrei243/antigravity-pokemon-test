@@ -3555,6 +3555,63 @@ until the Mind Badge), `HoennNewGame` calls it, and Mossdeep City's arrival call
 - **Mossdeep is built as Starward** (white stucco under sky-blue hip roofs, shutters and flower boxes; the style guide's
   row), and its open metatiles are its sandy paths (`GbaCover.HoennRanges`).
 
+## The Seafloor Cavern and Sootopolis (2026-10-24, plan 21 · H8, its second part)
+
+Route 128 and its sea floor, the Seafloor Cavern (the pool under the sea before it, its mouth and nine rooms),
+Sootopolis City with the pool under its harbour, its Pokémon Center, Mart and eight houses, and the Cave of Origin's
+three rooms are open, and the stretch from Kyogre's waking to Wallace's leaving for Sky Pillar is scripts of ours on
+Emerald's beats (`route_128.txt`, `underwater_seafloor_cavern.txt`, `seafloor_cavern_*.txt`, `sootopolis_city*.txt`,
+`cave_of_origin_b1f.txt`), under Emerald's flags and variables (`VAR_SEAFLOOR_CAVERN_STATE`, `VAR_ROUTE128_STATE`,
+`VAR_SOOTOPOLIS_CITY_STATE` 0 to 3, `FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN`, `FLAG_LEGENDARIES_IN_SOOTOPOLIS`,
+`FLAG_SYS_WEATHER_CTRL`, `FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN`, `FLAG_WALLACE_GOES_TO_SKY_PILLAR`). **No story or save
+version is raised**: `common.HoennChapterTen` hides what Emerald's new game hides for them (Archie, Maxie and Steven on
+Route 128, the cavern's last hall's people and the waking Kyogre, Sootopolis's Steven, Archie, Maxie, titans, Rayquaza,
+Wallace and watching townsfolk, and Wallace at Sky Pillar), `HoennNewGame` calls it, and the arrival scripts of Route 128,
+the cavern's last hall and Sootopolis call it for a save that never ran it (`FLAG_HOENN_CHAPTER_TEN`). What differs, and
+why:
+
+- **A floor that is no map of the sea's** is dived to and come up from at one place, as Emerald's `setdivewarp` in a
+  map's own script sends it: the overlay's `diveTo` and `emergeTo`. Coming up anywhere in the pool before the cavern comes
+  up in the cavern's mouth at 10, 17; its dark water goes down to the pool at 6, 5; Sootopolis's harbour dives to the pool
+  under it at 9, 6, which comes up in the harbour at 29, 53. The passages along the floor (Route 128's into the cavern's
+  pool, Route 126's under the crater's wall) are warps a diver swims onto, as Emerald's are.
+- **The abnormal weather** is Emerald's `WEATHER_ABNORMAL`, the downpour and the drought by turns: a new field weather,
+  `Drought` (a hard white sun, the battle's harsh sun laid over the hour's light at seven tenths; a battle under it opens in
+  the sun, as Emerald carries its drought over), and `Abnormal`, which turns between the two every ten seconds of the
+  field's clock, the downpour first (our measure; Emerald's own count is in code this import doesn't read). It lies over
+  Routes 124 to 128, Lilycove City and Mossdeep City while `FLAG_SYS_WEATHER_CTRL` is set (Emerald's
+  `Common_EventScript_SetAbnormalWeather` on every map of the eastern sea; Routes 129 to 131, Ever Grande City and Sky
+  Pillar's outside join with them, part c), as overlay zones with `while` a flag; the routes and Sootopolis play
+  `hoenn/abnormal_weather` under it, the two towns their own songs. In Sootopolis the downpour alone falls from the
+  titans' coming until their clash is seen (`FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN`, a flag of ours, Emerald's
+  `SootopolisCity_EventScript_SetWeather` reading its state), and the two by turns after it; Rayquaza's coming must clear
+  that flag with Emerald's own (part c).
+- **Kyogre wakes as Groudon did**, with no battle: the Red Orb's light, Kyogre rising and gone, the cavern shaking, steps
+  on the spot where it lies in its pool. Archie's call from outside is told by him alone, with the PC's sounds.
+- **Route 128's scene** is the route's own arrival, which Emerald plays as the frame's first map script; Steven comes and
+  goes on his Skarmory's cry, where Emerald draws the flying Pokémon.
+- **The clash over Sootopolis** is a camera sent to the harbour, the weather breaking, and the two titans striking at each
+  other three times (steps on the spot, cries, the camera shaken), from wherever the player has come into the city.
+  Emerald lays the city out again for the clash (`LAYOUT_SOOTOPOLIS_CITY_LEGENDS_BATTLE`, rough water under the two),
+  which is not followed: they stand in the harbour as it is.
+- **Steven's guide** to the Cave of Origin is said and then put by a fade outside the cave's mouth, where Emerald walks
+  both across the city's terraces. Afterwards the old man before the cave steps aside when spoken to from the south (and
+  stays aside until the city is come to again); Emerald puts him aside whenever the city is come to.
+- **Wallace's question** lists Sky Pillar first: Emerald's four answers come back to the question but one, and the tests
+  that play every way through a script answer a question asked again as it was first answered.
+- **The houses' doors** are shut while the titans are in the city (switches until `FLAG_LEGENDARIES_IN_SOOTOPOLIS`), as
+  Emerald locks them until Archie and Maxie leave; reading one says it is shut. Juan's Gym stays shut for part c, and so
+  does the Mystery Events house. The townsfolk who come out to watch stand where Emerald stands them for states 1 to 5.
+- **Sootopolis's people**: Kiri gives two berries a day, one of six and a Figy or an Iapapa Berry (Emerald's first is one
+  of a range of berries; here the six of Emerald's range this game has the commonest); the black belt gives TM31, Brick
+  Break, once; the woman of the Pokémon Center teaches Double-Edge once (`FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE`); the two
+  brothers measure Seedot and Lotad against records of their own (`VAR_SEEDOT_SIZE_RECORD`, `VAR_LOTAD_SIZE_RECORD`) and
+  give an Elixir for a bigger one; the woman with the Wailmer Doll keeps it until there is a Secret Base to put it in
+  (plan 21 · H10); the Mart sells Emerald's stock but its mail.
+- **Sootopolis is built as Crater** (pale stone under deep sea-blue hip roofs with shutters; the style guide's row), its
+  white stone floor paving (`GbaCover.HoennRanges`). Its spawn for Fly and a white-out (Emerald's heal location 10) stands
+  on a map of its own, which the region's spawns can't yet say: it waits for part c (or plan 18 · W9's maps for Fly).
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

@@ -1,0 +1,13 @@
+# A house in Sootopolis City (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_House6/scripts.inc). Emerald's woman
+# gives her first guest in a while a Wailmer Doll, a decoration for a Secret Base. Decorations come with the Secret
+# Bases (plan 21 · H10): until then she keeps the doll and says she will, and FLAG_RECEIVED_WAILMER_DOLL stays for H10.
+
+
+script Woman
+  face self player
+  speaker "Woman"
+  say "Hello! You're our first visitor in ages. You've brightened my whole day!"
+  say "I'd give you my big Wailmer Doll, but you'd have nowhere to put it yet. I'll keep it safe for you until you do."
+  say "I just love soft dolls!"
+  end

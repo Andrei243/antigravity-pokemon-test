@@ -140,6 +140,9 @@
     "brawly": { "hairColor": "#2e3c7a", "hair": "Long", "top": "#3c84cc", "accent": "#f2f2f6", "bottom": "#2a3a5c", "shoes": "#e8c4a0", "eyes": "#2e3a5a", "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.06 },
     // Steven, the stone collector met in Granite Cave: swept silver-blue hair, a dark suit with a wine-red scarf
     "steven": { "hairColor": "#a6b4c8", "hair": "Swept", "top": "#2c2e3a", "accent": "#8a2e4a", "bottom": "#2c2e3a", "shoes": "#1e1e24", "eyes": "#4a5a7a", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    // Wallace (plan 21 · H8, part b; our own take), once Sootopolis's Gym Leader: swept sea-green hair, a long white coat
+    // over a pale lilac shirt with a sea-blue scarf, white trousers
+    "wallace": { "hairColor": "#5ab4b0", "hair": "Swept", "top": "#f2f2f6", "accent": "#3a7ac0", "bottom": "#eeeef4", "shoes": "#3a4a6a", "eyes": "#3a5a7a", "coat": true, "scarf": true, "build": "Adult", "height": 1.1 },
     // Captain Stern of Slateport's shipyard: short dark hair and a full beard, a white lab coat with a sea-blue collar
     "capt_stern": { "hairColor": "#3e3028", "top": "#f0f2f6", "accent": "#3a6a9a", "bottom": "#4a4e5a", "shoes": "#2e2a28", "eyes": "#3a2e28", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
     // Archie, the leader of Team Aqua: a black bandana over dark hair, a beard, a dark diver's suit with a gold chain

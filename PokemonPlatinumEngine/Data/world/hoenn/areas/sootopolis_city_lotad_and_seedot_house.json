@@ -1,0 +1,30 @@
+{
+  "key": "sootopolis_city_lotad_and_seedot_house",
+  "index": 208,
+  "name": "Sootopolis City",
+  "matrix": 157,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SOOTOPOLIS",
+  "nightMusic": "MUS_SOOTOPOLIS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "sootopolis_city", "toWarp": 11 },
+    { "x": 4, "z": 6, "to": "sootopolis_city", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 5, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother" }
+  ],
+  "signs": [
+    { "x": 5, "z": 1, "type": 0, "script": "SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotSizeRecord" },
+    { "x": 2, "z": 1, "type": 0, "script": "SootopolisCity_LotadAndSeedotHouse_EventScript_LotadSizeRecord" }
+  ],
+  "triggers": []
+}

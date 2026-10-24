@@ -1,0 +1,45 @@
+{
+  "key": "seafloor_cavern_room_4",
+  "index": 269,
+  "name": "Seafloor Cavern",
+  "matrix": 218,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "seafloor_cavern_room_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Zubat", "level": 33 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Zubat", "level": 34 },
+    { "species": "Zubat", "level": 35 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 36 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 13, "z": 1, "to": "seafloor_cavern_room_2", "toWarp": 1 },
+    { "x": 4, "z": 1, "to": "seafloor_cavern_room_5", "toWarp": 1 },
+    { "x": 9, "z": 10, "to": "seafloor_cavern_room_5", "toWarp": 2 },
+    { "x": 10, "z": 15, "to": "seafloor_cavern_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "look_south_and_west", "x": 5, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS", "script": "TRAINER_GRUNT_SEAFLOOR_CAVERN_3" },
+    { "id": "aqua_member_f", "looks": "aqua_member_f", "movement": "look_north", "x": 5, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS", "script": "TRAINER_GRUNT_SEAFLOOR_CAVERN_4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

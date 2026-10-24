@@ -212,5 +212,19 @@
     "class": "Black Belt",
     "trainer": "hoenn_koji_1",
     "area": "route_127"
+  },
+  {
+    "id": "hoenn_isaiah",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_isaiah_1",
+    "area": "route_128"
+  },
+  {
+    "id": "hoenn_katelyn",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_katelyn_1",
+    "area": "route_128"
   }
 ]

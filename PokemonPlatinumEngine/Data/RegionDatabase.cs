@@ -628,6 +628,15 @@ public static class RegionDatabase
                 "MossdeepCity_Gym", "MossdeepCity_House1", "MossdeepCity_House2", "MossdeepCity_House3", "MossdeepCity_House4",
                 "MossdeepCity_PokemonCenter_1F", "MossdeepCity_PokemonCenter_2F", "MossdeepCity_Mart", "MossdeepCity_StevensHouse",
                 "MossdeepCity_SpaceCenter_1F", "MossdeepCity_SpaceCenter_2F", "Route124_DivingTreasureHuntersHouse",
+                // Plan 21 · H8, part b: the Seafloor Cavern with the pool under the sea that leads into it, Sootopolis
+                // City with the floor under it and its rooms, and the Cave of Origin
+                "Underwater_SeafloorCavern", "SeafloorCavern_Entrance", "SeafloorCavern_Room1", "SeafloorCavern_Room2",
+                "SeafloorCavern_Room3", "SeafloorCavern_Room4", "SeafloorCavern_Room5", "SeafloorCavern_Room6",
+                "SeafloorCavern_Room7", "SeafloorCavern_Room8", "SeafloorCavern_Room9",
+                "SootopolisCity", "Underwater_SootopolisCity", "SootopolisCity_PokemonCenter_1F", "SootopolisCity_PokemonCenter_2F",
+                "SootopolisCity_Mart", "SootopolisCity_House1", "SootopolisCity_House2", "SootopolisCity_House3",
+                "SootopolisCity_House4", "SootopolisCity_House5", "SootopolisCity_House6", "SootopolisCity_House7",
+                "SootopolisCity_LotadAndSeedotHouse", "CaveOfOrigin_Entrance", "CaveOfOrigin_1F", "CaveOfOrigin_B1F",
             }
         },
         new()

@@ -205,8 +205,20 @@ internal static class ArtLook
         FieldWeather.Hail => 0.4f,
         FieldWeather.Fog => 0.5f,
         FieldWeather.Sandstorm => 0.55f,
+        // A drought loses nothing: its sun is all there, and more (Drought)
+        FieldWeather.Drought => 1f,
         _ => 0.75f
     };
+
+    /// <summary>How much of the battle's harsh sun a drought lays over the field's light (style guide, "Life", "Drought").</summary>
+    public const float DroughtShare = 0.7f;
+
+    /// <summary>
+    /// The field's light in Emerald's drought (plan 21 · H8, part b; style guide, "Life", "Drought"): the battle's harsh
+    /// sun (<see cref="HarshSun"/>) laid over the hour's rig at <see cref="DroughtShare"/>, a warmer, harder sun, a paler
+    /// warm sky and more bloom, held under the harsh sun's own so that pale stone doesn't wash out.
+    /// </summary>
+    public static LightRig Drought(LightRig rig) => LightRig.Lerp(rig, HarshSun(rig), DroughtShare);
 
     /// <summary>
     /// The field's light under a kind of weather (style guide, "Life"): part of the sun is lost and half of
@@ -217,6 +229,7 @@ internal static class ArtLook
     public static LightRig Weathered(LightRig rig, FieldWeather weather)
     {
         if (weather == FieldWeather.Clear) return rig;
+        if (weather == FieldWeather.Drought) return Drought(rig);
         float sun = SunThrough(weather);
         float fog = weather switch
         {

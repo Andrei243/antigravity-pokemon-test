@@ -1,0 +1,10 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): the black belt who made TM31, Brick Break, gives it once
+  // (sootopolis_city_house_1.txt), and his Kecleon
+  "area": "sootopolis_city_house_1",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "black_belt": { "name": "Black Belt", "script": "BlackBelt" },
+    "kecleon": { "name": "Kecleon", "npcType": "Pokemon", "species": "Kecleon", "script": "Kecleon", "still": true }
+  }
+}

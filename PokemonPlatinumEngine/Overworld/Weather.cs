@@ -14,7 +14,18 @@ public enum FieldWeather
     Hail,
     Fog,
     Sandstorm,
-    Ash
+    Ash,
+    /// <summary>
+    /// Emerald's drought (plan 21 · H8, part b; <c>WEATHER_DROUGHT</c>): Groudon's heat, a hard white sun and nothing
+    /// in the air; a battle under it opens in the sun.
+    /// </summary>
+    Drought,
+    /// <summary>
+    /// Emerald's abnormal weather (<c>WEATHER_ABNORMAL</c>), while Groudon and Kyogre clash over Sootopolis: a downpour
+    /// and a drought by turns (<see cref="Weathers.Alternating"/>). It never leaves <see cref="Map.WeatherAt(int, int)"/>,
+    /// which gives the one of the two in force.
+    /// </summary>
+    Abnormal
 }
 
 public static class Weathers
@@ -39,8 +50,23 @@ public static class Weathers
         "Fog" or "DeepFog" => FieldWeather.Fog,
         "Sandstorm" => FieldWeather.Sandstorm,
         "SlowAshfall" => FieldWeather.Ash,
+        // Emerald's two of the titans (plan 21 · H8, part b), named by an overlay's zone
+        "Drought" => FieldWeather.Drought,
+        "Abnormal" => FieldWeather.Abnormal,
         _ => FieldWeather.Clear
     };
+
+    /// <summary>How long each of the abnormal weather's two turns lasts, in seconds of the field's clock.</summary>
+    public const double AbnormalTurn = 10.0;
+
+    /// <summary>
+    /// The abnormal weather at a moment of the field's clock (plan 21 · H8, part b): the downpour first, then the drought,
+    /// each for <see cref="AbnormalTurn"/>, as Emerald's alternates <c>WEATHER_DOWNPOUR</c> and <c>WEATHER_DROUGHT</c>.
+    /// Any other weather is itself.
+    /// </summary>
+    public static FieldWeather Alternating(FieldWeather weather, double clock) =>
+        weather != FieldWeather.Abnormal ? weather
+        : ((long)Math.Floor(Math.Max(0, clock) / AbnormalTurn) % 2 == 0 ? FieldWeather.HeavyRain : FieldWeather.Drought);
 
     /// <summary>
     /// A day's row in Platinum's calendar (<c>FieldSystem_GetWeather</c>): the table has a row for every day of a
@@ -60,6 +86,8 @@ public static class Weathers
         FieldWeather.Snow or FieldWeather.HeavySnow or FieldWeather.Blizzard => Battle.Sim.BattleWeather.Hail,
         FieldWeather.Sandstorm => Battle.Sim.BattleWeather.Sandstorm,
         FieldWeather.Fog => Battle.Sim.BattleWeather.Fog,
+        // Emerald's drought opens a battle in the sun (plan 21 · H8, part b), as its field weather carries it over
+        FieldWeather.Drought => Battle.Sim.BattleWeather.Sun,
         _ => Battle.Sim.BattleWeather.None
     };
 

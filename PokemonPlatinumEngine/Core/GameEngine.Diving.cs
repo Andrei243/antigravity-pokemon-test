@@ -22,22 +22,26 @@ public partial class GameEngine
         var player = flow.Player;
         int x = player.GridX, y = player.GridY;
         bool up = map.IsUnderwater;
-        string? onto = up
-            ? FieldMovement.CanSurface(map, x, y) ? map.EmergeAt(x, y) : null
-            : FieldMovement.CanDive(map, x, y, new Walker(player.Mode, player.HeightOn(map), Moves: FieldMoves.Dive)) ? map.DiveAt(x, y) : null;
+        var onto = up
+            ? FieldMovement.CanSurface(map, x, y) ? map.EmergeTargetAt(x, y) : null
+            : FieldMovement.CanDive(map, x, y, new Walker(player.Mode, player.HeightOn(map), Moves: FieldMoves.Dive)) ? map.DiveTargetAt(x, y) : null;
         if (onto == null) return false;
-        var target = MapDatabase.Get(onto);
-        // The floor and the sea are laid tile for tile, so the other side is the same tile: open sea to surf on going up,
-        // open floor to swim on going down (the import holds the original's maps to it; this keeps a slip from stranding anyone)
-        if (up ? !FieldMovement.SurfacesOnto(target, x, y) : !target.InBounds(x, y) || target.IsSolid(x, y)) return false;
+        var target = MapDatabase.Get(onto.Map);
+        // The floor and the sea are laid tile for tile, so the other side is the same tile (or, where the original names
+        // one place, that place: plan 21 · H8, part b): open sea to surf on going up, open floor to swim on going down
+        // (the import holds the original's maps to it; this keeps a slip from stranding anyone)
+        int tx = onto.X, ty = onto.Y;
+        if (up ? !FieldMovement.SurfacesOnto(target, tx, ty) : !target.InBounds(tx, ty) || target.IsSolid(tx, ty)) return false;
 
         AudioManager.PlaySound("dive");
-        PlayAreaMusic(target, x, y);
-        var facing = player.Facing;
+        PlayAreaMusic(target, tx, ty);
+        // Laid tile for tile the diver keeps their facing; put down at one place, they face as it says
+        bool laid = (up ? map.AreaAt(x, y)?.Emerge : map.AreaAt(x, y)?.Dive) != null;
+        var facing = laid ? player.Facing : onto.Facing;
         StartTransition(GameState.Overworld, () =>
         {
             flow.Map = target;
-            flow.Player.SetPosition(x, y, facing);
+            flow.Player.SetPosition(tx, ty, facing);
             if (up) flow.Player.Surface();
             else flow.Player.StartDive();
             world.Life.Clear();

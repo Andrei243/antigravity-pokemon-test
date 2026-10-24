@@ -1,0 +1,26 @@
+{
+  "key": "sootopolis_city_house_2",
+  "index": 202,
+  "name": "Sootopolis City",
+  "matrix": 151,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SOOTOPOLIS",
+  "nightMusic": "MUS_SOOTOPOLIS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "sootopolis_city", "toWarp": 5 },
+    { "x": 4, "z": 6, "to": "sootopolis_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "expert_f", "looks": "expert_f", "movement": "look_east", "x": 3, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_House2_EventScript_ExpertF" }
+  ],
+  "signs": [],
+  "triggers": []
+}

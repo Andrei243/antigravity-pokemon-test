@@ -1,0 +1,52 @@
+# The Cave of Origin's lowest floor (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/CaveOfOrigin_B1F/scripts.inc).
+#
+# Wallace stands looking into the dark. Spoken to, he tells of the third ancient Pokémon, Rayquaza, which once calmed
+# Groudon and Kyogre, and asks where it might be. Emerald's four answers come back to the question but one; here the
+# right one, Sky Pillar, comes first, since a question asked again is answered as it first was by the tests that play
+# every way through a script. Told Sky Pillar, he goes there at once (FLAG_WALLACE_GOES_TO_SKY_PILLAR,
+# VAR_SOOTOPOLIS_CITY_STATE 3), and waits at its door (FLAG_HIDE_SKY_PILLAR_WALLACE cleared: Route 131 and Sky Pillar are
+# plan 21 · H8, part c).
+
+
+script Wallace
+  scene "Wallace in the Cave of Origin"
+  speaker "Wallace"
+  say "Ah, you must be {player}. I've heard about what you've done."
+  say "My name is Wallace. I was Sootopolis's Gym Leader once, but other matters called me away, and I left the Gym in my mentor Juan's hands."
+  say "......"
+  say "Groudon and Kyogre, the two raging out there, are ancient Pokémon from long before people."
+  say "But they're not the only ones. There is a third, somewhere: an ancient Pokémon named Rayquaza."
+  say "It's said that long ago it was Rayquaza that calmed the other two's fighting. But even I have no idea where it is now..."
+  face self up
+  emote self exclaim
+  wait 0.8
+  face self player
+label Ask
+  choose "{player}, do you know where Rayquaza might be? If you do, please tell me." "Sky Pillar" "Mt. Pyre" "The Cave of Origin" "I don't remember"
+  if result == 1 goto MtPyre
+  if result == 2 goto Here
+  if result == 3 goto Forgot
+  say "Sky Pillar? Of course... It must be Sky Pillar!"
+  say "{player}, there isn't a moment to lose! We're going to Sky Pillar right away!"
+  sound "stairs"
+  fade out
+  setflag FLAG_WALLACE_GOES_TO_SKY_PILLAR
+  setvar VAR_SOOTOPOLIS_CITY_STATE 3
+  hide self
+  setflag FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE
+  clearflag FLAG_HIDE_SKY_PILLAR_WALLACE
+  fade in
+  endscene
+  end
+label MtPyre
+  say "Mt. Pyre? But when I saw the old woman there, she said nothing of it."
+  say "I can't believe she would hide something from me... Could you think about it a little harder?"
+  goto Ask
+label Here
+  say "The Cave of Origin? But that's right here! I need you to do better than that."
+  say "Please, think hard about where Rayquaza might be right now."
+  goto Ask
+label Forgot
+  say "You don't remember? Hmm... That's a problem. Can't you remember somehow?"
+  goto Ask

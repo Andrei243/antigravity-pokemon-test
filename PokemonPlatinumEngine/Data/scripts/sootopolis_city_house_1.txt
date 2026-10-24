@@ -1,0 +1,23 @@
+# A house in Sootopolis City (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_House1/scripts.inc). The black belt who
+# made TM31 gives it once (FLAG_RECEIVED_TM_BRICK_BREAK).
+
+
+script BlackBelt
+  face self player
+  speaker "Black Belt"
+  if flag FLAG_RECEIVED_TM_BRICK_BREAK goto Given
+  say "Thirty years I've spent in Sootopolis sharpening my skills. And I made a TM that shatters anything."
+  say "I'm passing it on to you!"
+  give "TM31"
+  setflag FLAG_RECEIVED_TM_BRICK_BREAK
+label Given
+  say "TM31 is Brick Break! It smashes through walls of light. Words can't do it justice."
+  end
+
+
+script Kecleon
+  cry own
+  speaker none
+  text "Kecleon: Pyuu-hyaah!"
+  end

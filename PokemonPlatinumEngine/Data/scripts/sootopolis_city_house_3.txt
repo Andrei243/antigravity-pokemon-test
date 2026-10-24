@@ -1,0 +1,16 @@
+# A house in Sootopolis City (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_House3/scripts.inc). A woman asks
+# whether the player has fans of their own.
+
+
+script Woman
+  face self player
+  speaker "Woman"
+  say "You're a Pokémon trainer, aren't you? Sootopolis's Juan has lots of fans. Even more than his pupil Wallace!"
+  ask "Do you have any fans?"
+  if no goto None
+  say "Oh! Then you must be very strong."
+  end
+label None
+  say "Oh dear, that's a little lonely. Work hard, and the fans will come!"
+  end

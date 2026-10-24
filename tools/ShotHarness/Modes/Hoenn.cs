@@ -196,11 +196,27 @@ partial class Harness
             ("h176_mossdeep_house", "MossdeepCity_House2", 3, 7, Direction.Up),
             ("h177_treasure_hunters_house", "Route124_DivingTreasureHuntersHouse", 3, 7, Direction.Up),
             ("h178_route127_sandbar", "Hoenn", 682, 163, Direction.Up),
+            // Plan 21 · H8, part b: Route 128's islet, the Seafloor Cavern, Sootopolis City and its rooms, the Cave of Origin
+            ("h180_route128_islet", "Hoenn", 678, 242, Direction.Up),
+            ("h181_seafloor_cavern_pool", "Underwater_SeafloorCavern", 6, 6, Direction.Up),
+            ("h182_seafloor_cavern_mouth", "SeafloorCavern_Entrance", 10, 12, Direction.Up),
+            ("h183_seafloor_cavern_boulders", "SeafloorCavern_Room2", 7, 6, Direction.Up),
+            ("h184_seafloor_cavern_shelly", "SeafloorCavern_Room3", 7, 7, Direction.Up),
+            ("h185_seafloor_cavern_kyogre", "SeafloorCavern_Room9", 17, 42, Direction.Up),
+            ("h186_sootopolis_city", "SootopolisCity", 43, 33, Direction.Up),
+            ("h187_sootopolis_harbour", "SootopolisCity", 29, 50, Direction.Up),
+            ("h188_sootopolis_cave_mouth", "SootopolisCity", 31, 20, Direction.Up),
+            ("h189_sootopolis_pool", "Underwater_SootopolisCity", 9, 6, Direction.Up),
+            ("h190_sootopolis_center", "SootopolisCity_PokemonCenter_1F", 7, 6, Direction.Up),
+            ("h191_sootopolis_mart", "SootopolisCity_Mart", 4, 6, Direction.Up),
+            ("h192_sootopolis_house", "SootopolisCity_House1", 3, 6, Direction.Up),
+            ("h193_cave_of_origin", "CaveOfOrigin_Entrance", 9, 15, Direction.Up),
+            ("h194_cave_of_origin_b1f", "CaveOfOrigin_B1F", 9, 15, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -222,6 +238,7 @@ partial class Harness
         At("Hoenn", 507, 80, Direction.Up); Frames(2); Shot("h153_lilycove_night");
         At("MtPyre_Summit", 23, 12, Direction.Up); Frames(2); Shot("h154_mt_pyre_summit_night");
         At("Hoenn", 668, 118, Direction.Up); Frames(2); Shot("h179_mossdeep_night");
+        At("SootopolisCity", 43, 33, Direction.Up); Frames(2); Shot("h195_sootopolis_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
