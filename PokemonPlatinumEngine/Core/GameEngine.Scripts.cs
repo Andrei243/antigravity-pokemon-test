@@ -1114,6 +1114,8 @@ public partial class GameEngine
                     // The counter's own stock: the clerk's specialties, or the common list by the badges (plan 06 · R11)
                     game.flow.ShopScreen.Open(game.flow.Map.ShownNameAt(game.flow.Player.GridX, game.flow.Player.GridY),
                         MartDatabase.Stock(counter ?? subject?.Mart, game.flow.Story.BadgeCount(game.Here.Id)));
+                    // Easy takes a quarter off what a counter asks (plan 13 · V2)
+                    game.flow.ShopScreen.Difficulty = game.flow.Run.Difficulty;
                     break;
                 case ScriptScreen.Wardrobe:
                     // At home the clothes owned; at a boutique its stock as well, headed with the place's name

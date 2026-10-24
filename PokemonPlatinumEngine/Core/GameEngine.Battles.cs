@@ -154,6 +154,7 @@ public partial class GameEngine
                 SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0
                     : kind == BattleKind.Normal && InBugContest ? flow.BugContest.Balls : 0,
                 MoveHints = MoveHintsOn,
+                Difficulty = flow.Run.Difficulty,
                 Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -387,6 +388,13 @@ public partial class GameEngine
             trainer = trainers[0];
             partner = partner?.Relevelled(levels.Map);
         }
+        // The difficulty chosen at NEW GAME is laid on a copy of each foe (plan 13 · V2): the trainers of the map keep
+        // their teams, and under Normal the very same objects are handed on. The first battle of a game, the tutorial
+        // the rival fights beside the player's first Pokémon, and a Master Trainer's (a Pokémon chosen to fight alone, at
+        // a level of its own) are left as they are
+        if (!firstBattle && terms?.Alone == null)
+            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run)).ToList();
+        trainer = trainers[0];
 
         eyeThemePlaying = false;
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
@@ -431,6 +439,7 @@ public partial class GameEngine
                 TrainerLines = TrainerLinesOn,
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
+                Difficulty = flow.Run.Difficulty,
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);

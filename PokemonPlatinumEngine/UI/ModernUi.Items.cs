@@ -160,8 +160,8 @@ internal static partial class ModernUi
             var item = listed[index];
             var r = RowRect(list, row, 40, scrolls);
             bool selected = shop.Mode != ShopMode.Choosing && index == shop.SelectedIndex;
-            int price = selling ? ShopScreen.SellPrice(item) : item.Price;
-            bool affordable = selling || item.Price <= money;
+            int price = selling ? ShopScreen.SellPrice(item) : shop.PriceOf(item);
+            bool affordable = selling || shop.PriceOf(item) <= money;
             var ink = ListRow(r, selected, selling ? Text.Of("shop.listedCount", ("item", item.DisplayName), ("n", inventory.GetQuantity(item))) : item.DisplayName);
             RowIcon(r, PixelArtGenerator.GetItemIcon(item), 1.5f, selected);
             MoneyRight(r.X + r.Width - 32, r.Y + r.Height / 2f, price, 30, selected ? Color.White : affordable ? ink : Red);
@@ -182,7 +182,7 @@ internal static partial class ModernUi
             ItemDetail(detail, chosen, PocketTab(chosen.Pocket), (Text.Of("bag.inBag"), Text.Of("bag.count", ("n", inventory.GetQuantity(chosen)))));
 
         if (shop.Mode == ShopMode.Choosing) ShopQuestion(sw, sh, shop.ChoiceIndex);
-        if (askingVisible && shop.Selected is { } buying) QuantityPrompt(sw, sh, buying, shop.Quantity, asking, selling);
+        if (askingVisible && shop.Selected is { } buying) QuantityPrompt(sw, sh, buying, shop.Quantity, asking, selling, shop.PriceOf(buying));
     }
 
     /// <summary>The counter's first question, over the dimmed shop: BUY, SELL or SEE YA!</summary>
@@ -197,7 +197,7 @@ internal static partial class ModernUi
     }
 
     /// <summary>"Buy how many?" or "Sell how many?" over the dimmed shop: the item, a stepper and what that many come to.</summary>
-    private static void QuantityPrompt(int sw, int sh, ItemData item, int quantity, float appear, bool selling = false)
+    private static void QuantityPrompt(int sw, int sh, ItemData item, int quantity, float appear, bool selling = false, int buyPrice = 0)
     {
         Dim(sw, sh, (int)(150 * appear));
         var r = new Rectangle(sw / 2f - 480, sh / 2f - 220 + (1f - appear) * 60f, 960, 440);
@@ -205,7 +205,7 @@ internal static partial class ModernUi
         UiFonts.Draw(Text.Of(selling ? "shop.sellHowMany" : "shop.buyHowMany"), r.X + 56, r.Y + 44, 48, Ink, UiWeight.Black);
         HintsDark(r.X + r.Width - 40, r.Y + 46, Hint("shared.keys.z", selling ? "shared.hints.sell" : "shared.hints.buy"), Hint("shared.keys.esc", "shared.hints.back"));
 
-        int each = selling ? ShopScreen.SellPrice(item) : item.Price;
+        int each = selling ? ShopScreen.SellPrice(item) : buyPrice;
         var c = new Vector2(r.X + 56 + 52, r.Y + 176);
         UiShapes.Circle(c, 52, Disc);
         PixelArt(PixelArtGenerator.GetItemIcon(item), c, 2);

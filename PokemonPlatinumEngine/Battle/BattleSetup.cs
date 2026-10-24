@@ -139,6 +139,12 @@ public sealed class BattleSetup
     public bool OffersSwitch { get; init; }
 
     /// <summary>
+    /// The difficulty chosen at NEW GAME (plan 13 · V2; <see cref="Sim.CoreSetup.Difficulty"/>): Easy gives more EXP. The
+    /// game hands it over from the run's rules; a battle a test or a tool builds itself is Normal unless it asks.
+    /// </summary>
+    public Difficulty Difficulty { get; init; } = Difficulty.Normal;
+
+    /// <summary>
     /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
     /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
     /// never read by the rules.

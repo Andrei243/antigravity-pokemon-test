@@ -92,6 +92,9 @@ public sealed class BattleRecordFile
     public bool Frontier { get; set; }
     public bool NoBattleItems { get; set; }
     public bool OffersSwitch { get; set; }
+
+    /// <summary>The difficulty the battle was fought under (plan 13 · V2): Easy gives more EXP, so a replay needs it. A file without it is Normal.</summary>
+    public Difficulty Difficulty { get; set; } = Difficulty.Normal;
     public bool KeyStone { get; set; }
     public bool ZRing { get; set; }
     public bool DynamaxBand { get; set; }
@@ -139,6 +142,7 @@ public sealed class BattleRecordFile
             Frontier = setup.Frontier,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
+            Difficulty = setup.Difficulty,
             KeyStone = setup.KeyStone,
             ZRing = setup.ZRing,
             DynamaxBand = setup.DynamaxBand,
@@ -180,7 +184,7 @@ public sealed class BattleRecordFile
     /// <summary>The record the rules replay: the seed and the answers, with the two flags a record keeps.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public BattleRecord Record => new(Seed, Answers.Select(turn => (IReadOnlyList<BattleChoice>)turn.Select(c => c.ToChoice()).ToList()).ToList(),
-        Conditions.Inverse, OffersSwitch);
+        Conditions.Inverse, OffersSwitch, Difficulty);
 
     /// <summary>Whom the battle was against: the first trainer's class and name, or the first wild Pokémon's species.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
@@ -235,6 +239,7 @@ public sealed class BattleRecordFile
             Frontier = Frontier,
             NoBattleItems = NoBattleItems,
             OffersSwitch = OffersSwitch,
+            Difficulty = Difficulty,
             KeyStone = KeyStone,
             ZRing = ZRing,
             DynamaxBand = DynamaxBand,
