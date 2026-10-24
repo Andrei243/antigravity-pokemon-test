@@ -50,7 +50,74 @@ internal static partial class ModernUi
         }
     }
 
-    public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete)
+    /// <summary>
+    /// Text in the box's colours (plan 09 · L3, style guide "Text box markup"): wrapped as the box wraps it, each row set
+    /// piece by piece in the colour of its run. <paramref name="runs"/> index <paramref name="text"/>.
+    /// </summary>
+    public static void DrawRuns(string text, IReadOnlyList<RunSpan>? runs, float x, float y, float width, Color ink)
+    {
+        var rows = Wrap(text, width, DialogueBox.TextSize, DialogueBox.TextWeight);
+        if (runs == null || runs.Count == 0)
+        {
+            foreach (var row in rows)
+            {
+                if (row.Length > 0) UiFonts.Draw(row, x, y, DialogueBox.TextSize, ink, DialogueBox.TextWeight);
+                y += DialogueBox.RowHeight;
+            }
+            return;
+        }
+        foreach (var pieces in RichText.Pieces(text, runs, rows))
+        {
+            float px = x;
+            foreach (var (piece, colour) in pieces)
+            {
+                UiFonts.Draw(piece, px, y, DialogueBox.TextSize, RunInk(colour, ink), DialogueBox.TextWeight);
+                px += UiFonts.Measure(piece, DialogueBox.TextSize, DialogueBox.TextWeight);
+            }
+            y += DialogueBox.RowHeight;
+        }
+    }
+
+    /// <summary>The ink of a run on the box: the name colours are the tag's red and the blue of the buttons, a shade deeper to read on the panel.</summary>
+    public static Color RunInk(RunColour colour, Color ink) => colour switch
+    {
+        RunColour.Red or RunColour.Name => Darker(Red, 0.1f),
+        RunColour.Blue => Darker(Blue, 0.12f),
+        RunColour.Money => Darker(Gold, 0.3f),
+        _ => ink
+    };
+
+    /// <summary>
+    /// The backlog (plan 09 · L3): over the dimmed field, a panel above the text box with the last lines written, the
+    /// speaker's name in a small tag and the line under it, five rows to a window that Up and Down move.
+    /// </summary>
+    public static void DrawBacklog(int sw, int sh, IReadOnlyList<(string Speaker, string Text)> entries, int top, int rows)
+    {
+        Dim(sw, sh, 150);
+        const float rowHeight = 112, pad = 28;
+        float width = sw - DialogueBox.Side * 2, height = pad * 2 + rows * rowHeight;
+        var panel = new Rectangle(DialogueBox.Side, 70, width, height);
+        Panel(panel, 32);
+        for (int i = 0; i < rows && top + i < entries.Count; i++)
+        {
+            var (speaker, text) = entries[top + i];
+            float y = panel.Y + pad + i * rowHeight;
+            bool newest = top + i == entries.Count - 1;
+            if (speaker.Length > 0) UiFonts.Draw(speaker, panel.X + 48, y, 22, Red, UiWeight.Black);
+            string shown = text.Replace('\n', ' ');
+            while (shown.Length > 1 && UiFonts.Measure(shown, 30, UiWeight.ExtraBold) > width - 96) shown = shown[..^2] + "…";
+            UiFonts.Draw(shown, panel.X + 48, y + 30, 30, newest ? Ink : Muted, UiWeight.ExtraBold);
+        }
+        if (entries.Count > rows)
+        {
+            var track = new Rectangle(panel.X + width - 24, panel.Y + pad, 6, height - pad * 2);
+            UiShapes.Fill(track, 3, Rule);
+            float thumb = track.Height * rows / entries.Count;
+            UiShapes.Fill(new Rectangle(track.X, track.Y + (track.Height - thumb) * top / (entries.Count - rows), 6, thumb), 3, Selection);
+        }
+    }
+
+    public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete, IReadOnlyList<RunSpan>? runs = null)
     {
         // The box's measures are DialogueBox's, which a check with no window reads too (plan 16 · T8)
         var r = new Rectangle(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.Height, sw - DialogueBox.Side * 2, DialogueBox.Height);
@@ -63,7 +130,7 @@ internal static partial class ModernUi
             UiShapes.Shape(tag, 29, Lighter(Red, 0.12f), Darker(Red, 0.08f), Darker(Red, 0.3f), 3);
             UiFonts.DrawCentered(speaker, tag.X + 28, tag.Y + 29, 30, Color.White, UiWeight.Black);
         }
-        DrawWrapped(visibleText, r.X + DialogueBox.TextLeft, r.Y + DialogueBox.TextTop, DialogueBox.TextWidth(sw), DialogueBox.TextSize, ink, DialogueBox.RowHeight, DialogueBox.TextWeight);
+        DrawRuns(visibleText, runs, r.X + DialogueBox.TextLeft, r.Y + DialogueBox.TextTop, DialogueBox.TextWidth(sw), ink);
         if (complete) AdvanceArrow(r.X + r.Width - 80, r.Y + r.Height - 60);
     }
 
