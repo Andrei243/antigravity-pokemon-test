@@ -284,6 +284,14 @@ public class PokemonTests
         // asked for by name afterwards would then be another object than the one walked
         var maps = MapDatabase.Fresh();
         var reached = WorldWalk.FromEveryStart(maps);
+        // Shoal Cave's tide comes and goes (plan 21 · H8, part d): some of its rooms are reached only by surfing at high
+        // tide, so the walk is made again on maps of its own with the high tide's chunks laid, and what it reaches is
+        // added to the low tide's, map by map
+        var flooded = MapDatabase.Fresh();
+        foreach (string name in MapDatabase.MapNames) flooded(name).ApplySwappedPlaces(_ => 0, f => f == ShoalTide.Flag);
+        foreach (var (map, tiles) in WorldWalk.FromEveryStart(flooded))
+            if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
+            else reached[maps(map.Name)] = tiles;
 
         foreach (string name in MapDatabase.MapNames)
         {

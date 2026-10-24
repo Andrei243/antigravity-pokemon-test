@@ -161,6 +161,15 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== castelia_city_gym
+Castelia City
+trainers 3, 19-20: unova_harlequin_anders 20, unova_harlequin_clarence 20, unova_harlequin_gary 19
+=== castelia_sewers
+Castelia Sewers
+grass 14-17
+surf 5-15
+super rod 40-70
+trainers 9, 16-31: unova_doctor_heath 17, unova_janitor_brady 31, unova_janitor_felix 16, unova_scientist_caroline 17, unova_scientist_clarke 17, unova_team_plasma_grunt 16, unova_team_plasma_grunt_3 16, unova_worker_scott 17, unova_worker_zack 17
 === cave_of_origin_1f
 Cave Of Origin
 grass 30-36
@@ -1381,6 +1390,27 @@ old rod 5-10
 good rod 10-30
 super rod 25-45
 trainers 7, 33-35: hoenn_herman 33, hoenn_kara 34, hoenn_kevin 34, hoenn_reli_and_ian 35, hoenn_richard 34, hoenn_susie 34, hoenn_talia 34
+=== route_132
+Route 132
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 8, 19-35: hoenn_dana 34, hoenn_darcy 33, hoenn_gilbert 34, hoenn_jonathan 33, hoenn_kiyo 34, hoenn_makayla 33, hoenn_paxton 33, hoenn_ronald 35
+=== route_133
+Route 133
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 7, 33-34: hoenn_beck 34, hoenn_conor 33, hoenn_debra 34, hoenn_franklin 34, hoenn_linda 33, hoenn_mollie 33, hoenn_warren 33
+=== route_134
+Route 134
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 9, 32-34: hoenn_aaron 34, hoenn_alex 33, hoenn_hitoshi 32, hoenn_hudson 34, hoenn_jack 34, hoenn_kelvin 33, hoenn_laurel 33, hoenn_marley 34, hoenn_reyna 33
 === route_14
 Route 14
 grass 22-30
@@ -2124,6 +2154,29 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 2, 48-52: kanto_psychic_dario 52, kanto_psychic_rodette 50
+=== shoal_cave_low_tide_entrance_room
+Shoal Cave
+grass 26-32
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== shoal_cave_low_tide_ice_room
+Shoal Cave
+grass 26-32
+=== shoal_cave_low_tide_inner_room
+Shoal Cave
+grass 26-32
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== shoal_cave_low_tide_lower_room
+Shoal Cave
+grass 26-32
+=== shoal_cave_low_tide_stairs_room
+Shoal Cave
+grass 26-32
 === silph_co_10f
 Silph Co.
 trainers 2, 29-33: kanto_scientist_travis 29, kanto_team_rocket_grunt_39 33
@@ -2509,6 +2562,11 @@ grass 2-4
 surf 5-15
 super rod 40-70
 trainers 7, 4-11: unova_lass_isabel 4, unova_nursery_aide_kimya 11, unova_preschooler_albert 10, unova_preschooler_lin 10, unova_twins_lia_lily 9, unova_youngster_petey 4, unova_youngster_terrell 4
+=== unova_route_4
+Route 4
+grass 14-17
+surf 5-15
+super rod 40-70
 === valley_windworks_outside
 Valley Windworks
 grass 9-12
