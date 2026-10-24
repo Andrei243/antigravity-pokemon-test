@@ -1,0 +1,60 @@
+# The Castelia Gym (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/castelia_city_gym.s and castelia_city_gym_2.s, read for the order alone).
+#
+# Clyde (4) gives a challenger Fresh Water at the door (FLAG_UNOVA_GOT_WATER_CASTELIA). Burgh (burgh) waits at the
+# head of the hall once he is back from the sewers: his battle (Black 2's TRAINER_LEADER_BURGH; _2 is the Challenge
+# Mode's, plan 13's), the Insect Badge, the region's third (`givebadge insect`), and TM76 (FLAG_UNOVA_GOT_TM76), which
+# our data's table, Platinum's, fills with its own move; the city's count moves on (VAR_UNOVA_CASTELIA 10), and
+# Colress waits on the plaza (FLAG_UNOVA_HIDE_COLRESS_PLAZA cleared).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script GymGuide
+  face 4 player
+  speaker "Clyde"
+  if not flag FLAG_UNOVA_GOT_WATER_CASTELIA goto Water
+  if badge insect goto Won
+  say "Burgh waits at the far end of the hall. His Bug types are tough, but Fire, Flying and Rock moves hit them hard!"
+  end
+label Water
+  say "Hey there, future champ! Welcome to the Castelia Gym. Burgh's taste in decoration is... sticky. Mind the honey!"
+  say "Burgh's Bug types fold to Fire, Flying and Rock moves. Here, have a drink before you start!"
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_CASTELIA
+  end
+label Won
+  say "You beat Burgh! Your battle was a work of art. I might even ask him to paint it!"
+  end
+
+
+script Burgh
+  face burgh player
+  speaker "Burgh"
+  if badge insect goto Won
+  scene "Burgh"
+  say "Welcome! I've just got back from the sewers, and do you know what? My muse came back with me!"
+  say "I'm Burgh, Leader of this Gym and painter of Bug Pokémon. I'll paint our battle onto the canvas of your memory!"
+  battle burgh as "unova_leader_burgh"
+  say "Oh ho... You're strong, all right. I suppose losing was no surprise. Here, the Insect Badge! I think it suits you!"
+  givebadge insect
+  text "{player} received the Insect Badge from Burgh!"
+  defeat "unova_harlequin_clarence"
+  defeat "unova_harlequin_gary"
+  defeat "unova_harlequin_anders"
+  if var VAR_UNOVA_CASTELIA < 10 setvar VAR_UNOVA_CASTELIA 10
+  clearflag FLAG_UNOVA_HIDE_COLRESS_PLAZA
+label Tm
+  say "And, well, have this too. Take it as thanks for the inspiration!"
+  give "TM76"
+  setflag FLAG_UNOVA_GOT_TM76
+  say "The Insect Badge looks even better on you than I imagined. Route 4 is north of the plaza, through the gate. Off you go!"
+  endscene
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM76 goto Tm
+  say "Your Pokémon and you painted something wonderful together. Come back and show me how you've grown!"
+  end

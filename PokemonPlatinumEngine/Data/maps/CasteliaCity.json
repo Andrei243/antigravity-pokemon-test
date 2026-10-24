@@ -1,0 +1,975 @@
+{
+  "name": "CasteliaCity",
+  "displayName": "Castelia City",
+  "bgmTrack": "unova/castelia",
+  "interior": "None",
+  "trees": "Round",
+  "architecture": "Metropolis",
+  "width": 92,
+  "height": 14,
+  "ground": [
+    "bb+bbbbbb+bbbbbb++++bbbb+++++++++bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
+    "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
+    "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
+    "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
+    "bb+bbbbbb+bbbbbb++++bbbb+rrrrrrr+bbbbb++++bbbbbbb+bbbbbbbbbb++++bbbbbbb+bbbbbbbbbb++++bbb+bb",
+    "bb+######+######++++####+###D###+#####++++#######+##########++++#######+##########++++###+bb",
+    "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
+    "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
+    "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
+    "bb++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++bb",
+    "##++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++##",
+    "++++++++S++++++S+++++++++++++++++++++S+++++++++++++++++++++S+++++++++++++++++++++S++++++++++",
+    "~~~~++++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~++++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+    "~~~~++++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~++++~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  ],
+  "solid": [
+    "################....##################....##################....##################....######",
+    "################....##################....##################....##################....######",
+    "################....##################....##################....##################....######",
+    "################....##################....##################....##################....######",
+    "################....##################....##################....##################....######",
+    "################....########.#########....##################....##################....######",
+    "##........................................................................................##",
+    "##........................................................................................##",
+    "##........................................................................................##",
+    "##........................................................................................##",
+    "##........................................................................................##",
+    "####....##############################....##################################################",
+    "####....##############################....##################################################",
+    "####....##############################....##################################################"
+  ],
+  "props": [
+    {
+      "type": "Fence",
+      "x": 0,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 1,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 2,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 3,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 9,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 10,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 11,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 12,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 13,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 14,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 16,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 17,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 18,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 19,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 20,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 21,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 22,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 23,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 24,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 25,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 26,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 27,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 28,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 29,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 30,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 31,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 32,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 33,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 34,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 35,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 36,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 42,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 43,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 44,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 45,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 46,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 47,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 48,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 49,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 50,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 51,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 52,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 53,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 54,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 55,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 56,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 57,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 58,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 60,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 61,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 62,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 63,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 64,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 65,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 66,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 67,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 68,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 69,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 70,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 71,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 72,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 73,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "LampPost",
+      "x": 74,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 75,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 76,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 77,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 78,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 79,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 80,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 82,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 83,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 84,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 85,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 86,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 87,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 88,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 89,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 90,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Fence",
+      "x": 91,
+      "y": 11,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "buildings": [
+    {
+      "x": 3,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 10,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 20,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 33,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 42,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 50,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 64,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 72,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 86,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "kind": "Tower"
+    },
+    {
+      "x": 90,
+      "y": 0,
+      "kind": "Tower"
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 16,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_CasteliaStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 17,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_CasteliaStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 18,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_CasteliaStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 19,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_CasteliaStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 38,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_ModeStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 39,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_ModeStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 40,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_ModeStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 41,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_ModeStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 60,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_NarrowStreet",
+      "targetX": 16,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 61,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_NarrowStreet",
+      "targetX": 16,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 62,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_NarrowStreet",
+      "targetX": 16,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 63,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_NarrowStreet",
+      "targetX": 16,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 82,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_GymStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 83,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_GymStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 84,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_GymStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 85,
+      "sourceY": 0,
+      "targetMap": "CasteliaCity_GymStreet",
+      "targetX": 15,
+      "targetY": 62,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 28,
+      "sourceY": 5,
+      "targetMap": "CasteliaCity_PokemonCenter",
+      "targetX": 7,
+      "targetY": 18,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_ThumbPier",
+      "targetX": 2,
+      "targetY": 14,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_ThumbPier",
+      "targetX": 2,
+      "targetY": 14,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_ThumbPier",
+      "targetX": 2,
+      "targetY": 14,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 7,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_ThumbPier",
+      "targetX": 2,
+      "targetY": 14,
+      "targetFacing": "Right"
+    },
+    {
+      "sourceX": 38,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_PrimePier",
+      "targetX": 15,
+      "targetY": 2,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 39,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_PrimePier",
+      "targetX": 15,
+      "targetY": 2,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 40,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_PrimePier",
+      "targetX": 15,
+      "targetY": 2,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 41,
+      "sourceY": 13,
+      "targetMap": "CasteliaCity_PrimePier",
+      "targetX": 15,
+      "targetY": 2,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 11,
+      "text": "Thumb Pier\nThe way down to the old sewers"
+    },
+    {
+      "x": 15,
+      "y": 11,
+      "text": "Ahead: Castelia Street\nTo the bay: Cruise Dock (closed for repairs)"
+    },
+    {
+      "x": 37,
+      "y": 11,
+      "text": "Ahead: Mode Street\nTo the bay: Prime Pier, ferries to Virbank City"
+    },
+    {
+      "x": 59,
+      "y": 11,
+      "text": "Ahead: Narrow Street\nTo the bay: Unity Pier (closed)"
+    },
+    {
+      "x": 81,
+      "y": 11,
+      "text": "Ahead: Gym Street and the Pokémon Gym\nTo the bay: Liberty Pier (closed)"
+    }
+  ],
+  "npcs": [
+    {
+      "id": "harlequin",
+      "name": "Harlequin",
+      "npcType": "clown",
+      "x": 44,
+      "y": 8,
+      "facing": "Left",
+      "script": "Harlequin"
+    },
+    {
+      "id": "iris",
+      "name": "Iris",
+      "npcType": "iris",
+      "x": 6,
+      "y": 9,
+      "facing": "Right",
+      "script": "IrisAvenue",
+      "hiddenBy": "FLAG_UNOVA_HIDE_IRIS_AVENUE"
+    },
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 22,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "Everyone on this avenue walks so fast. If you stand still, the crowd just flows round you like a river."
+      ]
+    },
+    {
+      "name": "Youngster",
+      "npcType": "Youngster",
+      "x": 34,
+      "y": 9,
+      "facing": "Left",
+      "dialog": [
+        "The towers here are so tall, I get a crick in my neck. My Pidove says the view from the top is amazing."
+      ]
+    },
+    {
+      "name": "Lady",
+      "npcType": "Lady",
+      "x": 55,
+      "y": 8,
+      "facing": "Down",
+      "dialog": [
+        "Castelia is the biggest city in Unova. People come from every corner of the region to work here."
+      ]
+    },
+    {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "x": 68,
+      "y": 7,
+      "facing": "Down",
+      "dialog": [
+        "I'm due at the office in five minutes, and the lift always takes forever. Wish me luck!"
+      ]
+    },
+    {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "x": 77,
+      "y": 9,
+      "facing": "Right",
+      "dialog": [
+        "Burgh's Gym is up Gym Street. They say his Bug types get stronger the more you underestimate them."
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "x": 38,
+      "y": 11,
+      "width": 4,
+      "depth": 1,
+      "script": "HarlequinScene",
+      "variable": "VAR_UNOVA_CASTELIA",
+      "value": 2
+    },
+    {
+      "x": 11,
+      "y": 6,
+      "width": 1,
+      "depth": 5,
+      "script": "IrisCalls",
+      "variable": "VAR_UNOVA_CASTELIA",
+      "value": 4
+    }
+  ],
+  "wildEncounters": []
+}

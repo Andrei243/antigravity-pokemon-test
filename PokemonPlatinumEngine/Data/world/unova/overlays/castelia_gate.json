@@ -1,0 +1,25 @@
+{
+  // The gate between Castelia City and Route 4 (plan 22 · U5, part c): Black 2's room, our words. Its north door leads
+  // onto Route 4; the second way north, onto the desert's own stretch of the road (Black 2's Route 4 in its storm), is
+  // plan 22 · U6's and stays shut
+  "area": "castelia_gate",
+  "bgmTrack": "unova/castelia",
+  "locked": [ 2, 7, 8 ],
+  "people": {
+    "0": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "Past this gate, the sand starts. Further north there's a whole desert, and ruins buried in it." ]
+    },
+    "1": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Castelia's towers on one side, sand on the other. This gate is where the city ends!" ]
+    },
+    "3": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "dialog": [ "Leaving Castelia already? Come back soon! There's always something new to find in our city." ]
+    }
+  }
+}

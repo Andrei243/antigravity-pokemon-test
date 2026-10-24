@@ -312,6 +312,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Aspertia (Hillside) | white stucco | gable, slate teal `70,104,122` | shutters: the town on the hill over the outlook, clean walls under cool roofs that sit low against the sky; its Trainers' School is Aspertia's too (plan 22 · U5) |
 | Floccesy (Bellfield) | boards | gable, rust orange `196,112,58` | a chimney, flower boxes: the quiet town under its bell tower, fenced in wood; its bell tower is Floccesy's too, and the ranch's farmhouse keeps Solaceon's Farm (plan 22 · U5) |
 | Virbank (Dockyard) | dark brick | gable, violet grey `104,82,124` | a chimney: the harbour and works town of the complex and Roxie's club, containers on its quays and the ship to Castelia at the pier; its long house by the water and the club's stairs down are Virbank's too (plan 22 · U5, part b) |
+| Castelia (Metropolis) | pale panels and glass | flat, behind a parapet, grey | its towers are skyscrapers: a ground stage of pale panels as wide as the block, a shaft of three stages stepping in, each with ribbon windows that burn all night and a band of steel blue `86,120,168` round its top, and a flat top under a roof slab with vents, no cap; its few low buildings are panel blocks of two storeys under flat roofs (plan 22 · U5, part c) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):
@@ -319,7 +320,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Kind | Walls, roof | Marks it out |
 |---|---|---|
 | Pokémon Center, Mart, lab | plaster, hip roof (orange, blue, cyan) | the entrance block with its roundel or name |
-| Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64`, and in Unova Poison `150,92,178` (Virbank's club, a small block over its stairs down) | an entrance block 84 wide in that colour, signed `GYM` |
+| Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64`, and in Unova Poison `150,92,178` (Virbank's club, a small block over its stairs down) and Bug `168,184,64` (Castelia's, Burgh's) | an entrance block 84 wide in that colour, signed `GYM` |
 | Gate house | stone, hip roof green-grey `104,146,122` | an open porch where the road goes through north and south; a door in each end wall where it goes east and west |
 | The League's reception gate (Route 22, Johto, plan 20 · J10, part b) | a gate house | one room seen from three roads: a face on Route 26 to the south, on Route 22 to the east and on Route 28 to the west, each built as a gate house of its own |
 | Shop (flower shop, cycle shop, café, market, Game Corner, Day Care, Fan Club) | its town's house | an entrance block wide enough for its name, in the roof's colour |
@@ -331,7 +332,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Foreign Building (Chapel) | cut stone, two storeys, a steep slate roof `92,104,140` | a round rose window of coloured glass over the door, a small spire on the ridge |
 | Temple (Snowpoint) | weathered stone `150,150,160`, flat roofs under snow | two tiers: the wings a storey lower; arched openings between pilasters |
 | Shrine (Celestic) | timber | a heavy hip roof `120,74,66` with eaves twice as deep as a house's, no windows |
-| Tower (Lost Tower, Battle Tower) | cut stone | four tiers, each a little narrower than the one below, a slit window in each, under a pointed slate cap |
+| Tower (Lost Tower, Battle Tower) | cut stone | four tiers, each a little narrower than the one below, a slit window in each, under a pointed slate cap; in Castelia (Metropolis) a tower is the town's skyscraper, flat on top (the town's row) |
 | Lighthouse | white stucco with a red band `214,72,62` | three narrowing tiers, a gallery, and a lantern room whose glass burns all night |
 | Factory (the mine's works, the Windworks, the Ironworks) | sheet metal under a flat roof | no windows but a strip under the eave; a sliding door; vents, and a smokestack on the Ironworks |
 | Warehouse | sheet metal under a low gable in the same metal; in snow country (Snowpoint's harbour storehouse) logs under a roof of snow | a sliding door two bays wide: in logs, barn doors of boards with rails and a brace across each leaf, and over them on the upper storey a loft door of boards in a frame of beams, with a hoist beam, a rope and a hook above it |

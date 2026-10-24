@@ -1,0 +1,38 @@
+{
+  "key": "castelia_gate",
+  "index": 51,
+  "name": "Castelia Gate",
+  "matrix": 139,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 14, "to": "castelia_city_4", "toWarp": 0 },
+    { "x": 4, "z": 1, "to": "unova_route_4", "toWarp": 5 },
+    { "x": 4, "z": 1, "to": "unova_route_4_16", "toWarp": 5 },
+    { "x": 5, "z": 14, "to": "castelia_city_4", "toWarp": 0 },
+    { "x": 6, "z": 14, "to": "castelia_city_4", "toWarp": 0 },
+    { "x": 5, "z": 1, "to": "unova_route_4", "toWarp": 5 },
+    { "x": 6, "z": 1, "to": "unova_route_4", "toWarp": 5 },
+    { "x": 5, "z": 1, "to": "unova_route_4_16", "toWarp": 5 },
+    { "x": 6, "z": 1, "to": "unova_route_4_16", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 9, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "1", "looks": "25", "movement": "none", "x": 8, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "249", "movement": "none", "x": 5, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x032e", "script": "2000" },
+    { "id": "3", "looks": "harlequin_233", "movement": "none", "x": 3, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "7" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 1, "z": 10, "width": 7, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x40ed", "value": "0" }
+  ]
+}

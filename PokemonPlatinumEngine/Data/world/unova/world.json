@@ -39,7 +39,23 @@
     { "name": "VirbankCity_GymStage", "matrix": 120, "area": "virbank_city_gym_2", "trees": "Round", "setting": "Indoors" },
     { "name": "VirbankCity_PokemonCenter", "matrix": 13, "area": "virbank_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "PokestarGate", "matrix": 12, "area": "virbank_gate_gate", "trees": "Round", "setting": "Indoors" },
-    { "name": "VirbankComplex", "matrix": 256, "area": "virbank_complex_2", "trees": "Round" }
+    { "name": "VirbankComplex", "matrix": 256, "area": "virbank_complex_2", "trees": "Round" },
+    // Plan 22 · U5, part c: Castelia City. Its avenue along the bay and the street across its north stand on Black 2's
+    // rails, which the reader leaves out: the avenue is a map of ours (Data/maps/CasteliaCity.json), and each street's
+    // north end opens onto the plaza (the rulings' "Castelia City"). The piers, the four streets between the avenue and
+    // the plaza, the plaza, the street on to the gate, and the rooms
+    { "name": "CasteliaCity_PrimePier", "matrix": 9, "area": "castelia_city_10", "trees": "Round" },
+    { "name": "CasteliaCity_ThumbPier", "matrix": 11, "area": "castelia_city_12", "trees": "Round" },
+    { "name": "CasteliaCity_CasteliaStreet", "matrix": 5, "area": "castelia_city_6", "trees": "Round" },
+    { "name": "CasteliaCity_ModeStreet", "matrix": 4, "area": "castelia_city_5", "trees": "Round" },
+    { "name": "CasteliaCity_NarrowStreet", "matrix": 6, "area": "castelia_city_7", "trees": "Round" },
+    { "name": "CasteliaCity_GymStreet", "matrix": 2, "area": "castelia_city_3", "trees": "Round" },
+    { "name": "CasteliaCity_Plaza", "matrix": 1, "area": "castelia_city_2", "trees": "Round" },
+    { "name": "CasteliaCity_NorthStreet", "matrix": 3, "area": "castelia_city_4", "trees": "Round" },
+    { "name": "CasteliaCity_PokemonCenter", "matrix": 13, "area": "castelia_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "CasteliaCity_Gym", "matrix": 56, "area": "castelia_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "CasteliaGate", "matrix": 139, "area": "castelia_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "CasteliaSewers", "matrix": 293, "area": "castelia_sewers", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -48,6 +64,9 @@
     "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2",
     "virbank_gate", "virbank_city", "virbank_city_2", "virbank_city_3", "virbank_city_4", "virbank_city_5",
     "virbank_city_gym", "virbank_city_gym_2", "virbank_city_pokemon_center", "virbank_gate_gate", "virbank_complex",
-    "virbank_complex_2"
+    "virbank_complex_2",
+    "castelia_city_10", "castelia_city_12", "castelia_city_6", "castelia_city_5", "castelia_city_7", "castelia_city_3",
+    "castelia_city_2", "castelia_city_4", "castelia_city_pokemon_center", "castelia_city_gym",
+    "castelia_gate", "castelia_sewers", "unova_route_4"
   ]
 }

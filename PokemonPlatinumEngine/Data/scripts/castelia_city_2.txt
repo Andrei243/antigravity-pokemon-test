@@ -1,0 +1,40 @@
+# Castelia City's central plaza (plan 22 · U5, part c). docs/scripts.md describes the language; the lines are our own,
+# on Black 2's beats (the decompilation's res/field/scripts/castelia_city_2.s, read for the order alone).
+# VAR_UNOVA_CASTELIA is the city's count (castelia_city_10.txt has it whole).
+#
+# With the Insect Badge won (10), the stranger from the sewers (0, Colress, FLAG_UNOVA_HIDE_COLRESS_PLAZA) stops the
+# player in the passage north, looks over the team, names himself and goes on to wait on Route 4 (11).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The passage north to the gate street (our trigger on 13 to 18, 3, at 10)
+script Colress
+  scene "Colress on the plaza"
+  face 0 player
+  speaker "???"
+  ask "Pardon me. If it isn't too much trouble, might I have a look at your Pokémon?"
+  if no goto Anyway
+  say "I'm most grateful for your cooperation!"
+  goto Looks
+label Anyway
+  say "Oh, come now. It's all in the name of science!"
+label Looks
+  say "Oh! How very interesting! Your {lead} carries itself with more confidence than others of its kind."
+  say "And you a Trainer with only three Badges..."
+  say "Fantastic! I couldn't tell you how you're doing it, but you're drawing out the power of your Pokémon!"
+  speaker "Colress"
+  say "Ah, forgive me. I'm a scientist, and my name is Colress. The subject of my research is a single question: how does one bring out a Pokémon's full power?"
+  say "Is it the bond a Pokémon shares with its Trainer? Or is there some other way entirely? That's what I intend to find out."
+  ask "I'd like to test my theory in a battle with you. Would you find that acceptable?"
+  say "Either way, I'll be waiting for you on Route 4. It's just past the gate up ahead!"
+  walk 0 up 1 fast
+  hide 0
+  setflag FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  clearflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  setvar VAR_UNOVA_CASTELIA 11
+  endscene
+  end

@@ -2597,6 +2597,28 @@ script UnovaVirbank
   setflag FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   setflag FLAG_UNOVA_HIDE_HUGH_TERMINAL
   setflag FLAG_UNOVA_VIRBANK_BEGUN
+  call UnovaCastelia
+  return
+
+
+# What Unova's Castelia chapter hides until its scenes (plan 22 · U5, part c): Hugh on Prime Pier, at Thumb Pier and in
+# the sewers, Iris on Gym Street, the avenue and Thumb Pier, the sewers' two grunts, Burgh and the stranger there,
+# Burgh in his Gym, and Colress on the plaza and on Route 4. UnovaVirbank runs it, for a new game and for a save of
+# part b's (UnovaCatchUp), with no story version raised. It may only set flags and variables, and ends in return.
+script UnovaCastelia
+  setflag FLAG_UNOVA_HIDE_HUGH_PIER
+  setflag FLAG_UNOVA_HIDE_HUGH_THUMB
+  setflag FLAG_UNOVA_HIDE_HUGH_SEWERS
+  setflag FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  setflag FLAG_UNOVA_HIDE_IRIS_AVENUE
+  setflag FLAG_UNOVA_HIDE_IRIS_PIER
+  setflag FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  setflag FLAG_UNOVA_HIDE_SEWERS_BURGH
+  setflag FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  setflag FLAG_UNOVA_HIDE_BURGH_GYM
+  setflag FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  setflag FLAG_UNOVA_CASTELIA_BEGUN
   return
 
 
@@ -2627,6 +2649,7 @@ script UnovaOpeningDone
 script UnovaCatchUp
   if not flag FLAG_UNOVA_STORY_BEGUN call UnovaNewGame
   if not flag FLAG_UNOVA_VIRBANK_BEGUN call UnovaVirbank
+  if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

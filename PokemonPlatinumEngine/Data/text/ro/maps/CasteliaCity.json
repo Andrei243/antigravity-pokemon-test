@@ -1,0 +1,164 @@
+{
+  "displayName": {
+    "en": [
+      "Castelia City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "harlequin": {
+      "name": {
+        "en": [
+          "Harlequin"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "iris": {
+      "name": {
+        "en": [
+          "Iris"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "22,7": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone on this avenue walks so fast. If you stand still, the crowd just flows round you like a river."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "34,9": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The towers here are so tall, I get a crick in my neck. My Pidove says the view from the top is amazing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "55,8": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Castelia is the biggest city in Unova. People come from every corner of the region to work here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "68,7": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm due at the office in five minutes, and the lift always takes forever. Wish me luck!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "77,9": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Burgh's Gym is up Gym Street. They say his Bug types get stronger the more you underestimate them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,11": {
+      "en": [
+        "Thumb Pier\nThe way down to the old sewers"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "15,11": {
+      "en": [
+        "Ahead: Castelia Street\nTo the bay: Cruise Dock (closed for repairs)"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "37,11": {
+      "en": [
+        "Ahead: Mode Street\nTo the bay: Prime Pier, ferries to Virbank City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "59,11": {
+      "en": [
+        "Ahead: Narrow Street\nTo the bay: Unity Pier (closed)"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "81,11": {
+      "en": [
+        "Ahead: Gym Street and the Pokémon Gym\nTo the bay: Liberty Pier (closed)"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

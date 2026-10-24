@@ -1,0 +1,45 @@
+{
+  // The Castelia Gym (plan 22 · U5, part c): Black 2's hall of honey and cocoons, our words. Black 2 hides its three
+  // Harlequins in cocoons that burst as the player passes through the honey, and reaches Burgh's own room only through
+  // the honey by a script's warp; the honey's puzzle is left for later, so the Harlequins stand in the hall (moved where
+  // the original's cocoons hang over walls) and Burgh (ours, FLAG_UNOVA_HIDE_BURGH_GYM) waits at the head of it once
+  // he is back from the sewers (castelia_city_gym.txt). Clyde (4) is the guide inside the door
+  "area": "castelia_city_gym",
+  "bgmTrack": "unova/gym",
+  "arenaType": "Bug",
+  "people": {
+    "1": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "at": [ 13, 7 ],
+      "trainer": {
+        "dialogueBefore": "Ta-da! The cocoon splits open, and out pops... me! Now, a battle!",
+        "dialogueAfter": "Hiding away dulls a performer's instincts, it seems."
+      }
+    },
+    "2": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "at": [ 18, 3 ],
+      "trainer": {
+        "dialogueBefore": "Honey, cocoons and a Harlequin! Burgh's Gym is a work of art, and so am I!",
+        "dialogueAfter": "A masterpiece, ruined by a single brushstroke."
+      }
+    },
+    "3": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "trainer": {
+        "dialogueBefore": "Stuck in the honey? Then I'll battle you right where you stand!",
+        "dialogueAfter": "You slipped free of the honey AND of me!"
+      }
+    },
+    "4": { "name": "Clyde", "npcType": "gym_guide", "script": "GymGuide", "still": true }
+  },
+  "npcs": [
+    { "id": "burgh", "name": "Burgh", "npcType": "burgh", "x": 14, "y": 2, "facing": "Down", "script": "Burgh", "hiddenBy": "FLAG_UNOVA_HIDE_BURGH_GYM" }
+  ],
+  "signs": {
+    "9": "Castelia City Pokémon Gym\nLeader: Burgh, the artist of Bug types"
+  }
+}
