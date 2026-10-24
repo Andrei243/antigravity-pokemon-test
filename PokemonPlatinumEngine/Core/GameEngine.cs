@@ -187,6 +187,8 @@ public partial class GameEngine
         Settings = settings ?? GameSettings.Load();
         flow.ModelWanted += PokemonModels.Request;
         world = new WorldRenderer(renderContext);
+        // Unova's seasons (plan 22 · U3): a map of a region with seasons is drawn in the field's; every other in none
+        world.SeasonOf = SeasonOn;
         battleRenderer = new BattleRenderer(renderContext);
     }
 
@@ -410,6 +412,8 @@ public partial class GameEngine
         flow.Arrived = true;
         flow.ScriptFade.Clear();
         flow.StartMenu.PlayerName = playerName;
+        // The day's season, without a word: the game opens from black (plan 22 · U3)
+        TakeTheSeason();
         KeepCharactersNear(trim: false);
         PlayAreaMusic(flow.Map, flow.Player.GridX, flow.Player.GridY);
         AnnounceLocation();
@@ -428,6 +432,9 @@ public partial class GameEngine
         // The keys and the pad as the options have them (plan 12 · Q4)
         InputManager.Use(Settings);
         GameClock.Fixed = Settings.TimeOfDay;
+        // A season the options fix is the field's at once (plan 22 · U3), with nothing said
+        GameClock.FixedSeason = Settings.Season;
+        TakeTheSeason();
         if (AudioManager.IsMuted != Settings.Muted) AudioManager.ToggleMute();
         AudioManager.SetVolumes(Settings.MusicVolume / 100f, Settings.SoundVolume / 100f, Settings.CryVolume / 100f, Settings.AmbienceVolume / 100f);
         AudioManager.Handheld = Settings.Speakers == SpeakerMode.Handheld;
@@ -1647,7 +1654,7 @@ public partial class GameEngine
         NoteArrival();
         PlayFieldMusic();
         // As the language writes it (plan 17 · N6b): the area's own name was shown in English under every language
-        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
+        if (!string.IsNullOrEmpty(area.DisplayName)) flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
         return StartEnterScript();
     }
 
@@ -2090,7 +2097,7 @@ public partial class GameEngine
         flow.CurrentZone = flow.Map.ZoneAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
-        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));
+        else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY), SeasonHere);
     }
 
     private void HandleStartMenuChoice(StartMenuChoice choice)
@@ -2345,6 +2352,8 @@ public partial class GameEngine
                 {
                     band.End();
                     DriveTheLens(world.Camera, flow.Kind, closing: false, 0f);
+                    // A season the calendar has turned to is taken behind the dark (Unova's, plan 22 · U3)
+                    TurnTheSeason();
                 }))
         {
             case TransitionStep.Closing:
