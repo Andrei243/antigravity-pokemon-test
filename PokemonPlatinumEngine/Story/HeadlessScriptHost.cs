@@ -1050,10 +1050,11 @@ public sealed class HeadlessScriptHost : IScriptHost
     {
         NeverInAHurry("the Mossdeep Gym's arrows");
         Log.Add($"rotatetiles {colour.ToString().ToLowerInvariant()}");
-        if (Map?.Puzzle is not MossdeepTiles) return;
+        if (Map?.Puzzle is not MossdeepTiles tiles) return;
         // Everyone steps at once: where each is going is worked out before anyone moves
         foreach (var (who, step, facing) in MossdeepTiles.Turns(colour, (x, y) => Map.NPCs.At(x, y)))
         {
+            tiles.Remember(who);
             var (dx, dy) = FieldMovement.Delta(step);
             (who.GridX, who.GridY) = (who.GridX + dx, who.GridY + dy);
             Face(who, facing);

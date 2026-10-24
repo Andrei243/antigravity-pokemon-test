@@ -624,12 +624,10 @@ public static class RegionDatabase
                 // Plan 21 · H7, part b: Team Magma's and Team Aqua's hideouts
                 "MagmaHideout_1F", "MagmaHideout_2F_1R", "MagmaHideout_2F_2R", "MagmaHideout_2F_3R", "MagmaHideout_3F_1R",
                 "MagmaHideout_3F_2R", "MagmaHideout_3F_3R", "MagmaHideout_4F", "AquaHideout_1F", "AquaHideout_B1F", "AquaHideout_B2F",
-                // Plan 21 · H8, part a: Mossdeep City's rooms, the treasure hunter's house on Route 124 and the sea floor
-                // under Route 125
+                // Plan 21 · H8, part a: Mossdeep City's rooms and the treasure hunter's house on Route 124
                 "MossdeepCity_Gym", "MossdeepCity_House1", "MossdeepCity_House2", "MossdeepCity_House3", "MossdeepCity_House4",
                 "MossdeepCity_PokemonCenter_1F", "MossdeepCity_PokemonCenter_2F", "MossdeepCity_Mart", "MossdeepCity_StevensHouse",
                 "MossdeepCity_SpaceCenter_1F", "MossdeepCity_SpaceCenter_2F", "Route124_DivingTreasureHuntersHouse",
-                "HoennUnderwaterRoute125",
             }
         },
         new()

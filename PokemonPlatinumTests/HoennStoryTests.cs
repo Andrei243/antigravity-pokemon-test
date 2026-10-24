@@ -63,6 +63,12 @@ public class HoennStoryTests
             Map.ApplyPresence(Story.Has);
             Map.ApplyDoors(Story.Has);
             Wandering.SendHome(Map);
+            // A room's puzzle is laid out afresh as the game lays it out on arrival (GameEngine.ArrivePuzzle)
+            if (Map.Puzzle is { } puzzle)
+            {
+                puzzle.ArriveAt(Map, Story, new Random(0), x, y);
+                puzzle.Apply(Map, Story);
+            }
             Tile = (x, y);
             if (Scripts.In(Map.ScriptFileAt(x, y), ScriptLibrary.OnEnter) is { } script) Play(script);
         }

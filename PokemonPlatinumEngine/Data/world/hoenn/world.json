@@ -229,10 +229,7 @@
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8 (128's, with the Seafloor Cavern's way in, waits for part b)
-    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" },
-    // Plan 21 · H8, part a: the sea floor under Route 125, which joins no other floor and is a map of its own, laid
-    // under its route as the others are
-    { "name": "HoennUnderwaterRoute125", "matrix": 5, "trees": "Round", "setting": "Underwater" }
+    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -319,7 +316,7 @@
     // Plan 21 · H8, part a: Routes 125 to 127 round Mossdeep City and their sea floors, the city and its rooms, and the
     // treasure hunter's house on Route 124 (Shoal Cave, Route 128, the Seafloor Cavern and Sootopolis are part b's)
     "route_125", "route_126", "route_127", "mossdeep_city",
-    "underwater_route_125", "underwater_route_126", "underwater_route_127",
+    "underwater_route_126", "underwater_route_127",
     "mossdeep_city_gym", "mossdeep_city_house_1", "mossdeep_city_house_2", "mossdeep_city_house_3", "mossdeep_city_house_4",
     "mossdeep_city_pokemon_center_1f", "mossdeep_city_pokemon_center_2f", "mossdeep_city_mart",
     "mossdeep_city_stevens_house", "mossdeep_city_space_center_1f", "mossdeep_city_space_center_2f",

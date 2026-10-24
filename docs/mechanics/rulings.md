@@ -3503,9 +3503,10 @@ until the Mind Badge), `HoennNewGame` calls it, and Mossdeep City's arrival call
   and flies home when spoken to (`FLAG_WINGULL_DELIVERED_MAIL`), and the boy gives a Mental Herb once.
 - **The treasure hunter** offers all four shards in one question and turns down one not in the bag, where Emerald's menu
   lists only those the bag holds.
-- **The eastern sea** plays Route 120's song, Route 124 too now that it is written. Route 125's sea floor joins no other
-  and is a map of its own (`HoennUnderwaterRoute125`), laid under its route as the others are. Emerald's shallows
-  (`MB_SHALLOW_WATER`) are water to look at over all of Hoenn (`GbaCover.Of`), where they had taken the nearest ground.
+- **The eastern sea** plays Route 120's song, Route 124 too now that it is written. Route 125 has no dark water
+  until the post-game's Marine Cave (Emerald's abnormal weather lays it), so its sea floor is the post-game's (plan 21
+  · H12). Emerald's shallows (`MB_SHALLOW_WATER`) are water to look at over all of Hoenn (`GbaCover.Of`), where they had
+  taken the nearest ground.
 - **Mossdeep is built as Starward** (white stucco under sky-blue hip roofs, shutters and flower boxes; the style guide's
   row), and its open metatiles are its sandy paths (`GbaCover.HoennRanges`).
 
