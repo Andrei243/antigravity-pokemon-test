@@ -6,7 +6,7 @@
           "Captain"
         ],
         "text": [
-          ""
+          "Căpitanul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Team Plasma could be anywhere..."
         ],
         "text": [
-          ""
+          "Team Plasma ar putea fi oriunde..."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "When I can't stand the noise of the city, I come out here. The sea breeze clears the head wonderfully."
         ],
         "text": [
-          ""
+          "Când nu mai suport zgomotul orașului, vin aici. Briza mării limpezește minunat mintea."
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Captain"
       ],
       "text": [
-        ""
+        "Căpitanul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "And here we are! Castelia City, the biggest city in all of Unova!"
       ],
       "text": [
-        ""
+        "Și am ajuns! Castelia City, cel mai mare oraș din Unova!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Whoa... So this is Castelia. The towers go on forever! Team Plasma could be hiding anywhere in a place like this."
       ],
       "text": [
-        ""
+        "Uau... Deci asta e Castelia. Turnurile nu se mai termină! Team Plasma s-ar putea ascunde oriunde într-un loc ca ăsta."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Hey, look out there! That ship with the black sails, heading out of the bay... Something about it feels wrong."
       ],
       "text": [
-        ""
+        "Hei, uită-te acolo! Nava aia cu pânze negre, care iese din golf... Ceva nu e în regulă cu ea."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I'm going to have a look around. See you, {player}!"
       ],
       "text": [
-        ""
+        "Mă duc să arunc o privire. Pe curând, {player}!"
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Captain"
       ],
       "text": [
-        ""
+        "Căpitanul"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Shall we sail back to Virbank City?"
       ],
       "text": [
-        ""
+        "Navigăm înapoi spre Virbank City?"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Right you are! Step this way!"
       ],
       "text": [
-        ""
+        "Perfect! Pe aici!"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "The ship pulls away from the pier and heads back across the bay toward Virbank City..."
       ],
       "text": [
-        ""
+        "Nava se desprinde de debarcader și se îndreaptă înapoi peste golf spre Virbank City..."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Come and find me whenever you fancy a trip. I'm always on this pier!"
       ],
       "text": [
-        ""
+        "Vino la mine oricând ai chef de o călătorie. Sunt mereu pe debarcaderul ăsta!"
       ]
     }
   ]

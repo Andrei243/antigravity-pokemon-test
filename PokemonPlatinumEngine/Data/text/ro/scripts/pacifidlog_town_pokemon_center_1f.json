@@ -5,7 +5,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I know a move that goes off with an almighty bang. Shall I teach one of your Pokémon Explosion?"
       ],
       "text": [
-        ""
+        "Știu o mișcare care pocnește cu un bubuit zdravăn. Să învăț unul dintre Pokémonii tăi Explozie?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Splendid! Which one?"
       ],
       "text": [
-        ""
+        "Splendid! Care dintre ei?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Explosion spends everything in one go. Save it for the moment it counts!"
       ],
       "text": [
-        ""
+        "Explozia cheltuiește totul dintr-o dată. Păstrează-o pentru clipa care contează!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "No? A move like that is best not rushed."
       ],
       "text": [
-        ""
+        "Nu? O mișcare ca asta nu se grăbește."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "An Egg? It hasn't even hatched yet! Bring me a Pokémon."
       ],
       "text": [
-        ""
+        "Un Ou? Nici nu a ieșit încă din ou! Adu-mi un Pokémon."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Ah, that one can't learn Explosion, I'm afraid."
       ],
       "text": [
-        ""
+        "Ah, ăla nu poate învăța Explozie, îmi pare rău."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That one already knows {thing}."
       ],
       "text": [
-        ""
+        "Ăla știe deja {thing}."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{forgotten} isn't a move that can be given up like that."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare care poate fi lăsată așa."
       ]
     }
   ]

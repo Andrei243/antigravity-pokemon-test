@@ -5,7 +5,7 @@
         "Karate Master"
       ],
       "text": [
-        ""
+        "Maestrul de Karate"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hah! I train down here where no one can disturb me. Few ever find their way this deep."
       ],
       "text": [
-        ""
+        "Hah! Mă antrenez aici jos, unde nu mă deranjează nimeni. Puțini ajung atât de adânc."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "You have the eyes of someone who wants to test their fists. Will you fight me?"
       ],
       "text": [
-        ""
+        "Ai ochii cuiva care vrea să-și testeze pumnii. Te lupți cu mine?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Good! Show me what you and your Pokémon are made of!"
       ],
       "text": [
-        ""
+        "Bine! Arată-mi din ce sunteți făcuți tu și Pokémonii tăi!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Hah! Well fought! Your Pokémon fight as one with you."
       ],
       "text": [
-        ""
+        "Hah! Bine luptat! Pokémonii tăi luptă ca unul cu tine."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I have a young fighter that needs a Trainer with a strong heart. Take it, and teach it well."
       ],
       "text": [
-        ""
+        "Am un tânăr luptător care are nevoie de un Antrenor cu inimă puternică. Ia-l și învață-l bine."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player} received Tyrogue from the Karate Master!"
       ],
       "text": [
-        ""
+        "{player} a primit un Tyrogue de la Maestrul de Karate!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "It has the makings of three different fighters. Which one it becomes depends on how you raise it."
       ],
       "text": [
-        ""
+        "Are potențialul a trei luptători diferiți. Care devine depinde de cum îl crești."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Your team is full. Make room, and I will give you my young fighter."
       ],
       "text": [
-        ""
+        "Echipa ta e plină. Fă loc și-ți voi da tânărul meu luptător."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Then leave me to my training. Come back when your fists are ready."
       ],
       "text": [
-        ""
+        "Atunci lasă-mă la antrenament. Revino când pumnii îți sunt gata."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "How is the young fighter? Train it hard, and it will repay you."
       ],
       "text": [
-        ""
+        "Cum se descurcă tânărul luptător? Antrenează-l din greu și te va răsplăti."
       ]
     }
   ]

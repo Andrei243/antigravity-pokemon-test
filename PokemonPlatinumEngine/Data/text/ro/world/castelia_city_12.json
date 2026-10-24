@@ -6,7 +6,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Iris"
         ],
         "text": [
-          ""
+          "Iris"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăușul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Stick your thumb up and curl your fingers. That's a thumbs-up! Well done, you've learned something."
         ],
         "text": [
-          ""
+          "Ridică degetul mare și îndoaie degetele. Asta e un deget în sus! Bravo, ai învățat ceva."
         ]
       }
     }

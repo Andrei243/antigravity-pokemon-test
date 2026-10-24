@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Route 4 is just past the gate. The wind out there blows sand right into the city sometimes."
         ],
         "text": [
-          ""
+          "Ruta 4 e chiar după poartă. Vântul de acolo aduce uneori nisip direct în oraș."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Beyond Route 4 lies Nimbasa City. I hear its Gym Leader is a model!"
         ],
         "text": [
-          ""
+          "După Ruta 4 se află Nimbasa City. Aud că Liderul ei de Arenă e fotomodel!"
         ]
       }
     }
@@ -43,7 +43,7 @@
         "North: Route 4\nSouth: Castelia City Central Plaza"
       ],
       "text": [
-        ""
+        "Nord: Ruta 4\nSud: Piața Centrală din Castelia City"
       ]
     }
   }
