@@ -152,6 +152,7 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | Sparkles | white plus-signs that flash for a moment, in sunlight only |
 | North bank | where land lies to the north the bank shows as a face 5 texels deep, `124,116,116` over `88,84,98`; other shores get a one-texel light rim |
 | Motion | everything moves in whole texels; no sub-texel scrolling |
+| Reflection | what stands by the water is mirrored in it (plan 09 · L10): the people, Pokémon and things of the map, item balls, buildings, props and trees, never the ground, grass, lamplight or what the field's life draws. In the mid and deep bands only, never on foam, a wave mark or a sparkle, which lie over it. One colour per field texel (read at the texel's middle), each row of texels pushed east or west by a whole texel on a slow swell (`round(1.2 · sin(1.5 t + 0.9 row))`), and broken: runs of six texels drift east with the wave marks and about one in six is left plain. The reflection is darkened to the band it lies in: `mix(reflection, band, 0.35) × 0.82`, laid over the band at 70 %. Only the water of one height mirrors (the height most of the water in view lies at; ties go to the water nearest the middle of the picture): water above or below it shows its bands alone. There is no sky to mirror, so where nothing stands over the water it is the water's own colour. After dark lit windows mirror as lit. On the Low preset nothing is mirrored |
 
 **Puddles** (plan 01 · M7; `TileType.Puddle`, from the behaviours `Puddle` and `StillPuddle`) are a ground of their own, not water: they are walked through and lie flat in the ground plane like sand or ice, painted by the same rule (a base, lighter patches, a rim where they meet other ground, marks), so neighbouring puddle tiles run together into one pool with a rounded edge.
 
@@ -161,7 +162,8 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | Patches | `138,168,194`, where it catches the sky |
 | Rim | `92,80,68`, dark wet earth, where the puddle meets other ground |
 | Marks | a glint `196,218,232`, a short stroke or a ring two texels across |
-| Reflection | whoever stands in one is mirrored in it: their sprite upside down on the ground under their feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted `150,170,196`, fading from 45 % at the feet to nothing, and cut off where the puddle ends to the south |
+| Reflection | whoever stands in one is mirrored in it: their sprite upside down on the ground under their feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted `150,170,196`, fading from 45 % at the feet to nothing, and cut off where the puddle ends to the south. A puddle takes nothing from the water's reflection: the walker is all the original's puddles mirror |
+| Polished floor | a tile of the behaviour `ShinyFloor` (the Hall of Fame and the hallway to it, the ruins' floors) mirrors whoever stands on it as a puddle does, with a tint of its own, `176,182,222`, fading from 35 % at the feet: pale on the dark polished stone, so the walker shows without the floor turning grey. A run that crosses from a puddle to a floor takes the tint of the tile under the feet |
 
 **Whirlpools** (plan 20 · J8; `PropType.Whirlpool`, placed by HeartGold's model `uzushio` over a block of three tiles by three of the whirlpool behaviour) are a sheet lying two texels over the water, its own pixel art in four frames, six a second: the water itself still shows round it.
 
@@ -1033,11 +1035,13 @@ The world follows the computer's clock, like the DS's real-time clock, with Plat
 
 ## Quality presets
 
-| Preset | 3D scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field |
-|---|---|---|---|---|---|---|
-| High (default) | 3840×2160 | FXAA in a window wider than 2880; in a smaller one the downscale to the window does it | 9 | 2048 | yes | yes |
-| Medium | 2880×1620 | FXAA in a window wider than 2160 | 4 | 2048 | yes | yes |
-| Low | 1920×1080 | FXAA in a window wider than 1440 | 1 | 1024 | no | no |
+| Preset | 3D scene resolution | Anti-aliasing | Shadow taps | Shadow map | Ambient occlusion | Wide depth of field | Reflections in water |
+|---|---|---|---|---|---|---|---|
+| High (default) | 3840×2160 | FXAA in a window wider than 2880; in a smaller one the downscale to the window does it | 9 | 2048 | yes | yes | yes |
+| Medium | 2880×1620 | FXAA in a window wider than 2160 | 4 | 2048 | yes | yes | yes |
+| Low | 1920×1080 | FXAA in a window wider than 1440 | 1 | 1024 | no | no | no |
+
+Reflections in water (plan 09 · L10) are a pass of their own (`FrameSection.Reflections`): what stands near the view is drawn a second time, mirrored about the water's plane, into a target of 1920×1080 whatever the preset, before the scene. Where no water is in view (six tiles or fewer), outdoors or not, the pass draws nothing and costs nothing. Puddles and polished floors mirror the walker on every preset: a quad each.
 
 The interface is always drawn at 4K; the presets change only the 3D scenes. FXAA is for a window that shows the scene at more than three quarters of its size: a smaller window smooths the scene by scaling it down, and FXAA would cost half a millisecond for nothing. Options are saved in `settings.json`.
 
@@ -1494,7 +1498,7 @@ Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 - Snow country has its own grading of the hour's light since plan 01 · M8, caves their own rig since M5, and the Distortion World its own since M8. Its walls and ceilings, walked with sideways gravity in the original, are not built: only its floors are walked.
 - Every town of Sinnoh has its buildings and landmarks (plan 01 · M4), each standing where the original's model does; they are seen in the game as plan 01 opens each area, and in the harness's `cities` mode until then. Nine models have plain stand-ins until their area is built, all of them in plan 01 · M10, part b (Stark Mountain's lava and mouth, the Battle Frontier's halls and tower; `docs/world-models.md` says which): part a built the Fight Area's containers and fountains, the Resort Area's pools, the Ribbon Syndicate and the Battleground; the last of M8's (Sunyshore's sea stack, Snowpoint's harbour storehouse and its drifts, Spear Pillar's rifts) were built with the Distortion World. Jubilife City is still the hand-made map in the game itself until plan 01 · M5.
 - A cross gable would give the bigger houses their look.
-- A puddle has no look of its own yet (it is drawn as the ground round it), so nothing mirrors a walker; puddles and their reflections come with the first place that has them, Route 212 (plan 01 · M7). Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).
+- Puddles have their look and mirror the walker since plan 01 · M7; water mirrors what stands by it and polished floors the walker since plan 09 · L10. A polished floor mirrors only the walker, as the original's do: a pillar of the League's rooms is not seen in it. Only the player's steps leave prints, dust and leaves: other people don't walk about yet (plan 02).
 - The weather has its eleven looks, but the five places whose weather follows Platinum's calendar keep one weather until the calendar is imported with them (plan 01 · M7 and M8), and the moods Platinum gives some forests, caves and halls through the same setting are not built. Weather is silent until plan 05. A battle begins in the field's weather (plan 06 · R3) and shows it (plan 25 · Y1: "Weather in battle"), but a thunderstorm, heavy rain and a blizzard come in as plain rain and hail, and the field's ash has no weather in battle, as in the original.
 - Rooms are furnished only as far as the maps place furniture; there are no lamps to see, though the light changes at night. Trees are the only field art still built from smooth 3D shapes under a pixel texture.
 - The menu screens show what the rules behind them can do so far. The bag uses, gives, tosses and registers every item of Platinum's that works outside battle so far (plan 06 · R11); mail is held but not written, and berries are not planted until berry soil (R14). The PC shows the stored Pokémon thirty to a box in the order they were stored; slots of their own, moving, box names and wallpapers come with R12. The National Pokédex is opened by Professor Rowan in the post-game (plan 02), and the diploma is shown by the Pokédex itself until Jubilife City's Game Freak building is built (plan 01 · M5). The options set the music's and the sound effects' volumes (plan 05 · A1); the cries and the ambience follow the effects' until they have settings of their own (A7).

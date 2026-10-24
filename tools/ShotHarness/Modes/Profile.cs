@@ -51,6 +51,10 @@ partial class Harness
             At("Sinnoh", 178, 845, Direction.Down); Frames(40); Profile("sandgem town");
             At("Sinnoh", 174, 815, Direction.Up); Frames(40); Profile("route 202");
             At("LakeVerity", 44, 46, Direction.Up); Frames(40); Profile("lake verity");
+            // The lake from its east shore, the most water in the picture (plan 09 · L10: the mirror's pass is heaviest
+            // where the water is widest and the trees stand all round it; its own line is "reflections")
+            At("LakeVerity", 51, 40, Direction.Left); Frames(40); Profile("lake verity, its east shore");
+            At("Sinnoh", 708, 780, Direction.Up); Frames(40); Profile("valor lakefront");
             At("Sinnoh", 175, 792, Direction.Up); Frames(40); Profile("jubilife city");
             At("Sinnoh", 302, 784, Direction.Down); Frames(40); Profile("oreburgh's mine yard");
             At("OreburghGate1F", 16, 22, Direction.Right); Frames(40); Profile("oreburgh gate");

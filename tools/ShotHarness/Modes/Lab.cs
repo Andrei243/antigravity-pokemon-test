@@ -44,6 +44,34 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
+        // Reflections (plan 09 · L10): the bay with the boulder standing in it and the hiker on its shore, the puddle,
+        // the polished floor beside them, the hiker surfing, and the bay after dark. Each says where the water mirrored
+        void Mirror(string name)
+        {
+            var plane = game.World.Mirrored;
+            Console.WriteLine($"  {name}: {(plane is { } p ? $"the water mirrors at {p:F2}" : "nothing mirrored in the water")}, the tile underfoot {lab.BehaviourAt(hiker.GridX, hiker.GridY)}");
+        }
+        Stand("lab30_bay_mirror", 38, 27, Direction.Down); Mirror("lab30");
+        ShotCrop("lab30b_bay_mirror_native", 640, 300, 640, 360, 2);
+        Stand("lab31_puddle_mirror", 36, 25, Direction.Down); Mirror("lab31");
+        ShotCrop("lab31b_puddle_mirror_native", 640, 240, 640, 360, 2);
+        Stand("lab32_floor_mirror", 44, 24, Direction.Down); Mirror("lab32");
+        ShotCrop("lab32b_floor_mirror_native", 640, 240, 640, 360, 2);
+        Stand("lab33_surfing_mirror", 41, 30, Direction.Left, TravelMode.Surfing); Mirror("lab33");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        Stand("lab34_bay_mirror_night", 38, 27, Direction.Down); Mirror("lab34");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+        // On the Low preset nothing is mirrored in the water; the puddle still mirrors the walker
+        var quality = engine.Settings.Quality;
+        engine.Settings.Quality = GraphicsQuality.Low;
+        engine.ApplySettings(window: false);
+        Stand("lab35_bay_low", 38, 27, Direction.Down); Mirror("lab35");
+        engine.Settings.Quality = quality;
+        engine.ApplySettings(window: false);
+        Frames(2);
+
         hiker.SetPosition(20, 15, Direction.Up);
         hiker.SetMode(TravelMode.OnFoot);
         Timing("terrain lab");
@@ -169,6 +197,8 @@ partial class Harness
         Raise(37, 28, 46, 32, -0.5f);
         m.SetBehaviour(36, 25, TileBehavior.Puddle);
         m.SetBehaviour(41, 25, TileBehavior.Puddle);
+        // And a polished floor beside them (plan 09 · L10), seen here before the League's rooms and the ruins
+        Does(44, 24, 45, 26, TileBehavior.ShinyFloor);
         m.AddProp(PropType.Boulder, 43, 30);
 
         // A lawn with tall grass, fenced by ledges: hopped out of southward, westward and eastward, entered from the north

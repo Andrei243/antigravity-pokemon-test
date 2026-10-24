@@ -626,6 +626,16 @@ public sealed class WorldRenderer
         // Rooms keep their perspective: their side walls are what makes them a doll's house
         shaders.SetUpright(indoors ? 0f : ArtLook.FieldUpright, pitchDeg);
 
+        // 1b. The mirror (plan 09 · L10): what stands by the water, drawn once more through the view mirrored about the
+        // water's plane, for the water to read. Nothing at all where no water is in view or the preset doesn't reflect
+        float? plane = !indoors && view is { } seen ? Reflections.PlaneIn(map, seen, new Vector2(camera.Target.X, camera.Target.Z)) : null;
+        bool mirroring = context.HasMirror && Reflections.Wanted(context.Quality, map, plane);
+        if (mirroring) DrawMirror(scenes, camera, view!.Value, plane!.Value, pitchDeg);
+        else shaders.SetWaterMirror(false, Matrix4x4.Identity, 0f, pitchDeg);
+        foreach (var scene in scenes) scene.MirrorWater(mirroring ? context.Mirror.Texture : default);
+        Mirrored = mirroring ? plane : null;
+        FrameProfiler.Lap(FrameSection.Reflections);
+
         // 2. The scene itself, sampling the shadow map
         float near = indoors ? 1f : 10f, far = indoors ? 100f : 140f;
         Raylib.BeginTextureMode(context.Target);
@@ -666,6 +676,8 @@ public sealed class WorldRenderer
 
         context.UnbindShadowMap();
         Rlgl.SetClipPlanes(0.01, 1000.0);
+        // The programs are shared: a battle's water (or the title's) must not read the field's mirror
+        if (mirroring) shaders.SetWaterMirror(false, Matrix4x4.Identity, 0f, pitchDeg);
         FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(near, far, camera.FovY, (float)width / height), aoRadius: 0.45f);
     }
@@ -1560,25 +1572,64 @@ public sealed class WorldRenderer
     }
 
     /// <summary>
-    /// Whoever stands in a puddle is mirrored in it (style guide, "Puddles"): their sprite upside down on the ground
-    /// to the south of their feet, as far as the puddle runs that way.
+    /// The height of the water the last frame mirrored in, or null where it mirrored nothing (plan 09 · L10): what a
+    /// tool reads to tell whether the pass ran.
+    /// </summary>
+    public float? Mirrored { get; private set; }
+
+    /// <summary>
+    /// The mirror pass (plan 09 · L10; style guide, "Water", "Reflection"): what stands within the view and a little
+    /// north of it (<see cref="Reflections.Reach"/>) is drawn again through the camera mirrored about the water's plane,
+    /// straightened as the field's camera straightens its reflection and cut off under the plane, into the context's
+    /// mirror target, cleared to nothing. The scenery's standing meshes, the things of the map, the Pokémon and the
+    /// people: never the ground, grass, lights or the field's life. The water then reads it through the same camera.
+    /// </summary>
+    private void DrawMirror(List<MapScene> scenes, Camera3D camera, GroundRect view, float plane, float pitchDeg)
+    {
+        var mirrored = Reflections.Mirror(camera, plane);
+        var reach = Reflections.Reach(view);
+        Raylib.BeginTextureMode(context.Mirror);
+        Raylib.ClearBackground(new Color(0, 0, 0, 0));
+        Rlgl.SetClipPlanes(10.0, 140.0);
+        Raylib.BeginMode3D(mirrored);
+        var mirrorView = Rlgl.GetMatrixModelview();
+        var mirrorProjection = Rlgl.GetMatrixProjection();
+        Rlgl.DisableBackfaceCulling();
+        context.BindShadowMap();
+        shaders.BeginMirrorPass(ArtLook.FieldUpright, pitchDeg, plane);
+
+        foreach (var scene in scenes)
+            if (Reaches(scene, reach)) scene.DrawStanding(reach);
+        DrawThings(CharacterPass.Color);
+        DrawPokemon(CharacterPass.Color);
+        DrawActors(CharacterPass.Color);
+
+        shaders.EndMirrorPass();
+        context.UnbindShadowMap();
+        Rlgl.EnableBackfaceCulling();
+        Raylib.EndMode3D();
+        Raylib.EndTextureMode();
+        shaders.SetUpright(ArtLook.FieldUpright, pitchDeg);
+        shaders.SetWaterMirror(true, Raymath.MatrixMultiply(mirrorView, mirrorProjection), plane, pitchDeg);
+    }
+
+    /// <summary>
+    /// Whoever stands in a puddle or on a polished floor is mirrored in it (style guide, "Puddles"): their sprite
+    /// upside down on the ground to the south of their feet, as far as the puddle or the floor runs that way, in the
+    /// tint of the tile under their feet (plan 09 · L10: <see cref="Reflections.TintOf"/>).
     /// </summary>
     private void DrawReflections(Map map, Camera3D camera)
     {
-        // A puddle, and a polished floor (the Hall of Fame's and the hallway's to it, plan 01 · M9, part 2d)
-        static bool Mirrors(TileBehavior b) => b is TileBehavior.Puddle or TileBehavior.StillPuddle or TileBehavior.ShinyFloor;
         float pitchDeg = MapScene.PitchOf(map);
         Camera3D? straight = map.IsIndoors ? null : camera;
         bool any = false;
         foreach (var actor in actors)
         {
-            int tx = (int)MathF.Floor(actor.Feet.X), tz = (int)MathF.Floor(actor.Feet.Z);
-            if (!map.InBounds(tx, tz) || !Mirrors(map.BehaviourAt(tx, tz))) continue;
-            int end = tz + 1;
-            while (end < tz + 4 && map.InBounds(tx, end) && Mirrors(map.BehaviourAt(tx, end))) end++;
+            if (Reflections.WalkerReach(map, actor.Feet) is not { } reach) continue;
+            var tint = Reflections.TintOf(map.BehaviourAt((int)MathF.Floor(actor.Feet.X), (int)MathF.Floor(actor.Feet.Z)));
             if (!any) Rlgl.DisableDepthMask();
             any = true;
-            CharacterSprites.DrawReflection(actor.Rig, actor.Pose, actor.Yaw, actor.Feet, pitchDeg, end - actor.Feet.Z, straight);
+            CharacterSprites.DrawReflection(actor.Rig, actor.Pose, actor.Yaw, actor.Feet, pitchDeg, reach, straight, tint);
         }
         if (!any) return;
         Rlgl.SetTexture(0);

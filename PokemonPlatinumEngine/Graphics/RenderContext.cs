@@ -34,6 +34,15 @@ public sealed class RenderContext
     // from; their ping-pong pairs; the depth buffer at half resolution, and quarter-resolution ambient occlusion
     // made from that
     private RenderTexture2D half, blurA, blurB, bloomA, bloomB, depthHalf, aoA, aoB;
+
+    /// <summary>
+    /// What stands by the water, mirrored about its plane (plan 09 · L10): 1920×1080 with a depth buffer of its own,
+    /// read once per field texel by the water program. Made only on a preset that reflects (<see cref="QualityProfile.Reflections"/>).
+    /// </summary>
+    internal RenderTexture2D Mirror { get; private set; }
+
+    /// <summary>Whether <see cref="Mirror"/> is there: the preset reflects and the targets are loaded.</summary>
+    internal bool HasMirror => targetsLoaded && Quality.Reflections && Mirror.Id != 0;
     private PostSettings post;
     private DepthRange depthRange = new(1f, 100f, 30f, 16f / 9f);
     private GraphicsQuality? pendingQuality;
@@ -97,6 +106,14 @@ public sealed class RenderContext
         bloomB = HalfTarget();
         aoA = HalfTarget(4);
         aoB = HalfTarget(4);
+        if (Quality.Reflections)
+        {
+            // Read in whole texels of the field, so it is never filtered
+            var mirror = Raylib.LoadRenderTexture(Reflections.TargetWidth, Reflections.TargetHeight);
+            Raylib.SetTextureFilter(mirror.Texture, TextureFilter.Point);
+            Raylib.SetTextureWrap(mirror.Texture, TextureWrap.Clamp);
+            Mirror = mirror;
+        }
         Shadows.Load(Quality.ShadowMapSize);
         Shaders.SetShadowQuality(Quality.ShadowTaps, 1.8f);
         targetsLoaded = true;
@@ -279,6 +296,8 @@ public sealed class RenderContext
         Rlgl.UnloadFramebuffer(depthHalf.Id);
         Rlgl.UnloadTexture(depthHalf.Texture.Id);
         foreach (var rt in new[] { half, blurA, blurB, bloomA, bloomB, aoA, aoB }) Raylib.UnloadRenderTexture(rt);
+        if (Mirror.Id != 0) Raylib.UnloadRenderTexture(Mirror);
+        Mirror = default;
         Shadows.Unload();
         targetsLoaded = false;
     }

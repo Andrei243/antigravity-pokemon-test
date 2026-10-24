@@ -71,7 +71,8 @@ internal sealed class SceneMeshes
     /// <param name="Bounds">Set for a chunk of the map, which is skipped when out of view; null for what is always drawn.</param>
     /// <param name="Prepass">Set for what lays down its depth before it is shaded (see <see cref="Draw"/>): foliage, and all of a battle's stage.</param>
     /// <param name="Solid">Stands on the ground and hides it (<see cref="MeshPass.Opaque"/>), so it is drawn before the ground is.</param>
-    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, (Vector3 Min, Vector3 Max)? Bounds, Material? Prepass, bool Solid);
+    /// <param name="Water">Drawn with the field's water program, which reads the mirror (plan 09 · L10).</param>
+    private sealed record Part(Mesh Mesh, Material Main, Material? Depth, (Vector3 Min, Vector3 Max)? Bounds, Material? Prepass, bool Solid, bool Water = false);
     private readonly List<Part> parts = new();
     private readonly List<(Mesh Mesh, Material Material, bool Home)> lights = new();
 
@@ -109,7 +110,7 @@ internal sealed class SceneMeshes
         // Chunks are the map's trees: many layers of leaves over each other, so they get a depth pre-pass
         bool early = PrepassEverything ? pass is MeshPass.Opaque or MeshPass.Ground : bounds != null && pass == MeshPass.Opaque;
         Material? prepass = early ? RenderContext.MaterialFor(shaders.Prepass, tex) : null;
-        parts.Add(new Part(mesh, main, depth, bounds, prepass, pass == MeshPass.Opaque));
+        parts.Add(new Part(mesh, main, depth, bounds, prepass, pass == MeshPass.Opaque, pass == MeshPass.Water));
     }
 
     private static bool Hidden(Part part, GroundRect? within) =>
@@ -144,6 +145,53 @@ internal sealed class SceneMeshes
             if (part.Solid && !Hidden(part, view)) Shade(part);
         foreach (var part in parts)
             if (!part.Solid && !Hidden(part, view)) Shade(part);
+    }
+
+    /// <summary>
+    /// Draws only what stands on the ground (buildings, props, trees: <see cref="MeshPass.Opaque"/>), for the mirror
+    /// pass (plan 09 · L10): the ground, grass, water and lights are never mirrored. The trees lay their depth down
+    /// first, as in <see cref="Draw"/>.
+    /// </summary>
+    public void DrawStanding(GroundRect? view = null)
+    {
+        bool early = false;
+        foreach (var part in parts)
+        {
+            if (!part.Solid || !part.Prepass.HasValue || Hidden(part, view)) continue;
+            if (!early)
+            {
+                Rlgl.DrawRenderBatchActive();
+                Rlgl.ColorMask(false, false, false, false);
+                early = true;
+            }
+            Raylib.DrawMesh(part.Mesh, part.Prepass.Value, Matrix4x4.Identity);
+            FrameProfiler.Count(part.Mesh.TriangleCount);
+        }
+        if (early) Rlgl.ColorMask(true, true, true, true);
+        foreach (var part in parts)
+            if (part.Solid && !Hidden(part, view)) Shade(part);
+    }
+
+    /// <summary>Whether any of this scene is water the field's water program draws (and so may mirror).</summary>
+    public bool HasWater
+    {
+        get
+        {
+            foreach (var part in parts)
+                if (part.Water) return true;
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Hands the water the mirror pass's target as its material's second map, which raylib binds to the program's
+    /// <c>texture1</c> as it draws (plan 09 · L10); a texture of id 0 unbinds it. The materials' maps are shared
+    /// memory, so the change holds for every draw after it.
+    /// </summary>
+    public unsafe void MirrorWater(Texture2D mirror)
+    {
+        foreach (var part in parts)
+            if (part.Water && part.Main.Maps != null) part.Main.Maps[(int)MaterialMapIndex.Metalness].Texture = mirror;
     }
 
     private static void Shade(Part part)

@@ -169,6 +169,15 @@ internal sealed class MapScene
     /// <param name="casters">The ground whose shadows can reach the view; null draws every caster.</param>
     public void DrawDepth(GroundRect? casters = null) => meshes.DrawDepth(casters);
 
+    /// <summary>What stands on the ground, for the mirror pass (plan 09 · L10); null draws all of it.</summary>
+    public void DrawStanding(GroundRect? view = null) => meshes.DrawStanding(view);
+
+    /// <summary>Whether the scene has water that can mirror.</summary>
+    public bool HasWater => meshes.HasWater;
+
+    /// <summary>Hands the scene's water the mirror's target, or a texture of id 0 for none (plan 09 · L10).</summary>
+    public void MirrorWater(Texture2D mirror) => meshes.MirrorWater(mirror);
+
     // ------------------------------------------------------------------ building the scene
 
     /// <summary>The whole of a map, built in one go.</summary>

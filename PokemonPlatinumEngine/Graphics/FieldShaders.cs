@@ -81,6 +81,8 @@ uniform int walkerCount;
 // sprites and lamp posts stand straight and their pixel art isn't sheared. pitchSin is the sine of the camera's pitch.
 uniform float upright;
 uniform float pitchSin;
+// Nought but in the mirror pass (plan 09 · L10), where the depth under a vertex is its reflection's: Reflections.Straightening
+uniform float uprightBase;
 
 // How much harder than a breeze the wind blows: 0 on a calm day, 1 in a blizzard
 uniform float wind;
@@ -134,7 +136,7 @@ void main()
         // Divide x by the depth of the point on the ground beneath the vertex instead of the vertex's own depth.
         // That depth also becomes w, so textures are interpolated to match (a wall is then an undistorted
         // rectangle on screen); y and depth keep their true projection.
-        float foot = clip.w + fragWorld.y * pitchSin * upright;
+        float foot = clip.w + (fragWorld.y * pitchSin + uprightBase) * upright;
         clip.yz *= foot / clip.w;
         clip.w = foot;
     }
@@ -322,6 +324,16 @@ vec3 ApplyFog(vec3 color, vec3 world)
     return mix(c, stageWash.rgb, stageWash.a);
 }";
 
+    // The mirror pass (plan 09 · L10) draws only what stands over the water: x is 1 while it runs, y the height under
+    // which nothing is drawn (the water's plane, less a hair). Nought, so nothing is cut, everywhere else
+    private const string MirrorFunctions = @"
+uniform vec2 mirrorClip;
+
+void MirrorClip(vec3 world)
+{
+    if (mirrorClip.x > 0.5 && world.y < mirrorClip.y) discard;
+}";
+
     // Slow, broad patches of cloud shade drifting across the sunlight
     private const string CloudFunctions = @"
 uniform float cloudShade;
@@ -370,9 +382,10 @@ uniform float glowPublic;
 uniform float glowHome;
 uniform vec3 glowColor;
 out vec4 finalColor;
-" + ShadowFunctions + FogFunctions + CloudFunctions + @"
+" + ShadowFunctions + FogFunctions + CloudFunctions + MirrorFunctions + @"
 void main()
 {
+    MirrorClip(fragWorld);
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
@@ -400,9 +413,10 @@ uniform sampler2D texture0;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 out vec4 finalColor;
-" + FogFunctions + CloudFunctions + @"
+" + FogFunctions + CloudFunctions + MirrorFunctions + @"
 void main()
 {
+    MirrorClip(fragWorld);
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 color = texel.rgb * fragColor.rgb * (skyAmbient * 0.62 + sunColor * 0.78 * CloudLight(fragWorld));
@@ -457,9 +471,10 @@ uniform float shadowStrength;
 uniform float rimStrength;
 uniform vec4 flash;
 out vec4 finalColor;
-" + ShadowFunctions + FogFunctions + CloudFunctions + @"
+" + ShadowFunctions + FogFunctions + CloudFunctions + MirrorFunctions + @"
 void main()
 {
+    MirrorClip(fragWorld);
     vec4 texel = texture(texture0, fragTexCoord);
     if (texel.a < 0.5) discard;
     vec3 albedo = texel.rgb * colDiffuse.rgb * fragColor.rgb;
@@ -501,6 +516,14 @@ uniform vec3 sunDir;
 uniform vec3 sunColor;
 uniform vec3 skyAmbient;
 uniform float time;
+// What stands by the water, mirrored about its plane (plan 09 · L10; the style guide on water): the
+// mirror pass's target, bound as the material's second map; the mirrored camera's view and projection; x of
+// mirror is 1 while the water mirrors, y the plane's height, z and w the straightening's pitch and base
+// (Reflections.Straightening), which the target was drawn with
+uniform sampler2D texture1;
+uniform mat4 mirrorVP;
+uniform vec4 mirror;
+uniform float upright;
 out vec4 finalColor;
 " + ShadowFunctions + FogFunctions + CloudFunctions + @"
 const vec3 deep = vec3(58.0, 118.0, 190.0) / 255.0;
@@ -525,6 +548,8 @@ void main()
     // Depth bands whose edges breathe by a texel
     float breathe = sin(time * 0.9 + t.x * 0.11 + t.y * 0.17) * 1.2;
     vec3 color = dist + breathe < 7.0 ? shallow : dist + breathe < 20.0 ? middle : deep;
+    // (What is still the band's own colour once the marks are drawn takes the reflection: the marks lie over it)
+    vec3 band = color;
 
     // Wave marks: a light dash with dipped ends and a dark line under it, one to a cell, drifting east
     vec2 p = vec2(t.x - floor(time * 2.0), t.y);
@@ -563,8 +588,31 @@ void main()
         if ((sf.x == 0.0 && abs(sf.y) <= arm) || (sf.y == 0.0 && abs(sf.x) <= arm)) color = vec3(1.0);
     }
 
+    bool plain = color == band;
     color = mix(mix(vec3(dot(color, luma)), color, 0.55) * 0.62, color, daylight);
     color *= skyAmbient + sunColor * sun;
+
+    // The reflection (plan 09 · L10): in the mid and deep bands of the water at the mirror's height, one colour per
+    // field texel read at its middle, each row pushed a texel east or west on a slow swell, broken into runs of six
+    // that drift with the wave marks, about one in six left plain; darkened toward the band it lies in
+    if (mirror.x > 0.5 && plain && dist + breathe >= 7.0 && abs(fragWorld.y - mirror.y) < 0.05)
+    {
+        float swell = floor(1.2 * sin(time * 1.5 + t.y * 0.9) + 0.5);
+        float run = floor((t.x - floor(time * 2.0)) / 6.0);
+        if (Hash(vec2(run, t.y) + 71.0) > 0.16)
+        {
+            vec3 at = vec3((t.x + swell + 0.5) / 32.0, mirror.y, (t.y + 0.5) / 32.0);
+            vec4 m = mirrorVP * vec4(at, 1.0);
+            // Straightened as the mirror pass drew it: x over the depth of the ground under the point
+            float foot = m.w + (at.y * mirror.z + mirror.w) * upright;
+            vec2 uv = vec2(m.x / foot, m.y / m.w) * 0.5 + 0.5;
+            if (m.w > 0.0 && uv.x >= 0.0 && uv.y >= 0.0 && uv.x <= 1.0 && uv.y <= 1.0)
+            {
+                vec4 seen = texture(texture1, uv);
+                color = mix(color, mix(seen.rgb, color, 0.35) * 0.82, seen.a * 0.7);
+            }
+        }
+    }
     finalColor = vec4(ApplyFog(color, fragWorld), 1.0);
 }";
 
@@ -1013,7 +1061,46 @@ void main()
         {
             Set(shader, "upright", amount);
             Set(shader, "pitchSin", MathF.Sin(pitchDeg * MathF.PI / 180f));
+            Set(shader, "uprightBase", 0f);
         }
+    }
+
+    // What the mirror pass draws with (plan 09 · L10): the scenery, the sprites and the cards, and their depth
+    private Shader[] MirroredPrograms => new[] { World, Prepass, Character, Sprite };
+
+    /// <summary>
+    /// Sets the programs up for the mirror pass (plan 09 · L10): straightening as the field's camera straightens the
+    /// reflection of each vertex (<see cref="Reflections.Straightening"/>), and nothing drawn under the water's plane.
+    /// <see cref="EndMirrorPass"/> undoes both; <see cref="SetUpright"/> undoes the first.
+    /// </summary>
+    public void BeginMirrorPass(float amount, float pitchDeg, float plane)
+    {
+        var (sin, b) = Reflections.Straightening(pitchDeg, plane);
+        foreach (var shader in MirroredPrograms)
+        {
+            Set(shader, "upright", amount);
+            Set(shader, "pitchSin", sin);
+            Set(shader, "uprightBase", b);
+            Set(shader, "mirrorClip", new Vector2(1f, plane - Reflections.Clearance));
+        }
+    }
+
+    /// <summary>Ends the mirror pass: nothing is cut off any more. Call <see cref="SetUpright"/> for the scene after it.</summary>
+    public void EndMirrorPass()
+    {
+        foreach (var shader in MirroredPrograms) Set(shader, "mirrorClip", Vector2.Zero);
+    }
+
+    /// <summary>
+    /// What the field's water reads of the mirror (plan 09 · L10): whether it mirrors at all, the mirrored camera's
+    /// view and projection, and the plane and pitch the mirror was drawn at. The target itself is the water
+    /// materials' second map (<see cref="MapScene.MirrorWater"/>).
+    /// </summary>
+    public void SetWaterMirror(bool on, Matrix4x4 mirrorViewProjection, float plane, float pitchDeg)
+    {
+        var (sin, b) = Reflections.Straightening(pitchDeg, plane);
+        Set(Water, "mirror", new Vector4(on ? 1f : 0f, plane, sin, b));
+        if (on) SetMatrix(Water, "mirrorVP", mirrorViewProjection);
     }
 
     /// <summary>Clears the scene-only effects (fog, cloud shade, flash, grass parting, straightening) before a model is rendered on its own.</summary>
