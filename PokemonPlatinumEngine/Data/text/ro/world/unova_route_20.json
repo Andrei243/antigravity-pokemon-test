@@ -10,26 +10,6 @@
         ]
       }
     },
-    "21": {
-      "name": {
-        "en": [
-          "{rival}"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
-    "23": {
-      "name": {
-        "en": [
-          "Cheren"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
     "1": {
       "name": {
         "en": [
@@ -235,6 +215,26 @@
         ],
         "text": [
           "Poate multe, dar nu destul de multe azi."
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          "Cheren"
         ]
       }
     },

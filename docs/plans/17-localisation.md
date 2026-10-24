@@ -555,3 +555,13 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **The player without gender**: no line gives the player a gendered adjective ("Ești grozav", "Ai potențial de campion").
   - **Seen**: not run (no tests, no harness this wave).
   - **Left**: whatever wave 44's other lanes write in English (E6, H8 part b, U5, W9, Q18's rest, L5), the next slice.
+
+- [x] N6t Hoenn's Route 128 to Sootopolis, Unova's first chapter and the Pokéathlon's clerk in Romanian (done 2026-10-24, wave 45)
+
+- **N6t, done 2026-10-24 (wave 45)**: everything written in English in wave 44 and not yet translated, at the commit the wave started from (5f779f7e).
+  - **The lines**: 696 entries in 456 distinct lines by hand (the rest by the translation memory of the earlier slices): plan 21's Route 128 (Archie and Maxie after the downpour, Steven, the swimmers and trainers, Team Aqua's grunts), the Seafloor Cavern's rooms (Shelly, Archie's Red Orb and Kyogre's vanishing), Sootopolis City with its houses, Mart, Pokémon Center, Gym sign, Wallace and Rayquaza's question, the Brick Break and Double-Edge givers, the Seedot/Lotad measurer, and the Cave of Origin's guard; plan 22's first chapter (Aspertia City with Bianca, Cheren's Gym, the rooms and gate, Routes 19 and 20 with Alder, Floccesy Town and Floccesy Ranch's Herdier); `common.AthlonDesk`; the phone book. `extract ro --update` had nothing to add. The report: nothing untranslated, stale, unknown or wrong. The content check measured 31,252 lines: nothing found.
+  - **`ui.json`**: no key was missing (the places were there already).
+  - **Names in the lines**: Unova's Aspertia "Orașul Aspertia", Floccesy "Orășelul Floccesy", Basic Badge "Insigna Bazică", Pilonul Cerului (Sky Pillar), Peștera Originii (Cave of Origin), Athlete Points "Puncte Athlon", Red Orb "Globul Roșu", Cooltrainer "Antrenor(oare) As", Triathlete "Triatlonist(ă)", Cheren, Bianca, Alder, Wallace, Juan, Hugh's role {rival} unchanged.
+  - **The player without gender**: no line gives the player a gendered adjective or vocative.
+  - **Seen**: not run (no tests, no harness this wave).
+  - **Left**: whatever wave 45's other lanes write in English, the next slice.

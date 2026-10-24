@@ -5,7 +5,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hold on, {player}! You can't go out there without... Oh? You've got a Pokémon with you!"
       ],
       "text": [
-        ""
+        "Stai, {player}! Nu poți ieși fără... Oh? Ai un Pokémon cu tine!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Well then, have a going-away present. Don't be shy, take it!"
       ],
       "text": [
-        ""
+        "Atunci, ia un dar de rămas-bun. Nu fi timid, ia-l!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "When your Pokémon get hurt, take it easy and stop in at a Pokémon Center."
       ],
       "text": [
-        ""
+        "Când Pokémonii tăi se rănesc, ia-o ușor și oprește-te la un Centru Pokémon."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Hold on, {player}! Wild Pokémon live in the grass out there. Don't go without a Pokémon of your own!"
       ],
       "text": [
-        ""
+        "Stai, {player}! În iarba de dincolo trăiesc Pokémon sălbatici. Nu pleca fără un Pokémon al tău!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Beyond this gate is Route 19. Floccesy Town is a short walk down the hill."
       ],
       "text": [
-        ""
+        "Dincolo de poarta asta e Ruta 19. Orășelul Floccesy e la o plimbare scurtă pe deal."
       ]
     }
   ]

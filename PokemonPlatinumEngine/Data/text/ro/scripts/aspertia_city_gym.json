@@ -5,7 +5,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Aspertia Gym. I'm Cheren, its Leader. Well... I suppose I'm still a Leader in training."
       ],
       "text": [
-        ""
+        "Bun venit la Arena Aspertia. Sunt Cheren, Liderul ei. Ei bine... cred că sunt încă un Lider în formare."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "This is your first Gym challenge, and it's my very first battle as a Gym Leader."
       ],
       "text": [
-        ""
+        "Aceasta e prima ta provocare la o Arenă, iar pentru mine e prima luptă ca Lider de Arenă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Let's both do our best!"
       ],
       "text": [
-        ""
+        "Să facem amândoi tot ce putem!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "That battle made me really glad you were my first challenger."
       ],
       "text": [
-        ""
+        "Lupta aceea m-a făcut să mă bucur că ai fost primul meu provocator."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Here is your first Gym Badge, the Basic Badge. It's an important first step. Wear it with pride!"
       ],
       "text": [
-        ""
+        "Iată prima ta Insignă de Arenă, Insigna Bazică. E un prim pas important. Poart-o cu mândrie!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player} received the Basic Badge from Cheren!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Bazică de la Cheren!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Take this too. Use it however you think best."
       ],
       "text": [
-        ""
+        "Ia și asta. Folosește-o cum crezi că e mai bine."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "There are eight Gyms in Unova, and eight Badges. Where you go from here is up to you, {player}."
       ],
       "text": [
-        ""
+        "În Unova sunt opt Arene și opt Insigne. Unde mergi de aici încolo depinde de tine, {player}."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Don't worry about losing your way. You have your Pokémon beside you."
       ],
       "text": [
-        ""
+        "Nu-ți face griji că te vei rătăci. Ai Pokémonii alături de tine."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "We have a challenger! If you can beat my two pupils first, I'll be your opponent."
       ],
       "text": [
-        ""
+        "Avem un provocator! Dacă îi învingi mai întâi pe cei doi elevi ai mei, voi fi adversarul tău."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "I hope you'll always remember the moment you received that Badge."
       ],
       "text": [
-        ""
+        "Sper că îți vei aminti mereu clipa în care ai primit Insigna aceea."
       ]
     }
   ],
@@ -103,7 +103,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Hello! I'm Clyde, guide to every Trainer who takes on a Pokémon Gym. Thanks for taking this one on!"
       ],
       "text": [
-        ""
+        "Bună! Sunt Clyde, ghidul oricărui Antrenor care înfruntă o Arenă Pokémon. Mulțumesc că ai ales-o pe asta!"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Here, have this to mark the occasion."
       ],
       "text": [
-        ""
+        "Ia asta, ca să marcăm ocazia."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Gyms test what Trainers can do. Beat the Leader, and you'll have proved yourself a strong Trainer!"
       ],
       "text": [
-        ""
+        "Arenele pun la încercare ce pot Antrenorii. Învinge Liderul și vei fi dovedit că ești un Antrenor puternic!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "If every Pokémon you have faints, you lose. So it helps to bring a few along!"
       ],
       "text": [
-        ""
+        "Dacă toți Pokémonii tăi leșină, pierzi. Așa că ajută să aduci mai mulți!"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "I hope you'll always remember the moment you won that Badge!"
       ],
       "text": [
-        ""
+        "Sper că îți vei aminti mereu clipa în care ai câștigat Insigna aceea!"
       ]
     }
   ]

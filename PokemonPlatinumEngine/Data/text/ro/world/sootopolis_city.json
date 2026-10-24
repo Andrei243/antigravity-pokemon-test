@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Kiri"
         ],
         "text": [
-          ""
+          "Kiri"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Steven"
         ],
         "text": [
-          ""
+          "Steven"
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Groudon"
         ],
         "text": [
-          ""
+          "Groudon"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Kyogre"
         ],
         "text": [
-          ""
+          "Kyogre"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Rayquaza"
         ],
         "text": [
-          ""
+          "Rayquaza"
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -126,7 +126,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Maxie"
         ],
         "text": [
-          ""
+          "Maxie"
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Archie"
         ],
         "text": [
-          ""
+          "Archie"
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Wallace"
         ],
         "text": [
-          ""
+          "Wallace"
         ]
       }
     }
@@ -187,7 +187,7 @@
         "Sootopolis City Pokémon Gym\nLeader: Juan\nThe Leader as clear as the water!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Sootopolis\nLider: Juan\nLiderul limpede ca apa!"
       ]
     },
     "SootopolisCity_EventScript_CitySign": {
@@ -195,7 +195,7 @@
         "Sootopolis City\nThe city where history sleeps."
       ],
       "text": [
-        ""
+        "Orașul Sootopolis\nOrașul unde doarme istoria."
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -203,7 +203,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -211,7 +211,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

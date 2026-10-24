@@ -82,16 +82,6 @@
         ]
       }
     },
-    "8": {
-      "name": {
-        "en": [
-          "Bianca"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
     "6": {
       "name": {
         "en": [
@@ -107,6 +97,16 @@
         ],
         "text": [
           "În Unova, Poké Mart-ul e chiar în Centrul Pokémon. Îți vindeci Pokémonii și te aprovizionezi dintr-o singură oprire!"
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          "Bianca"
         ]
       }
     },

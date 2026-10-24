@@ -5,7 +5,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to Floccesy Town! Now then, {player}. How are your Pokémon feeling?"
       ],
       "text": [
-        ""
+        "Bun venit în Orășelul Floccesy! Acum, {player}. Cum se simt Pokémonii tăi?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "They always give their best for you. Look after them in return!"
       ],
       "text": [
-        ""
+        "Îți dau mereu tot ce au mai bun. Ai grijă de ei în schimb!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "My house is just up the street. Stop in at the Pokémon Center first, if you like."
       ],
       "text": [
-        ""
+        "Casa mea e chiar mai sus pe stradă. Oprește-te mai întâi la Centrul Pokémon, dacă vrei."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "There you are! This way, and we'll start your training. Hm? Why are you carrying two Town Maps?"
       ],
       "text": [
-        ""
+        "Aici erai! Pe aici, și începem antrenamentul. Hm? De ce porți două Hărți ale Orașelor?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Oho! It's your friend's, is it? The lad with the {rivalstarter}?"
       ],
       "text": [
-        ""
+        "Oho! E a prietenului tău, nu? Băiatul cu {rivalstarter}?"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "He went by not long ago, all fired up. I believe he was heading for the ranch off Route 20."
       ],
       "text": [
-        ""
+        "A trecut pe aici nu demult, plin de zel. Cred că se îndrepta spre ferma de lângă Ruta 20."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Deliver that map first, then come back to me. Just follow this road east, it goes to Route 20."
       ],
       "text": [
-        ""
+        "Du mai întâi harta, apoi întoarce-te la mine. Urmează drumul spre est, duce la Ruta 20."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Follow the road east to Route 20. I'll wait here until you've given your friend his map."
       ],
       "text": [
-        ""
+        "Urmează drumul spre est, la Ruta 20. Aștept aici până îi dai prietenului harta."
       ]
     }
   ],
@@ -99,7 +99,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Ah! You've given your friend his map. You were only gone a little while, but you both look a bit stronger."
       ],
       "text": [
-        ""
+        "Ah! I-ai dat harta prietenului tău. Ai lipsit doar puțin, dar amândoi păreți ceva mai puternici."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Come on in, then. Time for some training!"
       ],
       "text": [
-        ""
+        "Intră, atunci. E timpul pentru antrenament!"
       ]
     }
   ],
@@ -125,7 +125,7 @@
         "Alder"
       ],
       "text": [
-        ""
+        "Alder"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Have you rested your Pokémon? My house is just up the street."
       ],
       "text": [
-        ""
+        "Ți-ai odihnit Pokémonii? Casa mea e chiar mai sus pe stradă."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Take that map to your friend first. Route 20 is east of here."
       ],
       "text": [
-        ""
+        "Du mai întâi harta prietenului tău. Ruta 20 e la est de aici."
       ]
     }
   ]

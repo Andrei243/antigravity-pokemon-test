@@ -5,7 +5,7 @@
         "Hiker"
       ],
       "text": [
-        ""
+        "Drumețul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hold it! A kid without a single Gym Badge, heading on past here? Not on my watch!"
       ],
       "text": [
-        ""
+        "Stai! Un copil fără nicio Insignă de Arenă, mergând mai departe pe aici? Nu cât sunt eu de pază!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Battle the Trainers and Pokémon round here, then battle some more. Come back with a Badge!"
       ],
       "text": [
-        ""
+        "Luptă-te cu Antrenorii și Pokémonii de pe aici, apoi mai luptă-te. Întoarce-te cu o Insignă!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Hiker"
       ],
       "text": [
-        ""
+        "Drumețul"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Hey! That shiny thing is the Basic Badge! Don't let it go to your head. It's a rough world out there!"
       ],
       "text": [
-        ""
+        "Hei! Chestia aia strălucitoare e Insigna Bazică! Să nu-ți suie la cap. E o lume dură acolo!"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Let me show you just how rough!"
       ],
       "text": [
-        ""
+        "Lasă-mă să-ți arăt cât de dură!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "All right, I'm beaten! With Pokémon you can count on like that, even a kid can hold their own."
       ],
       "text": [
-        ""
+        "Gata, sunt învins! Cu Pokémoni pe care te poți baza așa, chiar și un copil se poate descurca."
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "{player}! Wait!"
       ],
       "text": [
-        ""
+        "{player}! Așteaptă!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Come with me, you two."
       ],
       "text": [
-        ""
+        "Veniți cu mine, voi doi."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "See the darker grass here? Now and then two Pokémon jump out of it at once."
       ],
       "text": [
-        ""
+        "Vezi iarba mai închisă la culoare de aici? Din când în când sar din ea doi Pokémon deodată."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "And the Pokémon that live in it can be quite rare. Keep your eyes open."
       ],
       "text": [
-        ""
+        "Iar Pokémonii care trăiesc în ea pot fi destul de rari. Ține ochii deschiși."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "If you're going to challenge the next Gym, that's Virbank's. These might help."
       ],
       "text": [
-        ""
+        "Dacă vrei să înfrunți următoarea Arenă, e cea din Virbank. Astea te-ar putea ajuta."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "And some for you too, {rival}. Both of you, do your best! If you need anything, come and find me."
       ],
       "text": [
-        ""
+        "Și câteva pentru tine, {rival}. Amândoi, străduiți-vă! Dacă aveți nevoie de ceva, veniți la mine."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Cheren really knows his stuff. And he's fought Team Plasma, too..."
       ],
       "text": [
-        ""
+        "Cheren chiar se pricepe. Și s-a luptat și cu Echipa Plasma..."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "That's it, I've decided! I'm going to get stronger than him!"
       ],
       "text": [
-        ""
+        "Gata, am hotărât! Voi deveni mai puternic decât el!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "And you... do your best! Fill up that Pokédex, and watch my back. Got it?"
       ],
       "text": [
-        ""
+        "Iar tu... străduiește-te! Completează Pokédexul și păzește-mi spatele. Am înțeles?"
       ]
     }
   ],
@@ -155,7 +155,7 @@
         "Hiker"
       ],
       "text": [
-        ""
+        "Drumețul"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "The grass round here hides all sorts of Pokémon. Some of them even drop out of the trees!"
       ],
       "text": [
-        ""
+        "Iarba de pe aici ascunde tot felul de Pokémon. Unii cad chiar din copaci!"
       ]
     },
     {
@@ -171,7 +171,7 @@
         "You've got a good team there. Mind you look after them on the road to Virbank!"
       ],
       "text": [
-        ""
+        "Ai o echipă bună. Ai grijă de ei pe drumul spre Virbank!"
       ]
     }
   ],
@@ -181,7 +181,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "I have to get stronger than Team Plasma!"
       ],
       "text": [
-        ""
+        "Trebuie să devin mai puternic decât Echipa Plasma!"
       ]
     }
   ],
@@ -199,7 +199,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Two Pokémon from one patch of grass. Make sure your team is ready for it."
       ],
       "text": [
-        ""
+        "Doi Pokémon dintr-un singur petic de iarbă. Fii sigur că echipa ta e pregătită."
       ]
     }
   ]

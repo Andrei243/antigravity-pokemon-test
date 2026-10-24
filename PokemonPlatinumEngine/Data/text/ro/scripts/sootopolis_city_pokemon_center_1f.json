@@ -5,7 +5,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Gentlemanul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Everyone in town has shut themselves indoors. Even I'd rather not set foot outside just now."
       ],
       "text": [
-        ""
+        "Toată lumea din oraș s-a închis în case. Nici eu n-aș vrea să pun piciorul afară acum."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "They say Wallace is the strongest trainer in all of Hoenn. And this town's Gym is led by the man who taught him!"
       ],
       "text": [
-        ""
+        "Se spune că Wallace e cel mai puternic antrenor din toată Hoenn. Iar Arena orașului e condusă de omul care l-a învățat!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "But the Elite Four are said to be stronger still. How strong can they be?"
       ],
       "text": [
-        ""
+        "Dar se zice că Elita celor Patru e și mai puternică. Cât de puternici or fi?"
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Aren't Pokémon our friends? Why are they raging like this?"
       ],
       "text": [
-        ""
+        "Pokémonii nu sunt prietenii noștri? De ce se dezlănțuie așa?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Whatever happens, wherever I am, I'll always be friends with Pokémon. Being with them is the best fun there is!"
       ],
       "text": [
-        ""
+        "Orice s-ar întâmpla, oriunde aș fi, voi fi mereu prieten cu Pokémonii. Să fii cu ei e cea mai mare distracție!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon?"
       ],
       "text": [
-        ""
+        "O mișcare care pune totul într-o singură lovitură... Double-Edge. Să o învăț unuia dintre Pokémonii tăi?"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Which one shall learn it?"
       ],
       "text": [
-        ""
+        "Care să o învețe?"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Double-Edge hurts the one who uses it too. Save it for when it matters most."
       ],
       "text": [
-        ""
+        "Double-Edge îl rănește și pe cel care o folosește. Păstrează-o pentru când contează cel mai mult."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Another time, then. I'll be here."
       ],
       "text": [
-        ""
+        "Altă dată, atunci. Voi fi aici."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "An Egg can't learn anything until it hatches."
       ],
       "text": [
-        ""
+        "Un Ou nu poate învăța nimic până nu eclozează."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "I'm afraid that one can't learn it."
       ],
       "text": [
-        ""
+        "Mă tem că acela nu o poate învăța."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "That one knows it already!"
       ],
       "text": [
-        ""
+        "Acela o știe deja!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "That move can't be forgotten here. Another time, perhaps."
       ],
       "text": [
-        ""
+        "Mișcarea aceea nu poate fi uitată aici. Altă dată, poate."
       ]
     }
   ]

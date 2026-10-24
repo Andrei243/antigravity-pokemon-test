@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Full Heal cures every ailment in one go. Down here in the crater, we keep a few in every house."
         ],
         "text": [
-          ""
+          "Full Heal vindecă orice boală dintr-odată. Aici, în crater, ținem câteva în fiecare casă."
         ]
       }
     }

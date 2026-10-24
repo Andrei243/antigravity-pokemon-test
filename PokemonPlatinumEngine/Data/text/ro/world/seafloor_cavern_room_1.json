@@ -6,7 +6,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Team Aqua Grunt: We came all the way down here in a stolen submarine. Nobody follows us that far!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Am coborât până aici cu un submarin furat. Nimeni nu ne urmărește atât de departe!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Team Aqua Grunt: You followed us that far..."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Ne-ai urmărit atât de departe..."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Aqua Grunt: The boss is close to it now, the Pokémon that will grow the sea. Don't you dare get in his way!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Șeful e aproape de el acum, de Pokémonul care va face marea să crească. Nici să nu îndrăznești să-i stai în cale!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Aqua Grunt: There's no stopping you, is there?"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Nu te poate opri nimeni, nu?"
         ]
       }
     }

@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh! Nice! You've come here to toughen up too, huh?"
       ],
       "text": [
-        ""
+        "Oh! Frumos! Ai venit și tu aici să te călești, nu?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Right, then let's see how much stronger you've got! Come on!"
       ],
       "text": [
-        ""
+        "Bine, atunci să vedem cât ai prins putere! Hai!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Not bad... You think about how to bring out your Pokémon's strength. I've got to step it up."
       ],
       "text": [
-        ""
+        "Nu-i rău... Tu te gândești cum să scoți la iveală forța Pokémonilor tăi. Eu trebuie să mă străduiesc mai mult."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} handed over the Town Map!"
       ],
       "text": [
-        ""
+        "{player} a înmânat Harta Orașelor!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Tch... she didn't have to do that. But thanks. We've barely set out and you're already helping me."
       ],
       "text": [
-        ""
+        "Tch... nu trebuia s-o facă. Dar mulțumesc. Abia am pornit și deja mă ajuți."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "???"
       ],
       "text": [
-        ""
+        "???"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I thought I heard a commotion! A Pokémon battle, was it? Ah, to be young!"
       ],
       "text": [
-        ""
+        "Parcă am auzit o gălăgie! O luptă Pokémon, era? Ah, tinerețea!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Who are you?"
       ],
       "text": [
-        ""
+        "Cine ești?"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Who am I? Why, I own this ranch! And this is my wife."
       ],
       "text": [
-        ""
+        "Cine sunt eu? Păi, ferma e a mea! Iar asta e soția mea."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Wife"
       ],
       "text": [
-        ""
+        "Soția"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "You should always heal your Pokémon after a battle. Here, take one of these, both of you."
       ],
       "text": [
-        ""
+        "Să-ți vindeci mereu Pokémonii după o luptă. Țineți, luați câte una amândoi."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Potions are good to have when you're far from a Pokémon Center."
       ],
       "text": [
-        ""
+        "Potion-urile sunt bune de avut când ești departe de un Centru Pokémon."
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Say, you didn't see a Herdier anywhere about, did you? It's wandered off, and I can't think where."
       ],
       "text": [
-        ""
+        "Spune, n-ai văzut cumva un Herdier pe aici? S-a rătăcit și nu-mi dau seama unde."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "I'm a little worried, to tell the truth."
       ],
       "text": [
-        ""
+        "Sunt puțin îngrijorat, să spun adevărul."
       ]
     },
     {
@@ -149,7 +149,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "A LITTLE worried? Are you kidding me?! Your Pokémon could be gone forever!"
       ],
       "text": [
-        ""
+        "PUȚIN îngrijorat? Glumești?! Pokémonul tău ar putea fi pierdut pentru totdeauna!"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "I'll find it myself! {player}, help me look!"
       ],
       "text": [
-        ""
+        "O să-l găsesc eu! {player}, ajută-mă să-l caut!"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "My, what got into him? I'm sure it's just off playing somewhere on the ranch."
       ],
       "text": [
-        ""
+        "Vai, ce l-a apucat? Sunt sigur că se joacă undeva prin fermă."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Wife"
       ],
       "text": [
-        ""
+        "Soția"
       ]
     },
     {
@@ -197,7 +197,7 @@
         "I wonder... Oh, and dear, if your Pokémon get hurt, come and see me. I'll make them feel better."
       ],
       "text": [
-        ""
+        "Mă întreb... Oh, și dragă, dacă Pokémonii tăi se rănesc, vino la mine. Îi voi face să se simtă mai bine."
       ]
     }
   ],
@@ -207,7 +207,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "Did the Herdier wander up this way? Let's look!"
       ],
       "text": [
-        ""
+        "A venit Herdierul pe aici? Hai să căutăm!"
       ]
     }
   ],
@@ -225,7 +225,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "It's not up here either. Oh! Here, I'll share something good with you."
       ],
       "text": [
-        ""
+        "Nici aici sus nu e. Oh! Ține, îți dau ceva bun."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "If your Pokémon gets paralysed, use that on it."
       ],
       "text": [
-        ""
+        "Dacă Pokémonul tău se paralizează, folosește asta pe el."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Still, Pokémon don't just wander off by themselves. If it's mixed up in some kind of trouble..."
       ],
       "text": [
-        ""
+        "Totuși, Pokémonii nu pleacă așa, singuri. Dacă a dat peste vreo belea..."
       ]
     }
   ],
@@ -259,7 +259,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -267,7 +267,7 @@
         "Did you hear that just now?"
       ],
       "text": [
-        ""
+        "Ai auzit ce s-a auzit adineauri?"
       ]
     },
     {
@@ -275,7 +275,7 @@
         "I'll check round here. You go deeper into the grove and look!"
       ],
       "text": [
-        ""
+        "Eu verific pe aici. Tu mergi mai adânc în desiș și caută!"
       ]
     }
   ],
@@ -285,7 +285,7 @@
         "Herdier"
       ],
       "text": [
-        ""
+        "Herdier"
       ]
     },
     {
@@ -293,7 +293,7 @@
         "Yaaarp..."
       ],
       "text": [
-        ""
+        "Yaaarp..."
       ]
     },
     {
@@ -301,7 +301,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -309,7 +309,7 @@
         "That cry! You found it! What a relief! I'll go and get its Trainer. You stay here!"
       ],
       "text": [
-        ""
+        "Strigătul acela! Ai găsit-o! Ce ușurare! Mă duc să-i aduc Antrenorul. Tu rămâi aici!"
       ]
     },
     {
@@ -317,7 +317,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -325,7 +325,7 @@
         "Tch! You little pest! Do you know who you're dealing with?"
       ],
       "text": [
-        ""
+        "Tch! Mic dăunător! Știi cu cine ai de-a face?"
       ]
     },
     {
@@ -333,7 +333,7 @@
         "We're the group that tried to take over Unova two years ago, to set Pokémon free from people like you!"
       ],
       "text": [
-        ""
+        "Suntem grupul care a încercat să preia Unova acum doi ani, ca să elibereze Pokémonii de oameni ca tine!"
       ]
     },
     {
@@ -341,7 +341,7 @@
         "Not that a kid like you would understand. First I get lost chasing this mutt, and now this..."
       ],
       "text": [
-        ""
+        "Nu că un copil ca tine ar înțelege. Întâi mă rătăcesc alergând după javra asta, și acum asta..."
       ]
     },
     {
@@ -349,7 +349,7 @@
         "Fine! I'll take this chance to get out of here!"
       ],
       "text": [
-        ""
+        "Bine! Profit de ocazie să plec de aici!"
       ]
     },
     {
@@ -357,7 +357,7 @@
         "Something was left lying where the grunt stood."
       ],
       "text": [
-        ""
+        "Ceva a rămas pe jos, unde stătea grunt-ul."
       ]
     },
     {
@@ -365,7 +365,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -373,7 +373,7 @@
         "Herdier! What were you doing all the way out here? I can't thank you enough, the both of you!"
       ],
       "text": [
-        ""
+        "Herdier! Ce făceai tocmai aici? Nu vă pot mulțumi destul, amândurora!"
       ]
     },
     {
@@ -381,7 +381,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -389,7 +389,7 @@
         "You're awfully calm about this! Your Pokémon could have been gone for good! Take better care of it!"
       ],
       "text": [
-        ""
+        "Ești foarte calm! Pokémonul tău putea fi pierdut pentru totdeauna! Ai mai multă grijă de el!"
       ]
     },
     {
@@ -397,7 +397,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -405,7 +405,7 @@
         "Hmm... I wonder if something happened to that boy. It's as if he's afraid of losing Pokémon..."
       ],
       "text": [
-        ""
+        "Hmm... mă întreb dacă i s-a întâmplat ceva băiatului. Parcă îi e frică să nu piardă Pokémon..."
       ]
     },
     {
@@ -413,7 +413,7 @@
         "Come on, Herdier. Let's go home."
       ],
       "text": [
-        ""
+        "Hai, Herdier. Să mergem acasă."
       ]
     }
   ],
@@ -423,7 +423,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -431,7 +431,7 @@
         "Where could that Herdier have got to? We have to find it!"
       ],
       "text": [
-        ""
+        "Unde o fi ajuns Herdierul ăla? Trebuie să-l găsim!"
       ]
     }
   ],
@@ -441,7 +441,7 @@
         "Owner"
       ],
       "text": [
-        ""
+        "Proprietarul"
       ]
     },
     {
@@ -449,7 +449,7 @@
         "It's strange for Herdier to wander off. It always plays with the other one, or helps out on the ranch."
       ],
       "text": [
-        ""
+        "E ciudat ca Herdierul să dispară. Se joacă mereu cu celălalt sau ajută la fermă."
       ]
     },
     {
@@ -457,7 +457,7 @@
         "Thanks to you and your Pokémon, Herdier is home safe! Did Alder train you, by any chance?"
       ],
       "text": [
-        ""
+        "Datorită ție și Pokémonilor tăi, Herdierul e acasă în siguranță! Te-a antrenat cumva Alder?"
       ]
     }
   ],
@@ -467,7 +467,7 @@
         "Wife"
       ],
       "text": [
-        ""
+        "Soția"
       ]
     },
     {
@@ -475,7 +475,7 @@
         "You and your Pokémon look a little worn out. Rest a minute. You won't get far tired like that!"
       ],
       "text": [
-        ""
+        "Tu și Pokémonii tăi păreți cam obosiți. Odihniți-vă un minut. Nu veți ajunge departe așa!"
       ]
     },
     {
@@ -483,7 +483,7 @@
         "There! You're both full of energy again."
       ],
       "text": [
-        ""
+        "Gata! Sunteți din nou plini de energie."
       ]
     }
   ],
@@ -493,7 +493,7 @@
         "Herdier"
       ],
       "text": [
-        ""
+        "Herdier"
       ]
     },
     {
@@ -501,7 +501,7 @@
         "Bawoof! Ba-woof!"
       ],
       "text": [
-        ""
+        "Bawoof! Ba-woof!"
       ]
     }
   ]

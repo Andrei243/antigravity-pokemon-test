@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Owner"
         ],
         "text": [
-          ""
+          "Proprietarul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Wife"
         ],
         "text": [
-          ""
+          "Soția"
         ]
       }
     },
@@ -36,35 +36,7 @@
           "Herdier"
         ],
         "text": [
-          ""
-        ]
-      }
-    },
-    "10": {
-      "name": {
-        "en": [
           "Herdier"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
-    "16": {
-      "name": {
-        "en": [
-          "Grunt"
-        ],
-        "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Get lost, kid!"
-        ],
-        "text": [
-          ""
         ]
       }
     },
@@ -143,6 +115,16 @@
         ],
         "text": [
           "Al doilea ca putere. Sigur al doilea."
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Herdier"
+        ],
+        "text": [
+          "Herdier"
         ]
       }
     },
@@ -233,6 +215,24 @@
         ],
         "text": [
           "Mareep: Baa?"
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Get lost, kid!"
+        ],
+        "text": [
+          "Cară-te de aici!"
         ]
       }
     }
