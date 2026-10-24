@@ -265,6 +265,8 @@ public partial class GameEngine
 
         /// <summary>The ways to play this game was begun with (plan 13 · V1).</summary>
         public Models.RunRules Run => game.flow.Run;
+        /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none.</summary>
+        public int? LevelCap => game.CurrentLevelCap();
         /// <summary>
         /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
         /// run left in its folder sets it.

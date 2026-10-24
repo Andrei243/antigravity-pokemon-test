@@ -155,6 +155,7 @@ public partial class GameEngine
                     : kind == BattleKind.Normal && InBugContest ? flow.BugContest.Balls : 0,
                 MoveHints = MoveHintsOn,
                 Difficulty = flow.Run.Difficulty,
+                RunLevelCap = CurrentLevelCap() ?? 0,
                 Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -353,6 +354,9 @@ public partial class GameEngine
     /// <summary>The level of the first Pokémon the player would send out: what Platinum measures a foe against to pick the way into the battle.</summary>
     private int LeadLevel() => flow.Party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
+    /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none: Normal, no table for the region, or its story done.</summary>
+    internal int? CurrentLevelCap() => LevelCaps.For(flow.Run, Here.Id, flow.Story);
+
     /// <summary>
     /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);
     /// with <paramref name="terms"/>, one of the formats a script may ask for (plan 14 · B1: an inverse battle; B14: a
@@ -393,7 +397,7 @@ public partial class GameEngine
         // the rival fights beside the player's first Pokémon, and a Master Trainer's (a Pokémon chosen to fight alone, at
         // a level of its own) are left as they are
         if (!firstBattle && terms?.Alone == null)
-            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run)).ToList();
+            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run, LeadLevel())).ToList();
         trainer = trainers[0];
 
         eyeThemePlaying = false;
@@ -440,6 +444,7 @@ public partial class GameEngine
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
                 Difficulty = flow.Run.Difficulty,
+                RunLevelCap = CurrentLevelCap() ?? 0,
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);

@@ -2046,6 +2046,7 @@
     "notHere": "The Bicycle can't be ridden here."
   },
   "itemUse": {
+    "levelCapped": "{name} can't grow past Lv. {level} yet.",
     "statsGrew": "{name}'s base stats grew from the {item}.",
     "friendlier": "{name} grew friendlier, and its base stats came down a little.",
     "woke": "{name} woke up.",
@@ -2275,6 +2276,7 @@
     "gainedABoostedExp": "{pokemon} gained a boosted {exp} EXP. Points!",
     "gainedExpPoints": "{pokemon} gained {exp} EXP. Points!",
     "grewToLv": "{pokemon} grew to Lv. {level}!",
+    "levelCapped": "{pokemon} can't grow past Lv. {level} yet.",
     "learned": "{pokemon} learned {move}!",
     "fellForTheFeint": "{target} fell for the feint!",
     "itShatteredTheBarrier": "It shattered the barrier!",

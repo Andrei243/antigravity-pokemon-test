@@ -53,7 +53,7 @@ public static class LaterItemUse
     private static string? Hidden(Pokemon p) => p.HiddenAbilityName is { } h && !p.Abilities.Contains(h) ? h : null;
 
     /// <summary>Whether using it on this Pokémon would do anything.</summary>
-    public static bool WouldHelp(ItemData item, Pokemon p)
+    public static bool WouldHelp(ItemData item, Pokemon p, int? runCap = null)
     {
         if (p.IsEgg || !Handles(item)) return false;
         switch (item.FieldUse)
@@ -61,7 +61,7 @@ public static class LaterItemUse
             case Mint:
                 return MintOf(item) is { } nature && p.StatNature != nature;
             case ExpCandy:
-                return !p.AtTheCap && ExpOf(item) > 0;
+                return !p.AtTheCap && !LevelCaps.Holds(p, runCap) && ExpOf(item) > 0;
             case AbilityCapsule:
                 // Between its two, never from or to the hidden one
                 return Regular(p).Count >= 2 && p.AbilityName != null && Regular(p).Contains(p.AbilityName);
@@ -77,9 +77,11 @@ public static class LaterItemUse
     }
 
     /// <summary>Uses it on the Pokémon and says what happened; nothing is changed when it would have no effect.</summary>
-    public static ItemUseResult Apply(ItemData item, Pokemon p)
+    public static ItemUseResult Apply(ItemData item, Pokemon p, int? runCap = null)
     {
-        if (!WouldHelp(item, p)) return ItemUseResult.Nothing;
+        if (runCap is { } stopped && item.FieldUse == ExpCandy && !p.AtTheCap && LevelCaps.Holds(p, runCap))
+            return new ItemUseResult(false, Text.Of("itemUse.levelCapped", ("name", p.DisplayName), ("level", stopped)));
+        if (!WouldHelp(item, p, runCap)) return ItemUseResult.Nothing;
         string name = p.DisplayName;
         switch (item.FieldUse)
         {
@@ -95,7 +97,7 @@ public static class LaterItemUse
             {
                 int friendship = p.Friendship, oldMax = p.MaxHP, oldLevel = p.Level;
                 bool fainted = p.IsFainted;
-                int exp = Math.Min(ExpOf(item), Math.Max(0, Pokemon.GetExpForLevel(Pokemon.Cap, p.Species.GrowthRate) - p.CurrentExp));
+                int exp = Math.Min(ExpOf(item), Math.Max(0, Pokemon.GetExpForLevel(Math.Min(Pokemon.Cap, runCap ?? Pokemon.Cap), p.Species.GrowthRate) - p.CurrentExp));
                 p.GainExp(exp, out var learned, out var wanted);
                 // As a Rare Candy: the levels' own friendship is a battle's, and a fainted Pokémon comes round with what they added
                 p.Friendship = friendship;

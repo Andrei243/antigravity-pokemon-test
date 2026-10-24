@@ -42,6 +42,7 @@
 //   dotnet run --project tools/ShotHarness -- <output dir> saves              no shots: saves of today's game (a new game, past the first chapter, surfing, on a bridge, a Safari Game, the girl) into <output dir>/saves, for the tests' corpus
 //   dotnet run --project tools/ShotHarness -- <output dir> crash [thread]     the crash handler at work: an exception thrown on purpose in the game's own guarded loop (or on another thread, which ends the run), the report, the crash save and the log it leaves in <output dir>, the next start's notice on the title
 //   dotnet run --project tools/ShotHarness -- <output dir> formats            the formats of the later games (plan 14): an inverse battle from the Fight Area's scientist, his offer refused and taken, the battle's opening line and hints, a resisted hit, an immunity and a weakness turned round, a win, the next day, a loss
+//   dotnet run --project tools/ShotHarness -- <output dir> ways               the ways to play (plan 13): the level cap and the line a battle says when it holds a Pokémon back, Roark under Normal and under Challenge
 //   dotnet run --project tools/ShotHarness -- <output dir> fulldex            the game with every species in it: the start's steps, the National Pokédex walked whole, the boxes full, a save of it all, forty battles, with the memory and what is held after each
 //   dotnet run --project tools/ShotHarness -- <output dir> skips              no shots: four of the story's scenes played and then skipped by the hold (plan 12 · Q20), with what each way left told side by side
 //   dotnet run --project tools/ShotHarness -- <dir> diff <other dir>          two runs' shots compared pixel by pixel (exits 1 if any differ)
@@ -178,6 +179,7 @@ if (mode == "amity") h.AmityMode();
 if (mode == "saves") h.SavesMode();
 if (mode == "crash") h.CrashMode();
 if (mode == "formats") h.FormatsMode();
+if (mode == "ways") h.WaysMode();
 if (mode == "kanto") h.KantoMode();
 if (mode == "johto") h.JohtoMode();
 if (mode == "hoenn") h.HoennMode();

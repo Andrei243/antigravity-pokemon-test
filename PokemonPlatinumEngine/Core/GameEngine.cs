@@ -184,6 +184,7 @@ public partial class GameEngine
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
+        flow.BagScreen.RunCap = CurrentLevelCap();
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
