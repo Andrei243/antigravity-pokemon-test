@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1209 | 1180 | 29 | 1 | 0 |
-| Scripts (`script:`) | 6675 | 6353 | 322 | 13 | 0 |
-| People of the world (`world:`) | 4838 | 4790 | 48 | 4 | 0 |
-| **All** | 12802 | 12403 | 399 | 18 | 0 |
+| Scripts (`script:`) | 6835 | 6508 | 327 | 13 | 0 |
+| People of the world (`world:`) | 4882 | 4834 | 48 | 4 | 0 |
+| **All** | 13006 | 12602 | 404 | 18 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,14 +21,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 152 |
-| a question's answers | 358 |
-| a sign | 1200 |
+| a question's answers | 362 |
+| a sign | 1204 |
 | the game's own voice (speaker none) | 223 |
-| the game's own voice (text) | 917 |
+| the game's own voice (text) | 926 |
 
 ## The cast
 
-- Named characters: 245 voices (208 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 249 voices (212 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 191, with 578 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1757.
@@ -40,62 +40,67 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1757 | 123 |
-| `look:gentleman (any)` | 557 | 12 |
-| `look:grunt (any)` | 492 | 0 |
+| `look:gentleman (any)` | 563 | 12 |
+| `look:grunt (any)` | 495 | 0 |
 | `rival` | 359 | 15 |
 | `look:youngster (any)` | 314 | 11 |
-| `look:lady (any)` | 304 | 1 |
-| `look:lass (any)` | 251 | 8 |
-| `look:clerk (any)` | 193 | 4 |
+| `look:lady (any)` | 305 | 1 |
+| `look:lass (any)` | 253 | 8 |
+| `look:clerk (any)` | 195 | 4 |
 | `look:attendant (any)` | 165 | 2 |
 | `look:nurse (any)` | 165 | 0 |
 | `cynthia` | 157 | 1 |
 | `rowan` | 147 | 12 |
 | `class:team_rocket (any)` | 132 | 0 |
 | `look:scientist (any)` | 127 | 4 |
+| `look:woman (any)` | 119 | 13 |
 | `look:gym_guide (any)` | 115 | 0 |
 | `assistant` | 111 | 5 |
+| `class:fisherman (any)` | 102 | 0 |
 | `class:hiker (any)` | 102 | 0 |
-| `class:ace_trainer (any)` | 100 | 0 |
-| `class:fisherman (any)` | 100 | 0 |
 | `class:picnicker (any)` | 100 | 0 |
-| `look:woman (any)` | 95 | 11 |
+| `class:ace_trainer (any)` | 98 | 0 |
+| `class:swimmer_m (any)` | 92 | 0 |
 | `looker` | 91 | 1 |
-| `class:swimmer_m (any)` | 90 | 0 |
 | `class:youngster (any)` | 90 | 0 |
+| `look:boy (any)` | 88 | 4 |
 | `look:guard (any)` | 87 | 0 |
 | `class:psychic (any)` | 86 | 0 |
 | `class:black_belt (any)` | 84 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `cyrus` | 83 | 7 |
-| `look:boy (any)` | 82 | 4 |
+| `look:aqua_grunt (any)` | 83 | 3 |
 | `class:lass (any)` | 80 | 0 |
-| `look:aqua_grunt (any)` | 79 | 3 |
 | `class:bird_keeper (any)` | 78 | 0 |
 | `prof_oak` | 78 | 3 |
+| `look:man (any)` | 76 | 0 |
 | `look:sailor (any)` | 76 | 0 |
 | `mom` | 74 | 5 |
-| `look:man (any)` | 72 | 0 |
+| `look:old_man (any)` | 71 | 4 |
+| `black_belt` | 70 | 12 |
 | `class:bug_catcher (any)` | 70 | 0 |
+| `class:swimmer_f (any)` | 70 | 0 |
 | `look:trainer (any)` | 70 | 0 |
-| `class:swimmer_f (any)` | 68 | 0 |
-| `look:old_man (any)` | 66 | 4 |
-| `black_belt` | 65 | 12 |
-| `look:old_woman (any)` | 65 | 5 |
+| `look:old_woman (any)` | 68 | 5 |
 | `class:camper (any)` | 62 | 0 |
 | `underground_man` | 62 | 0 |
-| `class:twins (any)` | 58 | 0 |
+| `look:fisherman (any)` | 59 | 4 |
+| `class:cooltrainer (any)` | 58 | 0 |
 | `prof_elm` | 58 | 1 |
 | `beauty` | 57 | 4 |
-| `class:swimmer (any)` | 56 | 0 |
-| `class:cooltrainer (any)` | 54 | 0 |
+| `class:twins (any)` | 56 | 0 |
+| `steven` | 55 | 0 |
+| `class:swimmer (any)` | 54 | 0 |
+| `archie` | 50 | 3 |
 | `bill` | 50 | 2 |
 | `class:sailor (any)` | 50 | 0 |
-| `look:fisherman (any)` | 50 | 4 |
 | `lance` | 49 | 0 |
 | `elder` | 46 | 0 |
+| `look:hiker (any)` | 46 | 0 |
+| `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
 | `crasher_wake` | 44 | 1 |
+| `maxie` | 44 | 1 |
 | `buck` | 42 | 1 |
 | `riley` | 42 | 0 |
 | `ace_trainer` | 41 | 0 |
@@ -105,13 +110,10 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:beauty (any)` | 38 | 0 |
 | `class:scientist (any)` | 38 | 0 |
 | `officer` | 38 | 5 |
-| `look:hiker (any)` | 37 | 0 |
-| `steven` | 37 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
+| `look:magma_grunt (any)` | 36 | 0 |
 | `look:receptionist (any)` | 36 | 3 |
 | `class:ruin_maniac (any)` | 34 | 0 |
-| `class:team_aqua (any)` | 34 | 0 |
-| `look:magma_grunt (any)` | 34 | 0 |
 | `maylene` | 34 | 1 |
 | `mr_briney` | 34 | 1 |
 | `baoba` | 33 | 0 |
@@ -123,17 +125,15 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `jasmine` | 31 | 0 |
 | `class:biker (any)` | 30 | 0 |
 | `class:young_couple (any)` | 30 | 0 |
+| `look:girl (any)` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `jupiter` | 29 | 0 |
 | `look:aide (any)` | 29 | 4 |
-| `look:girl (any)` | 29 | 0 |
-| `maxie` | 29 | 1 |
 | `prof_birch` | 29 | 3 |
 | `saturn` | 28 | 0 |
 | `president` | 27 | 0 |
 | `class:aroma_lady (any)` | 26 | 0 |
 | `lottery_clerk` | 26 | 2 |
-| `archie` | 25 | 2 |
 | `byron` | 25 | 1 |
 | `clair` | 25 | 2 |
 | `giovanni` | 25 | 2 |
@@ -154,6 +154,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:pokemaniac (any)` | 22 | 0 |
 | `class:triathlete (any)` | 22 | 0 |
 | `class:worker (any)` | 22 | 0 |
+| `look:pokefan_f (any)` | 22 | 0 |
 | `look:pokefan_m (any)` | 22 | 0 |
 | `look:worker (any)` | 22 | 0 |
 | `mars` | 22 | 0 |
@@ -161,7 +162,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `fantina` | 21 | 0 |
 | `look:bug_catcher (any)` | 21 | 0 |
 | `look:gymstatue (any)` | 21 | 0 |
-| `look:pokefan_f (any)` | 21 | 0 |
 | `norman` | 21 | 0 |
 | `class:collector (any)` | 20 | 0 |
 | `class:guitarist (any)` | 20 | 0 |

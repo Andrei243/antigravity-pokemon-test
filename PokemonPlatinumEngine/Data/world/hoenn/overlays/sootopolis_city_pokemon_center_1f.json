@@ -1,0 +1,12 @@
+{
+  // Sootopolis City's Pokémon Center (plan 21 · H8, part b): the woman by the window teaches Double-Edge once
+  // (sootopolis_city_pokemon_center_1f.txt; FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE, MoveTutors.Kanto's row)
+  "area": "sootopolis_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "sootopolis_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": { "name": "Gentleman", "script": "Gentleman" },
+    "woman_5": { "name": "Woman", "script": "Woman" },
+    "woman_1": { "name": "Woman", "script": "DoubleEdgeTutor" }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "key": "sootopolis_city",
+  "index": 49,
+  "name": "Sootopolis City",
+  "matrix": 1,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SOOTOPOLIS",
+  "nightMusic": "MUS_SOOTOPOLIS",
+  "encounters": "sootopolis_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 30 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 25, "maxLevel": 30 },
+    { "species": "Magikarp", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Magikarp", "level": 30, "maxLevel": 35 },
+    { "species": "Magikarp", "level": 30, "maxLevel": 35 },
+    { "species": "Gyarados", "level": 35, "maxLevel": 40 },
+    { "species": "Gyarados", "level": 35, "maxLevel": 45 },
+    { "species": "Gyarados", "level": 5, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 43, "z": 31, "to": "sootopolis_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 17, "z": 29, "to": "sootopolis_city_mart", "toWarp": 0 },
+    { "x": 31, "z": 32, "to": "sootopolis_city_gym_1f", "toWarp": 0 },
+    { "x": 31, "z": 16, "to": "cave_of_origin_entrance", "toWarp": 0 },
+    { "x": 9, "z": 6, "to": "sootopolis_city_house_1", "toWarp": 0 },
+    { "x": 45, "z": 6, "to": "sootopolis_city_house_2", "toWarp": 0 },
+    { "x": 9, "z": 17, "to": "sootopolis_city_house_3", "toWarp": 0 },
+    { "x": 44, "z": 17, "to": "sootopolis_city_house_4", "toWarp": 0 },
+    { "x": 9, "z": 26, "to": "sootopolis_city_house_5", "toWarp": 0 },
+    { "x": 53, "z": 28, "to": "sootopolis_city_house_6", "toWarp": 0 },
+    { "x": 8, "z": 35, "to": "sootopolis_city_house_7", "toWarp": 0 },
+    { "x": 48, "z": 25, "to": "sootopolis_city_lotad_and_seedot_house", "toWarp": 0 },
+    { "x": 51, "z": 36, "to": "sootopolis_city_mystery_events_house_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sootopolis_expert", "looks": "expert_m", "movement": "look_south", "x": 31, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_EventScript_CaveOfOriginExpert" },
+    { "id": "sootopolis_woman_2", "looks": "woman_4", "movement": "look_west", "x": 47, "z": 33, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "script": "SootopolisCity_EventScript_Woman2" },
+    { "id": "kiri", "looks": "girl_2", "movement": "wander_west_and_east", "x": 9, "z": 43, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "SootopolisCity_EventScript_Kiri" },
+    { "id": "sootopolis_ninja_boy", "looks": "ninja_boy", "movement": "look_south", "x": 51, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_EventScript_NinjaBoy" },
+    { "id": "sootopolis_boy_1", "looks": "boy_1", "movement": "look_around", "x": 43, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_EventScript_Boy1" },
+    { "id": "man_1", "looks": "man_1", "movement": "wander_west_and_east", "x": 26, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1", "script": "SootopolisCity_EventScript_Man" },
+    { "id": "sootopolis_steven", "looks": "steven", "movement": "look_south", "x": 20, "z": 36, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN", "script": "SootopolisCity_EventScript_Steven" },
+    { "id": "sootopolis_woman_1", "looks": "woman_5", "movement": "wander_north_and_south", "x": 49, "z": 34, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SootopolisCity_EventScript_Woman1" },
+    { "id": "sootopolis_groudon", "looks": "groudon_side", "movement": "walk_slowly_in_place_east", "x": 28, "z": 44, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON", "script": "" },
+    { "id": "sootopolis_kyogre", "looks": "kyogre_side", "movement": "walk_slowly_in_place_west", "x": 34, "z": 44, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE", "script": "" },
+    { "id": "sootopolis_rayquaza", "looks": "rayquaza", "movement": "look_east", "x": 31, "z": 41, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA", "script": "" },
+    { "id": "sootopolis_maniac", "looks": "maniac", "movement": "look_east", "x": 17, "z": 44, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "script": "SootopolisCity_EventScript_Maniac" },
+    { "id": "sootopolis_girl", "looks": "girl_3", "movement": "look_east", "x": 14, "z": 42, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "script": "SootopolisCity_EventScript_Girl" },
+    { "id": "sootopolis_black_belt", "looks": "black_belt", "movement": "look_east", "x": 17, "z": 40, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "script": "SootopolisCity_EventScript_BlackBelt" },
+    { "id": "sootopolis_boy_2", "looks": "boy_2", "movement": "look_south", "x": 19, "z": 37, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "script": "SootopolisCity_EventScript_Boy2" },
+    { "id": "sootopolis_maxie", "looks": "maxie", "movement": "look_south", "x": 29, "z": 33, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE", "script": "SootopolisCity_EventScript_Maxie" },
+    { "id": "sootopolis_archie", "looks": "archie", "movement": "look_south", "x": 31, "z": 33, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE", "script": "SootopolisCity_EventScript_Archie" },
+    { "id": "sootopolis_wallace", "looks": "wallace", "movement": "look_south", "x": 31, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE", "script": "SootopolisCity_EventScript_Wallace" }
+  ],
+  "signs": [
+    { "x": 33, "z": 34, "type": 0, "script": "SootopolisCity_EventScript_GymSign" },
+    { "x": 19, "z": 29, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 44, "z": 31, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 45, "z": 31, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 18, "z": 29, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 41, "z": 37, "type": 0, "script": "SootopolisCity_EventScript_CitySign" }
+  ],
+  "triggers": []
+}

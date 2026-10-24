@@ -1,0 +1,139 @@
+# The Seafloor Cavern's deepest hall (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/SeafloorCavern_Room9/scripts.inc).
+#
+# Kyogre sleeps in the pool at the hall's north end. At the first step onto the trigger before it
+# (VAR_SEAFLOOR_CAVERN_STATE 0) Archie stops the player, battles, and holds up the Red Orb: the orb shines by itself,
+# Kyogre wakes, rises and is gone, and the cavern shakes. A call from outside tells Archie that the rain is far heavier
+# than his plan ever meant; Maxie comes in with two grunts and sends everyone out to see what Archie has done. There is
+# no battle with Kyogre, as Emerald has none here. What Emerald sets with it is set here: the titans in Sootopolis City
+# (VAR_SOOTOPOLIS_CITY_STATE 1, FLAG_LEGENDARIES_IN_SOOTOPOLIS; Steven, Archie, Maxie, the residents, Groudon and Kyogre
+# shown there and the wandering man hidden), the weather of the eastern sea taken over (FLAG_SYS_WEATHER_CTRL), Archie
+# and Maxie on Route 128 (VAR_ROUTE128_STATE 1, where the scene goes on), Steven gone from his house
+# (VAR_STEVENS_HOUSE_STATE 2), the cavern's grunts and this hall's people hidden, and the player put on Route 128's
+# islet.
+# A save from before this stretch is given its hiding as it comes in (common.HoennChapterTen).
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TEN call HoennChapterTen
+  end
+
+
+script ArchieWakesKyogre
+  scene "Kyogre wakes in the Seafloor Cavern"
+  face player up
+  wait 0.5
+  music "hoenn/eye_galactic"
+  speaker "Archie"
+  say "Hold it right there."
+  clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  show seafloor_cavern_archie
+  face player left
+  walk seafloor_cavern_archie right 7
+  say "Fufufu... So it was you all along."
+  face seafloor_cavern_archie up
+  say "Look! Look how beautiful it is! The sleeping form of the ancient Pokémon Kyogre!"
+  say "I have waited so long for this day..."
+  face seafloor_cavern_archie player
+  say "You surprise me, chasing me all the way down here. But it ends now."
+  say "For my dream to come true, you have to disappear!"
+  battle seafloor_cavern_archie as "hoenn_archie"
+  speaker "Archie"
+  say "Fufufu... I'll give you that. You really are gifted."
+  say "But! I have this! With the Red Orb, I can make Kyogre..."
+  music stop
+  speaker none
+  text "The Red Orb began to shine all by itself!"
+  effect sparkles 16 42 wait
+  music "hoenn/awaken_legend"
+  effect burst 17 38
+  face seafloor_cavern_archie up
+  face player up
+  wait 2.5
+  hide seafloor_cavern_kyogre_sleeping
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP
+  clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  show seafloor_cavern_kyogre
+  cry "Kyogre"
+  wait 1
+  # (it lies in its pool, where nobody walks: its rising and its going are steps on the spot)
+  walk seafloor_cavern_kyogre onspot down 2
+  camera shake 1.2
+  wait 1.2
+  walk seafloor_cavern_kyogre onspot up 2
+  hide seafloor_cavern_kyogre
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  camera shake 1.2
+  wait 1.4
+  speaker "Archie"
+  say "What?! I didn't do anything! Why did the Red Orb... Where has Kyogre gone?"
+  sound "pc_on"
+  face player left
+  say "Hm? A message from our people outside..."
+  walk seafloor_cavern_archie left 1
+  wait 0.4
+  say "Yes, what is it? It's raining hard? Good, that's just what should happen. It's why we woke Kyogre, to make the sea grow!"
+  say "What?! Much harder than we planned? You're in danger?"
+  say "That can't be... That's impossible... Stay where you are and keep watching!"
+  sound "pc_off"
+  wait 0.4
+  face seafloor_cavern_archie down
+  say "Something's wrong... The Red Orb was meant to wake Kyogre and let me command it..."
+  say "So why? Why did Kyogre vanish? Why?!"
+  clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  clearflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  show seafloor_cavern_maxie
+  show seafloor_cavern_grunt_1
+  show seafloor_cavern_grunt_2
+  walk seafloor_cavern_maxie right 5 fast
+  walk seafloor_cavern_grunt_2 right 4 fast
+  walk seafloor_cavern_grunt_1 right 4 fast
+  face seafloor_cavern_archie left
+  speaker "Maxie"
+  say "What have you done, Archie? You've woken Kyogre, haven't you?"
+  say "What becomes of the world if this rain never ends? All the land on earth will sink under a rising sea..."
+  emote seafloor_cavern_archie exclaim
+  wait 0.8
+  speaker "Archie"
+  say "Wh-what?! Don't you look down on me! Wasn't it Team Magma who woke Groudon and let it go wild?"
+  say "As long as I have the Red Orb, I can control Kyogre... I should be able to control it..."
+  speaker "Maxie"
+  say "There's no time to argue! Go outside and see it for yourself!"
+  say "See whether what you've made is the world either of us wanted!"
+  walk seafloor_cavern_archie back down 1
+  face seafloor_cavern_archie right
+  walk seafloor_cavern_maxie right 2
+  face seafloor_cavern_maxie player
+  say "{player}, you have to get out of here too! Come on!"
+  setvar VAR_ROUTE128_STATE 1
+  setvar VAR_SOOTOPOLIS_CITY_STATE 1
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
+  setflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
+  clearflag FLAG_HIDE_ROUTE_128_ARCHIE
+  clearflag FLAG_HIDE_ROUTE_128_MAXIE
+  setflag FLAG_SYS_WEATHER_CTRL
+  setflag FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN
+  setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  setvar VAR_STEVENS_HOUSE_STATE 2
+  setvar VAR_SEAFLOOR_CAVERN_STATE 1
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
+  warp "Hoenn" 678 242 up
+  endscene
+  end
+
+
+# Kyogre asleep, looked at from the pool's edge before Archie has woken it
+script SleepingKyogre
+  speaker none
+  text "Kyogre is sleeping in the pool. It doesn't stir at all."
+  end

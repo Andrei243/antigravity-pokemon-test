@@ -1,0 +1,8 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): an old woman who asks about Mt. Pyre's orbs
+  "area": "sootopolis_city_house_2",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "expert_f": { "name": "Old Woman", "script": "OldWoman" }
+  }
+}

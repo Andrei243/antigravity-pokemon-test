@@ -272,7 +272,9 @@ public enum Architecture
     /// <summary>Weathered boards under leaf-green gable roofs with shutters: the city of houses built in the treetops (Fortree, plan 21 · H6).</summary>
     Treetop,
     /// <summary>White stucco under sky-blue hip roofs with shutters and flower boxes: the flowering island city of the Space Center (Mossdeep, plan 21 · H8).</summary>
-    Starward
+    Starward,
+    /// <summary>Pale stone under deep sea-blue hip roofs with shutters: the white city cut into an old crater's terraces round its harbour (Sootopolis, plan 21 · H8, part b).</summary>
+    Crater
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

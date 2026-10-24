@@ -8,6 +8,9 @@
   // in the cave of the cove, is open since part b; the Contest Hall (H11) and the harbour (H9) stay shut
   "area": "lilycove_city",
   "bgmTrack": "hoenn/lilycove",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
   "trees": "Round",
   "locked": [ 4, 12 ],
   "people": {

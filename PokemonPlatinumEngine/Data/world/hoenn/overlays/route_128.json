@@ -1,0 +1,26 @@
+{
+  // Route 128 (plan 21 · H8, part b): the sea south of Route 127 and east of Sootopolis's crater, with a reef and an
+  // islet in its middle. Its dark water goes down to the sea floor, where a passage leads into the Seafloor Cavern.
+  // Coming out of the cavern after Kyogre has woken, the player stands on the islet with Archie and Maxie, and Steven
+  // flies in (route_128.txt, VAR_ROUTE128_STATE 1). While the titans' weather lasts (FLAG_SYS_WEATHER_CTRL) the sea
+  // here is under the downpour and the drought by turns, with Emerald's song of it. The triathletes Isaiah and Katelyn
+  // swap numbers for the PokéNav once beaten
+  "area": "route_128",
+  "bgmTrack": "hoenn/route120",
+  "trees": "Round",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "people": {
+    "swimmer_m": { "name": "Isaiah", "script": "Isaiah", "trainer": { "dialogueBefore": "Triathlete Isaiah: I swim round this reef a hundred times a day. You're my hundred-and-first lap!", "dialogueAfter": "Triathlete Isaiah: That lap was slower than all the others." } },
+    "swimmer_f": { "name": "Katelyn", "script": "Katelyn", "trainer": { "dialogueBefore": "Triathlete Katelyn: Out here the only thing to beat is the sea. Or you!", "dialogueAfter": "Triathlete Katelyn: The sea won't beat me like that." } },
+    "route128_steven": { "name": "Steven", "npcType": "steven", "still": true, "dialog": [ "Steven: Sootopolis may have the answer to all this." ] },
+    "route128_archie": { "name": "Archie", "npcType": "archie", "still": true, "dialog": [ "Archie: What have I done...?" ] },
+    "route128_maxie": { "name": "Maxie", "npcType": "maxie", "still": true, "dialog": [ "Maxie: This is no time to stand about." ] },
+    "fisherman": { "name": "Wayne", "trainer": { "dialogueBefore": "Fisherman Wayne: The reef keeps the big fish in. They're mine, and so's this battle!", "dialogueAfter": "Fisherman Wayne: The fish got away and so did the win." } },
+    "man_3": { "name": "Ruben", "trainer": { "dialogueBefore": "Cooltrainer Ruben: A trainer who's come this far out to sea must be worth battling.", "dialogueAfter": "Cooltrainer Ruben: Worth it, and then some." } },
+    "woman_5": { "name": "Alexa", "trainer": { "dialogueBefore": "Cooltrainer Alexa: Ever Grande City lies east of here. Are you strong enough for its road?", "dialogueAfter": "Cooltrainer Alexa: You might just be." } },
+    "swimmer_f_2": { "name": "Carlee", "trainer": { "dialogueBefore": "Swimmer Carlee: The water over the reef is so warm. Stay and battle a while!", "dialogueAfter": "Swimmer Carlee: I'm cold all of a sudden." } },
+    "swimmer_m_2": { "name": "Harrison", "trainer": { "dialogueBefore": "Swimmer Harrison: I dive down to the reef to look at the fish. Then I come up to battle!", "dialogueAfter": "Swimmer Harrison: Back down to the fish, then." } }
+  }
+}

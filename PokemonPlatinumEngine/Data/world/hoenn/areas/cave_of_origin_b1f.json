@@ -1,0 +1,25 @@
+{
+  "key": "cave_of_origin_b1f",
+  "index": 280,
+  "name": "Cave Of Origin",
+  "matrix": 229,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_NONE",
+  "nightMusic": "MUS_NONE",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 3, "to": "cave_of_origin_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "cave_of_origin_wallace", "looks": "wallace", "movement": "look_north", "x": 9, "z": 13, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE", "script": "CaveOfOrigin_B1F_EventScript_Wallace" }
+  ],
+  "signs": [],
+  "triggers": []
+}

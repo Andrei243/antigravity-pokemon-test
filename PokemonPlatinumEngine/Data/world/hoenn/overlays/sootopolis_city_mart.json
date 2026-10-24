@@ -1,0 +1,10 @@
+{
+  // Sootopolis City's Poké Mart (plan 21 · H8, part b): Emerald's stock (marts.json's sootopolis, sootopolis_city_mart.txt)
+  "area": "sootopolis_city_mart",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "sootopolis_mart_clerk": { "name": "Clerk", "script": "SootopolisClerk" },
+    "fat_man": { "name": "Man", "script": "FatMan" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Full Heal cures every ailment in one go. Down here in the crater, we keep a few in every house." ] }
+  }
+}

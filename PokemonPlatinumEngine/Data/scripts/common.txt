@@ -1865,6 +1865,7 @@ script HoennNewGame
   call HoennChapterEight
   call HoennChapterEightB
   call HoennChapterNine
+  call HoennChapterTen
   return
 
 
@@ -2121,6 +2122,34 @@ script HoennChapterNine
   setflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY
   if flag FLAG_DEFEATED_MOSSDEEP_GYM return
   setflag FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
+  return
+
+
+# What a new game of Emerald sets for the tenth stretch, Route 128 to the Cave of Origin (plan 21 · H8, part b): Archie,
+# Maxie and Steven on Route 128's islet until Kyogre has woken, Archie, Maxie, his two grunts and the waking Kyogre in
+# the Seafloor Cavern's last hall until their scene, and in Sootopolis City Steven, Archie, Maxie, the titans, Rayquaza,
+# Wallace and the townsfolk who come out to watch them; Wallace at Sky Pillar's door until he has gone there (part c).
+# FLAG_HOENN_CHAPTER_TEN, a flag of ours, says it has run. HoennNewGame calls it; a save from before it was written runs
+# it from the arrival scripts of Route 128, the Seafloor Cavern's last hall and Sootopolis City, so no story version is
+# raised for it. It may only set flags and variables, and ends in return.
+script HoennChapterTen
+  setflag FLAG_HOENN_CHAPTER_TEN
+  setflag FLAG_HIDE_ROUTE_128_STEVEN
+  setflag FLAG_HIDE_ROUTE_128_ARCHIE
+  setflag FLAG_HIDE_ROUTE_128_MAXIE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  setflag FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  setflag FLAG_HIDE_SKY_PILLAR_WALLACE
   return
 
 

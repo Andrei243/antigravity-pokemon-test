@@ -2452,4 +2452,181 @@ public class HoennStoryTests
         old.Arrive("Hoenn", 668, 117);
         foreach (string flag in hidden) Assert.True(old.Story.Has(flag), flag);
     }
+
+    // ---------------------------------------------------------------- plan 21 · H8, part b: the Seafloor Cavern to Wallace
+
+    /// <summary>A game with Dive had and the way into the Seafloor Cavern open (part a's end: Steven's gift).</summary>
+    private static Game WithDive()
+    {
+        var game = AtMossdeep();
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Mind");
+        foreach (string flag in new[] { "FLAG_DEFEATED_MOSSDEEP_GYM", "FLAG_DEFEATED_MAGMA_SPACE_CENTER", "FLAG_RECEIVED_HM_DIVE",
+                     "FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT" })
+            game.Story.Set(flag);
+        game.Story.SetVar("VAR_MOSSDEEP_CITY_STATE", 3);
+        game.Story.SetVar("VAR_STEVENS_HOUSE_STATE", 1);
+        return game;
+    }
+
+    /// <summary>Kyogre woken in the Seafloor Cavern's last hall, and Route 128's scene played after it.</summary>
+    private static Game KyogreAwake()
+    {
+        var game = WithDive();
+        game.Arrive("SeafloorCavern_Room9", 17, 44);
+        game.Step("ArchieWakesKyogre");
+        return game;
+    }
+
+    [Fact]
+    public void ArchieWakesKyogreInTheSeafloorCavernAndStevenFliesToSootopolis()
+    {
+        var game = WithDive();
+        Assert.True(game.Story.Has("FLAG_HOENN_CHAPTER_TEN"));
+        game.Arrive("SeafloorCavern_Room9", 17, 44);
+        Assert.NotNull(game.Present("seafloor_cavern_kyogre_sleeping"));
+        foreach (string hidden in new[] { "seafloor_cavern_kyogre", "seafloor_cavern_archie", "seafloor_cavern_maxie", "seafloor_cavern_grunt_1" })
+            Assert.Null(game.Present(hidden));
+
+        var scene = game.Step("ArchieWakesKyogre");
+        Assert.Contains(scene.Log, l => l.StartsWith("battle hoenn_archie"));
+        Assert.Contains(scene.Transcript, l => l.Speaker == "Maxie");
+        foreach (string flag in new[] { "FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN", "FLAG_SYS_WEATHER_CTRL", "FLAG_LEGENDARIES_IN_SOOTOPOLIS",
+                     "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS", "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP", "FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1",
+                     "FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN" })
+            Assert.True(game.Story.Has(flag), flag);
+        foreach (string flag in new[] { "FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN", "FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON", "FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE",
+                     "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS" })
+            Assert.False(game.Story.Has(flag), flag);
+        Assert.Equal(1, game.Story.Var("VAR_SEAFLOOR_CAVERN_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.Equal(2, game.Story.Var("VAR_STEVENS_HOUSE_STATE"));
+
+        // Up on Route 128's islet: Archie and Maxie leave to stop it, Steven flies in and on to Sootopolis
+        Assert.Equal("Hoenn", game.Map.Name);
+        Assert.Equal((678, 242), game.Tile);
+        Assert.Equal(2, game.Story.Var("VAR_ROUTE128_STATE"));
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == "Steven");
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_128_ARCHIE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_128_MAXIE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_128_STEVEN"));
+        Assert.Null(game.Present("route128_archie"));
+
+        // The hall is quiet afterwards, and the cavern's grunts have gone with Archie
+        game.Arrive("SeafloorCavern_Room9", 17, 44);
+        Assert.False(game.Fires("ArchieWakesKyogre"));
+        Assert.Null(game.Present("seafloor_cavern_kyogre_sleeping"));
+        game.Arrive("SeafloorCavern_Room1", 5, 17);
+        Assert.Null(game.Present("aqua_member_m"));
+    }
+
+    [Fact]
+    public void GroudonAndKyogreClashOverSootopolisAndStevenTakesThePlayerToWallace()
+    {
+        var game = KyogreAwake();
+        // Come up into the harbour from the pool under it: the clash plays and the weather breaks
+        game.Arrive("SootopolisCity", 29, 53);
+        Assert.Equal(2, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN"));
+        Assert.Contains(game.Last.Log, l => l.Contains("Kyogre"));
+        Assert.NotNull(game.Present("sootopolis_groudon"));
+        Assert.NotNull(game.Present("sootopolis_kyogre"));
+        Assert.NotNull(game.Present("sootopolis_maniac"));
+        Assert.Null(game.Present("man_1"));
+        Assert.Null(game.Present("sootopolis_rayquaza"));
+        Assert.Null(game.Present("sootopolis_wallace"));
+        // The townsfolk watching from the harbour's edge
+        Assert.Equal((13, 48), (game.Present("kiri")!.GridX, game.Present("kiri")!.GridY));
+        // The houses are shut while the titans are in the city
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap.StartsWith("SootopolisCity_House", StringComparison.Ordinal)), w => Assert.True(w.Shut, w.TargetMap));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "SootopolisCity_PokemonCenter_1F" && !w.Shut);
+
+        // The old man turns away anyone Steven hasn't brought
+        game.Talk("sootopolis_expert");
+        Assert.Equal((31, 18), (game.Present("sootopolis_expert")!.GridX, game.Present("sootopolis_expert")!.GridY));
+
+        // Steven leads the player into the Cave of Origin
+        game.Talk("sootopolis_steven");
+        Assert.True(game.Story.Has("FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN"));
+        Assert.Equal("CaveOfOrigin_Entrance", game.Map.Name);
+
+        // Wallace below, asked where Rayquaza is: Mt. Pyre first, then Sky Pillar
+        game.Arrive("CaveOfOrigin_B1F", 9, 4);
+        int asked = 0;
+        game.Decide = (_, answers) => answers.Count == 4 && asked++ == 0 ? 1 : 0;
+        var wallace = game.Talk("cave_of_origin_wallace");
+        game.Decide = null;
+        Assert.Equal(2, asked);
+        Assert.Contains(wallace.Transcript, l => l.Text.Contains("Mt. Pyre"));
+        Assert.True(game.Story.Has("FLAG_WALLACE_GOES_TO_SKY_PILLAR"));
+        Assert.Equal(3, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SKY_PILLAR_WALLACE"));
+        game.Arrive("CaveOfOrigin_B1F", 9, 4);
+        Assert.Null(game.Present("cave_of_origin_wallace"));
+
+        // Back in the city, Steven waits by the cave's mouth and the old man steps aside for a player from the south
+        game.Arrive("SootopolisCity", 31, 21);
+        Assert.Equal((32, 18), (game.Present("sootopolis_steven")!.GridX, game.Present("sootopolis_steven")!.GridY));
+        game.Talk("sootopolis_expert");
+        Assert.Equal((30, 18), (game.Present("sootopolis_expert")!.GridX, game.Present("sootopolis_expert")!.GridY));
+    }
+
+    [Fact]
+    public void SootopolissPeopleGiveTheirGiftsOnceAndItsBrothersMeasureTheirFavourites()
+    {
+        var game = WithDive();
+        // Before the titans come: Kiri's two berries a day
+        game.Arrive("SootopolisCity", 29, 53);
+        Assert.Equal(0, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.Null(game.Present("sootopolis_maniac"));
+        int Berries() => game.Bag.AllItems.Where(i => i.Name.EndsWith(" Berry", StringComparison.Ordinal)).Sum(i => i.Quantity);
+        int before = Berries();
+        game.Talk("kiri");
+        Assert.Equal(before + 2, Berries());
+        Assert.True(game.Story.Has("FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY"));
+        game.Talk("kiri");
+        Assert.Equal(before + 2, Berries());
+        // The houses are open, and the black belt's TM31 is given once
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "SootopolisCity_House1" && !w.Shut);
+        game.Arrive("SootopolisCity_House1", 4, 6);
+        game.Talk("black_belt");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_TM_BRICK_BREAK"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM31")!));
+        game.Talk("black_belt");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM31")!));
+        // The brothers each want their own species, and have nothing to say of a team without it
+        game.Arrive("SootopolisCity_LotadAndSeedotHouse", 4, 6);
+        int elixirs = game.Bag.GetQuantity(ItemDatabase.Get("Elixir")!);
+        game.Talk("hiker");
+        game.Talk("fisherman");
+        Assert.Equal(elixirs, game.Bag.GetQuantity(ItemDatabase.Get("Elixir")!));
+        // The Mart sells Emerald's stock
+        game.Arrive("SootopolisCity_Mart", 3, 6);
+        Assert.Contains(game.Talk("sootopolis_mart_clerk").Log, l => l == "open Shop sootopolis");
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheTenthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay()
+    {
+        string[] hidden =
+        {
+            "FLAG_HOENN_CHAPTER_TEN", "FLAG_HIDE_ROUTE_128_STEVEN", "FLAG_HIDE_ROUTE_128_ARCHIE", "FLAG_HIDE_ROUTE_128_MAXIE",
+            "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE", "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE", "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS",
+            "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE", "FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN", "FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE",
+            "FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE", "FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON", "FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE",
+            "FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA", "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE", "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS",
+            "FLAG_HIDE_SKY_PILLAR_WALLACE"
+        };
+        var fresh = new Game();
+        foreach (string flag in hidden) Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP"));
+
+        // A save from before: Route 128's arrival runs it, and so do the cavern's last hall and Sootopolis City's
+        foreach (var (map, x, y) in new[] { ("Hoenn", 700, 245), ("SeafloorCavern_Room9", 17, 44), ("SootopolisCity", 29, 53) })
+        {
+            var old = WithDive();
+            foreach (string flag in hidden) old.Story.Unset(flag);
+            old.Arrive(map, x, y);
+            foreach (string flag in hidden) Assert.True(old.Story.Has(flag), $"{flag} on arriving in {map}");
+        }
+    }
 }

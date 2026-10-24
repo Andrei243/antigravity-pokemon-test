@@ -1,0 +1,47 @@
+{
+  "key": "seafloor_cavern_room_1",
+  "index": 266,
+  "name": "Seafloor Cavern",
+  "matrix": 215,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "seafloor_cavern_room_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Zubat", "level": 33 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Zubat", "level": 34 },
+    { "species": "Zubat", "level": 35 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 36 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 5, "z": 18, "to": "seafloor_cavern_entrance", "toWarp": 1 },
+    { "x": 17, "z": 13, "to": "seafloor_cavern_room_5", "toWarp": 0 },
+    { "x": 6, "z": 2, "to": "seafloor_cavern_room_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 5, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 12, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_StrengthBoulder" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 5, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "look_around", "x": 8, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS", "script": "TRAINER_GRUNT_SEAFLOOR_CAVERN_1" },
+    { "id": "aqua_member_m_2", "looks": "aqua_member_m", "movement": "look_north_and_east", "x": 15, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS", "script": "TRAINER_GRUNT_SEAFLOOR_CAVERN_2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

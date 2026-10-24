@@ -403,6 +403,16 @@
       "Max Repel",
       "X Attack",
       "X Defense"
+    ],
+    "sootopolis": [
+      "Ultra Ball",
+      "Hyper Potion",
+      "Max Potion",
+      "Full Heal",
+      "Revive",
+      "Max Repel",
+      "X Attack",
+      "X Defense"
     ]
   }
 }

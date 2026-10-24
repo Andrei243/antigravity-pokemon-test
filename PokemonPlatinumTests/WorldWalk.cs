@@ -89,7 +89,9 @@ internal static class WorldWalk
                 foreach (var warp in map.WarpsAt(x, y))
                 {
                     var onto = mapOf(warp.TargetMap);
-                    Visit(onto, warp.TargetX, warp.TargetY, TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
+                    // (a way along the sea floor into another floor of its own keeps the diver diving: plan 21 · H8,
+                    // part b, the passages into the Seafloor Cavern's pool and the pool under Sootopolis)
+                    Visit(onto, warp.TargetX, warp.TargetY, onto.IsUnderwater ? TravelMode.Diving : TravelMode.OnFoot, onto.HeightAt(warp.TargetX, warp.TargetY), arrived: true);
                 }
                 // A door of Turnback Cave is aimed as the player comes in, and can lead into any of its rooms
                 int door = TurnbackCave.IsPart(map.AreaAt(x, y)?.Key) ? IndexOf(TurnbackCave.Doors, (x, y)) : -1;
@@ -116,17 +118,20 @@ internal static class WorldWalk
 
             // Dive takes a surfer on dark water down to the same tile of the sea floor under it, and a diver back up to
             // the same tile of the sea above wherever the floor lets them (plan 21 · H5)
+            // (or, where the original names one place below or above an area, to that place: plan 21 · H8, part b)
             if (mode == TravelMode.Surfing && FieldMovement.CanDive(map, x, y, new Walker(mode, height, Moves: Everything)))
             {
-                var below = mapOf(map.DiveAt(x, y)!);
-                if (below.InBounds(x, y) && !below.IsSolid(x, y))
-                    Visit(below, x, y, TravelMode.Diving, below.HeightAt(x, y), arrived: false);
+                var spot = map.DiveTargetAt(x, y)!;
+                var below = mapOf(spot.Map);
+                if (below.InBounds(spot.X, spot.Y) && !below.IsSolid(spot.X, spot.Y))
+                    Visit(below, spot.X, spot.Y, TravelMode.Diving, below.HeightAt(spot.X, spot.Y), arrived: false);
             }
             if (mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y))
             {
-                var above = mapOf(map.EmergeAt(x, y)!);
-                if (FieldMovement.SurfacesOnto(above, x, y))
-                    Visit(above, x, y, TravelMode.Surfing, above.SurfaceAt(x, y, above.HeightAt(x, y)).Height, arrived: false);
+                var spot = map.EmergeTargetAt(x, y)!;
+                var above = mapOf(spot.Map);
+                if (FieldMovement.SurfacesOnto(above, spot.X, spot.Y))
+                    Visit(above, spot.X, spot.Y, TravelMode.Surfing, above.SurfaceAt(spot.X, spot.Y, above.HeightAt(spot.X, spot.Y)).Height, arrived: false);
             }
 
             // A platform of the League's (plan 01 · M9, part 2d) carries whoever steps onto it at the foot of its

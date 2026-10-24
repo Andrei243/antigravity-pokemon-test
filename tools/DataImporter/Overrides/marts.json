@@ -34,6 +34,9 @@
     "lilycove_4f_attack": [ "TM38", "TM25", "TM14", "TM15" ],
     "lilycove_4f_defense": [ "TM17", "TM20", "TM33", "TM16" ],
     // Mossdeep City's Poké Mart (plan 21 · H8), in Emerald's order (MossdeepCity_Mart_Pokemart)
-    "mossdeep": [ "Ultra Ball", "Net Ball", "Dive Ball", "Hyper Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense" ]
+    "mossdeep": [ "Ultra Ball", "Net Ball", "Dive Ball", "Hyper Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense" ],
+    // Sootopolis City's Poké Mart (plan 21 · H8, part b), in Emerald's order (SootopolisCity_Mart_Pokemart; its Shadow
+    // Mail left out, as the mail of every Mart but Slateport's mail counter)
+    "sootopolis": [ "Ultra Ball", "Hyper Potion", "Max Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense" ]
   }
 }

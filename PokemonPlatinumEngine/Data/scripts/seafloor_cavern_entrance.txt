@@ -1,0 +1,22 @@
+# The Seafloor Cavern's mouth (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/SeafloorCavern_Entrance/scripts.inc).
+#
+# A grunt keeps watch before the way in, his back to the pool. In Emerald he is gone by the time anyone can dive here,
+# since Steven's gift of Dive hides him (FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT); a save that kept him finds him
+# grumbling about Team Magma, the first time at length (VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT).
+
+
+script Grunt
+  speaker "Team Aqua Grunt"
+  if var VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT == 1 goto Short
+  emote self exclaim
+  face self player
+  setvar VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 1
+  say "Hey! I know that face! If you're here, you've come to make trouble for us again!"
+label Short
+  face self player
+  say "A kid like you take on Team Aqua? You're about a million years too early!"
+  say "You'd fit right in with Team Magma. Speaking of which, I hear they were seen round Mossdeep."
+  say "That lot don't look right anywhere near the sea!"
+  face self up
+  end

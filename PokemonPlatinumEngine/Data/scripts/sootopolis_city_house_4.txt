@@ -1,0 +1,10 @@
+# A house in Sootopolis City (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_House4/scripts.inc). The couple's
+# Azumarill, which goes along on their walks on the sea floor.
+
+
+script Azumarill
+  cry own
+  speaker none
+  text "Azumarill: Marimari?"
+  end

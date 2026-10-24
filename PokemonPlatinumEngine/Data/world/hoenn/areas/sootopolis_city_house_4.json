@@ -1,0 +1,28 @@
+{
+  "key": "sootopolis_city_house_4",
+  "index": 204,
+  "name": "Sootopolis City",
+  "matrix": 153,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SOOTOPOLIS",
+  "nightMusic": "MUS_SOOTOPOLIS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "sootopolis_city", "toWarp": 7 },
+    { "x": 4, "z": 6, "to": "sootopolis_city", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "man_1", "looks": "man_1", "movement": "look_east", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_House4_EventScript_Man" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_north", "x": 5, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 2, "script": "SootopolisCity_House4_EventScript_Woman" },
+    { "id": "azumarill", "looks": "azumarill", "movement": "look_around", "x": 2, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SootopolisCity_House4_EventScript_Azumarill" }
+  ],
+  "signs": [],
+  "triggers": []
+}

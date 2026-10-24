@@ -1262,6 +1262,12 @@ public static class WorldMapBuilder
     /// <summary>HeartGold's two rock smash slots, met 90 and 10 times in a hundred (plan 20 · J9).</summary>
     private static readonly int[] RockSmashPairWeights = { 90, 10 };
 
+    /// <summary>A place of an overlay's <c>diveTo</c> or <c>emergeTo</c> as a map's tile, once its area is open.</summary>
+    private static MapSpot? SpotOf(World world, OverlaySpot? spot) =>
+        spot != null && world.IsOpen(spot.Area) && world.MapOf(spot.Area)?.Name is { } map
+            ? new MapSpot(map, spot.X, spot.Z, spot.Facing)
+            : null;
+
     private static MapArea AreaOf(World world, string key)
     {
         var file = world.Area(key);
@@ -1286,6 +1292,9 @@ public static class WorldMapBuilder
             // Each a map's name: the map that holds the area below or above, and only once that area is open (plan 21 · H5)
             Dive = file?.Dive is { } below && world.IsOpen(below) ? world.MapOf(below)?.Name : null,
             Emerge = file?.Emerge is { } above && world.IsOpen(above) ? world.MapOf(above)?.Name : null,
+            // And the one place below or above an area whose floor is no map of the sea's (plan 21 · H8, part b)
+            DiveSpot = SpotOf(world, overlay?.DiveTo),
+            EmergeSpot = SpotOf(world, overlay?.EmergeTo),
             EastSea = file?.EastSea ?? false,
             UnownTable = file?.UnownTable ?? 0
         };

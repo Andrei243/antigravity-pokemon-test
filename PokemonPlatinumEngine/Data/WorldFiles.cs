@@ -898,6 +898,24 @@ public sealed class WorldOverlayFile
     /// own weather and music hold.
     /// </summary>
     public List<OverlayZone>? Zones { get; set; }
+
+    /// <summary>
+    /// Where Dive goes down to from anywhere in the area, and coming up comes up onto from anywhere on its floor, where
+    /// the original names one place by the map's own script (plan 21 · H8, part b; Emerald's <c>setdivewarp</c>): the
+    /// area's floor is then no map laid tile for tile under it. Left out, the area file's <c>dive</c> and <c>emerge</c>.
+    /// </summary>
+    public OverlaySpot? DiveTo { get; set; }
+    public OverlaySpot? EmergeTo { get; set; }
+}
+
+/// <summary>A tile of an imported area (its key, and a tile of its matrix), facing a way (<see cref="WorldOverlayFile.DiveTo"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlaySpot>))]
+public sealed class OverlaySpot
+{
+    public string Area { get; set; } = "";
+    public int X { get; set; }
+    public int Z { get; set; }
+    public Direction Facing { get; set; } = Direction.Down;
 }
 
 /// <summary>
@@ -916,7 +934,21 @@ public sealed class OverlayZone
     /// <summary>The song played there; left out, the area's.</summary>
     public string? BgmTrack { get; set; }
 
-    public bool Holds(int x, int z) => x >= X && x < X + Width && z >= Z && z < Z + Depth;
+    /// <summary>
+    /// A story flag the zone holds only while it is set (plan 21 · H8, part b): where the original sets the weather by a
+    /// map's script for part of the story (Emerald's abnormal weather over the eastern sea while
+    /// <c>FLAG_SYS_WEATHER_CTRL</c> is set, Sootopolis City's while the titans clash). Left out, the zone always holds.
+    /// The game keeps it with <see cref="Overworld.Map.ApplyPresence"/>.
+    /// </summary>
+    public string? While { get; set; }
+
+    // A zone with a flag holds nothing until the story has been asked (a map nobody has laid out by the story yet)
+    private bool awake;
+
+    /// <summary>Wakes or lays the zone to rest by its flag, as the story stands (<see cref="While"/>).</summary>
+    public void Follow(Func<string, bool> has) => awake = While == null || has(While);
+
+    public bool Holds(int x, int z) => (While == null || awake) && x >= X && x < X + Width && z >= Z && z < Z + Depth;
 }
 
 /// <summary>Where one of an area's warps leads: a tile of a hand-made map.</summary>

@@ -1,0 +1,10 @@
+{
+  // The Seafloor Cavern, its fourth room (plan 21 · H8, part b): two grunts by the holes that drop back to the mouth
+  "area": "seafloor_cavern_room_4",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "people": {
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Who let a kid in here? Was it you, that grunt by the entrance? No, he lost too...", "dialogueAfter": "Team Aqua Grunt: Nobody let you in. You just came." } },
+    "aqua_member_f": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Don't you know where you are? This is the bottom of the sea! Go home!", "dialogueAfter": "Team Aqua Grunt: You're at home anywhere, it seems." } }
+  }
+}

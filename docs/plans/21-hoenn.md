@@ -762,7 +762,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`VAR_JAGGED_PASS_ASH_WEATHER`); the crowd round Stern's interview; the Pichu doll in the rival's room; the harbour's
     patrons back after Mossdeep's Gym (H8).
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis (part a done 2026-10-24, wave 43: Routes 125 to 127, Mossdeep City
-  to Dive; tests and shots written, not run; what is left is listed under "Left for part b")
+  to Dive; part b done 2026-10-24, wave 44: Route 128, the Seafloor Cavern, Kyogre, Sootopolis and its clash, Wallace;
+  tests and shots written, not run; what is left is listed under "Left for part c")
   - **Opened** (18 areas, 230 in all): Routes 125, 126 and 127 above water and the sea floors under them
     (`underwater_route_126` and `_127` on `HoennUnderwater`; Route 125's floor, matrix 5, is the post-game's: Route 125 has no dark
     water until Emerald's abnormal weather lays it for the Marine Cave, plan 21 · H12), Mossdeep City (`Architecture.Starward`, the style guide's row first; its open
@@ -831,6 +832,77 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall`); the Space Center's launch count by the game's weeks;
     Emerald's choice of three Pokémon for the battle beside Steven; the Beldum and Steven's letter (written, shown by the
     Hall of Fame, H9); the Ancient Tomb's Registeel and the Sealed Chamber (H12 or later).
+  - **Part b** (done 2026-10-24, wave 44: Route 128 to the Cave of Origin; tests and shots written, not run; what is left
+    is listed under "Left for part c")
+  - **Opened** (29 areas, 259 in all): Route 128 and its sea floor (`underwater_route_128` on `HoennUnderwater`), the
+    Seafloor Cavern (the pool under the sea before it, `Underwater_SeafloorCavern`, matrix 213, a floor of its own come to
+    by the passage of Route 128's floor; its mouth and nine rooms, matrices 214 to 223), Sootopolis City (matrix 1, a map
+    of its own, `Architecture.Crater`, the style guide's row first; its white stone floor paving in `GbaCover.HoennRanges`)
+    with the pool under its harbour (`Underwater_SootopolisCity`, matrix 192, joined to Route 126's floor), its Pokémon
+    Center on both floors, Mart (Emerald's stock, marts.json's `sootopolis`) and eight houses, and the Cave of Origin's
+    three rooms (the Ruby and Sapphire rooms between them left out, as Emerald's warps leave them). Every map is in
+    `RegionDatabase`'s Hoenn list. Shut: Juan's Gym and the Mystery Events house (`locked`), Sootopolis's houses while the
+    titans are in the city (`switches` until `FLAG_LEGENDARIES_IN_SOOTOPOLIS`), Shoal Cave, Routes 129 to 131 and on.
+  - **Played**: Archie in Kyogre's hall, his battle (`hoenn_archie`), the Red Orb, Kyogre waking and gone (no battle, as
+    Groudon's), Archie's call from outside and Maxie coming in (`VAR_SEAFLOOR_CAVERN_STATE` 1,
+    `FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN`, `FLAG_LEGENDARIES_IN_SOOTOPOLIS`, `FLAG_SYS_WEATHER_CTRL`, Sootopolis's people
+    shown, the cavern's grunts gone, Steven gone from his house); Route 128's islet: Archie and Maxie leaving to stop it,
+    Steven flying in and on (`VAR_ROUTE128_STATE` 2); Shelly and the cavern's five grunts with lines of our own; the
+    titans' clash over Sootopolis as the city is first come to (`VAR_SOOTOPOLIS_CITY_STATE` 2, the camera to the harbour,
+    three strikes, the weather breaking: `FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN`, ours); the townsfolk watching from the
+    harbour's edge; Steven leading the player into the Cave of Origin (`FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN`) and the old
+    man stepping aside afterwards for a player from the south; Wallace's tale and question, and his going to Sky Pillar
+    (`FLAG_WALLACE_GOES_TO_SKY_PILLAR`, state 3, `FLAG_HIDE_SKY_PILLAR_WALLACE` cleared); Kiri's two berries a day, TM31
+    from the black belt, Double-Edge from the Pokémon Center's woman, the Seedot and Lotad brothers' records and Elixirs,
+    Route 128's two triathletes in Match Call (Isaiah, Katelyn), the stolen submarine's hull read in the pool. Every scene a
+    `scene`. **No story version raised**: `common.HoennChapterTen` (`FLAG_HOENN_CHAPTER_TEN`), called by `HoennNewGame`
+    and by the arrivals of Route 128, Kyogre's hall and Sootopolis. Rulings: "The Seafloor Cavern and Sootopolis".
+  - **Engine**: a floor that is no map of the sea's is dived to and come up from at one place, Emerald's `setdivewarp`
+    (the overlay's `diveTo` and `emergeTo`, `OverlaySpot`; `MapArea.DiveSpot`, `EmergeSpot`; `Map.DiveTargetAt`,
+    `EmergeTargetAt`, which `GameEngine.Dive`, the headless host and `WorldWalk` use; a warp along the sea floor keeps the
+    walk's diver diving); overlay zones that hold only `while` a story flag (`OverlayZone.While`, `Follow`, kept by
+    `Map.ApplyPresence`); `FieldWeather.Drought` and `Abnormal` at the enum's end (`Weathers.Alternating`, ten seconds of
+    the field's clock a turn, `Map.WeatherClock` set by the game each frame from `FieldLife.Now`; `ArtLook.Drought`, the
+    harsh sun laid over the hour at seven tenths; a drought's battle opens in the sun; the style guide's "Life" rows
+    first); the abnormal weather over Routes 124 to 128, Lilycove and Mossdeep while `FLAG_SYS_WEATHER_CTRL`, and over
+    Sootopolis the downpour from the titans' coming and the two by turns from the clash. `Architecture.Crater`.
+  - **Looks and music**: `wallace` in `characters.json` (our own take). `hoenn/sootopolis` (43.6 s loop, −19.9 LUFS) and
+    `hoenn/abnormal_weather` (27.8 s loop, −20.0 LUFS), ours, rendered clash-free with MusicRender, not yet heard. The
+    Seafloor Cavern plays `hoenn/mt_chimney` and the Cave of Origin `hoenn/cave_of_origin`, as Emerald's do.
+  - **Tests** (written, not run): `HoennTests` (`TheSeafloorCavernAndSootopolisCityAreComeToByDive`,
+    `TheTitansWeatherTakesTurnsOverTheEasternSeaWhileTheStoryKeepsIt`); `HoennStoryTests`
+    (`ArchieWakesKyogreInTheSeafloorCavernAndStevenFliesToSootopolis`,
+    `GroudonAndKyogreClashOverSootopolisAndStevenTakesThePlayerToWallace`,
+    `SootopolissPeopleGiveTheirGiftsOnceAndItsBrothersMeasureTheirFavourites`,
+    `ANewGameOfHoennHidesTheTenthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay`); `WorldWalk` follows the one-place dives
+    and keeps a diver diving through a warp along the floor, so `TheWalkFromTheStartReachesEveryOpenAreaAndEveryRoom` now
+    reaches Sootopolis and the cavern. The content check finds nothing. `scripts.txt` of the golden files moves (common.txt,
+    the new places' scripts, phone.txt; the headless host's dive line now names the tile it lands on): accept it.
+    `marts.json` moved; `lines.json`, `cast.json`, `coverage.md` and `localisation.md` regenerated (the voice catalogue
+    recast ten lines of five trainers of other regions who share a name with Route 128's new people). The
+    Romanian file of Route 125's sea floor, which part a's fix left with no overlay, is removed.
+  - **Shots** (written, not taken): the `hoenn` mode's `h180`–`h194` (Route 128's islet, the cavern's pool, mouth,
+    boulders, Shelly's room and Kyogre's hall, Sootopolis with `_native` crops of the city and the harbour, the cave's
+    mouth, the pool under the harbour, the Center, the Mart, a house, the Cave of Origin's mouth and its lowest floor) and
+    `h195_sootopolis_night`; the scenes `hs230`–`hs24b` at the end of `HoennScenes` (the pool and the mouth, Shelly,
+    Kyogre asleep, Archie and his battle, the Red Orb, Kyogre waking and gone, Maxie, Route 128's storm, Archie and Maxie,
+    Steven flying in, Sootopolis's titans and their clash, the downpour and the drought with a `_native` crop, Steven's
+    guide, the Cave of Origin, Wallace and his question, the old man aside), printing the stretch's state and the weather
+    after each stage.
+  - **Left for part c**: Routes 129 to 131 and their sea floors, Pacifidlog Town (its houses on logs, decks over `Sea`,
+    and its `Architecture` row, the style guide first), Sky Pillar (Route 131's outside, Wallace at the door: state 4,
+    `FLAG_HIDE_SKY_PILLAR_WALLACE` already cleared), its floors and top, Rayquaza woken and its descent over Sootopolis
+    (`VAR_SKY_PILLAR_STATE`, state 5; the titans gone; **clear `FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN` with
+    `FLAG_SYS_WEATHER_CTRL` and `FLAG_LEGENDARIES_IN_SOOTOPOLIS`**, or the city keeps its weather), the song
+    `rayquaza_appears`, Maxie and Archie leaving (`FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE`, state 6, the houses open again),
+    Wallace's HM07 Waterfall and Juan's Gym (its ice floor) with the Rain Badge; the abnormal weather's other places
+    (Routes 129 to 131, Ever Grande City, Sky Pillar's outside: zones like Route 128's); Shoal Cave and its tide (two
+    layouts by the hour through a new command behind the warp's fade; the Shoal Salt and Shells and the Shell Bell);
+    Sootopolis's spawn for Fly and a white-out (Emerald's heal location 10, on a map of its own, which `RegionSpawn` can't
+    yet name: with part c or plan 18 · W9); Emerald's clash layout (`LAYOUT_SOOTOPOLIS_CITY_LEGENDS_BATTLE`, rough water
+    under the titans) and the rough water Rayquaza's scene lays; Steven's walk across the terraces in his guide (a fade
+    here); the Wailmer Doll (H10); and part a's leftovers (the rival's Rayquaza call on the Space Center's second floor,
+    the launch count by weeks, Emerald's choice of three beside Steven, the Beldum and the letter, the Ancient Tomb).
 - [ ] H9 Ever Grande and the League
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks

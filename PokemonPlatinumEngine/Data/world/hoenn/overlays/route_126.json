@@ -4,6 +4,9 @@
   // triathlete Pablo swaps numbers for the PokéNav once beaten (route_126.txt)
   "area": "route_126",
   "bgmTrack": "hoenn/route120",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
   "trees": "Round",
   "people": {
     "swimmer_m": { "name": "Barry", "trainer": { "dialogueBefore": "Swimmer Barry: The water round that big crater is the deepest in Hoenn. Fancy a dip?", "dialogueAfter": "Swimmer Barry: I sank, all right." } },

@@ -1,0 +1,33 @@
+{
+  "key": "seafloor_cavern_room_9",
+  "index": 274,
+  "name": "Seafloor Cavern",
+  "matrix": 223,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 4, "to": "seafloor_cavern_room_8", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "seafloor_cavern_kyogre", "looks": "kyogre_front", "movement": "look_south", "x": 17, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE", "script": "" },
+    { "id": "seafloor_cavern_archie", "looks": "archie", "movement": "look_east", "x": 9, "z": 42, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE", "script": "" },
+    { "id": "seafloor_cavern_maxie", "looks": "maxie", "movement": "look_east", "x": 9, "z": 42, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE", "script": "" },
+    { "id": "seafloor_cavern_grunt_1", "looks": "magma_member_m", "movement": "look_east", "x": 8, "z": 41, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS", "script": "" },
+    { "id": "seafloor_cavern_grunt_2", "looks": "magma_member_f", "movement": "look_east", "x": 8, "z": 42, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 14, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SEAFLOOR_CAVERN_ROOM_9_TM_EARTHQUAKE", "item": "TM26", "script": "SeafloorCavern_Room9_EventScript_ItemTMEarthquake" },
+    { "id": "seafloor_cavern_kyogre_sleeping", "looks": "kyogre_asleep", "movement": "look_south", "x": 17, "z": 38, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 17, "z": 42, "width": 1, "depth": 1, "script": "SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre", "variable": "VAR_SEAFLOOR_CAVERN_STATE", "value": "0" }
+  ]
+}

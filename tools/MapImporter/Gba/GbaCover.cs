@@ -376,6 +376,16 @@ public static class GbaCover
                 (0x379, 0x37E, TerrainCover.Path), (0x381, 0x386, TerrainCover.Path), (0x389, 0x38C, TerrainCover.Path),
                 (0x38E, 0x38E, TerrainCover.Path), (0x391, 0x396, TerrainCover.Path), (0x399, 0x39E, TerrainCover.Path),
             },
+            // Plan 21 · H8, part b: Sootopolis City, read from what is walked as Lilycove's and Mossdeep's rows are: the
+            // crater's floor of white stone round the harbour (0x2D9, its terraces' tops too), the steps and walks cut
+            // into the terraces between the houses (0x244, 0x245), and the stone before the Cave of Origin's mouth and
+            // the houses' doors (0x221, 0x229, 0x238). The crater's walls and the houses are blocked and left to the rock
+            // and to the doors
+            ["gTileset_Sootopolis"] = new (int, int, TerrainCover)[]
+            {
+                (0x2D9, 0x2D9, TerrainCover.Paving), (0x244, 0x245, TerrainCover.Paving),
+                (0x221, 0x221, TerrainCover.Paving), (0x229, 0x229, TerrainCover.Paving), (0x238, 0x238, TerrainCover.Paving),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

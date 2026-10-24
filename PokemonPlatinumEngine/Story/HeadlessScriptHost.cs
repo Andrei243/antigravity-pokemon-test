@@ -946,16 +946,18 @@ public sealed class HeadlessScriptHost : IScriptHost
             return true;
         }
         bool up = Map.IsUnderwater;
-        string? onto = up
-            ? FieldMovement.CanSurface(Map, x, y) ? Map.EmergeAt(x, y) : null
-            : FieldMovement.CanDive(Map, x, y, new Walker(TravelMode.Surfing, Map.HeightAt(x, y), Moves: FieldMoves.Dive)) ? Map.DiveAt(x, y) : null;
+        var onto = up
+            ? FieldMovement.CanSurface(Map, x, y) ? Map.EmergeTargetAt(x, y) : null
+            : FieldMovement.CanDive(Map, x, y, new Walker(TravelMode.Surfing, Map.HeightAt(x, y), Moves: FieldMoves.Dive)) ? Map.DiveTargetAt(x, y) : null;
         if (onto == null)
         {
             Log.Add("dive nowhere");
             return false;
         }
-        Log.Add($"dive {(up ? "up" : "down")} {onto} {x} {y}");
-        if (MapNamed?.Invoke(onto) is { } target)
+        // The same tile of the floor or the sea, or the one place the original names (plan 21 · H8, part b)
+        Log.Add($"dive {(up ? "up" : "down")} {onto.Map} {onto.X} {onto.Y}");
+        PlayerTile = (onto.X, onto.Y);
+        if (MapNamed?.Invoke(onto.Map) is { } target)
         {
             Map = target;
             Map.ForgetForced();

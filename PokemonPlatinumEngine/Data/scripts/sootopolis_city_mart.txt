@@ -1,0 +1,24 @@
+# Sootopolis City's Poké Mart (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_Mart/scripts.inc). The clerk sells
+# Emerald's stock for the town (marts.json's sootopolis). The man by the shelves won't go out while the titans are in
+# the city.
+
+
+script SootopolisClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome! What can I get for you?"
+  shop "sootopolis"
+  say "Thank you! Do come again."
+  end
+
+
+script FatMan
+  face self player
+  speaker "Man"
+  if not flag FLAG_LEGENDARIES_IN_SOOTOPOLIS goto Calm
+  say "What... what's going on out there? I'd love to know, but it's too frightening to go and look."
+  end
+label Calm
+  say "A PP Up is a wonderful thing. It raises how many times a Pokémon can use one of its moves!"
+  end

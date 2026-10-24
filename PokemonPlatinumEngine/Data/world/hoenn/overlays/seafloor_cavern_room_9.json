@@ -1,0 +1,19 @@
+{
+  // The Seafloor Cavern's deepest hall (plan 21 · H8, part b): Kyogre asleep in its pool, and TM26 on a ledge. At the
+  // first step onto the hall's trigger before the pool (VAR_SEAFLOOR_CAVERN_STATE 0) Archie stops the player, battles
+  // and wakes Kyogre with the Red Orb; it flees, the storm begins outside, and Maxie comes in after him
+  // (seafloor_cavern_room_9.txt). The sleeping Kyogre is hidden by FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP once
+  // it has woken; the waking one, Archie, Maxie and his two grunts by flags a new game sets (HoennChapterTen)
+  "area": "seafloor_cavern_room_9",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "ArchieWakesKyogre" } ],
+  "people": {
+    "seafloor_cavern_kyogre_sleeping": { "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "script": "SleepingKyogre", "still": true },
+    "seafloor_cavern_kyogre": { "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "still": true },
+    "seafloor_cavern_archie": { "name": "Archie", "npcType": "archie", "still": true, "dialog": [ "Archie: Kyogre... where have you gone?" ] },
+    "seafloor_cavern_maxie": { "name": "Maxie", "npcType": "maxie", "still": true, "dialog": [ "Maxie: Outside, all of you. Now!" ] },
+    "seafloor_cavern_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: The boss says we're getting out of here!" ] },
+    "seafloor_cavern_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Magma Grunt: Is the sea going to swallow the land?" ] }
+  }
+}

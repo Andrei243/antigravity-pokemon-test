@@ -5,6 +5,9 @@
   // here is a room of link games and stays shut
   "area": "mossdeep_city",
   "bgmTrack": "hoenn/rustboro",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
   "trees": "Round",
   "architecture": "Starward",
   "locked": [ 9 ],

@@ -384,3 +384,17 @@ script HoennKoji
   speaker "Koji"
   say "Koji here! I punched a hundred waves today. The sea didn't flinch, but I'm getting stronger. Hah!"
   end
+
+
+# Isaiah, the triathlete of Route 128
+script HoennIsaiah
+  speaker "Isaiah"
+  say "Isaiah here! I lapped the reef on Route 128 a hundred and two times today. A new record!"
+  end
+
+
+# Katelyn, the triathlete of Route 128
+script HoennKatelyn
+  speaker "Katelyn"
+  say "It's Katelyn! I raced a Wailmer across Route 128 this morning. It won, but only just!"
+  end

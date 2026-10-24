@@ -1,0 +1,11 @@
+{
+  // The Seafloor Cavern, its first room (plan 21 · H8, part b): Strength's two boulders and a cracked rock before the way on, and
+  // two grunts on guard. Every grunt of the cavern goes with Archie once Kyogre has woken (FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS)
+  "area": "seafloor_cavern_room_1",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "people": {
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: We came all the way down here in a stolen submarine. Nobody follows us that far!", "dialogueAfter": "Team Aqua Grunt: You followed us that far..." } },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: The boss is close to it now, the Pokémon that will grow the sea. Don't you dare get in his way!", "dialogueAfter": "Team Aqua Grunt: There's no stopping you, is there?" } }
+  }
+}

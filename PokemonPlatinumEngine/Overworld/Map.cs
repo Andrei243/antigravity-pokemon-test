@@ -87,6 +87,16 @@ public sealed class MapArea
     public string? Dive { get; init; }
     public string? Emerge { get; init; }
 
+    /// <summary>
+    /// Where Dive goes down to, and coming up comes up onto, from anywhere in an area that has no floor or sea laid tile
+    /// for tile under or over it (plan 21 · H8, part b; Emerald's <c>setdivewarp</c> in a map's own script, kept by the
+    /// overlay's <c>diveTo</c> and <c>emergeTo</c>): Sootopolis City's harbour and the pool under its crater, the
+    /// Seafloor Cavern's mouth and the pool under the sea that leads into it. Null where the area has none, or where that
+    /// place isn't open yet. A tile-for-tile <see cref="Dive"/> or <see cref="Emerge"/> is asked first.
+    /// </summary>
+    public Data.MapSpot? DiveSpot { get; init; }
+    public Data.MapSpot? EmergeSpot { get; init; }
+
     /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public int LandRate { get; set; }
@@ -263,10 +273,29 @@ public class Map
     public bool IsUnderwater => Setting == MapSetting.Underwater;
 
     /// <summary>The map Dive goes down onto from this tile (plan 21 · H5), or null where the sea here has no floor that is open.</summary>
-    public string? DiveAt(int x, int y) => AreaAt(x, y) is { Open: true, Dive: { } below } ? below : null;
+    public string? DiveAt(int x, int y) => DiveTargetAt(x, y)?.Map;
 
     /// <summary>The map coming up from this tile of the sea floor comes up onto (plan 21 · H5), or null.</summary>
-    public string? EmergeAt(int x, int y) => AreaAt(x, y) is { Open: true, Emerge: { } above } ? above : null;
+    public string? EmergeAt(int x, int y) => EmergeTargetAt(x, y)?.Map;
+
+    /// <summary>
+    /// The map and tile Dive goes down onto from this tile: the same tile of the floor laid under it, or the area's one
+    /// place below where its floor is no map of the sea's (plan 21 · H8, part b: <see cref="MapArea.DiveSpot"/>), or null.
+    /// </summary>
+    public Data.MapSpot? DiveTargetAt(int x, int y) => AreaAt(x, y) switch
+    {
+        { Open: true, Dive: { } below } => new Data.MapSpot(below, x, y),
+        { Open: true, DiveSpot: { } spot } => spot,
+        _ => null
+    };
+
+    /// <summary>The map and tile coming up from this tile of the sea floor comes up onto, as <see cref="DiveTargetAt"/> goes down.</summary>
+    public Data.MapSpot? EmergeTargetAt(int x, int y) => AreaAt(x, y) switch
+    {
+        { Open: true, Emerge: { } above } => new Data.MapSpot(above, x, y),
+        { Open: true, EmergeSpot: { } spot } => spot,
+        _ => null
+    };
 
     /// <summary>The camera the field is looked at with here, as the area's header in the original names it.</summary>
     public FieldCamera Camera { get; set; } = FieldCamera.Default;
@@ -431,12 +460,21 @@ public class Map
     /// <summary>The weather of a small map as a whole (a map of the world has it by area: <see cref="WeatherAt"/>).</summary>
     public FieldWeather Weather { get; set; }
 
+    /// <summary>
+    /// The field's clock as the game last told it (seconds), which Emerald's abnormal weather turns by
+    /// (<see cref="Weathers.Alternating"/>; plan 21 · H8, part b). The game sets it every frame from the field's life
+    /// (<c>FieldLife.Now</c>), so the turns stop with the field under a battle or a menu; nought, the downpour.
+    /// </summary>
+    public double WeatherClock { get; set; }
+
     /// <summary>What falls or hangs in the air over a tile; in a room and a cave only fog hangs (the Lost Tower's top floor).</summary>
     public FieldWeather WeatherAt(int x, int y)
     {
         if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherAt(x, y, Core.GameClock.Today) : Weather;
+        // The titans' clash takes the downpour and the drought by turns (plan 21 · H8, part b)
+        weather = Weathers.Alternating(weather, WeatherClock);
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
         if (IsVoid) return FieldWeather.Clear;
         return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
@@ -685,6 +723,11 @@ public class Map
     /// <summary>Puts everyone where the story has them, on the map or off it, each back in their own place in the list.</summary>
     public void ApplyPresence(Func<string, bool> flagSet)
     {
+        // The stretches whose weather or song lasts only while a flag is set (plan 21 · H8, part b) follow the story too
+        foreach (var area in areas)
+            foreach (var zone in area.Zones)
+                if (zone.While != null) zone.Follow(flagSet);
+
         // Nothing to do is the usual case, and then the lists are left alone and nothing is made
         bool settled = true;
         foreach (var npc in NPCs)

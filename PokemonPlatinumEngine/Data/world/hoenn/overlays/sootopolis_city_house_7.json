@@ -1,0 +1,10 @@
+{
+  // A house in Sootopolis City (plan 21 · H8, part b): an old man who tells how the city was made, and a woman who
+  // wonders what the Cave of Origin keeps
+  "area": "sootopolis_city_house_7",
+  "bgmTrack": "hoenn/sootopolis",
+  "people": {
+    "old_man": { "name": "Old Man", "dialog": [ "Sootopolis was built in the crater of a volcano that erupted long, long ago. The sea filled the crater, and people came after." ] },
+    "pokefan_f": { "name": "Woman", "dialog": [ "The Cave of Origin was made to keep something, they say. Something that must never wake." ] }
+  }
+}

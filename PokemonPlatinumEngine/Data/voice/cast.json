@@ -352,6 +352,10 @@
       "note": "first spoken at phone.txt(259)",
       "provisional": true
     },
+    "isaiah": {
+      "note": "first spoken at phone.txt(391)",
+      "provisional": true
+    },
     "jackson": {
       "note": "first spoken at phone.txt(308)",
       "provisional": true
@@ -377,12 +381,20 @@
       "note": "first spoken at pokemon_league_karen_room.txt(10)",
       "provisional": true
     },
+    "katelyn": {
+      "note": "first spoken at phone.txt(398)",
+      "provisional": true
+    },
     "keira": {
       "note": "first spoken at ContestHallLobby.txt(19)",
       "provisional": true
     },
     "kimono_girl": {
       "note": "first spoken at ecruteak_dance_theater.txt(16)",
+      "provisional": true
+    },
+    "kiri": {
+      "note": "first spoken at sootopolis_city.txt(159)",
       "provisional": true
     },
     "koga": {
@@ -834,6 +846,10 @@
       "note": "first spoken at SevenStarsRestaurant.txt(57)",
       "provisional": true
     },
+    "wallace": {
+      "note": "first spoken at cave_of_origin_b1f.txt(14)",
+      "provisional": true
+    },
     "wally": {},
     "wallys_aunt": {
       "note": "first spoken at verdanturf_town_wandas_house.txt(28)",
@@ -1016,6 +1032,7 @@
     "Hostess": "hostess",
     "Isaac": "isaac",
     "Isabel": "isabel",
+    "Isaiah": "isaiah",
     "Jackson": "jackson",
     "Jasmine": "jasmine",
     "Jeffrey": "jeffrey",
@@ -1023,8 +1040,10 @@
     "Joey": "joey",
     "Jupiter": "jupiter",
     "Karen": "karen",
+    "Katelyn": "katelyn",
     "Keira": "keira",
     "Kimono Girl": "kimono_girl",
+    "Kiri": "kiri",
     "Koga": "koga",
     "Koichi": "koichi",
     "Koji": "koji",
@@ -1159,6 +1178,7 @@
     "Volkner": "volkner",
     "Wade": "wade",
     "Waiter": "waiter",
+    "Wallace": "wallace",
     "Wally": "wally",
     "Wally's Aunt": "wallys_aunt",
     "Wally's Father": "wallys_father",

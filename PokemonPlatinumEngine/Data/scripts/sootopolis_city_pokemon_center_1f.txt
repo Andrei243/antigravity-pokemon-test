@@ -1,0 +1,70 @@
+# Sootopolis City's Pokémon Center (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_PokemonCenter_1F/scripts.inc).
+#
+# The gentleman and the woman talk of the titans while they are in the city (FLAG_LEGENDARIES_IN_SOOTOPOLIS, until
+# Rayquaza has come: VAR_SKY_PILLAR_STATE 2, part c). The woman by the window teaches Double-Edge to one Pokémon, once
+# (Emerald's SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor; FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE,
+# Models/MoveTutors.cs's row of Kanto's one-move tutors, which serves every region's).
+
+
+script Gentleman
+  face self player
+  speaker "Gentleman"
+  if not flag FLAG_LEGENDARIES_IN_SOOTOPOLIS goto Calm
+  say "Everyone in town has shut themselves indoors. Even I'd rather not set foot outside just now."
+  end
+label Calm
+  say "They say Wallace is the strongest trainer in all of Hoenn. And this town's Gym is led by the man who taught him!"
+  say "But the Elite Four are said to be stronger still. How strong can they be?"
+  end
+
+
+script Woman
+  face self player
+  speaker "Woman"
+  if not flag FLAG_LEGENDARIES_IN_SOOTOPOLIS goto Calm
+  say "Aren't Pokémon our friends? Why are they raging like this?"
+  end
+label Calm
+  say "Whatever happens, wherever I am, I'll always be friends with Pokémon. Being with them is the best fun there is!"
+  end
+
+
+script DoubleEdgeTutor
+  face self player
+  speaker "Woman"
+  if flag FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE goto Taught
+  ask "A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon?"
+  if no goto Later
+  say "Which one shall learn it?"
+  choosepokemon
+  tutor once "Double-Edge"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE
+label Taught
+  say "Double-Edge hurts the one who uses it too. Save it for when it matters most."
+  end
+label Later
+  say "Another time, then. I'll be here."
+  end
+label Egg
+  say "An Egg can't learn anything until it hatches."
+  end
+label Cannot
+  say "I'm afraid that one can't learn it."
+  end
+label Knows
+  say "That one knows it already!"
+  end
+label Hm
+  say "That move can't be forgotten here. Another time, perhaps."
+  end

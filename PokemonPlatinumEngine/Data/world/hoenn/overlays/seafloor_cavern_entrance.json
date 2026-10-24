@@ -1,0 +1,13 @@
+{
+  // The Seafloor Cavern's mouth (plan 21 · H8, part b): a pool where the player comes up from the sea floor, its dark
+  // water diving back down (Emerald's setdivewarp, diveTo), and a grunt on guard before the way in until Steven has
+  // given Dive (FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT, mossdeep_city_stevens_house.txt). Emerald plays Mt.
+  // Chimney's song all through the cavern
+  "area": "seafloor_cavern_entrance",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "diveTo": { "area": "underwater_seafloor_cavern", "x": 6, "z": 5, "facing": "Down" },
+  "people": {
+    "seafloor_cavern_entrance_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "script": "Grunt", "still": true }
+  }
+}

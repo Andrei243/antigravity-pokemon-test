@@ -1,0 +1,40 @@
+{
+  "key": "cave_of_origin_entrance",
+  "index": 275,
+  "name": "Cave Of Origin",
+  "matrix": 224,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CAVE_OF_ORIGIN",
+  "nightMusic": "MUS_CAVE_OF_ORIGIN",
+  "encounters": "cave_of_origin_entrance",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 30 },
+    { "species": "Zubat", "level": 31 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Zubat", "level": 33 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Zubat", "level": 29 },
+    { "species": "Zubat", "level": 34 },
+    { "species": "Zubat", "level": 35 },
+    { "species": "Golbat", "level": 34 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 36 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 9, "z": 20, "to": "sootopolis_city", "toWarp": 3 },
+    { "x": 9, "z": 5, "to": "cave_of_origin_1f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

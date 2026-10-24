@@ -1,0 +1,65 @@
+# A house in Sootopolis City (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.inc).
+#
+# Two brothers, each sure his favourite is the bigger: the elder measures any Seedot he is shown, the younger any
+# Lotad, each against a record of his own (Emerald's VAR_SEEDOT_SIZE_RECORD and VAR_LOTAD_SIZE_RECORD; nothing until one
+# has been measured, so the first one shown is the biggest yet). A bigger one than the record earns an Elixir and
+# becomes the record (Models/SizeContest.cs; sizes in centimetres, docs/mechanics/rulings.md). The bag always has room.
+
+
+script SeedotBrother
+  face self player
+  speaker "Hiker"
+  say "Do you know Seedot? You hardly ever see one in Sootopolis. I love big Seedot. The bigger the better!"
+  say "My little brother says Lotad are bigger. Silly! Seedot are bigger, everyone knows that."
+  if not has "Seedot" goto None
+  say "Huh? You have a Seedot with you? P-please, show me!"
+  choosepokemon
+  if result == 255 goto None
+  team size "Seedot" VAR_SEEDOT_SIZE_RECORD
+  if result == 3 goto Other
+  if result != 2 goto Smaller
+  say "{size}! Wow, that's a big one! It might even beat the Lotad my brother saw!"
+  say "Thanks for showing me. Here's my thanks!"
+  give "Elixir"
+  team size keep VAR_SEEDOT_SIZE_RECORD
+  say "The biggest Seedot ever! Bigger than any Lotad!"
+  end
+label Smaller
+  say "{size}, is it? Hmm... I've seen a bigger Seedot than that."
+  end
+label Other
+  say "Well, this is something... But it isn't a Seedot!"
+  end
+label None
+  say "No big Seedot? That's a shame. If you find a big one, come and show me."
+  end
+
+
+script LotadBrother
+  face self player
+  speaker "Fisherman"
+  say "Do you know Lotad? They're rare in Sootopolis. I love big Lotad, I mean really love them!"
+  say "My big brother says Seedot are bigger. Wrong! Everybody knows Lotad are way bigger."
+  if not has "Lotad" goto None
+  say "Huh? Have you got a Lotad? P-please show me!"
+  choosepokemon
+  if result == 255 goto None
+  team size "Lotad" VAR_LOTAD_SIZE_RECORD
+  if result == 3 goto Other
+  if result != 2 goto Smaller
+  say "{size}! Wow, that is big! It might be bigger than the huge Seedot my brother saw!"
+  say "Thanks for showing me! Here's my thanks!"
+  give "Elixir"
+  team size keep VAR_LOTAD_SIZE_RECORD
+  say "The biggest Lotad ever! Bigger than any Seedot!"
+  end
+label Smaller
+  say "{size}? Hmm... I've seen a bigger Lotad than this one."
+  end
+label Other
+  say "Well, isn't that something! But it's not a Lotad!"
+  end
+label None
+  say "No big Lotad? How disappointing... If you get a big one, come and show me!"
+  end

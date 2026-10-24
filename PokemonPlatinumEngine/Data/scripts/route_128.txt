@@ -1,0 +1,117 @@
+# Route 128 (plan 21 · H8, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route128/scripts.inc).
+#
+# The Seafloor Cavern's last scene (seafloor_cavern_room_9.txt) sends the player up onto the islet in the middle of
+# the route with Archie and Maxie beside them and VAR_ROUTE128_STATE at 1, and the route's own arrival plays the rest:
+# Archie looks round at the storm he has made, Maxie tells him what it means and the two leave to stop it; Steven flies
+# in, sees the downpour spreading from over Sootopolis and flies on there (VAR_ROUTE128_STATE 2). The triathletes Isaiah
+# and Katelyn swap numbers for the PokéNav once beaten.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TEN call HoennChapterTen
+  if var VAR_ROUTE128_STATE != 1 end
+  scene "Kyogre's storm over Route 128"
+  wait 0.6
+  face route128_archie left
+  wait 0.4
+  face route128_archie right
+  wait 0.4
+  face route128_archie down
+  speaker "Archie"
+  say "What... what has happened? What is this wretched sight?"
+  say "Did I... Have I made some terrible mistake?"
+  walk route128_archie back up 1
+  say "I only... I only wanted..."
+  walk route128_maxie right 1
+  face route128_archie up
+  speaker "Maxie"
+  say "Do you see it now, Archie? Do you see what your dream has turned into?"
+  say "We have no time. Something must be done before this is past anyone's power to stop!"
+  face route128_maxie down
+  face player up
+  say "{player}, say nothing. I know I have no right to judge Archie."
+  say "And I doubt that people like us can do anything against power like this."
+  say "But we can't stand here and watch. Putting an end to it is our task, Archie's and mine."
+  face route128_maxie left
+  face player left
+  wait 0.4
+  say "Those ancient Pokémon... Their power is beyond anything we imagined. They have thrown all of nature off its balance..."
+  # (the islet runs west to the reef's edge: Archie goes first, Maxie after him)
+  walk route128_archie left 3
+  walk route128_maxie left 3
+  hide route128_maxie
+  hide route128_archie
+  setflag FLAG_HIDE_ROUTE_128_MAXIE
+  setflag FLAG_HIDE_ROUTE_128_ARCHIE
+  wait 0.4
+  clearflag FLAG_HIDE_ROUTE_128_STEVEN
+  show route128_steven
+  cry "Skarmory"
+  wait 0.6
+  face player right
+  speaker "Steven"
+  say "{player}! What is going on here?"
+  face player up
+  say "This is terrible... First a heat wave, and now this downpour."
+  say "If it doesn't stop, it will drown all of Hoenn. No, the whole world."
+  say "These storm clouds are spreading from over Sootopolis City. What on earth is happening there?"
+  say "There's no sense standing here wondering. Sootopolis may have the answer."
+  face route128_steven down
+  face player right
+  say "{player}... I don't know what you mean to do, but don't do anything reckless."
+  say "Right. I'm going to Sootopolis."
+  cry "Skarmory"
+  hide route128_steven
+  setflag FLAG_HIDE_ROUTE_128_STEVEN
+  setvar VAR_ROUTE128_STATE 2
+  endscene
+  end
+
+
+# Isaiah, the triathlete who laps the reef
+script Isaiah
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ISAIAH goto Known
+label Ask
+  speaker "Isaiah"
+  say "You swim like you battle: fast and hard. Let's keep pushing each other!"
+  ask "Register Isaiah in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_isaiah
+  say "Great! I'll call you from the reef."
+  end
+label Refused
+  say "Fair enough. Another hundred laps for me, then."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Katelyn, the triathlete who races the sea
+script Katelyn
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_KATELYN goto Known
+label Ask
+  speaker "Katelyn"
+  say "You beat me fair and square. I want a rematch once I've trained some more!"
+  ask "Register Katelyn in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_katelyn
+  say "I'll call you the moment I'm faster!"
+  end
+label Refused
+  say "Then I'll just have to find you out here again."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

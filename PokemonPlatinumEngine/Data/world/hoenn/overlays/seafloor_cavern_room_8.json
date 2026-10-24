@@ -1,0 +1,6 @@
+{
+  // The Seafloor Cavern, its eighth room (plan 21 · H8, part b): twelve of Strength's boulders packed before the way down to Kyogre's hall
+  "area": "seafloor_cavern_room_8",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round"
+}

@@ -572,4 +572,123 @@ public class HoennTests
         // Nobody is on the red arrows but Sylvia and the statues beside her
         Assert.Contains(MossdeepTiles.Turns(MossdeepTiles.Colour.Red, (x, y) => gym.NPCs.At(x, y)), t => t.Who.TrainerData?.Id == "hoenn_sylvia");
     }
+
+    [Fact]
+    public void TheSeafloorCavernAndSootopolisCityAreComeToByDive()
+    {
+        // Plan 21 · H8, part b: Route 128 and its floor, the cavern and its pool, Sootopolis and the pool under its
+        // harbour, the Cave of Origin
+        foreach (string key in new[] { "route_128", "underwater_route_128", "underwater_seafloor_cavern", "seafloor_cavern_entrance",
+                     "seafloor_cavern_room_9", "sootopolis_city", "underwater_sootopolis_city", "sootopolis_city_pokemon_center_1f",
+                     "sootopolis_city_mart", "cave_of_origin_entrance", "cave_of_origin_1f", "cave_of_origin_b1f" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+
+        // The passage of Route 128's floor leads into the cavern's pool, which comes up in the cavern's mouth at Emerald's
+        // setdivewarp, and the mouth's dark water goes back down to the pool
+        var floor = BuiltMaps.Value["HoennUnderwater"];
+        Assert.Contains(floor.Warps, w => w.TargetMap == "Underwater_SeafloorCavern" && !w.Shut);
+        var pool = BuiltMaps.Value["Underwater_SeafloorCavern"];
+        Assert.True(pool.IsUnderwater);
+        var up = pool.EmergeTargetAt(6, 5);
+        Assert.Equal(new MapSpot("SeafloorCavern_Entrance", 10, 17, Direction.Up), up);
+        var mouth = BuiltMaps.Value["SeafloorCavern_Entrance"];
+        Assert.True(FieldMovement.SurfacesOnto(mouth, 10, 17), "the cavern's mouth has no water to come up into");
+        Assert.True(FieldMovement.CanSurface(pool, 6, 5));
+        Assert.Contains(mouth.Warps, w => w.TargetMap == "SeafloorCavern_Room1");
+
+        // Sootopolis: its harbour's dark water dives to the pool under it, and the pool comes up in the harbour
+        var soot = BuiltMaps.Value["SootopolisCity"];
+        var dark = Enumerable.Range(0, soot.Height).SelectMany(y => Enumerable.Range(0, soot.Width).Select(x => (x, y)))
+            .Where(t => soot.BehaviourAt(t.x, t.y) == TileBehavior.DiveWater).ToList();
+        Assert.NotEmpty(dark);
+        foreach (var (x, y) in dark)
+            Assert.Equal(new MapSpot("Underwater_SootopolisCity", 9, 6, Direction.Up), soot.DiveTargetAt(x, y));
+        var under = BuiltMaps.Value["Underwater_SootopolisCity"];
+        Assert.False(under.IsSolid(9, 6), "the pool under Sootopolis is rock where Dive comes down");
+        Assert.Equal(new MapSpot("SootopolisCity", 29, 53, Direction.Up), under.EmergeTargetAt(9, 6));
+        Assert.True(FieldMovement.SurfacesOnto(soot, 29, 53), "Sootopolis's harbour has no water where the pool comes up");
+        // The pool is joined to Route 126's floor by the passage under the crater's wall
+        Assert.Contains(floor.Warps, w => w.TargetMap == "Underwater_SootopolisCity" && !w.Shut);
+        Assert.Contains(under.Warps, w => w.TargetMap == "HoennUnderwater");
+
+        // The city's look and song, its Pokémon Center's nurse, and its Gym and Mystery Events house shut
+        Assert.Equal(Architecture.Crater, soot.ArchitectureAt(43, 30));
+        Assert.Equal("hoenn/sootopolis", soot.BgmTrackAt(43, 30));
+        Assert.Single(BuiltMaps.Value["SootopolisCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
+        Assert.DoesNotContain(soot.Warps, w => w.TargetMap.StartsWith("SootopolisCity_Gym", StringComparison.Ordinal) && !w.Shut);
+        Assert.Contains(soot.Warps, w => w.TargetMap == "CaveOfOrigin_Entrance");
+        Assert.Equal(TerrainCover.Paving, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Sootopolis", 0x2D9, MapImporter.Gba.GbaGame.Emerald));
+        foreach (string song in new[] { "sootopolis", "abnormal_weather" })
+            Assert.True(File.Exists(Path.Combine(AppContext.BaseDirectory, "Data", "music", "hoenn", song + ".mml")), song);
+        Assert.Equal(["Ultra Ball", "Hyper Potion", "Max Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense"],
+            MartDatabase.Specialties["sootopolis"]);
+    }
+
+    /// <summary>The weather and songs a map's zones hold by the story (Map.ApplyPresence does it in the game), without moving its people.</summary>
+    private static void Follow(Map map, Func<string, bool> has)
+    {
+        foreach (var area in map.Areas)
+            foreach (var zone in area.Zones)
+                zone.Follow(has);
+    }
+
+    [Fact]
+    public void TheTitansWeatherTakesTurnsOverTheEasternSeaWhileTheStoryKeepsIt()
+    {
+        // Emerald's abnormal weather: the downpour first, then the drought, ten seconds of the field's clock each
+        Assert.Equal(FieldWeather.HeavyRain, Weathers.Alternating(FieldWeather.Abnormal, 0));
+        Assert.Equal(FieldWeather.Drought, Weathers.Alternating(FieldWeather.Abnormal, Weathers.AbnormalTurn + 0.5));
+        Assert.Equal(FieldWeather.HeavyRain, Weathers.Alternating(FieldWeather.Abnormal, 2 * Weathers.AbnormalTurn + 0.5));
+        Assert.Equal(FieldWeather.Rain, Weathers.Alternating(FieldWeather.Rain, Weathers.AbnormalTurn + 0.5));
+        // A drought opens a battle in the sun, and lights the field harder and warmer
+        Assert.Equal(PokemonPlatinumEngine.Battle.Sim.BattleWeather.Sun, Weathers.InBattle(FieldWeather.Drought));
+        Assert.False(Weathers.IsRain(FieldWeather.Drought));
+        var day = PokemonPlatinumEngine.Graphics.ArtLook.FieldRigFor(TimeOfDay.Day);
+        var dry = PokemonPlatinumEngine.Graphics.ArtLook.Weathered(day, FieldWeather.Drought);
+        Assert.True(dry.Light.SunColor.X > day.Light.SunColor.X, "a drought's sun should be stronger");
+
+        // Over Route 128 the weather is the area's own until the story takes it over, and its own again after
+        var sea = Overworld;
+        var (x, y) = (700, 245);
+        Assert.Equal("route_128", sea.AreaAt(x, y)?.Key);
+        try
+        {
+            Follow(sea, _ => false);
+            Assert.Equal(FieldWeather.Clear, sea.WeatherAt(x, y));
+            Assert.Equal("hoenn/route120", sea.BgmTrackAt(x, y));
+            Follow(sea, flag => flag == "FLAG_SYS_WEATHER_CTRL");
+            sea.WeatherClock = 0;
+            Assert.Equal(FieldWeather.HeavyRain, sea.WeatherAt(x, y));
+            sea.WeatherClock = Weathers.AbnormalTurn + 1;
+            Assert.Equal(FieldWeather.Drought, sea.WeatherAt(x, y));
+            Assert.Equal("hoenn/abnormal_weather", sea.BgmTrackAt(x, y));
+            // Mossdeep City has the weather and keeps its own song
+            Assert.Equal(FieldWeather.Drought, sea.WeatherAt(668, 117));
+            Assert.Equal("hoenn/rustboro", sea.BgmTrackAt(668, 117));
+            // Away from the eastern sea nothing changes
+            Assert.Equal(FieldWeather.Clear, sea.WeatherAt(125, 291));
+        }
+        finally
+        {
+            Follow(sea, _ => false);
+            sea.WeatherClock = 0;
+        }
+
+        // Sootopolis: the downpour from the titans' coming, the two by turns once their clash is seen
+        var soot = BuiltMaps.Value["SootopolisCity"];
+        try
+        {
+            Follow(soot, flag => flag == "FLAG_SYS_WEATHER_CTRL");
+            soot.WeatherClock = Weathers.AbnormalTurn + 1;
+            Assert.Equal(FieldWeather.HeavyRain, soot.WeatherAt(43, 30));
+            Follow(soot, flag => flag is "FLAG_SYS_WEATHER_CTRL" or "FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN");
+            Assert.Equal(FieldWeather.Drought, soot.WeatherAt(43, 30));
+            Assert.Equal("hoenn/abnormal_weather", soot.BgmTrackAt(43, 30));
+        }
+        finally
+        {
+            Follow(soot, _ => false);
+            soot.WeatherClock = 0;
+        }
+    }
 }

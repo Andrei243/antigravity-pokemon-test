@@ -1027,5 +1027,82 @@ partial class Harness
         TalkTo("Route124_DivingTreasureHuntersHouse", "man_5", -1, 0);
         ReadTo("diving treasure hunter"); Frames(10); Shot("hs226_the_treasure_hunter");
         ReadTo(null);
+
+        // ---- Plan 21 · H8, part b: the Seafloor Cavern, Kyogre, Sootopolis and Wallace (hs230 to hs24x)
+        void Titans(string what) =>
+            Console.WriteLine($"  {what}: seafloor {story.Var("VAR_SEAFLOOR_CAVERN_STATE")}, route 128 {story.Var("VAR_ROUTE128_STATE")}, "
+                + $"sootopolis {story.Var("VAR_SOOTOPOLIS_CITY_STATE")}, kyogre escaped {story.Has("FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN")}, "
+                + $"weather taken {story.Has("FLAG_SYS_WEATHER_CTRL")}, clash seen {story.Has("FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN")}, "
+                + $"steven guides {story.Has("FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN")}, wallace to sky pillar {story.Has("FLAG_WALLACE_GOES_TO_SKY_PILLAR")}, "
+                + $"weather here {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}, song {game.Map.BgmTrackAt(game.Player.GridX, game.Player.GridY)}, "
+                + $"on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), {game.Player.Mode}");
+
+        // The cavern's mouth, come up into from the pool under the sea (Steven's gift hid its guard)
+        story.Set("FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT");
+        At("Underwater_SeafloorCavern", 6, 5, Direction.Up);
+        game.Player.SetMode(TravelMode.Diving);
+        game.ArriveOnMap(); Frames(20); Shot("hs230_the_pool_before_the_cavern");
+        At("SeafloorCavern_Entrance", 10, 17, Direction.Up);
+        game.Player.SetMode(TravelMode.Surfing);
+        game.ArriveOnMap(); Frames(20); Shot("hs231_the_cavern_mouth");
+        Titans("in the Seafloor Cavern");
+
+        // Shelly among the boulders
+        TalkTo("SeafloorCavern_Room3", "aqua_member_f", -1, 0);
+        ReadTo("keep anybody who came this far busy"); Frames(10); Shot("hs232_shelly");
+        IntoBattle("Shelly's battle");
+        ToMainMenu(game.Battle); Win();
+        ReadTo(null);
+
+        // Kyogre's hall: Archie, his battle, the Red Orb, Kyogre waking and gone, Maxie
+        ComeThrough("SeafloorCavern_Room9", 17, 44, Direction.Up); Frames(20); Shot("hs233_kyogre_asleep");
+        StepOnto("SeafloorCavern_Room9", 17, 42, Direction.Up);
+        ReadTo("So it was you all along"); Frames(10); Shot("hs234_archie");
+        IntoBattle("Archie's battle");
+        ToMainMenu(game.Battle); Shot("hs235_archies_battle");
+        Win();
+        ReadTo("shine all by itself"); Frames(10); Shot("hs236_the_red_orb");
+        Box().Advance(); Frames(90); Shot("hs237_kyogre_wakes");
+        ReadTo("Where has Kyogre gone"); Frames(10); Shot("hs238_kyogre_gone");
+        ReadTo("What have you done, Archie"); Frames(10); Shot("hs239_maxie_comes");
+        Titans("Kyogre woken");
+
+        // Route 128's islet under the downpour: Archie and Maxie leave, Steven flies in and on
+        ReadTo("Did I... Have I made some terrible mistake"); Frames(10); Shot("hs23a_route128_the_storm");
+        ReadTo("Their power is beyond anything"); Frames(10); Shot("hs23b_maxie_and_archie");
+        ReadTo("What is going on here"); Frames(10); Shot("hs23c_steven_flies_in");
+        ReadTo(null); Frames(20); Shot("hs23d_route128_after");
+        Titans("Route 128");
+
+        // Sootopolis City, come up into its harbour: the titans clash, the weather breaks and turns
+        At("SootopolisCity", 29, 53, Direction.Up);
+        game.Player.SetMode(TravelMode.Surfing);
+        game.ArriveOnMap();
+        Frames(150); Shot("hs240_sootopolis_the_titans");
+        Frames(150); Shot("hs241_the_clash");
+        ReadTo(null); Frames(20); Shot("hs242_after_the_clash");
+        Titans("the clash seen");
+        Until(() => game.Map.WeatherAt(game.Player.GridX, game.Player.GridY) == FieldWeather.HeavyRain, "the downpour", 1200);
+        Frames(30); Shot("hs243_the_downpour");
+        Until(() => game.Map.WeatherAt(game.Player.GridX, game.Player.GridY) == FieldWeather.Drought, "the drought", 1200);
+        Frames(30); Shot("hs244_the_drought");
+        ShotCrop("hs244_the_drought_native", 640, 300, 640, 360, 2);
+
+        // Steven leads the player to the Cave of Origin; Wallace below
+        TalkTo("SootopolisCity", "sootopolis_steven");
+        ReadTo("ready to be part of this"); Frames(10); Shot("hs245_steven_in_sootopolis");
+        ReadTo("you'll find a man named Wallace"); Frames(10); Shot("hs246_at_the_cave");
+        ReadTo(null); Frames(20); Shot("hs247_the_cave_of_origin");
+        ComeThrough("CaveOfOrigin_B1F", 9, 15, Direction.Up); Frames(20);
+        TalkTo("CaveOfOrigin_B1F", "cave_of_origin_wallace");
+        ReadTo("My name is Wallace"); Frames(10); Shot("hs248_wallace");
+        Until(() => engine.Choice.IsOpen, "Wallace's question"); Frames(20); Shot("hs249_where_is_rayquaza");
+        ReadTo(null); Frames(20); Shot("hs24a_wallace_gone");
+        Titans("Wallace gone to Sky Pillar");
+
+        // Back in the city: the old man steps aside for a player from the south, Steven by the cave's mouth
+        ComeThrough("SootopolisCity", 31, 20, Direction.Up); Frames(10);
+        TalkTo("SootopolisCity", "sootopolis_expert");
+        ReadTo(null); Frames(20); Shot("hs24b_the_way_in_open");
     }
 }

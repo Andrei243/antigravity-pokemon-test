@@ -1,0 +1,21 @@
+# The pool under the sea before the Seafloor Cavern (plan 21 · H8, part b). docs/scripts.md describes the language;
+# the lines are our own, on Emerald's beats (data/maps/Underwater_SeafloorCavern/scripts.inc).
+#
+# Team Aqua moored Captain Stern's submarine here and went ashore in the cavern. Its hull is read on four tiles until
+# Kyogre has gone (FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN), when Emerald walls the berth up: from then on the tiles say
+# nothing (FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE). Coming here marks the cavern on the map.
+
+
+script OnEnter
+  setflag FLAG_LANDMARK_SEAFLOOR_CAVERN
+  if flag FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN setflag FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE
+  end
+
+
+# The stolen submarine's hull
+script Submarine
+  if flag FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE end
+  speaker none
+  text "\"Submarine Explorer 1\" is painted on its side."
+  text "It's the submarine Team Aqua took from Slateport! They must have come ashore near here."
+  end
