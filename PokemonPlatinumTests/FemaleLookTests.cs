@@ -34,6 +34,30 @@ public class FemaleLookTests
     }
 
     [Theory]
+    [InlineData(152, 251, 22)] // Johto: Meganium to Donphan (plan 09 · L7)
+    [InlineData(252, 386, 18)] // Hoenn: Torchic to Relicanth (plan 09 · L7)
+    public void EveryFlaggedSpeciesOfJohtoAndHoennHasAFemaleLook(int first, int last, int count)
+    {
+        var flagged = PokemonDatabase.GetAll().Where(s => s.GenderDifferences && s.DexNumber >= first && s.DexNumber <= last).Select(s => s.Name).ToList();
+        Assert.Equal(count, flagged.Count);
+        foreach (var name in flagged)
+        {
+            // Every one of them is hand-built since plan 03's Johto and Hoenn batches
+            Assert.True(PokemonModels.HasModel(name), $"{name} has no hand-built model");
+            Assert.True(PokemonLook.HasFemale(name), $"{name}'s females look different, and it has no female look");
+        }
+    }
+
+    [Fact]
+    public void ATorchicsSpotIsTheMalesAlone()
+    {
+        // The male has a black spot low on his back (plan 09 · L7); the female hasn't: her colours have no near-black
+        static int Dark(PokeModel m) => m.Mesh.Colors.Count(c => c.R < 70 && c.G < 70 && c.B < 70);
+        Assert.True(Dark(PokemonModels.Build("Torchic")) > 0);
+        Assert.True(Dark(PokemonModels.Build("Torchic+f")) < Dark(PokemonModels.Build("Torchic")));
+    }
+
+    [Theory]
     [MemberData(nameof(Females))]
     public void EveryFemaleLookIsOfAFlaggedHandBuiltSpecies(string species)
     {

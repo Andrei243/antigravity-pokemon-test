@@ -465,7 +465,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Relicanth and Luvdisc
 
     /// <summary>Relicanth: an ancient fish, brown with darker patches like rock, a grumpy mouth, a red spot on its side and stiff lobed fins.</summary>
-    private static PokeBuilder Relicanth()
+    /// <param name="female">A female (plan 09 · L7): smaller dark patches.</param>
+    private static PokeBuilder Relicanth(bool female = false)
     {
         var b = new PokeBuilder("Relicanth", 0.8f, BodyPlan.Fish, V(0, 0.28f, 0)) { Coat = Scales }.Hover();
         var brown = Rgb(170, 150, 120);
@@ -474,7 +475,8 @@ internal static partial class PokemonModels
         var r = V(0.1f, 0.13f, 0.22f);
         b.Ell(Body, c, r, brown);
         foreach (var (x, y, z) in new[] { (0.08f, 0.04f, -0.04f), (-0.08f, 0.0f, -0.08f), (0.06f, -0.04f, 0.06f), (-0.06f, 0.06f, 0.04f), (0f, 0.1f, -0.12f) })
-            b.PaintEll(Body, c + V(x, y, z), V(0.05f, 0.05f, 0.06f), dark);
+            // A female's dark patches are smaller (plan 09 · L7)
+            b.PaintEll(Body, c + V(x, y, z), V(0.05f, 0.05f, 0.06f) * (female ? 0.72f : 1f), dark);
         PokeBuilder.Both(s => b.Mark(Body, Out(c, r, default, V(s, 0.15f, 0.2f)), V(s, 0.15f, 0.2f), 0.012f, 0.012f, Rgb(214, 60, 60)));
         int tail = b.Tail(c + V(0, 0, -0.2f));
         foreach (var (y, z) in new[] { (0.1f, -0.38f), (-0.08f, -0.36f) })

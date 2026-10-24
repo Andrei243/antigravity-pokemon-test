@@ -30,7 +30,14 @@ public static class PokemonLook
         // Plan 09 · L6: Kanto
         "Venusaur", "Butterfree", "Rattata", "Raticate", "Pikachu", "Raichu", "Zubat", "Golbat", "Gloom", "Vileplume",
         "Kadabra", "Alakazam", "Doduo", "Dodrio", "Hypno", "Rhyhorn", "Rhydon", "Goldeen", "Seaking", "Scyther",
-        "Magikarp", "Gyarados", "Eevee"
+        "Magikarp", "Gyarados", "Eevee",
+        // Plan 09 · L7: Johto
+        "Meganium", "Ledyba", "Ledian", "Xatu", "Sudowoodo", "Politoed", "Aipom", "Wooper", "Quagsire", "Murkrow",
+        "Wobbuffet", "Girafarig", "Gligar", "Steelix", "Scizor", "Heracross", "Sneasel", "Ursaring", "Piloswine",
+        "Octillery", "Houndoom", "Donphan",
+        // Plan 09 · L7: Hoenn
+        "Torchic", "Combusken", "Blaziken", "Beautifly", "Dustox", "Ludicolo", "Nuzleaf", "Shiftry", "Meditite",
+        "Medicham", "Roselia", "Gulpin", "Swalot", "Numel", "Camerupt", "Cacturne", "Milotic", "Relicanth"
     };
 
     private static readonly HashSet<string> FemaleSet = new(Females, StringComparer.OrdinalIgnoreCase);

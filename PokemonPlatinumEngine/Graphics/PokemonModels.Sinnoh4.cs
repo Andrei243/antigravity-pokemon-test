@@ -781,7 +781,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Scizor()
+    /// <param name="female">A female (plan 09 · L7): a fuller abdomen.</param>
+    private static PokeBuilder Scizor(bool female = false)
     {
         var b = new PokeBuilder("Scizor", 0.92f, BodyPlan.Biped, V(0, 0.42f, 0)) { Coat = Metal };
         var red = Rgb(214, 40, 48);
@@ -797,7 +798,9 @@ internal static partial class PokemonModels
             Claws(b, leg, V(0.1f * s, 0.02f, 0.03f), V(0.02f, 0, 0), V(0, -0.2f, 1f), 0.03f, 0.012f);
         });
         // A dark segmented waist between a red abdomen and a red thorax
-        b.Ell(Body, V(0, 0.36f, -0.05f), V(0.07f, 0.075f, 0.09f), dark);
+        // A female's abdomen is fuller, swelling out behind her (plan 09 · L7)
+        if (female) b.Ell(Body, V(0, 0.35f, -0.075f), V(0.085f, 0.088f, 0.12f), dark);
+        else b.Ell(Body, V(0, 0.36f, -0.05f), V(0.07f, 0.075f, 0.09f), dark);
         b.Ell(Body, V(0, 0.43f, 0.0f), V(0.05f, 0.04f, 0.05f), dark);
         b.Ell(Body, V(0, 0.51f, 0.02f), V(0.085f, 0.09f, 0.075f), red);
         PokeBuilder.Both(s =>
@@ -1227,7 +1230,8 @@ internal static partial class PokemonModels
         }
     }
 
-    private static PokeBuilder Piloswine()
+    /// <param name="female">A female (plan 09 · L7): shorter tusks.</param>
+    private static PokeBuilder Piloswine(bool female = false)
     {
         var b = new PokeBuilder("Piloswine", 0.84f, BodyPlan.Quadruped, V(0, 0.3f, -0.02f)) { Coat = Fur };
         var brown = Rgb(176, 124, 86);
@@ -1257,7 +1261,9 @@ internal static partial class PokemonModels
         PokeBuilder.Both(s =>
         {
             b.Mark(head, V(0.02f * s, 0.12f, 0.25f), V(0, 0, 1f), 0.009f, 0.013f, Rgb(120, 70, 70));
-            b.Tube(head, Smooth(3, V(0.06f * s, 0.12f, 0.22f), V(0.12f * s, 0.06f, 0.26f), V(0.15f * s, 0.06f, 0.32f), V(0.14f * s, 0.11f, 0.34f)), 0.024f, 0.01f, White, Shell, 0f);
+            // A female's tusks are shorter (plan 09 · L7)
+            if (female) b.Tube(head, Smooth(3, V(0.06f * s, 0.12f, 0.22f), V(0.1f * s, 0.075f, 0.25f), V(0.12f * s, 0.075f, 0.29f)), 0.022f, 0.01f, White, Shell, 0f);
+            else b.Tube(head, Smooth(3, V(0.06f * s, 0.12f, 0.22f), V(0.12f * s, 0.06f, 0.26f), V(0.15f * s, 0.06f, 0.32f), V(0.14f * s, 0.11f, 0.34f)), 0.024f, 0.01f, White, Shell, 0f);
         });
         return b;
     }

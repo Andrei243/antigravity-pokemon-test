@@ -518,7 +518,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Gulpin line
 
     /// <summary>Gulpin: a green blob of a stomach, eyes shut, a yellow feather on its head and stubby hands.</summary>
-    private static PokeBuilder Gulpin()
+    /// <param name="female">A female (plan 09 · L7): a shorter feather on her head.</param>
+    private static PokeBuilder Gulpin(bool female = false)
     {
         var b = new PokeBuilder("Gulpin", 0.5f, BodyPlan.Floating, V(0, 0.1f, 0)) { Coat = Fur };
         var green = Rgb(160, 210, 140);
@@ -536,12 +537,14 @@ internal static partial class PokemonModels
         b.Mark(Body, Out(bc, br, default, V(0, 0.1f, 1f)), V(0, 0.1f, 1f), 0.02f, 0.006f, Rgb(80, 110, 70), MarkShape.Bar);
         int head = b.Head(V(0, 0.18f, 0));
         b.Ell(head, V(0, 0.18f, -0.02f), V(0.06f, 0.03f, 0.06f), green, blend: 0.02f);
-        Blade(b, head, V(0, 0.19f, -0.02f), V(0.04f, 0.3f, -0.1f), 0.04f, yellow, V(1f, 0, 0.3f), 0.25f);
+        // A female's feather is shorter (plan 09 · L7)
+        Blade(b, head, V(0, 0.19f, -0.02f), female ? V(0.03f, 0.28f, -0.08f) : V(0.04f, 0.3f, -0.1f), female ? 0.034f : 0.04f, yellow, V(1f, 0, 0.3f), 0.25f);
         return b;
     }
 
     /// <summary>Swalot: a great purple sack of a stomach, black diamonds on its sides, yellow whiskers and a broad mouth.</summary>
-    private static PokeBuilder Swalot()
+    /// <param name="female">A female (plan 09 · L7): shorter whiskers.</param>
+    private static PokeBuilder Swalot(bool female = false)
     {
         var b = new PokeBuilder("Swalot", 0.85f, BodyPlan.Floating, V(0, 0.22f, 0)) { Coat = Fur };
         var purple = Rgb(170, 130, 210);
@@ -561,7 +564,9 @@ internal static partial class PokemonModels
             b.Mark(Body, Out(bc, br, default, n), n, 0.04f, 0.05f, Rgb(50, 40, 60), MarkShape.Diamond);
             int arm = b.Arm(s, V(0.12f * s, 0.3f, 0.1f));
             b.Ell(arm, V(0.1f * s, 0.3f, 0.14f), V(0.035f, 0.03f, 0.03f), purple, blend: 0.015f);
-            b.Tube(Body, Smooth(3, V(0.06f * s, 0.32f, 0.14f), V(0.1f * s, 0.36f, 0.17f), V(0.13f * s, 0.32f, 0.2f), V(0.12f * s, 0.26f, 0.21f)), 0.01f, 0.008f, yellow, blend: 0f);
+            // A female's whiskers are shorter (plan 09 · L7)
+            if (female) b.Tube(Body, Smooth(3, V(0.06f * s, 0.32f, 0.14f), V(0.09f * s, 0.35f, 0.165f), V(0.11f * s, 0.325f, 0.19f)), 0.01f, 0.008f, yellow, blend: 0f);
+            else b.Tube(Body, Smooth(3, V(0.06f * s, 0.32f, 0.14f), V(0.1f * s, 0.36f, 0.17f), V(0.13f * s, 0.32f, 0.2f), V(0.12f * s, 0.26f, 0.21f)), 0.01f, 0.008f, yellow, blend: 0f);
             var at = Out(bc, br, default, V(0.25f * s, 0.65f, 0.6f));
             b.Eye(Body, at, V(0.25f * s, 0.65f, 0.6f), 0.014f, Rgb(40, 36, 50), closed: true);
         });
@@ -721,7 +726,8 @@ internal static partial class PokemonModels
     // ------------------------------------------------------------------ Numel line
 
     /// <summary>Numel: a yellow camel, a green hump with yellow spots, a cream belly and dull, heavy-lidded eyes.</summary>
-    private static PokeBuilder Numel()
+    /// <param name="female">A female (plan 09 · L7): a bigger hump.</param>
+    private static PokeBuilder Numel(bool female = false)
     {
         var b = new PokeBuilder("Numel", 0.6f, BodyPlan.Quadruped, V(0, 0.2f, 0)) { Coat = Fur };
         var yellow = Rgb(246, 222, 130);
@@ -732,12 +738,14 @@ internal static partial class PokemonModels
         var br = V(0.1f, 0.09f, 0.15f);
         b.Ell(Body, bc, br, yellow);
         b.PaintEll(Body, V(0, 0.12f, 0.02f), V(0.08f, 0.05f, 0.12f), cream);
-        b.Ell(Body, V(0, 0.25f, -0.05f), V(0.08f, 0.05f, 0.08f), yellow, blend: 0.03f);
-        b.PaintEll(Body, V(0, 0.3f, -0.05f), V(0.09f, 0.04f, 0.09f), green);
+        // A female's hump is bigger (plan 09 · L7)
+        var hump = female ? V(0.09f, 0.065f, 0.09f) : V(0.08f, 0.05f, 0.08f);
+        b.Ell(Body, V(0, 0.25f, -0.05f), hump, yellow, blend: 0.03f);
+        b.PaintEll(Body, V(0, female ? 0.315f : 0.3f, -0.05f), V(0.09f, 0.04f, 0.09f) * (female ? 1.12f : 1f), green);
         foreach (var (x, z) in new[] { (0.04f, -0.02f), (-0.03f, -0.08f), (0.0f, -0.12f) })
         {
             var n = V(x / 0.08f, 0.8f, (z + 0.05f) / 0.08f);
-            b.Mark(Body, Out(V(0, 0.25f, -0.05f), V(0.08f, 0.05f, 0.08f), default, n), n, 0.014f, 0.012f, Rgb(100, 160, 80), MarkShape.Diamond);
+            b.Mark(Body, Out(V(0, 0.25f, -0.05f), hump, default, n), n, 0.014f, 0.012f, Rgb(100, 160, 80), MarkShape.Diamond);
         }
         int tail = b.Tail(V(0, 0.2f, -0.15f));
         b.Limb(tail, V(0, 0.2f, -0.15f), V(0, 0.18f, -0.2f), 0.014f, 0.01f, yellow);
@@ -764,7 +772,7 @@ internal static partial class PokemonModels
     /// Camerupt and its Mega Evolution: a squat red camel carrying two grey volcanoes on its back, blue rings on its
     /// sides; the Mega's two cones merged into one great volcano, lava glowing at its top and rim.
     /// </summary>
-    private static PokeBuilder CameruptBuild(bool mega)
+    private static PokeBuilder CameruptBuild(bool mega, bool female = false)
     {
         var b = new PokeBuilder(mega ? "Camerupt-Mega" : "Camerupt", 0.9f, BodyPlan.Quadruped, V(0, 0.24f, 0)) { Coat = Fur };
         var red = Rgb(214, 108, 88);
@@ -800,9 +808,11 @@ internal static partial class PokemonModels
             foreach (float z in new[] { 0.06f, -0.1f })
             {
                 var vb = V(0, 0.32f, z);
-                b.Spike(Body, vb, vb + V(0, 0.16f, 0), 0.08f, gray, blend: 0.02f);
-                b.CutBox(Body, vb + V(0, 0.19f, 0), V(0.1f, 0.04f, 0.1f), Quaternion.Identity);
-                b.Mark(Body, vb + V(0, 0.15f, 0), V(0, 1f, 0), 0.02f, 0.02f, Rgb(70, 60, 60));
+                // A female's volcanoes are bigger (plan 09 · L7)
+                float k = female ? 1.2f : 1f;
+                b.Spike(Body, vb, vb + V(0, 0.16f, 0) * k, 0.08f * k, gray, blend: 0.02f);
+                b.CutBox(Body, vb + V(0, 0.19f, 0) * k, V(0.1f, 0.04f, 0.1f) * k, Quaternion.Identity);
+                b.Mark(Body, vb + V(0, 0.15f, 0) * k, V(0, 1f, 0), 0.02f * k, 0.02f * k, Rgb(70, 60, 60));
             }
         // A head with a grey muzzle, a tuft of fur and a dull look
         int head = b.Head(V(0, 0.24f, 0.18f));
@@ -819,7 +829,8 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Camerupt() => CameruptBuild(false);
+    /// <param name="female">A female (plan 09 · L7): bigger volcanoes on her back.</param>
+    private static PokeBuilder Camerupt(bool female = false) => CameruptBuild(false, female);
 
     // ------------------------------------------------------------------ Torkoal
 
@@ -1149,7 +1160,8 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Cacturne: a tall green cactus scarecrow, a dark pointed hat-head, yellow eyes in the shadow, diamonds and spikes down its body.</summary>
-    private static PokeBuilder Cacturne()
+    /// <param name="female">A female (plan 09 · L7): pale diamonds in a line down her front.</param>
+    private static PokeBuilder Cacturne(bool female = false)
     {
         var b = new PokeBuilder("Cacturne", 0.9f, BodyPlan.Biped, V(0, 0.4f, 0)) { Coat = Leaf };
         var green = Rgb(124, 180, 110);
@@ -1163,8 +1175,15 @@ internal static partial class PokemonModels
         var bc = V(0, 0.38f, 0);
         var br = V(0.085f, 0.15f, 0.07f);
         b.Ell(Body, bc, br, green);
-        foreach (var (x, y) in new[] { (0f, 0.42f), (0.03f, 0.34f), (-0.03f, 0.3f) })
-            b.Mark(Body, On(bc, br, x, y), Outward(bc, br, On(bc, br, x, y)), 0.02f, 0.02f, dark, MarkShape.Diamond);
+        if (female)
+        {
+            // A female's diamonds are pale and run in a line down her middle (plan 09 · L7)
+            foreach (float y in new[] { 0.44f, 0.38f, 0.32f, 0.26f })
+                b.Mark(Body, On(bc, br, 0f, y), Outward(bc, br, On(bc, br, 0f, y)), 0.018f, 0.022f, Rgb(196, 226, 150), MarkShape.Diamond);
+        }
+        else
+            foreach (var (x, y) in new[] { (0f, 0.42f), (0.03f, 0.34f), (-0.03f, 0.3f) })
+                b.Mark(Body, On(bc, br, x, y), Outward(bc, br, On(bc, br, x, y)), 0.02f, 0.02f, dark, MarkShape.Diamond);
         PokeBuilder.Both(s =>
         {
             for (int i = 0; i < 3; i++)
