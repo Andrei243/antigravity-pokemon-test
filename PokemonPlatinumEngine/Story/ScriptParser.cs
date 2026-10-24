@@ -141,6 +141,12 @@ public static class ScriptParser
                 return new Instruction { Op = Op.TrainerLine, Line = line, Option = after, Name = whose };
             }
             case "speaker":
+                // `speaker rowan "Prof. Rowan"`: a cast id before the name (plan 26 · V1), so the shown name stays free to change
+                if (!r.PeekQuoted && !r.PeekWord("none") && !r.PeekWord("self"))
+                {
+                    string voice = r.Identifier("a voice id");
+                    return new Instruction { Op = Op.Speaker, Line = line, VoiceId = voice, Name = r.Text("the speaker's name") };
+                }
                 if (r.PeekQuoted) return new Instruction { Op = Op.Speaker, Line = line, Name = r.Text("the speaker's name") };
                 return r.OneOf("none", "self") == "self"
                     ? new Instruction { Op = Op.Speaker, Line = line, Option = true }

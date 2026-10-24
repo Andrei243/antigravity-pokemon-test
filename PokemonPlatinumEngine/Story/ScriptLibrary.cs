@@ -259,6 +259,9 @@ public sealed class ScriptLibrary
                     case Op.Call when Find(i.Name, script.File) == null:
                         Wrong(i, $"script {script.Name} calls '{i.Name}', which doesn't exist");
                         break;
+                    case Op.Speaker when i.VoiceId.Length > 0 && !Data.VoiceCast.Default.HasVoice(i.VoiceId):
+                        Wrong(i, $"speaker '{i.VoiceId}' is no voice of Data/voice/cast.json");
+                        break;
                     case Op.Give or Op.Find or Op.AddItem or Op.Take when !i.Own && ItemDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no item '{i.Name}'");
                         break;

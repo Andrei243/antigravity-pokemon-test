@@ -246,6 +246,9 @@ public sealed class Instruction
     /// </summary>
     public int TextIndex { get; set; } = -1;
 
+    /// <summary>For a <c>speaker</c> given an id before its name (<c>speaker rowan "Prof. Rowan"</c>): the cast entry of <c>Data/voice/cast.json</c> that speaks the lines after it (plan 26 · V1); empty for a speaker found by name.</summary>
+    public string VoiceId { get; init; } = "";
+
     /// <summary>Whether the line carries words a translation may replace.</summary>
     public bool SpeaksText => Op is Op.Say or Op.Text or Op.Ask or Op.Choose || (Op == Op.Speaker && Name.Length > 0);
 
