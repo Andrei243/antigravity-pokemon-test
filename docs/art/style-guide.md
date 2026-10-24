@@ -720,7 +720,7 @@ The camera target and every sprite snap to the texel grid (1/32 unit), so pixel 
   | Venusaur | a pale green seed in the middle of her flower, on its crown |
   | Butterfree | a black spot on each lower wing |
   | Rattata, Raticate | whiskers about two thirds as long |
-  | Pikachu | the tail's tip notched into a heart, still yellow (the costumes' heart is painted black) |
+  | Pikachu | the tail's square end notched in its middle and rounded at its corners, a heart in outline, still yellow (the costumes keep their own heart, painted black) |
   | Raichu | the bolt on the tail stops short and ends round, without its point |
   | Zubat, Golbat | fangs two thirds as long |
   | Gloom, Vileplume | the spots on the petals half as big again |
