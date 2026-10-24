@@ -28,7 +28,7 @@ public sealed class NameEntry
         Extras = (extras ?? Core.Text.Language.Keyboard).ToUpperInvariant();
         if (Extras.Length > Columns) Extras = Extras[..Columns];
         MaxLength = maxLength;
-        Text = PlayerIdentity.Clean(initial);
+        Text = PlayerIdentity.Clean(initial, maxLength);
         if (Text.Length > maxLength) Text = Text[..maxLength];
         UpperCase = Text.Length == 0;
     }
@@ -133,7 +133,7 @@ public sealed class NameEntry
     }
 
     /// <summary>The name as it will be kept: what was entered, or <paramref name="fallback"/> if nothing was.</summary>
-    public string Result(string fallback) => PlayerIdentity.Clean(Text) is { Length: > 0 } name ? name : fallback;
+    public string Result(string fallback) => PlayerIdentity.Clean(Text, MaxLength) is { Length: > 0 } name ? name : fallback;
 
     /// <summary>Opens the keyboard again on the same name (the answer to "is that right?" was no).</summary>
     public void Reopen() => Done = false;

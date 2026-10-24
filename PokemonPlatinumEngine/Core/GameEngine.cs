@@ -94,6 +94,8 @@ public enum GameState
     WindowClosing,
     /// <summary>A script's <c>namerival</c>: the keyboard for the rival of the region it plays in, over the field (plan 18 · W4, part b).</summary>
     RivalNaming,
+    /// <summary>The party menu's RENAME: the keyboard for a Pokémon's name, over the field (plan 12 · Q19).</summary>
+    Nickname,
     /// <summary>The Bug-Catching Contest's board of results, a script's <c>bugcontest results</c> waiting on it (plan 15 · E5).</summary>
     BugContestResults,
     /// <summary>The Pokéathlon's courses, team and events, a script's <c>athlon open</c> waiting on it (plan 15 · E6).</summary>
@@ -178,6 +180,7 @@ public partial class GameEngine
     private void KeepTheHelpersInView()
     {
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
+        flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -1043,6 +1046,7 @@ public partial class GameEngine
                 KeepTheHelpersInView();
                 flow.PartyScreen.Update(flow.Party, dt);
                 if (flow.PartyScreen.TakeFieldMove() is var (move, index)) UseFieldMoveFromMenu(move, index);
+                else if (flow.PartyScreen.TakeRename() is { } toRename) OpenNickname(toRename);
                 else if (!flow.PartyScreen.IsActive)
                 {
                     // A script that asked for a Pokémon to be chosen hears which
@@ -1194,6 +1198,11 @@ public partial class GameEngine
                 // The script that asked hears 1 once the region's rival is named (plan 18 · W4, part b)
                 flow.RivalNamingScreen.Update(dt);
                 if (!flow.RivalNamingScreen.IsActive) CloseRivalNaming();
+                break;
+            case GameState.Nickname:
+                // The party menu's RENAME (plan 12 · Q19): back to the menu with the new name
+                flow.NicknameScreen.Update(dt);
+                if (!flow.NicknameScreen.IsActive) CloseNickname();
                 break;
             case GameState.SuperContest:
                 UpdateContest(dt);
@@ -2461,7 +2470,7 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases or GameState.RivalNaming or GameState.Nickname;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -2631,6 +2640,10 @@ public partial class GameEngine
                 // Over the field, as the phrase picker is
                 world.DrawToScreen(VirtualWidth, VirtualHeight);
                 flow.RivalNamingScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Nickname:
+                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                flow.NicknameScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
                 flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

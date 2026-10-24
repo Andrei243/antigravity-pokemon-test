@@ -53,6 +53,8 @@ public sealed partial class GameFlow
     public AthlonScreen AthlonScreen { get; } = new();
     public PhraseScreen PhraseScreen { get; } = new();
     public RivalNamingScreen RivalNamingScreen { get; } = new();
+    /// <summary>The keyboard for a Pokémon's name (plan 12 · Q19).</summary>
+    public NicknameScreen NicknameScreen { get; } = new();
     public SuperContestScreen SuperContestScreen { get; } = new();
     public SlotMachineScreen SlotMachineScreen { get; } = new();
     public MiningScreen MiningScreen { get; } = new();

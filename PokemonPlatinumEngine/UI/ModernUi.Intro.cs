@@ -159,7 +159,7 @@ internal static partial class ModernUi
     /// far in seven slots over the keyboard.
     /// </summary>
     public static void DrawNameEntry(int sw, int sh, NameEntry entry, Texture2D? sprite, PlayerLook look, float appear = 1f,
-        string? title = null, string? fallbackName = null)
+        string? title = null, string? fallbackName = null, string? blurb = null)
     {
         ScreenTitle(title ?? Text.Of("intro.yourName"));
         Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.pick"), Hint("shared.keys.x", "shared.hints.delete"), Hint("shared.keys.enter", "shared.hints.toOk"));
@@ -179,7 +179,7 @@ internal static partial class ModernUi
                 new Rectangle(MathF.Round(plate.X + (plate.Width - w) / 2f), MathF.Round(plate.Y + plate.Height - 52 - h), w, h), Vector2.Zero, 0f, Color.White);
         }
         string fallback = fallbackName ?? PlayerIdentity.DefaultName(look);
-        DrawWrapped(Text.Of("intro.sevenLetters", ("name", fallback)), who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
+        DrawWrapped(blurb ?? Text.Of("intro.sevenLetters", ("name", fallback)), who.X + 50, plate.Y + plate.Height + 36, who.Width - 100,
             28, Muted, 40, UiWeight.ExtraBold);
 
         // ---- The name and the keyboard

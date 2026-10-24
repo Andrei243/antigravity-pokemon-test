@@ -11,7 +11,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What can be done with a Pokémon of the team from the field's menu.</summary>
-public enum PartyActionKind { Summary, FieldMove, Switch, Cancel }
+public enum PartyActionKind { Summary, FieldMove, Switch, Cancel, Remember, Rename }
 
 /// <summary>One entry of a Pokémon's menu: its summary, one of its field moves, moving it, or backing out.</summary>
 public readonly record struct PartyAction(PartyActionKind Kind, FieldMove Move = default)
@@ -21,6 +21,8 @@ public readonly record struct PartyAction(PartyActionKind Kind, FieldMove Move =
         PartyActionKind.Summary => Text.Of("party.action.summary"),
         PartyActionKind.Switch => Text.Of("party.action.switch"),
         PartyActionKind.Cancel => Text.Of("party.action.cancel"),
+        PartyActionKind.Remember => Text.Of("party.action.remember"),
+        PartyActionKind.Rename => Text.Of("party.action.rename"),
         _ => LocalNames.Move(FieldMoveRules.MoveName(Move)).ToUpperInvariant()
     };
 }
@@ -96,6 +98,97 @@ public class PartyScreen
     public string? Message { get; set; }
 
     private (FieldMove Move, int Index)? chosenMove;
+
+    /// <summary>Whether the options' PARTY TOOLS row is on (plan 12 · Q19): a Pokémon's menu then has REMEMBER and RENAME. Set by the game while the menu is open.</summary>
+    public bool PartyTools { get; set; }
+
+    /// <summary>While REMEMBER's list is open: the moves it offers, the one under the cursor, and the move a full set is asked to make room for.</summary>
+    public bool Remembering { get; private set; }
+    public IReadOnlyList<string> RememberMoves { get; private set; } = Array.Empty<string>();
+    public int RememberCursor { get; private set; }
+    public string? ForgetFor { get; private set; }
+
+    /// <summary>In the choice of a move to forget: 0 to 3 is a move of the Pokémon, 4 keeps them all.</summary>
+    public int ForgetCursor { get; private set; }
+
+    private int? renaming;
+
+    /// <summary>The place of the Pokémon whose RENAME was chosen, once: the game opens the keyboard for it.</summary>
+    public int? TakeRename()
+    {
+        var chosen = renaming;
+        renaming = null;
+        return chosen;
+    }
+
+    /// <summary>Opens REMEMBER's list for a Pokémon; with nothing to remember the prompt says so instead.</summary>
+    public void OpenRemember(Pokemon pokemon)
+    {
+        var moves = Relearning.MovesFor(pokemon);
+        if (moves.Count == 0)
+        {
+            Message = Text.Of("party.remember.nothing", ("name", pokemon.DisplayName));
+            AudioManager.PlaySound("error");
+            return;
+        }
+        RememberMoves = moves;
+        RememberCursor = 0;
+        ForgetFor = null;
+        Remembering = true;
+    }
+
+    /// <summary>The up and down buttons in REMEMBER's list, or in the choice of a move to forget.</summary>
+    public void MoveRemember(int dy)
+    {
+        if (!Remembering || dy == 0) return;
+        if (ForgetFor != null) ForgetCursor = ((ForgetCursor + dy) % 5 + 5) % 5;
+        else RememberCursor = ((RememberCursor + dy) % RememberMoves.Count + RememberMoves.Count) % RememberMoves.Count;
+        AudioManager.PlaySound("cursor");
+    }
+
+    /// <summary>The confirm button in REMEMBER: teaches the move under the cursor, asking which to forget first when four are known.</summary>
+    private void ConfirmRemember(Party party)
+    {
+        var p = party.Members[SelectedIndex];
+        string? learned = null;
+        if (ForgetFor != null)
+        {
+            if (ForgetCursor == 4)
+            {
+                // All four kept: back to the list
+                ForgetFor = null;
+                AudioManager.PlaySound("cancel");
+                return;
+            }
+            if (Relearning.Teach(p, ForgetFor, ForgetCursor)) learned = ForgetFor;
+        }
+        else
+        {
+            string move = RememberMoves[RememberCursor];
+            if (Relearning.Teach(p, move)) learned = move;
+            else
+            {
+                ForgetFor = move;
+                ForgetCursor = 0;
+                AudioManager.PlaySound("select");
+                return;
+            }
+        }
+        Remembering = false;
+        ForgetFor = null;
+        if (learned != null)
+        {
+            Message = Text.Of("party.remember.learned", ("name", p.DisplayName), ("move", LocalNames.Move(learned)));
+            AudioManager.PlaySound("heal");
+        }
+    }
+
+    /// <summary>The cancel button in REMEMBER: back from the choice of a move to forget to the list (all four kept), or out of the list.</summary>
+    private void CancelRemember()
+    {
+        if (ForgetFor != null) ForgetFor = null;
+        else Remembering = false;
+    }
 
     /// <summary>
     /// The field moves the options' helpers grant that nobody on the team knows (plan 12 · Q18): a strip under the cards,
@@ -187,6 +280,9 @@ public class PartyScreen
         OnStrip = false;
         StripIndex = 0;
         chosenMove = null;
+        Remembering = false;
+        ForgetFor = null;
+        renaming = null;
         openAge = 0f;
     }
 
@@ -198,6 +294,8 @@ public class PartyScreen
         ShowSummary = false;
         Actions = null;
         Sharing = null;
+        Remembering = false;
+        ForgetFor = null;
     }
 
     /// <summary>The region the team's menu is opened in, whose field moves it lists (plan 21 · H5: Dive only where its gates name it).</summary>
@@ -208,13 +306,19 @@ public class PartyScreen
     /// out), then moving it and backing out, as the original's (<c>GetContextMenuEntriesForPartyMon</c>). Dive is
     /// listed only in a region whose file's gates name it (Hoenn's, plan 21 · H5), as Platinum has no Dive in the field.
     /// </summary>
-    public static List<PartyAction> ActionsFor(Pokemon pokemon, string? region = null)
+    public static List<PartyAction> ActionsFor(Pokemon pokemon, string? region = null, bool tools = false)
     {
         var actions = new List<PartyAction> { new(PartyActionKind.Summary) };
         bool dives = RegionDatabase.Get(region ?? RegionDatabase.Sinnoh)?.Gates.ContainsKey(nameof(FieldMove.Dive)) == true;
         // An Egg knows no field moves it could use (plan 06 · R15)
         if (!pokemon.IsEgg)
             actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Where(m => m != FieldMove.Dive || dives).Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
+        // REMEMBER and RENAME while the options' PARTY TOOLS row is on (plan 12 · Q19): none for an Egg, RENAME only for the player's own
+        if (tools && !pokemon.IsEgg)
+        {
+            actions.Add(new PartyAction(PartyActionKind.Remember));
+            if (pokemon.OriginalTrainer == null) actions.Add(new PartyAction(PartyActionKind.Rename));
+        }
         actions.Add(new PartyAction(PartyActionKind.Switch));
         actions.Add(new PartyAction(PartyActionKind.Cancel));
         return actions;
@@ -229,7 +333,7 @@ public class PartyScreen
     }
 
     /// <summary>The prompt under the team: the message if there is one, or what the player is choosing.</summary>
-    public string Prompt => Message ?? (Sharing != null ? Text.Of("party.prompt.giveHp")
+    public string Prompt => Message ?? (Remembering ? Text.Of(ForgetFor != null ? "evolution.forgetWhichMove" : "party.remember.prompt") : Sharing != null ? Text.Of("party.prompt.giveHp")
         : SwapSourceIndex.HasValue ? Text.Of("party.prompt.moveTo")
         : Actions != null ? Text.Of("party.prompt.doWhat")
         : Entering ? Entered.Count == EnterCount ? Text.Of("party.prompt.goIn") : Text.Of("party.prompt.enter", ("count", EnterCount), ("left", EnterCount - Entered.Count))
@@ -240,6 +344,11 @@ public class PartyScreen
     public void Confirm(Party party)
     {
         Message = null;
+        if (Remembering)
+        {
+            ConfirmRemember(party);
+            return;
+        }
         if (OnStrip && StripIndex < Helpers.Count)
         {
             chosenMove = (Helpers[StripIndex], HelperUser);
@@ -305,7 +414,7 @@ public class PartyScreen
         }
         if (Actions == null)
         {
-            Actions = ActionsFor(party.Members[SelectedIndex], Region);
+            Actions = ActionsFor(party.Members[SelectedIndex], Region, PartyTools);
             ActionIndex = 0;
             AudioManager.PlaySound("select");
             return;
@@ -325,6 +434,12 @@ public class PartyScreen
             case PartyActionKind.Switch:
                 SwapSourceIndex = SelectedIndex;
                 break;
+            case PartyActionKind.Remember:
+                OpenRemember(party.Members[SelectedIndex]);
+                break;
+            case PartyActionKind.Rename:
+                renaming = SelectedIndex;
+                break;
             case PartyActionKind.FieldMove when action.Move is FieldMove.MilkDrink or FieldMove.Softboiled:
                 // A fifth of its most HP for another of the team (PartyMenu_StartFieldMoveHPTransfer)
                 if (!FieldMoveRules.CanShareHp(party.Members[SelectedIndex])) Message = Text.Of("party.notEnoughHp");
@@ -341,6 +456,11 @@ public class PartyScreen
     {
         Message = null;
         AudioManager.PlaySound("cancel");
+        if (Remembering)
+        {
+            CancelRemember();
+            return;
+        }
         if (OnStrip)
         {
             OnStrip = false;
@@ -444,7 +564,13 @@ public class PartyScreen
             return;
         }
 
-        if (Actions != null && dy != 0)
+        if (Remembering)
+        {
+            if (dy != 0) MoveRemember(dy);
+            else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+            else if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(party);
+        }
+        else if (Actions != null && dy != 0)
         {
             MoveAction(dy);
         }
@@ -493,6 +619,8 @@ public class PartyScreen
             ModernUi.DrawParty(screenWidth, screenHeight, party, SelectedIndex, SwapSourceIndex, Math.Clamp(openAge / AppearTime, 0f, 1f),
                 Prompt, Actions?.Select(a => a.Label).ToList(), ActionIndex, Sharing?.Giver,
                 Helpers.Select(m => LocalNames.Move(FieldMoveRules.MoveName(m)).ToUpperInvariant()).ToList(), OnStrip ? StripIndex : -1);
+            if (Remembering && SelectedIndex < party.Count)
+                ModernUi.RememberPanel(screenWidth, party.Members[SelectedIndex], RememberMoves, RememberCursor, ForgetFor, ForgetCursor);
         }
     }
 }

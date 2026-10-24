@@ -146,6 +146,32 @@ internal static partial class ModernUi
         }
     }
 
+    /// <summary>
+    /// The party menu's REMEMBER (plan 12 · Q19; style guide, "Menu screens"): a panel over the cards' right half listing
+    /// the moves the Pokémon could remember, five rows at a time with the cursor's in view; once it is full and a move is
+    /// chosen, the evolution scene's choice of a move to forget in its place.
+    /// </summary>
+    public static void RememberPanel(int sw, Pokemon p, IReadOnlyList<string> moves, int cursor, string? forgetFor, int forgetCursor)
+    {
+        if (forgetFor != null)
+        {
+            MoveChoice(new Rectangle(sw - 64 - 820, 150, 820, 716), p, forgetFor, forgetCursor, 1f);
+            return;
+        }
+        var r = new Rectangle(sw - 64 - 820, 150, 820, 600);
+        Panel(r, 34);
+        float x = r.X + 28, w = r.Width - 56;
+        Label(Text.Of("party.remember.title"), r.X + 44, r.Y + 30);
+        string count = Text.Of("party.remember.count", ("n", cursor + 1), ("total", moves.Count));
+        UiFonts.DrawCentered(count, r.X + r.Width - 44 - UiFonts.Measure(count, 26, UiWeight.Black), r.Y + 44, 26, Muted, UiWeight.Black);
+        int first = Math.Clamp(cursor - 2, 0, Math.Max(0, moves.Count - 5));
+        for (int i = 0; i < 5 && first + i < moves.Count; i++)
+        {
+            var data = MoveDatabase.Get(moves[first + i]);
+            MoveRow(new Rectangle(x, r.Y + 72 + i * 96, w, 86), data, data.MaxPP, first + i == cursor, Selection, data.MaxPP);
+        }
+    }
+
     private static void MoveRow(Rectangle row, MoveData move, int? pp, bool selected, Color accent, int? maxPP = null)
     {
         if (selected) UiShapes.Shadow(row, 24, 22, Vector2.Zero, accent with { A = 170 });

@@ -163,6 +163,15 @@
         "off": "Nothing says where the story goes next: you find your own way, as in the original."
       }
     },
+    "partyTools": {
+      "label": "Remember and rename",
+      "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
+      "help": {
+        "Off": "A Pokémon's menu in the team has only its summary, its field moves and SWITCH.",
+        "Rules": "Platinum's rules keep the menu as it is; the modern rules add REMEMBER, which teaches back a move it has forgotten, and RENAME.",
+        "On": "A Pokémon's menu in the team also has REMEMBER, which teaches back a move it could have learned by now for nothing, and RENAME for your own Pokémon."
+      }
+    },
     "fieldHelpers": {
       "label": "Field move helpers",
       "value": { "Off": "Off", "Rules": "By the rules", "On": "On" },
@@ -469,7 +478,15 @@
     "hpValue": "{hp} / {max}",
     "lead": "LEAD",
     "waitingToHatch": "Waiting to hatch",
-    "action": { "summary": "SUMMARY", "switch": "SWITCH", "cancel": "CANCEL" },
+    "action": { "summary": "SUMMARY", "switch": "SWITCH", "cancel": "CANCEL", "remember": "REMEMBER", "rename": "RENAME" },
+    "remember": {
+      "title": "MOVES TO REMEMBER",
+      "prompt": "Remember which move?",
+      "nothing": "{name} has no move to remember.",
+      "learned": "{name} remembered {move}.",
+      "count": "{n} / {total}"
+    },
+    "rename": { "title": "NAME {name}", "blurb": "Ten letters at most. Leave it empty to go back to {species}.", "done": "{name} has a new name.", "reset": "{name} has its own name back." },
     "tag": {
       "able": "ABLE",
       "notAble": "NOT ABLE",

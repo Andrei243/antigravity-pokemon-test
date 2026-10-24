@@ -207,6 +207,8 @@ public partial class GameEngine
         public void TravelTo(string region) => game.TravelTo(RegionDatabase.Get(region)!);
         /// <summary>The keyboard naming a region's rival (plan 18 · W4, part b).</summary>
         public UI.RivalNamingScreen RivalNaming => game.flow.RivalNamingScreen;
+        /// <summary>The keyboard naming a Pokémon (plan 12 · Q19).</summary>
+        public UI.NicknameScreen Nickname => game.flow.NicknameScreen;
 
         public void StartWildBattle(WildEncounterEntry entry) => game.StartWildBattle(entry);
         public void StartTrainerBattle(NPC trainer, NPC? second = null, Trainer? partner = null, bool firstBattle = false) =>
