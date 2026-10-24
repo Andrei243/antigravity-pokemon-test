@@ -142,9 +142,9 @@ public sealed class VoiceCast
         if (name.Length > 0 && names.TryGetValue(name, out var byName) && !IsArchetype(byName)) return byName;
         if (rivalClass) return Rival;
         if (!string.IsNullOrEmpty(trainerName) && names.TryGetValue(trainerName, out var byTrainer) && !IsArchetype(byTrainer)) return byTrainer;
-        if (!string.IsNullOrEmpty(trainerClass)) return Pick("class:" + trainerClass.ToLowerInvariant(), seed);
+        if (!string.IsNullOrEmpty(trainerClass)) return Pick("class:" + trainerClass.ToLowerInvariant().Replace(' ', '_'), seed);
         if (!string.IsNullOrEmpty(lookKey))
-            return looks.TryGetValue(lookKey, out var viaLook) ? Settle(viaLook, seed) : Pick("look:" + lookKey.ToLowerInvariant(), seed);
+            return looks.TryGetValue(lookKey, out var viaLook) ? Settle(viaLook, seed) : Pick("look:" + lookKey.ToLowerInvariant().Replace(' ', '_'), seed);
         if (name.Length > 0 && names.TryGetValue(name, out var generic)) return Settle(generic, seed);
         return Pick("look:person", seed);
     }

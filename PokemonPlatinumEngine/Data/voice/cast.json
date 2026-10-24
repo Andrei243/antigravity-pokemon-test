@@ -1,142 +1,1209 @@
 {
   "archetypeVoices": 3,
   "voices": {
-    "rival": { "note": "The rival, Barry (or whatever the player names him): the only voice cloned, from the user's own samples (plan 26 · V3). Every rival battle's trainer lines too.", "clone": "Data/voice/samples/rival" },
-    "assistant": { "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.", "chooses": [ "assistant_boy", "assistant_girl" ] },
-    "assistant_boy": { "note": "Lucas as the assistant (the player is Dawn)." },
-    "assistant_girl": { "note": "Dawn as the assistant (the player is Lucas)." },
-    "rowan": { "note": "Professor Rowan, also the introduction's professor." },
-    "mom": { "note": "The player's mother." },
-    "rival_mom": { "note": "The rival's mother." },
-    "looker": {}, "cyrus": {}, "mars": {}, "jupiter": {}, "saturn": {}, "charon": {},
-    "cheryl": {}, "riley": {}, "buck": {}, "marley": {}, "cynthia": {},
-    "roark": {}, "gardenia": {}, "maylene": {}, "crasher_wake": {}, "fantina": {}, "byron": {}, "candice": {}, "volkner": {},
-    "aaron": {}, "bertha": {}, "flint": {}, "lucian": {},
-    "prof_oak": {}, "wally": {}, "steven": {}, "scott": {}, "archie": {}, "norman": {},
-    "mystery": { "note": "Whoever the box calls ???." }
+    "aaron": {},
+    "abigail": {
+      "note": "first spoken at phone.txt(252)",
+      "provisional": true
+    },
+    "ace_trainer": {
+      "note": "first spoken at route_210_south.txt(87)",
+      "provisional": true
+    },
+    "admin": {
+      "note": "first spoken at five_island_rocket_warehouse.txt(15)",
+      "provisional": true
+    },
+    "agatha": {
+      "note": "first spoken at pokemon_league_agathas_room.txt(8)",
+      "provisional": true
+    },
+    "archer": {
+      "note": "first spoken at goldenrod_radio_tower_observation_deck.txt(27)",
+      "provisional": true
+    },
+    "archie": {},
+    "argenta": {
+      "note": "first spoken at BattleHallStage.txt(84)",
+      "provisional": true
+    },
+    "ariana": {
+      "note": "first spoken at team_rocket_headquarters_b2f.txt(160)",
+      "provisional": true
+    },
+    "arthur": {
+      "note": "first spoken at route_36.txt(103)",
+      "provisional": true
+    },
+    "assistant": {
+      "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.",
+      "chooses": [
+        "assistant_boy",
+        "assistant_girl"
+      ]
+    },
+    "assistant_2": {
+      "note": "first spoken at Route206CyclingRoadNorthGate.txt(45)",
+      "provisional": true
+    },
+    "assistant_boy": {
+      "note": "Lucas as the assistant (the player is Dawn)."
+    },
+    "assistant_girl": {
+      "note": "Dawn as the assistant (the player is Lucas)."
+    },
+    "avery": {
+      "note": "first spoken at cinnabar_island_gym.txt(38)",
+      "provisional": true
+    },
+    "azurill": {
+      "note": "first spoken at fallarbor_town.txt(22)",
+      "provisional": true
+    },
+    "baoba": {
+      "note": "first spoken at olivine.txt(29)",
+      "provisional": true
+    },
+    "beauty": {
+      "note": "first spoken at route_120.txt(75)",
+      "provisional": true
+    },
+    "ben": {
+      "note": "first spoken at goldenrod_radio_tower_4f.txt(52)",
+      "provisional": true
+    },
+    "benjamin": {
+      "note": "first spoken at phone.txt(245)",
+      "provisional": true
+    },
+    "berry_master": {
+      "note": "first spoken at route_123_berry_masters_house.txt(13)",
+      "provisional": true
+    },
+    "bertha": {},
+    "big_man": {
+      "note": "first spoken at four_island_house_1.txt(9)",
+      "provisional": true
+    },
+    "bill": {
+      "note": "first spoken at cinnabar_island.txt(54)",
+      "provisional": true
+    },
+    "black_belt": {
+      "note": "first spoken at route_4.txt(10)",
+      "provisional": true
+    },
+    "blaine": {
+      "note": "first spoken at cinnabar_island_gym.txt(152)",
+      "provisional": true
+    },
+    "brawly": {
+      "note": "first spoken at dewford_town_gym.txt(12)",
+      "provisional": true
+    },
+    "brock": {
+      "note": "first spoken at pewter_city_gym.txt(11)",
+      "provisional": true
+    },
+    "bruno": {
+      "note": "first spoken at pokemon_league_bruno_room.txt(9)",
+      "provisional": true
+    },
+    "buck": {},
+    "bugsy": {
+      "note": "first spoken at azalea_gym.txt(12)",
+      "provisional": true
+    },
+    "byron": {},
+    "cameraman": {
+      "note": "first spoken at Route212GateToHearthomeCity.txt(13)",
+      "provisional": true
+    },
+    "candice": {},
+    "captain": {
+      "note": "first spoken at ss_anne_captains_office.txt(9)",
+      "provisional": true
+    },
+    "captain_stern": {
+      "note": "first spoken at slateport_city_oceanic_museum_2f.txt(14)",
+      "provisional": true
+    },
+    "catherine": {
+      "note": "first spoken at phone.txt(315)",
+      "provisional": true
+    },
+    "celio": {
+      "note": "first spoken at one_island_pokemon_center_1f.txt(35)",
+      "provisional": true
+    },
+    "chairman": {
+      "note": "first spoken at HearthomeFanClub.txt(11)",
+      "provisional": true
+    },
+    "charcoal_maker": {
+      "note": "first spoken at ilex_forest.txt(141)",
+      "provisional": true
+    },
+    "charon": {},
+    "cheryl": {},
+    "chuck": {
+      "note": "first spoken at cianwood_gym.txt(17)",
+      "provisional": true
+    },
+    "clair": {
+      "note": "first spoken at blackthorn_gym.txt(60)",
+      "provisional": true
+    },
+    "clefairy": {
+      "note": "first spoken at route_218.txt(23)",
+      "provisional": true
+    },
+    "collector": {
+      "note": "first spoken at valor_lakefront.txt(138)",
+      "provisional": true
+    },
+    "cook": {
+      "note": "first spoken at PoffinHouse.txt(13)",
+      "provisional": true
+    },
+    "cooltrainer": {
+      "note": "first spoken at kanto_victory_road_2f.txt(34)",
+      "provisional": true
+    },
+    "cowgirl": {
+      "note": "first spoken at PastoriaCityObservatoryGate1F.txt(40)",
+      "provisional": true
+    },
+    "cozmos_wife": {
+      "note": "first spoken at fallarbor_town_cozmos_house.txt(8)",
+      "provisional": true
+    },
+    "crasher_wake": {},
+    "cristin": {
+      "note": "first spoken at phone.txt(350)",
+      "provisional": true
+    },
+    "curator": {
+      "note": "first spoken at lilycove_city_lilycove_museum_1f.txt(9)",
+      "provisional": true
+    },
+    "cynthia": {},
+    "cyrus": {},
+    "dahlia": {
+      "note": "first spoken at BattleArcadeBattleRoom.txt(245)",
+      "provisional": true
+    },
+    "dalton": {
+      "note": "first spoken at phone.txt(301)",
+      "provisional": true
+    },
+    "darach": {
+      "note": "first spoken at BattleCastleBattleRoom.txt(90)",
+      "provisional": true
+    },
+    "day_care_lady": {
+      "note": "first spoken at common.txt(1307)",
+      "provisional": true
+    },
+    "day_care_man": {
+      "note": "first spoken at common.txt(1265)",
+      "provisional": true
+    },
+    "delivery_man": {
+      "note": "first spoken at ResortAreaVilla.txt(168)",
+      "provisional": true
+    },
+    "derek": {
+      "note": "first spoken at cinnabar_island_gym.txt(76)",
+      "provisional": true
+    },
+    "devon_employee": {
+      "note": "first spoken at rustboro_city.txt(56)",
+      "provisional": true
+    },
+    "director": {
+      "note": "first spoken at goldenrod_radio_tower_5f.txt(28)",
+      "provisional": true
+    },
+    "dock": {
+      "note": "first spoken at slateport_city_sterns_shipyard_1f.txt(11)",
+      "provisional": true
+    },
+    "dusty": {
+      "note": "first spoken at cinnabar_island_gym.txt(95)",
+      "provisional": true
+    },
+    "dylan": {
+      "note": "first spoken at phone.txt(280)",
+      "provisional": true
+    },
+    "edwin": {
+      "note": "first spoken at phone.txt(238)",
+      "provisional": true
+    },
+    "elder": {
+      "note": "first spoken at CelesticTownNorthHouse.txt(30)",
+      "provisional": true
+    },
+    "elder_li": {
+      "note": "first spoken at sprout_tower_3f.txt(12)",
+      "provisional": true
+    },
+    "energy_guru": {
+      "note": "first spoken at slateport_city.txt(38)",
+      "provisional": true
+    },
+    "erika": {
+      "note": "first spoken at celadon_city_gym.txt(10)",
+      "provisional": true
+    },
+    "eusine": {
+      "note": "first spoken at burned_tower_1f.txt(14)",
+      "provisional": true
+    },
+    "factory_staff": {
+      "note": "first spoken at BattleFactoryCorridor.txt(22)",
+      "provisional": true
+    },
+    "falkner": {
+      "note": "first spoken at violet_gym.txt(11)",
+      "provisional": true
+    },
+    "fantina": {},
+    "farmer": {
+      "note": "first spoken at route_39_moomoo_farm_house.txt(12)",
+      "provisional": true
+    },
+    "farmers_wife": {
+      "note": "first spoken at route_39_moomoo_farm_house.txt(44)",
+      "provisional": true
+    },
+    "fishing_guru": {
+      "note": "first spoken at route_32_pokecenter_1f.txt(6)",
+      "provisional": true
+    },
+    "flannery": {
+      "note": "first spoken at lavaridge_town_gym_1f.txt(12)",
+      "provisional": true
+    },
+    "flint": {},
+    "florist": {
+      "note": "first spoken at goldenrod_flower_shop.txt(10)",
+      "provisional": true
+    },
+    "fossil_maniac": {
+      "note": "first spoken at route_114_fossil_maniacs_tunnel.txt(7)",
+      "provisional": true
+    },
+    "frieda": {
+      "note": "first spoken at route_32.txt(100)",
+      "provisional": true
+    },
+    "gabby": {
+      "note": "first spoken at common.txt(2122)",
+      "provisional": true
+    },
+    "galactic_grunts": {
+      "note": "first spoken at GalacticHQHall.txt(61)",
+      "provisional": true
+    },
+    "gardenia": {},
+    "ghost": {
+      "note": "first spoken at pokemon_tower_6f.txt(15)",
+      "provisional": true
+    },
+    "gideon": {
+      "note": "first spoken at five_island_rocket_warehouse.txt(45)",
+      "provisional": true
+    },
+    "giovanni": {
+      "note": "first spoken at rocket_hideout_b4f.txt(66)",
+      "provisional": true
+    },
+    "glass_worker": {
+      "note": "first spoken at route_113_glass_workshop.txt(17)",
+      "provisional": true
+    },
+    "guide_gent": {
+      "note": "first spoken at cherrygrove.txt(21)",
+      "provisional": true
+    },
+    "gym_trainer": {
+      "note": "first spoken at goldenrod.txt(163)",
+      "provisional": true
+    },
+    "honey_man": {
+      "note": "first spoken at floaroma_meadow.txt(47)",
+      "provisional": true
+    },
+    "hostess": {
+      "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
+      "provisional": true
+    },
+    "isaac": {
+      "note": "first spoken at phone.txt(266)",
+      "provisional": true
+    },
+    "isabel": {
+      "note": "first spoken at phone.txt(259)",
+      "provisional": true
+    },
+    "jackson": {
+      "note": "first spoken at phone.txt(308)",
+      "provisional": true
+    },
+    "jasmine": {
+      "note": "first spoken at olivine_gym.txt(23)",
+      "provisional": true
+    },
+    "jeffrey": {
+      "note": "first spoken at phone.txt(329)",
+      "provisional": true
+    },
+    "jessica": {
+      "note": "first spoken at phone.txt(343)",
+      "provisional": true
+    },
+    "joey": {
+      "note": "first spoken at phone.txt(50)",
+      "provisional": true
+    },
+    "jupiter": {},
+    "karen": {
+      "note": "first spoken at pokemon_league_karen_room.txt(10)",
+      "provisional": true
+    },
+    "keira": {
+      "note": "first spoken at ContestHallLobby.txt(19)",
+      "provisional": true
+    },
+    "kimono_girl": {
+      "note": "first spoken at ecruteak_dance_theater.txt(16)",
+      "provisional": true
+    },
+    "koga": {
+      "note": "first spoken at fuchsia_city_gym.txt(11)",
+      "provisional": true
+    },
+    "koichi": {
+      "note": "first spoken at saffron_city_dojo.txt(14)",
+      "provisional": true
+    },
+    "kurt": {
+      "note": "first spoken at azalea_kurt_house.txt(14)",
+      "provisional": true
+    },
+    "lady_celeste": {
+      "note": "first spoken at PokemonMansion.txt(122)",
+      "provisional": true
+    },
+    "lance": {
+      "note": "first spoken at johto_pokemon_league_hall_of_fame.txt(14)",
+      "provisional": true
+    },
+    "lanette": {
+      "note": "first spoken at fallarbor_town_pokemon_center_1f.txt(9)",
+      "provisional": true
+    },
+    "librarian": {
+      "note": "first spoken at CanalaveLibrary1F.txt(12)",
+      "provisional": true
+    },
+    "little_boy": {
+      "note": "first spoken at CanalaveCitySailorEldritchHouse.txt(110)",
+      "provisional": true
+    },
+    "liz": {
+      "note": "first spoken at phone.txt(81)",
+      "provisional": true
+    },
+    "lola": {
+      "note": "first spoken at phone.txt(231)",
+      "provisional": true
+    },
+    "looker": {},
+    "lorelei": {
+      "note": "first spoken at four_island_icefall_cave_back.txt(23)",
+      "provisional": true
+    },
+    "lostelle": {
+      "note": "first spoken at three_island_berry_forest.txt(20)",
+      "provisional": true
+    },
+    "lostelles_daddy": {
+      "note": "first spoken at two_island_joyful_game_corner.txt(23)",
+      "provisional": true
+    },
+    "lottery_clerk": {
+      "note": "first spoken at JubilifeTV1F.txt(12)",
+      "provisional": true
+    },
+    "lt_surge": {
+      "note": "first spoken at vermilion_city_gym.txt(244)",
+      "provisional": true
+    },
+    "lucian": {},
+    "lydia": {
+      "note": "first spoken at phone.txt(273)",
+      "provisional": true
+    },
+    "machop": {
+      "note": "first spoken at vermilion_city.txt(103)",
+      "provisional": true
+    },
+    "maid_belinda": {
+      "note": "first spoken at PokemonMansion.txt(47)",
+      "provisional": true
+    },
+    "maid_clare": {
+      "note": "first spoken at PokemonMansion.txt(88)",
+      "provisional": true
+    },
+    "maid_elena": {
+      "note": "first spoken at PokemonMansion.txt(74)",
+      "provisional": true
+    },
+    "maid_emily": {
+      "note": "first spoken at PokemonMansion.txt(65)",
+      "provisional": true
+    },
+    "maid_sophie": {
+      "note": "first spoken at PokemonMansion.txt(56)",
+      "provisional": true
+    },
+    "man_in_black": {
+      "note": "first spoken at goldenrod.txt(63)",
+      "provisional": true
+    },
+    "manager": {
+      "note": "first spoken at EternaCycleShop.txt(13)",
+      "provisional": true
+    },
+    "maria": {
+      "note": "first spoken at phone.txt(287)",
+      "provisional": true
+    },
+    "marley": {},
+    "mars": {},
+    "mary": {
+      "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
+      "provisional": true
+    },
+    "maxie": {
+      "note": "first spoken at mt_chimney.txt(17)",
+      "provisional": true
+    },
+    "maylene": {},
+    "member": {
+      "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(41)",
+      "provisional": true
+    },
+    "miguel": {
+      "note": "first spoken at mt_moon_b2f.txt(29)",
+      "provisional": true
+    },
+    "mira": {
+      "note": "first spoken at Battleground.txt(821)",
+      "provisional": true
+    },
+    "misty": {
+      "note": "first spoken at cerulean_city_gym.txt(10)",
+      "provisional": true
+    },
+    "mom": {
+      "note": "The player's mother."
+    },
+    "morty": {
+      "note": "first spoken at burned_tower_1f.txt(33)",
+      "provisional": true
+    },
+    "move_deleter": {
+      "note": "first spoken at fuchsia_city_house_3.txt(9)",
+      "provisional": true
+    },
+    "mr_briney": {
+      "note": "first spoken at dewford_town.txt(15)",
+      "provisional": true
+    },
+    "mr_fuego": {
+      "note": "first spoken at fuego_ironworks_building.txt(17)",
+      "provisional": true
+    },
+    "mr_fuji": {
+      "note": "first spoken at lavender_town_volunteer_pokemon_house.txt(20)",
+      "provisional": true
+    },
+    "mr_pokemon": {
+      "note": "first spoken at route_30_mr_pokemon_house.txt(15)",
+      "provisional": true
+    },
+    "mr_psychic": {
+      "note": "first spoken at saffron_city_mr_psychics_house.txt(8)",
+      "provisional": true
+    },
+    "mr_stone": {
+      "note": "first spoken at phone.txt(162)",
+      "provisional": true
+    },
+    "murkrow": {
+      "note": "first spoken at team_rocket_headquarters_b2f.txt(114)",
+      "provisional": true
+    },
+    "mystery": {
+      "note": "Whoever the box calls ???."
+    },
+    "neighbour": {
+      "note": "first spoken at littleroot_town_mays_house_1f.txt(13)",
+      "provisional": true
+    },
+    "norman": {},
+    "officer": {
+      "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
+      "provisional": true
+    },
+    "old_lady": {
+      "note": "first spoken at route_111_old_ladys_rest_stop.txt(7)",
+      "provisional": true
+    },
+    "owner": {
+      "note": "first spoken at goldenrod_bike_shop.txt(8)",
+      "provisional": true
+    },
+    "palmer": {
+      "note": "first spoken at BattleTowerBattleRoom.txt(75)",
+      "provisional": true
+    },
+    "papa": {
+      "note": "first spoken at ValleyWindworksBuilding.txt(76)",
+      "provisional": true
+    },
+    "park_attendant": {
+      "note": "first spoken at PalParkLobby.txt(40)",
+      "provisional": true
+    },
+    "paxton": {
+      "note": "first spoken at three_island.txt(28)",
+      "provisional": true
+    },
+    "petrel": {
+      "note": "first spoken at goldenrod_radio_tower_5f.txt(51)",
+      "provisional": true
+    },
+    "pharmacist": {
+      "note": "first spoken at cianwood_pharmacy.txt(12)",
+      "provisional": true
+    },
+    "pikachu": {
+      "note": "first spoken at route_218.txt(35)",
+      "provisional": true
+    },
+    "policeman": {
+      "note": "first spoken at cerulean_city.txt(127)",
+      "provisional": true
+    },
+    "poochyena": {
+      "note": "first spoken at route_114.txt(36)",
+      "provisional": true
+    },
+    "president": {
+      "note": "first spoken at PoketchCompany.txt(8)",
+      "provisional": true
+    },
+    "prof_birch": {
+      "note": "first spoken at littleroot_town_professor_birchs_lab.txt(16)",
+      "provisional": true
+    },
+    "prof_cozmo": {
+      "note": "first spoken at fallarbor_town_cozmos_house.txt(23)",
+      "provisional": true
+    },
+    "prof_elm": {
+      "note": "first spoken at common.txt(1770)",
+      "provisional": true
+    },
+    "prof_juniper": {
+      "note": "first spoken at regions/Unova.json",
+      "provisional": true
+    },
+    "prof_oak": {},
+    "prospector": {
+      "note": "first spoken at three_island_dunsparce_tunnel.txt(16)",
+      "provisional": true
+    },
+    "proton": {
+      "note": "first spoken at slowpoke_well_b1f.txt(15)",
+      "provisional": true
+    },
+    "pryce": {
+      "note": "first spoken at mahogany_gym_leader_room.txt(14)",
+      "provisional": true
+    },
+    "quinn": {
+      "note": "first spoken at cinnabar_island_gym.txt(19)",
+      "provisional": true
+    },
+    "ralph": {
+      "note": "first spoken at phone.txt(99)",
+      "provisional": true
+    },
+    "ramon": {
+      "note": "first spoken at cinnabar_island_gym.txt(57)",
+      "provisional": true
+    },
+    "rich_boy_liam": {
+      "note": "first spoken at PokemonMansion.txt(106)",
+      "provisional": true
+    },
+    "ricky": {
+      "note": "first spoken at phone.txt(224)",
+      "provisional": true
+    },
+    "riley": {},
+    "rival": {
+      "note": "The rival, Barry (or whatever the player names him): the only voice cloned, from the user's own samples (plan 26 · V3). Every rival battle's trainer lines too.",
+      "clone": "Data/voice/samples/rival"
+    },
+    "rival_mom": {
+      "note": "The rival's mother."
+    },
+    "roark": {},
+    "robert": {
+      "note": "first spoken at phone.txt(322)",
+      "provisional": true
+    },
+    "rose": {
+      "note": "first spoken at phone.txt(294)",
+      "provisional": true
+    },
+    "rowan": {
+      "note": "Professor Rowan, also the introduction's professor."
+    },
+    "roxanne": {
+      "note": "first spoken at rustboro_city_gym.txt(12)",
+      "provisional": true
+    },
+    "rydel": {
+      "note": "first spoken at mauville_city_bike_shop.txt(12)",
+      "provisional": true
+    },
+    "sabrina": {
+      "note": "first spoken at saffron_city_gym.txt(11)",
+      "provisional": true
+    },
+    "sailor_eldritch": {
+      "note": "first spoken at CanalaveCitySailorEldritchHouse.txt(82)",
+      "provisional": true
+    },
+    "salesman": {
+      "note": "first spoken at mahogany_souvenir_shop.txt(38)",
+      "provisional": true
+    },
+    "saturn": {},
+    "school_kid": {
+      "note": "first spoken at CanalaveLibrary2F.txt(9)",
+      "provisional": true
+    },
+    "schoolboy": {
+      "note": "first spoken at EternaPokemonCenter.txt(12)",
+      "provisional": true
+    },
+    "schoolgirl": {
+      "note": "first spoken at oreburgh_city.txt(92)",
+      "provisional": true
+    },
+    "scott": {},
+    "selphy": {
+      "note": "first spoken at five_island_lost_cave_room_10.txt(17)",
+      "provisional": true
+    },
+    "shelly": {
+      "note": "first spoken at route_119_weather_institute_2f.txt(21)",
+      "provisional": true
+    },
+    "shop_boy": {
+      "note": "first spoken at EternaCycleShop.txt(30)",
+      "provisional": true
+    },
+    "sign": {
+      "note": "first spoken at common.txt(379)",
+      "provisional": true
+    },
+    "skitty": {
+      "note": "first spoken at fallarbor_town_mart.txt(5)",
+      "provisional": true
+    },
+    "slowbro": {
+      "note": "first spoken at cerulean_city.txt(165)",
+      "provisional": true
+    },
+    "socialite": {
+      "note": "first spoken at FightAreaPokeMart.txt(9)",
+      "provisional": true
+    },
+    "steven": {},
+    "teala": {
+      "note": "first spoken at BattleTower.txt(288)",
+      "provisional": true
+    },
+    "temple_guard": {
+      "note": "first spoken at snowpoint_city.txt(36)",
+      "provisional": true
+    },
+    "thorton": {
+      "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
+      "provisional": true
+    },
+    "trick_master": {
+      "note": "first spoken at route_110_trick_house_end.txt(19)",
+      "provisional": true
+    },
+    "tv": {
+      "note": "first spoken at CanalaveLibrary3F.txt(97)",
+      "provisional": true
+    },
+    "tv_producer": {
+      "note": "first spoken at jubilife_city.txt(238)",
+      "provisional": true
+    },
+    "ty": {
+      "note": "first spoken at common.txt(2152)",
+      "provisional": true
+    },
+    "underground_man": {
+      "note": "first spoken at EternaUndergroundManHouse.txt(13)",
+      "provisional": true
+    },
+    "valet": {
+      "note": "first spoken at BattleCastleBattleRoom.txt(130)",
+      "provisional": true
+    },
+    "vicky": {
+      "note": "first spoken at route_111.txt(89)",
+      "provisional": true
+    },
+    "victor": {
+      "note": "first spoken at route_111.txt(46)",
+      "provisional": true
+    },
+    "victoria": {
+      "note": "first spoken at route_111.txt(63)",
+      "provisional": true
+    },
+    "vivi": {
+      "note": "first spoken at route_111.txt(76)",
+      "provisional": true
+    },
+    "volkner": {},
+    "wade": {
+      "note": "first spoken at phone.txt(68)",
+      "provisional": true
+    },
+    "waiter": {
+      "note": "first spoken at SevenStarsRestaurant.txt(57)",
+      "provisional": true
+    },
+    "wally": {},
+    "wallys_aunt": {
+      "note": "first spoken at verdanturf_town_wandas_house.txt(28)",
+      "provisional": true
+    },
+    "wallys_father": {
+      "note": "first spoken at petalburg_city_gym.txt(127)",
+      "provisional": true
+    },
+    "wallys_mother": {
+      "note": "first spoken at petalburg_city_wallys_house.txt(46)",
+      "provisional": true
+    },
+    "wallys_uncle": {
+      "note": "first spoken at mauville_city.txt(23)",
+      "provisional": true
+    },
+    "walter": {
+      "note": "first spoken at phone.txt(336)",
+      "provisional": true
+    },
+    "wanda": {
+      "note": "first spoken at rusturf_tunnel.txt(111)",
+      "provisional": true
+    },
+    "warden": {
+      "note": "first spoken at fuchsia_city_wardens_house.txt(11)",
+      "provisional": true
+    },
+    "wattson": {
+      "note": "first spoken at mauville_city_gym.txt(86)",
+      "provisional": true
+    },
+    "whitney": {
+      "note": "first spoken at goldenrod_gym.txt(11)",
+      "provisional": true
+    },
+    "will": {
+      "note": "first spoken at pokemon_league_will_room.txt(12)",
+      "provisional": true
+    },
+    "wingull": {
+      "note": "first spoken at fortree_city_house_4.txt(32)",
+      "provisional": true
+    },
+    "winona": {
+      "note": "first spoken at fortree_city_gym.txt(12)",
+      "provisional": true
+    },
+    "young_man": {
+      "note": "first spoken at rusturf_tunnel.txt(103)",
+      "provisional": true
+    },
+    "zac": {
+      "note": "first spoken at cinnabar_island_gym.txt(114)",
+      "provisional": true
+    }
   },
   "names": {
-    "{rival}": "rival",
+    "???": "mystery",
     "{assistant}": "assistant",
-    "Prof. Rowan": "rowan",
-    "Professor Rowan": "rowan",
-    "Mom": "mom",
+    "{rival}": "rival",
     "{rival}'s Mom": "rival_mom",
-    "Looker": "looker",
-    "Cyrus": "cyrus",
-    "Mars": "mars",
-    "Commander Mars": "mars",
-    "Jupiter": "jupiter",
-    "Commander Jupiter": "jupiter",
-    "Saturn": "saturn",
-    "Commander Saturn": "saturn",
+    "Aaron": "aaron",
+    "Abigail": "abigail",
+    "Ace Trainer": "ace_trainer",
+    "Admin": "admin",
+    "Agatha": "agatha",
+    "Aide": "look:aide",
+    "Announcer": "look:announcer",
+    "Apprentice": "look:apprentice",
+    "Archer": "archer",
+    "Archie": "archie",
+    "Argenta": "argenta",
+    "Ariana": "ariana",
+    "Arthur": "arthur",
+    "Assistant": "assistant_2",
+    "Attendant": "look:attendant",
+    "Avery": "avery",
+    "Azurill": "azurill",
+    "Baoba": "baoba",
+    "Beauty": "beauty",
+    "Ben": "ben",
+    "Benjamin": "benjamin",
+    "Berry Master": "berry_master",
+    "Bertha": "bertha",
+    "Big Man": "big_man",
+    "Biker": "look:biker",
+    "Bill": "bill",
+    "Black Belt": "black_belt",
+    "Blaine": "blaine",
+    "Boy": "look:boy",
+    "Brawly": "brawly",
+    "Brock": "brock",
+    "Bruno": "bruno",
+    "Buck": "buck",
+    "Bug Catcher": "look:bug_catcher",
+    "Bugsy": "bugsy",
+    "Butler": "look:butler",
+    "Byron": "byron",
+    "Cameraman": "cameraman",
+    "Candice": "candice",
+    "Captain": "captain",
+    "Captain Stern": "captain_stern",
+    "Catherine": "catherine",
+    "Celio": "celio",
+    "Chairman": "chairman",
+    "Charcoal Maker": "charcoal_maker",
     "Charon": "charon",
     "Cheryl": "cheryl",
-    "Riley": "riley",
-    "Buck": "buck",
-    "Marley": "marley",
-    "Cynthia": "cynthia",
-    "Roark": "roark",
-    "Gardenia": "gardenia",
-    "Maylene": "maylene",
+    "Chuck": "chuck",
+    "Clair": "clair",
+    "Clefairy": "clefairy",
+    "Clerk": "look:clerk",
+    "Collector": "collector",
+    "Commander Jupiter": "jupiter",
+    "Commander Mars": "mars",
+    "Commander Saturn": "saturn",
+    "Cook": "cook",
+    "Cooltrainer": "cooltrainer",
+    "Cowgirl": "cowgirl",
+    "Cozmo's Wife": "cozmos_wife",
     "Crasher Wake": "crasher_wake",
+    "Cristin": "cristin",
+    "Curator": "curator",
+    "Cynthia": "cynthia",
+    "Cyrus": "cyrus",
+    "Dahlia": "dahlia",
+    "Dalton": "dalton",
+    "Darach": "darach",
+    "Day-Care Lady": "day_care_lady",
+    "Day-Care Man": "day_care_man",
+    "Delivery Man": "delivery_man",
+    "Derek": "derek",
+    "Devon Employee": "devon_employee",
+    "Director": "director",
+    "Dock": "dock",
+    "Dusty": "dusty",
+    "Dylan": "dylan",
+    "Edwin": "edwin",
+    "Elder": "elder",
+    "Elder Li": "elder_li",
+    "Energy Guru": "energy_guru",
+    "Erika": "erika",
+    "Eusine": "eusine",
+    "Factory Staff": "factory_staff",
+    "Falkner": "falkner",
     "Fantina": "fantina",
-    "Byron": "byron",
-    "Candice": "candice",
-    "Volkner": "volkner",
-    "Aaron": "aaron",
-    "Bertha": "bertha",
+    "Farmer": "farmer",
+    "Farmer's Wife": "farmers_wife",
+    "Fisherman": "look:fisherman",
+    "Fishing Guru": "fishing_guru",
+    "Flannery": "flannery",
     "Flint": "flint",
-    "Lucian": "lucian",
-    "Prof. Oak": "prof_oak",
-    "Wally": "wally",
-    "Steven": "steven",
-    "Scott": "scott",
-    "Archie": "archie",
-    "Norman": "norman",
-    "???": "mystery",
-    "Man": "look:man",
-    "Woman": "look:woman",
-    "Boy": "look:boy",
+    "Florist": "florist",
+    "Fossil Maniac": "fossil_maniac",
+    "Frieda": "frieda",
+    "Gabby": "gabby",
+    "Galactic Grunt": "look:grunt",
+    "Galactic Grunts": "galactic_grunts",
+    "Gardenia": "gardenia",
+    "Gate Keeper": "look:guard",
+    "Gentleman": "look:gentleman",
+    "Ghost": "ghost",
+    "Gideon": "gideon",
+    "Giovanni": "giovanni",
     "Girl": "look:girl",
+    "Glass Worker": "glass_worker",
+    "Grunt": "look:grunt",
+    "Guard": "look:guard",
+    "Guide": "look:gym_guide",
+    "Guide Gent": "guide_gent",
+    "Guitarist": "look:guitarist",
+    "Gym Guide": "look:gym_guide",
+    "Gym Trainer": "gym_trainer",
+    "Hiker": "look:hiker",
+    "Honey Man": "honey_man",
+    "Host": "look:host",
+    "Hostess": "hostess",
+    "Isaac": "isaac",
+    "Isabel": "isabel",
+    "Jackson": "jackson",
+    "Jasmine": "jasmine",
+    "Jeffrey": "jeffrey",
+    "Jessica": "jessica",
+    "Joey": "joey",
+    "Jupiter": "jupiter",
+    "Karen": "karen",
+    "Keira": "keira",
+    "Kimono Girl": "kimono_girl",
+    "Koga": "koga",
+    "Koichi": "koichi",
+    "Kurt": "kurt",
+    "Lady": "look:lady",
+    "Lady Celeste": "lady_celeste",
+    "Lance": "lance",
+    "Lanette": "lanette",
+    "Lass": "look:lass",
+    "Librarian": "librarian",
+    "Little Boy": "little_boy",
+    "Little Girl": "look:little_girl",
+    "Liz": "liz",
+    "Lola": "lola",
+    "Looker": "looker",
+    "Lorelei": "lorelei",
+    "Lostelle": "lostelle",
+    "Lostelle's Daddy": "lostelles_daddy",
+    "Lottery Clerk": "lottery_clerk",
+    "Lt. Surge": "lt_surge",
+    "Lucian": "lucian",
+    "Lydia": "lydia",
+    "Machop": "machop",
+    "Maid Belinda": "maid_belinda",
+    "Maid Clare": "maid_clare",
+    "Maid Elena": "maid_elena",
+    "Maid Emily": "maid_emily",
+    "Maid Sophie": "maid_sophie",
+    "Man": "look:man",
+    "Man in Black": "man_in_black",
+    "Manager": "manager",
+    "Maria": "maria",
+    "Marley": "marley",
+    "Mars": "mars",
+    "Mary": "mary",
+    "Maxie": "maxie",
+    "Maylene": "maylene",
+    "Member": "member",
+    "Miguel": "miguel",
+    "Mira": "mira",
+    "Misty": "misty",
+    "Mom": "mom",
+    "Morty": "morty",
+    "Move Deleter": "move_deleter",
+    "Mr. Briney": "mr_briney",
+    "Mr. Fuego": "mr_fuego",
+    "Mr. Fuji": "mr_fuji",
+    "Mr. Pokémon": "mr_pokemon",
+    "Mr. Psychic": "mr_psychic",
+    "Mr. Stone": "mr_stone",
+    "Murkrow": "murkrow",
+    "Neighbour": "neighbour",
+    "Norman": "norman",
+    "Nurse": "look:nurse",
+    "Officer": "officer",
+    "Old Lady": "old_lady",
     "Old Man": "look:old_man",
     "Old Woman": "look:old_woman",
-    "Little Girl": "look:little_girl",
-    "Gentleman": "look:gentleman",
-    "Lady": "look:lady",
-    "Youngster": "look:youngster",
-    "Lass": "look:lass",
-    "Grunt": "look:grunt",
-    "Galactic Grunt": "look:grunt",
+    "Owner": "owner",
+    "Palmer": "palmer",
+    "Papa": "papa",
+    "Park Attendant": "park_attendant",
+    "Paxton": "paxton",
+    "Petrel": "petrel",
+    "Pharmacist": "pharmacist",
+    "Pikachu": "pikachu",
+    "Policeman": "policeman",
+    "Poochyena": "poochyena",
+    "President": "president",
+    "Prof. Birch": "prof_birch",
+    "Prof. Cozmo": "prof_cozmo",
+    "Prof. Elm": "prof_elm",
+    "Prof. Juniper": "prof_juniper",
+    "Prof. Oak": "prof_oak",
+    "Prof. Rowan": "rowan",
+    "Professor Rowan": "rowan",
+    "Prospector": "prospector",
+    "Proton": "proton",
+    "Pryce": "pryce",
+    "Quinn": "quinn",
+    "Ralph": "ralph",
+    "Ramon": "ramon",
+    "Receptionist": "look:receptionist",
+    "Researcher": "look:scientist",
+    "Rich Boy Liam": "rich_boy_liam",
+    "Ricky": "ricky",
+    "Riley": "riley",
+    "Roark": "roark",
+    "Robert": "robert",
+    "Rose": "rose",
+    "Roxanne": "roxanne",
+    "Rydel": "rydel",
+    "Sabrina": "sabrina",
+    "Sailor": "look:sailor",
+    "Sailor Eldritch": "sailor_eldritch",
+    "Salesman": "salesman",
+    "Saturn": "saturn",
+    "School Kid": "school_kid",
+    "Schoolboy": "schoolboy",
+    "Schoolgirl": "schoolgirl",
+    "Scientist": "look:scientist",
+    "Scott": "scott",
+    "Selphy": "selphy",
+    "Shelly": "shelly",
+    "Shop Boy": "shop_boy",
+    "Sign": "sign",
+    "Skitty": "skitty",
+    "Slowbro": "slowbro",
+    "Socialite": "socialite",
+    "Steven": "steven",
+    "Teala": "teala",
     "Team Aqua Grunt": "look:aqua_grunt",
     "Team Magma Grunt": "look:magma_grunt",
-    "Attendant": "look:attendant",
-    "Guard": "look:guard",
-    "Gate Keeper": "look:guard",
-    "Gym Guide": "look:gym_guide",
-    "Guide": "look:gym_guide",
-    "Clerk": "look:clerk",
-    "Receptionist": "look:receptionist",
-    "Nurse": "look:nurse",
-    "Scientist": "look:scientist",
-    "Researcher": "look:scientist",
-    "Sailor": "look:sailor",
-    "Hiker": "look:hiker",
-    "Fisherman": "look:fisherman",
-    "Biker": "look:biker",
+    "Temple Guard": "temple_guard",
+    "Thorton": "thorton",
+    "Trick Master": "trick_master",
+    "TV": "tv",
+    "TV Producer": "tv_producer",
+    "Ty": "ty",
+    "Underground Man": "underground_man",
+    "Valet": "valet",
+    "Vicky": "vicky",
+    "Victor": "victor",
+    "Victoria": "victoria",
+    "Vivi": "vivi",
+    "Volkner": "volkner",
+    "Wade": "wade",
+    "Waiter": "waiter",
+    "Wally": "wally",
+    "Wally's Aunt": "wallys_aunt",
+    "Wally's Father": "wallys_father",
+    "Wally's Mother": "wallys_mother",
+    "Wally's Uncle": "wallys_uncle",
+    "Walter": "walter",
+    "Wanda": "wanda",
+    "Warden": "warden",
+    "Wattson": "wattson",
+    "Whitney": "whitney",
+    "Will": "will",
+    "Wingull": "wingull",
+    "Winona": "winona",
+    "Woman": "look:woman",
     "Worker": "look:worker",
-    "Aide": "look:aide",
-    "Host": "look:host",
-    "Announcer": "look:announcer",
-    "Bug Catcher": "look:bug_catcher",
-    "Butler": "look:butler",
-    "Guitarist": "look:guitarist",
-    "Apprentice": "look:apprentice"
+    "Young Man": "young_man",
+    "Youngster": "look:youngster",
+    "Zac": "zac"
   },
   "looks": {
-    "rowan": "rowan",
-    "mom": "mom",
-    "looker": "looker",
-    "cyrus": "cyrus",
-    "mars": "mars",
-    "jupiter": "jupiter",
-    "saturn": "saturn",
-    "riley": "riley",
-    "buck": "buck",
-    "marley": "marley",
-    "cynthia": "cynthia",
-    "roark": "roark",
-    "gardenia": "gardenia",
-    "maylene": "maylene",
-    "crasher_wake": "crasher_wake",
-    "fantina": "fantina",
-    "byron": "byron",
-    "candice": "candice",
-    "volkner": "volkner",
-    "prof_oak": "prof_oak",
-    "wally": "wally",
-    "steven": "steven",
-    "scott": "scott",
     "archie": "archie",
-    "rival": "rival",
-    "Rival:MAY:BRENDAN": "rival",
     "assistant": "assistant",
     "Assistant": "assistant",
+    "buck": "buck",
+    "byron": "byron",
+    "candice": "candice",
+    "crasher_wake": "crasher_wake",
+    "cynthia": "cynthia",
+    "cyrus": "cyrus",
+    "fantina": "fantina",
+    "gardenia": "gardenia",
+    "grunt": "look:grunt",
+    "jupiter": "jupiter",
+    "looker": "looker",
+    "marley": "marley",
+    "mars": "mars",
+    "maylene": "maylene",
+    "mom": "mom",
+    "prof_oak": "prof_oak",
+    "riley": "riley",
+    "rival": "rival",
+    "Rival:MAY:BRENDAN": "rival",
+    "roark": "roark",
+    "rowan": "rowan",
+    "saturn": "saturn",
+    "scott": "scott",
     "Silver": "rival",
+    "steven": "steven",
     "teala": "look:grunt",
-    "grunt": "look:grunt"
+    "volkner": "volkner",
+    "wally": "wally"
   },
   "people": {},
   "archetypes": {
-    "look:grunt": { "voices": 4, "note": "Team Galactic's grunts, men and women." },
-    "look:aqua_grunt": { "voices": 3 },
-    "look:magma_grunt": { "voices": 3 },
-    "look:gentleman": { "voices": 4 },
-    "look:lass": { "voices": 4 },
-    "look:youngster": { "voices": 4 },
-    "look:man": { "voices": 4 },
-    "look:woman": { "voices": 4 },
-    "look:nurse": { "voices": 2, "note": "One in each Pokémon Center: the same kind of voice." },
-    "look:clerk": { "voices": 3 }
+    "look:aqua_grunt": {
+      "voices": 3
+    },
+    "look:clerk": {
+      "voices": 3
+    },
+    "look:gentleman": {
+      "voices": 4
+    },
+    "look:grunt": {
+      "voices": 4,
+      "note": "Team Galactic's grunts, men and women."
+    },
+    "look:lass": {
+      "voices": 4
+    },
+    "look:magma_grunt": {
+      "voices": 3
+    },
+    "look:man": {
+      "voices": 4
+    },
+    "look:nurse": {
+      "voices": 2,
+      "note": "One in each Pokémon Center: the same kind of voice."
+    },
+    "look:woman": {
+      "voices": 4
+    },
+    "look:youngster": {
+      "voices": 4
+    }
   }
 }

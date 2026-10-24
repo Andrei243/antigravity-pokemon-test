@@ -17,10 +17,9 @@ public static class SpokenText
 
     private static readonly Regex Braces = new(@"\{([^{}]*)\}", RegexOptions.Compiled);
     private static readonly Regex Placeholder = new(@"\{([A-Za-z_]+)(?::[^{}]*)?\}", RegexOptions.Compiled);
-    private static readonly HashSet<string> Markup = new(StringComparer.Ordinal)
-    {
-        "pause", "red", "blue", "green", "yellow", "purple", "orange", "white", "gray", "grey", "shake", "slow", "fast", "b", "i"
-    };
+    // The text box's markup (plan 09 · L3, UI/Kit/RichText.cs): {red:..} {blue:..} {name:..} wrap words; {pause S}, {speed N}, {sfx X} and {br} are not said; {money N} says its number
+    private static readonly HashSet<string> Colours = new(StringComparer.Ordinal) { "red", "blue", "name" };
+    private static readonly HashSet<string> Codes = new(StringComparer.Ordinal) { "pause", "speed", "sfx", "money" };
 
     /// <summary>The placeholders of a line (markup is not one), each as written: <c>{player}</c>, <c>{var:VAR_X}</c>, once each in order.</summary>
     public static IReadOnlyList<string> PlaceholdersOf(string line)
@@ -36,8 +35,10 @@ public static class SpokenText
 
     private static bool IsMarkup(string inner)
     {
-        int end = inner.IndexOfAny(new[] { ':', ' ' });
-        return Markup.Contains(end < 0 ? inner : inner[..end]);
+        if (inner == "br") return true;
+        int colon = inner.IndexOf(':'), space = inner.IndexOf(' ');
+        if (colon > 0) return Colours.Contains(inner[..colon]);
+        return space > 0 && Codes.Contains(inner[..space]);
     }
 
     /// <summary>Takes the markup out: a pause goes, a colour or effect leaves the words it wraps.</summary>
@@ -46,8 +47,11 @@ public static class SpokenText
         {
             string inner = m.Groups[1].Value;
             if (!IsMarkup(inner)) return m.Value;
-            int split = inner.IndexOfAny(new[] { ':', ' ' });
-            return inner[..(split < 0 ? inner.Length : split)] == "pause" || split < 0 ? "" : inner[(split + 1)..];
+            if (inner == "br") return " ";
+            int colon = inner.IndexOf(':');
+            if (colon > 0) return inner[(colon + 1)..];
+            int space = inner.IndexOf(' ');
+            return inner[..space] == "money" ? inner[(space + 1)..] : "";
         });
 
     /// <summary>

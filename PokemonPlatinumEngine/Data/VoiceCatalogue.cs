@@ -440,6 +440,7 @@ public static class VoiceCatalogue
         sb.AppendLine();
         sb.AppendLine("## Casting problems");
         sb.AppendLine();
+        foreach (var (id, where) in c.UnknownIds) sb.AppendLine($"- speaker id `{id}` at {where} is no voice of the cast");
         if (c.Unlisted.Count == 0) sb.AppendLine("None: every speaker of every script has a cast entry.");
         else
         {
