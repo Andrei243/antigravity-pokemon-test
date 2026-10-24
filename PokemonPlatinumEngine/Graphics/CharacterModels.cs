@@ -83,9 +83,15 @@ internal sealed class CharacterRig
     public SdfMesh? FacePatch;
     public Vector2[]? FaceUVs;
 
+    /// <summary>A layered look's clothes (<see cref="CharacterStyle.Layered"/>), meshed apart from the body, and their own outline shell.</summary>
+    public SdfMesh? Clothes;
+    public SdfMesh? ClothesShell;
+
     // On the GPU (see CharacterModels.Upload)
     public SkinnedModel? Body;
     public SkinnedModel? Outline;
+    public SkinnedModel? ClothesBody;
+    public SkinnedModel? ClothesOutline;
     public SkinnedModel? FaceModel;
     public Material[] FaceMaterials = Array.Empty<Material>();
     public bool Uploaded;
@@ -123,6 +129,9 @@ internal static class CharacterModels
 
     /// <summary>Mesh cell size: about a hundredth of a character's height.</summary>
     public const float MeshCell = 1f / 112f;
+
+    /// <summary>The clothes are meshed as the body is (finer cells cost too much memory over a place's whole crowd).</summary>
+    public const float ClothesCell = MeshCell;
 
     private static readonly Dictionary<string, CharacterRig> Cache = new(StringComparer.OrdinalIgnoreCase);
     private static readonly ConcurrentDictionary<string, Task<CharacterRig>> Building = new(StringComparer.OrdinalIgnoreCase);
@@ -176,13 +185,15 @@ internal static class CharacterModels
         if (!Cache.Remove(npcType, out var rig) || !rig.Uploaded) return;
         rig.Body?.Unload();
         rig.Outline?.Unload();
+        rig.ClothesBody?.Unload();
+        rig.ClothesOutline?.Unload();
         rig.FaceModel?.Unload();
         foreach (var material in rig.FaceMaterials)
         {
             Raylib.UnloadTexture(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(material.Maps);
         }
-        rig.Body = rig.Outline = rig.FaceModel = null;
+        rig.Body = rig.Outline = rig.ClothesBody = rig.ClothesOutline = rig.FaceModel = null;
         rig.FaceMaterials = Array.Empty<Material>();
         rig.Uploaded = false;
     }
@@ -217,19 +228,28 @@ internal static class CharacterModels
         var kind = KindOf(npcType);
         var rig = new CharacterRig { Kind = kind, Type = npcType.ToUpperInvariant() };
         var model = new SdfModel("character " + rig.Type);
+        SdfModel? wear = null;
         switch (kind)
         {
             case RigKind.Briefcase: BuildBriefcase(rig, model); break;
             case RigKind.Rift: BuildRift(rig, model); break;
             default:
                 rig.Style = CharacterStyle.For(npcType);
-                BuildHumanoid(rig, model, rig.Style);
+                wear = new SdfModel("clothes " + rig.Type) { WeightBlend = 0.04f };
+                BuildHumanoid(rig, model, rig.Style, wear);
                 break;
         }
         model.BoneCount = rig.Skeleton.Count;
         rig.Mesh = SdfCache.Get(model, MeshCell);
         if (kind == RigKind.Humanoid) { SoftenFace(rig); SoftenHair(rig); }
         rig.Shell = SdfCache.Get(model, MeshCell * 1.25f, OutlineThickness);
+        // A swimsuit wears nothing over the body
+        if (wear is { Shapes.Count: > 0 })
+        {
+            wear.BoneCount = rig.Skeleton.Count;
+            rig.Clothes = SdfCache.Get(wear, ClothesCell);
+            rig.ClothesShell = SdfCache.Get(wear, ClothesCell * 1.25f, OutlineThickness);
+        }
         if (kind == RigKind.Humanoid) ExtractFacePatch(rig);
         rig.PrepareScratch();
         return rig;
@@ -239,6 +259,8 @@ internal static class CharacterModels
     {
         rig.Body = SkinnedModel.Upload(rig.Mesh, rig.Skeleton.Count);
         rig.Outline = SkinnedModel.Upload(rig.Shell, rig.Skeleton.Count);
+        if (rig.Clothes is { VertexCount: > 0 } clothes) rig.ClothesBody = SkinnedModel.Upload(clothes, rig.Skeleton.Count);
+        if (rig.ClothesShell is { VertexCount: > 0 } shell) rig.ClothesOutline = SkinnedModel.Upload(shell, rig.Skeleton.Count);
         if (rig.FacePatch != null && rig.FaceUVs != null && rig.FacePatch.VertexCount > 0)
         {
             rig.FaceModel = SkinnedModel.Upload(rig.FacePatch, rig.Skeleton.Count, rig.FaceUVs, _ => Color.White);
@@ -315,7 +337,7 @@ internal static class CharacterModels
 
     private static Quaternion Pitch(float radians) => Quaternion.CreateFromAxisAngle(Vector3.UnitX, radians);
 
-    private static void BuildHumanoid(CharacterRig rig, SdfModel m, CharacterStyle s)
+    private static void BuildHumanoid(CharacterRig rig, SdfModel m, CharacterStyle s, SdfModel wear)
     {
         var f = FrameOf(s.Build);
         rig.Scale = s.Height;
@@ -404,133 +426,8 @@ internal static class CharacterModels
                     Quaternion.CreateFromAxisAngle(Vector3.UnitZ, side * 0.12f));
         }
 
-        // 4. Neck and body
-        float neckBottom = f.ChestY + 0.02f, neckTop = f.NeckY + 0.07f;
-        m.Capsule(new Vector3(0, neckBottom, -0.005f), new Vector3(0, neckTop, 0.004f), 0.044f, 0.04f, skin, HumanBones.Head, 0.03f, Skin);
-        var top = s.Top;
-        var bottom = s.Bottom;
-        m.Ellipsoid(new Vector3(0, f.HipY + 0.005f, 0), new Vector3(f.TorsoW * 0.98f, 0.082f, f.TorsoD * 1.02f), s.Coat || s.Robe ? top : bottom, HumanBones.Hips, 0f, Cloth);
-        m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f), new Vector3(f.TorsoW, (f.ChestY - f.HipY) * 0.62f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
-        m.Ellipsoid(new Vector3(0, f.ChestY, 0), new Vector3(f.TorsoW * 1.08f, 0.075f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
-
-        // Collar or scarf (a swimsuit has neither, plan 11 · C3)
-        if (!s.Swimsuit) m.Torus(new Vector3(0, f.ChestY + 0.055f, 0.004f), 0.07f, 0.028f, s.Accent, HumanBones.Spine, 0.012f, Cloth);
-        if (s.Scarf)
-        {
-            // A scarf rather than a collar: it hangs down in front a little
-            m.Capsule(new Vector3(0.03f, f.ChestY + 0.03f, f.TorsoD * 0.92f), new Vector3(0.045f, f.ChestY - 0.06f, f.TorsoD * 1.0f), 0.024f, 0.02f,
-                s.Accent, HumanBones.Spine, 0.01f, Cloth);
-        }
-
-        if (s.Coat || s.Robe)
-        {
-            // A long coat over the body: the upper part moves with the chest, the tails swing (skirt bone). A robe
-            // (plan 11 · C3) is closed and falls to the ankles, with a sash round the waist
-            float hem = s.Robe ? f.Ankle.Y + 0.06f : f.Knee.Y + 0.035f;
-            m.Capsule(new Vector3(0, f.HipY + 0.03f, 0), new Vector3(0, hem + 0.02f, -0.006f), f.TorsoD * 1.05f, f.TorsoW * (s.Robe ? 1.4f : 1.3f), top, HumanBones.Skirt, 0.04f, Cloth);
-            m.Box(new Vector3(0, hem - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, top, HumanBones.Skirt, 0f, op: SdfOp.Cut);
-            if (s.Robe)
-                m.Torus(new Vector3(0, f.WaistY - 0.01f, 0.004f), f.TorsoW * 0.98f, 0.022f, s.Accent, HumanBones.Spine, 0.01f, Cloth);
-            else
-            {
-                // The shirt shows down the open front
-                m.Paint(m.Box(new Vector3(0, f.ChestY - 0.02f, f.TorsoD + 0.05f), new Vector3(0.032f, 0.075f, 0.06f), 0.01f, s.Accent, HumanBones.Spine),
-                    false, HumanBones.Spine);
-            }
-        }
-        if (s.Skirt)
-        {
-            float hem = f.Knee.Y + 0.065f;
-            m.Capsule(new Vector3(0, f.HipY - 0.01f, 0), new Vector3(0, hem + 0.015f, -0.004f), f.TorsoD * 0.88f, f.TorsoW * 1.55f, bottom, HumanBones.Skirt, 0.03f, Cloth);
-            m.Box(new Vector3(0, hem - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, bottom, HumanBones.Skirt, 0f, op: SdfOp.Cut);
-        }
-        if (s.Bag is Color bag)
-        {
-            float bz = -f.TorsoD - 0.045f;
-            m.Box(new Vector3(0, f.ChestY - 0.035f, bz), new Vector3(0.1f, 0.1f, 0.055f), 0.045f, bag, HumanBones.Bag, 0.015f, SurfaceMaterial.Leather);
-            m.Box(new Vector3(0, f.ChestY + 0.035f, bz - 0.012f), new Vector3(0.096f, 0.04f, 0.055f), 0.03f, Shade(bag, 0.86f), HumanBones.Bag, 0.006f, SurfaceMaterial.Leather);
-            m.Box(new Vector3(0, f.ChestY + 0.0f, bz - 0.066f), new Vector3(0.022f, 0.016f, 0.008f), 0.006f, new Color(236, 230, 214, 255), HumanBones.Bag, 0f, SurfaceMaterial.Metal);
-            foreach (float side in new[] { 1f, -1f })
-            {
-                // Straps over the shoulders and down the front
-                var back = new Vector3(side * 0.07f, f.ChestY + 0.05f, -f.TorsoD * 0.85f);
-                var over = new Vector3(side * 0.078f, f.ChestY + 0.085f, 0.0f);
-                var front = new Vector3(side * 0.082f, f.ChestY - 0.075f, f.TorsoD * 0.98f);
-                m.Capsule(back, over, 0.017f, 0.017f, Shade(bag, 0.78f), HumanBones.Spine, 0.004f, SurfaceMaterial.Leather);
-                m.Capsule(over, front, 0.017f, 0.016f, Shade(bag, 0.78f), HumanBones.Spine, 0.004f, SurfaceMaterial.Leather);
-            }
-        }
-
-        // 5. Arms and hands
-        foreach (var (side, upperB, foreB, handB) in new[] { (1f, HumanBones.UpperArmL, HumanBones.ForeArmL, HumanBones.HandL), (-1f, HumanBones.UpperArmR, HumanBones.ForeArmR, HumanBones.HandR) })
-        {
-            var sh = Side(f.Shoulder, side);
-            var el = Side(f.Elbow, side);
-            var wr = Side(f.Wrist, side);
-            // A swimsuit leaves the arms bare from the shoulder (plan 11 · C3)
-            var sleeve = s.Swimsuit ? skin : top;
-            m.Capsule(sh, el, f.ArmR, f.ArmR * 0.9f, sleeve, upperB, 0.035f, s.Swimsuit ? Skin : Cloth);
-            m.Capsule(el, wr, f.ArmR * 0.9f, f.ArmR * 0.76f, s.ShortSleeves || s.Swimsuit ? skin : sleeve, foreB, 0.015f, s.ShortSleeves || s.Swimsuit ? Skin : Cloth);
-            var along = Vector3.Normalize(wr - el);
-            var palm = wr + along * 0.044f;
-            m.Ellipsoid(palm, new Vector3(0.036f, 0.046f, 0.029f), skin, handB, 0.016f, Skin, AlignY(along));
-            m.Capsule(wr + along * 0.018f + new Vector3(-side * 0.012f, 0, 0.02f), wr + along * 0.045f + new Vector3(-side * 0.016f, 0, 0.038f),
-                0.014f, 0.012f, skin, handB, 0.01f, Skin);
-            // (bare arms have neither a sleeve's hem nor a cuff)
-            if (s.ShortSleeves && !s.Swimsuit)
-            {
-                // The sleeve ends two thirds of the way down the upper arm
-                var hemPoint = Vector3.Lerp(sh, el, 0.68f);
-                m.Paint(m.Capsule(hemPoint, wr + along * 0.1f, 0.075f, 0.075f, skin, upperB), true, upperB, foreB).Material = Skin;
-            }
-            else if (!s.Swimsuit)
-            {
-                // A cuff where the sleeve meets the hand
-                m.Torus(wr - along * 0.006f, f.ArmR * 0.72f, 0.011f, Shade(sleeve, 1.08f), foreB, 0.008f, Cloth, AlignY(along));
-            }
-        }
-
-        // 6. Legs and shoes (hard joins under a skirt or coat, so the legs don't pull the hem)
-        bool covered = s.Skirt || s.Coat || s.Robe;
-        var sole = s.Sole ?? Shade(s.Shoes, 0.62f);
-        foreach (var (side, thighB, shinB, footB) in new[] { (1f, HumanBones.ThighL, HumanBones.ShinL, HumanBones.FootL), (-1f, HumanBones.ThighR, HumanBones.ShinR, HumanBones.FootR) })
-        {
-            var hip = Side(f.LegTop, side);
-            var knee = Side(f.Knee, side);
-            var ankle = Side(f.Ankle, side);
-            bool bare = s.Skirt || s.Shorts || s.Swimsuit;
-            bool bareThigh = s.Skirt || s.Swimsuit;
-            m.Capsule(hip + new Vector3(0, 0.03f, 0), knee, f.LegR, f.LegR * 0.84f, bareThigh ? skin : bottom, thighB, covered ? 0f : 0.04f, bareThigh ? Skin : Cloth);
-            m.Capsule(knee, ankle + new Vector3(0, 0.01f, 0), f.LegR * 0.84f, f.LegR * 0.7f, bare ? skin : bottom, shinB, 0.02f, bare ? Skin : Cloth);
-            if (s.Shorts)
-                m.Paint(m.Capsule(Vector3.Lerp(hip, knee, 0.72f), ankle, 0.09f, 0.09f, skin, thighB), true, thighB, shinB).Material = Skin;
-
-            var shoe = new Vector3(ankle.X, 0.044f, ankle.Z + 0.03f);
-            m.Box(shoe, new Vector3(0.05f, 0.044f, 0.086f), 0.04f, s.Shoes, footB, 0.02f, SurfaceMaterial.Leather);
-            m.Paint(m.Box(new Vector3(shoe.X, 0.008f, shoe.Z), new Vector3(0.07f, 0.018f, 0.12f), 0f, sole, footB), true, footB).Material = SurfaceMaterial.Plastic;
-        }
-
-        // 7. Colour: a clean waistline, stripes across the shirt, rosy cheeks
-        if (!s.Coat && !s.Robe)
-            m.Paint(m.Box(new Vector3(0, f.HipY - 0.1f, 0), new Vector3(0.3f, (f.WaistY - f.HipY) * 0.42f + 0.1f, 0.3f), 0f, bottom, HumanBones.Hips),
-                false, HumanBones.Hips, HumanBones.Spine, HumanBones.Skirt);
-        if (s.Stripes)
-        {
-            // Light stripes on a coloured shirt, coloured ones on a white shirt
-            var stripe = s.Top.R + s.Top.G + s.Top.B > 690 ? s.Accent : PixelCanvas.Light1(s.Top, 0.55f);
-            foreach (float y in new[] { f.ChestY - 0.045f, f.WaistY - 0.025f })
-                m.Paint(m.Box(new Vector3(0, y, 0), new Vector3(0.3f, 0.013f, 0.3f), 0f, stripe, HumanBones.Spine), false, HumanBones.Spine);
-        }
-        if (s.GalacticMark)
-        {
-            // Team Galactic's mark in the middle of the chest (plan 11 · C2): the lozenge in its yellow round its dark core
-            var at = new Vector3(0, f.ChestY - 0.012f, f.TorsoD + 0.02f);
-            var turn = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, MathF.PI / 4f);
-            m.Paint(m.Box(at, new Vector3(0.024f, 0.024f, 0.05f), 0f, GalacticMark.Base, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
-            m.Paint(m.Box(at, new Vector3(0.011f, 0.011f, 0.052f), 0f, GalacticMark.Ink, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
-        }
-        BuildOverClothes(m, s, f);
-        BuildHeld(m, s, f);
+        // 4 to 7. The body, and its clothes as a layer of their own
+        BuildBodyAndClothes(m, wear, s, f);
         if (s.Blush)
         {
             var blush = PixelCanvas.Mix(skin, new Color(250, 120, 130, 255), 0.32f);
@@ -546,40 +443,272 @@ internal static class CharacterModels
     }
 
     /// <summary>
-    /// What is worn over the shirt and trousers (plan 11 · C3; style guide, "The second trainers' parts"): overalls'
-    /// bib and straps in the bottom's colour, an apron's bib and swinging panel, a vest with the shirt showing down
-    /// its open front. Nothing for a look that wears none, so the shapes of every look before are as they were.
+    /// The body and what is worn over it, as two layers (style guide, "Characters", "Layered clothes"): the body under
+    /// the clothes in <paramref name="m"/> (the neck, the torso, the arms, slim under sleeves, the hands, the trousers or
+    /// bare legs, the shoes, what is held) and the clothes in <paramref name="w"/> (the shirt, jacket, coat or robe with
+    /// its sleeves, a skirt, overalls, an apron or a vest over them, the collar, the scarf, the bag), meshed apart so that
+    /// every hem is an edge with its own outline. A swimsuit is the body's own, with nothing over it. A cut only carves
+    /// what came before it, so each sleeve is cut at its hem before the body of the garment is added, and the garment's
+    /// hem is cut before anything below it.
     /// </summary>
-    private static void BuildOverClothes(SdfModel m, CharacterStyle s, Frame f)
+    private static void BuildBodyAndClothes(SdfModel m, SdfModel w, CharacterStyle s, Frame f)
     {
-        const SurfaceMaterial Cloth = SurfaceMaterial.Cloth;
+        const SurfaceMaterial Cloth = SurfaceMaterial.Cloth, Skin = SurfaceMaterial.Skin;
+        // How far a garment stands off the body under it, and how slim the body is under a sleeve
+        const float Off = 0.012f, Under = 0.85f;
+        var skin = s.Skin;
+        var top = s.Top;
+        var bottom = s.Bottom;
+        var lining = Shade(top, 0.62f);
+        var band = Shade(top, 0.86f);
+        bool coat = s.Coat || s.Robe;
+        // A swimsuit, or a top in the skin's own colour (a man bare-chested), is no garment over the body
+        int dr = top.R - skin.R, dg = top.G - skin.G, db = top.B - skin.B;
+        bool clothed = !s.Swimsuit && dr * dr + dg * dg + db * db > 8 * 8;
+
+        // ---- the body under the clothes
+        m.Capsule(new Vector3(0, f.ChestY + 0.02f, -0.005f), new Vector3(0, f.NeckY + 0.07f, 0.004f), 0.044f, 0.04f, skin, HumanBones.Head, 0.03f, Skin);
+        m.Ellipsoid(new Vector3(0, f.HipY + 0.005f, 0), new Vector3(f.TorsoW * 0.98f, 0.082f, f.TorsoD * 1.02f), coat ? skin : bottom, HumanBones.Hips, 0f, Cloth);
+        if (clothed)
+        {
+            m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f), new Vector3(f.TorsoW * 0.92f, (f.ChestY - f.HipY) * 0.58f, f.TorsoD * 0.9f), lining, HumanBones.Spine, 0.05f, Cloth);
+            m.Ellipsoid(new Vector3(0, f.ChestY, 0), new Vector3(f.TorsoW, 0.068f, f.TorsoD * 0.9f), lining, HumanBones.Spine, 0.05f, Cloth);
+        }
+        else
+        {
+            // A swimsuit or a bare chest: the top and the bottom painted on the body, a clean line at the waist
+            m.Ellipsoid(new Vector3(0, f.WaistY, 0.004f), new Vector3(f.TorsoW, (f.ChestY - f.HipY) * 0.62f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
+            m.Ellipsoid(new Vector3(0, f.ChestY, 0), new Vector3(f.TorsoW * 1.08f, 0.075f, f.TorsoD), top, HumanBones.Spine, 0.05f, Cloth);
+        }
+        var arms = new[] { (1f, HumanBones.UpperArmL, HumanBones.ForeArmL, HumanBones.HandL), (-1f, HumanBones.UpperArmR, HumanBones.ForeArmR, HumanBones.HandR) };
+        // Slim only where a sleeve covers the arm, so a bare forearm is as round as it ever was
+        float atShoulder = clothed ? Under : 1f, belowElbow = clothed && !s.ShortSleeves ? Under : 1f;
+        foreach (var (side, upperB, foreB, handB) in arms)
+        {
+            var sh = Side(f.Shoulder, side);
+            var el = Side(f.Elbow, side);
+            var wr = Side(f.Wrist, side);
+            m.Capsule(sh, el, f.ArmR * atShoulder, f.ArmR * 0.9f * belowElbow, skin, upperB, 0.035f, Skin);
+            m.Capsule(el, wr, f.ArmR * 0.9f * belowElbow, f.ArmR * 0.76f * belowElbow, skin, foreB, 0.015f, Skin);
+            var along = Vector3.Normalize(wr - el);
+            m.Ellipsoid(wr + along * 0.044f, new Vector3(0.036f, 0.046f, 0.029f), skin, handB, 0.016f, Skin, AlignY(along));
+            m.Capsule(wr + along * 0.018f + new Vector3(-side * 0.012f, 0, 0.02f), wr + along * 0.045f + new Vector3(-side * 0.016f, 0, 0.038f),
+                0.014f, 0.012f, skin, handB, 0.01f, Skin);
+        }
+        var sole = s.Sole ?? Shade(s.Shoes, 0.62f);
+        foreach (var (side, thighB, shinB, footB) in new[] { (1f, HumanBones.ThighL, HumanBones.ShinL, HumanBones.FootL), (-1f, HumanBones.ThighR, HumanBones.ShinR, HumanBones.FootR) })
+        {
+            var hip = Side(f.LegTop, side);
+            var knee = Side(f.Knee, side);
+            var ankle = Side(f.Ankle, side);
+            bool bare = s.Skirt || s.Shorts || s.Swimsuit || coat;
+            bool bareThigh = s.Skirt || s.Swimsuit || coat;
+            m.Capsule(hip + new Vector3(0, 0.03f, 0), knee, f.LegR, f.LegR * 0.84f, bareThigh ? skin : bottom, thighB, 0.04f, bareThigh ? Skin : Cloth);
+            m.Capsule(knee, ankle + new Vector3(0, 0.01f, 0), f.LegR * 0.84f, f.LegR * 0.7f, bare ? skin : bottom, shinB, 0.02f, bare ? Skin : Cloth);
+            if (s.Shorts && !bareThigh)
+                m.Paint(m.Capsule(Vector3.Lerp(hip, knee, 0.72f), ankle, 0.09f, 0.09f, skin, thighB), true, thighB, shinB).Material = Skin;
+            // The shoe meets the leg with no blend, and trousers end in a cuff over its top
+            var shoe = new Vector3(ankle.X, 0.044f, ankle.Z + 0.03f);
+            m.Box(shoe, new Vector3(0.05f, 0.044f, 0.086f), 0.04f, s.Shoes, footB, bare ? 0.02f : 0f, SurfaceMaterial.Leather);
+            m.Paint(m.Box(new Vector3(shoe.X, 0.008f, shoe.Z), new Vector3(0.07f, 0.018f, 0.12f), 0f, sole, footB), true, footB).Material = SurfaceMaterial.Plastic;
+            if (!bare)
+                m.Torus(ankle + new Vector3(0, 0.03f, 0), f.LegR * 0.7f + 0.004f, 0.011f, Shade(bottom, 0.86f), shinB, 0f, Cloth);
+        }
+        BuildHeld(m, s, f);
+        if (!clothed)
+        {
+            // A clean waistline, painted once everything is joined on (joined after it, the arms and legs would blur it)
+            m.Paint(m.Box(new Vector3(0, f.HipY - 0.1f, 0), new Vector3(0.3f, (f.WaistY - f.HipY) * 0.42f + 0.1f, 0.3f), 0f, bottom, HumanBones.Hips),
+                false, HumanBones.Hips, HumanBones.Spine, HumanBones.Skirt);
+            return;
+        }
+
+        // ---- the clothes: the sleeves first, each cut flat at its hem
+        foreach (var (side, upperB, foreB, _) in arms)
+        {
+            var sh = Side(f.Shoulder, side);
+            var el = Side(f.Elbow, side);
+            var wr = Side(f.Wrist, side);
+            w.Capsule(sh, el, f.ArmR + Off * 0.8f, f.ArmR * 0.9f + Off * 0.8f, top, upperB, 0.035f, Cloth);
+            Vector3 hem, along;
+            int hemBone;
+            if (s.ShortSleeves)
+            {
+                along = Vector3.Normalize(el - sh);
+                hem = Vector3.Lerp(sh, el, 0.68f);
+                hemBone = upperB;
+            }
+            else
+            {
+                w.Capsule(el, wr, f.ArmR * 0.9f + Off * 0.8f, f.ArmR * 0.76f + Off * 0.8f, top, foreB, 0.015f, Cloth);
+                along = Vector3.Normalize(wr - el);
+                hem = wr - along * 0.004f;
+                hemBone = foreB;
+            }
+            var turn = AlignY(along);
+            w.Box(hem + along * 0.15f, new Vector3(0.07f, 0.15f, 0.07f), 0f, top, hemBone, 0f, rotation: turn, op: SdfOp.Cut);
+            if (s.Jacket)
+                w.Paint(w.Box(hem - along * 0.016f, new Vector3(0.07f, 0.01f, 0.07f), 0f, band, hemBone, rotation: turn), false, hemBone);
+            w.Paint(w.Box(hem, new Vector3(0.07f, 0.0055f, 0.07f), 0f, lining, hemBone, rotation: turn), false, hemBone);
+        }
+
+        // The body of the shirt, the jacket or the coat, a little bigger than the body under it all round
+        w.Ellipsoid(new Vector3(0, f.HipY + 0.005f, 0), new Vector3(f.TorsoW * 0.98f + Off, 0.082f + Off, f.TorsoD * 1.02f + Off), top, HumanBones.Hips, 0f, Cloth);
+        w.Ellipsoid(new Vector3(0, f.WaistY, 0.004f), new Vector3(f.TorsoW + Off, (f.ChestY - f.HipY) * 0.62f + Off, f.TorsoD + Off), top, HumanBones.Spine, 0.05f, Cloth);
+        w.Ellipsoid(new Vector3(0, f.ChestY, 0), new Vector3(f.TorsoW * 1.08f + Off, 0.075f + Off, f.TorsoD + Off), top, HumanBones.Spine, 0.05f, Cloth);
+        float hemY;
+        int[] hemBones;
+        if (coat)
+        {
+            // A coat's tails flare to below the knee on the skirt's bone, so they swing; a robe's fall to the ankles
+            hemY = s.Robe ? f.Ankle.Y + 0.06f : f.Knee.Y + 0.035f;
+            w.Capsule(new Vector3(0, f.HipY + 0.03f, 0), new Vector3(0, hemY + 0.02f, -0.006f), f.TorsoD * 1.05f + Off, f.TorsoW * (s.Robe ? 1.4f : 1.3f) + Off,
+                top, HumanBones.Skirt, 0.04f, Cloth);
+            w.Box(new Vector3(0, hemY - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, top, HumanBones.Skirt, 0f, op: SdfOp.Cut);
+            hemBones = new[] { HumanBones.Skirt, HumanBones.Hips };
+        }
+        else
+        {
+            // A jacket ends just below the hips over the trousers, a shirt at the waistline over them (so shorts and a
+            // skirt show whole); the cut keeps clear of the hands at the sides
+            hemY = s.Jacket ? f.HipY - 0.015f : f.HipY + 0.04f;
+            w.Box(new Vector3(0, hemY - 0.3f, 0), new Vector3(0.175f, 0.3f, 0.175f), 0f, top, HumanBones.Hips, 0f, op: SdfOp.Cut);
+            hemBones = new[] { HumanBones.Hips, HumanBones.Spine };
+            if (s.Jacket)
+                w.Paint(w.Box(new Vector3(0, hemY + 0.017f, 0), new Vector3(0.2f, 0.012f, 0.2f), 0f, band, HumanBones.Hips), false, hemBones);
+        }
+        w.Paint(w.Box(new Vector3(0, hemY, 0), new Vector3(0.5f, 0.0055f, 0.5f), 0f, lining, HumanBones.Hips), false, hemBones);
+        if (s.Skirt && !coat)
+        {
+            float skirtHem = f.Knee.Y + 0.065f;
+            w.Capsule(new Vector3(0, f.HipY - 0.01f, 0), new Vector3(0, skirtHem + 0.015f, -0.004f), f.TorsoD * 0.88f + Off, f.TorsoW * 1.55f + Off, bottom, HumanBones.Skirt, 0f, Cloth);
+            w.Box(new Vector3(0, skirtHem - 0.3f, 0), new Vector3(0.5f, 0.3f, 0.5f), 0f, bottom, HumanBones.Skirt, 0f, op: SdfOp.Cut);
+            w.Paint(w.Box(new Vector3(0, skirtHem, 0), new Vector3(0.5f, 0.0055f, 0.5f), 0f, Shade(bottom, 0.62f), HumanBones.Skirt), false, HumanBones.Skirt);
+        }
+        if (s.Stripes)
+        {
+            // Light stripes on a coloured shirt, coloured ones on a white shirt
+            var stripe = s.Top.R + s.Top.G + s.Top.B > 690 ? s.Accent : PixelCanvas.Light1(s.Top, 0.55f);
+            foreach (float y in new[] { f.ChestY - 0.045f, f.WaistY - 0.025f })
+                w.Paint(w.Box(new Vector3(0, y, 0), new Vector3(0.3f, 0.013f, 0.3f), 0f, stripe, HumanBones.Spine), false, HumanBones.Spine);
+        }
+
+        // Down the front: a jacket's zip; a buttoned coat's placket and three buttons in the accent colour; an open coat's
+        // shirt showing between its fronts to the waist and the line where they meet below it; a robe is closed with a sash
+        // (a probe that finds no clothes ahead of it stops at the body's middle, never far behind it, which would stretch the mesh's bounds)
+        Vector3 Front(float x, float y) => SurfaceAlong(w, new Vector3(x, y, 1f), -Vector3.UnitZ) is var p && p.Z < 0f ? p with { Z = 0f } : p;
+        float frontTop = f.ChestY + 0.04f;
+        var seam = new[] { HumanBones.Spine, HumanBones.Hips, HumanBones.Skirt };
+        // A band round the waist is painted on, so it hugs the body's oval (a ring stands off its sides like a hoop)
+        void WaistBand(float y, float half, Color colour) =>
+            w.Paint(w.Box(new Vector3(0, y, 0), new Vector3(0.3f, half, 0.3f), 0f, colour, HumanBones.Spine), false, HumanBones.Spine, HumanBones.Hips, HumanBones.Skirt);
+        if (s.Robe)
+            WaistBand(f.WaistY - 0.01f, 0.02f, s.Accent);
+        else if (s.Jacket || coat)
+        {
+            float from = coat && !s.Buttoned ? f.WaistY - 0.02f : frontTop;
+            w.Paint(w.Box(new Vector3(0, (from + hemY) / 2f, f.TorsoD + 0.05f), new Vector3(0.0045f, (from - hemY) / 2f, 0.06f), 0f, Shade(top, coat ? 0.72f : 0.6f), HumanBones.Spine),
+                false, seam);
+            if (coat && !s.Buttoned)
+                w.Paint(w.Box(new Vector3(0, (frontTop + from) / 2f, f.TorsoD + 0.05f), new Vector3(0.03f, (frontTop - from) / 2f, 0.06f), 0f, s.Accent, HumanBones.Spine),
+                    false, HumanBones.Spine);
+        }
+        if (coat && s.Buttoned)
+        {
+            foreach (float y in new[] { f.ChestY - 0.035f, f.WaistY + 0.005f, f.WaistY - 0.06f })
+                w.Sphere(Front(-0.024f, y) + new Vector3(0, 0, -0.002f), 0.011f, s.Accent, HumanBones.Spine, 0f, SurfaceMaterial.Plastic);
+        }
+        else if (s.Jacket)
+            w.Box(Front(0, frontTop - 0.012f) + new Vector3(0, 0, 0.002f), new Vector3(0.008f, 0.012f, 0.004f), 0.003f, new Color(206, 210, 220, 255), HumanBones.Spine, 0f, SurfaceMaterial.Metal);
+
+        // Two pocket flaps: on a jacket over the hips, on a coat lower down its tails
+        if (s.Jacket || (coat && !s.Robe))
+        {
+            float pocketY = coat ? f.HipY - 0.03f : f.HipY + 0.03f;
+            int pocketBone = coat ? HumanBones.Skirt : HumanBones.Hips;
+            foreach (float side in new[] { 1f, -1f })
+                w.Box(Front(side * 0.072f, pocketY) + new Vector3(0, 0, -0.002f), new Vector3(0.03f, 0.009f, 0.007f), 0.003f, Shade(top, 0.84f), pocketBone, 0f, Cloth);
+        }
+
+        // A strap over the shoulder that follows the clothes' surface round it, a little off it, in short pieces (a
+        // straight strap from the shoulder sinks into the chest's curve), from low on the front to the back
+        Vector3[] Strap(float x, float from, float to, Color colour, float radius, SurfaceMaterial material)
+        {
+            var middle = new Vector3(x, f.ChestY - 0.01f, 0f);
+            const int Pieces = 10;
+            var points = new Vector3[Pieces + 1];
+            for (int i = 0; i <= Pieces; i++)
+            {
+                float a = from + (to - from) * i / Pieces;
+                var d = new Vector3(0, MathF.Sin(a), MathF.Cos(a));
+                points[i] = SurfaceAlong(w, middle + d * 0.4f, -d) + d * (radius * 0.8f);
+            }
+            for (int i = 0; i < Pieces; i++)
+                w.Capsule(points[i], points[i + 1], radius, radius, colour, HumanBones.Spine, 0.004f, material);
+            return points;
+        }
+
+        // What is worn over the shirt (plan 11 · C3; style guide, "The second trainers' parts"): overalls' bib and straps
+        // in the trousers' colour, an apron's bib and swinging panel, a vest with the shirt showing down its open front
         float bibMiddle = (f.WaistY + f.ChestY) / 2f, bibHalf = (f.ChestY - f.WaistY) / 2f + 0.012f;
         if (s.Overalls)
         {
-            m.Paint(m.Box(new Vector3(0, bibMiddle, f.TorsoD), new Vector3(f.TorsoW * 0.55f, bibHalf, 0.06f), 0f, s.Bottom, HumanBones.Spine), false, HumanBones.Spine);
+            w.Paint(w.Box(new Vector3(0, bibMiddle - 0.02f, f.TorsoD + Off), new Vector3(f.TorsoW * 0.55f, bibHalf + 0.02f, 0.06f), 0f, bottom, HumanBones.Spine),
+                false, HumanBones.Spine, HumanBones.Hips);
             foreach (float side in new[] { 1f, -1f })
-            {
-                var front = new Vector3(side * 0.045f, f.ChestY + 0.005f, f.TorsoD * 0.96f);
-                var over = new Vector3(side * 0.072f, f.ChestY + 0.078f, 0f);
-                var back = new Vector3(side * 0.06f, f.ChestY - 0.03f, -f.TorsoD * 0.96f);
-                m.Capsule(front, over, 0.015f, 0.015f, s.Bottom, HumanBones.Spine, 0.004f, Cloth);
-                m.Capsule(over, back, 0.015f, 0.015f, s.Bottom, HumanBones.Spine, 0.004f, Cloth);
-            }
+                Strap(side * 0.055f, -0.3f, MathF.PI + 0.6f, bottom, 0.012f, Cloth);
         }
         if (s.Apron is Color apron)
         {
-            m.Paint(m.Box(new Vector3(0, bibMiddle, f.TorsoD), new Vector3(f.TorsoW * 0.6f, bibHalf, 0.06f), 0f, apron, HumanBones.Spine), false, HumanBones.Spine);
-            float hem = f.Knee.Y + 0.02f;
-            m.Box(new Vector3(0, (f.WaistY + hem) / 2f, f.TorsoD + 0.014f), new Vector3(f.TorsoW * 0.85f, (f.WaistY - hem) / 2f, 0.012f), 0.008f,
-                apron, HumanBones.Skirt, 0.01f, Cloth);
-            m.Torus(new Vector3(0, f.WaistY, 0.004f), f.TorsoW * 0.98f, 0.012f, apron, HumanBones.Spine, 0.006f, Cloth);
+            w.Paint(w.Box(new Vector3(0, bibMiddle, f.TorsoD + Off), new Vector3(f.TorsoW * 0.6f, bibHalf, 0.06f), 0f, apron, HumanBones.Spine), false, HumanBones.Spine);
+            // The panel from the waist to the knees lies along the front of whatever is under it, tilted to it
+            float panelHem = f.Knee.Y + 0.02f;
+            var high = Front(0, f.WaistY - 0.01f);
+            // Over trousers nothing of the clothes is down there to follow, and the panel hangs straight
+            var low = s.Skirt || coat ? Front(0, panelHem + 0.02f) : high with { Y = panelHem + 0.02f };
+            float tilt = MathF.Atan2(high.Z - low.Z, high.Y - low.Y);
+            var mid = (high + low) / 2f + new Vector3(0, 0, 0.014f);
+            float half = Vector3.Distance(high, low) / 2f + 0.01f;
+            w.Box(mid, new Vector3(f.TorsoW * 0.85f, half, 0.009f), 0.006f, apron, HumanBones.Skirt, 0f, Cloth, Pitch(tilt));
+            WaistBand(f.WaistY, 0.011f, apron);
         }
         if (s.Vest is Color vest)
         {
             float low = f.WaistY - 0.06f, high = f.ChestY + 0.02f;
-            m.Paint(m.Box(new Vector3(0, (low + high) / 2f, 0), new Vector3(0.3f, (high - low) / 2f, 0.3f), 0f, vest, HumanBones.Spine), false, HumanBones.Spine);
-            m.Paint(m.Box(new Vector3(0, (low + high) / 2f, f.TorsoD + 0.05f), new Vector3(0.024f, (high - low) / 2f, 0.06f), 0f, s.Top, HumanBones.Spine),
+            w.Paint(w.Box(new Vector3(0, (low + high) / 2f, 0), new Vector3(0.3f, (high - low) / 2f, 0.3f), 0f, vest, HumanBones.Spine), false, HumanBones.Spine);
+            w.Paint(w.Box(new Vector3(0, (low + high) / 2f, f.TorsoD + 0.05f), new Vector3(0.024f, (high - low) / 2f, 0.06f), 0f, s.Top, HumanBones.Spine),
                 false, HumanBones.Spine);
+        }
+        if (s.GalacticMark)
+        {
+            // Team Galactic's mark in the middle of the chest (plan 11 · C2): the lozenge in its yellow round its dark core
+            var at = new Vector3(0, f.ChestY - 0.012f, f.TorsoD + Off + 0.02f);
+            var turn = Quaternion.CreateFromAxisAngle(Vector3.UnitZ, MathF.PI / 4f);
+            w.Paint(w.Box(at, new Vector3(0.024f, 0.024f, 0.05f), 0f, GalacticMark.Base, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
+            w.Paint(w.Box(at, new Vector3(0.011f, 0.011f, 0.052f), 0f, GalacticMark.Ink, HumanBones.Spine, rotation: turn), false, HumanBones.Spine);
+        }
+
+        // The bag's straps over the shoulders (laid before the collar and the scarf go on), the bag on the back
+        if (s.Bag is Color bag)
+        {
+            foreach (float side in new[] { 1f, -1f })
+            {
+                var points = Strap(side * 0.082f, -0.6f, MathF.PI + 0.4f, Shade(bag, 0.78f), 0.014f, SurfaceMaterial.Leather);
+                w.Box(points[1] + new Vector3(0, 0, 0.004f), new Vector3(0.016f, 0.011f, 0.005f), 0.003f, new Color(206, 210, 220, 255), HumanBones.Spine, 0f, SurfaceMaterial.Metal);
+            }
+            float bz = -f.TorsoD - Off - 0.045f;
+            w.Box(new Vector3(0, f.ChestY - 0.035f, bz), new Vector3(0.1f, 0.1f, 0.055f), 0.045f, bag, HumanBones.Bag, 0f, SurfaceMaterial.Leather);
+            w.Box(new Vector3(0, f.ChestY + 0.035f, bz - 0.012f), new Vector3(0.096f, 0.04f, 0.055f), 0.03f, Shade(bag, 0.86f), HumanBones.Bag, 0.006f, SurfaceMaterial.Leather);
+            w.Box(new Vector3(0, f.ChestY, bz - 0.066f), new Vector3(0.022f, 0.016f, 0.008f), 0.006f, new Color(236, 230, 214, 255), HumanBones.Bag, 0f, SurfaceMaterial.Metal);
+        }
+
+        // A collar (the accent colour's; the garment's own under a scarf), and a scarf wrapped over it with its tail hanging in front
+        w.Torus(new Vector3(0, f.ChestY + 0.058f, 0.004f), 0.074f, 0.024f, s.Scarf ? top : s.Accent, HumanBones.Spine, 0.01f, Cloth);
+        if (s.Scarf)
+        {
+            w.Torus(new Vector3(0, f.ChestY + 0.066f, 0.006f), 0.078f, 0.03f, s.Accent, HumanBones.Spine, 0f, Cloth);
+            var knot = Front(0.04f, f.ChestY + 0.03f);
+            w.Capsule(knot + new Vector3(0, 0, 0.012f), Front(0.052f, f.ChestY - 0.075f) + new Vector3(0, 0, 0.016f), 0.026f, 0.021f, s.Accent, HumanBones.Spine, 0.004f, Cloth);
         }
     }
 

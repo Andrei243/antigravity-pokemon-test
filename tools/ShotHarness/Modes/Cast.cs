@@ -41,6 +41,18 @@ partial class Harness
                 Raylib.ImageDrawText(ref board, look, x + 12, y + 7, 20, Color.White);
             }
             Save(board, name);
+            // A board's twenty rigs are let go before the next's, or the whole table is held at once
+            CharacterModels.Trim(new[] { PlayerIdentity.Character });
+        }
+
+        // Given looks, each also turning large, eight ways round, where its clothes can be judged (56_cast_large_<look>)
+        foreach (string look in named)
+        {
+            string name = $"56_cast_large_{look}";
+            if (!Wanted(name)) continue;
+            float[] round = Enumerable.Range(0, 8).Select(k => k * MathF.PI / 4f).ToArray();
+            var views = CharacterStudio.Turntable(context, look, round, 420, 640, pose, 1.25f, 0.62f);
+            Save(views, name);
         }
 
         foreach (string look in named.Length > 0 ? named : CastInBattle)

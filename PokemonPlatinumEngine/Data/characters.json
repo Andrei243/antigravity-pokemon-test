@@ -3,9 +3,9 @@
 {
   "looks": {
     // The boy the player can be (and the assistant when they are the girl); trainer and lucas are the same look
-    "player": { "hairColor": "#46384e", "hat": "Beret", "hatColor": "#dc383c", "hatBand": "#f6f6fa", "top": "#3a4e8a", "accent": "#ec4646", "bottom": "#303246", "shoes": "#c8463c", "bag": "#f2c446", "sole": "#f0ece4", "blush": true, "scarf": true },
+    "player": { "jacket": true, "hairColor": "#46384e", "hat": "Beret", "hatColor": "#dc383c", "hatBand": "#f6f6fa", "top": "#3a4e8a", "accent": "#ec4646", "bottom": "#303246", "shoes": "#c8463c", "bag": "#f2c446", "sole": "#f0ece4", "blush": true, "scarf": true },
     // The girl the player can be instead (and the professor's assistant when they aren't): our own take on Platinum's winter clothes, a white knitted hat, a long pink coat, a white scarf and pink boots
-    "dawn": { "hairColor": "#363e68", "hair": "Long", "hat": "Beret", "hatColor": "#f8f8fc", "hatBand": "#ee7c9c", "top": "#e25476", "accent": "#f8f8fc", "bottom": "#e25476", "shoes": "#ee7c9c", "eyes": "#46568c", "skirt": true, "coat": true, "bag": "#faf6ec", "sole": "#f4f0ec", "lashes": true, "blush": true, "scarf": true },
+    "dawn": { "buttoned": true, "hairColor": "#363e68", "hair": "Long", "hat": "Beret", "hatColor": "#f8f8fc", "hatBand": "#ee7c9c", "top": "#e25476", "accent": "#f8f8fc", "bottom": "#e25476", "shoes": "#ee7c9c", "eyes": "#46568c", "skirt": true, "coat": true, "bag": "#faf6ec", "sole": "#f4f0ec", "lashes": true, "blush": true, "scarf": true },
     "rival": { "hairColor": "#fad450", "hair": "Spiky", "top": "#f48434", "accent": "#48b068", "bottom": "#3a466c", "shoes": "#ececf0", "eyes": "#604628", "stripes": true, "sole": "#9696a6", "blush": true, "scarf": true },
     "rowan": { "hairColor": "#bec2d2", "hair": "Swept", "top": "#7e5c42", "accent": "#ececf2", "bottom": "#544238", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "bushyBrows": true, "height": 1.04 },
     "nurse": { "hairColor": "#f896be", "hair": "Long", "hat": "NurseCap", "hatBand": "#e84860", "top": "#fcfcff", "accent": "#f8aac8", "bottom": "#f8aac8", "shoes": "#f8f8fc", "eyes": "#4678c8", "skirt": true, "build": "Adult", "lashes": true, "blush": true },

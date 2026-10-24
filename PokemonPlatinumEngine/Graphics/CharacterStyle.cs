@@ -60,6 +60,13 @@ internal sealed class CharacterStyle
     public bool Overalls, Robe, Swimsuit;
     public Color? Apron, Vest;
 
+    /// <summary>
+    /// The top is a jacket (style guide, "Characters", "Layered clothes"): a ribbed band at its hem and cuffs, a zip down
+    /// its front and two pocket flaps. A coat that is <see cref="Buttoned"/> is closed down its front with three buttons in
+    /// the accent colour; any other coat stands open over the shirt.
+    /// </summary>
+    public bool Jacket, Buttoned;
+
     /// <summary>What the person holds (plan 11 · C3), in its own colour or the thing's.</summary>
     public HeldProp Holds;
     public Color? PropColor;

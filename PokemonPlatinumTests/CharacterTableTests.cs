@@ -445,15 +445,16 @@ public class CharacterTableTests
     [Fact]
     public void AGruntsUniformCarriesTheGalacticMark()
     {
+        // The uniform is the clothes' layer, a mesh of its own
         var rig = CharacterModels.Build("GRUNT_F");
-        var mesh = rig.Mesh;
+        var mesh = rig.Clothes!;
         static bool Near(Color a, Color b) => Math.Abs(a.R - b.R) + Math.Abs(a.G - b.G) + Math.Abs(a.B - b.B) < 24;
         var yellow = Enumerable.Range(0, mesh.VertexCount).Where(v => Near(mesh.Colors[v], GalacticMark.Base)).Select(v => mesh.Positions[v]).ToList();
         Assert.True(yellow.Count > 20, $"only {yellow.Count} vertices of the mark");
         Assert.All(yellow, p => Assert.True(MathF.Abs(p.X) < 0.06f && p.Z > 0.05f, $"a yellow vertex at {p} is off the chest's middle"));
         Assert.Contains(Enumerable.Range(0, mesh.VertexCount), v => Near(mesh.Colors[v], GalacticMark.Ink));
         // A look without it has none
-        var plain = CharacterModels.Build("LASS").Mesh;
+        var plain = CharacterModels.Build("LASS").Clothes!;
         Assert.DoesNotContain(Enumerable.Range(0, plain.VertexCount), v => Near(plain.Colors[v], GalacticMark.Base));
     }
 
