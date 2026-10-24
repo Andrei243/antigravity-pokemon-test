@@ -787,6 +787,7 @@ public class SetPieceTests
         Assert.Equal(4, all.Count(i => i.Op == Op.Flicker));
         Assert.Equal(3, all.Count(i => i.Op == Op.Flicker && i.Name.StartsWith("d18r0102_")));
         Assert.Single(all, i => i.Op == Op.Anim && i.Piece == SetPiece.HallOfFame);
-        Assert.Equal(2, all.Count(i => i.Op == Op.Anim && i.Piece == SetPiece.Heal));
+        // (the two nurses' scripts of common, and Aspertia's nurse showing the machine on the Pokémon Center's tour, plan 22 · U5)
+        Assert.Equal(3, all.Count(i => i.Op == Op.Anim && i.Piece == SetPiece.Heal));
     }
 }

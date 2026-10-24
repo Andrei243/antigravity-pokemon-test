@@ -133,6 +133,9 @@ trainers 3, 32: hoenn_grunt_aqua_hideout_4 32, hoenn_grunt_aqua_hideout_6 32, ho
 Aspertia City
 surf 5-15
 super rod 40-70
+=== aspertia_city_gym
+Aspertia City
+trainers 2, 9: unova_lass_serena 9, unova_youngster_pedro 9
 === azalea_gym
 Azalea Town
 trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug_catcher_josh 13, johto_twins_amy_and_mimi 10
@@ -158,6 +161,12 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== cave_of_origin_1f
+Cave Of Origin
+grass 30-36
+=== cave_of_origin_entrance
+Cave Of Origin
+grass 28-36
 === celadon_city
 Celadon City
 surf 5-40
@@ -1329,6 +1338,13 @@ old rod 5-10
 good rod 10-30
 super rod 25-45
 trainers 8, 15-35: hoenn_aidan 32, hoenn_athena 32, hoenn_camden 33, hoenn_donny 34, hoenn_henry 34, hoenn_jonah 32, hoenn_koji_1 34, hoenn_roger 35
+=== route_128
+Route 128
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 30-45
+trainers 7, 31-36: hoenn_alexa 34, hoenn_carlee 35, hoenn_harrison 35, hoenn_isaiah_1 35, hoenn_katelyn_1 35, hoenn_ruben 34, hoenn_wayne 36
 === route_13
 Route 13
 grass 22-30
@@ -1966,6 +1982,47 @@ trainers 5, 31-37: kanto_black_belt_aaron 36, kanto_black_belt_hideki 32, kanto_
 === saffron_city_gym
 Saffron City
 trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_channeler_tasha 33, kanto_psychic_cameron 33, kanto_psychic_johan 31, kanto_psychic_preston 38, kanto_psychic_tyron 34
+=== seafloor_cavern_entrance
+Seafloor Cavern
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== seafloor_cavern_room_1
+Seafloor Cavern
+grass 28-36
+trainers 2, 36: hoenn_grunt_seafloor_cavern_1 36, hoenn_grunt_seafloor_cavern_2 36
+=== seafloor_cavern_room_2
+Seafloor Cavern
+grass 28-36
+=== seafloor_cavern_room_3
+Seafloor Cavern
+grass 28-36
+trainers 2, 35-37: hoenn_grunt_seafloor_cavern_5 35, hoenn_shelly_seafloor_cavern 37
+=== seafloor_cavern_room_4
+Seafloor Cavern
+grass 28-36
+trainers 2, 36: hoenn_grunt_seafloor_cavern_3 36, hoenn_grunt_seafloor_cavern_4 36
+=== seafloor_cavern_room_5
+Seafloor Cavern
+grass 28-36
+=== seafloor_cavern_room_6
+Seafloor Cavern
+grass 28-36
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== seafloor_cavern_room_7
+Seafloor Cavern
+grass 28-36
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== seafloor_cavern_room_8
+Seafloor Cavern
+grass 28-36
 === seafoam_islands_1f
 Seafoam Islands
 grass 22-33
@@ -2197,6 +2254,12 @@ grass 20-30
 === solaceon_ruins_room_7
 Solaceon Ruins
 grass 20-30
+=== sootopolis_city
+Sootopolis City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 5-45
 === spear_pillar
 Spear Pillar
 trainers 4, 39-46: commander_jupiter_spear_pillar 46, commander_mars_spear_pillar 46, galactic_grunt_spear_pillar_1 43, galactic_grunt_spear_pillar_2 41

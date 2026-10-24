@@ -35,7 +35,7 @@ script HughAtTheRanch
   emote 0 exclaim
   speaker "{rival}"
   say "Oh! Nice! You've come here to toughen up too, huh?"
-  walk 0 right 15
+  walk 0 right 9 down 1 right 6
   face 0 player
   say "Right, then let's see how much stronger you've got! Come on!"
   if starter "Snivy" goto AgainstSnivy
@@ -78,7 +78,7 @@ label Owners
   emote 0 exclaim
   say "A LITTLE worried? Are you kidding me?! Your Pokémon could be gone forever!"
   say "I'll find it myself! {player}, help me look!"
-  walk 0 left 15 up 13 fast
+  walk 0 left 15 up 8 fast
   place 0 22 32 down
   speaker "Owner"
   say "My, what got into him? I'm sure it's just off playing somewhere on the ranch."
@@ -92,6 +92,7 @@ label Owners
 # Hugh at the north fence (trigger 1, on 1)
 script HughNorth
   scene "Hugh looks north"
+  place 0 22 32 down
   face 0 player
   speaker "{rival}"
   say "Did the Herdier wander up this way? Let's look!"
@@ -105,13 +106,14 @@ script HughNorth
 # Hugh at the far side (trigger 2, on 2): a Paralyze Heal, and his fear that the Herdier is in trouble
 script HughShares
   scene "Hugh shares"
+  place 0 22 13 down
   face 0 player
   speaker "{rival}"
   say "It's not up here either. Oh! Here, I'll share something good with you."
   give "Paralyze Heal"
   say "If your Pokémon gets paralysed, use that on it."
   say "Still, Pokémon don't just wander off by themselves. If it's mixed up in some kind of trouble..."
-  walk 0 right 25 fast
+  walk 0 right 10 fast
   place 0 47 13 down
   setvar VAR_UNOVA_RANCH 3
   endscene
@@ -150,20 +152,20 @@ script TheHerdier
   say "We're the group that tried to take over Unova two years ago, to set Pokémon free from people like you!"
   say "Not that a kid like you would understand. First I get lost chasing this mutt, and now this..."
   say "Fine! I'll take this chance to get out of here!"
-  walk 16 right 3 up 6 fast
+  face 16 up
   hide 16
   setflag FLAG_UNOVA_HIDE_RANCH_GRUNT
   text "Something was left lying where the grunt stood."
   find "TM21"
-  place 1 48 24 up
-  place 2 49 24 up
+  place 1 50 23 down
+  place 2 51 23 down
   place 0 50 25 up
   speaker "Owner"
   say "Herdier! What were you doing all the way out here? I can't thank you enough, the both of you!"
   speaker "{rival}"
   face 0 1
   say "You're awfully calm about this! Your Pokémon could have been gone for good! Take better care of it!"
-  walk 0 down 8 fast
+  walk 0 down 1 left 3 fast
   hide 0
   setflag FLAG_UNOVA_HIDE_HUGH_RANCH
   speaker "Owner"

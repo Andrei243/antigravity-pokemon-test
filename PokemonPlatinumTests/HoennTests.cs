@@ -133,7 +133,8 @@ public class HoennTests
         for (int y = 0; y < floor.Height; y++)
             for (int x = 0; x < floor.Width; x++)
             {
-                if (floor.IsSolid(x, y) || !FieldMovement.CanSurface(floor, x, y)) continue;
+                // (a warp of the floor is gone through, not come up from: the Seafloor Cavern's way in, plan 21 · H8, part b)
+                if (floor.IsSolid(x, y) || !FieldMovement.CanSurface(floor, x, y) || floor.GetWarpAt(x, y) != null) continue;
                 Assert.Equal("Hoenn", floor.EmergeAt(x, y));
                 Assert.True(FieldMovement.SurfacesOnto(Overworld, x, y), $"the sea floor at {x},{y} comes up onto {Overworld.BehaviourAt(x, y)}");
                 up++;

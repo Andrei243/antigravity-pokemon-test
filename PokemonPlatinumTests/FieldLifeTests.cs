@@ -70,13 +70,16 @@ public class FieldLifeTests
         {
             [FieldWeather.Clear] = 0, [FieldWeather.Cloudy] = 0, [FieldWeather.Rain] = 220, [FieldWeather.HeavyRain] = 380,
             [FieldWeather.Thunderstorm] = 380, [FieldWeather.Snow] = 140, [FieldWeather.HeavySnow] = 320, [FieldWeather.Blizzard] = 460,
-            [FieldWeather.Hail] = 180, [FieldWeather.Fog] = 0, [FieldWeather.Sandstorm] = 240, [FieldWeather.Ash] = 110
+            [FieldWeather.Hail] = 180, [FieldWeather.Fog] = 0, [FieldWeather.Sandstorm] = 240, [FieldWeather.Ash] = 110,
+            // Emerald's drought puts nothing in the air, and its abnormal weather is one of two others by turns (plan 21 · H8, part b)
+            [FieldWeather.Drought] = 0, [FieldWeather.Abnormal] = 0
         };
         var sun = new Dictionary<FieldWeather, float>
         {
             [FieldWeather.Clear] = 1f, [FieldWeather.Cloudy] = 0.45f, [FieldWeather.Rain] = 0.3f, [FieldWeather.HeavyRain] = 0.22f,
             [FieldWeather.Thunderstorm] = 0.2f, [FieldWeather.Snow] = 0.6f, [FieldWeather.HeavySnow] = 0.35f, [FieldWeather.Blizzard] = 0.25f,
-            [FieldWeather.Hail] = 0.4f, [FieldWeather.Fog] = 0.5f, [FieldWeather.Sandstorm] = 0.55f, [FieldWeather.Ash] = 0.75f
+            [FieldWeather.Hail] = 0.4f, [FieldWeather.Fog] = 0.5f, [FieldWeather.Sandstorm] = 0.55f, [FieldWeather.Ash] = 0.75f,
+            [FieldWeather.Drought] = 1f, [FieldWeather.Abnormal] = 0.75f
         };
         foreach (var weather in AllWeather)
         {
@@ -1195,6 +1198,8 @@ public class FieldLifeTests
             ["HeavyRain"] = FieldWeather.HeavyRain, ["Thunderstorm"] = FieldWeather.Thunderstorm, ["Snowing"] = FieldWeather.Snow,
             ["HeavySnow"] = FieldWeather.HeavySnow, ["Blizzard"] = FieldWeather.Blizzard, ["SlowAshfall"] = FieldWeather.Ash,
             ["Sandstorm"] = FieldWeather.Sandstorm, ["Hailing"] = FieldWeather.Hail, ["Fog"] = FieldWeather.Fog, ["DeepFog"] = FieldWeather.Fog,
+            // Emerald's, which only an overlay names (plan 21 · H8, part b)
+            ["Drought"] = FieldWeather.Drought, ["Abnormal"] = FieldWeather.Abnormal,
             // The five places of Platinum's calendar, on most of its days
             ["Route212South"] = FieldWeather.Rain, ["Route213"] = FieldWeather.Clear, ["Route216"] = FieldWeather.HeavySnow,
             ["AcuityLakefront"] = FieldWeather.HeavySnow, ["SnowpointCity"] = FieldWeather.Snow,
@@ -1245,7 +1250,9 @@ public class FieldLifeTests
             var fair = ArtLook.FieldRigFor(time);
             Assert.Equal(fair, ArtLook.Weathered(fair, FieldWeather.Clear));
 
-            foreach (var weather in AllWeather.Where(w => w != FieldWeather.Clear))
+            // A drought lays the harsh sun over the light instead (ArtLook.Drought), and the abnormal weather is turned into
+            // the downpour or the drought before anything lights by it (Weathers.Alternating)
+            foreach (var weather in AllWeather.Where(w => w is not (FieldWeather.Clear or FieldWeather.Drought or FieldWeather.Abnormal)))
             {
                 var rig = ArtLook.Weathered(fair, weather);
                 float through = ArtLook.SunThrough(weather);

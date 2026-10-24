@@ -270,15 +270,15 @@ script CherenAndHugh
   show 2
   speaker "Bianca"
   say "Heeey!"
-  walk 2 up 2
+  walk 2 up 1
   face player down
   say "How did it go with the Gym Leader? Oh! Is that the Basic Badge? Amazing!"
   say "You only just set out, and you've already won a Badge! Here, take this to celebrate."
   give "TM27"
   say "It holds Return. The closer a Pokémon is to its Trainer, the harder that move hits!"
   say "Still, Cheren..."
-  walk player right 1
-  face player left
+  walk player down 1 left 1
+  face player right
   clearflag FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   place 7 39 738 down
   show 7
@@ -315,7 +315,7 @@ script CherenAndHugh
   face 2 player
   say "Being a Gym Leader is even harder than I thought..."
   say "Anyway! The next Gym is in Virbank City, east along Route 20 past Floccesy Town. Good luck, {player}!"
-  walk 2 down 3
+  walk 2 down 2
   hide 2
   setflag FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   setflag FLAG_UNOVA_AFTER_THE_BASIC_BADGE

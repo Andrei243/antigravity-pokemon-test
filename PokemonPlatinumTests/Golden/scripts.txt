@@ -5965,6 +5965,184 @@ from the trigger at 28,17 of AquaHideout_B2F
 way -
   * emote Matt Exclaim
   = VAR_TEMP_1 0 -> 1
+=== aspertia_city.Bianca
+from Bianca at 36,709 of Unova
+way -
+  Bianca> It's sooo pretty up here. I could look at this view all day!
+=== aspertia_city.CherenOutside
+from Cheren at 39,738 of Unova
+way -
+  Cheren> A Trainer who knows why they battle grows faster. Think about what you want from your journey.
+=== aspertia_city.Hugh
+from {rival} at 43,751 of Unova
+way -
+  Barry> Bianca, Bianca... where could she be?
+=== aspertia_city.HughCatchesUp
+from the trigger at 36,719 of Unova
+way -
+=== aspertia_city.HughTurnsBack
+from the trigger at 36,720 of Unova
+way -
+  Barry> Hey, wrong way! I'm telling you, she's up there. Go and get your Pokémon!
+=== aspertia_city.MomOutside
+from Mom at 46,740 of Unova
+way -
+  Mom> Have a wonderful trip! Go and see all the Pokémon and people you can, with your own eyes.
+=== aspertia_city.NotYet
+from the trigger at 52,711 of Unova
+way -
+  > Lucas hasn't found Bianca yet. Better look round Aspertia before heading out of town.
+=== aspertia_city.Sister
+from {rival}'s Sister at 45,740 of Unova
+way -
+  Barry's Sister> Be good friends with your Pokémon, OK?
+=== aspertia_city_2.Mom
+from Mom at 4,5 of AspertiaCity_PlayersHouse
+way -
+  Mom> You look worn out, dear. Sit down for a minute and let your Pokémon rest.
+  Mom> There, all better. Off you go, and be careful out there!
+  * fanfare FanfareHeal
+=== aspertia_city_2.MomQuestions
+from the trigger at 10,8 of AspertiaCity_PlayersHouse
+way 0.0.0
+  Mom> Oh, good, you're up! Listen, have you heard of Professor Juniper? She studies Pokémon. She's quite famous.
+  Mom> We were friends years ago, and she called me this morning, out of the blue!
+  Mom> So, Lucas... how would you like a Pokémon of your very own?
+  Mom> I knew it! That's the first part sorted, then.
+  Mom> Next question. Do you know what a Pokédex is?
+  Mom> Of course you do. It writes down every Pokémon you meet, all on its own. Clever thing.
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? So, Lucas... how would you like a Pokémon of your very own? = Yes
+  ? Next question. Do you know what a Pokédex is? = Yes
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * scene aspertia_city_2.Mom's questions
+  * emote Mom Exclaim
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 0.0.1.0, from answer 3
+  Mom> Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? And you'd like one of those too, wouldn't you? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 0.1.0, from answer 2
+  Mom> It's a little machine that notes down every kind of Pokémon you come across, all by itself.
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? Next question. Do you know what a Pokédex is? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 0.1.1.0, from answer 3
+  Mom> Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? And you'd like one of those too, wouldn't you? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 1.0.0.0, from answer 1
+  Mom> Really? You don't mean that! Every child in Aspertia dreams of having a partner.
+  Mom> So, Lucas... how would you like a Pokémon of your very own?
+  Mom> I knew it! That's the first part sorted, then.
+  Mom> Next question. Do you know what a Pokédex is?
+  Mom> Of course you do. It writes down every Pokémon you meet, all on its own. Clever thing.
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? So, Lucas... how would you like a Pokémon of your very own? = No
+  ? So, Lucas... how would you like a Pokémon of your very own? = Yes
+  ? Next question. Do you know what a Pokédex is? = Yes
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * emote Mom Question
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 1.0.0.1.0, from answer 4
+  Mom> Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? And you'd like one of those too, wouldn't you? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 1.0.1.0, from answer 3
+  Mom> It's a little machine that notes down every kind of Pokémon you come across, all by itself.
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? Next question. Do you know what a Pokédex is? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+way 1.0.1.1.0, from answer 4
+  Mom> Think about it! Filling one up means going out and seeing the world. Doesn't that sound wonderful?
+  Mom> And you'd like one of those too, wouldn't you?
+  Mom> Then that's settled. The professor has sent her assistant all the way up here to meet you.
+  Mom> Her name is Bianca. I'm told you can't miss her: just look for a big green hat.
+  Mom> She'll have a Pokédex for you, and a Pokémon to be your partner. Go and find her!
+  ? And you'd like one of those too, wouldn't you? = No
+  ? And you'd like one of those too, wouldn't you? = Yes
+  * endscene
+  = VAR_UNOVA_HOUSE 0 -> 1
+  + seen aspertia_city_2.Mom's questions
+=== aspertia_city_gym.Cheren
+from Cheren at 15,2 of AspertiaCity_Gym
+way -
+  Cheren> We have a challenger! If you can beat my two pupils first, I'll be your opponent.
+=== aspertia_city_gym.GymGuide
+from Gym Guide at 12,22 of AspertiaCity_Gym
+way -
+  Gym Guide> Hello! I'm Clyde, guide to every Trainer who takes on a Pokémon Gym. Thanks for taking this one on!
+  Gym Guide> Here, have this to mark the occasion.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  Gym Guide> Gyms test what Trainers can do. Beat the Leader, and you'll have proved yourself a strong Trainer!
+  Gym Guide> If every Pokémon you have faints, you lose. So it helps to bring a few along!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_FRESH_WATER
+=== aspertia_city_pokemon_center.Bianca
+from Bianca at 7,16 of AspertiaCity_PokemonCenter
+way -
+  Bianca> The Pokémon Center is the same wherever you go. Isn't that handy?
+=== aspertia_gate.GateGift
+from the trigger at 1,11 of AspertiaGate
+way -
+  Guard> Hold on, Lucas! You can't go out there without... Oh? You've got a Pokémon with you!
+  Guard> Well then, have a going-away present. Don't be shy, take it!
+  > Lucas received the Potion!
+  > Lucas put it away in the Medicine pocket.
+  Guard> When your Pokémon get hurt, take it easy and stop in at a Pokémon Center.
+  * scene aspertia_gate.The guard's gift
+  * fanfare FanfareItem
+  * endscene
+  = VAR_UNOVA_GATE 0 -> 1
+  + seen aspertia_gate.The guard's gift
+=== aspertia_gate.Guard
+from Guard at 9,11 of AspertiaGate
+way -
+  Guard> Beyond this gate is Route 19. Floccesy Town is a short walk down the hill.
 === azalea.Charcoal
 from Man at 407,464 of Johto
 way -
@@ -6557,6 +6735,76 @@ from Prof. Rowan at 38,720 of Sinnoh
 way -
   Prof. Rowan> What is taking place at the lakes? Something is very wrong, and I mean to find out what.
   Prof. Rowan> Lake Valor lies east of Pastoria City, Lucas. Go, and be careful.
+=== cave_of_origin_b1f.Wallace
+from Wallace at 9,13 of CaveOfOrigin_B1F
+way 0
+  Wallace> Ah, you must be Lucas. I've heard about what you've done.
+  Wallace> My name is Wallace. I was Sootopolis's Gym Leader once, but other matters called me away, and I left the Gym in my mentor Juan's hands.
+  Wallace> ......
+  Wallace> Groudon and Kyogre, the two raging out there, are ancient Pokémon from long before people.
+  Wallace> But they're not the only ones. There is a third, somewhere: an ancient Pokémon named Rayquaza.
+  Wallace> It's said that long ago it was Rayquaza that calmed the other two's fighting. But even I have no idea where it is now...
+  Wallace> Lucas, do you know where Rayquaza might be? If you do, please tell me.
+  Wallace> Sky Pillar? Of course... It must be Sky Pillar!
+  Wallace> Lucas, there isn't a moment to lose! We're going to Sky Pillar right away!
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = Sky Pillar
+  * scene cave_of_origin_b1f.Wallace in the Cave of Origin
+  * emote Wallace Exclaim
+  * sound stairs
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE
+  + FLAG_WALLACE_GOES_TO_SKY_PILLAR
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 3
+  + seen cave_of_origin_b1f.Wallace in the Cave of Origin
+way 3.0, from answer 1
+  Wallace> You don't remember? Hmm... That's a problem. Can't you remember somehow?
+  Wallace> Lucas, do you know where Rayquaza might be? If you do, please tell me.
+  Wallace> Sky Pillar? Of course... It must be Sky Pillar!
+  Wallace> Lucas, there isn't a moment to lose! We're going to Sky Pillar right away!
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = I don't remember
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = Sky Pillar
+  * sound stairs
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE
+  + FLAG_WALLACE_GOES_TO_SKY_PILLAR
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 3
+  + seen cave_of_origin_b1f.Wallace in the Cave of Origin
+way 2.0, from answer 1
+  Wallace> The Cave of Origin? But that's right here! I need you to do better than that.
+  Wallace> Please, think hard about where Rayquaza might be right now.
+  Wallace> Lucas, do you know where Rayquaza might be? If you do, please tell me.
+  Wallace> Sky Pillar? Of course... It must be Sky Pillar!
+  Wallace> Lucas, there isn't a moment to lose! We're going to Sky Pillar right away!
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = The Cave of Origin
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = Sky Pillar
+  * sound stairs
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE
+  + FLAG_WALLACE_GOES_TO_SKY_PILLAR
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 3
+  + seen cave_of_origin_b1f.Wallace in the Cave of Origin
+way 1.0, from answer 1
+  Wallace> Mt. Pyre? But when I saw the old woman there, she said nothing of it.
+  Wallace> I can't believe she would hide something from me... Could you think about it a little harder?
+  Wallace> Lucas, do you know where Rayquaza might be? If you do, please tell me.
+  Wallace> Sky Pillar? Of course... It must be Sky Pillar!
+  Wallace> Lucas, there isn't a moment to lose! We're going to Sky Pillar right away!
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = Mt. Pyre
+  ? Lucas, do you know where Rayquaza might be? If you do, please tell me. = Sky Pillar
+  * sound stairs
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE
+  + FLAG_WALLACE_GOES_TO_SKY_PILLAR
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 3
+  + seen cave_of_origin_b1f.Wallace in the Cave of Origin
 === celadon_city_condominiums_1f.TeaWoman
 from Old Woman at 2,9 of CeladonCity_Condominiums_1F
 way -
@@ -7504,6 +7752,16 @@ from Woman at 34,19 of CliffEdgeGate
 way -
   Woman> Have you heard? They're building a Safari Zone just past this cliff. You can catch any Pokémon you find there!
   Woman> I can hardly wait. Hurry up and finish it, workmen!
+=== common.AthlonDesk
+from a trainer with lines of their own
+way 0
+  Clerk> Welcome to the Pokéathlon Dome! Here Pokémon test themselves in races and games instead of battles.
+  Clerk> Would you like to enter a course?
+  Clerk> A team of the Pokéathlon is three Pokémon, and Eggs can't compete. Please come back with three.
+  ? Would you like to enter a course? = Yes
+way 1, from answer 1
+  Clerk> Come back whenever your Pokémon feel like a run!
+  ? Would you like to enter a course? = No
 === common.Attendant
 from a trainer with lines of their own
 way -
@@ -8654,6 +8912,26 @@ way -
   + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
   + FLAG_HIDE_MT_CHIMNEY_TRAINERS
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
+=== common.HoennChapterTen
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_ROUTE_128_ARCHIE
+  + FLAG_HIDE_ROUTE_128_MAXIE
+  + FLAG_HIDE_ROUTE_128_STEVEN
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  + FLAG_HIDE_SKY_PILLAR_WALLACE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON
+  + FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
+  + FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  + FLAG_HOENN_CHAPTER_TEN
 === common.HoennChapterThree
 from a trainer with lines of their own
 way -
@@ -8771,6 +9049,9 @@ way -
   + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
   + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
   + FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW
+  + FLAG_HIDE_ROUTE_128_ARCHIE
+  + FLAG_HIDE_ROUTE_128_MAXIE
+  + FLAG_HIDE_ROUTE_128_STEVEN
   + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
   + FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2
   + FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
@@ -8782,6 +9063,11 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
   + FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  + FLAG_HIDE_SKY_PILLAR_WALLACE
   + FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
   + FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY
   + FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT
@@ -8795,6 +9081,14 @@ way -
   + FLAG_HIDE_SLATEPORT_CITY_SCOTT
   + FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY
   + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
+  + FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON
+  + FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
+  + FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
+  + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
+  + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
   + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   + FLAG_HIDE_VERDANTURF_TOWN_SCOTT
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
@@ -8810,6 +9104,7 @@ way -
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
+  + FLAG_HOENN_CHAPTER_TEN
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -9531,6 +9826,54 @@ way 1, from answer 1
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.UnovaCatchUp
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_STORY_BEGUN
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_STORY_BEGUN
+=== common.UnovaOpeningDone
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
 === common.UseCut
 from an obstacle, with every field move and every badge
 way -
@@ -10713,6 +11056,174 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== floccesy_ranch_2.ACry
+from the trigger at 41,14 of FloccesyRanch
+from the trigger at 43,12 of FloccesyRanch
+way -
+  Barry> Did you hear that just now?
+  Barry> I'll check round here. You go deeper into the grove and look!
+  * scene floccesy_ranch_2.A cry in the grove
+  * cry Herdier
+  * emote {rival} Exclaim
+  * endscene
+  = VAR_UNOVA_RANCH 0 -> 4
+  + seen floccesy_ranch_2.A cry in the grove
+=== floccesy_ranch_2.Herdier
+from Herdier at 47,52 of FloccesyRanch
+from Herdier at 51,20 of FloccesyRanch
+way -
+  Herdier> Bawoof! Ba-woof!
+  * cry Herdier
+=== floccesy_ranch_2.Hugh
+from {rival} at 25,44 of FloccesyRanch
+way -
+  Barry> Where could that Herdier have got to? We have to find it!
+=== floccesy_ranch_2.HughAtTheRanch
+from the trigger at 41,45 of FloccesyRanch
+way 0
+  Barry> Oh! Nice! You've come here to toughen up too, huh?
+  Barry> Right, then let's see how much stronger you've got! Come on!
+  Barry> Not bad... You think about how to bring out your Pokémon's strength. I've got to step it up.
+  ???> I thought I heard a commotion! A Pokémon battle, was it? Ah, to be young!
+  Barry> Who are you?
+  Owner> Who am I? Why, I own this ranch! And this is my wife.
+  Wife> You should always heal your Pokémon after a battle. Here, take one of these, both of you.
+  > Lucas received the Potion!
+  > Lucas put it away in the Medicine pocket.
+  Wife> Potions are good to have when you're far from a Pokémon Center.
+  Owner> Say, you didn't see a Herdier anywhere about, did you? It's wandered off, and I can't think where.
+  Owner> I'm a little worried, to tell the truth.
+  Barry> A LITTLE worried? Are you kidding me?! Your Pokémon could be gone forever!
+  Barry> I'll find it myself! Lucas, help me look!
+  Owner> My, what got into him? I'm sure it's just off playing somewhere on the ranch.
+  Wife> I wonder... Oh, and dear, if your Pokémon get hurt, come and see me. I'll make them feel better.
+  * scene floccesy_ranch_2.Hugh at the ranch
+  * emote {rival} Exclaim
+  * battle unova_rival_6 Won
+  * fanfare FanfareItem
+  * emote {rival} Exclaim
+  * endscene
+  = VAR_UNOVA_RANCH 0 -> 1
+  + beaten unova_rival_6
+  + seen floccesy_ranch_2.Hugh at the ranch
+way 1, from answer 1
+  * battle unova_rival_6 Lost
+  * scene over, unseen
+=== floccesy_ranch_2.HughNorth
+from the trigger at 21,33 of FloccesyRanch
+way -
+  Barry> Did the Herdier wander up this way? Let's look!
+  * scene floccesy_ranch_2.Hugh looks north
+  * endscene
+  = VAR_UNOVA_RANCH 0 -> 2
+  + seen floccesy_ranch_2.Hugh looks north
+=== floccesy_ranch_2.HughShares
+from the trigger at 23,11 of FloccesyRanch
+way -
+  Barry> It's not up here either. Oh! Here, I'll share something good with you.
+  > Lucas received the Paralyze Heal!
+  > Lucas put it away in the Medicine pocket.
+  Barry> If your Pokémon gets paralysed, use that on it.
+  Barry> Still, Pokémon don't just wander off by themselves. If it's mixed up in some kind of trouble...
+  * scene floccesy_ranch_2.Hugh shares
+  * fanfare FanfareItem
+  * endscene
+  = VAR_UNOVA_RANCH 0 -> 3
+  + seen floccesy_ranch_2.Hugh shares
+=== floccesy_ranch_2.Owner
+from Owner at 46,52 of FloccesyRanch
+way -
+  Owner> It's strange for Herdier to wander off. It always plays with the other one, or helps out on the ranch.
+=== floccesy_ranch_2.TheHerdier
+from the trigger at 50,24 of FloccesyRanch
+way -
+  Herdier> Yaaarp...
+  Barry> That cry! You found it! What a relief! I'll go and get its Trainer. You stay here!
+  Grunt> Tch! You little pest! Do you know who you're dealing with?
+  Grunt> We're the group that tried to take over Unova two years ago, to set Pokémon free from people like you!
+  Grunt> Not that a kid like you would understand. First I get lost chasing this mutt, and now this...
+  Grunt> Fine! I'll take this chance to get out of here!
+  > Something was left lying where the grunt stood.
+  > Lucas found the TM21!
+  > TM21 holds the move Frustration.
+  > Lucas put it away in the TMs & HMs pocket.
+  Owner> Herdier! What were you doing all the way out here? I can't thank you enough, the both of you!
+  Barry> You're awfully calm about this! Your Pokémon could have been gone for good! Take better care of it!
+  Owner> Hmm... I wonder if something happened to that boy. It's as if he's afraid of losing Pokémon...
+  Owner> Come on, Herdier. Let's go home.
+  * scene floccesy_ranch_2.The lost Herdier
+  * cry Herdier
+  * emote Grunt Exclaim
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_RANCH
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  = VAR_UNOVA_FLOCCESY 0 -> 3
+  = VAR_UNOVA_RANCH 0 -> 5
+  + seen floccesy_ranch_2.The lost Herdier
+=== floccesy_ranch_2.Wife
+from Wife at 46,52 of FloccesyRanch
+way -
+  Wife> You and your Pokémon look a little worn out. Rest a minute. You won't get far tired like that!
+  Wife> There! You're both full of energy again.
+  * fanfare FanfareHeal
+=== floccesy_town.Alder
+from Alder at 110,695 of Unova
+way -
+  Alder> Have you rested your Pokémon? My house is just up the street.
+=== floccesy_town.AlderHome
+from the trigger at 112,667 of Unova
+from the trigger at 112,670 of Unova
+way -
+  Alder> Ah! You've given your friend his map. You were only gone a little while, but you both look a bit stronger.
+  Alder> Come on in, then. Time for some training!
+  * scene floccesy_town.Alder asks the player in
+  * fade out
+  * warp FloccesyTown_AldersHouse 6 11
+  * endscene
+  + FLAG_UNOVA_HIDE_ALDER_FLOCCESY
+  = VAR_UNOVA_FLOCCESY 0 -> 4
+  + seen floccesy_town.Alder asks the player in
+=== floccesy_town.AlderTownMaps
+from the trigger at 112,670 of Unova
+way -
+  Alder> There you are! This way, and we'll start your training. Hm? Why are you carrying two Town Maps?
+  Alder> Oho! It's your friend's, is it? The lad with the ?
+  Alder> He went by not long ago, all fired up. I believe he was heading for the ranch off Route 20.
+  Alder> Deliver that map first, then come back to me. Just follow this road east, it goes to Route 20.
+  * scene floccesy_town.The second Town Map
+  * emote Alder Dots
+  * endscene
+  = VAR_UNOVA_FLOCCESY 0 -> 2
+  + seen floccesy_town.The second Town Map
+=== floccesy_town.AlderWaits
+from the trigger at 111,668 of Unova
+way -
+  Alder> Follow the road east to Route 20. I'll wait here until you've given your friend his map.
+=== floccesy_town.AlderWelcome
+from the trigger at 108,694 of Unova
+way -
+  Alder> Welcome to Floccesy Town! Now then, Lucas. How are your Pokémon feeling?
+  Alder> They always give their best for you. Look after them in return!
+  Alder> My house is just up the street. Stop in at the Pokémon Center first, if you like.
+  * scene floccesy_town.Alder in Floccesy Town
+  * endscene
+  = VAR_UNOVA_FLOCCESY 0 -> 1
+  + seen floccesy_town.Alder in Floccesy Town
+=== floccesy_town_2.Alder
+from Alder at 6,3 of FloccesyTown_AldersHouse
+way -
+  Alder> Go and show Aspertia's Gym Leader what you and your Pokémon can do!
+=== floccesy_town_2.Boy
+from Boy at 7,8 of FloccesyTown_AldersHouse
+way -
+  Boy> I want to go to lots of places and learn all about Pokémon. Then I'll get even stronger!
+=== floccesy_town_2.Girl
+from Girl at 5,8 of FloccesyTown_AldersHouse
+way -
+  Girl> My dream is to train my Pokémon here, and become the strongest Trainer in Unova!
 === fortree_city.Kecleon
 from Kecleon at 345,8 of Hoenn
 way -
@@ -16267,6 +16778,42 @@ way 0.1, from answer 2
   + beaten hoenn_koji_1
 way 1, from answer 1
   * battle hoenn_koji_1 Lost
+=== route_128.Isaiah
+from Isaiah at 675,253 of Hoenn
+way 0.0
+  Triathlete Isaiah> Triathlete Isaiah: I swim round this reef a hundred times a day. You're my hundred-and-first lap!
+  Isaiah> You swim like you battle: fast and hard. Let's keep pushing each other!
+  Isaiah> Register Isaiah in the PokéNav's Match Call?
+  Isaiah> Great! I'll call you from the reef.
+  ? Register Isaiah in the PokéNav's Match Call? = Yes
+  * battle hoenn_isaiah_1 Won
+  * addcontact hoenn_isaiah
+  + FLAG_PHONE_CONTACT_HOENN_ISAIAH
+  + beaten hoenn_isaiah_1
+way 0.1, from answer 2
+  Isaiah> Fair enough. Another hundred laps for me, then.
+  ? Register Isaiah in the PokéNav's Match Call? = No
+  + beaten hoenn_isaiah_1
+way 1, from answer 1
+  * battle hoenn_isaiah_1 Lost
+=== route_128.Katelyn
+from Katelyn at 718,244 of Hoenn
+way 0.0
+  Triathlete Katelyn> Triathlete Katelyn: Out here the only thing to beat is the sea. Or you!
+  Katelyn> You beat me fair and square. I want a rematch once I've trained some more!
+  Katelyn> Register Katelyn in the PokéNav's Match Call?
+  Katelyn> I'll call you the moment I'm faster!
+  ? Register Katelyn in the PokéNav's Match Call? = Yes
+  * battle hoenn_katelyn_1 Won
+  * addcontact hoenn_katelyn
+  + FLAG_PHONE_CONTACT_HOENN_KATELYN
+  + beaten hoenn_katelyn_1
+way 0.1, from answer 2
+  Katelyn> Then I'll just have to find you out here again.
+  ? Register Katelyn in the PokéNav's Match Call? = No
+  + beaten hoenn_katelyn_1
+way 1, from answer 1
+  * battle hoenn_katelyn_1 Lost
 === route_12_fishing_house.Board
 from the tile read at 9,1 of Route12_FishingHouse
 way -
@@ -17981,6 +18528,83 @@ way -
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
   + seen sandgem_town.The assistant
+=== seafloor_cavern_entrance.Grunt
+from Team Aqua Grunt at 10,2 of SeafloorCavern_Entrance
+way -
+  Team Aqua Grunt> Hey! I know that face! If you're here, you've come to make trouble for us again!
+  Team Aqua Grunt> A kid like you take on Team Aqua? You're about a million years too early!
+  Team Aqua Grunt> You'd fit right in with Team Magma. Speaking of which, I hear they were seen round Mossdeep.
+  Team Aqua Grunt> That lot don't look right anywhere near the sea!
+  * emote Team Aqua Grunt Exclaim
+  = VAR_HAS_TALKED_TO_SEAFLOOR_CAVERN_ENTRANCE_GRUNT 0 -> 1
+=== seafloor_cavern_room_9.ArchieWakesKyogre
+from the trigger at 17,42 of SeafloorCavern_Room9
+way 0
+  Archie> Hold it right there.
+  Archie> Fufufu... So it was you all along.
+  Archie> Look! Look how beautiful it is! The sleeping form of the ancient Pokémon Kyogre!
+  Archie> I have waited so long for this day...
+  Archie> You surprise me, chasing me all the way down here. But it ends now.
+  Archie> For my dream to come true, you have to disappear!
+  Archie> Fufufu... I'll give you that. You really are gifted.
+  Archie> But! I have this! With the Red Orb, I can make Kyogre...
+  > The Red Orb began to shine all by itself!
+  Archie> What?! I didn't do anything! Why did the Red Orb... Where has Kyogre gone?
+  Archie> Hm? A message from our people outside...
+  Archie> Yes, what is it? It's raining hard? Good, that's just what should happen. It's why we woke Kyogre, to make the sea grow!
+  Archie> What?! Much harder than we planned? You're in danger?
+  Archie> That can't be... That's impossible... Stay where you are and keep watching!
+  Archie> Something's wrong... The Red Orb was meant to wake Kyogre and let me command it...
+  Archie> So why? Why did Kyogre vanish? Why?!
+  Maxie> What have you done, Archie? You've woken Kyogre, haven't you?
+  Maxie> What becomes of the world if this rain never ends? All the land on earth will sink under a rising sea...
+  Archie> Wh-what?! Don't you look down on me! Wasn't it Team Magma who woke Groudon and let it go wild?
+  Archie> As long as I have the Red Orb, I can control Kyogre... I should be able to control it...
+  Maxie> There's no time to argue! Go outside and see it for yourself!
+  Maxie> See whether what you've made is the world either of us wanted!
+  Maxie> Lucas, you have to get out of here too! Come on!
+  * scene seafloor_cavern_room_9.Kyogre wakes in the Seafloor Cavern
+  * music hoenn/eye_galactic
+  * battle hoenn_archie Won
+  * music stop
+  * effect Sparkles 16 42
+  * music hoenn/awaken_legend
+  * effect Burst 17 38
+  * cry Kyogre
+  * walk Kyogre onspot down onspot down
+  * camera Shake
+  * walk Kyogre onspot up onspot up
+  * camera Shake
+  * sound pc_on
+  * sound pc_off
+  * emote Archie Exclaim
+  * walk Archie back down
+  * warp Hoenn 678 242
+  * endscene
+  + FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN
+  + FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_ASLEEP
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS
+  + FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE
+  + FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1
+  + FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN
+  + FLAG_LEGENDARIES_IN_SOOTOPOLIS
+  + FLAG_SYS_WEATHER_CTRL
+  = VAR_ROUTE128_STATE 0 -> 1
+  = VAR_SEAFLOOR_CAVERN_STATE 0 -> 1
+  = VAR_SOOTOPOLIS_CITY_STATE 0 -> 1
+  = VAR_STEVENS_HOUSE_STATE 0 -> 2
+  + beaten hoenn_archie
+  + seen seafloor_cavern_room_9.Kyogre wakes in the Seafloor Cavern
+way 1, from answer 1
+  * battle hoenn_archie Lost
+  * scene over, unseen
+=== seafloor_cavern_room_9.SleepingKyogre
+from Kyogre at 17,38 of SeafloorCavern_Room9
+way -
+  > Kyogre is sleeping in the pool. It doesn't stir at all.
 === seafoam_islands_1f.FallFrom1F
 from the pit at 21,8 of SeafoamIslands_1F
 from the pit at 30,8 of SeafoamIslands_1F
@@ -18620,6 +19244,207 @@ from Ruin Maniac at 558,659 of Sinnoh
 way -
   Ruin Maniac> A travelling trainer, are you? Then how many kinds of Pokémon have you come across so far?
   Ruin Maniac> Any trainer worth the name should have met fifty at least. If you haven't, go further and look harder!
+=== sootopolis_city.Archie
+from Archie at 31,33 of SootopolisCity
+way -
+  Archie> Kyogre! What's wrong? Look here, it's the Red Orb! Calm down! Kyogre!
+  Archie> ......
+  Archie> It's no use. It doesn't hear me at all!
+=== sootopolis_city.BlackBelt
+from Black Belt at 17,40 of SootopolisCity
+way -
+  Black Belt> Go, red one! Go, blue one! Hit him harder!
+  Black Belt> ...Hey, do you know those Pokémon's names?
+=== sootopolis_city.Boy1
+from Boy at 43,26 of SootopolisCity
+way -
+  Boy> Diving in the sea, climbing up and down stairs all day... Live here and you can't help getting fit.
+=== sootopolis_city.Boy2
+from Boy at 19,37 of SootopolisCity
+way -
+  Boy> I don't think those two Pokémon are angry, somehow. I think... they just can't hold their own power back.
+=== sootopolis_city.Expert
+from Old Man at 31,18 of SootopolisCity
+way -
+  Old Man> Beyond here lies the Cave of Origin, where the spirits of Pokémon are said to rest.
+  Old Man> Nobody may go in. Please, turn back.
+=== sootopolis_city.Girl
+from Girl at 14,42 of SootopolisCity
+way -
+  Girl> If they keep this up, Sootopolis will be smashed to pieces!
+=== sootopolis_city.GymDoor
+from the tile read at 31,32 of SootopolisCity
+way -
+  > The door is shut tight.
+=== sootopolis_city.Kiri
+from Kiri at 9,43 of SootopolisCity
+way -
+  Kiri> Hello! I'm Kiri. Here, you can have one of these!
+  > Lucas received the Pomeg Berry!
+  > Lucas put it away in the Berries pocket.
+  Kiri> And this one too!
+  > Lucas received the Figy Berry!
+  > Lucas put it away in the Berries pocket.
+  Kiri> When you make a wish, what do you wish for?
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+  + FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY
+=== sootopolis_city.Man
+from Man at 26,4 of SootopolisCity
+way -
+  Man> You don't look like an ordinary tourist. What brings you all the way into the crater?
+=== sootopolis_city.Maniac
+from Man at 17,44 of SootopolisCity
+way -
+  Man> Pokémon of legend, right before my eyes! I never thought I'd see them for myself!
+=== sootopolis_city.Maxie
+from Maxie at 29,33 of SootopolisCity
+way -
+  Maxie> G-Groudon... Please, stop! I understand your power now!
+  Maxie> If you go on like this, it won't be only Sootopolis. All of Hoenn will be ruined!
+=== sootopolis_city.NinjaBoy
+from Boy at 51,14 of SootopolisCity
+way -
+  Boy> I've never been out of this city. I wonder what the world's like on the other side of the round sky?
+=== sootopolis_city.ShutDoor
+from the tile read at 44,17 of SootopolisCity
+from the tile read at 45,6 of SootopolisCity
+from the tile read at 48,25 of SootopolisCity
+from the tile read at 53,28 of SootopolisCity
+from the tile read at 8,35 of SootopolisCity
+from the tile read at 9,17 of SootopolisCity
+from the tile read at 9,26 of SootopolisCity
+from the tile read at 9,6 of SootopolisCity
+way -
+=== sootopolis_city.Steven
+from Steven at 20,36 of SootopolisCity
+way -
+  Steven> Those Pokémon... Groudon and Kyogre, the two ancient Pokémon, woken from their long sleep...
+  Steven> And now they're hurling all their power at each other, and nothing can stop it.
+  Steven> ...Lucas. If you're here now, I'll take it you're ready to be part of this.
+  Steven> Then there's someone I'd like you to meet. Come with me, please.
+  Steven> Tell me, Lucas. Seeing Groudon and Kyogre, do you think Pokémon are things to be afraid of?
+  Steven> They're not. Pokémon are so much more than that... But why am I asking you? You know that already.
+  Steven> Here we are. Inside, you'll find a man named Wallace.
+  Steven> I think you have just what it takes to help him...
+  * scene sootopolis_city.Steven leads to the Cave of Origin
+  * fade out
+  * fade in
+  * warp CaveOfOrigin_Entrance 9 20
+  * endscene
+  + FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN
+  + seen sootopolis_city.Steven leads to the Cave of Origin
+=== sootopolis_city.Titan
+from Groudon at 28,44 of SootopolisCity
+from Kyogre at 34,44 of SootopolisCity
+way -
+  > Two enormous Pokémon are locked in battle. The water heaves and the air crackles round them.
+=== sootopolis_city.Wallace
+from Wallace at 31,18 of SootopolisCity
+way -
+  Wallace> Lucas... The leaders of Team Magma and Team Aqua didn't mean any harm, I think.
+  Wallace> It wouldn't hurt to hear them out.
+=== sootopolis_city.Woman1
+from Woman at 49,34 of SootopolisCity
+way -
+  Woman> Sootopolis grew up inside the crater of a volcano. Look up, and you see the crater's rim all round.
+  Woman> All you see of the sky is a circle. That's why the sky over Sootopolis is the loveliest of all.
+=== sootopolis_city.Woman2
+from Woman at 47,33 of SootopolisCity
+way -
+  Woman> The sky was clear this morning... then black clouds rolled in, rain came down in sheets, and the thunder started!
+  Woman> Then it's scorching hot, and then it pours again. Is it all because of those Pokémon?
+=== sootopolis_city_house_1.BlackBelt
+from Black Belt at 2,4 of SootopolisCity_House1
+way -
+  Black Belt> Thirty years I've spent in Sootopolis sharpening my skills. And I made a TM that shatters anything.
+  Black Belt> I'm passing it on to you!
+  > Lucas received the TM31!
+  > TM31 holds the move Brick Break.
+  > Lucas put it away in the TMs & HMs pocket.
+  Black Belt> TM31 is Brick Break! It smashes through walls of light. Words can't do it justice.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_BRICK_BREAK
+=== sootopolis_city_house_1.Kecleon
+from Kecleon at 2,3 of SootopolisCity_House1
+way -
+  > Kecleon: Pyuu-hyaah!
+  * cry Kecleon
+=== sootopolis_city_house_2.OldWoman
+from Old Woman at 3,3 of SootopolisCity_House2
+way 0
+  Old Woman> Mt. Pyre... Two orbs lie side by side at its summit. Did you know?
+  Old Woman> Yes, two orbs side by side... Seeing them together is somehow soothing.
+  ? Mt. Pyre... Two orbs lie side by side at its summit. Did you know? = Yes
+way 1, from answer 1
+  Old Woman> No? Perhaps you ought to go and see them for yourself.
+  ? Mt. Pyre... Two orbs lie side by side at its summit. Did you know? = No
+=== sootopolis_city_house_3.Woman
+from Woman at 2,4 of SootopolisCity_House3
+way 0
+  Woman> You're a Pokémon trainer, aren't you? Sootopolis's Juan has lots of fans. Even more than his pupil Wallace!
+  Woman> Do you have any fans?
+  Woman> Oh! Then you must be very strong.
+  ? Do you have any fans? = Yes
+way 1, from answer 1
+  Woman> Oh dear, that's a little lonely. Work hard, and the fans will come!
+  ? Do you have any fans? = No
+=== sootopolis_city_house_4.Azumarill
+from Azumarill at 2,3 of SootopolisCity_House4
+way -
+  > Azumarill: Marimari?
+  * cry Azumarill
+=== sootopolis_city_house_6.Woman
+from Woman at 4,3 of SootopolisCity_House6
+way -
+  Woman> Hello! You're our first visitor in ages. You've brightened my whole day!
+  Woman> I'd give you my big Wailmer Doll, but you'd have nowhere to put it yet. I'll keep it safe for you until you do.
+  Woman> I just love soft dolls!
+=== sootopolis_city_lotad_and_seedot_house.LotadBrother
+from Fisherman at 2,4 of SootopolisCity_LotadAndSeedotHouse
+way -
+  Fisherman> Do you know Lotad? They're rare in Sootopolis. I love big Lotad, I mean really love them!
+  Fisherman> My big brother says Seedot are bigger. Wrong! Everybody knows Lotad are way bigger.
+  Fisherman> No big Lotad? How disappointing... If you get a big one, come and show me!
+=== sootopolis_city_lotad_and_seedot_house.SeedotBrother
+from Hiker at 5,4 of SootopolisCity_LotadAndSeedotHouse
+way -
+  Hiker> Do you know Seedot? You hardly ever see one in Sootopolis. I love big Seedot. The bigger the better!
+  Hiker> My little brother says Lotad are bigger. Silly! Seedot are bigger, everyone knows that.
+  Hiker> No big Seedot? That's a shame. If you find a big one, come and show me.
+=== sootopolis_city_mart.FatMan
+from Man at 5,5 of SootopolisCity_Mart
+way -
+  Man> A PP Up is a wonderful thing. It raises how many times a Pokémon can use one of its moves!
+=== sootopolis_city_mart.SootopolisClerk
+from Clerk at 1,3 of SootopolisCity_Mart
+way -
+  Clerk> Welcome! What can I get for you?
+  Clerk> Thank you! Do come again.
+  * open Shop sootopolis
+=== sootopolis_city_pokemon_center_1f.DoubleEdgeTutor
+from Woman at 2,3 of SootopolisCity_PokemonCenter_1F
+way 0
+  Woman> A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon?
+  Woman> Which one shall learn it?
+  Woman> Turtwig learned Double-Edge!
+  Woman> Double-Edge hurts the one who uses it too. Save it for when it matters most.
+  ? A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_MOVE_TUTOR_TAUGHT_DOUBLE_EDGE
+way 1, from answer 1
+  Woman> Another time, then. I'll be here.
+  ? A move that puts everything into one blow... Double-Edge. Shall I teach it to one of your Pokémon? = No
+=== sootopolis_city_pokemon_center_1f.Gentleman
+from Gentleman at 12,4 of SootopolisCity_PokemonCenter_1F
+way -
+  Gentleman> They say Wallace is the strongest trainer in all of Hoenn. And this town's Gym is led by the man who taught him!
+  Gentleman> But the Elite Four are said to be stronger still. How strong can they be?
+=== sootopolis_city_pokemon_center_1f.Woman
+from Woman at 4,7 of SootopolisCity_PokemonCenter_1F
+way -
+  Woman> Whatever happens, wherever I am, I'll always be friends with Pokémon. Being with them is the best fun there is!
 === spear_pillar.Grunts
 from Grunt at 30,48 of SpearPillar
 from Grunt at 32,48 of SpearPillar
@@ -19784,6 +20609,104 @@ way -
   Hiker> Dug up any treasures? I'll give you good Spheres for them.
   Hiker> Mind how you go down here!
   * underground hiker
+=== underwater_seafloor_cavern.Submarine
+from the tile read at 5,4 of Underwater_SeafloorCavern
+from the tile read at 6,4 of Underwater_SeafloorCavern
+from the tile read at 7,4 of Underwater_SeafloorCavern
+from the tile read at 8,4 of Underwater_SeafloorCavern
+way -
+  > "Submarine Explorer 1" is painted on its side.
+  > It's the submarine Team Aqua took from Slateport! They must have come ashore near here.
+=== unova_route_19.Alder
+from Alder at 94,695 of Unova
+way -
+  Alder> Hm? Out walking with a Pokémon? Good, good! There's no better way to spend a day.
+=== unova_route_19.AlderMeets
+from the trigger at 91,693 of Unova
+way -
+  ???> You there! Young Trainer!
+  Alder> The name's Alder! I go where the wind takes me, and I tell everyone I meet how good it is to walk with Pokémon.
+  Alder> And who might you be? Lucas, from Aspertia City! Ha! Up the hill, eh?
+  Alder> Your  is a fine-looking Pokémon. But you're not quite a seasoned Trainer yet, are you?
+  Alder> Right! I'll give you a little training. Follow me to Floccesy Town!
+  * scene unova_route_19.Alder on Route 19
+  * endscene
+  + FLAG_UNOVA_HIDE_ALDER_ROUTE_19
+  = VAR_UNOVA_ROUTE_19 0 -> 2
+  + seen unova_route_19.Alder on Route 19
+=== unova_route_19.Bianca
+from Bianca at 53,696 of Unova
+way -
+  Bianca> Weaken it first, then throw the ball! You can do it!
+=== unova_route_19.BiancasLesson
+from the trigger at 51,699 of Unova
+way -
+  Bianca> Heeey! Over here!
+  Bianca> This kind of reminds me of the day I set out on Route 1...
+  Bianca> OK, here's how it works. The Pokédex fills in by itself whenever you meet a Pokémon.
+  Bianca> And when you catch one, it records even more about it! So, watch closely. I'll catch one now.
+  Bianca> Phew! I did it! OK, the important part: weaken a wild Pokémon first, then throw a Poké Ball.
+  Bianca> If it's healthy it'll just break out. A tired Pokémon is much easier to catch!
+  Bianca> You're taking that Town Map down to your friend, right? Floccesy Town is straight down this road.
+  Bianca> Bye for now! Meet lots of Pokémon, and catch lots of them, OK?
+  * scene unova_route_19.Bianca's lesson
+  * catcher Bianca Munna 7
+  * catchinglesson Patrat 2 Caught
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+  + seen unova_route_19.Bianca's lesson
+=== unova_route_20.Cheren
+from Cheren at 173,648 of Unova
+way -
+  Cheren> Two Pokémon from one patch of grass. Make sure your team is ready for it.
+=== unova_route_20.CherensAdvice
+from the trigger at 160,660 of Unova
+way -
+  Cheren> Lucas! Wait!
+  Cheren> Come with me, you two.
+  Cheren> See the darker grass here? Now and then two Pokémon jump out of it at once.
+  Cheren> And the Pokémon that live in it can be quite rare. Keep your eyes open.
+  Cheren> If you're going to challenge the next Gym, that's Virbank's. These might help.
+  > Lucas received 3 × Pecha Berry!
+  > Lucas put them away in the Berries pocket.
+  Cheren> And some for you too, Barry. Both of you, do your best! If you need anything, come and find me.
+  Barry> Cheren really knows his stuff. And he's fought Team Plasma, too...
+  Barry> That's it, I've decided! I'm going to get stronger than him!
+  Barry> And you... do your best! Fill up that Pokédex, and watch my back. Got it?
+  * scene unova_route_20.Cheren on Route 20
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  = VAR_UNOVA_ROUTE_20 0 -> 3
+  + seen unova_route_20.Cheren on Route 20
+=== unova_route_20.Hiker
+from Hiker at 159,645 of Unova
+way -
+  Hiker> The grass round here hides all sorts of Pokémon. Some of them even drop out of the trees!
+=== unova_route_20.HikerBlocks
+from the trigger at 159,644 of Unova
+way -
+  Hiker> Hold it! A kid without a single Gym Badge, heading on past here? Not on my watch!
+  Hiker> Battle the Trainers and Pokémon round here, then battle some more. Come back with a Badge!
+=== unova_route_20.HikerChallenge
+from the trigger at 158,644 of Unova
+way 0
+  Hiker> Hey! That shiny thing is the Basic Badge! Don't let it go to your head. It's a rough world out there!
+  Hiker> Let me show you just how rough!
+  Hiker> All right, I'm beaten! With Pokémon you can count on like that, even a kid can hold their own.
+  * battle unova_hiker_jerome Won
+  = VAR_UNOVA_ROUTE_20 0 -> 2
+  + beaten unova_hiker_jerome
+way 1, from answer 1
+  * battle unova_hiker_jerome Lost
+=== unova_route_20.Hugh
+from {rival} at 173,648 of Unova
+way -
+  Barry> I have to get stronger than Team Plasma!
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -

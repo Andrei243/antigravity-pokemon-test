@@ -13,7 +13,7 @@
       "name": "Youngster",
       "dialog": [ "Wild Pokémon jump out of the tall grass. If yours gets tired, head back up the hill to heal." ]
     },
-    "1": { "name": "Alder", "npcType": "alder", "script": "Alder", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ALDER_ROUTE_19" },
+    "1": { "name": "Alder", "npcType": "alder", "script": "Alder", "at": [ 94, 695 ], "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ALDER_ROUTE_19" },
     "4": {
       "name": "Lass",
       "dialog": [ "I walk this route every day. Some Pokémon only come out in certain seasons, you know." ]

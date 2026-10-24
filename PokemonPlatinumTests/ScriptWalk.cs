@@ -351,6 +351,11 @@ internal sealed class ScriptWalk
                             ? host => host.PlayerTile = (at, host.PlayerTile.Y)
                             : host => host.PlayerTile = (host.PlayerTile.X, at));
                     break;
+                // A team of none: a region's opening that takes an older save with a Pokémon past itself plays only
+                // for someone who has none yet (plan 22 · U5, common.UnovaCatchUp)
+                case Query.Var when c.Other == null && c.Name == "PARTY_COUNT" && c.Number == 0:
+                    Add("no Pokémon", host => host.Party.Clear());
+                    break;
                 case Query.Party when c.Number is > 1 and <= 6:
                     Add($"a team of {c.Number}", host =>
                     {

@@ -28,7 +28,7 @@ script BiancasLesson
   say "If it's healthy it'll just break out. A tired Pokémon is much easier to catch!"
   say "You're taking that Town Map down to your friend, right? Floccesy Town is straight down this road."
   say "Bye for now! Meet lots of Pokémon, and catch lots of them, OK?"
-  walk 5 up 3
+  walk 5 up 1
   hide 5
   setflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   setflag FLAG_UNOVA_HIDE_MOM_ASPERTIA
@@ -39,13 +39,14 @@ script BiancasLesson
   end
 
 
-# The bottom of the route (trigger 1, on 1): Alder, once Champion of Unova, stops the player, looks the new partner
+# The bottom of the route (trigger 1, on 1): Alder, once Champion of Unova (the overlay stands him on the sand by the
+# path, since Black 2's tile for him is shut in by rock here), stops the player, looks the new partner
 # over and goes ahead to Floccesy Town to give a lesson.
 script AlderMeets
   scene "Alder on Route 19"
   speaker "???"
   say "You there! Young Trainer!"
-  walk 1 down 2
+  walk 1 left 2
   face 1 player
   face player 1
   speaker "Alder"
