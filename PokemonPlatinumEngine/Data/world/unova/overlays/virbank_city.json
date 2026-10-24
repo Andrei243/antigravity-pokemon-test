@@ -1,0 +1,73 @@
+{
+  // Virbank City (plan 22 · U5, part b): Black 2's harbour and works town, its people and signs ours. The story's
+  // people (virbank_city.txt): the captain (0) and Roxie (1) arguing in the street as the player first comes in, and on
+  // the dock once the captain is back from Pokéstar Studios; the studios' man turning the player back at the north gate
+  // (6) until the Toxic Badge; and on the dock after the Badge Roxie (7) and Hugh (8) facing Team Plasma's three grunts
+  // (9, 10, 11). The triggers are on tiles of our own, each with a variable of ours (the rulings' "Unova's first
+  // chapter, part b")
+  "area": "virbank_city",
+  "bgmTrack": "unova/virbank",
+  "triggers": [
+    { "script": "RoxieAndTheCaptain", "x": 205, "z": 650, "width": 1, "depth": 3, "variable": "VAR_UNOVA_VIRBANK", "value": 0 },
+    { "script": "StudiosClosed", "x": 215, "z": 642, "width": 5, "depth": 1, "variable": "VAR_UNOVA_VIRBANK", "value": 2 },
+    { "script": "PlasmaAtTheDock", "x": 237, "z": 669, "width": 1, "depth": 3, "variable": "VAR_UNOVA_VIRBANK", "value": 4 },
+    { "script": "TheCaptainSails", "x": 237, "z": 669, "width": 1, "depth": 3, "variable": "VAR_UNOVA_VIRBANK", "value": 7 }
+  ],
+  "people": {
+    "0": { "name": "Captain", "npcType": "virbank_captain", "script": "Captain", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN" },
+    "1": { "name": "Roxie", "npcType": "roxie", "script": "RoxieInTown", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN" },
+    "2": {
+      "name": "Roughneck",
+      "dialog": [ "Roxie's poison packs a real sting. But I caught a Magnemite in the complex, and that sorted me right out!" ]
+    },
+    "3": {
+      "name": "Worker",
+      "dialog": [ "A shift at the complex would wear anyone down. Good thing my Pokémon do the heavy lifting!" ]
+    },
+    "4": {
+      "name": "Artist",
+      "dialog": [ "The PCs at the Pokémon Center can keep a team ready for you to switch to. Handy, if you like to plan ahead!" ]
+    },
+    "5": {
+      "name": "Man",
+      "npcType": "Gentleman",
+      "dialog": [ "My Watchog has been with me since the day I was born. Its sharp eyes have got us out of trouble more than once!" ]
+    },
+    "6": { "name": "Studio Hand", "npcType": "Gentleman", "script": "StudioHand", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_POKESTAR_GUARD" },
+    "7": { "name": "Roxie", "npcType": "roxie", "script": "RoxieOnTheDock", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "8": { "name": "{rival}", "npcType": "hugh", "script": "HughOnTheDock", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "9": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "10": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunts", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "11": { "name": "Grunt", "npcType": "plasma_grunt", "script": "DockGrunts", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_DOCK" },
+    "13": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Roxie's band plays the club under the Gym. Tickets sell out in minutes these days!" ]
+    },
+    "14": { "name": "Watchog", "npcType": "Pokemon", "species": "Watchog", "dialog": [ "Watchog: Wah-chog!" ] },
+    "15": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "The ships come and go from this quay all day. Some of them go as far as Castelia City!" ]
+    },
+    "16": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Look at the smoke over the complex. My grandpa says it's only steam, but it looks like a dragon to me." ]
+    },
+    "17": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "I'm saving up for a ticket to Roxie's next show. Only nine hundred more Poké Dollars to go!" ]
+    },
+    "18": {
+      "name": "Youngster",
+      "dialog": [ "You can carry six Pokémon at once. Six! Count them on your belt: one, two, three, four, five, six!" ]
+    }
+  },
+  "signs": {
+    "15": "Virbank City\nThe fog rolls in, the stars come out",
+    "16": "Pokéstar Studios ahead\nWhere dreams are filmed",
+    "17": "Virbank City Pokémon Gym\nLeader: Roxie, the poison rocker"
+  }
+}

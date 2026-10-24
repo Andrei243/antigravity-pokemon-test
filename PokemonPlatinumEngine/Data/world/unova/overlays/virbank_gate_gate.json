@@ -1,0 +1,17 @@
+{
+  // The gate between Virbank City and Pokéstar Studios (plan 22 · U5, part b): Black 2's room, our words. Its far door
+  // stays shut: the studios are a door the plan leaves closed (plan 22's decision 7)
+  "area": "virbank_gate_gate",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "0": {
+      "name": "Guard",
+      "npcType": "Gentleman",
+      "dialog": [ "Through this gate lies Pokéstar Studios! I'm sorry, but they're filming, so it's closed to visitors for now." ]
+    },
+    "1": {
+      "name": "Clown",
+      "dialog": [ "At Pokéstar Studios you can live a whole other life! A hero, a villain, a ghost... once they let us in, anyway." ]
+    }
+  }
+}

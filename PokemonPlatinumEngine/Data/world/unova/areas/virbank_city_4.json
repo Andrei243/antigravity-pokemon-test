@@ -1,0 +1,29 @@
+{
+  "key": "virbank_city_4",
+  "index": 451,
+  "name": "Virbank City",
+  "matrix": 261,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "virbank_city", "toWarp": 4 },
+    { "x": 6, "z": 9, "to": "virbank_city", "toWarp": 4 },
+    { "x": 7, "z": 9, "to": "virbank_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "8", "movement": "none", "x": 4, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 2, "script": "1" },
+    { "id": "1", "looks": "artist", "movement": "look_around", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "29", "movement": "wander_around", "x": 10, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

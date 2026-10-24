@@ -1,0 +1,31 @@
+{
+  "key": "virbank_gate_gate",
+  "index": 453,
+  "name": "Virbank Gate",
+  "matrix": 12,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 14, "to": "virbank_city", "toWarp": 7 },
+    { "x": 4, "z": 1, "to": "pokestar_studios", "toWarp": 0 },
+    { "x": 5, "z": 14, "to": "virbank_city", "toWarp": 7 },
+    { "x": 6, "z": 14, "to": "virbank_city", "toWarp": 7 },
+    { "x": 5, "z": 1, "to": "pokestar_studios", "toWarp": 0 },
+    { "x": 6, "z": 1, "to": "pokestar_studios", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 9, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "harlequin_233", "movement": "look_around", "x": 2, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

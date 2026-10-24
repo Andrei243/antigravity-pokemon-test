@@ -2527,6 +2527,14 @@ public static class WorldMapBuilder
             map.Warps.Add(warp);
             // A door is a blocked tile in the world's data; here stepping onto it is what takes the warp
             if (map.GetGroundTile(from.X, from.Z) == TileType.Door) map.SetSolid(from.X, from.Z, false);
+            // An opening walked into (Black 2's gate houses on an east-west road and the way out of a room through its
+            // back wall, plan 22 · U5, part b: the way from Route 20 into Virbank's gate, the Virbank Gym's door into
+            // its club) is the way's whatever the cover or the room's cut made of its tile: the texture over the gate's
+            // opening is its wall, and a room's back row is wall
+            else if (world.Index.Region == RegionDatabase.Unova
+                && map.BehaviourAt(from.X, from.Z) is TileBehavior.EntranceEast or TileBehavior.EntranceWest or TileBehavior.EntranceNorth
+                    or TileBehavior.EntranceSouth or TileBehavior.ExitEast or TileBehavior.ExitWest or TileBehavior.ExitNorth or TileBehavior.ExitSouth)
+                map.SetSolid(from.X, from.Z, false);
             // So is a GBA game's door the story opens by swapping its tile (the Trick House's puzzle doors, plan 21 · H3,
             // part b): the tile is the way's, which Map.ApplyDoors keeps shut until the story opens it
             else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null))

@@ -131,7 +131,8 @@
     "Aqua Leader": "galactic",
     "Preschooler": "kid",
     "Nursery Aide": "girl",
-    "Janitor": "fun"
+    "Janitor": "fun",
+    "Team Plasma Grunt": "galactic"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -159,11 +160,14 @@
     "Magma Leader": "galacticBoss",
     "Aqua Admin": "galactic",
     "Aqua Leader": "galacticBoss",
-    "Leader Cheren": "gym"
+    "Leader Cheren": "gym",
+    "Leader Roxie": "gym",
+    "Team Plasma Grunt": "galactic"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",
     "Magma Admin": "eye_magma",
-    "Magma Leader": "eye_magma"
+    "Magma Leader": "eye_magma",
+    "Team Plasma Grunt": "eye_plasma"
   }
 }

@@ -287,6 +287,109 @@ public class UnovaStoryTests
         Assert.Equal(3, game.Bag.GetQuantity(ItemDatabase.Get("Pecha Berry")!));
         Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_ROUTE_20"));
         Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_CHEREN_ROUTE_20"));
+
+        PlayTheVirbankChapter(game);
+    }
+
+    /// <summary>
+    /// Unova's Virbank chapter (plan 22 · U5, part b), played on from Route 20's end: the gate's Great Balls, Roxie and
+    /// her father in the street, the studios' man at the north gate, the Gym's guide, Roxie's band and the Toxic Badge,
+    /// the scout and Roxie's run, Team Plasma at the dock and HM01, the grunt on Route 20, the captain back at the dock
+    /// and the two in the ship terminal.
+    /// </summary>
+    private static void PlayTheVirbankChapter(Game game)
+    {
+        // The gate from Route 20: two Great Balls for the road
+        game.Arrive("VirbankGate", 2, 5);
+        game.Step("GateGift");
+        Assert.Equal(2, game.Bag.GetQuantity(ItemDatabase.Get("Great Ball")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_VIRBANK_GATE"));
+        Assert.False(game.Fires("GateGift"));
+
+        // Virbank City: Roxie and the captain in the street, and the studios' man turning the player back
+        game.Arrive("Unova", 195, 651);
+        Assert.NotNull(game.Present("0", "virbank_city"));
+        Assert.Null(game.Present("9", "virbank_city"));
+        game.Step("RoxieAndTheCaptain");
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN"));
+        Assert.Null(game.Present("1", "virbank_city"));
+        Assert.True(game.Fires("StudiosClosed"));
+        game.Step("StudiosClosed");
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == "Studio Hand" && l.Text.Contains("Pokéstar"));
+
+        // The Gym's way down: the guide's Fresh Water
+        game.Arrive("VirbankCity_Gym", 1, 15);
+        game.Step("GuideGreets");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Fresh Water")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_VIRBANK_GYM"));
+
+        // Roxie's club: she can't hear anyone over her band until both bandmates are beaten
+        game.Arrive("VirbankCity_GymStage", 7, 14);
+        game.Talk("0", "virbank_city_gym_2");
+        Assert.False(game.Story.HasBadge(RegionDatabase.Unova, "Toxic"));
+        game.Talk("1", "virbank_city_gym_2");
+        game.Talk("2", "virbank_city_gym_2");
+        Assert.True(game.Story.HasDefeated("unova_roughneck_nicky"));
+        Assert.True(game.Story.HasDefeated("unova_guitarist_billy_jo"));
+        var roxie = game.Talk("0", "virbank_city_gym_2");
+        Assert.Contains(roxie.Log, l => l.StartsWith("battle unova_leader_roxie "));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Toxic"));
+        Assert.Equal(2, game.Story.BadgeCount(RegionDatabase.Unova));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM09")!));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRoleOf("Leader Roxie"));
+
+        // On the way out: the studios' scout, and Roxie running off after her father; Team Plasma on the dock
+        Assert.True(game.Fires("TheScout"));
+        game.Step("TheScout");
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROXIE_GYM"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_POKESTAR_GUARD"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_VIRBANK_DOCK"));
+        Assert.Null(game.Present("0", "virbank_city_gym_2"));
+
+        // The dock: Team Plasma's speech, the grunt's battle, the grunts' flight and Roxie's HM01
+        game.Arrive("Unova", 230, 670);
+        Assert.NotNull(game.Present("9", "virbank_city"));
+        Assert.Null(game.Present("6", "virbank_city"));
+        game.Step("PlasmaAtTheDock");
+        Assert.Equal(5, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        var dock = game.Talk("9", "virbank_city");
+        Assert.Contains(dock.Log, l => l.StartsWith("battle unova_team_plasma_grunt_44 "));
+        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRoleOf("Team Plasma Grunt"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+        Assert.Equal(6, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.Equal(5, game.Story.Var("VAR_UNOVA_ROUTE_20"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_VIRBANK_DOCK"));
+        Assert.Null(game.Present("9", "virbank_city"));
+
+        // Route 20: Hugh searching by the bridge, and the grunt in the dark grass, who runs for the sea
+        game.Arrive("Unova", 157, 660);
+        var hugh = game.Present("21", "unova_route_20");
+        Assert.NotNull(hugh);
+        Assert.Equal((153, 645), (hugh!.GridX, hugh.GridY));
+        var grunt = game.Talk("22", "unova_route_20");
+        Assert.Contains(grunt.Log, l => l.StartsWith("battle unova_team_plasma_grunt_48 "));
+        Assert.Equal(6, game.Story.Var("VAR_UNOVA_ROUTE_20"));
+        Assert.Equal(7, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROUTE_20_GRUNT"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_ROUTE_20"));
+
+        // The dock again: the captain back from his screen test, and off to his ship
+        game.Arrive("Unova", 230, 670);
+        var captain = game.Present("0", "virbank_city");
+        Assert.NotNull(captain);
+        Assert.Equal((243, 670), (captain!.GridX, captain.GridY));
+        game.Step("TheCaptainSails");
+        Assert.Equal(8, game.Story.Var("VAR_UNOVA_VIRBANK"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN"));
+
+        // The ship terminal: Hugh bound for Castelia, and the captain warming his engines (the voyage is part c's)
+        game.Arrive("VirbankCity_Terminal", 6, 10);
+        Assert.NotNull(game.Present("2", "virbank_city_5"));
+        var terminal = game.Talk("3", "virbank_city_5");
+        Assert.Contains(terminal.Transcript, l => l.Speaker == "Captain" && l.Text.Contains("Castelia"));
     }
 
     [Fact]
@@ -297,7 +400,9 @@ public class UnovaStoryTests
         var game = new Game();
         foreach (string flag in new[] { "FLAG_UNOVA_HIDE_MOM_ASPERTIA", "FLAG_UNOVA_HIDE_CHEREN_ASPERTIA", "FLAG_UNOVA_HIDE_BIANCA_CENTER",
                      "FLAG_UNOVA_HIDE_BIANCA_ROUTE_19", "FLAG_UNOVA_HIDE_RANCH_OWNERS", "FLAG_UNOVA_HIDE_RANCH_GRUNT",
-                     "FLAG_UNOVA_HIDE_HUGH_ROUTE_20", "FLAG_UNOVA_HIDE_CHEREN_ROUTE_20" })
+                     "FLAG_UNOVA_HIDE_HUGH_ROUTE_20", "FLAG_UNOVA_HIDE_CHEREN_ROUTE_20",
+                     "FLAG_UNOVA_HIDE_ROXIE_SCENE", "FLAG_UNOVA_HIDE_VIRBANK_DOCK", "FLAG_UNOVA_HIDE_ROUTE_20_GRUNT",
+                     "FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL", "FLAG_UNOVA_HIDE_HUGH_TERMINAL", "FLAG_UNOVA_VIRBANK_BEGUN" })
             Assert.True(game.Story.Has(flag), flag);
         // Mom at home, Hugh and his sister, Bianca at the outlook and Alder in the open from the start
         foreach (string flag in new[] { "FLAG_UNOVA_HIDE_MOM_HOME", "FLAG_UNOVA_HIDE_HUGH_ASPERTIA", "FLAG_UNOVA_HIDE_HUGHS_SISTER",
@@ -333,10 +438,30 @@ public class UnovaStoryTests
     {
         bool Exists(string id) => File.Exists(GameDataFiles.PathOf(Path.Combine("music", id + ".mml")));
         foreach (string song in new[] { "aspertia", "route19", "floccesy", "gym", "battle_wild", "battle_trainer", "battle_rival", "battle_gym",
-                     "victory_trainer", "victory_gym", "eye_boy", "eye_girl" })
+                     "victory_trainer", "victory_gym", "eye_boy", "eye_girl", "virbank", "eye_plasma" })
             Assert.True(Exists("unova/" + song), song);
         Assert.Equal("unova/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, RegionDatabase.Unova, Exists));
-        foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town" })
+        foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town", "virbank_city", "virbank_complex_2" })
             Assert.StartsWith("unova/", Unova.Value.Overlay(key)!.BgmTrack);
+        // Team Plasma's grunts bring a song of Unova's own when they spot the player (plan 22 · U5, part b)
+        Assert.Equal("unova/eye_plasma", MusicDirector.EyeSong("Team Plasma Grunt", RegionDatabase.Unova, Exists));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheVirbankChapterIsGivenItsHiddenPeople()
+    {
+        // A save of part a's: the story begun, Route 20's end reached, nothing of Virbank's set
+        var game = new Game(begin: false);
+        game.Story.Set("FLAG_UNOVA_STORY_BEGUN");
+        game.Story.SetVar("VAR_UNOVA_ASPERTIA", 7);
+        game.Story.SetVar("VAR_UNOVA_ROUTE_20", 3);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 12));
+        game.Arrive("Unova", 157, 660);
+        Assert.True(game.Story.Has("FLAG_UNOVA_VIRBANK_BEGUN"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_VIRBANK_DOCK"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROUTE_20_GRUNT"));
+        Assert.Null(game.Present("22", "unova_route_20"));
+        // and the first chapter's flags are not set again
+        Assert.Equal(7, game.Story.Var("VAR_UNOVA_ASPERTIA"));
     }
 }

@@ -1,0 +1,62 @@
+{
+  "GuideGreets": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! This is a Pokémon Gym, and a rock club too! Roxie and her band are rehearsing downstairs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take on everyone in there! Oh, and stay hydrated. It gets hot under those stage lights."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Trainers here all use Poison types. Grass and Bug moves don't work well against them, so watch out!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And if your Pokémon get poisoned, an Antidote or a Pecha Berry will sort them out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Badge shines because you and your Pokémon won it together. Never forget that!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

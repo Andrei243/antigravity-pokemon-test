@@ -1,0 +1,32 @@
+{
+  "key": "virbank_city_gym",
+  "index": 455,
+  "name": "Virbank City",
+  "matrix": 55,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_POISONE_GYM_01",
+  "nightMusic": "BGM_POISONE_GYM_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 0, "to": "virbank_city_gym_2", "toWarp": 0 },
+    { "x": 1, "z": 16, "to": "virbank_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "187", "movement": "none", "x": 7, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [
+    { "x": 6, "z": 1, "type": 0, "script": "5" },
+    { "x": 10, "z": 1, "type": 0, "script": "5" },
+    { "x": 1, "z": 10, "type": 0, "script": "6" }
+  ],
+  "triggers": [
+    { "x": 8, "z": 3, "width": 3, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x40aa", "value": "0" }
+  ]
+}

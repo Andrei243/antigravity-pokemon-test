@@ -1,0 +1,37 @@
+{
+  // Roxie's club, the Virbank Gym's hall (plan 22 · U5, part b): Black 2's stage, our words. Roxie (0) battles once
+  // both her bandmates are beaten (1 Nicky on bass, 2 Billy Jo on guitar), for the Toxic Badge; after it the studios'
+  // scout (3) catches the player on the way out and Roxie (4, the scene's own) runs to fetch her father
+  // (virbank_city_gym_2.txt). The sound man (5) only talks
+  "area": "virbank_city_gym_2",
+  "bgmTrack": "unova/gym",
+  "triggers": [
+    { "script": "TheScout", "x": 3, "z": 6, "width": 2, "depth": 1, "variable": "VAR_UNOVA_VIRBANK", "value": 3 }
+  ],
+  "people": {
+    "0": { "name": "Roxie", "npcType": "roxie", "script": "Roxie", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROXIE_GYM" },
+    "1": {
+      "name": "Roughneck",
+      "trainer": {
+        "id": "unova_roughneck_nicky",
+        "dialogueBefore": "You want to reach Roxie? Then get past her bass player first! Let's make some noise!",
+        "dialogueAfter": "Ow, my ears... and my pride."
+      }
+    },
+    "2": {
+      "name": "Guitarist",
+      "trainer": {
+        "id": "unova_guitarist_billy_jo",
+        "dialogueBefore": "My guitar solos are poison to the ears! Let me play you one!",
+        "dialogueAfter": "Guess I hit a sour note."
+      }
+    },
+    "3": { "name": "Scout", "npcType": "Gentleman", "script": "Scout", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VIRBANK_SCOUT" },
+    "4": { "name": "Roxie", "npcType": "roxie", "script": "Roxie", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROXIE_SCENE" },
+    "5": {
+      "name": "Sound Man",
+      "npcType": "Gentleman",
+      "dialog": [ "I'm on the sound desk! I keep every instrument balanced so the crowd hears them all. A team's the same, right?" ]
+    }
+  }
+}

@@ -1,0 +1,250 @@
+# Virbank City (plan 22 · U5, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/virbank_city.s, read for the order of the scenes alone).
+#
+# VAR_UNOVA_VIRBANK, the town's count as Black 2 keeps it (0x40ac): 0 not yet come; 2 Roxie and her father the captain
+# argued in the street and he left for Pokéstar Studios (Black 2's 1 is a call on the Xtransceiver, left out); 3 the
+# Toxic Badge won (virbank_city_gym_2.txt); 4 the studios' scout and Roxie's run after her father, Team Plasma on the
+# dock (Black 2 plays the studios' first visit here, decision 7 leaves the studios a door); 5 Team Plasma's speech
+# heard; 6 the grunts at the dock beaten and HM01 given, Hugh gone to search Route 20 (VAR_UNOVA_ROUTE_20 5); 7 the
+# grunt on Route 20 beaten, the captain back on the dock (unova_route_20.txt); 8 the captain going back to his ship,
+# and he and Hugh in the ship terminal (virbank_city_5.txt). The people: 0 the captain and 1 Roxie
+# (FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN), 6 the studios' man (FLAG_UNOVA_HIDE_POKESTAR_GUARD), and on the dock 7 Roxie,
+# 8 Hugh and the grunts 9, 10 and 11 (FLAG_UNOVA_HIDE_VIRBANK_DOCK).
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_VIRBANK == 7 goto OnTheDock
+  end
+label OnTheDock
+  place 1 241 670 right
+  place 0 243 670 left
+  end
+
+
+# The street west of the Pokémon Center as the player first comes in from the gate (our trigger, on 0): the captain
+# off to Pokéstar Studios, Roxie trying to stop him
+script RoxieAndTheCaptain
+  scene "Roxie and the captain"
+  clearflag FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  place 1 209 651 right
+  place 0 211 651 right
+  show 1
+  show 0
+  face player right
+  speaker "Captain"
+  say "Don't try to stop me, Roxie! Pokéstar Studios is calling, and this old sea dog is answering!"
+  say "A captain who stars in films! Now that's a dream worth chasing!"
+  walk 1 right 1
+  speaker "Roxie"
+  say "Are you kidding me?! You're already a captain! If that ship of yours doesn't sail, half the town's stuck on the quay!"
+  face 0 left
+  speaker "Captain"
+  say "Now, now, my girl. You run a Gym and sing in a band, don't you? If you can do two things, so can your old dad!"
+  walk 0 right 5 up 10
+  hide 0
+  speaker "Roxie"
+  say "ARGH! You stubborn, stuck-up, thick-headed old... DUNCE!"
+  say "Two jobs aren't the problem! Leaving everybody stranded is the problem!"
+  walk 1 down 6 fast
+  hide 1
+  setflag FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  setvar VAR_UNOVA_VIRBANK 2
+  endscene
+  end
+
+
+# The way north to Pokéstar Studios before the Toxic Badge (our trigger, on 2)
+script StudiosClosed
+  face 6 player
+  call StudioHandLines
+  walk player down 1
+  end
+
+
+script StudioHand
+  face 6 player
+  call StudioHandLines
+  end
+
+
+script StudioHandLines
+  speaker "Studio Hand"
+  say "Through here is the dream factory, Pokéstar Studios! But they're holding auditions, so no visitors just now."
+  say "They're giving the captain of Virbank's ship a screen test, can you believe it? Come back another time!"
+  return
+
+
+# Roxie and Hugh on the dock with Team Plasma, after the Toxic Badge and Roxie's run (our trigger, on 4)
+script PlasmaAtTheDock
+  scene "Team Plasma at the dock"
+  clearflag FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  place player 237 670 right
+  place 7 239 669 right
+  place 8 238 671 right
+  place 9 241 670 left
+  place 10 242 669 left
+  place 11 242 671 left
+  show 7
+  show 8
+  show 9
+  show 10
+  show 11
+  walk player right 2
+  music "unova/eye_plasma"
+  speaker "Roxie"
+  say "So you lot are Team Plasma, huh?"
+  speaker "Grunt"
+  say "That's right! Two years ago the king we served turned his back on us, and our plans for Unova fell apart."
+  say "But we're not done. This time we'll gather the Pokémon we need, and nobody will get in our way!"
+  walk 8 right 1
+  face 8 9
+  speaker "{rival}"
+  say "Save it! You talk about freeing Pokémon, but all you ever do is steal them!"
+  say "I'll never forgive Team Plasma. Not ever!"
+  face 11 8
+  speaker "Grunt"
+  say "Ugh. First a Lillipup chases us all round the ranch, and now this lot..."
+  face 10 8
+  say "This is getting to be a real drag."
+  speaker "Grunt"
+  say "Relax. We'll just take their Pokémon too. Go on then, kids. Whenever you're ready!"
+  face 8 player
+  speaker "{rival}"
+  say "Let's crush them, {player}! Them and whatever they're scheming!"
+  music area
+  setvar VAR_UNOVA_VIRBANK 5
+  endscene
+  end
+
+
+# The grunt at the front (person 9): the battle, the grunts' flight, Roxie's thanks and HM01, Hugh off to Route 20
+script DockGrunt
+  face 9 player
+  speaker "Grunt"
+  ask "What, you think you can beat me?"
+  if no goto Backs
+  scene "The grunts at the dock"
+  place player 240 670 right
+  face 9 player
+  say "Ha! In a minute your Pokémon will be working for Team Plasma!"
+  battle 9 as "unova_team_plasma_grunt_44"
+  say "No way... beaten by a bunch of kids? Forget this. Run for it!"
+  walk 10 right 9 fast
+  hide 10
+  walk 9 right 10 fast
+  hide 9
+  walk 11 up 1 right 9 fast
+  hide 11
+  speaker "{rival}"
+  say "Tch! What a bunch of creeps!"
+  speaker "Roxie"
+  say "We'll split up! I'll search the docks. You two, check Route 20 in case they double back that way!"
+  face 7 player
+  say "And thanks. If I'd lost, my Pokémon would be in their hands right now. Here, take this!"
+  give "HM01"
+  walk 7 down 1 left 12 fast
+  hide 7
+  walk 8 up 1
+  face 8 player
+  speaker "{rival}"
+  say "That's a Hidden Machine, isn't it? Cut! A Pokémon that knows it can chop down thin trees in your way."
+  say "Come on, {player}! Let's find that grunt on Route 20 before they get away!"
+  walk 8 left 11 fast
+  hide 8
+  setflag FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  clearflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  clearflag FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  setvar VAR_UNOVA_ROUTE_20 5
+  setvar VAR_UNOVA_VIRBANK 6
+  endscene
+  end
+label Backs
+  say "Smart kid. Don't mess with Team Plasma!"
+  end
+
+
+script DockGrunts
+  speaker "Grunt"
+  say "Talk to the one in charge, kid. We're just here to look tough."
+  end
+
+
+script RoxieOnTheDock
+  face 7 player
+  speaker "Roxie"
+  if var VAR_UNOVA_VIRBANK >= 5 goto Fight
+  say "{player}! Get over here and lend a hand!"
+  end
+label Fight
+  say "Go on, show them what a Badge holder can do!"
+  end
+
+
+script HughOnTheDock
+  face 8 player
+  speaker "{rival}"
+  say "Thieves... Every last one of them."
+  end
+
+
+# The captain back on the dock, after the grunt on Route 20 (our trigger, on 7): his screen test, Roxie's words, and
+# his ship again
+script TheCaptainSails
+  scene "The captain sails again"
+  clearflag FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  place player 237 670 right
+  place 1 241 670 right
+  place 0 243 670 left
+  show 1
+  show 0
+  walk player right 2
+  speaker "Roxie"
+  say "So? I saw your film. It wasn't bad, you know."
+  speaker "Captain"
+  say "You saw it... Then you know. It wasn't the film, my girl. It was me."
+  say "I was so excited I forgot to become the hero. I was just a captain in a costume."
+  speaker "Roxie"
+  say "Oh, come on, don't mope! You can keep auditioning and still sail your ship."
+  say "As long as you don't leave people stranded, I won't yell at you. Much."
+  face 1 player
+  say "Oh, {player}! Did you hear all that? Looks like every one of those Plasma creeps got away."
+  say "I hate letting them go, but at least they're out of Virbank. And Dad's back where he belongs!"
+  face 0 player
+  speaker "Captain"
+  say "Right you are! I'll thrill my passengers by charging through the roughest waves on the sea!"
+  say "Anyone bound for Castelia City, come and find me in the terminal!"
+  walk 0 up 1 left 1
+  hide 0
+  speaker "Roxie"
+  say "Thanks for everything, {player}. Come by the club whenever you like!"
+  walk 1 down 1 left 13 fast
+  hide 1
+  setflag FLAG_UNOVA_HIDE_ROXIE_AND_CAPTAIN
+  clearflag FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  clearflag FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  setvar VAR_UNOVA_VIRBANK 8
+  endscene
+  end
+
+
+script Captain
+  face 0 player
+  speaker "Captain"
+  if var VAR_UNOVA_VIRBANK >= 7 goto Back
+  say "Make way, make way! A star is on his way to the studios!"
+  end
+label Back
+  say "Ahoy! My ship's in the terminal's berth, waiting for passengers!"
+  end
+
+
+script RoxieInTown
+  face 1 player
+  speaker "Roxie"
+  if var VAR_UNOVA_VIRBANK >= 7 goto Back
+  say "That stubborn old man!"
+  end
+label Back
+  say "Dad's back at the helm. Now I can get back to my band!"
+  end

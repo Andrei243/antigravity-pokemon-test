@@ -10,12 +10,11 @@ namespace PokemonPlatinumEngine.Data;
 /// the chunks of the areas open so far and the ring round them, and what each is here. Every building is a stand-in in
 /// one of Sinnoh's ways of building (<see cref="WorldModel.StandInUntil"/>) until the session that gives its town a way
 /// of its own, a row of the style guide's "Buildings" first (plan 22's design, "Unova's world folder"): Aspertia's
-/// (<see cref="Architecture.Hillside"/>) and Floccesy's (<see cref="Architecture.Bellfield"/>) since plan 22 · U5. What stands in a
+/// (<see cref="Architecture.Hillside"/>), Floccesy's (<see cref="Architecture.Bellfield"/>) and Virbank's (<see cref="Architecture.Dockyard"/>) since plan 22 · U5. What stands in a
 /// room is a piece of furniture, as Johto's are. Unova looks in no other region's table: Black 2's names are its own.
 /// </summary>
 public static partial class WorldModels
 {
-    private const string VirbankLook = "plan 22 · U5, part b (Virbank City's docks)";
 
     private static readonly WorldModel[] UnovaTable =
     {
@@ -44,11 +43,17 @@ public static partial class WorldModels
         Built("d22_farm", BuildingKind.House, "the farmhouse of Floccesy Ranch", Architecture.Farm),
         Thing("cart", PropType.Crates, "a cart of the ranch's hay"),
 
-        // ---------------------------------------------------------------- Virbank City (c13_), in view from Route 20's east end
-        Built("c13_house", BuildingKind.House, "a house of Virbank City", Architecture.Harbour, until: VirbankLook),
-        Built("nschool", BuildingKind.School, "a school building by the water", Architecture.Harbour, until: VirbankLook),
+        // ---------------------------------------------------------------- Virbank City (c13_) and the Virbank Complex (d23_)
+        // Plan 22 · U5, part b: Virbank's way of building (Architecture.Dockyard), its club's stairs down, the ship
+        // to Castelia at the quay and the complex's tanks, stacks and towers
+        Built("c13_house", BuildingKind.House, "a house of Virbank City, the ship terminal among them", Architecture.Dockyard),
+        Built("nschool", BuildingKind.House, "the long house by the water in Virbank City", Architecture.Dockyard),
+        Built("c13_gym", BuildingKind.Gym, "the way down into Roxie's club, the Virbank Gym", Architecture.Dockyard),
+        Thing("c13_ship", PropType.Boat, "the ship to Castelia City at Virbank's quay"),
         Thing("d5_container", PropType.Container, "a shipping container on a quay"),
         Thing("c5_fvessel", PropType.Boat, "a boat moored at a quay"),
+        Thing("d23_obj", PropType.Headframe, "a tank, a stack or a tower of the Virbank Complex, steel as tall as its model"),
+        Thing("d7_inaba", PropType.Container, "a storage shed in the Virbank Complex"),
 
         // ---------------------------------------------------------------- rooms: the houses
         Furniture("chair01", PropType.Chair, "a chair"),
@@ -87,6 +92,8 @@ public static partial class WorldModels
         Furniture("globe01s", PropType.Statue, "the globe by the Pokémon Center's link counter"),
         Furniture("c12_gymlight", PropType.Column, "a light in the Aspertia Gym"),
         Ground("mado_in5gym","the windows over the Trainers' School's hall (the room's walls are its own)"),
+        Ground("c13gym_kabe1", "a wall of the Virbank Gym's stairs down (the room's walls are its own)"),
+        Ground("door_c13gym", "the door from the Virbank Gym's stairs into the club (the warp's tile draws it)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

@@ -1,4 +1,78 @@
 {
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh, you again?! I really hate it when people won't let things go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm... if I keep running this way, there's nobody to back me up. I'd better head for the sea!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So with that settled... I'm running away again! Goodbye, Virbank City!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, they're good at running away, I'll give them that..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But she just told us something useful! They must be getting around by boat."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Castelia City has a big port. Maybe they headed there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right! Back to Virbank, {player}. Someone at the docks must know about ships. There was a place to board them, I'm sure of it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "HikerBlocks": [
     {
       "en": [
@@ -187,6 +261,14 @@
     {
       "en": [
         "I have to get stronger than Team Plasma!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Help me search Route 20! One of those grunts ran this way, I know it."
       ],
       "text": [
         ""

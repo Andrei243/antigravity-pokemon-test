@@ -2571,7 +2571,22 @@ script UnovaNewGame
   setflag FLAG_UNOVA_HIDE_RANCH_GRUNT
   setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  call UnovaVirbank
   setflag FLAG_UNOVA_STORY_BEGUN
+  return
+
+
+# What Unova's Virbank chapter hides until its scenes (plan 22 · U5, part b): Roxie's second self on her stage, the
+# dock's people, the grunt on Route 20 and the two in the ship terminal. A new game runs it from UnovaNewGame; a save
+# made before the chapter was written is given it by UnovaCatchUp, with no story version raised. It may only set
+# flags and variables, and ends in return.
+script UnovaVirbank
+  setflag FLAG_UNOVA_HIDE_ROXIE_SCENE
+  setflag FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  setflag FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  setflag FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  setflag FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  setflag FLAG_UNOVA_VIRBANK_BEGUN
   return
 
 
@@ -2601,6 +2616,7 @@ script UnovaOpeningDone
 # A Champion who crossed in has a team too, and plays the opening all the same (CROSSED_IN).
 script UnovaCatchUp
   if not flag FLAG_UNOVA_STORY_BEGUN call UnovaNewGame
+  if not flag FLAG_UNOVA_VIRBANK_BEGUN call UnovaVirbank
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

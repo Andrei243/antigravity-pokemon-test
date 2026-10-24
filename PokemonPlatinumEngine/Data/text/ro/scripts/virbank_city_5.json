@@ -1,0 +1,80 @@
+{
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You're heading to Castelia City too, right? I'm going after Team Plasma. I'll never let them get away!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, Captain! Show us this ship you're so proud of!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CaptainLines": [
+    {
+      "en": [
+        "Captain"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha ha! She's raring to go, but her engines went cold while I was off at the studios."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give me a little while to warm them through, and we'll charge across to Castelia City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "OldWoman": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your life is your own, dear. Work hard at one thing, or try your hand at many. Just mind the people waiting on you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Looking for the captain? He's gone off to Pokéstar Studios, of all places! Thinks he can be a star like his daughter."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

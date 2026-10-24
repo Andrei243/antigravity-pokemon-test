@@ -1,0 +1,33 @@
+# The Virbank Gym's way down (plan 22 · U5, part b). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/virbank_city_gym.s, read for the order alone).
+#
+# VAR_UNOVA_VIRBANK_GYM (Black 2's 0x40aa): 0 the guide hasn't met the player; 1 he has, and given a bottle of Fresh
+# Water. Black 2's guide gives the water only to someone who has it in room; ours always does.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The top of the landing (our trigger, on 0)
+script GuideGreets
+  face 0 player
+  speaker "Gym Guide"
+  say "Welcome! This is a Pokémon Gym, and a rock club too! Roxie and her band are rehearsing downstairs."
+  say "Take on everyone in there! Oh, and stay hydrated. It gets hot under those stage lights."
+  give "Fresh Water"
+  setvar VAR_UNOVA_VIRBANK_GYM 1
+  end
+
+
+script GymGuide
+  face 0 player
+  speaker "Gym Guide"
+  if badge toxic goto Won
+  say "The Trainers here all use Poison types. Grass and Bug moves don't work well against them, so watch out!"
+  say "And if your Pokémon get poisoned, an Antidote or a Pecha Berry will sort them out."
+  end
+label Won
+  say "That Badge shines because you and your Pokémon won it together. Never forget that!"
+  end

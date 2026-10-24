@@ -1,0 +1,61 @@
+{
+  // The Virbank Complex (plan 22 · U5, part b): Black 2's works, its trainers' lines and people ours. The three workers
+  // (4, 5, 6) battle when spoken to, as Black 2's do once the foreman has asked for them; the foreman (3) and the
+  // scientist who knows everything about the place (7) only talk (virbank_complex_2.txt)
+  "area": "virbank_complex_2",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "0": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "I come here to watch the cranes. And to battle anyone who walks past!",
+        "dialogueAfter": "I should have stuck to watching the cranes."
+      }
+    },
+    "1": {
+      "name": "Lass",
+      "trainer": {
+        "dialogueBefore": "The Pokémon round the complex are really tough. So are mine!",
+        "dialogueAfter": "Not tough enough, I guess."
+      }
+    },
+    "2": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "I found a good spot to train, and now you've found me!",
+        "dialogueAfter": "Fine, fine. I'll find another spot."
+      }
+    },
+    "3": { "name": "Foreman", "npcType": "Gentleman", "script": "Foreman", "still": true },
+    "4": {
+      "name": "Worker",
+      "trainer": {
+        "id": "unova_worker_isaac",
+        "dialogueBefore": "Working here was my dream. Now I've got it, I'm out of dreams... A battle? Sure, why not.",
+        "dialogueAfter": "Right. My Pokémon came here to do great things, so I'd better do some great work!"
+      }
+    },
+    "5": {
+      "name": "Worker",
+      "trainer": {
+        "id": "unova_worker_mitchell",
+        "dialogueBefore": "I'm happy just hanging out with my Pokémon. A battle? I guess I can play for a bit.",
+        "dialogueAfter": "Oh, right. If I don't work, my Pokémon never get to shine. Back to it!"
+      }
+    },
+    "6": {
+      "name": "Worker",
+      "trainer": {
+        "id": "unova_worker_nathan",
+        "dialogueBefore": "Every day's the same round here. A battle would shake things up!",
+        "dialogueAfter": "Every day the same means nothing's gone wrong. I can live with that."
+      }
+    },
+    "7": { "name": "Scientist", "script": "Scientist", "still": true },
+    "11": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "So many Pokémon live round the complex! The Magnemite like the power lines best." ]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  // The road from Virbank City into the Virbank Complex (plan 22 · U5, part b): Black 2's yard, its words ours. The
+  // roughneck by the road (2) swaps a Poké Ball for a Great Ball once a day (virbank_complex.txt)
+  "area": "virbank_complex",
+  "bgmTrack": "unova/virbank",
+  "people": {
+    "2": { "name": "Roughneck", "script": "BallTrade" }
+  },
+  "signs": {
+    "1": "Virbank Complex\nWhere fire meets steel"
+  }
+}

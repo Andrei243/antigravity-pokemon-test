@@ -1,0 +1,98 @@
+{
+  "key": "virbank_city",
+  "index": 448,
+  "name": "Virbank City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "encounters": "ENCOUNTERS_VIRBANK_CITY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 },
+    { "species": "Frillish", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Finneon", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Krabby", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Finneon", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Qwilfish", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Qwilfish", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "ripplingWater": [
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Alomomola", "level": 5, "maxLevel": 15 },
+    { "species": "Jellicent", "level": 5, "maxLevel": 15 },
+    { "species": "Jellicent", "level": 5, "maxLevel": 15 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Lumineon", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Kingler", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 193, "z": 650, "to": "virbank_gate", "toWarp": 1 },
+    { "x": 210, "z": 648, "to": "virbank_city_pokemon_center", "toWarp": 0 },
+    { "x": 224, "z": 648, "to": "virbank_city_2", "toWarp": 0 },
+    { "x": 201, "z": 668, "to": "virbank_city_3", "toWarp": 0 },
+    { "x": 225, "z": 668, "to": "virbank_city_4", "toWarp": 0 },
+    { "x": 242, "z": 668, "to": "virbank_city_5", "toWarp": 0 },
+    { "x": 228, "z": 667, "to": "virbank_city_gym", "toWarp": 1 },
+    { "x": 216, "z": 640, "to": "virbank_gate_gate", "toWarp": 0 },
+    { "x": 193, "z": 651, "to": "virbank_gate", "toWarp": 1 },
+    { "x": 193, "z": 652, "to": "virbank_gate", "toWarp": 1 },
+    { "x": 217, "z": 640, "to": "virbank_gate_gate", "toWarp": 0 },
+    { "x": 218, "z": 640, "to": "virbank_gate_gate", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "359", "movement": "none", "x": 211, "z": 651, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d6", "script": "2000" },
+    { "id": "1", "looks": "224", "movement": "none", "x": 209, "z": 651, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d6", "script": "2000" },
+    { "id": "2", "looks": "roughneck", "movement": "wander_west_and_east", "x": 228, "z": 671, "facing": 0, "rangeX": 1, "rangeZ": 0, "script": "2" },
+    { "id": "3", "looks": "worker_26", "movement": "wander_north_and_south", "x": 211, "z": 658, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "3" },
+    { "id": "4", "looks": "artist", "movement": "none", "x": 238, "z": 658, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "5", "looks": "297", "movement": "none", "x": 237, "z": 648, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "6", "looks": "358", "movement": "none", "x": 217, "z": 642, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d5", "script": "7" },
+    { "id": "7", "looks": "224", "movement": "none", "x": 239, "z": 669, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d4", "script": "11" },
+    { "id": "8", "looks": "291", "movement": "none", "x": 238, "z": 671, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d4", "script": "12" },
+    { "id": "9", "looks": "team_plasma_grunt_m", "movement": "none", "x": 241, "z": 670, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d4", "script": "13" },
+    { "id": "10", "looks": "team_plasma_grunt_f", "movement": "none", "x": 242, "z": 669, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d4", "script": "2000" },
+    { "id": "11", "looks": "team_plasma_grunt_m", "movement": "none", "x": 242, "z": 671, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d4", "script": "2000" },
+    { "id": "12", "looks": "110", "movement": "none", "x": 205, "z": 641, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x045c", "item": "Rare Candy", "script": "7016" },
+    { "id": "13", "looks": "backers_f", "movement": "none", "x": 231, "z": 646, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "14", "looks": "305", "movement": "none", "x": 232, "z": 646, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "18" },
+    { "id": "15", "looks": "backers_m", "movement": "none", "x": 255, "z": 669, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "21" },
+    { "id": "16", "looks": "backers_f", "movement": "none", "x": 226, "z": 654, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "19" },
+    { "id": "17", "looks": "backers_m", "movement": "none", "x": 254, "z": 669, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "20" },
+    { "id": "18", "looks": "youngster", "movement": "wander_around", "x": 218, "z": 652, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "22" }
+  ],
+  "signs": [
+    { "x": 198, "z": 649, "type": 0, "script": "15" },
+    { "x": 214, "z": 642, "type": 0, "script": "16" },
+    { "x": 227, "z": 668, "type": 0, "script": "17" },
+    { "x": 196, "z": 664, "type": 2, "script": "8040", "item": "Antidote", "flag": "FLAG_UNOVA_0x0b2c" }
+  ],
+  "triggers": [
+    { "x": 205, "z": 650, "width": 1, "depth": 3, "script": "1", "variable": "VAR_UNOVA_0x40ac", "value": "1" },
+    { "x": 215, "z": 642, "width": 5, "depth": 1, "script": "8", "variable": "VAR_UNOVA_0x40ac", "value": "2" },
+    { "x": 195, "z": 649, "width": 1, "depth": 4, "script": "9", "variable": "VAR_UNOVA_0x40ac", "value": "0" },
+    { "x": 239, "z": 670, "width": 1, "depth": 1, "script": "10", "variable": "VAR_UNOVA_0x40ac", "value": "4" },
+    { "x": 239, "z": 669, "width": 1, "depth": 3, "script": "23", "variable": "VAR_UNOVA_0x40ac", "value": "7" }
+  ]
+}

@@ -656,6 +656,10 @@ public static class RegionDatabase
                 "AspertiaCity_Gym", "AspertiaCity_PokemonCenter", "AspertiaGate",
                 "FloccesyTown_AldersHouse", "FloccesyTown_House1", "FloccesyTown_House2", "FloccesyTown_PokemonCenter",
                 "FloccesyRanch",
+                // Plan 22 · U5, part b: Virbank City's gate, rooms, ship terminal and club, the gate to Pokéstar Studios
+                // and the Virbank Complex
+                "VirbankGate", "VirbankCity_House1", "VirbankCity_House2", "VirbankCity_House3", "VirbankCity_Terminal",
+                "VirbankCity_Gym", "VirbankCity_GymStage", "VirbankCity_PokemonCenter", "PokestarGate", "VirbankComplex",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

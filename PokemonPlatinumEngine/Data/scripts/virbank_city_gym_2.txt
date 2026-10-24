@@ -1,0 +1,89 @@
+# Roxie's club, the Virbank Gym's hall (plan 22 · U5, part b). docs/scripts.md describes the language; the lines are
+# our own, on Black 2's beats (the decompilation's res/field/scripts/virbank_city_gym_2.s, read for the order alone).
+#
+# Roxie (the room's person 0) can't hear a challenger over her band until both bandmates are beaten (1, the roughneck
+# Nicky; 2, the guitarist Billy Jo); then she battles for the Toxic Badge, the region's second (`givebadge toxic`),
+# and gives TM09 (FLAG_UNOVA_GOT_TM09), which our data's table, Platinum's, fills with its own move, and the town's
+# count moves on (VAR_UNOVA_VIRBANK 3). On the way out the studios' scout (3) stops the player, and Roxie (4, the
+# scene's own, hidden by FLAG_UNOVA_HIDE_ROXIE_SCENE) runs off after her father; Team Plasma is waiting on the dock
+# (VAR_UNOVA_VIRBANK 4, virbank_city.txt). Black 2's TRAINER_LEADER_ROXIE is the Leader of the game's usual
+# difficulty; her _2 is the Challenge Mode's, plan 13's.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script Roxie
+  face self player
+  speaker "Roxie"
+  if badge toxic goto Won
+  if not defeated "unova_roughneck_nicky" goto TooLoud
+  if not defeated "unova_guitarist_billy_jo" goto TooLoud
+  scene "Roxie"
+  say "Hey, you made it through my band! Bet my poison's still ringing in your ears!"
+  say "I'm Roxie, Leader of this Gym and singer of this band. Get ready, 'cause I'm gonna knock some sense into you!"
+  battle self as "unova_leader_roxie"
+  say "Aaargh! What am I doing, losing like that?! ...Guess that means you're the real deal."
+  say "That stank, but I gave it everything I had, and now I feel totally refreshed! Here, the Toxic Badge!"
+  givebadge toxic
+  text "{player} received the Toxic Badge from Roxie!"
+  defeat "unova_roughneck_nicky"
+  defeat "unova_guitarist_billy_jo"
+  if var VAR_UNOVA_VIRBANK < 3 setvar VAR_UNOVA_VIRBANK 3
+label Tm
+  say "And take this TM too. Use it however you like, just make it loud!"
+  give "TM09"
+  setflag FLAG_UNOVA_GOT_TM09
+  say "Doing what you love, the way you want to do it, with the Pokémon you love. That's the best, right?"
+  say "Just don't go causing trouble for other people while you're at it. Got it?"
+  endscene
+  end
+label TooLoud
+  say "...!"
+  text "The music's too loud! She can't hear a word over the band."
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM09 goto Tm
+  say "Your Pokémon WANTED that win! Keep going like that, and do all sorts of amazing stuff!"
+  end
+
+
+# The way back from the stage after the Toxic Badge (our trigger, on 3): the studios' scout, and Roxie remembering her
+# father
+script TheScout
+  scene "The scout and Roxie"
+  clearflag FLAG_UNOVA_HIDE_ROXIE_SCENE
+  place 3 2 7 up
+  place 4 5 7 up
+  show 3
+  show 4
+  face 3 player
+  speaker "Scout"
+  say "Hey, you there! Watching you battle Roxie, I just knew it. You've got star quality!"
+  say "I'm a talent scout for Pokéstar Studios. Come and see us! Well... once the auditions are done. They're shooting nonstop right now."
+  face 4 3
+  speaker "Roxie"
+  say "Pokéstar Studios?! Oh, no, I forgot about the old man! I have to drag him back to his ship!"
+  walk 4 right 3 fast
+  hide 4
+  speaker "Scout"
+  say "Oh dear. I hope the captain's audition is over before she gets there... See you at the studios one day!"
+  walk 3 down 1
+  hide 3
+  setflag FLAG_UNOVA_HIDE_ROXIE_SCENE
+  setflag FLAG_UNOVA_HIDE_VIRBANK_SCOUT
+  setflag FLAG_UNOVA_HIDE_ROXIE_GYM
+  clearflag FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  setflag FLAG_UNOVA_HIDE_POKESTAR_GUARD
+  setvar VAR_UNOVA_VIRBANK 4
+  endscene
+  end
+
+
+script Scout
+  face 3 player
+  speaker "Scout"
+  say "Roxie puts on a show, doesn't she? If only she'd come to the studios... She's always too busy with her band."
+  end

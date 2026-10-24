@@ -222,16 +222,21 @@ public class UnovaTests
         Assert.True(unknown.Count == 0, "the catalogue doesn't know " + string.Join(", ", unknown));
         Assert.Same(WorldModels.Unova, WorldModels.Catalogue("unova"));
         // Aspertia's and Floccesy's buildings are built in ways of their own since plan 22 · U5 (the Pokémon Center and
-        // the gate as every region's are); Virbank's, in view from Route 20's end, are stand-ins until its chapter
+        // the gate as every region's are), and Virbank's since its chapter (plan 22 · U5, part b); a town still to come
+        // is a stand-in until its own
         foreach (var m in WorldModels.Unova.Where(m => m.Role == ModelRole.Building))
         {
             if (m.Name.StartsWith("c12_", StringComparison.Ordinal) || m.Name.StartsWith("t06_", StringComparison.Ordinal)
-                || m.Name is "pc" or "gate" or "d22_farm")
+                || m.Name.StartsWith("c13_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
         Assert.Equal(Architecture.Hillside, WorldModels.Of("c12_house", "unova")!.Town);
         Assert.Equal(Architecture.Bellfield, WorldModels.Of("t06_house", "unova")!.Town);
+        Assert.Equal(Architecture.Dockyard, WorldModels.Of("c13_house", "unova")!.Town);
+        Assert.Equal(BuildingKind.Gym, WorldModels.Of("c13_gym", "unova")!.Kind);
+        Assert.Equal(PokemonType.Poison, WorldModels.GymTheme("virbank_city"));
+        Assert.Equal((ModelRole.Scenery, PropType.Boat), (WorldModels.Of("c13_ship", "unova")!.Role, WorldModels.Of("c13_ship", "unova")!.Prop));
         Assert.Equal(Architecture.Hillside, Overworld.ArchitectureAt(47, 762));
         Assert.Equal(Architecture.Bellfield, Overworld.ArchitectureAt(110, 690));
         // Unova's names are its own: Sinnoh never looks in its table

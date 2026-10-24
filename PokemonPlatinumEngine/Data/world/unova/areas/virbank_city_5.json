@@ -1,0 +1,30 @@
+{
+  "key": "virbank_city_5",
+  "index": 452,
+  "name": "Virbank City",
+  "matrix": 260,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_13",
+  "nightMusic": "BGM_SW_C_13",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 11, "to": "virbank_city", "toWarp": 5 },
+    { "x": 6, "z": 11, "to": "virbank_city", "toWarp": 5 },
+    { "x": 7, "z": 11, "to": "virbank_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "10", "movement": "none", "x": 7, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "veteran_f", "movement": "wander_around", "x": 2, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "2" },
+    { "id": "2", "looks": "359", "movement": "none", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d3", "script": "3" },
+    { "id": "3", "looks": "291", "movement": "none", "x": 6, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d2", "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}
