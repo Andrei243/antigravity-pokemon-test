@@ -75,6 +75,9 @@ public sealed class Song
 
     public bool Loops => LoopTick >= 0;
 
+    /// <summary>Whether the song has a low-HP arrangement (plan 12 · Q15): a faster tempo, a track of the alarm figure or a track that plays only out of it.</summary>
+    public bool HasLowHp => LowHpTempo != 1.0 || Tracks.Exists(t => t.When != TrackWhen.Always || t.LowHpInstrument != null);
+
     public double SecondsPerTick(bool night, bool lowHp = false) => 60.0 / (Tempo * (night && HasNight ? NightTempo : 1.0) * (lowHp ? LowHpTempo : 1.0) * TicksPerQuarter);
 
     /// <summary>Length of one pass through the song, in seconds.</summary>

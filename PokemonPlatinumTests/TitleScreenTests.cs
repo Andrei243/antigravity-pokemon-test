@@ -58,9 +58,9 @@ public class TitleScreenTests
     [Fact]
     public void ContinueIsOfferedOnlyWhenThereIsASave()
     {
-        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(null).Entries);
+        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(null).Entries);
         // With a save there is a game to continue and a save that can be deleted (plan 12 · Q2)
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(Save()).Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, new TitleScreen(Save()).Entries);
     }
 
     [Fact]
@@ -269,7 +269,7 @@ public class TitleScreenTests
     public void OptionsOpenAtOnceAndTheMenuStaysUp()
     {
         var title = AtMenu(null);
-        title.Move(1);
+        title.Move(2);
         title.PressConfirm();
         Assert.Equal(TitleChoice.Options, title.TakeChoice());
         Assert.Equal(TitleChoice.None, title.TakeChoice());
@@ -434,7 +434,7 @@ public class TitleScreenTests
     public void TheMenuHasACardForEachSlotThatHoldsASave()
     {
         var three = ThreeSaves();
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Continue, TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Options, TitleChoice.Quit }, three.Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Continue, TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, three.Entries);
         Assert.Equal(new[] { 1, 2, 3 }, three.Cards.Select(c => c.Number));
         Assert.True(three.HasSave);
         Assert.Null(three.FreeSlot);
@@ -591,7 +591,7 @@ public class TitleScreenTests
         // Told the slot is gone, its card goes, the column closes up and a new game has a slot
         title.Forget(3);
         Assert.Equal(new[] { 1, 2 }, title.Cards.Select(c => c.Number));
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
         Assert.Equal((TitlePhase.Menu, 0, 3), (title.Phase, title.SelectedIndex, title.FreeSlot!.Value));
         // (a slot that was never there changes nothing)
         title.Forget(3);
@@ -617,7 +617,7 @@ public class TitleScreenTests
 
         // The last save gone, the title is the one with nothing saved
         title.Forget(1);
-        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
+        Assert.Equal(new[] { TitleChoice.NewGame, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
         Assert.Equal((TitleChoice.NewGame, 1, false), (Under(title), title.FreeSlot!.Value, title.HasSave));
     }
 
@@ -645,7 +645,7 @@ public class TitleScreenTests
     public void ASlotThatCantBeReadIsACardThatCanOnlyBeDeleted()
     {
         var title = WithSlots(new TitleSlot(1, Game("Lucas")), new TitleSlot(2, null));
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Unreadable, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.Unreadable, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, title.Entries);
         Assert.False(title.LoneCard);
         // The slot is taken: a new game goes to the third
         Assert.Equal(3, title.FreeSlot);
@@ -670,7 +670,7 @@ public class TitleScreenTests
 
         // Alone it is no game to continue, and no whole card
         var only = WithSlots(new TitleSlot(2, null));
-        Assert.Equal(new[] { TitleChoice.Unreadable, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Options, TitleChoice.Quit }, only.Entries);
+        Assert.Equal(new[] { TitleChoice.Unreadable, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, only.Entries);
         Assert.False(only.HasSave || only.LoneCard);
         Assert.Equal(1, only.FreeSlot);
     }
@@ -691,17 +691,17 @@ public class TitleScreenTests
         Assert.True(rects[0].Y >= 100f, $"the column begins at {rects[0].Y}");
         Assert.True(rects[^1].Y + rects[^1].Height <= 1016f, $"the column ends at {rects[^1].Y + rects[^1].Height}");
         // One under another, with the same gap between
-        float gap = saves == 0 ? 20f : 18f;
+        float gap = saves == 0 ? 20f : 12f;
         for (int i = 1; i < rects.Count; i++) Assert.Equal(rects[i - 1].Y + rects[i - 1].Height + gap, rects[i].Y, 3);
 
         // A lone save keeps the whole card; two or three are short cards; the rows are slimmer once there is a save
         float card = saves == 1 ? TitleScreen.LoneCardHeight : TitleScreen.ShortCardHeight;
         Assert.All(rects.Take(saves), r => Assert.Equal(card, r.Height));
-        Assert.All(rects.Skip(saves), r => Assert.Equal(saves == 0 ? 92f : 76f, r.Height));
+        Assert.All(rects.Skip(saves), r => Assert.Equal(saves == 0 ? 92f : 64f, r.Height));
         Assert.Equal(saves == 1, title.LoneCard);
 
-        // With nothing saved the three rows stand where they always did; with a save the column is centred on one line
-        if (saves == 0) Assert.Equal(422f, rects[0].Y, 3);
+        // With nothing saved the four rows are centred as the three were; with a save the column is centred on one line
+        if (saves == 0) Assert.Equal(366f, rects[0].Y, 3);
         else Assert.Equal(590f, (rects[0].Y + rects[^1].Y + rects[^1].Height) / 2f, 3);
     }
 
