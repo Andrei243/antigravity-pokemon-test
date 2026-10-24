@@ -1243,5 +1243,74 @@ partial class Harness
         ReadTo("received the Rain Badge from Juan!"); Frames(10); Shot("hs275_the_rain_badge");
         ReadTo(null); Frames(20); Shot("hs276_juan_after");
         Pillar("the Rain Badge");
+
+        // ---- Plan 21 · H8, part d: Shoal Cave's salt, shells, Shell Bell and Focus Band, and Pacifidlog's three (hs280 to hs28b)
+        int Held(string item) => game.Bag.GetQuantity(ItemDatabase.Get(item)!);
+        void Shoal(string what) =>
+            Console.WriteLine($"  {what}: tide high {story.Has(ShoalTide.Flag)}, salt {Held("Shoal Salt")}, shells {Held("Shoal Shell")}, "
+                + $"shell bell {Held("Shell Bell")}, focus band {story.Has("FLAG_RECEIVED_FOCUS_BAND")}, return {Held("TM27")}, frustration {Held("TM21")}, "
+                + $"pacifidlog tm today {story.Has("FLAG_DAILY_PACIFIDLOG_RECEIVED_TM")}, trade {story.Has("FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED")}, "
+                + $"explosion taught {story.Has("FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION")}, team {string.Join(", ", game.Party.Members.Select(p => p.DisplayName))}");
+        void Lead(string species)
+        {
+            var first = game.Party.Members.First(p => p.Species.Name == species);
+            game.Party.Members.Remove(first);
+            game.Party.Members.Insert(0, first);
+        }
+
+        // Shoal Cave at low tide: a pile of salt in the inner room, then the old man's Shell Bell of four and four
+        story.Unset(ShoalTide.Flag);
+        At("ShoalCave_LowTideInnerRoom", 31, 9, Direction.Up); Frames(20);
+        game.Interact();
+        ReadTo("Shoal Salt"); Frames(10); Shot("hs280_shoal_salt_found");
+        ReadTo(null);
+        Shoal("a pile of salt");
+        game.Bag.AddItem(ItemDatabase.Get("Shoal Salt")!, 4 - Held("Shoal Salt"));
+        game.Bag.AddItem(ItemDatabase.Get("Shoal Shell")!, 4);
+        TalkTo("ShoalCave_LowTideEntranceRoom", "expert_m");
+        ReadTo("Shall I make them into a Shell Bell"); Frames(10); Shot("hs281_the_shell_bell_offer");
+        ReadTo("Let a Pokémon hold the Shell Bell"); Frames(10); Shot("hs282_the_shell_bell");
+        ReadTo(null);
+        Shoal("the Shell Bell");
+        TalkTo("ShoalCave_LowTideLowerRoom", "black_belt");
+        ReadTo("take this Focus Band"); Frames(10); Shot("hs283_the_focus_band");
+        ReadTo(null);
+        Shoal("the Focus Band");
+
+        // Pacifidlog: the Fan Club chairman's brother reads a loving lead and gives Return, once today
+        game.Party.Members[0].Friendship = 255;
+        TalkTo("PacifidlogTown_House2", "gentleman");
+        ReadTo("Let me have a look at the Pokémon"); Frames(10); Shot("hs284_the_fan_club_brother");
+        ReadTo("simply adores you"); Frames(10); Shot("hs285_return_for_a_loving_pokemon");
+        ReadTo(null);
+        TalkTo("PacifidlogTown_House2", "gentleman");
+        ReadTo("Come back tomorrow"); Frames(10); Shot("hs286_come_back_tomorrow");
+        ReadTo(null);
+        Shoal("the Fan Club's brother");
+
+        // The man of the third house: his Horsea, Seasor, for a Bagon
+        string lead = game.Party.Members[0].Species.Name;
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Bagon")!, 20));
+        TalkTo("PacifidlogTown_House3", "man_3");
+        ReadTo("what I've always wanted is a Bagon"); Frames(10); Shot("hs287_the_bagon_trade_offer");
+        ReadTo("Which Pokémon will you trade");
+        Box().Advance(); Frames(2);
+        ChooseFirst();
+        ReadTo("A Bagon, at last!"); Frames(10); Shot("hs288_seasor");
+        ReadTo(null);
+        Shoal("the Pacifidlog trade");
+
+        // The man in the Pokémon Center who teaches Explosion
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Geodude")!, 20));
+        TalkTo("PacifidlogTown_PokemonCenter_1F", "man_5");
+        ReadTo("Shall I teach one of your Pokémon Explosion"); Frames(10); Shot("hs289_the_explosion_tutor");
+        ReadTo("Which one");
+        Box().Advance(); Frames(2);
+        ChooseFirst();
+        ReadTo("learned"); Frames(10); Shot("hs28a_explosion_learned");
+        ReadTo(null);
+        Lead(lead);
+        Frames(10); Shot("hs28b_pacifidlog_center_after");
+        Shoal("the Explosion tutor");
     }
 }

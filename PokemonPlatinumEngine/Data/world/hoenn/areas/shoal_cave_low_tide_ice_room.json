@@ -1,0 +1,42 @@
+{
+  "key": "shoal_cave_low_tide_ice_room",
+  "index": 321,
+  "name": "Shoal Cave",
+  "matrix": 270,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "shoal_cave_low_tide_ice_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 26 },
+    { "species": "Spheal", "level": 26 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Spheal", "level": 28 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Spheal", "level": 30 },
+    { "species": "Snorunt", "level": 26 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 30 },
+    { "species": "Snorunt", "level": 28 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Snorunt", "level": 30 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 17, "z": 10, "to": "shoal_cave_low_tide_lower_room", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 12, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SHOAL_CAVE_ICE_ROOM_TM_HAIL", "item": "TM07", "script": "ShoalCave_LowTideIceRoom_EventScript_ItemTMHail" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 12, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SHOAL_CAVE_ICE_ROOM_NEVER_MELT_ICE", "item": "Never-Melt Ice", "script": "ShoalCave_LowTideIceRoom_EventScript_ItemNeverMeltIce" }
+  ],
+  "signs": [],
+  "triggers": []
+}

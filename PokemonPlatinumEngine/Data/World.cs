@@ -2579,8 +2579,11 @@ public static class WorldMapBuilder
         // HeartGold's ways out (plan 20 · J2) are told the same way, but a few face a wall (Elm's house in New Bark
         // Town, whose door's tile says "out to the west" with the lab's wall there): whoever comes out stands on the
         // open tile beside it, as on stairs
+        // So do a few of Emerald's arrow warps (plan 21 · H8, part d: Shoal Cave's lower room, whose way down at its west
+        // end is taken walking west along the passage, while its tile says "out to the north", into the rock)
         bool besideIt = world.BehaviourAt(target.Matrix, to.X, to.Z) is TileBehavior.StairsEast or TileBehavior.StairsWest
-            || string.Equals(world.Index.Region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase) && (x != to.X || z != to.Z);
+            || (string.Equals(world.Index.Region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(world.Index.Region, RegionDatabase.Hoenn, StringComparison.OrdinalIgnoreCase)) && (x != to.X || z != to.Z);
         // FireRed's stairs are taken only walking onto them the way they go, so a flight with a gravestone beside it (the
         // Pokémon Tower's fifth floor, plan 19 · K5) is walked off to the north as often as to the south, and the way
         // on is the north: whoever comes up a flight of Kanto's whose side is shut steps off northwards first

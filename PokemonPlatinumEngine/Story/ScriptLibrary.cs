@@ -20,6 +20,13 @@ public sealed class ScriptLibrary
     /// <summary>The script a place runs when the player arrives in it, if its file has one.</summary>
     public const string OnEnter = "OnEnter";
 
+    /// <summary>
+    /// The script a place runs behind the warp's fade as the player comes to it, before anything of it is shown
+    /// (plan 21 · H8, part d; Emerald's <c>MAP_SCRIPT_ON_TRANSITION</c>): it may set flags and variables and nothing else,
+    /// and what it sets is laid down before the picture opens (Shoal Cave's tide, whose chunks the story swaps).
+    /// </summary>
+    public const string OnTransition = "OnTransition";
+
     /// <summary>The script that sets what every new game starts with; it may say and show nothing.</summary>
     public const string NewGame = "common.NewGame";
 
@@ -154,9 +161,14 @@ public sealed class ScriptLibrary
 
     /// <summary>The flags any script sets or clears.</summary>
     public IReadOnlySet<string> FlagsWritten => All.SelectMany(s => s.Everything())
-        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag or Op.AddContact && !i.Own)
-        // (a number registered is kept by a flag of its own, plan 20 · J3)
-        .Select(i => i.Op == Op.AddContact ? Models.Pokegear.ContactFlag(i.Name) : i.Name).ToHashSet(StringComparer.Ordinal);
+        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag or Op.AddContact or Op.Tide && !i.Own)
+        // (a number registered is kept by a flag of its own, plan 20 · J3; Shoal Cave's tide by Emerald's, plan 21 · H8, part d)
+        .Select(i => i.Op switch
+        {
+            Op.AddContact => Models.Pokegear.ContactFlag(i.Name),
+            Op.Tide => Overworld.ShoalTide.Flag,
+            _ => i.Name
+        }).ToHashSet(StringComparer.Ordinal);
 
     /// <summary>The flags any script asks about.</summary>
     public IReadOnlySet<string> FlagsRead => All.SelectMany(s => s.Everything())

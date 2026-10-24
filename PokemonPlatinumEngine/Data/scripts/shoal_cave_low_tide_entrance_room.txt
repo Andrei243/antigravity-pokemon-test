@@ -1,0 +1,43 @@
+# Shoal Cave's entrance room (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/ShoalCave_LowTideEntranceRoom/scripts.inc).
+#
+# The tide is read behind the warp's fade as the player comes in from Route 125 (`tide`, Emerald's
+# UpdateShoalTideFlag: FLAG_SYS_SHOAL_TIDE set at high tide, from midnight to three, nine to three and nine to
+# midnight), and world.json's swaps lay the high tide's chunks over this room and the inner room while it is set. The
+# old man makes a Shell Bell of four Shoal Salt and four Shoal Shells, as often as they are brought; the salt and the
+# shells lie about the cave again each day (FLAG_DAILY_RECEIVED_SHOAL_SALT_1 to _4 and _SHELL_1 to _4, the inner,
+# stairs and lower rooms' scripts).
+
+
+script OnTransition
+  tide
+  end
+
+
+script ShellBellExpert
+  face self player
+  speaker "Old Man"
+  if item "Shoal Salt" >= 4 goto Shells
+  goto Short
+label Shells
+  if item "Shoal Shell" >= 4 goto Offer
+label Short
+  if item "Shoal Salt" goto Some
+  if item "Shoal Shell" goto Some
+  say "Going in? The sea comes and goes in this cave twice a day. Some corners are dry only while the tide is out."
+  end
+label Some
+  say "Bring me four Shoal Salt and four Shoal Shells, and I'll make you something you'll be glad of."
+  end
+label Offer
+  ask "Four Shoal Salt and four Shoal Shells! Shall I make them into a Shell Bell for you?"
+  if no goto Declined
+  say "Leave it to me. It won't take a moment!"
+  take "Shoal Salt" 4
+  take "Shoal Shell" 4
+  give "Shell Bell"
+  say "Let a Pokémon hold the Shell Bell, and every blow it lands gives it back a little HP. Its ring is soothing, too."
+  end
+label Declined
+  say "No? I'll be here whenever you change your mind."
+  end

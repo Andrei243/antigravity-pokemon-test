@@ -1,0 +1,44 @@
+{
+  "key": "shoal_cave_low_tide_stairs_room",
+  "index": 286,
+  "name": "Shoal Cave",
+  "matrix": 235,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "shoal_cave_low_tide_stairs_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 26 },
+    { "species": "Spheal", "level": 26 },
+    { "species": "Zubat", "level": 28 },
+    { "species": "Spheal", "level": 28 },
+    { "species": "Zubat", "level": 30 },
+    { "species": "Spheal", "level": 30 },
+    { "species": "Zubat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Spheal", "level": 32 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 3, "z": 12, "to": "shoal_cave_low_tide_inner_room", "toWarp": 1 },
+    { "x": 7, "z": 4, "to": "shoal_cave_low_tide_inner_room", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 13, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SHOAL_CAVE_STAIRS_ROOM_ICE_HEAL", "item": "Ice Heal", "script": "ShoalCave_LowTideStairsRoom_EventScript_ItemIceHeal" }
+  ],
+  "signs": [
+    { "x": 11, "z": 11, "type": 0, "script": "ShoalCave_LowTideStairsRoom_EventScript_ShoalSalt3" }
+  ],
+  "triggers": []
+}

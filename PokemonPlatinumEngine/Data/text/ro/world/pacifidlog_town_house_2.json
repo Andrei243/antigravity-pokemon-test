@@ -8,14 +8,6 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "My big brother runs the Pokémon Fan Club. I can tell at a glance how much a Pokémon loves its trainer."
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "azurill": {
@@ -26,28 +18,12 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "Azurill: Rii! Riiri!"
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "azurill_2": {
       "name": {
         "en": [
           "Azurill"
-        ],
-        "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Azurill: ...Rii."
         ],
         "text": [
           ""

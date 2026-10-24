@@ -9,6 +9,12 @@
   "region": "Hoenn",
   // A GBA game's houses are drawn into its tiles: each is found at its door (WorldMapBuilder.BuildingsAtDoors)
   "buildingsAtDoors": true,
+  // Plan 21 · H8, part d: Shoal Cave's two upper rooms at high tide (Emerald's LAYOUT_SHOAL_CAVE_HIGH_TIDE_ENTRANCE_ROOM
+  // and _INNER_ROOM, laid by each room's ON_TRANSITION while FLAG_SYS_SHOAL_TIDE is set; GbaWorld.Alternates)
+  "swaps": [
+    { "map": "ShoalCave_LowTideEntranceRoom", "flag": "FLAG_SYS_SHOAL_TIDE", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 813 }, { "chunkX": 1, "chunkY": 0, "chunk": 814 }, { "chunkX": 0, "chunkY": 1, "chunk": 815 }, { "chunkX": 1, "chunkY": 1, "chunk": 816 } ] },
+    { "map": "ShoalCave_LowTideInnerRoom", "flag": "FLAG_SYS_SHOAL_TIDE", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 817 }, { "chunkX": 1, "chunkY": 0, "chunk": 818 }, { "chunkX": 0, "chunkY": 1, "chunk": 819 }, { "chunkX": 1, "chunkY": 1, "chunk": 820 } ] }
+  ],
   "maps": [
     // The overworld: Emerald's connected maps stitched into one, Littleroot Town at its south-west
     { "name": "Hoenn", "matrix": 0, "trees": "Round" },
@@ -279,6 +285,14 @@
     { "name": "SkyPillar_4F", "matrix": 269, "area": "sky_pillar_4f", "trees": "Round", "setting": "Cave" },
     { "name": "SkyPillar_5F", "matrix": 271, "area": "sky_pillar_5f", "trees": "Round", "setting": "Cave" },
     { "name": "SkyPillar_Top", "matrix": 272, "area": "sky_pillar_top", "trees": "Round" },
+    // Plan 21 · H8, part d: Shoal Cave on Route 125's islet, its two upper rooms laid at high tide while
+    // FLAG_SYS_SHOAL_TIDE is set ("swaps"; the entrance's OnTransition sets the flag by the hour, behind the warp's
+    // fade, as Emerald's UpdateShoalTideFlag does), and its stairs, lower and ice rooms below
+    { "name": "ShoalCave_LowTideEntranceRoom", "matrix": 233, "area": "shoal_cave_low_tide_entrance_room", "trees": "Round", "setting": "Cave" },
+    { "name": "ShoalCave_LowTideInnerRoom", "matrix": 234, "area": "shoal_cave_low_tide_inner_room", "trees": "Round", "setting": "Cave" },
+    { "name": "ShoalCave_LowTideStairsRoom", "matrix": 235, "area": "shoal_cave_low_tide_stairs_room", "trees": "Round", "setting": "Cave" },
+    { "name": "ShoalCave_LowTideLowerRoom", "matrix": 236, "area": "shoal_cave_low_tide_lower_room", "trees": "Round", "setting": "Cave" },
+    { "name": "ShoalCave_LowTideIceRoom", "matrix": 270, "area": "shoal_cave_low_tide_ice_room", "trees": "Round", "setting": "Cave" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
@@ -392,6 +406,10 @@
     "pacifidlog_town_house_2", "pacifidlog_town_house_3", "pacifidlog_town_house_4", "pacifidlog_town_house_5",
     "sky_pillar_outside", "sky_pillar_entrance", "sky_pillar_1f", "sky_pillar_2f", "sky_pillar_3f", "sky_pillar_4f",
     "sky_pillar_5f", "sky_pillar_top",
-    "sootopolis_city_gym_1f", "sootopolis_city_gym_b1f"
+    "sootopolis_city_gym_1f", "sootopolis_city_gym_b1f",
+    // Plan 21 · H8, part d: Shoal Cave and its rooms, and Routes 132 to 134 west of Pacifidlog back to Slateport City
+    "shoal_cave_low_tide_entrance_room", "shoal_cave_low_tide_inner_room", "shoal_cave_low_tide_stairs_room",
+    "shoal_cave_low_tide_lower_room", "shoal_cave_low_tide_ice_room",
+    "route_132", "route_133", "route_134"
   ]
 }

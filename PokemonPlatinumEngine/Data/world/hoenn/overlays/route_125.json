@@ -1,6 +1,6 @@
 {
   // Route 125 (plan 21 · H8, part a): the sea north of Mossdeep City, with Shoal Cave on its islet in the north-east,
-  // whose tide comes and goes (part b; its way in is locked until then). It has no dark water until the post-game's
+  // whose tide comes and goes (plan 21 · H8, part d: Shoal Cave's OnTransition). It has no dark water until the post-game's
   // Marine Cave (plan 21 · H12), whose sea floor is its. The sailor Ernest swaps numbers for the PokéNav once beaten
   // (route_125.txt)
   "area": "route_125",
@@ -9,7 +9,6 @@
     { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
   ],
   "trees": "Round",
-  "locked": [ 0 ],
   "people": {
     "swimmer_m": { "name": "Nolen", "trainer": { "dialogueBefore": "Swimmer Nolen: The current up here pulls you north. Fight it, or battle me!", "dialogueAfter": "Swimmer Nolen: I think I'll just float for a bit." } },
     "swimmer_m_2": { "name": "Stan", "trainer": { "dialogueBefore": "Swimmer Stan: I swim this route every morning. You're new here, aren't you?", "dialogueAfter": "Swimmer Stan: New, and strong. Welcome, I guess." } },

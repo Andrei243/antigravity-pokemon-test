@@ -128,7 +128,11 @@ public sealed class GbaWorld
         ("MAP_SEAFOAM_ISLANDS_B4F", "LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED"),
         // Plan 19 · K9, part c: Dunsparce Tunnel dug through to Three Island's port (FireRed's ON_TRANSITION lays this
         // layout once the National Pokédex is had)
-        ("MAP_THREE_ISLAND_DUNSPARCE_TUNNEL", "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL_DUG_OUT")
+        ("MAP_THREE_ISLAND_DUNSPARCE_TUNNEL", "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL_DUG_OUT"),
+        // Plan 21 · H8, part d: Shoal Cave at high tide (Emerald's ON_TRANSITION lays these layouts over its two upper
+        // rooms while FLAG_SYS_SHOAL_TIDE is set; the map is read in its own, the low tide's)
+        ("MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM", "LAYOUT_SHOAL_CAVE_HIGH_TIDE_ENTRANCE_ROOM"),
+        ("MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM", "LAYOUT_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM")
     };
 
     /// <summary>

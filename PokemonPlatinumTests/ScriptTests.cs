@@ -567,6 +567,7 @@ public class ScriptTests
           athlon able
           athlon open
           athlon points
+          tide
         script Other
           end
         """;
@@ -1587,6 +1588,8 @@ public class ScriptTests
         public uint TrainerNumber => inner.TrainerNumber;
         public TimeOfDay TimeOfDay => inner.TimeOfDay;
         public DayOfWeek Weekday => inner.Weekday;
+        public int Hour => inner.Hour;
+        public bool CameInFromOutdoors => inner.CameInFromOutdoors;
         public IEnumerable<Pokemon> Boxed => inner.Boxed;
         public Random Chance => inner.Chance;
         public int Money { get => inner.Money; set => inner.Money = value; }

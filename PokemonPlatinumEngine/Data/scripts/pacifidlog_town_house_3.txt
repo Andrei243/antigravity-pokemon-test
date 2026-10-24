@@ -1,0 +1,29 @@
+# A house of Pacifidlog Town (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/PacifidlogTown_House3/scripts.inc).
+#
+# The man trades his Horsea, Seasor, for a Bagon, once (NpcTrades "seasor", which carries Emerald's contest condition
+# and sheen for the Horsea). FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED, Emerald's name: the trade is done.
+
+
+script Trader
+  speaker "Man"
+  if flag FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED goto Done
+  ask "I've a Horsea here, but what I've always wanted is a Bagon. Would you trade me one?"
+  if no goto Waiting
+  say "Which Pokémon will you trade?"
+  choosepokemon
+  if result == 255 goto Waiting
+  trade seasor
+  if result == 0 goto NotWanted
+  setflag FLAG_PACIFIDLOG_NPC_TRADE_COMPLETED
+  say "A Bagon, at last! Seasor's not quite like other Horsea, you'll find. Look after it!"
+  end
+label NotWanted
+  say "That's no Bagon. I'll only take a real Bagon, I'm afraid."
+  end
+label Waiting
+  say "Not today? I'm in no hurry. Bagon will come along some day."
+  end
+label Done
+  say "My Bagon wants to fly. I tell it to wait until it grows wings!"
+  end

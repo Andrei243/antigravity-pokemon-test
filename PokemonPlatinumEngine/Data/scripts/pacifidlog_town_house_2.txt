@@ -1,0 +1,55 @@
+# A house of Pacifidlog Town (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/PacifidlogTown_House2/scripts.inc).
+#
+# The Pokémon Fan Club chairman's younger brother reads how fond of the player the first of the team is
+# (LEAD_FRIENDSHIP, Emerald's GetLeadMonFriendshipScore): 150 or more gives TM27 Return, under 50 TM21 Frustration, and
+# between he gives nothing. Emerald gives one a week (VAR_PACIFIDLOG_TM_RECEIVED_DAY); here one a day
+# (FLAG_DAILY_PACIFIDLOG_RECEIVED_TM), as the plan has it. His two Azurill cry: one loves its trainer, one doesn't.
+
+
+script FanClubYoungerBrother
+  face self player
+  speaker "Gentleman"
+  if flag FLAG_DAILY_PACIFIDLOG_RECEIVED_TM goto Tomorrow
+  if flag FLAG_MET_FANCLUB_YOUNGER_BROTHER goto Look
+  say "I'm the younger brother of the Pokémon Fan Club's chairman. I've come out to Pacifidlog for a long holiday."
+  setflag FLAG_MET_FANCLUB_YOUNGER_BROTHER
+label Look
+  say "Let me have a look at the Pokémon you're with..."
+  if var LEAD_FRIENDSHIP >= 150 goto Loving
+  if var LEAD_FRIENDSHIP >= 50 goto Between
+  say "Oh dear. It hasn't taken to you at all. A Pokémon like that should have this."
+  give "TM21"
+  setflag FLAG_DAILY_PACIFIDLOG_RECEIVED_TM
+  goto Explain
+label Loving
+  say "My, my! It simply adores you. A Pokémon like that deserves this."
+  give "TM27"
+  setflag FLAG_DAILY_PACIFIDLOG_RECEIVED_TM
+label Explain
+  say "Return hits harder the more a Pokémon loves its trainer. Frustration hits harder the less it does."
+  end
+label Between
+  say "Hmm, neither here nor there. Spend more time together, and come back to show me."
+  end
+label Tomorrow
+  say "Come back tomorrow, and I'll have another look at your Pokémon."
+  end
+
+
+script HappyAzurill
+  cry own
+  speaker "Azurill"
+  say "Rurii!"
+  speaker none
+  text "It looks very fond of its trainer."
+  end
+
+
+script UnhappyAzurill
+  cry own
+  speaker "Azurill"
+  say "...Rii."
+  speaker none
+  text "It doesn't seem very fond of its trainer."
+  end

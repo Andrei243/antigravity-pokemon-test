@@ -1,0 +1,13 @@
+{
+  // Shoal Cave's entrance room (plan 21 · H8, part d), on Route 125's islet. The tide comes in and goes out twice a day:
+  // the room's OnTransition sets FLAG_SYS_SHOAL_TIDE by the hour behind the warp's fade when the player comes in from
+  // outside (`tide`, Emerald's UpdateShoalTideFlag), and world.json's swaps lay the high tide's chunks over this room and
+  // the inner room while it is set. The old man makes a Shell Bell of four Shoal Salt and four Shoal Shells
+  // (shoal_cave_low_tide_entrance_room.txt). Emerald plays Mt. Pyre's song all through the cave
+  "area": "shoal_cave_low_tide_entrance_room",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "people": {
+    "expert_m": { "name": "Old Man", "script": "ShellBellExpert", "still": true }
+  }
+}

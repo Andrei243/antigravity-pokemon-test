@@ -1,0 +1,16 @@
+{
+  // Route 133 (plan 21 · H8, part d): the middle of the three routes of currents between Pacifidlog Town and Slateport
+  // City, its islets of rock standing in the flow
+  "area": "route_133",
+  "bgmTrack": "hoenn/route119",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Franklin", "trainer": { "dialogueBefore": "Swimmer Franklin: I swim against the current to stay in one place. It's harder than it looks!", "dialogueAfter": "Swimmer Franklin: Now I'm drifting. Bye!" } },
+    "swimmer_f": { "name": "Linda", "trainer": { "dialogueBefore": "Swimmer Linda: The water here is so clear you can see right to the bottom. Look at my Pokémon instead!", "dialogueAfter": "Swimmer Linda: I'll go back to looking at the bottom." } },
+    "swimmer_f_2": { "name": "Debra", "trainer": { "dialogueBefore": "Swimmer Debra: Franklin and I swim here together. You've got to get past both of us!", "dialogueAfter": "Swimmer Debra: Franklin, it's your turn now." } },
+    "man_5": { "name": "Beck", "trainer": { "dialogueBefore": "Bird Keeper Beck: My birds ride the wind over the currents. Can yours keep up?", "dialogueAfter": "Bird Keeper Beck: They've flown off to sulk." } },
+    "man_3": { "name": "Warren", "trainer": { "dialogueBefore": "Cooltrainer Warren: I've been waiting on this rock for a worthy challenger. You'll do!", "dialogueAfter": "Cooltrainer Warren: More than worthy." } },
+    "expert_f": { "name": "Mollie", "trainer": { "dialogueBefore": "Expert Mollie: My husband and I sail these waters every year. Let's see what the young ones can do!", "dialogueAfter": "Expert Mollie: The young ones can do a lot, it seems." } },
+    "expert_m": { "name": "Conor", "trainer": { "dialogueBefore": "Expert Conor: Mollie always wins our battles. Maybe I'll have more luck with you!", "dialogueAfter": "Expert Conor: No luck today either." } }
+  }
+}

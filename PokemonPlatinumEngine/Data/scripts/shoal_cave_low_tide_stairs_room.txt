@@ -1,0 +1,15 @@
+# Shoal Cave's stairs room (plan 21 · H8, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/ShoalCave_LowTideStairsRoom/scripts.inc).
+#
+# A pile of Shoal Salt, found once a day (FLAG_DAILY_RECEIVED_SHOAL_SALT_3).
+
+
+script ShoalSalt3
+  speaker none
+  if flag FLAG_DAILY_RECEIVED_SHOAL_SALT_3 goto Gone
+  find "Shoal Salt"
+  setflag FLAG_DAILY_RECEIVED_SHOAL_SALT_3
+  end
+label Gone
+  text "A little Shoal Salt was here, but there's none left now."
+  end

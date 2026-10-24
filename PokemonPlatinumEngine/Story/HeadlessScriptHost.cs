@@ -116,6 +116,9 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     /// <summary>The clock's hour and minute and the time played, which a television's programme tells (plan 08 · P8).</summary>
     public int Hour { get; set; } = 10;
+
+    /// <summary>Whether the player has come in from outdoors, which Shoal Cave's <c>tide</c> asks (plan 21 · H8, part d): yes unless a test says.</summary>
+    public bool CameInFromOutdoors { get; set; } = true;
     public int Minute { get; set; }
     public float PlayTimeSeconds { get; set; }
 

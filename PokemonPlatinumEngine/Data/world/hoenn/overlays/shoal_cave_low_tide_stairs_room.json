@@ -1,0 +1,10 @@
+{
+  // Shoal Cave's stairs room (plan 21 · H8, part d), between the inner room's two levels, with a pile of Shoal Salt
+  // found once a day (shoal_cave_low_tide_stairs_room.txt)
+  "area": "shoal_cave_low_tide_stairs_room",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "read": {
+    "ShoalCave_LowTideStairsRoom_EventScript_ShoalSalt3": "ShoalSalt3"
+  }
+}

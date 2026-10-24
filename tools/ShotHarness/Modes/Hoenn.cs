@@ -228,6 +228,15 @@ partial class Harness
             ("h207_sootopolis_gym_basement", "SootopolisCity_Gym_B1F", 8, 18, Direction.Up),
             ("h208_route120_bridge", "Hoenn", 376, 15, Direction.Left),
             ("h209_route128_islet_sand", "Hoenn", 678, 243, Direction.Up),
+            // Plan 21 · H8, part d: Routes 132 to 134 and their currents, and Shoal Cave at low tide (a new game's: the
+            // tide's flag is unset until the entrance's OnTransition reads the hour); h218 to h221 below at high tide
+            ("h211_route132", "Hoenn", 430, 280, Direction.Left),
+            ("h212_route133", "Hoenn", 360, 270, Direction.Left),
+            ("h213_route134_slateport", "Hoenn", 262, 280, Direction.Left),
+            ("h214_shoal_cave_entrance_low", "ShoalCave_LowTideEntranceRoom", 20, 29, Direction.Up),
+            ("h215_shoal_cave_inner_low", "ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up),
+            ("h216_shoal_cave_lower", "ShoalCave_LowTideLowerRoom", 17, 5, Direction.Left),
+            ("h217_shoal_cave_ice", "ShoalCave_LowTideIceRoom", 17, 9, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -235,8 +244,27 @@ partial class Harness
             // (On a bridge, on its deck: Route 120's, plan 21 · H8, part c)
             if (name == "h208_route120_bridge" && game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
             Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour" or "h197_pacifidlog_town" or "h205_sky_pillar_top" or "h206_sootopolis_gym") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour" or "h197_pacifidlog_town" or "h205_sky_pillar_top" or "h206_sootopolis_gym" or "h215_shoal_cave_inner_low") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
+
+        // Shoal Cave at high tide (plan 21 · H8, part d): the flag the entrance's OnTransition sets, its chunks laid by
+        // world.json's swaps as the field next refreshes who and what is where, given a moment to be baked again
+        game.Story.Set(ShoalTide.Flag);
+        foreach (var (name, map, x, y, facing) in new[]
+                 {
+                     ("h218_shoal_cave_entrance_high", "ShoalCave_LowTideEntranceRoom", 20, 29, Direction.Up),
+                     ("h219_shoal_cave_inner_high", "ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up),
+                     ("h220_shoal_cave_inner_high_west", "ShoalCave_LowTideInnerRoom", 12, 20, Direction.Up)
+                 })
+        {
+            At(map, x, y, facing);
+            Frames(30); Shot(name);
+            if (name == "h219_shoal_cave_inner_high") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+        }
+        Console.WriteLine($"shoal cave: tide flag {game.Story.Has(ShoalTide.Flag)}, the inner room's swapped places {MapDatabase.Get("ShoalCave_LowTideInnerRoom").SwappedPlaces.Count}");
+        game.Story.Unset(ShoalTide.Flag);
+        At("ShoalCave_LowTideInnerRoom", 31, 22, Direction.Up);
+        Frames(30); Shot("h221_shoal_cave_inner_low_again");
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);

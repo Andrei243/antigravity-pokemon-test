@@ -117,6 +117,30 @@ public partial class GameEngine
         KeepTheRegionsPicture();
     }
 
+    /// <summary>Whether the player came to this map from outdoors (<see cref="IScriptHost.CameInFromOutdoors"/>), set as they arrive.</summary>
+    private bool cameInFromOutdoors;
+
+    /// <summary>
+    /// The place's <c>OnTransition</c> (plan 21 · H8, part d; Emerald's <c>MAP_SCRIPT_ON_TRANSITION</c>), run to its end at
+    /// once while the picture is still shut: it may only set flags and variables (a host that shows nothing), and the
+    /// chunks the story swaps for what it set are laid before the first frame of the place is drawn (Shoal Cave's tide).
+    /// </summary>
+    private void RunTransitionScript()
+    {
+        string file = flow.Map.ScriptFileAt(flow.Player.GridX, flow.Player.GridY);
+        if (flow.Scripts.In(file, ScriptLibrary.OnTransition) is not { } script) return;
+        var host = new HeadlessScriptHost(flow.Story)
+        {
+            ShowsNothing = true,
+            Hour = ((int)Math.Floor(GameClock.Hour) % 24 + 24) % 24,
+            CameInFromOutdoors = cameInFromOutdoors
+        };
+        var runner = new ScriptRunner(flow.Scripts, host);
+        runner.Start(script);
+        runner.RunToEnd();
+        RefreshPresence();
+    }
+
     /// <summary>The player has come to a map by a door, a warp or a save: whoever a script moved off it or onto it is back as the flags say.</summary>
     private void ArriveOnMap()
     {
@@ -127,8 +151,14 @@ public partial class GameEngine
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
         flow.Story.Unset(BicycleRules.OnCyclingRoadFlag);
         flow.Story.Unset(BicycleRules.ForcedInGateFlag);
+        // Where the player came from, before the place left is forgotten: outdoors, Shoal Cave's tide is read anew
+        // (plan 21 · H8, part d; Emerald's GetLastUsedWarpMapType). A loaded save comes from nowhere
+        cameInFromOutdoors = flow.LeftMap.Length > 0 && !flow.LeftCave
+            && MapDatabase.Get(flow.LeftMap) is { IsIndoors: false, Setting: MapSetting.Outdoors };
         ChangePlace();
         NoteTheTrailOnArrival();
+        // The place's own script behind the fade (Emerald's ON_TRANSITION), and the chunks it swaps laid at once
+        RunTransitionScript();
         // {rival} names the rival of the region the player has come to (plan 18 · W4, part b)
         PlayerIdentity.InRegion(Here);
         // A Pokémon out of its ball stays in Amity Square (plan 06 · R16c)
@@ -1405,6 +1435,10 @@ public partial class GameEngine
         public TimeOfDay TimeOfDay => GameClock.Now;
 
         public DayOfWeek Weekday => GameClock.Today.DayOfWeek;
+
+        public int Hour => (int)GameClock.Hour;
+
+        public bool CameInFromOutdoors => game.cameInFromOutdoors;
 
         public IEnumerable<Pokemon> Boxed => game.flow.Boxes.All;
 

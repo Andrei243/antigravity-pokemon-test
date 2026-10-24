@@ -1,0 +1,92 @@
+{
+  "ExplosionTutor": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I know a move that goes off with an almighty bang. Shall I teach one of your Pokémon Explosion?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Which one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Explosion spends everything in one go. Save it for the moment it counts!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? A move like that is best not rushed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg? It hasn't even hatched yet! Bring me a Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, that one can't learn Explosion, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 {
-  // A house of Pacifidlog Town (plan 21 · H8, part c): a girl, and a man who would trade (Emerald's trade here waits for
-  // the session that writes the region's trades; he talks for now)
+  // A house of Pacifidlog Town (plan 21 · H8, part c): a girl, and a man who trades his Horsea, Seasor, for a Bagon once
+  // (plan 21 · H8, part d: pacifidlog_town_house_3.txt, NpcTrades "seasor")
   "area": "pacifidlog_town_house_3",
   "bgmTrack": "hoenn/lilycove",
   "people": {
     "girl_2": { "name": "Girl", "dialog": [ "My dad's always looking for someone to trade with. He's been waiting a long time!" ] },
-    "man_3": { "name": "Man", "dialog": [ "I'd love to trade for a Pokémon from somewhere far away. Come back when you've got one to spare." ] }
+    "man_3": { "name": "Man", "script": "Trader" }
   }
 }
