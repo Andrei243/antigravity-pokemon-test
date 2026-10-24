@@ -28,6 +28,7 @@ public enum OptionRow
     PartyTools,
     BoxesAnywhere,
     Controls,
+    Jukebox,
     Help
 }
 
@@ -58,6 +59,16 @@ public class OptionsScreen
 
     /// <summary>The Controls page (plan 12 · Q5), open over the options while <see cref="ControlsScreen.IsActive"/>.</summary>
     public ControlsScreen Controls { get; } = new();
+
+    private bool jukeboxRequested;
+
+    /// <summary>Whether the JUKEBOX row was opened since the last ask (plan 12 · Q15), said once: the game opens the jukebox over the options.</summary>
+    public bool TakeJukeboxRequest()
+    {
+        bool asked = jukeboxRequested;
+        jukeboxRequested = false;
+        return asked;
+    }
 
     public void Open()
     {
@@ -94,7 +105,7 @@ public class OptionsScreen
             IsActive = false;
             AudioManager.PlaySound("cancel");
         }
-        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls)
+        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox)
         {
             if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(settings);
         }
@@ -118,6 +129,12 @@ public class OptionsScreen
         if (Rows[SelectedIndex] == OptionRow.Controls && settings != null)
         {
             Controls.Open(settings);
+            AudioManager.PlaySound("select");
+            return;
+        }
+        if (Rows[SelectedIndex] == OptionRow.Jukebox)
+        {
+            jukeboxRequested = true;
             AudioManager.PlaySound("select");
             return;
         }
@@ -307,6 +324,7 @@ public class OptionsScreen
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
+        OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };
 
@@ -329,7 +347,7 @@ public class OptionsScreen
         }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle(Text.Of("options.title"));
-        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
         else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
 
         const float pitch = 86, height = 78;

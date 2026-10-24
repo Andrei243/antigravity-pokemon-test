@@ -516,7 +516,7 @@ public class PalParkMigrationTests
 
         var offered = TitleScreen.WithSlots(new[] { new TitleSlot(1, save) });
         offered.OfferMigration(true);
-        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Migrate, TitleChoice.Options, TitleChoice.Quit }, offered.Entries.ToArray());
+        Assert.Equal(new[] { TitleChoice.Continue, TitleChoice.NewGame, TitleChoice.Delete, TitleChoice.Migrate, TitleChoice.Jukebox, TitleChoice.Options, TitleChoice.Quit }, offered.Entries.ToArray());
         offered.OfferMigration(false);
         Assert.DoesNotContain(TitleChoice.Migrate, offered.Entries);
 
@@ -529,7 +529,7 @@ public class PalParkMigrationTests
         var three = TitleScreen.WithSlots(new[] { new TitleSlot(1, save), new TitleSlot(2, save), new TitleSlot(3, save) });
         three.OfferMigration(true);
         var rects = three.EntryRects();
-        Assert.Equal(8, rects.Count);
+        Assert.Equal(9, rects.Count);
         Assert.InRange(rects[0].Y, 100, 200);
         Assert.True(rects[^1].Y + rects[^1].Height < 1040);
     }

@@ -775,5 +775,40 @@ partial class Harness
             engine.Settings.BoxesAnywhere = boxesBefore;
             game.State = GameState.Overworld;
         }
+
+        // The jukebox (plan 12 · Q15), last of all so that nothing before it moves: each tab, a song locked and unlocked,
+        // a night and a low-HP arrangement chosen, a cry's species, a bed playing. The sounds themselves can't be seen.
+        {
+            var jukebox = game.Jukebox;
+            var heard = PokemonPlatinumEngine.Audio.MusicLibrary.All.Where(s => s.HasLowHp || s.HasNight).Select(s => s.Id).Take(40).ToList();
+            var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Take(60).ToList();
+            jukebox.Open(heard, species);
+            game.State = GameState.Jukebox;
+            Frames(30); Shot("29c_jukebox_songs");
+            var songs = jukebox.Entries;
+            int locked = songs.ToList().FindIndex(e => !e.Unlocked);
+            int open = songs.ToList().FindIndex(e => e.Unlocked && e.Arrangements.Contains(JukeboxArrangement.LowHp));
+            while (jukebox.Cursor != locked && locked >= 0) jukebox.Move(1);
+            Frames(6); Shot("29c_jukebox_songs_locked");
+            while (jukebox.Cursor != open && open >= 0) jukebox.Move(1);
+            Frames(6); Shot("29c_jukebox_songs_unlocked");
+            jukebox.ChangeVariant(1);
+            Frames(6); Shot("29c_jukebox_songs_arrangement");
+            jukebox.Confirm();
+            Frames(6); Shot("29c_jukebox_songs_playing");
+            jukebox.Stop();
+            Console.WriteLine($"jukebox: {songs.Count} songs, {heard.Count} heard, locked row {locked}, unlocked row {open}, arrangement {jukebox.Arrangement}");
+            jukebox.ChangeTab(1);
+            Frames(12); Shot("29c_jukebox_sounds");
+            jukebox.ChangeTab(1);
+            jukebox.ChangeVariant(1);
+            Frames(12); Shot("29c_jukebox_cries");
+            jukebox.ChangeTab(1);
+            jukebox.Confirm();
+            Frames(12); Shot("29c_jukebox_beds");
+            jukebox.Close();
+            Console.WriteLine($"jukebox: {jukebox.Entries.Count} beds, {jukebox.Species.Count} species offered");
+            game.State = GameState.Overworld;
+        }
     }
 }

@@ -94,7 +94,7 @@ public sealed record TitleNotice(string Heading, string Body)
 /// <see cref="Unreadable"/> (the card of a slot that can't be read) are entries only: neither is ever handed over
 /// by <see cref="TitleScreen.TakeChoice"/>; a deletion is <see cref="TitleScreen.TakeDeletion"/>'s.
 /// </summary>
-public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate }
+public enum TitleChoice { None, Continue, NewGame, Options, Quit, Delete, Unreadable, Migrate, Jukebox }
 
 /// <summary>
 /// The opening and the title screen: a short notice, fly-over shots of Sinnoh at different times of day, Giratina
@@ -130,7 +130,7 @@ public sealed class TitleScreen
     private readonly List<TitleChoice> entries = new();
     private readonly Queue<TitleNotice> notices = new();
     private TitleChoice chosen = TitleChoice.None;
-    private bool optionsRequested, migrateRequested, noticeOverMenu, migrateOffered;
+    private bool optionsRequested, migrateRequested, jukeboxRequested, noticeOverMenu, migrateOffered;
     private float phaseTime, totalTime, menuBlend, skipFlash;
     private int warmed;
     // The slot the delete question is about, where the question was asked from, and the slot to be deleted once
@@ -216,6 +216,7 @@ public sealed class TitleScreen
         if (cards.Count > 0) entries.Add(TitleChoice.Delete);
         // Pal Park's migration (plan 08 · P21) needs a save to bring the Pokémon to, and something to bring them from
         if (migrateOffered && cards.Any(c => c.Save != null)) entries.Add(TitleChoice.Migrate);
+        entries.Add(TitleChoice.Jukebox);
         entries.Add(TitleChoice.Options);
         entries.Add(TitleChoice.Quit);
     }
@@ -311,6 +312,7 @@ public sealed class TitleScreen
                         break;
                     case TitleChoice.Options: optionsRequested = true; break;
                     case TitleChoice.Migrate: migrateRequested = true; break;
+                    case TitleChoice.Jukebox: jukeboxRequested = true; break;
                     case TitleChoice.Quit: Leave(TitleChoice.Quit); break;
                 }
                 break;
@@ -473,6 +475,11 @@ public sealed class TitleScreen
         {
             optionsRequested = false;
             return TitleChoice.Options;
+        }
+        if (jukeboxRequested)
+        {
+            jukeboxRequested = false;
+            return TitleChoice.Jukebox;
         }
         if (migrateRequested)
         {
@@ -698,8 +705,8 @@ public sealed class TitleScreen
     {
         bool saves = cards.Count > 0;
         // MIGRATE is a fifth row beside the cards, which the column holds by slimming its rows
-        bool tight = entries.Contains(TitleChoice.Migrate);
-        float row = tight ? 68 : saves ? 76 : 92, gap = tight ? 14 : saves ? 18 : 20;
+        int rowsN = entries.Count - cards.Count;
+        float row = rowsN >= 6 ? 56 : rowsN == 5 ? 64 : saves ? 76 : 92, gap = rowsN >= 6 ? 10 : rowsN == 5 ? 12 : saves ? 18 : 20;
         float card = LoneCard ? LoneCardHeight : ShortCardHeight;
         float total = cards.Count * card + (entries.Count - cards.Count) * row + (entries.Count - 1) * gap;
         float y = saves ? 590 - total / 2f : (1080 - total) / 2f + 40;
@@ -737,6 +744,7 @@ public sealed class TitleScreen
                 TitleChoice.NewGame => Text.Of("title.menu.newGame"),
                 TitleChoice.Delete => Text.Of(Phase == TitlePhase.ChooseDelete ? "title.menu.deleteWhich" : "title.menu.delete"),
                 TitleChoice.Migrate => Text.Of("title.menu.migrate"),
+                TitleChoice.Jukebox => Text.Of("title.menu.jukebox"),
                 TitleChoice.Options => Text.Of("title.menu.options"),
                 _ => Text.Of("title.menu.quit")
             };

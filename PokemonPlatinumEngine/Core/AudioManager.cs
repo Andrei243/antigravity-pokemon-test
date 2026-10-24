@@ -166,8 +166,49 @@ public static class AudioManager
             Log.Warn($"AUDIO: no song '{songId}'");
             return;
         }
+        NoteHeard(song.Id);
         if (!isInitialized) return;
         mixer.Play(song, MusicDirector.IsNightArrangement(GameClock.Now), immediate);
+    }
+
+    private static readonly SortedSet<string> heardSongs = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// Every song the game has played for the player so far (plan 12 · Q15), by id: what the jukebox unlocks. It is
+    /// noted whenever a song or fanfare is asked for, with or without an audio device, and is kept in the save.
+    /// </summary>
+    public static IReadOnlyCollection<string> Heard => heardSongs;
+
+    private static void NoteHeard(string songId) => heardSongs.Add(songId);
+
+    /// <summary>Puts the songs heard back as a save had them (a game loaded), dropping ids that are no song.</summary>
+    public static void SetHeard(IEnumerable<string>? ids)
+    {
+        heardSongs.Clear();
+        if (ids == null) return;
+        foreach (var id in ids)
+            if (MusicLibrary.Get(id) is { } song) heardSongs.Add(song.Id);
+    }
+
+    /// <summary>
+    /// The jukebox's play (plan 12 · Q15): a song in the arrangement asked for, from the top, at once. It notes
+    /// nothing as heard (only a heard song can be asked for); tests hear it as "music &lt;id&gt; [night] [lowhp]".
+    /// </summary>
+    public static void PreviewMusic(string songId, bool night = false, bool lowHp = false)
+    {
+        var song = MusicLibrary.Get(songId);
+        if (song == null) return;
+        heard?.Add($"music {song.Id}{(night ? " night" : "")}{(lowHp ? " lowhp" : "")}");
+        if (!isInitialized) return;
+        mixer.LowHp = lowHp;
+        mixer.Play(song, night, immediate: true);
+    }
+
+    /// <summary>The jukebox's bed: one ambience bed at full strength, or none (null). Tests hear it as "bed &lt;name&gt;".</summary>
+    public static void PreviewBed(AmbienceBed? bed)
+    {
+        if (bed is { } b) heard?.Add($"bed {b}");
+        SetAmbience(bed is { } on ? new[] { new AmbienceLayer(on, 1f, 0f) } : Array.Empty<AmbienceLayer>());
     }
 
     /// <summary>
@@ -234,6 +275,7 @@ public static class AudioManager
         if (hushed || !isInitialized) return;
         string? id = MusicDirector.Resolve(role, Region, MusicLibrary.Exists);
         var song = id == null ? null : MusicLibrary.Get(id);
+        if (song != null) NoteHeard(song.Id);
         if (song != null) mixer.PlayFanfare(song);
     }
 
