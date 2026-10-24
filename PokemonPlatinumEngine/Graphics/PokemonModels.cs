@@ -607,16 +607,21 @@ internal static partial class PokemonModels
         // touched, so no sprite of a Pokémon that isn't shiny is baked again
         if (PokemonPlatinumEngine.Models.PokemonLook.IsShiny(s))
         {
+            // A shiny female's is her own sculpt's signature with the palette (plan 09 · L6)
+            string sculpt = PokemonPlatinumEngine.Models.PokemonLook.Unshined(s);
             string model = PokemonPlatinumEngine.Models.PokemonLook.Base(s);
-            text = $"shiny|{ShinyPalettes.Version}|{Signature(model)}|{ShinyPalettes.Describe(model)}";
+            text = $"shiny|{ShinyPalettes.Version}|{Signature(sculpt)}|{ShinyPalettes.Describe(model)}";
             var shinyHash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
             return Convert.ToHexString(shinyHash, 0, 8).ToLowerInvariant();
         }
-        if (ModelOverrides.Find(s) is { } file)
+        // A female look (plan 09 · L6) is signed by her own sculpt below, its text marked as hers, so that her sprites
+        // bake under keys of their own; a plain model's text is never touched, so no male's or genderless's sprite moves
+        bool female = PokemonPlatinumEngine.Models.PokemonLook.IsFemale(s);
+        if (FileFor(s) is { } file)
         {
             var info = new FileInfo(file);
             var options = new FileInfo(System.IO.Path.ChangeExtension(file, ".json"));
-            text = $"file|{ImportedModels.Version}|{info.FullName}|{info.Length}|{info.LastWriteTimeUtc.Ticks}|{(options.Exists ? options.LastWriteTimeUtc.Ticks : 0)}";
+            text = (female ? "female|" : "") + $"file|{ImportedModels.Version}|{info.FullName}|{info.Length}|{info.LastWriteTimeUtc.Ticks}|{(options.Exists ? options.LastWriteTimeUtc.Ticks : 0)}";
         }
         else
         {
@@ -626,7 +631,7 @@ internal static partial class PokemonModels
             foreach (var d in b.Model.Decals)
                 sb.Append('|').Append(d.Bone).Append(d.Center).Append(d.Normal).Append(d.Half).Append(d.Roll).Append(d.IsEye).Append(d.Size)
                     .Append(d.Iris?.R).Append(d.Iris?.G).Append(d.Iris?.B).Append(d.Sclera).Append(d.Closed ? "closed" : "").Append(d.White is { } w ? $"white{w.R},{w.G},{w.B}" : "").Append(d.Glare ? "glare" : "").Append(d.Pupil?.R).Append(d.Shape).Append(d.Color.R).Append(d.Color.G).Append(d.Color.B);
-            text = "sculpt|" + sb;
+            text = (female ? "female|" : "") + "sculpt|" + sb;
         }
         var hash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
         return Convert.ToHexString(hash, 0, 8).ToLowerInvariant();
@@ -934,16 +939,16 @@ internal static partial class PokemonModels
         // (plan 09 · L1): the sculpt and its genome are never asked for anything else
         if (PokemonPlatinumEngine.Models.PokemonLook.IsShiny(species))
         {
-            string model = PokemonPlatinumEngine.Models.PokemonLook.Base(species);
-            var shiny = Build(model);
-            shiny.Palette = ShinyPalettes.For(model, shiny.Mesh.Colors);
+            // A shiny female is her own sculpt in the species' palette (plan 09 · L6)
+            var shiny = Build(PokemonPlatinumEngine.Models.PokemonLook.Unshined(species));
+            shiny.Palette = ShinyPalettes.For(PokemonPlatinumEngine.Models.PokemonLook.Base(species), shiny.Mesh.Colors);
             return shiny;
         }
-        if (ModelOverrides.Find(species) is { } file)
+        if (FileFor(species) is { } file)
         {
             try
             {
-                return ImportedModels.Load(file, species);
+                return ImportedModels.Load(file, PokemonPlatinumEngine.Models.PokemonLook.Base(species));
             }
             catch (Exception e) when (e is IOException or InvalidDataException or NotSupportedException or System.Text.Json.JsonException or FormatException
                                           or ArgumentException or IndexOutOfRangeException or KeyNotFoundException or InvalidOperationException)
@@ -959,9 +964,55 @@ internal static partial class PokemonModels
         {
             // A sculpt the kit can't mesh mustn't stop the game: the species shows the stand-in instead
             ImportedModels.Report($"{species}'s model couldn't be built ({e.Message}); it shows the stand-in");
-            return Finish(Generic(species));
+            return Finish(Generic(PokemonPlatinumEngine.Models.PokemonLook.Base(species)));
         }
     }
+
+    /// <summary>
+    /// The model file for a look: its own (<c>Pikachu+f.glb</c>), or for a female look with none of her own her
+    /// species' (a model file shows its own shapes, female or not, until one is made for her).
+    /// </summary>
+    private static string? FileFor(string look) =>
+        ModelOverrides.Find(look) ?? (PokemonPlatinumEngine.Models.PokemonLook.IsFemale(look) ? ModelOverrides.Find(PokemonPlatinumEngine.Models.PokemonLook.Base(look)) : null);
+
+    /// <summary>
+    /// The species and forms with a female look of their own (plan 09 · L6 to L8), beside <see cref="Species"/> and
+    /// <see cref="Forms"/>: each is built by its sculptor asked for the female (<see cref="CreateFemale"/>).
+    /// </summary>
+    public static IReadOnlyList<string> Females => PokemonPlatinumEngine.Models.PokemonLook.Females;
+
+    /// <summary>
+    /// A female look's sculpt (plan 09 · L6; style guide, "Female looks"): the species' own sculptor asked for the
+    /// female, which changes only what differs (a smaller horn, a heart in the tail, a paler neck) and leaves the male's
+    /// sculpt as it was to the bit. A species with no female of its own is its male.
+    /// </summary>
+    private static PokeBuilder CreateFemale(string species) => species.ToUpperInvariant() switch
+    {
+        "VENUSAUR" => Venusaur(female: true),
+        "BUTTERFREE" => Butterfree(female: true),
+        "RATTATA" => RattataBuild(false, female: true),
+        "RATICATE" => RaticateBuild(false, female: true),
+        "PIKACHU" => Pikachu(female: true),
+        "RAICHU" => Raichu(female: true),
+        "ZUBAT" => Zubat(female: true),
+        "GOLBAT" => Golbat(female: true),
+        "GLOOM" => Gloom(female: true),
+        "VILEPLUME" => Vileplume(female: true),
+        "KADABRA" => Kadabra(female: true),
+        "ALAKAZAM" => Alakazam(female: true),
+        "DODUO" => Doduo(female: true),
+        "DODRIO" => Dodrio(female: true),
+        "HYPNO" => Hypno(female: true),
+        "RHYHORN" => Rhyhorn(female: true),
+        "RHYDON" => Rhydon(female: true),
+        "GOLDEEN" => Goldeen(female: true),
+        "SEAKING" => Seaking(female: true),
+        "SCYTHER" => Scyther(female: true),
+        "MAGIKARP" => Magikarp(female: true),
+        "GYARADOS" => Gyarados(female: true),
+        "EEVEE" => Eevee(female: true),
+        _ => Create(species)
+    };
 
     /// <summary>A model for each body plan, including the ones no hand-built species uses yet (for tests and the harness).</summary>
     internal static PokeModel Sample(BodyPlan plan) => plan switch
@@ -977,7 +1028,9 @@ internal static partial class PokemonModels
         }))).Value
     };
 
-    private static PokeBuilder Create(string species) => species.ToUpperInvariant() switch
+    private static PokeBuilder Create(string species) => PokemonPlatinumEngine.Models.PokemonLook.IsFemale(species)
+        ? CreateFemale(PokemonPlatinumEngine.Models.PokemonLook.Base(species))
+        : species.ToUpperInvariant() switch
     {
         "TURTWIG" => Turtwig(),
         "GROTLE" => Grotle(),

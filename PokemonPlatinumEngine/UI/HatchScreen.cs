@@ -193,7 +193,7 @@ public sealed class HatchScreen
             pictureLoaded = true;
         }
         // Pure light has no ink line round it; the outline comes back as the colours do
-        PokemonSprites.Render(renderContext, PokemonModels.Get(PokemonLook.Of(pokemon.ModelName, pokemon.IsShiny)), SpriteView.Front, new PokePose { Time = time }, picture,
+        PokemonSprites.Render(renderContext, PokemonModels.Get(PokemonLook.Of(pokemon.ModelName, pokemon.Gender == PokemonPlatinumEngine.Data.Gender.Female, pokemon.IsShiny)), SpriteView.Front, new PokePose { Time = time }, picture,
             hullOutline: look.White < 0.5f, flash: (Light, look.White));
     }
 

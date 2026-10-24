@@ -1784,7 +1784,7 @@ public partial class GameEngine
         {
             flow.Evolutions.Enqueue(request);
             shown.Add(request.Pokemon.LookName);
-            shown.Add(PokemonLook.Of(Evolution.ModelAfter(request.Pokemon, request.Evolution), request.Pokemon.IsShiny));
+            shown.Add(PokemonLook.Of(Evolution.ModelAfter(request.Pokemon, request.Evolution), request.Pokemon.Gender == Gender.Female, request.Pokemon.IsShiny));
         }
         foreach (var name in shown) flow.WantModel(name);
         flow.EvolutionReturn = returnTo;

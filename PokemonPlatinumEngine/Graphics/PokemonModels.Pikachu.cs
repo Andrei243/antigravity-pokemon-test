@@ -135,6 +135,18 @@ internal static partial class PokemonModels
         b.Cut(tail, tip + V(0, 0.012f, -0.01f), V(0.03f, 0.03f, 0.022f), V(-20f, 0, 0), 0.004f);
     }
 
+    /// <summary>
+    /// A female Pikachu's own tail out of costume (plan 09 · L6): the square end of its last span notched in the
+    /// middle and rounded at its two corners, a heart in outline, still yellow.
+    /// </summary>
+    private static void FemaleTail(PokeBuilder b, int tail)
+    {
+        // The span's far end, across which its width runs up and down
+        var end = V(0.186f, 0.53f, -0.37f);
+        b.Cut(tail, end + V(0, 0, -0.012f), V(0.03f, 0.03f, 0.05f), blend: 0.004f);
+        PokeBuilder.Both(s => b.Cut(tail, end + V(0, 0.085f * s, -0.02f), V(0.03f, 0.045f, 0.045f), blend: 0.004f));
+    }
+
     /// <summary>The spiky-eared Pichu's ear: a tuft of black spikes standing out of the tip of its left ear.</summary>
     private static void SpikyEar(PokeBuilder b)
     {

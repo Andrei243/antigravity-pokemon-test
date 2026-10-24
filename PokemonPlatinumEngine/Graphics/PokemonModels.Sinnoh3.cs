@@ -1392,7 +1392,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Eevee and its evolutions
 
-    private static PokeBuilder Eevee()
+    /// <param name="female">A female (plan 09 · L6): the cream at her tail's tip is a heart, rounder than the male's.</param>
+    private static PokeBuilder Eevee(bool female = false)
     {
         var b = new PokeBuilder("Eevee", 0.5f, BodyPlan.Quadruped, V(0, 0.17f, -0.02f)) { Coat = Fur };
         var brown = Rgb(198, 132, 72);
@@ -1417,7 +1418,14 @@ internal static partial class PokemonModels
         }
         int tail = b.Tail(V(0, 0.2f, -0.14f));
         b.Ell(tail, V(0, 0.29f, -0.2f), V(0.065f, 0.12f, 0.065f), brown, V(-25f, 0, 0));
-        b.PaintEll(tail, V(0, 0.38f, -0.25f), V(0.07f, 0.05f, 0.07f), cream);
+        if (female)
+        {
+            // Two round lobes over a point, seen from behind as a heart
+            PokeBuilder.Both(s => b.PaintEll(tail, V(0.03f * s, 0.385f, -0.255f), V(0.042f, 0.04f, 0.07f), cream));
+            b.PaintEll(tail, V(0, 0.345f, -0.24f), V(0.034f, 0.045f, 0.07f), cream);
+            b.PaintEll(tail, V(0, 0.41f, -0.265f), V(0.016f, 0.028f, 0.07f), brown, soft: 0.009f);
+        }
+        else b.PaintEll(tail, V(0, 0.38f, -0.25f), V(0.07f, 0.05f, 0.07f), cream);
 
         int head = b.Head(V(0, 0.27f, 0.08f));
         var c = V(0, 0.33f, 0.1f);

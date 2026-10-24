@@ -364,7 +364,8 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Goldeen line
 
-    private static PokeBuilder Goldeen()
+    /// <param name="female">A female (plan 09 · L6): a smaller horn.</param>
+    private static PokeBuilder Goldeen(bool female = false)
     {
         var b = new PokeBuilder("Goldeen", 0.6f, BodyPlan.Fish, V(0, 0.44f, 0)) { Coat = Scales }.Hover();
         var white = Rgb(244, 242, 240);
@@ -391,13 +392,15 @@ internal static partial class PokemonModels
         b.Ell(head, V(0, 0.46f, 0.15f), V(0.095f, 0.13f, 0.1f), white);
         b.PaintEll(head, V(0, 0.55f, 0.12f), V(0.1f, 0.06f, 0.08f), orange);
         // The horn it drills with, and pouting pink lips
-        b.Spike(head, V(0, 0.56f, 0.2f), V(0, 0.68f, 0.3f), 0.028f, Rgb(250, 236, 200), mat: Shell);
+        if (female) b.Spike(head, V(0, 0.56f, 0.2f), V(0, 0.635f, 0.262f), 0.022f, Rgb(250, 236, 200), mat: Shell);
+        else b.Spike(head, V(0, 0.56f, 0.2f), V(0, 0.68f, 0.3f), 0.028f, Rgb(250, 236, 200), mat: Shell);
         b.Torus(head, V(0, 0.42f, 0.25f), 0.022f, 0.016f, Rgb(244, 140, 160), V(90f, 0, 0), mat: Shell, blend: 0.008f);
         PokeBuilder.Both(s => b.Eye(head, V(0.065f * s, 0.49f, 0.21f), V(0.8f * s, 0.05f, 0.6f), 0.03f, sclera: true, pupil: Rgb(70, 150, 210)));
         return Lift(b);
     }
 
-    private static PokeBuilder Seaking()
+    /// <param name="female">A female (plan 09 · L6): a smaller horn.</param>
+    private static PokeBuilder Seaking(bool female = false)
     {
         var b = new PokeBuilder("Seaking", 0.84f, BodyPlan.Fish, V(0, 0.45f, 0)) { Coat = Scales }.Hover();
         var orange = Rgb(238, 100, 52);
@@ -431,7 +434,8 @@ internal static partial class PokemonModels
         int head = b.Head(V(0, 0.45f, 0.15f));
         b.Ell(head, V(0, 0.47f, 0.18f), V(0.12f, 0.16f, 0.12f), orange);
         b.PaintEll(head, V(0, 0.36f, 0.22f), V(0.1f, 0.07f, 0.09f), white);
-        b.Spike(head, V(0, 0.6f, 0.22f), V(0, 0.78f, 0.36f), 0.04f, Rgb(250, 236, 200), mat: Shell);
+        if (female) b.Spike(head, V(0, 0.6f, 0.22f), V(0, 0.7f, 0.3f), 0.032f, Rgb(250, 236, 200), mat: Shell);
+        else b.Spike(head, V(0, 0.6f, 0.22f), V(0, 0.78f, 0.36f), 0.04f, Rgb(250, 236, 200), mat: Shell);
         b.Torus(head, V(0, 0.42f, 0.3f), 0.026f, 0.02f, Rgb(244, 140, 160), V(90f, 0, 0), mat: Shell, blend: 0.008f);
         PokeBuilder.Both(s => b.Eye(head, V(0.08f * s, 0.52f, 0.25f), V(0.8f * s, 0.05f, 0.6f), 0.034f, sclera: true));
         return Lift(b);
@@ -1315,7 +1319,8 @@ internal static partial class PokemonModels
     }
 
     /// <param name="form">One of Pikachu's caps or costumes (PokemonModels.Pikachu.cs), or none for Pikachu itself.</param>
-    private static PokeBuilder Pikachu(string? form = null)
+    /// <param name="female">A female (plan 09 · L6): her tail ends in a heart, notched at its tip.</param>
+    private static PokeBuilder Pikachu(string? form = null, bool female = false)
     {
         var b = new PokeBuilder(form ?? "Pikachu", 0.56f, BodyPlan.Biped, V(0, 0.18f, 0)) { Coat = Fur };
         var yellow = Rgb(250, 212, 52);
@@ -1358,10 +1363,12 @@ internal static partial class PokemonModels
         b.Mark(head, V(0, 0.355f, 0.132f), V(0, -0.2f, 1f), 0.024f, 0.008f, Rgb(90, 36, 30), MarkShape.Wave);
         PokeBuilder.Both(s => b.Eye(head, V(0.058f * s, 0.4f, 0.118f), V(0.4f * s, 0.05f, 1f), 0.032f));
         if (form != null) DressPikachu(b, form, head, tail);
+        else if (female) FemaleTail(b, tail);
         return b;
     }
 
-    private static PokeBuilder Raichu()
+    /// <param name="female">A female (plan 09 · L6): the bolt on her tail ends round, without its point.</param>
+    private static PokeBuilder Raichu(bool female = false)
     {
         var b = new PokeBuilder("Raichu", 0.72f, BodyPlan.Biped, V(0, 0.3f, 0)) { Coat = Fur };
         var orange = Rgb(242, 150, 52);
@@ -1381,7 +1388,13 @@ internal static partial class PokemonModels
         // A long thin black tail ending in a yellow bolt
         int tail = b.Tail(V(0, 0.2f, -0.1f));
         b.Tube(tail, Smooth(3, V(0, 0.2f, -0.1f), V(0.03f, 0.1f, -0.24f), V(0.08f, 0.08f, -0.4f), V(0.12f, 0.14f, -0.52f)), 0.014f, 0.01f, black);
-        Bolt(b, tail, new[] { V(0.12f, 0.14f, -0.52f), V(0.12f, 0.27f, -0.57f), V(0.12f, 0.24f, -0.68f), V(0.12f, 0.42f, -0.74f) }, new[] { 0.04f, 0.05f, 0.075f }, 0.014f, yellow);
+        if (female)
+        {
+            // Her bolt's last span stops short and ends in a round blade, with no point
+            Bolt(b, tail, new[] { V(0.12f, 0.14f, -0.52f), V(0.12f, 0.27f, -0.57f), V(0.12f, 0.24f, -0.68f), V(0.12f, 0.34f, -0.715f) }, new[] { 0.04f, 0.05f, 0.075f }, 0.014f, yellow);
+            b.Ell(tail, V(0.12f, 0.355f, -0.72f), V(0.014f, 0.055f, 0.05f), yellow, V(-19f, 0, 0), blend: 0.006f);
+        }
+        else Bolt(b, tail, new[] { V(0.12f, 0.14f, -0.52f), V(0.12f, 0.27f, -0.57f), V(0.12f, 0.24f, -0.68f), V(0.12f, 0.42f, -0.74f) }, new[] { 0.04f, 0.05f, 0.075f }, 0.014f, yellow);
         PokeBuilder.Both(s =>
         {
             int arm = b.Arm(s, V(0.11f * s, 0.38f, 0.03f));

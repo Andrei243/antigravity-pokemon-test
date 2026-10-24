@@ -66,7 +66,7 @@ internal static partial class ModernUi
             Card(r, 30, selected, Gold);
             var disc = new Vector2(r.X + cardW / 2f, r.Y + 22 + 108);
             BallDisc(disc, 108);
-            PixelArt(PixelArtGenerator.GetPokemonSprite(PokemonLook.Of(m.Form ?? m.Species, m.Shiny), isBack: false), disc, 2, Hop(selected) * 2);
+            PixelArt(PixelArtGenerator.GetPokemonSprite(PokemonLook.Of(m.Form ?? m.Species, m.Gender == Gender.Female, m.Shiny), isBack: false), disc, 2, Hop(selected) * 2);
             float size = 32;
             while (size > 22 && UiFonts.Measure(m.ShownName, size, UiWeight.Black) > cardW - 28) size -= 2;
             UiFonts.DrawCentered(m.ShownName, r.X + (cardW - UiFonts.Measure(m.ShownName, size, UiWeight.Black)) / 2f, r.Y + 286, size, Ink, UiWeight.Black);
@@ -599,7 +599,7 @@ internal static partial class ModernUi
             if (i * step + radius * 2 > wide) break;
             var c = new Vector2(x + radius + i * step, y + radius + 20);
             UiShapes.Circle(c, radius, Disc);
-            var icon = member.Pokemon.IsEgg ? PixelArtGenerator.EggIcon : PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(member.Pokemon.Form ?? member.Pokemon.SpeciesName, member.Pokemon.IsShiny));
+            var icon = member.Pokemon.IsEgg ? PixelArtGenerator.EggIcon : PixelArtGenerator.GetPokemonIcon(PokemonLook.Of(member.Pokemon.Form ?? member.Pokemon.SpeciesName, member.Pokemon.Gender == Gender.Female, member.Pokemon.IsShiny));
             PixelArt(icon, c, 2);
             i++;
         }
