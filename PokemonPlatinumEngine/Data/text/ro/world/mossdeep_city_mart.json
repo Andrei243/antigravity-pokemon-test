@@ -1,0 +1,69 @@
+{
+  "people": {
+    "mossdeep_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Reviving a Pokémon costs a lot. A single Revive is dearer than a Hyper Potion!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Dive Balls sold here work best on Pokémon that live under the water. Perfect for the sea round Mossdeep!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Net Ball's the thing for Water and Bug Pokémon. Every sailor keeps a few on board."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,130 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... There isn't much here, as you can see, but this is my home."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for everything you've done. Please take this as my thanks. It's an HM. You've earned it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When you're out on the water with Surf, look for patches where the sea turns dark."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Use Dive there and you'll sink down to the sea floor. Use it again to come back up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are places down there where you can't come up, though. Keep that in mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Steven": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say there's an underwater cavern between Mossdeep and Sootopolis. The one Captain Stern found in his submarine."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Beldum": [
+    {
+      "en": [
+        "{player} looked at the Poké Ball. There's a Beldum inside. Take the Poké Ball?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Beldum!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} left the Poké Ball where it was."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Letter": [
+    {
+      "en": [
+        "It's a letter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "'{player}, I've decided to travel for a while and train on the road. I won't be home for some time.'"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "'I have a favour to ask. Please take the Poké Ball on the desk. Inside is Beldum, my favourite Pokémon.'"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "'I'm counting on you. May our paths cross again someday. Steven Stone'"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

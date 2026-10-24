@@ -1,23 +1,5 @@
 {
   "people": {
-    "0": {
-      "name": {
-        "en": [
-          "Notice"
-        ],
-        "text": [
-          "Anunț"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains."
-        ],
-        "text": [
-          "O revistă lăsată pe bancă, deschisă la o pagină despre Bruno de la Elita celor Patru, care se antrenează în munți."
-        ]
-      }
-    },
     "five_island_nurse": {
       "name": {
         "en": [
@@ -61,6 +43,24 @@
         ],
         "text": [
           "Mă duc să gătesc cina pentru o petrecere elegantă la Stațiunea Gorgeous. Mai bine nu întârzii!"
+        ]
+      }
+    },
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains."
+        ],
+        "text": [
+          "O revistă lăsată pe bancă, deschisă la o pagină despre Bruno de la Elita celor Patru, care se antrenează în munți."
         ]
       }
     },

@@ -681,6 +681,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.BlackOutCenter, FieldScripts.BlackOutHome });
         // The end of a Safari Game: its last step, or its last ball (plan 01 · M7)
         started.UnionWith(new[] { FieldScripts.SafariTimeUp, FieldScripts.SafariOutOfBalls });
+        // The end of a Bug-Catching Contest and its second catch (plan 15 · E5)
+        started.UnionWith(new[] { PokemonPlatinumEngine.Core.GameEngine.BugContestTimeUpScript, PokemonPlatinumEngine.Core.GameEngine.BugContestOutOfBallsScript, PokemonPlatinumEngine.Core.GameEngine.BugContestSwapScript });
         // A television, a bookshelf, a bin and a map on a wall with nothing of their own to say (plan 08 · P8)
         started.UnionWith(new[] { FieldScripts.Television, FieldScripts.Bookshelf, FieldScripts.TrashCan, FieldScripts.TownMap });
         // A Repel's last step (plan 06 · R11)

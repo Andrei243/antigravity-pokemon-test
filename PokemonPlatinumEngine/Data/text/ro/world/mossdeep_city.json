@@ -1,0 +1,294 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everything that lives needs the sea, even what makes its home on land. And the sea always reaches the shore."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can see wild Wailmer from the beach here! It's called... um... Wai-Wai-Wailmer watching!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wouldn't it be lovely if the whole world were covered in flowers, just like this island?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The people of the Space Center put that white rock there as a wish for their rockets to fly safely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: The boss is about to give the word!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: Rocket fuel, here we come!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_grunt_3": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: We sent them a letter. That makes it polite!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_grunt_4": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma Grunt: Out of the way, kid!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Maxie: The fuel stored in that building is ours. Stand aside."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The waves feel good on my feet. They say Sootopolis's Gym has a new Leader, one who taught Wallace himself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MossdeepCity_EventScript_CitySign": {
+      "en": [
+        "Mossdeep City\nOur motto: Cherish Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MossdeepCity_EventScript_GymSign": {
+      "en": [
+        "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza\nTwo minds that fight as one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MossdeepCity_EventScript_SpaceCenterSign": {
+      "en": [
+        "Mossdeep Space Center\nAs close to the stars as you can get on foot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MossdeepCity_EventScript_WhiteRock": {
+      "en": [
+        "A smooth white rock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

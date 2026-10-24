@@ -1,0 +1,422 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's with you? It's three of us to one of you, and you still want to take us on?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good answer! That's what a smart kid does!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A real go-getter, huh? Fine. I'll go first!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I lost! But..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't relax yet! I'm next!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Me too! But..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bet you'd like a breather. Too bad!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We should've taken a breather ourselves..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt5": [
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are we any use to the boss at all, I wonder?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt6": [
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three of us, and look at the mess we got into."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt7": [
+    {
+      "en": [
+        "Team Magma Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three of us losing like this. It looks three times as bad!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Tabitha": [
+    {
+      "en": [
+        "Tabitha"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hehehe! We come all this way for a little fuel and get bothered again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Want to get in the way too? Then we'll deal with you at the same time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Maxie": [
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Out of the way! Don't you dare interfere!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Steven": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Magma... What can you possibly want with rocket fuel?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fufufu... Since you're so curious, I'll tell you. We will pour every drop of it into Mt. Chimney!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With Groudon gone, that heap of a mountain is no use to us. So the fuel will make it erupt!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, it will be savage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You'll help me? Then let's battle side by side! Are you ready?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We failed to make the volcano erupt... We failed to tame Groudon once it woke..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is our wish for more land misguided? ......"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And if we, Team Magma, are wrong... might Team Aqua's wish for more sea be wrong as well?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. We will give up on the fuel. There are more important matters I must look into."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whew, that was tense. {player}, thank you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'd like to give you something for your help. Please come and see me at home after this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, I don't live in Rustboro, by the way. My house is right here on this island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then hurry! Get ready, quickly!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Scientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mossdeep is sunny most of the year and its winds are steady. It's the perfect place to launch rockets."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Why would Team Magma want to steal our rocket fuel in the first place?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gentleman": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If only I were a little younger, I'd have liked to be an astronaut... No! It isn't too late! I'll try!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If Team Magma takes the rocket fuel, I'll never get to space! It's an outrage!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RichBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I wish ordinary people could go to space someday..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Magma... Do they want to go to space too?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

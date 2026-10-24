@@ -1,0 +1,264 @@
+{
+  "Sailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A sailor pal told me Team Aqua set up in Lilycove, and somebody sent them packing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But it's Team Magma who've got their eye on Mossdeep. Want to know what they're after? Ask at the Space Center."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sea's my life, but after a long voyage, setting foot on land again is a relief all the same."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PokefanF": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Space Center on this island launches great big rockets. There's been an uproar about some letter they got."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Space Center on this island launches great big rockets. It's quite a sight when one goes up!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Man": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A ship is a fine way to cross the sea. But riding a Pokémon with Surf? Now that's a thrill. Don't you agree?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KingsRockBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven gave me this rock. He called it a King's Rock, I think. I don't know what it's for. Do you want it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Really? You're strange. You can have it, but don't tell Steven."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Steven's house is right over there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See? Nobody knows what to do with a weird old rock."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Scott": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Feeling good? I came to see Mossdeep's Gym Leaders for myself. They're said to be quite something."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But something's off about this town. People keep talking about a warning letter and the Space Center..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I don't suppose it's any of my business. See you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MagmaEntersSpaceCenter": [
+    {
+      "en": [
+        "Maxie"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The fuel is in that building. Go!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DynamicPunchTutor": [
+    {
+      "en": [
+        "Black Belt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A punch that leaves the foe dizzy! Shall I teach one of your Pokémon Dynamic Punch?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good! Which one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It doesn't always land, but when it does, the foe can't tell up from down!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. The offer won't run off."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't throw a punch yet!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm, that one can't learn Dynamic Punch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

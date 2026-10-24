@@ -1,0 +1,51 @@
+{
+  "people": {
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My little sister trades letters with a boy in Fortree. They use a Wingull to carry them back and forth!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Wingull brings me letters from my friend in Fortree. Pokémon can carry letters for us, you know!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mossdeep_house_wingull": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

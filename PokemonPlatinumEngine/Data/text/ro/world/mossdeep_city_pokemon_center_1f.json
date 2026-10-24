@@ -1,0 +1,51 @@
+{
+  "people": {
+    "mossdeep_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leaders here are twins. They say they can read each other's minds in the middle of a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up, I want to work at the Space Center and send rockets up to the stars!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

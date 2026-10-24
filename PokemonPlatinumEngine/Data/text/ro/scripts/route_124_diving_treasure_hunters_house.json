@@ -1,0 +1,126 @@
+{
+  "TreasureHunter": [
+    {
+      "en": [
+        "Treasure Hunter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm the diving treasure hunter! I'm the fellow who dives to the bottom of the sea for the treasures lying there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tell me, have you come across any shards? Pieces of tools from long, long ago?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No treasure for me, huh... If you find a shard, like a Red Shard, you've got to trade it with me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! That's a shard! I'm looking for those! Trade it to me, and I'll give you something good!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What do you want to trade?",
+        "Red Shard",
+        "Yellow Shard",
+        "Blue Shard",
+        "Green Shard",
+        "Nothing"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Red Shard for my Fire Stone, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Yellow Shard for my Thunder Stone, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Blue Shard for my Water Stone, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Green Shard for my Leaf Stone, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a deal! Use it wisely!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Want to trade something else?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh? You haven't got one of those. Come back when you've found one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? That's a shame. Well, come back if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

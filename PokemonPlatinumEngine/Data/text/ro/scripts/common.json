@@ -625,6 +625,32 @@
       ]
     }
   ],
+  "Crossing": [
+    {
+      "en": [
+        "Shall we set off, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right this way. Mind your step as you come aboard!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take all the time you need. We'll be here when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "CutTree": [
     {
       "en": [
@@ -2054,6 +2080,258 @@
       ],
       "text": [
         "{player} a folosit Luneta Devon. Un Pokémon care se contopise cu peisajul se arată!"
+      ]
+    }
+  ],
+  "BugContestDesk": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today's the Bug-Catching Contest! Whoever catches the finest Bug Pokémon in the park wins a prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to take part?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Only the first Pokémon of your team that can battle may come along. We'll look after the rest for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here are twenty Sport Balls. You have twenty minutes to catch the best Bug Pokémon you can. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, maybe next time. The contest is held every Tuesday, Thursday and Saturday."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, none of your Pokémon can battle right now. Please heal them first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Bug-Catching Contest is held in the park on Tuesdays, Thursdays and Saturdays."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bug Catchers come from all over Johto for it. Do take part!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today's contest is over. Thanks for taking part! The next one is on the next contest day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BugContestReturn": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's still time left in the contest. Are you finished catching?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then back you go! Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BugContestTimeUp": [
+    {
+      "en": [
+        "Ding-dong! Time's up! The Bug-Catching Contest is over. All contestants, please make your way to the gate."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BugContestOutOfBalls": [
+    {
+      "en": [
+        "You've used your last Sport Ball. Your part in the contest is over. Please make your way to the gate."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BugContestSwap": [
+    {
+      "en": [
+        "You're already holding on to {bugmon} for the contest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enter the {bugnew} you just caught instead?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{bugnew} was set free."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{bugmon} was set free. {bugnew} is your entry now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BugContestJudging": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you caught {bugmon}! Let's have the judges take a look."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You didn't catch anything? That's a shame. You're still in the running, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And now, the results of today's Bug-Catching Contest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You didn't make the top three this time, {player}. Here's a little something for taking part."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First place goes to {player}, with a score of {score}! Your prize is a {prize}. Congratulations!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Second place goes to {player}, with a score of {score}! Your prize is an {prize}. Well done!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Third place goes to {player}, with a score of {score}! Your prize is a {prize}. Well done!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon came back, along with the one caught in the contest."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon came back. The team was full, so the one caught in the contest was sent to the PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for taking part! We hold the contest every Tuesday, Thursday and Saturday."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

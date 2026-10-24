@@ -830,5 +830,125 @@
         "Cristin la telefon. Mă antrenez în fiecare zi de la lupta noastră. Să nu crezi că am uitat!"
       ]
     }
+  ],
+  "TateAndLiza": [
+    {
+      "en": [
+        "Tate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! It's Tate..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...and Liza! We're both on the line. We always are."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tate"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We've been working on a new combination..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...and you'll be the first to see it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennErnest": [
+    {
+      "en": [
+        "Ernest"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy, it's Ernest! A Wailmer surfaced right beside my boat today and soaked me through. What a laugh!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennPablo": [
+    {
+      "en": [
+        "Pablo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pablo here! I swam round the whole crater this morning. Next time, I'll beat you too!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennKoji": [
+    {
+      "en": [
+        "Koji"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Koji here! I punched a hundred waves today. The sea didn't flinch, but I'm getting stronger. Hah!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

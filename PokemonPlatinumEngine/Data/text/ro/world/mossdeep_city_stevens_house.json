@@ -1,0 +1,44 @@
+{
+  "people": {
+    "stevens_house_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "stevens_house_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Letter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MossdeepCity_StevensHouse_EventScript_RockDisplay": {
+      "en": [
+        "A collection of rare rocks and stones that Steven has gathered."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

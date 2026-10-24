@@ -47,6 +47,32 @@
       "text": [
         "Datorită pieselor, submarinul înaintează. Dar mi-ar prinde bine sfatul unui lup de mare bătrân."
       ]
+    },
+    {
+      "en": [
+        "Hi! Mr. Briney has joined us to lend a hand. With an old sea hand's know-how, the work's going twice as fast!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Briney": [
+    {
+      "en": [
+        "Mr. Briney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm? Ah, it's you! I've decided to help Dock here. A ship needs an old salt's touch, after all!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }

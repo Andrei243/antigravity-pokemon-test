@@ -1,0 +1,111 @@
+{
+  "people": {
+    "space_center_2f_rich_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_2f_gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_2f_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_2f_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_grunt_5": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_grunt_6": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_grunt_7": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_tabitha": {
+      "name": {
+        "en": [
+          "Tabitha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tabitha: I'm with the boss, all the way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tabitha: I'm with the boss, all the way..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

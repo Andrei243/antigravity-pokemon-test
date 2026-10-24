@@ -247,6 +247,186 @@
           "Școlar Jack: Asta nu scria în cărți."
         ]
       }
+    },
+    "bug_contestant_don": {
+      "name": {
+        "en": [
+          "Don"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm after a Scyther. Nothing else will do!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_ed": {
+      "name": {
+        "en": [
+          "Ed"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! There's something rustling in this grass. Don't scare it off!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_abby": {
+      "name": {
+        "en": [
+          "Abby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I train hard for battles, but catching is a different skill. It's good practice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_william": {
+      "name": {
+        "en": [
+          "William"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I entered for fun, but I'd still like to win something for my grandkids."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_benny": {
+      "name": {
+        "en": [
+          "Benny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Bug Pokémon in this park is mine. Well, one of them is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_barry": {
+      "name": {
+        "en": [
+          "Barry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The judges like a big, healthy Pokémon. Don't battle yours down too far!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_cindy": {
+      "name": {
+        "en": [
+          "Cindy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I don't really like bugs... but the prizes are so nice!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_josh": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've got a good feeling about today. This is my contest!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_samuel": {
+      "name": {
+        "en": [
+          "Samuel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Twenty minutes isn't much. I'd better hurry up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_contestant_kipp": {
+      "name": {
+        "en": [
+          "Kipp"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My teacher says a Pokémon's hidden strength counts with the judges. I wonder how they can tell."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

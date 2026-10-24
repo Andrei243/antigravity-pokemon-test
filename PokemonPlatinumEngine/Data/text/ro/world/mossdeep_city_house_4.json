@@ -1,0 +1,51 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My little brother is always off looking for places to make secret bases. He comes home covered in leaves!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that knows Secret Power can open up a hollow in a tree or a rock for a base. Have you made one yet?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "skitty": {
+      "name": {
+        "en": [
+          "Skitty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

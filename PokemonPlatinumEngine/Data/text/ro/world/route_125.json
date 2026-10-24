@@ -1,0 +1,239 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Nolen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nolen: The current up here pulls you north. Fight it, or battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nolen: I think I'll just float for a bit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Stan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Stan: I swim this route every morning. You're new here, aren't you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Stan: New, and strong. Welcome, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Tanya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tanya: Is that the cave on the islet you're after? Get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tanya: Go on, then. Mind the tide."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Sharon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Sharon: Swimming in the sea makes my skin so smooth. Battling makes me strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Sharon: Smooth skin, bruised pride."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Ernest"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Ernest: Ahoy! A sailor's Pokémon are as tough as the sea itself!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Ernest: Rough seas today. For me, anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Kim & Iris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. and Jr. Kim & Iris: We're out for a swim, the two of us! Shall we make it a double battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. and Jr. Kim & Iris: We'll swim back and try again!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Kim & Iris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. and Jr. Kim & Iris: We're out for a swim, the two of us! Shall we make it a double battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. and Jr. Kim & Iris: We'll swim back and try again!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Presley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Presley: My birds fly out over the sea every day. Today they'll fly at you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Presley: They'll fly home and rest now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Auron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Expert Auron: I've watched the tide on this islet for fifty years. Let's see how you hold against it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Expert Auron: You're a strong current yourself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

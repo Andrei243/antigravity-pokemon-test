@@ -1,0 +1,24 @@
+{
+  "people": {
+    "man_5": {
+      "name": {
+        "en": [
+          "Treasure Hunter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route124_DivingTreasureHuntersHouse_EventScript_ShardTradeBoard": {
+      "en": [
+        "Wanted, and what I'll trade for it:\nRed Shard: Fire Stone. Yellow Shard: Thunder Stone.\nBlue Shard: Water Stone. Green Shard: Leaf Stone."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

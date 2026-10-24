@@ -1,0 +1,742 @@
+{
+  "people": {
+    "tate": {
+      "name": {
+        "en": [
+          "Tate"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "liza": {
+      "name": {
+        "en": [
+          "Liza"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Preston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Preston: A battle is won by the stronger will. A wavering mind never wins!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Preston: My will wavered. Back to training it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m_2": {
+      "name": {
+        "en": [
+          "Blake"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Blake: Watch me lift a Poké Ball with my mind alone! Hnnngh... Hm. It's a bad day."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Blake: My battling's having a bad day too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Maura"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Maura: The arrows under your feet will turn you round. And so will I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Maura: You found your way after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Samantha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Samantha: I already know how this battle ends. Shall I show you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Samantha: Funny. It ended differently in my head."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m_3": {
+      "name": {
+        "en": [
+          "Virgil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Virgil: Show me what talent you have, challenger!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Virgil: Talent to spare. Remarkable."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_3": {
+      "name": {
+        "en": [
+          "Hannah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Hannah: Don't feel bad when you lose. It isn't that you're weak. I'm just strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Hannah: It's me who feels bad now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Nate"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Nate: Ho ho. The twins send their students to meet their guests. I am one."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Nate: Ho ho. You may go on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Sylvia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Sylvia: The statues watch you go round and round... and so do I..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Sylvia: The statues saw that. How embarrassing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman_2": {
+      "name": {
+        "en": [
+          "Clifford"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Clifford: I have studied the mind for forty years. Let us see what yours can do."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Clifford: Forty years, and still a student."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_4": {
+      "name": {
+        "en": [
+          "Macey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Macey: Tate and Liza never lose in practice. Can you beat their pupil first?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Macey: I'll have to practise harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hex_maniac_2": {
+      "name": {
+        "en": [
+          "Kathleen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Kathleen: I saw you coming in my dreams last night. You were very small..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Kathleen: Dreams aren't always right, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m_4": {
+      "name": {
+        "en": [
+          "Nicholas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Nicholas: The twins are close now. Close enough to feel their minds. Can you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Nicholas: Go on. They're expecting you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_2": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_3": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_4": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_5": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_6": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_7": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_8": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_9": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_10": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_11": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_12": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_13": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_14": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_15": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_16": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_17": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_18": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_19": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_20": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trick_house_statue_21": {
+      "name": {
+        "en": [
+          "Statue"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A stone statue of someone lost in thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MossdeepCity_Gym_EventScript_LeftGymStatue": {
+      "en": [
+        "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MossdeepCity_Gym_EventScript_RightGymStatue": {
+      "en": [
+        "Mossdeep City Pokémon Gym\nLeaders: Tate and Liza"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

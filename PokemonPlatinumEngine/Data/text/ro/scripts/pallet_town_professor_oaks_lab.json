@@ -514,5 +514,23 @@
         "O rog pe sora mea să-mi dea o Hartă a Regiunii. Nu te obosi s-o rogi și tu, {player}. Pe curând!"
       ]
     }
+  ],
+  "NameTheRival": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, and that impatient one by the table is my grandson. Hm... now what was his name again?"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

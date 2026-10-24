@@ -49,8 +49,9 @@ public class SoundTests
             var s = sound!.Samples;
             Assert.All(s, x => Assert.True(float.IsFinite(x)));
             // Thunder alone rolls on for seconds; the later mechanics' set pieces (a Mega Evolution, the Z-Power, a
-            // Z-Move: plan 25 · Y14) play under cues of up to 1.8 s, and are given 2
-            Assert.InRange(sound.Duration, 0.02, name.StartsWith("thunder") ? 3.5 : SoundBank.IsSetPiece(name) ? 2.0 : 1.0);
+            // Z-Move: plan 25 · Y14) play under cues of up to 1.8 s, and are given 2; a crossing's horn or engine plays
+            // under the dark of its voyage (plan 18 · W5), and is given 3
+            Assert.InRange(sound.Duration, 0.02, name.StartsWith("thunder") ? 3.5 : name.StartsWith("crossing_") ? 3.0 : SoundBank.IsSetPiece(name) ? 2.0 : 1.0);
             float peak = s.Max(MathF.Abs);
             Assert.True(peak is >= 0.3f and <= 0.6f, $"{name} peaks at {peak}");
             Assert.True(Rms(s) > 0.02, $"{name} is nearly silent");

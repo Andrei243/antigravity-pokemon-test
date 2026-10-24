@@ -1,0 +1,213 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Camden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Camden: Running, cycling, swimming... and battling. Let's see your stamina!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Camden: My stamina ran out first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Donny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Donny: Ugh, salt water up my nose again! A battle will clear my head!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Donny: It's clearer, but now I'm sad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Jonah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Jonah: You scared my fish away! You'll have to make it up to me with a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Jonah: Now the fish are laughing at me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Roger"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Roger: The big ones bite out here on the open sea. So do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Roger: I'm the one who got reeled in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_3": {
+      "name": {
+        "en": [
+          "Henry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Henry: Fishing's all about patience. Battling isn't. Here I come!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Henry: Should've stayed patient."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Aidan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Aidan: My birds fish out here with their beaks. Want to see them hunt?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Aidan: They came home with nothing today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Koji"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Koji: Training on a sandbar in the middle of the sea builds a strong body. Hah!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Koji: My body's strong, but my battling needs work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Athena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Athena: You've come a long way to reach the open sea. Show me what you've learned!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Athena: You've learned plenty."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

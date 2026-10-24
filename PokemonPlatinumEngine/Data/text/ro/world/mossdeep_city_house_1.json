@@ -1,0 +1,41 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmm. Your Pokémon has a sharp look about it. I can always tell what kind of treat a Pokémon likes best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband can tell what any Pokémon likes to eat just by looking at it. Isn't that something?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

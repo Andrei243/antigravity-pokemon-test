@@ -1,0 +1,179 @@
+{
+  "people": {
+    "space_center_1f_scientist_1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_1f_scientist_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_1f_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_1f_old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_1f_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_f": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: We said we'd come for the rocket fuel, and here we are!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Don't think one win makes you unstoppable!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: We warned you fair and square! Nothing sneaky about Team Magma!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Next time we'll skip the letter and just show up."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: The fuel in storage here? We're taking every last drop!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: What's it for? Ask the boss upstairs. I just carry the cans."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "space_center_1f_stair_grunt": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: The boss said nobody gets past me. Nobody!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Tell the boss I never left my post. I held on to the very end!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Letter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,213 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Barry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Barry: The water round that big crater is the deepest in Hoenn. Fancy a dip?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Barry: I sank, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Dean"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Dean: I swim round the crater every day. Someday I'll find a way in!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Dean: Maybe the way in is under the water..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Nikki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nikki: Out here, it's just me, the sea and my Pokémon. And now you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nikki: Back to just me and the sea."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Brenda"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Brenda: The sun on the water's so bright today. Shall we battle under it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Brenda: I'm seeing spots now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_3": {
+      "name": {
+        "en": [
+          "Sienna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Sienna: I saw you coming from way over there. I've been waiting!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Sienna: That was worth the wait."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_3": {
+      "name": {
+        "en": [
+          "Pablo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Pablo: Swim, cycle, run, and battle! I'm training for all four!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Pablo: I need to train the fourth one harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_4": {
+      "name": {
+        "en": [
+          "Isobel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Isobel: The sea is the hardest leg of my race. You're my rest stop!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Isobel: Some rest stop. I'm worn out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_4": {
+      "name": {
+        "en": [
+          "Leonardo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Leonardo: I swim with my eyes open so I don't miss a single trainer. Found you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Leonardo: I should've kept them shut."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
