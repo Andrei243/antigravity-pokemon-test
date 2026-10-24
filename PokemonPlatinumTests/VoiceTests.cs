@@ -70,8 +70,9 @@ public sealed class VoiceTests
     public void KeysAreUniqueAndHashesAreTheEnglishs()
     {
         var seen = new HashSet<string>(StringComparer.Ordinal);
-        // (a person's id may hold a dot of its own: Unova's overlays name a room's people by the room, aspertia_city_2.Mom)
-        var key = new Regex(@"^(script:[^#]+#\d+\.\d+|(world|map):[^.]+\..+\.(dialog|before|after)\.\d+|intro:[a-z]+\.[A-Za-z]+\.0)$");
+        // (a person's id may hold a dot of its own: Unova's overlays name a room's people by the room, aspertia_city_2.Mom;
+        // and an introduction's region is its id, Sinnoh)
+        var key = new Regex(@"^(script:[^#]+#\d+\.\d+|(world|map):[^.]+\..+\.(dialog|before|after)\.\d+|intro:[A-Za-z]+\.[A-Za-z]+\.0)$");
         foreach (var line in Game.Value.Built.Lines)
         {
             Assert.True(seen.Add(line.Key), $"two lines are keyed {line.Key}");

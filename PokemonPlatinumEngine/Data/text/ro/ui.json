@@ -392,8 +392,8 @@
     "goes": "Acest {vessel} merge spre {to}.",
     "championsOnly": "La bord urcă doar antrenorii intrați în Sala Faimei din {from}. Revino când ești Campion!",
     "congratulations": "Felicitări, Campion al regiunii {from}!",
-    "notReady": "Cursa spre {to} nu e încă gata de plecare. Mai treci pe aici.",
-    "ready": "Felicitări, Campion al regiunii {from}! Cursa spre {to} e gata de plecare.",
+    "notReady": "Acest {vessel} spre {to} nu e încă gata de plecare. Mai treci pe aici.",
+    "ready": "Felicitări, Campion al regiunii {from}! Acest {vessel} spre {to} e gata de plecare.",
     "welcome": "Pokémonii tăi sunt bineveniți la bord, toți până la unul. Îmbarcarea!"
   },
   "crossing": {

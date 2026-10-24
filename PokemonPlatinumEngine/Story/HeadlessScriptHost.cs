@@ -790,7 +790,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         Answer = 1;
         var check = RegionDatabase.CheckTravel(link, Story);
         Talks++;
-        foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((subject != null ? Named(subject.Name) : null, Named(line)));
+        foreach (string line in RegionDatabase.AttendantLines(link, check)) Transcript.Add((subject != null ? Named(Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name)) : null, Named(line)));
         if (check != TravelCheck.Ready) return;
 
         var to = RegionDatabase.Get(link.To)!;

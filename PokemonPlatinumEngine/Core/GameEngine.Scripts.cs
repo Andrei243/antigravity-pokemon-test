@@ -1179,7 +1179,7 @@ public partial class GameEngine
                     if (RegionDatabase.RegionOfMap(game.flow.Map.Name) is not { } here || RegionDatabase.LinkFrom(here.Id) is not { } link) break;
                     var check = RegionDatabase.CheckTravel(link, game.flow.Story);
                     game.flow.ScriptAnswer = 1;
-                    game.flow.Dialogue.ShowDialogue(subject?.Name ?? "", RegionDatabase.AttendantLines(link, check),
+                    game.flow.Dialogue.ShowDialogue(subject == null ? "" : Text.PersonName(subject.LinesPlace, subject.LinesKey, subject.Name), RegionDatabase.AttendantLines(link, check),
                         check == TravelCheck.Ready ? () => game.TravelTo(RegionDatabase.Get(link.To)!) : null);
                     game.flow.State = GameState.Dialogue;
                     break;
