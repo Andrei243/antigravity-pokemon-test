@@ -27,11 +27,14 @@ public partial class GameEngine
     private EncounterMoment EncounterMomentNow()
     {
         var garden = SpecialEncounterTables.Sinnoh.TrophyGarden;
+        // The day's swarm is the region's own (plan 20 · J13, part c): Johto's twenty places by HeartGold's table, every other region's Sinnoh's
+        var swarm = Swarms.PlaceToday(flow.Encounters, Here.Id);
         return new EncounterMoment
         {
             Time = GameClock.Now,
             Today = GameClock.Today,
-            SwarmArea = Swarms.Today(flow.Encounters),
+            SwarmArea = swarm?.Area,
+            SwarmWay = swarm?.Way switch { "surf" => SwarmWay.Surf, "fish" => SwarmWay.Fish, _ => SwarmWay.Grass },
             NationalDex = flow.Pokedex.NationalUnlocked,
             SlotTwo = Settings.SlotTwo,
             TrophyFirst = TrophyGardenRules.SpeciesIn(flow.Encounters.TrophyFirst, garden),

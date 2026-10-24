@@ -30,6 +30,10 @@
     { "species": "Zubat", "level": 14 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
   "hoennSounds": [
     "Absol",
     "Makuhita"

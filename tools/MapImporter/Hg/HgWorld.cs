@@ -224,6 +224,40 @@ public sealed class HgWorld
         }).ToList();
     }
 
+    /// <summary>A swarm's species by the data's name, HeartGold's; null where the table names none.</summary>
+    private string? SwarmSpecies(Versioned<string>? swarm, string where) =>
+        swarm is { HeartGold: { Length: > 0 } constant } && constant != "SPECIES_NONE"
+            ? GbaNames.Species(constant) ?? Note($"{where}: {constant} is not in the game's data", constant)
+            : null;
+
+    /// <summary>
+    /// Where HeartGold's swarms come to (<c>sSwarmMapLUT</c>, <c>unk_02097F6C.c</c>), in its order, and how each is met:
+    /// the day's number (<c>Roamers_GetRand</c> modulo 20) picks one. Nine of the twenty are Kanto's.
+    /// </summary>
+    public static readonly (string Id, string? Way)[] SwarmPlaces =
+    {
+        ("MAP_ROUTE_1", null), ("MAP_ROUTE_3", null), ("MAP_ROUTE_9", null), ("MAP_ROUTE_12", "fish"), ("MAP_ROUTE_13", null),
+        ("MAP_ROUTE_19", "surf"), ("MAP_ROUTE_32", "fish"), ("MAP_ROUTE_25", null), ("MAP_ROUTE_27", "surf"), ("MAP_ROUTE_34", null),
+        ("MAP_ROUTE_35", null), ("MAP_ROUTE_38", null), ("MAP_ROUTE_44", "fish"), ("MAP_ROUTE_45", null), ("MAP_ROUTE_47", null),
+        ("MAP_MOUNT_MORTAR_1F_ENTRANCE", null), ("MAP_DARK_CAVE_ROUTE_31_SIDE", null), ("MAP_VIRIDIAN_FOREST", null),
+        ("MAP_VERMILION", "surf"), ("MAP_VIOLET", "fish")
+    };
+
+    /// <summary>Johto's tables that belong to no one area: the places swarms come to, each with its name and the species that swarms there in its way.</summary>
+    public WorldEncountersFile SwarmTables()
+    {
+        var file = new WorldEncountersFile();
+        foreach (var (id, way) in SwarmPlaces)
+        {
+            if (!Maps.Headers.TryGetValue(id, out var header)) { Note($"swarms: {id} is no map", id); continue; }
+            var wild = EncountersOf(header);
+            string? species = SwarmSpecies(way switch { "surf" => wild?.SurfSwarm, "fish" => wild?.FishSwarm, _ => wild?.LandSwarm }, header.Key);
+            if (species == null) Note($"swarms: nothing swarms on {header.Key}", id);
+            file.Swarms.Add(new SwarmPlace { Area = header.Key, Name = header.Name, Species = species ?? "", Way = way });
+        }
+        return file;
+    }
+
     /// <summary>A sound's two species by the data's names, HeartGold's; null where the table has none.</summary>
     private List<string>? Sounds(List<Versioned<string>> slots, string where)
     {
@@ -366,6 +400,11 @@ public sealed class HgWorld
             SuperRodRate = wild is { SuperRod.Rate: > 0 } ? wild.SuperRod.Rate : null,
             RockSmash = wild == null ? null : Slots(wild.RockSmash, "day", header.Key, range: true),
             RockSmashRate = wild is { RockSmash.Rate: > 0 } ? wild.RockSmash.Rate : null,
+            // The swarm's species in each way (plan 20 · J13, part c): the grass takes its one in slots 0 and 1, the water in
+            // the first slot and the rods in theirs (EncSlots_Update_LandSwarm, _SurfingSwarm, _FishingSwarm)
+            Swarm = land == null || SwarmSpecies(wild?.LandSwarm, header.Key) is not { } landSwarm ? null : new List<string> { landSwarm, landSwarm },
+            SurfSwarm = SwarmSpecies(wild?.SurfSwarm, header.Key),
+            FishSwarm = SwarmSpecies(wild?.FishSwarm, header.Key),
             // The radio's Hoenn and Sinnoh Sounds (plan 20 · J3), HeartGold's two species of each
             HoennSounds = land == null ? null : Sounds(wild!.Hoenn, header.Key),
             SinnohSounds = land == null ? null : Sounds(wild!.Sinnoh, header.Key),

@@ -30,6 +30,10 @@
     { "species": "Zubat", "level": 4, "day": "Rattata" }
   ],
   "landRate": 25,
+  "swarm": [
+    "Hoppip",
+    "Hoppip"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"

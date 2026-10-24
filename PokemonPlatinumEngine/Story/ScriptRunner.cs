@@ -2109,10 +2109,10 @@ public sealed partial class ScriptRunner
             // The species whose National Pokédex number a variable holds (plan 19 · K9, part c: the one Selphy wishes for)
             "species" when argument.Length > 0 => NameOfSpecies(PokemonDatabase.GetByDex(Value(argument))?.Name ?? ""),
             // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)
-            "swarm" => NameOfSpecies(Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily))),
+            "swarm" => NameOfSpecies(Swarms.PlaceOf(host.Encounters.SwarmDaily, host.Region)?.Species ?? ""),
             // What to do next (plan 12 · Q14): the line for the region the host is in, or nothing where there is none
             "objective" => Objectives.Line(host.Story, host.Region),
-            "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),
+            "swarmplace" => Swarms.PlaceOf(host.Encounters.SwarmDaily, host.Region)?.Name ?? "",
             "trophygarden" => NameOfSpecies(TrophyGardenRules.SpeciesIn(host.Encounters.TrophyFirst, SpecialEncounterTables.Sinnoh.TrophyGarden)),
             // The Pokémon the day has put in one of the Great Marsh's six areas, {marsh:1} to {marsh:6} (plan 01 · M11,
             // part b: the observatory's binoculars); the Sinnoh list's, as nothing a script can ask says the National one

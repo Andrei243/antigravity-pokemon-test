@@ -885,7 +885,7 @@ public static class ScriptParser
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
-                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once");
+                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once", "remember");
                 string which = what switch
                 {
                     "moves" => r.Text("the place of a shard tutor"),

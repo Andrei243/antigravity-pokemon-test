@@ -30,6 +30,10 @@
     { "species": "Rhyhorn", "level": 35 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Graveler",
+    "Graveler"
+  ],
   "hoennSounds": [
     "Absol",
     "Makuhita"

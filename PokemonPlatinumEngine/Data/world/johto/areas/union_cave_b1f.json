@@ -30,6 +30,12 @@
     { "species": "Rattata", "level": 6 }
   ],
   "landRate": 15,
+  "swarm": [
+    "Geodude",
+    "Geodude"
+  ],
+  "surfSwarm": "Wooper",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Wooper", "level": 10, "maxLevel": 20 },
     { "species": "Quagsire", "level": 15, "maxLevel": 25 },

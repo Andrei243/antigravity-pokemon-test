@@ -30,6 +30,10 @@
     { "species": "Magmar", "level": 14, "day": "Rattata" }
   ],
   "landRate": 10,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
   "hoennSounds": [
     "Zigzagoon",
     "Spinda"

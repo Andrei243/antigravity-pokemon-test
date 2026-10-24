@@ -375,6 +375,13 @@ public sealed class WorldAreaFile
     /// <summary>The two species a swarm here puts in slots 0 and 1 (the original's <c>swarms</c>); left out with the land table.</summary>
     public List<string>? Swarm { get; set; }
 
+    /// <summary>
+    /// The species a swarm puts in the first slot of the water (HeartGold's <c>surfSwarm</c>) and in the rods' slots
+    /// (<c>fishSwarm</c>; plan 20 · J13, part c); null where the area has none. Johto's alone.
+    /// </summary>
+    public string? SurfSwarm { get; set; }
+    public string? FishSwarm { get; set; }
+
     /// <summary>The four species the Poké Radar's hard shake puts in slots 4, 5, 10 and 11 (the original's <c>radar</c>); left out with the land table.</summary>
     public List<string>? Radar { get; set; }
 
@@ -647,6 +654,9 @@ public sealed class SwarmPlace
     public string Area { get; set; } = "";
     public string Name { get; set; } = "";
     public string Species { get; set; } = "";
+
+    /// <summary>How the swarm is met (plan 20 · J13, part c; HeartGold's table keeps a way beside each place): <c>surf</c> or <c>fish</c>; null for the grass or the cave floor.</summary>
+    public string? Way { get; set; }
 }
 
 public sealed class HoneyTreeTables

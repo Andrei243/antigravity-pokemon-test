@@ -1325,6 +1325,8 @@ public static class WorldMapBuilder
         area.DaySlots.AddRange(file?.Day ?? new());
         area.NightSlots.AddRange(file?.Night ?? new());
         area.SwarmSlots.AddRange(file?.Swarm ?? new());
+        area.SurfSwarm = file?.SurfSwarm;
+        area.FishSwarm = file?.FishSwarm;
         area.RadarSlots.AddRange(file?.Radar ?? new());
         // What a game in the console's second slot puts in slots 8 and 9 (plan 08 · P23)
         area.DualSlot = file?.DualSlot;

@@ -26,6 +26,22 @@ public static class SpecialEncounterTables
         }
     }
 
+    private static WorldEncountersFile? johto;
+
+    /// <summary>Johto's tables (plan 20 · J13, part c): the places swarms come to, and nothing else; empty when the file isn't there.</summary>
+    public static WorldEncountersFile Johto
+    {
+        get
+        {
+            if (johto != null) return johto;
+            string path = Path.Combine(World.Folder, "johto", WorldEncountersFile.FileName);
+            return johto = File.Exists(GameDataFiles.PathOf(path)) ? GameDataFiles.Load<WorldEncountersFile>(path) : new WorldEncountersFile();
+        }
+    }
+
+    /// <summary>The tables of a region by its id: Johto's own, Sinnoh's for every other (the swarms of a region without a file are Sinnoh's).</summary>
+    public static WorldEncountersFile Of(string? region) => region == "Johto" ? Johto : Sinnoh;
+
     /// <summary>Every tile of Feebas's lake in the original's order, in tiles of its area's map.</summary>
     public static IReadOnlyList<(int X, int Y)> FeebasTiles => feebasTiles ??= Tiles(Sinnoh.Feebas.Tiles);
 

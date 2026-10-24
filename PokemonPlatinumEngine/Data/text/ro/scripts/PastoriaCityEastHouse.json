@@ -20,14 +20,79 @@
     },
     {
       "en": [
-        "Oh! That's one! That's a real, honest-to-goodness Heart Scale you have there!",
-        "...And wouldn't you know it, I've lent my notebooks to a friend, every last one. I'd be guessing without them.",
-        "Keep that scale safe and come back another day, will you? I'll teach your Pokémon then."
+        "That's a Heart Scale you have there! Shall I trade it for a move one of your Pokémon has let slip?"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "O! Ăsta e unul! Ai acolo un Solz-Inimă adevărat, cât se poate de adevărat!",
         "...Și, ce să vezi, mi-am împrumutat caietele unui prieten, pe toate. Fără ele aș ghici pe nevăzute.",
         "Păstrează solzul bine și revino altă dată, da? Atunci îți învăț Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon is it to be?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} remembered {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever a Pokémon of yours wants a move back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg hasn't let anything slip yet. It hasn't learned a thing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon has no move to remember. It knows everything it has learned so far."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} did not remember {thing}. Your Heart Scale is safe with you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that. {wearer} did not remember {thing}."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

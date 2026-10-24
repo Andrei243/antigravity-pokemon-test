@@ -30,6 +30,10 @@
     { "species": "Snubbull", "level": 13 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Snubbull",
+    "Snubbull"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"

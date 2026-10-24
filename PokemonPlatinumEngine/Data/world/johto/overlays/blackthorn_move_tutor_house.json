@@ -2,24 +2,18 @@
   // The house of moves in Blackthorn City (plan 20 · J10; J13, part b). The father makes a Pokémon forget a move, an
   // HM's too (scripts/blackthorn_move_tutor_house.txt, `tutor forget` and `tutor delete`), and the old man teaches
   // Draco Meteor to a Dragon that trusts its Trainer fully, for nothing, as Route 210's Grandma Wilma does. The
-  // uncle who helps a Pokémon remember a move only talks: the Move Relearner is plan 12 · Q19's
+  // uncle who helps a Pokémon remember a move is the Move Relearner (J13, part c: `tutor remember`, for a Heart Scale)
   "area": "blackthorn_move_tutor_house",
   "bgmTrack": "johto/blackthorn",
   "people": {
     "t30r0601_gsmiddleman1": { "name": "Move Deleter", "script": "Deleter", "still": true },
-    "t30r0601_gsbigman": {
-      "name": "Man",
-      "still": true,
-      "dialog": [
-        "A Pokémon can only know four moves at once. Choosing which ones is half the fun!"
-      ]
-    },
+    "t30r0601_gsbigman": { "name": "Move Relearner", "script": "Relearner", "still": true },
     "t30r0601_gsoldman1": { "name": "Dragon Tamer", "script": "DragonTamer", "still": true },
     "t30r0601_gsoldwoman1": {
       "name": "Old Woman",
       "still": true,
       "dialog": [
-        "My brother-in-law helps Pokémon remember what they once knew, but only when he's in the mood. Come back another time, dear."
+        "My brother-in-law helps Pokémon remember what they once knew, for a Heart Scale. Go and talk to him, dear."
       ]
     }
   }

@@ -30,6 +30,12 @@
     { "species": "Seel", "level": 24 }
   ],
   "landRate": 5,
+  "swarm": [
+    "Krabby",
+    "Krabby"
+  ],
+  "surfSwarm": "Horsea",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Horsea", "level": 15, "maxLevel": 25 },
     { "species": "Tentacruel", "level": 15, "maxLevel": 25 },

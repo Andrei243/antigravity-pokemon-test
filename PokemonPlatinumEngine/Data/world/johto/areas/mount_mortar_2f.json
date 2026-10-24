@@ -30,6 +30,12 @@
     { "species": "Golbat", "level": 30 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Graveler",
+    "Graveler"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Goldeen", "level": 15, "maxLevel": 25 },
     { "species": "Goldeen", "level": 20, "maxLevel": 30 },

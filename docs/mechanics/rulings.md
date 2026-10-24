@@ -4985,3 +4985,13 @@ nothing**: `Prepare` hands back the very trainer it was given, the EXP and the p
 - **Easy** also: three halves of the EXP a battle gives (`BattleCore.Give`, from `CoreSetup.Difficulty`; a recorded battle
   keeps it and refuses to be replayed under another) and a quarter off what a counter asks (`ShopScreen.PriceOf`; selling
   is unchanged, so buying and selling back never earns).
+
+## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
+
+| Subject | HeartGold | This game |
+|---|---|---|
+| What begins the Den's post-game | The rival's battle in Mt. Moon (`D02R0101`) sets `VAR_UNK_40FC` 1 | The first arrival at the Dragon's Den once `JohtoHallOfFame` is set does (Kanto's part of Johto is J15's, which puts the Mt. Moon battle in front of it) |
+| The scene | The rival, Lance and Clair; a multi battle, the player with the rival against Lance and Clair (`TRAINER_PARTNER_RIVAL_1` to `_3` by the starter, `CHAMPION_LANCE_3`, `LEADER_CLAIR_CLAIR_3`) | The same, in our own words, as a `battle a and b with partner` of two overlay trainers; it ends at `VAR_UNK_40FC` 2 |
+| The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
+| Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
+| The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |

@@ -30,6 +30,12 @@
     { "species": "Raticate", "level": 16 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Zubat",
+    "Zubat"
+  ],
+  "surfSwarm": "Goldeen",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Goldeen", "level": 15, "maxLevel": 25 },
     { "species": "Goldeen", "level": 10, "maxLevel": 20 },

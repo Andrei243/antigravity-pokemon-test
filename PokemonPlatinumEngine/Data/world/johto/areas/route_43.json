@@ -30,6 +30,12 @@
     { "species": "Pidgeotto", "level": 17, "day": "Flaaffy", "night": "Venonat" }
   ],
   "landRate": 20,
+  "swarm": [
+    "Flaaffy",
+    "Flaaffy"
+  ],
+  "surfSwarm": "Magikarp",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Magikarp", "level": 15, "maxLevel": 25 },
     { "species": "Magikarp", "level": 10, "maxLevel": 20 },

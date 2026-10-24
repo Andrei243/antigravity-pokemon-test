@@ -30,6 +30,12 @@
     { "species": "Sandslash", "level": 30 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Doduo",
+    "Doduo"
+  ],
+  "surfSwarm": "Luvdisc",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 20 },
     { "species": "Tentacool", "level": 15, "maxLevel": 15 },

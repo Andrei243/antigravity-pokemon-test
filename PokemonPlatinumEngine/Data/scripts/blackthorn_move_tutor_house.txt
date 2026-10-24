@@ -34,6 +34,49 @@ label OnlyOne
   end
 
 
+# The uncle who helps a Pokémon remember a move (plan 20 · J13, part c): Pastoria City's Move Relearner for a Heart
+# Scale (`tutor remember`, Models/Relearning.cs: the moves its species learns by level, at or below its own, that it
+# doesn't know). The scale is taken once the move is learned.
+script Relearner
+  speaker "Move Relearner"
+  say "Ah, a young Trainer! I can help a Pokémon remember a move it has forgotten along the way." "All I ask in return is a Heart Scale."
+  if item "Heart Scale" goto Scale
+  say "No Heart Scale, no remembering. Come back when you have found one."
+  end
+label Scale
+  ask "A Heart Scale! Shall I trade it for a move one of your Pokémon has let slip?"
+  if no goto Later
+  say "Which Pokémon is it to be?"
+  choosepokemon
+  tutor remember
+  if result == 3 goto Egg
+  if result == 2 goto Nothing
+  if result != 1 goto Later
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "One, two, and... poof! {wearer} forgot {forgotten}. And..."
+  take "Heart Scale"
+  fanfare levelup
+  say "{wearer} remembered {thing}!"
+  end
+label Later
+  say "Come back whenever a Pokémon of yours wants a move back."
+  end
+label Egg
+  say "An Egg hasn't forgotten anything. It hasn't learned a thing yet!"
+  end
+label Nothing
+  say "That Pokémon has no move to remember. It knows everything it has learned so far."
+  end
+label GaveUp
+  say "{wearer} did not remember {thing}. Your Heart Scale is safe with you."
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that. {wearer} did not remember {thing}."
+  end
+
+
 script DragonTamer
   speaker "Dragon Tamer"
   if flag FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER goto Again

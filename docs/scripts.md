@@ -388,7 +388,7 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `honeytree status` | `RESULT` is the honey tree the player faces: 1 bare (no honey, or its day is over), 2 slathered but nothing has come yet, 3 something waits (`HoneyTrees.Status`). |
 | `honeytree slather` | A day of honey on the tree faced, and what it will draw (`HoneyTrees.Slather`). The Honey is the script's own `take`. |
 | `honeytree battle` | Battles whatever came to the tree faced, which takes the honey with it. A battle lost ends the script. |
-| `swarms on` | Swarms begin (`SpecialEncounter_EnableSwarms`): from now on one place of 22 has one each day. |
+| `swarms on` | Swarms begin (`SpecialEncounter_EnableSwarms`): from now on one place of a region's list has one each day (Sinnoh's 22, Johto's 20: HeartGold's table, where each place is met in the grass, on the water or on a line; plan 20 · J13, part c). `{swarm}` and `{swarmplace}` follow the region the script runs in. |
 | `trophygarden` | Mr. Backlot brings one more Pokémon to the Trophy Garden (`TrophyGarden_AddNewMon`); `{trophygarden}` names it. |
 | `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random; Raikou or Entei (plan 20 · J7, HeartGold's two) roam Johto's routes instead. |
 | `lottery draw` | The Lottery Corner's draw (plan 06 · R14a; `Models/Lottery.cs`): `RESULT` is how many of the day's ticket's digits, from the right, match the ID number of the original trainer of a Pokémon on the team or in the boxes, at best (0 to 5); `{winner}` names it. |
@@ -712,8 +712,10 @@ on the original's script command; all are for the Pokémon `RESULT` names after 
 | `tutor forget` | The Move Deleter's question: which of the Pokémon's moves is to be forgotten. `RESULT` 1 one was picked (`{thing}`), 0 none, 2 it knows only one, 3 an Egg, 4 nobody chosen. |
 | `tutor delete` | Takes the move picked away for good, an HM's too (`ForgetMove`). `RESULT` 1, or 0 with none picked. |
 
-Pastoria's Move Relearner and Eterna's Name Rater say what they do and change nothing: their rules are plan 12 ·
-Q19's (`Models/Relearning.cs`) and plan 13 · V4's naming prompt.
+| `tutor remember` | The Move Relearner's question (plan 20 · J13, part c; the list the party menu's REMEMBER shows, `Relearning.MovesFor`): which of the moves its species learns by level, at or below its own, that it has let slip is the Pokémon `RESULT` names to be taught. `RESULT` 1 one was picked (`{thing}`; `tutor learn` then teaches it, asking which move is to go when it knows four), 0 none, 2 it has none to remember, 3 an Egg, 4 nobody chosen. The script takes the Heart Scale itself once `learn` has answered 1 or 3. |
+
+Pastoria's and Blackthorn's Move Relearner (`common.MoveRelearner`) is that command and a Heart Scale; Eterna's Name Rater
+says what it does and changes nothing: its rule is plan 13 · V4's naming prompt.
 
 ### The Battle Arcade
 

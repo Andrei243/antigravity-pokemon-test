@@ -30,6 +30,12 @@
     { "species": "Paras", "level": 6 }
   ],
   "landRate": 5,
+  "swarm": [
+    "Caterpie",
+    "Caterpie"
+  ],
+  "surfSwarm": "Psyduck",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Psyduck", "level": 10, "maxLevel": 20 },
     { "species": "Psyduck", "level": 5, "maxLevel": 15 },

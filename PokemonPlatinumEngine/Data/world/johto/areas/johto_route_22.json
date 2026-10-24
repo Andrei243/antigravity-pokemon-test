@@ -30,6 +30,12 @@
     { "species": "Fearow", "level": 7, "night": "Rattata" }
   ],
   "landRate": 20,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Poliwag", "level": 10, "maxLevel": 10 },
     { "species": "Poliwag", "level": 5, "maxLevel": 5 },

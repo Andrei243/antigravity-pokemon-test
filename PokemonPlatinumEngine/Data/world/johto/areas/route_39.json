@@ -30,6 +30,10 @@
     { "species": "Tauros", "level": 15 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
   "hoennSounds": [
     "Plusle",
     "Minun"
