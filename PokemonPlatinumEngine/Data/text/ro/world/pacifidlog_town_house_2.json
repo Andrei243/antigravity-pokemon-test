@@ -8,14 +8,6 @@
         "text": [
           "Gentleman"
         ]
-      },
-      "dialog": {
-        "en": [
-          "My big brother runs the Pokémon Fan Club. I can tell at a glance how much a Pokémon loves its trainer."
-        ],
-        "text": [
-          "Fratele meu mare conduce Clubul Fanilor Pokémon. Îmi dau seama dintr-o privire cât de mult își iubește un Pokémon antrenorul."
-        ]
       }
     },
     "azurill": {
@@ -26,14 +18,6 @@
         "text": [
           "Azurill"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Azurill: Rii! Riiri!"
-        ],
-        "text": [
-          "Azurill: Rii! Riiri!"
-        ]
       }
     },
     "azurill_2": {
@@ -43,14 +27,6 @@
         ],
         "text": [
           "Azurill"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Azurill: ...Rii."
-        ],
-        "text": [
-          "Azurill: ...Rii."
         ]
       }
     }
