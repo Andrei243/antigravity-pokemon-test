@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "This desk keeps every course's best score. Enter a course at the desk beside me and set a record!"
         ],
         "text": [
-          ""
+          "Biroul acesta păstrează cel mai bun scor al fiecărui traseu. Înscrie-te la un traseu la biroul de lângă mine și stabilește un record!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Athlete Points are earned in every course. The Athlete Shop on the square will take them once its goods come in."
         ],
         "text": [
-          ""
+          "Punctele de Atlet se câștigă la fiecare traseu. Magazinul Atleților din piață le va primi când sosesc mărfurile."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Downstairs are the rooms where the events are held. Today the courses run from the main desk, in the middle."
         ],
         "text": [
-          ""
+          "Jos sunt sălile în care au loc probele. Azi traseele pornesc de la biroul principal, din mijloc."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "The stands upstairs are closed today. Every seat will be filled when the big courses come!"
         ],
         "text": [
-          ""
+          "Tribunele de sus sunt închise azi. Fiecare loc va fi ocupat când vin traseele mari!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Hurdle Dash is all about the timing of your jumps. Jump too soon and you land right on the hurdle!"
         ],
         "text": [
-          ""
+          "La Hurdle Dash totul ține de ritmul săriturilor. Sari prea devreme și aterizezi fix pe obstacol!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "In Block Smash, switch your Pokémon when one gets tired. A tired Pokémon hits much more weakly."
         ],
         "text": [
-          ""
+          "La Block Smash, schimbă Pokémonul când unul obosește. Un Pokémon obosit lovește mult mai slab."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "In Ring Drop, keep away from the edge! A heavy push near the rim and you're off the platform."
         ],
         "text": [
-          ""
+          "La Ring Drop, stai departe de margine! O împingere puternică lângă margine și ești în afara platformei."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "A Pokémon that never wins a battle can still win a course. That's what I love about this place."
         ],
         "text": [
-          ""
+          "Un Pokémon care nu câștigă nicio luptă poate câștiga totuși un traseu. De asta iubesc locul ăsta."
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Fat Man"
         ],
         "text": [
-          ""
+          "Bărbat corpolent"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "I don't compete. I just come for the cheering!"
         ],
         "text": [
-          ""
+          "Eu nu particip. Vin doar pentru ovații!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrân"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "In my day we only had battles. Races and games for Pokémon! What a time to be young."
         ],
         "text": [
-          ""
+          "Pe vremea mea aveam doar lupte. Curse și jocuri pentru Pokémoni! Ce vreme să fii tânăr."
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -204,7 +204,7 @@
           "Three Pokémon make a team, and no Eggs. Pick three that are good at different things!"
         ],
         "text": [
-          ""
+          "Trei Pokémoni alcătuiesc o echipă, fără Ouă. Alege trei care se pricep la lucruri diferite!"
         ]
       }
     }
@@ -215,7 +215,7 @@
         "The Pokéathlon Dome's lobby. The course reception is at the middle of the desk."
       ],
       "text": [
-        ""
+        "Holul Pokéathlon Dome. Recepția traseelor e în mijlocul biroului."
       ]
     },
     "D49R0101_020+1": {
@@ -223,7 +223,7 @@
         "A PC for the dome's records. Only the staff may use it."
       ],
       "text": [
-        ""
+        "Un PC pentru evidența domului. Doar personalul îl poate folosi."
       ]
     },
     "D49R0101_004+1": {
@@ -231,7 +231,7 @@
         "A trophy of the Pokéathlon: Speed."
       ],
       "text": [
-        ""
+        "Un trofeu Pokéathlon: Viteză."
       ]
     },
     "D49R0101_005+1": {
@@ -239,7 +239,7 @@
         "A trophy of the Pokéathlon: Power."
       ],
       "text": [
-        ""
+        "Un trofeu Pokéathlon: Putere."
       ]
     },
     "D49R0101_006+1": {
@@ -247,7 +247,7 @@
         "A trophy of the Pokéathlon: Skill."
       ],
       "text": [
-        ""
+        "Un trofeu Pokéathlon: Îndemânare."
       ]
     },
     "D49R0101_007+1": {
@@ -255,7 +255,7 @@
         "A trophy of the Pokéathlon: Stamina."
       ],
       "text": [
-        ""
+        "Un trofeu Pokéathlon: Rezistență."
       ]
     },
     "D49R0101_008+1": {
@@ -263,7 +263,7 @@
         "A trophy of the Pokéathlon: Jump."
       ],
       "text": [
-        ""
+        "Un trofeu Pokéathlon: Săritură."
       ]
     },
     "D49R0101_009+1": {
@@ -271,7 +271,7 @@
         "A photograph of a course's winners, beaming on the podium."
       ],
       "text": [
-        ""
+        "O fotografie cu câștigătorii unui traseu, radioși pe podium."
       ]
     },
     "D49R0101_010+1": {
@@ -279,7 +279,7 @@
         "A photograph of a Pokémon clearing a hurdle in mid-air."
       ],
       "text": [
-        ""
+        "O fotografie cu un Pokémon care sare peste un obstacol în aer."
       ]
     },
     "D49R0101_011+1": {
@@ -287,7 +287,7 @@
         "A photograph of a Pokémon smashing a stack of blocks."
       ],
       "text": [
-        ""
+        "O fotografie cu un Pokémon care sparge un teanc de blocuri."
       ]
     },
     "D49R0101_012+1": {
@@ -295,7 +295,7 @@
         "A photograph of two Pokémon pushing on a ring's edge."
       ],
       "text": [
-        ""
+        "O fotografie cu doi Pokémoni care împing la marginea unui inel."
       ]
     },
     "D49R0101_013+1": {
@@ -303,7 +303,7 @@
         "A photograph of the dome on its opening day, every seat filled."
       ],
       "text": [
-        ""
+        "O fotografie cu domul în ziua deschiderii, toate locurile ocupate."
       ]
     }
   }

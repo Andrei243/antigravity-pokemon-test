@@ -6,7 +6,7 @@
           "Captain"
         ],
         "text": [
-          ""
+          "Căpitan"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Roxie"
         ],
         "text": [
-          ""
+          "Roxie"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Roxie's poison packs a real sting. But I caught a Magnemite in the complex, and that sorted me right out!"
         ],
         "text": [
-          ""
+          "Otrava lui Roxie înțeapă tare. Dar am prins un Magnemite în complex și m-a pus pe picioare!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "A shift at the complex would wear anyone down. Good thing my Pokémon do the heavy lifting!"
         ],
         "text": [
-          ""
+          "Un schimb la complex ar sleii pe oricine. Bine că Pokémonii mei fac munca grea!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artist"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "The PCs at the Pokémon Center can keep a team ready for you to switch to. Handy, if you like to plan ahead!"
         ],
         "text": [
-          ""
+          "PC-urile din Centrul Pokémon pot ține o echipă pregătită pentru tine. Util, dacă îți place să planifici dinainte!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "My Watchog has been with me since the day I was born. Its sharp eyes have got us out of trouble more than once!"
         ],
         "text": [
-          ""
+          "Watchog al meu e cu mine din ziua în care m-am născut. Ochii lui ageri ne-au scos din belele nu o dată!"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Studio Hand"
         ],
         "text": [
-          ""
+          "Om de la Studio"
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Roxie"
         ],
         "text": [
-          ""
+          "Roxie"
         ]
       }
     },
@@ -118,7 +118,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Recrut"
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Recrut"
         ]
       }
     },
@@ -148,7 +148,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Recrut"
         ]
       }
     },
@@ -158,7 +158,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -166,7 +166,7 @@
           "Roxie's band plays the club under the Gym. Tickets sell out in minutes these days!"
         ],
         "text": [
-          ""
+          "Trupa lui Roxie cântă în clubul de sub Arenă. Biletele se epuizează în câteva minute în zilele astea!"
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Watchog"
         ],
         "text": [
-          ""
+          "Watchog"
         ]
       },
       "dialog": {
@@ -184,7 +184,7 @@
           "Watchog: Wah-chog!"
         ],
         "text": [
-          ""
+          "Watchog: Wah-chog!"
         ]
       }
     },
@@ -194,7 +194,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -202,7 +202,7 @@
           "The ships come and go from this quay all day. Some of them go as far as Castelia City!"
         ],
         "text": [
-          ""
+          "Vapoarele vin și pleacă de la cheiul ăsta toată ziua. Unele ajung până la Castelia City!"
         ]
       }
     },
@@ -212,7 +212,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -220,7 +220,7 @@
           "Look at the smoke over the complex. My grandpa says it's only steam, but it looks like a dragon to me."
         ],
         "text": [
-          ""
+          "Uită-te la fumul de deasupra complexului. Bunicul spune că e doar abur, dar mie mi se pare un dragon."
         ]
       }
     },
@@ -230,7 +230,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiat"
         ]
       },
       "dialog": {
@@ -238,7 +238,7 @@
           "I'm saving up for a ticket to Roxie's next show. Only nine hundred more Poké Dollars to go!"
         ],
         "text": [
-          ""
+          "Strâng bani pentru un bilet la următorul spectacol al lui Roxie. Mai am doar nouă sute de Poké Dolari!"
         ]
       }
     },
@@ -248,7 +248,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puști"
         ]
       },
       "dialog": {
@@ -256,7 +256,7 @@
           "You can carry six Pokémon at once. Six! Count them on your belt: one, two, three, four, five, six!"
         ],
         "text": [
-          ""
+          "Poți căra șase Pokémoni deodată. Șase! Numără-i la centură: unu, doi, trei, patru, cinci, șase!"
         ]
       }
     }
@@ -267,7 +267,7 @@
         "Virbank City\nThe fog rolls in, the stars come out"
       ],
       "text": [
-        ""
+        "Orașul Virbank\nCeața se lasă, apar stelele"
       ]
     },
     "16": {
@@ -275,7 +275,7 @@
         "Pokéstar Studios ahead\nWhere dreams are filmed"
       ],
       "text": [
-        ""
+        "Pokéstar Studios, înainte\nUnde se filmează visele"
       ]
     },
     "17": {
@@ -283,7 +283,7 @@
         "Virbank City Pokémon Gym\nLeader: Roxie, the poison rocker"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Virbank City\nLider: Roxie, rockerița otrăvii"
       ]
     }
   }

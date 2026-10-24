@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The ship to Castelia City sails from this terminal. She'll cross seas no swimming Pokémon could manage!"
         ],
         "text": [
-          ""
+          "Vaporul spre Castelia City pleacă din acest terminal. Va traversa mări pe care niciun Pokémon înotător nu le-ar putea trece!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrână"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Captain"
         ],
         "text": [
-          ""
+          "Căpitan"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     }

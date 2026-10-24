@@ -6,7 +6,7 @@
           "Roxie"
         ],
         "text": [
-          ""
+          "Roxie"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "You want to reach Roxie? Then get past her bass player first! Let's make some noise!"
         ],
         "text": [
-          ""
+          "Vrei să ajungi la Roxie? Atunci trece mai întâi de basistul ei! Să facem zgomot!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Ow, my ears... and my pride."
         ],
         "text": [
-          ""
+          "Au, urechile... și mândria."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Guitarist"
         ],
         "text": [
-          ""
+          "Chitarist"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "My guitar solos are poison to the ears! Let me play you one!"
         ],
         "text": [
-          ""
+          "Solo-urile mele de chitară sunt otravă pentru urechi! Lasă-mă să-ți cânt unul!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Guess I hit a sour note."
         ],
         "text": [
-          ""
+          "Se pare că am dat o notă acră."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Scout"
         ],
         "text": [
-          ""
+          "Căutător de talente"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Roxie"
         ],
         "text": [
-          ""
+          "Roxie"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Sound Man"
         ],
         "text": [
-          ""
+          "Sunetist"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I'm on the sound desk! I keep every instrument balanced so the crowd hears them all. A team's the same, right?"
         ],
         "text": [
-          ""
+          "Eu sunt la pupitrul de sunet! Țin fiecare instrument echilibrat ca publicul să le audă pe toate. O echipă e la fel, nu?"
         ]
       }
     }

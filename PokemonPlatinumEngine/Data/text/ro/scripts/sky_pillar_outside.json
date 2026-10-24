@@ -5,7 +5,7 @@
         "Wallace"
       ],
       "text": [
-        ""
+        "Wallace"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Ah, {player}! Forgive me. I was in such a hurry that I left you behind."
       ],
       "text": [
-        ""
+        "Ah, {player}! Iartă-mă. M-am grăbit atât de tare că te-am lăsat în urmă."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I've opened the door of Sky Pillar. Now, let's go!"
       ],
       "text": [
-        ""
+        "Am deschis ușa Stâlpului Cerului. Acum, hai să mergem!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "An earthquake! We haven't a moment to spare!"
       ],
       "text": [
-        ""
+        "Un cutremur! Nu avem nicio clipă de pierdut!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Hmm... This is getting worse."
       ],
       "text": [
-        ""
+        "Hmm... Se înrăutățește."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Even here, the weather has gone wrong. {player}, Rayquaza should be at the very top of this tower."
       ],
       "text": [
-        ""
+        "Chiar și aici vremea a luat-o razna. {player}, Rayquaza trebuie să fie chiar în vârful turnului."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I'm worried for Sootopolis. I must go back. Everything rests with you now. Don't let us down!"
       ],
       "text": [
-        ""
+        "Mă tem pentru Sootopolis. Trebuie să mă întorc. Totul depinde acum de tine. Nu ne dezamăgi!"
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Wallace"
       ],
       "text": [
-        ""
+        "Wallace"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Sky Pillar... Rayquaza must be at its top. Let's hurry!"
       ],
       "text": [
-        ""
+        "Stâlpul Cerului... Rayquaza trebuie să fie în vârf. Să ne grăbim!"
       ]
     }
   ]
