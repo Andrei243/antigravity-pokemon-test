@@ -1,0 +1,31 @@
+{
+  "key": "sootopolis_city_gym_1f",
+  "index": 196,
+  "name": "Sootopolis City",
+  "matrix": 145,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 25, "to": "sootopolis_city", "toWarp": 2 },
+    { "x": 9, "z": 25, "to": "sootopolis_city", "toWarp": 2 },
+    { "x": 11, "z": 22, "to": "sootopolis_city_gym_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "juan", "looks": "juan", "movement": "look_south", "x": 8, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_Gym_1F_EventScript_Juan" },
+    { "id": "man_2", "looks": "man_2", "movement": "look_south", "x": 7, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SootopolisCity_Gym_1F_EventScript_GymGuide" }
+  ],
+  "signs": [
+    { "x": 6, "z": 24, "type": 0, "script": "SootopolisCity_Gym_1F_EventScript_LeftGymStatue" },
+    { "x": 10, "z": 24, "type": 0, "script": "SootopolisCity_Gym_1F_EventScript_RightGymStatue" }
+  ],
+  "triggers": []
+}

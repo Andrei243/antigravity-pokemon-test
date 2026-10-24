@@ -1,0 +1,69 @@
+{
+  "key": "route_130",
+  "index": 41,
+  "name": "Route 130",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Water",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE119",
+  "nightMusic": "MUS_ROUTE119",
+  "encounters": "route_130",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Wynaut", "level": 30 },
+    { "species": "Wynaut", "level": 35 },
+    { "species": "Wynaut", "level": 25 },
+    { "species": "Wynaut", "level": 40 },
+    { "species": "Wynaut", "level": 20 },
+    { "species": "Wynaut", "level": 45 },
+    { "species": "Wynaut", "level": 15 },
+    { "species": "Wynaut", "level": 50 },
+    { "species": "Wynaut", "level": 10 },
+    { "species": "Wynaut", "level": 5 },
+    { "species": "Wynaut", "level": 10 },
+    { "species": "Wynaut", "level": 5 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [],
+  "objects": [
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "walk_sequence_west_north_east_south", "x": 630, "z": 281, "facing": 2, "rangeX": 3, "rangeZ": 6, "trainer": "normal", "sight": 3, "script": "TRAINER_RODNEY" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "walk_south_and_north", "x": 567, "z": 281, "facing": 1, "rangeX": 1, "rangeZ": 4, "trainer": "normal", "sight": 5, "script": "TRAINER_KATIE" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 612, "z": 269, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE", "patch": 215, "script": "BerryTreeScript" },
+    { "id": "swimmer_m_2", "looks": "swimmer_m", "movement": "walk_north_and_south", "x": 567, "z": 290, "facing": 0, "rangeX": 1, "rangeZ": 4, "trainer": "normal", "sight": 5, "script": "TRAINER_SANTIAGO" }
+  ],
+  "signs": [],
+  "triggers": []
+}

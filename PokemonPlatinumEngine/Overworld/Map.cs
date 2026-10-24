@@ -97,6 +97,12 @@ public sealed class MapArea
     public Data.MapSpot? DiveSpot { get; init; }
     public Data.MapSpot? EmergeSpot { get; init; }
 
+    /// <summary>
+    /// The map a cracked floor of the area drops whoever walks onto it to, tile for tile (plan 21 · H8, part c: Sky Pillar's
+    /// floors, Emerald's <c>setholewarp</c> in each floor's own script, kept by the overlay's <c>holeTo</c>); null for none.
+    /// </summary>
+    public string? HoleTo { get; init; }
+
     /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public int LandRate { get; set; }
@@ -288,6 +294,13 @@ public class Map
         { Open: true, DiveSpot: { } spot } => spot,
         _ => null
     };
+
+    /// <summary>
+    /// Where a walker on this tile falls to: the same tile of the floor below, where the tile is a cracked floor of an area
+    /// whose overlay names one (<see cref="MapArea.HoleTo"/>); null anywhere else.
+    /// </summary>
+    public Data.MapSpot? HoleTargetAt(int x, int y) =>
+        BehaviourAt(x, y) == TileBehavior.CrackedFloor && AreaAt(x, y) is { HoleTo: { } below } ? new Data.MapSpot(below, x, y) : null;
 
     /// <summary>The map and tile coming up from this tile of the sea floor comes up onto, as <see cref="DiveTargetAt"/> goes down.</summary>
     public Data.MapSpot? EmergeTargetAt(int x, int y) => AreaAt(x, y) switch

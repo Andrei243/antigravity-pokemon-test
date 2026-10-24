@@ -1,0 +1,23 @@
+# Rayquaza comes down over Sootopolis (Emerald's MUS_RAYQUAZA_APPEARS role): a sky opening. Over a held low E-flat and a
+# shimmer of high strings, the horns call a rising fourth twice, the brass answers with a climbing line, and the whole
+# swells to a bright chord in E-flat major as the storm breaks. Plays once, under the scene that calls it; the scene then
+# brings back the music of the place. Original composition for this game (plan 21 · H8, part c).
+title Rayquaza Appears
+tempo 84
+meter 4/4
+reverb 0.52
+
+track horn horn vol=0.58 pan=-0.2 rev=0.5
+  o4 b-2 >e-2 | o5 e-1 | o4 b-2 >f2 | o5 f1 | o5 g2 a-4 b-4 | o6 e-1 |
+
+track brass brass vol=0.58 pan=0.15 rev=0.44
+  r1 | o4 e-4 f4 g4 a-4 | o4 b-1 | o4 a-4 b-4 >c4 d4 | o5 e-2 d2 | o5 e-1 |
+
+track strings strings vol=0.36 pan=0.3 rev=0.62
+  o5 (e- g)1 | o5 (e- g)1 | o5 (d f)1 | o5 (d f)1 | o5 (e- g)2 (f b-)2 | o5 (g b- >e-)1 |
+
+track choir choir vol=0.34 pan=-0.3 rev=0.6
+  o3 (e- b-)1 | o3 (e- b-)1 | o3 (b- >f)1 | o3 (b- >f)1 | o3 (a- >e-)2 (b- >d)2 | o3 (e- b- >g)1 |
+
+track rumble timpani vol=0.7 rev=0.3
+  o2 e-1 | o2 e-8 e-8 e-8 e-8 e-4 e-4 | o2 b-1 | o2 b-8 b-8 b-8 b-8 b-4 b-4 | o2 a-4 a-4 b-4 b-4 | o2 e-16 e-16 e-16 e-16 e-16 e-16 e-16 e-16 e-2 |

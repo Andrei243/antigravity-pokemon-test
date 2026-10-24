@@ -1,0 +1,10 @@
+{
+  // A house of Pacifidlog Town (plan 21 · H8, part c): a mother and her two children
+  "area": "pacifidlog_town_house_4",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "woman_2": { "name": "Woman", "dialog": [ "People say a Pokémon in the sky keeps the land and the sea at peace. I hope it's watching over us now." ] },
+    "little_girl": { "name": "Little Girl", "dialog": [ "I saw a green shape flying high, high over the sea! Was it a Pokémon?" ] },
+    "boy_1": { "name": "Boy", "dialog": [ "When I'm older I'll swim all the way to Slateport. The currents won't stop me!" ] }
+  }
+}

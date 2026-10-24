@@ -332,6 +332,48 @@ public sealed class GbaWorld
                     }
                 }
         }
+        if (Source.Game == GbaGame.Emerald && m.Id == 0) Sandbars(m);
+    }
+
+    /// <summary>
+    /// Emerald's shallows out in the open sea, touching no shore (Route 128's islet, where Archie, Maxie and Steven stand;
+    /// the reefs of the eastern and southern seas), drawn as a sandbar (plan 21 · H8, part c): Emerald paints such a patch
+    /// pale against the deep water round it, and as water to look at it read as open sea with people standing on it.
+    /// Shallows that run up to a shore stay water to look at, as part a made them.
+    /// </summary>
+    private static void Sandbars(GbaMatrix m)
+    {
+        int w = m.Width, n = w * m.Height;
+        var seen = new bool[n];
+        bool Shallow(int i) => m.Area[i] >= 0 && (TileBehavior)m.Behaviour[i] == TileBehavior.ShallowWater && m.Cover[i] == TerrainCover.Water;
+        for (int s = 0; s < n; s++)
+        {
+            if (seen[s] || !Shallow(s)) continue;
+            var patch = new List<int>();
+            bool ashore = false;
+            var queue = new Queue<int>();
+            queue.Enqueue(s);
+            seen[s] = true;
+            while (queue.Count > 0)
+            {
+                int i = queue.Dequeue();
+                patch.Add(i);
+                int x = i % w, y = i / w;
+                foreach (var (dx, dy) in Sides)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (!m.Has(nx, ny)) continue;
+                    int j = ny * w + nx;
+                    if (Shallow(j))
+                    {
+                        if (!seen[j]) { seen[j] = true; queue.Enqueue(j); }
+                    }
+                    else if (m.Area[j] >= 0 && m.Cover[j] != TerrainCover.Water) ashore = true;
+                }
+            }
+            if (ashore) continue;
+            foreach (int i in patch) m.Cover[i] = TerrainCover.Sand;
+        }
     }
 
     // ---------------------------------------------------------------- heights
@@ -383,6 +425,45 @@ public sealed class GbaWorld
             }
         }
 
+        // Water a bridge crosses lies at one level, the lowest its shores give it (plan 21 · H8, part c): Route 120's pond
+        // took its west half's level from the bridge's own raised ends, so the deck stood level with the water there and
+        // no deck was laid. Each body of water (elevation 1, joined through the bridge's own tiles) that a bridge
+        // crosses takes the lowest level of the land nearest any of its tiles; water no bridge crosses is left as it was,
+        // and a waterfall parts one body from another (the river above it keeps its own level)
+        bool Water(int i) => m.Area[i] >= 0 && m.Elevation[i] is 1 or 15 && reached[i]
+            && (TileBehavior)m.Behaviour[i] is not (TileBehavior.Waterfall or TileBehavior.WaterfallLip);
+        var seen = new bool[n];
+        for (int s = 0; s < n; s++)
+        {
+            if (seen[s] || !Water(s)) continue;
+            var body = new List<int>();
+            bool bridged = false;
+            float lowest = float.MaxValue;
+            var flood = new Queue<int>();
+            flood.Enqueue(s);
+            seen[s] = true;
+            while (flood.Count > 0)
+            {
+                int i = flood.Dequeue();
+                body.Add(i);
+                if (m.Elevation[i] == 15) bridged = true;
+                else lowest = Math.Min(lowest, nearest[i]);
+                int x = i % w, y = i / w;
+                foreach (var (dx, dy) in Sides)
+                {
+                    int nx = x + dx, ny = y + dy;
+                    if (!m.Has(nx, ny)) continue;
+                    int j = ny * w + nx;
+                    if (seen[j] || !Water(j)) continue;
+                    seen[j] = true;
+                    flood.Enqueue(j);
+                }
+            }
+            if (!bridged || lowest == float.MaxValue) continue;
+            foreach (int i in body)
+                if (m.Elevation[i] == 1) nearest[i] = lowest;
+        }
+
         for (int i = 0; i < n; i++)
         {
             if (m.Area[i] < 0) { m.Ground[i] = GroundLevel; continue; }
@@ -418,6 +499,8 @@ public sealed class GbaWorld
                 }
                 m.Ground[i] = lo;
                 if (hi > lo) m.Deck[i] = hi;
+                // A plank of the bridge whose metatile does nothing (where Route 120's Steven stands) is still the deck
+                if (hi > lo && m.Cover[i] == TerrainCover.Path) m.Cover[i] = TerrainCover.Bridge;
             }
         }
     }
@@ -436,7 +519,8 @@ public sealed class GbaWorld
             int count = 0;
             found = null;
             int cx = x + sx * step, cy = y + sy * step;
-            while (m.Has(cx, cy) && m.Elevation[cy * w + cx] == elevation && count < 8)
+            // (a bridge runs further than a ramp: Route 120's is sixteen tiles, and its middle took no deck at all)
+            while (m.Has(cx, cy) && m.Elevation[cy * w + cx] == elevation && count < (elevation == 15 ? 64 : 8))
             {
                 count++;
                 cx += sx * step; cy += sy * step;

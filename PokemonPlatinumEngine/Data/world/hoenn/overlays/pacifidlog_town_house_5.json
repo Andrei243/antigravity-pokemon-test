@@ -1,0 +1,10 @@
+{
+  // A house of Pacifidlog Town (plan 21 · H8, part c): the old man who watches the sea for Mirage Island (Emerald's
+  // island of a day's number, which isn't open), and a gentleman
+  "area": "pacifidlog_town_house_5",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "expert_m": { "name": "Old Man", "dialog": [ "From this window I watch the sea to the east. Some days an island rises there... but not today." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "He's watched that window for years. I've never seen the island once." ] }
+  }
+}

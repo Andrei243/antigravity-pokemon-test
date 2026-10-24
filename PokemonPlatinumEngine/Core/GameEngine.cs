@@ -1670,6 +1670,9 @@ public partial class GameEngine
 
         // A step onto one of the Canalave Gym's platforms is a ride, and nothing more (plan 01 · M9)
         if (TryRideLift()) return true;
+        // A cracked floor gives way under whoever walks onto it (plan 21 · H8, part c: Sky Pillar's; Emerald's cracked
+        // floor step callback): down to the floor below, onto the same tile, unless ridden over on the Bicycle
+        if (FallThroughCrackedFloor()) return true;
         // Poison bites every fourth step, the Poké Radar charges and its patches out of sight go still (plan 06 · R13)
         if (EncountersStep()) return true;
         // The Safari Game counts its steps, and its last one ends it (plan 01 · M7)

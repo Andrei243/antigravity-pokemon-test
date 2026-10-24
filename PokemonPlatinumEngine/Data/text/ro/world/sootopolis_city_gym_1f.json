@@ -1,0 +1,42 @@
+{
+  "people": {
+    "juan": {
+      "name": {
+        "en": [
+          "Juan"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SootopolisCity_Gym_1F_EventScript_LeftGymStatue": {
+      "en": [
+        "Sootopolis City Pokémon Gym\nLeader: Juan"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SootopolisCity_Gym_1F_EventScript_RightGymStatue": {
+      "en": [
+        "Sootopolis City Pokémon Gym\nLeader: Juan"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

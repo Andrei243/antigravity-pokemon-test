@@ -1,0 +1,265 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Andrea"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Andrea: I fell through the ice on my first try too. Now I guard the bottom!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Andrea: Back up the stairs with you, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Connie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Connie: Juan taught me that a battle should be as lovely as water. Watch closely."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Connie: That was lovely. For you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Brianna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Brianna: Falling down here was hardly graceful, was it? Let me show you grace."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Brianna: Graceful, and strong too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Bridget"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Bridget: The ice up there cracks under careless feet. Are you careful in battle too?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Bridget: Very careful, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_3": {
+      "name": {
+        "en": [
+          "Tiffany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Tiffany: My Sharpedo has sharp teeth and a sharper temper!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Tiffany: Its temper's even worse now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Bethany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Bethany: Azurill, Marill, Azumarill... I raised the whole family!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Bethany: The whole family's tired now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Crissy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Crissy: Juan's Gym is the last before the League. You won't get past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Crissy: You got past me easily."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_4": {
+      "name": {
+        "en": [
+          "Olivia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Olivia: Water shapes stone, given time. Let's see what it does to you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Olivia: You're harder than stone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Daphne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Daphne: Two Luvdisc, two hearts beating as one. Do try to keep up."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Daphne: My hearts are broken."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f_2": {
+      "name": {
+        "en": [
+          "Annika"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Annika: Everyone calls Feebas plain. I think they're beautiful!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Annika: They're still beautiful to me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

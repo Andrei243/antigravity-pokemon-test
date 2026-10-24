@@ -178,8 +178,27 @@ public sealed class GbaMaps
         }
     }
 
-    public GbaLayout LayoutOf(GbaMap map) => Layouts.TryGetValue(map.Layout, out var layout)
-        ? layout : throw new InvalidDataException($"{map.Name}: no layout {map.Layout}");
+    public GbaLayout LayoutOf(GbaMap map) =>
+        Layouts.TryGetValue(FirstLayouts.GetValueOrDefault(map.Id) ?? map.Layout, out var layout)
+            ? layout : throw new InvalidDataException($"{map.Name}: no layout {map.Layout}");
+
+    /// <summary>
+    /// The layout a map is first seen in where the game's own script lays another over the map's (plan 21 · H8, part c):
+    /// Emerald's Sky Pillar is laid clean by each floor's ON_TRANSITION until Rayquaza has come down
+    /// (<c>VAR_SKY_PILLAR_STATE</c> under 2), and cracked only afterwards, which the post-game's climb crosses on the Mach
+    /// Bike (plan 21 · H12, which swaps the map's own layout back in).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, string> FirstLayouts = new Dictionary<string, string>(StringComparer.Ordinal)
+    {
+        // (Route 131 is always laid with Sky Pillar's island in it: its ON_TRANSITION sets the layout unconditionally)
+        ["MAP_ROUTE131"] = "LAYOUT_ROUTE131_SKY_PILLAR",
+        ["MAP_SKY_PILLAR_1F"] = "LAYOUT_SKY_PILLAR_1F_CLEAN",
+        ["MAP_SKY_PILLAR_2F"] = "LAYOUT_SKY_PILLAR_2F_CLEAN",
+        ["MAP_SKY_PILLAR_3F"] = "LAYOUT_SKY_PILLAR_3F_CLEAN",
+        ["MAP_SKY_PILLAR_4F"] = "LAYOUT_SKY_PILLAR_4F_CLEAN",
+        ["MAP_SKY_PILLAR_5F"] = "LAYOUT_SKY_PILLAR_5F_CLEAN",
+        ["MAP_SKY_PILLAR_TOP"] = "LAYOUT_SKY_PILLAR_TOP_CLEAN"
+    };
 
     /// <summary>The tileset a block's metatile is drawn from, and its number within it.</summary>
     public (string Tileset, int Index) TilesetOf(GbaLayout layout, int metatile) =>

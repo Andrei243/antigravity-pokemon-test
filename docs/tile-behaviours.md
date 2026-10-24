@@ -167,12 +167,12 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_CABINET` | 0x89 |  | `None` (not in the table) | `0x00` | 80 |  |
 | `MB_CABLE_BOX_RESULTS_2` |  | 0xE7 | `None` (not in the table) | `0x00` |  | 17 |
 | `MB_CABLE_CLUB_WIRELESS_MONITOR` | 0x8D |  | `None` (not in the table) | `0x00` | 19 |  |
-| `MB_CAVE` | 0x08 | 0x08 | `CaveFloor` | `0x08` | 32,292 | 24,556 |
+| `MB_CAVE` | 0x08 | 0x08 | `CaveFloor` | `0x08` | 32,292 | 24,607 |
 | `MB_CAVE_DOOR` | 0x60 |  | `EntranceNorth` | `0x64` | 93 |  |
 | `MB_COMPUTER` | 0x97 |  | `Computer` | `0x83` | 52 |  |
 | `MB_COUNTER` | 0x80 | 0x80 | `Counter` | `0x80` | 730 | 566 |
-| `MB_CRACKED_FLOOR` |  | 0xD2 | `CrackedFloor` | `0xF1` |  | 190 |
-| `MB_CRACKED_FLOOR_HOLE` |  | 0x66 | `Hole` | `0xF2` |  | 80 |
+| `MB_CRACKED_FLOOR` |  | 0xD2 | `CrackedFloor` | `0xF1` |  | 81 |
+| `MB_CRACKED_FLOOR_HOLE` |  | 0x66 | `Hole` | `0xF2` |  |  |
 | `MB_CRACKED_ICE` | 0x27 | 0x27 | `ThinIce` | `0xF0` |  |  |
 | `MB_CUP` | 0x9B |  | `None` (not in the table) | `0x00` | 22 |  |
 | `MB_CYCLING_ROAD_PULL_DOWN` | 0xD0 |  | `CyclingRoadPull` | `0xFC` | 2,041 |  |
@@ -180,7 +180,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_CYCLING_ROAD_WATER` | 0x1B |  | `Sea` | `0x15` | 751 |  |
 | `MB_DEEP_SAND` |  | 0x06 | `Sand` | `0x21` |  | 690 |
 | `MB_DEEP_SOUTH_WARP` |  | 0x6E | `ExitSouth` | `0x6F` |  | 2 |
-| `MB_DEEP_WATER` | 0x12 | 0x12 | `DiveWater` | `0xED` |  | 3,575 |
+| `MB_DEEP_WATER` | 0x12 | 0x12 | `DiveWater` | `0xED` |  | 3,400 |
 | `MB_DOWN_ESCALATOR` | 0x6B | 0x6B | `Escalator` | `0x6B` | 19 | 17 |
 | `MB_DOWN_LEFT_STAIR_WARP` | 0x6F |  | `StairsWest` | `0x5F` | 41 |  |
 | `MB_DOWN_RIGHT_STAIR_WARP` | 0x6E |  | `StairsEast` | `0x5E` | 82 |  |
@@ -211,7 +211,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_INDIGO_PLATEAU_SIGN_1` | 0x91 |  | `None` (not in the table) | `0x00` | 22 |  |
 | `MB_INDIGO_PLATEAU_SIGN_2` | 0x92 |  | `None` (not in the table) | `0x00` | 21 |  |
 | `MB_INDOOR_ENCOUNTER` | 0x0B | 0x0B | `OldChateauFloor` | `0x0B` |  | 2,564 |
-| `MB_INTERIOR_DEEP_WATER` |  | 0x11 | `DiveWater` | `0xED` |  | 308 |
+| `MB_INTERIOR_DEEP_WATER` |  | 0x11 | `DiveWater` | `0xED` |  | 274 |
 | `MB_ISOLATED_HORIZONTAL_RAIL` |  | 0xD4 | `RailEastWest` | `0xFA` |  | 6 |
 | `MB_ISOLATED_VERTICAL_RAIL` |  | 0xD3 | `RailNorthSouth` | `0xF9` |  | 3 |
 | `MB_JUMP_EAST` | 0x38 | 0x38 | `LedgeEast` | `0x38` | 39 | 120 |
@@ -228,17 +228,17 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_LONG_GRASS` |  | 0x03 | `VeryTallGrass` | `0x03` |  | 1,381 |
 | `MB_LONG_GRASS_SOUTH_EDGE` |  | 0x09 | `VeryTallGrass` | `0x03` |  | 335 |
 | `MB_MOSSDEEP_GYM_WARP` |  | 0x0E | `WarpPanel` | `0x67` |  | 23 |
-| `MB_MOUNTAIN_TOP` | 0x0C | 0x0C | `MountainFloor` | `0x0C` | 1,119 | 19,312 |
+| `MB_MOUNTAIN_TOP` | 0x0C | 0x0C | `MountainFloor` | `0x0C` | 1,119 | 19,324 |
 | `MB_MT_PYRE_HOLE` |  | 0x0F | `Hole` | `0xF2` |  | 8 |
 | `MB_MUDDY_SLOPE` |  | 0xD0 | `BikeSlopeBottom` | `0xDA` |  | 12 |
 | `MB_NEATLY_LINED_UP_TOOLS` | 0x9F |  | `None` (not in the table) | `0x00` | 75 |  |
-| `MB_NON_ANIMATED_DOOR` |  | 0x60 | `EntranceNorth` | `0x64` |  | 285 |
-| `MB_NORMAL` | 0x00 | 0x00 | `None` | `0x00` | 142,329 | 187,255 |
+| `MB_NON_ANIMATED_DOOR` |  | 0x60 | `EntranceNorth` | `0x64` |  | 286 |
+| `MB_NORMAL` | 0x00 | 0x00 | `None` | `0x00` | 142,329 | 187,477 |
 | `MB_NORTHWARD_CURRENT` | 0x52 | 0x52 | `CurrentNorth` | `0xF5` | 142 | 319 |
 | `MB_NORTH_ARROW_WARP` | 0x64 | 0x64 | `ExitNorth` | `0x6E` | 16 | 6 |
 | `MB_NO_RUNNING` |  | 0x0A | `NoRunning` | `0xFD` |  | 142 |
 | `MB_NO_SURFACING` |  | 0x19 | `NoSurfacing` | `0xEE` |  | 1,182 |
-| `MB_OCEAN_WATER` | 0x15 | 0x15 | `Sea` | `0x15` | 34,484 | 46,286 |
+| `MB_OCEAN_WATER` | 0x15 | 0x15 | `Sea` | `0x15` | 34,484 | 46,367 |
 | `MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT` |  | 0x76 | `BridgeOverWater` | `0x73` |  | 9 |
 | `MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT` |  | 0x77 | `BridgeOverWater` | `0x73` |  | 9 |
 | `MB_PACIFIDLOG_VERTICAL_LOG_BOTTOM` |  | 0x75 | `BridgeOverWater` | `0x73` |  | 10 |
@@ -264,7 +264,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_ROCK_STAIRS` | 0x2A |  | `None` (not in the table) | `0x00` | 358 |  |
 | `MB_ROULETTE` |  | 0x8A | `None` (not in the table) | `0x00` |  | 12 |
 | `MB_RUNNING_DISALLOWED` | 0x0A |  | `NoRunning` | `0xFD` |  |  |
-| `MB_SAND` | 0x21 | 0x21 | `Sand` | `0x21` | 1,505 | 2,242 |
+| `MB_SAND` | 0x21 | 0x21 | `Sand` | `0x21` | 1,505 | 2,273 |
 | `MB_SAND_CAVE` | 0x2B |  | `CaveFloor` | `0x08` | 516 |  |
 | `MB_SEAWEED` | 0x22 | 0x22 | `Seaweed` | `0xEF` |  | 587 |
 | `MB_SEAWEED_NO_SURFACING` |  | 0x2A | `SeaweedNoSurfacing` | `0xFE` |  | 454 |
@@ -360,8 +360,8 @@ The values of the GBA's own, and what the game does with each today:
 | `0xED` | `DiveWater` | Deep, dark water: surfed, and dived into where the sea floor below is a map (the GBA's). | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon; where the area has a sea floor, a surfer who knows Dive goes down to the same tile of it (FieldMovement.CanDive; plan 21 · H5). |
 | `0xEE` | `NoSurfacing` | The sea floor under rock or a ledge above: swum along after a dive, and nobody comes up there (the GBA's). | **Rule.** The sea floor under rock or a ledge above: swum along after a dive (the seaweed meeting the area's water Pokémon), and Dive never comes up from it (FieldMovement.CanSurface; plan 21 · H5). |
 | `0xEF` | `Seaweed` | Seaweed on the sea floor, where wild Pokémon live (the GBA's). | **Rule.** The sea floor's grass, swum through after a dive at walking pace, meeting the area's water Pokémon; Dive comes up from it to the same tile of the sea above (FieldMovement.CanSurface; plan 21 · H5). |
-| `0xF0` | `ThinIce` | Thin ice that cracks under a step and gives way under the next (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
-| `0xF1` | `CrackedFloor` | A cracked floor that gives way after a step, or the hole it leaves (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF0` | `ThinIce` | Thin ice that cracks under a step and gives way under the next (the GBA's). | **Rule.** In the Sootopolis Gym (its puzzle, SootopolisIce; plan 21 · H8, part c) it cracks under a first step and gives way under a second, dropping the walker to the floor below, and a field crossed tile by tile clears the glazed stairs above it; walked like plain ground anywhere else. |
+| `0xF1` | `CrackedFloor` | A cracked floor that gives way after a step, or the hole it leaves (the GBA's). | **Rule.** Gives way under a walker where its area names the floor below, dropping them onto the same tile there (Map.HoleTargetAt, Emerald's setholewarp: Sky Pillar; plan 21 · H8, part c); ridden over on the Bicycle, and walked like plain ground anywhere else. |
 | `0xF2` | `Hole` | A hole that drops whoever steps in to the floor below (the GBA's). | **Rule.** A warp down to the floor below, taken by stepping on it; whoever lands on water there rides out on it (Player.ComeDownOn), and a boulder pushed in is a pit's (Map.BoulderPits; plan 19 · K6, part b). |
 | `0xF3` | `CurrentEast` | Water that carries a surfer east (the GBA's). | **Rule.** Stops a walker and is surfed; it carries the surfer its own way, step after step, until calm water or something in the way (FieldMovement.Carries; plan 19 · K6, part b). |
 | `0xF4` | `CurrentWest` | Water that carries a surfer west (the GBA's). | **Rule.** Stops a walker and is surfed; it carries the surfer its own way, step after step, until calm water or something in the way (FieldMovement.Carries; plan 19 · K6, part b). |

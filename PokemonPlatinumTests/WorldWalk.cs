@@ -134,6 +134,15 @@ internal static class WorldWalk
                     Visit(above, spot.X, spot.Y, TravelMode.Surfing, above.SurfaceAt(spot.X, spot.Y, above.HeightAt(spot.X, spot.Y)).Height, arrived: false);
             }
 
+            // A cracked floor that drops to the floor below (plan 21 · H8, part c: Sky Pillar's fourth floor down into its
+            // third's middle, the only way to the stairs up from there) takes a walker down onto the same tile
+            if (mode == TravelMode.OnFoot && map.HoleTargetAt(x, y) is { } hole)
+            {
+                var below = mapOf(hole.Map);
+                if (below.InBounds(hole.X, hole.Y) && !below.IsSolid(hole.X, hole.Y))
+                    Visit(below, hole.X, hole.Y, TravelMode.OnFoot, below.HeightAt(hole.X, hole.Y), arrived: false);
+            }
+
             // A platform of the League's (plan 01 · M9, part 2d) carries whoever steps onto it at the foot of its
             // shaft up to the top, once
             if (map.Puzzle is LeagueLift lift && lift.Covers(x, y) && MathF.Abs(height - lift.Where.Bottom) < 0.01f)

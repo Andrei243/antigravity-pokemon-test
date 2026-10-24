@@ -1,0 +1,24 @@
+{
+  "key": "sky_pillar_2f",
+  "index": 318,
+  "name": "Sky Pillar",
+  "matrix": 267,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 1, "to": "sky_pillar_1f", "toWarp": 2 },
+    { "x": 3, "z": 1, "to": "sky_pillar_3f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

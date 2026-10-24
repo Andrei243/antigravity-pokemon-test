@@ -2629,4 +2629,192 @@ public class HoennStoryTests
             foreach (string flag in hidden) Assert.True(old.Story.Has(flag), $"{flag} on arriving in {map}");
         }
     }
+
+    // ---------------------------------------------------------------- plan 21 · H8, part c: Sky Pillar to the Rain Badge
+
+    /// <summary>Wallace sent to Sky Pillar from the Cave of Origin (part b's end: VAR_SOOTOPOLIS_CITY_STATE 3).</summary>
+    private static Game WallaceGoneToSkyPillar()
+    {
+        var game = KyogreAwake();
+        game.Arrive("SootopolisCity", 29, 53);
+        game.Talk("sootopolis_steven");
+        game.Arrive("CaveOfOrigin_B1F", 9, 4);
+        game.Talk("cave_of_origin_wallace");
+        Assert.Equal(3, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        return game;
+    }
+
+    [Fact]
+    public void RayquazaWakesOnSkyPillarAndComesDownOverSootopolisEndingTheClash()
+    {
+        var game = WallaceGoneToSkyPillar();
+        Assert.True(game.Story.Has("FLAG_HOENN_CHAPTER_ELEVEN"));
+
+        // At the foot of the tower Wallace comes over, the quake, and he goes back to Sootopolis
+        game.Arrive("SkyPillar_Outside", 17, 14);
+        Assert.Equal(4, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.True(game.Story.Has("FLAG_SYS_WEATHER_CTRL"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SKY_PILLAR_WALLACE"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE"));
+        Assert.Null(game.Present("sky_pillar_wallace"));
+        // The door he opened leads into the tower, and the abnormal weather lies even here
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "SkyPillar_1F" && w.SourceX == 14 && w.SourceY == 5);
+        Assert.False(game.Map.IsSolid(14, 5));
+        Assert.Contains(game.Map.WeatherAt(17, 14), new[] { FieldWeather.HeavyRain, FieldWeather.Drought });
+        // Laid clean, as Emerald lays it before Rayquaza: the cracked floors of the post-game's climb aren't there (the
+        // fourth floor's clean layout keeps five cracks of its own, off the way up)
+        foreach (var (floor, cracks) in new[] { ("SkyPillar_1F", 0), ("SkyPillar_2F", 0), ("SkyPillar_3F", 0), ("SkyPillar_4F", 5), ("SkyPillar_5F", 0) })
+        {
+            game.Arrive(floor, 10, 2);
+            int found = 0;
+            for (int y = 0; y < game.Map.Height; y++)
+                for (int x = 0; x < game.Map.Width; x++)
+                    if (game.Map.BehaviourAt(x, y) == TileBehavior.CrackedFloor) found++;
+            Assert.True(found == cracks, $"{floor} has {found} cracked tiles");
+        }
+
+        // Back in the city meanwhile, Wallace waits at the cave's mouth and asks after Sky Pillar
+        game.Arrive("SootopolisCity", 43, 32);
+        Assert.Equal((31, 18), (game.Present("sootopolis_wallace")!.GridX, game.Present("sootopolis_wallace")!.GridY));
+        Assert.Contains(game.Talk("sootopolis_wallace").Transcript, l => l.Text.Contains("Sky Pillar"));
+
+        // The top: Rayquaza asleep, and the step before it wakes it
+        game.Arrive("SkyPillar_Top", 16, 15);
+        Assert.NotNull(game.Present("rayquaza_sleeping"));
+        Assert.Null(game.Present("rayquaza_still"));
+        var waking = game.StepAt(14, 9);
+        Assert.NotNull(waking);
+        Assert.Contains(waking!.Log, l => l.Contains("Rayquaza"));
+        Assert.Equal(5, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_SKY_PILLAR_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE"));
+        game.Arrive("SkyPillar_Top", 16, 15);
+        Assert.Null(game.Present("rayquaza_sleeping"));
+        Assert.Null(game.StepAt(14, 9));
+
+        // Sootopolis: Rayquaza comes down, the titans go, and the weather clears
+        game.Arrive("SootopolisCity", 43, 32);
+        Assert.Equal(2, game.Story.Var("VAR_SKY_PILLAR_STATE"));
+        foreach (string flag in new[] { "FLAG_SYS_WEATHER_CTRL", "FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN", "FLAG_LEGENDARIES_IN_SOOTOPOLIS" })
+            Assert.False(game.Story.Has(flag), flag);
+        Assert.Contains(game.Last.Log, l => l.Contains("rayquaza_appears"));
+        game.Arrive("SootopolisCity", 43, 32);
+        foreach (string gone in new[] { "sootopolis_groudon", "sootopolis_kyogre", "sootopolis_rayquaza" })
+            Assert.Null(game.Present(gone));
+        Assert.DoesNotContain(game.Map.WeatherAt(31, 44), new[] { FieldWeather.Abnormal, FieldWeather.HeavyRain, FieldWeather.Drought });
+        // The houses open again; the Gym waits for Archie and Maxie to go
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap.StartsWith("SootopolisCity_House", StringComparison.Ordinal)), w => Assert.False(w.Shut, w.TargetMap));
+        Assert.True(game.Map.IsSolid(31, 32));
+        Assert.Equal((31, 33), (game.Present("sootopolis_wallace")!.GridX, game.Present("sootopolis_wallace")!.GridY));
+        Assert.Equal((33, 35), (game.Present("sootopolis_maxie")!.GridX, game.Present("sootopolis_maxie")!.GridY));
+        Assert.Equal((34, 35), (game.Present("sootopolis_archie")!.GridX, game.Present("sootopolis_archie")!.GridY));
+
+        // Archie and Maxie have their say and leave, and the Gym's door opens
+        game.Talk("sootopolis_maxie");
+        Assert.True(game.Story.Has("FLAG_MET_MAXIE_SOOTOPOLIS"));
+        Assert.False(game.Story.Has("FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE"));
+        game.Talk("sootopolis_archie");
+        Assert.True(game.Story.Has("FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE"));
+        game.Arrive("SootopolisCity", 43, 32);
+        Assert.Null(game.Present("sootopolis_maxie"));
+        Assert.Null(game.Present("sootopolis_archie"));
+        Assert.False(game.Map.IsSolid(31, 32));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "SootopolisCity_Gym_1F" && w.SourceX == 31 && w.SourceY == 32);
+
+        // Wallace gives HM07 and steps aside from the Gym's door
+        game.Talk("sootopolis_wallace");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_HM_WATERFALL"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM07")!));
+        Assert.NotEqual(0, game.Story.Var("VAR_SOOTOPOLIS_WALLACE_STATE"));
+        game.Talk("sootopolis_wallace");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM07")!));
+    }
+
+    [Fact]
+    public void TheSootopolisGymsIceOpensItsStairsFieldByFieldAndDropsWhoeverStepsTwice()
+    {
+        var game = new Game();
+        game.Arrive("SootopolisCity_Gym_1F", 8, 24);
+        var ice = Assert.IsType<SootopolisIce>(game.Map.Puzzle);
+        Assert.Equal(1, ice.Count);
+        // Every flight glazed: its stairs slide a climber back down
+        foreach (var flight in SootopolisIce.Flights)
+            foreach (var (x, y) in flight) Assert.Equal(TileBehavior.SlideSouth, game.Map.BehaviourAt(x, y));
+        Assert.Equal(TileBehavior.ThinIce, game.Map.BehaviourAt(8, 17));
+
+        // The first field's seven tiles, each once: the lowest flight comes clear
+        var first = new[] { (8, 19), (7, 19), (7, 18), (8, 18), (9, 18), (9, 17), (8, 17) };
+        for (int i = 0; i < first.Length; i++)
+        {
+            var outcome = ice.StepOn(game.Map, first[i].Item1, first[i].Item2);
+            Assert.Equal(i == first.Length - 1 ? SootopolisIce.Outcome.Opened : SootopolisIce.Outcome.Cracked, outcome);
+        }
+        Assert.Equal(9, ice.Count);
+        Assert.Equal(1, ice.FlightsOpen);
+        ice.Apply(game.Map, game.Story);
+        Assert.Equal(TileBehavior.None, game.Map.BehaviourAt(8, 15));
+        Assert.Equal(TileBehavior.None, game.Map.BehaviourAt(8, 16));
+        Assert.Equal(TileBehavior.SlideSouth, game.Map.BehaviourAt(8, 11));
+        Assert.Equal(4, ice.Glazed.Count());
+        // Floor that is no ice counts for nothing
+        Assert.Equal(SootopolisIce.Outcome.Nothing, ice.StepOn(game.Map, 8, 16));
+
+        // A tile stepped on again gives way
+        Assert.True(ice.IsCracked(8, 17));
+        Assert.Equal(SootopolisIce.Outcome.Fell, ice.StepOn(game.Map, 8, 17));
+        Assert.Equal(0, ice.Count);
+        // The basement is under it, tile for tile
+        game.Arrive(SootopolisIce.Basement, 8, 17);
+        Assert.False(game.Map.IsSolid(8, 17));
+
+        // Come into the Gym again: the ice is whole and every flight glazed
+        game.Arrive("SootopolisCity_Gym_1F", 8, 24);
+        Assert.Same(ice, game.Map.Puzzle);
+        Assert.Equal(1, ice.Count);
+        Assert.Empty(ice.Cracked);
+        Assert.Equal(TileBehavior.SlideSouth, game.Map.BehaviourAt(8, 16));
+
+        // Every tile of the three fields once opens all three flights
+        int ices = 0;
+        for (int y = 0; y < game.Map.Height; y++)
+            for (int x = 0; x < game.Map.Width; x++)
+                if (game.Map.BehaviourAt(x, y) == TileBehavior.ThinIce)
+                {
+                    ices++;
+                    ice.StepOn(game.Map, x, y);
+                }
+        Assert.Equal(64, ices);
+        Assert.Equal(3, ice.FlightsOpen);
+    }
+
+    [Fact]
+    public void JuanBattlesForTheRainBadgeAndCalmsSootopolisForGood()
+    {
+        var game = new Game();
+        game.Story.SetVar("VAR_SOOTOPOLIS_CITY_STATE", 5);
+        game.Story.Set("FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE");
+        game.Story.Set("FLAG_SYS_POKENAV_GET");
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 50));
+        game.Arrive("SootopolisCity_Gym_1F", 8, 24);
+        Assert.NotNull(game.Present("juan"));
+        game.Talk("man_2");
+        var juan = game.Talk("juan");
+        Assert.Contains(juan.Log, l => l.StartsWith("battle hoenn_juan_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Rain"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM03")!));
+        Assert.Equal(6, game.Story.Var("VAR_SOOTOPOLIS_CITY_STATE"));
+        foreach (string flag in new[] { "FLAG_DEFEATED_SOOTOPOLIS_GYM", "FLAG_RECEIVED_TM_WATER_PULSE", "FLAG_ENABLE_JUAN_MATCH_CALL",
+                     "FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS", "FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN", "FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.False(game.Story.Has("FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1"));
+        foreach (string id in new[] { "hoenn_andrea", "hoenn_crissy", "hoenn_brianna", "hoenn_connie", "hoenn_bridget", "hoenn_olivia",
+                     "hoenn_tiffany", "hoenn_bethany", "hoenn_annika", "hoenn_daphne" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.DoesNotContain(game.Talk("juan").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM03")!));
+        // The city calm again: the townsfolk back indoors, the man by the houses out
+        game.Arrive("SootopolisCity", 43, 32);
+        Assert.Null(game.Present("sootopolis_maniac"));
+        Assert.NotNull(game.Present("man_1"));
+    }
 }

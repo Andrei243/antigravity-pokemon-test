@@ -1,0 +1,16 @@
+{
+  // Route 130 (plan 21 · H8, part c): open sea between Routes 129 and 131. Emerald's Mirage Island rises here only on a
+  // day whose number matches a Pokémon's and isn't open; its berry tree stays hidden with it. The titans' weather lies
+  // over it while the story keeps it (FLAG_SYS_WEATHER_CTRL)
+  "area": "route_130",
+  "bgmTrack": "hoenn/route119",
+  "trees": "Round",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "people": {
+    "swimmer_m": { "name": "Rodney", "trainer": { "dialogueBefore": "Swimmer Rodney: They say an island appears out here now and then. I've been waiting for weeks!", "dialogueAfter": "Swimmer Rodney: Still no island. Just you." } },
+    "swimmer_f": { "name": "Katie", "trainer": { "dialogueBefore": "Swimmer Katie: The water's so calm out here. Let's make some waves!", "dialogueAfter": "Swimmer Katie: That was more of a splash." } },
+    "swimmer_m_2": { "name": "Santiago", "trainer": { "dialogueBefore": "Swimmer Santiago: Pacifidlog's not far now. Beat me and you'll get there sooner!", "dialogueAfter": "Swimmer Santiago: Go on, it's just west of here." } }
+  }
+}

@@ -275,6 +275,8 @@ public enum Architecture
     Starward,
     /// <summary>Pale stone under deep sea-blue hip roofs with shutters: the white city cut into an old crater's terraces round its harbour (Sootopolis, plan 21 · H8, part b).</summary>
     Crater,
+    /// <summary>Logs under straw-gold gable roofs with shutters: the town of houses on rafts of logs moored out at sea (Pacifidlog, plan 21 · H8, part c).</summary>
+    Raft,
 
     // Unova (plan 22): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White stucco under slate-teal gable roofs with shutters: the town on the hill over the outlook (Aspertia, plan 22 · U5).</summary>

@@ -40,12 +40,18 @@ public partial class GameEngine
         return regionPlaces.TryGetValue(flow.Map.Name, out var cell) ? cell : null;
     }
 
+    /// <summary>
+    /// Whether a town is there to fly to: its area open on the map it lies on, the region's overworld or a map of its own
+    /// (Sootopolis City inside its crater, plan 21 · H8, part c).
+    /// </summary>
+    private static bool Reachable(SpawnLocation town) =>
+        MapDatabase.MapNames.Contains(town.Map) && MapDatabase.Get(town.Map).Areas.Any(a => a.Key == town.Area && a.Open);
+
     /// <summary>What the game has put on the region's map now.</summary>
     private TownMapState? TownMapNow()
     {
         if (RegionMapNow is not { } region) return null;
-        var overworld = MapDatabase.Get(region.Map);
-        return new TownMapState(region, flow.Story, RegionCellNow(region), flow.MapTrail, town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
+        return new TownMapState(region, flow.Story, RegionCellNow(region), flow.MapTrail, Reachable);
     }
 
     /// <summary>
@@ -57,8 +63,7 @@ public partial class GameEngine
     {
         if (string.Equals(region.Id, Here.Id, StringComparison.OrdinalIgnoreCase)) return TownMapNow();
         if (RegionMap.Of(region.Id) is not { } map) return null;
-        var overworld = MapDatabase.Get(map.Map);
-        return new TownMapState(map, flow.Story, reachable: town => overworld.Areas.Any(a => a.Key == town.Area && a.Open));
+        return new TownMapState(map, flow.Story, reachable: Reachable);
     }
 
     /// <summary>

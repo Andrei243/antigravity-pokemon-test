@@ -226,5 +226,11 @@
     "class": "Triathlete",
     "trainer": "hoenn_katelyn_1",
     "area": "route_128"
+  },
+  {
+    "id": "juan",
+    "type": 12,
+    "class": "Leader",
+    "area": "sootopolis_city_gym_1f"
   }
 ]

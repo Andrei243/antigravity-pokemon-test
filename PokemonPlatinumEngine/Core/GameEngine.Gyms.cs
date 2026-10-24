@@ -29,6 +29,53 @@ public partial class GameEngine
         if (puzzle is SunyshoreGears { Turning: not null } gears) PlayGears(gears, dt);
         if (puzzle is LeagueLift { Moving: true } lift) PlayLeagueLift(lift, dt);
         if (puzzle is BlackthornPlatforms { Moving: not null } slabs) PlaySlabs(slabs, dt);
+        if (puzzle is SootopolisIce ice) WalkTheIce(ice);
+    }
+
+    // ------------------------------------------------------------------ cracked floors (plan 21 · H8, part c)
+
+    /// <summary>
+    /// A step onto a cracked floor that drops to a floor below (<see cref="Map.HoleTargetAt"/>: Sky Pillar's, Emerald's
+    /// <c>setholewarp</c>) takes the player down to the same tile there, through a fade; on the Bicycle they ride over it.
+    /// </summary>
+    private bool FallThroughCrackedFloor()
+    {
+        if (flow.Player.Mode == TravelMode.Cycling) return false;
+        if (flow.Map.HoleTargetAt(flow.Player.GridX, flow.Player.GridY) is not { } hole) return false;
+        AudioManager.PlaySound("ledge");
+        WarpTo(hole.Map, hole.X, hole.Y, flow.Player.Facing);
+        return true;
+    }
+
+    // ------------------------------------------------------------------ the Sootopolis Gym's ice (plan 21 · H8, part c)
+
+    // The tile the player last came onto in the Sootopolis Gym, so each is told to the ice once
+    private (Map Map, int X, int Y)? iceTile;
+
+    /// <summary>
+    /// Each tile the player comes onto in the Sootopolis Gym is told to its ice (Emerald's step callback, which reads every
+    /// tile walked or slid onto): a flight that comes clear is heard, and ice that gives way drops the player to the
+    /// basement, onto the same tile, through a fade (Emerald's <c>warphole</c>).
+    /// </summary>
+    private void WalkTheIce(SootopolisIce ice)
+    {
+        var p = flow.Player;
+        if (iceTile is { } last && last.Map == flow.Map && last.X == p.GridX && last.Y == p.GridY) return;
+        bool first = iceTile == null || iceTile.Value.Map != flow.Map;
+        iceTile = (flow.Map, p.GridX, p.GridY);
+        // The tile the room is come into on is no step onto it
+        if (first || flow.State != GameState.Overworld) return;
+        switch (ice.StepOn(flow.Map, p.GridX, p.GridY))
+        {
+            case SootopolisIce.Outcome.Opened:
+                ice.Apply(flow.Map, flow.Story);
+                AudioManager.PlaySound("snowball");
+                break;
+            case SootopolisIce.Outcome.Fell:
+                AudioManager.PlaySound("ledge");
+                WarpTo(SootopolisIce.Basement, p.GridX, p.GridY, Direction.Down);
+                break;
+        }
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>

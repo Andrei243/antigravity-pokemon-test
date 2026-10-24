@@ -1,0 +1,78 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}! Forgive me. I was in such a hurry that I left you behind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've opened the door of Sky Pillar. Now, let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An earthquake! We haven't a moment to spare!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm... This is getting worse."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even here, the weather has gone wrong. {player}, Rayquaza should be at the very top of this tower."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm worried for Sootopolis. I must go back. Everything rests with you now. Don't let us down!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wallace": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sky Pillar... Rayquaza must be at its top. Let's hurry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

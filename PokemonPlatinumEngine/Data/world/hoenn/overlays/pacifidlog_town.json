@@ -1,0 +1,19 @@
+{
+  // Pacifidlog Town (plan 21 · H8, part c): houses built on rafts of logs moored together out at sea, joined by log
+  // walkways over the water (Emerald's Pacifidlog logs, BridgeOverWater to the field: walked on, surfed under), with a
+  // Pokémon Center and five houses (Architecture.Raft, the style guide's row first). The sea west of it, Route 132, is
+  // left for later
+  "area": "pacifidlog_town",
+  "bgmTrack": "hoenn/lilycove",
+  "trees": "Round",
+  "architecture": "Raft",
+  "people": {
+    "girl_1": { "name": "Girl", "dialog": [ "The sea round Pacifidlog is full of Corsola. My grandma says the whole town grew up on their reef." ] },
+    "fisherman": { "name": "Fisherman", "dialog": [ "The currents out west are fierce. Surfing against them, you'll go nowhere at all!" ] },
+    "ninja_boy": { "name": "Boy", "dialog": [ "There's a tall tower on an island east of here. People say something sleeps at the very top." ] }
+  },
+  "signs": {
+    "PacifidlogTown_EventScript_TownSign": "Pacifidlog Town\nWhere the morning sun smiles on the waters.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
+  }
+}

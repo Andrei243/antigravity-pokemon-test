@@ -68,6 +68,12 @@ public sealed class RegionSpawn
     public string Room { get; set; } = "";
     public bool UnlockedOnArrival { get; set; } = true;
     public string? Flag { get; set; }
+
+    /// <summary>
+    /// The map the place lies on where it is not the region's overworld (plan 21 · H8, part c: Sootopolis City, inside its
+    /// crater on a map of its own); left out for the overworld.
+    /// </summary>
+    public string? Map { get; set; }
 }
 
 /// <summary>

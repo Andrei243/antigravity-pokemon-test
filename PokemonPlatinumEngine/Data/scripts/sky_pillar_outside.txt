@@ -1,0 +1,53 @@
+# Sky Pillar's island (plan 21 · H8, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SkyPillar_Outside/scripts.inc).
+#
+# Wallace has come here from the Cave of Origin (VAR_SOOTOPOLIS_CITY_STATE 3) and opened the pillar's door
+# (FLAG_WALLACE_GOES_TO_SKY_PILLAR: the overlay's door). The first time the player comes up from the cave he walks over,
+# the ground shakes, the titans' weather reaches even here (Emerald sets FLAG_SYS_WEATHER_CTRL again), and he goes back
+# to Sootopolis to watch over the city, leaving the climb to the player (state 4; his Sootopolis self shown,
+# FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE cleared). Emerald walks both a few steps toward the door before the second quake;
+# here they stand where they are.
+
+
+script OnEnter
+  if var VAR_SOOTOPOLIS_CITY_STATE != 3 end
+  scene "Wallace at Sky Pillar"
+  wait 0.5
+  walk sky_pillar_wallace down 7 right 3
+  face player sky_pillar_wallace
+  speaker "Wallace"
+  say "Ah, {player}! Forgive me. I was in such a hurry that I left you behind."
+  say "I've opened the door of Sky Pillar. Now, let's go!"
+  wait 0.5
+  camera shake 0.8
+  wait 0.8
+  say "An earthquake! We haven't a moment to spare!"
+  camera shake 1.4
+  wait 1.4
+  face sky_pillar_wallace left
+  wait 0.3
+  face sky_pillar_wallace right
+  wait 0.3
+  face sky_pillar_wallace player
+  say "Hmm... This is getting worse."
+  setflag FLAG_SYS_WEATHER_CTRL
+  wait 1
+  say "Even here, the weather has gone wrong. {player}, Rayquaza should be at the very top of this tower."
+  say "I'm worried for Sootopolis. I must go back. Everything rests with you now. Don't let us down!"
+  sound "warp"
+  fade out
+  setvar VAR_SOOTOPOLIS_CITY_STATE 4
+  hide sky_pillar_wallace
+  setflag FLAG_HIDE_SKY_PILLAR_WALLACE
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  fade in
+  endscene
+  end
+
+
+# Wallace, spoken to before he comes over (he has nothing to add: Emerald gives him no script of his own here)
+script Wallace
+  face self player
+  speaker "Wallace"
+  say "Sky Pillar... Rayquaza must be at its top. Let's hurry!"
+  end

@@ -1,0 +1,27 @@
+{
+  "key": "pacifidlog_town_house_1",
+  "index": 99,
+  "name": "Pacifidlog Town",
+  "matrix": 48,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "pacifidlog_town", "toWarp": 1 },
+    { "x": 5, "z": 8, "to": "pacifidlog_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "man_5", "looks": "man_5", "movement": "look_south", "x": 3, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_House1_EventScript_Man" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_west", "x": 6, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "PacifidlogTown_House1_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -212,11 +212,30 @@ partial class Harness
             ("h192_sootopolis_house", "SootopolisCity_House1", 3, 6, Direction.Up),
             ("h193_cave_of_origin", "CaveOfOrigin_Entrance", 9, 15, Direction.Up),
             ("h194_cave_of_origin_b1f", "CaveOfOrigin_B1F", 9, 15, Direction.Up),
+            // Plan 21 · H8, part c: Routes 129 to 131, Pacifidlog Town and its rooms, Sky Pillar, Juan's Gym, and Route
+            // 120's bridge and Route 128's islet as the import now lays them
+            ("h196_route129", "Hoenn", 660, 270, Direction.Up),
+            ("h197_pacifidlog_town", "Hoenn", 488, 277, Direction.Up),
+            ("h198_pacifidlog_center", "PacifidlogTown_PokemonCenter_1F", 7, 6, Direction.Up),
+            ("h199_pacifidlog_house", "PacifidlogTown_House2", 4, 7, Direction.Up),
+            ("h200_route131_sky_pillar", "Hoenn", 536, 268, Direction.Up),
+            ("h201_sky_pillar_cave", "SkyPillar_Entrance", 6, 14, Direction.Up),
+            ("h202_sky_pillar_outside", "SkyPillar_Outside", 14, 8, Direction.Up),
+            ("h203_sky_pillar_1f", "SkyPillar_1F", 6, 11, Direction.Up),
+            ("h204_sky_pillar_4f", "SkyPillar_4F", 5, 4, Direction.Right),
+            ("h205_sky_pillar_top", "SkyPillar_Top", 14, 10, Direction.Up),
+            ("h206_sootopolis_gym", "SootopolisCity_Gym_1F", 8, 23, Direction.Up),
+            ("h207_sootopolis_gym_basement", "SootopolisCity_Gym_B1F", 8, 18, Direction.Up),
+            ("h208_route120_bridge", "Hoenn", 376, 15, Direction.Left),
+            ("h209_route128_islet_sand", "Hoenn", 678, 243, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
-            At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            At(map, x, y, facing);
+            // (On a bridge, on its deck: Route 120's, plan 21 · H8, part c)
+            if (name == "h208_route120_bridge" && game.Map.DeckAt(x, y) is { } deck) game.Player.SetHeight(deck);
+            Frames(2); Shot(name);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south" or "h133_lilycove_city" or "h152_mt_pyre_summit" or "h159_magma_hideout_groudon" or "h162_aqua_hideout_panels" or "h165_mossdeep_city" or "h169_mossdeep_gym_arrows" or "h186_sootopolis_city" or "h187_sootopolis_harbour" or "h197_pacifidlog_town" or "h205_sky_pillar_top" or "h206_sootopolis_gym") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -239,6 +258,7 @@ partial class Harness
         At("MtPyre_Summit", 23, 12, Direction.Up); Frames(2); Shot("h154_mt_pyre_summit_night");
         At("Hoenn", 668, 118, Direction.Up); Frames(2); Shot("h179_mossdeep_night");
         At("SootopolisCity", 43, 33, Direction.Up); Frames(2); Shot("h195_sootopolis_night");
+        At("Hoenn", 488, 277, Direction.Up); Frames(2); Shot("h210_pacifidlog_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

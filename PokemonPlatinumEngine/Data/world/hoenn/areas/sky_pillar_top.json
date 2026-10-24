@@ -1,0 +1,28 @@
+{
+  "key": "sky_pillar_top",
+  "index": 323,
+  "name": "Sky Pillar",
+  "matrix": 272,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 16, "z": 14, "to": "sky_pillar_5f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rayquaza_sleeping", "looks": "rayquaza", "movement": "look_south", "x": 14, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA", "script": "" },
+    { "id": "rayquaza_still", "looks": "rayquaza_still", "movement": "look_south", "x": 14, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL", "script": "SkyPillar_Top_EventScript_Rayquaza" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 14, "z": 9, "width": 1, "depth": 1, "script": "SkyPillar_Top_EventScript_AwakenRayquaza", "variable": "VAR_SKY_PILLAR_RAYQUAZA_CRY_DONE", "value": "0" }
+  ]
+}

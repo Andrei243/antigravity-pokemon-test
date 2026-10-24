@@ -616,13 +616,70 @@ public class HoennTests
         Assert.Equal(Architecture.Crater, soot.ArchitectureAt(43, 30));
         Assert.Equal("hoenn/sootopolis", soot.BgmTrackAt(43, 30));
         Assert.Single(BuiltMaps.Value["SootopolisCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
-        Assert.DoesNotContain(soot.Warps, w => w.TargetMap.StartsWith("SootopolisCity_Gym", StringComparison.Ordinal) && !w.Shut);
+        // (the Gym's door waits for Archie and Maxie to leave, plan 21 · H8, part c)
+        Assert.Contains(soot.Warps, w => w.TargetMap == "SootopolisCity_Gym_1F" && w.OpenedBy == "FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE");
         Assert.Contains(soot.Warps, w => w.TargetMap == "CaveOfOrigin_Entrance");
         Assert.Equal(TerrainCover.Paving, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Sootopolis", 0x2D9, MapImporter.Gba.GbaGame.Emerald));
         foreach (string song in new[] { "sootopolis", "abnormal_weather" })
             Assert.True(File.Exists(Path.Combine(AppContext.BaseDirectory, "Data", "music", "hoenn", song + ".mml")), song);
         Assert.Equal(["Ultra Ball", "Hyper Potion", "Max Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense"],
             MartDatabase.Specialties["sootopolis"]);
+    }
+
+    [Fact]
+    public void PacifidlogSkyPillarAndJuansGymAreOpen()
+    {
+        // Plan 21 · H8, part c: Routes 129 to 131, Pacifidlog Town and its rooms, Sky Pillar and Juan's Gym
+        foreach (string key in new[] { "route_129", "route_130", "route_131", "pacifidlog_town", "pacifidlog_town_pokemon_center_1f",
+                     "pacifidlog_town_house_5", "sky_pillar_outside", "sky_pillar_entrance", "sky_pillar_1f", "sky_pillar_5f", "sky_pillar_top",
+                     "sootopolis_city_gym_1f", "sootopolis_city_gym_b1f" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var hoenn = RegionDatabase.Get(RegionDatabase.Hoenn)!;
+        foreach (string map in new[] { "SootopolisCity_Gym_1F", "SootopolisCity_Gym_B1F", "PacifidlogTown_PokemonCenter_1F", "SkyPillar_Top" })
+            Assert.Contains(map, hoenn.Maps);
+        // Route 131's shore leads into Sky Pillar's cave, and the cave up to its island; the tower's door opens for Wallace
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "SkyPillar_Entrance");
+        Assert.Contains(BuiltMaps.Value["SkyPillar_Entrance"].Warps, w => w.TargetMap == "SkyPillar_Outside");
+        Assert.Contains(BuiltMaps.Value["SkyPillar_Outside"].Warps, w => w.TargetMap == "SkyPillar_1F" && w.OpenedBy == "FLAG_WALLACE_GOES_TO_SKY_PILLAR");
+        Assert.Contains(BuiltMaps.Value["SkyPillar_5F"].Warps, w => w.TargetMap == "SkyPillar_Top");
+        // Pacifidlog's rafts, its song and its Pokémon Center
+        Assert.Equal(Architecture.Raft, Overworld.ArchitectureAt(488, 276));
+        Assert.Equal("hoenn/lilycove", Overworld.BgmTrackAt(488, 276));
+        Assert.Single(BuiltMaps.Value["PacifidlogTown_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "PacifidlogTown_PokemonCenter_1F");
+        // Juan's Gym is its ice
+        Assert.IsType<SootopolisIce>(BuiltMaps.Value["SootopolisCity_Gym_1F"].Puzzle);
+        Assert.Equal(TileBehavior.ThinIce, BuiltMaps.Value["SootopolisCity_Gym_1F"].BehaviourAt(8, 18));
+        Assert.Contains(BuiltMaps.Value["SootopolisCity_Gym_B1F"].Warps, w => w.TargetMap == "SootopolisCity_Gym_1F");
+        // Sky Pillar's floors are worn stone, not lawn
+        Assert.Equal(TerrainCover.Paving, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Pacifidlog", 0x234, MapImporter.Gba.GbaGame.Emerald));
+        Assert.True(File.Exists(Path.Combine(AppContext.BaseDirectory, "Data", "music", "hoenn", "rayquaza_appears.mml")));
+        Assert.False(MusicLibrary.Get("hoenn/rayquaza_appears")!.Loops);
+
+        // Sootopolis is flown to on its own map, from the middle of Route 126's cells
+        var spawn = SpawnLocations.In(RegionDatabase.Hoenn).Single(s => s.Area == "sootopolis_city");
+        Assert.Equal("SootopolisCity", spawn.Map);
+        Assert.False(BuiltMaps.Value["SootopolisCity"].IsSolid(spawn.X, spawn.Y));
+        Assert.Contains(RegionMap.Of(RegionDatabase.Hoenn)!.FlySpots, f => f.Spawn == spawn.Id);
+    }
+
+    [Fact]
+    public void RouteOneTwentysBridgeIsADeckOverItsPondAndStevenStandsOnIt()
+    {
+        // Plan 21 · H8, part c: the import gives water a bridge crosses the lowest level of its shores, so the deck
+        // stands over the whole pond (its west half took the level of the bridge's raised ends, and had no deck)
+        for (int x = 370; x <= 381; x++)
+        {
+            Assert.True(Overworld.DeckAt(x, 15) is { } deck && deck > Overworld.HeightAt(x, 15) + 1f, $"Route 120's bridge has no deck at {x},15");
+            Assert.Equal(Overworld.HeightAt(370, 14), Overworld.HeightAt(x, 14));
+        }
+        // Steven stands on the deck, where the player crossing the bridge speaks to him
+        var steven = Overworld.Everyone.Single(n => n.Key == "route120_steven");
+        Assert.Equal(Overworld.DeckAt(373, 15), steven.Level);
+        Assert.Same(steven, Overworld.NpcIn(373, 15, Overworld.DeckAt(373, 16)!.Value));
+        // Route 128's islet, where Archie, Maxie and Steven stand, is a sandbar among the deep water, not open sea
+        Assert.Equal(TileType.Sand, Overworld.GetGroundTile(677, 242));
+        Assert.Equal(TileBehavior.ShallowWater, Overworld.BehaviourAt(677, 242));
     }
 
     /// <summary>The weather and songs a map's zones hold by the story (Map.ApplyPresence does it in the game), without moving its people.</summary>

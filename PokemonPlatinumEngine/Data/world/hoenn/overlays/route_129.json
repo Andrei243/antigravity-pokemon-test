@@ -1,0 +1,18 @@
+{
+  // Route 129 (plan 21 · H8, part c): the open sea west of Route 128, toward Routes 130 and 131 and Pacifidlog Town.
+  // While the titans' weather lasts (FLAG_SYS_WEATHER_CTRL) the downpour and the drought take turns over it, as over the
+  // rest of the eastern sea. The sea floor under it is the Marine Cave's, left for the post-game (plan 21 · H12)
+  "area": "route_129",
+  "bgmTrack": "hoenn/route119",
+  "trees": "Round",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "people": {
+    "swimmer_m": { "name": "Chase", "trainer": { "dialogueBefore": "Triathlete Chase: I've swum all the way from Ever Grande. Still got enough left for you!", "dialogueAfter": "Triathlete Chase: Now I've got nothing left at all." } },
+    "swimmer_f": { "name": "Allison", "trainer": { "dialogueBefore": "Triathlete Allison: The open sea is my training track. Keep up if you can!", "dialogueAfter": "Triathlete Allison: You kept up, and then some." } },
+    "swimmer_f_2": { "name": "Tisha", "trainer": { "dialogueBefore": "Swimmer Tisha: My Chinchou lights the way when I swim at night. Shall I dazzle you?", "dialogueAfter": "Swimmer Tisha: I'm the one seeing spots now." } },
+    "swimmer_m_2": { "name": "Reed", "trainer": { "dialogueBefore": "Swimmer Reed: Out this far, you never know what's swimming under you. Like my Sharpedo!", "dialogueAfter": "Swimmer Reed: Better swim back to shore, I think." } },
+    "swimmer_m_3": { "name": "Clarence", "trainer": { "dialogueBefore": "Swimmer Clarence: I race my Sharpedo across this route every morning. It always wins.", "dialogueAfter": "Swimmer Clarence: So do you, it seems." } }
+  }
+}

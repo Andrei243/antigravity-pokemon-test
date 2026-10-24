@@ -73,6 +73,12 @@ public static class GbaEvents
                 HiddenBy = o.Flag is "" or "0" ? null : o.Flag,
                 Script = o.Script is "" or "0x0" ? "" : o.Script
             };
+            // Someone the original stands on a bridge (Route 120's Steven: his elevation the bridge's ends', over the
+            // deck's tile) stands on its deck, where the player crossing it speaks to them (plan 21 · H8, part c)
+            if (matrix != null && matrix.Has(obj.X, obj.Z) && o.Elevation is not (0 or 1 or 15)
+                && !float.IsNaN(matrix.Deck[obj.Z * matrix.Width + obj.X])
+                && GbaWorld.LevelOf(o.Elevation) >= matrix.Deck[obj.Z * matrix.Width + obj.X] - 0.01f)
+                obj.Y = Math.Max(1, (int)MathF.Round(matrix.Deck[obj.Z * matrix.Width + obj.X]));
             // FireRed's boulders keep a flag in the trainer's field: only a trainer's type makes a trainer
             if (o.TrainerType.StartsWith("TRAINER_TYPE_", StringComparison.Ordinal) && o.TrainerType != "TRAINER_TYPE_NONE")
             {
@@ -197,13 +203,16 @@ public static class GbaEvents
         var spawns = new List<RegionSpawn>();
         foreach (var heal in tables.HealLocations)
         {
-            var placed = world.Matrices.SelectMany(m => m.Maps).FirstOrDefault(p => p.Map.Id == heal.Map);
-            if (placed == null) continue;
+            var matrix = world.Matrices.FirstOrDefault(m => m.Maps.Any(p => p.Map.Id == heal.Map));
+            var placed = matrix?.Maps.First(p => p.Map.Id == heal.Map);
+            if (matrix == null || placed == null) continue;
             var room = world.Source.ById.GetValueOrDefault(heal.RespawnMap);
             spawns.Add(new RegionSpawn
             {
                 Id = spawns.Count + 1, Area = placed.Map.Key, X = placed.X + heal.X, Y = placed.Y + heal.Y,
-                Room = room != null ? mapNameOf(room) : ""
+                Room = room != null ? mapNameOf(room) : "",
+                // A town on a map of its own (Emerald's Sootopolis City, plan 21 · H8, part c) names it
+                Map = matrix.Id == 0 ? null : mapNameOf(placed.Map)
             });
         }
         return spawns;

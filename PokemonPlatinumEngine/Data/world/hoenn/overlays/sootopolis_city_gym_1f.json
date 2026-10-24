@@ -1,0 +1,17 @@
+{
+  // Sootopolis City's Gym (plan 21 · H8, part c): Juan's hall of ice. Three fields of thin ice lie below three flights of
+  // stairs glazed over with ice; every tile of a field crossed once clears the flight above it, and a tile stepped on
+  // twice gives way and drops the player into the basement (world.json's puzzle, SootopolisIce). Juan battles for the
+  // Rain Badge at the top (sootopolis_city_gym_1f.txt); his ten trainers wait in the basement
+  "area": "sootopolis_city_gym_1f",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Water",
+  "people": {
+    "juan": { "name": "Juan", "npcType": "juan", "script": "Juan", "still": true },
+    "man_2": { "name": "Gym Guide", "script": "GymGuide", "still": true }
+  },
+  "signs": {
+    "SootopolisCity_Gym_1F_EventScript_LeftGymStatue": "Sootopolis City Pokémon Gym\nLeader: Juan",
+    "SootopolisCity_Gym_1F_EventScript_RightGymStatue": "Sootopolis City Pokémon Gym\nLeader: Juan"
+  }
+}

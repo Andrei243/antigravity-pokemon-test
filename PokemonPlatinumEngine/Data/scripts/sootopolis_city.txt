@@ -12,10 +12,22 @@
 # (FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN); afterwards the old man steps aside for a player who comes to him from the
 # south, and Steven waits beside the cave's mouth. A save from before this stretch is given its hiding on its first
 # arrival (common.HoennChapterTen).
+#
+# Part c: once Wallace is back from Sky Pillar (state 4) he waits at the cave's mouth between the old man and Steven.
+# Once Rayquaza has woken (VAR_SKY_PILLAR_STATE 1, state 5) the first arrival plays its coming (Emerald's
+# StartRayquazaScene): the camera to the harbour, the titans gone, Rayquaza over the water to its own song, its roars,
+# and the weather clearing (FLAG_SYS_WEATHER_CTRL, FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN and FLAG_LEGENDARIES_IN_SOOTOPOLIS
+# cleared, VAR_SKY_PILLAR_STATE 2); Emerald lays rough water under it and warps the player out of the white, which is a
+# fade here. From then on (state 5) Steven, Wallace, Archie and Maxie stand by the Gym (Emerald's
+# SetOutsideGymObjPos); spoken to, Archie and Maxie each have their say, and once both have they leave
+# (FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE), which opens the Gym and the houses again. Wallace then gives HM07, Waterfall,
+# and steps aside from the Gym's door (VAR_SOOTOPOLIS_WALLACE_STATE). Juan's Badge sets state 6
+# (sootopolis_city_gym_1f.txt).
 
 
 script OnEnter
   if not flag FLAG_HOENN_CHAPTER_TEN call HoennChapterTen
+  if not flag FLAG_HOENN_CHAPTER_ELEVEN call HoennChapterEleven
   setflag FLAG_VISITED_SOOTOPOLIS_CITY
   if var VAR_SOOTOPOLIS_CITY_STATE == 0 end
   if var VAR_SOOTOPOLIS_CITY_STATE >= 6 end
@@ -25,7 +37,52 @@ script OnEnter
   place sootopolis_ninja_boy 48 41 left
   place sootopolis_woman_1 45 43 left
   if flag FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN call StevenByTheCave
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 call OutsideGym
   if var VAR_SOOTOPOLIS_CITY_STATE == 1 goto Clash
+  if var VAR_SKY_PILLAR_STATE == 1 goto Rayquaza
+  end
+
+# Rayquaza comes down over the harbour, the first time the city is come to after its waking on Sky Pillar
+label Rayquaza
+  scene "Rayquaza comes down over Sootopolis"
+  wait 1
+  camera pan 31 43 2.5
+  wait 0.5
+  fade out
+  hide sootopolis_groudon
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON
+  hide sootopolis_kyogre
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE
+  clearflag FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
+  show sootopolis_rayquaza
+  music "hoenn/rayquaza_appears"
+  fade in
+  sound "thunder"
+  wait 0.6
+  cry "Rayquaza"
+  camera shake 0.8
+  wait 0.8
+  cry "Rayquaza"
+  camera shake 1
+  wait 1.2
+  clearflag FLAG_SYS_WEATHER_CTRL
+  clearflag FLAG_HOENN_SOOTOPOLIS_CLASH_SEEN
+  clearflag FLAG_LEGENDARIES_IN_SOOTOPOLIS
+  wait 1.5
+  speaker none
+  text "Rayquaza's roar rang round the crater. The storm broke apart, and the titans were gone."
+  cry "Rayquaza"
+  sound "warp"
+  hide sootopolis_rayquaza
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA
+  text "Rayquaza flew off into the clear sky..."
+  setvar VAR_SKY_PILLAR_STATE 2
+  camera release 2
+  fade out
+  call OutsideGym
+  music "hoenn/sootopolis"
+  fade in
+  endscene
   end
 
 # The titans' clash, the first time the city is come to after Kyogre has woken
@@ -60,8 +117,37 @@ label Clash
 # Steven waits beside the cave's mouth once he has brought the player there, until Wallace has gone (Emerald's
 # SetEnterCaveOfOriginObjPos)
 script StevenByTheCave
-  if var VAR_SOOTOPOLIS_CITY_STATE > 3 return
+  if var VAR_SOOTOPOLIS_CITY_STATE > 4 return
   place sootopolis_steven 32 18 left
+  # Wallace back from Sky Pillar, between the two (Emerald's SetExitCaveOfOriginObjPos)
+  if var VAR_SOOTOPOLIS_CITY_STATE != 4 return
+  place sootopolis_expert 30 18 down
+  place sootopolis_wallace 31 18 down
+  return
+
+
+# Once Rayquaza has come: the old man back before the cave, Steven, Archie and Maxie by the Gym, and Wallace before its
+# door, or where he stepped aside to (Emerald's SetOutsideGymObjPos, VAR_SOOTOPOLIS_WALLACE_STATE)
+script OutsideGym
+  place sootopolis_expert 31 18 down
+  place sootopolis_steven 29 33 down
+  place sootopolis_maxie 33 35 left
+  place sootopolis_archie 34 35 left
+  if var VAR_SOOTOPOLIS_WALLACE_STATE == 0 place sootopolis_wallace 31 33 down
+  if var VAR_SOOTOPOLIS_WALLACE_STATE == 1 place sootopolis_wallace 32 33 down
+  if var VAR_SOOTOPOLIS_WALLACE_STATE == 2 place sootopolis_wallace 30 33 down
+  return
+
+
+# Archie and Maxie, both spoken to once Rayquaza has come, go their ways (Emerald's MaxieArchieLeave)
+script LeadersLeave
+  fade out
+  hide sootopolis_maxie
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE
+  hide sootopolis_archie
+  setflag FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE
+  setflag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE
+  fade in
   return
 
 
@@ -85,7 +171,12 @@ label Guided
   face self right
   end
 label Waiting
+  if var VAR_SOOTOPOLIS_CITY_STATE >= 5 goto Calm
   say "Two Pokémon of legend, raging in our harbour... Only someone strong enough to stand before them may enter the cave now."
+  end
+label Calm
+  say "Rayquaza came down from the sky and the two of them went quiet. The spirits of the cave may rest again."
+  say "Still, nobody may go in. I will keep watch here, as I always have."
   end
 
 
@@ -93,9 +184,19 @@ label Waiting
 script Steven
   face self player
   speaker "Steven"
+  if flag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE goto Left
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calmed
   if not flag FLAG_STEVEN_GUIDES_TO_CAVE_OF_ORIGIN goto Guide
   if var VAR_SOOTOPOLIS_CITY_STATE == 2 goto HelpWallace
   say "Sky Pillar... I've never been there. Where could it be, I wonder?"
+  end
+label Calmed
+  say "So that was Rayquaza... It calmed the two of them just by appearing. I can hardly believe what I saw."
+  say "{player}, you did it. You woke it. Hoenn owes you a great deal."
+  end
+label Left
+  say "The leaders of the two teams have gone. I hope they've learned something from all this."
+  say "Wallace's mentor Juan leads the Gym here. Go and show him what you can do!"
   end
 label HelpWallace
   say "I think you have just what it takes to help him..."
@@ -132,24 +233,72 @@ script Titan
 
 script Maxie
   speaker "Maxie"
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Rayquaza
   say "G-Groudon... Please, stop! I understand your power now!"
   say "If you go on like this, it won't be only Sootopolis. All of Hoenn will be ruined!"
+  end
+label Rayquaza
+  face self player
+  say "All our schemes... and in the end, a single Pokémon set everything right. What fools we were."
+  say "The land Team Magma wanted... Perhaps it was best left as it was."
+  setflag FLAG_MET_MAXIE_SOOTOPOLIS
+  if flag FLAG_MET_ARCHIE_SOOTOPOLIS call LeadersLeave
   end
 
 
 script Archie
   speaker "Archie"
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Rayquaza
   say "Kyogre! What's wrong? Look here, it's the Red Orb! Calm down! Kyogre!"
   say "......"
   say "It's no use. It doesn't hear me at all!"
+  end
+label Rayquaza
+  face self player
+  say "What we tried to do meant nothing to the Pokémon themselves. Kyogre never wanted any of it."
+  say "I think I'll go back to the sea, and listen to it for a while."
+  setflag FLAG_MET_ARCHIE_SOOTOPOLIS
+  if flag FLAG_MET_MAXIE_SOOTOPOLIS call LeadersLeave
   end
 
 
 script Wallace
   face self player
   speaker "Wallace"
+  if var VAR_SOOTOPOLIS_CITY_STATE == 4 goto SkyPillar
+  if flag FLAG_RECEIVED_HM_WATERFALL goto Gym
+  if flag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE goto Waterfall
   say "{player}... The leaders of Team Magma and Team Aqua didn't mean any harm, I think."
   say "It wouldn't hurt to hear them out."
+  end
+label SkyPillar
+  say "{player}, haven't you climbed Sky Pillar yet? Rayquaza is our only hope. Please, hurry!"
+  end
+label Waterfall
+  scene "Wallace gives Waterfall"
+  say "{player}, thank you. Thanks to you and Rayquaza, Sootopolis and all of Hoenn are safe."
+  say "Please, take this as a token of my gratitude."
+  give "HM07"
+  setflag FLAG_RECEIVED_HM_WATERFALL
+  say "That holds Waterfall. With the Rain Badge from this city's Gym, your Pokémon can climb waterfalls with it."
+  say "The Gym is open again. My mentor Juan is waiting inside. Show him what you showed me!"
+  # Out of the way of the Gym's door: aside to the west for a player who spoke to him from the east (he stands before
+  # it while VAR_SOOTOPOLIS_WALLACE_STATE is 0, as the city's arrival puts him)
+  place self 31 33 down
+  if var PLAYER_X == 32 goto West
+  walk self right 1
+  face self down
+  setvar VAR_SOOTOPOLIS_WALLACE_STATE 1
+  endscene
+  end
+label West
+  walk self left 1
+  face self down
+  setvar VAR_SOOTOPOLIS_WALLACE_STATE 2
+  endscene
+  end
+label Gym
+  say "Juan is the one who taught me everything. Even now, I find myself dazzled by his battles."
   end
 
 
@@ -160,7 +309,12 @@ script Kiri
   if var VAR_SOOTOPOLIS_CITY_STATE < 2 goto Berry
   if var VAR_SOOTOPOLIS_CITY_STATE >= 6 goto Berry
   face self player
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   say "Big, big Pokémon are fighting! I'm scared..."
+  face self up
+  end
+label Calm
+  say "A green Pokémon came down from the sky and the big ones went away! Was it a dream?"
   face self up
   end
 label Berry
@@ -194,15 +348,22 @@ label Doesnt
 script Woman2
   face self player
   speaker "Woman"
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   say "The sky was clear this morning... then black clouds rolled in, rain came down in sheets, and the thunder started!"
   say "Then it's scorching hot, and then it pours again. Is it all because of those Pokémon?"
   face self left
+  end
+label Calm
+  say "The clouds just... parted. Look, the sky over the crater is blue again!"
   end
 
 
 script Woman1
   speaker "Woman"
+  if var VAR_SOOTOPOLIS_CITY_STATE >= 6 goto Normal
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   if var VAR_SOOTOPOLIS_CITY_STATE >= 2 goto Clash
+label Normal
   say "Sootopolis grew up inside the crater of a volcano. Look up, and you see the crater's rim all round."
   say "All you see of the sky is a circle. That's why the sky over Sootopolis is the loveliest of all."
   end
@@ -210,30 +371,45 @@ label Clash
   say "When two Pokémon that huge fight that fiercely, there's nothing any of us can do."
   face self left
   end
+label Calm
+  say "That green Pokémon came down out of the circle of sky, and the fighting simply stopped."
+  end
 
 
 script NinjaBoy
   face self player
   speaker "Boy"
+  if var VAR_SOOTOPOLIS_CITY_STATE >= 6 goto Normal
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   if var VAR_SOOTOPOLIS_CITY_STATE >= 2 goto Clash
+label Normal
   say "I've never been out of this city. I wonder what the world's like on the other side of the round sky?"
   end
 label Clash
   say "Whoa, this is wild!"
   face self left
   end
+label Calm
+  say "Did you see it? It flew right down over the water! That was the coolest thing ever!"
+  end
 
 
 script Boy1
   face self player
   speaker "Boy"
+  if var VAR_SOOTOPOLIS_CITY_STATE >= 6 goto Normal
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   if var VAR_SOOTOPOLIS_CITY_STATE >= 2 goto Clash
+label Normal
   say "Diving in the sea, climbing up and down stairs all day... Live here and you can't help getting fit."
   end
 label Clash
   say "Those giant Pokémon just appeared in the middle of the city! I've never seen them before!"
   say "Why are they smashing into each other like that? Why can't they be friends?"
   face self left
+  end
+label Calm
+  say "They stopped fighting! Maybe that green one told them to be friends."
   end
 
 
@@ -246,34 +422,51 @@ script Man
 
 script Maniac
   face self player
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   speaker "Man"
   say "Pokémon of legend, right before my eyes! I never thought I'd see them for myself!"
   face self right
+  end
+label Calm
+  say "Three Pokémon of legend in one day! I'll be telling people about this for the rest of my life!"
   end
 
 
 script Girl
   face self player
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   speaker "Girl"
   say "If they keep this up, Sootopolis will be smashed to pieces!"
   face self right
+  end
+label Calm
+  say "The city's still standing! I was so sure it was all over."
   end
 
 
 script BlackBelt
   speaker "Black Belt"
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   say "Go, red one! Go, blue one! Hit him harder!"
   face self player
   say "...Hey, do you know those Pokémon's names?"
   face self right
   end
+label Calm
+  face self player
+  say "Over already? Just as it was getting good! ...Not that I'm complaining, mind."
+  end
 
 
 script Boy2
   face self player
+  if var VAR_SOOTOPOLIS_CITY_STATE == 5 goto Calm
   speaker "Boy"
   say "I don't think those two Pokémon are angry, somehow. I think... they just can't hold their own power back."
   face self down
+  end
+label Calm
+  say "The green one came and they let their power go. I think they were glad someone stopped them."
   end
 
 
@@ -285,8 +478,9 @@ script ShutDoor
   end
 
 
-# The Gym's door, shut until Juan's Gym opens (plan 21 · H8, part c)
+# The Gym's door, shut until Archie and Maxie have left (plan 21 · H8, part c; Emerald's LockGymDoor)
 script GymDoor
+  if flag FLAG_SOOTOPOLIS_ARCHIE_MAXIE_LEAVE end
   speaker none
   text "The door is shut tight."
   end

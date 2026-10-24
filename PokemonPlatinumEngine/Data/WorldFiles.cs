@@ -906,6 +906,12 @@ public sealed class WorldOverlayFile
     /// </summary>
     public OverlaySpot? DiveTo { get; set; }
     public OverlaySpot? EmergeTo { get; set; }
+
+    /// <summary>
+    /// The map a cracked floor of the area drops whoever walks onto it to, onto the same tile (plan 21 · H8, part c; Emerald's
+    /// <c>setholewarp</c>: Sky Pillar's fourth floor down to its third). Left out, a cracked floor is walked like any other.
+    /// </summary>
+    public string? HoleTo { get; set; }
 }
 
 /// <summary>A tile of an imported area (its key, and a tile of its matrix), facing a way (<see cref="WorldOverlayFile.DiveTo"/>).</summary>
