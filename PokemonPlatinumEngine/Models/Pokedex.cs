@@ -13,7 +13,15 @@ public readonly record struct PokedexEntry(int Number, PokemonSpecies Species);
 /// form's Showdown name or the species') and its gender. The original's Pokédex keeps which genders, which of Unown's
 /// letters, seas, cloaks and formes have been seen (<c>Pokedex_Encounter</c>); this one keeps every form of every species.
 /// </summary>
-public readonly record struct SeenLook(string Name, Gender Gender);
+public readonly record struct SeenLook(string Name, Gender Gender)
+{
+    /// <summary>
+    /// The look it is drawn in (plan 09 · L8): a female of a species with a female look of her own is drawn as hers
+    /// (<c>Pikachu+f</c>), a shiny look keeps its colours; anyone else as <see cref="Name"/>. What is read of the data
+    /// (its name, its entries) still goes by <see cref="Name"/>.
+    /// </summary>
+    public string Look => PokemonLook.Of(Name, Gender == Gender.Female, PokemonLook.IsShiny(Name));
+}
 
 /// <summary>
 /// What the player has seen and caught, by national number, and what the Pokédex itself has become: the National

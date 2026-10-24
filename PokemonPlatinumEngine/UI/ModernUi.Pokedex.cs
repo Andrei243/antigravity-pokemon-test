@@ -352,7 +352,7 @@ internal static partial class ModernUi
     /// <summary>
     /// FORMS (plan 08 · P19): the looks seen of the species as cards, Unown's marks in the order met, and the look under
     /// the cursor large, from the front and from behind, with its name, gender and written entry. Nothing is shown of a
-    /// look not seen, and a female shows the species' sculpt until plan 09 · L8 gives her own.
+    /// look not seen, and a female whose species has a female look is drawn as hers (plan 09 · L8, <see cref="SeenLook.Look"/>).
     /// </summary>
     private static void DexForms(Rectangle detail, PokedexScreen dex, PokedexEntry entry)
     {
@@ -367,8 +367,9 @@ internal static partial class ModernUi
         var back = new Vector2(left + 425, detail.Y + 250);
         BallDisc(front, 130);
         BallDisc(back, 130);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Name, isBack: false), front, 2, Hop(inCards) * 2);
-        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Name, isBack: true), back, 2, Hop(inCards) * 2);
+        // A female with a look of her own is drawn as hers (plan 09 · L8)
+        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Look, isBack: false), front, 2, Hop(inCards) * 2);
+        PixelArt(PixelArtGenerator.GetPokemonSprite(chosen.Look, isBack: true), back, 2, Hop(inCards) * 2);
         UiFonts.DrawCentered(Text.Of("pokedex.forms.front"), front.X, front.Y + 160, 22, Muted, UiWeight.Black);
         UiFonts.DrawCentered(Text.Of("pokedex.forms.back"), back.X, back.Y + 160, 22, Muted, UiWeight.Black);
 
@@ -414,7 +415,7 @@ internal static partial class ModernUi
                 var r = new Rectangle(left + col * pitchX, top + row * pitchY, cardW, cardH);
                 Card(r, 20, selected && inCards);
                 var centre = new Vector2(r.X + r.Width / 2f, r.Y + r.Height / 2f + 4);
-                PixelArt(PixelArtGenerator.GetPokemonIcon(look.Name), centre, 2, selected && inCards ? Hop(true) * 2 : 0, selected || !inCards ? Color.White : new Color(255, 255, 255, 215));
+                PixelArt(PixelArtGenerator.GetPokemonIcon(look.Look), centre, 2, selected && inCards ? Hop(true) * 2 : 0, selected || !inCards ? Color.White : new Color(255, 255, 255, 215));
                 if (look.Gender != Gender.Genderless) UiIcons.GenderMark(new Vector2(r.X + r.Width - 20, r.Y + 20), 22, look.Gender);
                 if (PokemonLook.IsShiny(look.Name)) UiIcons.ShinyStar(new Vector2(r.X + 20, r.Y + 20), 24);
             }
