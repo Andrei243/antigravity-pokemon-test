@@ -189,6 +189,7 @@ if (mode == "pokegear") h.PokegearMode();
 if (mode == "skips") h.SkipsMode();
 if (mode == "contest") h.BugContestMode();
 if (mode == "athlon") h.AthlonMode();
+if (mode == "hoenncontest") h.HoennContestMode();
 
 h.Close();
 Raylib.CloseWindow();

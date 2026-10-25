@@ -123,6 +123,10 @@ public sealed partial class GameFlow
     /// <summary>The Poffin Case's Poffins (saved).</summary>
     public PoffinCase PoffinCase { get; } = new();
 
+    /// <summary>The Pokéblock Case (plan 21 · H11; saved) and Hoenn's contests entered, won and hung in the museum (saved).</summary>
+    public PokeblockCase PokeblockCase { get; } = new();
+    public Models.Contest.HoennContestRecords HoennContests { get; set; } = new();
+
     /// <summary>The coins, Pal Park's six, the Villa and the game records kept beside the story (saved).</summary>
     public Pastimes Pastimes { get; } = new();
 

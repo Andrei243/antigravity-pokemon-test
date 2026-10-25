@@ -418,6 +418,12 @@ public static class GbaCover
                 (0x288, 0x2A7, TerrainCover.Flowers),
                 (0x22B, 0x22F, TerrainCover.Grass),
             },
+            // Plan 21 · H11: the Contest Lobby's floor, plain and in the shadow of its wall (METATILE_Contest_WallShadow,
+            // whose label would make it a wall standing across the lobby)
+            ["gTileset_Contest"] = new (int, int, TerrainCover)[]
+            {
+                (0x221, 0x221, TerrainCover.Paving), (0x260, 0x261, TerrainCover.Paving),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

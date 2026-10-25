@@ -101,7 +101,11 @@ public enum GameState
     /// <summary>The Pokéathlon's courses, team and events, a script's <c>athlon open</c> waiting on it (plan 15 · E6).</summary>
     Athlon,
     /// <summary>The jukebox: every song, sound, cry and bed to play, from the title or the options (plan 12 · Q15).</summary>
-    Jukebox
+    Jukebox,
+    /// <summary>A Hoenn contest's appeals, a script's <c>appeals enter</c> waiting on it; the Pokéblock Case; the Berry Blender (plan 21 · H11).</summary>
+    Appeals,
+    PokeblockCase,
+    Blender
 }
 
 public partial class GameEngine
@@ -376,6 +380,8 @@ public partial class GameEngine
         flow.Pastimes.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
+        flow.PokeblockCase.Clear();
+        flow.HoennContests = new Models.Contest.HoennContestRecords();
         flow.ContestOutcome = null;
         flow.Radar.Clear();
         flow.RegisteredItem = null;
@@ -584,6 +590,8 @@ public partial class GameEngine
         flow.Pastimes.Load(save.Pastimes);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
+        flow.PokeblockCase.Restore(save.Pokeblocks);
+        flow.HoennContests = save.HoennContests ?? new Models.Contest.HoennContestRecords();
         flow.ContestOutcome = null;
         flow.Radar.Clear();
         Roamers.Scatter(flow.Encounters, fieldRandom);
@@ -759,6 +767,8 @@ public partial class GameEngine
             Pastimes = flow.Pastimes.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
+            Pokeblocks = flow.PokeblockCase.Count > 0 ? flow.PokeblockCase.ToSaved() : null,
+            HoennContests = flow.HoennContests.IsEmpty ? null : flow.HoennContests,
             DayCare = DayCareSave.From(flow.DayCare),
             WorldVersion = SaveData.CurrentWorld,
             SaveVersion = SaveData.CurrentSave,
@@ -1142,6 +1152,7 @@ public partial class GameEngine
                 flow.RegisteredItem = flow.BagScreen.Registered;
                 if (flow.BagScreen.TakeEvolution() is { } fromBag) PlayEvolutions(new[] { fromBag }, GameState.BagMenu);
                 else if (!flow.BagScreen.IsActive && choosingBerryToCook && flow.BagScreen.TakePick(out var toCook)) BerryChosenToCook(toCook);
+                else if (!flow.BagScreen.IsActive && choosingBerryToBlend && flow.BagScreen.TakePick(out var toBlend)) BerryChosenToBlend(toBlend);
                 else if (!flow.BagScreen.IsActive && flow.BagScreen.TakePick(out var picked))
                 {
                     // A script that asked for an item hears which (plan 06 · R14a)
@@ -1156,6 +1167,7 @@ public partial class GameEngine
                     if (flow.BagScreen.TakeFieldUse() is { } usedHere)
                     {
                         if (usedHere.FieldUse == "PoffinCase") OpenPoffinCase(fromBag: true);
+                        else if (usedHere.FieldUse == "PokeblockCase") OpenPokeblockCase(fromBag: true);
                         // The Town Map is looked at and put back in the bag (plan 01 · M12)
                         else if (usedHere.FieldUse == "TownMap") OpenTownMap(TownMapMode.Item, fromBag: true);
                         // The Seal Case and the Fashion Case are looked into, and close back onto the bag (plan 06 · R17b)
@@ -1329,6 +1341,15 @@ public partial class GameEngine
                 break;
             case GameState.Jukebox:
                 UpdateJukebox(dt);
+                break;
+            case GameState.Appeals:
+                UpdateAppeals(dt);
+                break;
+            case GameState.PokeblockCase:
+                UpdatePokeblockCase(dt);
+                break;
+            case GameState.Blender:
+                UpdateBlender(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -2716,6 +2737,15 @@ public partial class GameEngine
             case GameState.Jukebox:
                 flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
+            case GameState.Appeals:
+                flow.AppealScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.PokeblockCase:
+                flow.PokeblockCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Blender:
+                flow.BlenderScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);
                 break;
@@ -2819,6 +2849,7 @@ public partial class GameEngine
                 else if (scene == GameState.BagMenu) flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
                 else if (scene == GameState.ReplayList) flow.ReplayListScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.SuperContest) flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);
+                else if (scene == GameState.Appeals) flow.AppealScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.HallOfFameCeremony) flow.Ceremony.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Credits) flow.Credits.Draw(VirtualWidth, VirtualHeight);
                 break;

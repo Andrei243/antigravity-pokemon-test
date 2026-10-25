@@ -661,6 +661,8 @@ public static class RegionDatabase
                 "SecretBase_RedCave2", "SecretBase_BrownCave2", "SecretBase_BlueCave2", "SecretBase_YellowCave2", "SecretBase_Tree2", "SecretBase_Shrub2",
                 "SecretBase_RedCave3", "SecretBase_BrownCave3", "SecretBase_BlueCave3", "SecretBase_YellowCave3", "SecretBase_Tree3", "SecretBase_Shrub3",
                 "SecretBase_RedCave4", "SecretBase_BrownCave4", "SecretBase_BlueCave4", "SecretBase_YellowCave4", "SecretBase_Tree4", "SecretBase_Shrub4",
+                // Plan 21 · H11: Lilycove City's Contest Lobby and Contest Hall
+                "LilycoveCity_ContestLobby", "LilycoveCity_ContestHall",
             }
         },
         new()

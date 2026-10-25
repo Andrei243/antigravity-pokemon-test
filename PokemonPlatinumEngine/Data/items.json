@@ -13968,5 +13968,19 @@
     "canUseInOverworld": false,
     "description": "A feather that shimmers in every colour. It was found at the top of an old tower long ago.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9300,
+    "name": "Pokéblock Case",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Holds Pokéblocks, the treats the Berry Blender makes of berries. Open it to feed one to a Pokémon.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "PokeblockCase"
   }
 ]

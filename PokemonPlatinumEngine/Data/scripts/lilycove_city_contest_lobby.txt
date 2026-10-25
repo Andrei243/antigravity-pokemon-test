@@ -1,0 +1,291 @@
+# Lilycove's Contest Lobby (plan 21 · H11). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/LilycoveCity_ContestLobby/scripts.inc, data/scripts/contest_hall.inc, berry_blender.inc): the
+# receptionist enters a Pokémon in a Hoenn contest (the appeals are the game's own screen, `appeals enter`), gives the
+# Pokéblock Case once, and the Berry Blender stands in the east of the room, three drums for two, three and four at a
+# time (`pokeblock blend`: the bag chooses the player's berry, the others' are drawn). The Blend Master visits on
+# Saturdays with a crowd to watch. Contests with friends (the link receptionist's counter) are plan 07's.
+
+
+# Behind the fade as the player comes in: the Blend Master and his crowd are there on Saturdays only, and the painter,
+# her friend at the other door and the reporter are about only for a scene of their own
+script OnTransition
+  if weekday saturday goto Saturday
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER
+  clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_REPLACEMENT
+  goto Others
+label Saturday
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_REPLACEMENT
+  clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER
+label Others
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_2
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
+  end
+
+
+# The receptionist (Emerald's LilycoveCity_ContestLobby_EventScript_ContestReceptionist): the Pokéblock Case the first
+# time, then the question. An explanation ends the talk where the original goes back to its menu: the tests play
+# every way through a script, and menus that lead back to menus are hundreds of ways.
+script ContestReceptionist
+  face self player
+  speaker "Receptionist"
+  if flag FLAG_RECEIVED_POKEBLOCK_CASE goto Welcome
+  say "Welcome to the Contest Lobby! ...Oh, you don't have a Pokéblock Case? Every trainer who comes here should. Please, take this one."
+  give "Pokéblock Case"
+  setflag FLAG_RECEIVED_POKEBLOCK_CASE
+  say "It holds the Pokéblocks you blend at the Berry Blender, over there. Your Pokémon will love them!"
+  goto Ask
+label Welcome
+  say "Welcome to the Contest Lobby! This is the counter for the contests."
+label Ask
+  choose "Would you like to enter a Pokémon in a contest?" "ENTER" "INFO" "EXIT"
+  if result == 0 goto Rank
+  if result == 1 goto Info
+label Bye
+  say "We look forward to seeing you and your Pokémon on our stage!"
+  end
+label Info
+  choose "What would you like to know?" "THE CONTESTS" "THE QUALITIES" "THE RANKS" "CANCEL"
+  if result == 0 goto Whole
+  if result == 1 goto Kinds
+  if result == 2 goto Ranks
+  goto Bye
+label Whole
+  say "Four Pokémon take the stage. First their condition is judged, and the best goes first. Then there are five rounds of appeals, one move each."
+  say "A move earns hearts, startles those who went before, bends the order or stirs the crowd. The hearts count twice over, on top of the condition. Most points wins!"
+  goto Told
+label Kinds
+  say "There are five contests, for the five qualities a Pokémon can show: Cool, Beauty, Cute, Smart and Tough. Each move belongs to one of them."
+  say "A Pokémon's condition is raised with Pokéblocks, which are blended from berries. The Berry Blender is over there."
+  goto Told
+label Ranks
+  say "There are four ranks: Normal, Super, Hyper and Master. Any Pokémon may enter the Normal Rank."
+  say "To go on to a higher rank, a Pokémon must have won the rank under it in the same contest. The winner of a rank wears its ribbon."
+  goto Told
+label Told
+  say "Come and see me again whenever you'd like to hear more, or to enter!"
+  end
+label Rank
+  choose "Which rank will you enter?" "NORMAL RANK" "SUPER RANK" "HYPER RANK" "MASTER RANK" "EXIT"
+  if result == 4 goto Bye
+  if result == 0 appeals rank normal
+  if result == 1 appeals rank super
+  if result == 2 appeals rank hyper
+  if result == 3 appeals rank master
+  call ChooseQuality
+  if result == 5 goto Bye
+label Choose
+  say "Which Pokémon will you enter? Please choose one."
+  choosepokemon
+  if result == 255 goto Cancel
+  appeals check
+  if result == 0 goto Accepted
+  if result == 4 goto AlreadyWon
+  call NotThatOne
+label Cancel
+  ask "Will you cancel your entry?"
+  if yes goto Bye
+  goto Choose
+label AlreadyWon
+  ask "{contestant} has already won this rank. Enter it anyway?"
+  if no goto Choose
+label Accepted
+  say "{contestant} has been entered! You are entry number 4."
+  say "The contest is about to begin. Right this way, please!"
+  appeals enter
+  call AfterContest
+  say "Thank you for taking part. We hope to see you again soon!"
+  end
+
+
+# Which of the five contests: RESULT 5 backs out
+script ChooseQuality
+  choose "Which contest will you enter?" "COOL" "BEAUTY" "CUTE" "SMART" "TOUGH" "EXIT"
+  if result == 0 appeals category cool
+  if result == 1 appeals category beauty
+  if result == 2 appeals category cute
+  if result == 3 appeals category smart
+  if result == 4 appeals category tough
+  return
+
+
+# Why the Pokémon chosen may not enter
+script NotThatOne
+  if result == 2 say "An Egg can't go on stage, and neither can a Pokémon that has fainted."
+  if result == 3 say "That Pokémon hasn't won the rank under this one in this contest yet."
+  return
+
+
+# What a contest leaves, once the screen has put the player back at the counter (Emerald's GivePrizeIfWinner): the ribbon
+# was the screen's to name; a rank won again at the Master Rank brings a Luxury Ball, and a Master Rank win of 800
+# points or more brings the painter, who takes the picture to the museum and gives a ribbon of her own, once
+script AfterContest
+  if result != 0 return
+  appeals ribbon
+  if result == 0 goto NoRibbon
+  say "Congratulations on your win! The hall confers the {ribbon} on {contestant} as your prize."
+  fanfare item
+  text "{contestant} received the {ribbon}!"
+label NoRibbon
+  appeals prize
+  if result == 0 goto Painter
+  say "{contestant} has won this rank before, so please take this prize from the Contest Hall."
+  give "Luxury Ball"
+label Painter
+  appeals painter
+  if result == 0 return
+  call Painting
+  return
+
+
+# The painter, who was in the lobby sketching the whole time (Emerald's LilycoveCity_ContestLobby_EventScript_ContestArtist)
+script Painting
+  clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1
+  show contest_lobby_artist
+  speaker "Artist"
+  say "Your Pokémon spurred me to paint! I couldn't keep my brush still. Here, see what I have made of {contestant}!"
+  ask "Shall I take the painting to the Lilycove Museum, where everyone can see it?"
+  if yes goto Hang
+  say "Oh... then you take it home. But I do wish it would hang in the museum, where it belongs."
+  goto Gone
+label Hang
+  say "Wonderful! I'll hang it there myself. Your Pokémon will be famous!"
+  appeals hang
+  if result == 1 say "And as a memento of the painting, please take this ribbon for your Pokémon!"
+  if result == 1 fanfare item
+  if result == 1 text "{contestant} received the {ribbon}!"
+label Gone
+  hide contest_lobby_artist
+  setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1
+  return
+
+
+# The link receptionist's counter (plan 07's)
+script LinkReceptionist
+  face self player
+  speaker "Receptionist"
+  say "This is the counter for contests with friends. Contests with other players are not being held yet. Please try the counter next to me!"
+  end
+
+
+# ---- the Berry Blender: three drums, the leaders ask the question (Emerald's BerryBlender_EventScript_BerryBlender1 to 3)
+
+script BlenderOne
+  setvar VAR_CONTEST_BLENDER_OTHERS 1
+  speaker "Man"
+  ask "Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start!"
+  if no goto Declined
+  call BlendTogether
+  end
+label Declined
+  say "Ah, that's all right. Come back whenever you feel like blending."
+  end
+
+script BlenderTwo
+  setvar VAR_CONTEST_BLENDER_OTHERS 2
+  speaker "Man"
+  ask "We're about to make Pokéblocks. Would you like to blend with the two of us?"
+  if no goto Declined
+  call BlendTogether
+  end
+label Declined
+  say "Oh, what a pity. Another time, then!"
+  end
+
+script BlenderThree
+  setvar VAR_CONTEST_BLENDER_OTHERS 3
+  speaker "Woman"
+  ask "There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us?"
+  if no goto Declined
+  call BlendTogether
+  end
+label Declined
+  say "Oh dear. Do come back if you change your mind!"
+  end
+
+
+# The same questions at every drum: the case, then the blending itself (RESULT 1 when a Pokéblock came out)
+script BlendTogether
+  if item "Pokéblock Case" >= 1 goto HaveCase
+  say "You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one."
+  return
+label HaveCase
+  pokeblock full
+  if result == 1 goto Full
+  say "Excellent! Choose a berry to blend. The more your berry's flavour stands out from the others', the better the Pokéblock."
+  if var VAR_CONTEST_BLENDER_OTHERS == 2 goto Two
+  if var VAR_CONTEST_BLENDER_OTHERS == 3 goto Three
+  pokeblock blend 1
+  goto Made
+label Two
+  pokeblock blend 2
+  goto Made
+label Three
+  pokeblock blend 3
+label Made
+  if result == 1 say "That's a fine Pokéblock! It's in your Case. Your Pokémon will love it."
+  return
+label Full
+  say "Your Pokéblock Case is full. Feed some Pokéblocks to your Pokémon, or throw a few away, and come back."
+  return
+
+
+# The others at the drums and about the room
+script BlendMaster
+  setvar VAR_CONTEST_BLENDER_OTHERS 1
+  face self player
+  speaker "Old Man"
+  say "Well, well. A young blender! The secret of a great Pokéblock is rhythm. Press as the arm comes round, and never a beat early!"
+  ask "Shall we blend a Pokéblock together?"
+  if no goto Declined
+  call BlendTogether
+  end
+label Declined
+  say "Another time, then. The arm waits for no one, but I do."
+  end
+
+script BlenderCompanion
+  face self player
+  say "Let's get blending already! The leader of our drum is waiting for a partner."
+  end
+
+
+# The winners' wall: the last six winners, the newest first (Emerald's ContestWinner1 to 6 show the pictures of the
+# winners kept in the save)
+script Winner1
+  appeals winner 1
+  call WinnerOnTheWall
+  end
+
+script Winner2
+  appeals winner 2
+  call WinnerOnTheWall
+  end
+
+script Winner3
+  appeals winner 3
+  call WinnerOnTheWall
+  end
+
+script Winner4
+  appeals winner 4
+  call WinnerOnTheWall
+  end
+
+script Winner5
+  appeals winner 5
+  call WinnerOnTheWall
+  end
+
+script Winner6
+  appeals winner 6
+  call WinnerOnTheWall
+  end
+
+script WinnerOnTheWall
+  if result == 0 goto Empty
+  text "A portrait of {wallmon}, a winner here. Its trainer is {wall}."
+  return
+label Empty
+  text "An empty frame. No winner has been hung here yet."
+  return

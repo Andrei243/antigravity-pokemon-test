@@ -987,6 +987,33 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
             }
 
+            // Hoenn's contests (plan 21 · H11): the rank and quality set, the Pokémon checked, the appeals held, what a win gave
+            case "appeals":
+            {
+                string what = r.OneOf("rank", "category", "check", "enter", "ribbon", "prize", "painter", "hang", "records", "winner");
+                string value = what switch
+                {
+                    "rank" => r.OneOf("normal", "super", "hyper", "master"),
+                    "category" => r.OneOf("cool", "beauty", "cute", "smart", "tough"),
+                    "records" => r.OneOf("entered", "won"),
+                    "winner" => r.OneOf("1", "2", "3", "4", "5", "6"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Appeals, Line = line, Name = what, Other = value };
+            }
+            // The Berry Blender and the Pokéblock Case (plan 21 · H11)
+            case "pokeblock":
+            {
+                string what = r.OneOf("blend", "count", "full");
+                int others = 0;
+                if (what == "blend")
+                {
+                    others = r.Int("how many others sit at the blender, 1 to 3");
+                    if (others is < 1 or > 3) throw r.Error("the blender seats one to three others");
+                }
+                return new Instruction { Op = Op.Pokeblock, Line = line, Name = what, Number = others };
+            }
+
             // Amity Square's walk (plan 06 · R16c)
             case "amity":
                 return new Instruction

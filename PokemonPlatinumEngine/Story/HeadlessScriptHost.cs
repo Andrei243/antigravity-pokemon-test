@@ -226,6 +226,40 @@ public sealed class HeadlessScriptHost : IScriptHost
         return SecretBaseResults.GetValueOrDefault(what, 1);
     }
 
+    /// <summary>
+    /// Hoenn's contests and Pokéblocks (plan 21 · H11): the records and the case, empty unless a test or a script fills
+    /// them. No screen plays here: a contest comes out at the place <see cref="AppealPlacement"/> says (0 for a win) with
+    /// <see cref="AppealPoints"/> points, and what it leaves is left as the game leaves it
+    /// (<see cref="Models.Contest.HoennContestRules.Conclude(ContestStat, Models.Contest.AppealRank, Pokemon, int, int, int)"/>);
+    /// the blender is opened and put away at once, as if the player had backed out of the bag.
+    /// </summary>
+    public Models.Contest.HoennContestRecords HoennContests { get; } = new();
+    public PokeblockCase PokeblockCase { get; } = new();
+    public int AppealPlacement { get; set; }
+    public int AppealPoints { get; set; } = 600;
+    public Models.Contest.AppealOutcome? AppealOutcome { get; private set; }
+    public bool PokeblockKept { get; private set; }
+
+    public void HoldAppeals(int slot, ContestStat category, Models.Contest.AppealRank rank)
+    {
+        Shown("hold a Hoenn contest");
+        NeverInAHurry("a Hoenn contest");
+        Waits();
+        var pokemon = Party.Members[slot];
+        AppealOutcome = Models.Contest.HoennContestRules.Conclude(category, rank, pokemon, AppealPlacement, AppealPoints);
+        Models.Contest.HoennContestRules.Record(AppealOutcome, pokemon, PlayerName, HoennContests);
+        Log.Add($"appeals {rank} {category} {pokemon.Species.Name} {AppealPlacement}");
+    }
+
+    public void BlendPokeblocks(int others)
+    {
+        Shown("blend Pokéblocks");
+        NeverInAHurry("the Berry Blender");
+        Waits();
+        PokeblockKept = false;
+        Log.Add($"pokeblock blend {others}");
+    }
+
     public int UndergroundAct(string what, NPC? subject)
     {
         Log.Add($"underground {what}");

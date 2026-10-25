@@ -215,6 +215,12 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.SecretBaseSave? SecretBase { get; set; }
 
+    /// <summary>The Pokéblock Case's Pokéblocks in their places (plan 21 · H11). Null when it is empty, and in older saves.</summary>
+    public List<Pokeblock>? Pokeblocks { get; set; }
+
+    /// <summary>Hoenn's contests entered and won, and the paintings of its winners (plan 21 · H11). Null before the first, and in older saves.</summary>
+    public Models.Contest.HoennContestRecords? HoennContests { get; set; }
+
     /// <summary>The decoration PC of Hoenn's secret bases (plan 21 · H10): every decoration had. Null with none, and in older saves.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<Models.StoredDecoration>? Decorations { get; set; }

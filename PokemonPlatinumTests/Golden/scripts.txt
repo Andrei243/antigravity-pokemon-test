@@ -14311,6 +14311,482 @@ way -
 from Woman at 515,97 of Hoenn
 way -
   Woman> Somebody stole my Pokémon! I just know it was those Team Aqua people. What do I do?
+=== lilycove_city_contest_lobby.BlendMaster
+from Old Man at 26,5 of LilycoveCity_ContestLobby
+way 0
+  Old Man> Well, well. A young blender! The secret of a great Pokéblock is rhythm. Press as the arm comes round, and never a beat early!
+  Old Man> Shall we blend a Pokéblock together?
+  Old Man> You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one.
+  ? Shall we blend a Pokéblock together? = Yes
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 1
+way 1, from answer 1
+  Old Man> Another time, then. The arm waits for no one, but I do.
+  ? Shall we blend a Pokéblock together? = No
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 1
+=== lilycove_city_contest_lobby.BlenderCompanion
+from Boy at 23,8 of LilycoveCity_ContestLobby
+way -
+  Boy> Let's get blending already! The leader of our drum is waiting for a partner.
+=== lilycove_city_contest_lobby.BlenderOne
+from Man at 26,5 of LilycoveCity_ContestLobby
+from the tile read at 27,5 of LilycoveCity_ContestLobby
+way 0
+  Man> Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start!
+  Man> You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one.
+  ? Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start! = Yes
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 1
+way 1, from answer 1
+  Man> Ah, that's all right. Come back whenever you feel like blending.
+  ? Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start! = No
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 1
+=== lilycove_city_contest_lobby.BlenderThree
+from Woman at 22,9 of LilycoveCity_ContestLobby
+from the tile read at 23,9 of LilycoveCity_ContestLobby
+way 0
+  Woman> There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us?
+  Woman> You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one.
+  ? There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us? = Yes
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 3
+way 1, from answer 1
+  Woman> Oh dear. Do come back if you change your mind!
+  ? There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us? = No
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 3
+=== lilycove_city_contest_lobby.BlenderTwo
+from Man at 26,9 of LilycoveCity_ContestLobby
+from the tile read at 27,9 of LilycoveCity_ContestLobby
+way 0
+  Man> We're about to make Pokéblocks. Would you like to blend with the two of us?
+  Man> You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one.
+  ? We're about to make Pokéblocks. Would you like to blend with the two of us? = Yes
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 2
+way 1, from answer 1
+  Man> Oh, what a pity. Another time, then!
+  ? We're about to make Pokéblocks. Would you like to blend with the two of us? = No
+  = VAR_CONTEST_BLENDER_OTHERS 0 -> 2
+=== lilycove_city_contest_lobby.ContestReceptionist
+from Receptionist at 14,2 of LilycoveCity_ContestLobby
+way 0.0.0
+  Receptionist> Welcome to the Contest Lobby! ...Oh, you don't have a Pokéblock Case? Every trainer who comes here should. Please, take this one.
+  > Lucas received the Pokéblock Case!
+  > Lucas put it away in the Key Items pocket.
+  Receptionist> It holds the Pokéblocks you blend at the Berry Blender, over there. Your Pokémon will love them!
+  Receptionist> Would you like to enter a Pokémon in a contest?
+  Receptionist> Which rank will you enter?
+  Receptionist> Which contest will you enter?
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> Turtwig has been entered! You are entry number 4.
+  Receptionist> The contest is about to begin. Right this way, please!
+  Receptionist> Congratulations on your win! The hall confers the Cool Ribbon on Turtwig as your prize.
+  > Turtwig received the Cool Ribbon!
+  Receptionist> Thank you for taking part. We hope to see you again soon!
+  ? Would you like to enter a Pokémon in a contest? = ENTER
+  ? Which rank will you enter? = NORMAL RANK
+  ? Which contest will you enter? = COOL
+  * fanfare FanfareKeyItem
+  * open ChoosePokemon
+  * appeals Normal Cool Turtwig 0
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.0.5, from answer 3
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.0.4, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> Turtwig has been entered! You are entry number 4.
+  Receptionist> The contest is about to begin. Right this way, please!
+  Receptionist> Congratulations on your win! The hall confers the Tough Ribbon on Turtwig as your prize.
+  > Turtwig received the Tough Ribbon!
+  Receptionist> Thank you for taking part. We hope to see you again soon!
+  ? Which contest will you enter? = TOUGH
+  * open ChoosePokemon
+  * appeals Normal Tough Turtwig 0
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.0.3, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> Turtwig has been entered! You are entry number 4.
+  Receptionist> The contest is about to begin. Right this way, please!
+  Receptionist> Congratulations on your win! The hall confers the Smart Ribbon on Turtwig as your prize.
+  > Turtwig received the Smart Ribbon!
+  Receptionist> Thank you for taking part. We hope to see you again soon!
+  ? Which contest will you enter? = SMART
+  * open ChoosePokemon
+  * appeals Normal Smart Turtwig 0
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.0.2, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> Turtwig has been entered! You are entry number 4.
+  Receptionist> The contest is about to begin. Right this way, please!
+  Receptionist> Congratulations on your win! The hall confers the Cute Ribbon on Turtwig as your prize.
+  > Turtwig received the Cute Ribbon!
+  Receptionist> Thank you for taking part. We hope to see you again soon!
+  ? Which contest will you enter? = CUTE
+  * open ChoosePokemon
+  * appeals Normal Cute Turtwig 0
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.0.1, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> Turtwig has been entered! You are entry number 4.
+  Receptionist> The contest is about to begin. Right this way, please!
+  Receptionist> Congratulations on your win! The hall confers the Beauty Ribbon on Turtwig as your prize.
+  > Turtwig received the Beauty Ribbon!
+  Receptionist> Thank you for taking part. We hope to see you again soon!
+  ? Which contest will you enter? = BEAUTY
+  * open ChoosePokemon
+  * appeals Normal Beauty Turtwig 0
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.4, from answer 2
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which rank will you enter? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.0.0, from answer 2
+  Receptionist> Which contest will you enter?
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which rank will you enter? = MASTER RANK
+  ? Which contest will you enter? = COOL
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.0.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.5, from answer 3
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.4.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = TOUGH
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.4.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.3.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = SMART
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.3.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.2.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = CUTE
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.2.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.1.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = BEAUTY
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.3.1.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.0.0, from answer 2
+  Receptionist> Which contest will you enter?
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which rank will you enter? = HYPER RANK
+  ? Which contest will you enter? = COOL
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.0.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.5, from answer 3
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.4.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = TOUGH
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.4.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.3.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = SMART
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.3.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.2.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = CUTE
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.2.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.1.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = BEAUTY
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.2.1.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.0.0, from answer 2
+  Receptionist> Which contest will you enter?
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which rank will you enter? = SUPER RANK
+  ? Which contest will you enter? = COOL
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.0.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.5, from answer 3
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.4.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = TOUGH
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.4.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.3.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = SMART
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.3.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.2.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = CUTE
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.2.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.1.0, from answer 3
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Which contest will you enter? = BEAUTY
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 0.1.1.1.0, from answer 4
+  Receptionist> Which Pokémon will you enter? Please choose one.
+  Receptionist> That Pokémon hasn't won the rank under this one in this contest yet.
+  Receptionist> Will you cancel your entry?
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Will you cancel your entry? = No
+  ? Will you cancel your entry? = Yes
+  * open ChoosePokemon
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 2, from answer 1
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? Would you like to enter a Pokémon in a contest? = EXIT
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 1.0, from answer 1
+  Receptionist> What would you like to know?
+  Receptionist> Four Pokémon take the stage. First their condition is judged, and the best goes first. Then there are five rounds of appeals, one move each.
+  Receptionist> A move earns hearts, startles those who went before, bends the order or stirs the crowd. The hearts count twice over, on top of the condition. Most points wins!
+  Receptionist> Come and see me again whenever you'd like to hear more, or to enter!
+  ? Would you like to enter a Pokémon in a contest? = INFO
+  ? What would you like to know? = THE CONTESTS
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 1.3, from answer 2
+  Receptionist> We look forward to seeing you and your Pokémon on our stage!
+  ? What would you like to know? = CANCEL
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 1.2, from answer 2
+  Receptionist> There are four ranks: Normal, Super, Hyper and Master. Any Pokémon may enter the Normal Rank.
+  Receptionist> To go on to a higher rank, a Pokémon must have won the rank under it in the same contest. The winner of a rank wears its ribbon.
+  Receptionist> Come and see me again whenever you'd like to hear more, or to enter!
+  ? What would you like to know? = THE RANKS
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+way 1.1, from answer 2
+  Receptionist> There are five contests, for the five qualities a Pokémon can show: Cool, Beauty, Cute, Smart and Tough. Each move belongs to one of them.
+  Receptionist> A Pokémon's condition is raised with Pokéblocks, which are blended from berries. The Berry Blender is over there.
+  Receptionist> Come and see me again whenever you'd like to hear more, or to enter!
+  ? What would you like to know? = THE QUALITIES
+  + FLAG_RECEIVED_POKEBLOCK_CASE
+=== lilycove_city_contest_lobby.LinkReceptionist
+from Receptionist at 15,2 of LilycoveCity_ContestLobby
+way -
+  Receptionist> This is the counter for contests with friends. Contests with other players are not being held yet. Please try the counter next to me!
+=== lilycove_city_contest_lobby.Winner1
+from the tile read at 3,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
+=== lilycove_city_contest_lobby.Winner2
+from the tile read at 5,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
+=== lilycove_city_contest_lobby.Winner3
+from the tile read at 7,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
+=== lilycove_city_contest_lobby.Winner4
+from the tile read at 23,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
+=== lilycove_city_contest_lobby.Winner5
+from the tile read at 25,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
+=== lilycove_city_contest_lobby.Winner6
+from the tile read at 27,1 of LilycoveCity_ContestLobby
+way -
+  > An empty frame. No winner has been hung here yet.
 === lilycove_city_cove_lily_motel_2f.Scott
 from Scott at 1,7 of LilycoveCity_CoveLilyMotel_2F
 way -

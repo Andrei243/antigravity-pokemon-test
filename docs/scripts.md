@@ -423,6 +423,28 @@ Plan 06 · R17a. A Super Contest is held by `Models/SuperContests/` (the contest
 
 `{contestant}` is the Pokémon checked for the contest, `{ribbon}` the ribbon the last contest gave, `{accessory}` the accessory last given or won.
 
+### Hoenn's contests and the Berry Blender
+
+Plan 21 · H11. Hoenn's contest is a different game from the Super Contest: `Models/Contest/AppealRound.cs` (four Pokémon, five rounds of four appeals; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks") on `UI/AppealScreen.cs`. `appeals` is the commands of `contest_hall.inc` in one; `pokeblock` those of `berry_blender.inc` and the Pokéblock Case.
+
+| Command | What it does |
+|---|---|
+| `appeals rank normal` | The rank to be entered: `normal`, `super`, `hyper` or `master`. `RESULT` is left alone. |
+| `appeals category cool` | The contest: `cool`, `beauty`, `cute`, `smart` or `tough`. |
+| `appeals check` | Whether the Pokémon last chosen with `choosepokemon` (its place is `RESULT`) may enter (`GetContestEntryEligibility`): `RESULT` 0 it may; 1 none was chosen; 2 an Egg or fainted; 3 it lacks the ribbon of the rank before; 4 it may, having won this rank already. 0 and 4 are the Pokémon `enter` enters. |
+| `appeals enter` | Holds the contest for the Pokémon checked, and the script waits for it. `RESULT` is the player's place, 0 for the winner; a win at the Master Rank sets `FLAG_HOENN_CONTEST_MASTER_<QUALITY>`. A win has already given its ribbon, and the contest is counted and hung on the Contest Hall's wall. |
+| `appeals ribbon` | `RESULT` 1 when that win gave a ribbon the Pokémon hadn't; `{ribbon}` names it. |
+| `appeals prize` | `RESULT` 1 when a Luxury Ball is due: a win of a Master Rank the Pokémon had won already. The script gives it. |
+| `appeals painter` | `RESULT` 1 when the painter comes: a Master Rank win of 800 points or more. |
+| `appeals hang` | The painter takes the picture to the Lilycove Museum (`FLAG_<QUALITY>_PAINTING_MADE`); `RESULT` 1 when the Artist Ribbon went with it (once for a Pokémon), `{ribbon}`. |
+| `appeals records [won]` | The contests entered (or won) in all. |
+| `appeals winner 1` | The Contest Hall's wall at a place, 1 to 6, the newest first: `RESULT` 1 when a winner hangs there, `{wall}` the trainer and `{wallmon}` the Pokémon. |
+| `pokeblock blend 2` | The Berry Blender with so many others (1 to 3) at the drum: the bag chooses the player's berry, the blender plays and the script waits; `RESULT` 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full. |
+| `pokeblock count` | How many Pokéblocks the Pokéblock Case holds. |
+| `pokeblock full` | `RESULT` 1 when the case can take no more (forty). |
+
+`{contestant}` is the Pokémon checked, `{ribbon}` the ribbon last given. A menu that leads back to a menu is hundreds of ways for the tests that play every way through a script: the receptionist's explanations end the talk.
+
 ### Ball Capsules, Seals and ribbons
 
 Plan 06 · R17b; `docs/mechanics/rulings.md`, "Ball Capsules, Seals and ribbons". The Seal Case (`SealCase`, saved) holds

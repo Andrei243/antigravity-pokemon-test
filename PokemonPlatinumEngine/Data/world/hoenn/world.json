@@ -346,7 +346,10 @@
     { "name": "SecretBase_BlueCave4", "matrix": 315, "area": "secret_base_blue_cave_4", "trees": "Round", "setting": "Indoors" },
     { "name": "SecretBase_YellowCave4", "matrix": 316, "area": "secret_base_yellow_cave_4", "trees": "Round", "setting": "Indoors" },
     { "name": "SecretBase_Tree4", "matrix": 317, "area": "secret_base_tree_4", "trees": "Round", "setting": "Indoors" },
-    { "name": "SecretBase_Shrub4", "matrix": 318, "area": "secret_base_shrub_4", "trees": "Round", "setting": "Indoors" }
+    { "name": "SecretBase_Shrub4", "matrix": 318, "area": "secret_base_shrub_4", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H11: Lilycove City's Contest Lobby (the receptionists, the Berry Blenders) and the Contest Hall behind it (the winners' paintings)
+    { "name": "LilycoveCity_ContestLobby", "matrix": 113, "area": "lilycove_city_contest_lobby", "trees": "Round", "setting": "Indoors" },
+    { "name": "LilycoveCity_ContestHall", "matrix": 114, "area": "lilycove_city_contest_hall", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -475,6 +478,8 @@
     "secret_base_tree_1", "secret_base_shrub_1", "secret_base_red_cave_2", "secret_base_brown_cave_2", "secret_base_blue_cave_2",
     "secret_base_yellow_cave_2", "secret_base_tree_2", "secret_base_shrub_2", "secret_base_red_cave_3", "secret_base_brown_cave_3",
     "secret_base_blue_cave_3", "secret_base_yellow_cave_3", "secret_base_tree_3", "secret_base_shrub_3", "secret_base_red_cave_4",
-    "secret_base_brown_cave_4", "secret_base_blue_cave_4", "secret_base_yellow_cave_4", "secret_base_tree_4", "secret_base_shrub_4"
+    "secret_base_brown_cave_4", "secret_base_blue_cave_4", "secret_base_yellow_cave_4", "secret_base_tree_4", "secret_base_shrub_4",
+    // Plan 21 · H11: the Contest Lobby and the Contest Hall
+    "lilycove_city_contest_lobby", "lilycove_city_contest_hall"
   ]
 }

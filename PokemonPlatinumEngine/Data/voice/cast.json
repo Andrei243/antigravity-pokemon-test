@@ -47,6 +47,10 @@
       "note": "first spoken at route_36.txt(103)",
       "provisional": true
     },
+    "artist": {
+      "note": "first spoken at lilycove_city_contest_lobby.txt(145)",
+      "provisional": true
+    },
     "assistant": {
       "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.",
       "chooses": [
@@ -1118,6 +1122,7 @@
     "Argenta": "argenta",
     "Ariana": "ariana",
     "Arthur": "arthur",
+    "Artist": "artist",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
     "Avery": "avery",

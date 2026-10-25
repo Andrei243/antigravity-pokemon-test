@@ -5541,3 +5541,54 @@ the same species, moves, items and AI, with prize money one and a half times, wr
 `hoenn_<who>_rematch` in `Data/our-trainers.json` and named by `Data/world/hoenn/rematches.json` (the importer rewrites the
 region's `trainers.json`, so the rows are read from the file beside it by `TrainerDatabase`); the rows hold, and every
 rematch battle is the room's own, never the Vs. Seeker's.
+
+## Hoenn's contests and Pokéblocks (2026-10-26, plan 21 · H11)
+
+Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`, `src/data/contest_moves.h`,
+`contest_opponents.h`, `berry_blender.c`, `pokeblock.c` and `data/scripts/contest_hall.inc`; the lines are our own.
+
+- **Two contests, by region.** Sinnoh plays the Super Contest (plan 06 · R17a: visual, dance, acting) and **Hoenn
+  plays Emerald's contest**, a different game: four Pokémon, five rounds of four appeals, one move each. The two share
+  the quality (`ContestStat`), the ribbon record (`Pokemon.Ribbons`, the ribbon table) and the Poffin/Pokéblock
+  condition (`Cool`… `Sheen`), and nothing else: `MoveData.Contest` is Platinum's, `MoveData.HoennContest` Emerald's
+  (kept in `Data/hoenn-contest.json`, written by `tools/DataImporter -- --hoenn-contest` from the pinned pokeemerald,
+  so that the importer's own files need no merge).
+- **The data**: 48 effects (an appeal and a jam, each in tens of points), 354 moves of the first three generations
+  (an effect, a quality, up to five combos, the starter it is) and 96 contestants (species, moves, quality pools, rank,
+  and whether they appear only before or only after the game's end). A move Emerald never gave a number is a plain
+  appeal of 40 in the quality of its type. Stomp's line in the source has no field name; the importer reads it.
+- **The first round** orders the turns: each contestant's condition is its stat of the contest's quality plus half of its
+  two neighbours' and its sheen (`CalculateContestantRound1Points`), the best going first; ties go to the order they
+  were drawn. The score of the whole contest is that condition plus **twice** the points of the five appeals.
+- **An appeal** is the move's effect: the hearts it gives (ten points each, to eight), the **jam** it takes off the
+  contestant just before, a **combo** (a starter, then the move that follows it, which doubles the base appeal and takes
+  the judge's eye), a **repeat** (minus twenty, then thirty… for the same move again), the **crowd** (a meter of five
+  lights, stirred by moves of the contest's quality and cooled by clashing ones; the fifth light bursts for sixty), a
+  **condition** raised in tens (each ten is a star and adds to every appeal after it) and **nerves**, which the
+  startling move gives and the calm one takes away. A move that asks to go **earlier or later** bends the next round's
+  order; one that gives everything leaves **no more turns**.
+- **The opponents' minds** (`AppealRound.Ai`) are Emerald's `ContestAI_ChooseMove`: the scripts' scoring of each move
+  from what has happened so far, a draw on the round's generator among the best, so a seed and the player's choices
+  are the whole contest. The three are drawn from the table by the contest's quality and rank (`Candidates`), before or
+  after the game's end by the region's story flag.
+- **Ranks and ribbons**: Normal, Super, Hyper and Master; a rank is entered only with the ribbon of the rank below in
+  that quality (`GetContestEntryEligibility`), a win gives that rank's ribbon (`RIBBON_HOENN_COOL`, `_SUPER`, `_HYPER`,
+  `_MASTER`), a win of a rank already won gives nothing but, at the Master Rank, a **Luxury Ball**. A Master Rank win of
+  **800 points or more** brings the painter, who hangs the picture in the Lilycove Museum (one per quality) and gives the
+  **Artist Ribbon** once to each Pokémon. The Contest Hall's wall keeps the last six winners, newest first. The ribbons
+  are no longer "waiting for Hoenn" on a Pokémon's ribbon page.
+- **Ours, not Emerald's**: the contest is a screen (`AppealScreen`) and not the stage's rooms (`ContestHall*` maps
+  with the judge walking); the hall behind the lobby is a room of people who only talk. Contests with friends (the link
+  receptionist) wait for plan 07 and say so.
+- **Pokéblocks** (`Models/Pokeblocks.cs`): the Berry Blender's `CalculatePokeblock` as written. The berries' flavours and
+  smoothness are added, **each flavour is taken from the next one's** (spicy minus dry, dry minus sweet… sour minus
+  spicy), every negative is counted and taken from the rest, the whole is scaled by the speed the arm reached
+  (`maxRpm / 333 + 100`, in tenths), and the colour and feel are read from what is left. Two of one berry, or nothing
+  left, or four negatives, make a **black** Pokéblock whose flavours are three of the five at 2. Feeding adds each
+  flavour's level to the quality it names and the feel to the sheen; the nature's likes and dislikes
+  (`gPokeblockFlavorCompatibilityTable`) add or take the same gain from every quality. A Pokémon whose sheen is full
+  eats no more; an Egg none. The case holds forty and is a key item.
+- **The blender** (`Models/BlenderGame.cs`): the arm turns at a speed that the player's presses raise and a miss
+  lowers, 24 seconds at thirty frames a second; the others at the drum press by the generator they are handed, so a
+  blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
+  waits for plan 07.

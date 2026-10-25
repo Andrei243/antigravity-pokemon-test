@@ -47,6 +47,10 @@ public sealed partial class GameFlow
     public FashionCaseScreen FashionCaseScreen { get; } = new();
     public PoffinCookingScreen PoffinCookingScreen { get; } = new();
     public PoffinCaseScreen PoffinCaseScreen { get; } = new();
+    /// <summary>A Hoenn contest, the Pokéblock Case and the Berry Blender (plan 21 · H11).</summary>
+    public AppealScreen AppealScreen { get; } = new();
+    public PokeblockCaseScreen PokeblockCaseScreen { get; } = new();
+    public BlenderScreen BlenderScreen { get; } = new();
     public PokegearScreen PokegearScreen { get; } = new();
     public PokeNavScreen PokeNavScreen { get; } = new();
     public AlphPuzzleScreen AlphPuzzleScreen { get; } = new();

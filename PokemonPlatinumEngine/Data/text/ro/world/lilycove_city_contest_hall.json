@@ -1,0 +1,606 @@
+{
+  "people": {
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I won the Smart Contest today! My Pokémon outwitted all of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've entered a bunch of contests, and my Pokémon has a ribbon from each. Well, nearly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The man who won earlier fed his Pokémon a big Pokéblock first. I could tell."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Isn't this place humongous? I came in to look for the stage and got lost twice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_mc": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Give it your best Smart appeal! Show us how clever your Pokémon is!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_judge": {
+      "name": {
+        "en": [
+          "Judge"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Are you enjoying this contest? I do so like the thoughtful ones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_contestant_1": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I think I entered the wrong contest. My Pokémon isn't smart, just strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_contestant_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I raised my Pokémon to be smart, and it taught me a few things, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_contestant_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If my Pokémon pulls a clever move next, the judge won't know what hit him."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_contestant_4": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I don't appreciate a Cute move when I'm trying to be clever. Hush, Leech Life!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You're beautiful, Grandpa! Win this one!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_audience_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smart appeals are the most fun to watch. You can see the thinking."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_audience_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They all seem to use different moves. I wonder how they pick."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "smart_audience_3": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm only here to watch, but the Smart Contest makes me want to train my Pokémon harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_mc": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let's see your most beautiful appeal! Dazzle the judge!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_judge": {
+      "name": {
+        "en": [
+          "Judge"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beauty takes more than looks. It takes poise."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_contestant_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon has been brushed all morning. Doesn't it shine?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_contestant_2": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're twins, and so are our Pokémon. Isn't that a wonderful coincidence?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_contestant_3": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beauty is a state of mind. My Pokémon already knows it's the loveliest here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_contestant_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nerves are the enemy of beauty. I will not look nervous. Not for a moment."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_audience_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Beauty Contest, the crowd gets wilder. I love it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_audience_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've come to see the pretty ones. You can't go wrong with a Beauty Contest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_audience_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm no judge of beauty, but I know what I like when I see it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_mc": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Show us your cutest appeal! Melt the judge's heart!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_judge": {
+      "name": {
+        "en": [
+          "Judge"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cute is hard to fake. The Pokémon either has it or it doesn't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_contestant_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon is the cutest here. Don't you agree? You can't say no!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_contestant_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I made special Pokéblocks for my Pokémon. It's sweeter than ever!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_contestant_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm not sure my Pokémon is cute. It's more of a handsome type."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_contestant_4": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been entering Cute Contests for thirty years. My Pokémon gets cuter every year."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_audience_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aww, look at them all! I want to take every one of them home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_audience_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came in to see the stage, and now I can't leave. They're all so cute."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cute_audience_2": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up, I want my Pokémon to be on that stage too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LilycoveCity_ContestHall_EventScript_BeautyStageSign": {
+      "en": [
+        "Beauty Stage\nBeauty Contests are held here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LilycoveCity_ContestHall_EventScript_CuteStageSign": {
+      "en": [
+        "Cute Stage\nCute Contests are held here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LilycoveCity_ContestHall_EventScript_SmartStageSign": {
+      "en": [
+        "Smart Stage\nSmart Contests are held here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

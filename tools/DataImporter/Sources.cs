@@ -45,6 +45,10 @@ public static class Sources
     public const string EmeraldRepo = "https://github.com/pret/pokeemerald.git";
     public const string EmeraldCommit = "731ad5bfd6e6f265508d0efcca0ba42f9dcf5881";
 
+    /// <summary>pret/pokeemerald's contest tables, fetched file by file (plan 21 · H11): the effects, the moves' effects and combos, the contestants.</summary>
+    public const string EmeraldRaw = "https://raw.githubusercontent.com/pret/pokeemerald";
+    public static readonly string[] EmeraldContestFiles = { "src/data/contest_moves.h", "src/data/contest_opponents.h", "include/constants/contest.h" };
+
     /// <summary>What the GBA reader fetches of either game (W6 the layouts and behaviours, W7 the wild Pokémon, items, trainers and heal locations).</summary>
     public static readonly string[] GbaFolders =
     {

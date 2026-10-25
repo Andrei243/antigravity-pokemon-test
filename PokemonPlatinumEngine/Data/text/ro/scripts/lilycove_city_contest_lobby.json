@@ -1,0 +1,512 @@
+{
+  "ContestReceptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Contest Lobby! ...Oh, you don't have a Pokéblock Case? Every trainer who comes here should. Please, take this one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It holds the Pokéblocks you blend at the Berry Blender, over there. Your Pokémon will love them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Contest Lobby! This is the counter for the contests."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a Pokémon in a contest?",
+        "ENTER",
+        "INFO",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We look forward to seeing you and your Pokémon on our stage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to know?",
+        "THE CONTESTS",
+        "THE QUALITIES",
+        "THE RANKS",
+        "CANCEL"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Four Pokémon take the stage. First their condition is judged, and the best goes first. Then there are five rounds of appeals, one move each."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A move earns hearts, startles those who went before, bends the order or stirs the crowd. The hearts count twice over, on top of the condition. Most points wins!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are five contests, for the five qualities a Pokémon can show: Cool, Beauty, Cute, Smart and Tough. Each move belongs to one of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon's condition is raised with Pokéblocks, which are blended from berries. The Berry Blender is over there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are four ranks: Normal, Super, Hyper and Master. Any Pokémon may enter the Normal Rank."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "To go on to a higher rank, a Pokémon must have won the rank under it in the same contest. The winner of a rank wears its ribbon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come and see me again whenever you'd like to hear more, or to enter!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which rank will you enter?",
+        "NORMAL RANK",
+        "SUPER RANK",
+        "HYPER RANK",
+        "MASTER RANK",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you enter? Please choose one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you cancel your entry?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{contestant} has already won this rank. Enter it anyway?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{contestant} has been entered! You are entry number 4."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The contest is about to begin. Right this way, please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for taking part. We hope to see you again soon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ChooseQuality": [
+    {
+      "en": [
+        "Which contest will you enter?",
+        "COOL",
+        "BEAUTY",
+        "CUTE",
+        "SMART",
+        "TOUGH",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "NotThatOne": [
+    {
+      "en": [
+        "An Egg can't go on stage, and neither can a Pokémon that has fainted."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon hasn't won the rank under this one in this contest yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AfterContest": [
+    {
+      "en": [
+        "Congratulations on your win! The hall confers the {ribbon} on {contestant} as your prize."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{contestant} received the {ribbon}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{contestant} has won this rank before, so please take this prize from the Contest Hall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Painting": [
+    {
+      "en": [
+        "Artist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon spurred me to paint! I couldn't keep my brush still. Here, see what I have made of {contestant}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take the painting to the Lilycove Museum, where everyone can see it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... then you take it home. But I do wish it would hang in the museum, where it belongs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! I'll hang it there myself. Your Pokémon will be famous!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And as a memento of the painting, please take this ribbon for your Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{contestant} received the {ribbon}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LinkReceptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the counter for contests with friends. Contests with other players are not being held yet. Please try the counter next to me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlenderOne": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, that's all right. Come back whenever you feel like blending."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlenderTwo": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're about to make Pokéblocks. Would you like to blend with the two of us?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, what a pity. Another time, then!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlenderThree": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear. Do come back if you change your mind!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlendTogether": [
+    {
+      "en": [
+        "You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Excellent! Choose a berry to blend. The more your berry's flavour stands out from the others', the better the Pokéblock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's a fine Pokéblock! It's in your Case. Your Pokémon will love it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokéblock Case is full. Feed some Pokéblocks to your Pokémon, or throw a few away, and come back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlendMaster": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, well. A young blender! The secret of a great Pokéblock is rhythm. Press as the arm comes round, and never a beat early!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we blend a Pokéblock together?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Another time, then. The arm waits for no one, but I do."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BlenderCompanion": [
+    {
+      "en": [
+        "Let's get blending already! The leader of our drum is waiting for a partner."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WinnerOnTheWall": [
+    {
+      "en": [
+        "A portrait of {wallmon}, a winner here. Its trainer is {wall}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An empty frame. No winner has been hung here yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -59,6 +59,21 @@
     "description": "A package of Devon parts, bound for Captain Stern at the shipyard in Slateport City.",
     "cantBeTossed": true
   },
+  // Emerald's Pokéblock Case (plan 21 · H11), which no game this importer reads has: the Lilycove Contest Lobby's
+  // receptionist gives it once, and it holds the Pokéblocks the Berry Blender makes (Models/Pokeblocks.cs)
+  "Pokéblock Case": {
+    "id": 9300,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Holds Pokéblocks, the treats the Berry Blender makes of berries. Open it to feed one to a Pokémon.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "PokeblockCase"
+  },
   "Wailmer Pail": {
     "id": 9102,
     "pocket": "KeyItems",

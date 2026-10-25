@@ -647,3 +647,7 @@ A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of th
 ## The autosave
 
 `autosave.json` (plan 12 · Q3; `AutosaveFile`) is written beside the slots' saves while the options' AUTOSAVE is on, never over a slot's own file. It is a save like any other (`SaveManager.Write`: a temporary file, the one before it as `autosave.bak`, a checksum first in the file) with one field more, `AutosaveSlot`, the slot (1 to 3) whose game it is; no slot's save and no save of the corpus has the field. A save by hand into that slot, or deleting it, takes the autosave away. A start offers it (`AutosaveFile.Offer`) when it reads whole and its slot holds the same game (`TrainerId` and `Started`) with less time played, or holds nothing. `tools/SaveTool` reads it like any save.
+
+## Hoenn's contest
+
+`Data/hoenn-contest.json` (plan 21 · H11; `HoennContestDatabase`) is Emerald's contest as numbers, written by `dotnet run --project tools/DataImporter -- --hoenn-contest` from the pinned pokeemerald (`src/data/contest_moves.h`, `contest_opponents.h`, `include/constants/contest.h`) and never edited by hand: `effects` (the 48, each with its `id`, name, `appeal` and `jam` in tens of points), `moves` (by the move's name: `effect`, `category`, `comboStarter` and `combos`), `comboStarters` (the 62) and `opponents` (the 96: `trainer`, `species`, `moves`, `pools`, `rank`, `time`). No nickname and no line anyone says is in it. A move can be read as `MoveData.HoennContest`.

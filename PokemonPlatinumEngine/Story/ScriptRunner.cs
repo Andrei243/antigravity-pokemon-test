@@ -379,6 +379,9 @@ public sealed partial class ScriptRunner
         Op.Tide => false,
         // A secret base: what is asked and what goes into the decoration PC needs no screen; going in, decorating, packing up do
         Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
+        // Hoenn's contests: the contest and the blender are the player's to play; the rest only asks and changes (plan 21 · H11)
+        Op.Appeals => i.Name == "enter",
+        Op.Pokeblock => i.Name == "blend",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1116,6 +1119,14 @@ public sealed partial class ScriptRunner
             // The Underground (plan 06 · R16a)
             case Op.Underground:
                 Underground(i);
+                break;
+
+            // Hoenn's contests and Pokéblocks (plan 21 · H11)
+            case Op.Appeals:
+                Appeals(i);
+                break;
+            case Op.Pokeblock:
+                PokeblockOp(i);
                 break;
 
             // A secret base (plan 21 · H10)
@@ -2201,6 +2212,9 @@ public sealed partial class ScriptRunner
             "score" => host.BugContest.Score.ToString(),
             "prize" => NameOfItem(host.BugContest.Prize),
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
+            // Hoenn's contests (plan 21 · H11): whose picture hangs on the wall and what the Pokémon was called
+            "wall" => lastWinner,
+            "wallmon" => lastWinnerMon,
             _ => match.Value
         };
     }) : text;
