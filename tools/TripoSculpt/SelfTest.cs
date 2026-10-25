@@ -73,6 +73,9 @@ static class SelfTest
             Check(fake.RetargetRequest!.Contains("\"animate_in_place\":true") && fake.RetargetRequest.Contains("\"input\":\"task_rig01\""), "the animations are retargeted in place onto the rig");
             Check(GlbMerge.Merge(new[] { File.ReadAllBytes(animatedPath), File.ReadAllBytes(animatedPath) }, new[] { "a", "b" }, new List<string>()).Length > 0, "a merged file can be merged again");
 
+            var renamed = GlbMerge.AnimationNames(GlbMerge.RenameClips(File.ReadAllBytes(animatedPath), (own, i) => i == 0 ? "first" : own));
+            Check(renamed.Count == 5 && renamed[0] == "first" && renamed[1] == "hurt", "clips can be renamed by their own names in a file that holds several");
+
             var again2 = await Rigger.Run(root, client, fakemon, ro, quiet);
             Check(again2.Kept == 1 && fake.Rigs == 1, "a rigged sculpt is kept and costs nothing");
 
