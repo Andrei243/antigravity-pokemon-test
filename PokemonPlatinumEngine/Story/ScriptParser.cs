@@ -1004,13 +1004,14 @@ public static class ScriptParser
             // Hoenn's contests (plan 21 · H11): the rank and quality set, the Pokémon checked, the appeals held, what a win gave
             case "appeals":
             {
-                string what = r.OneOf("rank", "category", "check", "enter", "ribbon", "prize", "painter", "hang", "records", "winner");
+                string what = r.OneOf("rank", "category", "check", "enter", "ribbon", "prize", "painter", "hang", "records", "winner", "painting", "paintings", "view");
                 string value = what switch
                 {
                     "rank" => r.OneOf("normal", "super", "hyper", "master"),
                     "category" => r.OneOf("cool", "beauty", "cute", "smart", "tough"),
                     "records" => r.OneOf("entered", "won"),
                     "winner" => r.OneOf("1", "2", "3", "4", "5", "6"),
+                    "painting" or "view" => r.OneOf("cool", "beauty", "cute", "smart", "tough"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.Appeals, Line = line, Name = what, Other = value };
@@ -1018,7 +1019,7 @@ public static class ScriptParser
             // The Berry Blender and the Pokéblock Case (plan 21 · H11)
             case "pokeblock":
             {
-                string what = r.OneOf("blend", "count", "full");
+                string what = r.OneOf("blend", "count", "full", "taste");
                 int others = 0;
                 if (what == "blend")
                 {

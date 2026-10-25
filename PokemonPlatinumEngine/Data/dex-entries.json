@@ -11877,5 +11877,278 @@
       "Gold edges its long blue wings, and a pale blue star shines on its chest. It flies only beside its sister, across whole continents in a night.",
       "Aurelios can render itself invisible by bending light around its body. It shows itself only to those who have earned its trust."
     ]
+  },
+  "Dambarel": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its tail is a broad paddle scored like sawn planks. One Dambarel can wall off a river in a single night, and whole villages have grown up around the ponds it leaves.",
+      "It carries a twig behind one ear and never seems to hurry. Engineers study its dams, which hold back floods that would sweep away concrete."
+    ]
+  },
+  "Maestrikket": {
+    "habitat": "Grassland",
+    "entries": [
+      "One arm has hardened into a steel blade and the other into a bow. Drawing one across the other, it plays melodies that carry for miles over the fields.",
+      "Each Maestrikket leads an orchestra of Kricketune at dusk. Should a player miss a note, it taps the offender sharply with the flat of its blade."
+    ]
+  },
+  "Cranialith": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its skull has grown as hard as the fossil its ancestors were revived from. It charges cliffs head first to bring down the rock it nests in.",
+      "The club at the end of its tail balances the weight of its crown. When two meet, the crack of their heads is heard across the valley."
+    ]
+  },
+  "Bastionsaur": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its face is a gate of three plates with a rim like a castle's battlements. Nothing it has ever shielded behind that gate has come to harm.",
+      "Bastionsaur sleeps standing, its plated back to the wind. Herds of smaller Pokémon shelter in its lee through the worst storms of the mountain winter."
+    ]
+  },
+  "Nocturmoth": {
+    "habitat": "Forest",
+    "entries": [
+      "The stripes on its wings have become pale gold eyes that glow after dark. It drifts from hive to hive, sipping honey while the guards sleep.",
+      "Its feathered antennae can taste nectar on the night breeze from a mountain away. Travellers lost in the forest follow its lantern-like wings home."
+    ]
+  },
+  "Hivempress": {
+    "habitat": "Forest",
+    "entries": [
+      "Its gown of comb is now two tiers tall, and honey glows amber in some of the cells. Thousands of Combee live inside it and never leave.",
+      "Hivempress rarely moves, ruling from the heart of the forest. When it rises into the air, every swarm for miles falls silent and turns toward it."
+    ]
+  },
+  "Voltglider": {
+    "habitat": "Forest",
+    "entries": [
+      "The membrane between its limbs crackles with sparks. It leaps from treetops and rides the current it makes itself, sailing farther than any other squirrel.",
+      "Voltglider hoards balls of static in hollow trees for the winter. Forest fires have been blamed on its stores, though it guards them very carefully."
+    ]
+  },
+  "Tidestoat": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its twin tails have become propellers of three blades each. With its float ring inflated, it can tow a fishing boat back to harbour against the tide.",
+      "Coastal towns treat Tidestoat as an honoured lifeguard. It patrols the surf at dawn and dives at the first cry for help it hears."
+    ]
+  },
+  "Sakurabloom": {
+    "habitat": "Forest",
+    "entries": [
+      "Once the Sun Stone touched it, its petals opened and never closed again. Two rings of pink blossoms circle its face, and petals drift wherever it walks.",
+      "Even on grey days Sakurabloom keeps its bloom, glowing as if lit by sunlight. Orchards it visits flower out of season, to the farmers' delight."
+    ]
+  },
+  "Gastromire": {
+    "habitat": "Sea",
+    "entries": [
+      "Its frills have spread into a mantle of ruffles wide enough to cover a tide pool. Whatever it slides over is left glistening and slick.",
+      "Gastromire's colours blend the shades of both seas. Fishers say a calm tide follows wherever it surfaces, so they welcome it near their nets."
+    ]
+  },
+  "Quadripom": {
+    "habitat": "Forest",
+    "entries": [
+      "Four tails, each tipped with a hand, let it juggle fruit, swing between branches and steal hats all at once. Its arms have become almost a spare pair.",
+      "Quadripom leads raids on orchards with a wide grin. It is so nimble that farmers rarely see more than a purple blur and an empty basket."
+    ]
+  },
+  "Dirigeist": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its body has stretched into the long, ribbed envelope of an airship, with a gondola of ghostly cloth slung beneath. It drifts silently over mountain passes at dusk.",
+      "Four streamers trail from its sides. It is said that the souls it gathers ride in its gondola until they reach a place where they can rest."
+    ]
+  },
+  "Lapinova": {
+    "habitat": "Forest",
+    "entries": [
+      "Its ear fluff has unwound into long ribbons that trail as it spins. It dances through the forest, and its kicks can snap a sapling clean in half.",
+      "Lapinova performs only for trainers it loves. Its routine mixes graceful leaps with blows so fast that onlookers see only the ribbons flying."
+    ]
+  },
+  "Hexmagistra": {
+    "habitat": "Forest",
+    "entries": [
+      "Red gems shine along the band of its tall, bent hat. It points its staff of shadow and murmurs curses that turn into charms for those it likes.",
+      "Hexmagistra appears at crossroads on moonless nights. Anyone who greets it politely is said to find good fortune for a whole year."
+    ]
+  },
+  "Corvicapo": {
+    "habitat": "Forest",
+    "entries": [
+      "A broad-brimmed crest with a white band shades its eyes, and a cape of black feathers falls from its shoulders. Every Honchkrow in the district answers to it.",
+      "Corvicapo seldom flies itself. It sits in the tallest tree and sends its Murkrow out on errands, rewarding loyalty with shiny trinkets."
+    ]
+  },
+  "Brutabby": {
+    "habitat": "Urban",
+    "entries": [
+      "Its tail is knotted tightly round its waist like a belt, and one ear is torn from countless fights. Alley cats scatter when it saunters past.",
+      "Brutabby takes the warmest corner of any rooftop for itself. It will share it with a stray kitten, though it would never admit to doing so."
+    ]
+  },
+  "Mephitarch": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its tail has split into two plumes, each wreathed in haze. The cloud it releases can drift across an entire town and linger for a week.",
+      "Mephitarch keeps a sprawling den beneath abandoned buildings. Other Pokémon pay it tribute in berries to be spared a blast of its fumes."
+    ]
+  },
+  "Dotakuron": {
+    "habitat": "Cave",
+    "entries": [
+      "A ring of smaller bells hangs from its rim, and three spires crown its top. When it tolls, every bell in the temple it guards rings in answer.",
+      "Ancient texts describe Dotakuron as a bell cast for rituals that called the rain. Its raised patterns record prayers no one can read today."
+    ]
+  },
+  "Cantatot": {
+    "habitat": "Forest",
+    "entries": [
+      "The two notes on its head have joined into a beamed pair. It can sing four voices at once, imitating a whole choir from a single throat.",
+      "Cantatot learns every song it hears and blends them into new ones. Flocks of Chatot gather in the jungle canopy to rehearse under its direction."
+    ]
+  },
+  "Ossuarion": {
+    "habitat": "Rare",
+    "entries": [
+      "Two keystones are stacked into a small cairn, and twice as many faces swirl through the vortex above them. Green wisps leak from the cracks in the stone.",
+      "Ossuarion is said to hold two hundred spirits. Those who disturb its cairn hear murmuring voices for days afterward, wherever they go."
+    ]
+  },
+  "Aurasage": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its four aura sensors have grown long and glow a steady blue. With them it can read the feelings of everyone in a valley from its peak.",
+      "A mantle of black fur lies over its shoulders. Aurasage teaches its art of aura only to trainers who have shared every hardship with it."
+    ]
+  },
+  "Behemowdon": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Plates of sandstone armour its back, and sand pours from its pores in torrents. A single yawn can whip up a storm that buries a road.",
+      "Desert caravans steer wide around Behemowdon's resting places. When it wades into an oasis to cool off, the water level drops by half."
+    ]
+  },
+  "Dreadpion": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Serrated claws and a second tail make it a fortress of a Pokémon. Armour plates rise along its back like the walls of a siege tower.",
+      "Dreadpion can crush a car with one pincer. It hunts by night across the marsh and the desert, and its venom eats into stone."
+    ]
+  },
+  "Venomsensei": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A black sash is tied at its waist, and its knuckle claws are longer than daggers. Its throat sac swells with a deep croak before every strike.",
+      "Venomsensei runs a school deep in the marsh. Croagunk and Toxicroak come from far away to train under it, and few last a single season."
+    ]
+  },
+  "Flytrapex": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It has grown two jaws on two necks, and a sweet drop glistens at their edges. Prey drawn by the scent is seized by both mouths at once.",
+      "Flytrapex hangs from trees over the marsh, motionless for days. Rainstorms rouse it, and then its vines lash out in every direction."
+    ]
+  },
+  "Lumifathom": {
+    "habitat": "Sea",
+    "entries": [
+      "A long lure dangles from its brow, and the pink spots on its fins glow with rings of light. It lights up the sea floor far below the sun's reach.",
+      "Lumifathom stuns prey with pulses from its fins. Submarine crews have reported whole trenches flickering as schools of them pass."
+    ]
+  },
+  "Glaciarbor": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its fur has frozen into a cloak of ice, and icicles tip every branch. Where it stands for long, snow falls even in the middle of summer.",
+      "Glaciarbor grows only near a rock where the snow never stops. It shelters lost climbers in its branches and carries them down the slopes at dawn."
+    ]
+  },
+  "Rimeripper": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its claws have lengthened and turned white with frost, and its crest has split into three feathers. It no longer hunts in packs, but alone.",
+      "Rimeripper carves warning marks into glaciers to claim its territory. Even a pack of Weavile will abandon its prey when one appears."
+    ]
+  },
+  "Lickolossus": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its tongue is now long enough to coil twice round its body. It can reach fruit at the tops of trees without moving from where it sits.",
+      "Lickolossus tastes everything it meets. A single lick leaves a numbing tingle that lasts for hours, so most Pokémon keep their distance."
+    ]
+  },
+  "Tanglewood": {
+    "habitat": "Forest",
+    "entries": [
+      "Leaves and small flowers sprout all over its vines, and a crown of ferns rises from its head. Its arms end in roots it can sink into the ground.",
+      "When Tanglewood settles to rest, it becomes a thicket in a matter of days. Forests it has slept in grow back faster after a fire."
+    ]
+  },
+  "Meganeuron": {
+    "habitat": "Forest",
+    "entries": [
+      "A third pair of small wings lets it hover perfectly still. It is the size of the insects that ruled the skies of a primeval age.",
+      "Meganeuron's huge eyes see in every direction at once. The beat of its six wings can snap tree branches as it passes overhead."
+    ]
+  },
+  "Dryadeon": {
+    "habitat": "Forest",
+    "entries": [
+      "A mane of leaves frames its face, and three leafy tails sway behind it. Small flowers bloom among the leaves when spring arrives.",
+      "Dryadeon is said to be the spirit of an ancient grove. When it lies down to sleep, seedlings sprout in the shape of its body."
+    ]
+  },
+  "Borealeon": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its diamond fur has grown into a mantle of crystals, and a pale aurora shimmers along its back. On clear winter nights it can be seen from miles away.",
+      "Borealeon chills the air around it until breath freezes into glittering dust. It prefers the stillest, coldest hours just before dawn."
+    ]
+  },
+  "Fangliscor": {
+    "habitat": "Mountain",
+    "entries": [
+      "Claws grow at the joints of its wide wings, and its fangs are longer than ever. It glides on night winds without a single wingbeat.",
+      "Fangliscor hangs upside down from cliff edges, watching for prey below. Its hooked stinger can pin a foe to a rock until it tires."
+    ]
+  },
+  "Lodestarch": {
+    "habitat": "Cave",
+    "entries": [
+      "Five Mini-Noses circle it in the shape of a star. Its red cap points north like a compass needle, whatever happens around it.",
+      "Lodestarch's magnetism is so strong that ships' instruments spin when it nears the coast. Miners follow it to find iron seams deep underground."
+    ]
+  },
+  "Frostbride": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its sleeves trail into a veil of falling snow, and a crown of ice crystals sits on its head. Its long red ribbon flutters even in still air.",
+      "Legends of the snowy peaks tell of a bride who waits forever for a traveller. Those who follow Frostbride into the blizzard are never found."
+    ]
+  },
+  "Uxinous": {
+    "habitat": "Rare",
+    "entries": [
+      "A third red gem has formed on its tails, and a ring of light circles its head. It is said to hold every memory the world has ever made.",
+      "Uxinous appears only beside the guardian of emotion. Knowledge without feeling, the old tales say, can never grow any further."
+    ]
+  },
+  "Mespathos": {
+    "habitat": "Rare",
+    "entries": [
+      "The lobes on its head have lengthened and sweep back like hair. A halo floats over its head, and its tails carry three red gems.",
+      "Mespathos feels the joy and sorrow of everyone near its lake. It grows only with the guardian of willpower beside it."
+    ]
+  },
+  "Azelthymos": {
+    "habitat": "Rare",
+    "entries": [
+      "The three points on its head have lengthened into a crown. Its tails shine with three red gems, and a band of light encircles its brow.",
+      "Azelthymos gives resolve to anyone who meets its gaze. Its strength grows only with the guardian of knowledge at its side."
+    ]
   }
 }

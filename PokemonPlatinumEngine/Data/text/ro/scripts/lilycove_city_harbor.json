@@ -87,7 +87,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Champion {player}! The harbour has been told to expect you, and I'm to give you this."
       ],
       "text": [
-        ""
+        "Campion {player}! Portul a fost anunțat că veniți, iar eu trebuie să vă dau asta."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "{player} was given a ferry pass for Southern Island!"
       ],
       "text": [
-        ""
+        "{player} a primit un permis de feribot pentru Southern Island!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "There's an island far to the south that no ferry calls at, with a garden in the middle of it. The pass lets my ferry sail there for you."
       ],
       "text": [
-        ""
+        "Este o insulă îndepărtată, în sud, unde nu oprește niciun feribot, cu o grădină în mijloc. Permisul permite feribotului meu să navigheze acolo pentru tine."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Shall I take you to Southern Island?"
       ],
       "text": [
-        ""
+        "Să te duc la Southern Island?"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Wonderful! Come aboard."
       ],
       "text": [
-        ""
+        "Minunat! Urcă la bord."
       ]
     },
     {
@@ -135,7 +135,7 @@
         "{player} sailed for Southern Island..."
       ],
       "text": [
-        ""
+        "{player} a pornit spre Southern Island..."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Welcome to Lilycove's harbour. The S.S. Tidal calls here, but she isn't taking passengers today. Please come back another time."
       ],
       "text": [
-        ""
+        "Bun venit în portul din Lilycove. S.S. Tidal oprește aici, dar azi nu primește pasageri. Vă rugăm să reveniți altă dată."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Of course. Come back whenever you like."
       ],
       "text": [
-        ""
+        "Desigur. Revino oricând dorești."
       ]
     }
   ]

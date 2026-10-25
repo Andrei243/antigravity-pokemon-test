@@ -1485,6 +1485,14 @@ public class HoennStoryTests
     {
         var game = PastNorman(0, PlayerLook.Boy);
         game.Arrive("Route121_SafariZoneEntrance", 8, 5);
+        // Without the Pokéblock Case the counter sends the player back a step and takes nothing (plan 21 · H11, part b)
+        var turnedAway = game.Step("Counter");
+        Assert.False(turnedAway.Safari.Active);
+        Assert.Equal(3000, turnedAway.Money);
+        Assert.Contains(turnedAway.Transcript, l => l.Text.Contains("Pokéblock Case"));
+        Assert.Equal("Route121_SafariZoneEntrance", game.Map.Name);
+        game.Bag.AddItem(ItemDatabase.Get("Pokéblock Case")!);
+        game.Arrive("Route121_SafariZoneEntrance", 8, 5);
         var counter = game.Step("Counter");
         // $500 for thirty Safari Balls and Emerald's five hundred steps, then through the zone's door
         Assert.True(counter.Safari.Active);

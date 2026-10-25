@@ -6141,6 +6141,25 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== ancient_tomb.Registeel
+from Registeel at 8,7 of AncientTomb
+way 0
+  > Registeel waits in the tomb without a sound.
+  * cry Registeel
+  * wildbattle Registeel 40 Won
+  + FLAG_DEFEATED_REGISTEEL
+  + FLAG_HIDE_REGISTEEL
+way 1, from answer 1
+  * wildbattle Registeel 40 Lost
+=== ancient_tomb.Wall
+from Wall at 7,20 of AncientTomb
+from Wall at 8,20 of AncientTomb
+from Wall at 9,20 of AncientTomb
+from the tile read at 7,20 of AncientTomb
+from the tile read at 8,20 of AncientTomb
+from the tile read at 9,20 of AncientTomb
+way -
+  > Rows of raised dots are carved over the doorway. They seem to say: let light shine in the middle.
 === anville_town.Collector
 from Collector at 33,39 of AnvilleTown
 way 0
@@ -9539,6 +9558,15 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+=== common.HoennChapterFourteen
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_REGICE
+  + FLAG_HIDE_REGIROCK
+  + FLAG_HIDE_REGISTEEL
+  + FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
+  + FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
+  + FLAG_HOENN_CHAPTER_FOURTEEN
 === common.HoennChapterNine
 from a trainer with lines of their own
 way -
@@ -9720,6 +9748,9 @@ way -
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PLAYERS_HOUSE_DAD
+  + FLAG_HIDE_REGICE
+  + FLAG_HIDE_REGIROCK
+  + FLAG_HIDE_REGISTEEL
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -9789,6 +9820,8 @@ way -
   + FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS
   + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
   + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
+  + FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
+  + FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
   + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   + FLAG_HIDE_VERDANTURF_TOWN_SCOTT
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
@@ -9803,6 +9836,7 @@ way -
   + FLAG_HOENN_CHAPTER_EIGHT
   + FLAG_HOENN_CHAPTER_EIGHT_B
   + FLAG_HOENN_CHAPTER_ELEVEN
+  + FLAG_HOENN_CHAPTER_FOURTEEN
   + FLAG_HOENN_CHAPTER_NINE
   + FLAG_HOENN_CHAPTER_SEVEN
   + FLAG_HOENN_CHAPTER_SEVEN_B
@@ -10559,6 +10593,21 @@ way 1, from answer 1
 from a trainer with lines of their own
 way -
   > Nothing in it but a few scraps of paper.
+=== common.UnovaBiancaAsks
+from a trainer with lines of their own
+way 0
+  Bianca> Would you like to say goodbye to Bianca here?
+  Bianca> OK, then! I'd like to look into where Heatran might be hiding, anyway. Thank you for coming with me, Lucas!
+  Bianca> Be careful on the rest of your journey!
+  ? Would you like to say goodbye to Bianca here? = Yes
+  * partner off
+  = VAR_UNOVA_REVERSAL 0 -> 2
+way 1, from answer 1
+  Bianca> OK! Then let's look around a little more!
+  ? Would you like to say goodbye to Bianca here? = No
+=== common.UnovaBiancaWaits
+from a trainer with lines of their own
+way -
 === common.UnovaCastelia
 from a trainer with lines of their own
 way -
@@ -10566,11 +10615,17 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
@@ -10578,16 +10633,20 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
@@ -10595,12 +10654,16 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
@@ -10617,8 +10680,13 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaCatchUp
@@ -10630,14 +10698,20 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
@@ -10648,18 +10722,22 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
@@ -10669,12 +10747,16 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
@@ -10696,9 +10778,119 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaCatchUpB
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
@@ -10713,31 +10905,45 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
@@ -10748,32 +10954,51 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
 === common.UnovaFrigate
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
@@ -10783,22 +11008,70 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
+=== common.UnovaLacunosa
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
+=== common.UnovaLacunosaTale
+from a trainer with lines of their own
+way -
+  Anyone> There's a great, great hole in the land behind this town. Long ago a huge meteorite fell out of the sky, and that was what made it.
+  Anyone> Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village.
+  Anyone> Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now.
+  Anyone> Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives.
 === common.UnovaMistralton
 from a trainer with lines of their own
 way -
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
@@ -10807,6 +11080,11 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
 === common.UnovaNewGame
 from a trainer with lines of their own
@@ -10815,13 +11093,19 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
@@ -10832,16 +11116,20 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
@@ -10851,12 +11139,16 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
@@ -10878,9 +11170,14 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
@@ -10891,32 +11188,46 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
@@ -10930,8 +11241,13 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaOpeningDone
@@ -10956,11 +11272,17 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
   + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
   + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
   + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
@@ -10969,16 +11291,20 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
@@ -10987,12 +11313,16 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
@@ -11011,9 +11341,14 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -11161,6 +11496,25 @@ way -
   Archaeologist> A Pokémon that holds Soft Sand hits harder with Ground-type moves. Fitting, for a place like this!
   * fanfare FanfareItem
   + FLAG_UNOVA_GOT_SOFT_SAND
+=== desert_ruins.Regirock
+from Regirock at 8,7 of DesertRuins
+way 0
+  > Regirock stands in the dark, as still as a stone.
+  * cry Regirock
+  * wildbattle Regirock 40 Won
+  + FLAG_DEFEATED_REGIROCK
+  + FLAG_HIDE_REGIROCK
+way 1, from answer 1
+  * wildbattle Regirock 40 Lost
+=== desert_ruins.Wall
+from Wall at 7,20 of DesertRuins
+from Wall at 8,20 of DesertRuins
+from Wall at 9,20 of DesertRuins
+from the tile read at 7,20 of DesertRuins
+from the tile read at 8,20 of DesertRuins
+from the tile read at 9,20 of DesertRuins
+way -
+  > Rows of raised dots cover the wall. They seem to say: use Rock Smash.
 === dewford_town.Briney
 from Mr. Briney at 72,371 of Hoenn
 way 0
@@ -13966,6 +14320,51 @@ way -
 from Riley at 34,3 of IronIslandB2FLeft
 way -
   Riley> I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up.
+=== island_cave.LapDone
+from the trigger at 7,21 of IslandCave
+way -
+  > The dots on the wall faded, and the wall slid away!
+  * scene island_cave.The wall of the Island Cave opens
+  * sound rock_smash
+  * camera Shake
+  * endscene
+  + FLAG_SYS_BRAILLE_REGICE_COMPLETED
+  + seen island_cave.The wall of the Island Cave opens
+=== island_cave.LapEastCorner
+from the trigger at 12,22 of IslandCave
+way -
+  = VAR_ISLAND_CAVE_LAP 0 -> 5
+=== island_cave.LapSouthEastCorner
+from the trigger at 12,27 of IslandCave
+way -
+  = VAR_ISLAND_CAVE_LAP 0 -> 4
+=== island_cave.LapSouthWestCorner
+from the trigger at 4,27 of IslandCave
+way -
+  = VAR_ISLAND_CAVE_LAP 0 -> 3
+=== island_cave.LapWestCorner
+from the trigger at 4,22 of IslandCave
+way -
+  = VAR_ISLAND_CAVE_LAP 0 -> 2
+=== island_cave.Regice
+from Regice at 8,7 of IslandCave
+way 0
+  > Regice stands in the cold dark, frozen as the cave itself.
+  * cry Regice
+  * wildbattle Regice 40 Won
+  + FLAG_DEFEATED_REGICE
+  + FLAG_HIDE_REGICE
+way 1, from answer 1
+  * wildbattle Regice 40 Lost
+=== island_cave.Wall
+from Wall at 7,20 of IslandCave
+from Wall at 8,20 of IslandCave
+from Wall at 9,20 of IslandCave
+from the tile read at 7,20 of IslandCave
+from the tile read at 8,20 of IslandCave
+from the tile read at 9,20 of IslandCave
+way -
+  > Rows of raised dots cover the wall. They seem to say: run a lap around the hall.
 === jagged_pass.Guard
 from Team Magma Grunt at 16,19 of JaggedPass
 way 0
@@ -14281,6 +14680,96 @@ way -
   > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
   * sound rock_smash
   + FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
+=== lacunosa_town.Hugh
+from {rival} at 649,185 of Unova
+way -
+  Barry> Team Plasma could be anywhere. Keep your eyes open, Lucas.
+=== lacunosa_town.HughAndTheGrunts
+from the trigger at 649,186 of Unova
+way 0.0
+  Barry> Lucas! What's up? Have you seen Team Plasma anywhere around here? I heard a rumour that they were about.
+  Zinzolin> Oh, for crying out loud... How troublesome, my curious young Trainers.
+  Zinzolin> Perhaps I should satisfy your curiosity a little. The reason I'm still part of Team Plasma is simple: I want to know how the world will change.
+  Zinzolin> What Lord Ghetsis wanted is gone. What he was searching for, though, is still out there. And I intend to find it.
+  Barry> Shut your mouth! All I want is to get back a stolen Pokémon!
+  Barry> Lucas! Give me a hand! You ready?
+  Barry> Are you ready to pitch in? Let's take them on together!
+  Barry> Just so you know... you're about to feel my rage!
+  Grunt> What's with these two? I'm fighting alongside Zinzolin! This shouldn't be happening!
+  Zinzolin> These Trainers remind me of a certain child from two years ago.
+  Zinzolin> More importantly, we must continue the search. As that scientist said, it might be in Opelucid City! We shall play with you again later!
+  Barry> Get back here!
+  ? Are you ready to pitch in? Let's take them on together! = Yes
+  * scene lacunosa_town.Hugh and Zinzolin in Lacunosa Town
+  * emote Zinzolin Exclaim
+  * partner {rival} unova_rival_27
+  * battle unova_team_plasma_zinzolin_4 and unova_team_plasma_grunt_45 with unova_rival_27 Won
+  * partner off
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  = VAR_UNOVA_LACUNOSA 0 -> 4
+  + beaten unova_team_plasma_grunt_45
+  + beaten unova_team_plasma_zinzolin_4
+  + seen lacunosa_town.Hugh and Zinzolin in Lacunosa Town
+way 0.1, from answer 2
+  * battle unova_team_plasma_zinzolin_4 and unova_team_plasma_grunt_45 with unova_rival_27 Lost
+  * scene over, unseen
+  = VAR_UNOVA_LACUNOSA 0 -> 3
+way 1, from answer 1
+  Barry> Got it! Go and get ready, and then come back here! Being careful against opponents like these is no bad thing!
+  ? Are you ready to pitch in? Let's take them on together! = No
+  * endscene
+  = VAR_UNOVA_LACUNOSA 0 -> 3
+  + seen lacunosa_town.Hugh and Zinzolin in Lacunosa Town
+=== lacunosa_town.JuniperAndBiancaMeet
+from the trigger at 667,171 of Unova
+from the trigger at 668,183 of Unova
+way -
+  Prof. Juniper> Hello again, Lucas! I thought you might come this way.
+  Bianca> Hee hee! I used Fly, so it looks like I beat you here. Thanks for your help in Reversal Mountain!
+  Prof. Juniper> If you go straight on past Lacunosa Town, you'll come to Opelucid City! But before you go, there's something I want you two to hear.
+  Bianca> What is it?
+  Prof. Juniper> You'll see soon enough. Hurry along now!
+  Prof. Juniper> This is the place!
+  * scene lacunosa_town.Juniper and Bianca at Lacunosa
+  * fade out
+  * fade in
+  * warp LacunosaTown_House2 6 8
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  = VAR_UNOVA_LACUNOSA 0 -> 1
+  + seen lacunosa_town.Juniper and Bianca at Lacunosa
+=== lacunosa_town.TheOldTale
+from Storyteller at 670,167 of Unova
+way 0
+  Storyteller> Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell.
+  Storyteller> There's a great, great hole in the land behind this town. Long ago a huge meteorite fell out of the sky, and that was what made it.
+  Storyteller> Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village.
+  Storyteller> Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now.
+  Storyteller> Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives.
+  ? Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell. = Yes
+way 1, from answer 1
+  Storyteller> Oh, fine, fine. Come back when you have time.
+  ? Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell. = No
+=== lacunosa_town_3.TheOldTale
+from Storyteller at 6,3 of LacunosaTown_House2
+way 0
+  Storyteller> Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell.
+  Storyteller> There's a great, great hole in the land behind this town. Long ago a huge meteorite fell out of the sky, and that was what made it.
+  Storyteller> Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village.
+  Storyteller> Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now.
+  Storyteller> Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives.
+  ? Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell. = Yes
+way 1, from answer 1
+  Storyteller> Oh, fine, fine. Come back when you have time.
+  ? Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell. = No
 === lake_acuity_low_water.Rival
 from {rival} at 16,46 of LakeAcuity
 way -
@@ -14642,6 +15131,7 @@ way 0.0.0
   * open ChoosePokemon
   * appeals Normal Cool Turtwig 0
   * fanfare FanfareItem
+  + FLAG_ENTERED_CONTEST
   + FLAG_RECEIVED_POKEBLOCK_CASE
 way 0.0.5, from answer 3
   Receptionist> We look forward to seeing you and your Pokémon on our stage!
@@ -14658,6 +15148,7 @@ way 0.0.4, from answer 3
   * open ChoosePokemon
   * appeals Normal Tough Turtwig 0
   * fanfare FanfareItem
+  + FLAG_ENTERED_CONTEST
   + FLAG_RECEIVED_POKEBLOCK_CASE
 way 0.0.3, from answer 3
   Receptionist> Which Pokémon will you enter? Please choose one.
@@ -14670,6 +15161,7 @@ way 0.0.3, from answer 3
   * open ChoosePokemon
   * appeals Normal Smart Turtwig 0
   * fanfare FanfareItem
+  + FLAG_ENTERED_CONTEST
   + FLAG_RECEIVED_POKEBLOCK_CASE
 way 0.0.2, from answer 3
   Receptionist> Which Pokémon will you enter? Please choose one.
@@ -14682,6 +15174,7 @@ way 0.0.2, from answer 3
   * open ChoosePokemon
   * appeals Normal Cute Turtwig 0
   * fanfare FanfareItem
+  + FLAG_ENTERED_CONTEST
   + FLAG_RECEIVED_POKEBLOCK_CASE
 way 0.0.1, from answer 3
   Receptionist> Which Pokémon will you enter? Please choose one.
@@ -14694,6 +15187,7 @@ way 0.0.1, from answer 3
   * open ChoosePokemon
   * appeals Normal Beauty Turtwig 0
   * fanfare FanfareItem
+  + FLAG_ENTERED_CONTEST
   + FLAG_RECEIVED_POKEBLOCK_CASE
 way 0.4, from answer 2
   Receptionist> We look forward to seeing you and your Pokémon on our stage!
@@ -15249,6 +15743,10 @@ way 1, from answer 1
   * sound bump
   * fanfare FanfareItem
   * fanfare FanfareItem
+=== lilycove_city_harbor.FerryAttendant
+from Attendant at 8,10 of LilycoveCity_Harbor
+way -
+  Attendant> Welcome to Lilycove's harbour. The S.S. Tidal calls here, but she isn't taking passengers today. Please come back another time.
 === lilycove_city_harbor.Scott
 from Scott at 13,12 of LilycoveCity_Harbor
 way 0
@@ -15299,6 +15797,36 @@ way 0
 way 1, from answer 1
   Curator> Of course. Enjoy the works down here, and ask me whenever you like.
   ? Ah, a visitor! Our second floor is a gallery for paintings of Pokémon from the Contest Hall. Would you like to see it? = No
+=== lilycove_city_lilycove_museum_2f.BeautyPainting
+from the tile read at 18,6 of LilycoveCity_LilycoveMuseum_2F
+from the tile read at 19,6 of LilycoveCity_LilycoveMuseum_2F
+way -
+  > An empty frame. A card beneath it reads: Beauty.
+=== lilycove_city_lilycove_museum_2f.CoolPainting
+from the tile read at 10,6 of LilycoveCity_LilycoveMuseum_2F
+from the tile read at 11,6 of LilycoveCity_LilycoveMuseum_2F
+way -
+  > An empty frame. A card beneath it reads: Coolness.
+=== lilycove_city_lilycove_museum_2f.Curator
+from Curator at 10,8 of LilycoveCity_LilycoveMuseum_2F
+way -
+  Curator> I wish to fill these five frames with the paintings of Pokémon that win Master Rank contests at the Contest Hall.
+  Curator> The painter in the Contest Lobby makes one when a Pokémon wins with a really outstanding performance. If you have such a Pokémon, do enter it!
+=== lilycove_city_lilycove_museum_2f.CutePainting
+from the tile read at 14,10 of LilycoveCity_LilycoveMuseum_2F
+from the tile read at 15,10 of LilycoveCity_LilycoveMuseum_2F
+way -
+  > An empty frame. A card beneath it reads: Cuteness.
+=== lilycove_city_lilycove_museum_2f.SmartPainting
+from the tile read at 6,10 of LilycoveCity_LilycoveMuseum_2F
+from the tile read at 7,10 of LilycoveCity_LilycoveMuseum_2F
+way -
+  > An empty frame. A card beneath it reads: Smartness.
+=== lilycove_city_lilycove_museum_2f.ToughPainting
+from the tile read at 2,6 of LilycoveCity_LilycoveMuseum_2F
+from the tile read at 3,6 of LilycoveCity_LilycoveMuseum_2F
+way -
+  > An empty frame. A card beneath it reads: Toughness.
 === lilycove_city_move_deleters_house.Deleter
 from Move Deleter at 4,4 of LilycoveCity_MoveDeletersHouse
 way 0.0.0
@@ -16198,6 +16726,11 @@ from the trigger at 3,30 of MossdeepCity_Gym
 way -
   * sound select
   * rotatetiles yellow
+=== mossdeep_city_house_1.BlackBelt
+from Black Belt at 3,3 of MossdeepCity_House1
+way -
+  Black Belt> Hmm! Your Turtwig...
+  Black Belt> It doesn't appear to like or dislike any Pokéblocks.
 === mossdeep_city_house_2.Wingull
 from Wingull at 4,5 of MossdeepCity_House2
 way -
@@ -18148,6 +18681,53 @@ way 1, from answer 1
 from Boy at 816,473 of Sinnoh
 way -
   Boy> A Villa, going free! Walk up the path to me and it's yours.
+=== reversal_mountain_2.BiancaOffersToPart
+from the trigger at 24,26 of ReversalMountain_1
+way -
+=== reversal_mountain_4.BiancaAtTheMouth
+from Bianca at 8,9 of ReversalMountain_3
+way -
+  Bianca> Heeey, Lucas! You made it! I told you I'd be here first, didn't I?
+  Bianca> Um, you know what? There's something I want to look into here in Reversal Mountain, for Professor Juniper.
+  Bianca> But the wild Pokémon in here are really tough, and I can't get far on my own. Could you come with me? Please?
+  > Bianca healed your Pokémon.
+  Bianca> Don't worry, I'll take care of healing our Pokémon whenever they need it. Ready? Let's go!
+  * scene reversal_mountain_4.Bianca asks the player along
+  * partner Bianca unova_bianca
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  = VAR_UNOVA_REVERSAL 0 -> 1
+  + seen reversal_mountain_4.Bianca asks the player along
+=== reversal_mountain_4.BiancaOffersToPart
+from the trigger at 5,9 of ReversalMountain_3
+way -
+=== reversal_mountain_4.BiancaStopsAtThePassage
+from the trigger at 36,56 of ReversalMountain_3
+from the trigger at 44,55 of ReversalMountain_3
+way -
+=== reversal_mountain_4.Researcher
+from Researcher at 80,8 of ReversalMountain_3
+way -
+  Researcher> You look like someone who keeps careful notes on the Pokémon you meet! A kindred spirit!
+  Researcher> Show me that you know this mountain's own Pokémon. Have one of them on your team and I'll give you something useful.
+  Researcher> Hmm, there's none of the mountain's own with you. Woobat, Boldore, Skorupi and Grumpig live here, and Excadrill too. Come back with one.
+=== reversal_mountain_5.BiancaInTheLair
+from the trigger at 9,18 of ReversalMountain_4
+way -
+=== reversal_mountain_6.BiancaOffersToPart
+from the trigger at 12,7 of ReversalMountain_5
+way -
+=== reversal_mountain_6.BiancaOffersToPartBelow
+from the trigger at 8,14 of ReversalMountain_5
+way -
+=== reversal_mountain_7.BiancaAtTheExit
+from Bianca at 25,15 of ReversalMountain_6
+way -
+  Bianca> Reversal Mountain... I wonder... Could a Magma Stone be in there?
+  Bianca> Have you heard of it? A Magma Stone was found in a volcano in Sinnoh, far away. It had something to do with Heatran!
+=== reversal_mountain_7.BiancaSaysGoodbye
+from the trigger at 26,25 of ReversalMountain_6
+way -
 === rock_tunnel_b1f.RockSlideTutor
 from Youngster at 2,29 of RockTunnel_B1F
 way 0
@@ -19334,19 +19914,10 @@ way 1, from answer 1
   * battle hoenn_walter_1 Lost
 === route_121_safari_zone_entrance.Counter
 from the trigger at 8,4 of Route121_SafariZoneEntrance
-way 0
+way -
   Attendant> Welcome to the Safari Zone!
-  Attendant> Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?
-  Attendant> That's $500, thank you. Here are your Safari Balls.
-  > Lucas received 30 Safari Balls!
-  Attendant> We'll let you know when your game is over. Until then, off you go into the wild!
-  ? Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game? = Yes
-  * sound select
-  * warp HoennSafariZone 72 75
-  = VAR_SAFARI_ZONE_STATE 0 -> 2
-way 1, from answer 1
-  Attendant> All right. Please come and play another time!
-  ? Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game? = No
+  Attendant> I'm sorry, but you can't come in without a Pokéblock Case. The Pokémon here are fond of Pokéblocks, and every visitor should carry some.
+  Attendant> The receptionist at the Contest Lobby in Lilycove City gives a Case to anyone who asks. Do come back with one!
 === route_121_safari_zone_entrance.CounterTalk
 from Attendant at 8,2 of Route121_SafariZoneEntrance
 way -
@@ -21338,6 +21909,18 @@ way 0
 way 1, from answer 1
   * wildbattle Articuno 50 Lost
   * scene over, unseen
+=== sealed_chamber_inner_room.BackWall
+from the tile read at 10,4 of SealedChamber_InnerRoom
+from the tile read at 11,4 of SealedChamber_InnerRoom
+from the tile read at 9,4 of SealedChamber_InnerRoom
+way -
+  > The dots on the back wall read: first the great whale of the deep, and last the ancient fish of the shallows.
+=== sealed_chamber_outer_room.DigWall
+from the tile read at 10,2 of SealedChamber_OuterRoom
+from the tile read at 11,2 of SealedChamber_OuterRoom
+from the tile read at 9,2 of SealedChamber_OuterRoom
+way -
+  > Raised dots run across the wall. They seem to say: dig here.
 === sendoff_spring.Cynthia
 from Cynthia at 31,17 of SendoffSpring
 way -
@@ -21925,6 +22508,13 @@ from Azumarill at 10,8 of SlateportCity_PokemonFanClub
 way -
   > Azumarill: Marimari!
   * cry Azumarill
+=== slateport_city_pokemon_fan_club.Chairman
+from Chairman at 6,5 of SlateportCity_PokemonFanClub
+way -
+  Chairman> Er-hem! I am the Chairman of the Pokémon Fan Club! Being the Chairman, I am naturally the most important!
+  Chairman> Well, let me tell you about Pokémon Contests. They're events where one can show off Pokémon for the world to see!
+  Chairman> However, they're held in far-off towns, so I cannot participate often enough. That is why we gather here to show off our Pokémon.
+  + FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN
 === slateport_city_pokemon_fan_club.Skitty
 from Skitty at 8,3 of SlateportCity_PokemonFanClub
 way -
@@ -22331,6 +22921,28 @@ way -
 from Woman at 4,7 of SootopolisCity_PokemonCenter_1F
 way -
   Woman> Whatever happens, wherever I am, I'll always be friends with Pokémon. Being with them is the best fun there is!
+=== southern_island_exterior.Sailor
+from Sailor at 13,23 of SouthernIsland_Exterior
+way 0
+  Sailor> This is Southern Island. Nobody lives here, and I only come when the Champion's pass is shown.
+  Sailor> Shall I take you back to Lilycove?
+  Sailor> Aye. Hold on tight.
+  > Lucas sailed back to Lilycove City...
+  ? Shall I take you back to Lilycove? = Yes
+  * fade out
+  * warp LilycoveCity_Harbor 8 11
+way 1, from answer 1
+  Sailor> As you like. I'll be here when you're ready.
+  ? Shall I take you back to Lilycove? = No
+=== southern_island_interior.Lati
+from Latias at 13,10 of SouthernIsland_Interior
+from Latios at 13,10 of SouthernIsland_Interior
+way -
+  > The eon Pokémon watches you closely.
+=== southern_island_interior.Stone
+from the tile read at 13,11 of SouthernIsland_Interior
+way -
+  > A smooth stone stands here, worn by the years. Whatever once rested on it is gone.
 === spear_pillar.Grunts
 from Grunt at 30,48 of SpearPillar
 from Grunt at 32,48 of SpearPillar
@@ -22664,6 +23276,26 @@ way -
 from Cracked rock at 10,13 of StarkMountainRoom3
 way -
   > A big cracked rock. ...Did it just breathe?
+=== strange_house_3.TheGirlWalksThrough
+from the trigger at 25,16 of StrangeHouse_Rooms
+way -
+  Girl> An everlasting dark dream... An endless dream of darkness...
+  Girl> Dad, Mom, Abra... Where are you?
+  * scene strange_house_3.The girl in the Strange House
+  * endscene
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  = VAR_UNOVA_STRANGE 0 -> 1
+  + seen strange_house_3.The girl in the Strange House
+=== strange_house_6.TheGirlComesBack
+from the trigger at 17,19 of StrangeHouse_Cellar
+way -
+  Girl> The house is so big, and so dark. Is anyone there? Is anyone looking for me?
+  Girl> Up there it's quiet. The quiet's where they leave the things they don't want to lose.
+  * scene strange_house_6.The girl comes back
+  * endscene
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  = VAR_UNOVA_STRANGE 0 -> 2
+  + seen strange_house_6.The girl comes back
 === sunyshore_city.Flint
 from Flint at 845,748 of Sinnoh
 way -
@@ -23460,6 +24092,24 @@ way -
 from Lostelle at 6,5 of TwoIsland_JoyfulGameCorner
 way -
   Lostelle> Thank you for saving me! I'll always remember it. Next time I go berry picking, I'll bring you some!
+=== undella_town.HughAtTheEast
+from the trigger at 751,299 of Unova
+way 0
+  Barry> Wait up, Lucas!
+  Barry> Let's see how well we've raised our Pokémon!
+  Barry> Great! If we're this strong, Team Plasma will run screaming the moment they see us!
+  Barry> I won't let them get away this time, though. Her Purrloin... I'll get it back, for sure!
+  Barry> So, Lucas, keep helping me out! And keep working on the Pokédex, too! You're the one who was officially asked to complete it, after all!
+  * scene undella_town.Hugh at Undella Town
+  * battle unova_rival_12 Won
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  = VAR_UNOVA_UNDELLA 0 -> 1
+  + beaten unova_rival_12
+  + seen undella_town.Hugh at Undella Town
+way 1, from answer 1
+  * battle unova_rival_12 Lost
+  * scene over, unseen
 === underground.HikerGoods
 from Hiker at 175,279 of Underground
 from Hiker at 200,185 of Underground
@@ -23503,6 +24153,27 @@ from the tile read at 8,4 of Underwater_SeafloorCavern
 way -
   > "Submarine Explorer 1" is painted on its side.
   > It's the submarine Team Aqua took from Slateport! They must have come ashore near here.
+=== unova_route_13.TreasureHunter
+from Treasure Hunter at 683,237 of Unova
+way -
+  Treasure Hunter> What am I doing? I'm hunting for treasure! Sometimes things lie buried in the sand and the soil.
+  Treasure Hunter> Actually, I just found something! But it's the same as one I found before, so you can have this.
+  > Lucas received the Heart Scale!
+  > Lucas put it away in the Items pocket.
+  Treasure Hunter> I'll be hunting for treasure here again tomorrow. I might find something else, so stop by if you have time.
+  Treasure Hunter> I don't find as much as I used to, though...
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_TREASURE_HUNTER
+=== unova_route_13_2.WingullsFind
+from Lady at 10,6 of Route13_House1
+way -
+  Lady> This Wingull used to carry the mail to everyone in the neighbourhood!
+  Lady> I know! I'll give you the Power Lens it brought me!
+  > Lucas received the Power Lens!
+  > Lucas put it away in the Items pocket.
+  Lady> It doesn't matter to Wingull that it isn't much of a fighter. It's the best postman in Unova.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_POWER_LENS
 === unova_route_19.Alder
 from Alder at 94,695 of Unova
 way -

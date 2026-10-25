@@ -261,6 +261,9 @@ public sealed partial class Importer
             // A move PokeAPI says nothing of but its numbers (Legends: Arceus's and Scarlet and Violet's) takes its
             // flags and side effects from Showdown's table (plan 06 · R26)
             if (m.Id > LastPlatinumMove && string.IsNullOrEmpty(m.Description)) FromShowdown(m, e);
+            // A move that reaches anywhere in a triple battle (plan 14 · B6): Showdown's distance flag, for every move
+            // (a long flags table runs over several lines, so the move's whole entry is read)
+            if (Regex.IsMatch(e.Body, @"\bflags: \{[^}]*\bdistance: 1")) m.Flags |= MoveFlags.Distance;
             string? z =e.Fields.GetValueOrDefault("zMove"), max = e.Fields.GetValueOrDefault("maxMove");
             if (e.Text("category") == "Status")
             {

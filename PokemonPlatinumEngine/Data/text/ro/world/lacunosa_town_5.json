@@ -6,7 +6,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Lacunosa's shop keeps the oddest things. I came in for an umbrella and I'm leaving with a Metronome."
         ],
         "text": [
-          ""
+          "Magazinul din Lacunosa are cele mai ciudate lucruri. Am intrat după o umbrelă și plec cu un Metronome."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     }

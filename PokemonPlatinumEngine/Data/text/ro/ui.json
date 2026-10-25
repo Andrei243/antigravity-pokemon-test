@@ -2512,6 +2512,10 @@
     "thereAreTooManyPokemon": "Sunt prea mulți Pokémoni afară! Balonul nu poate fi țintit!",
     "calledForHelp": "{pokemon} a chemat ajutor!",
     "itsHelpDidntAppear": "Ajutorul nu a apărut!",
+    "shiftedToTheCentre": "{pokemon} s-a mutat la mijloc!",
+    "movedToTheCentre": "Pokémonii s-au mutat la mijloc!",
+    "isOutOfReach": "{pokemon} nu poate fi atins de aici!",
+    "cantShift": "{pokemon} este deja la mijloc!",
     "letItMoveFirst": "{item} l-a lăsat pe {user} să se miște primul!",
     "wasTransferredTo": "Obiectul {item} al lui {target} a trecut la {user}!",
     "wasHurtBy": "{user} a fost rănit de obiectul {item} al lui {target}!",
@@ -3161,6 +3165,7 @@
     "bag": "RUCSAC",
     "pokemon": "POKÉMON",
     "run": "FUGI",
+    "shift": "MUTĂ",
     "bait": "MOMEALĂ",
     "mud": "NOROI",
     "safariBall": "SAFARI BALL ×{n}",
@@ -4139,6 +4144,11 @@
       "Good": "BINE",
       "Miss": "RATAT"
     }
+  },
+  "painting": {
+    "title": "TABLOU DIN MUZEU",
+    "contest": "Concurs de {category}, {rank}",
+    "by": "{trainer}  ·  {points} puncte"
   },
   "appeal": {
     "title": "CONCURS",

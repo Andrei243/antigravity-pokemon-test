@@ -38,3 +38,112 @@ script Azumarill
   cry "Azumarill"
   text "Azumarill: Marimari!"
   end
+
+
+# The chairman (plan 21 · H11, part b; Emerald's SlateportCity_PokemonFanClub_EventScript_Chairman): he wants to see the
+# Pokémon of a trainer who has entered a contest (FLAG_ENTERED_CONTEST, which the Contest Lobby sets), and gives the
+# scarf of a quality in which the first Pokémon of the team has a condition of 200 or more, each once: the Red Scarf for
+# Cool, then Blue for Beauty, Pink for Cute, Green for Smart and Yellow for Tough, the first that fits. A Pokémon that
+# holds a scarf adds twenty to that quality in a contest (HoennContestRules.ScarfOf). When all five are given he has
+# nothing more to give.
+script Chairman
+  face self player
+  speaker "Chairman"
+  if flag FLAG_ENTERED_CONTEST goto Entered
+  if flag FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN goto Wish
+  call Meet
+  end
+label Wish
+  say "The Pokémon of a trainer who has entered a Pokémon Contest... That, I would like to see."
+  end
+label Entered
+  if flag FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN goto Known
+  call Meet
+label Known
+  if not flag FLAG_RECEIVED_RED_SCARF goto Examine
+  if not flag FLAG_RECEIVED_BLUE_SCARF goto Examine
+  if not flag FLAG_RECEIVED_PINK_SCARF goto Examine
+  if not flag FLAG_RECEIVED_GREEN_SCARF goto Examine
+  if not flag FLAG_RECEIVED_YELLOW_SCARF goto Examine
+  setvar VAR_SLATEPORT_FAN_CLUB_STATE 2
+  say "I'm sorry, but I've nothing else to give you! None at all!"
+  say "After all, you're blessed with the gift of raising Pokémon without resorting to any items!"
+  end
+label Examine
+  if var VAR_SLATEPORT_FAN_CLUB_STATE == 1 goto Again
+  setvar VAR_SLATEPORT_FAN_CLUB_STATE 1
+  say "Er-hem! I see you've participated in a Pokémon Contest! Please! Allow me to examine how you have raised your Pokémon."
+  say "It delights me no end to see Pokémon raised by other trainers. The happy expressions of Pokémon raised with proper care..."
+  say "Oh! I do beg your pardon! Forgive me for prattling on so! Allow me to examine how much your Pokémon has grown!"
+  goto Look
+label Again
+  say "How is your Pokémon growing? Allow me to examine it."
+label Look
+  say "Hm, hm... I see..."
+  if flag FLAG_RECEIVED_RED_SCARF goto TryBeauty
+  team condition cool
+  if var RESULT >= 200 goto Red
+label TryBeauty
+  if flag FLAG_RECEIVED_BLUE_SCARF goto TryCute
+  team condition beauty
+  if var RESULT >= 200 goto Blue
+label TryCute
+  if flag FLAG_RECEIVED_PINK_SCARF goto TrySmart
+  team condition cute
+  if var RESULT >= 200 goto Pink
+label TrySmart
+  if flag FLAG_RECEIVED_GREEN_SCARF goto TryTough
+  team condition smart
+  if var RESULT >= 200 goto Green
+label TryTough
+  if flag FLAG_RECEIVED_YELLOW_SCARF goto Nothing
+  team condition tough
+  if var RESULT >= 200 goto Yellow
+label Nothing
+  say "Hmmm... It's not bad, but it's not good, either... You, the trainer, must put more effort into raising this Pokémon!"
+  say "For instance, may I suggest that you give it more Pokéblocks?"
+  end
+label Red
+  call Praise
+  give "Red Scarf"
+  setflag FLAG_RECEIVED_RED_SCARF
+  say "Let a Pokémon hold that Red Scarf. Everyone will recognize its coolness!"
+  end
+label Blue
+  call Praise
+  give "Blue Scarf"
+  setflag FLAG_RECEIVED_BLUE_SCARF
+  say "Let a Pokémon hold that Blue Scarf. Its beauty will be accentuated much more than now!"
+  end
+label Pink
+  call Praise
+  give "Pink Scarf"
+  setflag FLAG_RECEIVED_PINK_SCARF
+  say "Let a Pokémon hold that Pink Scarf. It will draw out the cuteness of the Pokémon some more!"
+  end
+label Green
+  call Praise
+  give "Green Scarf"
+  setflag FLAG_RECEIVED_GREEN_SCARF
+  say "Let a Pokémon hold that Green Scarf. That will enhance its smartness!"
+  end
+label Yellow
+  call Praise
+  give "Yellow Scarf"
+  setflag FLAG_RECEIVED_YELLOW_SCARF
+  say "Let a Pokémon hold that Yellow Scarf. It will bolster your Pokémon's toughness so much more!"
+  end
+
+
+script Meet
+  say "Er-hem! I am the Chairman of the Pokémon Fan Club! Being the Chairman, I am naturally the most important!"
+  say "Well, let me tell you about Pokémon Contests. They're events where one can show off Pokémon for the world to see!"
+  say "However, they're held in far-off towns, so I cannot participate often enough. That is why we gather here to show off our Pokémon."
+  setflag FLAG_MET_SLATEPORT_FANCLUB_CHAIRMAN
+  return
+
+
+script Praise
+  say "Your Pokémon, it is growing in a most impressive manner! It is one fine specimen!"
+  say "But! If you were to give it this, it would grow even better! Indeed!"
+  return

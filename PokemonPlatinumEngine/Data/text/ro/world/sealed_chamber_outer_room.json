@@ -4,7 +4,7 @@
       "Sealed Chamber"
     ],
     "text": [
-      ""
+      "Camera Sigilată"
     ]
   },
   "people": {},
@@ -14,7 +14,7 @@
         "Raised dots in neat rows: A, B, C."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: A, B, C."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleDEF": {
@@ -22,7 +22,7 @@
         "Raised dots in neat rows: D, E, F."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: D, E, F."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleGHI": {
@@ -30,7 +30,7 @@
         "Raised dots in neat rows: G, H, I."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: G, H, I."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleJKL": {
@@ -38,7 +38,7 @@
         "Raised dots in neat rows: J, K, L."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: J, K, L."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleMNO": {
@@ -46,7 +46,7 @@
         "Raised dots in neat rows: M, N, O."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: M, N, O."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BraillePQRS": {
@@ -54,7 +54,7 @@
         "Raised dots in neat rows: P, Q, R, S."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: P, Q, R, S."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleTUV": {
@@ -62,7 +62,7 @@
         "Raised dots in neat rows: T, U, V."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: T, U, V."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleWXYZ": {
@@ -70,7 +70,7 @@
         "Raised dots in neat rows: W, X, Y, Z."
       ],
       "text": [
-        ""
+        "Puncte în relief în rânduri ordonate: W, X, Y, Z."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BraillePeriod": {
@@ -78,7 +78,7 @@
         "A single raised dot, and then nothing: the end of a sentence."
       ],
       "text": [
-        ""
+        "Un singur punct în relief, apoi nimic: sfârșitul unei propoziții."
       ]
     },
     "SealedChamber_OuterRoom_EventScript_BrailleComma": {
@@ -86,7 +86,7 @@
         "A single raised dot, set low: the pause in a sentence."
       ],
       "text": [
-        ""
+        "Un singur punct în relief, așezat jos: pauza dintr-o propoziție."
       ]
     }
   }

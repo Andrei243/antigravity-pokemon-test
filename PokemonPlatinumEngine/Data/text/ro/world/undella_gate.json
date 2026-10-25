@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The longest road in Unova is Route 13, I'm told. Take your time, or you'll still be on it by sunset."
         ],
         "text": [
-          ""
+          "Cel mai lung drum din Unova este Route 13, mi se spune. Nu te grăbi, altfel vei fi încă pe el la apus."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Dancer"
         ],
         "text": [
-          ""
+          "Dansatoare"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I clear my own path with Hidden Moves. Cut, Strength, Surf: they save so much walking!"
         ],
         "text": [
-          ""
+          "Mi-am croit singur drumul cu Mișcări Ascunse. Cut, Strength, Surf: economisesc atât de mult mers!"
         ]
       }
     }

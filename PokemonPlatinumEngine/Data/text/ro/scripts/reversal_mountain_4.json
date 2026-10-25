@@ -5,7 +5,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Heeey, {player}! You made it! I told you I'd be here first, didn't I?"
       ],
       "text": [
-        ""
+        "Heeey, {player}! Ai ajuns! Ți-am spus că voi fi aici prima, nu-i așa?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Um, you know what? There's something I want to look into here in Reversal Mountain, for Professor Juniper."
       ],
       "text": [
-        ""
+        "Ăă, știi ceva? Vreau să cercetez ceva aici, în Reversal Mountain, pentru Prof. Juniper."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "But the wild Pokémon in here are really tough, and I can't get far on my own. Could you come with me? Please?"
       ],
       "text": [
-        ""
+        "Dar Pokémonii sălbatici de aici sunt foarte puternici și nu pot ajunge departe singură. Ai putea veni cu mine? Te rog?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Bianca healed your Pokémon."
       ],
       "text": [
-        ""
+        "Bianca ți-a vindecat Pokémonii."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Don't worry, I'll take care of healing our Pokémon whenever they need it. Ready? Let's go!"
       ],
       "text": [
-        ""
+        "Nu-ți face griji, mă ocup eu să vindec Pokémonii noștri când au nevoie. Gata? Să mergem!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I'll be along in a moment, {player}. I just want to look at this rock first."
       ],
       "text": [
-        ""
+        "Vin într-o clipă, {player}. Vreau doar să mă uit mai întâi la stânca aceasta."
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Oh! I'd like to look around a little more by myself. Shall we split up for now?"
       ],
       "text": [
-        ""
+        "Oh! Aș vrea să mă mai uit puțin singură prin jur. Ne despărțim pentru moment?"
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Oh! {player}! This is the place! I can feel it! Let's look around here a little."
       ],
       "text": [
-        ""
+        "Oh! {player}! Aici este locul! Îl simt! Să ne uităm puțin prin jur."
       ]
     }
   ],
@@ -99,7 +99,7 @@
         "Researcher"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "You look like someone who keeps careful notes on the Pokémon you meet! A kindred spirit!"
       ],
       "text": [
-        ""
+        "Pari genul care ține note atente despre Pokémonii pe care îi întâlnește! Un spirit înrudit!"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Show me that you know this mountain's own Pokémon. Have one of them on your team and I'll give you something useful."
       ],
       "text": [
-        ""
+        "Arată-mi că cunoști Pokémonii acestui munte. Ia unul dintre ei în echipă și îți dau ceva util."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Hmm, there's none of the mountain's own with you. Woobat, Boldore, Skorupi and Grumpig live here, and Excadrill too. Come back with one."
       ],
       "text": [
-        ""
+        "Hmm, nu ai niciunul dintre Pokémonii muntelui. Aici trăiesc Woobat, Boldore, Skorupi și Grumpig, și Excadrill. Revino cu unul."
       ]
     },
     {
@@ -131,7 +131,7 @@
         "Ah! A Pokémon of this very mountain! Wonderful. Please take this."
       ],
       "text": [
-        ""
+        "Ah! Un Pokémon chiar din muntele acesta! Minunat. Te rog, ia asta."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "False Swipe leaves its target with 1 HP when it would have fainted. It's a very restrained move, and perfect for catching a Pokémon."
       ],
       "text": [
-        ""
+        "False Swipe lasă ținta cu 1 HP când altfel ar fi leșinat. Este o mișcare foarte reținută, perfectă pentru capturarea unui Pokémon."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "False Swipe is a gentle move, but a very useful one. The Pokémon here are hardy. Take your time catching them."
       ],
       "text": [
-        ""
+        "False Swipe este o mișcare blândă, dar foarte utilă. Pokémonii de aici sunt rezistenți. Ia-ți timp să-i capturezi."
       ]
     }
   ]

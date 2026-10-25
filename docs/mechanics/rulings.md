@@ -2203,6 +2203,20 @@ Sun and Moon's SOS battles: a wild Pokémon may call for help, and an ally that 
 - **The Adrenaline Orb** is its hold effect alone (plan 06 · R28a). *Not built:* using it from the bag in an SOS battle to make the wild Pokémon call more readily, as in Sun and Moon, which waits for the item's battle pocket in the data.
 - **On the screen** (style guide, "Stage", "An ally answers", and "Battle panels", "An SOS battle's boxes"): the caller stands alone in the middle until the first ally comes, hops where it stands and cries as it calls; the ally hops in from behind its place over 0.7 s as the side opens out to a double's two places; the foes' boxes are a double's, the player's a single's. The log carries `CalledForHelp(Caller, Answered)` on the call's line and `AllyJoined(Place, Pokemon, AsItCame, Chain)` just before the ally's line, whose `Entered` is not out of a ball; the screen takes the ally in as it came (`BattleMirror.Adopt`), since the rules are a turn ahead. Every ally the caller may call has its model made behind the battle's fade (`GameEngine.SosAllyLooks`).
 
+### Triple battles (plan 14 · B6)
+
+Black and White's triple battles, three places a side, with Pokémon Showdown's rules (its `sim/` at the pinned commit isn't in the importer's cache, so what follows is Showdown's as its documentation and data give it, and where a rule is ours it says so).
+
+- **A format, behind the rules.** `BattleFormat.Triple` at the enum's end, three places a side (`BattleFormats.PlacesOf`), fought only under rules that have triples (`Ruleset.Triples`: the modern rules), the player alone with three able to fight, against one trainer's three or three wild Pokémon, in an ordinary battle. Anything else asked for as a triple is asked for as a double, and falls back from there as a double does (`BattleFormats.FallBack`), so `battles-platinum.txt` can't move for it, and neither corpus did (no battle of either asks for one). A record keeps the format (`BattleRecord.Format`) and a triple's is refused as a double's.
+- **Where.** A trainer whose `format` is `"triple"` (`Trainer.Format` and both `TrainerRecord`s, `docs/data-files.md`; `DoubleBattle` stays and means a double) asks for one, alone and with no partner beside the player (`GameEngine.StartTrainerBattle`). No trainer of Platinum's table, of ours, of the masters' or of any region's world has one (plan 14, decision 1; `TripleTests`), so nothing in the game is a triple yet: the harness's `formats` mode stages its own (ft30 to ft32), and plan 22's Unova and plan 13 · V12's Versus are where they come.
+- **Reach** (`BattleCore.InReach`, the one place it is decided): a place of the other side is in reach when it is across from the user's (slot 2 − the user's) or beside that one, a place of the user's own side when it is beside the user's; so from the centre everyone is, and from an end the far foe and the far ally are not. A move that reaches anywhere (`MoveFlags.Distance`, Showdown's `distance` flag, read by the importer for every move: Aerial Ace, Aura Sphere, Water Pulse, the Flying moves of `any` target, and Aromatherapy, Heal Bell, Perish Song and the like, whose own targets reach everyone anyway) ignores it. In a single, a double, a horde and an SOS battle everything is in reach, so nothing there changed.
+- **What reach filters** (`ResolveTargets`): a move aimed at one Pokémon goes to its target only within reach, and a target out of reach is never handed over (`WhyNot` says "X is out of reach!", and the target cards offer only those in reach); where the one aimed at has gone, or Follow Me or Lightning Rod would draw the move, only a Pokémon in reach is taken; a random foe's move (Outrage) and a spread move (Rock Slide on the foes, Earthquake on everyone) take only those in reach, and a move with none in reach fails with "But there was no target...". Helping Hand reaches the ally beside; Coaching and the moves of the whole side, as in Showdown, reach every ally. *Not reach-filtered* (a stand-in of ours): what abilities do to "the foes" (Intimidate, Frisk, Anticipation, the trapping abilities, Bad Dreams) acts on every foe, where Showdown limits Intimidate and the trapping ones to the foes beside.
+- **The shift** (plan 14, decision 4, its recommended answer: Black and White's): a Pokémon at an end may spend its turn moving to the centre (`ChoiceKind.Shift`, `BattleChoice.Shift`; refused from the centre and in any other format), trading places with whoever stands there, or moving into it empty, as Ally Switch trades them (`BattleCore.Exchange`: what lasts on each goes with it, and a move still to come aimed at a place finds whoever stands there now). It is made with the turn's switches and items, before any move, in the order of the places and by Speed among shifts (a rule of ours where Showdown's queue order isn't to hand), and said as "X moved to the center!" with a `PlacesSwapped` on the line. X and Y kept the rule; their change was to the automatic move, below, which this game takes as Black and White and Showdown have it.
+- **The move to the centre** (`MoveToTheCentre`, at the turn's end once the fainted are replaced): when each side has one Pokémon left able to fight and the two can't reach each other, both move to the centre with "The Pokémon moved to the center!", as Showdown's triples do; a side down to one with others in reach stays where it stands. So no triple can stall out of reach (the fuzz of a hundred holds it).
+- **Ally Switch** in a triple trades the two ends, and fails from the centre (Showdown's `allyswitch`).
+- **The trainer AI** thinks of a triple as of a double, over every place in its reach while any foe is (`TrainerAi.Doubles`); a wild Pokémon aims at a foe it reaches; the switches and replacements decided for one place of a side are kept from the others; nobody of the AI's ever shifts (Showdown's random player doesn't either), which the move to the centre makes safe. Battle Style Shift's offer is a single battle's alone, as before.
+- **On the screen** (style guide, "Stage", "A triple's places", and "Battle panels", "A triple's boxes", "The six cards", "SHIFT"): the foe's three on a horde's arc, the player's three in a row, all at 0.6; small boxes down each side; six target cards with only those in reach lit; SHIFT in place of RUN for a Pokémon at an end. *A decision of this session:* the plan's "three platforms a side" is three places on each side's one platform, as a horde's five are, rather than three platforms of their own; the overview frames both as it is.
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -5718,6 +5732,45 @@ Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`,
   lowers, 24 seconds at thirty frames a second; the others at the drum press by the generator they are handed, so a
   blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
   waits for plan 07.
+
+## The museum's gallery, the chairman's scarves and the rest of the Pokéblock people (2026-10-26, plan 21 · H11, part b)
+
+Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `MossdeepCity_House1`,
+`Route121_SafariZoneEntrance` and the painter's half of `LilycoveCity_ContestLobby`; the lines are our own.
+
+- **A painting is looked at, not set into the wall.** Emerald changes two metatiles of the gallery's wall for each quality
+  once its flag (`FLAG_COOL_PAINTING_MADE` and its fellows) is set, a picture drawn from the Pokémon it was painted of
+  that is not in the repository. The frames here are read from before (the area's reads, `CoolPainting` to
+  `ToughPainting` of `lilycove_city_lilycove_museum_2f.txt`): a painting that hangs (`HoennContestRecords.Museum`, which
+  keeps the winner's species, name, trainer, contest, rank and points) opens in the Fashion Case's viewer (`appeals view`,
+  `ScriptScreen.ContestPainting`, the style guide's "A painting"); an empty frame says whose it is, as before.
+- **The museum fills as the paintings hang** (Emerald's `UpdateMuseumPatrons`, the lobby's `MuseumPatrons`): the first
+  four bring a patron each (`FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1` to `_4` cleared), the fifth the tourists, once the painter
+  has been agreed to; a quality's painting hung again replaces the old one and brings nobody. The gallery's curator
+  (`Curator`) thanks for each painting and, once all five quality's frames are filled, gives the **Glass Ornament**
+  (`FLAG_RECEIVED_GLASS_ORNAMENT`), a decoration into the secret base's PC (`openbase give`), once; with no room in the PC
+  he keeps it for the player.
+- **The chairman of Slateport's Fan Club** asks first for `FLAG_ENTERED_CONTEST` (the receptionist sets it with every
+  contest entered; before it he only wishes to see such a Pokémon), then gives the scarf of the first quality in which the
+  team's first Pokémon that is no Egg has a condition of **200 or more**, each scarf once, looked for in the order Cool, Beauty,
+  Cute, Smart, Tough (Red, Blue, Pink, Green, Yellow; Emerald's `CheckLeadMonCool` and fellows: of its checks the last to run
+  set the answer, and the Cool check runs last). With all five he has nothing more to give (`VAR_SLATEPORT_FAN_CLUB_STATE`
+  2). A Pokémon that holds a scarf adds twenty to its quality in a contest, as before.
+- **Mossdeep's black belt** tells the colour of Pokéblock the first Pokémon of the team likes (`pokeblock taste`): the
+  colour of the one flavour its nature likes (spicy red, dry blue, sweet pink, bitter green, sour yellow), or that it
+  neither likes nor dislikes any, for the five natures without a taste. The colour is read from the compatibility table
+  the feeding already uses, so what he says is what a Pokéblock of it would do.
+- **The Safari Zone's counter asks for the Pokéblock Case** (Emerald's `Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone`),
+  before the fee and before anything else; a player without one is sent back a step and told where the Case is given
+  (the Contest Lobby's receptionist).
+- **What is not here.** The stage rooms (`ContestHall`, `ContestHallBeauty`, `ContestHallCool`, `ContestHallCute`,
+  `ContestHallSmart`, `ContestHallTough`): Emerald never lets the player walk in them (its player is hidden and the
+  contest's graphics replace the map; they have no warps), so they are a backdrop for the contest and not a place;
+  the contest here is the screen alone. **Emerald's Pokéblock feeders** are not built: the pinned data names their tile
+  behaviour (`MB_POKEBLOCK_FEEDER`) and no script or text uses them, and their rules (what a Pokéblock set down does to
+  the wild Pokémon round it, for how many steps) are in source (`src/`) that the importer's cache does not hold, so there is
+  nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
+  is the same (her rules are in source the import does not read); both are left.
 
 ## The Regis, the Sealed Chamber and Southern Island (2026-10-26, plan 21 · H12, part a)
 

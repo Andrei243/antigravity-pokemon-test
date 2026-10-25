@@ -218,6 +218,8 @@ public static class HoennContestRules
 
     public const string ArtistRibbon = "RIBBON_HOENN_ARTIST";
 
+    /// <summary>The flag a contest entered sets (<c>FLAG_ENTERED_CONTEST</c>), which Slateport's Fan Club chairman asks before he examines a Pokémon.</summary>
+    public const string EnteredFlag = "FLAG_ENTERED_CONTEST";
     /// <summary>The flag that a painting of a quality's has been made (<c>FLAG_COOL_PAINTING_MADE</c> and its fellows).</summary>
     public static string PaintingFlag(ContestStat category) => "FLAG_" + category.ToString().ToUpperInvariant() + "_PAINTING_MADE";
 

@@ -180,7 +180,9 @@ public enum MoveFlags
     /// <summary>Mirror Move can copy it.</summary>
     Mirror = 2048,
     /// <summary>King's Rock and Razor Fang can make it flinch (Generation 4 kept a list; later games use every damaging move).</summary>
-    KingsRock = 4096
+    KingsRock = 4096,
+    /// <summary>Reaches a Pokémon anywhere in a triple battle, not only beside its user or across from it (plan 14 · B6; Showdown's <c>distance</c>).</summary>
+    Distance = 8192
 }
 
 /// <summary>How much of a move the engine runs. The data fields say what it does; <c>effect</c> names anything more.</summary>

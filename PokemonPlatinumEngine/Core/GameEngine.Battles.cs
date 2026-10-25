@@ -477,13 +477,16 @@ public partial class GameEngine
         AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
         var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(partner?.Party.Members ?? Enumerable.Empty<Pokemon>()));
         bool two = trainer.DoubleBattle || trainers.Count > 1 || partner != null;
+        // A trainer of a later game's format alone against the player asks for it (plan 14 · B6: a triple), which the
+        // battle fights where the rules and both sides allow and otherwise makes the double or single they can field
+        var asked = trainers.Count == 1 && partner == null && trainer.AskedFormat is { } format ? format : two ? BattleFormat.Double : BattleFormat.Single;
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the first trainer's
         // class decides for both, as in the original, and the first Pokémon of theirs that can fight is measured
         // against the player's
         var meeting = new BattleMeeting
         {
             Trainers = BattleMeeting.Of(trainers),
-            Double = two,
+            Double = two || asked == BattleFormat.Triple,
             Terrain = BattleConditionsHere().Terrain,
             TheirLevel = (trainer.Party.Members.FirstOrDefault(p => !p.IsFainted) ?? trainer.Party.Members[0]).Level,
             OwnLevel = terms?.Alone?.Level ?? LeadLevel()
@@ -506,7 +509,7 @@ public partial class GameEngine
                 Pokedex = flow.Pokedex,
                 PcStorage = flow.Boxes,
                 Place = PlaceName(),
-                Format = two ? BattleFormat.Double : BattleFormat.Single,
+                Format = asked,
                 Trainers = trainers,
                 Partner = partner,
                 FirstBattle = firstBattle,

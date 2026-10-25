@@ -319,9 +319,28 @@ public partial class BattleEngine
                 HUD.SwitchMenuIndex = 0;
                 break;
             case 3:
+                // At an end of a triple battle's side the fourth command is SHIFT, to the centre (plan 14 · B6)
+                if (OffersShift)
+                {
+                    SelectShift();
+                    break;
+                }
                 AttemptRun();
                 break;
         }
+    }
+
+    /// <summary>The Pokémon whose action is being chosen moves to the centre of a triple battle's side this turn (plan 14 · B6).</summary>
+    public void SelectShift()
+    {
+        InCore(MenuBattler);
+        if (core.WhyNot(BattleChoice.Shift(MenuBattler.Place)) is { } why)
+        {
+            Refuse(why, BattleMenuState.Main);
+            return;
+        }
+        AudioManager.PlaySound("select");
+        Commit(BattleChoice.Shift(MenuBattler.Place));
     }
 
     /// <summary>Uses the move in the given slot, as chosen from the FIGHT menu.</summary>
@@ -344,15 +363,23 @@ public partial class BattleEngine
         lastMove[user.Pokemon] = index;
 
         // In a double battle and a horde a single-target move asks where to aim it
-        if ((IsDouble || IsHorde || IsSos) && move.Target == MoveTarget.Selected)
+        if ((IsDouble || IsHorde || IsSos || IsTriple) && move.Target == MoveTarget.Selected)
         {
-            // In the order the target menu lays them out: the foes left to right, then the partner
-            targetChoices = EnemySlots.Reverse().Where(b => b.IsActive).Concat(PlayerSlots.Where(b => b.IsActive && b != user)).ToList();
+            // In the order the target menu lays them out: the foes left to right, then the partner; in a triple battle
+            // only those the move reaches from where its user stands (plan 14 · B6)
+            targetChoices = EnemySlots.Reverse().Where(b => b.IsActive).Concat(PlayerSlots.Where(b => b.IsActive && b != user))
+                .Where(b => move.Data.Flags.HasFlag(MoveFlags.Distance) || BattleCore.InReach(Format, user.Place, b.Place)).ToList();
             if (targetChoices.Count > 1)
             {
                 targetingMove = move;
                 HUD.TargetMenuIndex = 0;
                 HUD.MenuState = BattleMenuState.SelectTarget;
+                return;
+            }
+            // The one place a triple battle's move reaches is where it goes (plan 14 · B6)
+            if (IsTriple && targetChoices.Count == 1)
+            {
+                Commit(BattleChoice.Fight(user.Place, index, targetChoices[0].Place));
                 return;
             }
         }

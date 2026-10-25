@@ -180,4 +180,47 @@ internal static class CoreScenario
         return Lines(core.TakeLog());
     }
 
+    /// <summary>The third place of the player's side, in a triple battle (plan 14 · B6); the foe's third is <see cref="Foe3"/>.</summary>
+    public static readonly Place Mine3 = new(BattleSide.Player, 2);
+
+    /// <summary>
+    /// A triple battle (plan 14 · B6) against a trainer, under the modern rules unless others are handed (Platinum's have
+    /// no triples), both sides answered for from outside.
+    /// </summary>
+    public static BattleCore Triples(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null)
+    {
+        var party = new Party();
+        foreach (var p in mine) party.Add(p);
+        var trainer = new Trainer { Id = "ace", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 100, Format = "triple" };
+        foreach (var p in theirs) trainer.Party.Add(p);
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, Trainers = new List<Trainer> { trainer }, Format = BattleFormat.Triple, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Modern,
+            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+        });
+        core.Start();
+        return core;
+    }
+
+    /// <summary>
+    /// A turn of a triple battle: each place that is asked does what is given for it (a move at a target, or with a move
+    /// of −2 a shift to the centre), and a place asked that is given nothing uses its first move at whoever the rules pick.
+    /// </summary>
+    public static List<string> TripleTurn(BattleCore core, params (Place Who, int Move, Place? At)[] actions)
+    {
+        var asked = Assert.IsType<ActionRequest>(core.Request).Places;
+        var choices = new List<BattleChoice>();
+        foreach (var p in asked)
+        {
+            var given = actions.Where(a => a.Who == p).ToList();
+            if (given.Count == 0) choices.Add(BattleChoice.Fight(p, 0));
+            else if (given[0].Move == ShiftMove) choices.Add(BattleChoice.Shift(p));
+            else choices.Add(BattleChoice.Fight(p, given[0].Move, given[0].At));
+        }
+        core.Submit(choices);
+        return Lines(core.TakeLog());
+    }
+
+    /// <summary>In a <see cref="TripleTurn"/>, the move that stands for a shift to the centre.</summary>
+    public const int ShiftMove = -2;
 }

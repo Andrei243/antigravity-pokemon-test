@@ -343,6 +343,132 @@ partial class Harness
 
         HordeShots();
         SosShots();
+        TripleShots();
+    }
+
+    // Plan 14 · B6, a triple battle (ft30 to ft32), last in `formats` so nothing before it moves: a trainer of the
+    // harness's own who battles three at a time (Trainer.Format "triple", which no trainer of the game has) met through
+    // the game's own StartTrainerBattle in Route 225, the three a side at the menu with their six boxes (ft30), the six
+    // target cards with Tackle aimed from the left end, the far foe's card greyed (ft31), the SHIFT command at the left
+    // end (ft32a) and the shift as its line is read, the two trading places (ft32); then the foes felled a Rock Slide at
+    // a time. It prints the format and places, who stands where, the target menu's cards and choices, and the record.
+    void TripleShots()
+    {
+        var team = game.Party;
+        void Quick()
+        {
+            FrameClock.Fixed = ++tick / 60.0;
+            engine.Update(1f / 60f);
+            engine.Draw();
+        }
+        void ReadOn(BattleEngine b)
+        {
+            for (int i = 0; i < 120 && !b.IsBattleOver && b.HUD.MenuState is not (BattleMenuState.Main or BattleMenuState.SelectTarget); i++) { Confirm(b); Skip(0.4); }
+        }
+        string Side(BattleEngine b, BattleSide side) => string.Join(", ", (side == BattleSide.Player ? b.PlayerSlots : b.EnemySlots)
+            .Select(s => s.Pokemon == null ? $"{s.Slot}:-" : $"{s.Slot}:{s.Pokemon.Species.Name} {s.Pokemon.CurrentHP}/{s.Pokemon.MaxHP}"));
+        void Whole(BattleEngine b)
+        {
+            foreach (var p in team.Members) { p.CurrentHP = p.MaxHP; foreach (var m in p.Moves) m.CurrentPP = m.MaxPP; }
+            foreach (var foe in b.EnemySlots.Select(s => s.Pokemon).Where(p => p is { CurrentHP: > 0 })) foe!.CurrentHP = foe.MaxHP;
+        }
+        Pokemon Mine(string species)
+        {
+            var p = new Pokemon(PokemonDatabase.Get(species)!, 50);
+            p.Moves.Clear();
+            foreach (string move in new[] { "Rock Slide", "Tackle", "Aura Sphere" }) p.Moves.Add(new Move(MoveDatabase.Get(move)));
+            return p;
+        }
+        team.Members.Clear();
+        foreach (string species in new[] { "Golem", "Rhyperior", "Steelix" }) team.Members.Add(Mine(species));
+
+        var trainer = new Trainer
+        {
+            Id = "harness_triple", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 0, Format = "triple",
+            Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic
+        };
+        foreach (string species in new[] { "Staravia", "Kricketune", "Bibarel" }) trainer.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 44));
+        var (gx, gy) = GrassOf("route_225");
+        At("Sinnoh", gx, gy, Direction.Up);
+        game.EnterArea();
+        game.LocationSign.Hide();
+        Frames(4);
+        game.StartTrainerBattle(new NPC { Name = trainer.Name, NpcType = "Trainer", TrainerData = trainer });
+        for (int i = 0; i < 900 && game.State != GameState.Battle; i++) Quick();
+        if (game.State != GameState.Battle) { Console.WriteLine("  !! never happened: the triple battle"); return; }
+        var triple = game.Battle;
+        Console.WriteLine($"the triple: format {triple.Format} (rules {triple.Rules.Preset}); places {triple.Anim.SlotsOf(BattleSide.Player)} against {triple.Anim.SlotsOf(BattleSide.Enemy)}");
+        ToMainMenu(triple);
+        ReadOn(triple);
+        Whole(triple);
+        Skip(1.0);
+        Shot("ft30_triple_intro");
+        Console.WriteLine($"  at the menu: mine {Side(triple, BattleSide.Player)}; theirs {Side(triple, BattleSide.Enemy)}; choosing for {triple.MenuBattler.Slot}, shift offered {triple.OffersShift}");
+
+        // Tackle from the left end: the foe across, the centre's foe and the ally beside; the far foe's card greyed
+        triple.SelectMainMenuOption(0);
+        triple.SelectMove(1);
+        Frames(20);
+        Shot("ft31_triple_targets");
+        Console.WriteLine($"  the target menu ({triple.HUD.MenuState}): {triple.TargetColumns} to a row; cards {string.Join(", ", triple.TargetLayout.Select(b => b?.Pokemon == null ? "-" : $"{b.Side} {b.Slot}"))}; "
+            + $"choices {string.Join(", ", triple.TargetChoices.Select(b => $"{b.Side} {b.Slot}"))}");
+        triple.SelectTarget(0);
+        // The centre and the right end each Rock Slide
+        for (int slot = 1; slot < 3 && triple.HUD.MenuState == BattleMenuState.Main; slot++)
+        {
+            triple.SelectMainMenuOption(0);
+            triple.SelectMove(0);
+        }
+        Skip(0.3);
+        ReadOn(triple);
+        Whole(triple);
+        Skip(0.6);
+
+        // The left end shifts to the centre: SHIFT stands where RUN does, and its line is read with the two trading places
+        if (triple.MenuBattler.Slot == 0 && triple.OffersShift)
+        {
+            triple.HUD.MainMenuIndex = 3;
+            Frames(10);
+            Shot("ft32a_triple_shift_command");
+            var left = triple.PlayerSlots[0].Pokemon;
+            triple.SelectMainMenuOption(3);
+            for (int slot = 1; slot < 3 && triple.HUD.MenuState == BattleMenuState.Main; slot++)
+            {
+                triple.SelectMainMenuOption(0);
+                triple.SelectMove(0);
+            }
+            string shifting = Text.Of("battle.shiftedToTheCentre", ("pokemon", left?.DisplayName ?? ""));
+            bool shot = false;
+            for (int i = 0; i < 60 && !triple.IsBattleOver && triple.HUD.MenuState == BattleMenuState.Message; i++)
+            {
+                Skip(0.05);
+                if (!shot && triple.CurrentMessage == shifting) { Skip(0.4); Shot("ft32_triple_shift"); shot = true; }
+                Confirm(triple);
+                Skip(0.3);
+            }
+            if (!shot) Console.WriteLine($"  !! never said: {shifting}");
+            Console.WriteLine($"  after the shift: mine {Side(triple, BattleSide.Player)}; the shifted {left?.Species.Name} in the centre {triple.PlayerSlots[1].Pokemon == left}");
+        }
+        else Console.WriteLine($"  !! no shift offered: choosing for {triple.MenuBattler.Slot}");
+
+        // The rest of them felled a Rock Slide at a time, a single HP each
+        for (int guard = 0; guard < 300 && !triple.IsBattleOver; guard++)
+        {
+            if (triple.HUD.MenuState == BattleMenuState.Main)
+            {
+                foreach (var p in team.Members.Where(p => !p.IsFainted)) p.CurrentHP = p.MaxHP;
+                foreach (var foe in triple.EnemySlots.Select(s => s.Pokemon).Where(p => p is { CurrentHP: > 0 })) foe!.CurrentHP = 1;
+                triple.SelectMainMenuOption(0);
+                triple.SelectMove(0);
+            }
+            else if (triple.HUD.MenuState == BattleMenuState.SelectTarget) triple.SelectTarget(0);
+            else Confirm(triple);
+            Skip(0.4);
+        }
+        var record = triple.Core.Record;
+        Console.WriteLine($"the triple's end: {triple.Result}; turns {triple.Core.Turn}; record {record?.Format} with {record?.Answers.SelectMany(a => a).Count(c => c.Kind == ChoiceKind.Shift)} shift(s)");
+        for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
+        Frames(10);
     }
 
     // Plan 14 · B4, a horde on screen and in the grass (ft10 to ft14), last in `formats` so nothing before it moves:

@@ -29,6 +29,8 @@ internal static partial class ModernUi
         BattleKind.PalPark => (Text.Of("battleMenu.parkBall", ("n", battle.SpecialBalls)), new[] { "", "", Text.Of("battleMenu.run") }),
         // The Bug-Catching Contest's Sport Balls stand where the bag does (plan 15 · E5)
         _ when battle.OnlyBall != null => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.sportBall", ("n", battle.SpecialBalls)), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") }),
+        // At an end of a triple battle's side SHIFT stands where RUN does (plan 14 · B6)
+        _ when battle.OffersShift => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.shift") }),
         _ => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") })
     };
 
@@ -73,6 +75,27 @@ internal static partial class ModernUi
                     if (slide >= 0f) CompactBox(1240 + slot * 36 + 760 * slide, 586 + slot * 128, mine, true, turn, 0.2f);
                 }
             }
+        }
+        else if (battle.IsTriple)
+        {
+            // A triple battle (plan 14 · B6): the foes' three small boxes stacked down the left as a horde's, the player's
+            // three down the right above the commands, the one whose action is being chosen lit
+            if (hud.MenuState != BattleMenuState.Info)
+                for (int slot = 0; slot < anim.SlotsOf(BattleSide.Enemy); slot++)
+                {
+                    var foe = anim[BattleSide.Enemy, slot];
+                    float slide = BattleHUD.BoxSlide(anim, foe);
+                    var at = HordeBoxAt(slot);
+                    if (slide >= 0f) HordeBox(at.X - 640 * slide, at.Y, foe, battle.ShowsCaughtMark(foe.Shown!));
+                }
+            if (!boxCovered && hud.MenuState != BattleMenuState.Info)
+                for (int slot = 0; slot < anim.SlotsOf(BattleSide.Player); slot++)
+                {
+                    var mine = anim[BattleSide.Player, slot];
+                    float slide = BattleHUD.BoxSlide(anim, mine);
+                    var at = TripleBoxAt(slot);
+                    if (slide >= 0f) TripleBox(at.X + 640 * slide, at.Y, mine, choosing && battle.MenuBattler.Slot == slot);
+                }
         }
         else if (battle.IsHorde)
         {
@@ -256,6 +279,34 @@ internal static partial class ModernUi
         StatusPill(x + 30 + nameW + 10, y + 14, p.Status, 24);
         Level(x + r.Width - 34, y + 27, p.Level, 26);
         HpBar(x + 30, y + 52, r.Width - 30 - 38, 16, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        GiantTags(r, view);
+    }
+
+    /// <summary>
+    /// Where the player's box of a triple battle stands (plan 14 · B6; style guide, "Battle panels", "A triple's boxes"):
+    /// three down the right above the commands, each 12 to the left of the one over it, the third ending 10 above the
+    /// target menu's cards.
+    /// </summary>
+    public static Vector2 TripleBoxAt(int slot) => new(1384 - slot * 12, 548 + slot * 96);
+
+    /// <summary>
+    /// The player's own small box in a triple battle: a horde's box with the HP's numbers after its bar, leaning the
+    /// player's way, and lit for the Pokémon whose action is being chosen.
+    /// </summary>
+    private static void TripleBox(float x, float y, CombatantView view, bool turn)
+    {
+        var p = view.Shown!;
+        var r = new Rectangle(x, y, HordeBoxWidth, HordeBoxHeight);
+        if (turn) UiShapes.Shadow(r, 18, 18, Vector2.Zero, Selection with { A = 200 }, 0.2f);
+        Panel(r, 18, 0.2f, turn ? 5f : 4f, turn ? Selection : null);
+        float nameW = NameWithGender(p, x + 34, y + 27, 26);
+        StatusPill(x + 34 + nameW + 10, y + 14, p.Status, 24);
+        Level(x + r.Width - 34, y + 27, p.Level, 26);
+        int hp = (int)MathF.Ceiling(view.DisplayedHp);
+        string hpText = $"{hp}/{p.MaxHP}";
+        float hw = UiFonts.Measure(hpText, 20, UiWeight.Black);
+        HpBar(x + 34, y + 52, r.Width - 34 - 34 - hw - 14, 16, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        UiFonts.DrawCentered(hpText, x + r.Width - 34 - hw, y + 60, 20, Ink, UiWeight.Black);
         GiantTags(r, view);
     }
 
@@ -557,7 +608,10 @@ internal static partial class ModernUi
         {
             var left = battle.IsDouble || battle.IsSos ? battle.EnemySlots.ElementAtOrDefault(1) : null;
             // A horde's move cards tell of the first foe still standing; the target menu tells of each (plan 14 · B4)
-            var right = battle.IsHorde ? battle.EnemySlots.FirstOrDefault(b => b.IsActive) ?? battle.EnemySlots[0] : battle.EnemySlots[0];
+            // and a triple battle's of the first in reach of the Pokémon choosing (plan 14 · B6)
+            var right = battle.IsHorde || battle.IsTriple
+                ? battle.EnemySlots.FirstOrDefault(b => b.IsActive && PokemonPlatinumEngine.Battle.Sim.BattleCore.InReach(battle.Format, battle.MenuBattler.Place, b.Place)) ?? battle.EnemySlots[0]
+                : battle.EnemySlots[0];
             for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)
             {
                 var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);

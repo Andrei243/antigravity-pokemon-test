@@ -1,0 +1,409 @@
+# D14 · Evolutions past level 100, batch 6 (Kalos): the proposal
+
+Plan 03 · D14, the design part of its sixth batch, written in wave 53 after the user approved batches 1 to 4 ([D14-proposals-kanto.md](D14-proposals-kanto.md), [D14-proposals-johto.md](D14-proposals-johto.md), [D14-proposals-hoenn.md](D14-proposals-hoenn.md) and [D14-proposals-sinnoh.md](D14-proposals-sinnoh.md)) with every default, on 2026-10-25; batch 5 (Unova) is written beside it in the same wave. **Not yet answered by the user.** Nothing here is built: no species, no evolution row, no learnset, no sculpt, no test. A later session writes each row into the data (as entries of `tools/DataImporter/Overrides/species-past-hundred.json`, batch 1's table). The format is batch 4's, with one line more to each design: the Pokédex line its two written entries are to be drawn from.
+
+**What batches 1 to 4 settled, applied here without asking again**: the rise is **+80, capped so that no species of ours that isn't legendary passes 600**, and a region's legendary set rises to **660**; the number is **2000 + the number of the species it evolves from** (here 2660 to 2715, meeting none of the earlier batches' 2020 to 2482); abilities come **only from `abilities.json`**, as many slots as the species had, in its order, the hidden one last; the evolution is **by level with a condition the engine already runs**, a held item used up; our species are listed in the National Pokédex after the 1,025 and **count toward none of its totals or diplomas**; names are invented, one word of at most 12 letters, and held against every species and form of the data and the earlier batches' 170; **an evolution that starts from a regional form belongs to that form's own line** (`Evolution.FitsForm`); a female look, a Mega or a Gigantamax form is kept where the species has one, and **ours have no forms of their own**; the Frontier lets them be entered (a legendary's evolution joins its ban list), Pal Park, migration, the way out, the Pokéathlon's rivals and the golden corpus are held to 1 to 1,025; **the eight Eeveelutions go alike** (level 120 holding their stone, friendship 220 or more, 600: Sylveon, the eighth, is this batch's); the cover legendaries and the mythicals don't evolve; a region's pairs are built as sets or not at all; **each species evolves within its own region's climb, at most 160** (batch 3's first question), and a region whose climb never passes 100 takes the band where the chain first does (batch 4's).
+
+**Kalos's climb, and so its levels** (question 1): Kalos is not built yet (plan 23 · Z1 to Z4 have no region file), so it has no `levels` mapping. Its place in the chain is after Unova, whose file maps Black 2's 2 to 59 onto **162 to 185** (`regions/unova.json`), and the level-curve study's fair climb puts Kalos's Champion at **205** (`docs/plans/W4-level-curve-study.md`, section 4: "Kalos 205 → 209"). So Kalos will most likely be met at **185 to 205** (X and Y's 2 to 68: `[[2, 185], [68, 205]]`), its first Gym Leader at about 188 and its last at about 202. That whole climb lies above the 160 that batch 3's rule set as the most, which was written when the highest region in view was Hoenn (136 to 162); kept, every Kalos species caught in Kalos would evolve at its first level, which is exactly what batch 3's question 1 was asked to avoid. By default this batch's species evolve **between 188 and 203**, within Kalos's own climb and before its Champion, and the rule becomes "within the region's own climb" with the 160 dropped for a region that starts above it. Sylveon alone stays at 120, as the other seven Eeveelutions. Kalos has no legendary set of its own to rise to 660 (its legendaries are the cover trio and three mythicals), so no design here is at a legendary's level.
+
+Every name, type, ability, item, move, species, stat and sum in this document was checked by a script that only reads `PokemonPlatinumEngine/Data/species.json`, `abilities.json` and `items.json`, with the four earlier batches' names and numbers read from their documents and the names of any other D14 proposal found in the repository's worktrees (kept outside the repository; what it checks is listed under "How the numbers were checked", at the end).
+
+## The shortlist: the twelve strongest
+
+If the user wants a small first build of this batch, these are the twelve. Each lifts one of Kalos's weakest last stages or is among the region's best-loved designs.
+
+| | Ours | From | Typing | Total | Evolves | Why it leads |
+|---|---|---|---|---|---|---|
+| 1 | **Excavabbit** | Diggersby | Normal/Ground | 423 → 503 | level 188, knowing Hammer Arm | the lowest total of Kalos's last stages, met on its first routes |
+| 2 | **Signalmus** | Dedenne | Electric/Fairy | 431 → 511 | level 192, knowing Nuzzle | the second lowest; the antenna mouse grown into a relay station |
+| 3 | **Perfumelle** | Aromatisse | Fairy | 462 → 542 | level 194, holding a Sachet | 462, and the Sachet that made it makes it again |
+| 4 | **Occulynx** | Meowstic | Psychic | 466 → 546 | level 190, at night | 466, the cat whose ears hold its power sealed, sealed no longer |
+| 5 | **Chatelkey** | Klefki | Steel/Fairy | 470 → 550 | level 198, knowing Magic Room | 470, the key ring grown into the keys of a castle |
+| 6 | **Sylvanshade** | Trevenant | Ghost/Grass | 474 → 554 | level 198, knowing Forest's Curse | 474, the haunted tree grown into a grove |
+| 7 | **Soufflair** | Slurpuff | Fairy | 480 → 560 | level 194, holding a Whipped Dream | 480, and the Whipped Dream that made it makes it again |
+| 8 | **Coronafrill** | Heliolisk | Electric/Normal | 481 → 561 | a Sun Stone at level 194 | 481, and the Sun Stone that made it makes it again |
+| 9 | **Mesmerquid** | Malamar | Dark/Psychic | 482 → 562 | level 194, knowing Topsy-Turvy | 482, the squid whose lights hold whole crowds |
+| 10 | **Lanternhusk** | Gourgeist | Ghost/Grass | 494 → 574 | level 198, at night | the pumpkin that sings to lost souls, lit for them |
+| 11 | **Faerieon** | Sylveon | Fairy | 525 → 600 | level 120 holding a Shiny Stone, friendship 220 or more | the eighth Eeveelution, which completes the set of eight |
+| 12 | **Sonarwing** | Noivern | Flying/Dragon | 535 → 600 | level 203, knowing Boomburst | among the region's best-loved designs, and its last Pokémon met before the League |
+
+## What qualifies, and how many
+
+The earlier batches' rule and the same script: a species **with no evolution at all**, or **the last stage of a line of two**; an evolution that starts from a regional form counts as that form's own.
+
+**Kalos, National Pokédex 650 to 721: 30 species qualify.**
+
+- **11 alone**: Furfrou, Hawlucha, Dedenne, Carbink, Klefki, Xerneas, Yveltal, Zygarde, Diancie, Hoopa and Volcanion (the last six legendary or mythical).
+- **19 last of a line of two**: Diggersby, Pyroar, Gogoat, Pangoro, Meowstic, Aromatisse, Slurpuff, Malamar, Barbaracle, Dragalge, Clawitzer, Heliolisk, Tyrantrum, Aurorus, Sylveon (Eevee's), Trevenant, Gourgeist, Avalugg and Noivern. Espurr has two ends that are one species (Meowstic, its female a form of its own); Bergmite's other end is the Hisuian Avalugg, a regional form whose line is Hisui's batch's.
+- **An earlier species whose line's last stage is first met in Kalos: one, Sylveon** (Eevee's eighth end). No other line of an earlier generation gained its last stage in Kalos, and no Kalos line ends in a later region.
+- **Not here, last of a line of three (8)**: Chesnaught, Delphox, Greninja, Talonflame, Vivillon, Florges, Aegislash and Goodra. They take 06 · R31's moves only. The Hisuian Goodra is the third of its line too.
+
+24 designs follow; Xerneas, Yveltal, Zygarde, Diancie, Hoopa and Volcanion are left out with their reasons.
+
+## How to read an entry
+
+As batch 4's. **Stats** are the stats the game reads (the newest games' where `species.json` has a `modern` change; none of the 30 has one). **Levels**: 188 to 203 (above), the weakest of the first routes at 188 to 192 (Diggersby, Pyroar, Gogoat, Furfrou, Meowstic, Pangoro, Dedenne), the middle of the region at 194 to 196, the late caves' and the fossils' at 196 to 200, Noivern, met last in Terminus Cave, at 203, and Sylveon at 120 with the other Eeveelutions. **Looks** start from our own sculpt of the species, and a species whose female looks different (Pyroar and Meowstic: `genderDifferences` in `species.json`) keeps that difference where the feature survives; Pyroar, Meowstic, Malamar, Barbaracle, Dragalge and Hawlucha keep their Megas (Legends: Z-A's, in the data as forms), which ours don't get. **Pokédex**: one line, our own words, which the build session turns into the two written entries `dex-entries.json` wants (`--check-entries` clean). **Say**: strong yes (the shortlist), yes, maybe, no.
+
+**The sets.** Kalos has two, each built as a set or not at all: the two fossils (Tyrantrum and Aurorus, as batches 1, 3 and 4's), each holding a **Rare Bone** at the hour its own first stage evolves at (Tyrunt by day, Amaura at night: `LevelHoldingItemDay` and `LevelHoldingItemNight`, which Lunatone's and Solrock's ends use), since the data has no Jaw Fossil or Sail Fossil; and Sylveon with the seven Eeveelutions before it. Every condition below is one the engine already runs; one uses the line's own first stage, as batch 2's Raysail and batch 4's Corvicapo do: **`LevelWithSpeciesInParty`** with a Pancham for Pangoro. Three hold the item their own species was made with again (the Sachet, the Whipped Dream, the Sun Stone used on Heliolisk), as batch 4's Ossuarion and Hexmagistra do.
+
+## The legendaries, the mythicals, and the species with forms
+
+Kalos has three legendaries and three mythicals; the user asked each batch to say which of its region's evolve.
+
+- **Xerneas, Yveltal and Zygarde: no, as a set.** The covers of X and Y and the third of their trio, 680, 680 and 600; Xerneas's Active Mode and Zygarde's 10%, 50% and Complete Formes (and its Mega) are already their changes. Without them Kalos has no legendary set to rise to 660, the first region without one.
+- **Diancie, Hoopa and Volcanion: no.** The mythicals stand outside any stage, as Mew, Celebi, Jirachi, Deoxys and Sinnoh's five; Diancie is itself a Carbink changed, and Carbink's evolution of ours (Druzarion) is kept clear of its pink diamond.
+- **Furfrou: maybe** (question 4). Its nine trims are forms of the look alone (`Furfrou-Heart` and the rest), and ours have no forms of their own, so an evolution grows any trim out into one natural coat. Unlike Wormadam's cloaks (batch 4's no), the trims change no typing, so nothing but the look is lost.
+- **Gourgeist: yes, one size** (question 3). Its four sizes are forms with stats of their own; ours is one species at the Average size's stats + 80, and any size evolves into it.
+- **Meowstic: yes, one species** (question 5). The female is a form of the data (`Meowstic-Female`, her hidden ability Competitive, her own moves); ours keeps the species' abilities and moves and her look as a female look, as `genderDifferences` says it has one.
+
+## The table: every qualifying species
+
+The user may strike rows here before reading the designs. "No." is our number; "Total" is the stats the game reads now, and ours.
+
+| # | Was | Ours | No. | Typing (was → ours) | Total | Evolves | Say |
+|---|---|---|---|---|---|---|---|
+| 1 | Diggersby (660) | Excavabbit | 2660 | Normal/Ground, kept | 423 → 503 | level 188, knowing Hammer Arm | strong yes: 423, the lowest total of Kalos's last stages, met on its first routes; the rabbit whose ears dig like a digger's arms, and past 100 they are a whole excavator |
+| 2 | Pyroar (668) | Blazemonarch | 2668 | Fire/Normal, kept | 507 → 587 | level 190, by day | yes: the head of Kalos's prides of lions; past 100 the king of all the prides, risen in the sun |
+| 3 | Gogoat (673) | Alpicorn | 2673 | Grass → **Grass/Rock** | 531 → 600 | level 190, knowing Horn Leech | yes: the mount of Kalos's riders; past 100 the goat that carries them to the mountain tops, as sure-footed as the rock it climbs |
+| 4 | Pangoro (675) | Bambrawler | 2675 | Fighting/Dark, kept | 495 → 575 | level 192, with a Pancham in the party | yes: the panda that keeps its gang of Pancham in line; with one beside it, it becomes the boss of every gang |
+| 5 | Furfrou (676) | Majesthound | 2676 | Normal, kept | 472 → 552 | level 190, with friendship 220 or more, by day | maybe: the poodle that once guarded Kalos's kings; grown into the guard itself. Its trims are its looks, and an evolution grows any trim out (question 4) |
+| 6 | Meowstic (678) | Occulynx | 2678 | Psychic, kept | 466 → 546 | level 190, at night | strong yes: 466, the cat that keeps its power sealed under its ears; past 100 it lets the seal go for good |
+| 7 | Aromatisse (683) | Perfumelle | 2683 | Fairy, kept | 462 → 542 | level 194, holding a Sachet (used up) | strong yes: 462, the scent Pokémon a noblewoman of old kept in place of perfume; the Sachet that made it makes it again |
+| 8 | Slurpuff (685) | Soufflair | 2685 | Fairy, kept | 480 → 560 | level 194, holding a Whipped Dream (used up) | strong yes: 480, the confectioners' Pokémon; the Whipped Dream that made it makes it again, a cake grown into a whole patisserie's window |
+| 9 | Malamar (687) | Mesmerquid | 2687 | Dark/Psychic, kept | 482 → 562 | level 194, knowing Topsy-Turvy | strong yes: 482, the squid that turns the world on its head with its lights; past 100 its lights hold whole crowds |
+| 10 | Barbaracle (689) | Reefcolony | 2689 | Rock/Water, kept | 500 → 580 | level 194, knowing Shell Smash | yes: seven Binacle on one rock; past 100 the rock is a reef and two more join them |
+| 11 | Dragalge (691) | Kelpdrake | 2691 | Poison/Dragon, kept | 494 → 574 | level 196, in the rain | yes: the seadragon that hides among kelp; past 100 it is a forest of kelp of its own |
+| 12 | Clawitzer (693) | Salvoclaw | 2693 | Water → **Water/Dragon** | 500 → 580 | level 196, knowing Aura Sphere | yes: the shrimp that fires water from its one great claw and learns Dragon Pulse as it evolves; past 100 the claw has two barrels |
+| 13 | Heliolisk (695) | Coronafrill | 2695 | Electric/Normal, kept | 481 → 561 | a Sun Stone used on it at level 194 or above | strong yes: 481, the desert lizard that makes its power from the sun; the Sun Stone that made it makes it again |
+| 14 | Tyrantrum (697) | Despotitan | 2697 | Rock/Dragon, kept | 521 → 600 | level 196, holding a Rare Bone, by day (used up) | yes: with Aurorus's, as the earlier batches' fossils: the king of the ancient world, by day as Tyrunt became it |
+| 15 | Aurorus (699) | Borealosaur | 2699 | Rock/Ice, kept | 521 → 600 | level 196, holding a Rare Bone, at night (used up) | yes: Tyrantrum's pair: the gentle giant of the ice age, at night as Amaura became it |
+| 16 | Sylveon (700) | Faerieon | 2700 | Fairy, kept | 525 → 600 | level 120, holding a Shiny Stone, with friendship 220 or more (used up) | strong yes: the eighth and last of Eevee's ends, by the pattern the earlier batches set (a stone, friendship, 600): all eight are alike in the end |
+| 17 | Hawlucha (701) | Luchacondor | 2701 | Fighting/Flying, kept | 500 → 580 | level 194, knowing Flying Press | yes: the masked wrestler of the skies; past 100 it wins the belt |
+| 18 | Dedenne (702) | Signalmus | 2702 | Electric/Fairy, kept | 431 → 511 | level 192, knowing Nuzzle | strong yes: 431, the second lowest of Kalos's last stages; the mouse that talks to its kind through its whiskers, grown into a relay station |
+| 19 | Carbink (703) | Druzarion | 2703 | Rock/Fairy, kept | 500 → 580 | level 196, holding a Star Piece (used up) | yes: the jewel of the caves; past 100 a whole geode, and still no Diancie: the mythical keeps its pink diamond |
+| 20 | Klefki (707) | Chatelkey | 2707 | Steel/Fairy, kept | 470 → 550 | level 198, knowing Magic Room | strong yes: 470, the key ring that steals keys it likes; past 100 it holds the keys of a whole castle |
+| 21 | Trevenant (709) | Sylvanshade | 2709 | Ghost/Grass, kept | 474 → 554 | level 198, knowing Forest's Curse | strong yes: 474, the tree a spirit lives in, that leads travellers astray; past 100 a whole grove walks with it |
+| 22 | Gourgeist (711) | Lanternhusk | 2711 | Ghost/Grass, kept | 494 → 574 | level 198, at night | strong yes: the pumpkin that sings to lost souls; past 100 a lantern lit for them |
+| 23 | Avalugg (713) | Glacitadel | 2713 | Ice, kept | 514 → 594 | level 200, holding a Never-Melt Ice (used up) | yes: the iceberg that carries Bergmite on its back; past 100 the iceberg is a fortress. The Hisuian Avalugg's is Hisui's batch's |
+| 24 | Noivern (715) | Sonarwing | 2715 | Flying/Dragon, kept | 535 → 600 | level 203, knowing Boomburst | strong yes: among Kalos's best loved: the bat dragon whose ears are speakers; past 100 its whole body sings |
+| – | Xerneas (716) | none | – | Fairy | 680 | – | no: 680, the cover legendary of X and the life of the region's trio; its Active Mode is its change |
+| – | Yveltal (717) | none | – | Dark/Flying | 680 | – | no: 680, the cover legendary of Y, as Xerneas |
+| – | Zygarde (718) | none | – | Dragon/Ground | 600 | – | no: the third of the trio and the order that keeps the other two in check; its 10%, 50% and Complete Formes (and its Mega) are already its stages |
+| – | Diancie (719) | none | – | Rock/Fairy | 600 | – | no: a mythical, itself a Carbink changed, with a Mega of its own; Carbink's evolution of ours is the other way out of the same stone |
+| – | Hoopa (720) | none | – | Psychic/Ghost | 600 | – | no: a mythical, and its Unbound shape is its change |
+| – | Volcanion (721) | none | – | Fire/Water | 600 | – | no: a mythical, as Diancie and Hoopa |
+
+In all: 12 strong yes, 11 yes, 1 maybe and 6 no.
+
+## The designs
+
+In National Pokédex order. Each entry: the typing and why, the category word, number, size, the stats (the species' as the game reads them → ours) with where the rise goes, the abilities, the evolution with the row it would be in `species.json`, the look, and a Pokédex line.
+
+### 1. Excavabbit, from Diggersby (660): strong yes
+
+- **Typing**: Normal/Ground, kept. *Alternative*: Ground/Steel.
+- **The Excavator Pokémon**, No. 2660. 1.4 m, 60.0 kg (Diggersby 1 m, 42.4 kg).
+- **Stats**: 85 / 56 / 77 / 50 / 77 / 78 = 423 → **100 / 66 / 97 / 50 / 97 / 93 = 503** (+15 HP +10 Atk +20 Def +20 SpD +15 Spe): the rise goes to its Defense and Sp. Def, then its HP and Speed; its Attack only +10, since Huge Power doubles it.
+- **Abilities**: Pickup, Cheek Pouch, hidden Huge Power (was Pickup, Cheek Pouch, hidden Huge Power).
+- **Evolution**: Diggersby at level 188, knowing Hammer Arm. Data: `{"targetSpecies":"Excavabbit","method":"LevelKnowsMove","level":188,"move":"Hammer Arm"}`.
+- **Look**: from our grey and brown rabbit with its great muscled ears and its brown fur like a digger's overalls: larger, the ears' ends grown into broad scoops with three iron-hard nails each (Metal), a band of pale fur across its brow like a miner's lamp strap, its buck teeth wider and its belly rounder. **New feature**: the scoops at its ears' ends.
+- **Pokédex**: It digs a tunnel through a hill in a single night, and the earth it throws out behind it is enough to raise a new field.
+
+### 2. Blazemonarch, from Pyroar (668): yes
+
+- **Typing**: Fire/Normal, kept. *Alternative*: Fire/Dark.
+- **The Sovereign Pokémon**, No. 2668. 1.8 m, 110.0 kg (Pyroar 1.5 m, 81.5 kg).
+- **Stats**: 86 / 68 / 72 / 109 / 66 / 106 = 507 → **96 / 78 / 92 / 119 / 91 / 111 = 587** (+10 HP +10 Atk +20 Def +10 SpA +25 SpD +5 Spe): the rise goes to its Sp. Def and Defense, its weakest, then its HP, Attack and Sp. Atk.
+- **Abilities**: Rivalry, Unnerve, hidden Moxie (was Rivalry, Unnerve, hidden Moxie).
+- **Evolution**: Pyroar at level 190, by day. Data: `{"targetSpecies":"Blazemonarch","method":"LevelDay","level":190}`.
+- **Look**: from our Pyroar with its mane of red and gold flame: larger, the male's mane grown into a crown of flame points standing up round its head, the tuft at its tail's end a second small mane, and bands of gold fur on its forelegs. The female's long mane that flows to her shoulders is kept, grown down her back like a cape. **New feature**: the crown of flame points.
+- **Pokédex**: When it shakes its crown of flame at sunrise, every pride within a day's walk answers with a roar of its own.
+
+### 3. Alpicorn, from Gogoat (673): yes
+
+- **Typing**: Grass → **Grass/Rock**. *Alternative*: Grass alone.
+- **The Summit Pokémon**, No. 2673. 2.1 m, 140.0 kg (Gogoat 1.7 m, 91 kg).
+- **Stats**: 123 / 100 / 62 / 97 / 81 / 68 = 531 → **123 / 110 / 87 / 97 / 101 / 82 = 600** (+10 Atk +25 Def +20 SpD +14 Spe): the rise is +69, to the 600 ceiling: to its Defense, which was 62, and its Sp. Def, then its Speed and Attack.
+- **Abilities**: Sap Sipper, hidden Grass Pelt (was Sap Sipper, hidden Grass Pelt).
+- **Evolution**: Gogoat at level 190, knowing Horn Leech. Data: `{"targetSpecies":"Alpicorn","method":"LevelKnowsMove","level":190,"move":"Horn Leech"}`.
+- **Look**: from our Gogoat with the leaves down its back and its curved horns: larger, the horns grown into great spiralled ibex horns with moss in their ridges, the leaves along its back a saddle-cloth of leaves wide enough to ride, and its hooves rimmed with stone. **New feature**: the spiralled horns.
+- **Pokédex**: It climbs cliffs no rope can reach with a rider on its back, and stops to graze on the moss in its own horns.
+
+### 4. Bambrawler, from Pangoro (675): yes
+
+- **Typing**: Fighting/Dark, kept. *Alternative*: Fighting/Grass.
+- **The Gang Boss Pokémon**, No. 2675. 2.4 m, 180.0 kg (Pangoro 2.1 m, 136 kg).
+- **Stats**: 95 / 124 / 78 / 69 / 71 / 58 = 495 → **110 / 134 / 98 / 69 / 91 / 73 = 575** (+15 HP +10 Atk +20 Def +20 SpD +15 Spe): the rise goes to its Defense and Sp. Def, then its HP and Speed.
+- **Abilities**: Iron Fist, Mold Breaker, hidden Scrappy (was Iron Fist, Mold Breaker, hidden Scrappy).
+- **Evolution**: Pangoro at level 192, with a Pancham in the party. Data: `{"targetSpecies":"Bambrawler","method":"LevelWithSpeciesInParty","level":192,"species":"Pancham"}`.
+- **Look**: from our black and white panda with the leaf in its mouth and its black fur like a short jacket: larger, the leaf grown into a whole stalk of bamboo carried across its shoulders like a staff, the black fur a long coat to its knees, a white mane at its neck and scars over its eyes. **New feature**: the bamboo staff.
+- **Pokédex**: It settles every quarrel among the young of its gang with one tap of its bamboo staff, and never needs a second.
+
+### 5. Majesthound, from Furfrou (676): maybe
+
+- **Typing**: Normal, kept. *Alternative*: Normal/Fairy.
+- **The Royal Guard Pokémon**, No. 2676. 1.5 m, 40.0 kg (Furfrou 1.2 m, 28 kg).
+- **Stats**: 75 / 80 / 60 / 65 / 90 / 102 = 472 → **95 / 95 / 85 / 75 / 90 / 112 = 552** (+20 HP +15 Atk +25 Def +10 SpA +10 Spe): the rise goes to its Defense and HP, then its Attack, Sp. Atk and Speed.
+- **Abilities**: Fur Coat (was Fur Coat).
+- **Evolution**: Furfrou at level 190, with friendship 220 or more, by day. Data: `{"targetSpecies":"Majesthound","method":"FriendshipDay","level":190}`.
+- **Look**: from our Furfrou in its natural coat (white and fluffy over its body and head, its legs bare): taller, the fur grown into a mantle that trails behind it, a crest of fur standing on its head like a guard's plume, and pale gold eyes. Whatever trim it wore is grown out into this coat. **New feature**: the plume of fur.
+- **Pokédex**: No trimmer's shears will cut its coat. It answers to the one person it has chosen and to no crown at all.
+
+### 6. Occulynx, from Meowstic (678): strong yes
+
+- **Typing**: Psychic, kept. *Alternative*: Psychic/Fairy.
+- **The Unsealed Pokémon**, No. 2678. 0.9 m, 14.0 kg (Meowstic 0.6 m, 8.5 kg).
+- **Stats**: 74 / 48 / 76 / 83 / 81 / 104 = 466 → **89 / 48 / 91 / 108 / 96 / 114 = 546** (+15 HP +15 Def +25 SpA +15 SpD +10 Spe): the rise goes to its Sp. Atk, then its HP, Defense and Sp. Def.
+- **Abilities**: Keen Eye, Infiltrator, hidden Prankster (was Keen Eye, Infiltrator, hidden Prankster).
+- **Evolution**: Meowstic at level 190, at night. Data: `{"targetSpecies":"Occulynx","method":"LevelNight","level":190}`.
+- **Look**: from our Meowstic with its folded ears and the eye-like patterns inside them: taller and slimmer, the ears grown long like a hood it holds down with its paws, a second pair of eye patterns inside them (Glow, blue), and its two tails grown into four. The female's white coat with blue ears and tail tips is kept as her look (question 5). **New feature**: the second pair of eye patterns.
+- **Pokédex**: With its ears lowered, the eyes painted inside them stare out, and anything they see is lifted off the ground.
+
+### 7. Perfumelle, from Aromatisse (683): strong yes
+
+- **Typing**: Fairy, kept. *Alternative*: Fairy/Poison.
+- **The Perfumer Pokémon**, No. 2683. 1.1 m, 22.0 kg (Aromatisse 0.8 m, 15.5 kg).
+- **Stats**: 101 / 72 / 72 / 99 / 89 / 29 = 462 → **111 / 72 / 92 / 119 / 109 / 39 = 542** (+10 HP +20 Def +20 SpA +20 SpD +10 Spe): the rise goes to its Defense, Sp. Atk and Sp. Def, then its HP and Speed.
+- **Abilities**: Healer, hidden Aroma Veil (was Healer, hidden Aroma Veil).
+- **Evolution**: Aromatisse at level 194, holding a Sachet (used up). Data: `{"targetSpecies":"Perfumelle","method":"LevelHoldingItem","level":194,"item":"Sachet"}`.
+- **Look**: from our pink Aromatisse with its white curls, its beak-like nose and its bustle: taller, the curls grown into a powdered wig of three tiers, a train of plumes behind the bustle, and wisps of scent drifting round it (decals). **New feature**: the three-tiered wig.
+- **Pokédex**: Its scent changes with the mood of whoever stands nearest, and a single breath of it can end a quarrel.
+
+### 8. Soufflair, from Slurpuff (685): strong yes
+
+- **Typing**: Fairy, kept. *Alternative*: Fairy/Normal.
+- **The Souffle Pokémon**, No. 2685. 1.2 m, 9.0 kg (Slurpuff 0.8 m, 5 kg).
+- **Stats**: 82 / 80 / 86 / 85 / 75 / 72 = 480 → **97 / 95 / 96 / 100 / 90 / 82 = 560** (+15 HP +15 Atk +10 Def +15 SpA +15 SpD +10 Spe): the rise is spread over every stat.
+- **Abilities**: Sweet Veil, hidden Unburden (was Sweet Veil, hidden Unburden).
+- **Evolution**: Slurpuff at level 194, holding a Whipped Dream (used up). Data: `{"targetSpecies":"Soufflair","method":"LevelHoldingItem","level":194,"item":"Whipped Dream"}`.
+- **Look**: from our white Slurpuff with its tufts of cream and its pink nose: larger, a tall souffle crown rising from its head that puffs and sinks as it breathes, ribbons of cream piped along its sides and its ears tipped cherry red. **New feature**: the souffle crown.
+- **Pokédex**: Its crown rises when it is happy and sinks when it is sulking. Bakers keep one by the oven to tell the hour.
+
+### 9. Mesmerquid, from Malamar (687): strong yes
+
+- **Typing**: Dark/Psychic, kept. *Alternative*: Dark/Water.
+- **The Mind Thrall Pokémon**, No. 2687. 2.0 m, 70.0 kg (Malamar 1.5 m, 47 kg).
+- **Stats**: 86 / 92 / 88 / 68 / 75 / 73 = 482 → **101 / 112 / 103 / 68 / 90 / 88 = 562** (+15 HP +20 Atk +15 Def +15 SpD +15 Spe): the rise goes to its Attack, then its HP, Defense, Sp. Def and Speed.
+- **Abilities**: Contrary, Suction Cups, hidden Infiltrator (was Contrary, Suction Cups, hidden Infiltrator).
+- **Evolution**: Malamar at level 194, knowing Topsy-Turvy. Data: `{"targetSpecies":"Mesmerquid","method":"LevelKnowsMove","level":194,"move":"Topsy-Turvy"}`.
+- **Look**: from our upside-down Malamar with its lit spots and its tentacles over its head: larger, ten tentacles, the spots along its body spread into a spiral that turns (Glow, yellow), and the fin on its head grown into a hood over its face. **New feature**: the turning spiral of lights.
+- **Pokédex**: The spiral on its body turns slowly in the dark. People who watch it for too long walk to the sea without knowing why.
+
+### 10. Reefcolony, from Barbaracle (689): yes
+
+- **Typing**: Rock/Water, kept. *Alternative*: Rock/Fighting.
+- **The Colony Pokémon**, No. 2689. 1.8 m, 150.0 kg (Barbaracle 1.3 m, 96 kg).
+- **Stats**: 72 / 105 / 115 / 54 / 86 / 68 = 500 → **97 / 120 / 120 / 54 / 106 / 83 = 580** (+25 HP +15 Atk +5 Def +20 SpD +15 Spe): the rise goes to its HP and Sp. Def, then its Attack and Speed.
+- **Abilities**: Tough Claws, Sniper, hidden Pickpocket (was Tough Claws, Sniper, hidden Pickpocket).
+- **Evolution**: Barbaracle at level 194, knowing Shell Smash. Data: `{"targetSpecies":"Reefcolony","method":"LevelKnowsMove","level":194,"move":"Shell Smash"}`.
+- **Look**: from our Barbaracle, the rock of seven barnacles with a head on each hand: larger, its rock grown into a mound of reef with coral and small barnacles over it, and two more heads at its shoulders, nine in all. **New feature**: the two more heads.
+- **Pokédex**: Nine heads share one reef of a body. When they disagree it does not move at all, sometimes for a whole season.
+
+### 11. Kelpdrake, from Dragalge (691): yes
+
+- **Typing**: Poison/Dragon, kept. *Alternative*: Poison/Water.
+- **The Toxic Kelp Pokémon**, No. 2691. 2.4 m, 120.0 kg (Dragalge 1.8 m, 81.5 kg).
+- **Stats**: 65 / 75 / 90 / 97 / 123 / 44 = 494 → **90 / 75 / 105 / 117 / 123 / 64 = 574** (+25 HP +15 Def +20 SpA +20 Spe): the rise goes to its HP, which was 65, then its Sp. Atk and Speed.
+- **Abilities**: Poison Point, Poison Touch, hidden Adaptability (was Poison Point, Poison Touch, hidden Adaptability).
+- **Evolution**: Dragalge at level 196, in the rain. Data: `{"targetSpecies":"Kelpdrake","method":"LevelInRain","level":196}`.
+- **Look**: from our brown Dragalge with its frills like kelp: longer, the fronds grown into a forest of streamers trailing behind it, a crest of poisoned spines on its head and its fins rimmed in violet (Glow, at their tips). **New feature**: the forest of streamers.
+- **Pokédex**: Sailors who lose their way in a kelp forest are sometimes inside one of these without knowing it.
+
+### 12. Salvoclaw, from Clawitzer (693): yes
+
+- **Typing**: Water → **Water/Dragon**. *Alternative*: Water alone.
+- **The Battery Pokémon**, No. 2693. 1.8 m, 60.0 kg (Clawitzer 1.3 m, 35.3 kg).
+- **Stats**: 71 / 73 / 88 / 120 / 89 / 59 = 500 → **91 / 83 / 103 / 135 / 104 / 64 = 580** (+20 HP +10 Atk +15 Def +15 SpA +15 SpD +5 Spe): the rise goes to its HP, then its Defense, Sp. Atk and Sp. Def.
+- **Abilities**: Mega Launcher (was Mega Launcher).
+- **Evolution**: Clawitzer at level 196, knowing Aura Sphere. Data: `{"targetSpecies":"Salvoclaw","method":"LevelKnowsMove","level":196,"move":"Aura Sphere"}`.
+- **Look**: from our blue and black Clawitzer with its one great cannon of a claw: larger, the great claw grown a second barrel beside the first, the small claw a loader's grip, and armoured plates along its back. **New feature**: the second barrel.
+- **Pokédex**: It fires its two barrels one after the other, so fast that the sound of the first has not faded when the second lands.
+
+### 13. Coronafrill, from Heliolisk (695): strong yes
+
+- **Typing**: Electric/Normal, kept. *Alternative*: Electric/Dragon.
+- **The Corona Pokémon**, No. 2695. 1.4 m, 32.0 kg (Heliolisk 1 m, 21 kg).
+- **Stats**: 62 / 55 / 52 / 109 / 94 / 109 = 481 → **82 / 60 / 77 / 124 / 99 / 119 = 561** (+20 HP +5 Atk +25 Def +15 SpA +5 SpD +10 Spe): the rise goes to its Defense, which was 52, then its HP and Sp. Atk.
+- **Abilities**: Dry Skin, Sand Veil, hidden Solar Power (was Dry Skin, Sand Veil, hidden Solar Power).
+- **Evolution**: Heliolisk at a Sun Stone used on it at level 194 or above. Data: `{"targetSpecies":"Coronafrill","method":"UseItem","level":194,"item":"Sun Stone"}`.
+- **Look**: from our yellow and black Heliolisk with the frill it spreads round its head: longer, the frill a full ring of panels like the sun's corona (Glow, yellow at the edge), and a second, smaller frill at its tail's end. **New feature**: the frill at its tail.
+- **Pokédex**: It spreads its frills at noon and drinks in the sun. A single one can light a desert town through the night.
+
+### 14. Despotitan, from Tyrantrum (697): yes
+
+- **Typing**: Rock/Dragon, kept. *Alternative*: Rock/Dark.
+- **The Emperor Pokémon**, No. 2697. 3.2 m, 380.0 kg (Tyrantrum 2.5 m, 270 kg).
+- **Stats**: 82 / 121 / 119 / 69 / 59 / 71 = 521 → **96 / 131 / 124 / 69 / 89 / 91 = 600** (+14 HP +10 Atk +5 Def +30 SpD +20 Spe): the rise is +79, to the 600 ceiling: to its Sp. Def, which was 59, then its Speed and HP.
+- **Abilities**: Strong Jaw, hidden Rock Head (was Strong Jaw, hidden Rock Head).
+- **Evolution**: Tyrantrum at level 196, holding a Rare Bone, by day (used up). Data: `{"targetSpecies":"Despotitan","method":"LevelHoldingItemDay","level":196,"item":"Rare Bone"}`.
+- **Look**: from our brown Tyrantrum with its white crown of plumes and its great jaw: larger, the white plumes grown into a mane down its spine, a row of rock spikes along its jaw and its tail heavier with plates. **New feature**: the mane of plumes down its spine.
+- **Pokédex**: It ruled the ancient world for so long that the bones of its rivals were turned to stone beneath its feet.
+
+### 15. Borealosaur, from Aurorus (699): yes
+
+- **Typing**: Rock/Ice, kept. *Alternative*: Ice/Fairy.
+- **The Polar Night Pokémon**, No. 2699. 3.4 m, 300.0 kg (Aurorus 2.7 m, 225 kg).
+- **Stats**: 123 / 77 / 72 / 99 / 92 / 58 = 521 → **123 / 82 / 102 / 119 / 102 / 72 = 600** (+5 Atk +30 Def +20 SpA +10 SpD +14 Spe): the rise is +79, to the 600 ceiling: to its Defense, which was 72, then its Sp. Atk, Speed and Sp. Def.
+- **Abilities**: Refrigerate, hidden Snow Warning (was Refrigerate, hidden Snow Warning).
+- **Evolution**: Aurorus at level 196, holding a Rare Bone, at night (used up). Data: `{"targetSpecies":"Borealosaur","method":"LevelHoldingItemNight","level":196,"item":"Rare Bone"}`.
+- **Look**: from our blue Aurorus with the sail-like fins down its neck and its crystals: larger, the fins grown into a ribbon of light streaming from its neck to its tail (Glow, green and pink), its crystals larger and a crown of ice on its head. **New feature**: the ribbon of light.
+- **Pokédex**: On the longest night of the year the light that streams from its neck can be seen from three valleys away.
+
+### 16. Faerieon, from Sylveon (700): strong yes
+
+- **Typing**: Fairy, kept. *Alternative*: Fairy/Psychic.
+- **The Bond Pokémon**, No. 2700. 1.2 m, 30.0 kg (Sylveon 1 m, 23.5 kg).
+- **Stats**: 95 / 65 / 65 / 110 / 130 / 60 = 525 → **105 / 65 / 90 / 120 / 130 / 90 = 600** (+10 HP +25 Def +10 SpA +30 Spe): the rise is +75, to the 600 ceiling: to its Speed and Defense, its weakest, then its HP and Sp. Atk.
+- **Abilities**: Cute Charm, hidden Pixilate (was Cute Charm, hidden Pixilate).
+- **Evolution**: Sylveon at level 120, holding a Shiny Stone, with friendship 220 or more (used up). Data: `{"targetSpecies":"Faerieon","method":"LevelHoldingItem","level":120,"item":"Shiny Stone","needsFriendship":true}`.
+- **Look**: from our pink and white Sylveon with its ribbon feelers: longer, its four feelers grown to six that trail like a dancer's ribbons, the bow at its ear joined by a second bow, and the blue of its eyes and ribbons deeper. **New feature**: the six ribbons.
+- **Pokédex**: Its six ribbons reach out to anyone who is sad. A trainer who has its trust is never alone in a crowd.
+
+### 17. Luchacondor, from Hawlucha (701): yes
+
+- **Typing**: Fighting/Flying, kept. *Alternative*: Fighting/Dark.
+- **The Title Belt Pokémon**, No. 2701. 1.1 m, 35.0 kg (Hawlucha 0.8 m, 21.5 kg).
+- **Stats**: 78 / 92 / 75 / 74 / 63 / 118 = 500 → **98 / 112 / 90 / 74 / 88 / 118 = 580** (+20 HP +20 Atk +15 Def +25 SpD): the rise goes to its Sp. Def, which was 63, then its HP and Attack, then its Defense; its Speed was already 118.
+- **Abilities**: Limber, Unburden, hidden Mold Breaker (was Limber, Unburden, hidden Mold Breaker).
+- **Evolution**: Hawlucha at level 194, knowing Flying Press. Data: `{"targetSpecies":"Luchacondor","method":"LevelKnowsMove","level":194,"move":"Flying Press"}`.
+- **Look**: from our green and red Hawlucha with its wrestler's mask: larger, the mask grown a crest of feathers like a champion's headdress, a band of gold feathers round its waist like a title belt, and its wings wider with red tips. **New feature**: the belt of gold feathers.
+- **Pokédex**: It wins its belt in the sky and defends it there, and has never once been brought down to the ground.
+
+### 18. Signalmus, from Dedenne (702): strong yes
+
+- **Typing**: Electric/Fairy, kept. *Alternative*: Electric alone.
+- **The Transmitter Pokémon**, No. 2702. 0.4 m, 5.0 kg (Dedenne 0.2 m, 2.2 kg).
+- **Stats**: 67 / 58 / 57 / 81 / 67 / 101 = 431 → **82 / 73 / 77 / 96 / 82 / 101 = 511** (+15 HP +15 Atk +20 Def +15 SpA +15 SpD): the rise goes to its Defense, then its HP, Attack, Sp. Atk and Sp. Def; its Speed was already 101.
+- **Abilities**: Cheek Pouch, Pickup, hidden Plus (was Cheek Pouch, Pickup, hidden Plus).
+- **Evolution**: Dedenne at level 192, knowing Nuzzle. Data: `{"targetSpecies":"Signalmus","method":"LevelKnowsMove","level":192,"move":"Nuzzle"}`.
+- **Look**: from our orange Dedenne with its antenna-like whiskers: larger, the whiskers grown into two tall aerials with a dish at each tip (Glow, yellow), its tail coiled like a cable and its cheek pouches fuller. **New feature**: the dishes at the aerials' tips.
+- **Pokédex**: It passes the news of a storm from one valley to the next before the first cloud has been seen.
+
+### 19. Druzarion, from Carbink (703): yes
+
+- **Typing**: Rock/Fairy, kept. *Alternative*: Rock/Psychic.
+- **The Geode Pokémon**, No. 2703. 0.6 m, 20.0 kg (Carbink 0.3 m, 5.7 kg).
+- **Stats**: 50 / 50 / 150 / 50 / 150 / 50 = 500 → **80 / 70 / 150 / 70 / 150 / 60 = 580** (+30 HP +20 Atk +20 SpA +10 Spe): the rise goes to its HP, which was 50, then its Attack and Sp. Atk; its defences were already 150.
+- **Abilities**: Clear Body, hidden Sturdy (was Clear Body, hidden Sturdy).
+- **Evolution**: Carbink at level 196, holding a Star Piece (used up). Data: `{"targetSpecies":"Druzarion","method":"LevelHoldingItem","level":196,"item":"Star Piece"}`.
+- **Look**: from our grey Carbink with its crown of blue crystals and its pink jewel: larger, its body split open down the front like a geode, a cave of violet crystals inside (Glow, faint violet), its crown of blue crystals taller and two small arms of crystal. No pink diamond, which is Diancie's. **New feature**: the geode opened down its front.
+- **Pokédex**: Inside its split shell is a cave of crystals that hums when it is touched. Miners call it the singing stone.
+
+### 20. Chatelkey, from Klefki (707): strong yes
+
+- **Typing**: Steel/Fairy, kept. *Alternative*: Steel/Ghost.
+- **The Vault Pokémon**, No. 2707. 0.4 m, 6.0 kg (Klefki 0.2 m, 3 kg).
+- **Stats**: 57 / 80 / 91 / 80 / 87 / 75 = 470 → **82 / 90 / 106 / 95 / 102 / 75 = 550** (+25 HP +10 Atk +15 Def +15 SpA +15 SpD): the rise goes to its HP, which was 57, then its Defense, Sp. Atk and Sp. Def.
+- **Abilities**: Prankster, hidden Magician (was Prankster, hidden Magician).
+- **Evolution**: Klefki at level 198, knowing Magic Room. Data: `{"targetSpecies":"Chatelkey","method":"LevelKnowsMove","level":198,"move":"Magic Room"}`.
+- **Look**: from our grey Klefki with its ring and the keys hanging from it: larger, the ring grown into a great hoop carrying a dozen keys of brass and silver (Metal), one great key at its foot like a castle gate's, and two small wings. **New feature**: the castle's key.
+- **Pokédex**: It keeps the keys of houses long gone. No door it has a key for stays shut, and none it lacks one for will open.
+
+### 21. Sylvanshade, from Trevenant (709): strong yes
+
+- **Typing**: Ghost/Grass, kept. *Alternative*: Ghost/Dark.
+- **The Ancient Grove Pokémon**, No. 2709. 2.2 m, 130.0 kg (Trevenant 1.5 m, 71 kg).
+- **Stats**: 85 / 110 / 76 / 65 / 82 / 56 = 474 → **100 / 120 / 96 / 80 / 92 / 66 = 554** (+15 HP +10 Atk +20 Def +15 SpA +10 SpD +10 Spe): the rise goes to its Defense, then its HP and Sp. Atk.
+- **Abilities**: Natural Cure, Frisk, hidden Harvest (was Natural Cure, Frisk, hidden Harvest).
+- **Evolution**: Trevenant at level 198, knowing Forest's Curse. Data: `{"targetSpecies":"Sylvanshade","method":"LevelKnowsMove","level":198,"move":"Forest's Curse"}`.
+- **Look**: from our dark Trevenant with its one red eye and its roots for legs: taller, its branches grown into a canopy hung with wisps like moss (Glow, green), three red eyes in a knot of its trunk where it had one, and its roots trailing behind. **New feature**: the canopy hung with wisps.
+- **Pokédex**: Where it walks, the trees of the forest lean in to follow it, and the path behind it is gone by morning.
+
+### 22. Lanternhusk, from Gourgeist (711): strong yes
+
+- **Typing**: Ghost/Grass, kept. *Alternative*: Ghost/Fire.
+- **The Harvest Moon Pokémon**, No. 2711. 1.8 m, 45.0 kg (Gourgeist 0.9 m, 12.5 kg).
+- **Stats**: 65 / 90 / 122 / 58 / 75 / 84 = 494 → **90 / 105 / 122 / 78 / 90 / 89 = 574** (+25 HP +15 Atk +20 SpA +15 SpD +5 Spe): the rise goes to its HP and Sp. Atk, then its Attack and Sp. Def; its Defense was already 122.
+- **Abilities**: Pickup, Frisk, hidden Insomnia (was Pickup, Frisk, hidden Insomnia).
+- **Evolution**: Gourgeist at level 198, at night. Data: `{"targetSpecies":"Lanternhusk","method":"LevelNight","level":198}`.
+- **Look**: from our Gourgeist, the pumpkin with a face and arms of hair: larger, the pumpkin carved with a grinning face lit from inside (Glow, orange), the hair grown into a cloak of vines and its stalk curled like a hat. It has one size, whatever size it was (question 3). **New feature**: the face lit from inside.
+- **Pokédex**: On the night of the harvest moon its face is lit from inside, and the lost follow its light home.
+
+### 23. Glacitadel, from Avalugg (713): yes
+
+- **Typing**: Ice, kept. *Alternative*: Ice/Rock.
+- **The Glacier Pokémon**, No. 2713. 2.6 m, 800.0 kg (Avalugg 2 m, 505 kg).
+- **Stats**: 95 / 117 / 184 / 44 / 46 / 28 = 514 → **120 / 127 / 184 / 44 / 81 / 38 = 594** (+25 HP +10 Atk +35 SpD +10 Spe): the rise goes to its Sp. Def, which was 46, then its HP; its Defense was already 184.
+- **Abilities**: Own Tempo, Ice Body, hidden Sturdy (was Own Tempo, Ice Body, hidden Sturdy).
+- **Evolution**: Avalugg at level 200, holding a Never-Melt Ice (used up). Data: `{"targetSpecies":"Glacitadel","method":"LevelHoldingItem","level":200,"item":"Never-Melt Ice"}`.
+- **Look**: from our blue-white Avalugg with the flat iceberg on its back: larger, the iceberg grown into a castle of ice with turrets at its corners, its jaw wider and cracks of blue light deep in the ice. **New feature**: the turrets.
+- **Pokédex**: Whole flocks of Bergmite make their nests in the towers of its back and ride with it across the frozen sea.
+
+### 24. Sonarwing, from Noivern (715): strong yes
+
+- **Typing**: Flying/Dragon, kept. *Alternative*: Dragon/Normal.
+- **The Sonic Boom Pokémon**, No. 2715. 2.0 m, 120.0 kg (Noivern 1.5 m, 85 kg).
+- **Stats**: 85 / 70 / 80 / 97 / 80 / 123 = 535 → **100 / 90 / 95 / 97 / 95 / 123 = 600** (+15 HP +20 Atk +15 Def +15 SpD): the rise is +65, to the 600 ceiling: to its Attack, then its HP, Defense and Sp. Def; its Speed was already 123.
+- **Abilities**: Frisk, Infiltrator, hidden Telepathy (was Frisk, Infiltrator, hidden Telepathy).
+- **Evolution**: Noivern at level 203, knowing Boomburst. Data: `{"targetSpecies":"Sonarwing","method":"LevelKnowsMove","level":203,"move":"Boomburst"}`.
+- **Look**: from our purple and black Noivern with its speaker ears: larger, the speakers grown into twin horns of sound (Glow, green rings), the wings wider with rings in their membranes, and a third speaker at its tail's end. **New feature**: the speaker at its tail.
+- **Pokédex**: Its cry can shatter a boulder from across a canyon, but it hums so softly to its young that they sleep through storms.
+
+## Balance
+
+Measured by the script, as the earlier batches':
+
+- **Totals**: 503 (Excavabbit) to 600 (Alpicorn, Despotitan, Borealosaur, Faerieon and Sonarwing, each risen only to the ceiling: +69, +79, +79, +75 and +65). Nothing passes 600, and no design is a legendary's.
+- **Highest of each stat**: Attack 134 (Bambrawler, from Pangoro's 124), then Despotitan's 131. Sp. Atk 135 (Salvoclaw, from Clawitzer's 120), then Coronafrill's 124. Speed 123 (Sonarwing, which is Noivern's own 123 kept), then Coronafrill's 119. Defense 184 (Glacitadel, Avalugg's own) and Sp. Def 150 (Druzarion, Carbink's own). HP 123 (Alpicorn and Borealosaur, Gogoat's and Aurorus's own).
+- **The weakest stay modest on purpose** (batch 1's answer: no floor): Excavabbit 503 and Signalmus 511, from the two lowest totals of the region's last stages.
+- **Typings and abilities**: two typings gain a second type (Alpicorn Grass/Rock, Salvoclaw Water/Dragon); every species keeps its own abilities, in its own slots.
+
+**Flagged as strong** (each inside the official range; the user may want one turned down):
+1. **Salvoclaw**: Mega Launcher with 135 Sp. Atk, and its Dragon Pulse now of its own type. *To turn down*: Sp. Atk 125 and the 10 to HP; or keep it Water alone (the alternative).
+2. **Mesmerquid**: Contrary turns Superpower's drops into rises, and its Attack is now 112. *To turn down*: Attack 102 and the 10 to Sp. Def.
+3. **Glacitadel**: Avalugg's 184 Defense with 120 HP and Recover in its line, and now 81 Sp. Def. *To turn down*: Sp. Def 71 and the 10 to Speed.
+4. **Excavabbit**: Diggersby's hidden Huge Power doubles its Attack, so its 66 hits as 132; the rise put only 10 there for that reason.
+5. **Faerieon**: Pixilate with 120 Sp. Atk and 130 Sp. Def, at 600 as the seven Eeveelutions before it.
+
+**Weaker by design**: Druzarion (its rise goes to the HP of 50 and the attacks behind Carbink's walls of 150, not to the walls) and Majesthound (one ability, Fur Coat, and its rise spread for a guard's bulk) are judged on their designs more than their numbers.
+
+## Open questions: only what is new for Kalos
+
+The earlier batches' thirty-two are settled and applied (above). These are new.
+
+1. **The level band.** Batch 3's rule is "within the region's own climb, at most 160", and Kalos's climb (most likely 185 to 205, after Unova's 162 to 185) lies wholly above 160. *Default*: **the region's own climb, with the 160 dropped for a region that starts above it**: 188 to 203 here (the first Gym Leader to the last of the Elite Four), Sylveon's end at 120 with the Eeveelutions, and no legendary level, since Kalos has no legendary set. The band follows the levels the study's fair climb gives Kalos; when plan 23 · Z1 writes `regions/kalos.json` and its `levels`, a band that differs is moved with it (one number per row) before the data is built. Batch 5 (Unova, 162 to 185) meets the same question beside this one, and the two are best answered together. *Alternatives*: keep 160 as the most, so every Kalos species met in Kalos evolves at its first level up (no: the reason batch 3's question was asked); or wait for Kalos's region file and build this batch only then.
+2. **No legendary set.** Xerneas, Yveltal and Zygarde are the cover trio and Diancie, Hoopa and Volcanion mythicals, so by the settled rules Kalos is the first region with nothing at 660. *Default*: none. *Alternative*: Zygarde alone, as the trio's guardian rather than a cover (its Complete Forme is already 708, so a rise to 660 from its 50% Forme would sit under its own change), which no earlier batch has done for a legendary alone.
+3. **Gourgeist's four sizes.** The Small, Average, Large and Super Size are forms with stats of their own (Small fast and frail, Super slow and bulky). *Default*: one Lanternhusk at the Average size's stats + 80, which any size becomes, the size lost. *Alternatives*: a size kept as a look only (a female-look-like difference of ours, against the settled rule that ours have no forms), or Gourgeist left out.
+4. **Furfrou's trims.** *Default*: a maybe: built, and any of its nine trims grows out into one natural coat on evolving. *Alternatives*: no, as Wormadam and Rotom (its trims are its point); or yes without the maybe.
+5. **Meowstic's female.** The female Meowstic is a form of the data (`Meowstic-Female`, hidden Competitive in place of Prankster, her own moves) and `species.json` flags a gender difference. *Default*: one Occulynx; a female keeps her white coat as a female look (`PokemonLook.Females`), takes the species' abilities slot for slot (her Competitive becomes Prankster) and its moves. *Alternatives*: a female form of ours with Competitive (against the settled rule); or Occulynx with Competitive as its hidden ability for both.
+6. **The fossils without their fossils.** The data has no Jaw Fossil or Sail Fossil (X and Y's), so Tyrantrum and Aurorus can't hold their own fossil as batch 4's Rampardos and Bastiodon do. *Default*: each holding a **Rare Bone**, by day for Tyrantrum and at night for Aurorus (their first stages' own hours). *Alternatives*: the two fossils added to the data as items first (an items session's work), or the hours alone with no item.
+7. **The Hisuian Avalugg.** Bergmite's other end, the Hisuian Avalugg, is a regional form whose line is its own (`Evolution.FitsForm`). *Default*: Glacitadel comes from the Kalosian Avalugg alone; whether the Hisuian one goes further is Hisui's batch's, written beside this one. *Alternative*: both forms evolve into Glacitadel (against the settled rule).
+
+## The table to answer
+
+One row a species. The user answers each with yes, a change, or no; striking a row in the selection table above is a no.
+
+| # | Ours | Typing | Abilities | HP/Atk/Def/SpA/SpD/Spe (total) | Δ | Evolves |
+|---|---|---|---|---|---|---|
+| 1 | Excavabbit | Normal/Ground | Pickup, Cheek Pouch, Huge Power | 100/66/97/50/97/93 (503) | +15 HP +10 Atk +20 Def +20 SpD +15 Spe | level 188, knowing Hammer Arm |
+| 2 | Blazemonarch | Fire/Normal | Rivalry, Unnerve, Moxie | 96/78/92/119/91/111 (587) | +10 HP +10 Atk +20 Def +10 SpA +25 SpD +5 Spe | level 190, by day |
+| 3 | Alpicorn | Grass/Rock | Sap Sipper, Grass Pelt | 123/110/87/97/101/82 (600) | +10 Atk +25 Def +20 SpD +14 Spe | level 190, knowing Horn Leech |
+| 4 | Bambrawler | Fighting/Dark | Iron Fist, Mold Breaker, Scrappy | 110/134/98/69/91/73 (575) | +15 HP +10 Atk +20 Def +20 SpD +15 Spe | level 192, with a Pancham in the party |
+| 5 | Majesthound | Normal | Fur Coat | 95/95/85/75/90/112 (552) | +20 HP +15 Atk +25 Def +10 SpA +10 Spe | level 190, with friendship 220 or more, by day |
+| 6 | Occulynx | Psychic | Keen Eye, Infiltrator, Prankster | 89/48/91/108/96/114 (546) | +15 HP +15 Def +25 SpA +15 SpD +10 Spe | level 190, at night |
+| 7 | Perfumelle | Fairy | Healer, Aroma Veil | 111/72/92/119/109/39 (542) | +10 HP +20 Def +20 SpA +20 SpD +10 Spe | level 194, holding a Sachet (used up) |
+| 8 | Soufflair | Fairy | Sweet Veil, Unburden | 97/95/96/100/90/82 (560) | +15 HP +15 Atk +10 Def +15 SpA +15 SpD +10 Spe | level 194, holding a Whipped Dream (used up) |
+| 9 | Mesmerquid | Dark/Psychic | Contrary, Suction Cups, Infiltrator | 101/112/103/68/90/88 (562) | +15 HP +20 Atk +15 Def +15 SpD +15 Spe | level 194, knowing Topsy-Turvy |
+| 10 | Reefcolony | Rock/Water | Tough Claws, Sniper, Pickpocket | 97/120/120/54/106/83 (580) | +25 HP +15 Atk +5 Def +20 SpD +15 Spe | level 194, knowing Shell Smash |
+| 11 | Kelpdrake | Poison/Dragon | Poison Point, Poison Touch, Adaptability | 90/75/105/117/123/64 (574) | +25 HP +15 Def +20 SpA +20 Spe | level 196, in the rain |
+| 12 | Salvoclaw | Water/Dragon | Mega Launcher | 91/83/103/135/104/64 (580) | +20 HP +10 Atk +15 Def +15 SpA +15 SpD +5 Spe | level 196, knowing Aura Sphere |
+| 13 | Coronafrill | Electric/Normal | Dry Skin, Sand Veil, Solar Power | 82/60/77/124/99/119 (561) | +20 HP +5 Atk +25 Def +15 SpA +5 SpD +10 Spe | a Sun Stone used on it at level 194 or above |
+| 14 | Despotitan | Rock/Dragon | Strong Jaw, Rock Head | 96/131/124/69/89/91 (600) | +14 HP +10 Atk +5 Def +30 SpD +20 Spe | level 196, holding a Rare Bone, by day (used up) |
+| 15 | Borealosaur | Rock/Ice | Refrigerate, Snow Warning | 123/82/102/119/102/72 (600) | +5 Atk +30 Def +20 SpA +10 SpD +14 Spe | level 196, holding a Rare Bone, at night (used up) |
+| 16 | Faerieon | Fairy | Cute Charm, Pixilate | 105/65/90/120/130/90 (600) | +10 HP +25 Def +10 SpA +30 Spe | level 120, holding a Shiny Stone, with friendship 220 or more (used up) |
+| 17 | Luchacondor | Fighting/Flying | Limber, Unburden, Mold Breaker | 98/112/90/74/88/118 (580) | +20 HP +20 Atk +15 Def +25 SpD | level 194, knowing Flying Press |
+| 18 | Signalmus | Electric/Fairy | Cheek Pouch, Pickup, Plus | 82/73/77/96/82/101 (511) | +15 HP +15 Atk +20 Def +15 SpA +15 SpD | level 192, knowing Nuzzle |
+| 19 | Druzarion | Rock/Fairy | Clear Body, Sturdy | 80/70/150/70/150/60 (580) | +30 HP +20 Atk +20 SpA +10 Spe | level 196, holding a Star Piece (used up) |
+| 20 | Chatelkey | Steel/Fairy | Prankster, Magician | 82/90/106/95/102/75 (550) | +25 HP +10 Atk +15 Def +15 SpA +15 SpD | level 198, knowing Magic Room |
+| 21 | Sylvanshade | Ghost/Grass | Natural Cure, Frisk, Harvest | 100/120/96/80/92/66 (554) | +15 HP +10 Atk +20 Def +15 SpA +10 SpD +10 Spe | level 198, knowing Forest's Curse |
+| 22 | Lanternhusk | Ghost/Grass | Pickup, Frisk, Insomnia | 90/105/122/78/90/89 (574) | +25 HP +15 Atk +20 SpA +15 SpD +5 Spe | level 198, at night |
+| 23 | Glacitadel | Ice | Own Tempo, Ice Body, Sturdy | 120/127/184/44/81/38 (594) | +25 HP +10 Atk +35 SpD +10 Spe | level 200, holding a Never-Melt Ice (used up) |
+| 24 | Sonarwing | Flying/Dragon | Frisk, Infiltrator, Telepathy | 100/90/95/97/95/123 (600) | +15 HP +20 Atk +15 Def +15 SpD | level 203, knowing Boomburst |
+
+## The technical plan (for after the user's answers)
+
+Batch 1's pipeline holds unchanged: each design an entry of `tools/DataImporter/Overrides/species-past-hundred.json` (a `LevelWithSpeciesInParty` row takes `species`, a `LevelHoldingItemDay` or `LevelHoldingItemNight` row `item`, the Eeveelution's `needsFriendship`), two written Pokédex entries and a habitat each in `Data/dex-entries.json` drawn from the line above (`--check-entries` clean), a run of the importer, and `SpeciesPastHundredTests`' count of designs, with its `Climb(from)` given generation 6's band (188 to 203, by question 1) and Sylveon's end held to the Eeveelutions' 120. One test is new to this batch: a Small Gourgeist, a female Meowstic and a trimmed Furfrou each evolve into ours with no form left over (a form ours doesn't have must not survive `Pokemon.EvolveInto`), and the female Occulynx is drawn in her own look. Nothing in the engine is needed: every method above runs today, `LevelHoldingItemDay`, `LevelHoldingItemNight`, `LevelInRain`, `FriendshipDay`, `LevelWithSpeciesInParty` and `UseItem` with a level among them. The sculpts wait for the user, who is reworking the Pokémon sculpts themselves (wave 53's rule): until they say otherwise ours are generated by rule from their data, as every batch's are. What is not this batch's: 06 · R31's moves past level 100 (the learnsets take them by type, as the earlier batches'), the lines of three, the Hisuian Avalugg (question 7), Kalos's own `levels` (plan 23 · Z1), and where in the game the evolutions are met (they need no place, only a level the climb reaches).
+
+## How the numbers were checked
+
+The same kind of Node.js script as the earlier batches', kept in the session's scratch folder and reading only `species.json`, `abilities.json` and `items.json`, with the 170 names and numbers of batches 1 to 4 read from their four documents' tables, and the names in any other `D14-proposals-*.md` found in the repository's main checkout or any of its worktrees (the parallel sessions' drafts: when the script last ran it found the Unova, Alola and Paldea drafts, 119 names, none of which any name here meets). `species.json` now holds our own species too (No. 2000 and up), which the script left out of the lines and held every name against. It built the lines (a regional form's evolution counted as the form's own, and an evolution into one of ours ignored) and the list of the 30 that qualify, and for each of the 24 designs checked: that it qualifies and is Kalos's (650 to 721), and that every qualifying species has a design or a reason for none, and every species given a reason qualifies; that the rise is +80 or what the ceiling of 600 leaves, that no stat falls and that the six stats add up to the total written (the stats are written as the species' own plus the rise, so the two can't differ); that the name is one word of at most 12 letters, taken by no species or form of the data, by none of the earlier batches' 170, by no name of a parallel draft and by no other design of this batch, and contains and is contained in no other name of six letters or more; that the number is 2000 + the old species' and meets none of the earlier batches'; that the types are one or two of the eighteen; that the abilities exist and fill exactly the old species' slots; that the method is one the data already uses; that the level is between 188 and 203, but Sylveon's end at 120 with friendship and a held stone and a total of 600, as the other Eeveelutions; that an item held or used exists and is no key item; that a move to know is in the species' own learnset by level 100 (none of R31's); that a species named in the party is one of the games'; that each is taller and heavier than what it comes from and than every form of it that isn't a Mega, a Gigantamax or a regional form; that the look names the female's difference exactly where `species.json` says the species has one; and that each design has a Pokédex line. The tables and the entries were written by the same script from the same values, so a number can't differ between the selection table, an entry and the table to answer.

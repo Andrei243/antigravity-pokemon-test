@@ -293,6 +293,13 @@ public sealed class Ruleset
     /// </summary>
     public bool SosCalls { get; private init; }
 
+    /// <summary>
+    /// Triple battles (plan 14 · B6; Black and White's): a battle asked for as a <see cref="Battle.BattleFormat.Triple"/> is
+    /// fought three against three, reach by position. Platinum has none, and under its rules such a battle is the double
+    /// or single the sides can field (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool Triples { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -354,7 +361,8 @@ public sealed class Ruleset
         Terastallization = true,
         LaterBalls = true,
         Hordes = true,
-        SosCalls = true
+        SosCalls = true,
+        Triples = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

@@ -67,6 +67,16 @@ public partial class GameEngine
         });
     }
 
+    /// <summary>Shows the painting of a quality in the museum's gallery (the Fashion Case's viewer, on a painting); the script waits for it.</summary>
+    private void ShowContestPainting(ContestStat category)
+    {
+        if (flow.HoennContests.Museum[(int)category] is not { } painting) return;
+        fashionFromBag = false;
+        Graphics.PokemonSprites.Request(painting.Species);
+        flow.State = GameState.FashionCase;
+        flow.FashionCaseScreen.OpenPainting(painting);
+    }
+
     // ------------------------------------------------------------------ the Pokéblock Case
 
     private bool pokeblockCaseFromBag;

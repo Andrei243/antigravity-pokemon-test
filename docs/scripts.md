@@ -448,6 +448,10 @@ Plan 21 · H11. Hoenn's contest is a different game from the Super Contest: `Mod
 | `appeals hang` | The painter takes the picture to the Lilycove Museum (`FLAG_<QUALITY>_PAINTING_MADE`); `RESULT` 1 when the Artist Ribbon went with it (once for a Pokémon), `{ribbon}`. |
 | `appeals records [won]` | The contests entered (or won) in all. |
 | `appeals winner 1` | The Contest Hall's wall at a place, 1 to 6, the newest first: `RESULT` 1 when a winner hangs there, `{wall}` the trainer and `{wallmon}` the Pokémon. |
+| `appeals painting cool` | Plan 21 · H11, part b. The museum's painting of a quality (`cool`, `beauty`, `cute`, `smart`, `tough`): `RESULT` 1 when one hangs, `{wall}` the trainer and `{wallmon}` the Pokémon. |
+| `appeals paintings` | `RESULT` how many of the museum's five paintings hang (`CountPlayerMuseumPaintings`). |
+| `appeals view cool` | Looks at the painting of a quality in a screen of its own and waits for it (`ScriptScreen.ContestPainting`; the Fashion Case's viewer on a painting): `RESULT` 1 when one hangs and was shown, 0 with the frame empty and nothing shown. |
+| `pokeblock taste` | `RESULT` 1 when the first of the team's nature likes a flavour, and `{taste}` is the colour of Pokéblock of it (Mossdeep's black belt, `GetPokeblockNameByMonNature`); 0 for the five natures with no taste. |
 | `pokeblock blend 2` | The Berry Blender with so many others (1 to 3) at the drum: the bag chooses the player's berry, the blender plays and the script waits; `RESULT` 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full. |
 | `pokeblock count` | How many Pokéblocks the Pokéblock Case holds. |
 | `pokeblock full` | `RESULT` 1 when the case can take no more (forty). |

@@ -183,6 +183,51 @@ partial class Harness
         Shot("hc32_case_fed");
         Console.WriteLine($"  fed: {star.DisplayName}'s condition is now {star.Cool}/{star.Beauty}/{star.Cute}/{star.Smart}/{star.Tough}, sheen {star.Sheen}; the case holds {game.PokeblockCase.Count}");
         game.State = GameState.Overworld;
+
+        // ---- part b: a Master Rank won by the same round on a second run, then the gallery that the painter fills
+        (int Place, int Points) Master(int seed)
+        {
+            var player = new Pokemon(PokemonDatabase.Get("Milotic")!, 50) { Cool = 160, Beauty = 255, Cute = 160, Smart = 120, Tough = 120, Sheen = 255 };
+            var stage = HoennContestRules.Stage(player, "Brendan", ContestStat.Beauty, AppealRank.Master, afterTheGame: true, new Random(seed));
+            var masters = new AppealRound(stage, ContestStat.Beauty, AppealRank.Master, new Random(seed + 1));
+            int moves = masters.Appealers[masters.PlayerIndex].Moves.Count;
+            while (!masters.IsOver)
+            {
+                masters.ChooseMoves(masters.AppealNumber % moves);
+                for (int t = 0; t < AppealRound.Contestants; t++) masters.PlayTurn();
+            }
+            return (masters.FinalStandings[masters.PlayerIndex], masters.TotalPoints[masters.PlayerIndex]);
+        }
+        int winning = Enumerable.Range(1, 400).FirstOrDefault(s => Master(s).Place == 0);
+        var first = Master(winning);
+        var second = Master(winning);
+        Console.WriteLine($"  a Master Rank, seed {winning}: place {first.Place} with {first.Points} points, and again {second.Place} with {second.Points}"
+            + (first == second && first.Place == 0 ? "" : " !! the two runs differ, or the player never wins"));
+
+        foreach (var quality in Enum.GetValues<ContestStat>())
+        {
+            var winner = new Pokemon(PokemonDatabase.Get(quality switch
+            {
+                ContestStat.Cool => "Absol", ContestStat.Beauty => "Milotic", ContestStat.Cute => "Azumarill", ContestStat.Smart => "Alakazam", _ => "Blaziken"
+            })!, 60);
+            game.HoennContests.HangInMuseum(HoennContestRules.PaintingOf(HoennContestRules.Conclude(quality, AppealRank.Master, winner, 0, 830 + (int)quality * 20), winner, "Brendan"));
+        }
+        Console.WriteLine($"  the museum holds {game.HoennContests.MuseumCount} paintings");
+        var gallery = MapDatabase.Get("LilycoveCity_LilycoveMuseum_2F");
+        At("LilycoveCity_LilycoveMuseum_2F", 11, 7, Direction.Up);
+        Frames(20);
+        game.LocationSign.Hide();
+        Shot("hc40_gallery");
+        foreach (var quality in new[] { ContestStat.Beauty, ContestStat.Cool })
+        {
+            game.ShowContestPainting(quality);
+            Frames(40);
+            Shot($"hc41_painting_{quality.ToString().ToLowerInvariant()}");
+            game.FashionCaseScreen.Confirm();
+            game.State = GameState.Overworld;
+        }
+        Console.WriteLine($"  the gallery: {gallery.Width} by {gallery.Height}, {gallery.Everyone.Count()} people, frames read by "
+            + string.Join(", ", gallery.TileScripts.Values.Concat(gallery.SignScripts.Values).Where(s => s.EndsWith("Painting")).OrderBy(s => s)));
         engine.NewGameRegion = "Sinnoh";
     }
 }
