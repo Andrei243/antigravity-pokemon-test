@@ -210253,7 +210253,7 @@
     "weight": 55.5,
     "color": "White",
     "shape": "Tentacles",
-    "dexEntry": "Nihilego is a Parasite Pokémon, Rock- and Poison-type, first found in Alola. It stands 1.2 m tall and weighs 55.5 kg.",
+    "dexEntry": "Nihilego is a Parasite Pokémon, Rock- and Poison-type, first found in Alola. It stands 1.2 m tall and weighs 55.5 kg. It evolves into Nihiliad.",
     "learnset": [
       {
         "level": 1,
@@ -210404,6 +210404,25 @@
       "Spite",
       "Zen Headbutt"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Nihiliad",
+        "level": 225,
+        "anyOfSpecies": [
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -210442,7 +210461,7 @@
     "weight": 333.6,
     "color": "Red",
     "shape": "Tentacles",
-    "dexEntry": "Buzzwole is a Swollen Pokémon, Bug- and Fighting-type, first found in Alola. It stands 2.4 m tall and weighs 333.6 kg.",
+    "dexEntry": "Buzzwole is a Swollen Pokémon, Bug- and Fighting-type, first found in Alola. It stands 2.4 m tall and weighs 333.6 kg. It evolves into Buzzcolossus.",
     "learnset": [
       {
         "level": 1,
@@ -210592,6 +210611,25 @@
       "Superpower",
       "Thunder Punch"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Buzzcolossus",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -210629,7 +210667,7 @@
     "weight": 25,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Pheromosa is a Lissome Pokémon, Bug- and Fighting-type, first found in Alola. It stands 1.8 m tall and weighs 25.0 kg.",
+    "dexEntry": "Pheromosa is a Lissome Pokémon, Bug- and Fighting-type, first found in Alola. It stands 1.8 m tall and weighs 25.0 kg. It evolves into Pheromuse.",
     "learnset": [
       {
         "level": 1,
@@ -210778,6 +210816,25 @@
       "Signal Beam",
       "Snore"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Pheromuse",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -210814,7 +210871,7 @@
     "weight": 100,
     "color": "Black",
     "shape": "Upright",
-    "dexEntry": "Xurkitree is a Glowing Pokémon, Electric-type, first found in Alola. It stands 3.8 m tall and weighs 100.0 kg.",
+    "dexEntry": "Xurkitree is a Glowing Pokémon, Electric-type, first found in Alola. It stands 3.8 m tall and weighs 100.0 kg. It evolves into Xurkigrove.",
     "learnset": [
       {
         "level": 1,
@@ -210944,6 +211001,25 @@
       "Snore",
       "Thunder Punch"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Xurkigrove",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -210983,7 +211059,7 @@
     "weight": 999.9,
     "color": "Green",
     "shape": "Humanoid",
-    "dexEntry": "Celesteela is a Launch Pokémon, Steel- and Flying-type, first found in Alola. It stands 9.2 m tall and weighs 999.9 kg.",
+    "dexEntry": "Celesteela is a Launch Pokémon, Steel- and Flying-type, first found in Alola. It stands 9.2 m tall and weighs 999.9 kg. It evolves into Celestrata.",
     "learnset": [
       {
         "level": 1,
@@ -211139,6 +211215,25 @@
       "Superpower",
       "Zen Headbutt"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Celestrata",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -211176,7 +211271,7 @@
     "weight": 0.1,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Kartana is a Drawn Sword Pokémon, Grass- and Steel-type, first found in Alola. It stands 0.3 m tall and weighs 0.1 kg.",
+    "dexEntry": "Kartana is a Drawn Sword Pokémon, Grass- and Steel-type, first found in Alola. It stands 0.3 m tall and weighs 0.1 kg. It evolves into Origamurai.",
     "learnset": [
       {
         "level": 1,
@@ -211303,6 +211398,25 @@
       "Snore",
       "Synthesis"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Origamurai",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -211340,7 +211454,7 @@
     "weight": 888,
     "color": "Black",
     "shape": "Upright",
-    "dexEntry": "Guzzlord is a Junkivore Pokémon, Dark- and Dragon-type, first found in Alola. It stands 5.5 m tall and weighs 888.0 kg.",
+    "dexEntry": "Guzzlord is a Junkivore Pokémon, Dark- and Dragon-type, first found in Alola. It stands 5.5 m tall and weighs 888.0 kg. It evolves into Devourmaw.",
     "learnset": [
       {
         "level": 1,
@@ -211513,6 +211627,25 @@
       "Magnet Rise",
       "Outrage",
       "Snore"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Devourmaw",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Poipole",
+          "Naganadel",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
     ],
     "abilities": [
       "Beast Boost"
@@ -212424,7 +212557,7 @@
     "weight": 150,
     "color": "Purple",
     "shape": "Wings",
-    "dexEntry": "Naganadel is a Poison Pin Pokémon, Poison- and Dragon-type, first found in Alola. It stands 3.6 m tall and weighs 150.0 kg. It evolves from Poipole.",
+    "dexEntry": "Naganadel is a Poison Pin Pokémon, Poison- and Dragon-type, first found in Alola. It stands 3.6 m tall and weighs 150.0 kg. It evolves from Poipole. It evolves into Naganapex.",
     "learnset": [
       {
         "level": 0,
@@ -212586,6 +212719,25 @@
       "Uproar"
     ],
     "offspring": "Poipole",
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Naganapex",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Stakataka",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -212622,7 +212774,7 @@
     "weight": 820,
     "color": "Gray",
     "shape": "Quadruped",
-    "dexEntry": "Stakataka is a Rampart Pokémon, Rock- and Steel-type, first found in Alola. It stands 5.5 m tall and weighs 820.0 kg.",
+    "dexEntry": "Stakataka is a Rampart Pokémon, Rock- and Steel-type, first found in Alola. It stands 5.5 m tall and weighs 820.0 kg. It evolves into Ziggurak.",
     "learnset": [
       {
         "level": 1,
@@ -212767,6 +212919,25 @@
       "Superpower",
       "Zen Headbutt"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Ziggurak",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Blacephalon"
+        ]
+      }
+    ],
     "abilities": [
       "Beast Boost"
     ]
@@ -212803,7 +212974,7 @@
     "weight": 13,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Blacephalon is a Fireworks Pokémon, Fire- and Ghost-type, first found in Alola. It stands 1.8 m tall and weighs 13.0 kg.",
+    "dexEntry": "Blacephalon is a Fireworks Pokémon, Fire- and Ghost-type, first found in Alola. It stands 1.8 m tall and weighs 13.0 kg. It evolves into Pyrocephalon.",
     "learnset": [
       {
         "level": 1,
@@ -212954,6 +213125,25 @@
       "Spite",
       "Trick",
       "Uproar"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Pyrocephalon",
+        "level": 225,
+        "anyOfSpecies": [
+          "Nihilego",
+          "Buzzwole",
+          "Pheromosa",
+          "Xurkitree",
+          "Celesteela",
+          "Kartana",
+          "Guzzlord",
+          "Poipole",
+          "Naganadel",
+          "Stakataka"
+        ]
+      }
     ],
     "abilities": [
       "Beast Boost"
@@ -314527,6 +314717,1849 @@
       "Misty Surge"
     ],
     "hiddenAbility": "Telepathy"
+  },
+  {
+    "dexNumber": 2793,
+    "dexNumbers": {},
+    "name": "Nihiliad",
+    "category": "Sovereign Parasite",
+    "legendary": true,
+    "primaryType": "Rock",
+    "secondaryType": "Poison",
+    "baseHP": 129,
+    "baseAttack": 53,
+    "baseDefense": 82,
+    "baseSpAttack": 142,
+    "baseSpDefense": 131,
+    "baseSpeed": 123,
+    "evYield": {
+      "defense": 1,
+      "spDefense": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 1.6,
+    "weight": 70,
+    "color": "White",
+    "shape": "Tentacles",
+    "dexEntry": "Nihiliad is a Sovereign Parasite Pokémon, Rock- and Poison-type, first found in Alola. It stands 1.6 m tall and weighs 70.0 kg. It evolves from Nihilego.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Wrap"
+      },
+      {
+        "level": 1,
+        "moveName": "Pound"
+      },
+      {
+        "level": 5,
+        "moveName": "Acid"
+      },
+      {
+        "level": 10,
+        "moveName": "Tickle"
+      },
+      {
+        "level": 15,
+        "moveName": "Acid Spray"
+      },
+      {
+        "level": 20,
+        "moveName": "Clear Smog"
+      },
+      {
+        "level": 25,
+        "moveName": "Power Split"
+      },
+      {
+        "level": 25,
+        "moveName": "Guard Split"
+      },
+      {
+        "level": 30,
+        "moveName": "Venoshock"
+      },
+      {
+        "level": 35,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 40,
+        "moveName": "Toxic Spikes"
+      },
+      {
+        "level": 45,
+        "moveName": "Venom Drench"
+      },
+      {
+        "level": 50,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 55,
+        "moveName": "Stealth Rock"
+      },
+      {
+        "level": 60,
+        "moveName": "Mirror Coat"
+      },
+      {
+        "level": 65,
+        "moveName": "Wonder Room"
+      },
+      {
+        "level": 70,
+        "moveName": "Head Smash"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 145,
+        "moveName": "Crystal Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Corrosive Haze"
+      },
+      {
+        "level": 215,
+        "moveName": "Miasma Torrent"
+      },
+      {
+        "level": 250,
+        "moveName": "Caustic Drain"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM16",
+      "TM17",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM36",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM57",
+      "TM58",
+      "TM73",
+      "TM76",
+      "TM80",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TM92",
+      "TR01",
+      "TR08",
+      "TR09",
+      "TR11",
+      "TR20",
+      "TR22",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR54",
+      "TR57",
+      "TR63",
+      "TR69",
+      "TR73",
+      "TR74",
+      "TR76",
+      "TR77",
+      "TR78",
+      "TR81",
+      "TR83",
+      "TR91",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Gunk Shot",
+      "Iron Head",
+      "Knock Off",
+      "Snore",
+      "Spite",
+      "Zen Headbutt"
+    ],
+    "offspring": "Nihilego",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2794,
+    "dexNumbers": {},
+    "name": "Buzzcolossus",
+    "category": "Colossus",
+    "legendary": true,
+    "primaryType": "Bug",
+    "secondaryType": "Fighting",
+    "baseHP": 117,
+    "baseAttack": 149,
+    "baseDefense": 139,
+    "baseSpAttack": 68,
+    "baseSpDefense": 93,
+    "baseSpeed": 94,
+    "evYield": {
+      "attack": 1,
+      "defense": 2,
+      "spDefense": 1
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 3,
+    "weight": 480,
+    "color": "Red",
+    "shape": "Tentacles",
+    "dexEntry": "Buzzcolossus is a Colossus Pokémon, Bug- and Fighting-type, first found in Alola. It stands 3.0 m tall and weighs 480.0 kg. It evolves from Buzzwole.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Power-Up Punch"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 5,
+        "moveName": "Taunt"
+      },
+      {
+        "level": 10,
+        "moveName": "Fell Stinger"
+      },
+      {
+        "level": 15,
+        "moveName": "Vital Throw"
+      },
+      {
+        "level": 20,
+        "moveName": "Bulk Up"
+      },
+      {
+        "level": 25,
+        "moveName": "Endure"
+      },
+      {
+        "level": 30,
+        "moveName": "Reversal"
+      },
+      {
+        "level": 35,
+        "moveName": "Mega Punch"
+      },
+      {
+        "level": 40,
+        "moveName": "Lunge"
+      },
+      {
+        "level": 45,
+        "moveName": "Focus Energy"
+      },
+      {
+        "level": 50,
+        "moveName": "Dynamic Punch"
+      },
+      {
+        "level": 55,
+        "moveName": "Counter"
+      },
+      {
+        "level": 60,
+        "moveName": "Hammer Arm"
+      },
+      {
+        "level": 65,
+        "moveName": "Superpower"
+      },
+      {
+        "level": 70,
+        "moveName": "Focus Punch"
+      },
+      {
+        "level": 110,
+        "moveName": "Molt Renewal"
+      },
+      {
+        "level": 140,
+        "moveName": "Mandible Crush"
+      },
+      {
+        "level": 165,
+        "moveName": "Darting Sting"
+      },
+      {
+        "level": 195,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 220,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM12",
+      "TM17",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM51",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM74",
+      "TM80",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM90",
+      "TR01",
+      "TR10",
+      "TR13",
+      "TR18",
+      "TR20",
+      "TR21",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR37",
+      "TR39",
+      "TR48",
+      "TR52",
+      "TR53",
+      "TR57",
+      "TR74",
+      "TR75",
+      "TR85",
+      "TR93",
+      "TR94"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Endeavor",
+      "Ice Punch",
+      "Iron Head",
+      "Outrage",
+      "Snore",
+      "Superpower",
+      "Thunder Punch"
+    ],
+    "offspring": "Buzzwole",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2795,
+    "dexNumbers": {},
+    "name": "Pheromuse",
+    "category": "Graceful",
+    "legendary": true,
+    "primaryType": "Bug",
+    "secondaryType": "Fighting",
+    "baseHP": 101,
+    "baseAttack": 137,
+    "baseDefense": 67,
+    "baseSpAttack": 137,
+    "baseSpDefense": 67,
+    "baseSpeed": 151,
+    "evYield": {
+      "hp": 1,
+      "speed": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 2.2,
+    "weight": 30,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Pheromuse is a Graceful Pokémon, Bug- and Fighting-type, first found in Alola. It stands 2.2 m tall and weighs 30.0 kg. It evolves from Pheromosa.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Feint"
+      },
+      {
+        "level": 1,
+        "moveName": "Rapid Spin"
+      },
+      {
+        "level": 5,
+        "moveName": "Leer"
+      },
+      {
+        "level": 10,
+        "moveName": "Quick Guard"
+      },
+      {
+        "level": 15,
+        "moveName": "Bug Bite"
+      },
+      {
+        "level": 20,
+        "moveName": "Low Kick"
+      },
+      {
+        "level": 25,
+        "moveName": "Double Kick"
+      },
+      {
+        "level": 30,
+        "moveName": "Triple Kick"
+      },
+      {
+        "level": 35,
+        "moveName": "Stomp"
+      },
+      {
+        "level": 40,
+        "moveName": "Agility"
+      },
+      {
+        "level": 45,
+        "moveName": "Lunge"
+      },
+      {
+        "level": 50,
+        "moveName": "Bounce"
+      },
+      {
+        "level": 55,
+        "moveName": "Speed Swap"
+      },
+      {
+        "level": 60,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 65,
+        "moveName": "Quiver Dance"
+      },
+      {
+        "level": 70,
+        "moveName": "High Jump Kick"
+      },
+      {
+        "level": 110,
+        "moveName": "Molt Renewal"
+      },
+      {
+        "level": 130,
+        "moveName": "Mandible Crush"
+      },
+      {
+        "level": 150,
+        "moveName": "Swarm Chorus"
+      },
+      {
+        "level": 170,
+        "moveName": "Darting Sting"
+      },
+      {
+        "level": 190,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 210,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 230,
+        "moveName": "Ki Burst"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM12",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM51",
+      "TM52",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM68",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TR05",
+      "TR06",
+      "TR07",
+      "TR12",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR37",
+      "TR53",
+      "TR57",
+      "TR61",
+      "TR64",
+      "TR81",
+      "TR87",
+      "TR95"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Icy Wind",
+      "Outrage",
+      "Signal Beam",
+      "Snore"
+    ],
+    "offspring": "Pheromosa",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2796,
+    "dexNumbers": {},
+    "name": "Xurkigrove",
+    "category": "Power Grove",
+    "legendary": true,
+    "primaryType": "Electric",
+    "baseHP": 103,
+    "baseAttack": 89,
+    "baseDefense": 96,
+    "baseSpAttack": 173,
+    "baseSpDefense": 96,
+    "baseSpeed": 103,
+    "evYield": {
+      "defense": 1,
+      "spAttack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 4.6,
+    "weight": 140,
+    "color": "Black",
+    "shape": "Upright",
+    "dexEntry": "Xurkigrove is a Power Grove Pokémon, Electric-type, first found in Alola. It stands 4.6 m tall and weighs 140.0 kg. It evolves from Xurkitree.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Wrap"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 5,
+        "moveName": "Charge"
+      },
+      {
+        "level": 10,
+        "moveName": "Thunder Wave"
+      },
+      {
+        "level": 15,
+        "moveName": "Ingrain"
+      },
+      {
+        "level": 20,
+        "moveName": "Spark"
+      },
+      {
+        "level": 25,
+        "moveName": "Shock Wave"
+      },
+      {
+        "level": 30,
+        "moveName": "Hypnosis"
+      },
+      {
+        "level": 35,
+        "moveName": "Eerie Impulse"
+      },
+      {
+        "level": 40,
+        "moveName": "Thunder Punch"
+      },
+      {
+        "level": 45,
+        "moveName": "Discharge"
+      },
+      {
+        "level": 50,
+        "moveName": "Magnet Rise"
+      },
+      {
+        "level": 55,
+        "moveName": "Thunderbolt"
+      },
+      {
+        "level": 60,
+        "moveName": "Electric Terrain"
+      },
+      {
+        "level": 65,
+        "moveName": "Power Whip"
+      },
+      {
+        "level": 70,
+        "moveName": "Zap Cannon"
+      },
+      {
+        "level": 110,
+        "moveName": "Overcharge"
+      },
+      {
+        "level": 155,
+        "moveName": "Ion Cascade"
+      },
+      {
+        "level": 205,
+        "moveName": "Voltstep"
+      },
+      {
+        "level": 250,
+        "moveName": "Arc Lance"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM22",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM44",
+      "TM53",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM68",
+      "TM73",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TR08",
+      "TR09",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR49",
+      "TR65",
+      "TR72",
+      "TR77",
+      "TR80",
+      "TR86",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Magnet Rise",
+      "Signal Beam",
+      "Snore",
+      "Thunder Punch"
+    ],
+    "offspring": "Xurkitree",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2797,
+    "dexNumbers": {},
+    "name": "Celestrata",
+    "category": "Orbiter",
+    "legendary": true,
+    "primaryType": "Steel",
+    "secondaryType": "Flying",
+    "baseHP": 107,
+    "baseAttack": 111,
+    "baseDefense": 113,
+    "baseSpAttack": 117,
+    "baseSpDefense": 111,
+    "baseSpeed": 101,
+    "evYield": {
+      "attack": 1,
+      "defense": 1,
+      "spAttack": 1,
+      "speed": 1
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 11,
+    "weight": 999.9,
+    "color": "Green",
+    "shape": "Humanoid",
+    "dexEntry": "Celestrata is an Orbiter Pokémon, Steel- and Flying-type, first found in Alola. It stands 11.0 m tall and weighs 999.9 kg. It evolves from Celesteela.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 5,
+        "moveName": "Harden"
+      },
+      {
+        "level": 10,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 15,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 20,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 25,
+        "moveName": "Ingrain"
+      },
+      {
+        "level": 30,
+        "moveName": "Autotomize"
+      },
+      {
+        "level": 35,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 40,
+        "moveName": "Flash Cannon"
+      },
+      {
+        "level": 45,
+        "moveName": "Metal Sound"
+      },
+      {
+        "level": 50,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 55,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 60,
+        "moveName": "Heavy Slam"
+      },
+      {
+        "level": 65,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 70,
+        "moveName": "Skull Bash"
+      },
+      {
+        "level": 110,
+        "moveName": "Alloy Plating"
+      },
+      {
+        "level": 130,
+        "moveName": "Forge Hammer"
+      },
+      {
+        "level": 150,
+        "moveName": "Magnet Lance"
+      },
+      {
+        "level": 170,
+        "moveName": "Rivet Shot"
+      },
+      {
+        "level": 190,
+        "moveName": "Updraft"
+      },
+      {
+        "level": 210,
+        "moveName": "Talon Dive"
+      },
+      {
+        "level": 230,
+        "moveName": "Jet Stream"
+      },
+      {
+        "level": 250,
+        "moveName": "Zenith Plunge"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM19",
+      "TM21",
+      "TM22",
+      "TM26",
+      "TM27",
+      "TM32",
+      "TM35",
+      "TM38",
+      "TM42",
+      "TM44",
+      "TM53",
+      "TM58",
+      "TM64",
+      "TM68",
+      "TM71",
+      "TM74",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TM91",
+      "HM02",
+      "TR01",
+      "TR02",
+      "TR10",
+      "TR15",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR28",
+      "TR39",
+      "TR46",
+      "TR52",
+      "TR59",
+      "TR65",
+      "TR69",
+      "TR70",
+      "TR74",
+      "TR75",
+      "TR77",
+      "TR79"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Iron Head",
+      "Magnet Rise",
+      "Seed Bomb",
+      "Snore",
+      "Superpower",
+      "Zen Headbutt"
+    ],
+    "offspring": "Celesteela",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2798,
+    "dexNumbers": {},
+    "name": "Origamurai",
+    "category": "Folded Blade",
+    "legendary": true,
+    "primaryType": "Grass",
+    "secondaryType": "Steel",
+    "baseHP": 99,
+    "baseAttack": 181,
+    "baseDefense": 131,
+    "baseSpAttack": 69,
+    "baseSpDefense": 71,
+    "baseSpeed": 109,
+    "evYield": {
+      "hp": 1,
+      "attack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 0.5,
+    "weight": 0.3,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Origamurai is a Folded Blade Pokémon, Grass- and Steel-type, first found in Alola. It stands 0.5 m tall and weighs 0.3 kg. It evolves from Kartana.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Fury Cutter"
+      },
+      {
+        "level": 1,
+        "moveName": "Vacuum Wave"
+      },
+      {
+        "level": 5,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 10,
+        "moveName": "False Swipe"
+      },
+      {
+        "level": 15,
+        "moveName": "Cut"
+      },
+      {
+        "level": 20,
+        "moveName": "Air Cutter"
+      },
+      {
+        "level": 25,
+        "moveName": "Aerial Ace"
+      },
+      {
+        "level": 30,
+        "moveName": "Detect"
+      },
+      {
+        "level": 35,
+        "moveName": "Night Slash"
+      },
+      {
+        "level": 40,
+        "moveName": "Synthesis"
+      },
+      {
+        "level": 45,
+        "moveName": "Laser Focus"
+      },
+      {
+        "level": 50,
+        "moveName": "Defog"
+      },
+      {
+        "level": 55,
+        "moveName": "Leaf Blade"
+      },
+      {
+        "level": 60,
+        "moveName": "Sacred Sword"
+      },
+      {
+        "level": 65,
+        "moveName": "Swords Dance"
+      },
+      {
+        "level": 70,
+        "moveName": "Guillotine"
+      },
+      {
+        "level": 110,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 140,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 165,
+        "moveName": "Root Snare"
+      },
+      {
+        "level": 195,
+        "moveName": "Alloy Plating"
+      },
+      {
+        "level": 220,
+        "moveName": "Forge Hammer"
+      },
+      {
+        "level": 250,
+        "moveName": "Rivet Shot"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM17",
+      "TM19",
+      "TM21",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM40",
+      "TM44",
+      "TM54",
+      "TM58",
+      "TM68",
+      "TM75",
+      "TM81",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR00",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR46",
+      "TR49",
+      "TR50",
+      "TR60"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Knock Off",
+      "Last Resort",
+      "Snore",
+      "Synthesis"
+    ],
+    "offspring": "Kartana",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2799,
+    "dexNumbers": {},
+    "name": "Devourmaw",
+    "category": "Devourer",
+    "legendary": true,
+    "primaryType": "Dark",
+    "secondaryType": "Dragon",
+    "baseHP": 223,
+    "baseAttack": 111,
+    "baseDefense": 83,
+    "baseSpAttack": 107,
+    "baseSpDefense": 83,
+    "baseSpeed": 53,
+    "evYield": {
+      "hp": 3,
+      "defense": 1
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 6.5,
+    "weight": 950,
+    "color": "Black",
+    "shape": "Upright",
+    "dexEntry": "Devourmaw is a Devourer Pokémon, Dark- and Dragon-type, first found in Alola. It stands 6.5 m tall and weighs 950.0 kg. It evolves from Guzzlord.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Bite"
+      },
+      {
+        "level": 1,
+        "moveName": "Dragon Tail"
+      },
+      {
+        "level": 5,
+        "moveName": "Swallow"
+      },
+      {
+        "level": 5,
+        "moveName": "Stockpile"
+      },
+      {
+        "level": 10,
+        "moveName": "Knock Off"
+      },
+      {
+        "level": 15,
+        "moveName": "Stomp"
+      },
+      {
+        "level": 20,
+        "moveName": "Stomping Tantrum"
+      },
+      {
+        "level": 25,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 30,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 35,
+        "moveName": "Body Slam"
+      },
+      {
+        "level": 40,
+        "moveName": "Gastro Acid"
+      },
+      {
+        "level": 45,
+        "moveName": "Hammer Arm"
+      },
+      {
+        "level": 50,
+        "moveName": "Heavy Slam"
+      },
+      {
+        "level": 55,
+        "moveName": "Dragon Rush"
+      },
+      {
+        "level": 60,
+        "moveName": "Belch"
+      },
+      {
+        "level": 65,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 70,
+        "moveName": "Giga Impact"
+      },
+      {
+        "level": 110,
+        "moveName": "Dread Aura"
+      },
+      {
+        "level": 130,
+        "moveName": "Rending Fang"
+      },
+      {
+        "level": 150,
+        "moveName": "Umbral Pulse"
+      },
+      {
+        "level": 170,
+        "moveName": "Pilfer Strike"
+      },
+      {
+        "level": 190,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 210,
+        "moveName": "Scale Rend"
+      },
+      {
+        "level": 230,
+        "moveName": "Wyrmflare"
+      },
+      {
+        "level": 250,
+        "moveName": "Serpent Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM06",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM35",
+      "TM36",
+      "TM38",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM46",
+      "TM56",
+      "TM58",
+      "TM59",
+      "TM60",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM74",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM84",
+      "TM90",
+      "TR01",
+      "TR02",
+      "TR10",
+      "TR15",
+      "TR17",
+      "TR20",
+      "TR22",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR32",
+      "TR36",
+      "TR46",
+      "TR47",
+      "TR52",
+      "TR57",
+      "TR58",
+      "TR62",
+      "TR74",
+      "TR75",
+      "TR78",
+      "TR79",
+      "TR88",
+      "TR94",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Gastro Acid",
+      "Heat Wave",
+      "Iron Defense",
+      "Iron Head",
+      "Knock Off",
+      "Last Resort",
+      "Magnet Rise",
+      "Outrage",
+      "Snore"
+    ],
+    "offspring": "Guzzlord",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2804,
+    "dexNumbers": {},
+    "name": "Naganapex",
+    "category": "Poison Lance",
+    "legendary": true,
+    "primaryType": "Poison",
+    "secondaryType": "Dragon",
+    "baseHP": 103,
+    "baseAttack": 93,
+    "baseDefense": 103,
+    "baseSpAttack": 137,
+    "baseSpDefense": 103,
+    "baseSpeed": 121,
+    "evYield": {
+      "hp": 1,
+      "spAttack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 292,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 4.2,
+    "weight": 190,
+    "color": "Purple",
+    "shape": "Wings",
+    "dexEntry": "Naganapex is a Poison Lance Pokémon, Poison- and Dragon-type, first found in Alola. It stands 4.2 m tall and weighs 190.0 kg. It evolves from Naganadel.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Air Cutter"
+      },
+      {
+        "level": 1,
+        "moveName": "Air Slash"
+      },
+      {
+        "level": 1,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 1,
+        "moveName": "Peck"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 1,
+        "moveName": "Helping Hand"
+      },
+      {
+        "level": 1,
+        "moveName": "Acid"
+      },
+      {
+        "level": 7,
+        "moveName": "Fury Attack"
+      },
+      {
+        "level": 14,
+        "moveName": "Fell Stinger"
+      },
+      {
+        "level": 21,
+        "moveName": "Charm"
+      },
+      {
+        "level": 28,
+        "moveName": "Venoshock"
+      },
+      {
+        "level": 35,
+        "moveName": "Venom Drench"
+      },
+      {
+        "level": 42,
+        "moveName": "Nasty Plot"
+      },
+      {
+        "level": 49,
+        "moveName": "Poison Jab"
+      },
+      {
+        "level": 56,
+        "moveName": "Gastro Acid"
+      },
+      {
+        "level": 63,
+        "moveName": "Toxic"
+      },
+      {
+        "level": 70,
+        "moveName": "Dragon Rush"
+      },
+      {
+        "level": 110,
+        "moveName": "Corrosive Haze"
+      },
+      {
+        "level": 145,
+        "moveName": "Miasma Torrent"
+      },
+      {
+        "level": 180,
+        "moveName": "Caustic Drain"
+      },
+      {
+        "level": 215,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 250,
+        "moveName": "Wyrmflare"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM06",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM27",
+      "TM32",
+      "TM35",
+      "TM36",
+      "TM38",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM46",
+      "TM58",
+      "TM59",
+      "TM65",
+      "TM68",
+      "TM79",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM89",
+      "TM90",
+      "HM02",
+      "TR02",
+      "TR08",
+      "TR15",
+      "TR18",
+      "TR20",
+      "TR22",
+      "TR23",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR35",
+      "TR36",
+      "TR47",
+      "TR51",
+      "TR54",
+      "TR57",
+      "TR58",
+      "TR60",
+      "TR62",
+      "TR68",
+      "TR73",
+      "TR78",
+      "TR83",
+      "TR91",
+      "TR95"
+    ],
+    "tutorMoves": [
+      "Gastro Acid",
+      "Gunk Shot",
+      "Heat Wave",
+      "Helping Hand",
+      "Outrage",
+      "Signal Beam",
+      "Snore",
+      "Uproar"
+    ],
+    "offspring": "Poipole",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2805,
+    "dexNumbers": {},
+    "name": "Ziggurak",
+    "category": "Ziggurat",
+    "legendary": true,
+    "primaryType": "Rock",
+    "secondaryType": "Steel",
+    "baseHP": 101,
+    "baseAttack": 141,
+    "baseDefense": 211,
+    "baseSpAttack": 63,
+    "baseSpDefense": 111,
+    "baseSpeed": 33,
+    "evYield": {
+      "hp": 1,
+      "defense": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 6.5,
+    "weight": 960,
+    "color": "Gray",
+    "shape": "Quadruped",
+    "dexEntry": "Ziggurak is a Ziggurat Pokémon, Rock- and Steel-type, first found in Alola. It stands 6.5 m tall and weighs 960.0 kg. It evolves from Stakataka.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 5,
+        "moveName": "Rock Throw"
+      },
+      {
+        "level": 10,
+        "moveName": "Protect"
+      },
+      {
+        "level": 15,
+        "moveName": "Stomp"
+      },
+      {
+        "level": 20,
+        "moveName": "Block"
+      },
+      {
+        "level": 25,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 30,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 35,
+        "moveName": "Autotomize"
+      },
+      {
+        "level": 40,
+        "moveName": "Rock Blast"
+      },
+      {
+        "level": 45,
+        "moveName": "Magnet Rise"
+      },
+      {
+        "level": 50,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 55,
+        "moveName": "Iron Head"
+      },
+      {
+        "level": 60,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 65,
+        "moveName": "Stealth Rock"
+      },
+      {
+        "level": 70,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 140,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 165,
+        "moveName": "Alloy Plating"
+      },
+      {
+        "level": 195,
+        "moveName": "Forge Hammer"
+      },
+      {
+        "level": 220,
+        "moveName": "Rivet Shot"
+      },
+      {
+        "level": 250,
+        "moveName": "Skyfall Stone"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM16",
+      "TM17",
+      "TM20",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM33",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM48",
+      "TM58",
+      "TM68",
+      "TM69",
+      "TM71",
+      "TM74",
+      "TM76",
+      "TM80",
+      "TM82",
+      "TM90",
+      "TM91",
+      "TM92",
+      "TR01",
+      "TR10",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR39",
+      "TR40",
+      "TR46",
+      "TR52",
+      "TR69",
+      "TR70",
+      "TR74",
+      "TR75",
+      "TR76",
+      "TR79",
+      "TR83",
+      "TR88",
+      "TR94",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Iron Head",
+      "Magnet Rise",
+      "Snore",
+      "Superpower",
+      "Zen Headbutt"
+    ],
+    "offspring": "Stakataka",
+    "abilities": [
+      "Beast Boost"
+    ]
+  },
+  {
+    "dexNumber": 2806,
+    "dexNumbers": {},
+    "name": "Pyrocephalon",
+    "category": "Grand Finale",
+    "legendary": true,
+    "primaryType": "Fire",
+    "secondaryType": "Ghost",
+    "baseHP": 93,
+    "baseAttack": 127,
+    "baseDefense": 83,
+    "baseSpAttack": 151,
+    "baseSpDefense": 99,
+    "baseSpeed": 107,
+    "evYield": {
+      "hp": 1,
+      "spAttack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 2.3,
+    "weight": 20,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Pyrocephalon is a Grand Finale Pokémon, Fire- and Ghost-type, first found in Alola. It stands 2.3 m tall and weighs 20.0 kg. It evolves from Blacephalon.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Fire Spin"
+      },
+      {
+        "level": 5,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 10,
+        "moveName": "Ember"
+      },
+      {
+        "level": 15,
+        "moveName": "Night Shade"
+      },
+      {
+        "level": 20,
+        "moveName": "Confuse Ray"
+      },
+      {
+        "level": 25,
+        "moveName": "Magic Coat"
+      },
+      {
+        "level": 30,
+        "moveName": "Incinerate"
+      },
+      {
+        "level": 35,
+        "moveName": "Hypnosis"
+      },
+      {
+        "level": 40,
+        "moveName": "Mystical Fire"
+      },
+      {
+        "level": 45,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 50,
+        "moveName": "Calm Mind"
+      },
+      {
+        "level": 55,
+        "moveName": "Will-O-Wisp"
+      },
+      {
+        "level": 60,
+        "moveName": "Trick"
+      },
+      {
+        "level": 65,
+        "moveName": "Fire Blast"
+      },
+      {
+        "level": 70,
+        "moveName": "Mind Blown"
+      },
+      {
+        "level": 110,
+        "moveName": "Kindle"
+      },
+      {
+        "level": 140,
+        "moveName": "Pyre Lance"
+      },
+      {
+        "level": 165,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 195,
+        "moveName": "Phantom Lantern"
+      },
+      {
+        "level": 220,
+        "moveName": "Soul Siphon"
+      },
+      {
+        "level": 250,
+        "moveName": "Sunforge Blast"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM35",
+      "TM38",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM46",
+      "TM50",
+      "TM56",
+      "TM58",
+      "TM61",
+      "TM64",
+      "TM65",
+      "TM66",
+      "TM79",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR02",
+      "TR11",
+      "TR15",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR33",
+      "TR35",
+      "TR36",
+      "TR37",
+      "TR38",
+      "TR43",
+      "TR49",
+      "TR58",
+      "TR69",
+      "TR81",
+      "TR82"
+    ],
+    "tutorMoves": [
+      "Heat Wave",
+      "Knock Off",
+      "Last Resort",
+      "Snore",
+      "Spite",
+      "Trick",
+      "Uproar"
+    ],
+    "offspring": "Blacephalon",
+    "abilities": [
+      "Beast Boost"
+    ]
   },
   {
     "dexNumber": 2820,

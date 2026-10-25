@@ -1266,7 +1266,7 @@ public class EvolutionTests
                 if (Evolution.TriggerOf(e.Method) == EvolutionTrigger.UseItem) Assert.True(Evolution.IsUsedToEvolve(Item(e.Item!)), what);
                 if (e.Method is EvolutionMethod.LevelAfterMoveUses or EvolutionMethod.LevelKnowsMove) Assert.NotNull(e.Move);
                 if (e.Method is EvolutionMethod.LevelAfterDefeating or EvolutionMethod.LevelWithSpeciesInParty or EvolutionMethod.TradeWithSpecies)
-                    Assert.NotNull(PokemonDatabase.Get(e.Species!));
+                    Assert.All(e.AnyOfSpecies ?? new() { e.Species! }, n => Assert.NotNull(PokemonDatabase.Get(n)));
             }
         }
 

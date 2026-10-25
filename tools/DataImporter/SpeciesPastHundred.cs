@@ -30,6 +30,12 @@ public sealed class SpeciesDesign
     /// <summary>The row put on <see cref="From"/>'s evolutions, its target this species.</summary>
     public EvolutionData Evolution { get; set; } = new();
 
+    /// <summary>
+    /// Whether it is legendary, where the row says so over its forebear's (plan 03 · D14, Alola's supplement: the Ultra
+    /// Beasts, which the data marks as neither, made a region's legendary set); null takes the forebear's.
+    /// </summary>
+    public bool? Legendary { get; set; }
+
     public int Total => Stats.HP + Stats.Attack + Stats.Defense + Stats.SpAttack + Stats.SpDefense + Stats.Speed;
 }
 
@@ -43,7 +49,7 @@ public sealed class SpeciesDesign
 /// <item>Its number is <see cref="PokemonDatabase.OursFrom"/> + its forebear's, its generation 0, and it is in no
 /// regional Pokédex (<c>dexNumbers</c> empty).</item>
 /// <item>Its types, stats, abilities, category, height and weight are the design's.</item>
-/// <item>From its forebear: legendary or mythical, whether its females look different, growth rate, gender share, egg
+/// <item>From its forebear: legendary (unless the row says, <see cref="SpeciesDesign.Legendary"/>) or mythical, whether its females look different, growth rate, gender share, egg
 /// groups, hatch cycles, friendship, colour and shape, what an Egg of it is (the forebear's own Egg), its moves by
 /// level to 100 (its newest game's list too, without the moves its forebear learned on evolving), its machines, tutor
 /// moves and Egg moves.</item>
@@ -151,13 +157,14 @@ public static class SpeciesPastHundred
         static List<LearnableMove> ByLevel(IEnumerable<LearnableMove> moves) =>
             moves.Where(m => m.Level is >= 1 and <= 100).Select(m => new LearnableMove { Level = m.Level, MoveName = m.MoveName }).ToList();
 
+        bool legendary = d.Legendary ?? from.Legendary;
         return new PokemonSpecies
         {
             DexNumber = PokemonDatabase.OursFrom + from.DexNumber,
             Name = d.Name,
             Category = d.Category,
             Generation = 0,
-            Legendary = from.Legendary,
+            Legendary = legendary,
             Mythical = from.Mythical,
             GenderDifferences = from.GenderDifferences,
             PrimaryType = d.Types[0],
@@ -169,7 +176,7 @@ public static class SpeciesPastHundred
             BaseSpDefense = d.Stats.SpDefense,
             BaseSpeed = d.Stats.Speed,
             EvYield = effort,
-            CatchRate = from.Legendary || from.Mythical ? 3 : 45,
+            CatchRate = legendary || from.Mythical ? 3 : 45,
             BaseExpYield = (int)Math.Round(from.BaseExpYield * 1.2, MidpointRounding.AwayFromZero),
             GrowthRate = from.GrowthRate,
             GenderRatio = from.GenderRatio,

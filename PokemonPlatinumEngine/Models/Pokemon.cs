@@ -29,6 +29,11 @@ public class EvolutionData
     public PokemonType? Type { get; set; }
     /// <summary>The species that must be in the party, or traded for.</summary>
     public string? Species { get; set; }
+    /// <summary>
+    /// Species any one of which in the party is enough, beside <see cref="Species"/> (plan 03 · D14, Alola's supplement:
+    /// an Ultra Beast with any other); null for the one species of <see cref="Species"/> alone.
+    /// </summary>
+    public List<string>? AnyOfSpecies { get; set; }
     /// <summary>The place a map must have for it to level up there (<c>Magnetic Field</c>, <c>Moss Rock</c>, <c>Ice Rock</c>, <c>Stone Arch</c>).</summary>
     public string? Location { get; set; }
     /// <summary>Beauty or affection needed, or how many: steps, uses of a move, foes knocked out, items in the bag.</summary>

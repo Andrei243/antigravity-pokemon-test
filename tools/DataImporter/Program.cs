@@ -197,6 +197,7 @@ static void Check(List<PokemonSpecies> species, List<MoveData> moves, List<Abili
             if (e.Item != null && !itemNames.Contains(e.Item)) problems.Add($"{s.Name} evolves with unknown item {e.Item}");
             if (e.Move != null && !moveNames.Contains(e.Move)) problems.Add($"{s.Name} evolves knowing unknown move {e.Move}");
             if (e.Species != null && !speciesNames.Contains(e.Species)) problems.Add($"{s.Name} evolves with unknown species {e.Species}");
+            problems.AddRange((e.AnyOfSpecies ?? new()).Where(n => !speciesNames.Contains(n)).Select(n => $"{s.Name} evolves with unknown species {n}"));
         }
         if (s.Abilities.Count == 0) problems.Add($"{s.Name} has no ability");
         if (s.Learnset.Count == 0) problems.Add($"{s.Name} learns no moves");
