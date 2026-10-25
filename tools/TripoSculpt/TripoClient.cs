@@ -14,7 +14,8 @@ sealed class TripoException(string message, bool fatal) : Exception(message)
     public bool Fatal { get; } = fatal;
 }
 
-sealed record TripoTask(string Id, string Status, int Progress, string? ModelUrl, double Credits, string? Message)
+sealed record TripoTask(string Id, string Status, int Progress, string? ModelUrl, double Credits, string? Message,
+                        List<string> ModelUrls, JsonElement Output)
 {
     public bool Succeeded => Status == "success";
     public bool Failed => Status is "failed" or "cancelled" or "banned" or "expired";
@@ -58,27 +59,49 @@ sealed class TripoClient
         return Text(data, "file_token") ?? throw new TripoException("upload: the reply holds no file_token", false);
     }
 
-    public async Task<string> CreateImageToModel(JsonObject body)
+    public Task<string> CreateImageToModel(JsonObject body) => CreateTask("/generation/image-to-model", body);
+
+    /// <summary>The first-step rig check, rigging and retargeting are tasks like the generation: a path, a body, a task id.</summary>
+    public async Task<string> CreateTask(string path, JsonObject body)
+    {
+        var data = await PostJson("create task " + path, path, body);
+        return Text(data, "task_id") ?? throw new TripoException($"create task {path}: the reply holds no task_id", false);
+    }
+
+    /// <summary>Whatever the reply to a POST holds, for a call that may answer at once (rig-check) or with a task.</summary>
+    public Task<JsonElement> PostJson(string what, string path, JsonObject body)
     {
         string json = body.ToJsonString();
-        var data = await Send("create task", () => new HttpRequestMessage(HttpMethod.Post, baseUrl + "/generation/image-to-model")
+        return Send(what, () => new HttpRequestMessage(HttpMethod.Post, baseUrl + path)
         {
             Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json"),
         });
-        return Text(data, "task_id") ?? throw new TripoException("create task: the reply holds no task_id", false);
     }
 
     public async Task<TripoTask> GetTask(string id)
     {
         var d = await Send("task " + id, () => new HttpRequestMessage(HttpMethod.Get, baseUrl + "/tasks/" + id));
         string? model = null;
-        if (d.TryGetProperty("output", out var output) && output.ValueKind == JsonValueKind.Object)
+        var urls = new List<string>();
+        JsonElement output = default;
+        if (d.TryGetProperty("output", out output) && output.ValueKind == JsonValueKind.Object)
+        {
             model = Text(output, "model_url") ?? Text(output, "model");
+            // A retarget of several animations answers with model_urls: a list, or an object of name -> address.
+            if (output.TryGetProperty("model_urls", out var many))
+            {
+                if (many.ValueKind == JsonValueKind.Array)
+                    urls.AddRange(many.EnumerateArray().Where(u => u.ValueKind == JsonValueKind.String).Select(u => u.GetString()!));
+                else if (many.ValueKind == JsonValueKind.Object)
+                    urls.AddRange(many.EnumerateObject().Where(u => u.Value.ValueKind == JsonValueKind.String).Select(u => u.Value.GetString()!));
+            }
+            if (urls.Count == 0 && model != null) urls.Add(model);
+        }
         double credits = 0;
         foreach (string name in new[] { "credits_consumed", "consumed_credit" })
             if (d.TryGetProperty(name, out var c) && c.ValueKind == JsonValueKind.Number) { credits = c.GetDouble(); break; }
         int progress = d.TryGetProperty("progress", out var p) && p.ValueKind == JsonValueKind.Number ? p.GetInt32() : 0;
-        return new TripoTask(id, Text(d, "status") ?? "unknown", progress, model, credits, Text(d, "error_msg") ?? Text(d, "message"));
+        return new TripoTask(id, Text(d, "status") ?? "unknown", progress, model, credits, Text(d, "error_msg") ?? Text(d, "message"), urls, output.ValueKind == JsonValueKind.Object ? output.Clone() : default);
     }
 
     /// <summary>Polls until the task has ended one way or the other, or the time is up.</summary>

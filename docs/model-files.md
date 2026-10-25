@@ -84,6 +84,10 @@ into a strike, recoils from a hit, hops or dips out of a miss's way, droops when
 it faints. A dodge clip plays the body's part only: the step aside, away from the side the miss passes on, is the
 battle's and is added whatever clip plays.
 
+## Shiny and animations
+
+A shiny look of a model file is the same file with its texture recoloured by the species' shiny palette (`docs/art/style-guide.md`, "Shiny Pokémon"): nothing to make for it. A file without clips is moved as a whole by the body plan; `tools/TripoSculpt` can rig and animate a Tripo sculpt and names its clips for the roles above.
+
 ## Options
 
 A `.json` file with the same name beside a model file can set:

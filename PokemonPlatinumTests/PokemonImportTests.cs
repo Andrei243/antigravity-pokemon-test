@@ -336,6 +336,43 @@ public class PokemonImportTests
         }
     }
 
+    [Fact]
+    public void AShinyLookOfAModelFileIsPutUpInItsPalettesColoursFromItsTextures()
+    {
+        string folder = Path.Combine(Path.GetTempPath(), "model-overrides-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(folder);
+        var saved = ModelOverrides.Folders.ToList();
+        try
+        {
+            GltfWriter.Save(PokemonModels.Build("Gible"), Path.Combine(folder, "Piplup.glb"));
+            ModelOverrides.Folders.Clear();
+            ModelOverrides.Folders.Add(folder);
+            ModelOverrides.Refresh();
+
+            var plain = PokemonModels.Build("Piplup");
+            var shiny = PokemonModels.Build("Piplup+s");
+            Assert.NotNull(plain.Imported);
+            Assert.NotNull(shiny.Imported);
+            Assert.Null(plain.Palette);
+            Assert.NotNull(shiny.Palette);
+
+            // The file's colours are in its textures (its vertices are mostly white): the palette's main colour is read from them
+            var texels = ImportedModels.Texels(shiny.Imported!);
+            Assert.NotEmpty(texels);
+            Assert.Equal(ShinyPalettes.MainColor(texels), shiny.Palette!.Main);
+
+            // Its sprites are baked under a key of their own, and the plain one's is the file's alone
+            Assert.NotEqual(PokemonModels.Signature("Piplup"), PokemonModels.Signature("Piplup+s"));
+        }
+        finally
+        {
+            ModelOverrides.Folders.Clear();
+            ModelOverrides.Folders.AddRange(saved);
+            ModelOverrides.Refresh();
+            Directory.Delete(folder, true);
+        }
+    }
+
     // Four flat quadrants (red, green / blue, white) at quality 95: 4:2:0 baseline and 4:4:4 progressive
     private const string QuadsBaseline = "/9j/4AAQSkZJRgABAQAAAAAAAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAQABADASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAACAkK/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/EABUBAQEAAAAAAAAAAAAAAAAAAAIE/8QAKREAAQICBgsAAAAAAAAAAAAAExESBxQAAgMGQWIIFRYYISMlQkNhY//aAAwDAQACEQMRAD8AO5UJ/tUCqK+jlsLJ9UMYngYjGfasqu9ImK0Me70byuruTISBu45Diy2LWhzOdgnH/9k=";
     private const string QuadsProgressive = "/9j/4AAQSkZJRgABAQAAAAAAAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wgARCAAQABADAREAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABwgJ/8QAGAEAAgMAAAAAAAAAAAAAAAAABggFBwn/2gAMAwEAAhADEAAAATsDbRUhcwZ/fy3NUFZLv//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAQUCH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CH//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEAAT8hH//aAAwDAQACAAMAAAAQAA//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAUEAEAAAAAAAAAAAAAAAAAAAAg/9oACAEBAAE/EB//2Q==";

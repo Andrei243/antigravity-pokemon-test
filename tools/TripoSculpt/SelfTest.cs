@@ -60,6 +60,38 @@ static class SelfTest
             Sculptor.Install(root, fakemon, null, false, quiet, untracked: true);
             Check(File.Exists(Path.Combine(root, "overrides", "models", "Fakemon.glb")), "--private puts it in overrides/models instead");
 
+            // rigging and animating
+            var ro = RigOptions.Default with { PollMs = 10, DelayMs = 0 };
+            var rigged = await Rigger.Run(root, client, fakemon, ro, quiet);
+            string animatedPath = fakemon[0].Animated(root);
+            var clips = File.Exists(animatedPath) ? GlbMerge.AnimationNames(File.ReadAllBytes(animatedPath)) : new List<string>();
+            Check(rigged.Made == 1 && fake.Checks == 1 && fake.Rigs == 1 && fake.Retargets == 1, "a sculpt is checked, rigged and animated, one task each");
+            Check(clips.SequenceEqual(new[] { "idle", "hurt", "faint_fall", "strike_slash", "special_shoot" }), "the five clips are in one file, named for the roles the game reads");
+            Check(File.Exists(animatedPath) && GlbInfo.Read(File.ReadAllBytes(animatedPath)).Error == null, "the merged file is a binary glTF that reads");
+            Check(Math.Abs(rigged.Credits - 75) < 1e-9, "the credits of the three steps add up");
+            Check(fake.RigRequest!.Contains("\"model\":\"v3.0-20260909\"") && fake.RigRequest.Contains("\"rig_type\":\"biped\"") && fake.RigRequest.Contains("\"input\":\"task_fake0001\""), "a biped is rigged with the humanoid model from the sculpt's task");
+            Check(fake.RetargetRequest!.Contains("\"animate_in_place\":true") && fake.RetargetRequest.Contains("\"input\":\"task_rig01\""), "the animations are retargeted in place onto the rig");
+            Check(GlbMerge.Merge(new[] { File.ReadAllBytes(animatedPath), File.ReadAllBytes(animatedPath) }, new[] { "a", "b" }, new List<string>()).Length > 0, "a merged file can be merged again");
+
+            var again2 = await Rigger.Run(root, client, fakemon, ro, quiet);
+            Check(again2.Kept == 1 && fake.Rigs == 1, "a rigged sculpt is kept and costs nothing");
+
+            File.Delete(animatedPath);
+            var resumedRig = await Rigger.Run(root, client, fakemon, ro, quiet);
+            Check(resumedRig.Made == 1 && fake.Checks == 1 && fake.Rigs == 1 && fake.Retargets == 1, "a rigged file lost after its tasks were made goes on with those tasks");
+
+            File.Delete(animatedPath);
+            var single = ro with { Force = true, RigType = "quadruped", Animations = new List<string> { "preset:quadruped:walk" } };
+            await Rigger.Run(root, client, fakemon, single, quiet);
+            var walk = GlbMerge.AnimationNames(File.ReadAllBytes(animatedPath));
+            Check(walk.SequenceEqual(new[] { "idle_walk" }) && fake.RigRequest!.Contains("v2.5-20260210") && fake.RetargetRequest!.Contains("\"animation\":\"preset:quadruped:walk\""), "a quadruped is rigged with the creature model and its one walk plays as its idle");
+            Check(fake.Checks == 1, "naming the rig type skips the check");
+
+            Sculptor.Install(root, fakemon, null, true, quiet, untracked: true);
+            Check(GlbMerge.AnimationNames(File.ReadAllBytes(Path.Combine(root, "overrides", "models", "Fakemon.glb"))).Count == 1, "install takes the rigged file");
+            Sculptor.Install(root, fakemon, null, true, quiet, untracked: true, staticOnly: true);
+            Check(GlbMerge.AnimationNames(File.ReadAllBytes(Path.Combine(root, "overrides", "models", "Fakemon.glb"))).Count == 0, "--static takes the static one");
+
             fake.Broke = true;
             var broke = concepts.Where(c => c.Slug == "002-Nomoney").ToList();
             var refused = await Sculptor.Generate(root, client, broke, o, quiet);
@@ -83,9 +115,13 @@ static class SelfTest
     {
         readonly HttpListener listener = new();
         public string Base { get; }
-        public int Uploads, Creates;
+        public int Uploads, Creates, Checks, Rigs, Retargets;
+        public string? RetargetRequest, RigRequest;
+        public string CheckType = "biped";
+        int animationCount;
         public string? LastAuth, Request;
         public bool DownloadSawAuth, Broke;
+        static readonly string[] Clips = { "idle", "hurt", "fall", "slash", "shoot" };
         int polls;
 
         public FakeTripo()
@@ -140,7 +176,13 @@ static class SelfTest
                 byte[] reply;
                 string type = "application/json";
 
-                if (path == "/model.glb")
+                if (path.StartsWith("/anim") && path.EndsWith(".glb"))
+                {
+                    int n = int.Parse(path[5..^4]);
+                    reply = GlbMerge.Fake(Clips[n % Clips.Length], 1 + n);
+                    type = "model/gltf-binary";
+                }
+                else if (path == "/model.glb")
                 {
                     DownloadSawAuth = auth != null;
                     reply = GlbInfo.Minimal();
@@ -161,6 +203,25 @@ static class SelfTest
                         json = ++polls % 2 == 1
                             ? "{\"code\":0,\"data\":{\"task_id\":\"task_fake0001\",\"status\":\"running\",\"progress\":40}}"
                             : $"{{\"code\":0,\"data\":{{\"task_id\":\"task_fake0001\",\"status\":\"success\",\"progress\":100,\"output\":{{\"model_url\":\"http://127.0.0.1:{ctx.Request.Url.Port}/model.glb\"}},\"credits_consumed\":12.5}}}}";
+                    }
+                    else if (method == "POST" && path == "/v3/animations/rig-check") { Checks++; json = "{\"code\":0,\"data\":{\"task_id\":\"task_check01\"}}"; }
+                    else if (method == "GET" && path == "/v3/tasks/task_check01")
+                        json = $"{{\"code\":0,\"data\":{{\"task_id\":\"task_check01\",\"status\":\"success\",\"output\":{{\"riggable\":true,\"rig_type\":\"{CheckType}\"}}}}}}";
+                    else if (method == "POST" && path == "/v3/animations/rig") { Rigs++; RigRequest = body; json = "{\"code\":0,\"data\":{\"task_id\":\"task_rig01\"}}"; }
+                    else if (method == "GET" && path == "/v3/tasks/task_rig01")
+                        json = $"{{\"code\":0,\"data\":{{\"task_id\":\"task_rig01\",\"status\":\"success\",\"progress\":100,\"output\":{{\"model_url\":\"http://127.0.0.1:{ctx.Request.Url.Port}/anim0.glb\"}},\"credits_consumed\":25}}}}";
+                    else if (method == "POST" && path == "/v3/animations/retarget")
+                    {
+                        Retargets++; RetargetRequest = body;
+                        animationCount = body.Contains("\"animations\"") ? 5 : 1;
+                        json = "{\"code\":0,\"data\":{\"task_id\":\"task_anim01\"}}";
+                    }
+                    else if (method == "GET" && path == "/v3/tasks/task_anim01")
+                    {
+                        string urls = string.Join(",", Enumerable.Range(0, animationCount).Select(i => $"\"http://127.0.0.1:{ctx.Request.Url.Port}/anim{i}.glb\""));
+                        json = animationCount == 1
+                            ? $"{{\"code\":0,\"data\":{{\"task_id\":\"task_anim01\",\"status\":\"success\",\"output\":{{\"model_url\":{urls}}},\"credits_consumed\":10}}}}"
+                            : $"{{\"code\":0,\"data\":{{\"task_id\":\"task_anim01\",\"status\":\"success\",\"output\":{{\"model_urls\":[{urls}]}},\"credits_consumed\":50}}}}";
                     }
                     else { status = 404; json = "{\"code\":1001,\"status\":\"error\",\"message\":\"no such thing\"}"; }
                     reply = Encoding.UTF8.GetBytes(json);

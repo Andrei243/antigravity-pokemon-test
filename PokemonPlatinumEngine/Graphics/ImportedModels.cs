@@ -802,19 +802,56 @@ internal static class ImportedModels
     {
         var rig = m.Imported!;
         rig.Materials = new Material?[rig.Images.Length];
+        // A shiny look (plan 09 · L1) puts the same file up in its palette's colours: the texture and any vertex colours
+        // are recoloured as they go to the GPU, the file and its decoded images are never changed
+        Func<Color, Color>? recolor = m.Palette is { } shinyPalette ? shinyPalette.Map : null;
         foreach (var part in rig.Parts)
         {
-            part.Body = SkinnedModel.Upload(part.Mesh, part.Palette.Length, part.UVs);
-            if (part.Shell.VertexCount > 0) part.Outline = SkinnedModel.Upload(part.Shell, part.Palette.Length);
+            part.Body = SkinnedModel.Upload(part.Mesh, part.Palette.Length, part.UVs, recolor);
+            if (part.Shell.VertexCount > 0) part.Outline = SkinnedModel.Upload(part.Shell, part.Palette.Length, null, recolor);
             if (part.Image >= 0 && part.Image < rig.Images.Length && rig.Images[part.Image] is { } canvas && rig.Materials[part.Image] == null)
             {
-                var tex = canvas.ToTexture();
+                var tex = (recolor == null ? canvas : Recoloured(canvas, recolor)).ToTexture();
                 Raylib.GenTextureMipmaps(ref tex);
                 Raylib.SetTextureFilter(tex, TextureFilter.Trilinear);
                 Raylib.SetTextureWrap(tex, TextureWrap.Repeat);
                 rig.Materials[part.Image] = RenderContext.MaterialFor(shaders.CharacterSkinned, tex);
             }
         }
+    }
+
+    /// <summary>A copy of an image with every colour passed through <paramref name="recolor"/>, its alpha kept.</summary>
+    private static PixelCanvas Recoloured(PixelCanvas source, Func<Color, Color> recolor)
+    {
+        var copy = new PixelCanvas(source.Width, source.Height);
+        var seen = new Dictionary<int, Color>();
+        for (int y = 0; y < source.Height; y++)
+            for (int x = 0; x < source.Width; x++)
+            {
+                var c = source.Get(x, y);
+                int key = (c.R << 16) | (c.G << 8) | c.B;
+                if (!seen.TryGetValue(key, out var mapped)) seen[key] = mapped = recolor(new Color(c.R, c.G, c.B, (byte)255));
+                copy.SetRaw(x, y, new Color(mapped.R, mapped.G, mapped.B, c.A));
+            }
+        return copy;
+    }
+
+    /// <summary>
+    /// The colours of a file's textures, sampled evenly (at most 16,384 an image, only where it is opaque): what a shiny
+    /// palette takes its main colour from, since an imported model's vertices are mostly white and its colours are in its images.
+    /// </summary>
+    public static List<Color> Texels(ImportedRig rig)
+    {
+        var colors = new List<Color>();
+        foreach (var image in rig.Images)
+        {
+            if (image == null) continue;
+            int step = Math.Max(1, (int)Math.Sqrt((double)image.Width * image.Height / 16384));
+            for (int y = 0; y < image.Height; y += step)
+                for (int x = 0; x < image.Width; x += step)
+                    if (image.Get(x, y) is { A: >= 128 } c) colors.Add(c);
+        }
+        return colors;
     }
 
     public static unsafe void Unload(PokeModel m)

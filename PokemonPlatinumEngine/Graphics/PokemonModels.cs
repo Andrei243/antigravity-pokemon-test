@@ -610,7 +610,9 @@ internal static partial class PokemonModels
             // A shiny female's is her own sculpt's signature with the palette (plan 09 · L6)
             string sculpt = PokemonPlatinumEngine.Models.PokemonLook.Unshined(s);
             string model = PokemonPlatinumEngine.Models.PokemonLook.Base(s);
-            text = $"shiny|{ShinyPalettes.Version}|{Signature(sculpt)}|{ShinyPalettes.Describe(model)}";
+            // A model file is recoloured through its textures (its signature is the file's): marked, so a shiny sprite baked
+            // while a file's shiny looked like its plain self is never found again
+            text = $"shiny|{ShinyPalettes.Version}|{Signature(sculpt)}|{ShinyPalettes.Describe(model)}{(FileFor(sculpt) != null ? "|file" : "")}";
             var shinyHash = System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text));
             return Convert.ToHexString(shinyHash, 0, 8).ToLowerInvariant();
         }
@@ -947,7 +949,9 @@ internal static partial class PokemonModels
         {
             // A shiny female is her own sculpt in the species' palette (plan 09 · L6)
             var shiny = Build(PokemonPlatinumEngine.Models.PokemonLook.Unshined(species));
-            shiny.Palette = ShinyPalettes.For(PokemonPlatinumEngine.Models.PokemonLook.Base(species), shiny.Mesh.Colors);
+            // A model file's colours are in its textures, its vertices are mostly white: its main colour is read from them
+            IReadOnlyList<Color> colors = shiny.Imported != null && ImportedModels.Texels(shiny.Imported) is { Count: > 0 } texels ? texels : shiny.Mesh.Colors;
+            shiny.Palette = ShinyPalettes.For(PokemonPlatinumEngine.Models.PokemonLook.Base(species), colors);
             return shiny;
         }
         if (FileFor(species) is { } file)
