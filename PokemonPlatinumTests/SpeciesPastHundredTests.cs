@@ -70,7 +70,7 @@ public class SpeciesPastHundredTests
             if (legend)
             {
                 Assert.Equal(660, Total(d.Stats));
-                Assert.InRange(rise, 1, 80);
+                Assert.InRange(rise, 1, from.Generation == 7 ? 90 : 80);
             }
             else
             {
@@ -104,6 +104,7 @@ public class SpeciesPastHundredTests
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
+            7 => (209, legend ? 225 : 221),
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -177,6 +178,7 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelNight or EvolutionMethod.FriendshipNight: context.IsNight = true; break;
             case EvolutionMethod.LevelDay or EvolutionMethod.FriendshipDay: context.IsNight = false; break;
             case EvolutionMethod.LevelInRain: context.IsRaining = true; break;
+            case EvolutionMethod.LevelDusk: context.IsDusk = true; break;
             case EvolutionMethod.LevelAtLocation: context.Sites = new[] { e.Location! }; break;
             case EvolutionMethod.LevelHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); break;
             case EvolutionMethod.LevelHoldingItemDay: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = false; break;

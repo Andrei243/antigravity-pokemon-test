@@ -198157,7 +198157,7 @@
     "weight": 14.2,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Gumshoos is a Stakeout Pokémon, Normal-type, first found in Alola. It stands 0.7 m tall and weighs 14.2 kg. It evolves from Yungoos.",
+    "dexEntry": "Gumshoos is a Stakeout Pokémon, Normal-type, first found in Alola. It stands 0.7 m tall and weighs 14.2 kg. It evolves from Yungoos. It evolves into Inspectoose.",
     "learnset": [
       {
         "level": 1,
@@ -198275,6 +198275,13 @@
       "Zen Headbutt"
     ],
     "offspring": "Yungoos",
+    "evolutions": [
+      {
+        "method": "LevelDay",
+        "targetSpecies": "Inspectoose",
+        "level": 209
+      }
+    ],
     "abilities": [
       "Stakeout",
       "Strong Jaw"
@@ -199018,7 +199025,7 @@
     "weight": 180,
     "color": "White",
     "shape": "Armor",
-    "dexEntry": "Crabominable is a Woolly Crab Pokémon, Fighting- and Ice-type, first found in Alola. It stands 1.7 m tall and weighs 180.0 kg. It evolves from Crabrawler.",
+    "dexEntry": "Crabominable is a Woolly Crab Pokémon, Fighting- and Ice-type, first found in Alola. It stands 1.7 m tall and weighs 180.0 kg. It evolves from Crabrawler. It evolves into Glacipincer.",
     "learnset": [
       {
         "level": 0,
@@ -199141,6 +199148,14 @@
       "Zen Headbutt"
     ],
     "offspring": "Crabrawler",
+    "evolutions": [
+      {
+        "method": "UseItem",
+        "targetSpecies": "Glacipincer",
+        "level": 218,
+        "item": "Ice Stone"
+      }
+    ],
     "abilities": [
       "Hyper Cutter",
       "Iron Fist"
@@ -199597,7 +199612,7 @@
     "weight": 0.5,
     "color": "Yellow",
     "shape": "Bug Wings",
-    "dexEntry": "Ribombee is a Bee Fly Pokémon, Bug- and Fairy-type, first found in Alola. It stands 0.2 m tall and weighs 0.5 kg. It evolves from Cutiefly.",
+    "dexEntry": "Ribombee is a Bee Fly Pokémon, Bug- and Fairy-type, first found in Alola. It stands 0.2 m tall and weighs 0.5 kg. It evolves from Cutiefly. It evolves into Pollenoble.",
     "learnset": [
       {
         "level": 0,
@@ -199728,6 +199743,14 @@
       "Sticky Web",
       "Moonblast",
       "Aromatic Mist"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Pollenoble",
+        "level": 210,
+        "move": "Pollen Puff"
+      }
     ],
     "abilities": [
       "Honey Gather",
@@ -199984,7 +200007,7 @@
     "weight": 25,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Lycanroc is a Wolf Pokémon, Rock-type, first found in Alola. It stands 0.8 m tall and weighs 25.0 kg. It evolves from Rockruff.",
+    "dexEntry": "Lycanroc is a Wolf Pokémon, Rock-type, first found in Alola. It stands 0.8 m tall and weighs 25.0 kg. It evolves from Rockruff. It evolves into Lupinacle.",
     "learnset": [
       {
         "level": 0,
@@ -200139,6 +200162,13 @@
       "Zen Headbutt"
     ],
     "offspring": "Rockruff",
+    "evolutions": [
+      {
+        "method": "LevelDusk",
+        "targetSpecies": "Lupinacle",
+        "level": 216
+      }
+    ],
     "abilities": [
       "Keen Eye",
       "Sand Rush"
@@ -200809,7 +200839,7 @@
     "weight": 14.5,
     "color": "Blue",
     "shape": "Tentacles",
-    "dexEntry": "Toxapex is a Brutal Star Pokémon, Poison- and Water-type, first found in Alola. It stands 0.7 m tall and weighs 14.5 kg. It evolves from Mareanie.",
+    "dexEntry": "Toxapex is a Brutal Star Pokémon, Poison- and Water-type, first found in Alola. It stands 0.7 m tall and weighs 14.5 kg. It evolves from Mareanie. It evolves into Venomreef.",
     "learnset": [
       {
         "level": 0,
@@ -200940,6 +200970,14 @@
       "Spite"
     ],
     "offspring": "Mareanie",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Venomreef",
+        "level": 220,
+        "item": "Black Sludge"
+      }
+    ],
     "abilities": [
       "Merciless",
       "Limber"
@@ -201176,7 +201214,7 @@
     "weight": 920,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Mudsdale is a Draft Horse Pokémon, Ground-type, first found in Alola. It stands 2.5 m tall and weighs 920.0 kg. It evolves from Mudbray.",
+    "dexEntry": "Mudsdale is a Draft Horse Pokémon, Ground-type, first found in Alola. It stands 2.5 m tall and weighs 920.0 kg. It evolves from Mudbray. It evolves into Claysteed.",
     "learnset": [
       {
         "level": 1,
@@ -201303,6 +201341,13 @@
       "Superpower"
     ],
     "offspring": "Mudbray",
+    "evolutions": [
+      {
+        "method": "LevelInRain",
+        "targetSpecies": "Claysteed",
+        "level": 214
+      }
+    ],
     "abilities": [
       "Own Tempo",
       "Stamina"
@@ -201552,7 +201597,7 @@
     "weight": 82,
     "color": "Green",
     "shape": "Armor",
-    "dexEntry": "Araquanid is a Water Bubble Pokémon, Water- and Bug-type, first found in Alola. It stands 1.8 m tall and weighs 82.0 kg. It evolves from Dewpider.",
+    "dexEntry": "Araquanid is a Water Bubble Pokémon, Water- and Bug-type, first found in Alola. It stands 1.8 m tall and weighs 82.0 kg. It evolves from Dewpider. It evolves into Diveweaver.",
     "learnset": [
       {
         "level": 1,
@@ -201696,6 +201741,14 @@
       "Spit Up",
       "Power Split",
       "Sticky Web"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Diveweaver",
+        "level": 212,
+        "move": "Liquidation"
+      }
     ],
     "abilities": [
       "Water Bubble"
@@ -201913,7 +201966,7 @@
     "weight": 18.5,
     "color": "Pink",
     "shape": "Humanoid",
-    "dexEntry": "Lurantis is a Bloom Sickle Pokémon, Grass-type, first found in Alola. It stands 0.9 m tall and weighs 18.5 kg. It evolves from Fomantis.",
+    "dexEntry": "Lurantis is a Bloom Sickle Pokémon, Grass-type, first found in Alola. It stands 0.9 m tall and weighs 18.5 kg. It evolves from Fomantis. It evolves into Orchimantis.",
     "learnset": [
       {
         "level": 0,
@@ -202047,6 +202100,13 @@
       "Synthesis"
     ],
     "offspring": "Fomantis",
+    "evolutions": [
+      {
+        "method": "LevelDay",
+        "targetSpecies": "Orchimantis",
+        "level": 213
+      }
+    ],
     "abilities": [
       "Leaf Guard"
     ],
@@ -202272,7 +202332,7 @@
     "weight": 11.5,
     "color": "Purple",
     "shape": "Humanoid",
-    "dexEntry": "Shiinotic is an Illuminating Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.0 m tall and weighs 11.5 kg. It evolves from Morelull.",
+    "dexEntry": "Shiinotic is an Illuminating Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.0 m tall and weighs 11.5 kg. It evolves from Morelull. It evolves into Lumishroom.",
     "learnset": [
       {
         "level": 1,
@@ -202394,6 +202454,13 @@
       "Synthesis"
     ],
     "offspring": "Morelull",
+    "evolutions": [
+      {
+        "method": "LevelNight",
+        "targetSpecies": "Lumishroom",
+        "level": 211
+      }
+    ],
     "abilities": [
       "Illuminate",
       "Effect Spore"
@@ -202643,7 +202710,7 @@
     "weight": 22.2,
     "color": "Black",
     "shape": "Quadruped",
-    "dexEntry": "Salazzle is a Toxic Lizard Pokémon, Poison- and Fire-type, first found in Alola. It stands 1.2 m tall and weighs 22.2 kg. It evolves from Salandit.",
+    "dexEntry": "Salazzle is a Toxic Lizard Pokémon, Poison- and Fire-type, first found in Alola. It stands 1.2 m tall and weighs 22.2 kg. It evolves from Salandit. It evolves into Smolderess.",
     "learnset": [
       {
         "level": 0,
@@ -202814,6 +202881,14 @@
       "Snore"
     ],
     "offspring": "Salandit",
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Smolderess",
+        "level": 215,
+        "species": "Salandit"
+      }
+    ],
     "abilities": [
       "Corrosion"
     ],
@@ -203045,7 +203120,7 @@
     "weight": 135,
     "color": "Pink",
     "shape": "Upright",
-    "dexEntry": "Bewear is a Strong Arm Pokémon, Normal- and Fighting-type, first found in Alola. It stands 2.1 m tall and weighs 135.0 kg. It evolves from Stufful.",
+    "dexEntry": "Bewear is a Strong Arm Pokémon, Normal- and Fighting-type, first found in Alola. It stands 2.1 m tall and weighs 135.0 kg. It evolves from Stufful. It evolves into Huggrizzle.",
     "learnset": [
       {
         "level": 0,
@@ -203197,6 +203272,13 @@
       "Zen Headbutt"
     ],
     "offspring": "Stufful",
+    "evolutions": [
+      {
+        "method": "Friendship",
+        "targetSpecies": "Huggrizzle",
+        "level": 216
+      }
+    ],
     "abilities": [
       "Fluffy",
       "Klutz"
@@ -203739,7 +203821,7 @@
     "weight": 0.3,
     "color": "Green",
     "shape": "Ball",
-    "dexEntry": "Comfey is a Posy Picker Pokémon, Fairy-type, first found in Alola. It stands 0.1 m tall and weighs 0.3 kg.",
+    "dexEntry": "Comfey is a Posy Picker Pokémon, Fairy-type, first found in Alola. It stands 0.1 m tall and weighs 0.3 kg. It evolves into Wreathfey.",
     "learnset": [
       {
         "level": 1,
@@ -203888,6 +203970,14 @@
       "Worry Seed",
       "After You"
     ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Wreathfey",
+        "level": 214,
+        "move": "Floral Healing"
+      }
+    ],
     "abilities": [
       "Flower Veil",
       "Triage"
@@ -203933,7 +204023,7 @@
     "weight": 76,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Oranguru is a Sage Pokémon, Normal- and Psychic-type, first found in Alola. It stands 1.5 m tall and weighs 76.0 kg.",
+    "dexEntry": "Oranguru is a Sage Pokémon, Normal- and Psychic-type, first found in Alola. It stands 1.5 m tall and weighs 76.0 kg. It evolves into Arborsage.",
     "learnset": [
       {
         "level": 1,
@@ -204088,6 +204178,14 @@
       "Extrasensory",
       "Last Resort"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Arborsage",
+        "level": 215,
+        "species": "Passimian"
+      }
+    ],
     "abilities": [
       "Inner Focus",
       "Telepathy"
@@ -204132,7 +204230,7 @@
     "weight": 82.8,
     "color": "White",
     "shape": "Upright",
-    "dexEntry": "Passimian is a Teamwork Pokémon, Fighting-type, first found in Alola. It stands 2.0 m tall and weighs 82.8 kg.",
+    "dexEntry": "Passimian is a Teamwork Pokémon, Fighting-type, first found in Alola. It stands 2.0 m tall and weighs 82.8 kg. It evolves into Scrummian.",
     "learnset": [
       {
         "level": 1,
@@ -204287,6 +204385,14 @@
       "Knock Off",
       "Feint",
       "Quick Guard"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Scrummian",
+        "level": 215,
+        "species": "Oranguru"
+      }
     ],
     "abilities": [
       "Receiver"
@@ -204466,7 +204572,7 @@
     "weight": 108,
     "color": "Gray",
     "shape": "Humanoid",
-    "dexEntry": "Golisopod is a Hard Scale Pokémon, Bug- and Water-type, first found in Alola. It stands 2.0 m tall and weighs 108.0 kg. It evolves from Wimpod.",
+    "dexEntry": "Golisopod is a Hard Scale Pokémon, Bug- and Water-type, first found in Alola. It stands 2.0 m tall and weighs 108.0 kg. It evolves from Wimpod. It evolves into Shogunpod.",
     "learnset": [
       {
         "level": 0,
@@ -204639,6 +204745,14 @@
       "Spite"
     ],
     "offspring": "Wimpod",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Shogunpod",
+        "level": 218,
+        "move": "First Impression"
+      }
+    ],
     "abilities": [
       "Emergency Exit"
     ],
@@ -204903,7 +205017,7 @@
     "weight": 250,
     "color": "Brown",
     "shape": "Squiggle",
-    "dexEntry": "Palossand is a Sand Castle Pokémon, Ghost- and Ground-type, first found in Alola. It stands 1.3 m tall and weighs 250.0 kg. It evolves from Sandygast.",
+    "dexEntry": "Palossand is a Sand Castle Pokémon, Ghost- and Ground-type, first found in Alola. It stands 1.3 m tall and weighs 250.0 kg. It evolves from Sandygast. It evolves into Sandcitadel.",
     "learnset": [
       {
         "level": 1,
@@ -205041,6 +205155,14 @@
       "Trick"
     ],
     "offspring": "Sandygast",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Sandcitadel",
+        "level": 213,
+        "item": "Soft Sand"
+      }
+    ],
     "abilities": [
       "Water Compaction"
     ],
@@ -205082,7 +205204,7 @@
     "weight": 1.2,
     "color": "Black",
     "shape": "Squiggle",
-    "dexEntry": "Pyukumuku is a Sea Cucumber Pokémon, Water-type, first found in Alola. It stands 0.3 m tall and weighs 1.2 kg.",
+    "dexEntry": "Pyukumuku is a Sea Cucumber Pokémon, Water-type, first found in Alola. It stands 0.3 m tall and weighs 1.2 kg. It evolves into Cucumbrawl.",
     "learnset": [
       {
         "level": 1,
@@ -205195,6 +205317,14 @@
       "Swagger",
       "Mirror Coat",
       "Tickle"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Cucumbrawl",
+        "level": 210,
+        "move": "Counter"
+      }
     ],
     "abilities": [
       "Innards Out"
@@ -206084,7 +206214,7 @@
     "weight": 19.9,
     "color": "Blue",
     "shape": "Humanoid",
-    "dexEntry": "Komala is a Drowsing Pokémon, Normal-type, first found in Alola. It stands 0.4 m tall and weighs 19.9 kg.",
+    "dexEntry": "Komala is a Drowsing Pokémon, Normal-type, first found in Alola. It stands 0.4 m tall and weighs 19.9 kg. It evolves into Somnikoala.",
     "learnset": [
       {
         "level": 1,
@@ -206202,6 +206332,13 @@
       "Superpower",
       "Play Rough"
     ],
+    "evolutions": [
+      {
+        "method": "LevelNight",
+        "targetSpecies": "Somnikoala",
+        "level": 216
+      }
+    ],
     "abilities": [
       "Comatose"
     ]
@@ -206247,7 +206384,7 @@
     "weight": 212,
     "color": "Red",
     "shape": "Upright",
-    "dexEntry": "Turtonator is a Blast Turtle Pokémon, Fire- and Dragon-type, first found in Alola. It stands 2.0 m tall and weighs 212.0 kg.",
+    "dexEntry": "Turtonator is a Blast Turtle Pokémon, Fire- and Dragon-type, first found in Alola. It stands 2.0 m tall and weighs 212.0 kg. It evolves into Caldertoise.",
     "learnset": [
       {
         "level": 1,
@@ -206409,6 +206546,14 @@
       "Head Smash",
       "Wide Guard"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Caldertoise",
+        "level": 220,
+        "species": "Drampa"
+      }
+    ],
     "abilities": [
       "Shell Armor"
     ]
@@ -206454,7 +206599,7 @@
     "weight": 3.3,
     "color": "Gray",
     "shape": "Upright",
-    "dexEntry": "Togedemaru is a Roly-Poly Pokémon, Electric- and Steel-type, first found in Alola. It stands 0.3 m tall and weighs 3.3 kg.",
+    "dexEntry": "Togedemaru is a Roly-Poly Pokémon, Electric- and Steel-type, first found in Alola. It stands 0.3 m tall and weighs 3.3 kg. It evolves into Rollocupine.",
     "learnset": [
       {
         "level": 1,
@@ -206602,6 +206747,14 @@
       "Tickle",
       "Disarming Voice"
     ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Rollocupine",
+        "level": 212,
+        "move": "Zing Zap"
+      }
+    ],
     "abilities": [
       "Iron Barbs",
       "Lightning Rod"
@@ -206652,7 +206805,7 @@
     "weight": 0.7,
     "color": "Yellow",
     "shape": "Squiggle",
-    "dexEntry": "Mimikyu is a Disguise Pokémon, Ghost- and Fairy-type, first found in Alola. It stands 0.2 m tall and weighs 0.7 kg.",
+    "dexEntry": "Mimikyu is a Disguise Pokémon, Ghost- and Fairy-type, first found in Alola. It stands 0.2 m tall and weighs 0.7 kg. It evolves into Masqueradoll.",
     "learnset": [
       {
         "level": 1,
@@ -206801,6 +206954,14 @@
       "Curse",
       "Destiny Bond"
     ],
+    "evolutions": [
+      {
+        "method": "LevelHoldingItemNight",
+        "targetSpecies": "Masqueradoll",
+        "level": 217,
+        "item": "Reaper Cloth"
+      }
+    ],
     "abilities": [
       "Disguise"
     ],
@@ -206852,7 +207013,7 @@
     "weight": 19,
     "color": "Pink",
     "shape": "Fish",
-    "dexEntry": "Bruxish is a Gnash Teeth Pokémon, Water- and Psychic-type, first found in Alola. It stands 0.9 m tall and weighs 19.0 kg.",
+    "dexEntry": "Bruxish is a Gnash Teeth Pokémon, Water- and Psychic-type, first found in Alola. It stands 0.9 m tall and weighs 19.0 kg. It evolves into Chromagnash.",
     "learnset": [
       {
         "level": 1,
@@ -206973,6 +207134,14 @@
       "Water Pulse",
       "Ice Fang"
     ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Chromagnash",
+        "level": 219,
+        "move": "Psychic Fangs"
+      }
+    ],
     "abilities": [
       "Dazzling",
       "Strong Jaw"
@@ -207021,7 +207190,7 @@
     "weight": 185,
     "color": "White",
     "shape": "Squiggle",
-    "dexEntry": "Drampa is a Placid Pokémon, Normal- and Dragon-type, first found in Alola. It stands 3.0 m tall and weighs 185.0 kg.",
+    "dexEntry": "Drampa is a Placid Pokémon, Normal- and Dragon-type, first found in Alola. It stands 3.0 m tall and weighs 185.0 kg. It evolves into Elderdrake.",
     "learnset": [
       {
         "level": 1,
@@ -207182,6 +207351,14 @@
       "Tickle",
       "Dragon Rush"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Elderdrake",
+        "level": 220,
+        "species": "Turtonator"
+      }
+    ],
     "abilities": [
       "Berserk",
       "Sap Sipper"
@@ -207244,7 +207421,7 @@
     "weight": 210,
     "color": "Green",
     "shape": "Blob",
-    "dexEntry": "Dhelmise is a Sea Creeper Pokémon, Ghost- and Grass-type, first found in Alola. It stands 3.9 m tall and weighs 210.0 kg.",
+    "dexEntry": "Dhelmise is a Sea Creeper Pokémon, Ghost- and Grass-type, first found in Alola. It stands 3.9 m tall and weighs 210.0 kg. It evolves into Galleonghast.",
     "learnset": [
       {
         "level": 1,
@@ -207405,6 +207582,14 @@
       "Snore",
       "Spite",
       "Synthesis"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Galleonghast",
+        "level": 221,
+        "move": "Anchor Shot"
+      }
     ],
     "abilities": [
       "Steelworker"
@@ -208092,7 +208277,7 @@
     "weight": 20.5,
     "color": "Yellow",
     "shape": "Arms",
-    "dexEntry": "Tapu Koko is a Land Spirit Pokémon, Electric- and Fairy-type, first found in Alola. It stands 1.8 m tall and weighs 20.5 kg.",
+    "dexEntry": "Tapu Koko is a Land Spirit Pokémon, Electric- and Fairy-type, first found in Alola. It stands 1.8 m tall and weighs 20.5 kg. It evolves into Kokonui.",
     "learnset": [
       {
         "level": 1,
@@ -208243,6 +208428,14 @@
       "Snore",
       "Thunder Punch"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Kokonui",
+        "level": 225,
+        "species": "Tapu Lele"
+      }
+    ],
     "abilities": [
       "Electric Surge"
     ],
@@ -208285,7 +208478,7 @@
     "weight": 18.6,
     "color": "Pink",
     "shape": "Arms",
-    "dexEntry": "Tapu Lele is a Land Spirit Pokémon, Psychic- and Fairy-type, first found in Alola. It stands 1.2 m tall and weighs 18.6 kg.",
+    "dexEntry": "Tapu Lele is a Land Spirit Pokémon, Psychic- and Fairy-type, first found in Alola. It stands 1.2 m tall and weighs 18.6 kg. It evolves into Lelenui.",
     "learnset": [
       {
         "level": 1,
@@ -208439,6 +208632,14 @@
       "Iron Defense",
       "Snore"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Lelenui",
+        "level": 225,
+        "species": "Tapu Bulu"
+      }
+    ],
     "abilities": [
       "Psychic Surge"
     ],
@@ -208481,7 +208682,7 @@
     "weight": 45.5,
     "color": "Red",
     "shape": "Arms",
-    "dexEntry": "Tapu Bulu is a Land Spirit Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.9 m tall and weighs 45.5 kg.",
+    "dexEntry": "Tapu Bulu is a Land Spirit Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.9 m tall and weighs 45.5 kg. It evolves into Bulunui.",
     "learnset": [
       {
         "level": 1,
@@ -208641,6 +208842,14 @@
       "Synthesis",
       "Zen Headbutt"
     ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Bulunui",
+        "level": 225,
+        "species": "Tapu Fini"
+      }
+    ],
     "abilities": [
       "Grassy Surge"
     ],
@@ -208683,7 +208892,7 @@
     "weight": 21.2,
     "color": "Purple",
     "shape": "Arms",
-    "dexEntry": "Tapu Fini is a Land Spirit Pokémon, Water- and Fairy-type, first found in Alola. It stands 1.3 m tall and weighs 21.2 kg.",
+    "dexEntry": "Tapu Fini is a Land Spirit Pokémon, Water- and Fairy-type, first found in Alola. It stands 1.3 m tall and weighs 21.2 kg. It evolves into Fininui.",
     "learnset": [
       {
         "level": 1,
@@ -208837,6 +209046,14 @@
       "Knock Off",
       "Snore",
       "Trick"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Fininui",
+        "level": 225,
+        "species": "Tapu Koko"
+      }
     ],
     "abilities": [
       "Misty Surge"
@@ -293653,5 +293870,5054 @@
         }
       ]
     }
+  },
+  {
+    "dexNumber": 2735,
+    "dexNumbers": {},
+    "name": "Inspectoose",
+    "category": "Inspector",
+    "primaryType": "Normal",
+    "secondaryType": "Dark",
+    "baseHP": 98,
+    "baseAttack": 125,
+    "baseDefense": 80,
+    "baseSpAttack": 55,
+    "baseSpDefense": 80,
+    "baseSpeed": 60,
+    "evYield": {
+      "attack": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 175,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1,
+    "weight": 22,
+    "color": "Brown",
+    "shape": "Quadruped",
+    "dexEntry": "Inspectoose is an Inspector Pokémon, Normal- and Dark-type, first found in Alola. It stands 1.0 m tall and weighs 22.0 kg. It evolves from Gumshoos.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Payback"
+      },
+      {
+        "level": 13,
+        "moveName": "Work Up"
+      },
+      {
+        "level": 19,
+        "moveName": "Bite"
+      },
+      {
+        "level": 23,
+        "moveName": "Mud-Slap"
+      },
+      {
+        "level": 27,
+        "moveName": "Super Fang"
+      },
+      {
+        "level": 31,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 35,
+        "moveName": "Scary Face"
+      },
+      {
+        "level": 39,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 43,
+        "moveName": "Yawn"
+      },
+      {
+        "level": 47,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 52,
+        "moveName": "Rest"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 140,
+        "moveName": "Titan Tackle"
+      },
+      {
+        "level": 165,
+        "moveName": "Snapstep"
+      },
+      {
+        "level": 195,
+        "moveName": "Dread Aura"
+      },
+      {
+        "level": 220,
+        "moveName": "Rending Fang"
+      },
+      {
+        "level": 250,
+        "moveName": "Pilfer Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM01",
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM32",
+      "TM37",
+      "TM39",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM82",
+      "TM87",
+      "TM89",
+      "TM90"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Fire Punch",
+      "Ice Punch",
+      "Iron Head",
+      "Last Resort",
+      "Snore",
+      "Thunder Punch",
+      "Uproar",
+      "Zen Headbutt"
+    ],
+    "offspring": "Yungoos",
+    "abilities": [
+      "Stakeout",
+      "Strong Jaw"
+    ],
+    "hiddenAbility": "Adaptability"
+  },
+  {
+    "dexNumber": 2740,
+    "dexNumbers": {},
+    "name": "Glacipincer",
+    "category": "Glacier Fist",
+    "primaryType": "Fighting",
+    "secondaryType": "Ice",
+    "baseHP": 107,
+    "baseAttack": 142,
+    "baseDefense": 97,
+    "baseSpAttack": 62,
+    "baseSpDefense": 92,
+    "baseSpeed": 58,
+    "evYield": {
+      "attack": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 200,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 3"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.1,
+    "weight": 240,
+    "color": "White",
+    "shape": "Armor",
+    "dexEntry": "Glacipincer is a Glacier Fist Pokémon, Fighting- and Ice-type, first found in Alola. It stands 2.1 m tall and weighs 240.0 kg. It evolves from Crabominable.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Protect"
+      },
+      {
+        "level": 1,
+        "moveName": "Rock Smash"
+      },
+      {
+        "level": 17,
+        "moveName": "Bubble Beam"
+      },
+      {
+        "level": 22,
+        "moveName": "Brick Break"
+      },
+      {
+        "level": 25,
+        "moveName": "Slam"
+      },
+      {
+        "level": 29,
+        "moveName": "Avalanche"
+      },
+      {
+        "level": 33,
+        "moveName": "Reversal"
+      },
+      {
+        "level": 37,
+        "moveName": "Ice Hammer"
+      },
+      {
+        "level": 42,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 45,
+        "moveName": "Dynamic Punch"
+      },
+      {
+        "level": 49,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 110,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 145,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 180,
+        "moveName": "Hoarfrost"
+      },
+      {
+        "level": 215,
+        "moveName": "Glacier Ram"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM01",
+      "TM06",
+      "TM07",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM72",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Ice Punch",
+      "Icy Wind",
+      "Iron Defense",
+      "Iron Head",
+      "Snore",
+      "Superpower",
+      "Thunder Punch",
+      "Zen Headbutt"
+    ],
+    "offspring": "Crabrawler",
+    "abilities": [
+      "Hyper Cutter",
+      "Iron Fist"
+    ],
+    "hiddenAbility": "Anger Point"
+  },
+  {
+    "dexNumber": 2743,
+    "dexNumbers": {},
+    "name": "Pollenoble",
+    "category": "Pollen Court",
+    "primaryType": "Bug",
+    "secondaryType": "Fairy",
+    "baseHP": 75,
+    "baseAttack": 55,
+    "baseDefense": 75,
+    "baseSpAttack": 115,
+    "baseSpDefense": 90,
+    "baseSpeed": 134,
+    "evYield": {
+      "spAttack": 1,
+      "speed": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 194,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Bug",
+      "Fairy"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.4,
+    "weight": 1,
+    "color": "Yellow",
+    "shape": "Bug Wings",
+    "dexEntry": "Pollenoble is a Pollen Court Pokémon, Bug- and Fairy-type, first found in Alola. It stands 0.4 m tall and weighs 1.0 kg. It evolves from Ribombee.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Stun Spore"
+      },
+      {
+        "level": 1,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 1,
+        "moveName": "Fairy Wind"
+      },
+      {
+        "level": 18,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 24,
+        "moveName": "Struggle Bug"
+      },
+      {
+        "level": 32,
+        "moveName": "Covet"
+      },
+      {
+        "level": 40,
+        "moveName": "Switcheroo"
+      },
+      {
+        "level": 48,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 56,
+        "moveName": "Bug Buzz"
+      },
+      {
+        "level": 64,
+        "moveName": "Quiver Dance"
+      },
+      {
+        "level": 110,
+        "moveName": "Molt Renewal"
+      },
+      {
+        "level": 145,
+        "moveName": "Swarm Chorus"
+      },
+      {
+        "level": 180,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 215,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM48",
+      "TM51",
+      "TM53",
+      "TM58",
+      "TM68",
+      "TM77",
+      "TM82",
+      "TM85",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TR11",
+      "TR18",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR29",
+      "TR38",
+      "TR40",
+      "TR49",
+      "TR61",
+      "TR65",
+      "TR83",
+      "TR90",
+      "TR92",
+      "TR96"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Last Resort",
+      "Signal Beam",
+      "Snore",
+      "Trick"
+    ],
+    "offspring": "Cutiefly",
+    "eggMoves": [
+      "Sticky Web",
+      "Moonblast",
+      "Aromatic Mist"
+    ],
+    "abilities": [
+      "Honey Gather",
+      "Shield Dust"
+    ],
+    "hiddenAbility": "Sweet Veil"
+  },
+  {
+    "dexNumber": 2745,
+    "dexNumbers": {},
+    "name": "Lupinacle",
+    "category": "Alpha Wolf",
+    "primaryType": "Rock",
+    "baseHP": 90,
+    "baseAttack": 130,
+    "baseDefense": 85,
+    "baseSpAttack": 55,
+    "baseSpDefense": 85,
+    "baseSpeed": 122,
+    "evYield": {
+      "attack": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 204,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.2,
+    "weight": 45,
+    "color": "Brown",
+    "shape": "Quadruped",
+    "dexEntry": "Lupinacle is an Alpha Wolf Pokémon, Rock-type, first found in Alola. It stands 1.2 m tall and weighs 45.0 kg. It evolves from Lycanroc.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Accelerock"
+      },
+      {
+        "level": 1,
+        "moveName": "Quick Guard"
+      },
+      {
+        "level": 1,
+        "moveName": "Double Team"
+      },
+      {
+        "level": 1,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 12,
+        "moveName": "Rock Throw"
+      },
+      {
+        "level": 16,
+        "moveName": "Howl"
+      },
+      {
+        "level": 20,
+        "moveName": "Bite"
+      },
+      {
+        "level": 24,
+        "moveName": "Rock Tomb"
+      },
+      {
+        "level": 30,
+        "moveName": "Roar"
+      },
+      {
+        "level": 36,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 42,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 48,
+        "moveName": "Scary Face"
+      },
+      {
+        "level": 54,
+        "moveName": "Stealth Rock"
+      },
+      {
+        "level": 60,
+        "moveName": "Stone Edge"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 145,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 180,
+        "moveName": "Crystal Lance"
+      },
+      {
+        "level": 215,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 250,
+        "moveName": "Skyfall Stone"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM58",
+      "TM68",
+      "TM69",
+      "TM71",
+      "TM75",
+      "TM76",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR00",
+      "TR12",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR32",
+      "TR37",
+      "TR42",
+      "TR46",
+      "TR48",
+      "TR53",
+      "TR67",
+      "TR69",
+      "TR74",
+      "TR75",
+      "TR76",
+      "TR87",
+      "TR90",
+      "TR97"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Endeavor",
+      "Iron Defense",
+      "Iron Head",
+      "Last Resort",
+      "Snore",
+      "Zen Headbutt"
+    ],
+    "offspring": "Rockruff",
+    "abilities": [
+      "Keen Eye",
+      "Sand Rush"
+    ],
+    "hiddenAbility": "Steadfast"
+  },
+  {
+    "dexNumber": 2748,
+    "dexNumbers": {},
+    "name": "Venomreef",
+    "category": "Reef Fortress",
+    "primaryType": "Poison",
+    "secondaryType": "Water",
+    "baseHP": 90,
+    "baseAttack": 73,
+    "baseDefense": 152,
+    "baseSpAttack": 73,
+    "baseSpDefense": 142,
+    "baseSpeed": 45,
+    "evYield": {
+      "hp": 1,
+      "defense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 208,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.2,
+    "weight": 30,
+    "color": "Blue",
+    "shape": "Tentacles",
+    "dexEntry": "Venomreef is a Reef Fortress Pokémon, Poison- and Water-type, first found in Alola. It stands 1.2 m tall and weighs 30.0 kg. It evolves from Toxapex.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Poison Sting"
+      },
+      {
+        "level": 1,
+        "moveName": "Bite"
+      },
+      {
+        "level": 1,
+        "moveName": "Peck"
+      },
+      {
+        "level": 1,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 15,
+        "moveName": "Venoshock"
+      },
+      {
+        "level": 20,
+        "moveName": "Recover"
+      },
+      {
+        "level": 25,
+        "moveName": "Pin Missile"
+      },
+      {
+        "level": 30,
+        "moveName": "Toxic Spikes"
+      },
+      {
+        "level": 35,
+        "moveName": "Liquidation"
+      },
+      {
+        "level": 42,
+        "moveName": "Acid Spray"
+      },
+      {
+        "level": 49,
+        "moveName": "Poison Jab"
+      },
+      {
+        "level": 56,
+        "moveName": "Toxic"
+      },
+      {
+        "level": 110,
+        "moveName": "Corrosive Haze"
+      },
+      {
+        "level": 130,
+        "moveName": "Venom Lance"
+      },
+      {
+        "level": 150,
+        "moveName": "Miasma Torrent"
+      },
+      {
+        "level": 170,
+        "moveName": "Caustic Drain"
+      },
+      {
+        "level": 190,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 210,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 230,
+        "moveName": "Abyssal Current"
+      },
+      {
+        "level": 250,
+        "moveName": "Maelstrom Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM03",
+      "TM06",
+      "TM07",
+      "TM10",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM32",
+      "TM36",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM55",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM90",
+      "HM03",
+      "TR03",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR45",
+      "TR46",
+      "TR54",
+      "TR57",
+      "TR73",
+      "TR78",
+      "TR84",
+      "TR91",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Gastro Acid",
+      "Gunk Shot",
+      "Icy Wind",
+      "Iron Defense",
+      "Knock Off",
+      "Snore",
+      "Spite"
+    ],
+    "offspring": "Mareanie",
+    "abilities": [
+      "Merciless",
+      "Limber"
+    ],
+    "hiddenAbility": "Regenerator"
+  },
+  {
+    "dexNumber": 2750,
+    "dexNumbers": {},
+    "name": "Claysteed",
+    "category": "Clay Charger",
+    "primaryType": "Ground",
+    "baseHP": 110,
+    "baseAttack": 140,
+    "baseDefense": 110,
+    "baseSpAttack": 55,
+    "baseSpDefense": 105,
+    "baseSpeed": 60,
+    "evYield": {
+      "attack": 2,
+      "speed": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 210,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 3,
+    "weight": 990,
+    "color": "Brown",
+    "shape": "Quadruped",
+    "dexEntry": "Claysteed is a Clay Charger Pokémon, Ground-type, first found in Alola. It stands 3.0 m tall and weighs 990.0 kg. It evolves from Mudsdale.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Double Kick"
+      },
+      {
+        "level": 1,
+        "moveName": "Mud-Slap"
+      },
+      {
+        "level": 1,
+        "moveName": "Rock Smash"
+      },
+      {
+        "level": 1,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 12,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 16,
+        "moveName": "Stomp"
+      },
+      {
+        "level": 20,
+        "moveName": "Strength"
+      },
+      {
+        "level": 24,
+        "moveName": "Counter"
+      },
+      {
+        "level": 28,
+        "moveName": "High Horsepower"
+      },
+      {
+        "level": 34,
+        "moveName": "Heavy Slam"
+      },
+      {
+        "level": 40,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 46,
+        "moveName": "Mega Kick"
+      },
+      {
+        "level": 52,
+        "moveName": "Superpower"
+      },
+      {
+        "level": 110,
+        "moveName": "Dust Veil"
+      },
+      {
+        "level": 145,
+        "moveName": "Fault Line"
+      },
+      {
+        "level": 180,
+        "moveName": "Magma Vein"
+      },
+      {
+        "level": 215,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 250,
+        "moveName": "Tectonic Rend"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM32",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM52",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM76",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR01",
+      "TR07",
+      "TR10",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR39",
+      "TR46",
+      "TR53",
+      "TR64",
+      "TR67",
+      "TR74",
+      "TR76",
+      "TR79",
+      "TR94",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Endeavor",
+      "Iron Defense",
+      "Iron Head",
+      "Snore",
+      "Superpower"
+    ],
+    "offspring": "Mudbray",
+    "abilities": [
+      "Own Tempo",
+      "Stamina"
+    ],
+    "hiddenAbility": "Inner Focus"
+  },
+  {
+    "dexNumber": 2752,
+    "dexNumbers": {},
+    "name": "Diveweaver",
+    "category": "Diving Bell",
+    "primaryType": "Water",
+    "secondaryType": "Bug",
+    "baseHP": 88,
+    "baseAttack": 95,
+    "baseDefense": 107,
+    "baseSpAttack": 60,
+    "baseSpDefense": 132,
+    "baseSpeed": 52,
+    "evYield": {
+      "attack": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 191,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1",
+      "Bug"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 2.2,
+    "weight": 110,
+    "color": "Green",
+    "shape": "Armor",
+    "dexEntry": "Diveweaver is a Diving Bell Pokémon, Water- and Bug-type, first found in Alola. It stands 2.2 m tall and weighs 110.0 kg. It evolves from Araquanid.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Bite"
+      },
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 1,
+        "moveName": "Bug Bite"
+      },
+      {
+        "level": 1,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 1,
+        "moveName": "Infestation"
+      },
+      {
+        "level": 12,
+        "moveName": "Bubble Beam"
+      },
+      {
+        "level": 16,
+        "moveName": "Aqua Ring"
+      },
+      {
+        "level": 20,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 26,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 32,
+        "moveName": "Soak"
+      },
+      {
+        "level": 38,
+        "moveName": "Entrainment"
+      },
+      {
+        "level": 44,
+        "moveName": "Lunge"
+      },
+      {
+        "level": 50,
+        "moveName": "Liquidation"
+      },
+      {
+        "level": 56,
+        "moveName": "Leech Life"
+      },
+      {
+        "level": 62,
+        "moveName": "Mirror Coat"
+      },
+      {
+        "level": 110,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 140,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 165,
+        "moveName": "Molt Renewal"
+      },
+      {
+        "level": 195,
+        "moveName": "Mandible Crush"
+      },
+      {
+        "level": 220,
+        "moveName": "Darting Sting"
+      },
+      {
+        "level": 250,
+        "moveName": "Maelstrom Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM03",
+      "TM06",
+      "TM10",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM58",
+      "TM68",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM90",
+      "HM03",
+      "HM07",
+      "HM09",
+      "TR03",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR16",
+      "TR18",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR32",
+      "TR46",
+      "TR57",
+      "TR60",
+      "TR61",
+      "TR84",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Icy Wind",
+      "Iron Defense",
+      "Signal Beam",
+      "Snore"
+    ],
+    "offspring": "Dewpider",
+    "eggMoves": [
+      "Stockpile",
+      "Spit Up",
+      "Power Split",
+      "Sticky Web"
+    ],
+    "abilities": [
+      "Water Bubble"
+    ],
+    "hiddenAbility": "Water Absorb"
+  },
+  {
+    "dexNumber": 2754,
+    "dexNumbers": {},
+    "name": "Orchimantis",
+    "category": "Orchid Mantis",
+    "primaryType": "Grass",
+    "secondaryType": "Fairy",
+    "baseHP": 85,
+    "baseAttack": 125,
+    "baseDefense": 100,
+    "baseSpAttack": 80,
+    "baseSpDefense": 105,
+    "baseSpeed": 65,
+    "evYield": {
+      "attack": 3
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Grass"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.3,
+    "weight": 28,
+    "color": "Pink",
+    "shape": "Humanoid",
+    "dexEntry": "Orchimantis is an Orchid Mantis Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.3 m tall and weighs 28.0 kg. It evolves from Lurantis.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Growth"
+      },
+      {
+        "level": 1,
+        "moveName": "Solar Beam"
+      },
+      {
+        "level": 1,
+        "moveName": "Fury Cutter"
+      },
+      {
+        "level": 1,
+        "moveName": "Ingrain"
+      },
+      {
+        "level": 1,
+        "moveName": "Night Slash"
+      },
+      {
+        "level": 1,
+        "moveName": "Leafage"
+      },
+      {
+        "level": 15,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 20,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 25,
+        "moveName": "Slash"
+      },
+      {
+        "level": 30,
+        "moveName": "X-Scissor"
+      },
+      {
+        "level": 37,
+        "moveName": "Synthesis"
+      },
+      {
+        "level": 44,
+        "moveName": "Leaf Blade"
+      },
+      {
+        "level": 51,
+        "moveName": "Sunny Day"
+      },
+      {
+        "level": 63,
+        "moveName": "Solar Blade"
+      },
+      {
+        "level": 110,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 145,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 180,
+        "moveName": "Root Snare"
+      },
+      {
+        "level": 215,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM09",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM53",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM75",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TR00",
+      "TR18",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR39",
+      "TR50",
+      "TR57",
+      "TR59",
+      "TR60",
+      "TR65",
+      "TR71",
+      "TR77"
+    ],
+    "tutorMoves": [
+      "Knock Off",
+      "Seed Bomb",
+      "Signal Beam",
+      "Snore",
+      "Superpower",
+      "Synthesis"
+    ],
+    "offspring": "Fomantis",
+    "abilities": [
+      "Leaf Guard"
+    ],
+    "hiddenAbility": "Contrary"
+  },
+  {
+    "dexNumber": 2756,
+    "dexNumbers": {},
+    "name": "Lumishroom",
+    "category": "Fairy Ring",
+    "primaryType": "Grass",
+    "secondaryType": "Fairy",
+    "baseHP": 75,
+    "baseAttack": 45,
+    "baseDefense": 95,
+    "baseSpAttack": 115,
+    "baseSpDefense": 115,
+    "baseSpeed": 40,
+    "evYield": {
+      "spAttack": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 170,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Grass"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.4,
+    "weight": 18,
+    "color": "Purple",
+    "shape": "Humanoid",
+    "dexEntry": "Lumishroom is a Fairy Ring Pokémon, Grass- and Fairy-type, first found in Alola. It stands 1.4 m tall and weighs 18.0 kg. It evolves from Shiinotic.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Confuse Ray"
+      },
+      {
+        "level": 1,
+        "moveName": "Ingrain"
+      },
+      {
+        "level": 12,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 16,
+        "moveName": "Sleep Powder"
+      },
+      {
+        "level": 20,
+        "moveName": "Moonlight"
+      },
+      {
+        "level": 27,
+        "moveName": "Strength Sap"
+      },
+      {
+        "level": 32,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 38,
+        "moveName": "Dazzling Gleam"
+      },
+      {
+        "level": 44,
+        "moveName": "Spore"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 56,
+        "moveName": "Dream Eater"
+      },
+      {
+        "level": 110,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 145,
+        "moveName": "Sap Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 215,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM32",
+      "TM36",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM53",
+      "TM57",
+      "TM58",
+      "TM60",
+      "TM68",
+      "TM73",
+      "TM82",
+      "TM85",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TR17",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR59",
+      "TR65",
+      "TR77",
+      "TR92",
+      "TR96"
+    ],
+    "tutorMoves": [
+      "Seed Bomb",
+      "Signal Beam",
+      "Snore",
+      "Synthesis"
+    ],
+    "offspring": "Morelull",
+    "abilities": [
+      "Illuminate",
+      "Effect Spore"
+    ],
+    "hiddenAbility": "Rain Dish"
+  },
+  {
+    "dexNumber": 2758,
+    "dexNumbers": {},
+    "name": "Smolderess",
+    "category": "Empress",
+    "primaryType": "Poison",
+    "secondaryType": "Fire",
+    "baseHP": 88,
+    "baseAttack": 64,
+    "baseDefense": 80,
+    "baseSpAttack": 131,
+    "baseSpDefense": 75,
+    "baseSpeed": 122,
+    "evYield": {
+      "hp": 1,
+      "speed": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "MediumFast",
+    "genderRatio": 8,
+    "eggGroups": [
+      "Monster",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.6,
+    "weight": 32,
+    "color": "Black",
+    "shape": "Quadruped",
+    "dexEntry": "Smolderess is an Empress Pokémon, Poison- and Fire-type, first found in Alola. It stands 1.6 m tall and weighs 32.0 kg. It evolves from Salazzle.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Endeavor"
+      },
+      {
+        "level": 1,
+        "moveName": "Knock Off"
+      },
+      {
+        "level": 1,
+        "moveName": "Torment"
+      },
+      {
+        "level": 1,
+        "moveName": "Swagger"
+      },
+      {
+        "level": 1,
+        "moveName": "Poison Gas"
+      },
+      {
+        "level": 1,
+        "moveName": "Encore"
+      },
+      {
+        "level": 1,
+        "moveName": "Ember"
+      },
+      {
+        "level": 1,
+        "moveName": "Disable"
+      },
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 1,
+        "moveName": "Smog"
+      },
+      {
+        "level": 1,
+        "moveName": "Pound"
+      },
+      {
+        "level": 15,
+        "moveName": "Poison Fang"
+      },
+      {
+        "level": 20,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 25,
+        "moveName": "Nasty Plot"
+      },
+      {
+        "level": 30,
+        "moveName": "Incinerate"
+      },
+      {
+        "level": 37,
+        "moveName": "Venoshock"
+      },
+      {
+        "level": 44,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 51,
+        "moveName": "Flamethrower"
+      },
+      {
+        "level": 58,
+        "moveName": "Toxic"
+      },
+      {
+        "level": 110,
+        "moveName": "Corrosive Haze"
+      },
+      {
+        "level": 140,
+        "moveName": "Miasma Torrent"
+      },
+      {
+        "level": 165,
+        "moveName": "Caustic Drain"
+      },
+      {
+        "level": 195,
+        "moveName": "Kindle"
+      },
+      {
+        "level": 220,
+        "moveName": "Pyre Lance"
+      },
+      {
+        "level": 250,
+        "moveName": "Sunforge Blast"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM27",
+      "TM32",
+      "TM35",
+      "TM36",
+      "TM38",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM50",
+      "TM56",
+      "TM58",
+      "TM59",
+      "TM61",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM73",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM90",
+      "TR02",
+      "TR15",
+      "TR18",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR31",
+      "TR36",
+      "TR37",
+      "TR43",
+      "TR47",
+      "TR51",
+      "TR55",
+      "TR57",
+      "TR62",
+      "TR68",
+      "TR73",
+      "TR78",
+      "TR81",
+      "TR91"
+    ],
+    "tutorMoves": [
+      "Gunk Shot",
+      "Heat Wave",
+      "Helping Hand",
+      "Knock Off",
+      "Snore"
+    ],
+    "offspring": "Salandit",
+    "abilities": [
+      "Corrosion"
+    ],
+    "hiddenAbility": "Oblivious"
+  },
+  {
+    "dexNumber": 2760,
+    "dexNumbers": {},
+    "name": "Huggrizzle",
+    "category": "Embrace",
+    "primaryType": "Normal",
+    "secondaryType": "Fighting",
+    "baseHP": 130,
+    "baseAttack": 140,
+    "baseDefense": 100,
+    "baseSpAttack": 55,
+    "baseSpDefense": 85,
+    "baseSpeed": 70,
+    "evYield": {
+      "attack": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 210,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 2.6,
+    "weight": 200,
+    "color": "Pink",
+    "shape": "Upright",
+    "dexEntry": "Huggrizzle is an Embrace Pokémon, Normal- and Fighting-type, first found in Alola. It stands 2.6 m tall and weighs 200.0 kg. It evolves from Bewear.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Bind"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Baby-Doll Eyes"
+      },
+      {
+        "level": 1,
+        "moveName": "Payback"
+      },
+      {
+        "level": 12,
+        "moveName": "Brutal Swing"
+      },
+      {
+        "level": 16,
+        "moveName": "Endure"
+      },
+      {
+        "level": 20,
+        "moveName": "Strength"
+      },
+      {
+        "level": 24,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 30,
+        "moveName": "Flail"
+      },
+      {
+        "level": 36,
+        "moveName": "Hammer Arm"
+      },
+      {
+        "level": 42,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 48,
+        "moveName": "Pain Split"
+      },
+      {
+        "level": 54,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 60,
+        "moveName": "Superpower"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 140,
+        "moveName": "Titan Tackle"
+      },
+      {
+        "level": 165,
+        "moveName": "Snapstep"
+      },
+      {
+        "level": 195,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 220,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM52",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM75",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR00",
+      "TR01",
+      "TR07",
+      "TR10",
+      "TR20",
+      "TR21",
+      "TR26",
+      "TR27",
+      "TR37",
+      "TR39",
+      "TR47",
+      "TR48",
+      "TR53",
+      "TR64",
+      "TR69",
+      "TR74",
+      "TR85",
+      "TR93",
+      "TR94",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Ice Punch",
+      "Iron Head",
+      "Snore",
+      "Superpower",
+      "Thunder Punch",
+      "Zen Headbutt"
+    ],
+    "offspring": "Stufful",
+    "abilities": [
+      "Fluffy",
+      "Klutz"
+    ],
+    "hiddenAbility": "Unnerve"
+  },
+  {
+    "dexNumber": 2764,
+    "dexNumbers": {},
+    "name": "Wreathfey",
+    "category": "Garland",
+    "primaryType": "Fairy",
+    "secondaryType": "Grass",
+    "baseHP": 71,
+    "baseAttack": 52,
+    "baseDefense": 100,
+    "baseSpAttack": 107,
+    "baseSpDefense": 120,
+    "baseSpeed": 115,
+    "evYield": {
+      "spAttack": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 204,
+    "growthRate": "Fast",
+    "genderRatio": 6,
+    "eggGroups": [
+      "Grass"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.4,
+    "weight": 1,
+    "color": "Green",
+    "shape": "Ball",
+    "dexEntry": "Wreathfey is a Garland Pokémon, Fairy- and Grass-type, first found in Alola. It stands 0.4 m tall and weighs 1.0 kg. It evolves from Comfey.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Wrap"
+      },
+      {
+        "level": 1,
+        "moveName": "Growth"
+      },
+      {
+        "level": 3,
+        "moveName": "Vine Whip"
+      },
+      {
+        "level": 6,
+        "moveName": "Helping Hand"
+      },
+      {
+        "level": 9,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 12,
+        "moveName": "Charm"
+      },
+      {
+        "level": 15,
+        "moveName": "Magical Leaf"
+      },
+      {
+        "level": 18,
+        "moveName": "Synthesis"
+      },
+      {
+        "level": 21,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 24,
+        "moveName": "Grass Knot"
+      },
+      {
+        "level": 27,
+        "moveName": "Sweet Kiss"
+      },
+      {
+        "level": 30,
+        "moveName": "Floral Healing"
+      },
+      {
+        "level": 33,
+        "moveName": "Petal Blizzard"
+      },
+      {
+        "level": 36,
+        "moveName": "Bind"
+      },
+      {
+        "level": 39,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 42,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 45,
+        "moveName": "Petal Dance"
+      },
+      {
+        "level": 48,
+        "moveName": "Grassy Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 145,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 180,
+        "moveName": "Dew Kiss"
+      },
+      {
+        "level": 215,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 250,
+        "moveName": "Sap Lance"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM09",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM32",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM53",
+      "TM56",
+      "TM58",
+      "TM77",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TM92",
+      "TR17",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR37",
+      "TR38",
+      "TR49",
+      "TR59",
+      "TR65",
+      "TR77",
+      "TR82",
+      "TR83",
+      "TR90",
+      "TR92",
+      "TR96"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Seed Bomb",
+      "Snore",
+      "Synthesis",
+      "Trick"
+    ],
+    "offspring": "Comfey",
+    "eggMoves": [
+      "Worry Seed",
+      "After You"
+    ],
+    "abilities": [
+      "Flower Veil",
+      "Triage"
+    ],
+    "hiddenAbility": "Natural Cure"
+  },
+  {
+    "dexNumber": 2765,
+    "dexNumbers": {},
+    "name": "Arborsage",
+    "category": "Forest Elder",
+    "primaryType": "Normal",
+    "secondaryType": "Psychic",
+    "baseHP": 100,
+    "baseAttack": 60,
+    "baseDefense": 95,
+    "baseSpAttack": 115,
+    "baseSpDefense": 125,
+    "baseSpeed": 75,
+    "evYield": {
+      "spAttack": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 206,
+    "growthRate": "Slow",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.9,
+    "weight": 110,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Arborsage is a Forest Elder Pokémon, Normal- and Psychic-type, first found in Alola. It stands 1.9 m tall and weighs 110.0 kg. It evolves from Oranguru.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 1,
+        "moveName": "Taunt"
+      },
+      {
+        "level": 5,
+        "moveName": "After You"
+      },
+      {
+        "level": 10,
+        "moveName": "Calm Mind"
+      },
+      {
+        "level": 15,
+        "moveName": "Stored Power"
+      },
+      {
+        "level": 20,
+        "moveName": "Psych Up"
+      },
+      {
+        "level": 25,
+        "moveName": "Quash"
+      },
+      {
+        "level": 30,
+        "moveName": "Nasty Plot"
+      },
+      {
+        "level": 35,
+        "moveName": "Zen Headbutt"
+      },
+      {
+        "level": 40,
+        "moveName": "Trick Room"
+      },
+      {
+        "level": 45,
+        "moveName": "Psychic"
+      },
+      {
+        "level": 50,
+        "moveName": "Instruct"
+      },
+      {
+        "level": 55,
+        "moveName": "Foul Play"
+      },
+      {
+        "level": 60,
+        "moveName": "Future Sight"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 145,
+        "moveName": "Resonant Hymn"
+      },
+      {
+        "level": 180,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 215,
+        "moveName": "Astral Pulse"
+      },
+      {
+        "level": 250,
+        "moveName": "Mindbreak Wave"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM26",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM31",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM48",
+      "TM52",
+      "TM53",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM63",
+      "TM66",
+      "TM68",
+      "TM77",
+      "TM80",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM92",
+      "TR08",
+      "TR09",
+      "TR10",
+      "TR11",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR33",
+      "TR34",
+      "TR37",
+      "TR38",
+      "TR49",
+      "TR64",
+      "TR65",
+      "TR68",
+      "TR69",
+      "TR81",
+      "TR82",
+      "TR83",
+      "TR85"
+    ],
+    "tutorMoves": [
+      "Knock Off",
+      "Snore",
+      "Spite",
+      "Trick",
+      "Zen Headbutt"
+    ],
+    "offspring": "Oranguru",
+    "eggMoves": [
+      "Dream Eater",
+      "Yawn",
+      "Extrasensory",
+      "Last Resort"
+    ],
+    "abilities": [
+      "Inner Focus",
+      "Telepathy"
+    ],
+    "hiddenAbility": "Symbiosis"
+  },
+  {
+    "dexNumber": 2766,
+    "dexNumbers": {},
+    "name": "Scrummian",
+    "category": "Team Captain",
+    "primaryType": "Fighting",
+    "baseHP": 110,
+    "baseAttack": 140,
+    "baseDefense": 100,
+    "baseSpAttack": 40,
+    "baseSpDefense": 80,
+    "baseSpeed": 100,
+    "evYield": {
+      "attack": 3
+    },
+    "catchRate": 45,
+    "baseExpYield": 206,
+    "growthRate": "Slow",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.3,
+    "weight": 110,
+    "color": "White",
+    "shape": "Upright",
+    "dexEntry": "Scrummian is a Team Captain Pokémon, Fighting-type, first found in Alola. It stands 2.3 m tall and weighs 110.0 kg. It evolves from Passimian.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 5,
+        "moveName": "Rock Smash"
+      },
+      {
+        "level": 10,
+        "moveName": "Focus Energy"
+      },
+      {
+        "level": 15,
+        "moveName": "Beat Up"
+      },
+      {
+        "level": 20,
+        "moveName": "Scary Face"
+      },
+      {
+        "level": 25,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 30,
+        "moveName": "Fling"
+      },
+      {
+        "level": 35,
+        "moveName": "Bulk Up"
+      },
+      {
+        "level": 40,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 45,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 50,
+        "moveName": "Close Combat"
+      },
+      {
+        "level": 55,
+        "moveName": "Reversal"
+      },
+      {
+        "level": 60,
+        "moveName": "Giga Impact"
+      },
+      {
+        "level": 110,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 145,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 180,
+        "moveName": "Ki Burst"
+      },
+      {
+        "level": 215,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM01",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM30",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM53",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM66",
+      "TM68",
+      "TM74",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TR10",
+      "TR13",
+      "TR20",
+      "TR21",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR33",
+      "TR35",
+      "TR37",
+      "TR39",
+      "TR48",
+      "TR52",
+      "TR53",
+      "TR59",
+      "TR64",
+      "TR65",
+      "TR73",
+      "TR74",
+      "TR77",
+      "TR85"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Gunk Shot",
+      "Iron Head",
+      "Knock Off",
+      "Seed Bomb",
+      "Snore",
+      "Superpower",
+      "Uproar"
+    ],
+    "offspring": "Passimian",
+    "eggMoves": [
+      "Counter",
+      "Seismic Toss",
+      "Quick Attack",
+      "Knock Off",
+      "Feint",
+      "Quick Guard"
+    ],
+    "abilities": [
+      "Receiver"
+    ],
+    "hiddenAbility": "Defiant"
+  },
+  {
+    "dexNumber": 2768,
+    "dexNumbers": {},
+    "name": "Shogunpod",
+    "category": "Hard Armour",
+    "primaryType": "Bug",
+    "secondaryType": "Water",
+    "baseHP": 95,
+    "baseAttack": 140,
+    "baseDefense": 140,
+    "baseSpAttack": 60,
+    "baseSpDefense": 105,
+    "baseSpeed": 60,
+    "evYield": {
+      "hp": 1,
+      "defense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 223,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Bug",
+      "Water 3"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.5,
+    "weight": 160,
+    "color": "Gray",
+    "shape": "Humanoid",
+    "dexEntry": "Shogunpod is a Hard Armour Pokémon, Bug- and Water-type, first found in Alola. It stands 2.5 m tall and weighs 160.0 kg. It evolves from Golisopod.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "First Impression"
+      },
+      {
+        "level": 1,
+        "moveName": "Struggle Bug"
+      },
+      {
+        "level": 1,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Defense Curl"
+      },
+      {
+        "level": 1,
+        "moveName": "Spite"
+      },
+      {
+        "level": 4,
+        "moveName": "Rock Smash"
+      },
+      {
+        "level": 8,
+        "moveName": "Fury Cutter"
+      },
+      {
+        "level": 12,
+        "moveName": "Mud Shot"
+      },
+      {
+        "level": 16,
+        "moveName": "Bug Bite"
+      },
+      {
+        "level": 20,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 24,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 28,
+        "moveName": "Slash"
+      },
+      {
+        "level": 32,
+        "moveName": "Razor Shell"
+      },
+      {
+        "level": 36,
+        "moveName": "Pin Missile"
+      },
+      {
+        "level": 40,
+        "moveName": "Swords Dance"
+      },
+      {
+        "level": 44,
+        "moveName": "Liquidation"
+      },
+      {
+        "level": 110,
+        "moveName": "Molt Renewal"
+      },
+      {
+        "level": 140,
+        "moveName": "Mandible Crush"
+      },
+      {
+        "level": 165,
+        "moveName": "Darting Sting"
+      },
+      {
+        "level": 195,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 220,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 250,
+        "moveName": "Maelstrom Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM07",
+      "TM08",
+      "TM10",
+      "TM12",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM36",
+      "TM39",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM52",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM75",
+      "TM77",
+      "TM79",
+      "TM80",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM87",
+      "TM90",
+      "HM03",
+      "HM07",
+      "HM09",
+      "TR00",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR16",
+      "TR18",
+      "TR20",
+      "TR22",
+      "TR23",
+      "TR26",
+      "TR27",
+      "TR37",
+      "TR45",
+      "TR46",
+      "TR48",
+      "TR53",
+      "TR57",
+      "TR58",
+      "TR60",
+      "TR61",
+      "TR64",
+      "TR74",
+      "TR78",
+      "TR84",
+      "TR87",
+      "TR95",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Icy Wind",
+      "Iron Defense",
+      "Iron Head",
+      "Knock Off",
+      "Snore",
+      "Spite"
+    ],
+    "offspring": "Wimpod",
+    "abilities": [
+      "Emergency Exit"
+    ]
+  },
+  {
+    "dexNumber": 2770,
+    "dexNumbers": {},
+    "name": "Sandcitadel",
+    "category": "Sand Citadel",
+    "primaryType": "Ghost",
+    "secondaryType": "Ground",
+    "baseHP": 100,
+    "baseAttack": 75,
+    "baseDefense": 120,
+    "baseSpAttack": 120,
+    "baseSpDefense": 95,
+    "baseSpeed": 50,
+    "evYield": {
+      "defense": 2,
+      "spAttack": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Amorphous"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.8,
+    "weight": 400,
+    "color": "Brown",
+    "shape": "Squiggle",
+    "dexEntry": "Sandcitadel is a Sand Citadel Pokémon, Ghost- and Ground-type, first found in Alola. It stands 1.8 m tall and weighs 400.0 kg. It evolves from Palossand.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Sand Tomb"
+      },
+      {
+        "level": 15,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 20,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 25,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 30,
+        "moveName": "Hypnosis"
+      },
+      {
+        "level": 35,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 40,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 47,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 54,
+        "moveName": "Earth Power"
+      },
+      {
+        "level": 61,
+        "moveName": "Shore Up"
+      },
+      {
+        "level": 68,
+        "moveName": "Sandstorm"
+      },
+      {
+        "level": 110,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 145,
+        "moveName": "Phantom Lantern"
+      },
+      {
+        "level": 180,
+        "moveName": "Soul Siphon"
+      },
+      {
+        "level": 215,
+        "moveName": "Dust Veil"
+      },
+      {
+        "level": 250,
+        "moveName": "Magma Vein"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM36",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM48",
+      "TM53",
+      "TM55",
+      "TM56",
+      "TM58",
+      "TM63",
+      "TM68",
+      "TM69",
+      "TM71",
+      "TM76",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM91",
+      "TR10",
+      "TR11",
+      "TR17",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR38",
+      "TR40",
+      "TR46",
+      "TR65",
+      "TR67",
+      "TR75",
+      "TR76"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Iron Defense",
+      "Snore",
+      "Spite",
+      "Trick"
+    ],
+    "offspring": "Sandygast",
+    "abilities": [
+      "Water Compaction"
+    ],
+    "hiddenAbility": "Sand Veil"
+  },
+  {
+    "dexNumber": 2771,
+    "dexNumbers": {},
+    "name": "Cucumbrawl",
+    "category": "Sea Boxer",
+    "primaryType": "Water",
+    "secondaryType": "Fighting",
+    "baseHP": 75,
+    "baseAttack": 90,
+    "baseDefense": 135,
+    "baseSpAttack": 30,
+    "baseSpDefense": 135,
+    "baseSpeed": 25,
+    "evYield": {
+      "attack": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 173,
+    "growthRate": "Fast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 0.6,
+    "weight": 5,
+    "color": "Black",
+    "shape": "Squiggle",
+    "dexEntry": "Cucumbrawl is a Sea Boxer Pokémon, Water- and Fighting-type, first found in Alola. It stands 0.6 m tall and weighs 5.0 kg. It evolves from Pyukumuku.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Baton Pass"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 5,
+        "moveName": "Helping Hand"
+      },
+      {
+        "level": 10,
+        "moveName": "Taunt"
+      },
+      {
+        "level": 15,
+        "moveName": "Safeguard"
+      },
+      {
+        "level": 20,
+        "moveName": "Counter"
+      },
+      {
+        "level": 25,
+        "moveName": "Purify"
+      },
+      {
+        "level": 30,
+        "moveName": "Curse"
+      },
+      {
+        "level": 35,
+        "moveName": "Gastro Acid"
+      },
+      {
+        "level": 40,
+        "moveName": "Pain Split"
+      },
+      {
+        "level": 45,
+        "moveName": "Recover"
+      },
+      {
+        "level": 50,
+        "moveName": "Soak"
+      },
+      {
+        "level": 55,
+        "moveName": "Toxic"
+      },
+      {
+        "level": 60,
+        "moveName": "Memento"
+      },
+      {
+        "level": 110,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 140,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 165,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 195,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 220,
+        "moveName": "Maelstrom Crash"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM07",
+      "TM12",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM32",
+      "TM33",
+      "TM44",
+      "TM45",
+      "TM58",
+      "TM77",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR29",
+      "TR37",
+      "TR91"
+    ],
+    "tutorMoves": [
+      "Gastro Acid",
+      "Helping Hand",
+      "Spite"
+    ],
+    "offspring": "Pyukumuku",
+    "eggMoves": [
+      "Spite",
+      "Swagger",
+      "Mirror Coat",
+      "Tickle"
+    ],
+    "abilities": [
+      "Innards Out"
+    ],
+    "hiddenAbility": "Unaware"
+  },
+  {
+    "dexNumber": 2775,
+    "dexNumbers": {},
+    "name": "Somnikoala",
+    "category": "Deep Sleep",
+    "primaryType": "Normal",
+    "secondaryType": "Psychic",
+    "baseHP": 85,
+    "baseAttack": 125,
+    "baseDefense": 85,
+    "baseSpAttack": 85,
+    "baseSpDefense": 105,
+    "baseSpeed": 75,
+    "evYield": {
+      "hp": 1,
+      "attack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "Slow",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.8,
+    "weight": 35,
+    "color": "Blue",
+    "shape": "Humanoid",
+    "dexEntry": "Somnikoala is a Deep Sleep Pokémon, Normal- and Psychic-type, first found in Alola. It stands 0.8 m tall and weighs 35.0 kg. It evolves from Komala.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Defense Curl"
+      },
+      {
+        "level": 1,
+        "moveName": "Rollout"
+      },
+      {
+        "level": 6,
+        "moveName": "Stockpile"
+      },
+      {
+        "level": 6,
+        "moveName": "Spit Up"
+      },
+      {
+        "level": 6,
+        "moveName": "Swallow"
+      },
+      {
+        "level": 11,
+        "moveName": "Rapid Spin"
+      },
+      {
+        "level": 16,
+        "moveName": "Yawn"
+      },
+      {
+        "level": 21,
+        "moveName": "Slam"
+      },
+      {
+        "level": 26,
+        "moveName": "Flail"
+      },
+      {
+        "level": 31,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 36,
+        "moveName": "Psych Up"
+      },
+      {
+        "level": 41,
+        "moveName": "Wood Hammer"
+      },
+      {
+        "level": 46,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 145,
+        "moveName": "Titan Tackle"
+      },
+      {
+        "level": 180,
+        "moveName": "Snapstep"
+      },
+      {
+        "level": 215,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 250,
+        "moveName": "Mind Blade"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM42",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM58",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM75",
+      "TM77",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM89",
+      "TM90"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Iron Head",
+      "Knock Off",
+      "Last Resort",
+      "Snore",
+      "Superpower",
+      "Zen Headbutt"
+    ],
+    "offspring": "Komala",
+    "eggMoves": [
+      "Sing",
+      "Charm",
+      "Wish",
+      "Superpower",
+      "Play Rough"
+    ],
+    "abilities": [
+      "Comatose"
+    ]
+  },
+  {
+    "dexNumber": 2776,
+    "dexNumbers": {},
+    "name": "Caldertoise",
+    "category": "Volcano",
+    "primaryType": "Fire",
+    "secondaryType": "Dragon",
+    "baseHP": 85,
+    "baseAttack": 88,
+    "baseDefense": 135,
+    "baseSpAttack": 111,
+    "baseSpDefense": 100,
+    "baseSpeed": 46,
+    "evYield": {
+      "hp": 1,
+      "defense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 204,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Monster",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.4,
+    "weight": 300,
+    "color": "Red",
+    "shape": "Upright",
+    "dexEntry": "Caldertoise is a Volcano Pokémon, Fire- and Dragon-type, first found in Alola. It stands 2.4 m tall and weighs 300.0 kg. It evolves from Turtonator.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Smog"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 4,
+        "moveName": "Ember"
+      },
+      {
+        "level": 8,
+        "moveName": "Protect"
+      },
+      {
+        "level": 12,
+        "moveName": "Endure"
+      },
+      {
+        "level": 16,
+        "moveName": "Flail"
+      },
+      {
+        "level": 20,
+        "moveName": "Incinerate"
+      },
+      {
+        "level": 24,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 28,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 32,
+        "moveName": "Body Slam"
+      },
+      {
+        "level": 36,
+        "moveName": "Flamethrower"
+      },
+      {
+        "level": 40,
+        "moveName": "Shell Trap"
+      },
+      {
+        "level": 44,
+        "moveName": "Shell Smash"
+      },
+      {
+        "level": 48,
+        "moveName": "Overheat"
+      },
+      {
+        "level": 52,
+        "moveName": "Explosion"
+      },
+      {
+        "level": 110,
+        "moveName": "Kindle"
+      },
+      {
+        "level": 145,
+        "moveName": "Pyre Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 215,
+        "moveName": "Wyrmflare"
+      },
+      {
+        "level": 250,
+        "moveName": "Sunforge Blast"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM22",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM32",
+      "TM35",
+      "TM38",
+      "TM39",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM50",
+      "TM52",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM59",
+      "TM61",
+      "TM64",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM91",
+      "TR01",
+      "TR02",
+      "TR10",
+      "TR15",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR35",
+      "TR36",
+      "TR37",
+      "TR42",
+      "TR43",
+      "TR46",
+      "TR47",
+      "TR48",
+      "TR62",
+      "TR64",
+      "TR70",
+      "TR74",
+      "TR75",
+      "TR79",
+      "TR85",
+      "TR88",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Heat Wave",
+      "Iron Defense",
+      "Iron Head",
+      "Outrage",
+      "Snore",
+      "Uproar"
+    ],
+    "offspring": "Turtonator",
+    "eggMoves": [
+      "Curse",
+      "Rapid Spin",
+      "Head Smash",
+      "Wide Guard"
+    ],
+    "abilities": [
+      "Shell Armor"
+    ]
+  },
+  {
+    "dexNumber": 2777,
+    "dexNumbers": {},
+    "name": "Rollocupine",
+    "category": "Lightning Rod",
+    "primaryType": "Electric",
+    "secondaryType": "Steel",
+    "baseHP": 80,
+    "baseAttack": 113,
+    "baseDefense": 83,
+    "baseSpAttack": 40,
+    "baseSpDefense": 88,
+    "baseSpeed": 111,
+    "evYield": {
+      "attack": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 182,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field",
+      "Fairy"
+    ],
+    "hatchCycles": 10,
+    "baseFriendship": 70,
+    "height": 0.6,
+    "weight": 9,
+    "color": "Gray",
+    "shape": "Upright",
+    "dexEntry": "Rollocupine is a Lightning Rod Pokémon, Electric- and Steel-type, first found in Alola. It stands 0.6 m tall and weighs 9.0 kg. It evolves from Togedemaru.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Nuzzle"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 5,
+        "moveName": "Defense Curl"
+      },
+      {
+        "level": 10,
+        "moveName": "Charge"
+      },
+      {
+        "level": 15,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 20,
+        "moveName": "Fell Stinger"
+      },
+      {
+        "level": 25,
+        "moveName": "Spark"
+      },
+      {
+        "level": 30,
+        "moveName": "Pin Missile"
+      },
+      {
+        "level": 35,
+        "moveName": "Magnet Rise"
+      },
+      {
+        "level": 40,
+        "moveName": "Zing Zap"
+      },
+      {
+        "level": 45,
+        "moveName": "Discharge"
+      },
+      {
+        "level": 50,
+        "moveName": "Electric Terrain"
+      },
+      {
+        "level": 55,
+        "moveName": "Wild Charge"
+      },
+      {
+        "level": 60,
+        "moveName": "Spiky Shield"
+      },
+      {
+        "level": 110,
+        "moveName": "Overcharge"
+      },
+      {
+        "level": 140,
+        "moveName": "Arc Lance"
+      },
+      {
+        "level": 165,
+        "moveName": "Voltstep"
+      },
+      {
+        "level": 195,
+        "moveName": "Alloy Plating"
+      },
+      {
+        "level": 220,
+        "moveName": "Forge Hammer"
+      },
+      {
+        "level": 250,
+        "moveName": "Rivet Shot"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM73",
+      "TM74",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TR08",
+      "TR09",
+      "TR12",
+      "TR20",
+      "TR21",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR31",
+      "TR52",
+      "TR57",
+      "TR69",
+      "TR74",
+      "TR77",
+      "TR80",
+      "TR85",
+      "TR86"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Endeavor",
+      "Helping Hand",
+      "Iron Head",
+      "Last Resort",
+      "Magnet Rise",
+      "Snore",
+      "Zen Headbutt"
+    ],
+    "offspring": "Togedemaru",
+    "eggMoves": [
+      "Flail",
+      "Present",
+      "Fake Out",
+      "Wish",
+      "Tickle",
+      "Disarming Voice"
+    ],
+    "abilities": [
+      "Iron Barbs",
+      "Lightning Rod"
+    ],
+    "hiddenAbility": "Sturdy"
+  },
+  {
+    "dexNumber": 2778,
+    "dexNumbers": {},
+    "name": "Masqueradoll",
+    "category": "Costume",
+    "primaryType": "Ghost",
+    "secondaryType": "Fairy",
+    "baseHP": 75,
+    "baseAttack": 105,
+    "baseDefense": 95,
+    "baseSpAttack": 50,
+    "baseSpDefense": 120,
+    "baseSpeed": 111,
+    "evYield": {
+      "hp": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 200,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Amorphous"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.5,
+    "weight": 1.5,
+    "color": "Yellow",
+    "shape": "Squiggle",
+    "dexEntry": "Masqueradoll is a Costume Pokémon, Ghost- and Fairy-type, first found in Alola. It stands 0.5 m tall and weighs 1.5 kg. It evolves from Mimikyu.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 1,
+        "moveName": "Splash"
+      },
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Copycat"
+      },
+      {
+        "level": 1,
+        "moveName": "Wood Hammer"
+      },
+      {
+        "level": 6,
+        "moveName": "Shadow Sneak"
+      },
+      {
+        "level": 12,
+        "moveName": "Double Team"
+      },
+      {
+        "level": 18,
+        "moveName": "Baby-Doll Eyes"
+      },
+      {
+        "level": 24,
+        "moveName": "Mimic"
+      },
+      {
+        "level": 30,
+        "moveName": "Hone Claws"
+      },
+      {
+        "level": 36,
+        "moveName": "Slash"
+      },
+      {
+        "level": 42,
+        "moveName": "Shadow Claw"
+      },
+      {
+        "level": 48,
+        "moveName": "Charm"
+      },
+      {
+        "level": 54,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 60,
+        "moveName": "Pain Split"
+      },
+      {
+        "level": 110,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 155,
+        "moveName": "Spectral Claw"
+      },
+      {
+        "level": 205,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM60",
+      "TM61",
+      "TM63",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM73",
+      "TM75",
+      "TM77",
+      "TM79",
+      "TM81",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM92",
+      "TR00",
+      "TR08",
+      "TR09",
+      "TR11",
+      "TR18",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR37",
+      "TR38",
+      "TR48",
+      "TR58",
+      "TR60",
+      "TR85",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Last Resort",
+      "Snore",
+      "Spite",
+      "Trick"
+    ],
+    "offspring": "Mimikyu",
+    "eggMoves": [
+      "Curse",
+      "Destiny Bond"
+    ],
+    "abilities": [
+      "Cursed Body"
+    ]
+  },
+  {
+    "dexNumber": 2779,
+    "dexNumbers": {},
+    "name": "Chromagnash",
+    "category": "Gnash Fish",
+    "primaryType": "Water",
+    "secondaryType": "Psychic",
+    "baseHP": 88,
+    "baseAttack": 120,
+    "baseDefense": 85,
+    "baseSpAttack": 80,
+    "baseSpDefense": 85,
+    "baseSpeed": 97,
+    "evYield": {
+      "hp": 1,
+      "attack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 199,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 2"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.3,
+    "weight": 35,
+    "color": "Pink",
+    "shape": "Fish",
+    "dexEntry": "Chromagnash is a Gnash Fish Pokémon, Water- and Psychic-type, first found in Alola. It stands 1.3 m tall and weighs 35.0 kg. It evolves from Bruxish.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 4,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 9,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 12,
+        "moveName": "Bite"
+      },
+      {
+        "level": 17,
+        "moveName": "Aqua Jet"
+      },
+      {
+        "level": 20,
+        "moveName": "Disable"
+      },
+      {
+        "level": 25,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 28,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 33,
+        "moveName": "Aqua Tail"
+      },
+      {
+        "level": 36,
+        "moveName": "Screech"
+      },
+      {
+        "level": 41,
+        "moveName": "Psychic Fangs"
+      },
+      {
+        "level": 44,
+        "moveName": "Wave Crash"
+      },
+      {
+        "level": 110,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 145,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 180,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 215,
+        "moveName": "Mind Blade"
+      },
+      {
+        "level": 250,
+        "moveName": "Maelstrom Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM03",
+      "TM04",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM12",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM56",
+      "TM58",
+      "TM63",
+      "TM66",
+      "TM68",
+      "TM75",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM92",
+      "HM03",
+      "HM07"
+    ],
+    "tutorMoves": [
+      "Aqua Tail",
+      "Signal Beam",
+      "Snore",
+      "Uproar"
+    ],
+    "offspring": "Bruxish",
+    "eggMoves": [
+      "Super Fang",
+      "Poison Fang",
+      "Water Pulse",
+      "Ice Fang"
+    ],
+    "abilities": [
+      "Dazzling",
+      "Strong Jaw"
+    ],
+    "hiddenAbility": "Wonder Skin"
+  },
+  {
+    "dexNumber": 2780,
+    "dexNumbers": {},
+    "name": "Elderdrake",
+    "category": "Old Sage",
+    "primaryType": "Normal",
+    "secondaryType": "Dragon",
+    "baseHP": 98,
+    "baseAttack": 60,
+    "baseDefense": 95,
+    "baseSpAttack": 155,
+    "baseSpDefense": 101,
+    "baseSpeed": 56,
+    "evYield": {
+      "hp": 1,
+      "spAttack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 204,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Monster",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 3.6,
+    "weight": 240,
+    "color": "White",
+    "shape": "Squiggle",
+    "dexEntry": "Elderdrake is an Old Sage Pokémon, Normal- and Dragon-type, first found in Alola. It stands 3.6 m tall and weighs 240.0 kg. It evolves from Drampa.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Play Nice"
+      },
+      {
+        "level": 1,
+        "moveName": "Echoed Voice"
+      },
+      {
+        "level": 5,
+        "moveName": "Twister"
+      },
+      {
+        "level": 10,
+        "moveName": "Protect"
+      },
+      {
+        "level": 15,
+        "moveName": "Glare"
+      },
+      {
+        "level": 20,
+        "moveName": "Safeguard"
+      },
+      {
+        "level": 25,
+        "moveName": "Dragon Breath"
+      },
+      {
+        "level": 30,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 35,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 40,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 45,
+        "moveName": "Fly"
+      },
+      {
+        "level": 50,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 55,
+        "moveName": "Outrage"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 155,
+        "moveName": "Resonant Hymn"
+      },
+      {
+        "level": 205,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 250,
+        "moveName": "Wyrmflare"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM04",
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM24",
+      "TM25",
+      "TM26",
+      "TM27",
+      "TM30",
+      "TM32",
+      "TM35",
+      "TM38",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM47",
+      "TM51",
+      "TM52",
+      "TM53",
+      "TM56",
+      "TM58",
+      "TM59",
+      "TM65",
+      "TM68",
+      "TM73",
+      "TM77",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM90",
+      "HM02",
+      "HM03",
+      "TR02",
+      "TR03",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR08",
+      "TR09",
+      "TR10",
+      "TR15",
+      "TR17",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR35",
+      "TR36",
+      "TR39",
+      "TR42",
+      "TR47",
+      "TR49",
+      "TR51",
+      "TR62",
+      "TR64",
+      "TR65",
+      "TR77",
+      "TR85",
+      "TR89",
+      "TR90"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Heat Wave",
+      "Helping Hand",
+      "Icy Wind",
+      "Outrage",
+      "Signal Beam",
+      "Snore",
+      "Superpower",
+      "Uproar"
+    ],
+    "offspring": "Drampa",
+    "eggMoves": [
+      "Mist",
+      "Tickle",
+      "Dragon Rush"
+    ],
+    "abilities": [
+      "Berserk",
+      "Sap Sipper"
+    ],
+    "hiddenAbility": "Cloud Nine"
+  },
+  {
+    "dexNumber": 2781,
+    "dexNumbers": {},
+    "name": "Galleonghast",
+    "category": "Shipwreck",
+    "primaryType": "Ghost",
+    "secondaryType": "Grass",
+    "baseHP": 95,
+    "baseAttack": 141,
+    "baseDefense": 110,
+    "baseSpAttack": 96,
+    "baseSpDefense": 105,
+    "baseSpeed": 50,
+    "evYield": {
+      "hp": 1,
+      "attack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 217,
+    "growthRate": "MediumFast",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Mineral"
+    ],
+    "hatchCycles": 25,
+    "baseFriendship": 70,
+    "height": 4.6,
+    "weight": 300,
+    "color": "Green",
+    "shape": "Blob",
+    "dexEntry": "Galleonghast is a Shipwreck Pokémon, Ghost- and Grass-type, first found in Alola. It stands 4.6 m tall and weighs 300.0 kg. It evolves from Dhelmise.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Rapid Spin"
+      },
+      {
+        "level": 4,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 8,
+        "moveName": "Wrap"
+      },
+      {
+        "level": 12,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 16,
+        "moveName": "Growth"
+      },
+      {
+        "level": 20,
+        "moveName": "Gyro Ball"
+      },
+      {
+        "level": 24,
+        "moveName": "Switcheroo"
+      },
+      {
+        "level": 28,
+        "moveName": "Giga Drain"
+      },
+      {
+        "level": 32,
+        "moveName": "Whirlpool"
+      },
+      {
+        "level": 36,
+        "moveName": "Heavy Slam"
+      },
+      {
+        "level": 40,
+        "moveName": "Slam"
+      },
+      {
+        "level": 44,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 48,
+        "moveName": "Metal Sound"
+      },
+      {
+        "level": 52,
+        "moveName": "Anchor Shot"
+      },
+      {
+        "level": 56,
+        "moveName": "Energy Ball"
+      },
+      {
+        "level": 60,
+        "moveName": "Phantom Force"
+      },
+      {
+        "level": 64,
+        "moveName": "Power Whip"
+      },
+      {
+        "level": 110,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 145,
+        "moveName": "Spectral Claw"
+      },
+      {
+        "level": 180,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 215,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 250,
+        "moveName": "Root Snare"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM21",
+      "TM22",
+      "TM26",
+      "TM27",
+      "TM30",
+      "TM31",
+      "TM32",
+      "TM40",
+      "TM42",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM53",
+      "TM55",
+      "TM58",
+      "TM63",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM74",
+      "TM75",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TM91",
+      "HM03",
+      "TR00",
+      "TR03",
+      "TR04",
+      "TR10",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR45",
+      "TR46",
+      "TR52",
+      "TR65",
+      "TR70",
+      "TR72",
+      "TR74",
+      "TR77",
+      "TR78",
+      "TR79",
+      "TR83",
+      "TR98",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Iron Defense",
+      "Iron Head",
+      "Knock Off",
+      "Snore",
+      "Spite",
+      "Synthesis"
+    ],
+    "offspring": "Dhelmise",
+    "abilities": [
+      "Steelworker"
+    ]
+  },
+  {
+    "dexNumber": 2785,
+    "dexNumbers": {},
+    "name": "Kokonui",
+    "category": "Land Spirit",
+    "legendary": true,
+    "primaryType": "Electric",
+    "secondaryType": "Fairy",
+    "baseHP": 90,
+    "baseAttack": 130,
+    "baseDefense": 100,
+    "baseSpAttack": 110,
+    "baseSpDefense": 90,
+    "baseSpeed": 140,
+    "evYield": {
+      "hp": 1,
+      "speed": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 2.2,
+    "weight": 30,
+    "color": "Yellow",
+    "shape": "Arms",
+    "dexEntry": "Kokonui is a Land Spirit Pokémon, Electric- and Fairy-type, first found in Alola. It stands 2.2 m tall and weighs 30.0 kg. It evolves from Tapu Koko.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 5,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 10,
+        "moveName": "Fairy Wind"
+      },
+      {
+        "level": 15,
+        "moveName": "False Swipe"
+      },
+      {
+        "level": 20,
+        "moveName": "Spark"
+      },
+      {
+        "level": 25,
+        "moveName": "Shock Wave"
+      },
+      {
+        "level": 30,
+        "moveName": "Charge"
+      },
+      {
+        "level": 35,
+        "moveName": "Agility"
+      },
+      {
+        "level": 40,
+        "moveName": "Screech"
+      },
+      {
+        "level": 45,
+        "moveName": "Discharge"
+      },
+      {
+        "level": 50,
+        "moveName": "Mean Look"
+      },
+      {
+        "level": 55,
+        "moveName": "Nature's Madness"
+      },
+      {
+        "level": 60,
+        "moveName": "Wild Charge"
+      },
+      {
+        "level": 65,
+        "moveName": "Brave Bird"
+      },
+      {
+        "level": 70,
+        "moveName": "Power Swap"
+      },
+      {
+        "level": 75,
+        "moveName": "Electric Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Overcharge"
+      },
+      {
+        "level": 145,
+        "moveName": "Arc Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Voltstep"
+      },
+      {
+        "level": 215,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM32",
+      "TM33",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM46",
+      "TM47",
+      "TM51",
+      "TM54",
+      "TM58",
+      "TM68",
+      "TM73",
+      "TM77",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM02",
+      "TR08",
+      "TR09",
+      "TR12",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR37",
+      "TR42",
+      "TR46",
+      "TR49",
+      "TR66",
+      "TR74",
+      "TR77",
+      "TR80",
+      "TR82",
+      "TR85",
+      "TR86",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Iron Head",
+      "Snore",
+      "Thunder Punch"
+    ],
+    "offspring": "Tapu Koko",
+    "abilities": [
+      "Electric Surge"
+    ],
+    "hiddenAbility": "Telepathy"
+  },
+  {
+    "dexNumber": 2786,
+    "dexNumbers": {},
+    "name": "Lelenui",
+    "category": "Land Spirit",
+    "legendary": true,
+    "primaryType": "Psychic",
+    "secondaryType": "Fairy",
+    "baseHP": 90,
+    "baseAttack": 95,
+    "baseDefense": 90,
+    "baseSpAttack": 145,
+    "baseSpDefense": 130,
+    "baseSpeed": 110,
+    "evYield": {
+      "hp": 1,
+      "spAttack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.6,
+    "weight": 26,
+    "color": "Pink",
+    "shape": "Arms",
+    "dexEntry": "Lelenui is a Land Spirit Pokémon, Psychic- and Fairy-type, first found in Alola. It stands 1.6 m tall and weighs 26.0 kg. It evolves from Tapu Lele.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 5,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 10,
+        "moveName": "Aromatherapy"
+      },
+      {
+        "level": 15,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 20,
+        "moveName": "Psybeam"
+      },
+      {
+        "level": 25,
+        "moveName": "Flatter"
+      },
+      {
+        "level": 30,
+        "moveName": "Aromatic Mist"
+      },
+      {
+        "level": 35,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 40,
+        "moveName": "Extrasensory"
+      },
+      {
+        "level": 45,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 50,
+        "moveName": "Mean Look"
+      },
+      {
+        "level": 55,
+        "moveName": "Nature's Madness"
+      },
+      {
+        "level": 60,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 65,
+        "moveName": "Tickle"
+      },
+      {
+        "level": 70,
+        "moveName": "Skill Swap"
+      },
+      {
+        "level": 75,
+        "moveName": "Psychic Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 140,
+        "moveName": "Astral Pulse"
+      },
+      {
+        "level": 165,
+        "moveName": "Mindbreak Wave"
+      },
+      {
+        "level": 195,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 220,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM33",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM46",
+      "TM48",
+      "TM52",
+      "TM53",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM68",
+      "TM77",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TR08",
+      "TR09",
+      "TR11",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR34",
+      "TR37",
+      "TR40",
+      "TR46",
+      "TR49",
+      "TR64",
+      "TR65",
+      "TR77",
+      "TR82",
+      "TR83",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Snore"
+    ],
+    "offspring": "Tapu Lele",
+    "abilities": [
+      "Psychic Surge"
+    ],
+    "hiddenAbility": "Telepathy"
+  },
+  {
+    "dexNumber": 2787,
+    "dexNumbers": {},
+    "name": "Bulunui",
+    "category": "Land Spirit",
+    "legendary": true,
+    "primaryType": "Grass",
+    "secondaryType": "Fairy",
+    "baseHP": 90,
+    "baseAttack": 145,
+    "baseDefense": 130,
+    "baseSpAttack": 95,
+    "baseSpDefense": 110,
+    "baseSpeed": 90,
+    "evYield": {
+      "hp": 1,
+      "attack": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 2.3,
+    "weight": 70,
+    "color": "Red",
+    "shape": "Arms",
+    "dexEntry": "Bulunui is a Land Spirit Pokémon, Grass- and Fairy-type, first found in Alola. It stands 2.3 m tall and weighs 70.0 kg. It evolves from Tapu Bulu.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Leafage"
+      },
+      {
+        "level": 1,
+        "moveName": "Rock Smash"
+      },
+      {
+        "level": 5,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 10,
+        "moveName": "Disable"
+      },
+      {
+        "level": 15,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 20,
+        "moveName": "Mega Drain"
+      },
+      {
+        "level": 25,
+        "moveName": "Whirlwind"
+      },
+      {
+        "level": 30,
+        "moveName": "Horn Attack"
+      },
+      {
+        "level": 35,
+        "moveName": "Scary Face"
+      },
+      {
+        "level": 40,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 45,
+        "moveName": "Zen Headbutt"
+      },
+      {
+        "level": 50,
+        "moveName": "Mean Look"
+      },
+      {
+        "level": 55,
+        "moveName": "Nature's Madness"
+      },
+      {
+        "level": 60,
+        "moveName": "Wood Hammer"
+      },
+      {
+        "level": 65,
+        "moveName": "Megahorn"
+      },
+      {
+        "level": 70,
+        "moveName": "Skull Bash"
+      },
+      {
+        "level": 75,
+        "moveName": "Grassy Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 145,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 180,
+        "moveName": "Root Snare"
+      },
+      {
+        "level": 215,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM09",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM31",
+      "TM33",
+      "TM39",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM52",
+      "TM53",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM75",
+      "TM77",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TR00",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR28",
+      "TR37",
+      "TR39",
+      "TR46",
+      "TR48",
+      "TR49",
+      "TR53",
+      "TR59",
+      "TR64",
+      "TR65",
+      "TR69",
+      "TR75",
+      "TR77",
+      "TR82",
+      "TR85",
+      "TR92",
+      "TR93",
+      "TR94"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Seed Bomb",
+      "Snore",
+      "Superpower",
+      "Synthesis",
+      "Zen Headbutt"
+    ],
+    "offspring": "Tapu Bulu",
+    "abilities": [
+      "Grassy Surge"
+    ],
+    "hiddenAbility": "Telepathy"
+  },
+  {
+    "dexNumber": 2788,
+    "dexNumbers": {},
+    "name": "Fininui",
+    "category": "Land Spirit",
+    "legendary": true,
+    "primaryType": "Water",
+    "secondaryType": "Fairy",
+    "baseHP": 90,
+    "baseAttack": 85,
+    "baseDefense": 130,
+    "baseSpAttack": 110,
+    "baseSpDefense": 145,
+    "baseSpeed": 100,
+    "evYield": {
+      "hp": 1,
+      "spDefense": 3
+    },
+    "catchRate": 3,
+    "baseExpYield": 308,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.7,
+    "weight": 30,
+    "color": "Purple",
+    "shape": "Arms",
+    "dexEntry": "Fininui is a Land Spirit Pokémon, Water- and Fairy-type, first found in Alola. It stands 1.7 m tall and weighs 30.0 kg. It evolves from Tapu Fini.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Disarming Voice"
+      },
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 5,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 10,
+        "moveName": "Mist"
+      },
+      {
+        "level": 10,
+        "moveName": "Haze"
+      },
+      {
+        "level": 15,
+        "moveName": "Aqua Ring"
+      },
+      {
+        "level": 20,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 25,
+        "moveName": "Brine"
+      },
+      {
+        "level": 30,
+        "moveName": "Defog"
+      },
+      {
+        "level": 35,
+        "moveName": "Heal Pulse"
+      },
+      {
+        "level": 40,
+        "moveName": "Surf"
+      },
+      {
+        "level": 45,
+        "moveName": "Muddy Water"
+      },
+      {
+        "level": 50,
+        "moveName": "Mean Look"
+      },
+      {
+        "level": 55,
+        "moveName": "Nature's Madness"
+      },
+      {
+        "level": 60,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 65,
+        "moveName": "Hydro Pump"
+      },
+      {
+        "level": 70,
+        "moveName": "Soak"
+      },
+      {
+        "level": 75,
+        "moveName": "Misty Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 145,
+        "moveName": "Abyssal Current"
+      },
+      {
+        "level": 180,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 215,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM12",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM30",
+      "TM32",
+      "TM33",
+      "TM41",
+      "TM42",
+      "TM44",
+      "TM55",
+      "TM56",
+      "TM58",
+      "TM68",
+      "TM77",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "HM03",
+      "HM07",
+      "HM09",
+      "TR03",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR16",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR37",
+      "TR38",
+      "TR45",
+      "TR46",
+      "TR49",
+      "TR77",
+      "TR82",
+      "TR84",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Ice Punch",
+      "Icy Wind",
+      "Iron Defense",
+      "Knock Off",
+      "Snore",
+      "Trick"
+    ],
+    "offspring": "Tapu Fini",
+    "abilities": [
+      "Misty Surge"
+    ],
+    "hiddenAbility": "Telepathy"
   }
 ]
