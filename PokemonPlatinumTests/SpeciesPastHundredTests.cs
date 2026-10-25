@@ -70,7 +70,6 @@ public class SpeciesPastHundredTests
             if (legend)
             {
                 Assert.Equal(660, Total(d.Stats));
-                Assert.InRange(rise, 1, from.Generation == 7 ? 90 : 80);
                 Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
@@ -192,7 +191,6 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
-            case EvolutionMethod.LevelDusk: context.IsDusk = true; break;
             case EvolutionMethod.CriticalHits: p.EvolutionProgress[Evolution.CriticalHitsKey] = e.Value; trigger = EvolutionTrigger.BattleEnd; break;
             case EvolutionMethod.LevelAfterDamage: p.EvolutionProgress[Evolution.DamageKey] = e.Value; context.Sites = new[] { e.Location! }; break;
             case EvolutionMethod.LevelAfterMoveUses: p.EvolutionProgress[Evolution.MoveKey(e.Move!)] = e.Value; break;
