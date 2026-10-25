@@ -7,7 +7,7 @@
   "sign": "City",
   "weather": "0",
   "camera": "0",
-  "battleBackground": "",
+  "battleBackground": "City",
   "dayMusic": "BGM_C_04",
   "nightMusic": "BGM_C_04",
   "bike": true,

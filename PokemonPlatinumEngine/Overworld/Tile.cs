@@ -168,7 +168,12 @@ public enum BattleArena
     /// <summary>A room of the Pokémon League: an Elite Four member's type, or the Champion's room.</summary>
     League,
     /// <summary>The sea floor (plan 21 · H5): sand and kelp under the water, a light of its own.</summary>
-    Underwater
+    Underwater,
+    /// <summary>
+    /// A city's street (plan 22, wave 48): flagstones under a row of buildings, for a battle begun on paving where the
+    /// area's header names a city's background.
+    /// </summary>
+    City
 }
 
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>
@@ -317,6 +322,11 @@ public enum InteriorStyle
     Museum,
     /// <summary>The Game Corner: a red carpet, midnight walls and a band of gold bulbs (plan 06 · R16b).</summary>
     GameHall,
+    /// <summary>
+    /// A covered street of shops (plan 22, wave 48: Join Avenue): its floor the ground its tiles say (the street's
+    /// paving) as a Gym's is, its walls and the blocks of its shops shopfronts (style guide, "Rooms").
+    /// </summary>
+    Street,
 }
 
 /// <summary>

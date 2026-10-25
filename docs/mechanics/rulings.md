@@ -2564,6 +2564,18 @@ leaves a choice.
   field, and the common Pokémon Center's and Gym's.
 - **The buildings** are stand-ins in Sinnoh's ways of building (`WorldModels.Unova`, each with its `StandInUntil`),
   until U5 gives each town a way of its own.
+- **Wave 48's fixes** (2026-10-25, from the wave 47 shots). Black 2's `yuk` after a number (`out7yuk01`, `out36yuk1`) is
+  a floor's, Nimbasa's and its park's paving: read as snow (`yuki`), it had made the city snow country (blue light, a
+  snowfield for every battle on it). A zone's `battle_bg` is read by the zones that name each: 1 a route's plain, 2 the
+  big cities' street (Castelia, Nimbasa, Driftveil and its drawbridge, Route 4), 3 a town's, 4 and 5 caves, 6 woods,
+  7 mountains, 8 the shore and the ruins under the sea, 9 indoors, 10 the desert; 2 and 3 are both `City`, as
+  Platinum's towns are. Black 2 fights a city's battles on a street, so **paving where the area's header names a city's
+  background is a stage of ours, `City`** (flagstones under a row of buildings), in every region; a city's earth or grass
+  stays the meadow (Driftveil's sandy streets, where Rood is battled). The Castelia sewers' battles are fought on the
+  cave's stage (their overlay's `battleArena`) until a sewer has a stage of its own. Join Avenue, a covered street of
+  shops under a glass roof, is a room of its own look (`InteriorStyle.Street`): its street is paving, its shopfronts
+  the blocks between the lanes; its shops are still part c's. The Nimbasa Gym's runway stands over nothing, as Black
+  2's does in its dark hall (the overlay's `overTheDark`); Black 2's spotlights and the models' walk are still left out.
 
 ## Seasons in Unova (2026-10-24, plan 22 · U4)
 

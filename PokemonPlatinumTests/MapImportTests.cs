@@ -1275,6 +1275,21 @@ public class Bw2ImportTests
         Assert.Equal(TerrainCover.Water, Bw2Cover.OfTile(Bw2Behaviours.Of(0x3F)));
         Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTile(Bw2Behaviours.Of(0x06)));
         Assert.Equal(TerrainCover.Unknown, Bw2Cover.OfTile(TileBehavior.None));
+        // Plan 22, wave 48: yuk after a number is a floor's (yuka), never snow's (yuki): Nimbasa's and its park's paving
+        Assert.Equal(TerrainCover.Paving, Bw2Cover.OfTexture("out7yuk01_2", out _));
+        Assert.Equal(TerrainCover.Paving, Bw2Cover.OfTexture("out36yuk1_4", out _));
+        Assert.Equal(TerrainCover.Snow, Bw2Cover.OfTexture("kisetu_yuki", out _));
+        // Join Avenue's street under its glass roof, its shopfronts and basins; the runway's stage
+        Assert.Equal(TerrainCover.Paving, Bw2Cover.OfTexture("ja_floor1", out _));
+        Assert.Null(Bw2Cover.OfTexture("ja_roof1", out known));
+        Assert.True(known);
+        Assert.Equal(TerrainCover.Building, Bw2Cover.OfTexture("ja_vari4", out _));
+        Assert.Equal(TerrainCover.Paving, Bw2Cover.OfTexture("c4g_stage1", out _));
+        // and a zone's battle background: the big cities' street and a town's are both a city's
+        Assert.Equal("City", Bw2World.BattleBackground(2));
+        Assert.Equal("City", Bw2World.BattleBackground(3));
+        Assert.Equal("Forest", Bw2World.BattleBackground(6));
+        Assert.Equal("", Bw2World.BattleBackground(10));
     }
 
     // ---------------------------------------------------------------- plan 22 · U2: where the textures lie

@@ -7,7 +7,7 @@
   "sign": "None",
   "weather": "0",
   "camera": "9",
-  "battleBackground": "",
+  "battleBackground": "City",
   "dayMusic": "BGM_H_02",
   "nightMusic": "BGM_H_02",
   "encounters": "ENCOUNTERS_DRIFTVEIL_DRAWBRIDGE",

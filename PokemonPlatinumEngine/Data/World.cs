@@ -273,6 +273,9 @@ public static class WorldMapBuilder
             // was fought indoors on a plain floor)
             map.Arena ??= BattleArena.Gym;
         }
+        // A room whose overlay names its look has it (plan 22, wave 48: Join Avenue, a covered street)
+        if (room && entry.Area != null && world.Overlay(entry.Area)?.Interior is { } style) map.Interior = style;
+        bool overTheDark = room && entry.Area != null && world.Overlay(entry.Area)?.OverTheDark == true;
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {
@@ -445,7 +448,16 @@ public static class WorldMapBuilder
             // A room built from a layout (plan 18 · W7): what the import couldn't name is floor where it is walked and
             // wall where it is blocked, never lawn and forest
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
-            foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+            // (a hall over the dark has nothing there: plan 22, wave 48)
+            var beyond = overTheDark ? TileType.Void : TileType.Wall;
+            foreach (var (x, z) in blank) map.SetGroundTile(x, z, beyond, isSolid: true);
+            // A covered street's blocked paving is its shops' fronts (plan 22, wave 48: Join Avenue): inner walls in the
+            // street's shopfront look, where blocked paving would read as more of the street
+            if (map.Interior == InteriorStyle.Street)
+                for (int z = 0; z < map.Height; z++)
+                    for (int x = 0; x < map.Width; x++)
+                        if (map.IsSolid(x, z) && map.GetGroundTile(x, z) == TileType.Paving && !entrances.Contains((x, z)))
+                            map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
             if (world.Index.BuildingsAtDoors) Furnish(map, furniture, entrances);
             // A DS game's room longer than a chunk (plan 20 · J7: the Azalea Gym, whose islands only its carts join) is
             // walled where neither its ways in nor its triggers reach, as a room of one chunk is: the chunks' open floor
@@ -469,7 +481,7 @@ public static class WorldMapBuilder
                 }
                 for (int z = 0; z < map.Height; z++)
                     for (int x = 0; x < map.Width; x++)
-                        if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+                        if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, beyond, isSolid: true);
             }
             else if (reach != null)
             {
@@ -479,7 +491,7 @@ public static class WorldMapBuilder
                     for (int x = 0; x < map.Width; x++)
                     {
                         if (reach[z * T + x]) { back = Math.Min(back, z); continue; }
-                        map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+                        map.SetGroundTile(x, z, beyond, isSolid: true);
                     }
                 // What hangs on the wall hangs on the wall over the floor's first row
                 bool OnTheWall(Prop p) => p.Type is PropType.Clock or PropType.Painting or PropType.Window;

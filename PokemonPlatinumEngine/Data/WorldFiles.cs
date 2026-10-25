@@ -835,6 +835,19 @@ public sealed class WorldOverlayFile
     /// takes them (<c>Map.ArenaType</c>; style guide, "Gyms"). Left out, a room is the kind its name says.
     /// </summary>
     public PokemonType? ArenaType { get; set; }
+
+    /// <summary>
+    /// A room built from a layout whose look its name doesn't say (plan 22, wave 48): <c>Street</c> for Join Avenue's
+    /// covered street of shopfronts. Left out, a room is the kind its name (or its <see cref="ArenaType"/>) says.
+    /// </summary>
+    public InteriorStyle? Interior { get; set; }
+
+    /// <summary>
+    /// A Gym's hall whose walks stand over the dark (plan 22, wave 48: the Nimbasa Gym's runway): what the room's ways
+    /// don't reach and what the original draws nothing on is nothing (<c>TileType.Void</c>), not wall, as the Sunyshore
+    /// Gym's gears stand over it.
+    /// </summary>
+    public bool OverTheDark { get; set; }
     public List<string>? EvolutionSites { get; set; }
 
     /// <summary>Where the area's warps lead among the hand-made maps, by the warp's number in the area file.</summary>
