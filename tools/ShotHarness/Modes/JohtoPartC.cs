@@ -92,6 +92,8 @@ partial class Harness
         ReadTo("Which Pokémon is it to be"); Frames(10);
         Until(() => game.State != GameState.Overworld, "the team screen", 300);
         Frames(20); Shot("jpc04_the_team_screen");
+        game.PartyScreen.SelectedIndex = game.Party.Members.IndexOf(pidgey);
+        game.PartyScreen.Confirm(game.Party); Frames(3);
         // The list of moves it let slip, and the full set asking which move is to go
         Until(() => engine.Choice.IsOpen, "the list of moves", 600);
         Frames(10); Shot("jpc05_the_moves_it_let_slip");

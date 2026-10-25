@@ -64,6 +64,8 @@ partial class Harness
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     if (fight.EnemyPokemon is { } met) met.CurrentHP = Math.Min(met.CurrentHP, 1);
+                    // (Wallace restores his Gyarados with a Full Restore from 1 HP and beat the team: a trainer's bag is emptied)
+                    foreach (var trainer in fight.Trainers) trainer.Items.Clear();
                     // (In a double battle the lead's partner is a Pokémon of the twenties against Leaders of the forties,
                     // felled at full HP by one blow: the foes are left only Struggle, as the arcade mode leaves its Star's)
                     if (fight.IsDouble)

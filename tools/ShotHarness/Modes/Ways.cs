@@ -37,6 +37,9 @@ partial class Harness
         if (x >= 0) game.Player.SetPosition(x, y, Direction.Up);
         var foe = Meet("Onix", 100);
         foe.CurrentHP = 1;
+        // a level 100 Onix is faster and strikes first: it knows only Harden, so the Turtwig is there to be given the EXP
+        foe.Moves.Clear();
+        foe.Moves.Add(MoveDatabase.Create("Harden"));
         var b = new BattleEngine(new BattleSetup
         {
             PlayerParty = game.Party, Inventory = game.Bag, Pokedex = game.Pokedex, WildPokemon = new List<Pokemon> { foe },
