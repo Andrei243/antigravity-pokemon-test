@@ -337,34 +337,34 @@ internal static partial class PokemonModels
         // Long legs bent at the knee, banded in black, standing on three long toes
         PokeBuilder.Both(s =>
         {
-            int leg = b.Leg(s, V(0.07f * s, 0.42f, -0.02f));
-            b.Limb(leg, V(0.07f * s, 0.42f, -0.02f), V(0.13f * s, 0.25f, 0.06f), 0.05f, 0.04f, blue);
-            b.Limb(leg, V(0.13f * s, 0.25f, 0.06f), V(0.12f * s, 0.05f, -0.01f), 0.038f, 0.03f, blue);
-            b.PaintEll(leg, V(0.13f * s, 0.25f, 0.06f), V(0.045f, 0.015f, 0.045f), black, Euler(V(0.2f * s, 0.6f, 0.4f)));
-            Digits(b, leg, V(0.12f * s, 0.025f, 0.0f), V(0, -0.1f, 1f), V(0.55f, 0, 0), 0.07f, 0.016f, blue);
+            int leg = b.Leg(s, V(0.08f * s, 0.42f, -0.02f));
+            b.Limb(leg, V(0.08f * s, 0.42f, -0.02f), V(0.15f * s, 0.25f, 0.06f), 0.06f, 0.046f, blue);
+            b.Limb(leg, V(0.15f * s, 0.25f, 0.06f), V(0.13f * s, 0.05f, -0.01f), 0.044f, 0.034f, blue);
+            b.PaintEll(leg, V(0.15f * s, 0.25f, 0.06f), V(0.052f, 0.016f, 0.052f), black, Euler(V(0.2f * s, 0.6f, 0.4f)));
+            Digits(b, leg, V(0.13f * s, 0.025f, 0.0f), V(0, -0.1f, 1f), V(0.55f, 0, 0), 0.08f, 0.018f, blue);
         });
-        b.Ell(Body, V(0, 0.55f, 0), V(0.12f, 0.16f, 0.1f), blue);
-        b.PaintEll(Body, V(0, 0.45f, 0.06f), V(0.08f, 0.06f, 0.06f), White);
-        b.PaintTorus(Body, V(0, 0.5f, 0), 0.115f, 0.012f, black, default, 1f, 0.85f);
+        b.Ell(Body, V(0, 0.55f, 0), V(0.15f, 0.19f, 0.12f), blue);
+        b.PaintEll(Body, V(0, 0.44f, 0.07f), V(0.1f, 0.07f, 0.07f), White);
+        b.PaintTorus(Body, V(0, 0.5f, 0), 0.145f, 0.013f, black, default, 1f, 0.85f);
         // The red poison sac swelling at its throat
-        b.Ell(Body, V(0, 0.6f, female ? 0.07f : 0.08f), female ? V(0.068f, 0.068f, 0.05f) : V(0.085f, 0.085f, 0.06f), red, mat: Shell);
+        b.Ell(Body, V(0, 0.61f, female ? 0.09f : 0.1f), female ? V(0.08f, 0.08f, 0.06f) : V(0.1f, 0.1f, 0.07f), red, mat: Shell);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.1f * s, 0.64f, 0.0f));
-            b.Limb(arm, V(0.1f * s, 0.64f, 0.0f), V(0.21f * s, 0.56f, 0.06f), 0.038f, 0.032f, blue);
-            b.Limb(arm, V(0.21f * s, 0.56f, 0.06f), V(0.24f * s, 0.44f, 0.14f), 0.032f, 0.028f, blue);
-            b.PaintEll(arm, V(0.21f * s, 0.56f, 0.06f), V(0.04f, 0.04f, 0.014f), black, Euler(V(0.9f * s, -0.6f, 0.3f)));
+            int arm = b.Arm(s, V(0.13f * s, 0.65f, 0.0f));
+            b.Limb(arm, V(0.13f * s, 0.65f, 0.0f), V(0.23f * s, 0.56f, 0.06f), 0.046f, 0.038f, blue);
+            b.Limb(arm, V(0.23f * s, 0.56f, 0.06f), V(0.25f * s, 0.44f, 0.14f), 0.038f, 0.03f, blue);
+            b.PaintEll(arm, V(0.23f * s, 0.56f, 0.06f), V(0.048f, 0.048f, 0.016f), black, Euler(V(0.9f * s, -0.6f, 0.3f)));
             Digits(b, arm, V(0.245f * s, 0.425f, 0.15f), V(0.2f * s, -1f, 0.5f), V(0.5f, 0, 0), 0.04f, 0.013f, black);
             // The poison claw on the back of each hand
             b.Tube(arm, Smooth(3, V(0.25f * s, 0.46f, 0.12f), V(0.31f * s, 0.46f, 0.1f), V(0.34f * s, 0.41f, 0.12f)), 0.016f, 0.005f, red, Shell);
         });
 
-        int head = b.Head(V(0, 0.7f, 0.02f));
-        var c = V(0, 0.77f, 0.05f);
-        var r = V(0.115f, 0.09f, 0.125f);
+        int head = b.Head(V(0, 0.72f, 0.02f));
+        var c = V(0, 0.79f, 0.05f);
+        var r = V(0.13f, 0.1f, 0.14f);
         b.Ell(head, c, r, blue);
         // A crest swept back off its head, a wide frog's mouth with black lines running back from it, fierce yellow eyes
-        b.Spike(head, V(0, 0.82f, -0.01f), V(0, 0.93f, -0.16f), 0.05f, blue, 0.45f);
+        b.Spike(head, V(0, 0.85f, -0.01f), V(0, 0.98f, -0.18f), 0.055f, blue, 0.45f);
         b.Mark(head, On(c, r, 0, 0.73f), V(0, -0.2f, 1f), 0.065f, 0.006f, black, MarkShape.Bar);
         PokeBuilder.Both(s =>
         {
@@ -922,40 +922,40 @@ internal static partial class PokemonModels
         // Lean legs that bend back at the heel, white claws on the toes
         PokeBuilder.Both(s =>
         {
-            int leg = b.Leg(s, V(0.05f * s, 0.32f, -0.01f));
-            b.Limb(leg, V(0.05f * s, 0.32f, -0.01f), V(0.08f * s, 0.19f, 0.05f), 0.04f, 0.03f, dark);
-            b.Limb(leg, V(0.08f * s, 0.19f, 0.05f), V(0.08f * s, 0.06f, -0.02f), 0.028f, 0.024f, dark);
-            b.Limb(leg, V(0.08f * s, 0.06f, -0.02f), V(0.085f * s, 0.025f, 0.05f), 0.024f, 0.02f, dark);
-            Claws(b, leg, V(0.085f * s, 0.02f, 0.07f), V(0.018f, 0, 0), V(0, -0.3f, 1f), 0.03f, 0.009f);
+            int leg = b.Leg(s, V(0.06f * s, 0.32f, -0.01f));
+            b.Limb(leg, V(0.06f * s, 0.32f, -0.01f), V(0.09f * s, 0.19f, 0.05f), 0.05f, 0.036f, dark);
+            b.Limb(leg, V(0.09f * s, 0.19f, 0.05f), V(0.09f * s, 0.06f, -0.02f), 0.034f, 0.028f, dark);
+            b.Limb(leg, V(0.09f * s, 0.06f, -0.02f), V(0.095f * s, 0.025f, 0.05f), 0.028f, 0.022f, dark);
+            Claws(b, leg, V(0.095f * s, 0.02f, 0.07f), V(0.02f, 0, 0), V(0, -0.3f, 1f), 0.035f, 0.01f);
         });
-        b.Ell(Body, V(0, 0.42f, 0), V(0.075f, 0.12f, 0.065f), dark);
-        b.Ell(Body, V(0, 0.46f, 0.06f), V(0.02f, 0.026f, 0.014f), gold, mat: Shell, blend: 0.006f);
+        b.Ell(Body, V(0, 0.42f, 0), V(0.1f, 0.14f, 0.085f), dark);
+        b.Ell(Body, V(0, 0.47f, 0.08f), V(0.024f, 0.03f, 0.016f), gold, mat: Shell, blend: 0.006f);
         // Red feathers off its tail
         int tail = b.Tail(V(0, 0.33f, -0.05f));
         foreach (var tip in new[] { V(0.07f, 0.4f, -0.22f), V(0, 0.44f, -0.24f), V(-0.07f, 0.37f, -0.2f) })
             Blade(b, tail, V(0, 0.33f, -0.05f), tip, 0.03f, red, V(0, 1f, 0.3f), 0.35f);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.07f * s, 0.5f, 0.02f));
-            b.Limb(arm, V(0.07f * s, 0.5f, 0.02f), V(0.16f * s, 0.46f, 0.07f), 0.028f, 0.024f, dark);
-            b.Limb(arm, V(0.16f * s, 0.46f, 0.07f), V(0.22f * s, 0.43f, 0.12f), 0.024f, 0.022f, dark);
-            Claws(b, arm, V(0.235f * s, 0.43f, 0.14f), V(0, 0.018f, 0), V(0.4f * s, -0.4f, 1f), 0.05f, 0.011f);
+            int arm = b.Arm(s, V(0.09f * s, 0.5f, 0.02f));
+            b.Limb(arm, V(0.09f * s, 0.5f, 0.02f), V(0.18f * s, 0.46f, 0.07f), 0.036f, 0.03f, dark);
+            b.Limb(arm, V(0.18f * s, 0.46f, 0.07f), V(0.24f * s, 0.43f, 0.12f), 0.03f, 0.026f, dark);
+            Claws(b, arm, V(0.255f * s, 0.43f, 0.14f), V(0, 0.02f, 0), V(0.4f * s, -0.4f, 1f), 0.055f, 0.012f);
         });
 
-        int head = b.Head(V(0, 0.52f, 0.02f));
-        var c = V(0, 0.61f, 0.03f);
-        var r = V(0.1f, 0.085f, 0.09f);
+        int head = b.Head(V(0, 0.53f, 0.02f));
+        var c = V(0, 0.63f, 0.03f);
+        var r = V(0.12f, 0.1f, 0.105f);
         b.Ell(head, c, r, dark);
         // Pointed ears, a single long red feather off one of them, a gold gem on its brow and fierce red eyes
         PokeBuilder.Both(s =>
         {
-            int ear = b.Ear(head, s, V(0.06f * s, 0.67f, 0.0f));
-            b.Spike(ear, V(0.06f * s, 0.66f, 0.0f), V(0.11f * s, 0.77f, -0.03f), 0.04f, dark, 0.5f);
+            int ear = b.Ear(head, s, V(0.07f * s, 0.7f, 0.0f));
+            b.Spike(ear, V(0.07f * s, 0.69f, 0.0f), V(0.13f * s, 0.82f, -0.03f), 0.045f, dark, 0.5f);
         });
         // A female's feather is shorter (plan 09 · L7)
-        Blade(b, head, V(0.07f, 0.68f, -0.02f), female ? V(0.13f, 0.83f, -0.05f) : V(0.16f, 0.9f, -0.06f), 0.04f, red, V(0, 0, 1f), 0.3f);
-        b.Ell(head, V(0, 0.665f, 0.1f), V(0.016f, 0.02f, 0.012f), gold, mat: Shell, blend: 0.006f);
-        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.042f * s, 0.6f), V(0.4f * s, 0.1f, 1f), 0.022f, Rgb(220, 50, 70), glare: true));
+        Blade(b, head, V(0.08f, 0.71f, -0.02f), female ? V(0.15f, 0.88f, -0.05f) : V(0.19f, 0.96f, -0.06f), 0.045f, red, V(0, 0, 1f), 0.3f);
+        b.Ell(head, V(0, 0.695f, 0.115f), V(0.018f, 0.022f, 0.012f), gold, mat: Shell, blend: 0.006f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.05f * s, 0.62f), V(0.4f * s, 0.1f, 1f), 0.026f, Rgb(220, 50, 70), glare: true));
         return b;
     }
 
@@ -969,45 +969,45 @@ internal static partial class PokemonModels
 
         PokeBuilder.Both(s =>
         {
-            int leg = b.Leg(s, V(0.055f * s, 0.36f, -0.01f));
-            b.Limb(leg, V(0.055f * s, 0.36f, -0.01f), V(0.09f * s, 0.21f, 0.06f), 0.045f, 0.034f, dark);
-            b.Limb(leg, V(0.09f * s, 0.21f, 0.06f), V(0.09f * s, 0.07f, -0.02f), 0.032f, 0.026f, dark);
-            b.Limb(leg, V(0.09f * s, 0.07f, -0.02f), V(0.095f * s, 0.025f, 0.05f), 0.026f, 0.022f, dark);
-            Claws(b, leg, V(0.095f * s, 0.02f, 0.07f), V(0.02f, 0, 0), V(0, -0.3f, 1f), 0.035f, 0.01f);
+            int leg = b.Leg(s, V(0.065f * s, 0.36f, -0.01f));
+            b.Limb(leg, V(0.065f * s, 0.36f, -0.01f), V(0.1f * s, 0.21f, 0.06f), 0.055f, 0.04f, dark);
+            b.Limb(leg, V(0.1f * s, 0.21f, 0.06f), V(0.1f * s, 0.07f, -0.02f), 0.038f, 0.03f, dark);
+            b.Limb(leg, V(0.1f * s, 0.07f, -0.02f), V(0.105f * s, 0.025f, 0.05f), 0.03f, 0.024f, dark);
+            Claws(b, leg, V(0.105f * s, 0.02f, 0.07f), V(0.022f, 0, 0), V(0, -0.3f, 1f), 0.04f, 0.011f);
         });
-        b.Ell(Body, V(0, 0.47f, 0), V(0.085f, 0.13f, 0.07f), dark);
+        b.Ell(Body, V(0, 0.47f, 0), V(0.11f, 0.15f, 0.09f), dark);
         // Long red feathers off its tail
         int tail = b.Tail(V(0, 0.37f, -0.05f));
         foreach (var tip in new[] { V(0.08f, 0.44f, -0.28f), V(-0.06f, 0.4f, -0.27f) })
             Blade(b, tail, V(0, 0.37f, -0.05f), tip, 0.035f, red, V(0, 1f, 0.3f), 0.35f);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.08f * s, 0.56f, 0.02f));
-            b.Limb(arm, V(0.08f * s, 0.56f, 0.02f), V(0.18f * s, 0.5f, 0.07f), 0.032f, 0.027f, dark);
-            b.Limb(arm, V(0.18f * s, 0.5f, 0.07f), V(0.25f * s, 0.46f, 0.13f), 0.027f, 0.024f, dark);
-            Claws(b, arm, V(0.265f * s, 0.455f, 0.15f), V(0, 0.02f, 0), V(0.4f * s, -0.4f, 1f), 0.06f, 0.012f);
+            int arm = b.Arm(s, V(0.1f * s, 0.56f, 0.02f));
+            b.Limb(arm, V(0.1f * s, 0.56f, 0.02f), V(0.2f * s, 0.5f, 0.07f), 0.04f, 0.033f, dark);
+            b.Limb(arm, V(0.2f * s, 0.5f, 0.07f), V(0.27f * s, 0.46f, 0.13f), 0.033f, 0.028f, dark);
+            Claws(b, arm, V(0.285f * s, 0.455f, 0.15f), V(0, 0.022f, 0), V(0.4f * s, -0.4f, 1f), 0.07f, 0.013f);
         });
         // A collar of red feathers
         for (int i = 0; i < 9; i++)
         {
             float a = i * MathF.Tau / 9f;
-            var at = V(MathF.Sin(a) * 0.065f, 0.585f, MathF.Cos(a) * 0.055f);
-            b.Spike(Body, at, at + V(MathF.Sin(a) * 0.04f, -0.035f, MathF.Cos(a) * 0.04f), 0.026f, red, 0.5f);
+            var at = V(MathF.Sin(a) * 0.085f, 0.6f, MathF.Cos(a) * 0.07f);
+            b.Spike(Body, at, at + V(MathF.Sin(a) * 0.05f, -0.04f, MathF.Cos(a) * 0.05f), 0.03f, red, 0.5f);
         }
 
-        int head = b.Head(V(0, 0.6f, 0.02f));
-        var c = V(0, 0.68f, 0.03f);
-        var r = V(0.1f, 0.085f, 0.09f);
+        int head = b.Head(V(0, 0.62f, 0.02f));
+        var c = V(0, 0.71f, 0.03f);
+        var r = V(0.12f, 0.1f, 0.105f);
         b.Ell(head, c, r, dark);
         // A crown of red feathers fanned out behind its head, a gold gem on its brow, fierce red eyes
         foreach (float a in new[] { -70f, -40f, -12f, 12f, 40f, 70f })
         {
             var d = Vector3.Normalize(V(MathF.Sin(a * Degree), MathF.Cos(a * Degree), -0.25f));
-            var root = V(0, 0.7f, -0.05f);
-            Blade(b, head, root, root + d * (0.22f - MathF.Abs(a) * 0.0008f) * (female ? 0.78f : 1f), female ? 0.042f : 0.05f, red, V(0, 0, 1f), 0.25f);
+            var root = V(0, 0.73f, -0.05f);
+            Blade(b, head, root, root + d * (0.26f - MathF.Abs(a) * 0.0009f) * (female ? 0.78f : 1f), female ? 0.05f : 0.06f, red, V(0, 0, 1f), 0.25f);
         }
-        b.Ell(head, V(0, 0.735f, 0.1f), V(0.016f, 0.02f, 0.012f), gold, mat: Shell, blend: 0.006f);
-        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.042f * s, 0.67f), V(0.4f * s, 0.1f, 1f), 0.022f, Rgb(220, 50, 70), glare: true));
+        b.Ell(head, V(0, 0.775f, 0.115f), V(0.018f, 0.022f, 0.012f), gold, mat: Shell, blend: 0.006f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.05f * s, 0.7f), V(0.4f * s, 0.1f, 1f), 0.026f, Rgb(220, 50, 70), glare: true));
         return b;
     }
 
