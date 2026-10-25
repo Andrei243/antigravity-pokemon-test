@@ -14,8 +14,8 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14: the species of our own that evolve past level 100, batch 1 (Kanto: docs/plans/D14-proposals-kanto.md,
-/// approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
+/// Plan 03 · D14: the species of our own that evolve past level 100, batches 1 to 3 (Kanto, Johto and Hoenn:
+/// docs/plans/D14-proposals-kanto.md, -johto.md and -hoenn.md, each approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
 /// held to the proposals' rules, the species the importer made of it, each evolution firing at its level under the
 /// engine's own rules and not before, their moves by R31's rule, a battle, a save, and how the rest of the game counts
 /// them (outside the 1,025: the National Pokédex lists them last and counts them toward nothing).
@@ -36,7 +36,8 @@ public class SpeciesPastHundredTests
     [Fact]
     public void TheTableHoldsTheApprovedDesignsByTheProposalsRules()
     {
-        Assert.True(Designs.Count >= 46, $"only {Designs.Count} designs");
+        // Kanto's 46, Johto's 34 and Hoenn's 51
+        Assert.True(Designs.Count >= 131, $"only {Designs.Count} designs");
         var games = PokemonDatabase.GetAll().SelectMany(s => new[] { s.Name }.Concat((s.Forms ?? new()).Select(f => f.Name)))
             .Select(Plain).ToHashSet();
         Assert.Equal(Designs.Count, Designs.Select(d => Plain(d.Name)).Distinct().Count());
@@ -60,26 +61,49 @@ public class SpeciesPastHundredTests
             Assert.Equal(from.Abilities.Count, d.Abilities.Count);
             Assert.Equal(from.HiddenAbility != null, d.HiddenAbility != null);
 
-            // The rise: +80, or what the ceiling of 600 leaves a species that isn't legendary; no stat falls
+            // The rise: +80, or what the ceiling of 600 leaves a species that isn't legendary; a region's legendary set
+            // to 660 (+80 for the birds, the beasts and the Regis, +60 for Latias and Latios); no stat falls
             var was = SpeciesPastHundred.StatsOf(from);
             bool legend = from.Legendary || from.Mythical;
             int rise = Total(d.Stats) - Total(was);
             Assert.All(Stats, stat => Assert.True(d.Stats.Of(stat) >= was.Of(stat), $"{d.Name}'s {stat} falls"));
-            if (legend) Assert.Equal(80, rise);
+            if (legend)
+            {
+                Assert.Equal(660, Total(d.Stats));
+                Assert.InRange(rise, 1, 80);
+            }
             else
             {
                 Assert.True(Total(d.Stats) <= 600, $"{d.Name} totals {Total(d.Stats)}");
                 Assert.True(rise == 80 || (rise < 80 && Total(d.Stats) == 600), $"{d.Name} rises {rise}");
             }
 
-            // Evolves by level, 101 to 160 (130 for one that isn't legendary), with what the data has
+            // Evolves by level within its own region's climb, at most 160, with what the data has
             var e = d.Evolution;
-            Assert.InRange(e.Level, 101, legend ? 160 : 130);
+            var (low, high) = Climb(from);
+            Assert.True(e.Level >= low && e.Level <= high, $"{d.Name} evolves at {e.Level}, outside {low} to {high}");
             Assert.Equal(EvolutionTrigger.LevelUp == Evolution.TriggerOf(e.Method) || e.Method == EvolutionMethod.UseItem, true);
             if (e.Item != null) Assert.True(ItemDatabase.Get(e.Item) is { } item && item.Pocket != ItemPocket.KeyItems, $"{d.Name}: {e.Item}");
             if (e.Move != null) Assert.Contains(from.Learnset.Concat(from.Modern?.Learnset ?? new()), l => l.MoveName == e.Move);
+            if (e.Species != null) Assert.True(Species(e.Species) is { IsOurs: false }, $"{d.Name} asks for {e.Species}");
+            if (e.Method == EvolutionMethod.LevelAfterDefeating) Assert.InRange(e.Value, 1, 10);
             Assert.True(d.Height > 0 && d.Weight > 0 && d.Category.Length > 0, d.Name);
         }
+    }
+
+    /// <summary>
+    /// The levels a design may evolve at: within the climb of the region its forebear is from (Hoenn's question 1,
+    /// accepted on 2026-10-25). Kanto and Johto from 101, at most 130 (Johto's are 104 to 120); Hoenn, met at 136 to
+    /// 162, from 140 to 158; a legendary at most 160 everywhere.
+    /// </summary>
+    private static (int Low, int High) Climb(PokemonSpecies from)
+    {
+        bool legend = from.Legendary || from.Mythical;
+        return from.Generation switch
+        {
+            3 => (140, legend ? 160 : 158),
+            _ => (101, legend ? 160 : 130)
+        };
     }
 
     private static string Plain(string name) => new(name.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
@@ -140,7 +164,7 @@ public class SpeciesPastHundredTests
         var e = d.Evolution;
         var p = Mon(d.From, level, "Tackle");
         p.Friendship = 0;
-        var context = new EvolutionContext { IsNight = e.Method is EvolutionMethod.LevelDay or EvolutionMethod.FriendshipDay };
+        var context = new EvolutionContext { IsNight = e.Method is EvolutionMethod.LevelDay or EvolutionMethod.FriendshipDay or EvolutionMethod.LevelHoldingItemDay };
         var trigger = EvolutionTrigger.LevelUp;
         if (!meets) return (p, context, trigger);
 
@@ -153,6 +177,10 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelInRain: context.IsRaining = true; break;
             case EvolutionMethod.LevelAtLocation: context.Sites = new[] { e.Location! }; break;
             case EvolutionMethod.LevelHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); break;
+            case EvolutionMethod.LevelHoldingItemDay: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = false; break;
+            case EvolutionMethod.LevelHoldingItemNight: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = true; break;
+            case EvolutionMethod.LevelWithSpeciesInParty: context.Party = PartyOf(p, Mon(e.Species!, 50)); break;
+            case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
         }
@@ -183,7 +211,8 @@ public class SpeciesPastHundredTests
             var outcome = Evolution.Evolve(ready, found!, context);
             Assert.Equal((d.From, d.Name), (outcome.From.Name, outcome.Into.Name));
             Assert.Equal(d.Name, ready.Species.Name);
-            if (d.Evolution.Method == EvolutionMethod.LevelHoldingItem) Assert.Null(ready.HeldItem);
+            if (d.Evolution.Method is EvolutionMethod.LevelHoldingItem or EvolutionMethod.LevelHoldingItemDay or EvolutionMethod.LevelHoldingItemNight)
+                Assert.Null(ready.HeldItem);
             Assert.True(ready.Knows("Tackle"));
         }
     }
@@ -207,6 +236,159 @@ public class SpeciesPastHundredTests
             var item = ItemDatabase.Get(e.Item!)!;
             Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : Evolution.IsHeldForEvolution(item), e.Item);
         }
+    }
+
+    private static Party PartyOf(params Pokemon[] members)
+    {
+        var party = new Party();
+        foreach (var m in members) party.Add(m);
+        return party;
+    }
+
+    private static string? LevelUp(Pokemon p, EvolutionContext context) => Evolution.Find(p, EvolutionTrigger.LevelUp, context)?.TargetSpecies;
+
+    [Fact]
+    public void EachOfAPairGoesFurtherOnlyWithTheOtherInTheParty()
+    {
+        // Batch 3's sets (Hoenn's questions 2 and 3): Plusle and Minun, Volbeat and Illumise, Latias and Latios, each
+        // with the other; batch 2's Raysail with an Octillery. One of its own kind beside it is not its partner.
+        foreach (var (who, partner, into, level) in new[]
+        {
+            ("Plusle", "Minun", "Anodion", 142), ("Minun", "Plusle", "Cathodion", 142),
+            ("Volbeat", "Illumise", "Photurion", 145), ("Illumise", "Volbeat", "Lampyria", 145),
+            ("Latias", "Latios", "Aurelias", 160), ("Latios", "Latias", "Aurelios", 160),
+            ("Mantine", "Octillery", "Raysail", 112)
+        })
+        {
+            var p = Mon(who, level);
+            Assert.Null(LevelUp(p, new EvolutionContext()));
+            Assert.Null(LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(who, level)) }));
+            Assert.Equal(into, LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(partner, 5)) }));
+            Assert.Null(LevelUp(Mon(who, level - 1), new EvolutionContext { Party = PartyOf(Mon(partner, 5)) }));
+        }
+    }
+
+    [Fact]
+    public void TheRegisAndTheBeastsGoFurtherBesideWhoMadeThem()
+    {
+        // The Regis with a Regigigas in the party (Hoenn's question 2), the beasts with a Ho-Oh (Johto's question 2):
+        // another of the trio is not enough
+        foreach (var (who, other, maker, into, level) in new[]
+        {
+            ("Regirock", "Regice", "Regigigas", "Regimonolith", 160), ("Regice", "Registeel", "Regigigas", "Regiglacier", 160),
+            ("Registeel", "Regirock", "Regigigas", "Regiferrum", 160),
+            ("Raikou", "Entei", "Ho-Oh", "Raitenko", 150), ("Entei", "Suicune", "Ho-Oh", "Enkaiou", 150),
+            ("Suicune", "Raikou", "Ho-Oh", "Suiseiren", 150)
+        })
+        {
+            var p = Mon(who, level);
+            Assert.Null(LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(other, level)) }));
+            Assert.Equal(into, LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(other, level), Mon(maker, 70)) }));
+        }
+
+        // A legendary's evolution is banned from the Battle Frontier with the rest of them; Wobbulwark may enter, as
+        // Wobbuffet may (Johto's question 5)
+        Assert.All(new[] { "Regimonolith", "Aurelias", "Raitenko" }, name => Assert.False(FrontierRules.MayEnter(Mon(name, 160))));
+        Assert.True(FrontierRules.MayEnter(Mon("Wobbulwark", 110)));
+    }
+
+    [Fact]
+    public void ZangooseAndSeviperGrowByBeatingThreeOfTheOther()
+    {
+        // Hoenn's question 5: LevelAfterDefeating, Kingambit's condition, counted by the battle's knock-outs
+        var zangoose = Mon("Zangoose", 148, "Crush Claw");
+        for (int beaten = 0; beaten < 3; beaten++)
+        {
+            Assert.Null(LevelUp(zangoose, new EvolutionContext()));
+            var battle = Battle(zangoose, Mon("Seviper", 5), Steady(), Ruleset.Modern);
+            for (int turn = 0; turn < 10 && !battle.IsBattleOver; turn++) Turn(battle);
+            Assert.True(battle.IsBattleOver);
+            Assert.Equal(beaten + 1, Evolution.Progress(zangoose, Evolution.DefeatKey("Seviper")));
+        }
+        Assert.Equal("Ravagoose", LevelUp(zangoose, new EvolutionContext()));
+
+        // Another species knocked out counts for nothing, and the count stops where the evolution asks
+        var other = Mon("Zangoose", 148, "Crush Claw");
+        var onAnother = Battle(other, Mon("Ekans", 5), Steady(), Ruleset.Modern);
+        for (int turn = 0; turn < 10 && !onAnother.IsBattleOver; turn++) Turn(onAnother);
+        Assert.Equal(0, Evolution.Progress(other, Evolution.DefeatKey("Seviper")));
+        for (int i = 0; i < 5; i++) Evolution.CountDefeat(other, Species("Seviper"));
+        Assert.Equal(3, Evolution.Progress(other, Evolution.DefeatKey("Seviper")));
+
+        var seviper = Mon("Seviper", 148);
+        Evolution.CountDefeat(seviper, Species("Seviper"));
+        Assert.Null(LevelUp(seviper, new EvolutionContext()));
+        for (int i = 0; i < 3; i++) Evolution.CountDefeat(seviper, Species("Zangoose"));
+        Assert.Equal("Scimitail", LevelUp(seviper, new EvolutionContext()));
+    }
+
+    [Fact]
+    public void EspeonAndUmbreonNeedTheirStoneAndTheirFriendship()
+    {
+        // Johto's question 1: as batch 1's three Eeveelutions, each at 120 holding its stone with friendship 220 or more
+        foreach (var (who, stone, into) in new[] { ("Espeon", "Sun Stone", "Zenitheon"), ("Umbreon", "Moon Stone", "Eclipseon") })
+        {
+            var p = Mon(who, 120);
+            p.HeldItem = ItemDatabase.Get(stone);
+            p.Friendship = FriendshipRules.EvolveAt - 1;
+            Assert.Null(LevelUp(p, new EvolutionContext()));
+            p.Friendship = FriendshipRules.EvolveAt;
+            var found = Evolution.Find(p, EvolutionTrigger.LevelUp, new EvolutionContext());
+            Assert.Equal(into, found?.TargetSpecies);
+            Evolution.Evolve(p, found!, new EvolutionContext());
+            Assert.Null(p.HeldItem);
+
+            // The stone used on it from the bag does nothing
+            var used = Mon(who, 120);
+            used.Friendship = 255;
+            Assert.Null(Evolution.Find(used, EvolutionTrigger.UseItem, new EvolutionContext { Item = ItemDatabase.Get(stone) }));
+        }
+
+        // Sunflora and Delcatty take the stone again from the bag, past their level and not before
+        foreach (var (who, stone, into, level) in new[] { ("Sunflora", "Sun Stone", "Helianthra", 110), ("Delcatty", "Moon Stone", "Felinelle", 140) })
+        {
+            var context = new EvolutionContext { Item = ItemDatabase.Get(stone) };
+            Assert.Null(Evolution.Find(Mon(who, level - 1), EvolutionTrigger.UseItem, context));
+            Assert.Equal(into, Evolution.Find(Mon(who, level), EvolutionTrigger.UseItem, context)?.TargetSpecies);
+        }
+    }
+
+    [Fact]
+    public void LunatoneAndSolrockHoldTheirStonesAtTheirHour()
+    {
+        var lunatone = Mon("Lunatone", 150);
+        lunatone.HeldItem = ItemDatabase.Get("Moon Stone");
+        Assert.Null(LevelUp(lunatone, new EvolutionContext { IsNight = false }));
+        Assert.Equal("Selenolith", LevelUp(lunatone, new EvolutionContext { IsNight = true }));
+
+        var solrock = Mon("Solrock", 150);
+        solrock.HeldItem = ItemDatabase.Get("Sun Stone");
+        Assert.Null(LevelUp(solrock, new EvolutionContext { IsNight = true }));
+        Assert.Equal("Heliolith", LevelUp(solrock, new EvolutionContext { IsNight = false }));
+    }
+
+    [Fact]
+    public void SleighwingIsMetAtTheIceRock()
+    {
+        // Johto's question 6: Delibird at Route 217's Ice Rock (Glaceon's), not anywhere cold
+        var delibird = Mon("Delibird", 104);
+        Assert.Null(LevelUp(delibird, new EvolutionContext()));
+        Assert.Null(LevelUp(delibird, new EvolutionContext { Sites = new[] { "Moss Rock" } }));
+        Assert.Equal("Sleighwing", LevelUp(delibird, new EvolutionContext { Sites = new[] { "Ice Rock" } }));
+        Assert.Null(LevelUp(Mon("Delibird", 103), new EvolutionContext { Sites = new[] { "Ice Rock" } }));
+    }
+
+    [Fact]
+    public void HoennsSpeciesEvolveWithinHoennsClimbAndNotAtTheirFirstLevelThere()
+    {
+        // Hoenn's question 1: met at 136 to 162 (regions/hoenn.json's levels), so none of its species evolves before 140
+        var hoenn = Designs.Where(d => Species(d.From).Generation == 3).ToList();
+        Assert.Equal(51, hoenn.Count);
+        Assert.All(hoenn, d => Assert.InRange(d.Evolution.Level, 140, 160));
+        Assert.All(hoenn.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 140, 158));
+        var johto = Designs.Where(d => Species(d.From).Generation == 2).ToList();
+        Assert.Equal(34, johto.Count);
+        Assert.All(johto.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 104, 120));
     }
 
     // ------------------------------------------------------------------ moves
@@ -268,7 +450,7 @@ public class SpeciesPastHundredTests
     [Fact]
     public void OneOfOursIsSavedAndReadBackAndFoundByItsNumber()
     {
-        foreach (var name in new[] { "Ratchisel", "Glacirune", "Mimestro" })
+        foreach (var name in new[] { "Ratchisel", "Glacirune", "Mimestro", "Ironwyrm", "Aurelias", "Heartreef" })
         {
             var p = new Pokemon(Species(name), 130, new Random(3));
             var saved = SavedPokemonData.FromPokemon(p);
@@ -289,7 +471,7 @@ public class SpeciesPastHundredTests
         var national = Pokedex.Entries(Pokedex.National);
         Assert.Equal(PokemonDatabase.Ours(), national.Skip(1025).Select(e => e.Species));
         Assert.All(national.Skip(1025), e => Assert.Equal(e.Species.DexNumber, e.Number));
-        Assert.All(new[] { "kanto", Pokedex.Sinnoh, "original-johto" }, dex => Assert.DoesNotContain(Pokedex.Entries(dex), e => e.Species.IsOurs));
+        Assert.All(new[] { "kanto", Pokedex.Sinnoh, "original-johto", "updated-johto", "hoenn" }, dex => Assert.DoesNotContain(Pokedex.Entries(dex), e => e.Species.IsOurs));
 
         var (needed, _) = Pokedex.Goal(Pokedex.National);
         Assert.DoesNotContain(needed, s => s.IsOurs);
