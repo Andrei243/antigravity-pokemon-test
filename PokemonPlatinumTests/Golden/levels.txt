@@ -267,6 +267,13 @@ surf 2-20
 old rod 10
 good rod 20
 super rod 40
+=== desert_resort
+Desert Resort
+grass 18-21
+=== desert_resort_2
+Desert Resort
+grass 18-21
+trainers 9, 22-23: unova_backpacker_clara 22, unova_backpacker_sam 22, unova_backpacker_tami 22, unova_backpacker_walt 22, unova_nurse_mariah 22, unova_pkmn_ranger_anja 23, unova_pkmn_ranger_jaden 23, unova_psychic_future 23, unova_psychic_tommy 22
 === dewford_town
 Dewford Town
 surf 5-35
@@ -285,7 +292,7 @@ surf 5-20
 old rod 10
 good rod 20
 super rod 40
-trainers 3, 33-37: johto_ace_trainer_f_piper 35, johto_ace_trainer_m_kobe 37, johto_twins_clea_and_gil 35
+trainers 5, 33-75: johto_ace_trainer_f_piper 35, johto_ace_trainer_m_kobe 37, johto_champion_lance_3 75, johto_leader_clair_clair_3 60, johto_twins_clea_and_gil 35
 === ecruteak
 Ecruteak City
 surf 10-25
@@ -305,6 +312,12 @@ super rod 30-55
 Eterna Forest
 grass 10-14
 trainers 8, 11-17: bug_catcher_donald 14, bug_catcher_jack 15, bug_catcher_phillip 15, lass_briana 16, psychic_elijah 17, psychic_kody 17, psychic_lindsey 17, psychic_rachael 17
+=== ever_grande_city
+Ever Grande City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 30-45
 === fiery_path
 Fiery Path
 grass 14-16
@@ -560,6 +573,22 @@ surf 20-35
 old rod 5-10
 good rod 10-30
 super rod 25-40
+=== hoenn_victory_road_1f
+Victory Road
+grass 36-40
+trainers 5, 43-45: hoenn_albert 43, hoenn_edgar 43, hoenn_hope 45, hoenn_katelynn 43, hoenn_quincy 43
+=== hoenn_victory_road_b1f
+Victory Road
+grass 38-42
+trainers 5, 42-45: hoenn_halle 43, hoenn_michelle 42, hoenn_mitchell 43, hoenn_samuel 42, hoenn_shannon 45
+=== hoenn_victory_road_b2f
+Victory Road
+grass 40-44
+surf 25-40
+old rod 5-10
+good rod 10-30
+super rod 25-45
+trainers 6, 42-43: hoenn_caroline 43, hoenn_dianne 43, hoenn_felix 43, hoenn_julie 42, hoenn_owen 42, hoenn_vito 42
 === ice_path_1f
 Ice Path
 grass 21-23
@@ -955,6 +984,9 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== nimbasa_city
+Nimbasa City
+trainers 2, 26: unova_subway_boss_emmet 26, unova_subway_boss_ingo 26
 === olivine
 Olivine City
 surf 10-25
@@ -2567,6 +2599,7 @@ Route 4
 grass 14-17
 surf 5-15
 super rod 40-70
+trainers 11, 16-22: unova_biker_stanley 21, unova_fisherman_andrew 16, unova_fisherman_hubert 17, unova_hooligans_rob_sal 21, unova_pkmn_breeder_irene 16, unova_policeman_braven 16, unova_policeman_dell 21, unova_policeman_neagle 22, unova_roughneck_joey 21, unova_roughneck_silvester 22, unova_youngster_sinclair 22
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

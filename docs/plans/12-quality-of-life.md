@@ -366,7 +366,7 @@ Written 2026-10-06, before any session.
 - [ ] Q12 Auto-battle
 - [x] Q13 Boxes anywhere and a sorted bag
 - [x] Q14 What to do next, and rumours (2026-10-24; Sinnoh's part, the other regions' objectives are left)
-- [ ] Q15 The jukebox
+- [x] Q15 The jukebox (2026-10-25, wave 47)
 - [ ] Q16 The screenshot key and photo mode in the field
 - [ ] Q17 Photo mode in battle
 - [x] Q18 Field moves without a party member who knows them (wave 43 the rules, row, `granted` and `usemove` helper; wave 44 the party strip, Fly with a helper, the Pokétch app, the style guide, the ruling and `fm30` to `fm34`; written, not run; F3's follower hand-over stays F3's)

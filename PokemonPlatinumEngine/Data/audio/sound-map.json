@@ -139,7 +139,8 @@
     "Nurse": "lady",
     "Backpacker": "mountain",
     "Subway Boss Ingo": "ace",
-    "Subway Boss Emmet": "ace"
+    "Subway Boss Emmet": "ace",
+    "Leader": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
