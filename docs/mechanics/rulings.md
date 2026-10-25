@@ -2860,6 +2860,77 @@ the order of the scenes, who stands where, the battles and the gifts, and nothin
 - **Songs** of our own: `unova/driftveil` (the city, its rooms and the market). Clay's battle is the Gym Leader's, Rood's
   the trainer's.
 
+## Unova's second chapter, part c: Route 16 to the Plasma Frigate (2026-10-25, plan 22 · U6, part c)
+
+Black 2's side roads of the chapter and its first boarding of the Plasma Frigate, in our own words on the beats of the
+decompilation's scripts (`res/field/scripts/route_16.s`, `lostlorn_forest.s`, `gear_station.s`, `anville_town*.s`,
+`relic_passage*.s`, `relic_castle*.s`, `pwt.s`, `plasma_frigate.s`), read for the order of the scenes, who stands where,
+the battles and the gifts, and nothing of their text.
+
+- **Route 16 and the Lostlorn Forest**: Nimbasa's east gate opens onto Route 16, its trainers on the road, its small tree
+  and boulder Black 2's (whose objects are told by the global scripts they run, 10000 a Strength boulder and 10004 a tree
+  that Cut fells, since Black 2 draws them as models of many names); the gate house at its east end leads to the
+  Marvelous Bridge, the post-game's, and stays shut. North of it the Lostlorn Forest: its trainers, and a traveller who
+  asks after Zoroark, gives a TM and turns out to be the Zoroark, which cries and bounds off (Black 2's `0x03c7`). Black
+  2's TM95 (Snarl) is no TM of our data's: the traveller gives TM46, Thief, Dark as Snarl is. Black and White's trailer
+  stands in the forest with no way in, as in Black 2 (its room is left out).
+- **The Gear Station and Anville Town**: Black 2's hall stands on rails, which the reader leaves out, so it is a map of
+  ours (`GearStation`): the desks of the Battle Subway's three lines and of the Anville Town Line along its north wall.
+  The Subway's desks say the cars are in the depot (its lines are plan 22 · U6's next part and U11, on plan 06 · R18's
+  rules); the Anville Town Line's agent takes the player out to Anville Town, a ride of the fade and lines over the dark
+  with the engine's sound, as the voyage to Castelia is, and Anville's station agent brings them back. Anville builds in
+  a way of its own (`Architecture.Railyard`); its cars are trams on their rails and its turntable ground. On a Saturday
+  or a Sunday its train fans and collectors come (Black 2's `0x02a8` and `0x02a9`, ours `FLAG_UNOVA_HIDE_ANVILLE_WEEKEND`,
+  set or cleared by the town's arrival); the collectors' trades of items only talk of themselves, and the girl's lost
+  Pansage (`0x0362`) is left. A Depot Agent in a house hands on lost property: a Rare Candy the first time (`0x00ef`),
+  then one of Black 2's eight items a day, drawn on the game's die.
+- **The Relic Passage**: three halls under the sea from the Castelia Sewers (whose way north opens) to the World
+  Tournament's grounds, with a tunnel up into the Relic Castle's buried halls. Its four holes (the behaviour
+  `StrengthHole`, 2 by 2) are filled by a boulder pushed with Strength: ours are the overlays' `holes`, a wall until the
+  hole's flag (`FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST`, `_MIDDLE`, `_NORTH`, `_WEST`), and `pits` on their tiles whose
+  script sets it as the boulder comes to rest, the boulder gone with the hole it filled. Black 2's boulder fills its
+  2-by-2 hole whole; ours is one tile and fills it as well.
+- **The Relic Castle**: the Desert Resort's ruin opens. Its entrance hall's two sand pits (Black 2's `MapChangeQuicksand`
+  triggers) drop whoever steps in to the floor below, and stairs lead down and up; the buried halls the Relic Passage
+  leads into run on to the deepest room, where Volcarona battles at level 35 (beaten or caught it is gone for good, run
+  from it stays; Black 2's level 65 after the Hall of Fame is the post-game's). Black 2's zones 3 to 15, 18, 20 and 24 to
+  31 of the castle are Black and White's rooms on the Black City matrix with nothing in them, and are not opened.
+- **The Pokémon World Tournament's grounds and the Plasma Frigate**: the gate south of Driftveil opens onto the grounds;
+  the tournament's hall stays shut (plan 14 · B11 and B12 with plan 22's next part), and Black 2's Clay, Hugh, Cheren and
+  Colress at its door are held back for it. Black 2 plays the frigate's scene as the player comes out of the hall after
+  its first tournament; ours plays at the first step onto the tournament's pier once Clay has told of the tournament
+  (`VAR_UNOVA_DRIFTVEIL` 5): Cheren and Hugh come up behind the player, a grunt runs down the pier, Hugh goes after him and
+  Cheren after Hugh, and Colress warns the player off and then bids them go. The gangway at the pier's end is the way
+  aboard only while the frigate is moored (`FLAG_UNOVA_FRIGATE_AT_PIER` to `FLAG_UNOVA_FRIGATE_SAILED`); the frigate is
+  drawn as a ship along the pier (a `Boat` of the overlay's), and stays drawn after it has sailed until it has a model of
+  its own that can come and go. Aboard, one scene: Hugh and Cheren on deck, two grunts battled in turn (Black 2's
+  `TRAINER_TEAM_PLASMA_GRUNT_5` and `_6`), Zinzolin from the bow, and the Shadow Triad putting all three back ashore;
+  Black 2 has Cheren and the player clear a second band of grunts before Zinzolin, which is left. On the pier Hugh rages
+  at the departing ship and Cheren goes on to Route 6. The ship's rooms, its later moorings and its later boardings'
+  people and items are plan 22 · U8's; come aboard at any other time, the deck's grunts see the player back down.
+- **Join Avenue's shops**: Black 2's avenue fills with shops as its visitors come and the player manages it; ours opens
+  three of its bays as shops of our own, each a shopkeeper behind a counter whose end reads as its sign: a market of
+  balls and medicine, a flower shop of mulches and Honey, and a café of drinks and a Casteliacone (`marts.json`'s
+  `join_avenue_market`, `_flowers`, `_cafe`). The visitors, the ranks and the manager's work are plan 22 · U11's.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_PWT` is the grounds' count (Black 2's `0x40c6`
+  from 2: 0 until the pier's scene, 1 aboard, 2 put ashore, 3 done); `FLAG_UNOVA_HIDE_HUGH_PWT`, `_CHEREN_PWT`,
+  `_GRUNT_PWT`, `_COLRESS_PWT`, `_HUGH_PWT_PIER`, `_CHEREN_PWT_PIER`, `_HUGH_FRIGATE` (`0x033e`), `_CHEREN_FRIGATE`
+  (`0x033d`), `_ZINZOLIN_FRIGATE` (`0x0341`), `_TRIAD_FRIGATE` (`0x0342`), `_FRIGATE_GRUNTS`, `_LOSTLORN_TRAVELLER`
+  (`0x03c7`), `_LOSTLORN_ZOROARK`, `_VOLCARONA` (`0x03a0`); `FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE` and
+  `FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM` are the lost property's. `common.UnovaFrigate` hides the chapter's people
+  (`FLAG_UNOVA_FRIGATE_BEGUN`), run by `UnovaDriftveil` and, for a save of part b's, by `UnovaCatchUp`, with no story
+  version raised.
+- **The look of the import**: the frigate's deck plates and Anville's ground lie under their walking surface, as
+  Castelia's streets do, and are judged from what lies under a tile with nothing on or over it (`Bw2Cover`, their chunks
+  alone); the sea round the frigate's hull is water, its deck plates wherever nothing names a tile and its walls
+  (`out70_kabe`) its bulwarks, the Relic Castle's sand
+  (`in10_suna`) sand and its walls of stone (`in10_kabe`) cliffs, not railings, and the Relic Passage's `d0yuka` a cave's
+  floor, not a street's. A Unova way out at the edge of a cave's floor that the cave stood up as rock while
+  it led nowhere is cut down to the floor it is walked into from (the Castelia Sewers' way into the Relic Passage).
+- **Songs** of our own: `unova/lostlorn_forest`, `unova/anville`, `unova/subway` (the Gear Station),
+  `unova/relic_passage`, `unova/relic_castle` and `unova/plasma_frigate`; Route 16 plays Route 4's, as Black 2 plays the
+  same route theme on both, and the grounds Driftveil's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

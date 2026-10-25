@@ -1,0 +1,98 @@
+# The Pokémon World Tournament's grounds (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are
+# our own, on Black 2's beats (the decompilation's res/field/scripts/pwt.s and plasma_frigate.s, read for the order
+# alone).
+#
+# VAR_UNOVA_PWT is the grounds' count (Black 2's 0x40c6 from 2, the tournament's first visit being later): 0 until the
+# Plasma Frigate's scene, 1 once it has played (the gangway is open), 2 once the Shadow Triad have put the player back
+# ashore, 3 once Hugh and Cheren have had their say on the pier and the frigate has sailed.
+#
+# Black 2 plays the frigate's scene as the player comes out of the tournament's hall after its first tournament; the
+# hall is not open yet, so ours plays at the first step onto the pier once the Quake Badge is won and Clay has told of
+# the tournament (VAR_UNOVA_DRIFTVEIL 5; our trigger on 196 to 198, 476): Cheren and Hugh come up behind the player, a
+# grunt of Team Plasma runs past them down the pier, Hugh goes after him and Cheren after Hugh, and Colress warns the
+# player off (the rulings' "Unova's second chapter, part c"). The frigate's own scene is plasma_frigate.txt; the
+# grounds' arrival plays what follows it.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_PWT != 2 end
+  scene "Hugh and Cheren on the pier"
+  speaker "{rival}"
+  say "Gah! The Shadow Triad... What are they? One second we were on deck, the next we're standing out here!"
+  face hugh_pier down
+  say "And the ship's leaving! Team Plasma, get back here! You still have my sister's Purrloin!"
+  walk hugh_pier up 10 fast
+  hide hugh_pier
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  face cheren_pier player
+  speaker "Cheren"
+  say "The Shadow Triad... They can hold a person still and disappear in the blink of an eye. But it's Zinzolin who worries me."
+  say "A ship that freezes everything it passes, and a plan to turn Unova to ice. Something big is coming, {player}."
+  say "There's something I want to look into. I'm going on to Route 6. Be careful out there."
+  walk cheren_pier up 10
+  hide cheren_pier
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  setflag FLAG_UNOVA_FRIGATE_SAILED
+  setvar VAR_UNOVA_PWT 3
+  endscene
+  end
+
+
+# The first step onto the pier, once Clay has told of the tournament (our trigger on 196 to 198, 476, at 0)
+script PlasmaAtThePier
+  if var VAR_UNOVA_DRIFTVEIL < 5 end
+  scene "The Plasma Frigate at the pier"
+  place player 197 476 up
+  clearflag FLAG_UNOVA_HIDE_HUGH_PWT
+  clearflag FLAG_UNOVA_HIDE_CHEREN_PWT
+  show hugh_pwt
+  show cheren_pwt
+  walk cheren_pwt down 2
+  walk hugh_pwt down 2
+  face cheren_pwt player
+  speaker "Cheren"
+  say "{player}! I hardly knew you. You've come a long way since our battle in Aspertia. So has {rival}."
+  speaker "{rival}"
+  say "Cheren came to see the tournament hall. It's not even open yet and there's already a crowd!"
+  clearflag FLAG_UNOVA_HIDE_GRUNT_PWT
+  show grunt_pwt
+  speaker "Grunt"
+  say "Out of the way, out of the way!"
+  walk grunt_pwt down 17 fast
+  hide grunt_pwt
+  setflag FLAG_UNOVA_HIDE_GRUNT_PWT
+  face hugh_pwt down
+  speaker "{rival}"
+  say "That uniform... Team Plasma! He's running for that ship at the end of the pier!"
+  say "I'm going after him! {player}, come with me!"
+  clearflag FLAG_UNOVA_HIDE_COLRESS_PWT
+  show colress_pwt
+  walk colress_pwt right 1
+  speaker "Colress"
+  say "Wait. Children have no business running headlong into something so dangerous."
+  face hugh_pwt colress_pwt
+  speaker "{rival}"
+  say "The Pokémon I'm looking for, my little sister's Purrloin... It might be on that ship! I'm not waiting!"
+  walk hugh_pwt down 14 fast
+  hide hugh_pwt
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT
+  speaker "Cheren"
+  say "I'm going too. Someone has to keep him out of trouble!"
+  walk cheren_pwt right 1
+  walk cheren_pwt down 14 fast
+  hide cheren_pwt
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT
+  face colress_pwt player
+  speaker "Colress"
+  say "Recklessness, not courage. Do they believe anything is possible simply because they have Pokémon with them?"
+  say "...Or perhaps that is exactly the force I keep looking for. Go on, then. I would very much like to see what you do."
+  walk colress_pwt left 3
+  hide colress_pwt
+  setflag FLAG_UNOVA_HIDE_COLRESS_PWT
+  clearflag FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  clearflag FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  setflag FLAG_UNOVA_FRIGATE_AT_PIER
+  setvar VAR_UNOVA_PWT 1
+  endscene
+  end

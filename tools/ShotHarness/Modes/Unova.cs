@@ -7,7 +7,10 @@ partial class Harness
     /// the Desert Resort's edge and the desert in their sandstorm, Nimbasa City and its amusement park by day and after
     /// dark (plan 22 · U6: u21 to u30) and a few of their rooms (u20, u31 to u34), Route 5, the drawbridge's end and its
     /// deck over the sea and Driftveil City by day and after dark (plan 22 · U6, part b: u35 to u42) and Nimbasa's and
-    /// Driftveil's rooms with Clay's mine (u43 to u53), and the
+    /// Driftveil's rooms with Clay's mine (u43 to u53), Route 16, the Lostlorn Forest, Anville Town, the Relic Castle's hall
+    /// and the World Tournament's grounds by day and after dark (plan 22 · U6, part c: u54 to u63) with the gate to Route 16,
+    /// the Gear Station, a house of Anville, the Relic Passage's halls, the Relic Castle's rooms and the frigate's deck
+    /// (u64 to u73), and the
     /// walk from the player's door in Aspertia City down Route 19 to Floccesy Town's Pokémon Center at running pace, every
     /// frame timed, with what streaming cost.
     /// </summary>
@@ -40,6 +43,13 @@ partial class Harness
             ("u35_route5_day", "u36_route5_night", "Unova", 350, 434, Direction.Up),
             ("u37_drawbridge_end_day", "u38_drawbridge_end_night", "DriftveilDrawbridge", 209, 47, Direction.Left),
             ("u39_driftveil_day", "u40_driftveil_night", "Unova", 190, 415, Direction.Up),
+            // Plan 22 · U6, part c: Route 16, the Lostlorn Forest, Anville Town, the Relic Castle's hall and the World
+            // Tournament's grounds with the frigate at its pier
+            ("u54_route16_day", "u55_route16_night", "Unova", 480, 440, Direction.Right),
+            ("u56_lostlorn_day", "u57_lostlorn_night", "LostlornForest", 12, 50, Direction.Up),
+            ("u58_anville_day", "u59_anville_night", "AnvilleTown", 30, 40, Direction.Up),
+            ("u60_relic_castle_day", "u61_relic_castle_night", "RelicCastle", 24, 18, Direction.Up),
+            ("u62_pwt_day", "u63_pwt_night", "Unova", 197, 474, Direction.Down),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -78,6 +88,19 @@ partial class Harness
             ("u51_gym_lobby", "DriftveilCity_GymLobby", 7, 13, Direction.Up),
             ("u52_clays_mine", "DriftveilCity_Gym", 10, 26, Direction.Up),
             ("u53_ferris_wheel", "NimbasaCity_AmusementPark", 57, 17, Direction.Up),
+            // Plan 22 · U6, part c: the gate to Route 16, the Gear Station of ours, a house of Anville, the Relic Passage's
+            // halls, the Relic Castle's floor below and its deepest room, and the frigate's deck
+            ("u64_route16_gate", "NimbasaGate_Route16", 8, 5, Direction.Right),
+            ("u65_gear_station", "GearStation", 11, 10, Direction.Up),
+            ("u66_anville_house", "AnvilleTown_House3", 5, 7, Direction.Up),
+            ("u67_relic_passage_east", "RelicPassage_East", 55, 50, Direction.Up),
+            ("u68_relic_passage", "RelicPassage", 50, 13, Direction.Right),
+            ("u69_relic_passage_west", "RelicPassage_West", 30, 23, Direction.Left),
+            ("u70_relic_castle_b1f", "RelicCastle_B1F", 15, 12, Direction.Up),
+            ("u71_relic_castle_depths", "RelicCastle_Depths", 16, 20, Direction.Up),
+            ("u72_plasma_frigate", "PlasmaFrigate", 12, 28, Direction.Up),
+            ("u73_relic_castle_ruins", "RelicCastle_Ruins1", 6, 12, Direction.Up),
+            ("u74_join_avenue_shops", "JoinAvenue", 9, 28, Direction.Left),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

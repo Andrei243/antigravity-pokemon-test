@@ -1,0 +1,17 @@
+# The Relic Passage's middle hall (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own.
+# Its two holes are filled as the east hall's is (relic_passage.txt): the middle one opens the way on west, the north
+# one the tunnel up into the Relic Castle's buried halls.
+
+
+script FillTheMiddleHole
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_RELIC_PASSAGE_HOLE_MIDDLE
+  hide self
+  end
+
+
+script FillTheNorthHole
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH
+  hide self
+  end

@@ -1,0 +1,6 @@
+{
+  // A corridor of the Relic Castle's buried halls (plan 22 · U6, part c), Black 2's
+  "area": "relic_castle_16",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave"
+}

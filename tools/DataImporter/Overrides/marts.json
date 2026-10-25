@@ -40,6 +40,11 @@
     "sootopolis": [ "Ultra Ball", "Hyper Potion", "Max Potion", "Full Heal", "Revive", "Max Repel", "X Attack", "X Defense" ],
     // The Pokémon League's counter at the top of Ever Grande City (plan 21 · H9), in Emerald's order
     // (EverGrandeCity_PokemonLeague_1F_Pokemart)
-    "ever_grande_league": [ "Ultra Ball", "Hyper Potion", "Max Potion", "Full Restore", "Full Heal", "Revive", "Max Repel" ]
+    "ever_grande_league": [ "Ultra Ball", "Hyper Potion", "Max Potion", "Full Restore", "Full Heal", "Revive", "Max Repel" ],
+    // Join Avenue's three shops (plan 22 · U6, part c), our own stock where Black 2's shops grow with the avenue's
+    // visitors: the market, the flower shop's mulches and the café's drinks
+    "join_avenue_market": [ "Poké Ball", "Great Ball", "Potion", "Super Potion", "Antidote", "Paralyze Heal", "Awakening", "Burn Heal", "Ice Heal", "Escape Rope", "Repel" ],
+    "join_avenue_flowers": [ "Growth Mulch", "Damp Mulch", "Stable Mulch", "Gooey Mulch", "Honey" ],
+    "join_avenue_cafe": [ "Fresh Water", "Soda Pop", "Lemonade", "Moomoo Milk", "Casteliacone" ]
   }
 }

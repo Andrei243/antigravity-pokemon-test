@@ -1,0 +1,46 @@
+{
+  "key": "relic_castle_2",
+  "index": 161,
+  "name": "Relic Castle",
+  "matrix": 18,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_04",
+  "nightMusic": "BGM_D_04",
+  "encounters": "ENCOUNTERS_RELIC_CASTLE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Sandile", "level": 18 },
+    { "species": "Yamask", "level": 18 },
+    { "species": "Sandile", "level": 19 },
+    { "species": "Yamask", "level": 19 },
+    { "species": "Sandshrew", "level": 19 },
+    { "species": "Sandshrew", "level": 20 },
+    { "species": "Sandile", "level": 20 },
+    { "species": "Yamask", "level": 20 },
+    { "species": "Sandile", "level": 21 },
+    { "species": "Yamask", "level": 21 },
+    { "species": "Sandile", "level": 21 },
+    { "species": "Yamask", "level": 21 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 26, "z": 4, "to": "relic_castle", "toWarp": 1 },
+    { "x": 18, "z": 19, "to": "relic_castle", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "psychic_f", "movement": "look_north_and_west", "x": 24, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_PSYCHIC_DUA" },
+    { "id": "1", "looks": "psychic_m", "movement": "look_around", "x": 21, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_PSYCHIC_LOW" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 26, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x058a", "item": "TM39", "script": "7318" }
+  ],
+  "signs": [
+    { "x": 10, "z": 10, "type": 2, "script": "8057", "item": "Heart Scale", "flag": "FLAG_UNOVA_0x0b3d" }
+  ],
+  "triggers": []
+}

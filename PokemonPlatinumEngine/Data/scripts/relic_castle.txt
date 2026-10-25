@@ -1,0 +1,32 @@
+# The Relic Castle (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/relic_castle.s, read for the order alone).
+#
+# The entrance hall's floor has two sand pits (the original's triggers 0 and 1, Black 2's MapChangeQuicksand): whoever
+# steps into one sinks through to the floor below, the west pit to 10, 10 of RelicCastle_B1F and the east to 15, 11.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script SandPitWest
+  call Sinking
+  warp "RelicCastle_B1F" 10 10 down
+  fade in 0.5
+  end
+
+
+script SandPitEast
+  call Sinking
+  warp "RelicCastle_B1F" 15 11 down
+  fade in 0.5
+  end
+
+
+script Sinking
+  sound "use_sand_tomb"
+  speaker none
+  text "The sand gives way underfoot...!"
+  fade out 0.5
+  return

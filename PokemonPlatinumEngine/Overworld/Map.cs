@@ -788,6 +788,8 @@ public class Map
                 warp.Shut = (warp.Until is { } until && flagSet(until)) || (warp.From is { } from && !flagSet(from));
         }
         ShutLoneWays();
+        // and opens the holes a boulder has filled (plan 22 · U6, part c)
+        foreach (var (tile, filled) in FilledHoles) SetSolid(tile.X, tile.Y, !flagSet(filled));
     }
 
     /// <summary>
@@ -865,6 +867,14 @@ public class Map
     /// it comes to rest on it the tile's script runs, the boulder its subject. The script is the place's own.
     /// </summary>
     public Dictionary<(int X, int Y), string> BoulderPits { get; } = new();
+
+    /// <summary>
+    /// The tiles of a hole a pushed boulder fills (plan 22 · U6, part c: Black 2's holes in the Relic Passage, the
+    /// behaviour StrengthHole), each with the flag that says it is filled: a wall until then and open ground from then
+    /// on, as <see cref="ApplyDoors"/> keeps them. The hole's own tiles are pits (<see cref="BoulderPits"/>) whose
+    /// script sets the flag as the boulder comes to rest.
+    /// </summary>
+    public Dictionary<(int X, int Y), string> FilledHoles { get; } = new();
 
     /// <summary>The file a place's scripts are written in: its area's key on a map of the world, the map's name otherwise.</summary>
     public string ScriptFileAt(int x, int y) => InBounds(x, y) && AreaAt(x, y) is { Key.Length: > 0 } area ? area.Key : Name;

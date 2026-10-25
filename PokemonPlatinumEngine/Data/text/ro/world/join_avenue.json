@@ -89,6 +89,36 @@
           "Îmi exersez salutul. ...Bine ai venit! Cum a fost?"
         ]
       }
+    },
+    "market": {
+      "name": {
+        "en": [
+          "Shopkeeper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "florist": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "waitress": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

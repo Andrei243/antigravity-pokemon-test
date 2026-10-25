@@ -99,7 +99,29 @@
     { "name": "DriftveilCity_PlasmaHouse", "matrix": 59, "area": "driftveil_city_6", "trees": "Round", "setting": "Indoors" },
     { "name": "DriftveilCity_Market", "matrix": 60, "area": "driftveil_city_7", "trees": "Round", "setting": "Indoors" },
     { "name": "DriftveilCity_TournamentGate", "matrix": 373, "area": "driftveil_city_8", "trees": "Round", "setting": "Indoors" },
-    { "name": "DriftveilCity_GymLobby", "matrix": 180, "area": "driftveil_city_gym_2", "trees": "Round", "setting": "Indoors" }
+    { "name": "DriftveilCity_GymLobby", "matrix": 180, "area": "driftveil_city_gym_2", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U6, part c: Nimbasa City's gate east to Route 16, the Lostlorn Forest, Anville Town
+    // (reached by the Gear Station's train, the station a map of ours: Data/maps/GearStation.json) and its three houses,
+    // the Relic Passage's three halls, the Relic Castle's entrance and the floor its sand pits drop to, the ruins the
+    // Passage leads into, and the Plasma Frigate's deck, moored at the Pokémon World Tournament's pier
+    { "name": "NimbasaGate_Route16", "matrix": 50, "area": "nimbasa_gate_gate_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "LostlornForest", "matrix": 238, "area": "lostlorn_forest", "trees": "Round" },
+    { "name": "AnvilleTown", "matrix": 128, "area": "anville_town", "trees": "Round" },
+    { "name": "AnvilleTown_House1", "matrix": 46, "area": "anville_town_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "AnvilleTown_House2", "matrix": 46, "area": "anville_town_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "AnvilleTown_House3", "matrix": 46, "area": "anville_town_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "RelicPassage_East", "matrix": 298, "area": "relic_passage", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicPassage", "matrix": 299, "area": "relic_passage_2", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicPassage_West", "matrix": 300, "area": "relic_passage_3", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle", "matrix": 17, "area": "relic_castle", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_B1F", "matrix": 18, "area": "relic_castle_2", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Ruins1", "matrix": 74, "area": "relic_castle_21", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Ruins2", "matrix": 72, "area": "relic_castle_16", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Ruins3", "matrix": 75, "area": "relic_castle_22", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Ruins4", "matrix": 72, "area": "relic_castle_17", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Ruins5", "matrix": 73, "area": "relic_castle_19", "trees": "Round", "setting": "Cave" },
+    { "name": "RelicCastle_Depths", "matrix": 76, "area": "relic_castle_23", "trees": "Round", "setting": "Cave" },
+    { "name": "PlasmaFrigate", "matrix": 338, "area": "plasma_frigate", "trees": "Round" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -119,6 +141,10 @@
     "nimbasa_city_15", "nimbasa_city_16", "nimbasa_city_14", "musical_theater", "nimbasa_city_17", "nimbasa_gate_gate",
     "unova_route_5", "unova_route_5_2", "driftveil_drawbridge", "driftveil_city", "driftveil_city_pokemon_center",
     "driftveil_city_2", "driftveil_city_3", "driftveil_city_4", "driftveil_city_5", "driftveil_city_6", "driftveil_city_7",
-    "driftveil_city_8", "driftveil_city_gym_2"
+    "driftveil_city_8", "driftveil_city_gym_2",
+    "nimbasa_gate_gate_2", "unova_route_16", "lostlorn_forest", "anville_town", "anville_town_2",
+    "anville_town_3", "anville_town_4", "relic_passage", "relic_passage_2", "relic_passage_3", "relic_castle",
+    "relic_castle_2", "relic_castle_21", "relic_castle_16", "relic_castle_22", "relic_castle_17", "relic_castle_19",
+    "relic_castle_23", "pwt", "plasma_frigate"
   ]
 }

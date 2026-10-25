@@ -10,6 +10,8 @@
   "area": "nimbasa_city",
   "bgmTrack": "unova/nimbasa",
   "architecture": "Funfair",
+  // The Gear Station (plan 22 · U6, part c) is a map of ours, Black 2's hall standing on rails, which the reader leaves out
+  "doors": [ { "warp": 7, "map": "GearStation", "x": 11, "y": 12, "facing": "Up" } ],
   "triggers": [
     { "script": "HughAndPlasma", "x": 409, "z": 437, "width": 1, "depth": 4, "variable": "VAR_UNOVA_NIMBASA", "value": 1 }
   ],

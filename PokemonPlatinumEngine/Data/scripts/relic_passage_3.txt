@@ -1,0 +1,9 @@
+# The Relic Passage's west hall (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own.
+# Its hole is filled as the east hall's is (relic_passage.txt).
+
+
+script FillTheHole
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_RELIC_PASSAGE_HOLE_WEST
+  hide self
+  end

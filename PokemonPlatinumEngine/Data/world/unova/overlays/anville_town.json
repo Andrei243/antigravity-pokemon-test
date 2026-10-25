@@ -1,0 +1,99 @@
+{
+  // Anville Town (plan 22 · U6, part c): Black 2's quiet town at the end of the Gear Station's line, round its turntable
+  // and the old cars on its sidings, our words. Nobody walks here: the train from Nimbasa's Gear Station brings the
+  // player to its station, and the station agent (2) sends them back (anville_town.txt). On a Saturday or a Sunday the
+  // town fills with train fans and collectors (4 to 6, 8 to 10, 12 to 14, FLAG_UNOVA_HIDE_ANVILLE_WEEKEND, which the
+  // town's arrival clears at the weekend); the collectors' trades of Black 2 only talk of themselves. The lost Pansage
+  // (15, Black 2's 0x0362) and the girl's errand are left
+  "area": "anville_town",
+  "bgmTrack": "unova/anville",
+  "architecture": "Railyard",
+  "heldBack": [ "15" ],
+  "people": {
+    "0": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "No train's come in today, more's the pity. Still, a quiet yard gives me time to oil the turntable." ]
+    },
+    "1": {
+      "name": "Musician",
+      "npcType": "guitarist",
+      "dialog": [ "Do you hear it? A soft tune drifting over the rooftops... It's the kind that makes you want to sit a while." ]
+    },
+    "2": { "name": "Station Agent", "npcType": "worker", "script": "TrainHome", "still": true },
+    "3": {
+      "name": "Rich Boy",
+      "npcType": "rich_boy",
+      "dialog": [ "The girl up on the footbridge plays to the trains every evening. A lullaby, so they sleep well." ]
+    },
+    "4": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "Trains are the best thing ever! Mum brought me, but she ran off to take pictures." ]
+    },
+    "5": {
+      "name": "Photographer",
+      "npcType": "Gentleman",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "From right here, the cars line up just so on the turntable. Perfect picture!" ]
+    },
+    "6": {
+      "name": "Backer",
+      "npcType": "Youngster",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "Weekends here are packed! I came to watch the cars turn round." ]
+    },
+    "7": { "name": "Station Agent", "npcType": "worker", "script": "RestingCars", "still": true },
+    "8": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "Smell that air! Coal smoke and pine trees. Nothing like it." ]
+    },
+    "9": {
+      "name": "Backer",
+      "npcType": "Lass",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "The collectors here swap all sorts of things. I tried it once, and it was more fun than I expected!" ]
+    },
+    "10": {
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "That round thing in the middle of the yard is a turntable. It swings a car round to face the other way." ]
+    },
+    "11": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "Hardly a train in sight this weekend. Good for painting, bad for company." ]
+    },
+    "12": {
+      "name": "Backpacker",
+      "npcType": "hiker",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "I spent everything I had getting here. Worth it, though. Look at those cars!" ]
+    },
+    "13": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "Every collector here thinks they've got the rarest thing in town. Most of them are wrong!" ]
+    },
+    "14": {
+      "name": "Collector",
+      "npcType": "Gentleman",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
+      "dialog": [ "I collect anything to do with trains. Tickets, signs, the odd bolt. Come back when you have something to swap!" ]
+    },
+    "16": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "My Pansage hopped onto a train on the way home from the amusement park. I hope someone kind finds it..." ]
+    }
+  },
+  "signs": {
+    "6": "A map of Unova's railways.\nThe Gear Station in Nimbasa City is the hub of every line.",
+    "7": "Anville Town\nWhere the steel rails end and turn round"
+  }
+}

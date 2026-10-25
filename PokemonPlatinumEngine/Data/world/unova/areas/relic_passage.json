@@ -1,0 +1,66 @@
+{
+  "key": "relic_passage",
+  "index": 503,
+  "name": "Relic Passage",
+  "matrix": 298,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_RELIC_PASSAGE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Roggenrola", "level": 16 },
+    { "species": "Woobat", "level": 16 },
+    { "species": "Roggenrola", "level": 17 },
+    { "species": "Woobat", "level": 17 },
+    { "species": "Timburr", "level": 17 },
+    { "species": "Timburr", "level": 18 },
+    { "species": "Rattata", "level": 17 },
+    { "species": "Rattata", "level": 17 },
+    { "species": "Roggenrola", "level": 18 },
+    { "species": "Onix", "level": 18 },
+    { "species": "Woobat", "level": 18 },
+    { "species": "Onix", "level": 18 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 16 },
+    { "species": "Onix", "level": 16 },
+    { "species": "Drilbur", "level": 17 },
+    { "species": "Drilbur", "level": 17 },
+    { "species": "Drilbur", "level": 18 },
+    { "species": "Drilbur", "level": 18 },
+    { "species": "Drilbur", "level": 19 },
+    { "species": "Drilbur", "level": 19 },
+    { "species": "Drilbur", "level": 19 },
+    { "species": "Drilbur", "level": 19 },
+    { "species": "Drilbur", "level": 19 },
+    { "species": "Drilbur", "level": 19 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 2, "z": 21, "to": "relic_passage_2", "toWarp": 1 },
+    { "x": 4, "z": 10, "to": "relic_passage_2", "toWarp": 0 },
+    { "x": 51, "z": 61, "to": "castelia_sewers", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 40, "z": 37, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0474", "item": "Hard Stone", "script": "7040" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 4, "z": 51, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0475", "item": "Max Repel", "script": "7041" },
+    { "id": "2", "looks": "scientist_m_52", "movement": "none", "x": 34, "z": 50, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SCIENTIST_TERRANCE" },
+    { "id": "3", "looks": "backpacker_m", "movement": "none", "x": 27, "z": 55, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_BACKPACKER_KENDALL" },
+    { "id": "4", "looks": "scientist_f_46", "movement": "look_north_and_west", "x": 58, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SCIENTIST_LUMINA" },
+    { "id": "5", "looks": "model_bigrock2", "movement": "none", "x": 20, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 38, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x05cb", "item": "Escape Rope", "script": "7383" }
+  ],
+  "signs": [
+    { "x": 58, "z": 51, "type": 2, "script": "8110", "item": "Escape Rope", "flag": "FLAG_UNOVA_0x0b72" }
+  ],
+  "triggers": []
+}

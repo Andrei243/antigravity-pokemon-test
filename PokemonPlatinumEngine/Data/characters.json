@@ -276,6 +276,11 @@
     // after the former Team Plasma, white-bearded in a long navy robe
     "clay": { "skin": "#e0aa80", "hairColor": "#6a6a6e", "hat": "Cowboy", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#f2ecdc", "accent": "#8a5a32", "bottom": "#4a5a7a", "shoes": "#4a3020", "vest": "#7a5a3a", "mustache": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
     "rood": { "hairColor": "#d8d8de", "hair": "Bald", "top": "#3a4a6e", "accent": "#e8dcb4", "bottom": "#3a4a6e", "shoes": "#2a2a30", "beard": true, "mustache": true, "coat": true, "skirt": true, "build": "Elder" },
+    // The Plasma Frigate's (plan 22 · U6, part c; our own takes, stand-ins until plan 22 · U12): Zinzolin, a sage of Team
+    // Plasma, bald with a short grey beard in a deep plum robe banded in gold; and the Shadow Triad, Ghetsis's three
+    // shadows, white hair over a black suit with a pale band at the collar
+    "zinzolin": { "hairColor": "#b8b8c0", "hair": "Bald", "top": "#5a2a48", "accent": "#d8b44a", "bottom": "#5a2a48", "shoes": "#2a2026", "beard": true, "coat": true, "skirt": true, "build": "Elder", "height": 1.04 },
+    "shadow_triad": { "hairColor": "#ececf2", "hair": "Spiky", "top": "#1c1c24", "accent": "#d0d0d8", "bottom": "#1c1c24", "shoes": "#141418", "eyes": "#6a2a2a", "build": "Adult", "height": 1.04 },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -547,6 +552,8 @@
     "pkmn_breeder_m": "Gentleman", "pkmn_breeder_f": "Lady", "team_plasma_grunt_m": "plasma_grunt", "team_plasma_grunt_f": "plasma_grunt",
     // Plan 22 · U5, part c: Castelia's Harlequins stand as clowns until plan 22 · U12
     "harlequin_233": "clown", "harlequin_32": "clown", "harlequin": "clown", "doctor": "scientist",
+    // Plan 22 · U6, part c: the depot agents stand as workers until plan 22 · U12
+    "depot_agent": "worker",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
     "gsfighter": "blackbelt", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
@@ -743,6 +750,8 @@
     "Backers": "twin",
     "Musician": "guitarist",
     "Leader Clay": "clay",
-    "Pokémon Trainer Rood": "rood"
+    "Pokémon Trainer Rood": "rood",
+    // Plan 22 · U6, part c: Route 16's and the Relic Passage's depot agents, folded onto the workers until plan 22 · U12
+    "Depot Agent": "worker"
   }
 }

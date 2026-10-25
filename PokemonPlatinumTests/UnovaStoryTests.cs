@@ -38,6 +38,8 @@ public class UnovaStoryTests
         public string? BeganIn { get; init; }
         /// <summary>Whom the player plays as (plan 22 · U6: Nimbasa's young Trainer is the hero the player isn't).</summary>
         public PlayerLook Look { get; set; } = PlayerLook.Boy;
+        /// <summary>The day of the week the game's scripts see (plan 22 · U6, part c: Anville Town's weekend crowd).</summary>
+        public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
 
@@ -50,6 +52,8 @@ public class UnovaStoryTests
             maps["CasteliaCity"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "CasteliaCity.json")).ToMap();
             // and so is Clay's Gym, Black 2's mine standing on rails (plan 22 · U6, part b)
             maps["DriftveilCity_Gym"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "DriftveilCity_Gym.json")).ToMap();
+            // and so is the Gear Station, Black 2's hall standing on rails (plan 22 · U6, part c)
+            maps["GearStation"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "GearStation.json")).ToMap();
             // (a game from before the story was written began with none of what a new game sets now)
             if (!begin) return;
             StoryMigration.BeginNewGame(Story, Scripts);
@@ -121,7 +125,8 @@ public class UnovaStoryTests
                 Fight = _ => Fight,
                 NeedsPokemon = true,
                 BeganInRegion = BeganIn,
-                PlayerLook = Look
+                PlayerLook = Look,
+                Weekday = Weekday
             };
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
@@ -655,6 +660,218 @@ public class UnovaStoryTests
         Assert.Null(game.Present("6", "driftveil_city"));
         Assert.Null(game.Present("hugh_gym", "driftveil_city"));
         Assert.False(game.Fires("ClayAndHugh"));
+
+        PlayTheFrigateChapter(game);
+    }
+
+    /// <summary>
+    /// Unova's chapter of the Plasma Frigate (plan 22 · U6, part c), played on from Clay's word of the tournament: the
+    /// gangway shut until the first step onto the tournament's pier plays Cheren, Hugh, the running grunt and Colress;
+    /// aboard, the two grunts' battles, Zinzolin and the Shadow Triad; ashore again, Hugh and Cheren on the pier, and the
+    /// frigate gone.
+    /// </summary>
+    private static void PlayTheFrigateChapter(Game game)
+    {
+        // The tournament's grounds south of Driftveil City: the frigate's gangway is shut until its scene
+        game.Arrive("Unova", 197, 470);
+        Assert.Equal("pwt", game.Map.AreaAt(197, 470)?.Key);
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "PlasmaFrigate"), w => Assert.True(w.Shut));
+        Assert.Null(game.Present("hugh_pwt", "pwt"));
+        Assert.True(game.Fires("PlasmaAtThePier"));
+        var pier = game.Step("PlasmaAtThePier");
+        Assert.Contains(pier.Transcript, l => l.Speaker == "Cheren");
+        Assert.Contains(pier.Transcript, l => l.Speaker == "Colress");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_PWT"));
+        Assert.Null(game.Present("hugh_pwt", "pwt"));
+        Assert.Null(game.Present("colress_pwt", "pwt"));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "PlasmaFrigate" && !w.Shut);
+        Assert.False(game.Fires("PlasmaAtThePier"));
+
+        // Aboard: two grunts, Zinzolin and the Shadow Triad, who put everyone back on the pier
+        game.Tile = (198, 494);
+        game.Through("PlasmaFrigate");
+        Assert.Contains(game.Played, p => p.Host.Log.Any(l => l.StartsWith("battle unova_team_plasma_grunt_5")));
+        Assert.Contains(game.Played, p => p.Host.Log.Any(l => l.StartsWith("battle unova_team_plasma_grunt_6")));
+        Assert.Contains(game.Played, p => p.Host.Transcript.Any(l => l.Speaker == "Zinzolin" && l.Text.Contains("ice")));
+        Assert.Contains(game.Played, p => p.Host.Transcript.Any(l => l.Speaker == "Shadow Triad"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_FRIGATE_GRUNTS"));
+
+        // Ashore: Hugh and Cheren on the pier, and the frigate gone
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.Equal("pwt", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        Assert.Contains(game.Played, p => p.Host.Transcript.Any(l => l.Speaker == "Cheren" && l.Text.Contains("Route 6")));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_PWT"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_FRIGATE_SAILED"));
+        Assert.Null(game.Present("hugh_pier", "pwt"));
+        Assert.Null(game.Present("cheren_pier", "pwt"));
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "PlasmaFrigate"), w => Assert.True(w.Shut));
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_HUGH_FRIGATE", "FLAG_UNOVA_HIDE_CHEREN_FRIGATE", "FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE",
+                     "FLAG_UNOVA_HIDE_TRIAD_FRIGATE" })
+            Assert.True(game.Story.Has(flag), flag);
+    }
+
+    [Fact]
+    public void TheFrigatesScenePlaysOnlyOnceClayHasToldOfTheTournament()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 30));
+        game.Arrive("Unova", 197, 470);
+        // Before the Quake Badge the pier is only a pier
+        game.Step("PlasmaAtThePier");
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_PWT"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_PWT"));
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "PlasmaFrigate"), w => Assert.True(w.Shut));
+        // and whoever reaches the deck otherwise is seen straight back down the gangway
+        game.Arrive("PlasmaFrigate", 9, 29);
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.DoesNotContain(game.Played, p => p.Host.Log.Any(l => l.StartsWith("battle ")));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheFrigateChapterIsGivenItsHiddenPeople()
+    {
+        // A save of plan 22 · U6, part b's: the Quake Badge won, nothing of the frigate's chapter set
+        var game = new Game(begin: false);
+        foreach (string flag in new[] { "FLAG_UNOVA_STORY_BEGUN", "FLAG_UNOVA_VIRBANK_BEGUN", "FLAG_UNOVA_CASTELIA_BEGUN", "FLAG_UNOVA_NIMBASA_BEGUN",
+                     "FLAG_UNOVA_DRIFTVEIL_BEGUN" })
+            game.Story.Set(flag);
+        game.Story.SetVar("VAR_UNOVA_ASPERTIA", 7);
+        game.Story.SetVar("VAR_UNOVA_DRIFTVEIL", 5);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 34));
+        game.Arrive("Unova", 197, 470);
+        Assert.True(game.Story.Has("FLAG_UNOVA_FRIGATE_BEGUN"));
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_HUGH_PWT", "FLAG_UNOVA_HIDE_CHEREN_PWT", "FLAG_UNOVA_HIDE_COLRESS_PWT",
+                     "FLAG_UNOVA_HIDE_HUGH_FRIGATE", "FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE", "FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Null(game.Present("hugh_pwt", "pwt"));
+        // and Driftveil's count stands, while the pier waits for its scene
+        Assert.Equal(5, game.Story.Var("VAR_UNOVA_DRIFTVEIL"));
+        Assert.True(game.Fires("PlasmaAtThePier"));
+    }
+
+    [Fact]
+    public void TheLostlornForestsTravellerIsAZoroark()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("LostlornForest", 12, 50);
+        Assert.NotNull(game.Present("7", "lostlorn_forest"));
+        Assert.Null(game.Present("zoroark", "lostlorn_forest"));
+        var traveller = game.Talk("7", "lostlorn_forest");
+        Assert.Contains(traveller.Transcript, l => l.Speaker == "Traveller" && l.Text.Contains("Zoroark"));
+        Assert.Contains(traveller.Log, l => l.StartsWith("cry Zoroark"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM46")!));
+        // the traveller is gone for good, and so is the Zoroark
+        Assert.Null(game.Present("7", "lostlorn_forest"));
+        Assert.Null(game.Present("zoroark", "lostlorn_forest"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER"));
+    }
+
+    [Fact]
+    public void TheGearStationsTrainRunsToAnvilleTownAndBack()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("GearStation", 17, 4);
+        // The Subway's desks only talk until its lines run
+        var single = game.TalkTo("single_desk");
+        Assert.DoesNotContain(single.Log, l => l.StartsWith("battle ") || l.StartsWith("warp "));
+        // The Anville Town Line's agent takes the player out to Anville
+        var line = game.TalkTo("anville_desk");
+        Assert.Contains(line.Transcript, l => l.Text.Contains("rolls into Anville Town"));
+        Assert.Equal("AnvilleTown", game.Map.Name);
+        // a weekday: the yard is quiet, its weekend crowd away
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ANVILLE_WEEKEND"));
+        Assert.Null(game.Present("14", "anville_town"));
+        Assert.NotNull(game.Present("0", "anville_town"));
+        // the lost and found: a Rare Candy first, then one thing a day
+        game.Arrive("AnvilleTown_House3", 5, 8);
+        game.Talk("0", "anville_town_4");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!));
+        var again = game.Talk("0", "anville_town_4");
+        Assert.Contains(again.Transcript, l => l.Text.Contains("Come back tomorrow"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!));
+        // and the station agent brings the player back to the Gear Station
+        game.Arrive("AnvilleTown", 20, 52);
+        game.Talk("2", "anville_town");
+        Assert.Equal("GearStation", game.Map.Name);
+
+        // At the weekend the town turns out to see the trains
+        var weekend = new Game { Weekday = DayOfWeek.Saturday };
+        weekend.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        weekend.Arrive("AnvilleTown", 20, 52);
+        Assert.False(weekend.Story.Has("FLAG_UNOVA_HIDE_ANVILLE_WEEKEND"));
+        Assert.NotNull(weekend.Present("14", "anville_town"));
+    }
+
+    [Fact]
+    public void TheRelicCastlesSandPitsDropToTheFloorBelowAndVolcaronaWaitsInItsDepths()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 36));
+        game.Arrive("RelicCastle", 24, 23);
+        game.Step("SandPitWest");
+        Assert.Equal("RelicCastle_B1F", game.Map.Name);
+        Assert.Equal((10, 10), game.Tile);
+        Assert.True(game.Map.IsWalkable(10, 10));
+        game.Arrive("RelicCastle", 24, 23);
+        game.Step("SandPitEast");
+        Assert.Equal(("RelicCastle_B1F", (15, 11)), (game.Map.Name, game.Tile));
+        Assert.True(game.Map.IsWalkable(15, 11));
+
+        // Volcarona at the head of the deepest room: beaten, it is gone for good
+        game.Arrive("RelicCastle_Depths", 16, 26);
+        Assert.NotNull(game.Present("0", "relic_castle_23"));
+        var volcarona = game.Talk("0", "relic_castle_23");
+        Assert.Contains(volcarona.Log, l => l.StartsWith("wildbattle Volcarona 35"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_VOLCARONA"));
+        Assert.Null(game.Present("0", "relic_castle_23"));
+    }
+
+    [Fact]
+    public void JoinAvenuesThreeShopsSellFromTheirCounters()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("JoinAvenue", 15, 74);
+        foreach (var (key, mart, sign) in new[] { ("market", "join_avenue_market", (7, 27)), ("florist", "join_avenue_flowers", (23, 20)),
+                     ("waitress", "join_avenue_cafe", (7, 41)) })
+        {
+            var clerk = game.Present(key, "join_avenue")!;
+            // behind a counter, spoken to across it, its end the shop's sign
+            int across = clerk.Facing == Direction.Right ? 1 : -1;
+            Assert.True(game.Map.IsCounter(clerk.GridX + across, clerk.GridY));
+            Assert.True(game.Map.TileScripts.ContainsKey(sign));
+            var shop = game.Talk(key, "join_avenue");
+            Assert.Contains(shop.Log, l => l == $"open Shop {mart}");
+            Assert.NotEmpty(MartDatabase.Stock(mart, 0));
+        }
+        Assert.Contains(MartDatabase.Stock("join_avenue_cafe", 0), i => i.Name == "Moomoo Milk");
+    }
+
+    [Fact]
+    public void ABoulderPushedIntoARelicPassageHoleFillsItForGood()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 36));
+        game.Arrive("RelicPassage", 88, 12);
+        // The hole before the tunnel up into the Relic Castle is a wall, its tiles pits a pushed boulder may come to rest in
+        Assert.True(game.Map.IsSolid(88, 7));
+        Assert.Equal("FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH", game.Map.FilledHoles[(88, 7)]);
+        Assert.Equal("FillTheNorthHole", game.Map.BoulderPits[(88, 7)]);
+        var boulder = game.Present("9", "relic_passage_2")!;
+        Assert.Equal(PropType.StrengthBoulder, boulder.Obstacle);
+        // The boulder comes to rest in it: the hole is filled, walked across, and the boulder is gone with it
+        var fall = game.Play(Scripts.Find("FillTheNorthHole", "relic_passage_2")!, boulder);
+        Assert.Contains(fall.Transcript, l => l.Text.Contains("filled it in"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH"));
+        Assert.False(game.Map.IsSolid(88, 7));
+        Assert.False(game.Map.IsSolid(89, 6));
+        Assert.Null(game.Present("9", "relic_passage_2"));
+        // and on the next visit too
+        game.Arrive("RelicPassage", 88, 12);
+        Assert.False(game.Map.IsSolid(88, 7));
+        Assert.Null(game.Present("9", "relic_passage_2"));
     }
 
     [Fact]
@@ -671,7 +888,8 @@ public class UnovaStoryTests
                      "FLAG_UNOVA_HIDE_HUGH_PIER", "FLAG_UNOVA_HIDE_IRIS_GYM_STREET", "FLAG_UNOVA_HIDE_SEWER_GRUNTS", "FLAG_UNOVA_HIDE_BURGH_GYM",
                      "FLAG_UNOVA_HIDE_COLRESS_PLAZA", "FLAG_UNOVA_HIDE_COLRESS_ROUTE_4", "FLAG_UNOVA_CASTELIA_BEGUN",
                      "FLAG_UNOVA_HIDE_HUGH_NIMBASA", "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "FLAG_UNOVA_HIDE_ROSA_NIMBASA",
-                     "FLAG_UNOVA_HIDE_NATE_NIMBASA", "FLAG_UNOVA_NIMBASA_BEGUN" })
+                     "FLAG_UNOVA_HIDE_NATE_NIMBASA", "FLAG_UNOVA_NIMBASA_BEGUN", "FLAG_UNOVA_FRIGATE_BEGUN", "FLAG_UNOVA_HIDE_HUGH_PWT",
+                     "FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE", "FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK" })
             Assert.True(game.Story.Has(flag), flag);
         // Mom at home, Hugh and his sister, Bianca at the outlook and Alder in the open from the start
         foreach (string flag in new[] { "FLAG_UNOVA_HIDE_MOM_HOME", "FLAG_UNOVA_HIDE_HUGH_ASPERTIA", "FLAG_UNOVA_HIDE_HUGHS_SISTER",
@@ -708,12 +926,13 @@ public class UnovaStoryTests
         bool Exists(string id) => File.Exists(GameDataFiles.PathOf(Path.Combine("music", id + ".mml")));
         foreach (string song in new[] { "aspertia", "route19", "floccesy", "gym", "battle_wild", "battle_trainer", "battle_rival", "battle_gym",
                      "victory_trainer", "victory_gym", "eye_boy", "eye_girl", "virbank", "eye_plasma", "castelia",
-                     "route4", "nimbasa", "desert_resort", "driftveil" })
+                     "route4", "nimbasa", "desert_resort", "driftveil", "lostlorn_forest", "relic_castle", "relic_passage", "plasma_frigate", "subway", "anville" })
             Assert.True(Exists("unova/" + song), song);
         Assert.Equal("unova/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, RegionDatabase.Unova, Exists));
         foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town", "virbank_city", "virbank_complex_2", "castelia_city_3", "castelia_city_10",
                      "unova_route_4", "nimbasa_city", "nimbasa_city_2", "join_avenue", "desert_resort_2",
-                     "unova_route_5", "driftveil_drawbridge", "driftveil_city", "driftveil_city_7", "musical_theater" })
+                     "unova_route_5", "driftveil_drawbridge", "driftveil_city", "driftveil_city_7", "musical_theater",
+                     "unova_route_16", "lostlorn_forest", "anville_town", "relic_passage_2", "relic_castle", "relic_castle_23", "pwt", "plasma_frigate" })
             Assert.StartsWith("unova/", Unova.Value.Overlay(key)!.BgmTrack);
         // Team Plasma's grunts bring a song of Unova's own when they spot the player (plan 22 · U5, part b)
         Assert.Equal("unova/eye_plasma", MusicDirector.EyeSong("Team Plasma Grunt", RegionDatabase.Unova, Exists));

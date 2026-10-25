@@ -1,6 +1,6 @@
 {
   // The Castelia Sewers (plan 22 · U5, part c): Black 2's tunnels under the city, our words; only the way up to Thumb
-  // Pier is open (the others lead into rooms and passages later chapters open). Hugh (0, FLAG_UNOVA_HIDE_HUGH_SEWERS)
+  // Pier and the way on into the Relic Passage (plan 22 · U6, part c) are open (the others lead into rooms and passages later chapters open). Hugh (0, FLAG_UNOVA_HIDE_HUGH_SEWERS)
   // waits inside the entrance and comes along; two grunts of Team Plasma (1, 2, FLAG_UNOVA_HIDE_SEWER_GRUNTS) are
   // battled beside him, and Burgh (20, FLAG_UNOVA_HIDE_SEWERS_BURGH) and a stranger (19, FLAG_UNOVA_HIDE_SEWERS_COLRESS)
   // turn up afterwards (castelia_sewers.txt). The triggers are on tiles of ours, each with VAR_UNOVA_CASTELIA
@@ -8,7 +8,7 @@
   "bgmTrack": "sinnoh/cave",
   // its battles are fought among stone walls, never in a meadow (plan 22, wave 48), until a sewer of its own is built
   "battleArena": "Cave",
-  "locked": [ 1, 2, 3, 4, 5, 6, 7, 9, 10 ],
+  "locked": [ 1, 3, 4, 5, 6, 7, 9, 10 ],
   "triggers": [
     { "script": "HughJoins", "x": 83, "z": 20, "width": 1, "depth": 2, "variable": "VAR_UNOVA_CASTELIA", "value": 6 },
     { "script": "PlasmaInTheSewers", "x": 50, "z": 9, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CASTELIA", "value": 7 }

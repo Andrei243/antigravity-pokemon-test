@@ -1,0 +1,22 @@
+{
+  // A house of Anville Town (plan 22 · U6, part c): Black 2's room, our words
+  "area": "anville_town_3",
+  "bgmTrack": "unova/anville",
+  "people": {
+    "0": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Weekends, Anville Town is packed! Everyone comes to see the trains." ]
+    },
+    "1": {
+      "name": "Man",
+      "npcType": "Gentleman",
+      "dialog": [ "On a Saturday or a Sunday the collectors come. They'll swap you all sorts of odd things." ]
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "One day I'm going to ride the Battle Subway all the way to Ingo and Emmet, and beat them both!" ]
+    }
+  }
+}

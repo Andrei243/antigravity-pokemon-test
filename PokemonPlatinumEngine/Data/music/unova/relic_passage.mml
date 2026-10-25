@@ -1,0 +1,32 @@
+# The Relic Passage (the long cave dug out under the sea between Castelia and Driftveil): a marimba figure that drips
+# like water off the rock, a muted horn answering it in A minor, held strings and a slow bass. Original composition for
+# this game (plan 22 · U6, part c).
+title Relic Passage
+tempo 92
+meter 4/4
+reverb 0.44
+night none
+
+track lead horn vol=0.6 pan=0.1 rev=0.42
+  L o5 a4 e4 c4 e4 | o5 f4. a8 c4 a4 | o5 g4 b8 d8 g4 d4 | o5 e2 b4 g4 |
+  o5 a4. c8 e4 a4 | o5 f4 d8 f8 a4 f4 | o5 e4 g+8 b8 e4 b4 | o5 g+2. r4 |
+  o5 c4 a8 f8 c4 f4 | o5 d4 g8 b8 d4 b4 | o5 e4 c8 a8 e4 c4 | o5 b4 g8 e8 b2 |
+  o5 a4 f8 d8 a4 d4 | o5 c4 f8 a8 c4 a4 | o5 b4 g+8 e8 b4 e4 | o5 a2. r4 |
+
+track drip marimba vol=0.34 pan=-0.26 rev=0.4
+  L o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 o4 f8 o4 a8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 e8 o4 g8 o4 b8 o5 e8 o4 b8 o4 g8 o4 e8 o4 g8 |
+  o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 e8 o4 g+8 o4 b8 o5 e8 o4 b8 o4 g+8 o4 e8 o4 g+8 | o4 e8 o4 g+8 o4 b8 o5 e8 o4 b8 o4 g+8 o4 e8 o4 g+8 |
+  o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 o4 f8 o4 a8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 | o4 e8 o4 g8 o4 b8 o5 e8 o4 b8 o4 g8 o4 e8 o4 g8 |
+  o4 d8 o4 f8 o4 a8 o5 d8 o4 a8 o4 f8 o4 d8 o4 f8 | o4 f8 o4 a8 o5 c8 o5 f8 o5 c8 o4 a8 o4 f8 o4 a8 | o4 e8 o4 g+8 o4 b8 o5 e8 o4 b8 o4 g+8 o4 e8 o4 g+8 | o4 a8 o5 c8 o5 e8 o5 a8 o5 e8 o5 c8 o4 a8 o5 c8 |
+
+track pad strings vol=0.28 pan=0.18 rev=0.44
+  L o3 (a >c e)1 | o3 (f a >c)1 | o3 (g b >d)1 | o3 (e g b)1 |
+  o3 (a >c e)1 | o3 (d f a)1 | o3 (e g+ b)1 | o3 (e g+ b)1 |
+  o3 (f a >c)1 | o3 (g b >d)1 | o3 (a >c e)1 | o3 (e g b)1 |
+  o3 (d f a)1 | o3 (f a >c)1 | o3 (e g+ b)1 | o3 (a >c e)1 |
+
+track bass contrabass vol=0.56 rev=0.12
+  L o3 a2 e2 | o3 f2 c2 | o3 g2 d2 | o3 e2 b2 |
+  o3 a2 e2 | o3 d2 a2 | o3 e2 b2 | o3 e2 b2 |
+  o3 f2 c2 | o3 g2 d2 | o3 a2 e2 | o3 e2 b2 |
+  o3 d2 a2 | o3 f2 c2 | o3 e2 b2 | o3 a2 e2 |

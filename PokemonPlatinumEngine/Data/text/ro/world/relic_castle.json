@@ -1,0 +1,49 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Perry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The ancients built this castle to last. Will your team last against me?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swallowed by the sands of defeat..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mind the sand pits! Step in one and down you go, a whole floor in a moment. I've done it three times today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

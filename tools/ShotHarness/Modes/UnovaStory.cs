@@ -560,5 +560,83 @@ partial class Harness
         ReadTo("South of town there's the Pokémon World Tournament."); Frames(10); Shot("us124_clay_and_the_tournament");
         ReadTo(null);
         Driftveil("Clay and Hugh");
+
+        // Plan 22 · U6, part c: the Lostlorn Forest's traveller, the train to Anville Town and back, a sand pit of the Relic
+        // Castle, Volcarona, and the Plasma Frigate at the World Tournament's pier
+        void Frigate(string what) =>
+            Console.WriteLine($"  {what}: pwt {story.Var("VAR_UNOVA_PWT")}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, "
+                + $"moored {story.Has("FLAG_UNOVA_FRIGATE_AT_PIER")}, sailed {story.Has("FLAG_UNOVA_FRIGATE_SAILED")}, "
+                + $"grunts hidden {story.Has("FLAG_UNOVA_HIDE_FRIGATE_GRUNTS")}, Zoroark's traveller hidden {story.Has("FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER")}, "
+                + $"Volcarona hidden {story.Has("FLAG_UNOVA_HIDE_VOLCARONA")}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        void TalkToKey(string map, string key, int dx = 0, int dy = 1)
+        {
+            // (someone of a map file of ours, the Gear Station's agents, by their id alone)
+            var m = MapDatabase.Get(map);
+            var npc = m.NPCs.First(n => n.Key == key);
+            var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
+            At(map, npc.GridX + dx, npc.GridY + dy, facing);
+            game.Interact();
+        }
+
+        // ---- the Lostlorn Forest: the traveller, and the Zoroark he was
+        TalkTo("LostlornForest", "7", "lostlorn_forest");
+        ReadTo("do you know of a Pokémon called Zoroark?"); Frames(10); Shot("us125_the_traveller");
+        ReadTo("there's always a grain of truth in a rumour"); Frames(10); Shot("us126_the_rumour");
+        ReadTo("Grrrowf!"); Frames(10); Shot("us127_the_zoroark");
+        ReadTo(null);
+        Frigate("the Lostlorn Forest");
+
+        // ---- the Gear Station, and the train out to Anville Town and back
+        ComeThrough("GearStation", 11, 12, Direction.Up); Frames(30); Shot("us128_the_gear_station");
+        TalkToKey("GearStation", "anville_desk");
+        ReadTo("Will you ride the train to Anville Town?"); Frames(10); Shot("us129_the_anville_line");
+        ReadTo("rattles east past fields and woods"); Frames(10); Shot("us130_on_the_train");
+        ReadTo(null); Frames(40); Shot("us131_anville_town");
+        TalkTo("AnvilleTown", "2", "anville_town", -1, 0);
+        ReadTo("The train back to Nimbasa City leaves shortly."); Frames(10); Shot("us132_the_train_home");
+        ReadTo(null); Frames(40); Shot("us133_back_at_the_gear_station");
+        Frigate("the train");
+
+        // ---- the Relic Castle: a sand pit down to the floor below, and Volcarona in the deepest room
+        ComeThrough("RelicCastle", 24, 23, Direction.Up); Frames(30); Shot("us134_the_relic_castle");
+        StepOnto("RelicCastle", 18, 15, Direction.Left);
+        ReadTo("The sand gives way underfoot...!"); Frames(10); Shot("us135_the_sand_pit");
+        ReadTo(null); Frames(40); Shot("us136_the_floor_below");
+        TalkTo("RelicCastle_Depths", "0", "relic_castle_23");
+        ReadTo("spreads its burning wings!"); Frames(10); Shot("us137_volcarona");
+        IntoBattle("Volcarona");
+        ToMainMenu(game.Battle); Shot("us138_volcaronas_battle");
+        Win();
+        ReadTo(null);
+        Frigate("Volcarona");
+
+        // ---- the World Tournament's pier: Cheren, Hugh, the running grunt and Colress
+        StepOnto("Unova", 197, 476, Direction.Down);
+        ReadTo("I hardly knew you."); Frames(10); Shot("us139_cheren_and_hugh");
+        ReadTo("Out of the way, out of the way!"); Frames(10); Shot("us140_the_grunt_runs");
+        ReadTo("Children have no business"); Frames(10); Shot("us141_colress");
+        ReadTo("I would very much like to see what you do."); Frames(10); Shot("us142_colress_steps_back");
+        ReadTo(null);
+        Frigate("the pier");
+
+        // ---- aboard the Plasma Frigate: two grunts, Zinzolin and the Shadow Triad, and ashore again
+        ComeThrough("PlasmaFrigate", 9, 29, Direction.Right);
+        ReadTo("This ship's freezing"); Frames(10); Shot("us143_aboard_the_frigate");
+        ReadTo("you're up first!");
+        IntoBattle("the first grunt");
+        ToMainMenu(game.Battle); Shot("us144_the_frigates_grunt");
+        Win();
+        ReadTo("You won't get past me so easy!");
+        IntoBattle("the second grunt");
+        Win();
+        ReadTo("Once again, we are made to feel unwelcome."); Frames(10); Shot("us145_zinzolin");
+        ReadTo("you leave this ship. Now."); Frames(10); Shot("us146_the_shadow_triad");
+        ReadTo("There is a rush of wind"); Frames(10); Shot("us147_put_ashore");
+        ReadTo("And the ship's leaving!"); Frames(10); Shot("us148_hugh_on_the_pier");
+        ReadTo("I'm going on to Route 6."); Frames(10); Shot("us149_cheren_goes_on");
+        ReadTo(null);
+        Frigate("ashore");
     }
 }

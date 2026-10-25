@@ -1,0 +1,6 @@
+{
+  // The end of the Relic Castle's buried corridors (plan 22 · U6, part c), Black 2's, with an item left in it
+  "area": "relic_castle_19",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave"
+}

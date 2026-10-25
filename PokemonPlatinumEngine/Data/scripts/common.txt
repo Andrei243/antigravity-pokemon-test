@@ -2683,6 +2683,38 @@ script UnovaDriftveil
   setflag FLAG_UNOVA_HIDE_EXPLASMA_HOME
   setflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   setflag FLAG_UNOVA_DRIFTVEIL_BEGUN
+  call UnovaFrigate
+  return
+
+
+# What Unova's chapter of the Plasma Frigate hides until its scenes (plan 22 · U6, part c): Hugh, Cheren, a grunt and
+# Colress on the Pokémon World Tournament's grounds, Hugh and Cheren on its pier and on the frigate's deck, Zinzolin
+# and the Shadow Triad aboard, and the Zoroark of the Lostlorn Forest until its traveller has had his say.
+# UnovaDriftveil runs it, for a new game and for a save of part b's (UnovaCatchUp), with no story version raised. It
+# may only set flags and variables, and ends in return.
+script UnovaFrigate
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT
+  setflag FLAG_UNOVA_HIDE_GRUNT_PWT
+  setflag FLAG_UNOVA_HIDE_COLRESS_PWT
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  setflag FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  setflag FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  setflag FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  setflag FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  setflag FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  setflag FLAG_UNOVA_FRIGATE_BEGUN
+  return
+
+
+# A boulder pushed with Strength comes to rest in one of the Relic Passage's holes (plan 22 · U6, part c): the place's
+# pit script calls this, then sets the hole's flag and takes the boulder away
+script BoulderFallsIn
+  sound "ledge"
+  speaker none
+  text "The boulder dropped into the hole and filled it in! The way across is open."
   return
 
 
@@ -2716,6 +2748,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
   if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
   if not flag FLAG_UNOVA_DRIFTVEIL_BEGUN call UnovaDriftveil
+  if not flag FLAG_UNOVA_FRIGATE_BEGUN call UnovaFrigate
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

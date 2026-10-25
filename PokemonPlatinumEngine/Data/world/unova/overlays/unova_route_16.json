@@ -1,0 +1,22 @@
+{
+  // Route 16 (plan 22 · U6, part c): Black 2's short road east of Nimbasa City to the Marvelous Bridge's gate, our
+  // words. Its trainers stand on the road, a small tree that Cut fells (0) and a boulder Strength pushes (1) are Black
+  // 2's (the global scripts 10000 and 10004, WorldMapBuilder.ObstacleFor), and the way north opens into the Lostlorn
+  // Forest. The gate house at its east end leads to the Marvelous Bridge, which is the post-game's (plan 22 · U10), and
+  // stays shut. It plays Route 4's song, as Black 2 plays the same route theme on both
+  "area": "unova_route_16",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "2": { "name": "Stu & Art", "trainer": { "dialogueBefore": "We're Backers! Two voices, two Pokémon, one big cheer!", "dialogueAfter": "Hip hip... hooray for you, we suppose." } },
+    "3": { "name": "Stu & Art", "trainer": { "dialogueBefore": "We're Backers! Two voices, two Pokémon, one big cheer!", "dialogueAfter": "Hip hip... hooray for you, we suppose." } },
+    "4": { "name": "Krissa", "trainer": { "dialogueBefore": "This road is perfect for a sprint! Race you, then battle you!", "dialogueAfter": "I pedalled too hard and battled too soft." } },
+    "5": { "name": "Hector", "trainer": { "dialogueBefore": "Out of my lane! Unless you want a battle, that is!", "dialogueAfter": "Flat tyre. Flat battle. Flat me." } },
+    "6": { "name": "Blossom", "trainer": { "dialogueBefore": "The forest north of here is full of rumours. Let me tell you one after our battle!", "dialogueAfter": "The rumour is... that I lost. It's true!" } },
+    "7": { "name": "Ivan", "trainer": { "dialogueBefore": "I walked all the way from the desert! My legs are tired but my Pokémon aren't!", "dialogueAfter": "Now we're all tired." } },
+    "8": { "name": "Hank", "trainer": { "dialogueBefore": "I'm a Depot Agent of the Battle Subway, off duty! Fancy a practice run?", "dialogueAfter": "Back to the depot for me. You'd do well on the Subway!" } }
+  },
+  "signs": {
+    "1": "Route 16\nNimbasa City — Marvelous Bridge",
+    "2": "Marvelous Bridge\nThe great bridge to the east"
+  }
+}

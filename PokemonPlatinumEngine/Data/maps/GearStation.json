@@ -1,0 +1,284 @@
+{
+  "name": "GearStation",
+  "displayName": "Gear Station",
+  "bgmTrack": "unova/subway",
+  "interior": "Museum",
+  "trees": "Round",
+  "width": 23,
+  "height": 14,
+  "ground": [
+    "#######################",
+    "#######################",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "#_____________________#",
+    "##########DDD##########"
+  ],
+  "solid": [
+    "#######################",
+    "#######################",
+    "#######################",
+    "###.###.###.#####.#####",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "#.....................#",
+    "##########...##########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 4,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 5,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 6,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 8,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 9,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 12,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "VendingMachine",
+      "x": 13,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "VendingMachine",
+      "x": 14,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 16,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 18,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 19,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 21,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 6,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Column",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bench",
+      "x": 20,
+      "y": 8,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Rug",
+      "x": 10,
+      "y": 12,
+      "width": 3,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 10,
+      "sourceY": 13,
+      "targetMap": "Unova",
+      "targetX": 422,
+      "targetY": 459,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 11,
+      "sourceY": 13,
+      "targetMap": "Unova",
+      "targetX": 422,
+      "targetY": 459,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 13,
+      "targetMap": "Unova",
+      "targetX": 422,
+      "targetY": 459,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 20,
+      "y": 3,
+      "text": "A board of the lines leaving the Gear Station.\nBattle Subway: Single Train, Double Train, Multi Train.\nAnville Town Line: all stops to Anville Town."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "single_desk",
+      "name": "Depot Agent",
+      "npcType": "worker",
+      "x": 3,
+      "y": 3,
+      "facing": "Down",
+      "script": "SingleTrain"
+    },
+    {
+      "id": "double_desk",
+      "name": "Depot Agent",
+      "npcType": "worker",
+      "x": 7,
+      "y": 3,
+      "facing": "Down",
+      "script": "DoubleTrain"
+    },
+    {
+      "id": "multi_desk",
+      "name": "Depot Agent",
+      "npcType": "worker",
+      "x": 11,
+      "y": 3,
+      "facing": "Down",
+      "script": "MultiTrain"
+    },
+    {
+      "id": "anville_desk",
+      "name": "Station Agent",
+      "npcType": "worker",
+      "x": 17,
+      "y": 3,
+      "facing": "Down",
+      "script": "AnvilleLine"
+    },
+    {
+      "id": "traveller",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 14,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Every line in Unova meets here at the Gear Station. Battles on one platform, a sleepy country town on another!"
+      ]
+    },
+    {
+      "id": "girl",
+      "name": "Lass",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 10,
+      "facing": "Up",
+      "dialog": [
+        "I rode the Battle Subway all the way to the seventh car! Then I lost. Next time, the Subway Bosses!"
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

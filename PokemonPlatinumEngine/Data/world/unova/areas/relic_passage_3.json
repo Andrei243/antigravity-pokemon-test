@@ -1,0 +1,62 @@
+{
+  "key": "relic_passage_3",
+  "index": 505,
+  "name": "Relic Passage",
+  "matrix": 300,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_RELIC_PASSAGE_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 27 },
+    { "species": "Woobat", "level": 27 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Woobat", "level": 28 },
+    { "species": "Gurdurr", "level": 28 },
+    { "species": "Gurdurr", "level": 30 },
+    { "species": "Boldore", "level": 29 },
+    { "species": "Woobat", "level": 29 },
+    { "species": "Boldore", "level": 30 },
+    { "species": "Onix", "level": 30 },
+    { "species": "Woobat", "level": 30 },
+    { "species": "Onix", "level": 30 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Onix", "level": 27 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 57, "z": 28, "to": "relic_passage_2", "toWarp": 2 },
+    { "x": 17, "z": 2, "to": "pwt", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 57, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x047a", "item": "Protein", "script": "7046" },
+    { "id": "1", "looks": "backpacker_f", "movement": "look_north_and_west", "x": 7, "z": 24, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BACKPACKER_EILEEN" },
+    { "id": "2", "looks": "backpacker_m", "movement": "none", "x": 53, "z": 6, "facing": 2, "rangeX": 13, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BACKPACKER_RANDALL" },
+    { "id": "3", "looks": "hiker", "movement": "look_north_and_south", "x": 50, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_HIKER_KEITH" },
+    { "id": "4", "looks": "model_bigrock2", "movement": "none", "x": 43, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "5", "looks": "worker_26", "movement": "look_south_and_east", "x": 15, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

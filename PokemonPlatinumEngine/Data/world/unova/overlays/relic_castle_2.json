@@ -1,0 +1,11 @@
+{
+  // The Relic Castle's floor below the entrance (plan 22 · U6, part c): Black 2's, our words. The sand pits above drop
+  // whoever steps in them here; two flights of stairs lead back up
+  "area": "relic_castle_2",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave",
+  "people": {
+    "0": { "name": "Dua", "trainer": { "dialogueBefore": "You fell in too? Then we're both stuck down here. Let's pass the time!", "dialogueAfter": "Up the stairs with you, then. I'll stay with the sand." } },
+    "1": { "name": "Low", "trainer": { "dialogueBefore": "I sense the castle's old kings watching. Let's give them a show!", "dialogueAfter": "The kings were not impressed. With me." } }
+  }
+}

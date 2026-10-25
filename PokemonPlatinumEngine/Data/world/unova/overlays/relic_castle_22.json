@@ -1,0 +1,7 @@
+{
+  // The Relic Castle's crossroads under the sand (plan 22 · U6, part c), Black 2's: corridors west and east, and the
+  // stairs down to the castle's deepest room
+  "area": "relic_castle_22",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave"
+}

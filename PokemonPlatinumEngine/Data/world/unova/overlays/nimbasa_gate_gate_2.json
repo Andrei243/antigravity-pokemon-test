@@ -1,0 +1,22 @@
+{
+  // The gate house between Nimbasa City and Route 16 (plan 22 · U6, part c): Black 2's room, our words
+  "area": "nimbasa_gate_gate_2",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Baseball Player",
+      "npcType": "Youngster",
+      "dialog": [ "A few years back, a Pokémon called Zoroark made its den in the Lostlorn Forest, up off Route 16. Spooky, huh?" ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "Route 16 is short, but it leads all the way to the Marvelous Bridge. Someday I'll cross it!" ]
+    },
+    "2": {
+      "name": "Guard",
+      "npcType": "receptionist",
+      "dialog": [ "This way to Route 16 and the Marvelous Bridge." ]
+    }
+  }
+}

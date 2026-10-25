@@ -1,0 +1,43 @@
+{
+  "key": "relic_castle_22",
+  "index": 181,
+  "name": "Relic Castle",
+  "matrix": 75,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_04",
+  "nightMusic": "BGM_D_04",
+  "encounters": "ENCOUNTERS_RELIC_CASTLE_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Baltoy", "level": 27 },
+    { "species": "Baltoy", "level": 27 },
+    { "species": "Baltoy", "level": 28 },
+    { "species": "Baltoy", "level": 28 },
+    { "species": "Baltoy", "level": 28 },
+    { "species": "Baltoy", "level": 28 },
+    { "species": "Baltoy", "level": 29 },
+    { "species": "Baltoy", "level": 29 },
+    { "species": "Baltoy", "level": 30 },
+    { "species": "Baltoy", "level": 30 },
+    { "species": "Baltoy", "level": 30 },
+    { "species": "Baltoy", "level": 30 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 0, "z": 7, "to": "relic_castle_16", "toWarp": 0 },
+    { "x": 12, "z": 7, "to": "relic_castle_17", "toWarp": 1 },
+    { "x": 6, "z": 1, "to": "relic_castle_23", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 6, "z": 7, "type": 2, "script": "8058", "item": "Sun Stone", "flag": "FLAG_UNOVA_0x0b3e" }
+  ],
+  "triggers": []
+}

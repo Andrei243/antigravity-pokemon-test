@@ -1,0 +1,46 @@
+{
+  "key": "anville_town",
+  "index": 418,
+  "name": "Anville Town",
+  "matrix": 128,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_T_03",
+  "nightMusic": "BGM_T_03",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 40, "z": 37, "to": "anville_town_2", "toWarp": 0 },
+    { "x": 35, "z": 47, "to": "anville_town_3", "toWarp": 0 },
+    { "x": 44, "z": 47, "to": "anville_town_4", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "worker_26", "movement": "none", "x": 26, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "149", "movement": "look_around", "x": 20, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "depot_agent", "movement": "none", "x": 22, "z": 52, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "3", "looks": "rich_boy", "movement": "none", "x": 33, "z": 33, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "4", "looks": "school_kid_m", "movement": "none", "x": 23, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a8", "script": "10" },
+    { "id": "5", "looks": "27", "movement": "none", "x": 37, "z": 27, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a8", "script": "11" },
+    { "id": "6", "looks": "backers_m", "movement": "wander_around", "x": 15, "z": 48, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "12" },
+    { "id": "7", "looks": "depot_agent", "movement": "none", "x": 31, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "17" },
+    { "id": "8", "looks": "hiker", "movement": "wander_around", "x": 16, "z": 38, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "14" },
+    { "id": "9", "looks": "backers_f", "movement": "none", "x": 22, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "13" },
+    { "id": "10", "looks": "21", "movement": "none", "x": 29, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "15" },
+    { "id": "11", "looks": "artist", "movement": "wander_around", "x": 36, "z": 50, "facing": 2, "rangeX": 2, "rangeZ": 1, "script": "16" },
+    { "id": "12", "looks": "backpacker_m", "movement": "wander_around", "x": 28, "z": 39, "facing": 3, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "18" },
+    { "id": "13", "looks": "ace_trainer_f", "movement": "wander_around", "x": 35, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "20" },
+    { "id": "14", "looks": "clerk_m_67", "movement": "wander_around", "x": 33, "z": 39, "facing": 0, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02a9", "script": "19" },
+    { "id": "15", "looks": "309", "movement": "wander_around", "x": 15, "z": 52, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0362", "script": "22" },
+    { "id": "16", "looks": "school_kid_f", "movement": "none", "x": 15, "z": 51, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "21" }
+  ],
+  "signs": [
+    { "x": 20, "z": 47, "type": 0, "script": "6" },
+    { "x": 33, "z": 37, "type": 0, "script": "7" }
+  ],
+  "triggers": []
+}

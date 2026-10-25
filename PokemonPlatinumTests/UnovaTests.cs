@@ -266,8 +266,8 @@ public class UnovaTests
         Assert.Equal(FieldWeather.Clear, Overworld.WeatherAt(430, 560));
         Assert.Contains(MapNamed("DesertResortGate").Warps, w => w.TargetMap == "DesertResort");
         Assert.Contains(MapNamed("DesertResort").Everyone, n => n.TrainerData?.Id == "unova_backpacker_walt");
-        // the Relic Castle's door stays shut until plan 22 · U6, part b
-        Assert.DoesNotContain(MapNamed("DesertResort").Warps, w => w.TargetMap.StartsWith("Relic", StringComparison.Ordinal));
+        // the Relic Castle's door opens into the castle since plan 22 · U6, part c
+        Assert.Contains(MapNamed("DesertResort").Warps, w => w.TargetMap == "RelicCastle");
         // Nimbasa City builds its own way, and Elesa's Gym in the amusement park is Electric's
         Assert.Equal(Architecture.Funfair, Overworld.ArchitectureAt(420, 450));
         var park = MapNamed("NimbasaCity_AmusementPark");
@@ -280,9 +280,9 @@ public class UnovaTests
         var gym = MapNamed("NimbasaCity_Gym");
         Assert.Contains(gym.NPCs, n => n.Name == "Elesa");
         Assert.Equal(3, gym.NPCs.Count(n => n.NpcType == "beauty"));
-        // and since part b the gate west to Route 5 is open, while the one east to Route 16 still leads nowhere
+        // and since part b the gate west to Route 5 is open, and since part c the one east to Route 16
         Assert.Contains(Overworld.Warps, w => w.SourceX == 384 && w.SourceY is >= 437 and <= 439 && w.TargetMap == "NimbasaGate_Route5");
-        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 447 && w.SourceY is >= 437 and <= 439);
+        Assert.Contains(Overworld.Warps, w => w.SourceX == 447 && w.SourceY is >= 437 and <= 439 && w.TargetMap == "NimbasaGate_Route16");
     }
 
     [Fact]
@@ -416,8 +416,8 @@ public class UnovaTests
         foreach (string room in new[] { "DriftveilCity_PokemonCenter", "DriftveilCity_House1", "DriftveilCity_PlasmaHouse",
                      "DriftveilCity_Market", "DriftveilCity_GymLobby", "DriftveilCity_TournamentGate" })
             Assert.Contains(Overworld.Warps, w => w.TargetMap == room);
-        // the tournament beyond the gate south of the city is not open yet
-        Assert.DoesNotContain(MapNamed("DriftveilCity_TournamentGate").Warps, w => w.TargetMap == "Unova" && w.SourceY > 10);
+        // the gate south of the city opens onto the tournament's grounds (plan 22 · U6, part c), whose hall stays shut
+        Assert.Contains(MapNamed("DriftveilCity_TournamentGate").Warps, w => w.TargetMap == "Unova" && w.SourceY > 10);
 
         // The lobby's lift goes down to the Gym's floor, a map of ours, and its door comes back up
         var lobby = MapNamed("DriftveilCity_GymLobby");
@@ -429,6 +429,92 @@ public class UnovaTests
         Assert.Contains(gym.NPCs, n => n.Key == "clay");
         Assert.Equal(7, gym.NPCs.Count(n => n.IsTrainer && n.TrainerData!.TrainerClass == "Worker"));
         Assert.Contains(Walked.Value.Keys, m => m.Name == "DriftveilCity_Gym");
+    }
+
+    [Fact]
+    public void RouteSixteenLeadsIntoTheLostlornForestAndTheGearStationsLineRunsToAnville()
+    {
+        // Plan 22 · U6, part c: Nimbasa's east gate opens onto Route 16, whose way north is the Lostlorn Forest's
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "NimbasaGate_Route16");
+        Assert.Contains(MapNamed("NimbasaGate_Route16").Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "unova_route_16");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "LostlornForest");
+        // the road's small tree and boulder are Black 2's obstacles, told by the global scripts they run
+        Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.CutTree && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
+        Assert.Contains(Overworld.NPCs, n => n.Obstacle == PropType.StrengthBoulder && Overworld.AreaAt(n.GridX, n.GridY)?.Key == "unova_route_16");
+        // the Marvelous Bridge beyond the gate house at the road's east end is the post-game's
+        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 503 && w.SourceY is 431 or 432);
+        var forest = MapNamed("LostlornForest");
+        Assert.Contains(forest.NPCs, n => n.Key == "7" && n.Script == "Traveller");
+        Assert.True(forest.NPCs.Count(n => n.IsTrainer) >= 4);
+
+        // The Gear Station is a map of ours, come into from Nimbasa City, its Anville Town Line running to Anville
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "GearStation");
+        var station = MapDatabase.Get("GearStation");
+        Assert.Equal("GearStation", station.Name);
+        Assert.Contains(station.Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "nimbasa_city");
+        Assert.Contains(station.NPCs, n => n.Key == "anville_desk" && n.Script == "AnvilleLine");
+        var anville = MapNamed("AnvilleTown");
+        Assert.True(anville.IsWalkable(20, 52));
+        Assert.Contains(anville.NPCs, n => n.Key == "2" && n.Script == "TrainHome");
+        Assert.Equal(Architecture.Railyard, WorldModels.Of("tt_house01", "unova")!.Town);
+        Assert.Equal(PropType.Tram, WorldModels.Of("tt_train11", "unova")!.Prop);
+        foreach (string room in new[] { "AnvilleTown_House1", "AnvilleTown_House2", "AnvilleTown_House3" })
+            Assert.Contains(anville.Warps, w => w.TargetMap == room);
+        // the walk of the whole game rides the train and comes back
+        foreach (string name in new[] { "NimbasaGate_Route16", "LostlornForest", "GearStation", "AnvilleTown", "AnvilleTown_House3" })
+            Assert.Contains(Walked.Value.Keys, m => m.Name == name);
+    }
+
+    [Fact]
+    public void TheRelicPassageRunsUnderTheSeaFromCasteliaToTheTournamentAndIntoTheCastlesBuriedHalls()
+    {
+        // The sewers' way north opens into the Relic Passage, whose west hall comes up beside the tournament's grounds
+        Assert.Contains(MapNamed("CasteliaSewers").Warps, w => w.TargetMap == "RelicPassage_East");
+        Assert.Contains(MapNamed("RelicPassage_East").Warps, w => w.TargetMap == "RelicPassage");
+        Assert.Contains(MapNamed("RelicPassage").Warps, w => w.TargetMap == "RelicPassage_West");
+        Assert.Contains(MapNamed("RelicPassage_West").Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "pwt");
+        // its north-east tunnel climbs into the Relic Castle's buried halls, down to Volcarona's room
+        Assert.Contains(MapNamed("RelicPassage").Warps, w => w.TargetMap == "RelicCastle_Ruins1");
+        Assert.Contains(MapNamed("RelicCastle_Ruins3").Warps, w => w.TargetMap == "RelicCastle_Depths");
+        Assert.Contains(MapNamed("RelicCastle_Depths").NPCs, n => n.Key == "0" && n.Script == "Volcarona");
+        foreach (string name in new[] { "RelicPassage_East", "RelicPassage", "RelicPassage_West", "RelicCastle", "RelicCastle_B1F", "RelicCastle_Ruins1",
+                     "RelicCastle_Ruins2", "RelicCastle_Ruins3", "RelicCastle_Ruins4", "RelicCastle_Ruins5", "RelicCastle_Depths" })
+        {
+            Assert.True(MapNamed(name).IsCave, $"{name} is no cave");
+            Assert.Contains(Walked.Value.Keys, m => m.Name == name);
+        }
+
+        // The Desert Resort's ruin is the castle's entrance, whose floor has two sand pits down to the floor below
+        Assert.Contains(MapNamed("DesertResort").Warps, w => w.TargetMap == "RelicCastle");
+        var castle = MapNamed("RelicCastle");
+        Assert.Contains(castle.Triggers, t => t.Script == "SandPitWest" && t.X == 5 && t.Y == 12 && t.Width == 5);
+        Assert.Contains(castle.Triggers, t => t.Script == "SandPitEast" && t.X == 14 && t.Y == 13 && t.Depth == 5);
+        Assert.Contains(castle.Warps, w => w.TargetMap == "RelicCastle_B1F");
+        Assert.Contains(MapNamed("RelicCastle_B1F").Warps, w => w.TargetMap == "RelicCastle");
+        // its floor is sand, its walls stone
+        Assert.Equal(TileType.Sand, castle.GetGroundTile(24, 15));
+    }
+
+    [Fact]
+    public void ThePlasmaFrigateMoorsAtTheTournamentsPier()
+    {
+        // The tournament's grounds south of Driftveil City are open, the hall's door shut until the tournament is built
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "DriftveilCity_TournamentGate");
+        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 197 && w.SourceY == 465);
+        // the gangway at the pier's end is the frigate's way aboard while it is moored there, and the frigate lies along it
+        var gangway = Overworld.Warps.Single(w => w.TargetMap == "PlasmaFrigate");
+        Assert.Equal(("FLAG_UNOVA_FRIGATE_AT_PIER", "FLAG_UNOVA_FRIGATE_SAILED"), (gangway.From, gangway.Until));
+        Assert.Contains(Overworld.Props, p => p.Type == PropType.Boat && p.Covers(203, 490));
+        Assert.Contains(Overworld.Triggers, t => t.Script == "PlasmaAtThePier");
+        // the deck: Hugh and Cheren, the two grunts battled, Zinzolin and the Shadow Triad, and the way back down
+        var deck = MapNamed("PlasmaFrigate");
+        foreach (string key in new[] { "0", "1", "14", "15", "16", "17", "18", "19" })
+            Assert.Contains(deck.Everyone, n => n.Key == key);
+        Assert.Contains(deck.Warps, w => w.TargetMap == "Unova");
+        Assert.Equal(TileType.Paving, deck.GetGroundTile(13, 24));
+        // the ship's rooms are its later boardings' (plan 22 · U8)
+        Assert.DoesNotContain(deck.Warps, w => w.TargetMap.StartsWith("PlasmaFrigate_", StringComparison.Ordinal));
+        Assert.Contains(Walked.Value.Keys, m => m.Name == "PlasmaFrigate");
     }
 
     [Fact]
@@ -455,7 +541,9 @@ public class UnovaTests
                 || m.Name.StartsWith("c04", StringComparison.Ordinal) && m.Name != "c04_fwheel"
                 || m.Name is "r4_build" or "buill" or "jagate" or "c4_gate" or "thouse"
                 // and Driftveil's since part b, the gates at the drawbridge's foot and toward the tournament with them
-                || m.Name.StartsWith("c5_", StringComparison.Ordinal) || m.Name is "rgate" or "wbtgate")
+                || m.Name.StartsWith("c5_", StringComparison.Ordinal) || m.Name is "rgate" or "wbtgate"
+                // and Anville's and Route 16's gate since part c
+                || m.Name is "tt_house01" or "h5_gate")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }
