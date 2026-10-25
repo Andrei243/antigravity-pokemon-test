@@ -11,7 +11,7 @@
     { "warp": 1, "from": "FLAG_MAHOGANY_SHOP_STAIRS_FOUND" }
   ],
   "people": {
-    "d35r0101_sunglasses": { "name": "Salesman", "script": "Salesman", "still": true },
+    "d35r0101_sunglasses": { "name": "Salesman", "npcType": "Gentleman", "script": "Salesman", "still": true },
     "d35r0101_gsfighter": { "name": "Man", "script": "Customer", "still": true },
     "d35r0101_wataru": { "name": "Lance", "script": "Lance", "still": true },
     "d35r0101_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "still": true, "dialog": [ "Dragonite is glaring at the counter." ] }

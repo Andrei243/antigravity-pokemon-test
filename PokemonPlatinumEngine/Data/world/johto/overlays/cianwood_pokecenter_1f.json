@@ -44,6 +44,7 @@
     },
     "t24pc0101_sunglasses": {
       "name": "Man",
+      "npcType": "Gentleman",
       "dialog": [
         "The sea between here and Olivine has islands in it, ringed with whirlpools. Nobody goes inside."
       ]

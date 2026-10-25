@@ -428,7 +428,20 @@
     "firebreather": { "hairColor": "#3a2a24", "hat": "Headband", "hatColor": "#f0c040", "hatBand": "#c8402a", "top": "#c8402a", "accent": "#f0c040", "bottom": "#3a2a24", "shoes": "#2a2224", "eyes": "#2a2024", "bushyBrows": true, "shortSleeves": true, "build": "Adult", "height": 1.04 },
     "poke_maniac": { "hairColor": "#5a4a3a", "hat": "WideHat", "hatColor": "#7a5a3a", "hatBand": "#e8d6a8", "top": "#e8e0c8", "accent": "#7a5a3a", "bottom": "#4a4a52", "shoes": "#3a2c24", "eyes": "#2a2024", "glasses": "#2a2a30", "bag": "#a84a3a", "build": "Adult", "height": 1.0 },
     "boarder": { "hairColor": "#4a3428", "hat": "Beanie", "hatColor": "#3a8ad8", "hatBand": "#f6f6f8", "top": "#e85a2a", "accent": "#f6f6f8", "bottom": "#2a3046", "shoes": "#2a2a30", "eyes": "#2a2024", "glasses": "#f0c040", "build": "Adult", "height": 1.04 },
-    "teacher": { "hairColor": "#5a3a2c", "hair": "Bun", "top": "#f0e8e0", "accent": "#4a7a5a", "bottom": "#4a5a52", "shoes": "#3a2a2c", "eyes": "#3a2a2c", "glasses": "#3a3036", "skirt": true, "build": "Adult", "lashes": true }
+    "teacher": { "hairColor": "#5a3a2c", "hair": "Bun", "top": "#f0e8e0", "accent": "#4a7a5a", "bottom": "#4a5a52", "shoes": "#3a2a2c", "eyes": "#3a2a2c", "glasses": "#3a3036", "skirt": true, "build": "Adult", "lashes": true },
+    // Plan 20 · J14, second part: the five Kimono Girls of the Dance Theater, each in the colour of the Eevee she dances
+    // with (Zuki's indigo, Naoko's lavender, Miki's flame, Sayo's sky blue, Kuni's yellow) and each with her hair done
+    // otherwise; the Medium; Elder Li and the Dragon's Den's elder; the Radio Tower's Director; the Pokéathlon Dome's owner
+    "kimono_zuki": { "hairColor": "#1c1a24", "hair": "Bun", "top": "#2a2446", "accent": "#e8c84a", "bottom": "#2a2446", "shoes": "#2a2430", "eyes": "#3a2a4a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "kimono_naoko": { "hairColor": "#4a3050", "hair": "Long", "top": "#a878d0", "accent": "#f0d878", "bottom": "#a878d0", "shoes": "#3a2a40", "eyes": "#5a3a7a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "kimono_miki": { "hairColor": "#5a2a22", "hair": "Ponytail", "top": "#e8602e", "accent": "#f6d878", "bottom": "#e8602e", "shoes": "#3a2420", "eyes": "#6a3a22", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "kimono_sayo": { "hairColor": "#1e2a3e", "hair": "Bunches", "top": "#4a9ad8", "accent": "#f4f0e0", "bottom": "#4a9ad8", "shoes": "#2a3040", "eyes": "#2e4a7a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "kimono_kuni": { "hairColor": "#7a5a22", "hair": "Braids", "top": "#e8c030", "accent": "#3a3a58", "bottom": "#e8c030", "shoes": "#3a3020", "eyes": "#5a4a22", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "medium": { "hairColor": "#241e2c", "hair": "Long", "top": "#3e2e5a", "accent": "#d8c8f0", "bottom": "#3e2e5a", "shoes": "#2a2234", "eyes": "#6a4a8a", "skirt": true, "coat": true, "scarf": true, "build": "Adult", "lashes": true },
+    "elder_li": { "hairColor": "#ecece8", "hair": "Bald", "top": "#6a7a8e", "accent": "#e6dcc2", "bottom": "#6a7a8e", "shoes": "#3a3234", "eyes": "#3a3036", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
+    "dragon_elder": { "hairColor": "#e4e0d8", "hair": "Bald", "top": "#8a3a2a", "accent": "#e8c870", "bottom": "#8a3a2a", "shoes": "#3a2a26", "eyes": "#3a2a24", "skirt": true, "coat": true, "beard": true, "bushyBrows": true, "build": "Elder" },
+    "radio_director": { "hairColor": "#3a3a44", "hair": "Short", "top": "#6a2e3a", "accent": "#f2f0e6", "bottom": "#2a2a34", "shoes": "#1e1e22", "glasses": "#2a2a30", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
+    "athlon_owner": { "hairColor": "#2a2a2e", "hair": "Swept", "hat": "Visor", "hatColor": "#f2f2f6", "hatBand": "#2e8ad8", "top": "#2e8ad8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#f2f2f6", "eyes": "#2a3a4a", "shortSleeves": true, "build": "Adult", "height": 1.04 }
   },
   // Names that are another look
   "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
@@ -483,7 +496,7 @@
     "gsoldwoman1": "Lady",
     "gsman2": "Gentleman",
     "instructor": "Gentleman",
-    "juggrer": "Clown",
+    "juggrer": "juggler",
     "gsbigman": "Gentleman",
     "gsman1": "Gentleman",
     "gsman3": "Gentleman",
@@ -502,10 +515,10 @@
     "bozu": "sage",
     "chourou": "sage",
     "gsleader1": "falkner",
-    "sunglasses": "Gentleman",
-    "picnicgirl_2": "Lass",
-    "campboy_2": "Youngster",
-    "fishing_2": "Gentleman",
+    "sunglasses": "gym_guide",
+    "picnicgirl_2": "picnicker",
+    "campboy_2": "camper",
+    "fishing_2": "fisherman",
     // Emerald's looks (plan 21 · H1), until each Hoenn chapter gives the classes and the cast it meets their own
     "scientist_1": "scientist",
     "mart_employee": "Clerk",
@@ -531,12 +544,12 @@
     "harlequin_233": "clown", "harlequin_32": "clown", "harlequin": "clown", "doctor": "scientist",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "kurt",
-    "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
-    "mount_2": "Gentleman", "fire": "Youngster", "mania": "Gentleman", "mystery_2": "Youngster",
+    "gsfighter": "blackbelt", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
+    "mount_2": "hiker", "fire": "firebreather", "mania": "poke_maniac", "mystery_2": "psychic",
     // Plan 20 · J5, part b: Ilex Forest to Ecruteak City (Whitney, Morty, the Kimono Girls and the Sages stand as looks
     // of their own, above)
-    "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "eusine",
-    "masaki": "Gentleman", "kurumi": "lyra", "workman": "Gentleman", "babyboy1_2": "Youngster",
+    "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "medium", "minaki": "eusine",
+    "masaki": "bill", "kurumi": "lyra", "workman": "worker", "babyboy1_2": "Youngster",
     // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
     "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt",
     // Plan 21 · H4, part a: Team Magma's grunts have a look of their own; the old woman, the cook, a girl, the
@@ -547,14 +560,16 @@
     "rkanbum3": "proton", "rocketw": "rocket_f", "gsleader2": "bugsy",
     // Plan 20 · J8: the west and the sea (Jasmine stands as Platinum's own Jasmine, the sailors as captains in their caps,
     // the black belts of Chuck's Gym and Chuck himself as black belts), until plan 20 · J14's looks
-    "seaman_2": "captain", "gsswimmerm": "Youngster", "gsswimmerw": "Lass", "gsleader6": "jasmine", "gsleader5": "chuck",
+    "seaman_2": "sailor", "gsswimmerm": "swimmer_m_water", "gsswimmerw": "swimmer_f_water", "gsleader6": "jasmine", "gsleader5": "chuck",
     "babyboy1_8": "Youngster",
     // Plan 20 · J11, part a: Lance and Giovanni stand as their own looks; the Team Rocket Hideout's two executives as
     // grunts and Pryce as the nearest look, until plan 20 · J14's
     "wataru": "lance", "sakaki": "giovanni", "rkanbuw": "ariana", "rkanbum2": "petrel", "gsleader7": "pryce",
     // Plan 20 · J14: the rest of the named cast (HeartGold's Leaders, its Elite Four, the Radio Tower's executive) have looks of their own
     "gsleader8": "clair", "gsleader9": "lt_surge", "gsbigfour1": "will", "gsbigfour2": "koga", "gsbigfour3": "bruno", "gsbigfour4": "karen",
-    "rkanbum": "archer", "skierw": "skier_f", "thief": "burglar"
+    "rkanbum": "archer", "skierw": "skier_f", "thief": "burglar",
+    // Plan 20 · J14, second part: Crasher Wake as the Leader of Route 47 (held back), the Mediums as Mediums, and the dome owner as his own
+    "leader3": "crasher_wake", "thlonowner": "athlon_owner"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
@@ -631,10 +646,10 @@
     "Executive Archer": "archer",
     "Firebreather": "firebreather",
     "Poke Maniac": "poke_maniac",
-    "Medium": "channeler",
+    "Medium": "medium",
     "Sage": "sage",
-    "Elder": "sage",
-    "Kimono Girl": "kimono_girl",
+    "Elder": "elder_li",
+    "Kimono Girl": [ "kimono_girl", "kimono_zuki", "kimono_naoko", "kimono_miki", "kimono_sayo", "kimono_kuni" ],
     "Boarder": "boarder",
     "Teacher": "teacher",
     "Passerby": [ "youngster", "lass" ],

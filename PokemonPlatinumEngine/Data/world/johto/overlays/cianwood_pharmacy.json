@@ -6,6 +6,7 @@
   "people": {
     "t24r0501_sunglasses": {
       "name": "Pharmacist",
+      "npcType": "scientist",
       "script": "Pharmacist",
       "still": true
     }

@@ -5,7 +5,7 @@
   "area": "goldenrod_tunnel_warehouse",
   "bgmTrack": "johto/union_cave",
   "people": {
-    "d37r0105_gsgentleman": { "name": "Director", "script": "Director", "still": true },
+    "d37r0105_gsgentleman": { "name": "Director", "npcType": "radio_director", "script": "Director", "still": true },
     "d37r0105_rocketm": {
       "name": "Grunt",
       "trainer": {

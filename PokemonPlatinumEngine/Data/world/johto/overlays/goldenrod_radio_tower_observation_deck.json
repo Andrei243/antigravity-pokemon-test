@@ -9,7 +9,7 @@
     "d23r0106_rkanbum": { "name": "Archer", "script": "Archer", "still": true }
   },
   "npcs": [
-    { "id": "deck_director", "name": "Director", "npcType": "Gentleman", "x": 13, "y": 13, "facing": "Up",
+    { "id": "deck_director", "name": "Director", "npcType": "radio_director", "x": 13, "y": 13, "facing": "Up",
       "dialog": [ "..." ], "hiddenBy": "FLAG_HIDE_RADIO_TOWER_DECK_DIRECTOR" }
   ]
 }

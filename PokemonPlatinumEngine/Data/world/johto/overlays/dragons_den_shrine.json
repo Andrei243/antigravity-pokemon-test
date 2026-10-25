@@ -6,7 +6,7 @@
   "area": "dragons_den_shrine",
   "bgmTrack": "johto/dragons_den",
   "people": {
-    "d44r0103_chourou": { "name": "Elder", "script": "Elder", "still": true },
+    "d44r0103_chourou": { "name": "Elder", "npcType": "dragon_elder", "script": "Elder", "still": true },
     "d44r0103_gsleader8": { "name": "Clair", "still": true, "hiddenBy": "FLAG_HIDE_DRAGON_SHRINE_CLAIR", "dialog": [ "..." ] },
     "d44r0103_gsoldman1": {
       "name": "Old Man",

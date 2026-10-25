@@ -5,7 +5,7 @@
   "area": "goldenrod_radio_tower_5f",
   "bgmTrack": "johto/goldenrod",
   "people": {
-    "d23r0105_gsgentleman": { "name": "Director", "script": "Director", "still": true },
+    "d23r0105_gsgentleman": { "name": "Director", "npcType": "radio_director", "script": "Director", "still": true },
     "d23r0105_rkanbum2": { "name": "Petrel", "script": "Director", "still": true },
     "d23r0105_rkanbuw": {
       "name": "Ariana",

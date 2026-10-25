@@ -130,6 +130,39 @@ partial class Harness
         Frames(2);
         ShotCrop("36h_lineup_water_tug", 560, 300, 800, 450, 2);
         game.Player.Posed = null;
+
+        // Last of all, so nothing before moves: Johto's cast and classes (plan 20 · J14): a turntable of each (front,
+        // three-quarter, side, back) in one picture, and the walking strips of the five Kimono Girls, the Medium and the
+        // Elders. The five girls also stand together on one board (37_turntable_johto_kimono_girls), to judge their colours.
+        var johto = new[]
+        {
+            "kimono_zuki", "kimono_naoko", "kimono_miki", "kimono_sayo", "kimono_kuni", "kimono_girl", "medium", "sage", "elder_li", "dragon_elder",
+            "radio_director", "athlon_owner", "firebreather", "poke_maniac", "boarder", "teacher", "rocket_f", "bugsy", "chuck", "pryce", "clair",
+            "will", "karen", "kurt", "eusine", "lyra", "mr_pokemon", "red", "proton", "petrel", "ariana", "archer"
+        };
+        foreach (var type in johto)
+        {
+            string name = "37_turntable_" + type;
+            if (!Wanted(name)) continue;
+            Save(CharacterStudio.Turntable(context, type, new[] { 0f, 0.65f, MathF.PI / 2f, MathF.PI }, 300, 420, Pose(), 1.7f, 0.7f), name);
+        }
+        if (Wanted("37_turntable_johto_kimono_girls"))
+        {
+            var girls = new[] { "kimono_zuki", "kimono_naoko", "kimono_miki", "kimono_sayo", "kimono_kuni" };
+            var board = Raylib.GenImageColor(girls.Length * 300, 420, new Color(206, 218, 232, 255));
+            for (int i = 0; i < girls.Length; i++)
+            {
+                var view = CharacterStudio.Turntable(context, girls[i], new[] { 0.3f }, 300, 420, Pose(), 1.7f, 0.7f);
+                Raylib.ImageDraw(ref board, view, new Rectangle(0, 0, 300, 420), new Rectangle(i * 300, 0, 300, 420), Color.White);
+                Raylib.UnloadImage(view);
+            }
+            Save(board, "37_turntable_johto_kimono_girls");
+        }
+        foreach (var type in new[] { "kimono_zuki", "kimono_kuni", "medium", "elder_li", "radio_director" })
+        {
+            string name = $"38_sheet_{type}_walk";
+            if (Wanted(name)) Save(Strip(type, "Walk", 8), name);
+        }
     }
 
     // A pond south of a lawn, swimmers in it and the shore above it (plan 11 · C8)
