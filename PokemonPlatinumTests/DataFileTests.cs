@@ -40,7 +40,9 @@ public class DataFileTests
         Assert.Equal(0.4f, turtwig.Height);
         Assert.Equal(new[] { "Overgrow" }, turtwig.Abilities);
         Assert.Equal((5, "Withdraw"), (turtwig.Learnset[1].Level, turtwig.Learnset[1].MoveName));
-        Assert.Equal((45, "Leaf Storm"), (turtwig.Learnset[^1].Level, turtwig.Learnset[^1].MoveName));
+        // Platinum's last at 45; after it only the moves of our own past level 100 (plan 06 · R31)
+        Assert.Equal((45, "Leaf Storm"), (turtwig.Learnset.Last(l => l.Level <= 100).Level, turtwig.Learnset.Last(l => l.Level <= 100).MoveName));
+        Assert.Equal((250, "Sap Lance"), (turtwig.Learnset[^1].Level, turtwig.Learnset[^1].MoveName));
         Assert.Equal((18, "Grotle"), (turtwig.LevelEvolution!.Level, turtwig.LevelEvolution.TargetSpecies));
         Assert.Null(PokemonDatabase.Get("Torterra")!.Evolutions);
         Assert.Equal(PokemonType.Ground, PokemonDatabase.Get("Torterra")!.SecondaryType);
@@ -211,7 +213,9 @@ public class DataFileTests
         // Platinum's 467 moves (Struggle included) and the later ones; the Z-Moves and Max Moves are in the data
         // too, as moves of a kind of their own that nothing learns (CoverageTests counts them)
         var all = MoveDatabase.GetAll().ToList();
-        Assert.Equal(847, all.Count(m => m.Kind == MoveKind.Standard));
+        // (and since plan 06 · R31 the 72 moves of our own learned past level 100, generation 0)
+        Assert.Equal(847, all.Count(m => m.Kind == MoveKind.Standard && m.Generation > 0));
+        Assert.Equal(72, all.Count(m => m.Kind == MoveKind.Standard && m.Generation == 0));
         Assert.Equal(467, all.Count(m => m.Id <= 467));
         Assert.Equal(all.Count, all.Select(m => m.Id).Distinct().Count());
         Assert.DoesNotContain(all, m => m.Kind == MoveKind.Standard && m.Name is "Breakneck Blitz" or "Max Strike" or "Catastropika");

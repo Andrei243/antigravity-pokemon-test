@@ -889,9 +889,10 @@ public class Pokemon
     /// Puts a Pokémon not yet anyone's at another level, as if it had been made there (plan 18 · W4: a region's levels
     /// mapped for a team that crossed into it, <see cref="Data.LevelMapping"/>): its EXP is the level's, its stats are
     /// worked out again and its HP keeps its share. Moves chosen for it are kept; moves that are only what its old level
-    /// taught it are those of the new level.
+    /// taught it are those of the new level, or of <paramref name="learnsUpTo"/> where that is lower (a trainer of a
+    /// later region keeps their own game's moves past 100, plan 06 · R31: <see cref="Trainer.Relevelled"/>).
     /// </summary>
-    public void Relevel(int level)
+    public void Relevel(int level, int learnsUpTo = int.MaxValue)
     {
         level = Math.Clamp(level, 1, Ruleset.HighestLevel);
         if (level == Level) return;
@@ -902,7 +903,7 @@ public class Pokemon
         CurrentExp = GetExpForLevel(Level, Species.GrowthRate);
         RecalculateStats();
         CurrentHP = whole ? MaxHP : CurrentHP <= 0 ? 0 : Math.Clamp((int)MathF.Round(MaxHP * share), 1, MaxHP);
-        if (byLevel) PopulateMovesForLevel();
+        if (byLevel) PopulateMovesForLevel(Math.Min(Level, learnsUpTo));
     }
 
     /// <summary>
@@ -1075,11 +1076,14 @@ public class Pokemon
         return names;
     }
 
-    public void PopulateMovesForLevel()
+    public void PopulateMovesForLevel() => PopulateMovesForLevel(Level);
+
+    /// <summary>The last four moves it would have learned by <paramref name="level"/>, each once.</summary>
+    private void PopulateMovesForLevel(int level)
     {
         Moves.Clear();
         // The last four it would have learned by now, each move once
-        foreach (var name in MovesLearnedBy(Level))
+        foreach (var name in MovesLearnedBy(level))
         {
             Moves.Add(MoveDatabase.Create(name));
         }

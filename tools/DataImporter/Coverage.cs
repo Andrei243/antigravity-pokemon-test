@@ -37,13 +37,16 @@ public static class Coverage
         int PlatinumAbilities, int PlatinumAbilitiesRun, int LaterAbilities, int LaterAbilitiesRun,
         int PlatinumItems, int PlatinumItemsFully, int PlatinumItemsPartly, int PlatinumItemsNothingToRun,
         int HoldEffects, int HoldEffectsRun,
-        int LaterItems, int MegaStones, int ZCrystals, int LaterItemsFully = 0, int LaterItemsPartly = 0, int LaterItemsNothingToRun = 0);
+        int LaterItems, int MegaStones, int ZCrystals, int LaterItemsFully = 0, int LaterItemsPartly = 0, int LaterItemsNothingToRun = 0,
+        int OurMoves = 0, int OurMovesFully = 0);
 
     public static Numbers Tally(IReadOnlyList<MoveData> moves, IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
     {
         var run = AbilityEffectTable.Names.ToHashSet(StringComparer.OrdinalIgnoreCase);
         var standard = moves.Where(m => m.Kind == MoveKind.Standard).ToList();
-        var platinum = standard.Where(m => m.Generation <= 4).ToList();
+        // Generation 0 is ours: the moves past level 100 (plan 06 · R31), counted apart and never in a number of the games'
+        var platinum = standard.Where(m => m.Generation is >= 1 and <= 4).ToList();
+        var ours = standard.Where(m => m.Generation == 0).ToList();
         var later = standard.Where(m => m.Generation > 4).ToList();
         var special = moves.Where(m => m.Kind != MoveKind.Standard).ToList();
         var own = items.Where(IsPlatinums).ToList();
@@ -59,7 +62,8 @@ public static class Coverage
             held.Count, held.Count(HeldItemEffects.IsHoldable),
             items.Count(i => !IsPlatinums(i) && i.Id < 9000), items.Count(i => i.MegaStone != null), items.Count(i => i.ZCrystal != null),
             items.Count(i => IsLaters(i) && LaterOf(i) == Works.Fully), items.Count(i => IsLaters(i) && LaterOf(i) == Works.Partly),
-            items.Count(i => IsLaters(i) && LaterOf(i) == Works.NothingToRun));
+            items.Count(i => IsLaters(i) && LaterOf(i) == Works.NothingToRun),
+            ours.Count, ours.Count(m => m.Support == MoveEffectSupport.Full));
     }
 
     /// <summary>One of the later games' items (ids from 1000 to the game's own 9000).</summary>
@@ -189,6 +193,7 @@ public static class Coverage
         Line("| --- | --- | --- | --- | --- |");
         Line($"| Platinum's moves | {n.PlatinumMoves} | {n.PlatinumMovesFully} | {n.PlatinumMovesPartly} | {n.PlatinumMoves - n.PlatinumMovesFully - n.PlatinumMovesPartly} |");
         Line($"| Moves of Generations 5–9 | {n.LaterMoves} | {n.LaterMovesFully} | {n.LaterMovesPartly} | {n.LaterMoves - n.LaterMovesFully - n.LaterMovesPartly} |");
+        Line($"| Moves of our own, learned past level 100 | {n.OurMoves} | {n.OurMovesFully} | 0 | {n.OurMoves - n.OurMovesFully} |");
         Line($"| Z-Moves, Max Moves and G-Max Moves | {n.ZMoves} + {n.MaxMoves} + {n.GMaxMoves} | {n.SpecialMovesRun} | 0 | {n.ZMoves + n.MaxMoves + n.GMaxMoves - n.SpecialMovesRun} |");
         Line($"| Platinum's abilities | {n.PlatinumAbilities} | {n.PlatinumAbilitiesRun} | – | {n.PlatinumAbilities - n.PlatinumAbilitiesRun} |");
         Line($"| Abilities of Generations 5–9 | {n.LaterAbilities} | {n.LaterAbilitiesRun} | – | {n.LaterAbilities - n.LaterAbilitiesRun} |");
@@ -198,14 +203,14 @@ public static class Coverage
         Line($"| Items of later games | {n.LaterItems} | {n.LaterItemsFully} | {n.LaterItemsPartly} | {n.LaterItems - n.LaterItemsFully - n.LaterItemsPartly - n.LaterItemsNothingToRun} (and {n.LaterItemsNothingToRun} with nothing to run) |");
         Line();
         Line($"The data has {moves.Count} moves in all. The games number 919 of them, because each of the eighteen type Z-Moves has a physical and a special id; " +
-             $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count}.");
+             $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count - n.OurMoves}, and the {n.OurMoves} moves of our own (plan 06 · R31) make {moves.Count}.");
         Line();
 
         Line("## By generation");
         Line();
         Line("| Generation | Species | Moves | Moves fully run | Moves partly run | Moves that do nothing yet | Abilities | Abilities with an effect |");
         Line("| --- | --- | --- | --- | --- | --- | --- | --- |");
-        foreach (int gen in species.Select(s => s.Generation).Concat(standard.Select(m => m.Generation)).Distinct().Order())
+        foreach (int gen in species.Select(s => s.Generation).Concat(standard.Select(m => m.Generation)).Where(g => g > 0).Distinct().Order())
         {
             var genMoves = standard.Where(m => m.Generation == gen).ToList();
             var genAbilities = abilities.Where(a => a.Generation == gen).ToList();
@@ -213,6 +218,10 @@ public static class Coverage
                  $"{genMoves.Count(m => m.Support == MoveEffectSupport.Partial)} | {genMoves.Count(m => m.Support == MoveEffectSupport.None)} | " +
                  $"{genAbilities.Count} | {genAbilities.Count(a => implementedAbilities.Contains(a.Name))} |");
         }
+        var ourMoves = standard.Where(m => m.Generation == 0).ToList();
+        if (ourMoves.Count > 0)
+            Line($"| Ours | 0 | {ourMoves.Count} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Full)} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Partial)} | " +
+                 $"{ourMoves.Count(m => m.Support == MoveEffectSupport.None)} | 0 | 0 |");
         Line($"| All | {species.Count} | {standard.Count} | {standard.Count(m => m.Support == MoveEffectSupport.Full)} | " +
              $"{standard.Count(m => m.Support == MoveEffectSupport.Partial)} | {standard.Count(m => m.Support == MoveEffectSupport.None)} | " +
              $"{abilities.Count} | {abilities.Count(a => implementedAbilities.Contains(a.Name))} |");
@@ -230,10 +239,15 @@ public static class Coverage
         Line("*Partly run*: the move hits (or its stat change, status or healing happens) but its own effect is missing. " +
              "*Does nothing yet*: using it says \"But nothing happened!\", and trainers only pick it when they have nothing else.");
         Line();
-        Line("| Effect | Support | Moves |");
-        Line("| --- | --- | --- |");
-        foreach (var group in standard.Where(m => m.Effect != null).GroupBy(m => (m.Effect, m.Support))
-                     .OrderByDescending(g => g.Count()).ThenBy(g => g.Key.Effect))
+        // Only what doesn't run in full (until plan 06 · R31 the list named every move with an effect of its own)
+        var toWrite = standard.Where(m => m.Effect != null && m.Support != MoveEffectSupport.Full).ToList();
+        if (toWrite.Count == 0) Line("None: every move's effect runs in full.");
+        else
+        {
+            Line("| Effect | Support | Moves |");
+            Line("| --- | --- | --- |");
+        }
+        foreach (var group in toWrite.GroupBy(m => (m.Effect, m.Support)).OrderByDescending(g => g.Count()).ThenBy(g => g.Key.Effect))
         {
             string support = group.Key.Support == MoveEffectSupport.Partial ? "partly run" : "does nothing yet";
             Line($"| {group.Key.Effect} | {support} | {string.Join(", ", group.Select(m => m.Name))} |");

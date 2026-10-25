@@ -1,6 +1,7 @@
 // Rebuilds species.json, moves.json, abilities.json, items.json and trainers.json in PokemonPlatinumEngine/Data from the Platinum
 // decompilation and PokeAPI, then applies the hand corrections in tools/DataImporter/Overrides and writes the coverage
-// report docs/mechanics/coverage.md. See tools/DataImporter/README.md.
+// report docs/mechanics/coverage.md. The moves of our own past level 100 (plan 06 · R31) are whole rows of
+// Overrides/moves.json, handed out to the learnsets by MovesPastHundred. See tools/DataImporter/README.md.
 //
 //   dotnet run --project tools/DataImporter                         fetch the pinned sources (once) and import everything
 //   dotnet run --project tools/DataImporter -- --decomp <dir> --pokeapi <dir/data/v2/csv>   use existing checkouts
@@ -59,6 +60,9 @@ Console.WriteLine("Species…");
 var importedSpecies = importer.Species();
 importer.AddFormColors(importedSpecies, showdown);
 var species = Overrides.Apply(importedSpecies, Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
+// The moves of our own past level 100 (plan 06 · R31), handed out by their rule after the species' own learnsets
+var pastHundred = MovesPastHundred.Append(species, moves);
+Console.WriteLine($"  moves past 100: {string.Join(", ", pastHundred.Select(c => $"{c.Value} species learn {c.Key}"))} ({pastHundred.Sum(c => c.Key * c.Value)} learnings)");
 Console.WriteLine("Items…");
 var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => e.Item).OfType<string>().ToHashSet();
 var importedItems = importer.Items(evolutionItems, moves);

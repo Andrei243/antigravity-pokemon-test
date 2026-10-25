@@ -58,6 +58,8 @@ public class CoverageTests
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         // The 35 Z-Moves since plan 06 · R21
         AtLeast(35, n.SpecialMovesRun, "Z-Moves and Max Moves run");
+        // The 72 moves of our own past level 100 since plan 06 · R31, every one on machinery the core had
+        AtLeast(72, n.OurMovesFully, "moves of our own fully run");
 
         Assert.True(fallen.Count == 0, "The coverage report got worse:\n" + string.Join("\n", fallen));
     }
@@ -71,9 +73,11 @@ public class CoverageTests
         Assert.Equal(467, n.PlatinumMoves);
         Assert.Equal(380, n.LaterMoves);
         // 35 Z-Moves (one for each of the 18 types, 17 of single species), 19 Max Moves (18 types and Max Guard)
-        // and the 33 G-Max Moves: with the 847 ordinary moves, every move of the main games
+        // and the 33 G-Max Moves: with the 847 ordinary moves, every move of the main games; and the 72 moves of our own
+        // past level 100 (plan 06 · R31), counted apart and never in a number of the games'
         Assert.Equal((35, 19, 33), (n.ZMoves, n.MaxMoves, n.GMaxMoves));
-        Assert.Equal(934, Moves.Count);
+        Assert.Equal(72, n.OurMoves);
+        Assert.Equal(934 + 72, Moves.Count);
         Assert.Equal(Moves.Count, Moves.Select(m => m.Name).Distinct().Count());
 
         var special = Moves.Where(m => m.Kind != MoveKind.Standard).ToList();

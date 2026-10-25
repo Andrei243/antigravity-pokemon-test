@@ -22,7 +22,7 @@ public class RomanianMoveTests
     private const string Romanian = "ro";
 
     /// <summary>How many of the data's moves have a Romanian name and description: raised as they are written, never lowered.</summary>
-    private const int NamedAtLeast = 934;
+    private const int NamedAtLeast = 1006; // with the 72 moves of our own past level 100 (plan 06 · R31)
 
     private static IReadOnlyDictionary<string, string> Names => LocalNames.Section(Romanian, "moves");
     private static IReadOnlyDictionary<string, string> Descriptions => LocalNames.Section(Romanian, "descriptions.moves");
