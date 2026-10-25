@@ -188,6 +188,12 @@ public sealed class FieldState
     /// </summary>
     public bool Inverse { get; internal set; }
 
+    /// <summary>
+    /// An SOS battle's chain (plan 14 · B5): the calls for help answered in this battle so far, which is what the next
+    /// ally's bonus goes by (<see cref="PokemonPlatinumEngine.Overworld.SosChain.Of"/>). Nothing outside the battle keeps it.
+    /// </summary>
+    public int SosChain { get; internal set; }
+
     public bool TrickRoom => TrickRoomTurns > 0;
     public bool Gravity => GravityTurns > 0;
 

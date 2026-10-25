@@ -56,6 +56,9 @@ public sealed class MapArea
     /// <summary>What the air of the place does to its light (plan 01 · M10, part b): a volcano's ash and heat, a temple's cold.</summary>
     public AreaClimate Climate { get; init; }
 
+    /// <summary>Its wild Pokémon may call for help (plan 14 · B5): its overlay's <c>callsForHelp</c>.</summary>
+    public bool CallsForHelp { get; init; }
+
     public Architecture? Architecture { get; set; }
     public BattleArena? Arena { get; set; }
 

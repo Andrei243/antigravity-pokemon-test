@@ -42,7 +42,19 @@ internal static partial class ModernUi
         // The information panel dims the stage under the foes' boxes, which stay bright over it
         if (hud.MenuState == BattleMenuState.Info) Dim(sw, sh, 150);
 
-        if (battle.IsDouble)
+        if (battle.IsSos)
+        {
+            // An SOS battle (plan 14 · B5): the caller and its ally on compact boxes as a double's foes, the player's own as in a single
+            for (int slot = 0; slot < 2; slot++)
+            {
+                var foe = anim[BattleSide.Enemy, slot];
+                float slide = BattleHUD.BoxSlide(anim, foe);
+                if (slide >= 0f) CompactBox(56 + slot * 40 - 720 * slide, 36 + slot * 118, foe, false, false, -0.2f, battle.ShowsCaughtMark(foe.Shown!));
+            }
+            float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
+            if (playerSlide >= 0f && !boxCovered) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+        }
+        else if (battle.IsDouble)
         {
             // Two compact boxes a side: the foes' stacked at the top left, the player's above the menu on the right
             for (int slot = 0; slot < 2; slot++)
@@ -124,7 +136,7 @@ internal static partial class ModernUi
                     MovePick(new Rectangle(sw - 64 - 760, 64, 760, 476), party.Members[battle.BagTarget], hud.BagMoveIndex, Text.Of("battleMenu.useOnWhichMove", ("item", restoring.DisplayName)));
                 break;
             case BattleMenuState.Info:
-                if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble);
+                if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble || battle.IsSos);
                 break;
             case BattleMenuState.Summary:
                 if (battle.SummaryIndex < party.Count)
@@ -543,7 +555,7 @@ internal static partial class ModernUi
         // How each move will do, hung on its card's top edge: one foe's at the right, two foes' as they stand (plan 12 · Q10)
         if (battle.ShowsMoveHints)
         {
-            var left = battle.IsDouble ? battle.EnemySlots.ElementAtOrDefault(1) : null;
+            var left = battle.IsDouble || battle.IsSos ? battle.EnemySlots.ElementAtOrDefault(1) : null;
             // A horde's move cards tell of the first foe still standing; the target menu tells of each (plan 14 · B4)
             var right = battle.IsHorde ? battle.EnemySlots.FirstOrDefault(b => b.IsActive) ?? battle.EnemySlots[0] : battle.EnemySlots[0];
             for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)

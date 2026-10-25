@@ -291,14 +291,15 @@ public sealed partial class BattleCore
     }
 
     /// <summary>A Pokémon takes a place in the middle of things: its line, what lies in wait for it, then what it does on entry.</summary>
-    private void Arrive(Battler place, Pokemon incoming, string line, Baton? baton = null, Action? beforeEntryEffects = null)
+    private void Arrive(Battler place, Pokemon incoming, string line, Baton? baton = null, Action? beforeEntryEffects = null, bool fromBall = true)
     {
         SendIn(place, incoming);
         if (baton != null) TakeUp(place, baton);
         var said = Say(line);
         if (!place.IsPlayerSide) said.With(Seen.Of(incoming));
-        // The line tells what the newcomer brings: a condition it already had, a confusion passed to it (plan 09 · L2)
-        Bringing(said.With(new Entered(place.Place, incoming, FromBall: true)), place);
+        // The line tells what the newcomer brings: a condition it already had, a confusion passed to it (plan 09 · L2).
+        // An ally that answered a call comes out of no ball (plan 14 · B5)
+        Bringing(said.With(new Entered(place.Place, incoming, FromBall: fromBall)), place);
         // A Substitute passed by Baton Pass comes in with the Pokémon it now stands for, on the line that sends it out
         if (baton != null && place.HasSubstitute) said.With(new SubstituteChanged(place.Place, Up: true));
         SentOutTheLast(place, said);

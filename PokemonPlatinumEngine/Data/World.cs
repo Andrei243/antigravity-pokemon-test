@@ -1352,6 +1352,7 @@ public static class WorldMapBuilder
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
             Climate = overlay?.Climate ?? AreaClimate.Temperate,
+            CallsForHelp = overlay?.CallsForHelp ?? false,
             Arena = overlay?.BattleArena,
             BattleBackground = file?.BattleBackground ?? "",
             Kind = file?.Kind ?? "",

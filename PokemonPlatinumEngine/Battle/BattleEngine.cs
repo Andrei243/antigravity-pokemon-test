@@ -61,6 +61,15 @@ public partial class BattleEngine
     /// <summary>A horde (plan 14 · B4): one of the player's against up to five wild Pokémon, on the screen too.</summary>
     public bool IsHorde => Format == BattleFormat.Horde;
 
+    /// <summary>An SOS battle (plan 14 · B5): one wild Pokémon, and an empty place beside it that an ally it calls may fill.</summary>
+    public bool IsSos => Format == BattleFormat.Sos;
+
+    /// <summary>The calls answered in an SOS battle so far, as the lines shown have told (plan 14 · B5).</summary>
+    public int SosChain { get; private set; }
+
+    // The places an ally that answered a call is about to come onto: its entry hops in rather than appearing
+    private readonly HashSet<Place> arriving = new();
+
     /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
@@ -268,6 +277,8 @@ public partial class BattleEngine
 
         // A horde's wild side has its own count of places (plan 14 · B4); a single's and a double's are the same both sides
         Anim.SetSlots(core.PlayerSlots.Count, core.EnemySlots.Count);
+        // An SOS battle's wild Pokémon stands alone in the middle until an ally comes (plan 14 · B5)
+        if (IsSos) Anim.Gather(BattleSide.Enemy);
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
         EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
@@ -575,6 +586,12 @@ public partial class BattleEngine
                     var mode = Cries.SendOutMode(pokemon);
                     After(BattleAnimator.SendOutBallTime + CryDelay, () => AudioManager.PlayCry(pokemon, mode, Pan(entered.Place.Side)));
                 }
+                else if (arriving.Remove(entered.Place))
+                {
+                    // An ally that answered a call hops onto its place, crying as it lands (plan 14 · B5)
+                    Anim.Arrive(entered.Place.Side, pokemon, entered.Place.Slot, Scene);
+                    After(Scene ? BattleAnimator.ArriveTime * 0.6f : 0f, () => AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side)));
+                }
                 else
                 {
                     Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
@@ -589,6 +606,21 @@ public partial class BattleEngine
                     After(sparkle.Lead, () => Sound("shiny", entered.Place.Side));
                 break;
             }
+            case CalledForHelp called:
+                // The caller cries out and hops where it stands (plan 14 · B5); with the scene off it only cries
+                if (At(called.Caller).Pokemon is { } caller)
+                {
+                    if (Scene) Anim.Attack(called.Caller.Side, called.Caller.Slot, MoveCategory.Status);
+                    AudioManager.PlayCry(caller, CryMode.Normal, Pan(called.Caller.Side));
+                }
+                break;
+            case AllyJoined joined:
+                // The rules made the ally: the screen takes it in as it came, and its place is marked for the hop in
+                mirror.Adopt(joined.Pokemon, joined.AsItCame);
+                AudioManager.RequestCries(new[] { joined.AsItCame });
+                arriving.Add(joined.Place);
+                SosChain = joined.Chain;
+                break;
             case CameInWith brought:
                 // Nothing is played for it: the screen's Pokémon has what the newcomer brings, from its line on
                 if (At(brought.Place).Pokemon is { } newcomer) newcomer.Status = brought.Status;

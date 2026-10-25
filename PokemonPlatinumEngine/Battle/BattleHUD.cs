@@ -69,6 +69,8 @@ public class BattleHUD
 
         float t = 1f;
         if (view.SendOutAge >= 0f) t = view.SendOutAge / BoxSlideTime;
+        // An ally that answered a call (plan 14 · B5): its box slides in as it hops on
+        else if (view.ArriveAge >= 0f) t = view.ArriveAge / BoxSlideTime;
         else if (OnTheFoesSide(anim, view) && anim.Time < 1.2f + BoxSlideTime) t = (anim.Time - 1.2f) / BoxSlideTime; // wild Pokémon, after the camera sweep
 
         t = Math.Clamp(t, 0f, 1f);

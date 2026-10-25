@@ -401,3 +401,18 @@ public sealed record MarkChanged(Place Place, MoveMark Mark, bool On) : BattleEv
 /// Complete Forme): on the line that tells of it, beside its <see cref="Reshaped"/>.
 /// </summary>
 public sealed record FormHpChanged(Place Place, int MaxHp, int Hp) : BattleEvent;
+
+/// <summary>
+/// A wild Pokémon of an SOS battle spends its turn calling for help (plan 14 · B5): it rides on the line that says so,
+/// and says whether the call was answered (the ally's own line follows). Whoever shows the battle lets the caller cry
+/// out; the rules change nothing by it.
+/// </summary>
+public sealed record CalledForHelp(Place Caller, bool Answered) : BattleEvent;
+
+/// <summary>
+/// An ally that answered a call comes onto the wild side's empty place (plan 14 · B5). It stands by itself just before
+/// the ally's own line, which carries its <see cref="Entered"/> (not out of a ball). <paramref name="Pokemon"/> is the
+/// rules' own, <paramref name="AsItCame"/> a copy as it came (the rules are a turn ahead of the screen, which shows the
+/// copy), and <paramref name="Chain"/> the calls answered in the battle, this one included.
+/// </summary>
+public sealed record AllyJoined(Place Place, Pokemon Pokemon, Pokemon AsItCame, int Chain) : BattleEvent;

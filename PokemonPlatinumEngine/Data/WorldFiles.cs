@@ -827,6 +827,12 @@ public sealed class WorldOverlayFile
     /// </summary>
     public AreaClimate? Climate { get; set; }
 
+    /// <summary>
+    /// The place's wild Pokémon may call for help (plan 14 · B5; Sun and Moon's SOS battles): each one met alone is fought
+    /// as a <see cref="Battle.BattleFormat.Sos"/>, under rules that have calls. No area of Sinnoh sets it (plan 14, decision 1).
+    /// </summary>
+    public bool? CallsForHelp { get; set; }
+
     public BattleArena? BattleArena { get; set; }
 
     /// <summary>

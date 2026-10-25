@@ -2454,6 +2454,8 @@
     "aMixedHorde": "A horde of wild Pokémon appeared!",
     "defeatedTheHorde": "{player} defeated the wild horde!",
     "thereAreTooManyPokemon": "There are too many Pokémon out! The Ball can't be aimed!",
+    "calledForHelp": "{pokemon} called for help!",
+    "itsHelpDidntAppear": "Its help didn't appear!",
     "letItMoveFirst": "{user}'s {item} let it move first!",
     "wasTransferredTo": "{target}'s {item} was transferred to {user}!",
     "wasHurtBy": "{user} was hurt by {target}'s {item}!",

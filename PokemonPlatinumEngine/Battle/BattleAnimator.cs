@@ -38,6 +38,9 @@ public sealed class CombatantView
 
     /// <summary>Seconds since the send-out began: the ball flies onto the platform, opens, and the Pokémon grows out of it.</summary>
     public float SendOutAge { get; internal set; } = -1f;
+
+    /// <summary>Seconds since an ally that answered a call began its hop onto the place (plan 14 · B5; -1 = none).</summary>
+    public float ArriveAge { get; internal set; } = -1f;
     public float AttackAge { get; internal set; } = -1f;
 
     /// <summary>The kind of move being used, which decides how the attack looks (a strike, a cast or a hop).</summary>
@@ -794,6 +797,43 @@ public sealed class BattleAnimator
         v.Present = true;
     }
 
+    /// <summary>
+    /// An ally that answered a call for help comes onto its place (plan 14 · B5; style guide, "Stage", "An ally answers"):
+    /// it hops in from behind the platform and lands on its place over <see cref="ArriveTime"/>, and the first to come
+    /// opens its side out from one place to two as it lands. With the scene off (<paramref name="hop"/> false) it is there at once.
+    /// </summary>
+    public void Arrive(BattleSide side, Pokemon pokemon, int slot = 0, bool hop = true)
+    {
+        var v = this[side, slot];
+        Reset(v, pokemon);
+        v.Present = true;
+        v.ArriveAge = hop ? 0f : -1f;
+        int s = (int)side;
+        if (spread[s] < 1f && !spreading[s])
+        {
+            spreading[s] = true;
+            if (!hop) spread[s] = 1f;
+        }
+    }
+
+    /// <summary>Seconds of an ally's hop onto its place (plan 14 · B5).</summary>
+    public const float ArriveTime = 0.7f;
+
+    // How far each side is opened out to its places: 1 for every battle but an SOS battle's wild side, which stands as
+    // one place until its first ally comes (plan 14 · B5)
+    private readonly float[] spread = { 1f, 1f };
+    private readonly bool[] spreading = new bool[2];
+
+    /// <summary>How far a side stands opened out to its places (0: all on its one middle place; 1: on their own).</summary>
+    public float Spread(BattleSide side) => spread[(int)side];
+
+    /// <summary>A side stands as one place until an ally comes (<see cref="Arrive"/>): an SOS battle's wild side (plan 14 · B5).</summary>
+    internal void Gather(BattleSide side)
+    {
+        spread[(int)side] = 0f;
+        spreading[(int)side] = false;
+    }
+
     /// <summary>Thrown out of a Poké Ball: the trainer throws it and steps aside, and the Pokémon bursts out as it opens.</summary>
     public void SendOut(BattleSide side, Pokemon pokemon, int slot = 0)
     {
@@ -1192,6 +1232,9 @@ public sealed class BattleAnimator
         }
         FieldLook.Advance(dt);
         Conditions.Advance(dt);
+        // An SOS battle's wild side opens out from one place to two as the first ally comes (plan 14 · B5)
+        for (int side = 0; side < 2; side++)
+            if (spreading[side]) spread[side] = Math.Min(1f, spread[side] + dt / ArriveTime);
         if (Ball != null)
         {
             Ball.Age += dt;
@@ -1206,6 +1249,7 @@ public sealed class BattleAnimator
     private static void Advance(CombatantView v, float dt, Pokemon? logical)
     {
         v.SendOutAge = Tick(v.SendOutAge, dt, SendOutTime);
+        v.ArriveAge = Tick(v.ArriveAge, dt, ArriveTime);
         if (v.Substitute is { } doll)
         {
             doll.Age += dt;
@@ -1269,6 +1313,7 @@ public sealed class BattleAnimator
         v.Shown = pokemon;
         v.Away = false;
         v.SendOutAge = v.AttackAge = v.HitAge = v.FaintAge = v.RecallAge = v.CaptureAge = -1f;
+        v.ArriveAge = -1f;
         v.DodgeAge = v.CheerAge = v.ChargeAge = v.StatAge = -1f;
         v.AwayAge = v.BackAge = v.SpentAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;

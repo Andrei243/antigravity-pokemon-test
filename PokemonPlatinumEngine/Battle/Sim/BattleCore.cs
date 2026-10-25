@@ -698,6 +698,8 @@ public sealed partial class BattleCore : IBattleContext
                     ThrowMud(act.User);
                     break;
                 case ChoiceKind.Fight:
+                    // In an SOS battle a wild Pokémon may spend its turn calling for help (plan 14 · B5)
+                    if (CallsForHelp(act)) break;
                     foreach (var request in ExecuteMove(act)) yield return request;
                     break;
                 case ChoiceKind.Switch:
