@@ -121,7 +121,32 @@
     { "name": "RelicCastle_Ruins4", "matrix": 72, "area": "relic_castle_17", "trees": "Round", "setting": "Cave" },
     { "name": "RelicCastle_Ruins5", "matrix": 73, "area": "relic_castle_19", "trees": "Round", "setting": "Cave" },
     { "name": "RelicCastle_Depths", "matrix": 76, "area": "relic_castle_23", "trees": "Round", "setting": "Cave" },
-    { "name": "PlasmaFrigate", "matrix": 338, "area": "plasma_frigate", "trees": "Round" }
+    { "name": "PlasmaFrigate", "matrix": 338, "area": "plasma_frigate", "trees": "Round" },
+    // Plan 22 · U7, part a: Route 6's Season Research Lab and its house, Mistralton Cave's two floors, Chargestone Cave's three
+    // floors (its mouth on Route 6 and its way out at Mistralton City are overworld areas), Mistralton City's Pokémon
+    // Center, houses, cargo hall and Gym, Route 7's two houses and the Celestial Tower's four floors and its summit
+    { "name": "Route6_SeasonLab", "matrix": 92, "area": "unova_route_6_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route6_House", "matrix": 44, "area": "unova_route_6_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "MistraltonCave", "matrix": 110, "area": "mistralton_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "ChargestoneCave", "matrix": 23, "area": "chargestone_cave_2", "trees": "Round", "setting": "Cave" },
+    { "name": "ChargestoneCave_Heart", "matrix": 24, "area": "chargestone_cave_3", "trees": "Round", "setting": "Cave" },
+    { "name": "ChargestoneCave_Depths", "matrix": 25, "area": "chargestone_cave_4", "trees": "Round", "setting": "Cave" },
+    { "name": "MistraltonCity_PokemonCenter", "matrix": 13, "area": "mistralton_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "MistraltonCity_Greenhouse", "matrix": 46, "area": "mistralton_city_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "MistraltonCity_CargoHall", "matrix": 63, "area": "mistralton_city_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "MistraltonCity_House", "matrix": 46, "area": "mistralton_city_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "MistraltonCity_Gym", "matrix": 62, "area": "mistralton_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route7_House1", "matrix": 44, "area": "unova_route_7_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route7_House2", "matrix": 44, "area": "unova_route_7_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "CelestialTower_1F", "matrix": 185, "area": "celestial_tower_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "CelestialTower_2F", "matrix": 186, "area": "celestial_tower_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "CelestialTower_3F", "matrix": 187, "area": "celestial_tower_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "CelestialTower_4F", "matrix": 188, "area": "celestial_tower_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "CelestialTower_Summit", "matrix": 189, "area": "celestial_tower", "trees": "Round", "setting": "Indoors" },
+    // and Lentimas Town's Pokémon Center and two houses (the town itself is on the overworld; the plane from Mistralton lands there)
+    { "name": "LentimasTown_PokemonCenter", "matrix": 13, "area": "lentimas_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "LentimasTown_House1", "matrix": 263, "area": "lentimas_town_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "LentimasTown_House2", "matrix": 263, "area": "lentimas_town_3", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -145,6 +170,11 @@
     "nimbasa_gate_gate_2", "unova_route_16", "lostlorn_forest", "anville_town", "anville_town_2",
     "anville_town_3", "anville_town_4", "relic_passage", "relic_passage_2", "relic_passage_3", "relic_castle",
     "relic_castle_2", "relic_castle_21", "relic_castle_16", "relic_castle_22", "relic_castle_17", "relic_castle_19",
-    "relic_castle_23", "pwt", "plasma_frigate"
+    "relic_castle_23", "pwt", "plasma_frigate",
+    "unova_route_6", "unova_route_6_2", "unova_route_6_3", "mistralton_cave", "chargestone_cave",
+    "chargestone_cave_2", "chargestone_cave_3", "chargestone_cave_4", "mistralton_city", "mistralton_city_pokemon_center",
+    "mistralton_city_2", "mistralton_city_3", "mistralton_city_4", "mistralton_city_gym", "unova_route_7", "unova_route_7_2",
+    "unova_route_7_3", "celestial_tower_2", "celestial_tower_3", "celestial_tower_4", "celestial_tower_5", "celestial_tower",
+    "lentimas_town", "lentimas_town_pokemon_center", "lentimas_town_2", "lentimas_town_3"
   ]
 }

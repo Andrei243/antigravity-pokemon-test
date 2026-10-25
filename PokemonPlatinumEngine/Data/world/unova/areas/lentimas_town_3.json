@@ -1,0 +1,29 @@
+{
+  "key": "lentimas_town_3",
+  "index": 608,
+  "name": "Lentimas Town",
+  "matrix": 263,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_T_07",
+  "nightMusic": "BGM_SW_T_07",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "lentimas_town", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "lentimas_town", "toWarp": 2 },
+    { "x": 7, "z": 9, "to": "lentimas_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "29", "movement": "look_north_and_south", "x": 11, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "artist", "movement": "look_south_and_east", "x": 3, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "battle_girl", "movement": "none", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

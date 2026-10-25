@@ -1,0 +1,34 @@
+{
+  // Another house on Route 7 (plan 22 · U7, part a): an old man (1) who tells how Landorus quieted Tornadus and Thundurus and shows
+  // the Pokédex all three (unova_route_7_3.txt), two neighbours who talk, and a nursery aide (3) who heals the team
+  "area": "unova_route_7_3",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [
+        "In Unova there's a Pokémon of thunder and another of storms, and they made trouble wherever they went. Then one more came and calmed them."
+      ]
+    },
+    "1": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "script": "LandorusTale",
+      "still": true
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [
+        "I saw them! They looked nothing alike, but they must have been Landorus, Tornadus and Thundurus!"
+      ]
+    },
+    "3": {
+      "name": "Nursery Aide",
+      "npcType": "nurse",
+      "script": "RestForTheTeam",
+      "still": true
+    }
+  }
+}

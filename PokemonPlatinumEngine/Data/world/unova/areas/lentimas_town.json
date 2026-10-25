@@ -1,0 +1,38 @@
+{
+  "key": "lentimas_town",
+  "index": 458,
+  "name": "Lentimas Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_SW_T_07",
+  "nightMusic": "BGM_SW_T_07",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 626, "z": 304, "to": "lentimas_town_2", "toWarp": 0 },
+    { "x": 634, "z": 304, "to": "lentimas_town_pokemon_center", "toWarp": 0 },
+    { "x": 626, "z": 314, "to": "lentimas_town_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "worker_26", "movement": "wander_around", "x": 614, "z": 292, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "3" },
+    { "id": "1", "looks": "131", "movement": "none", "x": 629, "z": 316, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "2", "looks": "105", "movement": "none", "x": 615, "z": 305, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0308", "script": "2" },
+    { "id": "3", "looks": "backpacker_m", "movement": "none", "x": 630, "z": 303, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "4", "looks": "21", "movement": "none", "x": 630, "z": 316, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "5", "looks": "249", "movement": "none", "x": 617, "z": 306, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0309", "script": "2000" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 638, "z": 295, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ba", "item": "Fire Stone", "script": "7110" },
+    { "id": "7", "looks": "76", "movement": "none", "x": 617, "z": 303, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "8" }
+  ],
+  "signs": [
+    { "x": 622, "z": 304, "type": 0, "script": "7" }
+  ],
+  "triggers": [
+    { "x": 624, "z": 295, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x412b", "value": "1" }
+  ]
+}

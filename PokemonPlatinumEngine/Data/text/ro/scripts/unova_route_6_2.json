@@ -1,0 +1,242 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for coming, {player}. I wanted to talk where it's quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you heard about the cold snap near Lacunosa Town? Nobody talks about it, but the records show the air there dropped far below freezing for a moment, and it was no more than a moment."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There were readings almost as low around Castelia City and Driftveil City, too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Add Team Plasma and that ship of theirs, and I don't believe it's a coincidence. Somebody ought to look into it before things get worse. I hate the cold, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, take this. It's a Hidden Machine with Surf in it. Teach it to one of your Pokémon and you can cross the water on its back."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go to the places I mentioned and see what's going on. I'll stay here and go through the lab's records. We'll compare notes."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CherenInTheLab": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry for slowing you down. Strange things may be happening, so be careful out there!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DeerlingGift": [
+    {
+      "en": [
+        "Researcher"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You can see a Deerling of every season in our lab! When it comes to Deerling, we're the experts."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We found an unusually fine one. Would you raise it for us?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Deerling!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It changes coat with the seasons, so you'll see it in a new colour every few months. Take good care of it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Deerling's coat changes with the season, but not what's underneath. Be kind to yours and it will show."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... Well, it'll be here if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your team is full! Make some room, then come back and see me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Forecaster": [
+    {
+      "en": [
+        "Forecaster"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Show me a Pokémon that can change the weather, and I'll give you a Pokémon weather forecast."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear. None of your Pokémon knows a move that changes the weather. Bring me one that does, and you'll get your forecast!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sunny Day! Then expect bright skies: Fire-type moves are stronger by half and Water-type moves weaker by half."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Solar Beam needs no charging, ice can't form, and Thunder and Hurricane are harder to land. Don't forget your sunscreen!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rain Dance! Then expect showers: Water-type moves are stronger by half and Fire-type moves weaker by half."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thunder and Hurricane won't miss, but Solar Beam is slow in the gloom. Don't forget your umbrella!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hail! Then expect a hailstorm: every Pokémon that isn't an Ice type is hurt a little at each turn's end."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blizzard won't miss in it, and Solar Beam is slow. Don't forget your scarf!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sandstorm! Then expect flying sand: every Pokémon that isn't Rock, Ground or Steel is hurt a little at each turn's end."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rock types find their defense raised. Don't forget your goggles!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  // A house on Route 7 (plan 22 · U7, part a): the hiker (0) trades his Gigalith for an Emolga (trade gigalith, Models/NpcTrades.cs),
+  // the two beside him are Pokémon of the house
+  "area": "unova_route_7_2",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "script": "GigalithTrade",
+      "still": true
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [
+        "Watching Pokémon play together makes me really happy."
+      ]
+    },
+    "2": {
+      "name": "Swoobat",
+      "npcType": "Pokemon",
+      "species": "Swoobat",
+      "dialog": [
+        "Swoobat: Fwoo-oo-oosh!"
+      ]
+    },
+    "3": {
+      "name": "Cottonee",
+      "npcType": "Pokemon",
+      "species": "Cottonee",
+      "dialog": [
+        "Cottonee: Cotton, cotton!"
+      ]
+    }
+  }
+}

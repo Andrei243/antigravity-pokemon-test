@@ -1,0 +1,117 @@
+# Mistralton City (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/mistralton_city.s, read for the order alone).
+# VAR_UNOVA_MISTRALTON is the city's count (Black 2's 0x40c2, 0x40c1 and 0x40cb together): 0 as the player first comes up
+# from Chargestone Cave, 1 once Professor Juniper and Skyla have had their say and gone, 2 once the Jet Badge is won,
+# 3 once Juniper is back from the Celestial Tower and waits in the Cargo Service's hall with Skyla, 4 once the flight to
+# Lentimas Town has been taken (mistralton_city_3.txt).
+#
+# As the player comes up the road from the cave our trigger across it (100 to 104, 301, at 0) has Professor Juniper (4)
+# there to meet them, with the Pokédex's thanks in a Master Ball, and Skyla (3) burst in asking for the lift over Twist
+# Mountain the professor promised: Juniper wants to see the Celestial Tower first and goes, and Skyla asks which the
+# player will do before she goes back to her Gym. The kids' treasure (0) is a ball at the runway's edge that a boy
+# in the greenhouse names once the Jet Badge is won (mistralton_city_2.txt); the kids (1, 2) and their Ducklett (8)
+# come as it is picked up and give TM40 (FLAG_UNOVA_GOT_TM40).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script JuniperAndSkyla
+  scene "Professor Juniper and Skyla"
+  place player 103 298 left
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  place 4 101 298 right
+  show 4
+  speaker "Prof. Juniper"
+  say "Hi there, {player}! It's lovely to be able to talk to you in person at last. I'm Professor Juniper!"
+  say "You took the Pokédex and came all the way out here with your partners. Let me see how you are getting on."
+  say "Marvellous! You've met so many Pokémon already. Thank you for your hard work. This is a token of my gratitude."
+  if flag FLAG_UNOVA_GOT_MASTER_BALL goto AfterBall
+  give "Master Ball"
+  setflag FLAG_UNOVA_GOT_MASTER_BALL
+  say "A Master Ball is the most powerful Poké Ball there is. It catches any Pokémon without fail."
+  say "Journeys are about meeting Pokémon, so never let one slip by. Keep the Master Ball for the one you really can't let go."
+label AfterBall
+  say "It still amazes me how much the Pokémon of this region have changed in two years. My research will never end. That's what makes it fun!"
+  speaker "???"
+  say "Professor Juniperrrrr!"
+  place 3 91 298 right
+  clearflag FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  show 3
+  walk 3 right 7 fast
+  face 4 3
+  speaker "Prof. Juniper"
+  say "Why, if it isn't Skyla!"
+  say "{player}, this is Skyla. She's Mistralton City's Gym Leader."
+  speaker "Skyla"
+  say "Why are you so surprised, Professor? You asked for a lift in my plane to cross Twist Mountain, since you can't reach Opelucid City on foot!"
+  speaker "Prof. Juniper"
+  say "Ha ha, you're quite right! But I have a quick favour to ask first. I'd like to have a look at the Celestial Tower. Would you mind waiting until I'm through?"
+  speaker "Skyla"
+  say "Honestly! Okay, but don't take all day!"
+  speaker "Prof. Juniper"
+  say "See you, {player}! Be sure to get along with all kinds of Pokémon!"
+  walk 4 left 8
+  hide 4
+  setflag FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  face 3 player
+  speaker "Skyla"
+  say "Honestly! I can never tell whether she's laid back or just doesn't listen to anything outside her own head."
+  say "So you're {player}? I'm Skyla, Mistralton's Gym Leader, and a pilot besides. Nice to meet you!"
+  say "What's next? Will you come to my Gym and challenge me? Or will you follow the professor to the Celestial Tower and train a little?"
+  say "As long as I get to fly her over Twist Mountain in the end, I don't mind which!"
+  walk 3 left 6 fast
+  hide 3
+  setflag FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  clearflag FLAG_UNOVA_HIDE_SKYLA_GYM
+  setvar VAR_UNOVA_MISTRALTON 1
+  endscene
+  end
+
+
+script SkylaOutside
+  face 3 player
+  speaker "Skyla"
+  say "Are you coming to my Gym? Or to the Celestial Tower? Either is fine by me!"
+  end
+
+
+script JuniperOutside
+  face 4 player
+  speaker "Prof. Juniper"
+  say "Isn't it a marvellous place for research? So much wind! So much sky!"
+  end
+
+
+# The ball at the runway's edge, which the boy in the greenhouse names once the Jet Badge is won
+script RunwayTreasure
+  scene "The kids' treasure"
+  clearflag FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  place 1 72 328 left
+  place 2 72 330 left
+  place 8 73 329 left
+  show 1
+  show 2
+  show 8
+  speaker "Youngster"
+  say "Oh! You found our treasure!"
+  speaker "Girl"
+  say "Found it!"
+  speaker "Youngster"
+  say "Just kidding! Our Ducklett already knows Aerial Ace, so we'll give you this TM instead!"
+  give "TM40"
+  setflag FLAG_UNOVA_GOT_TM40
+  setflag own
+  say "Aerial Ace never misses! We hope it helps you win!"
+  cry "Ducklett"
+  speaker "Girl"
+  say "See you! Bye-bye!"
+  hide 1
+  hide 2
+  hide 8
+  setflag FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  endscene
+  end

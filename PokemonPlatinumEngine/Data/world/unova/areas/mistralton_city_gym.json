@@ -1,0 +1,38 @@
+{
+  "key": "mistralton_city_gym",
+  "index": 108,
+  "name": "Mistralton City",
+  "matrix": 62,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_FLIGHT_GYM_01",
+  "nightMusic": "BGM_FLIGHT_GYM_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 50, "to": "mistralton_city", "toWarp": 2 },
+    { "x": 11, "z": 50, "to": "mistralton_city", "toWarp": 2 },
+    { "x": 12, "z": 50, "to": "mistralton_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pilot", "movement": "none", "x": 20, "z": 33, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 4, "trainer": "sees", "sight": 3, "script": "TRAINER_PILOT_FLYNN" },
+    { "id": "1", "looks": "pilot", "movement": "none", "x": 2, "z": 41, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_PILOT_WINSLOW" },
+    { "id": "2", "looks": "pilot", "movement": "none", "x": 10, "z": 25, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 4, "trainer": "sees", "sight": 4, "script": "TRAINER_PILOT_EWING" },
+    { "id": "3", "looks": "228", "movement": "none", "x": 11, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 10, "hiddenBy": "FLAG_UNOVA_0x03ee", "script": "1" },
+    { "id": "4", "looks": "pilot", "movement": "none", "x": 15, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 2, "trainer": "sees", "sight": 5, "script": "TRAINER_PILOT_CHASE" },
+    { "id": "5", "looks": "187", "movement": "none", "x": 12, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "6", "looks": "pilot", "movement": "wander_west_and_east", "x": 3, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 4, "trainer": "sees", "sight": 1, "script": "TRAINER_PILOT_ELRON" }
+  ],
+  "signs": [
+    { "x": 13, "z": 45, "type": 0, "script": "7" },
+    { "x": 9, "z": 45, "type": 0, "script": "7" }
+  ],
+  "triggers": [
+    { "x": 10, "z": 48, "width": 3, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x409f", "value": "0" }
+  ]
+}

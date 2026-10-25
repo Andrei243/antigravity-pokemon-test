@@ -304,7 +304,9 @@ public enum Architecture
     /// <summary>Red brick under slate-blue gable roofs with a chimney: the port of warehouses, the market and the Cold Storage (Driftveil, plan 22 · U6, part b).</summary>
     Storehouse,
     /// <summary>Weathered boards under rust-red gable roofs with a chimney: the quiet town of the turntable at the end of the Gear Station's line (Anville, plan 22 · U6, part c).</summary>
-    Railyard
+    Railyard,
+    /// <summary>Cream plaster under aviation-orange hip roofs with flower boxes: the airfield town of the runway, the hangars and the greenhouses (Mistralton, plan 22 · U7).</summary>
+    Airfield
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

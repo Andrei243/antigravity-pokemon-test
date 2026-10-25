@@ -363,6 +363,27 @@ public class UnovaTests
     }
 
     [Fact]
+    public void MistraltonCityAndLentimasTownAreOpenWithTheirRoomsSpawnsAndTower()
+    {
+        // (plan 22 · U7, part a) the city of the runway, the cave beyond Chargestone, the Celestial Tower's floors and Lentimas Town
+        foreach (string name in new[] { "Route6_SeasonLab", "MistraltonCave", "ChargestoneCave", "ChargestoneCave_Heart", "ChargestoneCave_Depths",
+                     "MistraltonCity_PokemonCenter", "MistraltonCity_Gym", "MistraltonCity_CargoHall", "CelestialTower_1F", "CelestialTower_Summit",
+                     "LentimasTown_PokemonCenter", "LentimasTown_House1", "LentimasTown_House2" })
+            Assert.True(BuiltMaps.Value.ContainsKey(name), name);
+        // Mistralton and Lentimas have their Pokémon Centers for spawns, and the Gym is a Flying one
+        var spawns = RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns;
+        Assert.Contains(spawns, s => s.Room == "MistraltonCity_PokemonCenter");
+        Assert.Contains(spawns, s => s.Room == "LentimasTown_PokemonCenter");
+        Assert.Equal(PokemonType.Flying, WorldModels.GymTheme("mistralton_city"));
+        // the plane and the crystals are props of their own, and the water's edge a surfer's start
+        Assert.Contains(Overworld.Props, p => p.Type == PropType.Airplane);
+        Assert.Contains(MapNamed("ChargestoneCave").Props, p => p.Type == PropType.ChargeStone);
+        Assert.True(TileBehaviors.IsSurfable(TileBehavior.SurfEdge));
+        // Lentimas Town's airstrip is where the plane lands: open ground on the strip, and its attendant beside it
+        Assert.True(Overworld.IsWalkable(616, 308));
+    }
+
+    [Fact]
     public void RouteFiveCrossesTheDrawbridgeOverTheSeaToDriftveil()
     {
         // Route 5 leads from Nimbasa's west gate to the drawbridge, a map of its own seen with its own camera
@@ -545,7 +566,9 @@ public class UnovaTests
                 // and Driftveil's since part b, the gates at the drawbridge's foot and toward the tournament with them
                 || m.Name.StartsWith("c5_", StringComparison.Ordinal) || m.Name is "rgate" or "wbtgate"
                 // and Anville's and Route 16's gate since part c
-                || m.Name is "tt_house01" or "h5_gate")
+                || m.Name is "tt_house01" or "h5_gate"
+                // and Mistralton's, Route 7's tower and Route 6's lab since plan 22 · U7
+                || m.Name.StartsWith("c6_", StringComparison.Ordinal) || m.Name is "c06_gym" or "r7_toh" or "sikiken" or "t7_house")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

@@ -1,0 +1,48 @@
+{
+  "key": "celestial_tower_4",
+  "index": 340,
+  "name": "Celestial Tower",
+  "matrix": 187,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "33",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_CELESTIAL_TOWER_2",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Litwick", "level": 28 },
+    { "species": "Litwick", "level": 28 },
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Elgyem", "level": 30 },
+    { "species": "Litwick", "level": 31 },
+    { "species": "Golbat", "level": 31 },
+    { "species": "Litwick", "level": 31 },
+    { "species": "Elgyem", "level": 31 },
+    { "species": "Litwick", "level": 31 },
+    { "species": "Elgyem", "level": 31 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 15, "z": 8, "to": "celestial_tower_3", "toWarp": 1 },
+    { "x": 15, "z": 9, "to": "celestial_tower_3", "toWarp": 1 },
+    { "x": 15, "z": 10, "to": "celestial_tower_3", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 12, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b7", "item": "Revive", "script": "7107" },
+    { "id": "1", "looks": "clerk_f", "movement": "none", "x": 17, "z": 22, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0339", "script": "2" },
+    { "id": "2", "looks": "psychic_m", "movement": "none", "x": 18, "z": 17, "facing": 2, "rangeX": 5, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_PSYCHIC_MICKI" },
+    { "id": "3", "looks": "psychic_m", "movement": "look_north_and_south", "x": 23, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_BRYCE" },
+    { "id": "4", "looks": "pokefan_f", "movement": "none", "x": 14, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKEFAN_GEORGIA" },
+    { "id": "5", "looks": "nurse", "movement": "none", "x": 21, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_NURSE_DIXIE" }
+  ],
+  "signs": [],
+  "triggers": []
+}

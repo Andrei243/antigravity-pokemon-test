@@ -1,0 +1,31 @@
+# A greenhouse of Mistralton City (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/mistralton_city_2.s, read for the order alone).
+#
+# The boy (3) tells of the kids' treasure once the Jet Badge is won: he clears FLAG_UNOVA_HIDE_RUNWAY_TREASURE and the
+# ball lies at the runway's edge (mistralton_city.txt) until it is picked up (FLAG_UNOVA_GOT_TM40).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script GreenhouseBoy
+  face 3 player
+  speaker "Boy"
+  if flag FLAG_UNOVA_GOT_TM40 goto Done
+  if not badge jet goto Wait
+  if not flag FLAG_UNOVA_HIDE_RUNWAY_TREASURE goto Told
+  say "Whoa! That's a Jet Badge! You beat Skyla! Okay, I'll tell you something cool: we left our treasure at the edge of the runway!"
+  clearflag FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  say "It's a TM, and it's TM40, Aerial Ace! We hope it's the key to your next win!"
+  end
+label Wait
+  say "If you have a Badge from Mistralton, I'll tell you something cool!"
+  end
+label Told
+  say "Our treasure's at the edge of the runway! Go and get it!"
+  end
+label Done
+  say "Aerial Ace always hits its target! I hope it comes in handy!"
+  end

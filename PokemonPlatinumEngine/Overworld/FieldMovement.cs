@@ -345,7 +345,12 @@ public static class FieldMovement
             return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, PaceOn(here, walker), walker.Mode, Obstacle.None);
         }
 
-        if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
+        // (Black 2's water's edge is blocked to a walker, who meets it as the water it is, and ridden over by a surfer: plan 22 · U7)
+        if (map.IsSolid(nx, ny))
+        {
+            if (there != TileBehavior.SurfEdge) return No(Obstacle.Solid);
+            if (walker.Mode != TravelMode.Surfing) return No(Obstacle.Water);
+        }
         // A gate of the Fortree Gym's that can't be pushed round stands in the way like a rail (plan 21 · H6,
         // CheckForRotatingGatePuzzleCollision, asked after the tile's own collision)
         if (map.Puzzle?.Bars(map, nx, ny, dir) == true) return No(Obstacle.Rail);
@@ -504,8 +509,10 @@ public static class FieldMovement
         if (walker.Mode != TravelMode.OnFoot) return false;
         var (dx, dy) = Delta(dir);
         int nx = x + dx, ny = y + dy;
-        if (!map.InBounds(nx, ny) || map.IsSolid(nx, ny) || map.GetNpcAt(nx, ny) != null) return false;
+        if (!map.InBounds(nx, ny) || map.GetNpcAt(nx, ny) != null) return false;
         var there = map.BehaviourAt(nx, ny);
+        // (Black 2's water's edge is blocked to a walker and is where Surf begins, plan 22 · U7)
+        if (map.IsSolid(nx, ny) && there != TileBehavior.SurfEdge) return false;
         if (!TileBehaviors.IsSurfable(there) || there is TileBehavior.Waterfall or TileBehavior.Whirlpool) return false;
         if (ClosedToward(map.BehaviourAt(x, y), dir) || ClosedToward(there, Opposite(dir))) return false;
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);

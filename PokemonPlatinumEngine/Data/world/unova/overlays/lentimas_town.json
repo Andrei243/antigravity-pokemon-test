@@ -1,0 +1,66 @@
+{
+  // Lentimas Town (plan 22 · U7, part a): Black 2's mountain town under Reversal Mountain with the airstrip Skyla's plane lands on,
+  // our words. As the plane lands (VAR_UNOVA_MISTRALTON 4, VAR_UNOVA_LENTIMAS 0) Professor Juniper (2,
+  // FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS) and Bianca (5, FLAG_UNOVA_HIDE_BIANCA_LENTIMAS) wait on the strip: the professor tells why
+  // she brought the player, Bianca goes on to Reversal Mountain and the professor stays (lentimas_town.txt). The clerk (7) flies
+  // anyone back to Mistralton City
+  "area": "lentimas_town",
+  "bgmTrack": "unova/mistralton",
+  "architecture": "Airfield",
+  "people": {
+    "0": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "From the plane, the view changes with the seasons. Down here the roofs change with the climate. It's a very mixed-up country!"
+      ]
+    },
+    "1": {
+      "name": "Krokorok",
+      "npcType": "Pokemon",
+      "species": "Krokorok",
+      "dialog": [
+        "Krokorok: Rah feh feh!"
+      ]
+    },
+    "2": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "script": "JuniperInLentimas",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS",
+      "still": true
+    },
+    "3": {
+      "name": "Traveller",
+      "npcType": "hiker",
+      "dialog": [
+        "Why am I on a journey? I'm sure I had a reason when I set out. Do you remember exactly why you're travelling?"
+      ]
+    },
+    "4": {
+      "name": "Backpacker",
+      "npcType": "picnicker",
+      "dialog": [
+        "I'm perfectly fine this close to a volcano, thanks to my little Krokorok! It really rocks!"
+      ]
+    },
+    "5": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_LENTIMAS",
+      "still": true,
+      "dialog": [
+        "I'm off to the volcano! See you, {player}!"
+      ]
+    },
+    "7": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "script": "LentimasCargo",
+      "still": true
+    }
+  },
+  "signs": {
+    "7": "Lentimas Town\nWhere rough mountain trails lead"
+  }
+}

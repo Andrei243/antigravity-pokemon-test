@@ -50,6 +50,13 @@ partial class Harness
             ("u58_anville_day", "u59_anville_night", "AnvilleTown", 30, 40, Direction.Up),
             ("u60_relic_castle_day", "u61_relic_castle_night", "RelicCastle", 24, 18, Direction.Up),
             ("u62_pwt_day", "u63_pwt_night", "Unova", 197, 474, Direction.Down),
+            // Plan 22 · U7, part a: Route 6 before the Season Research Lab, Chargestone Cave's first floor, Mistralton City's runway,
+            // Route 7 before the Celestial Tower and Lentimas Town's strip
+            ("u79_route6_day", "u80_route6_night", "Unova", 135, 370, Direction.Up),
+            ("u81_chargestone_day", "u82_chargestone_night", "ChargestoneCave", 11, 47, Direction.Up),
+            ("u83_mistralton_day", "u84_mistralton_night", "Unova", 102, 296, Direction.Right),
+            ("u85_route7_day", "u86_route7_night", "Unova", 107, 235, Direction.Up),
+            ("u87_lentimas_day", "u88_lentimas_night", "Unova", 616, 308, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -106,6 +113,17 @@ partial class Harness
             ("u76_world_tournament_hall", "PokemonWorldTournament", 11, 12, Direction.Up),
             ("u77_anville_plaza", "AnvilleTown", 20, 56, Direction.Up),
             ("u78_driftveil_market", "DriftveilCity_Market", 9, 14, Direction.Up),
+            // plan 22 · U7, part a: the Season Research Lab, Skyla's Gym from its door and its far end, the cargo hall, the Celestial
+            // Tower's ground floor and summit, a house of Route 7 and Mistralton's and Lentimas' Pokémon Centers
+            ("u89_season_lab", "Route6_SeasonLab", 5, 9, Direction.Up),
+            ("u90_skylas_gym_door", "MistraltonCity_Gym", 11, 48, Direction.Up),
+            ("u91_skylas_gym_far", "MistraltonCity_Gym", 11, 8, Direction.Up),
+            ("u92_cargo_hall", "MistraltonCity_CargoHall", 14, 22, Direction.Up),
+            ("u93_celestial_tower_1f", "CelestialTower_1F", 14, 20, Direction.Up),
+            ("u94_celestial_tower_summit", "CelestialTower_Summit", 22, 15, Direction.Right),
+            ("u95_route7_house", "Route7_House1", 4, 8, Direction.Up),
+            ("u96_mistralton_center", "MistraltonCity_PokemonCenter", 7, 18, Direction.Up),
+            ("u97_lentimas_center", "LentimasTown_PokemonCenter", 7, 18, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

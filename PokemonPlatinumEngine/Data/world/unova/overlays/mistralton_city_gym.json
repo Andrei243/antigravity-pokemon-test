@@ -1,0 +1,62 @@
+{
+  // The Mistralton Gym (plan 22 · U7, part a): Black 2's wind-tunnel hangar, our words, built here as a maze of corridors with the
+  // cannons that fling a challenger across them left out. The guide (5) gives Fresh Water at the door; five pilots (0, 1, 2, 4, 6)
+  // stand in the corridors; Skyla (3, FLAG_UNOVA_HIDE_SKYLA_GYM, shown by the scene in Mistralton City) waits on the stage
+  // at the top for the Jet Badge (mistralton_city_gym.txt)
+  "area": "mistralton_city_gym",
+  "bgmTrack": "unova/gym",
+  "arenaType": "Flying",
+  "people": {
+    "0": {
+      "name": "Flynn",
+      "trainer": {
+        "dialogueBefore": "Swoobat flaps like a propeller and heads straight for its target. Brace yourself!",
+        "dialogueAfter": "Turbulence! I lost control."
+      }
+    },
+    "1": {
+      "name": "Winslow",
+      "trainer": {
+        "dialogueBefore": "Sigilyph hovers like a satellite and sees everything. You can't hide from it!",
+        "dialogueAfter": "My radar missed you."
+      }
+    },
+    "2": {
+      "name": "Ewing",
+      "trainer": {
+        "dialogueBefore": "Unfezant flies as fast as the wind. You'll be left behind!",
+        "dialogueAfter": "A crash landing, I suppose."
+      }
+    },
+    "3": {
+      "name": "Skyla",
+      "npcType": "skyla",
+      "script": "Skyla",
+      "hiddenBy": "FLAG_UNOVA_HIDE_SKYLA_GYM",
+      "still": true
+    },
+    "4": {
+      "name": "Chase",
+      "trainer": {
+        "dialogueBefore": "Two flyers, double the trouble! Engines running!",
+        "dialogueAfter": "Engine failure."
+      }
+    },
+    "5": {
+      "name": "Guide",
+      "npcType": "gym_guide",
+      "script": "GymGuide",
+      "still": true
+    },
+    "6": {
+      "name": "Elron",
+      "trainer": {
+        "dialogueBefore": "From the old sky to the new: Archen and Unfezant! Let's see how you handle both.",
+        "dialogueAfter": "Grounded."
+      }
+    }
+  },
+  "signs": {
+    "7": "Mistralton Pokémon Gym\nLeader: Skyla, the high-flying girl"
+  }
+}

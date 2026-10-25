@@ -1,0 +1,314 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "April"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Minccino keeps my house spotless and Deerling keeps my garden pretty. Shall we show you how it's done?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Spotless defeat! I'll go and dust myself off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Nicole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A drizzle, a sunbeam, a gust... Castform wears every kind of weather. Watch it change!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Your skies were clearer than mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Mara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Our teacher says to study the seasons. So I study them in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I need to go over my notes again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Jacques"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Watching a Deerling's coat turn with the seasons is my life's work. Now watch this battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A fascinating result! Unfortunately for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Marissa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A Shelmet and a Karrablast: two Pokémon that change only when they meet. Let's see how you change in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'd like to study how you won that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Tihana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The sun is out, so my Castform is at its best. Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Even Castform's shine wasn't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Alvin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I skipped class to explore the route. Don't tell! Beat me and I'll keep quiet."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ugh, I should have stayed in class."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Richard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rangers watch the whole road. I saw you coming from a mile away!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A ranger beaten fair and square. Well fought!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Rood"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Season Research Lab is the building in the fenced garden. They keep every season in glass cases in there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I met a Ferroseed in Chargestone Cave. All spikes, and cute with it! Don't pat it, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cobalion": {
+      "name": {
+        "en": [
+          "Cobalion"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 6\nThe riverside road to Chargestone Cave"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Trainer Tips\nA Pokémon holding an item can use it at the right moment all by itself. Check what each one is carrying!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Season Research Lab\nWhere the year's four seasons are studied"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

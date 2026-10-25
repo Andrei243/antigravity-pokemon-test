@@ -1,0 +1,50 @@
+{
+  "key": "celestial_tower_3",
+  "index": 339,
+  "name": "Celestial Tower",
+  "matrix": 186,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "33",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_CELESTIAL_TOWER",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Litwick", "level": 27 },
+    { "species": "Litwick", "level": 27 },
+    { "species": "Litwick", "level": 28 },
+    { "species": "Litwick", "level": 28 },
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Litwick", "level": 30 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 17, "z": 22, "to": "celestial_tower_2", "toWarp": 1 },
+    { "x": 17, "z": 23, "to": "celestial_tower_2", "toWarp": 1 },
+    { "x": 17, "z": 24, "to": "celestial_tower_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 7, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b5", "item": "Hyper Potion", "script": "7105" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 24, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b6", "item": "TM61", "script": "7106" },
+    { "id": "2", "looks": "nursery_aide", "movement": "none", "x": 14, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0338", "script": "2" },
+    { "id": "3", "looks": "school_kid_f", "movement": "none", "x": 22, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x033b", "script": "3" },
+    { "id": "4", "looks": "psychic_f", "movement": "look_north_and_east", "x": 12, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_JOYCE" },
+    { "id": "5", "looks": "pokefan_m", "movement": "none", "x": 20, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_POKEFAN_JUDE" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 22, "z": 16, "width": 1, "depth": 3, "script": "4", "variable": "VAR_UNOVA_0x40ef", "value": "0" }
+  ]
+}

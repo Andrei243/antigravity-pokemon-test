@@ -363,6 +363,10 @@
       "note": "first spoken at goldenrod_flower_shop.txt(10)",
       "provisional": true
     },
+    "forecaster": {
+      "note": "first spoken at unova_route_6_2.txt(69)",
+      "provisional": true
+    },
     "foreman": {
       "note": "first spoken at virbank_complex_2.txt(15)",
       "provisional": true
@@ -692,6 +696,10 @@
     "mystery": {
       "note": "Whoever the box calls ???."
     },
+    "n": {
+      "note": "first spoken at chargestone_cave_2.txt(40)",
+      "provisional": true
+    },
     "neighbour": {
       "note": "first spoken at littleroot_town_mays_house_1f.txt(13)",
       "provisional": true
@@ -701,6 +709,14 @@
       "provisional": true
     },
     "norman": {},
+    "nugget_boy": {
+      "note": "first spoken at chargestone_cave_3.txt(38)",
+      "provisional": true
+    },
+    "nugget_man": {
+      "note": "first spoken at chargestone_cave_3.txt(24)",
+      "provisional": true
+    },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
       "provisional": true
@@ -926,6 +942,10 @@
     },
     "skitty": {
       "note": "first spoken at fallarbor_town_mart.txt(5)",
+      "provisional": true
+    },
+    "skyla": {
+      "note": "first spoken at mistralton_city.txt(48)",
       "provisional": true
     },
     "slowbro": {
@@ -1216,6 +1236,7 @@
     "Fleming": "fleming",
     "Flint": "flint",
     "Florist": "florist",
+    "Forecaster": "forecaster",
     "Foreman": "foreman",
     "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
@@ -1317,9 +1338,12 @@
     "Mr. Psychic": "mr_psychic",
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
+    "N": "n",
     "Neighbour": "neighbour",
     "Nikola": "nikola",
     "Norman": "norman",
+    "Nugget Boy": "nugget_boy",
+    "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
     "Officer": "officer",
@@ -1386,6 +1410,7 @@
     "Sidney": "sidney",
     "Sign": "sign",
     "Skitty": "skitty",
+    "Skyla": "skyla",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
     "Station Agent": "station_agent",

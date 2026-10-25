@@ -1,0 +1,47 @@
+# Chargestone Cave's second floor (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/chargestone_cave_3.s, read for the order alone).
+#
+# Bianca (0) is at work here once she has met the player at the cave's mouth (FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+# cleared by chargestone_cave_2.txt). The Nugget man (2) and the Nugget boy (1) each give a Nugget, once
+# (FLAG_UNOVA_GOT_NUGGET_MAN and FLAG_UNOVA_GOT_NUGGET_BOY).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script BiancaAndTynamo
+  face 0 player
+  speaker "Bianca"
+  say "Know what? I'm here because Professor Juniper asked me to be. I'm researching a Pokémon called Tynamo!"
+  say "There aren't very many of them, and they don't look very strong... They must get stronger when they evolve. I'll find out how!"
+  end
+
+
+script NuggetMan
+  face 2 player
+  speaker "Nugget Man"
+  if flag FLAG_UNOVA_GOT_NUGGET_MAN goto Given
+  say "Hi! I'm the Nugget man. Glad you showed up! I'd like you to have this."
+  give "Nugget"
+  setflag FLAG_UNOVA_GOT_NUGGET_MAN
+  say "That's a Nugget! How did it get so golden without being deep-fried? That's a trade secret!"
+  end
+label Given
+  say "Nuggetaboutit! Come back whenever you like."
+  end
+
+
+script NuggetBoy
+  face 1 player
+  speaker "Nugget Boy"
+  if flag FLAG_UNOVA_GOT_NUGGET_BOY goto Given
+  say "And I'm the Nugget boy! Here, I want you to have one, too."
+  give "Nugget"
+  setflag FLAG_UNOVA_GOT_NUGGET_BOY
+  say "Nuggets sell for a lot, but I'd keep it. Shiny things bring good luck!"
+  end
+label Given
+  say "Dad says nothing beats a nugget in the hand."
+  end

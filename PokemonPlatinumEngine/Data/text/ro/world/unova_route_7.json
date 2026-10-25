@@ -1,0 +1,308 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Flo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ducklett and Unfezant: three beautiful birds! Do you have a flying friend of your own?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My birds are ruffled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Marcus"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I raise my Ducklett and Tranquill on seed and sunshine. They don't go down easily!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Those birds have flown the coop."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Greg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My Sunflora likes the sun, and so do I! Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I wasn't ready."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Chrissy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Darumaka is round and red like me when I'm cross! Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'm not cross, I'm just red."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Sola & Ana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're a team, and we battle as one! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twice as nice to lose together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Sola & Ana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're a team, and we battle as one! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twice as nice to lose together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Pat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Baltoy spins and so do I! Care for a turn around the ring?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "That took the wind out of my sails."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Ian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The clown who spins on the spot beats the clown who stands still!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I'm dizzy. And beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Hollie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cleffa and Cinccino keep our nursery tidy and bright. Would you like to see what else they do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Time for a nap."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Cody"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Stoutland leads my team and two Deerling bring up the rear! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I should have asked Stoutland to run away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The walkways up ahead are raised. Stand still on one and the wind will sweep you right off!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 7\nWind sweeps down from the Celestial Tower"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Celestial Tower\nWhere Pokémon go to rest"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Trainer Tips\nA Pokémon much weaker than its foe earns more Experience Points from a win. But the fight is harder!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

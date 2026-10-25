@@ -1,0 +1,90 @@
+{
+  // Route 7 (plan 22 · U7, part a): the windswept road north-east of Mistralton City to the Celestial Tower, Black 2's, our words,
+  // with two houses and a windmill on its high ground. Black 2's call on the Xtransceiver (the trigger at 136, 243) is left out
+  "area": "unova_route_7",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": {
+      "name": "Flo",
+      "trainer": {
+        "dialogueBefore": "Ducklett and Unfezant: three beautiful birds! Do you have a flying friend of your own?",
+        "dialogueAfter": "My birds are ruffled."
+      }
+    },
+    "1": {
+      "name": "Marcus",
+      "trainer": {
+        "dialogueBefore": "I raise my Ducklett and Tranquill on seed and sunshine. They don't go down easily!",
+        "dialogueAfter": "Those birds have flown the coop."
+      }
+    },
+    "2": {
+      "name": "Greg",
+      "trainer": {
+        "dialogueBefore": "My Sunflora likes the sun, and so do I! Battle!",
+        "dialogueAfter": "I wasn't ready."
+      }
+    },
+    "3": {
+      "name": "Chrissy",
+      "trainer": {
+        "dialogueBefore": "Darumaka is round and red like me when I'm cross! Battle!",
+        "dialogueAfter": "I'm not cross, I'm just red."
+      }
+    },
+    "4": {
+      "name": "Sola & Ana",
+      "trainer": {
+        "dialogueBefore": "We're a team, and we battle as one! Ready?",
+        "dialogueAfter": "Twice as nice to lose together."
+      }
+    },
+    "5": {
+      "name": "Sola & Ana",
+      "trainer": {
+        "dialogueBefore": "We're a team, and we battle as one! Ready?",
+        "dialogueAfter": "Twice as nice to lose together."
+      }
+    },
+    "6": {
+      "name": "Pat",
+      "trainer": {
+        "dialogueBefore": "Baltoy spins and so do I! Care for a turn around the ring?",
+        "dialogueAfter": "That took the wind out of my sails."
+      }
+    },
+    "7": {
+      "name": "Ian",
+      "trainer": {
+        "dialogueBefore": "The clown who spins on the spot beats the clown who stands still!",
+        "dialogueAfter": "I'm dizzy. And beaten."
+      }
+    },
+    "8": {
+      "name": "Hollie",
+      "trainer": {
+        "dialogueBefore": "Cleffa and Cinccino keep our nursery tidy and bright. Would you like to see what else they do?",
+        "dialogueAfter": "Time for a nap."
+      }
+    },
+    "13": {
+      "name": "Cody",
+      "trainer": {
+        "dialogueBefore": "Stoutland leads my team and two Deerling bring up the rear! Battle me!",
+        "dialogueAfter": "I should have asked Stoutland to run away."
+      }
+    },
+    "16": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "dialog": [
+        "The walkways up ahead are raised. Stand still on one and the wind will sweep you right off!"
+      ]
+    }
+  },
+  "signs": {
+    "1": "Route 7\nWind sweeps down from the Celestial Tower",
+    "2": "Celestial Tower\nWhere Pokémon go to rest",
+    "3": "Trainer Tips\nA Pokémon much weaker than its foe earns more Experience Points from a win. But the fight is harder!"
+  }
+}

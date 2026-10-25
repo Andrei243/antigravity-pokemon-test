@@ -204,7 +204,8 @@ public class SeasonLayoutTests
             game.TurnTheSeason();
             Assert.Equal(Season.Winter, game.FieldSeason);
             Assert.Equal("Deerling-Winter", deerling.Form);
-            Assert.Null(MapDatabase.Get("Unova").SeasonLaid);
+            // (the winter's own layout is laid since plan 22 · U7: Route 7's drifts are chunks of winter's that spring's lack)
+            Assert.Equal(Season.Winter, MapDatabase.Get("Unova").SeasonLaid);
 
             // In Sinnoh the coat stays what it is, and the moment has no season
             game.Place(MapDatabase.Get("Sinnoh"), 112, 880, Direction.Down);

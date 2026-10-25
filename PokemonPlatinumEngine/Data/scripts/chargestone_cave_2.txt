@@ -1,0 +1,55 @@
+# Chargestone Cave's first floor (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/chargestone_cave_2.s, read for the order alone).
+# VAR_UNOVA_CHARGESTONE is the cave's count (Black 2's 0x40d2 and 0x40d3): 0 as the player first comes in, 1 once Bianca
+# has had her say, 2 once N has gone.
+#
+# As the player comes in from Route 6 our trigger on the first corridor (8 to 11, 50, at 0) lets Bianca (bianca_cave) run
+# up from deeper in with a word of the cave and her errand and go off again; she is then at work on the second floor
+# (chargestone_cave_3.txt). Further along our second trigger (47, 41 to 42, at 1) catches N (11) standing alone in the
+# long corridor: he says what he likes about the place and that he must go, and is gone.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script BiancaAtTheMouth
+  scene "Bianca at Chargestone Cave"
+  clearflag FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  place bianca_cave 11 48 down
+  show bianca_cave
+  speaker "Bianca"
+  say "Heeey! {player}, is that you? Hi there!"
+  walk bianca_cave down 1
+  face bianca_cave player
+  say "Isn't this place something? The whole cave is charged with electricity, and Pokémon just love it."
+  say "The charge jumps from one rock to the next. That's why some of the stones in here glow, and why there are sparks underfoot."
+  say "Oh, that's right! I came here to research something for Professor Juniper. I'd better get back to it. See you, {player}!"
+  walk bianca_cave up 4
+  hide bianca_cave
+  setflag FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  clearflag FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  setvar VAR_UNOVA_CHARGESTONE 1
+  endscene
+  end
+
+
+script NAlone
+  scene "N in Chargestone Cave"
+  speaker "N"
+  say "Chargestone Cave... I like it here. The stones hum, and the Pokémon hum with them."
+  say "Someone could write all of it down in formulas: the charge, the Pokémon, the people. But a formula never asks how a Pokémon feels."
+  say "I have to go. There are Pokémon who need someone to speak for them, and there is a person I must stop."
+  hide 11
+  setflag FLAG_UNOVA_HIDE_N_CHARGESTONE
+  setvar VAR_UNOVA_CHARGESTONE 2
+  endscene
+  end
+
+
+script NInTheCave
+  face 11 player
+  speaker "N"
+  say "Please, let me be. I'm listening to the stones."
+  end

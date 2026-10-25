@@ -1,0 +1,96 @@
+{
+  "BiancaAtTheMouth": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heeey! {player}, is that you? Hi there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Isn't this place something? The whole cave is charged with electricity, and Pokémon just love it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The charge jumps from one rock to the next. That's why some of the stones in here glow, and why there are sparks underfoot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, that's right! I came here to research something for Professor Juniper. I'd better get back to it. See you, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "NAlone": [
+    {
+      "en": [
+        "N"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chargestone Cave... I like it here. The stones hum, and the Pokémon hum with them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Someone could write all of it down in formulas: the charge, the Pokémon, the people. But a formula never asks how a Pokémon feels."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have to go. There are Pokémon who need someone to speak for them, and there is a person I must stop."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "NInTheCave": [
+    {
+      "en": [
+        "N"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, let me be. I'm listening to the stones."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

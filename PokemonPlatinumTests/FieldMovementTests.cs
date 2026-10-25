@@ -329,6 +329,21 @@ public class FieldMovementTests
     }
 
     [Fact]
+    public void BlackTwosWatersEdgeIsBlockedToAWalkerAndWhereSurfBegins()
+    {
+        // (plan 22 · U7) a blocked tile of water whose behaviour is the edge: a walker meets water, a surfer rides over it
+        var map = Pond();
+        map.SetSolid(3, 4, true);
+        map.SetBehaviour(3, 4, TileBehavior.SurfEdge);
+        AssertBlocked(Obstacle.Water, Step(map, 2, 4, East));
+        Assert.True(FieldMovement.CanStartSurf(map, 2, 4, East, new Walker()));
+        AssertMoves(StepKind.Walk, 4, 4, Step(map, 3, 4, East, TravelMode.Surfing));
+        // any other blocked tile of water is still a wall
+        map.SetSolid(5, 4, true);
+        AssertBlocked(Obstacle.Solid, Step(map, 4, 4, East, TravelMode.Surfing));
+    }
+
+    [Fact]
     public void DeepWaterWaitsForSurf()
     {
         var map = Pond();

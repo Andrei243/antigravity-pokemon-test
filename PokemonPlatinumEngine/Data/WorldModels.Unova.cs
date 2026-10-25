@@ -153,7 +153,8 @@ public static partial class WorldModels
         Thing("c5_statue", PropType.Statue, "the statue at the drawbridge's foot in Driftveil City"),
         Thing("c5_box", PropType.Crates, "crates stacked on Driftveil's quay"),
         Thing("wbt_fountain", PropType.Fountain, "the fountain before the World Tournament's hall"),
-        Thing("sikiken", PropType.VendingMachine, "a ticket machine in the street"),
+        // (Black 2's Season Research Lab, on Route 6: the first catalogue took its name for a ticket machine, plan 22 · U7)
+        Built("sikiken", BuildingKind.Lab, "the Season Research Lab on Route 6, in its fenced garden", Architecture.Airfield, sign: "SEASON LAB"),
         // (rooms)
         Furniture("object02", PropType.Statue, "a statue in the Musical Theater's lobby"),
         Furniture("in_vender01", PropType.VendingMachine, "a vending machine"),
@@ -183,6 +184,31 @@ public static partial class WorldModels
         Ground("quicksand", "a sand pit in the Relic Castle's floor, which drops whoever steps on it to the floor below"),
         Thing("d4treasure01", PropType.Crates, "a heap of the Relic Castle's old treasure"),
         Thing("d4treasure02", PropType.Crates, "a heap of the Relic Castle's old treasure"),
+
+        // ---------------------------------------------------------------- Mistralton City (c06_, c6_), Route 6 and 7, Chargestone Cave (d6_) and the Celestial Tower
+        // Plan 22 · U7, part a: Mistralton's way of building (Architecture.Airfield), its runway's planes and control tower
+        // and the greenhouses round it, Route 6's Season Research Lab among the town's houses, Route 7's windmill and
+        // the Celestial Tower, Chargestone Cave's charged crystals and the floors that spark, and the Gym's and the
+        // lab's furnishings
+        Built("c06_gym", BuildingKind.Gym, "Mistralton City's Pokémon Gym, Skyla's, built like a hangar", Architecture.Airfield),
+        Built("c6_house", BuildingKind.House, "a house of Mistralton City, the cargo hall among them", Architecture.Airfield),
+        Built("c6_bhouse", BuildingKind.House, "a greenhouse round Mistralton's runway, where the vegetables for the planes are grown", Architecture.Airfield),
+        Built("c5_house", BuildingKind.House, "a house of Route 6, built like the port's", Architecture.Storehouse),
+        Built("t7_house", BuildingKind.House, "a house of Lentimas Town, built like Mistralton's", Architecture.Airfield),
+        Built("c6_ctower", BuildingKind.Tower, "Mistralton City's control tower", Architecture.Airfield),
+        Built("r7_toh", BuildingKind.Tower, "the Celestial Tower at the end of Route 7, where Pokémon are laid to rest"),
+        Thing("c6_plan", PropType.Airplane, "a small aeroplane on Mistralton's apron or runway"),
+        Thing("c7_windmill", PropType.WindTurbine, "a windmill on the high ground of Route 7"),
+        Thing("drock01", PropType.Boulder, "a rock in Mistralton Cave"),
+        Thing("d6_denkiiwa01", PropType.ChargeStone, "a cluster of charged crystals in Chargestone Cave, which glows"),
+        Ground("d6_yuka_biri02", "a patch of Chargestone Cave's floor that crackles with charge (the ground draws it)"),
+        Ground("d6_yuka_biri03", "a patch of Chargestone Cave's floor that crackles with charge (the ground draws it)"),
+        Ground("d0stair_u01", "stairs up in a cave: the warp's tile is the way"),
+        Ground("d0stair_d01", "stairs down in a cave: the warp's tile is the way"),
+        Furniture("toh_bell01", PropType.Statue, "the great bell at the top of the Celestial Tower"),
+        Furniture("machine_l01", PropType.LabMachine, "a machine of the Season Research Lab"),
+        Furniture("poster01", PropType.Painting, "a poster on a wall"),
+        Furniture("win03", PropType.Window, "a window"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

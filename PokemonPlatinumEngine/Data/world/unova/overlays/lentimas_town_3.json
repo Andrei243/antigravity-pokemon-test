@@ -1,0 +1,28 @@
+{
+  // Another house of Lentimas Town (plan 22 · U7, part a): three people who talk, our words
+  "area": "lentimas_town_3",
+  "bgmTrack": "unova/mistralton",
+  "people": {
+    "0": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [
+        "The volcano has been quiet since I was a boy. Quiet doesn't mean asleep, mind you."
+      ]
+    },
+    "1": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [
+        "The planes are my subject this month. Skyla's, in particular. She poses for nobody and flies for everybody."
+      ]
+    },
+    "2": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "dialog": [
+        "I'd rather have a Pokémon that can take a hit and a Trainer that can take a loss. Lentimas teaches both."
+      ]
+    }
+  }
+}
