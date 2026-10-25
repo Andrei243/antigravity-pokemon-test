@@ -161,6 +161,9 @@ internal static partial class ModernUi
                 var c = new Vector2(r.X + r.Width - 44, r.Y + r.Height / 2f);
                 UiShapes.Circle(c, 18, selected ? Color.White : Red);
                 UiIcons.Draw(UiIcon.Ball, c, 9, selected ? Red : Color.White, selected ? Color.White : Red);
+                // Its footprint before the ball (plan 09 · L9), once made: a list never asks for one
+                if (Footprints.HeldIcon(s.Name) is { } print)
+                    PixelArt(print, new Vector2(r.X + r.Width - 96, r.Y + r.Height / 2f), 2, 0f, selected ? Color.White : Muted);
             }
         }
         ScrollBar(list, dex.FirstRow, PokedexScreen.VisibleRows, rows.Count, top);
@@ -203,6 +206,7 @@ internal static partial class ModernUi
         var disc = new Vector2(detail.X + 44 + 180, detail.Y + 120 + 180);
         BallDisc(disc, 180);
         var still = PixelArtGenerator.GetPokemonSprite(s.Name, isBack: false);
+        bool landed = false;
         if (opening < 0) PixelArt(still, disc, 3, Hop(true) * 3);
         else
         {
@@ -214,8 +218,17 @@ internal static partial class ModernUi
             }
             // The strip is asked for only once the hop has landed: entries walked through with a key held are opened
             // faster than that, and ask for none
-            bool landed = FrameClock.Now - entryOpenedAt >= EntryHopSeconds;
+            landed = FrameClock.Now - entryOpenedAt >= EntryHopSeconds;
             Breathing(still, landed ? PixelArtGenerator.StripOf(s.Name) : null, disc, 3, landed ? 0 : 3 * 3);
+        }
+        // Its footprint, a stamp at the disc's lower right (plan 09 · L9): asked for once the opened entry's hop has
+        // landed, as the strip is, and otherwise shown only once made; none for a species not caught or one that doesn't walk
+        if (owned && (opening >= 0 && landed ? Footprints.Icon(s.Name) : Footprints.HeldIcon(s.Name)) is { } print)
+        {
+            var at = new Vector2(disc.X + 160, disc.Y + 150);
+            var tile = new Rectangle(at.X - 38, at.Y - 38, 76, 76);
+            UiShapes.Shape(tile, 14, Color.White, Color.White, Rule, 3f);
+            PixelArt(print, at, 4, 0f, Ink);
         }
 
         float x = detail.X + 44 + 360 + 44;

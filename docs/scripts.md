@@ -193,6 +193,7 @@ What an `if` can ask:
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
 | `money >= 500`, `facing left`, `boy`, `girl` | |
+| `friendship >= 200` | The friendship of the first of the team that is no Egg (plan 09 · L9; the original's `GetFirstNonEggInParty` and `GetPartyMonFriendship`), 0 to 255; false with no such Pokémon. Dr. Footstep reads his steps with it. |
 | `poketch` | The player has the Pokétch. |
 | `poketchapp MemoPad` | The app is on the Pokétch (the original's `CheckPoketchAppRegistered`). |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |

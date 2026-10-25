@@ -2003,6 +2003,8 @@ public sealed partial class ScriptRunner
             Query.Taken => story.HasTaken(c.Name),
             Query.Starter => story.PlayerStarter == c.Name,
             Query.Money => Condition.Holds(host.Money, c.Compare, c.Number),
+            // The first of the team that is no Egg (plan 09 · L9: Dr. Footstep reads its friendship from its footprints)
+            Query.Friendship => RibbonRules.FirstNonEgg(host.Party) is var lead and >= 0 && Condition.Holds(host.Party.Members[lead].Friendship, c.Compare, c.Number),
             Query.Facing => host.FacingOf(null).ToString() == c.Name,
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,
