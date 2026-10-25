@@ -1310,7 +1310,98 @@ partial class Harness
         ReadTo("learned"); Frames(10); Shot("hs28a_explosion_learned");
         ReadTo(null);
         Lead(lead);
+        // (the Geodude was only lent for the lesson: left in, the team stood at seven)
+        game.Party.Members.RemoveAll(p => p.Species.Name == "Geodude");
         Frames(10); Shot("hs28b_pacifidlog_center_after");
         Shoal("the Explosion tutor");
+
+        // ---- Plan 21 · H9: Wally on Victory Road, the League's guards, the Elite Four, Wallace, the Hall of Fame and
+        // Birch's National Pokédex (hs290 to hs2a9)
+        void League(string what) =>
+            Console.WriteLine($"  {what}: victory road {story.Var("VAR_VICTORY_ROAD_1F_STATE")}, wally beaten {story.Has("FLAG_DEFEATED_WALLY_VICTORY_ROAD")}, "
+                + $"entered {story.Has("FLAG_ENTERED_ELITE_FOUR")}, sidney {story.Has("FLAG_DEFEATED_ELITE_4_SIDNEY")}, phoebe {story.Has("FLAG_DEFEATED_ELITE_4_PHOEBE")}, "
+                + $"glacia {story.Has("FLAG_DEFEATED_ELITE_4_GLACIA")}, drake {story.Has("FLAG_DEFEATED_ELITE_4_DRAKE")}, wallace {story.Has("FLAG_HOENN_DEFEATED_WALLACE")}, "
+                + $"hall of fame {story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag)}, champion {story.Has("FLAG_IS_CHAMPION")}, "
+                + $"exit wally hidden {story.Has("FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY")}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), state {State()}");
+        foreach (string badge in RegionDatabase.Get(RegionDatabase.Hoenn)!.BadgeNames) story.GiveBadge(RegionDatabase.Hoenn, badge);
+
+        // Wally catches the player up in Victory Road's west passage, battles and waits where he stopped
+        StepOnto("HoennVictoryRoad_1F", 2, 23, Direction.Up);
+        ReadTo("I got every Badge too, just like you."); Frames(10); Shot("hs290_wally_on_victory_road");
+        IntoBattle("Wally's battle");
+        ToMainMenu(game.Battle); Shot("hs291_wallys_battle");
+        Win();
+        ReadTo("I lost again..."); Frames(10); Shot("hs292_wally_beaten");
+        ReadTo(null); Frames(20); Shot("hs293_wally_waits");
+        League("Wally on Victory Road");
+
+        // The League's hall: the two guards shoulder to shoulder before the door, the Badges shown, and the two aside
+        story.Unset("FLAG_ENTERED_ELITE_FOUR");
+        ComeThrough("EverGrandeCity_PokemonLeague_1F", 9, 6, Direction.Up); Frames(20); Shot("hs294_the_guards_before_the_door");
+        TalkTo("EverGrandeCity_PokemonLeague_1F", "league_guard_1");
+        ReadTo("Show us your Badges, please."); Frames(10); Shot("hs295_show_us_your_badges");
+        ReadTo("Every one of them!"); Frames(10); Shot("hs296_go_forth");
+        ReadTo(null); Frames(20); Shot("hs297_the_guards_aside");
+        League("the guards");
+
+        // Sidney's room, his battle and his door; then Phoebe, Glacia and Drake
+        ComeThrough("EverGrandeCity_SidneysRoom", 6, 12, Direction.Up); Frames(20); Shot("hs298_sidneys_room");
+        TalkTo("EverGrandeCity_SidneysRoom", "sidney");
+        ReadTo("I'm Sidney of the Elite Four."); Frames(10); Shot("hs299_sidney");
+        IntoBattle("Sidney's battle");
+        ToMainMenu(game.Battle); Shot("hs29a_sidneys_battle");
+        Win();
+        ReadTo("Go on through."); Frames(10); Shot("hs29b_sidneys_door_open");
+        ReadTo(null);
+        League("Sidney beaten");
+        foreach (var (room, who, said, name) in new[]
+                 {
+                     ("EverGrandeCity_PhoebesRoom", "phoebe", "I'm Phoebe of the Elite Four.", "hs29c_phoebe"),
+                     ("EverGrandeCity_GlaciasRoom", "glacia", "I am Glacia of the Elite Four.", "hs29e_glacia"),
+                     ("EverGrandeCity_DrakesRoom", "drake", "I am Drake, the last of the Elite Four.", "hs29g_drake")
+                 })
+        {
+            ComeThrough(room, 6, 12, Direction.Up); Frames(10);
+            TalkTo(room, who);
+            ReadTo(said); Frames(10); Shot(name);
+            IntoBattle(name);
+            ToMainMenu(game.Battle); Shot(name + "_battle");
+            Win();
+            ReadTo(null);
+            League(room);
+        }
+
+        // The Champion's room: up to Wallace, his battle, the rival and the professor, and on to the Hall of Fame
+        ComeThrough("EverGrandeCity_ChampionsRoom", 6, 11, Direction.Up);
+        ReadTo("I am Wallace, the Champion of the Hoenn region."); Frames(10); Shot("hs2a0_wallace");
+        ShotCrop("hs2a0_wallace_native", 640, 300, 640, 360, 2);
+        IntoBattle("Wallace's battle");
+        ToMainMenu(game.Battle); Shot("hs2a1_wallaces_battle");
+        Win();
+        ReadTo("I, the Champion, have been beaten..."); Frames(10); Shot("hs2a2_wallace_beaten");
+        ReadTo("I came to see how my Pokédex was getting along"); Frames(10); Shot("hs2a3_the_rival_and_the_professor");
+        ReadTo("only the new Champion may come through this door"); Frames(10); Shot("hs2a4_wallace_leads_on");
+        for (int i = 0; i < 1500 && game.Map.Name != "EverGrandeCity_HallOfFame"; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        ReadTo("This is the Hall of Fame."); Frames(10); Shot("hs2a5_the_hall_of_fame");
+        ReadTo("Let's record your team."); Frames(10); Shot("hs2a6_lets_record_your_team");
+        for (int i = 0; i < 2400 && State() != GameState.HallOfFameCeremony; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
+        Skip(3.0); Shot("hs2a7_the_teams_entry");
+        League("the Hall of Fame");
+
+        // Home: Birch makes the Pokédex the National one
+        ComeThrough("LittlerootTown_BrendansHouse_2F", 4, 2, Direction.Down); Frames(20); Shot("hs2a8_home_again");
+        TalkTo("LittlerootTown_ProfessorBirchsLab", "birchs_lab_birch");
+        ReadTo("I've upgraded it to the National Pokédex."); Frames(10); Shot("hs2a9_the_national_pokedex");
+        ReadTo(null);
+        League("home");
     }
 }

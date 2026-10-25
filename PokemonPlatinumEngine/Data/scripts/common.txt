@@ -1867,6 +1867,7 @@ script HoennNewGame
   call HoennChapterNine
   call HoennChapterTen
   call HoennChapterEleven
+  call HoennChapterTwelve
   return
 
 
@@ -2160,6 +2161,21 @@ script HoennChapterTen
 script HoennChapterEleven
   setflag FLAG_HOENN_CHAPTER_ELEVEN
   setflag FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_STILL
+  return
+
+
+# What Emerald's new game hides for the twelfth stretch (plan 21 · H9: Ever Grande City and the League): Wally at Victory
+# Road's mouth until his battle and at its far end until the Hall of Fame, the rival and the professor in the Champion's
+# room until Wallace is beaten, and Scott in Ever Grande's Pokémon Center until he is looked for there. No story version
+# is raised: HoennNewGame calls it, and Ever Grande City's, Victory Road's and the Champion's room's arrivals call it for
+# a save that never ran it (FLAG_HOENN_CHAPTER_TWELVE)
+script HoennChapterTwelve
+  setflag FLAG_HOENN_CHAPTER_TWELVE
+  setflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+  setflag FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY
+  setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+  setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+  setflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
   return
 
 
@@ -2619,6 +2635,20 @@ script UnovaCastelia
   setflag FLAG_UNOVA_HIDE_COLRESS_PLAZA
   setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   setflag FLAG_UNOVA_CASTELIA_BEGUN
+  call UnovaNimbasa
+  return
+
+
+# What Unova's Nimbasa chapter hides until its scenes (plan 22 · U6): Hugh and Team Plasma's grunts on the street to
+# Route 5 until the Bolt Badge, and the two young Trainers before the Gear Station, of whom Nimbasa City's arrival shows
+# the one who is the hero the player isn't. UnovaCastelia runs it, for a new game and for a save of part c's
+# (UnovaCatchUp), with no story version raised. It may only set flags and variables, and ends in return.
+script UnovaNimbasa
+  setflag FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  setflag FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  setflag FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  setflag FLAG_UNOVA_HIDE_NATE_NIMBASA
+  setflag FLAG_UNOVA_NIMBASA_BEGUN
   return
 
 
@@ -2650,6 +2680,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_STORY_BEGUN call UnovaNewGame
   if not flag FLAG_UNOVA_VIRBANK_BEGUN call UnovaVirbank
   if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
+  if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

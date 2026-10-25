@@ -248,6 +248,42 @@ public class UnovaTests
     }
 
     [Fact]
+    public void RouteFourLeadsThroughJoinAvenueToNimbasaAndToTheDesertInItsStorm()
+    {
+        // Plan 22 · U6: Route 4's north end leads into Join Avenue, whose north end comes out in Nimbasa City
+        var avenue = MapNamed("JoinAvenue");
+        Assert.True(avenue.IsIndoors);
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "JoinAvenue" && Overworld.AreaAt(w.SourceX, w.SourceY)?.Key == "unova_route_4");
+        Assert.Contains(avenue.Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "nimbasa_city");
+        Assert.Contains(avenue.Warps, w => w.TargetMap == "Unova" && Overworld.AreaAt(w.TargetX, w.TargetY)?.Key == "unova_route_4");
+        // Route 4's trainers stand on the road, the Hooligans two people of one trainer
+        Assert.Equal(2, Overworld.Everyone.Count(n => n.TrainerData?.Id == "unova_hooligans_rob_sal"));
+        Assert.Contains(Overworld.Everyone, n => n.TrainerData?.Id == "unova_policeman_dell");
+        // The Desert Resort's edge and the desert beyond its gate house are in their sandstorm
+        Assert.Equal(FieldWeather.Sandstorm, Overworld.WeatherAt(374, 495));
+        Assert.Equal(FieldWeather.Sandstorm, MapNamed("DesertResort").WeatherAt(50, 50));
+        Assert.Equal(FieldWeather.Clear, Overworld.WeatherAt(430, 560));
+        Assert.Contains(MapNamed("DesertResortGate").Warps, w => w.TargetMap == "DesertResort");
+        Assert.Contains(MapNamed("DesertResort").Everyone, n => n.TrainerData?.Id == "unova_backpacker_walt");
+        // the Relic Castle's door stays shut until plan 22 · U6, part b
+        Assert.DoesNotContain(MapNamed("DesertResort").Warps, w => w.TargetMap.StartsWith("Relic", StringComparison.Ordinal));
+        // Nimbasa City builds its own way, and Elesa's Gym in the amusement park is Electric's
+        Assert.Equal(Architecture.Funfair, Overworld.ArchitectureAt(420, 450));
+        var park = MapNamed("NimbasaCity_AmusementPark");
+        Assert.Contains(park.PlacedBuildings, b => b.Kind == BuildingKind.Gym);
+        Assert.Equal(PokemonType.Electric, WorldModels.GymTheme("nimbasa_city_2"));
+        Assert.Contains(park.Warps, w => w.TargetMap == "NimbasaCity_Gym");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "NimbasaCity_AmusementPark");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "NimbasaCity_PokemonCenter");
+        // Elesa waits on her stage, the three models on the runway below her
+        var gym = MapNamed("NimbasaCity_Gym");
+        Assert.Contains(gym.NPCs, n => n.Name == "Elesa");
+        Assert.Equal(3, gym.NPCs.Count(n => n.NpcType == "beauty"));
+        // and the gates on to Routes 5 and 16 are part b's: nobody walks out of the city to the west or the east
+        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX is 384 or 447 && w.SourceY is >= 437 and <= 439);
+    }
+
+    [Fact]
     public void EveryModelOnUnovasChunksIsInItsCatalogue()
     {
         var unknown = new SortedSet<string>(StringComparer.Ordinal);
@@ -266,7 +302,10 @@ public class UnovaTests
         {
             if (m.Name.StartsWith("c12_", StringComparison.Ordinal) || m.Name.StartsWith("t06_", StringComparison.Ordinal)
                 || m.Name.StartsWith("c13_", StringComparison.Ordinal) || m.Name.StartsWith("c03_", StringComparison.Ordinal)
-                || m.Name.StartsWith("c3_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool")
+                || m.Name.StartsWith("c3_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool"
+                // Route 4's flats, Join Avenue's gate and Nimbasa's since plan 22 · U6 (its Ferris wheel a hall until part b)
+                || m.Name.StartsWith("c04", StringComparison.Ordinal) && m.Name != "c04_fwheel"
+                || m.Name is "r4_build" or "buill" or "jagate" or "c4_gate" or "thouse")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

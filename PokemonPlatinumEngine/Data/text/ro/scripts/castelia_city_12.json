@@ -5,7 +5,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Here's the way down into the sewers! Pretty suspicious, don't you think? Nobody would ever look down there."
       ],
       "text": [
-        ""
+        "Iată drumul în canalizare! Destul de suspect, nu crezi? Nimeni nu s-ar uita vreodată acolo jos."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}! Did you find Team Plasma?!"
       ],
       "text": [
-        ""
+        "{player}! Ai găsit Team Plasma?!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Huh... Thanks for looking, anyway."
       ],
       "text": [
-        ""
+        "Hm... Mulțumesc totuși că ai căutat."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I knew it! Those rotten Pokémon thieves!"
       ],
       "text": [
-        ""
+        "Știam eu! Hoții ăia de Pokémoni!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Then the only place I haven't checked yet is... the sewers! {player}, give me a hand down there!"
       ],
       "text": [
-        ""
+        "Atunci singurul loc pe care nu l-am verificat încă e... canalizarea! {player}, dă-mi o mână de ajutor acolo jos!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Right! The sewers are the perfect place to hide. Go on, catch up with him!"
       ],
       "text": [
-        ""
+        "Așa! Canalizarea e locul perfect de ascuns. Du-te, prinde-l din urmă!"
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "There you are! Your friend came back up looking really cross. Did everything go all right down there?"
       ],
       "text": [
-        ""
+        "Iată-te! Prietenul tău s-a întors sus foarte supărat. A mers totul bine acolo jos?"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "So what now? You met Burgh in the sewers, didn't you? Then you should go and challenge his Gym. See how strong you've got!"
       ],
       "text": [
-        ""
+        "Și acum? L-ai întâlnit pe Burgh în canalizare, nu? Atunci du-te și provoacă-i Arena. Vezi cât de puternic ești!"
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Iris"
       ],
       "text": [
-        ""
+        "Iris"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "The sewers are the perfect place to hide. Hurry, before your friend runs into trouble on his own!"
       ],
       "text": [
-        ""
+        "Canalizarea e locul perfect de ascuns. Grăbește-te, înainte ca prietenul tău să dea de belele singur!"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Burgh's back in his Gym on Gym Street. Go and show him what you can do!"
       ],
       "text": [
-        ""
+        "Burgh s-a întors în Arena lui de pe Strada Arenei. Du-te și arată-i ce poți!"
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Worker"
       ],
       "text": [
-        ""
+        "Muncitorul"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "The sewers? Go on down if you must, but mind the wild Pokémon. Some Trainers go down there on purpose to train!"
       ],
       "text": [
-        ""
+        "Canalizarea? Coboară dacă trebuie, dar ai grijă la Pokémonii sălbatici. Unii Antrenori coboară acolo special ca să se antreneze!"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "With the tide high, the sewers sometimes flood. It changes with the season, they say."
       ],
       "text": [
-        ""
+        "Când mareea e mare, canalizarea se inundă uneori. Se schimbă cu anotimpul, se spune."
       ]
     }
   ]

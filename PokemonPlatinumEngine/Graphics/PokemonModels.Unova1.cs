@@ -1045,13 +1045,17 @@ internal static partial class PokemonModels
     }
 
     /// <summary>Unfezant: a proud dark-grey pheasant, a green chest, a long pink plume curling down from its head and a broad banded tail.</summary>
-    private static PokeBuilder Unfezant()
+    /// <param name="female">
+    /// A female (plan 09 · L8): plainer and browner, a brown hen with a paler breast, no pink wattles round her eyes
+    /// and a short brown tuft where the male's long pink plume curls.
+    /// </param>
+    private static PokeBuilder Unfezant(bool female = false)
     {
         var b = new PokeBuilder("Unfezant", 0.9f, BodyPlan.Bird, V(0, 0.36f, 0)) { Coat = Fur };
-        var gray = Rgb(90, 90, 100);
-        var green = Rgb(80, 150, 100);
+        var gray = female ? Rgb(126, 100, 80) : Rgb(90, 90, 100);
+        var green = female ? Rgb(184, 156, 122) : Rgb(80, 150, 100);
         var pink = Rgb(220, 90, 120);
-        var pale = Rgb(170, 170, 180);
+        var pale = female ? Rgb(206, 186, 156) : Rgb(170, 170, 180);
         PokeBuilder.Both(s =>
         {
             int leg = b.Leg(s, V(0.04f * s, 0.24f, 0.01f));
@@ -1082,8 +1086,13 @@ internal static partial class PokemonModels
         b.Limb(head, V(0, 0.4f, 0.06f), c, 0.035f, 0.03f, gray);
         b.Ell(head, c, r, gray);
         b.Spike(head, c + V(0, -0.005f, 0.045f), c + V(0, -0.02f, 0.1f), 0.014f, Rgb(240, 200, 80), 0.7f, Shell);
-        PokeBuilder.Both(s => b.PaintEll(head, c + V(0.035f * s, 0.0f, 0.02f), V(0.025f, 0.02f, 0.02f), pink));
-        b.Tube(head, Smooth(3, c + V(0, 0.04f, -0.02f), c + V(0, 0.14f, -0.04f), c + V(0, 0.16f, 0.06f), c + V(0, 0.06f, 0.1f), c + V(0, -0.02f, 0.06f)), 0.016f, 0.01f, pink, blend: 0f);
+        if (female)
+            b.Tube(head, Smooth(3, c + V(0, 0.04f, -0.02f), c + V(0, 0.1f, -0.04f), c + V(0, 0.115f, -0.08f)), 0.015f, 0.008f, gray, blend: 0f);
+        else
+        {
+            PokeBuilder.Both(s => b.PaintEll(head, c + V(0.035f * s, 0.0f, 0.02f), V(0.025f, 0.02f, 0.02f), pink));
+            b.Tube(head, Smooth(3, c + V(0, 0.04f, -0.02f), c + V(0, 0.14f, -0.04f), c + V(0, 0.16f, 0.06f), c + V(0, 0.06f, 0.1f), c + V(0, -0.02f, 0.06f)), 0.016f, 0.01f, pink, blend: 0f);
+        }
         PokeBuilder.Both(s =>
         {
             var at = On(c, r, 0.03f * s, c.Y + 0.005f);

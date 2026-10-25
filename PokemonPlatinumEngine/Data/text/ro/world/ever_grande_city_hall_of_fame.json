@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hall of Fame"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hall_of_fame_wallace": {
+      "name": {
+        "en": [
+          "Wallace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wallace: You've earned your place here, {player}."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

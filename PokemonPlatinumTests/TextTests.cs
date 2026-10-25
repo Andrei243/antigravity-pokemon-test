@@ -235,7 +235,7 @@ public class TextTests
         // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
         ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant", "Rival:" },
         // What the tests hear of a cry, never on screen
-        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}", "cry {name} shaped {shape.Clamped().Key}" },
+        ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}", "cry {name} shaped {shape.Clamped().Key}", "music {song.Id}{(night ? ", ")}{(lowHp ? ", "bed {b}" },
         // Plan 17 · N2. The Pokémon the professor shows, the looks he and the rival are drawn as, and the ball's art
         ["UI/IntroScreen.cs"] = new[] { "Buneary", "RIVAL", "ROWAN", "Poké Ball" },
         // The keyboard's case key, which shows the letters it turns to (plan 17 · N5 gives each language its keyboard)

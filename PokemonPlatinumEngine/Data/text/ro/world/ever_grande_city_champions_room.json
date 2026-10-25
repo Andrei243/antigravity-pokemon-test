@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon League"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "champions_room_wallace": {
+      "name": {
+        "en": [
+          "Wallace"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "champions_room_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "champions_room_birch": {
+      "name": {
+        "en": [
+          "Prof. Birch"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

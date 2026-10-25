@@ -342,16 +342,30 @@ public partial class FinalInteriorTests
     }
 
     [Fact]
-    public void TheMoveRelearnerAndTheNameRaterSayWhatTheyDoAndTakeNothing()
+    public void TheMoveRelearnerAsksForAHeartScaleAndTheNameRaterSaysWhatHeDoes()
     {
-        // Their rules are plan 12 · Q19's (Models/Relearning.cs) and plan 13 · V4's (the naming prompt)
+        // The relearner's rule is plan 12 · Q19's (Models/Relearning.cs, plan 20 · J13 part c's `tutor remember`); the
+        // Name Rater's is plan 13 · V4's (the naming prompt)
         var without = Run("Relearner", "PastoriaCityEastHouse", new HeadlessScriptHost());
         Assert.Contains("Heart Scale", Said(without));
+        Assert.Empty(without.Asked);
+        // Declined, the scale stays; accepted, the Pokémon remembers the move picked and the scale goes
         var with = new HeadlessScriptHost();
         with.Bag.AddItem(ItemDatabase.Get("Heart Scale")!, 1);
+        with.Answers.Enqueue(1);
         Run("Relearner", "PastoriaCityEastHouse", with);
         Assert.Equal(1, Have(with, "Heart Scale"));
-        Assert.NotEqual(Said(without), Said(with));
+        var pupil = Mon("Bidoof", 30);
+        pupil.Moves.Clear();
+        pupil.Moves.Add(MoveDatabase.Create("Tackle"));
+        var slipped = PokemonPlatinumEngine.Models.Relearning.MovesFor(pupil)[0];
+        with.Party.Add(pupil);
+        with.PokemonChoice = 0;
+        with.Answers.Enqueue(0);
+        with.Answers.Enqueue(0);
+        Run("Relearner", "PastoriaCityEastHouse", with);
+        Assert.True(pupil.Knows(slipped), Said(with));
+        Assert.Equal(0, Have(with, "Heart Scale"));
 
         var rater = Room("EternaCondominiums1F").Everyone.Single(n => n.Key == "expert_m");
         Assert.Equal(("Name Rater", "NameRater"), (rater.Name, rater.Script));

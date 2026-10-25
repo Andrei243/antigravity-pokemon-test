@@ -308,6 +308,11 @@
       "value": "Open",
       "help": "See every key and button, change any of them, and put them back as they were."
     },
+    "jukebox": {
+      "label": "Jukebox",
+      "value": "Open",
+      "help": "Play any song the game has played for you, and every sound effect, cry and ambient sound in it."
+    },
     "help": {
       "label": "Help",
       "value": "Open",
@@ -329,6 +334,7 @@
       "delete": "DELETE A SAVE",
       "deleteWhich": "DELETE WHICH SAVE?",
       "migrate": "MIGRATE",
+      "jukebox": "JUKEBOX",
       "options": "OPTIONS",
       "quit": "QUIT"
     },
@@ -2046,6 +2052,7 @@
     "notHere": "The Bicycle can't be ridden here."
   },
   "itemUse": {
+    "levelCapped": "{name} can't grow past Lv. {level} yet.",
     "statsGrew": "{name}'s base stats grew from the {item}.",
     "friendlier": "{name} grew friendlier, and its base stats came down a little.",
     "woke": "{name} woke up.",
@@ -2275,6 +2282,7 @@
     "gainedABoostedExp": "{pokemon} gained a boosted {exp} EXP. Points!",
     "gainedExpPoints": "{pokemon} gained {exp} EXP. Points!",
     "grewToLv": "{pokemon} grew to Lv. {level}!",
+    "levelCapped": "{pokemon} can't grow past Lv. {level} yet.",
     "learned": "{pokemon} learned {move}!",
     "fellForTheFeint": "{target} fell for the feint!",
     "itShatteredTheBarrier": "It shattered the barrier!",
@@ -3569,6 +3577,7 @@
     "whichPiece": "Which piece will it be?",
     "whichMove": "Which move should {pokemon} be taught?",
     "whichForgotten": "Which move should be forgotten?",
+    "whichRemembered": "Which move should {pokemon} remember?",
     "knowsFour": "{pokemon} knows four moves already. Which is to make room for {move}?",
     "moveRow": "{move}   {price}",
     "tmRow": "{item} {move}",
@@ -3666,6 +3675,67 @@
     "on": "on {place}",
     "at": "at {place}",
     "in": "in {place}"
+  },
+  "jukebox": {
+    "title": "JUKEBOX",
+    "locked": "???",
+    "lockedNote": "You have not heard this song yet. Play on, and it will be here.",
+    "count": "{n} of {total}",
+    "length": "Plays once, {time}",
+    "lengthLoops": "Loops, {time} a round",
+    "arrangements": "ARRANGEMENTS",
+    "cryOf": "THE CRY OF",
+    "cryNumber": "No. {n}",
+    "keys": { "shoulders": "Q / E" },
+    "tab": { "songs": "SONGS", "sounds": "SOUNDS", "cries": "CRIES", "beds": "AMBIENCE" },
+    "hint": { "tab": "Tab", "arrangement": "Arrangement", "species": "Species" },
+    "arrangement": { "Day": "DAY", "Night": "NIGHT", "LowHp": "LOW HP" },
+    "group": { "Menu": "MENU", "Field": "FIELD", "Battle": "BATTLE", "Move": "MOVE" },
+    "cry": {
+      "Normal": "Normal",
+      "Half": "Half",
+      "FieldEvent": "Field event",
+      "Faint": "Fainting",
+      "Pinch": "In a pinch",
+      "PinchHalf": "In a pinch, half",
+      "Pokedex": "Pokédex",
+      "Uproar1": "Growl, first",
+      "Uproar2": "Growl, second",
+      "Howl1": "Roar, first",
+      "Howl2": "Roar, second",
+      "HyperVoice1": "Hyper Voice, first",
+      "HyperVoice2": "Hyper Voice, second",
+      "MidMove": "Howl"
+    },
+    "cryNote": {
+      "Normal": "As it is: a send-out, a wild Pokémon appearing, the summary, an evolution.",
+      "Half": "A third of a second, fading over its last sixth.",
+      "FieldEvent": "A Pokémon met in the field by a scene: a semitone higher, with a detuned echo beside it.",
+      "Faint": "Fainting: lower and slower.",
+      "Pinch": "Sent out in a pinch, with a condition or a bar that is not green: a little lower.",
+      "PinchHalf": "The short cry of a Pokémon in a pinch.",
+      "Pokedex": "The cry in the Pokédex's entry.",
+      "Uproar1": "The first cry of Growl-like moves: lower, rumbling.",
+      "Uproar2": "The second, as the first ends: a little lower, cut short.",
+      "Howl1": "The first cry of Roar-like moves: low, slow and ringing out.",
+      "Howl2": "The second: a little higher, with a louder ring.",
+      "HyperVoice1": "The first cry of Hyper Voice: higher, doubled a fifth above.",
+      "HyperVoice2": "The second: higher still, doubled and ringing, cut short.",
+      "MidMove": "The cry of Howl, drawn out by a long echo."
+    },
+    "bed": {
+      "Rain": "Rain",
+      "HeavyRain": "Heavy rain",
+      "Hail": "Hail",
+      "Wind": "Wind",
+      "Blizzard": "Blizzard",
+      "Sandstorm": "Sandstorm",
+      "Waterfall": "Waterfall",
+      "River": "River",
+      "Waves": "Waves",
+      "Cave": "Cave",
+      "Underwater": "Under the sea"
+    }
   },
   "places": {
   }

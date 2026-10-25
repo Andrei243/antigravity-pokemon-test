@@ -30,6 +30,12 @@
     { "species": "Zubat", "level": 4, "day": "Rattata" }
   ],
   "landRate": 25,
+  "swarm": [
+    "Bellsprout",
+    "Bellsprout"
+  ],
+  "surfSwarm": "Tentacool",
+  "fishSwarm": "Qwilfish",
   "water": [
     { "species": "Tentacool", "level": 10, "maxLevel": 20 },
     { "species": "Quagsire", "level": 15, "maxLevel": 25 },

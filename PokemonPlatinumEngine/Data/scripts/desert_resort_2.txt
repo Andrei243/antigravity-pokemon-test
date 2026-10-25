@@ -1,0 +1,17 @@
+# The Desert Resort (plan 22 · U6). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/desert_resort_2.s, read for the order alone).
+#
+# The archaeologist (0) tells of the Relic Castle and gives Soft Sand once (FLAG_UNOVA_GOT_SOFT_SAND).
+
+
+script SoftSand
+  face 0 player
+  speaker "Archaeologist"
+  if flag FLAG_UNOVA_GOT_SOFT_SAND goto Given
+  say "They say the Relic Castle was a city once, built long ago by a hero and the dragon Pokémon at his side."
+  say "Now the sand has nearly swallowed it. Here, take a little of the desert with you."
+  give "Soft Sand"
+  setflag FLAG_UNOVA_GOT_SOFT_SAND
+label Given
+  say "A Pokémon that holds Soft Sand hits harder with Ground-type moves. Fitting, for a place like this!"
+  end

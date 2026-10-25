@@ -30,6 +30,10 @@
     { "species": "Raticate", "level": 15 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Rattata",
+    "Rattata"
+  ],
   "hoennSounds": [
     "Zigzagoon",
     "Spinda"

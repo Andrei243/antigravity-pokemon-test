@@ -426,6 +426,17 @@ public sealed class Bw2World
         return file;
     }
 
+    /// <summary>
+    /// The weather a zone's header names, as the game's area files name it (<see cref="Weathers.Of"/>; plan 22 · U6):
+    /// Black 2's 3 is the sandstorm over the Desert Resort's edge, 12 the thicker one of the desert itself, both a
+    /// sandstorm here; any other number is written as it is, and reads as clear.
+    /// </summary>
+    public static string WeatherName(int weather) => weather switch
+    {
+        3 or 12 => "Sandstorm",
+        _ => weather.ToString(CultureInfo.InvariantCulture)
+    };
+
     /// <summary>The battle background a zone names, as the game's area files name them (<c>GameEngine.TerrainAt</c>); empty for one that says nothing more than the ground.</summary>
     public static string BattleBackground(int background) => background switch
     {
@@ -462,7 +473,7 @@ public sealed class Bw2World
                 Renders.Setting.Indoors => "None",
                 _ => key.EndsWith("_city", StringComparison.Ordinal) ? "City" : key.EndsWith("_town", StringComparison.Ordinal) ? "Town" : key.Contains("route_", StringComparison.Ordinal) ? "Route" : "None"
             },
-            Weather = zone.Weather.ToString(CultureInfo.InvariantCulture),
+            Weather = WeatherName(zone.Weather),
             Camera = zone.Camera.ToString(CultureInfo.InvariantCulture),
             BattleBackground = BattleBackground(zone.BattleBackground),
             DayMusic = zone.Music is { } music && music.StartsWith("SEQ_", StringComparison.Ordinal) ? music["SEQ_".Length..] : zone.Music ?? "",
@@ -525,7 +536,8 @@ public sealed class Bw2World
 
         foreach (var b in ev.Signs)
         {
-            if (b.Condition == Bw2Events.Read)
+            // (a sign of the other condition outdoors alone: indoors it is a gate house's news board, plan 22 · U6)
+            if (b.Condition == Bw2Events.Read || b.Condition == Bw2Events.ReadToo && setting != Renders.Setting.Indoors)
                 file.Signs.Add(new AreaSign { X = b.X, Z = b.Z, Type = AreaSign.Read, Script = b.Script.ToString(CultureInfo.InvariantCulture) });
             else if (b.Condition == Bw2Events.Hidden && b.Script >= Bw2Events.HiddenItems && hidden.TryGetValue(b.Script - Bw2Events.HiddenItems, out var h)
                      && h.TryGetValue(0x8000, out int item))

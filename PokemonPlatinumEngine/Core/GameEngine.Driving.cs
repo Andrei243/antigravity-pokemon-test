@@ -265,6 +265,8 @@ public partial class GameEngine
 
         /// <summary>The ways to play this game was begun with (plan 13 · V1).</summary>
         public Models.RunRules Run => game.flow.Run;
+        /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none.</summary>
+        public int? LevelCap => game.CurrentLevelCap();
         /// <summary>
         /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
         /// run left in its folder sets it.
@@ -292,6 +294,10 @@ public partial class GameEngine
         public void OfferMigration() => game.OfferMigration();
         /// <summary>Opens the migration as the title's MIGRATE does.</summary>
         public void OpenMigrate() => game.OpenMigrate();
+        /// <summary>The jukebox (plan 12 · Q15), and opening it as the title (or the options) does.</summary>
+        public JukeboxScreen Jukebox => game.flow.JukeboxScreen;
+        public void OpenJukebox(GameState returnTo) => game.OpenJukebox(returnTo);
+        public void CloseJukebox() => game.CloseJukebox();
         /// <summary>The last recording watched broke off before its end (its answers ran out or were refused).</summary>
         public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>

@@ -6667,6 +6667,12 @@ way 1, from answer 1
   Dragon Tamer> Well, should you change your mind, do come back.
   ? Would you have me teach it to one of your Pokémon? = No
   + FLAG_TALKED_TO_BLACKTHORN_DRAGON_TAMER
+=== blackthorn_move_tutor_house.Relearner
+from Move Relearner at 3,4 of Blackthorn_MoveTutorHouse
+way -
+  Move Relearner> Ah, a young Trainer! I can help a Pokémon remember a move it has forgotten along the way.
+  Move Relearner> All I ask in return is a Heart Scale.
+  Move Relearner> No Heart Scale, no remembering. Come back when you have found one.
 === burned_tower_1f.Eusine
 from the trigger at 19,23 of BurnedTower_1F
 way -
@@ -9229,6 +9235,15 @@ way -
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
   + FLAG_HIDE_SLATEPORT_CITY_SCOTT
   + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
+=== common.HoennChapterTwelve
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+  + FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+  + FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  + FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+  + FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY
+  + FLAG_HOENN_CHAPTER_TWELVE
 === common.HoennChapterTwo
 from a trainer with lines of their own
 way -
@@ -9263,6 +9278,9 @@ way -
 === common.HoennNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+  + FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+  + FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
   + FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
   + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
   + FLAG_HIDE_LANETTES_HOUSE_LANETTE
@@ -9383,6 +9401,8 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+  + FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
+  + FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY
   + FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
   + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
@@ -9394,6 +9414,7 @@ way -
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_TWELVE
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -10122,15 +10143,20 @@ way -
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaCatchUp
 from a trainer with lines of their own
 way -
@@ -10148,6 +10174,7 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
@@ -10157,14 +10184,18 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
   = VAR_UNOVA_ASPERTIA 0 -> 7
@@ -10183,6 +10214,7 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
@@ -10192,16 +10224,28 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
+=== common.UnovaNimbasa
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
 way -
@@ -10225,6 +10269,7 @@ way -
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -10232,12 +10277,16 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
 from an obstacle, with every field move and every badge
@@ -10364,6 +10413,16 @@ way -
 from a trainer with lines of their own
 way -
   > The water spins round and round. It's too strong to cross.
+=== desert_resort_2.SoftSand
+from Archaeologist at 75,48 of DesertResort
+way -
+  Archaeologist> They say the Relic Castle was a city once, built long ago by a hero and the dragon Pokémon at his side.
+  Archaeologist> Now the sand has nearly swallowed it. Here, take a little of the desert with you.
+  > Lucas received the Soft Sand!
+  > Lucas put it away in the Items pocket.
+  Archaeologist> A Pokémon that holds Soft Sand hits harder with Ground-type moves. Fitting, for a place like this!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_SOFT_SAND
 === dewford_town.Briney
 from Mr. Briney at 72,371 of Hoenn
 way 0
@@ -10825,8 +10884,61 @@ way -
   + seen dragons_den.Clair in the Dragon's Den
 === dragons_den.ClairTalk
 from Clair at 24,14 of DragonsDen
+way 0
+  Clair> Hm? You're up early, with nothing to do already? I may have time to listen to you.
+  Clair> If you insist, we can swap numbers, too! What do you say?
+  Clair> Fine. Here's my number, Lucas.
+  > Registered Clair in the Pokégear.
+  Clair> I can battle you on Friday nights, if you insist!
+  ? If you insist, we can swap numbers, too! What do you say? = Yes
+  * addcontact clair
+  * fade out
+  * fade in
+  + FLAG_HIDE_VICTORY_ROAD_CLAIR
+  + FLAG_PHONE_CONTACT_CLAIR
+way 1, from answer 1
+  Clair> ...
+  ? If you insist, we can swap numbers, too! What do you say? = No
+=== dragons_den.Rival
+from the trigger at 24,43 of DragonsDen
+way 0
+  Barry> ...What? Have you come all this way to laugh at my training? Humph!
+  Barry> I came here to learn the Master's secrets, and he makes a mystery of everything. So I'm training my Pokémon here myself.
+  Lance> Hello, Lucas! And you, too. We met at the Team Rocket hideout.
+  Barry> You! Where have you been all this time? Prepare to lose. I challenge you!
+  Lance> Calm down. I was in a hurry then, and I'm sorry for it.
+  Lance> But I never turn down a challenger! How about a Double Battle?
+  Barry> Humph! You can't beat me one on one, can you?
+  Lance> Come on, a Double Battle isn't so bad. Lucas, you'll be on my side!
+  Clair> Well, then. You over there, will you team up with me?
+  Barry> You can't be serious! Me, with that show-off in the strange costume? No way!
+  Barry> Lucas! Come to my side! We'll beat Lance together!
+  Lance> Just as I expected. You two make quite a team.
+  Lance> Going alone is one way to aim for the top. But that isn't all there is to a Pokémon battle, though I don't suppose either of you needs reminding.
+  Lance> See you another time, Lucas!
+  Clair> I must excuse myself. ...Lucas, that was a fun battle. And that goes for you too, wise guy.
+  Barry> Lucas... It wasn't supposed to go this way. Anyway, I'm not giving up on beating you!
+  Barry> I'll train my Pokémon, and my own heart too. I'll come back as the toughest challenge you've ever had!
+  * scene dragons_den.The Dragon's Den's double battle
+  * emote {rival} Exclaim
+  * emote {rival} Exclaim
+  * battle johto_champion_lance_3 and johto_leader_clair_clair_3 with johto_partner_rival_1 Won
+  * fade out
+  * fade in
+  * endscene
+  = VAR_UNK_40FC 0 -> 2
+  + beaten johto_champion_lance_3
+  + beaten johto_leader_clair_clair_3
+  + seen dragons_den.The Dragon's Den's double battle
+way 1, from answer 1
+  * battle johto_champion_lance_3 and johto_leader_clair_clair_3 with johto_partner_rival_1 Lost
+  * scene over, unseen
+=== dragons_den.RivalTalk
+from {rival} at 25,41 of DragonsDen
 way -
-  Clair> Hm? What is it? I'm on my way back to the Gym.
+  Barry> ...What? Yes, I'm training my Pokémon here. You can laugh at me now, but it has to be done.
+  Barry> My Pokémon aren't ready to beat you yet. I can't push them too hard. I have to be strict with myself to become the greatest Trainer.
+  + FLAG_UNK_0E2
 === dragons_den_shrine.Elder
 from Elder at 6,9 of DragonsDen_Shrine
 way -
@@ -11105,6 +11217,124 @@ from the trigger at 28,86 of EternaForest
 way -
   Cheryl> Oh, you're going back out? Then I'll wait for you here.
   * partner off
+=== ever_grande_city_champions_room.Birch
+from Prof. Birch at 6,12 of EverGrandeCity_ChampionsRoom
+way -
+  Prof. Birch> Go on, Lucas. We'll be right here.
+=== ever_grande_city_champions_room.Rival
+from {rival} at 6,12 of EverGrandeCity_ChampionsRoom
+way -
+  Barry> We'll wait here, Lucas. Go on!
+=== ever_grande_city_champions_room.Wallace
+from Wallace at 6,5 of EverGrandeCity_ChampionsRoom
+way -
+  Wallace> You are the Champion now, Lucas. Carry it well.
+=== ever_grande_city_drakes_room.Drake
+from Drake at 6,5 of EverGrandeCity_DrakesRoom
+way 0
+  Drake> I am Drake, the last of the Elite Four. I sailed the seas for many years before I came to the dragons.
+  Drake> To command Dragon-type Pokémon, a trainer needs one thing above all. Do you know what it is?
+  Drake> If you don't, you will not get past me. Come! Show me what you have!
+  Drake> Superb. You have it, the thing my dragons and I look for in a trainer: a true bond with your Pokémon.
+  Drake> Go on through. The Champion waits at the end of the hall. Give it everything you have.
+  * scene ever_grande_city_drakes_room.Drake
+  * music common/eye_elite_four
+  * battle hoenn_drake Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_ELITE_4_DRAKE
+  + beaten hoenn_drake
+  + seen ever_grande_city_drakes_room.Drake
+way 1, from answer 1
+  * battle hoenn_drake Lost
+  * scene over, unseen
+=== ever_grande_city_glacias_room.Glacia
+from Glacia at 6,5 of EverGrandeCity_GlaciasRoom
+way 0
+  Glacia> Welcome. I am Glacia of the Elite Four. I came to Hoenn from far away, hoping to meet a trainer worth my ice.
+  Glacia> So far, I have found only disappointment. I do hope you will be different.
+  Glacia> Show me the heat of your spirit. My Ice-type Pokémon and I will freeze it, if we can.
+  Glacia> Such fire... You melted my ice completely. I have not felt this in a long time.
+  Glacia> Go on. The last of the Elite Four waits ahead, and he is not as gentle as I am.
+  * scene ever_grande_city_glacias_room.Glacia
+  * music common/eye_elite_four
+  * battle hoenn_glacia Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_ELITE_4_GLACIA
+  + beaten hoenn_glacia
+  + seen ever_grande_city_glacias_room.Glacia
+way 1, from answer 1
+  * battle hoenn_glacia Lost
+  * scene over, unseen
+=== ever_grande_city_phoebes_room.Phoebe
+from Phoebe at 6,5 of EverGrandeCity_PhoebesRoom
+way 0
+  Phoebe> Hi there! I'm Phoebe of the Elite Four. I trained at the top of Mt. Pyre, among the spirits who rest there.
+  Phoebe> Up there, I learned to share my heart with Ghost-type Pokémon. We understand each other completely.
+  Phoebe> Let's see if your bond with your Pokémon can match ours!
+  Phoebe> Oh... we lost. Your bond with your Pokémon must run very deep.
+  Phoebe> Go on to the next room. I'll be cheering for you, quietly, the way the spirits do.
+  * scene ever_grande_city_phoebes_room.Phoebe
+  * music common/eye_elite_four
+  * battle hoenn_phoebe Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_ELITE_4_PHOEBE
+  + beaten hoenn_phoebe
+  + seen ever_grande_city_phoebes_room.Phoebe
+way 1, from answer 1
+  * battle hoenn_phoebe Lost
+  * scene over, unseen
+=== ever_grande_city_pokemon_center_1f.Scott
+from Scott at 9,4 of EverGrandeCity_PokemonCenter_1F
+way -
+  Scott> Lucas! You made it all the way to Ever Grande City! I knew it the first time I saw you battle.
+  Scott> I've watched a great many trainers in my time, but very few of them ever stood where you're standing now.
+  Scott> Beyond Victory Road is the Pokémon League. Go and show the Elite Four what you showed me. I'll be cheering!
+  * scene ever_grande_city_pokemon_center_1f.Scott in Ever Grande
+  * sound door_slide
+  * endscene
+  + FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  + FLAG_MET_SCOTT_IN_EVERGRANDE
+  = VAR_SCOTT_STATE 0 -> 1
+  + seen ever_grande_city_pokemon_center_1f.Scott in Ever Grande
+=== ever_grande_city_pokemon_league_1f.Clerk
+from Clerk at 16,2 of EverGrandeCity_PokemonLeague_1F
+way -
+  Clerk> Welcome! Stock up well. Once you go through that door, there's no coming back to buy more.
+  Clerk> Good luck in there!
+  * open Shop ever_grande_league
+=== ever_grande_city_pokemon_league_1f.Guard
+from Guard at 11,2 of EverGrandeCity_PokemonLeague_1F
+from Guard at 8,2 of EverGrandeCity_PokemonLeague_1F
+way -
+  Guard> Beyond this door wait the Elite Four. Only a trainer who has won every Badge of Hoenn may pass.
+  Guard> Show us your Badges, please.
+  Guard> You haven't won every Badge of Hoenn yet. We can't let you through. Come back once you have them all.
+  * scene ever_grande_city_pokemon_league_1f.The League's guards
+  * sound error
+  * endscene
+  + seen ever_grande_city_pokemon_league_1f.The League's guards
+=== ever_grande_city_sidneys_room.Sidney
+from Sidney at 6,5 of EverGrandeCity_SidneysRoom
+way 0
+  Sidney> Well, look at you! I'm Sidney of the Elite Four. You came all this way, so I like you already.
+  Sidney> But liking you won't stop me. I play dirty, and I play to win. Can you keep up with that?
+  Sidney> No more talking. Let's have a battle we'll both remember!
+  Sidney> Ha! That's it, I'm beaten. And I don't even mind. That was a battle and a half!
+  Sidney> Go on through. The rest of the Elite Four won't go easy on you. Show them what you showed me!
+  * scene ever_grande_city_sidneys_room.Sidney
+  * music common/eye_elite_four
+  * battle hoenn_sidney Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_ELITE_4_SIDNEY
+  + beaten hoenn_sidney
+  + seen ever_grande_city_sidneys_room.Sidney
+way 1, from answer 1
+  * battle hoenn_sidney Lost
+  * scene over, unseen
 === fallarbor_town.Azurill
 from Azurill at 88,12 of Hoenn
 way -
@@ -12628,6 +12858,57 @@ way -
   Attendant> Your game is over, but the way out is right behind me. This way, please!
   * warp Route121_SafariZoneEntrance 2 4
   = VAR_SAFARI_ZONE_STATE 0 -> 1
+=== hoenn_victory_road_1f.EntranceWally
+from Wally at 12,25 of HoennVictoryRoad_1F
+way -
+  Wally> You go on ahead, Lucas. I'll follow you to the League once I've rested!
+=== hoenn_victory_road_1f.ExitWally
+from Wally at 31,9 of HoennVictoryRoad_1F
+way 0
+  Wally> Lucas! I heard you became the Champion. Congratulations! I knew you would.
+  Wally> I've been training here ever since, so I could battle the Champion. Will you show me what that's like?
+  Wally> Wow... So that's the strength of a Champion. I've still got a long way to go.
+  Wally> I'll keep training on Victory Road. One day I'll catch up with you, Lucas. Just you wait!
+  * battle hoenn_wally_vr_2 Won
+  + beaten hoenn_wally_vr_2
+way 1, from answer 1
+  * battle hoenn_wally_vr_2 Lost
+=== hoenn_victory_road_1f.WallyTrigger1
+from the trigger at 2,23 of HoennVictoryRoad_1F
+way 0
+  Wally> Lucas! I got every Badge too, just like you. I came all this way to tell you something.
+  Wally> I'm not the boy who couldn't even catch a Pokémon any more. I've trained hard with my partners.
+  Wally> So this time I won't lose. Not to anyone, not even to you!
+  Wally> I lost again... But it doesn't feel the same as the first time. I gave it everything I had.
+  Wally> You go on ahead, Lucas. I'm going to rest here a little, and then I'll follow you to the League!
+  * scene hoenn_victory_road_1f.Wally on Victory Road from the west
+  * battle hoenn_wally_vr_1 Won
+  * endscene
+  + FLAG_DEFEATED_WALLY_VICTORY_ROAD
+  = VAR_VICTORY_ROAD_1F_STATE 0 -> 1
+  + beaten hoenn_wally_vr_1
+  + seen hoenn_victory_road_1f.Wally on Victory Road from the west
+way 1, from answer 1
+  * battle hoenn_wally_vr_1 Lost
+  * scene over, unseen
+=== hoenn_victory_road_1f.WallyTrigger2
+from the trigger at 3,23 of HoennVictoryRoad_1F
+way 0
+  Wally> Lucas! I got every Badge too, just like you. I came all this way to tell you something.
+  Wally> I'm not the boy who couldn't even catch a Pokémon any more. I've trained hard with my partners.
+  Wally> So this time I won't lose. Not to anyone, not even to you!
+  Wally> I lost again... But it doesn't feel the same as the first time. I gave it everything I had.
+  Wally> You go on ahead, Lucas. I'm going to rest here a little, and then I'll follow you to the League!
+  * scene hoenn_victory_road_1f.Wally on Victory Road from the east
+  * battle hoenn_wally_vr_1 Won
+  * endscene
+  + FLAG_DEFEATED_WALLY_VICTORY_ROAD
+  = VAR_VICTORY_ROAD_1F_STATE 0 -> 2
+  + beaten hoenn_wally_vr_1
+  + seen hoenn_victory_road_1f.Wally on Victory Road from the east
+way 1, from answer 1
+  * battle hoenn_wally_vr_1 Lost
+  * scene over, unseen
 === ice_path_1f.KimonoGirl
 from Kimono Girl at 55,29 of IcePath_1F
 way -
@@ -14791,6 +15072,157 @@ way 0
 way 1, from answer 1
   Sailor> All right, then. Tell me when you want to go. I'll not be wandering off.
   ? Not a place to linger, this. Shall we sail back to Canalave City? = No
+=== nimbasa_city.Emmet
+from Emmet at 423,461 of Unova
+way -
+  Emmet> I'm Emmet, a Subway Boss! I love Double Battles. Two Pokémon working as one, that's the best!
+=== nimbasa_city.Hugh
+from {rival} at 408,438 of Unova
+way -
+  Barry> Lucas! Cover me!
+=== nimbasa_city.HughAndPlasma
+from the trigger at 409,437 of Unova
+way 0.0
+  Barry> Hold it! What are you lot up to here?
+  Grunt> Up to? Nothing. We're just standing about. So why are you bothering us?
+  Barry> Maybe you haven't done anything to me. But I'll never forgive Pokémon thieves like you. Never!
+  Grunt> Kids these days. You think your Pokémon's strength is your own? I don't like being pushed around!
+  Barry> Lucas! Cover me!
+  Grunt> Heh heh! I stole this Pokémon two years ago and I've trained it hard ever since. It's tough!
+  Grunt> What?! I toughened it up for two whole years!
+  Grunt> My turn! And I show no mercy!
+  Grunt> We give up! Beaten by two kids... Fine. Since you're so strong, I'll tell you this much.
+  Grunt> Team Plasma is searching for something. Once we find it, our secret weapon will show its true power!
+  Grunt> Farewell!
+  Barry> Five years ago, Team Plasma stole my little sister's Purrloin. It was a present.
+  Barry> I was just a kid. I couldn't do a thing. That's why I have to get stronger!
+  Barry> Good work back there. I knew you had good instincts! Here, let me see to your team.
+  > Barry healed your Pokémon.
+  Barry> Listen. Fill up that Pokédex, keep getting stronger, and keep backing me up. I'm counting on you!
+  * scene nimbasa_city.Hugh and Team Plasma in Nimbasa
+  * battle unova_team_plasma_grunt_4 Won
+  * battle unova_team_plasma_grunt_47 Won
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  = VAR_UNOVA_NIMBASA 0 -> 2
+  + beaten unova_team_plasma_grunt_4
+  + beaten unova_team_plasma_grunt_47
+  + seen nimbasa_city.Hugh and Team Plasma in Nimbasa
+way 0.1, from answer 2
+  * battle unova_team_plasma_grunt_47 Lost
+  * scene over, unseen
+  + beaten unova_team_plasma_grunt_4
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_4 Lost
+  * scene over, unseen
+=== nimbasa_city.Ingo
+from Ingo at 421,461 of Unova
+way -
+  Ingo> I am Ingo, a Subway Boss. Usually you'll find me battling aboard the trains that leave from the Gear Station.
+=== nimbasa_city.Partner
+from Nate at 422,462 of Unova
+from Rosa at 422,462 of Unova
+way 0.0
+  Rosa> I came to try the Battle Subway, and guess who turned up? The Subway Bosses themselves!
+  Rosa> They'll battle out here, but only two on two. I need a partner!
+  Rosa> Will you battle the Subway Bosses beside me?
+  Rosa> Really? Thanks! I'm Rosa. Let's be the best partners ever!
+  Ingo> A battle in the open air instead of aboard our trains? Most irregular! Still, new scenery may teach me something.
+  Ingo> Emmet, have you anything to add?
+  Emmet> Two on two, rules are rules! Destination: victory. All aboard!
+  Ingo> Bravo! You and your Pokémon make a truly splendid team!
+  Emmet> I'm Emmet. We lost, but I had fun! Let's battle again sometime!
+  Ingo> Next time, ride the Battle Subway and challenge us aboard! Now we must be off. All aboard!
+  Rosa> Even holding back, they were so strong! That's the Subway Bosses for you. Thanks, Lucas! This is for you!
+  > Lucas received the Vs. Recorder!
+  > Lucas put it away in the Key Items pocket.
+  Rosa> With a Vs. Recorder you can keep your battles and watch them again. I had a great time battling beside you. See you!
+  ? Will you battle the Subway Bosses beside me? = Yes
+  * scene nimbasa_city.The Subway Bosses
+  * battle unova_subway_boss_ingo and unova_subway_boss_emmet Won
+  * partner off
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_SUBWAY_BOSSES
+  + beaten unova_subway_boss_emmet
+  + beaten unova_subway_boss_ingo
+  + seen nimbasa_city.The Subway Bosses
+way 0.1, from answer 2
+  * battle unova_subway_boss_ingo and unova_subway_boss_emmet Lost
+  * scene over, unseen
+way 1, from answer 1
+  Rosa> Not ready yet? That's OK! I'll keep them talking. Come back when you are!
+  ? Will you battle the Subway Bosses beside me? = No
+  * endscene
+  + seen nimbasa_city.The Subway Bosses
+=== nimbasa_city_gym.Ampere
+from the trigger at 14,24 of NimbasaCity_Gym
+way 0
+  Ampère> The show is nearly over. Let's see whether you deserve to share the stage with Elesa!
+  Ampère> You do. The stage is waiting.
+  * scene nimbasa_city_gym.Ampere on the runway
+  * battle unova_beauty_amp_re Won
+  * endscene
+  = VAR_UNOVA_NIMBASA_GYM 0 -> 3
+  + beaten unova_beauty_amp_re
+  + seen nimbasa_city_gym.Ampere on the runway
+way 1, from answer 1
+  * battle unova_beauty_amp_re Lost
+  * scene over, unseen
+=== nimbasa_city_gym.Elesa
+from Elesa at 15,4 of NimbasaCity_Gym
+way -
+  Elesa> The show starts at the foot of the runway. Walk it first, and I'll be waiting here.
+=== nimbasa_city_gym.Fleming
+from the trigger at 14,39 of NimbasaCity_Gym
+way 0
+  Fleming> Beauty on the outside is easy. Let's see how beautiful you are as a Trainer!
+  Fleming> Beautiful and strong. That's a rare look!
+  * scene nimbasa_city_gym.Fleming on the runway
+  * battle unova_beauty_fleming Won
+  * endscene
+  = VAR_UNOVA_NIMBASA_GYM 0 -> 2
+  + beaten unova_beauty_fleming
+  + seen nimbasa_city_gym.Fleming on the runway
+way 1, from answer 1
+  * battle unova_beauty_fleming Lost
+  * scene over, unseen
+=== nimbasa_city_gym.GymGuide
+from Guide at 17,58 of NimbasaCity_Gym
+way -
+  Guide> Surprised? This Gym is a fashion show and a battle all at once, on a runway lit up like a stage!
+  Guide> Here, a drink before the show!
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  Guide> The models on the catwalk will battle you one by one. Ground moves hit Electric types hard, but Emolga flies above them!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_NIMBASA
+=== nimbasa_city_gym.Model
+from Ampère at 15,20 of NimbasaCity_Gym
+way -
+  Ampère> Elesa is more than a pretty face, you know. Don't let the lights fool you.
+from Fleming at 15,35 of NimbasaCity_Gym
+way -
+  Fleming> Elesa is more than a pretty face, you know. Don't let the lights fool you.
+from Nikola at 15,50 of NimbasaCity_Gym
+way -
+  Nikola> Elesa is more than a pretty face, you know. Don't let the lights fool you.
+=== nimbasa_city_gym.Nikola
+from the trigger at 14,54 of NimbasaCity_Gym
+way 0
+  Nikola> Welcome to the Nimbasa Gym! The show is about to begin, and you are walking in it!
+  Nikola> My, what a debut! Go on, the runway is yours.
+  * scene nimbasa_city_gym.Nikola on the runway
+  * battle unova_beauty_nikola Won
+  * endscene
+  = VAR_UNOVA_NIMBASA_GYM 0 -> 1
+  + beaten unova_beauty_nikola
+  + seen nimbasa_city_gym.Nikola on the runway
+way 1, from answer 1
+  * battle unova_beauty_nikola Lost
+  * scene over, unseen
 === oldale_town.BlockedPath
 from the trigger at 120,252 of Hoenn
 way -
@@ -21363,6 +21795,12 @@ way -
 from Worker at 427,585 of Unova
 way -
   Worker> These boulders just turned up all in a line one morning. Strength won't shift them an inch!
+=== unova_route_4_3.Rest
+from Woman at 4,5 of Route4_RestHouse
+way -
+  Woman> Goodness, you look worn out! Sit down and rest a while. Your Pokémon too.
+  > Lucas and the team had a good rest.
+  Woman> There! With that much energy you could walk straight through a sandstorm.
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -

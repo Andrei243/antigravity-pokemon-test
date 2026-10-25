@@ -30,6 +30,12 @@
     { "species": "Lickitung", "level": 26 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Tangela",
+    "Tangela"
+  ],
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Remoraid",
   "water": [
     { "species": "Poliwag", "level": 20, "maxLevel": 30 },
     { "species": "Poliwag", "level": 15, "maxLevel": 25 },

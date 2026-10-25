@@ -3,7 +3,9 @@ partial class Harness
     /// <summary>
     /// Unova as Black 2's maps make it (plan 22 · U2; not part of <c>all</c>, since its people would move every battle of
     /// the modes after it): a new game begun there (<c>--region Unova</c>) in the player's room, Aspertia City, Route 19,
-    /// Floccesy Town and Floccesy Ranch by day and after dark (u01 to u08), a few of their rooms (u10 to u16), and the
+    /// Floccesy Town and Floccesy Ranch by day and after dark (u01 to u08), a few of their rooms (u10 to u16), Route 4,
+    /// the Desert Resort's edge and the desert in their sandstorm, Nimbasa City and its amusement park by day and after
+    /// dark (plan 22 · U6: u21 to u30) and a few of their rooms (u20, u31 to u34), and the
     /// walk from the player's door in Aspertia City down Route 19 to Floccesy Town's Pokémon Center at running pace, every
     /// frame timed, with what streaming cost.
     /// </summary>
@@ -26,6 +28,12 @@ partial class Harness
             ("u03_route19_day", "u04_route19_night", "Unova", 73, 693, Direction.Right),
             ("u05_floccesy_day", "u06_floccesy_night", "Unova", 113, 678, Direction.Up),
             ("u07_ranch_day", "u08_ranch_night", "FloccesyRanch", 30, 38, Direction.Up),
+            // Plan 22 · U6: Route 4, the Desert Resort's edge and the desert in their sandstorm, Nimbasa City and its park
+            ("u21_route4_day", "u22_route4_night", "Unova", 405, 560, Direction.Up),
+            ("u23_desert_edge_day", "u24_desert_edge_night", "Unova", 372, 492, Direction.Up),
+            ("u25_desert_day", "u26_desert_night", "DesertResort", 50, 50, Direction.Up),
+            ("u27_nimbasa_day", "u28_nimbasa_night", "Unova", 430, 470, Direction.Up),
+            ("u29_amusement_park_day", "u30_amusement_park_night", "NimbasaCity_AmusementPark", 60, 14, Direction.Right),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -46,6 +54,12 @@ partial class Harness
             ("u14_alders_house", "FloccesyTown_AldersHouse", 6, 8, Direction.Up),
             ("u15_floccesy_center", "FloccesyTown_PokemonCenter", 7, 13, Direction.Up),
             ("u16_aspertia_gate", "AspertiaGate", 5, 5, Direction.Up),
+            // Plan 22 · U6: a house of flats on Route 4, Join Avenue, the desert's gate house, Elesa's runway and Nimbasa's Center
+            ("u20_route4_house", "Route4_House1_1F", 7, 8, Direction.Up),
+            ("u31_join_avenue", "JoinAvenue", 15, 74, Direction.Up),
+            ("u32_desert_gate", "DesertResortGate", 5, 8, Direction.Up),
+            ("u33_nimbasa_gym", "NimbasaCity_Gym", 15, 57, Direction.Up),
+            ("u34_nimbasa_center", "NimbasaCity_PokemonCenter", 7, 13, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {
@@ -61,15 +75,15 @@ partial class Harness
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
-        // The walk the plan asks for: from the player's door in Aspertia City through its gate and down Route 19 to
-        // Floccesy Town's Pokémon Center, tile by tile at running pace, every frame timed and held to a sixtieth of a
-        // second as the screen holds it
+        // The walk the plan asks for, from the north door of Aspertia City's gate (the gate is a room since plan 22 · U5, so a
+        // walk on the map of Unova starts past it) down Route 19 to Floccesy Town's Pokémon Center, tile by tile at running
+        // pace, every frame timed and held to a sixtieth of a second as the screen holds it
         if (filter.Length == 0 || Environment.GetEnvironmentVariable("SHOTS_TIMING") == "1")
         {
             var unova = MapDatabase.Get("Unova");
-            var path = WalkingPath(unova, (47, 762), (105, 694));
+            var path = WalkingPath(unova, (52, 702), (105, 694));
             var renderer = game.World;
-            At("Unova", 47, 762, Direction.Down); Frames(30);
+            At("Unova", 52, 702, Direction.Up); Frames(30);
             renderer.ResetStreamingStats();
             double total = 0, worst = 0;
             int frames = 0, mostChunks = 0;
@@ -91,7 +105,7 @@ partial class Harness
                 }
                 mostChunks = Math.Max(mostChunks, renderer.LoadedChunks);
             }
-            Console.WriteLine($"walk from the player's door in Aspertia City to Floccesy Town's Pokémon Center: {path.Count} tiles, {total / Math.Max(1, frames):F2} ms/frame, "
+            Console.WriteLine($"walk from Aspertia City's gate to Floccesy Town's Pokémon Center: {path.Count} tiles, {total / Math.Max(1, frames):F2} ms/frame, "
                 + $"worst frame {worst:F1} ms at ({worstAt.X}, {worstAt.Y}), at most {mostChunks} chunks loaded");
             Console.WriteLine($"  streaming: {renderer.Streaming}");
             foreach (var (label, x, y) in new[] { ("aspertia city", 48, 739), ("route 19", 73, 693), ("floccesy town", 113, 678), ("route 20", 157, 656) })

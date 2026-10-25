@@ -1,0 +1,128 @@
+{
+  "Battle": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I got every Badge too, just like you. I came all this way to tell you something."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm not the boy who couldn't even catch a Pokémon any more. I've trained hard with my partners."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So this time I won't lose. Not to anyone, not even to you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I lost again... But it doesn't feel the same as the first time. I gave it everything I had."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You go on ahead, {player}. I'm going to rest here a little, and then I'll follow you to the League!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EntranceWally": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You go on ahead, {player}. I'll follow you to the League once I've rested!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ExitWally": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I heard you became the Champion. Congratulations! I knew you would."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been training here ever since, so I could battle the Champion. Will you show me what that's like?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow... So that's the strength of a Champion. I've still got a long way to go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll keep training on Victory Road. One day I'll catch up with you, {player}. Just you wait!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

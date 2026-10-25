@@ -1,0 +1,23 @@
+{
+  // Victory Road's upper floor (plan 21 · H9), the cave between Ever Grande City's shore and the League above it: its
+  // way in from the city's lower terrace, its way out onto the upper one, and the ways down to the two floors below,
+  // where boulders and cracked rocks wait for Strength and Rock Smash. Wally catches the player up from behind the first
+  // time they come up the west passage (the triggers, VAR_VICTORY_ROAD_1F_STATE 0) and battles; afterwards he waits there
+  // until the Hall of Fame (hoenn_victory_road_1f.txt). After the Hall of Fame he waits by the way out instead
+  "area": "hoenn_victory_road_1f",
+  "name": "Victory Road",
+  "bgmTrack": "hoenn/victory_road",
+  "triggers": [
+    { "trigger": 0, "script": "WallyTrigger1" },
+    { "trigger": 1, "script": "WallyTrigger2" }
+  ],
+  "people": {
+    "victory_road_entrance_wally": { "name": "Wally", "npcType": "wally", "script": "EntranceWally", "still": true },
+    "wally": { "name": "Wally", "npcType": "wally", "script": "ExitWally", "still": true },
+    "man_3": { "name": "Edgar", "trainer": { "dialogueBefore": "Cooltrainer Edgar: Everyone who reaches Victory Road has eight Badges. So we're equals. Let's see who's more equal!", "dialogueAfter": "Cooltrainer Edgar: All right, you're the more equal one." } },
+    "woman_5": { "name": "Hope", "trainer": { "dialogueBefore": "Cooltrainer Hope: This cave is where dreams of the League are made, or broken. Which will yours be?", "dialogueAfter": "Cooltrainer Hope: Mine were the ones that broke." } },
+    "man_3_2": { "name": "Albert", "trainer": { "dialogueBefore": "Cooltrainer Albert: I've walked this road a hundred times and never reached the end. Maybe you'll be my hundred-and-first try!", "dialogueAfter": "Cooltrainer Albert: Back to the start for me." } },
+    "woman_5_2": { "name": "Katelynn", "trainer": { "dialogueBefore": "Cooltrainer Katelynn: Only the strongest leave this cave at the top. Prove you're one of them!", "dialogueAfter": "Cooltrainer Katelynn: You've proved it to me, at least." } },
+    "man_3_3": { "name": "Quincy", "trainer": { "dialogueBefore": "Cooltrainer Quincy: My team and I have trained our whole lives for the League. You won't stop us here!", "dialogueAfter": "Cooltrainer Quincy: We'll train a little longer, then." } }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  // Nimbasa City (plan 22 · U6): Black 2's city of the amusement park, the stadiums, the Musical Theater and the Gear
+  // Station, our words. Its Pokémon Center and the amusement park with Elesa's Gym are open; its gates to Routes 5 and
+  // 16, the Gear Station, the Musical Theater, the stadiums and its houses are plan 22 · U6, part b's and stay shut.
+  // Before the Gear Station the Subway Bosses, Ingo (6) and Emmet (7), and the young Trainer who asks the player to
+  // battle them side by side, Rosa (5) for a boy and Nate (nate) for a girl (FLAG_UNOVA_HIDE_SUBWAY_BOSSES once
+  // battled; nimbasa_city.txt's OnEnter shows the one who is the hero the player isn't). Once the Bolt Badge is won
+  // Hugh (3, FLAG_UNOVA_HIDE_HUGH_NIMBASA) faces Team Plasma's grunts (0, 1, 2, 4, FLAG_UNOVA_HIDE_NIMBASA_PLASMA) on
+  // the street to Route 5, and our trigger (409, 437 to 440, VAR_UNOVA_NIMBASA 1) plays the scene
+  "area": "nimbasa_city",
+  "bgmTrack": "unova/nimbasa",
+  "architecture": "Funfair",
+  "triggers": [
+    { "script": "HughAndPlasma", "x": 409, "z": 437, "width": 1, "depth": 4, "variable": "VAR_UNOVA_NIMBASA", "value": 1 }
+  ],
+  "people": {
+    "0": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "Mind your own business, kid!" ] },
+    "1": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "We're just standing here. Is that a crime now?" ] },
+    "2": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "Team Plasma doesn't take orders from children!" ] },
+    "3": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_NIMBASA" },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_NIMBASA_PLASMA", "dialog": [ "What are you staring at?" ] },
+    "5": { "name": "Rosa", "npcType": "rosa", "script": "Partner", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROSA_NIMBASA" },
+    "6": {
+      "name": "Ingo",
+      "npcType": "ingo",
+      "script": "Ingo",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_SUBWAY_BOSSES",
+      "trainer": { "id": "unova_subway_boss_ingo", "dialogueBefore": "All aboard!", "dialogueAfter": "A splendid ride!" }
+    },
+    "7": {
+      "name": "Emmet",
+      "npcType": "emmet",
+      "script": "Emmet",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_SUBWAY_BOSSES",
+      "trainer": { "id": "unova_subway_boss_emmet", "dialogueBefore": "Departing now!", "dialogueAfter": "End of the line!" }
+    },
+    "10": {
+      "name": "Athlete",
+      "npcType": "blackbelt",
+      "dialog": [ "Athletes and Pokémon playing side by side! See it for yourself at the Big Stadium and the Small Court." ]
+    },
+    "11": {
+      "name": "Harlequin",
+      "npcType": "clown",
+      "dialog": [ "La la la! Nimbasa is full of places to train your Pokémon! Stadiums, subways and a Gym that sparkles!" ]
+    },
+    "12": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [ "I want to get to Anville Town. Which way's the Gear Station again? ...Oh, right in front of me." ]
+    },
+    "14": {
+      "name": "Backpacker",
+      "npcType": "picnicker",
+      "dialog": [ "Some battles here need three Pokémon on each side! I've only got two partners so far..." ]
+    },
+    "15": {
+      "name": "Girl",
+      "npcType": "school_kid_f",
+      "dialog": [ "I was good all week, so I got to go to the amusement park! And Pansear came too!" ]
+    },
+    "16": { "name": "Pansear", "npcType": "Pokemon", "species": "Pansear", "dialog": [ "Pansear: Sear-sear!" ] },
+    "17": {
+      "name": "Twins",
+      "npcType": "twin",
+      "dialog": [ "The roller coaster went whoosh, whoosh! Just like Quick Attack!" ]
+    },
+    "18": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_f",
+      "dialog": [ "Nimbasa's Gym Leader, Elesa, is a fashion model! I'd love to see her walk the runway!" ]
+    }
+  },
+  "npcs": [
+    { "id": "nate", "name": "Nate", "npcType": "nate", "x": 422, "y": 462, "facing": "Up", "script": "Partner", "hiddenBy": "FLAG_UNOVA_HIDE_NATE_NIMBASA" }
+  ],
+  "signs": {
+    "1": "Nimbasa City\nThe city that shines like a lightning flash!",
+    "2": "Big Stadium\nBaseball, football and soccer",
+    "3": "Small Court\nTennis and basketball",
+    "4": "Battle Subway\nBattles on board!",
+    "5": "Musical Theater\nProps, music, dancing and dazzle!",
+    "6": "Trainer Tips\nGames run at set times at the Big Stadium and the Small Court. You might battle a star athlete!",
+    "10": "Trainer Tips\nThe Musical Theater always wants new stars. Take part again and again for wonderful Props!",
+    "11": "Battle Institute\nTest your skills as a Trainer!"
+  }
+}

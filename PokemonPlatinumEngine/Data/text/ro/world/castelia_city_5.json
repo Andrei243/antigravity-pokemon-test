@@ -6,7 +6,7 @@
           "Waitress"
         ],
         "text": [
-          ""
+          "Chelnerița"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Mode Street is the place to be seen! Everyone dresses up just to walk from one end to the other."
         ],
         "text": [
-          ""
+          "Strada Modei e locul unde trebuie să te faci văzut! Toți se îmbracă elegant doar ca să meargă dintr-un capăt în altul."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfanul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I've been in this queue since the sun came up. The ice cream here is worth it!"
         ],
         "text": [
-          ""
+          "Stau la coada asta de la răsăritul soarelui. Înghețata de aici merită!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm on my lunch break. If the queue doesn't move, I'll be late back to the office..."
         ],
         "text": [
-          ""
+          "Sunt în pauza de prânz. Dacă coada nu înaintează, voi întârzia la birou..."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "My Pokémon love it as much as I do. We always share!"
         ],
         "text": [
-          ""
+          "Pokémonilor mei le place la fel de mult ca mie. Mereu împărțim!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I walked all the way down from the mountains for one of these. Don't you dare cut in!"
         ],
         "text": [
-          ""
+          "Am venit pe jos tot drumul din munți pentru una ca asta. Să nu îndrăznești să te bagi în față!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The stand sells out by noon most days. Fingers crossed!"
         ],
         "text": [
-          ""
+          "Standul se golește până la prânz în majoritatea zilelor. Cu degetele încrucișate!"
         ]
       }
     }
@@ -115,7 +115,7 @@
         "Mode Street\nCastelia's street of fashion"
       ],
       "text": [
-        ""
+        "Strada Modei\nStrada modei din Castelia"
       ]
     },
     "2": {
@@ -123,7 +123,7 @@
         "Ice cream stand\nToday's flavour: sold out by noon!"
       ],
       "text": [
-        ""
+        "Stand de înghețată\nGustul zilei: epuizat până la prânz!"
       ]
     }
   }

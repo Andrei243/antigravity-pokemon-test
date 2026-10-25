@@ -22,6 +22,14 @@
       "note": "first spoken at floccesy_town.txt(22)",
       "provisional": true
     },
+    "ampere": {
+      "note": "first spoken at nimbasa_city_gym.txt(74)",
+      "provisional": true
+    },
+    "archaeologist": {
+      "note": "first spoken at desert_resort_2.txt(9)",
+      "provisional": true
+    },
     "archer": {
       "note": "first spoken at goldenrod_radio_tower_observation_deck.txt(27)",
       "provisional": true
@@ -277,6 +285,14 @@
       "note": "first spoken at sprout_tower_3f.txt(12)",
       "provisional": true
     },
+    "elesa": {
+      "note": "first spoken at nimbasa_city_gym.txt(97)",
+      "provisional": true
+    },
+    "emmet": {
+      "note": "first spoken at nimbasa_city.txt(55)",
+      "provisional": true
+    },
     "energy_guru": {
       "note": "first spoken at slateport_city.txt(38)",
       "provisional": true
@@ -318,6 +334,10 @@
       "note": "first spoken at lavaridge_town_gym_1f.txt(12)",
       "provisional": true
     },
+    "fleming": {
+      "note": "first spoken at nimbasa_city_gym.txt(58)",
+      "provisional": true
+    },
     "flint": {},
     "florist": {
       "note": "first spoken at goldenrod_flower_shop.txt(10)",
@@ -356,6 +376,10 @@
       "note": "first spoken at rocket_hideout_b4f.txt(66)",
       "provisional": true
     },
+    "glacia": {
+      "note": "first spoken at ever_grande_city_glacias_room.txt(8)",
+      "provisional": true
+    },
     "glass_worker": {
       "note": "first spoken at route_113_glass_workshop.txt(17)",
       "provisional": true
@@ -376,12 +400,20 @@
       "note": "first spoken at floccesy_ranch_2.txt(140)",
       "provisional": true
     },
+    "hoenn_drake": {
+      "note": "first spoken at ever_grande_city_drakes_room.txt(8): Hoenn's Elite Four, apart from Sinnoh's Dragon Tamer Drake",
+      "provisional": true
+    },
     "honey_man": {
       "note": "first spoken at floaroma_meadow.txt(47)",
       "provisional": true
     },
     "hostess": {
       "note": "first spoken at ResortAreaRibbonSyndicate1F.txt(17)",
+      "provisional": true
+    },
+    "ingo": {
+      "note": "first spoken at nimbasa_city.txt(52)",
       "provisional": true
     },
     "iris": {
@@ -601,6 +633,10 @@
       "note": "first spoken at fuchsia_city_house_3.txt(9)",
       "provisional": true
     },
+    "move_relearner": {
+      "note": "first spoken at blackthorn_move_tutor_house.txt(41)",
+      "provisional": true
+    },
     "mr_briney": {
       "note": "first spoken at dewford_town.txt(15)",
       "provisional": true
@@ -634,6 +670,10 @@
     },
     "neighbour": {
       "note": "first spoken at littleroot_town_mays_house_1f.txt(13)",
+      "provisional": true
+    },
+    "nikola": {
+      "note": "first spoken at nimbasa_city_gym.txt(42)",
       "provisional": true
     },
     "norman": {},
@@ -675,6 +715,10 @@
     },
     "pharmacist": {
       "note": "first spoken at cianwood_pharmacy.txt(12)",
+      "provisional": true
+    },
+    "phoebe": {
+      "note": "first spoken at ever_grande_city_phoebes_room.txt(8)",
       "provisional": true
     },
     "pikachu": {
@@ -759,6 +803,10 @@
       "note": "first spoken at phone.txt(322)",
       "provisional": true
     },
+    "rosa": {
+      "note": "first spoken at nimbasa_city.txt(30)",
+      "provisional": true
+    },
     "rose": {
       "note": "first spoken at phone.txt(294)",
       "provisional": true
@@ -824,6 +872,10 @@
       "note": "first spoken at EternaCycleShop.txt(30)",
       "provisional": true
     },
+    "sidney": {
+      "note": "first spoken at ever_grande_city_sidneys_room.txt(17)",
+      "provisional": true
+    },
     "sign": {
       "note": "first spoken at common.txt(379)",
       "provisional": true
@@ -887,6 +939,10 @@
     },
     "underground_man": {
       "note": "first spoken at EternaUndergroundManHouse.txt(13)",
+      "provisional": true
+    },
+    "unova_nate": {
+      "note": "Nate of Nimbasa City (plan 22 · U6), named by his id so the other Trainers called Nate keep their voices; first spoken at nimbasa_city.txt(41)",
       "provisional": true
     },
     "valet": {
@@ -997,8 +1053,10 @@
     "Agatha": "agatha",
     "Aide": "look:aide",
     "Alder": "alder",
+    "Ampère": "ampere",
     "Announcer": "look:announcer",
     "Apprentice": "look:apprentice",
+    "Archaeologist": "archaeologist",
     "Archer": "archer",
     "Archie": "archie",
     "Argenta": "argenta",
@@ -1076,6 +1134,8 @@
     "Edwin": "edwin",
     "Elder": "elder",
     "Elder Li": "elder_li",
+    "Elesa": "elesa",
+    "Emmet": "emmet",
     "Energy Guru": "energy_guru",
     "Erika": "erika",
     "Ernest": "ernest",
@@ -1088,6 +1148,7 @@
     "Fisherman": "look:fisherman",
     "Fishing Guru": "fishing_guru",
     "Flannery": "flannery",
+    "Fleming": "fleming",
     "Flint": "flint",
     "Florist": "florist",
     "Foreman": "foreman",
@@ -1103,6 +1164,7 @@
     "Gideon": "gideon",
     "Giovanni": "giovanni",
     "Girl": "look:girl",
+    "Glacia": "glacia",
     "Glass Worker": "glass_worker",
     "Grunt": "look:grunt",
     "Guard": "look:guard",
@@ -1117,6 +1179,7 @@
     "Honey Man": "honey_man",
     "Host": "look:host",
     "Hostess": "hostess",
+    "Ingo": "ingo",
     "Iris": "iris",
     "Isaac": "isaac",
     "Isabel": "isabel",
@@ -1180,6 +1243,7 @@
     "Mom": "mom",
     "Morty": "morty",
     "Move Deleter": "move_deleter",
+    "Move Relearner": "move_relearner",
     "Mr. Briney": "mr_briney",
     "Mr. Fuego": "mr_fuego",
     "Mr. Fuji": "mr_fuji",
@@ -1188,6 +1252,7 @@
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
     "Neighbour": "neighbour",
+    "Nikola": "nikola",
     "Norman": "norman",
     "Nurse": "look:nurse",
     "Officer": "officer",
@@ -1202,6 +1267,7 @@
     "Paxton": "paxton",
     "Petrel": "petrel",
     "Pharmacist": "pharmacist",
+    "Phoebe": "phoebe",
     "Pikachu": "pikachu",
     "Policeman": "policeman",
     "Poochyena": "poochyena",
@@ -1226,6 +1292,7 @@
     "Riley": "riley",
     "Roark": "roark",
     "Robert": "robert",
+    "Rosa": "rosa",
     "Rose": "rose",
     "Roughneck": "roughneck",
     "Roxanne": "roxanne",
@@ -1245,6 +1312,7 @@
     "Selphy": "selphy",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
+    "Sidney": "sidney",
     "Sign": "sign",
     "Skitty": "skitty",
     "Slowbro": "slowbro",

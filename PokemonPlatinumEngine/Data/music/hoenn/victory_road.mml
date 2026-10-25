@@ -1,0 +1,36 @@
+# Victory Road and the Pokémon League's rooms (Emerald's MUS_VICTORY_ROAD, which the cave and the Elite Four's rooms
+# share): a driving march in E minor, a brass line rising bar by bar over pulsing strings, a pumping bass and a snare that
+# never lets up, for the last climb and the four doors before the Champion. Original composition for this game (plan 21
+# · H9).
+title Victory Road (Hoenn)
+tempo 132
+meter 4/4
+reverb 0.26
+nighttempo 0.95
+
+track lead brass night=horn vol=0.72 pan=0 rev=0.26
+  L o5 e4. b8 g4 e4 | o5 c4. e8 g4 o6 c4 | o5 d4. f+8 a4 o6 d4 | o5 b2 f+4 d+4 |
+  o5 e4 g4 b4 o6 e4 | o6 c4. o5 b8 a4 e4 | o5 f+4. a8 b4 d+4 | o5 e2. r4 |
+  o5 g4. b8 o6 d4 o5 b4 | o5 a4. f+8 d4 f+4 | o5 g4. f+8 e4 b4 | o5 b2. r4 |
+  o5 c4. e8 g4 o6 c4 | o6 d4. c8 o5 a4 f+4 | o5 f+4 a4 b4 d+4 | o5 e2. r4 |
+
+track pad strings vol=0.28 pan=-0.3 rev=0.3
+  L o4 (e g b)1 | (c e g)1 | (d f+ a)1 | (d+ f+ b)1 |
+  (e g b)1 | (c e a)1 | (d+ f+ a)1 | (e g b)1 |
+  (d g b)1 | (d f+ a)1 | (e g b)1 | (d+ f+ b)1 |
+  (c e g)1 | (d f+ a)1 | (d+ f+ b)1 | (e g b)1 |
+
+track rhythm strings vol=0.24 pan=0.3 rev=0.2
+  L o4 [ (e g)8 r8 (e g)8 (e g)8 ]2 | [ (e g)8 r8 (e g)8 (e g)8 ]2 | [ (d f+)8 r8 (d f+)8 (d f+)8 ]2 | [ (d+ f+)8 r8 (d+ f+)8 (d+ f+)8 ]2 |
+  [ (e g)8 r8 (e g)8 (e g)8 ]2 | [ (c e)8 r8 (c e)8 (c e)8 ]2 | [ (d+ f+)8 r8 (d+ f+)8 (d+ f+)8 ]2 | [ (e g)8 r8 (e g)8 (e g)8 ]2 |
+  [ (d g)8 r8 (d g)8 (d g)8 ]2 | [ (d f+)8 r8 (d f+)8 (d f+)8 ]2 | [ (e g)8 r8 (e g)8 (e g)8 ]2 | [ (d+ f+)8 r8 (d+ f+)8 (d+ f+)8 ]2 |
+  [ (c e)8 r8 (c e)8 (c e)8 ]2 | [ (d f+)8 r8 (d f+)8 (d f+)8 ]2 | [ (d+ f+)8 r8 (d+ f+)8 (d+ f+)8 ]2 | [ (e g)8 r8 (e g)8 (e g)8 ]2 |
+
+track bass bass vol=0.68 rev=0.1
+  L o3 [ e8 ]8 | [ c8 ]8 | [ d8 ]8 | [ b8 ]8 |
+  [ e8 ]8 | [ a8 ]8 | [ b8 ]8 | [ e8 ]8 |
+  [ g8 ]8 | [ d8 ]8 | [ e8 ]8 | [ b8 ]8 |
+  [ c8 ]8 | [ d8 ]8 | [ b8 ]8 | e4 b4 e2 |
+
+track drums kit vol=0.3 rev=0.1
+  v64 L [ [ b8 h8 s8 h8 b8 b8 s8 h8 | ]3 b8 s16 s16 s8 h8 b8 s8 s16 s16 s8 | ]4

@@ -6,25 +6,17 @@
           "Move Deleter"
         ],
         "text": [
-          ""
+          "Ștergătorul de Mișcări"
         ]
       }
     },
     "t30r0601_gsbigman": {
       "name": {
         "en": [
-          "Man"
+          "Move Relearner"
         ],
         "text": [
-          "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A Pokémon can only know four moves at once. Choosing which ones is half the fun!"
-        ],
-        "text": [
-          "Un Pokémon poate cunoaște doar patru mișcări odată. Alegerea lor e jumătate din distracție!"
+          ""
         ]
       }
     },
@@ -34,7 +26,7 @@
           "Dragon Tamer"
         ],
         "text": [
-          ""
+          "Dresorul de Dragoni"
         ]
       }
     },
@@ -49,10 +41,10 @@
       },
       "dialog": {
         "en": [
-          "My brother-in-law helps Pokémon remember what they once knew, but only when he's in the mood. Come back another time, dear."
+          "My brother-in-law helps Pokémon remember what they once knew, for a Heart Scale. Go and talk to him, dear."
         ],
         "text": [
-          ""
+          "Cumnatul meu ajută Pokémonii să-și amintească ce știau cândva, dar numai când e în toane bune. Revino altă dată, draga mea."
         ]
       }
     }

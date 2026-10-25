@@ -134,8 +134,11 @@ internal static partial class BuildingArt
                 Wall = WallKind.Panel, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 2, Window = WindowKind.Ribbon,
                 Home = true, Accent = roof ?? MetropolisBlue, Gear = RoofGear.Vents
             },
+            // Nimbasa's houses (plan 22 · U6): white clapboard under cherry-red gables with shutters, the funfair's colours
+            Architecture.Funfair => Pitched(WallKind.Clapboard, Rgb(222, 64, 88)) with { Shutters = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
+            Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }
@@ -180,6 +183,13 @@ internal static partial class BuildingArt
                 _ => brickBlock
             },
 
+            // Castelia's Gym is flat on top as the city's blocks are: its block runs deep behind the front, and a hip roof
+            // over it was a slope of tiles as wide as the street
+            BuildingKind.Gym when town == Architecture.Metropolis => shop with
+            {
+                Roof = RoofShape.Flat, RoofColor = GymColor(b.Theme), Accent = PixelCanvas.Shadow(GymColor(b.Theme), 0.12f),
+                Sign = SignKind.Text, SignText = "GYM", Portal = 84, Gear = RoofGear.Vents
+            },
             BuildingKind.Gym => shop with
             {
                 RoofColor = snowy ? SnowRoof : GymColor(b.Theme), Accent = PixelCanvas.Shadow(GymColor(b.Theme), 0.12f),
@@ -298,6 +308,13 @@ internal static partial class BuildingArt
             BuildingKind.League when b.Model == "pke_league" => new BuildingStyle
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = Rgb(176, 52, 60), Storeys = 2, Window = WindowKind.Arched,
+                GlassDoor = true, Sign = SignKind.Text, SignText = "LEAGUE", Portal = 84, Accent = Rgb(214, 178, 84)
+            },
+            // Hoenn's League at the top of Ever Grande City (plan 21 · H9): a hall of pale stone with its Center inside,
+            // found at its door, under a deep blue hip roof with its name over the door
+            BuildingKind.League when town == Architecture.Bloomstone => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = Rgb(52, 84, 160), Storeys = 2, Window = WindowKind.Arched,
                 GlassDoor = true, Sign = SignKind.Text, SignText = "LEAGUE", Portal = 84, Accent = Rgb(214, 178, 84)
             },
             BuildingKind.League => new BuildingStyle

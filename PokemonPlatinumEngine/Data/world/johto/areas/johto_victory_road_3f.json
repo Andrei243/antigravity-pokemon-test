@@ -30,6 +30,10 @@
     { "species": "Rhyhorn", "level": 35 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Graveler",
+    "Graveler"
+  ],
   "rockSmash": [
     { "species": "Geodude", "level": 24, "maxLevel": 32 },
     { "species": "Graveler", "level": 30, "maxLevel": 33 }

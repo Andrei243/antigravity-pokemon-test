@@ -481,7 +481,7 @@ partial class Harness
             looks.RegisterSeen(Look("Shellos", Gender.Male));
             var unown = PokemonDatabase.Get("Unown")!;
             foreach (var letter in new[] { "Unown-C", "Unown", "Unown-H", "Unown-B", "Unown-F", "Unown-D" }) looks.RegisterSeen(Look("Unown", Gender.Genderless, letter == "Unown" ? null : letter));
-            var names = looks.AllLooks().Select(l => l.Look.Name).Distinct().ToList();
+            var names = looks.AllLooks().Select(l => l.Look.Look).Distinct().ToList();
             foreach (string name in names) PokemonSprites.Request(name);
             PokemonSprites.Flush(game.RenderContext);
             game.State = GameState.PokedexMenu;
@@ -507,6 +507,21 @@ partial class Harness
             for (int i = 0; i < 3; i++) dexScreen.Sideways(1);
             engine.Draw(); Shot("26w_pokedex_forms_unown");
             Console.WriteLine($"  forms page: {looks.LooksOf(PokemonDatabase.Get("Shellos")!.DexNumber).Count} looks of Shellos, {looks.LooksOf(unown.DexNumber).Count} of Unown, card {dexScreen.FormsIndex} on {dexScreen.LookChosen?.Name}");
+
+            // A female look of her own on the same page (plan 09 · L8): a Shinx of each gender, the female's card chosen,
+            // registered after the shots above so that they stay as they were
+            dexScreen.Cancel(); dexScreen.Cancel();
+            looks.RegisterSeen(Look("Shinx", Gender.Male));
+            looks.RegisterSeen(Look("Shinx", Gender.Female));
+            foreach (var l in looks.LooksOf(PokemonDatabase.Get("Shinx")!.DexNumber)) PokemonSprites.Request(l.Look);
+            PokemonSprites.Flush(game.RenderContext);
+            Pick("Shinx");
+            dexScreen.Confirm();
+            for (int i = 0; i < 6 && dexScreen.Page != PokedexPage.Forms; i++) dexScreen.Sideways(1);
+            dexScreen.Confirm();
+            while (dexScreen.LookChosen is { Gender: not Gender.Female } && dexScreen.FormsIndex < dexScreen.Looks.Count - 1) dexScreen.Sideways(1);
+            engine.Draw(); Shot("26wa_pokedex_forms_shinx_female");
+            Console.WriteLine($"  forms page: Shinx's looks {string.Join(", ", dexScreen.Looks.Select(l => $"{l.Name} {l.Gender} drawn as {l.Look}"))}; card {dexScreen.FormsIndex} on {dexScreen.LookChosen?.Look}");
             dexScreen.Close();
             dexScreen.FormsKnown = false;
             game.State = stateBefore;
@@ -773,6 +788,41 @@ partial class Harness
             bag.Sorting = false;
             bag.Close();
             engine.Settings.BoxesAnywhere = boxesBefore;
+            game.State = GameState.Overworld;
+        }
+
+        // The jukebox (plan 12 · Q15), last of all so that nothing before it moves: each tab, a song locked and unlocked,
+        // a night and a low-HP arrangement chosen, a cry's species, a bed playing. The sounds themselves can't be seen.
+        {
+            var jukebox = game.Jukebox;
+            var heard = PokemonPlatinumEngine.Audio.MusicLibrary.All.Where(s => s.HasLowHp || s.HasNight).Select(s => s.Id).Take(40).ToList();
+            var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Take(60).ToList();
+            jukebox.Open(heard, species);
+            game.State = GameState.Jukebox;
+            Frames(30); Shot("29c_jukebox_songs");
+            var songs = jukebox.Entries;
+            int locked = songs.ToList().FindIndex(e => !e.Unlocked);
+            int open = songs.ToList().FindIndex(e => e.Unlocked && e.Arrangements.Contains(JukeboxArrangement.LowHp));
+            while (jukebox.Cursor != locked && locked >= 0) jukebox.Move(1);
+            Frames(6); Shot("29c_jukebox_songs_locked");
+            while (jukebox.Cursor != open && open >= 0) jukebox.Move(1);
+            Frames(6); Shot("29c_jukebox_songs_unlocked");
+            jukebox.ChangeVariant(1);
+            Frames(6); Shot("29c_jukebox_songs_arrangement");
+            jukebox.Confirm();
+            Frames(6); Shot("29c_jukebox_songs_playing");
+            jukebox.Stop();
+            Console.WriteLine($"jukebox: {songs.Count} songs, {heard.Count} heard, locked row {locked}, unlocked row {open}, arrangement {jukebox.Arrangement}");
+            jukebox.ChangeTab(1);
+            Frames(12); Shot("29c_jukebox_sounds");
+            jukebox.ChangeTab(1);
+            jukebox.ChangeVariant(1);
+            Frames(12); Shot("29c_jukebox_cries");
+            jukebox.ChangeTab(1);
+            jukebox.Confirm();
+            Frames(12); Shot("29c_jukebox_beds");
+            jukebox.Close();
+            Console.WriteLine($"jukebox: {jukebox.Entries.Count} beds, {jukebox.Species.Count} species offered");
             game.State = GameState.Overworld;
         }
     }

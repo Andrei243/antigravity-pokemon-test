@@ -4,7 +4,7 @@
       "Castelia City"
     ],
     "text": [
-      ""
+      "Castelia City"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Harlequin"
         ],
         "text": [
-          ""
+          "Arlechinul"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Iris"
         ],
         "text": [
-          ""
+          "Iris"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Everyone on this avenue walks so fast. If you stand still, the crowd just flows round you like a river."
         ],
         "text": [
-          ""
+          "Toți de pe bulevardul ăsta merg atât de repede. Dacă stai pe loc, mulțimea curge pur și simplu în jurul tău ca un râu."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "The towers here are so tall, I get a crick in my neck. My Pidove says the view from the top is amazing."
         ],
         "text": [
-          ""
+          "Turnurile de aici sunt atât de înalte că mă ia o criză de gât. Pidove-ul meu zice că priveliștea de sus e uimitoare."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Castelia is the biggest city in Unova. People come from every corner of the region to work here."
         ],
         "text": [
-          ""
+          "Castelia e cel mai mare oraș din Unova. Oamenii vin din toate colțurile regiunii să lucreze aici."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I'm due at the office in five minutes, and the lift always takes forever. Wish me luck!"
         ],
         "text": [
-          ""
+          "Trebuie să fiu la birou în cinci minute, iar liftul durează mereu o veșnicie. Urați-mi noroc!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Burgh's Gym is up Gym Street. They say his Bug types get stronger the more you underestimate them."
         ],
         "text": [
-          ""
+          "Arena lui Burgh e pe Strada Arenei. Se zice că Pokémonii lui de tip Insectă devin mai puternici cu cât îi subestimezi mai mult."
         ]
       }
     }
@@ -125,7 +125,7 @@
         "Thumb Pier\nThe way down to the old sewers"
       ],
       "text": [
-        ""
+        "Debarcaderul Deget\nDrumul spre vechea canalizare"
       ]
     },
     "15,11": {
@@ -133,7 +133,7 @@
         "Ahead: Castelia Street\nTo the bay: Cruise Dock (closed for repairs)"
       ],
       "text": [
-        ""
+        "Înainte: Strada Castelia\nSpre golf: Debarcaderul Croazierelor (închis pentru reparații)"
       ]
     },
     "37,11": {
@@ -141,7 +141,7 @@
         "Ahead: Mode Street\nTo the bay: Prime Pier, ferries to Virbank City"
       ],
       "text": [
-        ""
+        "Înainte: Strada Modei\nSpre golf: Debarcaderul Prim, feriboturi spre Virbank City"
       ]
     },
     "59,11": {
@@ -149,7 +149,7 @@
         "Ahead: Narrow Street\nTo the bay: Unity Pier (closed)"
       ],
       "text": [
-        ""
+        "Înainte: Strada Îngustă\nSpre golf: Debarcaderul Unității (închis)"
       ]
     },
     "81,11": {
@@ -157,7 +157,7 @@
         "Ahead: Gym Street and the Pokémon Gym\nTo the bay: Liberty Pier (closed)"
       ],
       "text": [
-        ""
+        "Înainte: Strada Arenei și Arena Pokémon\nSpre golf: Debarcaderul Libertății (închis)"
       ]
     }
   }

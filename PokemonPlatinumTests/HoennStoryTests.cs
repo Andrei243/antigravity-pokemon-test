@@ -2966,4 +2966,219 @@ public class HoennStoryTests
         Assert.Empty(game.Talk("man_5").Asked);
         Assert.Equal(TutorAnswer.NotAble, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 10), "Explosion"));
     }
+
+    // ------------------------------------------------------------------ plan 21 · H9: Ever Grande and the League
+
+    /// <summary>A game with Hoenn's eight Badges and a strong team, as one comes to Ever Grande City.</summary>
+    private static Game AtEverGrande(PlayerLook look = PlayerLook.Boy)
+    {
+        var game = new Game(look: look);
+        foreach (string badge in RegionDatabase.Get(RegionDatabase.Hoenn)!.BadgeNames) game.Story.GiveBadge(RegionDatabase.Hoenn, badge);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 60));
+        return game;
+    }
+
+    [Fact]
+    public void WallyBattlesOnVictoryRoadAndWaitsWhereHeStopped()
+    {
+        var game = AtEverGrande();
+        game.Arrive("HoennVictoryRoad_1F", 15, 39);
+        Assert.Null(game.Present("victory_road_entrance_wally"));
+        Assert.Null(game.Present("wally"));
+
+        // The east tile of the west passage: he runs nine tiles along the passage below, up to the player, and battles
+        Assert.True(game.Fires("WallyTrigger2"));
+        var scene = game.Step("WallyTrigger2");
+        Assert.Contains(scene.Log, l => l.StartsWith("battle hoenn_wally_vr_1 Won"));
+        Assert.Equal(2, game.Story.Var("VAR_VICTORY_ROAD_1F_STATE"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_WALLY_VICTORY_ROAD"));
+        Assert.False(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY"));
+        Assert.False(game.Fires("WallyTrigger1"));
+
+        // Come to again, he waits where he stopped, and only talks
+        game.Arrive("HoennVictoryRoad_1F", 15, 39);
+        var wally = game.Present("victory_road_entrance_wally");
+        Assert.NotNull(wally);
+        Assert.Equal((3, 24), (wally!.GridX, wally.GridY));
+        Assert.DoesNotContain(game.Talk("victory_road_entrance_wally").Log, l => l.StartsWith("battle"));
+
+        // A battle lost leaves him below to try again
+        var lost = AtEverGrande();
+        lost.Fight = BattleOutcome.Lost;
+        lost.Arrive("HoennVictoryRoad_1F", 15, 39);
+        lost.Step("WallyTrigger1");
+        Assert.Equal(0, lost.Story.Var("VAR_VICTORY_ROAD_1F_STATE"));
+        Assert.True(lost.Fires("WallyTrigger1"));
+    }
+
+    [Fact]
+    public void TheLeaguesGuardsStandAsideOnlyForEveryBadge()
+    {
+        // Without the Feather Badge (the only one Emerald's guards look for, since it is the only one that can be passed
+        // by) the two stand shoulder to shoulder before the door
+        var game = new Game();
+        foreach (string badge in new[] { "Stone", "Knuckle", "Dynamo", "Heat", "Balance", "Mind", "Rain" })
+            game.Story.GiveBadge(RegionDatabase.Hoenn, badge);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 60));
+        game.Arrive("EverGrandeCity_PokemonLeague_1F", 9, 6);
+        Assert.Equal((9, 2), (game.Present("league_guard_1")!.GridX, game.Present("league_guard_1")!.GridY));
+        Assert.Equal((10, 2), (game.Present("league_guard_2")!.GridX, game.Present("league_guard_2")!.GridY));
+        game.Talk("league_guard_1");
+        Assert.False(game.Story.Has("FLAG_ENTERED_ELITE_FOUR"));
+        Assert.Equal(9, game.Present("league_guard_1")!.GridX);
+
+        // With it they step aside for good
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Feather");
+        game.Talk("league_guard_2");
+        Assert.True(game.Story.Has("FLAG_ENTERED_ELITE_FOUR"));
+        game.Arrive("EverGrandeCity_PokemonLeague_1F", 9, 6);
+        Assert.Equal((8, 2), (game.Present("league_guard_1")!.GridX, game.Present("league_guard_1")!.GridY));
+        Assert.Equal((11, 2), (game.Present("league_guard_2")!.GridX, game.Present("league_guard_2")!.GridY));
+        Assert.Empty(game.Talk("league_guard_1").Asked);
+
+        // The counter sells Emerald's stock
+        Assert.Contains(game.Talk("mart_employee").Log, l => l == "open Shop ever_grande_league");
+    }
+
+    [Theory]
+    [InlineData(PlayerLook.Boy)]
+    [InlineData(PlayerLook.Girl)]
+    public void TheEliteFourAndWallaceFallAndHoennsHallOfFameSendsTheChampionHome(PlayerLook look)
+    {
+        var game = AtEverGrande(look);
+        game.Story.Set("FLAG_ENTERED_ELITE_FOUR");
+        // What the hall puts back as it is come into
+        game.Story.Set("FLAG_DEFEATED_ELITE_4_SIDNEY");
+        game.Story.Set("FLAG_HOENN_DEFEATED_WALLACE");
+        game.Arrive("EverGrandeCity_PokemonLeague_1F", 9, 6);
+        Assert.False(game.Story.Has("FLAG_DEFEATED_ELITE_4_SIDNEY"));
+        Assert.False(game.Story.Has("FLAG_HOENN_DEFEATED_WALLACE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_CHAMPIONS_ROOM_RIVAL"));
+
+        game.Through("EverGrandeCity_Hall5");
+        game.Through("EverGrandeCity_SidneysRoom");
+        Assert.True(game.Story.Has("FLAG_MET_SCOTT_IN_EVERGRANDE"));
+        string before = "EverGrandeCity_Hall5";
+        foreach (var (room, who, id, flag, hall, next) in new[]
+                 {
+                     ("EverGrandeCity_SidneysRoom", "sidney", "hoenn_sidney", "FLAG_DEFEATED_ELITE_4_SIDNEY", "EverGrandeCity_Hall1", "EverGrandeCity_PhoebesRoom"),
+                     ("EverGrandeCity_PhoebesRoom", "phoebe", "hoenn_phoebe", "FLAG_DEFEATED_ELITE_4_PHOEBE", "EverGrandeCity_Hall2", "EverGrandeCity_GlaciasRoom"),
+                     ("EverGrandeCity_GlaciasRoom", "glacia", "hoenn_glacia", "FLAG_DEFEATED_ELITE_4_GLACIA", "EverGrandeCity_Hall3", "EverGrandeCity_DrakesRoom"),
+                     ("EverGrandeCity_DrakesRoom", "drake", "hoenn_drake", "FLAG_DEFEATED_ELITE_4_DRAKE", "EverGrandeCity_Hall4", "EverGrandeCity_ChampionsRoom")
+                 })
+        {
+            Assert.Equal(room, game.Map.Name);
+            var ahead = game.Map.Warps.Where(w => w.TargetMap == hall).ToList();
+            Assert.NotEmpty(ahead);
+            // The door ahead is shut until the master of the room is beaten, and there is no way back
+            Assert.All(ahead, w => Assert.True(game.Map.IsSolid(w.SourceX, w.SourceY), room));
+            Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == before);
+            var battle = game.Talk(who);
+            Assert.Contains(battle.Log, l => l.StartsWith($"battle {id} Won"));
+            Assert.True(game.Story.Has(flag));
+            Assert.All(ahead, w => Assert.False(game.Map.IsSolid(w.SourceX, w.SourceY), room));
+            Assert.DoesNotContain(game.Talk(who).Log, l => l.StartsWith("battle"));
+            game.Through(hall);
+            Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == room);
+            before = hall;
+            game.Through(next);
+        }
+
+        // The Champion's room is one scene: Wallace's battle, the rival and the professor, and through to the Hall of Fame
+        var champion = game.Played.Single(p => p.Script.Contains("ever_grande_city_champions_room") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(champion.Log, l => l.StartsWith("battle hoenn_wallace Won"));
+        Assert.Contains(champion.Transcript, t => t.Speaker == game.Rival);
+        Assert.Contains(champion.Transcript, t => t.Speaker == "Prof. Birch");
+        Assert.True(game.Story.Has("FLAG_HIDE_PETALBURG_GYM_GREETER"));
+
+        // The Hall of Fame: the team recorded, Hoenn's story ended, the credits, and home
+        var hall2 = game.Played.Single(p => p.Script.Contains("ever_grande_city_hall_of_fame") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(hall2.Log, l => l.StartsWith("halloffame"));
+        Assert.Contains(hall2.Log, l => l == "open Credits");
+        var hoenn = RegionDatabase.Get(RegionDatabase.Hoenn)!;
+        Assert.True(game.Story.Has(hoenn.StoryCompleteFlag));
+        Assert.True(game.Story.Has("FLAG_IS_CHAMPION"));
+        Assert.Equal("LittlerootTown_BrendansHouse_2F", game.Map.Name);
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!, game.Story));
+
+        // What the victory leaves for the time after, and the League's rooms put back
+        Assert.True(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY"));
+        Assert.False(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN"));
+        Assert.False(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL"));
+        Assert.False(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY"));
+        foreach (string flag in new[] { "FLAG_DEFEATED_ELITE_4_SIDNEY", "FLAG_DEFEATED_ELITE_4_PHOEBE", "FLAG_DEFEATED_ELITE_4_GLACIA",
+                     "FLAG_DEFEATED_ELITE_4_DRAKE", "FLAG_HOENN_DEFEATED_WALLACE" })
+            Assert.False(game.Story.Has(flag), flag);
+
+        // Professor Birch makes the Pokédex the National one, once (back in his lab since the first chapter)
+        game.Story.Unset("FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH");
+        game.Story.SetVar("VAR_BIRCH_LAB_STATE", 5);
+        game.Arrive("LittlerootTown_ProfessorBirchsLab", 6, 8);
+        var birch = game.Talk("birchs_lab_birch");
+        Assert.True(birch.NationalDex);
+        Assert.Contains(birch.Log, l => l == "nationaldex");
+    }
+
+    [Fact]
+    public void ABattleLostToWallaceLeavesTheHallOfFameShut()
+    {
+        var game = AtEverGrande();
+        game.Fight = BattleOutcome.Lost;
+        game.Arrive("EverGrandeCity_ChampionsRoom", 6, 11);
+        var champion = game.Played.Single(p => p.Script.Contains("ever_grande_city_champions_room") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(champion.Log, l => l.StartsWith("battle hoenn_wallace Lost"));
+        Assert.False(game.Story.Has("FLAG_HOENN_DEFEATED_WALLACE"));
+        Assert.False(game.Story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag));
+        Assert.All(game.Map.Warps.Where(w => w.TargetMap == "EverGrandeCity_HallOfFame"), w => Assert.True(game.Map.IsSolid(w.SourceX, w.SourceY)));
+        Assert.Null(game.Present("champions_room_rival"));
+    }
+
+    [Fact]
+    public void ScottWaitsInEverGrandesCenterForAPlayerWithTheFeatherBadgeOnce()
+    {
+        var game = AtEverGrande();
+        game.Arrive("EverGrandeCity_PokemonCenter_1F", 7, 7);
+        Assert.NotNull(game.Present("ever_grande_scott"));
+        game.Talk("ever_grande_scott");
+        Assert.True(game.Story.Has("FLAG_MET_SCOTT_IN_EVERGRANDE"));
+        game.Arrive("EverGrandeCity_PokemonCenter_1F", 7, 7);
+        Assert.Null(game.Present("ever_grande_scott"));
+
+        // Without the Feather Badge he isn't there yet
+        var early = new Game();
+        early.Arrive("EverGrandeCity_PokemonCenter_1F", 7, 7);
+        Assert.Null(early.Present("ever_grande_scott"));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheTwelfthStretchsPeopleAndAnOlderSaveIsGivenThemOnTheWay()
+    {
+        var game = new Game();
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_TWELVE", "FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY", "FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY",
+                     "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL", "FLAG_HIDE_CHAMPIONS_ROOM_BIRCH", "FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT" })
+            Assert.True(game.Story.Has(flag), flag);
+
+        // A save from before the stretch was written comes to Ever Grande City with none of it set
+        var older = new Game();
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_TWELVE", "FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY", "FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY" })
+            older.Story.Unset(flag);
+        var city = Hoenn.Value.Area("ever_grande_city")!.Warps[1];
+        older.Arrive("Hoenn", city.X, city.Z + 1);
+        Assert.True(older.Story.Has("FLAG_HOENN_CHAPTER_TWELVE"));
+        older.Arrive("HoennVictoryRoad_1F", 15, 39);
+        Assert.Null(older.Present("victory_road_entrance_wally"));
+        Assert.Null(older.Present("wally"));
+    }
+
+    [Fact]
+    public void TheSongsOfEverGrandeVictoryRoadAndTheHallOfFameAreThere()
+    {
+        foreach (string song in new[] { "hoenn/ever_grande", "hoenn/victory_road", "hoenn/hall_of_fame", "hoenn/credits" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Equal("hoenn/hall_of_fame", MusicDirector.SceneSong(RegionDatabase.Hoenn, "hall_of_fame", MusicLibrary.Exists));
+        Assert.Equal("hoenn/credits", MusicDirector.SceneSong(RegionDatabase.Hoenn, "credits", MusicLibrary.Exists));
+    }
 }

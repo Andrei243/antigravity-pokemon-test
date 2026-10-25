@@ -1,0 +1,32 @@
+# Route 4 (its houses of flats, the Desert Resort's edge and its gate house): the sandy road of the works between
+# Castelia and Nimbasa, a striding brass tune in G over held strings, a walking bass and a steady beat.
+# Original composition for this game (plan 22 · U6).
+title Route 4
+tempo 136
+meter 4/4
+reverb 0.22
+nighttempo 0.9
+
+track lead brass night=horn vol=0.7 pan=0.06 rev=0.22
+  L o5 g4 b8 o6 d8 o5 b4 g4 | o5 a4 f+8 a8 o6 d4 o5 a4 | o5 g4 e8 g8 b4 g4 | o5 e2 g4 o6 c4 |
+  o5 d4 g8 b8 o6 d4 o5 b4 | o5 f+4 a8 o6 d8 o5 a4 f+4 | o5 e4 g8 o6 c8 e4 c4 | o5 d2 a4 f+4 |
+  o5 e4 g8 b8 o6 e4 o5 b4 | o5 c4 e8 g8 o6 c4 o5 g4 | o5 b4 g8 d8 g4 b4 | o5 a2 f+4 d4 |
+  o5 g4 e8 c8 e4 g4 | o5 f+4 a8 o6 d8 o5 a4 f+4 | o5 g4 b8 o6 d8 g4 d4 | o6 d2 o5 g4 r4 |
+
+track pad strings night=pad vol=0.29 pan=-0.22 rev=0.32
+  L o4 (g b >d)1 | o4 (d f+ a)1 | o4 (e g b)1 | o4 (c e g)1 |
+  o4 (g b >d)1 | o4 (d f+ a)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (c e g)1 | o4 (g b >d)1 | o4 (d f+ a)1 |
+  o4 (c e g)1 | o4 (d f+ a)1 | o4 (g b >d)1 | o4 (g b >d)1 |
+
+track bass synthbass vol=0.66 rev=0.06
+  L [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 e8 o3 e8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 g8 o3 g8 ]4 |
+
+track drums kit vol=0.45 rev=0.1
+  L v82 [ b8 r8 s8 r8 b8 b8 s8 r8 | ]15 b8 r8 s8 b8 s16 s16 s16 s16 s8 r8 |
+
+track hats kit vol=0.32 pan=0.15 rev=0.1
+  L v54 [ h8 v34 h8 v54 h8 v34 h8 v54 h8 v34 h8 v54 h8 v34 h8 v54 | ]16

@@ -285,6 +285,11 @@
         "On": "Cu Insigna și HM-ul în rucsac, un ajutor sălbatic face pentru tine Tăiere, Zbor, Surf, Forță, Risipire, Spărgător de Pietre, Cascadă și Cățărare."
       }
     },
+    "jukebox": {
+      "label": "Tonomat",
+      "value": "Deschide",
+      "help": "Ascultă orice melodie pe care jocul ți-a cântat-o, și fiecare efect sonor, strigăt și sunet de ambianță din el."
+    },
     "boxesAnywhere": {
       "label": "Cutii oriunde și rucsac ordonat",
       "value": { "Off": "Nu", "Rules": "După reguli", "On": "Da" },
@@ -325,6 +330,7 @@
     },
     "menu": {
       "continue": "CONTINUĂ",
+      "jukebox": "TONOMAT",
       "newGame": "JOC NOU",
       "delete": "ȘTERGE O SALVARE",
       "deleteWhich": "CE SALVARE ȘTERGI?",
@@ -485,6 +491,67 @@
     }
   },
 
+  "jukebox": {
+    "title": "TONOMAT",
+    "locked": "???",
+    "lockedNote": "Încă n-ai auzit melodia asta. Joacă mai departe și o vei găsi aici.",
+    "count": "{n} din {total}",
+    "length": "Se cântă o dată, {time}",
+    "lengthLoops": "Se reia, {time} o tură",
+    "arrangements": "VARIANTE",
+    "cryOf": "STRIGĂTUL LUI",
+    "cryNumber": "Nr. {n}",
+    "keys": { "shoulders": "Q / E" },
+    "tab": { "songs": "MELODII", "sounds": "SUNETE", "cries": "STRIGĂTE", "beds": "AMBIANȚĂ" },
+    "hint": { "tab": "Filă", "arrangement": "Variantă", "species": "Specie" },
+    "arrangement": { "Day": "ZI", "Night": "NOAPTE", "LowHp": "PV PUȚINE" },
+    "group": { "Menu": "MENIU", "Field": "TEREN", "Battle": "LUPTĂ", "Move": "MIȘCARE" },
+    "cry": {
+      "Normal": "Obișnuit",
+      "Half": "Scurt",
+      "FieldEvent": "Întâmplare pe teren",
+      "Faint": "Leșin",
+      "Pinch": "La ananghie",
+      "PinchHalf": "La ananghie, scurt",
+      "Pokedex": "Pokédex",
+      "Uproar1": "Mârâit, primul",
+      "Uproar2": "Mârâit, al doilea",
+      "Howl1": "Răget, primul",
+      "Howl2": "Răget, al doilea",
+      "HyperVoice1": "Hiper Voce, primul",
+      "HyperVoice2": "Hiper Voce, al doilea",
+      "MidMove": "Urlet"
+    },
+    "cryNote": {
+      "Normal": "Așa cum e: la trimiterea în luptă, la un Pokémon sălbatic care apare, în rezumat, la o evoluție.",
+      "Half": "O treime de secundă, stingându-se în ultima șesime.",
+      "FieldEvent": "Un Pokémon întâlnit pe teren într-o scenă: cu un semiton mai sus, cu un ecou ușor dezacordat alături.",
+      "Faint": "La leșin: mai jos și mai încet.",
+      "Pinch": "Trimis în luptă la ananghie, cu o stare sau cu bara care nu e verde: puțin mai jos.",
+      "PinchHalf": "Strigătul scurt al unui Pokémon la ananghie.",
+      "Pokedex": "Strigătul din fișa Pokédexului.",
+      "Uproar1": "Primul strigăt al mișcărilor ca Mârâit: mai jos, huruind.",
+      "Uproar2": "Al doilea, când se termină primul: puțin mai jos, tăiat scurt.",
+      "Howl1": "Primul strigăt al mișcărilor ca Răget: jos, lent și răsunând.",
+      "Howl2": "Al doilea: puțin mai sus, cu un ecou mai puternic.",
+      "HyperVoice1": "Primul strigăt al Hiper Vocii: mai sus, dublat cu o cvintă deasupra.",
+      "HyperVoice2": "Al doilea: și mai sus, dublat și răsunând, tăiat scurt.",
+      "MidMove": "Strigătul lui Urlet, prelungit de un ecou lung."
+    },
+    "bed": {
+      "Rain": "Ploaie",
+      "HeavyRain": "Ploaie torențială",
+      "Hail": "Grindină",
+      "Wind": "Vânt",
+      "Blizzard": "Viscol",
+      "Sandstorm": "Furtună de nisip",
+      "Waterfall": "Cascadă",
+      "River": "Râu",
+      "Waves": "Valuri",
+      "Cave": "Peșteră",
+      "Underwater": "Sub mare"
+    }
+  },
 
   "athlon": {
     "title": "POKÉATHLON",
@@ -2025,6 +2092,7 @@
     "notHere": "Aici nu se poate merge cu Bicicleta."
   },
   "itemUse": {
+    "levelCapped": "{name} nu poate crește peste Nv. {level} deocamdată.",
     "statsGrew": "Statisticile de bază ale lui {name} au crescut datorită obiectului {item}.",
     "friendlier": "{name} a devenit mai prietenos, iar statisticile lui de bază au scăzut puțin.",
     "woke": "{name} s-a trezit.",
@@ -2191,6 +2259,7 @@
   },
 
   "battle": {
+    "levelCapped": "{pokemon} nu poate crește peste Nv. {level} deocamdată.",
     "sportBallsAreFor": "Sport Ball-urile sunt pentru Concursul de Prins Insecte.",
     "youveThrownYourLastSport": "Ai aruncat ultimul Sport Ball!",
     "isDisabled": "Mișcarea {move} a lui {pokemon} e blocată!",
@@ -3658,6 +3727,7 @@
     "broke": "Înregistrarea nu mai poate fi redată de aici."
   },
   "scriptLines": {
+    "whichRemembered": "Ce mișcare să-și amintească {pokemon}?",
     "yes": "Da",
     "no": "Nu",
     "cancel": "Anulează",

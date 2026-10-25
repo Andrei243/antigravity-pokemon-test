@@ -435,6 +435,12 @@ public class SaveData
     public List<string> ScenesSeen { get; set; } = new();
 
     /// <summary>
+    /// The songs this game has played (plan 12 · Q15; <c>AudioManager.Heard</c>), each by its id: what the jukebox has
+    /// unlocked. A save from before they were kept has none, and nothing brings it up to date: the jukebox fills as it plays.
+    /// </summary>
+    public List<string> Heard { get; set; } = new();
+
+    /// <summary>
     /// The phrases the player has given (plan 08 · P9; <c>StoryState.Phrases</c>), by name, two words each as their keys
     /// (<c>feelings:happy</c>). A save from before they were kept has none, and nothing brings it up to date.
     /// </summary>

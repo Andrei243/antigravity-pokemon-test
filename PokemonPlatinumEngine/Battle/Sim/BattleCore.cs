@@ -83,6 +83,13 @@ public sealed class CoreSetup
     public Difficulty Difficulty { get; init; } = Difficulty.Normal;
 
     /// <summary>
+    /// The level no Pokémon of the player's grows past in this battle (plan 13 · V3, <see cref="RunRules.LevelCap"/>): EXP
+    /// stops at the start of this level (<see cref="LevelCaps.Allowed"/>) and the battle says so once. 0 for none, which
+    /// changes nothing; a record of the battle keeps it.
+    /// </summary>
+    public int RunLevelCap { get; init; }
+
+    /// <summary>
     /// The player has a Key Stone (plan 06 · R20): under rules with <see cref="Ruleset.MegaEvolution"/> one of their
     /// own Pokémon may Mega Evolve once in the battle. A trainer has theirs as <see cref="Trainer.KeyStone"/>.
     /// </summary>
@@ -183,6 +190,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The difficulty the battle is fought under (<see cref="CoreSetup.Difficulty"/>).</summary>
     public Difficulty Difficulty { get; }
 
+    /// <summary>The level EXP stops at in this battle (<see cref="CoreSetup.RunLevelCap"/>), null for none.</summary>
+    public int? RunLevelCap { get; }
+
     /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
     internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
 
@@ -236,6 +246,7 @@ public sealed partial class BattleCore : IBattleContext
         Frontier = setup.Frontier;
         OffersSwitch = setup.OffersSwitch;
         Difficulty = setup.Difficulty;
+        RunLevelCap = setup.RunLevelCap > 0 ? setup.RunLevelCap : null;
         KeyStone = setup.KeyStone;
         ZRing = setup.ZRing;
         DynamaxBand = setup.DynamaxBand;
@@ -355,7 +366,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -368,6 +379,7 @@ public sealed partial class BattleCore : IBattleContext
         if (Inverse != record.Inverse) throw new ArgumentException("A replay is fought under the record's own chart: an inverse battle's as an inverse battle");
         if (OffersSwitch != record.OffersSwitch) throw new ArgumentException("A replay offers a switch where the recorded battle did (plan 08 · P1): Shift's as Shift's");
         if (Difficulty != record.Difficulty) throw new ArgumentException("A replay is fought under the record's own difficulty (plan 13 · V2): Easy's EXP as Easy's");
+        if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
     }
@@ -1250,7 +1262,7 @@ public sealed partial class BattleCore : IBattleContext
                 bool past = p.Species.LevelEvolution is { } next && p.Level >= next.Level;
                 int exp = Formulas.ScaledExp(foe.BaseExpYield, foe.Level, p.Level, fought.Contains(p), traded,
                     p.HeldItem?.HoldEffect == HeldItemEffects.ExpUp, past, foreign: p.Language != null);
-                Give(p, exp, traded, foe);
+                Give(p, exp, traded, foe, fought.Contains(p));
             }
             return;
         }
@@ -1273,17 +1285,25 @@ public sealed partial class BattleCore : IBattleContext
     /// One Pokémon's EXP: the line, the foe's effort (before the level, which counts it), the levels it reaches and
     /// the moves they bring. A move it can't fit is the screen's to ask about (<see cref="MoveWanted"/>).
     /// </summary>
-    private void Give(Pokemon p, int exp, bool boosted, Pokemon foe)
+    private void Give(Pokemon p, int exp, bool boosted, Pokemon foe, bool fought = true)
     {
         // Easy gives three halves of it (plan 13 · V2); the other difficulties leave it as it is
         exp = DifficultyRules.ScaleExp(exp, Difficulty);
-        Say(boosted ? Text.Of("battle.gainedABoostedExp", ("pokemon", p.DisplayName), ("exp", exp)) : Text.Of("battle.gainedExpPoints", ("pokemon", p.DisplayName), ("exp", exp)));
+        // The run's level cap (plan 13 · V3) lets through only what takes it to the cap's level; with none, exp is exp
+        int wantedExp = exp;
+        exp = LevelCaps.Allowed(p, exp, RunLevelCap);
+        bool stopped = exp < wantedExp;
+        if (exp > 0 || !stopped) Say(boosted ? Text.Of("battle.gainedABoostedExp", ("pokemon", p.DisplayName), ("exp", exp)) : Text.Of("battle.gainedExpPoints", ("pokemon", p.DisplayName), ("exp", exp)));
         EffortRules.Gain(p, foe.EvYield, Rules);
         // The stats it had, for the level-up panel (plan 08 · P5): effort changes none of them until a level reckons them again
         var before = p.Stats();
         bool rose = p.GainExp(exp, out var learned, out var wanted, Rules.LevelCap);
-        Emit(new ExpGained(p, exp));
-        if (!rose) return;
+        if (exp > 0 || !stopped) Emit(new ExpGained(p, exp));
+        if (!rose)
+        {
+            if (stopped && fought) SayLevelCap(p);
+            return;
+        }
 
         // Evolution waits for the battle to end (see LeveledUp)
         if (!leveledUp.Contains(p)) leveledUp.Add(p);
@@ -1292,6 +1312,16 @@ public sealed partial class BattleCore : IBattleContext
         // Only a Pokémon standing on the field plays the level's animation (SEQ_GET_EXP_CHECK_LEVEL_UP; plan 25 · Y3)
         if (PlayerSlots.FirstOrDefault(b => b.IsActive && b.Pokemon == p) is { } standing) grew.With(Moment(standing, BattleMoment.LevelUp));
         foreach (string move in learned) Say(Text.Of("battle.learned", ("pokemon", p.DisplayName), ("move", LocalNames.Move(move))));
+        if (stopped && fought) SayLevelCap(p);
         foreach (string move in wanted) Emit(new MoveWanted(p, move));
     }
+
+    /// <summary>Said once a battle for each Pokémon the run's level cap holds back: it can't grow further yet (plan 13 · V3).</summary>
+    private void SayLevelCap(Pokemon p)
+    {
+        if (RunLevelCap is not { } cap || !levelCapSaid.Add(p)) return;
+        Say(Text.Of("battle.levelCapped", ("pokemon", p.DisplayName), ("level", cap)));
+    }
+
+    private readonly HashSet<Pokemon> levelCapSaid = new();
 }

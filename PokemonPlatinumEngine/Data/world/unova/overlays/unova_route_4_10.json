@@ -1,0 +1,12 @@
+{
+  // Route 4's fourth house of flats, upstairs (plan 22 · U6): Black 2's room, our words
+  "area": "unova_route_4_10",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [ "Folk call the lads outside hooligans, but they're mostly just bored. Don't judge a Trainer by their jacket." ]
+    }
+  }
+}

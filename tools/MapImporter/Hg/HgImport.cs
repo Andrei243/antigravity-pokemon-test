@@ -194,6 +194,8 @@ public static class HgImport
         foreach (int land in wanted.OrderBy(l => l)) Write("chunks", land.ToString("000", CultureInfo.InvariantCulture), world.Chunk(land));
         Write("", "trainers", world.Trainers);
         Write("", "phone", world.Phone);
+        // The places swarms come to (plan 20 · J13, part c)
+        Write("", Path.GetFileNameWithoutExtension(WorldEncountersFile.FileName), world.SwarmTables());
         Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), world.Habitats());
         if (open == null)
         {

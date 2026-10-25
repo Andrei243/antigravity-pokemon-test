@@ -60,10 +60,308 @@
     },
     {
       "en": [
+        "Hm? You're up early, with nothing to do already? I may have time to listen to you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you insist, we can swap numbers, too! What do you say?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine. Here's my number, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Registered Clair in the Pokégear."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I can battle you on Friday nights, if you insist!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You again? Friday nights, remember, if it's a battle you're after. Until then, let me train."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Hm? What is it? I'm on my way back to the Gym."
       ],
       "text": [
-        "Hm? Ce e? Mă întorc la Arenă."
+        ""
+      ]
+    }
+  ],
+  "RivalTalk": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...What? Yes, I'm training my Pokémon here. You can laugh at me now, but it has to be done."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon aren't ready to beat you yet. I can't push them too hard. I have to be strict with myself to become the greatest Trainer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Whew. Learn to stay out of my way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...What? Have you come all this way to laugh at my training? Humph!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came here to learn the Master's secrets, and he makes a mystery of everything. So I'm training my Pokémon here myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! And you, too. We met at the Team Rocket hideout."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You! Where have you been all this time? Prepare to lose. I challenge you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Calm down. I was in a hurry then, and I'm sorry for it.",
+        "But I never turn down a challenger! How about a Double Battle?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Humph! You can't beat me one on one, can you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, a Double Battle isn't so bad. {player}, you'll be on my side!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, then. You over there, will you team up with me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You can't be serious! Me, with that show-off in the strange costume? No way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Come to my side! We'll beat Lance together!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Just as I expected. You two make quite a team.",
+        "Going alone is one way to aim for the top. But that isn't all there is to a Pokémon battle, though I don't suppose either of you needs reminding.",
+        "See you another time, {player}!"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I must excuse myself. ...{player}, that was a fun battle. And that goes for you too, wise guy."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... It wasn't supposed to go this way. Anyway, I'm not giving up on beating you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll train my Pokémon, and my own heart too. I'll come back as the toughest challenge you've ever had!"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

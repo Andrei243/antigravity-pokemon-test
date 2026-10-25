@@ -1,0 +1,30 @@
+# Ever Grande City's Pokémon Center (plan 21 · H9). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/EverGrandeCity_PokemonCenter_1F/scripts.inc).
+#
+# Scott waits here for a player with the Feather Badge, once (FLAG_MET_SCOTT_IN_EVERGRANDE, which going into Sidney's room
+# sets too, as Emerald's does): he has watched the player all the way from Petalburg and is glad to see them here. He
+# goes out of the door and on his way (VAR_SCOTT_STATE counts his meetings, as Emerald's does).
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_TWELVE call HoennChapterTwelve
+  if flag FLAG_MET_SCOTT_IN_EVERGRANDE end
+  if not badge feather end
+  clearflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  end
+
+
+script Scott
+  scene "Scott in Ever Grande"
+  face ever_grande_scott player
+  speaker "Scott"
+  say "{player}! You made it all the way to Ever Grande City! I knew it the first time I saw you battle."
+  say "I've watched a great many trainers in my time, but very few of them ever stood where you're standing now."
+  say "Beyond Victory Road is the Pokémon League. Go and show the Elite Four what you showed me. I'll be cheering!"
+  sound "door_slide"
+  hide ever_grande_scott
+  setflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  setflag FLAG_MET_SCOTT_IN_EVERGRANDE
+  addvar VAR_SCOTT_STATE 1
+  endscene
+  end

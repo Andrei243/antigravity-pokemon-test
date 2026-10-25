@@ -99,7 +99,9 @@ public enum GameState
     /// <summary>The Bug-Catching Contest's board of results, a script's <c>bugcontest results</c> waiting on it (plan 15 · E5).</summary>
     BugContestResults,
     /// <summary>The Pokéathlon's courses, team and events, a script's <c>athlon open</c> waiting on it (plan 15 · E6).</summary>
-    Athlon
+    Athlon,
+    /// <summary>The jukebox: every song, sound, cry and bed to play, from the title or the options (plan 12 · Q15).</summary>
+    Jukebox
 }
 
 public partial class GameEngine
@@ -184,6 +186,7 @@ public partial class GameEngine
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
+        flow.BagScreen.RunCap = CurrentLevelCap();
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -612,6 +615,7 @@ public partial class GameEngine
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag);
         flow.Story.RestoreGreetings(save.GreetedPeople);
         flow.Story.RestoreScenes(save.ScenesSeen);
+        AudioManager.SetHeard(save.Heard);
         flow.Story.RestorePhrases(save.StoryPhrases);
         ResetTheSkip();
         OweTheFashionCase();
@@ -744,6 +748,7 @@ public partial class GameEngine
             TakenItems = told.TakenItems,
             GreetedPeople = flow.Story.Greeted.Order(StringComparer.Ordinal).ToList(),
             ScenesSeen = flow.Story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
+            Heard = AudioManager.Heard.ToList(),
             StoryPhrases = flow.Story.PhrasesToSave(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
@@ -968,6 +973,9 @@ public partial class GameEngine
                         break;
                     case TitleChoice.Migrate:
                         OpenMigrate();
+                        break;
+                    case TitleChoice.Jukebox:
+                        OpenJukebox(GameState.Title);
                         break;
                     case TitleChoice.Options:
                         flow.OptionsReturn = GameState.Title;
@@ -1266,6 +1274,9 @@ public partial class GameEngine
             case GameState.Migrate:
                 UpdateMigrate(dt);
                 break;
+            case GameState.Jukebox:
+                UpdateJukebox(dt);
+                break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
                 if (!flow.JournalScreen.IsActive) flow.State = GameState.Overworld;
@@ -1290,7 +1301,8 @@ public partial class GameEngine
                     ApplySettings(window: true);
                     Settings.Save();
                 }
-                if (!flow.OptionsScreen.IsActive) flow.State = flow.OptionsReturn;
+                if (flow.OptionsScreen.TakeJukeboxRequest()) OpenJukebox(GameState.Options);
+                else if (!flow.OptionsScreen.IsActive) flow.State = flow.OptionsReturn;
                 break;
             case GameState.Transition:
                 UpdateTransition(dt);
@@ -2625,6 +2637,9 @@ public partial class GameEngine
                 break;
             case GameState.Migrate:
                 flow.MigrateScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Jukebox:
+                flow.JukeboxScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);

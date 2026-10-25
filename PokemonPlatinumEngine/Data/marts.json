@@ -413,6 +413,15 @@
       "Max Repel",
       "X Attack",
       "X Defense"
+    ],
+    "ever_grande_league": [
+      "Ultra Ball",
+      "Hyper Potion",
+      "Max Potion",
+      "Full Restore",
+      "Full Heal",
+      "Revive",
+      "Max Repel"
     ]
   }
 }

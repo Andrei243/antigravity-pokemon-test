@@ -1,0 +1,72 @@
+{
+  "key": "ever_grande_city",
+  "index": 48,
+  "name": "Ever Grande City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_EVER_GRANDE",
+  "nightMusic": "MUS_EVER_GRANDE",
+  "encounters": "ever_grande_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Luvdisc", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Luvdisc", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Corsola", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 778, "z": 185, "to": "ever_grande_city_pokemon_league_1f", "toWarp": 0 },
+    { "x": 787, "z": 228, "to": "ever_grande_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 778, "z": 221, "to": "hoenn_victory_road_1f", "toWarp": 0 },
+    { "x": 778, "z": 207, "to": "hoenn_victory_road_1f", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 779, "z": 223, "type": 0, "script": "EverGrandeCity_EventScript_VictoryRoadSign" },
+    { "x": 789, "z": 228, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 778, "z": 232, "type": 0, "script": "EverGrandeCity_EventScript_CitySign" },
+    { "x": 783, "z": 195, "type": 0, "script": "EverGrandeCity_EventScript_PokemonLeagueSign" },
+    { "x": 788, "z": 228, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" }
+  ],
+  "triggers": [
+    { "x": 777, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 776, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 778, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 779, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 780, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 781, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 782, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 783, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 784, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 785, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 786, "z": 238, "width": 1, "depth": 1, "script": "EverGrandeCity_EventScript_SetVisitedEverGrande", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

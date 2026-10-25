@@ -1,0 +1,30 @@
+{
+  "key": "ever_grande_city_pokemon_center_1f",
+  "index": 223,
+  "name": "Ever Grande City",
+  "matrix": 172,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "ever_grande_city", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "ever_grande_city", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "ever_grande_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ever_grande_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_south", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_PokemonCenter_1F_EventScript_Woman" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_east", "x": 10, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "EverGrandeCity_PokemonCenter_1F_EventScript_ExpertM" },
+    { "id": "ever_grande_scott", "looks": "scott", "movement": "look_north", "x": 9, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT", "script": "EverGrandeCity_PokemonCenter_1F_EventScript_Scott" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1909,11 +1909,12 @@ internal static partial class PokemonModels
 
     // ------------------------------------------------------------------ Hippopotas line
 
-    private static PokeBuilder Hippopotas()
+    /// <param name="female">A female (plan 09 · L8): her colours the male's turned about, a grey-brown hide with sandy patches.</param>
+    private static PokeBuilder Hippopotas(bool female = false)
     {
         var b = new PokeBuilder("Hippopotas", 0.72f, BodyPlan.Quadruped, V(0, 0.2f, -0.04f)) { Coat = Fur };
-        var tan = Rgb(232, 206, 146);
-        var patch = Rgb(196, 156, 98);
+        var tan = female ? Rgb(150, 132, 116) : Rgb(232, 206, 146);
+        var patch = female ? Rgb(226, 200, 144) : Rgb(196, 156, 98);
         var brown = Rgb(150, 100, 62);
         var dark = Rgb(56, 38, 30);
 
@@ -1943,11 +1944,12 @@ internal static partial class PokemonModels
         return b;
     }
 
-    private static PokeBuilder Hippowdon()
+    /// <param name="female">A female (plan 09 · L8): her colours the male's turned about, a grey hide plated in sandy yellow.</param>
+    private static PokeBuilder Hippowdon(bool female = false)
     {
         var b = new PokeBuilder("Hippowdon", 1f, BodyPlan.Quadruped, V(0, 0.32f, -0.06f)) { Coat = Fur };
-        var yellow = Rgb(214, 176, 74);
-        var grey = Rgb(92, 92, 98);
+        var yellow = female ? Rgb(104, 102, 108) : Rgb(214, 176, 74);
+        var grey = female ? Rgb(206, 172, 82) : Rgb(92, 92, 98);
         var mouth = Rgb(168, 52, 62);
         var dark = Rgb(40, 40, 44);
 

@@ -1,0 +1,52 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Hall of Fame. Here we honour every trainer who has become the Champion of the Pokémon League."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Each of them came here with the Pokémon who stood beside them through every battle. Just as you have."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, your name and your Pokémon's will be kept here alongside theirs. Let's record your team."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} saved the game."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The game could not be saved."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -648,6 +648,12 @@ public static class RegionDatabase
                 // Plan 21 · H8, part d: Shoal Cave and its tide
                 "ShoalCave_LowTideEntranceRoom", "ShoalCave_LowTideInnerRoom", "ShoalCave_LowTideStairsRoom",
                 "ShoalCave_LowTideLowerRoom", "ShoalCave_LowTideIceRoom",
+                // Plan 21 · H9: Ever Grande City's rooms, Victory Road and the Pokémon League
+                "EverGrandeCity_PokemonCenter_1F", "EverGrandeCity_PokemonCenter_2F", "EverGrandeCity_PokemonLeague_1F",
+                "EverGrandeCity_PokemonLeague_2F", "EverGrandeCity_Hall5", "EverGrandeCity_SidneysRoom", "EverGrandeCity_Hall1",
+                "EverGrandeCity_PhoebesRoom", "EverGrandeCity_Hall2", "EverGrandeCity_GlaciasRoom", "EverGrandeCity_Hall3",
+                "EverGrandeCity_DrakesRoom", "EverGrandeCity_Hall4", "EverGrandeCity_ChampionsRoom", "EverGrandeCity_HallOfFame",
+                "HoennVictoryRoad_1F", "HoennVictoryRoad_B1F", "HoennVictoryRoad_B2F",
             }
         },
         new()
@@ -677,6 +683,11 @@ public static class RegionDatabase
                 "CasteliaCity_ModeStreet", "CasteliaCity_NarrowStreet", "CasteliaCity_GymStreet", "CasteliaCity_Plaza",
                 "CasteliaCity_NorthStreet", "CasteliaCity_PokemonCenter", "CasteliaCity_Gym",
                 "CasteliaGate", "CasteliaSewers",
+                // Plan 22 · U6: Route 4's houses of flats, Join Avenue, the Desert Resort's gate and the desert, and
+                // Nimbasa City's Pokémon Center, amusement park and Gym
+                "Route4_House1_1F", "Route4_House1_2F", "Route4_RestHouse", "Route4_House2_1F", "Route4_House2_2F",
+                "Route4_House3_1F", "Route4_House3_2F", "Route4_House4_1F", "Route4_House4_2F", "JoinAvenue",
+                "DesertResortGate", "DesertResort", "NimbasaCity_PokemonCenter", "NimbasaCity_AmusementPark", "NimbasaCity_Gym",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

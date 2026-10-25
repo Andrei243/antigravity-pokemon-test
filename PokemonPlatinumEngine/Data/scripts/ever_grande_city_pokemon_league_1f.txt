@@ -1,0 +1,66 @@
+# The Pokémon League's hall at the top of Ever Grande City (plan 21 · H9). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/EverGrandeCity_PokemonLeague_1F/scripts.inc).
+#
+# Whoever comes in here faces the Elite Four from the first again: the four rooms' doors are shut and their masters
+# unbeaten (FLAG_DEFEATED_ELITE_4_SIDNEY to _DRAKE, Emerald's own, and FLAG_HOENN_DEFEATED_WALLACE, ours, for the
+# Champion's door), and the rival and the professor are out of the Champion's room again, as Emerald's whiteout and Hall
+# of Fame put them all back; nobody comes back out through a room's door here, as there. Until the player has shown the
+# Badges (FLAG_ENTERED_ELITE_FOUR) the two guards stand shoulder to shoulder before the door; spoken to, they look for
+# the Feather Badge, the only one a challenger can come here without (Emerald's own check), and step aside.
+
+
+script OnEnter
+  setflag FLAG_LANDMARK_POKEMON_LEAGUE
+  clearflag FLAG_DEFEATED_ELITE_4_SIDNEY
+  clearflag FLAG_DEFEATED_ELITE_4_PHOEBE
+  clearflag FLAG_DEFEATED_ELITE_4_GLACIA
+  clearflag FLAG_DEFEATED_ELITE_4_DRAKE
+  clearflag FLAG_HOENN_DEFEATED_WALLACE
+  setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
+  setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
+  if flag FLAG_ENTERED_ELITE_FOUR goto Aside
+  place league_guard_1 9 2 down
+  place league_guard_2 10 2 down
+  end
+label Aside
+  place league_guard_1 8 2 down
+  place league_guard_2 11 2 down
+  end
+
+
+script Guard
+  face self player
+  speaker "Guard"
+  if flag FLAG_ENTERED_ELITE_FOUR goto GoForth
+  scene "The League's guards"
+  say "Beyond this door wait the Elite Four. Only a trainer who has won every Badge of Hoenn may pass."
+  say "Show us your Badges, please."
+  wait 1
+  if not badge feather goto NotAll
+  walk league_guard_1 left 1
+  face league_guard_1 down
+  walk league_guard_2 right 1
+  face league_guard_2 down
+  fanfare badge
+  say "Every one of them! Go forth, challenger, and may your Pokémon carry you through."
+  setflag FLAG_ENTERED_ELITE_FOUR
+  endscene
+  end
+label NotAll
+  sound "error"
+  say "You haven't won every Badge of Hoenn yet. We can't let you through. Come back once you have them all."
+  endscene
+  end
+label GoForth
+  say "Go forth, challenger. The Elite Four are waiting."
+  end
+
+
+# The League's counter (Emerald's stock, marts.json's ever_grande_league)
+script Clerk
+  face self player
+  speaker "Clerk"
+  say "Welcome! Stock up well. Once you go through that door, there's no coming back to buy more."
+  shop "ever_grande_league"
+  say "Good luck in there!"
+  end

@@ -30,6 +30,12 @@
     { "species": "Slowpoke", "level": 23 }
   ],
   "landRate": 15,
+  "swarm": [
+    "Zubat",
+    "Zubat"
+  ],
+  "surfSwarm": "Slowpoke",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Slowpoke", "level": 10, "maxLevel": 20 },
     { "species": "Slowpoke", "level": 15, "maxLevel": 25 },

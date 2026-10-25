@@ -293,6 +293,27 @@
     { "name": "ShoalCave_LowTideStairsRoom", "matrix": 235, "area": "shoal_cave_low_tide_stairs_room", "trees": "Round", "setting": "Cave" },
     { "name": "ShoalCave_LowTideLowerRoom", "matrix": 236, "area": "shoal_cave_low_tide_lower_room", "trees": "Round", "setting": "Cave" },
     { "name": "ShoalCave_LowTideIceRoom", "matrix": 270, "area": "shoal_cave_low_tide_ice_room", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H9: Ever Grande City's rooms (its Pokémon Center below Victory Road, the Pokémon League's hall at its
+    // top with the Center's counter, the Elite Four's four rooms and the halls between them, the Champion's room and
+    // the Hall of Fame) and Victory Road's three floors (named apart from Kanto's VictoryRoad_1F, as the Safari Zone is)
+    { "name": "EverGrandeCity_PokemonCenter_1F", "matrix": 172, "area": "ever_grande_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_PokemonCenter_2F", "matrix": 173, "area": "ever_grande_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_PokemonLeague_1F", "matrix": 170, "area": "ever_grande_city_pokemon_league_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_PokemonLeague_2F", "matrix": 174, "area": "ever_grande_city_pokemon_league_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_Hall5", "matrix": 169, "area": "ever_grande_city_hall_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_SidneysRoom", "matrix": 160, "area": "ever_grande_city_sidneys_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_Hall1", "matrix": 165, "area": "ever_grande_city_hall_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_PhoebesRoom", "matrix": 161, "area": "ever_grande_city_phoebes_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_Hall2", "matrix": 166, "area": "ever_grande_city_hall_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_GlaciasRoom", "matrix": 162, "area": "ever_grande_city_glacias_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_Hall3", "matrix": 167, "area": "ever_grande_city_hall_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_DrakesRoom", "matrix": 163, "area": "ever_grande_city_drakes_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_Hall4", "matrix": 168, "area": "ever_grande_city_hall_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_ChampionsRoom", "matrix": 164, "area": "ever_grande_city_champions_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "EverGrandeCity_HallOfFame", "matrix": 171, "area": "ever_grande_city_hall_of_fame", "trees": "Round", "setting": "Indoors" },
+    { "name": "HoennVictoryRoad_1F", "matrix": 230, "area": "hoenn_victory_road_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "HoennVictoryRoad_B1F", "matrix": 231, "area": "hoenn_victory_road_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "HoennVictoryRoad_B2F", "matrix": 232, "area": "hoenn_victory_road_b2f", "trees": "Round", "setting": "Cave" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
@@ -410,6 +431,13 @@
     // Plan 21 · H8, part d: Shoal Cave and its rooms, and Routes 132 to 134 west of Pacifidlog back to Slateport City
     "shoal_cave_low_tide_entrance_room", "shoal_cave_low_tide_inner_room", "shoal_cave_low_tide_stairs_room",
     "shoal_cave_low_tide_lower_room", "shoal_cave_low_tide_ice_room",
-    "route_132", "route_133", "route_134"
+    "route_132", "route_133", "route_134",
+    // Plan 21 · H9: Ever Grande City at the top of Route 128's waterfall, Victory Road, and the Pokémon League
+    "ever_grande_city", "ever_grande_city_pokemon_center_1f", "ever_grande_city_pokemon_center_2f",
+    "hoenn_victory_road_1f", "hoenn_victory_road_b1f", "hoenn_victory_road_b2f",
+    "ever_grande_city_pokemon_league_1f", "ever_grande_city_pokemon_league_2f", "ever_grande_city_hall_5",
+    "ever_grande_city_sidneys_room", "ever_grande_city_hall_1", "ever_grande_city_phoebes_room", "ever_grande_city_hall_2",
+    "ever_grande_city_glacias_room", "ever_grande_city_hall_3", "ever_grande_city_drakes_room", "ever_grande_city_hall_4",
+    "ever_grande_city_champions_room", "ever_grande_city_hall_of_fame"
   ]
 }

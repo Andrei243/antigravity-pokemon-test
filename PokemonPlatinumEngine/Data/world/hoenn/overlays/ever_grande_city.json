@@ -1,0 +1,21 @@
+{
+  // Ever Grande City (plan 21 · H9): the city of flowers at the top of Route 128's waterfall, its terraces climbing
+  // from the Pokémon Center by the shore through Victory Road to the Pokémon League's hall at the top. Nobody comes to
+  // it but by the sea and up the falls (Waterfall, the Rain Badge's). While the titans' weather lasts
+  // (FLAG_SYS_WEATHER_CTRL, Emerald's Common_EventScript_SetAbnormalWeather in the city's ON_TRANSITION) the city is
+  // under the downpour and the drought by turns, with Emerald's song of it. ever_grande_city.txt gives a save from
+  // before this stretch its hiding (common.HoennChapterTwelve)
+  "area": "ever_grande_city",
+  "bgmTrack": "hoenn/ever_grande",
+  "trees": "Round",
+  "architecture": "Bloomstone",
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+  ],
+  "signs": {
+    "EverGrandeCity_EventScript_VictoryRoadSign": "Victory Road\nThe last trial before the Pokémon League",
+    "EverGrandeCity_EventScript_CitySign": "Ever Grande City\nWhere flowers, the sea and Pokémon meet",
+    "EverGrandeCity_EventScript_PokemonLeagueSign": "The Pokémon League\nThe gate to the Elite Four and the Champion",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
+  }
+}

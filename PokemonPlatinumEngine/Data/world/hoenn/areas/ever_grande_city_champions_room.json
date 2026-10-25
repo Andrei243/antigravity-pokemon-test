@@ -1,0 +1,28 @@
+{
+  "key": "ever_grande_city_champions_room",
+  "index": 215,
+  "name": "Ever Grande City",
+  "matrix": 164,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 12, "to": "ever_grande_city_hall_4", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "champions_room_wallace", "looks": "wallace", "movement": "look_south", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "champions_room_rival", "looks": "var_0", "movement": "look_north", "x": 6, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CHAMPIONS_ROOM_RIVAL", "script": "" },
+    { "id": "champions_room_birch", "looks": "prof_birch", "movement": "look_north", "x": 6, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CHAMPIONS_ROOM_BIRCH", "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

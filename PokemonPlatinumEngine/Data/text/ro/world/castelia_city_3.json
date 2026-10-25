@@ -6,7 +6,7 @@
           "Clyde"
         ],
         "text": [
-          ""
+          "Clyde"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Wanting to get stronger as a Trainer is a fine thing. Some people work with their Pokémon, some just play with them. Both are fine!"
         ],
         "text": [
-          ""
+          "Dorința de a deveni mai puternic ca Antrenor e un lucru frumos. Unii lucrează cu Pokémonii lor, alții doar se joacă cu ei. Amândouă sunt bune!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Veteran"
         ],
         "text": [
-          ""
+          "Veteranul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Nobody loves their Pokémon more than I do! I only hope my Pokémon know it."
         ],
         "text": [
-          ""
+          "Nimeni nu-și iubește Pokémonii mai mult ca mine! Sper doar că Pokémonii mei știu asta."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I've got a whole bag of Potions! With these, the Gym Leader doesn't stand a chance. Probably."
         ],
         "text": [
-          ""
+          "Am o geantă întreagă de Poțiuni! Cu ele, Liderul de Arenă nu are nicio șansă. Probabil."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Burgh's Gym is full of honey. Sticky walls everywhere! He says it's art."
         ],
         "text": [
-          ""
+          "Arena lui Burgh e plină de miere. Pereți lipicioși peste tot! El zice că e artă."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Iris"
         ],
         "text": [
-          ""
+          "Iris"
         ]
       }
     }
@@ -99,7 +99,7 @@
         "Castelia City Pokémon Gym\nLeader: Burgh, the artist of Bug types"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Castelia City\nLider: Burgh, artistul tipului Insectă"
       ]
     }
   }

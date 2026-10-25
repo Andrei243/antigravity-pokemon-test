@@ -1,0 +1,37 @@
+{
+  // Nimbasa City's Pokémon Center (plan 22 · U6): the same floor as Castelia's, with the city's own people
+  "area": "nimbasa_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "people": {
+    "0": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "I came for one baseball game thirty years ago. I've lived in Nimbasa ever since. Bright lights do that to you." ]
+    },
+    "1": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "2": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "3": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "4": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "5": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "8": {
+      "name": "Lady",
+      "npcType": "Lady",
+      "dialog": [ "Elesa's Gym is inside the amusement park, past the Ferris wheel. The lights in there are something else!" ]
+    },
+    "9": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Electric types are tough, but Ground-type moves hit them hard. Unless they fly, like Emolga!" ]
+    },
+    "10": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "The Gear Station sends trains all over Unova, and the Battle Subway's trains go nowhere at all!" ]
+    }
+  }
+}

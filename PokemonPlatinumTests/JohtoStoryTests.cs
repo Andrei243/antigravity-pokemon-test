@@ -1560,4 +1560,67 @@ public class JohtoStoryTests
         var dratini = Assert.Single(game.Party.Members, p => p.Species.Name == "Dratini");
         Assert.Contains(dratini.Moves, m => m.Name == "Extreme Speed");
     }
-}
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void TheDragonsDenAfterTheLeagueHasItsRivalALanceAndClairDoubleBattleAndClairsNumber(int starter)
+    {
+        // Plan 20 · J13, part c: HeartGold's post-game in the Den, begun by the first arrival after the Hall of Fame
+        var game = new Game(starter);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 60));
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[starter]);
+        int variant = johto.Starters[starter] switch { "Chikorita" => 2, "Cyndaquil" => 3, _ => 1 };
+
+        // Before the League nobody waits there and the row before the shrine is plain
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40FC"));
+        Assert.Null(game.Present("d44r0102_gsrivel_2"));
+        Assert.Null(game.Present("d44r0102_gsrivel"));
+        Assert.False(game.Fires("Rival"));
+
+        // After it the boy waits on the island's bank, and the first step onto the row brings Lance and Clair
+        game.Story.Set("JohtoHallOfFame");
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40FC"));
+        Assert.NotNull(game.Present("d44r0102_gsrivel_2"));
+        Assert.Null(game.Present("d44r0102_wataru"));
+        Assert.True(game.Fires("Rival"));
+        var scene = game.Step("Rival");
+        Assert.Contains($"battle johto_champion_lance_3 and johto_leader_clair_clair_3 with johto_partner_rival_{variant} Won", scene.Log);
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40FC"));
+        Assert.False(game.Fires("Rival"));
+        Assert.Null(game.Present("d44r0102_wataru"));
+        Assert.Null(game.Present("d44r0102_gsleader8_2"));
+        Assert.Null(game.Present("d44r0102_gsrivel_2"));
+
+        // From then on: the boy trains here on Tuesdays and Thursdays, not on a Monday
+        Assert.Null(game.Present("d44r0102_gsrivel"));
+        game.Weekday = DayOfWeek.Tuesday;
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.NotNull(game.Present("d44r0102_gsrivel"));
+        Assert.Contains(game.Talk("d44r0102_gsrivel").Transcript, l => l.Text.Contains("training my Pokémon"));
+        Assert.Contains(game.Talk("d44r0102_gsrivel").Transcript, l => l.Text.Contains("stay out of my way"));
+
+        // Clair walks the island on her mornings, and her number goes into the Pokégear if the player asks for it
+        game.Time = TimeOfDay.Day;
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Null(game.Present("d44r0102_gsleader8"));
+        game.Time = TimeOfDay.Morning;
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.NotNull(game.Present("d44r0102_gsleader8"));
+        game.Answers.Enqueue(1);
+        game.Talk("d44r0102_gsleader8");
+        Assert.False(game.Story.Has(Pokegear.ContactFlag("clair")));
+        game.Talk("d44r0102_gsleader8");
+        Assert.True(game.Story.Has(Pokegear.ContactFlag("clair")));
+        Assert.True(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_CLAIR"));
+        // Registered, she is there in the afternoons and not the mornings
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Null(game.Present("d44r0102_gsleader8"));
+        game.Time = TimeOfDay.Day;
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.NotNull(game.Present("d44r0102_gsleader8"));
+    }}

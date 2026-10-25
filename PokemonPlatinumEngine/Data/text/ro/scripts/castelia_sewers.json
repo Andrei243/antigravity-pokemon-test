@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Team Plasma's down here somewhere, I just know it. Taking them on alone would be too much, even for me."
       ],
       "text": [
-        ""
+        "{player}! Team Plasma e pe aici pe undeva, simt eu. Să-i înfrunt singur ar fi prea mult, chiar și pentru mine."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "So we'll do it together! First, let me patch up your team."
       ],
       "text": [
-        ""
+        "Așa că o facem împreună! Mai întâi, lasă-mă să-ți îngrijesc echipa."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival} healed your Pokémon."
       ],
       "text": [
-        ""
+        "{rival} ți-a vindecat Pokémonii."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "OK! Let's find Team Plasma!"
       ],
       "text": [
-        ""
+        "Bine! Hai să-l găsim pe Team Plasma!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Team Plasma's down here. Let's go!"
       ],
       "text": [
-        ""
+        "Team Plasma e aici jos. Să mergem!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Hey!"
       ],
       "text": [
-        ""
+        "Hei!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Recrut"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Huh? What do you want?"
       ],
       "text": [
-        ""
+        "Hă? Ce vreți?"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Team Plasma! You rotten crooks!"
       ],
       "text": [
-        ""
+        "Team Plasma! Escrocilor!"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Recrut"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Crooks? How rude! We're freeing Pokémon. Don't get in the way of our noble work!"
       ],
       "text": [
-        ""
+        "Escroci? Ce obraznic! Eliberăm Pokémoni. Nu stați în calea muncii noastre nobile!"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Freeing them? Don't make me laugh! You steal Pokémon, and then you use them like tools!"
       ],
       "text": [
-        ""
+        "Să-i eliberați? Nu mă face să râd! Furați Pokémoni, iar apoi îi folosiți ca pe niște unelte!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Recrut"
       ]
     },
     {
@@ -153,7 +153,7 @@
         "Shut it! Now hand over your Pokémon!"
       ],
       "text": [
-        ""
+        "Tăcere! Acum predați-vă Pokémonii!"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Let's do this, {player}!"
       ],
       "text": [
-        ""
+        "Hai s-o facem, {player}!"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Recrut"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Ugh, they're tough! Whatever. We've got the Pokémon we came for. Let's get out of here!"
       ],
       "text": [
-        ""
+        "Ugh, sunt duri! Nu contează. Avem Pokémonii pentru care am venit. Să plecăm de aici!"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Tch! They ran off like a bunch of Patrat! Come on, there might be more of them further in!"
       ],
       "text": [
-        ""
+        "Tsk! Au fugit ca niște Patrat! Haide, poate mai sunt și alții mai în adânc!"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "???"
       ],
       "text": [
-        ""
+        "???"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "I don't think there's any need for that, you two."
       ],
       "text": [
-        ""
+        "Nu cred că e nevoie de asta, voi doi."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Are you... Burgh, the Gym Leader?"
       ],
       "text": [
-        ""
+        "Ești... Burgh, Liderul de Arenă?"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Burgh"
       ],
       "text": [
-        ""
+        "Burgh"
       ]
     },
     {
@@ -249,7 +249,7 @@
         "One and the same! I'm Burgh. And there's nobody suspicious further in, I've just looked."
       ],
       "text": [
-        ""
+        "Chiar el! Sunt Burgh. Și nu e nimeni suspect mai în adânc, tocmai m-am uitat."
       ]
     },
     {
@@ -257,7 +257,7 @@
         "Team Plasma worries me too, but let's get out of here, shall we? This sewer is full of Bug Pokémon... Actually, that part I like."
       ],
       "text": [
-        ""
+        "Și pe mine mă îngrijorează Team Plasma, dar hai să ieșim de aici, da? Canalizarea asta e plină de Pokémoni Insectă... De fapt, asta îmi place."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -273,7 +273,7 @@
         "Huh... Didn't you and the other Gym Leaders fight Team Plasma two years ago?"
       ],
       "text": [
-        ""
+        "Hm... Nu v-ați luptat tu și ceilalți Lideri de Arenă cu Team Plasma acum doi ani?"
       ]
     },
     {
@@ -281,7 +281,7 @@
         "Thanks for helping out, {player}. Here, take this!"
       ],
       "text": [
-        ""
+        "Mulțumesc pentru ajutor, {player}. Ia, primește asta!"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "I'll find the rest of those Team Plasma punks. I'll never forgive Pokémon thieves. Never!"
       ],
       "text": [
-        ""
+        "Îi voi găsi pe restul derbedeilor din Team Plasma. Nu iert niciodată hoții de Pokémoni. Niciodată!"
       ]
     },
     {
@@ -297,7 +297,7 @@
         "Burgh"
       ],
       "text": [
-        ""
+        "Burgh"
       ]
     },
     {
@@ -305,7 +305,7 @@
         "He's gone..."
       ],
       "text": [
-        ""
+        "A plecat..."
       ]
     },
     {
@@ -313,7 +313,7 @@
         "???"
       ],
       "text": [
-        ""
+        "???"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "You there!"
       ],
       "text": [
-        ""
+        "Hei, tu!"
       ]
     },
     {
@@ -329,7 +329,7 @@
         "That was a remarkable display of battling. The way you drew out your Pokémon's power against Team Plasma..."
       ],
       "text": [
-        ""
+        "A fost o demonstrație remarcabilă de luptă. Felul în care ți-ai scos la iveală puterea Pokémonilor împotriva lui Team Plasma..."
       ]
     },
     {
@@ -337,7 +337,7 @@
         "Simply fascinating. I'll be watching with interest!"
       ],
       "text": [
-        ""
+        "Pur și simplu fascinant. Te voi urmări cu interes!"
       ]
     },
     {
@@ -345,7 +345,7 @@
         "Burgh"
       ],
       "text": [
-        ""
+        "Burgh"
       ]
     },
     {
@@ -353,7 +353,7 @@
         "Who... was that?"
       ],
       "text": [
-        ""
+        "Cine... a fost ăla?"
       ]
     },
     {
@@ -361,7 +361,7 @@
         "Well, never mind. What will you do now? You could stay down here and train your Pokémon..."
       ],
       "text": [
-        ""
+        "Ei bine, lasă. Ce vei face acum? Poți rămâne aici jos să-ți antrenezi Pokémonii..."
       ]
     },
     {
@@ -369,7 +369,7 @@
         "Or you could come and challenge me at my Gym! I'll be waiting, my muse and I!"
       ],
       "text": [
-        ""
+        "Sau poți veni să mă provoci în Arena mea! Vă aștept, eu și muza mea!"
       ]
     }
   ]

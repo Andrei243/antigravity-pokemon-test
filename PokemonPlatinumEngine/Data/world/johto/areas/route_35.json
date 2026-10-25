@@ -30,6 +30,12 @@
     { "species": "Yanma", "level": 12 }
   ],
   "landRate": 25,
+  "swarm": [
+    "Yanma",
+    "Yanma"
+  ],
+  "surfSwarm": "Psyduck",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Psyduck", "level": 15, "maxLevel": 25 },
     { "species": "Psyduck", "level": 10, "maxLevel": 20 },

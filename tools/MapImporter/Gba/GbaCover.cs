@@ -401,6 +401,23 @@ public static class GbaCover
                 (0x2D9, 0x2D9, TerrainCover.Paving), (0x244, 0x245, TerrainCover.Paving),
                 (0x221, 0x221, TerrainCover.Paving), (0x229, 0x229, TerrainCover.Paving), (0x238, 0x238, TerrainCover.Paving),
             },
+            // Plan 21 · H9: Ever Grande City, read from its layout: the pale stone walk that winds up from the Pokémon
+            // Center to the League's door with its edges (0x23C to 0x23E, the bends 0x265 to 0x26F, and the forecourt
+            // before the door, 0x203 to 0x207, 0x221 to 0x227, 0x270 to 0x272); the steps down each terrace's face (0x248
+            // to 0x25F, three rows of five); the square round the Pokémon Center (0x27C, 0x27D); and the flowers the
+            // city is famous for, on every terrace and ledge (0x288 to 0x2A7) with the grass along the terraces' rims
+            // (0x22B to 0x22F). The terraces' walls (0x232 to 0x237) are blocked and left to the rock; the League's hall
+            // is found at its door
+            ["gTileset_EverGrande"] = new (int, int, TerrainCover)[]
+            {
+                (0x23C, 0x23E, TerrainCover.Paving), (0x265, 0x265, TerrainCover.Paving), (0x267, 0x267, TerrainCover.Paving),
+                (0x26D, 0x26D, TerrainCover.Paving), (0x26F, 0x26F, TerrainCover.Paving),
+                (0x203, 0x207, TerrainCover.Paving), (0x221, 0x227, TerrainCover.Paving), (0x270, 0x272, TerrainCover.Paving),
+                (0x248, 0x25F, TerrainCover.Steps),
+                (0x27C, 0x27D, TerrainCover.Paving),
+                (0x288, 0x2A7, TerrainCover.Flowers),
+                (0x22B, 0x22F, TerrainCover.Grass),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

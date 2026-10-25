@@ -1,0 +1,38 @@
+{
+  // Join Avenue (plan 22 · U6): Black 2's street of empty shopfronts between Route 4 and Nimbasa City, our words. Black
+  // 2's owner asks the first visitor to manage the avenue and fill it with shops; the avenue's shops and their running
+  // are left for later (plan 22 · U6, part b), so its owner, his two assistants and the two shop girls only talk, and
+  // the trigger at the avenue's south end (Black 2's 0x410b) has no script
+  "area": "join_avenue",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Owner",
+      "npcType": "Gentleman",
+      "dialog": [ "Welcome to Join Avenue! As you see, there's nothing here yet but empty shopfronts. One day this street will be the liveliest in Unova!" ]
+    },
+    "1": {
+      "name": "Assistant",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "The owner is looking for someone to run the avenue. Shops, visitors, the lot! It's a big job." ]
+    },
+    "2": {
+      "name": "Assistant",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "Nimbasa City is just through the north gate. Big crowds, big stadiums, and a Gym like a fashion show!" ]
+    },
+    "3": {
+      "name": "Shop Girl",
+      "npcType": "cashier_f",
+      "dialog": [ "Our shop isn't open yet. Come back once the avenue's up and running!" ]
+    },
+    "4": {
+      "name": "Shop Girl",
+      "npcType": "cashier_f",
+      "dialog": [ "I'm practising my welcome. ...Welcome! How was that?" ]
+    }
+  },
+  "signs": {
+    "8": "Join Avenue's office\nManager wanted. Apply within!"
+  }
+}

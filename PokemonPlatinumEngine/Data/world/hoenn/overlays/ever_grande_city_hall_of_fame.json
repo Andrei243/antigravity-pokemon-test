@@ -1,0 +1,13 @@
+{
+  // Hoenn's Hall of Fame (plan 21 · H9), behind the Champion's room. Its scene plays as the new Champion comes in beside
+  // Wallace (ever_grande_city_hall_of_fame.txt): his words, the team's entry, the credits, and home. Its floor is
+  // Emerald's polished one (MB_ICE), so nobody walks here. Its one way out, in the middle of the floor, leads nowhere
+  // Emerald ever takes anyone, and is shut
+  "area": "ever_grande_city_hall_of_fame",
+  "name": "Hall of Fame",
+  "bgmTrack": "hoenn/hall_of_fame",
+  "locked": [ 0 ],
+  "people": {
+    "hall_of_fame_wallace": { "name": "Wallace", "npcType": "wallace", "still": true, "dialog": [ "Wallace: You've earned your place here, {player}." ] }
+  }
+}

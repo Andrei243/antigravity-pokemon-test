@@ -2749,6 +2749,56 @@ scenes, who stands where, the battles and the gifts, and nothing of their text.
 - **Songs**: `unova/castelia` (the city, its gate and Prime Pier's and Thumb Pier's waits); the sewers keep Sinnoh's
   `cave` and Route 4 `unova/route19` until their own. Burgh's and Colress's battles are the Gym Leader's.
 
+## Unova's second chapter, part a: the desert to Nimbasa (2026-10-25, plan 22 · U6)
+
+Black 2's road from Route 4 to the Bolt Badge, in our own words on the beats of the decompilation's scripts
+(`res/field/scripts/route_4*.s`, `desert_resort*.s`, `route_gate.s`, `join_avenue.s`, `nimbasa_city.s`,
+`nimbasa_city_gym.s`), read for the order of the scenes, who stands where, the battles and the gifts, and nothing of
+their text.
+
+- **The chapter**: Route 4's trainers (its two fishermen, the Hooligans, three policemen, a biker, a youngster, two
+  roughnecks and a Breeder) stand on the road, and its five houses of flats are open, the rest house's woman seeing to the
+  team; the Desert Resort's edge, its gate house and the desert beyond lie in their sandstorm, the desert's archaeologist
+  giving Soft Sand; Join Avenue is a street of empty shopfronts between Route 4 and Nimbasa City; in Nimbasa, before the
+  Gear Station, the Subway Bosses Ingo and Emmet battle two on two (`unova_subway_boss_ingo` and `_emmet`) beside the
+  hero the player isn't, Rosa for a boy and Nate for a girl, whose team is the starter neither the player nor Hugh took
+  (`unova_rosa`, `_2`, `_3` and `unova_nate`, `_2`, `_3` for Snivy, Tepig and Oshawott, Black 2's `0x4030`), and who
+  gives a Vs. Recorder; in the amusement park the Nimbasa Gym's guide gives Fresh Water, three models step down the
+  runway to battle in turn (`unova_beauty_nikola`, `_fleming`, `_amp_re`), and Elesa (`unova_leader_elesa`) gives the
+  Bolt Badge and TM72; back in the city Hugh faces four of Team Plasma on the street west to Route 5, the player beats
+  two (`unova_team_plasma_grunt_4` and `_47`), they flee, and Hugh tells of his sister's Purrloin, heals the team and
+  goes on.
+- **Our tellings where Black 2's are another's.** The Gym's runway is three triggers of ours, each model stepping down
+  three tiles to the challenger and back, where Black 2 walks each down the whole catwalk and plays the lights; the
+  models' walk out with the player afterwards is left out. Black 2's guide stops the challenger at the door; ours is
+  spoken to. Hugh's scene is one scene: Black 2 has the player speak to each grunt after Hugh's "Cover me!"; ours plays
+  both battles straight after it, the grunts flee west along the street and Hugh east. The young Trainer's battle is
+  begun by speaking to them, as Black 2's. Join Avenue's owner, who asks the first visitor to manage the avenue and fill
+  it with shops, only talks: the avenue's shops are left. The daily gifts and games of Route 4's houses (the fast
+  Pokémon's reward, the Cottonee for Petilil trade, the waitress's cry quiz) only talk of themselves. The Braviary that
+  lands on Route 4 on Thursdays, the Anville delivery man and his Pokémon, the Battle Institute's girl and the Gym
+  guide at the park's door are left out. TM72 is our data's TM72 (Platinum's table), as Burgh's TM76.
+- **The places**: Nimbasa builds in a way of its own (`Architecture.Funfair`, the style guide's row); its stadiums,
+  theater and Ferris wheel are halls (the wheel a hall until it is drawn as one, part b), and the park's two archways
+  (`c4_gate`) are ground walked under, since a gate house there shut the Gym away. Route 4's houses of flats are
+  Castelia's panel blocks. A sign of Black 2's second condition (1) is read outdoors (Nimbasa's, the desert's, Narrow
+  Street's café); indoors it is a gate house's news board, which the reader leaves out. Black 2's weathers 3 and 12 are
+  the sandstorm (the desert's edge and the desert).
+- **Left for part b**: Routes 5 and 16 beyond the city's gates, the Lostlorn Forest, Anville Town and the Gear Station
+  with the Battle Subway's desks, the Musical Theater, the stadiums, Nimbasa's houses, the Ferris wheel's scene, the
+  Relic Castle and the Relic Passage, the Drawbridge, Driftveil City with Clay and the Quake Badge, the World Tournament
+  and the Plasma Frigate.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_NIMBASA` is the city's count (Black 2's
+  `0x40c0` 1 and 4 in one line: 1 once the Bolt Badge is won, 2 once Hugh's scene is played), `VAR_UNOVA_NIMBASA_GYM`
+  the runway's (`0x409b`, 0 to 3); `FLAG_UNOVA_HIDE_HUGH_NIMBASA` is `0x02f9`, `_NIMBASA_PLASMA` `0x02fa`,
+  `_SUBWAY_BOSSES` `0x02fc`, `_ROSA_NIMBASA` and `_NATE_NIMBASA` ours (Black 2 has one object, dressed by the player's
+  look); `FLAG_UNOVA_GOT_WATER_NIMBASA`, `_GOT_TM72` and `_GOT_SOFT_SAND` are the gifts'. `common.UnovaNimbasa` hides
+  the chapter's people (`FLAG_UNOVA_NIMBASA_BEGUN`), run by `UnovaCastelia` and, for a save of part c's, by
+  `UnovaCatchUp`, with no story version raised; Nimbasa's arrival shows Rosa or Nate.
+- **Songs** of our own: `unova/route4` (the route, its houses, the desert's edge and its gate house), `unova/desert_resort`
+  and `unova/nimbasa` (the city, the park and Join Avenue). Elesa's and the Subway Bosses'
+  battles are the Gym Leader's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
@@ -3801,6 +3851,52 @@ to Slateport City are open; Route 125's way into the cave is no longer locked. W
   personality 0x7F: a Brave male with Swift Swim; tough 30 and the rest 5, sheen 10) holding Bubble Mail for Emerald's Wave
   Mail, which the item table hasn't got (NpcTrades `seasor`). **The Explosion tutor** in the Pokémon Center teaches once in
   a game, by `MoveTutors.Kanto`'s table, Explosion being TM64's move (`FLAG_MOVE_TUTOR_TAUGHT_EXPLOSION`).
+
+## Ever Grande City and the League (2026-10-25, plan 21 · H9, its first part)
+
+Ever Grande City (`Architecture.Bloomstone`, its walks, steps and flower beds in `GbaCover.HoennRanges`), its Pokémon
+Center on both floors, Victory Road's three floors and the Pokémon League's hall, halls, four rooms, Champion's room and
+Hall of Fame are open, with scripts of ours on Emerald's beats (`ever_grande_city*.txt`, `hoenn_victory_road_1f.txt`). What
+differs from Emerald, and why:
+
+- **Victory Road is named apart.** Kanto's maps are called `VictoryRoad_1F` and the rest, so Hoenn's are
+  `HoennVictoryRoad_1F`, `_B1F` and `_B2F` (their keys `hoenn_victory_road_*`, as the importer already prefixed them), and
+  its items' flags take the region's name (`FLAG_ITEM_HOENN_VICTORY_ROAD_1F_PP_UP`, `FLAG_HIDDEN_ITEM_HOENN_…`;
+  `GbaEvents.ItemFlag`): Emerald's `FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL` is also FireRed's, and an Ultra Ball found
+  in one region would have been gone from the other. FireRed's flags keep their names, which saves hold.
+- **Wally** runs in along the passage below the west passage's two trigger tiles and battles (`hoenn_wally_vr_1`), and
+  waits where he stopped (`VAR_VICTORY_ROAD_1F_STATE` 1 or 2, which the floor's arrival reads, Emerald's
+  `setobjectxyperm`). A battle lost leaves the variable at nought and him below to try again. From the Hall of Fame he
+  waits by the way out instead and battles once (`hoenn_wally_vr_2`); his Match Call rematches are not read.
+- **The guards** stand shoulder to shoulder before the door (the hall's arrival puts them there until
+  `FLAG_ENTERED_ELITE_FOUR`) and look for the Feather Badge alone, as Emerald's do (the only Badge a challenger can come
+  without). The hall's arrival sets `FLAG_LANDMARK_POKEMON_LEAGUE`, by which Fly lands at the League's door from then on
+  (the town map's Ever Grande cells split: the top two the League's, Emerald's `sMapFlyDestinations`), and makes the hall
+  the place a battle lost wakes the player in (spawn 20, Emerald's `HEAL_LOCATION_EVER_GRANDE_CITY_POKEMON_LEAGUE`).
+- **The League's rooms** are walked as Kanto's are: the way back out of each room and each hall is shut once the player is
+  through (Emerald closes the room's door behind the challenger and swaps its tiles), the way ahead opens with the room's
+  master beaten (`FLAG_DEFEATED_ELITE_4_SIDNEY` to `_DRAKE`, Emerald's; the Champion's door by `FLAG_HOENN_DEFEATED_WALLACE`,
+  ours, where Emerald swaps the door's tiles in the scene), and the hall's arrival puts all of it back, the rival and the
+  professor out of the Champion's room too, as Emerald's white-out and Hall of Fame do. Each way ahead puts the player on
+  the next floor's first open row facing it, where Emerald stands them on the door and walks them in (`VAR_ELITE_4_STATE`'s
+  scenes are not played). The four battle when spoken to, with Emerald's teams; there is no rematch team, as in Emerald.
+- **The Champion's room** is one scene as the challenger comes in: up the room, Wallace and his battle, the rival running in
+  with advice too late (May's lines for a boy, Brendan's for a girl), Professor Birch after, and Wallace leading on. Wallace
+  goes through the door ahead and the scene warps the player into the Hall of Fame, where Emerald walks both through.
+  Birch's rating of the Pokédex is a line, not Emerald's `ProfBirch_EventScript_RatePokedex` count.
+- **The Hall of Fame**'s floor is Emerald's polished one (`MB_ICE`), so nobody walks there: Wallace is put beside the
+  player and turns to them. The team is recorded, `HoennHallOfFame` and Emerald's `FLAG_IS_CHAMPION` set, the scene of the
+  team's entry played, the team healed, the player sent home to the bedroom (Emerald's `setrespawn` to the 2F of the house)
+  and the game saved before the credits, as Kanto's and Johto's are. Of Emerald's `SetGameClearFlags` the game keeps what it
+  has places for: Wally to the way out, the Safari Zone's expansion opened (its builders gone, its attendant back), Steven
+  gone travelling from his house with his letter and his Beldum's ball on the desk (the ball only for a player who has none
+  of it yet), and the League's rooms put back. `FLAG_SYS_GAME_CLEAR` is FireRed's name too and is not set here.
+- **The National Pokédex** is Birch's in his lab once Hoenn's Hall of Fame is entered, and asks nothing else, as Emerald's
+  `LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex` (the region file's `nationalUnlock` is `HallOfFame`).
+- **Left for the second part**: home after the credits (Dad back at home and his S.S. Ticket, Mom's news), the television's
+  report and the choice of Latias or Latios (a roamer of Hoenn's routes, which `Overworld/Roamers.cs` does not have yet), the
+  harbour's ship on to the next region (`RegionDatabase`'s Hoenn link is still undecided), Scott's Battle Frontier pass,
+  Wally's and the Four's rematches through Match Call, and the abnormal weather's other places of the post-game.
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
@@ -4952,7 +5048,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 | Choice | Meaning | Session |
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
-| Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 |
+| Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
 | Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
 | No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
@@ -4985,3 +5081,34 @@ nothing**: `Prepare` hands back the very trainer it was given, the EXP and the p
 - **Easy** also: three halves of the EXP a battle gives (`BattleCore.Give`, from `CoreSetup.Difficulty`; a recorded battle
   keeps it and refuses to be replayed under another) and a quarter off what a counter asks (`ShopScreen.PriceOf`; selling
   is unchanged, so buying and selling back never earns).
+
+### The level cap and trainers scaled to the lead (plan 13 · V3)
+
+Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a trainer is the very object it was.
+
+- **The cap** (`Models/LevelCaps.cs`, GPU-free) is the next Gym Leader's best Pokémon by the Badges held in the region the
+  player stands in: Sinnoh's 14, 22, 26, 32, 37, 41, 44 and 50 (plan 02's pacing targets, held to `trainers.json` by a
+  test), then the Champion's 62 once all eight are held, and none once the region's Hall of Fame is entered. A region with
+  no table (every other one until its own plan writes it) is uncapped.
+- **EXP** (`BattleCore.Give`, from `CoreSetup.RunLevelCap`, which the engine fills from `GameEngine.CurrentLevelCap()`):
+  after Easy's three halves, only what takes the Pokémon to the start of the cap's level goes in (`LevelCaps.Allowed`), so a
+  capped Turtwig stops at exactly 14 with no progress towards 15; one on or past the cap gains nothing and no gain is told.
+  Each capped Pokémon that fought hears "can't grow past Lv. N yet." once a battle, after its level's line. Effort still
+  comes (a capped Pokémon is not a level-100 one). A recorded battle keeps the cap and refuses to be replayed under another.
+- **Candies**: a Rare Candy or an Exp. Candy on a Pokémon on the cap's level is NOT ABLE in the bag and says the same line;
+  the Exp. Candy gives no more than the way to the cap. The Day Care's levels are not held (plan 13 asks for the battle and
+  the candy only).
+- **Scaling** (`DifficultyRules.ScaleTo`, from `Prepare(trainer, rules, leadLevel)`): the team's best Pokémon becomes the
+  level of the player's lead and every other moves the same number of levels, so the spread is kept; up or down, as the
+  panel's help says. It is laid first, so Challenge's and Easy's levels sit on the scaled team. The first battle and a Master
+  Trainer's are left alone, as for the difficulty. A Pokémon is not evolved to suit its new level.
+
+## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
+
+| Subject | HeartGold | This game |
+|---|---|---|
+| What begins the Den's post-game | The rival's battle in Mt. Moon (`D02R0101`) sets `VAR_UNK_40FC` 1 | The first arrival at the Dragon's Den once `JohtoHallOfFame` is set does (Kanto's part of Johto is J15's, which puts the Mt. Moon battle in front of it) |
+| The scene | The rival, Lance and Clair; a multi battle, the player with the rival against Lance and Clair (`TRAINER_PARTNER_RIVAL_1` to `_3` by the starter, `CHAMPION_LANCE_3`, `LEADER_CLAIR_CLAIR_3`) | The same, in our own words, as a `battle a and b with partner` of two overlay trainers; it ends at `VAR_UNK_40FC` 2 |
+| The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
+| Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
+| The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |

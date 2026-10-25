@@ -1,0 +1,10 @@
+{
+  // The hall from Phoebe's room to Glacia's (plan 21 · H9): no way back, the way on onto Glacia's floor
+  "area": "ever_grande_city_hall_2",
+  "name": "Pokémon League",
+  "bgmTrack": "hoenn/victory_road",
+  "locked": [ 0, 2, 3 ],
+  "doors": [
+    { "warp": 1, "map": "EverGrandeCity_GlaciasRoom", "x": 6, "y": 12, "facing": "Up", "openedBy": "FLAG_DEFEATED_ELITE_4_PHOEBE" }
+  ]
+}

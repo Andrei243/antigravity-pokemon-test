@@ -1,0 +1,50 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The desert's big and its Pokémon are tough. The perfect place to test yourself, if you don't mind sand in your shoes!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Through the gate and straight on! That's the way to the Relic Castle. Or so my teacher says."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Desert Resort ahead\nA desert with a little something extra!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

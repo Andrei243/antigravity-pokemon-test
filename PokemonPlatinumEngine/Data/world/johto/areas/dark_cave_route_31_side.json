@@ -30,6 +30,12 @@
     { "species": "Dunsparce", "level": 4 }
   ],
   "landRate": 10,
+  "swarm": [
+    "Dunsparce",
+    "Dunsparce"
+  ],
+  "surfSwarm": "Magikarp",
+  "fishSwarm": "Magikarp",
   "water": [
     { "species": "Magikarp", "level": 10, "maxLevel": 20 },
     { "species": "Magikarp", "level": 5, "maxLevel": 15 },

@@ -79,7 +79,7 @@ public static class ItemUse
     /// <c>Pokemon_CheckItemEffects</c>: whether using it on this Pokémon (and, for the items that need one, this
     /// move of its) would do anything: the bag's ABLE and NOT ABLE.
     /// </summary>
-    public static bool WouldHelp(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null)
+    public static bool WouldHelp(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null, int? runCap = null)
     {
         // Nothing is used on an Egg (plan 06 · R15)
         if (!IsUsedOnPokemon(item) || p.IsEgg) return false;
@@ -95,7 +95,7 @@ public static class ItemUse
         }
 
         // A Rare Candy up to the game's level cap (plan 18 · W4: 100 in Platinum, 260 by the modern rules)
-        if (Has(item, "levelUp") && !p.AtTheCap) return true;
+        if (Has(item, "levelUp") && !p.AtTheCap && !LevelCaps.Holds(p, runCap)) return true;
         if ((Has(item, "ppUp") || Has(item, "ppMax")) && MoveIn(p, moveSlot) is { } raised && CanTakePPUp(raised)) return true;
         if (Has(item, "ppRestored") && !Has(item, "restorePPAllMoves") && MissingPP(p, moveSlot)) return true;
         if (Has(item, "restorePPAllMoves") && Enumerable.Range(0, p.Moves.Count).Any(i => MissingPP(p, i))) return true;
@@ -103,17 +103,20 @@ public static class ItemUse
     }
 
     /// <summary>Whether it would do anything for the Pokémon with any of its moves (for an item that needs a move chosen).</summary>
-    public static bool WouldHelpAnyMove(ItemData item, Pokemon p, Ruleset? rules = null) =>
-        NeedsMove(item) ? Enumerable.Range(0, p.Moves.Count).Any(i => WouldHelp(item, p, i, rules)) : WouldHelp(item, p, 0, rules);
+    public static bool WouldHelpAnyMove(ItemData item, Pokemon p, Ruleset? rules = null, int? runCap = null) =>
+        NeedsMove(item) ? Enumerable.Range(0, p.Moves.Count).Any(i => WouldHelp(item, p, i, rules, runCap)) : WouldHelp(item, p, 0, rules, runCap);
 
     /// <summary>
     /// <c>Pokemon_ApplyItemEffects</c>: uses it on the Pokémon and says what happened. Nothing is changed when it
     /// would have no effect (<see cref="WouldHelp"/> first, as the bag does).
     /// </summary>
-    public static ItemUseResult Apply(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null)
+    public static ItemUseResult Apply(ItemData item, Pokemon p, int moveSlot = 0, Ruleset? rules = null, int? runCap = null)
     {
         if (p.IsEgg) return ItemUseResult.Nothing;
-        if (!WouldHelp(item, p, moveSlot, rules)) return ItemUseResult.Nothing;
+        // The run's level cap (plan 13 · V3): a Rare Candy says why it won't, as a battle's EXP does
+        if (runCap is { } stopped && Has(item, "levelUp") && !p.AtTheCap && LevelCaps.Holds(p, runCap))
+            return new ItemUseResult(false, Text.Of("itemUse.levelCapped", ("name", p.DisplayName), ("level", stopped)));
+        if (!WouldHelp(item, p, moveSlot, rules, runCap)) return ItemUseResult.Nothing;
         string name = p.DisplayName;
 
         // A vitamin or an EV berry changes effort and pleases (plan 06 · R10's rule, the original's own order)

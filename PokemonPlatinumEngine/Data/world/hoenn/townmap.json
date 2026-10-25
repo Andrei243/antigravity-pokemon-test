@@ -274,6 +274,9 @@
     { "spawn": 9, "cells": "20,3 21,3 22,3" },
     { "spawn": 10, "cells": "18,5" },
     { "spawn": 19, "cells": "15,8 15,9" },
-    { "spawn": 11, "cells": "23,5 24,5 23,6 24,6 24,7" }
+    { "spawn": 11, "cells": "23,6 24,6 24,7" },
+    // Plan 21 · H9: the Pokémon League at the top of Ever Grande City, flown to once its hall has been come into (Emerald's
+    // sMapFlyDestinations: MAPSEC_EVER_GRANDE_CITY lands at the League once FLAG_LANDMARK_POKEMON_LEAGUE is set)
+    { "spawn": 20, "cells": "23,5 24,5", "flag": "FLAG_LANDMARK_POKEMON_LEAGUE" }
   ]
 }

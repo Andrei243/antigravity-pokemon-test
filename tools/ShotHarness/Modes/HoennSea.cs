@@ -48,6 +48,8 @@ partial class Harness
         diver.Moves.Clear();
         diver.Moves.Add(new Move(MoveDatabase.Get("Dive")!));
         diver.Moves.Add(new Move(MoveDatabase.Get("Surf")!));
+        // (a full team takes nobody more, and Dive would never be offered)
+        while (party.IsFull) party.Members.RemoveAt(party.Members.Count - 1);
         party.Add(diver);
         int badgesBefore = game.Story.BadgeMask("Hoenn");
         game.Story.GiveBadge("Hoenn", "Balance");

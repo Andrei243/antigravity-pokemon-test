@@ -36,6 +36,9 @@ public sealed partial class GameFlow
     public JournalScreen JournalScreen { get; } = new();
     public ReplayListScreen ReplayListScreen { get; } = new();
     public MigrateScreen MigrateScreen { get; } = new();
+    /// <summary>The jukebox (plan 12 · Q15), and where it goes back to.</summary>
+    public JukeboxScreen JukeboxScreen { get; } = new();
+    public GameState JukeboxReturn { get; set; } = GameState.Title;
     public HatchScreen HatchScreen { get; } = new();
     public HallOfFameCeremony Ceremony { get; } = new();
     public CreditsScreen Credits { get; } = new();

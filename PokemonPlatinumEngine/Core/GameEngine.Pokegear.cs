@@ -109,6 +109,9 @@ public partial class GameEngine
     private string StationLine(RadioStation station)
     {
         string? species = null, place = null;
+        // The day's swarm, once swarms have begun, is told one time in two (plan 20 · J13, part c)
+        if (station == RadioStation.PokemonTalk && Swarms.PlaceToday(flow.Encounters, RegionDatabase.Johto) is { Species.Length: > 0 } swarm && fieldRandom.Next(2) == 0)
+            return PlayerIdentity.Fill(RadioShows.SwarmLine(fieldRandom, LocalNames.Species(swarm.Species), LocalNames.PlaceShown(null, swarm.Name)));
         if (station == RadioStation.PokemonTalk && Habitats.For("johto") is { } habitats)
         {
             var seen = flow.Pokedex.SeenSpecies.Order().Select(n => PokemonDatabase.GetByDex(n)?.Name).OfType<string>()

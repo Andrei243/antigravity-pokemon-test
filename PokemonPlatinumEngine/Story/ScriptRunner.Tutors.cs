@@ -62,6 +62,28 @@ public sealed partial class ScriptRunner
                 };
                 break;
             }
+            // The Move Relearner (plan 20 · J13, part c; Q19's Relearning.MovesFor, the list the party menu's REMEMBER shows):
+            // which of the moves its species learns by level, at or below its own, that it has let slip is it to be
+            // taught. RESULT 1 one was picked (learn teaches it), 0 none, 2 it has none to remember, 3 an Egg, 4 nobody chosen
+            case "remember":
+            {
+                pupil = Chosen();
+                tutorPrice = null;
+                tutorMove = "";
+                if (pupil == null) { Result = 4; break; }
+                if (pupil.IsEgg) { Result = 3; break; }
+                var moves = Relearning.MovesFor(pupil);
+                if (moves.Count == 0) { Result = 2; break; }
+                host.Ask(speakerShown, Text.Of("scriptLines.whichRemembered", ("pokemon", pupil.DisplayName)),
+                    moves.Select(LocalNames.Move).Append(Text.Of("scriptLines.cancel")).ToList(), cancel: moves.Count);
+                afterBusy = () =>
+                {
+                    if (host.Answer < 0 || host.Answer >= moves.Count) { Result = 0; return; }
+                    lastThing = tutorMove = moves[host.Answer];
+                    Result = 1;
+                };
+                break;
+            }
             // CheckCanAffordMove and PayShardCost
             case "afford":
                 Result = tutorPrice != null && MoveTutors.CanAfford(host.Bag, tutorPrice) ? 1 : 0;

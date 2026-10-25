@@ -134,7 +134,13 @@
     "Janitor": "fun",
     "Team Plasma Grunt": "galactic",
     "Harlequin": "fun",
-    "Doctor": "ace"
+    "Doctor": "ace",
+    "Hooligans": "fighter",
+    "Nurse": "lady",
+    "Backpacker": "mountain",
+    "Subway Boss Ingo": "ace",
+    "Subway Boss Emmet": "ace",
+    "Leader": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -166,7 +172,10 @@
     "Leader Roxie": "gym",
     "Team Plasma Grunt": "galactic",
     "Leader Burgh": "gym",
-    "Pokémon Trainer Colress": "gym"
+    "Pokémon Trainer Colress": "gym",
+    "Leader Elesa": "gym",
+    "Subway Boss Ingo": "gym",
+    "Subway Boss Emmet": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",
