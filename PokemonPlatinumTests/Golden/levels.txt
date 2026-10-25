@@ -1221,6 +1221,30 @@ surf 35-55
 old rod 3-15
 good rod 10-35
 super rod 1-100
+=== reversal_mountain
+Reversal Mountain
+grass 31-34
+trainers 2, 37: unova_cyclist_adelaide 37, unova_cyclist_jeremiah 37
+=== reversal_mountain_2
+Reversal Mountain
+grass 31-35
+=== reversal_mountain_3
+Reversal Mountain
+grass 31-35
+trainers 1, 38: unova_pkmn_ranger_lewis 38
+=== reversal_mountain_4
+Reversal Mountain
+grass 31-35
+trainers 10, 37-39: unova_ace_trainer_cora 39, unova_ace_trainer_ray_2 39, unova_backpacker_kiyo 37, unova_backpacker_kumiko_2 37, unova_battle_girl_chan 37, unova_black_belt_corey 37, unova_doctor_derek 38, unova_hiker_jared 37, unova_hiker_markus 37, unova_pkmn_ranger_eliza 38
+=== reversal_mountain_5
+Reversal Mountain
+grass 31-35
+=== reversal_mountain_6
+Reversal Mountain
+grass 31-35
+=== reversal_mountain_7
+Reversal Mountain
+grass 31-35
 === rock_tunnel_1f
 Rock Tunnel
 grass 13-17
@@ -2529,6 +2553,24 @@ grass 51-54
 Stark Mountain
 grass 52-55
 trainers 16, 55-61: ace_trainer_abel 60, ace_trainer_jasmin 61, ace_trainer_kassandra 59, ace_trainer_keenan 59, ace_trainer_monique 59, ace_trainer_natasha 59, ace_trainer_skylar 59, ace_trainer_stefan 61, bird_keeper_krystal 59, black_belt_jarrett 60, black_belt_ray 58, dragon_tamer_drake 57, dragon_tamer_kenny 57, psychic_chelsey 59, psychic_sterling 59, veteran_harlan 59
+=== strange_house
+Strange House
+grass 31-34
+=== strange_house_2
+Strange House
+grass 31-34
+=== strange_house_3
+Strange House
+grass 31-34
+=== strange_house_4
+Strange House
+grass 31-34
+=== strange_house_5
+Strange House
+grass 31-34
+=== strange_house_6
+Strange House
+grass 31-34
 === sunyshore_city
 Sunyshore City
 surf 30-50
@@ -2636,6 +2678,15 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== undella_bay
+Undella Bay
+surf 25-40
+super rod 40-70
+trainers 6, 38-40: unova_ace_trainer_summer 40, unova_swimmer_f_arissa 39, unova_swimmer_f_mitzi 38, unova_swimmer_m_bart 39, unova_swimmer_m_matt 39, unova_swimmer_m_tim 39
+=== undella_town
+Undella Town
+surf 25-40
+super rod 40-70
 === underwater_route_124
 Underwater
 surf 20-35
@@ -2666,6 +2717,15 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unova_route_12
+
+trainers 2, 39-44: unova_team_plasma_grunt_45 39, unova_team_plasma_zinzolin_4 44
+=== unova_route_13
+Route 13
+grass 34-37
+surf 25-40
+super rod 40-70
+trainers 11, 39-41: unova_ace_trainer_angi 41, unova_ace_trainer_miguel 41, unova_battle_girl_alize 41, unova_black_belt_wesley 41, unova_fisherman_damon 39, unova_fisherman_jones 40, unova_fisherman_leroy 40, unova_fisherman_vince 40, unova_parasol_lady_laura 40, unova_pkmn_ranger_daryl 39, unova_pkmn_ranger_dianne 39
 === unova_route_16
 Route 16
 grass 21-24
