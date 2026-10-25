@@ -260,6 +260,10 @@ public enum PropType
     /// in the way of (<c>GameEngine.LayOutSecretBase</c>).
     /// </summary>
     Decoration,
+    /// <summary>A small aeroplane on the apron or the runway, nose along its longer side (Mistralton City's, plan 22 · U7).</summary>
+    Airplane,
+    /// <summary>A cluster of pale charged crystals that glows (Chargestone Cave's, plan 22 · U7).</summary>
+    ChargeStone,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

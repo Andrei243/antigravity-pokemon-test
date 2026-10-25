@@ -1,0 +1,25 @@
+{
+  "key": "chargestone_cave",
+  "index": 194,
+  "name": "Chargestone Cave",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 107, "z": 339, "to": "chargestone_cave_2", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 103, "z": 343, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

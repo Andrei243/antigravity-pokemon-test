@@ -1,0 +1,69 @@
+{
+  // Mistralton City's Pokémon Center (plan 22 · U7, part a): the same floor as Driftveil's, with the town's own people
+  "area": "mistralton_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": {
+    "2108": "PC"
+  },
+  "people": {
+    "0": {
+      "name": "Traveller",
+      "npcType": "gentleman",
+      "dialog": [
+        "I came for one night to wait out the wind. That was a week ago. The wind here is stubborn."
+      ]
+    },
+    "1": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "2": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "3": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "4": {
+      "name": "Nurse",
+      "npcType": "Nurse",
+      "script": "Nurse",
+      "isHealingNurse": true
+    },
+    "5": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "8": {
+      "name": "Pilot",
+      "npcType": "pilot",
+      "dialog": [
+        "A Pokémon Center is the only place where my feet touch the ground all day. I rather like it!"
+      ]
+    },
+    "9": {
+      "name": "Ducklett",
+      "npcType": "Pokemon",
+      "species": "Ducklett",
+      "dialog": [
+        "Ducklett: Kwack!"
+      ]
+    }
+  }
+}

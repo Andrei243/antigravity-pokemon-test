@@ -276,6 +276,12 @@
     // after the former Team Plasma, white-bearded in a long navy robe
     "clay": { "skin": "#e0aa80", "hairColor": "#6a6a6e", "hat": "Cowboy", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#f2ecdc", "accent": "#8a5a32", "bottom": "#4a5a7a", "shoes": "#4a3020", "vest": "#7a5a3a", "mustache": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
     "rood": { "hairColor": "#d8d8de", "hair": "Bald", "top": "#3a4a6e", "accent": "#e8dcb4", "bottom": "#3a4a6e", "shoes": "#2a2a30", "beard": true, "mustache": true, "coat": true, "skirt": true, "build": "Elder" },
+    // Plan 22 · U7, part a: Mistralton City's Gym Leader (our own take, a cheerful young pilot in an orange flight jacket with a white
+    // scarf and a visor over her ponytail), the pilots of her Gym and airfield, and N (a tall slim man in a white shirt and black
+    // waistcoat, his long pale-green hair tied back), until plan 22 · U12
+    "skyla": { "hairColor": "#6a3e2a", "hair": "Ponytail", "hat": "Visor", "hatColor": "#f4f4f6", "hatBand": "#e8782a", "top": "#e8782a", "accent": "#f4f4f6", "bottom": "#3a5a8a", "shoes": "#4a3024", "eyes": "#3a2a2a", "scarf": true, "lashes": true, "blush": true, "build": "Adult", "height": 1.0 },
+    "pilot": { "hairColor": "#3a2e2c", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8782a", "top": "#3a5a8a", "accent": "#f4f4f6", "bottom": "#2c2e3c", "shoes": "#2a2420", "jacket": true, "build": "Adult" },
+    "n": { "hairColor": "#8ab89a", "hair": "Ponytail", "top": "#f2f4f4", "accent": "#26262e", "bottom": "#3a3a46", "shoes": "#2a2a30", "eyes": "#5a7a6a", "vest": "#26262e", "build": "Adult", "height": 1.08 },
     // The Plasma Frigate's (plan 22 · U6, part c; our own takes, stand-ins until plan 22 · U12): Zinzolin, a sage of Team
     // Plasma, bald with a short grey beard in a deep plum robe banded in gold; and the Shadow Triad, Ghetsis's three
     // shadows, white hair over a black suit with a pale band at the collar
@@ -581,7 +587,11 @@
     "gsleader8": "clair", "gsleader9": "lt_surge", "gsbigfour1": "will", "gsbigfour2": "koga", "gsbigfour3": "bruno", "gsbigfour4": "karen",
     "rkanbum": "archer", "skierw": "skier_f", "thief": "burglar",
     // Plan 20 · J14, second part: Crasher Wake as the Leader of Route 47 (held back), the Mediums as Mediums, and the dome owner as his own
-    "leader3": "crasher_wake", "thlonowner": "athlon_owner"
+    "leader3": "crasher_wake", "thlonowner": "athlon_owner",
+    // Plan 22 · U7, part a: Black 2's looks of Route 6 to the Celestial Tower that stand as the nearest of ours until plan 22 · U12
+    "scientist_m_52": "scientist", "scientist_f_46": "scientist_f", "psychic_m": "psychic", "psychic_f": "psychic",
+    "veteran_m": "veteran", "veteran_f": "veteran", "backpacker_f": "picnicker", "worker_44": "worker", "worker_26": "worker",
+    "clerk_f": "clerk"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
@@ -752,6 +762,9 @@
     "Leader Clay": "clay",
     "Pokémon Trainer Rood": "rood",
     // Plan 22 · U6, part c: Route 16's and the Relic Passage's depot agents, folded onto the workers until plan 22 · U12
-    "Depot Agent": "worker"
+    "Depot Agent": "worker",
+    // Plan 22 · U7, part a: Skyla and her pilots
+    "Leader Skyla": "skyla",
+    "Pilot": "pilot"
   }
 }

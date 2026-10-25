@@ -1,0 +1,57 @@
+{
+  "people": {
+    "3": {
+      "name": {
+        "en": [
+          "Jebediah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Mountain men aren't afraid of a dark cave. But Onix isn't afraid of anything at all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A rock crushed by a Trainer. Hm."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Shelby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Boldore! Roll along the path and flatten that Trainer!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My rolling plan got flattened."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

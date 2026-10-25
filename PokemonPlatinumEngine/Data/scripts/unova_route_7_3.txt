@@ -1,0 +1,37 @@
+# A house on Route 7 (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/route_7_3.s, read for the order alone).
+#
+# The old man (1) tells of Tornadus, Thundurus and Landorus and shows the Pokédex all three (once for the telling,
+# FLAG_UNOVA_LANDORUS_TALE); the nursery aide (3) heals the team whenever asked.
+
+
+script LandorusTale
+  face 1 player
+  speaker "Old Man"
+  if flag FLAG_UNOVA_LANDORUS_TALE goto Told
+  say "Long ago I was a sharp-looking young man, and my wife was a fine-looking girl. This is a story from those days."
+  say "Right around here, a certain Pokémon once put Tornadus and Thundurus in their place, after they'd stirred up storms and thunder across the whole region."
+  say "I'll show you a picture of each. This is Tornadus!"
+  seen "Tornadus"
+  say "And this is Thundurus!"
+  seen "Thundurus"
+  text "Tornadus and Thundurus have been registered in the Pokédex."
+  say "The Pokémon that quieted the pair is known as Landorus. Feast your eyes!"
+  seen "Landorus"
+  text "Landorus has been registered in the Pokédex."
+  say "I heard there's a shrine to Landorus somewhere along Route 14. Maybe you'll go and see it."
+  setflag FLAG_UNOVA_LANDORUS_TALE
+  end
+label Told
+  say "Tornadus and Thundurus were wild, and Landorus brought them back to order. A good story, I always think."
+  end
+
+
+script RestForTheTeam
+  face 3 player
+  speaker "Nursery Aide"
+  say "Oh, dear. Your team looks a bit sluggish. Rest for just a moment!"
+  heal
+  fanfare heal
+  say "There! All better. Walking the raised walkways is more tiring than you'd think, isn't it?"
+  end

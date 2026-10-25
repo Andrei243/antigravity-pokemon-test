@@ -1,0 +1,74 @@
+# Lentimas Town (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/lentimas_town.s, read for the order alone).
+#
+# Skyla's plane (mistralton_city_3.txt, TheFlight) sets the player down on the strip with VAR_UNOVA_MISTRALTON at 4. Professor
+# Juniper (2, FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS) and Bianca (5, FLAG_UNOVA_HIDE_BIANCA_LENTIMAS) are there: the professor tells
+# why she brought the player (Team Plasma's two stones, the dragons they wake, and Drayden in Opelucid City), Bianca runs off
+# for Reversal Mountain and the professor stays. VAR_UNOVA_LENTIMAS 1 is the scene played. The clerk (7) flies anyone who asks
+# back to Mistralton City. Reversal Mountain and the rest of the chapter are plan 22 · U7, part b's.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_MISTRALTON < 4 end
+  if var VAR_UNOVA_LENTIMAS != 0 end
+  scene "Professor Juniper in Lentimas Town"
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  clearflag FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  show 2
+  show 5
+  face 2 player
+  face 5 player
+  speaker "Prof. Juniper"
+  say "That was a lovely flight! Thank you, Skyla! Welcome to Lentimas Town, {player}."
+  speaker "Bianca"
+  say "Whoa, that was incredible! I never knew the whole of Unova could look so small!"
+  speaker "Prof. Juniper"
+  say "I brought you along because of what I've been tracking. Team Plasma has been after the two stones that sleep in this country, and the dragons that wait inside them."
+  say "Reshiram and Zekrom, the ones from the old tale. If their power is woken the wrong way, the ground itself will feel it."
+  say "Drayden, the Gym Leader of Opelucid City, knows the old tales far better than I do. If you can, go and hear them from him."
+  speaker "Bianca"
+  say "And I'm going to Reversal Mountain! My research is waiting there. A volcano is the best place to see how the earth breathes!"
+  say "See you around, {player}! Come and find me if you get the chance!"
+  walk 5 up 3 fast
+  hide 5
+  setflag FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  speaker "Prof. Juniper"
+  say "Goodness, she doesn't stop for breath. I'll stay a while and take notes. If you need a ride back, the clerk by the strip will find you a seat."
+  setvar VAR_UNOVA_LENTIMAS 1
+  endscene
+  end
+
+
+script JuniperInLentimas
+  face 2 player
+  speaker "Prof. Juniper"
+  say "Reversal Mountain is the best place to watch the earth at work. Take care if you go in, {player}. The paths are hot and winding."
+  end
+
+
+script LentimasCargo
+  face 7 player
+  speaker "Attendant"
+  say "This is the Lentimas Town landing strip. Skyla's plane flies back to Mistralton City any time you like."
+  ask "Would you like a seat on the next flight?"
+  if no goto Declined
+  say "Very well. Please wait on the strip."
+  call TheFlightBack
+  end
+label Declined
+  say "Of course. Come back any time!"
+  end
+
+
+script TheFlightBack
+  scene "The flight to Mistralton City"
+  fade out 0.8
+  music stop
+  sound "crossing_engine"
+  text "The little plane takes off from the strip, and the volcano's shoulder falls away beneath it."
+  text "Before long, Mistralton City's runway swings into view, with the wind sock standing out straight."
+  endscene
+  warp "Unova" 108 305 down
+  fade in
+  return

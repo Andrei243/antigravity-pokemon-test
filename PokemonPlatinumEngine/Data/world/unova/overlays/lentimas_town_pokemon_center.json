@@ -1,0 +1,68 @@
+{
+  // Lentimas Town's Pokémon Center (plan 22 · U7, part a): the same floor as Driftveil's, with the town's own people
+  "area": "lentimas_town_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": {
+    "2108": "PC"
+  },
+  "people": {
+    "0": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "dialog": [
+        "The trail up Reversal Mountain starts right here. It's hot, so drink plenty of water, and bring Pokémon that don't mind a bit of fire."
+      ]
+    },
+    "1": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [
+        "I've watched planes come and go from this window for years. I still wave at every one."
+      ]
+    },
+    "2": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "dialog": [
+        "The air up here is thin, which is exactly why I train here! I punch harder for it."
+      ]
+    },
+    "3": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "4": {
+      "name": "Nurse",
+      "npcType": "Nurse",
+      "script": "Nurse",
+      "isHealingNurse": true
+    },
+    "5": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "7": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "8": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    }
+  }
+}

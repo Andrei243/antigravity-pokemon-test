@@ -1,0 +1,28 @@
+{
+  // A house of Lentimas Town (plan 22 · U7, part a): three people who talk, our words
+  "area": "lentimas_town_2",
+  "bgmTrack": "unova/mistralton",
+  "people": {
+    "0": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [
+        "I paint the volcano at every hour. Its mood changes faster than I can mix the colours."
+      ]
+    },
+    "1": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [
+        "A Strange House stands at the edge of town, I'm told. I wouldn't go in. Not that I'm scared. I just don't want to."
+      ]
+    },
+    "2": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "Reversal Mountain is hot on the inside and cool on the outside. Mountains are funny like that."
+      ]
+    }
+  }
+}

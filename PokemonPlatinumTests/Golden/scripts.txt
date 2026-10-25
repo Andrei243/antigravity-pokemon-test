@@ -7564,6 +7564,28 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_GOT_COIN_CASE
+=== celestial_tower.RingTheBell
+from the tile read at 16,10 of CelestialTower_Summit
+way 0
+  > It's the great bell of the Celestial Tower.
+  > Will you ring the bell?
+  > Lucas rang the bell...
+  > The sound of the bell rolls out over the tower and the hills beyond, and slowly fades away.
+  ? Will you ring the bell? = Yes
+  * sound lift_ding
+way 1, from answer 1
+  > The bell was left untouched...
+  ? Will you ring the bell? = No
+=== celestial_tower_2.JuniperInTheTower
+from Prof. Juniper at 17,15 of CelestialTower_1F
+way -
+  Prof. Juniper> Hi there, Lucas! How did things go with Skyla? Oh? You haven't won her Badge yet?
+  Prof. Juniper> Then I'll keep up my field work a little longer. Before you go, take this for your trip.
+  > Lucas received the Lucky Egg!
+  > Lucas put it away in the Items pocket.
+  Prof. Juniper> Give that Lucky Egg to a Pokémon to hold, and it earns a little more Experience from every battle! Strong Pokémon make a strong Trainer.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_LUCKY_EGG
 === celestic_town.Elder
 from Elder at 462,538 of Sinnoh
 way -
@@ -7946,6 +7968,56 @@ way 0
 way 1, from answer 1
   * battle kanto_leader_misty Lost
   * scene over, unseen
+=== chargestone_cave_2.BiancaAtTheMouth
+from the trigger at 8,50 of ChargestoneCave
+way -
+  Bianca> Heeey! Lucas, is that you? Hi there!
+  Bianca> Isn't this place something? The whole cave is charged with electricity, and Pokémon just love it.
+  Bianca> The charge jumps from one rock to the next. That's why some of the stones in here glow, and why there are sparks underfoot.
+  Bianca> Oh, that's right! I came here to research something for Professor Juniper. I'd better get back to it. See you, Lucas!
+  * scene chargestone_cave_2.Bianca at Chargestone Cave
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  = VAR_UNOVA_CHARGESTONE 0 -> 1
+  + seen chargestone_cave_2.Bianca at Chargestone Cave
+=== chargestone_cave_2.NAlone
+from the trigger at 47,41 of ChargestoneCave
+way -
+  N> Chargestone Cave... I like it here. The stones hum, and the Pokémon hum with them.
+  N> Someone could write all of it down in formulas: the charge, the Pokémon, the people. But a formula never asks how a Pokémon feels.
+  N> I have to go. There are Pokémon who need someone to speak for them, and there is a person I must stop.
+  * scene chargestone_cave_2.N in Chargestone Cave
+  * endscene
+  + FLAG_UNOVA_HIDE_N_CHARGESTONE
+  = VAR_UNOVA_CHARGESTONE 0 -> 2
+  + seen chargestone_cave_2.N in Chargestone Cave
+=== chargestone_cave_2.NInTheCave
+from N at 55,41 of ChargestoneCave
+way -
+  N> Please, let me be. I'm listening to the stones.
+=== chargestone_cave_3.BiancaAndTynamo
+from Bianca at 49,4 of ChargestoneCave_Heart
+way -
+  Bianca> Know what? I'm here because Professor Juniper asked me to be. I'm researching a Pokémon called Tynamo!
+  Bianca> There aren't very many of them, and they don't look very strong... They must get stronger when they evolve. I'll find out how!
+=== chargestone_cave_3.NuggetBoy
+from Nugget Boy at 40,52 of ChargestoneCave_Heart
+way -
+  Nugget Boy> And I'm the Nugget boy! Here, I want you to have one, too.
+  > Lucas received the Nugget!
+  > Lucas put it away in the Items pocket.
+  Nugget Boy> Nuggets sell for a lot, but I'd keep it. Shiny things bring good luck!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_NUGGET_BOY
+=== chargestone_cave_3.NuggetMan
+from Nugget Man at 41,52 of ChargestoneCave_Heart
+way -
+  Nugget Man> Hi! I'm the Nugget man. Glad you showed up! I'd like you to have this.
+  > Lucas received the Nugget!
+  > Lucas put it away in the Items pocket.
+  Nugget Man> That's a Nugget! How did it get so golden without being deep-fried? That's a trade secret!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_NUGGET_MAN
 === cherrygrove.GuideGent
 from Guide Gent at 566,396 of Johto
 way 0
@@ -10489,12 +10561,19 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
@@ -10514,16 +10593,28 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaCatchUp
 from a trainer with lines of their own
@@ -10536,16 +10627,23 @@ way -
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
@@ -10569,22 +10667,34 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -10598,11 +10708,18 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
   + FLAG_UNOVA_HIDE_GRUNT_PWT
@@ -10613,26 +10730,79 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
 === common.UnovaFrigate
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
+=== common.UnovaMistralton
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_MISTRALTON_BEGUN
 === common.UnovaNewGame
 from a trainer with lines of their own
 way -
@@ -10641,16 +10811,23 @@ way -
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
@@ -10672,22 +10849,34 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -10697,11 +10886,18 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
   + FLAG_UNOVA_HIDE_GRUNT_PWT
@@ -10713,13 +10909,25 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
@@ -10743,13 +10951,20 @@ way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_FRIGATE_BEGUN
   + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
@@ -10770,19 +10985,31 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
@@ -14232,6 +14459,30 @@ way -
   Mr. Fuji> There's a huge Pokémon asleep on the road, I hear. The flute should rouse it.
   * fanfare FanfareKeyItem
   + FLAG_GOT_POKE_FLUTE
+=== lentimas_town.JuniperInLentimas
+from Prof. Juniper at 615,305 of Unova
+way -
+  Prof. Juniper> Reversal Mountain is the best place to watch the earth at work. Take care if you go in, Lucas. The paths are hot and winding.
+=== lentimas_town.LentimasCargo
+from Attendant at 617,303 of Unova
+way 0
+  Attendant> This is the Lentimas Town landing strip. Skyla's plane flies back to Mistralton City any time you like.
+  Attendant> Would you like a seat on the next flight?
+  Attendant> Very well. Please wait on the strip.
+  > The little plane takes off from the strip, and the volcano's shoulder falls away beneath it.
+  > Before long, Mistralton City's runway swings into view, with the wind sock standing out straight.
+  ? Would you like a seat on the next flight? = Yes
+  * scene lentimas_town.The flight to Mistralton City
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp Unova 108 305
+  * fade in
+  + seen lentimas_town.The flight to Mistralton City
+way 1, from answer 1
+  Attendant> Of course. Come back any time!
+  ? Would you like a seat on the next flight? = No
 === lilycove_city.BerryGentleman
 from Gentleman at 530,77 of Hoenn
 way -
@@ -15158,6 +15409,144 @@ way 0
 way 1, from answer 1
   > Lucas left the Root Fossil where it lay.
   ? Take the Root Fossil anyway? = No
+=== mistralton_city.JuniperAndSkyla
+from the trigger at 100,301 of Unova
+way -
+  Prof. Juniper> Hi there, Lucas! It's lovely to be able to talk to you in person at last. I'm Professor Juniper!
+  Prof. Juniper> You took the Pokédex and came all the way out here with your partners. Let me see how you are getting on.
+  Prof. Juniper> Marvellous! You've met so many Pokémon already. Thank you for your hard work. This is a token of my gratitude.
+  > Lucas received the Master Ball!
+  > Lucas put it away in the Poké Balls pocket.
+  Prof. Juniper> A Master Ball is the most powerful Poké Ball there is. It catches any Pokémon without fail.
+  Prof. Juniper> Journeys are about meeting Pokémon, so never let one slip by. Keep the Master Ball for the one you really can't let go.
+  Prof. Juniper> It still amazes me how much the Pokémon of this region have changed in two years. My research will never end. That's what makes it fun!
+  ???> Professor Juniperrrrr!
+  Prof. Juniper> Why, if it isn't Skyla!
+  Prof. Juniper> Lucas, this is Skyla. She's Mistralton City's Gym Leader.
+  Skyla> Why are you so surprised, Professor? You asked for a lift in my plane to cross Twist Mountain, since you can't reach Opelucid City on foot!
+  Prof. Juniper> Ha ha, you're quite right! But I have a quick favour to ask first. I'd like to have a look at the Celestial Tower. Would you mind waiting until I'm through?
+  Skyla> Honestly! Okay, but don't take all day!
+  Prof. Juniper> See you, Lucas! Be sure to get along with all kinds of Pokémon!
+  Skyla> Honestly! I can never tell whether she's laid back or just doesn't listen to anything outside her own head.
+  Skyla> So you're Lucas? I'm Skyla, Mistralton's Gym Leader, and a pilot besides. Nice to meet you!
+  Skyla> What's next? Will you come to my Gym and challenge me? Or will you follow the professor to the Celestial Tower and train a little?
+  Skyla> As long as I get to fly her over Twist Mountain in the end, I don't mind which!
+  * scene mistralton_city.Professor Juniper and Skyla
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_UNOVA_GOT_MASTER_BALL
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  = VAR_UNOVA_MISTRALTON 0 -> 1
+  + seen mistralton_city.Professor Juniper and Skyla
+=== mistralton_city.JuniperOutside
+from Prof. Juniper at 90,297 of Unova
+way -
+  Prof. Juniper> Isn't it a marvellous place for research? So much wind! So much sky!
+=== mistralton_city.RunwayTreasure
+from Treasure at 69,329 of Unova
+way -
+  Youngster> Oh! You found our treasure!
+  Girl> Found it!
+  Youngster> Just kidding! Our Ducklett already knows Aerial Ace, so we'll give you this TM instead!
+  > Lucas received the TM40!
+  > TM40 holds the move Aerial Ace.
+  > Lucas put it away in the TMs & HMs pocket.
+  Youngster> Aerial Ace never misses! We hope it helps you win!
+  Girl> See you! Bye-bye!
+  * scene mistralton_city.The kids' treasure
+  * fanfare FanfareTM
+  * cry Ducklett
+  * endscene
+  + FLAG_UNOVA_GOT_TM40
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + seen mistralton_city.The kids' treasure
+=== mistralton_city.SkylaOutside
+from Skyla at 89,297 of Unova
+way -
+  Skyla> Are you coming to my Gym? Or to the Celestial Tower? Either is fine by me!
+=== mistralton_city_2.GreenhouseBoy
+from Boy at 6,6 of MistraltonCity_Greenhouse
+way -
+  Boy> If you have a Badge from Mistralton, I'll tell you something cool!
+=== mistralton_city_3.CargoCounter
+from Attendant at 14,17 of MistraltonCity_CargoHall
+way -
+  Attendant> Hello! This is Mistralton Cargo Service: quick and safe, runway to runway.
+  Attendant> We carry passengers now, too, but the flights are up to our Gym Leader. Skyla flies when she's ready.
+=== mistralton_city_3.JuniperInTheHall
+from Prof. Juniper at 18,19 of MistraltonCity_CargoHall
+way -
+  Prof. Juniper> Hi there! Did I keep you waiting? I'm sorry! Shall we let Skyla show us her flying?
+=== mistralton_city_3.SkylaInTheHall
+from Skyla at 17,19 of MistraltonCity_CargoHall
+way 0
+  Skyla> Looks like the professor has reached a stopping point in her investigation. Are you ready to hop aboard my plane?
+  Skyla> Ready for takeoff?
+  Prof. Juniper> All right, Skyla, we're ready. Please take us to Lentimas Town!
+  Bianca> Waaaait! You guys! Wait, wait, wait, wait!
+  Bianca> Hff... pff... I want to fly, too! I want to do some research in Reversal Mountain, hff... and it's so far to walk!
+  Prof. Juniper> Bianca, you're here? You're starting to show the dedication of a serious researcher! Very well, everyone, off we go to Lentimas Town!
+  Skyla> Hee-hee! Looks like everyone's here! At last it's time to fly the Unova skies!
+  > The little plane rolls down the runway and leaps into the wind...
+  > Twist Mountain slides by under the wings, white where the snow lies and bare where it doesn't.
+  > Then the plane banks over the mountain's far side, and Lentimas Town comes up to meet it.
+  ? Ready for takeoff? = Yes
+  * scene mistralton_city_3.Skyla's flight to Lentimas Town
+  * endscene
+  * scene mistralton_city_3.The flight to Lentimas Town
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp Unova 616 308
+  * fade in
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  = VAR_UNOVA_MISTRALTON 0 -> 4
+  + seen mistralton_city_3.Skyla's flight to Lentimas Town
+  + seen mistralton_city_3.The flight to Lentimas Town
+way 1, from answer 1
+  Skyla> Roger! Come and talk to me when you're ready.
+  ? Ready for takeoff? = No
+=== mistralton_city_gym.GymGuide
+from Guide at 12,46 of MistraltonCity_Gym
+way -
+  Guide> Whoosh! Hold on to your hat in here. This Gym is a wind tunnel!
+  Guide> The propellers at the back are what make the gale. Here, have a drink to keep you going.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  Guide> The pilots stand guard along the corridors, and Skyla waits on the stage. Flying Pokémon are weak to Electric, Ice and Rock moves!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_MISTRALTON
+=== mistralton_city_gym.Skyla
+from Skyla at 11,2 of MistraltonCity_Gym
+way 0
+  Skyla> Hee-hee! I've been waiting for you. You're a tough Trainer who can face the wind and not be blown off your feet!
+  Skyla> I'm kind of excited about this battle! Shall we? You and me, wings spread!
+  Skyla> You're an amazing Trainer. My Pokémon and I are happy: for the first time in a long while, we battled with everything we had!
+  Skyla> Here, take this. It's the Jet Badge, proof that you beat me!
+  > Lucas received the Jet Badge from Skyla!
+  Skyla> And I want you to have this TM, so that you'll always remember the Pokémon who flies the highest.
+  > Lucas received the TM62!
+  > TM62 holds the move Silver Wind.
+  > Lucas put it away in the TMs & HMs pocket.
+  Skyla> With a Badge from each of the winds, who knows how high you'll soar? I wonder what Professor Juniper is up to. I did promise her a ride in my plane...
+  * scene mistralton_city_gym.Skyla
+  * battle unova_leader_skyla Won
+  * fanfare FanfareBadge
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_GOT_TM62
+  = VAR_UNOVA_MISTRALTON 0 -> 2
+  + beaten unova_leader_skyla
+  = badges Unova 0 -> 100000
+  + seen mistralton_city_gym.Skyla
+way 1, from answer 1
+  * battle unova_leader_skyla Lost
+  * scene over, unseen
 === mossdeep_city.DynamicPunchTutor
 from Black Belt at 659,125 of Hoenn
 way 0
@@ -22820,6 +23209,105 @@ way 1, from answer 1
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   = VAR_UNOVA_ROUTE_5 0 -> 1
   + seen unova_route_5.Bianca on Route 5
+=== unova_route_6.CherenCalls
+from the trigger at 138,371 of Unova
+way -
+  Cheren> Lucas, there you are. I hoped you would come this way.
+  Cheren> Come with me for a moment, would you? There's something I want to talk over, and the lab is the quietest place for miles.
+  * scene unova_route_6.Cheren calls the player to the lab
+  * endscene
+  * warp Route6_SeasonLab 5 8
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + seen unova_route_6.Cheren calls the player to the lab
+=== unova_route_6.CherenOnTheRoad
+from {rival} at 135,373 of Unova
+way -
+  Cheren> I'm going over the lab's records a while longer. Take care out there, Lucas.
+=== unova_route_6.CobalionPasses
+from the trigger at 102,365 of Unova
+way -
+  Rood> That Pokémon...?
+  Old Man> That's the legendary Pokémon Cobalion! I told you the tale the other day, remember?
+  Rood> Cobalion! What a noble presence it has.
+  Old Man> They say Cobalion, Virizion and Terrakion stood against people to protect Pokémon from a war that the people had started.
+  Old Man> When people fight, there is no peace for Pokémon either. The three learned how far the deeds of humans can reach into the world of Pokémon.
+  Old Man> But why would it show itself to people at all? Is it on watch over Unova for the Pokémon's sake, after what Team Plasma did two years ago? Or does it feel a new trouble coming?
+  Rood> Unforgivable... So Ghetsis's ambition and malice are still spreading, and still bending the lives they touch.
+  Rood> Did Cobalion show itself to you by chance, or to ask for your help? I cannot know. Unlike Lord N, I was never able to understand the minds of Pokémon.
+  Rood> But if you can win Cobalion's trust, it will be a great strength to you on your journey.
+  * scene unova_route_6.Cobalion on Route 6
+  * camera Pan 98 365
+  * cry Cobalion
+  * camera Release
+  * endscene
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  = VAR_UNOVA_ROUTE_6 0 -> 3
+  + seen unova_route_6.Cobalion on Route 6
+=== unova_route_6.OldManAboutCobalion
+from Old Man at 119,363 of Unova
+way -
+  Old Man> People and Pokémon alike would do well to trust one another. That's all the three legends ever wanted, I think.
+=== unova_route_6.RoodAboutCobalion
+from Rood at 103,372 of Unova
+way -
+  Rood> If Cobalion wishes to find you, it will. Be patient and keep your Pokémon close.
+=== unova_route_6_2.CherenInTheLab
+from {rival} at 6,5 of Route6_SeasonLab
+way -
+  Cheren> Sorry for slowing you down. Strange things may be happening, so be careful out there!
+=== unova_route_6_2.DeerlingGift
+from Researcher at 5,1 of Route6_SeasonLab
+way 0
+  Researcher> You can see a Deerling of every season in our lab! When it comes to Deerling, we're the experts.
+  Researcher> We found an unusually fine one. Would you raise it for us?
+  Researcher> Will you take it?
+  > Lucas received Deerling!
+  Researcher> It changes coat with the seasons, so you'll see it in a new colour every few months. Take good care of it!
+  ? Will you take it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_UNOVA_GOT_DEERLING
+way 1, from answer 1
+  Researcher> Oh... Well, it'll be here if you change your mind.
+  ? Will you take it? = No
+=== unova_route_6_2.Forecaster
+from Forecaster at 1,1 of Route6_SeasonLab
+way -
+  Forecaster> Welcome! Show me a Pokémon that can change the weather, and I'll give you a Pokémon weather forecast.
+  Forecaster> Oh dear. None of your Pokémon knows a move that changes the weather. Bring me one that does, and you'll get your forecast!
+=== unova_route_7_2.GigalithTrade
+from Hiker at 4,5 of Route7_House1
+way 0
+  Hiker> Trading Pokémon lets you get to know other Trainers! I've been thinking of a swap myself.
+  Hiker> Kid! Have you caught an Emolga? If you have, will you trade it for my Gigalith?
+  Hiker> Which Pokémon will you swap?
+  Hiker> Hey, come on now! It's an Emolga I want to swap for...
+  ? Kid! Have you caught an Emolga? If you have, will you trade it for my Gigalith? = Yes
+  * open ChoosePokemon
+  * trade gigalith refused
+way 1, from answer 1
+  Hiker> I see. Well, come and talk to me again if you change your mind!
+  ? Kid! Have you caught an Emolga? If you have, will you trade it for my Gigalith? = No
+=== unova_route_7_3.LandorusTale
+from Old Man at 4,5 of Route7_House2
+way -
+  Old Man> Long ago I was a sharp-looking young man, and my wife was a fine-looking girl. This is a story from those days.
+  Old Man> Right around here, a certain Pokémon once put Tornadus and Thundurus in their place, after they'd stirred up storms and thunder across the whole region.
+  Old Man> I'll show you a picture of each. This is Tornadus!
+  Old Man> And this is Thundurus!
+  > Tornadus and Thundurus have been registered in the Pokédex.
+  Old Man> The Pokémon that quieted the pair is known as Landorus. Feast your eyes!
+  > Landorus has been registered in the Pokédex.
+  Old Man> I heard there's a shrine to Landorus somewhere along Route 14. Maybe you'll go and see it.
+  * seen Tornadus
+  * seen Thundurus
+  * seen Landorus
+  + FLAG_UNOVA_LANDORUS_TALE
+=== unova_route_7_3.RestForTheTeam
+from Nursery Aide at 9,5 of Route7_House2
+way -
+  Nursery Aide> Oh, dear. Your team looks a bit sluggish. Rest for just a moment!
+  Nursery Aide> There! All better. Walking the raised walkways is more tiring than you'd think, isn't it?
+  * fanfare FanfareHeal
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -

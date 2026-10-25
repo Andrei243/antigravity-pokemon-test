@@ -1,0 +1,26 @@
+{
+  // A house on Route 6 (plan 22 · U7, part a): three people who talk, our words
+  "area": "unova_route_6_3",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": {
+      "name": "Pokéfan",
+      "dialog": [
+        "I moved here for the quiet. And for the Pokémon. And, well, for the quiet."
+      ]
+    },
+    "1": {
+      "name": "Twins",
+      "npcType": "twin",
+      "dialog": [
+        "We sneak into the lab's garden when the grown-ups aren't looking. Don't tell!"
+      ]
+    },
+    "2": {
+      "name": "Artist",
+      "dialog": [
+        "I paint this road in all four seasons. It never looks the same twice."
+      ]
+    }
+  }
+}

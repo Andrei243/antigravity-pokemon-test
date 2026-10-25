@@ -1,0 +1,61 @@
+# The Mistralton Gym (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/mistralton_city_gym.s, read for the order alone).
+#
+# The guide (5) gives a challenger Fresh Water at the door (FLAG_UNOVA_GOT_WATER_MISTRALTON). Black 2's Gym is a wind tunnel
+# whose cannons fling a challenger from platform to platform; ours is the maze of its corridors with five pilots
+# (0, 1, 2, 4, 6) standing in them, and Skyla (3, FLAG_UNOVA_HIDE_SKYLA_GYM, shown by the scene in Mistralton City) on the
+# stage at the top. Her battle (Black 2's TRAINER_LEADER_SKYLA; _2 is the Challenge Mode's, plan 13's) gives the Jet Badge,
+# the region's sixth (`givebadge jet`), and TM62 (FLAG_UNOVA_GOT_TM62), which our data's table, Platinum's, fills with its
+# own move; the city's count moves on (VAR_UNOVA_MISTRALTON 2).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script GymGuide
+  face 5 player
+  speaker "Guide"
+  if not flag FLAG_UNOVA_GOT_WATER_MISTRALTON goto Water
+  if badge jet goto Won
+  say "The corridors are a maze, and a pilot waits round every bend. Skyla is at the very top, past them all."
+  say "Her Pokémon fly, so Electric, Ice and Rock moves will bring them down to earth."
+  end
+label Water
+  say "Whoosh! Hold on to your hat in here. This Gym is a wind tunnel!"
+  say "The propellers at the back are what make the gale. Here, have a drink to keep you going."
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_MISTRALTON
+  say "The pilots stand guard along the corridors, and Skyla waits on the stage. Flying Pokémon are weak to Electric, Ice and Rock moves!"
+  end
+label Won
+  say "You beat Skyla! That was a flight to remember."
+  end
+
+
+script Skyla
+  face 3 player
+  speaker "Skyla"
+  if badge jet goto Won
+  scene "Skyla"
+  say "Hee-hee! I've been waiting for you. You're a tough Trainer who can face the wind and not be blown off your feet!"
+  say "I'm kind of excited about this battle! Shall we? You and me, wings spread!"
+  battle 3 as "unova_leader_skyla"
+  say "You're an amazing Trainer. My Pokémon and I are happy: for the first time in a long while, we battled with everything we had!"
+  say "Here, take this. It's the Jet Badge, proof that you beat me!"
+  givebadge jet
+  text "{player} received the Jet Badge from Skyla!"
+  if var VAR_UNOVA_MISTRALTON < 2 setvar VAR_UNOVA_MISTRALTON 2
+label Tm
+  say "And I want you to have this TM, so that you'll always remember the Pokémon who flies the highest."
+  give "TM62"
+  setflag FLAG_UNOVA_GOT_TM62
+  say "With a Badge from each of the winds, who knows how high you'll soar? I wonder what Professor Juniper is up to. I did promise her a ride in my plane..."
+  endscene
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM62 goto Tm
+  say "Are you and your Pokémon well? Our battle was a ton of fun. My Pokémon want to train again just thinking about it."
+  say "Two things I love: flying my own plane, and having my Pokémon take me up using Fly!"
+  end

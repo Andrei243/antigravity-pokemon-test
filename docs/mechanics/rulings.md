@@ -3006,6 +3006,48 @@ this part: the places, the people and the data of the import are part b's and c'
   Ferris wheel drawn as a wheel, the drawbridge's raising and its Ducklett shadows, the 2-by-2 boulder of the Relic
   Passage and the desert's storm timed within budget.
 
+## Unova's third chapter, part a: Route 6 to Lentimas Town (2026-10-25, plan 22 · U7)
+
+Black 2's beats from the Season Research Lab to the plane that lands in Lentimas Town, in our own words (the decompilation's
+zone scripts, read for the order of beats alone) on flags of ours, `FLAG_UNOVA_…` and `VAR_UNOVA_…` (the original's by
+value can't be named in a script).
+
+- **The order of the chapter.** After the Plasma Frigate has sailed Cheren stands on Route 6 and walks the player to the
+  Season Research Lab (`VAR_UNOVA_ROUTE_6` 1 to 2): he tells of the cold snap near Lacunosa Town and the odd readings at
+  Castelia and Driftveil and gives HM03, Surf, **which is what takes the player over Route 6's east bank to Mistralton Cave**.
+  On the west bridge Cobalion shows itself across the pond to Rood and an old
+  man (3). Chargestone Cave comes out in Mistralton City, as the original's does: Bianca at its mouth (her errand is for
+  the professor), N alone in its long corridor (he is gone after one word; Colress's grunts and N's later scenes are part
+  b's). In Mistralton City Professor Juniper and Skyla meet the player on the road (the Master Ball for the Pokédex, once;
+  `VAR_UNOVA_MISTRALTON` 1): the professor goes on to the Celestial Tower, Skyla to her Gym. Skyla's Gym (2, the Jet
+  Badge, TM62) is a maze of wind with five pilots; the professor in the tower gives a Lucky Egg once and, once the Badge is
+  won, goes back to the cargo hall (3); there Skyla asks whether the player is ready, Bianca dashes in for the ride, and the
+  plane flies to Lentimas Town (4: a scene of the fade and lines over the dark, as the voyage to Castelia is). In Lentimas
+  Town Juniper tells of the two stones, the dragons in them and Drayden of Opelucid City, and Bianca goes on to Reversal
+  Mountain (`VAR_UNOVA_LENTIMAS` 1); an attendant on the strip flies anyone back to Mistralton City.
+- **The Jet Badge** is the region's sixth (`givebadge jet`, the order of `unova.json`'s badges); Skyla's team is Black 2's
+  (`unova_leader_skyla`), TM62 is the Gym's TM in our data's table (Platinum's, which the importer fills).
+- **The Celestial Tower** has five floors on the original's plans; its spiral ramp is a rail Black 2 rides and the importer
+  leaves out, so each floor has a way up at a tile of its own and a way down at the strip the original gives (overlay
+  `exits` and `doors`), as Castelia's avenue has. The great bell at the summit may be rung by anyone; Black 2's Mesprit,
+  hung over the summit until it is met, and the bell's quest (a waitress, a clerk and a maid of the lower floors) are part
+  b's.
+- **The water's edge** (`TileBehavior.SurfEdge`, Black 2's 0xB7): a blocked tile whose neighbour is open water. It was a
+  wall; it is now **a tile a walker meets as water and a surfer rides over** (`FieldMovement.Step` answers `Obstacle.Water`
+  to a walker, `CanStartSurf` lets Surf begin onto it), which is how the original's shore works, and which opens Route 6's
+  east bank. A blocked tile of any other behaviour in water is still a wall.
+- **Mistralton Cave** has one floor here. The original's own data joins its chambers by one-tile walls this import marks
+  blocked, so only the first chamber is walked; the rest, its second floor (to the Guidance Chamber), Clay Tunnel and the
+  two hikers beyond belong to U10, and the way on is shut meanwhile (a warp that leads nowhere is blocked).
+- **Looks and sounds.** `Architecture.Airfield` (Mistralton and Lentimas: orange plaster, a hip roof, flower boxes), the
+  plane (`PropType.Airplane`, white with an orange stripe) and the crystals (`PropType.ChargeStone`, three shards with a
+  spark in the tallest, glowing with the lamps' light) are ours; the Gym is a Flying one, `GymTheme`
+  `Flying`; looks `skyla`, `pilot` (and the eye theme `ace`, the class's battle theme the Gym's) and `n`. Songs of our
+  own, none heard by the user yet: `unova/route6`, `chargestone`, `mistralton` (with a night arrangement) and
+  `celestial_tower`, each over 25 s and clean in `MusicRender`.
+- **What a save needs.** A save of the frigate's chapter is given the chapter's hidden people by `UnovaCatchUp`
+  (`FLAG_UNOVA_MISTRALTON_BEGUN`), with no story version raised.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

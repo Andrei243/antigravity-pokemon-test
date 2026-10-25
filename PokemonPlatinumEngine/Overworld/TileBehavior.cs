@@ -321,7 +321,7 @@ public static class TileBehaviors
 
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea or TileBehavior.Whirlpool
-        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DiveWater
+        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DiveWater or TileBehavior.SurfEdge
         or TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth;
 
     /// <summary>Ground that keeps the print of a shoe, as in Platinum: its sand, and snow of every depth.</summary>
@@ -377,6 +377,8 @@ public static class TileBehaviors
             => (BehaviourSupport.Ruled, "Carries whoever steps on it along."),
         TileBehavior.River or TileBehavior.Sea
             => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon."),
+        TileBehavior.SurfEdge
+            => (BehaviourSupport.Ruled, "Blocked to a walker, but Surf begins onto it from the shore and a surfer rides over it as over the water it borders, meeting the area's water Pokémon (FieldMovement.CanStartSurf; Black 2's, plan 22 · U7)."),
         TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater
             => (BehaviourSupport.Ruled, "Crossed on its deck and surfed under, whichever level one is on."),
         TileBehavior.VeryTallGrass => (BehaviourSupport.Ruled, "Wild Pokémon, more often than in tall grass; no Bicycles."),
@@ -426,7 +428,7 @@ public static class TileBehaviors
         TileBehavior.DarkGrass => (BehaviourSupport.Plain, "Walked on; wild Pokémon from the area's dark grass table, now and then two at once (plan 22 · U4)."),
         TileBehavior.VeryTallDarkGrass => (BehaviourSupport.Ruled, "Wild Pokémon from the area's dark grass table, more often than in dark grass and now and then two at once; no Bicycles (plan 22 · U4)."),
         TileBehavior.GrottoGrass or TileBehavior.DeepSand
-            or TileBehavior.Quicksand or TileBehavior.StrengthHole or TileBehavior.ChargedFloor or TileBehavior.SurfEdge or TileBehavior.Catwalk
+            or TileBehavior.Quicksand or TileBehavior.StrengthHole or TileBehavior.ChargedFloor or TileBehavior.Catwalk
             => (BehaviourSupport.Waiting, "A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
     };

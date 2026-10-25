@@ -1,0 +1,70 @@
+{
+  // The Celestial Tower's second floor (plan 22 · U7, part a): two Trainers. Black 2's three people of the bell's trouble wait for plan 22 · U8
+  "area": "celestial_tower_3",
+  "bgmTrack": "unova/celestial_tower",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "CelestialTower_1F",
+      "x": 15,
+      "y": 22,
+      "facing": "Right"
+    },
+    {
+      "warp": 1,
+      "map": "CelestialTower_1F",
+      "x": 15,
+      "y": 22,
+      "facing": "Right"
+    },
+    {
+      "warp": 2,
+      "map": "CelestialTower_1F",
+      "x": 15,
+      "y": 22,
+      "facing": "Right"
+    }
+  ],
+  "exits": [
+    {
+      "x": 12,
+      "z": 7,
+      "map": "CelestialTower_3F",
+      "toX": 16,
+      "toY": 9,
+      "facing": "Right"
+    },
+    {
+      "x": 13,
+      "z": 7,
+      "map": "CelestialTower_3F",
+      "toX": 16,
+      "toY": 9,
+      "facing": "Right"
+    },
+    {
+      "x": 14,
+      "z": 7,
+      "map": "CelestialTower_3F",
+      "toX": 16,
+      "toY": 9,
+      "facing": "Right"
+    }
+  ],
+  "people": {
+    "4": {
+      "name": "Joyce",
+      "trainer": {
+        "dialogueBefore": "I can feel the spirits here. And my Musharna is dreaming of beating you!",
+        "dialogueAfter": "My dream ended early."
+      }
+    },
+    "5": {
+      "name": "Jude",
+      "trainer": {
+        "dialogueBefore": "My Clefairy and I come here every day, and it loves a moonlit night. Your Pokémon could use a calm visit too, you know.",
+        "dialogueAfter": "Calm down, calm down. Fine."
+      }
+    }
+  }
+}

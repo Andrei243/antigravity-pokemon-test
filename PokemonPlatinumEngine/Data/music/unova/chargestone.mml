@@ -1,0 +1,29 @@
+# Chargestone Cave and Mistralton Cave (stones that hum with charge, sparks underfoot): a sparse celesta figure in E minor over
+# a held choir pad, a low synth pulse and a dry beat, one bar of B major in the middle to make the air crackle. The cave plays
+# the same by day and by night, as the original's caves do. Original composition for this game (plan 22 · U7, part a).
+title Chargestone Cave
+tempo 96
+meter 4/4
+reverb 0.36
+night none
+
+track lead celesta vol=0.6 pan=0.12 rev=0.34
+  L o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 c8 e8 g8 o6 c8 o5 g8 e8 c8 e8 | o5 d8 f+8 a8 o6 d8 o5 a8 f+8 d8 f+8 |
+  o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 b8 o6 d8 f+8 b8 f+8 d8 o5 b8 o6 d8 | o5 c8 e8 g8 o6 c8 o5 g8 e8 c8 e8 |
+  o5 a8 o6 c8 e8 a8 e8 c8 o5 a8 o6 c8 | o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 c8 e8 g8 o6 c8 o5 g8 e8 c8 e8 | o5 d8 f+8 a8 o6 d8 o5 a8 f+8 d8 f+8 |
+  o5 e8 g8 b8 o6 e8 o5 b8 g8 e8 g8 | o5 a8 o6 c8 e8 a8 e8 c8 o5 a8 o6 c8 | o5 b8 o6 d+8 f+8 b8 f+8 d+8 o5 b8 o6 d+8 | o5 e4 g4 b4 g4 |
+
+track pad choir vol=0.36 pan=-0.2 rev=0.4
+  L o4 (e g b)1 | o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (e g b)1 | o4 (b >d f+)1 | o4 (c e g)1 |
+  o4 (a >c e)1 | o4 (e g b)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (a >c e)1 | o4 (b >d+ f+)1 | o4 (e g b)1 |
+
+track bass synthbass vol=0.66 rev=0.1
+  L [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 c8 r8 c8 o3 c8 ]2 | [ o2 d8 r8 d8 o3 d8 ]2 |
+  [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 b8 r8 b8 o3 b8 ]2 | [ o2 c8 r8 c8 o3 c8 ]2 |
+  [ o2 a8 r8 a8 o3 a8 ]2 | [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 c8 r8 c8 o3 c8 ]2 | [ o2 d8 r8 d8 o3 d8 ]2 |
+  [ o2 e8 r8 e8 o3 e8 ]2 | [ o2 a8 r8 a8 o3 a8 ]2 | [ o2 b8 r8 b8 o3 b8 ]2 | [ o2 e8 r8 e8 o3 e8 ]2 |
+
+track drums kit vol=0.4 rev=0.2
+  L v66 [ b4 h8 h8 s4 h8 h8 | ]15 b4 h8 h8 s4 s8 s8 |

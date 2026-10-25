@@ -1,0 +1,113 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Nugget Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Nugget Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Briana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Excadrill drills through any wall. Nobody needs a map with it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Drilled right into the ground, that's me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Lumi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Joltik sip charge off the rocks and spin it into static. Shocking, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I should have brought a conductor."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Kit"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm a doctor of the mind as well as of the body. Lie down and we'll discuss your battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Doctor's orders: a rest for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

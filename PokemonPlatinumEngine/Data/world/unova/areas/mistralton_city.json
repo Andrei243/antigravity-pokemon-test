@@ -1,0 +1,56 @@
+{
+  "key": "mistralton_city",
+  "index": 107,
+  "name": "Mistralton City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_C_06",
+  "nightMusic": "BGM_C_06",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 108, "z": 304, "to": "mistralton_city_pokemon_center", "toWarp": 1 },
+    { "x": 118, "z": 307, "to": "mistralton_city_4", "toWarp": 0 },
+    { "x": 78, "z": 268, "to": "mistralton_city_gym", "toWarp": 0 },
+    { "x": 92, "z": 295, "to": "mistralton_city_3", "toWarp": 1 },
+    { "x": 104, "z": 295, "to": "mistralton_city_2", "toWarp": 1 },
+    { "x": 103, "z": 311, "to": "chargestone_cave_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 69, "z": 329, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0267", "script": "4" },
+    { "id": "1", "looks": "youngster", "movement": "none", "x": 79, "z": 328, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x026d", "script": "2000" },
+    { "id": "2", "looks": "lass", "movement": "none", "x": 79, "z": 329, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x026d", "script": "2000" },
+    { "id": "3", "looks": "228", "movement": "none", "x": 89, "z": 297, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02fd", "script": "9" },
+    { "id": "4", "looks": "105", "movement": "none", "x": 90, "z": 297, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02bb", "script": "2000" },
+    { "id": "5", "looks": "110", "movement": "none", "x": 95, "z": 309, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04af", "item": "TM58", "script": "7099" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 72, "z": 341, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b0", "item": "Max Repel", "script": "7100" },
+    { "id": "7", "looks": "pkmn_breeder_m", "movement": "none", "x": 85, "z": 329, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "10484" },
+    { "id": "8", "looks": "316", "movement": "none", "x": 80, "z": 329, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x026d", "script": "2000" },
+    { "id": "9", "looks": "pkmn_ranger_f", "movement": "wander_around", "x": 113, "z": 305, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "14" },
+    { "id": "10", "looks": "21", "movement": "wander_around", "x": 108, "z": 294, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "16" },
+    { "id": "11", "looks": "school_kid_m", "movement": "none", "x": 87, "z": 292, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "12", "looks": "pilot", "movement": "wander_around", "x": 82, "z": 305, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "13" },
+    { "id": "13", "looks": "lass", "movement": "wander_around", "x": 87, "z": 277, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "12" },
+    { "id": "14", "looks": "worker_44", "movement": "look_west_and_east", "x": 76, "z": 280, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "15" },
+    { "id": "15", "looks": "worker_44", "movement": "none", "x": 73, "z": 346, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "17" },
+    { "id": "16", "looks": "backpacker_f", "movement": "wander_around", "x": 72, "z": 312, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "18" },
+    { "id": "17", "looks": "21", "movement": "wander_around", "x": 109, "z": 308, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "19" }
+  ],
+  "signs": [
+    { "x": 100, "z": 295, "type": 0, "script": "1" },
+    { "x": 88, "z": 295, "type": 0, "script": "2" },
+    { "x": 81, "z": 269, "type": 0, "script": "3" },
+    { "x": 78, "z": 285, "type": 2, "script": "8006", "item": "Flying Gem", "flag": "FLAG_UNOVA_0x0b0a" }
+  ],
+  "triggers": [
+    { "x": 100, "z": 301, "width": 5, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x40c2", "value": "0" },
+    { "x": 78, "z": 324, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x4128", "value": "1" },
+    { "x": 78, "z": 269, "width": 1, "depth": 1, "script": "2000", "variable": "", "value": "0" }
+  ]
+}

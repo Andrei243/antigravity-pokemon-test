@@ -1,0 +1,30 @@
+{
+  "key": "unova_route_7_3",
+  "index": 344,
+  "name": "Route 7",
+  "matrix": 44,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "unova_route_7", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "unova_route_7", "toWarp": 2 },
+    { "x": 7, "z": 9, "to": "unova_route_7", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "10", "movement": "none", "x": 2, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "artist", "movement": "none", "x": 4, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "2", "looks": "29", "movement": "none", "x": 2, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "3", "looks": "nursery_aide", "movement": "none", "x": 9, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,36 @@
+{
+  "key": "unova_route_6_2",
+  "index": 332,
+  "name": "Route 6",
+  "matrix": 92,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_D_SP",
+  "nightMusic": "BGM_R_D_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "unova_route_6", "toWarp": 0 },
+    { "x": 6, "z": 9, "to": "unova_route_6", "toWarp": 0 },
+    { "x": 7, "z": 9, "to": "unova_route_6", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "223", "movement": "none", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0307", "script": "4" },
+    { "id": "1", "looks": "scientist_m_52", "movement": "none", "x": 2, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "2", "looks": "219", "movement": "wander_around", "x": 4, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 2, "script": "12" },
+    { "id": "3", "looks": "scientist_m_52", "movement": "none", "x": 10, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "7" },
+    { "id": "4", "looks": "scientist_f_46", "movement": "none", "x": 7, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "9" },
+    { "id": "5", "looks": "217", "movement": "wander_around", "x": 3, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 2, "script": "10" },
+    { "id": "6", "looks": "220", "movement": "wander_around", "x": 6, "z": 1, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "13" },
+    { "id": "7", "looks": "218", "movement": "wander_around", "x": 9, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "11" },
+    { "id": "8", "looks": "scientist_m_52", "movement": "none", "x": 5, "z": 1, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "8" },
+    { "id": "9", "looks": "parasol_lady", "movement": "none", "x": 1, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "14" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,140 @@
+{
+  // Route 6 (plan 22 · U7, part a): the long road north of Driftveil City along the river and its bridges to the Season
+  // Research Lab's garden and Chargestone Cave, Black 2's, our words. Once the Plasma Frigate has sailed (VAR_UNOVA_PWT 3) Cheren
+  // waits on the path before the lab (8, FLAG_UNOVA_HIDE_CHEREN_ROUTE_6); our trigger across the path (138, 371 to 375, at
+  // VAR_UNOVA_ROUTE_6 1) has him take the player in (unova_route_6.txt). Further west a trigger (102 to 104, 365, at 2) plays
+  // Cobalion running by with Rood (10) and an old man (9) looking on, who stay and talk afterwards. Black 2's two signs of
+  // a global script (133, 391 and 153, 359) are left out
+  "area": "unova_route_6",
+  "bgmTrack": "unova/route6",
+  "triggers": [
+    {
+      "script": "CherenCalls",
+      "x": 138,
+      "z": 371,
+      "width": 1,
+      "depth": 5,
+      "variable": "VAR_UNOVA_ROUTE_6",
+      "value": 1
+    },
+    {
+      "script": "CobalionPasses",
+      "x": 102,
+      "z": 365,
+      "width": 3,
+      "depth": 1,
+      "variable": "VAR_UNOVA_ROUTE_6",
+      "value": 2
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "April",
+      "trainer": {
+        "dialogueBefore": "Minccino keeps my house spotless and Deerling keeps my garden pretty. Shall we show you how it's done?",
+        "dialogueAfter": "Spotless defeat! I'll go and dust myself off."
+      }
+    },
+    "1": {
+      "name": "Nicole",
+      "trainer": {
+        "dialogueBefore": "A drizzle, a sunbeam, a gust... Castform wears every kind of weather. Watch it change!",
+        "dialogueAfter": "Your skies were clearer than mine."
+      }
+    },
+    "2": {
+      "name": "Mara",
+      "trainer": {
+        "dialogueBefore": "Our teacher says to study the seasons. So I study them in battle!",
+        "dialogueAfter": "I need to go over my notes again."
+      }
+    },
+    "3": {
+      "name": "Jacques",
+      "trainer": {
+        "dialogueBefore": "Watching a Deerling's coat turn with the seasons is my life's work. Now watch this battle!",
+        "dialogueAfter": "A fascinating result! Unfortunately for me."
+      }
+    },
+    "4": {
+      "name": "Marissa",
+      "trainer": {
+        "dialogueBefore": "A Shelmet and a Karrablast: two Pokémon that change only when they meet. Let's see how you change in battle!",
+        "dialogueAfter": "I'd like to study how you won that."
+      }
+    },
+    "5": {
+      "name": "Tihana",
+      "trainer": {
+        "dialogueBefore": "The sun is out, so my Castform is at its best. Can you keep up?",
+        "dialogueAfter": "Even Castform's shine wasn't enough."
+      }
+    },
+    "6": {
+      "name": "Alvin",
+      "trainer": {
+        "dialogueBefore": "I skipped class to explore the route. Don't tell! Beat me and I'll keep quiet.",
+        "dialogueAfter": "Ugh, I should have stayed in class."
+      }
+    },
+    "7": {
+      "name": "Richard",
+      "trainer": {
+        "dialogueBefore": "Rangers watch the whole road. I saw you coming from a mile away!",
+        "dialogueAfter": "A ranger beaten fair and square. Well fought!"
+      }
+    },
+    "8": {
+      "name": "{rival}",
+      "npcType": "cheren",
+      "script": "CherenOnTheRoad",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_6"
+    },
+    "9": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "script": "OldManAboutCobalion",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6"
+    },
+    "10": {
+      "name": "Rood",
+      "npcType": "rood",
+      "script": "RoodAboutCobalion",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_ROUTE_6"
+    },
+    "20": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "The Season Research Lab is the building in the fenced garden. They keep every season in glass cases in there!"
+      ]
+    },
+    "21": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "dialog": [
+        "I met a Ferroseed in Chargestone Cave. All spikes, and cute with it! Don't pat it, though."
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "cobalion",
+      "name": "Cobalion",
+      "npcType": "Pokemon",
+      "species": "Cobalion",
+      "x": 98,
+      "y": 365,
+      "facing": "Right",
+      "hiddenBy": "FLAG_UNOVA_HIDE_COBALION_ROUTE_6"
+    }
+  ],
+  "signs": {
+    "1": "Route 6\nThe riverside road to Chargestone Cave",
+    "2": "Trainer Tips\nA Pokémon holding an item can use it at the right moment all by itself. Check what each one is carrying!",
+    "3": "Season Research Lab\nWhere the year's four seasons are studied"
+  }
+}

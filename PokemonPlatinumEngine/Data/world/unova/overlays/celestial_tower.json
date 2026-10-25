@@ -1,0 +1,33 @@
+{
+  // The Celestial Tower's summit (plan 22 · U7, part a): the great bell (read at 16, 10, script 2), which anyone may ring. Black 2's
+  // Mesprit, which hangs over this room until it is met (level 65), is plan 22 · U10's
+  "area": "celestial_tower",
+  "bgmTrack": "unova/celestial_tower",
+  "read": {
+    "2": "RingTheBell"
+  },
+  "doors": [
+    {
+      "warp": 0,
+      "map": "CelestialTower_4F",
+      "x": 13,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "warp": 1,
+      "map": "CelestialTower_4F",
+      "x": 13,
+      "y": 10,
+      "facing": "Down"
+    },
+    {
+      "warp": 2,
+      "map": "CelestialTower_4F",
+      "x": 13,
+      "y": 10,
+      "facing": "Down"
+    }
+  ],
+  "people": {}
+}

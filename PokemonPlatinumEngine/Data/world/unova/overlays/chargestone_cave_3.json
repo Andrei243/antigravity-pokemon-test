@@ -1,0 +1,50 @@
+{
+  // Chargestone Cave's second floor (plan 22 · U7, part a): Bianca (0, FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART) is at work here once
+  // she has met the player at the mouth, and the Nugget man and his boy (2, 1) give a Nugget each once
+  // (chargestone_cave_3.txt)
+  "area": "chargestone_cave_3",
+  "bgmTrack": "unova/chargestone",
+  "battleArena": "Cave",
+  "people": {
+    "0": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "script": "BiancaAndTynamo",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART"
+    },
+    "1": {
+      "name": "Nugget Boy",
+      "npcType": "youngster",
+      "script": "NuggetBoy",
+      "still": true
+    },
+    "2": {
+      "name": "Nugget Man",
+      "npcType": "pokefan_m",
+      "script": "NuggetMan",
+      "still": true
+    },
+    "5": {
+      "name": "Briana",
+      "trainer": {
+        "dialogueBefore": "Excadrill drills through any wall. Nobody needs a map with it!",
+        "dialogueAfter": "Drilled right into the ground, that's me."
+      }
+    },
+    "6": {
+      "name": "Lumi",
+      "trainer": {
+        "dialogueBefore": "Joltik sip charge off the rocks and spin it into static. Shocking, right?",
+        "dialogueAfter": "I should have brought a conductor."
+      }
+    },
+    "7": {
+      "name": "Kit",
+      "trainer": {
+        "dialogueBefore": "I'm a doctor of the mind as well as of the body. Lie down and we'll discuss your battle.",
+        "dialogueAfter": "Doctor's orders: a rest for me."
+      }
+    }
+  }
+}

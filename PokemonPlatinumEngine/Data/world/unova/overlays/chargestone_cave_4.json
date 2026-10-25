@@ -1,0 +1,36 @@
+{
+  // Chargestone Cave's last chamber (plan 22 · U7, part a): a dead end with four Trainers and the cave's better items
+  "area": "chargestone_cave_4",
+  "bgmTrack": "unova/chargestone",
+  "battleArena": "Cave",
+  "people": {
+    "3": {
+      "name": "Jeremy",
+      "trainer": {
+        "dialogueBefore": "A dead end? Never! I made my own way in. Care for a battle first?",
+        "dialogueAfter": "Pathfinders lose sometimes, too."
+      }
+    },
+    "4": {
+      "name": "Vicki",
+      "trainer": {
+        "dialogueBefore": "A Ferroseed on the team means I never fear a spark. Come on!",
+        "dialogueAfter": "My Ferroseed is stunned."
+      }
+    },
+    "5": {
+      "name": "Beverly",
+      "trainer": {
+        "dialogueBefore": "Zebstrika's mane lights up like a stage! Let me play you a battle song.",
+        "dialogueAfter": "And that's the final chord."
+      }
+    },
+    "6": {
+      "name": "Shaye",
+      "trainer": {
+        "dialogueBefore": "The last chamber of the cave and the last battle of your visit! Make it count.",
+        "dialogueAfter": "Count me out."
+      }
+    }
+  }
+}

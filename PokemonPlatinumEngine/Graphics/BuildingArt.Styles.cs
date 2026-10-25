@@ -140,6 +140,8 @@ internal static partial class BuildingArt
             Architecture.Storehouse => Pitched(WallKind.Brick, Rgb(70, 96, 128)) with { Chimney = true },
             // Anville's (plan 22 · U6, part c): weathered boards under rust-red gables with a chimney, the railway town
             Architecture.Railyard => Pitched(WallKind.Boards, Rgb(150, 70, 48)) with { Chimney = true },
+            // Mistralton's (plan 22 · U7): cream plaster under aviation-orange hips with flower boxes, the airfield town
+            Architecture.Airfield => Pitched(WallKind.Plaster, Rgb(238, 134, 50), RoofShape.Hip) with { FlowerBoxes = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

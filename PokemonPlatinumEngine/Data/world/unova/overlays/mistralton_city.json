@@ -1,0 +1,144 @@
+{
+  // Mistralton City (plan 22 · U7, part a): Black 2's airfield town, our words: a runway between fences with planes on its apron and
+  // greenhouses round it, the control tower that is the Cargo Service's hall, a Gym built like a hangar and a Pokémon Center
+  // and house east of the road. As the player comes up the road from Chargestone Cave our trigger across it (100 to 104, 301,
+  // VAR_UNOVA_MISTRALTON 0) has Professor Juniper (4, FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON) meet them and Skyla (3,
+  // FLAG_UNOVA_HIDE_SKYLA_MISTRALTON) burst in: the professor goes on to the Celestial Tower and Skyla back to her Gym
+  // (mistralton_city.txt). The kids' treasure (0, FLAG_UNOVA_HIDE_RUNWAY_TREASURE) lies at the runway's edge once a boy in the
+  // greenhouse has told of it after the Jet Badge, and the kids (1, 2, 8) come to hand over the TM. Black 2's breeder at the
+  // runway's foot (7, a global script's) is left out
+  "area": "mistralton_city",
+  "bgmTrack": "unova/mistralton",
+  "architecture": "Airfield",
+  "triggers": [
+    {
+      "script": "JuniperAndSkyla",
+      "x": 100,
+      "z": 301,
+      "width": 5,
+      "depth": 1,
+      "variable": "VAR_UNOVA_MISTRALTON",
+      "value": 0
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Treasure",
+      "npcType": "ItemBall",
+      "item": "TM40",
+      "script": "RunwayTreasure",
+      "hiddenBy": "FLAG_UNOVA_HIDE_RUNWAY_TREASURE",
+      "still": true
+    },
+    "1": {
+      "name": "Youngster",
+      "npcType": "youngster",
+      "hiddenBy": "FLAG_UNOVA_HIDE_RUNWAY_KIDS",
+      "still": true,
+      "dialog": [
+        "Our Ducklett already knows Aerial Ace. Isn't it great?"
+      ]
+    },
+    "2": {
+      "name": "Girl",
+      "npcType": "lass",
+      "hiddenBy": "FLAG_UNOVA_HIDE_RUNWAY_KIDS",
+      "still": true,
+      "dialog": [
+        "We hide our treasure again every week. Keep your eyes open!"
+      ]
+    },
+    "3": {
+      "name": "Skyla",
+      "npcType": "skyla",
+      "script": "SkylaOutside",
+      "hiddenBy": "FLAG_UNOVA_HIDE_SKYLA_MISTRALTON",
+      "still": true
+    },
+    "4": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "script": "JuniperOutside",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON",
+      "still": true
+    },
+    "8": {
+      "name": "Ducklett",
+      "npcType": "Pokemon",
+      "species": "Ducklett",
+      "hiddenBy": "FLAG_UNOVA_HIDE_RUNWAY_KIDS",
+      "still": true,
+      "dialog": [
+        "Ducklett: Kwa!"
+      ]
+    },
+    "9": {
+      "name": "Ranger",
+      "npcType": "ranger_f",
+      "dialog": [
+        "Flying Pokémon and planes both carry people. Only one of them fits in a Poké Ball, though."
+      ]
+    },
+    "10": {
+      "name": "Old Man",
+      "npcType": "middle_aged_man",
+      "dialog": [
+        "Team Plasma went after certain Pokémon, Purrloin among them. Plenty of people lost theirs. It's unforgivable!"
+      ]
+    },
+    "11": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "dialog": [
+        "Mistralton's planes carry passengers now! Not everyone's Pokémon can use Fly, after all."
+      ]
+    },
+    "12": {
+      "name": "Pilot",
+      "npcType": "pilot",
+      "dialog": [
+        "Fly is a wonderful move. Even a very small Pokémon can carry a person into the sky!"
+      ]
+    },
+    "13": {
+      "name": "Lass",
+      "npcType": "lass",
+      "dialog": [
+        "That Skyla! She's even surpassed her grandfather, and he was a legendary pilot."
+      ]
+    },
+    "14": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "A plane needs a runway. A Pokémon needs nothing at all! But a plane carries far more cargo than any Pokémon can."
+      ]
+    },
+    "15": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "The best vegetables grow in the wild. But the ones we grow in the greenhouses are very good too: all their nutrients go into one tasty vegetable!"
+      ]
+    },
+    "16": {
+      "name": "Backpacker",
+      "npcType": "picnicker",
+      "dialog": [
+        "My Pokémon loves Berries! That's why I wander everywhere looking for them. I dream of a city that overflows with Berries."
+      ]
+    },
+    "17": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [
+        "Have you been to Join Avenue? There are so many unusual shops there. It's wonderful!"
+      ]
+    }
+  },
+  "signs": {
+    "1": "Mistralton City\nWhere the wind carries the leaves",
+    "2": "Mistralton Cargo Service\nQuick and safe, runway to runway",
+    "3": "Mistralton City Pokémon Gym\nLeader: Skyla, the high-flying girl"
+  }
+}

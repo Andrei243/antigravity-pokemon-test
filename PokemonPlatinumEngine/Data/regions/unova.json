@@ -50,7 +50,11 @@
     { "id": 3, "area": "floccesy_town", "x": 105, "y": 694, "room": "FloccesyTown_PokemonCenter" },
     // Plan 22 · U6, part b: Nimbasa City's and Driftveil City's
     { "id": 4, "area": "nimbasa_city", "x": 406, "y": 468, "room": "NimbasaCity_PokemonCenter" },
-    { "id": 5, "area": "driftveil_city", "x": 188, "y": 413, "room": "DriftveilCity_PokemonCenter" }
+    { "id": 5, "area": "driftveil_city", "x": 188, "y": 413, "room": "DriftveilCity_PokemonCenter" },
+    // Plan 22 · U7, part a: Mistralton City's
+    { "id": 6, "area": "mistralton_city", "x": 108, "y": 305, "room": "MistraltonCity_PokemonCenter" },
+    // and Lentimas Town's
+    { "id": 7, "area": "lentimas_town", "x": 634, "y": 305, "room": "LentimasTown_PokemonCenter" }
   ],
   // Plan 18 · W4: Black 2's levels for a team that crossed from Hoenn, from Hoenn's Champion's 162 on the first
   // route to Iris at 185 (the study's fair climb); the post-game climbs on past her on the same line

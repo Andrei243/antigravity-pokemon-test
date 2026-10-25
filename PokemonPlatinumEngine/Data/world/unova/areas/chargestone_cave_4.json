@@ -1,0 +1,64 @@
+{
+  "key": "chargestone_cave_4",
+  "index": 197,
+  "name": "Chargestone Cave",
+  "matrix": 25,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_CHARGESTONE_CAVE_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Joltik", "level": 28 },
+    { "species": "Klink", "level": 29 },
+    { "species": "Joltik", "level": 29 },
+    { "species": "Nosepass", "level": 30 },
+    { "species": "Ferroseed", "level": 30 },
+    { "species": "Ferroseed", "level": 31 },
+    { "species": "Joltik", "level": 30 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Tynamo", "level": 31 },
+    { "species": "Tynamo", "level": 31 },
+    { "species": "Joltik", "level": 31 },
+    { "species": "Klink", "level": 31 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 9, "z": 7, "to": "chargestone_cave_3", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 24, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ac", "item": "Thunder Stone", "script": "7096" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 5, "z": 30, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ad", "item": "Escape Rope", "script": "7097" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 16, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ae", "item": "Metal Coat", "script": "7098" },
+    { "id": "3", "looks": "hiker", "movement": "none", "x": 7, "z": 35, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_HIKER_JEREMY" },
+    { "id": "4", "looks": "ace_trainer_f", "movement": "wander_north_and_south", "x": 16, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_ACE_TRAINER_VICKI" },
+    { "id": "5", "looks": "guitarist", "movement": "look_south_and_west", "x": 7, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_GUITARIST_BEVERLY" },
+    { "id": "6", "looks": "ace_trainer_m", "movement": "none", "x": 24, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 12, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_SHAYE" }
+  ],
+  "signs": [
+    { "x": 20, "z": 34, "type": 2, "script": "8065", "item": "Electric Gem", "flag": "FLAG_UNOVA_0x0b45" }
+  ],
+  "triggers": []
+}

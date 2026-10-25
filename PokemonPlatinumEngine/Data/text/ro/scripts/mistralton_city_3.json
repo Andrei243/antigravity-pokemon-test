@@ -1,0 +1,204 @@
+{
+  "CargoCounter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! This is Mistralton Cargo Service: quick and safe, runway to runway."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We carry passengers now, too, but the flights are up to our Gym Leader. Skyla flies when she's ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to board the flight to Lentimas Town?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. We'll contact Skyla, so please board the plane and wait."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Of course. Come back any time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "JuniperInTheHall": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi there! Did I keep you waiting? I'm sorry! Shall we let Skyla show us her flying?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SkylaInTheHall": [
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Looks like the professor has reached a stopping point in her investigation. Are you ready to hop aboard my plane?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ready for takeoff?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Roger! Come and talk to me when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Boarding": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right, Skyla, we're ready. Please take us to Lentimas Town!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Waaaait! You guys! Wait, wait, wait, wait!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hff... pff... I want to fly, too! I want to do some research in Reversal Mountain, hff... and it's so far to walk!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca, you're here? You're starting to show the dedication of a serious researcher! Very well, everyone, off we go to Lentimas Town!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hee-hee! Looks like everyone's here! At last it's time to fly the Unova skies!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TheFlight": [
+    {
+      "en": [
+        "The little plane rolls down the runway and leaps into the wind..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Twist Mountain slides by under the wings, white where the snow lies and bare where it doesn't."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then the plane banks over the mountain's far side, and Lentimas Town comes up to meet it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

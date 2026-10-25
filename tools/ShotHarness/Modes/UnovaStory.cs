@@ -751,5 +751,109 @@ partial class Harness
         TalkTo("DriftveilCity_Market", "4", "driftveil_city_7");
         AtTheCounter("us180_the_sweets");
         ReadTo(null);
+
+        // Plan 22 · U7, part a: Route 6 to Lentimas Town (us181 to us222), played in this same game, which has Cheren's word to go
+        // on to Route 6 (the Plasma Frigate's chapter done): Cheren and the Season Research Lab, Cobalion on the west bridge,
+        // Bianca and N in Chargestone Cave, Professor Juniper and Skyla in Mistralton City, Skyla's Gym and the Jet Badge, the
+        // professor in the Celestial Tower, the flight to Lentimas Town and her news there, and the old man's tale on Route 7
+        void Mistralton(string what) =>
+            Console.WriteLine($"  {what}: route 6 {story.Var("VAR_UNOVA_ROUTE_6")}, chargestone {story.Var("VAR_UNOVA_CHARGESTONE")}, "
+                + $"mistralton {story.Var("VAR_UNOVA_MISTRALTON")}, lentimas {story.Var("VAR_UNOVA_LENTIMAS")}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, "
+                + $"Jet Badge {story.HasBadge(RegionDatabase.Unova, "Jet")}, HM03 {game.Bag.GetQuantity(ItemDatabase.Get("HM03")!)}, "
+                + $"Master Ball {game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!)}, Lucky Egg {game.Bag.GetQuantity(ItemDatabase.Get("Lucky Egg")!)}, "
+                + $"TM62 {game.Bag.GetQuantity(ItemDatabase.Get("TM62")!)}, Juniper in the tower hidden {story.Has("FLAG_UNOVA_HIDE_JUNIPER_TOWER")}, "
+                + $"Bianca in Lentimas hidden {story.Has("FLAG_UNOVA_HIDE_BIANCA_LENTIMAS")}");
+
+        // ---- Route 6: Cheren calls the player to the lab, and tells of the cold snap there
+        StepOnto("Unova", 138, 373, Direction.Right);
+        ReadTo("I hoped you would come this way."); Frames(10); Shot("us181_cheren_on_the_road");
+        ReadTo("I wanted to talk where it's quiet."); Frames(10); Shot("us182_in_the_season_lab");
+        ReadTo("Have you heard about the cold snap near Lacunosa Town?"); Frames(10); Shot("us183_the_cold_snap");
+        ReadTo("It's a Hidden Machine with Surf in it."); Frames(10); Shot("us184_surf_given");
+        ReadTo(null);
+        Mistralton("the lab");
+
+        // ---- the west bridge: Cobalion across the water, and Rood and the old man come up beside the road
+        StepOnto("Unova", 103, 365, Direction.Up);
+        ReadTo("That's the legendary Pokémon Cobalion!"); Frames(10); Shot("us185_cobalion");
+        ReadTo("Unforgivable..."); Frames(10); Shot("us186_rood");
+        ReadTo(null);
+        Mistralton("the bridge");
+
+        // ---- Chargestone Cave: Bianca at the mouth, N alone in the long corridor, and the crystal-lit floor beneath
+        StepOnto("ChargestoneCave", 9, 50, Direction.Down);
+        ReadTo("Isn't this place something?"); Frames(10); Shot("us187_bianca_in_the_cave");
+        ReadTo(null);
+        StepOnto("ChargestoneCave", 47, 41, Direction.Down);
+        ReadTo("Chargestone Cave... I like it here."); Frames(10); Shot("us188_n_alone");
+        ReadTo(null);
+        ComeThrough("ChargestoneCave_Heart", 6, 6, Direction.Up); Frames(30); Shot("us189_the_second_floor");
+        Mistralton("the cave");
+
+        // ---- Mistralton City: Juniper and Skyla on the road, the Master Ball, and the choice put to the player
+        StepOnto("Unova", 102, 301, Direction.Up);
+        ReadTo("It's lovely to be able to talk to you in person at last."); Frames(10); Shot("us190_juniper_in_mistralton");
+        ReadTo("A Master Ball is the most powerful Poké Ball there is."); Frames(10); Shot("us191_the_master_ball");
+        ReadTo("Professor Juniperrrrr!"); Frames(10); Shot("us192_skyla_bursts_in");
+        ReadTo("this is Skyla."); Frames(10); Shot("us193_juniper_introduces_skyla");
+        ReadTo("What's next?");
+        ReadTo(null);
+        Mistralton("the city");
+
+        // ---- Skyla's Gym: the guide at the door, the maze of wind, and her battle
+        ComeThrough("MistraltonCity_Gym", 11, 49, Direction.Up); Frames(30); Shot("us194_skylas_gym");
+        TalkToKey("MistraltonCity_Gym", "5");
+        ReadTo(null);
+        At("MistraltonCity_Gym", 11, 9, Direction.Up); Frames(30); Shot("us195_the_gyms_far_end");
+        TalkToKey("MistraltonCity_Gym", "3");
+        ReadTo("You and me, wings spread!"); Frames(10); Shot("us196_skyla_challenges");
+        IntoBattle("Skyla");
+        ToMainMenu(game.Battle); Shot("us197_skylas_battle");
+        Win();
+        ReadTo("It's the Jet Badge"); Frames(10); Shot("us198_the_jet_badge");
+        ReadTo("so that you'll always remember the Pokémon who flies the highest."); Frames(10); Shot("us199_tm62");
+        ReadTo(null);
+        Mistralton("Skyla's Gym");
+
+        // ---- the Celestial Tower: the professor at her work, a Lucky Egg, and the bell at the top
+        ComeThrough("CelestialTower_1F", 14, 20, Direction.Up); Frames(30); Shot("us200_the_celestial_tower");
+        TalkToKey("CelestialTower_1F", "0");
+        ReadTo("You won the Jet Badge!"); Frames(10); Shot("us201_juniper_in_the_tower");
+        ReadTo("I'll be waiting for you in Mistralton City!"); Frames(10); Shot("us202_juniper_goes_back");
+        ReadTo(null);
+        ComeThrough("CelestialTower_Summit", 22, 15, Direction.Right); Frames(30); Shot("us203_the_summit");
+        At("CelestialTower_Summit", 16, 11, Direction.Up); game.Interact();
+        Frames(40); Shot("us204_the_bell");
+        ReadTo(null);
+        Mistralton("the tower");
+
+        // ---- the cargo hall: Skyla's question, Bianca's dash, the flight and Lentimas Town's strip
+        ComeThrough("MistraltonCity_CargoHall", 14, 22, Direction.Up); Frames(30); Shot("us205_the_cargo_hall");
+        TalkToKey("MistraltonCity_CargoHall", "4");
+        ReadTo("Are you ready to hop aboard my plane?"); Frames(10); Shot("us206_ready_for_takeoff");
+        ReadTo("Waaaait!"); Frames(10); Shot("us207_bianca_runs_in");
+        ReadTo("Please take us to Lentimas Town!"); Frames(10); Shot("us208_off_we_go");
+        ReadTo("The little plane rolls down the runway"); Frames(10); Shot("us209_the_runway");
+        ReadTo("Then the plane banks over the mountain's far side"); Frames(10); Shot("us210_the_flight");
+        ReadTo("That was a lovely flight!"); Frames(10); Shot("us211_lentimas_town");
+        ReadTo("Reshiram and Zekrom"); Frames(10); Shot("us212_the_two_stones");
+        ReadTo("Drayden, the Gym Leader of Opelucid City"); Frames(10); Shot("us213_drayden");
+        ReadTo("And I'm going to Reversal Mountain!"); Frames(10); Shot("us214_bianca_to_the_volcano");
+        ReadTo(null); Frames(20); Shot("us215_the_professor_stays");
+        Mistralton("Lentimas Town");
+
+        // ---- the attendant's flight back, and Route 7's house with the old man's tale
+        TalkTo("Unova", "7", "lentimas_town", 0, 1);
+        ReadTo("Skyla's plane flies back to Mistralton City any time you like."); Frames(10); Shot("us216_the_flight_back");
+        ReadTo("Please wait on the strip."); Frames(10);
+        ReadTo(null); Frames(40); Shot("us217_back_in_mistralton");
+        ComeThrough("Route7_House2", 4, 8, Direction.Up); Frames(30); Shot("us218_a_house_on_route_7");
+        TalkToKey("Route7_House2", "1");
+        ReadTo("This is Tornadus!"); Frames(10); Shot("us219_tornadus");
+        ReadTo("Landorus"); Frames(10); Shot("us220_landorus");
+        ReadTo(null);
+        ComeThrough("LentimasTown_PokemonCenter", 7, 18, Direction.Up); Frames(30); Shot("us221_lentimas_center");
+        ComeThrough("Unova", 616, 308, Direction.Up); Frames(30); Shot("us222_lentimas_strip");
+        Mistralton("the end");
     }
 }

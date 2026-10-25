@@ -1,0 +1,35 @@
+# Route 6 and Route 7 (the riverside road under a wide sky, its bridges, the lab's garden and the windswept walkways of the
+# road to the Celestial Tower): a bright flute tune in D over strings, a plucked arpeggio, a walking bass and a light beat.
+# Original composition for this game (plan 22 · U7, part a).
+title Route 6
+tempo 120
+meter 4/4
+reverb 0.24
+nighttempo 0.9
+
+track lead flute night=clarinet vol=0.68 pan=0.06 rev=0.24
+  L o5 d4 f+8 a8 o6 d4 o5 a4 | o5 b4 o6 d8 f+8 d4 o5 b4 | o5 g4 b8 o6 d8 g4 o5 b4 | o5 a4 o6 c+8 e8 c+4 o5 a4 |
+  o6 d4 o5 a8 f+8 d4 f+4 | o5 b4 f+8 d8 o4 b4 o5 d4 | o5 e4 g8 b8 o6 e4 o5 b4 | o5 a2 o6 c+4 e4 |
+  o6 d4 o5 b8 g8 o6 d4 o5 b4 | o6 d4 o5 a8 f+8 a4 o6 d4 | o6 e4 d8 o5 b8 g4 b4 | o5 a4 o6 c+8 e8 a4 e4 |
+  o6 d4 f+8 b8 f+4 d4 | o6 d4 b4 o5 g4 b4 | o5 a4 o6 c+4 e4 o5 a4 | o5 d2. r4 |
+
+track pad strings night=pad vol=0.26 pan=-0.22 rev=0.3
+  L o4 (d f+ a)1 | o4 (b >d f+)1 | o4 (g b >d)1 | o4 (a >c+ e)1 |
+  o4 (d f+ a)1 | o4 (b >d f+)1 | o4 (e g b)1 | o4 (a >c+ e)1 |
+  o4 (g b >d)1 | o4 (d f+ a)1 | o4 (e g b)1 | o4 (a >c+ e)1 |
+  o4 (b >d f+)1 | o4 (g b >d)1 | o4 (a >c+ e)1 | o4 (d f+ a)1 |
+
+track pluck piano vol=0.3 pan=0.22 rev=0.2
+  L [ o4 d8 f+8 a8 f+8 ]2 | [ o4 b8 o5 d8 f+8 d8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+  [ o4 d8 f+8 a8 f+8 ]2 | [ o4 b8 o5 d8 f+8 d8 ]2 | [ o4 e8 g8 b8 g8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+  [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g8 b8 g8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+  [ o4 b8 o5 d8 f+8 d8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 |
+
+track bass bass vol=0.62 rev=0.06
+  L [ o2 d8 o3 d8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 b8 o3 b8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 d8 o3 d8 ]4 |
+
+track drums kit vol=0.4 rev=0.1
+  L v78 [ b8 h8 h8 b8 s8 h8 h8 h8 | ]15 b8 h8 h8 b8 s8 s16 s16 s8 s8 |

@@ -1,0 +1,99 @@
+{
+  // Chargestone Cave's first floor (plan 22 · U7, part a): Black 2's cave of charged crystals and stones that float, our words. As the
+  // player comes in at the south a trigger (8 to 11, 50, VAR_UNOVA_CHARGESTONE 0) has Bianca (bianca_cave) run up with a
+  // word of the stones and the research she has come for, then leave by the way on; further in a second (47, 41 to 42, at 1)
+  // shows N (11, FLAG_UNOVA_HIDE_N_CHARGESTONE) alone with his thoughts, who goes as the player comes near
+  // (chargestone_cave_2.txt). The workers, the bridge and Black 2's later scenes in the cave are left out
+  "area": "chargestone_cave_2",
+  "bgmTrack": "unova/chargestone",
+  "battleArena": "Cave",
+  "triggers": [
+    {
+      "script": "BiancaAtTheMouth",
+      "x": 8,
+      "z": 50,
+      "width": 4,
+      "depth": 1,
+      "variable": "VAR_UNOVA_CHARGESTONE",
+      "value": 0
+    },
+    {
+      "script": "NAlone",
+      "x": 47,
+      "z": 41,
+      "width": 1,
+      "depth": 2,
+      "variable": "VAR_UNOVA_CHARGESTONE",
+      "value": 1
+    }
+  ],
+  "people": {
+    "3": {
+      "name": "Ronald",
+      "trainer": {
+        "dialogueBefore": "Magneton are three Magnemite in one, and I'm one stubborn scientist! Battle!",
+        "dialogueAfter": "Magnetism has its limits, it seems."
+      }
+    },
+    "4": {
+      "name": "Anna",
+      "trainer": {
+        "dialogueBefore": "This cave rings like a stage! Time for my encore!",
+        "dialogueAfter": "Even the best songs come to an end."
+      }
+    },
+    "5": {
+      "name": "Corky",
+      "trainer": {
+        "dialogueBefore": "Ground, Flying and Steel on one team: that's how you beat any type!",
+        "dialogueAfter": "I'll have to find a type I haven't thought of."
+      }
+    },
+    "6": {
+      "name": "Mary",
+      "trainer": {
+        "dialogueBefore": "Water and Fire in the same cave! That's surprisingly shocking, isn't it?",
+        "dialogueAfter": "Short-circuited."
+      }
+    },
+    "7": {
+      "name": "Louis",
+      "trainer": {
+        "dialogueBefore": "My Ampharos lights up the whole cave. You can't hide from it!",
+        "dialogueAfter": "Lights out. For me, I mean."
+      }
+    },
+    "10": {
+      "name": "Otto",
+      "trainer": {
+        "dialogueBefore": "I follow my Nosepass: it always points the way, and the way is always north.",
+        "dialogueAfter": "I should have asked Nosepass for a better route."
+      }
+    },
+    "11": {
+      "name": "N",
+      "npcType": "n",
+      "script": "NInTheCave",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_N_CHARGESTONE"
+    },
+    "15": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [
+        "These stones glow so prettily. I'd love a few on the walls of my room, but they won't come off the rock."
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "bianca_cave",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 11,
+      "y": 48,
+      "facing": "Down",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  // The Celestial Tower's third floor (plan 22 · U7, part a): four Trainers, Black 2's clerk of the bell waits for plan 22 · U8
+  "area": "celestial_tower_4",
+  "bgmTrack": "unova/celestial_tower",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "CelestialTower_2F",
+      "x": 13,
+      "y": 8,
+      "facing": "Down"
+    },
+    {
+      "warp": 1,
+      "map": "CelestialTower_2F",
+      "x": 13,
+      "y": 8,
+      "facing": "Down"
+    },
+    {
+      "warp": 2,
+      "map": "CelestialTower_2F",
+      "x": 13,
+      "y": 8,
+      "facing": "Down"
+    }
+  ],
+  "exits": [
+    {
+      "x": 17,
+      "z": 23,
+      "map": "CelestialTower_4F",
+      "toX": 15,
+      "toY": 21,
+      "facing": "Left"
+    },
+    {
+      "x": 18,
+      "z": 23,
+      "map": "CelestialTower_4F",
+      "toX": 15,
+      "toY": 21,
+      "facing": "Left"
+    }
+  ],
+  "people": {
+    "2": {
+      "name": "Micki",
+      "trainer": {
+        "dialogueBefore": "A Pokémon's heart can be read like a book, if you know how. Let me read yours!",
+        "dialogueAfter": "A closed book to me, it seems."
+      }
+    },
+    "3": {
+      "name": "Bryce",
+      "trainer": {
+        "dialogueBefore": "Elgyem and Duosion have heads full of thought. Can you out-think them?",
+        "dialogueAfter": "My thoughts are in a muddle."
+      }
+    },
+    "4": {
+      "name": "Georgia",
+      "trainer": {
+        "dialogueBefore": "My Cubchoo loves a chilly tower. Cold hands, warm heart! Battle me!",
+        "dialogueAfter": "Oh, my poor Cubchoo's nose!"
+      }
+    },
+    "5": {
+      "name": "Dixie",
+      "trainer": {
+        "dialogueBefore": "I'm a nurse, but I battle, too! My Leavanny will mend its own wounds!",
+        "dialogueAfter": "I'll tend to my Pokémon. And to my pride."
+      }
+    }
+  }
+}

@@ -153,6 +153,7 @@
     "Backers": "sport",
     "Musician": "fighter",
     "Pokémon Trainer Rood": "rich",
+    "Pilot": "ace",
     "Depot Agent": "fun"
   },
   "battleThemes": {
@@ -189,7 +190,8 @@
     "Leader Elesa": "gym",
     "Subway Boss Ingo": "gym",
     "Subway Boss Emmet": "gym",
-    "Leader Clay": "gym"
+    "Leader Clay": "gym",
+    "Leader Skyla": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

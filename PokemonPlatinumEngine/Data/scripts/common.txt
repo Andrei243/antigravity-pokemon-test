@@ -2706,6 +2706,36 @@ script UnovaFrigate
   setflag FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   setflag FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   setflag FLAG_UNOVA_FRIGATE_BEGUN
+  call UnovaMistralton
+  return
+
+
+# What Unova's chapter of Route 6 to Lentimas Town hides until its scenes (plan 22 · U7, part a): Cheren on Route 6 and in the
+# Season Research Lab, Rood, an old man and Cobalion at the west bridge, Bianca in Chargestone Cave, Professor Juniper and
+# Skyla in Mistralton City (and Skyla in her Gym, Juniper in the Celestial Tower and both in the Cargo Service's hall), Bianca
+# in that hall, and the kids' treasure and the kids on the runway. N stands in Chargestone Cave from the start. UnovaFrigate
+# runs it, for a new game and for a save of part d's (UnovaCatchUp), with no story version raised. It may only set flags and
+# variables, and ends in return.
+script UnovaMistralton
+  setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  setflag FLAG_UNOVA_HIDE_CHEREN_LAB
+  setflag FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  setflag FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  setflag FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  setflag FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  setflag FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  setflag FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  setflag FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  setflag FLAG_UNOVA_HIDE_SKYLA_GYM
+  setflag FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  setflag FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  setflag FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  setflag FLAG_UNOVA_HIDE_JUNIPER_HALL
+  setflag FLAG_UNOVA_HIDE_SKYLA_HALL
+  setflag FLAG_UNOVA_HIDE_BIANCA_HALL
+  setflag FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  setflag FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  setflag FLAG_UNOVA_MISTRALTON_BEGUN
   return
 
 
@@ -2749,6 +2779,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
   if not flag FLAG_UNOVA_DRIFTVEIL_BEGUN call UnovaDriftveil
   if not flag FLAG_UNOVA_FRIGATE_BEGUN call UnovaFrigate
+  if not flag FLAG_UNOVA_MISTRALTON_BEGUN call UnovaMistralton
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

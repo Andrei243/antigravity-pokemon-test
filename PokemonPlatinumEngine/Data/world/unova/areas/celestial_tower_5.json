@@ -1,0 +1,48 @@
+{
+  "key": "celestial_tower_5",
+  "index": 341,
+  "name": "Celestial Tower",
+  "matrix": 188,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "33",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_CELESTIAL_TOWER_3",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 29 },
+    { "species": "Litwick", "level": 30 },
+    { "species": "Elgyem", "level": 30 },
+    { "species": "Litwick", "level": 31 },
+    { "species": "Elgyem", "level": 31 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Litwick", "level": 32 },
+    { "species": "Elgyem", "level": 32 },
+    { "species": "Litwick", "level": 32 },
+    { "species": "Elgyem", "level": 32 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 16, "z": 20, "to": "celestial_tower_4", "toWarp": 1 },
+    { "x": 16, "z": 21, "to": "celestial_tower_4", "toWarp": 1 },
+    { "x": 16, "z": 22, "to": "celestial_tower_4", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 8, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b8", "item": "PP Up", "script": "7108" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 22, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04b9", "item": "TM65", "script": "7109" },
+    { "id": "2", "looks": "65", "movement": "none", "x": 13, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x033a", "script": "2" },
+    { "id": "3", "looks": "socialite", "movement": "none", "x": 9, "z": 19, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SOCIALITE_GRACE" },
+    { "id": "4", "looks": "gentleman", "movement": "look_north_and_west", "x": 14, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_GENTLEMAN_DANIEL" },
+    { "id": "5", "looks": "psychic_f", "movement": "none", "x": 20, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_PSYCHIC_SARAH" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,51 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Prof. Juniper"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This tower is where Pokémon are laid to rest. Please keep your voice down and your steps soft."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At the very top of the tower hangs a great bell. They say its ring gives peace to the spirits."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

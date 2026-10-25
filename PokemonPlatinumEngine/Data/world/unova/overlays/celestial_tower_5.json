@@ -1,0 +1,69 @@
+{
+  // The Celestial Tower's fourth floor, under the summit (plan 22 · U7, part a): three Trainers. Black 2's maid of the bell waits for plan 22 · U8
+  "area": "celestial_tower_5",
+  "bgmTrack": "unova/celestial_tower",
+  "doors": [
+    {
+      "warp": 0,
+      "map": "CelestialTower_3F",
+      "x": 18,
+      "y": 22,
+      "facing": "Up"
+    },
+    {
+      "warp": 1,
+      "map": "CelestialTower_3F",
+      "x": 18,
+      "y": 22,
+      "facing": "Up"
+    },
+    {
+      "warp": 2,
+      "map": "CelestialTower_3F",
+      "x": 18,
+      "y": 22,
+      "facing": "Up"
+    }
+  ],
+  "exits": [
+    {
+      "x": 12,
+      "z": 9,
+      "map": "CelestialTower_Summit",
+      "toX": 22,
+      "toY": 15,
+      "facing": "Right"
+    },
+    {
+      "x": 13,
+      "z": 9,
+      "map": "CelestialTower_Summit",
+      "toX": 22,
+      "toY": 15,
+      "facing": "Right"
+    }
+  ],
+  "people": {
+    "3": {
+      "name": "Grace",
+      "trainer": {
+        "dialogueBefore": "Roselia, my little rose, will scent the air with a battle's perfume. Prepare yourself!",
+        "dialogueAfter": "The petals are scattered."
+      }
+    },
+    "4": {
+      "name": "Daniel",
+      "trainer": {
+        "dialogueBefore": "My Umbreon is as calm as the dark. It never loses its poise, and neither shall I.",
+        "dialogueAfter": "Well, I never! A defeat!"
+      }
+    },
+    "5": {
+      "name": "Sarah",
+      "trainer": {
+        "dialogueBefore": "The dead walk this tower at night, they say. Yamask is the proof! Battle me!",
+        "dialogueAfter": "You've the nerve for it, then."
+      }
+    }
+  }
+}

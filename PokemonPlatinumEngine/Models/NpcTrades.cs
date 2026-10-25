@@ -57,7 +57,11 @@ public static class NpcTrades
         new NpcTrade("cogs", "Timburr", "Klink", "Cogs", "Dmitri", 38511, PlayerLook.Boy, 0x2A, "Metal Coat",
             new[] { 20, 20, 25, 15, 20, 15 }, Nature.Sassy, "Plus", Gender.Genderless),
         new NpcTrade("shelly", "Tympole", "Dwebble", "Shelly", "Odette", 52690, PlayerLook.Girl, 0x3B, "Oran Berry",
-            new[] { 15, 20, 25, 15, 15, 20 }, Nature.Careful, "Sturdy", Gender.Female)
+            new[] { 15, 20, 25, 15, 15, 20 }, Nature.Careful, "Sturdy", Gender.Female),
+        // Route 7's hiker (plan 22 · U7, part a): a Gigalith for an Emolga. Its personality 0x58 gives a Jolly female with
+        // its first ability
+        new NpcTrade("gigalith", "Emolga", "Gigalith", "Gigalith", "Reiner", 61243, PlayerLook.Boy, 0x58, "Hard Stone",
+            new[] { 20, 20, 15, 20, 15, 20 }, Nature.Jolly, "Sturdy", Gender.Female)
     };
 
     public static NpcTrade? Get(string id) => All.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase));
