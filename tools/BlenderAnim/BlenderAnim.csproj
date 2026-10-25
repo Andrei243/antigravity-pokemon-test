@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Development tool: keys the game's battle clips on a rigged .glb with Blender, run with no window, and renders
+       contact sheets of a file's clips. The scripts Blender runs are in blender/; which clip plays for what is asked
+       of the engine's own matcher, so the tool and the game can't disagree. No window of its own, nothing shipped. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../PokemonPlatinumEngine/PokemonPlatinumEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="blender/*.py" CopyToOutputDirectory="PreserveNewest" LinkBase="blender" />
+    <InternalsVisibleTo Include="PokemonPlatinumTests" />
+  </ItemGroup>
+
+</Project>
