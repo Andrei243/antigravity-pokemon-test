@@ -7,7 +7,7 @@
 //   dotnet run --project tools/TripoSculpt -- selftest
 // The key is read from the TRIPO_API_KEY environment variable and never written anywhere (platform.tripo3d.ai/api-keys).
 // Every task costs credits, so generate does nothing until it is told which pictures; --limit 1 is the way to try one.
-// Sculpts go to tools/TripoSculpt/out/<set>/<slug>.glb with a <slug>.json note of the task (git-ignored: drafts, not game art).
+// Sculpts go to tools/TripoSculpt/out/<set>/<slug>.glb with a <slug>.json note of the task (tracked by git: drafts, not game art).
 // install copies the ones you approve to assets/models/<Species>.glb (tracked by git; --private: overrides/models, which is not),
 // where the game picks them up (docs/model-files.md).
 
