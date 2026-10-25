@@ -49,7 +49,24 @@ internal sealed class BattleMirror
     };
 
     /// <summary>The game's own Pokémon that one of the rules' copies stands for.</summary>
-    public Pokemon Shown(Pokemon copy) => shownOf[copy];
+    public Pokemon Shown(Pokemon copy)
+    {
+        if (shownOf.TryGetValue(copy, out var shown)) return shown;
+        // One the rules made in the middle of the battle and the screen hasn't been told of yet (plan 14 · B5): taken in as it is
+        Adopt(copy, copy.Clone());
+        return shownOf[copy];
+    }
+
+    /// <summary>
+    /// Takes in a Pokémon the rules made themselves in the middle of the battle (plan 14 · B5: an ally that answered a
+    /// call), with <paramref name="shown"/> the copy of it as it came, which the screen shows from now on.
+    /// </summary>
+    public void Adopt(Pokemon copy, Pokemon shown)
+    {
+        if (shownOf.ContainsKey(copy)) return;
+        shownOf[copy] = shown;
+        copyOf[shown] = copy;
+    }
 
     /// <summary>
     /// Brings the rules' copies up to the game's own, before the rules are asked anything. Between turns the two

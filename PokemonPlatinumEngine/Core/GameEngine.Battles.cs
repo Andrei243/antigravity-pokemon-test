@@ -94,7 +94,9 @@ public partial class GameEngine
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
         // Under the Nuzlocke the first Pokémon met in a place is its one chance (plan 13 · V4)
-        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second, nuzlockeCatch: MeetUnderTheRun(wild));
+        // A Pokémon met alone where the place's wild Pokémon call for help is met in an SOS battle (plan 14 · B5)
+        bool sos = second == null && partner == null && !flow.Safari.Active && !InBugContest && (entry.CallsForHelp || area?.CallsForHelp == true);
+        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second, nuzlockeCatch: MeetUnderTheRun(wild), sos: sos);
     }
 
     /// <summary>
@@ -123,7 +125,7 @@ public partial class GameEngine
     /// name alone.)
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
-        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null)
+        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // A horde's others are seen with the first (plan 14 · B3)
@@ -164,6 +166,8 @@ public partial class GameEngine
         GiveWildItems(wilds, kind);
         if (!flow.FieldEncounter) EndRadarChain();
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
+        // Every ally an SOS battle's Pokémon may call is made ready behind the fade too, so none comes in waiting for its model (plan 14 · B5)
+        if (sos) shown.AddRange(SosAllyLooks(wildPkmn).Where(name => !shown.Contains(name)).Select(name => { flow.WantModel(name); return name; }).ToList());
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the ground is the
         // battle's own, so a Pokémon hooked on a rod is met the water's way from any bank, and the first Pokémon
         // measured against it is the first of the team that fights (the assistant's, in the lesson)
@@ -187,7 +191,7 @@ public partial class GameEngine
                 PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 WildPokemon = wilds,
-                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : BattleFormat.Single,
+                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
@@ -528,6 +532,17 @@ public partial class GameEngine
         var species = all.Select(p => p.LookName).Concat(all.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.Gender == Gender.Female, p.IsShiny)))).Distinct().ToList();
         foreach (var name in species) flow.WantModel(name);
         return species;
+    }
+
+    /// <summary>
+    /// The models of every ally an SOS battle's Pokémon may call (plan 14 · B5; <see cref="SosAllies.AnyAlly"/>): each plain,
+    /// and in the caller's regional form where it has one. A shiny or a female ally's look is made as it comes.
+    /// </summary>
+    private static IEnumerable<string> SosAllyLooks(Pokemon caller)
+    {
+        string? suffix = caller.FormData is { Kind: FormKind.Regional } form && form.Name.StartsWith(caller.Species.Name) ? form.Name[caller.Species.Name.Length..] : null;
+        foreach (var species in SosAllies.AnyAlly(caller.Species))
+            yield return suffix != null && species.Form(species.Name + suffix) is { Kind: FormKind.Regional } regional ? regional.Name : species.Name;
     }
 
     /// <summary>The shapes a Pokémon may take in the battle itself (plan 06 · R7): Castform's weather, Cherrim's sun, Arceus's plate. Their models are asked for with its own.</summary>

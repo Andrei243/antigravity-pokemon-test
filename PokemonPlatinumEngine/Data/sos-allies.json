@@ -1,0 +1,19 @@
+{
+  "rates": {
+    "Nihilego": 0,
+    "Buzzwole": 0,
+    "Pheromosa": 0,
+    "Xurkitree": 0,
+    "Celesteela": 0,
+    "Kartana": 0,
+    "Guzzlord": 0,
+    "Poipole": 0,
+    "Naganadel": 0,
+    "Stakataka": 0,
+    "Blacephalon": 0
+  },
+  "pairs": {
+    "Cubone": [ "Kangaskhan" ],
+    "Corsola": [ "Mareanie" ]
+  }
+}

@@ -2499,6 +2499,8 @@
     "aMixedHorde": "A apărut o hoardă de Pokémoni sălbatici!",
     "defeatedTheHorde": "{player} a învins hoarda sălbatică!",
     "thereAreTooManyPokemon": "Sunt prea mulți Pokémoni afară! Balonul nu poate fi țintit!",
+    "calledForHelp": "{pokemon} a chemat ajutor!",
+    "itsHelpDidntAppear": "Ajutorul nu a apărut!",
     "letItMoveFirst": "{item} l-a lăsat pe {user} să se miște primul!",
     "wasTransferredTo": "Obiectul {item} al lui {target} a trecut la {user}!",
     "wasHurtBy": "{user} a fost rănit de obiectul {item} al lui {target}!",

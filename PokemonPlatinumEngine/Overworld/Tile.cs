@@ -498,6 +498,13 @@ public class WildEncounterEntry
     [System.Text.Json.Serialization.JsonIgnore]
     public int[]? OthersLevels { get; set; }
 
+    /// <summary>
+    /// The Pokémon met may call for help (plan 14 · B5): it is fought as a <see cref="Battle.BattleFormat.Sos"/>, as every
+    /// Pokémon met alone is in a place whose overlay says <c>callsForHelp</c>; never in a table.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool CallsForHelp { get; set; }
+
     /// <summary><see cref="Count"/> as a file has it: left out for one, so the tables written before it don't change.</summary>
     [System.Text.Json.Serialization.JsonPropertyName("count")]
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]

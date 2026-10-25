@@ -342,6 +342,7 @@ partial class Harness
             + $"money {moneyBefore} -> {game.Money}");
 
         HordeShots();
+        SosShots();
     }
 
     // Plan 14 · B4, a horde on screen and in the grass (ft10 to ft14), last in `formats` so nothing before it moves:
@@ -465,6 +466,130 @@ partial class Harness
                 Console.WriteLine($"  {game.Battle.CurrentMessage}");
             }
         }
+    }
+
+    // Plan 14 · B5, an SOS battle (ft20 to ft22), last in `formats` so nothing before it moves: a Pikipek met in Route
+    // 225's grass as one that calls for help (no area of Sinnoh's does: the entry says so), the battle's own generator
+    // told that every call is made and answered (RollKind.Call), its call as the line is read (ft20), the ally mid-hop
+    // onto the empty place (ft20b), the two out at the menu with the side opened out (ft21); then the Golem's Rock Throw
+    // fells each ally as it comes and the caller calls again, until the chain is ten; then no more calls, the caller
+    // felled, and the tenth ally caught with a ball that can't fail (ft22). It prints the format and places, every
+    // call and the chain, the tenth's IVs (two whole, the chain's bonus) and the catch's, and the Pokédex.
+    void SosShots()
+    {
+        var team = game.Party;
+        void Quick()
+        {
+            FrameClock.Fixed = ++tick / 60.0;
+            engine.Update(1f / 60f);
+            engine.Draw();
+        }
+        void ReadOn(BattleEngine b)
+        {
+            for (int i = 0; i < 120 && !b.IsBattleOver && b.HUD.MenuState is not (BattleMenuState.Main or BattleMenuState.SelectTarget); i++) { Confirm(b); Skip(0.4); }
+        }
+        string Foes(BattleEngine b) => string.Join(", ", b.EnemySlots.Select(s => s.Pokemon == null ? "-" : $"{s.Pokemon.Species.Name} Lv{s.Pokemon.Level} {s.Pokemon.CurrentHP}/{s.Pokemon.MaxHP}"));
+        static string Ivs(Pokemon p) => $"{p.IvHP}/{p.IvAttack}/{p.IvDefense}/{p.IvSpAttack}/{p.IvSpDefense}/{p.IvSpeed}";
+        var golem = new Pokemon(PokemonDatabase.Get("Golem")!, 50);
+        void golemWhole() { golem.CurrentHP = golem.MaxHP; foreach (var m in golem.Moves) m.CurrentPP = m.MaxPP; }
+        // The Golem's Rock Throw at a place of the wild side, through the target menu where there are two
+        void RockThrowAt(BattleEngine b, int slot)
+        {
+            golemWhole();
+            b.SelectMainMenuOption(0);
+            b.SelectMove(0);
+            if (b.HUD.MenuState == BattleMenuState.SelectTarget)
+            {
+                int at = b.TargetChoices.ToList().FindIndex(t => t == b.EnemySlots[slot]);
+                b.SelectTarget(Math.Max(0, at));
+            }
+            Skip(0.3);
+            ReadOn(b);
+        }
+        team.Members.Clear();
+        golem.Moves.Clear();
+        foreach (string move in new[] { "Rock Throw", "Harden" }) golem.Moves.Add(new Move(MoveDatabase.Get(move)));
+        team.Members.Add(golem);
+        game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+
+        var (gx, gy) = GrassOf("route_225");
+        At("Sinnoh", gx, gy, Direction.Up);
+        game.EnterArea();
+        game.LocationSign.Hide();
+        Frames(4);
+        game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Pikipek", MinLevel = 12, MaxLevel = 12, CallsForHelp = true });
+        for (int i = 0; i < 600 && game.State != GameState.Battle; i++) Quick();
+        if (game.State != GameState.Battle) { Console.WriteLine("  !! never happened: the SOS battle"); return; }
+        var sos = game.Battle;
+        if (sos.Core.Random is not BattleRandom rolls) { Console.WriteLine("  !! the SOS battle's chance is no BattleRandom"); return; }
+        // Every call made and answered, as the shots ask: the rules still decide who may call, and who comes
+        rolls.Force(RollKind.Call, 0);
+        Console.WriteLine($"the SOS battle: format {sos.Format}; places {sos.Anim.SlotsOf(BattleSide.Player)} against {sos.Anim.SlotsOf(BattleSide.Enemy)}, opened out {sos.Anim.Spread(BattleSide.Enemy)}; {Foes(sos)}");
+        ToMainMenu(sos);
+        ReadOn(sos);
+
+        // The first turn: the Golem hardens, and the Pikipek calls for help instead of moving
+        string calling = Text.Of("battle.calledForHelp", ("pokemon", sos.EnemySlots[0].Name));
+        golemWhole();
+        sos.SelectMainMenuOption(0);
+        sos.SelectMove(1);
+        bool called = false, hopped = false;
+        for (int i = 0; i < 80 && !sos.IsBattleOver && sos.HUD.MenuState == BattleMenuState.Message; i++)
+        {
+            Skip(0.05);
+            if (!called && sos.CurrentMessage == calling) { Skip(0.3); Shot("ft20_sos_call"); called = true; }
+            if (!hopped && sos.Anim[BattleSide.Enemy, 1].ArriveAge > 0.2f) { Shot("ft20b_sos_ally_hops"); hopped = true; }
+            Confirm(sos);
+            Skip(0.3);
+        }
+        if (!called) Console.WriteLine($"  !! never said: {calling}");
+        if (!hopped) Console.WriteLine("  !! never seen: the ally's hop");
+        ReadOn(sos);
+        Skip(1.0);
+        Shot("ft21_sos_two_out");
+        Console.WriteLine($"  two out: {Foes(sos)}; chain {sos.SosChain}; opened out {sos.Anim.Spread(BattleSide.Enemy)}; Pikipek seen {game.Pokedex.IsSeen(PokemonDatabase.Get("Pikipek")!.DexNumber)}");
+
+        // The chain: each ally felled as it comes, and the caller calls again in its turn
+        for (int turn = 0; turn < 40 && !sos.IsBattleOver && sos.SosChain < 10; turn++)
+        {
+            if (sos.EnemySlots[1].IsActive) RockThrowAt(sos, 1);
+            else
+            {
+                golemWhole();
+                sos.SelectMainMenuOption(0);
+                sos.SelectMove(1);
+                Skip(0.3);
+                ReadOn(sos);
+            }
+            Console.WriteLine($"  turn {turn}: {Foes(sos)}; chain {sos.SosChain}");
+        }
+        var tenth = sos.EnemySlots[1].Pokemon;
+        Console.WriteLine($"  the chain at {sos.SosChain}: the ally {tenth?.Species.Name} with IVs {(tenth == null ? "-" : Ivs(tenth))}, ability {tenth?.AbilityName}, shiny {tenth?.IsShiny}");
+
+        // No more calls; the caller felled, the tenth ally alone and caught
+        rolls.Force(RollKind.Call, 99).Force(RollKind.CatchShake, 0);
+        for (int tries = 0; tries < 6 && !sos.IsBattleOver && sos.EnemySlots[0].IsActive; tries++)
+        {
+            sos.EnemySlots[0].Pokemon!.CurrentHP = 1;
+            RockThrowAt(sos, 0);
+        }
+        Console.WriteLine($"  the caller felled: {Foes(sos)}; a ball {(sos.Core.WhyNot(BattleChoice.UseItem(new Place(BattleSide.Player, 0), "Poké Ball")) ?? "may be aimed")}");
+        if (!sos.IsBattleOver && sos.HUD.MenuState == BattleMenuState.Main)
+        {
+            sos.UseBagItem("Poké Ball");
+            bool caught = false;
+            for (int i = 0; i < 60 && sos.HUD.MenuState == BattleMenuState.Message; i++)
+            {
+                Skip(0.2);
+                if (!caught && sos.Caught != null && sos.CurrentMessage.Contains(sos.Caught.DisplayName)) { Skip(0.3); Shot("ft22_sos_caught"); caught = true; }
+                Confirm(sos);
+                Skip(0.3);
+            }
+            if (!caught) Console.WriteLine("  !! never seen: the catch");
+        }
+        Console.WriteLine($"the SOS battle's end: {sos.Result}; caught {sos.Caught?.Species.Name} with IVs {(sos.Caught == null ? "-" : Ivs(sos.Caught))} (the tenth's {(tenth == null ? "-" : Ivs(tenth))}); the Golem Lv {golem.Level}");
+        for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
+        Frames(10);
     }
 
     // A tile of tall grass of an area of the map of Sinnoh, nearest the middle of its grass
