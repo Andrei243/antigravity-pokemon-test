@@ -8418,6 +8418,11 @@ from Woman at 34,19 of CliffEdgeGate
 way -
   Woman> Have you heard? They're building a Safari Zone just past this cliff. You can catch any Pokémon you find there!
   Woman> I can hardly wait. Hurry up and finish it, workmen!
+=== common.ApricornTree
+from a trainer with lines of their own
+way -
+  > It's an Apricorn tree, with round fruit hanging from it. If only you had something to keep the fruit in...
+  * sound select
 === common.AthlonDesk
 from a trainer with lines of their own
 way 0
@@ -20374,6 +20379,15 @@ way 0
   + beaten johto_youngster_joey
 way 1, from answer 1
   * battle johto_youngster_joey Lost
+=== route_30_apricorn_house.ApricornMan
+from Man at 5,5 of Route30_ApricornHouse
+way -
+  Man> See the tree outside with the round fruit? Those are Apricorns.
+  Man> You'll want something to keep them in. Here, take my old Apricorn Box.
+  > Lucas received the Apricorn Box!
+  > Lucas put it away in the Key Items pocket.
+  Man> In Azalea Town there's an old man named Kurt who can turn Apricorns into Poké Balls. Every colour makes a ball of its own.
+  * fanfare FanfareKeyItem
 === route_30_mr_pokemon_house.MrPokemon
 from Mr. Pokémon at 9,7 of Route30_MrPokemonsHouse
 way -
