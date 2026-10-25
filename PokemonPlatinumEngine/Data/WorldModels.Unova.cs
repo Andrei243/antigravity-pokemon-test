@@ -138,6 +138,33 @@ public static partial class WorldModels
         Furniture("m_gym03_mayu01", PropType.Column, "a cocoon of honey in the Castelia Gym"),
         Furniture("m_gym03_mayu02", PropType.Column, "a cocoon of honey in the Castelia Gym"),
         Furniture("m_gym03_mayu03", PropType.Column, "a cocoon of honey in the Castelia Gym"),
+
+        // ---------------------------------------------------------------- Driftveil City (c5_) and its rooms
+        // Plan 22 · U6, part b: Driftveil's way of building (Architecture.Storehouse), the port's red-brick warehouses,
+        // the market, the old church where the former Team Plasma live, Clay's Gym, the gates at the drawbridge's foot
+        // and south to the World Tournament, and the tournament's hall in view beyond
+        Built("c5_rbuild", BuildingKind.House, "a red-brick building of Driftveil City, its houses among them", Architecture.Storehouse),
+        Built("c5_church", BuildingKind.Chapel, "the old church on the hill by Driftveil's Gym, where the former Team Plasma live", Architecture.Storehouse),
+        Built("c5_market", BuildingKind.Shop, "Driftveil Market", Architecture.Storehouse, sign: "MARKET"),
+        Built("c5_build", BuildingKind.Gym, "Driftveil City's Pokémon Gym, Clay's", Architecture.Storehouse),
+        Built("rgate", BuildingKind.Gate, "the gate house at the foot of the Driftveil Drawbridge"),
+        Built("wbtgate", BuildingKind.Gate, "the gate south of Driftveil City toward the Pokémon World Tournament"),
+        Built("c5_wbt", BuildingKind.Hall, "the Pokémon World Tournament's hall, south of Driftveil City", Architecture.Storehouse, sign: "PWT"),
+        Thing("c5_statue", PropType.Statue, "the statue at the drawbridge's foot in Driftveil City"),
+        Thing("c5_box", PropType.Crates, "crates stacked on Driftveil's quay"),
+        Thing("wbt_fountain", PropType.Fountain, "the fountain before the World Tournament's hall"),
+        Thing("sikiken", PropType.VendingMachine, "a ticket machine in the street"),
+        // (rooms)
+        Furniture("object02", PropType.Statue, "a statue in the Musical Theater's lobby"),
+        Furniture("in_vender01", PropType.VendingMachine, "a vending machine"),
+        Furniture("box01", PropType.Crates, "a pile of boxes"),
+        Furniture("box02", PropType.Crates, "a pile of boxes"),
+        Furniture("cashier01", PropType.Counter, "a till on Driftveil Market's counter"),
+        Furniture("shelf06", PropType.Bookshelf, "a shelf"),
+        Furniture("monitor01", PropType.Computer, "the Battle Institute's screen"),
+        Ground("elevator01", "a lift's doors in a house of flats (the room's walls are its own)"),
+        Ground("warp02", "the turnstiles to a stadium's field (the room's floor is its own)"),
+        Ground("c04_object01", "a piece of the old roller coaster's track (the room's walls are its own)"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

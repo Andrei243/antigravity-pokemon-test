@@ -199,6 +199,72 @@ public class HeadlessGameTests
     }
 
     [Fact]
+    public void RouteFortysGuideCrossesIntoTheBattleFrontierAndBackWithTheTeamAndOneSetOfRecords()
+    {
+        // Plan 20 · J13, part d: a Johto Champion spoken to by Route 40's guide comes out on Sinnoh's Battle Frontier by
+        // the game's own crossing, and the guide on the grounds takes them back; the team, the region and the records
+        // come through as they were
+        string folder = Path.Combine(Path.GetTempPath(), "headless-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(folder);
+        var paths = SavePaths.Current;
+        try
+        {
+            SavePaths.Current = SavePaths.In(folder);
+            Dice.Seed(12);
+            var engine = Headless();
+            var game = engine.Drive;
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.Story.Set("JohtoHallOfFame");
+            game.Story.SetVar(SpawnLocations.VariableOf(RegionDatabase.Johto), 2);
+            game.Party.Clear();
+            foreach (string species in new[] { "Typhlosion", "Ampharos", "Gyarados" }) game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 60));
+            var team = game.Party.Members.ToList();
+            var records = game.Frontier;
+            records.GivePoints(12);
+            game.State = GameState.Overworld;
+
+            var gate = MapDatabase.Get("Route40_FrontierGate");
+            Assert.Equal("Route40_FrontierGate", gate.Name);
+            game.Place(gate, 5, 4, Direction.Up);
+            game.TrainersLookOnArrival = false;
+            game.Interact();
+            Assert.True(engine.ScriptRunning);
+            Until(engine, () => game.Map.Name == "BattleFrontier" && game.State == GameState.Overworld && !engine.ScriptRunning, "the Battle Frontier", press: true);
+            Assert.Equal((47, 51), (game.Player.GridX, game.Player.GridY));
+            Assert.Equal(RegionDatabase.Sinnoh, engine.Here.Id);
+            Assert.Equal(team, game.Party.Members);
+            Assert.All(game.Party.Members, p => Assert.Equal(RegionDatabase.Johto, p.Region));
+            Assert.Same(records, game.Frontier);
+
+            // The Johto guide stands beside the tile, and takes the player back to Route 40
+            Assert.Contains(game.Map.NPCs, n => n.Name == "Guide" && (n.GridX, n.GridY) == (46, 51));
+            game.Frontier.GivePoints(3);
+            game.Place(game.Map, 47, 51, Direction.Left);
+            game.Interact();
+            Assert.True(engine.ScriptRunning);
+            Until(engine, () => game.Map.Name == "Route40_FrontierGate" && game.State == GameState.Overworld && !engine.ScriptRunning, "Route 40's gate", press: true);
+            Assert.Equal((5, 4), (game.Player.GridX, game.Player.GridY));
+            Assert.Equal(RegionDatabase.Johto, engine.Here.Id);
+            Assert.Equal(team, game.Party.Members);
+            Assert.Same(records, game.Frontier);
+            Assert.Equal(15, game.Frontier.BattlePoints);
+            Assert.Equal(2, game.Story.Var(SpawnLocations.VariableOf(RegionDatabase.Johto)));
+            // And the save holds the one set
+            Assert.Equal(15, game.BuildSave().Frontier!.BattlePoints);
+        }
+        finally
+        {
+            InputManager.Feed(null);
+            Dice.Seed(null);
+            Ruleset.Use(RulesPreset.Platinum);
+            PlayerIdentity.InRegion(RegionDatabase.First);
+            SavePaths.Current = paths;
+            try { Directory.Delete(folder, recursive: true); } catch (IOException) { }
+        }
+    }
+
+    [Fact]
     public void AGameWithNoWindowRefusesToDraw()
     {
         var engine = new GameEngine(new GameSettings());

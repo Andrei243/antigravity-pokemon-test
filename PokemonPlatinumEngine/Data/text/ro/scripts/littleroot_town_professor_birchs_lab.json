@@ -175,7 +175,7 @@
         "{player}! The Champion of Hoenn, in my own lab! I've been waiting for you to come home."
       ],
       "text": [
-        ""
+        "{player}! Campionul din Hoenn, în propriul meu laborator! Te așteptam să te întorci acasă."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "You've seen so much of Hoenn that I think it's time your Pokédex saw the rest of the world too."
       ],
       "text": [
-        ""
+        "Ai văzut atât de mult din Hoenn încât cred că e timpul ca Pokédexul tău să vadă și restul lumii."
       ]
     },
     {
@@ -191,7 +191,7 @@
         "Let me have it for a moment... There! I've upgraded it to the National Pokédex."
       ],
       "text": [
-        ""
+        "Dă-mi-l o clipă... Gata! L-am îmbunătățit la Pokédexul Național."
       ]
     },
     {
@@ -199,7 +199,7 @@
         "{player}'s Pokédex was upgraded to the National Pokédex!"
       ],
       "text": [
-        ""
+        "Pokédexul lui {player} a fost îmbunătățit la Pokédexul Național!"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Now it can record Pokémon from far beyond Hoenn. There are so many more out there, {player}. Go and find them!"
       ],
       "text": [
-        ""
+        "Acum poate înregistra Pokémoni din locuri mult dincolo de Hoenn. Mai sunt atât de mulți pe acolo, {player}. Du-te și găsește-i!"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "The world is a lot bigger than Hoenn, {player}. Fill that National Pokédex for me!"
       ],
       "text": [
-        ""
+        "Lumea e mult mai mare decât Hoenn, {player}. Umple-mi Pokédexul Național!"
       ]
     }
   ],

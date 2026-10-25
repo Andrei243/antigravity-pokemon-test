@@ -920,6 +920,25 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (facing is { } direction) PlayerFacing = direction;
     }
 
+    /// <summary>
+    /// <c>travel to</c> as the game plays it (plan 20 · J13, part d): a tile of another region's map is a crossing there
+    /// (<see cref="CrossTo"/>), one of this region's a warp.
+    /// </summary>
+    public void CrossInto(string map, int x, int y, Direction? facing)
+    {
+        var here = RegionDatabase.Get(Region);
+        if (here == null || RegionDatabase.RegionOfMap(map) is not { } to || string.Equals(to.Id, here.Id, StringComparison.OrdinalIgnoreCase))
+        {
+            Warp(map, x, y, facing);
+            return;
+        }
+        Shown("cross into another region");
+        if (!Skipping) Waits();
+        BeganInRegion ??= here.Id;
+        Log.Add($"travel to {to.Id} {map} {x} {y}");
+        CrossTo(here, to, new MapSpot(map, x, y, facing ?? Direction.Down));
+    }
+
     public void Fade(bool toBlack, float seconds)
     {
         Shown("fade the screen");

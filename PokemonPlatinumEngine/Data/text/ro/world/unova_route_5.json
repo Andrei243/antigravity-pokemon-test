@@ -1,0 +1,338 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I gather berries along the road while the performers play. Music makes them ripen faster, I'm sure of it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Jenn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I bake for the performers! Taste my battling first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Half-baked, that was. Mine, I mean!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Preston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hum along to my battle song! It goes like this!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You stole the show. Encore some other day!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Brian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Step, turn, battle! Keep up with my rhythm!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You tripped me up good and proper."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Ava"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Go, go, Trainers! We cheer for everyone, even you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Two, four, six, eight! Who do we appreciate? You!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Aya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Two Backers, two Pokémon! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Our cheers weren't loud enough!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Horton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hold still! I'm painting the perfect battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A masterpiece... of losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Lois"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rangers keep the routes safe. Let me see if you're safe to travel!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're more than safe. You're strong!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I play the drums on my bike's tank. Not well, but loudly!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Performers come from all over Unova to play here. It's the best stage there is: the open road!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're the audience today! Cheering is a performance too, you know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I stop here every time I cross the drawbridge. A song or two and my legs feel brand new!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon dances while I sing. The crowd throws coins, and we spend them all on berries for the road!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bianca": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 5\nPerformers' Street"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Driftveil Drawbridge\nDriftveil City ahead"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Trainer Tips\nSome Trainers battle three Pokémon at once. Be ready to send out your whole team!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10796": {
+      "en": [
+        "Today's Performance\nWhoever walks by is part of the show!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -4,7 +4,7 @@
       "Pokémon League"
     ],
     "text": [
-      ""
+      "Liga Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Wallace"
         ],
         "text": [
-          ""
+          "Wallace"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Prof. Birch"
         ],
         "text": [
-          ""
+          "Prof. Birch"
         ]
       }
     }

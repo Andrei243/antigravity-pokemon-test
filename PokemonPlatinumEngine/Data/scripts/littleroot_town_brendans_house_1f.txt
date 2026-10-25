@@ -6,10 +6,18 @@
 
 # In from the van (VAR_LITTLEROOT_INTRO_STATE 3): the movers' Vigoroth at work, and Mom sends the player upstairs to set
 # the clock. Back down with the clock set (6): Dad's Gym on the television, just missed, and next door to say hello.
+# Down from the bedroom as the Champion (plan 21 · H9, part b: HoennHallOfFame, VAR_HOENN_CHAMPION_HOME 0, a variable of
+# ours): the television's report of the Pokémon flying over Hoenn, Mom's question of its colour, which sets Latias or
+# Latios roaming (Emerald's VAR_ROAMER_POKEMON, 0 for red and 1 for blue, as its MULTI_TV_LATI), and Dad home from
+# Petalburg with the S.S. Ticket, who goes back to his Gym. A save of Hoenn from before this was written is given Dad's
+# hiding here (common.HoennChapterThirteen).
 script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_THIRTEEN call HoennChapterThirteen
   if var VAR_LITTLEROOT_INTRO_STATE == 3 goto MovingIn
   if var VAR_LITTLEROOT_INTRO_STATE == 6 goto OnTheTelevision
-  end
+  if not flag HoennHallOfFame end
+  if var VAR_HOENN_CHAMPION_HOME != 0 end
+  goto ChampionHome
 label MovingIn
   scene "Moving in"
   face players_house_1f_mom player
@@ -34,6 +42,48 @@ label OnTheTelevision
   setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
   setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
   setvar VAR_LITTLEROOT_INTRO_STATE 7
+  endscene
+  end
+label ChampionHome
+  scene "Home as the Champion"
+  face players_house_1f_mom player
+  emote players_house_1f_mom exclaim
+  speaker "Mom"
+  say "{player}! You're up! The whole of Littleroot is talking about you. My child, the Champion of Hoenn!"
+  say "Oh, but come and look, quick! There's a special report on the television."
+  text "...we interrupt this programme for a report from across Hoenn. A Pokémon nobody can name has been seen flying over the routes."
+  text "It flies faster than a jet, they say. But no two people who saw it can agree on what colour it was..."
+  say "I only caught a glimpse of it out of the window this morning. What colour did it look like to you, {player}?"
+  choose "What colour was the Pokémon?" "RED" "BLUE"
+  if result == 1 goto Blue
+  roamer start "Latias"
+  setvar VAR_ROAMER_POKEMON 0
+  say "Red? Then it might be the one the old stories call Latias. Fancy that, flying about Hoenn right now!"
+  goto DadComesHome
+label Blue
+  roamer start "Latios"
+  setvar VAR_ROAMER_POKEMON 1
+  say "Blue? Then it might be the one the old stories call Latios. Fancy that, flying about Hoenn right now!"
+label DadComesHome
+  clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+  place players_house_1f_dad 5 6 left
+  show players_house_1f_dad
+  face players_house_1f_dad player
+  speaker norman "Dad"
+  say "{player}! I came as soon as I heard. The Champion! I always knew you'd go further than me one day."
+  say "I've brought you something. Think of it as a present from a proud father."
+  give "S.S. Ticket"
+  setflag FLAG_RECEIVED_SS_TICKET
+  say "That ticket lets you board the S.S. Tidal at Slateport or Lilycove. And ships out of Lilycove go much further still."
+  say "Well, a Gym Leader can't stay away from his Gym for long. Look after your mother, {player}. I'll see you soon!"
+  walk players_house_1f_dad right 2
+  walk players_house_1f_dad down 2
+  walk players_house_1f_dad right 1
+  hide players_house_1f_dad
+  setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+  speaker "Mom"
+  say "That's your father for you. He was so proud he could hardly stand still!"
+  setvar VAR_HOENN_CHAMPION_HOME 1
   endscene
   end
 

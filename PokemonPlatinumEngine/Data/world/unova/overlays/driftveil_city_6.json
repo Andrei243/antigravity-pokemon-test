@@ -1,0 +1,32 @@
+{
+  // The old church on the hill by Driftveil's Gym (plan 22 · U6, part b): Black 2's house where the former members of
+  // Team Plasma live with Rood, our words. Rood (0, FLAG_UNOVA_HIDE_ROOD_HOME) and Hugh (12, FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE)
+  // come in once Rood has tested the player at the door (driftveil_city.txt); the house's arrival plays Rood's tale
+  // (driftveil_city_6.txt, VAR_UNOVA_DRIFTVEIL 2), and Hugh leaves afterwards. The member the grunt pressed on the bridge
+  // (8, FLAG_UNOVA_HIDE_EXPLASMA_HOME) is home once the grunt is chased off; the others (5, 6, 7) always live here
+  "area": "driftveil_city_6",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": { "name": "Rood", "npcType": "rood", "script": "Rood", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_HOME" },
+    "5": {
+      "name": "Former Member",
+      "npcType": "middle_aged_woman",
+      "hiddenBy": "",
+      "dialog": [ "I wore that uniform for years. Now I wear an apron and look after the Pokémon people bring us." ]
+    },
+    "6": {
+      "name": "Former Member",
+      "npcType": "old_man",
+      "hiddenBy": "",
+      "dialog": [ "We believed we were freeing Pokémon. Lord N believed it too. It was Ghetsis who wanted something else." ]
+    },
+    "7": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "hiddenBy": "",
+      "dialog": [ "I left Team Plasma and found work in Clay's mine. He gave me a second chance. Not everyone would." ]
+    },
+    "8": { "name": "Former Member", "npcType": "middle_aged_man", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_HOME" },
+    "12": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE" }
+  }
+}

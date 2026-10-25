@@ -2195,6 +2195,31 @@ way -
   Boy> It's hard to win without one. Still, if you're set on it, I won't stop you.
   Boy> You could always practise at the counter on the right.
   + FLAG_TALKED_TO_CONTEST_HALL_LOBBY_RICH_BOY
+=== DriftveilCity_Gym.Clay
+from Clay at 10,3 of DriftveilCity_Gym
+way 0
+  Clay> So you dug your way down here. I'm Clay, boss of these mines and Leader of this Gym. I don't go easy on anybody!
+  Clay> Let's see if your team's got the grit to strike it rich against mine!
+  Clay> Well, I'll be. You struck a seam I never saw comin'. Here, you earned it fair and square.
+  > Lucas received the Quake Badge from Clay!
+  Clay> Your fifth Badge, is it? Then take this along with it. A move that shakes the ground and slows down whoever it hits.
+  > Lucas received the TM78!
+  > TM78 holds the move Captivate.
+  > Lucas put it away in the TMs & HMs pocket.
+  Clay> Now get on up out of my mine. I've got work to do, and so have you!
+  * scene DriftveilCity_Gym.Clay
+  * battle unova_leader_clay Won
+  * fanfare FanfareBadge
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_GOT_TM78
+  = VAR_UNOVA_DRIFTVEIL 0 -> 4
+  + beaten unova_leader_clay
+  = badges Unova 0 -> 10000
+  + seen DriftveilCity_Gym.Clay
+way 1, from answer 1
+  * battle unova_leader_clay Lost
+  * scene over, unseen
 === EternaCityEastHouse.Inscription
 from Pokémon Breeder at 8,7 of EternaCityEastHouse
 way 0.0
@@ -6524,6 +6549,20 @@ way 2, from answer 1
 way 1, from answer 1
   Attendant> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = TM73 Thunder Wave   32 BP
+=== battle_frontier.JohtoGuide
+from Guide at 46,51 of BattleFrontier
+way 0
+  Guide> I guide Trainers along the road between the Battle Frontier and Route 40, in Johto.
+  Guide> Shall I take you back along the road to Route 40?
+  Guide> Very good. Follow me, and keep close.
+  > Lucas followed the guide back along the road to Route 40...
+  ? Shall I take you back along the road to Route 40? = Yes
+  * fade out
+  * travel to Johto Route40_FrontierGate 5 4
+  * fade in
+way 1, from answer 1
+  Guide> Take your time. I'll be here whenever you'd like to go back.
+  ? Shall I take you back along the road to Route 40? = No
 === battle_frontier.ScaleModel
 from the tile read at 50,36 of BattleFrontier
 from the tile read at 50,37 of BattleFrontier
@@ -9225,6 +9264,11 @@ way -
   + FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
   + FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE
   + FLAG_HOENN_CHAPTER_TEN
+=== common.HoennChapterThirteen
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
+  + FLAG_HOENN_CHAPTER_THIRTEEN
 === common.HoennChapterThree
 from a trainer with lines of their own
 way -
@@ -9326,6 +9370,7 @@ way -
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -9414,6 +9459,7 @@ way -
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
@@ -10140,11 +10186,19 @@ way -
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
@@ -10152,6 +10206,7 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
@@ -10163,19 +10218,27 @@ way -
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -10188,6 +10251,7 @@ way -
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
@@ -10202,20 +10266,40 @@ way -
   = VAR_UNOVA_HOUSE 0 -> 1
   = VAR_UNOVA_OUTLOOK 0 -> 1
   = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaDriftveil
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_ROOD_HOME
 === common.UnovaNewGame
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -10228,6 +10312,7 @@ way -
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
@@ -10241,9 +10326,18 @@ way -
 === common.UnovaNimbasa
 from a trainer with lines of their own
 way -
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaOpeningDone
@@ -10265,12 +10359,20 @@ way -
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -10279,6 +10381,7 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
@@ -10944,6 +11047,116 @@ from Elder at 6,9 of DragonsDen_Shrine
 way -
   Elder> Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.
   Elder> When the time is right, I will ask you some questions. Not yet.
+=== driftveil_city.ClayAndHugh
+from the trigger at 212,401 of Unova
+way -
+  Barry> Lucas! You got your Badge too? I knew you would!
+  Barry> I couldn't have done it without my team. A Badge is great, but what matters is how we got it together.
+  Barry> That's what Team Plasma never understood. A Pokémon isn't a prize to grab. Ask my sister's Purrloin!
+  Clay> Huh! So you two know each other. Good pair of young'uns, the both of ya. Got somethin' worth showin' ya.
+  Barry> Hang on, Clay. I heard you gave Team Plasma a place to live, right here in your city. Why would you do that?
+  Clay> A man can dig himself out of any hole, given a shovel and time. Those folks put the shovel to work, so I gave 'em time.
+  Clay> Judge a fella only by what you think's right, and one day there'll be nobody left you can stand to listen to.
+  Barry> ...Sounds like a grown-up excuse to me. Fine! You do your thing. I'm still going after Team Plasma!
+  Barry> So what did you want to show us?
+  Clay> South of town there's the Pokémon World Tournament. Gym Leaders, Champions, the best from every region battle there!
+  Clay> Come on down when you're ready. I'll be there.
+  Barry> The best from every region? Then I've got some training to do. See you there, Lucas!
+  * scene driftveil_city.Clay and Hugh outside the Gym
+  * endscene
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  = VAR_UNOVA_DRIFTVEIL 0 -> 5
+  + seen driftveil_city.Clay and Hugh outside the Gym
+=== driftveil_city.ClayOutside
+from Clay at 211,405 of Unova
+way -
+  Clay> The Pokémon World Tournament's south of town. Don't keep me waitin'!
+=== driftveil_city.FormerMember
+from Former Member at 218,433 of Unova
+way -
+  Former Member> Please, it's nothing to do with you. He'll leave soon enough... I hope.
+=== driftveil_city.GymWorker
+from Worker at 212,401 of Unova
+way -
+  Worker> Sorry, the boss is in the middle of something right now. Come back a bit later, would you?
+=== driftveil_city.PlasmaOnTheBridge
+from the trigger at 221,430 of Unova
+way -
+  Grunt> There you are! The boss wants you back. We could use a pair of hands for the old work, you know the kind.
+  Former Member> I told you before. That life is over for me. Taking Pokémon from people hurt everyone, me included.
+  Grunt> And what has quitting got you? Folk still look at you like a crook! Stick with us and they'll be the ones looking up!
+  Former Member> No. Lord N trusted us to be kind to Pokémon. I won't let him down again.
+  Grunt> Lord N, Lord N! He walked out on the lot of us. Some king he turned out to be!
+  Barry> Hey!
+  Barry> Team Plasma! Where are the Pokémon you've taken? Answer me!
+  Grunt> You again?! Not today, kid. I've got orders to keep my head down. Next time, though!
+  Barry> You're not getting away!
+  Former Member> I'm all right. Thank you for standing by me.
+  Former Member> He and I joined Team Plasma on the same day. Then, two years back, the team broke in two.
+  Former Member> Those of us who stayed loyal to Lord N only care for Pokémon now. The others answer to Ghetsis, and he has bigger plans.
+  Former Member> There is more to tell, if you want to hear it. We live in the old church up on the hill, next to the Gym.
+  * scene driftveil_city.Team Plasma on Driftveil's bridge
+  * endscene
+  + FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT
+  + FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  = VAR_UNOVA_DRIFTVEIL 0 -> 1
+  + seen driftveil_city.Team Plasma on Driftveil's bridge
+=== driftveil_city.Rood
+from Rood at 197,396 of Unova
+way -
+  Rood> This is the home of those who have left Team Plasma behind. We keep to ourselves, traveller. Good day to you.
+=== driftveil_city.RoodCalls
+from the trigger at 194,397 of Unova
+way 0.0
+  Rood> So you are the Trainer who stood up for one of our own on the bridge. You are interested in Team Plasma, then?
+  Rood> Before I ask you in, I would see what kind of person you are. In a Pokémon battle, if you will.
+  Rood> Will you battle me?
+  Rood> Then let us begin.
+  Rood> Well battled. Please forgive the test. People are wary of us, and so we are wary of them in turn.
+  Barry> Lucas! He got away from me... Huh? Who's this?
+  Rood> Your friend? Then he may come in too. Please, both of you, follow me.
+  ? Will you battle me? = Yes
+  * scene driftveil_city.Rood at the church door
+  * battle unova_rood Won
+  * endscene
+  * warp DriftveilCity_PlasmaHouse 7 23
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_ROOD_DOOR
+  = VAR_UNOVA_DRIFTVEIL 0 -> 2
+  + beaten unova_rood
+  + seen driftveil_city.Rood at the church door
+way 0.1, from answer 2
+  * battle unova_rood Lost
+  * scene over, unseen
+way 1, from answer 1
+  Rood> Then I am afraid I must ask you to leave. Come back if you change your mind.
+  ? Will you battle me? = No
+  * endscene
+  + seen driftveil_city.Rood at the church door
+=== driftveil_city_6.FormerMember
+from Former Member at 2,17 of DriftveilCity_PlasmaHouse
+way -
+  Former Member> Thank you again for the bridge. Rood says we all need a friend to stand with us now and then.
+=== driftveil_city_6.Hugh
+from {rival} at 5,20 of DriftveilCity_PlasmaHouse
+way -
+  Barry> Former members or not, it's Team Plasma. I'll hear him out. For now.
+=== driftveil_city_6.Rood
+from Rood at 7,18 of DriftveilCity_PlasmaHouse
+way -
+  Rood> We cannot undo what we did. We can only do better now, one Pokémon at a time.
+=== driftveil_city_gym_2.GymGuide
+from Guide at 4,13 of DriftveilCity_GymLobby
+way -
+  Guide> Hey there, future champ! This Gym is a working mine. The lift takes you down, and the workers will dig in for a battle!
+  Guide> Here, have a drink before you go down!
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  Guide> Clay's Ground types don't care for Water or Grass moves. And Electric moves won't touch them at all!
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_DRIFTVEIL
 === ecruteak.RivalBumps
 from the trigger at 397,174 of Johto
 way -
@@ -15157,6 +15370,25 @@ way 1, from answer 1
   ? Will you battle the Subway Bosses beside me? = No
   * endscene
   + seen nimbasa_city.The Subway Bosses
+=== nimbasa_city_2.FerrisWheel
+from Attendant at 57,15 of NimbasaCity_AmusementPark
+way 0
+  Attendant> Welcome to the Ferris wheel! One turn takes in the whole of Nimbasa City, the stadiums and the sea beyond.
+  Attendant> Would you like a ride?
+  Attendant> Step into the car, please. Enjoy the view!
+  > The car climbs slowly over the amusement park. The stadiums, the Gear Station and the river spread out below...
+  > Far off to the west, a long bridge reaches across the water toward a city of warehouses.
+  > The car sways gently as it comes back down to the ground.
+  Attendant> Welcome back! The view is different every time. Ride again whenever you like!
+  ? Would you like a ride? = Yes
+  * scene nimbasa_city_2.The Ferris wheel
+  * fade out
+  * fade in
+  * endscene
+  + seen nimbasa_city_2.The Ferris wheel
+way 1, from answer 1
+  Attendant> No hurry! The wheel turns all day and all night.
+  ? Would you like a ride? = No
 === nimbasa_city_gym.Ampere
 from the trigger at 14,24 of NimbasaCity_Gym
 way 0
@@ -18702,6 +18934,11 @@ way 0
 way 1, from answer 1
   Black Belt> Come back if you change your mind. My punches aren't going anywhere.
   ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
+=== route_40_battle_frontier_gatehouse.Guide
+from Guide at 5,3 of Route40_FrontierGate
+way -
+  Guide> The road beyond leads to the Battle Frontier. Only Trainers who have entered the Hall of Fame may go.
+  Guide> Come back once you've beaten the Pokémon League, and I'll take you there myself.
 === route_43_gatehouse.Guard
 from Guard at 1,8 of Route43_Gate
 way -
@@ -21801,6 +22038,33 @@ way -
   Woman> Goodness, you look worn out! Sit down and rest a while. Your Pokémon too.
   > Lucas and the team had a good rest.
   Woman> There! With that much energy you could walk straight through a sandstorm.
+=== unova_route_5.BiancasFly
+from the trigger at 372,437 of Unova
+way 0
+  Bianca> Lucas! Heeey! Wait for me!
+  Bianca> Phew, I caught you! Good timing, too. I've been wanting to give you this!
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Bianca> Ta-da! It's Fly! Teach it to a Pokémon and it can carry you to any town you've visited, like a Pokémon Center you know.
+  Bianca> Oh, and Lucas, do you know about Hidden Grottoes?
+  Bianca> You do? Great! Keep your eyes open, then. You might find one just around the corner!
+  Bianca> Oops, I said I'd help the professor this afternoon! See you, Lucas! Good luck in Driftveil!
+  ? Oh, and Lucas, do you know about Hidden Grottoes? = Yes
+  * scene unova_route_5.Bianca on Route 5
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  = VAR_UNOVA_ROUTE_5 0 -> 1
+  + seen unova_route_5.Bianca on Route 5
+way 1, from answer 1
+  Bianca> Then let me tell you! Sometimes there's a little hollow among the trees where Pokémon like to hide. That's a Hidden Grotto!
+  Bianca> Oops, I said I'd help the professor this afternoon! See you, Lucas! Good luck in Driftveil!
+  ? Oh, and Lucas, do you know about Hidden Grottoes? = No
+  * endscene
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  = VAR_UNOVA_ROUTE_5 0 -> 1
+  + seen unova_route_5.Bianca on Route 5
 === valley_windworks_outside.Door
 from the tile read at 243,654 of Sinnoh
 way -

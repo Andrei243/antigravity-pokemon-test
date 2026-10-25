@@ -658,7 +658,8 @@ public class WildEncounterTests
         old.Roamers.RemoveRange(6, old.Roamers.Count - 6);
         var read = System.Text.Json.JsonSerializer.Deserialize<SpecialEncounters>(System.Text.Json.JsonSerializer.Serialize(old))!;
         Assert.Equal(Roamers.Slots.Length, read.Roamers.Count);
-        Assert.Equal("Entei", read.Roamers[^1].Species);
+        Assert.Equal("Entei", read.Roamers[7].Species);
+        Assert.Equal("Latios", read.Roamers[^1].Species);
     }
 
     [Fact]
@@ -674,7 +675,7 @@ public class WildEncounterTests
         Assert.Equal(made.MaxHP, made.CurrentHP);
         Assert.NotEqual("route_202", Roamers.PlaceOf(mesprit));
         Assert.NotEqual("route_201", Roamers.PlaceOf(mesprit));   // MoveRoamerRandom never stays where it was (index 0 at first)
-        Assert.Equal(new[] { 50, 50, 40, 60, 60, 60, 40, 40 }, Roamers.Slots.Select(s => s.Level));   // and HeartGold's Raikou and Entei (plan 20 · J7)
+        Assert.Equal(new[] { 50, 50, 40, 60, 60, 60, 40, 40, 40, 40 }, Roamers.Slots.Select(s => s.Level));   // and HeartGold's Raikou and Entei (plan 20 · J7), Emerald's Latias and Latios (plan 21 · H9, part b)
         Assert.Null(Roamers.SlotOf("Bidoof"));
     }
 

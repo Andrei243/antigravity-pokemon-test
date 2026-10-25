@@ -1,0 +1,205 @@
+{
+  "displayName": {
+    "en": [
+      "Driftveil City"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "clay": {
+      "name": {
+        "en": [
+          "Clay"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_noel": {
+      "name": {
+        "en": [
+          "Noel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Noel: Mind your head! You're in Clay's mine now, and we dig for battles too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Noel: Buried! Go on up, the tunnels only get deeper."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_tavarius": {
+      "name": {
+        "en": [
+          "Tavarius"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Tavarius: A good miner reads the rock. Let's see if you can read a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Tavarius: I read that one all wrong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_tibor": {
+      "name": {
+        "en": [
+          "Tibor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Tibor: The boss pays us in ore and in battles. I'll take a battle today!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Tibor: Back to the ore, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_niel": {
+      "name": {
+        "en": [
+          "Niel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Niel: Ground types shake off Electric moves like dust. Got anything better?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Niel: You had something better, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_pasqual": {
+      "name": {
+        "en": [
+          "Pasqual"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Pasqual: Halfway up already? Then you'll have to dig through me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Pasqual: Dug clean through."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_maynard": {
+      "name": {
+        "en": [
+          "Maynard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Maynard: The boss is just up ahead. Nobody gets to him without getting past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Maynard: Nobody but you. Go on, he's waiting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "unova_worker_friedrich": {
+      "name": {
+        "en": [
+          "Friedrich"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Worker Friedrich: Fresh off the lift? Welcome to the mine. Here's your first shift!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Worker Friedrich: Shift's over. Up you go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

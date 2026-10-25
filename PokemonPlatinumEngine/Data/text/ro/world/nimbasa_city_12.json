@@ -1,0 +1,95 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We came to Nimbasa to ride the Battle Subway. We've been here three months now. We keep losing on the seventh train!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He says the seventh train. I say it's his choice of partners. We'll get there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is my sister's flat. She lets me stay on match days. The stadiums are only round the corner!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My little darling adores the Musical Theater. Dressed up in Props, she outshines everyone on stage!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Minccino"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Minccino: Minccino!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

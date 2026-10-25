@@ -39,31 +39,37 @@
     },
     "t27r0501_dancer_3": {
       "name": "Kimono Girl",
+      "npcType": "kimono_miki",
       "script": "Bothered",
       "still": true
     },
     "t27r0501_dancer": {
       "name": "Kimono Girl",
+      "npcType": "kimono_zuki",
       "still": true,
       "dialog": [ "We dance for the Pokémon of the towers, as the dancers before us did." ]
     },
     "t27r0501_dancer_2": {
       "name": "Kimono Girl",
+      "npcType": "kimono_naoko",
       "still": true,
       "dialog": [ "Please don't mind us. We're only practising." ]
     },
     "t27r0501_dancer_4": {
       "name": "Kimono Girl",
+      "npcType": "kimono_sayo",
       "still": true,
       "dialog": [ "A dance is a kind of prayer, my teacher says." ]
     },
     "t27r0501_dancer_5": {
       "name": "Kimono Girl",
+      "npcType": "kimono_kuni",
       "still": true,
       "dialog": [ "Have you come to watch? Then sit and enjoy it." ]
     },
     "t27r0501_dancer_6": {
       "name": "Kimono Girl",
+      "npcType": "kimono_miki",
       "still": true,
       "dialog": [ "My Eevee and I have danced together since we were both very small. Thank you for helping me." ]
     }

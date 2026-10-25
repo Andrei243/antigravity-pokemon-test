@@ -7,7 +7,7 @@
   "sign": "Route",
   "weather": "0",
   "camera": "0",
-  "battleBackground": "",
+  "battleBackground": "City",
   "dayMusic": "BGM_R_C_SP",
   "nightMusic": "BGM_R_C_SP",
   "encounters": "ENCOUNTERS_ROUTE_4",

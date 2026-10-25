@@ -55,7 +55,16 @@ public sealed record TrainerCardInfo(string Name, int TrainerId, int Money, int 
 
     /// <summary>The ways the game is played (plan 13 · V1); null for Normal, which gives the card no page for it.</summary>
     public Models.RunRules? Run { get; init; }
+
+    /// <summary>The run's fallen under the Nuzlocke (plan 13 · V4), oldest first, as the Run page shows them; empty for none.</summary>
+    public IReadOnlyList<CardFallen> Graveyard { get; init; } = Array.Empty<CardFallen>();
+
+    /// <summary>The run has ended (plan 13 · V4): the Run page says so.</summary>
+    public bool RunEnded { get; init; }
 }
+
+/// <summary>A Pokémon of the run's graveyard as the card shows it: its name, its species, its level and where it fell, all in the language chosen.</summary>
+public sealed record CardFallen(string Name, string Species, int Level, string Place);
 
 /// <summary>
 /// The pages of the Trainer Card (plan 18 · W2; plan 13 · V1, V13 add theirs at the end): the front, its back, and a

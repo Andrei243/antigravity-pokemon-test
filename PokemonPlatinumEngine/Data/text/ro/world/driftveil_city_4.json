@@ -1,0 +1,76 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband brings goods across the sea. I sell them at the market. A good arrangement!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome home! Oh, you don't live here? Then I can't let you ride the lift, I'm sorry."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Driftveil was built on trade. Ore from Clay's mines goes out, and treasures from the world come in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10421": {
+      "en": [
+        "The lift's call button.\nIt takes residents up to their flats."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10425": {
+      "en": [
+        "Letterboxes for the flats upstairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  // The Big Stadium's hall over the stands (plan 22 · U6, part b): Black 2's room, our words. The crowd of a game day is
+  // left out with the games
+  "area": "nimbasa_city_4",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [ "I come for the view, not the sport. From up here the whole field looks like a garden." ]
+    },
+    "2": {
+      "name": "Nursery Aide",
+      "npcType": "pokemon_breeder_f",
+      "dialog": [ "I bring the children to every home game. They cheer louder than the fans!" ]
+    },
+    "3": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "dialog": [ "Climbed all the way up these stairs for a better seat. Feels like home, this does!" ]
+    }
+  }
+}

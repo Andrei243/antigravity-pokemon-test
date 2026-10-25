@@ -150,7 +150,12 @@ public enum Query
     /// <summary>The story has something to say of what to do next here, and the player's options allow it (plan 12 · Q14): <c>objective</c>, before a line that says <c>{objective}</c>.</summary>
     Objective,
     /// <summary>A wild helper does this field move now, the options' row on and the Badge and HM held (plan 12 · Q18): <c>granted "Cut"</c>, asked beside <c>knows</c>.</summary>
-    Granted
+    Granted,
+    /// <summary>
+    /// The friendship of the first of the team that is no Egg (plan 09 · L9: Dr. Footstep's reading; the original's
+    /// <c>GetFirstNonEggInParty</c> and <c>GetPartyMonFriendship</c>): <c>friendship &gt;= 200</c>. False with no such Pokémon.
+    /// </summary>
+    Friendship
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

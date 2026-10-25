@@ -5,7 +5,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeie"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Goodness, you look worn out! Sit down and rest a while. Your Pokémon too."
       ],
       "text": [
-        ""
+        "Doamne, arăți epuizat! Așază-te și odihnește-te puțin. Și Pokémonii tăi."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} and the team had a good rest."
       ],
       "text": [
-        ""
+        "{player} și echipa s-au odihnit bine."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There! With that much energy you could walk straight through a sandstorm."
       ],
       "text": [
-        ""
+        "Gata! Cu atâta energie ai putea merge direct printr-o furtună de nisip."
       ]
     }
   ]

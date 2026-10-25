@@ -32,6 +32,13 @@ public static class Bw2Cover
         ("^17wood", TerrainCover.Bridge),                       // the boards over them
         ("^c3_baypole", TerrainCover.Lamp),                     // the piers' posts
         ("^gake_michi", TerrainCover.Path),                     // the path along the foot of a cliff
+        // (plan 22, wave 48: Nimbasa City, Join Avenue and the Nimbasa Gym, judged with --chunk) Nimbasa's floor is
+        // out7yuk01 and the park's out36yuk1, yuk a floor's (yuka) and never snow's (yuki): read as snow, they made the
+        // city snow country and its battles snowfields
+        ("\\dyuk\\d|^ja_floor|^c4g_stage|^c4g_yuka|^c4g_tou", TerrainCover.Paving),   // the city's and the park's paving, Join Avenue's street, the runway's stage and its lights
+        ("^ja_roof", null),                                      // the glass roof over Join Avenue
+        ("^ja_water", TerrainCover.Water),                       // its basins
+        ("^ja_vari", TerrainCover.Building),                     // its shopfronts
         ("^taki|^sea_zanami|^sea_simi|^shore|^ike\\d|^mizu|kawa|gawa|^sea_|nagare|asase|_zan\\d|mizo|suimon|foun", TerrainCover.Water),   // falls, surf, ponds, rivers, shallows, the sea, ditches, sluices, fountains
         ("marsh", TerrainCover.Marsh),
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock
@@ -40,7 +47,7 @@ public static class Bw2Cover
         ("hana|kadan|_fl\\d", TerrainCover.Flowers),             // flowers and flower beds
         ("nagakusa", TerrainCover.TallGrass),                   // the long grass
         ("kusa|grass|grs\\d", TerrainCover.Grass),               // the lawn
-        ("yuki|yuk\\d", TerrainCover.Snow),
+        ("yuki", TerrainCover.Snow),
         ("sabaku", TerrainCover.Sand),
         ("doukutu|_dou$", TerrainCover.CaveFloor),
         ("hashi|hasi|sanbashi|dekki|wd\\d", TerrainCover.Bridge),     // bridges, piers, decks of wood
@@ -174,6 +181,49 @@ public static class Bw2Cover
                 result[i] = pick ?? TerrainCover.Unknown;
             }
         return result;
+    }
+
+    /// <summary>
+    /// What <c>--game black2 --chunk &lt;folder&gt;</c> prints (plan 22, wave 48): the chunk's looks row by row in the
+    /// chunk files' codes, then every pair of textures that lies on and over its tiles with the tiles' class, how many
+    /// tiles it covers, the first of them and the look the rules give it: what a session judges a city's ground by.
+    /// </summary>
+    public static string Describe(Bw2Maps maps, string chunk)
+    {
+        var sb = new System.Text.StringBuilder();
+        var layers = maps.Terrain(chunk);
+        if (layers is not [{ } land, ..]) return $"No terrain for {chunk}\n";
+        int w = land.Width, h = land.Height;
+        var look = OfChunk(maps, chunk);
+        sb.AppendLine($"{chunk}: {w} x {h}");
+        for (int z = 0; z < h; z++)
+            sb.AppendLine(new string(Enumerable.Range(0, w).Select(x => TerrainCoverCodes.CodeOf(look[z * w + x])).ToArray()));
+        var triangles = WithNeighbours(maps, chunk);
+        float? Surface(int x, int z, float height)
+        {
+            float? best = null;
+            foreach (var level in layers)
+            {
+                if (level == null || x >= level.Width || z >= level.Height) continue;
+                float u = level.At(x, z).Height * LandData.TileUnits;
+                if (best == null || MathF.Abs(u - height) < MathF.Abs(best.Value - height)) best = u;
+            }
+            return best;
+        }
+        var over = triangles.Count > 0 ? Bw2Geometry.LayersOver(triangles, w, h, Surface) : null;
+        var groups = new Dictionary<string, (int Count, int X, int Z)>(StringComparer.Ordinal);
+        for (int z = 0; z < h; z++)
+            for (int x = 0; x < w; x++)
+            {
+                int i = z * w + x;
+                var tile = land.At(x, z);
+                string key = $"{over?.Ground[i] ?? "-"} / {over?.Above[i] ?? "-"} / class 0x{tile.Class:X2}{(tile.Blocked ? " blocked" : "")} -> {look[i]}";
+                groups[key] = groups.TryGetValue(key, out var g) ? (g.Count + 1, g.X, g.Z) : (1, x, z);
+            }
+        sb.AppendLine("ground / above / class -> look: tiles (first)");
+        foreach (var (key, g) in groups.OrderByDescending(kv => kv.Value.Count))
+            sb.AppendLine($"  {key}: {g.Count} ({g.X}, {g.Z})");
+        return sb.ToString();
     }
 
     /// <summary>

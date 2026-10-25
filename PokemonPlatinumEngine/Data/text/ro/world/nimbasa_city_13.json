@@ -1,0 +1,59 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nimbasa never sleeps, darling. At night the Ferris wheel lights up like a necklace of stars."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've ridden the Ferris wheel forty times! The view never changes, but I always see something new."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From this window you can watch the trains come in to the Gear Station. I never tire of it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

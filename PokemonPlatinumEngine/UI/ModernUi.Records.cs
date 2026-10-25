@@ -300,7 +300,7 @@ internal static partial class ModernUi
         switch (side.Page)
         {
             case CardPage.Run when info.Run != null:
-                CardRun(card, info.Run);
+                CardRun(card, info.Run, info);
                 break;
             case CardPage.Back:
                 CardBack(card, info, colour);
@@ -416,24 +416,74 @@ internal static partial class ModernUi
     /// The page for how the game is played (plan 13 · V1; only a game that isn't Normal has one): the preset's name and
     /// every choice that differs from Platinum's, two columns of a caption and its value.
     /// </summary>
-    private static void CardRun(Rectangle card, RunRules run)
+    private static void CardRun(Rectangle card, RunRules run, TrainerCardInfo info)
     {
         float x = card.X + 72, right = card.X + card.Width - 72, top = card.Y + 176;
         UiFonts.Draw(Text.Of($"run.preset.{run.PresetKey}"), x, top, 64, Ink, UiWeight.Black);
+        // A run that has ended says so beside its name (plan 13 · V4)
+        if (info.RunEnded)
+        {
+            string ended = Text.Of("card.runEnded");
+            UiFonts.Draw(ended, right - UiFonts.Measure(ended, 40, UiWeight.Black), top + 14, 40, Red, UiWeight.Black);
+        }
         UiFonts.Draw(Text.Of("card.runSub"), x, top + 82, 28, Muted, UiWeight.ExtraBold);
         UiShapes.Fill(new Rectangle(x, top + 128, right - x, 3), 1.5f, Rule);
         var shown = RunPanel.Showing(run);
         var plain = RunPanel.Showing(RunRules.Normal);
+        // Under the Nuzlocke the choices go three to a row, closer, and the graveyard takes the foot of the page
+        int columns = run.Nuzlocke ? 3 : 2;
+        float columnW = run.Nuzlocke ? (right - x) / 3f : 640, rowH = run.Nuzlocke ? 96 : 120;
         int n = 0;
         foreach (var row in shown.Rows)
         {
             if (row is RunRow.Preset or RunRow.Start) continue;
             string value = shown.ValueText(row);
             if (value == plain.ValueText(row)) continue;
-            float cx = x + (n % 2) * 640, cy = top + 160 + (n / 2) * 120;
-            Field(RunRowName(row).ToUpperInvariant(), value, cx, cy, 36);
+            float cx = x + (n % columns) * columnW, cy = top + 160 + (n / columns) * rowH;
+            Field(RunRowName(row).ToUpperInvariant(), value, cx, cy, run.Nuzlocke ? 32 : 36, run.Nuzlocke ? 48 : 56);
             n++;
         }
+        if (run.Nuzlocke) CardGraveyard(x, right, card.Y + card.Height - 196, info.Graveyard);
+    }
+
+    /// <summary>
+    /// The run's graveyard at the foot of the Run page (plan 13 · V4; style guide, "Menu screens (G10)", the Trainer
+    /// Card): its count, and the last eight fallen four to a row, each its name over its species, level and place.
+    /// </summary>
+    private static void CardGraveyard(float x, float right, float y, IReadOnlyList<CardFallen> fallen)
+    {
+        UiShapes.Fill(new Rectangle(x, y, right - x, 3), 1.5f, Rule);
+        Label(Text.Of("card.graveyard", ("count", fallen.Count)), x, y + 18);
+        if (fallen.Count == 0)
+        {
+            UiFonts.Draw(Text.Of("card.graveyardEmpty"), x, y + 64, 30, Muted, UiWeight.ExtraBold);
+            return;
+        }
+        const int shownMost = 8;
+        int first = Math.Max(0, fallen.Count - shownMost);
+        float w = (right - x) / 4f;
+        for (int i = first; i < fallen.Count; i++)
+        {
+            int k = i - first;
+            float cx = x + (k % 4) * w, cy = y + 52 + (k / 4) * 68;
+            var f = fallen[i];
+            UiFonts.Draw(ClipToWidth(f.Name, w - 24, 30, UiWeight.Black), cx, cy, 30, Ink, UiWeight.Black);
+            string line = Text.Of("card.fallenLine", ("species", f.Species), ("level", f.Level), ("place", f.Place));
+            UiFonts.Draw(ClipToWidth(line, w - 24, 20, UiWeight.ExtraBold), cx, cy + 34, 20, Muted, UiWeight.ExtraBold);
+        }
+        if (first > 0)
+        {
+            string more = Text.Of("card.graveyardMore", ("count", first));
+            UiFonts.Draw(more, right - UiFonts.Measure(more, 20, UiWeight.Black), y + 18, 20, Muted, UiWeight.Black);
+        }
+    }
+
+    /// <summary>A line cut with an ellipsis to fit a width.</summary>
+    private static string ClipToWidth(string text, float width, float size, UiWeight weight)
+    {
+        if (UiFonts.Measure(text, size, weight) <= width) return text;
+        while (text.Length > 1 && UiFonts.Measure(text + "…", size, weight) > width) text = text[..^1];
+        return text + "…";
     }
 
     private static void CardBack(Rectangle card, TrainerCardInfo info, Color colour)

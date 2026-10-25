@@ -902,6 +902,13 @@ public sealed partial class ScriptRunner
                     host.Open(ScriptScreen.Crossing, Subject);
                     break;
                 }
+                // "travel to": into another region at a tile of its map, by the one way a region is crossed into
+                // (plan 20 · J13, part d); the script goes on there once the arrival's fade has opened
+                if (i.Name == "to")
+                {
+                    host.CrossInto(i.Other, i.X, i.Y, i.Direction);
+                    break;
+                }
                 host.Open(ScriptScreen.Travel, Subject);
                 afterBusy = () => Result = host.Answer;
                 break;
@@ -2003,6 +2010,8 @@ public sealed partial class ScriptRunner
             Query.Taken => story.HasTaken(c.Name),
             Query.Starter => story.PlayerStarter == c.Name,
             Query.Money => Condition.Holds(host.Money, c.Compare, c.Number),
+            // The first of the team that is no Egg (plan 09 · L9: Dr. Footstep reads its friendship from its footprints)
+            Query.Friendship => RibbonRules.FirstNonEgg(host.Party) is var lead and >= 0 && Condition.Holds(host.Party.Members[lead].Friendship, c.Compare, c.Number),
             Query.Facing => host.FacingOf(null).ToString() == c.Name,
             Query.Boy => host.PlayerLook == PlayerLook.Boy,
             Query.Girl => host.PlayerLook == PlayerLook.Girl,

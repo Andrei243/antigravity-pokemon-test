@@ -654,6 +654,8 @@ public static class RegionDatabase
                 "EverGrandeCity_PhoebesRoom", "EverGrandeCity_Hall2", "EverGrandeCity_GlaciasRoom", "EverGrandeCity_Hall3",
                 "EverGrandeCity_DrakesRoom", "EverGrandeCity_Hall4", "EverGrandeCity_ChampionsRoom", "EverGrandeCity_HallOfFame",
                 "HoennVictoryRoad_1F", "HoennVictoryRoad_B1F", "HoennVictoryRoad_B2F",
+                // Plan 21 · H9, part b: Lilycove City's harbour, where the ship on to Unova sails from
+                "LilycoveCity_Harbor",
             }
         },
         new()
@@ -688,6 +690,14 @@ public static class RegionDatabase
                 "Route4_House1_1F", "Route4_House1_2F", "Route4_RestHouse", "Route4_House2_1F", "Route4_House2_2F",
                 "Route4_House3_1F", "Route4_House3_2F", "Route4_House4_1F", "Route4_House4_2F", "JoinAvenue",
                 "DesertResortGate", "DesertResort", "NimbasaCity_PokemonCenter", "NimbasaCity_AmusementPark", "NimbasaCity_Gym",
+                // Plan 22 · U6, part b: Nimbasa City's other rooms, its gate to Route 5, Route 5's trailer, the Driftveil
+                // Drawbridge, Driftveil City's rooms and Clay's Gym (a map of ours, Data/maps/DriftveilCity_Gym.json)
+                "NimbasaCity_BigStadium", "NimbasaCity_BigStadiumStands", "NimbasaCity_SmallCourt", "NimbasaCity_SmallCourtStands",
+                "NimbasaCity_House1_1F", "NimbasaCity_House1_2F", "NimbasaCity_House2_1F", "NimbasaCity_House2_2F",
+                "NimbasaCity_BattleInstitute", "MusicalTheater", "NimbasaCity_RollerCoaster", "NimbasaGate_Route5", "Route5_Trailer",
+                "DriftveilDrawbridge", "DriftveilCity_PokemonCenter", "DriftveilCity_House1", "DriftveilCity_House2",
+                "DriftveilCity_House3", "DriftveilCity_House4", "DriftveilCity_PlasmaHouse", "DriftveilCity_Market",
+                "DriftveilCity_TournamentGate", "DriftveilCity_GymLobby", "DriftveilCity_Gym",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
@@ -708,8 +718,9 @@ public static class RegionDatabase
         // From Johto by sea too: its sailor stands before the quay in Olivine's port hall (plan 20 · J12: the hall's overlay,
         // common.Attendant), where HeartGold's S.S. Aqua leaves from; a ferry, as plan 18's table has it
         new() { From = Johto, To = Hoenn, Transport = Transport.Boat, Vessel = "ferry", DepartureMap = "Olivine_PortHall" },
-        // Plan 21 names Hoenn's departure (the table proposed a ship from Slateport) once Hoenn's Hall of Fame is written
-        new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
+        // From Hoenn by sea as well: the captain stands on the quay of Lilycove City's harbour once Hoenn's Hall of Fame is
+        // entered (plan 21 · H9, part b: the harbour's overlay, common.Attendant), where Emerald's ferries leave from
+        new() { From = Hoenn, To = Unova, Transport = Transport.Boat, Vessel = "ship", DepartureMap = "LilycoveCity_Harbor" },
         // The later regions by air, as the table proposes; their plans (23) name where they leave from
         new() { From = Unova, To = Kalos, Transport = Transport.Plane, Vessel = "plane" },
         new() { From = Kalos, To = Alola, Transport = Transport.Plane, Vessel = "plane" },

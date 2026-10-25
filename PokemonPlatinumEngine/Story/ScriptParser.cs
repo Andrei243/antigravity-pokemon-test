@@ -585,8 +585,16 @@ public static class ScriptParser
                 // "halloffame show" is the scene of the team's entry instead of the record (plan 02 · S14)
                 return new Instruction { Op = Op.HallOfFame, Line = line, Name = r.More ? r.OneOf("show") : "" };
             case "travel":
+            {
                 // "travel go" is the crossing itself, over a script's dark (plan 18 · W5: common.Crossing)
-                return new Instruction { Op = Op.Travel, Line = line, Name = r.More ? r.OneOf("go") : "" };
+                string how = r.More ? r.OneOf("go", "to") : "";
+                if (how != "to") return new Instruction { Op = Op.Travel, Line = line, Name = how };
+                // "travel to "BattleFrontier" 47 51 up": a crossing onto a tile of another region's map, by no vessel
+                // (plan 20 · J13, part d: Route 40's way to the Battle Frontier and back)
+                string map = r.Text("a map's name");
+                int x = r.Int("a tile's x"), y = r.Int("a tile's y");
+                return new Instruction { Op = Op.Travel, Line = line, Name = how, Other = map, X = x, Y = y, Direction = r.More ? r.Direction() : null };
+            }
             case "choosepokemon":
                 // "choosepokemon "Bidoof"" lets only that species be chosen (plan 14 · B14: a Master Trainer's)
                 return new Instruction { Op = Op.ChoosePokemon, Line = line, Name = r.More ? r.Text("a species' name") : "" };
@@ -1072,6 +1080,8 @@ public static class ScriptParser
             }
             case "party":
                 return Counted(Query.Party);
+            case "friendship":
+                return Counted(Query.Friendship);
             case "granted":
                 return new Condition { Query = Query.Granted, Negated = negated, Name = r.Text("a field move's name") };
             case "knows":

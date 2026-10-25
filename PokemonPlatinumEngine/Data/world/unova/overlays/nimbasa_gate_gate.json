@@ -1,0 +1,17 @@
+{
+  // The gate house between Nimbasa City and Route 5 (plan 22 · U6, part b): Black 2's room, our words
+  "area": "nimbasa_gate_gate",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Guard",
+      "npcType": "receptionist",
+      "dialog": [ "Route 5 is just through here. Performers gather along it to entertain whoever passes by!" ]
+    },
+    "1": {
+      "name": "Pokémon Ranger",
+      "npcType": "ranger_m",
+      "dialog": [ "Past Route 5 is the Driftveil Drawbridge. When a ship comes through, the whole bridge lifts up!" ]
+    }
+  }
+}

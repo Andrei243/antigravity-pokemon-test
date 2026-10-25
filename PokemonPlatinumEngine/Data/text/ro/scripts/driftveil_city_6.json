@@ -1,0 +1,186 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to our home. Everyone here once wore Team Plasma's uniform. Now we look after Pokémon who have nowhere else to go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two years ago, Team Plasma meant to part people from their Pokémon. Lord N believed that was right for Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But it was Ghetsis who led us, and he only wanted to rule Unova. When Lord N lost his way, Ghetsis's plan fell apart."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Afterwards some of us came to see how wrong we had been. We stayed together, to make up for what we did."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The others went back to Ghetsis. That is the Team Plasma you have met: the same uniforms, and none of Lord N's dream."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clay, the Gym Leader, gave us this house. He keeps an eye on us, but he never once turned us away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're sorry now. That's fine for you. Saying sorry doesn't give anyone back what Team Plasma took."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Five years ago they stole my little sister's Purrloin. I'm going to find it, and I'm going to stop them. All of them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I understand. If we can help you find it, we will. I promise you that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...{player}, I'm going on ahead. See you at the Gym!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Gym Leader has finished his work, I believe. Go and challenge him. Our door is always open to you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rood": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We cannot undo what we did. We can only do better now, one Pokémon at a time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FormerMember": [
+    {
+      "en": [
+        "Former Member"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you again for the bridge. Rood says we all need a friend to stand with us now and then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Former members or not, it's Team Plasma. I'll hear him out. For now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

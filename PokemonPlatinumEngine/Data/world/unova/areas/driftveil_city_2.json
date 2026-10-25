@@ -1,0 +1,32 @@
+{
+  "key": "driftveil_city_2",
+  "index": 100,
+  "name": "Driftveil City",
+  "matrix": 319,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_5_NEW",
+  "nightMusic": "BGM_SW_C_5_NEW",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 13, "to": "driftveil_city", "toWarp": 1 },
+    { "x": 7, "z": 13, "to": "driftveil_city", "toWarp": 1 },
+    { "x": 8, "z": 13, "to": "driftveil_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "artist", "movement": "none", "x": 5, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2283" },
+    { "id": "2", "looks": "pokefan_m", "movement": "none", "x": 6, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [
+    { "x": 3, "z": 1, "type": 0, "script": "10423" },
+    { "x": 2, "z": 1, "type": 0, "script": "10419" }
+  ],
+  "triggers": []
+}

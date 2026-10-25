@@ -1,0 +1,112 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lift is for residents, I'm afraid. The restaurant is open to everyone, though!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Today's special is fish fresh off the boats. The miners from the Gym eat here every lunchtime!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came for the fish and stayed for the view. Driftveil does that to people."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lunch break! Then it's back down the mine. The boss works harder than any of us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The workers say Clay's Gym is full of lifts going up and down. I'd get dizzy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10422": {
+      "en": [
+        "The lift's call button.\nIt takes residents up to their flats."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10426": {
+      "en": [
+        "Letterboxes for the flats upstairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

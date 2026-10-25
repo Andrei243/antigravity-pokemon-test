@@ -137,6 +137,28 @@ public static partial class SceneTransition
         new BattleBand("Champion", RivalPlaceholder, Rgb(92, 64, 152), Rgb(44, 28, 92), Rgb(206, 184, 244))
     };
 
+    /// <summary>
+    /// Hoenn's thirteen (plan 21 · H9, part b; the style guide's third table): the eight Leaders, the four of the Elite
+    /// Four and Wallace, none the base colour of a Sinnoh or Kanto band. Tate and Liza battle as a double battle, which
+    /// loses its band, but theirs is written all the same.
+    /// </summary>
+    public static IReadOnlyList<BattleBand> HoennBands { get; } = new[]
+    {
+        new BattleBand("Leader", "Roxanne", Rgb(176, 120, 84), Rgb(98, 62, 40), Rgb(236, 196, 160)),
+        new BattleBand("Leader", "Brawly", Rgb(184, 64, 64), Rgb(104, 28, 32), Rgb(244, 160, 152)),
+        new BattleBand("Leader", "Wattson", Rgb(240, 212, 72), Rgb(140, 116, 24), Rgb(252, 244, 168)),
+        new BattleBand("Leader", "Flannery", Rgb(236, 128, 40), Rgb(148, 64, 16), Rgb(252, 204, 128)),
+        new BattleBand("Leader", "Norman", Rgb(176, 160, 128), Rgb(96, 84, 60), Rgb(232, 224, 196)),
+        new BattleBand("Leader", "Winona", Rgb(96, 184, 236), Rgb(36, 104, 160), Rgb(196, 232, 252)),
+        new BattleBand("Leader", "Tate & Liza", Rgb(184, 112, 208), Rgb(100, 48, 124), Rgb(232, 196, 248)),
+        new BattleBand("Leader", "Juan", Rgb(48, 120, 176), Rgb(20, 60, 108), Rgb(140, 196, 236)),
+        new BattleBand("Elite Four", "Sidney", Rgb(88, 72, 96), Rgb(40, 30, 48), Rgb(180, 164, 196)),
+        new BattleBand("Elite Four", "Phoebe", Rgb(120, 96, 168), Rgb(60, 44, 100), Rgb(200, 184, 236)),
+        new BattleBand("Elite Four", "Glacia", Rgb(152, 200, 232), Rgb(64, 112, 152), Rgb(224, 244, 252)),
+        new BattleBand("Elite Four", "Drake", Rgb(104, 72, 184), Rgb(52, 32, 112), Rgb(192, 172, 244)),
+        new BattleBand("Champion", "Wallace", Rgb(40, 168, 176), Rgb(16, 92, 100), Rgb(156, 228, 232))
+    };
+
     /// <summary>The name the Champion of Kanto's entry carries: the rival's, whatever the player called him.</summary>
     public const string RivalPlaceholder = "{rival}";
 
@@ -147,13 +169,16 @@ public static partial class SceneTransition
     public static bool IsBand(TransitionKind kind) => kind is TransitionKind.LeaderBand or TransitionKind.EliteBand;
 
     /// <summary>
-    /// The band of a trainer by class and name: Sinnoh's table, Kanto's, or the plain one under their own class and
+    /// The band of a trainer by class and name: Sinnoh's table, Hoenn's, Kanto's, or the plain one under their own class and
     /// name. The rival as Kanto's Champion (named <c>{rival}</c> in the data, or by the name the player gave him) wears
     /// the Champion's band under that name.
     /// </summary>
     public static BattleBand BandOf(string trainerClass, string name)
     {
         foreach (var band in Bands)
+            if (band.Class == trainerClass && band.Name == name) return band;
+        // Hoenn's before Kanto's, whose Champion is whoever bears the rival's name
+        foreach (var band in HoennBands)
             if (band.Class == trainerClass && band.Name == name) return band;
         foreach (var band in KantoBands)
             if (band.Class == trainerClass && (band.Name == name || (trainerClass == "Champion" && IsTheRival(name))))

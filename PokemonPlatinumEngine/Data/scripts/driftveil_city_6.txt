@@ -1,0 +1,60 @@
+# The old church in Driftveil City, home of the former Team Plasma (plan 22 · U6, part b). docs/scripts.md describes
+# the language; the lines are our own, on Black 2's beats (the decompilation's res/field/scripts/driftveil_city_6.s,
+# read for the order alone).
+#
+# Once Rood has tested the player at the door (driftveil_city.txt, VAR_UNOVA_DRIFTVEIL 2) the house's arrival plays his
+# tale: how Team Plasma broke in two, Ghetsis's new Team Plasma, and why the old members live here under Clay's eye.
+# Hugh (12) listens, says his piece and leaves; the worker at the Gym's door goes with the tale's end (at 3).
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_DRIFTVEIL != 2 goto Done
+  scene "Rood's tale"
+  face 0 player
+  speaker "Rood"
+  say "Welcome to our home. Everyone here once wore Team Plasma's uniform. Now we look after Pokémon who have nowhere else to go."
+  say "Two years ago, Team Plasma meant to part people from their Pokémon. Lord N believed that was right for Pokémon."
+  say "But it was Ghetsis who led us, and he only wanted to rule Unova. When Lord N lost his way, Ghetsis's plan fell apart."
+  say "Afterwards some of us came to see how wrong we had been. We stayed together, to make up for what we did."
+  say "The others went back to Ghetsis. That is the Team Plasma you have met: the same uniforms, and none of Lord N's dream."
+  say "Clay, the Gym Leader, gave us this house. He keeps an eye on us, but he never once turned us away."
+  face 12 0
+  speaker "{rival}"
+  say "So you're sorry now. That's fine for you. Saying sorry doesn't give anyone back what Team Plasma took."
+  say "Five years ago they stole my little sister's Purrloin. I'm going to find it, and I'm going to stop them. All of them!"
+  speaker "Rood"
+  say "I understand. If we can help you find it, we will. I promise you that."
+  speaker "{rival}"
+  say "...{player}, I'm going on ahead. See you at the Gym!"
+  walk 12 down 4 fast
+  hide 12
+  setflag FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  setflag FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER
+  setvar VAR_UNOVA_DRIFTVEIL 3
+  speaker "Rood"
+  say "The Gym Leader has finished his work, I believe. Go and challenge him. Our door is always open to you."
+  endscene
+label Done
+  end
+
+
+script Rood
+  face 0 player
+  speaker "Rood"
+  say "We cannot undo what we did. We can only do better now, one Pokémon at a time."
+  end
+
+
+script FormerMember
+  face 8 player
+  speaker "Former Member"
+  say "Thank you again for the bridge. Rood says we all need a friend to stand with us now and then."
+  end
+
+
+script Hugh
+  face 12 player
+  speaker "{rival}"
+  say "Former members or not, it's Team Plasma. I'll hear him out. For now."
+  end

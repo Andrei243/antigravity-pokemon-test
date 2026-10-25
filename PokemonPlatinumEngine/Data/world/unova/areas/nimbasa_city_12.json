@@ -1,0 +1,32 @@
+{
+  "key": "nimbasa_city_12",
+  "index": 88,
+  "name": "Nimbasa City",
+  "matrix": 26,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 10, "to": "nimbasa_city", "toWarp": 8 },
+    { "x": 8, "z": 2, "to": "nimbasa_city_13", "toWarp": 0 },
+    { "x": 7, "z": 10, "to": "nimbasa_city", "toWarp": 8 },
+    { "x": 8, "z": 10, "to": "nimbasa_city", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "ace_trainer_m", "movement": "none", "x": 2, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "ace_trainer_f", "movement": "none", "x": 4, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "pokefan_f", "movement": "none", "x": 12, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "3", "looks": "socialite", "movement": "none", "x": 10, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "4", "looks": "313", "movement": "none", "x": 10, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "5" }
+  ],
+  "signs": [],
+  "triggers": []
+}

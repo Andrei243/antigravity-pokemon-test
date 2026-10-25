@@ -277,6 +277,39 @@ public class IntoBattleTests
     }
 
     /// <summary>
+    /// Hoenn's thirteen bands (plan 21 · H9, part b, the style guide's third table): every Leader, member of the Elite Four
+    /// and Champion of Hoenn's data has one, found by class and name, each entry is someone of the data, and none shares a
+    /// base colour with another or with a band of Sinnoh's or Kanto's.
+    /// </summary>
+    [Fact]
+    public void HoennHasItsOwnThirteenBands()
+    {
+        Assert.Equal(13, SceneTransition.HoennBands.Count);
+        Assert.Equal((8, 4, 1), (SceneTransition.HoennBands.Count(b => b.Class == "Leader"), SceneTransition.HoennBands.Count(b => b.Class == "Elite Four"), SceneTransition.HoennBands.Count(b => b.Class == "Champion")));
+        int Light(Color c) => c.R * 3 + c.G * 6 + c.B;
+        var hoenn = TrainerDatabase.OfRegion("hoenn");
+        foreach (var band in SceneTransition.HoennBands)
+        {
+            Assert.True(Light(band.Deep) < Light(band.Base) - 300 && Light(band.Light) > Light(band.Base) + 300, $"{band.Name}'s colours");
+            Assert.True(Light(band.Deep) < 1200, $"{band.Name}'s plate is too pale for a white name");
+            Assert.Equal(band.Light, band.Backing);
+            Assert.Contains(hoenn, t => t.Class == band.Class && t.Name == band.Name);
+            Assert.Equal(band, SceneTransition.BandOf(band.Class, band.Name));
+        }
+        Assert.Equal(39, SceneTransition.Bands.Concat(SceneTransition.KantoBands).Concat(SceneTransition.HoennBands).Select(b => Rgb(b.Base)).Distinct().Count());
+        foreach (var trainer in hoenn.Where(t => t.Class is "Leader" or "Elite Four" or "Champion"))
+            Assert.Contains(SceneTransition.HoennBands, b => b.Class == trainer.Class && b.Name == trainer.Name);
+        // A Leader of Hoenn opens on the Leaders' band, a member of the Elite Four and Wallace on the League's, the rematch
+        // teams too, since the band is the class's and the name's
+        Assert.Equal(("Leader", "Roxanne"), (SceneTransition.BandFor(With("hoenn_roxanne_1", BattleTerrain.Building, 15, 12))!.Value.Class, SceneTransition.BandFor(With("hoenn_roxanne_1", BattleTerrain.Building, 15, 12))!.Value.Name));
+        Assert.Equal("Norman", SceneTransition.BandFor(With("hoenn_norman_3", BattleTerrain.Building, 40, 40))!.Value.Name);
+        Assert.Equal("Elite Four", SceneTransition.BandFor(With("hoenn_drake", BattleTerrain.Special, 52, 60))!.Value.Class);
+        Assert.Equal(Rgb(SceneTransition.HoennBands.Last().Base), Rgb(SceneTransition.BandFor(With("hoenn_wallace", BattleTerrain.Special, 58, 60))!.Value.Base));
+        // Wallace keeps his band whoever the player named the rival
+        Assert.Equal(SceneTransition.HoennBands.Last(), SceneTransition.BandOf("Champion", "Wallace"));
+    }
+
+    /// <summary>
     /// The thirteen bands (the style guide's table): every entry names a trainer of the game's data of that class,
     /// every Gym Leader, Elite Four member and Champion of the data has one, and no two wear the same colours.
     /// </summary>

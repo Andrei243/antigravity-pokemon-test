@@ -273,10 +273,13 @@ public static class WorldMapBuilder
             // was fought indoors on a plain floor)
             map.Arena ??= BattleArena.Gym;
         }
+        // A room whose overlay names its look has it (plan 22, wave 48: Join Avenue, a covered street)
+        if (room && entry.Area != null && world.Overlay(entry.Area)?.Interior is { } style) map.Interior = style;
+        bool overTheDark = room && entry.Area != null && world.Overlay(entry.Area)?.OverTheDark == true;
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {
-            map.Camera = CameraOf(own.Camera);
+            map.Camera = CameraOf(world.Overlay(entry.Area)?.Camera ?? own.Camera);
             map.IsDark = own.Weather == "DarkFlash";
         }
 
@@ -445,7 +448,16 @@ public static class WorldMapBuilder
             // A room built from a layout (plan 18 · W7): what the import couldn't name is floor where it is walked and
             // wall where it is blocked, never lawn and forest
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
-            foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+            // (a hall over the dark has nothing there: plan 22, wave 48)
+            var beyond = overTheDark ? TileType.Void : TileType.Wall;
+            foreach (var (x, z) in blank) map.SetGroundTile(x, z, beyond, isSolid: true);
+            // A covered street's blocked paving is its shops' fronts (plan 22, wave 48: Join Avenue): inner walls in the
+            // street's shopfront look, where blocked paving would read as more of the street
+            if (map.Interior == InteriorStyle.Street)
+                for (int z = 0; z < map.Height; z++)
+                    for (int x = 0; x < map.Width; x++)
+                        if (map.IsSolid(x, z) && map.GetGroundTile(x, z) == TileType.Paving && !entrances.Contains((x, z)))
+                            map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
             if (world.Index.BuildingsAtDoors) Furnish(map, furniture, entrances);
             // A DS game's room longer than a chunk (plan 20 · J7: the Azalea Gym, whose islands only its carts join) is
             // walled where neither its ways in nor its triggers reach, as a room of one chunk is: the chunks' open floor
@@ -469,7 +481,7 @@ public static class WorldMapBuilder
                 }
                 for (int z = 0; z < map.Height; z++)
                     for (int x = 0; x < map.Width; x++)
-                        if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+                        if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, beyond, isSolid: true);
             }
             else if (reach != null)
             {
@@ -479,7 +491,7 @@ public static class WorldMapBuilder
                     for (int x = 0; x < map.Width; x++)
                     {
                         if (reach[z * T + x]) { back = Math.Min(back, z); continue; }
-                        map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+                        map.SetGroundTile(x, z, beyond, isSolid: true);
                     }
                 // What hangs on the wall hangs on the wall over the floor's first row
                 bool OnTheWall(Prop p) => p.Type is PropType.Clock or PropType.Painting or PropType.Window;
@@ -540,6 +552,15 @@ public static class WorldMapBuilder
         foreach (var town in parts.Where(p => p.Of.Model?.Town != null && p.Of.Model.Kind is BuildingKind.House or BuildingKind.Apartments)
                      .GroupBy(p => p.Of.Area))
             town.Key.Architecture ??= town.GroupBy(p => p.Of.Model!.Town!.Value).OrderByDescending(g => g.Count()).ThenBy(g => g.Key).First().Key;
+
+        // A bridge over the sea (plan 22 · U6, part b: the Driftveil Drawbridge): the sea under its deck, and none of the
+        // models its import names, which are other places' props by number
+        if (entry.SeaBelow is { } drop)
+        {
+            parts.Clear();
+            map.Props.Clear();
+            DeckOverTheSea(map, drop, entrances);
+        }
 
         RocksInWater(map);
         foreach (var (key, area) in areas)
@@ -914,6 +935,7 @@ public static class WorldMapBuilder
         // The north face's camera is the overworld's to within a hundredth of a degree (CAMERA_TYPE_MT_CORONET_EXT_NORTH)
         "MtCoronetExtSouth" => FieldCamera.CoronetSouth,
         "StarkMountainRoom2" => FieldCamera.StarkMountain,
+        "Drawbridge" => FieldCamera.Drawbridge,
         _ => FieldCamera.Default
     };
 
@@ -1148,6 +1170,53 @@ public static class WorldMapBuilder
 
     /// <summary>How far a blocked tile nobody named looks for trees before it is taken for forest.</summary>
     public const int BlankReach = 2;
+
+    /// <summary>How many columns either side of a way in a bridge over the sea stays ground: its abutment (<see cref="DeckOverTheSea"/>).</summary>
+    public const int Abutment = 4;
+
+    /// <summary>
+    /// A bridge over the sea (plan 22 · U6, part b; style guide, "Relief", "A bridge over the sea"): the Driftveil
+    /// Drawbridge's import is its deck and nothing round it. Every blocked tile that isn't the deck's planks is the sea,
+    /// <paramref name="drop"/> tiles under the deck; every other tile is the deck's planks over that sea, open or shut as
+    /// the import has it, with the sea's behaviour under it, so the water runs on under the boards and whoever stands
+    /// there stands on the deck; but the columns within <see cref="Abutment"/> of a way in stay ground at the deck's
+    /// height, as the bridge's abutments, so whoever comes in by them stands on ground and walks out onto the deck.
+    /// </summary>
+    private static void DeckOverTheSea(Map map, float drop, HashSet<(int X, int Z)> entrances)
+    {
+        // The deck's own level: the lowest open ground of the bridge (its plates are all one height)
+        float level = float.MaxValue;
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+                if (!map.IsSolid(x, z)) level = MathF.Min(level, map.HeightAt(x, z));
+        if (level == float.MaxValue) return;
+        var ways = entrances.Where(e => map.InBounds(e.X, e.Z)).Select(e => e.X).Distinct().ToList();
+        bool Abutting(int x) => ways.Any(wx => Math.Abs(wx - x) <= Abutment);
+        for (int z = 0; z < map.Height; z++)
+            for (int x = 0; x < map.Width; x++)
+            {
+                bool solid = map.IsSolid(x, z);
+                bool sea = solid && map.GetGroundTile(x, z) != TileType.Planks;
+                if (sea)
+                {
+                    map.SetGroundTile(x, z, TileType.Water, isSolid: true);
+                    map.SetHeight(x, z, level - drop);
+                    map.SetBehaviour(x, z, TileBehavior.Sea);
+                }
+                else if (!Abutting(x))
+                {
+                    map.SetGroundTile(x, z, TileType.Planks, solid);
+                    map.SetHeight(x, z, level - drop);
+                    map.SetDeck(x, z, level);
+                    map.SetBehaviour(x, z, TileBehavior.Sea);
+                }
+                else
+                {
+                    map.SetGroundTile(x, z, TileType.Planks, solid);
+                    map.SetHeight(x, z, level);
+                }
+            }
+    }
 
     /// <summary>
     /// Stands rock up above the ground (style guide, "Caves" and "Rock outdoors"): each tile of rock on the
@@ -2254,6 +2323,8 @@ public static class WorldMapBuilder
     {
         var file = world.Area(key)!;
         var overlay = world.Overlay(key);
+        // On a bridge over the sea (the Driftveil Drawbridge) everyone the import stands on the deck's tiles is on the deck
+        bool overTheSea = world.Index.Maps.Any(m => m.Name == map.Name && m.SeaBelow != null);
 
         foreach (var o in file.Objects)
         {
@@ -2376,7 +2447,7 @@ public static class WorldMapBuilder
                 Item = person.Item
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
-            if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
+            if ((o.Y is > 0 || overTheSea) && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
             // Something the overlay lays on a table stands on its top (plan 19 · K3)
             // (drawn there only: they are spoken to from the floor before the furniture, as from beside it)
             if (person.Level is { } above) npc.RaisedBy = above;

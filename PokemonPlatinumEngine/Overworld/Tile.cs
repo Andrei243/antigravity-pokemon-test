@@ -122,7 +122,12 @@ public enum FieldCamera
     /// <summary>866.6 units away, pitched 73.11°, 12.67° of view: the outside of Mt. Coronet's south face.</summary>
     CoronetSouth,
     /// <summary>662.9 units away, pitched 70.47°, 19.7° of view: the great room inside Stark Mountain, seen from high over it.</summary>
-    StarkMountain
+    StarkMountain,
+    /// <summary>
+    /// 760 units away, pitched 48°, 17° of view: the Driftveil Drawbridge (plan 22 · U6, part b; Black 2's camera 9),
+    /// lower and further off than the overworld's, so the sea under the deck shows beside it.
+    /// </summary>
+    Drawbridge
 }
 
 /// <summary>
@@ -163,7 +168,12 @@ public enum BattleArena
     /// <summary>A room of the Pokémon League: an Elite Four member's type, or the Champion's room.</summary>
     League,
     /// <summary>The sea floor (plan 21 · H5): sand and kelp under the water, a light of its own.</summary>
-    Underwater
+    Underwater,
+    /// <summary>
+    /// A city's street (plan 22, wave 48): flagstones under a row of buildings, for a battle begun on paving where the
+    /// area's header names a city's background.
+    /// </summary>
+    City
 }
 
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>
@@ -290,7 +300,9 @@ public enum Architecture
     /// <summary>Glass and pale stone in towers of stages stepping in, under flat roofs: the city of skyscrapers on the bay (Castelia, plan 22 · U5, part c).</summary>
     Metropolis,
     /// <summary>White clapboard under cherry-red gable roofs with shutters: the city of the amusement park, the stadiums and the Gear Station (Nimbasa, plan 22 · U6).</summary>
-    Funfair
+    Funfair,
+    /// <summary>Red brick under slate-blue gable roofs with a chimney: the port of warehouses, the market and the Cold Storage (Driftveil, plan 22 · U6, part b).</summary>
+    Storehouse
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
@@ -310,6 +322,11 @@ public enum InteriorStyle
     Museum,
     /// <summary>The Game Corner: a red carpet, midnight walls and a band of gold bulbs (plan 06 · R16b).</summary>
     GameHall,
+    /// <summary>
+    /// A covered street of shops (plan 22, wave 48: Join Avenue): its floor the ground its tiles say (the street's
+    /// paving) as a Gym's is, its walls and the blocks of its shops shopfronts (style guide, "Rooms").
+    /// </summary>
+    Street,
 }
 
 /// <summary>

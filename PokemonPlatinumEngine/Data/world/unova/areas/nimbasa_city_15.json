@@ -1,0 +1,30 @@
+{
+  "key": "nimbasa_city_15",
+  "index": 94,
+  "name": "Nimbasa City",
+  "matrix": 26,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 2, "to": "nimbasa_city_16", "toWarp": 0 },
+    { "x": 6, "z": 10, "to": "nimbasa_city", "toWarp": 10 },
+    { "x": 7, "z": 10, "to": "nimbasa_city", "toWarp": 10 },
+    { "x": 8, "z": 10, "to": "nimbasa_city", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "ace_trainer_f", "movement": "none", "x": 9, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "131", "movement": "wander_around", "x": 9, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "3" },
+    { "id": "2", "looks": "ace_trainer_m", "movement": "wander_around", "x": 4, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

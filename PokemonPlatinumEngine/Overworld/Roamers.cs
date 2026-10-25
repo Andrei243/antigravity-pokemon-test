@@ -22,6 +22,9 @@ namespace PokemonPlatinumEngine.Overworld;
 /// Johto's two (plan 20 · J7; HeartGold's <c>src/field_roamer.c</c>): Raikou and Entei, set loose at level 40 when they
 /// flee the Burned Tower, roam HeartGold's sixteen routes of Johto (<see cref="JohtoRoutes"/>) by the same rules, each
 /// moving among its own region's places alone.
+/// Hoenn's (plan 21 · H9, part b; Emerald's <c>src/roamer.c</c>): Latias or Latios, whichever the player names on the
+/// television's report after Hoenn's Hall of Fame, set loose at level 40 over Emerald's twenty routes
+/// (<see cref="HoennRoutes"/>) by the same rules, Platinum's, where Emerald's differ only in the odds of a move.
 /// </summary>
 public static class Roamers
 {
@@ -30,11 +33,56 @@ public static class Roamers
     {
         ("Mesprit", 50), ("Cresselia", 50), ("Darkrai", 40), ("Moltres", 60), ("Zapdos", 60), ("Articuno", 60),
         // HeartGold's ROAMER_RAIKOU and ROAMER_ENTEI (Save_CreateRoamerByID: level 40), after Platinum's six
-        ("Raikou", 40), ("Entei", 40)
+        ("Raikou", 40), ("Entei", 40),
+        // Emerald's eon roamer (plan 21 · H9, part b; ROAMER_SPECIES at level 40), whichever of the two the player names
+        // on the television's report after Hoenn's Hall of Fame
+        ("Latias", 40), ("Latios", 40)
     };
 
     /// <summary>The slots that roam Johto (HeartGold's <c>roamer_idx == ROAMER_RAIKOU || ROAMER_ENTEI</c>): the rest roam Sinnoh.</summary>
     public static bool InJohto(string species) => species is "Raikou" or "Entei";
+
+    /// <summary>The slots that roam Hoenn (Emerald's <c>ROAMER_SPECIES</c>, Latias or Latios).</summary>
+    public static bool InHoenn(string species) => species is "Latias" or "Latios";
+
+    /// <summary>The slots that roam Sinnoh: Platinum's six.</summary>
+    public static bool InSinnoh(string species) => !InJohto(species) && !InHoenn(species);
+
+    /// <summary>
+    /// Hoenn's places a roamer goes (Emerald's <c>sRoamerLocations</c>, its first column: Routes 110, 111 and 117 to
+    /// 134), by their area keys.
+    /// </summary>
+    public static readonly string[] HoennRoutes =
+    {
+        "route_110", "route_111", "route_117", "route_118", "route_119", "route_120", "route_121", "route_122", "route_123",
+        "route_124", "route_125", "route_126", "route_127", "route_128", "route_129", "route_130", "route_131", "route_132",
+        "route_133", "route_134"
+    };
+
+    // Emerald's sRoamerLocations' other columns, the places beside each, in HoennRoutes' order
+    private static readonly int[][] HoennNearby =
+    {
+        new[] { 1, 2, 3, 19 },      // 110: 111, 117, 118, 134
+        new[] { 0, 2, 3 },          // 111: 110, 117, 118
+        new[] { 1, 0, 3 },          // 117: 111, 110, 118
+        new[] { 2, 0, 1, 4, 8 },    // 118: 117, 110, 111, 119, 123
+        new[] { 3, 5 },             // 119: 118, 120
+        new[] { 4, 6 },             // 120: 119, 121
+        new[] { 5, 7, 8 },          // 121: 120, 122, 123
+        new[] { 6, 8 },             // 122: 121, 123
+        new[] { 7, 3 },             // 123: 122, 118
+        new[] { 6, 10, 11 },        // 124: 121, 125, 126
+        new[] { 9, 12 },            // 125: 124, 127
+        new[] { 9, 12 },            // 126: 124, 127
+        new[] { 10, 11, 13 },       // 127: 125, 126, 128
+        new[] { 12, 14 },           // 128: 127, 129
+        new[] { 13, 15 },           // 129: 128, 130
+        new[] { 14, 16 },           // 130: 129, 131
+        new[] { 15, 17 },           // 131: 130, 132
+        new[] { 16, 18 },           // 132: 131, 133
+        new[] { 17, 19 },           // 133: 132, 134
+        new[] { 18, 0 }             // 134: 133, 110
+    };
 
     /// <summary>Johto's places a roamer goes (HeartGold's <c>sRoamerLocations</c>, <c>ROAMER_LOC_R29</c> to <c>R46</c>), by its area keys.</summary>
     public static readonly string[] JohtoRoutes =
@@ -64,10 +112,10 @@ public static class Roamers
         new[] { 0, 14 }         // 46: 29, 45
     };
 
-    /// <summary>The places a species roams: Johto's for Raikou and Entei, Sinnoh's for the rest.</summary>
-    public static string[] RoutesOf(string species) => InJohto(species) ? JohtoRoutes : Routes;
+    /// <summary>The places a species roams: Johto's for Raikou and Entei, Hoenn's for Latias and Latios, Sinnoh's for the rest.</summary>
+    public static string[] RoutesOf(string species) => InJohto(species) ? JohtoRoutes : InHoenn(species) ? HoennRoutes : Routes;
 
-    private static int[][] NearbyOf(string species) => InJohto(species) ? JohtoNearby : Nearby;
+    private static int[][] NearbyOf(string species) => InJohto(species) ? JohtoNearby : InHoenn(species) ? HoennNearby : Nearby;
 
     /// <summary>The places roamers go, by the original's numbers (<c>RoamingPokemonRoutes</c>, <c>RI_*</c>).</summary>
     public static readonly string[] Routes =

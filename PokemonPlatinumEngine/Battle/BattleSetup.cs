@@ -151,6 +151,12 @@ public sealed class BattleSetup
     public int RunLevelCap { get; init; }
 
     /// <summary>
+    /// The Nuzlocke's terms (plan 13 · V4; <see cref="Sim.CoreSetup.Nuzlocke"/>): no revive, and whether the wild Pokémon
+    /// may be caught. The game hands them over under a Nuzlocke run; null for none, which changes nothing.
+    /// </summary>
+    public NuzlockeTerms? Nuzlocke { get; init; }
+
+    /// <summary>
     /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
     /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
     /// never read by the rules.

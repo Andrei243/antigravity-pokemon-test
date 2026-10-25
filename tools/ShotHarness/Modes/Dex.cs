@@ -14,7 +14,13 @@ partial class Harness
         // --females: every species with a female look (plan 09 · L6), each male with its female beside it, boards
         // 94_dex_females_NN (or only the species named, each with its female where it has one)
         bool females = args.Skip(2).Contains("--females");
-        var named = args.Skip(2).Where(a => a != "--back" && a != "--shiny" && a != "--females").ToArray();
+        var named = args.Skip(2).Where(a => a != "--back" && a != "--shiny" && a != "--females" && a != "--prints").ToArray();
+        // --prints: one board of every species' footprint (plan 09 · L9), 94_prints, and no boards of models
+        if (args.Skip(2).Contains("--prints"))
+        {
+            Prints(named.Length > 0 ? named : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray());
+            return;
+        }
         var list = named.Length > 0 ? named : females ? PokemonModels.Females.ToArray() : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
         if (females) list = list.SelectMany(s => PokemonLook.HasFemale(s) ? new[] { s, s + PokemonLook.FemaleSuffix } : new[] { s }).ToArray();
         const int Cols = 10, Rows = 6, Box = 192;
@@ -40,5 +46,40 @@ partial class Harness
             Save(board, name);
             Console.WriteLine($"  {Math.Min(list.Length, (page + 1) * Cols * Rows)} of {list.Length} species in {watch.Elapsed.TotalSeconds:F0} s");
         }
+    }
+
+    // Every species' footprint on one board (plan 09 · L9), forty to a row in Pokédex order: each print at 2× in ink on
+    // a pale cell with its number under it, a cell left plain for a species that leaves none. Each model is built,
+    // printed and let go; it prints how many species leave one and how many inked texels the smallest print has
+    void Prints(string[] list)
+    {
+        const string name = "94_prints";
+        if (!Wanted(name)) return;
+        const int Cols = 40, Cell = 48, Scale = 2;
+        int rows = (list.Length + Cols - 1) / Cols;
+        var board = Raylib.GenImageColor(Cols * Cell, rows * Cell, new Color(206, 218, 232, 255));
+        var ink = new Color(36, 44, 68, 255);
+        int leave = 0, smallest = int.MaxValue;
+        string smallestName = "";
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        for (int i = 0; i < list.Length; i++)
+        {
+            int x = i % Cols * Cell, y = i / Cols * Cell;
+            Raylib.ImageDrawRectangle(ref board, x + 2, y + 2, Cell - 4, Cell - 4, new Color(246, 248, 252, 255));
+            if (Footprints.Now(list[i]) is { } print)
+            {
+                leave++;
+                if (print.Count < smallest) { smallest = print.Count; smallestName = list[i]; }
+                int left = x + (Cell - Footprint.Size * Scale) / 2, top = y + 2;
+                for (int py = 0; py < Footprint.Size; py++)
+                    for (int px = 0; px < Footprint.Size; px++)
+                        if (print[px, py]) Raylib.ImageDrawRectangle(ref board, left + px * Scale, top + py * Scale, Scale, Scale, ink);
+            }
+            string label = PokemonDatabase.Get(list[i]) is { } data ? data.DexNumber.ToString() : list[i];
+            Raylib.ImageDrawText(ref board, label, x + 4, y + Cell - 12, 10, new Color(110, 120, 148, 255));
+            if ((i + 1) % 100 == 0) Console.WriteLine($"  {i + 1} of {list.Length} prints in {watch.Elapsed.TotalSeconds:F0} s");
+        }
+        Save(board, name);
+        Console.WriteLine($"  {leave} of {list.Length} species leave a footprint; the smallest is {smallestName}'s, {smallest} texels");
     }
 }

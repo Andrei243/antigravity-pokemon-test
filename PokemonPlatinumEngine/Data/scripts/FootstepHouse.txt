@@ -25,12 +25,24 @@ label Read
   fade out
   wait 0.6
   fade in
-  ribbon feeling
-  if result == 5 goto Devoted
-  if result == 4 say "Hmm, hmm! 'Being with my Trainer is the best part of every day,' these prints say. You two are close indeed."
-  if result == 3 say "Hmm! 'I've come to like travelling with this Trainer,' they say. A good, steady bond."
-  if result == 2 say "Hmm. 'This Trainer is all right, I suppose,' they say. There is room to grow, but it is on its way."
-  if result == 1 say "Hmm... 'I don't know what to make of this Trainer yet,' they say. Give it time, and kindness."
+  # The steps of its friendship, asked of the first of the team that is no Egg (plan 09 · L9: `if friendship`)
+  if friendship >= 255 goto Devoted
+  if friendship >= 200 goto Close
+  if friendship >= 150 goto Steady
+  if friendship >= 70 goto Growing
+  goto Unsure
+label Close
+  say "Hmm, hmm! 'Being with my Trainer is the best part of every day,' these prints say. You two are close indeed."
+  goto Thinks
+label Steady
+  say "Hmm! 'I've come to like travelling with this Trainer,' they say. A good, steady bond."
+  goto Thinks
+label Growing
+  say "Hmm. 'This Trainer is all right, I suppose,' they say. There is room to grow, but it is on its way."
+  goto Thinks
+label Unsure
+  say "Hmm... 'I don't know what to make of this Trainer yet,' they say. Give it time, and kindness."
+label Thinks
   say "And that is what your Pokémon thinks!"
   end
 label Devoted

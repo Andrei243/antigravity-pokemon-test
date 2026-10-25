@@ -441,8 +441,16 @@ public sealed class Bw2World
     public static string BattleBackground(int background) => background switch
     {
         1 => "Plain",
-        3 => "City",
+        // Black 2's 2 is the big cities' street (Castelia, Nimbasa, Driftveil and its drawbridge, Route 4's flats) and 3
+        // a town's (Aspertia, Floccesy, Virbank): both a city here (plan 22, wave 48), as Platinum's towns are
+        2 or 3 => "City",
         4 => "Cave1",
+        // a cave of rock and dark (Challengers Cave, the Relic Passage), the woods, the mountains, the shore and the ruins
+        // under the sea, read from the zones that name each
+        5 => "Cave2",
+        6 => "Forest",
+        7 => "Mountain",
+        8 => "Water",
         9 => "Indoors1",
         _ => ""
     };

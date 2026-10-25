@@ -178,6 +178,10 @@
       "note": "first spoken at blackthorn_gym.txt(60)",
       "provisional": true
     },
+    "clay": {
+      "note": "first spoken at DriftveilCity_Gym.txt(19)",
+      "provisional": true
+    },
     "clefairy": {
       "note": "first spoken at route_218.txt(23)",
       "provisional": true
@@ -345,6 +349,10 @@
     },
     "foreman": {
       "note": "first spoken at virbank_complex_2.txt(15)",
+      "provisional": true
+    },
+    "former_member": {
+      "note": "first spoken at driftveil_city.txt(28)",
       "provisional": true
     },
     "fossil_maniac": {
@@ -803,6 +811,10 @@
       "note": "first spoken at phone.txt(322)",
       "provisional": true
     },
+    "rood": {
+      "note": "first spoken at driftveil_city.txt(84)",
+      "provisional": true
+    },
     "rosa": {
       "note": "first spoken at nimbasa_city.txt(30)",
       "provisional": true
@@ -1101,6 +1113,7 @@
     "Cheryl": "cheryl",
     "Chuck": "chuck",
     "Clair": "clair",
+    "Clay": "clay",
     "Clefairy": "clefairy",
     "Clerk": "look:clerk",
     "Clyde": "clyde",
@@ -1152,6 +1165,7 @@
     "Flint": "flint",
     "Florist": "florist",
     "Foreman": "foreman",
+    "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
     "Frieda": "frieda",
     "Gabby": "gabby",
@@ -1292,6 +1306,7 @@
     "Riley": "riley",
     "Roark": "roark",
     "Robert": "robert",
+    "Rood": "rood",
     "Rosa": "rosa",
     "Rose": "rose",
     "Roughneck": "roughneck",

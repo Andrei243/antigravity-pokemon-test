@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 5 is just through here. Performers gather along it to entertain whoever passes by!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Pokémon Ranger"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past Route 5 is the Driftveil Drawbridge. When a ship comes through, the whole bridge lifts up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

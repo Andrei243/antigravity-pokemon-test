@@ -1,0 +1,41 @@
+{
+  "people": {
+    "2": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A basketball player and his Pokémon passing the ball between them... Now that is teamwork."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm saving this seat for my brother. He's playing tennis today! Well, he will be."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

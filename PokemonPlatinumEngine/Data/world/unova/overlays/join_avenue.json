@@ -5,6 +5,8 @@
   // the trigger at the avenue's south end (Black 2's 0x410b) has no script
   "area": "join_avenue",
   "bgmTrack": "unova/nimbasa",
+  // a covered street of shopfronts on its paving (plan 22, wave 48), not a house's room
+  "interior": "Street",
   "people": {
     "0": {
       "name": "Owner",

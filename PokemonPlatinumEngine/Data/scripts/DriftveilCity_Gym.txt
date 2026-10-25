@@ -1,0 +1,41 @@
+# The Driftveil Gym's floor, a mine of ours (plan 22 · U6, part b; Data/maps/DriftveilCity_Gym.json). docs/scripts.md
+# describes the language; the lines are our own, on Black 2's beats (the decompilation's
+# res/field/scripts/driftveil_city_gym.s, read for the order alone).
+#
+# Black 2's Gym is a mine of lifts on rails, which the reader leaves out: ours is a hall of the mine with rock walls
+# zigzagging up it and Black 2's seven workers on its shifts (their trainers of the data). Clay (clay) waits at its head:
+# his battle (Black 2's TRAINER_LEADER_CLAY; _2 is the Challenge Mode's, plan 13's), the Quake Badge, the region's
+# fifth (`givebadge quake`), and TM78 (FLAG_UNOVA_GOT_TM78), which our data's table, Platinum's, fills with its own move.
+# Driftveil's count moves on (VAR_UNOVA_DRIFTVEIL 4), and Clay and Hugh wait outside the Gym.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script Clay
+  face clay player
+  speaker "Clay"
+  if badge quake goto Won
+  scene "Clay"
+  say "So you dug your way down here. I'm Clay, boss of these mines and Leader of this Gym. I don't go easy on anybody!"
+  say "Let's see if your team's got the grit to strike it rich against mine!"
+  battle clay as "unova_leader_clay"
+  say "Well, I'll be. You struck a seam I never saw comin'. Here, you earned it fair and square."
+  givebadge quake
+  text "{player} received the Quake Badge from Clay!"
+  if var VAR_UNOVA_DRIFTVEIL < 4 setvar VAR_UNOVA_DRIFTVEIL 4
+  clearflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  clearflag FLAG_UNOVA_HIDE_HUGH_GYM
+label Tm
+  say "Your fifth Badge, is it? Then take this along with it. A move that shakes the ground and slows down whoever it hits."
+  give "TM78"
+  setflag FLAG_UNOVA_GOT_TM78
+  say "Now get on up out of my mine. I've got work to do, and so have you!"
+  endscene
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM78 goto Tm
+  say "Hard work never lies, kid. Not to you, and not to your Pokémon."
+  end

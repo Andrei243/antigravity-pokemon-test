@@ -565,3 +565,10 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **The player without gender**: no line gives the player a gendered adjective or vocative.
   - **Seen**: not run (no tests, no harness this wave).
   - **Left**: whatever wave 45's other lanes write in English, the next slice.
+- [x] N6w Wave 47's lines in Romanian (done 2026-10-25, wave 48)
+
+- **N6w, done 2026-10-25 (wave 48)**: everything written in English in wave 47 and not yet translated, at the commit the wave started from (2f390b67).
+  - **The lines**: 576 entries in 417 distinct lines, in 57 files (about 390 of scripts, 250 of world, none of maps): Ever Grande City with the League's Pokémon Center, guard and Mart clerk, the five rooms of Sidney, Phoebe, Glacia, Drake and Wallace, the Hall of Fame and the upgrade of the Pokédex; Hoenn's Victory Road (three floors, the Cooltrainers), Scott, Wally, Birch's lab (`HoennChapterTwelve`); Unova's Route 4 and its gates, the Desert Resort, Join Avenue, Nimbasa City (Rosa or Nate with Ingo and Emmet, Team Plasma's grunts, the Pokémon Center, signs and townsfolk) and Elesa's Gym; the Dragon's Den (Clair, Lance, the rival) and the Move Relearner house. `extract ro --update` had nothing stale. The report: nothing untranslated, stale, unknown or wrong. The content check measured 33,272 lines: nothing found.
+  - **Names in the lines**: Bolt Badge "Insigna Fulgerului", Heart Scale "Solz-Inimă", Soft Sand "Nisip Moale", Relic Castle "Castelul Relicvelor", Battle Subway "Metroul de Luptă" (its Bosses "Șefii Metroului"), Big Stadium "Marele Stadion", Small Court "Terenul Mic", Team Plasma "Echipa Plasma" and its Grunt "Membru Plasma" as `classes` has it, Cooltrainer "Antrenor As" / "Antrenoare As" by the person, Ever Grande City "Orașul Ever Grande", Victory Road "Drumul Victoriei"; people's names, Join Avenue and the Unova towns kept in English.
+  - **The player without gender**: no line gives the player a gendered adjective or vocative.
+  - **Left**: whatever wave 47's other lanes and wave 48 write in English, the next slice.

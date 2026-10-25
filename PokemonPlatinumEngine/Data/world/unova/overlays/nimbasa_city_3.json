@@ -1,0 +1,24 @@
+{
+  // The Big Stadium's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. Its way out onto the field
+  // and the games played there at set times are left out (Black 2's 0x400f), and the crowd of a game day with them; the
+  // receptionist (0) says so, and the stairs lead up to the stands' hall
+  "area": "nimbasa_city_3",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "dialog": [ "Welcome to the Big Stadium! There's no game on the field right now. Do come back on a match day!" ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "Baseball, football, soccer... Every sport comes through here. The athletes battle with Pokémon on their days off!" ]
+    },
+    "3": {
+      "name": "Clerk",
+      "npcType": "cashier_f",
+      "dialog": [ "Programmes, caps, foam fingers! Well, there will be, once the season starts." ]
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "people": {
+    "2": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Tennis in the morning, basketball after lunch. The Small Court never sits still, and neither do I!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Small Court! The courts are being swept just now. Matches will start again soon!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

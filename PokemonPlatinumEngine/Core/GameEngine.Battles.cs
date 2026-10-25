@@ -31,7 +31,8 @@ public partial class GameEngine
         // A roamer is battled as it is, and runs (AddRoamerToEnemyParty)
         if (entry.Roamer is { } roamer)
         {
-            MeetWildPokemon(RoamerToBattle(roamer), BattleKind.Roamer);
+            var met = RoamerToBattle(roamer);
+            MeetWildPokemon(met, BattleKind.Roamer, nuzlockeCatch: MeetUnderTheRun(met));
             return;
         }
         var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
@@ -72,8 +73,21 @@ public partial class GameEngine
             }
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
-        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second);
+        // Under the Nuzlocke the first Pokémon met in a place is its one chance (plan 13 · V4)
+        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second, nuzlockeCatch: MeetUnderTheRun(wild));
     }
+
+    /// <summary>
+    /// The Nuzlocke's word on a wild Pokémon met in the field where the player stands (plan 13 · V4): whether it may be
+    /// caught, the place spent when it is the first met there. Free under any other run, which writes nothing, and in the
+    /// Bug-Catching Contest, whose catch is the contest's.
+    /// </summary>
+    private NuzlockeCatch MeetUnderTheRun(Pokemon wild) => InBugContest ? NuzlockeCatch.Free
+        : Nuzlocke.Meet(flow.Run, flow.RunState, Nuzlocke.PlaceKeyOf(flow.Map, flow.Player.GridX, flow.Player.GridY), wild, flow.Pokedex);
+
+    /// <summary>What a battle is told of the Nuzlocke (plan 13 · V4): null under any other run and in the assistant's lesson, which isn't the player's.</summary>
+    private NuzlockeTerms? NuzlockeTermsFor(BattleKind kind, NuzlockeCatch catching = NuzlockeCatch.Free) =>
+        flow.Run.Nuzlocke && kind != BattleKind.CatchingLesson ? new NuzlockeTerms(catching) : null;
 
     /// <summary>
     /// A battle with one wild Pokémon: one met in the grass, or one a script puts in the player's way, perhaps one
@@ -82,7 +96,7 @@ public partial class GameEngine
     /// name alone.)
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
-        Story.LessonCatcher? catcher = null)
+        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
@@ -156,6 +170,7 @@ public partial class GameEngine
                 MoveHints = MoveHintsOn,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
+                Nuzlocke = NuzlockeTermsFor(kind, nuzlockeCatch),
                 Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -276,7 +291,7 @@ public partial class GameEngine
             BattleArena.Water or BattleArena.Underwater => Battle.Sim.BattleTerrain.Water,
             BattleArena.Snow => Battle.Sim.BattleTerrain.Snow,
             BattleArena.Sand => Battle.Sim.BattleTerrain.Sand,
-            BattleArena.Indoors or BattleArena.Gym => Battle.Sim.BattleTerrain.Building,
+            BattleArena.Indoors or BattleArena.Gym or BattleArena.City => Battle.Sim.BattleTerrain.Building,
             BattleArena.League => Battle.Sim.BattleTerrain.Special,
             _ => Battle.Sim.BattleTerrain.Plain
         };
@@ -445,6 +460,7 @@ public partial class GameEngine
                 OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
+                Nuzlocke = NuzlockeTermsFor(BattleKind.Normal),
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
@@ -524,12 +540,15 @@ public partial class GameEngine
         SilenceTheRadio();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
         if (flow.Battle != null) EncountersAfterBattle(flow.Battle, isDefeat);
-        // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,
-        // Party_HealAllMembers when the partner flag is set)
-        if (!isDefeat && partner != null && flow.Battle != null) flow.Party.HealAll();
         // A battle a script says may be lost is lost without waking up at home: the story goes on from the loss
         bool goesOn = isDefeat && flow.Runner.IsRunning && flow.BattleMayBeLost;
         flow.BattleMayBeLost = false;
+        // Under the Nuzlocke (plan 13 · V4) the team's fallen go into the graveyard, out of the team for good, before
+        // anything heals them; a whiteout ends the run; and a Pokémon caught is named once the field is back
+        bool runEnds = TheRunsFallen(flow.Battle, isDefeat && !goesOn);
+        // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,
+        // Party_HealAllMembers when the partner flag is set)
+        if (!isDefeat && partner != null && flow.Battle != null) flow.Party.HealAll();
 
         // Pokémon that gained a level evolve now that the battle is over, before the field comes back, and so do
         // those waiting for the battle's end (Sirfetch'd's critical hits)
@@ -552,6 +571,12 @@ public partial class GameEngine
             {
                 AbandonBugContest();
                 WhiteOut();
+                // The run's end is written once, as it ended, and never again (plan 13 · V4)
+                if (runEnds)
+                {
+                    WriteSave(runsLastWord: true);
+                    ShowNotification(Text.Of("run.ended.whiteout"));
+                }
             }
             PlayFieldMusic();
             // The Safari Game keeps the balls the battle didn't throw, and ends with the last of them
@@ -565,5 +590,40 @@ public partial class GameEngine
             // A battle of the Bug-Catching Contest: its balls, its catch, its last ball (plan 15 · E5)
             AfterContestBattle();
         });
+    }
+
+    /// <summary>
+    /// What a battle leaves under the Nuzlocke (plan 13 · V4): the team's fallen into the graveyard (not after the
+    /// assistant's lesson, which isn't the player's, nor the first battle, the tutorial), the run ended by a
+    /// <paramref name="whiteout"/>, and a Pokémon caught waiting to be named once the field is back. True when the run
+    /// ends here. Nothing under any other run.
+    /// </summary>
+    private bool TheRunsFallen(BattleEngine? fought, bool whiteout)
+    {
+        if (!flow.Run.Nuzlocke || fought == null || flow.RunState.Ended) return false;
+        if (fought.Kind == BattleKind.CatchingLesson || fought.Core.FirstBattle) return false;
+        var fallen = Nuzlocke.Bury(flow.RunState, flow.Party, Nuzlocke.PlaceKeyOf(flow.Map, flow.Player.GridX, flow.Player.GridY),
+            flow.Map.DisplayNameAt(flow.Player.GridX, flow.Player.GridY), flow.PlayTime);
+        if (fallen.Count > 0) Diagnostics.Log.Info($"The run lost {string.Join(", ", fallen.Select(p => p.Species.Name))}.");
+        if (whiteout)
+        {
+            flow.RunState.Ended = true;
+            flow.RunState.EndedBy = "whiteout";
+            return true;
+        }
+        if (fought.Caught is { } caught && fought.Kind is BattleKind.Normal or BattleKind.Safari or BattleKind.Roamer && !InBugContest)
+            flow.NameAfterBattle = caught;
+        return false;
+    }
+
+    /// <summary>A Pokémon caught under the Nuzlocke is named as the field comes back (plan 13 · V4): the keyboard opens over it, and closes back to it.</summary>
+    private bool NameTheCatch()
+    {
+        if (flow.NameAfterBattle is not { } caught || flow.Runner.IsRunning) return false;
+        flow.NameAfterBattle = null;
+        flow.NicknameScreen.Open(caught);
+        flow.NicknameReturn = GameState.Overworld;
+        flow.State = GameState.Nickname;
+        return true;
     }
 }

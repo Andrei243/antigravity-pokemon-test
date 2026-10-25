@@ -314,6 +314,8 @@
     { "name": "HoennVictoryRoad_1F", "matrix": 230, "area": "hoenn_victory_road_1f", "trees": "Round", "setting": "Cave" },
     { "name": "HoennVictoryRoad_B1F", "matrix": 231, "area": "hoenn_victory_road_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "HoennVictoryRoad_B2F", "matrix": 232, "area": "hoenn_victory_road_b2f", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H9, part b: Lilycove City's harbour
+    { "name": "LilycoveCity_Harbor", "matrix": 119, "area": "lilycove_city_harbor", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
@@ -438,6 +440,8 @@
     "ever_grande_city_pokemon_league_1f", "ever_grande_city_pokemon_league_2f", "ever_grande_city_hall_5",
     "ever_grande_city_sidneys_room", "ever_grande_city_hall_1", "ever_grande_city_phoebes_room", "ever_grande_city_hall_2",
     "ever_grande_city_glacias_room", "ever_grande_city_hall_3", "ever_grande_city_drakes_room", "ever_grande_city_hall_4",
-    "ever_grande_city_champions_room", "ever_grande_city_hall_of_fame"
+    "ever_grande_city_champions_room", "ever_grande_city_hall_of_fame",
+    // Plan 21 · H9, part b: Lilycove City's harbour, where the ship on to Unova sails from once Hoenn's Hall of Fame is entered
+    "lilycove_city_harbor"
   ]
 }

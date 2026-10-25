@@ -1039,7 +1039,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Sunyshore Market's other stalls | Three more sellers of nothing, and the Seals on show | Its people say their lines | Plan 01 · M11 |
 | The Seal Club's programme | A TV programme shows other trainers' capsules | Not there | Plan 08's TV |
 | Seals and backdrops from elsewhere | Mystery gifts, the Global Terminal, a daily Seal in the Pokémon News Press, Amity Square's accessories | Only the givers above | Plans 07, 08 and 01 · M11; Amity Square is R16's |
-| The footprints | Dr. Footstep's reading follows the species' footprint, which the Pokédex shows | One voice, no footprints | Plan 09 |
+| The footprints | Dr. Footstep's reading follows the species' footprint, which the Pokédex shows | The Pokédex shows a print of our own made from each walking species' model (plan 09 · L9), and Dr. Footstep reads his five steps with `if friendship`; he still speaks in one voice, for a Pokémon that leaves no print too | Done but the voices: a voice by the kind of print is a later session's |
 
 ## The eighth chapter, first half (2026-10-10, plan 02 · S11, part a)
 
@@ -2564,6 +2564,18 @@ leaves a choice.
   field, and the common Pokémon Center's and Gym's.
 - **The buildings** are stand-ins in Sinnoh's ways of building (`WorldModels.Unova`, each with its `StandInUntil`),
   until U5 gives each town a way of its own.
+- **Wave 48's fixes** (2026-10-25, from the wave 47 shots). Black 2's `yuk` after a number (`out7yuk01`, `out36yuk1`) is
+  a floor's, Nimbasa's and its park's paving: read as snow (`yuki`), it had made the city snow country (blue light, a
+  snowfield for every battle on it). A zone's `battle_bg` is read by the zones that name each: 1 a route's plain, 2 the
+  big cities' street (Castelia, Nimbasa, Driftveil and its drawbridge, Route 4), 3 a town's, 4 and 5 caves, 6 woods,
+  7 mountains, 8 the shore and the ruins under the sea, 9 indoors, 10 the desert; 2 and 3 are both `City`, as
+  Platinum's towns are. Black 2 fights a city's battles on a street, so **paving where the area's header names a city's
+  background is a stage of ours, `City`** (flagstones under a row of buildings), in every region; a city's earth or grass
+  stays the meadow (Driftveil's sandy streets, where Rood is battled). The Castelia sewers' battles are fought on the
+  cave's stage (their overlay's `battleArena`) until a sewer has a stage of its own. Join Avenue, a covered street of
+  shops under a glass roof, is a room of its own look (`InteriorStyle.Street`): its street is paving, its shopfronts
+  the blocks between the lanes; its shops are still part c's. The Nimbasa Gym's runway stands over nothing, as Black
+  2's does in its dark hall (the overlay's `overTheDark`); Black 2's spotlights and the models' walk are still left out.
 
 ## Seasons in Unova (2026-10-24, plan 22 · U4)
 
@@ -2798,6 +2810,55 @@ their text.
 - **Songs** of our own: `unova/route4` (the route, its houses, the desert's edge and its gate house), `unova/desert_resort`
   and `unova/nimbasa` (the city, the park and Join Avenue). Elesa's and the Subway Bosses'
   battles are the Gym Leader's.
+
+## Unova's second chapter, part b: Nimbasa's rooms to the Quake Badge (2026-10-25, plan 22 · U6, part b)
+
+Black 2's road from Nimbasa's rooms over Route 5 and the Driftveil Drawbridge to Clay's Quake Badge, in our own words on
+the beats of the decompilation's scripts (`res/field/scripts/nimbasa_city*.s`, `route_5.s`, `driftveil_*.s`), read for
+the order of the scenes, who stands where, the battles and the gifts, and nothing of their text.
+
+- **Nimbasa's rooms**: the Big Stadium's and the Small Court's lobbies and their halls upstairs, two houses of two floors,
+  the Battle Institute, the Musical Theater's lobby and the old roller coaster in the park (Elesa's Gym before she moved
+  it to the runway) are open, their people only talking. Left out: the stadiums' fields and the games played at set times
+  (Black 2's `0x400f`) with their crowds, the Battle Institute's tests (the link's: the receptionist says the link is
+  closed, decision 06 · 7), the Pokémon Musical itself, the roller coaster's switches (`0x400b` to `0x400e`) and the
+  Gear Station (the Battle Subway's desks, plan 22 · U6's next part). Nimbasa's and Driftveil's Pokémon Centers are spawns.
+- **The Ferris wheel** is a ride of ours: its attendant (ours, before the wheel's queue lane) asks, and the ride is a scene
+  of the fade with lines over the dark, the city by day or its lights after dark. Black 2 rides it beside a Trainer of
+  the day after a battle; that is left out, and the wheel is still a hall until it is drawn as one.
+- **Route 5**: its trainers stand on the road (Preston, the Musician, battles when spoken to), and the street's performers
+  and their audience (Black 2's `0x02f8`) are always out. As the player first comes in from Nimbasa's gate, Bianca runs
+  out after them with HM02 (our data's, Platinum's table: Fly) and tells of the Hidden Grottoes; the grotto Black 2 leads
+  the player to is plan 22 · U11's. Cheren on Route 5 is the post-game's. The route and the drawbridge play
+  `unova/route4` until songs of their own.
+- **The Driftveil Drawbridge** is a map of its own, its import the deck and nothing round it: the sea lies five tiles under
+  it (`seaBelow`; style guide, "Relief", "A bridge over the sea"), its ends are abutments of ground at the deck's height,
+  and it is seen with a camera of ours (`FieldCamera.Drawbridge`), lower and further off than the overworld's, where
+  Black 2 names its camera 9. The original's props there (named as other places' by number) are left out, and the
+  bridge's raising for ships and the Ducklett shadows over it are left for later.
+- **Driftveil City's chapter**: as the player comes off the drawbridge a grunt presses a former member of Team Plasma to
+  come back; Hugh runs up, the grunt flees with Hugh after him, and the former member asks the player to the old church
+  by the Gym (Black 2's `0x40c3` 0 to 1). Rood waits before its door and tests the player in battle (`unova_rood`),
+  Hugh comes back empty-handed, and inside Rood tells how Team Plasma broke in two (`0x40c3` 2 to 3; Black 2 has Rood ask
+  the player in and tells the rest inside over several talks, ours is one scene as the house is come to). A worker
+  keeps the Gym's door while Clay is busy until then. Clay's Gym is Black 2's mine of lifts on rails, which the reader
+  leaves out: ours is a hall of the mine (`Data/maps/DriftveilCity_Gym.json`) with rock walls zigzagging up it and the
+  seven workers of the original's Gym on its shifts, reached from the lobby by the lift's car at the head of its path (an
+  overlay exit; Black 2's switch beside it is read for its words). Clay (`unova_leader_clay`) gives the Quake Badge and
+  TM78 (our data's TM78, Platinum's table). Outside, Clay and Hugh: Hugh asks why Clay let the former members stay, and
+  Clay tells them both of the Pokémon World Tournament south of the city (`0x40c3` 4 to 5). The motorcyclist who
+  explains Triple and Rotation Battles only talks until plan 14 builds them; the market's goods, the flats' upper floors
+  and the World Tournament beyond its gate (whose south door stays shut) are left.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_ROUTE_5` is Route 5's count (`0x4139`),
+  `VAR_UNOVA_DRIFTVEIL` the city's (`0x40c3`, 0 to 5, `driftveil_city.txt`'s header); `FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT`
+  is `0x02c3`, `_EXPLASMA_BRIDGE` `0x02c2`, `_ROOD_DOOR` `0x02cb`, `_DRIFTVEIL_GYM_WORKER` `0x02cf`, `_CLAY_DRIFTVEIL`
+  `0x02cd`, `_HUGH_DRIFTVEIL` `0x02cc`; `_BIANCA_ROUTE_5`, `_HUGH_CHURCH`, `_HUGH_GYM`, `_HUGH_PLASMA_HOUSE`, `_ROOD_HOME`
+  and `_EXPLASMA_HOME` are ours (Black 2 moves one object where we hide one person and show another);
+  `FLAG_UNOVA_GOT_WATER_DRIFTVEIL` and `_GOT_TM78` are the gifts'. `common.UnovaDriftveil` hides the chapter's people
+  (`FLAG_UNOVA_DRIFTVEIL_BEGUN`), run by `UnovaNimbasa` and, for a save of part a's, by `UnovaCatchUp`, with no story
+  version raised.
+- **Songs** of our own: `unova/driftveil` (the city, its rooms and the market). Clay's battle is the Gym Leader's, Rood's
+  the trainer's.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -3898,6 +3959,37 @@ differs from Emerald, and why:
   harbour's ship on to the next region (`RegionDatabase`'s Hoenn link is still undecided), Scott's Battle Frontier pass,
   Wally's and the Four's rematches through Match Call, and the abnormal weather's other places of the post-game.
 
+## Home as Hoenn's Champion, the eon roamer and the way on (2026-10-25, plan 21 · H9, its second part)
+
+What the first part left of the League's end, with scripts of ours on Emerald's beats (`littleroot_town_brendans_house_1f.txt`,
+`common.HoennChapterThirteen`). What differs from Emerald, and why:
+
+- **Home.** The first way down the stairs once `HoennHallOfFame` is set plays one scene in the family's house: Mom's
+  welcome, the television's report of a Pokémon nobody can name flying over Hoenn, her question of its colour, and Dad
+  (Norman) home from Petalburg with the S.S. Ticket, who then goes back to his Gym. Emerald plays the report and Dad's
+  visit as two beats of the same arrival; here they are one scene, played once (`VAR_HOENN_CHAMPION_HOME`, ours).
+  `FLAG_HIDE_PLAYERS_HOUSE_DAD` is Emerald's; a new game sets it (`HoennChapterThirteen`), and the house's arrival gives
+  it to a save made before it was written, which then plays the scene on its next way down.
+- **The colour named roams.** RED sets Latias roaming and BLUE Latios, at level 40 (Emerald's `VAR_ROAMER_POKEMON` 0 and
+  1, its `ROAMER_SPECIES`). The other of the two is Emerald's Southern Island's, reached with the Eon Ticket, which no
+  scene gives here. The roamer goes over Emerald's twenty places (`sRoamerLocations`: Routes 110, 111 and 117 to 134,
+  `Roamers.HoennRoutes`) by Platinum's rules of moving, which differ from Emerald's only in the odds: one time in
+  sixteen anywhere, nearby otherwise, never to the place the player has just left. It is met on land and on the water
+  where its place has a table, one time in two, as every roamer of this game is.
+- **The S.S. Ticket** is Emerald's present, given for the S.S. Tidal and the Battle Frontier, both plan 21 · H12's: until
+  then Lilycove's ferry desk says the Tidal takes no passengers today.
+- **The way on to Unova is by ship from Lilycove City's harbour.** Emerald has no such crossing, so the captain is ours:
+  he stands on the gangway beside the ferry desk (7, 10) once Hoenn's Hall of Fame is entered, as Sinnoh's captain does
+  on Canalave's pier, and `common.Attendant` speaks for him. A Champion of Hoenn lands before the player's house in
+  Aspertia City (Unova's `Arrival`). Plan 18's table proposed a ship from Slateport; Lilycove is where Emerald's ships
+  for far places leave (the ferries to the islands of its events), and it has a room for the quay where Slateport's
+  harbour is Captain Stern's and Team Aqua's.
+- **Hoenn's bands.** The eight Leaders, the Elite Four and Wallace wear bands after their Gym's type or their room (the
+  style guide's third table), none the base colour of a Sinnoh or Kanto band; Tate and Liza's double battle loses its
+  band, as every double battle does.
+- **Left**: Scott's Battle Frontier pass, Wally's and the Four's rematches through Match Call, Hoenn's table for plan 14 ·
+  B11's tournaments, and the post-game's places (H12).
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
@@ -4336,7 +4428,8 @@ upper floors, from HeartGold's maps, events and tables, in our own words and mus
 - **What waits for its chapter**: Jasmine (in the light room by the sick Ampharos, Amphy, and in her Gym), Chuck, the
   red-haired boy at Olivine's Gym door, Suicune and Eusine at Cianwood, the pharmacy's medicine and the Moomoo Farm's
   sick Miltank (they say what they are for), the photographer, the weekday siblings, Professor Oak at the port, the
-  S.S. Aqua's quay (J15), the Battle Frontier beyond Route 40's gate house (J13), the cliff path to Route 47 and the
+  S.S. Aqua's quay (J15), the Battle Frontier beyond Route 40's gate house (J13; since part d its guide takes a Johto
+  Champion there by a crossing: "Route 40's way to the Battle Frontier", below), the cliff path to Route 47 and the
   Safari Zone, and below the Whirl Islands' rock step on their second basement the third basement and Lugia's cave
   (J11). The original hides Route 39's herd, the lighthouse's fourth-floor trainers and the barn's Miltank behind
   flags nothing in this game sets, so they are always there.
@@ -5049,7 +5142,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
 | Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
-| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
+| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done but Gifts, below) |
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
 | No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
 | Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 |
@@ -5103,6 +5196,41 @@ Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a t
   panel's help says. It is laid first, so Challenge's and Easy's levels sit on the scaled team. The first battle and a Master
   Trainer's are left alone, as for the difficulty. A Pokémon is not evolved to suit its new level.
 
+### The Nuzlocke (plan 13 · V4)
+
+The community's rules, which Platinum doesn't have; `Models/Nuzlocke.cs` and `Models/RunState.cs` (GPU-free) are all of
+them, and **a run without the Nuzlocke writes and refuses nothing** (`Meet` returns Free and keeps nothing, a battle is
+handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as they were).
+
+- **One catch in each place.** A place is the area's key on a streamed map (each of the Great Marsh's six areas its own,
+  `great_marsh_1` to `_6`), a room's or a hand-made map's name otherwise. The first wild Pokémon met there in the field
+  (`StartWildBattle`, a roamer included) spends it, caught or not: `RunState.AreasMet`. A later one gets
+  `NuzlockeTerms(AreaSpent)` and every ball is refused in its battle, a Safari Ball too (`BattleCore.WhyNotItem`, for the
+  player's side only). The Bug-Catching Contest's catch is the contest's and counts nothing; a Pokémon a script puts in the
+  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift: the
+  `GiftsCount` clause and the static encounters are left for a later session.
+- **The dupes clause**: a wild Pokémon whose line (`PokemonSpecies.Offspring`, the first of the line, or the species itself)
+  has a species in the Pokédex's caught list passes: no ball, and the place stays unspent for the next. **The shiny
+  clause**: a shiny is free and spends nothing.
+- **The fallen**: after every battle but the assistant's lesson and the first battle (the tutorial), the team's fainted
+  Pokémon (not an Egg, which counts as fainted) go into the graveyard (`RunState.Graveyard`, each as `SavedPokemonData`
+  with the place and the play time), **out of the team for good**, before anything heals them (a partner's heal after a
+  battle, a script's lost battle). The graveyard is neither the team nor a box: nothing can withdraw, heal or use what is
+  in it, and the box rule is simply that a Pokémon never reaches a box fainted (a box holds the living only). A Pokémon
+  that faints and is brought back within one battle is not buried: only those down when it ends.
+- **No revive**: a Revive, a Max Revive, a Revival Herb and Sacred Ash (`item.Use` with `revive` or `reviveAll`) are refused
+  in battle (`battle.nuzlockeNoRevive`) and in the bag (`BagScreen.NoRevives`); other medicine is the same as ever.
+- **The end** (decision 2's recommendation): a whiteout, a battle lost that no script lets the story go on from, ends the
+  run (`RunState.Ended`, `EndedBy` "whiteout"), even with Pokémon in the boxes. The whole team is in the graveyard by then,
+  the player comes round at the Pokémon Center as ever with nobody, and the game is written once, as it ended
+  (`WriteSave(runsLastWord)`). From then on nothing writes the slot (the save menu, SAVE AND QUIT, a script's `save`): the
+  save loads, to look at the card, the graveyard and the boxes, and plays on with no battle to fight. A script's lost battle
+  that lets the story go on buries the fallen and ends nothing, even if it leaves the team empty.
+- **A name for every catch**: a Pokémon caught under the Nuzlocke in the field (or the Great Marsh) is named as the field
+  comes back, on plan 12 · Q19's keyboard (`GameState.Nickname`, `GameFlow.NameAfterBattle`), which closes back to the field;
+  B on an empty name keeps the species' own. Platinum asks after every catch, in the battle: plan 06 still owns that.
+- **Recorded battles** don't keep the terms: they only refuse choices, so the answers a battle was given replay the same.
+
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 
 | Subject | HeartGold | This game |
@@ -5112,3 +5240,56 @@ Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a t
 | The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
 | The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |
+
+## Route 40's way to the Battle Frontier (2026-10-25, plan 20 · J13, part d)
+
+HeartGold's gate on Route 40 leads north to a Battle Frontier of its own (`battle_frontier_frontier_access` and the
+facilities behind it). This game has one Battle Frontier, Sinnoh's (plan 06 · R18), and the user decided on 2026-10-25
+that **Route 40's gate is a second door to it, with one set of records**: a streak, the Battle Points and the prints are
+the save's own (`FrontierRecords`, one field of the save, `SaveData.Frontier`), the same whichever door the player came
+by. Plan 18's rules stand in the way of a plain door: every map belongs to exactly one region, and a warp never crosses
+regions.
+
+- **The way chosen: a crossing, not a warp.** The gate's north door (warp 1) stays shut, and the guide HeartGold stands
+  before it (`w40r0101_gsmiddleman1`, shown always: `FLAG_UNK_25B`, which hid him, is HeartGold's and nothing here sets
+  it) walks the player along the road: a question, the script's black screen, one line over it, and `travel to
+  "BattleFrontier" 47 51 up`, which goes through `GameEngine.CrossTo`, the one way every region is crossed into (the
+  vessels' `TravelTo` and Fly's flight to another region are its other callers). So the team goes along whole and each
+  Pokémon is given the region it left (`Crossing.Depart`, `GiveIds`, option B), Sinnoh's Pokédex is entered and its
+  rival is the one `{rival}` names, the grounds' music and name sign come with the arrival, and nothing of the levels
+  is set by the crossing. The player comes out on the grounds on the tile the gate from the Fight Area lets out beside
+  (47, 51, facing the plaza). *Why*: of the two the user's brief named, this is the one that adds no map and copies
+  nothing. Johto-side copies of the grounds would have to be a second `BattleFrontier` in Johto's list leading into
+  the facilities' rooms, which are Sinnoh's maps, so its warps would cross regions all the same, or the five
+  facilities' lobbies, corridors and battle rooms (twenty-odd maps, each with its arrival script) copied as Johto's,
+  whose scripts name their own maps by name: two of everything to keep alike for no gain, since the records are one set
+  anyway.
+- **The way back is a guide, not a harbour.** The README's "Regions" forbids a vessel back to a region left; the road is
+  no vessel and both ends are the same Frontier, so the way back is a guide of our own on the grounds (an overlay
+  `npcs` person of `battle_frontier.json`, `battle_frontier.JohtoGuide`, on 46, 51 beside the arrival tile), who asks
+  and crosses back with `travel to "Route40_FrontierGate" 5 4 down`, setting the player down before Route 40's guide.
+  *Our ruling*: he stands there for **anyone who has entered Johto's Hall of Fame** (`shownBy` `JohtoHallOfFame`), not
+  only for someone who came by Route 40, so the Frontier is one place with two doors: a Sinnoh Champion who has finished
+  Johto may leave by either. Nothing new is saved (no flag of "came from Johto"), and a Champion who never went to
+  Johto never sees him.
+- **When it opens: Johto's Hall of Fame.** HeartGold's own timing couldn't be read (the decompilation's cache isn't on
+  this machine); Platinum's Frontier is post-game, and the facilities are Platinum's, so Route 40's guide offers the road
+  once `JohtoHallOfFame` is set and says before that that only Trainers of the Hall of Fame may go. In a game begun in
+  Sinnoh, which is every game but one begun by `--region`, a Johto Champion is a Sinnoh Champion too and has had the
+  Frontier's Sinnoh door since the Fight Area's ship.
+- **What a visitor from Johto finds.** The facilities ask nothing of the region: a Frontier battle copies the team at
+  level 50 at most, fights trainers of `frontier.json` (never relevelled by a region's mapping), tells the Pokédex
+  nothing, makes every Pokémon obey and takes no money or EXP, so Johto's levels, Pokédex and badges don't enter into
+  it. The grounds are Sinnoh's: Fly from them asks Sinnoh's Fly badge, as it does anywhere in Sinnoh, and the guide is
+  the way back for whoever has none. Each region's place to come back to (`SpawnLocations.VariableOf`) is untouched:
+  neither road has a Pokémon Center, and a Frontier battle never wakes the player in one.
+- **Known edge**: a game begun by `--region Johto` that crosses here may walk on through the gate house into the Fight
+  Area, Sinnoh's post-game, without Sinnoh's story; no game begun in Sinnoh can tell the difference, so the gate house is
+  left as it is.
+
+| What | HeartGold | Here |
+| --- | --- | --- |
+| The Frontier | Its own, north of Route 40's gate, with five facilities of its own | Sinnoh's, reached from Route 40 by a crossing; one set of records |
+| The gate's north door | A warp onto the Frontier's road | Shut; the guide before it takes the player along the road |
+| The way back | The same door | The Johto guide on the grounds, a crossing back to Route 40 |
+| When it opens | Not read (no cache) | Johto's Hall of Fame |

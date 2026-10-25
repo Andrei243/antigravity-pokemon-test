@@ -796,6 +796,14 @@ public sealed class WorldMapEntry
     /// Fortree's rotating gates, which the import knows nothing of, since Emerald keeps them in code.
     /// </summary>
     public string? Puzzle { get; set; }
+
+    /// <summary>
+    /// A bridge over the sea (plan 22 · U6, part b: the Driftveil Drawbridge, whose import is a deck and nothing round it):
+    /// how many tiles the sea lies under the deck. Every blocked tile nobody named is the sea at that depth, every other
+    /// tile a deck over it at its own height, but for the tiles within <see cref="WorldMapBuilder.Abutment"/> of a way
+    /// in, which stay ground at the deck's height (style guide, "Relief", "A bridge over the sea"). Left out, no sea.
+    /// </summary>
+    public float? SeaBelow { get; set; }
 }
 
 /// <summary>
@@ -827,6 +835,19 @@ public sealed class WorldOverlayFile
     /// takes them (<c>Map.ArenaType</c>; style guide, "Gyms"). Left out, a room is the kind its name says.
     /// </summary>
     public PokemonType? ArenaType { get; set; }
+
+    /// <summary>
+    /// A room built from a layout whose look its name doesn't say (plan 22, wave 48): <c>Street</c> for Join Avenue's
+    /// covered street of shopfronts. Left out, a room is the kind its name (or its <see cref="ArenaType"/>) says.
+    /// </summary>
+    public InteriorStyle? Interior { get; set; }
+
+    /// <summary>
+    /// A Gym's hall whose walks stand over the dark (plan 22, wave 48: the Nimbasa Gym's runway): what the room's ways
+    /// don't reach and what the original draws nothing on is nothing (<c>TileType.Void</c>), not wall, as the Sunyshore
+    /// Gym's gears stand over it.
+    /// </summary>
+    public bool OverTheDark { get; set; }
     public List<string>? EvolutionSites { get; set; }
 
     /// <summary>Where the area's warps lead among the hand-made maps, by the warp's number in the area file.</summary>
@@ -922,6 +943,13 @@ public sealed class WorldOverlayFile
     /// <c>setholewarp</c>: Sky Pillar's fourth floor down to its third). Left out, a cracked floor is walked like any other.
     /// </summary>
     public string? HoleTo { get; set; }
+
+    /// <summary>
+    /// The field's camera for the place where its header names one this game has no reading of (plan 22 · U6, part b:
+    /// Black 2's camera 9 over the Driftveil Drawbridge is <c>Drawbridge</c>), by the names
+    /// <see cref="WorldMapBuilder.CameraOf"/> knows. Left out, the area file's own camera.
+    /// </summary>
+    public string? Camera { get; set; }
 }
 
 /// <summary>A tile of an imported area (its key, and a tile of its matrix), facing a way (<see cref="WorldOverlayFile.DiveTo"/>).</summary>

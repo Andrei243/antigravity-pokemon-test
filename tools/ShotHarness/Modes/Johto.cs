@@ -65,6 +65,17 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=partd shoots only plan 20 · J13, part d (Route 40's gate to the Battle Frontier and back)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partd")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoPartDShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=partb shoots only plan 20 · J13, part b (Mt. Mortar's Tyrogue, Blackthorn's house of moves)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partb")
         {
@@ -190,6 +201,8 @@ partial class Harness
         JohtoPartBShots();
         // And last plan 20 · J13, part c: the Move Relearner, a swarm, the Dragon's Den after the League
         JohtoPartCShots();
+        // And last plan 20 · J13, part d: Route 40's gate to the Battle Frontier and back
+        JohtoPartDShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Big Stadium! There's no game on the field right now. Do come back on a match day!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Baseball, football, soccer... Every sport comes through here. The athletes battle with Pokémon on their days off!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Programmes, caps, foam fingers! Well, there will be, once the season starts."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

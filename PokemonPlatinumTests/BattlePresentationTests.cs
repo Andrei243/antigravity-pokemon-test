@@ -615,6 +615,22 @@ public class BattlePresentationTests
         Assert.Equal(arena, Field(under).ArenaAt(2, 2));
 
     [Fact]
+    public void ACitysPavingIsFoughtOnInTheStreet()
+    {
+        // Plan 22, wave 48: paving where the area's header names a city's background is the City stage, lit as the
+        // open is; paving elsewhere stays the meadow, and an area's own stage wins
+        var map = new Map(5, 5);
+        map.SetGroundTile(2, 2, TileType.Paving);
+        Assert.Equal(BattleArena.Grass, map.ArenaAt(2, 2));
+        map.SetArea(0, 0, new MapArea { Key = "town", BattleBackground = "City" });
+        Assert.Equal(BattleArena.City, map.ArenaAt(2, 2));
+        Assert.Equal(PokemonPlatinumEngine.Battle.Sim.BattleTerrain.Building, GameEngine.TerrainAt(map, 2, 2));
+        map.SetGroundTile(1, 1, TileType.Grass);
+        Assert.Equal(BattleArena.Grass, map.ArenaAt(1, 1));
+        Assert.True(ArenaSpec.For(map, 2, 2).Outdoors);
+    }
+
+    [Fact]
     public void MapsCanNameTheirArena()
     {
         Assert.Equal(BattleArena.Indoors, Field(TileType.Floor, InteriorStyle.House).ArenaAt(2, 2));

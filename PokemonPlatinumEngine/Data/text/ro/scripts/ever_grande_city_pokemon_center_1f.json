@@ -5,7 +5,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! You made it all the way to Ever Grande City! I knew it the first time I saw you battle."
       ],
       "text": [
-        ""
+        "{player}! Ai ajuns până în Orașul Ever Grande! Am știut încă din prima dată când te-am văzut luptând."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I've watched a great many trainers in my time, but very few of them ever stood where you're standing now."
       ],
       "text": [
-        ""
+        "Am văzut o mulțime de antrenori în timpul meu, dar foarte puțini au stat vreodată unde stai tu acum."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Beyond Victory Road is the Pokémon League. Go and show the Elite Four what you showed me. I'll be cheering!"
       ],
       "text": [
-        ""
+        "După Drumul Victoriei se află Liga Pokémon. Du-te și arată-i Elitei celor Patru ce mi-ai arătat și mie. Te voi încuraja!"
       ]
     }
   ]

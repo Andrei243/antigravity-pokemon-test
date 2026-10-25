@@ -1,0 +1,32 @@
+# The gate house between Route 40 and the Battle Frontier (plan 20 · J13, part d). docs/scripts.md describes the
+# language; the lines are our own.
+#
+# HeartGold's gate leads north to a Frontier of its own. This game has one Battle Frontier, Sinnoh's (plan 06 · R18),
+# and the user ruled (2026-10-25) that Route 40's gate is a second door to it with one set of records. A warp never
+# crosses regions, so the gate's north door stays shut and the guide HeartGold stands before it walks the player
+# through: `travel to` is the crossing every region uses (GameEngine.CrossTo: the whole team along, the region's
+# Pokédex, rival, music and name sign), onto the grounds where the gate from the Fight Area lets out. The way back is the
+# Johto guide on the grounds (battle_frontier.txt, JohtoGuide). The road opens with Johto's Hall of Fame
+# (docs/mechanics/rulings.md, "Route 40's way to the Battle Frontier").
+
+
+script Guide
+  face self player
+  if not flag JohtoHallOfFame goto Shut
+  say "Through this door runs the road to the Battle Frontier, where the strongest Trainers of every region gather."
+  say "Its five halls keep one record of your streaks and Battle Points, whichever way you come to them."
+  ask "Shall I take you along the road to the Battle Frontier?"
+  if no goto Stay
+  say "Splendid! Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide along the road to the Battle Frontier..."
+  travel to "BattleFrontier" 47 51 up
+  fade in 0.8
+  end
+label Stay
+  say "Whenever you're ready. The Frontier isn't going anywhere."
+  end
+label Shut
+  say "The road beyond leads to the Battle Frontier. Only Trainers who have entered the Hall of Fame may go."
+  say "Come back once you've beaten the Pokémon League, and I'll take you there myself."
+  end

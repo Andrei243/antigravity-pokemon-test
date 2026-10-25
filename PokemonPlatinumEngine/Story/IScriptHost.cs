@@ -297,6 +297,15 @@ public interface IScriptHost
     bool GivePokemon(Pokemon pokemon);
 
     void Warp(string map, int x, int y, Direction? facing);
+
+    /// <summary>
+    /// <c>travel to</c> (plan 20 · J13, part d): into another region at a tile of its map, as every crossing goes
+    /// (<c>GameEngine.CrossTo</c>: the team given the region it leaves and taken along whole, the region's Pokédex and
+    /// rival, its music and name sign). A map of the region the player is in is a plain warp; a host that knows no
+    /// regions warps.
+    /// </summary>
+    void CrossInto(string map, int x, int y, Direction? facing) => Warp(map, x, y, facing);
+
     void Fade(bool toBlack, float seconds);
 
     // ------------------------------------------------------------------ field moves (plan 02 · S2)

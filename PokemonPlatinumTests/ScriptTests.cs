@@ -551,6 +551,7 @@ public class ScriptTests
           endscene
           namerival
           travel go
+          travel to "BattleFrontier" 47 51 up
           if var CROSSED_IN == 1 end
           rotatetiles yellow
           rotatetiles red
@@ -628,6 +629,7 @@ public class ScriptTests
               if movebadge "Cut" end
               if region "Kanto" end
               if subject "pushable_boulder_2" end
+              if friendship >= 200 end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

@@ -187,6 +187,7 @@ public partial class GameEngine
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
         flow.BagScreen.RunCap = CurrentLevelCap();
+        flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
         flow.Poketch.ShowsHiddenMoves = FieldHelp.On(Settings.FieldHelpers, Ruleset.Current.Preset);
     }
 
@@ -391,6 +392,8 @@ public partial class GameEngine
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
+        flow.RunState = new RunState();
+        flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
         flow.HallOfFame = new HallOfFame();
         flow.Journal = new Journal();
@@ -650,6 +653,8 @@ public partial class GameEngine
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
+        flow.RunState = save.RunState ?? new RunState();
+        flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
         flow.HallOfFame = new HallOfFame();
         flow.HallOfFame.Restore(save.HallOfFameTotal, save.HallOfFameDebut, save.HallOfFame.Select(e => e.ToEntry()));
@@ -690,6 +695,7 @@ public partial class GameEngine
             TrainerId = flow.TrainerId,
             Started = flow.AdventureStarted,
             Run = flow.Run.IsNormal ? null : flow.Run,
+            RunState = flow.RunState.IsEmpty ? null : flow.RunState,
             TrainerScore = flow.TrainerScore,
             HallOfFameTotal = flow.HallOfFame.Total,
             HallOfFameDebut = flow.HallOfFame.Debut,
@@ -762,8 +768,15 @@ public partial class GameEngine
     /// The game as it stands written into its slot (plan 12 · Q2): the one way the game writes a save, whoever asks
     /// (the save screen, SAVE AND QUIT, the close button's question, a script's <c>save</c>, a tool).
     /// </summary>
-    private bool WriteSave()
+    private bool WriteSave(bool runsLastWord = false)
     {
+        // A run that has ended (plan 13 · V4, a Nuzlocke's whiteout) is never written again: its save holds it as it
+        // ended, to be loaded and looked at, and only the end itself writes it
+        if (flow.RunState.Ended && !runsLastWord)
+        {
+            Log.Info($"The run in slot {flow.SaveSlot} has ended: the game was not saved.");
+            return false;
+        }
         bool written = SaveSlots.Write(SavePaths.Current, flow.SaveSlot, BuildSave());
         Log.Info(written ? $"The game was saved in slot {flow.SaveSlot} at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}." : $"The game couldn't be saved in slot {flow.SaveSlot}.");
         return written;
@@ -772,7 +785,11 @@ public partial class GameEngine
     /// <param name="quiet">True when a panel says the game was saved, so no notice is needed.</param>
     private void SaveCurrentGame(bool quiet = false)
     {
-        WriteSave();
+        if (!WriteSave() && flow.RunState.Ended)
+        {
+            ShowNotification(Text.Of("run.ended.noSave"));
+            return;
+        }
         if (quiet) return;
         ShowNotification(Text.Of("engine.saved"));
         AudioManager.PlaySound("save");
@@ -1373,6 +1390,8 @@ public partial class GameEngine
         // first arrival, a field move, a tool): only a script's end and an arrival looked before, so a flag set
         // anywhere else left people where they were until the next of those
         RefreshPresence();
+        // A Pokémon caught under the Nuzlocke is named before the field goes on (plan 13 · V4)
+        if (NameTheCatch()) return;
 
         // Whoever travels with the player keeps up, whatever else has the field
         flow.Along?.Update(fieldDt, flow.Player.Stride);
@@ -2150,7 +2169,8 @@ public partial class GameEngine
 
     /// <summary>
     /// Goes into another region at a place of it (plan 18 · W9): the one way both the vessel (<see cref="TravelTo"/>,
-    /// at the region's arrival) and Fly (at a town's spawn) cross, under one fade. The region's music and name sign
+    /// at the region's arrival), Fly (at a town's spawn) and a script's <c>travel to</c> (plan 20 · J13, part d: Route 40's
+    /// road to the Battle Frontier and back) cross, under one fade. The region's music and name sign
     /// come with the arrival, and its levels follow the region by themselves (<see cref="LevelHere"/>).
     /// </summary>
     private void CrossTo(Region region, MapSpot spot)
@@ -2245,6 +2265,7 @@ public partial class GameEngine
                 flow.BagScreen.Registered = flow.RegisteredItem;
                 flow.BagScreen.Aids = flow.EncounterAids;
                 flow.BagScreen.PlayerName = PlayerIdentity.Name;
+                flow.BagScreen.NoRevives = flow.Run.Nuzlocke;
                 flow.BagScreen.Open();
                 break;
             case StartMenuChoice.Pokegear:
@@ -2263,6 +2284,13 @@ public partial class GameEngine
                 flow.OptionsScreen.Open();
                 break;
             case StartMenuChoice.Save:
+                // A run that has ended is saved no more (plan 13 · V4): the menu says so and stays
+                if (flow.RunState.Ended)
+                {
+                    ShowNotification(Text.Of("run.ended.noSave"));
+                    AudioManager.PlaySound("error");
+                    return;
+                }
                 // The save as it will be, with the question under it
                 flow.State = GameState.SaveMenu;
                 flow.SaveScreen.Open(BuildSave(), flow.SaveSlot);
@@ -2330,6 +2358,11 @@ public partial class GameEngine
         {
             Regions = regions,
             Run = flow.Run.IsNormal ? null : flow.Run,
+            Graveyard = flow.RunState.Graveyard.Select(f => new CardFallen(
+                f.Pokemon.Nickname.Length > 0 ? f.Pokemon.Nickname : LocalNames.Species(f.Pokemon.SpeciesName),
+                LocalNames.Species(f.Pokemon.SpeciesName), f.Pokemon.Level,
+                PlayerIdentity.Fill(LocalNames.PlaceShown(f.PlaceKey, f.Place)))).ToList(),
+            RunEnded = flow.RunState.Ended,
             Score = flow.TrainerScore,
             Stars = stars,
             NextObjective = NextObjectiveLine,

@@ -6,6 +6,9 @@ trainers 3, 25: collector_edwin 25, collector_fernando 25, waitress_kati 25
 === CanalaveGym
 Canalave Gym
 trainers 7, 34-40: ace_trainer_breanna 38, ace_trainer_cesar 40, black_belt_david 37, black_belt_ricky 38, worker_gary 37, worker_gerardo 35, worker_jackson 34
+=== DriftveilCity_Gym
+Driftveil City
+trainers 7, 29-31: unova_worker_friedrich 31, unova_worker_maynard 31, unova_worker_niel 30, unova_worker_noel 31, unova_worker_pasqual 30, unova_worker_tavarius 29, unova_worker_tibor 30
 === EternaGym
 Eterna Gym
 trainers 3, 15-19: aroma_lady_angela 19, aroma_lady_jenna 17, lass_caroline 17
@@ -2600,6 +2603,10 @@ grass 14-17
 surf 5-15
 super rod 40-70
 trainers 11, 16-22: unova_biker_stanley 21, unova_fisherman_andrew 16, unova_fisherman_hubert 17, unova_hooligans_rob_sal 21, unova_pkmn_breeder_irene 16, unova_policeman_braven 16, unova_policeman_dell 21, unova_policeman_neagle 22, unova_roughneck_joey 21, unova_roughneck_silvester 22, unova_youngster_sinclair 22
+=== unova_route_5
+Route 5
+grass 21-24
+trainers 6, 24-25: unova_artist_horton 25, unova_backers_ava_aya 24, unova_baker_jenn 24, unova_dancer_brian 25, unova_musician_preston 25, unova_pkmn_ranger_lois 25
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

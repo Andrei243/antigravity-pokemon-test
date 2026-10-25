@@ -53,6 +53,12 @@ internal sealed class MapScene
     public const float StarkMountainFovYDeg = 19.7f;
     public const float StarkMountainDistance = 662.922f / 16f;
 
+    // The Driftveil Drawbridge (plan 22 · U6, part b; style guide, "Relief", "A bridge over the sea"): lower and further
+    // off than the overworld's, so the sea five tiles under the deck shows beside it (Black 2's camera 9 is its own too)
+    public const float DrawbridgePitchDeg = 48f;
+    public const float DrawbridgeFovYDeg = 17f;
+    public const float DrawbridgeDistance = 760f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -147,6 +153,7 @@ internal sealed class MapScene
             FieldCamera.ZoomedIn => new FieldView(ZoomedPitchDeg, ZoomedFovYDeg, ZoomedDistance),
             FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
             FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
+            FieldCamera.Drawbridge => new FieldView(DrawbridgePitchDeg, DrawbridgeFovYDeg, DrawbridgeDistance),
             _ => FieldView.Outdoor
         };
     }
@@ -248,7 +255,11 @@ internal sealed class MapScene
 
         PixelCanvas? waterMask = null;
         PixelCanvas ground;
-        if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
+        // A room of several chunks (plan 22, wave 48: the Nimbasa Gym, Join Avenue) is drawn a chunk at a time, and each
+        // chunk's floor takes its own part of the room's floor: its texture coordinates run over the chunk alone
+        if (map.IsIndoors && chunk is { } part)
+            ground = GroundBaker.BakeInterior(map).Crop(part.X * GroundBaker.ArtTile, part.Y * GroundBaker.ArtTile, part.Width * GroundBaker.ArtTile, part.Height * GroundBaker.ArtTile);
+        else if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
         else if (chunk is { } window) ground = PixelGround.Bake(map, window, PixelGround.ChunkPad, worldSeeds: true, scene.Season, out waterMask);
         else ground = PixelGround.Bake(map, scene.Margin, MapStructures.BuildingsOf(map), out waterMask);
 

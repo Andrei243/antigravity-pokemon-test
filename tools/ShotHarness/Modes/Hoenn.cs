@@ -254,6 +254,8 @@ partial class Harness
             ("h234_league_long_hall", "EverGrandeCity_Hall4", 5, 20, Direction.Up),
             ("h235_champions_room", "EverGrandeCity_ChampionsRoom", 6, 9, Direction.Up),
             ("h236_hall_of_fame", "EverGrandeCity_HallOfFame", 7, 14, Direction.Up),
+            // Plan 21 · H9, part b: Lilycove City's harbour, its quay and the gangway (the captain comes with the Hall of Fame)
+            ("h238_lilycove_harbour", "LilycoveCity_Harbor", 9, 12, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
