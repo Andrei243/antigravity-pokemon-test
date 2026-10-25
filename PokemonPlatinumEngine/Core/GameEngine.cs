@@ -409,6 +409,8 @@ public partial class GameEngine
         flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
+        // A new game names no other region's rival: forget those of any game played before it
+        PlayerIdentity.SetRival(null);
         PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look), NewGameRegionRecord.Id);
         flow.Wardrobe.Clear();
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
