@@ -87,7 +87,8 @@ public sealed class FieldLook
 
     private readonly ConditionView[,] sides = new ConditionView[2, SideKinds.Length];
     private readonly ConditionView[] rooms = new ConditionView[FieldKinds.Length];
-    private readonly ConditionView[,,] places = new ConditionView[2, 2, PlaceKinds.Length];
+    // Every place a battle can have: a horde's five on the wild side (plan 14 · B4)
+    private readonly ConditionView[,,] places = new ConditionView[2, BattleAnimator.MostSlots, PlaceKinds.Length];
     private int count;
 
     public FieldLook()
@@ -95,7 +96,7 @@ public sealed class FieldLook
         for (int side = 0; side < 2; side++)
         {
             for (int i = 0; i < SideKinds.Length; i++) sides[side, i] = new ConditionView();
-            for (int slot = 0; slot < 2; slot++)
+            for (int slot = 0; slot < BattleAnimator.MostSlots; slot++)
                 for (int i = 0; i < PlaceKinds.Length; i++) places[side, slot, i] = new ConditionView();
         }
         for (int i = 0; i < FieldKinds.Length; i++) rooms[i] = new ConditionView();
@@ -103,7 +104,7 @@ public sealed class FieldLook
 
     public ConditionView Of(BattleSide side, SideCondition condition) => sides[(int)side, (int)condition];
     public ConditionView Of(FieldCondition condition) => rooms[(int)condition];
-    public ConditionView Of(Place place, PlaceCondition condition) => places[(int)place.Side, Math.Clamp(place.Slot, 0, 1), (int)condition];
+    public ConditionView Of(Place place, PlaceCondition condition) => places[(int)place.Side, BattleAnimator.Within(place.Slot), (int)condition];
 
     /// <summary>Anything at all is drawn: standing or fading.</summary>
     public bool Any
@@ -167,7 +168,7 @@ public sealed class FieldLook
             var side = (BattleSide)s;
             foreach (var kind in SideKinds)
                 Of(side, kind).Set(rules.Side(side).Layers(kind), this, Salt(side, kind), instantly: true);
-            for (int slot = 0; slot < 2; slot++)
+            for (int slot = 0; slot < BattleAnimator.MostSlots; slot++)
             {
                 var place = new Place(side, slot);
                 foreach (var kind in PlaceKinds)
@@ -189,7 +190,7 @@ public sealed class FieldLook
             foreach (var kind in SideKinds)
                 if (Of(side, kind).Layers != rules.Side(side).Layers(kind))
                     return $"{side} {kind}: shown {Of(side, kind).Layers}, the rules have {rules.Side(side).Layers(kind)}";
-            for (int slot = 0; slot < 2; slot++)
+            for (int slot = 0; slot < BattleAnimator.MostSlots; slot++)
             {
                 var place = new Place(side, slot);
                 foreach (var kind in PlaceKinds)

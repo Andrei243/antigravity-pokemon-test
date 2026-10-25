@@ -1,0 +1,26 @@
+{
+  "Sinnoh": [
+    { "area": "route_224", "hordes": [ { "species": "Roselia", "minLevel": 45, "maxLevel": 47 }, { "species": "Wingull", "minLevel": 45, "maxLevel": 47 } ] },
+    { "area": "route_225", "hordes": [ { "species": "Machop", "minLevel": 43, "maxLevel": 45 }, { "species": "Geodude", "minLevel": 43, "maxLevel": 45 } ] },
+    { "area": "route_226", "hordes": [ { "species": "Wingull", "minLevel": 43, "maxLevel": 45 }, { "species": "Machop", "minLevel": 43, "maxLevel": 45 } ] },
+    { "area": "route_227", "hordes": [ { "species": "Rhyhorn", "minLevel": 47, "maxLevel": 49 }, { "species": "Geodude", "minLevel": 47, "maxLevel": 49 } ] },
+    { "area": "route_228", "hordes": [ { "species": "Hippopotas", "minLevel": 45, "maxLevel": 47 }, { "species": "Rhyhorn", "minLevel": 45, "maxLevel": 47 } ] },
+    { "area": "route_229", "hordes": [ { "species": "Budew", "minLevel": 43, "maxLevel": 45 }, { "species": "Wurmple", "minLevel": 43, "maxLevel": 45 } ] },
+    { "area": "route_230", "hordes": [ { "species": "Wingull", "minLevel": 43, "maxLevel": 45 }, { "species": "Buizel", "minLevel": 43, "maxLevel": 45 } ] }
+  ],
+  "Kanto": [
+    { "area": "route_13", "hordes": [ { "species": "Oddish", "minLevel": 19, "maxLevel": 21 }, { "species": "Venonat", "minLevel": 19, "maxLevel": 21 } ] },
+    { "area": "route_17", "hordes": [ { "species": "Doduo", "minLevel": 18, "maxLevel": 20 }, { "species": "Spearow", "minLevel": 18, "maxLevel": 20 } ] },
+    { "area": "route_23", "hordes": [ { "species": "Spearow", "minLevel": 28, "maxLevel": 30 }, { "species": "Mankey", "minLevel": 28, "maxLevel": 30 } ] }
+  ],
+  "Johto": [
+    { "area": "route_26", "hordes": [ { "species": "Doduo", "minLevel": 24, "maxLevel": 26 }, { "species": "Ponyta", "minLevel": 24, "maxLevel": 26 } ] },
+    { "area": "route_44", "hordes": [ { "species": "Bellsprout", "minLevel": 19, "maxLevel": 21 } ] },
+    { "area": "route_45", "hordes": [ { "species": "Geodude", "minLevel": 18, "maxLevel": 20 }, { "species": "Phanpy", "minLevel": 17, "maxLevel": 19 } ] }
+  ],
+  "Hoenn": [
+    { "area": "route_115", "hordes": [ { "species": "Swablu", "minLevel": 20, "maxLevel": 22 }, { "species": "Taillow", "minLevel": 20, "maxLevel": 22 } ] },
+    { "area": "route_118", "hordes": [ { "species": "Zigzagoon", "minLevel": 21, "maxLevel": 23 }, { "species": "Electrike", "minLevel": 21, "maxLevel": 23 } ] },
+    { "area": "route_120", "hordes": [ { "species": "Poochyena", "minLevel": 22, "maxLevel": 24 }, { "species": "Oddish", "minLevel": 22, "maxLevel": 24 } ] }
+  ]
+}

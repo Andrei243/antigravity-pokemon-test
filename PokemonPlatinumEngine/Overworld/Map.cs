@@ -1579,8 +1579,19 @@ public class Map
         if (table.Count == 0) return null;
         if (moment is { Partner: false, State: { } state } && Roamers.MeetHere(state, AreaAt(x, y)?.Key, rng) is { } roamer)
             return RoamerMet(state, roamer);
+        // Where the tall grass holds hordes, Sweet Scent always draws one out, as in X and Y (plan 14 · B4)
+        if (HordeHere(x, y, water, AreaAt(x, y), moment) is { } hordes)
+            return WildEncounterRules.Meet(hordes, false, lead, rng, keptAway: false);
         return WildEncounterRules.Meet(table, water, lead, rng, keptAway: false);
     }
+
+    /// <summary>
+    /// The hordes a tile may meet (plan 14 · B4): the moment's for its area, in tall grass, off the water, with nobody
+    /// travelling along; null anywhere else.
+    /// </summary>
+    private IReadOnlyList<WildEncounterEntry>? HordeHere(int x, int y, bool water, MapArea? area, EncounterMoment? moment) =>
+        !water && moment is { Partner: false, Hordes: { } hordes } && IsTallGrass(x, y) && hordes.At(area?.Key) is { Count: > 0 } rows
+            ? rows : null;
 
     /// <summary>
     /// A wild Pokémon for a step onto a tile, or null: Platinum's odds for the step (<see cref="EncounterSteps.Meets"/>)
@@ -1609,7 +1620,11 @@ public class Map
 
         if (radar is { } patch && moment?.Radar is { } chain && !water)
             return chain.Meet(table, area, patch, lead, this, x, y, moment.Height, rng);
-        var met = WildEncounterRules.Meet(table, water, lead, rng);
+        // A horde, one time in twenty in the tall grass of a place that holds them once its region's Hall of Fame is
+        // entered (plan 14 · B4); the draw is made only there, so nothing else's chance moves
+        var met = HordeHere(x, y, water, area, moment) is { } hordes && Hordes.Comes(rng)
+            ? WildEncounterRules.Meet(hordes, false, lead, rng)
+            : WildEncounterRules.Meet(table, water, lead, rng);
         // Any other Pokémon of the grass ends the Poké Radar's chain
         if (met != null && !water) moment?.Radar?.Clear();
         return met;

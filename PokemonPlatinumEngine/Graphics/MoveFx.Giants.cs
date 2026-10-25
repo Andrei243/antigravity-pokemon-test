@@ -78,7 +78,7 @@ internal static partial class MoveFx
     public static void Giants(BattleAnimator anim, FxPlaces places, FxList fx)
     {
         for (int s = 0; s < 2; s++)
-            for (int slot = 0; slot < Math.Clamp(anim.Slots, 1, 2); slot++)
+            for (int slot = 0; slot < anim.SlotsOf((BattleSide)s); slot++)
             {
                 var side = (BattleSide)s;
                 var v = anim[side, slot];

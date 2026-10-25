@@ -176,10 +176,17 @@ public sealed class ConditionLook
 /// </summary>
 public sealed class ConditionLooks
 {
-    private readonly ConditionLook[,] places = { { new(), new() }, { new(), new() } };
+    // Every place a battle can have: a horde's five on the wild side (plan 14 · B4)
+    private readonly ConditionLook[,] places = new ConditionLook[2, BattleAnimator.MostSlots];
     private int count;
 
-    public ConditionLook Of(BattleSide side, int slot) => places[(int)side, Math.Clamp(slot, 0, 1)];
+    public ConditionLooks()
+    {
+        for (int side = 0; side < 2; side++)
+            for (int slot = 0; slot < BattleAnimator.MostSlots; slot++) places[side, slot] = new ConditionLook();
+    }
+
+    public ConditionLook Of(BattleSide side, int slot) => places[(int)side, BattleAnimator.Within(slot)];
     public ConditionLook Of(Place place) => Of(place.Side, place.Slot);
 
     /// <summary>Anything at all is shown on anyone.</summary>
@@ -231,7 +238,7 @@ public sealed class ConditionLooks
             case PlacesSwapped swap:
             {
                 // Ally Switch: what lasts on a Pokémon goes with it (plan 06 · R25's leftovers)
-                int side = (int)swap.First.Side, a = Math.Clamp(swap.First.Slot, 0, 1), b = Math.Clamp(swap.Second.Slot, 0, 1);
+                int side = (int)swap.First.Side, a = BattleAnimator.Within(swap.First.Slot), b = BattleAnimator.Within(swap.Second.Slot);
                 (places[side, a], places[side, b]) = (places[side, b], places[side, a]);
                 return true;
             }

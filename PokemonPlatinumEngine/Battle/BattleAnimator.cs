@@ -451,7 +451,14 @@ public sealed class BattleAnimator
     /// <summary>Seconds since the battle started (drives the camera intro and idle loops).</summary>
     public float Time { get; private set; }
 
-    private readonly CombatantView[,] views = { { new(), new() }, { new(), new() } };
+    /// <summary>
+    /// The most places a side of a battle has: five, a horde's wild side (plan 14 · B4). Every look kept for a place
+    /// (the views, what lasts on each Pokémon, what waits for it, the effects' places) is sized by it.
+    /// </summary>
+    public const int MostSlots = 5;
+
+    private readonly CombatantView[,] views = new CombatantView[2, MostSlots];
+    private readonly int[] slotCounts = { 1, 1 };
 
     /// <summary>The share of its HP at which a Pokémon is in the red: the bar's colour and the music's low-HP arrangement.</summary>
     public const float LowHpRatio = 0.2f;
@@ -473,8 +480,28 @@ public sealed class BattleAnimator
     /// <summary>Seconds tiredness takes to come on or go as the bar crosses into or out of the red.</summary>
     public const float TiredEaseTime = 0.6f;
 
-    /// <summary>Pokémon per side: 1 in a single battle, 2 in a double.</summary>
-    public int Slots { get; internal set; } = 1;
+    /// <summary>
+    /// Pokémon on the player's side: 1 in a single battle and a horde, 2 in a double. Setting it sets both sides
+    /// alike, as a single and a double have them; a horde's are set by <see cref="SetSlots"/>.
+    /// </summary>
+    public int Slots
+    {
+        get => slotCounts[0];
+        internal set => SetSlots(value, value);
+    }
+
+    /// <summary>How many places a side has (plan 14 · B4): a horde's wild side five, or as many as came.</summary>
+    public int SlotsOf(BattleSide side) => slotCounts[(int)side];
+
+    /// <summary>The places each side has, as the battle's rules made them (<see cref="Battle.BattleFormats.PlacesOf"/>).</summary>
+    internal void SetSlots(int player, int enemy)
+    {
+        slotCounts[0] = Math.Clamp(player, 1, MostSlots);
+        slotCounts[1] = Math.Clamp(enemy, 1, MostSlots);
+    }
+
+    /// <summary>A place's slot kept within the places a look is kept for.</summary>
+    internal static int Within(int slot) => Math.Clamp(slot, 0, MostSlots - 1);
 
     /// <summary>The first (or only) place on each side.</summary>
     public CombatantView Player => views[0, 0];
@@ -655,8 +682,8 @@ public sealed class BattleAnimator
     public BattleAnimator()
     {
         for (int side = 0; side < 2; side++)
-            for (int slot = 0; slot < 2; slot++)
-                views[side, slot].Condition = Conditions.Of((BattleSide)side, slot);
+            for (int slot = 0; slot < MostSlots; slot++)
+                views[side, slot] = new CombatantView { Condition = Conditions.Of((BattleSide)side, slot) };
     }
 
     /// <summary>
@@ -669,7 +696,7 @@ public sealed class BattleAnimator
     /// </summary>
     public float LastingShown(BattleSide side, int slot)
     {
-        var v = this[side, Math.Clamp(slot, 0, 1)];
+        var v = this[side, Within(slot)];
         if (v.Shown == null || !v.Present || v.Away || v.BehindDoll) return 0f;
         if (v.FaintAge >= 0f || v.RecallAge >= 0f || (v.CaptureAge >= 0f && v.CaptureDelay <= 0f)) return 0f;
         float shown = 1f;
@@ -755,7 +782,7 @@ public sealed class BattleAnimator
     /// <summary>The Pokémon in a place is neither behind a doll nor out of sight in the middle of a move.</summary>
     private bool InSight(BattleSide side, int slot)
     {
-        var v = this[side, Math.Clamp(slot, 0, 1)];
+        var v = this[side, Within(slot)];
         return !v.BehindDoll && !v.Away;
     }
 
@@ -807,7 +834,7 @@ public sealed class BattleAnimator
         if (Shows(cue)) cues.Add(cue);
         // A move that spends its user collapses it until it faints (plan 25 · Y16)
         if (cue.Kind == CueKind.Move && !cue.Charging && !cue.Arriving && Graphics.BodyMotions.SpendsTheUser(cue.Move))
-            this[cue.FromSide, Math.Clamp(cue.FromSlot, 0, 1)].SpentAge = 0f;
+            this[cue.FromSide, Within(cue.FromSlot)].SpentAge = 0f;
         return cue;
     }
 
@@ -1043,7 +1070,7 @@ public sealed class BattleAnimator
     /// <summary>Every Pokémon standing on <paramref name="side"/>'s platforms cheers: a battle won, a Pokémon caught, the player's loss.</summary>
     public void Cheer(BattleSide side)
     {
-        for (int slot = 0; slot < Slots; slot++)
+        for (int slot = 0; slot < SlotsOf(side); slot++)
         {
             var v = this[side, slot];
             if (!v.Present || v.Away || v.Shown == null || v.Shown.IsFainted || v.FaintAge >= 0f || v.RecallAge >= 0f || v.CaptureAge >= 0f) continue;
@@ -1172,7 +1199,7 @@ public sealed class BattleAnimator
         }
 
         for (int side = 0; side < 2; side++)
-            for (int slot = 0; slot < Slots; slot++)
+            for (int slot = 0; slot < SlotsOf((BattleSide)side); slot++)
                 Advance(views[side, slot], dt, logical((BattleSide)side, slot));
     }
 

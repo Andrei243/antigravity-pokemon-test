@@ -340,5 +340,145 @@ partial class Harness
         ReadTo(null);
         Console.WriteLine($"the master beaten: master_bidoof {story.HasDefeated("master_bidoof")}; the Bidoof {masterLevel} -> {bidoof.Level}, still the team's {team.Members.Contains(bidoof)}; "
             + $"money {moneyBefore} -> {game.Money}");
+
+        HordeShots();
+    }
+
+    // Plan 14 · B4, a horde on screen and in the grass (ft10 to ft14), last in `formats` so nothing before it moves:
+    // five Zubat met in Route 225's tall grass as a slot of five, their boxes and the arc on the platform as they come
+    // out (ft10), the target menu of five and one with Rock Throw aimed (ft11), Rock Slide falling on all five
+    // (ft12), the ball refused while more than two stand (ft13); then the grass's own rule, once Sinnoh's Hall of Fame
+    // is entered: Sweet Scent in Route 225's grass draws out a horde of its own (ft14). It prints the places on each
+    // side, who stands in each, the target menu's cards, every foe's HP after the spread move and the refusal's line.
+    void HordeShots()
+    {
+        var team = game.Party;
+        DialogueManager Box() => game.Dialogue;
+        void Quick()
+        {
+            FrameClock.Fixed = ++tick / 60.0;
+            engine.Update(1f / 60f);
+            engine.Draw();
+        }
+        string Hps(BattleEngine b) => string.Join(", ", b.EnemySlots.Select(s => s.Pokemon == null ? "-" : $"{s.Pokemon.Species.Name} {s.Pokemon.CurrentHP}/{s.Pokemon.MaxHP}"));
+        // Read on to the main menu, the foes and the Golem whole at it
+        void ToMenu(BattleEngine b, bool whole = true)
+        {
+            for (int i = 0; i < 80 && !b.IsBattleOver && b.HUD.MenuState is not (BattleMenuState.Main or BattleMenuState.SelectTarget); i++) { Confirm(b); Skip(0.4); }
+            if (!whole) return;
+            foreach (var p in team.Members) { p.CurrentHP = p.MaxHP; foreach (var m in p.Moves) m.CurrentPP = m.MaxPP; }
+            foreach (var foe in b.EnemySlots.Select(s => s.Pokemon).Where(p => p is { CurrentHP: > 0 })) foe!.CurrentHP = foe.MaxHP;
+        }
+
+        team.Members.Clear();
+        var golem = new Pokemon(PokemonDatabase.Get("Golem")!, 50);
+        golem.Moves.Clear();
+        foreach (string move in new[] { "Rock Slide", "Rock Throw", "Earthquake", "Defense Curl" }) golem.Moves.Add(new Move(MoveDatabase.Get(move)));
+        team.Members.Add(golem);
+        game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 10);
+
+        var (gx, gy) = GrassOf("route_225");
+        At("Sinnoh", gx, gy, Direction.Up);
+        game.EnterArea();
+        game.LocationSign.Hide();
+        Frames(4);
+        game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Zubat", MinLevel = 40, MaxLevel = 40, Count = 5, OthersLevels = new[] { 39, 41, 40, 42 } });
+        for (int i = 0; i < 600 && game.State != GameState.Battle; i++) Quick();
+        if (game.State != GameState.Battle) { Console.WriteLine("  !! never happened: the horde's battle"); return; }
+        var horde = game.Battle;
+        Console.WriteLine($"the horde: format {horde.Format}; places {horde.Anim.SlotsOf(BattleSide.Player)} against {horde.Anim.SlotsOf(BattleSide.Enemy)}; {Hps(horde)}");
+        Skip(1.9);
+        Shot("ft10_horde_intro");
+        Console.WriteLine($"  as it opens: {horde.CurrentMessage}; on the platform {string.Join(", ", Enumerable.Range(0, horde.Anim.SlotsOf(BattleSide.Enemy)).Select(s => $"{s}:{horde.Anim[BattleSide.Enemy, s].Shown?.Species.Name ?? "-"} {(horde.Anim[BattleSide.Enemy, s].Present ? "out" : "not out")}"))}");
+        ToMainMenu(horde);
+        ToMenu(horde);
+
+        // Rock Throw asks which of the five: the cursor walked two cards right
+        horde.SelectMainMenuOption(0);
+        horde.SelectMove(1);
+        horde.MoveCursor(1, 0);
+        horde.MoveCursor(1, 0);
+        Frames(20);
+        Shot("ft11_horde_targets");
+        Console.WriteLine($"  the target menu ({horde.HUD.MenuState}): {horde.TargetColumns} to a row; cards {string.Join(", ", horde.TargetLayout.Select(b => b?.Pokemon == null ? "-" : $"{b.Side} {b.Slot}"))}; "
+            + $"choices {horde.TargetChoices.Count}, on {horde.HUD.TargetMenuIndex} ({horde.TargetChoices.ElementAtOrDefault(horde.HUD.TargetMenuIndex)?.Slot})");
+        horde.SelectTarget(horde.HUD.TargetMenuIndex);
+        Skip(0.3);
+        ToMenu(horde);
+
+        // Rock Slide on all five, shot as the rocks fall, before they land and the five flicker
+        horde.SelectMainMenuOption(0);
+        horde.SelectMove(0);
+        bool fell = false;
+        for (int i = 0; i < 60 && !horde.IsBattleOver && horde.HUD.MenuState == BattleMenuState.Message; i++)
+        {
+            Skip(0.05);
+            if (!fell && horde.CurrentMessage.Contains("Rock Slide")) { Skip(0.25); Shot("ft12_horde_spread"); fell = true; }
+            Confirm(horde);
+            Skip(0.3);
+            if (horde.HUD.MenuState != BattleMenuState.Message) break;
+        }
+        if (!fell) Console.WriteLine("  !! never said: Rock Slide");
+        Console.WriteLine($"  after Rock Slide: {Hps(horde)}");
+        ToMenu(horde, whole: false);
+
+        // A ball while more than two stand
+        horde.UseBagItem("Poké Ball");
+        Skip(0.4);
+        Shot("ft13_horde_ball_refused");
+        Console.WriteLine($"  the ball: {horde.CurrentMessage}; balls left {game.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!)}");
+        for (int i = 0; i < 10 && horde.HUD.MenuState == BattleMenuState.Message; i++) { Confirm(horde); Skip(0.3); }
+
+        // The rest of them felled a Rock Slide at a time, a single HP each
+        for (int guard = 0; guard < 200 && !horde.IsBattleOver; guard++)
+        {
+            if (horde.HUD.MenuState == BattleMenuState.Main)
+            {
+                golem.CurrentHP = golem.MaxHP;
+                foreach (var foe in horde.EnemySlots.Select(s => s.Pokemon).Where(p => p is { CurrentHP: > 0 })) foe!.CurrentHP = 1;
+                horde.SelectMainMenuOption(0);
+                horde.SelectMove(0);
+            }
+            else Confirm(horde);
+            Skip(0.4);
+        }
+        Console.WriteLine($"the horde's end: {horde.Result}; the Golem Lv {golem.Level}; Zubat seen {game.Pokedex.IsSeen(PokemonDatabase.Get("Zubat")!.DexNumber)}");
+        for (int i = 0; i < 1500 && game.State != GameState.Overworld; i++) { if (!FieldAgain()) Quick(); }
+        Frames(10);
+
+        // The grass's own rule: nothing until Sinnoh's Hall of Fame, then Sweet Scent draws out one of the place's hordes
+        var before = game.EncounterMomentNow().Hordes;
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Sinnoh)!.StoryCompleteFlag);
+        var moment = game.EncounterMomentNow();
+        var drawn = game.Map.DrawOutWild(gx, gy, false, game.Player.Lead, moment);
+        Console.WriteLine($"Route 225's hordes: before the Hall of Fame {(before == null ? "none" : "some")}; after it "
+            + $"{string.Join(", ", moment.Hordes?.At("route_225")?.Select(r => $"{r.SpeciesName} {r.MinLevel}-{r.MaxLevel} x{r.Count}") ?? new[] { "none" })}; "
+            + $"Sweet Scent drew {drawn?.SpeciesName} x{drawn?.Count} at {drawn?.MinLevel} and {string.Join("/", drawn?.OthersLevels ?? Array.Empty<int>())}");
+        if (drawn != null)
+        {
+            game.StartWildBattle(drawn);
+            for (int i = 0; i < 600 && game.State != GameState.Battle; i++) Quick();
+            if (game.State == GameState.Battle)
+            {
+                Skip(1.9);
+                Shot("ft14_horde_in_the_grass");
+                Console.WriteLine($"  {game.Battle.CurrentMessage}");
+            }
+        }
+    }
+
+    // A tile of tall grass of an area of the map of Sinnoh, nearest the middle of its grass
+    static (int X, int Y) GrassOf(string key)
+    {
+        var map = MapDatabase.Get("Sinnoh");
+        var b = map.AreaBounds(key) ?? throw new ArgumentException($"No area called {key}");
+        var area = map.FindArea(key);
+        var grass = new List<(int X, int Y)>();
+        for (int y = b.Y; y < b.Y + b.Height; y++)
+            for (int x = b.X; x < b.X + b.Width; x++)
+                if (map.AreaAt(x, y) == area && map.IsTallGrass(x, y) && map.IsWalkable(x, y)) grass.Add((x, y));
+        if (grass.Count == 0) throw new InvalidOperationException($"The area {key} has no tall grass");
+        double cx = grass.Average(t => t.X), cy = grass.Average(t => t.Y);
+        return grass.OrderBy(t => (t.X - cx) * (t.X - cx) + (t.Y - cy) * (t.Y - cy)).First();
     }
 }
