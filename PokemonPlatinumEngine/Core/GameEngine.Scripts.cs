@@ -146,6 +146,8 @@ public partial class GameEngine
     {
         // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
         TimeTheArrival();
+        // Coming to a place is the fifth moment of an autosave, written once the place's own script has ended (plan 12 · Q3)
+        AutosaveSoon(AutosaveMoment.Arrival);
         // The Pokégear's radio is off once a door has been gone through (plan 20 · J3)
         SilenceTheRadio();
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)

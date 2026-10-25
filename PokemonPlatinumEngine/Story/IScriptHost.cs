@@ -422,6 +422,15 @@ public interface IScriptHost
     /// </summary>
     bool SmashEncounter();
 
+    // ------------------------------------------------------------------ autosave (plan 12 · Q3)
+
+    /// <summary>
+    /// A moment worth an autosave has come in a script (<see cref="AutosaveMoment.Heal"/>, <see cref="AutosaveMoment.Badge"/>):
+    /// the game's host notes it and writes once the script has ended, never in the middle of one. The default does
+    /// nothing (a host with no screen has nothing to save).
+    /// </summary>
+    void Milestone(AutosaveMoment moment) { }
+
     // ------------------------------------------------------------------ sound
 
     /// <summary>Plays a song; null goes back to the theme of the place, and an empty name is silence.</summary>

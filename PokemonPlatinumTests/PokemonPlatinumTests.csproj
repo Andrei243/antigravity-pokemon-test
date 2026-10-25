@@ -32,6 +32,8 @@
     <ProjectReference Include="..\tools\DataImporter\DataImporter.csproj" />
     <!-- The content check's findings over the game's own files, and over broken ones written in the tests (plan 16 · T8) -->
     <ProjectReference Include="..\tools\ContentCheck\ContentCheck.csproj" />
+    <!-- The save tool's checks, migration and diff over saves made in the tests (plan 12 · Q3) -->
+    <ProjectReference Include="..\tools\SaveTool\SaveTool.csproj" />
   </ItemGroup>
 
 </Project>

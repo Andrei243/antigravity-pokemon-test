@@ -8,7 +8,8 @@ namespace PokemonPlatinumEngine.UI;
 
 /// <summary>
 /// The settings the options screen offers, in the order of its rows. A new row goes at the end of the settings,
-/// before <see cref="Help"/>, which stays the last: it is no setting but the way into the help pages.
+/// before <see cref="Help"/>: that is no setting but the way into the help pages, and <see cref="ResetDefaults"/>
+/// (plan 12 · Q3), the last row, puts every setting back behind a question.
 /// </summary>
 public enum OptionRow
 {
@@ -27,9 +28,11 @@ public enum OptionRow
     FieldHelpers,
     PartyTools,
     BoxesAnywhere,
+    Autosave,
     Controls,
     Jukebox,
-    Help
+    Help,
+    ResetDefaults
 }
 
 /// <summary>
@@ -62,6 +65,14 @@ public class OptionsScreen
 
     private bool jukeboxRequested;
 
+    /// <summary>True while the reset question (plan 12 · Q3) is up over the options.</summary>
+    public bool ResetAsking { get; private set; }
+
+    /// <summary>The reset question's answer under the cursor: true for YES. NO is first, so it is the one it opens on.</summary>
+    public bool ResetYes { get; private set; }
+
+    private readonly UiReveal resetReveal = new(0.18f, 0.1f);
+
     /// <summary>Whether the JUKEBOX row was opened since the last ask (plan 12 · Q15), said once: the game opens the jukebox over the options.</summary>
     public bool TakeJukeboxRequest()
     {
@@ -75,8 +86,36 @@ public class OptionsScreen
         IsActive = true;
         SelectedIndex = 0;
         FirstRow = 0;
+        ResetAsking = false;
         Help.Close();
         Controls.Close();
+    }
+
+    /// <summary>Moves the reset question's slide-in and slide-out along; call every frame the options are up.</summary>
+    public void Animate(float dt) => resetReveal.Update(dt);
+
+    /// <summary>The question that comes before every option is put back (plan 12 · Q3); it opens on NO.</summary>
+    public void AskReset()
+    {
+        ResetAsking = true;
+        ResetYes = false;
+        resetReveal.Open();
+        AudioManager.PlaySound("menu_open");
+    }
+
+    /// <summary>
+    /// The reset question answered: YES puts every option back as <c>new GameSettings()</c> has it and says so (true: the
+    /// caller applies and saves them); NO leaves them. Either puts the question away.
+    /// </summary>
+    public bool AnswerReset(GameSettings settings, bool yes)
+    {
+        if (!ResetAsking) return false;
+        ResetAsking = false;
+        resetReveal.Close();
+        AudioManager.PlaySound(yes ? "select" : "cancel");
+        if (!yes) return false;
+        settings.ResetToDefaults();
+        return true;
     }
 
     /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
@@ -97,6 +136,19 @@ public class OptionsScreen
             return false;
         }
         if (Controls.IsActive) return Controls.Update(settings);
+        // The reset question holds the screen until it is answered: B is NO
+        if (ResetAsking)
+        {
+            if (InputManager.IsActionPressed(GameAction.Left) || InputManager.IsActionPressed(GameAction.Right)
+                || InputManager.IsActionPressed(GameAction.Up) || InputManager.IsActionPressed(GameAction.Down))
+            {
+                ResetYes = !ResetYes;
+                AudioManager.PlaySound("cursor");
+            }
+            else if (InputManager.IsActionPressed(GameAction.Cancel)) AnswerReset(settings, false);
+            else if (InputManager.IsActionPressed(GameAction.Confirm)) return AnswerReset(settings, ResetYes);
+            return false;
+        }
 
         if (InputManager.IsActionPressed(GameAction.Up)) Move(-1);
         else if (InputManager.IsActionPressed(GameAction.Down)) Move(1);
@@ -105,7 +157,7 @@ public class OptionsScreen
             IsActive = false;
             AudioManager.PlaySound("cancel");
         }
-        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox)
+        else if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.ResetDefaults)
         {
             if (InputManager.IsActionPressed(GameAction.Confirm)) Confirm(settings);
         }
@@ -147,6 +199,11 @@ public class OptionsScreen
         {
             jukeboxRequested = true;
             AudioManager.PlaySound("select");
+            return;
+        }
+        if (Rows[SelectedIndex] == OptionRow.ResetDefaults)
+        {
+            AskReset();
             return;
         }
         if (Rows[SelectedIndex] != OptionRow.Help) return;
@@ -288,6 +345,9 @@ public class OptionsScreen
                 // Off, as the rules have it, On (plan 12 · Q19), and round again
                 s.PartyTools = (RulesDefault)Wrap((int)s.PartyTools + step, 3);
                 break;
+            case OptionRow.Autosave:
+                s.Autosave = !s.Autosave;
+                break;
         }
     }
 
@@ -346,6 +406,8 @@ public class OptionsScreen
         OptionRow.FieldHelpers => (Text.Of("options.fieldHelpers.label"), Text.Of($"options.fieldHelpers.value.{s.FieldHelpers}"), Text.Of($"options.fieldHelpers.help.{s.FieldHelpers}")),
         OptionRow.PartyTools => (Text.Of("options.partyTools.label"), Text.Of($"options.partyTools.value.{s.PartyTools}"), Text.Of($"options.partyTools.help.{s.PartyTools}")),
         OptionRow.BoxesAnywhere => (Text.Of("options.boxesAnywhere.label"), Text.Of($"options.boxesAnywhere.value.{s.BoxesAnywhere}"), Text.Of($"options.boxesAnywhere.help.{s.BoxesAnywhere}")),
+        OptionRow.Autosave => (Text.Of("options.autosave.label"), OnOff(s.Autosave), Text.Of(s.Autosave ? "options.autosave.help.on" : "options.autosave.help.off")),
+        OptionRow.ResetDefaults => (Text.Of("options.resetDefaults.label"), Text.Of("options.resetDefaults.value"), Text.Of("options.resetDefaults.help")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         OptionRow.Jukebox => (Text.Of("options.jukebox.label"), Text.Of("options.jukebox.value"), Text.Of("options.jukebox.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
@@ -370,7 +432,7 @@ public class OptionsScreen
         }
         ModernUi.Backdrop(sw, sh);
         ModernUi.ScreenTitle(Text.Of("options.title"));
-        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
+        if (Rows[SelectedIndex] is OptionRow.Help or OptionRow.Controls or OptionRow.Jukebox or OptionRow.ResetDefaults) ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.z", "shared.hints.open"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
         else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
 
         const float pitch = 86, height = 78;
@@ -396,5 +458,9 @@ public class OptionsScreen
         var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
         ModernUi.DrawWrapped(Described(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);
+        // The question over everything else (plan 12 · Q3): NO first, YES in Red since it throws the choices away
+        if (resetReveal.Visible)
+            ModernUi.Prompt(sw, sh, Text.Of("options.reset.heading"), Text.Of("options.reset.body"),
+                new[] { (Text.Of("options.reset.no"), ModernUi.Blue), (Text.Of("options.reset.yes"), ModernUi.Red) }, ResetYes ? 1 : 0, resetReveal.Shown);
     }
 }

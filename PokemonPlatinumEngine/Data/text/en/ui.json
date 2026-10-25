@@ -314,6 +314,24 @@
       "value": "Open",
       "help": "Play any song the game has played for you, and every sound effect, cry and ambient sound in it."
     },
+    "autosave": {
+      "label": "Autosave",
+      "help": {
+        "on": "The game writes itself quietly after a battle, a heal, a Badge, a catch and on coming to a place, into a file of its own beside your saves. A save of your own is never touched. After a crash, CONTINUE offers it.",
+        "off": "The game is saved only when you save it, as in Platinum."
+      }
+    },
+    "resetDefaults": {
+      "label": "Reset to defaults",
+      "value": "Reset",
+      "help": "Puts every option back as it is in a new game: the language, the sound, the graphics and the controls. Your saves, and the scenes you have seen, are not touched."
+    },
+    "reset": {
+      "heading": "Reset every option?",
+      "body": "Every option goes back to its default. Your saves are not touched.",
+      "no": "NO, KEEP THEM",
+      "yes": "YES, RESET"
+    },
     "help": {
       "label": "Help",
       "value": "Open",
@@ -388,6 +406,12 @@
       "unreadable": "This save can't be read, nor can the one before it. Deleting it frees the slot.",
       "blurb": "{name}, {time} played. The save and its backup are deleted for good.",
       "blurbIn": "{name} in {place}, {time} played. The save and its backup are deleted for good."
+    },
+    "autosave": {
+      "heading": "Take up slot {slot} from its autosave?",
+      "blurb": "The autosave is at {place}, {auto} played. The save you made yourself stopped at {saved}.",
+      "saved": "SAVED GAME",
+      "auto": "AUTOSAVE"
     }
   },
 

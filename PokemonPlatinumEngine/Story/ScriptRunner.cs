@@ -561,6 +561,7 @@ public sealed partial class ScriptRunner
                 if (StoryState.FindBadge(host.Region, i.Name) < 0) throw Wrong(i, $"{host.Region} has no badge '{i.Name}'");
                 story.GiveBadge(host.Region, i.Name);
                 host.Fanfare(MusicRole.FanfareBadge);
+                host.Milestone(AutosaveMoment.Badge);
                 break;
             case Op.GiveMoney:
                 host.Money += i.Number;
@@ -571,6 +572,7 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Heal:
                 host.Party.HealAll();
+                host.Milestone(AutosaveMoment.Heal);
                 break;
             case Op.ClearGreetings:
                 host.Story.ClearGreetings();

@@ -545,6 +545,8 @@ public partial class GameEngine
     private void EndBattle()
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
+        // A battle over, or a Pokémon caught in it, is worth an autosave once the field is free again (plan 12 · Q3)
+        AutosaveSoon(flow.Battle?.Caught != null ? AutosaveMoment.Catch : AutosaveMoment.Battle);
         ScoreBattle();
         // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
         KeepTheRecord(flow.Battle);

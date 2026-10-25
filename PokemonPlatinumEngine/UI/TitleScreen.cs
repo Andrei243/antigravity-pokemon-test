@@ -19,13 +19,13 @@ namespace PokemonPlatinumEngine.UI;
 /// plan 12 · Q1), one <see cref="TitleNotice"/> at a time. Deleting a save (plan 12 · Q2) is <see cref="ChooseDelete"/>,
 /// the cursor on the saves' cards alone, and <see cref="ConfirmDelete"/>, the question that names the slot.
 /// </summary>
-public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving, Warning, ChooseDelete, ConfirmDelete, ChooseRun }
+public enum TitlePhase { Notice, Journey, Reveal, Idle, Menu, ConfirmNewGame, Leaving, Warning, ChooseDelete, ConfirmDelete, ChooseRun, ChooseAutosave }
 
 /// <summary>
 /// A slot the title has a card for (plan 12 · Q2): its number from 1 and the game saved in it, or no game for a
 /// slot whose save and backup are both damaged, which can only be deleted.
 /// </summary>
-public sealed record TitleSlot(int Number, SaveData? Save);
+public sealed record TitleSlot(int Number, SaveData? Save, SaveData? Autosave = null, bool AutosaveOnly = false);
 
 /// <summary>
 /// Something the title tells the player before its menu opens, as Platinum tells of a damaged save (plan 12 · Q1):
@@ -170,6 +170,12 @@ public sealed class TitleScreen
     /// </summary>
     public int Slot { get; private set; } = 1;
 
+    /// <summary>
+    /// Whether the game to continue is the slot's autosave and not its save by hand (plan 12 · Q3): set when the
+    /// player chose the autosave in <see cref="TitlePhase.ChooseAutosave"/>, or the slot holds nothing else.
+    /// </summary>
+    public bool UseAutosave { get; private set; }
+
     /// <summary>The slot the delete question is asking about (<see cref="TitlePhase.ConfirmDelete"/>).</summary>
     public int DeletingSlot => deleting;
 
@@ -251,7 +257,7 @@ public sealed class TitleScreen
         totalTime += dt;
         skipFlash = Math.Max(0f, skipFlash - dt);
         bool menuUp = Phase is TitlePhase.Menu or TitlePhase.ConfirmNewGame or TitlePhase.Leaving
-            or TitlePhase.ChooseDelete or TitlePhase.ChooseRun or TitlePhase.ConfirmDelete || Phase == TitlePhase.Warning && noticeOverMenu;
+            or TitlePhase.ChooseDelete or TitlePhase.ChooseRun or TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave || Phase == TitlePhase.Warning && noticeOverMenu;
         menuBlend = Math.Clamp(menuBlend + (menuUp ? dt : -dt) / 0.45f, 0f, 1f);
 
         switch (Phase)
@@ -292,6 +298,16 @@ public sealed class TitleScreen
                 {
                     case TitleChoice.Continue:
                         Slot = cards[SelectedIndex].Number;
+                        UseAutosave = false;
+                        // A game that stopped on a crash after an autosave: the player says which to take up (plan 12 · Q3)
+                        if (cards[SelectedIndex].Autosave != null)
+                        {
+                            ConfirmYes = true;
+                            Enter(TitlePhase.ChooseAutosave);
+                            break;
+                        }
+                        // A slot whose only game is its autosave, never saved by hand, can only be taken up
+                        UseAutosave = cards[SelectedIndex].AutosaveOnly;
                         Leave(TitleChoice.Continue);
                         break;
                     // Nothing can be done with a slot that can't be read but delete it
@@ -325,6 +341,11 @@ public sealed class TitleScreen
                 AudioManager.PlaySound("select");
                 Run.Confirm();
                 if (Run.Done) BeginNewGame();
+                break;
+            case TitlePhase.ChooseAutosave:
+                AudioManager.PlaySound("select");
+                UseAutosave = ConfirmYes;
+                Leave(TitleChoice.Continue);
                 break;
             case TitlePhase.ChooseDelete:
                 AudioManager.PlaySound("select");
@@ -433,7 +454,7 @@ public sealed class TitleScreen
             PutNoticeAway();
             return;
         }
-        if (Phase == TitlePhase.ConfirmNewGame) Enter(TitlePhase.Menu);
+        if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseAutosave) Enter(TitlePhase.Menu);
         // Out of the ways to play to the menu NEW GAME was chosen on (plan 13 · V1)
         else if (Phase == TitlePhase.ChooseRun) Enter(TitlePhase.Menu);
         // Out of the delete question to where it was asked; out of the choice of a save to the row that asked for it
@@ -455,7 +476,7 @@ public sealed class TitleScreen
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
         else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
         else if (Phase == TitlePhase.ChooseRun) Run.Move(step);
-        else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete) ConfirmYes = !ConfirmYes;
+        else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave) ConfirmYes = !ConfirmYes;
         else return;
         AudioManager.PlaySound("cursor");
     }
@@ -582,6 +603,7 @@ public sealed class TitleScreen
         if (menuBlend > 0.01f) DrawMenu(sw, ease);
         if (Phase == TitlePhase.ConfirmNewGame) DrawConfirm(sw, sh);
         if (Phase == TitlePhase.ConfirmDelete) DrawDelete(sw, sh);
+        if (Phase == TitlePhase.ChooseAutosave) DrawAutosave(sw, sh);
         if (Phase == TitlePhase.ChooseRun) ModernUi.RunChoice(sw, sh, Run, Smooth(0f, 0.2f, phaseTime));
         if (Phase == TitlePhase.Warning && Notice is { } notice)
             ModernUi.Notice(sw, sh, notice.Heading, notice.Body, Text.Of("shared.ok"), Smooth(0f, 0.18f, phaseTime));
@@ -760,6 +782,22 @@ public sealed class TitleScreen
     private void DrawConfirm(int sw, int sh) =>
         ModernUi.Prompt(sw, sh, Text.Of("title.newGame.heading"), NewGameBlurb(FreeSlot ?? 1, cards.Count),
             new[] { (Text.Of("title.newGame.no"), ModernUi.Blue), (Text.Of("title.newGame.yes"), ModernUi.Green) }, ConfirmYes ? 1 : 0);
+
+    /// <summary>The autosave question's two answers (plan 12 · Q3): the game saved by hand, then the autosave.</summary>
+    public static string[] AutosaveAnswers => new[] { Text.Of("title.autosave.saved"), Text.Of("title.autosave.auto") };
+
+    /// <summary>What the autosave question says under its heading: how far each game got, and where the autosave stands.</summary>
+    public static string AutosaveBlurb(SaveData saved, SaveData autosave, string? place) => Text.Of("title.autosave.blurb",
+        ("saved", FormatPlayTime(saved.PlayTimeSeconds)), ("auto", FormatPlayTime(autosave.PlayTimeSeconds)), ("place", place ?? ""));
+
+    private void DrawAutosave(int sw, int sh)
+    {
+        var card = cards[Math.Clamp(SelectedIndex, 0, cards.Count - 1)];
+        if (card.Save == null || card.Autosave == null) return;
+        ModernUi.Prompt(sw, sh, Text.Of("title.autosave.heading", ("slot", card.Number)),
+            AutosaveBlurb(card.Save, card.Autosave, ModernUi.PlaceOf(card.Autosave)),
+            new[] { (AutosaveAnswers[0], ModernUi.Blue), (AutosaveAnswers[1], ModernUi.Green) }, ConfirmYes ? 1 : 0);
+    }
 
     /// <summary>The delete question's two answers, in the language of the moment.</summary>
     public static string[] DeleteAnswers => new[] { Text.Of("title.delete.no"), Text.Of("title.delete.yes") };

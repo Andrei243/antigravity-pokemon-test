@@ -223,6 +223,28 @@ public sealed class GameSettings
     /// </summary>
     public RulesDefault BoxesAnywhere { get; set; } = RulesDefault.Rules;
 
+    /// <summary>
+    /// Whether the game writes itself quietly now and then (plan 12 · Q3): after a battle, a heal, a Badge, a catch and
+    /// on coming to a place, into the autosave file beside the slots, never over a slot's own save. Off unless chosen,
+    /// as in Platinum; a game that stopped on a crash then offers the autosave when it is continued.
+    /// </summary>
+    public bool Autosave { get; set; }
+
+    /// <summary>
+    /// Every option back at its default (plan 12 · Q3: the options' last row, behind a question): the settings as
+    /// <c>new GameSettings()</c> has them. Not the scenes this machine has seen (<see cref="ScenesSeen"/>), which are
+    /// no option but a record of what was played, and not what a switch of the command line set for this run alone,
+    /// which the run then forgets: the player has now chosen.
+    /// </summary>
+    public void ResetToDefaults()
+    {
+        var fresh = new GameSettings();
+        foreach (var property in typeof(GameSettings).GetProperties())
+            if (property.GetSetMethod() is { IsPublic: true } && property.Name != nameof(ScenesSeen))
+                property.SetValue(this, property.GetValue(fresh));
+        forThisRun.Clear();
+    }
+
     /// <summary>What a row that followed the rules gives under the modern ones, the only rules a game is played by.</summary>
     private static RulesDefault Modern(RulesDefault value) => value == RulesDefault.Rules ? RulesDefault.On : value;
 
