@@ -41,7 +41,9 @@ public class CharacterKitTests
         "WIFI_PLAZA_ATTENDANT_M", "WIFI_PLAZA_ATTENDANT_F", "GAME_DIRECTOR", "DRAGON_TAMER", "RANGER_M", "RANGER_F", "PI",
         // Plan 20 · J14's: Johto's named cast and the classes new to it
         "BUGSY", "CHUCK", "PRYCE", "CLAIR", "WILL", "KAREN", "KURT", "EUSINE", "LYRA", "MR_POKEMON", "RED", "PROTON", "PETREL", "ARIANA",
-        "ARCHER", "ROCKET_F", "FIREBREATHER", "POKE_MANIAC", "BOARDER", "TEACHER"
+        "ARCHER", "ROCKET_F", "FIREBREATHER", "POKE_MANIAC", "BOARDER", "TEACHER",
+        // Plan 20 · J14's second part: the five Kimono Girls, the Medium, the two Elders, the Radio Tower's Director and the dome's owner
+        "KIMONO_ZUKI", "KIMONO_NAOKO", "KIMONO_MIKI", "KIMONO_SAYO", "KIMONO_KUNI", "MEDIUM", "ELDER_LI", "DRAGON_ELDER", "RADIO_DIRECTOR", "ATHLON_OWNER"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });

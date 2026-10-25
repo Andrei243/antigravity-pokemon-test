@@ -335,6 +335,70 @@ public class CharacterTableTests
         Assert.Equal("rival", Table.InBattle("Rival", "rival"));
     }
 
+    /// <summary>
+    /// Plan 20 · J14, second part: every person of Johto's overlays and areas resolves to a look of the table (their
+    /// `npcType` or the look their HeartGold object stands as); the five Kimono Girls, the Medium, the Elders and the
+    /// Directors are looks of their own, in the field and in battle; and the people HeartGold names by a class's object
+    /// stand as that class's look, not as a townsperson.
+    /// </summary>
+    [Fact]
+    public void EveryPersonOfJohtoResolvesAndTheCastAndClassesAreTheirOwnLooks()
+    {
+        var johto = World.LoadAll().Single(w => w.Index.Region == "Johto");
+        var notPeople = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Pokemon", "GalacticDoor", "IceBlock", "FallenBoulder", "Assistant" };
+        var unresolved = new List<string>();
+        foreach (string key in johto.Index.Areas)
+        {
+            var overlay = johto.Overlay(key);
+            if (overlay == null) continue;
+            var file = johto.Area(key);
+            foreach (var (id, person) in overlay.People ?? new())
+            {
+                if (person.NpcType != null)
+                {
+                    if (!notPeople.Contains(person.NpcType) && !Table.Has(person.NpcType)) unresolved.Add($"{key}: {id} is of type '{person.NpcType}', which is no look");
+                    continue;
+                }
+                var obj = file?.Objects.FirstOrDefault(o => o.Id == id);
+                if (obj == null) continue;
+                if (person.Trainer == null && WorldMapBuilder.SpeciesFor(obj.Looks) != null) continue;
+                string stands = WorldMapBuilder.CharacterFor(obj.Looks);
+                if (!Table.Has(stands) && stands != "StarterBriefcase") unresolved.Add($"{key}: {id} ({obj.Looks}) stands as '{stands}', which is no look");
+            }
+            foreach (var record in overlay.Npcs ?? new())
+                if (!notPeople.Contains(record.NpcType) && !Table.Has(record.NpcType) && !Table.Has(PokemonPlatinumEngine.Core.PlayerIdentity.CharacterFor(record.NpcType)))
+                    unresolved.Add($"{key}: {record.Id ?? record.Name} is of type '{record.NpcType}', which is no look");
+        }
+        Assert.True(unresolved.Count == 0, string.Join("\n", unresolved));
+
+        // The five Kimono Girls are five looks, in the field and as the class's list in battle, none the colours of another
+        var girls = new[] { "kimono_zuki", "kimono_naoko", "kimono_miki", "kimono_sayo", "kimono_kuni" };
+        foreach (string girl in girls) Assert.Equal(girl, Table.InBattle("Kimono Girl", girl));
+        Assert.Equal("kimono_girl", Table.InBattle("Kimono Girl", null));
+        Assert.Equal(girls.Length, girls.Select(g => Table.Get(g).Top).Distinct().Count());
+        Assert.Equal(girls.Length, girls.Select(g => Table.Get(g).HairColor).Distinct().Count());
+
+        // Who the HeartGold objects are, where the importer's names say it
+        foreach (var (gfx, look) in new Dictionary<string, string>
+        {
+            ["masaki"] = "bill", ["itako"] = "medium", ["leader3"] = "crasher_wake", ["mystery_2"] = "psychic", ["mount_2"] = "hiker",
+            ["fire"] = "firebreather", ["mania"] = "poke_maniac", ["fishing_2"] = "fisherman", ["gsfighter"] = "blackbelt",
+            ["campboy_2"] = "camper", ["picnicgirl_2"] = "picnicker", ["workman"] = "worker", ["juggrer"] = "juggler", ["seaman_2"] = "sailor",
+            ["thlonowner"] = "athlon_owner", ["sunglasses"] = "gym_guide"
+        })
+        {
+            Assert.Equal(look, Table.CharacterFor(gfx));
+            Assert.True(Table.Has(look), look);
+        }
+
+        // The classes of the old stand-ins are their own looks now
+        Assert.Equal("medium", Table.InBattle("Medium", null));
+        Assert.Equal("elder_li", Table.InBattle("Elder", null));
+        Assert.Equal("sage", Table.InBattle("Sage", null));
+        foreach (string look in new[] { "medium", "elder_li", "dragon_elder", "radio_director", "athlon_owner" }) Assert.True(Table.Has(look), look);
+        Assert.NotEqual(Table.Get("sage").Top, Table.Get("elder_li").Top);
+    }
+
     [Fact]
     public void AClassIsDrawnAsItselfAndTheLeaderAsThePerson()
     {
@@ -351,7 +415,7 @@ public class CharacterTableTests
         // ...and a class with no look yet stands in the plain default it always did, under its own name (plan 20 · J14 drew
         // Johto's Medium; plan 11 · C4 drew the Sailor)
         Assert.Equal("sailor", Table.InBattle("Sailor", "Gentleman"));
-        Assert.Equal("channeler", Table.InBattle("Medium", "Gentleman"));
+        Assert.Equal("medium", Table.InBattle("Medium", "Gentleman"));
         // A trainer nobody carries (a test's, the harness's) stands as the class
         Assert.Equal("Leader", Table.InBattle("Leader", null));
 
