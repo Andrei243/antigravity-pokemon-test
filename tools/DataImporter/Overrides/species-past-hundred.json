@@ -2153,5 +2153,104 @@
     "stats": {"hp": 91, "attack": 60, "defense": 106, "spAttack": 141, "spDefense": 105, "speed": 85},
     "abilities": ["Hospitality"], "hiddenAbility": "Heatproof",
     "evolution": {"method": "UseItem", "level": 250, "item": "Masterpiece Teacup"}
+  },
+  // Supplement, Galar and Hisui: docs/plans/D14-proposals-galar-supplement.md, approved by the user on 2026-10-26 (all 16,
+  // every question at its default): the 15 regional forms that end lines of one or two, each grown from its form (its
+  // evolution's fromForm) and numbered 5000 (Galar) or 6000 (Hisui) + the species' number, and Urshifu's Ursensei to 630.
+  "Glimmane": {
+    "from": "Rapidash", "types": ["Psychic","Fairy"], "category": "Glimmer Unicorn", "height": 2.1, "weight": 105.0,
+    "stats": {"hp": 80, "attack": 105, "defense": 85, "spAttack": 100, "spDefense": 95, "speed": 115},
+    "abilities": ["Run Away", "Pastel Veil"], "hiddenAbility": "Anticipation",
+    "evolution": {"fromForm": "Rapidash-Galar", "method": "LevelKnowsMove", "level": 230, "move": "Psycho Cut"}
+  },
+  "Slowslinger": {
+    "from": "Slowbro", "types": ["Poison","Psychic"], "category": "Sharpshooter", "height": 1.9, "weight": 95.0,
+    "stats": {"hp": 105, "attack": 115, "defense": 105, "spAttack": 110, "spDefense": 90, "speed": 45},
+    "abilities": ["Quick Draw", "Own Tempo"], "hiddenAbility": "Regenerator",
+    "evolution": {"fromForm": "Slowbro-Galar", "method": "UseItem", "level": 230, "item": "Galarica Cuff"}
+  },
+  "Slowmagus": {
+    "from": "Slowking", "types": ["Poison","Psychic"], "category": "Alchemist", "height": 2.1, "weight": 100.0,
+    "stats": {"hp": 105, "attack": 65, "defense": 100, "spAttack": 125, "spDefense": 120, "speed": 55},
+    "abilities": ["Curious Medicine", "Own Tempo"], "hiddenAbility": "Regenerator",
+    "evolution": {"fromForm": "Slowking-Galar", "method": "UseItem", "level": 230, "item": "Galarica Wreath"}
+  },
+  "Purifume": {
+    "from": "Weezing", "types": ["Poison","Fairy"], "category": "Clean Air", "height": 3.4, "weight": 30.0,
+    "stats": {"hp": 80, "attack": 90, "defense": 130, "spAttack": 105, "spDefense": 90, "speed": 75},
+    "abilities": ["Levitate"], "hiddenAbility": "Misty Surge",
+    "evolution": {"fromForm": "Weezing-Galar", "method": "LevelKnowsMove", "level": 230, "move": "Strange Steam"}
+  },
+  "Frostruma": {
+    "from": "Darmanitan", "types": ["Ice","Fire"], "category": "Snowfire Daruma", "height": 2.0, "weight": 160.0,
+    "stats": {"hp": 115, "attack": 150, "defense": 80, "spAttack": 30, "spDefense": 75, "speed": 110},
+    "abilities": ["Gorilla Tactics"], "hiddenAbility": "Slush Rush",
+    "evolution": {"fromForm": "Darmanitan-Galar-Standard", "method": "UseItem", "level": 231, "item": "Ice Stone"}
+  },
+  "Snareflat": {
+    "from": "Stunfisk", "types": ["Ground","Steel"], "category": "Snare Trap", "height": 1.1, "weight": 40.0,
+    "stats": {"hp": 119, "attack": 101, "defense": 114, "spAttack": 66, "spDefense": 94, "speed": 57},
+    "abilities": ["Mimicry"], "hiddenAbility": "Sand Veil",
+    "evolution": {"fromForm": "Stunfisk-Galar", "method": "LevelInRain", "level": 229}
+  },
+  "Hypnoskye": {
+    "from": "Articuno", "types": ["Psychic","Flying"], "category": "Mesmer", "height": 2.0, "weight": 60.0,
+    "stats": {"hp": 100, "attack": 85, "defense": 100, "spAttack": 145, "spDefense": 115, "speed": 115},
+    "abilities": ["Competitive"], "hiddenAbility": "Snow Cloak",
+    "evolution": {"fromForm": "Articuno-Galar", "method": "LevelHoldingItem", "level": 244, "item": "Twisted Spoon"}
+  },
+  "Stridestorm": {
+    "from": "Zapdos", "types": ["Fighting","Flying"], "category": "Strider", "height": 1.9, "weight": 70.0,
+    "stats": {"hp": 100, "attack": 145, "defense": 105, "spAttack": 85, "spDefense": 105, "speed": 120},
+    "abilities": ["Defiant"], "hiddenAbility": "Static",
+    "evolution": {"fromForm": "Zapdos-Galar", "method": "LevelHoldingItem", "level": 244, "item": "Black Belt"}
+  },
+  "Duskphoenix": {
+    "from": "Moltres", "types": ["Dark","Flying"], "category": "Malice", "height": 2.4, "weight": 80.0,
+    "stats": {"hp": 100, "attack": 85, "defense": 105, "spAttack": 120, "spDefense": 140, "speed": 110},
+    "abilities": ["Berserk"], "hiddenAbility": "Flame Body",
+    "evolution": {"fromForm": "Moltres-Galar", "method": "LevelHoldingItem", "level": 244, "item": "Black Glasses"}
+  },
+  "Obsidhound": {
+    "from": "Arcanine", "types": ["Fire","Rock"], "category": "Volcano Guard", "height": 2.3, "weight": 210.0,
+    "stats": {"hp": 100, "attack": 120, "defense": 95, "spAttack": 95, "spDefense": 95, "speed": 95},
+    "abilities": ["Intimidate", "Flash Fire"], "hiddenAbility": "Rock Head",
+    "evolution": {"fromForm": "Arcanine-Hisui", "method": "UseItem", "level": 238, "item": "Fire Stone"}
+  },
+  "Apricharge": {
+    "from": "Electrode", "types": ["Electric","Grass"], "category": "Apricorn", "height": 1.5, "weight": 95.0,
+    "stats": {"hp": 80, "attack": 50, "defense": 90, "spAttack": 100, "spDefense": 100, "speed": 150},
+    "abilities": ["Soundproof", "Static"], "hiddenAbility": "Aftermath",
+    "evolution": {"fromForm": "Electrode-Hisui", "method": "UseItem", "level": 238, "item": "Leaf Stone"}
+  },
+  "Fandangleaf": {
+    "from": "Lilligant", "types": ["Grass","Fighting"], "category": "Fan Dancer", "height": 1.5, "weight": 26.0,
+    "stats": {"hp": 85, "attack": 125, "defense": 90, "spAttack": 50, "spDefense": 90, "speed": 120},
+    "abilities": ["Chlorophyll", "Hustle"], "hiddenAbility": "Leaf Guard",
+    "evolution": {"fromForm": "Lilligant-Hisui", "method": "UseItem", "level": 238, "item": "Sun Stone"}
+  },
+  "Spectrevix": {
+    "from": "Zoroark", "types": ["Normal","Ghost"], "category": "Grudge Fox", "height": 1.9, "weight": 85.0,
+    "stats": {"hp": 70, "attack": 100, "defense": 80, "spAttack": 140, "spDefense": 75, "speed": 125},
+    "abilities": ["Illusion"],
+    "evolution": {"fromForm": "Zoroark-Hisui", "method": "LevelNight", "level": 238}
+  },
+  "Augurhawk": {
+    "from": "Braviary", "types": ["Psychic","Flying"], "category": "Augury", "height": 2.0, "weight": 60.0,
+    "stats": {"hp": 115, "attack": 83, "defense": 90, "spAttack": 127, "spDefense": 90, "speed": 85},
+    "abilities": ["Keen Eye", "Sheer Force"], "hiddenAbility": "Tinted Lens",
+    "evolution": {"fromForm": "Braviary-Hisui", "method": "LevelDay", "level": 239}
+  },
+  "Bergbreaker": {
+    "from": "Avalugg", "types": ["Ice","Rock"], "category": "Glacier Jaw", "height": 1.8, "weight": 380.0,
+    "stats": {"hp": 110, "attack": 142, "defense": 184, "spAttack": 34, "spDefense": 66, "speed": 58},
+    "abilities": ["Strong Jaw", "Ice Body"], "hiddenAbility": "Sturdy",
+    "evolution": {"fromForm": "Avalugg-Hisui", "method": "LevelAtLocation", "level": 239, "location": "Ice Rock"}
+  },
+  "Ursensei": {
+    "from": "Urshifu", "types": ["Fighting","Dark"], "category": "Grandmaster", "height": 2.2, "weight": 140.0,
+    "stats": {"hp": 110, "attack": 140, "defense": 115, "spAttack": 63, "spDefense": 80, "speed": 122},
+    "abilities": ["Unseen Fist"],
+    "evolution": {"method": "Friendship", "level": 244}
   }
 }

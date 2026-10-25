@@ -37,7 +37,7 @@ public class SpeciesPastHundredGalarTests
     public void GalarsAndHisuisSpeciesEvolveWithinGalarsClimb()
     {
         var designs = SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root));
-        var galar = designs.Where(d => Species(d.From).Generation == 8).ToList();
+        var galar = designs.Where(d => Species(d.From).Generation == 8 && d.From != "Urshifu").ToList(); // Urshifu's is the supplement's
         Assert.Equal(42, galar.Count);
         Assert.All(galar, d => Assert.InRange(Species(d.Name).DexNumber, 2820, 2905));
 
@@ -54,9 +54,9 @@ public class SpeciesPastHundredGalarTests
         Assert.Equal(new[] { "Cheek Pouch" }, Species("Gorgehog").Abilities);
         Assert.All(new[] { "Majordomee", "Shoalwraith", "Amplipunk", "Urngeist", "Patisserene" }, name => Assert.Null(Species(name).Forms));
 
-        // Left out, as the document says: Urshifu (question 8 waits for its supplement), the cover legendaries,
-        // Eternatus, Zarude and Calyrex
-        Assert.All(new[] { "Urshifu", "Zacian", "Zamazenta", "Eternatus", "Zarude", "Calyrex" },
+        // Left out, as the document says: the cover legendaries, Eternatus, Zarude and Calyrex (Urshifu's design is
+        // the supplement's)
+        Assert.All(new[] { "Zacian", "Zamazenta", "Eternatus", "Zarude", "Calyrex" },
             name => Assert.DoesNotContain(Species(name).Evolutions ?? new(), e => PokemonDatabase.Get(e.TargetSpecies)?.IsOurs == true));
     }
 

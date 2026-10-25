@@ -41,7 +41,7 @@ public class SpeciesPastHundredUnovaTests
     {
         // Question 1: Unova is met at 162 to 185 (regions/unova.json's levels), so its 49 evolve at 165 to 183, and the
         // Swords of Justice at 190, after Iris
-        var unova = designs.Value.Where(d => Species(d.From).Generation == 5).ToList();
+        var unova = designs.Value.Where(d => Species(d.From).Generation == 5 && d.Evolution.FromForm == null).ToList();
         Assert.Equal(52, unova.Count);
         Assert.All(unova.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 165, 183));
         Assert.Equal(new[] { "Cobaltarch", "Terrakhan", "Virizenith" }, unova.Where(d => Species(d.From).Legendary).Select(d => d.Name));
@@ -54,7 +54,7 @@ public class SpeciesPastHundredUnovaTests
     {
         // The shared test tries the bare level at 160, under Unova's band: here each forebear at its own level with
         // nothing else (no move, no item, no partner, no friendship, by day and dry) stays as it is but Sawsbuck
-        foreach (var d in designs.Value.Where(d => Species(d.From).Generation == 5))
+        foreach (var d in designs.Value.Where(d => Species(d.From).Generation == 5 && d.Evolution.FromForm == null))
         {
             var p = Mon(d.From, d.Evolution.Level, "Tackle");
             p.Friendship = 0;

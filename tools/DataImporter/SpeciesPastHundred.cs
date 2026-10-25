@@ -50,6 +50,9 @@ public sealed class SpeciesDesign
 /// <item>Effort: the forebear's, and one more point in the stat that rose most. Catch rate 45 (3 for a legendary's or a
 /// mythical's). Base experience: the forebear's and a fifth.</item>
 /// <item>Its moves past 100 are <see cref="MovesPastHundred"/>'s rule, by its own types and stats, as any species'.</item>
+/// <item>A design whose evolution names a <c>fromForm</c> (the Galar supplement) grows from that regional form: its
+/// number is the form's region's block + the species' (<see cref="NumberOf"/>), and its effort, base experience,
+/// colour and moves by level are the form's where the form has its own.</item>
 /// </list>
 /// </summary>
 public static class SpeciesPastHundred
@@ -89,8 +92,11 @@ public static class SpeciesPastHundred
             if (from.IsOurs) throw new InvalidDataException($"{design.Name} evolves from {design.From}, a species of our own");
             if (byName.ContainsKey(design.Name) || forms.Contains(design.Name)) throw new InvalidDataException($"{design.Name} is a species or form already");
             if (design.Types.Count is 0 or > 2) throw new InvalidDataException($"{design.Name} has {design.Types.Count} types");
+            var form = FormOf(design, from);
+            if (design.Evolution.FromForm != null && form?.Kind != FormKind.Regional)
+                throw new InvalidDataException($"{design.Name} evolves from {design.Evolution.FromForm}, which is no regional form of {design.From}");
 
-            var s = Make(design, from);
+            var s = Make(design, from, form);
             made.Add(s);
             byName[s.Name] = s;
             (from.Evolutions ??= new()).Add(design.Evolution);
@@ -131,13 +137,43 @@ public static class SpeciesPastHundred
         HP = s.BaseHP, Attack = s.BaseAttack, Defense = s.BaseDefense, SpAttack = s.BaseSpAttack, SpDefense = s.BaseSpDefense, Speed = s.BaseSpeed
     };
 
+    /// <summary>
+    /// The regional form a design grows from (the Galar supplement's technical plan: its evolution's <c>fromForm</c>),
+    /// or null for one that grows from the species itself.
+    /// </summary>
+    public static PokemonForm? FormOf(SpeciesDesign d, PokemonSpecies from) =>
+        d.Evolution.FromForm is { } name ? from.Form(name) : null;
+
+    /// <summary>The stats a form has in the game as it is played: its own where it has them, else its species'.</summary>
+    public static StatSpread StatsOf(PokemonSpecies s, PokemonForm? form) =>
+        form?.Modern?.BaseStats ?? form?.BaseStats ?? StatsOf(s);
+
+    /// <summary>
+    /// The block of a thousand each region's forms are numbered in (the Galar supplement's question 1): a design grown
+    /// from a regional form is the block + the species' National number (the Galarian Rapidash's 5078).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, int> FormBlocks = new Dictionary<string, int>
+    {
+        ["Alola"] = 4000, ["Galar"] = 5000, ["Hisui"] = 6000, ["Paldea"] = 7000
+    };
+
+    /// <summary>A design's number: <see cref="PokemonDatabase.OursFrom"/> + its forebear's, or its form's region's block + it.</summary>
+    public static int NumberOf(PokemonSpecies from, string? form)
+    {
+        if (form == null) return PokemonDatabase.OursFrom + from.DexNumber;
+        var parts = form.Split('-');
+        var region = parts.FirstOrDefault(FormBlocks.ContainsKey)
+            ?? throw new InvalidDataException($"{form} is a form of no region with a block of numbers");
+        return FormBlocks[region] + from.DexNumber;
+    }
+
     private static readonly StatType[] Order = { StatType.HP, StatType.Attack, StatType.Defense, StatType.SpAttack, StatType.SpDefense, StatType.Speed };
 
-    private static PokemonSpecies Make(SpeciesDesign d, PokemonSpecies from)
+    private static PokemonSpecies Make(SpeciesDesign d, PokemonSpecies from, PokemonForm? form)
     {
-        var was = StatsOf(from);
+        var was = StatsOf(from, form);
         var rose = Order.OrderByDescending(stat => d.Stats.Of(stat) - was.Of(stat)).First();
-        var effort = Copy(from.EvYield ?? new StatSpread());
+        var effort = Copy(form?.EvYield ?? from.EvYield ?? new StatSpread());
         switch (rose)
         {
             case StatType.HP: effort.HP++; break;
@@ -153,7 +189,7 @@ public static class SpeciesPastHundred
 
         return new PokemonSpecies
         {
-            DexNumber = PokemonDatabase.OursFrom + from.DexNumber,
+            DexNumber = NumberOf(from, form?.Name),
             Name = d.Name,
             Category = d.Category,
             Generation = 0,
@@ -170,7 +206,7 @@ public static class SpeciesPastHundred
             BaseSpeed = d.Stats.Speed,
             EvYield = effort,
             CatchRate = from.Legendary || from.Mythical ? 3 : 45,
-            BaseExpYield = (int)Math.Round(from.BaseExpYield * 1.2, MidpointRounding.AwayFromZero),
+            BaseExpYield = (int)Math.Round((form?.BaseExpYield ?? from.BaseExpYield) * 1.2, MidpointRounding.AwayFromZero),
             GrowthRate = from.GrowthRate,
             GenderRatio = from.GenderRatio,
             EggGroups = from.EggGroups?.ToList(),
@@ -178,16 +214,16 @@ public static class SpeciesPastHundred
             BaseFriendship = from.BaseFriendship,
             Height = d.Height,
             Weight = d.Weight,
-            Color = from.Color,
+            Color = form?.Color ?? from.Color,
             Shape = from.Shape,
-            Learnset = ByLevel(from.Learnset),
+            Learnset = ByLevel(form?.Learnset ?? from.Learnset),
             TmMoves = from.TmMoves?.ToList(),
             TutorMoves = from.TutorMoves?.ToList(),
             EggMoves = from.EggMoves?.ToList(),
             Offspring = from.Offspring ?? from.Name,
             Abilities = d.Abilities.ToList(),
             HiddenAbility = d.HiddenAbility,
-            Modern = from.Modern?.Learnset is { } modern ? new SpeciesValues { Learnset = ByLevel(modern) } : null
+            Modern = (form?.Learnset != null ? form.Modern?.Learnset : from.Modern?.Learnset) is { } modern ? new SpeciesValues { Learnset = ByLevel(modern) } : null
         };
     }
 

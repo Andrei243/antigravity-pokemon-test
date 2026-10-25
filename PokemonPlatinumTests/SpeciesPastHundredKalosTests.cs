@@ -44,7 +44,7 @@ public class SpeciesPastHundredKalosTests
         // Question 1's default: Kalos is met at about 185 to 205, so its species evolve at 188 to 203, from its first
         // Gym Leader to its Elite Four; Sylveon's end at 120 with the seven Eeveelutions before it
         var designs = SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root));
-        var kalos = designs.Where(d => Species(d.From).Generation == 6).ToList();
+        var kalos = designs.Where(d => Species(d.From).Generation == 6 && d.Evolution.FromForm == null).ToList();
         Assert.Equal(24, kalos.Count);
         Assert.All(kalos.Where(d => d.From != "Sylveon"), d => Assert.InRange(d.Evolution.Level, 188, 203));
         Assert.Equal(120, kalos.Single(d => d.From == "Sylveon").Evolution.Level);
