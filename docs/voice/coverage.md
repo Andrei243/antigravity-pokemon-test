@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1241 | 1208 | 33 | 1 | 0 |
-| Scripts (`script:`) | 8216 | 7833 | 383 | 17 | 0 |
+| Scripts (`script:`) | 8226 | 7842 | 384 | 17 | 0 |
 | People of the world (`world:`) | 5806 | 5749 | 57 | 4 | 0 |
-| **All** | 15343 | 14870 | 473 | 22 | 0 |
+| **All** | 15353 | 14879 | 474 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,9 +22,9 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 187 |
 | a question's answers | 496 |
-| a sign | 1344 |
+| a sign | 1360 |
 | the game's own voice (speaker none) | 235 |
-| the game's own voice (text) | 1033 |
+| the game's own voice (text) | 1066 |
 
 ## The cast
 
@@ -47,8 +47,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lady (any)` | 337 | 1 |
 | `look:lass (any)` | 286 | 10 |
 | `look:clerk (any)` | 274 | 7 |
+| `look:attendant (any)` | 185 | 3 |
 | `look:nurse (any)` | 180 | 0 |
-| `look:attendant (any)` | 179 | 2 |
 | `cynthia` | 157 | 1 |
 | `look:scientist (any)` | 149 | 4 |
 | `rowan` | 147 | 12 |
@@ -71,9 +71,9 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:picnicker (any)` | 98 | 0 |
 | `class:cooltrainer (any)` | 96 | 0 |
 | `class:black_belt (any)` | 92 | 0 |
+| `look:sailor (any)` | 92 | 0 |
 | `looker` | 91 | 1 |
 | `class:lass (any)` | 88 | 0 |
-| `look:sailor (any)` | 88 | 0 |
 | `class:swimmer_f (any)` | 86 | 0 |
 | `class:galactic (any)` | 84 | 0 |
 | `black_belt` | 83 | 12 |
