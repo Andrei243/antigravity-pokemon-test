@@ -166,7 +166,7 @@ public static class Evolution
         return new EvolutionData
         {
             Method = e.Method, TargetSpecies = e.TargetSpecies, Level = e.Level, Item = e.Item, Move = e.Move, Type = e.Type,
-            Species = e.Species, Location = e.Location, Value = e.Value, NeedsFriendship = e.NeedsFriendship, Note = e.Note,
+            Species = e.Species, AnyOfSpecies = e.AnyOfSpecies, Location = e.Location, Value = e.Value, NeedsFriendship = e.NeedsFriendship, Note = e.Note,
             FromForm = e.FromForm, TargetForm = form, Region = e.Region
         };
     }
@@ -261,7 +261,8 @@ public static class Evolution
             case EvolutionMethod.LevelKnowsMove: return e.Move != null && p.Knows(e.Move);
             case EvolutionMethod.LevelKnowsMoveType: return e.Type != null && p.Moves.Any(m => m.Type == e.Type);
 
-            case EvolutionMethod.LevelWithSpeciesInParty: return others.Any(m => m.Species.Name == e.Species);
+            case EvolutionMethod.LevelWithSpeciesInParty:
+                return others.Any(m => m.Species.Name == e.Species || e.AnyOfSpecies?.Contains(m.Species.Name) == true);
             case EvolutionMethod.LevelWithTypeInParty:
                 return e.Type is { } type && others.Any(m => m.HasType(type));
 

@@ -14,12 +14,13 @@ namespace PokemonPlatinumTests;
 /// defaults of questions 1 to 5 and 7). What is Alola's own beside the rules <see cref="SpeciesPastHundredTests"/> holds
 /// every batch to: the band of 209 to 221 within Alola's climb, the island guardians' ring at 225 to 660, the two pairs
 /// of version exclusives, Salazzle's court, Lycanroc's three shapes at dusk, and the conditions that ask for more than a
-/// level. Question 6 (the Ultra Beasts as a set) waits for its designs: D14-proposals-alola-supplement.md.
+/// level. Question 6 (the Ultra Beasts as a set) is D14-proposals-alola-supplement.md's, held by SpeciesPastHundredAlolaSupplementTests.
 /// </summary>
 public class SpeciesPastHundredAlolaTests
 {
     private static readonly System.Lazy<List<SpeciesDesign>> designs = new(() =>
-        SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root)).Where(d => PokemonDatabase.Get(d.From)!.Generation == 7).ToList());
+        SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root))
+            .Where(d => PokemonDatabase.Get(d.From)!.Generation == 7 && d.Legendary == null).ToList()); // the supplement's Ultra Beasts are SpeciesPastHundredAlolaSupplementTests'
 
     private static List<SpeciesDesign> Alola => designs.Value;
 

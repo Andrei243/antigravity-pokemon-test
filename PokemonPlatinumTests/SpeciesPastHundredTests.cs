@@ -45,32 +45,35 @@ public class SpeciesPastHundredTests
         {
             var from = Species(d.From);
             Assert.True(from != null && !from.IsOurs, $"{d.Name} evolves from {d.From}, no species of the games");
+            var form = SpeciesPastHundred.FormOf(d, from); // the Galar supplement: a design grown from a regional form
 
             // A name of our own: one word of letters, at most 12, no species' or form's of the games
             Assert.Matches("^[A-Z][a-z]{2,11}$", d.Name);
             Assert.DoesNotContain(Plain(d.Name), games);
 
             // The forebear is the last of its line or alone: nothing it evolves into but ours
-            Assert.Empty((from.Evolutions ?? new()).Where(e => e.TargetSpecies != d.Name && e.FromForm == null));
+            Assert.Empty((from.Evolutions ?? new()).Where(e => e.TargetSpecies != d.Name && e.FromForm == d.Evolution.FromForm));
 
             Assert.InRange(d.Types.Count, 1, 2);
             Assert.Equal(d.Types.Count, d.Types.Distinct().Count());
 
             // Abilities that exist, as many slots as the forebear's, a hidden one where it had one
             Assert.All(d.Abilities.Append(d.HiddenAbility).OfType<string>(), a => Assert.True(AbilityDatabase.Get(a) != null, $"{d.Name}: {a}"));
-            Assert.Equal(from.Abilities.Count, d.Abilities.Count);
-            Assert.Equal(from.HiddenAbility != null, d.HiddenAbility != null);
+            Assert.Equal((form?.Abilities ?? from.Abilities).Count, d.Abilities.Count);
+            Assert.Equal((form?.HiddenAbility ?? from.HiddenAbility) != null, d.HiddenAbility != null);
 
             // The rise: +80, or what the ceiling of 600 leaves a species that isn't legendary; a region's legendary set
             // to 660 (+80 for the birds, the beasts and the Regis, +60 for Latias and Latios); no stat falls
-            var was = SpeciesPastHundred.StatsOf(from);
-            bool legend = from.Legendary || from.Mythical;
+            var was = SpeciesPastHundred.StatsOf(from, form);
+            bool legend = from.Legendary || from.Mythical || d.Legendary == true; // the Ultra Beasts, a set by the row (Alola's supplement)
             int rise = Total(d.Stats) - Total(was);
             Assert.All(Stats, stat => Assert.True(d.Stats.Of(stat) >= was.Of(stat), $"{d.Name}'s {stat} falls"));
             if (legend)
             {
-                Assert.Equal(660, Total(d.Stats));
-                Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
+                // The legendary sets stand at 660; the Loyal Three stop at their master Pecharunt's 600 (Paldea supplement, question 1), Urshifu, a legendary with no set, at +80 to 630 (the Galar supplement's question 3)
+                bool loyal = d.Name is "Okidaimyo" or "Munkiregent" or "Fezantessa";
+                Assert.Equal(loyal ? 600 : d.From == "Urshifu" ? 630 : 660, Total(d.Stats));
+                Assert.InRange(rise, 1, 120); // the Treasures of Ruin rise +90, from 570; Naganapex +120, from 540 (Alola's supplement)
             }
             else
             {
@@ -80,12 +83,13 @@ public class SpeciesPastHundredTests
 
             // Evolves by level within its own region's climb, at most 160, with what the data has
             var e = d.Evolution;
-            var (low, high) = Climb(from);
+            var (low, high) = Climb(d);
             Assert.True(e.Level >= low && e.Level <= high, $"{d.Name} evolves at {e.Level}, outside {low} to {high}");
             Assert.True(Evolution.TriggerOf(e.Method) is EvolutionTrigger.LevelUp or EvolutionTrigger.BattleEnd or EvolutionTrigger.Spin || e.Method == EvolutionMethod.UseItem, $"{d.Name}: {e.Method}");
             if (e.Item != null) Assert.True(ItemDatabase.Get(e.Item) is { } item && item.Pocket != ItemPocket.KeyItems, $"{d.Name}: {e.Item}");
-            if (e.Move != null) Assert.Contains(from.Learnset.Concat(from.Modern?.Learnset ?? new()), l => l.MoveName == e.Move);
+            if (e.Move != null) Assert.Contains((form?.Learnset ?? from.Learnset).Concat(from.Modern?.Learnset ?? new()), l => l.MoveName == e.Move);
             if (e.Species != null) Assert.True(Species(e.Species) is { IsOurs: false }, $"{d.Name} asks for {e.Species}");
+            Assert.All(e.AnyOfSpecies ?? new(), n => Assert.True(n != d.From && Species(n) is { IsOurs: false }, $"{d.Name} asks for {n}"));
             if (e.Method == EvolutionMethod.LevelAfterDefeating) Assert.InRange(e.Value, 1, 10);
             Assert.True(d.Height > 0 && d.Weight > 0 && d.Category.Length > 0, d.Name);
         }
@@ -97,20 +101,30 @@ public class SpeciesPastHundredTests
     /// 162, from 140 to 158; a legendary at most 160 everywhere. Sinnoh, whose own climb never passes 100, takes the band
     /// where the chain first does (its question 1, accepted on 2026-10-25): 101 to 120, its lake guardians at 150.
     /// </summary>
-    private static (int Low, int High) Climb(PokemonSpecies from)
+    private static (int Low, int High) Climb(PokemonSpecies from, bool legend)
     {
-        bool legend = from.Legendary || from.Mythical;
         return from.Generation switch
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
             5 => (165, legend ? 190 : 183),
-            6 => from.Name == "Sylveon" ? (120, 120) : (188, 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions
+            6 => from.Name == "Sylveon" ? (120, 120) : (188, legend ? 205 : 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions, Zygarde's at 205 (the supplement)
             7 => (209, legend ? 225 : 221),
             8 => (226, legend ? 244 : 240),
             9 => (244, legend ? 258 : 256), // Paldea's climb (its question 1, 2026-10-26): 244 to 256, the Treasures of Ruin at 258
             _ => (101, legend ? 160 : 130)
         };
+    }
+
+    /// <summary>A design grown from a regional form (the Galar supplement): Galar's climb, 226 to 240, or Hisui's, 238 to 240; its legendary set at 244.</summary>
+    private static (int Low, int High) Climb(SpeciesDesign d)
+    {
+        var from = Species(d.From);
+        var parts = d.Evolution.FromForm?.Split('-') ?? Array.Empty<string>();
+        bool legend = from.Legendary || from.Mythical || d.Legendary == true;
+        if (parts.Contains("Galar")) return (226, legend ? 244 : 240);
+        if (parts.Contains("Hisui")) return (238, legend ? 244 : 240);
+        return Climb(from, legend);
     }
 
     private static string Plain(string name) => new(name.ToLowerInvariant().Where(char.IsLetterOrDigit).ToArray());
@@ -125,8 +139,9 @@ public class SpeciesPastHundredTests
         {
             var s = Species(d.Name);
             var from = Species(d.From);
+            var form = SpeciesPastHundred.FormOf(d, from);
             Assert.True(s.IsOurs, d.Name);
-            Assert.Equal(PokemonDatabase.OursFrom + from.DexNumber, s.DexNumber);
+            Assert.Equal(SpeciesPastHundred.NumberOf(from, d.Evolution.FromForm), s.DexNumber);
             Assert.Same(s, PokemonDatabase.GetByDex(s.DexNumber));
             Assert.Equal(0, s.Generation);
             Assert.Empty(s.DexNumbers);
@@ -140,18 +155,19 @@ public class SpeciesPastHundredTests
             Assert.Equal((d.Category, d.Height, d.Weight), (s.Category, s.Height, s.Weight));
 
             // What it has of its forebear's, by the proposal's rules
-            Assert.Equal((from.GrowthRate, from.GenderRatio, from.HatchCycles, from.Color, from.Shape, from.Legendary, from.Mythical),
+            bool legendary = d.Legendary ?? from.Legendary;
+            Assert.Equal((from.GrowthRate, from.GenderRatio, from.HatchCycles, form?.Color ?? from.Color, from.Shape, legendary, from.Mythical),
                 (s.GrowthRate, s.GenderRatio, s.HatchCycles, s.Color, s.Shape, s.Legendary, s.Mythical));
             Assert.Equal(from.EggGroups, s.EggGroups);
             Assert.Equal(from.Offspring ?? from.Name, s.Offspring);
-            Assert.Equal(from.Legendary || from.Mythical ? 3 : 45, s.CatchRate);
-            Assert.Equal((int)Math.Round(from.BaseExpYield * 1.2, MidpointRounding.AwayFromZero), s.BaseExpYield);
-            Assert.Equal(Total(from.EvYield!) + 1, Total(s.EvYield!));
+            Assert.Equal(legendary || from.Mythical ? 3 : 45, s.CatchRate);
+            Assert.Equal((int)Math.Round((form?.BaseExpYield ?? from.BaseExpYield) * 1.2, MidpointRounding.AwayFromZero), s.BaseExpYield);
+            Assert.Equal(Total((form?.EvYield ?? from.EvYield)!) + 1, Total(s.EvYield!));
             Assert.Equal(from.TmMoves, s.TmMoves);
             Assert.Equal(from.TutorMoves, s.TutorMoves);
 
             // Its evolution is the last of its forebear's, as the table writes it
-            var row = from.Evolutions!.Last();
+            var row = from.Evolutions!.Last(e => e.FromForm == d.Evolution.FromForm);
             Assert.Equal((d.Name, d.Evolution.Method, d.Evolution.Level, d.Evolution.Item, d.Evolution.Move, d.Evolution.Location, d.Evolution.NeedsFriendship),
                 (row.TargetSpecies, row.Method, row.Level, row.Item, row.Move, row.Location, row.NeedsFriendship));
             Assert.Null(s.Evolutions);
@@ -170,6 +186,7 @@ public class SpeciesPastHundredTests
     {
         var e = d.Evolution;
         var p = Mon(d.From, level, "Tackle");
+        if (e.FromForm != null) p.ChangeForm(e.FromForm);
         p.Friendship = 0;
         var context = new EvolutionContext { IsNight = e.Method is EvolutionMethod.LevelDay or EvolutionMethod.FriendshipDay or EvolutionMethod.LevelHoldingItemDay };
         var trigger = EvolutionTrigger.LevelUp;
@@ -187,7 +204,7 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); break;
             case EvolutionMethod.LevelHoldingItemDay: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = false; break;
             case EvolutionMethod.LevelHoldingItemNight: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = true; break;
-            case EvolutionMethod.LevelWithSpeciesInParty: context.Party = PartyOf(p, Mon(e.Species!, 50)); break;
+            case EvolutionMethod.LevelWithSpeciesInParty: context.Party = PartyOf(p, Mon(e.Species ?? e.AnyOfSpecies![0], 50)); break;
             case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
@@ -411,7 +428,7 @@ public class SpeciesPastHundredTests
         Assert.Equal(51, hoenn.Count);
         Assert.All(hoenn, d => Assert.InRange(d.Evolution.Level, 140, 160));
         Assert.All(hoenn.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 140, 158));
-        var johto = Designs.Where(d => Species(d.From).Generation == 2).ToList();
+        var johto = Designs.Where(d => Species(d.From).Generation == 2 && d.Evolution.FromForm == null).ToList();
         Assert.Equal(34, johto.Count);
         Assert.All(johto.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 104, 120));
     }
@@ -495,7 +512,9 @@ public class SpeciesPastHundredTests
         {
             var s = Species(d.Name);
             var from = Species(d.From);
-            foreach (var (mine, theirs) in new[] { (s.Learnset, from.Learnset), (s.Modern?.Learnset, from.Modern?.Learnset) })
+            var form = SpeciesPastHundred.FormOf(d, from);
+            var theirsModern = form?.Learnset != null ? form.Modern?.Learnset : from.Modern?.Learnset;
+            foreach (var (mine, theirs) in new[] { (s.Learnset, form?.Learnset ?? from.Learnset), (s.Modern?.Learnset, theirsModern) })
             {
                 Assert.Equal(theirs == null, mine == null);
                 if (mine == null || theirs == null) continue;
