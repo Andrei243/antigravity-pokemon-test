@@ -1075,7 +1075,7 @@ internal static partial class PokemonModels
         int head = b.Head(V(0, 0.5f, 0.16f));
         // A big domed skull, hard as iron, over a small face
         b.Ell(head, V(0, 0.52f, 0.28f), V(0.12f * k, 0.1f, 0.13f * k), body);
-        b.Ell(head, V(0, 0.61f, 0.21f), V(0.15f * k, 0.12f * k, 0.165f * k), dome, mat: Shell);
+        b.Ell(head, grown ? V(0, 0.63f, 0.2f) : V(0, 0.61f, 0.21f), grown ? V(0.21f, 0.17f, 0.22f) : V(0.15f, 0.12f, 0.165f), dome, mat: Shell);
         if (grown) b.PaintEll(head, V(0, 0.5f, 0.3f), V(0.16f, 0.04f, 0.12f), Rgb(30, 30, 40));
         PokeBuilder.Both(s =>
         {

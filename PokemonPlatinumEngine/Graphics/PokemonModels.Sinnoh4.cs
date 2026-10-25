@@ -1492,21 +1492,21 @@ internal static partial class PokemonModels
     /// </summary>
     private static void LakeSpirit(PokeBuilder b, Color skin, Color gem)
     {
-        b.Ell(Body, V(0, 0.44f, 0), V(0.045f, 0.075f, 0.04f), skin);
-        b.Ell(Body, V(0, 0.37f, -0.005f), V(0.04f, 0.035f, 0.035f), skin);
-        b.Limb(Body, V(0, 0.49f, 0), V(0, 0.56f, 0.008f), 0.022f, 0.02f, skin);
+        b.Ell(Body, V(0, 0.45f, 0), V(0.065f, 0.095f, 0.055f), skin);
+        b.Ell(Body, V(0, 0.36f, -0.005f), V(0.05f, 0.04f, 0.045f), skin);
+        b.Limb(Body, V(0, 0.5f, 0), V(0, 0.57f, 0.008f), 0.03f, 0.028f, skin);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.04f * s, 0.48f, 0.01f));
-            b.Limb(arm, V(0.04f * s, 0.49f, 0.01f), V(0.11f * s, 0.44f, 0.05f), 0.014f, 0.011f, skin);
-            b.Ell(arm, V(0.115f * s, 0.435f, 0.055f), V(0.017f, 0.017f, 0.017f), skin);
-            int tail = b.Part(s < 0 ? "tailL" : "tailR", Body, V(0.02f * s, 0.36f, -0.01f), PokeRole.Tail, 0.5f * s, s);
-            var path = Smooth(3, V(0.02f * s, 0.37f, -0.01f), V(0.06f * s, 0.24f, -0.04f), V(0.12f * s, 0.14f, -0.04f), V(0.2f * s, 0.12f, 0.0f), V(0.24f * s, 0.18f, 0.02f));
-            b.Tube(tail, path, 0.02f, 0.012f, skin, blend: 0f);
+            int arm = b.Arm(s, V(0.055f * s, 0.49f, 0.01f));
+            b.Limb(arm, V(0.055f * s, 0.5f, 0.01f), V(0.14f * s, 0.43f, 0.06f), 0.02f, 0.016f, skin);
+            b.Ell(arm, V(0.145f * s, 0.425f, 0.065f), V(0.024f, 0.024f, 0.024f), skin);
+            int tail = b.Part(s < 0 ? "tailL" : "tailR", Body, V(0.025f * s, 0.35f, -0.01f), PokeRole.Tail, 0.5f * s, s);
+            var path = Smooth(3, V(0.025f * s, 0.36f, -0.01f), V(0.07f * s, 0.22f, -0.04f), V(0.14f * s, 0.12f, -0.04f), V(0.23f * s, 0.11f, 0.0f), V(0.28f * s, 0.18f, 0.02f));
+            b.Tube(tail, path, 0.03f, 0.017f, skin, blend: 0f);
             var tip = path[^1];
             foreach (var d in new[] { V(0.0f, 1f, 0), V(0.8f * s, 0.4f, 0), V(0.6f * s, -0.6f, 0) })
-                Blade(b, tail, tip, tip + d * 0.055f, 0.022f, skin, V(0, 0, 1f), 0.35f);
-            b.Ell(tail, tip + V(0, 0, 0.012f), V(0.016f, 0.02f, 0.012f), gem, mat: Glow, blend: 0.004f);
+                Blade(b, tail, tip, tip + d * 0.07f, 0.03f, skin, V(0, 0, 1f), 0.35f);
+            b.Ell(tail, tip + V(0, 0, 0.016f), V(0.022f, 0.027f, 0.016f), gem, mat: Glow, blend: 0.004f);
         });
     }
 
@@ -1517,15 +1517,16 @@ internal static partial class PokemonModels
         var yellow = Rgb(246, 206, 60);
         var gem = Rgb(230, 40, 60);
         LakeSpirit(b, skin, gem);
-        // A head under a great yellow helmet, a red gem on its brow, its eyes always shut
-        int head = b.Head(V(0, 0.52f, 0));
-        var c = V(0, 0.6f, 0.015f);
-        var r = V(0.065f, 0.065f, 0.06f);
+        // A big head under a great yellow helmet that falls in lobes at its sides, a red gem on its brow,
+        // its eyes always shut
+        int head = b.Head(V(0, 0.54f, 0));
+        var c = V(0, 0.63f, 0.015f);
+        var r = V(0.09f, 0.088f, 0.085f);
         b.Ell(head, c, r, skin);
-        b.Ell(head, V(0, 0.655f, -0.01f), V(0.088f, 0.06f, 0.082f), yellow);
-        PokeBuilder.Both(s => b.Ell(head, V(0.075f * s, 0.6f, -0.01f), V(0.045f, 0.065f, 0.06f), yellow));
-        b.Ell(head, V(0, 0.665f, 0.07f), V(0.016f, 0.02f, 0.012f), gem, mat: Glow, blend: 0.006f);
-        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.026f * s, 0.595f), V(0.35f * s, 0, 1f), 0.016f, closed: true));
+        b.Ell(head, V(0, 0.705f, -0.01f), V(0.12f, 0.08f, 0.11f), yellow);
+        PokeBuilder.Both(s => b.Ell(head, V(0.1f * s, 0.62f, -0.015f), V(0.06f, 0.09f, 0.08f), yellow));
+        b.Ell(head, V(0, 0.715f, 0.09f), V(0.022f, 0.028f, 0.016f), gem, mat: Glow, blend: 0.006f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.036f * s, 0.625f), V(0.35f * s, 0, 1f), 0.024f, closed: true));
         return Lift(b);
     }
 
@@ -1536,15 +1537,15 @@ internal static partial class PokemonModels
         var pink = Rgb(244, 150, 190);
         var gem = Rgb(230, 40, 60);
         LakeSpirit(b, skin, gem);
-        // A head under pink hair that falls in two long locks at its sides, a red gem on its brow
-        int head = b.Head(V(0, 0.52f, 0));
-        var c = V(0, 0.6f, 0.015f);
-        var r = V(0.065f, 0.065f, 0.06f);
+        // A big head under pink hair that falls in two long locks at its sides, a red gem on its brow
+        int head = b.Head(V(0, 0.54f, 0));
+        var c = V(0, 0.63f, 0.015f);
+        var r = V(0.09f, 0.088f, 0.085f);
         b.Ell(head, c, r, skin);
-        b.Ell(head, V(0, 0.65f, -0.01f), V(0.08f, 0.055f, 0.075f), pink);
-        PokeBuilder.Both(s => b.Ell(head, V(0.11f * s, 0.57f, -0.01f), V(0.04f, 0.1f, 0.036f), pink, V(0, 0, -28f * s)));
-        b.Ell(head, V(0, 0.665f, 0.065f), V(0.016f, 0.02f, 0.012f), gem, mat: Glow, blend: 0.006f);
-        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.027f * s, 0.595f), V(0.35f * s, 0, 1f), 0.017f, sclera: true, white: Rgb(250, 220, 80), pupil: Rgb(36, 32, 40)));
+        b.Ell(head, V(0, 0.7f, -0.01f), V(0.11f, 0.07f, 0.1f), pink);
+        PokeBuilder.Both(s => b.Ell(head, V(0.145f * s, 0.59f, -0.01f), V(0.05f, 0.13f, 0.046f), pink, V(0, 0, -28f * s)));
+        b.Ell(head, V(0, 0.715f, 0.085f), V(0.022f, 0.028f, 0.016f), gem, mat: Glow, blend: 0.006f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.037f * s, 0.625f), V(0.35f * s, 0, 1f), 0.025f, sclera: true, white: Rgb(250, 220, 80), pupil: Rgb(36, 32, 40)));
         return Lift(b);
     }
 
@@ -1555,16 +1556,16 @@ internal static partial class PokemonModels
         var blue = Rgb(60, 168, 230);
         var gem = Rgb(230, 40, 60);
         LakeSpirit(b, skin, gem);
-        // A head under a blue cap swept back to points, a red gem on its brow, a determined look
-        int head = b.Head(V(0, 0.52f, 0));
-        var c = V(0, 0.6f, 0.015f);
-        var r = V(0.065f, 0.065f, 0.06f);
+        // A big head under a blue cap swept back to points, a red gem on its brow, a determined look
+        int head = b.Head(V(0, 0.54f, 0));
+        var c = V(0, 0.63f, 0.015f);
+        var r = V(0.09f, 0.088f, 0.085f);
         b.Ell(head, c, r, skin);
-        b.Ell(head, V(0, 0.655f, -0.01f), V(0.078f, 0.055f, 0.078f), blue);
-        b.Spike(head, V(0, 0.68f, -0.03f), V(0, 0.75f, -0.13f), 0.045f, blue, 0.6f);
-        PokeBuilder.Both(s => b.Spike(head, V(0.06f * s, 0.62f, -0.01f), V(0.13f * s, 0.53f, -0.05f), 0.04f, blue, 0.6f));
-        b.Ell(head, V(0, 0.665f, 0.066f), V(0.016f, 0.02f, 0.012f), gem, mat: Glow, blend: 0.006f);
-        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.027f * s, 0.595f), V(0.35f * s, 0, 1f), 0.017f, sclera: true, white: Rgb(250, 220, 80), pupil: Rgb(36, 32, 40), glare: true));
+        b.Ell(head, V(0, 0.705f, -0.01f), V(0.108f, 0.075f, 0.108f), blue);
+        b.Spike(head, V(0, 0.74f, -0.04f), V(0, 0.84f, -0.18f), 0.06f, blue, 0.6f);
+        PokeBuilder.Both(s => b.Spike(head, V(0.08f * s, 0.66f, -0.01f), V(0.18f * s, 0.54f, -0.07f), 0.055f, blue, 0.6f));
+        b.Ell(head, V(0, 0.715f, 0.088f), V(0.022f, 0.028f, 0.016f), gem, mat: Glow, blend: 0.006f);
+        PokeBuilder.Both(s => b.Eye(head, On(c, r, 0.037f * s, 0.625f), V(0.35f * s, 0, 1f), 0.025f, sclera: true, white: Rgb(250, 220, 80), pupil: Rgb(36, 32, 40), glare: true));
         return Lift(b);
     }
 

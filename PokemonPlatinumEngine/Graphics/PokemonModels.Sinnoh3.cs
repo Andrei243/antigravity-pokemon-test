@@ -1165,18 +1165,20 @@ internal static partial class PokemonModels
         var red = Rgb(232, 72, 72);
         var black = Rgb(36, 36, 44);
 
-        // A block of blue stone with its big red nose pointing north, a black band across eyes kept shut
-        b.Box(Body, V(0, 0.3f, 0), V(0.14f, 0.28f, 0.13f), 0.1f, stone);
-        b.PaintEll(Body, V(0, 0.46f, 0.1f), V(0.17f, 0.035f, 0.07f), black);
-        PokeBuilder.Both(s => b.Mark(Body, V(0.065f * s, 0.46f, 0.13f), V(0.2f * s, 0, 1f), 0.024f, 0.008f, Rgb(176, 206, 236), MarkShape.Wave));
-        b.Spike(Body, V(0, 0.41f, 0.1f), V(0, 0.39f, 0.29f), 0.075f, red);
+        // A stone head wider at its foot than its crown, like a statue of an island, with its big red nose
+        // pointing north and a black band across eyes kept shut
+        b.Box(Body, V(0, 0.32f, 0), V(0.14f, 0.26f, 0.13f), 0.08f, stone);
+        b.Ell(Body, V(0, 0.14f, 0), V(0.19f, 0.15f, 0.17f), stone, blend: 0.03f);
+        b.PaintEll(Body, V(0, 0.47f, 0.1f), V(0.19f, 0.045f, 0.08f), black);
+        PokeBuilder.Both(s => b.Mark(Body, V(0.07f * s, 0.47f, 0.135f), V(0.2f * s, 0, 1f), 0.03f, 0.01f, Rgb(176, 206, 236), MarkShape.Wave));
+        b.Spike(Body, V(0, 0.41f, 0.1f), V(0, 0.38f, 0.33f), 0.095f, red);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.12f * s, 0.28f, 0.0f));
-            b.Box(arm, V(0.19f * s, 0.26f, 0.0f), V(0.07f, 0.05f, 0.05f), 0.03f, stone, V(0, 0, -15f * s));
-            b.Mark(arm, V(0.257f * s, 0.242f, 0.0f), V(s, -0.25f, 0), 0.02f, 0.02f, black);
-            int leg = b.Leg(s, V(0.07f * s, 0.06f, 0.0f));
-            b.Box(leg, V(0.075f * s, 0.03f, 0.02f), V(0.05f, 0.03f, 0.06f), 0.025f, stone);
+            int arm = b.Arm(s, V(0.13f * s, 0.28f, 0.0f));
+            b.Box(arm, V(0.21f * s, 0.26f, 0.0f), V(0.08f, 0.055f, 0.055f), 0.03f, stone, V(0, 0, -15f * s));
+            b.Mark(arm, V(0.287f * s, 0.24f, 0.0f), V(s, -0.25f, 0), 0.022f, 0.022f, black);
+            int leg = b.Leg(s, V(0.08f * s, 0.06f, 0.0f));
+            b.Box(leg, V(0.085f * s, 0.03f, 0.03f), V(0.055f, 0.03f, 0.07f), 0.025f, stone);
         });
         return b;
     }

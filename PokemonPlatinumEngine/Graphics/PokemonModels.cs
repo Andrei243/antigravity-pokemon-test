@@ -3351,39 +3351,62 @@ internal static partial class PokemonModels
         var navy = big ? Rgb(64, 80, 140) : Rgb(84, 90, 162);
         var red = Rgb(212, 70, 64);
         var yellow = Rgb(250, 206, 70);
+        // Garchomp stands broader than Gabite: a deeper chest, longer arm fins, a jet's head with fins swept back
+        float k = big ? 1.15f : 1f;
 
         PokeBuilder.Both(s =>
         {
-            int leg = b.Leg(s, V(0.12f * s, 0.46f, -0.02f));
-            b.Limb(leg, V(0.12f * s, 0.46f, -0.02f), V(0.16f * s, 0.22f, 0.06f), 0.1f, 0.08f, navy);
-            b.Limb(leg, V(0.16f * s, 0.22f, 0.06f), V(0.15f * s, 0.05f, 0.0f), 0.07f, 0.06f, navy);
-            b.Ell(leg, V(0.15f * s, 0.035f, 0.05f), V(0.07f, 0.035f, 0.1f), navy);
-            b.Spike(leg, V(0.2f * s, 0.28f, 0.0f), V(0.3f * s, 0.3f, -0.08f), 0.035f, Claw, mat: Shell);
+            int leg = b.Leg(s, V(0.12f * s * k, 0.46f, -0.02f));
+            b.Limb(leg, V(0.12f * s * k, 0.46f, -0.02f), V(0.16f * s * k, 0.22f, 0.06f), 0.1f * k, 0.08f * k, navy);
+            b.Limb(leg, V(0.16f * s * k, 0.22f, 0.06f), V(0.15f * s * k, 0.05f, 0.0f), 0.07f * k, 0.06f * k, navy);
+            b.Ell(leg, V(0.15f * s * k, 0.035f, 0.05f), V(0.07f * k, 0.035f, 0.1f * k), navy);
+            b.Spike(leg, V(0.2f * s * k, 0.28f, 0.0f), V(0.32f * s * k, 0.3f, -0.08f), 0.035f * k, Claw, mat: Shell);
+            if (big) Claws(b, leg, V(0.15f * s * k, 0.03f, 0.14f), V(0.035f, 0, 0), V(0, -0.2f, 1f), 0.05f, 0.016f);
         });
-        b.Ell(Body, V(0, 0.62f, 0), V(0.2f, 0.26f, 0.17f), navy);
-        b.PaintEll(Body, V(0, 0.58f, 0.07f), V(0.14f, 0.22f, 0.12f), red);
-        int tail = b.Tail(V(0, 0.44f, -0.12f));
-        b.Limb(tail, V(0, 0.44f, -0.12f), V(0, 0.2f, -0.42f), 0.09f, 0.05f, navy);
-        b.Spike(tail, V(0, 0.34f, -0.26f), V(0, 0.46f, -0.36f), 0.05f, navy, 0.35f);
+        b.Ell(Body, V(0, 0.62f, 0), V(0.2f * k, 0.26f, 0.17f * k), navy);
+        b.PaintEll(Body, V(0, 0.58f, 0.07f * k), V(0.14f * k, 0.22f, 0.12f * k), red);
+        if (big)
+        {
+            // The dorsal fin, notched as a shark's, and the yellow underside of the throat
+            Blade(b, Body, V(0, 0.84f, -0.1f), V(0, 1.1f, -0.22f), 0.09f, navy, V(1f, 0, 0), 0.3f);
+            b.PaintEll(Body, V(0, 0.8f, 0.14f), V(0.07f, 0.05f, 0.06f), yellow);
+        }
+        int tail = b.Tail(V(0, 0.44f, -0.12f * k));
+        b.Limb(tail, V(0, 0.44f, -0.12f * k), V(0, 0.2f, -0.44f * k), 0.09f * k, 0.05f, navy);
+        b.Spike(tail, V(0, 0.34f, -0.27f * k), V(0, 0.46f + 0.04f * (k - 1f), -0.37f * k), 0.05f * k, navy, 0.35f);
         PokeBuilder.Both(s =>
         {
-            int arm = b.Arm(s, V(0.18f * s, 0.78f, 0));
-            b.Limb(arm, V(0.18f * s, 0.78f, 0), V(0.3f * s, 0.6f, 0.08f), 0.06f, 0.05f, navy);
-            // Scythe-like fins on the arms
-            b.Ell(arm, V(0.36f * s, 0.62f, 0.02f), V(0.03f, 0.2f, 0.12f), navy, V(20f, 0, 25f * s), blend: 0.015f);
-            b.Spike(arm, V(0.32f * s, 0.54f, 0.12f), V(0.36f * s, 0.46f, 0.2f), 0.025f, Claw, mat: Shell);
+            int arm = b.Arm(s, V(0.18f * s * k, 0.78f, 0));
+            b.Limb(arm, V(0.18f * s * k, 0.78f, 0), V(0.3f * s * k, 0.6f, 0.08f), 0.06f * k, 0.05f * k, navy);
+            // Scythe-like fins on the arms: Garchomp's are wings, red along their edge
+            if (big)
+            {
+                var root = V(0.3f * s, 0.74f, -0.02f);
+                var tip = V(0.46f * s, 0.4f, -0.04f);
+                Blade(b, arm, root, tip, 0.14f, navy, V(1f * s, 0.2f, 0), 0.2f);
+                b.PaintEll(arm, Vector3.Lerp(root, tip, 0.55f) + V(0.04f * s, -0.02f, 0), V(0.03f, 0.14f, 0.04f), red, V(0, 0, 28f * s));
+                b.Spike(arm, V(0.37f * s, 0.56f, 0.1f), V(0.42f * s, 0.46f, 0.2f), 0.03f, Claw, mat: Shell);
+            }
+            else
+            {
+                b.Ell(arm, V(0.36f * s, 0.62f, 0.02f), V(0.03f, 0.2f, 0.12f), navy, V(20f, 0, 25f * s), blend: 0.015f);
+                b.Spike(arm, V(0.32f * s, 0.54f, 0.12f), V(0.36f * s, 0.46f, 0.2f), 0.025f, Claw, mat: Shell);
+            }
         });
 
         int head = b.Head(V(0, 0.86f, 0));
-        float hy = 0.98f;
+        float hy = big ? 1.0f : 0.98f;
         // Streamlined head with fins on the sides and the yellow star on the snout
-        b.Ell(head, V(0, hy, 0.08f), V(0.14f, 0.1f, 0.22f), navy);
+        b.Ell(head, V(0, hy, 0.08f), V(0.14f * k, 0.1f * k, 0.22f * k), navy);
         int jaw = b.Jaw(head, V(0, hy - 0.04f, 0.0f));
-        b.Ell(jaw, V(0, hy - 0.06f, 0.14f), V(0.11f, 0.04f, 0.14f), red, blend: 0.006f);
-        PokeBuilder.Both(s => b.Ell(head, V(0.18f * s, hy + 0.02f, 0.0f), V(0.12f, 0.03f, 0.12f), navy, V(0, 30f * s, -20f * s), blend: 0.015f));
-        if (big) b.Mark(head, V(0, hy + 0.08f, 0.14f), V(0, 1f, 0.35f), 0.045f, 0.045f, yellow, MarkShape.Star);
-        b.Spike(head, V(0, hy + 0.06f, -0.06f), V(0, hy + 0.12f, -0.26f), female ? 0.062f : 0.05f, navy, female ? 0.55f : 0.4f);
-        PokeBuilder.Both(s => b.Eye(head, V(0.09f * s, hy + 0.03f, 0.2f), V(0.7f * s, 0.05f, 1f), 0.03f, yellow));
+        b.Ell(jaw, V(0, hy - 0.06f, 0.14f * k), V(0.11f * k, 0.04f, 0.14f * k), red, blend: 0.006f);
+        if (big)
+            PokeBuilder.Both(s => Blade(b, head, V(0.1f * s, hy + 0.03f, 0.02f), V(0.34f * s, hy + 0.08f, -0.2f), 0.09f, navy, V(0, 1f, 0.2f), 0.25f));
+        else
+            PokeBuilder.Both(s => b.Ell(head, V(0.18f * s, hy + 0.02f, 0.0f), V(0.12f, 0.03f, 0.12f), navy, V(0, 30f * s, -20f * s), blend: 0.015f));
+        if (big) b.Mark(head, V(0, hy + 0.1f, 0.16f), V(0, 1f, 0.35f), 0.05f, 0.05f, yellow, MarkShape.Star);
+        b.Spike(head, V(0, hy + 0.06f * k, -0.06f), V(0, hy + 0.14f, -0.28f * k), (female ? 0.062f : 0.05f) * k, navy, female ? 0.55f : 0.4f);
+        PokeBuilder.Both(s => b.Eye(head, V(0.09f * s * k, hy + 0.03f, 0.2f * k), V(0.7f * s, 0.05f, 1f), 0.03f * k, yellow));
         return b;
     }
 
