@@ -64,6 +64,12 @@ public sealed record FieldSpot
     /// <summary>A secret base's spot in front (a tree, a shrub, an indent in rock: Emerald's, plan 21 · H10), where Secret Power opens a base.</summary>
     public bool SecretBase { get; init; }
 
+    /// <summary>
+    /// The move a puzzle of the place wants worked on the tile the player stands on, if there is one (plan 21 · H12, part a;
+    /// <see cref="Map.BrailleSpots"/>): that move can be used there whatever else the place says, and runs the puzzle's script.
+    /// </summary>
+    public FieldMove? Braille { get; init; }
+
     /// <summary>The place lies in fog that nobody has blown away.</summary>
     public bool Fog { get; init; }
 
@@ -181,6 +187,8 @@ public static class FieldMoveRules
     public static FieldMoveError Check(FieldMove move, FieldSpot spot, StoryState story)
     {
         if (BadgeFor(move, spot.Region) is { } badge && !story.HasBadge(spot.Region, badge)) return FieldMoveError.Badge;
+        // A puzzle of the place that this move works where the player stands (Emerald's braille: the badge is still asked)
+        if (spot.Braille == move) return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
         switch (move)
         {
             case FieldMove.Cut:
@@ -283,6 +291,7 @@ public static class FieldMoveRules
             Dive = FieldMovement.CanDive(map, x, y, walker with { Moves = walker.Moves | FieldMoves.Dive }),
             Surface = walker.Mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y),
             SecretBase = map.SecretBaseSpots.ContainsKey((nx, ny)),
+            Braille = map.BrailleSpots.TryGetValue((x, y), out var puzzle) ? puzzle.Move : null,
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             Dark = Darkness.Covers(map),
             Surfing = walker.Mode == TravelMode.Surfing,

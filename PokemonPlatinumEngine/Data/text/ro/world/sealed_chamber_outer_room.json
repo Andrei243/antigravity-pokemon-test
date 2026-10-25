@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Sealed Chamber"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {},
+  "signs": {
+    "SealedChamber_OuterRoom_EventScript_BrailleABC": {
+      "en": [
+        "Raised dots in neat rows: A, B, C."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleDEF": {
+      "en": [
+        "Raised dots in neat rows: D, E, F."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleGHI": {
+      "en": [
+        "Raised dots in neat rows: G, H, I."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleJKL": {
+      "en": [
+        "Raised dots in neat rows: J, K, L."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleMNO": {
+      "en": [
+        "Raised dots in neat rows: M, N, O."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BraillePQRS": {
+      "en": [
+        "Raised dots in neat rows: P, Q, R, S."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleTUV": {
+      "en": [
+        "Raised dots in neat rows: T, U, V."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleWXYZ": {
+      "en": [
+        "Raised dots in neat rows: W, X, Y, Z."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BraillePeriod": {
+      "en": [
+        "A single raised dot, and then nothing: the end of a sentence."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_OuterRoom_EventScript_BrailleComma": {
+      "en": [
+        "A single raised dot, set low: the pause in a sentence."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

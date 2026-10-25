@@ -1,0 +1,64 @@
+{
+  "Wall": [
+    {
+      "en": [
+        "Rows of raised dots cover the wall. They seem to say: use Rock Smash."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is a big hole in the wall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RockSmashThrough": [
+    {
+      "en": [
+        "The wall crumbled away, and a way into the dark chamber opened up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But nothing happened..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The wall has been broken already."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Regirock": [
+    {
+      "en": [
+        "Regirock stands in the dark, as still as a stone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Regirock vanished into the dark of the ruins..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

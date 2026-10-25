@@ -1,0 +1,31 @@
+{
+  "key": "island_cave",
+  "index": 305,
+  "name": "Island Cave",
+  "matrix": 254,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEALED_CHAMBER",
+  "nightMusic": "MUS_SEALED_CHAMBER",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 29, "to": "route_105", "toWarp": 0 },
+    { "x": 8, "z": 20, "to": "island_cave", "toWarp": 2 },
+    { "x": 8, "z": 11, "to": "island_cave", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "regice", "looks": "regice", "movement": "look_south", "x": 8, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_REGICE", "script": "IslandCave_EventScript_Regice" }
+  ],
+  "signs": [
+    { "x": 8, "z": 20, "type": 0, "script": "IslandCave_EventScript_CaveEntranceMiddle" },
+    { "x": 7, "z": 20, "type": 0, "script": "IslandCave_EventScript_CaveEntranceSide" },
+    { "x": 9, "z": 20, "type": 0, "script": "IslandCave_EventScript_CaveEntranceSide" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,21 @@
+# Southern Island's beach (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SouthernIsland_Exterior/scripts.inc).
+#
+# The sailor who brought the player stands on the sand and sails them back to Lilycove's harbour on request
+# (Emerald's SouthernIsland_Exterior_EventScript_Sailor).
+
+
+script Sailor
+  face self player
+  speaker "Sailor"
+  say "This is Southern Island. Nobody lives here, and I only come when the Champion's pass is shown."
+  ask "Shall I take you back to Lilycove?"
+  if no goto Stay
+  say "Aye. Hold on tight."
+  fade out 0.8
+  text "{player} sailed back to Lilycove City..."
+  warp "LilycoveCity_Harbor" 8 11 down
+  end
+label Stay
+  say "As you like. I'll be here when you're ready."
+  end

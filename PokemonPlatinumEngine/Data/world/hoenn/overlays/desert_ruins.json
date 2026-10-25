@@ -1,0 +1,30 @@
+{
+  // The Desert Ruins (plan 21 · H12, part a), under Route 111's sands: a hall, a wall of dots across it and the chamber
+  // behind, where Regirock waits at 8, 7. The wall is three slabs of rubble (the original covers the doorway with a wall of
+  // dots by script) and the way through it, the warp at 8, 20, is shut, until the Sealed Chamber's riddle has been read
+  // (FLAG_REGI_DOORS_OPENED) and Rock Smash is used before the wall, at 8, 21 (a braille spot, Emerald's
+  // ShouldDoBrailleRegirockEffect): FLAG_SYS_REGIROCK_PUZZLE_COMPLETED. Regirock is there while it has not been beaten or
+  // caught (desert_ruins.txt's OnEnter shows it, as Emerald's OnTransition does)
+  "area": "desert_ruins",
+  "name": "Desert Ruins",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "doors": [
+    { "warp": 1, "map": "DesertRuins", "x": 8, "y": 10, "facing": "Up", "openedBy": "FLAG_SYS_REGIROCK_PUZZLE_COMPLETED" }
+  ],
+  "braille": [
+    { "x": 8, "z": 21, "move": "Rock Smash", "script": "RockSmashThrough" }
+  ],
+  "read": {
+    "DesertRuins_EventScript_CaveEntranceMiddle": "Wall",
+    "DesertRuins_EventScript_CaveEntranceSide": "Wall"
+  },
+  "people": {
+    "regirock": { "name": "Regirock", "npcType": "Pokemon", "species": "Regirock", "still": true, "script": "Regirock" }
+  },
+  "npcs": [
+    { "id": "regirock_wall_left", "name": "Wall", "npcType": "Rubble", "x": 7, "y": 20, "hiddenBy": "FLAG_SYS_REGIROCK_PUZZLE_COMPLETED", "script": "Wall" },
+    { "id": "regirock_wall_middle", "name": "Wall", "npcType": "Rubble", "x": 8, "y": 20, "hiddenBy": "FLAG_SYS_REGIROCK_PUZZLE_COMPLETED", "script": "Wall" },
+    { "id": "regirock_wall_right", "name": "Wall", "npcType": "Rubble", "x": 9, "y": 20, "hiddenBy": "FLAG_SYS_REGIROCK_PUZZLE_COMPLETED", "script": "Wall" }
+  ]
+}

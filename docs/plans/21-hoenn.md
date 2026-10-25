@@ -1170,4 +1170,45 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       music (the Lilycove song plays), the crowd's cheer, judges' voices and the per-move contest animations (the
       moves' appeals are lines and hearts); Feebas's evolution by the Pokéblock's beauty is by the existing
       condition rule, and a test for it in the blender's own flow.
-- [ ] H12 The Frontier island and the post-game
+- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken)
+    - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
+      134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was
+      open), all in `RegionDatabase`'s Hoenn list; Route 105's and Route 111's doors into their caves unlocked.
+      **The way down**: Route 134's `diveTo` the floor under it (8, 6), whose pool a diver now swims
+      (`FieldMovement.Step`, Diving onto `DiveWater` of an underwater map), a passage into the corridor, `emergeAt` the
+      corridor's end (12, 44) up into the chamber's pool (10, 19) and Dive back down from it. **The puzzles**: the overlay's
+      `braille` (`Map.BrailleSpots`, `FieldSpot.Braille`, the party menu running the place's script for Dig at the outer
+      room's wall, Rock Smash at the Desert Ruins' and Flash at the Ancient Tomb's), the inner room's riddle (`team ends
+      "Wailord" "Relicanth"`, `FLAG_REGI_DOORS_OPENED`), Regice's lap of its hall by four corners and back (ours), the walls
+      as `Rubble` slabs over shut `doors` warps. **The Regis** at level 40, run-from-and-back, beaten-or-caught-and-gone
+      (`common.HoennChapterFourteen` hides them for a new game and an older save; no story version raised). **Southern
+      Island**: the ferry desk's attendant gives a Champion of Hoenn a pass (a flag, `FLAG_ENABLE_SHIP_SOUTHERN_ISLAND`) and
+      sails them to the beach, a sailor sails them back, and the stone on the pond's island brings down the eon Pokémon
+      that isn't roaming (Latios where Latias roams) at level 50 holding a Soul Dew (`wildbattle … holding`).
+    - **Decided**: the three braille puzzles are field moves used on the tile before the wall (as Emerald's are, by
+      position), needing the Sealed Chamber's doors for Rock Smash and Flash; Regice's lap is ours; the Eon Ticket is a
+      flag the attendant gives; Altering Cave stays unbuilt (its Route 103 warp is a plain rock wall in Emerald, a way
+      nobody can take, and its other tables are the Mystery Gift's); Mirage Island, which Emerald lays as another layout of
+      Route 130 by the personality of a Pokémon in the party, is left.
+    - **Tests** (run with `--filter`): `HoennPostGameTests` (24: the maps registered; Route 134's dive and the floor's way
+      up and on; the corridor's end and the pool's dive; Dig before the wall and nowhere else; the riddle six ways; Rock
+      Smash, Regirock fled and caught; Flash and Registeel; the lap in order and forgotten; the walls shut from the start;
+      a new game's hiding and an older save's; the attendant's pass and the sailor's return; the stone's eon Pokémon by the
+      roaming variable and each outcome; no ticket, no battle; a diver swimming the floor; the walk of the whole game
+      through every new room), `ScriptTests.EveryCommand` (`team ends`, `wildbattle … holding`), `StoryTests` (braille
+      scripts counted as started), `HoennTests` (Registeel in the tomb, the sea floor test leaving Route 134's own floor).
+      Golden `scripts.txt` moves (common.HoennNewGame and HoennChapterFourteen, the new places' scripts, the ferry
+      attendant's): accept it.
+    - **Shots** (written, not taken; `Modes/HoennPostGame.cs`, last of `hoenn`, `HOENN_FROM=postgame` alone): `h240` to
+      `h268` (Route 134's dark water and the dive, the floor, the corridor and its end, the chamber's pool, hall and wall,
+      Dig and the wall dug, the inner room and its riddle, the Island Cave's wall, lap and open way and Regice's battle,
+      the Desert Ruins' and the Ancient Tomb's the same with Rock Smash and Flash, the ferry desk, the beach, the garden,
+      the stone and the eon Pokémon), printing each puzzle's flags.
+    - **Left for part b**: the Battle Frontier island's own buildings and the S.S. Tidal's cabins and ferry (a Hoenn
+      Champion plays Sinnoh's five facilities through Scott's pass: rulings, "Scott's way to the Battle Frontier"; the
+      Brains' looks and the Battle Points shop go with Sinnoh's), the Marine and Terra Caves (Kyogre and Groudon catchable),
+      Sky Pillar's top with Rayquaza battled and its cracked floors crossed at the Mach Bike's pace, Steven at Meteor Falls,
+      the Desert Underpass, New Mauville, Trainer Hill, Mirage Island, Altering Cave, the Weather Institute's reports,
+      the event islands (decision 5: Navel Rock, Birth Island, Faraway Island), the Gold and Silver Shields and the Glass
+      Ornament as decorations, Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json`, the Regis' and eon
+      Pokémon's looks beyond the stand-in field sprites, and the camera's pan as the eon Pokémon comes down.

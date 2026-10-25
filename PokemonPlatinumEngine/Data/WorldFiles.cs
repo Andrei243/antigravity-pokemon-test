@@ -952,6 +952,20 @@ public sealed class WorldOverlayFile
     public OverlaySpot? EmergeTo { get; set; }
 
     /// <summary>
+    /// Tiles of the area's sea floor that come up somewhere other than <see cref="EmergeTo"/> (plan 21 · H12, part a;
+    /// Emerald's Sealed Chamber, whose <c>OnDive</c> script surfaces the one tile at its end into the chamber above and the
+    /// rest to Route 134): each a tile of the area's matrix and the place coming up from it comes up onto.
+    /// </summary>
+    public List<OverlayEmerge>? EmergeAt { get; set; }
+
+    /// <summary>
+    /// Tiles where a field move works a puzzle of the area's own (plan 21 · H12, part a; Emerald's braille: Dig at the
+    /// Sealed Chamber's wall, Rock Smash in the Desert Ruins, Flash in the Ancient Tomb): the move chosen in the party
+    /// menu on the tile runs the area's script in place of the move's usual one, whatever the move would say of the place.
+    /// </summary>
+    public List<OverlayBraille>? Braille { get; set; }
+
+    /// <summary>
     /// The map a cracked floor of the area drops whoever walks onto it to, onto the same tile (plan 21 · H8, part c; Emerald's
     /// <c>setholewarp</c>: Sky Pillar's fourth floor down to its third). Left out, a cracked floor is walked like any other.
     /// </summary>
@@ -973,6 +987,26 @@ public sealed class OverlaySpot
     public int X { get; set; }
     public int Z { get; set; }
     public Direction Facing { get; set; } = Direction.Down;
+}
+
+/// <summary>A tile of an area's sea floor and where coming up from it leads (<see cref="WorldOverlayFile.EmergeAt"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlayEmerge>))]
+public sealed class OverlayEmerge
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public OverlaySpot To { get; set; } = new();
+}
+
+/// <summary>A tile a field move works a puzzle on, and the script of the area's file it runs (<see cref="WorldOverlayFile.Braille"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlayBraille>))]
+public sealed class OverlayBraille
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    /// <summary>The field move, by its name in the move data (<c>Dig</c>, <c>Rock Smash</c>, <c>Flash</c>).</summary>
+    public string Move { get; set; } = "";
+    public string Script { get; set; } = "";
 }
 
 /// <summary>

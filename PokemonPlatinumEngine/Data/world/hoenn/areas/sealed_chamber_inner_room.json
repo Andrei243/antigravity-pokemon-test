@@ -1,0 +1,33 @@
+{
+  "key": "sealed_chamber_inner_room",
+  "index": 310,
+  "name": "Sealed Chamber",
+  "matrix": 259,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEALED_CHAMBER",
+  "nightMusic": "MUS_SEALED_CHAMBER",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 19, "to": "sealed_chamber_outer_room", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 10, "z": 4, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleBackWall" },
+    { "x": 6, "z": 8, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart1" },
+    { "x": 14, "z": 8, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2" },
+    { "x": 4, "z": 13, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3" },
+    { "x": 16, "z": 13, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4" },
+    { "x": 6, "z": 18, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5" },
+    { "x": 14, "z": 18, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6" },
+    { "x": 9, "z": 4, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleBackWall" },
+    { "x": 11, "z": 4, "type": 0, "script": "SealedChamber_InnerRoom_EventScript_BrailleBackWall" }
+  ],
+  "triggers": []
+}

@@ -745,6 +745,8 @@ public sealed partial class ScriptRunner
                 var wild = i.Shiny ? new Pokemon(species, i.Number, Personality.Shiny(host.TrainerNumber, host.Chance), host.Chance) { IsShiny = true }
                     : new Pokemon(species, i.Number);
                 if (!swapped && !string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
+                // One that holds something (the eon Pokémon's Soul Dew, plan 21 · H12)
+                if (i.Op == Op.WildBattle && i.Other.Length > 0) wild.HeldItem = ItemDatabase.Get(i.Other);
                 // A lesson someone else shows (plan 21 · H2): their name and their Pokémon
                 var catcher = i.Op == Op.CatchingLesson && i.Other.Length > 0
                     ? new LessonCatcher(i.Other, new Pokemon(PokemonDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no species '{i.Partner}'"), i.X))
@@ -1968,6 +1970,11 @@ public sealed partial class ScriptRunner
             // Coronet's summit asks of the Adamant and the Lustrous Orb beside the bag. An Egg holds nothing
             case "holds":
                 Result = team.Any(p => !p.IsEgg && p.HeldItem?.Name == i.Other) ? 1 : 0;
+                break;
+            // CheckRelicanthWailord (plan 21 · H12, part a): the first place of the team holds one species and the last
+            // another, Eggs and fainted Pokémon counted as they stand (the original asks the species of slots 0 and n - 1)
+            case "ends":
+                Result = team.Count >= 2 && team[0].Species.Name == i.Other && team[^1].Species.Name == i.Record ? 1 : 0;
                 break;
             // ScrCmd_ChangeDeoxysForm (plan 06 · R29): every Deoxys of the team takes the meteorite's forme. RESULT is
             // how many changed

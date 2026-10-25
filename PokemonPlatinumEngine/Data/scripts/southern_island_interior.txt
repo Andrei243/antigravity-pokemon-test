@@ -1,0 +1,74 @@
+# Southern Island's garden (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SouthernIsland_Interior/scripts.inc).
+#
+# A stone stands on an island in the pond, which the player reaches by Surf and reads from 13, 12. With the ferry's pass
+# (FLAG_ENABLE_SHIP_SOUTHERN_ISLAND) and the eon Pokémon not yet beaten or caught, one of the pair comes down to the stone:
+# the one that is NOT roaming Hoenn, Latios where VAR_ROAMER_POKEMON is 0 (Latias roams) and Latias where it is 1
+# (Emerald's SetUpLatios and SetUpLatias), at level 50, holding a Soul Dew. Run from, it flies off and is back with
+# the next visit (FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET lasts only while the player stays); beaten, it is gone
+# (FLAG_DEFEATED_LATIAS_OR_LATIOS); caught, FLAG_CAUGHT_LATIAS_OR_LATIOS. Emerald walks it down from the north over a pan
+# of the camera; here it comes down at once to the tile before the stone, 13, 10.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_FOURTEEN call HoennChapterFourteen
+  end
+
+
+script Stone
+  speaker none
+  if not flag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND goto Plain
+  if flag FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET goto Plain
+  if flag FLAG_DEFEATED_LATIAS_OR_LATIOS goto Plain
+  if flag FLAG_CAUGHT_LATIAS_OR_LATIOS goto Plain
+  if var VAR_ROAMER_POKEMON == 0 goto Latios
+  scene "Latias comes down to the stone"
+  setflag FLAG_ENCOUNTERED_LATIAS_OR_LATIOS
+  setflag FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET
+  clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
+  show southern_island_latias
+  cry "Latias"
+  wait 1
+  wildbattle "Latias" 50 holding "Soul Dew"
+  hide southern_island_latias
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
+  if result == 3 goto CaughtOne
+  if result == 1 goto BeatenOne
+  text "Latias flew off over the sea..."
+  endscene
+  end
+label Latios
+  scene "Latios comes down to the stone"
+  setflag FLAG_ENCOUNTERED_LATIAS_OR_LATIOS
+  setflag FLAG_MAP_LOCAL_SOUTHERN_ISLAND_LATI_MET
+  clearflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
+  show southern_island_latios
+  cry "Latios"
+  wait 1
+  wildbattle "Latios" 50 holding "Soul Dew"
+  hide southern_island_latios
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
+  if result == 3 goto CaughtOne
+  if result == 1 goto BeatenOne
+  text "Latios flew off over the sea..."
+  endscene
+  end
+label CaughtOne
+  setflag FLAG_CAUGHT_LATIAS_OR_LATIOS
+  endscene
+  end
+label BeatenOne
+  setflag FLAG_DEFEATED_LATIAS_OR_LATIOS
+  text "The eon Pokémon flew off over the sea, and was gone for good..."
+  endscene
+  end
+label Plain
+  text "A smooth stone stands here, worn by the years. Whatever once rested on it is gone."
+  end
+
+
+# Whoever of the pair comes down is looked at, not spoken to (a battle is the stone's)
+script Lati
+  speaker none
+  text "The eon Pokémon watches you closely."
+  end

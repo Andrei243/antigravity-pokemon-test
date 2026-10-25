@@ -1875,6 +1875,7 @@ script HoennNewGame
   call HoennChapterEleven
   call HoennChapterTwelve
   call HoennChapterThirteen
+  call HoennChapterFourteen
   return
 
 
@@ -2192,6 +2193,20 @@ script HoennChapterTwelve
 script HoennChapterThirteen
   setflag FLAG_HOENN_CHAPTER_THIRTEEN
   setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+  return
+
+
+# What Emerald's new game hides for the Regis' chambers and Southern Island (plan 21 · H12, part a): Regirock, Regice and
+# Registeel, whom each cave's arrival shows again while it has not been beaten or caught (Emerald's OnTransition clears the
+# flag), and the eon pair's two figures in Southern Island's garden. No story version is raised: HoennNewGame calls it, and
+# the arrivals of the five places call it for a save that never ran it (FLAG_HOENN_CHAPTER_FOURTEEN)
+script HoennChapterFourteen
+  setflag FLAG_HOENN_CHAPTER_FOURTEEN
+  setflag FLAG_HIDE_REGIROCK
+  setflag FLAG_HIDE_REGICE
+  setflag FLAG_HIDE_REGISTEEL
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
   return
 
 

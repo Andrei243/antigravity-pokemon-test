@@ -1,0 +1,34 @@
+{
+  // The Island Cave (plan 21 · H12, part a), on the rocks west of Route 105: a hall, a wall of dots across it and the
+  // chamber behind, where Regice waits at 8, 7. The wall is three slabs of rubble and the way through it (the warp at 8, 20)
+  // is shut until the Sealed Chamber's riddle has been read (FLAG_REGI_DOORS_OPENED) and the hall's dots have been obeyed:
+  // read the wall from before it, then run a lap of the hall by its four corners and back to the wall (VAR_ISLAND_CAVE_LAP
+  // 1 to 5, our own, which the steps onto the corners count; Emerald's ShouldDoBrailleRegicePuzzle walks a path of
+  // tiles it counts steps along). It is forgotten as the cave is left. FLAG_SYS_BRAILLE_REGICE_COMPLETED
+  "area": "island_cave",
+  "name": "Island Cave",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "doors": [
+    { "warp": 1, "map": "IslandCave", "x": 8, "y": 10, "facing": "Up", "openedBy": "FLAG_SYS_BRAILLE_REGICE_COMPLETED" }
+  ],
+  "read": {
+    "IslandCave_EventScript_CaveEntranceMiddle": "Wall",
+    "IslandCave_EventScript_CaveEntranceSide": "Wall"
+  },
+  "triggers": [
+    { "x": 4, "z": 22, "script": "LapWestCorner", "variable": "VAR_ISLAND_CAVE_LAP", "value": 1 },
+    { "x": 4, "z": 27, "script": "LapSouthWestCorner", "variable": "VAR_ISLAND_CAVE_LAP", "value": 2 },
+    { "x": 12, "z": 27, "script": "LapSouthEastCorner", "variable": "VAR_ISLAND_CAVE_LAP", "value": 3 },
+    { "x": 12, "z": 22, "script": "LapEastCorner", "variable": "VAR_ISLAND_CAVE_LAP", "value": 4 },
+    { "x": 7, "z": 21, "width": 3, "script": "LapDone", "variable": "VAR_ISLAND_CAVE_LAP", "value": 5 }
+  ],
+  "people": {
+    "regice": { "name": "Regice", "npcType": "Pokemon", "species": "Regice", "still": true, "script": "Regice" }
+  },
+  "npcs": [
+    { "id": "regice_wall_left", "name": "Wall", "npcType": "Rubble", "x": 7, "y": 20, "hiddenBy": "FLAG_SYS_BRAILLE_REGICE_COMPLETED", "script": "Wall" },
+    { "id": "regice_wall_middle", "name": "Wall", "npcType": "Rubble", "x": 8, "y": 20, "hiddenBy": "FLAG_SYS_BRAILLE_REGICE_COMPLETED", "script": "Wall" },
+    { "id": "regice_wall_right", "name": "Wall", "npcType": "Rubble", "x": 9, "y": 20, "hiddenBy": "FLAG_SYS_BRAILLE_REGICE_COMPLETED", "script": "Wall" }
+  ]
+}

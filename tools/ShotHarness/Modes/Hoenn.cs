@@ -19,12 +19,14 @@ partial class Harness
         game.SaveSlot = 1;
         game.LocationSign.Hide();
         Frames(30);
-        // HOENN_FROM=sea runs Dive's shots and the secret bases' alone, HOENN_FROM=bases the bases' alone, in a new game
+        // HOENN_FROM=sea runs Dive's shots and the secret bases' alone, HOENN_FROM=bases the bases' alone, HOENN_FROM=postgame the
+        // post-game's places' alone (plan 21 · H12, part a), in a new game
         string from = Environment.GetEnvironmentVariable("HOENN_FROM") ?? "";
-        if (from is "sea" or "bases")
+        if (from is "sea" or "bases" or "postgame")
         {
             if (from == "sea") HoennSeaShots();
-            HoennBaseShots();
+            if (from == "postgame") HoennPostGameShots();
+            else HoennBaseShots();
             engine.NewGameRegion = "Sinnoh";
             return;
         }
@@ -365,6 +367,8 @@ partial class Harness
         try { HoennSeaShots(); } catch (Exception e) { Console.WriteLine($"!! Dive's shots threw {e.GetType().Name}: {e.Message}"); }
         // And last a secret base opened, furnished and found again from a save (plan 21 · H10)
         try { HoennBaseShots(); } catch (Exception e) { Console.WriteLine($"!! the secret bases' shots threw {e.GetType().Name}: {e.Message}"); }
+        // And the post-game's places last: the Regis and Southern Island (plan 21 · H12, part a; HOENN_FROM=postgame alone)
+        try { HoennPostGameShots(); } catch (Exception e) { Console.WriteLine($"!! the post-game's shots threw {e.GetType().Name}: {e.Message}"); }
         engine.NewGameRegion = "Sinnoh";
     }
 }

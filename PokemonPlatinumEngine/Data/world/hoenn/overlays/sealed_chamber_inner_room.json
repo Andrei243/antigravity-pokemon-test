@@ -1,0 +1,21 @@
+{
+  // The Sealed Chamber's inner room (plan 21 · H12, part a): six walls of dots tell the story of the people who sealed three
+  // Pokémon away, and the wall at the back (10, 4) is the riddle: with a Wailord first on the team and a Relicanth last, it
+  // shakes the cave, and the doors of the three Regis' chambers open far off (FLAG_REGI_DOORS_OPENED; Emerald's
+  // SealedChamber_InnerRoom_EventScript_BrailleBackWall, CheckRelicanthWailord). The words of the dots are ours
+  "area": "sealed_chamber_inner_room",
+  "name": "Sealed Chamber",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "read": {
+    "SealedChamber_InnerRoom_EventScript_BrailleBackWall": "BackWall"
+  },
+  "signs": {
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart1": "The dots tell of a people. In this cave we lived,\nand the cave gave us everything we had.",
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2": "The dots go on. All we owned we owed to the\nPokémon, who shared the land with us.",
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3": "The dots grow stern. But we sealed the Pokémon\naway, and shut them in the dark.",
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4": "The dots are crowded here. We feared their\npower, and we feared what it might do.",
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5": "The dots are steadier again. Those who come\nwith courage and with hope, let them go on.",
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6": "The last dots: open the door, and an eternal\nPokémon waits behind it."
+  }
+}

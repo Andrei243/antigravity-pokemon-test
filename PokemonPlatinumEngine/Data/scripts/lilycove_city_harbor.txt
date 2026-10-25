@@ -30,3 +30,32 @@ label Offer
 label Stay
   say "No hurry. The Frontier will still be there when you are ready."
   end
+
+
+# The ferry desk's attendant (plan 21 · H12, part a; Emerald's LilycoveCity_Harbor_EventScript_FerryAttendant). Before the
+# Hall of Fame the S.S. Tidal takes no passengers. A Champion of Hoenn is given the pass for Southern Island the first
+# time they speak to her (FLAG_ENABLE_SHIP_SOUTHERN_ISLAND: Emerald's Eon Ticket reaches the game only by an event, so the
+# pass is ours, a flag as Scott's Frontier Pass is) and is sailed there whenever they like, to the beach at 13, 22.
+script FerryAttendant
+  face self player
+  speaker "Attendant"
+  if not flag HoennHallOfFame goto Closed
+  if flag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND goto Offer
+  say "Champion {player}! The harbour has been told to expect you, and I'm to give you this."
+  setflag FLAG_ENABLE_SHIP_SOUTHERN_ISLAND
+  text "{player} was given a ferry pass for Southern Island!"
+  say "There's an island far to the south that no ferry calls at, with a garden in the middle of it. The pass lets my ferry sail there for you."
+label Offer
+  ask "Shall I take you to Southern Island?"
+  if no goto Stay
+  say "Wonderful! Come aboard."
+  fade out 0.8
+  text "{player} sailed for Southern Island..."
+  warp "SouthernIsland_Exterior" 13 22 up
+  end
+label Closed
+  say "Welcome to Lilycove's harbour. The S.S. Tidal calls here, but she isn't taking passengers today. Please come back another time."
+  end
+label Stay
+  say "Of course. Come back whenever you like."
+  end
