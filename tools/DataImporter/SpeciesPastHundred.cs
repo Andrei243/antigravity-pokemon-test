@@ -35,7 +35,7 @@ public sealed class SpeciesDesign
 
 /// <summary>
 /// Plan 03 · D14: the species of our own that evolve past level 100, batch by batch as the user approves them
-/// (<c>docs/plans/D14-proposals-kanto.md</c>, <c>D14-proposals-johto.md</c>, <c>D14-proposals-hoenn.md</c>). Each design is a row of the hand-written
+/// (<c>docs/plans/D14-proposals-kanto.md</c>, <c>D14-proposals-johto.md</c>, <c>D14-proposals-hoenn.md</c>, <c>D14-proposals-sinnoh.md</c>). Each design is a row of the hand-written
 /// table <c>Overrides/species-past-hundred.json</c>; this makes it a whole species of <c>species.json</c> by the
 /// proposals' rules and puts its evolution on the species it comes from. No species is code of its own: a later batch
 /// is rows of the table.
