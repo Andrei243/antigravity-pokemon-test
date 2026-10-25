@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2359 Omenblade (Dark), from Absol: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2359_1" d="M358 322L452 250L432 296L474 300L400 346Z"/><clipPath id="h2359_1c"><use href="#h2359_1"/></clipPath><path id="h2359_2" d="M258 296C270 222 322 160 396 128C390 158 378 174 362 184C388 186 396 198 372 212C388 218 382 232 356 236C366 250 346 262 320 264Z"/><clipPath id="h2359_2c"><use href="#h2359_2"/></clipPath><path id="h2359_3" d="M206 340a86 42 0 1 0 172 0a86 42 0 1 0 -172 0Z"/><clipPath id="h2359_3c"><use href="#h2359_3"/></clipPath><path id="h2359_4" d="M310 401.4A20 48 -4 1 0 350 398.6A20 48 -4 1 0 310 401.4Z"/><clipPath id="h2359_4c"><use href="#h2359_4"/></clipPath><path id="h2359_5" d="M202 400a20 50 0 1 0 40 0a20 50 0 1 0 -40 0Z"/><clipPath id="h2359_5c"><use href="#h2359_5"/></clipPath><path id="h2359_6" d="M194.9 317A32 48 -32 1 0 249.1 283A32 48 -32 1 0 194.9 317Z"/><clipPath id="h2359_6c"><use href="#h2359_6"/></clipPath><path id="h2359_7" d="M208 220C246 168 292 146 336 156C292 166 256 194 226 236Z"/><clipPath id="h2359_7c"><use href="#h2359_7"/></clipPath><path id="h2359_8" d="M148.4 254.4A46 40 -8 1 0 239.6 241.6A46 40 -8 1 0 148.4 254.4Z"/><clipPath id="h2359_8c"><use href="#h2359_8"/></clipPath><path id="h2359_9" d="M176 214C150 184 150 152 172 124C166 160 178 184 198 206Z"/><clipPath id="h2359_9c"><use href="#h2359_9"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M112 450a170 14 0 1 0 340 0a170 14 0 1 0 -340 0Z" fill="#e9ebf2"/>
+<use href="#h2359_1" fill="#3c4869"/>
+<g clip-path="url(#h2359_1c)"><path d="M400 346L474 300L432 312Z" fill="#28304a"/></g>
+<use href="#h2359_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M340 394.6A20 48 4 1 0 380 397.4A20 48 4 1 0 340 394.6Z" fill="#c8cedc" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M228 401.4A18 48 2 1 0 264 402.6A18 48 2 1 0 228 401.4Z" fill="#c8cedc" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M341 440a21 9 0 1 0 42 0a21 9 0 1 0 -42 0Z" fill="#3c4869" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M228 446a20 9 0 1 0 40 0a20 9 0 1 0 -40 0Z" fill="#3c4869" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2359_2" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_2c)"><path d="M320 264C346 262 366 250 356 236L330 250Z" fill="#c8cedc"/><path d="M297 207.3A30 6 -40 1 0 343 168.7A30 6 -40 1 0 297 207.3Z" fill="#ffffff"/></g>
+<use href="#h2359_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M300 230C320 214 344 200 368 190" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M300 252C324 240 344 228 364 222" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2359_3" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_3c)"><path d="M214 368a86 20 0 1 0 172 0a86 20 0 1 0 -172 0Z" fill="#c8cedc"/></g>
+<use href="#h2359_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2359_4" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_4c)"><path d="M329 406.8A11 46 -4 1 0 351 405.2A11 46 -4 1 0 329 406.8Z" fill="#c8cedc"/></g>
+<use href="#h2359_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M307 446a21 9 0 1 0 42 0a21 9 0 1 0 -42 0Z" fill="#3c4869" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2359_5" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_5c)"><path d="M221 406a11 48 0 1 0 22 0a11 48 0 1 0 -22 0Z" fill="#c8cedc"/></g>
+<use href="#h2359_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M198 448a22 9 0 1 0 44 0a22 9 0 1 0 -44 0Z" fill="#3c4869" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2359_6" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_6c)"><path d="M220.7 325.5A18 40 -32 1 0 251.3 306.5A18 40 -32 1 0 220.7 325.5Z" fill="#c8cedc"/></g>
+<use href="#h2359_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2359_7" fill="#3c4869"/>
+<g clip-path="url(#h2359_7c)"><path d="M226 236C256 194 292 166 336 156L330 166C296 178 262 204 232 240Z" fill="#28304a"/><path d="M248 189.8A26 3 -32 1 0 292 162.2A26 3 -32 1 0 248 189.8Z" fill="#5d6a8e"/></g>
+<use href="#h2359_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2359_8" fill="#f4f6fb"/>
+<g clip-path="url(#h2359_8c)"><path d="M190 270a30 24 0 1 0 60 0a30 24 0 1 0 -60 0Z" fill="#c8cedc"/><path d="M136.4 273A36 24 -8 1 0 207.6 263A36 24 -8 1 0 136.4 273Z" fill="#3c4869"/></g>
+<use href="#h2359_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2359_9" fill="#3c4869"/>
+<g clip-path="url(#h2359_9c)"><path d="M161 159.6A3 18 8 1 0 167 160.4A3 18 8 1 0 161 159.6Z" fill="#5d6a8e"/></g>
+<use href="#h2359_9" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M160.1 263.4A8 6 -10 1 0 175.9 260.6A8 6 -10 1 0 160.1 263.4Z" fill="#d43a4a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M165.3 263.3A4 3.6 -10 1 0 173.1 261.9A4 3.6 -10 1 0 165.3 263.3Z" fill="#1b1b2b"/>
+<path d="M163.1 260.3A2.6 1.7 -10 1 0 168.1 259.5A2.6 1.7 -10 1 0 163.1 260.3Z" fill="#ffffff"/>
+<path d="M146 282Q160 288 176 282" fill="none" stroke="#ffffff" stroke-width="3"/>
+</svg>

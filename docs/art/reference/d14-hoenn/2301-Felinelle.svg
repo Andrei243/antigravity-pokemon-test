@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2301 Felinelle (Normal/Fairy), from Delcatty: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2301_1" d="M352 334C402 322 424 262 412 202L396 204C402 256 386 300 346 316Z"/><clipPath id="h2301_1c"><use href="#h2301_1"/></clipPath><path id="h2301_2" d="M380.2 182.4A17 34 -22 1 0 411.8 169.6A17 34 -22 1 0 380.2 182.4Z"/><clipPath id="h2301_2c"><use href="#h2301_2"/></clipPath><path id="h2301_3" d="M416.5 179.4A15 30 26 1 0 443.5 192.6A15 30 26 1 0 416.5 179.4Z"/><clipPath id="h2301_3c"><use href="#h2301_3"/></clipPath><path id="h2301_4" d="M194.4 348.4A96 46 -5 1 0 385.6 331.6A96 46 -5 1 0 194.4 348.4Z"/><clipPath id="h2301_4c"><use href="#h2301_4"/></clipPath><path id="h2301_5" d="M291.1 406.2A21 48 -6 1 0 332.9 401.8A21 48 -6 1 0 291.1 406.2Z"/><clipPath id="h2301_5c"><use href="#h2301_5"/></clipPath><path id="h2301_6" d="M193 404.6A17 48 -2 1 0 227 403.4A17 48 -2 1 0 193 404.6Z"/><clipPath id="h2301_6c"><use href="#h2301_6"/></clipPath><path id="h2301_7" d="M150 250Q160 232 176 244Q186 226 202 240Q216 222 230 240Q248 228 254 250Q272 250 264 270Q278 288 258 298Q262 320 240 314Q230 332 212 318Q196 332 184 314Q164 318 166 298Q144 290 156 274Q140 262 150 250Z"/><clipPath id="h2301_7c"><use href="#h2301_7"/></clipPath><path id="h2301_8" d="M162 196L150 132L196 176Z"/><clipPath id="h2301_8c"><use href="#h2301_8"/></clipPath><path id="h2301_9" d="M220 176L254 128L250 190Z"/><clipPath id="h2301_9c"><use href="#h2301_9"/></clipPath><path id="h2301_10" d="M154 216a52 44 0 1 0 104 0a52 44 0 1 0 -104 0Z"/><clipPath id="h2301_10c"><use href="#h2301_10"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M122 452a150 13 0 1 0 300 0a150 13 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<use href="#h2301_1" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_1c)"><path d="M404 204L412 202C424 262 402 322 352 334L352 326C392 312 408 262 404 204Z" fill="#9f80b6"/></g>
+<use href="#h2301_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_2" fill="#f6ecc8"/>
+<g clip-path="url(#h2301_2c)"><path d="M394.7 189.7A10 28 -22 1 0 413.3 182.3A10 28 -22 1 0 394.7 189.7Z" fill="#d6c393"/></g>
+<use href="#h2301_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_3" fill="#f6ecc8"/>
+<g clip-path="url(#h2301_3c)"><path d="M427.9 190.1A9 26 26 1 0 444.1 197.9A9 26 26 1 0 427.9 190.1Z" fill="#d6c393"/></g>
+<use href="#h2301_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M323.1 396.5A21 50 4 1 0 364.9 399.5A21 50 4 1 0 323.1 396.5Z" fill="#9f80b6" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M219 401.4A17 48 2 1 0 253 402.6A17 48 2 1 0 219 401.4Z" fill="#9f80b6" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_4" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_4c)"><path d="M200.4 380.7A100 30 -5 1 0 399.6 363.3A100 30 -5 1 0 200.4 380.7Z" fill="#9f80b6"/><path d="M230.2 315.2A60 8 -5 1 0 349.8 304.8A60 8 -5 1 0 230.2 315.2Z" fill="#ecdff5"/></g>
+<use href="#h2301_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_5" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_5c)"><path d="M310.1 411.3A12 46 -6 1 0 333.9 408.7A12 46 -6 1 0 310.1 411.3Z" fill="#9f80b6"/></g>
+<use href="#h2301_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M288 448a22 9 0 1 0 44 0a22 9 0 1 0 -44 0Z" fill="#f6ecc8" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2301_6" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_6c)"><path d="M209 410.3A9 46 -2 1 0 227 409.7A9 46 -2 1 0 209 410.3Z" fill="#9f80b6"/></g>
+<use href="#h2301_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M185 448a21 9 0 1 0 42 0a21 9 0 1 0 -42 0Z" fill="#f6ecc8" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2301_7" fill="#f6ecc8"/>
+<g clip-path="url(#h2301_7c)"><path d="M264 270Q278 288 258 298Q262 320 240 314Q230 332 212 318L230 280Z" fill="#d6c393"/></g>
+<use href="#h2301_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_8" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_8c)"><path d="M164 186L157 148L184 176Z" fill="#f2a2bf"/></g>
+<use href="#h2301_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_9" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_9c)"><path d="M240 150L254 128L250 190Z" fill="#9f80b6"/><path d="M228 176L249 145L246 184Z" fill="#f2a2bf"/></g>
+<use href="#h2301_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2301_10" fill="#c6a7d8"/>
+<g clip-path="url(#h2301_10c)"><path d="M200 240a36 32 0 1 0 72 0a36 32 0 1 0 -72 0Z" fill="#9f80b6"/><path d="M167.1 198.2A18 8 -20 1 0 200.9 185.8A18 8 -20 1 0 167.1 198.2Z" fill="#ecdff5"/></g>
+<use href="#h2301_10" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M188 178a16 16 0 1 0 32 0a16 16 0 1 0 -32 0Z" fill="#fff6a8" opacity="0.45"/>
+<path d="M197 186A12 12 0 1 0 214 170A9 9 0 1 1 197 186Z" fill="#fff2a0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M176 218Q186 206 196 216Q186 224 176 218Z" fill="#1b1b2b"/>
+<path d="M180 214a3 2 0 1 0 6 0a3 2 0 1 0 -6 0Z" fill="#ffffff"/>
+<path d="M214 214Q223 204 231 213Q223 220 214 214Z" fill="#1b1b2b"/>
+<path d="M217.4 211a2.6 2 0 1 0 5.2 0a2.6 2 0 1 0 -5.2 0Z" fill="#ffffff"/>
+<path d="M191 236a5 3.5 0 1 0 10 0a5 3.5 0 1 0 -10 0Z" fill="#f2a2bf"/>
+<path d="M190 244Q196 250 202 244" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2342 Crayronin (Water/Dark), from Crawdaunt: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2342_1" d="M306.5 271.6A15 34 -40 1 0 329.5 252.4A15 34 -40 1 0 306.5 271.6Z"/><clipPath id="h2342_1c"><use href="#h2342_1"/></clipPath><path id="h2342_2" d="M334 236C356 200 382 150 404 96C412 140 396 196 352 248Z"/><clipPath id="h2342_2c"><use href="#h2342_2"/></clipPath><path id="h2342_3" d="M268 252L366 210L392 298Z"/><clipPath id="h2342_3c"><use href="#h2342_3"/></clipPath><path id="h2342_4" d="M276.6 398.7A42 20 10 1 0 359.4 413.3A42 20 10 1 0 276.6 398.7Z"/><clipPath id="h2342_4c"><use href="#h2342_4"/></clipPath><path id="h2342_5" d="M214.3 335.6A54 68 -6 1 0 321.7 324.4A54 68 -6 1 0 214.3 335.6Z"/><clipPath id="h2342_5c"><use href="#h2342_5"/></clipPath><path id="h2342_6" d="M185.7 271.7A16 36 40 1 0 210.3 292.3A16 36 40 1 0 185.7 271.7Z"/><clipPath id="h2342_6c"><use href="#h2342_6"/></clipPath><path id="h2342_7" d="M180 258C150 214 120 160 100 96C134 132 168 190 196 244Z"/><clipPath id="h2342_7c"><use href="#h2342_7"/></clipPath><path id="h2342_8" d="M196 222a44 36 0 1 0 88 0a44 36 0 1 0 -88 0Z"/><clipPath id="h2342_8c"><use href="#h2342_8"/></clipPath><path id="h2342_9" d="M236 142L243.6 165.5L268.3 165.5L248.4 180L256 203.5L236 189L216 203.5L223.6 180L203.7 165.5L228.4 165.5Z"/><clipPath id="h2342_9c"><use href="#h2342_9"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M126 452a140 13 0 1 0 280 0a140 13 0 1 0 -280 0Z" fill="#e9ebf2"/>
+<use href="#h2342_1" fill="#d24a3a"/>
+<g clip-path="url(#h2342_1c)"><path d="M317.9 275.1A8 32 -40 1 0 330.1 264.9A8 32 -40 1 0 317.9 275.1Z" fill="#a3332a"/></g>
+<use href="#h2342_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2342_2" fill="#d24a3a"/>
+<g clip-path="url(#h2342_2c)"><path d="M352 248C396 196 412 140 404 96L410 110C410 170 390 210 360 250Z" fill="#a3332a"/><path d="M340 230C362 196 386 150 402 104" fill="none" stroke="#f6e1d6" stroke-width="6"/></g>
+<use href="#h2342_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M352 248C384 226 410 196 430 160C428 196 404 234 362 260Z" fill="#a3332a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2342_3" fill="#e3c27a"/>
+<g clip-path="url(#h2342_3c)"><path d="M330 226L366 210L392 298L340 280Z" fill="#b8964d"/><path d="M292.2 247.2A30 5 -22 1 0 347.8 224.8A30 5 -22 1 0 292.2 247.2Z" fill="#f6dfa6"/></g>
+<use href="#h2342_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M300 252L370 228M320 270L380 252M340 286L388 276" fill="none" stroke="#9a7a3a" stroke-width="2.5"/>
+<use href="#h2342_4" fill="#d24a3a"/>
+<g clip-path="url(#h2342_4c)"><path d="M294.5 408.4A32 12 10 1 0 357.5 419.6A32 12 10 1 0 294.5 408.4Z" fill="#a3332a"/></g>
+<use href="#h2342_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M335.7 414.4A28 14 20 1 0 388.3 433.6A28 14 20 1 0 335.7 414.4Z" fill="#d24a3a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M380 424L410 410L414 436L392 444Z" fill="#a3332a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M232 380L224 420L216 446" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M252 380L244 420L236 446" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M282 380L290 420L298 446" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M300 380L308 420L316 446" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2342_5" fill="#d24a3a"/>
+<g clip-path="url(#h2342_5c)"><path d="M264.2 353.3A32 68 -6 1 0 327.8 346.7A32 68 -6 1 0 264.2 353.3Z" fill="#a3332a"/><path d="M234.1 301.3A12 26 -6 1 0 257.9 298.7A12 26 -6 1 0 234.1 301.3Z" fill="#f0816f"/></g>
+<use href="#h2342_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M222 334Q260 342 310 330" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M222 356Q260 364 310 352" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M222 378Q260 386 310 374" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2342_6" fill="#d24a3a"/>
+<g clip-path="url(#h2342_6c)"><path d="M197.1 284.2A9 34 40 1 0 210.9 295.8A9 34 40 1 0 197.1 284.2Z" fill="#a3332a"/></g>
+<use href="#h2342_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2342_7" fill="#d24a3a"/>
+<g clip-path="url(#h2342_7c)"><path d="M196 244C168 190 134 132 100 96L112 100C140 140 170 190 200 236Z" fill="#a3332a"/><path d="M178 246C150 204 124 156 106 106" fill="none" stroke="#f6e1d6" stroke-width="6"/></g>
+<use href="#h2342_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M180 258C150 240 120 214 96 180C130 196 160 218 192 244Z" fill="#a3332a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2342_8" fill="#d24a3a"/>
+<g clip-path="url(#h2342_8c)"><path d="M232 240a30 22 0 1 0 60 0a30 22 0 1 0 -60 0Z" fill="#a3332a"/><path d="M208.5 203.6A14 6 -15 1 0 235.5 196.4A14 6 -15 1 0 208.5 203.6Z" fill="#f0816f"/></g>
+<use href="#h2342_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2342_9" fill="#f2c84a"/>
+<g clip-path="url(#h2342_9c)"><path d="M236 176L268 166L256 206L236 190Z" fill="#c99b1e"/></g>
+<use href="#h2342_9" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M214 200L196 160M262 200L282 162" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M215 222a7 10 0 1 0 14 0a7 10 0 1 0 -14 0Z" fill="#f2c84a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M219.6 223a3.5 6 0 1 0 7 0a3.5 6 0 1 0 -7 0Z" fill="#1b1b2b"/>
+<path d="M217.7 218.5a2.2 2.8 0 1 0 4.5 0a2.2 2.8 0 1 0 -4.5 0Z" fill="#ffffff"/>
+<path d="M252 220a6 9 0 1 0 12 0a6 9 0 1 0 -12 0Z" fill="#f2c84a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M255.9 220.9a3 5.4 0 1 0 6 0a3 5.4 0 1 0 -6 0Z" fill="#1b1b2b"/>
+<path d="M254.3 216.9a1.9 2.5 0 1 0 3.8 0a1.9 2.5 0 1 0 -3.8 0Z" fill="#ffffff"/>
+<path d="M228 246L252 246" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

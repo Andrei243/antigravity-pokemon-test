@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2335 Ravagoose (Normal/Fighting), from Zangoose: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2335_1" d="M340.5 324.8A38 70 34 1 0 403.5 367.2A38 70 34 1 0 340.5 324.8Z"/><clipPath id="h2335_1c"><use href="#h2335_1"/></clipPath><path id="h2335_2" d="M274.4 416.5A26 38 -10 1 0 325.6 407.5A26 38 -10 1 0 274.4 416.5Z"/><clipPath id="h2335_2c"><use href="#h2335_2"/></clipPath><path id="h2335_3" d="M303 261.5A15 38 -30 1 0 329 246.5A15 38 -30 1 0 303 261.5Z"/><clipPath id="h2335_3c"><use href="#h2335_3"/></clipPath><path id="h2335_4" d="M202.9 332.4A60 82 -10 1 0 321.1 311.6A60 82 -10 1 0 202.9 332.4Z"/><clipPath id="h2335_4c"><use href="#h2335_4"/></clipPath><path id="h2335_5" d="M200.1 411.5A24 36 6 1 0 247.9 416.5A24 36 6 1 0 200.1 411.5Z"/><clipPath id="h2335_5c"><use href="#h2335_5"/></clipPath><path id="h2335_6" d="M183.7 287.7A16 40 50 1 0 204.3 312.3A16 40 50 1 0 183.7 287.7Z"/><clipPath id="h2335_6c"><use href="#h2335_6"/></clipPath><path id="h2335_7" d="M196 176L176 118L186 140L172 132L218 168Z"/><clipPath id="h2335_7c"><use href="#h2335_7"/></clipPath><path id="h2335_8" d="M250 166L270 110L266 132L282 122L272 176Z"/><clipPath id="h2335_8c"><use href="#h2335_8"/></clipPath><path id="h2335_9" d="M178.3 211A48 40 -6 1 0 273.7 201A48 40 -6 1 0 178.3 211Z"/><clipPath id="h2335_9c"><use href="#h2335_9"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><g transform="translate(512 0) scale(-1 1)"><path d="M132 456a130 13 0 1 0 260 0a130 13 0 1 0 -260 0Z" fill="#e9ebf2"/>
+<use href="#h2335_1" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_1c)"><path d="M368.1 348.6A24 64 34 1 0 407.9 375.4A24 64 34 1 0 368.1 348.6Z" fill="#d3cec4"/><path d="M350 300C376 320 392 350 396 392" fill="none" stroke="#d6363c" stroke-width="10"/></g>
+<use href="#h2335_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2335_2" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_2c)"><path d="M297.2 422.6A15 34 -10 1 0 326.8 417.4A15 34 -10 1 0 297.2 422.6Z" fill="#d3cec4"/></g>
+<use href="#h2335_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M284 448a28 10 0 1 0 56 0a28 10 0 1 0 -56 0Z" fill="#f6f3ee" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2335_3" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_3c)"><path d="M315.1 266A8 36 -30 1 0 328.9 258A8 36 -30 1 0 315.1 266Z" fill="#d3cec4"/></g>
+<use href="#h2335_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M326 222C330 196 340 182 352 176C346 192 340 206 336 224Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M336 222C342 196 352 182 364 176C356 192 350 206 346 224Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M346 222C354 196 364 182 376 176C366 192 360 206 356 224Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2335_4" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_4c)"><path d="M262.5 352.3A36 82 -10 1 0 333.5 339.7A36 82 -10 1 0 262.5 352.3Z" fill="#d3cec4"/><path d="M300 250L330 270L300 284Z" fill="#d6363c"/><path d="M310 300L340 318L310 332Z" fill="#d6363c"/><path d="M306 350L332 368L302 380Z" fill="#d6363c"/><path d="M214 270L244 284L212 300Z" fill="#d6363c"/><path d="M224.2 292.4A14 28 -10 1 0 251.8 287.6A14 28 -10 1 0 224.2 292.4Z" fill="#ffffff"/></g>
+<use href="#h2335_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2335_5" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_5c)"><path d="M221.1 420.6A13 32 6 1 0 246.9 423.4A13 32 6 1 0 221.1 420.6Z" fill="#d3cec4"/></g>
+<use href="#h2335_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M186 450a28 10 0 1 0 56 0a28 10 0 1 0 -56 0Z" fill="#f6f3ee" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2335_6" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_6c)"><path d="M194.2 303.1A9 36 50 1 0 205.8 316.9A9 36 50 1 0 194.2 303.1Z" fill="#d3cec4"/></g>
+<use href="#h2335_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M166 280C140 270 116 270 96 280C118 284 140 290 164 296Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M164 292C136 284 112 286 94 298C116 298 138 302 162 308Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M162 304C132 298 108 302 92 316C114 312 136 314 160 320Z" fill="#2c2c36" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2335_7" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_7c)"><path d="M194 168L182 136L206 164Z" fill="#f2b8bc"/></g>
+<use href="#h2335_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2335_8" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_8c)"><path d="M266 140L282 122L272 176Z" fill="#d3cec4"/></g>
+<use href="#h2335_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2335_9" fill="#f6f3ee"/>
+<g clip-path="url(#h2335_9c)"><path d="M220 230a30 22 0 1 0 60 0a30 22 0 1 0 -60 0Z" fill="#d3cec4"/><path d="M190 200C200 186 214 186 222 196L218 210C208 204 198 206 190 214Z" fill="#d6363c"/><path d="M190.5 188.1A16 6 -15 1 0 221.5 179.9A16 6 -15 1 0 190.5 188.1Z" fill="#ffffff"/></g>
+<use href="#h2335_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M168 220a18 14 0 1 0 36 0a18 14 0 1 0 -36 0Z" fill="#f6f3ee" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M166 216a6 5 0 1 0 12 0a6 5 0 1 0 -12 0Z" fill="#3a2a2e"/>
+<path d="M203.3 204.3A9 6 -15 1 0 220.7 199.7A9 6 -15 1 0 203.3 204.3Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M206 203a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#d6363c"/>
+<path d="M238.1 199.4A8 6 -10 1 0 253.9 196.6A8 6 -10 1 0 238.1 199.4Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M240.5 199a3.5 4.5 0 1 0 7 0a3.5 4.5 0 1 0 -7 0Z" fill="#d6363c"/>
+<path d="M180 234L196 238" fill="none" stroke="#1b1b2b" stroke-width="3"/></g>
+</svg>

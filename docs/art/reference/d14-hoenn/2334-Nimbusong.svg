@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2334 Nimbusong (Dragon/Flying), from Altaria: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2334_1" d="M330 300C380 300 430 320 470 360C440 360 410 352 388 344C410 370 420 390 424 410C390 386 360 352 330 330Z"/><clipPath id="h2334_1c"><use href="#h2334_1"/></clipPath><path id="h2334_2" d="M170 300C130 300 120 260 150 246C130 214 170 188 198 204C206 170 250 164 268 188C290 162 340 170 342 204C376 198 400 230 380 256C410 270 404 312 372 318C376 350 340 370 312 354C296 380 248 384 232 358C206 376 168 360 176 330C150 330 146 306 170 300Z"/><clipPath id="h2334_2c"><use href="#h2334_2"/></clipPath><path id="h2334_3" d="M179.3 227.5A22 40 -20 1 0 220.7 212.5A22 40 -20 1 0 179.3 227.5Z"/><clipPath id="h2334_3c"><use href="#h2334_3"/></clipPath><path id="h2334_4" d="M152.5 177.9A34 30 -10 1 0 219.5 166.1A34 30 -10 1 0 152.5 177.9Z"/><clipPath id="h2334_4c"><use href="#h2334_4"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M160 462a110 10 0 1 0 220 0a110 10 0 1 0 -220 0Z" fill="#e9ebf2"/>
+<use href="#h2334_1" fill="#5aa8e8"/>
+<g clip-path="url(#h2334_1c)"><path d="M388 344C410 370 420 390 424 410C390 386 360 352 340 330Z" fill="#3d82c4"/></g>
+<use href="#h2334_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2334_2" fill="#f6f8fc"/>
+<g clip-path="url(#h2334_2c)"><path d="M380 256C410 270 404 312 372 318C376 350 340 370 312 354C296 380 248 384 232 358C206 376 168 360 176 330L190 300L390 270Z" fill="#cfd8e8"/><path d="M200.6 216.9A40 10 -10 1 0 279.4 203.1A40 10 -10 1 0 200.6 216.9Z" fill="#ffffff"/></g>
+<use href="#h2334_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M196 250C210 244 222 248 230 258" fill="none" stroke="#aebad0" stroke-width="3"/>
+<path d="M280 220C296 214 310 220 318 232" fill="none" stroke="#aebad0" stroke-width="3"/>
+<path d="M300 300C316 296 330 302 336 314" fill="none" stroke="#aebad0" stroke-width="3"/>
+<path d="M220 320C236 318 248 324 252 336" fill="none" stroke="#aebad0" stroke-width="3"/>
+<use href="#h2334_3" fill="#5aa8e8"/>
+<g clip-path="url(#h2334_3c)"><path d="M198.7 236.1A12 36 -20 1 0 221.3 227.9A12 36 -20 1 0 198.7 236.1Z" fill="#3d82c4"/></g>
+<use href="#h2334_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2334_4" fill="#5aa8e8"/>
+<g clip-path="url(#h2334_4c)"><path d="M178 188a22 16 0 1 0 44 0a22 16 0 1 0 -44 0Z" fill="#3d82c4"/><path d="M164.4 159.1A12 5 -15 1 0 187.6 152.9A12 5 -15 1 0 164.4 159.1Z" fill="#9ccdf4"/></g>
+<use href="#h2334_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M160 168L126 178L158 184Z" fill="#f2d27a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M206 150C226 116 252 98 284 92C262 110 242 126 222 158Z" fill="#5aa8e8" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M200 146C210 110 228 86 252 70C240 98 228 120 214 152Z" fill="#9ccdf4" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M212 158C240 136 272 128 304 132C276 142 252 152 228 166Z" fill="#3d82c4" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M172 168a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#1b1b2b"/>
+<path d="M174.3 165.2a1.9 2.2 0 1 0 3.8 0a1.9 2.2 0 1 0 -3.8 0Z" fill="#ffffff"/>
+</svg>

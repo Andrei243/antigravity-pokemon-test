@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2262 Hyaenarch (Dark), from Mightyena: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2262_1" d="M369.8 347A58 28 -30 1 0 470.2 289A58 28 -30 1 0 369.8 347Z"/><clipPath id="h2262_1c"><use href="#h2262_1"/></clipPath><path id="h2262_2" d="M183.1 347A108 58 -8 1 0 396.9 317A108 58 -8 1 0 183.1 347Z"/><clipPath id="h2262_2c"><use href="#h2262_2"/></clipPath><path id="h2262_3" d="M150 232L168 196L186 222L208 188L222 222L248 196L258 232L286 214L290 248L320 236L318 266L350 262L342 284L380 284L368 300L410 306L400 316L330 300L270 286L210 276L168 272Z"/><clipPath id="h2262_3c"><use href="#h2262_3"/></clipPath><path id="h2262_4" d="M317.2 399.5A25 50 -8 1 0 366.8 392.5A25 50 -8 1 0 317.2 399.5Z"/><clipPath id="h2262_4c"><use href="#h2262_4"/></clipPath><path id="h2262_5" d="M180.1 399.8A26 54 -4 1 0 231.9 396.2A26 54 -4 1 0 180.1 399.8Z"/><clipPath id="h2262_5c"><use href="#h2262_5"/></clipPath><path id="h2262_6" d="M160 222L178 166L196 222Z"/><clipPath id="h2262_6c"><use href="#h2262_6"/></clipPath><path id="h2262_7" d="M98.8 263.4A54 40 -10 1 0 205.2 244.6A54 40 -10 1 0 98.8 263.4Z"/><clipPath id="h2262_7c"><use href="#h2262_7"/></clipPath><path id="h2262_8" d="M68.5 278.3A36 20 -10 1 0 139.5 265.7A36 20 -10 1 0 68.5 278.3Z"/><clipPath id="h2262_8c"><use href="#h2262_8"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M101 450a175 14 0 1 0 350 0a175 14 0 1 0 -350 0Z" fill="#e9ebf2"/>
+<use href="#h2262_1" fill="#2e2e37"/>
+<g clip-path="url(#h2262_1c)"><path d="M385 358A52 16 -30 1 0 475 306A52 16 -30 1 0 385 358Z" fill="#1c1c22"/><path d="M385.5 317A26 5 -30 1 0 430.5 291A26 5 -30 1 0 385.5 317Z" fill="#4c4c58"/></g>
+<use href="#h2262_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M348.4 383.8A24 50 10 1 0 395.6 392.2A24 50 10 1 0 348.4 383.8Z" fill="#666a74" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M218.1 393.7A22 50 6 1 0 261.9 398.3A22 50 6 1 0 218.1 393.7Z" fill="#666a74" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M356 438a24 10 0 1 0 48 0a24 10 0 1 0 -48 0Z" fill="#2e2e37" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M222 444a24 10 0 1 0 48 0a24 10 0 1 0 -48 0Z" fill="#2e2e37" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2262_2" fill="#8d919b"/>
+<g clip-path="url(#h2262_2c)"><path d="M191.1 387.3A110 30 -8 1 0 408.9 356.7A110 30 -8 1 0 191.1 387.3Z" fill="#666a74"/><path d="M200.6 308.4A60 8 -8 1 0 319.4 291.6A60 8 -8 1 0 200.6 308.4Z" fill="#b6bac4"/></g>
+<use href="#h2262_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2262_3" fill="#2e2e37"/>
+<g clip-path="url(#h2262_3c)"><path d="M330 300L410 306L400 316L330 306Z" fill="#1c1c22"/><path d="M180.6 229.1A40 5 10 1 0 259.4 242.9A40 5 10 1 0 180.6 229.1Z" fill="#4c4c58"/></g>
+<use href="#h2262_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2262_4" fill="#8d919b"/>
+<g clip-path="url(#h2262_4c)"><path d="M340.1 403.9A14 48 -8 1 0 367.9 400.1A14 48 -8 1 0 340.1 403.9Z" fill="#666a74"/></g>
+<use href="#h2262_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M308 446a26 11 0 1 0 52 0a26 11 0 1 0 -52 0Z" fill="#2e2e37" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2262_5" fill="#8d919b"/>
+<g clip-path="url(#h2262_5c)"><path d="M204 405A14 52 -4 1 0 232 403A14 52 -4 1 0 204 405Z" fill="#666a74"/></g>
+<use href="#h2262_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M174 450a28 11 0 1 0 56 0a28 11 0 1 0 -56 0Z" fill="#2e2e37" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2262_6" fill="#8d919b"/>
+<g clip-path="url(#h2262_6c)"><path d="M180 190L178 166L196 222Z" fill="#666a74"/><path d="M170 220L179 186L188 220Z" fill="#2e2e37"/></g>
+<use href="#h2262_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2262_7" fill="#8d919b"/>
+<g clip-path="url(#h2262_7c)"><path d="M124.7 288A46 20 -10 1 0 215.3 272A46 20 -10 1 0 124.7 288Z" fill="#666a74"/><path d="M118.7 233.7A22 7 -15 1 0 161.3 222.3A22 7 -15 1 0 118.7 233.7Z" fill="#b6bac4"/></g>
+<use href="#h2262_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2262_8" fill="#2e2e37"/>
+<g clip-path="url(#h2262_8c)"><path d="M82.5 289.2A30 10 -10 1 0 141.5 278.8A30 10 -10 1 0 82.5 289.2Z" fill="#1c1c22"/></g>
+<use href="#h2262_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M65 266a9 7 0 1 0 18 0a9 7 0 1 0 -18 0Z" fill="#1b1b2b"/>
+<path d="M82 286Q100 290 118 282" fill="none" stroke="#ffffff" stroke-width="3"/>
+<path d="M128.3 248.5A12 8 -12 1 0 151.7 243.5A12 8 -12 1 0 128.3 248.5Z" fill="#f2e06a" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M132 247a5 6 0 1 0 10 0a5 6 0 1 0 -10 0Z" fill="#d8303c"/>
+<path d="M134 246a2 3 0 1 0 4 0a2 3 0 1 0 -4 0Z" fill="#1b1b2b"/>
+<path d="M126 222L150 270" fill="none" stroke="#e8e0e2" stroke-width="5"/>
+</svg>

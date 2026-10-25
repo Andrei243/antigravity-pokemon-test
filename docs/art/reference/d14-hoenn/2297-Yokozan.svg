@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2297 Yokozan (Fighting), from Hariyama: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2297_1" d="M160 414a38 34 0 1 0 76 0a38 34 0 1 0 -76 0Z"/><clipPath id="h2297_1c"><use href="#h2297_1"/></clipPath><path id="h2297_2" d="M278 414a38 34 0 1 0 76 0a38 34 0 1 0 -76 0Z"/><clipPath id="h2297_2c"><use href="#h2297_2"/></clipPath><path id="h2297_3" d="M338.3 284.8A28 52 -32 1 0 385.7 255.2A28 52 -32 1 0 338.3 284.8Z"/><clipPath id="h2297_3c"><use href="#h2297_3"/></clipPath><path id="h2297_4" d="M348 214a48 46 0 1 0 96 0a48 46 0 1 0 -96 0Z"/><clipPath id="h2297_4c"><use href="#h2297_4"/></clipPath><path id="h2297_5" d="M156 318a100 98 0 1 0 200 0a100 98 0 1 0 -200 0Z"/><clipPath id="h2297_5c"><use href="#h2297_5"/></clipPath><path id="h2297_6" d="M152 322C200 342 312 342 360 322L362 352C312 372 200 372 150 352Z"/><clipPath id="h2297_6c"><use href="#h2297_6"/></clipPath><path id="h2297_7" d="M125.8 282A28 50 30 1 0 174.2 310A28 50 30 1 0 125.8 282Z"/><clipPath id="h2297_7c"><use href="#h2297_7"/></clipPath><path id="h2297_8" d="M64 334a48 44 0 1 0 96 0a48 44 0 1 0 -96 0Z"/><clipPath id="h2297_8c"><use href="#h2297_8"/></clipPath><path id="h2297_9" d="M240 162a18 14 0 1 0 36 0a18 14 0 1 0 -36 0Z"/><clipPath id="h2297_9c"><use href="#h2297_9"/></clipPath><path id="h2297_10" d="M204 214a54 48 0 1 0 108 0a54 48 0 1 0 -108 0Z"/><clipPath id="h2297_10c"><use href="#h2297_10"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M106 456a150 14 0 1 0 300 0a150 14 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<use href="#h2297_1" fill="#3e4a7a"/>
+<g clip-path="url(#h2297_1c)"><path d="M188 426a26 24 0 1 0 52 0a26 24 0 1 0 -52 0Z" fill="#2a3358"/></g>
+<use href="#h2297_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_2" fill="#3e4a7a"/>
+<g clip-path="url(#h2297_2c)"><path d="M304 426a26 24 0 1 0 52 0a26 24 0 1 0 -52 0Z" fill="#2a3358"/></g>
+<use href="#h2297_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M150 450a36 12 0 1 0 72 0a36 12 0 1 0 -72 0Z" fill="#efc46c" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M290 450a36 12 0 1 0 72 0a36 12 0 1 0 -72 0Z" fill="#efc46c" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_3" fill="#efc46c"/>
+<g clip-path="url(#h2297_3c)"><path d="M358.7 291.5A18 50 -32 1 0 389.3 272.5A18 50 -32 1 0 358.7 291.5Z" fill="#cc9c42"/></g>
+<use href="#h2297_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_4" fill="#efc46c"/>
+<g clip-path="url(#h2297_4c)"><path d="M380 230a32 30 0 1 0 64 0a32 30 0 1 0 -64 0Z" fill="#cc9c42"/><path d="M367 201.5A16 10 -20 1 0 397 190.5A16 10 -20 1 0 367 201.5Z" fill="#ffe2a2"/></g>
+<use href="#h2297_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M376 186L380 204M396 180L398 200M416 186L414 204" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<use href="#h2297_5" fill="#efc46c"/>
+<g clip-path="url(#h2297_5c)"><path d="M230 350a70 90 0 1 0 140 0a70 90 0 1 0 -140 0Z" fill="#cc9c42"/><path d="M150 340L362 340L362 430L150 430Z" fill="#3e4a7a"/><path d="M290 340L362 340L362 430L300 430Z" fill="#2a3358"/><path d="M188 277A30 18 -30 1 0 240 247A30 18 -30 1 0 188 277Z" fill="#ffe2a2"/></g>
+<use href="#h2297_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_6" fill="#f8f5ea"/>
+<g clip-path="url(#h2297_6c)"><path d="M300 342C330 340 350 334 360 322L362 352C350 358 330 362 300 366Z" fill="#d8d2bd"/></g>
+<use href="#h2297_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M170 332l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M192 333.5l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M214 335l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M236 336.5l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M258 338l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M280 336.5l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M302 335l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M324 333.5l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M346 332l12 18" fill="none" stroke="#b9b19a" stroke-width="3"/>
+<path d="M212 362l12 0l-6 14l10 0l-6 14l10 0l-12 22l-4 -20l-8 0l6 -14l-8 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M252 362l12 0l-6 14l10 0l-6 14l10 0l-12 22l-4 -20l-8 0l6 -14l-8 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M292 362l12 0l-6 14l10 0l-6 14l10 0l-12 22l-4 -20l-8 0l6 -14l-8 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2297_7" fill="#efc46c"/>
+<g clip-path="url(#h2297_7c)"><path d="M146.1 300A16 48 30 1 0 173.9 316A16 48 30 1 0 146.1 300Z" fill="#cc9c42"/></g>
+<use href="#h2297_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_8" fill="#efc46c"/>
+<g clip-path="url(#h2297_8c)"><path d="M96 350a32 28 0 1 0 64 0a32 28 0 1 0 -64 0Z" fill="#cc9c42"/><path d="M83 323.5A16 10 -20 1 0 113 312.5A16 10 -20 1 0 83 323.5Z" fill="#ffe2a2"/></g>
+<use href="#h2297_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M78 320L94 324M76 342L92 342M80 362L96 358" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M234 186a24 16 0 1 0 48 0a24 16 0 1 0 -48 0Z" fill="#2b2b36" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_9" fill="#2b2b36"/>
+<g clip-path="url(#h2297_9c)"><path d="M246 156a6 4 0 1 0 12 0a6 4 0 1 0 -12 0Z" fill="#4d4d5e"/></g>
+<use href="#h2297_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2297_10" fill="#efc46c"/>
+<g clip-path="url(#h2297_10c)"><path d="M250 236a36 32 0 1 0 72 0a36 32 0 1 0 -72 0Z" fill="#cc9c42"/><path d="M202 206C210 168 306 168 314 206C290 186 226 186 202 206Z" fill="#2b2b36"/><path d="M218.6 190.7A18 8 -15 1 0 253.4 181.3A18 8 -15 1 0 218.6 190.7Z" fill="#ffe2a2"/></g>
+<use href="#h2297_10" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M226 214L246 218" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M272 218L292 214" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M240 240Q258 252 278 240Q258 262 240 240Z" fill="#8a2d2d" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M210 234a10 6 0 1 0 20 0a10 6 0 1 0 -20 0Z" fill="#e88b6a" opacity="0.6"/>
+<path d="M288 234a10 6 0 1 0 20 0a10 6 0 1 0 -20 0Z" fill="#e88b6a" opacity="0.6"/>
+</svg>

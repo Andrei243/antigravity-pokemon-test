@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2354 Effigrim (Ghost), from Banette: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2354_1" d="M256 120C320 120 336 190 330 250C326 300 338 360 320 420C300 440 212 440 192 420C174 360 186 300 182 250C176 190 192 120 256 120Z"/><clipPath id="h2354_1c"><use href="#h2354_1"/></clipPath><path id="h2354_2" d="M256 262C272 290 274 330 256 360C238 330 240 290 256 262Z"/><clipPath id="h2354_2c"><use href="#h2354_2"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M166 462a90 10 0 1 0 180 0a90 10 0 1 0 -180 0Z" fill="#e9ebf2"/>
+<path d="M280 120C330 90 380 110 400 160C410 190 440 200 468 196" fill="none" stroke="#1b1b2b" stroke-width="22"/>
+<path d="M280 120C330 90 380 110 400 160C410 190 440 200 468 196" fill="none" stroke="#3f4156" stroke-width="13"/>
+<path d="M286 132C330 120 360 150 368 196C372 220 392 240 420 246" fill="none" stroke="#1b1b2b" stroke-width="22"/>
+<path d="M286 132C330 120 360 150 368 196C372 220 392 240 420 246" fill="none" stroke="#3f4156" stroke-width="13"/>
+<path d="M240 140C250 100 270 74 300 60C296 90 290 116 280 140Z" fill="#5a5d74" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2354_1" fill="#5a5d74"/>
+<g clip-path="url(#h2354_1c)"><path d="M300 130C330 170 336 250 330 300C330 360 338 400 320 420C310 430 290 436 270 438L290 200Z" fill="#3f4156"/><path d="M196 330L236 322L240 362L200 370Z" fill="#8e6aa8"/><path d="M286 360L318 356L320 392L288 394Z" fill="#8a7458"/><path d="M202.2 187.9A12 34 10 1 0 225.8 192.1A12 34 10 1 0 202.2 187.9Z" fill="#8487a2"/></g>
+<use href="#h2354_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M196 330L236 322L240 362L200 370Z" fill="none" stroke="#eae2f2" stroke-width="2.5" stroke-dasharray="5 5"/>
+<path d="M286 360L318 356L320 392L288 394Z" fill="none" stroke="#eae2f2" stroke-width="2.5" stroke-dasharray="5 5"/>
+<path d="M230 316a26 46 0 1 0 52 0a26 46 0 1 0 -52 0Z" fill="#fff07a" opacity="0.4"/>
+<use href="#h2354_2" fill="#fff07a"/>
+<g clip-path="url(#h2354_2c)"><path d="M250 304a4 16 0 1 0 8 0a4 16 0 1 0 -8 0Z" fill="#ffffff"/></g>
+<use href="#h2354_2" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M245 266l7 0M260 266l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M238 280l7 0M267 280l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M232.87564434701787 294l7 0M272.12435565298216 294l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M231 308l7 0M274 308l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M232.87564434701787 322l7 0M272.12435565298216 322l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M238 336l7 0M267 336l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M245 350l7 0M260 350l7 0" fill="none" stroke="#e8c03c" stroke-width="3.5"/>
+<path d="M256 360L256 410" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M249 372l14 0M249 384l14 0M249 396l14 0" fill="none" stroke="#e8c03c" stroke-width="3"/>
+<path d="M165.7 279.7A16 28 40 1 0 190.3 300.3A16 28 40 1 0 165.7 279.7Z" fill="#5a5d74" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M321.7 300.3A16 28 -40 1 0 346.3 279.7A16 28 -40 1 0 321.7 300.3Z" fill="#3f4156" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M206 222Q256 246 306 222" fill="none" stroke="#1b1b2b" stroke-width="9"/>
+<path d="M206 222Q256 246 306 222" fill="none" stroke="#e8c03c" stroke-width="4"/>
+<path d="M214 221l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M225 224.8268343236509l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M236 228.07106781186548l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M247 230.23879532511287l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M258 231l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M269 230.23879532511287l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M280 228.07106781186548l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M291 224.8268343236509l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M302 221l0 10" fill="none" stroke="#e8c03c" stroke-width="2.5"/>
+<path d="M290 214a8 7 0 1 0 16 0a8 7 0 1 0 -16 0Z" fill="#e8c03c" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M214 182Q230 170 244 186Q228 194 214 182Z" fill="#e8343e" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M268 186Q284 170 300 182Q286 194 268 186Z" fill="#e8343e" stroke="#1b1b2b" stroke-width="3.5"/>
+</svg>

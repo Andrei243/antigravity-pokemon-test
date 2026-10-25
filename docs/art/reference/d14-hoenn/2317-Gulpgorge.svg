@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2317 Gulpgorge (Poison), from Swalot: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2317_1" d="M256 130C350 130 400 220 400 320C400 410 340 446 256 446C172 446 112 410 112 320C112 220 162 130 256 130Z"/><clipPath id="h2317_1c"><use href="#h2317_1"/></clipPath><path id="h2317_2" d="M160 262C196 226 316 226 352 262C318 248 194 248 160 262Z"/><clipPath id="h2317_2c"><use href="#h2317_2"/></clipPath><path id="h2317_3" d="M160 262C194 278 318 278 352 262C336 330 176 330 160 262Z"/><clipPath id="h2317_3c"><use href="#h2317_3"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M96 448a160 14 0 1 0 320 0a160 14 0 1 0 -320 0Z" fill="#e9ebf2"/>
+<path d="M232 140C214 96 196 74 168 66" fill="none" stroke="#1b1b2b" stroke-width="12"/>
+<path d="M232 140C214 96 196 74 168 66" fill="none" stroke="#f2cf3a" stroke-width="6"/>
+<path d="M282 140C304 96 328 76 356 70" fill="none" stroke="#1b1b2b" stroke-width="12"/>
+<path d="M282 140C304 96 328 76 356 70" fill="none" stroke="#f2cf3a" stroke-width="6"/>
+<path d="M156 64a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#f2cf3a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M348 68a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#f2cf3a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M106.9 341A22 16 -30 1 0 145.1 319A22 16 -30 1 0 106.9 341Z" fill="#7c5fb2" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M370.9 319A22 16 30 1 0 409.1 341A22 16 30 1 0 370.9 319Z" fill="#59418c" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2317_1" fill="#7c5fb2"/>
+<g clip-path="url(#h2317_1c)"><path d="M210 360a110 110 0 1 0 220 0a110 110 0 1 0 -220 0Z" fill="#59418c"/><path d="M116 300C140 292 156 300 170 316C156 332 140 336 116 330Z" fill="#2b2a3c"/><path d="M396 300C372 292 356 300 342 316C356 332 372 336 396 330Z" fill="#2b2a3c"/><path d="M130 380C150 372 166 380 176 394C162 408 146 410 134 404Z" fill="#2b2a3c"/><path d="M382 380C362 372 346 380 336 394C350 408 366 410 378 404Z" fill="#2b2a3c"/><path d="M200 140C220 148 236 148 256 140C276 148 292 148 312 140L300 166C280 160 232 160 212 166Z" fill="#2b2a3c"/><path d="M160.6 213A34 22 -30 1 0 219.4 179A34 22 -30 1 0 160.6 213Z" fill="#a98fd6"/></g>
+<use href="#h2317_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M168 262C200 236 312 236 344 262C340 316 172 316 168 262Z" fill="#3a1f3f"/>
+<use href="#h2317_2" fill="#8e6fc6"/>
+<g clip-path="url(#h2317_2c)"><path d="M200 244a30 4 0 1 0 60 0a30 4 0 1 0 -60 0Z" fill="#c5aef0"/></g>
+<use href="#h2317_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2317_3" fill="#8e6fc6"/>
+<g clip-path="url(#h2317_3c)"><path d="M180 274C220 286 292 286 332 274L330 290C292 300 220 300 182 290Z" fill="#3a1f3f"/></g>
+<use href="#h2317_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M202 200a12 8 0 1 0 24 0a12 8 0 1 0 -24 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M207 203a7 5 0 1 0 14 0a7 5 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M200 196L228 196" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M284 200a12 8 0 1 0 24 0a12 8 0 1 0 -24 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M289 203a7 5 0 1 0 14 0a7 5 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M282 196L310 196" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+</svg>

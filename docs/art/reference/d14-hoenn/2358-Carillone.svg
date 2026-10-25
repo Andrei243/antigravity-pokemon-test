@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2358 Carillone (Psychic), from Chimecho: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2358_1" d="M224.8 328.4C224.8 294.8 234.4 270.8 256 270.8C277.6 270.8 287.2 294.8 287.2 328.4C292 333.2 220 333.2 224.8 328.4Z"/><clipPath id="h2358_1c"><use href="#h2358_1"/></clipPath><path id="h2358_2" d="M230 392C230 364 238 344 256 344C274 344 282 364 282 392C286 396 226 396 230 392Z"/><clipPath id="h2358_2c"><use href="#h2358_2"/></clipPath><path id="h2358_3" d="M235.2 445.6C235.2 423.2 241.6 407.2 256 407.2C270.4 407.2 276.8 423.2 276.8 445.6C280 448.8 232 448.8 235.2 445.6Z"/><clipPath id="h2358_3c"><use href="#h2358_3"/></clipPath><path id="h2358_4" d="M180 250C176 170 210 120 256 120C302 120 336 170 332 250C300 262 212 262 180 250Z"/><clipPath id="h2358_4c"><use href="#h2358_4"/></clipPath><path id="h2358_5" d="M180 252a76 12 0 1 0 152 0a76 12 0 1 0 -152 0Z"/><clipPath id="h2358_5c"><use href="#h2358_5"/></clipPath><path id="h2358_6" d="M202 150L214 118L230 140L244 108L256 134L268 108L282 140L298 118L310 150C280 140 232 140 202 150Z"/><clipPath id="h2358_6c"><use href="#h2358_6"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M186 470a70 8 0 1 0 140 0a70 8 0 1 0 -140 0Z" fill="#e9ebf2"/>
+<path d="M256 250C256 280 262 310 256 340C250 370 258 390 256 410" fill="none" stroke="#1b1b2b" stroke-width="14"/>
+<path d="M256 250C256 280 262 310 256 340C250 370 258 390 256 410" fill="none" stroke="#d8434a" stroke-width="8"/>
+<path d="M258 270C300 290 330 330 340 380" fill="none" stroke="#1b1b2b" stroke-width="12"/>
+<path d="M258 270C300 290 330 330 340 380" fill="none" stroke="#d8434a" stroke-width="6"/>
+<path d="M254 270C214 292 186 330 178 374" fill="none" stroke="#1b1b2b" stroke-width="12"/>
+<path d="M254 270C214 292 186 330 178 374" fill="none" stroke="#d8434a" stroke-width="6"/>
+<use href="#h2358_1" fill="#6aaee0"/>
+<g clip-path="url(#h2358_1c)"><path d="M256 309.2a16.8 31.2 0 1 0 33.6 0a16.8 31.2 0 1 0 -33.6 0Z" fill="#4a8cc2"/><path d="M238 290a6 12 0 1 0 12 0a6 12 0 1 0 -12 0Z" fill="#bfe0f6"/></g>
+<use href="#h2358_1" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M248.8 335.6a7.2 7.2 0 1 0 14.4 0a7.2 7.2 0 1 0 -14.4 0Z" fill="#f2d043" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2358_2" fill="#6aaee0"/>
+<g clip-path="url(#h2358_2c)"><path d="M256 376a14 26 0 1 0 28 0a14 26 0 1 0 -28 0Z" fill="#4a8cc2"/><path d="M241 360a5 10 0 1 0 10 0a5 10 0 1 0 -10 0Z" fill="#bfe0f6"/></g>
+<use href="#h2358_2" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M250 398a6 6 0 1 0 12 0a6 6 0 1 0 -12 0Z" fill="#f2d043" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2358_3" fill="#6aaee0"/>
+<g clip-path="url(#h2358_3c)"><path d="M256 432.8a11.2 20.8 0 1 0 22.4 0a11.2 20.8 0 1 0 -22.4 0Z" fill="#4a8cc2"/><path d="M244 420a4 8 0 1 0 8 0a4 8 0 1 0 -8 0Z" fill="#bfe0f6"/></g>
+<use href="#h2358_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M251.2 450.4a4.8 4.8 0 1 0 9.6 0a4.8 4.8 0 1 0 -9.6 0Z" fill="#f2d043" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2358_4" fill="#eef6fc"/>
+<g clip-path="url(#h2358_4c)"><path d="M300 130C330 160 336 220 332 250C316 256 300 258 284 260Z" fill="#bcd4e8"/><path d="M204.8 151.2A14 24 20 1 0 231.2 160.8A14 24 20 1 0 204.8 151.2Z" fill="#ffffff"/></g>
+<use href="#h2358_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2358_5" fill="#6aaee0"/>
+<g clip-path="url(#h2358_5c)"><path d="M246 256a40 8 0 1 0 80 0a40 8 0 1 0 -80 0Z" fill="#4a8cc2"/></g>
+<use href="#h2358_5" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2358_6" fill="#f2d043"/>
+<g clip-path="url(#h2358_6c)"><path d="M256 134L268 108L282 140L298 118L310 150C290 144 270 142 256 142Z" fill="#c9a31e"/></g>
+<use href="#h2358_6" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M226 196Q236 204 246 196" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M266 196Q276 204 286 196" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M244 222a12 10 0 1 0 24 0a12 10 0 1 0 -24 0Z" fill="#3a2a3a" stroke="#1b1b2b" stroke-width="3.5"/>
+</svg>

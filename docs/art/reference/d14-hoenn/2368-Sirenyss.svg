@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2368 Sirenyss (Water/Fairy), from Gorebyss: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2368_1" d="M372 296A40 14 -60 1 0 412 226.7A40 14 -60 1 0 372 296Z"/><clipPath id="h2368_1c"><use href="#h2368_1"/></clipPath><path id="h2368_2" d="M372 296A40 14 -10 1 0 450.8 282.1A40 14 -10 1 0 372 296Z"/><clipPath id="h2368_2c"><use href="#h2368_2"/></clipPath><path id="h2368_3" d="M372 296A32 11.2 -35 1 0 424.4 259.3A32 11.2 -35 1 0 372 296Z"/><clipPath id="h2368_3c"><use href="#h2368_3"/></clipPath><path id="h2368_4" d="M372 296A32 11.2 15 1 0 433.8 312.6A32 11.2 15 1 0 372 296Z"/><clipPath id="h2368_4c"><use href="#h2368_4"/></clipPath><path id="h2368_5" d="M228 194C222 166 202 150 178 152C160 154 144 164 138 176L74 192L140 196C150 208 174 216 196 216Z"/><clipPath id="h2368_5c"><use href="#h2368_5"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M112 448a150 12 0 1 0 300 0a150 12 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<use href="#h2368_1" fill="#f7c8de"/>
+<g clip-path="url(#h2368_1c)"><path d="M378 291.6A34 6 -60 1 0 412 232.7A34 6 -60 1 0 378 291.6Z" fill="#e79ac0"/></g>
+<use href="#h2368_1" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2368_2" fill="#f7c8de"/>
+<g clip-path="url(#h2368_2c)"><path d="M383.8 299.9A34 6 -10 1 0 450.8 288.1A34 6 -10 1 0 383.8 299.9Z" fill="#e79ac0"/></g>
+<use href="#h2368_2" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2368_3" fill="#f7c8de"/>
+<g clip-path="url(#h2368_3c)"><path d="M379.9 296.5A27.2 4.8 -35 1 0 424.4 265.3A27.2 4.8 -35 1 0 379.9 296.5Z" fill="#e79ac0"/></g>
+<use href="#h2368_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2368_4" fill="#f7c8de"/>
+<g clip-path="url(#h2368_4c)"><path d="M381.3 304.5A27.2 4.8 15 1 0 433.8 318.6A27.2 4.8 15 1 0 381.3 304.5Z" fill="#e79ac0"/></g>
+<use href="#h2368_4" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#1b1b2b" stroke-width="18" transform="translate(12 16)"/><path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#c9b4f2" stroke-width="10" transform="translate(12 16)"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#1b1b2b" stroke-width="16" transform="translate(-12 -16)"/><path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#c9b4f2" stroke-width="8" transform="translate(-12 -16)"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#1b1b2b" stroke-width="52"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#f29ac2" stroke-width="42"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#d06e9a" stroke-width="16" transform="translate(6 12)"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#ffd0e4" stroke-width="6" transform="translate(-9 -10)" opacity="0.7"/>
+<use href="#h2368_5" fill="#f29ac2"/>
+<g clip-path="url(#h2368_5c)"><path d="M196 216C174 216 150 208 140 196L200 196Z" fill="#d06e9a"/><path d="M162.1 163.9A18 5 -6 1 0 197.9 160.1A18 5 -6 1 0 162.1 163.9Z" fill="#ffd0e4"/></g>
+<use href="#h2368_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M169 176a9 10 0 1 0 18 0a9 10 0 1 0 -18 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M171 178a5 6 0 1 0 10 0a5 6 0 1 0 -10 0Z" fill="#5a2a6e"/>
+<path d="M172 175a2 2 0 1 0 4 0a2 2 0 1 0 -4 0Z" fill="#ffffff"/>
+<path d="M168 168L162 160M176 166L174 156M184 168L188 160" fill="none" stroke="#1b1b2b" stroke-width="2.5"/>
+</svg>
