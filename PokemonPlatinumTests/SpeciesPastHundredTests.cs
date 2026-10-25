@@ -71,6 +71,7 @@ public class SpeciesPastHundredTests
             {
                 Assert.Equal(660, Total(d.Stats));
                 Assert.InRange(rise, 1, from.Generation == 7 ? 90 : 80);
+                Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
             {
@@ -108,6 +109,7 @@ public class SpeciesPastHundredTests
             6 => from.Name == "Sylveon" ? (120, 120) : (188, 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions
             7 => (209, legend ? 225 : 221),
             8 => (226, legend ? 244 : 240),
+            9 => (244, legend ? 258 : 256), // Paldea's climb (its question 1, 2026-10-26): 244 to 256, the Treasures of Ruin at 258
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -196,6 +198,7 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelAfterMoveUses: p.EvolutionProgress[Evolution.MoveKey(e.Move!)] = e.Value; break;
             case EvolutionMethod.LevelAfterRecoil: p.EvolutionProgress[Evolution.RecoilKey] = e.Value; break;
             case EvolutionMethod.SpinHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.Spin; break;
+            case EvolutionMethod.LevelWithItemsInBag: context.Bag = new Inventory(); context.Bag.AddItem(ItemDatabase.Get(e.Item!)!, e.Value); break;
         }
         return (p, context, trigger);
     }
@@ -247,7 +250,7 @@ public class SpeciesPastHundredTests
         foreach (var e in Designs.Select(d => d.Evolution).Where(e => e.Item != null))
         {
             var item = ItemDatabase.Get(e.Item!)!;
-            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : Evolution.IsHeldForEvolution(item), e.Item);
+            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : e.Method == EvolutionMethod.LevelWithItemsInBag ? Evolution.IsGatheredForEvolution(item) : Evolution.IsHeldForEvolution(item), e.Item);
         }
     }
 
