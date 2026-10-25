@@ -104,6 +104,7 @@ public class SpeciesPastHundredTests
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
+            5 => (165, legend ? 190 : 183),
             _ => (101, legend ? 160 : 130)
         };
     }
