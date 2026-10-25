@@ -854,6 +854,12 @@ public class Map
     public Dictionary<(int X, int Y), string> TileScripts { get; } = new();
 
     /// <summary>
+    /// The spots a secret base is made at (plan 21 · H10: a GBA game's trees, shrubs and indents in rock), by their tile,
+    /// each with its base's id (<c>Models.SecretBaseLayouts</c>): Secret Power faced at one opens the base.
+    /// </summary>
+    public Dictionary<(int X, int Y), int> SecretBaseSpots { get; } = new();
+
+    /// <summary>
     /// Tiles a pushed boulder falls into (plan 02 · S12; the original's <c>sBoulderFallLocations</c>, the Distortion
     /// World's): a boulder may be pushed onto one whatever stands there (<see cref="FieldMovement.CanPush"/>), and when
     /// it comes to rest on it the tile's script runs, the boulder its subject. The script is the place's own.

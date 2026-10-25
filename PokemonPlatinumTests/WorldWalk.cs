@@ -153,6 +153,12 @@ internal static class WorldWalk
             foreach (var way in Ways)
             {
                 var (ax, ay) = FieldMovement.Delta(way);
+                // A secret base's spot is a way into its room, by Secret Power (plan 21 · H10): in at the tile inside its
+                // door, whose way out leads back
+                if (mode == TravelMode.OnFoot && map.SecretBaseSpots.TryGetValue((x + ax, y + ay), out int baseId)
+                    && PokemonPlatinumEngine.Models.SecretBaseLayouts.Of(baseId) is { } layout && mapOf(layout.Map) is { } baseRoom
+                    && baseRoom.Name == layout.Map && baseRoom.Warps.FirstOrDefault() is { } baseDoor)
+                    Visit(baseRoom, baseDoor.SourceX, baseDoor.SourceY - 1, TravelMode.OnFoot, baseRoom.HeightAt(baseDoor.SourceX, baseDoor.SourceY - 1), arrived: true);
                 if (SendingOf(map).TryGetValue((x + ax, y + ay), out var portals))
                     foreach (var sent in portals)
                     {

@@ -129,6 +129,10 @@ public sealed partial class GameFlow
     /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
     public UndergroundState Underground { get; set; } = new();
 
+    /// <summary>The player's secret base of Hoenn's, null with none, and the decoration PC (plan 21 · H10; saved).</summary>
+    public SecretBaseSave? SecretBase { get; set; }
+    public List<StoredDecoration> Decorations { get; set; } = new();
+
     /// <summary>The Battle Frontier's records (saved).</summary>
     public FrontierRecords Frontier { get; set; } = new();
 

@@ -42,6 +42,9 @@ public static class FieldScripts
     /// <summary>Dark water under a surfer where the sea floor lies below, and the sea floor under a diver (Emerald's, plan 21 · H5).</summary>
     public const string Dive = "common.Dive";
     public const string Surface = "common.Surface";
+    // A secret base's spot faced, and its PC (Emerald's SecretBase_EventScript_CheckEntrance and the base's PC; plan 21 · H10)
+    public const string SecretBaseSpot = "common.SecretBaseSpot";
+    public const string SecretBasePc = "common.SecretBasePC";
 
     /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
     public const string EscapeRope = "common.EscapeRope";

@@ -890,6 +890,16 @@ public static class ScriptParser
             // Shoal Cave's tide (plan 21 · H8, part d): FLAG_SYS_SHOAL_TIDE by the hour, when come in from outdoors
             case "tide":
                 return new Instruction { Op = Op.Tide, Line = line };
+            // A secret base (plan 21 · H10): made at the spot ahead and gone into, asked about, decorated, packed up, and
+            // the decoration PC filled
+            case "openbase":
+            {
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "give", "buy", "room") : "open";
+                if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
+                string decoration = r.Text("a decoration's name");
+                if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
+                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration };
+            }
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

@@ -190,5 +190,197 @@
         "Revino oricând Pokémonii tăi au nevoie de un impuls!"
       ]
     }
+  ],
+  "DecorClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Bricks, balloons and mats to brighten up a secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "RED BRICK  500",
+        "BLUE BRICK  500",
+        "YELLOW BRICK  500",
+        "RED BALLOON  500",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "BLUE BALLOON  500",
+        "YELLOW BALLOON  500",
+        "C LOW NOTE MAT  500",
+        "D NOTE MAT  500",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "E NOTE MAT  500",
+        "F NOTE MAT  500",
+        "G NOTE MAT  500",
+        "A NOTE MAT  500",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "B NOTE MAT  500",
+        "C HIGH NOTE MAT  500",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The {thing} has been sent to your decoration PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, I'm sorry. You haven't quite enough money for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your decoration PC has no more room for things of that kind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DollClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Dolls to sit about a secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "AZURILL DOLL  3,000",
+        "MARILL DOLL  3,000",
+        "SKITTY DOLL  3,000",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The {thing} has been sent to your decoration PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, I'm sorry. You haven't quite enough money for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your decoration PC has no more room for dolls."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

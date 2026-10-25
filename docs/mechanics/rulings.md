@@ -5330,3 +5330,40 @@ regions.
 | The gate's north door | A warp onto the Frontier's road | Shut; the guide before it takes the player along the road |
 | The way back | The same door | The Johto guide on the grounds, a crossing back to Route 40 |
 | When it opens | Not read (no cache) | Johto's Hall of Fame |
+
+## Secret bases (2026-10-25, plan 21 · H10)
+
+Emerald's `src/secret_base.c`, `src/decoration.c`, `src/data/decoration/header.h` and `data/scripts/secret_base.inc`;
+the lines are our own.
+
+- **Kept as Emerald has them**: a spot's id names its room by its tens (`SECRET_BASE_TREE2_1` is 171, room `Tree2`);
+  the four rooms of each of the six kinds and the tile before each PC; one base at a time, a second spot emptying the
+  first with everything in it back in the decoration PC; Secret Power known by a Pokémon of the team, and no Badge for
+  it; sixteen decorations standing at most; the PC's pockets (ten desks, chairs, plants, posters and cushions, thirty
+  ornaments and mats, forty dolls); each decoration's shape, kind, placement and price; where each placement may stand
+  (on floor, a poster only on the wall over the floor, a tall piece's top row before the wall); the sellers' lists and
+  prices (Slateport's market, Lilycove's fifth floor); the Secret Power man on Route 111 and TM43.
+- **Rulings**:
+  - The question whether to make a base at a spot is asked outside it, before Secret Power, where Emerald goes in first
+    and asks there; answered no, nothing is made. Facing the player's own base goes in, with no question.
+  - A spot's kind is told by its id, not by its tile: the reader keeps all of Emerald's spot behaviours as one
+    `SecretBaseSpot`.
+  - The wall a poster hangs on is every blocked tile with floor right under it that is no PC (Emerald's
+    `MB_SECRET_BASE_NORTH_WALL`, which the reader doesn't keep); the floor every open tile but the door's.
+  - Dolls and cushions stand on the floor, one to a tile, as every decoration does here; Emerald stands them on desks
+    and mats too. A big doll stands on one tile, two tiles tall.
+  - Kept clear: the tile inside the door and the tile before the PC (Emerald keeps clear the tile the player stood on
+    when they turned the PC on, which is that one), and the visitor's spot is no matter, as no friend's base comes.
+  - The Solid Board isn't laid over a hole, the breakable door and the mud ball don't break, and the mats make no sound.
+  - The base's door leads back to the tile the player opened it from, facing away from the spot.
+  - REGISTRY says that no friend's base is registered: friends' bases come by record mixing, and nothing is linked.
+  - PACK UP takes everything back into the PC and gives the base up, and the player is put out at its spot (Emerald's
+    `MoveOutOfSecretBase`).
+  - A base's room wears a house's interior until the six kinds have their own looks.
+
+| What | Emerald | Here |
+| --- | --- | --- |
+| Making a base | Secret Power at a spot, in, then "make it here?" | "Use Secret Power?" at the spot, then in |
+| A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
+| Dolls and cushions | On the floor, a desk or a mat | On the floor |
+| The decoration PC | Eight pockets by kind | One list, the same rooms by kind |

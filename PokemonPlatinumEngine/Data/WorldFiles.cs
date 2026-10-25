@@ -1225,6 +1225,12 @@ public sealed class AreaSign
     /// <summary>The <see cref="Type"/> of a sign that is read: its script says what it says (a GBA game's signposts, plan 19 · K1).</summary>
     public const int Read = 0;
 
+    /// <summary>
+    /// The <see cref="Type"/> of a secret base's spot (a GBA game's, plan 21 · H10): a tree, a shrub or an indent in a
+    /// rock wall that Secret Power opens; its <see cref="Script"/> is the base's id (<c>SECRET_BASE_TREE1_1</c>).
+    /// </summary>
+    public const int SecretBase = 3;
+
     public int X { get; set; }
     public int Z { get; set; }
     public int Type { get; set; }

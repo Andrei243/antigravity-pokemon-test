@@ -28,6 +28,7 @@
     { "trigger": 15, "script": "PushBackLeft" }
   ],
   "people": {
+    "boy_1": { "name": "Boy", "script": "SecretPowerMan" },
     "route111_ty_1": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
     "route111_gabby_1": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
     "route111_gabby_2": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },

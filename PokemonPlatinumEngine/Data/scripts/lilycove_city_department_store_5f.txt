@@ -1,0 +1,271 @@
+# Lilycove's Department Store, fifth floor (plan 21 · H10): the Pokédoll Floor, whose four counters sell what dresses
+# up a secret base (LilycoveCity_DepartmentStore_5F_EventScript_ClerkFarLeft to _ClerkFarRight: Emerald's
+# pokemartdecoration2 lists, at Emerald's prices, decorations.json). What is bought goes into the decoration PC
+# (`openbase buy`: RESULT 1 bought, 0 short of money, 2 no room for its kind). A question takes six answers, so a long
+# list is asked a page at a time; a purchase ends the talk.
+
+
+# The far left counter: dolls
+script Dolls
+  speaker "Clerk"
+  say "Welcome to the Pokédoll Floor! These dolls are made to sit about a secret base."
+label Page1
+  choose "Which would you like?" "PICHU DOLL  3,000" "PIKACHU DOLL  3,000" "MARILL DOLL  3,000" "JIGGLYPUFF DOLL  3,000" "MORE" "NO, THANKS"
+  if result == 0 goto Pichu
+  if result == 1 goto Pikachu
+  if result == 2 goto Marill
+  if result == 3 goto Jigglypuff
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "DUSKULL DOLL  3,000" "WYNAUT DOLL  3,000" "BALTOY DOLL  3,000" "KECLEON DOLL  3,000" "MORE" "NO, THANKS"
+  if result == 0 goto Duskull
+  if result == 1 goto Wynaut
+  if result == 2 goto Baltoy
+  if result == 3 goto Kecleon
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "AZURILL DOLL  3,000" "SKITTY DOLL  3,000" "SWABLU DOLL  3,000" "GULPIN DOLL  3,000" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Azurill
+  if result == 1 goto Skitty
+  if result == 2 goto Swablu
+  if result == 3 goto Gulpin
+  if result == 4 goto Page1
+  goto Bye
+label Pichu
+  openbase buy "Pichu Doll"
+  goto Sold
+label Pikachu
+  openbase buy "Pikachu Doll"
+  goto Sold
+label Marill
+  openbase buy "Marill Doll"
+  goto Sold
+label Jigglypuff
+  openbase buy "Jigglypuff Doll"
+  goto Sold
+label Duskull
+  openbase buy "Duskull Doll"
+  goto Sold
+label Wynaut
+  openbase buy "Wynaut Doll"
+  goto Sold
+label Baltoy
+  openbase buy "Baltoy Doll"
+  goto Sold
+label Kecleon
+  openbase buy "Kecleon Doll"
+  goto Sold
+label Azurill
+  openbase buy "Azurill Doll"
+  goto Sold
+label Skitty
+  openbase buy "Skitty Doll"
+  goto Sold
+label Swablu
+  openbase buy "Swablu Doll"
+  goto Sold
+label Gulpin
+  openbase buy "Gulpin Doll"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please do come again!"
+  end
+
+
+# The middle left counter: cushions
+script Cushions
+  speaker "Clerk"
+  say "Welcome! Cushions, soft and bright, for a secret base."
+label Page1
+  choose "Which would you like?" "PIKA CUSHION  2,000" "ROUND CUSHION  2,000" "ZIGZAG CUSHION  2,000" "SPIN CUSHION  2,000" "MORE" "NO, THANKS"
+  if result == 0 goto Pika
+  if result == 1 goto Round
+  if result == 2 goto Zigzag
+  if result == 3 goto Spin
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "DIAMOND CUSHION  2,000" "BALL CUSHION  2,000" "GRASS CUSHION  2,000" "FIRE CUSHION  2,000" "MORE" "NO, THANKS"
+  if result == 0 goto Diamond
+  if result == 1 goto Ball
+  if result == 2 goto Grass
+  if result == 3 goto Fire
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "WATER CUSHION  2,000" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Water
+  if result == 1 goto Page1
+  goto Bye
+label Pika
+  openbase buy "Pika Cushion"
+  goto Sold
+label Round
+  openbase buy "Round Cushion"
+  goto Sold
+label Zigzag
+  openbase buy "Zigzag Cushion"
+  goto Sold
+label Spin
+  openbase buy "Spin Cushion"
+  goto Sold
+label Diamond
+  openbase buy "Diamond Cushion"
+  goto Sold
+label Ball
+  openbase buy "Ball Cushion"
+  goto Sold
+label Grass
+  openbase buy "Grass Cushion"
+  goto Sold
+label Fire
+  openbase buy "Fire Cushion"
+  goto Sold
+label Water
+  openbase buy "Water Cushion"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please do come again!"
+  end
+
+
+# The middle right counter: posters
+script Posters
+  speaker "Clerk"
+  say "Welcome! Posters to hang on a secret base's walls."
+label Page1
+  choose "Which would you like?" "BALL POSTER  1,000" "GREEN POSTER  1,000" "RED POSTER  1,000" "BLUE POSTER  1,000" "MORE" "NO, THANKS"
+  if result == 0 goto BallPoster
+  if result == 1 goto Green
+  if result == 2 goto Red
+  if result == 3 goto Blue
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "CUTE POSTER  1,000" "PIKA POSTER  1,500" "LONG POSTER  1,500" "SEA POSTER  1,500" "MORE" "NO, THANKS"
+  if result == 0 goto Cute
+  if result == 1 goto Pika
+  if result == 2 goto Long
+  if result == 3 goto Sea
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "SKY POSTER  1,500" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Sky
+  if result == 1 goto Page1
+  goto Bye
+label BallPoster
+  openbase buy "Ball Poster"
+  goto Sold
+label Green
+  openbase buy "Green Poster"
+  goto Sold
+label Red
+  openbase buy "Red Poster"
+  goto Sold
+label Blue
+  openbase buy "Blue Poster"
+  goto Sold
+label Cute
+  openbase buy "Cute Poster"
+  goto Sold
+label Pika
+  openbase buy "Pika Poster"
+  goto Sold
+label Long
+  openbase buy "Long Poster"
+  goto Sold
+label Sea
+  openbase buy "Sea Poster"
+  goto Sold
+label Sky
+  openbase buy "Sky Poster"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please do come again!"
+  end
+
+
+# The far right counter: mats
+script Mats
+  speaker "Clerk"
+  say "Welcome! Mats to lay on a secret base's floor."
+label Page1
+  choose "Which would you like?" "SURF MAT  4,000" "THUNDER MAT  4,000" "FIRE BLAST MAT  4,000" "POWDER SNOW MAT  4,000" "MORE" "NO, THANKS"
+  if result == 0 goto Surf
+  if result == 1 goto Thunder
+  if result == 2 goto FireBlast
+  if result == 3 goto PowderSnow
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "ATTRACT MAT  4,000" "FISSURE MAT  4,000" "SPIKES MAT  4,000" "GLITTER MAT  2,000" "MORE" "NO, THANKS"
+  if result == 0 goto Attract
+  if result == 1 goto Fissure
+  if result == 2 goto Spikes
+  if result == 3 goto Glitter
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "JUMP MAT  2,000" "SPIN MAT  2,000" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto Jump
+  if result == 1 goto SpinMat
+  if result == 2 goto Page1
+  goto Bye
+label Surf
+  openbase buy "Surf Mat"
+  goto Sold
+label Thunder
+  openbase buy "Thunder Mat"
+  goto Sold
+label FireBlast
+  openbase buy "Fire Blast Mat"
+  goto Sold
+label PowderSnow
+  openbase buy "Powder Snow Mat"
+  goto Sold
+label Attract
+  openbase buy "Attract Mat"
+  goto Sold
+label Fissure
+  openbase buy "Fissure Mat"
+  goto Sold
+label Spikes
+  openbase buy "Spikes Mat"
+  goto Sold
+label Glitter
+  openbase buy "Glitter Mat"
+  goto Sold
+label Jump
+  openbase buy "Jump Mat"
+  goto Sold
+label SpinMat
+  openbase buy "Spin Mat"
+label Sold
+  call Told
+  end
+label Bye
+  say "Please do come again!"
+  end
+
+
+# What a counter says once `openbase buy` has been answered
+script Told
+  if result == 0 goto Poor
+  if result == 2 goto Full
+  say "Thank you very much! The {thing} has been sent to your decoration PC."
+  return
+label Poor
+  say "I'm terribly sorry, but you haven't enough money for that."
+  return
+label Full
+  say "I'm sorry, but your decoration PC has no more room for things of that kind."
+  return

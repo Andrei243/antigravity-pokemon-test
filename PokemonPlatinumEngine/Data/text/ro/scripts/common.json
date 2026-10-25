@@ -2416,5 +2416,141 @@
         "Revino oricând Pokémonii tăi au chef de o alergare!"
       ]
     }
+  ],
+  "SecretBaseSpot": [
+    {
+      "en": [
+        "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a small indent in the rock wall here. Use Secret Power?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This big tree looks as if it might drop a vine. Use Secret Power?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This clump of grass looks as if it might move aside. Use Secret Power?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a small indent in the rock wall. A Pokémon's move might open it up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This big tree looks as if a vine could drop from it, if only something shook it loose."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If this clump of grass could be moved aside, there might be a way in."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "UseSecretPower": [
+    {
+      "en": [
+        "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SecretBaseMake": [
+    {
+      "en": [
+        "A small cavern opened up in the rock!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A thick vine dropped down from the tree!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The grass parted on a small way in!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SecretBasePC": [
+    {
+      "en": [
+        "The base's PC hummed into life."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "DECORATE",
+        "PACK UP",
+        "REGISTRY",
+        "LOG OFF"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

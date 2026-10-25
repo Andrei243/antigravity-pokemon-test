@@ -254,6 +254,12 @@ public enum PropType
     /// (<see cref="NPC.GymStatueType"/>), drawn as a card, which a floor switch moves a step round its loop of arrows.
     /// </summary>
     GymStatue,
+    /// <summary>
+    /// A decoration standing in a secret base of Hoenn's (plan 21 · H10): its model names which (<c>dec:45</c>, the
+    /// decoration's number), built by <c>DecorationArt</c>. Blocks nothing by itself: the base lays the tiles it stands
+    /// in the way of (<c>GameEngine.LayOutSecretBase</c>).
+    /// </summary>
+    Decoration,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

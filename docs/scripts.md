@@ -473,6 +473,26 @@ Plan 06 · R16a; `docs/mechanics/rulings.md`, "The Underground". What the player
 `{thing}` is what the last `underground give` gave, and `{digger}` the digger whose base the player is in, whose
 flag is carried, or whose was last brought home.
 
+### Hoenn's secret bases
+
+Plan 21 · H10; `docs/mechanics/rulings.md`, "Secret bases". The player has one base at a time (`SecretBaseSave`, saved)
+and a decoration PC (`StoredDecoration`s, saved). The game starts `common.SecretBaseSpot` when a spot is faced and
+`common.SecretBasePC` when a base's PC is; Secret Power from the party menu runs `common.UseSecretPower`.
+
+| Command | What it does |
+|---|---|
+| `openbase` | The spot in front becomes the player's base (the one before emptied, everything in it back in the PC) and the player goes in, to stand before its PC: `RESULT` 0 with no spot in front. A warp: the script goes on in the room. |
+| `openbase check` | `RESULT` 0 with no spot in front, 1 at a spot while the player has no base, 2 at the player's own base, 3 at another spot while the player has a base elsewhere. Nothing to see: a hurry passes it. |
+| `openbase kind` | `RESULT` is the kind of the spot in front, in Emerald's order: 1 a red cave's indent, 2 a brown, 3 a blue, 4 a yellow, 5 a tree, 6 a shrub; 0 for none. |
+| `openbase enter` | Into the player's base, inside its door. |
+| `openbase pc` | Opens the decorating over the base's floor (the shared `DecorationScreen`), and the script waits: `RESULT` 0 outside the player's own base. |
+| `openbase packup` | Everything in the base back into the PC, the base given up, and the player out to where its spot is faced from. |
+| `openbase give "Red Brick"` | A decoration into the PC, without a word: `RESULT` 1, or 0 with no room for its kind (ten desks, chairs, plants, posters and cushions, thirty ornaments and mats, forty dolls). `{thing}` names it. |
+| `openbase buy "Red Brick"` | As a decoration shop does: `RESULT` 1 bought (its price taken, the decoration in the PC), 0 short of money, 2 no room for its kind. `{thing}` names it. |
+| `openbase room "Red Brick"` | `RESULT` 1 while the PC has room for one more of the decoration's kind. |
+
+A decoration is named by `decorations.json`'s name (`Red Brick`) or its constant (`DECOR_RED_BRICK`).
+
 ### Fossils, the Game Corner, the Villa and Pal Park
 
 Plan 06 · R16b; `docs/mechanics/rulings.md`, "Fossils, the Game Corner, the Villa and Pal Park". The Coin Case's

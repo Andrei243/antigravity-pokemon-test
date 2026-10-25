@@ -1,0 +1,356 @@
+{
+  "Dolls": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Pokédoll Floor! These dolls are made to sit about a secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "PICHU DOLL  3,000",
+        "PIKACHU DOLL  3,000",
+        "MARILL DOLL  3,000",
+        "JIGGLYPUFF DOLL  3,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "DUSKULL DOLL  3,000",
+        "WYNAUT DOLL  3,000",
+        "BALTOY DOLL  3,000",
+        "KECLEON DOLL  3,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "AZURILL DOLL  3,000",
+        "SKITTY DOLL  3,000",
+        "SWABLU DOLL  3,000",
+        "GULPIN DOLL  3,000",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please do come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cushions": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Cushions, soft and bright, for a secret base."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "PIKA CUSHION  2,000",
+        "ROUND CUSHION  2,000",
+        "ZIGZAG CUSHION  2,000",
+        "SPIN CUSHION  2,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "DIAMOND CUSHION  2,000",
+        "BALL CUSHION  2,000",
+        "GRASS CUSHION  2,000",
+        "FIRE CUSHION  2,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "WATER CUSHION  2,000",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please do come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Posters": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Posters to hang on a secret base's walls."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "BALL POSTER  1,000",
+        "GREEN POSTER  1,000",
+        "RED POSTER  1,000",
+        "BLUE POSTER  1,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "CUTE POSTER  1,000",
+        "PIKA POSTER  1,500",
+        "LONG POSTER  1,500",
+        "SEA POSTER  1,500",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "SKY POSTER  1,500",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please do come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Mats": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Mats to lay on a secret base's floor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "SURF MAT  4,000",
+        "THUNDER MAT  4,000",
+        "FIRE BLAST MAT  4,000",
+        "POWDER SNOW MAT  4,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "ATTRACT MAT  4,000",
+        "FISSURE MAT  4,000",
+        "SPIKES MAT  4,000",
+        "GLITTER MAT  2,000",
+        "MORE",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which would you like?",
+        "JUMP MAT  2,000",
+        "SPIN MAT  2,000",
+        "BACK TO THE START",
+        "NO, THANKS"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please do come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Told": [
+    {
+      "en": [
+        "Thank you very much! The {thing} has been sent to your decoration PC."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm terribly sorry, but you haven't enough money for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but your decoration PC has no more room for things of that kind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

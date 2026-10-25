@@ -85,8 +85,13 @@
     { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 247, "z": 147, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_DEANDRE" }
   ],
   "signs": [
+    { "x": 287, "z": 154, "type": 3, "script": "SECRET_BASE_RED_CAVE1_1" },
     { "x": 253, "z": 146, "type": 0, "script": "Route118_EventScript_RouteSignMauville" },
     { "x": 296, "z": 148, "type": 0, "script": "Route118_EventScript_RouteSign119" },
+    { "x": 307, "z": 146, "type": 3, "script": "SECRET_BASE_RED_CAVE2_1" },
+    { "x": 269, "z": 145, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE1_2" },
+    { "x": 287, "z": 145, "type": 3, "script": "SECRET_BASE_TREE1_3" },
+    { "x": 286, "z": 145, "type": 3, "script": "SECRET_BASE_TREE2_1" },
     { "x": 271, "z": 153, "type": 2, "script": "", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_ROUTE_118_IRON" },
     { "x": 252, "z": 154, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_118_HEART_SCALE" }
   ],

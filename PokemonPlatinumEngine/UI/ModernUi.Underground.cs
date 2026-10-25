@@ -353,6 +353,10 @@ internal static partial class ModernUi
             {
                 bool kept = room.KeptClear.Contains((room.Left + x, room.Top + y));
                 var tile = (x + y) % 2 == 0 ? new Color(160, 142, 128, 255) : new Color(152, 134, 122, 255);
+                // A room that is no rectangle (a secret base of Hoenn's, plan 21 · H10) shows its rock dark and its wall slate
+                var what = room.TileAt?.Invoke(room.Left + x, room.Top + y) ?? RoomTile.Floor;
+                if (what == RoomTile.Rock) tile = new Color(58, 50, 60, 255);
+                else if (what == RoomTile.Wall) tile = new Color(112, 104, 116, 255);
                 Raylib.DrawRectangle((int)(floor.X + x * cell) + 1, (int)(floor.Y + y * cell) + 1, (int)cell - 2, (int)cell - 2, kept ? new Color(176, 160, 140, 255) : tile);
             }
 

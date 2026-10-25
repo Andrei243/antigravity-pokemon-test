@@ -113,6 +113,10 @@ public partial class GameEngine
         public void OpenUndergroundBag(int tab = 0) => game.OpenUndergroundBag(tab);
         public void SpringTrap(int trap) => game.SpringTrap(trap);
         public void OpenBaseDecoration() => game.OpenDecoration();
+        /// <summary>Hoenn's secret bases (plan 21 · H10): the player's base, the decoration PC, and the base's decorating opened.</summary>
+        public Models.SecretBaseSave? SecretBase => game.flow.SecretBase;
+        public List<Models.StoredDecoration> Decorations => game.flow.Decorations;
+        public void OpenSecretBaseDecoration() => game.OpenSecretBaseDecoration();
         public void UseDiggerDrill(int slot) => game.UseDiggerDrill(slot);
         public SealShopScreen SealShop => game.flow.SealShopScreen;
         public FashionCaseScreen FashionCaseScreen => game.flow.FashionCaseScreen;

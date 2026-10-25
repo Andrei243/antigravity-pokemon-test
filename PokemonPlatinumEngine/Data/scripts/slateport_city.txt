@@ -95,3 +95,127 @@ script EnergyGuru
   shop "slateport_energy_guru"
   say "Come back whenever your Pokémon need a boost!"
   end
+
+
+# The market's two stalls of decorations for a secret base (SlateportCity_EventScript_DecorClerk and _DollClerk, plan 21
+# · H10: Emerald's pokemartdecoration lists, at Emerald's prices, decorations.json): what is bought goes into the
+# decoration PC (`openbase buy`: RESULT 1 bought, 0 short of money, 2 no room for its kind). A question takes six
+# answers, so a long list is asked a page at a time.
+script DecorClerk
+  speaker "Clerk"
+  say "Welcome! Bricks, balloons and mats to brighten up a secret base."
+label Page1
+  choose "Which would you like?" "RED BRICK  500" "BLUE BRICK  500" "YELLOW BRICK  500" "RED BALLOON  500" "MORE" "NO, THANKS"
+  if result == 0 goto RedBrick
+  if result == 1 goto BlueBrick
+  if result == 2 goto YellowBrick
+  if result == 3 goto RedBalloon
+  if result == 4 goto Page2
+  goto Bye
+label Page2
+  choose "Which would you like?" "BLUE BALLOON  500" "YELLOW BALLOON  500" "C LOW NOTE MAT  500" "D NOTE MAT  500" "MORE" "NO, THANKS"
+  if result == 0 goto BlueBalloon
+  if result == 1 goto YellowBalloon
+  if result == 2 goto CLowMat
+  if result == 3 goto DMat
+  if result == 4 goto Page3
+  goto Bye
+label Page3
+  choose "Which would you like?" "E NOTE MAT  500" "F NOTE MAT  500" "G NOTE MAT  500" "A NOTE MAT  500" "MORE" "NO, THANKS"
+  if result == 0 goto EMat
+  if result == 1 goto FMat
+  if result == 2 goto GMat
+  if result == 3 goto AMat
+  if result == 4 goto Page4
+  goto Bye
+label Page4
+  choose "Which would you like?" "B NOTE MAT  500" "C HIGH NOTE MAT  500" "BACK TO THE START" "NO, THANKS"
+  if result == 0 goto BMat
+  if result == 1 goto CHighMat
+  if result == 2 goto Page1
+  goto Bye
+label RedBrick
+  openbase buy "Red Brick"
+  goto Sold
+label BlueBrick
+  openbase buy "Blue Brick"
+  goto Sold
+label YellowBrick
+  openbase buy "Yellow Brick"
+  goto Sold
+label RedBalloon
+  openbase buy "Red Balloon"
+  goto Sold
+label BlueBalloon
+  openbase buy "Blue Balloon"
+  goto Sold
+label YellowBalloon
+  openbase buy "Yellow Balloon"
+  goto Sold
+label CLowMat
+  openbase buy "C Low Note Mat"
+  goto Sold
+label DMat
+  openbase buy "D Note Mat"
+  goto Sold
+label EMat
+  openbase buy "E Note Mat"
+  goto Sold
+label FMat
+  openbase buy "F Note Mat"
+  goto Sold
+label GMat
+  openbase buy "G Note Mat"
+  goto Sold
+label AMat
+  openbase buy "A Note Mat"
+  goto Sold
+label BMat
+  openbase buy "B Note Mat"
+  goto Sold
+label CHighMat
+  openbase buy "C High Note Mat"
+label Sold
+  if result == 0 goto Poor
+  if result == 2 goto Full
+  say "Thank you! The {thing} has been sent to your decoration PC."
+  end
+label Poor
+  say "Oh, I'm sorry. You haven't quite enough money for that."
+  end
+label Full
+  say "Your decoration PC has no more room for things of that kind."
+  end
+label Bye
+  say "Please come again!"
+  end
+
+script DollClerk
+  speaker "Clerk"
+  say "Welcome! Dolls to sit about a secret base."
+label Choose
+  choose "Which would you like?" "AZURILL DOLL  3,000" "MARILL DOLL  3,000" "SKITTY DOLL  3,000" "NO, THANKS"
+  if result == 0 goto Azurill
+  if result == 1 goto Marill
+  if result == 2 goto Skitty
+  say "Please come again!"
+  end
+label Azurill
+  openbase buy "Azurill Doll"
+  goto Sold
+label Marill
+  openbase buy "Marill Doll"
+  goto Sold
+label Skitty
+  openbase buy "Skitty Doll"
+label Sold
+  if result == 0 goto Poor
+  if result == 2 goto Full
+  say "Thank you! The {thing} has been sent to your decoration PC."
+  end
+label Poor
+  say "Oh, I'm sorry. You haven't quite enough money for that."
+  end
+label Full
+  say "Your decoration PC has no more room for dolls."
+  end

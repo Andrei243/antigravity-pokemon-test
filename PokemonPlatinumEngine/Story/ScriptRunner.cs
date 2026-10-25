@@ -377,6 +377,8 @@ public sealed partial class ScriptRunner
         Op.Athlon => i.Name == "open",
         // The tide is only a flag (plan 21 · H8, part d)
         Op.Tide => false,
+        // A secret base: what is asked and what goes into the decoration PC needs no screen; going in, decorating, packing up do
+        Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1114,6 +1116,11 @@ public sealed partial class ScriptRunner
             // The Underground (plan 06 · R16a)
             case Op.Underground:
                 Underground(i);
+                break;
+
+            // A secret base (plan 21 · H10)
+            case Op.OpenBase:
+                OpenBase(i);
                 break;
 
             // The Pokédex is told of a Pokémon the story shows (plan 02 · S12)
