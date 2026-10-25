@@ -98,6 +98,25 @@ public sealed class Habitats
     public IReadOnlyList<Habitat> Of(string species) => bySpecies.TryGetValue(species, out var list) ? list : Array.Empty<Habitat>();
 
     /// <summary>
+    /// The places a species lives in a randomised run (plan 13 · V6), where the species of the tables stand for others: the
+    /// places of every species that goes to it (<c>Randomizer.Sources</c>), the areas of one name taken together, in the
+    /// order the region's areas come.
+    /// </summary>
+    public IReadOnlyList<Habitat> Of(IEnumerable<string> standingFor)
+    {
+        var merged = new Dictionary<string, (HabitatWays Ways, SortedSet<(int, int)> Cells, string? How, int First)>(StringComparer.Ordinal);
+        int order = 0;
+        foreach (string source in standingFor)
+            foreach (var h in Of(source))
+            {
+                if (!merged.TryGetValue(h.Name, out var m)) m = (HabitatWays.None, new SortedSet<(int, int)>(), h.How, order++);
+                foreach (var c in h.Cells) m.Cells.Add(c);
+                merged[h.Name] = (m.Ways | h.Ways, m.Cells, m.How, m.First);
+            }
+        return merged.OrderBy(p => p.Value.First).Select(p => new Habitat(p.Key, p.Value.Cells.ToList(), p.Value.Ways) { How = p.Value.How }).ToList();
+    }
+
+    /// <summary>
     /// What a chunk of the overworld looks like on the map: <c>~</c> water, <c>.</c> land, <c>T</c> a town or a city,
     /// a space where there is nothing.
     /// </summary>

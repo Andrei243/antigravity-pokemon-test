@@ -201,6 +201,9 @@ public class PokedexScreen
     /// <summary>The region the player stands in as the Pokédex is opened (plan 18 · W3); the National listing's AREA page draws its map.</summary>
     public Region? Here { get; private set; }
 
+    /// <summary>The run's randomiser (plan 13 · V6), set as the Pokédex is opened: the AREA page shows where the species that stand for a species live. Null for every other run.</summary>
+    public Models.Randomizer? Random { get; set; }
+
     /// <summary>
     /// The region whose map and wild Pokémon the AREA page shows: the listing's own region, or, for the National
     /// listing, the region the player stands in, as Platinum shows Sinnoh for everything; Sinnoh's when neither is known.

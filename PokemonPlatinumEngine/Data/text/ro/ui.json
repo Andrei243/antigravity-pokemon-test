@@ -480,6 +480,11 @@
       "sentToPc": "{name} nu e de tipul acestei partide, așa că a fost trimis la PC."
     },
     "hint": { "start": "Start" },
+    "markSeed": "{preset} · SĂMÂNȚĂ {seed}",
+    "seed": {
+      "title": "SĂMÂNȚĂ",
+      "blurb": "Scrie cel mult nouă cifre. Aceeași sămânță face mereu același joc. Acum e {seed}; lasă gol ca să o păstrezi."
+    },
     "ended": {
       "whiteout": "Ultimul tău Pokémon a leșinat. Nuzlocke s-a încheiat, iar jocul acesta nu va mai fi salvat.",
       "noSave": "Acest Nuzlocke s-a încheiat. Jocul nu mai poate fi salvat."
@@ -501,6 +506,9 @@
       "NoRunning": "Fără fugă",
       "SetStyle": "Doar lupte Fixe",
       "ShinyOdds": "Șansa de shiny",
+      "RandomSpecies": "Pokémoni amestecați",
+      "RandomItems": "Obiecte amestecate",
+      "Seed": "Sămânță",
       "Start": "START"
     },
     "help": {
@@ -520,6 +528,9 @@
       "NoRunning": "Nu poți fugi din luptele cu Pokémoni sălbatici.",
       "SetStyle": "Stilul de luptă este Fix, iar schimbarea nu e oferită niciodată.",
       "ShinyOdds": "Cât de des e un Pokémon shiny. „După reguli” este șansa obișnuită a jocului.",
+      "RandomSpecies": "Pokémonii sălbatici, echipele antrenorilor, darurile, legendele și partenerul tău sunt alte specii, aceleași de fiecare dată pentru o sămânță. Evoluțiile rămân în liniile lor.",
+      "RandomItems": "Obiectele de pe jos și cele primite sunt alte obiecte. Obiectele cheie, HM-urile și tot ce cere povestea nu se schimbă niciodată.",
+      "Seed": "O sămânță face un singur joc. Stânga și dreapta trag alta; A scrie cel mult nouă cifre. Se păstrează pe cardul de antrenor.",
       "Start": "Începe jocul cu aceste alegeri. Nu mai pot fi schimbate după aceea."
     }
   },

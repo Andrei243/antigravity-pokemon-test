@@ -35,7 +35,9 @@ public partial class GameEngine
             MeetWildPokemon(met, BattleKind.Roamer, nuzlockeCatch: MeetUnderTheRun(met));
             return;
         }
-        var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
+        // A randomised run meets the species its table's species go to (plan 13 · V6); every other run, the table's own
+        var random = Randomizer.For(flow.Run);
+        var wildSpecies = PokemonDatabase.Get(random?.Species(entry.SpeciesName) ?? entry.SpeciesName)!;
         Random rng = fieldRandom;
         // At the region's mapped level in a region the game crossed into (plan 18 · W4), drawn as ever
         int lvl = LevelHere(rng.Next(entry.MinLevel, entry.MaxLevel + 1));
@@ -85,7 +87,7 @@ public partial class GameEngine
             }
             if (other != null)
             {
-                var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
+                var otherSpecies = PokemonDatabase.Get(random?.Species(other.SpeciesName) ?? other.SpeciesName)!;
                 second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
                 ShinyCharm.Roll(second, flow.Bag, rng, other.Gender, other.Nature);
                 if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
@@ -138,7 +140,9 @@ public partial class GameEngine
         {
             party = new Party();
             // Or whoever else shows it, with their own Pokémon (plan 21 · H2: Wally, with his father's Zigzagoon)
-            party.Add(catcher?.Own ?? new Pokemon(PokemonDatabase.Get(flow.Story.AssistantStarter ?? "Piplup")!, 5));
+            // (the assistant's starter is the species its slot goes to in a randomised run, as the lines name it: plan 13 · V6)
+            string assistants = flow.Story.AssistantStarter ?? "Piplup";
+            party.Add(catcher?.Own ?? new Pokemon(PokemonDatabase.Get(Randomizer.For(flow.Run)?.Species(assistants) ?? assistants)!, 5));
             bag = new Inventory();
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
             name = catcher != null ? PlayerIdentity.Fill(catcher.Name) : PlayerIdentity.Fill("{assistant}");
@@ -423,6 +427,14 @@ public partial class GameEngine
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
+        // A randomised run's trainers bring the species theirs go to, on copies (plan 13 · V6), the rival's first battle
+        // included, so his team is the one the starter taken names, mapped; a Master Trainer's one species stays
+        if (Randomizer.For(flow.Run) is { MapsSpecies: true } random && terms?.Alone == null)
+        {
+            trainers = trainers.Select(random.ForTrainer).ToList();
+            trainer = trainers[0];
+            if (partner != null) partner = random.ForTrainer(partner);
+        }
         // Whoever battles beside the player stands on the platform too, as the person they are in the field: whoever
         // travels along, or someone of the map a script named (plan 06 · R16c)
         if (partner != null)

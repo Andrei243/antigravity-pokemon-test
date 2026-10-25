@@ -103,7 +103,7 @@ internal static partial class ModernUi
                 bool owned = pokedex.IsCaught(entry.Species.DexNumber);
                 switch (page)
                 {
-                    case PokedexPage.Area: DexArea(detail, entry.Species, dex.AreaRegion); break;
+                    case PokedexPage.Area: DexArea(detail, entry.Species, dex.AreaRegion, dex.Random); break;
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
                     case PokedexPage.Cry: DexCry(detail, dex); break;
                     case PokedexPage.Forms: DexForms(detail, dex, entry); break;
@@ -272,10 +272,12 @@ internal static partial class ModernUi
     /// AREA: the map of Sinnoh (<see cref="RegionMap"/>, the Town Map's own picture, smaller), with the places the
     /// species lives lit, and beside it those places and how the species is met in each.
     /// </summary>
-    private static void DexArea(Rectangle detail, PokemonSpecies s, Region? region)
+    private static void DexArea(Rectangle detail, PokemonSpecies s, Region? region, Randomizer? random = null)
     {
         var habitats = region == null ? null : Habitats.Of(region);
-        var places = habitats?.Of(s.Name) ?? Array.Empty<Habitat>();
+        // In a randomised run (plan 13 · V6) the places are those of the species that stand for it
+        var places = habitats == null ? Array.Empty<Habitat>()
+            : random is { MapsSpecies: true } ? habitats.Of(random.Sources(s.Name)) : habitats.Of(s.Name);
         var map = new Rectangle(detail.X + 44, detail.Y + 124, 600, 500);
         RegionMap(map, 20, new HashSet<(int, int)>(places.SelectMany(p => p.Cells)), of: region);
 

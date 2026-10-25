@@ -137,39 +137,10 @@ internal sealed class PokeGenome
 /// A small deterministic random generator (SplitMix32), so a species' model is the same on every run and every
 /// version of .NET (the mesh cache is keyed by the model).
 /// </summary>
-internal sealed class GenomeRandom
+internal sealed class GenomeRandom : Core.SplitMix
 {
-    private uint state;
-
-    public GenomeRandom(uint seed) => state = seed;
-
-    public uint Next()
-    {
-        uint z = state += 0x9E3779B9u;
-        z = (z ^ (z >> 16)) * 0x85EBCA6Bu;
-        z = (z ^ (z >> 13)) * 0xC2B2AE35u;
-        return z ^ (z >> 16);
-    }
-
-    /// <summary>0 (inclusive) to 1 (exclusive).</summary>
-    public float Float() => (Next() >> 8) * (1f / 16777216f);
-
-    public float Range(float a, float b) => a + (b - a) * Float();
-
-    public int Int(int n) => n <= 1 ? 0 : (int)(Next() % (uint)n);
-
-    public bool Chance(float p) => Float() < p;
-
-    public T Pick<T>(params T[] items) => items[Int(items.Length)];
-
-    public static uint Hash(int value, uint salt)
-    {
-        uint h = (uint)value * 0x27D4EB2Du ^ salt * 0x165667B1u;
-        h ^= h >> 15;
-        h *= 0x2C1B3C6Du;
-        h ^= h >> 12;
-        return h;
-    }
+    // (plan 13 · V6: the generator itself is Core/SplitMix.cs, shared with the randomiser; the numbers are unchanged)
+    public GenomeRandom(uint seed) : base(seed) { }
 }
 
 /// <summary>Works out the <see cref="PokeGenome"/> of any species from its data (plan 03 · D5).</summary>

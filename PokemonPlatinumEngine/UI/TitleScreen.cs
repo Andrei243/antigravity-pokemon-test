@@ -433,7 +433,9 @@ public sealed class TitleScreen
     public void Change(int direction)
     {
         if (Phase != TitlePhase.ChooseRun) return;
-        Run.Change(direction);
+        // On the seed's keyboard the sides move its cursor (plan 13 · V6)
+        if (Run.EnteringSeed) Run.MoveCursor(Math.Sign(direction), 0);
+        else Run.Change(direction);
         AudioManager.PlaySound("cursor");
     }
 
@@ -455,7 +457,8 @@ public sealed class TitleScreen
             return;
         }
         if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ChooseAutosave) Enter(TitlePhase.Menu);
-        // Out of the ways to play to the menu NEW GAME was chosen on (plan 13 · V1)
+        // Out of the ways to play to the menu NEW GAME was chosen on (plan 13 · V1); on the seed's keyboard a digit is taken back (V6)
+        else if (Phase == TitlePhase.ChooseRun && Run.EnteringSeed) Run.CancelSeedKey();
         else if (Phase == TitlePhase.ChooseRun) Enter(TitlePhase.Menu);
         // Out of the delete question to where it was asked; out of the choice of a save to the row that asked for it
         else if (Phase == TitlePhase.ConfirmDelete) Enter(deleteFrom);
@@ -475,6 +478,7 @@ public sealed class TitleScreen
         if (step == 0) return;
         if (Phase == TitlePhase.Menu) SelectedIndex = ((SelectedIndex + step) % entries.Count + entries.Count) % entries.Count;
         else if (Phase == TitlePhase.ChooseDelete) SelectedIndex = ((SelectedIndex + step) % cards.Count + cards.Count) % cards.Count;
+        else if (Phase == TitlePhase.ChooseRun && Run.EnteringSeed) Run.MoveCursor(0, step);
         else if (Phase == TitlePhase.ChooseRun) Run.Move(step);
         else if (Phase is TitlePhase.ConfirmNewGame or TitlePhase.ConfirmDelete or TitlePhase.ChooseAutosave) ConfirmYes = !ConfirmYes;
         else return;

@@ -851,9 +851,11 @@ public sealed class HeadlessScriptHost : IScriptHost
         // From the briefcase of the region the script plays in (Oak's table in Kanto, plan 19 · K3)
         var three = RegionDatabase.Get(Region)?.Starters is { Count: > 0 } own ? own : StoryState.Starters;
         int choice = Math.Clamp(StarterChoice, 0, three.Count - 1);
-        string species = three[choice];
+        // The card's slot is what the story goes by; in a randomised run the Pokémon given is the species the slot goes to (plan 13 · V6)
+        string slot = three[choice];
+        string species = Randomizer.For(Rules)?.Starters(three)[choice] ?? slot;
         Give(new Pokemon(PokemonDatabase.Get(species)!, 5), theStarter: true);
-        Story.ChooseStarter(species);
+        Story.ChooseStarter(slot);
         Answer = choice;
     }
 
