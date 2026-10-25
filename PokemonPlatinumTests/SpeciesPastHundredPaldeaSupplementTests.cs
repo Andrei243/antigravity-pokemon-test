@@ -49,7 +49,7 @@ public class SpeciesPastHundredPaldeaSupplementTests
             Assert.Same(Species(name), PokemonDatabase.GetByDex(number));
             Assert.True(Species(name).IsOurs);
         }
-        Assert.Equal(373, PokemonDatabase.Ours().Count);
+        Assert.Equal(400, PokemonDatabase.Ours().Count); // every batch and supplement together (wave 55)
         Assert.Equal(18, PokemonDatabase.Ours().Count(s => s.DexNumber is 2964 or (>= 2984 and <= 2995) or 3005 or 3006 or (>= 3014 and <= 3016)));
     }
 
