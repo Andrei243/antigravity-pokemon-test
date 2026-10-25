@@ -63,6 +63,16 @@ static class GlbMerge
         return Write(baseFile);
     }
 
+    /// <summary>The file with each clip renamed by <paramref name="rename"/> (given its own name and its place).</summary>
+    public static byte[] RenameClips(byte[] glb, Func<string, int, string> rename)
+    {
+        var file = Read(glb);
+        if (file.Json["animations"] is JsonArray clips)
+            for (int i = 0; i < clips.Count; i++)
+                clips[i]!["name"] = rename(clips[i]!["name"]?.GetValue<string>() ?? "", i);
+        return Write(file);
+    }
+
     public static List<string> AnimationNames(byte[] glb) =>
         (Read(glb).Json["animations"] as JsonArray ?? new JsonArray()).Select(a => a?["name"]?.GetValue<string>() ?? "").ToList();
 

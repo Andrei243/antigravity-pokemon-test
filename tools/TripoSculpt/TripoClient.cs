@@ -101,7 +101,7 @@ sealed class TripoClient
         foreach (string name in new[] { "credits_consumed", "consumed_credit" })
             if (d.TryGetProperty(name, out var c) && c.ValueKind == JsonValueKind.Number) { credits = c.GetDouble(); break; }
         int progress = d.TryGetProperty("progress", out var p) && p.ValueKind == JsonValueKind.Number ? p.GetInt32() : 0;
-        return new TripoTask(id, Text(d, "status") ?? "unknown", progress, model, credits, Text(d, "error_msg") ?? Text(d, "message"), urls, output.ValueKind == JsonValueKind.Object ? output.Clone() : default);
+        return new TripoTask(id, Text(d, "status") ?? "unknown", progress, model, credits, Reason(d), urls, output.ValueKind == JsonValueKind.Object ? output.Clone() : default);
     }
 
     /// <summary>Polls until the task has ended one way or the other, or the time is up.</summary>
@@ -180,6 +180,14 @@ sealed class TripoClient
             await Task.Delay(status == 429 ? retryMs * 5 * attempt : retryMs * attempt);
         }
         throw new TripoException($"{what}: gave up", false);
+    }
+
+    // Tripo's own reason for a failed task: its error_message and error_code, or the older names
+    static string? Reason(JsonElement d)
+    {
+        string? text = Text(d, "error_message") ?? Text(d, "error_msg") ?? Text(d, "message");
+        return d.ValueKind == JsonValueKind.Object && d.TryGetProperty("error_code", out var code) && code.ValueKind == JsonValueKind.Number && code.GetInt32() != 0
+            ? (text == null ? "" : text + " ") + "(code " + code.GetInt32() + ")" : text;
     }
 
     static string? Text(JsonElement e, string name) =>

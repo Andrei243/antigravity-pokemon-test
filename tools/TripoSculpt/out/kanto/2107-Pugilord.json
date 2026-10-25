@@ -1,0 +1,38 @@
+{
+  "name": "2107 Pugilord",
+  "set": "kanto",
+  "image": "2107-Pugilord.jpg",
+  "request": {
+    "model": "v3.1-20260211",
+    "face_limit": 30000,
+    "texture": true,
+    "pbr": false,
+    "enable_image_autofix": false
+  },
+  "taskId": "077e1286-6eb1-4d8d-bb3a-bd0078a9f099",
+  "submittedAt": "2026-10-25T21:30:19.7461808Z",
+  "status": "success",
+  "credits": 30,
+  "bytes": 1952680,
+  "rig": {
+    "type": "biped",
+    "taskId": "ce0b3c28-6c2c-41b0-a8cb-2afcfde8be30",
+    "retargetTaskId": "2c648243-16d2-4045-8c47-f3c3cea22695",
+    "animations": [
+      "preset:idle",
+      "preset:hurt",
+      "preset:fall",
+      "preset:slash",
+      "preset:shoot"
+    ],
+    "status": "success",
+    "credits": 0,
+    "clips": [
+      "faint_fall",
+      "hurt",
+      "idle",
+      "special_shoot",
+      "strike_slash"
+    ]
+  }
+}

@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 
 sealed record RigOptions(string? RigType, string? RigModel, List<string>? Animations, bool Force, int Limit,
-                         int DelayMs, TimeSpan Timeout, int PollMs, bool Reanimate = false)
+                         int DelayMs, TimeSpan Timeout, int PollMs, bool Reanimate = false, bool Refetch = false)
 {
     public static RigOptions Default => new(null, null, null, false, int.MaxValue, 1000, TimeSpan.FromMinutes(10), 3000);
 }
@@ -56,7 +56,7 @@ static class Rigger
         foreach (var c in chosen)
         {
             if (made >= o.Limit) break;
-            if (File.Exists(c.Animated(root)) && !o.Force && !o.Reanimate) { kept++; continue; }
+            if (File.Exists(c.Animated(root)) && !o.Force && !o.Reanimate && !o.Refetch) { kept++; continue; }
             if (!File.Exists(c.Glb(root))) { log.WriteLine($"{c.Set}/{c.Slug}: no sculpt to rig yet (generate first)"); continue; }
 
             log.Write($"{c.Set}/{c.Slug} ... ");
@@ -106,7 +106,15 @@ static class Rigger
                     rig["taskId"] = rigTask;
                     Sculptor.WriteMeta(c.Meta(root), meta);
                 }
-                var rigged = await Wait(client, rigTask, o, log, "rig");
+                TripoTask rigged;
+                try { rigged = await Wait(client, rigTask, o, log, "rig"); }
+                catch (TripoException)
+                {
+                    // A failed rig is not gone back to: the next run makes a new one
+                    rig.Remove("taskId");
+                    Sculptor.WriteMeta(c.Meta(root), meta);
+                    throw;
+                }
                 if (rigIsNew) spent += rigged.Credits;   // a rig that was paid for in an earlier run is not charged again
 
                 // 3. the animations
@@ -150,8 +158,10 @@ static class Rigger
                 var clipNames = names.Select(ClipName).ToList();
                 while (clipNames.Count < files.Count) clipNames.Add("clip" + clipNames.Count);
                 var notes = new List<string>();
-                byte[] merged = GlbMerge.Merge(files, clipNames, notes);
-                if (files.Count == 1 && presets.Count > 1) notes.Add($"asked for {presets.Count} animations, got one file: its clips are named for the first");
+                // Tripo may answer with one file holding every clip, each named for its preset (alphabetical): name them by that
+                byte[] merged = files.Count == 1
+                    ? GlbMerge.RenameClips(files[0], (own, i) => names.Count == 1 ? clipNames[0] : names.FirstOrDefault(p => p[(p.LastIndexOf(':') + 1)..] == own) is { } preset ? ClipName(preset) : own.Length > 0 ? own : clipNames[Math.Min(i, clipNames.Count - 1)])
+                    : GlbMerge.Merge(files, clipNames, notes);
                 var info = GlbInfo.Read(merged);
                 if (info.Error != null) throw new TripoException("the merged file is not a usable GLB: " + info.Error, false);
 
