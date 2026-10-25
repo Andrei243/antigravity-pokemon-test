@@ -70,7 +70,7 @@ public class SpeciesPastHundredTests
             if (legend)
             {
                 Assert.Equal(660, Total(d.Stats));
-                Assert.InRange(rise, 1, 80);
+                Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
             {
@@ -104,6 +104,7 @@ public class SpeciesPastHundredTests
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
+            9 => (244, legend ? 258 : 256), // Paldea's climb (its question 1, 2026-10-26): 244 to 256, the Treasures of Ruin at 258
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -185,6 +186,7 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
+            case EvolutionMethod.LevelWithItemsInBag: context.Bag = new Inventory(); context.Bag.AddItem(ItemDatabase.Get(e.Item!)!, e.Value); break;
         }
         return (p, context, trigger);
     }
@@ -236,7 +238,7 @@ public class SpeciesPastHundredTests
         foreach (var e in Designs.Select(d => d.Evolution).Where(e => e.Item != null))
         {
             var item = ItemDatabase.Get(e.Item!)!;
-            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : Evolution.IsHeldForEvolution(item), e.Item);
+            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : e.Method == EvolutionMethod.LevelWithItemsInBag ? Evolution.IsGatheredForEvolution(item) : Evolution.IsHeldForEvolution(item), e.Item);
         }
     }
 

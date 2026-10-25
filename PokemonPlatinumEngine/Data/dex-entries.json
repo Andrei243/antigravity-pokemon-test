@@ -12150,5 +12150,278 @@
       "The three points on its head have lengthened into a crown. Its tails shine with three red gems, and a band of light encircles its brow.",
       "Azelthymos gives resolve to anyone who meets its gaze. Its strength grows only with the guardian of knowledge at its side."
     ]
+  },
+  "Trufflord": {
+    "habitat": "Forest",
+    "entries": [
+      "Its snout has broadened into a flat spade for rooting, and a wig of tight grey curls hangs over its shoulders. Two short ochre tusks jut from its jaw.",
+      "It snuffles out truffles buried a metre down. The earthy scent it leaves in the soil draws every hog of the valley along its tracks."
+    ]
+  },
+  "Fortarach": {
+    "habitat": "Forest",
+    "entries": [
+      "The legs it once folded over its face have hardened into a portcullis of grey steel bars. Strands of silver silk run from spine to spine along its back.",
+      "It wedges itself into a narrow doorway and waits there for days. Anything that pushes against its barred face is caught fast in the threads woven through them."
+    ]
+  },
+  "Locustorm": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its wings have grown long enough to carry it across whole provinces. A red band crosses its sharp visor like a mask, and its hind legs are striped red and black.",
+      "When one takes off at dusk, thousands follow it into the air. Paldean farmers watch the summer sky at sunset, dreading the moment it rises."
+    ]
+  },
+  "Squeakshire": {
+    "habitat": "Urban",
+    "entries": [
+      "Six mice now live as one. The two parents wear scarves of white fur, two small ones stay between them, and the littlest rides on a parent's back.",
+      "Once a family has stayed together long enough, it invites its relatives in. Every berry is split six ways, and nobody ever argues over the last piece."
+    ]
+  },
+  "Brioschund": {
+    "habitat": "Urban",
+    "entries": [
+      "Its long body is a braided loaf glazed deep gold, scored along the back. Pale seeds dot its ears, and a curl of steam rises from it all day.",
+      "Children who doze off leaning on its warm side wake up smelling of fresh baking. Families that keep one say they never need to buy bread."
+    ]
+  },
+  "Bossquawk": {
+    "habitat": "Urban",
+    "entries": [
+      "Its crest has grown into a towering swept pompadour, and a ruff of bright feathers circles its neck like a collar. One wing bears an old notch.",
+      "It perches high over the plaza and directs its gang with a single squawk. The flock does the stealing, and it never carries any of the loot itself."
+    ]
+  },
+  "Pyropaladin": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its helm has become a crested great helm, and a shield of gold plates guards one forearm. A mantle of flame burns across its shoulders.",
+      "People say the armour once belonged to a knight sworn to guard travellers. At dusk it still patrols the old mountain roads, lighting the way with its cannons."
+    ]
+  },
+  "Duskenblade": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its two flame blades have fused at the hilt into one long glaive. A tattered cloak of blue fire streams from its shoulders, and dark spikes crown its helm.",
+      "The grudges sealed in its armour have smouldered for a thousand years. It hunts only those who break their oaths, and its cold blue flame warms nothing."
+    ]
+  },
+  "Thunderbelly": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its round belly has swollen into a drum ridged like a coil. The bulbs of its eyes glow yellow, and grey froth gathers around its feet.",
+      "When it pounds its belly during a storm, lightning strikes in reply. Fishers in the bay row for home the instant they hear its drumming."
+    ]
+  },
+  "Terawattrel": {
+    "habitat": "Sea",
+    "entries": [
+      "Its wings have grown long and forked, and their edges crackle with sparks. Two long streamers trail from its tail, and its throat pouch has swollen.",
+      "It rides storm winds over the open ocean for weeks without landing once. The charge stored in its throat could keep a lighthouse burning all night."
+    ]
+  },
+  "Mastiffdon": {
+    "habitat": "Urban",
+    "entries": [
+      "Its jowls hang heavier than ever, and a thick chain with a gold plate replaces its spiked collar. A scar runs across its brow.",
+      "Every dog in town steps aside when it passes, yet it sees that every pup is fed. One stare from it ends a quarrel between rival packs."
+    ]
+  },
+  "Graffitape": {
+    "habitat": "Forest",
+    "entries": [
+      "Each of its ten fingers is dyed a different colour, and swirls of paint run over its chest. Its long tail serves as its brush.",
+      "Overnight it covers entire walls with murals in poison paint that turns harmless once dry. No two of its kind ever paint in the same style."
+    ]
+  },
+  "Thornwraith": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its tangle of brambles now spins as a ring around a pale green ghostly core. Two long thorned vines hang from it like arms, trailing dust.",
+      "It whirls over the dunes faster than the wind that pushes it along. Whatever snags in its thorns is carried off and never seen again."
+    ]
+  },
+  "Myceliarch": {
+    "habitat": "Forest",
+    "entries": [
+      "Its cap has spread wide, ringed by a crown of smaller caps. Pale threads stretch between its long tentacles, and its spots glow faintly blue after dark.",
+      "Its threads reach beneath an entire forest. When a single tree there is felled, it senses the loss even from the far side of a mountain."
+    ]
+  },
+  "Klawlossus": {
+    "habitat": "Mountain",
+    "entries": [
+      "Grey steel plates cover the red of its shell. One claw has grown far larger than the other, and its eyestalks lengthen under a heavy brow.",
+      "It clings upside down to cliff faces for days at a time. A single snap of its giant claw can split a boulder cleanly in half."
+    ]
+  },
+  "Habanerogue": {
+    "habitat": "Grassland",
+    "entries": [
+      "A third small head, still green, has sprouted between the other two. The red head's leaves droop like a jester's cap, and its body is ribbed like pepper skin.",
+      "The green head ripens only once the other two agree on something. Its spice is so fierce that the air around it ripples even on a frosty day."
+    ]
+  },
+  "Khepristar": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "The ball it rolls has become a glowing golden sphere circled by rings. Its legs have lengthened, and a pale sun marks its wing cases.",
+      "It pushes its shining sphere from dawn until dusk. People of ancient times believed it was this Pokémon that rolled the sun across the sky."
+    ]
+  },
+  "Mirastrich": {
+    "habitat": "Grassland",
+    "entries": [
+      "The fan of eye feathers now forms a complete ring around its head. The eyes on them shift between pink and blue, and its legs have grown longer.",
+      "When chased, it turns its ring of eyes on the hunter. The pursuer sees only an empty plain shimmering in the heat while it strolls away."
+    ]
+  },
+  "Wugsextet": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Six eels rise from the sand in two rings of three, the middle ones standing tallest. Each has bright yellow lips and a row of pale spots.",
+      "All six heads share a single body hidden under the beach. Divers have spent hours digging for its end without ever reaching it."
+    ]
+  },
+  "Bomberon": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its apron has become a satchel slung across its chest, always holding a boulder. Dark feathers band its eyes like goggles, and its flight feathers have lengthened.",
+      "It glides over rival nests and lets its boulder fall. The satchel it carries can hold a rock heavier than the bird itself."
+    ]
+  },
+  "Turbovroom": {
+    "habitat": "Urban",
+    "entries": [
+      "Its body has stretched low and long like a racing machine. Two extra exhaust pipes jut from its back, a steel spoiler sits over its tail, and lamps glow at its front.",
+      "The roar of its engine rattles windows a kilometre away. Racers who hear it closing in behind them pull over without a second thought."
+    ]
+  },
+  "Velocidrake": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its frills have hardened into a saddle of overlapping plates, and two short horns curve from its head. Its long tail ends in a whip with an orange tip.",
+      "With a rider it trusts, it can cross Paldea from coast to coast in a single day. It allows no stranger anywhere near its saddle."
+    ]
+  },
+  "Orthobore": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its head ends in a drill of three ridged cones, and steel plates armour each of its many segments. Dust streams from its rear as it moves.",
+      "It feeds on the iron in the rock as it burrows. The tunnels it leaves behind are so perfectly round that people travel them as roads."
+    ]
+  },
+  "Geodiadem": {
+    "habitat": "Cave",
+    "entries": [
+      "A second ring of crystal petals has opened beneath the first, their tips glowing pink. A crown of small crystals sits above its face.",
+      "Its petals chime like glass whenever a draught moves through the cave. The toxic crystals it sheds are prized above gold by those able to handle them."
+    ]
+  },
+  "Barrowhound": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "The gravestone on its back has become a cairn of three stacked stones. A small white candle flame floats at its brow, and its ears hang long and ragged.",
+      "It keeps watch over ancient graves all night long. Lost travellers who follow the glow of its candle always find their way back to the road."
+    ]
+  },
+  "Flamenkick": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its neck feathers have grown into a ruffled collar like a dancer's costume. A long train of tail feathers sweeps the ground, and red bands circle its knees.",
+      "When it begins to dance on one leg, every Flamigo nearby joins in. Its kicks always land exactly on the beat of its stamping foot."
+    ]
+  },
+  "Cetiberg": {
+    "habitat": "Mountain",
+    "entries": [
+      "Ice has built up over its back until it looks like a floating iceberg. Its horn has grown long and clear, and its icy tusks are thicker.",
+      "It plods across the snowfields at a slow, steady pace. Young Cetoddle climb onto its frozen back to ride from one mountain to the next."
+    ]
+  },
+  "Sashimaru": {
+    "habitat": "Sea",
+    "entries": [
+      "Its fins have sharpened into blades along its back, and a finned crest covers its head like a helm. The pink stripe along its flank has widened.",
+      "It slices through a breaking wave without raising a splash. It is said to think most clearly once it has shed everything it does not need."
+    ]
+  },
+  "Grandozo": {
+    "habitat": "Sea",
+    "entries": [
+      "Its whiskers have grown long enough to trail far behind it, and a pale ridge runs along its back. Its lips have deepened to a rich pink.",
+      "It swallows the wake of a passing ship along with every fish in it. It swims wherever the Tatsugiri in its mouth points and nowhere else."
+    ]
+  },
+  "Tatsushogun": {
+    "habitat": "Sea",
+    "entries": [
+      "Its long upper fin curls into the shape of an admiral's hat. A cape of fin flows down its back, and a pale baton of fin hangs below its chin.",
+      "It gives its orders from deep inside a Dondozo's mouth. Every Tatsugiri in the bay obeys its commands without making a sound."
+    ]
+  },
+  "Clodkaiser": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its fin spines have grown into a crown of poison quills running down its back. Its face is rounder and calmer, and its tail has broadened.",
+      "It lies in the bog and never stirs, so the bog shifts around it instead. Its quills carry a poison that leaves limbs numb for a whole day."
+    ]
+  },
+  "Farigigiraf": {
+    "habitat": "Grassland",
+    "entries": [
+      "The head on its tail has grown a neck of its own, so the two heads face each other across its back. Both have longer horns and matching stripes.",
+      "Its two heads have become equals. Each thinks half of every thought, and nothing can trick it so long as one of them is awake."
+    ]
+  },
+  "Dunsprawl": {
+    "habitat": "Cave",
+    "entries": [
+      "Its body now stretches across four segments, each with pale stripes. Its tail ends in a drill of three ridges, and its little wings have grown larger.",
+      "The tunnels it digs under the hills run so far that nobody has ever mapped them. It often loses track of where its own tail has got to."
+    ]
+  },
+  "Bullionaire": {
+    "habitat": "Rare",
+    "entries": [
+      "It stands on a tall stack of coins in place of its board. A crown of coins sits on its head, and a gown of linked coins hangs down its body.",
+      "Every night it counts each coin it owns. Anyone who steals even one finds their own pockets mysteriously empty the next morning."
+    ]
+  },
+  "Tabletruin": {
+    "habitat": "Rare",
+    "entries": [
+      "Eight wooden tablets now spread from its back in a fan, each carved with a glowing red seal. Roots trail from the mound of leaves on its shell.",
+      "Its tablets bear the names of a cruel king's servants. Each one it reclaims leaves the land around it a little greener than before."
+    ]
+  },
+  "Swordruin": {
+    "habitat": "Rare",
+    "entries": [
+      "Four blades of ice now jut from it, two at its jaw and two from its shoulders. A red seal glows on its brow, and its long fur is frosted.",
+      "Its blades were carved from the ice of an ancient king's tomb. A biting wind follows its pawprints for days after it has passed."
+    ]
+  },
+  "Vesselruin": {
+    "habitat": "Rare",
+    "entries": [
+      "The vessel on its head has swollen into a great bronze cauldron marked with a glowing seal. Its antlers branch further, and its legs are heavier.",
+      "The cauldron it carries is said to hold the grudge of the whole land. Wherever it lies down to rest, nothing grows for a year."
+    ]
+  },
+  "Beadruin": {
+    "habitat": "Rare",
+    "entries": [
+      "Its fiery body has lengthened and grown fins of flame. Six glowing beads circle it in a ring, and a red seal burns on its brow.",
+      "Its six beads hold the fire of a jealous king's heart. It glides through molten lava as easily as other fish swim through a stream."
+    ]
+  },
+  "Chagamage": {
+    "habitat": "Forest",
+    "entries": [
+      "Its bowl has become an iron kettle, with a ghostly whisk hovering above. Wisps of matcha steam drift upward, and the green tea inside glows.",
+      "It invites anyone who sits still to a tea ceremony. The tea it pours slowly drains the guest's strength, though the cups are exquisite."
+    ]
   }
 }
