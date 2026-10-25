@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2337 Selenolith (Rock/Psychic), from Lunatone: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2337_1" d="M136 240a120 120 0 1 0 240 0a120 120 0 1 0 -240 0Z"/><clipPath id="h2337_1c"><use href="#h2337_1"/></clipPath><path id="h2337_2" d="M188 140C132 172 118 260 158 316C196 366 266 372 312 344C252 354 194 322 176 262C162 214 168 170 188 140Z"/><clipPath id="h2337_2c"><use href="#h2337_2"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M156 452a100 11 0 1 0 200 0a100 11 0 1 0 -200 0Z" fill="#e9ebf2"/>
+<path d="M106 240a150 150 0 1 0 300 0a150 150 0 1 0 -300 0Z" fill="#fff8d6" opacity="0.35"/>
+<use href="#h2337_1" fill="#efe3b8"/>
+<g clip-path="url(#h2337_1c)"><path d="M190 290a110 100 0 1 0 220 0a110 100 0 1 0 -220 0Z" fill="#ccbb88"/><path d="M282 196a18 14.4 0 1 0 36 0a18 14.4 0 1 0 -36 0Z" fill="#b9a874"/><path d="M285.4 194a12.6 9.9 0 1 0 25.2 0a12.6 9.9 0 1 0 -25.2 0Z" fill="#ccbb88"/><path d="M309 262a13 10.4 0 1 0 26 0a13 10.4 0 1 0 -26 0Z" fill="#b9a874"/><path d="M310.9 260a9.1 7.2 0 1 0 18.2 0a9.1 7.2 0 1 0 -18.2 0Z" fill="#ccbb88"/><path d="M254 310a16 12.8 0 1 0 32 0a16 12.8 0 1 0 -32 0Z" fill="#b9a874"/><path d="M256.8 308a11.2 8.8 0 1 0 22.4 0a11.2 8.8 0 1 0 -22.4 0Z" fill="#ccbb88"/><path d="M219 286a9 7.2 0 1 0 18 0a9 7.2 0 1 0 -18 0Z" fill="#b9a874"/><path d="M219.7 284a6.3 5 0 1 0 12.6 0a6.3 5 0 1 0 -12.6 0Z" fill="#ccbb88"/><path d="M332 220a8 6.4 0 1 0 16 0a8 6.4 0 1 0 -16 0Z" fill="#b9a874"/><path d="M332.4 218a5.6 4.4 0 1 0 11.2 0a5.6 4.4 0 1 0 -11.2 0Z" fill="#ccbb88"/><path d="M181.2 218.9A40 26 -35 1 0 246.8 173.1A40 26 -35 1 0 181.2 218.9Z" fill="#fffbe8"/></g>
+<use href="#h2337_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2337_2" fill="#f8efcc"/>
+<g clip-path="url(#h2337_2c)"><path d="M158 316C196 366 266 372 312 344L300 380L140 380Z" fill="#ccbb88"/><path d="M144 235.5A6 40 5 1 0 156 236.5A6 40 5 1 0 144 235.5Z" fill="#ffffff"/></g>
+<use href="#h2337_2" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M218 226Q246 206 276 222Q248 244 218 226Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M238 225a10 9 0 1 0 20 0a10 9 0 1 0 -20 0Z" fill="#d8303c"/>
+<path d="M244 226a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#1b1b2b"/>
+<path d="M214 214Q244 198 278 210" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+</svg>

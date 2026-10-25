@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2369 Aeonfin (Water/Rock), from Relicanth: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2369_1" d="M404 260C424 226 446 206 474 196C468 230 462 252 452 270C462 288 470 312 474 344C446 330 424 310 404 288Z"/><clipPath id="h2369_1c"><use href="#h2369_1"/></clipPath><path id="h2369_2" d="M76 262C86 206 160 176 260 182C350 188 404 228 414 272C404 318 350 346 260 348C160 350 82 320 76 262Z"/><clipPath id="h2369_2c"><use href="#h2369_2"/></clipPath><path id="h2369_3" d="M240 186L270 140L300 130L320 190Z"/><clipPath id="h2369_3c"><use href="#h2369_3"/></clipPath><path id="h2369_4" d="M273.6 362.7A18 44 24 1 0 306.4 377.3A18 44 24 1 0 273.6 362.7Z"/><clipPath id="h2369_4c"><use href="#h2369_4"/></clipPath><path id="h2369_5" d="M170.5 363.6A18 42 14 1 0 205.5 372.4A18 42 14 1 0 170.5 363.6Z"/><clipPath id="h2369_5c"><use href="#h2369_5"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M66 440a190 13 0 1 0 380 0a190 13 0 1 0 -380 0Z" fill="#e9ebf2"/>
+<use href="#h2369_1" fill="#a08a70"/>
+<g clip-path="url(#h2369_1c)"><path d="M452 270C462 288 470 312 474 344C446 330 424 310 404 288Z" fill="#7a6650"/></g>
+<use href="#h2369_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M302.1 354A16 40 30 1 0 329.9 370A16 40 30 1 0 302.1 354Z" fill="#7a6650" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M199 354.5A16 40 20 1 0 229 365.5A16 40 20 1 0 199 354.5Z" fill="#7a6650" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2369_2" fill="#a08a70"/>
+<g clip-path="url(#h2369_2c)"><path d="M80 290C160 330 300 340 414 272L420 380L80 380Z" fill="#7a6650"/><path d="M150 196L200 186L214 226L166 236Z" fill="#6e604f" opacity="0.55"/><path d="M214 186L270 184L278 226L226 228Z" fill="#6e604f" opacity="0.55"/><path d="M282 188L340 198L336 240L290 232Z" fill="#6e604f" opacity="0.55"/><path d="M160 248L210 240L216 286L170 290Z" fill="#6e604f" opacity="0.55"/><path d="M290 246L344 252L334 296L290 290Z" fill="#6e604f" opacity="0.55"/><path d="M350 210L394 236L380 268L350 254Z" fill="#6e604f" opacity="0.55"/><path d="M130 200a90 8 0 1 0 180 0a90 8 0 1 0 -180 0Z" fill="#c8b498"/></g>
+<use href="#h2369_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2369_3" fill="#a08a70"/>
+<g clip-path="url(#h2369_3c)"><path d="M300 130L320 190L296 188Z" fill="#7a6650"/></g>
+<use href="#h2369_3" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M228 268a22 18 0 1 0 44 0a22 18 0 1 0 -44 0Z" fill="none" stroke="#e8dcc4" stroke-width="5"/><path d="M241 268a9 7 0 1 0 18 0a9 7 0 1 0 -18 0Z" fill="#e8dcc4"/>
+<use href="#h2369_4" fill="#a08a70"/>
+<g clip-path="url(#h2369_4c)"><path d="M288.9 373.9A10 40 24 1 0 307.1 382.1A10 40 24 1 0 288.9 373.9Z" fill="#7a6650"/></g>
+<use href="#h2369_4" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2369_5" fill="#a08a70"/>
+<g clip-path="url(#h2369_5c)"><path d="M186.3 371.6A10 38 14 1 0 205.7 376.4A10 38 14 1 0 186.3 371.6Z" fill="#7a6650"/></g>
+<use href="#h2369_5" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M123 319.3A14 30 50 1 0 141 340.7A14 30 50 1 0 123 319.3Z" fill="#a08a70" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M76 262C80 278 92 290 108 294L110 270C96 270 84 266 76 262Z" fill="#d0534a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M115 238a7 9 0 1 0 14 0a7 9 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M117.7 234.9a2.2 2.5 0 1 0 4.5 0a2.2 2.5 0 1 0 -4.5 0Z" fill="#ffffff"/>
+</svg>

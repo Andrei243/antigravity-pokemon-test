@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2379 Regiferrum (Steel), from Registeel: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2379_1" d="M178 420a34 36 0 1 0 68 0a34 36 0 1 0 -68 0Z"/><clipPath id="h2379_1c"><use href="#h2379_1"/></clipPath><path id="h2379_2" d="M268 420a34 36 0 1 0 68 0a34 36 0 1 0 -68 0Z"/><clipPath id="h2379_2c"><use href="#h2379_2"/></clipPath><path id="h2379_3" d="M113.1 291.3A36 74 14 1 0 182.9 308.7A36 74 14 1 0 113.1 291.3Z"/><clipPath id="h2379_3c"><use href="#h2379_3"/></clipPath><path id="h2379_4" d="M331.1 308.7A36 74 -14 1 0 400.9 291.3A36 74 -14 1 0 331.1 308.7Z"/><clipPath id="h2379_4c"><use href="#h2379_4"/></clipPath><path id="h2379_5" d="M102 384a30 28 0 1 0 60 0a30 28 0 1 0 -60 0Z"/><clipPath id="h2379_5c"><use href="#h2379_5"/></clipPath><path id="h2379_6" d="M352 384a30 28 0 1 0 60 0a30 28 0 1 0 -60 0Z"/><clipPath id="h2379_6c"><use href="#h2379_6"/></clipPath><path id="h2379_7" d="M170 300a86 92 0 1 0 172 0a86 92 0 1 0 -172 0Z"/><clipPath id="h2379_7c"><use href="#h2379_7"/></clipPath><path id="h2379_8" d="M210 312a46 46 0 1 0 92 0a46 46 0 1 0 -92 0Z"/><clipPath id="h2379_8c"><use href="#h2379_8"/></clipPath><path id="h2379_9" d="M200 196a56 50 0 1 0 112 0a56 50 0 1 0 -112 0Z"/><clipPath id="h2379_9c"><use href="#h2379_9"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M96 460a160 13 0 1 0 320 0a160 13 0 1 0 -320 0Z" fill="#e9ebf2"/>
+<use href="#h2379_1" fill="#8d96a7"/>
+<g clip-path="url(#h2379_1c)"><path d="M198.4 432.6a27.2 28.8 0 1 0 54.4 0a27.2 28.8 0 1 0 -54.4 0Z" fill="#636b7b"/><path d="M178 420L246 420" stroke="#636b7b" stroke-width="4"/><path d="M187.2 407.9A11.9 6.5 -20 1 0 209.6 399.7A11.9 6.5 -20 1 0 187.2 407.9Z" fill="#c3cad6"/></g>
+<use href="#h2379_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_2" fill="#8d96a7"/>
+<g clip-path="url(#h2379_2c)"><path d="M288.4 432.6a27.2 28.8 0 1 0 54.4 0a27.2 28.8 0 1 0 -54.4 0Z" fill="#636b7b"/><path d="M268 420L336 420" stroke="#636b7b" stroke-width="4"/><path d="M277.2 407.9A11.9 6.5 -20 1 0 299.6 399.7A11.9 6.5 -20 1 0 277.2 407.9Z" fill="#c3cad6"/></g>
+<use href="#h2379_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_3" fill="#8d96a7"/>
+<g clip-path="url(#h2379_3c)"><path d="M134.5 318.9A28.8 59.2 14 1 0 190.3 332.9A28.8 59.2 14 1 0 134.5 318.9Z" fill="#636b7b"/><path d="M112 300L184 300" stroke="#636b7b" stroke-width="4"/><path d="M121.1 268A12.6 13.3 -6 1 0 146.1 265.4A12.6 13.3 -6 1 0 121.1 268Z" fill="#c3cad6"/></g>
+<use href="#h2379_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_4" fill="#8d96a7"/>
+<g clip-path="url(#h2379_4c)"><path d="M352.5 332.9A28.8 59.2 -14 1 0 408.3 318.9A28.8 59.2 -14 1 0 352.5 332.9Z" fill="#636b7b"/><path d="M330 300L402 300" stroke="#636b7b" stroke-width="4"/><path d="M341.2 273.7A12.6 13.3 -34 1 0 362 259.7A12.6 13.3 -34 1 0 341.2 273.7Z" fill="#c3cad6"/></g>
+<use href="#h2379_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_5" fill="#8d96a7"/>
+<g clip-path="url(#h2379_5c)"><path d="M120 393.8a24 22.4 0 1 0 48 0a24 22.4 0 1 0 -48 0Z" fill="#636b7b"/><path d="M102 384L162 384" stroke="#636b7b" stroke-width="4"/><path d="M110.1 375A10.5 5 -20 1 0 129.9 367.8A10.5 5 -20 1 0 110.1 375Z" fill="#c3cad6"/></g>
+<use href="#h2379_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_6" fill="#8d96a7"/>
+<g clip-path="url(#h2379_6c)"><path d="M370 393.8a24 22.4 0 1 0 48 0a24 22.4 0 1 0 -48 0Z" fill="#636b7b"/><path d="M352 384L412 384" stroke="#636b7b" stroke-width="4"/><path d="M360.1 375A10.5 5 -20 1 0 379.9 367.8A10.5 5 -20 1 0 360.1 375Z" fill="#c3cad6"/></g>
+<use href="#h2379_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_7" fill="#8d96a7"/>
+<g clip-path="url(#h2379_7c)"><path d="M221.6 332.2a68.8 73.6 0 1 0 137.6 0a68.8 73.6 0 1 0 -137.6 0Z" fill="#636b7b"/><path d="M170 300L342 300" stroke="#636b7b" stroke-width="4"/><path d="M193.3 268.9A30.1 16.6 -20 1 0 249.9 248.3A30.1 16.6 -20 1 0 193.3 268.9Z" fill="#c3cad6"/></g>
+<use href="#h2379_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2379_8" fill="#a6afbe"/>
+<g clip-path="url(#h2379_8c)"><path d="M234 328a36 32 0 1 0 72 0a36 32 0 1 0 -72 0Z" fill="#636b7b"/></g>
+<use href="#h2379_8" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<path d="M234 312a22 22 0 1 0 44 0a22 22 0 1 0 -44 0Z" fill="#636b7b" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M256 286L256 338M230 312L282 312M238 294L274 330M274 294L238 330" fill="none" stroke="#c3cad6" stroke-width="4"/>
+<path d="M249 312a7 7 0 1 0 14 0a7 7 0 1 0 -14 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M176 250a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M176 290a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M176 330a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M328 250a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M328 290a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M328 330a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M210 220a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M294 220a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<use href="#h2379_9" fill="#8d96a7"/>
+<g clip-path="url(#h2379_9c)"><path d="M233.6 213.5a44.8 40 0 1 0 89.6 0a44.8 40 0 1 0 -89.6 0Z" fill="#636b7b"/><path d="M200 196L312 196" stroke="#636b7b" stroke-width="4"/><path d="M215.2 180.2A19.6 9 -20 1 0 252 166.8A19.6 9 -20 1 0 215.2 180.2Z" fill="#c3cad6"/></g>
+<use href="#h2379_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M246 174a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M249.5 174a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M265.3 180.1a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M268.8 180.1a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M275.5 195.5a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M279 195.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M272 213a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M275.5 213a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M256.3 224.4a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M259.8 224.4a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M235.7 224.4a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M239.2 224.4a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M220 213a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M223.5 213a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M216.5 195.5a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M220 195.5a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M226.7 180.1a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#ff5a4a" opacity="0.35"/>
+<path d="M230.2 180.1a6.5 6.5 0 1 0 13 0a6.5 6.5 0 1 0 -13 0Z" fill="#ff5a4a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M210 170a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M294 170a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M252 154a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c3cad6" stroke="#1b1b2b" stroke-width="2"/>
+</svg>

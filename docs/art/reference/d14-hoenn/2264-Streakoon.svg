@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2264 Streakoon (Normal/Ground), from Linoone: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2264_1" d="M357.8 315A62 22 -14 1 0 478.2 285A62 22 -14 1 0 357.8 315Z"/><clipPath id="h2264_1c"><use href="#h2264_1"/></clipPath><path id="h2264_2" d="M140.2 324.9A132 42 -3 1 0 403.8 311.1A132 42 -3 1 0 140.2 324.9Z"/><clipPath id="h2264_2c"><use href="#h2264_2"/></clipPath><path id="h2264_3" d="M320.5 370.6A22 32 -12 1 0 363.5 361.4A22 32 -12 1 0 320.5 370.6Z"/><clipPath id="h2264_3c"><use href="#h2264_3"/></clipPath><path id="h2264_4" d="M162.3 371.4A20 30 -28 1 0 197.7 352.6A20 30 -28 1 0 162.3 371.4Z"/><clipPath id="h2264_4c"><use href="#h2264_4"/></clipPath><path id="h2264_5" d="M153.2 260.3A13 15 -10 1 0 178.8 255.7A13 15 -10 1 0 153.2 260.3Z"/><clipPath id="h2264_5c"><use href="#h2264_5"/></clipPath><path id="h2264_6" d="M102.3 297.2A50 35 -6 1 0 201.7 286.8A50 35 -6 1 0 102.3 297.2Z"/><clipPath id="h2264_6c"><use href="#h2264_6"/></clipPath><path id="h2264_7" d="M82 304a28 20 0 1 0 56 0a28 20 0 1 0 -56 0Z"/><clipPath id="h2264_7c"><use href="#h2264_7"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M93 420a175 12 0 1 0 350 0a175 12 0 1 0 -350 0Z" fill="#e9ebf2"/>
+<use href="#h2264_1" fill="#efe1c4"/>
+<g clip-path="url(#h2264_1c)"><path d="M365.8 326.5A60 12 -14 1 0 482.2 297.5A60 12 -14 1 0 365.8 326.5Z" fill="#cdb98f"/><path d="M395.3 306.2A9 24 -14 1 0 412.7 301.8A9 24 -14 1 0 395.3 306.2Z" fill="#8a5a35"/><path d="M436.2 297.9A8 22 -14 1 0 451.8 294.1A8 22 -14 1 0 436.2 297.9Z" fill="#8a5a35"/></g>
+<use href="#h2264_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M355.7 351.9A20 30 24 1 0 392.3 368.1A20 30 24 1 0 355.7 351.9Z" fill="#cdb98f" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M187.5 359.6A18 28 14 1 0 222.5 368.4A18 28 14 1 0 187.5 359.6Z" fill="#cdb98f" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2264_2" fill="#efe1c4"/>
+<g clip-path="url(#h2264_2c)"><path d="M152.2 356.8A130 18 -3 1 0 411.8 343.2A130 18 -3 1 0 152.2 356.8Z" fill="#cdb98f"/><path d="M168.2 302.2A118 9 -3 1 0 403.8 289.8A118 9 -3 1 0 168.2 302.2Z" fill="#8a5a35"/><path d="M200.1 329.2A100 7 -3 1 0 399.9 318.8A100 7 -3 1 0 200.1 329.2Z" fill="#8a5a35"/><path d="M170.1 295.7A70 6 -3 1 0 309.9 288.3A70 6 -3 1 0 170.1 295.7Z" fill="#fffaf0"/></g>
+<use href="#h2264_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2264_3" fill="#efe1c4"/>
+<g clip-path="url(#h2264_3c)"><path d="M339.3 374.7A13 30 -12 1 0 364.7 369.3A13 30 -12 1 0 339.3 374.7Z" fill="#cdb98f"/></g>
+<use href="#h2264_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M314 396a24 9 0 1 0 48 0a24 9 0 1 0 -48 0Z" fill="#efe1c4" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2264_4" fill="#efe1c4"/>
+<g clip-path="url(#h2264_4c)"><path d="M177.4 373.6A12 28 -28 1 0 198.6 362.4A12 28 -28 1 0 177.4 373.6Z" fill="#cdb98f"/></g>
+<use href="#h2264_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M136 390a26 10 0 1 0 52 0a26 10 0 1 0 -52 0Z" fill="#efe1c4" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M146 382C132 384 124 392 122 402C134 398 144 394 150 390Z" fill="#e8e3d8" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M156 390C142 392 134 400 132 410C144 406 154 402 160 398Z" fill="#e8e3d8" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M168 394C154 396 146 404 144 414C156 410 166 406 172 402Z" fill="#e8e3d8" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M196 392C184 396 178 402 176 410C186 406 194 404 200 400Z" fill="#e8e3d8" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M208 396C196 400 190 406 188 414C198 410 206 408 212 404Z" fill="#e8e3d8" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2264_5" fill="#efe1c4"/>
+<g clip-path="url(#h2264_5c)"><path d="M160 260a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#8a5a35"/></g>
+<use href="#h2264_5" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2264_6" fill="#efe1c4"/>
+<g clip-path="url(#h2264_6c)"><path d="M126.2 322.6A44 16 -6 1 0 213.8 313.4A44 16 -6 1 0 126.2 322.6Z" fill="#cdb98f"/><path d="M107 293.1A44 8 -12 1 0 193 274.9A44 8 -12 1 0 107 293.1Z" fill="#8a5a35"/><path d="M122.3 273.1A18 6 -10 1 0 157.7 266.9A18 6 -10 1 0 122.3 273.1Z" fill="#fffaf0"/></g>
+<use href="#h2264_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2264_7" fill="#efe1c4"/>
+<g clip-path="url(#h2264_7c)"><path d="M94 318a22 8 0 1 0 44 0a22 8 0 1 0 -44 0Z" fill="#cdb98f"/></g>
+<use href="#h2264_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M79 300a9 7 0 1 0 18 0a9 7 0 1 0 -18 0Z" fill="#1b1b2b"/>
+<path d="M96 318Q106 324 118 318" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M132 286a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#1b1b2b"/>
+<path d="M134.3 283.2a1.9 2.2 0 1 0 3.8 0a1.9 2.2 0 1 0 -3.8 0Z" fill="#ffffff"/>
+</svg>

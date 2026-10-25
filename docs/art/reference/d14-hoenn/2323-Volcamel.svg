@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2323 Volcamel (Fire/Ground), from Camerupt: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2323_1" d="M288 300L316 220L360 220L388 300Z"/><clipPath id="h2323_1c"><use href="#h2323_1"/></clipPath><path id="h2323_2" d="M316 220a22 7 0 1 0 44 0a22 7 0 1 0 -44 0Z"/><clipPath id="h2323_2c"><use href="#h2323_2"/></clipPath><path id="h2323_3" d="M162 300L190 222L234 222L262 300Z"/><clipPath id="h2323_3c"><use href="#h2323_3"/></clipPath><path id="h2323_4" d="M190 222a22 7 0 1 0 44 0a22 7 0 1 0 -44 0Z"/><clipPath id="h2323_4c"><use href="#h2323_4"/></clipPath><path id="h2323_5" d="M224 290L254 170L298 170L328 290Z"/><clipPath id="h2323_5c"><use href="#h2323_5"/></clipPath><path id="h2323_6" d="M254 170a22 7 0 1 0 44 0a22 7 0 1 0 -44 0Z"/><clipPath id="h2323_6c"><use href="#h2323_6"/></clipPath><path id="h2323_7" d="M154 338a122 60 0 1 0 244 0a122 60 0 1 0 -244 0Z"/><clipPath id="h2323_7c"><use href="#h2323_7"/></clipPath><path id="h2323_8" d="M303.1 411.9A27 42 -4 1 0 356.9 408.1A27 42 -4 1 0 303.1 411.9Z"/><clipPath id="h2323_8c"><use href="#h2323_8"/></clipPath><path id="h2323_9" d="M159 410a27 42 0 1 0 54 0a27 42 0 1 0 -54 0Z"/><clipPath id="h2323_9c"><use href="#h2323_9"/></clipPath><path id="h2323_10" d="M136.6 317A34 46 -30 1 0 195.4 283A34 46 -30 1 0 136.6 317Z"/><clipPath id="h2323_10c"><use href="#h2323_10"/></clipPath><path id="h2323_11" d="M80.4 280.4A46 38 -8 1 0 171.6 267.6A46 38 -8 1 0 80.4 280.4Z"/><clipPath id="h2323_11c"><use href="#h2323_11"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M97 452a175 14 0 1 0 350 0a175 14 0 1 0 -350 0Z" fill="#e9ebf2"/>
+<path d="M334.1 401.3A26 40 6 1 0 385.9 406.7A26 40 6 1 0 334.1 401.3Z" fill="#99302a" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M190 408a24 40 0 1 0 48 0a24 40 0 1 0 -48 0Z" fill="#99302a" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M306 214a32 14 0 1 0 64 0a32 14 0 1 0 -64 0Z" fill="#ff8a2a" opacity="0.35"/>
+<use href="#h2323_1" fill="#6e6258"/>
+<g clip-path="url(#h2323_1c)"><path d="M338 300L346.8 220L360 220L388 300Z" fill="#4f463f"/><path d="M303 290L318.2 228L327 228L313 290Z" fill="#93887c"/></g>
+<use href="#h2323_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2323_2" fill="#ff8a2a"/>
+<g clip-path="url(#h2323_2c)"><path d="M322.6 218a8.8 2 0 1 0 17.6 0a8.8 2 0 1 0 -17.6 0Z" fill="#ffe08a"/></g>
+<use href="#h2323_2" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M180 216a32 14 0 1 0 64 0a32 14 0 1 0 -64 0Z" fill="#ff8a2a" opacity="0.35"/>
+<use href="#h2323_3" fill="#6e6258"/>
+<g clip-path="url(#h2323_3c)"><path d="M212 300L220.8 222L234 222L262 300Z" fill="#4f463f"/><path d="M177 290L192.2 230L201 230L187 290Z" fill="#93887c"/></g>
+<use href="#h2323_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2323_4" fill="#ff8a2a"/>
+<g clip-path="url(#h2323_4c)"><path d="M196.6 220a8.8 2 0 1 0 17.6 0a8.8 2 0 1 0 -17.6 0Z" fill="#ffe08a"/></g>
+<use href="#h2323_4" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M244 164a32 14 0 1 0 64 0a32 14 0 1 0 -64 0Z" fill="#ff8a2a" opacity="0.35"/>
+<use href="#h2323_5" fill="#6e6258"/>
+<g clip-path="url(#h2323_5c)"><path d="M276 290L284.8 170L298 170L328 290Z" fill="#4f463f"/><path d="M239.6 280L256.2 178L265 178L250 280Z" fill="#93887c"/></g>
+<use href="#h2323_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2323_6" fill="#ff8a2a"/>
+<g clip-path="url(#h2323_6c)"><path d="M260.6 168a8.8 2 0 1 0 17.6 0a8.8 2 0 1 0 -17.6 0Z" fill="#ffe08a"/></g>
+<use href="#h2323_6" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2323_7" fill="#c8463c"/>
+<g clip-path="url(#h2323_7c)"><path d="M168 376a122 26 0 1 0 244 0a122 26 0 1 0 -244 0Z" fill="#99302a"/><path d="M180 384a90 14 0 1 0 180 0a90 14 0 1 0 -180 0Z" fill="#f0dcae"/><path d="M180 300a70 8 0 1 0 140 0a70 8 0 1 0 -140 0Z" fill="#e87a6c"/></g>
+<use href="#h2323_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2323_8" fill="#c8463c"/>
+<g clip-path="url(#h2323_8c)"><path d="M328 417A14 40 -4 1 0 356 415A14 40 -4 1 0 328 417Z" fill="#99302a"/><path d="M310 404L336 396L352 410L334 424Z" fill="#6e6258"/></g>
+<use href="#h2323_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M302 448a28 10 0 1 0 56 0a28 10 0 1 0 -56 0Z" fill="#4f463f" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2323_9" fill="#c8463c"/>
+<g clip-path="url(#h2323_9c)"><path d="M184 416a14 40 0 1 0 28 0a14 40 0 1 0 -28 0Z" fill="#99302a"/><path d="M166 404L192 396L208 410L190 424Z" fill="#6e6258"/></g>
+<use href="#h2323_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M158 448a28 10 0 1 0 56 0a28 10 0 1 0 -56 0Z" fill="#4f463f" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2323_10" fill="#c8463c"/>
+<g clip-path="url(#h2323_10c)"><path d="M162.7 328A20 40 -30 1 0 197.3 308A20 40 -30 1 0 162.7 328Z" fill="#99302a"/></g>
+<use href="#h2323_10" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2323_11" fill="#c8463c"/>
+<g clip-path="url(#h2323_11c)"><path d="M102.4 301.3A38 18 -8 1 0 177.6 290.7A38 18 -8 1 0 102.4 301.3Z" fill="#99302a"/><path d="M98.3 255.1A18 6 -10 1 0 133.7 248.9A18 6 -10 1 0 98.3 255.1Z" fill="#e87a6c"/></g>
+<use href="#h2323_11" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M64.2 293.3A24 18 -8 1 0 111.8 286.7A24 18 -8 1 0 64.2 293.3Z" fill="#f0dcae" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M71 284a5 4 0 1 0 10 0a5 4 0 1 0 -10 0Z" fill="#1b1b2b"/>
+<path d="M78 300Q90 306 104 300" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M116 266a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#1b1b2b"/>
+<path d="M118.3 263.2a1.9 2.2 0 1 0 3.8 0a1.9 2.2 0 1 0 -3.8 0Z" fill="#ffffff"/>
+<path d="M137.5 238.9A9 14 20 1 0 154.5 245.1A9 14 20 1 0 137.5 238.9Z" fill="#c8463c" stroke="#1b1b2b" stroke-width="4"/>
+</svg>

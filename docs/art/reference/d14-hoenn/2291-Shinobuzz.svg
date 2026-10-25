@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2291 Shinobuzz (Bug/Flying), from Ninjask: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2291_1" d="M222 318a34 56 0 1 0 68 0a34 56 0 1 0 -68 0Z"/><clipPath id="h2291_1c"><use href="#h2291_1"/></clipPath><path id="h2291_2" d="M216 262a40 30 0 1 0 80 0a40 30 0 1 0 -80 0Z"/><clipPath id="h2291_2c"><use href="#h2291_2"/></clipPath><path id="h2291_3" d="M210 296C180 310 170 344 180 380C188 350 198 326 214 310Z"/><clipPath id="h2291_3c"><use href="#h2291_3"/></clipPath><path id="h2291_4" d="M302 296C332 310 342 344 332 380C324 350 314 326 298 310Z"/><clipPath id="h2291_4c"><use href="#h2291_4"/></clipPath><path id="h2291_5" d="M210 214a46 34 0 1 0 92 0a46 34 0 1 0 -92 0Z"/><clipPath id="h2291_5c"><use href="#h2291_5"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M166 468a90 9 0 1 0 180 0a90 9 0 1 0 -180 0Z" fill="#e9ebf2"/>
+<path d="M78.7 246.5A92 26 -22 1 0 249.3 177.5A92 26 -22 1 0 78.7 246.5Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M262.7 177.5A92 26 22 1 0 433.3 246.5A92 26 22 1 0 262.7 177.5Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M94.8 250.9A80 20 8 1 0 253.2 273.1A80 20 8 1 0 94.8 250.9Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M258.8 273.1A80 20 -8 1 0 417.2 250.9A80 20 -8 1 0 258.8 273.1Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M157.1 288.1A50 14 26 1 0 246.9 331.9A50 14 26 1 0 157.1 288.1Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M265.1 331.9A50 14 -26 1 0 354.9 288.1A50 14 -26 1 0 265.1 331.9Z" fill="#dfe8f2" fill-opacity="0.72" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M170 210L80 186" fill="none" stroke="#9aa9bb" stroke-width="2.5"/>
+<path d="M342 210L432 186" fill="none" stroke="#9aa9bb" stroke-width="2.5"/>
+<use href="#h2291_1" fill="#2a2a34"/>
+<g clip-path="url(#h2291_1c)"><path d="M256 334a18 56 0 1 0 36 0a18 56 0 1 0 -36 0Z" fill="#17171d"/><path d="M220 312a36 5 0 1 0 72 0a36 5 0 1 0 -72 0Z" fill="#f2cf3a"/><path d="M222 336a34 4 0 1 0 68 0a34 4 0 1 0 -68 0Z" fill="#f2cf3a"/><path d="M228 358a28 3 0 1 0 56 0a28 3 0 1 0 -56 0Z" fill="#f2cf3a"/></g>
+<use href="#h2291_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2291_2" fill="#2a2a34"/>
+<g clip-path="url(#h2291_2c)"><path d="M246 276a26 18 0 1 0 52 0a26 18 0 1 0 -52 0Z" fill="#17171d"/><path d="M226 250a14 5 0 1 0 28 0a14 5 0 1 0 -28 0Z" fill="#4c4c5c"/></g>
+<use href="#h2291_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M232 276L210 300" fill="none" stroke="#1b1b2b" stroke-width="6"/>
+<path d="M232 276L210 300" fill="none" stroke="#4c4c5c" stroke-width="2.5"/>
+<use href="#h2291_3" fill="#cbd3de"/>
+<g clip-path="url(#h2291_3c)"><path d="M180 380C188 350 198 326 214 310L210 330Z" fill="#8f99a8"/></g>
+<use href="#h2291_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M280 276L302 300" fill="none" stroke="#1b1b2b" stroke-width="6"/>
+<path d="M280 276L302 300" fill="none" stroke="#4c4c5c" stroke-width="2.5"/>
+<use href="#h2291_4" fill="#cbd3de"/>
+<g clip-path="url(#h2291_4c)"><path d="M332 380C324 350 314 326 298 310L302 330Z" fill="#8f99a8"/></g>
+<use href="#h2291_4" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M244 374L236 414" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M268 374L276 414" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2291_5" fill="#2a2a34"/>
+<g clip-path="url(#h2291_5c)"><path d="M240 230a32 20 0 1 0 64 0a32 20 0 1 0 -64 0Z" fill="#17171d"/><path d="M206 206C230 194 282 194 306 206L304 226C280 216 232 216 208 226Z" fill="#f2cf3a"/></g>
+<use href="#h2291_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M232 186L222 160L244 182Z" fill="#2a2a34" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M280 186L290 160L268 182Z" fill="#2a2a34" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M224 212a10 8 0 1 0 20 0a10 8 0 1 0 -20 0Z" fill="#e0343e" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M230.5 212.8a5 4.8 0 1 0 10 0a5 4.8 0 1 0 -10 0Z" fill="#1b1b2b"/>
+<path d="M227.8 209.2a3.2 2.2 0 1 0 6.4 0a3.2 2.2 0 1 0 -6.4 0Z" fill="#ffffff"/>
+<path d="M268 212a10 8 0 1 0 20 0a10 8 0 1 0 -20 0Z" fill="#e0343e" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M274.5 212.8a5 4.8 0 1 0 10 0a5 4.8 0 1 0 -10 0Z" fill="#1b1b2b"/>
+<path d="M271.8 209.2a3.2 2.2 0 1 0 6.4 0a3.2 2.2 0 1 0 -6.4 0Z" fill="#ffffff"/>
+</svg>

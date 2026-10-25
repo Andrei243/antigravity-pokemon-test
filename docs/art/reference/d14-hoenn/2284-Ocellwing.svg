@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2284 Ocellwing (Bug/Flying), from Masquerain: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2284_1" d="M144.2 305.4A54 28 32 1 0 235.8 362.6A54 28 32 1 0 144.2 305.4Z"/><clipPath id="h2284_1c"><use href="#h2284_1"/></clipPath><path id="h2284_2" d="M278.2 362.6A54 28 -32 1 0 369.8 305.4A54 28 -32 1 0 278.2 362.6Z"/><clipPath id="h2284_2c"><use href="#h2284_2"/></clipPath><path id="h2284_3" d="M94.2 262.1A74 34 14 1 0 237.8 297.9A74 34 14 1 0 94.2 262.1Z"/><clipPath id="h2284_3c"><use href="#h2284_3"/></clipPath><path id="h2284_4" d="M276.2 295.9A74 34 -14 1 0 419.8 260.1A74 34 -14 1 0 276.2 295.9Z"/><clipPath id="h2284_4c"><use href="#h2284_4"/></clipPath><path id="h2284_5" d="M87.3 246.2A84 40 -24 1 0 240.7 177.8A84 40 -24 1 0 87.3 246.2Z"/><clipPath id="h2284_5c"><use href="#h2284_5"/></clipPath><path id="h2284_6" d="M275.3 173.8A84 40 24 1 0 428.7 242.2A84 40 24 1 0 275.3 173.8Z"/><clipPath id="h2284_6c"><use href="#h2284_6"/></clipPath><path id="h2284_7" d="M234 276a22 52 0 1 0 44 0a22 52 0 1 0 -44 0Z"/><clipPath id="h2284_7c"><use href="#h2284_7"/></clipPath><path id="h2284_8" d="M170.2 129.6A44 32 -18 1 0 253.8 102.4A44 32 -18 1 0 170.2 129.6Z"/><clipPath id="h2284_8c"><use href="#h2284_8"/></clipPath><path id="h2284_9" d="M262.2 100.4A44 32 18 1 0 345.8 127.6A44 32 18 1 0 262.2 100.4Z"/><clipPath id="h2284_9c"><use href="#h2284_9"/></clipPath><path id="h2284_10" d="M232 214a24 22 0 1 0 48 0a24 22 0 1 0 -48 0Z"/><clipPath id="h2284_10c"><use href="#h2284_10"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M176 470a80 9 0 1 0 160 0a80 9 0 1 0 -160 0Z" fill="#e9ebf2"/>
+<use href="#h2284_1" fill="#cde8ff"/>
+<g clip-path="url(#h2284_1c)"><path d="M144.2 322.2A54 14 32 1 0 235.8 379.4A54 14 32 1 0 144.2 322.2Z" fill="#a3c8ea"/></g>
+<use href="#h2284_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M155.8 324.5A18 13 32 1 0 186.4 343.5A18 13 32 1 0 155.8 324.5Z" fill="#26294a"/>
+<path d="M162.7 328.8A9.9 6.8 32 1 0 179.5 339.2A9.9 6.8 32 1 0 162.7 328.8Z" fill="#f5e27a"/>
+<path d="M166.5 331.1A5.4 4 32 1 0 175.7 336.9A5.4 4 32 1 0 166.5 331.1Z" fill="#26294a"/>
+<path d="M166.9 331.2A1.8 1.4 32 1 0 169.9 333.2A1.8 1.4 32 1 0 166.9 331.2Z" fill="#ffffff"/>
+<use href="#h2284_2" fill="#cde8ff"/>
+<g clip-path="url(#h2284_2c)"><path d="M278.2 379.4A54 14 -32 1 0 369.8 322.2A54 14 -32 1 0 278.2 379.4Z" fill="#a3c8ea"/></g>
+<use href="#h2284_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M327.6 343.5A18 13 -32 1 0 358.2 324.5A18 13 -32 1 0 327.6 343.5Z" fill="#26294a"/>
+<path d="M334.5 339.2A9.9 6.8 -32 1 0 351.3 328.8A9.9 6.8 -32 1 0 334.5 339.2Z" fill="#f5e27a"/>
+<path d="M338.3 336.9A5.4 4 -32 1 0 347.5 331.1A5.4 4 -32 1 0 338.3 336.9Z" fill="#26294a"/>
+<path d="M338.7 333.2A1.8 1.4 -32 1 0 341.7 331.2A1.8 1.4 -32 1 0 338.7 333.2Z" fill="#ffffff"/>
+<use href="#h2284_3" fill="#cde8ff"/>
+<g clip-path="url(#h2284_3c)"><path d="M94.2 282.5A74 17 14 1 0 237.8 318.3A74 17 14 1 0 94.2 282.5Z" fill="#a3c8ea"/></g>
+<use href="#h2284_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M118.8 274.7A22 15.8 14 1 0 161.4 285.3A22 15.8 14 1 0 118.8 274.7Z" fill="#26294a"/>
+<path d="M128.4 277.1A12.1 8.4 14 1 0 151.8 282.9A12.1 8.4 14 1 0 128.4 277.1Z" fill="#f5e27a"/>
+<path d="M133.7 278.4A6.6 4.8 14 1 0 146.5 281.6A6.6 4.8 14 1 0 133.7 278.4Z" fill="#26294a"/>
+<path d="M134.7 277.3A2.2 1.8 14 1 0 138.9 278.3A2.2 1.8 14 1 0 134.7 277.3Z" fill="#ffffff"/>
+<use href="#h2284_4" fill="#cde8ff"/>
+<g clip-path="url(#h2284_4c)"><path d="M276.2 316.3A74 17 -14 1 0 419.8 280.5A74 17 -14 1 0 276.2 316.3Z" fill="#a3c8ea"/></g>
+<use href="#h2284_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M352.6 283.3A22 15.8 -14 1 0 395.2 272.7A22 15.8 -14 1 0 352.6 283.3Z" fill="#26294a"/>
+<path d="M362.2 280.9A12.1 8.4 -14 1 0 385.6 275.1A12.1 8.4 -14 1 0 362.2 280.9Z" fill="#f5e27a"/>
+<path d="M367.5 279.6A6.6 4.8 -14 1 0 380.3 276.4A6.6 4.8 -14 1 0 367.5 279.6Z" fill="#26294a"/>
+<path d="M368.5 276.3A2.2 1.8 -14 1 0 372.7 275.3A2.2 1.8 -14 1 0 368.5 276.3Z" fill="#ffffff"/>
+<use href="#h2284_5" fill="#cde8ff"/>
+<g clip-path="url(#h2284_5c)"><path d="M87.3 270.2A84 20 -24 1 0 240.7 201.8A84 20 -24 1 0 87.3 270.2Z" fill="#a3c8ea"/></g>
+<use href="#h2284_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M110.8 222.6A26 18.7 -24 1 0 158.4 201.4A26 18.7 -24 1 0 110.8 222.6Z" fill="#26294a"/>
+<path d="M121.5 217.8A14.3 9.9 -24 1 0 147.7 206.2A14.3 9.9 -24 1 0 121.5 217.8Z" fill="#f5e27a"/>
+<path d="M127.5 215.2A7.8 5.7 -24 1 0 141.7 208.8A7.8 5.7 -24 1 0 127.5 215.2Z" fill="#26294a"/>
+<path d="M128.3 210.5A2.6 2.1 -24 1 0 133.1 208.3A2.6 2.1 -24 1 0 128.3 210.5Z" fill="#ffffff"/>
+<use href="#h2284_6" fill="#cde8ff"/>
+<g clip-path="url(#h2284_6c)"><path d="M275.3 197.8A84 20 24 1 0 428.7 266.2A84 20 24 1 0 275.3 197.8Z" fill="#a3c8ea"/></g>
+<use href="#h2284_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M357.6 197.4A26 18.7 24 1 0 405.2 218.6A26 18.7 24 1 0 357.6 197.4Z" fill="#26294a"/>
+<path d="M368.3 202.2A14.3 9.9 24 1 0 394.5 213.8A14.3 9.9 24 1 0 368.3 202.2Z" fill="#f5e27a"/>
+<path d="M374.3 204.8A7.8 5.7 24 1 0 388.5 211.2A7.8 5.7 24 1 0 374.3 204.8Z" fill="#26294a"/>
+<path d="M375.1 204.3A2.6 2.1 24 1 0 379.9 206.5A2.6 2.1 24 1 0 375.1 204.3Z" fill="#ffffff"/>
+<use href="#h2284_7" fill="#3f74cc"/>
+<g clip-path="url(#h2284_7c)"><path d="M254 290a14 52 0 1 0 28 0a14 52 0 1 0 -28 0Z" fill="#2a549c"/></g>
+<use href="#h2284_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M238 266Q256 272 274 266" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M240 290Q256 296 272 290" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M246 196C236 170 230 156 224 146" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M266 196C278 170 286 156 292 146" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2284_8" fill="#cde8ff"/>
+<g clip-path="url(#h2284_8c)"><path d="M176.2 143.6A44 16 -18 1 0 259.8 116.4A44 16 -18 1 0 176.2 143.6Z" fill="#a3c8ea"/></g>
+<use href="#h2284_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M184 116Q212 92 240 112Q212 136 184 116Z" fill="#26294a"/>
+<path d="M204 116a8 8 0 1 0 16 0a8 8 0 1 0 -16 0Z" fill="#f5e27a"/>
+<path d="M206 113a3 3 0 1 0 6 0a3 3 0 1 0 -6 0Z" fill="#ffffff"/>
+<use href="#h2284_9" fill="#cde8ff"/>
+<g clip-path="url(#h2284_9c)"><path d="M268.2 114.4A44 16 18 1 0 351.8 141.6A44 16 18 1 0 268.2 114.4Z" fill="#a3c8ea"/></g>
+<use href="#h2284_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M276 114Q304 90 332 118Q304 134 276 114Z" fill="#26294a"/>
+<path d="M296 114a8 8 0 1 0 16 0a8 8 0 1 0 -16 0Z" fill="#f5e27a"/>
+<path d="M298 111a3 3 0 1 0 6 0a3 3 0 1 0 -6 0Z" fill="#ffffff"/>
+<use href="#h2284_10" fill="#3f74cc"/>
+<g clip-path="url(#h2284_10c)"><path d="M250 224a16 14 0 1 0 32 0a16 14 0 1 0 -32 0Z" fill="#2a549c"/></g>
+<use href="#h2284_10" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M242 214a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#1b1b2b"/>
+<path d="M262 214a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#1b1b2b"/>
+</svg>

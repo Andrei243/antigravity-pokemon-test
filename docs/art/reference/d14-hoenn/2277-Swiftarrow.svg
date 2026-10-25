@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2277 Swiftarrow (Normal/Flying), from Swellow: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2277_1" d="M330 258L478 214L470 200L452 208L446 192L428 200L420 184L338 266Z"/><clipPath id="h2277_1c"><use href="#h2277_1"/></clipPath><path id="h2277_2" d="M330 258L478 318L470 332L452 324L446 340L428 332L420 348L338 274Z"/><clipPath id="h2277_2c"><use href="#h2277_2"/></clipPath><path id="h2277_3" d="M154.9 267.4A96 36 -8 1 0 345.1 240.6A96 36 -8 1 0 154.9 267.4Z"/><clipPath id="h2277_3c"><use href="#h2277_3"/></clipPath><path id="h2277_4" d="M128 256a38 32 0 1 0 76 0a38 32 0 1 0 -76 0Z"/><clipPath id="h2277_4c"><use href="#h2277_4"/></clipPath><path id="h2277_5" d="M240 262C280 230 340 210 410 220C396 238 380 246 360 250C372 258 364 268 344 268C322 284 290 290 254 286Z"/><clipPath id="h2277_5c"><use href="#h2277_5"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M146 455a110 10 0 1 0 220 0a110 10 0 1 0 -220 0Z" fill="#e9ebf2"/>
+<path d="M262 228C300 180 350 138 424 108C414 136 398 152 378 164C392 168 388 180 368 186C352 206 320 222 284 240Z" fill="#1d3670" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2277_1" fill="#2c4f9e"/>
+<g clip-path="url(#h2277_1c)"><path d="M338 258L420 184L470 200L478 214L478 174Z" fill="#1d3670"/></g>
+<use href="#h2277_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2277_2" fill="#2c4f9e"/>
+<g clip-path="url(#h2277_2c)"><path d="M338 270L420 348L470 332L478 318L478 358Z" fill="#1d3670"/></g>
+<use href="#h2277_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2277_3" fill="#2c4f9e"/>
+<g clip-path="url(#h2277_3c)"><path d="M164.9 293.4A96 16 -8 1 0 355.1 266.6A96 16 -8 1 0 164.9 293.4Z" fill="#1d3670"/><path d="M152.7 283.7A70 18 -8 1 0 291.3 264.3A70 18 -8 1 0 152.7 283.7Z" fill="#f6f5ee"/><path d="M190.6 238.4A60 6 -8 1 0 309.4 221.6A60 6 -8 1 0 190.6 238.4Z" fill="#5179c8"/></g>
+<use href="#h2277_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2277_4" fill="#2c4f9e"/>
+<g clip-path="url(#h2277_4c)"><path d="M150 276a30 12 0 1 0 60 0a30 12 0 1 0 -60 0Z" fill="#1d3670"/><path d="M176 262C160 262 140 266 124 272L170 296C190 292 200 282 200 270Z" fill="#e0403e"/><path d="M150 290a22 8 0 1 0 44 0a22 8 0 1 0 -44 0Z" fill="#f6f5ee"/><path d="M142.2 236.4A14 5 -10 1 0 169.8 231.6A14 5 -10 1 0 142.2 236.4Z" fill="#5179c8"/></g>
+<use href="#h2277_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M132 256L92 266L130 274Z" fill="#2b2b33" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M146 250a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#1b1b2b"/>
+<path d="M148.3 247.2a1.9 2.2 0 1 0 3.8 0a1.9 2.2 0 1 0 -3.8 0Z" fill="#ffffff"/>
+<use href="#h2277_5" fill="#2c4f9e"/>
+<g clip-path="url(#h2277_5c)"><path d="M254 286C290 290 322 284 344 268L340 300L250 300Z" fill="#1d3670"/><path d="M290.1 225.2A40 4 4 1 0 369.9 230.8A40 4 4 1 0 290.1 225.2Z" fill="#5179c8"/></g>
+<use href="#h2277_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M290 262L370 244" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M282 276L350 262" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

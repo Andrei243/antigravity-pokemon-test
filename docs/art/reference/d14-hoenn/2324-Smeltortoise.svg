@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2324 Smeltortoise (Fire/Steel), from Torkoal: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2324_1" d="M140 330C140 220 220 180 280 180C350 180 410 230 410 330Z"/><clipPath id="h2324_1c"><use href="#h2324_1"/></clipPath><path id="h2324_2" d="M212 206L214 166L238 166L240 206Z"/><clipPath id="h2324_2c"><use href="#h2324_2"/></clipPath><path id="h2324_3" d="M278 198L280 152L304 152L306 198Z"/><clipPath id="h2324_3c"><use href="#h2324_3"/></clipPath><path id="h2324_4" d="M336 224L338 188L362 188L364 224Z"/><clipPath id="h2324_4c"><use href="#h2324_4"/></clipPath><path id="h2324_5" d="M134 334a142 22 0 1 0 284 0a142 22 0 1 0 -284 0Z"/><clipPath id="h2324_5c"><use href="#h2324_5"/></clipPath><path id="h2324_6" d="M302.2 384.9A28 28 -6 1 0 357.8 379.1A28 28 -6 1 0 302.2 384.9Z"/><clipPath id="h2324_6c"><use href="#h2324_6"/></clipPath><path id="h2324_7" d="M182.1 380A28 28 4 1 0 237.9 384A28 28 4 1 0 182.1 380Z"/><clipPath id="h2324_7c"><use href="#h2324_7"/></clipPath><path id="h2324_8" d="M70.2 300.2A40 32 -6 1 0 149.8 291.8A40 32 -6 1 0 70.2 300.2Z"/><clipPath id="h2324_8c"><use href="#h2324_8"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M101 420a175 13 0 1 0 350 0a175 13 0 1 0 -350 0Z" fill="#e9ebf2"/>
+<path d="M206 120a20 17 0 1 0 40 0a20 17 0 1 0 -40 0Z" fill="#d6d6dc" fill-opacity="0.55" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M196 92a16 13.6 0 1 0 32 0a16 13.6 0 1 0 -32 0Z" fill="#d6d6dc" fill-opacity="0.45" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M270 108a22 18.7 0 1 0 44 0a22 18.7 0 1 0 -44 0Z" fill="#d6d6dc" fill-opacity="0.55" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M289 78a17 14.5 0 1 0 34 0a17 14.5 0 1 0 -34 0Z" fill="#d6d6dc" fill-opacity="0.45" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M334 134a16 13.6 0 1 0 32 0a16 13.6 0 1 0 -32 0Z" fill="#d6d6dc" fill-opacity="0.5" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M350 108a12 10.2 0 1 0 24 0a12 10.2 0 1 0 -24 0Z" fill="#d6d6dc" fill-opacity="0.4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M334 392a26 26 0 1 0 52 0a26 26 0 1 0 -52 0Z" fill="#b9572a" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M154 392a24 24 0 1 0 48 0a24 24 0 1 0 -48 0Z" fill="#b9572a" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2324_1" fill="#45454e"/>
+<g clip-path="url(#h2324_1c)"><path d="M300 180C370 200 410 260 410 330L330 330Z" fill="#2c2c33"/><path d="M200 330C196 270 214 214 248 186" fill="none" stroke="#ff9a2e" stroke-width="20"/><path d="M300 330C304 270 300 220 290 182" fill="none" stroke="#ff9a2e" stroke-width="18"/><path d="M200 330C196 270 214 214 248 186" fill="none" stroke="#8a95a6" stroke-width="12"/><path d="M300 330C304 270 300 220 290 182" fill="none" stroke="#8a95a6" stroke-width="12"/><path d="M150 260C220 240 340 240 404 262" fill="none" stroke="#ff9a2e" stroke-width="18"/><path d="M150 260C220 240 340 240 404 262" fill="none" stroke="#8a95a6" stroke-width="11"/><path d="M150 266C220 246 340 246 404 268" fill="none" stroke="#626b7a" stroke-width="4"/></g>
+<use href="#h2324_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M204 232a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M248 228a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M296 230a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M342 238a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M192 292a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M300 296a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#c5ccd8" stroke="#1b1b2b" stroke-width="2.5"/>
+<use href="#h2324_2" fill="#8a95a6"/>
+<g clip-path="url(#h2324_2c)"><path d="M228 206L229 166L238 166L240 206Z" fill="#626b7a"/></g>
+<use href="#h2324_2" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M213 166a13 5 0 1 0 26 0a13 5 0 1 0 -26 0Z" fill="#2c2c33" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M219 167a7 2.5 0 1 0 14 0a7 2.5 0 1 0 -14 0Z" fill="#ff9a2e"/>
+<use href="#h2324_3" fill="#8a95a6"/>
+<g clip-path="url(#h2324_3c)"><path d="M294 198L295 152L304 152L306 198Z" fill="#626b7a"/></g>
+<use href="#h2324_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M279 152a13 5 0 1 0 26 0a13 5 0 1 0 -26 0Z" fill="#2c2c33" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M285 153a7 2.5 0 1 0 14 0a7 2.5 0 1 0 -14 0Z" fill="#ff9a2e"/>
+<use href="#h2324_4" fill="#8a95a6"/>
+<g clip-path="url(#h2324_4c)"><path d="M352 224L353 188L362 188L364 224Z" fill="#626b7a"/></g>
+<use href="#h2324_4" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M337 188a13 5 0 1 0 26 0a13 5 0 1 0 -26 0Z" fill="#2c2c33" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M343 189a7 2.5 0 1 0 14 0a7 2.5 0 1 0 -14 0Z" fill="#ff9a2e"/>
+<use href="#h2324_5" fill="#5c5c66"/>
+<g clip-path="url(#h2324_5c)"><path d="M170 346a130 12 0 1 0 260 0a130 12 0 1 0 -260 0Z" fill="#2c2c33"/></g>
+<use href="#h2324_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2324_6" fill="#e57a3c"/>
+<g clip-path="url(#h2324_6c)"><path d="M322 390a18 20 0 1 0 36 0a18 20 0 1 0 -36 0Z" fill="#b9572a"/></g>
+<use href="#h2324_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M300 404a28 9 0 1 0 56 0a28 9 0 1 0 -56 0Z" fill="#b9572a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2324_7" fill="#e57a3c"/>
+<g clip-path="url(#h2324_7c)"><path d="M202 390a18 20 0 1 0 36 0a18 20 0 1 0 -36 0Z" fill="#b9572a"/></g>
+<use href="#h2324_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M180 404a28 9 0 1 0 56 0a28 9 0 1 0 -56 0Z" fill="#b9572a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M121.8 336A28 22 -30 1 0 170.2 308A28 22 -30 1 0 121.8 336Z" fill="#e57a3c" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2324_8" fill="#e57a3c"/>
+<g clip-path="url(#h2324_8c)"><path d="M94.2 319.1A30 14 -6 1 0 153.8 312.9A30 14 -6 1 0 94.2 319.1Z" fill="#b9572a"/><path d="M86.2 280.4A14 5 -10 1 0 113.8 275.6A14 5 -10 1 0 86.2 280.4Z" fill="#f6a874"/></g>
+<use href="#h2324_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M90 292Q100 298 110 292" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M126 290Q134 294 142 290" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M72 302a4 3 0 1 0 8 0a4 3 0 1 0 -8 0Z" fill="#1b1b2b"/>
+<path d="M80 314Q94 318 108 312" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

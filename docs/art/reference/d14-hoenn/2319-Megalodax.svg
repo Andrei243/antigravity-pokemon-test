@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2319 Megalodax (Water/Dark), from Sharpedo: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2319_1" d="M410 236C430 200 452 168 486 146C478 196 470 226 460 250C474 276 482 306 488 352C454 330 430 300 410 270Z"/><clipPath id="h2319_1c"><use href="#h2319_1"/></clipPath><path id="h2319_2" d="M72 236C120 178 250 160 360 196C400 208 430 226 446 252C430 276 400 290 360 298C250 326 130 316 72 262Z"/><clipPath id="h2319_2c"><use href="#h2319_2"/></clipPath><path id="h2319_3" d="M250 186C268 140 300 110 340 96C330 136 324 168 320 196Z"/><clipPath id="h2319_3c"><use href="#h2319_3"/></clipPath><path id="h2319_4" d="M200 290C206 330 228 364 260 380C254 350 244 320 232 296Z"/><clipPath id="h2319_4c"><use href="#h2319_4"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M90 440a180 12 0 1 0 360 0a180 12 0 1 0 -360 0Z" fill="#e9ebf2"/>
+<use href="#h2319_1" fill="#2c3f78"/>
+<g clip-path="url(#h2319_1c)"><path d="M460 250C474 276 482 306 488 352C454 330 430 300 410 270Z" fill="#1d2b56"/></g>
+<use href="#h2319_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M250 300C270 330 300 352 330 360C318 336 300 316 280 300Z" fill="#1d2b56" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2319_2" fill="#2c3f78"/>
+<g clip-path="url(#h2319_2c)"><path d="M90 270C200 300 320 300 446 252L446 330L90 330Z" fill="#1d2b56"/><path d="M84 262C160 300 290 312 420 270C380 300 280 330 160 314Z" fill="#d03a3c"/><path d="M200 300C280 310 360 296 420 272L420 290C340 312 260 318 200 312Z" fill="#a2272b"/><path d="M160.2 183.7A90 8 4 1 0 339.8 196.3A90 8 4 1 0 160.2 183.7Z" fill="#4d64a6"/></g>
+<use href="#h2319_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M72 236C92 240 140 246 168 250C140 258 96 262 72 262Z" fill="#5a1420" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M80 238L92 239L86 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M82 261L94 260L88 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M95 238.6L107 239.6L101 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M97 260.8L109 259.8L103 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M110 239.2L122 240.2L116 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M112 260.6L124 259.6L118 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M125 239.8L137 240.8L131 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M127 260.4L139 259.4L133 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M140 240.4L152 241.4L146 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M142 260.2L154 259.2L148 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M155 241L167 242L161 250Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M157 260L169 259L163 249Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M100 243L110 244L105 252Z" fill="#f2ece0" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M115 243L125 244L120 252Z" fill="#f2ece0" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M130 243L140 244L135 252Z" fill="#f2ece0" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M145 243L155 244L150 252Z" fill="#f2ece0" stroke="#1b1b2b" stroke-width="2"/>
+<use href="#h2319_3" fill="#2c3f78"/>
+<g clip-path="url(#h2319_3c)"><path d="M300 120L340 96C330 136 324 168 320 196L300 192Z" fill="#1d2b56"/></g>
+<use href="#h2319_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2319_4" fill="#2c3f78"/>
+<g clip-path="url(#h2319_4c)"><path d="M232 296C244 320 254 350 260 380L244 370Z" fill="#1d2b56"/></g>
+<use href="#h2319_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M96 214L116 230M116 214L98 232" fill="none" stroke="#f4e7c4" stroke-width="4"/>
+<path d="M135 212a11 9 0 1 0 22 0a11 9 0 1 0 -22 0Z" fill="#f6d84a" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M139 213a5 6 0 1 0 10 0a5 6 0 1 0 -10 0Z" fill="#1b1b2b"/>
+<path d="M140 210a2 2 0 1 0 4 0a2 2 0 1 0 -4 0Z" fill="#ffffff"/>
+</svg>

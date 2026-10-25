@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2344 Dogunarch (Ground/Psychic), from Claydol: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2344_1" d="M343.6 321.1A26 22 20 1 0 392.4 338.9A26 22 20 1 0 343.6 321.1Z"/><clipPath id="h2344_1c"><use href="#h2344_1"/></clipPath><path id="h2344_2" d="M119.6 338.9A26 22 -20 1 0 168.4 321.1A26 22 -20 1 0 119.6 338.9Z"/><clipPath id="h2344_2c"><use href="#h2344_2"/></clipPath><path id="h2344_3" d="M200 230C196 300 196 360 214 420C240 440 272 440 298 420C316 360 316 300 312 230Z"/><clipPath id="h2344_3c"><use href="#h2344_3"/></clipPath><path id="h2344_4" d="M344.5 222.8A30 26 10 1 0 403.5 233.2A30 26 10 1 0 344.5 222.8Z"/><clipPath id="h2344_4c"><use href="#h2344_4"/></clipPath><path id="h2344_5" d="M108.5 233.2A30 26 -10 1 0 167.5 222.8A30 26 -10 1 0 108.5 233.2Z"/><clipPath id="h2344_5c"><use href="#h2344_5"/></clipPath><path id="h2344_6" d="M198 130L206 86L226 112L242 74L256 104L270 74L286 112L306 86L314 130Z"/><clipPath id="h2344_6c"><use href="#h2344_6"/></clipPath><path id="h2344_7" d="M184 176a72 54 0 1 0 144 0a72 54 0 1 0 -144 0Z"/><clipPath id="h2344_7c"><use href="#h2344_7"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M156 462a100 11 0 1 0 200 0a100 11 0 1 0 -200 0Z" fill="#e9ebf2"/>
+<use href="#h2344_1" fill="#2f2b30"/>
+<g clip-path="url(#h2344_1c)"><path d="M356.3 329.5A20.8 15.4 20 1 0 395.3 343.7A20.8 15.4 20 1 0 356.3 329.5Z" fill="#1b191c"/><path d="M355.8 323.4A13 5.5 20 1 0 380.2 332.2A13 5.5 20 1 0 355.8 323.4Z" fill="#c9a26b"/></g>
+<use href="#h2344_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_2" fill="#2f2b30"/>
+<g clip-path="url(#h2344_2c)"><path d="M132.3 343.7A20.8 15.4 -20 1 0 171.3 329.5A20.8 15.4 -20 1 0 132.3 343.7Z" fill="#1b191c"/><path d="M131.8 332.2A13 5.5 -20 1 0 156.2 323.4A13 5.5 -20 1 0 131.8 332.2Z" fill="#c9a26b"/></g>
+<use href="#h2344_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_3" fill="#2f2b30"/>
+<g clip-path="url(#h2344_3c)"><path d="M262 230L312 230C316 300 316 360 298 420C290 428 278 434 266 436Z" fill="#1b191c"/><path d="M196 300L316 300L316 314L196 314Z" fill="#c9a26b"/><path d="M196 360L316 360L316 372L196 372Z" fill="#c9a26b"/><path d="M256 320L268 336L256 352L244 336Z" fill="#c9a26b"/><path d="M209 300a5 40 0 1 0 10 0a5 40 0 1 0 -10 0Z" fill="#4e4850"/></g>
+<use href="#h2344_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_4" fill="#2f2b30"/>
+<g clip-path="url(#h2344_4c)"><path d="M359.4 231.6A24 18.2 10 1 0 406.6 240A24 18.2 10 1 0 359.4 231.6Z" fill="#1b191c"/><path d="M359.2 222.8A15 6.5 10 1 0 388.8 228A15 6.5 10 1 0 359.2 222.8Z" fill="#c9a26b"/></g>
+<use href="#h2344_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_5" fill="#2f2b30"/>
+<g clip-path="url(#h2344_5c)"><path d="M123.4 240A24 18.2 -10 1 0 170.6 231.6A24 18.2 -10 1 0 123.4 240Z" fill="#1b191c"/><path d="M123.2 228A15 6.5 -10 1 0 152.8 222.8A15 6.5 -10 1 0 123.2 228Z" fill="#c9a26b"/></g>
+<use href="#h2344_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_6" fill="#c9a26b"/>
+<g clip-path="url(#h2344_6c)"><path d="M256 104L270 74L286 112L306 86L314 130L256 130Z" fill="#9e7b48"/><path d="M206 120L206 96L216 112Z" fill="#e7c993"/></g>
+<use href="#h2344_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2344_7" fill="#2f2b30"/>
+<g clip-path="url(#h2344_7c)"><path d="M240 200a50 36 0 1 0 100 0a50 36 0 1 0 -100 0Z" fill="#1b191c"/><path d="M194.9 152.7A26 8 -15 1 0 245.1 139.3A26 8 -15 1 0 194.9 152.7Z" fill="#4e4850"/></g>
+<use href="#h2344_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M293 176a7 5 0 1 0 14 0a7 5 0 1 0 -14 0Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M282.2 190.8A7 5 45 1 0 292.1 200.7A7 5 45 1 0 282.2 190.8Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M256 197A7 5 90 1 0 256 211A7 5 90 1 0 256 197Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M229.8 190.8A7 5 135 1 0 219.9 200.7A7 5 135 1 0 229.8 190.8Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M219 176A7 5 180 1 0 205 176A7 5 180 1 0 219 176Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M229.8 161.2A7 5 225 1 0 219.9 151.3A7 5 225 1 0 229.8 161.2Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M256 155A7 5 270 1 0 256 141A7 5 270 1 0 256 155Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M282.2 161.2A7 5 315 1 0 292.1 151.3A7 5 315 1 0 282.2 161.2Z" fill="#e0353c" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M244 176a12 9 0 1 0 24 0a12 9 0 1 0 -24 0Z" fill="#c9a26b"/>
+</svg>

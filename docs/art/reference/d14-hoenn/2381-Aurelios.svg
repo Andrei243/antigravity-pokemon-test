@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2381 Aurelios (Dragon/Psychic), from Latios: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2381_1" d="M400 286C430 276 456 258 484 234C480 262 470 280 456 292C474 304 486 318 492 338C462 330 432 316 400 304Z"/><clipPath id="h2381_1c"><use href="#h2381_1"/></clipPath><path id="h2381_2" d="M120 214C130 182 170 168 210 178C280 196 360 250 412 280C420 292 412 304 398 304C330 300 250 286 190 266C150 254 116 244 120 214Z"/><clipPath id="h2381_2c"><use href="#h2381_2"/></clipPath><path id="h2381_3" d="M220 214L225.9 227.9L240.9 229.2L229.5 239.1L232.9 253.8L220 246L207.1 253.8L210.5 239.1L199.1 229.2L214.1 227.9Z"/><clipPath id="h2381_3c"><use href="#h2381_3"/></clipPath><path id="h2381_4" d="M250 250C300 250 370 270 444 306C404 318 360 316 318 304C300 300 270 290 250 276Z"/><clipPath id="h2381_4c"><use href="#h2381_4"/></clipPath><path id="h2381_5" d="M112.5 215.9A34 28 -10 1 0 179.5 204.1A34 28 -10 1 0 112.5 215.9Z"/><clipPath id="h2381_5c"><use href="#h2381_5"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M120 452a150 11 0 1 0 300 0a150 11 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<path d="M286 238C320 190 370 150 446 118C430 158 400 190 366 214Z" fill="#33529e" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M290 236C326 188 374 150 444 120" fill="none" stroke="#f2c84a" stroke-width="5"/>
+<use href="#h2381_1" fill="#4a74d0"/>
+<g clip-path="url(#h2381_1c)"><path d="M456 292C474 304 486 318 492 338C462 330 432 316 400 304Z" fill="#33529e"/></g>
+<use href="#h2381_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2381_2" fill="#4a74d0"/>
+<g clip-path="url(#h2381_2c)"><path d="M190 266C250 286 330 300 398 304L400 330L180 300Z" fill="#33529e"/><path d="M150 248C200 262 280 284 380 298L360 314C280 306 200 290 140 266Z" fill="#f5f5fa"/><path d="M183.4 192.4A70 7 18 1 0 316.6 235.6A70 7 18 1 0 183.4 192.4Z" fill="#86a6ea"/></g>
+<use href="#h2381_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M190 236a30 30 0 1 0 60 0a30 30 0 1 0 -60 0Z" fill="#cfeaff" opacity="0.35"/>
+<use href="#h2381_3" fill="#cfeaff"/>
+<g clip-path="url(#h2381_3c)"><path d="M210 228a4 6 0 1 0 8 0a4 6 0 1 0 -8 0Z" fill="#ffffff"/></g>
+<use href="#h2381_3" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M237.6 277.7A10 18 -50 1 0 250.4 262.3A10 18 -50 1 0 237.6 277.7Z" fill="#f5f5fa" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2381_4" fill="#4a74d0"/>
+<g clip-path="url(#h2381_4c)"><path d="M250 276C270 290 300 300 318 304C360 316 404 318 444 306L440 330L250 300Z" fill="#33529e"/></g>
+<use href="#h2381_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M254 250C304 250 372 270 442 306" fill="none" stroke="#f2c84a" stroke-width="5"/>
+<use href="#h2381_5" fill="#f5f5fa"/>
+<g clip-path="url(#h2381_5c)"><path d="M136.4 230.2A24 12 -10 1 0 183.6 221.8A24 12 -10 1 0 136.4 230.2Z" fill="#d2d4e2"/><path d="M150 182C176 180 196 190 200 206L176 214C170 200 160 192 140 190Z" fill="#4a74d0"/></g>
+<use href="#h2381_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M129.3 208.3A9 7 -15 1 0 146.7 203.7A9 7 -15 1 0 129.3 208.3Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M132 207a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#d8303c"/>
+<path d="M133.5 205a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0Z" fill="#ffffff"/>
+</svg>
