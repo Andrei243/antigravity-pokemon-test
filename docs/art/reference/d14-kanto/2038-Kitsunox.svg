@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Kitsunox (No. 2038), Fire/Ghost, from Ninetales: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.c{fill:#f6ecd2}.cs{fill:#ddcaa0}.f{fill:#b48cf0}.fi{fill:#ece0ff}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="260" cy="470" rx="150" ry="14" fill="#e6e7ee"/>
+<!-- nine tails fanning behind, each ending in a violet flame -->
+<g>
+<path class="o c" d="M200 330 C150 300 70 300 40 250 C80 268 130 270 196 312 Z"/>
+<path class="o c" d="M200 320 C150 260 80 230 60 170 C100 200 150 230 204 306 Z"/>
+<path class="o c" d="M206 310 C170 230 130 170 130 100 C160 150 190 210 214 300 Z"/>
+<path class="o c" d="M214 304 C200 220 196 150 220 80 C230 150 228 220 224 300 Z"/>
+<path class="o c" d="M222 304 C236 230 260 170 300 120 C286 180 260 240 232 308 Z"/>
+<path class="o c" d="M196 336 C140 340 80 360 30 340 C80 330 140 326 196 326 Z"/>
+<path class="o c" d="M208 300 C186 220 160 160 90 110 C150 130 186 200 218 296 Z"/>
+<path class="o c" d="M218 300 C220 210 250 150 270 70 C268 150 252 220 228 302 Z"/>
+<path class="o c" d="M200 344 C160 380 100 400 56 400 C100 384 150 360 196 334 Z"/>
+<path class="cs" d="M200 330 C150 310 100 300 60 268 C110 292 150 300 200 322 Z"/>
+<path class="cs" d="M212 304 C196 230 180 180 160 140 C190 190 206 240 218 300 Z"/>
+</g>
+<!-- tail-tip flames -->
+<g class="o f">
+<path d="M40 250 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M60 170 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M130 100 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M220 80 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M300 120 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M30 340 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M90 110 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M270 70 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<path d="M56 400 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+</g>
+<g class="fi"><circle cx="40" cy="238" r="5"/><circle cx="60" cy="158" r="5"/><circle cx="130" cy="88" r="5"/><circle cx="220" cy="68" r="5"/><circle cx="300" cy="108" r="5"/><circle cx="30" cy="328" r="5"/><circle cx="90" cy="98" r="5"/><circle cx="270" cy="58" r="5"/><circle cx="56" cy="388" r="5"/></g>
+<!-- far legs -->
+<path class="o cs" d="M234 372 C226 400 236 420 232 446 C222 450 220 460 234 460 L252 460 C256 440 248 420 260 380 Z"/>
+<path class="o cs" d="M338 366 C350 396 344 420 348 446 C340 450 338 458 350 458 L368 458 C368 430 372 400 364 366 Z"/>
+<!-- body -->
+<path class="o c" d="M196 330 C200 290 250 280 300 286 C350 292 380 320 372 360 C366 392 320 400 270 398 C226 396 192 370 196 330 Z"/>
+<path class="cs" d="M220 386 C260 396 330 396 362 374 C352 392 320 400 270 398 C246 397 228 392 220 386 Z"/>
+<!-- near legs -->
+<path class="o c" d="M212 350 C206 390 220 420 214 448 C202 452 200 464 216 464 L238 464 C240 440 236 410 250 366 Z"/>
+<path class="o c" d="M314 356 C326 390 318 420 322 448 C312 452 310 462 324 462 L348 462 C348 430 352 400 346 356 Z"/>
+<path class="t" d="M224 456 v8 M232 456 v8 M332 454 v8 M340 454 v8" stroke-width="2"/>
+<!-- mantle (grown ruff) -->
+<path class="o c" d="M300 300 C290 250 320 220 360 222 C400 226 412 262 404 300 L392 344 L378 316 L366 352 L350 318 L334 350 L324 316 L306 336 Z"/>
+<path class="cs" d="M392 260 C406 280 404 300 392 340 L380 314 C392 296 396 280 392 260 Z"/>
+<!-- head -->
+<path class="o c" d="M330 210 C320 170 350 146 384 148 C414 150 432 172 448 186 C460 196 466 206 452 212 C438 220 420 222 404 232 C380 246 342 240 330 210 Z"/>
+<path class="cs" d="M404 232 C420 222 438 220 452 212 C440 226 424 236 400 240 Z"/>
+<!-- ears -->
+<path class="o c" d="M344 168 L330 112 L376 150 Z"/>
+<path class="o c" d="M376 152 L392 98 L408 156 Z"/>
+<path d="M340 156 L334 124 L360 148 Z M384 146 L392 116 L400 150 Z" fill="#b48cf0"/>
+<!-- face -->
+<path d="M374 186 c10-8 26-8 32 0 c-10 4-22 6-32 0z" fill="#1b1b2b"/>
+<circle cx="398" cy="186" r="4" fill="#d94040"/>
+<path class="t" d="M450 200 c-2 6-8 8-14 6"/>
+<circle cx="458" cy="196" r="5" fill="#1b1b2b"/>
+<!-- floating brow flame on a strand -->
+<path class="t" d="M372 152 C368 120 380 100 396 86" stroke-width="2"/>
+<path class="o f" d="M396 86 c-14-10-12-30 2-40 c-2 12 8 14 8 6 c10 12 6 28-10 34z"/>
+<circle cx="396" cy="74" r="5" fill="#ece0ff"/>
+<!-- highlight -->
+<path d="M234 316 C260 300 300 298 330 304" stroke="#fffaf0" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Regalynx (No. 2053), Normal/Fairy, from Persian: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.c{fill:#f4e8c8}.cs{fill:#d8c69c}.g{fill:#e6b84a}.gd{fill:#c0902a}.mn{fill:#fbf6ea}.r{fill:#e24a5a}.bl{fill:#5aa8e8}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="472" rx="170" ry="13" fill="#e6e7ee"/>
+<!-- curled tail with a tuft -->
+<path d="M150 330 C90 320 60 260 90 220 C110 196 140 206 136 226" stroke="#1b1b2b" stroke-width="20" fill="none" stroke-linecap="round"/>
+<path d="M150 330 C90 320 60 260 90 220 C110 196 140 206 136 226" stroke="#f4e8c8" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path class="o g" d="M136 226 C150 214 156 196 146 182 C140 194 130 196 124 190 C120 204 124 220 136 226 Z"/>
+<!-- far legs -->
+<path class="o cs" d="M200 360 C196 400 200 430 194 450 L218 452 C224 420 226 390 230 364 Z"/>
+<path class="o cs" d="M320 360 C328 400 326 430 332 450 L354 450 C352 420 352 390 346 360 Z"/>
+<!-- long lean body -->
+<path class="o c" d="M150 320 C150 280 200 266 260 266 C320 266 360 280 362 320 C364 360 320 376 256 376 C190 376 150 360 150 320 Z"/>
+<path class="cs" d="M160 346 C200 370 320 372 356 340 C348 364 316 376 256 376 C200 376 168 366 160 346 Z"/>
+<!-- near legs with gold paws -->
+<path class="o c" d="M176 350 C170 396 182 420 172 444 C160 448 160 462 178 462 L206 462 C210 430 206 400 214 356 Z"/>
+<path class="o c" d="M300 352 C308 396 300 420 306 444 C296 448 296 462 312 462 L340 462 C340 430 342 400 336 352 Z"/>
+<g class="g"><path d="M168 446 C174 440 200 440 206 446 L206 460 L174 460 Z"/><path d="M304 446 C310 440 336 440 340 446 L340 460 L310 460 Z"/></g>
+<path class="t" d="M176 452 v8 M188 452 v8 M312 452 v8 M324 452 v8" stroke-width="2"/>
+<!-- chest mane -->
+<path class="o mn" d="M300 270 C296 240 316 220 340 222 C370 224 384 250 380 280 L372 316 L360 296 L350 328 L338 300 L326 324 L318 296 L306 310 Z"/>
+<!-- head -->
+<path class="o c" d="M310 200 C304 160 334 134 372 134 C410 134 436 160 432 196 C428 226 402 242 372 242 C340 242 314 228 310 200 Z"/>
+<path class="cs" d="M418 160 C434 182 432 214 414 230 C404 238 390 242 372 242 C404 226 420 196 418 160 Z"/>
+<!-- ears -->
+<path class="o c" d="M322 168 L304 108 L352 144 Z"/>
+<path class="o c" d="M396 140 L428 92 L430 160 Z"/>
+<path d="M318 152 L312 124 L338 146 Z M402 144 L420 116 L422 152 Z" fill="#e9a0a8"/>
+<!-- face -->
+<path d="M346 192 c6-8 18-8 22 0 c-6 4-16 4-22 0z M384 192 c6-8 18-8 22 0 c-6 4-16 4-22 0z" fill="#1b1b2b"/>
+<path d="M352 190 h10 M390 190 h10" stroke="#e24a5a" stroke-width="2"/>
+<path class="t" d="M368 214 l8 6 l8 -6"/>
+<path class="t" d="M330 214 l-30 -4 M330 222 l-28 4 M420 214 l30 -4 M420 222 l28 4" stroke-width="2"/>
+<!-- crown of three gems in a metal setting -->
+<path class="o g" d="M336 150 L346 116 L360 140 L372 104 L384 140 L398 116 L408 150 Z"/>
+<path class="gd" d="M336 150 L408 150 L404 142 L340 142 Z"/>
+<g class="o" stroke-width="3"><circle cx="346" cy="128" r="7" fill="#5aa8e8"/><circle cx="372" cy="120" r="9" fill="#e24a5a"/><circle cx="398" cy="128" r="7" fill="#5aa8e8"/></g>
+<circle cx="369" cy="117" r="3" fill="#ffd0d8"/>
+<!-- highlight -->
+<path d="M190 280 C220 272 260 270 300 272" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

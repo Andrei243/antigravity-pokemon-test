@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Pugilord (No. 2107), Fighting/Steel, from Hitmonchan: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#c49a6c}.bd{fill:#9a7248}.pu{fill:#6a4a9a}.pud{fill:#4c3274}.m{fill:#b8c2d0}.md{fill:#7e8a9c}.ml{fill:#e4eaf2}.rd{fill:#d23a3a}.gd{fill:#f0c030}.gdd{fill:#c0901a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="478" rx="140" ry="13" fill="#e6e7ee"/>
+<!-- legs -->
+<path class="o b" d="M206 360 C198 400 204 430 192 456 L178 468 L230 470 C238 440 238 400 242 364 Z"/>
+<path class="o bd" d="M270 362 C276 400 276 430 286 456 L274 470 L324 468 C314 440 312 400 306 360 Z"/>
+<!-- broad chest -->
+<path class="o b" d="M160 260 C150 200 190 150 250 150 C310 150 350 200 340 260 C332 320 304 370 250 372 C196 372 168 320 160 260 Z"/>
+<path class="bd" d="M318 186 C342 220 342 280 324 330 C310 360 284 372 250 372 C302 340 330 280 318 186 Z"/>
+<!-- purple tunic -->
+<path class="o pu" d="M170 290 C200 310 300 310 332 290 C326 330 300 368 250 370 C200 370 176 330 170 290 Z"/>
+<path class="pud" d="M300 304 C320 300 330 296 332 290 C326 330 300 368 250 370 C290 350 304 330 300 304 Z"/>
+<!-- gold champion's belt -->
+<path class="o gd" d="M168 296 C200 316 300 316 334 296 L332 324 C300 342 200 342 170 324 Z"/>
+<path class="o gd" d="M226 300 h48 v36 h-48 z"/>
+<circle cx="250" cy="318" r="10" class="rd" stroke="#1b1b2b" stroke-width="3"/>
+<path class="gdd" d="M180 326 C210 336 290 336 324 322 L332 324 C300 342 200 342 170 324 Z"/>
+<!-- high collar -->
+<path class="o pu" d="M188 160 C200 130 230 116 250 116 C270 116 300 130 312 160 L298 176 C286 158 268 150 250 150 C232 150 214 158 202 176 Z"/>
+<!-- head -->
+<path class="o b" d="M210 110 C206 74 226 48 250 48 C274 48 294 74 290 110 C288 140 272 158 250 158 C228 158 212 140 210 110 Z"/>
+<path class="bd" d="M276 60 C292 80 294 120 282 142 C274 152 262 158 250 158 C278 140 288 110 276 60 Z"/>
+<!-- brow ridge and face -->
+<path class="o bd" d="M214 90 C226 74 274 74 286 90 L282 100 C270 92 230 92 218 100 Z"/>
+<path d="M226 104 c6-6 16-6 20 0 c-6 4-14 4-20 0z M256 104 c4-6 14-6 20 0 c-6 4-14 4-20 0z" fill="#1b1b2b"/>
+<path class="t" d="M236 134 c8 4 20 4 28 0"/>
+<!-- steel gauntlets with red bands: guard up -->
+<path class="o b" d="M168 220 C140 220 124 200 126 176 L150 172 C152 190 162 198 178 200 Z"/>
+<path class="o b" d="M332 218 C368 214 392 200 404 180 L384 164 C374 180 358 190 330 196 Z"/>
+<path class="o m" d="M96 150 C96 118 120 100 146 104 C172 108 186 130 182 156 C178 184 156 196 132 194 C108 192 96 174 96 150 Z"/>
+<path class="md" d="M170 124 C184 140 184 170 168 186 C158 194 144 196 132 194 C162 182 174 156 170 124 Z"/>
+<path class="o rd" d="M114 182 C130 196 160 198 176 186 L170 206 C154 216 128 214 112 202 Z"/>
+<path class="o m" d="M378 132 C378 100 402 82 428 86 C454 90 470 112 466 138 C462 166 440 178 416 176 C392 174 378 156 378 132 Z"/>
+<path class="md" d="M452 104 C468 120 468 152 452 168 C442 176 428 178 416 176 C446 164 458 138 452 104 Z"/>
+<path class="o rd" d="M394 162 C410 178 440 180 456 168 L450 188 C434 198 408 196 392 184 Z"/>
+<g class="t" stroke-width="2.5"><path d="M110 140 c10 -4 24 -4 34 0 M392 122 c10 -4 24 -4 34 0"/></g>
+<path class="ml" d="M110 128 C118 114 130 108 144 108 M394 110 C402 96 414 90 428 90" stroke="#e4eaf2" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- highlight -->
+<path d="M190 200 C206 180 226 172 250 170" stroke="#e2bc90" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

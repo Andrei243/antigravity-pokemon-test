@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Bovarch (No. 2128), Normal/Ground, from Tauros: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#c08a50}.bd{fill:#966434}.mn{fill:#5a3a2a}.mnl{fill:#7a5440}.hn{fill:#efe4cc}.hns{fill:#c8bc9c}.rk{fill:#9e9890}.rkd{fill:#77726a}.hf{fill:#4a4040}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="474" rx="200" ry="14" fill="#e6e7ee"/>
+<!-- three tails -->
+<g class="t" stroke-width="5"><path d="M110 300 C80 300 60 320 50 350"/><path d="M110 310 C86 320 74 340 72 370"/><path d="M110 320 C94 340 92 360 96 384"/></g>
+<g class="o mn" stroke-width="4"><path d="M50 350 l-10 18 l18 -6 z"/><path d="M72 370 l-6 18 l16 -8 z"/><path d="M96 384 l0 18 l12 -12 z"/></g>
+<!-- far legs -->
+<path class="o bd" d="M170 360 L160 440 L190 444 L200 366 Z"/>
+<path class="o bd" d="M330 360 L340 440 L368 440 L360 360 Z"/>
+<g class="o hf"><path d="M156 436 h38 l-2 16 h-36 z"/><path d="M336 436 h36 l-2 16 h-34 z"/></g>
+<!-- body, heavier in the shoulders -->
+<path class="o b" d="M100 320 C100 270 160 250 240 250 C320 250 380 250 400 300 C414 350 370 384 260 386 C160 388 100 370 100 320 Z"/>
+<path class="bd" d="M110 350 C160 378 340 380 390 340 C376 372 330 386 260 386 C180 387 130 376 110 350 Z"/>
+<!-- near legs -->
+<path class="o b" d="M130 350 L120 442 L154 446 L164 356 Z"/>
+<path class="o b" d="M290 360 L296 446 L330 444 L326 360 Z"/>
+<g class="o hf"><path d="M116 438 h42 l-2 16 h-40 z"/><path d="M292 438 h42 l-2 16 h-40 z"/></g>
+<!-- longer, darker mane -->
+<path class="o mn" d="M290 250 C280 200 320 170 370 172 C420 174 450 210 446 260 L436 320 L420 290 L410 340 L394 300 L378 344 L366 300 L350 330 L340 290 L320 314 L314 276 Z"/>
+<path class="mnl" d="M312 230 C320 200 344 186 370 186" stroke="#7a5440" stroke-width="7" fill="none" stroke-linecap="round"/>
+<!-- head -->
+<path class="o b" d="M370 230 C366 196 390 176 420 178 C450 180 470 200 474 230 C478 262 468 290 446 296 C420 302 396 290 384 270 C376 258 372 246 370 230 Z"/>
+<path class="o hn" d="M432 262 C446 256 468 258 476 268 C474 286 460 296 444 296 C430 294 424 278 432 262 Z"/>
+<g fill="#1b1b2b"><ellipse cx="452" cy="276" rx="4" ry="3"/><ellipse cx="466" cy="276" rx="4" ry="3"/></g>
+<path d="M398 222 l26 8 l-24 6 z" fill="#1b1b2b"/>
+<path class="t" d="M396 212 l30 12" stroke-width="5"/>
+<!-- crest of rock-like hide on the brow -->
+<path class="o rk" d="M384 194 C392 174 434 168 452 186 L446 200 C430 190 404 192 390 204 Z"/>
+<path class="rkd" d="M440 182 C448 186 452 186 452 186 L446 200 C440 196 434 194 430 194 Z"/>
+<!-- horns grown wider and ringed -->
+<path class="o hn" d="M392 190 C360 180 330 150 320 110 C318 96 330 92 336 104 C346 130 370 152 400 172 Z"/>
+<path class="o hn" d="M446 182 C478 172 500 140 502 104 C502 90 490 88 486 100 C480 128 462 150 438 166 Z"/>
+<g class="t" stroke-width="2.5"><path d="M330 120 l12 -6 M340 140 l12 -8 M354 156 l12 -10 M370 168 l10 -12 M494 116 l-12 -4 M488 136 l-12 -6 M476 152 l-12 -8 M462 164 l-10 -10"/></g>
+<!-- highlight -->
+<path d="M140 276 C180 260 230 256 280 258" stroke="#e0b07a" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

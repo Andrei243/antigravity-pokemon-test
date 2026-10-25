@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Smoglom (No. 2110), Poison/Fire, from Weezing: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.p{fill:#8a6ab0}.pd{fill:#6a4c90}.pl{fill:#ac90cc}.sk{fill:#f2ead8}.fr{fill:#f28a2a}.fg{fill:#ffd24a}.sm{fill:#d8d4dc}.sms{fill:#b4aebc}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="486" rx="110" ry="10" fill="#e6e7ee"/>
+<!-- smoke rising from vents -->
+<g class="o sm" stroke-width="4"><path d="M150 140 C130 120 140 96 160 96 C160 76 186 66 200 80 C214 66 240 76 234 98 C252 104 250 130 230 134 Z"/><path d="M340 110 C324 92 334 70 352 72 C356 54 380 50 390 64 C406 56 424 70 416 88 C432 98 424 120 404 120 Z"/></g>
+<!-- largest ball -->
+<circle class="o p" cx="196" cy="260" r="110"/>
+<path class="pd" d="M270 186 C310 230 310 300 270 340 C250 360 220 370 196 370 C266 340 290 260 270 186 Z"/>
+<!-- second ball -->
+<circle class="o p" cx="350" cy="190" r="80"/>
+<path class="pd" d="M400 136 C432 170 432 222 400 254 C386 266 368 270 350 270 C400 246 416 190 400 136 Z"/>
+<!-- third, smallest ball -->
+<circle class="o p" cx="350" cy="350" r="62"/>
+<path class="pd" d="M390 306 C412 332 412 370 390 394 C380 404 366 412 350 412 C390 392 404 346 390 306 Z"/>
+<!-- rings of fire at the seams -->
+<path d="M272 170 C300 210 304 260 296 300 C330 290 360 280 392 290" stroke="#1b1b2b" stroke-width="18" fill="none" stroke-linecap="round"/>
+<path d="M272 170 C300 210 304 260 296 300 C330 290 360 280 392 290" stroke="#f28a2a" stroke-width="10" fill="none" stroke-linecap="round"/>
+<path d="M274 176 C298 212 302 260 296 296 C330 286 360 278 388 286" stroke="#ffd24a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g class="o fr" stroke-width="3"><path d="M276 186 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(-30 276 178)"/><path d="M290 212 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(-20 290 204)"/><path d="M298 238 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(-10 298 230)"/><path d="M300 264 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(0 300 256)"/><path d="M298 290 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(10 298 282)"/><path d="M300 318 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(40 300 310)"/><path d="M318 308 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(60 318 300)"/><path d="M336 298 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(80 336 290)"/><path d="M356 292 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(90 356 284)"/><path d="M376 294 c-12-6-12-22 0-30 c-2 10 6 12 8 4 c10 10 8 22-8 26z" transform="rotate(100 376 286)"/></g>
+<!-- vents on their tops -->
+<g class="o pd" stroke-width="4"><ellipse cx="190" cy="152" rx="20" ry="8"/><ellipse cx="364" cy="112" rx="16" ry="7"/></g>
+<!-- skull mark on the big ball -->
+<path class="o sk" d="M176 300 C164 300 156 290 158 278 C160 266 172 260 186 260 C200 260 212 266 214 278 C216 290 208 300 196 300 L196 308 L176 308 Z" stroke-width="3"/>
+<circle cx="176" cy="280" r="5" fill="#1b1b2b"/><circle cx="196" cy="280" r="5" fill="#1b1b2b"/>
+<!-- faces -->
+<path d="M150 216 c8-10 24-10 30 0 c-8 6-22 6-30 0z M204 216 c6-10 22-10 30 0 c-8 6-22 6-30 0z" fill="#1b1b2b"/>
+<path class="t" d="M152 204 l26 6 M232 204 l-26 6" stroke-width="4"/>
+<path class="o" d="M170 240 C186 250 212 250 224 240 C214 258 182 258 170 240 Z" fill="#1b1b2b"/>
+<path d="M330 176 c6-8 18-8 22 0 c-6 4-16 4-22 0z M362 176 c4-8 16-8 22 0 c-6 4-16 4-22 0z" fill="#1b1b2b"/>
+<path class="t" d="M342 206 c10 6 22 6 30 0"/>
+<path d="M332 344 c4-6 12-6 16 0 c-4 4-12 4-16 0z M356 344 c4-6 12-6 16 0 c-4 4-12 4-16 0z" fill="#1b1b2b"/>
+<path class="o" d="M342 366 l8 8 l8 -8 z" fill="#1b1b2b" stroke-width="2"/>
+<!-- highlights -->
+<path d="M120 210 C130 180 150 166 170 160 M310 150 C318 136 330 128 344 126 M316 320 C322 310 330 304 340 302" stroke="#b498d8" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg>

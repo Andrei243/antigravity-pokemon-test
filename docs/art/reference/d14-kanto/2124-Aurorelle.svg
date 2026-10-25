@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Aurorelle (No. 2124), Ice/Psychic, from Jynx: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.ic{fill:#d8f0fa}.icd{fill:#9ed0ea}.icl{fill:#f4fcff}.hr{fill:#eef6fc}.hrs{fill:#c6dcec}.ms{fill:#d8c4ec}.mss{fill:#b49ad4}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="482" rx="130" ry="11" fill="#e6eef6"/>
+<!-- long hair falling behind, lit by aurora bands -->
+<path class="o hr" d="M190 130 C150 200 140 300 110 400 C150 410 180 390 200 360 L210 200 Z"/>
+<path class="o hr" d="M322 130 C362 200 372 300 402 400 C362 410 332 390 312 360 L302 200 Z"/>
+<path d="M176 190 C160 250 150 310 130 380" stroke="#6ef0b0" stroke-width="10" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M194 210 C184 270 176 320 164 380" stroke="#b07aff" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/>
+<path d="M336 190 C352 250 362 310 382 380" stroke="#6ef0b0" stroke-width="10" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M318 210 C328 270 336 320 348 380" stroke="#b07aff" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/>
+<!-- gown of ice crystals -->
+<path class="o ic" d="M216 220 C200 300 160 390 140 460 L180 446 L200 470 L230 450 L256 474 L282 450 L312 470 L332 446 L372 460 C352 390 312 300 296 220 Z"/>
+<path class="icd" d="M280 230 C300 300 330 380 352 452 L332 446 L312 470 L300 460 C300 380 290 300 280 230 Z"/>
+<g class="o icl" stroke-width="3"><path d="M200 330 l14 -20 l14 20 l-14 20 z"/><path d="M270 300 l12 -18 l12 18 l-12 18 z"/><path d="M230 400 l12 -18 l12 18 l-12 18 z"/><path d="M296 380 l12 -18 l12 18 l-12 18 z"/><path d="M180 420 l10 -14 l10 14 l-10 14 z"/></g>
+<!-- waist and bodice -->
+<path class="o ic" d="M220 160 C220 140 292 140 292 160 L298 228 C280 240 232 240 214 228 Z"/>
+<path class="icd" d="M276 150 C288 154 292 156 292 160 L298 228 C292 232 286 234 280 236 Z"/>
+<!-- slender arms -->
+<path class="o ms" d="M220 168 C190 190 170 230 168 270 C178 274 186 266 190 254 C196 224 210 204 228 190 Z"/>
+<path class="o ms" d="M292 168 C324 176 348 160 366 136 C360 126 348 128 340 136 C326 150 308 156 290 156 Z"/>
+<!-- the mask-like face -->
+<path class="o ms" d="M208 100 C206 66 228 44 256 44 C284 44 306 66 304 100 C302 132 282 152 256 152 C230 152 210 132 208 100 Z"/>
+<path class="mss" d="M290 60 C306 78 306 116 292 136 C282 148 270 152 256 152 C286 134 298 100 290 60 Z"/>
+<g class="o" fill="#ffffff" stroke-width="4"><ellipse cx="236" cy="96" rx="16" ry="20"/><ellipse cx="278" cy="96" rx="16" ry="20"/></g>
+<ellipse cx="238" cy="100" rx="8" ry="12" fill="#3a6ad0"/><ellipse cx="280" cy="100" rx="8" ry="12" fill="#3a6ad0"/>
+<circle cx="234" cy="94" r="3" fill="#fff"/><circle cx="276" cy="94" r="3" fill="#fff"/>
+<path class="t" d="M248 132 c6 2 10 2 16 0"/>
+<!-- crown of hair at the head -->
+<path class="o hr" d="M196 120 C186 70 210 26 256 22 C302 26 326 70 316 120 C304 92 286 70 256 64 C226 70 208 92 196 120 Z"/>
+<path d="M214 70 C228 50 246 40 266 38" stroke="#6ef0b0" stroke-width="7" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M290 46 C304 58 312 76 314 96" stroke="#b07aff" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/>
+<!-- sparkles of frost -->
+<g stroke="#9ed0ea" stroke-width="3" stroke-linecap="round"><path d="M400 120 v20 M390 130 h20 M100 200 v16 M92 208 h16 M420 300 v14 M413 307 h14"/></g>
+</svg>

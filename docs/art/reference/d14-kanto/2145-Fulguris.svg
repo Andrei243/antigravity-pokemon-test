@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Fulguris (No. 2145), Electric/Flying, from Zapdos: reference only (shares its base drawing with the other two birds)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="490" rx="120" ry="10" fill="#e6e7ee"/>
+<!-- jagged tail -->
+<path class="o" fill="#f6d02a" d="M236 340 L170 420 L210 410 L190 470 L240 420 L250 476 L270 420 L310 472 L300 410 L342 424 L280 340 Z"/>
+<path fill="#a06818" d="M236 340 L224 360 L276 360 L280 340 Z"/>
+<path class="o" fill="#cfa414" d="M290 230 C320 170 380 110 470 70 L452 110 L494 104 L446 144 L486 150 L430 176 L462 192 L400 206 L420 226 L350 246 Z"/><path fill="#9a6414" d="M290 230 C310 200 330 180 350 170 L372 210 L350 246 Z"/>
+<path class="o" fill="#e88a2a" d="M234 344 L228 400 L210 414 L246 414 L242 400 L248 346 Z"/>
+<path class="o" fill="#e88a2a" d="M268 346 L274 400 L262 414 L298 414 L288 400 L282 344 Z"/><path class="o" fill="#f6d02a" d="M196 270 C190 220 220 196 256 196 C296 196 322 222 318 270 C314 318 290 350 256 352 C222 352 200 318 196 270 Z"/>
+<path fill="#cfa414" d="M300 220 C318 246 318 292 304 322 C294 342 276 352 256 352 C290 330 306 290 300 220 Z"/><g class="o" fill="#f6d02a" stroke-width="4"><path d="M210 230 l-22 -10 l18 22 z M206 270 l-24 -2 l22 16 z M214 306 l-22 6 l26 8 z"/></g>
+<path class="o" fill="#f6d02a" d="M220 240 C190 170 120 110 30 80 L50 118 L8 116 L58 152 L18 162 L80 186 L48 204 L112 216 L92 236 L170 256 Z"/><!-- darker at the base -->
+<path fill="#b07818" d="M220 240 C206 210 186 186 160 166 L150 200 L170 256 Z"/>
+<path class="t" d="M220 240 C206 210 186 186 160 166"/>
+<path class="o" fill="#f6d02a" d="M262 210 C266 170 280 140 300 124 L328 138 C312 160 300 190 292 218 Z"/>
+<path class="o" fill="#f6d02a" d="M282 120 C282 92 304 74 330 76 C354 78 370 96 368 118 C366 138 350 150 328 150 C302 150 284 140 282 120 Z"/>
+<path fill="#cfa414" d="M356 92 C368 106 368 132 354 144 C346 148 338 150 328 150 C352 136 360 118 356 92 Z"/>
+<path class="o" fill="#e88a2a" d="M360 110 L404 120 L362 132 Z"/>
+<path d="M322 104 l20 6 l-18 6 z" fill="#1b1b2b"/>
+<path class="t" d="M318 98 l26 8" stroke-width="4"/><!-- crown of storm cloud -->
+<path class="o" fill="#a6aab8" d="M276 96 C258 92 252 72 268 62 C266 44 286 36 298 46 C306 28 332 28 340 44 C356 38 372 50 366 66 C380 74 376 94 360 96 C350 104 336 100 330 94 C318 104 300 104 294 96 C288 100 282 100 276 96 Z"/>
+<path fill="#80849a" d="M360 70 C370 76 372 90 360 96 C350 104 336 100 330 94 C346 94 358 86 360 70 Z"/>
+<path d="M300 110 l-6 16 l10 -4 l-6 16" stroke="#f6d02a" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M296 130 C300 110 310 96 322 90" stroke="#fff2a0" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

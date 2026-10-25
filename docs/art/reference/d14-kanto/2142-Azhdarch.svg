@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Azhdarch (No. 2142), Rock/Flying, from Aerodactyl: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.g{fill:#a7a2bc}.gd{fill:#7f7996}.w{fill:#8e62b8}.wd{fill:#6a4492}.wl{fill:#b08ad8}.am{fill:#f0a830}.aml{fill:#ffe08a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="478" rx="140" ry="12" fill="#e6e7ee"/>
+<!-- far wing -->
+<path class="o wd" d="M250 250 C290 190 360 140 440 120 L478 128 C470 160 440 170 430 196 C410 196 398 214 392 236 C370 230 346 244 332 264 C312 258 290 264 276 276 Z"/>
+<path class="o g" d="M250 250 C290 190 360 140 440 120 L478 128" fill="none"/>
+<!-- tail -->
+<path class="o g" d="M196 300 C160 330 120 360 70 370 C110 350 150 320 180 288 Z"/>
+<path class="o am" d="M66 362 l-14 10 l16 6 z"/>
+<!-- legs -->
+<path class="o g" d="M220 320 L206 400 L190 420 L216 422 L232 404 L246 330 Z"/>
+<path class="o gd" d="M262 326 L272 406 L262 428 L290 426 L296 404 L284 330 Z"/>
+<!-- body -->
+<path class="o g" d="M180 300 C176 260 210 236 252 236 C296 236 320 262 316 300 C312 336 282 352 248 352 C212 352 184 336 180 300 Z"/>
+<path class="gd" d="M300 260 C318 284 316 320 296 340 C284 348 268 352 248 352 C288 330 304 300 300 260 Z"/>
+<path class="o" d="M206 304 C214 286 280 284 290 304 C284 334 216 336 206 304 Z" fill="#cdc8dc"/>
+<!-- near wing, broad -->
+<path class="o w" d="M228 262 C190 200 120 150 40 136 L14 150 C30 176 60 180 70 204 C96 204 108 222 114 246 C138 240 160 254 172 276 C190 270 206 276 218 290 Z"/>
+<path class="wl" d="M210 260 C180 216 130 180 70 164 C100 184 140 210 170 248 C186 248 200 254 210 260 Z"/>
+<path class="t" d="M70 204 C110 200 160 220 210 270 M114 246 C150 240 190 256 218 286" stroke-width="2.5"/>
+<path class="o g" d="M228 262 C190 200 120 150 40 136 L14 150" fill="none"/>
+<path class="o g" d="M36 132 l-12 -14 M40 136 l-6 -18" />
+<!-- amber stones in a ridge down the back -->
+<g class="o am" stroke-width="4"><ellipse cx="226" cy="238" rx="11" ry="8"/><ellipse cx="256" cy="232" rx="12" ry="9"/><ellipse cx="288" cy="238" rx="11" ry="8"/><ellipse cx="300" cy="216" rx="10" ry="8"/></g>
+<g class="aml"><circle cx="223" cy="235" r="3"/><circle cx="253" cy="229" r="3"/><circle cx="285" cy="235" r="3"/><circle cx="297" cy="213" r="3"/></g>
+<!-- long stiff neck -->
+<path class="o g" d="M286 250 C300 200 320 150 344 110 L372 118 C356 160 330 210 316 262 Z"/>
+<path class="gd" d="M316 262 C330 210 350 168 368 124 L372 118 C356 160 334 214 322 258 Z"/>
+<!-- head with a great crest -->
+<path class="o g" d="M338 116 C330 90 350 70 378 70 C396 70 410 78 420 88 L496 112 L420 120 C406 130 382 134 362 130 C350 128 342 124 338 116 Z"/>
+<path class="gd" d="M420 120 L496 112 L430 104 Z"/>
+<path class="t" d="M420 104 L486 112"/>
+<path class="o wd" d="M352 76 C340 46 330 22 300 8 C350 10 388 30 404 74 Z"/>
+<path class="wl" d="M358 70 C350 50 340 34 326 22 C354 30 376 46 390 70 Z"/>
+<!-- eye and teeth -->
+<path d="M374 92 c8-8 20-6 24 2 c-8 6-18 6-24-2z" fill="#1b1b2b"/>
+<circle cx="390" cy="92" r="3" fill="#f0a830"/>
+<path d="M430 120 l4 6 l4 -6 l4 6 l4 -6" stroke="#1b1b2b" stroke-width="2" fill="#fff"/>
+<!-- highlight -->
+<path d="M206 254 C222 244 244 240 266 242" stroke="#cbc6dc" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Sabrefin (No. 2119), Water/Fairy, from Seaking: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.w{fill:#fbf8f2}.ws{fill:#dcd6cc}.or{fill:#f0843a}.ord{fill:#c86424}.fn{fill:#f6ddd0}.fns{fill:#e6b8a4}.bl{fill:#f2f2fa}.bls{fill:#c4c8d8}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="160" ry="12" fill="#e6eef6"/>
+<!-- flowing tail fin -->
+<path class="o fn" d="M120 270 C80 220 40 210 10 230 C40 260 40 290 20 330 C60 340 90 320 120 300 Z"/>
+<path class="fns" d="M110 280 C80 250 50 240 30 246 C50 266 48 290 36 316 C66 320 90 306 110 292 Z"/>
+<path class="t" d="M40 240 c30 20 50 34 70 40 M40 320 c30 -10 50 -20 70 -24" stroke-width="2"/>
+<!-- dorsal fin, flowing -->
+<path class="o fn" d="M220 196 C230 130 280 100 330 110 C300 130 290 160 296 196 Z"/>
+<path class="fns" d="M236 196 C246 150 280 124 312 120 C292 140 284 164 288 196 Z"/>
+<!-- long sleek body -->
+<path class="o w" d="M110 286 C120 220 210 190 300 192 C380 194 440 230 450 280 C440 330 380 362 300 364 C210 366 120 340 110 286 Z"/>
+<path class="ws" d="M130 320 C190 350 380 356 440 302 C424 340 370 362 300 364 C220 366 160 350 130 320 Z"/>
+<!-- koi patches -->
+<path class="o or" d="M180 220 C210 200 260 196 290 206 C280 240 240 250 200 246 C188 240 182 232 180 220 Z" stroke-width="4"/>
+<path class="o or" d="M300 300 C330 290 370 296 390 316 C370 338 330 344 304 330 Z" stroke-width="4"/>
+<path class="o or" d="M150 270 C162 262 180 266 184 282 C172 294 152 290 150 270 Z" stroke-width="4"/>
+<path class="ord" d="M200 240 C240 246 270 236 286 214 C280 240 240 250 200 246 Z"/>
+<!-- side fin -->
+<path class="o fn" d="M300 320 C300 360 330 400 370 420 C380 390 360 352 330 324 Z"/>
+<path class="t" d="M314 340 c10 24 26 46 46 62" stroke-width="2"/>
+<!-- head -->
+<path class="o w" d="M380 220 C420 210 460 236 470 272 C470 300 446 320 410 324 C400 290 396 250 380 220 Z"/>
+<!-- the sword horn: a straight blade -->
+<path class="o bl" d="M440 230 L500 140 L508 148 L456 238 Z"/>
+<path class="bls" d="M450 234 L504 144 L508 148 L456 238 Z"/>
+<path class="o fns" d="M432 232 L462 244 L452 218 Z"/>
+<!-- face -->
+<circle class="o" cx="430" cy="262" r="16" fill="#ffffff" stroke-width="4"/>
+<circle cx="434" cy="262" r="8" fill="#1b1b2b"/><circle cx="436" cy="258" r="3" fill="#ffffff"/>
+<path class="o" d="M460 296 C466 288 476 290 476 298 C470 304 462 304 460 296 Z" fill="#f0a8b0" stroke-width="3"/>
+<!-- bubbles -->
+<g fill="#e4f2fc" stroke="#1b1b2b" stroke-width="2.5"><circle cx="488" cy="300" r="7"/><circle cx="496" cy="276" r="4"/></g>
+<!-- highlight -->
+<path d="M180 214 C220 200 270 196 320 200" stroke="#ffffff" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

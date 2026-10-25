@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Sludgemire (No. 2089), Poison/Ground, from Muk: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.s{fill:#4a2e5a}.sd{fill:#2e1c3a}.sl{fill:#7a5a8e}.bn{fill:#efe6cc}.bns{fill:#c8bc98}.rk{fill:#8e8678}.rkd{fill:#6a6458}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="230" ry="16" fill="#e6e7ee"/>
+<!-- great low mound of tar -->
+<path class="o s" d="M24 450 C30 400 70 380 110 380 C110 330 150 300 200 300 C220 230 300 220 340 260 C390 260 430 300 430 350 C470 360 494 400 488 450 C440 466 360 470 256 470 C150 470 70 466 24 450 Z"/>
+<path class="sd" d="M40 452 C120 462 400 464 484 444 C470 462 380 470 256 470 C140 470 70 466 40 452 Z"/>
+<!-- old things half sunk in it -->
+<path class="o bn" d="M70 420 C64 404 76 394 90 400 L150 380 C160 372 176 378 172 392 C182 400 170 414 158 408 L98 428 C90 440 74 434 70 420 Z"/>
+<path class="o rk" d="M380 430 C372 400 400 384 426 390 C450 398 454 426 434 438 C414 446 386 444 380 430 Z"/>
+<path class="rkd" d="M430 434 C446 428 450 412 444 398 C456 416 450 434 430 434 Z"/>
+<path class="o bn" d="M300 440 C296 420 310 410 326 414 C344 420 344 440 330 446 C318 452 304 450 300 440 Z"/>
+<circle cx="316" cy="428" r="4" fill="#1b1b2b"/><circle cx="330" cy="430" r="4" fill="#1b1b2b"/>
+<!-- head leaning forward -->
+<path class="o s" d="M200 300 C190 230 240 180 300 180 C360 180 400 220 396 280 C392 330 350 350 300 350 C250 350 206 340 200 300 Z"/>
+<path class="sd" d="M372 210 C396 240 400 290 380 320 C366 340 340 350 300 350 C352 330 380 280 372 210 Z"/>
+<!-- glossy highlights -->
+<path d="M230 226 C250 200 280 192 306 192" stroke="#9e7eb4" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M60 404 C80 392 100 388 116 388" stroke="#7a5a8e" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- bubbles on its surface -->
+<g class="o sl" stroke-width="3"><circle cx="150" cy="350" r="10"/><circle cx="420" cy="340" r="8"/><circle cx="250" cy="400" r="7"/><circle cx="190" cy="440" r="9"/><circle cx="460" cy="410" r="6"/></g>
+<!-- face -->
+<g class="o" fill="#ffffff" stroke-width="4"><ellipse cx="270" cy="250" rx="16" ry="12"/><ellipse cx="330" cy="250" rx="16" ry="12"/></g>
+<circle cx="272" cy="252" r="5" fill="#1b1b2b"/><circle cx="332" cy="252" r="5" fill="#1b1b2b"/>
+<path class="o" d="M262 290 C280 316 330 316 346 290 C330 300 280 300 262 290 Z" fill="#1b1b2b"/>
+<path d="M276 300 c10 6 40 6 56 0" stroke="#d07ad8" stroke-width="4" fill="none"/>
+<!-- thick dripping arms -->
+<path class="o s" d="M130 340 C100 300 100 250 120 220 C140 230 150 260 160 290 C170 270 186 266 196 274 C190 300 180 330 170 360 Z"/>
+<path class="o s" d="M396 290 C430 270 456 240 464 210 C446 206 432 220 420 236 C420 214 410 204 400 206 C400 230 396 260 390 300 Z"/>
+<g class="o s" stroke-width="4"><path d="M122 222 c-6 -14 -2 -24 6 -26 c4 10 0 18 -6 26z"/><path d="M466 212 c4 -14 0 -24 -8 -24 c-4 10 0 18 8 24z"/><path d="M180 352 c0 14 -4 22 -10 24 c-4 -10 2 -18 10 -24z"/></g>
+</svg>

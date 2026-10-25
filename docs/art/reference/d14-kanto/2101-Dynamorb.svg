@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Dynamorb (No. 2101), Electric/Steel, from Electrode: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.r{fill:#e04040}.rd{fill:#b02c30}.w{fill:#f6f6f6}.ws{fill:#cfd2da}.m{fill:#b8c2d0}.md{fill:#7e8a9c}.gl{stroke:#fff27a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="140" ry="14" fill="#e6e7ee"/>
+<!-- arcs of current, back halves -->
+<path d="M70 230 C90 130 420 130 442 230" stroke="#1b1b2b" stroke-width="10" fill="none"/>
+<path d="M70 230 C90 130 420 130 442 230" stroke="#fff27a" stroke-width="5" fill="none"/>
+<!-- the ball -->
+<circle class="o w" cx="256" cy="290" r="160"/>
+<path class="o r" d="M96 290 A160 160 0 0 1 416 290 Z"/>
+<path class="rd" d="M360 170 C400 200 420 250 416 290 L380 290 C386 240 376 200 360 170 Z"/>
+<path class="ws" d="M380 290 L416 290 C416 360 380 420 320 440 C370 400 386 350 380 290 Z"/>
+<!-- steel band with three studs -->
+<path class="o m" d="M96 272 C96 272 180 262 256 262 C332 262 416 272 416 272 L416 310 C416 310 332 300 256 300 C180 300 96 310 96 310 Z"/>
+<path class="md" d="M100 300 C180 292 332 292 412 300 L416 310 C332 300 180 300 96 310 Z"/>
+<g class="o md" stroke-width="4"><circle cx="160" cy="284" r="10"/><circle cx="256" cy="282" r="11"/><circle cx="352" cy="284" r="10"/></g>
+<g fill="#e4eaf2"><circle cx="157" cy="281" r="3"/><circle cx="253" cy="279" r="3"/><circle cx="349" cy="281" r="3"/></g>
+<!-- face -->
+<path class="o" d="M176 216 C182 192 218 188 232 208 C222 230 190 236 176 216 Z" fill="#ffffff"/>
+<path class="o" d="M280 208 C294 188 330 192 336 216 C322 236 290 230 280 208 Z" fill="#ffffff"/>
+<circle cx="214" cy="212" r="7" fill="#1b1b2b"/><circle cx="298" cy="212" r="7" fill="#1b1b2b"/>
+<path class="t" d="M172 196 l60 8 M340 196 l-60 8" stroke-width="5"/>
+<path class="o" d="M196 340 C220 380 292 380 316 340 C292 352 220 352 196 340 Z" fill="#1b1b2b"/>
+<!-- arcs of current, front halves, on thin strands -->
+<path d="M70 230 C60 330 450 330 442 230" stroke="#1b1b2b" stroke-width="10" fill="none"/>
+<path d="M70 230 C60 330 450 330 442 230" stroke="#fff27a" stroke-width="5" fill="none"/>
+<path d="M40 320 C70 440 440 440 472 320" stroke="#1b1b2b" stroke-width="9" fill="none" stroke-dasharray="40 18"/>
+<path d="M40 320 C70 440 440 440 472 320" stroke="#fff27a" stroke-width="4" fill="none" stroke-dasharray="40 18"/>
+<!-- highlight -->
+<path d="M150 180 C180 150 220 140 256 140" stroke="#ff8a7a" stroke-width="8" fill="none" stroke-linecap="round"/>
+</svg>

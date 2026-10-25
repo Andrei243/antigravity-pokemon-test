@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Slowmantle (No. 2080), Water/Psychic, from Slowbro: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.p{fill:#f2a0b4}.pd{fill:#d47c94}.cr{fill:#f8ead6}.sh{fill:#b8b4bc}.shd{fill:#8e8a96}.pl{fill:#f0a0c0}.wp{fill:#ffffff}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="472" rx="190" ry="14" fill="#e6e7ee"/>
+<!-- great spiral shell over the back, like a hermit crab's house -->
+<path class="o sh" d="M120 420 C60 380 50 280 100 210 C150 140 250 120 330 150 C410 180 440 260 410 330 C380 400 300 440 220 440 C180 440 146 434 120 420 Z"/>
+<path class="shd" d="M380 190 C420 230 430 290 410 330 C380 400 300 440 220 440 C320 410 400 330 380 190 Z"/>
+<path class="o" d="M180 330 C150 300 150 240 190 210 C230 180 300 184 330 220 C356 252 344 300 310 316 C280 330 244 316 238 286 C234 260 256 244 276 252" fill="none" stroke-width="5"/>
+<path d="M180 330 C150 300 150 240 190 210 C230 180 300 184 330 220 C356 252 344 300 310 316 C280 330 244 316 238 286" fill="none" stroke="#f0a0c0" stroke-width="4" transform="translate(6 6)"/>
+<path class="t" d="M110 260 C140 230 170 210 200 200 M120 360 C150 340 170 320 180 300 M300 420 C300 390 300 360 310 330 M400 300 C380 300 360 300 340 290" stroke="#f0a0c0" stroke-width="4"/>
+<g class="o shd" stroke-width="4"><path d="M104 214 l-30 -14 l14 28 z"/><path d="M150 166 l-20 -26 l32 8 z"/><path d="M226 132 l4 -32 l20 26 z"/></g>
+<!-- the shell's mouth with a pearl -->
+<g transform="translate(-150 34)">
+<path class="o" d="M280 330 C300 300 360 300 380 330 C390 370 360 400 320 400 C290 400 270 370 280 330 Z" fill="#4a4456"/>
+<circle class="o wp" cx="356" cy="356" r="22"/>
+<circle cx="350" cy="350" r="7" fill="#ffffff" stroke="none"/>
+<circle cx="362" cy="362" r="10" fill="#e8e4f0" stroke="none"/>
+</g>
+<!-- the Slowbro sitting inside: legs -->
+<path class="o p" d="M240 420 C240 440 230 456 250 462 L290 462 C298 446 290 430 288 418 Z"/>
+<path class="o p" d="M330 420 C330 440 338 456 356 462 L392 462 C396 444 380 430 376 414 Z"/>
+<!-- body peeking from under the shell -->
+<path class="o p" d="M300 330 C340 300 420 300 440 350 C454 390 430 430 380 436 C330 440 290 420 286 380 Z"/>
+<path class="o cr" d="M340 360 C360 344 410 346 422 372 C428 400 400 420 372 420 C346 418 332 392 340 360 Z"/>
+<!-- arm -->
+<path class="o p" d="M300 360 C276 370 262 390 266 410 C282 412 296 400 306 386 Z"/>
+<!-- head -->
+<path class="o p" d="M340 260 C330 210 370 180 414 182 C456 184 480 214 474 252 C468 290 440 306 404 306 C370 306 346 290 340 260 Z"/>
+<path class="pd" d="M460 210 C476 236 474 270 456 290 C444 300 428 306 404 306 C444 290 464 256 460 210 Z"/>
+<path class="o cr" d="M384 262 C394 244 450 244 462 262 C462 284 440 296 420 296 C398 296 380 284 384 262 Z"/>
+<path class="t" d="M396 268 c16 10 44 10 58 0" stroke-width="2.5"/>
+<!-- sleepy eyes -->
+<path class="t" d="M380 228 c8 6 18 6 24 0 M428 226 c8 6 18 6 24 0" stroke-width="4"/>
+<!-- ears -->
+<path class="o p" d="M356 200 C340 184 340 170 352 164 C366 166 372 182 370 194 Z"/>
+<!-- highlight -->
+<path d="M150 190 C190 156 240 146 290 150" stroke="#dcd8e4" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

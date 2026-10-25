@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Molemount (No. 2051), Ground/Rock, from Dugtrio: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.m{fill:#8a5a3a}.md{fill:#6a4228}.dt{fill:#b38250}.dtd{fill:#8e6236}.rk{fill:#a8a49c}.rkd{fill:#7e7a72}.ns{fill:#ef8aa0}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="220" ry="14" fill="#e6e7ee"/>
+<!-- heads behind (left back, right back) -->
+<path class="o m" d="M150 300 C146 230 170 196 200 196 C230 196 250 230 248 300 Z"/>
+<path class="o m" d="M268 300 C266 230 288 196 318 196 C348 196 370 230 364 300 Z"/>
+<!-- middle head, tallest -->
+<path class="o m" d="M200 320 C196 210 220 150 256 150 C292 150 316 210 312 320 Z"/>
+<path class="md" d="M284 170 C304 200 312 260 310 320 L296 320 C300 260 298 210 284 170 Z"/>
+<!-- front heads -->
+<path class="o m" d="M96 360 C92 300 112 270 140 270 C168 270 186 300 182 360 Z"/>
+<path class="o m" d="M330 360 C326 300 346 270 374 270 C402 270 420 300 416 360 Z"/>
+<!-- the mound of earth -->
+<path class="o dt" d="M30 420 C40 340 130 320 256 320 C382 320 472 340 482 420 C482 450 400 462 256 462 C112 462 30 450 30 420 Z"/>
+<path class="dtd" d="M50 436 C120 452 390 452 466 432 C462 452 400 462 256 462 C120 462 56 452 50 436 Z"/>
+<g class="dtd"><ellipse cx="190" cy="380" rx="10" ry="5"/><ellipse cx="300" cy="400" rx="12" ry="5"/><ellipse cx="120" cy="410" rx="9" ry="4"/><ellipse cx="400" cy="380" rx="9" ry="4"/></g>
+<!-- boulders set in its slopes -->
+<g class="o rk"><path d="M60 410 C54 380 80 368 100 376 C118 384 116 410 100 418 C84 424 64 422 60 410 Z"/><path d="M220 360 C216 340 240 330 258 338 C272 346 268 368 252 372 C236 376 222 372 220 360 Z"/><path d="M400 420 C394 392 424 380 446 390 C462 400 458 424 440 430 C420 436 404 432 400 420 Z"/><path d="M320 436 C318 420 336 414 348 420 C358 428 352 444 340 446 C330 446 322 444 320 436 Z"/></g>
+<g class="rkd"><path d="M88 414 C104 414 114 404 112 392 C116 410 106 420 88 414 Z"/><path d="M432 426 C450 424 458 412 456 400 C462 418 450 432 432 426 Z"/></g>
+<!-- noses and eyes -->
+<g class="o ns"><ellipse cx="200" cy="262" rx="20" ry="14"/><ellipse cx="318" cy="262" rx="20" ry="14"/><ellipse cx="256" cy="244" rx="24" ry="16"/><ellipse cx="140" cy="330" rx="20" ry="14"/><ellipse cx="374" cy="330" rx="20" ry="14"/></g>
+<g fill="#1b1b2b">
+<ellipse cx="188" cy="232" rx="4" ry="8"/><ellipse cx="210" cy="232" rx="4" ry="8"/>
+<ellipse cx="306" cy="232" rx="4" ry="8"/><ellipse cx="328" cy="232" rx="4" ry="8"/>
+<ellipse cx="242" cy="208" rx="5" ry="10"/><ellipse cx="270" cy="208" rx="5" ry="10"/>
+<ellipse cx="128" cy="300" rx="4" ry="8"/><ellipse cx="150" cy="300" rx="4" ry="8"/>
+<ellipse cx="362" cy="300" rx="4" ry="8"/><ellipse cx="384" cy="300" rx="4" ry="8"/>
+</g>
+<g fill="#ffffff"><circle cx="243" cy="204" r="2.5"/><circle cx="271" cy="204" r="2.5"/></g>
+<!-- highlights -->
+<path d="M232 176 C240 166 252 162 262 162" stroke="#a87650" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M80 352 C140 336 200 330 256 330" stroke="#cfa06a" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

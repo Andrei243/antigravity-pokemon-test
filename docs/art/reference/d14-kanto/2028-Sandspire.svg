@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Sandspire (No. 2028), Ground/Rock, from Sandslash: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.y{fill:#e3c070}.yd{fill:#bf9a48}.cr{fill:#f4e6c0}.s1{fill:#b07a44}.s2{fill:#d9a868}.rk{fill:#a89c8a}.rkd{fill:#7f7466}.cl{fill:#f2ecdc}.cls{fill:#c8bea6}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="472" rx="170" ry="14" fill="#e6e7ee"/>
+<!-- sandstone spines, tallest over the shoulders -->
+<g class="o s1">
+<path d="M150 300 L96 250 L160 268 Z"/>
+<path d="M170 270 L130 186 L196 246 Z"/>
+<path d="M200 248 L184 140 L232 232 Z"/>
+<path d="M240 236 L250 110 L276 232 Z"/>
+<path d="M284 236 L318 116 L316 244 Z"/>
+<path d="M318 250 L376 154 L350 266 Z"/>
+</g>
+<g class="s2"><path d="M140 270 L110 256 L156 268 Z"/><path d="M160 236 L142 204 L184 246 Z"/><path d="M196 210 L190 170 L214 228 Z"/><path d="M248 190 L250 140 L262 200 Z"/><path d="M300 190 L314 140 L310 210 Z"/><path d="M336 220 L364 178 L346 236 Z"/></g>
+<g class="t" stroke-width="2.5"><path d="M118 262 l20 4 M150 222 l20 14 M190 180 l18 22 M248 160 l16 4 M300 160 l16 4 M352 200 l16 6"/></g>
+<!-- tail -->
+<path class="o y" d="M140 360 C100 370 70 360 54 340 C80 336 104 330 130 320 Z"/>
+<!-- body hunched forward -->
+<path class="o y" d="M130 340 C120 280 180 240 260 240 C340 240 386 280 380 330 C374 380 330 410 260 410 C190 410 140 390 130 340 Z"/>
+<path class="yd" d="M150 380 C190 404 330 406 372 360 C362 392 330 410 260 410 C200 410 166 398 150 380 Z"/>
+<!-- legs -->
+<path class="o y" d="M180 386 C176 410 180 430 172 448 C160 452 160 464 176 464 L210 464 C214 440 212 416 220 392 Z"/>
+<path class="o yd" d="M290 392 C298 414 294 434 300 450 C290 454 290 466 306 466 L336 466 C336 440 334 414 330 392 Z"/>
+<g class="o cl" stroke-width="3"><path d="M172 458 l-8 12 h14 z"/><path d="M190 460 l-4 12 h14 z"/><path d="M306 460 l-6 12 h14 z"/><path d="M324 460 l-2 12 h14 z"/></g>
+<!-- head with a rock brow plate -->
+<path class="o y" d="M330 300 C320 260 350 236 390 238 C430 240 456 262 466 290 C472 308 462 320 444 324 C420 330 400 340 376 340 C350 340 334 324 330 300 Z"/>
+<path class="o cr" d="M392 300 C410 296 440 300 462 296 C460 316 440 324 420 326 C400 328 388 316 392 300 Z"/>
+<path class="o rk" d="M344 268 C350 236 390 222 424 232 C440 238 452 250 456 266 C430 256 400 254 374 262 Z"/>
+<path class="rkd" d="M424 238 C442 246 452 256 456 266 C440 260 428 258 416 258 Z"/>
+<path d="M392 280 c8-8 20-8 26 0 c-8 6-18 6-26 0z" fill="#1b1b2b"/>
+<circle cx="408" cy="280" r="3" fill="#ffffff"/>
+<ellipse cx="466" cy="294" rx="6" ry="5" fill="#1b1b2b"/>
+<!-- great claws thickened into picks -->
+<path class="o cr" d="M350 340 C380 350 400 368 404 392 C390 392 380 384 372 376 Z"/>
+<g class="o cl">
+<path d="M398 384 C420 380 448 386 470 404 C446 404 424 400 404 398 Z"/>
+<path d="M394 392 C410 404 426 424 432 450 C414 436 400 420 390 402 Z"/>
+<path d="M386 396 C392 414 394 436 386 458 C376 438 374 420 378 402 Z"/>
+</g>
+<g class="cls"><path d="M410 398 C430 398 448 402 466 404 C446 406 424 404 410 398 Z"/></g>
+<!-- highlight -->
+<path d="M170 290 C200 270 240 262 280 262" stroke="#f4dc98" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Palmagus (No. 2103), Grass/Psychic, from Exeggutor: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.tr{fill:#c8a070}.trd{fill:#9a7448}.lf{fill:#5ab048}.lfd{fill:#3e8834}.cn{fill:#f2df9a}.cns{fill:#cdb46a}.ft{fill:#f2df9a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="474" rx="150" ry="13" fill="#e6e7ee"/>
+<!-- leaves of the left crown -->
+<g class="o lf"><path d="M150 110 C110 80 60 80 30 110 C70 106 100 116 140 130 Z"/><path d="M152 104 C130 60 90 40 54 44 C90 64 116 90 140 120 Z"/><path d="M160 102 C170 60 200 30 236 24 C210 56 190 84 172 116 Z"/><path d="M168 110 C210 90 250 96 270 120 C230 116 200 120 170 128 Z"/></g>
+<!-- leaves of the right crown -->
+<g class="o lf"><path d="M340 120 C300 92 262 96 240 120 C280 116 310 124 336 136 Z"/><path d="M344 112 C330 68 300 44 264 40 C300 62 324 92 336 126 Z"/><path d="M352 110 C366 66 400 40 436 40 C406 70 384 96 364 126 Z"/><path d="M358 118 C400 96 446 100 478 126 C436 124 400 128 362 136 Z"/></g>
+<g class="t" stroke="#2f6a28" stroke-width="2"><path d="M60 98 l80 26 M90 60 l50 58 M220 34 l-50 80 M60 100 l70 20 M282 54 l52 70 M420 52 l-56 72 M460 118 l-98 12"/></g>
+<!-- two trunks from one root -->
+<path class="o tr" d="M196 380 C186 300 160 220 156 130 L176 128 C186 220 210 300 226 380 Z"/>
+<path class="o tr" d="M290 380 C310 300 346 220 344 136 L364 138 C368 220 330 300 320 380 Z"/>
+<g class="t" stroke-width="2.5"><path d="M168 170 l16 -4 M174 220 l18 -4 M186 270 l18 -4 M198 320 l18 -4 M346 180 l16 2 M340 230 l16 2 M326 280 l16 2 M312 330 l16 2"/></g>
+<!-- coconut heads, three on each crown -->
+<g class="o cn"><circle cx="128" cy="146" r="24"/><circle cx="168" cy="152" r="26"/><circle cx="148" cy="188" r="22"/><circle cx="330" cy="152" r="24"/><circle cx="372" cy="156" r="26"/><circle cx="352" cy="192" r="22"/></g>
+<g fill="#1b1b2b">
+<path d="M118 142 l10 4 l-10 2z M134 142 l-10 4 l10 2z"/><ellipse cx="160" cy="150" rx="3" ry="5"/><ellipse cx="176" cy="150" rx="3" ry="5"/>
+<path d="M140 186 l8 -4 l8 4"/>
+<ellipse cx="324" cy="148" rx="3" ry="5"/><ellipse cx="338" cy="148" rx="3" ry="5"/>
+<path d="M362 152 l10 4 l-10 2z M380 152 l-10 4 l10 2z"/><ellipse cx="346" cy="190" rx="3" ry="5"/><ellipse cx="360" cy="190" rx="3" ry="5"/>
+</g>
+<path class="t" d="M140 158 c4 4 10 4 14 0 M164 166 c6 4 14 4 20 0 M140 200 c6 2 10 2 16 0 M324 162 c4 4 10 4 14 0 M366 170 c6 4 14 4 20 0 M346 204 c6 2 10 2 14 0" stroke-width="2.5"/>
+<!-- body at the join, with the fourth head low -->
+<path class="o tr" d="M180 400 C176 360 210 340 256 340 C302 340 336 360 332 400 C330 430 300 440 256 440 C212 440 182 430 180 400 Z"/>
+<path class="trd" d="M190 420 C220 436 296 436 324 418 C318 434 296 440 256 440 C222 440 198 434 190 420 Z"/>
+<circle class="o cn" cx="256" cy="372" r="28"/>
+<path class="cns" d="M276 354 C288 368 286 388 270 398 C262 400 256 400 250 400 C272 388 280 372 276 354 Z"/>
+<ellipse cx="246" cy="368" rx="3.5" ry="6" fill="#1b1b2b"/><ellipse cx="266" cy="368" rx="3.5" ry="6" fill="#1b1b2b"/>
+<path class="t" d="M246 384 c6 4 14 4 20 0" stroke-width="2.5"/>
+<!-- stubby legs -->
+<path class="o ft" d="M200 430 L196 464 L236 464 L232 434 Z"/>
+<path class="o ft" d="M280 434 L278 464 L318 464 L312 430 Z"/>
+<g class="t" stroke-width="2"><path d="M206 456 v8 M218 456 v8 M288 456 v8 M300 456 v8"/></g>
+<!-- highlight -->
+<path d="M120 136 c4 -6 10 -10 16 -10 M322 140 c4 -6 10 -10 16 -10 M244 356 c4 -6 10 -10 16 -10" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

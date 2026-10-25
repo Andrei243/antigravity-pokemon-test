@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Medusarch (No. 2073), Water/Poison, from Tentacruel: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.f{fill:#8cc4f0}.fd{fill:#6a9ad8}.v{fill:#c4b0f0}.vd{fill:#9e86d8}.r{fill:#e03a4a}.rl{fill:#ffb0b8}.tn{fill:#5a8ad0}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="490" rx="110" ry="10" fill="#e6e7ee"/>
+<!-- tentacles, doubled and trailing in a cluster -->
+<g class="o tn" stroke-width="4">
+<path d="M190 300 C170 360 180 420 150 480 C176 470 196 420 204 360 C206 330 204 312 204 300 Z"/>
+<path d="M214 306 C204 370 214 430 200 492 C222 474 230 420 230 360 L230 306 Z"/>
+<path d="M240 306 C238 370 248 430 244 498 C262 474 262 420 256 360 L254 306 Z"/>
+<path d="M266 306 C272 370 266 430 278 494 C292 470 286 420 280 360 L280 306 Z"/>
+<path d="M292 304 C304 360 300 420 326 480 C334 456 322 410 316 360 L306 302 Z"/>
+<path d="M314 300 C334 350 344 400 380 446 C380 420 360 380 348 340 L328 296 Z"/>
+<path d="M176 296 C150 340 136 390 104 430 C130 424 150 390 164 350 L190 300 Z"/>
+</g>
+<path class="t" d="M160 470 c4-10 10-12 16-8 M210 480 c4-10 10-10 14-4 M248 486 c4-8 8-8 12-4 M282 482 c2-8 8-10 12-6" stroke-width="2"/>
+<!-- float body -->
+<path class="o f" d="M140 300 C130 250 170 200 256 200 C342 200 382 250 372 300 C340 316 300 320 256 320 C212 320 172 316 140 300 Z"/>
+<path class="fd" d="M150 304 C190 316 322 316 362 304 C340 316 300 320 256 320 C212 320 172 316 150 304 Z"/>
+<!-- tall sail rising from the float -->
+<path class="o v" d="M170 220 C180 130 230 50 300 30 C330 70 340 140 340 220 C300 232 220 232 170 220 Z"/>
+<path class="vd" d="M300 30 C330 70 340 140 340 220 C326 224 310 226 296 228 C318 160 320 90 300 30 Z"/>
+<path class="t" d="M200 210 C210 150 240 90 290 46 M240 220 C246 160 266 100 296 56 M282 224 C290 160 300 110 304 70" stroke="#9e86d8" stroke-width="3"/>
+<path class="o" d="M170 220 C180 130 230 50 300 30" fill="none" stroke-width="7" stroke="#1b1b2b"/>
+<!-- three red gems -->
+<g class="o r" stroke-width="4"><ellipse cx="196" cy="262" rx="20" ry="16"/><ellipse cx="256" cy="270" rx="24" ry="18"/><ellipse cx="316" cy="262" rx="20" ry="16"/></g>
+<g class="rl"><ellipse cx="190" cy="256" rx="6" ry="4"/><ellipse cx="249" cy="262" rx="7" ry="5"/><ellipse cx="310" cy="256" rx="6" ry="4"/></g>
+<!-- eyes and beak beneath -->
+<path d="M220 298 c6-6 16-6 20 0 c-6 4-14 4-20 0z M272 298 c4-6 14-6 20 0 c-6 4-14 4-20 0z" fill="#1b1b2b"/>
+<path class="o" d="M248 306 l8 12 l8 -12 z" fill="#c4b0f0" stroke-width="3"/>
+<!-- highlight -->
+<path d="M170 250 C190 222 220 210 250 208" stroke="#c8e4fa" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>
