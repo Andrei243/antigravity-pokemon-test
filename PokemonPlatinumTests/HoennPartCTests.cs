@@ -11,6 +11,7 @@ namespace PokemonPlatinumTests;
 /// rematches of the Elite Four, Wallace and Wally over the PokéNav's Match Call (docs/mechanics/rulings.md, "Scott's way
 /// to the Battle Frontier and the League's rematches").
 /// </summary>
+[Collection("Shared clocks and dice")]
 public class HoennPartCTests
 {
     private const string Harbor = "lilycove_city_harbor";

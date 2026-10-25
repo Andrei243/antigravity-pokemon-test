@@ -221,7 +221,7 @@
       "script": "JohtoGuide", "shownBy": "JohtoHallOfFame" },
     // The guide of Scott's ferry from Lilycove City (plan 21 · H9, part c), the third door: shown with Hoenn's Hall of
     // Fame, he takes the player back to the harbour beside Scott (battle_frontier.txt, HoennGuide)
-    { "id": "battle_frontier.HoennGuide", "name": "Guide", "npcType": "Gentleman", "x": 48, "y": 51, "facing": "Left",
+    { "id": "battle_frontier.HoennGuide", "name": "Guide", "npcType": "Gentleman", "x": 50, "y": 51, "facing": "Left",
       "script": "HoennGuide", "shownBy": "HoennHallOfFame" }
   ]
 }

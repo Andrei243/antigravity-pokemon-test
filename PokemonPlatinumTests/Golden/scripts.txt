@@ -2960,19 +2960,125 @@ way 1, from answer 1
   ? Will you ride the train to Anville Town? = No
 === GearStation.DoubleTrain
 from Depot Agent at 7,3 of GearStation
-way -
+way 0
   Depot Agent> Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car.
-  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
+  Depot Agent> What would you like to do?
+  Depot Agent> I'm sorry. You need 4 Pokémon that can take part, all of different species and holding different items.
+  Depot Agent> An Egg can't take part, and nor can certain rare Pokémon.
+  ? What would you like to do? = RIDE
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 1
+way 3, from answer 1
+  Depot Agent> Please ride with us again!
+  ? What would you like to do? = EXIT
+way 2, from answer 1
+  Depot Agent> Your longest streak on the Double Train is 0 cars.
+  ? What would you like to do? = RECORD
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 1
+way 1, from answer 1
+  Depot Agent> Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set.
+  Depot Agent> The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under.
+  Depot Agent> The Subway Bosses wait for those who ride on to the 21st car and the 49th.
+  ? What would you like to do? = INFO
 === GearStation.MultiTrain
 from Depot Agent at 11,3 of GearStation
-way -
+way 0
   Depot Agent> Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair.
-  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
+  Depot Agent> What would you like to do?
+  Depot Agent> I'm sorry. You need 2 Pokémon that can take part, all of different species and holding different items.
+  Depot Agent> An Egg can't take part, and nor can certain rare Pokémon.
+  ? What would you like to do? = RIDE
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 2
+way 3, from answer 1
+  Depot Agent> Please ride with us again!
+  ? What would you like to do? = EXIT
+way 2, from answer 1
+  Depot Agent> Your longest streak on the Multi Train is 0 cars.
+  ? What would you like to do? = RECORD
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+  = VAR_UNOVA_SUBWAY_TRAIN 0 -> 2
+way 1, from answer 1
+  Depot Agent> You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers.
+  Depot Agent> The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th.
+  Depot Agent> A partner from a friend over a link is not on the line yet. We're sorry!
+  ? What would you like to do? = INFO
 === GearStation.SingleTrain
 from Depot Agent at 3,3 of GearStation
-way -
-  Depot Agent> Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run.
-  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
+way 0
+  Depot Agent> Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set.
+  Depot Agent> What would you like to do?
+  Depot Agent> I'm sorry. You need 3 Pokémon that can take part, all of different species and holding different items.
+  Depot Agent> An Egg can't take part, and nor can certain rare Pokémon.
+  ? What would you like to do? = RIDE
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+way 3, from answer 1
+  Depot Agent> Please ride with us again!
+  ? What would you like to do? = EXIT
+way 2, from answer 1
+  Depot Agent> Your longest streak on the Single Train is 0 cars.
+  ? What would you like to do? = RECORD
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+way 1, from answer 1
+  Depot Agent> A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set.
+  Depot Agent> The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used.
+  Depot Agent> The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th.
+  ? What would you like to do? = INFO
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
 way 0
@@ -3927,6 +4033,40 @@ from the sign at 7,3 of PokemonMansionOffice
 way -
   > A statue of a Pokémon. It looks dreadfully expensive...
   > ... ! You have left fingerprints all over it...
+=== PokemonWorldTournament.ClayHost
+from Clay at 11,5 of PokemonWorldTournament
+way 0
+  Clay> The Driftveil Tournament is a knockout of eight Trainers. Three Pokémon each, at Level 50 or under, and nothing from the Bag.
+  Clay> Will you enter the Driftveil Tournament?
+  Clay> You need 3 Pokémon that can take part, all of different species and holding different items.
+  Clay> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Will you enter the Driftveil Tournament? = Yes
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+  = VAR_UNOVA_SUBWAY_SEED 0 -> 47596
+way 1, from answer 1
+  Clay> No rush. The tournament isn't going anywhere, and neither am I.
+  ? Will you enter the Driftveil Tournament? = No
+=== PokemonWorldTournament.Desk
+from Receptionist at 11,10 of PokemonWorldTournament
+way -
+  Receptionist> Welcome to the Pokémon World Tournament! The Driftveil Tournament is about to start. Clay is on the stage and will see you in.
 === PoketchCompany.President
 from President at 18,5 of PoketchCompany
 way -
@@ -6001,10 +6141,54 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== anville_town.Collector
+from Collector at 33,39 of AnvilleTown
+way 0
+  Collector> I collect anything to do with trains, and my best find is a Klink. All gears and no engine, if you ask me.
+  Collector> A Timburr is what I'm after, though. It'd look splendid with a girder on its shoulder. Will you swap one for my Klink?
+  Collector> Which Pokémon will you swap?
+  Collector> Hmm? That isn't a Timburr. I'm only after a Timburr.
+  ? A Timburr is what I'm after, though. It'd look splendid with a girder on its shoulder. Will you swap one for my Klink? = Yes
+  * open ChoosePokemon
+  * trade cogs refused
+way 1, from answer 1
+  Collector> No? Then come back when you've a Timburr in your party. I'll be here at the weekends.
+  ? A Timburr is what I'm after, though. It'd look splendid with a girder on its shoulder. Will you swap one for my Klink? = No
+=== anville_town.LostPansage
+from Girl at 15,51 of AnvilleTown
+way -
+  Girl> My Pansage hopped onto a train on the way home from the amusement park, and it's been gone ever since.
+  Girl> It must be somewhere about the cars. Would you look for it? It's a shy little thing, and it hides when it hears me.
+  + FLAG_UNOVA_ANVILLE_PANSAGE_LOST
+=== anville_town.PansageHome
+from Pansage at 16,51 of AnvilleTown
+way -
+  Pansage> Pansage: Pan! Pan-sage!
+  * cry Pansage
+=== anville_town.PansageLost
+from Pansage at 20,54 of AnvilleTown
+way -
+  Pansage> Pansage: Sage! Sage!
+  Pansage> The Pansage hops into your arms, looking pleased with itself, and sits quite still. You carry it back to the girl by the fence.
+  * cry Pansage
+  + FLAG_UNOVA_ANVILLE_PANSAGE_FOUND
 === anville_town.RestingCars
 from Station Agent at 31,38 of AnvilleTown
 way -
   Station Agent> The cars here are taking a rest. Come at the weekend, when the whole town turns out to see them.
+=== anville_town.Swap
+from Backer at 22,39 of AnvilleTown
+way 0
+  Backer> I tried a swap here once, and it was more fun than I expected. Now I'm after another!
+  Backer> I've a Dwebble that needs a wetter home. Will you swap me a Tympole for it?
+  Backer> Which Pokémon will you swap?
+  Backer> Oh, that's not a Tympole. I'm after a Tympole, nothing else.
+  ? I've a Dwebble that needs a wetter home. Will you swap me a Tympole for it? = Yes
+  * open ChoosePokemon
+  * trade shelly refused
+way 1, from answer 1
+  Backer> Never mind. Find me a Tympole, and I'll be waiting.
+  ? I've a Dwebble that needs a wetter home. Will you swap me a Tympole for it? = No
 === anville_town.TrainHome
 from Station Agent at 22,52 of AnvilleTown
 way 0
@@ -6618,6 +6802,20 @@ way 2, from answer 1
 way 1, from answer 1
   Attendant> I'm sorry. You don't have the Battle Points for that.
   ? Which prize would you like? = TM73 Thunder Wave   32 BP
+=== battle_frontier.HoennGuide
+from Guide at 50,51 of BattleFrontier
+way 0
+  Guide> I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn.
+  Guide> Shall I take you back to Lilycove City?
+  Guide> Very good. Climb aboard, and mind your step.
+  > Lucas sailed back to Lilycove City...
+  ? Shall I take you back to Lilycove City? = Yes
+  * fade out
+  * travel to Hoenn LilycoveCity_Harbor 12 12
+  * fade in
+way 1, from answer 1
+  Guide> Take your time. The ferry waits for those who have Scott's pass.
+  ? Shall I take you back to Lilycove City? = No
 === battle_frontier.JohtoGuide
 from Guide at 46,51 of BattleFrontier
 way 0
@@ -11271,6 +11469,7 @@ way -
   * endscene
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_PWT_OPEN
   = VAR_UNOVA_DRIFTVEIL 0 -> 5
   + seen driftveil_city.Clay and Hugh outside the Gym
 === driftveil_city.ClayOutside
@@ -11352,6 +11551,24 @@ way -
 from Rood at 7,18 of DriftveilCity_PlasmaHouse
 way -
   Rood> We cannot undo what we did. We can only do better now, one Pokémon at a time.
+=== driftveil_city_7.Goods
+from Sailor at 6,9 of DriftveilCity_Market
+way -
+  Sailor> Ahoy! I've brought these across the sea, and I'll let them go for a fair price.
+  Sailor> Fair winds to you, Trainer!
+  * open Shop driftveil_market_goods
+=== driftveil_city_7.Herbs
+from Seller at 5,5 of DriftveilCity_Market
+way -
+  Seller> Welcome to the market! Herbs, bitter and good for you, the way our grandmothers brewed them.
+  Seller> Bitter, but they work wonders. Come again!
+  * open Shop driftveil_market_herbs
+=== driftveil_city_7.Sweets
+from Nursery Aide at 14,12 of DriftveilCity_Market
+way -
+  Nursery Aide> Sweets for the market's children, and for any Pokémon with a taste for them!
+  Nursery Aide> Don't let them eat it all at once!
+  * open Shop driftveil_market_sweets
 === driftveil_city_gym_2.GymGuide
 from Guide at 4,13 of DriftveilCity_GymLobby
 way -
@@ -11654,13 +11871,16 @@ way 0
   Drake> To command Dragon-type Pokémon, a trainer needs one thing above all. Do you know what it is?
   Drake> If you don't, you will not get past me. Come! Show me what you have!
   Drake> Superb. You have it, the thing my dragons and I look for in a trainer: a true bond with your Pokémon.
+  > Registered Drake in the PokéNav.
   Drake> Go on through. The Champion waits at the end of the hall. Give it everything you have.
   * scene ever_grande_city_drakes_room.Drake
   * music common/eye_elite_four
   * battle hoenn_drake Won
+  * addcontact drake
   * sound door_open
   * endscene
   + FLAG_DEFEATED_ELITE_4_DRAKE
+  + FLAG_PHONE_CONTACT_DRAKE
   + beaten hoenn_drake
   + seen ever_grande_city_drakes_room.Drake
 way 1, from answer 1
@@ -11673,13 +11893,16 @@ way 0
   Glacia> So far, I have found only disappointment. I do hope you will be different.
   Glacia> Show me the heat of your spirit. My Ice-type Pokémon and I will freeze it, if we can.
   Glacia> Such fire... You melted my ice completely. I have not felt this in a long time.
+  > Registered Glacia in the PokéNav.
   Glacia> Go on. The last of the Elite Four waits ahead, and he is not as gentle as I am.
   * scene ever_grande_city_glacias_room.Glacia
   * music common/eye_elite_four
   * battle hoenn_glacia Won
+  * addcontact glacia
   * sound door_open
   * endscene
   + FLAG_DEFEATED_ELITE_4_GLACIA
+  + FLAG_PHONE_CONTACT_GLACIA
   + beaten hoenn_glacia
   + seen ever_grande_city_glacias_room.Glacia
 way 1, from answer 1
@@ -11692,13 +11915,16 @@ way 0
   Phoebe> Up there, I learned to share my heart with Ghost-type Pokémon. We understand each other completely.
   Phoebe> Let's see if your bond with your Pokémon can match ours!
   Phoebe> Oh... we lost. Your bond with your Pokémon must run very deep.
+  > Registered Phoebe in the PokéNav.
   Phoebe> Go on to the next room. I'll be cheering for you, quietly, the way the spirits do.
   * scene ever_grande_city_phoebes_room.Phoebe
   * music common/eye_elite_four
   * battle hoenn_phoebe Won
+  * addcontact phoebe
   * sound door_open
   * endscene
   + FLAG_DEFEATED_ELITE_4_PHOEBE
+  + FLAG_PHONE_CONTACT_PHOEBE
   + beaten hoenn_phoebe
   + seen ever_grande_city_phoebes_room.Phoebe
 way 1, from answer 1
@@ -11741,13 +11967,16 @@ way 0
   Sidney> But liking you won't stop me. I play dirty, and I play to win. Can you keep up with that?
   Sidney> No more talking. Let's have a battle we'll both remember!
   Sidney> Ha! That's it, I'm beaten. And I don't even mind. That was a battle and a half!
+  > Registered Sidney in the PokéNav.
   Sidney> Go on through. The rest of the Elite Four won't go easy on you. Show them what you showed me!
   * scene ever_grande_city_sidneys_room.Sidney
   * music common/eye_elite_four
   * battle hoenn_sidney Won
+  * addcontact sidney
   * sound door_open
   * endscene
   + FLAG_DEFEATED_ELITE_4_SIDNEY
+  + FLAG_PHONE_CONTACT_SIDNEY
   + beaten hoenn_sidney
   + seen ever_grande_city_sidneys_room.Sidney
 way 1, from answer 1
@@ -13282,12 +13511,22 @@ way -
   Wally> You go on ahead, Lucas. I'll follow you to the League once I've rested!
 === hoenn_victory_road_1f.ExitWally
 from Wally at 31,9 of HoennVictoryRoad_1F
-way 0
+way 0.0
   Wally> Lucas! I heard you became the Champion. Congratulations! I knew you would.
   Wally> I've been training here ever since, so I could battle the Champion. Will you show me what that's like?
   Wally> Wow... So that's the strength of a Champion. I've still got a long way to go.
-  Wally> I'll keep training on Victory Road. One day I'll catch up with you, Lucas. Just you wait!
+  > Registered Wally in the PokéNav.
+  Wally> Lucas! You came! I've trained harder than ever. Please, battle me one more time!
+  Wally> Still not enough... but I felt it this time. I'm getting closer, I know it!
   * battle hoenn_wally_vr_2 Won
+  * addcontact hoenn_wally
+  * battle hoenn_wally_rematch Won
+  + FLAG_PHONE_CONTACT_HOENN_WALLY
+  + beaten hoenn_wally_rematch
+  + beaten hoenn_wally_vr_2
+way 0.1, from answer 2
+  * battle hoenn_wally_rematch Lost
+  + FLAG_PHONE_CONTACT_HOENN_WALLY
   + beaten hoenn_wally_vr_2
 way 1, from answer 1
   * battle hoenn_wally_vr_2 Lost
@@ -14278,6 +14517,26 @@ way 1, from answer 1
   * sound bump
   * fanfare FanfareItem
   * fanfare FanfareItem
+=== lilycove_city_harbor.Scott
+from Scott at 13,12 of LilycoveCity_Harbor
+way 0
+  Scott> Lucas! The Champion of Hoenn at last, and I was here to see it. Didn't I say I'd be cheering?
+  Scott> I told you I was looking for trainers who could carry on what the Battle Frontier stands for. Here, take this.
+  > Lucas received Scott's Frontier Pass!
+  Scott> The Frontier is where the strongest Trainers of every region meet. Five halls, five Frontier Brains, and a place for you.
+  Scott> My ferry runs to the Battle Frontier whenever you like. Your team goes along, and the Frontier keeps one record of your streaks and Battle Points.
+  Scott> Shall we sail for the Battle Frontier now?
+  Scott> Wonderful! Hold on to your hat.
+  > Lucas sailed with Scott for the Battle Frontier...
+  ? Shall we sail for the Battle Frontier now? = Yes
+  * fade out
+  * travel to Sinnoh BattleFrontier 47 51
+  * fade in
+  + FLAG_RECEIVED_FRONTIER_PASS
+way 1, from answer 1
+  Scott> No hurry. The Frontier will still be there when you are ready.
+  ? Shall we sail for the Battle Frontier now? = No
+  + FLAG_RECEIVED_FRONTIER_PASS
 === lilycove_city_house_2.RestMan
 from Man at 0,4 of LilycoveCity_House2
 way -
