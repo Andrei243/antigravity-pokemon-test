@@ -1,0 +1,21 @@
+{
+  // The upstairs of the musical fans' house (plan 22 · U8, part a): two who used to be in Team Plasma, our words
+  "area": "opelucid_city_7",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Man",
+      "npcType": "plasma_grunt",
+      "dialog": [
+        "This is just between you and me, OK? I used to be part of Team Plasma. But I felt that if I just did what I was told without thinking, I would turn into a pawn myself."
+      ]
+    },
+    "1": {
+      "name": "Woman",
+      "npcType": "plasma_grunt",
+      "dialog": [
+        "This is just between you and me, OK? I'm really not very good as a Trainer. So I think Team Plasma might have had the right idea when they said Pokémon should be freed. ...I wonder."
+      ]
+    }
+  }
+}

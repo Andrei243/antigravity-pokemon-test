@@ -1,0 +1,14 @@
+{
+  // The gate house between Opelucid City and Route 11 (plan 22 · U8, part a): one who talks, our words
+  "area": "opelucid_gate_gate_2",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Gate Guard",
+      "npcType": "worker",
+      "dialog": [
+        "To the Trainer who has come to Opelucid City: welcome! To the Trainer bound for Route 11: take care, and come again!"
+      ]
+    }
+  }
+}

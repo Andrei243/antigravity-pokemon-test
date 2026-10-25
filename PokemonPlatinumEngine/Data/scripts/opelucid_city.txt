@@ -1,0 +1,363 @@
+# Opelucid City (plan 22 · U8, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/opelucid_city.s, read for the order alone).
+# VAR_UNOVA_OPELUCID is the chapter's count: 0 before Iris has met the player at the east gate, 1 once she has (the Gym is open), 2 once
+# the Legend Badge is won and Drayden has asked the player to his house, 3 once his tale has been told and the Plasma Frigate's ice has
+# fallen on the city, 4 once Zinzolin has made his demand and the grunts are about the streets, 5 once Zinzolin is beaten at the Gym's
+# door, 6 once the splicers are taken and the Shadow Triad waits at the east end, 7 once the Triad is beaten and Cheren has spoken.
+# FLAG_UNOVA_OPELUCID_ICE is what lays the ice: world.json swaps the city's five chunks for their frozen twins (made ground ice, bare
+# ground snow) while it is set, and the overlay's zone lays snow over the air. It is set behind a black screen at 3 and cleared at 7.
+# Black 2's townspeople go indoors under the ice (the hiddenBy of the street's people is the flag). The Frigate itself is never drawn.
+# Black 2's Triple and Rotation battles are fought as single ones until plan 14 (B6, B7): the beats are marked in the Gym's script.
+
+
+script OnEnter
+  call UnovaCatchUpC
+  if var VAR_UNOVA_OPELUCID == 3 call TheIceComes
+  end
+
+
+# Iris at the east gate (our trigger down the road's end, 440, 173 to 177; VAR 0): she was in Castelia, and now she is home
+script IrisGreets
+  scene "Iris at Opelucid"
+  clearflag FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  place 11 436 175 right
+  show 11
+  face player left
+  speaker "Iris"
+  say "Yahoo! It's you! I haven't seen you since we ran into each other in Castelia City!"
+  walk 11 right 3
+  face 11 player
+  say "Are you here to challenge my grandpa? Yep! Drayden, the Gym Leader of Opelucid City, is my grandpa."
+  say "We're not really related, though! Hee hee!"
+  face 11 up
+  say "Oh! The Gym is up that way, past the street's end! But before you take it on, you might want to see Route 9 first."
+  face 11 player
+  say "Still, your Pokémon really respect you! I can feel how much fun they're having, even from inside their Poké Balls!"
+  say "Good luck!"
+  fade out 0.3
+  hide 11
+  setflag FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  fade in
+  setvar VAR_UNOVA_OPELUCID 1
+  endscene
+  end
+
+
+# The street's people, who say what they think of the old and the new (their own objects' scripts)
+script Gentleman
+  face 14 player
+  speaker "Gentleman"
+  say "The memories of everyone who has lived in this city have built up over the years without changing much."
+  say "Or perhaps this city changes endlessly, and every change is engraved in the memories of the people who live here. I can't decide."
+  end
+
+script BlackBelt
+  face 12 player
+  speaker "Black Belt"
+  say "I reached heights I never could have reached alone, because I had Pokémon by my side."
+  say "I think some things shouldn't be changed, even if it's inconvenient. And I think some things must be changed no matter how much you love them!"
+  end
+
+script Youngster
+  face 15 player
+  speaker "Youngster"
+  say "A person called N once had a legendary Pokémon with him. But was he really the hero? I keep wondering."
+  end
+
+script Artist
+  face 13 player
+  speaker "Artist"
+  say "Opelucid City is a place where the old and the new live side by side. I paint it every morning, and every morning it has changed."
+  end
+
+script Worker
+  face 18 player
+  speaker "Worker"
+  say "Drayden is our mayor as well as our Gym Leader! He's always training, wrestling with his Pokémon in the yard of his house."
+  end
+
+script Backers
+  face 16 player
+  speaker "Backers"
+  say "Unova's symbols are Zekrom and Reshiram, but I wonder where they are now. Are they passing their ancient knowledge on to someone?"
+  end
+
+script Citizen
+  face 17 player
+  speaker "Citizen"
+  say "There was a group that told people to release their Pokémon. They were great big liars, but it did make us think."
+  say "After that speech, my Pokémon and I have been working out what's true for us."
+  end
+
+
+# Drayden outside (after the Legend Badge): he leads the player to his house, where the tale is told. Our trigger across the
+# street before it (415 to 421, 168; VAR 2) calls him to the door.
+script DraydenAsks
+  scene "Drayden's invitation"
+  clearflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  place 0 419 170 up
+  show 0
+  face player up
+  speaker "Drayden"
+  say "There you are. Come along, {player}. My house is the one just ahead, and what I have to tell you is best told sitting down."
+  walk 0 up 9
+  say "This way!"
+  walk 0 up 1
+  say "We're here. Come inside."
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  fade in
+  endscene
+  end
+
+
+# The sound after the tale (the house's script warps the player to its door): the Plasma Frigate's ice falls on the whole city
+script TheIceComes
+  scene "The ice over Opelucid"
+  clearflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  place player 418 161 down
+  place 0 419 161 down
+  show 0
+  face 0 player
+  speaker "Drayden"
+  say "What was that sound? It came from up in the sky!"
+  camera shake 0.8
+  sound "bump"
+  effect ripple 418 165 1.2 wait
+  fade out 0.4
+  setflag FLAG_UNOVA_OPELUCID_ICE
+  wait 0.4
+  fade in
+  face 0 up
+  say "This world of ice... In one moment the whole city has frozen over!"
+  say "Haxorus! Use Dragon Tail on the ice!"
+  cry "Haxorus"
+  text "Haxorus slammed its tail down on the ice. Not even a scratch showed."
+  say "Not only did the ice stay unbroken, there isn't even a mark on it. What's going on?"
+  speaker "???"
+  say "I don't think that will work."
+  place 1 419 167 up
+  clearflag FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  show 1
+  emote 0 exclaim
+  speaker "Drayden"
+  say "I remember you from N's Castle."
+  speaker "Zinzolin"
+  say "It's bitter cold. I'm shivering. I'm suffering, but I'm alive! This is what the essence of life feels like!"
+  say "Let me explain our purpose here. Drayden, hand over the DNA Splicers!"
+  say "Opelucid City is a city where the past and the future are entwined. Surely it is the right place to keep something that bridges the two."
+  speaker "Drayden"
+  say "Do you think a man who knows what you did two years ago will hand them over quietly?"
+  speaker "Zinzolin"
+  say "Humph. That's what I expected you to say. I would threaten you with another volley of ice, but we can't loose it so soon."
+  say "No matter! I have my people searching your city already. I won't leave without what I came for."
+  fade out 0.3
+  place 1 405 146 down
+  clearflag FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  fade in
+  speaker "Drayden"
+  say "Those foul villains!"
+  face 0 player
+  say "{player}! I want you to help me! We're going to drive Team Plasma out of Opelucid City!"
+  say "They will go for the Gym sooner or later. I'll wait there. Clear the streets of their grunts and I'll meet you at my Gym's door."
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  fade in
+  setvar VAR_UNOVA_OPELUCID 4
+  endscene
+  end
+
+
+# The grunts about the streets (Black 2's TRAINER_TEAM_PLASMA_GRUNT_41 to 43; the other three only talk)
+script Grunt41
+  face 2 player
+  speaker "Grunt"
+  if flag FLAG_UNOVA_DEFEATED_GRUNT_41 goto Beaten
+  say "Pokémon are pawns! They're a means to an end. That's what I was taught! Don't think about it too much. It's easier that way."
+  battle 2 as "unova_team_plasma_grunt_41"
+  say "The others were saying that the only place we haven't searched yet is the Pokémon Gym!"
+  setflag FLAG_UNOVA_DEFEATED_GRUNT_41
+  end
+label Beaten
+  say "How can this be? Is that the kind of power Pokémon have when they're not treated like objects?"
+  end
+
+script Grunt42
+  face 3 player
+  speaker "Grunt"
+  if flag FLAG_UNOVA_DEFEATED_GRUNT_42 goto Beaten
+  say "This time we'll take over the Unova region! You! You're trembling already? From fear or from cold, either's good!"
+  battle 3 as "unova_team_plasma_grunt_42"
+  say "It's not over! The others will find the DNA Splicers! When they do, the Unova region is ours!"
+  setflag FLAG_UNOVA_DEFEATED_GRUNT_42
+  end
+label Beaten
+  say "Now that you mention it, I think I might have been ordered to comb the Pokémon Gym..."
+  end
+
+script Grunt43
+  face 4 player
+  speaker "Grunt"
+  if flag FLAG_UNOVA_DEFEATED_GRUNT_43 goto Beaten
+  say "Don't get in our way! You bother! Bother, bother, bother!"
+  battle 4 as "unova_team_plasma_grunt_43"
+  say "Zinzolin said to stick close to Drayden, because that's where we'll find anything important!"
+  setflag FLAG_UNOVA_DEFEATED_GRUNT_43
+  end
+label Beaten
+  say "How humiliating... being bothered by a bother..."
+  end
+
+script GruntTalk5
+  face 5 player
+  speaker "Grunt"
+  say "I think Zinzolin was going to check the Pokémon Gym... Oh, I lost. I didn't stand a chance! I can't believe a Haxorus blasted me all the way over here!"
+  end
+
+script GruntTalk6
+  face 6 player
+  speaker "Grunt"
+  say "I've been nursing a grudge for two years, old man. ...Even if this is the first time I've battled you! Hm? You're not him? That's all right. I'll keep my grudge."
+  end
+
+script GruntTalk7
+  face 7 player
+  speaker "Grunt"
+  say "Oh, that Drayden! Where did he hide the DNA Splicers? Somewhere familiar and common, right? That old guy won't hold back even if his opponent is a young girl."
+  end
+
+
+# Zinzolin at the Gym's door (his object, 1, stood there at VAR 4 and 5): his battle is Black 2's TRAINER_TEAM_PLASMA_ZINZOLIN_3
+script ZinzolinAtTheGym
+  if var VAR_UNOVA_OPELUCID != 4 return
+  face 1 player
+  speaker "Zinzolin"
+  scene "Zinzolin at the Gym"
+  say "Oh, for crying out loud... I didn't expect to have to fight, hampered by cold like this."
+  say "Well, no matter! The fact that you've come this far means the splicers must be inside!"
+  battle 1 as "unova_team_plasma_zinzolin_3"
+  say "You're a strong Trainer. You are adept at handling Pokémon. I believe I'll take my leave, simply because I'm a little tired."
+  fade out 0.3
+  hide 1
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  setflag FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  clearflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  place 0 405 149 up
+  show 0
+  fade in
+  setvar VAR_UNOVA_OPELUCID 5
+  call TheSplicers
+  endscene
+  end
+
+
+# Drayden shows the DNA Splicers and the Shadow Triad takes them (called once Zinzolin is beaten)
+script TheSplicers
+  speaker "Drayden"
+  face 0 player
+  say "You're even better than I hoped. Thanks to you, we drove them off. Your Pokémon deserve my thanks too."
+  heal
+  say "Wait here a moment. I'll be right back."
+  fade out 0.3
+  hide 0
+  wait 0.6
+  place 0 405 149 up
+  show 0
+  fade in
+  say "Harrumph... that's a new record for making it there and back."
+  say "Look, {player}. These are the DNA Splicers!"
+  effect sparkles 405 150 1.5 wait
+  say "This is what they were after! We're really fortunate Team Plasma didn't get their hands on them. I still don't know what their goal is, but it can't be good."
+  clearflag FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  clearflag FLAG_UNOVA_HIDE_TRIAD_EAST
+  place 8 404 151 up
+  place 9 406 151 up
+  place 10 405 152 up
+  show 8
+  show 9
+  show 10
+  camera shake 0.4
+  speaker "Shadow Triad"
+  say "As we suspected... the hiding place was in the Gym. Well thought out. If Drayden isn't there, we can't get in."
+  speaker "Drayden"
+  say "It's beyond my imagination to think you'd use one of the Seven Sages to find out where the splicers were!"
+  speaker "Shadow Triad"
+  say "Now you know, then. We will accomplish our goals, no matter what the cost."
+  say "We don't have the ability to captivate people. So we will simply take what we need."
+  effect burst 405 151 0.6 wait
+  fade out 0.2
+  hide 9
+  hide 10
+  setflag FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  place 8 442 175 left
+  fade in
+  speaker "Drayden"
+  say "If they've been stolen from us, we'll just have to take them back!"
+  say "They will go east, along the road to Route 11. Go after them, {player}! I'll follow as fast as I can!"
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  fade in
+  setvar VAR_UNOVA_OPELUCID 6
+  return
+
+
+# The Shadow Triad's member at the east end of the road (our trigger 440, 173 to 177; VAR 6): Black 2's TRAINER_TEAM_PLASMA_SHADOW_4
+script TriadAtTheEast
+  scene "The Shadow Triad's stand"
+  place 8 442 175 left
+  show 8
+  face player right
+  speaker "Shadow Triad"
+  say "Heh heh... You don't really think you can take the DNA Splicers back, do you?"
+  battle 8 as "unova_team_plasma_shadow_4"
+  say "Awww. How unlucky. I don't happen to be the one holding the DNA Splicers. I was just buying time for the others to get away."
+  fade out 0.3
+  hide 8
+  setflag FLAG_UNOVA_HIDE_TRIAD_EAST
+  place 0 439 175 right
+  clearflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  show 0
+  fade in
+  face 0 player
+  speaker "Drayden"
+  say "Oh no! No, no, it's not your fault, {player}. You were impressive! It's I who let everybody down."
+  text "The Xtransceiver is ringing."
+  text "{player} picked up the Xtransceiver."
+  fade out 0.3
+  fade in
+  say "Augh! If there were only two of me! Then I could protect the town and chase after them too!"
+  clearflag FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  place 19 446 175 left
+  show 19
+  walk 19 left 5
+  face 19 player
+  speaker "Cheren"
+  say "{player}. Drayden, glad to see you're safe as well."
+  speaker "Drayden"
+  say "Hello, Cheren. You have certainly grown. I hear you filled in for Lenora and became the Gym Leader in Aspertia City."
+  speaker "Cheren"
+  say "Thanks. We should save catching up for later. I have a good idea of where Team Plasma is hiding. The place with the lowest chance of anyone looking: a city on the sea."
+  say "The Frigate went south and east: it's making for Humilau City. {player}, I could use your help, if you're willing. You're a skilled Trainer who can go toe to toe with Team Plasma."
+  speaker "Drayden"
+  say "Very well. I'll do my part, and thank you. The chase I leave to you! But... don't do anything reckless."
+  walk 19 right 5
+  fade out 0.3
+  hide 19
+  setflag FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  fade in
+  say "Humilau City, huh... Is there anything to the north of Undella Town? {player}, protect the Pokémon from Team Plasma. Go with my blessing."
+  fade out 0.5
+  clearflag FLAG_UNOVA_OPELUCID_ICE
+  wait 0.4
+  fade in
+  say "Little by little, the ice is starting to melt. It's all thanks to you. As a fellow Trainer, I heartily thank you!"
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  fade in
+  setvar VAR_UNOVA_OPELUCID 7
+  endscene
+  end

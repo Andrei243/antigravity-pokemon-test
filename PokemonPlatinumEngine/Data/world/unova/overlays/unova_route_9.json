@@ -1,0 +1,52 @@
+{
+  // Route 9 (plan 22 · U8, part a): the road from Opelucid City west to the Shopping Mall and Tubeline Bridge, Black 2's: five trainers on its dusty track, a mall beside it, and its balls in the area file; our words. Its way west, to the bridge's gate (warp 0), is shut until plan 22 · U10
+  "area": "unova_route_9",
+  "bgmTrack": "unova/route12",
+  "locked": [
+    0
+  ],
+  "people": {
+    "0": {
+      "name": "Chance",
+      "trainer": {
+        "dialogueBefore": "I've been sitting here waiting for someone who'll fight me. You'll do!",
+        "dialogueAfter": "Waiting wasn't so bad. Losing is worse."
+      }
+    },
+    "1": {
+      "name": "Zeke",
+      "trainer": {
+        "dialogueBefore": "Vroom! Vroom! I ride up and down this road all day, looking for a fight!",
+        "dialogueAfter": "My engine's gone cold."
+      }
+    },
+    "2": {
+      "name": "Phillip",
+      "trainer": {
+        "dialogueBefore": "Out of my way! ...Unless you've got the skill to make me!",
+        "dialogueAfter": "You've got the skill, apparently."
+      }
+    },
+    "3": {
+      "name": "Reese",
+      "trainer": {
+        "dialogueBefore": "I look both ways before I fight. And I don't see anyone stronger than me!",
+        "dialogueAfter": "I should've looked up."
+      }
+    },
+    "4": {
+      "name": "Jim",
+      "trainer": {
+        "dialogueBefore": "We're a pair, my buddy and I. We don't lose!",
+        "dialogueAfter": "We lost. Don't tell anyone."
+      }
+    },
+    "5": {
+      "name": "Cas",
+      "trainer": {
+        "dialogueBefore": "Two of us, one of you. Those are good odds!",
+        "dialogueAfter": "The odds were against us after all."
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# Drayden's house, upstairs (plan 22 · U8, part a). docs/scripts.md describes the language; the lines are our own. The woman (1) gives
+# a Ring Target once to whoever will try to work it out, as Black 2's does (FLAG_UNOVA_GOT_RING_TARGET).
+
+
+script OnEnter
+  call UnovaCatchUpC
+  end
+
+
+script RingTarget
+  face 1 player
+  speaker "Woman"
+  if flag FLAG_UNOVA_GOT_RING_TARGET goto Got
+  say "I have an item I don't know how to use. Would you give it a try and see if you can make it work?"
+  say "You may be able to master it. Here it is!"
+  give "Ring Target"
+  setflag FLAG_UNOVA_GOT_RING_TARGET
+  say "If a Pokémon holds a Ring Target, it can be hit even by a move that would usually have no effect on it."
+  end
+label Got
+  say "If a Pokémon holds a Ring Target, it can be hit even by a move that would usually have no effect on it. For example, a Normal-type move can hit a Ghost-type Pokémon."
+  end

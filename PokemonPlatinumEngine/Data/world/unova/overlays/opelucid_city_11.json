@@ -1,0 +1,29 @@
+{
+  // The upstairs of the old couple's house (plan 22 · U8, part a): three who talk, our words
+  "area": "opelucid_city_11",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "lass",
+      "dialog": [
+        "I wonder if the Elite Four in the Pokémon League like Pokémon more than anyone else does. If you don't like Pokémon, you'll never get that far."
+      ]
+    },
+    "1": {
+      "name": "Fraxure",
+      "npcType": "Pokemon",
+      "species": "Fraxure",
+      "dialog": [
+        "Fraxure: Raaah!"
+      ]
+    },
+    "2": {
+      "name": "Veteran",
+      "npcType": "veteran",
+      "dialog": [
+        "You need eight Gym Badges to take on the pinnacle of Pokémon, the Pokémon League!"
+      ]
+    }
+  }
+}

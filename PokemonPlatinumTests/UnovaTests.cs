@@ -566,7 +566,7 @@ public class UnovaTests
                 // and Driftveil's since part b, the gates at the drawbridge's foot and toward the tournament with them
                 || m.Name.StartsWith("c5_", StringComparison.Ordinal) || m.Name is "rgate" or "wbtgate"
                 // and Anville's and Route 16's gate since part c
-                || m.Name is "tt_house01" or "h5_gate" or "h6_gate"
+                || m.Name is "tt_house01" or "h5_gate" or "h6_gate" or "h3_gate"
                 // and Mistralton's, Route 7's tower and Route 6's lab since plan 22 · U7
                 || m.Name.StartsWith("c6_", StringComparison.Ordinal) || m.Name is "c06_gym" or "r7_toh" or "sikiken" or "t7_house")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");

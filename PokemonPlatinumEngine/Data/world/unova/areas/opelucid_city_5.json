@@ -1,0 +1,30 @@
+{
+  "key": "opelucid_city_5",
+  "index": 126,
+  "name": "Opelucid City",
+  "matrix": 161,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_08_B",
+  "nightMusic": "BGM_C_08_B",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 4, "to": "opelucid_city_4", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "8", "movement": "none", "x": 9, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "twins", "movement": "none", "x": 12, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "2", "looks": "8", "movement": "none", "x": 9, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "3", "looks": "twins", "movement": "none", "x": 6, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "4", "looks": "pkmn_breeder_m", "movement": "none", "x": 11, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "5", "looks": "317", "movement": "none", "x": 12, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "6" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,29 @@
+{
+  // The Opelucid Gym (plan 22 · U8, part a): Black 2's dragon tower, rebuilt here as five platforms the overlay's exits join (the corridor
+  // to the first, then to the third, the fourth and fifth, and the last back to the first), our words. The guide (0) gives Fresh Water
+  // at the door; five veterans (1 to 5) stand on the platforms, standing where we put them (Black 2's stand over the void between
+  // platforms), and Drayden (6) in the strip at the top for the Legend Badge and TM82 (opelucid_city_gym.txt)
+  "area": "opelucid_city_gym",
+  "bgmTrack": "unova/gym",
+  "arenaType": "Dragon",
+  "exits": [
+    { "x": 15, "z": 46, "map": "OpelucidCity_Gym", "toX": 15, "toY": 29, "facing": "Up" },
+    { "x": 14, "z": 26, "map": "OpelucidCity_Gym", "toX": 11, "toY": 20, "facing": "Up" },
+    { "x": 16, "z": 30, "map": "OpelucidCity_Gym", "toX": 17, "toY": 46, "facing": "Right" },
+    { "x": 11, "z": 17, "map": "OpelucidCity_Gym", "toX": 4, "toY": 17, "facing": "Up" },
+    { "x": 4, "z": 13, "map": "OpelucidCity_Gym", "toX": 18, "toY": 17, "facing": "Up" },
+    { "x": 18, "z": 13, "map": "OpelucidCity_Gym", "toX": 15, "toY": 28, "facing": "Up" }
+  ],
+  "people": {
+    "0": { "name": "Guide", "npcType": "gym_guide", "script": "GymGuide", "still": true },
+    "1": { "name": "Ron", "npcType": "veteran", "script": "Veteran1", "still": true, "at": [ 16, 28 ] },
+    "2": { "name": "Denae", "npcType": "veteran", "script": "Veteran2", "still": true, "at": [ 4, 16 ] },
+    "3": { "name": "Rhona", "npcType": "veteran", "script": "Veteran3", "still": true, "at": [ 18, 16 ] },
+    "4": { "name": "Jerry", "npcType": "veteran", "script": "Veteran4", "still": true, "at": [ 14, 28 ] },
+    "5": { "name": "Lucius", "npcType": "veteran", "script": "Veteran5", "still": true, "at": [ 12, 21 ] },
+    "6": { "name": "Drayden", "npcType": "dragon_elder", "script": "Drayden", "hiddenBy": "", "still": true, "at": [ 15, 22 ] }
+  },
+  "signs": {
+    "14": "Opelucid Pokémon Gym\nLeader: Drayden\nCertified Trainers: {player}"
+  }
+}

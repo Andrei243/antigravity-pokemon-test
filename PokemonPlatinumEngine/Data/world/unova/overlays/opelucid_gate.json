@@ -1,0 +1,21 @@
+{
+  // The gate house between Route 9 and Opelucid City (plan 22 · U8, part a): two who talk, our words
+  "area": "opelucid_gate",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Gate Guard",
+      "npcType": "worker",
+      "dialog": [
+        "Welcome to Opelucid City, where people value history! ...Or is it where people like change? I hear both, and I say both are true."
+      ]
+    },
+    "1": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "Munch, munch... I'm happy when I'm eating. Munch... but when I don't get food I get angry. Hungry and angry are almost the same word, you know."
+      ]
+    }
+  }
+}

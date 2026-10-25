@@ -474,6 +474,63 @@
       "Sweet Heart",
       "Lava Cookie",
       "Old Gateau"
+    ],
+    "mall_medicine": [
+      "Potion",
+      "Super Potion",
+      "Hyper Potion",
+      "Max Potion",
+      "Revive",
+      "Antidote",
+      "Paralyze Heal",
+      "Burn Heal",
+      "Ice Heal",
+      "Awakening",
+      "Full Heal"
+    ],
+    "mall_balls": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Repeat Ball",
+      "Timer Ball",
+      "Net Ball",
+      "Nest Ball",
+      "Dive Ball",
+      "Quick Ball",
+      "Luxury Ball"
+    ],
+    "mall_vitamins": [
+      "HP Up",
+      "Protein",
+      "Iron",
+      "Carbos",
+      "Calcium",
+      "Zinc"
+    ],
+    "mall_battle": [
+      "X Attack",
+      "X Defense",
+      "X Speed",
+      "X Accuracy",
+      "X Sp. Atk",
+      "X Sp. Def",
+      "Guard Spec.",
+      "Dire Hit"
+    ],
+    "mall_machines": [
+      "TM70",
+      "TM17",
+      "TM54",
+      "TM83",
+      "TM16",
+      "TM33",
+      "TM22",
+      "TM52",
+      "TM38",
+      "TM25",
+      "TM14",
+      "TM15"
     ]
   }
 }

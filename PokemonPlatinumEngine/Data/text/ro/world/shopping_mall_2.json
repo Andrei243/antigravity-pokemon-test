@@ -1,0 +1,23 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Janitor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This mountain of cardboard boxes... they're all full of old appliances we can't sell. They're just going to waste."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

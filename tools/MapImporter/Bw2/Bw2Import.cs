@@ -108,6 +108,7 @@ public static class Bw2Import
         }
         var maps = world.Maps;
         var wanted = new SortedDictionary<int, string>();
+        var ice = new SortedDictionary<int, string>();
         foreach (var (constant, (id, matrix)) in maps.Matrices)
         {
             if (id < 0) continue;
@@ -126,6 +127,12 @@ public static class Bw2Import
                     string folder = Bw2Matrix.Folder(model);
                     int chunk = world.ChunkId(folder);
                     if (inView && chunk >= 0) wanted[chunk] = folder;
+                    // A frozen place's chunks have an ice twin (plan 22 · U8); the cells are printed for world.json's swaps
+                    if (inView && chunk >= 0 && matrix.ZoneAt(cx, cy) is { } iz && Bw2World.IceZones.Contains(Bw2World.KeyOf(iz)))
+                    {
+                        ice[chunk + Bw2World.IceOffset] = folder;
+                        Console.WriteLine($"  ice cell {{ \"chunkX\": {cx}, \"chunkY\": {cy}, \"chunk\": {chunk + Bw2World.IceOffset} }}");
+                    }
                     // The chunks another season lays there are in view with it (plan 22 · U2, part b)
                     if (inView)
                         foreach (var s in seasonal.Where(s => s.X == cx && s.Y == cy))
@@ -136,6 +143,7 @@ public static class Bw2Import
                 if (open.Contains(Bw2World.KeyOf(zone.Constant))) Write("areas", Bw2World.KeyOf(zone.Constant), world.Area(zone));
         }
         foreach (var (chunk, folder) in wanted) Write("chunks", chunk.ToString("000", CultureInfo.InvariantCulture), world.Chunk(folder));
+        foreach (var (chunk, folder) in ice) Write("chunks", chunk.ToString("000", CultureInfo.InvariantCulture), world.IceChunk(folder));
         Write("", "trainers", world.Trainers);
         Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), world.Habitats());
         return files;

@@ -1,0 +1,132 @@
+{
+  "MedicineCounter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the first floor's medicine counter! Everything for a Pokémon that's had a hard day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BallCounter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Poké Balls of every kind, for every kind of catch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Happy catching!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VitaminCounter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Vitamins and wings and feathers: everything to make a Pokémon a little bit better than it was."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take care of them!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BattleCounter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! Battle items for the Trainer who plans ahead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win one for me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MachineCounter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the top floor! TMs, in a mall of their own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A TM is a lesson in a case. Choose a good teacher!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

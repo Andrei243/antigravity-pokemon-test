@@ -68,6 +68,20 @@ partial class Harness
             ("u127_route13_north_day", "u128_route13_north_night", "Unova", 690, 190, Direction.Up),
             ("u129_lacunosa_square_day", "u130_lacunosa_square_night", "Unova", 654, 174, Direction.Up),
             ("u131_reversal_great_cave_day", "u132_reversal_great_cave_night", "ReversalMountain_3", 20, 8, Direction.Right),
+            // Plan 22 · U8, part a: Route 12 at both ends, the Village Bridge at its west gate, its middle and its east gate, Route 11 at both
+            // ends, Opelucid City's east street, square and gym lane, Route 9 and the mall's front
+            ("u133_route12_west_day", "u134_route12_west_night", "Unova", 592, 175, Direction.Right),
+            ("u135_route12_east_day", "u136_route12_east_night", "Unova", 620, 172, Direction.Left),
+            ("u137_village_bridge_west_day", "u138_village_bridge_west_night", "VillageBridge", 8, 33, Direction.Right),
+            ("u139_village_bridge_middle_day", "u140_village_bridge_middle_night", "VillageBridge", 47, 38, Direction.Up),
+            ("u141_village_bridge_east_day", "u142_village_bridge_east_night", "VillageBridge", 88, 33, Direction.Left),
+            ("u143_route11_west_day", "u144_route11_west_night", "Unova", 460, 175, Direction.Right),
+            ("u145_route11_east_day", "u146_route11_east_night", "Unova", 490, 175, Direction.Left),
+            ("u147_opelucid_east_street_day", "u148_opelucid_east_street_night", "Unova", 440, 175, Direction.Left),
+            ("u149_opelucid_square_day", "u150_opelucid_square_night", "Unova", 418, 168, Direction.Up),
+            ("u151_opelucid_gym_lane_day", "u152_opelucid_gym_lane_night", "Unova", 405, 150, Direction.Up),
+            ("u153_route9_day", "u154_route9_night", "Unova", 345, 175, Direction.Right),
+            ("u155_mall_front_day", "u156_mall_front_night", "Unova", 357, 168, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -153,6 +167,23 @@ partial class Harness
             ("u112_lacunosa_center", "LacunosaTown_PokemonCenter", 7, 18, Direction.Up),
             ("u113_storyteller_house", "LacunosaTown_House2", 6, 8, Direction.Up),
             ("u114_lacunosa_shop", "LacunosaTown_House4", 6, 8, Direction.Up),
+            // plan 22 · U8, part a: the gate houses of the bridge and Opelucid, the Dragon Gym's door, platforms and strip, Drayden's house, the
+            // houses, the Pokémon Center and the mall's two floors
+            ("u157_bridge_gate", "VillageBridgeGate_East", 5, 8, Direction.Up),
+            ("u158_opelucid_gate", "OpelucidGate_West", 8, 6, Direction.Up),
+            ("u159_route11_hut", "Route11_Hut", 5, 6, Direction.Up),
+            ("u160_gym_door", "OpelucidCity_Gym", 23, 52, Direction.Up),
+            ("u161_gym_first_platform", "OpelucidCity_Gym", 15, 29, Direction.Up),
+            ("u162_gym_strip", "OpelucidCity_Gym", 15, 24, Direction.Up),
+            ("u163_gym_high_platform", "OpelucidCity_Gym", 4, 17, Direction.Right),
+            ("u164_draydens_house", "OpelucidCity_DraydensHouse_1F", 9, 12, Direction.Up),
+            ("u165_draydens_house_upstairs", "OpelucidCity_DraydensHouse_2F", 9, 6, Direction.Down),
+            ("u166_triple_house", "OpelucidCity_TripleHouse_1F", 9, 12, Direction.Up),
+            ("u167_trade_house_upstairs", "OpelucidCity_TradeHouse_2F", 9, 6, Direction.Down),
+            ("u168_opelucid_center", "OpelucidCity_PokemonCenter", 7, 18, Direction.Up),
+            ("u169_mall_ground", "ShoppingMallNine_1F", 15, 26, Direction.Up),
+            ("u170_mall_upper", "ShoppingMallNine_1F", 14, 8, Direction.Up),
+            ("u171_mall_back_room", "ShoppingMallNine_2F", 6, 6, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

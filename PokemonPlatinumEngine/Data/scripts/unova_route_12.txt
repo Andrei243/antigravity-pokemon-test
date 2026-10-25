@@ -1,0 +1,7 @@
+# Route 12 (plan 22 · U8, part a): the road from Lacunosa Town to the Village Bridge. Its arrival gives a save from before the
+# chapter the people of it hidden (UnovaCatchUpC); the rest of the road is its trainers' and its balls'.
+
+
+script OnEnter
+  call UnovaCatchUpC
+  end

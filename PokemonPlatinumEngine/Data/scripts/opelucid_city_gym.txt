@@ -1,0 +1,135 @@
+# The Opelucid Gym (plan 22 · U8, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/opelucid_city_gym.s, read for the order alone).
+#
+# Black 2's Dragon Gym is a tower of platforms the challenger is carried between by the dragon statues' heads; ours is five platforms
+# joined by the overlay's exits (the entrance hall's corridor leads to the first, the next to the third and so on, the last back to
+# the first). Five veterans (1 to 5; Black 2 gives each a single, a triple or a rotation battle and asks for three healthy Pokémon: the
+# triples and rotations are fought as singles until plan 14 · B6 and B7) stand on the platforms, and Drayden (6) in the strip at the
+# top. His battle (Black 2's TRAINER_LEADER_DRAYDEN; _2 is the Challenge Mode's, plan 13's) gives the Legend Badge, the region's
+# seventh (`givebadge legend`), and TM82 (FLAG_UNOVA_GOT_TM82), which our data's table, Platinum's, fills with its own move; then he
+# asks the player to his house (VAR_UNOVA_OPELUCID 2).
+
+
+script OnEnter
+  call UnovaCatchUpC
+  end
+
+
+script GymGuide
+  face 0 player
+  speaker "Guide"
+  if not flag FLAG_UNOVA_GOT_WATER_OPELUCID goto Water
+  if badge legend goto Won
+  say "The Trainers up on the platforms hold the Dragon types in their hands. Take the corridor and let the statues' heads carry you up."
+  say "Dragon Pokémon fear Ice, Dragon and Fairy moves above all."
+  end
+label Water
+  say "Welcome to the Opelucid City Pokémon Gym! Here, have some Fresh Water. Stay hydrated!"
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_OPELUCID
+  say "Did you see the dragon statues? This is the only Gym in Unova with statues this size! Climb up and you'll see why Drayden loves it."
+  end
+label Won
+  say "You defeated the Gym Leader! Congratulations! The two dragon statues side by side looked just like the old legend, didn't they?"
+  end
+
+
+# The five veterans: each says what they stand for, battles once, and says a last word afterwards
+script Veteran1
+  face 1 player
+  speaker "Ron"
+  if flag FLAG_UNOVA_DEFEATED_VETERAN_RON goto Beaten
+  say "Always aim for the top, like a dragon taking flight! Trainers far stronger than I wait for you above."
+  battle 1 as "unova_veteran_ron"
+  setflag FLAG_UNOVA_DEFEATED_VETERAN_RON
+  say "You're strong enough to challenge Mayor Drayden. You have the power to unleash the full force of your deep desire to win!"
+  end
+label Beaten
+  say "Always aim for the top, like a dragon taking flight!"
+  end
+
+script Veteran2
+  face 2 player
+  speaker "Denae"
+  if flag FLAG_UNOVA_DEFEATED_VETERAN_DENAE goto Beaten
+  say "Defense is everything! The Trainers above me have different ways of fighting; some fight only in threes, and some only in rotation."
+  battle 2 as "unova_veteran_denae"
+  setflag FLAG_UNOVA_DEFEATED_VETERAN_DENAE
+  say "A battle between you and Mayor Drayden must be stirring! You must desire victory more than anything. Now, go!"
+  end
+label Beaten
+  say "Defense is everything! ...And you got past mine."
+  end
+
+script Veteran3
+  face 3 player
+  speaker "Rhona"
+  if flag FLAG_UNOVA_DEFEATED_VETERAN_RHONA goto Beaten
+  say "Offense is everything! As for the Trainers above me, bring three healthy Pokémon if you mean to face them."
+  battle 3 as "unova_veteran_rhona"
+  setflag FLAG_UNOVA_DEFEATED_VETERAN_RHONA
+  say "A battle between you and Mayor Drayden must be stirring! Now, go!"
+  end
+label Beaten
+  say "Offense is everything, and yours was more than mine."
+  end
+
+script Veteran4
+  face 4 player
+  speaker "Jerry"
+  if flag FLAG_UNOVA_DEFEATED_VETERAN_JERRY goto Beaten
+  say "If you want to battle me, bring three or more healthy Pokémon with you! In a triple battle, three Pokémon fight side by side and their power adds up."
+  battle 4 as "unova_veteran_jerry"
+  setflag FLAG_UNOVA_DEFEATED_VETERAN_JERRY
+  say "Three at once! A combination that raises three Pokémon's destructive power. And still you won."
+  end
+label Beaten
+  say "Triple battles are a combination that raises three Pokémon's destructive power!"
+  end
+
+script Veteran5
+  face 5 player
+  speaker "Lucius"
+  if flag FLAG_UNOVA_DEFEATED_VETERAN_LUCIUS goto Beaten
+  say "If you plan on battling with me, bring three or more healthy Pokémon with you! In a rotation battle, how the three Pokémon follow one another is the key."
+  battle 5 as "unova_veteran_lucius"
+  setflag FLAG_UNOVA_DEFEATED_VETERAN_LUCIUS
+  say "You must desire victory more than anything. Go on, face the mayor!"
+  end
+label Beaten
+  say "In a rotation battle, how the three Pokémon follow one another is the key."
+  end
+
+
+script Drayden
+  face 6 player
+  speaker "Drayden"
+  if badge legend goto Won
+  scene "Drayden's battle"
+  say "Welcome. Thank you for coming. I am Drayden, the Gym Leader of Opelucid City."
+  say "As its mayor, I have given everything to developing this city. And as a Trainer, I have never stopped training."
+  say "Now! Show me what you have. Show me the full force of your bond with your Pokémon!"
+  battle 6 as "unova_leader_drayden"
+  say "Wonderful. I'm grateful that we had a chance to meet and battle. It reminded me that Pokémon battles are about working with others, whether Pokémon or people."
+  say "Here, take this. It is the Legend Badge, proof that you have beaten me."
+  givebadge legend
+  text "{player} received the Legend Badge from Drayden!"
+  say "Well, now. You have obtained seven of Unova's Gym Badges. Take this too, so that you remember how a dragon fights."
+  give "TM82"
+  setflag FLAG_UNOVA_GOT_TM82
+  say "A move should be understood before it is used, and used only when it is needed. That is the whole of a dragon's wisdom."
+  say "Professor Juniper asked me to tell you about the legendary Dragon-type Pokémon that created Unova. Please come to my house, the building on the street below, and I will tell you the story."
+  if var VAR_UNOVA_OPELUCID < 2 setvar VAR_UNOVA_OPELUCID 2
+  setflag FLAG_UNOVA_DRAYDEN_AT_HOME
+  endscene
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM82 goto Tm
+  say "It is not the passage of time that causes Pokémon and people to age."
+  say "When the energy that flows in their hearts dries up, that is when they grow old. Remember it."
+  end
+label Tm
+  say "You forgot your TM, I see. Here it is."
+  give "TM82"
+  setflag FLAG_UNOVA_GOT_TM82
+  end
