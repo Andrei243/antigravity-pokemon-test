@@ -6,7 +6,7 @@ world 0, story 0, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv5 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, Absorb 25/25, id 00000000#0
 bag: Potion x5, Poké Ball x10, Revive x2
-upgrade from story 0: 362 changes
+upgrade from story 0: 373 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -145,6 +145,7 @@ upgrade from story 0: 362 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
   + FLAG_HIDE_POSTGAME_GOSSIPERS
@@ -312,6 +313,7 @@ upgrade from story 0: 362 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_RECEIVED_PARCEL
@@ -322,16 +324,24 @@ upgrade from story 0: 362 changes
   + FLAG_UNK_1CE
   + FLAG_UNK_1D2
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -344,6 +354,7 @@ upgrade from story 0: 362 changes
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
@@ -377,7 +388,7 @@ wakes on Sinnoh 112,858 facing Down, OnFoot
   team #1: Starly Lv6 "Starly" Female Hardy, Keen Eye, holds nothing, HP 22/22, Tackle 35/35, Growl 40/40, id 00000000#1
   PC #0: Bidoof Lv4 "Bidoof" Male Hardy, Simple, holds nothing, HP 19/19, Tackle 35/35, Growl 40/40, id 00000000#2
 bag: Potion x3, Poké Ball x5
-upgrade from story 1: 328 changes
+upgrade from story 1: 330 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -516,6 +527,7 @@ upgrade from story 1: 328 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
   + FLAG_HIDE_POSTGAME_GOSSIPERS
@@ -683,6 +695,7 @@ upgrade from story 1: 328 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_RECEIVED_PARCEL
@@ -713,7 +726,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Piplup Lv10 "Piplup" Male Modest, Torrent, holds nothing, HP 32/32, Pound 35/35, Growl 40/40, Bubble 30/30, id 0000a186#0
   team #1: Starly Lv7 "Starly" Male Hardy, Keen Eye, holds nothing, HP 24/24, Tackle 35/35, Growl 40/40, id 0000a186#1
 bag: Potion x3, Poké Ball x5
-upgrade from story 2: 292 changes
+upgrade from story 2: 294 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -845,6 +858,7 @@ upgrade from story 2: 292 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
   + FLAG_HIDE_POSTGAME_GOSSIPERS
@@ -997,6 +1011,7 @@ upgrade from story 2: 292 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -1012,7 +1027,7 @@ world 1, story 3, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on OreburghPokemonCenter 8,12 facing Up, OnFoot
   team #0: Monferno Lv14 "Monferno" Male Adamant, Blaze, holds nothing, HP 44/44, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 0000a186#0
 bag: Potion x3, Poké Ball x5
-upgrade from story 3: 284 changes
+upgrade from story 3: 286 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -1137,6 +1152,7 @@ upgrade from story 3: 284 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -1288,6 +1304,7 @@ upgrade from story 3: 284 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -1304,7 +1321,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Turtwig Lv16 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 46/46, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 4: 273 changes
+upgrade from story 4: 275 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -1422,6 +1439,7 @@ upgrade from story 4: 273 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -1568,6 +1586,7 @@ upgrade from story 4: 273 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_RECEIVED_HM06
@@ -1586,7 +1605,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #1: Monferno Lv16 "Monferno" Male Hardy, Blaze, holds nothing, HP 49/49, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 00000000#1
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 0: 363 changes
+upgrade from story 0: 374 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -1725,6 +1744,7 @@ upgrade from story 0: 363 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POKETCH_CO_1F_POKETCH_CO_PRESIDENT
   + FLAG_HIDE_POSTGAME_GOSSIPERS
@@ -1892,6 +1912,7 @@ upgrade from story 0: 363 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_RECEIVED_HM06
@@ -1903,16 +1924,24 @@ upgrade from story 0: 363 changes
   + FLAG_UNK_1CE
   + FLAG_UNK_1D2
   + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -1925,6 +1954,7 @@ upgrade from story 0: 363 changes
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_RANCH_GRUNT
   + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
@@ -1957,7 +1987,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Torterra Lv34 "Torterra" Male Hardy, Overgrow, holds nothing, HP 115/115, Razor Leaf 25/25, Bite 25/25, Earthquake 10/10, Crunch 15/15, id 0000a186#0
 bag: Hyper Potion x2, HM06 x1, Vs. Seeker x1
 bag after: Hyper Potion x2, HM06 x1, Vs. Seeker x1, Old Charm x1
-upgrade from story 10: 242 changes
+upgrade from story 10: 244 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -2067,6 +2097,7 @@ upgrade from story 10: 242 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -2191,6 +2222,7 @@ upgrade from story 10: 242 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -2206,7 +2238,7 @@ world 2, story 11, Platinum rules, Boy Lucas, rival Barry, $3000, badges 111111
 wakes on HearthomePokemonCenter 8,12 facing Up, OnFoot
   team #0: Infernape Lv40 "Infernape" Male Jolly, Blaze, holds nothing, HP 118/119, Flamethrower 15/15, Close Combat 5/5, Mach Punch 30/30, Shadow Claw 15/15, id 0000a186#0
 bag: Hyper Potion x2, HM06 x1
-upgrade from story 11: 232 changes
+upgrade from story 11: 234 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   + FLAG_HIDE_AZALEA_GYM_BUGSY
@@ -2308,6 +2340,7 @@ upgrade from story 11: 232 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -2430,6 +2463,7 @@ upgrade from story 11: 232 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -2445,7 +2479,7 @@ world 2, story 12, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Empoleon Lv44 "Empoleon" Male Modest, Torrent, holds nothing, HP 136/137, Surf 15/15, Metal Claw 35/35, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 12: 221 changes
+upgrade from story 12: 223 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   + FLAG_HIDE_AZALEA_GYM_BUGSY
@@ -2539,6 +2573,7 @@ upgrade from story 12: 221 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -2659,6 +2694,7 @@ upgrade from story 12: 221 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -2673,7 +2709,7 @@ world 2, story 13, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on LakeVerity 46,53 facing Up, OnFoot
   team #0: Empoleon Lv46 "Empoleon" Male Modest, Torrent, holds nothing, HP 142/142, Surf 15/15, Metal Claw 35/35, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 13: 215 changes
+upgrade from story 13: 217 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -2765,6 +2801,7 @@ upgrade from story 13: 215 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -2882,6 +2919,7 @@ upgrade from story 13: 215 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -2897,7 +2935,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #1: Torterra Lv55 "Torterra" Male Hardy, Overgrow, holds nothing, HP 180/181, Wood Hammer 15/15, Earthquake 10/10, Crunch 15/15, Leaf Storm 5/5, id 0000a186#1
   box 1 #0: Bidoof Lv20 "Bidoof" Male Hardy, Simple, holds nothing, HP 57/57, Tackle 35/35, Headbutt 15/15, id 0000a186#2
 bag: Max Potion x3, HM06 x1
-upgrade from story 14: 222 changes
+upgrade from story 14: 224 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -2986,6 +3024,7 @@ upgrade from story 14: 222 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -3107,6 +3146,7 @@ upgrade from story 14: 222 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -3127,7 +3167,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Infernape Lv50 "Infernape" Male Hardy, Blaze, holds nothing, HP 146/146, Flamethrower 15/15, Close Combat 5/5, Mach Punch 30/30, Shadow Claw 15/15, id 0000a186#0
   team #1: Azelf Lv50 "Azelf" Genderless Hardy, Levitate, holds nothing, HP 145/145, Confusion 25/25, Uproar 10/10, Future Sight 15/15, Nasty Plot 20/20, id 0000a186#1
 bag: Max Potion x1, HM06 x1
-upgrade from story 15: 210 changes
+upgrade from story 15: 212 changes
   + FLAG_CAUGHT_AZELF
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -3212,6 +3252,7 @@ upgrade from story 15: 210 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -3328,6 +3369,7 @@ upgrade from story 15: 210 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -3344,7 +3386,7 @@ world 2, story 16, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on PokemonCenter 8,12 facing Up, OnFoot
   team #0: Empoleon Lv60 "Empoleon" Male Modest, Torrent, holds nothing, HP 182/183, Surf 15/15, Flash Cannon 10/10, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 16: 204 changes
+upgrade from story 16: 206 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -3427,6 +3469,7 @@ upgrade from story 16: 204 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -3539,6 +3582,7 @@ upgrade from story 16: 204 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -3556,7 +3600,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Torterra Lv62 "Torterra" Male Hardy, Overgrow, holds nothing, HP 202/202, Wood Hammer 15/15, Earthquake 10/10, Crunch 15/15, Leaf Storm 5/5, id 0000a186#0
   team #1: Staraptor Lv60 "Staraptor" Male Hardy, Intimidate, holds nothing, HP 184/184, Brave Bird 15/15, Close Combat 5/5, Wing Attack 35/35, Quick Attack 30/30, id 0000a186#1
 bag: Max Potion x1, HM06 x1
-upgrade from story 17: 207 changes
+upgrade from story 17: 209 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -3643,6 +3687,7 @@ upgrade from story 17: 207 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
   + FLAG_HIDE_ROUTE_101_BIRCH
@@ -3755,6 +3800,7 @@ upgrade from story 17: 207 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -3770,7 +3816,7 @@ world 2, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10111
 wakes on SolaceonPokemonCenter 8,12 facing Up, OnFoot
   team #0: Grotle Lv32 "Grotle" Male Hardy, Overgrow, holds nothing, HP 96/96, Razor Leaf 25/25, Bite 25/25, Mega Drain 15/15, Curse 10/10, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -3849,6 +3895,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -3947,6 +3994,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -3960,7 +4008,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv18 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 51/51, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
   team #1: Bidoof Lv15 "Bidoof" Male Hardy, Simple, holds nothing, HP 45/45, Tackle 35/35, Headbutt 15/15, Rollout 20/20, id 0000a186#1
 bag: Potion x3, HM06 x1
-upgrade from story 5: 271 changes
+upgrade from story 5: 273 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -4078,6 +4126,7 @@ upgrade from story 5: 271 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -4224,6 +4273,7 @@ upgrade from story 5: 271 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -4238,7 +4288,7 @@ world 2, story 6, Platinum rules, Boy Lucas, rival Barry, $3000, badges 11
 wakes on JubilifePokemonCenter 8,12 facing Up, OnFoot
   team #0: Turtwig Lv22 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 60/60, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, HM06 x1
-upgrade from story 6: 270 changes
+upgrade from story 6: 272 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -4356,6 +4406,7 @@ upgrade from story 6: 270 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -4502,6 +4553,7 @@ upgrade from story 6: 270 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -4515,7 +4567,7 @@ world 2, story 7, Platinum rules, Boy Lucas, rival Barry, $3000, badges 11
 wakes on LakeVerity 46,53 facing Up, OnFoot
   team #0: Turtwig Lv24 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 65/65, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, HM06 x1
-upgrade from story 7: 258 changes
+upgrade from story 7: 260 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -4633,6 +4685,7 @@ upgrade from story 7: 258 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -4767,6 +4820,7 @@ upgrade from story 7: 258 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -4780,7 +4834,7 @@ world 2, story 8, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10011
 wakes on PokeMart 3,11 facing Up, OnFoot
   team #0: Grotle Lv27 "Grotle" Male Hardy, Overgrow, holds nothing, HP 82/83, Tackle 35/35, Withdraw 40/40, Razor Leaf 25/25, Bite 25/25, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 8: 260 changes
+upgrade from story 8: 262 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -4900,6 +4954,7 @@ upgrade from story 8: 260 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -5034,6 +5089,7 @@ upgrade from story 8: 260 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -5047,7 +5103,7 @@ world 2, story 9, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10111
 wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Grotle Lv30 "Grotle" Male Hardy, Overgrow, holds nothing, HP 91/91, Tackle 35/35, Withdraw 40/40, Razor Leaf 25/25, Bite 25/25, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 9: 254 changes
+upgrade from story 9: 256 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
@@ -5161,6 +5217,7 @@ upgrade from story 9: 254 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POKEMON_LEAGUE_NORTH_POKECENTER_1F_RIVAL
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROTOMS_ROOM_PROF_ROWAN
@@ -5294,6 +5351,7 @@ upgrade from story 9: 254 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
   + FLAG_UNK_19F
@@ -5308,7 +5366,7 @@ world 3, story 18, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 20/20, Tackle 35/35, Withdraw 40/40, id 62c40b9e#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -5387,6 +5445,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -5485,6 +5544,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -5496,7 +5556,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 3, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -5575,6 +5635,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -5673,6 +5734,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -5686,7 +5748,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -5765,6 +5827,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -5863,6 +5926,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -5875,7 +5939,7 @@ world 3, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -5954,6 +6018,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6052,6 +6117,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -6065,7 +6131,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -6144,6 +6210,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6242,6 +6309,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -6255,7 +6323,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -6334,6 +6402,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6432,6 +6501,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -6444,7 +6514,7 @@ world 3, story 18, Platinum rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -6523,6 +6593,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6621,6 +6692,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -6633,7 +6705,7 @@ world 4, story 18, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 20/20, Tackle 35/35, Withdraw 40/40, id 62c40b9e#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -6712,6 +6784,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6810,6 +6883,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -6821,7 +6895,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 4, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -6900,6 +6974,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -6998,6 +7073,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7011,7 +7087,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -7090,6 +7166,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -7188,6 +7265,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7200,7 +7278,7 @@ world 4, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -7279,6 +7357,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -7377,6 +7456,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7390,7 +7470,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -7469,6 +7549,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -7567,6 +7648,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7580,7 +7662,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -7659,6 +7741,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -7757,6 +7840,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7769,7 +7853,7 @@ world 4, story 18, Platinum rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 182 changes
+upgrade from story 18: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -7848,6 +7932,7 @@ upgrade from story 18: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -7946,6 +8031,7 @@ upgrade from story 18: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -7958,7 +8044,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8037,6 +8123,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8135,6 +8222,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -8146,7 +8234,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8225,6 +8313,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8323,6 +8412,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -8336,7 +8426,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8415,6 +8505,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8513,6 +8604,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -8525,7 +8617,7 @@ world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8604,6 +8696,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8702,6 +8795,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -8715,7 +8809,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8794,6 +8888,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8892,6 +8987,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -8905,7 +9001,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -8984,6 +9080,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -9082,6 +9179,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -9094,7 +9192,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -9173,6 +9271,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -9271,6 +9370,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -9283,7 +9383,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -9362,6 +9462,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -9460,6 +9561,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -9471,7 +9573,7 @@ save 1, ids issued 0
 world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -9550,6 +9652,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -9648,6 +9751,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -9661,7 +9765,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -9740,6 +9844,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -9838,6 +9943,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -9850,7 +9956,7 @@ world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -9929,6 +10035,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10027,6 +10134,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10040,7 +10148,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -10119,6 +10227,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10217,6 +10326,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10230,7 +10340,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -10309,6 +10419,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10407,6 +10518,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10419,7 +10531,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -10498,6 +10610,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10596,6 +10709,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10608,7 +10722,7 @@ world 5, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Jolly, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -10687,6 +10801,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10785,6 +10900,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10796,7 +10912,7 @@ save 1, ids issued 0
 world 5, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -10875,6 +10991,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -10973,6 +11090,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -10986,7 +11104,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -11065,6 +11183,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -11163,6 +11282,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -11175,7 +11295,7 @@ world 5, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -11254,6 +11374,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -11352,6 +11473,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -11365,7 +11487,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -11444,6 +11566,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -11542,6 +11665,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -11555,7 +11679,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -11634,6 +11758,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -11732,6 +11857,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -11744,7 +11870,7 @@ world 5, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Jolly, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 182 changes
+upgrade from story 19: 184 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -11823,6 +11949,7 @@ upgrade from story 19: 182 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -11921,6 +12048,7 @@ upgrade from story 19: 182 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -11933,7 +12061,7 @@ world 5, story 20, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12004,6 +12132,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12098,6 +12227,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12109,7 +12239,7 @@ save 1, ids issued 0
 world 5, story 20, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12180,6 +12310,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12274,6 +12405,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12287,7 +12419,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Impish, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Relaxed, Simple, holds nothing, HP 89/89, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12358,6 +12490,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12452,6 +12585,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12464,7 +12598,7 @@ world 5, story 20, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Impish, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12535,6 +12669,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12629,6 +12764,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12642,7 +12778,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Impish, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Relaxed, Simple, holds nothing, HP 89/89, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12713,6 +12849,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12807,6 +12944,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12820,7 +12958,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Impish, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Relaxed, Simple, holds nothing, HP 89/89, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -12891,6 +13029,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -12985,6 +13124,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -12997,7 +13137,7 @@ world 5, story 20, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 20: 170 changes
+upgrade from story 20: 172 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13068,6 +13208,7 @@ upgrade from story 20: 170 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13162,6 +13303,7 @@ upgrade from story 20: 170 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -13174,7 +13316,7 @@ world 5, story 21, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Brave, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13239,6 +13381,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13328,6 +13471,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -13339,7 +13483,7 @@ save 1, ids issued 0
 world 5, story 21, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13404,6 +13548,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13493,6 +13638,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -13506,7 +13652,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Bashful, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Gentle, Simple, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13571,6 +13717,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13660,6 +13807,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -13672,7 +13820,7 @@ world 5, story 21, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Bashful, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13737,6 +13885,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13826,6 +13975,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -13839,7 +13989,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Bashful, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Gentle, Simple, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -13904,6 +14054,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -13993,6 +14144,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14006,7 +14158,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Bashful, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Gentle, Simple, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14071,6 +14223,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14160,6 +14313,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14172,7 +14326,7 @@ world 5, story 21, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Brave, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 21: 159 changes
+upgrade from story 21: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14237,6 +14391,7 @@ upgrade from story 21: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14326,6 +14481,7 @@ upgrade from story 21: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14338,7 +14494,7 @@ world 5, story 22, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Calm, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14403,6 +14559,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14492,6 +14649,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14503,7 +14661,7 @@ save 1, ids issued 0
 world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14568,6 +14726,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14657,6 +14816,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14670,7 +14830,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14735,6 +14895,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14824,6 +14985,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -14836,7 +14998,7 @@ world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -14901,6 +15063,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -14990,6 +15153,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -15003,7 +15167,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -15068,6 +15232,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -15157,6 +15322,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -15170,7 +15336,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -15235,6 +15401,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -15324,6 +15491,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
@@ -15336,7 +15504,7 @@ world 5, story 22, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Calm, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 22: 159 changes
+upgrade from story 22: 161 changes
   + FLAG_HIDE_AZALEA_GYM_BUGSY
   + FLAG_HIDE_AZALEA_RIVAL
   + FLAG_HIDE_AZALEA_SLOWPOKES
@@ -15401,6 +15569,7 @@ upgrade from story 22: 159 changes
   + FLAG_HIDE_PETALBURG_GYM_WALLY
   + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PLAYERS_HOUSE_DAD
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
@@ -15490,6 +15659,7 @@ upgrade from story 22: 159 changes
   + FLAG_HOENN_CHAPTER_SEVEN_B
   + FLAG_HOENN_CHAPTER_SEVEN_C
   + FLAG_HOENN_CHAPTER_TEN
+  + FLAG_HOENN_CHAPTER_THIRTEEN
   + FLAG_HOENN_CHAPTER_TWELVE
   + FLAG_UNK_19F
   + FLAG_UNK_1C4
