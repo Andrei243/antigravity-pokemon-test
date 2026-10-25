@@ -1,0 +1,25 @@
+// Plan 06 · R20c, Mega Dynamax (docs/plans/R20c-mega-dynamax-proposals.md, approved by the user on 2026-10-25, every
+// row of its table): each Mega form that has a Mega Dynamax form of its own, and the height in metres the Pokédex gives
+// that form (12 × the Mega's height, 20 to 60 m, 2 m over a Gigantamax form). The importer (MegaDynamaxForms.cs) writes
+// "<Mega form>-Mmax" after its Mega, with the Mega's types, stats and abilities and a weight of 1000 kg. A row whose
+// Mega isn't in the data yet (R20b's fifteen of our own) waits for it: the importer names it and writes nothing.
+{
+  // The data's Megas: the proposal's "yes" and "maybe" rows (all approved)
+  "Venusaur-Mega": 29, "Charizard-Mega-X": 30, "Charizard-Mega-Y": 30, "Blastoise-Mega": 27, "Beedrill-Mega": 20,
+  "Pidgeot-Mega": 26, "Raichu-Mega-X": 20, "Raichu-Mega-Y": 20, "Alakazam-Mega": 20, "Victreebel-Mega": 54,
+  "Slowbro-Mega": 24, "Gengar-Mega": 22, "Kangaskhan-Mega": 26, "Starmie-Mega": 28, "Pinsir-Mega": 20,
+  "Gyarados-Mega": 60, "Aerodactyl-Mega": 25, "Dragonite-Mega": 26, "Meganium-Mega": 29, "Feraligatr-Mega": 28,
+  "Ampharos-Mega": 20, "Steelix-Mega": 60, "Scizor-Mega": 24, "Heracross-Mega": 20, "Skarmory-Mega": 20,
+  "Houndoom-Mega": 23, "Tyranitar-Mega": 30, "Sceptile-Mega": 23, "Blaziken-Mega": 23, "Swampert-Mega": 23,
+  "Gardevoir-Mega": 20, "Sableye-Mega": 20, "Mawile-Mega": 20, "Aggron-Mega": 26, "Medicham-Mega": 20,
+  "Manectric-Mega": 22, "Sharpedo-Mega": 30, "Camerupt-Mega": 30, "Altaria-Mega": 20, "Banette-Mega": 20,
+  "Absol-Mega": 20, "Glalie-Mega": 25, "Salamence-Mega": 22, "Metagross-Mega": 30, "Lopunny-Mega": 20,
+  "Garchomp-Mega": 23, "Lucario-Mega": 20, "Abomasnow-Mega": 32, "Gallade-Mega": 20, "Froslass-Mega": 31,
+  "Emboar-Mega": 22, "Excadrill-Mega": 20, "Audino-Mega": 20, "Scolipede-Mega": 38, "Chandelure-Mega": 30,
+  "Chesnaught-Mega": 20, "Delphox-Mega": 20, "Greninja-Mega": 20, "Pyroar-Mega": 20, "Dragalge-Mega": 25,
+  "Golisopod-Mega": 28, "Glimmora-Mega": 34, "Baxcalibur-Mega": 25,
+  // R20b's fifteen of our own, written once R20b builds their Megas
+  "Typhlosion-Mega": 20, "Torterra-Mega": 26, "Infernape-Mega": 20, "Empoleon-Mega": 20, "Serperior-Mega": 40,
+  "Samurott-Mega": 20, "Decidueye-Mega": 20, "Incineroar-Mega": 22, "Primarina-Mega": 22, "Rillaboom-Mega": 30,
+  "Cinderace-Mega": 29, "Inteleon-Mega": 42, "Meowscarada-Mega": 20, "Skeledirge-Mega": 20, "Quaquaval-Mega": 22
+}

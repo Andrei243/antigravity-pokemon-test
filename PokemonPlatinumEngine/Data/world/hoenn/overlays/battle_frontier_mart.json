@@ -1,0 +1,12 @@
+{
+  // The Battle Frontier island's Poké Mart (plan 21 · H12, part b): the League's stock (marts.json's ever_grande_league);
+  // Emerald's vitamins are the Exchange Service Corner's, for Battle Points (battle_frontier_mart.txt)
+  "area": "battle_frontier_mart",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "frontier_mart_clerk": { "name": "Clerk", "script": "FrontierClerk" },
+    "frontier_mart_old_woman": { "name": "Old Woman", "dialog": [ "We came to watch our grandson battle. I thought I'd buy him a little something while we're here." ] },
+    "old_man": { "name": "Old Man", "dialog": [ "Potions, Revives... Would he like a Max Repel, do you think? I've no idea what young Trainers want." ] },
+    "boy_2": { "name": "Boy", "dialog": [ "Most of the halls here won't let you use items in battle. Stocking up is for the trip home!" ] }
+  }
+}

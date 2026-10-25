@@ -248,5 +248,6 @@ partial class Harness
         FightOn();
         Flags("the eon Pokémon", "FLAG_ENCOUNTERED_LATIAS_OR_LATIOS", "FLAG_DEFEATED_LATIAS_OR_LATIOS", "FLAG_CAUGHT_LATIAS_OR_LATIOS");
         Frames(20); Shot("h268_southern_island_after");
+        HoennFrontierIslandShots();
     }
 }

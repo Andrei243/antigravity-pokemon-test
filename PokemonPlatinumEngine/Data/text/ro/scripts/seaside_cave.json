@@ -1,0 +1,78 @@
+{
+  "Rocky": [
+    {
+      "en": [
+        "Rocky"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm! If you want past here, you'll have to beat me and my Roggenrola. We're as sturdy as rock!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But my Roggenrola and I only battle strong Trainers. Can you break our rock-hard will?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm! Your strength is the real thing! My Roggenrola and I must become sturdier still. We're off to train. Farewell!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Crustle": [
+    {
+      "en": [
+        "A great boulder blocks the way. It doesn't look as if any Pokémon could move it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a great boulder... Use the Colress Machine on it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} switched on the Colress Machine! It hums, and the boulder begins to shake..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It wasn't a boulder at all! A Crustle was sleeping in its rock!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Colress Machine gave a pop and a puff of smoke. It's broken..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

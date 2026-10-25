@@ -1,0 +1,58 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lillipup"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lillipup: Yip!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A house over the sea, a little dog and nothing to do. Isn't it divine?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3": {
+      "en": [
+        "A row of photographs of the sea at sunset."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "A shelf of seashells, each labelled in tiny handwriting."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

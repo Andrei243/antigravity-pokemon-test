@@ -1,0 +1,52 @@
+# The Seaside Cave (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/seaside_cave.s, read for the order alone).
+#
+# Rocky the black belt (12) and his three Roggenrola guard the way in from Undella Bay: beaten, they go off to train
+# (FLAG_UNOVA_HIDE_ROCKY). The Crustle (9) that lies like a great boulder before the way out to Route 21's east beach wakes only
+# to the Colress Machine (FLAG_UNOVA_COLRESS_MACHINE, Colress's gift on Route 22): it battles at level 42 and scuttles off, caught
+# or not, and the machine breaks (FLAG_UNOVA_COLRESS_MACHINE_BROKE).
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script Rocky
+  face 12 player
+  speaker black_belt "Rocky"
+  say "Hm! If you want past here, you'll have to beat me and my Roggenrola. We're as sturdy as rock!"
+  say "But my Roggenrola and I only battle strong Trainers. Can you break our rock-hard will?"
+  battle 12
+  say "Hm! Your strength is the real thing! My Roggenrola and I must become sturdier still. We're off to train. Farewell!"
+  fade out 0.3
+  hide 12
+  hide 8
+  hide 10
+  hide 11
+  setflag FLAG_UNOVA_HIDE_ROCKY
+  fade in
+  end
+
+
+script Crustle
+  speaker none
+  if flag FLAG_UNOVA_COLRESS_MACHINE goto Machine
+  text "A great boulder blocks the way. It doesn't look as if any Pokémon could move it..."
+  end
+label Machine
+  ask "It's a great boulder... Use the Colress Machine on it?"
+  if no end
+  scene "The Crustle in the Seaside Cave"
+  text "{player} switched on the Colress Machine! It hums, and the boulder begins to shake..."
+  text "It wasn't a boulder at all! A Crustle was sleeping in its rock!"
+  cry "Crustle"
+  wildbattle "Crustle" 42
+  setflag FLAG_UNOVA_HIDE_CRUSTLE
+  hide self
+  speaker none
+  text "The Colress Machine gave a pop and a puff of smoke. It's broken..."
+  clearflag FLAG_UNOVA_COLRESS_MACHINE
+  setflag FLAG_UNOVA_COLRESS_MACHINE_BROKE
+  endscene
+  end

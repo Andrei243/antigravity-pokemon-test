@@ -1,0 +1,44 @@
+{
+  "Sudowoodo": [
+    {
+      "en": [
+        "It's an odd tree. It is wiggling about!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Water the tree with the Wailmer Pail?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} watered the tree with the Wailmer Pail!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The tree hated the water! It leapt up and attacked!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's an odd tree. It is wiggling about, though there is no wind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

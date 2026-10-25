@@ -1,0 +1,68 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Humilau City! The sea here is so calm you could sleep on it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to paint the sea from the tube, but I keep painting the Pokémon looking in at me instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sun in Humilau is gentle. Even my parasol is on holiday."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4": {
+      "en": [
+        "Marine Tube\nThe walk-through aquarium to Undella Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

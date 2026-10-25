@@ -1,0 +1,19 @@
+{
+  // The Marine Tube's gate at Humilau City (plan 22 · U8, part b), our words: its south door leads back into the tube (a map
+  // of ours, Data/maps/MarineTube.json), its west door out to the city's boardwalk
+  "area": "bridge_gate_gate_9",
+  "bgmTrack": "unova/humilau",
+  "doors": [
+    { "warp": 1, "map": "MarineTube", "x": 5, "y": 1, "facing": "Down" },
+    { "warp": 4, "map": "MarineTube", "x": 5, "y": 1, "facing": "Down" },
+    { "warp": 5, "map": "MarineTube", "x": 5, "y": 1, "facing": "Down" }
+  ],
+  "people": {
+    "0": { "name": "Receptionist", "npcType": "receptionist", "dialog": [ "Welcome to Humilau City! The sea here is so calm you could sleep on it." ] },
+    "1": { "name": "Artist", "npcType": "artist", "dialog": [ "I came to paint the sea from the tube, but I keep painting the Pokémon looking in at me instead." ] },
+    "2": { "name": "Parasol Lady", "npcType": "parasol_lady", "dialog": [ "The sun in Humilau is gentle. Even my parasol is on holiday." ] }
+  },
+  "signs": {
+    "4": "Marine Tube\nThe walk-through aquarium to Undella Town"
+  }
+}

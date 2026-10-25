@@ -2687,6 +2687,10 @@ public static class WorldMapBuilder
                         && map.HeightAt(from.X + dx, from.Z + dz) is var h && (floor == null || h < floor)) floor = h;
                 if (floor is { } level && map.HeightAt(from.X, from.Z) - level >= FieldMovement.StepLimit) map.SetHeight(from.X, from.Z, level);
             }
+            // A door of Humilau City's houses on the water (plan 22 · U8, part b) is a plain wall tile under the house's front:
+            // it is walked into from the deck south of it, and whoever comes out stands on that deck (Join)
+            else if (world.Index.Region == RegionDatabase.Unova && UnovaWallDoor(map, from.X, from.Z))
+                map.SetSolid(from.X, from.Z, false);
             // So is a GBA game's door the story opens by swapping its tile (the Trick House's puzzle doors, plan 21 · H3,
             // part b): the tile is the way's, which Map.ApplyDoors keeps shut until the story opens it
             else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null))
@@ -2713,6 +2717,11 @@ public static class WorldMapBuilder
             if (from.Landing != true && map.InBounds(from.X, from.Z) && !map.WarpsAt(from.X, from.Z).Any()
                 && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
+
+    /// <summary>A warp's tile that is plain wall with open ground south of it: a door of Humilau City's houses on the water (plan 22 · U8, part b).</summary>
+    private static bool UnovaWallDoor(Map map, int x, int z) =>
+        map.Name == "Unova" && map.BehaviourAt(x, z) == TileBehavior.None && map.IsSolid(x, z)
+        && map.InBounds(x, z + 1) && !map.IsSolid(x, z + 1) && map.GetWarpAt(x, z + 1) == null;
 
     /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>
     public static Warp? WayInto(World world, string area, int toWarp) => Join(world, area, toWarp);
@@ -2749,6 +2758,11 @@ public static class WorldMapBuilder
                     (x, z, facing) = (to.X + dx, to.Z + dz, way);
                     break;
                 }
+        // Humilau City's doors in a plain wall (plan 22 · U8, part b): out onto the deck south of the door
+        if (string.Equals(world.Index.Region, RegionDatabase.Unova, StringComparison.OrdinalIgnoreCase)
+            && target.Matrix == 0 && x == to.X && z == to.Z && world.BehaviourAt(target.Matrix, to.X, to.Z) == TileBehavior.None
+            && Blocked(to.X, to.Z) && !Blocked(to.X, to.Z + 1))
+            (x, z, facing) = (to.X, to.Z + 1, Direction.Down);
         return new Warp { TargetMap = onto.Name, TargetX = x, TargetY = z, TargetFacing = facing };
     }
 

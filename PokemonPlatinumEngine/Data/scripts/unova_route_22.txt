@@ -1,0 +1,51 @@
+# Route 22 (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_22.s, read for the order alone).
+#
+# Colress (7) steps out to meet the player in the pass below the beach (our trigger, 752, 146 to 148, VAR_UNOVA_HUMILAU 4, and
+# his own script while he stands there): Black 2 has Terrakion cross the road first, which is plan 22 · U10's. He asks whether the
+# player means to stand against Team Plasma, gives the Colress Machine (FLAG_UNOVA_COLRESS_MACHINE, a flag as the Frontier Pass
+# is in Hoenn: the item isn't in our data) and tells of the great boulder in the Seaside Cave on Route 21 (5).
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script Colress
+  if var VAR_UNOVA_HUMILAU != 4 goto Later
+  scene "Colress on Route 22"
+  music "unova/colress"
+  clearflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  place 7 750 147 right
+  show 7
+  face player left
+  speaker "Colress"
+  say "Well, well! It's been a while, {player}. The Pokémon of these hills are restless today. They can smell danger on the wind, I think."
+  say "Danger in the shape of Team Plasma, no doubt. Tell me..."
+  ask "Do you plan to stand against Team Plasma?"
+  if no goto NotSure
+  say "I see. Then you'll need the strength to protect your Pokémon yourself. A Trainer who is only protected by Pokémon isn't really a Trainer."
+  say "It's because Trainers care for their Pokémon that their Pokémon can grow so strong. Here, take this."
+  goto Machine
+label NotSure
+  say "I see! That's an answer too. You and your Pokémon can go your own way."
+  say "What matters is that you care for your Pokémon and draw out everything they have. Here, take this."
+label Machine
+  text "{player} received the Colress Machine!"
+  setflag FLAG_UNOVA_COLRESS_MACHINE
+  say "A prototype of a device of mine that energises Pokémon. It does nothing in battle, but you may find it useful elsewhere."
+  say "Come to think of it! In the Seaside Cave on Route 21 there's a great boulder that isn't quite a boulder. My machine might wake it up."
+  say "Well then. I wish you and your Pokémon a safe journey!"
+  fade out 0.3
+  hide 7
+  setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  setvar VAR_UNOVA_HUMILAU 5
+  music area
+  fade in
+  endscene
+  end
+label Later
+  speaker "Colress"
+  say "The Seaside Cave is on Route 21, south of Humilau. Good luck!"
+  end

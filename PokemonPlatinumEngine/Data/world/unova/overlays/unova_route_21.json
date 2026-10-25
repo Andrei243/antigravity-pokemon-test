@@ -1,0 +1,27 @@
+{
+  // Route 21 (plan 22 · U8, part b): the sea south of Humilau City and its island, crossed by Surf, Black 2's, with seven
+  // trainers and its balls in the area file; our words. The Seaside Cave's two mouths are on the island; the beach east of the
+  // second, reached only through the cave, is where the Plasma Frigate lies at anchor. There Hugh (9) finds the player and Marlon
+  // (10) throws down the gangplank (our trigger, 796, 239 to 242, VAR_UNOVA_HUMILAU 5), which opens the way aboard (2,
+  // FLAG_UNOVA_FRIGATE_AT_ROUTE_21) until the Frigate has gone (FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21); put back ashore by the Shadow
+  // Triad, the player finds Hugh and Cheren (11) on the beach as it flies off (unova_route_21.txt, at 8). The Frigate is never
+  // drawn here, as at Opelucid City
+  "area": "unova_route_21",
+  "bgmTrack": "unova/route13",
+  "switches": [ { "warp": 2, "from": "FLAG_UNOVA_FRIGATE_AT_ROUTE_21", "until": "FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21" } ],
+  "triggers": [
+    { "script": "Gangplank", "x": 796, "z": 239, "width": 1, "depth": 4, "variable": "VAR_UNOVA_HUMILAU", "value": 5 }
+  ],
+  "people": {
+    "0": { "name": "Kaoru", "trainer": { "dialogueBefore": "I swim up and down this sea every day. You're in my lane!", "dialogueAfter": "I'll do another lap and forget this happened." } },
+    "1": { "name": "Kyle", "trainer": { "dialogueBefore": "The water's deep out here. Hope your Pokémon can keep their heads up!", "dialogueAfter": "Glub. That's me sunk." } },
+    "2": { "name": "Harold", "trainer": { "dialogueBefore": "A swimmer's strength is in the shoulders. And the Pokémon!", "dialogueAfter": "My shoulders are fine. My Pokémon aren't." } },
+    "3": { "name": "Desiree", "trainer": { "dialogueBefore": "Humilau's sea is the calmest in Unova. Let's make some waves!", "dialogueAfter": "Calm again. Too calm." } },
+    "4": { "name": "Kenzo", "trainer": { "dialogueBefore": "I cast my line and a Trainer bit! Let's battle!", "dialogueAfter": "That one got away. Twice." } },
+    "5": { "name": "Braid", "trainer": { "dialogueBefore": "A doctor on holiday is still a doctor. And a Trainer!", "dialogueAfter": "Doctor's orders: rest, for me and my Pokémon." } },
+    "6": { "name": "Kenneth", "trainer": { "dialogueBefore": "I train by punching the waves! Now I'll punch through you!", "dialogueAfter": "The waves were easier." } },
+    "9": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_ROUTE_21", "still": true, "at": [ 797, 240 ] },
+    "10": { "name": "Marlon", "npcType": "swimmer_m_water", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_ROUTE_21", "still": true, "dialog": [ "Hey, be careful, 'K!" ] },
+    "11": { "name": "Cheren", "npcType": "cheren", "script": "Cheren", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_ROUTE_21", "still": true, "at": [ 797, 242 ] }
+  }
+}

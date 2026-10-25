@@ -306,7 +306,11 @@ public enum Architecture
     /// <summary>Weathered boards under rust-red gable roofs with a chimney: the quiet town of the turntable at the end of the Gear Station's line (Anville, plan 22 · U6, part c).</summary>
     Railyard,
     /// <summary>Cream plaster under aviation-orange hip roofs with flower boxes: the airfield town of the runway, the hangars and the greenhouses (Mistralton, plan 22 · U7).</summary>
-    Airfield
+    Airfield,
+    /// <summary>Pale panels under dragon-violet hip roofs with ribbon windows: the modern city of the Dragon Gym and its mayor (Opelucid, plan 22 · U8, part b).</summary>
+    Skyline,
+    /// <summary>White boards under lagoon-aqua gable roofs with flower boxes: the city of houses on stilts over the calm sea (Humilau, plan 22 · U8, part b).</summary>
+    Stilts
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

@@ -1,0 +1,13 @@
+{
+  // The Seaside Cave's lower floor (plan 22 · U8, part b): Black 2's boulders that Strength pushes and two trainers, our words.
+  // Its north end, up the stairs to the upper floor's closed chamber, is cut off by the original's one-tile walls (seaside_cave's
+  // overlay): those stairs (1) are shut
+  "area": "seaside_cave_2",
+  "bgmTrack": "unova/seaside_cave",
+  "locked": [ 1 ],
+  "heldBack": [ "3" ],
+  "people": {
+    "2": { "name": "Maki", "trainer": { "dialogueBefore": "Down here the sea is right over our heads. Let's shake the roof!", "dialogueAfter": "The roof held. I didn't." } },
+    "3": { "name": "Rich", "trainer": { "dialogueBefore": "I push boulders all day for training. Pushing you will be easy!", "dialogueAfter": "You're heavier than any boulder." } }
+  }
+}

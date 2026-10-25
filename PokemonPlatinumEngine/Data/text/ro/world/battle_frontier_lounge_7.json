@@ -1,0 +1,77 @@
+{
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The two ladies here teach moves for Battle Points. Only for the very best Trainers, mind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Tutor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I teach moves to Pokémon, but my lessons aren't open yet. Come back another time, dear."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f_2": {
+      "name": {
+        "en": [
+          "Tutor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister and I will teach again when the halls open. Do come back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I learned more battling here than in all my years before. Never too old to learn!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

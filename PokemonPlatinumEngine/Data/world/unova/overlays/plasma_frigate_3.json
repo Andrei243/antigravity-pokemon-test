@@ -1,0 +1,15 @@
+{
+  // The Plasma Frigate's stern room (plan 22 · U8, part b), under the deck's stern hatch, our words. Two grunts (0, 1) watch the
+  // walls either side of the hatch; Colress (ours, colress_stern) waits at the room's far end,
+  // where Black 2 has him at the end of a warp panel's ride in a room of his own, and battles the player for the second of the
+  // barrier's switches (plasma_frigate_3.txt)
+  "area": "plasma_frigate_3",
+  "bgmTrack": "unova/plasma_frigate",
+  "people": {
+    "0": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "The stern is off limits! Especially to you!", "dialogueAfter": "Off limits... to me, now." } },
+    "1": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "Our scientist is busy. Busy beating you!", "dialogueAfter": "Okay, he's still busy. I'm not." } }
+  },
+  "npcs": [
+    { "id": "colress_stern", "name": "Colress", "npcType": "colress", "x": 11, "y": 6, "facing": "Up", "script": "Colress" }
+  ]
+}

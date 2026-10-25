@@ -129,6 +129,10 @@
       "note": "first spoken at dewford_town_gym.txt(12)",
       "provisional": true
     },
+    "breeder": {
+      "note": "first spoken at battle_frontier_lounge_1.txt(8)",
+      "provisional": true
+    },
     "brock": {
       "note": "first spoken at pewter_city_gym.txt(11)",
       "provisional": true
@@ -644,6 +648,10 @@
       "provisional": true
     },
     "marley": {},
+    "marlon": {
+      "note": "first spoken at humilau_city.txt(54)",
+      "provisional": true
+    },
     "mars": {},
     "mary": {
       "note": "first spoken at goldenrod_radio_tower_4f.txt(26)",
@@ -1199,6 +1207,7 @@
     "Blaine": "blaine",
     "Boy": "look:boy",
     "Brawly": "brawly",
+    "Breeder": "breeder",
     "Brock": "brock",
     "Bruno": "bruno",
     "Buck": "buck",

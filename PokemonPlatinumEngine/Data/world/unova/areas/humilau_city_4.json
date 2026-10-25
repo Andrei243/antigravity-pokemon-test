@@ -1,0 +1,29 @@
+{
+  "key": "humilau_city_4",
+  "index": 468,
+  "name": "Humilau City",
+  "matrix": 264,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_14",
+  "nightMusic": "BGM_SW_C_14",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "humilau_city", "toWarp": 4 },
+    { "x": 6, "z": 9, "to": "humilau_city", "toWarp": 4 },
+    { "x": 7, "z": 9, "to": "humilau_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backers_m", "movement": "wander_around", "x": 5, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x0334", "script": "2" },
+    { "id": "1", "looks": "lady", "movement": "wander_around", "x": 3, "z": 2, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x0335", "script": "3" },
+    { "id": "2", "looks": "rich_boy", "movement": "none", "x": 8, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0336", "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,530 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Frontier"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Tower's the tallest thing on the island. You can see it from the ferry!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see the Tower's famous Trainer battle. They say she never loses at home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Climbing the Pyramid? I'd rather climb a real mountain. At least a mountain stays where you left it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Hex Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pyramid's dark corridors whisper to me... or perhaps it's only the wind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Arena judges every battle in three turns. Hesitate and you lose. Hiyah!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Zigzagoon and I came for the food stalls. The battles are a bonus."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Expert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon Center so close to the halls! In my day we walked for hours between battles."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_m": {
+      "name": {
+        "en": [
+          "Triathlete"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I run a lap of the island every morning before my challenges. Want to join me?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Father bought me a team of champions. And yet the Palace's Pokémon simply won't listen to me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_f": {
+      "name": {
+        "en": [
+          "Triathlete"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cycling the island's paths keeps my legs fresh for the Pyramid's climb."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy says we can watch one battle and then we have to go home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One battle, I said! One. ...All right, maybe two."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zigzagoon_2": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zigzagoon: Zigg!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_sudowoodo": {
+      "name": {
+        "en": [
+          "Strange Tree"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every streak written on the Ranking Hall's boards started with a single win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a funny little tree by the water down there. I'm sure it moved when I wasn't looking!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I foresee a great challenge in your future. Also, rain. Mostly the challenge."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We came to trade our Battle Points for prizes. My wife wants the biggest doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The biggest doll! It would look wonderful in my secret base."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Exchange Service Corner trades Battle Points for prizes. Nothing here is sold for money."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ranking Hall lists the best streaks of every hall. My name will be up there one day!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_2": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you see the Arena's match? Three turns and it was over!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three turns! I didn't even have time to cheer."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandson is somewhere on this island, battling his heart out. I'm just here for the sea air."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Palace trusts the Pokémon to choose their own moves. A test of the bond, they call it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Tower is the oldest hall here. Everything else was built around it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BattleFrontier_OutsideEast_EventScript_BattleTowerSign": {
+      "en": [
+        "BATTLE TOWER\nTrainers meet in battle after battle. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideEast_EventScript_BattlePalaceSign": {
+      "en": [
+        "BATTLE PALACE\nWhere Pokémon choose their own moves. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideEast_EventScript_BattleArenaSign": {
+      "en": [
+        "BATTLE ARENA\nThree turns to decide a battle. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideEast_EventScript_BattlePyramidSign": {
+      "en": [
+        "BATTLE PYRAMID\nA climb through the dark. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideEast_EventScript_ExchangeCornerSign": {
+      "en": [
+        "EXCHANGE SERVICE CORNER\nPrizes for Battle Points."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideEast_EventScript_RankingHallSign": {
+      "en": [
+        "RANKING HALL\nThe Frontier's best streaks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "POKéMON CENTER\nWe heal your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

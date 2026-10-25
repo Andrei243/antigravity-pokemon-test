@@ -1,0 +1,43 @@
+{
+  // The Battle Frontier island's west half (plan 21 · H12, part b): the quay where the ferry from Lilycove City moors,
+  // the reception gate, the Mart, Scott's house and two lounges. The halls of this half (the Battle Dome, the Battle
+  // Factory and the Battle Pike) are plan 14 · B8 to B10's and stay shut, as Artisan Cave's way in does; a Champion plays
+  // the Frontier's halls through Scott's crossing to Sinnoh's (battle_frontier_scotts_house.txt). The ship itself is not
+  // drawn, as on Southern Island
+  "area": "battle_frontier_outside_west",
+  "name": "Battle Frontier",
+  "bgmTrack": "hoenn/lilycove",
+  "trees": "Round",
+  "locked": [ 0, 1, 2, 10 ],
+  "people": {
+    "frontier_ferry_attendant": { "name": "Attendant", "script": "FerryAttendant", "still": true },
+    "boy_2": { "name": "Boy", "dialog": [ "Back home I beat everyone I know. Here I've lost every battle I've had. This island is something else!" ] },
+    "expert_m": { "name": "Expert", "dialog": [ "Nobody wanders onto this island by chance. Only Trainers who have proved themselves are brought here." ] },
+    "man_3": { "name": "Man", "dialog": [ "I was going to start a challenge the moment I stepped off the ferry. Then the sea got to me... Ugh." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "Not so long ago there was nothing on this island but rock and grass. Look at it now!" ] },
+    "fat_man": { "name": "Man", "dialog": [ "Mmph... Everyone here looks so tough... Mmph. I'd better finish my snack first." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Off to the Battle Dome? I wish you luck. Perhaps we shall meet in the final." ] },
+    "frontier_maniac_1": { "name": "Maniac", "dialog": [ "Do you think they'll let us in if we haven't brought any Pokémon of our own?" ] },
+    "frontier_maniac_2": { "name": "Maniac", "dialog": [ "The big fellow at the Factory said he'd lend us Pokémon. I think. I hope." ] },
+    "man_5": { "name": "Man", "dialog": [ "The Battle Factory lends its challengers Pokémon. I've always wondered who trains them all." ] },
+    "frontier_girl": { "name": "Girl", "dialog": [ "They say the Battle Pike is full of Seviper... I came all this way, so I'll try it. Brr..." ] },
+    "woman_3": { "name": "Woman", "dialog": [ "I flipped a coin to choose which hall to try first. It came down on its edge, so I'm still standing here." ] },
+    "frontier_camper": { "name": "Camper", "dialog": [ "I'm not leaving this island until I've earned a Frontier Symbol. Not today, anyway." ] },
+    "lass": { "name": "Lass", "dialog": [ "I came to the Frontier to be noticed. Watch me, everyone! ...Is anyone watching?" ] },
+    "man_2": { "name": "Man", "dialog": [ "The ferry from Lilycove brings new challengers every day. Some leave smiling, most don't." ] },
+    "fisherman": { "name": "Fisherman", "dialog": [ "Everyone here battles. I fish. Mind you, nothing ever bites in this harbour." ] },
+    "frontier_fisherman_2": { "name": "Fisherman", "dialog": [ "I heard of a Pokémon with a very long tail running about the island. I'd love to see it." ] },
+    "fat_man_2": { "name": "Man", "dialog": [ "Munch... A girl at the Pike shouted at me for eating while she battled. Scary! Munch..." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "Grandpa, this way! The Battle Dome is just over there!" ] },
+    "boy_1": { "name": "Boy", "dialog": [ "My grandpa's going to win the whole tournament. Go on, Grandpa!" ] },
+    "old_man": { "name": "Old Man", "dialog": [ "So this is the Battle Dome? Hmm. Now, where did they put the door?" ] },
+    "frontier_man_4": { "name": "Man", "dialog": [ "Those three over there were famous Trainers once. One defeat at the Dome, and now they only cheer for the one who beat them." ] },
+    "pokefan_f": { "name": "Pokéfan", "dialog": [ "I came to see the Dome's champion. Isn't he wonderful? He looked my way, I'm sure of it!" ] }
+  },
+  "signs": {
+    "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": "BATTLE DOME\nTournaments for the strongest. Closed for now.",
+    "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": "BATTLE PIKE\nThree paths to choose from. Closed for now.",
+    "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": "BATTLE FACTORY\nBattles with rented Pokémon. Closed for now.",
+    "Common_EventScript_ShowPokemartSign": "POKé MART\nFor all your Pokémon needs."
+  }
+}

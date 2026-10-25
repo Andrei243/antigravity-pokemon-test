@@ -77,7 +77,13 @@ public class Trainer
     public string? Format { get; set; }
 
     /// <summary>The format the trainer's <see cref="Format"/> asks for: a triple for <c>"triple"</c> (plan 14 · B6), else null.</summary>
-    public Battle.BattleFormat? AskedFormat => Format == "triple" ? Battle.BattleFormat.Triple : null;
+    public Battle.BattleFormat? AskedFormat => Format switch
+    {
+        "triple" => Battle.BattleFormat.Triple,
+        // Three on a turntable, the front one fighting (plan 14 · B7)
+        "rotation" => Battle.BattleFormat.Rotation,
+        _ => null
+    };
 
     /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
     public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;
@@ -99,6 +105,9 @@ public class Trainer
 
     /// <summary>The trainer has a Dynamax Band and may Dynamax one Pokémon a battle (plan 06 · R22), under rules that have it. None of Platinum's trainers has one; Galar's chapter gives its trainers theirs.</summary>
     public bool DynamaxBand { get; set; }
+
+    /// <summary>The trainer has a Mega Max Band and may Dynamax a Mega of theirs (plan 06 · R20c), under rules that have it. None of Platinum's trainers has one.</summary>
+    public bool MegaMaxBand { get; set; }
 
     /// <summary>The trainer has a Tera Orb and may Terastallize one Pokémon a battle (plan 06 · R23), under rules that have it. None of Platinum's trainers has one; Paldea's chapter gives its trainers theirs.</summary>
     public bool TeraOrb { get; set; }

@@ -1,0 +1,138 @@
+{
+  "HoldScene": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who are you two? This is Team Plasma's ship!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Perfect timing. Just so you know, guys... you're about to feel my rage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh! We have to tell the others!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Quick! Protect the switches!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They didn't have a Purrloin with them. So where is it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Switches, they said... And look, the way to the bow is blocked by some kind of barrier. Electrified, by the sound of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So we switch off the barrier! {player}, let's split up and look. Try the cabins off the deck. I'll take the stern!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's take them on together!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoldGrunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Get off our ship!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Barrier": [
+    {
+      "en": [
+        "Bzzt! An electrified barrier blocks the passage. Its switches must be somewhere else on the ship."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

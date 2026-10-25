@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Opelucid is a city of the old and the new. The Pokémon Center is one of the new parts, and I'm very glad of it."
         ],
         "text": [
-          ""
+          "Opelucid e un oraș al vechiului și al noului. Centrul Pokémon e una dintre părțile noi, și mă bucur mult."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "When Pokémon rest here, they come out looking so much better. I can see a dragon in every one of them."
         ],
         "text": [
-          ""
+          "Când Pokémonii se odihnesc aici, ies arătând mult mai bine. Văd un dragon în fiecare dintre ei."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Drayden battled my dad once. He said it was the happiest he'd ever lost."
         ],
         "text": [
-          ""
+          "Drayden s-a luptat odată cu tata. A zis că a fost cea mai fericită înfrângere a lui."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Breeder"
         ],
         "text": [
-          ""
+          "Crescătorul"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "A Pokémon's happiness shows in how it eats. Mine eats like a dragon. Which is to say, a lot."
         ],
         "text": [
-          ""
+          "Fericirea unui Pokémon se vede după cum mănâncă. Al meu mănâncă precum un dragon. Adică mult."
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Socialite"
         ],
         "text": [
-          ""
+          "Mondena"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "Iris was only a girl when she came to this city. Now she's the Champion of Unova. Wasn't that quick?"
         ],
         "text": [
-          ""
+          "Iris era doar o fetiță când a venit în acest oraș. Acum e Campioana Unovei. Nu a fost repede?"
         ]
       }
     }

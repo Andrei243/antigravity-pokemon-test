@@ -1,0 +1,41 @@
+{
+  "key": "battle_frontier_ranking_hall",
+  "index": 447,
+  "name": "Battle Frontier",
+  "matrix": 390,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE_MUSEUM",
+  "nightMusic": "MUS_LILYCOVE_MUSEUM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 26, "z": 14, "to": "battle_frontier_outside_east", "toWarp": 4 },
+    { "x": 27, "z": 14, "to": "battle_frontier_outside_east", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "teala", "looks": "teala", "movement": "look_south", "x": 24, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_RankingHall_EventScript_Attendant" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "wander_around", "x": 4, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_RankingHall_EventScript_NinjaBoy" },
+    { "id": "boy_3", "looks": "boy_3", "movement": "wander_around", "x": 44, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_RankingHall_EventScript_Boy" }
+  ],
+  "signs": [
+    { "x": 26, "z": 9, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords" },
+    { "x": 23, "z": 8, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords" },
+    { "x": 26, "z": 5, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_TowerMultisRecords" },
+    { "x": 29, "z": 8, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_TowerLinkRecords" },
+    { "x": 42, "z": 9, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_ArenaRecords" },
+    { "x": 46, "z": 9, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_PalaceRecords" },
+    { "x": 10, "z": 9, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_FactoryRecords" },
+    { "x": 8, "z": 7, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_DomeRecords" },
+    { "x": 6, "z": 9, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_PikeRecords" },
+    { "x": 44, "z": 7, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_PyramidRecords" },
+    { "x": 16, "z": 8, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign" },
+    { "x": 36, "z": 8, "type": 0, "script": "BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn" }
+  ],
+  "triggers": []
+}

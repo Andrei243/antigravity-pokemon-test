@@ -272,6 +272,13 @@ public sealed class Ruleset
     public bool Terastallization { get; private init; }
 
     /// <summary>
+    /// Mega Dynamax (plan 06 · R20c, our own; <c>docs/mechanics/rulings.md</c>, "Mega Dynamax"): a trainer with the Mega Max
+    /// Band may Dynamax a Mega of a species that is neither legendary nor mythical, in the same choice as its Mega
+    /// Evolution or on a later turn, spending both. Platinum has none of it.
+    /// </summary>
+    public bool MegaDynamax { get; private init; }
+
+    /// <summary>
     /// The balls of the later games (plan 06 · R28a; <c>docs/mechanics/rulings.md</c>, "The later games' held items,
     /// medicine and balls"): each ball's bonus as the newest games give it (a Quick Ball's five times, a Net Ball's three
     /// and a half, a Timer Ball's 1229/4096 a turn), and the balls Platinum doesn't have (Johto's, the Dream, Beast and
@@ -299,6 +306,13 @@ public sealed class Ruleset
     /// or single the sides can field (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
     /// </summary>
     public bool Triples { get; private init; }
+
+    /// <summary>
+    /// Rotation battles (plan 14 · B7; Black and White's): a battle asked for as a <see cref="Battle.BattleFormat.Rotation"/>
+    /// is fought with three on each side's turntable, the front one fighting. Platinum has none, and under its rules such a
+    /// battle is a single (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool Rotations { get; private init; }
 
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
@@ -362,7 +376,9 @@ public sealed class Ruleset
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,
-        Triples = true
+        Triples = true,
+        Rotations = true,
+        MegaDynamax = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

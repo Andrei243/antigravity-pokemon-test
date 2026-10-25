@@ -1,0 +1,46 @@
+# The Battle Frontier island's Exchange Service Corner (plan 21 · H12, part b). docs/scripts.md describes the language;
+# the lines are our own, on Emerald's beats (data/maps/BattleFrontier_ExchangeServiceCorner/scripts.inc).
+#
+# The Frontier's Battle Points are one set (plan 06 · R18), so the island's counters trade the same prizes as the booths
+# on Sinnoh's grounds (battle_frontier.txt): things to hold and vitamins at one, Technical Machines at the other. The two
+# counters of Emerald's dolls and cushions have nothing to offer yet.
+
+
+script ItemClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome! This counter trades Battle Points for items your Pokémon can hold, and more."
+  frontier prize items
+  call ExchangeTrade
+  end
+
+script MachineClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome! This counter trades Battle Points for Technical Machines."
+  frontier prize machines
+  call ExchangeTrade
+  end
+
+script DecorClerk
+  face self player
+  speaker "Clerk"
+  say "This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid."
+  end
+
+
+# What follows a counter's question: the prize chosen is traded for, if the points are there.
+script ExchangeTrade
+  if result == 0 goto Bye
+  frontier buy
+  if result == 0 goto Short
+  sound "select"
+  text "{player} traded {price} BP for the {item}."
+  say "Thank you! Please come again."
+  end
+label Short
+  say "I'm sorry. You don't have the Battle Points for that."
+  end
+label Bye
+  say "Please come again."
+  end

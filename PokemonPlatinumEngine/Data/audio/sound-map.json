@@ -157,7 +157,8 @@
     "Pilot": "ace",
     "Depot Agent": "fun",
     "Smasher": "sport",
-    "Hoopster": "sport"
+    "Hoopster": "sport",
+    "Team Plasma Colress": "mystery"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -195,7 +196,10 @@
     "Subway Boss Emmet": "gym",
     "Leader Clay": "gym",
     "Leader Skyla": "gym",
-    "Team Plasma Zinzolin": "galacticBoss"
+    "Team Plasma Zinzolin": "galacticBoss",
+    "Leader Drayden": "gym",
+    "Leader Marlon": "gym",
+    "Team Plasma Colress": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

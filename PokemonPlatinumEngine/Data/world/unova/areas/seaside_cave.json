@@ -1,0 +1,109 @@
+{
+  "key": "seaside_cave",
+  "index": 515,
+  "name": "Seaside Cave",
+  "matrix": 312,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_SEASIDE_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Woobat", "level": 34 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Seel", "level": 35 },
+    { "species": "Boldore", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Golduck", "level": 35 },
+    { "species": "Tynamo", "level": 37 },
+    { "species": "Boldore", "level": 37 },
+    { "species": "Golduck", "level": 36 },
+    { "species": "Woobat", "level": 36 },
+    { "species": "Golduck", "level": 36 },
+    { "species": "Woobat", "level": 36 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Frillish", "level": 25, "maxLevel": 40 },
+    { "species": "Seel", "level": 25, "maxLevel": 40 },
+    { "species": "Frillish", "level": 30, "maxLevel": 40 },
+    { "species": "Frillish", "level": 30, "maxLevel": 40 },
+    { "species": "Frillish", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Luvdisc", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Shellder", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 36 },
+    { "species": "Excadrill", "level": 36 },
+    { "species": "Excadrill", "level": 37 },
+    { "species": "Excadrill", "level": 37 },
+    { "species": "Excadrill", "level": 37 },
+    { "species": "Excadrill", "level": 37 },
+    { "species": "Excadrill", "level": 37 },
+    { "species": "Excadrill", "level": 37 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Seel", "level": 25, "maxLevel": 40 },
+    { "species": "Jellicent", "level": 25, "maxLevel": 40 },
+    { "species": "Dewgong", "level": 30, "maxLevel": 40 },
+    { "species": "Dewgong", "level": 30, "maxLevel": 40 },
+    { "species": "Dewgong", "level": 30, "maxLevel": 40 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Shellder", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Luvdisc", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Shellder", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Cloyster", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Cloyster", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 6, "z": 56, "to": "undella_bay", "toWarp": 0 },
+    { "x": 6, "z": 14, "to": "unova_route_21", "toWarp": 0 },
+    { "x": 23, "z": 7, "to": "seaside_cave_2", "toWarp": 1 },
+    { "x": 16, "z": 15, "to": "seaside_cave_2", "toWarp": 0 },
+    { "x": 30, "z": 10, "to": "unova_route_21", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 2, "z": 37, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ef", "item": "Dive Ball", "script": "7163" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 17, "z": 27, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04f1", "item": "Full Restore", "script": "7165" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 22, "z": 51, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04f2", "item": "Heart Scale", "script": "7166" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 10, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04f3", "item": "TM06", "script": "7167" },
+    { "id": "4", "looks": "pkmn_ranger_m", "movement": "none", "x": 3, "z": 42, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PKMN_RANGER_JOHAN" },
+    { "id": "5", "looks": "battle_girl", "movement": "look_west_and_east", "x": 10, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BATTLE_GIRL_TIA" },
+    { "id": "6", "looks": "pkmn_ranger_f", "movement": "none", "x": 3, "z": 28, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PKMN_RANGER_MIKIKO" },
+    { "id": "7", "looks": "black_belt", "movement": "look_west_and_east", "x": 14, "z": 54, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BLACK_BELT_DRAGO" },
+    { "id": "8", "looks": "325", "movement": "wander_around", "x": 7, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0363", "script": "3" },
+    { "id": "9", "looks": "326", "movement": "none", "x": 29, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0364", "script": "6" },
+    { "id": "10", "looks": "325", "movement": "wander_around", "x": 5, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0363", "script": "4" },
+    { "id": "11", "looks": "325", "movement": "wander_around", "x": 4, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0363", "script": "5" },
+    { "id": "12", "looks": "black_belt", "movement": "none", "x": 6, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0363", "script": "1" }
+  ],
+  "signs": [
+    { "x": 29, "z": 3, "type": 2, "script": "8123", "item": "Calcium", "flag": "FLAG_UNOVA_0x0b7f" },
+    { "x": 6, "z": 30, "type": 2, "script": "8124", "item": "Blue Shard", "flag": "FLAG_UNOVA_0x0b80" }
+  ],
+  "triggers": [
+    { "x": 6, "z": 52, "width": 1, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4152", "value": "0" }
+  ]
+}

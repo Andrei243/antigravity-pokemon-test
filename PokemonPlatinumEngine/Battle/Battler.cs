@@ -412,6 +412,9 @@ internal sealed class Volatiles
     public bool Gigantamaxed;
     public string? FormBeforeGigantamax, AbilityBeforeGigantamax;
 
+    /// <summary>Its Dynamax is a Mega Dynamax (plan 06 · R20c): it took its Mega Dynamax form, and goes back into its Mega (<see cref="FormBeforeGigantamax"/>) as it ends.</summary>
+    public bool MegaDynamaxed;
+
     /// <summary>A layer of G-Max Chi Strike for each time it was given (up to three): so much higher its critical-hit stage.</summary>
     public int ChiStrike;
 

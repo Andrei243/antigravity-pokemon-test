@@ -64,6 +64,10 @@ public sealed class AiMemory
                     case Entered entered:
                         seen[entered.Place] = new Seen { Who = entered.Pokemon };
                         break;
+                    // A rotation battle's turntable brought another forward (plan 14 · B7): new to the AI, as an entry is
+                    case Rotated rotated:
+                        seen[rotated.Place] = new Seen { Who = rotated.Pokemon };
+                        break;
                     case AbilityShown shown:
                         Standing(shown.Place, battle).Ability = shown.Ability;
                         break;

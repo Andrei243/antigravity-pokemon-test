@@ -1,0 +1,11 @@
+{
+  // A cabin of the Plasma Frigate off its forward hall (plan 22 · U8, part b), our words: a grunt (0) who shows off the ship's
+  // pictures of Unova's legendary dragons, and on the wall at the head of the middle passage (6, 2) one of the two switches of
+  // the barrier in the hold (plasma_frigate_9.txt). Black 2's warp panels to the other cabins are shut
+  "area": "plasma_frigate_9",
+  "bgmTrack": "unova/plasma_frigate",
+  "readAt": [ { "x": 6, "z": 2, "script": "Switch" } ],
+  "people": {
+    "0": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt" }
+  }
+}

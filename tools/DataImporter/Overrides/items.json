@@ -422,5 +422,35 @@
   "Prison Bottle": { "description": "Unbinds Hoopa into its Unbound form, or binds it again." },
   "Zygarde Cube": { "description": "Switches Zygarde between its 10% Forme and its 50% Forme." },
   "Rotom Catalog": { "description": "A catalogue of appliances. Rotom slips into the next one in it, or back out." },
-  "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." }
+  "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." },
+  // The Mega Stones of our own (plan 06 · R20b: docs/plans/R20b-mega-proposals.md, approved 2026-10-26), ids 9400 on
+  // (the document's 9002 to 9016 would meet the Bike Voucher's 9010). Nothing gives them yet: each is given in its
+  // starter's home region once that region's chapter stands and the player holds the Key Stone (plan 23)
+  "Typhlosionite": { "id": 9400, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Typhlosion, it lets it Mega Evolve in battle.", "megaStone": { "species": "Typhlosion", "form": "Typhlosion-Mega" } },
+  "Torterrite": { "id": 9401, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Torterra, it lets it Mega Evolve in battle.", "megaStone": { "species": "Torterra", "form": "Torterra-Mega" } },
+  "Infernapite": { "id": 9402, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Infernape, it lets it Mega Evolve in battle.", "megaStone": { "species": "Infernape", "form": "Infernape-Mega" } },
+  "Empoleonite": { "id": 9403, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Empoleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Empoleon", "form": "Empoleon-Mega" } },
+  "Serperiorite": { "id": 9404, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Serperior, it lets it Mega Evolve in battle.", "megaStone": { "species": "Serperior", "form": "Serperior-Mega" } },
+  "Samurottite": { "id": 9405, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Samurott, it lets it Mega Evolve in battle.", "megaStone": { "species": "Samurott", "form": "Samurott-Mega" } },
+  "Decidueyite": { "id": 9406, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Decidueye, it lets it Mega Evolve in battle.", "megaStone": { "species": "Decidueye", "form": "Decidueye-Mega" } },
+  "Incineroarite": { "id": 9407, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Incineroar, it lets it Mega Evolve in battle.", "megaStone": { "species": "Incineroar", "form": "Incineroar-Mega" } },
+  "Primarinite": { "id": 9408, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Primarina, it lets it Mega Evolve in battle.", "megaStone": { "species": "Primarina", "form": "Primarina-Mega" } },
+  "Rillaboomite": { "id": 9409, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Rillaboom, it lets it Mega Evolve in battle.", "megaStone": { "species": "Rillaboom", "form": "Rillaboom-Mega" } },
+  "Cinderacite": { "id": 9410, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Cinderace, it lets it Mega Evolve in battle.", "megaStone": { "species": "Cinderace", "form": "Cinderace-Mega" } },
+  "Inteleonite": { "id": 9411, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Inteleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Inteleon", "form": "Inteleon-Mega" } },
+  "Meowscaradite": { "id": 9412, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Meowscarada, it lets it Mega Evolve in battle.", "megaStone": { "species": "Meowscarada", "form": "Meowscarada-Mega" } },
+  "Skeledirgite": { "id": 9413, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Skeledirge, it lets it Mega Evolve in battle.", "megaStone": { "species": "Skeledirge", "form": "Skeledirge-Mega" } },
+  "Quaquavalite": { "id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } },
+  // The band of Mega Dynamax (plan 06 · R20c, our own): Sonia sets the Key Stone into the Dynamax Band after Galar's Hall of Fame
+  "Mega Max Band": {
+    "id": 9500,
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
+    "cantBeTossed": true
+  }
 }

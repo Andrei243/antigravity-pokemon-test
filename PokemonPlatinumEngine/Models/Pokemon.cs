@@ -747,8 +747,16 @@ public class Pokemon
     public StatSpread? EvYield => FormData?.EvYield ?? Species.EvYield;
     public int CatchRate => FormData?.CatchRate ?? Species.CatchRate;
 
-    /// <summary>The name its model and sprites are asked for by: its form's, or its species'.</summary>
-    public string ModelName => Form ?? Species.Name;
+    /// <summary>
+    /// The name its model and sprites are asked for by: its form's, or its species'. A Mega Dynamax form (plan 06 · R20c)
+    /// has no sculpt of its own yet and shows its Mega's, grown as every giant is in battle.
+    /// </summary>
+    public string ModelName => Form is { } form
+        ? (form.EndsWith(MegaDynamaxSuffix, StringComparison.Ordinal) && FormData?.Kind == FormKind.MegaDynamax ? form[..^MegaDynamaxSuffix.Length] : form)
+        : Species.Name;
+
+    /// <summary>What a Mega Dynamax form's name adds to its Mega's (<c>Charizard-Mega-X-Mmax</c>).</summary>
+    public const string MegaDynamaxSuffix = "-Mmax";
 
     /// <summary>
     /// The name this very Pokémon's look is asked for by (plan 09 · L1, L6): its <see cref="ModelName"/>, with

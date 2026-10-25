@@ -1,0 +1,50 @@
+{
+  // The Battle Frontier island's east half (plan 21 · H12, part b): the Pokémon Center, the Exchange Service Corner, the
+  // Ranking Hall and the lounges. Its halls (the Battle Tower, the Battle Arena, the Battle Palace and the Battle Pyramid)
+  // stay shut, as Artisan Cave's way in does (plan 14 · B8 to B10; the Tower's rules are Sinnoh's, reached through Scott,
+  // battle_frontier_scotts_house.txt). Emerald's ninth lounge is a door nobody can reach, and stays out.
+  // The strange tree in the south-east is Emerald's Sudowoodo, watered with the Wailmer Pail and battled at level 40
+  // (battle_frontier_outside_east.txt)
+  "area": "battle_frontier_outside_east",
+  "name": "Battle Frontier",
+  "bgmTrack": "hoenn/lilycove",
+  "trees": "Round",
+  "locked": [ 0, 1, 2, 3, 13 ],
+  "people": {
+    "ninja_boy": { "name": "Ninja Boy", "dialog": [ "The Battle Tower's the tallest thing on the island. You can see it from the ferry!" ] },
+    "man_3": { "name": "Man", "dialog": [ "I came to see the Tower's famous Trainer battle. They say she never loses at home." ] },
+    "hiker": { "name": "Hiker", "dialog": [ "Climbing the Pyramid? I'd rather climb a real mountain. At least a mountain stays where you left it!" ] },
+    "hex_maniac": { "name": "Hex Maniac", "dialog": [ "The Pyramid's dark corridors whisper to me... or perhaps it's only the wind." ] },
+    "black_belt": { "name": "Black Belt", "dialog": [ "The Battle Arena judges every battle in three turns. Hesitate and you lose. Hiyah!" ] },
+    "cook": { "name": "Cook", "dialog": [ "My Zigzagoon and I came for the food stalls. The battles are a bonus." ] },
+    "expert_f": { "name": "Expert", "dialog": [ "A Pokémon Center so close to the halls! In my day we walked for hours between battles." ] },
+    "running_triathlete_m": { "name": "Triathlete", "dialog": [ "I run a lap of the island every morning before my challenges. Want to join me?" ] },
+    "rich_boy": { "name": "Rich Boy", "dialog": [ "Father bought me a team of champions. And yet the Palace's Pokémon simply won't listen to me!" ] },
+    "cycling_triathlete_f": { "name": "Triathlete", "dialog": [ "Cycling the island's paths keeps my legs fresh for the Pyramid's climb." ] },
+    "twin": { "name": "Twin", "dialog": [ "Daddy says we can watch one battle and then we have to go home." ] },
+    "man_1": { "name": "Man", "dialog": [ "One battle, I said! One. ...All right, maybe two." ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "npcType": "Pokemon", "species": "Zigzagoon", "script": "Pokemon", "dialog": [ "Zigzagoon: Zigg!" ] },
+    "frontier_sudowoodo": { "name": "Strange Tree", "npcType": "Pokemon", "species": "Sudowoodo", "script": "Sudowoodo", "still": true },
+    "maniac": { "name": "Maniac", "dialog": [ "Every streak written on the Ranking Hall's boards started with a single win." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "There's a funny little tree by the water down there. I'm sure it moved when I wasn't looking!" ] },
+    "psychic_m": { "name": "Psychic", "dialog": [ "I foresee a great challenge in your future. Also, rain. Mostly the challenge." ] },
+    "man_3_2": { "name": "Man", "dialog": [ "We came to trade our Battle Points for prizes. My wife wants the biggest doll." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "The biggest doll! It would look wonderful in my secret base." ] },
+    "woman_5_2": { "name": "Woman", "dialog": [ "The Exchange Service Corner trades Battle Points for prizes. Nothing here is sold for money." ] },
+    "black_belt_2": { "name": "Black Belt", "dialog": [ "The Ranking Hall lists the best streaks of every hall. My name will be up there one day!" ] },
+    "maniac_2": { "name": "Maniac", "dialog": [ "Did you see the Arena's match? Three turns and it was over!" ] },
+    "woman_4": { "name": "Woman", "dialog": [ "Three turns! I didn't even have time to cheer." ] },
+    "old_woman": { "name": "Old Woman", "dialog": [ "My grandson is somewhere on this island, battling his heart out. I'm just here for the sea air." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "The Battle Palace trusts the Pokémon to choose their own moves. A test of the bond, they call it." ] },
+    "camper": { "name": "Camper", "dialog": [ "The Battle Tower is the oldest hall here. Everything else was built around it." ] }
+  },
+  "signs": {
+    "BattleFrontier_OutsideEast_EventScript_BattleTowerSign": "BATTLE TOWER\nTrainers meet in battle after battle. Closed for now.",
+    "BattleFrontier_OutsideEast_EventScript_BattlePalaceSign": "BATTLE PALACE\nWhere Pokémon choose their own moves. Closed for now.",
+    "BattleFrontier_OutsideEast_EventScript_BattleArenaSign": "BATTLE ARENA\nThree turns to decide a battle. Closed for now.",
+    "BattleFrontier_OutsideEast_EventScript_BattlePyramidSign": "BATTLE PYRAMID\nA climb through the dark. Closed for now.",
+    "BattleFrontier_OutsideEast_EventScript_ExchangeCornerSign": "EXCHANGE SERVICE CORNER\nPrizes for Battle Points.",
+    "BattleFrontier_OutsideEast_EventScript_RankingHallSign": "RANKING HALL\nThe Frontier's best streaks.",
+    "Common_EventScript_ShowPokemonCenterSign": "POKéMON CENTER\nWe heal your Pokémon."
+  }
+}

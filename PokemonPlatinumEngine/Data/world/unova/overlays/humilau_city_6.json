@@ -1,0 +1,14 @@
+{
+  // A house of Humilau City on its stilts (plan 22 · U8, part b): a socialite and her Pokémon, our words; Black 2's photographs
+  // on her wall are read as plain signs
+  "area": "humilau_city_6",
+  "bgmTrack": "unova/humilau",
+  "people": {
+    "0": { "name": "Lillipup", "npcType": "Pokemon", "species": "Lillipup", "dialog": [ "Lillipup: Yip!" ] },
+    "1": { "name": "Socialite", "npcType": "socialite", "dialog": [ "A house over the sea, a little dog and nothing to do. Isn't it divine?" ] }
+  },
+  "signs": {
+    "3": "A row of photographs of the sea at sunset.",
+    "4": "A shelf of seashells, each labelled in tiny handwriting."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  // A house of Humilau City on its stilts (plan 22 · U8, part b): two who talk, our words; its hidden Full Restore is the area file's
+  "area": "humilau_city_3",
+  "bgmTrack": "unova/humilau",
+  "people": {
+    "0": { "name": "Roughneck", "npcType": "roughneck", "dialog": [ "I came here to get tough by swimming against the waves. Turns out there aren't any waves." ] },
+    "1": { "name": "Waitress", "npcType": "waitress", "dialog": [ "Welcome! Oh, this isn't the café? Sorry, force of habit. I just got off work." ] }
+  }
+}

@@ -1,0 +1,29 @@
+# Humilau City (houses on stilts over a calm sea, boardwalks in the sun): a lazy marimba tune in F major over a harp that rocks
+# on each chord, a round bass and a soft beat of brushes. At night a flute takes the tune, slower. Original composition for this
+# game (plan 22 · U8, part b).
+title Humilau City
+tempo 96
+meter 4/4
+reverb 0.26
+nighttempo 0.86
+
+track lead marimba night=flute vol=0.62 pan=0.1 rev=0.24
+  L o5 c8 f8 a4 g8 f8 e4 | o5 d8 f8 a4 g4 f4 | o5 d8 f8 b-4 a8 g8 f4 | o5 e8 g8 o6 c4 o5 b-4 g4 |
+  o5 a8 o6 c8 f4 e8 d8 c4 | o5 e8 a8 o6 c4 o5 b4 a4 | o5 f8 b-8 o6 d4 c4 o5 b-4 | o5 g2 e4 c4 |
+  o5 c8 f8 a4 g8 f8 e4 | o5 d8 f8 a4 g4 f4 | o5 d8 f8 b-4 a8 g8 f4 | o5 e8 g8 o6 c4 o5 b-4 g4 |
+  o5 a8 o6 c8 f4 e8 d8 c4 | o5 e8 a8 o6 c4 o5 b4 a4 | o5 f8 b-8 o6 d4 c4 o5 b-4 | o5 f2 c2 |
+
+track rock harp vol=0.4 pan=-0.2 rev=0.2
+  L [ o4 (f a >c)8 r8 ]4 | [ o4 (d f a)8 r8 ]4 | [ o4 (b- >d f)8 r8 ]4 | [ o4 (c e g)8 r8 ]4 |
+  [ o4 (f a >c)8 r8 ]4 | [ o4 (a >c e)8 r8 ]4 | [ o4 (b- >d f)8 r8 ]4 | [ o4 (c e g)8 r8 ]4 |
+  [ o4 (f a >c)8 r8 ]4 | [ o4 (d f a)8 r8 ]4 | [ o4 (b- >d f)8 r8 ]4 | [ o4 (c e g)8 r8 ]4 |
+  [ o4 (f a >c)8 r8 ]4 | [ o4 (a >c e)8 r8 ]4 | [ o4 (b- >d f)8 r8 ]4 | [ o4 (f a >c)8 r8 ]4 |
+
+track bass bass vol=0.58 rev=0.06
+  L [ o2 f8 o3 f8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 f8 o3 f8 ]4 |
+
+track drums kit vol=0.32 rev=0.1
+  L v64 [ b8 h8 h8 h8 s8 h8 h8 h8 | ]15 b8 h8 h8 h8 s8 s8 h8 h8 |

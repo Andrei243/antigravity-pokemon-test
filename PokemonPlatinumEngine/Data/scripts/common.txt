@@ -3061,6 +3061,7 @@ script UnovaOpelucid
   setflag FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   setflag FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   setflag FLAG_UNOVA_OPELUCID_BEGUN
+  call UnovaHumilau
   return
 
 
@@ -3069,4 +3070,45 @@ script UnovaOpelucid
 script UnovaCatchUpC
   call UnovaCatchUpB
   if not flag FLAG_UNOVA_OPELUCID_BEGUN call UnovaOpelucid
+  return
+
+
+# What Unova's chapter from the Marine Tube to the Plasma Frigate hides until its scenes (plan 22 · U8, part b): Hugh in Humilau
+# City, Marlon on the beach and in his Gym, Colress on Route 22, Hugh, Marlon and Cheren on Route 21's beach, Hugh and the two
+# grunts in the Frigate's hold, Hugh and the Shadow Triad in Kyurem's chamber, and Route 22's Terrakion (plan 22 · U10's). A new
+# game runs it from UnovaOpelucid (the chain of every chapter's hiding); a save of Opelucid's is given it by UnovaCatchUpD. It may
+# only set flags and variables, and ends in return.
+script UnovaHumilau
+  setflag FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  setflag FLAG_UNOVA_HIDE_MARLON_BEACH
+  setflag FLAG_UNOVA_HIDE_MARLON_GYM
+  setflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  setflag FLAG_UNOVA_HIDE_TERRAKION
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  setflag FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  setflag FLAG_UNOVA_HIDE_HUGH_HOLD
+  setflag FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  setflag FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  setflag FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  setflag FLAG_UNOVA_HUMILAU_BEGUN
+  return
+
+
+# What the arrival of each place of plan 22 · U8's second part calls (the Marine Tube to the Plasma Frigate): the earlier
+# chapters' catch-up, and for a save from before this one the people of it hidden
+script UnovaCatchUpD
+  call UnovaCatchUpC
+  if not flag FLAG_UNOVA_HUMILAU_BEGUN call UnovaHumilau
+  return
+
+
+# The two switches of the barrier in the Plasma Frigate's hold (plan 22 · U8, part b): one in a cabin off the forward hall
+# (plasma_frigate_9.txt), the other Colress's in the stern room (plasma_frigate_3.txt). With both off the barrier is down.
+script UnovaFrigateBarriers
+  if not flag FLAG_UNOVA_FRIGATE_SWITCH_A return
+  if not flag FLAG_UNOVA_FRIGATE_SWITCH_B return
+  setvar VAR_UNOVA_FRIGATE_BARRIER 1
+  speaker none
+  text "Somewhere below came a long falling hum: the barrier in the hold is down!"
   return

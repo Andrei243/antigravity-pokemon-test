@@ -1,0 +1,59 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come to the lounges to rest between challenges. The chairs are wonderfully soft."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers battle better on a full stomach! Can I tempt you with a snack?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon fought hard today. We're taking the afternoon off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

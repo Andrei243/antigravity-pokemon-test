@@ -1,0 +1,220 @@
+{
+  "Scott": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You came all the way to the island. I knew you would."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every Trainer who challenges the Frontier carries one of these. Here, it's yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Scott's Frontier Pass!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The halls here are still being finished. Come and find me at my house in the north-east of the island."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FacilityGuide": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which part of the Frontier shall I tell you about?",
+        "THE HALLS",
+        "THE EXCHANGE",
+        "THE RANKING HALL",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Seven halls stand on this island: the Tower, the Dome, the Palace, the Arena, the Factory, the Pike and the Pyramid.",
+        "They are still being made ready. Until they open, Scott sends challengers to the Battle Frontier in Sinnoh."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Exchange Service Corner, in the east of the island, trades Battle Points for prizes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Ranking Hall, in the north-east, shows the best streaks of every hall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please enjoy the Battle Frontier!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RulesGuide": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which of the rules shall I explain?",
+        "LEVELS",
+        "ENTRY",
+        "HELD ITEMS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "In the Level 50 battles, a Pokémon above level 50 battles as if it were level 50."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Some very rare Pokémon may not enter, and no two of your Pokémon may be the same species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No two of your Pokémon may hold the same item. Items from your Bag can't be used in battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good luck in your challenges!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PassGuide": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to know about?",
+        "THE PASS",
+        "BATTLE POINTS",
+        "NOTHING"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Frontier Pass shows that you are welcome at every hall. Scott gives it to Trainers he believes in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ask me again any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battle Points are won in the halls. You have {points} BP.",
+        "The Battle Points of every Frontier, here and in Sinnoh, are one and the same."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ask me again any time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

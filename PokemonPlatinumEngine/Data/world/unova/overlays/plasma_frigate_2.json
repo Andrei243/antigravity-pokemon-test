@@ -1,0 +1,19 @@
+{
+  // The Plasma Frigate's hold (plan 22 · U8, part b), under the deck's hatch, our words. Hugh (0, FLAG_UNOVA_HIDE_HUGH_HOLD) has come
+  // down first and two grunts (1, 2, FLAG_UNOVA_HIDE_HOLD_GRUNTS) stand before him: as the player comes down (our trigger on the
+  // hatch's foot, 11, 15, VAR_UNOVA_HUMILAU 6) they fight beside each other (plasma_frigate_2.txt). An electrified barrier
+  // across the passage to the bow (our trigger, 9 to 13, 7, VAR_UNOVA_FRIGATE_BARRIER 0) turns the player back until both its
+  // switches are off: one in a cabin off the forward hall (plasma_frigate_9), the other Colress's to give, in the stern room
+  // (plasma_frigate_3). Black 2's four side rooms with their switches, reached by warp panels, are not open
+  "area": "plasma_frigate_2",
+  "bgmTrack": "unova/plasma_frigate",
+  "triggers": [
+    { "script": "HoldScene", "x": 11, "z": 15, "width": 1, "depth": 1, "variable": "VAR_UNOVA_HUMILAU", "value": 6 },
+    { "script": "Barrier", "x": 9, "z": 7, "width": 5, "depth": 1, "variable": "VAR_UNOVA_FRIGATE_BARRIER", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_HOLD", "still": true },
+    "1": { "name": "Grunt", "npcType": "plasma_grunt", "script": "HoldGrunt", "hiddenBy": "FLAG_UNOVA_HIDE_HOLD_GRUNTS", "still": true, "trainer": { "id": "unova_team_plasma_grunt_50", "dialogueBefore": "Who are you? You don't belong on this ship!", "dialogueAfter": "Ugh! We have to warn the others!" } },
+    "2": { "name": "Grunt", "npcType": "plasma_grunt", "script": "HoldGrunt", "hiddenBy": "FLAG_UNOVA_HIDE_HOLD_GRUNTS", "still": true, "trainer": { "id": "unova_team_plasma_grunt_51", "dialogueBefore": "Two kids? On our ship? Get them!", "dialogueAfter": "Protect the switches! Somebody!" } }
+  }
+}

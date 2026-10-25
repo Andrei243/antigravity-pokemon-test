@@ -2217,6 +2217,20 @@ Black and White's triple battles, three places a side, with Pokémon Showdown's 
 - **The trainer AI** thinks of a triple as of a double, over every place in its reach while any foe is (`TrainerAi.Doubles`); a wild Pokémon aims at a foe it reaches; the switches and replacements decided for one place of a side are kept from the others; nobody of the AI's ever shifts (Showdown's random player doesn't either), which the move to the centre makes safe. Battle Style Shift's offer is a single battle's alone, as before.
 - **On the screen** (style guide, "Stage", "A triple's places", and "Battle panels", "A triple's boxes", "The six cards", "SHIFT"): the foe's three on a horde's arc, the player's three in a row, all at 0.6; small boxes down each side; six target cards with only those in reach lit; SHIFT in place of RUN for a Pokémon at an end. *A decision of this session:* the plan's "three platforms a side" is three places on each side's one platform, as a horde's five are, rather than three platforms of their own; the overview frames both as it is.
 
+### Rotation battles (plan 14 · B7)
+
+Black and White's rotation battles: three of each side's Pokémon on a turntable, the front one fighting. Pokémon Showdown no longer plays them, so what follows is Black and White's as their documentation gives it, and where a rule is ours it says so.
+
+- **A format, behind the rules.** `BattleFormat.Rotation` at the enum's end, fought only under rules that have it (`Ruleset.Rotations`: the modern rules), the player alone with three able to fight against one trainer's three, in an ordinary battle; anything else asked for as a rotation is a single (`BattleFormats.FallBack`), so `battles-platinum.txt` can't move for it. A record keeps the format, and a rotation's is refused as a single's. Asked for by a trainer whose `format` is `"rotation"`; none of any table or world has one (the harness stages its own, ft40 to ft42).
+- **One place a side, two seats behind it** (*a decision of this session*, where the plan said three places with only the front active): each side has one place, as a single has (`IsSingle` holds, so a miss's line and everything else of one against one is a single's), and the two Pokémon behind its front wait on battlers of their own off the field (`BattleCore.Rotation.cs`). So the end of the turn, the entry checks, the field's conditions and everything aimed at a place reach the front alone with no rule of their own, and nothing that loops over the places had to learn of a rotation.
+- **The seats.** As the battle opens the next two of the team able to fight, after the one in front, sit behind it, the seat a turn of +1 brings forward and the one a turn of −1 brings forward (`BattleCore.Turntable`). All three are out from the start: all count as entering at the opening (Fake Out works on the first turn alone), the player's three as having taken part, and the foe's three are seen. A Pokémon on a seat is never sent in from the team (`CanSendIn`).
+- **A turn of the table** goes with a move (`BattleChoice.Rotation`, +1 or −1), never with a Mega Evolution, Z-Move, Dynamax or Terastallization, and not from a front held to its move or Dynamaxed, nor to a seat whose Pokémon can't fight (`WhyNotRotation`, "X can't rotate that way now!"); the move is the Pokémon brought forward's and is held to what it may use as if it stood in front. The tables turn as the turn begins, before anything else (switches included), the fastest front first (by Speed, then by place: a rule of ours), each said with "X rotated to the front!", a `Rotated` event, and what the Pokémon brings (`CameInWith`, `VolatileChanged`). A Pokémon brought forward for the first time has its entry checks then (Intimidate, the weather abilities).
+- **What stays on a Pokémon rotated out** (Black and White's): everything. A turn trades the three battlers' state as Ally Switch's `Exchange` trades two places, on one place, so its stat stages (its own), a doll, a confusion, a Leech Seed's seed, a Disable, a Choice lock and the turns a counter counts all wait with it. What a foe aimed at the front place (its Leech Seed's heal, Mean Look) finds whoever stands in front, as Black and White's position-bound effects do. Poison, a burn, Leech Seed and every other end-of-turn effect bite the front alone.
+- **A front that falls** is replaced from the team first, as Black and White's are; with nobody left to send, the turntable turns away from it at the turn's end, to the seat after it if its Pokémon can fight, else the one before (`TurnPastTheFallen`). A side is beaten only once all its team has fainted, seats included.
+- **The trainer AI** (a rule of ours: Platinum's never rotated, and Black and White's choice isn't to hand) turns to whichever of its three has the best damaging move against the foe in front, by power, the battle's type chart and the same-type bonus (`TrainerAi.RotationScore`), staying in front on a tie; its move is then chosen by Platinum's single-battle routines with the table turned for the asking. Nothing is drawn for the turn itself.
+- **Not built.** Rotation-specific abilities and items (none in Black and White differ), a rotation's own Battle Style offer (none is made, as in Black and White), wild rotation battles (none in the games).
+- **On the screen** (style guide, "Stage", "A rotation's turntable", "Camera (G8)", "A turntable turning", and "Battle panels", "The rotation arrows"): each platform is a turntable of three seats, the front lit, turning a third as the Pokémon brought forward hops on; the camera watches the side turning; the FIGHT button has an arrow at each end, armed with the shoulder buttons, and FIGHT opens the moves of the Pokémon of the armed seat.
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -2393,6 +2407,7 @@ The rules are Pokémon Showdown's at the pinned commit (`sim/battle-actions.ts`'
 - **The data**: the Key Stone (a key item), the Red Orb and the Blue Orb (held items) are imported from PokeAPI by name (`Importer.LaterItemsByName`); the 89 Mega Stones and the 97 Mega and 2 primal forms were already there (R1, plan 03 · D11). **Where the stones are found is Kalos's**: nothing in the game gives a Key Stone, a Mega Stone or an orb, and plan 23's Kalos chapter places them with the beat that hands the Key Stone over.
 - **Approximations**, each Showdown's rule cut down: a Mega Evolution doesn't count as Truant's action for the turn (Showdown's `moveThisTurnResult`); a Pokémon that leaves under Power Trick or with an ability a move gave it comes back with its Mega form's own; the Megas whose abilities are of later generations (Tough Claws, Aerilate, Parental Bond, Mega Launcher, Magic Bounce…) have them in name only until R27; Illusion and Sky Drop, which Showdown checks, aren't in the game yet.
 - **The screen** (`BattleEngine`): the item button in the move menu arms the Mega Evolution for the move to be chosen (`ToggleMega`, `MegaArmed`, `CanMegaEvolveNow`); the screen's Pokémon takes the form from `MegaEvolved` and plays Transform's cue on itself as a stand-in. The forms' models, which plan 03 built, are asked for before the battle with the Pokémon's own (`GameEngine.BattleShapesOf`). The button's picture and the change's own look are plan 25 · Y14's.
+- **Megas of our own** (plan 06 · R20b, approved 2026-10-26, data built in wave 56): the fifteen of `docs/plans/R20b-mega-proposals.md` follow every rule above, with stones of their own (9400 to 9414) that nothing gives until plan 23. **A stone of a species' own works for no regional form of it** (Showdown keys a stone by the species' own name): a Galarian Slowbro holding Slowbronite, an Alolan Raichu holding Raichunite X and a Hisuian Typhlosion holding Typhlosionite don't Mega Evolve, which R20 had let them.
 
 ## Z-Moves and Ultra Burst (2026-10-17, plan 06 · R21)
 
@@ -2426,8 +2441,22 @@ The rules are Pokémon Showdown's at the pinned commit (`data/conditions.ts`' `d
 - **The trainer AI** Dynamaxes the first of its Pokémon that can, with whatever move it chose and where it chose no other later mechanic, drawing nothing; under Platinum's rules, or with no Dynamax Band, it chooses exactly what it chose before.
 - **The data**: the Dynamax Band (a key item) is imported from PokeAPI by name with our own words (`Importer.LaterItemsByName`, `Overrides/items.json`) and named in Romanian; Max Guard's effect is `MaxGuard`, the other Max Moves' `MaxMove` and the G-Max Moves' `GMaxMove`, all run. The Dynamax Candy is in the data and does nothing yet, and nothing gives the Gigantamax Factor (Max Soup): **where the band, the candy and the factor are found is Galar's** (plan 23).
 - **Left**: Dynamax Cannon, Behemoth Blade and Behemoth Bash doubling against a Dynamaxed target (R26's moves: `BattleCore.IsDynamaxed` is there for them); an -ate ability changing a Max Move's type; Hidden Power and Weather Ball making the Max Move of the type they become; Taunt at the move's own time against Max Guard; Max Raid dens (plan 23 · Z10's).
-- **Mega Dynamax**, a session of our own that plan 06 lists for later, is a Mega form that Dynamaxes: `WhyNotDynamax` refuses a Mega and `MegaFormOf` a Mega Dynamaxing, and those two are where it would change; everything else (the HP, the Max Moves, the end) holds for any form.
+- **Mega Dynamax** (plan 06 · R20c) is "Mega Dynamax", below: `WhyNotDynamax` lets a Mega through by the Mega Max Band; everything else (the HP, the Max Moves, the end) holds for any form. An -ate ability's type now chooses a Max Move (below), so that item of "Left" is settled.
 - **The screen** (`BattleEngine`): the move menu's item button arms a Mega Evolution where one can be had, the Z-Power where that can, and the Dynamax otherwise (`ToggleLaterMechanic`, `DynamaxArmed`, `CanDynamaxNow`, `MaxMoveAt` for the name the menu may show, `MenuDynamaxed`); the screen's Pokémon takes the HP and the form from `Dynamaxed` and `DynamaxEnded`, with Transform's cue as a stand-in, and the Gigantamax form's model is asked for before the battle (`GameEngine.BattleShapesOf`). The growth, the red clouds, the button and each Max Move's own effect are plan 25 · Y15's.
+
+## Mega Dynamax (2026-10-26, plan 06 · R20c)
+
+Our own: no game has it and Showdown has no rule for it. The design is `docs/plans/R20c-mega-dynamax-proposals.md`, which the user approved on 2026-10-25 with every default of its fourteen questions but the fourteenth (a den in Galar, below) and every row of its table (the 36 "yes" and 27 "maybe" of the data's Megas, and R20b's fifteen of ours). It is R22's Dynamax on a Mega, behind `Ruleset.MegaDynamax` (the modern rules have it, Platinum's don't, so `battles-platinum.txt` can't move for it). Code: `Battle/Sim/BattleCore.Dynamax.cs` (`WhyNotMegaDynamax`, `MegaDynamaxFormOf`, `CanMegaDynamax`, `KeepsDynamaxForAMega`, `MegaMaxTeamOf`), `Battle/BattleEngine.Dynamax.cs` and `BattleEngine.Menus.cs` for the menu; tests: `MegaDynamaxTests`.
+
+- **Who may**: a trainer with the **Mega Max Band**, a key item of ours (`CoreSetup.MegaMaxBand`, the player while it is in the bag; `Trainer.MegaMaxBand`, a record's `megaMaxBand`; kept by the Vs. Recorder's file), and the Key Stone to Mega Evolve at all. A Pokémon in a Mega form, or one Mega Evolving in the same choice; not a legendary's or a mythical's Mega (Mewtwo, Latias, Latios, Rayquaza, Heatran, Darkrai, Zygarde, Diancie, Magearna, Zeraora), nor a primal or Ultra form, nor a Terastallized Pokémon. Any other Mega may, whether its Mega has a Mega Dynamax form or not: one with none grows in its Mega form. A plain Dynamax still needs the Dynamax Band, and is still refused to a stone's holder.
+- **When and what it spends**: a move's choice may carry both `Mega` and `Dynamax` (the Mega Evolution at its moment, order 104, then the Dynamax at 105, the moves after put in order again), or a Mega of an earlier turn chooses `Dynamax` alone. It spends the trainer's one Mega Evolution and one Dynamax: a trainer who Dynamaxed another can't, and one who Mega Evolved can Mega Dynamax only that Mega.
+- **What it changes**: R22's Dynamax, unchanged: HP by the Dynamax Level, three turns, the type's Max Moves (never a G-Max Move: a Gigantamax Charizard holding its stone Mega Dynamaxes with its factor unused, and Gigantamaxes as before holding none). It takes its Mega Dynamax form (`<Mega>-Mmax`, `FormKind.MegaDynamax`, which has its Mega's types, stats and abilities, so only the look changes) and goes back into its Mega as it ends, which lasts the battle out. "X swelled into its Mega Dynamax form!" carries R22's `Dynamaxed` with that form; no event of its own (question 12).
+- **Abilities meeting a Max Move** (Showdown's rules): Parental Bond leaves a Max Move alone (the core's check of a Standard move already did); **a -ate ability's type chooses the Max Move** (Showdown's `runMove` types the move first: Mega Salamence's Tackle is Max Airstream), and its power boost doesn't go with it. This holds for any Dynamax, not only a Mega's.
+- **The trainer AI**: a trainer with the band Mega Dynamaxes its Mega the first turn it can, in the same choice as its Mega Evolution, and keeps its Dynamax while a Pokémon of its team can still Mega Evolve; with no band, or under Platinum's rules, it chooses what it chose before. Nothing is drawn for it.
+- **Who has the band**: Sonia gives it in Wedgehurst after Galar's Hall of Fame to a player holding the Key Stone and the Dynamax Band (question 7), which waits for plan 23 · Galar. Once the player holds it, a Champion-level trainer of each built region fights with a team of ours whose ace Mega Dynamaxes (`our-trainers.json`'s `<id>_megamax`, found by `BattleCore.MegaMaxTeamOf` where a script battles `as` the team: `_rematch` becomes `_megamax`, or `_megamax` is added): Cynthia (Garchomp), the Kanto rival as Champion (Pidgeot, in the first member's place of FireRed's rematch team, which has none), Lance (Dragonite), Steven (Metagross; his post-game battle isn't built yet) and Iris (Aggron; Unova's League isn't built yet). Kalos's Diantha, Alola's Kukui, Galar's Leon and Paldea's Geeta are their regions' sessions'.
+- **A den** (question 14, answered b): `CoreSetup.MegaMaxDen` (`BattleSetup.MegaMaxDen`, kept by the Vs. Recorder's file) is a den's battle against a Mega Dynamax boss: the wild side has a Key Stone and a Mega Max Band, so the boss holding its stone Mega Evolves ("its stone is reacting to the den's light") and Mega Dynamaxes by itself; anywhere else a wild Pokémon never does. The den in Galar's post-game that sets it is plan 23 · Z10's.
+- **The data**: 63 Mega Dynamax forms after their Megas in `species.json`, written by the importer from `tools/DataImporter/Overrides/mega-dynamax.json` (a Mega form and its height, 20 to 60 m; weight 1000 kg) by `MegaDynamaxForms.cs`; R20b's fifteen rows wait in the table for their Megas. Each has its two written entries. They have no sculpts: a Pokémon in one shows its Mega's model (`Pokemon.ModelName`), grown as every giant is.
+- **Left**: the look (plan 25: the wreath in the Mega's four colours, the growth; the button has a plain mark of the Key Stone in Dynamax's red ring until then); the sculpts (the user's); Sonia's scene, the den and the four later Champions (plan 23).
 
 ## Terastallization (2026-10-18, plan 06 · R23)
 
@@ -3170,6 +3199,54 @@ Seaside Cave and the Frigate's rooms) is the next session's.
   have the sporting eye theme.
 - **What a save needs.** A save past Lacunosa Town is given the chapter's hidden people by `UnovaCatchUpC` (`FLAG_UNOVA_OPELUCID_BEGUN`),
   which the arrivals of Route 12, Route 11, Opelucid City, its Gym and Drayden's house call, with no story version raised.
+
+## Unova's fourth chapter, part b: the Marine Tube to the Plasma Frigate (2026-10-26, plan 22 · U8)
+
+Black 2's beats from Undella Town's sea gate to the Plasma Frigate's flight from Route 21, in our own words (the decompilation's zone
+scripts, read for the order alone) on flags of ours. `VAR_UNOVA_HUMILAU` is the chapter's count (`humilau_city.txt`'s header).
+
+- **The order of the chapter.** The gate north of Undella Town (`MarineTubeGate_Undella`) turns the player back until Opelucid's
+  chapter has ended (`VAR_UNOVA_OPELUCID` 7; our trigger, `VAR_UNOVA_TUBE`); the Marine Tube leads to Humilau City's gate. Hugh waits by
+  the Gym and sends the player to the beach (1), where Marlon goes back to his Gym (2); his battle gives the Wave Badge, the region's
+  eighth, and TM55 as the data's table, Platinum's, fills it (3). Coming out, Hugh and Marlon talk (Marlon's question of whether Team
+  Plasma is bad, answered either way) and Hugh sends the player to Route 22 (4), where Colress gives his machine and tells of the Seaside
+  Cave (5). The machine wakes the Crustle lying like a boulder before the cave's way out to Route 21's east beach (a wild battle at level
+  42; it scuttles off whatever happens and the machine breaks). On the beach Hugh finds the anchored Frigate and Marlon throws down the
+  gangplank (6); in the hold Hugh and the player fight two grunts in a tag battle (7); the hold's barrier falls once both its switches
+  are off; in Kyurem's chamber Zinzolin shows Kyurem, Hugh runs in for a second tag battle, asks after his sister's Purrloin and gets
+  no answer, and the Shadow Triad put both ashore (8), where the Frigate flies off and Cheren names the Giant Chasm (9).
+- **The Marine Tube is a map of ours** (`Data/maps/MarineTube.json`): Black 2's tube stands on rails, as Castelia's avenue does, and the
+  data gives its chunks nothing to walk. Ours is a straight walkway through the sea, its glass not drawn, with five people of our own
+  on Black 2's beats; the gates' overlay `doors` lead into it. The tube's walls of sea as a room of their own (the style guide's
+  "Rooms") are left.
+- **Humilau's boardwalks and doors.** The city's planks are a second grid of its chunks over a first that is the sea, blocked; the reader
+  walks the deck where the sea under it is blocked (`Bw2World.Decks`, Humilau's six chunks alone, so no other area's file moved). A
+  house's door is a plain wall tile under its front: on the overworld of Unova it is walked into from the deck south of it, and
+  whoever comes out stands on that deck (`World.UnovaWallDoor`, `Join`).
+- **The Humilau Gym's pool of lily pads is not walked.** The walkway from the door, the cross-walk and the dock at its east end are; two of
+  the six ace trainers stand on the cross-walk where we put them, the other four are held back with the pads, and Marlon waits on
+  the dock.
+- **The Colress Machine is a flag** (`FLAG_UNOVA_COLRESS_MACHINE`, then `_BROKE`), as Hoenn's Frontier Pass is: the item isn't in our
+  data. Route 22's Terrakion, who crosses the road before Colress, is plan 22 · U10's (the Swords of Justice) and held hidden.
+- **The Seaside Cave.** The way from Route 21's west mouth to the east beach runs along the upper floor's middle; the chamber north of it
+  (its TM06 and the stairs to the lower floor's north end) is joined to it by a one-tile wall of the original's data that is blocked
+  here, as Mistralton Cave's are, so those stairs are shut and the TM held back (plan 22 · U10 with Mistralton Cave). Rocky the black
+  belt and his Roggenrola guard the way in from Undella Bay until beaten.
+- **The Plasma Frigate.** Five of its rooms are open: the hold under the deck's hatch, the forward and aft cabin halls, one cabin off the
+  forward hall and the stern room, and Kyurem's chamber in the bow. Black 2's warp panels between its lower decks and its four
+  switch rooms off the hold are not walked: the hold's barrier has two switches here, one on a cabin's wall and one that Colress, who
+  battles the player in the stern room (where Black 2 has him at the end of a panel's ride in a room of his own), switches off himself
+  (`common.UnovaFrigateBarriers`). The deck's gangway leads to the tournament's pier until the ship anchors off Route 21 and to Route 21
+  until it has flown (overlay `switches`); the ship is never drawn there, as at Opelucid. Rood and the old Plasma, the Frigate's
+  password and the disguised spy, and its later moorings (the Giant Chasm, plan 22 · U9; the post-game) are left.
+- **Looks and sounds.** Opelucid builds in a way of its own since this part (`Architecture.Skyline`: pale panels under dragon-violet hips
+  with ribbon windows, Black 2's modern city) and Humilau in another (`Architecture.Stilts`: white clapboard under lagoon-aqua gables
+  with flower boxes); the style guide's rows came first. The Opelucid and Humilau Gyms are Dragon's and Water's. Marlon has the swimmer's
+  look until plan 22 · U12. Songs of our own, none heard by the user yet: `unova/humilau` (with a night arrangement), `marine_tube`,
+  `seaside_cave` and `colress` (his theme as he steps up), each over 25 s and clean in `MusicRender`.
+- **What a save needs.** A save past Opelucid City is given the chapter's hidden people by `UnovaCatchUpD` (`FLAG_UNOVA_HUMILAU_BEGUN`),
+  which the arrivals of Humilau City, its Gym, Routes 21 and 22, the Seaside Cave and the Frigate's rooms call, with no story version
+  raised.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -5863,3 +5940,33 @@ places the plan lists for H12 are left (the plan's status line says which).
   here it comes down at once to the tile before the stone.
 - **Altering Cave stays unbuilt**: its warp on Route 103 is a plain rock tile that nobody can walk into in Emerald either
   (the reader leaves such a warp as a way no one can take), and its other wild tables are the Mystery Gift's.
+
+## The Battle Frontier island (2026-10-26, plan 21 · H12, part b)
+
+Emerald's Battle Frontier island (`HoennBattleFrontier`, matrix 357: its west and east halves stitched into one map, as
+the Safari Zone's six are), with the rooms of its grounds: the reception gate, the Pokémon Center on two floors, the
+Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lounges. The lines are our own.
+
+- **The way there** is Lilycove's ferry desk (decision 2: every voyage out of Lilycove): a Champion of Hoenn who holds
+  Dad's S.S. Ticket (`FLAG_RECEIVED_SS_TICKET`) chooses between Southern Island and the Battle Frontier, and is set down on
+  the island's quay at 19, 67; without the ticket the desk asks only about Southern Island, as before. The attendant on
+  the quay sails back to Lilycove's harbour (8, 11). Emerald's ferry to Slateport and the S.S. Tidal's cabins (its
+  Slateport-to-Lilycove cruise) are not built.
+- **The halls stay shut.** The island's seven halls (the Tower, Dome, Palace, Arena, Factory, Pike and Pyramid) are
+  `locked` warps, signs saying so, until plan 14 · B8 to B10 build the five of Emerald's own; the Frontier keeps one set
+  of records and Battle Points, Sinnoh's (plan 06 · R18; "Scott's way to the Battle Frontier"). **Scott's house** is
+  where the island meets them: Scott gives 3 Battle Points the first time (`FLAG_RECEIVED_SCOTTS_BATTLE_POINTS`, ours;
+  Emerald gives one to four by how often he was met) and offers the crossing to Sinnoh's grounds (`travel to
+  "BattleFrontier" 47 51 up`), whose Hoenn guide sails back to Lilycove. In the reception gate Scott gives his Frontier
+  Pass to a Champion who sailed over without taking it on the quay (`FLAG_RECEIVED_FRONTIER_PASS`, which hides him there).
+- **The Exchange Service Corner** trades the same prizes as Sinnoh's booths (`frontier prize items` and `machines`): one
+  set of points, one list. Emerald's dolls and cushions for Battle Points are not offered (their two clerks say the
+  stock hasn't come), nor Lounge 7's two move tutors for Battle Points, Lounge 3's gambler, Lounge 5's nature girl or
+  Lounge 6's trade, whose people talk. Lounge 1's breeder judges a Pokémon by its IVs as the Battle Tower's judge does
+  (`frontier judge`). The Ranking Hall's boards wait for the island's halls.
+- **The Mart** sells the League's stock (`ever_grande_league`); Emerald's vitamins there are the Exchange's prizes.
+- **The strange tree** in the south-east is Emerald's Sudowoodo: watered with the Wailmer Pail it battles at level 40,
+  gone once beaten or caught (`FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO`), there again if fled from.
+- **Left out**: Emerald's ninth lounge, whose door is a blocked tile nobody reaches; Artisan Cave (its two ways in
+  `locked`, Smeargle's cave being plan 21 · H12's later part); the island's own song (it plays Lilycove's, as Sinnoh's
+  Frontier plays Veilstone's); the halls' buildings, which the import draws only where a warp leads somewhere.

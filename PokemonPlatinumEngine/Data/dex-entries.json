@@ -27,6 +27,13 @@
       "In this form it soaks up so much light that it stays calm in the fiercest heat. A heavy, sweet fragrance rolls off the bloom and dulls the will of anyone close."
     ]
   },
+  "Venusaur-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its back flower opens into a lotus as wide as a hill, and crystal stamens rise from the heart of it like spires tipped with orange light.",
+      "Pollen falls from it like golden snow over the fields around it. Storm clouds lit violet and cyan coil about its broad feet as it walks."
+    ]
+  },
   "Venusaur-Gmax": {
     "habitat": "Grassland",
     "entries": [
@@ -62,11 +69,25 @@
       "In this form it loses all restraint and fights with wild abandon. The deep blue fire that spills from its mouth can melt stone in an instant."
     ]
   },
+  "Charizard-Mega-X-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "The blue fire at its jaws climbs back over its head into a crown of crystal flame with three prongs. Its black wings stretch like sails.",
+      "Witnesses say the air turns cold around it before the heat arrives. A violet glow pulses in the medallion fixed upon its chest."
+    ]
+  },
   "Charizard-Mega-Y": {
     "habitat": "Mountain",
     "entries": [
       "Great wings spread wide, and it rides the high winds with the sun on its back. The blaze it breathes is so bright that the sky seems to catch fire.",
       "This form keeps its wits and hunts from a great height. It turns the weather hot and clear and strikes with a precision that looks almost calm."
+    ]
+  },
+  "Charizard-Mega-Y-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A small sun burns inside a cage of crystal ribs at its chest, white gold at the core and shimmering with haze in every direction.",
+      "Its raised wings make a great V against the clouds, edged with orange crystal. Rivers below it have been known to boil away."
     ]
   },
   "Charizard-Gmax": {
@@ -102,6 +123,13 @@
     "entries": [
       "A massive cannon sits on its back, and the two on its shoulders grow even larger. It fires jets of water with a force that gouges the ground.",
       "In this form its aim is as true as its power is great. It braces itself and a single shot can punch a hole through a cliff."
+    ]
+  },
+  "Blastoise-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The cannon on its shell has become a turning turret of three crystal barrels, each with water spiralling inside it before a shot.",
+      "It walks like a fortress over the land, its domed shell higher than a castle keep. One volley can carve a new bay."
     ]
   },
   "Blastoise-Gmax": {
@@ -167,6 +195,13 @@
       "In this form it hums at a pitch that shakes the air. Mighty wings let it dart to and fro in a blur, and few things ever see it coming."
     ]
   },
+  "Beedrill-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "A halo of a dozen crystal needles hovers behind it, all pointed forward like a volley that is about to fly at its enemy.",
+      "Its lances glow a toxic pink at their tips, and its wings look like stained glass. The hum of it carries for miles."
+    ]
+  },
   "Pidgey": {
     "habitat": "Forest",
     "entries": [
@@ -193,6 +228,13 @@
     "entries": [
       "Its crest streams back like a long banner, and its wings carry it faster than any storm. When it dives, a sharp crack of sound follows behind.",
       "Its eyesight is so sharp in this form that it sees a mouse from the top of the sky. It never loses a target once it has it in sight."
+    ]
+  },
+  "Pidgeot-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its tail spreads into a fan of long crystal quills that trails behind it like the tail of a comet crossing the evening sky.",
+      "Wings spread from one horizon to the other, it rides storm winds without a single beat. Its plumes shade from orange into pink."
     ]
   },
   "Rattata": {
@@ -391,11 +433,25 @@
       "In this form it grows far bigger and bolder than usual. Wild sparks leap from its cheeks, and the field itself seems to hum."
     ]
   },
+  "Raichu-Mega-X-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its bolt of a tail has grown into a giant crystal blade shaped like lightning, which it lifts high above its head before striking.",
+      "Sparks crackle along its ears and tail without pause, and the clouds round its feet flash with each heartbeat it takes."
+    ]
+  },
   "Raichu-Mega-Y": {
     "habitat": "Forest",
     "entries": [
       "Its body is lean and light, and it darts across the field like a bolt of lightning. Sparks crackle off its sleek fur as it dashes.",
       "It moves so quickly that its afterimage lingers in the air. A single touch from its tail is enough to knock a foe senseless."
+    ]
+  },
+  "Raichu-Mega-Y-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "A ring of floating crystal orbs circles its body, each one holding a ball of lightning, joined to the others by thin arcs.",
+      "It crouches low as if ready to spring at any instant. The glowing cheeks on its face turn the whole sky a pale yellow."
     ]
   },
   "Sandshrew": {
@@ -769,6 +825,13 @@
       "In this form it never forgets a thing. Its thoughts reach out in all directions, and no secret in the neighborhood stays hidden."
     ]
   },
+  "Alakazam-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Five tall crystal blades turn slowly round it in a wheel, each a different colour, where once it held five ordinary spoons.",
+      "It floats seated in the air with its long beard drifting, and its thoughts can be heard as a hum by anyone standing near."
+    ]
+  },
   "Machop": {
     "habitat": "Mountain",
     "entries": [
@@ -823,6 +886,13 @@
     "entries": [
       "Its mouth opens as wide as a barrel, and the gut inside is a pit of bitter juice. The tangled vines on its body reach out for anything that moves.",
       "In this form it hunts relentlessly. A sweet, sickly smell draws prey close, and one gulp is all it takes."
+    ]
+  },
+  "Victreebel-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "A crown of smaller crystal pitchers sprouts around its rim, each one dripping a glowing nectar that dissolves whatever it touches.",
+      "This towering bell rises out of the clouds with its vine curling far above. The inside of its mouth glows a vivid acid pink."
     ]
   },
   "Tentacool": {
@@ -935,6 +1005,13 @@
     "entries": [
       "Its shell grows thick and heavy, and the great mass hangs from its tail. It sits in place and thinks of nothing, letting nothing in.",
       "In this form a tough shell armors its body from head to toe. It hardly feels a blow and is almost impossible to rouse."
+    ]
+  },
+  "Slowbro-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The shell clamped on its tail turns into a spiral of violet crystal, with cyan light winding up its whorls like a staircase.",
+      "Its body sits small and calm inside the towering shell, which looms over the sea like a lighthouse. It rarely seems to notice anything."
     ]
   },
   "Slowbro-Galar": {
@@ -1068,6 +1145,13 @@
     "entries": [
       "It slips into the shadow of its foe and waits there, grinning. The ghost's shadow stretches as long as a hall, and an icy chill follows it.",
       "In this form it is bigger and bolder and has a hole in the ground for a mouth. It loves to terrify, and it will pull a person's shadow into its own."
+    ]
+  },
+  "Gengar-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "Six long hands of shadow rise from the pool it sinks into, their fingers ending in claws of violet crystal that never stop moving.",
+      "Its third eye has become a huge crystal that sees through walls. The storm boiling out of its shadow smells faintly of smoke."
     ]
   },
   "Gengar-Gmax": {
@@ -1273,6 +1357,13 @@
       "In this form the pair trade places in a flash, and they guard each other's backs. A fierce love for the little one powers every attack."
     ]
   },
+  "Kangaskhan-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "The young has stepped down to fight at its mother's feet, wearing crystal boxing gloves that burn with orange and pink light.",
+      "The mother stands guard as tall as a hill, never moving from behind her child. Their punches arrive together like thunder and lightning."
+    ]
+  },
   "Horsea": {
     "habitat": "Sea",
     "entries": [
@@ -1320,6 +1411,13 @@
     "entries": [
       "Its core burns with a bright light, and its arms stretch into a shining star. It spins about with a hum and sends out mysterious signals.",
       "In this form the star grows sharp and tall. The spinning blades slice the water as it glides forward with deadly speed."
+    ]
+  },
+  "Starmie-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "A second, larger star made of crystal light turns behind it like a halo, each of its points lit in a different colour.",
+      "It spins upright on one point, its core glittering ruby and cyan. People who watch it for long say they lose track of time."
     ]
   },
   "Mr. Mime": {
@@ -1378,6 +1476,13 @@
       "In this form it flies with a fierce buzz. The horns shine like a pair of swords and it fights without hesitation."
     ]
   },
+  "Pinsir-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "The inner edges of its huge pincers are lined with rows of violet crystal teeth that glow brighter the nearer they get to the tips.",
+      "It hovers on wide orange wings, pincers spread open to their limit. Anything caught between those jaws is never seen again."
+    ]
+  },
   "Tauros": {
     "habitat": "Grassland",
     "entries": [
@@ -1425,6 +1530,13 @@
     "entries": [
       "Its fury has no end, and dark scales spread over its body. The jaw grows wide enough to swallow a boat whole and it roars with wrath.",
       "In this form it rampages through the waves, burning with anger. A fierce light shines from its eyes as it lashes out at everything."
+    ]
+  },
+  "Gyarados-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A row of crystal sail fins runs down its whole spine, violet at the base and cyan at the tips, like a storm front marching along it.",
+      "Its coils rise out of a whirlpool with the head reared high and roaring. Ships keep many miles away from the waters it haunts."
     ]
   },
   "Lapras": {
@@ -1539,6 +1651,13 @@
       "In this form it rules the skies with a harsh, wild cry. Hard stone plates cover its body, and it bears down on a foe like a falling rock."
     ]
   },
+  "Aerodactyl-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "Shards of amber crystal burst from its back like a fossil bed erupting, and the rock spikes of its wings glow in the same warm colour.",
+      "It flings its wings wide and screams from open jaws. Some scholars believe the ancient skies were once full of creatures like this."
+    ]
+  },
   "Snorlax": {
     "habitat": "Mountain",
     "entries": [
@@ -1623,6 +1742,13 @@
       "In this form it is calm and strong, with a quiet power that fills the sky. It will brave any storm to save a friend."
     ]
   },
+  "Dragonite-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its two thin antennae have grown into long ribbons of light that trail far behind it like the streamers of a dragon of the deep sea.",
+      "Despite its colossal size it remains as kind as ever, and it opens its arms wide as if hoping to catch the whole sky."
+    ]
+  },
   "Mewtwo": {
     "habitat": "Rare",
     "entries": [
@@ -1679,6 +1805,13 @@
       "In this form it is gentle and graceful, with a glow like morning light. Its fragrance calms the angry and eases the sick."
     ]
   },
+  "Meganium-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "The ring of petals round its neck has opened into a great sunflower corona behind its head, a whole disc of golden light.",
+      "It raises its long neck high above the treetops, and wilted gardens it passes over bloom again by the next morning."
+    ]
+  },
   "Cyndaquil": {
     "habitat": "Grassland",
     "entries": [
@@ -1698,6 +1831,13 @@
     "entries": [
       "Typhlosion's fiery collar roars higher whenever it is angered. Its fur is thick and dark along its back.",
       "Typhlosion is a calm Pokémon until provoked. Its fiery mane can scorch everything nearby in an instant."
+    ]
+  },
+  "Typhlosion-Mega": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its collar of flame climbs into a ring of dark rock round its shoulders, and fire wells inside it like the mouth of a crater. Lava glows in the cracks along its back.",
+      "When it rises in this form the clouds part and the sun beats down hard. The ground it crosses smoulders for days, and nothing grows there until the rains return."
     ]
   },
   "Typhlosion-Hisui": {
@@ -1733,6 +1873,13 @@
     "entries": [
       "Its jaws spread wide and its body bulges with power. It is a rough and wild beast that takes down anything in its path.",
       "In this form it is lean and fierce, and it moves with the speed of a striking snake. A dragon's spirit burns in its eyes."
+    ]
+  },
+  "Feraligatr-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Two long horns of cyan crystal sweep back from its jaw, and the spikes along its back burn violet and orange like a dragon's fins.",
+      "It stands upright with jaws gaping wide and tail curling forward. When it bellows, waves rise in harbours on the far side of the sea."
     ]
   },
   "Sentret": {
@@ -1894,6 +2041,13 @@
     "entries": [
       "Its mane grows long and white, and its tail glows with a mighty light. It stands calm as a lighthouse and sends out power in pulses.",
       "In this form it is as gentle as a lamb, but its strength is wild. Its brilliant light beams across the sky at night."
+    ]
+  },
+  "Ampharos-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "The orb on its tail has become a crystal lantern that sweeps a beam of light far over the land, just like a lighthouse.",
+      "Its long white mane streams behind it like a cloak, threaded with crystal. Sailors lost in storms have been guided home by its glow."
     ]
   },
   "Bellossom": {
@@ -2295,6 +2449,13 @@
       "In this form its mighty body hums with the sound of grinding stone. It cracks open the mountain and sends sand flying as it rises."
     ]
   },
+  "Steelix-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "A crown of six tall crystal pillars stands round its head like a circle of standing stones, each lit violet and cyan from inside.",
+      "It rears up in a spiral as high as a tower, iron jaws open. The ground trembles for days after it burrows away."
+    ]
+  },
   "Snubbull": {
     "habitat": "Urban",
     "entries": [
@@ -2337,6 +2498,13 @@
       "In this form its armor shines like polished steel. It hovers with a quick, even buzz and cuts down whatever stands in front of it."
     ]
   },
+  "Scizor-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Four large wings spread behind it like stained glass windows of violet and orange crystal, casting coloured light over the ground.",
+      "Its crimson pincers are raised high, the eye markings on them seeming to watch every rival. One snap can split a mountain boulder."
+    ]
+  },
   "Shuckle": {
     "habitat": "Mountain",
     "entries": [
@@ -2356,6 +2524,13 @@
     "entries": [
       "Its horn grows to a size larger than its body. It picks up a foe many times its weight and hurls it with ease.",
       "In this form its arms sprout two more horns, and it strikes many times in a single blow. It charges ahead with the force of a truck."
+    ]
+  },
+  "Heracross-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its forked horn has split into a broad crown of crystal points that glow violet with orange edges, raised like a battering ram.",
+      "It plants its feet and lowers its head before every charge. Forests it has passed through are left with trees flattened in rows."
     ]
   },
   "Sneasel": {
@@ -2470,6 +2645,13 @@
       "In this form it is as heavy and hard as a fortress, and it takes the hardest blows without a scratch."
     ]
   },
+  "Skarmory-Mega-Mmax": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its steel wings separate into dozens of crystal blades with gaps between them, so that the wind sings as it flies past.",
+      "It glides on outstretched wings over cliffs and canyons. The feathers it sheds are sharp enough that people forge them into knives."
+    ]
+  },
   "Houndour": {
     "habitat": "RoughTerrain",
     "entries": [
@@ -2489,6 +2671,13 @@
     "entries": [
       "Its horns grow long and its body burns with a fierce heat. It stalks about with a low growl and fire in its mouth.",
       "In this form the blaze on its back turns white-hot. It lights up the night, and its howl strikes fear into all who hear."
+    ]
+  },
+  "Houndoom-Mega-Mmax": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "A row of crystal torches burns down its spine, each one flickering with a different colour of flame as it prowls the dark.",
+      "Its howl echoes for miles, and those who hear it feel their hearts race. The smoke from its jaws hangs in the air for hours."
     ]
   },
   "Kingdra": {
@@ -2631,6 +2820,13 @@
       "In this form its strength is overwhelming, and it can reshape the land with a swing of its tail. Nothing stands in its way."
     ]
   },
+  "Tyranitar-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "Boulders veined with glowing crystal orbit its body slowly, and it hurls them one by one at anything that dares to challenge it.",
+      "Mountains crumble under its tread and sand storms follow wherever it walks. Maps of the land must be redrawn after it passes."
+    ]
+  },
   "Lugia": {
     "habitat": "Rare",
     "entries": [
@@ -2680,6 +2876,13 @@
       "In this form the seeds on its tail ripen and rattle as it runs. Its blades cut through the air with a whistle."
     ]
   },
+  "Sceptile-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its tail has grown into a whole tree of crystal, its branches spreading wide behind it and heavy with fruit of glowing light.",
+      "It moves with impossible grace for its size, and the forest leans toward it as it goes. Seeds sprout wherever its shadow falls."
+    ]
+  },
   "Torchic": {
     "habitat": "Grassland",
     "entries": [
@@ -2708,6 +2911,13 @@
       "In this form it fights faster the longer the battle goes on. The heat from its body makes the air around it dance."
     ]
   },
+  "Blaziken-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Gauntlets of crystal flame wrap both its fists and burn hotter with each blow, leaving trails of orange light in the air.",
+      "Its kicks crack the sky like thunder. It grows faster the longer a battle lasts, until only a blur of fire can be seen."
+    ]
+  },
   "Mudkip": {
     "habitat": "WatersEdge",
     "entries": [
@@ -2734,6 +2944,13 @@
     "entries": [
       "Its arms swell into mighty clubs, and it moves through water like a torpedo. A single sweep of its arm can sink a ship.",
       "In this form its power is unstoppable. It wades through the roughest seas and can reshape a shoreline with a stomp."
+    ]
+  },
+  "Swampert-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A frozen tidal wave rises behind its shoulders as a crest of crystal water, holding still as though time had stopped for it.",
+      "It wades through floods without slowing and can hold back a river with its arms alone. Its glowing eyes cut through muddy water."
     ]
   },
   "Poochyena": {
@@ -2911,6 +3128,13 @@
       "In this form its devotion knows no bounds. It warps the very space around itself to shield those it loves."
     ]
   },
+  "Gardevoir-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Its gown has become a rose window of crystal panels that throws coloured light all around it whenever it turns or dances.",
+      "It will shield its trainer from any harm, even at the cost of itself. A gentle chime sounds wherever its steps fall."
+    ]
+  },
   "Surskit": {
     "habitat": "WatersEdge",
     "entries": [
@@ -3058,6 +3282,13 @@
       "In this form its body has grown heavy with jewels. It is too weighed down to run, but it dodges every blow with a wicked trick."
     ]
   },
+  "Sableye-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "The great gem it holds as a shield is now crowned by a ring of smaller gems that glitter in every colour of the deep earth.",
+      "It grins from behind its shield as though it knows a secret. Miners claim its eyes can see every jewel buried in a mountain."
+    ]
+  },
   "Mawile": {
     "habitat": "Cave",
     "entries": [
@@ -3070,6 +3301,13 @@
     "entries": [
       "It now wields two great jaws, and each one hungers for a bite. It smiles sweetly and crushes anything that comes near.",
       "In this form its power is doubled, and the fierce jaws shut with a mighty clang. Its looks are kind but its heart is cruel."
+    ]
+  },
+  "Mawile-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "Its twin jaws are lined with crystal teeth and joined by a long glowing chain, and they snap shut with a sound like a gong.",
+      "Its face looks sweet and harmless, but the jaws behind it are as large as a house. Nothing that ventures close escapes their bite."
     ]
   },
   "Aron": {
@@ -3100,6 +3338,13 @@
       "In this form it has no weak points and takes no damage. It crashes into the foe like a falling cliff."
     ]
   },
+  "Aggron-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its body is covered in a castle wall of crystal plates, each one fitted tight and glowing faintly along its edges.",
+      "It guards its mountain like a fortress and nothing passes it. Rocks thrown at it shatter before they leave a single mark."
+    ]
+  },
   "Meditite": {
     "habitat": "Mountain",
     "entries": [
@@ -3121,6 +3366,13 @@
       "In this form its arms are wrapped in a flowing energy. It strikes with calm precision and its focus never wavers."
     ]
   },
+  "Medicham-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A lotus of crystal ribbons floats behind it as it meditates, the ribbons slowly swirling in time with every breath it takes.",
+      "Its focus is so complete that it can stand on one finger for days. A single palm strike from it can level a hillside."
+    ]
+  },
   "Electrike": {
     "habitat": "Grassland",
     "entries": [
@@ -3140,6 +3392,13 @@
     "entries": [
       "Its mane streams backward like a flowing cape of lightning. It races so fast that it leaves a trail of thunder.",
       "In this form it is aggressive and bold. The blue fire of its mane lights up the night as it charges."
+    ]
+  },
+  "Manectric-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its mane rises into a storm of crystal spikes that crackle with electricity, lighting up the night like a sudden flash of lightning.",
+      "It runs faster than thunder can follow, and wherever it stops the air smells of rain. Power lines hum when it passes overhead."
     ]
   },
   "Plusle": {
@@ -3212,6 +3471,13 @@
       "In this form the spines on its back sharpen and it becomes even faster. It hunts without mercy."
     ]
   },
+  "Sharpedo-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "Crystal blades line its fins and its scarred snout, cutting through the water with a hiss as it hunts in the open sea.",
+      "Its jaws can tear through a ship's hull with one bite. Sailors whisper that its glowing scars mark every rival it has beaten."
+    ]
+  },
   "Wailmer": {
     "habitat": "Sea",
     "entries": [
@@ -3245,6 +3511,13 @@
     "entries": [
       "The two humps on its back become a roaring volcano, and the magma inside can burst out any time. Its body is hotter than ever.",
       "In this form it is as mighty as a mountain, and it carries a burning crater on its back. The ground melts under its feet."
+    ]
+  },
+  "Camerupt-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A ring of crystal vents erupts around its volcanic hump, spouting columns of fire and ash that glow through the dark clouds.",
+      "Its back is an active volcano and the ground smokes under every heavy step. Villages near it keep their wells filled at all times."
     ]
   },
   "Torkoal": {
@@ -3329,6 +3602,13 @@
     "entries": [
       "Its wings become a dazzling cloud of pink and white. It sings in a sweet voice and floats like a drifting cloud.",
       "In this form it is gentle and fair, and a soft light shines about it. Its song can put a whole valley at ease."
+    ]
+  },
+  "Altaria-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its fluffy wings have grown into a whole cumulus of crystal snow that drifts around it and sparkles in the light.",
+      "It sings in a voice so gentle that storms quiet down to listen. Children chasing its shadow feel cool and calm for hours."
     ]
   },
   "Zangoose": {
@@ -3499,6 +3779,13 @@
       "In this form it has grown big and fierce. A curse swirls in the air around it, and it chases down the one who wronged it."
     ]
   },
+  "Banette-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Crystal puppet strings trail from its zippered body into the sky, as if an unseen hand pulls them from far above the clouds.",
+      "It cannot forget the children who threw it away, and its grudge glows violet. Its laugh echoes long after it has vanished."
+    ]
+  },
   "Duskull": {
     "habitat": "Forest",
     "entries": [
@@ -3548,6 +3835,13 @@
       "In this form it is graceful and calm. It soars in the sky and watches over those it wants to warn."
     ]
   },
+  "Absol-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its wings unfold into feathered crystal that catches the light, and the blade on its head shines brighter than the moon.",
+      "It appears before disasters to warn those who will listen. Where it stands, the wind falls silent and the clouds gather close."
+    ]
+  },
   "Absol-Mega-Z": {
     "habitat": "Mountain",
     "entries": [
@@ -3581,6 +3875,13 @@
     "entries": [
       "Its jaw widens into a gaping maw, and its body turns as hard as ice at the bottom of a glacier. A freezing breath spills from its mouth.",
       "In this form it swallows a foe whole and freezes it in an instant. The air around it fills with glittering shards of frost."
+    ]
+  },
+  "Glalie-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "Its gaping mouth is ringed with huge fangs of crystal ice, and a freezing wind howls endlessly from deep inside its jaws.",
+      "Avalanches follow wherever it rolls. Climbers lost in blizzards have seen its face looming out of the snow above them."
     ]
   },
   "Spheal": {
@@ -3667,6 +3968,13 @@
       "In this form it is wild and fierce. It dives at a foe and spins like a storm, and the sound of its flight can shatter glass."
     ]
   },
+  "Salamence-Mega-Mmax": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its crescent wings trail a comet tail of crystal light behind it, streaking across the sky in brilliant arcs of colour.",
+      "It flies so fast that it never seems to touch the ground. The wind it raises tears the tops off trees along its path."
+    ]
+  },
   "Beldum": {
     "habitat": "RoughTerrain",
     "entries": [
@@ -3693,6 +4001,13 @@
     "entries": [
       "Its four legs grow into great claws and its body gains a long, armored face. It calculates every move and crushes a foe with ease.",
       "In this form its brains work as one and its mind is faster than a machine. Each stomp of its legs makes the earth shake."
+    ]
+  },
+  "Metagross-Mega-Mmax": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "An orbit of hexagon plates circles its body, each a crystal computer that works out every possible move faster than thought itself.",
+      "Its four legs fold beneath it as it floats over the land. It foresees an opponent's attacks and answers before they begin."
     ]
   },
   "Regirock": {
@@ -3842,6 +4157,13 @@
       "Its footsteps are slow and heavy, and the ground trembles faintly with each one. A Torterra rarely hurries, but nothing can push it aside once it has set off."
     ]
   },
+  "Torterra-Mega": {
+    "habitat": "Forest",
+    "entries": [
+      "The spikes of its shell rise into a ridge of three snowcapped peaks, and a small grove grows on its slopes. Seen from afar it looks like a range of hills walking.",
+      "Its shell hardens to bedrock, and even blows that should break it only chip the stone. Birds nest in the grove on its back and never seem to notice it moving."
+    ]
+  },
   "Chimchar": {
     "habitat": "Mountain",
     "entries": [
@@ -3863,6 +4185,13 @@
       "It trains alone on mountain peaks, repeating the same sequence of strikes until it can perform them with its eyes closed. Its footwork is light and swift."
     ]
   },
+  "Infernape-Mega": {
+    "habitat": "Mountain",
+    "entries": [
+      "The fire on its head streams down its back to the tip of its tail like a burning mane. Rings of flame wrap its wrists the way a boxer wraps his hands.",
+      "Its gold markings grow into plates of armour on its shoulders and knees. It throws punches so fast that the air around its fists is left trembling with heat."
+    ]
+  },
   "Piplup": {
     "habitat": "WatersEdge",
     "entries": [
@@ -3882,6 +4211,13 @@
     "entries": [
       "It dives deep beneath the ice to hunt, steering with sweeps of its stiff wings. It can stay below for a long time before it bursts back to the surface.",
       "It stands on the highest rock of the shore to survey its stretch of coast. Smaller water Pokémon gather in the shelter of its territory."
+    ]
+  },
+  "Empoleon-Mega": {
+    "habitat": "Sea",
+    "entries": [
+      "Its crest rises into a tall crown of three gold-edged prongs, and a cape of navy plumage falls from its shoulders to the ground. It carries itself like a ruler at court.",
+      "The blades of its flippers turn to steel and grow longer. Any attempt to weaken it only stirs its pride, and its counterattack comes back far stronger than before."
     ]
   },
   "Starly": {
@@ -4192,6 +4528,13 @@
       "In this form it is nimble and bold. A graceful kick from its long legs can knock a foe flat."
     ]
   },
+  "Lopunny-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its long ears flow behind it as ribbons of light that ripple through the air whenever it leaps or spins round.",
+      "It moves like a dancer and strikes like a boxer. Its kicks can send waves through the clouds that roll around its feet."
+    ]
+  },
   "Mismagius": {
     "habitat": "Forest",
     "entries": [
@@ -4318,6 +4661,13 @@
       "In this form it is wilder and more bloodthirsty. Its wings cut the air like knives, and sandstorms whip up in its wake."
     ]
   },
+  "Garchomp-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "A crystal dorsal fin rises from its back inside a swirling sandstorm, slicing the air with a whistle as it charges.",
+      "It swims through the sky as a shark swims through the sea. Its blades can cut through solid rock without slowing down."
+    ]
+  },
   "Garchomp-Mega-Z": {
     "habitat": "Cave",
     "entries": [
@@ -4351,6 +4701,13 @@
     "entries": [
       "Its aura is so strong that it bursts out in streaming tendrils from its head. It senses everything around it and fights with total focus.",
       "In this form it is powerful and calm. It reads the flow of battle and strikes in a quick succession of blows."
+    ]
+  },
+  "Lucario-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "The tassels at the back of its head become ribbons of crystal aura that flow around it and glow brightest as it focuses.",
+      "It senses the feelings of everything nearby, even through stone. Its aura reaches so far that birds go quiet across a whole valley."
     ]
   },
   "Lucario-Mega-Z": {
@@ -4449,6 +4806,13 @@
     "entries": [
       "Its body grows broad and thick, and it kicks up a blizzard that stretches across the mountain. It is silent and slow but unstoppable.",
       "In this form it is a towering snowman with a fierce glare. Its footsteps shake the ice and its breath turns the air to snow."
+    ]
+  },
+  "Abomasnow-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A forest of crystal trees made of ice grows across its back and shoulders, each one glittering with frost that never melts.",
+      "Blizzards rage wherever it stands, burying the land in snow. Travellers say its footprints are deep enough to sleep inside."
     ]
   },
   "Weavile": {
@@ -4563,6 +4927,13 @@
       "In this form it wears a flowing white cape and a graceful poise. It will draw its blade in defense of the weak."
     ]
   },
+  "Gallade-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Its elbow blades have grown into crystal swords, and a cape of light hangs from its shoulders as it stands guard.",
+      "It is a knight who protects the weak with absolute loyalty. One slash of its swords can split the clouds wide open."
+    ]
+  },
   "Probopass": {
     "habitat": "Cave",
     "entries": [
@@ -4589,6 +4960,13 @@
     "entries": [
       "Its icy robe flares wide and its eyes burn with a pale blue flame. It glides over the snow, and its chill is felt from afar.",
       "In this form it is colder and taller than before. A frozen mist trails behind as it stalks through the blizzard."
+    ]
+  },
+  "Froslass-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A crown of ice shards rises from its head, each glowing with a cold blue light that freezes the air into glittering dust.",
+      "It drifts across snowy mountains with no sound at all. Those it touches feel their breath turn to frost within moments."
     ]
   },
   "Rotom": {
@@ -4920,6 +5298,13 @@
       "Serperior glides with elegant grace and rarely hurries. Its patience is such that fights are usually decided before they begin."
     ]
   },
+  "Serperior-Mega": {
+    "habitat": "Forest",
+    "entries": [
+      "It rises high from its coils, and its leafy collar spreads into a hood that frames its face like a cobra's. Two curved horns of leaf sweep back from its crown.",
+      "The harder it is pushed back, the stronger it grows. It is said that every blow an opponent lands only makes this Pokémon look down on them more coldly."
+    ]
+  },
   "Tepig": {
     "habitat": "Grassland",
     "entries": [
@@ -4948,6 +5333,13 @@
       "In this form it is wilder than ever, and its fire never fades. It charges at a foe like a fiery boulder rolling down a hill."
     ]
   },
+  "Emboar-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "A collar of crystal flames burns round its neck and shoulders, roaring higher whenever its fighting spirit rises.",
+      "Its fists shake the earth with every blow, and the heat from its body melts the snow for miles. It never backs down."
+    ]
+  },
   "Oshawott": {
     "habitat": "WatersEdge",
     "entries": [
@@ -4967,6 +5359,13 @@
     "entries": [
       "A long blade extends from each of its forelegs, and with the horn on its brow it fights with a steady calm. It values honor above victory.",
       "Samurott stares down an opponent without a flinch. Its big, strong body shrugs off most blows."
+    ]
+  },
+  "Samurott-Mega": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its helmet grows into a full war helm with a tall crescent crest, and plates of shell armour cover its shoulders and flanks. Its whiskers hang longer than before.",
+      "Both blades on its forelegs are half drawn and longer than its legs. A single stroke can split a boulder cleanly in two, and the cut faces are smooth as glass."
     ]
   },
   "Samurott-Hisui": {
@@ -5172,6 +5571,13 @@
       "In this form it digs faster than any machine. Its claws shear through rock and the walls of tunnels tremble in its wake."
     ]
   },
+  "Excadrill-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "Two more crystal drills spin beside its own, all three boring through bedrock as easily as through soft sand.",
+      "It can tunnel under an entire mountain in a single night. Caves it carves are later used as roads by the people above."
+    ]
+  },
   "Audino": {
     "habitat": "Forest",
     "entries": [
@@ -5184,6 +5590,13 @@
     "entries": [
       "Its feelers stretch out and sway like soft ribbons. A warm glow comes from its body and soothes the sick and the wounded.",
       "In this form it is even kinder and more caring. A hushed, gentle hum fills the air and eases every pain."
+    ]
+  },
+  "Audino-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Crystal rings hang from its long ears and chime softly, and the sound of them eases pain in anyone who hears it.",
+      "It listens to the heartbeats of those around it, and its gentle touch helps wounded Pokémon recover their strength quickly."
     ]
   },
   "Timburr": {
@@ -5289,6 +5702,13 @@
     "entries": [
       "Its body grows longer and wraps in thick, spiky plates. It coils around a foe and crushes it with a tight squeeze.",
       "In this form it charges ahead like a runaway train. Its venom flows in torrents and its legs thrash with a rhythmic clatter."
+    ]
+  },
+  "Scolipede-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Crystal spines rise from every segment of its long body, each one dripping a glowing venom that sizzles where it falls.",
+      "It coils across hillsides at tremendous speed. The clatter of its many legs can be heard long before it comes into view."
     ]
   },
   "Cottonee": {
@@ -5893,6 +6313,13 @@
       "In this form it burns with an eerie light that never flickers. A circle of ghostly fire spins slowly around it."
     ]
   },
+  "Chandelure-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "It has grown into a cathedral chandelier, its arms holding dozens of crystal flames that light every corner of the sky.",
+      "Its flames draw out the spirits of the departed. On moonless nights its glow can be seen from the far side of a valley."
+    ]
+  },
   "Axew": {
     "habitat": "Mountain",
     "entries": [
@@ -6299,6 +6726,13 @@
       "In this form it is a living fortress, with a shield that no blow can break. Its fists land with the force of a landslide."
     ]
   },
+  "Chesnaught-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "It curls into a dome fortress bristling with crystal spikes that turn aside every blow aimed at it or at its friends.",
+      "It stands as a shield for those behind it and never gives way. Even boulders thrown at it break apart against its shell."
+    ]
+  },
   "Fennekin": {
     "habitat": "Grassland",
     "entries": [
@@ -6325,6 +6759,13 @@
     "entries": [
       "Its fur turns a deep red, and its wand burns with a swirling fire. It floats lightly in the air as it whispers a spell.",
       "In this form its mind reaches farther than ever. The flames around it dance in strange patterns that foretell what is to come."
+    ]
+  },
+  "Delphox-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "The stick it carries has become a tall crystal staff, its tip burning with a flame that shows glimpses of the future.",
+      "It gazes into the flame to read what is to come. Its robe of fur sways with heat as it calls up columns of fire."
     ]
   },
   "Froakie": {
@@ -6367,6 +6808,13 @@
     "entries": [
       "Its tongue grows long and a swirling cloak of water wraps its frame. It changes its shape to match whatever it faces.",
       "In this form it is a sleek, swift hunter. It flickers from place to place and none can follow its trail."
+    ]
+  },
+  "Greninja-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A huge shuriken of crystal water spins on its back, ready to be hurled with a flick of its wrist at blinding speed.",
+      "It moves like a shadow and strikes before its enemies can blink. Ripples spread across lakes it crosses without a single splash."
     ]
   },
   "Bunnelby": {
@@ -6845,6 +7293,13 @@
       "In this form it is regal and fierce. The fire of its mane blows back like a banner and its pride knows no limit."
     ]
   },
+  "Pyroar-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its flaming mane has spread into a sunburst of fire and crystal that blazes brighter than the midday sun overhead.",
+      "Its roar is heard across the whole savanna. Rival prides scatter at the first glimpse of its burning mane on the horizon."
+    ]
+  },
   "Pyroar-Female": {
     "habitat": "Grassland",
     "entries": [
@@ -7223,6 +7678,13 @@
       "In this form it is calm and cunning, and its toxins soak the water around it. It heals its wounds quickly as it fights."
     ]
   },
+  "Dragalge-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "A kelp forest of crystal grows from its body, each frond swaying slowly and glowing with a poison that clouds the water.",
+      "It drifts through deep seas where no light reaches. Ships that cross its waters find their hulls covered in a strange rust."
+    ]
+  },
   "Clauncher": {
     "habitat": "WatersEdge",
     "entries": [
@@ -7580,6 +8042,13 @@
       "Decidueye hides its arrows in its feathers. It spots its foe from a distance and never misses."
     ]
   },
+  "Decidueye-Mega": {
+    "habitat": "Forest",
+    "entries": [
+      "Its hood deepens into a cowl that shades its face down to the eyes. The edge of its cloak becomes a fan of quills, each tipped with a faint teal glow.",
+      "It holds a bow of vine across its chest. Its arrows slip past walls, screens and shields alike, and the target rarely knows where the shot came from."
+    ]
+  },
   "Decidueye-Hisui": {
     "habitat": "Forest",
     "entries": [
@@ -7608,6 +8077,13 @@
       "Incineroar gets restless in a fight and brawls with all its might. It does not take defeat well."
     ]
   },
+  "Incineroar-Mega": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its chest and shoulders broaden, and its belt of fire becomes a champion's band with a great gold plate in front. A paw print is stamped deep in the gold.",
+      "A single glare from it makes rivals lose their nerve before the bout begins. It plays to the crowd between blows, and flames leap up behind its belt whenever it roars."
+    ]
+  },
   "Popplio": {
     "habitat": "Sea",
     "entries": [
@@ -7627,6 +8103,13 @@
     "entries": [
       "It sings with the voice of an opera singer, and its notes form balloons of water that burst on a target. Its songs soothe the sea.",
       "Primarina uses the power of its song to summon big waves. It has a heart of gold and a spirit of grace."
+    ]
+  },
+  "Primarina-Mega": {
+    "habitat": "Sea",
+    "entries": [
+      "Its hair falls to the ground behind it like the train of a gown, strung with more pearls than before. A tiara of pink coral sits where its star once was.",
+      "Spheres of water float in a ring around it, each lit softly like a stage light. Its songs carry over the waves, and listeners say the sea itself seems to sing along."
     ]
   },
   "Pikipek": {
@@ -7956,6 +8439,13 @@
     "entries": [
       "Its shell hardens into an iron-like armor, and its arms grow long and sharp. It waits for the right moment, and then cuts with a mighty sweep.",
       "In this form it is a ruthless fighter and a patient one. It guards its small partner with a fierce loyalty."
+    ]
+  },
+  "Golisopod-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "A crest of crystal plates rises along its back like armour, gleaming as it raises its six arms ready to strike.",
+      "It defends its stretch of the seabed with ruthless skill. Its claws can slice through steel cables in a single swipe."
     ]
   },
   "Sandygast": {
@@ -8546,6 +9036,13 @@
       "Rillaboom leads the forest with a deep, steady rhythm. When it drums, stumps sprout and trees grow thick."
     ]
   },
+  "Rillaboom-Mega": {
+    "habitat": "Forest",
+    "entries": [
+      "It stands taller and more upright, its mane of leaves spread over its shoulders. The stump drum is strapped to its back on a harness of vines, like a great festival drum.",
+      "Its drumsticks have become thick branches with leaves at the ends. Each beat makes grass spring up around it, and the whole forest seems to pulse with the rhythm."
+    ]
+  },
   "Rillaboom-Gmax": {
     "habitat": "Forest",
     "entries": [
@@ -8574,6 +9071,13 @@
       "Cinderace dribbles a burning ball and makes a quick turn. Its leaps are high and its aim is true."
     ]
   },
+  "Cinderace-Mega": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its long ears sweep back into a crest of flame, and its white ruff trails behind it like a scarf. A band around its arm marks it as the leader of its team.",
+      "It keeps a ball of fire trapped under one foot, ready to kick. It changes its style to suit each match and seems to enjoy surprising every opponent it faces."
+    ]
+  },
   "Cinderace-Gmax": {
     "habitat": "Grassland",
     "entries": [
@@ -8600,6 +9104,13 @@
     "entries": [
       "It fires a jet of water from a fingertip with pinpoint aim, and hits a target from beyond sight. Its sleek, silent movements fit a spy.",
       "Inteleon keeps a cool head and plans each move ahead of time. It hides in shadow and then strikes with a single sharp shot."
+    ]
+  },
+  "Inteleon-Mega": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its yellow crest sweeps back like a hood, and its tail lengthens into the tails of a coat that falls to its knees. It moves without making a sound.",
+      "The membrane over one eye has become a scope with a pale lens. It can pick out a single target across a wide lake and strike its weakest point every time."
     ]
   },
   "Inteleon-Gmax": {
@@ -9925,6 +10436,13 @@
       "Meowscarada is a showman and loves a grand finish. It leaps from the stage, and a cloud of petals follows."
     ]
   },
+  "Meowscarada-Mega": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its cape of leaves grows into a great cape lined with pink that sweeps the ground. A full bloom opens at its throat, pinned there like a brooch.",
+      "It spins a flower bomb on one fingertip while it performs. Every attack doubles as a trick, and opponents often find their held items have vanished into its cape."
+    ]
+  },
   "Fuecoco": {
     "habitat": "Grassland",
     "entries": [
@@ -9946,6 +10464,13 @@
       "Skeledirge soothes its allies with a calming voice, while it drives foes to despair. A skull on its head glows with a pale flame."
     ]
   },
+  "Skeledirge-Mega": {
+    "habitat": "Grassland",
+    "entries": [
+      "The little bird of flame on its head becomes a great crown of fire with a wide brim. Bones painted on its red hide run from its head down its back.",
+      "The flame at the end of its tail is shaped like the head of a guitar. Its loud songs shake the ground, and noise aimed back at it falls strangely flat."
+    ]
+  },
   "Quaxly": {
     "habitat": "WatersEdge",
     "entries": [
@@ -9965,6 +10490,13 @@
     "entries": [
       "It dances with a dazzling flourish and fights in time to a rhythm. Each kick is placed to the beat.",
       "Quaquaval loves to be the center of attention. Its graceful whirl sweeps water in a wide arc."
+    ]
+  },
+  "Quaquaval-Mega": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its plumes fan out into a crescent headdress, blue with flashes of orange at the tips. A skirt of blue feathers flares around its hips as it spins.",
+      "Streamers of water trail from its wrists in long strings of beads. When another Pokémon dances nearby, it cannot resist answering with the very same steps."
     ]
   },
   "Lechonk": {
@@ -10415,6 +10947,13 @@
       "In this form its body is covered in gems that shatter and fly. A storm of venomous shards scatters across the cave."
     ]
   },
+  "Glimmora-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "A rain of poison crystals falls from its petals without end, each shard glittering and sizzling as it strikes the ground below.",
+      "Its body is a vast blossom of glowing gemstones. The ground where it rests sprouts crystal flowers for weeks afterward."
+    ]
+  },
   "Greavard": {
     "habitat": "Urban",
     "entries": [
@@ -10658,6 +11197,13 @@
     "entries": [
       "Its great blade of ice grows into a towering wall, and its body is wrapped in thick frost. It howls and the blizzard obeys.",
       "In this form it is a fierce ruler of the glacier. Its icy breath turns the land into a field of crystal."
+    ]
+  },
+  "Baxcalibur-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "The fin along its spine has grown into one crystal greatsword that glows cyan from its tail all the way to its head.",
+      "It breathes freezing air that turns whole lakes to ice in an instant. Its roar echoes through mountain valleys like an avalanche."
     ]
   },
   "Gimmighoul": {

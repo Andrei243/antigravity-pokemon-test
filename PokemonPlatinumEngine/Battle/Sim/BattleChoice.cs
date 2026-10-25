@@ -58,6 +58,13 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// </summary>
     public bool Terastallize { get; init; }
 
+    /// <summary>
+    /// With a move, in a rotation battle (plan 14 · B7): the turntable turns this way first, +1 bringing the Pokémon of
+    /// the seat after the front's to the front and −1 the one before it, and <see cref="Move"/> is that Pokémon's move.
+    /// 0 fights with the one in front. Refused where it can't (<see cref="BattleCore.WhyNotRotation"/>).
+    /// </summary>
+    public int Rotation { get; init; }
+
     /// <summary>In place of a move's position: the move the Pokémon is in the middle of or held to.</summary>
     public const int HeldMove = -2;
 

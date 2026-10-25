@@ -1,0 +1,33 @@
+# The Seaside Cave (a cave under the sea between Undella Bay and Route 21, dripping and echoing): a flute's searching tune in
+# A minor over pizzicato strings, a choir's held breath and a slow bass with a dry knock. The cave plays the same by day and by
+# night, as the original's caves do. Original composition for this game (plan 22 · U8, part b).
+title The Seaside Cave
+tempo 92
+meter 4/4
+reverb 0.38
+night none
+
+track lead flute vol=0.56 pan=0.1 rev=0.34
+  L o5 a4 o6 c8 o5 b8 a2 | o5 f4 a8 g8 f2 | o5 g4 b8 a8 g4 e4 | o5 g+2 e2 |
+  o5 a4 o6 c8 d8 e2 | o6 d4 c8 o5 b8 a2 | o5 g4 f8 e8 f4 d4 | o5 e1 |
+  o5 a4 o6 c8 o5 b8 a2 | o5 f4 a8 g8 f2 | o5 g4 b8 a8 g4 e4 | o5 g+2 b2 |
+  o6 c4 o5 b8 a8 b4 g+4 | o5 a4 g8 f8 e4 d4 | o5 b4 d4 e4 g+4 | o5 a1 |
+
+track plucks pizzicato vol=0.38 pan=-0.18 rev=0.24
+  L [ o4 a8 o5 c8 e8 o4 a8 ]2 | [ o4 f8 a8 o5 c8 o4 f8 ]2 | [ o4 g8 b8 o5 d8 o4 g8 ]2 | [ o4 e8 g+8 b8 e8 ]2 |
+  [ o4 a8 o5 c8 e8 o4 a8 ]2 | [ o4 d8 f8 a8 d8 ]2 | [ o4 f8 a8 o5 c8 o4 f8 ]2 | [ o4 e8 g+8 b8 e8 ]2 |
+  [ o4 a8 o5 c8 e8 o4 a8 ]2 | [ o4 f8 a8 o5 c8 o4 f8 ]2 | [ o4 g8 b8 o5 d8 o4 g8 ]2 | [ o4 e8 g+8 b8 e8 ]2 |
+  [ o4 a8 o5 c8 e8 o4 a8 ]2 | [ o4 d8 f8 a8 d8 ]2 | [ o4 e8 g+8 b8 e8 ]2 | [ o4 a8 o5 c8 e8 o4 a8 ]2 |
+
+track breath choir vol=0.26 rev=0.5
+  L o4 (a >c e)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (e g+ b)1 |
+  o4 (a >c e)1 | o4 (d f a)1 | o4 (f a >c)1 | o4 (e g+ b)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (e g+ b)1 |
+  o4 (a >c e)1 | o4 (d f a)1 | o4 (e g+ b)1 | o4 (a >c e)1 |
+
+track bass contrabass vol=0.5 rev=0.16
+  L o2 a2 a2 | o2 f2 f2 | o2 g2 g2 | o2 e2 e2 | o2 a2 a2 | o2 d2 d2 | o2 f2 f2 | o2 e2 e2 |
+  o2 a2 a2 | o2 f2 f2 | o2 g2 g2 | o2 e2 e2 | o2 a2 a2 | o2 d2 d2 | o2 e2 e2 | o2 a2 a2 |
+
+track drums kit vol=0.24 rev=0.3
+  L v56 [ b4 r4 h4 r4 | ]16

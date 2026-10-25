@@ -223,4 +223,37 @@ internal static class CoreScenario
 
     /// <summary>In a <see cref="TripleTurn"/>, the move that stands for a shift to the centre.</summary>
     public const int ShiftMove = -2;
+
+    /// <summary>
+    /// A rotation battle (plan 14 · B7) against a trainer, under the modern rules unless others are handed (Platinum's have
+    /// none), both sides answered for from outside unless the foe's controller is handed.
+    /// </summary>
+    public static BattleCore Rotations(Pokemon[] mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null, IBattleController? foe = null)
+    {
+        var party = new Party();
+        foreach (var p in mine) party.Add(p);
+        var trainer = new Trainer { Id = "ace", Name = "Vera", TrainerClass = "Ace Trainer", PrizeMoney = 100, Format = "rotation", Ai = PokemonPlatinumEngine.Battle.Sim.Ai.AiFlags.Basic };
+        foreach (var p in theirs) trainer.Party.Add(p);
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, Trainers = new List<Trainer> { trainer }, Format = BattleFormat.Rotation, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Modern,
+            PlayerController = null, EnemyController = foe, PlayerName = "Lucas"
+        });
+        core.Start();
+        return core;
+    }
+
+    /// <summary>
+    /// A turn of a rotation battle: the player's front uses <paramref name="mine"/>'s move after turning its turntable
+    /// that way, and the foe's (when it is asked) <paramref name="theirs"/>'s.
+    /// </summary>
+    public static List<string> RotationTurn(BattleCore core, (int Way, int Move) mine, (int Way, int Move) theirs = default)
+    {
+        var asked = Assert.IsType<ActionRequest>(core.Request).Places;
+        var choices = asked.Select(p => p.Side == BattleSide.Player
+            ? BattleChoice.Fight(p, mine.Move) with { Rotation = mine.Way }
+            : BattleChoice.Fight(p, theirs.Move) with { Rotation = theirs.Way }).ToList();
+        core.Submit(choices);
+        return Lines(core.TakeLog());
+    }
 }

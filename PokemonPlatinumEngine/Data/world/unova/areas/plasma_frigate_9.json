@@ -1,0 +1,29 @@
+{
+  "key": "plasma_frigate_9",
+  "index": 560,
+  "name": "Plasma Frigate",
+  "matrix": 346,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_D_27_F_AJITO",
+  "nightMusic": "BGM_SW_D_27_F_AJITO",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 5, "to": "plasma_frigate_7", "toWarp": 3 },
+    { "x": 2, "z": 2, "to": "plasma_frigate_14", "toWarp": 2 },
+    { "x": 10, "z": 8, "to": "plasma_frigate_17", "toWarp": 3 },
+    { "x": 2, "z": 8, "to": "plasma_frigate_16", "toWarp": 3 },
+    { "x": 10, "z": 2, "to": "plasma_frigate_16", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "team_plasma_grunt_f", "movement": "none", "x": 2, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,79 @@
+# The Plasma Frigate's hold (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/plasma_frigate_2.s, read for the order alone).
+#
+# As the player comes down the hatch (our trigger, 11, 15, VAR_UNOVA_HUMILAU 6) Hugh (0) is facing two grunts (1, 2), and the
+# battle is a tag battle beside him (Black 2's TRAINER_RIVAL_28, _29 and _30 by the starter against TRAINER_TEAM_PLASMA_GRUNT_50 and
+# _51); the grunts run to warn the others, and Hugh goes looking for the barriers' switches (7). The barrier across the passage
+# to the bow (our trigger, 9 to 13, 7) turns the player back until both switches are off (VAR_UNOVA_FRIGATE_BARRIER 1,
+# common.UnovaFrigateBarriers).
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script HoldScene
+  scene "Hugh in the Frigate's hold"
+  clearflag FLAG_UNOVA_HIDE_HUGH_HOLD
+  clearflag FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  show 0
+  show 1
+  show 2
+  speaker "Grunt"
+  say "Who are you two? This is Team Plasma's ship!"
+  face 0 player
+  speaker "{rival}"
+  say "{player}! Perfect timing. Just so you know, guys... you're about to feel my rage!"
+  if starter "Snivy" goto WithEmboar
+  if starter "Tepig" goto WithSamurott
+  partner 0 "unova_rival_30"
+  goto Fight
+label WithEmboar
+  partner 0 "unova_rival_28"
+  goto Fight
+label WithSamurott
+  partner 0 "unova_rival_29"
+label Fight
+  battle 1 and 2 with partner
+  partner off
+  speaker "Grunt"
+  say "Ugh! We have to tell the others!"
+  say "Quick! Protect the switches!"
+  fade out 0.3
+  hide 1
+  hide 2
+  setflag FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  fade in
+  speaker "{rival}"
+  say "They didn't have a Purrloin with them. So where is it?"
+  say "Switches, they said... And look, the way to the bow is blocked by some kind of barrier. Electrified, by the sound of it."
+  say "So we switch off the barrier! {player}, let's split up and look. Try the cabins off the deck. I'll take the stern!"
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_HOLD
+  setvar VAR_UNOVA_HUMILAU 7
+  fade in
+  endscene
+  end
+
+
+script Hugh
+  face 0 player
+  speaker "{rival}"
+  say "Let's take them on together!"
+  end
+
+
+script HoldGrunt
+  speaker "Grunt"
+  say "Get off our ship!"
+  end
+
+
+# The barrier across the passage to the bow (our trigger, 9 to 13, 7, at 0)
+script Barrier
+  speaker none
+  text "Bzzt! An electrified barrier blocks the passage. Its switches must be somewhere else on the ship."
+  walk player down 1
+  end

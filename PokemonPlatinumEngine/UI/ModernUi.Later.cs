@@ -11,7 +11,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>Which mark the move menu's item button carries (plan 25 · Y14).</summary>
-internal enum LaterMark { None, Mega, ZPower, UltraBurst, Dynamax, Tera }
+internal enum LaterMark { None, Mega, ZPower, UltraBurst, Dynamax, Tera, MegaDynamax }
 
 // The move menu's item button (plan 06 · R20, R21; plan 25 · Y14; style guide, "Battle panels", "The item button in
 // the move menu"): where the Pokémon whose moves are chosen can Mega Evolve, use a Z-Move or Ultra Burst, a button over
@@ -26,10 +26,11 @@ internal static partial class ModernUi
     /// <summary>The mark the item button carries now and whether it is armed (GPU-free: the screen's own state).</summary>
     public static (LaterMark Mark, bool Armed) LaterButtonOf(BattleEngine battle)
     {
-        if (battle.CanMegaEvolveNow) return (LaterMark.Mega, battle.MegaArmed);
+        // A Mega Dynamax armed with the Mega Evolution, its second step (plan 06 · R20c)
+        if (battle.CanMegaEvolveNow) return battle.MegaDynamaxArmed ? (LaterMark.MegaDynamax, true) : (LaterMark.Mega, battle.MegaArmed);
         if (battle.CanZMoveNow) return (battle.CanUltraBurstNow ? LaterMark.UltraBurst : LaterMark.ZPower, battle.ZArmed);
-        // Dynamax and Terastallization (plan 25 · Y15), in the order the button goes by
-        if (battle.CanDynamaxNow) return (LaterMark.Dynamax, battle.DynamaxArmed);
+        // Dynamax and Terastallization (plan 25 · Y15), in the order the button goes by; a Mega's Dynamax is a Mega Dynamax
+        if (battle.CanDynamaxNow) return (battle.MenuIsMega ? LaterMark.MegaDynamax : LaterMark.Dynamax, battle.DynamaxArmed);
         if (battle.CanTerastallizeNow) return (LaterMark.Tera, battle.TeraArmed);
         return (LaterMark.None, false);
     }
@@ -55,6 +56,7 @@ internal static partial class ModernUi
             LaterMark.Mega => Text.Of("battleMenu.later.mega"),
             LaterMark.UltraBurst => Text.Of("battleMenu.later.ultraBurst"),
             LaterMark.Dynamax => Text.Of("battleMenu.later.dynamax"),
+            LaterMark.MegaDynamax => Text.Of("battleMenu.later.megaDynamax"),
             LaterMark.Tera => Text.Of("battleMenu.later.tera"),
             _ => Text.Of("battleMenu.later.zPower")
         }).ToUpperInvariant();
@@ -70,6 +72,7 @@ internal static partial class ModernUi
             LaterMark.Mega => (MegaFrom, MegaTo),
             LaterMark.UltraBurst => (ZTo, BurstDark),
             LaterMark.Dynamax => (DynamaxTo, DynamaxFrom),
+            LaterMark.MegaDynamax => (MegaTo, DynamaxFrom),
             LaterMark.Tera => TeraButtonColours(tera),
             _ => (ZTo, ZFrom)
         };
@@ -187,6 +190,11 @@ internal static partial class ModernUi
                 UiShapes.Circle(c + new Vector2(-6, -8), 2.5f, Color.White);
                 break;
             }
+            case LaterMark.MegaDynamax:
+                // The Key Stone in Dynamax's red ring (plan 06 · R20c; plan 25 draws its own look later)
+                DrawLaterMark(LaterMark.Mega, c);
+                UiShapes.Ring(c, 22, 3.5f, DynamaxRed);
+                break;
             case LaterMark.Mega:
             {
                 // A round stone with two arcs of colour swirled through it and a glint

@@ -666,6 +666,11 @@ public static class RegionDatabase
                 // Plan 21 · H12, part a: the Regis and Southern Island
                 "Underwater_Route134", "Underwater_SealedChamber", "SealedChamber_OuterRoom", "SealedChamber_InnerRoom", "DesertRuins", "IslandCave",
                 "SouthernIsland_Exterior", "SouthernIsland_Interior",
+                // Plan 21 · H12, part b: the Battle Frontier island and the rooms of its grounds
+                "HoennBattleFrontier", "BattleFrontier_ReceptionGate", "BattleFrontier_PokemonCenter_1F", "BattleFrontier_PokemonCenter_2F",
+                "BattleFrontier_Mart", "BattleFrontier_ExchangeServiceCorner", "BattleFrontier_ScottsHouse", "BattleFrontier_RankingHall",
+                "BattleFrontier_Lounge1", "BattleFrontier_Lounge2", "BattleFrontier_Lounge3", "BattleFrontier_Lounge4", "BattleFrontier_Lounge5",
+                "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
             }
         },
         new()
@@ -735,6 +740,9 @@ public static class RegionDatabase
                 // Plan 22 · U8, part a: the gate houses either side of the Village Bridge and Opelucid City, the bridge, Route 11's hut,
                 // Opelucid City's five houses of two floors, Pokémon Center and Gym, and Route 9's mall
                 "VillageBridgeGate_West", "VillageBridgeGate_East", "OpelucidGate_East", "OpelucidGate_West", "VillageBridge", "Route11_Hut", "OpelucidCity_DraydensHouse_1F", "OpelucidCity_DraydensHouse_2F", "OpelucidCity_TripleHouse_1F", "OpelucidCity_TripleHouse_2F", "OpelucidCity_MusicalHouse_1F", "OpelucidCity_MusicalHouse_2F", "OpelucidCity_TradeHouse_1F", "OpelucidCity_TradeHouse_2F", "OpelucidCity_OldHouse_1F", "OpelucidCity_OldHouse_2F", "OpelucidCity_PokemonCenter", "OpelucidCity_Gym", "ShoppingMallNine_1F", "ShoppingMallNine_2F",
+                // Plan 22 · U8, part b: the Marine Tube (a map of ours, Data/maps/MarineTube.json) between its gates, Humilau City's
+                // rooms and Gym, the Seaside Cave and five rooms of the Plasma Frigate
+                "MarineTubeGate_Undella", "MarineTube", "MarineTubeGate_Humilau", "HumilauCity_House1", "HumilauCity_House2", "HumilauCity_House3", "HumilauCity_House4", "HumilauCity_House5", "HumilauCity_PokemonCenter", "HumilauCity_Gym", "SeasideCave_1F", "SeasideCave_B1F", "PlasmaFrigate_Hold", "PlasmaFrigate_Stern", "PlasmaFrigate_Bridge", "PlasmaFrigate_Cabins", "PlasmaFrigate_Cabin",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

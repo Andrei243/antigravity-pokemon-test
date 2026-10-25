@@ -619,6 +619,13 @@ old rod 5-10
 good rod 10-30
 super rod 25-45
 trainers 6, 42-43: hoenn_caroline 43, hoenn_dianne 43, hoenn_felix 43, hoenn_julie 42, hoenn_owen 42, hoenn_vito 42
+=== humilau_city
+Humilau City
+surf 30-45
+super rod 40-70
+=== humilau_city_gym
+Humilau City
+trainers 2, 47-48: unova_ace_trainer_doyle 47, unova_ace_trainer_melina 48
 === ice_path_1f
 Ice Path
 grass 21-23
@@ -1123,6 +1130,18 @@ trainers 2, 3-6: hoenn_james_1 6, hoenn_lyle 3
 === pewter_city_gym
 Pewter City
 trainers 1, 10-11: kanto_camper_liam 11
+=== plasma_frigate_2
+Plasma Frigate
+trainers 2, 46: unova_team_plasma_grunt_50 46, unova_team_plasma_grunt_51 46
+=== plasma_frigate_3
+Plasma Frigate
+trainers 2, 46: unova_team_plasma_grunt_55 46, unova_team_plasma_grunt_57 46
+=== plasma_frigate_5
+Plasma Frigate
+trainers 2, 45-50: unova_team_plasma_grunt_49 45, unova_team_plasma_zinzolin 50
+=== plasma_frigate_7
+Plasma Frigate
+trainers 4, 45-47: unova_team_plasma_grunt_52 47, unova_team_plasma_grunt_53 47, unova_team_plasma_grunt_54 47, unova_team_plasma_grunt_59 45
 === pokemon_league
 Pokémon League
 surf 30-50
@@ -2243,6 +2262,16 @@ surf 25-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== seaside_cave
+Seaside Cave
+grass 34-37
+surf 25-40
+super rod 40-70
+trainers 5, 44-47: unova_battle_girl_tia 47, unova_black_belt_drago 47, unova_black_belt_rocky 44, unova_pkmn_ranger_johan 46, unova_pkmn_ranger_mikiko 46
+=== seaside_cave_2
+Seaside Cave
+grass 39-42
+trainers 1, 47: unova_battle_girl_maki 47
 === sendoff_spring
 Sendoff Spring
 grass 37-40
@@ -2751,6 +2780,17 @@ grass 2-4
 surf 5-15
 super rod 40-70
 trainers 7, 4-11: unova_lass_isabel 4, unova_nursery_aide_kimya 11, unova_preschooler_albert 10, unova_preschooler_lin 10, unova_twins_lia_lily 9, unova_youngster_petey 4, unova_youngster_terrell 4
+=== unova_route_21
+Route 21
+surf 30-45
+super rod 40-70
+trainers 7, 44-47: unova_black_belt_kenneth 47, unova_doctor_braid 46, unova_fisherman_kenzo 44, unova_swimmer_f_desiree 46, unova_swimmer_f_kaoru 45, unova_swimmer_m_harold 46, unova_swimmer_m_kyle 45
+=== unova_route_22
+Route 22
+grass 39-42
+surf 15-40
+super rod 40-70
+trainers 6, 45-47: unova_ace_trainer_lucca 47, unova_ace_trainer_shel 47, unova_backpacker_lowell 45, unova_backpacker_myra 45, unova_hiker_justin 45, unova_pkmn_breeder_addison 45
 === unova_route_4
 Route 4
 grass 14-17

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I'm hiding from my Pokémon. It always finds me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ferry brings Trainers from all over Hoenn. Some from much further away, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard the Frontier's Brains came from every region of the world."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

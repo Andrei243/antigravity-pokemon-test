@@ -2326,7 +2326,7 @@ public partial class GameEngine
                 flow.Pokedex.Enter(Here);
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
                 flow.PokedexScreen.Random = Randomizer.For(flow.Run);
-        flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character), Here);
+        flow.PokedexScreen.Open(flow.Pokedex, (IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), Here);
                 break;
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;
@@ -2354,7 +2354,7 @@ public partial class GameEngine
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
-                flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character), TrainerCardNow().RegionPages.Count, TrainerCardNow().Run != null);
+                flow.TrainerCardScreen.Open((IsHeadless ? null : world.Portrait(PlayerIdentity.Character)), TrainerCardNow().RegionPages.Count, TrainerCardNow().Run != null);
                 break;
             case StartMenuChoice.Options:
                 flow.OptionsReturn = GameState.Overworld;

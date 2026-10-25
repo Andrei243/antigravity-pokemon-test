@@ -68,7 +68,7 @@ public sealed partial class BattleCore
         string no = Text.Of("battle.cantTerastallize", ("pokemon", mine.Name));
         if (!Rules.Terastallization || mine.Pokemon is not { } p || p.IsEgg || !HasTeraOrb(mine) || p.Terastallized != null) return no;
         if (teraUsed.Contains(MegaKey(mine))) return Text.Of("battle.teraOnlyOnce");
-        if (p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null || p.FormData?.Kind is FormKind.Mega or FormKind.Primal || p.Form == UltraForm) return no;
+        if (p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null || p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm) return no;
         if (mine.Volatile.Dynamaxed) return no;
         return null;
     }

@@ -1,0 +1,14 @@
+{
+  // The Battle Frontier's reception gate (plan 21 · H12, part b): the hall between the quay and the grounds. Scott waits
+  // inside for a Champion who sailed over before taking his Frontier Pass on Lilycove's quay, and gives it here, as
+  // Emerald's first arrival does (battle_frontier_reception_gate.txt); once the pass is had he is in his house
+  "area": "battle_frontier_reception_gate",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "frontier_reception_greeter": { "name": "Receptionist", "dialog": [ "Welcome to the Battle Frontier, where the toughest Trainers meet! Please enjoy your stay." ] },
+    "frontier_reception_guide": { "name": "Guide", "script": "FacilityGuide", "still": true },
+    "man_2": { "name": "Guide", "script": "RulesGuide", "still": true },
+    "man_2_2": { "name": "Guide", "script": "PassGuide", "still": true },
+    "frontier_reception_scott": { "name": "Scott", "script": "Scott", "hiddenBy": "FLAG_RECEIVED_FRONTIER_PASS", "still": true }
+  }
+}

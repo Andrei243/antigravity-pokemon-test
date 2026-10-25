@@ -6883,6 +6883,259 @@ from the tile read at 47,48 of BattleFrontier
 from the tile read at 47,49 of BattleFrontier
 way -
   > A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it.
+=== battle_frontier_exchange_service_corner.DecorClerk
+from Clerk at 4,4 of BattleFrontier_ExchangeServiceCorner
+from Clerk at 5,5 of BattleFrontier_ExchangeServiceCorner
+way -
+  Clerk> This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid.
+=== battle_frontier_exchange_service_corner.ItemClerk
+from Clerk at 9,5 of BattleFrontier_ExchangeServiceCorner
+way 0
+  Clerk> Welcome! This counter trades Battle Points for items your Pokémon can hold, and more.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Protein   1 BP
+  * frontier points 1
+way 26, from answer 1
+  Clerk> Please come again.
+  ? Which prize would you like? = No thanks
+way 25, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Rare Candy   48 BP
+way 24, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Razor Fang   48 BP
+way 23, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Razor Claw   48 BP
+way 22, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Scarf   48 BP
+way 21, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Sash   48 BP
+way 20, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Muscle Band   48 BP
+way 19, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Scope Lens   48 BP
+way 18, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Focus Band   48 BP
+way 17, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Choice Band   48 BP
+way 16, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Bright Powder   48 BP
+way 15, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Herb   32 BP
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = White Herb   32 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Flame Orb   16 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Toxic Orb   16 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Weight   16 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Anklet   16 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Band   16 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Lens   16 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Belt   16 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Power Bracer   16 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = HP Up   1 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Carbos   1 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Zinc   1 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Iron   1 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = Calcium   1 BP
+=== battle_frontier_exchange_service_corner.MachineClerk
+from Clerk at 10,4 of BattleFrontier_ExchangeServiceCorner
+way 0
+  Clerk> Welcome! This counter trades Battle Points for Technical Machines.
+  Clerk> Which prize would you like?
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM06 Toxic   32 BP
+  * frontier points 1
+way 15, from answer 1
+  Clerk> Please come again.
+  ? Which prize would you like? = No thanks
+way 14, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM26 Earthquake   80 BP
+way 13, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM71 Stone Edge   80 BP
+way 12, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM59 Dragon Pulse   80 BP
+way 11, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM36 Sludge Bomb   80 BP
+way 10, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM53 Energy Ball   64 BP
+way 9, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM30 Shadow Ball   64 BP
+way 8, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM81 X-Scissor   64 BP
+way 7, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM04 Calm Mind   48 BP
+way 6, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM08 Bulk Up   48 BP
+way 5, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM31 Brick Break   40 BP
+way 4, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM40 Aerial Ace   40 BP
+way 3, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM45 Attract   32 BP
+way 2, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM61 Will-O-Wisp   32 BP
+way 1, from answer 1
+  Clerk> I'm sorry. You don't have the Battle Points for that.
+  ? Which prize would you like? = TM73 Thunder Wave   32 BP
+=== battle_frontier_lounge_1.Breeder
+from Breeder at 0,6 of BattleFrontier_Lounge1
+way -
+  Breeder> I've raised Pokémon all my life. Show me one of yours, and I'll tell you what it could become.
+  Breeder> Turtwig is an ordinary sort. Love it all the same, and it'll serve you well.
+  Breeder> Its greatest gift is its HP.
+  * open ChoosePokemon
+=== battle_frontier_mart.FrontierClerk
+from Clerk at 1,3 of BattleFrontier_Mart
+way -
+  Clerk> Welcome to the Frontier's Mart! What can I get for you?
+  Clerk> Thank you! Good luck in the halls.
+  * open Shop ever_grande_league
+=== battle_frontier_outside_east.Sudowoodo
+from Strange Tree at 110,62 of HoennBattleFrontier
+way -
+  > It's an odd tree. It is wiggling about, though there is no wind.
+=== battle_frontier_outside_west.FerryAttendant
+from Attendant at 19,68 of HoennBattleFrontier
+way 0
+  Attendant> Welcome to the Battle Frontier! The ferry back to the mainland leaves whenever you're ready.
+  Attendant> Shall I take you back to Lilycove City?
+  Attendant> Very good. Please come aboard.
+  > Lucas sailed back to Lilycove City...
+  ? Shall I take you back to Lilycove City? = Yes
+  * fade out
+  * warp LilycoveCity_Harbor 8 11
+way 1, from answer 1
+  Attendant> Enjoy the Frontier! I'll be here when you want to sail home.
+  ? Shall I take you back to Lilycove City? = No
+=== battle_frontier_reception_gate.FacilityGuide
+from Guide at 8,11 of BattleFrontier_ReceptionGate
+way 0
+  Guide> Which part of the Frontier shall I tell you about?
+  Guide> Seven halls stand on this island: the Tower, the Dome, the Palace, the Arena, the Factory, the Pike and the Pyramid.
+  Guide> They are still being made ready. Until they open, Scott sends challengers to the Battle Frontier in Sinnoh.
+  Guide> Please enjoy the Battle Frontier!
+  ? Which part of the Frontier shall I tell you about? = THE HALLS
+way 3, from answer 1
+  Guide> Please enjoy the Battle Frontier!
+  ? Which part of the Frontier shall I tell you about? = NOTHING
+way 2, from answer 1
+  Guide> The Ranking Hall, in the north-east, shows the best streaks of every hall.
+  Guide> Please enjoy the Battle Frontier!
+  ? Which part of the Frontier shall I tell you about? = THE RANKING HALL
+way 1, from answer 1
+  Guide> The Exchange Service Corner, in the east of the island, trades Battle Points for prizes.
+  Guide> Please enjoy the Battle Frontier!
+  ? Which part of the Frontier shall I tell you about? = THE EXCHANGE
+=== battle_frontier_reception_gate.PassGuide
+from Guide at 0,4 of BattleFrontier_ReceptionGate
+way 0
+  Guide> What would you like to know about?
+  Guide> The Frontier Pass shows that you are welcome at every hall. Scott gives it to Trainers he believes in.
+  Guide> Please ask me again any time.
+  ? What would you like to know about? = THE PASS
+way 2, from answer 1
+  Guide> Please ask me again any time.
+  ? What would you like to know about? = NOTHING
+way 1, from answer 1
+  Guide> Battle Points are won in the halls. You have 0 BP.
+  Guide> The Battle Points of every Frontier, here and in Sinnoh, are one and the same.
+  Guide> Please ask me again any time.
+  ? What would you like to know about? = BATTLE POINTS
+=== battle_frontier_reception_gate.RulesGuide
+from Guide at 8,4 of BattleFrontier_ReceptionGate
+way 0
+  Guide> Which of the rules shall I explain?
+  Guide> In the Level 50 battles, a Pokémon above level 50 battles as if it were level 50.
+  Guide> Good luck in your challenges!
+  ? Which of the rules shall I explain? = LEVELS
+way 3, from answer 1
+  Guide> Good luck in your challenges!
+  ? Which of the rules shall I explain? = NOTHING
+way 2, from answer 1
+  Guide> No two of your Pokémon may hold the same item. Items from your Bag can't be used in battle.
+  Guide> Good luck in your challenges!
+  ? Which of the rules shall I explain? = HELD ITEMS
+way 1, from answer 1
+  Guide> Some very rare Pokémon may not enter, and no two of your Pokémon may be the same species.
+  Guide> Good luck in your challenges!
+  ? Which of the rules shall I explain? = ENTRY
+=== battle_frontier_reception_gate.Scott
+from Scott at 4,5 of BattleFrontier_ReceptionGate
+way -
+  Scott> Lucas! You came all the way to the island. I knew you would.
+  Scott> Every Trainer who challenges the Frontier carries one of these. Here, it's yours.
+  > Lucas received Scott's Frontier Pass!
+  Scott> The halls here are still being finished. Come and find me at my house in the north-east of the island.
+  + FLAG_RECEIVED_FRONTIER_PASS
+=== battle_frontier_scotts_house.Scott
+from Scott at 2,3 of BattleFrontier_ScottsHouse
+way 0
+  Scott> Welcome to my home, Lucas! I've watched you since the very start of your journey.
+  Scott> A little something to begin your challenges with.
+  > Lucas received 3 Battle Points!
+  Scott> The halls of this island aren't ready yet. The Frontier Brains are still at Sinnoh's Battle Frontier.
+  Scott> Shall I take you to the Battle Frontier in Sinnoh?
+  Scott> Splendid! Your team comes along, and your records stay as they are.
+  > Lucas sailed with Scott for the Battle Frontier...
+  ? Shall I take you to the Battle Frontier in Sinnoh? = Yes
+  * fade out
+  * travel to Sinnoh BattleFrontier 47 51
+  * fade in
+  + FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
+way 1, from answer 1
+  Scott> Whenever you're ready. I'll be here.
+  ? Shall I take you to the Battle Frontier in Sinnoh? = No
+  + FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
 === blackthorn.DenGuard
 from Old Man at 672,133 of Johto
 way -
@@ -6998,6 +7251,10 @@ way -
   Move Relearner> Ah, a young Trainer! I can help a Pokémon remember a move it has forgotten along the way.
   Move Relearner> All I ask in return is a Heart Scale.
   Move Relearner> No Heart Scale, no remembering. Come back when you have found one.
+=== bridge_gate_gate_8.TubeClosed
+from the trigger at 13,7 of MarineTubeGate_Undella
+way -
+  Worker> Sorry! We're polishing the Marine Tube's glass today. Come back another time, would you?
 === burned_tower_1f.Eusine
 from the trigger at 19,23 of BurnedTower_1F
 way -
@@ -10632,12 +10889,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -10645,16 +10904,21 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
@@ -10670,6 +10934,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
@@ -10686,6 +10953,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -10696,6 +10965,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -10732,12 +11002,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -10745,12 +11017,16 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
@@ -10758,6 +11034,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -10774,6 +11051,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -10795,6 +11075,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -10806,6 +11088,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -10848,12 +11131,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -10861,12 +11146,16 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
@@ -10874,6 +11163,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -10890,6 +11180,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -10911,6 +11204,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -10922,6 +11217,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -10964,12 +11260,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -10977,12 +11275,16 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
@@ -10990,6 +11292,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -11006,6 +11309,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -11027,6 +11333,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11038,6 +11346,136 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
+  + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
+  + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaCatchUpD
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -11070,25 +11508,32 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11099,6 +11544,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
@@ -11109,6 +11557,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11119,6 +11569,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11142,19 +11593,26 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11165,6 +11623,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
@@ -11174,6 +11635,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11184,9 +11647,29 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
+=== common.UnovaFrigateBarriers
+from a trainer with lines of their own
+way -
+=== common.UnovaHumilau
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  + FLAG_UNOVA_HUMILAU_BEGUN
 === common.UnovaLacunosa
 from a trainer with lines of their own
 way -
@@ -11197,19 +11680,31 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
@@ -11218,6 +11713,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaLacunosaTale
@@ -11242,14 +11738,21 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_LAB
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11259,6 +11762,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
@@ -11268,6 +11774,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
@@ -11276,6 +11784,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
@@ -11308,12 +11817,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -11321,10 +11832,14 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
@@ -11332,6 +11847,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -11348,6 +11864,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -11369,6 +11888,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11380,6 +11901,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -11408,26 +11930,33 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
@@ -11438,6 +11967,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
@@ -11451,6 +11983,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11461,6 +11995,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -11469,15 +12004,28 @@ way -
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
@@ -11519,12 +12067,14 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
@@ -11532,16 +12082,21 @@ way -
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
   + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
   + FLAG_UNOVA_HIDE_HUGH_PWT
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
@@ -11558,6 +12113,9 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
@@ -11576,6 +12134,8 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TERRAKION
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
@@ -11587,6 +12147,7 @@ way -
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
   + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_HUMILAU_BEGUN
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
@@ -14391,6 +14952,92 @@ way 0
   + seen hoenn_victory_road_1f.Wally on Victory Road from the east
 way 1, from answer 1
   * battle hoenn_wally_vr_1 Lost
+  * scene over, unseen
+=== humilau_city.Hugh
+from {rival} at 789,173 of Unova
+way -
+=== humilau_city.HughWaits
+from the trigger at 786,174 of Unova
+from the trigger at 790,179 of Unova
+way -
+=== humilau_city.Marlon
+from Marlon at 783,184 of Unova
+way -
+  Marlon> The sea's got room for everybody, yo.
+=== humilau_city.MarlonAndHugh
+from the trigger at 783,173 of Unova
+way 0
+  Barry> You got all eight Badges! You're really something, Lucas! Normally you'd head for the Pokémon League now, but... Team Plasma comes first.
+  Marlon> Sup again! What's this Team Plasma you're talking about, yo?
+  Barry> They steal people's Pokémon. Like my sister's... And now they want to use a Pokémon to freeze all of Unova solid! Doesn't that make you angry?
+  Marlon> Nope! When the sea's your home, you don't sweat that kind of thing. The sea takes in every river, the muddy ones too.
+  Marlon> So you reckon Team Plasma's bad, then?
+  Marlon> I get it. They're bad, so you fight 'em. But say it in your own words first. Then you'll know what you really want to do, and why.
+  Marlon> Well then... See ya!
+  Barry> Man, I can't tell if that guy's laid back or just doesn't care. Doesn't matter. Our opponent is Team Plasma!
+  Barry> First we have to find where they are. Let's split up! You check Route 22, west of the city. I'll look along the shore. Got it?
+  ? So you reckon Team Plasma's bad, then? = Yes
+  * scene humilau_city.Hugh and Marlon outside the Gym
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  = VAR_UNOVA_HUMILAU 0 -> 4
+  + seen humilau_city.Hugh and Marlon outside the Gym
+way 1, from answer 1
+  Marlon> Shoots! Not bad. You're not sure, but you're going anyway! Still, say it in your own words first. Then you'll know what you really want to do.
+  Marlon> Well then... See ya!
+  Barry> Man, I can't tell if that guy's laid back or just doesn't care. Doesn't matter. Our opponent is Team Plasma!
+  Barry> First we have to find where they are. Let's split up! You check Route 22, west of the city. I'll look along the shore. Got it?
+  ? So you reckon Team Plasma's bad, then? = No
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  + FLAG_UNOVA_HIDE_MARLON_BEACH
+  = VAR_UNOVA_HUMILAU 0 -> 4
+  + seen humilau_city.Hugh and Marlon outside the Gym
+=== humilau_city_gym.GymGuide
+from Guide at 17,72 of HumilauCity_Gym
+way -
+  Guide> This Gym may feel like a resort, but the Gym Leader's no pushover! Here's a little something. Stay sharp!
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_HUMILAU
+=== humilau_city_gym.Marlon
+from Marlon at 25,60 of HumilauCity_Gym
+way 0
+  Marlon> Sup! Here already, huh? You look strong! Shoots! Let's do this!
+  Marlon> You don't just look strong, you're strong for real! I got swept right away, yo.
+  Marlon> Oh yeah. I was so surprised I almost forgot! I've gotta give you this.
+  > Lucas received the Wave Badge from Marlon!
+  Marlon> That's the Wave Badge, Unova's newest Gym Badge! Pretty sweet, right? Now you've got all eight, so any Pokémon will listen to you.
+  Marlon> Oh yeah, I've got a TM for you too.
+  > Lucas received the TM55!
+  > TM55 holds the move Brine.
+  > Lucas put it away in the TMs & HMs pocket.
+  Marlon> Use it when the waves are with you, 'K? Shoots! I'm off, then. Hope it comes in handy!
+  * scene humilau_city_gym.Marlon's battle
+  * battle unova_leader_marlon Won
+  * fanfare FanfareBadge
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_GOT_TM55
+  + FLAG_UNOVA_HIDE_MARLON_GYM
+  = VAR_UNOVA_HUMILAU 0 -> 3
+  + beaten unova_leader_marlon
+  = badges Unova 0 -> 10000000
+  + seen humilau_city_gym.Marlon's battle
+way 1, from answer 1
+  * battle unova_leader_marlon Lost
   * scene over, unseen
 === ice_path_1f.KimonoGirl
 from Kimono Girl at 55,29 of IcePath_1F
@@ -18678,6 +19325,142 @@ way 0
 way 1, from answer 1
   Receptionist> Do come again!
   ? Welcome! A child's ticket is 50. Would you like to come in? = No
+=== plasma_frigate_2.Barrier
+from the trigger at 9,7 of PlasmaFrigate_Hold
+way -
+  > Bzzt! An electrified barrier blocks the passage. Its switches must be somewhere else on the ship.
+=== plasma_frigate_2.HoldGrunt
+from Grunt at 11,10 of PlasmaFrigate_Hold
+from Grunt at 12,10 of PlasmaFrigate_Hold
+way -
+  Grunt> Get off our ship!
+=== plasma_frigate_2.HoldScene
+from the trigger at 11,15 of PlasmaFrigate_Hold
+way 0
+  Grunt> Who are you two? This is Team Plasma's ship!
+  Barry> Lucas! Perfect timing. Just so you know, guys... you're about to feel my rage!
+  Grunt> Ugh! We have to tell the others!
+  Grunt> Quick! Protect the switches!
+  Barry> They didn't have a Purrloin with them. So where is it?
+  Barry> Switches, they said... And look, the way to the bow is blocked by some kind of barrier. Electrified, by the sound of it.
+  Barry> So we switch off the barrier! Lucas, let's split up and look. Try the cabins off the deck. I'll take the stern!
+  * scene plasma_frigate_2.Hugh in the Frigate's hold
+  * partner {rival} unova_rival_30
+  * battle unova_team_plasma_grunt_50 and unova_team_plasma_grunt_51 with unova_rival_30 Won
+  * partner off
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_HOLD_GRUNTS
+  + FLAG_UNOVA_HIDE_HUGH_HOLD
+  = VAR_UNOVA_HUMILAU 0 -> 7
+  + beaten unova_team_plasma_grunt_50
+  + beaten unova_team_plasma_grunt_51
+  + seen plasma_frigate_2.Hugh in the Frigate's hold
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_50 and unova_team_plasma_grunt_51 with unova_rival_30 Lost
+  * scene over, unseen
+=== plasma_frigate_2.Hugh
+from {rival} at 11,13 of PlasmaFrigate_Hold
+way -
+  Barry> Let's take them on together!
+=== plasma_frigate_3.Colress
+from Colress at 11,6 of PlasmaFrigate_Stern
+way 0.0
+  Colress> Welcome! I was asked by an acquaintance to help with his research. What I want is to draw out the whole of a Pokémon's potential.
+  Colress> If that strength comes from the bond between Pokémon and Trainer, so be it. If it takes something cold and mechanical, so be that too.
+  Colress> I've travelled all over Unova battling Trainers to test the one idea against the other. You're the best test yet. Shall we?
+  Colress> So strong! You really are a remarkable Trainer. So tell me...
+  Colress> Do you think you can reach even greater heights by understanding your Pokémon?
+  Colress> I see! To me, that's the ideal answer. You bring out your Pokémon's power by respecting them. How wonderful!
+  Colress> You've given me plenty to think about. As thanks, I'll switch off one of the barrier's switches myself. The other is your problem!
+  > Colress pressed a switch on the wall. Somewhere in the ship, something hummed and went quiet.
+  ? Do you think you can reach even greater heights by understanding your Pokémon? = Yes
+  * scene plasma_frigate_3.Colress aboard the Plasma Frigate
+  * music unova/colress
+  * battle unova_team_plasma_colress Won
+  * music area
+  * endscene
+  + FLAG_UNOVA_FRIGATE_SWITCH_B
+  + beaten unova_team_plasma_colress
+  + seen plasma_frigate_3.Colress aboard the Plasma Frigate
+way 0.1, from answer 2
+  Colress> I see... An honest answer. Don't lose heart. The reason you're so strong is that you treat your Pokémon well, whether you know it or not.
+  Colress> You've given me plenty to think about. As thanks, I'll switch off one of the barrier's switches myself. The other is your problem!
+  > Colress pressed a switch on the wall. Somewhere in the ship, something hummed and went quiet.
+  ? Do you think you can reach even greater heights by understanding your Pokémon? = No
+  * music area
+  * endscene
+  + FLAG_UNOVA_FRIGATE_SWITCH_B
+  + beaten unova_team_plasma_colress
+  + seen plasma_frigate_3.Colress aboard the Plasma Frigate
+way 1, from answer 1
+  * battle unova_team_plasma_colress Lost
+  * scene over, unseen
+=== plasma_frigate_5.Grunt
+from Grunt at 16,16 of PlasmaFrigate_Bridge
+way -
+  Grunt> Don't get any closer to Kyurem!
+=== plasma_frigate_5.Kyurem
+from the trigger at 11,18 of PlasmaFrigate_Bridge
+way 0
+  Zinzolin> You are an impressive Trainer to have come this far. Since you have gone to such trouble, let me show you something.
+  > Under the great cannon, something huge stirred in the cold...
+  Zinzolin> The legendary Pokémon of ice! Its name is Kyurem. The missiles of ice we fired into Opelucid City were made with Kyurem's power and Team Plasma's science.
+  Zinzolin> Well. You could become a threat to Team Plasma, so we shall be rid of you here.
+  Barry> Not with me around, you won't! Lucas, thanks for switching off the barrier. That was a big help!
+  Zinzolin> Hmph! Then we shall be rid of you both!
+  Barry> I'm not losing to Team Plasma! ...What is this place, anyway?
+  Barry> That Pokémon... It's freezing just to look at. Was it the one that attacked Opelucid City?
+  Zinzolin> Hmph. You are cleverer than I thought. With that much sense, why sneak into our ship at all?
+  Barry> Isn't it obvious? I'll do whatever it takes to get my sister's Pokémon back! Were you the one who stole a Purrloin in Aspertia City?
+  Zinzolin> If it was only a Purrloin, someone took it and is using it now. Why can't you see that? There are other Purrloin.
+  Barry> That's the only Purrloin in the world that my grandpa caught for my little sister!
+  Zinzolin> One person's feelings. To you they matter a great deal. To everyone else, they are a trifle.
+  Zinzolin> Ah. Kyurem has recovered completely. We shall put the DNA Splicers to good use. Shadow Triad, I leave these two to you.
+  Barry> Don't mess with me! You're the one who lost!
+  Shadow Triad> ...
+  > There is a rush of wind, and the cold deck is gone from under your feet...
+  * scene plasma_frigate_5.Zinzolin and Kyurem
+  * cry Kyurem
+  * partner {rival} unova_rival_30
+  * battle unova_team_plasma_grunt_49 and unova_team_plasma_zinzolin with unova_rival_30 Won
+  * partner off
+  * fade out
+  * endscene
+  * warp Unova 798 242
+  * fade in
+  + FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  + FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  = VAR_UNOVA_HUMILAU 0 -> 8
+  + beaten unova_team_plasma_grunt_49
+  + beaten unova_team_plasma_zinzolin
+  + seen plasma_frigate_5.Zinzolin and Kyurem
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_49 and unova_team_plasma_zinzolin with unova_rival_30 Lost
+  * scene over, unseen
+=== plasma_frigate_5.Zinzolin
+from Zinzolin at 12,16 of PlasmaFrigate_Bridge
+way -
+  Zinzolin> Children have no business in this chamber.
+=== plasma_frigate_9.Grunt
+from Grunt at 2,5 of PlasmaFrigate_Cabin
+way -
+  Grunt> See these pictures? The legendary Pokémon that made the Unova region. This one's Reshiram...
+  Grunt> ...and this one's Zekrom. With Pokémon like these, ruling Unova would be easy, right? Too bad we don't have either. Yet.
+  * seen Reshiram
+  * seen Zekrom
+=== plasma_frigate_9.Switch
+from the tile read at 6,2 of PlasmaFrigate_Cabin
+way 0
+  > There's a switch on the wall marked BARRIER. Press it?
+  > Click! From behind the wall came the sound of a barrier switching off.
+  ? There's a switch on the wall marked BARRIER. Press it? = Yes
+  + FLAG_UNOVA_FRIGATE_SWITCH_A
+way 1, from answer 1
+  ? There's a switch on the wall marked BARRIER. Press it? = No
 === pokemon_league.Statue
 from the tile read at 837,561 of Sinnoh
 from the tile read at 838,561 of Sinnoh
@@ -22401,6 +23184,23 @@ from the tile read at 11,2 of SealedChamber_OuterRoom
 from the tile read at 9,2 of SealedChamber_OuterRoom
 way -
   > Raised dots run across the wall. They seem to say: dig here.
+=== seaside_cave.Crustle
+from Crustle at 29,10 of SeasideCave_1F
+way -
+  > A great boulder blocks the way. It doesn't look as if any Pokémon could move it...
+=== seaside_cave.Rocky
+from Rocky at 6,53 of SeasideCave_1F
+way 0
+  Rocky> Hm! If you want past here, you'll have to beat me and my Roggenrola. We're as sturdy as rock!
+  Rocky> But my Roggenrola and I only battle strong Trainers. Can you break our rock-hard will?
+  Rocky> Hm! Your strength is the real thing! My Roggenrola and I must become sturdier still. We're off to train. Farewell!
+  * battle unova_black_belt_rocky Won
+  * fade out
+  * fade in
+  + FLAG_UNOVA_HIDE_ROCKY
+  + beaten unova_black_belt_rocky
+way 1, from answer 1
+  * battle unova_black_belt_rocky Lost
 === sendoff_spring.Cynthia
 from Cynthia at 31,17 of SendoffSpring
 way -
@@ -24798,6 +25598,47 @@ way 1, from answer 1
 from {rival} at 173,648 of Unova
 way -
   Barry> I have to get stronger than Team Plasma!
+=== unova_route_21.Cheren
+from Cheren at 797,242 of Unova
+way -
+  Cheren> You can reach the Giant Chasm from Route 22. Be ready before you go, Lucas.
+=== unova_route_21.Gangplank
+from the trigger at 796,239 of Unova
+way -
+  Barry> Lucas! You found them! I knew you could do it!
+  Barry> That's Team Plasma's ship, anchored right off the beach. But... how do we get aboard?
+  Marlon> Hold up!
+  Marlon> Eh, this should do it!
+  > A heavy gangplank came down from the ship's rail with a solid thud...
+  Barry> Marlon! I thought you didn't care about Team Plasma?
+  Marlon> Hey, friends! Team Plasma's not bothering me. They might be up to no good for real, but it's not my style to decide that without thinking it through.
+  Marlon> But you're in trouble, so I've got to help. That's what I want to do!
+  Barry> ...Thanks.
+  Marlon> Listen, 'K? Believe in something. Searching for a stolen Pokémon is fine. Keeping Unova from freezing is fine too. Just think about why you're doing it.
+  Marlon> I made a bit of noise, so some of them are bound to come out. Be careful, 'K!
+  Barry> What was that?! The guy doesn't stick around, does he?
+  Barry> Well... I guess he was being kind in his own way. All right, I'm going in!
+  * scene unova_route_21.Marlon's gangplank
+  * emote {rival} Exclaim
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_FRIGATE_AT_ROUTE_21
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  + FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  = VAR_UNOVA_HUMILAU 0 -> 6
+  + seen unova_route_21.Marlon's gangplank
+=== unova_route_21.Hugh
+from {rival} at 797,240 of Unova
+way -
+  Barry> Let's go! Team Plasma isn't getting away this time!
+=== unova_route_22.Colress
+from Colress at 738,138 of Unova
+from the trigger at 752,146 of Unova
+way -
+  Colress> The Seaside Cave is on Route 21, south of Humilau. Good luck!
 === unova_route_4.ColressWaits
 from the trigger at 427,584 of Unova
 way 0

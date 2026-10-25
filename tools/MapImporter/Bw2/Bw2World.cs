@@ -197,6 +197,13 @@ public sealed class Bw2World
     /// <summary>The zones whose chunks have an ice twin (<see cref="IceChunk"/>).</summary>
     public static readonly string[] IceZones = { "opelucid_city" };
 
+    /// <summary>The chunks whose second grid is a boardwalk over the sea (plan 22 · U8, part b: Humilau City), walked where the first is blocked.</summary>
+    public static readonly HashSet<string> Decks = new(StringComparer.Ordinal)
+    {
+        "overworld_2_map24_03", "overworld_2_map24_04", "overworld_2_map24_05",
+        "overworld_2_map25_03", "overworld_2_map25_04", "overworld_2_map25_05",
+    };
+
     public WorldChunkFile IceChunk(string folder)
     {
         var file = Chunk(folder);
@@ -261,6 +268,25 @@ public sealed class Bw2World
             file.Solid.Add(blocked.ToString());
             file.Cover.Add(row.ToString());
         }
+        // Humilau City's boardwalks (plan 22 · U8, part b) are a second grid over a first that is the sea, blocked: there the
+        // deck is the ground, walked at its own height and with its own class
+        if (Decks.Contains(folder))
+            for (int layer = 1; layer < layers.Length; layer++)
+            {
+                if (layers[layer] is not { } deck) continue;
+                for (int z = 0; z < Math.Min(T, deck.Height); z++)
+                    for (int x = 0; x < Math.Min(T, deck.Width); x++)
+                    {
+                        int i = z * T + x;
+                        var tile = deck.At(x, z);
+                        if (tile.Blocked || !there[i] || !solid[i] || (overrides != null && overrides.ContainsKey((x, z)))) continue;
+                        solid[i] = false;
+                        behaviour[i] = Bw2Behaviours.Of(tile.Class);
+                        (height[i], slopeX[i], slopeZ[i]) = (tile.Height, tile.SlopeX, tile.SlopeZ);
+                        file.Solid[z] = file.Solid[z].Remove(x, 1).Insert(x, ".");
+                        file.Behaviours[z] = file.Behaviours[z].Remove(x * 2, 2).Insert(x * 2, ((byte)behaviour[i]).ToString("X2", CultureInfo.InvariantCulture));
+                    }
+            }
         file.Heights = Plates(there, height, slopeX, slopeZ);
         // A second grid (a bridge's deck over a road) is a plate a tile where it stands well clear of the first
         for (int layer = 1; layer < layers.Length; layer++)

@@ -67,6 +67,11 @@ Console.WriteLine("Species…");
 var importedSpecies = importer.Species();
 importer.AddFormColors(importedSpecies, showdown);
 var species = Overrides.Apply(importedSpecies, Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
+// Forms of our own (plan 06 · R20b: the fifteen Megas), appended to a species' imported forms, never replacing them
+Overrides.AddForms(species, Path.Combine(overrides, "forms.json"));
+// The Mega Dynamax forms of our own (plan 06 · R20c), each after its Mega
+var megaMaxWaiting = MegaDynamaxForms.Add(species, MegaDynamaxForms.Load(Path.Combine(overrides, MegaDynamaxForms.FileName)));
+Console.WriteLine($"  Mega Dynamax forms: {species.Sum(s => s.Forms?.Count(f => f.Kind == FormKind.MegaDynamax) ?? 0)}; waiting for their Mega: {(megaMaxWaiting.Count == 0 ? "none" : string.Join(", ", megaMaxWaiting))}");
 // The species of our own that evolve past level 100 (plan 03 · D14), after the 1,025, before their moves past 100
 var ourSpecies = SpeciesPastHundred.Add(species, SpeciesPastHundred.Load(Path.Combine(overrides, SpeciesPastHundred.FileName)));
 Console.WriteLine($"  species of our own: {ourSpecies.Count} ({string.Join(", ", ourSpecies.Select(s => s.DexNumber))})");
@@ -241,6 +246,30 @@ static class Overrides
         var node = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = System.Text.Json.JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
         foreach (var (key, stock) in node["specialties"]!.AsObject())
             marts.Specialties[key] = stock!.AsArray().Select(i => (string)i!).ToList();
+    }
+
+    /// <summary>
+    /// The forms of <c>Overrides/forms.json</c> (<c>{ species: [forms] }</c>, plan 06 · R20b): each appended to its
+    /// species' imported forms, a form of the same name replaced, so an override of a species' <c>forms</c> field
+    /// (which replaces it whole) never wipes out the forms the import gave it.
+    /// </summary>
+    public static void AddForms(List<PokemonSpecies> species, string path)
+    {
+        if (!File.Exists(path)) return;
+        var node = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = System.Text.Json.JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
+        foreach (var (name, forms) in node)
+        {
+            var owner = species.FirstOrDefault(s => s.Name == name) ?? throw new InvalidDataException($"forms.json names {name}, which is no species");
+            owner.Forms ??= new();
+            foreach (var f in System.Text.Json.JsonSerializer.Deserialize<List<PokemonForm>>(forms!.ToJsonString(), PokemonPlatinumEngine.Data.GameDataFiles.Json)!)
+            {
+                int at = owner.Forms.FindIndex(x => x.Name == f.Name);
+                if (at >= 0) owner.Forms[at] = f;
+                // A Mega before the Gigantamax form, as the import has Venusaur's
+                else if (owner.Forms.FindIndex(x => x.Kind == FormKind.Gigantamax) is var gmax and >= 0 && f.Kind == FormKind.Mega) owner.Forms.Insert(gmax, f);
+                else owner.Forms.Add(f);
+            }
+        }
     }
 
     public static List<T> Apply<T>(List<T> records, string path)

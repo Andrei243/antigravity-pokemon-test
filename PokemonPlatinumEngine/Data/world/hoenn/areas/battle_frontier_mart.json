@@ -1,0 +1,29 @@
+{
+  "key": "battle_frontier_mart",
+  "index": 462,
+  "name": "Battle Frontier",
+  "matrix": 405,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "battle_frontier_outside_west", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "battle_frontier_outside_west", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "frontier_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "BattleFrontier_Mart_EventScript_Clerk" },
+    { "id": "frontier_mart_old_woman", "looks": "old_woman", "movement": "look_east", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "BattleFrontier_Mart_EventScript_OldWoman" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_east", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "BattleFrontier_Mart_EventScript_OldMan" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "look_west", "x": 8, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "BattleFrontier_Mart_EventScript_Boy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

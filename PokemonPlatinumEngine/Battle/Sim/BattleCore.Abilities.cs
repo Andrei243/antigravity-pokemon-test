@@ -97,15 +97,7 @@ public sealed partial class BattleCore
         user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = false;
         string? ability = user.Ability?.Name;
         if (ability == null) return data;
-        PokemonType? ate = ability switch
-        {
-            "Aerilate" => PokemonType.Flying,
-            "Pixilate" => PokemonType.Fairy,
-            "Refrigerate" => PokemonType.Ice,
-            "Galvanize" => PokemonType.Electric,
-            "Dragonize" => PokemonType.Dragon,
-            _ => null
-        };
+        PokemonType? ate = AteType(ability);
         if (ate is { } to && data.Type == PokemonType.Normal && !TypedByItsOwnRule(data) && data.Kind == MoveKind.Standard)
         {
             user.Turn.AteBoosted = true;
@@ -120,6 +112,26 @@ public sealed partial class BattleCore
         }
         return data;
     }
+
+    /// <summary>The type a -ate ability makes a Normal move; null for any other ability.</summary>
+    private static PokemonType? AteType(string? ability) => ability switch
+    {
+        "Aerilate" => PokemonType.Flying,
+        "Pixilate" => PokemonType.Fairy,
+        "Refrigerate" => PokemonType.Ice,
+        "Galvanize" => PokemonType.Electric,
+        "Dragonize" => PokemonType.Dragon,
+        _ => null
+    };
+
+    /// <summary>
+    /// The move a Max Move is chosen by (plan 06 · R20c; Showdown's <c>runMove</c>, "the Max Move's outcome is dependent on
+    /// the move type after type modifications from ability"): a Normal move a -ate ability retypes becomes that type's Max
+    /// Move. The Max Move itself is no Standard move, so the -ate's power does not go with it.
+    /// </summary>
+    private static MoveData AsTheAbilityTypesIt(Battler user, MoveData data) =>
+        AteType(user.Ability?.Name) is { } to && data.Type == PokemonType.Normal && data.Category != MoveCategory.Status && !TypedByItsOwnRule(data) && data.Kind == MoveKind.Standard
+            ? data.OfType(to) : data;
 
     /// <summary>The moves whose type is their own rule's, which a -ate ability leaves alone (Showdown's <c>noModifyType</c>).</summary>
     private static bool TypedByItsOwnRule(MoveData move) =>

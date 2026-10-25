@@ -17,8 +17,9 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 // no flinch, no Torment, no dragging out), sim/battle-actions.ts (getMaxMove, getActiveMaxMove), sim/pokemon.ts
 // (getDynamaxRequest, maxMoveDisabled, getUndynamaxedHP), sim/battle.ts (endTurn ends it at its third turn),
 // sim/battle-queue.ts (runDynamax, order 105) and data/moves.ts (each Max Move's and G-Max Move's own effect, Max
-// Guard, and what fails against a Dynamaxed Pokémon). A Mega Dynamax of our own, which plan 06 lists for later, is a
-// Mega form that Dynamaxes: MegaFormOf and WhyNotDynamax's refusal of a Mega are the two places it would change.
+// Guard, and what fails against a Dynamaxed Pokémon). Mega Dynamax (plan 06 · R20c, our own; rulings.md, "Mega
+// Dynamax") is a Mega that Dynamaxes with the Mega Max Band, in the same choice as its Mega Evolution or later:
+// WhyNotDynamax's Mega path, WhyNotMegaDynamax, MegaDynamaxFormOf and the Dynamax's own moment, below.
 public sealed partial class BattleCore
 {
     /// <summary>The item in the bag that lets the player's Pokémon Dynamax, by name.</summary>
@@ -116,13 +117,14 @@ public sealed partial class BattleCore
     }
 
     /// <summary>The Max Move the move in this position would be for the Pokémon in a place, Dynamaxed or about to be; null where it has none.</summary>
-    public MoveData? MaxMoveFor(Battler b, int move)
+    public MoveData? MaxMoveFor(Battler b, int move, bool megaDynamax = false)
     {
         var mine = At(b.Place);
         if (mine.Pokemon is not { } p || move < 0 || move >= p.Moves.Count) return null;
         var v = mine.Volatile;
-        bool gigantamax = v.Dynamaxed ? v.Gigantamaxed : GigantamaxFormOf(p) != null;
-        return MaxMoveOf(p.Species, p.Moves[move].Data, gigantamax, v.Dynamaxed ? v.FormBeforeGigantamax : p.Form);
+        // A Mega Dynamax uses its type's Max Moves, whatever Gigantamax Factor it has (plan 06 · R20c)
+        bool gigantamax = v.Dynamaxed ? v.Gigantamaxed : !megaDynamax && GigantamaxFormOf(p) != null;
+        return MaxMoveOf(p.Species, AsTheAbilityTypesIt(mine, p.Moves[move].Data), gigantamax, v.Dynamaxed ? v.FormBeforeGigantamax : p.Form);
     }
 
     // ---------------------------------------------------------------- what may be chosen
@@ -133,32 +135,102 @@ public sealed partial class BattleCore
     /// has Dynamaxed, in a Mega, primal or Ultra form or able to Mega Evolve, holding a Z-Crystal, of a species that
     /// can't, or with no Max Move it may use.
     /// </summary>
-    public string? WhyNotDynamax(Battler b)
+    public string? WhyNotDynamax(Battler b, bool withMega = false)
     {
         var mine = At(b.Place);
         string no = Text.Of("battle.cantDynamax", ("pokemon", mine.Name));
-        if (!Rules.Dynamax || mine.Pokemon is not { } p || !HasDynamaxBand(mine) || mine.Volatile.Dynamaxed) return no;
+        if (!Rules.Dynamax || mine.Pokemon is not { } p || mine.Volatile.Dynamaxed) return no;
+        // A Mega, or one Mega Evolving with this very move, Dynamaxes by the Mega Max Band (plan 06 · R20c); any other by the Dynamax Band
+        string? megaForm = p.FormData?.Kind == FormKind.Mega ? p.Form : withMega ? MegaFormOf(p) : null;
+        if (megaForm == null && !HasDynamaxBand(mine)) return no;
         if (dynamaxUsed.Contains(MegaKey(mine))) return Text.Of("battle.dynamaxOnlyOnce");
-        if (p.FormData?.Kind is FormKind.Mega or FormKind.Primal || p.Form == UltraForm || p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null) return no;
+        if (megaForm != null)
+        {
+            if (WhyNotMegaDynamax(mine, megaForm) is { } noMega) return noMega;
+        }
+        else if (p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax || p.Form == UltraForm || p.HeldItem?.ZCrystal != null || MegaFormOf(p) != null) return no;
         // (Nor a Terastallized one: one mechanic a Pokémon, plan 06 · R23)
         if (NeverDynamax.Contains(p.Species.Name) || p.IsEgg || p.Terastallized != null) return no;
         return p.Moves.Any(m => WhyNotMaxMove(mine, m) == null) ? null : no;
     }
 
     /// <summary>Whether the Pokémon in a place may Dynamax with the move it chooses now (and nobody of its trainer's has chosen to this turn).</summary>
-    public bool CanDynamax(Battler b) => WhyNotDynamax(b) == null && !dynamaxChosen.Contains(MegaKey(At(b.Place)));
+    public bool CanDynamax(Battler b, bool withMega = false) => WhyNotDynamax(b, withMega) == null && !dynamaxChosen.Contains(MegaKey(At(b.Place)));
 
-    /// <summary>A choice that Dynamaxes: with a move of its own, alone of the later mechanics, and where <see cref="WhyNotDynamax"/> lets it.</summary>
+    /// <summary>A choice that Dynamaxes: with a move of its own, alone of the later mechanics but a Mega Evolution that makes it a Mega Dynamax, and where <see cref="WhyNotDynamax"/> lets it.</summary>
     private string? WhyNotDynamaxChoice(BattleChoice choice, Battler b)
     {
-        if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove || choice.Mega || choice.ZMove || choice.UltraBurst)
+        if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove || choice.ZMove || choice.UltraBurst)
             return Text.Of("battle.cantDynamax", ("pokemon", b.Name));
-        return WhyNotDynamax(b);
+        // With a Mega Evolution in the same choice only as a Mega Dynamax (plan 06 · R20c)
+        if (choice.Mega && !Rules.MegaDynamax) return Text.Of("battle.cantDynamax", ("pokemon", b.Name));
+        return WhyNotDynamax(b, choice.Mega);
     }
 
     /// <summary>What a chooser inside may not have: a Dynamax the rules don't let it make.</summary>
     private BattleChoice AsTheDynamaxRulesLet(Battler b, BattleChoice choice) =>
-        choice.Dynamax && (WhyNotDynamaxChoice(choice, b) != null || !CanDynamax(b)) ? choice with { Dynamax = false } : choice;
+        choice.Dynamax && (WhyNotDynamaxChoice(choice, b) != null || !CanDynamax(b, choice.Mega)) ? choice with { Dynamax = false } : choice;
+
+    // ---------------------------------------------------------------- Mega Dynamax (plan 06 · R20c)
+
+    /// <summary>The item in the bag that lets a Mega of the player's Dynamax, by name.</summary>
+    public const string MegaMaxBandItem = "Mega Max Band";
+
+    /// <summary>The player has a Mega Max Band (<see cref="CoreSetup.MegaMaxBand"/>).</summary>
+    public bool MegaMaxBand { get; }
+
+    /// <summary>The trainer of the place has a Mega Max Band: the player's own (<see cref="MegaMaxBand"/>), a trainer's or a partner's.</summary>
+    private bool HasMegaMaxBand(Battler b) => b.Trainer != null ? b.Trainer.MegaMaxBand : b.IsPlayerSide ? MegaMaxBand : MegaMaxDen && Rules.MegaDynamax;
+
+    /// <summary>A den's Mega Dynamax boss (<see cref="CoreSetup.MegaMaxDen"/>): the one wild Pokémon that may Mega Evolve and Mega Dynamax, by itself.</summary>
+    public bool MegaMaxDen { get; }
+
+    /// <summary>
+    /// Why the Pokémon in a place can't Mega Dynamax in the Mega form <paramref name="megaForm"/> (its own, or the one
+    /// it takes with this move); null when it can: under rules without it, with no Mega Max Band, or of a legendary or
+    /// a mythical species (docs/mechanics/rulings.md, "Mega Dynamax"). Every other refusal is <see cref="WhyNotDynamax"/>'s.
+    /// </summary>
+    public string? WhyNotMegaDynamax(Battler b, string megaForm)
+    {
+        var mine = At(b.Place);
+        string no = Text.Of("battle.cantMegaDynamax", ("pokemon", mine.Name));
+        if (!Rules.MegaDynamax || mine.Pokemon is not { } p || !HasMegaMaxBand(mine)) return no;
+        if (p.Species.Form(megaForm)?.Kind != FormKind.Mega || p.Species.Legendary || p.Species.Mythical) return no;
+        return null;
+    }
+
+    /// <summary>The Mega Dynamax form of a Pokémon in a Mega form (<c>Charizard-Mega-X-Mmax</c>); null where its Mega has none, and it grows in its Mega form.</summary>
+    public static string? MegaDynamaxFormOf(Pokemon p) =>
+        p.Form != null && p.FormData?.Kind == FormKind.Mega && p.Species.Form(p.Form + Pokemon.MegaDynamaxSuffix) is { Kind: FormKind.MegaDynamax } f ? f.Name : null;
+
+    /// <summary>
+    /// The Champion-level team with a Mega Dynamax ace a trainer fights with once the player holds the Mega Max Band
+    /// under rules that have it (docs/plans/R20c-mega-dynamax-proposals.md, 3.2): a record of <c>our-trainers.json</c>
+    /// named after the team fought, with <c>_megamax</c> in place of <c>_rematch</c> (<c>champion_cynthia_megamax</c>,
+    /// <c>kanto_champion_megamax_squirtle</c>) or after it (<c>johto_champion_lance_megamax</c>); null for anyone else.
+    /// </summary>
+    public static TrainerRecord? MegaMaxTeamOf(string id, Inventory bag, Ruleset? rules = null)
+    {
+        if (!(rules ?? Ruleset.Current).MegaDynamax || id.EndsWith(TrainerDatabase.MegaMaxSuffix) || !bag.AllItems.Any(s => s.Name == MegaMaxBandItem)) return null;
+        string megaMax = id.Contains(TrainerDatabase.RematchSuffix) ? id.Replace(TrainerDatabase.RematchSuffix, TrainerDatabase.MegaMaxSuffix) : id + TrainerDatabase.MegaMaxSuffix;
+        return TrainerDatabase.Get(megaMax);
+    }
+
+    /// <summary>Whether the Pokémon in a place may Mega Evolve and Mega Dynamax with the move it chooses now, in one choice.</summary>
+    public bool CanMegaDynamax(Battler b) => CanMegaEvolve(b) && CanDynamax(b, withMega: true);
+
+    /// <summary>
+    /// The trainer AI's one rule of Mega Dynamax (docs/plans/R20c-mega-dynamax-proposals.md, 1.4): a trainer with the
+    /// Mega Max Band who still has a Pokémon able to Mega Evolve and Mega Dynamax, on the field or in the party and not
+    /// fainted, keeps its Dynamax for that one. False under rules without it and with no band, so nothing changes there.
+    /// </summary>
+    public bool KeepsDynamaxForAMega(Battler b)
+    {
+        var mine = At(b.Place);
+        if (!Rules.MegaDynamax || !HasMegaMaxBand(mine) || megaUsed.Contains(MegaKey(mine)) || !HasKeyStone(mine)) return false;
+        var team = mine.Roster?.Members ?? (mine.Pokemon != null ? new List<Pokemon> { mine.Pokemon } : new List<Pokemon>());
+        return team.Any(p => !p.IsFainted && MegaFormOf(p) is { } form && p.Species.Form(form)?.Kind == FormKind.Mega && !p.Species.Legendary && !p.Species.Mythical);
+    }
 
     /// <summary>Two Dynamaxes of one trainer in one answer are refused.</summary>
     private void RefuseTwoDynamax(IReadOnlyList<BattleChoice> choices)
@@ -241,6 +313,9 @@ public sealed partial class BattleCore
         if (p.Form is "Cramorant-Gulping" or "Cramorant-Gorging" && !v.Transformed) p.Form = null;
 
         string? gmax = v.Transformed ? null : GigantamaxFormOf(p);
+        // A Mega grows into its Mega Dynamax form where it has one, and in its Mega form where it hasn't (plan 06 · R20c)
+        bool mega = !v.Transformed && p.FormData?.Kind == FormKind.Mega;
+        string? mmax = gmax == null && mega ? MegaDynamaxFormOf(p) : null;
         v.FormBeforeGigantamax = p.Form;
         v.AbilityBeforeGigantamax = p.AbilityName;
         if (gmax != null)
@@ -248,6 +323,12 @@ public sealed partial class BattleCore
             // Only its look and its Max Moves change: a Gigantamax form has its species' stats, types and ability
             p.Form = gmax;
             v.Gigantamaxed = true;
+        }
+        else if (mmax != null)
+        {
+            // Only its look changes: a Mega Dynamax form has its Mega's stats, types and abilities
+            p.Form = mmax;
+            v.MegaDynamaxed = true;
         }
         v.Dynamaxed = true;
         v.DynamaxTurns = 0;
@@ -259,7 +340,8 @@ public sealed partial class BattleCore
             p.TakeHp(p.MaxHP * twentieths / 20, p.CurrentHP * twentieths / 20);
         }
         v.MaxHpDynamaxed = p.MaxHP;
-        var line = Say(gmax != null ? Text.Of("battle.gigantamaxed", ("pokemon", b.Name)) : Text.Of("battle.dynamaxed", ("pokemon", b.Name)))
+        var line = Say(gmax != null ? Text.Of("battle.gigantamaxed", ("pokemon", b.Name))
+                : mega ? Text.Of("battle.megaDynamaxed", ("pokemon", b.Name)) : Text.Of("battle.dynamaxed", ("pokemon", b.Name)))
             .With(new Dynamaxed(b.Place, p.Form, gmax != null, p.MaxHP, p.CurrentHP));
         if (subGone) line.With(new SubstituteChanged(b.Place, Up: false));
     }
@@ -279,6 +361,12 @@ public sealed partial class BattleCore
         {
             p.Form = v.FormBeforeGigantamax;
             v.Gigantamaxed = false;
+        }
+        if (v.MegaDynamaxed)
+        {
+            // Back into its Mega, which lasts the battle out (plan 06 · R20c)
+            p.Form = v.FormBeforeGigantamax;
+            v.MegaDynamaxed = false;
         }
         if (p.Species.Name != "Shedinja")
         {
@@ -350,7 +438,8 @@ public sealed partial class BattleCore
         var user = use.User;
         var p = user.Pokemon!;
         var own = use.Move.Data;
-        if (MaxMoveOf(p.Species, own, user.Volatile.Gigantamaxed, user.Volatile.FormBeforeGigantamax) is not { } max) return;
+        // A -ate ability's type chooses the Max Move (plan 06 · R20c: Mega Salamence's Aerilate, Mega Gardevoir's Pixilate)
+        if (MaxMoveOf(p.Species, AsTheAbilityTypesIt(user, own), user.Volatile.Gigantamaxed, user.Volatile.FormBeforeGigantamax) is not { } max) return;
         var data = max.CopyWith(d =>
         {
             if (own.Category != MoveCategory.Status)

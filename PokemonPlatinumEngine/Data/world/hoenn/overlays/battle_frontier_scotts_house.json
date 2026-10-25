@@ -1,0 +1,10 @@
+{
+  // Scott's house on the Battle Frontier island (plan 21 · H12, part b): Scott, who gathered the Frontier's Brains, gives
+  // a Champion a few Battle Points the first time and offers his crossing to Sinnoh's Battle Frontier, where the halls are
+  // open (battle_frontier_scotts_house.txt; rulings, "The Battle Frontier island")
+  "area": "battle_frontier_scotts_house",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "scotts_house_scott": { "name": "Scott", "script": "Scott", "still": true }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma! Wherever you go, I won't let you get away!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With a roar of engines, the Plasma Frigate rose from the water and flew off toward the west..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...It flies?! Where's it going?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry I'm late. If I had to guess, they're making for the Giant Chasm."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Giant Chasm! That's at the far end of Route 22, right? Then that's where I'm going!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon in the ship... Kyurem. Its cry sounded so lonely."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kyurem! So Team Plasma means to use Kyurem's power for themselves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How do we stop something like that? Drayden said only Reshiram or Zekrom could stand up to it. And neither of them is anywhere!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...It doesn't matter. I'm going. {player}, follow when you're ready!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gangplank": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You found them! I knew you could do it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's Team Plasma's ship, anchored right off the beach. But... how do we get aboard?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eh, this should do it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A heavy gangplank came down from the ship's rail with a solid thud..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon! I thought you didn't care about Team Plasma?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, friends! Team Plasma's not bothering me. They might be up to no good for real, but it's not my style to decide that without thinking it through."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But you're in trouble, so I've got to help. That's what I want to do!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Thanks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Listen, 'K? Believe in something. Searching for a stolen Pokémon is fine. Keeping Unova from freezing is fine too. Just think about why you're doing it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I made a bit of noise, so some of them are bound to come out. Be careful, 'K!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What was that?! The guy doesn't stick around, does he?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well... I guess he was being kind in his own way. All right, I'm going in!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's go! Team Plasma isn't getting away this time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cheren": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You can reach the Giant Chasm from Route 22. Be ready before you go, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

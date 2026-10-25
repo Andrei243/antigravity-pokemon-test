@@ -1195,7 +1195,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       painting drawn on the gallery's wall itself in place of the viewer (Emerald's metatile swap needs an alternate
       chunk each); the museum's first scene on the stairs (`ShowExhibitHall`); the PokéNav's condition page already shows
       the sheen the Pokéblock's feel raises.
-- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken)
+- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was
       open), all in `RegionDatabase`'s Hoenn list; Route 105's and Route 111's doors into their caves unlocked.
@@ -1237,3 +1237,24 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       the event islands (decision 5: Navel Rock, Birth Island, Faraway Island), the Gold and Silver Shields and the Glass
       Ornament as decorations, Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json`, the Regis' and eon
       Pokémon's looks beyond the stand-in field sprites, and the camera's pan as the eon Pokémon comes down.
+    - **Part b** (done 2026-10-26, wave 56: the Battle Frontier island; `docs/mechanics/rulings.md`, "The Battle Frontier
+      island"; tests written and run with `--filter` (`HoennFrontierIslandTests`), shots `h270` to `h27f` written and not
+      taken). **Built**: `HoennBattleFrontier` (matrix 357, both halves) and fifteen rooms of its grounds (the reception
+      gate, the Pokémon Center's two floors, the Mart, the Exchange Service Corner, Scott's house, the Ranking Hall, Lounges
+      1 to 8), all in `RegionDatabase`'s Hoenn list; `GbaCover.HoennRanges` rows for the island's two tilesets (every
+      open metatile its paving, as Lilycove's). Lilycove's ferry desk sails a Champion with the S.S. Ticket to the quay
+      (19, 67) and the quay's attendant back; Scott gives his pass in the reception gate if not on the quay, 3 Battle
+      Points in his house and the crossing to Sinnoh's Frontier; the Exchange's two counters trade Sinnoh's two prize lists;
+      Lounge 1's breeder judges IVs; the strange tree is a Sudowoodo watered with the Wailmer Pail (level 40).
+      **Decided**: the halls' doors and Artisan Cave's are `locked`; the Frontier's records and points stay one set;
+      Emerald's ninth lounge is left out (its door is unreachable); the island plays Lilycove's song.
+      **Tests**: `HoennFrontierIslandTests` (10: the maps and areas, the halls shut and the rooms' doors open, the ferry
+      there and back and Southern Island still first, no ticket no island, Scott's pass and his leaving, his points once and
+      his crossing, the tree three ways, the walk of the whole game into every room). Golden `scripts.txt` moves (the
+      ferry desk's new choice, the island's scripts): accept it.
+      **Shots** (written, not taken; `Modes/HoennFrontierIsland.cs`, after part a's in `HoennPostGameShots`): `h270` to
+      `h27f`. **Left**: the seven halls (plan 14 · B8 to B10, the Tower and Factory perhaps as Sinnoh's rules in Hoenn's
+      lobbies), the S.S. Tidal's cabins and Slateport's ferry, the Battle Points' dolls and move tutors, the gambler and the
+      nature girl, the island's song and its halls' buildings, Artisan Cave, and part a's other leftovers (the Marine and
+      Terra Caves, Sky Pillar's top, Steven at Meteor Falls, the Desert Underpass, New Mauville, Trainer Hill, Mirage Island,
+      Altering Cave, the Weather Institute's reports, the event islands, the Shields and the Glass Ornament).

@@ -1,0 +1,28 @@
+{
+  "key": "humilau_city_2",
+  "index": 466,
+  "name": "Humilau City",
+  "matrix": 264,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_14",
+  "nightMusic": "BGM_SW_C_14",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "humilau_city", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "humilau_city", "toWarp": 2 },
+    { "x": 7, "z": 9, "to": "humilau_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "artist", "movement": "none", "x": 6, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2285" },
+    { "id": "1", "looks": "pokefan_m", "movement": "none", "x": 6, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

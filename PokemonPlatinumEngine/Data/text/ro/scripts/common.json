@@ -2688,5 +2688,15 @@
         "Crede sau nu, cum îți place. Dar oamenii din orașul acesta stau înăuntru noaptea până în ziua de azi. Poveștile vechi ne modelează viețile."
       ]
     }
+  ],
+  "UnovaFrigateBarriers": [
+    {
+      "en": [
+        "Somewhere below came a long falling hum: the barrier in the hold is down!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

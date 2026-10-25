@@ -638,6 +638,8 @@ public sealed partial class ScriptRunner
                 {
                     // Someone of the map who battles with a team of Platinum's: they are that trainer from now on
                     var record = TrainerDatabase.Get(i.AsTrainer) ?? throw Wrong(i, $"there is no trainer '{i.AsTrainer}'");
+                    // A Champion's Mega Dynamax team once the player holds the Mega Max Band (plan 06 · R20c)
+                    if (Battle.Sim.BattleCore.MegaMaxTeamOf(record.Id, host.Bag) is { } megaMax) record = megaMax;
                     var team = new Trainer { Id = record.Id };
                     TrainerDatabase.Fill(team, record);
                     foe.TrainerData = team;

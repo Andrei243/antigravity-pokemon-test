@@ -153,6 +153,44 @@
       "text": [
         "Desigur. Revino oricând dorești."
       ]
+    },
+    {
+      "en": [
+        "Where would you like to sail?",
+        "SOUTHERN ISLAND",
+        "BATTLE FRONTIER",
+        "NOWHERE"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the S.S. Ticket."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Battle Frontier it is! Please come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed for the Battle Frontier..."
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }

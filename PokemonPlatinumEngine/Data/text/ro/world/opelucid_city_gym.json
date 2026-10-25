@@ -6,7 +6,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Ron"
         ],
         "text": [
-          ""
+          "Ron"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Denae"
         ],
         "text": [
-          ""
+          "Denae"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Rhona"
         ],
         "text": [
-          ""
+          "Rhona"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Jerry"
         ],
         "text": [
-          ""
+          "Jerry"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Lucius"
         ],
         "text": [
-          ""
+          "Lucius"
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Drayden"
         ],
         "text": [
-          ""
+          "Drayden"
         ]
       }
     }
@@ -77,7 +77,7 @@
         "Opelucid Pokémon Gym\nLeader: Drayden\nCertified Trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Opelucid\nLider: Drayden\nAntrenori certificați: {player}"
       ]
     }
   }

@@ -1,0 +1,22 @@
+# The Battle Frontier island's west half (plan 21 · H12, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/BattleFrontier_OutsideWest/scripts.inc).
+#
+# The ferry's attendant on the quay sails the player back to Lilycove City's harbour, where the ferry from the island
+# moors (lilycove_city_harbor.txt, FerryAttendant). Emerald's ferry also runs to Slateport; this one runs to Lilycove
+# alone, as decision 2 of plan 21 has every voyage out of Lilycove.
+
+
+script FerryAttendant
+  face self player
+  speaker "Attendant"
+  say "Welcome to the Battle Frontier! The ferry back to the mainland leaves whenever you're ready."
+  ask "Shall I take you back to Lilycove City?"
+  if no goto Stay
+  say "Very good. Please come aboard."
+  fade out 0.8
+  text "{player} sailed back to Lilycove City..."
+  warp "LilycoveCity_Harbor" 8 11 down
+  end
+label Stay
+  say "Enjoy the Frontier! I'll be here when you want to sail home."
+  end
