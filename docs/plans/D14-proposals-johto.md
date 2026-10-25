@@ -95,10 +95,10 @@ The user may strike rows here before reading the designs. "No." is our number; "
 | 32 | Raikou (243) | Raitenko | 2243 | Electric, kept | 580 → 660 | level 150, with a Ho-Oh in the party | maybe: the three beasts as a trio or not at all; Ho-Oh gave them life, so Ho-Oh beside them takes them further |
 | 33 | Entei (244) | Enkaiou | 2244 | Fire, kept | 580 → 660 | level 150, with a Ho-Oh in the party | maybe: with the trio |
 | 34 | Suicune (245) | Suiseiren | 2245 | Water, kept | 580 → 660 | level 150, with a Ho-Oh in the party | maybe: with the trio |
-| – | Unown (201) | none | – | Psychic | 336 | – | – | no: twenty-eight letters, each a form; an evolution would be twenty-eight forms of a Pokémon of 336 whose one move is Hidden Power, and its lore is that it is a letter, not a stage |
-| – | Lugia (249) | none | – | Psychic/Flying | 680 | – | – | no: 680, a cover legendary, as Mewtwo was |
-| – | Ho-Oh (250) | none | – | Fire/Flying | 680 | – | – | no: 680, a cover legendary; it is what takes the beasts further instead |
-| – | Celebi (251) | none | – | Psychic/Grass | 600 | – | – | no: the mythical that travels in time is outside any stage, as Mew was |
+| – | Unown (201) | none | – | Psychic | 336 | – | no: twenty-eight letters, each a form; an evolution would be twenty-eight forms of a Pokémon of 336 whose one move is Hidden Power, and its lore is that it is a letter, not a stage |
+| – | Lugia (249) | none | – | Psychic/Flying | 680 | – | no: 680, a cover legendary, as Mewtwo was |
+| – | Ho-Oh (250) | none | – | Fire/Flying | 680 | – | no: 680, a cover legendary; it is what takes the beasts further instead |
+| – | Celebi (251) | none | – | Psychic/Grass | 600 | – | no: the mythical that travels in time is outside any stage, as Mew was |
 
 In all: 12 strong yes, 16 yes, 6 maybe (the three beasts as a set among them) and 4 no.
 
