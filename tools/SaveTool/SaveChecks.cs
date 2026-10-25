@@ -226,8 +226,9 @@ public static class SaveChecks
         int last = PokemonDatabase.GetAll().Max(s => s.DexNumber);
         foreach (var (name, list) in new[] { ("seen", save.SeenSpecies), ("caught", save.CaughtSpecies) })
         {
-            var outside = list.Where(n => n < 1 || n > last).Distinct().ToList();
-            if (outside.Count > 0) found.Add(new("pokédex", $"{name}: {string.Join(", ", outside)} is no number of 1 to {last}"));
+            // The games' 1 to 1,025, or a species of our own (plan 03 · D14) by its number
+            var outside = list.Where(n => (n < 1 || n > last) && PokemonDatabase.GetByDex(n) == null).Distinct().ToList();
+            if (outside.Count > 0) found.Add(new("pokédex", $"{name}: {string.Join(", ", outside)} is no number of 1 to {last} nor of a species of ours"));
         }
         var unseen = save.CaughtSpecies.Except(save.SeenSpecies).ToList();
         if (unseen.Count > 0) found.Add(new("pokédex", $"{unseen.Count} caught and never seen ({string.Join(", ", unseen.Take(5))}{(unseen.Count > 5 ? ", …" : "")}): the game does not mind, a hand does", Severity.Note));

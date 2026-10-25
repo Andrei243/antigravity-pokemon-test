@@ -31,10 +31,10 @@ The data has 1006 moves in all. The games number 919 of them, because each of th
 | 7 | 88 | 68 | 68 | 0 | 0 | 42 | 42 |
 | 8 | 96 | 89 | 89 | 0 | 0 | 33 | 33 |
 | 9 | 120 | 69 | 69 | 0 | 0 | 47 | 47 |
-| Ours | 0 | 72 | 72 | 0 | 0 | 0 | 0 |
-| All | 1025 | 919 | 919 | 0 | 0 | 313 | 313 |
+| Ours | 46 | 72 | 72 | 0 | 0 | 0 | 0 |
+| All | 1071 | 919 | 919 | 0 | 0 | 313 | 313 |
 
-**Forms** (plan 03 · D11): 541, of 241 species: 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 486 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
+**Forms** (plan 03 · D11): 541, of 241 species: 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 532 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
 ## Move effects still to write
 
@@ -125,29 +125,30 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 ## Evolutions
 
-582 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
+628 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
 
 | Method | Evolutions | Set off by | Waits for |
 | --- | --- | --- | --- |
-| Level | 383 | a level-up |  |
-| UseItem | 69 | an item used on it |  |
+| Level | 393 | a level-up |  |
+| UseItem | 70 | an item used on it |  |
+| LevelHoldingItem | 19 | a level-up |  |
+| Friendship | 17 | a level-up |  |
+| LevelKnowsMove | 17 | a level-up |  |
 | TradeHoldingItem | 16 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
-| LevelKnowsMove | 15 | a level-up |  |
-| Friendship | 13 | a level-up |  |
+| LevelNight | 13 | a level-up |  |
 | Trade | 12 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
 | LevelFemale | 7 | a level-up |  |
-| LevelNight | 7 | a level-up |  |
 | SpinHoldingItem | 7 | the player spinning |  |
-| LevelDay | 5 | a level-up |  |
-| LevelAtLocation | 4 | a level-up | maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01) |
+| LevelDay | 6 | a level-up |  |
+| LevelAtLocation | 5 | a level-up | maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01) |
+| FriendshipNight | 4 | a level-up |  |
 | FriendshipDay | 3 | a level-up |  |
-| FriendshipNight | 3 | a level-up |  |
 | LevelAfterSteps | 3 | a level-up |  |
+| LevelInRain | 3 | a level-up | weather in the field (plan 01) |
 | LevelMale | 3 | a level-up |  |
 | LevelAfterMoveUses | 2 | a level-up |  |
 | LevelHoldingItemDay | 2 | a level-up |  |
 | LevelHoldingItemNight | 2 | a level-up |  |
-| LevelInRain | 2 | a level-up | weather in the field (plan 01) |
 | LevelWithItemsInBag | 2 | a level-up | a way to collect the items (plan 03 · D12) |
 | TradeWithSpecies | 2 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
 | Beauty | 1 | a level-up | Poffins (plan 06 · R14) |
@@ -175,7 +176,7 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1025) | Forms | Moves (1006) | Abilities (313) | Items (929) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1071) | Forms | Moves (1006) | Abilities (313) | Items (929) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | de | 1025 | 365 | 901 | 310 | 923 | 913 | 0 | 191 | 0 |
 | es | 1025 | 0 | 901 | 310 | 923 | 232 | 0 | 0 | 0 |

@@ -4,7 +4,7 @@ partial class Harness
     public void SheetsMode()
     {
         // Every species: front sprite, back sprite and menu icon, as baked from the 3D models
-        var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).Where(PixelArtGenerator.HasOwnModel).ToArray();
+        var species = PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => s.Name).Where(PixelArtGenerator.HasOwnModel).ToArray();
         // Only the preloaded ones are baked at start-up: ask for the rest and wait for them
         foreach (var sp in species.Take(24)) PokemonSprites.Request(sp);
         PokemonSprites.Flush(game.RenderContext);
@@ -65,7 +65,7 @@ partial class Harness
         if (mode == "sheets")
         {
             var context = game.RenderContext;
-            var everyone = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToArray();
+            var everyone = PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).ToArray();
             const int Cols = 12, Rows = 5, W = 160, H = 216;
             var watch = System.Diagnostics.Stopwatch.StartNew();
             for (int page = 0; page * Cols * Rows < everyone.Length; page++)

@@ -30,6 +30,8 @@ public static class MigrationOut
         try
         {
             var pokemon = saved.ToPokemon();
+            // A species of our own (plan 03 · D14) is in no other game, and Showdown wouldn't know its name
+            if (pokemon.Species.IsOurs) return null;
             byte[]? bytes;
             string extension;
             if (format == WriteFormat.Pk4)

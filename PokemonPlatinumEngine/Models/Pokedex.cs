@@ -56,8 +56,11 @@ public class Pokedex
     /// <summary>Whether one of a species has been caught shiny.</summary>
     public bool IsCaughtShiny(int dexNumber) => CaughtShiny.Contains(dexNumber);
 
-    public int SeenCount => SeenSpecies.Count;
-    public int CaughtCount => CaughtSpecies.Count;
+    /// <summary>How many of the games' species have been seen; ours (plan 03 · D14) count toward no total of the Pokédex's.</summary>
+    public int SeenCount => SeenSpecies.Count(n => n < PokemonDatabase.OursFrom);
+
+    /// <summary>How many of the games' species have been caught; ours count toward no total.</summary>
+    public int CaughtCount => CaughtSpecies.Count(n => n < PokemonDatabase.OursFrom);
 
     /// <summary>Whether the National Pokédex has been opened (<see cref="UnlockNational"/>).</summary>
     public bool NationalUnlocked { get; private set; }
@@ -170,9 +173,13 @@ public class Pokedex
 
     private static readonly ConcurrentDictionary<string, IReadOnlyList<PokedexEntry>> lists = new();
 
-    /// <summary>The species of a Pokédex in its own order, each with the number it shows there (empty for an identifier no species is numbered in).</summary>
+    /// <summary>
+    /// The species of a Pokédex in its own order, each with the number it shows there (empty for an identifier no species
+    /// is numbered in). The National one lists the species of our own after the 1,025 (plan 03 · D14), which its
+    /// totals and its diploma leave out (<see cref="Goal"/>, <see cref="SeenCount"/>); no regional one lists them.
+    /// </summary>
     public static IReadOnlyList<PokedexEntry> Entries(string dex) => lists.GetOrAdd(dex, id => id == National
-        ? PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => new PokedexEntry(s.DexNumber, s)).ToList()
+        ? PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => new PokedexEntry(s.DexNumber, s)).ToList()
         : PokemonDatabase.GetAll().Where(s => s.DexNumbers.ContainsKey(id)).OrderBy(s => s.DexNumbers[id]).ThenBy(s => s.DexNumber)
             .Select(s => new PokedexEntry(s.DexNumbers[id], s)).ToList());
 
@@ -229,7 +236,7 @@ public class Pokedex
 
     /// <summary>The species a Pokédex's diploma asks for, and whether they must be caught or only seen.</summary>
     public static (IReadOnlyList<PokemonSpecies> Species, bool Caught) Goal(string dex) => dex == National
-        ? (Entries(dex).Select(e => e.Species).Where(s => !s.Mythical).ToList(), true)
+        ? (Entries(dex).Select(e => e.Species).Where(s => !s.Mythical && !s.IsOurs).ToList(), true)
         : (Entries(dex).Select(e => e.Species).ToList(), false);
 
     /// <summary>How far the player is toward a Pokédex's diploma: how many of the species it asks for they have.</summary>

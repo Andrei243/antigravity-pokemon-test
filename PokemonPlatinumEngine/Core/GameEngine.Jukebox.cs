@@ -24,7 +24,7 @@ public partial class GameEngine
         if (returnTo == GameState.Title)
             foreach (var slot in titleSlots)
                 if (slot.Save?.Heard is { } kept) heard.UnionWith(kept);
-        var species = PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).ToList();
+        var species = PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).ToList();
         flow.JukeboxScreen.Open(heard, species);
         flow.State = GameState.Jukebox;
     }

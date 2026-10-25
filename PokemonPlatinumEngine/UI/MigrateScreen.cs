@@ -383,6 +383,12 @@ public class MigrateScreen
     private void PickToWrite()
     {
         if (Under is not { Own: not null } pokemon) return;
+        // A species of our own (plan 03 · D14) is in no other game: the way out refuses it
+        if (pokemon.Own.DexNumber >= Data.PokemonDatabase.OursFrom)
+        {
+            AudioManager.PlaySound("error");
+            return;
+        }
         ToWrite = pokemon;
         Format = CanBePk4(pokemon) ? WriteFormat.Pk4 : WriteFormat.Showdown;
         Phase = MigratePhase.Format;

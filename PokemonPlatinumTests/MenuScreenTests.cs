@@ -575,7 +575,7 @@ public class MenuScreenTests
         dex.Search();
         Assert.Equal(Pokedex.National, dex.Mode);
         Assert.Same(RegionDatabase.First, dex.AreaRegion);
-        Assert.Equal(1025, dex.Rows.Count);
+        Assert.Equal(1025 + PokemonDatabase.Ours().Count, dex.Rows.Count);
     }
 
     [Fact]
@@ -967,7 +967,7 @@ public class MenuScreenTests
         dex.Sideways(1);
         Assert.Equal("National", dex.ValueOf(PokedexSearchRow.Mode));
         dex.Search();
-        Assert.Equal((Pokedex.National, 1025), (dex.Mode, dex.Rows.Count));
+        Assert.Equal((Pokedex.National, 1025 + PokemonDatabase.Ours().Count), (dex.Mode, dex.Rows.Count));
         Assert.Equal("Bulbasaur", dex.Species[0].Name);
 
         // The screen remembers the Pokédex it showed, but not one the player can no longer open

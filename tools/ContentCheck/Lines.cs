@@ -39,7 +39,7 @@ public static class Lines
 
     private static string Widest(IEnumerable<string> names) => names.OrderByDescending(Width).ThenBy(n => n, StringComparer.Ordinal).FirstOrDefault() ?? "";
 
-    private static readonly Lazy<string> widestSpecies = new(() => Widest(PokemonDatabase.GetAll().Select(s => s.Name)));
+    private static readonly Lazy<string> widestSpecies = new(() => Widest(PokemonDatabase.Everyone().Select(s => s.Name)));
     private static readonly Lazy<string> widestItem = new(() => Widest(ItemDatabase.GetAll().Select(i => i.Name)));
     private static readonly Lazy<string> widestMove = new(() => Widest(MoveDatabase.GetAll().Select(m => m.Name)));
     private static readonly Lazy<string> widestTrainer = new(() => Widest(TrainerDatabase.All.Select(t => $"{t.Class} {t.Name}")));

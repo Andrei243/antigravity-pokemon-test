@@ -56,7 +56,7 @@ public static class PokemonLook
     private static readonly Lazy<HashSet<string>> FemaleSet = new(() =>
     {
         var set = new HashSet<string>(Females, StringComparer.OrdinalIgnoreCase);
-        foreach (var s in Data.PokemonDatabase.GetAll())
+        foreach (var s in Data.PokemonDatabase.Everyone())
             if (s.GenderDifferences && s.Form(s.Name + "-Female") == null) set.Add(s.Name);
         return set;
     });

@@ -18,10 +18,10 @@ partial class Harness
         // --prints: one board of every species' footprint (plan 09 · L9), 94_prints, and no boards of models
         if (args.Skip(2).Contains("--prints"))
         {
-            Prints(named.Length > 0 ? named : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray());
+            Prints(named.Length > 0 ? named : PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray());
             return;
         }
-        var list = named.Length > 0 ? named : females ? PokemonModels.Females.ToArray() : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
+        var list = named.Length > 0 ? named : females ? PokemonModels.Females.ToArray() : PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => s.Name).ToArray();
         if (females) list = list.SelectMany(s => PokemonLook.HasFemale(s) ? new[] { s, s + PokemonLook.FemaleSuffix } : new[] { s }).ToArray();
         const int Cols = 10, Rows = 6, Box = 192;
         var watch = System.Diagnostics.Stopwatch.StartNew();

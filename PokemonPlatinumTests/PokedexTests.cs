@@ -23,7 +23,9 @@ public class PokedexTests
         Assert.Equal(("Giratina", 210), (sinnoh[^1].Species.Name, sinnoh[^1].Number));
 
         var national = Pokedex.Entries(Pokedex.National);
-        Assert.Equal(1025, national.Count);
+        // The games' 1,025, then the species of our own (plan 03 · D14) by their numbers
+        Assert.Equal(1025 + PokemonDatabase.Ours().Count, national.Count);
+        Assert.Equal(Enumerable.Range(1, 1025), national.Take(1025).Select(e => e.Number));
         Assert.All(national, e => Assert.Equal(e.Species.DexNumber, e.Number));
     }
 
@@ -190,7 +192,7 @@ public class PokedexTests
         Assert.Equal(210, Pokedex.Entries("extended-sinnoh").Count);
         Assert.Equal(400, Pokedex.Entries("galar").Count);
         Assert.Equal(242, Pokedex.Entries("hisui").Count);
-        Assert.Equal(1025, Pokedex.Entries(Pokedex.National).Count);
+        Assert.Equal(1025 + PokemonDatabase.Ours().Count, Pokedex.Entries(Pokedex.National).Count);
         Assert.Empty(Pokedex.Entries("no-such-pokedex"));
     }
 
@@ -212,7 +214,8 @@ public class PokedexTests
         Assert.DoesNotContain("conquest-gallery", ids);   // only the main series
         foreach (string id in ids)
         {
-            var numbers = Pokedex.Entries(id).Select(e => e.Number).ToList();
+            // (the National one's species of our own, plan 03 · D14, follow its 1,025 by their own numbers)
+            var numbers = Pokedex.Entries(id).Where(e => !e.Species.IsOurs).Select(e => e.Number).ToList();
             int first = numbers[0];
             Assert.True(first is 0 or 1, $"{id} begins at {first}");
             Assert.Equal(Enumerable.Range(first, numbers.Count), numbers);

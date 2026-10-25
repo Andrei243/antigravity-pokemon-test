@@ -193,8 +193,8 @@ public class LocalNamesTests
     [Fact]
     public void TheEntryComposedInEnglishIsTheSentenceTheImporterWroteForAll1025()
     {
-        var all = PokemonDatabase.GetAll().ToList();
-        Assert.Equal(1025, all.Count);
+        var all = PokemonDatabase.Everyone().ToList();
+        Assert.Equal(1025, all.Count(s => !s.IsOurs));
         var wrong = all.Where(s => DexText.Compose(s, all) != s.DexEntry).Select(s => s.Name).ToList();
         Assert.True(wrong.Count == 0, $"{wrong.Count} entries differ, the first: {wrong.FirstOrDefault()}: {(wrong.Count > 0 ? DexText.Compose(all.First(s => s.Name == wrong[0])) + " | " + all.First(s => s.Name == wrong[0]).DexEntry : "")}");
     }
