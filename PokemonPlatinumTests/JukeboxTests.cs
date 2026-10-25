@@ -190,8 +190,9 @@ public class JukeboxTests
     public void TheOptionsHaveAJukeboxRowBeforeHelpThatAsksForTheScreenOnce()
     {
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(OptionRow.Help, rows[^1]);
-        Assert.Equal(OptionRow.Jukebox, rows[^2]);
+        Assert.Equal(OptionRow.ResetDefaults, rows[^1]);
+        Assert.Equal(OptionRow.Help, rows[^2]);
+        Assert.Equal(OptionRow.Jukebox, rows[^3]);
 
         var options = new OptionsScreen();
         options.Open();

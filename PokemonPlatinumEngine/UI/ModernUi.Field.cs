@@ -232,6 +232,32 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(text, r.X + (w - tw) / 2f, r.Y + r.Height / 2f, 30, Color.White, UiWeight.ExtraBold);
     }
 
+    /// <summary>Where the autosave's disc stands (plan 12 · Q3; style guide, "Field menus and notices", "Autosave"): its distance from the left and bottom edges, to its middle, and its radius.</summary>
+    public const float AutosaveDiscMargin = 64f, AutosaveDiscRadius = 26f;
+
+    /// <summary>
+    /// The little disc in the bottom left corner while the autosave is written: a dark disc with a Selection rim and three
+    /// dots going round in it, the head a full Selection and the two behind it fainter, a turn in 0.8 s. It fades in
+    /// over the first tenth of <paramref name="t"/> (0 to 1, the whole time it shows) and out over the last fifth, and
+    /// says nothing in words.
+    /// </summary>
+    public static void AutosaveDisc(int sw, int sh, float t)
+    {
+        float alpha = Math.Clamp(Math.Min(t / 0.1f, (1f - t) / 0.2f), 0f, 1f);
+        if (alpha <= 0f) return;
+        var middle = new Vector2(AutosaveDiscMargin, sh - AutosaveDiscMargin);
+        UiShapes.Circle(middle, AutosaveDiscRadius, new Color(36, 44, 68, (int)(215 * alpha)));
+        UiShapes.Ring(middle, AutosaveDiscRadius, 3f, Selection with { A = (byte)(255 * alpha) });
+        // t is a share of AutosaveDiscSeconds (1.6 s): two turns in all
+        float turn = t * 2f * MathF.PI * 2f;
+        for (int k = 0; k < 3; k++)
+        {
+            float a = turn - k * 0.7f;
+            var dot = middle + new Vector2(MathF.Cos(a), MathF.Sin(a)) * (AutosaveDiscRadius - 11f);
+            UiShapes.Circle(dot, 4.5f - k, Selection with { A = (byte)((k == 0 ? 255 : k == 1 ? 150 : 80) * alpha) });
+        }
+    }
+
     /// <summary>
     /// The hold that skips a scene (plan 12 · Q20; style guide, "Story scenes"): how far its pill stands from the
     /// screen's right edge, the height of its middle (the middle of a cinema bar), the pill's height, and the ring's

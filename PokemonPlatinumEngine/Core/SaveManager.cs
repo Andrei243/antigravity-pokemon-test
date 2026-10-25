@@ -272,6 +272,13 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? BeganIn { get; set; }
 
+    /// <summary>
+    /// The slot an autosave belongs to (plan 12 · Q3): written only into <c>autosave.json</c> (<see cref="AutosaveFile"/>), so
+    /// no slot's save and no save of the corpus has it, and a save without it is no autosave.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public int? AutosaveSlot { get; set; }
+
     /// <summary>The region the game began in: <see cref="BeganIn"/>, or for a save from before it, the region of the map it stands on.</summary>
     public string BeganInOrHere() =>
         BeganIn ?? Data.RegionDatabase.RegionOfMap(CurrentMapName)?.Id ?? Data.RegionDatabase.First.Id;

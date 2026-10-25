@@ -368,7 +368,7 @@ public class AmbienceTests
             screen.Move(1);
             Assert.InRange(screen.SelectedIndex, screen.FirstRow, screen.FirstRow + OptionsScreen.VisibleRows - 1);
         }
-        Assert.Equal(OptionRow.Help, Enum.GetValues<OptionRow>()[screen.SelectedIndex]);
+        Assert.Equal(OptionRow.ResetDefaults, Enum.GetValues<OptionRow>()[screen.SelectedIndex]);
         Assert.Equal(rows - OptionsScreen.VisibleRows, screen.FirstRow);
         // Round to the top again
         screen.Move(1);

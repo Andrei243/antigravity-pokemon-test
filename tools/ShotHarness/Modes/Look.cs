@@ -178,7 +178,26 @@ partial class Harness
         engine.ApplySettings(window: false);
         Console.WriteLine($"the bindings as they were again: {engine.Settings.Bindings.Count} overrides, device {InputManager.LastDevice}");
         options.Open();
+
+        // The rows of plan 12 · Q3, last so that no shot before them moves: AUTOSAVE off and on, RESET TO DEFAULTS as the very last
+        // row and the question it asks, and the autosave's little disc over the field (shown without a write)
+        GoToRow(OptionRow.Autosave);
+        Frames(1); Shot("look_17_options_autosave");
+        OptionsScreen.Change(engine.Settings, OptionRow.Autosave, 1);
+        Frames(1); Shot("look_17b_options_autosave_on");
+        OptionsScreen.Change(engine.Settings, OptionRow.Autosave, 1);
+        GoToRow(OptionRow.ResetDefaults);
+        Frames(1); Shot("look_17c_options_reset_row");
+        options.Confirm(engine.Settings);
+        Frames(20); Shot("look_17d_options_reset_question");
+        options.AnswerReset(engine.Settings, false);
+        Console.WriteLine($"the reset asked: {options.ResetAsking}; autosave {(engine.Settings.Autosave ? "on" : "off")}");
+        options.Open();
         game.State = GameState.Overworld;
+        game.ShowAutosaveDisc(0.5f);
+        Frames(1); Shot("look_17e_autosave_disc");
+        ShotCrop("look_17f_autosave_disc_close", 0, 920, 160, 160, 4);
+        game.ShowAutosaveDisc(-1f);
 
         if (args.Length > 2)
             Boards(args[2], new[] { "look_1_twinleaf", "look_2_dialogue", "look_3_battle", "look_3b_moves", "look_4_party", "look_5_route201", "look_6_house", "look_7_lake" });

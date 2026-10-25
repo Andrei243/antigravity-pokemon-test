@@ -315,7 +315,7 @@ public partial class GameEngine
             else Log.Info($"The saves read as: {read}.");
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
-            flow.TitleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
+            flow.TitleScreen = TitleScreen.WithSlots(TitleCards(), notices.ToArray());
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
         }
@@ -411,10 +411,11 @@ public partial class GameEngine
     /// names the slot its card was for, and the game is the one that card showed; a tool names none and takes up
     /// the slot the game is saved in, read from its file as it is now.
     /// </summary>
-    public void ContinueGame(int? slot = null)
+    public void ContinueGame(int? slot = null, bool fromAutosave = false)
     {
         int from = slot ?? flow.SaveSlot;
-        var save = slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
+        var save = fromAutosave && AutosaveFor(from) is { } autosaved ? autosaved
+            : slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
         if (save == null)
         {
             StartNewGame();
@@ -440,6 +441,10 @@ public partial class GameEngine
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
         Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {flow.SaveSlot}.");
         gameStarted = true;
+        // Nothing waits to be autosaved from another game, and the first arrival is not held to a gap (plan 12 · Q3)
+        autosaveDue = null;
+        autosaveDisc = -1f;
+        lastAutosaveAt = float.NegativeInfinity;
         flow.TrainersLookOnArrival = true;
         flow.Arrived = true;
         flow.ScriptFade.Clear();
@@ -779,6 +784,8 @@ public partial class GameEngine
         }
         bool written = SaveSlots.Write(SavePaths.Current, flow.SaveSlot, BuildSave());
         Log.Info(written ? $"The game was saved in slot {flow.SaveSlot} at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}." : $"The game couldn't be saved in slot {flow.SaveSlot}.");
+        // A save by hand makes this slot's autosave older than the game beside it: it goes (plan 12 · Q3)
+        if (written) AutosaveFile.ClearFor(SavePaths.Current, flow.SaveSlot);
         return written;
     }
 
@@ -804,6 +811,9 @@ public partial class GameEngine
         if (SaveSlots.Delete(SavePaths.Current, slot))
         {
             titleSlots = titleSlots.Select(s => s.Number == slot ? new SaveSlot(slot, SaveLoad.None, null) : s).ToList();
+            // The slot's autosave goes with it: a game deleted at the player's word is not to come back (plan 12 · Q3)
+            AutosaveFile.ClearFor(SavePaths.Current, slot);
+            if (titleAutosave?.Slot == slot) titleAutosave = null;
             flow.TitleScreen.Forget(slot);
             Log.Info($"Slot {slot} was deleted at the player's word.");
         }
@@ -903,6 +913,7 @@ public partial class GameEngine
         if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
 
         flow.Toast.Update(dt);
+        KeepTheAutosave(dt);
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
         flow.ScriptFade.Update(dt);
@@ -977,7 +988,7 @@ public partial class GameEngine
                 switch (flow.TitleScreen.TakeChoice())
                 {
                     case TitleChoice.Continue:
-                        ContinueGame(flow.TitleScreen.Slot);
+                        ContinueGame(flow.TitleScreen.Slot, flow.TitleScreen.UseAutosave);
                         break;
                     case TitleChoice.NewGame:
                         // The professor's welcome comes first; the game begins when it ends, in the slot the title
@@ -1313,6 +1324,7 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Options:
+                flow.OptionsScreen.Animate(dt);
                 if (flow.OptionsScreen.Update(Settings))
                 {
                     ApplySettings(window: true);
@@ -2783,6 +2795,7 @@ public partial class GameEngine
         }
 
         flow.Toast.Draw(VirtualWidth);
+        DrawAutosaveDisc();
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far
