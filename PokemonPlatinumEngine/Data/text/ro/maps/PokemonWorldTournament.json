@@ -4,7 +4,7 @@
       "Pokémon World Tournament"
     ],
     "text": [
-      ""
+      "Pokémon World Tournament"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clay"
         ],
         "text": [
-          ""
+          "Clay"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm going to win this thing, {player}. Even if I have to beat you to do it!"
         ],
         "text": [
-          ""
+          "O să câștig turneul ăsta, {player}. Chiar dacă trebuie să te bat ca să reușesc!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Cheren"
         ],
         "text": [
-          ""
+          "Cheren"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "A tournament is a fine test of what you've learned. I'm looking forward to it, {player}."
         ],
         "text": [
-          ""
+          "Un turneu e un test bun pentru ce ai învățat. Mă bucur de el, {player}."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "In my day you had to travel the world to see such battles. Now they come to one hall!"
         ],
         "text": [
-          ""
+          "Pe vremea mea trebuia să călătorești prin lume ca să vezi astfel de lupte. Acum vin toate într-o singură sală!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Leaders, Champions, the best of every region... One day I'll stand on that stage myself!"
         ],
         "text": [
-          ""
+          "Lideri, Campioni, cei mai buni din fiecare regiune... Într-o zi voi sta și eu pe scena aceea!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Veteran"
         ],
         "text": [
-          ""
+          "Veteranul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Triple battles, rotation battles... Tournaments will have them all, once the officials have drawn up the rules."
         ],
         "text": [
-          ""
+          "Lupte triple, lupte cu rotație... Turneele le vor avea pe toate, după ce oficialii vor stabili regulile."
         ]
       }
     }
@@ -125,7 +125,7 @@
         "The Pokémon World Tournament.\nThe Driftveil Tournament, a knockout of eight, is held first. Other tournaments follow once their rules are drawn up."
       ],
       "text": [
-        ""
+        "Pokémon World Tournament.\nTurneul Driftveil, o eliminare directă a opt Antrenori, se ține primul. Alte turnee urmează după ce li se stabilesc regulile."
       ]
     }
   }

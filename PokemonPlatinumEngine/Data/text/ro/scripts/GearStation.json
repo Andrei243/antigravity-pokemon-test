@@ -73,7 +73,7 @@
         "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set."
       ],
       "text": [
-        ""
+        "Bine ai venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe serie."
       ]
     },
     {
@@ -85,11 +85,11 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să faci?",
+        "URCĂ",
+        "INFO",
+        "RECORD",
+        "IEȘI"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set."
       ],
       "text": [
-        ""
+        "În fiecare vagon te așteaptă un Antrenor. Învinge șapte și poți coborî cu Puncte de Luptă sau poți continua cu seria următoare."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
       ],
       "text": [
-        ""
+        "Trenul Simplu primește trei Pokémoni, toți de specii diferite și purtând obiecte diferite. Se luptă la Nivelul 50 sau mai jos și nu se poate folosi nimic din Rucsac."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
       ],
       "text": [
-        ""
+        "Șefii Metroului, Ingo și Emmet, îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Your longest streak on the Single Train is {number} cars."
       ],
       "text": [
-        ""
+        "Cea mai lungă serie a ta în Trenul Simplu este de {number} vagoane."
       ]
     },
     {
@@ -159,11 +159,11 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să faci?",
+        "URCĂ",
+        "INFO",
+        "RECORD",
+        "IEȘI"
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set."
       ],
       "text": [
-        ""
+        "Fiecare vagon are un Antrenor cu patru Pokémoni, dintre care doi se luptă cu doi de-ai tăi deodată. Învinge șapte vagoane pentru o serie."
       ]
     },
     {
@@ -179,7 +179,7 @@
         "The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under."
       ],
       "text": [
-        ""
+        "Trenul Dublu primește patru Pokémoni, toți de specii diferite și purtând obiecte diferite, la Nivelul 50 sau mai jos."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "The Subway Bosses wait for those who ride on to the 21st car and the 49th."
       ],
       "text": [
-        ""
+        "Șefii Metroului îi așteaptă pe cei care ajung până la vagonul 21 și la vagonul 49."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Your longest streak on the Double Train is {number} cars."
       ],
       "text": [
-        ""
+        "Cea mai lungă serie a ta în Trenul Dublu este de {number} vagoane."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "Please ride with us again!"
       ],
       "text": [
-        ""
+        "Te rugăm să mai călătorești cu noi!"
       ]
     }
   ],
@@ -233,11 +233,11 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să faci?",
+        "URCĂ",
+        "INFO",
+        "RECORD",
+        "IEȘI"
       ]
     },
     {
@@ -245,7 +245,7 @@
         "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
       ],
       "text": [
-        ""
+        "Aduci doi Pokémoni, iar un partener din personalul nostru aduce alți doi. Fiecare vagon are o pereche de Antrenori."
       ]
     },
     {
@@ -253,7 +253,7 @@
         "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
       ],
       "text": [
-        ""
+        "Cei doi Pokémoni trebuie să fie de specii diferite și să poarte obiecte diferite, la Nivelul 50 sau mai jos. Ingo și Emmet călătoresc împreună în vagonul 21 și în vagonul 49."
       ]
     },
     {
@@ -261,7 +261,7 @@
         "A partner from a friend over a link is not on the line yet. We're sorry!"
       ],
       "text": [
-        ""
+        "Un partener de la un prieten prin legătură nu este încă disponibil pe linie. Ne pare rău!"
       ]
     },
     {
@@ -269,7 +269,7 @@
         "Your longest streak on the Multi Train is {number} cars."
       ],
       "text": [
-        ""
+        "Cea mai lungă serie a ta în Trenul Multiplu este de {number} vagoane."
       ]
     },
     {
@@ -277,7 +277,7 @@
         "Please ride with us again!"
       ],
       "text": [
-        ""
+        "Te rugăm să mai călătorești cu noi!"
       ]
     }
   ],
@@ -287,7 +287,7 @@
         "I'm sorry. You need {number} Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și purtând obiecte diferite."
       ]
     },
     {
@@ -295,7 +295,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -303,7 +303,7 @@
         "Please choose the Pokémon you will take aboard."
       ],
       "text": [
-        ""
+        "Te rog alege Pokémonii pe care îi iei la bord."
       ]
     },
     {
@@ -311,7 +311,7 @@
         "All aboard! Mind the doors."
       ],
       "text": [
-        ""
+        "Toți la bord! Atenție la uși."
       ]
     },
     {
@@ -319,7 +319,7 @@
         "I'm sorry. The Pokémon taken aboard must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Pokémonii luați la bord trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -327,7 +327,7 @@
         "I'm sorry. No two of the Pokémon taken aboard may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre Pokémonii luați la bord nu pot purta același obiect."
       ]
     },
     {

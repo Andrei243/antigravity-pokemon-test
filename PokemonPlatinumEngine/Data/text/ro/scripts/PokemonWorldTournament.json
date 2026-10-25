@@ -5,7 +5,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Pokémon World Tournament! I built this hall for the city, so that Trainers from every region have somewhere to meet."
       ],
       "text": [
-        ""
+        "Bine ai venit la Pokémon World Tournament! Am construit sala asta pentru oraș, ca Antrenorii din fiecare regiune să aibă unde să se întâlnească."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "And you're just in time. The first tournament is about to begin. {rival} and Cheren have entered, and I'd like you in it too."
       ],
       "text": [
-        ""
+        "Și ai venit taman la timp. Primul turneu este pe cale să înceapă. {rival} și Cheren s-au înscris, și aș vrea să participi și tu."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Welcome to the Pokémon World Tournament! The Driftveil Tournament is about to start. Clay is on the stage and will see you in."
       ],
       "text": [
-        ""
+        "Bine ai venit la Pokémon World Tournament! Turneul Driftveil este pe cale să înceapă. Clay e pe scenă și te va primi."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Welcome to the Pokémon World Tournament! The Driftveil Tournament has been played, and the results are in the record books."
       ],
       "text": [
-        ""
+        "Bine ai venit la Pokémon World Tournament! Turneul Driftveil s-a încheiat, iar rezultatele sunt în registre."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The tournaments of the other formats will open as their rules are drawn up. Please do come back!"
       ],
       "text": [
-        ""
+        "Turneele celorlalte formate se vor deschide pe măsură ce li se stabilesc regulile. Te rugăm să revii!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "The Driftveil Tournament is a knockout of eight Trainers. Three Pokémon each, at Level 50 or under, and nothing from the Bag."
       ],
       "text": [
-        ""
+        "Turneul Driftveil este o eliminare directă a opt Antrenori. Câte trei Pokémoni, la Nivelul 50 sau mai jos, și nimic din Rucsac."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Will you enter the Driftveil Tournament?"
       ],
       "text": [
-        ""
+        "Te înscrii în Turneul Driftveil?"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "You need {number} Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de {number} Pokémoni care pot participa, toți de specii diferite și purtând obiecte diferite."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Then choose the Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Atunci alege Pokémonii pe care îi înscrii."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "I'm sorry. The Pokémon entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Pokémonii înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "I'm sorry. No two of the Pokémon entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre Pokémonii înscriși nu pot purta același obiect."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Come back when your team is ready. The stage will wait."
       ],
       "text": [
-        ""
+        "Revino când echipa ta e pregătită. Scena va aștepta."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "No rush. The tournament isn't going anywhere, and neither am I."
       ],
       "text": [
-        ""
+        "Nicio grabă. Turneul nu pleacă nicăieri, și nici eu."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Eight Trainers took the stage in the Driftveil Tournament, a knockout of three rounds."
       ],
       "text": [
-        ""
+        "Opt Antrenori au urcat pe scenă în Turneul Driftveil, o eliminare directă în trei runde."
       ]
     },
     {
@@ -153,7 +153,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "First round! Let's hear it for the entrants!"
       ],
       "text": [
-        ""
+        "Prima rundă! Un aplauz pentru participanți!"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "I'm not holding back, {player}. I want to see what you've learned since Aspertia."
       ],
       "text": [
-        ""
+        "Nu mă rețin, {player}. Vreau să văd ce ai învățat de la Aspertia."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "Well fought! You've earned your place in the next round."
       ],
       "text": [
-        ""
+        "Bine luptat! Ți-ai câștigat locul în runda următoare."
       ]
     },
     {
@@ -201,7 +201,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "My turn, {player}! I've been waiting for this since we left the Gym. I won't lose!"
       ],
       "text": [
-        ""
+        "E rândul meu, {player}! Aștept asta de când am plecat de la Gym. Nu voi pierde!"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "Argh! ...No, that was a good one. You go on and win it, {player}."
       ],
       "text": [
-        ""
+        "Argh! ...Nu, a fost una bună. Mergi mai departe și câștigă, {player}."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Well, well! Final round, and the last one standing's me. Ain't that how it goes? Don't you hold back on my account!"
       ],
       "text": [
-        ""
+        "Ei, ei! Runda finală, iar ultimul rămas în picioare sunt eu. Așa se întâmplă, nu? Să nu te reții de dragul meu!"
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -257,7 +257,7 @@
         "Haw haw! Lost to a youngster in my own hall, and I couldn't be gladder. That's a champion's battle you gave me, {player}."
       ],
       "text": [
-        ""
+        "Haw haw! Am pierdut în fața unui tânăr în propria mea sală și nu aș putea fi mai bucuros. A fost o luptă de campion, {player}."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "The Driftveil Tournament's yours. Take these Battle Points, and be proud of 'em."
       ],
       "text": [
-        ""
+        "Turneul Driftveil e al tău. Ia Punctele de Luptă astea și fii mândru de ele."
       ]
     },
     {
@@ -273,7 +273,7 @@
         "{player} received 5 BP!"
       ],
       "text": [
-        ""
+        "{player} a primit 5 PL!"
       ]
     },
     {
@@ -281,7 +281,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "I'm sorry, {player}. That round was mine. You fought well, though: I can see how far you've come."
       ],
       "text": [
-        ""
+        "Îmi pare rău, {player}. Runda aceea a fost a mea. Ai luptat bine, totuși: văd cât de departe ai ajuns."
       ]
     },
     {
@@ -297,7 +297,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -305,7 +305,7 @@
         "Yes! I beat you, {player}! ...Heh. Next time it'll be an even closer one, I bet."
       ],
       "text": [
-        ""
+        "Da! Te-am învins, {player}! ...Heh. Data viitoare va fi una și mai strânsă, pun pariu."
       ]
     },
     {
@@ -313,7 +313,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -321,7 +321,7 @@
         "Haw haw! Still the top Trainer of my own hall! You came mighty close, though, {player}. Mighty close."
       ],
       "text": [
-        ""
+        "Haw haw! Tot cel mai bun Antrenor din propria mea sală! Ai fost foarte aproape, totuși, {player}. Foarte aproape."
       ]
     },
     {
@@ -329,7 +329,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -337,7 +337,7 @@
         "A tournament's about how you fight, not whether you win. You're welcome in this hall any time."
       ],
       "text": [
-        ""
+        "Un turneu ține de felul în care lupți, nu de dacă câștigi. Ești binevenit în sala asta oricând."
       ]
     },
     {
@@ -345,7 +345,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -353,7 +353,7 @@
         "There's a big ship moored at the end of the pier, by the way. Go on and take a look when you've caught your breath."
       ],
       "text": [
-        ""
+        "Apropo, e o navă mare acostată la capătul debarcaderului. Mergi și aruncă o privire când îți tragi sufletul."
       ]
     }
   ]

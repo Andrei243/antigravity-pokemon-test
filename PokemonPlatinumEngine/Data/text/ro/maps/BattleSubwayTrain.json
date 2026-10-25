@@ -4,7 +4,7 @@
       "Battle Subway"
     ],
     "text": [
-      ""
+      "Metroul de Luptă"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Depot Agent"
         ],
         "text": [
-          ""
+          "Agentul depoului"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "The next car is coming up. Good luck out there!"
         ],
         "text": [
-          ""
+          "Urmează vagonul următor. Mult noroc!"
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Partner"
         ],
         "text": [
-          ""
+          "Partenerul"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "Let's give it everything!"
         ],
         "text": [
-          ""
+          "Să dăm tot ce avem!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenorul"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenorul"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Ingo"
         ],
         "text": [
-          ""
+          "Ingo"
         ]
       },
       "dialog": {
@@ -94,7 +94,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Emmet"
         ],
         "text": [
-          ""
+          "Emmet"
         ]
       },
       "dialog": {
@@ -112,7 +112,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     }

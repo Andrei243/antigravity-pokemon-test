@@ -5,7 +5,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! The Champion of Hoenn at last, and I was here to see it. Didn't I say I'd be cheering?"
       ],
       "text": [
-        ""
+        "{player}! Campionul regiunii Hoenn, în sfârșit, și am fost aici să văd. Nu ți-am spus că te voi încuraja?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I told you I was looking for trainers who could carry on what the Battle Frontier stands for. Here, take this."
       ],
       "text": [
-        ""
+        "Ți-am spus că caut Antrenori care să ducă mai departe ce reprezintă Battle Frontier. Uite, ia asta."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} received Scott's Frontier Pass!"
       ],
       "text": [
-        ""
+        "{player} a primit Permisul Frontier al lui Scott!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The Frontier is where the strongest Trainers of every region meet. Five halls, five Frontier Brains, and a place for you."
       ],
       "text": [
-        ""
+        "Frontier este locul unde se întâlnesc cei mai puternici Antrenori din fiecare regiune. Cinci săli, cinci Frontier Brains și un loc pentru tine."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "My ferry runs to the Battle Frontier whenever you like. Your team goes along, and the Frontier keeps one record of your streaks and Battle Points."
       ],
       "text": [
-        ""
+        "Feribotul meu merge la Battle Frontier oricând vrei. Echipa ta merge cu tine, iar Frontier păstrează un singur record al seriilor și Punctelor tale de Luptă."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Shall we sail for the Battle Frontier now?"
       ],
       "text": [
-        ""
+        "Pornim spre Battle Frontier acum?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Wonderful! Hold on to your hat."
       ],
       "text": [
-        ""
+        "Minunat! Ține-ți pălăria."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{player} sailed with Scott for the Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} a pornit cu Scott spre Battle Frontier..."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "No hurry. The Frontier will still be there when you are ready."
       ],
       "text": [
-        ""
+        "Nicio grabă. Frontier va fi tot acolo când vei fi gata."
       ]
     }
   ]

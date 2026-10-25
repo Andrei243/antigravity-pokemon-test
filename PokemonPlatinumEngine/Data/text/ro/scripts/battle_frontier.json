@@ -149,7 +149,7 @@
         "I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn."
       ],
       "text": [
-        ""
+        "Conduc feribotul lui Scott între Battle Frontier și Orașul Lilycove, în Hoenn."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Shall I take you back to Lilycove City?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi în Orașul Lilycove?"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Very good. Climb aboard, and mind your step."
       ],
       "text": [
-        ""
+        "Foarte bine. Urcă la bord și ai grijă unde calci."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} s-a întors pe mare în Orașul Lilycove..."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "Take your time. The ferry waits for those who have Scott's pass."
       ],
       "text": [
-        ""
+        "Nu te grăbi. Feribotul îi așteaptă pe cei care au permisul lui Scott."
       ]
     }
   ]
