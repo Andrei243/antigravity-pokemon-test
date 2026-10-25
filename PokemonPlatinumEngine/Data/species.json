@@ -50285,6 +50285,28 @@
             "moveName": "Sunforge Blast"
           }
         ]
+      },
+      {
+        "name": "Typhlosion-Mega",
+        "kind": "Mega",
+        "types": [
+          "Fire",
+          "Ground"
+        ],
+        "baseStats": {
+          "hp": 78,
+          "attack": 84,
+          "defense": 98,
+          "spAttack": 149,
+          "spDefense": 105,
+          "speed": 120
+        },
+        "abilities": [
+          "Drought"
+        ],
+        "height": 1.9,
+        "weight": 95,
+        "color": "Gray"
       }
     ],
     "modern": {
@@ -117706,6 +117728,25 @@
       "Overgrow"
     ],
     "hiddenAbility": "Shell Armor",
+    "forms": [
+      {
+        "name": "Torterra-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 95,
+          "attack": 129,
+          "defense": 145,
+          "spAttack": 75,
+          "spDefense": 115,
+          "speed": 66
+        },
+        "abilities": [
+          "Solid Rock"
+        ],
+        "height": 2.6,
+        "weight": 400
+      }
+    ],
     "modern": {
       "learnset": [
         {
@@ -118569,6 +118610,25 @@
       "Blaze"
     ],
     "hiddenAbility": "Iron Fist",
+    "forms": [
+      {
+        "name": "Infernape-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 76,
+          "attack": 129,
+          "defense": 81,
+          "spAttack": 129,
+          "spDefense": 81,
+          "speed": 138
+        },
+        "abilities": [
+          "Iron Fist"
+        ],
+        "height": 1.5,
+        "weight": 62
+      }
+    ],
     "modern": {
       "learnset": [
         {
@@ -119361,6 +119421,25 @@
       "Torrent"
     ],
     "hiddenAbility": "Competitive",
+    "forms": [
+      {
+        "name": "Empoleon-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 84,
+          "attack": 86,
+          "defense": 113,
+          "spAttack": 146,
+          "spDefense": 126,
+          "speed": 75
+        },
+        "abilities": [
+          "Competitive"
+        ],
+        "height": 2,
+        "weight": 105
+      }
+    ],
     "modern": {
       "learnset": [
         {
@@ -149304,7 +149383,30 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Contrary"
+    "hiddenAbility": "Contrary",
+    "forms": [
+      {
+        "name": "Serperior-Mega",
+        "kind": "Mega",
+        "types": [
+          "Grass",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 75,
+          "attack": 75,
+          "defense": 110,
+          "spAttack": 115,
+          "spDefense": 110,
+          "speed": 143
+        },
+        "abilities": [
+          "Contrary"
+        ],
+        "height": 3.8,
+        "weight": 80
+      }
+    ]
   },
   {
     "dexNumber": 498,
@@ -150554,6 +150656,27 @@
             "moveName": "Maelstrom Crash"
           }
         ]
+      },
+      {
+        "name": "Samurott-Mega",
+        "kind": "Mega",
+        "types": [
+          "Water",
+          "Steel"
+        ],
+        "baseStats": {
+          "hp": 95,
+          "attack": 140,
+          "defense": 105,
+          "spAttack": 108,
+          "spDefense": 85,
+          "speed": 95
+        },
+        "abilities": [
+          "Sharpness"
+        ],
+        "height": 1.8,
+        "weight": 120
       }
     ]
   },
@@ -196979,6 +197102,23 @@
             "moveName": "Mountain Breaker"
           }
         ]
+      },
+      {
+        "name": "Decidueye-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 78,
+          "attack": 142,
+          "defense": 90,
+          "spAttack": 100,
+          "spDefense": 110,
+          "speed": 110
+        },
+        "abilities": [
+          "Infiltrator"
+        ],
+        "height": 1.8,
+        "weight": 44
       }
     ]
   },
@@ -197556,7 +197696,26 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Intimidate"
+    "hiddenAbility": "Intimidate",
+    "forms": [
+      {
+        "name": "Incineroar-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 95,
+          "attack": 145,
+          "defense": 110,
+          "spAttack": 80,
+          "spDefense": 110,
+          "speed": 90
+        },
+        "abilities": [
+          "Intimidate"
+        ],
+        "height": 2,
+        "weight": 105
+      }
+    ]
   },
   {
     "dexNumber": 728,
@@ -198105,7 +198264,26 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Liquid Voice"
+    "hiddenAbility": "Liquid Voice",
+    "forms": [
+      {
+        "name": "Primarina-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 80,
+          "attack": 74,
+          "defense": 94,
+          "spAttack": 156,
+          "spDefense": 136,
+          "speed": 90
+        },
+        "abilities": [
+          "Liquid Voice"
+        ],
+        "height": 2.1,
+        "weight": 52
+      }
+    ]
   },
   {
     "dexNumber": 731,
@@ -214222,6 +214400,23 @@
     "hiddenAbility": "Grassy Surge",
     "forms": [
       {
+        "name": "Rillaboom-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 100,
+          "attack": 160,
+          "defense": 110,
+          "spAttack": 60,
+          "spDefense": 90,
+          "speed": 110
+        },
+        "abilities": [
+          "Grassy Surge"
+        ],
+        "height": 2.4,
+        "weight": 120
+      },
+      {
         "name": "Rillaboom-Gmax",
         "kind": "Gigantamax",
         "height": 28,
@@ -214697,6 +214892,23 @@
     "hiddenAbility": "Libero",
     "forms": [
       {
+        "name": "Cinderace-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 80,
+          "attack": 151,
+          "defense": 95,
+          "spAttack": 65,
+          "spDefense": 95,
+          "speed": 144
+        },
+        "abilities": [
+          "Libero"
+        ],
+        "height": 1.6,
+        "weight": 38
+      },
+      {
         "name": "Cinderace-Gmax",
         "kind": "Gigantamax",
         "height": 27,
@@ -215164,6 +215376,23 @@
     ],
     "hiddenAbility": "Sniper",
     "forms": [
+      {
+        "name": "Inteleon-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 70,
+          "attack": 95,
+          "defense": 80,
+          "spAttack": 160,
+          "spDefense": 80,
+          "speed": 145
+        },
+        "abilities": [
+          "Sniper"
+        ],
+        "height": 2.1,
+        "weight": 52
+      },
       {
         "name": "Inteleon-Gmax",
         "kind": "Gigantamax",
@@ -231010,7 +231239,26 @@
     "abilities": [
       "Overgrow"
     ],
-    "hiddenAbility": "Protean"
+    "hiddenAbility": "Protean",
+    "forms": [
+      {
+        "name": "Meowscarada-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 76,
+          "attack": 150,
+          "defense": 85,
+          "spAttack": 81,
+          "spDefense": 90,
+          "speed": 148
+        },
+        "abilities": [
+          "Magician"
+        ],
+        "height": 1.7,
+        "weight": 36
+      }
+    ]
   },
   {
     "dexNumber": 909,
@@ -231445,7 +231693,26 @@
     "abilities": [
       "Blaze"
     ],
-    "hiddenAbility": "Unaware"
+    "hiddenAbility": "Unaware",
+    "forms": [
+      {
+        "name": "Skeledirge-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 104,
+          "attack": 75,
+          "defense": 115,
+          "spAttack": 145,
+          "spDefense": 105,
+          "speed": 86
+        },
+        "abilities": [
+          "Punk Rock"
+        ],
+        "height": 1.9,
+        "weight": 380
+      }
+    ]
   },
   {
     "dexNumber": 912,
@@ -231882,7 +232149,26 @@
     "abilities": [
       "Torrent"
     ],
-    "hiddenAbility": "Moxie"
+    "hiddenAbility": "Moxie",
+    "forms": [
+      {
+        "name": "Quaquaval-Mega",
+        "kind": "Mega",
+        "baseStats": {
+          "hp": 85,
+          "attack": 155,
+          "defense": 100,
+          "spAttack": 85,
+          "spDefense": 90,
+          "speed": 115
+        },
+        "abilities": [
+          "Dancer"
+        ],
+        "height": 2,
+        "weight": 70
+      }
+    ]
   },
   {
     "dexNumber": 915,

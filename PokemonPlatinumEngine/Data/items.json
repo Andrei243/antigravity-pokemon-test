@@ -13996,5 +13996,230 @@
     "cantBeTossed": true,
     "canBeRegistered": true,
     "fieldUse": "PokeblockCase"
+  },
+  {
+    "id": 9400,
+    "name": "Typhlosionite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Typhlosion, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Typhlosion",
+      "form": "Typhlosion-Mega"
+    }
+  },
+  {
+    "id": 9401,
+    "name": "Torterrite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Torterra, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Torterra",
+      "form": "Torterra-Mega"
+    }
+  },
+  {
+    "id": 9402,
+    "name": "Infernapite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Infernape, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Infernape",
+      "form": "Infernape-Mega"
+    }
+  },
+  {
+    "id": 9403,
+    "name": "Empoleonite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Empoleon, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Empoleon",
+      "form": "Empoleon-Mega"
+    }
+  },
+  {
+    "id": 9404,
+    "name": "Serperiorite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Serperior, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Serperior",
+      "form": "Serperior-Mega"
+    }
+  },
+  {
+    "id": 9405,
+    "name": "Samurottite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Samurott, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Samurott",
+      "form": "Samurott-Mega"
+    }
+  },
+  {
+    "id": 9406,
+    "name": "Decidueyite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Decidueye, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Decidueye",
+      "form": "Decidueye-Mega"
+    }
+  },
+  {
+    "id": 9407,
+    "name": "Incineroarite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Incineroar, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Incineroar",
+      "form": "Incineroar-Mega"
+    }
+  },
+  {
+    "id": 9408,
+    "name": "Primarinite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Primarina, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Primarina",
+      "form": "Primarina-Mega"
+    }
+  },
+  {
+    "id": 9409,
+    "name": "Rillaboomite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Rillaboom, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Rillaboom",
+      "form": "Rillaboom-Mega"
+    }
+  },
+  {
+    "id": 9410,
+    "name": "Cinderacite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Cinderace, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Cinderace",
+      "form": "Cinderace-Mega"
+    }
+  },
+  {
+    "id": 9411,
+    "name": "Inteleonite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Inteleon, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Inteleon",
+      "form": "Inteleon-Mega"
+    }
+  },
+  {
+    "id": 9412,
+    "name": "Meowscaradite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Meowscarada, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Meowscarada",
+      "form": "Meowscarada-Mega"
+    }
+  },
+  {
+    "id": 9413,
+    "name": "Skeledirgite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Skeledirge, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Skeledirge",
+      "form": "Skeledirge-Mega"
+    }
+  },
+  {
+    "id": 9414,
+    "name": "Quaquavalite",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Held by Quaquaval, it lets it Mega Evolve in battle.",
+    "megaStone": {
+      "species": "Quaquaval",
+      "form": "Quaquaval-Mega"
+    }
   }
 ]

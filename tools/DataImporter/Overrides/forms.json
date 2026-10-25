@@ -1,0 +1,66 @@
+// Forms of our own, appended to a species' imported forms (Overrides.AddForms; a form of the same name is replaced).
+// Plan 06 · R20b: the fifteen Megas of the starters' final forms whose line had none, as docs/plans/R20b-mega-proposals.md
+// gives them (approved by the user in full on 2026-10-26). Each total is its species' plus 100, HP unchanged, the ability
+// one already in abilities.json; "types" only where the Mega's differ. Heights and weights are this session's own.
+{
+  // Fire / Ground, Drought (W): the Volcano Pokémon becomes one. 534 -> 634
+  "Typhlosion": [
+    { "name": "Typhlosion-Mega", "kind": "Mega", "types": [ "Fire", "Ground" ], "baseStats": { "hp": 78, "attack": 84, "defense": 98, "spAttack": 149, "spDefense": 105, "speed": 120 }, "abilities": [ "Drought" ], "height": 1.9, "weight": 95.0, "color": "Gray" }
+  ],
+  // Grass / Ground kept, Solid Rock (N): the mountain range on four legs. 525 -> 625
+  "Torterra": [
+    { "name": "Torterra-Mega", "kind": "Mega", "baseStats": { "hp": 95, "attack": 129, "defense": 145, "spAttack": 75, "spDefense": 115, "speed": 66 }, "abilities": [ "Solid Rock" ], "height": 2.6, "weight": 400.0 }
+  ],
+  // Fire / Fighting kept, Iron Fist (H). 534 -> 634
+  "Infernape": [
+    { "name": "Infernape-Mega", "kind": "Mega", "baseStats": { "hp": 76, "attack": 129, "defense": 81, "spAttack": 129, "spDefense": 81, "speed": 138 }, "abilities": [ "Iron Fist" ], "height": 1.5, "weight": 62.0 }
+  ],
+  // Water / Steel kept, Competitive (H). 530 -> 630
+  "Empoleon": [
+    { "name": "Empoleon-Mega", "kind": "Mega", "baseStats": { "hp": 84, "attack": 86, "defense": 113, "spAttack": 146, "spDefense": 126, "speed": 75 }, "abilities": [ "Competitive" ], "height": 2.0, "weight": 105.0 }
+  ],
+  // Grass / Dragon, Contrary (H). 528 -> 628
+  "Serperior": [
+    { "name": "Serperior-Mega", "kind": "Mega", "types": [ "Grass", "Dragon" ], "baseStats": { "hp": 75, "attack": 75, "defense": 110, "spAttack": 115, "spDefense": 110, "speed": 143 }, "abilities": [ "Contrary" ], "height": 3.8, "weight": 80.0 }
+  ],
+  // Water / Steel, Sharpness (N). 528 -> 628
+  "Samurott": [
+    { "name": "Samurott-Mega", "kind": "Mega", "types": [ "Water", "Steel" ], "baseStats": { "hp": 95, "attack": 140, "defense": 105, "spAttack": 108, "spDefense": 85, "speed": 95 }, "abilities": [ "Sharpness" ], "height": 1.8, "weight": 120.0 }
+  ],
+  // Grass / Ghost kept, Infiltrator (N). 530 -> 630
+  "Decidueye": [
+    { "name": "Decidueye-Mega", "kind": "Mega", "baseStats": { "hp": 78, "attack": 142, "defense": 90, "spAttack": 100, "spDefense": 110, "speed": 110 }, "abilities": [ "Infiltrator" ], "height": 1.8, "weight": 44.0 }
+  ],
+  // Fire / Dark kept, Intimidate (H). 530 -> 630
+  "Incineroar": [
+    { "name": "Incineroar-Mega", "kind": "Mega", "baseStats": { "hp": 95, "attack": 145, "defense": 110, "spAttack": 80, "spDefense": 110, "speed": 90 }, "abilities": [ "Intimidate" ], "height": 2.0, "weight": 105.0 }
+  ],
+  // Water / Fairy kept, Liquid Voice (H). 530 -> 630
+  "Primarina": [
+    { "name": "Primarina-Mega", "kind": "Mega", "baseStats": { "hp": 80, "attack": 74, "defense": 94, "spAttack": 156, "spDefense": 136, "speed": 90 }, "abilities": [ "Liquid Voice" ], "height": 2.1, "weight": 52.0 }
+  ],
+  // Grass kept, Grassy Surge (H). 530 -> 630
+  "Rillaboom": [
+    { "name": "Rillaboom-Mega", "kind": "Mega", "baseStats": { "hp": 100, "attack": 160, "defense": 110, "spAttack": 60, "spDefense": 90, "speed": 110 }, "abilities": [ "Grassy Surge" ], "height": 2.4, "weight": 120.0 }
+  ],
+  // Fire kept, Libero (H). 530 -> 630
+  "Cinderace": [
+    { "name": "Cinderace-Mega", "kind": "Mega", "baseStats": { "hp": 80, "attack": 151, "defense": 95, "spAttack": 65, "spDefense": 95, "speed": 144 }, "abilities": [ "Libero" ], "height": 1.6, "weight": 38.0 }
+  ],
+  // Water kept, Sniper (H). 530 -> 630
+  "Inteleon": [
+    { "name": "Inteleon-Mega", "kind": "Mega", "baseStats": { "hp": 70, "attack": 95, "defense": 80, "spAttack": 160, "spDefense": 80, "speed": 145 }, "abilities": [ "Sniper" ], "height": 2.1, "weight": 52.0 }
+  ],
+  // Grass / Dark kept, Magician (N). 530 -> 630
+  "Meowscarada": [
+    { "name": "Meowscarada-Mega", "kind": "Mega", "baseStats": { "hp": 76, "attack": 150, "defense": 85, "spAttack": 81, "spDefense": 90, "speed": 148 }, "abilities": [ "Magician" ], "height": 1.7, "weight": 36.0 }
+  ],
+  // Fire / Ghost kept, Punk Rock (N). 530 -> 630
+  "Skeledirge": [
+    { "name": "Skeledirge-Mega", "kind": "Mega", "baseStats": { "hp": 104, "attack": 75, "defense": 115, "spAttack": 145, "spDefense": 105, "speed": 86 }, "abilities": [ "Punk Rock" ], "height": 1.9, "weight": 380.0 }
+  ],
+  // Water / Fighting kept, Dancer (N). 530 -> 630
+  "Quaquaval": [
+    { "name": "Quaquaval-Mega", "kind": "Mega", "baseStats": { "hp": 85, "attack": 155, "defense": 100, "spAttack": 85, "spDefense": 90, "speed": 115 }, "abilities": [ "Dancer" ], "height": 2.0, "weight": 70.0 }
+  ]
+}

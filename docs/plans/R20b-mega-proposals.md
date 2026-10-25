@@ -1,6 +1,6 @@
 # R20b · Megas of our own: the proposal
 
-Plan 06 · R20b, the design part. Drafted 2026-10-18, **awaiting the user's approval**. Nothing here is built: no data, no item, no sculpt. Every row below waits for the user's yes, or for the user's change, before a later session writes it into the data.
+Plan 06 · R20b, the design part. Drafted 2026-10-18, **approved and built**: the user approved it in full on 2026-10-26, every row and every default and recommendation, with no change. Wave 56 built the data (the fifteen forms in `tools/DataImporter/Overrides/forms.json`, the fifteen stones in `Overrides/items.json` with ids 9400 to 9414, since 9010 is the Bike Voucher's, their Romanian, the Pokédex entries, the regional gap closed, `MegaOfOurOwnTests`); the sculpts of section 2 are a later session's, and until then each Mega shows its species' sculpt.
 
 The list is the user's (final since 2026-10-17): the fifteen final forms of every region's starters whose line has no Mega yet. The other twelve already have one in the data: Venusaur, Charizard (X and Y), Blastoise, Sceptile, Blaziken and Swampert from X, Y and Omega Ruby and Alpha Sapphire; Meganium, Feraligatr, Emboar, Chesnaught, Delphox and Greninja from Legends: Z-A.
 
