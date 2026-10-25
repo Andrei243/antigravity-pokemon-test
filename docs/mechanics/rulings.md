@@ -2799,6 +2799,55 @@ their text.
   and `unova/nimbasa` (the city, the park and Join Avenue). Elesa's and the Subway Bosses'
   battles are the Gym Leader's.
 
+## Unova's second chapter, part b: Nimbasa's rooms to the Quake Badge (2026-10-25, plan 22 · U6, part b)
+
+Black 2's road from Nimbasa's rooms over Route 5 and the Driftveil Drawbridge to Clay's Quake Badge, in our own words on
+the beats of the decompilation's scripts (`res/field/scripts/nimbasa_city*.s`, `route_5.s`, `driftveil_*.s`), read for
+the order of the scenes, who stands where, the battles and the gifts, and nothing of their text.
+
+- **Nimbasa's rooms**: the Big Stadium's and the Small Court's lobbies and their halls upstairs, two houses of two floors,
+  the Battle Institute, the Musical Theater's lobby and the old roller coaster in the park (Elesa's Gym before she moved
+  it to the runway) are open, their people only talking. Left out: the stadiums' fields and the games played at set times
+  (Black 2's `0x400f`) with their crowds, the Battle Institute's tests (the link's: the receptionist says the link is
+  closed, decision 06 · 7), the Pokémon Musical itself, the roller coaster's switches (`0x400b` to `0x400e`) and the
+  Gear Station (the Battle Subway's desks, plan 22 · U6's next part). Nimbasa's and Driftveil's Pokémon Centers are spawns.
+- **The Ferris wheel** is a ride of ours: its attendant (ours, before the wheel's queue lane) asks, and the ride is a scene
+  of the fade with lines over the dark, the city by day or its lights after dark. Black 2 rides it beside a Trainer of
+  the day after a battle; that is left out, and the wheel is still a hall until it is drawn as one.
+- **Route 5**: its trainers stand on the road (Preston, the Musician, battles when spoken to), and the street's performers
+  and their audience (Black 2's `0x02f8`) are always out. As the player first comes in from Nimbasa's gate, Bianca runs
+  out after them with HM02 (our data's, Platinum's table: Fly) and tells of the Hidden Grottoes; the grotto Black 2 leads
+  the player to is plan 22 · U11's. Cheren on Route 5 is the post-game's. The route and the drawbridge play
+  `unova/route4` until songs of their own.
+- **The Driftveil Drawbridge** is a map of its own, its import the deck and nothing round it: the sea lies five tiles under
+  it (`seaBelow`; style guide, "Relief", "A bridge over the sea"), its ends are abutments of ground at the deck's height,
+  and it is seen with a camera of ours (`FieldCamera.Drawbridge`), lower and further off than the overworld's, where
+  Black 2 names its camera 9. The original's props there (named as other places' by number) are left out, and the
+  bridge's raising for ships and the Ducklett shadows over it are left for later.
+- **Driftveil City's chapter**: as the player comes off the drawbridge a grunt presses a former member of Team Plasma to
+  come back; Hugh runs up, the grunt flees with Hugh after him, and the former member asks the player to the old church
+  by the Gym (Black 2's `0x40c3` 0 to 1). Rood waits before its door and tests the player in battle (`unova_rood`),
+  Hugh comes back empty-handed, and inside Rood tells how Team Plasma broke in two (`0x40c3` 2 to 3; Black 2 has Rood ask
+  the player in and tells the rest inside over several talks, ours is one scene as the house is come to). A worker
+  keeps the Gym's door while Clay is busy until then. Clay's Gym is Black 2's mine of lifts on rails, which the reader
+  leaves out: ours is a hall of the mine (`Data/maps/DriftveilCity_Gym.json`) with rock walls zigzagging up it and the
+  seven workers of the original's Gym on its shifts, reached from the lobby by the lift's car at the head of its path (an
+  overlay exit; Black 2's switch beside it is read for its words). Clay (`unova_leader_clay`) gives the Quake Badge and
+  TM78 (our data's TM78, Platinum's table). Outside, Clay and Hugh: Hugh asks why Clay let the former members stay, and
+  Clay tells them both of the Pokémon World Tournament south of the city (`0x40c3` 4 to 5). The motorcyclist who
+  explains Triple and Rotation Battles only talks until plan 14 builds them; the market's goods, the flats' upper floors
+  and the World Tournament beyond its gate (whose south door stays shut) are left.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_ROUTE_5` is Route 5's count (`0x4139`),
+  `VAR_UNOVA_DRIFTVEIL` the city's (`0x40c3`, 0 to 5, `driftveil_city.txt`'s header); `FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT`
+  is `0x02c3`, `_EXPLASMA_BRIDGE` `0x02c2`, `_ROOD_DOOR` `0x02cb`, `_DRIFTVEIL_GYM_WORKER` `0x02cf`, `_CLAY_DRIFTVEIL`
+  `0x02cd`, `_HUGH_DRIFTVEIL` `0x02cc`; `_BIANCA_ROUTE_5`, `_HUGH_CHURCH`, `_HUGH_GYM`, `_HUGH_PLASMA_HOUSE`, `_ROOD_HOME`
+  and `_EXPLASMA_HOME` are ours (Black 2 moves one object where we hide one person and show another);
+  `FLAG_UNOVA_GOT_WATER_DRIFTVEIL` and `_GOT_TM78` are the gifts'. `common.UnovaDriftveil` hides the chapter's people
+  (`FLAG_UNOVA_DRIFTVEIL_BEGUN`), run by `UnovaNimbasa` and, for a save of part a's, by `UnovaCatchUp`, with no story
+  version raised.
+- **Songs** of our own: `unova/driftveil` (the city, its rooms and the market). Clay's battle is the Gym Leader's, Rood's
+  the trainer's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

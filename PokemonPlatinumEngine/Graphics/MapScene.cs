@@ -53,6 +53,12 @@ internal sealed class MapScene
     public const float StarkMountainFovYDeg = 19.7f;
     public const float StarkMountainDistance = 662.922f / 16f;
 
+    // The Driftveil Drawbridge (plan 22 · U6, part b; style guide, "Relief", "A bridge over the sea"): lower and further
+    // off than the overworld's, so the sea five tiles under the deck shows beside it (Black 2's camera 9 is its own too)
+    public const float DrawbridgePitchDeg = 48f;
+    public const float DrawbridgeFovYDeg = 17f;
+    public const float DrawbridgeDistance = 760f / 16f;
+
     // Rooms get a closer, wider perspective camera so their walls and furniture read as a 3D space
     public const float IndoorPitchDeg = 52f;
     public const float IndoorFovYDeg = 30f;
@@ -147,6 +153,7 @@ internal sealed class MapScene
             FieldCamera.ZoomedIn => new FieldView(ZoomedPitchDeg, ZoomedFovYDeg, ZoomedDistance),
             FieldCamera.CoronetSouth => new FieldView(CoronetSouthPitchDeg, CoronetSouthFovYDeg, CoronetSouthDistance),
             FieldCamera.StarkMountain => new FieldView(StarkMountainPitchDeg, StarkMountainFovYDeg, StarkMountainDistance),
+            FieldCamera.Drawbridge => new FieldView(DrawbridgePitchDeg, DrawbridgeFovYDeg, DrawbridgeDistance),
             _ => FieldView.Outdoor
         };
     }

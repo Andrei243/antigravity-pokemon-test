@@ -1,0 +1,29 @@
+# Driftveil City (its streets, its rooms, the market and the drawbridge's gate): the easy-going port of warehouses and
+# the market, a lazy flute tune in G over strummed electric piano, a walking bass and a light backbeat. Original
+# composition for this game (plan 22 · U6, part b).
+title Driftveil City
+tempo 112
+meter 4/4
+reverb 0.26
+nighttempo 0.9
+
+track lead flute night=clarinet vol=0.66 pan=0.1 rev=0.26
+  L o5 d4 g8 a8 b4 a8 g8 | o5 e4 g8 b8 o6 e4 d4 | o6 c4 o5 b8 a8 g4 e4 | o5 f+4 a8 o6 d8 o5 a2 |
+  o5 b4 o6 d8 c8 o5 b4 g4 | o5 f+4 b8 o6 d8 o5 b4 f+4 | o5 e4 g8 o6 c8 e4 c4 | o5 a2 f+4 d4 |
+  o5 g4 b8 o6 e8 d4 o5 b4 | o5 g4 o6 c8 e8 g4 e4 | o5 b4 g8 b8 o6 d4 o5 b4 | o5 a4 f+8 a8 o6 d2 |
+  o6 e4 d8 c8 o5 g4 e4 | o5 a4 b8 a8 f+4 d4 | o5 g4 b8 o6 d8 g4 d4 | o5 g2. r4 |
+
+track keys epiano night=pad vol=0.34 pan=-0.22 rev=0.3
+  L o3 (g b >d)1 | o3 (e g b)1 | o3 (g >c e)1 | o3 (a >d f+)1 |
+  o3 (g b >d)1 | o3 (b >d f+)1 | o3 (g >c e)1 | o3 (a >d f+)1 |
+  o3 (e g b)1 | o3 (g >c e)1 | o3 (g b >d)1 | o3 (a >d f+)1 |
+  o3 (g >c e)1 | o3 (a >d f+)1 | o3 (g b >d)1 | o3 (g b >d)1 |
+
+track bass bass vol=0.62 rev=0.08
+  L o3 g4 r8 g8 d4 g4 | o3 e4 r8 e8 o2 b4 o3 e4 | o3 c4 r8 c8 o2 g4 o3 c4 | o3 d4 r8 d8 o2 a4 o3 d4 |
+  o3 g4 r8 g8 d4 g4 | o2 b4 r8 b8 o3 f+4 o2 b4 | o3 c4 r8 c8 o2 g4 o3 c4 | o3 d4 r8 d8 o2 a4 o3 d4 |
+  o3 e4 r8 e8 o2 b4 o3 e4 | o3 c4 r8 c8 o2 g4 o3 c4 | o3 g4 r8 g8 d4 g4 | o3 d4 r8 d8 o2 a4 o3 d4 |
+  o3 c4 r8 c8 o2 g4 o3 c4 | o3 d4 r8 d8 o2 a4 o3 d4 | o3 g4 r8 g8 d4 g4 | o3 g4 d4 g2 |
+
+track drums kit vol=0.38 rev=0.1
+  L v76 [ b4 h8 h8 s4 h8 h8 | ]15 b4 h8 h8 s8 s8 s8 h8 |

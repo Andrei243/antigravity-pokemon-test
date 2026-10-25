@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
@@ -279,8 +280,99 @@ public class UnovaTests
         var gym = MapNamed("NimbasaCity_Gym");
         Assert.Contains(gym.NPCs, n => n.Name == "Elesa");
         Assert.Equal(3, gym.NPCs.Count(n => n.NpcType == "beauty"));
-        // and the gates on to Routes 5 and 16 are part b's: nobody walks out of the city to the west or the east
-        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX is 384 or 447 && w.SourceY is >= 437 and <= 439);
+        // and since part b the gate west to Route 5 is open, while the one east to Route 16 still leads nowhere
+        Assert.Contains(Overworld.Warps, w => w.SourceX == 384 && w.SourceY is >= 437 and <= 439 && w.TargetMap == "NimbasaGate_Route5");
+        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 447 && w.SourceY is >= 437 and <= 439);
+    }
+
+    [Fact]
+    public void NimbasasRoomsAreOpenAndItsPokemonCenterIsASpawn()
+    {
+        // Plan 22 · U6, part b: the stadiums' lobbies and halls, two houses, the Battle Institute, the Musical Theater and
+        // the old roller coaster, each reached from the city or the park
+        foreach (string room in new[] { "NimbasaCity_BigStadium", "NimbasaCity_SmallCourt", "NimbasaCity_House1_1F", "NimbasaCity_House2_1F",
+                     "NimbasaCity_BattleInstitute", "MusicalTheater" })
+            Assert.Contains(Overworld.Warps, w => w.TargetMap == room);
+        Assert.Contains(MapNamed("NimbasaCity_BigStadium").Warps, w => w.TargetMap == "NimbasaCity_BigStadiumStands");
+        Assert.Contains(MapNamed("NimbasaCity_SmallCourt").Warps, w => w.TargetMap == "NimbasaCity_SmallCourtStands");
+        Assert.Contains(MapNamed("NimbasaCity_AmusementPark").Warps, w => w.TargetMap == "NimbasaCity_RollerCoaster");
+        // the Ferris wheel's attendant stands before its queue lane
+        Assert.Contains(MapNamed("NimbasaCity_AmusementPark").NPCs, n => n.Key == "wheel" && n.Script == "FerrisWheel");
+        Assert.True(MapNamed("MusicalTheater").NPCs.Count >= 10);
+        // Nimbasa's and Driftveil's Pokémon Centers are spawns, each on the tile before its door
+        var spawns = RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns;
+        Assert.Contains(spawns, s => s.Room == "NimbasaCity_PokemonCenter");
+        Assert.Contains(spawns, s => s.Room == "DriftveilCity_PokemonCenter");
+        Assert.Equal(spawns.Count, spawns.Select(s => s.Id).Distinct().Count());
+    }
+
+    [Fact]
+    public void RouteFiveCrossesTheDrawbridgeOverTheSeaToDriftveil()
+    {
+        // Route 5 leads from Nimbasa's west gate to the drawbridge, a map of its own seen with its own camera
+        Assert.Contains(MapNamed("NimbasaGate_Route5").Warps, w => w.TargetMap == "Unova");
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "DriftveilDrawbridge");
+        var bridge = MapNamed("DriftveilDrawbridge");
+        Assert.Equal(FieldCamera.Drawbridge, bridge.Camera);
+        Assert.Equal(MapScene.DrawbridgePitchDeg, MapScene.ViewOf(bridge).PitchDeg);
+        Assert.True(MapScene.ViewOf(bridge).PitchDeg < MapScene.ViewOf(Overworld).PitchDeg);
+
+        // Its middle is a deck of planks over the sea, five tiles down, walked on the deck
+        var deck = bridge.DeckAt(120, 46);
+        Assert.NotNull(deck);
+        Assert.False(bridge.IsSolid(120, 46));
+        Assert.Equal(TileType.Planks, bridge.GetGroundTile(120, 46));
+        Assert.Equal(deck!.Value - 5f, bridge.HeightAt(120, 46), 3);
+        Assert.True(bridge.IsDeepWater(120, 46));
+        Assert.Equal((deck.Value, true), bridge.SurfaceAt(120, 46, deck.Value));
+        // round it is the sea, which nobody walks or surfs onto from the deck
+        Assert.Equal(TileType.Water, bridge.GetGroundTile(120, 30));
+        Assert.True(bridge.IsSolid(120, 30));
+        Assert.Equal(deck.Value - 5f, bridge.HeightAt(120, 30), 3);
+        // and its ends, where the gates' ways come in, stand on ground at the deck's height
+        Assert.Null(bridge.DeckAt(44, 46));
+        Assert.Equal(deck.Value, bridge.HeightAt(44, 46), 3);
+        // nothing of the original's models stands in the sea
+        Assert.Empty(bridge.PlacedBuildings);
+        // the walkers on the bridge stand on its deck
+        Assert.All(bridge.NPCs.Where(n => n.GridX is > 47 and < 208), n => Assert.Equal(deck.Value, n.Level));
+
+        // The whole bridge is walked from Route 5 to Driftveil City, over the deck
+        var walked = Walked.Value;
+        var across = walked.Single(kv => kv.Key.Name == "DriftveilDrawbridge").Value;
+        Assert.Contains((120, 46), across);
+        Assert.Contains((50, 46), across);
+        Assert.Contains((190, 47), across);
+        var outside = walked.Single(kv => kv.Key.Name == "Unova").Value;
+        foreach (string key in new[] { "unova_route_5", "driftveil_city" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+    }
+
+    [Fact]
+    public void DriftveilBuildsItsOwnWayAndClaysGymIsAMineOfOurs()
+    {
+        // Driftveil's warehouses, market and church are of its own way of building, and Clay's Gym is Ground's
+        Assert.Equal(Architecture.Storehouse, WorldModels.Of("c5_rbuild", "unova")!.Town);
+        Assert.Equal(BuildingKind.Chapel, WorldModels.Of("c5_church", "unova")!.Kind);
+        Assert.Equal(BuildingKind.Gym, WorldModels.Of("c5_build", "unova")!.Kind);
+        Assert.Equal(PokemonType.Ground, WorldModels.GymTheme("driftveil_city"));
+        Assert.Equal(Architecture.Storehouse, Overworld.ArchitectureAt(190, 420));
+        foreach (string room in new[] { "DriftveilCity_PokemonCenter", "DriftveilCity_House1", "DriftveilCity_PlasmaHouse",
+                     "DriftveilCity_Market", "DriftveilCity_GymLobby", "DriftveilCity_TournamentGate" })
+            Assert.Contains(Overworld.Warps, w => w.TargetMap == room);
+        // the tournament beyond the gate south of the city is not open yet
+        Assert.DoesNotContain(MapNamed("DriftveilCity_TournamentGate").Warps, w => w.TargetMap == "Unova" && w.SourceY > 10);
+
+        // The lobby's lift goes down to the Gym's floor, a map of ours, and its door comes back up
+        var lobby = MapNamed("DriftveilCity_GymLobby");
+        Assert.Contains(lobby.Warps, w => w.TargetMap == "DriftveilCity_Gym");
+        var gym = MapDatabase.Get("DriftveilCity_Gym");
+        Assert.Equal("DriftveilCity_Gym", gym.Name);
+        Assert.Equal(PokemonType.Ground, gym.ArenaType);
+        Assert.Contains(gym.Warps, w => w.TargetMap == "DriftveilCity_GymLobby");
+        Assert.Contains(gym.NPCs, n => n.Key == "clay");
+        Assert.Equal(7, gym.NPCs.Count(n => n.IsTrainer && n.TrainerData!.TrainerClass == "Worker"));
+        Assert.Contains(Walked.Value.Keys, m => m.Name == "DriftveilCity_Gym");
     }
 
     [Fact]
@@ -305,7 +397,9 @@ public class UnovaTests
                 || m.Name.StartsWith("c3_", StringComparison.Ordinal) || m.Name is "pc" or "gate" or "d22_farm" or "nschool"
                 // Route 4's flats, Join Avenue's gate and Nimbasa's since plan 22 · U6 (its Ferris wheel a hall until part b)
                 || m.Name.StartsWith("c04", StringComparison.Ordinal) && m.Name != "c04_fwheel"
-                || m.Name is "r4_build" or "buill" or "jagate" or "c4_gate" or "thouse")
+                || m.Name is "r4_build" or "buill" or "jagate" or "c4_gate" or "thouse"
+                // and Driftveil's since part b, the gates at the drawbridge's foot and toward the tournament with them
+                || m.Name.StartsWith("c5_", StringComparison.Ordinal) || m.Name is "rgate" or "wbtgate")
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

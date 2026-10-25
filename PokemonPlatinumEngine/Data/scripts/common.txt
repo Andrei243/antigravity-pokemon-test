@@ -2649,6 +2649,24 @@ script UnovaNimbasa
   setflag FLAG_UNOVA_HIDE_ROSA_NIMBASA
   setflag FLAG_UNOVA_HIDE_NATE_NIMBASA
   setflag FLAG_UNOVA_NIMBASA_BEGUN
+  call UnovaDriftveil
+  return
+
+
+# What Unova's Driftveil chapter hides until its scenes (plan 22 · U6, part b): Bianca on Route 5, Hugh on Driftveil's
+# bridge, at the church and outside the Gym, Rood, Hugh and the former member from the bridge inside the church, and
+# Clay outside his Gym. UnovaNimbasa runs it, for a new game and for a save of part a's (UnovaCatchUp), with no story
+# version raised. It may only set flags and variables, and ends in return.
+script UnovaDriftveil
+  setflag FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  setflag FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  setflag FLAG_UNOVA_HIDE_HUGH_CHURCH
+  setflag FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  setflag FLAG_UNOVA_HIDE_HUGH_GYM
+  setflag FLAG_UNOVA_HIDE_ROOD_HOME
+  setflag FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  setflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  setflag FLAG_UNOVA_DRIFTVEIL_BEGUN
   return
 
 
@@ -2681,6 +2699,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_VIRBANK_BEGUN call UnovaVirbank
   if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
   if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
+  if not flag FLAG_UNOVA_DRIFTVEIL_BEGUN call UnovaDriftveil
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return

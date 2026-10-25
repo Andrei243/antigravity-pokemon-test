@@ -1,0 +1,50 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Battle Institute, where Trainers are tested and ranked! I'm sorry, the link for the tests is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Five battles in a row, and a score at the end. I want to see my name at the top of that board!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10441": {
+      "en": [
+        "Battle Institute\nTest your skills as a Trainer!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

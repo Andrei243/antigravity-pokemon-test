@@ -1,0 +1,37 @@
+{
+  "key": "nimbasa_city_17",
+  "index": 585,
+  "name": "Nimbasa City",
+  "matrix": 379,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 45, "to": "nimbasa_city_2", "toWarp": 2 },
+    { "x": 14, "z": 45, "to": "nimbasa_city_2", "toWarp": 2 },
+    { "x": 15, "z": 45, "to": "nimbasa_city_2", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "lady", "movement": "none", "x": 49, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0380", "script": "9" },
+    { "id": "1", "looks": "rich_boy", "movement": "none", "x": 16, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x037f", "script": "8" },
+    { "id": "2", "looks": "303", "movement": "none", "x": 28, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "15" },
+    { "id": "3", "looks": "187", "movement": "none", "x": 15, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "16" },
+    { "id": "4", "looks": "21", "movement": "wander_around", "x": 10, "z": 28, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "18" },
+    { "id": "5", "looks": "youngster", "movement": "wander_around", "x": 29, "z": 37, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "17" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 29, "z": 33, "width": 1, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x400b", "value": "0" },
+    { "x": 13, "z": 16, "width": 1, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x400c", "value": "0" },
+    { "x": 46, "z": 41, "width": 1, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x400d", "value": "0" },
+    { "x": 25, "z": 9, "width": 1, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x400e", "value": "0" }
+  ]
+}

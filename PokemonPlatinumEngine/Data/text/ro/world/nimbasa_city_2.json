@@ -161,6 +161,16 @@
           ""
         ]
       }
+    },
+    "wheel": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
@@ -174,7 +184,7 @@
     },
     "2": {
       "en": [
-        "Ferris Wheel\nSee all of Nimbasa from above!"
+        "The Old Roller Coaster\nOnce the Nimbasa Gym. Mind the tracks!"
       ],
       "text": [
         ""

@@ -1,0 +1,22 @@
+{
+  // The gate south of Driftveil City toward the Pokémon World Tournament (plan 22 · U6, part b): Black 2's room, our
+  // words. The tournament beyond it is plan 22 · U6's next part, so its south door stays shut and the gate's people
+  // only talk; Black 2's first visit's scene (0x40c5) and Clay's assistant (0) are left with it
+  "area": "driftveil_city_8",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "1": {
+      "name": "Guard",
+      "npcType": "receptionist",
+      "dialog": [ "The Pokémon World Tournament is through here. The hall's being made ready, so it isn't open just yet." ]
+    },
+    "2": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "Gym Leaders and Champions from every region, battling in one place... I can't wait for it to open!" ]
+    }
+  },
+  "signs": {
+    "10400": "Pokémon World Tournament\nThe stage for the world's strongest Trainers"
+  }
+}

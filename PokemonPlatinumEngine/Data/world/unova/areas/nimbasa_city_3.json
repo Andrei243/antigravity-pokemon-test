@@ -1,0 +1,38 @@
+{
+  "key": "nimbasa_city_3",
+  "index": 79,
+  "name": "Nimbasa City",
+  "matrix": 98,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 19, "to": "nimbasa_city", "toWarp": 3 },
+    { "x": 11, "z": 8, "to": "", "toWarp": 65535 },
+    { "x": 11, "z": 1, "to": "nimbasa_city_4", "toWarp": 0 },
+    { "x": 11, "z": 19, "to": "nimbasa_city", "toWarp": 3 },
+    { "x": 12, "z": 19, "to": "nimbasa_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 11, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "ace_trainer_m", "movement": "none", "x": 6, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "2" },
+    { "id": "2", "looks": "work_00", "movement": "none", "x": 9, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x029a", "script": "5" },
+    { "id": "3", "looks": "clerk_f", "movement": "look_around", "x": 5, "z": 16, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "4", "looks": "youngster", "movement": "none", "x": 13, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x029a", "script": "4" },
+    { "id": "5", "looks": "policeman", "movement": "none", "x": 10, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x028f", "script": "8" },
+    { "id": "6", "looks": "policeman", "movement": "none", "x": 11, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x028f", "script": "9" },
+    { "id": "7", "looks": "policeman", "movement": "none", "x": 12, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x028f", "script": "10" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 11, "z": 8, "width": 1, "depth": 1, "script": "6", "variable": "VAR_UNOVA_0x400f", "value": "0" }
+  ]
+}

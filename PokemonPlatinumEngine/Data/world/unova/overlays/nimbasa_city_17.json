@@ -1,0 +1,19 @@
+{
+  // The old roller coaster in Nimbasa's amusement park (plan 22 · U6, part b): Black 2's building, Elesa's Gym before she
+  // moved it to the runway, our words. Its switches (Black 2's triggers on 0x400b to 0x400e) and the people they bring
+  // out are left out, so its two visitors (4, 5) only talk
+  "area": "nimbasa_city_17",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "4": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "This was the Gym once, you know. Challengers rode the coaster cars all the way to the Leader!" ]
+    },
+    "5": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [ "The tracks still go up and down all over the place. I keep getting lost in here!" ]
+    }
+  }
+}

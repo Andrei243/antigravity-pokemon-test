@@ -1,0 +1,496 @@
+{
+  "PlasmaOnTheBridge": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! The boss wants you back. We could use a pair of hands for the old work, you know the kind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Former Member"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I told you before. That life is over for me. Taking Pokémon from people hurt everyone, me included."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And what has quitting got you? Folk still look at you like a crook! Stick with us and they'll be the ones looking up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Former Member"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No. Lord N trusted us to be kind to Pokémon. I won't let him down again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lord N, Lord N! He walked out on the lot of us. Some king he turned out to be!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma! Where are the Pokémon you've taken? Answer me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You again?! Not today, kid. I've got orders to keep my head down. Next time, though!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're not getting away!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Former Member"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm all right. Thank you for standing by me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He and I joined Team Plasma on the same day. Then, two years back, the team broke in two."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those of us who stayed loyal to Lord N only care for Pokémon now. The others answer to Ghetsis, and he has bigger plans."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is more to tell, if you want to hear it. We live in the old church up on the hill, next to the Gym."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FormerMember": [
+    {
+      "en": [
+        "Former Member"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, it's nothing to do with you. He'll leave soon enough... I hope."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rood": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the home of those who have left Team Plasma behind. We keep to ourselves, traveller. Good day to you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RoodTest": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you are the Trainer who stood up for one of our own on the bridge. You are interested in Team Plasma, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before I ask you in, I would see what kind of person you are. In a Pokémon battle, if you will."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you battle me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then let us begin."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well battled. Please forgive the test. People are wary of us, and so we are wary of them in turn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! He got away from me... Huh? Who's this?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your friend? Then he may come in too. Please, both of you, follow me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then I am afraid I must ask you to leave. Come back if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymWorker": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, the boss is in the middle of something right now. Come back a bit later, would you?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ClayAndHugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You got your Badge too? I knew you would!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I couldn't have done it without my team. A Badge is great, but what matters is how we got it together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's what Team Plasma never understood. A Pokémon isn't a prize to grab. Ask my sister's Purrloin!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clay"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh! So you two know each other. Good pair of young'uns, the both of ya. Got somethin' worth showin' ya."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hang on, Clay. I heard you gave Team Plasma a place to live, right here in your city. Why would you do that?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clay"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A man can dig himself out of any hole, given a shovel and time. Those folks put the shovel to work, so I gave 'em time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Judge a fella only by what you think's right, and one day there'll be nobody left you can stand to listen to."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Sounds like a grown-up excuse to me. Fine! You do your thing. I'm still going after Team Plasma!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So what did you want to show us?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clay"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "South of town there's the Pokémon World Tournament. Gym Leaders, Champions, the best from every region battle there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on down when you're ready. I'll be there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The best from every region? Then I've got some training to do. See you there, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ClayOutside": [
+    {
+      "en": [
+        "Clay"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon World Tournament's south of town. Don't keep me waitin'!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  // The Battle Institute in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. Its test of a Trainer's
+  // skill is the link's (the wireless link is down, decision 06 · 7), so its receptionist (0) only says so
+  "area": "nimbasa_city_14",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Receptionist",
+      "npcType": "scientist",
+      "dialog": [ "Welcome to the Battle Institute, where Trainers are tested and ranked! I'm sorry, the link for the tests is closed for now." ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "Five battles in a row, and a score at the end. I want to see my name at the top of that board!" ]
+    }
+  },
+  "signs": {
+    "10441": "Battle Institute\nTest your skills as a Trainer!"
+  }
+}

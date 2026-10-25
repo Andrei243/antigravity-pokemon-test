@@ -1,0 +1,40 @@
+{
+  "key": "driftveil_city_6",
+  "index": 104,
+  "name": "Driftveil City",
+  "matrix": 59,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_5_NEW",
+  "nightMusic": "BGM_SW_C_5_NEW",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 25, "to": "driftveil_city", "toWarp": 10 },
+    { "x": 7, "z": 25, "to": "driftveil_city", "toWarp": 10 },
+    { "x": 8, "z": 25, "to": "driftveil_city", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "191", "movement": "none", "x": 7, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "2" },
+    { "id": "1", "looks": "195", "movement": "none", "x": 8, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ca", "script": "13" },
+    { "id": "2", "looks": "299", "movement": "none", "x": 7, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "3" },
+    { "id": "3", "looks": "300", "movement": "none", "x": 8, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "4" },
+    { "id": "4", "looks": "128", "movement": "none", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "12" },
+    { "id": "5", "looks": "99", "movement": "none", "x": 2, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "8" },
+    { "id": "6", "looks": "99", "movement": "none", "x": 12, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "6" },
+    { "id": "7", "looks": "hiker", "movement": "none", "x": 11, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "7" },
+    { "id": "8", "looks": "98", "movement": "none", "x": 2, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "5" },
+    { "id": "9", "looks": "307", "movement": "none", "x": 11, "z": 19, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "9" },
+    { "id": "10", "looks": "317", "movement": "none", "x": 3, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "10" },
+    { "id": "11", "looks": "314", "movement": "wander_around", "x": 12, "z": 21, "facing": 1, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x02b8", "script": "11" },
+    { "id": "12", "looks": "291", "movement": "none", "x": 5, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ce", "script": "14" },
+    { "id": "13", "looks": "196", "movement": "none", "x": 7, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b9", "script": "2000" }
+  ],
+  "signs": [],
+  "triggers": []
+}

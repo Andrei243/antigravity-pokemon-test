@@ -1,0 +1,18 @@
+{
+  // The Small Court's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. As at the Big Stadium,
+  // the way onto the courts and the matches played there are left out (Black 2's 0x400f), and their crowd with them
+  "area": "nimbasa_city_8",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "2": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "Tennis in the morning, basketball after lunch. The Small Court never sits still, and neither do I!" ]
+    },
+    "7": {
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "dialog": [ "Welcome to the Small Court! The courts are being swept just now. Matches will start again soon!" ]
+    }
+  }
+}

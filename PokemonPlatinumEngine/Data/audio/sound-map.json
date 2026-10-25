@@ -140,7 +140,12 @@
     "Backpacker": "mountain",
     "Subway Boss Ingo": "ace",
     "Subway Boss Emmet": "ace",
-    "Leader": "ace"
+    "Leader": "ace",
+    "Baker": "girl",
+    "Dancer": "fun",
+    "Backers": "sport",
+    "Musician": "fighter",
+    "Pokémon Trainer Rood": "rich"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -175,7 +180,8 @@
     "Pokémon Trainer Colress": "gym",
     "Leader Elesa": "gym",
     "Subway Boss Ingo": "gym",
-    "Subway Boss Emmet": "gym"
+    "Subway Boss Emmet": "gym",
+    "Leader Clay": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

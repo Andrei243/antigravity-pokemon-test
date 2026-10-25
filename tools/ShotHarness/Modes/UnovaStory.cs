@@ -488,5 +488,77 @@ partial class Harness
         ReadTo("I'm counting on you!"); Frames(10); Shot("us102_hugh_goes_on");
         ReadTo(null);
         Nimbasa("Hugh and Team Plasma");
+
+        // Plan 22 · U6, part b: the Ferris wheel, Bianca's Fly on Route 5, Driftveil's bridge and Rood, Clay's Gym and the
+        // World Tournament's word
+        void Driftveil(string what) =>
+            Console.WriteLine($"  {what}: route 5 {story.Var("VAR_UNOVA_ROUTE_5")}, driftveil {story.Var("VAR_UNOVA_DRIFTVEIL")}, "
+                + $"map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, Quake Badge {story.HasBadge(RegionDatabase.Unova, "Quake")}, "
+                + $"grunt hidden {story.Has("FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT")}, Rood at the door hidden {story.Has("FLAG_UNOVA_HIDE_ROOD_DOOR")}, "
+                + $"worker hidden {story.Has("FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER")}, Clay outside hidden {story.Has("FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL")}, "
+                + $"camera {game.Map.Camera}, deck here {game.Map.DeckAt(game.Player.GridX, game.Player.GridY)?.ToString() ?? "none"}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- the Ferris wheel in the amusement park
+        TalkTo("NimbasaCity_AmusementPark", "wheel", "nimbasa_city_2");
+        ReadTo("One turn takes in the whole of Nimbasa City"); Frames(10); Shot("us103_the_ferris_wheel");
+        ReadTo("The car climbs slowly"); Frames(10); Shot("us104_the_ride");
+        ReadTo("Welcome back!"); Frames(10); Shot("us105_back_on_the_ground");
+        ReadTo(null);
+
+        // ---- Route 5: Bianca runs after the player with HM02
+        StepOnto("Unova", 372, 438, Direction.Left);
+        ReadTo("Heeey! Wait for me!"); Frames(10); Shot("us106_bianca_runs_up");
+        ReadTo("It's Fly!"); Frames(10); Shot("us107_hm02");
+        ReadTo(null);
+        Driftveil("Route 5");
+
+        // ---- the drawbridge, walked onto its deck
+        ComeThrough("DriftveilDrawbridge", 209, 47, Direction.Left); Frames(30); Shot("us108_on_the_drawbridge");
+        Driftveil("the drawbridge");
+
+        // ---- Driftveil's bridge into town: the grunt, Hugh's chase and the former member
+        StepOnto("Unova", 221, 433, Direction.Left);
+        ReadTo("The boss wants you back."); Frames(10); Shot("us109_plasma_on_the_bridge");
+        ReadTo("Answer me!"); Frames(10); Shot("us110_hugh_chases");
+        ReadTo("We live in the old church"); Frames(10); Shot("us111_the_former_member");
+        ReadTo(null);
+        Driftveil("the bridge");
+
+        // ---- the old church: Rood's test, Hugh back, and the tale inside
+        StepOnto("Unova", 194, 398, Direction.Right);
+        ReadTo("I would see what kind of person you are."); Frames(10); Shot("us112_rood");
+        IntoBattle("Rood");
+        ToMainMenu(game.Battle); Shot("us113_roods_battle");
+        Win();
+        ReadTo("He got away from me..."); Frames(10); Shot("us114_hugh_comes_back");
+        ReadTo("Everyone here once wore Team Plasma's uniform."); Frames(10); Shot("us115_roods_tale");
+        ReadTo("Saying sorry doesn't give anyone back"); Frames(10); Shot("us116_hugh_answers");
+        ReadTo(null);
+        Driftveil("Rood's tale");
+
+        // ---- the Gym: the guide's Fresh Water, the lift down, Clay and the Quake Badge
+        ComeThrough("DriftveilCity_GymLobby", 7, 13, Direction.Up); Frames(30); Shot("us117_the_gym_lobby");
+        TalkTo("DriftveilCity_GymLobby", "0", "driftveil_city_gym_2", 1, 0);
+        ReadTo("have a drink before you go down!"); Frames(10); Shot("us118_the_guide");
+        ReadTo(null);
+        ComeThrough("DriftveilCity_Gym", 10, 26, Direction.Up); Frames(30); Shot("us119_the_mine");
+        At("DriftveilCity_Gym", 10, 4, Direction.Up);
+        game.Interact();
+        ReadTo("I'm Clay, boss of these mines"); Frames(10); Shot("us120_clay");
+        IntoBattle("Clay");
+        ToMainMenu(game.Battle); Shot("us121_clays_battle");
+        Win();
+        ReadTo("You struck a seam"); Frames(10); Shot("us122_the_quake_badge");
+        ReadTo(null);
+        Driftveil("the Quake Badge");
+
+        // ---- out of the Gym's door: Clay and Hugh, and the World Tournament
+        StepOnto("Unova", 212, 401, Direction.Right);
+        ReadTo("You got your Badge too?"); Frames(10); Shot("us123_hugh_outside_the_gym");
+        ReadTo("South of town there's the Pokémon World Tournament."); Frames(10); Shot("us124_clay_and_the_tournament");
+        ReadTo(null);
+        Driftveil("Clay and Hugh");
     }
 }

@@ -1,0 +1,32 @@
+{
+  "key": "driftveil_city_4",
+  "index": 102,
+  "name": "Driftveil City",
+  "matrix": 319,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_5_NEW",
+  "nightMusic": "BGM_SW_C_5_NEW",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 13, "to": "driftveil_city", "toWarp": 2 },
+    { "x": 7, "z": 13, "to": "driftveil_city", "toWarp": 2 },
+    { "x": 8, "z": 13, "to": "driftveil_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "lady", "movement": "none", "x": 12, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "76", "movement": "none", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "2", "looks": "gentleman", "movement": "none", "x": 5, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [
+    { "x": 3, "z": 1, "type": 0, "script": "10425" },
+    { "x": 2, "z": 1, "type": 0, "script": "10421" }
+  ],
+  "triggers": []
+}

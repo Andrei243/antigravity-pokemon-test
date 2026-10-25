@@ -1,6 +1,8 @@
 {
   // Nimbasa City's amusement park (plan 22 · U6): Black 2's park east of the city's squares, our words, with Elesa's Gym
-  // at its east end. The Ferris wheel's ride is plan 22 · U6, part b's, and its door stays shut
+  // at its east end. Since plan 22 · U6, part b the Ferris wheel's attendant (wheel, ours, before the wheel's queue
+  // lane) gives a ride round it as a scene over the dark (nimbasa_city_2.txt), and the old roller coaster, the Gym
+  // before Elesa moved it, is open behind its door by the sign
   "area": "nimbasa_city_2",
   "bgmTrack": "unova/nimbasa",
   "architecture": "Funfair",
@@ -51,8 +53,11 @@
       "dialog": [ "Elesa walks the runway in her own Gym. Imagine battling in a fashion show!" ]
     }
   },
+  "npcs": [
+    { "id": "wheel", "name": "Attendant", "npcType": "receptionist", "x": 57, "y": 15, "facing": "Down", "script": "FerrisWheel" }
+  ],
   "signs": {
     "1": "Nimbasa City Pokémon Gym\nLeader: Elesa, the shining beauty",
-    "2": "Ferris Wheel\nSee all of Nimbasa from above!"
+    "2": "The Old Roller Coaster\nOnce the Nimbasa Gym. Mind the tracks!"
   }
 }

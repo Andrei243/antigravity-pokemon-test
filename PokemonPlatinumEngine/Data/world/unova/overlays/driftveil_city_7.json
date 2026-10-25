@@ -1,0 +1,49 @@
+{
+  // Driftveil Market (plan 22 · U6, part b): Black 2's market hall with a door on each side, our words. Its stalls'
+  // goods are left for later (Black 2's herbs and Driftveil's own wares), so its sellers only talk; the TM on the floor
+  // is the area file's own
+  "area": "driftveil_city_7",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "We come here every week! The market changes with the ships that come in." ]
+    },
+    "1": {
+      "name": "Seller",
+      "npcType": "waitress",
+      "dialog": [ "Welcome to the market! The new stock is still on the boat. Come back soon and see what's arrived!" ]
+    },
+    "3": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "dialog": [ "I bring spices from across the sea and leave with ore from the mines. Driftveil keeps us all busy." ]
+    },
+    "4": {
+      "name": "Nursery Aide",
+      "npcType": "pokemon_breeder_f",
+      "dialog": [ "The children love the market. So many colours, so many smells! I can barely keep them together." ]
+    },
+    "6": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "Herbs are bitter, but they work wonders on Pokémon. Grandma swears by them!" ]
+    },
+    "7": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "I always stock up before I go anywhere. You never know what the road will throw at you!" ]
+    },
+    "8": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "Clay built this market for the city. Then he went back down his mine as if nothing had happened." ]
+    },
+    "9": {
+      "name": "Nurse",
+      "npcType": "nurse",
+      "dialog": [ "I'm shopping on my day off. Even nurses need to buy bandages sometimes!" ]
+    }
+  }
+}

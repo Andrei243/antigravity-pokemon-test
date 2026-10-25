@@ -1,0 +1,22 @@
+{
+  // A house of Nimbasa City by the Battle Institute, upstairs (plan 22 · U6, part b): Black 2's room, our words
+  "area": "nimbasa_city_16",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "My sister paints the amusement park every evening. She says the lights are never the same twice." ]
+    },
+    "1": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [ "Mind the easel! The paint's still wet." ]
+    },
+    "2": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "Red, yellow, a dash of blue for the Ferris wheel... Nimbasa needs every colour on my palette." ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# Nimbasa City's amusement park (plan 22 · U6, part b). docs/scripts.md describes the language; the lines are our own.
+#
+# The Ferris wheel's attendant (wheel, ours, before the wheel's queue lane) gives a ride round the wheel: Black 2 rides
+# it beside a Trainer of the day, after a battle; ours is the ride itself, a scene of the fade and lines over the dark,
+# with the city by day or its lights after dark, and the player back on the ground where they stood.
+
+
+script FerrisWheel
+  face wheel player
+  speaker "Attendant"
+  say "Welcome to the Ferris wheel! One turn takes in the whole of Nimbasa City, the stadiums and the sea beyond."
+  ask "Would you like a ride?"
+  if no goto Later
+  say "Step into the car, please. Enjoy the view!"
+  scene "The Ferris wheel"
+  fade out 0.8
+  if time night goto Night
+  text "The car climbs slowly over the amusement park. The stadiums, the Gear Station and the river spread out below..."
+  text "Far off to the west, a long bridge reaches across the water toward a city of warehouses."
+  goto Down
+label Night
+  text "The car climbs slowly into the dark. Below, the whole of Nimbasa glitters like a box of jewels..."
+  text "Far off to the west, the lights of a long bridge stretch across the black water."
+label Down
+  text "The car sways gently as it comes back down to the ground."
+  fade in 0.8
+  endscene
+  speaker "Attendant"
+  say "Welcome back! The view is different every time. Ride again whenever you like!"
+  end
+label Later
+  say "No hurry! The wheel turns all day and all night."
+  end

@@ -1,0 +1,27 @@
+{
+  "key": "nimbasa_city_13",
+  "index": 89,
+  "name": "Nimbasa City",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_04",
+  "nightMusic": "BGM_C_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "nimbasa_city_12", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "socialite", "movement": "none", "x": 7, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "rich_boy", "movement": "wander_around", "x": 9, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "2" },
+    { "id": "2", "looks": "lady", "movement": "look_west_and_east", "x": 12, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}
