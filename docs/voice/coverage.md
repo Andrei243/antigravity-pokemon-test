@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1230 | 1201 | 29 | 1 | 0 |
-| Scripts (`script:`) | 7773 | 7412 | 361 | 17 | 0 |
+| Scripts (`script:`) | 7813 | 7452 | 361 | 17 | 0 |
 | People of the world (`world:`) | 5488 | 5433 | 55 | 4 | 0 |
-| **All** | 14571 | 14126 | 445 | 22 | 0 |
+| **All** | 14611 | 14166 | 445 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -24,14 +24,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 454 |
 | a sign | 1295 |
 | the game's own voice (speaker none) | 229 |
-| the game's own voice (text) | 1000 |
+| the game's own voice (text) | 1009 |
 
 ## The cast
 
-- Named characters: 292 voices (255 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 293 voices (256 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 213, with 644 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1788.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1792.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1788 | 128 |
+| `@self` | 1792 | 128 |
 | `look:gentleman (any)` | 574 | 12 |
 | `look:grunt (any)` | 544 | 0 |
 | `rival` | 494 | 17 |
@@ -102,6 +102,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:scientist (any)` | 46 | 0 |
 | `elder` | 46 | 0 |
 | `maxie` | 46 | 1 |
+| `wallace` | 46 | 2 |
 | `look:receptionist (any)` | 45 | 3 |
 | `class:team_aqua (any)` | 44 | 0 |
 | `class:team_magma (any)` | 44 | 0 |
@@ -110,12 +111,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:worker (any)` | 42 | 0 |
 | `look:worker (any)` | 42 | 0 |
 | `riley` | 42 | 0 |
-| `wallace` | 42 | 2 |
 | `flint` | 41 | 1 |
 | `look:host (any)` | 40 | 16 |
 | `mystery` | 40 | 4 |
 | `volkner` | 40 | 1 |
 | `officer` | 38 | 5 |
+| `wally` | 38 | 0 |
+| `scott` | 37 | 0 |
 | `class:ninja_boy (any)` | 36 | 0 |
 | `look:girl (any)` | 36 | 0 |
 | `look:magma_grunt (any)` | 36 | 0 |
@@ -126,7 +128,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `baoba` | 33 | 0 |
 | `prof_birch` | 33 | 3 |
 | `roark` | 33 | 0 |
-| `wally` | 33 | 0 |
 | `alder` | 32 | 1 |
 | `class:biker (any)` | 32 | 0 |
 | `class:channeler (any)` | 32 | 0 |
@@ -136,7 +137,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `jasmine` | 31 | 0 |
 | `cheren` | 30 | 1 |
 | `class:young_couple (any)` | 30 | 0 |
-| `scott` | 30 | 0 |
 | `celio` | 29 | 1 |
 | `jupiter` | 29 | 0 |
 | `look:aide (any)` | 29 | 4 |
@@ -158,7 +158,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `norman` | 25 | 0 |
 | `policeman` | 25 | 0 |
 | `class:ace_trainer_m (any)` | 24 | 0 |
-| `class:dragon_tamer (any)` | 24 | 0 |
 | `class:sis_and_bro (any)` | 24 | 0 |
 | `day_care_lady` | 24 | 3 |
 | `move_deleter` | 24 | 3 |
@@ -168,6 +167,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `school_kid` | 23 | 0 |
 | `valet` | 23 | 5 |
 | `class:ace_trainer_f (any)` | 22 | 0 |
+| `class:dragon_tamer (any)` | 22 | 0 |
 | `class:gentleman (any)` | 22 | 0 |
 | `class:guitarist (any)` | 22 | 0 |
 | `class:poke_maniac (any)` | 22 | 0 |

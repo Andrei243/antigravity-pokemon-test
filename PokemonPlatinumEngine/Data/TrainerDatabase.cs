@@ -150,7 +150,16 @@ public static class TrainerDatabase
         {
             string relative = Path.Combine(World.Folder, Path.GetFileName(dir), FileName);
             if (File.Exists(GameDataFiles.PathOf(relative)))
-                lists[Path.GetFileName(dir)] = GameDataFiles.Load<List<TrainerRecord>>(relative);
+            {
+                var list = GameDataFiles.Load<List<TrainerRecord>>(relative);
+                lists[Path.GetFileName(dir)] = list;
+                // A region's rematch rows written by hand (plan 21 · H9, part c), beside the generated file the importer
+                // rewrites: trainer id to the ids of the teams they bring, whose records are the game's own (our-trainers.json)
+                string rows = Path.Combine(World.Folder, Path.GetFileName(dir), "rematches.json");
+                if (File.Exists(GameDataFiles.PathOf(rows)))
+                    foreach (var (id, row) in GameDataFiles.Load<Dictionary<string, List<string?>>>(rows))
+                        if (list.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase)) is { } who) who.Rematches = row;
+            }
         }
         return lists;
     }

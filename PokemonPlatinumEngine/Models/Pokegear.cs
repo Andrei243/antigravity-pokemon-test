@@ -105,7 +105,8 @@ public static class PhoneBook
         ?? Hoenn.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>The contact who is a trainer, by the trainer's id; null for none.</summary>
-    public static PhoneContact? ByTrainer(string trainer) => All.FirstOrDefault(c => string.Equals(c.Trainer, trainer, StringComparison.OrdinalIgnoreCase));
+    public static PhoneContact? ByTrainer(string trainer) =>
+        All.Concat(Hoenn).FirstOrDefault(c => string.Equals(c.Trainer, trainer, StringComparison.OrdinalIgnoreCase));
 }
 
 /// <summary>
@@ -218,11 +219,13 @@ public static class PhoneRematch
     public static bool Wants(PhoneContact contact, StoryState story, DateTime day, TimeOfDay time) =>
         contact.Trainer is { } trainer && TrainerDatabase.Get(trainer) is { Rematches.Count: > 0 }
         && story.Has(Pokegear.ContactFlag(contact.Id)) && story.HasDefeated(trainer)
+        // (Hoenn's are the Elite Four's and Wally's, who ask only of a Champion of Hoenn)
+        && (contact.Region != "hoenn" || story.Has(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag))
         && !story.Has(WaitingFlag(contact.Id)) && OnItsHour(contact, day, time);
 
     /// <summary>The trainers of the book waiting for a rematch now.</summary>
     public static IEnumerable<string> Waiting(StoryState story) =>
-        PhoneBook.All.Where(c => c.Trainer != null && story.Has(WaitingFlag(c.Id))).Select(c => c.Trainer!);
+        PhoneBook.All.Concat(PhoneBook.Hoenn).Where(c => c.Trainer != null && story.Has(WaitingFlag(c.Id))).Select(c => c.Trainer!);
 
     /// <summary>
     /// What a call is (<see cref="Pokegear.CallVar"/>), decided as it begins: a rematch already waiting, one asked for

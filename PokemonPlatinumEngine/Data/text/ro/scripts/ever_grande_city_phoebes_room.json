@@ -50,10 +50,24 @@
     },
     {
       "en": [
+        "Registered Phoebe in the PokéNav."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Treci în camera următoare. Te voi încuraja, în liniște, așa cum fac spiritele."
+      ]
+    },
+    {
+      "en": [
         "Go on to the next room. I'll be cheering for you, quietly, the way the spirits do."
       ],
       "text": [
-        "Treci în camera următoare. Te voi încuraja, în liniște, așa cum fac spiritele."
+        ""
+      ],
+      "was": [
+        "Drumul e deschis. Ține legătura aceea puternică și vei merge departe."
       ]
     },
     {
@@ -61,7 +75,31 @@
         "The way on is open. Keep that bond strong, and you'll go far."
       ],
       "text": [
-        "Drumul e deschis. Ține legătura aceea puternică și vei merge departe."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You came back. The spirits whispered that you would. Shall we see how far our bond has grown?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phoebe"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... we lost again. The spirits are smiling, though. Go well."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

@@ -69,12 +69,22 @@ script EntranceWally
 script ExitWally
   face self player
   speaker "Wally"
+  if flag FLAG_PHONE_REMATCH_HOENN_WALLY goto Rematch
   if defeated "hoenn_wally_vr_2" goto Beaten
   say "{player}! I heard you became the Champion. Congratulations! I knew you would."
   say "I've been training here ever since, so I could battle the Champion. Will you show me what that's like?"
   battle self as "hoenn_wally_vr_2"
   speaker "Wally"
   say "Wow... So that's the strength of a Champion. I've still got a long way to go."
+  addcontact hoenn_wally
+  text "Registered Wally in the PokéNav."
+label Rematch
+  say "{player}! You came! I've trained harder than ever. Please, battle me one more time!"
+  battle self as "hoenn_wally_rematch"
+  speaker "Wally"
+  say "Still not enough... but I felt it this time. I'm getting closer, I know it!"
+  clearflag FLAG_PHONE_REMATCH_HOENN_WALLY
+  end
 label Beaten
   say "I'll keep training on Victory Road. One day I'll catch up with you, {player}. Just you wait!"
   end

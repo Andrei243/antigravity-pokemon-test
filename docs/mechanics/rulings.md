@@ -5438,3 +5438,31 @@ the lines are our own.
 | A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
 | Dolls and cushions | On the floor, a desk or a mat | On the floor |
 | The decoration PC | Eight pockets by kind | One list, the same rooms by kind |
+
+## Scott's way to the Battle Frontier and the League's rematches (2026-10-26, plan 21 · H9, part c)
+
+**The Frontier.** Emerald's Scott gives a Frontier Pass and the ferry to an island of its own; this game has one Battle
+Frontier, Sinnoh's (plan 06 · R18), so Hoenn's door is the third of the pattern of "Route 40's way to the Battle
+Frontier", with one set of records. Scott stands on Lilycove's quay beside the harbour's desk (`lilycove_city_harbor.Scott`,
+13, 12, `shownBy` `HoennHallOfFame`) and gives **the pass as a flag** (`FLAG_RECEIVED_FRONTIER_PASS`: there is no item, so
+no table, no Romanian name and no bag line to add), then asks and crosses with `travel to "BattleFrontier" 47 51 up`
+(`GameEngine.CrossTo`: the whole team, each Pokémon given the region it left, Sinnoh's Pokédex entered). On the grounds
+a second guide, `battle_frontier.HoennGuide` (48, 51, facing the arrival tile beside Johto's at 46, 51, shown by
+`HoennHallOfFame`), crosses back to the harbour on 12, 12 beside Scott. Both are there for anyone who has entered Hoenn's
+Hall of Fame; nothing new is saved. Emerald's own facilities (the S.S. Tidal, the island's seven halls) stay plan 21 ·
+H12's and plan 14's: a Hoenn Champion plays Sinnoh's five.
+
+**The rematches.** Emerald has no rematch for the Elite Four, the Champion or Wally; the user's brief gives them the
+PokéNav's Match Call, as Johto's trainers have the Pokégear's. Each of Sidney, Phoebe, Glacia, Drake, Wallace and Wally
+(the one who waits by Victory Road's way out) is **registered by `addcontact` the first time they are beaten** (in their
+room's script, and Wally's), and asks a **Champion of Hoenn** for a rematch when rung, or ringing, on their day and hour
+(`phone.json`: Monday day, Wednesday night, Friday morning, Saturday day, Sunday day and Tuesday morning), by the rule
+of `PhoneRematch` (`Wants` reads the contact's region and asks Hoenn's Hall of Fame for Hoenn's). The call sets the
+waiting flag (`FLAG_PHONE_REMATCH_<ID>`; the call's script sets it too, since the story test wants every flag a script
+reads written by a script). **The waiting person is in their room, not on the road**: a League room's script (Wallace's is
+the scene of the Champion's room) battles the rematch team when its flag is set and clears it, so no one spins in a room
+the player walks through once by its doors. **One level each**: a rematch is the same team at +8 levels (+10 for Wally),
+the same species, moves, items and AI, with prize money one and a half times, written by hand as
+`hoenn_<who>_rematch` in `Data/our-trainers.json` and named by `Data/world/hoenn/rematches.json` (the importer rewrites the
+region's `trainers.json`, so the rows are read from the file beside it by `TrainerDatabase`); the rows hold, and every
+rematch battle is the room's own, never the Vs. Seeker's.

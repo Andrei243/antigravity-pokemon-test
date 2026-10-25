@@ -28,6 +28,18 @@
       "facing": "Down",
       "isTransportAttendant": true,
       "shownBy": "HoennHallOfFame"
+    },
+    // Scott on the quay beside the ferry's desk for a Champion of Hoenn: the Frontier Pass and the crossing to the Battle
+    // Frontier (lilycove_city_harbor.txt, plan 21 · H9, part c). The way back sets the player down on 12, 12
+    {
+      "id": "lilycove_city_harbor.Scott",
+      "name": "Scott",
+      "npcType": "scott",
+      "x": 13,
+      "y": 12,
+      "facing": "Left",
+      "script": "Scott",
+      "shownBy": "HoennHallOfFame"
     }
   ]
 }

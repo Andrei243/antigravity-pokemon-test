@@ -24,9 +24,13 @@ script OnEnter
   say "Do you remember the day you won the Rain Badge from Juan? Something in the way you battled stayed with me."
   say "I wondered then whether you would make it all the way here. And now here you stand."
   say "Then let me show you what a Champion is. You and your Pokémon will see a battle like no other!"
+  if flag FLAG_PHONE_REMATCH_WALLACE goto WallaceAgain
   battle champions_room_wallace as "hoenn_wallace"
+  addcontact wallace
+  text "Registered Wallace in the PokéNav."
   speaker "Wallace"
   say "I, the Champion, have been beaten... You and your Pokémon were simply magnificent."
+label WallaceBeaten
   setflag FLAG_HOENN_DEFEATED_WALLACE
   sound "door_open"
   say "You fought with everything you had, and your Pokémon fought for you. That is a true Champion's battle."
@@ -88,6 +92,13 @@ label Professor
   setflag FLAG_HIDE_PETALBURG_GYM_GREETER
   warp "EverGrandeCity_HallOfFame" 7 15 up
   endscene
+  end
+label WallaceAgain
+  battle champions_room_wallace as "hoenn_wallace_rematch"
+  clearflag FLAG_PHONE_REMATCH_WALLACE
+  speaker "Wallace"
+  say "Magnificent, once again! You and your Pokémon have only grown more splendid since we last danced."
+  goto WallaceBeaten
   end
 
 

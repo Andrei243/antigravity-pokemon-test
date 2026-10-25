@@ -273,6 +273,10 @@
       "note": "first spoken at blackthorn_move_tutor_house.txt(40)",
       "provisional": true
     },
+    "drake": {
+      "note": "first spoken at ever_grande_city_drakes_room.txt(32)",
+      "provisional": true
+    },
     "dusty": {
       "note": "first spoken at cinnabar_island_gym.txt(95)",
       "provisional": true
@@ -1171,6 +1175,7 @@
     "Director": "director",
     "Dock": "dock",
     "Dragon Tamer": "dragon_tamer",
+    "Drake": "drake",
     "Dusty": "dusty",
     "Dylan": "dylan",
     "Edwin": "edwin",

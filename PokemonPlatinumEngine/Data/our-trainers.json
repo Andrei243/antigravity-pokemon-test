@@ -34,5 +34,487 @@
         ]
       }
     ]
+  },
+  {
+    "id": "hoenn_sidney_rematch",
+    "name": "Sidney",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert",
+      "SetupFirstTurn"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7350,
+    "party": [
+      {
+        "species": "Mightyena",
+        "level": 54,
+        "ivScale": 250,
+        "personality": 759944,
+        "moves": [
+          "Roar",
+          "Double-Edge",
+          "Sand Attack",
+          "Crunch"
+        ]
+      },
+      {
+        "species": "Shiftry",
+        "level": 56,
+        "ivScale": 250,
+        "personality": 1425288,
+        "moves": [
+          "Torment",
+          "Double Team",
+          "Swagger",
+          "Extrasensory"
+        ]
+      },
+      {
+        "species": "Cacturne",
+        "level": 54,
+        "ivScale": 250,
+        "personality": 2133128,
+        "moves": [
+          "Leech Seed",
+          "Feint Attack",
+          "Needle Arm",
+          "Cotton Spore"
+        ]
+      },
+      {
+        "species": "Crawdaunt",
+        "level": 56,
+        "ivScale": 250,
+        "personality": 2893704,
+        "moves": [
+          "Surf",
+          "Swords Dance",
+          "Strength",
+          "Facade"
+        ]
+      },
+      {
+        "species": "Absol",
+        "level": 57,
+        "ivScale": 255,
+        "personality": 3449480,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Aerial Ace",
+          "Rock Slide",
+          "Swords Dance",
+          "Slash"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_phoebe_rematch",
+    "name": "Phoebe",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7650,
+    "party": [
+      {
+        "species": "Dusclops",
+        "level": 56,
+        "ivScale": 250,
+        "personality": 707704,
+        "moves": [
+          "Shadow Punch",
+          "Confuse Ray",
+          "Curse",
+          "Protect"
+        ]
+      },
+      {
+        "species": "Banette",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 1356920,
+        "moves": [
+          "Shadow Ball",
+          "Grudge",
+          "Will-O-Wisp",
+          "Feint Attack"
+        ]
+      },
+      {
+        "species": "Sableye",
+        "level": 58,
+        "ivScale": 250,
+        "personality": 2006648,
+        "moves": [
+          "Shadow Ball",
+          "Double Team",
+          "Night Shade",
+          "Feint Attack"
+        ]
+      },
+      {
+        "species": "Banette",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 2655864,
+        "moves": [
+          "Shadow Ball",
+          "Psychic",
+          "Thunderbolt",
+          "Facade"
+        ]
+      },
+      {
+        "species": "Dusclops",
+        "level": 59,
+        "ivScale": 255,
+        "personality": 3363448,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Shadow Ball",
+          "Ice Beam",
+          "Rock Slide",
+          "Earthquake"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_glacia_rematch",
+    "name": "Glacia",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7950,
+    "party": [
+      {
+        "species": "Sealeo",
+        "level": 58,
+        "ivScale": 250,
+        "personality": 594552,
+        "moves": [
+          "Encore",
+          "Body Slam",
+          "Hail",
+          "Ice Ball"
+        ]
+      },
+      {
+        "species": "Glalie",
+        "level": 58,
+        "ivScale": 250,
+        "personality": 1186168,
+        "moves": [
+          "Light Screen",
+          "Crunch",
+          "Icy Wind",
+          "Ice Beam"
+        ]
+      },
+      {
+        "species": "Sealeo",
+        "level": 60,
+        "ivScale": 250,
+        "personality": 1780600,
+        "moves": [
+          "Attract",
+          "Double-Edge",
+          "Hail",
+          "Blizzard"
+        ]
+      },
+      {
+        "species": "Glalie",
+        "level": 60,
+        "ivScale": 250,
+        "personality": 2372216,
+        "moves": [
+          "Shadow Ball",
+          "Explosion",
+          "Hail",
+          "Ice Beam"
+        ]
+      },
+      {
+        "species": "Walrein",
+        "level": 61,
+        "ivScale": 255,
+        "personality": 3020664,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Surf",
+          "Body Slam",
+          "Ice Beam",
+          "Sheer Cold"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_drake_rematch",
+    "name": "Drake",
+    "class": "Elite Four",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 8250,
+    "party": [
+      {
+        "species": "Shelgon",
+        "level": 60,
+        "ivScale": 250,
+        "personality": 601992,
+        "moves": [
+          "Rock Tomb",
+          "Dragon Claw",
+          "Protect",
+          "Double-Edge"
+        ]
+      },
+      {
+        "species": "Altaria",
+        "level": 62,
+        "ivScale": 250,
+        "personality": 1199240,
+        "moves": [
+          "Double-Edge",
+          "Dragon Breath",
+          "Dragon Dance",
+          "Aerial Ace"
+        ]
+      },
+      {
+        "species": "Kingdra",
+        "level": 61,
+        "ivScale": 250,
+        "personality": 1797000,
+        "moves": [
+          "Smokescreen",
+          "Dragon Dance",
+          "Surf",
+          "Body Slam"
+        ]
+      },
+      {
+        "species": "Flygon",
+        "level": 61,
+        "ivScale": 250,
+        "personality": 2350984,
+        "moves": [
+          "Flamethrower",
+          "Crunch",
+          "Dragon Breath",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Salamence",
+        "level": 63,
+        "ivScale": 255,
+        "personality": 3046280,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Flamethrower",
+          "Dragon Claw",
+          "Rock Slide",
+          "Crunch"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_wallace_rematch",
+    "name": "Wallace",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 17400,
+    "party": [
+      {
+        "species": "Wailord",
+        "level": 65,
+        "ivScale": 255,
+        "personality": 702344,
+        "moves": [
+          "Rain Dance",
+          "Water Spout",
+          "Double-Edge",
+          "Blizzard"
+        ]
+      },
+      {
+        "species": "Tentacruel",
+        "level": 63,
+        "ivScale": 255,
+        "personality": 1556872,
+        "moves": [
+          "Toxic",
+          "Hydro Pump",
+          "Sludge Bomb",
+          "Ice Beam"
+        ]
+      },
+      {
+        "species": "Ludicolo",
+        "level": 64,
+        "ivScale": 255,
+        "personality": 2309000,
+        "moves": [
+          "Giga Drain",
+          "Surf",
+          "Leech Seed",
+          "Double Team"
+        ]
+      },
+      {
+        "species": "Whiscash",
+        "level": 64,
+        "ivScale": 255,
+        "personality": 3060872,
+        "moves": [
+          "Earthquake",
+          "Surf",
+          "Amnesia",
+          "Hyper Beam"
+        ]
+      },
+      {
+        "species": "Gyarados",
+        "level": 64,
+        "ivScale": 255,
+        "personality": 3812744,
+        "moves": [
+          "Dragon Dance",
+          "Earthquake",
+          "Hyper Beam",
+          "Surf"
+        ]
+      },
+      {
+        "species": "Milotic",
+        "level": 66,
+        "ivScale": 255,
+        "personality": 4514696,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Recover",
+          "Surf",
+          "Ice Beam",
+          "Toxic"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_wally_rematch",
+    "name": "Wally",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 4320,
+    "party": [
+      {
+        "species": "Altaria",
+        "level": 57,
+        "ivScale": 150,
+        "personality": 606088,
+        "moves": [
+          "Aerial Ace",
+          "Safeguard",
+          "Dragon Breath",
+          "Dragon Dance"
+        ]
+      },
+      {
+        "species": "Delcatty",
+        "level": 56,
+        "ivScale": 150,
+        "personality": 1266824,
+        "moves": [
+          "Sing",
+          "Assist",
+          "Charm",
+          "Feint Attack"
+        ]
+      },
+      {
+        "species": "Roselia",
+        "level": 57,
+        "ivScale": 150,
+        "personality": 1877128,
+        "moves": [
+          "Magical Leaf",
+          "Leech Seed",
+          "Giga Drain",
+          "Toxic"
+        ]
+      },
+      {
+        "species": "Magneton",
+        "level": 54,
+        "ivScale": 150,
+        "personality": 2537608,
+        "moves": [
+          "Supersonic",
+          "Thunderbolt",
+          "Tri Attack",
+          "Screech"
+        ]
+      },
+      {
+        "species": "Gardevoir",
+        "level": 58,
+        "ivScale": 250,
+        "personality": 3248264,
+        "moves": [
+          "Double Team",
+          "Calm Mind",
+          "Psychic",
+          "Future Sight"
+        ]
+      }
+    ]
   }
 ]

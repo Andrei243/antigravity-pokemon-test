@@ -6,6 +6,7 @@
 script Phoebe
   face phoebe player
   speaker "Phoebe"
+  if flag FLAG_PHONE_REMATCH_PHOEBE goto Rematch
   if flag FLAG_DEFEATED_ELITE_4_PHOEBE goto Beaten
   scene "Phoebe"
   music "common/eye_elite_four"
@@ -16,10 +17,21 @@ script Phoebe
   speaker "Phoebe"
   say "Oh... we lost. Your bond with your Pokémon must run very deep."
   setflag FLAG_DEFEATED_ELITE_4_PHOEBE
+  addcontact phoebe
+  text "Registered Phoebe in the PokéNav."
   sound "door_open"
   say "Go on to the next room. I'll be cheering for you, quietly, the way the spirits do."
   endscene
   end
 label Beaten
   say "The way on is open. Keep that bond strong, and you'll go far."
+  end
+label Rematch
+  say "You came back. The spirits whispered that you would. Shall we see how far our bond has grown?"
+  battle self as "hoenn_phoebe_rematch"
+  speaker "Phoebe"
+  say "Oh... we lost again. The spirits are smiling, though. Go well."
+  clearflag FLAG_PHONE_REMATCH_PHOEBE
+  setflag FLAG_DEFEATED_ELITE_4_PHOEBE
+  sound "door_open"
   end
