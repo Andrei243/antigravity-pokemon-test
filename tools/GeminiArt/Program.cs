@@ -241,6 +241,8 @@ static class Briefs
         ("unova", "D14-proposals-unova.md"), ("kalos", "D14-proposals-kalos.md"),
         ("alola", "D14-proposals-alola.md"), ("galar", "D14-proposals-galar.md"),
         ("paldea", "D14-proposals-paldea.md"), ("megas", "R20b-mega-proposals.md"),
+        ("alola", "D14-proposals-alola-supplement.md"), ("galar", "D14-proposals-galar-supplement.md"),
+        ("kalos", "D14-proposals-kalos-supplement.md"), ("paldea", "D14-proposals-paldea-supplement.md"),
     };
 
     public static List<Brief> ReadAll(string root)
