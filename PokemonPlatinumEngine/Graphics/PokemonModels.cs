@@ -3008,32 +3008,36 @@ internal static partial class PokemonModels
         var b = new PokeBuilder("Bidoof", 0.6f, BodyPlan.Quadruped, V(0, 0.3f, -0.02f)) { Coat = Fur };
         var brown = Rgb(176, 122, 68);
         var dark = Rgb(122, 80, 44);
-        var tan = Rgb(232, 202, 148);
+        var tan = Rgb(236, 208, 150);
 
         foreach (var (z, front) in new[] { (0.16f, true), (-0.16f, false) })
             PokeBuilder.Both(s =>
             {
                 int leg = b.Leg(s, V(0.17f * s, 0.1f, z), front);
-                b.Ell(leg, V(0.17f * s, 0.05f, z), V(0.08f, 0.05f, 0.09f), dark);
+                b.Ell(leg, V(0.18f * s, 0.05f, z + 0.02f), V(0.085f, 0.05f, 0.1f), dark);
             });
-        b.Ell(Body, V(0, 0.3f, -0.02f), V(0.34f, 0.3f, 0.34f), brown);
+        // A plump body under a darker cap of fur that runs from the brow down the back
+        b.Ell(Body, V(0, 0.3f, -0.02f), V(0.33f, 0.29f, 0.33f), brown);
+        b.PaintEll(Body, V(0, 0.52f, -0.08f), V(0.22f, 0.14f, 0.3f), dark);
         int tail = b.Tail(V(0, 0.22f, -0.3f));
         if (female) b.Ell(tail, V(0, 0.2f, -0.345f), V(0.05f, 0.045f, 0.045f), dark);
         else b.Ell(tail, V(0, 0.2f, -0.36f), V(0.07f, 0.06f, 0.06f), dark);
 
         int head = b.Head(V(0, 0.3f, 0.1f));
-        // Darker ruff framing the face, tan muzzle, red nose and big buck teeth
-        b.Ell(head, V(0, 0.36f, 0.14f), V(0.3f, 0.26f, 0.22f), dark);
-        b.Ell(head, V(0, 0.36f, 0.19f), V(0.26f, 0.23f, 0.19f), brown);
-        b.Ell(head, V(0, 0.28f, 0.3f), V(0.17f, 0.12f, 0.1f), tan);
-        b.Ell(head, V(0, 0.34f, 0.39f), V(0.05f, 0.04f, 0.035f), Rgb(204, 64, 56), mat: Scales, blend: 0.012f);
-        PokeBuilder.Both(s => b.Box(head, V(0.026f * s, 0.21f, 0.37f), V(0.022f, 0.042f, 0.018f), 0.012f, White, mat: Shell, blend: 0.004f));
+        // The face is most of the front: a wide tan muzzle under the cap, a red nose and big buck teeth
+        b.Ell(head, V(0, 0.36f, 0.16f), V(0.3f, 0.26f, 0.22f), brown);
+        b.PaintEll(head, V(0, 0.55f, 0.1f), V(0.24f, 0.12f, 0.2f), dark);
+        b.Ell(head, V(0, 0.29f, 0.3f), V(0.2f, 0.13f, 0.12f), tan);
+        b.Ell(head, V(0, 0.36f, 0.4f), V(0.055f, 0.045f, 0.04f), Rgb(204, 64, 56), mat: Scales, blend: 0.012f);
+        b.Mark(head, V(0, 0.27f, 0.415f), V(0, -0.3f, 1f), 0.06f, 0.01f, PixelCanvas.Shadow(tan, 0.5f), MarkShape.Bar);
+        PokeBuilder.Both(s => b.Box(head, V(0.03f * s, 0.205f, 0.39f), V(0.026f, 0.05f, 0.02f), 0.012f, White, mat: Shell, blend: 0.004f));
         PokeBuilder.Both(s =>
         {
-            int ear = b.Ear(head, s, V(0.17f * s, 0.52f, 0.06f));
-            b.Ell(ear, V(0.2f * s, 0.58f, 0.04f), V(0.08f, 0.08f, 0.045f), dark);
+            int ear = b.Ear(head, s, V(0.18f * s, 0.54f, 0.06f));
+            b.Ell(ear, V(0.22f * s, 0.62f, 0.04f), V(0.09f, 0.09f, 0.05f), dark);
+            b.PaintEll(ear, V(0.22f * s, 0.62f, 0.08f), V(0.055f, 0.055f, 0.03f), brown);
         });
-        PokeBuilder.Both(s => b.Eye(head, V(0.12f * s, 0.44f, 0.33f), V(0.4f * s, 0.1f, 1f), 0.035f));
+        PokeBuilder.Both(s => b.Eye(head, V(0.13f * s, 0.45f, 0.33f), V(0.4f * s, 0.1f, 1f), 0.042f));
         return b;
     }
 
