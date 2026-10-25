@@ -194,7 +194,8 @@
       "value": { "Shift": "Schimb", "Set": "Fix" },
       "help": {
         "Shift": "Când Pokémonul unui antrenor leșină, ți se spune care iese următorul și ești întrebat dacă vrei să schimbi întâi, ca în Platinum.",
-        "Set": "Când Pokémonul unui antrenor leșină, următorul iese imediat și nu ești întrebat dacă vrei să schimbi."
+        "Set": "Când Pokémonul unui antrenor leșină, următorul iese imediat și nu ești întrebat dacă vrei să schimbi.",
+        "locked": "Modul de joc al acestei partide ține stilul de luptă pe Fix. Nu poate fi schimbat."
       }
     },
     "speedUp": {
@@ -308,6 +309,13 @@
         "On": "Meniul unui Pokémon din echipă are și AMINTEȘTE, care îi reînvață gratuit o mișcare pe care ar fi putut-o învăța până acum, și REDENUMEȘTE pentru Pokémonii tăi."
       }
     },
+    "autosave": {
+      "label": "Salvare automată",
+      "help": {
+        "on": "Jocul se salvează singur, pe tăcute, după o luptă, o vindecare, o Insignă, o prindere și la intrarea într-un loc, într-un fișier al lui, lângă salvările tale. O salvare făcută de tine nu e atinsă niciodată. După o oprire neașteptată, CONTINUĂ ți-o oferă.",
+        "off": "Jocul se salvează doar când îl salvezi tu, ca în Platinum."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -317,6 +325,17 @@
       "label": "Ajutor",
       "value": "Deschide",
       "help": "Tabelul tipurilor, comenzile și câteva sfaturi de drum."
+    },
+    "resetDefaults": {
+      "label": "Revino la implicit",
+      "value": "Resetează",
+      "help": "Pune fiecare opțiune înapoi cum e într-un joc nou: limba, sunetul, grafica și comenzile. Salvările tale și scenele pe care le-ai văzut nu sunt atinse."
+    },
+    "reset": {
+      "heading": "Resetezi toate opțiunile?",
+      "body": "Fiecare opțiune revine la valoarea implicită. Salvările tale nu sunt atinse.",
+      "no": "NU, PĂSTREAZĂ-LE",
+      "yes": "DA, RESETEAZĂ"
     }
   },
 
@@ -370,6 +389,12 @@
         "report": "Un raport a fost scris în {report}.",
         "reportKept": "Un raport a fost scris în {report}, iar jocul, așa cum era, a fost păstrat lângă salvarea ta ca {file}."
       }
+    },
+    "autosave": {
+      "heading": "Continui slotul {slot} din salvarea automată?",
+      "blurb": "Salvarea automată e la {place}, cu {auto} de joc. Salvarea făcută de tine s-a oprit la {saved}.",
+      "saved": "JOC SALVAT",
+      "auto": "SALVARE AUTOMATĂ"
     },
     "newGame": {
       "heading": "Începi un joc nou?",
@@ -450,6 +475,10 @@
     "shinyOdds": "1 din {n}",
     "preset": { "normal": "NORMAL", "nuzlocke": "NUZLOCKE", "hardcore": "HARDCORE", "custom": "PERSONALIZAT" },
     "difficulty": { "Easy": "Ușor", "Normal": "Normal", "Challenge": "Provocare" },
+    "monotype": {
+      "notThis": "Această partidă ține în echipă doar Pokémoni de tip {type}.",
+      "sentToPc": "{name} nu e de tipul acestei partide, așa că a fost trimis la PC."
+    },
     "hint": { "start": "Start" },
     "ended": {
       "whiteout": "Ultimul tău Pokémon a leșinat. Nuzlocke s-a încheiat, iar jocul acesta nu va mai fi salvat.",
@@ -2272,6 +2301,9 @@
     "nuzlockeNoRevive": "Într-un Nuzlocke, un Pokémon leșinat nu poate fi readus la viață.",
     "nuzlockeAreaSpent": "Prinderea din această zonă a fost deja folosită. Nu poate fi prins.",
     "nuzlockeDuplicate": "Ai prins deja linia lui evolutivă. Nu poate fi prins.",
+    "runNoCatching": "Această partidă nu permite prinderea Pokémonilor.",
+    "runMonotype": "Această partidă ține doar Pokémoni de tip {type}.",
+    "runNoRunning": "Această partidă nu permite fuga!",
     "levelCapped": "{pokemon} nu poate crește peste Nv. {level} deocamdată.",
     "sportBallsAreFor": "Sport Ball-urile sunt pentru Concursul de Prins Insecte.",
     "youveThrownYourLastSport": "Ai aruncat ultimul Sport Ball!",
@@ -3991,5 +4023,8 @@
     "Underwater126": "Sub apă 126",
     "Underwater127": "Sub apă 127",
     "Underwater128": "Sub apă 128"
+  },
+  "secretBase": {
+    "decorating": "DECOREAZĂ-ȚI BAZA SECRETĂ"
   }
 }
