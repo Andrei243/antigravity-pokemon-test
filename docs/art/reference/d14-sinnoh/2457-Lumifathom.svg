@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Lumifathom (No. 2457), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="482" rx="120" ry="12" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- back pair of fins (the far, upper and lower) -->
+    <path d="M276 210 C300 140 360 92 420 96 C410 150 370 196 300 222 Z" fill="#2c5ea8"/>
+    <path d="M276 270 C300 330 350 380 410 386 C404 336 366 296 300 262 Z" fill="#2c5ea8"/>
+    <!-- tail fin -->
+    <path d="M140 240 C110 210 70 196 40 200 C60 222 64 240 60 252 C70 266 70 286 48 306 C80 310 116 296 140 266 Z" fill="#3c78c8"/>
+    <path d="M60 252 C80 254 104 252 124 248" fill="none" stroke="#2c5ea8" stroke-width="4"/>
+    <!-- body -->
+    <path d="M130 254 C130 220 190 196 260 198 C320 200 356 224 360 254 C356 284 320 306 260 308 C190 310 130 288 130 254 Z" fill="#3c78c8"/>
+    <path d="M150 268 C190 300 280 306 344 270 C326 296 296 308 260 308 C206 310 160 294 150 268 Z" fill="#2c5ea8" stroke="none"/>
+    <path d="M150 250 C190 236 250 236 300 248 C260 276 190 276 150 250 Z" fill="#a8d0f0" stroke="none"/>
+    <path d="M190 214 C220 206 256 204 290 208" fill="none" stroke="#8ab8ec" stroke-width="5"/>
+    <!-- head and eye -->
+    <path d="M330 222 C352 230 364 244 364 256 C364 270 352 284 332 290" fill="none" stroke-width="4"/>
+    <ellipse cx="334" cy="244" rx="12" ry="9" fill="#f2d24a"/>
+    <circle cx="336" cy="244" r="4" fill="#1b1b2b" stroke="none"/>
+    <path d="M346 270 L360 266" fill="none" stroke-width="4"/>
+    <!-- the lure from its brow -->
+    <path d="M330 214 C340 160 380 130 420 140 C440 146 446 166 440 180" fill="none" stroke-width="10"/>
+    <path d="M330 214 C340 160 380 130 420 140 C440 146 446 166 440 180" fill="none" stroke="#2c5ea8" stroke-width="4"/>
+    <circle cx="440" cy="190" r="14" fill="#f8b0d8"/>
+    <circle cx="436" cy="186" r="4" fill="#ffffff" stroke="none"/>
+    <circle cx="440" cy="190" r="28" fill="#f070b8" opacity="0.18" stroke="none"/>
+    <!-- front fins: upper pair and lower pair, butterfly-like -->
+    <path d="M240 206 C230 130 190 70 120 56 C116 120 150 180 210 214 Z" fill="#3c78c8"/>
+    <path d="M220 200 C206 150 180 110 140 90 C142 130 166 170 200 200 Z" fill="#2c5ea8" stroke="none"/>
+    <path d="M240 302 C230 370 190 430 120 446 C116 390 150 330 210 296 Z" fill="#3c78c8"/>
+    <path d="M196 230 C170 196 150 170 110 156 C108 196 130 226 170 244 Z" fill="#2c5ea8"/>
+    <path d="M196 280 C170 314 150 340 110 354 C108 314 130 284 170 266 Z" fill="#2c5ea8"/>
+    <!-- glowing pink spots ringed with light -->
+    <g>
+      <circle cx="160" cy="110" r="22" fill="#f070b8" opacity="0.2" stroke="none"/>
+      <circle cx="160" cy="110" r="14" fill="#fbe0f0" stroke-width="3"/>
+      <circle cx="160" cy="110" r="8" fill="#f070b8" stroke="none"/>
+      <circle cx="160" cy="396" r="22" fill="#f070b8" opacity="0.2" stroke="none"/>
+      <circle cx="160" cy="396" r="14" fill="#fbe0f0" stroke-width="3"/>
+      <circle cx="160" cy="396" r="8" fill="#f070b8" stroke="none"/>
+      <circle cx="138" cy="190" r="10" fill="#fbe0f0" stroke-width="3"/>
+      <circle cx="138" cy="190" r="5" fill="#f070b8" stroke="none"/>
+      <circle cx="138" cy="320" r="10" fill="#fbe0f0" stroke-width="3"/>
+      <circle cx="138" cy="320" r="5" fill="#f070b8" stroke="none"/>
+      <circle cx="388" cy="118" r="9" fill="#fbe0f0" stroke-width="3"/>
+      <circle cx="380" cy="364" r="9" fill="#fbe0f0" stroke-width="3"/>
+    </g>
+    <path d="M130 70 C150 74 170 86 186 104" fill="none" stroke="#8ab8ec" stroke-width="5"/>
+  </g>
+</svg>

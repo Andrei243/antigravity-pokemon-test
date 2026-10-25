@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Hivempress (No. 2416), reference drawing</title>
+  <defs>
+    <path id="cell" d="M0 -12 L10 -6 L10 6 L0 12 L-10 6 L-10 -6 Z"/>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="482" rx="140" ry="13" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- a train of wings behind -->
+    <path d="M230 170 C170 120 110 120 70 150 C100 180 150 196 220 196 Z" fill="#dff0fa"/>
+    <path d="M226 196 C160 196 100 220 76 262 C120 270 180 250 224 214 Z" fill="#dff0fa"/>
+    <path d="M282 170 C342 120 402 120 442 150 C412 180 362 196 292 196 Z" fill="#c8e2f2"/>
+    <path d="M286 196 C352 196 412 220 436 262 C392 270 332 250 288 214 Z" fill="#c8e2f2"/>
+    <path d="M100 150 C140 150 180 160 216 180 M420 150 C380 150 340 160 296 180" fill="none" stroke="#9ac4e0" stroke-width="3"/>
+    <!-- gown of comb, lower tier -->
+    <path d="M166 330 C140 380 120 430 116 466 L396 466 C392 430 372 380 346 330 Z" fill="#f2b23a"/>
+    <path d="M346 330 C372 380 392 430 396 466 L340 466 C338 420 330 370 318 330 Z" fill="#c8862a" stroke="none"/>
+    <!-- gown of comb, upper tier -->
+    <path d="M186 250 C166 290 156 320 150 350 C220 372 292 372 362 350 C356 320 346 290 326 250 Z" fill="#f2c64a"/>
+    <path d="M326 250 C346 290 356 320 362 350 C344 356 326 360 310 362 C310 330 306 290 300 254 Z" fill="#d89a2e" stroke="none"/>
+    <g fill="#f8dc80" stroke-width="3">
+      <use href="#cell" x="196" y="300"/><use href="#cell" x="218" y="300"/><use href="#cell" x="240" y="300"/><use href="#cell" x="262" y="300"/><use href="#cell" x="284" y="300"/><use href="#cell" x="306" y="300"/>
+      <use href="#cell" x="207" y="318"/><use href="#cell" x="229" y="318"/><use href="#cell" x="251" y="318"/><use href="#cell" x="273" y="318"/><use href="#cell" x="295" y="318"/>
+    </g>
+    <g fill="#f2c64a" stroke-width="3">
+      <use href="#cell" x="166" y="410"/><use href="#cell" x="188" y="410"/><use href="#cell" x="210" y="410"/><use href="#cell" x="232" y="410"/><use href="#cell" x="254" y="410"/><use href="#cell" x="276" y="410"/><use href="#cell" x="298" y="410"/><use href="#cell" x="320" y="410"/><use href="#cell" x="342" y="410"/>
+      <use href="#cell" x="155" y="428"/><use href="#cell" x="177" y="428"/><use href="#cell" x="199" y="428"/><use href="#cell" x="221" y="428"/><use href="#cell" x="243" y="428"/><use href="#cell" x="265" y="428"/><use href="#cell" x="287" y="428"/><use href="#cell" x="309" y="428"/><use href="#cell" x="331" y="428"/><use href="#cell" x="353" y="428"/>
+    </g>
+    <!-- honey glowing in some cells -->
+    <g fill="#ff9a1a" stroke-width="3">
+      <use href="#cell" x="240" y="300"/><use href="#cell" x="295" y="318"/><use href="#cell" x="188" y="410"/><use href="#cell" x="276" y="410"/><use href="#cell" x="331" y="428"/><use href="#cell" x="221" y="428"/>
+    </g>
+    <g fill="#ffb84a" opacity="0.3" stroke="none">
+      <circle cx="240" cy="300" r="20"/><circle cx="188" cy="410" r="20"/><circle cx="276" cy="410" r="20"/><circle cx="331" cy="428" r="20"/>
+    </g>
+    <path d="M140 386 C200 400 312 400 372 386" fill="none" stroke-width="5"/>
+    <!-- torso, striped -->
+    <path d="M222 176 C208 206 210 236 226 256 L286 256 C302 236 304 206 290 176 Z" fill="#f2c230"/>
+    <path d="M214 214 L298 214 L296 234 L216 234 Z" fill="#2a2a36" stroke="none"/>
+    <path d="M222 176 C208 206 210 236 226 256 L286 256 C302 236 304 206 290 176 Z" fill="none"/>
+    <!-- arms -->
+    <path d="M222 194 C196 214 186 240 190 264" fill="none" stroke-width="16"/>
+    <path d="M222 194 C196 214 186 240 190 264" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <path d="M290 194 C316 214 326 240 322 264" fill="none" stroke-width="16"/>
+    <path d="M290 194 C316 214 326 240 322 264" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <!-- head -->
+    <path d="M214 132 C210 102 230 86 256 86 C282 86 302 102 298 132 C296 160 278 178 256 178 C234 178 216 160 214 132 Z" fill="#2a2a36"/>
+    <path d="M222 146 C230 170 256 176 274 174 C252 182 228 172 220 152 Z" fill="#14141c" stroke="none"/>
+    <path d="M226 126 L248 136 L230 146 Z" fill="#e8304a" stroke-width="3"/>
+    <path d="M286 126 L264 136 L282 146 Z" fill="#e8304a" stroke-width="3"/>
+    <path d="M230 160 C246 166 266 166 282 160 L278 176 C264 182 248 182 234 176 Z" fill="#f2c230" stroke-width="4"/>
+    <!-- taller crown -->
+    <path d="M206 98 L214 40 L232 72 L244 22 L256 66 L268 22 L280 72 L298 40 L306 98 C276 86 236 86 206 98 Z" fill="#f2b23a"/>
+    <path d="M280 72 L298 40 L306 98 C298 94 290 92 282 90 Z" fill="#c8862a" stroke="none"/>
+    <circle cx="256" cy="84" r="9" fill="#e8304a" stroke-width="3"/>
+    <circle cx="253" cy="81" r="3" fill="#ffd0d6" stroke="none"/>
+  </g>
+</svg>

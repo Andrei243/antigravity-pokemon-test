@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Hexmagistra (No. 2429), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="250" cy="480" rx="100" ry="12" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- staff of shadow -->
+    <path d="M372 150 L352 446" fill="none" stroke-width="14"/>
+    <path d="M372 150 L352 446" fill="none" stroke="#3b2550" stroke-width="7"/>
+    <path d="M372 152 C352 140 350 112 368 100 C386 92 404 104 398 122 C392 136 376 134 378 120" fill="none" stroke-width="12"/>
+    <path d="M372 152 C352 140 350 112 368 100 C386 92 404 104 398 122 C392 136 376 134 378 120" fill="none" stroke="#3b2550" stroke-width="6"/>
+    <circle cx="378" cy="118" r="10" fill="#e8304a"/>
+    <circle cx="375" cy="115" r="3" fill="#ffd0d6" stroke="none"/>
+    <!-- gown: long ragged frills -->
+    <path d="M196 236 C170 300 150 370 140 440 L168 418 L184 452 L206 420 L226 458 L248 422 L270 458 L292 420 L312 450 L326 414 L350 434 C340 360 320 296 296 236 Z" fill="#7a3f9e"/>
+    <path d="M150 400 L140 440 L168 418 L184 452 L206 420 L226 458 L248 422 L270 458 L292 420 L312 450 L326 414 L350 434 L344 398 C290 420 200 420 150 400 Z" fill="#b8337a"/>
+    <path d="M296 236 C320 296 340 360 350 434 L326 414 C318 350 306 290 284 240 Z" fill="#5a2c78" stroke="none"/>
+    <path d="M204 270 C192 310 182 350 176 392" fill="none" stroke="#a46bc8" stroke-width="5"/>
+    <!-- hand of mist holding the staff -->
+    <path d="M300 258 C324 262 344 270 360 280" fill="none" stroke-width="16"/>
+    <path d="M300 258 C324 262 344 270 360 280" fill="none" stroke="#9a6cc0" stroke-width="8"/>
+    <path d="M350 270 C356 258 376 258 380 272 C384 288 370 300 356 294 C344 290 344 278 350 270 Z" fill="#9a6cc0"/>
+    <!-- head -->
+    <path d="M190 206 C186 166 214 140 250 140 C286 140 314 166 310 206 C306 240 280 256 250 256 C220 256 194 240 190 206 Z" fill="#7a3f9e"/>
+    <path d="M196 220 C208 244 240 254 268 250 C238 262 202 252 192 226 Z" fill="#5a2c78" stroke="none"/>
+    <!-- face -->
+    <path d="M214 198 L240 188 L238 212 Z" fill="#f2d24a" stroke-width="4"/>
+    <path d="M286 198 L260 188 L262 212 Z" fill="#f2d24a" stroke-width="4"/>
+    <circle cx="232" cy="200" r="5" fill="#e8304a" stroke="none"/>
+    <circle cx="268" cy="200" r="5" fill="#e8304a" stroke="none"/>
+    <path d="M238 228 C246 234 254 234 262 228" fill="none" stroke-width="4"/>
+    <!-- necklace of gems -->
+    <path d="M206 240 C226 262 274 262 294 240" fill="none" stroke-width="3"/>
+    <circle cx="216" cy="250" r="8" fill="#e8304a"/>
+    <circle cx="250" cy="262" r="10" fill="#e8304a"/>
+    <circle cx="284" cy="250" r="8" fill="#e8304a"/>
+    <circle cx="247" cy="258" r="3" fill="#ffd0d6" stroke="none"/>
+    <!-- the hat, taller and bent, its brim frills -->
+    <path d="M166 170 C186 150 214 150 228 162 L232 150 C256 140 276 146 290 158 C304 146 326 148 338 168 C318 166 300 178 296 186 C280 176 222 174 204 186 C196 178 182 170 166 170 Z" fill="#b8337a"/>
+    <path d="M206 170 C214 120 222 70 260 40 C300 14 336 30 330 60 C312 50 286 54 276 72 C266 96 280 140 296 170 C266 162 232 162 206 170 Z" fill="#7a3f9e"/>
+    <path d="M276 72 C266 96 280 140 296 170 C284 168 276 166 270 166 C258 140 252 100 262 76 Z" fill="#5a2c78" stroke="none"/>
+    <path d="M222 150 C226 116 236 82 258 58" fill="none" stroke="#a46bc8" stroke-width="5"/>
+    <!-- band of gems round the hat -->
+    <path d="M212 148 C238 140 270 140 292 148 L294 160 C270 152 238 152 210 160 Z" fill="#3b2550" stroke-width="4"/>
+    <circle cx="226" cy="150" r="6" fill="#e8304a" stroke-width="3"/>
+    <circle cx="252" cy="146" r="7" fill="#e8304a" stroke-width="3"/>
+    <circle cx="278" cy="150" r="6" fill="#e8304a" stroke-width="3"/>
+    <!-- red glow at the gems -->
+    <circle cx="250" cy="262" r="18" fill="#e8304a" opacity="0.18" stroke="none"/>
+    <circle cx="378" cy="118" r="22" fill="#e8304a" opacity="0.15" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Sakurabloom (No. 2421), reference drawing</title>
+  <defs>
+    <path id="petalB" d="M0 0 C-40 -30 -46 -100 -18 -138 L0 -124 L18 -138 C46 -100 40 -30 0 0 Z"/>
+    <path id="petalF" d="M0 0 C-34 -24 -40 -84 -14 -112 L0 -100 L14 -112 C40 -84 34 -24 0 0 Z"/>
+    <path id="mini" d="M0 0 C-10 -6 -12 -22 -4 -28 L0 -24 L4 -28 C12 -22 10 -6 0 0 Z"/>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="472" rx="96" ry="14" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- leaves and legs -->
+    <path d="M250 360 C210 380 170 392 138 384 C160 352 214 344 250 352 Z" fill="#5aa64a"/>
+    <path d="M262 360 C302 380 342 392 374 384 C352 352 298 344 262 352 Z" fill="#4a8f3c"/>
+    <path d="M150 380 C190 372 220 364 250 356" fill="none" stroke="#3a7230" stroke-width="3"/>
+    <path d="M232 380 L226 446 C220 456 236 462 246 452 L250 382 Z" fill="#7d3a56"/>
+    <path d="M280 380 L286 446 C292 456 276 462 266 452 L262 382 Z" fill="#7d3a56"/>
+    <!-- outer ring of petals -->
+    <g transform="translate(256 236)" fill="#e070a0">
+      <use href="#petalB" transform="rotate(0)"/>
+      <use href="#petalB" transform="rotate(45)"/>
+      <use href="#petalB" transform="rotate(90)"/>
+      <use href="#petalB" transform="rotate(135)"/>
+      <use href="#petalB" transform="rotate(180)"/>
+      <use href="#petalB" transform="rotate(225)"/>
+      <use href="#petalB" transform="rotate(270)"/>
+      <use href="#petalB" transform="rotate(315)"/>
+    </g>
+    <!-- inner ring -->
+    <g transform="translate(256 236)" fill="#f6a8c8">
+      <use href="#petalF" transform="rotate(22)"/>
+      <use href="#petalF" transform="rotate(94)"/>
+      <use href="#petalF" transform="rotate(166)"/>
+      <use href="#petalF" transform="rotate(238)"/>
+      <use href="#petalF" transform="rotate(310)"/>
+    </g>
+    <!-- face -->
+    <circle cx="256" cy="236" r="56" fill="#ffe2ec"/>
+    <path d="M206 254 C220 284 260 296 296 278 C280 296 236 298 214 276 Z" fill="#f6b8cc" stroke="none"/>
+    <path d="M226 228 C232 218 242 218 248 228" fill="none" stroke-width="5"/>
+    <path d="M266 228 C272 218 282 218 288 228" fill="none" stroke-width="5"/>
+    <path d="M238 250 C248 266 266 266 276 250 Z" fill="#c04070" stroke-width="4"/>
+    <ellipse cx="222" cy="248" rx="9" ry="5" fill="#f490b4" stroke="none"/>
+    <ellipse cx="292" cy="248" rx="9" ry="5" fill="#f490b4" stroke="none"/>
+    <path d="M222 200 C232 190 246 186 258 186" fill="none" stroke="#ffffff" stroke-width="5"/>
+    <!-- crown of small blossoms -->
+    <g fill="#fbd0e0" stroke-width="3">
+      <g transform="translate(220 172)"><use href="#mini"/><use href="#mini" transform="rotate(72)"/><use href="#mini" transform="rotate(144)"/><use href="#mini" transform="rotate(216)"/><use href="#mini" transform="rotate(288)"/><circle r="5" fill="#f2c230"/></g>
+      <g transform="translate(256 160)"><use href="#mini"/><use href="#mini" transform="rotate(72)"/><use href="#mini" transform="rotate(144)"/><use href="#mini" transform="rotate(216)"/><use href="#mini" transform="rotate(288)"/><circle r="5" fill="#f2c230"/></g>
+      <g transform="translate(292 172)"><use href="#mini"/><use href="#mini" transform="rotate(72)"/><use href="#mini" transform="rotate(144)"/><use href="#mini" transform="rotate(216)"/><use href="#mini" transform="rotate(288)"/><circle r="5" fill="#f2c230"/></g>
+    </g>
+    <!-- drifting petals -->
+    <g fill="#f6a8c8" stroke-width="3">
+      <path d="M86 150 C78 140 84 126 96 128 C104 136 100 150 86 150 Z"/>
+      <path d="M430 120 C440 110 454 116 452 128 C444 136 430 132 430 120 Z"/>
+      <path d="M418 330 C410 320 416 306 428 308 C436 316 432 330 418 330 Z"/>
+      <path d="M76 300 C84 290 98 294 98 306 C90 314 76 312 76 300 Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Corvicapo (No. 2430), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="476" rx="140" ry="14" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- the cape of black feathers -->
+    <path d="M180 200 C130 260 110 360 120 452 L148 430 L166 460 L190 432 L214 462 L236 434 L256 462 L276 434 L298 462 L322 432 L346 460 L364 430 L392 452 C402 360 382 260 332 200 Z" fill="#2a2a40"/>
+    <path d="M332 200 C382 260 402 360 392 452 L364 430 C366 350 350 270 310 210 Z" fill="#1a1a2c" stroke="none"/>
+    <path d="M150 300 C146 340 146 380 150 420 M200 270 L196 420 M312 270 L316 420 M362 300 C366 340 366 380 362 420" fill="none" stroke="#3e3e5e" stroke-width="4"/>
+    <!-- feet -->
+    <path d="M226 440 L214 466 M226 440 L230 468 M226 440 L242 464 M286 440 L270 464 M286 440 L286 468 M286 440 L300 466" fill="none" stroke="#f2b23a" stroke-width="8"/>
+    <!-- body front -->
+    <path d="M200 220 C186 280 196 380 226 440 L286 440 C316 380 326 280 312 220 Z" fill="#2a2a40"/>
+    <!-- white beard of feathers at the chest -->
+    <path d="M196 224 C190 270 210 320 232 350 L240 330 L256 362 L272 330 L280 350 C302 320 322 270 316 224 C290 210 222 210 196 224 Z" fill="#f4f4f0"/>
+    <path d="M220 240 C220 270 230 300 244 320 M292 240 C292 270 282 300 268 320 M256 236 L256 330" fill="none" stroke="#c8c8d0" stroke-width="4"/>
+    <!-- head -->
+    <path d="M192 164 C188 122 218 104 256 104 C294 104 324 122 320 164 C316 204 290 224 256 224 C222 224 196 204 192 164 Z" fill="#2a2a40"/>
+    <path d="M200 184 C212 210 238 222 262 222 C232 230 204 214 196 192 Z" fill="#14141c" stroke="none"/>
+    <!-- eyes and beak -->
+    <path d="M214 150 L242 160 L216 170 Z" fill="#e8304a" stroke-width="3"/>
+    <path d="M298 150 L270 160 L296 170 Z" fill="#e8304a" stroke-width="3"/>
+    <path d="M206 140 L246 152 M306 140 L266 152" fill="none" stroke-width="6"/>
+    <path d="M238 172 L274 172 L256 210 Z" fill="#f2b23a"/>
+    <path d="M238 172 L274 172 L264 186 L248 186 Z" fill="#f8d070" stroke="none"/>
+    <path d="M238 172 L274 172 L256 210 Z" fill="none"/>
+    <!-- broad-brimmed hat with a white band -->
+    <path d="M120 116 C150 96 200 92 256 92 C312 92 362 96 392 116 C372 128 332 132 256 132 C180 132 140 128 120 116 Z" fill="#2a2a40"/>
+    <path d="M188 104 C186 70 210 40 256 40 C302 40 326 70 324 104 C290 110 222 110 188 104 Z" fill="#2a2a40"/>
+    <path d="M256 44 C246 60 246 80 252 100" fill="none" stroke="#14141c" stroke-width="5"/>
+    <path d="M188 92 C222 98 290 98 324 92 L324 106 C290 112 222 112 188 106 Z" fill="#f4f4f0" stroke-width="4"/>
+    <path d="M206 58 C216 48 230 44 242 44" fill="none" stroke="#4e4e6e" stroke-width="5"/>
+    <path d="M140 112 C180 104 220 102 250 102" fill="none" stroke="#4e4e6e" stroke-width="4"/>
+  </g>
+</svg>

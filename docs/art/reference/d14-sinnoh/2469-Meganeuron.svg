@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Meganeuron (No. 2469), reference drawing</title>
+  <defs>
+    <path id="wing" d="M0 0 C40 -30 120 -50 180 -40 C190 -20 160 4 100 12 C60 16 24 10 0 0 Z"/>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="484" rx="120" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- six wings: two large pairs and a small third -->
+    <g fill="#d8f0e0" opacity="0.95">
+      <use href="#wing" transform="translate(270 196) rotate(-12)"/>
+      <use href="#wing" transform="translate(242 196) rotate(12) scale(-1 1)"/>
+      <use href="#wing" transform="translate(270 220) rotate(18) scale(0.95)"/>
+      <use href="#wing" transform="translate(242 220) rotate(-18) scale(-0.95 0.95)"/>
+      <use href="#wing" transform="translate(268 244) rotate(42) scale(0.55)"/>
+      <use href="#wing" transform="translate(244 244) rotate(-42) scale(-0.55 0.55)"/>
+    </g>
+    <g fill="none" stroke="#7ac08a" stroke-width="3">
+      <path d="M290 186 C340 166 390 160 430 164 M222 186 C172 166 122 160 82 164"/>
+      <path d="M290 230 C330 240 380 254 420 274 M222 230 C182 240 132 254 92 274"/>
+    </g>
+    <circle cx="436" cy="160" r="6" fill="#c03030" stroke-width="3"/>
+    <circle cx="76" cy="160" r="6" fill="#c03030" stroke-width="3"/>
+    <!-- long tail with longer fins -->
+    <path d="M246 290 L248 430 L264 430 L266 290 Z" fill="#3a8a4a"/>
+    <path d="M248 320 L264 320 M248 350 L264 350 M248 380 L264 380 M248 410 L264 410" fill="none" stroke="#c03030" stroke-width="4"/>
+    <path d="M248 424 C220 440 200 468 196 490 C220 482 240 466 252 446 Z" fill="#c03030"/>
+    <path d="M264 424 C292 440 312 468 316 490 C292 482 272 466 260 446 Z" fill="#a02424"/>
+    <!-- thorax and abdomen -->
+    <path d="M226 200 C214 230 222 280 246 300 L266 300 C290 280 298 230 286 200 Z" fill="#3a8a4a"/>
+    <path d="M280 210 C292 240 286 280 266 300 L258 300 C276 270 280 236 272 210 Z" fill="#2a6a36" stroke="none"/>
+    <path d="M226 240 L286 240 M232 270 L280 270" fill="none" stroke="#c03030" stroke-width="5"/>
+    <!-- legs -->
+    <path d="M232 260 L206 290 L210 310 M280 260 L306 290 L302 310 M238 284 L220 318 M274 284 L292 318" fill="none" stroke-width="5"/>
+    <!-- head with greater eyes -->
+    <path d="M206 160 C204 134 228 120 256 120 C284 120 308 134 306 160 C304 186 284 204 256 204 C228 204 208 186 206 160 Z" fill="#3a8a4a"/>
+    <path d="M196 150 C192 118 214 100 236 106 C250 118 252 150 240 174 C222 186 200 176 196 150 Z" fill="#e8403a"/>
+    <path d="M316 150 C320 118 298 100 276 106 C262 118 260 150 272 174 C290 186 312 176 316 150 Z" fill="#c8302a"/>
+    <path d="M206 136 C210 122 220 114 230 114" fill="none" stroke="#ffb0a8" stroke-width="5"/>
+    <path d="M286 120 C296 126 302 136 304 146" fill="none" stroke="#ff9088" stroke-width="4"/>
+    <path d="M240 184 C248 192 264 192 272 184" fill="none" stroke-width="4"/>
+  </g>
+</svg>

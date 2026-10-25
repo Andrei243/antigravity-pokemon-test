@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Aurasage (No. 2448), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="480" rx="110" ry="13" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- blue aura glow -->
+    <ellipse cx="256" cy="250" rx="170" ry="210" fill="#5aa8f0" opacity="0.10" stroke="none"/>
+    <!-- four long sensors, lit, behind the head -->
+    <path d="M222 112 C190 108 160 116 128 140" fill="none" stroke-width="16"/>
+    <path d="M222 112 C190 108 160 116 128 140" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <path d="M224 126 C196 132 172 148 150 176" fill="none" stroke-width="16"/>
+    <path d="M224 126 C196 132 172 148 150 176" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <path d="M290 112 C322 108 352 116 384 140" fill="none" stroke-width="16"/>
+    <path d="M290 112 C322 108 352 116 384 140" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <path d="M288 126 C316 132 340 148 362 176" fill="none" stroke-width="16"/>
+    <path d="M288 126 C316 132 340 148 362 176" fill="none" stroke="#2a2a36" stroke-width="9"/>
+    <g fill="#7cc8ff">
+      <ellipse cx="126" cy="142" rx="11" ry="9"/>
+      <ellipse cx="148" cy="178" rx="11" ry="9"/>
+      <ellipse cx="386" cy="142" rx="11" ry="9"/>
+      <ellipse cx="364" cy="178" rx="11" ry="9"/>
+    </g>
+    <g fill="#7cc8ff" opacity="0.35" stroke="none">
+      <circle cx="126" cy="142" r="20"/><circle cx="148" cy="178" r="20"/><circle cx="386" cy="142" r="20"/><circle cx="364" cy="178" r="20"/>
+    </g>
+    <!-- tail -->
+    <path d="M300 360 C340 370 360 396 362 430 C340 418 318 404 296 392 Z" fill="#3c78c8"/>
+    <!-- legs -->
+    <path d="M218 360 C206 400 200 430 196 456 L232 456 L246 370 Z" fill="#2a2a36"/>
+    <path d="M294 360 C306 400 312 430 316 456 L280 456 L266 370 Z" fill="#2a2a36"/>
+    <path d="M188 456 C188 446 236 444 238 456 C238 468 188 468 188 456 Z" fill="#2a2a36"/>
+    <path d="M274 456 C276 444 324 446 324 456 C324 468 274 468 274 456 Z" fill="#2a2a36"/>
+    <!-- torso -->
+    <path d="M206 224 C192 280 200 340 216 372 C240 384 272 384 296 372 C312 340 320 280 306 224 C284 208 228 208 206 224 Z" fill="#3c78c8"/>
+    <path d="M286 230 C304 280 306 340 294 370 C282 376 272 378 264 378 C286 340 290 280 280 232 Z" fill="#2a5a9c" stroke="none"/>
+    <path d="M222 236 C220 270 228 300 256 312 C284 300 292 270 290 236 C272 228 240 228 222 236 Z" fill="#e8d8a0"/>
+    <!-- chest spike, larger -->
+    <path d="M256 262 L240 296 L256 286 L272 296 Z" fill="#e8eef4"/>
+    <path d="M256 262 L240 296 L256 286 Z" fill="#b8c4d1" stroke="none"/>
+    <!-- mantle of black fur over the shoulders -->
+    <path d="M180 214 C200 196 230 190 256 190 C282 190 312 196 332 214 C340 240 330 262 318 270 L306 250 L294 268 L282 248 L268 266 L256 246 L244 266 L230 248 L218 268 L206 250 L194 270 C182 262 172 240 180 214 Z" fill="#2a2a36"/>
+    <path d="M190 222 C204 208 226 200 250 198" fill="none" stroke="#4a4a5e" stroke-width="5"/>
+    <!-- arms -->
+    <path d="M190 240 C166 270 160 306 166 334" fill="none" stroke-width="26"/>
+    <path d="M190 240 C166 270 160 306 166 334" fill="none" stroke="#3c78c8" stroke-width="18"/>
+    <path d="M322 240 C346 270 352 306 346 334" fill="none" stroke-width="26"/>
+    <path d="M322 240 C346 270 352 306 346 334" fill="none" stroke="#3c78c8" stroke-width="18"/>
+    <circle cx="166" cy="342" r="18" fill="#2a2a36"/>
+    <circle cx="346" cy="342" r="18" fill="#2a2a36"/>
+    <path d="M160 324 L132 312 L156 340 Z" fill="#e8eef4"/>
+    <path d="M352 324 L380 312 L356 340 Z" fill="#e8eef4"/>
+    <!-- head -->
+    <path d="M206 80 C200 54 206 30 220 16 C234 32 240 54 238 72 Z" fill="#3c78c8"/>
+    <path d="M306 80 C312 54 306 30 292 16 C278 32 272 54 274 72 Z" fill="#3c78c8"/>
+    <path d="M212 70 C210 52 214 38 220 30 C226 42 230 56 230 68 Z" fill="#2a2a36" stroke="none"/>
+    <path d="M300 70 C302 52 298 38 292 30 C286 42 282 56 282 68 Z" fill="#2a2a36" stroke="none"/>
+    <path d="M204 134 C198 92 222 66 256 66 C290 66 314 92 308 134 C304 168 284 188 256 190 C228 188 208 168 204 134 Z" fill="#3c78c8"/>
+    <!-- black mask -->
+    <path d="M208 112 C220 100 238 104 248 118 L256 128 L264 118 C274 104 292 100 304 112 C306 128 294 140 280 142 L256 140 L232 142 C218 140 206 128 208 112 Z" fill="#2a2a36"/>
+    <path d="M224 118 L244 124 L232 132 Z" fill="#e8304a" stroke="none"/>
+    <path d="M288 118 L268 124 L280 132 Z" fill="#e8304a" stroke="none"/>
+    <!-- muzzle -->
+    <path d="M230 150 C236 140 276 140 282 150 C286 172 270 184 256 184 C242 184 226 172 230 150 Z" fill="#e8d8a0"/>
+    <ellipse cx="256" cy="152" rx="7" ry="5" fill="#1b1b2b" stroke="none"/>
+    <path d="M246 170 C252 174 260 174 266 170" fill="none" stroke-width="3"/>
+    <path d="M216 90 C228 78 244 72 260 72" fill="none" stroke="#6aa0e0" stroke-width="5"/>
+  </g>
+</svg>

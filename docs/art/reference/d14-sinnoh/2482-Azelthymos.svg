@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Azelthymos (No. 2482), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="488" rx="90" ry="10" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- BASE (shared by Uxinous, Mespathos and Azelthymos): ring of light, tails with three gems, body -->
+    <circle cx="256" cy="192" r="112" fill="none" stroke="#fff2a0" stroke-width="18" opacity="0.8"/>
+    <circle cx="256" cy="192" r="112" fill="none" stroke="#f2c230" stroke-width="3"/>
+    <!-- the two long tails and the third, middle one -->
+    <path d="M240 320 C200 360 150 380 120 430" fill="none" stroke-width="16"/>
+    <path d="M240 320 C200 360 150 380 120 430" fill="none" stroke="#b8c4dc" stroke-width="8"/>
+    <path d="M272 320 C312 360 362 380 392 430" fill="none" stroke-width="16"/>
+    <path d="M272 320 C312 360 362 380 392 430" fill="none" stroke="#a0aecc" stroke-width="8"/>
+    <path d="M256 330 C256 370 250 400 256 430" fill="none" stroke-width="14"/>
+    <path d="M256 330 C256 370 250 400 256 430" fill="none" stroke="#b8c4dc" stroke-width="7"/>
+    <g fill="#e8304a">
+      <path d="M120 418 L136 436 L120 456 L104 436 Z"/>
+      <path d="M392 418 L408 436 L392 456 L376 436 Z"/>
+      <path d="M256 418 L270 434 L256 452 L242 434 Z"/>
+    </g>
+    <g fill="#e8304a" opacity="0.2" stroke="none"><circle cx="120" cy="436" r="22"/><circle cx="392" cy="436" r="22"/><circle cx="256" cy="434" r="20"/></g>
+    <path d="M116 428 L120 422 M388 428 L392 422 M252 426 L256 420" fill="none" stroke="#ffb0b8" stroke-width="3"/>
+    <!-- body -->
+    <path d="M226 250 C214 280 222 320 256 334 C290 320 298 280 286 250 C276 238 236 238 226 250 Z" fill="#b8c4dc"/>
+    <path d="M280 260 C290 290 284 318 262 332 C290 326 298 290 286 256 Z" fill="#8a98b8" stroke="none"/>
+    <path d="M232 262 C252 270 260 270 280 262" fill="none" stroke="#8a98b8" stroke-width="4"/>
+    <circle cx="256" cy="290" r="8" fill="#e8304a" stroke-width="3"/>
+    <!-- small arms -->
+    <path d="M228 264 C208 272 196 288 194 304" fill="none" stroke-width="12"/>
+    <path d="M228 264 C208 272 196 288 194 304" fill="none" stroke="#b8c4dc" stroke-width="6"/>
+    <path d="M284 264 C304 272 316 288 318 304" fill="none" stroke-width="12"/>
+    <path d="M284 264 C304 272 316 288 318 304" fill="none" stroke="#a0aecc" stroke-width="6"/>
+    <!-- face disc (base) -->
+    <path d="M206 196 C204 160 228 140 256 140 C284 140 308 160 306 196 C304 230 282 250 256 250 C230 250 208 230 206 196 Z" fill="#b8c4dc"/>
+    <path d="M212 212 C222 236 244 248 266 248 C238 256 214 242 208 220 Z" fill="#8a98b8" stroke="none"/>
+
+    <!-- Azelthymos: the blue head, its three points longer like a crown -->
+    <path d="M212 170 C180 150 156 120 148 84 C178 98 206 128 222 158 Z" fill="#4a8ad6"/>
+    <path d="M300 170 C332 150 356 120 364 84 C334 98 306 128 290 158 Z" fill="#2e64a8"/>
+    <path d="M240 128 C236 92 244 52 256 22 C270 52 276 92 272 128 Z" fill="#4a8ad6"/>
+    <path d="M256 22 C270 52 276 92 272 128 L262 128 C266 92 264 56 256 22 Z" fill="#2e64a8" stroke="none"/>
+    <path d="M206 190 C200 150 224 120 256 120 C288 120 312 150 306 190 C294 180 280 176 268 180 L256 158 L244 180 C232 176 218 180 206 190 Z" fill="#4a8ad6"/>
+    <path d="M220 140 C232 128 246 124 260 124" fill="none" stroke="#9ac4f4" stroke-width="5"/>
+    <path d="M224 204 L248 210 L228 220 Z" fill="#f2c230" stroke-width="3"/>
+    <path d="M288 204 L264 210 L284 220 Z" fill="#f2c230" stroke-width="3"/>
+    <path d="M246 234 C252 238 260 238 266 234" fill="none" stroke-width="3"/>
+    <path d="M256 158 L266 170 L256 184 L246 170 Z" fill="#e8304a" stroke-width="4"/>
+  </g>
+</svg>

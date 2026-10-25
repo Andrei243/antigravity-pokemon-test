@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Gastromire (No. 2423), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="440" rx="220" ry="20" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- foot -->
+    <path d="M60 420 C70 390 160 380 260 382 C360 384 450 390 466 418 C450 436 360 440 260 440 C160 440 70 436 60 420 Z" fill="#e8d49a"/>
+    <path d="M90 420 L100 434 M130 424 L136 438 M170 426 L174 440 M330 426 L328 440 M370 424 L366 438 M410 420 L404 434" fill="none" stroke="#b8a46a" stroke-width="4"/>
+    <!-- body -->
+    <path d="M70 400 C60 330 110 270 180 250 C240 232 300 220 360 240 C420 262 460 330 450 400 C380 414 140 414 70 400 Z" fill="#7c6aa8"/>
+    <path d="M380 260 C430 290 456 350 448 402 C420 408 390 410 360 410 C420 370 420 300 380 260 Z" fill="#5a4a86" stroke="none"/>
+    <!-- the mantle of ruffles along its back -->
+    <path d="M110 300 C120 270 150 250 180 244 C186 230 210 222 228 230 C240 214 268 212 284 224 C302 210 330 214 340 230 C360 222 386 232 390 250 C412 254 432 274 436 296 C410 290 380 290 356 300 C330 290 300 292 280 300 C256 290 226 292 206 302 C182 292 150 292 130 304 C122 300 116 300 110 300 Z" fill="#5abaa8"/>
+    <path d="M150 270 C170 280 190 282 206 280 M240 252 C258 262 278 264 296 258 M330 256 C346 268 366 272 384 268" fill="none" stroke="#3a8a7a" stroke-width="4"/>
+    <!-- rings of pale spots along its back -->
+    <g fill="#f2e4c4" stroke-width="3">
+      <circle cx="176" cy="330" r="12"/><circle cx="236" cy="322" r="12"/><circle cx="296" cy="322" r="12"/><circle cx="356" cy="330" r="12"/>
+    </g>
+    <g fill="#7c6aa8" stroke="none">
+      <circle cx="176" cy="330" r="5"/><circle cx="236" cy="322" r="5"/><circle cx="296" cy="322" r="5"/><circle cx="356" cy="330" r="5"/>
+    </g>
+    <!-- head, front left -->
+    <path d="M40 330 C30 290 50 250 92 240 C130 232 160 256 162 296 C164 340 140 372 100 376 C66 378 46 360 40 330 Z" fill="#7c6aa8"/>
+    <path d="M48 340 C60 366 90 376 120 370 C90 386 54 374 44 346 Z" fill="#5a4a86" stroke="none"/>
+    <!-- two longer horns -->
+    <path d="M70 248 C56 210 40 184 22 170 C40 168 66 182 86 216 L92 242 Z" fill="#7c6aa8"/>
+    <path d="M116 242 C122 200 138 170 160 150 C166 172 152 210 134 246 Z" fill="#7c6aa8"/>
+    <circle cx="22" cy="170" r="6" fill="#5abaa8"/>
+    <circle cx="160" cy="150" r="6" fill="#5abaa8"/>
+    <!-- face -->
+    <ellipse cx="76" cy="296" rx="8" ry="11" fill="#1b1b2b" stroke="none"/>
+    <ellipse cx="124" cy="296" rx="8" ry="11" fill="#1b1b2b" stroke="none"/>
+    <circle cx="78" cy="292" r="3" fill="#ffffff" stroke="none"/>
+    <circle cx="126" cy="292" r="3" fill="#ffffff" stroke="none"/>
+    <path d="M84 330 C94 340 108 340 118 330" fill="none" stroke-width="4"/>
+    <path d="M56 262 C68 250 84 246 100 246" fill="none" stroke="#a698d0" stroke-width="5"/>
+    <path d="M200 262 C230 250 260 246 290 248" fill="none" stroke="#9ae0d0" stroke-width="5"/>
+  </g>
+</svg>

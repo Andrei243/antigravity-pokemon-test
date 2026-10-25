@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Glaciarbor (No. 2460), reference drawing</title>
+  <defs>
+    <g id="icicle"><path d="M-7 0 L7 0 L0 26 Z" fill="#bfe6f8" stroke-width="3"/></g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="478" rx="150" ry="15" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- short trunk of a tail -->
+    <path d="M320 400 C350 410 370 430 370 460 L330 460 C328 440 316 426 300 420 Z" fill="#7a5a36"/>
+    <!-- legs, dark green -->
+    <path d="M196 390 L190 458 L240 458 L242 396 Z" fill="#3a6a4a"/>
+    <path d="M270 396 L272 458 L322 458 L316 390 Z" fill="#2e5a3e"/>
+    <!-- body under a cloak of ice -->
+    <path d="M166 210 C140 280 150 360 186 404 C230 420 282 420 326 404 C362 360 372 280 346 210 Z" fill="#f4f6fa"/>
+    <path d="M330 220 C356 290 352 360 320 402 C300 410 280 414 262 416 C312 370 330 290 314 220 Z" fill="#c8d4e2" stroke="none"/>
+    <!-- the cloak of ice, faceted, over the shoulders -->
+    <path d="M140 196 C180 170 332 170 372 196 L360 260 L330 236 L310 280 L282 244 L256 290 L230 244 L202 280 L182 236 L152 260 Z" fill="#a8dcf4"/>
+    <path d="M256 180 L256 290 M182 236 L200 184 M330 236 L312 184" fill="none" stroke="#6ab4dc" stroke-width="4"/>
+    <path d="M160 204 C190 190 220 184 250 182" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <!-- shaggy chest fur -->
+    <path d="M206 300 L218 330 L232 304 L244 336 L256 306 L268 336 L280 304 L294 330 L306 300" fill="none" stroke="#c8d4e2" stroke-width="5"/>
+    <!-- arms: branches tipped with icicles -->
+    <path d="M160 220 C120 240 92 280 84 330" fill="none" stroke-width="34"/>
+    <path d="M160 220 C120 240 92 280 84 330" fill="none" stroke="#3a6a4a" stroke-width="26"/>
+    <path d="M352 220 C392 240 420 280 428 330" fill="none" stroke-width="34"/>
+    <path d="M352 220 C392 240 420 280 428 330" fill="none" stroke="#2e5a3e" stroke-width="26"/>
+    <path d="M60 330 C70 316 100 316 108 330 L102 344 L66 344 Z" fill="#f4f6fa"/>
+    <path d="M404 330 C414 316 444 316 452 330 L446 344 L410 344 Z" fill="#f4f6fa"/>
+    <use href="#icicle" transform="translate(72 344)"/><use href="#icicle" transform="translate(86 344) scale(1 1.4)"/><use href="#icicle" transform="translate(100 344)"/>
+    <use href="#icicle" transform="translate(416 344)"/><use href="#icicle" transform="translate(430 344) scale(1 1.4)"/><use href="#icicle" transform="translate(444 344)"/>
+    <path d="M110 268 L82 256 L92 276 M402 268 L430 256 L420 276" fill="#2e5a3e" stroke-width="4"/>
+    <use href="#icicle" transform="translate(84 260)"/><use href="#icicle" transform="translate(428 260)"/>
+    <!-- head -->
+    <path d="M196 140 C190 96 222 70 256 70 C290 70 322 96 316 140 C312 178 288 196 256 196 C224 196 200 178 196 140 Z" fill="#f4f6fa"/>
+    <path d="M204 160 C216 184 240 194 266 194 C232 202 206 186 200 166 Z" fill="#c8d4e2" stroke="none"/>
+    <!-- head's ice spikes -->
+    <path d="M206 96 L196 54 L224 82 Z M236 76 L244 30 L262 72 Z M276 74 L296 34 L300 84 Z M306 96 L326 62 L322 110 Z" fill="#a8dcf4"/>
+    <!-- face -->
+    <path d="M222 128 C226 118 240 118 244 128 C240 138 226 138 222 128 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M268 128 C272 118 286 118 290 128 C286 138 272 138 268 128 Z" fill="#1b1b2b" stroke="none"/>
+    <circle cx="236" cy="125" r="3" fill="#ffffff" stroke="none"/>
+    <circle cx="282" cy="125" r="3" fill="#ffffff" stroke="none"/>
+    <path d="M230 158 C246 166 266 166 282 158 L276 176 C262 182 248 182 236 176 Z" fill="#c8d4e2" stroke-width="4"/>
+    <path d="M212 104 C226 88 244 80 262 80" fill="none" stroke="#ffffff" stroke-width="5"/>
+  </g>
+</svg>

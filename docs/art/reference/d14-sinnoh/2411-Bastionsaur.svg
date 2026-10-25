@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Bastionsaur (No. 2411), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="270" cy="462" rx="200" ry="18" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- body, behind the shield -->
+    <path d="M200 260 C240 200 380 196 440 250 C476 290 470 360 430 390 C380 420 260 420 210 390 Z" fill="#5a5a66"/>
+    <path d="M430 270 C468 310 464 370 424 392 C396 404 370 410 340 410 C400 386 440 340 430 270 Z" fill="#3e3e4a" stroke="none"/>
+    <!-- plates down its back -->
+    <path d="M262 222 L276 186 L300 214 Z M316 208 L336 172 L356 206 Z M372 214 L396 184 L410 226 Z M420 244 L448 226 L450 266 Z" fill="#b8b8b0"/>
+    <!-- tail -->
+    <path d="M454 330 C476 330 494 342 500 360 C480 364 466 360 450 356 Z" fill="#5a5a66"/>
+    <!-- stout legs -->
+    <path d="M400 380 L400 446 L448 446 L444 372 Z" fill="#3e3e4a"/>
+    <path d="M300 390 L300 452 L350 452 L348 384 Z" fill="#5a5a66"/>
+    <path d="M302 452 L306 440 M318 452 L320 440 M334 452 L336 440" fill="none" stroke-width="3"/>
+    <!-- the gate of a face: three plates with a crenellated rim -->
+    <path d="M90 140 L90 108 L118 108 L118 124 L144 124 L144 104 L172 104 L172 120 L200 120 L200 100 L228 100 L228 124 L246 124 L246 108 L272 108 L272 140 L282 390 C220 420 140 420 80 390 Z" fill="#b8b8b0"/>
+    <path d="M272 140 L282 390 C262 400 240 406 222 410 C240 330 244 220 238 140 Z" fill="#8a8a82" stroke="none"/>
+    <path d="M150 140 L144 404 M216 140 L222 408" fill="none" stroke-width="5"/>
+    <path d="M90 140 L272 140" fill="none" stroke-width="5"/>
+    <!-- studs and markings -->
+    <g fill="#5a5a66" stroke-width="3">
+      <rect x="100" y="170" width="34" height="22" rx="4"/>
+      <rect x="230" y="170" width="34" height="22" rx="4"/>
+      <circle cx="118" cy="360" r="8"/><circle cx="250" cy="360" r="8"/>
+      <circle cx="182" cy="380" r="8"/>
+    </g>
+    <path d="M110 220 C130 210 140 210 140 210" fill="none" stroke="#e6e6de" stroke-width="5"/>
+    <!-- the face in the middle plate -->
+    <path d="M156 200 L210 200 L214 300 L152 300 Z" fill="#2e2e38"/>
+    <path d="M162 226 L184 232 L166 242 Z" fill="#f2d24a" stroke-width="3"/>
+    <path d="M206 226 L188 232 L204 242 Z" fill="#f2d24a" stroke-width="3"/>
+    <path d="M166 276 L200 276" fill="none" stroke="#b8b8b0" stroke-width="4"/>
+    <path d="M100 116 L108 116 M156 112 L164 112 M212 108 L220 108" fill="none" stroke="#e6e6de" stroke-width="4"/>
+  </g>
+</svg>
