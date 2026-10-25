@@ -92,6 +92,7 @@ public sealed class BattleRecordFile
     public bool Frontier { get; set; }
     public bool NoBattleItems { get; set; }
     public bool OffersSwitch { get; set; }
+    public bool MegaMaxDen { get; set; }
 
     /// <summary>The difficulty the battle was fought under (plan 13 · V2): Easy gives more EXP, so a replay needs it. A file without it is Normal.</summary>
     public Difficulty Difficulty { get; set; } = Difficulty.Normal;
@@ -101,6 +102,7 @@ public sealed class BattleRecordFile
     public bool KeyStone { get; set; }
     public bool ZRing { get; set; }
     public bool DynamaxBand { get; set; }
+    public bool MegaMaxBand { get; set; }
     public bool TeraOrb { get; set; }
 
     public RecordedConditions Conditions { get; set; } = new();
@@ -145,11 +147,13 @@ public sealed class BattleRecordFile
             Frontier = setup.Frontier,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
+            MegaMaxDen = setup.MegaMaxDen,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             KeyStone = setup.KeyStone,
             ZRing = setup.ZRing,
             DynamaxBand = setup.DynamaxBand,
+            MegaMaxBand = setup.MegaMaxBand,
             TeraOrb = setup.TeraOrb,
             Conditions = new RecordedConditions
             {
@@ -243,11 +247,13 @@ public sealed class BattleRecordFile
             Frontier = Frontier,
             NoBattleItems = NoBattleItems,
             OffersSwitch = OffersSwitch,
+            MegaMaxDen = MegaMaxDen,
             Difficulty = Difficulty,
             RunLevelCap = RunLevelCap,
             KeyStone = KeyStone,
             ZRing = ZRing,
             DynamaxBand = DynamaxBand,
+            MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb
         };
     }
@@ -386,6 +392,7 @@ public sealed class RecordedTrainer
     public bool KeyStone { get; set; }
     public bool ZRing { get; set; }
     public bool DynamaxBand { get; set; }
+    public bool MegaMaxBand { get; set; }
     public bool TeraOrb { get; set; }
 
     /// <summary>The look the person who carries them is drawn in, for a replay's screen; the rules never read it.</summary>
@@ -405,6 +412,7 @@ public sealed class RecordedTrainer
         KeyStone = t.KeyStone,
         ZRing = t.ZRing,
         DynamaxBand = t.DynamaxBand,
+        MegaMaxBand = t.MegaMaxBand,
         TeraOrb = t.TeraOrb,
         Look = t.Look,
         Party = t.Party.Members.Select(RecordedPokemon.Of).ToList()
@@ -424,6 +432,7 @@ public sealed class RecordedTrainer
             KeyStone = KeyStone,
             ZRing = ZRing,
             DynamaxBand = DynamaxBand,
+            MegaMaxBand = MegaMaxBand,
             TeraOrb = TeraOrb,
             Look = Look
         };

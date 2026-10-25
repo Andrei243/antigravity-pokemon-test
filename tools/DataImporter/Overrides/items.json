@@ -422,5 +422,17 @@
   "Prison Bottle": { "description": "Unbinds Hoopa into its Unbound form, or binds it again." },
   "Zygarde Cube": { "description": "Switches Zygarde between its 10% Forme and its 50% Forme." },
   "Rotom Catalog": { "description": "A catalogue of appliances. Rotom slips into the next one in it, or back out." },
-  "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." }
+  "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." },
+  // The band of Mega Dynamax (plan 06 · R20c, our own): Sonia sets the Key Stone into the Dynamax Band after Galar's Hall of Fame
+  "Mega Max Band": {
+    "id": 9500,
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
+    "cantBeTossed": true
+  }
 }

@@ -26,7 +26,17 @@ public partial class BattleEngine
     public bool MenuDynamaxed => MenuBattler.Pokemon != null && BattleCore.IsDynamaxed(InCore(MenuBattler));
 
     /// <summary>The Max Move the move in this position is (Dynamaxed) or would be (Dynamax armed): what the move menu may name in its place (plan 25 · Y15).</summary>
-    public MoveData? MaxMoveAt(int move) => MenuDynamaxed || DynamaxArmed ? core.MaxMoveFor(InCore(MenuBattler), move) : null;
+    public MoveData? MaxMoveAt(int move) => MenuDynamaxed || DynamaxArmed ? core.MaxMoveFor(InCore(MenuBattler), move, MegaDynamaxArmed) : null;
+
+    /// <summary>The Pokémon whose moves are being chosen may Mega Evolve and Mega Dynamax in one choice (plan 06 · R20c), and no other of the player's has chosen either this turn.</summary>
+    public bool CanMegaDynamaxNow =>
+        core.Request is ActionRequest && !playingTheLog && MenuBattler.Pokemon != null && !choices.Values.Any(c => c.Dynamax || c.Mega) && core.CanMegaDynamax(InCore(MenuBattler));
+
+    /// <summary>The Pokémon whose moves are being chosen is in a Mega form (its Dynamax is a Mega Dynamax).</summary>
+    public bool MenuIsMega => MenuBattler.Pokemon != null && InCore(MenuBattler).Pokemon?.FormData?.Kind == FormKind.Mega;
+
+    /// <summary>The move menu's Mega Dynamax is armed (plan 06 · R20c): with the Mega Evolution, or alone for a Mega.</summary>
+    public bool MegaDynamaxArmed => DynamaxArmed && (MegaArmed || MenuIsMega);
 
     /// <summary>Arms or disarms the Dynamax for the move to be chosen; false (and disarmed) where it can't be had.</summary>
     public bool ToggleDynamax()
@@ -46,7 +56,9 @@ public partial class BattleEngine
     {
         bool armed = DynamaxArmed;
         DynamaxArmed = false;
-        if (!armed || choice.Kind != ChoiceKind.Fight || choice.Move < 0 || choice.Mega || choice.ZMove || choice.UltraBurst || !CanDynamaxNow) return choice;
+        if (!armed || choice.Kind != ChoiceKind.Fight || choice.Move < 0 || choice.ZMove || choice.UltraBurst) return choice;
+        // With a Mega Evolution only as a Mega Dynamax (plan 06 · R20c)
+        if (choice.Mega ? !CanMegaDynamaxNow : !CanDynamaxNow) return choice;
         return choice with { Dynamax = true };
     }
 

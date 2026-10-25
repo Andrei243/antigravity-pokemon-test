@@ -13996,5 +13996,17 @@
     "cantBeTossed": true,
     "canBeRegistered": true,
     "fieldUse": "PokeblockCase"
+  },
+  {
+    "id": 9500,
+    "name": "Mega Max Band",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
+    "cantBeTossed": true
   }
 ]

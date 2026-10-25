@@ -266,6 +266,7 @@ public partial class BattleEngine
             Frontier = setup.Frontier,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
+            MegaMaxDen = setup.MegaMaxDen,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             Nuzlocke = setup.Nuzlocke,
@@ -277,6 +278,8 @@ public partial class BattleEngine
             ZRing = watched?.ZRing ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem),
             // And a Dynamax Band lets one Dynamax (plan 06 · R22)
             DynamaxBand = watched?.DynamaxBand ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem),
+            // And a Mega Max Band lets a Mega Dynamax (plan 06 · R20c)
+            MegaMaxBand = watched?.MegaMaxBand ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.MegaMaxBandItem),
             // And a Tera Orb lets one Terastallize (plan 06 · R23)
             TeraOrb = watched?.TeraOrb ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
         };

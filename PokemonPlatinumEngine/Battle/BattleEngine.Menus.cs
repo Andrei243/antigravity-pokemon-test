@@ -179,6 +179,13 @@ public partial class BattleEngine
             MegaArmed = false;
             return false;
         }
+        // With the Mega Max Band the second press arms a Mega Dynamax, the third disarms both (plan 06 · R20c)
+        if (MegaArmed && !DynamaxArmed && CanMegaDynamaxNow)
+        {
+            DynamaxArmed = true;
+            return true;
+        }
+        DynamaxArmed = false;
         MegaArmed = !MegaArmed;
         return true;
     }

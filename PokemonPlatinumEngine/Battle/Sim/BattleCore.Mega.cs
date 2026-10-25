@@ -40,7 +40,7 @@ public sealed partial class BattleCore
     private static object MegaKey(Battler b) => (object?)b.Trainer ?? (b.IsPlayerSide ? PlayersOwn : b);
 
     /// <summary>The trainer of the place has a Key Stone: the player's own (<see cref="KeyStone"/>), a trainer's or a partner's.</summary>
-    private bool HasKeyStone(Battler b) => b.Trainer != null ? b.Trainer.KeyStone : b.IsPlayerSide && KeyStone;
+    private bool HasKeyStone(Battler b) => b.Trainer != null ? b.Trainer.KeyStone : b.IsPlayerSide ? KeyStone : MegaMaxDen;
 
     /// <summary>
     /// The Mega form a Pokémon would take, whatever the battle: a Rayquaza that knows Dragon Ascent and holds no
@@ -49,7 +49,7 @@ public sealed partial class BattleCore
     /// </summary>
     public static string? MegaFormOf(Pokemon p)
     {
-        if (p.IsEgg || p.FormData?.Kind is FormKind.Mega or FormKind.Primal) return null;
+        if (p.IsEgg || p.FormData?.Kind is FormKind.Mega or FormKind.Primal or FormKind.MegaDynamax) return null;
         if (p.Species.Name == "Rayquaza" && p.HeldItem?.ZCrystal == null && p.Moves.Any(m => m.Name == "Dragon Ascent") && p.Species.Form("Rayquaza-Mega") != null)
             return "Rayquaza-Mega";
         if (p.HeldItem?.MegaStone is not { } stone || stone.Species != p.Species.Name) return null;
@@ -155,7 +155,9 @@ public sealed partial class BattleCore
         var p = b.Pokemon!;
         string form = MegaFormOf(p)!;
         string holder = b.Trainer != null ? b.Trainer.FullTitle : playerName;
-        if (p.HeldItem?.MegaStone == null) Say(Text.Of("battle.megaWish", ("trainer", holder), ("pokemon", b.Name)));
+        // A den's wild boss has no trainer: its stone reacts to the den (plan 06 · R20c)
+        if (b.Trainer == null && !b.IsPlayerSide) Say(Text.Of("battle.megaReactingDen", ("pokemon", b.Name), ("item", ItemOf(b))));
+        else if (p.HeldItem?.MegaStone == null) Say(Text.Of("battle.megaWish", ("trainer", holder), ("pokemon", b.Name)));
         else Say(Text.Of("battle.megaReacting", ("pokemon", b.Name), ("item", ItemOf(b)), ("trainer", holder)));
         TakeForm(b, form);
         megaUsed.Add(MegaKey(b));

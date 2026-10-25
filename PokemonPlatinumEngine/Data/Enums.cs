@@ -209,7 +209,9 @@ public enum FormKind
     Battle,
     Mega,
     Primal,
-    Gigantamax
+    Gigantamax,
+    /// <summary>A Mega that has Dynamaxed (plan 06 · R20c, our own): its Mega's data, grown; taken in battle and lost as the Dynamax ends.</summary>
+    MegaDynamax
 }
 
 /// <summary>

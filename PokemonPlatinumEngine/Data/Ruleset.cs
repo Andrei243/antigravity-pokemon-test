@@ -272,6 +272,13 @@ public sealed class Ruleset
     public bool Terastallization { get; private init; }
 
     /// <summary>
+    /// Mega Dynamax (plan 06 · R20c, our own; <c>docs/mechanics/rulings.md</c>, "Mega Dynamax"): a trainer with the Mega Max
+    /// Band may Dynamax a Mega of a species that is neither legendary nor mythical, in the same choice as its Mega
+    /// Evolution or on a later turn, spending both. Platinum has none of it.
+    /// </summary>
+    public bool MegaDynamax { get; private init; }
+
+    /// <summary>
     /// The balls of the later games (plan 06 · R28a; <c>docs/mechanics/rulings.md</c>, "The later games' held items,
     /// medicine and balls"): each ball's bonus as the newest games give it (a Quick Ball's five times, a Net Ball's three
     /// and a half, a Timer Ball's 1229/4096 a turn), and the balls Platinum doesn't have (Johto's, the Dream, Beast and
@@ -362,7 +369,8 @@ public sealed class Ruleset
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,
-        Triples = true
+        Triples = true,
+        MegaDynamax = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

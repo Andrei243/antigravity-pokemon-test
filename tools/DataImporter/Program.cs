@@ -67,6 +67,9 @@ Console.WriteLine("Species…");
 var importedSpecies = importer.Species();
 importer.AddFormColors(importedSpecies, showdown);
 var species = Overrides.Apply(importedSpecies, Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
+// The Mega Dynamax forms of our own (plan 06 · R20c), each after its Mega
+var megaMaxWaiting = MegaDynamaxForms.Add(species, MegaDynamaxForms.Load(Path.Combine(overrides, MegaDynamaxForms.FileName)));
+Console.WriteLine($"  Mega Dynamax forms: {species.Sum(s => s.Forms?.Count(f => f.Kind == FormKind.MegaDynamax) ?? 0)}; waiting for their Mega: {(megaMaxWaiting.Count == 0 ? "none" : string.Join(", ", megaMaxWaiting))}");
 // The species of our own that evolve past level 100 (plan 03 · D14), after the 1,025, before their moves past 100
 var ourSpecies = SpeciesPastHundred.Add(species, SpeciesPastHundred.Load(Path.Combine(overrides, SpeciesPastHundred.FileName)));
 Console.WriteLine($"  species of our own: {ourSpecies.Count} ({string.Join(", ", ourSpecies.Select(s => s.DexNumber))})");

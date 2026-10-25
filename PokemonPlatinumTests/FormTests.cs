@@ -27,6 +27,8 @@ public class FormTests
         Assert.Equal(97, forms.Count(f => f.Kind == FormKind.Mega));
         Assert.Equal(2, forms.Count(f => f.Kind == FormKind.Primal));
         Assert.Equal(34, forms.Count(f => f.Kind == FormKind.Gigantamax));
+        // Ours: a Mega Dynamax form for 63 of the Megas (plan 06 · R20c)
+        Assert.Equal(63, forms.Count(f => f.Kind == FormKind.MegaDynamax));
         Assert.Equal(57, forms.Count(f => f.Kind == FormKind.Regional));
 
         // Each answers to a name of its own, its species' and the form's, which no species has
@@ -53,7 +55,7 @@ public class FormTests
         Assert.Equal(new[] { PokemonType.Steel }, Form("Meowth-Galar").Types);
         Assert.Equal(FormKind.Battle, Form("Castform-Sunny").Kind);
         // A form held only in battle keeps the moves it had: it has no learnset of its own
-        Assert.All(forms.Where(f => f.Kind is FormKind.Mega or FormKind.Primal or FormKind.Gigantamax or FormKind.Battle), f => Assert.Null(f.Learnset));
+        Assert.All(forms.Where(f => f.Kind is FormKind.Mega or FormKind.Primal or FormKind.Gigantamax or FormKind.MegaDynamax or FormKind.Battle), f => Assert.Null(f.Learnset));
     }
 
     [Fact]
@@ -220,7 +222,10 @@ public class FormTests
                 "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique",
                 "Poltchageist-Artisan", "Sinistcha-Masterpiece" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
-            .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
+            .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p))
+            // The Mega Dynamax forms (plan 06 · R20c) have no sculpts yet: a Pokémon in one asks for its Mega's model (Pokemon.ModelName),
+            // and the name itself falls back to the species', as every form without a sculpt of its own does
+            .Concat(PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).Where(f => f.Kind == FormKind.MegaDynamax).Select(f => f.Name)).ToArray();
         Assert.True(PokemonModels.Forms.Length >= 483, $"only {PokemonModels.Forms.Length} forms with a model of their own");
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
