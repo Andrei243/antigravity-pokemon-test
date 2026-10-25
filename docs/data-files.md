@@ -651,3 +651,7 @@ A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of th
 ## Hordes
 
 `Data/hordes.json` (plan 14 · B4; `Overworld/Hordes.cs`) is where X and Y's hordes are met, written by hand: an object keyed by a region's id (`Sinnoh`, `Kanto`…), each a list of places, an `area` (an area's key as its world file names it) and its `hordes`, each a `species`, a `minLevel` and a `maxLevel` that each of the five is drawn from, and an optional `weight` (1). They are met in the place's tall grass once the region's Hall of Fame is entered and under rules that have hordes (`docs/mechanics/rulings.md`, "Hordes"); a horde's species is one of the region's own Pokédex whose family lives in the place's own grass, no stronger than its weakest, which `HordeScreenTests` holds. A place's own tables are never changed by it.
+
+## Hoenn's contest
+
+`Data/hoenn-contest.json` (plan 21 · H11; `HoennContestDatabase`) is Emerald's contest as numbers, written by `dotnet run --project tools/DataImporter -- --hoenn-contest` from the pinned pokeemerald (`src/data/contest_moves.h`, `contest_opponents.h`, `include/constants/contest.h`) and never edited by hand: `effects` (the 48, each with its `id`, name, `appeal` and `jam` in tens of points), `moves` (by the move's name: `effect`, `category`, `comboStarter` and `combos`), `comboStarters` (the 62) and `opponents` (the 96: `trainer`, `species`, `moves`, `pools`, `rank`, `time`). No nickname and no line anyone says is in it. A move can be read as `MoveData.HoennContest`.

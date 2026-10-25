@@ -551,6 +551,29 @@ public interface IScriptHost
     /// </summary>
     int SecretBaseAct(string what);
 
+    // ------------------------------------------------------------------ Hoenn's contests and Pokéblocks (plan 21 · H11)
+
+    /// <summary>The contests Hoenn's hall has held for the player and the winners it has hung.</summary>
+    Models.Contest.HoennContestRecords HoennContests { get; }
+
+    /// <summary>The Pokéblock Case.</summary>
+    PokeblockCase PokeblockCase { get; }
+
+    /// <summary>
+    /// Holds a Hoenn contest for the team's Pokémon (<c>appeals enter</c>): its screen plays and the script waits for
+    /// it; afterwards <see cref="AppealOutcome"/> says how it came out.
+    /// </summary>
+    void HoldAppeals(int slot, ContestStat category, Models.Contest.AppealRank rank);
+
+    /// <summary>How the last Hoenn contest came out; null before any.</summary>
+    Models.Contest.AppealOutcome? AppealOutcome { get; }
+
+    /// <summary>The Berry Blender with so many others (<c>pokeblock blend</c>): the bag chooses a berry, the screen plays, the script waits.</summary>
+    void BlendPokeblocks(int others);
+
+    /// <summary>Whether the last blend put a Pokéblock in the case.</summary>
+    bool PokeblockKept { get; }
+
     // ------------------------------------------------------------------ fossils, the Game Corner, the Villa, Pal Park (plan 06 · R16b)
 
     /// <summary>The Coin Case's coins, Pal Park's six and its show, and the game records the Villa's catalogue asks about.</summary>

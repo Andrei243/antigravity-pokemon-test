@@ -60,6 +60,15 @@ public partial class GameEngine
         /// <summary>The Pokéathlon's records and its screen (plan 15 · E6).</summary>
         public AthlonRecords Athlon => game.flow.Athlon;
         public AthlonScreen AthlonScreen => game.flow.AthlonScreen;
+        // Hoenn's contests and Pokéblocks (plan 21 · H11)
+        public AppealScreen AppealScreen => game.flow.AppealScreen;
+        public BlenderScreen BlenderScreen => game.flow.BlenderScreen;
+        public PokeblockCaseScreen PokeblockCaseScreen => game.flow.PokeblockCaseScreen;
+        public Models.Contest.HoennContestRecords HoennContests => game.flow.HoennContests;
+        public Models.PokeblockCase PokeblockCase => game.flow.PokeblockCase;
+        public void OpenPokeblockCase() => game.OpenPokeblockCase(false);
+        public void BeginBlender(ItemData berry, int others, Random chance) => game.BeginBlender(berry, others, chance);
+        public void HoldAppeals(int slot, Models.ContestStat category, Models.Contest.AppealRank rank) => game.HoldAppeals(slot, category, rank);
         public BugContestResultsScreen BugContestResults => game.flow.BugContestResultsScreen;
         public SpecialEncounters Encounters => game.flow.Encounters;
         public BerryPatches Berries => game.flow.Berries;

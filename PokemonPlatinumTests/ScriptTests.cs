@@ -597,6 +597,19 @@ public class ScriptTests
           openbase give "Red Brick"
           openbase buy "Small Desk"
           openbase room "Pikachu Doll"
+          appeals rank master
+          appeals category beauty
+          appeals check
+          appeals enter
+          appeals ribbon
+          appeals prize
+          appeals painter
+          appeals hang
+          appeals records won
+          appeals winner 3
+          pokeblock blend 2
+          pokeblock count
+          pokeblock full
         script Other
           end
         """;
@@ -1603,6 +1616,12 @@ public class ScriptTests
         public int UndergroundAct(string what, NPC? subject) => inner.UndergroundAct(what, subject);
         public List<PokemonPlatinumEngine.Models.StoredDecoration> Decorations => inner.Decorations;
         public int SecretBaseAct(string what) => inner.SecretBaseAct(what);
+        public PokemonPlatinumEngine.Models.Contest.HoennContestRecords HoennContests => inner.HoennContests;
+        public PokeblockCase PokeblockCase => inner.PokeblockCase;
+        public void HoldAppeals(int slot, ContestStat category, PokemonPlatinumEngine.Models.Contest.AppealRank rank) => inner.HoldAppeals(slot, category, rank);
+        public PokemonPlatinumEngine.Models.Contest.AppealOutcome? AppealOutcome => inner.AppealOutcome;
+        public void BlendPokeblocks(int others) => inner.BlendPokeblocks(others);
+        public bool PokeblockKept => inner.PokeblockKept;
         public PokemonPlatinumEngine.Models.Pastimes Pastimes => inner.Pastimes;
         public PokemonPlatinumEngine.Models.VillaRecords VillaRecords => inner.VillaRecords;
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);

@@ -1749,3 +1749,13 @@ Rooms, caves and the Distortion World have their own rigs that ignore the clock.
 - Characters have mitten hands and no fingers: a point is the whole mitten held out. Every emote can be played on cue by a script since plan 11 · C11 (`act`, with a face held by `mood`), but the story's chapters were written before the commands and none of their scenes uses them yet; the trainer's start and the battle throw are the only ones the game plays by itself.
 - The title keeps Giratina in shadow by design; since G7 its model would hold up fully lit if that is ever wanted. The title music is a placeholder melody until plan 05.
 - The opening's journey shots are only as good as the maps they fly over; choose new shots as the regions are rebuilt (plan 01, G4–G5).
+
+### Hoenn's contests and Pokéblocks
+
+Plan 21 · H11. Our own pictures: nothing of Emerald's stage, judge or Pokéblock sprites is taken.
+
+- **The contest screen** (`ModernUi.Appeal`): the four contestants as cards in the order of their turns, each with its Pokémon's menu sprite on a disc, its name, its stars (a star for each ten of condition), the hearts of the appeal (eight at most, filled as they are won), its points and, when it has the judge's eye, a small eye over the card; a nervous one wears a drop. The crowd is a row of five lights down the side that fill as it is stirred and flash on a burst. The player's four moves are a column of cards at the foot, each with its quality's colour, its hearts and the line of what it does; the lines of the appeals are in the dialogue box.
+- **The results** are a board of four rows, each with its condition, its five rounds of hearts and its total, filled round by round, and the winner's row in gold; the award is the ribbon's card on the dialogue box's line.
+- **The Pokéblock Case**: a list of up to eight rows, each a Pokéblock (a rounded square in its colour with a lighter top and a glint), its name, its flavour and its feel; a panel of the five flavours beside it. Feeding shows the Pokémon's five qualities before and after as bars.
+- **The Berry Blender**: a bowl seen from above with a pocket for each seat, the player's lit; an arm turns, and the pocket under it shows a ring that gives a press's grade (best, good, miss); the speed in the middle in hundredths of a turn a minute; after it the Pokéblock that came out, large on the bowl.
+- Colours: the five qualities keep the Super Contest's (Cool red, Beauty blue, Cute pink, Smart green, Tough yellow); a Pokéblock's colour is its name's.

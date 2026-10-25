@@ -4675,7 +4675,8 @@
     "Devon Scope": "Devon Scope",
     "Magma Emblem": "Sceau Magma",
     "Basement Key": "Clé Sous-Sol",
-    "Rainbow Wing": "Arc-en-Ci'Aile"
+    "Rainbow Wing": "Arc-en-Ci'Aile",
+    "Pokéblock Case": "Boîte Pokéblocs"
   },
   "types": {
     "Normal": "Normal",
@@ -7320,7 +7321,8 @@
       "Devon Scope": "Permet de détecter les Kecleon invisibles.",
       "Magma Emblem": "Permet d'accéder à la Planque Magma au Sentier Sinuroc.",
       "Basement Key": "HS: Clé du tunnel sous Doublonville. Gén III: Clé pour New Lavandia.",
-      "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon."
+      "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon.",
+      "Pokéblock Case": "Porte les Pokéblocs."
     }
   }
 }

@@ -101,6 +101,13 @@ public class MoveData
     /// </summary>
     public SuperContests.MoveContest? Contest { get; set; }
 
+    /// <summary>
+    /// The move on Hoenn's stage (plan 21 · H11): Emerald's effect, quality and combos (<c>hoenn-contest.json</c>), or a
+    /// plain appeal in a quality of ours for a move Emerald never had. Not part of <c>moves.json</c>.
+    /// </summary>
+    [JsonIgnore]
+    public Data.HoennContestMove HoennContest => Data.HoennContestDatabase.MoveOf(this);
+
     /// <summary>How much of the move the engine runs; anything but Full has an <see cref="Effect"/> still to write.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public MoveEffectSupport Support { get; set; } = MoveEffectSupport.Full;

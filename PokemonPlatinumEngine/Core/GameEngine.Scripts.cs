@@ -471,6 +471,12 @@ public partial class GameEngine
             OpenApricornBox(fromBag: false);
             return;
         }
+        // The Pokéblock Case off the item button, and back to the field (plan 21 · H11)
+        if (item.FieldUse == "PokeblockCase")
+        {
+            OpenPokeblockCase(fromBag: false);
+            return;
+        }
         // The Poffin Case opened from the item button goes back to the field when it closes (UsePoffinCaseInField)
         if (item.FieldUse == "PoffinCase")
         {

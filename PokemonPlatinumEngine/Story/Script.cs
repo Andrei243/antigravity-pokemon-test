@@ -135,6 +135,10 @@ public enum Op
     OpenBase,
     // The Battle Subway (plan 22 · U6, part d): a run of cars from the desk to the last battle and back
     Subway,
+    // Hoenn's contests (plan 21 · H11): the rank and the quality set, the Pokémon checked, the appeals held, what a win gave;
+    // and the Berry Blender and the Pokéblock Case
+    Appeals,
+    Pokeblock,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

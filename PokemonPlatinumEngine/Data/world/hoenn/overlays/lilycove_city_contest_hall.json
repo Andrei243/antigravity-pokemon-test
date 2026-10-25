@@ -1,0 +1,46 @@
+{
+  // Lilycove's Contest Hall (plan 21 · H11): the great hall behind the lobby, with a stage for each of three of the
+  // contests in it (Smart in the west, Beauty in the middle, Cute in the east), where people only watch: the contests
+  // themselves are held on the game's own screen from the lobby's counter. Everybody here only talks
+  "area": "lilycove_city_contest_hall",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "boy_1": { "name": "Boy", "dialog": [ "I won the Smart Contest today! My Pokémon outwitted all of them." ] },
+    "boy_3": { "name": "Boy", "dialog": [ "I've entered a bunch of contests, and my Pokémon has a ribbon from each. Well, nearly." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "The man who won earlier fed his Pokémon a big Pokéblock first. I could tell." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "Isn't this place humongous? I came in to look for the stage and got lost twice." ] },
+    "smart_mc": { "name": "Announcer", "dialog": [ "Give it your best Smart appeal! Show us how clever your Pokémon is!" ] },
+    "smart_judge": { "name": "Judge", "dialog": [ "Are you enjoying this contest? I do so like the thoughtful ones." ] },
+    "smart_contestant_1": { "name": "Black Belt", "dialog": [ "I think I entered the wrong contest. My Pokémon isn't smart, just strong." ] },
+    "smart_contestant_2": { "name": "Old Man", "dialog": [ "I raised my Pokémon to be smart, and it taught me a few things, too." ] },
+    "smart_contestant_3": { "name": "Man", "dialog": [ "If my Pokémon pulls a clever move next, the judge won't know what hit him." ] },
+    "smart_contestant_4": { "name": "Receptionist", "dialog": [ "I don't appreciate a Cute move when I'm trying to be clever. Hush, Leech Life!" ] },
+    "expert_f": { "name": "Old Woman", "dialog": [ "You're beautiful, Grandpa! Win this one!" ] },
+    "smart_audience_4": { "name": "Woman", "dialog": [ "Smart appeals are the most fun to watch. You can see the thinking." ] },
+    "smart_audience_2": { "name": "Boy", "dialog": [ "They all seem to use different moves. I wonder how they pick." ] },
+    "smart_audience_3": { "name": "Camper", "dialog": [ "I'm only here to watch, but the Smart Contest makes me want to train my Pokémon harder." ] },
+    "beauty_mc": { "name": "Announcer", "dialog": [ "Let's see your most beautiful appeal! Dazzle the judge!" ] },
+    "beauty_judge": { "name": "Judge", "dialog": [ "Beauty takes more than looks. It takes poise." ] },
+    "beauty_contestant_1": { "name": "Woman", "dialog": [ "My Pokémon has been brushed all morning. Doesn't it shine?" ] },
+    "beauty_contestant_2": { "name": "Twin", "dialog": [ "We're twins, and so are our Pokémon. Isn't that a wonderful coincidence?" ] },
+    "beauty_contestant_3": { "name": "Psychic", "dialog": [ "Beauty is a state of mind. My Pokémon already knows it's the loveliest here." ] },
+    "beauty_contestant_4": { "name": "Woman", "dialog": [ "Nerves are the enemy of beauty. I will not look nervous. Not for a moment." ] },
+    "beauty_audience_1": { "name": "Woman", "dialog": [ "Every Beauty Contest, the crowd gets wilder. I love it!" ] },
+    "beauty_audience_3": { "name": "Woman", "dialog": [ "I've come to see the pretty ones. You can't go wrong with a Beauty Contest." ] },
+    "beauty_audience_2": { "name": "Man", "dialog": [ "I'm no judge of beauty, but I know what I like when I see it." ] },
+    "cute_mc": { "name": "Announcer", "dialog": [ "Show us your cutest appeal! Melt the judge's heart!" ] },
+    "cute_judge": { "name": "Judge", "dialog": [ "Cute is hard to fake. The Pokémon either has it or it doesn't." ] },
+    "cute_contestant_1": { "name": "Boy", "dialog": [ "My Pokémon is the cutest here. Don't you agree? You can't say no!" ] },
+    "cute_contestant_2": { "name": "Girl", "dialog": [ "I made special Pokéblocks for my Pokémon. It's sweeter than ever!" ] },
+    "cute_contestant_3": { "name": "Boy", "dialog": [ "I'm not sure my Pokémon is cute. It's more of a handsome type." ] },
+    "cute_contestant_4": { "name": "Old Woman", "dialog": [ "I've been entering Cute Contests for thirty years. My Pokémon gets cuter every year." ] },
+    "cute_audience_1": { "name": "Woman", "dialog": [ "Aww, look at them all! I want to take every one of them home." ] },
+    "cute_audience_3": { "name": "Man", "dialog": [ "I came in to see the stage, and now I can't leave. They're all so cute." ] },
+    "cute_audience_2": { "name": "Little Girl", "dialog": [ "When I grow up, I want my Pokémon to be on that stage too!" ] }
+  },
+  "signs": {
+    "LilycoveCity_ContestHall_EventScript_BeautyStageSign": "Beauty Stage\nBeauty Contests are held here.",
+    "LilycoveCity_ContestHall_EventScript_CuteStageSign": "Cute Stage\nCute Contests are held here.",
+    "LilycoveCity_ContestHall_EventScript_SmartStageSign": "Smart Stage\nSmart Contests are held here."
+  }
+}

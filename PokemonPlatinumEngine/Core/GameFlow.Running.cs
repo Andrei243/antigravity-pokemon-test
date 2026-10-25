@@ -128,6 +128,10 @@ public sealed partial class GameFlow
     /// <summary>How the last contest came out (<c>supercontest ribbon</c> and <c>prize</c> ask it); nothing is kept of it in a save.</summary>
     public ContestOutcome? ContestOutcome { get; set; }
 
+    /// <summary>How the last Hoenn contest came out (<c>appeals ribbon</c> and its fellows ask it) and whether the last blend was kept (plan 21 · H11); not saved.</summary>
+    public Models.Contest.AppealOutcome? AppealOutcome { get; set; }
+    public bool PokeblockKept { get; set; }
+
     /// <summary>The places in the team of the Pokémon entered for a Frontier challenge, in the order chosen.</summary>
     public IReadOnlyList<int> EnteredSlots { get; set; } = Array.Empty<int>();
 

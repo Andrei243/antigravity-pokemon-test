@@ -1136,5 +1136,38 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Wailmer Doll's woman in Mossdeep, the Gold and Silver Shields from the Battle Tower and the Glass Ornament (H12),
       the Battle Frontier's and the Game Corner's decorations as prizes; the TM salesman Emerald shows at Slateport once
       Secret Power is given; the player's own room's decorations (Emerald's `playerRoomDecorations`).
-- [ ] H11 The Contest Hall and Pokéblocks
+- [ ] H11 The Contest Hall and Pokéblocks (part a done 2026-10-26, wave 51; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks")
+    - **Built**: Emerald's contest as the game's own rules, `Models/Contest/AppealRound.cs` and `AppealRound.Ai.cs`
+      (the first round's order by condition, the 48 effects, jam, combos, repeats, the crowd's meter, nerves, the
+      condition's stars, the order bent, the opponents' minds; `AppealRules`), `HoennContests.cs` (who may enter a
+      rank, the stage of three opponents drawn from the 96, what a win gives, the records and the six on the hall's
+      wall), `Data/hoenn-contest.json` (`MoveData.HoennContest`, from `tools/DataImporter -- --hoenn-contest`: 48
+      effects, 354 moves, 62 starters, 96 contestants), `UI/AppealScreen.cs` and `ModernUi.Appeal.cs` (line-up, choice,
+      turns, round ends, results, award; style guide, "Hoenn's contests and Pokéblocks", written first).
+    - **Pokéblocks**: `Models/Pokeblocks.cs` (`CalculatePokeblock`, the nature table, `Feed`, the Case of forty),
+      `Models/BlenderGame.cs` and `UI/BlenderScreen.cs` (the drum for one to four), `UI/PokeblockCaseScreen.cs` (the
+      list, give, toss, the Pokémon's qualities before and after), the Pokéblock Case key item (id 9300, from the
+      receptionist; Romanian name and description), `SaveData.Pokeblocks` and `HoennContests` (null in older saves, so
+      no save version was raised).
+    - **The rooms and scripts**: Lilycove's Contest Lobby and Hall (matrices 113 and 114, Emerald's contest tileset's
+      cover ranges `gTileset_Contest` in `GbaCover`), the receptionist's flow, the Blend Master and the three drums,
+      the winners' wall, the painter and her museum, in `lilycove_city_contest_lobby.txt`; the commands `appeals` and
+      `pokeblock` (`ScriptTests.EveryCommand`, `StopsAHurry`, `docs/scripts.md`); the Lobby's door in Lilycove City is
+      open (it was `locked`). Ribbons: `RibbonKind.HoennContest` no longer waits (`WaitsFor` is null).
+    - Tests (`--filter` only): `AppealRoundTests` (Emerald's tables, the condition, turn order, hearts, a combo, a
+      jam, repeats, the crowd's burst and clash, a raised condition, the order bent, the end of a contest, a seeded
+      contest twice the same), `PokeblockTests` (the blend by hand, colours, black, taste, feeding, the case, the
+      blender), `HoennContestTests` (the receptionist, the ranks, the painter, the wall, the drums, the rooms);
+      `CapsuleTests`'s count of obtainable ribbons (34 to 55) and `HoennTests`' Lilycove doors moved with the Lobby.
+    - Harness: `hoenncontest` mode (`Modes/HoennContest.cs`, not part of `all`; not run): `hc01_lobby` to `hc05_hall`,
+      `hc10_lineup` to `hc16_award`, `hc20_blender_ready` to `hc23_blender_result`, `hc30_case` to `hc32_case_fed`.
+    - **Left for part b**: the harness's check that a Master Rank is won by the same round on a second run (the mode is
+      written and not run, so the shots are untaken); the contest's stage rooms (the four `ContestHall*` maps with the judge
+      and the walk to the stage) and the Contest Hall's three other stages' contests (the hall behind the lobby is a
+      room of people); the Pokéblock feeders (Hoenn's two) and Lilycove Lady's contest; the museum's rooms showing the
+      paintings (stored, not drawn); contests with friends and the blender with friends (plan 07); the link
+      receptionist's records; Match Call and the PokéNav's condition page showing the Pokéblock's feel; the contest
+      music (the Lilycove song plays), the crowd's cheer, judges' voices and the per-move contest animations (the
+      moves' appeals are lines and hearts); Feebas's evolution by the Pokéblock's beauty is by the existing
+      condition rule, and a test for it in the blender's own flow.
 - [ ] H12 The Frontier island and the post-game

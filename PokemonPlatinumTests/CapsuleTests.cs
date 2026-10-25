@@ -703,7 +703,7 @@ public class CapsuleTests
         // Every one has a line of its own to say what it is for
         Assert.All(all, r => Assert.NotEqual("A ribbon.", RibbonRules.Describe(r.Id)));
         // Those that can be had in this game already, and those that wait
-        Assert.Equal(34, all.Count(r => RibbonRules.WaitsFor(r.Id) == null));
+        Assert.Equal(55, all.Count(r => RibbonRules.WaitsFor(r.Id) == null));
         // The Battle Tower gives four of its six (plan 06 · R18a); the two that take another player wait for one
         Assert.All(new[] { "RIBBON_ABILITY", "RIBBON_GREAT_ABILITY", "RIBBON_DOUBLE_ABILITY", "RIBBON_MULTI_ABILITY" }, r => Assert.Null(RibbonRules.WaitsFor(r)));
         Assert.Equal("a friend to battle beside in the Battle Tower", RibbonRules.WaitsFor("RIBBON_PAIR_ABILITY"));

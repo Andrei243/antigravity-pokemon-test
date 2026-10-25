@@ -33,6 +33,13 @@ if (args.Contains("--check-entries"))
     return EntryCheck.Check(entries, pokeApiDir) == 0 ? 0 : 1;
 }
 
+if (args.Contains("--hoenn-contest"))
+{
+    // Emerald's contest tables alone (plan 21 · H11): hoenn-contest.json, from three headers of pret/pokeemerald
+    Write(Path.Combine(outDir, HoennContestDatabase.FileName), GameDataFiles.Serialize(HoennContestImport.Build(repo, cache)));
+    return 0;
+}
+
 if (decompDir == null)
 {
     Console.WriteLine("Fetching pret/pokeplatinum…");

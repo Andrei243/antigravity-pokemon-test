@@ -335,7 +335,7 @@ public class BagScreen
     /// Bicycle, the three rods, the Escape Rope, the Journal and the Vs. Seeker (plan 06 · R12), the Poké Radar and
     /// Honey (plan 06 · R13). The bag closes and the game carries them out.
     /// </summary>
-    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "Itemfinder" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey" or "PoffinCase" or "ExplorerKit" or "TownMap" or "VsRecorder" or "ApricornBox" || IsCase(item);
+    public static bool UsedInField(ItemData item) => item.FieldUse is "Bicycle" or "Itemfinder" or "OldRod" or "GoodRod" or "SuperRod" or "EscapeRope" or "Journal" or "VsSeeker" or "PokeRadar" or "Honey" or "PoffinCase" or "PokeblockCase" or "ExplorerKit" or "TownMap" or "VsRecorder" or "ApricornBox" || IsCase(item);
 
     /// <summary>
     /// The Seal Case and the Fashion Case (plan 06 · R17b): the original's bag only says how many each holds
@@ -363,7 +363,7 @@ public class BagScreen
     {
         var actions = new List<BagAction>();
         // The Poffin Case is opened, as the original's bag says (ITEM_ACTION_OPEN, plan 06 · R14c)
-        if (item.FieldUse == "PoffinCase" || IsCase(item)) actions.Add(BagAction.Open);
+        if (item.FieldUse is "PoffinCase" or "PokeblockCase" || IsCase(item)) actions.Add(BagAction.Open);
         else if (CanUse(item) || UsedInField(item) || UsedInBag(item)) actions.Add(BagAction.Use);
         if (CanGive(item)) actions.Add(BagAction.Give);
         if (CanToss(item)) actions.Add(BagAction.Toss);
