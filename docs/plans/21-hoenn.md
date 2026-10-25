@@ -1136,7 +1136,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Wailmer Doll's woman in Mossdeep, the Gold and Silver Shields from the Battle Tower and the Glass Ornament (H12),
       the Battle Frontier's and the Game Corner's decorations as prizes; the TM salesman Emerald shows at Slateport once
       Secret Power is given; the player's own room's decorations (Emerald's `playerRoomDecorations`).
-- [ ] H11 The Contest Hall and Pokéblocks (part a done 2026-10-26, wave 51; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks")
+- [ ] H11 The Contest Hall and Pokéblocks (part a done 2026-10-26, wave 51; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks"; part b done 2026-10-26, wave 53, "The museum's gallery, the chairman's scarves and the rest of the Pokéblock people"; a part c is what is left, below)
     - **Built**: Emerald's contest as the game's own rules, `Models/Contest/AppealRound.cs` and `AppealRound.Ai.cs`
       (the first round's order by condition, the 48 effects, jam, combos, repeats, the crowd's meter, nerves, the
       condition's stars, the order bent, the opponents' minds; `AppealRules`), `HoennContests.cs` (who may enter a
@@ -1170,6 +1170,31 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       music (the Lilycove song plays), the crowd's cheer, judges' voices and the per-move contest animations (the
       moves' appeals are lines and hearts); Feebas's evolution by the Pokéblock's beauty is by the existing
       condition rule, and a test for it in the blender's own flow.
+    - **Part b built (wave 53)**: **the museum's gallery**: the five frames read from before (`CoolPainting` to
+      `ToughPainting` of `lilycove_city_lilycove_museum_2f.txt`, the overlay's `read`), a painting that hangs looked at in the
+      Fashion Case's viewer (`FashionCaseScreen.OpenPainting`, `ModernUi.Paintings.cs`, `ScriptScreen.ContestPainting` at the
+      enum's end, `appeals view|painting|paintings`; style guide "A painting"), the curator's thanks and **Glass
+      Ornament** for all five (`openbase give`, once), and the patrons and tourists who come as the paintings hang (the
+      lobby's `MuseumPatrons`). **The Pokéblock people**: Slateport's chairman (`FLAG_ENTERED_CONTEST`, which the receptionist
+      now sets, and the five scarves for a condition of 200, `Chairman`), Mossdeep's black belt (`pokeblock taste`,
+      `Pokeblocks.FavouriteOf`: the colour of Pokéblock the lead's nature likes), and the Safari Zone's counter asking for
+      the Pokéblock Case (H6's beat, now that the Case is given). Tests (`--filter` only, run): `HoennContestPartBTests`
+      (a Master Rank won by the same seeded round twice with the ribbon and the Luxury Ball, a frame empty and then
+      shown, the painting screen, the curator and the ornament, the patrons by the count, the painter's offer through the
+      receptionist, the painting saved and read back, the chairman's five scarves in order, a scarf's twenty, the black belt
+      for five colours and the five natures with no taste, Feebas grown on blender Pokéblocks, the Safari counter with and
+      without the Case, the people and frames wired on the built maps) and the story test for the Safari counter. Harness: `hoenncontest`
+      ends with a Master Rank run twice (a printed check, `!!` on a difference), the gallery from the Cool frame (`hc40_gallery`)
+      and two paintings (`hc41_painting_beauty`, `hc41_painting_cool`); written and not run.
+    - **Left after part b (a part c)**: the contest's stage rooms are not built, and not as a place (Emerald's six `ContestHall*`
+      maps have no warps and their player is hidden: they are a backdrop, which would be the contest screen drawn over a
+      3D stage; nothing of them is read by the importer yet, which also does not follow a map's `shared_events_map`);
+      Hoenn's Pokéblock feeders (no map or script of the pinned data uses them, and their rules are in `src/`, which the cache
+      does not hold) and the Lilycove Lady's contest (the same); contests and the blender with friends (plan 07) and the
+      link receptionist's records; the contest's music, the crowd's cheer, the judges' voices and per-move animations; a
+      painting drawn on the gallery's wall itself in place of the viewer (Emerald's metatile swap needs an alternate
+      chunk each); the museum's first scene on the stairs (`ShowExhibitHall`); the PokéNav's condition page already shows
+      the sheen the Pokéblock's feel raises.
 - [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was

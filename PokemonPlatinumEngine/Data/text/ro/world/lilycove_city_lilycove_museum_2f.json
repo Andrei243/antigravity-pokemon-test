@@ -8,14 +8,6 @@
         "text": [
           "Curatorul"
         ]
-      },
-      "dialog": {
-        "en": [
-          "This gallery is kept for paintings of Pokémon that win at the Contest Hall. The frames are empty for now, but not for long, I hope!"
-        ],
-        "text": [
-          "Galeria asta e rezervată picturilor cu Pokémoni care câștigă la Sala Concursurilor. Ramele sunt goale deocamdată, dar sper că nu pentru mult!"
-        ]
       }
     },
     "girl_2": {
@@ -74,46 +66,6 @@
     }
   },
   "signs": {
-    "LilycoveCity_LilycoveMuseum_2F_EventScript_CutePainting": {
-      "en": [
-        "An empty frame. A card beneath it reads: Cuteness."
-      ],
-      "text": [
-        "O ramă goală. Un card dedesubt scrie: Drăgălășenie."
-      ]
-    },
-    "LilycoveCity_LilycoveMuseum_2F_EventScript_ToughPainting": {
-      "en": [
-        "An empty frame. A card beneath it reads: Toughness."
-      ],
-      "text": [
-        "O ramă goală. Un card dedesubt scrie: Duritate."
-      ]
-    },
-    "LilycoveCity_LilycoveMuseum_2F_EventScript_CoolPainting": {
-      "en": [
-        "An empty frame. A card beneath it reads: Coolness."
-      ],
-      "text": [
-        "O ramă goală. Un card dedesubt scrie: Stil."
-      ]
-    },
-    "LilycoveCity_LilycoveMuseum_2F_EventScript_BeautyPainting": {
-      "en": [
-        "An empty frame. A card beneath it reads: Beauty."
-      ],
-      "text": [
-        "O ramă goală. Un card dedesubt scrie: Frumusețe."
-      ]
-    },
-    "LilycoveCity_LilycoveMuseum_2F_EventScript_SmartPainting": {
-      "en": [
-        "An empty frame. A card beneath it reads: Smartness."
-      ],
-      "text": [
-        "O ramă goală. Un card dedesubt scrie: Istețime."
-      ]
-    },
     "LilycoveCity_LilycoveMuseum_EventScript_BirdSculpture": {
       "en": [
         "A sculpture of a bird Pokémon with its wings spread wide."

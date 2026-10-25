@@ -4140,6 +4140,11 @@
       "Miss": "RATAT"
     }
   },
+  "painting": {
+    "title": "TABLOU DIN MUZEU",
+    "contest": "Concurs de {category}, {rank}",
+    "by": "{trainer}  ·  {points} puncte"
+  },
   "appeal": {
     "title": "CONCURS",
     "rank": {

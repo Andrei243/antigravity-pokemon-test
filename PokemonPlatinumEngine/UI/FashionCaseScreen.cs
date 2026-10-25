@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Models.Contest;
 using PokemonPlatinumEngine.Models.SuperContests;
 using PokemonPlatinumEngine.UI.Kit;
 
@@ -32,6 +33,11 @@ public sealed class FashionCaseScreen
 
     /// <summary>The photograph shown instead of the case, when the screen was opened on one.</summary>
     public ContestPhoto? Photo { get; private set; }
+
+    /// <summary>The painting shown instead of the case (plan 21 · H11, part b): a Hoenn winner hung in the Lilycove Museum.</summary>
+    public ContestPainting? Painting { get; private set; }
+
+    private bool ShowsAPicture => Photo != null || Painting != null;
 
     public float Age { get; private set; }
 
@@ -66,10 +72,21 @@ public sealed class FashionCaseScreen
         AudioManager.PlaySound("select");
     }
 
+    /// <summary>Opens on a painting of the Lilycove Museum's gallery.</summary>
+    public void OpenPainting(ContestPainting painting)
+    {
+        Painting = painting;
+        Photo = null;
+        IsActive = true;
+        Age = 0f;
+        AudioManager.PlaySound("select");
+    }
+
     public void Close()
     {
         IsActive = false;
         Photo = null;
+        Painting = null;
         AudioManager.PlaySound("menu_close");
     }
 
@@ -79,7 +96,7 @@ public sealed class FashionCaseScreen
     /// <summary>Left and right over the backdrops, or the Run button anywhere, change the tab.</summary>
     public void MoveTab(int step)
     {
-        if (Photo != null || step == 0) return;
+        if (ShowsAPicture || step == 0) return;
         Tab = UiNav.Wrap(Tab, step, TabNames.Length);
         Cursor = First = 0;
         AudioManager.PlaySound("page");
@@ -88,7 +105,7 @@ public sealed class FashionCaseScreen
     /// <summary>The arrows: over the accessories' grid, or up and down the backdrops.</summary>
     public void Move(int dx, int dy)
     {
-        if (Photo != null || Count == 0 || (dx == 0 && dy == 0)) return;
+        if (ShowsAPicture || Count == 0 || (dx == 0 && dy == 0)) return;
         int next = Tab == 0 ? UiNav.Grid(Cursor, Count, Columns, dx, dy) : UiNav.Wrap(Cursor, Math.Sign(dy), Count);
         if (next == Cursor) return;
         Cursor = next;
@@ -99,7 +116,7 @@ public sealed class FashionCaseScreen
     /// <summary>Either button closes a photograph; cancel closes the case.</summary>
     public void Confirm()
     {
-        if (Photo != null) Close();
+        if (ShowsAPicture) Close();
     }
 
     public void Cancel() => Close();
@@ -119,7 +136,8 @@ public sealed class FashionCaseScreen
     {
         if (!IsActive) return;
         float appear = Math.Clamp(Age / AppearTime, 0f, 1f);
-        if (Photo != null) ModernUi.DrawContestPhoto(screenWidth, screenHeight, Photo, appear);
+        if (Painting != null) ModernUi.DrawContestPainting(screenWidth, screenHeight, Painting, appear);
+        else if (Photo != null) ModernUi.DrawContestPhoto(screenWidth, screenHeight, Photo, appear);
         else ModernUi.DrawFashionCase(screenWidth, screenHeight, this, appear);
     }
 }

@@ -5719,6 +5719,45 @@ Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`,
   blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
   waits for plan 07.
 
+## The museum's gallery, the chairman's scarves and the rest of the Pokéblock people (2026-10-26, plan 21 · H11, part b)
+
+Emerald's `LilycoveCity_LilycoveMuseum_2F`, `SlateportCity_PokemonFanClub`, `MossdeepCity_House1`,
+`Route121_SafariZoneEntrance` and the painter's half of `LilycoveCity_ContestLobby`; the lines are our own.
+
+- **A painting is looked at, not set into the wall.** Emerald changes two metatiles of the gallery's wall for each quality
+  once its flag (`FLAG_COOL_PAINTING_MADE` and its fellows) is set, a picture drawn from the Pokémon it was painted of
+  that is not in the repository. The frames here are read from before (the area's reads, `CoolPainting` to
+  `ToughPainting` of `lilycove_city_lilycove_museum_2f.txt`): a painting that hangs (`HoennContestRecords.Museum`, which
+  keeps the winner's species, name, trainer, contest, rank and points) opens in the Fashion Case's viewer (`appeals view`,
+  `ScriptScreen.ContestPainting`, the style guide's "A painting"); an empty frame says whose it is, as before.
+- **The museum fills as the paintings hang** (Emerald's `UpdateMuseumPatrons`, the lobby's `MuseumPatrons`): the first
+  four bring a patron each (`FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1` to `_4` cleared), the fifth the tourists, once the painter
+  has been agreed to; a quality's painting hung again replaces the old one and brings nobody. The gallery's curator
+  (`Curator`) thanks for each painting and, once all five quality's frames are filled, gives the **Glass Ornament**
+  (`FLAG_RECEIVED_GLASS_ORNAMENT`), a decoration into the secret base's PC (`openbase give`), once; with no room in the PC
+  he keeps it for the player.
+- **The chairman of Slateport's Fan Club** asks first for `FLAG_ENTERED_CONTEST` (the receptionist sets it with every
+  contest entered; before it he only wishes to see such a Pokémon), then gives the scarf of the first quality in which the
+  team's first Pokémon that is no Egg has a condition of **200 or more**, each scarf once, looked for in the order Cool, Beauty,
+  Cute, Smart, Tough (Red, Blue, Pink, Green, Yellow; Emerald's `CheckLeadMonCool` and fellows: of its checks the last to run
+  set the answer, and the Cool check runs last). With all five he has nothing more to give (`VAR_SLATEPORT_FAN_CLUB_STATE`
+  2). A Pokémon that holds a scarf adds twenty to its quality in a contest, as before.
+- **Mossdeep's black belt** tells the colour of Pokéblock the first Pokémon of the team likes (`pokeblock taste`): the
+  colour of the one flavour its nature likes (spicy red, dry blue, sweet pink, bitter green, sour yellow), or that it
+  neither likes nor dislikes any, for the five natures without a taste. The colour is read from the compatibility table
+  the feeding already uses, so what he says is what a Pokéblock of it would do.
+- **The Safari Zone's counter asks for the Pokéblock Case** (Emerald's `Route121_SafariZoneEntrance_EventScript_TryEnterSafariZone`),
+  before the fee and before anything else; a player without one is sent back a step and told where the Case is given
+  (the Contest Lobby's receptionist).
+- **What is not here.** The stage rooms (`ContestHall`, `ContestHallBeauty`, `ContestHallCool`, `ContestHallCute`,
+  `ContestHallSmart`, `ContestHallTough`): Emerald never lets the player walk in them (its player is hidden and the
+  contest's graphics replace the map; they have no warps), so they are a backdrop for the contest and not a place;
+  the contest here is the screen alone. **Emerald's Pokéblock feeders** are not built: the pinned data names their tile
+  behaviour (`MB_POKEBLOCK_FEEDER`) and no script or text uses them, and their rules (what a Pokéblock set down does to
+  the wild Pokémon round it, for how many steps) are in source (`src/`) that the importer's cache does not hold, so there is
+  nothing to build them from honestly; the reader's chunks carry no such tile yet either. **The Lilycove Lady's contest**
+  is the same (her rules are in source the import does not read); both are left.
+
 ## The Regis, the Sealed Chamber and Southern Island (2026-10-26, plan 21 · H12, part a)
 
 Emerald's post-game places that need no new facility, as ours: the three Regis' riddles and caves, the sea floor under

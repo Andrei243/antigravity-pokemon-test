@@ -3867,6 +3867,11 @@
     "hits": "Best {best}  ·  Good {good}  ·  Miss {miss}",
     "grade": { "Best": "BEST!", "Good": "GOOD", "Miss": "MISS" }
   },
+  "painting": {
+    "title": "MUSEUM PAINTING",
+    "contest": "{category} Contest, {rank}",
+    "by": "{trainer}  ·  {points} points"
+  },
   "appeal": {
     "title": "CONTEST",
     "rank": { "Normal": "NORMAL RANK", "Super": "SUPER RANK", "Hyper": "HYPER RANK", "Master": "MASTER RANK" },

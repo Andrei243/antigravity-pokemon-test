@@ -92,6 +92,7 @@ label AlreadyWon
 label Accepted
   say "{contestant} has been entered! You are entry number 4."
   say "The contest is about to begin. Right this way, please!"
+  setflag FLAG_ENTERED_CONTEST
   appeals enter
   call AfterContest
   say "Thank you for taking part. We hope to see you again soon!"
@@ -154,9 +155,22 @@ label Hang
   if result == 1 say "And as a memento of the painting, please take this ribbon for your Pokémon!"
   if result == 1 fanfare item
   if result == 1 text "{contestant} received the {ribbon}!"
+  call MuseumPatrons
 label Gone
   hide contest_lobby_artist
   setflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1
+  return
+
+
+# The museum fills as paintings hang (Emerald's UpdateMuseumPatrons): a patron for each of the first four, and the
+# tourists with the fifth. Flags only, so the museum's rooms show them on the player's next visit
+script MuseumPatrons
+  appeals paintings
+  if result == 1 clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1
+  if result == 2 clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2
+  if result == 3 clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3
+  if result == 4 clearflag FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4
+  if result == 5 clearflag FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS
   return
 
 

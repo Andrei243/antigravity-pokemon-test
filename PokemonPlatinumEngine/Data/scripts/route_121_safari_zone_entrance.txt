@@ -4,8 +4,9 @@
 # Whoever walks the one-tile passage before the counter steps onto Emerald's coordinate event there (the area's
 # trigger 0) and is asked to play: for $500, thirty Safari Balls and Emerald's five hundred steps (`safari start 500`;
 # Models/SafariGame.cs), then along the counter and in through the zone's door. Turned down, or short of the fee, they
-# are sent a step back. Emerald asks for a Pokéblock Case first, which is plan 21 · H11's: until then it asks nothing
-# (rulings, "Route 121 and the Safari Zone"); nor does it ask whether the boxes are full, as no gate of this game does.
+# are sent a step back. Emerald asks for a Pokéblock Case first, which the Contest Lobby's receptionist gives (plan 21 ·
+# H11, part b; before it the counter asked nothing); nor does it ask whether the boxes are full, as no gate of this game
+# does.
 # VAR_SAFARI_ZONE_STATE 2 tells the zone a player is coming in, and FLAG_GOOD_LUCK_SAFARI_ZONE is cleared, so its
 # attendant wishes them luck once.
 #
@@ -27,6 +28,12 @@ script Counter
   face player up
   speaker "Attendant"
   say "Welcome to the Safari Zone!"
+  if item "Pokéblock Case" >= 1 goto HaveCase
+  say "I'm sorry, but you can't come in without a Pokéblock Case. The Pokémon here are fond of Pokéblocks, and every visitor should carry some."
+  say "The receptionist at the Contest Lobby in Lilycove City gives a Case to anyone who asks. Do come back with one!"
+  walk player right 1
+  end
+label HaveCase
   ask "Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?"
   if no goto Away
   takemoney 500

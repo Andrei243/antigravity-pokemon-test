@@ -18,10 +18,35 @@
     },
     {
       "en": [
+        "I'm sorry, but you can't come in without a Pokéblock Case. The Pokémon here are fond of Pokéblocks, and every visitor should carry some."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Prinde câți Pokémoni vrei pentru doar $500! Vrei să joci Jocul Safari?"
+      ]
+    },
+    {
+      "en": [
+        "The receptionist at the Contest Lobby in Lilycove City gives a Case to anyone who asks. Do come back with one!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Sunt $500, mulțumesc. Iată Safari Ballurile tale."
+      ]
+    },
+    {
+      "en": [
         "Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?"
       ],
       "text": [
-        "Prinde câți Pokémoni vrei pentru doar $500! Vrei să joci Jocul Safari?"
+        ""
+      ],
+      "was": [
+        "{player} a primit 30 de Safari Balluri!"
       ]
     },
     {
@@ -29,7 +54,10 @@
         "That's $500, thank you. Here are your Safari Balls."
       ],
       "text": [
-        "Sunt $500, mulțumesc. Iată Safari Ballurile tale."
+        ""
+      ],
+      "was": [
+        "Te anunțăm când se termină jocul. Până atunci, intră în sălbăticie!"
       ]
     },
     {
@@ -37,7 +65,10 @@
         "{player} received 30 Safari Balls!"
       ],
       "text": [
-        "{player} a primit 30 de Safari Balluri!"
+        ""
+      ],
+      "was": [
+        "Îmi pare rău, nu ai destui bani."
       ]
     },
     {
@@ -45,7 +76,10 @@
         "We'll let you know when your game is over. Until then, off you go into the wild!"
       ],
       "text": [
-        "Te anunțăm când se termină jocul. Până atunci, intră în sălbăticie!"
+        ""
+      ],
+      "was": [
+        "Bine. Te rog, vino să joci altă dată!"
       ]
     },
     {
@@ -53,7 +87,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        "Îmi pare rău, nu ai destui bani."
+        ""
       ]
     },
     {
@@ -61,7 +95,7 @@
         "All right. Please come and play another time!"
       ],
       "text": [
-        "Bine. Te rog, vino să joci altă dată!"
+        ""
       ]
     }
   ],
