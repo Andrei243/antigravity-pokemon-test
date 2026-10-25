@@ -1,0 +1,50 @@
+{
+  // The upstairs of the Triple and Rotation Battle House (plan 22 · U8, part a): three who mimic and two who watch, our words
+  "area": "opelucid_city_5",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "lass",
+      "dialog": [
+        "Mimicking somebody is fun, isn't it? Do you want to find the one who mimics me among my friends?"
+      ]
+    },
+    "1": {
+      "name": "Twin",
+      "npcType": "twin",
+      "dialog": [
+        "It's nicer to be mimicked than to mimic somebody!"
+      ]
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [
+        "I'm not a mimicker. But mimicking is fun."
+      ]
+    },
+    "3": {
+      "name": "Twin",
+      "npcType": "twin",
+      "dialog": [
+        "I want to cherish my originality."
+      ]
+    },
+    "4": {
+      "name": "Breeder",
+      "npcType": "pokemon_breeder_m",
+      "dialog": [
+        "You can use the target's last move during a battle. That is Mimic! My Galvantula is charming, even though it won't learn Mimic."
+      ]
+    },
+    "5": {
+      "name": "Galvantula",
+      "npcType": "Pokemon",
+      "species": "Galvantula",
+      "dialog": [
+        "Galvantula: Bzzz... Zzz..."
+      ]
+    }
+  }
+}

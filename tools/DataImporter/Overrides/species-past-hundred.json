@@ -1029,5 +1029,1129 @@
     "stats": {"hp": 90, "attack": 135, "defense": 90, "spAttack": 135, "spDefense": 90, "speed": 120},
     "abilities": ["Levitate"],
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 150, "species": "Uxie"}
+  },
+  // Batch 5, Unova: docs/plans/D14-proposals-unova.md, approved by the user on 2026-10-26 (all 52, every default:
+  // each evolves within Unova's own climb, 165 to 183, the Swords of Justice at 190 with a Keldeo in the party).
+  "Beaconwatch": {
+    "from": "Watchog", "types": ["Normal","Electric"], "category": "Beacon", "height": 1.4, "weight": 38.0,
+    "stats": {"hp": 75, "attack": 100, "defense": 84, "spAttack": 70, "spDefense": 84, "speed": 87},
+    "abilities": ["Illuminate", "Keen Eye"], "hiddenAbility": "Analytic",
+    "evolution": {"method": "LevelNight", "level": 165}
+  },
+  "Umbrapard": {
+    "from": "Liepard", "types": ["Dark"], "category": "Shadow Cat", "height": 1.4, "weight": 48.0,
+    "stats": {"hp": 79, "attack": 103, "defense": 70, "spAttack": 93, "spDefense": 70, "speed": 111},
+    "abilities": ["Limber", "Unburden"], "hiddenAbility": "Prankster",
+    "evolution": {"method": "LevelKnowsMove", "level": 166, "move": "Sucker Punch"}
+  },
+  "Simisylvan": {
+    "from": "Simisage", "types": ["Grass"], "category": "Grove Monkey", "height": 1.3, "weight": 40.0,
+    "stats": {"hp": 85, "attack": 113, "defense": 78, "spAttack": 113, "spDefense": 78, "speed": 111},
+    "abilities": ["Gluttony"], "hiddenAbility": "Overgrow",
+    "evolution": {"method": "UseItem", "level": 170, "item": "Leaf Stone"}
+  },
+  "Simiscorch": {
+    "from": "Simisear", "types": ["Fire"], "category": "Pyre Monkey", "height": 1.2, "weight": 38.0,
+    "stats": {"hp": 85, "attack": 113, "defense": 78, "spAttack": 113, "spDefense": 78, "speed": 111},
+    "abilities": ["Gluttony"], "hiddenAbility": "Blaze",
+    "evolution": {"method": "UseItem", "level": 170, "item": "Fire Stone"}
+  },
+  "Simitorrent": {
+    "from": "Simipour", "types": ["Water"], "category": "Torrent Monkey", "height": 1.2, "weight": 39.0,
+    "stats": {"hp": 85, "attack": 113, "defense": 78, "spAttack": 113, "spDefense": 78, "speed": 111},
+    "abilities": ["Gluttony"], "hiddenAbility": "Torrent",
+    "evolution": {"method": "UseItem", "level": 170, "item": "Water Stone"}
+  },
+  "Somnarna": {
+    "from": "Musharna", "types": ["Psychic","Fairy"], "category": "Dreamweaver", "height": 1.5, "weight": 85.0,
+    "stats": {"hp": 116, "attack": 60, "defense": 105, "spAttack": 132, "spDefense": 110, "speed": 44},
+    "abilities": ["Forewarn", "Synchronize"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "UseItem", "level": 170, "item": "Moon Stone"}
+  },
+  "Stormstrika": {
+    "from": "Zebstrika", "types": ["Electric"], "category": "Storm Steed", "height": 2.0, "weight": 110.0,
+    "stats": {"hp": 85, "attack": 120, "defense": 83, "spAttack": 85, "spDefense": 83, "speed": 121},
+    "abilities": ["Lightning Rod", "Motor Drive"], "hiddenAbility": "Sap Sipper",
+    "evolution": {"method": "LevelKnowsMove", "level": 170, "move": "Wild Charge"}
+  },
+  "Amorabat": {
+    "from": "Swoobat", "types": ["Psychic","Flying"], "category": "Heartstruck", "height": 1.2, "weight": 16.0,
+    "stats": {"hp": 82, "attack": 57, "defense": 75, "spAttack": 102, "spDefense": 70, "speed": 119},
+    "abilities": ["Unaware", "Klutz"], "hiddenAbility": "Simple",
+    "evolution": {"method": "FriendshipNight", "level": 166}
+  },
+  "Excavarch": {
+    "from": "Excadrill", "types": ["Ground","Steel"], "category": "Tunnel King", "height": 1.0, "weight": 62.0,
+    "stats": {"hp": 110, "attack": 145, "defense": 90, "spAttack": 50, "spDefense": 95, "speed": 98},
+    "abilities": ["Sand Rush", "Sand Force"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelHoldingItem", "level": 176, "item": "Soft Sand"}
+  },
+  "Remedino": {
+    "from": "Audino", "types": ["Normal","Fairy"], "category": "Physician", "height": 1.4, "weight": 45.0,
+    "stats": {"hp": 108, "attack": 60, "defense": 106, "spAttack": 90, "spDefense": 106, "speed": 55},
+    "abilities": ["Healer", "Regenerator"], "hiddenAbility": "Klutz",
+    "evolution": {"method": "FriendshipDay", "level": 168}
+  },
+  "Throjutsu": {
+    "from": "Throh", "types": ["Fighting"], "category": "Black Belt", "height": 1.6, "weight": 80.0,
+    "stats": {"hp": 120, "attack": 120, "defense": 105, "spAttack": 30, "spDefense": 105, "speed": 65},
+    "abilities": ["Guts", "Inner Focus"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 172, "species": "Sawk"}
+  },
+  "Sawkendo": {
+    "from": "Sawk", "types": ["Fighting"], "category": "Karate Master", "height": 1.6, "weight": 68.0,
+    "stats": {"hp": 90, "attack": 140, "defense": 95, "spAttack": 30, "spDefense": 95, "speed": 95},
+    "abilities": ["Sturdy", "Inner Focus"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 172, "species": "Throh"}
+  },
+  "Cottonimbus": {
+    "from": "Whimsicott", "types": ["Grass","Fairy"], "category": "Cloud Puff", "height": 1.0, "weight": 9.0,
+    "stats": {"hp": 80, "attack": 67, "defense": 100, "spAttack": 102, "spDefense": 95, "speed": 116},
+    "abilities": ["Prankster", "Infiltrator"], "hiddenAbility": "Chlorophyll",
+    "evolution": {"method": "UseItem", "level": 172, "item": "Sun Stone"}
+  },
+  "Ballerilly": {
+    "from": "Lilligant", "types": ["Grass","Fairy"], "category": "Prima Flower", "height": 1.4, "weight": 22.0,
+    "stats": {"hp": 85, "attack": 60, "defense": 95, "spAttack": 130, "spDefense": 95, "speed": 95},
+    "abilities": ["Chlorophyll", "Own Tempo"], "hiddenAbility": "Leaf Guard",
+    "evolution": {"method": "UseItem", "level": 172, "item": "Sun Stone"}
+  },
+  "Bascurage": {
+    "from": "Basculin", "types": ["Water","Dark"], "category": "Fury Fish", "height": 1.4, "weight": 30.0,
+    "stats": {"hp": 85, "attack": 112, "defense": 80, "spAttack": 85, "spDefense": 75, "speed": 103},
+    "abilities": ["Reckless", "Adaptability"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelKnowsMove", "level": 172, "move": "Head Smash"}
+  },
+  "Darumandala": {
+    "from": "Darmanitan", "types": ["Fire","Psychic"], "category": "Meditation", "height": 1.7, "weight": 140.0,
+    "stats": {"hp": 105, "attack": 150, "defense": 85, "spAttack": 30, "spDefense": 85, "speed": 105},
+    "abilities": ["Sheer Force"], "hiddenAbility": "Inner Focus",
+    "evolution": {"method": "LevelDay", "level": 174}
+  },
+  "Mariachactus": {
+    "from": "Maractus", "types": ["Grass","Ground"], "category": "Desert Band", "height": 1.5, "weight": 45.0,
+    "stats": {"hp": 90, "attack": 96, "defense": 87, "spAttack": 121, "spDefense": 87, "speed": 60},
+    "abilities": ["Water Absorb", "Chlorophyll"], "hiddenAbility": "Storm Drain",
+    "evolution": {"method": "LevelKnowsMove", "level": 172, "move": "Petal Dance"}
+  },
+  "Crustadel": {
+    "from": "Crustle", "types": ["Bug","Rock"], "category": "Citadel", "height": 1.9, "weight": 300.0,
+    "stats": {"hp": 90, "attack": 120, "defense": 125, "spAttack": 70, "spDefense": 100, "speed": 60},
+    "abilities": ["Sturdy", "Shell Armor"], "hiddenAbility": "Weak Armor",
+    "evolution": {"method": "LevelHoldingItem", "level": 174, "item": "Hard Stone"}
+  },
+  "Brawlhood": {
+    "from": "Scrafty", "types": ["Dark","Fighting"], "category": "Gang Boss", "height": 1.4, "weight": 42.0,
+    "stats": {"hp": 85, "attack": 115, "defense": 120, "spAttack": 45, "spDefense": 120, "speed": 83},
+    "abilities": ["Shed Skin", "Moxie"], "hiddenAbility": "Intimidate",
+    "evolution": {"method": "LevelKnowsMove", "level": 174, "move": "High Jump Kick"}
+  },
+  "Glyphoracle": {
+    "from": "Sigilyph", "types": ["Psychic","Flying"], "category": "Oracle", "height": 1.8, "weight": 22.0,
+    "stats": {"hp": 87, "attack": 58, "defense": 95, "spAttack": 128, "spDefense": 95, "speed": 107},
+    "abilities": ["Wonder Skin", "Magic Guard"], "hiddenAbility": "Tinted Lens",
+    "evolution": {"method": "LevelKnowsMove", "level": 174, "move": "Cosmic Power"}
+  },
+  "Pharaurum": {
+    "from": "Cofagrigus", "types": ["Ghost","Steel"], "category": "Pharaoh", "height": 2.2, "weight": 150.0,
+    "stats": {"hp": 88, "attack": 50, "defense": 145, "spAttack": 120, "spDefense": 120, "speed": 40},
+    "abilities": ["Mummy"],
+    "evolution": {"method": "LevelHoldingItem", "level": 175, "item": "Reaper Cloth"}
+  },
+  "Tortugarch": {
+    "from": "Carracosta", "types": ["Water","Rock"], "category": "Ancient Shell", "height": 1.6, "weight": 150.0,
+    "stats": {"hp": 89, "attack": 123, "defense": 133, "spAttack": 93, "spDefense": 95, "speed": 42},
+    "abilities": ["Solid Rock", "Sturdy"], "hiddenAbility": "Swift Swim",
+    "evolution": {"method": "LevelHoldingItem", "level": 178, "item": "Rare Bone"}
+  },
+  "Primavian": {
+    "from": "Archeops", "types": ["Rock","Flying"], "category": "First Flight", "height": 1.7, "weight": 42.0,
+    "stats": {"hp": 85, "attack": 140, "defense": 75, "spAttack": 112, "spDefense": 78, "speed": 110},
+    "abilities": ["Defeatist"],
+    "evolution": {"method": "LevelHoldingItem", "level": 178, "item": "Rare Bone"}
+  },
+  "Scrapodor": {
+    "from": "Garbodor", "types": ["Poison","Steel"], "category": "Scrap Heap", "height": 2.3, "weight": 160.0,
+    "stats": {"hp": 95, "attack": 115, "defense": 102, "spAttack": 60, "spDefense": 102, "speed": 80},
+    "abilities": ["Stench", "Weak Armor"], "hiddenAbility": "Aftermath",
+    "evolution": {"method": "LevelKnowsMove", "level": 172, "move": "Gunk Shot"}
+  },
+  "Zoromirage": {
+    "from": "Zoroark", "types": ["Dark"], "category": "Mirage Fox", "height": 1.8, "weight": 95.0,
+    "stats": {"hp": 80, "attack": 110, "defense": 85, "spAttack": 125, "spDefense": 85, "speed": 105},
+    "abilities": ["Illusion"],
+    "evolution": {"method": "LevelNight", "level": 178}
+  },
+  "Chinchillux": {
+    "from": "Cinccino", "types": ["Normal","Fairy"], "category": "Silk Scarf", "height": 0.8, "weight": 12.0,
+    "stats": {"hp": 90, "attack": 110, "defense": 80, "spAttack": 70, "spDefense": 80, "speed": 120},
+    "abilities": ["Cute Charm", "Technician"], "hiddenAbility": "Skill Link",
+    "evolution": {"method": "UseItem", "level": 170, "item": "Shiny Stone"}
+  },
+  "Cygnelle": {
+    "from": "Swanna", "types": ["Water","Flying"], "category": "Swan Queen", "height": 1.7, "weight": 34.0,
+    "stats": {"hp": 90, "attack": 97, "defense": 83, "spAttack": 97, "spDefense": 83, "speed": 103},
+    "abilities": ["Keen Eye", "Big Pecks"], "hiddenAbility": "Hydration",
+    "evolution": {"method": "LevelKnowsMove", "level": 172, "move": "Hurricane"}
+  },
+  "Seasonstag": {
+    "from": "Sawsbuck", "types": ["Normal","Grass"], "category": "Four Seasons", "height": 2.3, "weight": 130.0,
+    "stats": {"hp": 90, "attack": 120, "defense": 90, "spAttack": 60, "spDefense": 90, "speed": 105},
+    "abilities": ["Chlorophyll", "Sap Sipper"], "hiddenAbility": "Serene Grace",
+    "evolution": {"method": "Level", "level": 174}
+  },
+  "Nimbolga": {
+    "from": "Emolga", "types": ["Electric","Flying"], "category": "Storm Kite", "height": 0.7, "weight": 9.0,
+    "stats": {"hp": 75, "attack": 85, "defense": 75, "spAttack": 90, "spDefense": 75, "speed": 108},
+    "abilities": ["Static"], "hiddenAbility": "Motor Drive",
+    "evolution": {"method": "LevelHoldingItem", "level": 167, "item": "Cell Battery"}
+  },
+  "Lancelier": {
+    "from": "Escavalier", "types": ["Bug","Steel"], "category": "Paladin", "height": 1.4, "weight": 55.0,
+    "stats": {"hp": 95, "attack": 145, "defense": 115, "spAttack": 60, "spDefense": 115, "speed": 45},
+    "abilities": ["Swarm", "Shell Armor"], "hiddenAbility": "Overcoat",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 176, "species": "Accelgor"}
+  },
+  "Sporemonarch": {
+    "from": "Amoonguss", "types": ["Grass","Poison"], "category": "Toadstool", "height": 1.2, "weight": 30.0,
+    "stats": {"hp": 114, "attack": 95, "defense": 95, "spAttack": 100, "spDefense": 100, "speed": 40},
+    "abilities": ["Effect Spore"], "hiddenAbility": "Regenerator",
+    "evolution": {"method": "LevelInRain", "level": 174}
+  },
+  "Jellicrown": {
+    "from": "Jellicent", "types": ["Water","Ghost"], "category": "Abyss Monarch", "height": 2.8, "weight": 200.0,
+    "stats": {"hp": 110, "attack": 60, "defense": 95, "spAttack": 110, "spDefense": 115, "speed": 70},
+    "abilities": ["Water Absorb", "Cursed Body"], "hiddenAbility": "Damp",
+    "evolution": {"method": "LevelNight", "level": 176}
+  },
+  "Alomatron": {
+    "from": "Alomomola", "types": ["Water","Fairy"], "category": "Guardian", "height": 1.6, "weight": 50.0,
+    "stats": {"hp": 165, "attack": 85, "defense": 105, "spAttack": 55, "spDefense": 75, "speed": 65},
+    "abilities": ["Healer", "Hydration"], "hiddenAbility": "Regenerator",
+    "evolution": {"method": "LevelKnowsMove", "level": 175, "move": "Healing Wish"}
+  },
+  "Voltarantula": {
+    "from": "Galvantula", "types": ["Bug","Electric"], "category": "Storm Spider", "height": 1.2, "weight": 30.0,
+    "stats": {"hp": 85, "attack": 77, "defense": 80, "spAttack": 122, "spDefense": 80, "speed": 108},
+    "abilities": ["Compound Eyes", "Unnerve"], "hiddenAbility": "Swarm",
+    "evolution": {"method": "LevelKnowsMove", "level": 175, "move": "Sticky Web"}
+  },
+  "Ferrospire": {
+    "from": "Ferrothorn", "types": ["Grass","Steel"], "category": "Iron Thorn", "height": 1.4, "weight": 180.0,
+    "stats": {"hp": 99, "attack": 114, "defense": 131, "spAttack": 69, "spDefense": 126, "speed": 30},
+    "abilities": ["Iron Barbs"], "hiddenAbility": "Anticipation",
+    "evolution": {"method": "LevelHoldingItem", "level": 176, "item": "Rocky Helmet"}
+  },
+  "Cosmogrey": {
+    "from": "Beheeyem", "types": ["Psychic","Electric"], "category": "Overmind", "height": 1.4, "weight": 50.0,
+    "stats": {"hp": 90, "attack": 75, "defense": 95, "spAttack": 145, "spDefense": 105, "speed": 55},
+    "abilities": ["Telepathy", "Synchronize"], "hiddenAbility": "Analytic",
+    "evolution": {"method": "LevelNight", "level": 178}
+  },
+  "Beartundra": {
+    "from": "Beartic", "types": ["Ice","Fighting"], "category": "Glacier Bear", "height": 3.2, "weight": 380.0,
+    "stats": {"hp": 105, "attack": 140, "defense": 105, "spAttack": 70, "spDefense": 105, "speed": 60},
+    "abilities": ["Snow Cloak", "Slush Rush"], "hiddenAbility": "Swift Swim",
+    "evolution": {"method": "LevelHoldingItem", "level": 178, "item": "Never-Melt Ice"}
+  },
+  "Cryohedron": {
+    "from": "Cryogonal", "types": ["Ice","Psychic"], "category": "Crystal Lattice", "height": 1.5, "weight": 220.0,
+    "stats": {"hp": 95, "attack": 50, "defense": 90, "spAttack": 110, "spDefense": 135, "speed": 115},
+    "abilities": ["Levitate"],
+    "evolution": {"method": "LevelAtLocation", "level": 178, "location": "Ice Rock"}
+  },
+  "Velocigor": {
+    "from": "Accelgor", "types": ["Bug"], "category": "Swift Shinobi", "height": 1.1, "weight": 30.0,
+    "stats": {"hp": 90, "attack": 70, "defense": 70, "spAttack": 115, "spDefense": 85, "speed": 145},
+    "abilities": ["Hydration", "Sticky Hold"], "hiddenAbility": "Unburden",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 176, "species": "Escavalier"}
+  },
+  "Fluxflounder": {
+    "from": "Stunfisk", "types": ["Ground","Electric"], "category": "Mud Trap", "height": 1.0, "weight": 22.0,
+    "stats": {"hp": 109, "attack": 81, "defense": 99, "spAttack": 106, "spDefense": 114, "speed": 42},
+    "abilities": ["Static", "Limber"], "hiddenAbility": "Sand Veil",
+    "evolution": {"method": "LevelInRain", "level": 172}
+  },
+  "Mienshifu": {
+    "from": "Mienshao", "types": ["Fighting"], "category": "Grand Master", "height": 1.7, "weight": 45.0,
+    "stats": {"hp": 80, "attack": 135, "defense": 80, "spAttack": 100, "spDefense": 80, "speed": 115},
+    "abilities": ["Inner Focus", "Regenerator"], "hiddenAbility": "Reckless",
+    "evolution": {"method": "LevelKnowsMove", "level": 180, "move": "Aura Sphere"}
+  },
+  "Drudrakon": {
+    "from": "Druddigon", "types": ["Dragon","Rock"], "category": "Cave Dragon", "height": 2.0, "weight": 200.0,
+    "stats": {"hp": 92, "attack": 135, "defense": 105, "spAttack": 65, "spDefense": 105, "speed": 63},
+    "abilities": ["Rough Skin", "Sheer Force"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelHoldingItem", "level": 180, "item": "Dragon Fang"}
+  },
+  "Colossurk": {
+    "from": "Golurk", "types": ["Ground","Ghost"], "category": "Colossus", "height": 3.6, "weight": 500.0,
+    "stats": {"hp": 104, "attack": 139, "defense": 95, "spAttack": 60, "spDefense": 95, "speed": 70},
+    "abilities": ["Iron Fist", "Klutz"], "hiddenAbility": "No Guard",
+    "evolution": {"method": "LevelKnowsMove", "level": 178, "move": "Dynamic Punch"}
+  },
+  "Bouffalanx": {
+    "from": "Bouffalant", "types": ["Normal","Ground"], "category": "Stampede", "height": 1.9, "weight": 150.0,
+    "stats": {"hp": 105, "attack": 135, "defense": 105, "spAttack": 45, "spDefense": 105, "speed": 75},
+    "abilities": ["Reckless", "Sap Sipper"], "hiddenAbility": "Soundproof",
+    "evolution": {"method": "LevelKnowsMove", "level": 176, "move": "Head Charge"}
+  },
+  "Imperavia": {
+    "from": "Braviary", "types": ["Normal","Flying"], "category": "Sky Emperor", "height": 1.9, "weight": 60.0,
+    "stats": {"hp": 100, "attack": 133, "defense": 95, "spAttack": 57, "spDefense": 100, "speed": 105},
+    "abilities": ["Keen Eye", "Sheer Force"], "hiddenAbility": "Defiant",
+    "evolution": {"method": "LevelDay", "level": 182}
+  },
+  "Carrionqueen": {
+    "from": "Mandibuzz", "types": ["Dark","Flying"], "category": "Bone Queen", "height": 1.5, "weight": 55.0,
+    "stats": {"hp": 110, "attack": 75, "defense": 115, "spAttack": 80, "spDefense": 105, "speed": 105},
+    "abilities": ["Big Pecks", "Overcoat"], "hiddenAbility": "Weak Armor",
+    "evolution": {"method": "LevelNight", "level": 182}
+  },
+  "Pyrovore": {
+    "from": "Heatmor", "types": ["Fire"], "category": "Furnace", "height": 1.7, "weight": 80.0,
+    "stats": {"hp": 95, "attack": 112, "defense": 86, "spAttack": 120, "spDefense": 86, "speed": 65},
+    "abilities": ["Gluttony", "Flash Fire"], "hiddenAbility": "White Smoke",
+    "evolution": {"method": "LevelAfterDefeating", "level": 176, "species": "Durant", "value": 3}
+  },
+  "Formicarch": {
+    "from": "Durant", "types": ["Bug","Steel"], "category": "Iron Queen", "height": 0.8, "weight": 70.0,
+    "stats": {"hp": 88, "attack": 119, "defense": 112, "spAttack": 48, "spDefense": 78, "speed": 119},
+    "abilities": ["Swarm", "Hustle"], "hiddenAbility": "Truant",
+    "evolution": {"method": "LevelAfterDefeating", "level": 176, "species": "Heatmor", "value": 3}
+  },
+  "Helioptera": {
+    "from": "Volcarona", "types": ["Bug","Fire"], "category": "Solar Flare", "height": 2.0, "weight": 65.0,
+    "stats": {"hp": 95, "attack": 60, "defense": 90, "spAttack": 135, "spDefense": 105, "speed": 115},
+    "abilities": ["Flame Body"], "hiddenAbility": "Swarm",
+    "evolution": {"method": "LevelDay", "level": 183}
+  },
+  "Cobaltarch": {
+    "from": "Cobalion", "types": ["Steel","Fighting"], "category": "Iron Resolve", "height": 2.4, "weight": 300.0,
+    "stats": {"hp": 106, "attack": 110, "defense": 129, "spAttack": 105, "spDefense": 97, "speed": 113},
+    "abilities": ["Justified"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 190, "species": "Keldeo"}
+  },
+  "Terrakhan": {
+    "from": "Terrakion", "types": ["Rock","Fighting"], "category": "Cavern Lord", "height": 2.2, "weight": 310.0,
+    "stats": {"hp": 106, "attack": 139, "defense": 110, "spAttack": 77, "spDefense": 115, "speed": 113},
+    "abilities": ["Justified"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 190, "species": "Keldeo"}
+  },
+  "Virizenith": {
+    "from": "Virizion", "types": ["Grass","Fighting"], "category": "Grassland Blade", "height": 2.4, "weight": 220.0,
+    "stats": {"hp": 106, "attack": 105, "defense": 97, "spAttack": 110, "spDefense": 129, "speed": 113},
+    "abilities": ["Justified"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 190, "species": "Keldeo"}
+  },
+  // Batch 6, Kalos: docs/plans/D14-proposals-kalos.md, approved by the user on 2026-10-26 (all 24; every default but
+  // question 2, Zygarde, whose design waits in D14-proposals-kalos-supplement.md: each evolves at 188 to 203, Kalos's
+  // own climb, Sylveon's end at 120 with the other Eeveelutions).
+  "Excavabbit": {
+    "from": "Diggersby", "types": ["Normal","Ground"], "category": "Excavator", "height": 1.4, "weight": 60.0,
+    "stats": {"hp": 100, "attack": 66, "defense": 97, "spAttack": 50, "spDefense": 97, "speed": 93},
+    "abilities": ["Pickup", "Cheek Pouch"], "hiddenAbility": "Huge Power",
+    "evolution": {"method": "LevelKnowsMove", "level": 188, "move": "Hammer Arm"}
+  },
+  "Blazemonarch": {
+    "from": "Pyroar", "types": ["Fire","Normal"], "category": "Sovereign", "height": 1.8, "weight": 110.0,
+    "stats": {"hp": 96, "attack": 78, "defense": 92, "spAttack": 119, "spDefense": 91, "speed": 111},
+    "abilities": ["Rivalry", "Unnerve"], "hiddenAbility": "Moxie",
+    "evolution": {"method": "LevelDay", "level": 190}
+  },
+  "Alpicorn": {
+    "from": "Gogoat", "types": ["Grass","Rock"], "category": "Summit", "height": 2.1, "weight": 140.0,
+    "stats": {"hp": 123, "attack": 110, "defense": 87, "spAttack": 97, "spDefense": 101, "speed": 82},
+    "abilities": ["Sap Sipper"], "hiddenAbility": "Grass Pelt",
+    "evolution": {"method": "LevelKnowsMove", "level": 190, "move": "Horn Leech"}
+  },
+  "Bambrawler": {
+    "from": "Pangoro", "types": ["Fighting","Dark"], "category": "Gang Boss", "height": 2.4, "weight": 180.0,
+    "stats": {"hp": 110, "attack": 134, "defense": 98, "spAttack": 69, "spDefense": 91, "speed": 73},
+    "abilities": ["Iron Fist", "Mold Breaker"], "hiddenAbility": "Scrappy",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 192, "species": "Pancham"}
+  },
+  "Majesthound": {
+    "from": "Furfrou", "types": ["Normal"], "category": "Royal Guard", "height": 1.5, "weight": 40.0,
+    "stats": {"hp": 95, "attack": 95, "defense": 85, "spAttack": 75, "spDefense": 90, "speed": 112},
+    "abilities": ["Fur Coat"],
+    "evolution": {"method": "FriendshipDay", "level": 190}
+  },
+  "Occulynx": {
+    "from": "Meowstic", "types": ["Psychic"], "category": "Unsealed", "height": 0.9, "weight": 14.0,
+    "stats": {"hp": 89, "attack": 48, "defense": 91, "spAttack": 108, "spDefense": 96, "speed": 114},
+    "abilities": ["Keen Eye", "Infiltrator"], "hiddenAbility": "Prankster",
+    "evolution": {"method": "LevelNight", "level": 190}
+  },
+  "Perfumelle": {
+    "from": "Aromatisse", "types": ["Fairy"], "category": "Perfumer", "height": 1.1, "weight": 22.0,
+    "stats": {"hp": 111, "attack": 72, "defense": 92, "spAttack": 119, "spDefense": 109, "speed": 39},
+    "abilities": ["Healer"], "hiddenAbility": "Aroma Veil",
+    "evolution": {"method": "LevelHoldingItem", "level": 194, "item": "Sachet"}
+  },
+  "Soufflair": {
+    "from": "Slurpuff", "types": ["Fairy"], "category": "Souffle", "height": 1.2, "weight": 9.0,
+    "stats": {"hp": 97, "attack": 95, "defense": 96, "spAttack": 100, "spDefense": 90, "speed": 82},
+    "abilities": ["Sweet Veil"], "hiddenAbility": "Unburden",
+    "evolution": {"method": "LevelHoldingItem", "level": 194, "item": "Whipped Dream"}
+  },
+  "Mesmerquid": {
+    "from": "Malamar", "types": ["Dark","Psychic"], "category": "Mind Thrall", "height": 2.0, "weight": 70.0,
+    "stats": {"hp": 101, "attack": 112, "defense": 103, "spAttack": 68, "spDefense": 90, "speed": 88},
+    "abilities": ["Contrary", "Suction Cups"], "hiddenAbility": "Infiltrator",
+    "evolution": {"method": "LevelKnowsMove", "level": 194, "move": "Topsy-Turvy"}
+  },
+  "Reefcolony": {
+    "from": "Barbaracle", "types": ["Rock","Water"], "category": "Colony", "height": 1.8, "weight": 150.0,
+    "stats": {"hp": 97, "attack": 120, "defense": 120, "spAttack": 54, "spDefense": 106, "speed": 83},
+    "abilities": ["Tough Claws", "Sniper"], "hiddenAbility": "Pickpocket",
+    "evolution": {"method": "LevelKnowsMove", "level": 194, "move": "Shell Smash"}
+  },
+  "Kelpdrake": {
+    "from": "Dragalge", "types": ["Poison","Dragon"], "category": "Toxic Kelp", "height": 2.4, "weight": 120.0,
+    "stats": {"hp": 90, "attack": 75, "defense": 105, "spAttack": 117, "spDefense": 123, "speed": 64},
+    "abilities": ["Poison Point", "Poison Touch"], "hiddenAbility": "Adaptability",
+    "evolution": {"method": "LevelInRain", "level": 196}
+  },
+  "Salvoclaw": {
+    "from": "Clawitzer", "types": ["Water","Dragon"], "category": "Battery", "height": 1.8, "weight": 60.0,
+    "stats": {"hp": 91, "attack": 83, "defense": 103, "spAttack": 135, "spDefense": 104, "speed": 64},
+    "abilities": ["Mega Launcher"],
+    "evolution": {"method": "LevelKnowsMove", "level": 196, "move": "Aura Sphere"}
+  },
+  "Coronafrill": {
+    "from": "Heliolisk", "types": ["Electric","Normal"], "category": "Corona", "height": 1.4, "weight": 32.0,
+    "stats": {"hp": 82, "attack": 60, "defense": 77, "spAttack": 124, "spDefense": 99, "speed": 119},
+    "abilities": ["Dry Skin", "Sand Veil"], "hiddenAbility": "Solar Power",
+    "evolution": {"method": "UseItem", "level": 194, "item": "Sun Stone"}
+  },
+  "Despotitan": {
+    "from": "Tyrantrum", "types": ["Rock","Dragon"], "category": "Emperor", "height": 3.2, "weight": 380.0,
+    "stats": {"hp": 96, "attack": 131, "defense": 124, "spAttack": 69, "spDefense": 89, "speed": 91},
+    "abilities": ["Strong Jaw"], "hiddenAbility": "Rock Head",
+    "evolution": {"method": "LevelHoldingItemDay", "level": 196, "item": "Rare Bone"}
+  },
+  "Borealosaur": {
+    "from": "Aurorus", "types": ["Rock","Ice"], "category": "Polar Night", "height": 3.4, "weight": 300.0,
+    "stats": {"hp": 123, "attack": 82, "defense": 102, "spAttack": 119, "spDefense": 102, "speed": 72},
+    "abilities": ["Refrigerate"], "hiddenAbility": "Snow Warning",
+    "evolution": {"method": "LevelHoldingItemNight", "level": 196, "item": "Rare Bone"}
+  },
+  "Faerieon": {
+    "from": "Sylveon", "types": ["Fairy"], "category": "Bond", "height": 1.2, "weight": 30.0,
+    "stats": {"hp": 105, "attack": 65, "defense": 90, "spAttack": 120, "spDefense": 130, "speed": 90},
+    "abilities": ["Cute Charm"], "hiddenAbility": "Pixilate",
+    "evolution": {"method": "LevelHoldingItem", "level": 120, "item": "Shiny Stone", "needsFriendship": true}
+  },
+  "Luchacondor": {
+    "from": "Hawlucha", "types": ["Fighting","Flying"], "category": "Title Belt", "height": 1.1, "weight": 35.0,
+    "stats": {"hp": 98, "attack": 112, "defense": 90, "spAttack": 74, "spDefense": 88, "speed": 118},
+    "abilities": ["Limber", "Unburden"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelKnowsMove", "level": 194, "move": "Flying Press"}
+  },
+  "Signalmus": {
+    "from": "Dedenne", "types": ["Electric","Fairy"], "category": "Transmitter", "height": 0.4, "weight": 5.0,
+    "stats": {"hp": 82, "attack": 73, "defense": 77, "spAttack": 96, "spDefense": 82, "speed": 101},
+    "abilities": ["Cheek Pouch", "Pickup"], "hiddenAbility": "Plus",
+    "evolution": {"method": "LevelKnowsMove", "level": 192, "move": "Nuzzle"}
+  },
+  "Druzarion": {
+    "from": "Carbink", "types": ["Rock","Fairy"], "category": "Geode", "height": 0.6, "weight": 20.0,
+    "stats": {"hp": 80, "attack": 70, "defense": 150, "spAttack": 70, "spDefense": 150, "speed": 60},
+    "abilities": ["Clear Body"], "hiddenAbility": "Sturdy",
+    "evolution": {"method": "LevelHoldingItem", "level": 196, "item": "Star Piece"}
+  },
+  "Chatelkey": {
+    "from": "Klefki", "types": ["Steel","Fairy"], "category": "Vault", "height": 0.4, "weight": 6.0,
+    "stats": {"hp": 82, "attack": 90, "defense": 106, "spAttack": 95, "spDefense": 102, "speed": 75},
+    "abilities": ["Prankster"], "hiddenAbility": "Magician",
+    "evolution": {"method": "LevelKnowsMove", "level": 198, "move": "Magic Room"}
+  },
+  "Sylvanshade": {
+    "from": "Trevenant", "types": ["Ghost","Grass"], "category": "Ancient Grove", "height": 2.2, "weight": 130.0,
+    "stats": {"hp": 100, "attack": 120, "defense": 96, "spAttack": 80, "spDefense": 92, "speed": 66},
+    "abilities": ["Natural Cure", "Frisk"], "hiddenAbility": "Harvest",
+    "evolution": {"method": "LevelKnowsMove", "level": 198, "move": "Forest's Curse"}
+  },
+  "Lanternhusk": {
+    "from": "Gourgeist", "types": ["Ghost","Grass"], "category": "Harvest Moon", "height": 1.8, "weight": 45.0,
+    "stats": {"hp": 90, "attack": 105, "defense": 122, "spAttack": 78, "spDefense": 90, "speed": 89},
+    "abilities": ["Pickup", "Frisk"], "hiddenAbility": "Insomnia",
+    "evolution": {"method": "LevelNight", "level": 198}
+  },
+  "Glacitadel": {
+    "from": "Avalugg", "types": ["Ice"], "category": "Glacier", "height": 2.6, "weight": 800.0,
+    "stats": {"hp": 120, "attack": 127, "defense": 184, "spAttack": 44, "spDefense": 81, "speed": 38},
+    "abilities": ["Own Tempo", "Ice Body"], "hiddenAbility": "Sturdy",
+    "evolution": {"method": "LevelHoldingItem", "level": 200, "item": "Never-Melt Ice"}
+  },
+  "Sonarwing": {
+    "from": "Noivern", "types": ["Flying","Dragon"], "category": "Sonic Boom", "height": 2.0, "weight": 120.0,
+    "stats": {"hp": 100, "attack": 90, "defense": 95, "spAttack": 97, "spDefense": 95, "speed": 123},
+    "abilities": ["Frisk", "Infiltrator"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelKnowsMove", "level": 203, "move": "Boomburst"}
+  },
+  // Batch 7, Alola: docs/plans/D14-proposals-alola.md, approved by the user on 2026-10-26 (all 28, every default:
+  // each evolves at 209 to 221, within Alola's climb, the island guardians at 225 as a ring). The Ultra Beasts' set (question 6, b) waits for its designs: D14-proposals-alola-supplement.md.
+  "Inspectoose": {
+    "from": "Gumshoos", "types": ["Normal","Dark"], "category": "Inspector", "height": 1.0, "weight": 22.0,
+    "stats": {"hp": 98, "attack": 125, "defense": 80, "spAttack": 55, "spDefense": 80, "speed": 60},
+    "abilities": ["Stakeout", "Strong Jaw"], "hiddenAbility": "Adaptability",
+    "evolution": {"method": "LevelDay", "level": 209}
+  },
+  "Glacipincer": {
+    "from": "Crabominable", "types": ["Fighting","Ice"], "category": "Glacier Fist", "height": 2.1, "weight": 240.0,
+    "stats": {"hp": 107, "attack": 142, "defense": 97, "spAttack": 62, "spDefense": 92, "speed": 58},
+    "abilities": ["Hyper Cutter", "Iron Fist"], "hiddenAbility": "Anger Point",
+    "evolution": {"method": "UseItem", "level": 218, "item": "Ice Stone"}
+  },
+  "Pollenoble": {
+    "from": "Ribombee", "types": ["Bug","Fairy"], "category": "Pollen Court", "height": 0.4, "weight": 1.0,
+    "stats": {"hp": 75, "attack": 55, "defense": 75, "spAttack": 115, "spDefense": 90, "speed": 134},
+    "abilities": ["Honey Gather", "Shield Dust"], "hiddenAbility": "Sweet Veil",
+    "evolution": {"method": "LevelKnowsMove", "level": 210, "move": "Pollen Puff"}
+  },
+  "Lupinacle": {
+    "from": "Lycanroc", "types": ["Rock"], "category": "Alpha Wolf", "height": 1.2, "weight": 45.0,
+    "stats": {"hp": 90, "attack": 130, "defense": 85, "spAttack": 55, "spDefense": 85, "speed": 122},
+    "abilities": ["Keen Eye", "Sand Rush"], "hiddenAbility": "Steadfast",
+    "evolution": {"method": "LevelDusk", "level": 216}
+  },
+  "Venomreef": {
+    "from": "Toxapex", "types": ["Poison","Water"], "category": "Reef Fortress", "height": 1.2, "weight": 30.0,
+    "stats": {"hp": 90, "attack": 73, "defense": 152, "spAttack": 73, "spDefense": 142, "speed": 45},
+    "abilities": ["Merciless", "Limber"], "hiddenAbility": "Regenerator",
+    "evolution": {"method": "LevelHoldingItem", "level": 220, "item": "Black Sludge"}
+  },
+  "Claysteed": {
+    "from": "Mudsdale", "types": ["Ground"], "category": "Clay Charger", "height": 3.0, "weight": 990.0,
+    "stats": {"hp": 110, "attack": 140, "defense": 110, "spAttack": 55, "spDefense": 105, "speed": 60},
+    "abilities": ["Own Tempo", "Stamina"], "hiddenAbility": "Inner Focus",
+    "evolution": {"method": "LevelInRain", "level": 214}
+  },
+  "Diveweaver": {
+    "from": "Araquanid", "types": ["Water","Bug"], "category": "Diving Bell", "height": 2.2, "weight": 110.0,
+    "stats": {"hp": 88, "attack": 95, "defense": 107, "spAttack": 60, "spDefense": 132, "speed": 52},
+    "abilities": ["Water Bubble"], "hiddenAbility": "Water Absorb",
+    "evolution": {"method": "LevelKnowsMove", "level": 212, "move": "Liquidation"}
+  },
+  "Orchimantis": {
+    "from": "Lurantis", "types": ["Grass","Fairy"], "category": "Orchid Mantis", "height": 1.3, "weight": 28.0,
+    "stats": {"hp": 85, "attack": 125, "defense": 100, "spAttack": 80, "spDefense": 105, "speed": 65},
+    "abilities": ["Leaf Guard"], "hiddenAbility": "Contrary",
+    "evolution": {"method": "LevelDay", "level": 213}
+  },
+  "Lumishroom": {
+    "from": "Shiinotic", "types": ["Grass","Fairy"], "category": "Fairy Ring", "height": 1.4, "weight": 18.0,
+    "stats": {"hp": 75, "attack": 45, "defense": 95, "spAttack": 115, "spDefense": 115, "speed": 40},
+    "abilities": ["Illuminate", "Effect Spore"], "hiddenAbility": "Rain Dish",
+    "evolution": {"method": "LevelNight", "level": 211}
+  },
+  "Smolderess": {
+    "from": "Salazzle", "types": ["Poison","Fire"], "category": "Empress", "height": 1.6, "weight": 32.0,
+    "stats": {"hp": 88, "attack": 64, "defense": 80, "spAttack": 131, "spDefense": 75, "speed": 122},
+    "abilities": ["Corrosion"], "hiddenAbility": "Oblivious",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 215, "species": "Salandit"}
+  },
+  "Huggrizzle": {
+    "from": "Bewear", "types": ["Normal","Fighting"], "category": "Embrace", "height": 2.6, "weight": 200.0,
+    "stats": {"hp": 130, "attack": 140, "defense": 100, "spAttack": 55, "spDefense": 85, "speed": 70},
+    "abilities": ["Fluffy", "Klutz"], "hiddenAbility": "Unnerve",
+    "evolution": {"method": "Friendship", "level": 216}
+  },
+  "Wreathfey": {
+    "from": "Comfey", "types": ["Fairy","Grass"], "category": "Garland", "height": 0.4, "weight": 1.0,
+    "stats": {"hp": 71, "attack": 52, "defense": 100, "spAttack": 107, "spDefense": 120, "speed": 115},
+    "abilities": ["Flower Veil", "Triage"], "hiddenAbility": "Natural Cure",
+    "evolution": {"method": "LevelKnowsMove", "level": 214, "move": "Floral Healing"}
+  },
+  "Arborsage": {
+    "from": "Oranguru", "types": ["Normal","Psychic"], "category": "Forest Elder", "height": 1.9, "weight": 110.0,
+    "stats": {"hp": 100, "attack": 60, "defense": 95, "spAttack": 115, "spDefense": 125, "speed": 75},
+    "abilities": ["Inner Focus", "Telepathy"], "hiddenAbility": "Symbiosis",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 215, "species": "Passimian"}
+  },
+  "Scrummian": {
+    "from": "Passimian", "types": ["Fighting"], "category": "Team Captain", "height": 2.3, "weight": 110.0,
+    "stats": {"hp": 110, "attack": 140, "defense": 100, "spAttack": 40, "spDefense": 80, "speed": 100},
+    "abilities": ["Receiver"], "hiddenAbility": "Defiant",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 215, "species": "Oranguru"}
+  },
+  "Shogunpod": {
+    "from": "Golisopod", "types": ["Bug","Water"], "category": "Hard Armour", "height": 2.5, "weight": 160.0,
+    "stats": {"hp": 95, "attack": 140, "defense": 140, "spAttack": 60, "spDefense": 105, "speed": 60},
+    "abilities": ["Emergency Exit"],
+    "evolution": {"method": "LevelKnowsMove", "level": 218, "move": "First Impression"}
+  },
+  "Sandcitadel": {
+    "from": "Palossand", "types": ["Ghost","Ground"], "category": "Sand Citadel", "height": 1.8, "weight": 400.0,
+    "stats": {"hp": 100, "attack": 75, "defense": 120, "spAttack": 120, "spDefense": 95, "speed": 50},
+    "abilities": ["Water Compaction"], "hiddenAbility": "Sand Veil",
+    "evolution": {"method": "LevelHoldingItem", "level": 213, "item": "Soft Sand"}
+  },
+  "Cucumbrawl": {
+    "from": "Pyukumuku", "types": ["Water","Fighting"], "category": "Sea Boxer", "height": 0.6, "weight": 5.0,
+    "stats": {"hp": 75, "attack": 90, "defense": 135, "spAttack": 30, "spDefense": 135, "speed": 25},
+    "abilities": ["Innards Out"], "hiddenAbility": "Unaware",
+    "evolution": {"method": "LevelKnowsMove", "level": 210, "move": "Counter"}
+  },
+  "Somnikoala": {
+    "from": "Komala", "types": ["Normal","Psychic"], "category": "Deep Sleep", "height": 0.8, "weight": 35.0,
+    "stats": {"hp": 85, "attack": 125, "defense": 85, "spAttack": 85, "spDefense": 105, "speed": 75},
+    "abilities": ["Comatose"],
+    "evolution": {"method": "LevelNight", "level": 216}
+  },
+  "Caldertoise": {
+    "from": "Turtonator", "types": ["Fire","Dragon"], "category": "Volcano", "height": 2.4, "weight": 300.0,
+    "stats": {"hp": 85, "attack": 88, "defense": 135, "spAttack": 111, "spDefense": 100, "speed": 46},
+    "abilities": ["Shell Armor"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 220, "species": "Drampa"}
+  },
+  "Rollocupine": {
+    "from": "Togedemaru", "types": ["Electric","Steel"], "category": "Lightning Rod", "height": 0.6, "weight": 9.0,
+    "stats": {"hp": 80, "attack": 113, "defense": 83, "spAttack": 40, "spDefense": 88, "speed": 111},
+    "abilities": ["Iron Barbs", "Lightning Rod"], "hiddenAbility": "Sturdy",
+    "evolution": {"method": "LevelKnowsMove", "level": 212, "move": "Zing Zap"}
+  },
+  "Masqueradoll": {
+    "from": "Mimikyu", "types": ["Ghost","Fairy"], "category": "Costume", "height": 0.5, "weight": 1.5,
+    "stats": {"hp": 75, "attack": 105, "defense": 95, "spAttack": 50, "spDefense": 120, "speed": 111},
+    "abilities": ["Cursed Body"],
+    "evolution": {"method": "LevelHoldingItemNight", "level": 217, "item": "Reaper Cloth"}
+  },
+  "Chromagnash": {
+    "from": "Bruxish", "types": ["Water","Psychic"], "category": "Gnash Fish", "height": 1.3, "weight": 35.0,
+    "stats": {"hp": 88, "attack": 120, "defense": 85, "spAttack": 80, "spDefense": 85, "speed": 97},
+    "abilities": ["Dazzling", "Strong Jaw"], "hiddenAbility": "Wonder Skin",
+    "evolution": {"method": "LevelKnowsMove", "level": 219, "move": "Psychic Fangs"}
+  },
+  "Elderdrake": {
+    "from": "Drampa", "types": ["Normal","Dragon"], "category": "Old Sage", "height": 3.6, "weight": 240.0,
+    "stats": {"hp": 98, "attack": 60, "defense": 95, "spAttack": 155, "spDefense": 101, "speed": 56},
+    "abilities": ["Berserk", "Sap Sipper"], "hiddenAbility": "Cloud Nine",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 220, "species": "Turtonator"}
+  },
+  "Galleonghast": {
+    "from": "Dhelmise", "types": ["Ghost","Grass"], "category": "Shipwreck", "height": 4.6, "weight": 300.0,
+    "stats": {"hp": 95, "attack": 141, "defense": 110, "spAttack": 96, "spDefense": 105, "speed": 50},
+    "abilities": ["Steelworker"],
+    "evolution": {"method": "LevelKnowsMove", "level": 221, "move": "Anchor Shot"}
+  },
+  "Kokonui": {
+    "from": "Tapu Koko", "types": ["Electric","Fairy"], "category": "Land Spirit", "height": 2.2, "weight": 30.0,
+    "stats": {"hp": 90, "attack": 130, "defense": 100, "spAttack": 110, "spDefense": 90, "speed": 140},
+    "abilities": ["Electric Surge"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "species": "Tapu Lele"}
+  },
+  "Lelenui": {
+    "from": "Tapu Lele", "types": ["Psychic","Fairy"], "category": "Land Spirit", "height": 1.6, "weight": 26.0,
+    "stats": {"hp": 90, "attack": 95, "defense": 90, "spAttack": 145, "spDefense": 130, "speed": 110},
+    "abilities": ["Psychic Surge"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "species": "Tapu Bulu"}
+  },
+  "Bulunui": {
+    "from": "Tapu Bulu", "types": ["Grass","Fairy"], "category": "Land Spirit", "height": 2.3, "weight": 70.0,
+    "stats": {"hp": 90, "attack": 145, "defense": 130, "spAttack": 95, "spDefense": 110, "speed": 90},
+    "abilities": ["Grassy Surge"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "species": "Tapu Fini"}
+  },
+  "Fininui": {
+    "from": "Tapu Fini", "types": ["Water","Fairy"], "category": "Land Spirit", "height": 1.7, "weight": 30.0,
+    "stats": {"hp": 90, "attack": 85, "defense": 130, "spAttack": 110, "spDefense": 145, "speed": 100},
+    "abilities": ["Misty Surge"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "species": "Tapu Koko"}
+  },
+  // Batch 8, Galar and Hisui: docs/plans/D14-proposals-galar.md, approved by the user on 2026-10-26 (all 42, Enamorata
+  // among them though Unova builds no forces of nature; every question at its default but 7 and 8, whose designs wait for
+  // D14-proposals-galar-supplement.md): each evolves within Galar's own climb, 226 to 240, the legendary sets at 244.
+  "Larderous": {
+    "from": "Greedent", "types": ["Normal","Ground"], "category": "Larder", "height": 0.9, "weight": 11.0,
+    "stats": {"hp": 130, "attack": 115, "defense": 110, "spAttack": 55, "spDefense": 90, "speed": 40},
+    "abilities": ["Cheek Pouch"], "hiddenAbility": "Gluttony",
+    "evolution": {"method": "LevelHoldingItem", "level": 226, "item": "Sitrus Berry"}
+  },
+  "Reynardine": {
+    "from": "Thievul", "types": ["Dark","Fairy"], "category": "Trickster", "height": 1.5, "weight": 26.0,
+    "stats": {"hp": 80, "attack": 58, "defense": 73, "spAttack": 112, "spDefense": 107, "speed": 105},
+    "abilities": ["Run Away", "Unburden"], "hiddenAbility": "Stakeout",
+    "evolution": {"method": "LevelNight", "level": 227}
+  },
+  "Thistlewisp": {
+    "from": "Eldegoss", "types": ["Grass","Flying"], "category": "Thistledown", "height": 0.8, "weight": 3.5,
+    "stats": {"hp": 75, "attack": 50, "defense": 100, "spAttack": 100, "spDefense": 130, "speed": 85},
+    "abilities": ["Cotton Down", "Regenerator"], "hiddenAbility": "Effect Spore",
+    "evolution": {"method": "LevelDay", "level": 226}
+  },
+  "Ramsworth": {
+    "from": "Dubwool", "types": ["Normal","Fighting"], "category": "Ram", "height": 1.6, "weight": 70.0,
+    "stats": {"hp": 87, "attack": 105, "defense": 115, "spAttack": 60, "spDefense": 100, "speed": 103},
+    "abilities": ["Fluffy", "Steadfast"], "hiddenAbility": "Bulletproof",
+    "evolution": {"method": "LevelKnowsMove", "level": 227, "move": "Cotton Guard"}
+  },
+  "Juggernaw": {
+    "from": "Drednaw", "types": ["Water","Rock"], "category": "Ironclad", "height": 1.4, "weight": 210.0,
+    "stats": {"hp": 105, "attack": 135, "defense": 105, "spAttack": 48, "spDefense": 88, "speed": 84},
+    "abilities": ["Strong Jaw", "Shell Armor"], "hiddenAbility": "Swift Swim",
+    "evolution": {"method": "LevelKnowsMove", "level": 228, "move": "Jaw Lock"}
+  },
+  "Voltcourser": {
+    "from": "Boltund", "types": ["Electric"], "category": "Courser", "height": 1.3, "weight": 45.0,
+    "stats": {"hp": 79, "attack": 110, "defense": 80, "spAttack": 90, "spDefense": 80, "speed": 131},
+    "abilities": ["Strong Jaw"], "hiddenAbility": "Competitive",
+    "evolution": {"method": "LevelDay", "level": 228}
+  },
+  "Pippinwyrm": {
+    "from": "Flapple", "types": ["Grass","Dragon"], "category": "Orchard Wyrm", "height": 0.6, "weight": 4.0,
+    "stats": {"hp": 80, "attack": 130, "defense": 85, "spAttack": 95, "spDefense": 80, "speed": 95},
+    "abilities": ["Ripen", "Gluttony"], "hiddenAbility": "Hustle",
+    "evolution": {"method": "UseItem", "level": 230, "item": "Tart Apple"}
+  },
+  "Crumbledrake": {
+    "from": "Appletun", "types": ["Grass","Dragon"], "category": "Crumble", "height": 0.9, "weight": 30.0,
+    "stats": {"hp": 120, "attack": 85, "defense": 100, "spAttack": 120, "spDefense": 100, "speed": 40},
+    "abilities": ["Ripen", "Gluttony"], "hiddenAbility": "Thick Fat",
+    "evolution": {"method": "UseItem", "level": 230, "item": "Sweet Apple"}
+  },
+  "Duneconda": {
+    "from": "Sandaconda", "types": ["Ground"], "category": "Dune Snake", "height": 5.0, "weight": 95.0,
+    "stats": {"hp": 87, "attack": 122, "defense": 130, "spAttack": 65, "spDefense": 95, "speed": 91},
+    "abilities": ["Sand Spit", "Shed Skin"], "hiddenAbility": "Sand Veil",
+    "evolution": {"method": "LevelKnowsMove", "level": 231, "move": "Coil"}
+  },
+  "Gannetgulp": {
+    "from": "Cramorant", "types": ["Flying","Water"], "category": "Gannet", "height": 1.2, "weight": 30.0,
+    "stats": {"hp": 85, "attack": 100, "defense": 80, "spAttack": 95, "spDefense": 105, "speed": 90},
+    "abilities": ["Cud Chew"],
+    "evolution": {"method": "LevelKnowsMove", "level": 229, "move": "Dive"}
+  },
+  "Rapierfin": {
+    "from": "Barraskewda", "types": ["Water","Steel"], "category": "Rapier", "height": 1.8, "weight": 50.0,
+    "stats": {"hp": 76, "attack": 138, "defense": 80, "spAttack": 60, "spDefense": 70, "speed": 146},
+    "abilities": ["Swift Swim"], "hiddenAbility": "Propeller Tail",
+    "evolution": {"method": "LevelInRain", "level": 230}
+  },
+  "Amplipunk": {
+    "from": "Toxtricity", "types": ["Electric","Poison"], "category": "Headliner", "height": 1.9, "weight": 55.0,
+    "stats": {"hp": 85, "attack": 103, "defense": 85, "spAttack": 129, "spDefense": 85, "speed": 95},
+    "abilities": ["Punk Rock", "Plus"], "hiddenAbility": "Technician",
+    "evolution": {"method": "LevelKnowsMove", "level": 232, "move": "Overdrive"}
+  },
+  "Furnapede": {
+    "from": "Centiskorch", "types": ["Fire","Bug"], "category": "Furnace", "height": 4.0, "weight": 170.0,
+    "stats": {"hp": 105, "attack": 125, "defense": 90, "spAttack": 95, "spDefense": 105, "speed": 80},
+    "abilities": ["Flash Fire", "White Smoke"], "hiddenAbility": "Flame Body",
+    "evolution": {"method": "LevelHoldingItem", "level": 232, "item": "Heat Rock"}
+  },
+  "Kraketsu": {
+    "from": "Grapploct", "types": ["Fighting","Water"], "category": "Grapple Master", "height": 2.0, "weight": 60.0,
+    "stats": {"hp": 95, "attack": 133, "defense": 105, "spAttack": 70, "spDefense": 95, "speed": 62},
+    "abilities": ["Limber"], "hiddenAbility": "Technician",
+    "evolution": {"method": "LevelKnowsMove", "level": 233, "move": "Octolock"}
+  },
+  "Urngeist": {
+    "from": "Polteageist", "types": ["Ghost","Fire"], "category": "Tea Urn", "height": 0.5, "weight": 4.0,
+    "stats": {"hp": 80, "attack": 65, "defense": 90, "spAttack": 144, "spDefense": 124, "speed": 85},
+    "abilities": ["Weak Armor"], "hiddenAbility": "Cursed Body",
+    "evolution": {"method": "UseItem", "level": 236, "item": "Cracked Pot"}
+  },
+  "Jarlkatt": {
+    "from": "Perrserker", "types": ["Steel","Fighting"], "category": "Jarl", "height": 1.1, "weight": 50.0,
+    "stats": {"hp": 90, "attack": 130, "defense": 110, "spAttack": 50, "spDefense": 80, "speed": 60},
+    "abilities": ["Battle Armor", "Tough Claws"], "hiddenAbility": "Steely Spirit",
+    "evolution": {"method": "LevelKnowsMove", "level": 229, "move": "Iron Head"}
+  },
+  "Wraithreef": {
+    "from": "Cursola", "types": ["Ghost","Water"], "category": "Dead Reef", "height": 1.4, "weight": 2.0,
+    "stats": {"hp": 85, "attack": 95, "defense": 80, "spAttack": 150, "spDefense": 135, "speed": 45},
+    "abilities": ["Weak Armor"], "hiddenAbility": "Perish Body",
+    "evolution": {"method": "LevelNight", "level": 234}
+  },
+  "Paladrake": {
+    "from": "Sirfetch'd", "types": ["Fighting","Steel"], "category": "Paladin Duck", "height": 1.0, "weight": 140.0,
+    "stats": {"hp": 82, "attack": 140, "defense": 105, "spAttack": 68, "spDefense": 97, "speed": 95},
+    "abilities": ["Steadfast"], "hiddenAbility": "Scrappy",
+    "evolution": {"method": "CriticalHits", "level": 234, "value": 3}
+  },
+  "Runedolmen": {
+    "from": "Runerigus", "types": ["Ground","Ghost"], "category": "Dolmen", "height": 2.2, "weight": 120.0,
+    "stats": {"hp": 88, "attack": 105, "defense": 150, "spAttack": 70, "spDefense": 115, "speed": 35},
+    "abilities": ["Wandering Spirit"],
+    "evolution": {"method": "LevelAfterDamage", "level": 234, "location": "Stone Arch", "value": 49}
+  },
+  "Patisserene": {
+    "from": "Alcremie", "types": ["Fairy"], "category": "Gateau", "height": 0.6, "weight": 1.5,
+    "stats": {"hp": 85, "attack": 60, "defense": 90, "spAttack": 125, "spDefense": 131, "speed": 84},
+    "abilities": ["Sweet Veil"], "hiddenAbility": "Aroma Veil",
+    "evolution": {"method": "SpinHoldingItem", "level": 232, "item": "Love Sweet"}
+  },
+  "Phalanxion": {
+    "from": "Falinks", "types": ["Fighting","Steel"], "category": "Phalanx", "height": 3.6, "weight": 90.0,
+    "stats": {"hp": 80, "attack": 120, "defense": 115, "spAttack": 70, "spDefense": 80, "speed": 85},
+    "abilities": ["Battle Armor"], "hiddenAbility": "Defiant",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 233, "species": "Falinks"}
+  },
+  "Voltechinus": {
+    "from": "Pincurchin", "types": ["Electric","Water"], "category": "Storm Urchin", "height": 0.6, "weight": 6.0,
+    "stats": {"hp": 78, "attack": 106, "defense": 105, "spAttack": 106, "spDefense": 95, "speed": 25},
+    "abilities": ["Lightning Rod"], "hiddenAbility": "Electric Surge",
+    "evolution": {"method": "LevelKnowsMove", "level": 229, "move": "Zing Zap"}
+  },
+  "Auroramoth": {
+    "from": "Frosmoth", "types": ["Ice","Bug"], "category": "Aurora Moth", "height": 1.7, "weight": 55.0,
+    "stats": {"hp": 85, "attack": 65, "defense": 80, "spAttack": 140, "spDefense": 100, "speed": 85},
+    "abilities": ["Shield Dust"], "hiddenAbility": "Ice Scales",
+    "evolution": {"method": "FriendshipNight", "level": 235}
+  },
+  "Henjourner": {
+    "from": "Stonjourner", "types": ["Rock","Psychic"], "category": "Henge", "height": 3.0, "weight": 700.0,
+    "stats": {"hp": 110, "attack": 135, "defense": 135, "spAttack": 40, "spDefense": 60, "speed": 70},
+    "abilities": ["Power Spot"],
+    "evolution": {"method": "LevelDusk", "level": 235}
+  },
+  "Floeguin": {
+    "from": "Eiscue", "types": ["Ice","Water"], "category": "Ice Floe", "height": 1.7, "weight": 140.0,
+    "stats": {"hp": 90, "attack": 95, "defense": 115, "spAttack": 75, "spDefense": 100, "speed": 75},
+    "abilities": ["Slush Rush"],
+    "evolution": {"method": "LevelAtLocation", "level": 235, "location": "Ice Rock"}
+  },
+  "Majordomee": {
+    "from": "Indeedee", "types": ["Psychic","Normal"], "category": "Majordomo", "height": 1.2, "weight": 40.0,
+    "stats": {"hp": 80, "attack": 65, "defense": 80, "spAttack": 120, "spDefense": 105, "speed": 105},
+    "abilities": ["Inner Focus", "Synchronize"], "hiddenAbility": "Psychic Surge",
+    "evolution": {"method": "FriendshipDay", "level": 236}
+  },
+  "Gorgehog": {
+    "from": "Morpeko", "types": ["Electric","Dark"], "category": "Gorging", "height": 0.6, "weight": 8.0,
+    "stats": {"hp": 78, "attack": 110, "defense": 73, "spAttack": 80, "spDefense": 73, "speed": 102},
+    "abilities": ["Cheek Pouch"],
+    "evolution": {"method": "LevelKnowsMove", "level": 231, "move": "Aura Wheel"}
+  },
+  "Verdigrand": {
+    "from": "Copperajah", "types": ["Steel","Ground"], "category": "Patina", "height": 3.6, "weight": 900.0,
+    "stats": {"hp": 132, "attack": 140, "defense": 89, "spAttack": 80, "spDefense": 89, "speed": 50},
+    "abilities": ["Sheer Force"], "hiddenAbility": "Heavy Metal",
+    "evolution": {"method": "LevelInRain", "level": 236}
+  },
+  "Fulgurex": {
+    "from": "Dracozolt", "types": ["Electric","Dragon"], "category": "Fossil", "height": 2.3, "weight": 250.0,
+    "stats": {"hp": 105, "attack": 115, "defense": 100, "spAttack": 80, "spDefense": 90, "speed": 95},
+    "abilities": ["Volt Absorb", "Hustle"], "hiddenAbility": "Sand Rush",
+    "evolution": {"method": "LevelKnowsMove", "level": 238, "move": "Bolt Beak"}
+  },
+  "Glacivolt": {
+    "from": "Arctozolt", "types": ["Electric","Ice"], "category": "Fossil", "height": 2.8, "weight": 200.0,
+    "stats": {"hp": 105, "attack": 115, "defense": 100, "spAttack": 100, "spDefense": 90, "speed": 75},
+    "abilities": ["Volt Absorb", "Static"], "hiddenAbility": "Slush Rush",
+    "evolution": {"method": "LevelKnowsMove", "level": 238, "move": "Bolt Beak"}
+  },
+  "Abyssaurus": {
+    "from": "Dracovish", "types": ["Water","Dragon"], "category": "Fossil", "height": 2.8, "weight": 280.0,
+    "stats": {"hp": 105, "attack": 105, "defense": 110, "spAttack": 70, "spDefense": 100, "speed": 95},
+    "abilities": ["Water Absorb", "Strong Jaw"], "hiddenAbility": "Sand Rush",
+    "evolution": {"method": "LevelKnowsMove", "level": 238, "move": "Fishious Rend"}
+  },
+  "Glacichthys": {
+    "from": "Arctovish", "types": ["Water","Ice"], "category": "Fossil", "height": 2.5, "weight": 230.0,
+    "stats": {"hp": 105, "attack": 105, "defense": 110, "spAttack": 90, "spDefense": 100, "speed": 75},
+    "abilities": ["Water Absorb", "Ice Body"], "hiddenAbility": "Slush Rush",
+    "evolution": {"method": "LevelKnowsMove", "level": 238, "move": "Fishious Rend"}
+  },
+  "Regifulgur": {
+    "from": "Regieleki", "types": ["Electric"], "category": "Electron", "height": 1.5, "weight": 180.0,
+    "stats": {"hp": 100, "attack": 110, "defense": 75, "spAttack": 110, "spDefense": 65, "speed": 200},
+    "abilities": ["Transistor"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Regigigas"}
+  },
+  "Regidraconis": {
+    "from": "Regidrago", "types": ["Dragon"], "category": "Dragon Orb", "height": 2.6, "weight": 260.0,
+    "stats": {"hp": 200, "attack": 110, "defense": 75, "spAttack": 110, "spDefense": 75, "speed": 90},
+    "abilities": ["Dragon's Maw"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Regigigas"}
+  },
+  "Hoarsteed": {
+    "from": "Glastrier", "types": ["Ice"], "category": "Hoarfrost", "height": 2.6, "weight": 1000.0,
+    "stats": {"hp": 115, "attack": 155, "defense": 140, "spAttack": 65, "spDefense": 125, "speed": 60},
+    "abilities": ["Chilling Neigh"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Calyrex"}
+  },
+  "Shadesteed": {
+    "from": "Spectrier", "types": ["Ghost"], "category": "Shade", "height": 2.4, "weight": 50.0,
+    "stats": {"hp": 115, "attack": 65, "defense": 85, "spAttack": 155, "spDefense": 100, "speed": 140},
+    "abilities": ["Grim Neigh"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Calyrex"}
+  },
+  "Wyrdstag": {
+    "from": "Wyrdeer", "types": ["Normal","Psychic"], "category": "Wyrd Stag", "height": 2.2, "weight": 130.0,
+    "stats": {"hp": 108, "attack": 110, "defense": 92, "spAttack": 110, "spDefense": 100, "speed": 80},
+    "abilities": ["Intimidate", "Frisk"], "hiddenAbility": "Sap Sipper",
+    "evolution": {"method": "LevelAfterMoveUses", "level": 238, "move": "Psyshield Bash", "value": 20}
+  },
+  "Halberdon": {
+    "from": "Kleavor", "types": ["Bug","Rock"], "category": "Halberd", "height": 2.2, "weight": 130.0,
+    "stats": {"hp": 90, "attack": 145, "defense": 110, "spAttack": 45, "spDefense": 90, "speed": 100},
+    "abilities": ["Swarm", "Sheer Force"], "hiddenAbility": "Sharpness",
+    "evolution": {"method": "UseItem", "level": 238, "item": "Black Augurite"}
+  },
+  "Shoalwraith": {
+    "from": "Basculegion", "types": ["Water","Ghost"], "category": "Shoal", "height": 3.8, "weight": 140.0,
+    "stats": {"hp": 120, "attack": 117, "defense": 90, "spAttack": 85, "spDefense": 100, "speed": 88},
+    "abilities": ["Swift Swim", "Adaptability"], "hiddenAbility": "Mold Breaker",
+    "evolution": {"method": "LevelAfterRecoil", "level": 238, "value": 294}
+  },
+  "Clifflasher": {
+    "from": "Sneasler", "types": ["Fighting","Poison"], "category": "Cliff Climber", "height": 1.6, "weight": 60.0,
+    "stats": {"hp": 90, "attack": 140, "defense": 85, "spAttack": 40, "spDefense": 100, "speed": 135},
+    "abilities": ["Pressure", "Unburden"], "hiddenAbility": "Poison Touch",
+    "evolution": {"method": "LevelHoldingItemDay", "level": 240, "item": "Razor Claw"}
+  },
+  "Spinarmada": {
+    "from": "Overqwil", "types": ["Dark","Poison"], "category": "Armada", "height": 3.0, "weight": 80.0,
+    "stats": {"hp": 95, "attack": 130, "defense": 105, "spAttack": 65, "spDefense": 95, "speed": 100},
+    "abilities": ["Poison Point", "Swift Swim"], "hiddenAbility": "Intimidate",
+    "evolution": {"method": "LevelKnowsMove", "level": 238, "move": "Barb Barrage"}
+  },
+  "Enamorata": {
+    "from": "Enamorus", "types": ["Fairy","Flying"], "category": "Love-Hate", "height": 2.0, "weight": 60.0,
+    "stats": {"hp": 94, "attack": 120, "defense": 90, "spAttack": 145, "spDefense": 100, "speed": 111},
+    "abilities": ["Cute Charm"], "hiddenAbility": "Contrary",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 244, "species": "Landorus"}
+  },
+
+  // Batch 9, Paldea: docs/plans/D14-proposals-paldea.md, approved by the user on 2026-10-26 (all 39 designs, every question
+  // at its default but 3, 4 and 6, whose designs are D14-proposals-paldea-supplement.md's): each evolves within Paldea's climb,
+  // 244 to 256, the Treasures of Ruin a ring at 258.
+  "Trufflord": {
+    "from": "Oinkologne", "types": ["Normal","Ground"], "category": "Truffle Lord", "height": 1.4, "weight": 170.0,
+    "stats": {"hp": 120, "attack": 120, "defense": 95, "spAttack": 59, "spDefense": 100, "speed": 75},
+    "abilities": ["Lingering Aroma", "Gluttony"], "hiddenAbility": "Thick Fat",
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Earth Power"}
+  },
+  "Fortarach": {
+    "from": "Spidops", "types": ["Bug","Steel"], "category": "Fortress", "height": 1.4, "weight": 40.0,
+    "stats": {"hp": 85, "attack": 94, "defense": 112, "spAttack": 52, "spDefense": 101, "speed": 40},
+    "abilities": ["Insomnia"], "hiddenAbility": "Stakeout",
+    "evolution": {"method": "LevelKnowsMove", "level": 244, "move": "Sticky Web"}
+  },
+  "Locustorm": {
+    "from": "Lokix", "types": ["Bug","Dark"], "category": "Locust Storm", "height": 1.3, "weight": 26.0,
+    "stats": {"hp": 86, "attack": 122, "defense": 88, "spAttack": 52, "spDefense": 80, "speed": 102},
+    "abilities": ["Swarm"], "hiddenAbility": "Tinted Lens",
+    "evolution": {"method": "LevelNight", "level": 246}
+  },
+  "Squeakshire": {
+    "from": "Maushold", "types": ["Normal","Fairy"], "category": "Hamlet", "height": 0.5, "weight": 5.0,
+    "stats": {"hp": 94, "attack": 90, "defense": 90, "spAttack": 70, "spDefense": 90, "speed": 116},
+    "abilities": ["Friend Guard", "Cheek Pouch"], "hiddenAbility": "Technician",
+    "evolution": {"method": "FriendshipDay", "level": 246}
+  },
+  "Brioschund": {
+    "from": "Dachsbun", "types": ["Fairy","Fire"], "category": "Bakery", "height": 0.8, "weight": 25.0,
+    "stats": {"hp": 87, "attack": 95, "defense": 120, "spAttack": 60, "spDefense": 95, "speed": 100},
+    "abilities": ["Well-Baked Body"], "hiddenAbility": "Aroma Veil",
+    "evolution": {"method": "LevelHoldingItem", "level": 246, "item": "Charcoal"}
+  },
+  "Bossquawk": {
+    "from": "Squawkabilly", "types": ["Normal","Flying"], "category": "Gang Boss", "height": 0.9, "weight": 5.0,
+    "stats": {"hp": 92, "attack": 116, "defense": 76, "spAttack": 45, "spDefense": 71, "speed": 97},
+    "abilities": ["Intimidate", "Hustle"], "hiddenAbility": "Guts",
+    "evolution": {"method": "LevelKnowsMove", "level": 244, "move": "Taunt"}
+  },
+  "Pyropaladin": {
+    "from": "Armarouge", "types": ["Fire","Psychic"], "category": "Fire Paladin", "height": 1.8, "weight": 120.0,
+    "stats": {"hp": 100, "attack": 60, "defense": 100, "spAttack": 140, "spDefense": 110, "speed": 90},
+    "abilities": ["Flash Fire"], "hiddenAbility": "Weak Armor",
+    "evolution": {"method": "LevelHoldingItem", "level": 252, "item": "Auspicious Armor"}
+  },
+  "Duskenblade": {
+    "from": "Ceruledge", "types": ["Fire","Ghost"], "category": "Grave Blade", "height": 1.9, "weight": 85.0,
+    "stats": {"hp": 95, "attack": 140, "defense": 100, "spAttack": 60, "spDefense": 105, "speed": 100},
+    "abilities": ["Flash Fire"], "hiddenAbility": "Weak Armor",
+    "evolution": {"method": "LevelHoldingItem", "level": 252, "item": "Malicious Armor"}
+  },
+  "Thunderbelly": {
+    "from": "Bellibolt", "types": ["Electric","Water"], "category": "Storm Frog", "height": 1.5, "weight": 160.0,
+    "stats": {"hp": 119, "attack": 74, "defense": 106, "spAttack": 128, "spDefense": 98, "speed": 50},
+    "abilities": ["Electromorphosis", "Static"], "hiddenAbility": "Damp",
+    "evolution": {"method": "LevelInRain", "level": 248}
+  },
+  "Terawattrel": {
+    "from": "Kilowattrel", "types": ["Electric","Flying"], "category": "Storm Glider", "height": 1.8, "weight": 50.0,
+    "stats": {"hp": 90, "attack": 70, "defense": 85, "spAttack": 120, "spDefense": 80, "speed": 125},
+    "abilities": ["Wind Power", "Volt Absorb"], "hiddenAbility": "Competitive",
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Hurricane"}
+  },
+  "Mastiffdon": {
+    "from": "Mabosstiff", "types": ["Dark"], "category": "Don", "height": 1.4, "weight": 90.0,
+    "stats": {"hp": 95, "attack": 135, "defense": 100, "spAttack": 60, "spDefense": 100, "speed": 95},
+    "abilities": ["Intimidate", "Guard Dog"], "hiddenAbility": "Stakeout",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 250, "species": "Maschiff"}
+  },
+  "Graffitape": {
+    "from": "Grafaiai", "types": ["Poison","Normal"], "category": "Toxic Artist", "height": 1.0, "weight": 40.0,
+    "stats": {"hp": 83, "attack": 105, "defense": 85, "spAttack": 90, "spDefense": 87, "speed": 115},
+    "abilities": ["Unburden", "Poison Touch"], "hiddenAbility": "Prankster",
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Knock Off"}
+  },
+  "Thornwraith": {
+    "from": "Brambleghast", "types": ["Grass","Ghost"], "category": "Dust Devil", "height": 1.6, "weight": 10.0,
+    "stats": {"hp": 85, "attack": 125, "defense": 90, "spAttack": 80, "spDefense": 85, "speed": 95},
+    "abilities": ["Wind Rider"], "hiddenAbility": "Infiltrator",
+    "evolution": {"method": "LevelDay", "level": 248}
+  },
+  "Myceliarch": {
+    "from": "Toedscruel", "types": ["Ground","Grass"], "category": "Mycelium", "height": 2.3, "weight": 80.0,
+    "stats": {"hp": 100, "attack": 80, "defense": 90, "spAttack": 95, "spDefense": 120, "speed": 110},
+    "abilities": ["Mycelium Might"],
+    "evolution": {"method": "LevelNight", "level": 252}
+  },
+  "Klawlossus": {
+    "from": "Klawf", "types": ["Rock","Steel"], "category": "Cliff Ambush", "height": 1.8, "weight": 140.0,
+    "stats": {"hp": 90, "attack": 115, "defense": 125, "spAttack": 35, "spDefense": 85, "speed": 80},
+    "abilities": ["Anger Shell", "Shell Armor"], "hiddenAbility": "Regenerator",
+    "evolution": {"method": "LevelKnowsMove", "level": 246, "move": "Guillotine"}
+  },
+  "Habanerogue": {
+    "from": "Scovillain", "types": ["Grass","Fire"], "category": "Ghost Pepper", "height": 1.2, "weight": 25.0,
+    "stats": {"hp": 85, "attack": 118, "defense": 85, "spAttack": 118, "spDefense": 80, "speed": 80},
+    "abilities": ["Chlorophyll", "Insomnia"], "hiddenAbility": "Moody",
+    "evolution": {"method": "UseItem", "level": 248, "item": "Fire Stone"}
+  },
+  "Khepristar": {
+    "from": "Rabsca", "types": ["Bug","Psychic"], "category": "Sun Roller", "height": 0.6, "weight": 8.0,
+    "stats": {"hp": 95, "attack": 50, "defense": 100, "spAttack": 135, "spDefense": 115, "speed": 55},
+    "abilities": ["Synchronize"], "hiddenAbility": "Telepathy",
+    "evolution": {"method": "LevelDay", "level": 246}
+  },
+  "Mirastrich": {
+    "from": "Espathra", "types": ["Psychic","Fairy"], "category": "Mirage", "height": 2.3, "weight": 120.0,
+    "stats": {"hp": 105, "attack": 60, "defense": 85, "spAttack": 121, "spDefense": 85, "speed": 105},
+    "abilities": ["Opportunist", "Frisk"], "hiddenAbility": "Speed Boost",
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Lumina Crash"}
+  },
+  "Wugsextet": {
+    "from": "Wugtrio", "types": ["Water","Ground"], "category": "Eel Colony", "height": 1.5, "weight": 12.0,
+    "stats": {"hp": 75, "attack": 110, "defense": 70, "spAttack": 50, "spDefense": 80, "speed": 120},
+    "abilities": ["Gooey", "Rattled"], "hiddenAbility": "Sand Veil",
+    "evolution": {"method": "LevelKnowsMove", "level": 244, "move": "Triple Dive"}
+  },
+  "Bomberon": {
+    "from": "Bombirdier", "types": ["Flying","Dark"], "category": "Air Raid", "height": 1.9, "weight": 60.0,
+    "stats": {"hp": 90, "attack": 123, "defense": 100, "spAttack": 60, "spDefense": 100, "speed": 92},
+    "abilities": ["Big Pecks", "Keen Eye"], "hiddenAbility": "Rocky Payload",
+    "evolution": {"method": "LevelHoldingItem", "level": 248, "item": "Hard Stone"}
+  },
+  "Turbovroom": {
+    "from": "Revavroom", "types": ["Steel","Poison"], "category": "Turbo", "height": 2.2, "weight": 180.0,
+    "stats": {"hp": 95, "attack": 134, "defense": 105, "spAttack": 54, "spDefense": 92, "speed": 100},
+    "abilities": ["Overcoat"], "hiddenAbility": "Filter",
+    "evolution": {"method": "LevelKnowsMove", "level": 250, "move": "Spin Out"}
+  },
+  "Velocidrake": {
+    "from": "Cyclizar", "types": ["Dragon","Normal"], "category": "Steed", "height": 2.0, "weight": 90.0,
+    "stats": {"hp": 90, "attack": 105, "defense": 90, "spAttack": 85, "spDefense": 90, "speed": 121},
+    "abilities": ["Shed Skin"], "hiddenAbility": "Regenerator",
+    "evolution": {"method": "FriendshipDay", "level": 250}
+  },
+  "Orthobore": {
+    "from": "Orthworm", "types": ["Steel","Ground"], "category": "Tunnel Bore", "height": 3.2, "weight": 450.0,
+    "stats": {"hp": 100, "attack": 105, "defense": 145, "spAttack": 60, "spDefense": 80, "speed": 70},
+    "abilities": ["Earth Eater"], "hiddenAbility": "Sand Veil",
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Earthquake"}
+  },
+  "Geodiadem": {
+    "from": "Glimmora", "types": ["Rock","Poison"], "category": "Gem Bloom", "height": 1.9, "weight": 70.0,
+    "stats": {"hp": 98, "attack": 55, "defense": 100, "spAttack": 140, "spDefense": 111, "speed": 96},
+    "abilities": ["Toxic Debris"], "hiddenAbility": "Corrosion",
+    "evolution": {"method": "LevelHoldingItem", "level": 252, "item": "Star Piece"}
+  },
+  "Barrowhound": {
+    "from": "Houndstone", "types": ["Ghost"], "category": "Barrow Guard", "height": 2.4, "weight": 25.0,
+    "stats": {"hp": 92, "attack": 116, "defense": 110, "spAttack": 60, "spDefense": 107, "speed": 83},
+    "abilities": ["Sand Rush"], "hiddenAbility": "Fluffy",
+    "evolution": {"method": "LevelNight", "level": 248}
+  },
+  "Flamenkick": {
+    "from": "Flamigo", "types": ["Flying","Fighting"], "category": "Flamenco", "height": 2.0, "weight": 50.0,
+    "stats": {"hp": 92, "attack": 125, "defense": 94, "spAttack": 75, "spDefense": 94, "speed": 100},
+    "abilities": ["Scrappy", "Tangled Feet"], "hiddenAbility": "Costar",
+    "evolution": {"method": "LevelKnowsMove", "level": 250, "move": "Brave Bird"}
+  },
+  "Cetiberg": {
+    "from": "Cetitan", "types": ["Ice"], "category": "Iceberg Whale", "height": 5.4, "weight": 950.0,
+    "stats": {"hp": 170, "attack": 125, "defense": 95, "spAttack": 45, "spDefense": 85, "speed": 80},
+    "abilities": ["Thick Fat", "Slush Rush"], "hiddenAbility": "Sheer Force",
+    "evolution": {"method": "UseItem", "level": 252, "item": "Ice Stone"}
+  },
+  "Sashimaru": {
+    "from": "Veluza", "types": ["Water","Psychic"], "category": "Bladefin", "height": 3.2, "weight": 120.0,
+    "stats": {"hp": 100, "attack": 122, "defense": 88, "spAttack": 88, "spDefense": 85, "speed": 75},
+    "abilities": ["Mold Breaker"], "hiddenAbility": "Sharpness",
+    "evolution": {"method": "LevelKnowsMove", "level": 246, "move": "Fillet Away"}
+  },
+  "Grandozo": {
+    "from": "Dondozo", "types": ["Water"], "category": "Great Catfish", "height": 15.0, "weight": 330.0,
+    "stats": {"hp": 150, "attack": 115, "defense": 125, "spAttack": 65, "spDefense": 100, "speed": 45},
+    "abilities": ["Unaware", "Oblivious"], "hiddenAbility": "Water Veil",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 250, "species": "Tatsugiri"}
+  },
+  "Tatsushogun": {
+    "from": "Tatsugiri", "types": ["Dragon","Water"], "category": "Admiral", "height": 0.5, "weight": 14.0,
+    "stats": {"hp": 88, "attack": 50, "defense": 85, "spAttack": 135, "spDefense": 105, "speed": 92},
+    "abilities": ["Commander"], "hiddenAbility": "Storm Drain",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 250, "species": "Dondozo"}
+  },
+  "Clodkaiser": {
+    "from": "Clodsire", "types": ["Poison","Ground"], "category": "Bog Emperor", "height": 2.3, "weight": 330.0,
+    "stats": {"hp": 140, "attack": 95, "defense": 90, "spAttack": 50, "spDefense": 110, "speed": 25},
+    "abilities": ["Poison Point", "Water Absorb"], "hiddenAbility": "Unaware",
+    "evolution": {"method": "LevelHoldingItem", "level": 244, "item": "Poison Barb"}
+  },
+  "Farigigiraf": {
+    "from": "Farigiraf", "types": ["Normal","Psychic"], "category": "Twin Mind", "height": 4.0, "weight": 220.0,
+    "stats": {"hp": 120, "attack": 100, "defense": 95, "spAttack": 120, "spDefense": 95, "speed": 70},
+    "abilities": ["Cud Chew", "Armor Tail"], "hiddenAbility": "Sap Sipper",
+    "evolution": {"method": "LevelKnowsMove", "level": 252, "move": "Twin Beam"}
+  },
+  "Dunsprawl": {
+    "from": "Dudunsparce", "types": ["Normal"], "category": "Land Serpent", "height": 5.0, "weight": 60.0,
+    "stats": {"hp": 125, "attack": 110, "defense": 100, "spAttack": 95, "spDefense": 100, "speed": 70},
+    "abilities": ["Serene Grace", "Run Away"], "hiddenAbility": "Rattled",
+    "evolution": {"method": "LevelKnowsMove", "level": 252, "move": "Hyper Drill"}
+  },
+  "Bullionaire": {
+    "from": "Gholdengo", "types": ["Steel","Ghost"], "category": "Treasure Hoard", "height": 1.5, "weight": 45.0,
+    "stats": {"hp": 102, "attack": 60, "defense": 100, "spAttack": 138, "spDefense": 106, "speed": 94},
+    "abilities": ["Good as Gold"],
+    "evolution": {"method": "LevelWithItemsInBag", "level": 256, "item": "Gimmighoul Coin", "value": 999}
+  },
+  "Tabletruin": {
+    "from": "Wo-Chien", "types": ["Dark","Grass"], "category": "Ruinous", "height": 2.0, "weight": 110.0,
+    "stats": {"hp": 105, "attack": 95, "defense": 115, "spAttack": 115, "spDefense": 145, "speed": 85},
+    "abilities": ["Tablets of Ruin"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Chien-Pao"}
+  },
+  "Swordruin": {
+    "from": "Chien-Pao", "types": ["Dark","Ice"], "category": "Ruinous", "height": 2.4, "weight": 200.0,
+    "stats": {"hp": 100, "attack": 135, "defense": 100, "spAttack": 95, "spDefense": 90, "speed": 140},
+    "abilities": ["Sword of Ruin"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Ting-Lu"}
+  },
+  "Vesselruin": {
+    "from": "Ting-Lu", "types": ["Dark","Ground"], "category": "Ruinous", "height": 3.2, "weight": 900.0,
+    "stats": {"hp": 160, "attack": 130, "defense": 135, "spAttack": 60, "spDefense": 120, "speed": 55},
+    "abilities": ["Vessel of Ruin"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Chi-Yu"}
+  },
+  "Beadruin": {
+    "from": "Chi-Yu", "types": ["Dark","Fire"], "category": "Ruinous", "height": 0.8, "weight": 10.0,
+    "stats": {"hp": 90, "attack": 85, "defense": 105, "spAttack": 150, "spDefense": 125, "speed": 105},
+    "abilities": ["Beads of Ruin"],
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Wo-Chien"}
+  },
+  "Chagamage": {
+    "from": "Sinistcha", "types": ["Grass","Ghost"], "category": "Tea Ceremony", "height": 0.5, "weight": 8.0,
+    "stats": {"hp": 91, "attack": 60, "defense": 106, "spAttack": 141, "spDefense": 105, "speed": 85},
+    "abilities": ["Hospitality"], "hiddenAbility": "Heatproof",
+    "evolution": {"method": "UseItem", "level": 250, "item": "Masterpiece Teacup"}
   }
 }

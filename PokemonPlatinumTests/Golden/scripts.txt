@@ -10629,6 +10629,7 @@ way -
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
@@ -10638,7 +10639,9 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -10658,6 +10661,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
@@ -10672,6 +10676,7 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
   + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
@@ -10681,14 +10686,20 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaCatchUp
 from a trainer with lines of their own
 way -
@@ -10717,6 +10728,7 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
@@ -10727,7 +10739,9 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -10751,6 +10765,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
@@ -10768,6 +10783,7 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
@@ -10779,15 +10795,21 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
   = VAR_UNOVA_ASPERTIA 0 -> 7
@@ -10822,6 +10844,7 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
@@ -10832,7 +10855,9 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -10856,6 +10881,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
@@ -10873,6 +10899,7 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
@@ -10884,15 +10911,137 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
+  + FLAG_UNOVA_STORY_BEGUN
+  + FLAG_UNOVA_VIRBANK_BEGUN
+  = VAR_UNOVA_ASPERTIA 0 -> 7
+  = VAR_UNOVA_HOUSE 0 -> 1
+  = VAR_UNOVA_OUTLOOK 0 -> 1
+  = VAR_UNOVA_ROUTE_19 0 -> 1
+=== common.UnovaCatchUpC
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_UNOVA_CASTELIA_BEGUN
+  + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_BAY_WORKER
+  + FLAG_UNOVA_HIDE_BIANCA_ALONG
+  + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
+  + FLAG_UNOVA_HIDE_BIANCA_CENTER
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE
+  + FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART
+  + FLAG_UNOVA_HIDE_BIANCA_HALL
+  + FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  + FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
+  + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
+  + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HEATRAN
+  + FLAG_UNOVA_HIDE_HUGHS_SISTER
+  + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
+  + FLAG_UNOVA_HIDE_HUGH_CHURCH
+  + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_GYM
+  + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  + FLAG_UNOVA_HIDE_HUGH_NIMBASA
+  + FLAG_UNOVA_HIDE_HUGH_PIER
+  + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
+  + FLAG_UNOVA_HIDE_HUGH_SEWERS
+  + FLAG_UNOVA_HIDE_HUGH_TERMINAL
+  + FLAG_UNOVA_HIDE_HUGH_THUMB
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_AVENUE
+  + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_JUNIPER_HALL
+  + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
+  + FLAG_UNOVA_HIDE_JUNIPER_MISTRALTON
+  + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_MOM_ASPERTIA
+  + FLAG_UNOVA_HIDE_NATE_NIMBASA
+  + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
+  + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  + FLAG_UNOVA_HIDE_RANCH_GRUNT
+  + FLAG_UNOVA_HIDE_RANCH_OWNERS
+  + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
+  + FLAG_UNOVA_HIDE_ROXIE_SCENE
+  + FLAG_UNOVA_HIDE_RUNWAY_KIDS
+  + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
+  + FLAG_UNOVA_HIDE_SEWERS_BURGH
+  + FLAG_UNOVA_HIDE_SEWERS_COLRESS
+  + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_SKYLA_GYM
+  + FLAG_UNOVA_HIDE_SKYLA_HALL
+  + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
+  + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
+  + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
   = VAR_UNOVA_ASPERTIA 0 -> 7
@@ -10918,6 +11067,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
@@ -10925,7 +11075,9 @@ way -
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -10939,6 +11091,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
@@ -10949,19 +11102,26 @@ way -
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
   + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaFrigate
 from a trainer with lines of their own
 way -
@@ -10979,12 +11139,15 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -10994,6 +11157,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
@@ -11003,19 +11167,26 @@ way -
   + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
   + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaLacunosa
 from a trainer with lines of their own
 way -
@@ -11025,19 +11196,30 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaLacunosaTale
 from a trainer with lines of their own
 way -
@@ -11059,14 +11241,18 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_HEATRAN
   + FLAG_UNOVA_HIDE_HUGH_LACUNOSA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
@@ -11075,17 +11261,24 @@ way -
   + FLAG_UNOVA_HIDE_JUNIPER_TOWER
   + FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
   + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaNewGame
 from a trainer with lines of their own
 way -
@@ -11111,6 +11304,7 @@ way -
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
@@ -11121,7 +11315,9 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -11143,6 +11339,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
@@ -11160,6 +11357,7 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
@@ -11171,15 +11369,21 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UnovaNimbasa
@@ -11201,6 +11405,7 @@ way -
   + FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
@@ -11208,7 +11413,9 @@ way -
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_13
   + FLAG_UNOVA_HIDE_COBALION_ROUTE_6
   + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -11223,6 +11430,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
   + FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
@@ -11236,20 +11444,41 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
   + FLAG_UNOVA_HIDE_RUNWAY_TREASURE
   + FLAG_UNOVA_HIDE_SKYLA_GYM
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
+=== common.UnovaOpelucid
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  + FLAG_UNOVA_OPELUCID_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
 way -
@@ -11287,6 +11516,7 @@ way -
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
   + FLAG_UNOVA_HIDE_CHEREN_LAB
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
   + FLAG_UNOVA_HIDE_CHEREN_PWT
   + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
@@ -11296,7 +11526,9 @@ way -
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
   + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
   + FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
   + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HEATRAN
@@ -11317,6 +11549,7 @@ way -
   + FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
   + FLAG_UNOVA_HIDE_IRIS_PIER
   + FLAG_UNOVA_HIDE_JUNIPER_HALL
   + FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
@@ -11331,6 +11564,7 @@ way -
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROOD_ROUTE_6
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_ROUTE_11_SPARE
   + FLAG_UNOVA_HIDE_ROUTE_20_GRUNT
   + FLAG_UNOVA_HIDE_ROXIE_SCENE
   + FLAG_UNOVA_HIDE_RUNWAY_KIDS
@@ -11342,15 +11576,21 @@ way -
   + FLAG_UNOVA_HIDE_SKYLA_HALL
   + FLAG_UNOVA_HIDE_SKYLA_MISTRALTON
   + FLAG_UNOVA_HIDE_STRANGE_GIRL
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
   + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_TRIAD_OPELUCID
   + FLAG_UNOVA_HIDE_UNDELLA_SPARE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
   + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_GYM
   + FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  + FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
   + FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
   + FLAG_UNOVA_LACUNOSA_BEGUN
   + FLAG_UNOVA_MISTRALTON_BEGUN
   + FLAG_UNOVA_NIMBASA_BEGUN
+  + FLAG_UNOVA_OPELUCID_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
 from an obstacle, with every field move and every badge
@@ -17651,6 +17891,246 @@ from Boy at 13,160 of OneIsland
 way -
   Boy> All kinds of things wash up on this beach. I find something new buried in the sand almost every day.
   Boy> Look carefully where the sand looks different. You might find treasure too!
+=== opelucid_city.Artist
+from Artist at 436,176 of Unova
+way -
+  Artist> Opelucid City is a place where the old and the new live side by side. I paint it every morning, and every morning it has changed.
+=== opelucid_city.Backers
+from Backers at 403,151 of Unova
+way -
+  Backers> Unova's symbols are Zekrom and Reshiram, but I wonder where they are now. Are they passing their ancient knowledge on to someone?
+=== opelucid_city.BlackBelt
+from Black Belt at 430,175 of Unova
+way -
+  Black Belt> I reached heights I never could have reached alone, because I had Pokémon by my side.
+  Black Belt> I think some things shouldn't be changed, even if it's inconvenient. And I think some things must be changed no matter how much you love them!
+=== opelucid_city.Citizen
+from Citizen at 404,160 of Unova
+way -
+  Citizen> There was a group that told people to release their Pokémon. They were great big liars, but it did make us think.
+  Citizen> After that speech, my Pokémon and I have been working out what's true for us.
+=== opelucid_city.DraydenAsks
+from the trigger at 415,171 of Unova
+way -
+  Drayden> There you are. Come along, Lucas. My house is the one just ahead, and what I have to tell you is best told sitting down.
+  Drayden> This way!
+  Drayden> We're here. Come inside.
+  * scene opelucid_city.Drayden's invitation
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + seen opelucid_city.Drayden's invitation
+=== opelucid_city.Gentleman
+from Gentleman at 430,165 of Unova
+way -
+  Gentleman> The memories of everyone who has lived in this city have built up over the years without changing much.
+  Gentleman> Or perhaps this city changes endlessly, and every change is engraved in the memories of the people who live here. I can't decide.
+=== opelucid_city.Grunt41
+from Grunt at 430,168 of Unova
+way 0
+  Grunt> Pokémon are pawns! They're a means to an end. That's what I was taught! Don't think about it too much. It's easier that way.
+  Grunt> The others were saying that the only place we haven't searched yet is the Pokémon Gym!
+  * battle unova_team_plasma_grunt_41 Won
+  + FLAG_UNOVA_DEFEATED_GRUNT_41
+  + beaten unova_team_plasma_grunt_41
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_41 Lost
+=== opelucid_city.Grunt42
+from Grunt at 404,160 of Unova
+way 0
+  Grunt> This time we'll take over the Unova region! You! You're trembling already? From fear or from cold, either's good!
+  Grunt> It's not over! The others will find the DNA Splicers! When they do, the Unova region is ours!
+  * battle unova_team_plasma_grunt_42 Won
+  + FLAG_UNOVA_DEFEATED_GRUNT_42
+  + beaten unova_team_plasma_grunt_42
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_42 Lost
+=== opelucid_city.Grunt43
+from Grunt at 424,145 of Unova
+way 0
+  Grunt> Don't get in our way! You bother! Bother, bother, bother!
+  Grunt> Zinzolin said to stick close to Drayden, because that's where we'll find anything important!
+  * battle unova_team_plasma_grunt_43 Won
+  + FLAG_UNOVA_DEFEATED_GRUNT_43
+  + beaten unova_team_plasma_grunt_43
+way 1, from answer 1
+  * battle unova_team_plasma_grunt_43 Lost
+=== opelucid_city.GruntTalk5
+from Grunt at 430,180 of Unova
+way -
+  Grunt> I think Zinzolin was going to check the Pokémon Gym... Oh, I lost. I didn't stand a chance! I can't believe a Haxorus blasted me all the way over here!
+=== opelucid_city.GruntTalk6
+from Grunt at 424,174 of Unova
+way -
+  Grunt> I've been nursing a grudge for two years, old man. ...Even if this is the first time I've battled you! Hm? You're not him? That's all right. I'll keep my grudge.
+=== opelucid_city.GruntTalk7
+from Grunt at 426,174 of Unova
+way -
+  Grunt> Oh, that Drayden! Where did he hide the DNA Splicers? Somewhere familiar and common, right? That old guy won't hold back even if his opponent is a young girl.
+=== opelucid_city.IrisGreets
+from the trigger at 440,173 of Unova
+way -
+  Iris> Yahoo! It's you! I haven't seen you since we ran into each other in Castelia City!
+  Iris> Are you here to challenge my grandpa? Yep! Drayden, the Gym Leader of Opelucid City, is my grandpa.
+  Iris> We're not really related, though! Hee hee!
+  Iris> Oh! The Gym is up that way, past the street's end! But before you take it on, you might want to see Route 9 first.
+  Iris> Still, your Pokémon really respect you! I can feel how much fun they're having, even from inside their Poké Balls!
+  Iris> Good luck!
+  * scene opelucid_city.Iris at Opelucid
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  = VAR_UNOVA_OPELUCID 0 -> 1
+  + seen opelucid_city.Iris at Opelucid
+=== opelucid_city.TriadAtTheEast
+from the trigger at 440,173 of Unova
+way 0
+  Shadow Triad> Heh heh... You don't really think you can take the DNA Splicers back, do you?
+  Shadow Triad> Awww. How unlucky. I don't happen to be the one holding the DNA Splicers. I was just buying time for the others to get away.
+  Drayden> Oh no! No, no, it's not your fault, Lucas. You were impressive! It's I who let everybody down.
+  > The Xtransceiver is ringing.
+  > Lucas picked up the Xtransceiver.
+  Drayden> Augh! If there were only two of me! Then I could protect the town and chase after them too!
+  Cheren> Lucas. Drayden, glad to see you're safe as well.
+  Drayden> Hello, Cheren. You have certainly grown. I hear you filled in for Lenora and became the Gym Leader in Aspertia City.
+  Cheren> Thanks. We should save catching up for later. I have a good idea of where Team Plasma is hiding. The place with the lowest chance of anyone looking: a city on the sea.
+  Cheren> The Frigate went south and east: it's making for Humilau City. Lucas, I could use your help, if you're willing. You're a skilled Trainer who can go toe to toe with Team Plasma.
+  Drayden> Very well. I'll do my part, and thank you. The chase I leave to you! But... don't do anything reckless.
+  Drayden> Humilau City, huh... Is there anything to the north of Undella Town? Lucas, protect the Pokémon from Team Plasma. Go with my blessing.
+  Drayden> Little by little, the ice is starting to melt. It's all thanks to you. As a fellow Trainer, I heartily thank you!
+  * scene opelucid_city.The Shadow Triad's stand
+  * battle unova_team_plasma_shadow_4 Won
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  + FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  + FLAG_UNOVA_HIDE_TRIAD_EAST
+  = VAR_UNOVA_OPELUCID 0 -> 7
+  + beaten unova_team_plasma_shadow_4
+  + seen opelucid_city.The Shadow Triad's stand
+way 1, from answer 1
+  * battle unova_team_plasma_shadow_4 Lost
+  * scene over, unseen
+=== opelucid_city.Worker
+from Worker at 420,172 of Unova
+way -
+  Worker> Drayden is our mayor as well as our Gym Leader! He's always training, wrestling with his Pokémon in the yard of his house.
+=== opelucid_city.Youngster
+from Youngster at 429,151 of Unova
+way -
+  Youngster> A person called N once had a legendary Pokémon with him. But was he really the hero? I keep wondering.
+=== opelucid_city.ZinzolinAtTheGym
+from Zinzolin at 405,146 of Unova
+way -
+=== opelucid_city_3.RingTarget
+from Woman at 9,12 of OpelucidCity_DraydensHouse_2F
+way -
+  Woman> I have an item I don't know how to use. Would you give it a try and see if you can make it work?
+  Woman> You may be able to master it. Here it is!
+  > Lucas received the Ring Target!
+  > Lucas put it away in the Items pocket.
+  Woman> If a Pokémon holds a Ring Target, it can be hit even by a move that would usually have no effect on it.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_RING_TARGET
+=== opelucid_city_gym.Drayden
+from Drayden at 15,22 of OpelucidCity_Gym
+way 0
+  Drayden> Welcome. Thank you for coming. I am Drayden, the Gym Leader of Opelucid City.
+  Drayden> As its mayor, I have given everything to developing this city. And as a Trainer, I have never stopped training.
+  Drayden> Now! Show me what you have. Show me the full force of your bond with your Pokémon!
+  Drayden> Wonderful. I'm grateful that we had a chance to meet and battle. It reminded me that Pokémon battles are about working with others, whether Pokémon or people.
+  Drayden> Here, take this. It is the Legend Badge, proof that you have beaten me.
+  > Lucas received the Legend Badge from Drayden!
+  Drayden> Well, now. You have obtained seven of Unova's Gym Badges. Take this too, so that you remember how a dragon fights.
+  > Lucas received the TM82!
+  > TM82 holds the move Sleep Talk.
+  > Lucas put it away in the TMs & HMs pocket.
+  Drayden> A move should be understood before it is used, and used only when it is needed. That is the whole of a dragon's wisdom.
+  Drayden> Professor Juniper asked me to tell you about the legendary Dragon-type Pokémon that created Unova. Please come to my house, the building on the street below, and I will tell you the story.
+  * scene opelucid_city_gym.Drayden's battle
+  * battle unova_leader_drayden Won
+  * fanfare FanfareBadge
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_UNOVA_DRAYDEN_AT_HOME
+  + FLAG_UNOVA_GOT_TM82
+  = VAR_UNOVA_OPELUCID 0 -> 2
+  + beaten unova_leader_drayden
+  = badges Unova 0 -> 1000000
+  + seen opelucid_city_gym.Drayden's battle
+way 1, from answer 1
+  * battle unova_leader_drayden Lost
+  * scene over, unseen
+=== opelucid_city_gym.GymGuide
+from Guide at 25,51 of OpelucidCity_Gym
+way -
+  Guide> Welcome to the Opelucid City Pokémon Gym! Here, have some Fresh Water. Stay hydrated!
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  Guide> Did you see the dragon statues? This is the only Gym in Unova with statues this size! Climb up and you'll see why Drayden loves it.
+  * fanfare FanfareItem
+  + FLAG_UNOVA_GOT_WATER_OPELUCID
+=== opelucid_city_gym.Veteran1
+from Ron at 16,28 of OpelucidCity_Gym
+way 0
+  Ron> Always aim for the top, like a dragon taking flight! Trainers far stronger than I wait for you above.
+  Ron> You're strong enough to challenge Mayor Drayden. You have the power to unleash the full force of your deep desire to win!
+  * battle unova_veteran_ron Won
+  + FLAG_UNOVA_DEFEATED_VETERAN_RON
+  + beaten unova_veteran_ron
+way 1, from answer 1
+  * battle unova_veteran_ron Lost
+=== opelucid_city_gym.Veteran2
+from Denae at 4,16 of OpelucidCity_Gym
+way 0
+  Denae> Defense is everything! The Trainers above me have different ways of fighting; some fight only in threes, and some only in rotation.
+  Denae> A battle between you and Mayor Drayden must be stirring! You must desire victory more than anything. Now, go!
+  * battle unova_veteran_denae Won
+  + FLAG_UNOVA_DEFEATED_VETERAN_DENAE
+  + beaten unova_veteran_denae
+way 1, from answer 1
+  * battle unova_veteran_denae Lost
+=== opelucid_city_gym.Veteran3
+from Rhona at 18,16 of OpelucidCity_Gym
+way 0
+  Rhona> Offense is everything! As for the Trainers above me, bring three healthy Pokémon if you mean to face them.
+  Rhona> A battle between you and Mayor Drayden must be stirring! Now, go!
+  * battle unova_veteran_rhona Won
+  + FLAG_UNOVA_DEFEATED_VETERAN_RHONA
+  + beaten unova_veteran_rhona
+way 1, from answer 1
+  * battle unova_veteran_rhona Lost
+=== opelucid_city_gym.Veteran4
+from Jerry at 14,28 of OpelucidCity_Gym
+way 0
+  Jerry> If you want to battle me, bring three or more healthy Pokémon with you! In a triple battle, three Pokémon fight side by side and their power adds up.
+  Jerry> Three at once! A combination that raises three Pokémon's destructive power. And still you won.
+  * battle unova_veteran_jerry Won
+  + FLAG_UNOVA_DEFEATED_VETERAN_JERRY
+  + beaten unova_veteran_jerry
+way 1, from answer 1
+  * battle unova_veteran_jerry Lost
+=== opelucid_city_gym.Veteran5
+from Lucius at 12,21 of OpelucidCity_Gym
+way 0
+  Lucius> If you plan on battling with me, bring three or more healthy Pokémon with you! In a rotation battle, how the three Pokémon follow one another is the key.
+  Lucius> You must desire victory more than anything. Go on, face the mayor!
+  * battle unova_veteran_lucius Won
+  + FLAG_UNOVA_DEFEATED_VETERAN_LUCIUS
+  + beaten unova_veteran_lucius
+way 1, from answer 1
+  * battle unova_veteran_lucius Lost
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -22054,6 +22534,36 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_DAILY_RECEIVED_SHOAL_SALT_3
+=== shopping_mall.BallCounter
+from Clerk at 21,8 of ShoppingMallNine_1F
+way -
+  Clerk> Welcome! Poké Balls of every kind, for every kind of catch.
+  Clerk> Happy catching!
+  * open Shop mall_balls
+=== shopping_mall.BattleCounter
+from Clerk at 7,1 of ShoppingMallNine_1F
+way -
+  Clerk> Welcome! Battle items for the Trainer who plans ahead.
+  Clerk> Win one for me!
+  * open Shop mall_battle
+=== shopping_mall.MachineCounter
+from Clerk at 9,1 of ShoppingMallNine_1F
+way -
+  Clerk> Welcome to the top floor! TMs, in a mall of their own.
+  Clerk> A TM is a lesson in a case. Choose a good teacher!
+  * open Shop mall_machines
+=== shopping_mall.MedicineCounter
+from Clerk at 7,14 of ShoppingMallNine_1F
+way -
+  Clerk> Welcome to the first floor's medicine counter! Everything for a Pokémon that's had a hard day.
+  Clerk> Please come again!
+  * open Shop mall_medicine
+=== shopping_mall.VitaminCounter
+from Clerk at 9,8 of ShoppingMallNine_1F
+way -
+  Clerk> Welcome! Vitamins and wings and feathers: everything to make a Pokémon a little bit better than it was.
+  Clerk> Take care of them!
+  * open Shop mall_vitamins
 === silph_co_10f.Door
 from Locked door at 12,11 of SilphCo_10F
 from Locked door at 12,12 of SilphCo_10F

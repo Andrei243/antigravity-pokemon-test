@@ -1,0 +1,90 @@
+{
+  "key": "unova_route_12",
+  "index": 368,
+  "name": "Route 12",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_E_SP",
+  "nightMusic": "BGM_R_E_SP",
+  "encounters": "ENCOUNTERS_ROUTE_12",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Combee", "level": 35 },
+    { "species": "Roselia", "level": 35 },
+    { "species": "Sewaddle", "level": 36 },
+    { "species": "Tranquill", "level": 37 },
+    { "species": "Heracross", "level": 36 },
+    { "species": "Tranquill", "level": 36 },
+    { "species": "Heracross", "level": 38 },
+    { "species": "Sewaddle", "level": 38 },
+    { "species": "Roselia", "level": 37 },
+    { "species": "Tranquill", "level": 38 },
+    { "species": "Roselia", "level": 37 },
+    { "species": "Tranquill", "level": 38 }
+  ],
+  "landRate": 13,
+  "darkGrass": [
+    { "species": "Combee", "level": 39 },
+    { "species": "Roselia", "level": 39 },
+    { "species": "Sewaddle", "level": 40 },
+    { "species": "Tranquill", "level": 41 },
+    { "species": "Heracross", "level": 40 },
+    { "species": "Tranquill", "level": 40 },
+    { "species": "Heracross", "level": 42 },
+    { "species": "Sewaddle", "level": 42 },
+    { "species": "Roselia", "level": 41 },
+    { "species": "Tranquill", "level": 42 },
+    { "species": "Roselia", "level": 41 },
+    { "species": "Tranquill", "level": 42 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 35 },
+    { "species": "Audino", "level": 35 },
+    { "species": "Emolga", "level": 36 },
+    { "species": "Dunsparce", "level": 36 },
+    { "species": "Audino", "level": 37 },
+    { "species": "Audino", "level": 37 },
+    { "species": "Unfezant", "level": 38 },
+    { "species": "Leavanny", "level": 38 },
+    { "species": "Vespiquen", "level": 38 },
+    { "species": "Roserade", "level": 38 },
+    { "species": "Vespiquen", "level": 38 },
+    { "species": "Roserade", "level": 38 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 583, "z": 174, "to": "bridge_gate_gate_5", "toWarp": 1 },
+    { "x": 583, "z": 175, "to": "bridge_gate_gate_5", "toWarp": 1 },
+    { "x": 583, "z": 176, "to": "bridge_gate_gate_5", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backers_f", "movement": "none", "x": 599, "z": 183, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_BACKERS_CLEO_RIO" },
+    { "id": "1", "looks": "backers_f", "movement": "none", "x": 599, "z": 184, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_BACKERS_CLEO_RIO" },
+    { "id": "2", "looks": "black_belt", "movement": "wander_around", "x": 605, "z": 169, "facing": 1, "rangeX": 6, "rangeZ": 11, "trainer": "sees", "sight": 5, "script": "TRAINER_BLACK_BELT_JERIEL" },
+    { "id": "3", "looks": "battle_girl", "movement": "wander_around", "x": 624, "z": 167, "facing": 1, "rangeX": 12, "rangeZ": 7, "trainer": "sees", "sight": 2, "script": "TRAINER_BATTLE_GIRL_AZRA" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 634, "z": 167, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04dc", "item": "Timer Ball", "script": "7144" },
+    { "id": "5", "looks": "216", "movement": "none", "x": 614, "z": 163, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04dd", "item": "PP Up", "script": "7145" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 589, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04de", "item": "Max Potion", "script": "7146" },
+    { "id": "7", "looks": "210", "movement": "none", "x": 609, "z": 179, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04df", "item": "Green Shard", "script": "7147" },
+    { "id": "8", "looks": "216", "movement": "none", "x": 611, "z": 164, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x05c2", "item": "Yellow Shard", "script": "7374" }
+  ],
+  "signs": [
+    { "x": 587, "z": 173, "type": 0, "script": "1" },
+    { "x": 612, "z": 182, "type": 0, "script": "2" },
+    { "x": 632, "z": 184, "type": 0, "script": "3" },
+    { "x": 623, "z": 174, "type": 2, "script": "8167", "item": "Rare Candy", "flag": "FLAG_UNOVA_0x0bab" },
+    { "x": 603, "z": 165, "type": 2, "script": "8168", "item": "Max Repel", "flag": "FLAG_UNOVA_0x0bac" },
+    { "x": 630, "z": 163, "type": 2, "script": "8169", "item": "Ultra Ball", "flag": "FLAG_UNOVA_0x0bad" }
+  ],
+  "triggers": [
+    { "x": 614, "z": 176, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x4131", "value": "1" }
+  ]
+}

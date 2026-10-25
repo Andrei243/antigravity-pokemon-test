@@ -1,0 +1,131 @@
+{
+  // Shopping Mall Nine (plan 22 · U8, part a): Route 9's mall in Black 2's three floors, our words and our stock: its five counters sell medicine, balls, vitamins, battle items and TMs (marts.json's mall_*); the back room is reached by the escalator at the north-east
+  "area": "shopping_mall",
+  "bgmTrack": "unova/shopping_mall",
+  "people": {
+    "0": {
+      "name": "Clerk",
+      "npcType": "worker",
+      "dialog": [
+        "Welcome to Shopping Mall Nine! It's called Nine because it stands on Route 9. Remember it as \"Done shopping? Nein!\""
+      ]
+    },
+    "1": {
+      "name": "Breeder",
+      "npcType": "pokemon_breeder_m",
+      "dialog": [
+        "If you want every TM there is, this mall is a must. Brag to the TM collector that you came here!"
+      ]
+    },
+    "2": {
+      "name": "Woman",
+      "npcType": "pokefan_f",
+      "dialog": [
+        "A trainer challenged me to a battle in the middle of the mall. This is a place where only the strong shop. Got it?"
+      ]
+    },
+    "3": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [
+        "I can't wait for the evening! Evening itself is a fever!"
+      ]
+    },
+    "4": {
+      "name": "Aide",
+      "npcType": "pokemon_breeder_f",
+      "dialog": [
+        "The thing I buy most is the item that raises a Pokémon's HP. HP Up! There are plenty of others that catch my eye, too."
+      ]
+    },
+    "5": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [
+        "The better a Trainer you are, the more you think. That's so you can help your Pokémon partners win."
+      ]
+    },
+    "6": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [
+        "If I played hide-and-seek with my Pokémon, they'd find me right away! If I got lost, I'd be glad they could."
+      ]
+    },
+    "7": {
+      "name": "Baker",
+      "npcType": "chef",
+      "dialog": [
+        "My Lampent isn't much good in a battle, but it makes the most wonderful toast!"
+      ]
+    },
+    "8": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [
+        "I've come to do some shopping, but I'm having ever so much trouble finding out what is sold where. Do you know what the floors sell?"
+      ]
+    },
+    "9": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "dialog": [
+        "On the first floor they sell medicines. The second has TMs and mail. And the third... is for things I can't afford."
+      ]
+    },
+    "10": {
+      "name": "Olwen",
+      "trainer": {
+        "dialogueBefore": "Welcome! Would you like a battle with your shopping?",
+        "dialogueAfter": "Please come again!"
+      }
+    },
+    "11": {
+      "name": "Lou",
+      "trainer": {
+        "dialogueBefore": "Waiter, waiter! Order up one battle for table one!",
+        "dialogueAfter": "You're very hard to serve."
+      }
+    },
+    "12": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "MedicineCounter",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "13": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "BallCounter",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "14": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "VitaminCounter",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "15": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "BattleCounter",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "16": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "MachineCounter",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    }
+  }
+}

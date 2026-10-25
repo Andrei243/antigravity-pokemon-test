@@ -1,0 +1,14 @@
+{
+  // The back room of Shopping Mall Nine (plan 22 · U8, part a): a janitor among boxes, our words
+  "area": "shopping_mall_2",
+  "bgmTrack": "unova/shopping_mall",
+  "people": {
+    "0": {
+      "name": "Janitor",
+      "npcType": "worker",
+      "dialog": [
+        "This mountain of cardboard boxes... they're all full of old appliances we can't sell. They're just going to waste."
+      ]
+    }
+  }
+}

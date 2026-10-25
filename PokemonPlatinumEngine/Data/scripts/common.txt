@@ -2992,6 +2992,7 @@ script UnovaLacunosa
   setflag FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
   setflag FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
   setflag FLAG_UNOVA_LACUNOSA_BEGUN
+  call UnovaOpelucid
   return
 
 
@@ -3040,4 +3041,32 @@ script UnovaLacunosaTale
   say "Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village."
   say "Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now."
   say "Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives."
+  return
+
+
+# What Unova's Opelucid chapter hides until its scenes (plan 22 · U8, part a): Drayden before his Gym's door and outside, Zinzolin on
+# the street and at the Gym, the grunts in the streets, the Shadow Triad (at the Gym, and the one at the east end), Iris at the east
+# gate, Cheren, Route 11's Virizion, the spare balls of Route 11 and Drayden at home until the Legend Badge has been won. A new game
+# runs it from UnovaLacunosa (the chain of every chapter's hiding); a save of Lacunosa's is given it by UnovaCatchUpC. It may only set
+# flags and variables, and ends in return.
+script UnovaOpelucid
+  setflag FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_GYM
+  setflag FLAG_UNOVA_HIDE_GRUNTS_OPELUCID
+  setflag FLAG_UNOVA_HIDE_TRIAD_OPELUCID
+  setflag FLAG_UNOVA_HIDE_TRIAD_EAST
+  setflag FLAG_UNOVA_HIDE_IRIS_OPELUCID
+  setflag FLAG_UNOVA_HIDE_CHEREN_OPELUCID
+  setflag FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11
+  setflag FLAG_UNOVA_HIDE_ROUTE_11_SPARE
+  setflag FLAG_UNOVA_OPELUCID_BEGUN
+  return
+
+
+# What the arrival of each place of plan 22 · U8's first part calls (Route 12 to Opelucid City): the earlier chapters' catch-up, and
+# for a save from before this one the people of it hidden (kept out of UnovaCatchUpB, as UnovaCatchUpB is kept out of UnovaCatchUp)
+script UnovaCatchUpC
+  call UnovaCatchUpB
+  if not flag FLAG_UNOVA_OPELUCID_BEGUN call UnovaOpelucid
   return

@@ -1,0 +1,35 @@
+# Shopping Mall Nine (a department store on a long road, bright all day): a bouncy marimba tune in G major over a bell, a pizzicato
+# answer, a springy bass and a shuffling beat. It plays the same by day and by night. Original composition for this game (plan 22 ·
+# U8, part a).
+title Shopping Mall Nine
+tempo 128
+meter 4/4
+reverb 0.18
+night none
+
+track lead marimba vol=0.66 pan=0.08 rev=0.16
+  L o5 g8 b8 o6 d4 o5 b4 g4 | o5 a8 o6 c8 e4 c4 o5 a4 | o5 b8 o6 d8 g4 d4 o5 b4 | o6 c8 e8 a4 e4 c4 |
+  o5 g8 b8 o6 d4 o5 b4 g4 | o6 e8 d8 c4 o5 b4 a4 | o5 b8 a8 f+4 a4 o6 d4 | o5 g2 d2 |
+  o6 d8 g8 b4 g4 d4 | o6 c8 e8 g4 e4 c4 | o5 b8 o6 d8 g4 d4 o5 b4 | o5 a8 o6 c8 e4 c4 o5 a4 |
+  o5 g8 b8 o6 d4 o5 b4 g4 | o6 c8 e8 g4 e4 c4 | o5 a8 o6 c8 f+4 d4 o5 a4 | o5 g2 b2 |
+
+track answer pizzicato vol=0.34 pan=-0.2 rev=0.14
+  L [ o4 g8 r8 d8 r8 ]2 | [ o4 a8 r8 e8 r8 ]2 | [ o4 b8 r8 f+8 r8 ]2 | [ o4 c8 r8 g8 r8 ]2 |
+  [ o4 g8 r8 d8 r8 ]2 | [ o4 c8 r8 g8 r8 ]2 | [ o4 d8 r8 a8 r8 ]2 | [ o4 g8 r8 d8 r8 ]2 |
+  [ o4 g8 r8 d8 r8 ]2 | [ o4 c8 r8 g8 r8 ]2 | [ o4 b8 r8 f+8 r8 ]2 | [ o4 a8 r8 e8 r8 ]2 |
+  [ o4 g8 r8 d8 r8 ]2 | [ o4 c8 r8 g8 r8 ]2 | [ o4 d8 r8 a8 r8 ]2 | [ o4 g8 r8 d8 r8 ]2 |
+
+track shine bell vol=0.22 pan=0.24 rev=0.3
+  L o5 (g b >d)1 | o5 (a >c e)1 | o5 (b >d g)1 | o5 (c e a)1 |
+  o5 (g b >d)1 | o5 (c e g)1 | o5 (d f+ a)1 | o5 (g b >d)1 |
+  o5 (g b >d)1 | o5 (c e g)1 | o5 (b >d g)1 | o5 (a >c e)1 |
+  o5 (g b >d)1 | o5 (c e g)1 | o5 (d f+ a)1 | o5 (g b >d)1 |
+
+track bass bass vol=0.62 rev=0.06
+  L [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 g8 o3 g8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 g8 o3 g8 ]4 |
+
+track drums kit vol=0.36 rev=0.1
+  L v76 [ b8 h8 h8 b8 s8 h8 h8 h8 | ]15 b8 h8 h8 b8 s8 s16 s16 s8 s8 |

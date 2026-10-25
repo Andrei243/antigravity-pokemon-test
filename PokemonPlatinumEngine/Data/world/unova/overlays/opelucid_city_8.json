@@ -1,0 +1,21 @@
+{
+  // The trade house (plan 22 · U8, part a): two who met by trading, our words
+  "area": "opelucid_city_8",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [
+        "I got to know her through trading Pokémon! Our battle styles, tastes and ways of thinking are different, but it's fun."
+      ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [
+        "There are Pokémon that evolve by trading parts of their bodies! We might evolve by exchanging our thoughts and opinions."
+      ]
+    }
+  }
+}

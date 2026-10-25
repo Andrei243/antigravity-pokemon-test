@@ -1,0 +1,25 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This was the Triple Battle House and the Rotation Battle House, back when people came to fight those battles. Nobody does now.",
+          "The Trainers who made this city proud have all moved on to the Gym. Take your three best Pokémon up there when you're ready."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

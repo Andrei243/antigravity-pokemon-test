@@ -1,0 +1,15 @@
+{
+  // The Triple and Rotation Battle House (plan 22 · U8, part a): a veteran who explains the formats Black 2 fought here, our words; the formats are plan 14 · B6 and B7's
+  "area": "opelucid_city_4",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Veteran",
+      "npcType": "veteran",
+      "dialog": [
+        "This was the Triple Battle House and the Rotation Battle House, back when people came to fight those battles. Nobody does now.",
+        "The Trainers who made this city proud have all moved on to the Gym. Take your three best Pokémon up there when you're ready."
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  // Drayden's house (plan 22 · U8, part a): Drayden is here for the tale of the two dragons (opelucid_city_2.txt) between the Legend Badge and the ice; his Axew wanders the room
+  "area": "opelucid_city_2",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Drayden",
+      "npcType": "dragon_elder",
+      "shownBy": "FLAG_UNOVA_DRAYDEN_AT_HOME",
+      "hiddenBy": "",
+      "still": true,
+      "dialog": [
+        "Drayden: Come, sit. I will tell you the story."
+      ]
+    },
+    "1": {
+      "name": "Axew",
+      "npcType": "Pokemon",
+      "species": "Axew",
+      "dialog": [
+        "Axew: Ax! Axew!"
+      ]
+    }
+  }
+}

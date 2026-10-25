@@ -70,7 +70,7 @@ public class SpeciesPastHundredTests
             if (legend)
             {
                 Assert.Equal(660, Total(d.Stats));
-                Assert.InRange(rise, 1, 80);
+                Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
             {
@@ -82,7 +82,7 @@ public class SpeciesPastHundredTests
             var e = d.Evolution;
             var (low, high) = Climb(from);
             Assert.True(e.Level >= low && e.Level <= high, $"{d.Name} evolves at {e.Level}, outside {low} to {high}");
-            Assert.Equal(EvolutionTrigger.LevelUp == Evolution.TriggerOf(e.Method) || e.Method == EvolutionMethod.UseItem, true);
+            Assert.True(Evolution.TriggerOf(e.Method) is EvolutionTrigger.LevelUp or EvolutionTrigger.BattleEnd or EvolutionTrigger.Spin || e.Method == EvolutionMethod.UseItem, $"{d.Name}: {e.Method}");
             if (e.Item != null) Assert.True(ItemDatabase.Get(e.Item) is { } item && item.Pocket != ItemPocket.KeyItems, $"{d.Name}: {e.Item}");
             if (e.Move != null) Assert.Contains(from.Learnset.Concat(from.Modern?.Learnset ?? new()), l => l.MoveName == e.Move);
             if (e.Species != null) Assert.True(Species(e.Species) is { IsOurs: false }, $"{d.Name} asks for {e.Species}");
@@ -104,6 +104,11 @@ public class SpeciesPastHundredTests
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
+            5 => (165, legend ? 190 : 183),
+            6 => from.Name == "Sylveon" ? (120, 120) : (188, 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions
+            7 => (209, legend ? 225 : 221),
+            8 => (226, legend ? 244 : 240),
+            9 => (244, legend ? 258 : 256), // Paldea's climb (its question 1, 2026-10-26): 244 to 256, the Treasures of Ruin at 258
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -177,6 +182,7 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelNight or EvolutionMethod.FriendshipNight: context.IsNight = true; break;
             case EvolutionMethod.LevelDay or EvolutionMethod.FriendshipDay: context.IsNight = false; break;
             case EvolutionMethod.LevelInRain: context.IsRaining = true; break;
+            case EvolutionMethod.LevelDusk: context.IsDusk = true; break;
             case EvolutionMethod.LevelAtLocation: context.Sites = new[] { e.Location! }; break;
             case EvolutionMethod.LevelHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); break;
             case EvolutionMethod.LevelHoldingItemDay: p.HeldItem = ItemDatabase.Get(e.Item!); context.IsNight = false; break;
@@ -185,6 +191,12 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
+            case EvolutionMethod.CriticalHits: p.EvolutionProgress[Evolution.CriticalHitsKey] = e.Value; trigger = EvolutionTrigger.BattleEnd; break;
+            case EvolutionMethod.LevelAfterDamage: p.EvolutionProgress[Evolution.DamageKey] = e.Value; context.Sites = new[] { e.Location! }; break;
+            case EvolutionMethod.LevelAfterMoveUses: p.EvolutionProgress[Evolution.MoveKey(e.Move!)] = e.Value; break;
+            case EvolutionMethod.LevelAfterRecoil: p.EvolutionProgress[Evolution.RecoilKey] = e.Value; break;
+            case EvolutionMethod.SpinHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.Spin; break;
+            case EvolutionMethod.LevelWithItemsInBag: context.Bag = new Inventory(); context.Bag.AddItem(ItemDatabase.Get(e.Item!)!, e.Value); break;
         }
         return (p, context, trigger);
     }
@@ -236,7 +248,7 @@ public class SpeciesPastHundredTests
         foreach (var e in Designs.Select(d => d.Evolution).Where(e => e.Item != null))
         {
             var item = ItemDatabase.Get(e.Item!)!;
-            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : Evolution.IsHeldForEvolution(item), e.Item);
+            Assert.True(e.Method == EvolutionMethod.UseItem ? Evolution.IsUsedToEvolve(item) : e.Method == EvolutionMethod.LevelWithItemsInBag ? Evolution.IsGatheredForEvolution(item) : Evolution.IsHeldForEvolution(item), e.Item);
         }
     }
 

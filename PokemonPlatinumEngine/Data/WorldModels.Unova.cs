@@ -239,6 +239,17 @@ public static partial class WorldModels
         Furniture("d25_obj03_b", PropType.Statue, "a stand clock of the Strange House"),
         Furniture("d25_obj04", PropType.Table, "the long table of the Strange House's rooms"),
         Furniture("d25_obj05", PropType.Table, "a long table of the Strange House's rooms"),
+
+        // ---------------------------------------------------------------- Opelucid City (c8_), the Village Bridge (h04_) and the mall (mall)
+        // Plan 22 · U8, part a: Opelucid's buildings stand in Blackthorn's way of building (dragon-blue gables on grey stone) and its modern blocks
+        // in Jubilife's, the Village Bridge's in the harbour's, until the towns have ways of their own (the style guide's "Buildings" first)
+        Built("c8_buildb", BuildingKind.House, "a modern block of Opelucid City", Architecture.City, until: "plan 22 · U10"),
+        Built("c8_gym", BuildingKind.Gym, "Opelucid City's Dragon Gym", Architecture.Dragonstone, until: "plan 22 · U10"),
+        Built("h04_house", BuildingKind.House, "a long house of the Village Bridge", Architecture.Harbour, until: "plan 22 · U10"),
+        Built("h04_ligth", BuildingKind.House, "the great house on the Village Bridge's island", Architecture.Harbour, until: "plan 22 · U10"),
+        Built("h04_ligth2", BuildingKind.House, "a small bright house of the Village Bridge", Architecture.Harbour, until: "plan 22 · U10"),
+        Built("h3_gate", BuildingKind.Gate, "a gate house of the Village Bridge and Opelucid City"),
+        Built("mall", BuildingKind.Shop, "Shopping Mall Nine on Route 9", Architecture.City, until: "plan 22 · U10"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

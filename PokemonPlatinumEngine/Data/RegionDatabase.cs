@@ -732,6 +732,9 @@ public static class RegionDatabase
                 "ReversalMountain_5", "ReversalMountain_6", "UndellaTown_PokemonCenter", "UndellaTown_House1", "UndellaTown_House2",
                 "UndellaGate", "Route13_House1", "Route13_House2", "LacunosaTown_House1", "LacunosaTown_House2",
                 "LacunosaTown_House3", "LacunosaTown_House4", "LacunosaTown_PokemonCenter",
+                // Plan 22 · U8, part a: the gate houses either side of the Village Bridge and Opelucid City, the bridge, Route 11's hut,
+                // Opelucid City's five houses of two floors, Pokémon Center and Gym, and Route 9's mall
+                "VillageBridgeGate_West", "VillageBridgeGate_East", "OpelucidGate_East", "OpelucidGate_West", "VillageBridge", "Route11_Hut", "OpelucidCity_DraydensHouse_1F", "OpelucidCity_DraydensHouse_2F", "OpelucidCity_TripleHouse_1F", "OpelucidCity_TripleHouse_2F", "OpelucidCity_MusicalHouse_1F", "OpelucidCity_MusicalHouse_2F", "OpelucidCity_TradeHouse_1F", "OpelucidCity_TradeHouse_2F", "OpelucidCity_OldHouse_1F", "OpelucidCity_OldHouse_2F", "OpelucidCity_PokemonCenter", "OpelucidCity_Gym", "ShoppingMallNine_1F", "ShoppingMallNine_2F",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

@@ -49,6 +49,12 @@
     // Driftveil Market's three stalls (plan 22 · U6, part d), our own stock: the herb seller, the sailor's imports and the sweets
     "driftveil_market_herbs": [ "Energy Powder", "Energy Root", "Heal Powder", "Revival Herb" ],
     "driftveil_market_goods": [ "Poké Doll", "Fluffy Tail", "Super Repel", "Max Repel", "X Attack", "X Speed", "X Accuracy", "X Defense", "Guard Spec.", "Dire Hit" ],
-    "driftveil_market_sweets": [ "Lemonade", "Moomoo Milk", "Sweet Heart", "Lava Cookie", "Old Gateau" ]
+    "driftveil_market_sweets": [ "Lemonade", "Moomoo Milk", "Sweet Heart", "Lava Cookie", "Old Gateau" ],
+    // Shopping Mall Nine's five counters (plan 22 · U8, part a), our own stock on the department stores' lists: medicine, balls, vitamins, battle items, TMs
+    "mall_medicine": [ "Potion", "Super Potion", "Hyper Potion", "Max Potion", "Revive", "Antidote", "Paralyze Heal", "Burn Heal", "Ice Heal", "Awakening", "Full Heal" ],
+    "mall_balls": [ "Poké Ball", "Great Ball", "Ultra Ball", "Repeat Ball", "Timer Ball", "Net Ball", "Nest Ball", "Dive Ball", "Quick Ball", "Luxury Ball" ],
+    "mall_vitamins": [ "HP Up", "Protein", "Iron", "Carbos", "Calcium", "Zinc" ],
+    "mall_battle": [ "X Attack", "X Defense", "X Speed", "X Accuracy", "X Sp. Atk", "X Sp. Def", "Guard Spec.", "Dire Hit" ],
+    "mall_machines": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ]
   }
 }

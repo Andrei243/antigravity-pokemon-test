@@ -1,0 +1,28 @@
+{
+  // The musical fans' house (plan 22 · U8, part a): three who talk about musicals, our words
+  "area": "opelucid_city_6",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [
+        "You know what? I'm a huge musical fan! I want people all over the world to enjoy musicals. If you have a lot of Props, it makes you want to put them on Pokémon!"
+      ]
+    },
+    "1": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [
+        "Know what? I hear there is a Prop you can get on your birthday!"
+      ]
+    },
+    "2": {
+      "name": "Woman",
+      "npcType": "pokefan_f",
+      "dialog": [
+        "If you have a lot of Props, it makes you want to put them on Pokémon. And if you put Props on Pokémon, it makes you want to take part in a musical!"
+      ]
+    }
+  }
+}

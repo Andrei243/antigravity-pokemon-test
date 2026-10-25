@@ -1972,6 +1972,284 @@ public class UnovaStoryTests
                 Assert.Equal("-", SeasonCell(season, x, y));
     }
 
+    // ---- Plan 22 · U8, part a: Route 12 to Opelucid City ---------------------------------------------------------------------
+
+    /// <summary>A game that has come through Lacunosa Town and Route 11 to the east gate of Opelucid City.</summary>
+    private static Game AtOpelucid()
+    {
+        var game = AtLentimas();
+        game.Story.SetVar("VAR_UNOVA_REVERSAL", 2);
+        game.Story.SetVar("VAR_UNOVA_LACUNOSA", 4);
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Unova)!.Starters[0]);
+        game.Arrive("Unova", 446, 175);
+        return game;
+    }
+
+    [Fact]
+    public void IrisMeetsThePlayerAtTheEastEndOfOpelucidCityAndTheChapterBeginsHidden()
+    {
+        var game = AtOpelucid();
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        // the chapter's people are hidden until their scenes
+        foreach (string key in new[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "19" })
+            Assert.Null(game.Present(key, "opelucid_city"));
+        Assert.NotNull(game.Present("12", "opelucid_city"));
+        Assert.True(game.Fires("IrisGreets"));
+        Assert.False(game.Fires("TriadAtTheEast"));
+        var iris = game.Step("IrisGreets");
+        Assert.Contains(iris.Transcript, l => l.Speaker == "Iris" && l.Text.Contains("Route 9"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        Assert.False(game.Fires("IrisGreets"));
+        Assert.Null(game.Present("11", "opelucid_city"));
+    }
+
+    private static HashSet<(int, int)> ReachableOn(Map map, (int X, int Y) from)
+    {
+        var seen = new HashSet<(int, int)> { from };
+        var queue = new Queue<(int X, int Y)>();
+        queue.Enqueue(from);
+        while (queue.Count > 0)
+        {
+            var (x, y) = queue.Dequeue();
+            void Visit(int nx, int ny)
+            {
+                if (seen.Contains((nx, ny)) || !map.InBounds(nx, ny) || map.IsSolid(nx, ny)) return;
+                seen.Add((nx, ny));
+                // a person's tile is stood next to and not walked through
+                if (map.NPCs.At(nx, ny) != null) return;
+                queue.Enqueue((nx, ny));
+            }
+            // a way of our own that leads to a tile of this map is taken
+            if (map.Warps.FirstOrDefault(w => w.SourceX == x && w.SourceY == y && w.TargetMap == map.Name && !w.Shut) is { } warp) { Visit(warp.TargetX, warp.TargetY); continue; }
+            Visit(x + 1, y); Visit(x - 1, y); Visit(x, y + 1); Visit(x, y - 1);
+        }
+        return seen;
+    }
+
+    [Fact]
+    public void TheDragonGymsPlatformsAreJoinedAndEveryOneLeadsBackToTheDoor()
+    {
+        var game = AtOpelucid();
+        game.Arrive("OpelucidCity_Gym", 22, 54);
+        var map = game.Map;
+        var fromTheDoor = ReachableOn(map, (22, 54));
+        // the strip's top, in front of Drayden, and a tile of each platform with its veteran
+        foreach (var tile in new[] { (15, 23), (15, 29), (11, 21), (4, 17), (18, 17) })
+            Assert.Contains(tile, fromTheDoor);
+        // and from the far platforms the way back is open
+        foreach (var from in new[] { (4, 17), (18, 17), (11, 21), (15, 29) })
+            Assert.Contains((22, 54), ReachableOn(map, from));
+        // everyone stands where somebody can speak to them
+        foreach (string key in new[] { "1", "2", "3", "4", "5", "6" })
+        {
+            var npc = map.NPCs.First(n => n.Key == key);
+            Assert.Contains(new[] { (npc.GridX, npc.GridY + 1), (npc.GridX, npc.GridY - 1), (npc.GridX + 1, npc.GridY), (npc.GridX - 1, npc.GridY) }, t => fromTheDoor.Contains(t));
+        }
+    }
+
+    [Fact]
+    public void DraydenGivesTheLegendBadgeAndTm82AndAsksThePlayerToHisHouse()
+    {
+        var game = AtOpelucid();
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 1);
+        game.Arrive("OpelucidCity_Gym", 22, 54);
+        game.TalkTo("0");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_WATER_OPELUCID"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Fresh Water")!));
+        // a veteran fights once, as the trainer of the data
+        var ron = game.TalkTo("1");
+        Assert.Contains(ron.Log, l => l.StartsWith("battle unova_veteran_ron"));
+        var again = game.TalkTo("1");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle"));
+        var drayden = game.TalkTo("6");
+        Assert.Contains(drayden.Log, l => l.StartsWith("battle unova_leader_drayden"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Legend"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM82")!));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_DRAYDEN_AT_HOME"));
+        var after = game.TalkTo("6");
+        Assert.DoesNotContain(after.Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM82")!));
+        Assert.NotEmpty(TrainerDatabase.Get("unova_leader_drayden")!.Party);
+    }
+
+    private static int IceTiles(Map map) => Enumerable.Range(380, 70).SelectMany(x => Enumerable.Range(134, 55).Select(z => (x, z))).Count(t => map.GetGroundTile(t.x, t.z) is TileType.Ice or TileType.Snow);
+
+    [Fact]
+    public void DraydensTaleIsFollowedByTheFrigatesIceAndTheStreetsEmptyOfTheCityFolk()
+    {
+        var game = AtOpelucid();
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 2);
+        game.Story.Set("FLAG_UNOVA_DRAYDEN_AT_HOME");
+        // coming out of the Gym with the Badge, Drayden asks the player to follow him
+        Assert.True(game.Fires("DraydenAsks"));
+        var asks = game.Step("DraydenAsks");
+        Assert.Contains(asks.Transcript, l => l.Speaker == "Drayden" && l.Text.Contains("house"));
+        var map = game.Mapped("Unova");
+        int before = IceTiles(map);
+        // inside, Drayden tells the tale of the two dragons; as he ends the ice falls and the player is put at the door
+        game.Arrive("OpelucidCity_DraydensHouse_1F", 9, 13);
+        var tale = game.Played.First(p => p.Script.EndsWith("OnEnter") && p.Script.Contains("opelucid_city_2")).Host;
+        Assert.Contains(tale.Transcript, l => l.Speaker == "Drayden" && l.Text.Contains("Reshiram"));
+        Assert.Contains(tale.Transcript, l => l.Speaker == "Drayden" && l.Text.Contains("Kyurem"));
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.True(game.Story.Has("FLAG_UNOVA_OPELUCID_ICE"));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        var ice = game.Played.Last(p => p.Script.StartsWith("opelucid_city.") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(ice.Transcript, l => l.Speaker == "Zinzolin" && l.Text.Contains("Splicers"));
+        Assert.Contains(ice.Log, l => l.StartsWith("fade"));
+        // the swap lays the city's frozen chunks while the flag is set, and the street's people are indoors
+        map.ApplySwappedPlaces(game.Story.Var, game.Story.Has);
+        Assert.True(IceTiles(map) > before + 200, $"{before} before, {IceTiles(map)} under the ice");
+        Assert.Null(game.Present("12", "opelucid_city"));
+        Assert.Null(game.Present("14", "opelucid_city"));
+        // the grunts are about the streets, Zinzolin at the Gym's door
+        foreach (string key in new[] { "1", "2", "3", "4", "5", "6", "7" })
+            Assert.NotNull(game.Present(key, "opelucid_city"));
+        var zinzolin = game.Present("1", "opelucid_city")!;
+        Assert.Equal((405, 146), (zinzolin.GridX, zinzolin.GridY));
+        // and the snow is the zone's while the flag lasts
+        Assert.Equal(FieldWeather.Snow, game.Map.WeatherAt(418, 170));
+    }
+
+    [Fact]
+    public void ThePlayerBeatsTheGruntsAndZinzolinAndTheShadowTriadTakesTheSplicersAndTheIceMeltsAfter()
+    {
+        var game = AtOpelucid();
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 3);
+        game.Arrive("OpelucidCity_DraydensHouse_1F", 9, 13);
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 3);
+        game.Story.Unset("FLAG_UNOVA_HIDE_GRUNTS_OPELUCID");
+        game.Arrive("Unova", 418, 160);
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        var map = game.Mapped("Unova");
+        map.ApplySwappedPlaces(game.Story.Var, game.Story.Has);
+        int frozen = IceTiles(map);
+        Assert.True(frozen > 0);
+        // three grunts battle (once each), three only talk
+        foreach (var (key, trainer) in new[] { ("2", "unova_team_plasma_grunt_41"), ("3", "unova_team_plasma_grunt_42"), ("4", "unova_team_plasma_grunt_43") })
+        {
+            var fight = game.Talk(key, "opelucid_city");
+            Assert.Contains(fight.Log, l => l.StartsWith("battle " + trainer));
+            var again = game.Talk(key, "opelucid_city");
+            Assert.DoesNotContain(again.Log, l => l.StartsWith("battle"));
+        }
+        Assert.DoesNotContain(game.Talk("5", "opelucid_city").Log, l => l.StartsWith("battle"));
+        // Zinzolin at the Gym's door: beaten, he leaves with his grunts; Drayden shows the Splicers and the Triad takes them
+        var zinzolin = game.Talk("1", "opelucid_city");
+        Assert.Contains(zinzolin.Log, l => l.StartsWith("battle unova_team_plasma_zinzolin_3"));
+        Assert.Equal(6, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        Assert.Contains(zinzolin.Transcript, l => l.Speaker == "Shadow Triad" && l.Text.Contains("Gym"));
+        Assert.Null(game.Present("1", "opelucid_city"));
+        Assert.Null(game.Present("2", "opelucid_city"));
+        Assert.Null(game.Present("9", "opelucid_city"));
+        var triad = game.Present("8", "opelucid_city")!;
+        Assert.Equal((442, 175), (triad.GridX, triad.GridY));
+        // the Triad's member stops the player at the east end, and the Xtransceiver rings with Cheren's word; the ice melts after
+        Assert.True(game.Fires("TriadAtTheEast"));
+        Assert.False(game.Fires("IrisGreets"));
+        var stand = game.Step("TriadAtTheEast");
+        Assert.Contains(stand.Log, l => l.StartsWith("battle unova_team_plasma_shadow_4"));
+        Assert.Contains(stand.Transcript, l => l.Speaker == "Cheren" && l.Text.Contains("Humilau"));
+        Assert.Equal(7, game.Story.Var("VAR_UNOVA_OPELUCID"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_OPELUCID_ICE"));
+        map.ApplySwappedPlaces(game.Story.Var, game.Story.Has);
+        Assert.True(IceTiles(map) < frozen / 4, "the ground comes back as it was");
+        Assert.NotNull(game.Present("12", "opelucid_city"));
+        Assert.Null(game.Present("8", "opelucid_city"));
+        Assert.Null(game.Present("19", "opelucid_city"));
+        Assert.False(game.Fires("TriadAtTheEast"));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheOpelucidChapterIsGivenItsHiddenPeople()
+    {
+        var game = new Game();
+        game.Story.Unset("FLAG_UNOVA_OPELUCID_BEGUN");
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID", "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "FLAG_UNOVA_HIDE_TRIAD_EAST", "FLAG_UNOVA_HIDE_IRIS_OPELUCID" })
+            game.Story.Unset(flag);
+        game.Play(Scripts.Find("UnovaCatchUpC", "common")!);
+        Assert.True(game.Story.Has("FLAG_UNOVA_OPELUCID_BEGUN"));
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID", "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "FLAG_UNOVA_HIDE_TRIAD_EAST", "FLAG_UNOVA_HIDE_IRIS_OPELUCID", "FLAG_UNOVA_HIDE_CHEREN_OPELUCID" })
+            Assert.True(game.Story.Has(flag), flag);
+        // a new game has them hidden already, through the chain of every chapter's hiding
+        Assert.True(new Game().Story.Has("FLAG_UNOVA_OPELUCID_BEGUN"));
+    }
+
+    [Fact]
+    public void RouteTwelveAndTheVillageBridgeAndRouteElevenAreWalkedByTheirTrainers()
+    {
+        var game = AtOpelucid();
+        foreach (var (map, x, y, area, keys) in new[] {
+                     ("Unova", 590, 175, "unova_route_12", new[] { "0", "1", "2", "3" }),
+                     ("VillageBridge", 3, 32, "village_bridge", new[] { "4", "5", "6", "7", "19", "20", "21" }),
+                     ("Unova", 480, 175, "unova_route_11", new[] { "4", "5", "6" }),
+                     ("Unova", 360, 175, "unova_route_9", new[] { "0", "1", "2", "3", "4", "5" }) })
+        {
+            game.Arrive(map, x, y);
+            foreach (string key in keys)
+            {
+                var npc = game.Present(key, area);
+                Assert.NotNull(npc);
+                Assert.True(npc!.IsTrainer, $"{area} {key}");
+            }
+        }
+        // Virizion, held for plan 22 · U10, is not on the road, nor are the two spare balls
+        game.Arrive("Unova", 480, 175);
+        Assert.Null(game.Present("0", "unova_route_11"));
+        Assert.Null(game.Present("7", "unova_route_11"));
+        // Route 9's way west to the Tubeline Bridge waits for the post-game
+        game.Arrive("Unova", 360, 175);
+        Assert.True(game.Map.Warps.All(w => !w.TargetMap.Contains("Tubeline", StringComparison.OrdinalIgnoreCase)));
+        // the gate houses join the bridge to both roads and Opelucid City to both of its
+        game.Arrive("Unova", 583, 175);
+        game.Through("VillageBridgeGate_East");
+        Assert.Equal("VillageBridgeGate_East", game.Map.Name);
+        game.Through("VillageBridge");
+        Assert.Equal("VillageBridge", game.Map.Name);
+    }
+
+    [Fact]
+    public void ShoppingMallNinesFiveCountersSellTheirOwnGoods()
+    {
+        var game = AtOpelucid();
+        game.Arrive("ShoppingMallNine_1F", 15, 27);
+        var counters = new[] { ("12", "mall_medicine", "Hyper Potion"), ("13", "mall_balls", "Dive Ball"), ("14", "mall_vitamins", "Protein"),
+            ("15", "mall_battle", "X Speed"), ("16", "mall_machines", "TM83") };
+        foreach (var (key, mart, item) in counters)
+        {
+            var shop = game.TalkTo(key);
+            Assert.Contains(shop.Log, l => l == $"open Shop {mart}");
+            Assert.Contains(MartDatabase.Stock(mart, 0), i => i.Name == item);
+        }
+        Assert.NotNull(game.Present("10", "shopping_mall"));
+        game.Through("ShoppingMallNine_2F");
+        Assert.Equal("ShoppingMallNine_2F", game.Map.Name);
+    }
+
+    [Fact]
+    public void DraydensHouseAndTheOtherRoomsOfOpelucidAreThereAndTheSongsAreOurOwn()
+    {
+        var game = AtOpelucid();
+        // the woman upstairs in Drayden's house gives the Ring Target once
+        game.Arrive("OpelucidCity_DraydensHouse_2F", 9, 5);
+        game.TalkTo("1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Ring Target")!));
+        game.TalkTo("1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Ring Target")!));
+        // each house of two floors has its stairs both ways
+        foreach (var (down, up) in new[] { ("OpelucidCity_DraydensHouse_1F", "OpelucidCity_DraydensHouse_2F"), ("OpelucidCity_TripleHouse_1F", "OpelucidCity_TripleHouse_2F"),
+                     ("OpelucidCity_MusicalHouse_1F", "OpelucidCity_MusicalHouse_2F"), ("OpelucidCity_TradeHouse_1F", "OpelucidCity_TradeHouse_2F"),
+                     ("OpelucidCity_OldHouse_1F", "OpelucidCity_OldHouse_2F") })
+        {
+            Assert.Contains(game.Mapped(down).Warps, w => w.TargetMap == up);
+            Assert.Contains(game.Mapped(up).Warps, w => w.TargetMap == down);
+        }
+        foreach (string song in new[] { "opelucid", "route12", "village_bridge", "shopping_mall" })
+            Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
+        Assert.Contains(RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns, s => s.Room == "OpelucidCity_PokemonCenter");
+    }
+
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)
     {
         var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);

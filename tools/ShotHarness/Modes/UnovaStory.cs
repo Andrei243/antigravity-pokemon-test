@@ -951,5 +951,119 @@ partial class Harness
         ComeThrough("Unova", 654, 174, Direction.Up); Frames(30); Shot("us263_lacunosa_after_dark");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
+
+        // Plan 22 · U8, part a: Opelucid City (us264 to us315): Iris at the east end, the Dragon Gym and the Legend Badge, Drayden's
+        // house and his tale, the Plasma Frigate's ice over the city, the grunts, Zinzolin at the Gym's door, the Splicers and the
+        // Shadow Triad's, Cheren's word and the ice melting, played in this same game
+        void Opelucid(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, opelucid {story.Var("VAR_UNOVA_OPELUCID")}, "
+                + $"ice {story.Has("FLAG_UNOVA_OPELUCID_ICE")}, Legend Badge {story.HasBadge(RegionDatabase.Unova, "Legend")}, TM82 {game.Bag.GetQuantity(ItemDatabase.Get("TM82")!)}, "
+                + $"Ring Target {game.Bag.GetQuantity(ItemDatabase.Get("Ring Target")!)}, Fresh Water {game.Bag.GetQuantity(ItemDatabase.Get("Fresh Water")!)}, "
+                + $"grunts {story.Has("FLAG_UNOVA_DEFEATED_GRUNT_41")}/{story.Has("FLAG_UNOVA_DEFEATED_GRUNT_42")}/{story.Has("FLAG_UNOVA_DEFEATED_GRUNT_43")}, "
+                + $"iceTiles {Enumerable.Range(380, 70).SelectMany(x => Enumerable.Range(134, 55).Select(z => (x, z))).Count(c => game.Map.GetGroundTile(c.x, c.z) is TileType.Ice or TileType.Snow)}");
+        story.SetVar("VAR_UNOVA_LACUNOSA", 4);
+
+        // ---- the east gate, and Iris on the road's end
+        ComeThrough("Unova", 446, 175, Direction.Left); Frames(30); Shot("us264_opelucid_east_gate");
+        StepOnto("Unova", 440, 175, Direction.Left);
+        ReadTo("Yahoo! It's you!"); Frames(10); Shot("us265_iris_greets");
+        ReadTo("Are you here to challenge my grandpa?"); Frames(10); Shot("us266_the_mayor_is_her_grandpa");
+        ReadTo("Oh! The Gym is up that way"); Frames(10); Shot("us267_go_to_route_9_first");
+        ReadTo("Good luck!"); Frames(10); Shot("us268_good_luck");
+        ReadTo(null); Frames(10);
+        Opelucid("Iris met");
+
+        // ---- the Dragon Gym: the guide's water, the platforms, a veteran, Drayden and the Legend Badge
+        ComeThrough("OpelucidCity_Gym", 23, 54, Direction.Up); Frames(30); Shot("us269_the_dragon_gym");
+        TalkToKey("OpelucidCity_Gym", "0", 0, 1);
+        ReadTo("Fresh Water"); Frames(10); Shot("us270_fresh_water");
+        ReadTo(null);
+        ComeThrough("OpelucidCity_Gym", 15, 29, Direction.Up); Frames(30); Shot("us271_the_first_platform");
+        TalkToKey("OpelucidCity_Gym", "1", 0, 1);
+        ReadTo("Always aim for the top"); Frames(10); Shot("us272_a_veteran");
+        ReadTo("You're strong enough to challenge Mayor Drayden"); Frames(10); Shot("us273_the_veteran_after_the_battle");
+        ReadTo(null);
+        ComeThrough("OpelucidCity_Gym", 15, 24, Direction.Up); Frames(30); Shot("us274_the_strip_to_drayden");
+        TalkToKey("OpelucidCity_Gym", "6", 0, 1);
+        ReadTo("Welcome. Thank you for coming."); Frames(10); Shot("us275_drayden_welcomes");
+        ReadTo("Show me the full force of your bond"); Frames(10); Shot("us276_drayden_challenges");
+        ReadTo("Wonderful."); Frames(10); Shot("us277_drayden_after_the_battle");
+        ReadTo("received the Legend Badge"); Frames(10); Shot("us278_the_legend_badge");
+        ReadTo("Please come to my house"); Frames(10); Shot("us279_come_to_my_house");
+        ReadTo(null); Frames(10);
+        Opelucid("Legend Badge");
+
+        // ---- out into the lane: Drayden calls the player to his door, and in the house tells the tale
+        ComeThrough("Unova", 405, 146, Direction.Down); Frames(10);
+        StepOnto("Unova", 418, 171, Direction.Up);
+        ReadTo("There you are."); Frames(10); Shot("us280_drayden_calls");
+        ReadTo("This way!"); Frames(10); Shot("us281_this_way");
+        ReadTo("We're here."); Frames(10); Shot("us282_we_are_here");
+        ReadTo(null);
+        ComeThrough("OpelucidCity_DraydensHouse_1F", 9, 13, Direction.Up); Frames(10);
+        ReadTo("Let me tell you the story."); Frames(10); Shot("us283_the_tale_begins");
+        ReadTo("Two years ago"); Frames(10); Shot("us284_reshiram_and_zekrom");
+        ReadTo("Kyurem"); Frames(10); Shot("us285_kyurem");
+        ReadTo("DNA Splicers"); Frames(10); Shot("us286_the_splicers");
+        ReadTo("Boom!"); Frames(10); Shot("us287_the_sound");
+        ReadTo("What was that sound?"); Frames(10); Shot("us288_what_was_that");
+
+        // ---- the Frigate's ice falls on the city: Drayden's Haxorus, Zinzolin's demand, the grunts let loose
+        ReadTo("This world of ice"); Frames(10); Shot("us289_the_world_of_ice"); ShotCrop("us289_the_world_of_ice_native", 640, 300, 640, 360, 2);
+        ReadTo("Haxorus! Use Dragon Tail"); Frames(10); Shot("us290_dragon_tail");
+        ReadTo("I don't think that will work."); Frames(10); Shot("us291_a_voice");
+        ReadTo("I remember you from N's Castle."); Frames(10); Shot("us292_zinzolin_appears");
+        ReadTo("It's bitter cold."); Frames(10); Shot("us293_bitter_cold");
+        ReadTo("hand over the DNA Splicers"); Frames(10); Shot("us294_the_demand");
+        ReadTo("Do you think a man who knows"); Frames(10); Shot("us295_drayden_refuses");
+        ReadTo("Those foul villains!"); Frames(10); Shot("us296_foul_villains");
+        ReadTo("I want you to help me!"); Frames(10); Shot("us297_drayden_asks_for_help");
+        ReadTo(null); Frames(20); Shot("us298_the_city_under_ice");
+        Opelucid("the ice has fallen");
+        ComeThrough("Unova", 418, 168, Direction.Up); Frames(30); Shot("us299_the_square_under_ice");
+        ComeThrough("Unova", 405, 148, Direction.Up); Frames(30); Shot("us300_zinzolin_at_the_gym_door");
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        ComeThrough("Unova", 418, 168, Direction.Up); Frames(30); Shot("us301_the_ice_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
+
+        // ---- the grunts in the streets, and Zinzolin
+        TalkTo("Unova", "2", "opelucid_city");
+        ReadTo("Pokémon are pawns!"); Frames(10); Shot("us302_a_grunt");
+        ReadTo("The others were saying"); Frames(10); Shot("us303_the_grunt_after_the_battle");
+        ReadTo(null);
+        TalkTo("Unova", "3", "opelucid_city");
+        ReadTo("This time we'll take over"); Frames(10); Shot("us304_another_grunt");
+        ReadTo("It's not over!"); Frames(10);
+        ReadTo(null);
+        TalkTo("Unova", "4", "opelucid_city");
+        ReadTo("Don't get in our way!"); Frames(10); Shot("us305_a_third_grunt");
+        ReadTo("Zinzolin said to stick close"); Frames(10);
+        ReadTo(null);
+        TalkTo("Unova", "1", "opelucid_city");
+        ReadTo("Oh, for crying out loud"); Frames(10); Shot("us306_zinzolin_at_the_door");
+        ReadTo("You're a strong Trainer."); Frames(10); Shot("us307_zinzolin_leaves");
+        ReadTo("You're even better than I hoped."); Frames(10); Shot("us308_drayden_thanks");
+        ReadTo("These are the DNA Splicers!"); Frames(10); Shot("us309_the_splicers");
+        ReadTo("As we suspected"); Frames(10); Shot("us310_the_shadow_triad");
+        ReadTo("beyond my imagination"); Frames(10); Shot("us311_the_seven_sages");
+        ReadTo("take what we need"); Frames(10); Shot("us312_the_triad_takes_them");
+        ReadTo("Go after them"); Frames(10); Shot("us313_go_after_them");
+        ReadTo(null); Frames(20);
+        Opelucid("the Splicers taken");
+
+        // ---- the east end: the Triad's stand, Cheren's word, and the ice melting
+        StepOnto("Unova", 440, 175, Direction.Right);
+        ReadTo("You don't really think"); Frames(10); Shot("us314_the_triads_stand");
+        ReadTo("I don't happen to be the one holding"); Frames(10); Shot("us315_buying_time");
+        ReadTo("It's I who let everybody down"); Frames(10); Shot("us316_drayden_blames_himself");
+        ReadTo("If there were only two of me"); Frames(10); Shot("us317_the_xtransceiver");
+        ReadTo("Drayden, glad to see you're safe"); Frames(10); Shot("us318_cheren_arrives");
+        ReadTo("The place with the lowest chance"); Frames(10); Shot("us319_cheren_knows_where");
+        ReadTo("Humilau City, huh"); Frames(10); Shot("us320_humilau");
+        ReadTo("starting to melt"); Frames(10); Shot("us321_the_ice_melts"); ShotCrop("us321_the_ice_melts_native", 640, 300, 640, 360, 2);
+        ReadTo(null); Frames(20); Shot("us322_opelucid_again");
+        Opelucid("the ice melted");
     }
 }

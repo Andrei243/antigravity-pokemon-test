@@ -1,0 +1,54 @@
+{
+  // The upstairs of the trade house (plan 22 · U8, part a): a Pokémon lover and the five who sing for her, our words
+  "area": "opelucid_city_9",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Collector",
+      "npcType": "twin",
+      "dialog": [
+        "I love Pokémon more than anyone! If I just had one more Pokémon, they would sing together!"
+      ]
+    },
+    "1": {
+      "name": "Emolga",
+      "npcType": "Pokemon",
+      "species": "Emolga",
+      "dialog": [
+        "Emolga: Pi pi kiii!"
+      ]
+    },
+    "2": {
+      "name": "Minccino",
+      "npcType": "Pokemon",
+      "species": "Minccino",
+      "dialog": [
+        "Minccino: Pun purin?"
+      ]
+    },
+    "3": {
+      "name": "Lillipup",
+      "npcType": "Pokemon",
+      "species": "Lillipup",
+      "dialog": [
+        "Lillipup: Waah weeen!"
+      ]
+    },
+    "4": {
+      "name": "Palpitoad",
+      "npcType": "Pokemon",
+      "species": "Palpitoad",
+      "dialog": [
+        "Palpitoad: Croooak!"
+      ]
+    },
+    "5": {
+      "name": "Tympole",
+      "npcType": "Pokemon",
+      "species": "Tympole",
+      "dialog": [
+        "Tympole: Riiiibbbit."
+      ]
+    }
+  }
+}

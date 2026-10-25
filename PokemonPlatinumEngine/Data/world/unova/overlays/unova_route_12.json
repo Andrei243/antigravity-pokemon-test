@@ -1,0 +1,35 @@
+{
+  // Route 12 (plan 22 · U8, part a): the road from Lacunosa Town west to the Village Bridge, Black 2's, with four trainers (the two on the shore, Cleo and Rio, battle together) and its balls and hidden things in the area file; our words
+  "area": "unova_route_12",
+  "bgmTrack": "unova/route12",
+  "people": {
+    "0": {
+      "name": "Cleo",
+      "trainer": {
+        "dialogueBefore": "We do everything together, my sister and I. That includes battling you!",
+        "dialogueAfter": "Together, and we still lost."
+      }
+    },
+    "1": {
+      "name": "Rio",
+      "trainer": {
+        "dialogueBefore": "Two on one is only fair when it's us two!",
+        "dialogueAfter": "Hee hee. We'll be better together next time."
+      }
+    },
+    "2": {
+      "name": "Jeriel",
+      "trainer": {
+        "dialogueBefore": "I train by walking the whole road and fighting everyone on it. Prepare yourself!",
+        "dialogueAfter": "A hard road, and you walked it harder."
+      }
+    },
+    "3": {
+      "name": "Azra",
+      "trainer": {
+        "dialogueBefore": "Hup! Hup! Keep your guard up!",
+        "dialogueAfter": "Even my guard wasn't enough."
+      }
+    }
+  }
+}

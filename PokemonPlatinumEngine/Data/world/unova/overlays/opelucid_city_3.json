@@ -1,0 +1,33 @@
+{
+  // Drayden's house, upstairs (plan 22 · U8, part a): the old man's family and Iris's coach, our words. A woman here gives a Ring Target to a Trainer who can work it out
+  "area": "opelucid_city_3",
+  "bgmTrack": "unova/opelucid",
+  "people": {
+    "0": {
+      "name": "Trainer",
+      "npcType": "blackbelt",
+      "dialog": [
+        "Dragon types really don't like the cold! What's going to happen to Opelucid City?"
+      ]
+    },
+    "1": {
+      "name": "Woman",
+      "npcType": "lady",
+      "script": "RingTarget"
+    },
+    "2": {
+      "name": "Veteran",
+      "npcType": "veteran",
+      "dialog": [
+        "I was Iris's coach! From the day she came here she was stronger than me. Now I wouldn't stand a chance! Drayden teaches the strongest Dragon-type move to those he trusts."
+      ]
+    },
+    "3": {
+      "name": "Trainer",
+      "npcType": "blackbelt",
+      "dialog": [
+        "Wh-what's going to happen to Opelucid City?"
+      ]
+    }
+  }
+}

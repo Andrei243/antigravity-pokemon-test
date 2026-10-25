@@ -1,0 +1,274 @@
+# D14 · Evolutions past level 100, batch 8 (Galar and Hisui): the supplement
+
+Plan 03 · D14. The user answered [D14-proposals-galar.md](D14-proposals-galar.md) on 2026-10-26: all 42 designs yes (built in wave 53 as rows of `tools/DataImporter/Overrides/species-past-hundred.json`), every question at its default but two, both answered with their alternative:
+
+- **Question 7, regional forms that end their lines in Galar or Hisui: b**, "a list of their designs, numbered by a rule of their own".
+- **Question 8, Urshifu: b**, "one Urshifu of ours whatever the style, keeping Fighting/Dark".
+
+Neither had designs in the document, so this supplement proposes them, in the same format and checked by the same kind of script. **Waiting for the user's answers.** Nothing here is built: no species, no evolution row, no test, no sculpt.
+
+**Applied without asking again** (the batch's settled rules and its answered questions): the rise is +80, capped so that nothing that isn't legendary passes 600, and a region's legendary set rises to 660; abilities come only from `abilities.json`, as many slots as the forebear has as the game reads it, in its order, the hidden one last; the evolution is by level with a condition the engine already runs; names are one invented word of at most 12 letters, held against every species and form of the data, every row of the table (212 species) and every design of the nine proposals (355 names, the four batches written beside Galar's in wave 53 among them); each evolves within its region's own climb (question 1): Galar's at 226 to 240, Hisui's at 238 to 240, the legendary sets at 244; ours have no forms of their own.
+
+## Question 1 here: the numbering rule
+
+The settled number, 2000 + the species' National number, is the species' own design's (Rapidash's is Kanto's Solarion, 2078; Slowbro's Slowmantle, 2080), so a regional form's design needs numbers of its own. The block 2001 to 3025 is the species' designs', and Paldea's batch reaches 3013. *Default*: **a block of a thousand to each region whose forms have designs, + the species' National number**, in the chain's order after the species' block: **Alola 4000, Galar 5000, Hisui 6000, Paldea 7000** (the Galarian Rapidash's design is 5078, the Hisuian Arcanine's 6059). Two regional forms of one species never meet (an Alolan and a Galarian form of the same species would stand a thousand apart), nothing of the species' block moves, and a number says at a glance which region's form it grew from. The National Pokédex lists ours by number, so these come after every species' design. *Alternatives*: one block for every regional form (4000 + the number), which holds only while no species has two regional forms that both end lines; or numbers past the species' block in the order the designs are approved (3026 on), which says nothing of where a design came from.
+
+## What qualifies, and how many
+
+The batch's rule, applied to the forms: a regional form of Galar or Hisui that **evolves into nothing** and **ends a line of one or two**, its line counted as its own (`Evolution.FitsForm`: a Galarian Ponyta becomes the Galarian Rapidash, never Kanto's).
+
+**15 forms qualify**:
+
+- **Galar, 9**: the Galarian Rapidash (from the Galarian Ponyta), Slowbro and Slowking (the Galarian Slowpoke's two ends, each judged alone), Weezing (from Koffing, in Galar), Darmanitan (from the Galarian Darumaka), and alone the Galarian Stunfisk and the three Galarian birds.
+- **Hisui, 6**: the Hisuian Arcanine and Electrode (from the Hisuian Growlithe and Voltorb), Lilligant (from Petilil, in Hisui), Zoroark (from the Hisuian Zorua), Braviary (from Rufflet, in Hisui) and Avalugg (from Bergmite, in Hisui; Kalos's batch left it to this one, its question 7).
+- **Not here, the last of a line of three (4)**: the Hisuian Typhlosion, Samurott, Decidueye and Goodra. The main document listed them beside the rest; by the rule every batch has used they take 06 · R31's moves and no design (question 2).
+- **Not here, a regional form that goes on**: the Galarian Meowth, Farfetch'd, Corsola, Yamask, Zigzagoon and Linoone and Mr. Mime, and the Hisuian Growlithe, Voltorb, Qwilfish, Sneasel, Zorua and Sliggoo, each the start or middle of a line whose end is judged here or in the main document.
+
+**And Urshifu** (question 8 of the main document): one species of ours from either style.
+
+16 designs follow.
+
+## The legendaries
+
+- **The Galarian birds: maybe, as a set of three or not at all**, as Kanto's three: each at level 244 holding its own type's item, used up (Kanto's Glacirune, Fulguris and Pyrevant hold Never-Melt Ice, a Magnet and Charcoal at 150; the Galarian three are Psychic, Fighting and Dark, so a Twisted Spoon, a Black Belt and Black Glasses), +80 to 660. *Default*: build them, as the Kanto three are built.
+- **Urshifu: maybe** (the user's answer to question 8 was yes in principle; this is the design). It is legendary in the data and has no set, so the set's 660 doesn't apply: **+80, to 630** (question 3). Level 244, as the region's legendary sets, with friendship 220 or more (its master's training, which is how Kubfu came to it); the Single Strike and the Rapid Strike one both evolve by the species' row (`Urshifu-Rapid-Strike` is no regional form), and the Rapid Strike one loses its Water on evolving, as the answer said. Its evolution joins the Frontier's ban (`FrontierRules.IsBannedOfOurs`).
+
+## The table: every design
+
+"No." is the number by question 1's default; "Total" is the stats the game reads now, and ours.
+
+| # | Was | Ours | No. | Typing (was → ours) | Total | Evolves | Say |
+|---|---|---|---|---|---|---|---|
+| 1 | Rapidash-Galar (78) | Glimmane | 5078 | Psychic/Fairy, kept | 500 → 580 | level 230, knowing Psycho Cut | yes: the unicorn of the Glimwood Tangle grows the mane its stories give it |
+| 2 | Slowbro-Galar (80) | Slowslinger | 5080 | Poison/Psychic, kept | 490 → 570 | a Galarica Cuff used on it at level 230 or above | yes: its forebear's own cuff again: the Shellder on its arm becomes two, and it never misses |
+| 3 | Slowking-Galar (199) | Slowmagus | 5199 | Poison/Psychic, kept | 490 → 570 | a Galarica Wreath used on it at level 230 or above | yes: its forebear's own wreath again: the alchemist king brews a medicine for every poison |
+| 4 | Weezing-Galar (110) | Purifume | 5110 | Poison/Fairy, kept | 490 → 570 | level 230, knowing Strange Steam | yes: the Pokémon that breathes clean air out of a smoky town grows a third head and a whole row of chimneys |
+| 5 | Darmanitan-Galar-Standard (555) | Frostruma | 5555 | Ice → **Ice/Fire** | 480 → 560 | an Ice Stone used on it at level 231 or above | yes: the snow daruma's two moods in one body: the ice it carries and the fire inside it |
+| 6 | Stunfisk-Galar (618) | Snareflat | 5618 | Ground/Steel, kept | 471 → 551 | level 229, in the rain | yes: the trap in the mud grows a second jaw; it lies in wait best when the rain hides it |
+| 7 | Articuno-Galar (144) | Hypnoskye | 5144 | Psychic/Flying, kept | 580 → 660 | level 244, holding a Twisted Spoon (used up) | maybe: with the other two as a set: the cold, cruel bird of Galar holds its type's own item as Kanto's held theirs |
+| 8 | Zapdos-Galar (145) | Stridestorm | 5145 | Fighting/Flying, kept | 580 → 660 | level 244, holding a Black Belt (used up) | maybe: with the other two as a set: the running bird of Galar holds its type's own item |
+| 9 | Moltres-Galar (146) | Duskphoenix | 5146 | Dark/Flying, kept | 580 → 660 | level 244, holding Black Glasses (used up) | maybe: with the other two as a set: the bird of malice holds its type's own item |
+| 10 | Arcanine-Hisui (59) | Obsidhound | 6059 | Fire/Rock, kept | 555 → 600 | a Fire Stone used on it at level 238 or above | yes: its forebear's own stone again: the guardian of Hisui's volcano grows its armour of black glass |
+| 11 | Electrode-Hisui (101) | Apricharge | 6101 | Electric/Grass, kept | 490 → 570 | a Leaf Stone used on it at level 238 or above | yes: its forebear's own stone again: the Apricorn ball ripens and sprouts |
+| 12 | Lilligant-Hisui (549) | Fandangleaf | 6549 | Grass/Fighting, kept | 480 → 560 | a Sun Stone used on it at level 238 or above | yes: its forebear's own stone again: the dancer of the Hisuian highlands fights with two fans |
+| 13 | Zoroark-Hisui (571) | Spectrevix | 6571 | Normal/Ghost, kept | 510 → 590 | level 238, at night | yes: the Pokémon of grudges grows a second, ghostly tail and walks only by night |
+| 14 | Braviary-Hisui (628) | Augurhawk | 6628 | Psychic/Flying, kept | 510 → 590 | level 239, by day | yes: the hawk of Hisui's cliffs reads the sky by day, and leaves its own signs in it |
+| 15 | Avalugg-Hisui (713) | Bergbreaker | 6713 | Ice/Rock, kept | 514 → 594 | level 239, at an Ice Rock | yes: the Hisuian Avalugg's other end: Kalos's Avalugg became Glacitadel, and its jaw becomes a glacier's bow |
+| 16 | Urshifu (892) | Ursensei | 2892 | Fighting/Dark, kept | 550 → 630 | level 244, with friendship 220 or more, whatever its style | maybe: one master of both styles: whichever tower trained it, it ends by learning both |
+
+## The designs
+
+### 1. Glimmane, from Rapidash-Galar (78): yes
+
+- **Typing**: Psychic/Fairy, kept. *Alternative*: Fairy/Fire, its fire come back.
+- **The Glimmer Unicorn Pokémon**, No. 5078. 2.1 m, 105.0 kg (Rapidash-Galar 1.7 m, 80 kg).
+- **Stats**: 65 / 100 / 70 / 80 / 80 / 105 = 500 → **80 / 105 / 85 / 100 / 95 / 115 = 580** (+15 HP +5 Atk +15 Def +20 SpA +15 SpD +10 Spe).
+- **Abilities**: Run Away, Pastel Veil, hidden Anticipation (was Run Away, Pastel Veil, hidden Anticipation).
+- **Evolution**: Rapidash-Galar at level 230, knowing Psycho Cut. Data, a row of Rapidash's: `{"targetSpecies":"Glimmane","fromForm":"Rapidash-Galar","method":"LevelKnowsMove","level":230,"move":"Psycho Cut"}`.
+- **Look**: from our pale Galarian Rapidash with its pastel mane and its horn: taller and finer, the mane grown into a cloak of pastel light that trails to its hocks (Glow, pink and blue), the horn longer and spiralled with a faint rainbow, and a second, smaller mane at its tail's root. White coat, pastel mane, pearl horn. **New feature**: the cloak of a mane.
+- **Pokédex**: Where it walks at night the moss glows behind it for an hour. Travellers lost in deep woods are said to find the path by its trail.
+
+### 2. Slowslinger, from Slowbro-Galar (80): yes
+
+- **Typing**: Poison/Psychic, kept. *Alternative*: Poison/Water.
+- **The Sharpshooter Pokémon**, No. 5080. 1.9 m, 95.0 kg (Slowbro-Galar 1.6 m, 70.5 kg).
+- **Stats**: 95 / 100 / 95 / 100 / 70 / 30 = 490 → **105 / 115 / 105 / 110 / 90 / 45 = 570** (+10 HP +15 Atk +10 Def +10 SpA +20 SpD +15 Spe).
+- **Abilities**: Quick Draw, Own Tempo, hidden Regenerator (was Quick Draw, Own Tempo, hidden Regenerator).
+- **Evolution**: Slowbro-Galar at a Galarica Cuff used on it at level 230 or above. Data, a row of Slowbro's: `{"targetSpecies":"Slowslinger","fromForm":"Slowbro-Galar","method":"UseItem","level":230,"item":"Galarica Cuff"}`.
+- **Look**: from our pink Galarian Slowbro with the Shellder clamped to its arm: the Shellder grown into a long shell with a bore like a barrel and a second, smaller one on the other arm, a cuff of braided Galarica twigs on each wrist and a gunslinger's lean to its stance. Pink body, purple and grey shells, brown cuffs. **New feature**: the second Shellder.
+- **Pokédex**: It draws faster than anything in the west of Galar, though it usually forgets what it was aiming at before it has fired.
+
+### 3. Slowmagus, from Slowking-Galar (199): yes
+
+- **Typing**: Poison/Psychic, kept. *Alternative*: Psychic/Dark.
+- **The Alchemist Pokémon**, No. 5199. 2.1 m, 100.0 kg (Slowking-Galar 1.8 m, 79.5 kg).
+- **Stats**: 95 / 65 / 80 / 110 / 110 / 30 = 490 → **105 / 65 / 100 / 125 / 120 / 55 = 570** (+10 HP +20 Def +15 SpA +10 SpD +25 Spe).
+- **Abilities**: Curious Medicine, Own Tempo, hidden Regenerator (was Curious Medicine, Own Tempo, hidden Regenerator).
+- **Evolution**: Slowking-Galar at a Galarica Wreath used on it at level 230 or above. Data, a row of Slowking's: `{"targetSpecies":"Slowmagus","fromForm":"Slowking-Galar","method":"UseItem","level":230,"item":"Galarica Wreath"}`.
+- **Look**: from our pink Galarian Slowking with the Shellder on its head: the Shellder grown into a tall crown of spiral shell with a purple eye at its top, a wreath of Galarica twigs round its brow, a long robe of pale purple and a little flask of poison hanging at its waist. Pink body, purple shell and robe, brown wreath. **New feature**: the flask.
+- **Pokédex**: It mixes poisons in a cauldron by moonlight and pours out medicines. Nobody has learned which of its brews is which before tasting them.
+
+### 4. Purifume, from Weezing-Galar (110): yes
+
+- **Typing**: Poison/Fairy, kept. *Alternative*: Fairy/Steel, its stacks of iron.
+- **The Clean Air Pokémon**, No. 5110. 3.4 m, 30.0 kg (Weezing-Galar 3 m, 16 kg).
+- **Stats**: 65 / 90 / 120 / 85 / 70 / 60 = 490 → **80 / 90 / 130 / 105 / 90 / 75 = 570** (+15 HP +10 Def +20 SpA +20 SpD +15 Spe).
+- **Abilities**: Levitate, hidden Misty Surge (was Levitate, hidden Misty Surge).
+- **Evolution**: Weezing-Galar at level 230, knowing Strange Steam. Data, a row of Weezing's: `{"targetSpecies":"Purifume","fromForm":"Weezing-Galar","method":"LevelKnowsMove","level":230,"move":"Strange Steam"}`.
+- **Look**: from our grey Galarian Weezing with its smokestacks and its moustache of smoke: a third body risen between the two, each wearing a top hat, the stacks grown into a row of chimney pots that breathe out pale green mist (Glow, faint green) and the moustaches longer and curled. Grey bodies, black hats, green mist. **New feature**: the third body.
+- **Pokédex**: Towns that once lay under smoke hold a festival when it drifts over. The air it leaves behind smells of rain on grass.
+
+### 5. Frostruma, from Darmanitan-Galar-Standard (555): yes
+
+- **Typing**: Ice → **Ice/Fire**. *Alternative*: Ice/Fighting.
+- **The Snowfire Daruma Pokémon**, No. 5555. 2.0 m, 160.0 kg (Darmanitan-Galar-Standard 1.7 m, 120 kg).
+- **Stats**: 105 / 140 / 55 / 30 / 55 / 95 = 480 → **115 / 150 / 80 / 30 / 75 / 110 = 560** (+10 HP +10 Atk +25 Def +20 SpD +15 Spe).
+- **Abilities**: Gorilla Tactics, hidden Slush Rush (was Gorilla Tactics, hidden Zen Mode).
+- **Evolution**: Darmanitan-Galar-Standard at an Ice Stone used on it at level 231 or above. Data, a row of Darmanitan's: `{"targetSpecies":"Frostruma","fromForm":"Darmanitan-Galar-Standard","method":"UseItem","level":231,"item":"Ice Stone"}`.
+- **Look**: from our white Galarian Darmanitan with the snowball on its head: the snowball grown into a great ball of packed snow and ice it carries over its head in both arms, its brow's flame lit again in the snow (Glow, orange), its fur longer and frosted and its feet broad as snowshoes. White fur, pale ice, orange flame. **New feature**: the flame lit in its snow.
+- **Pokédex**: It keeps a fire burning inside a ball of ice and throws the ball at whatever crosses its snowfield. The ice never melts and the fire never goes out.
+
+### 6. Snareflat, from Stunfisk-Galar (618): yes
+
+- **Typing**: Ground/Steel, kept. *Alternative*: Steel/Water.
+- **The Snare Trap Pokémon**, No. 5618. 1.1 m, 40.0 kg (Stunfisk-Galar 0.7 m, 20.5 kg).
+- **Stats**: 109 / 81 / 99 / 66 / 84 / 32 = 471 → **119 / 101 / 114 / 66 / 94 / 57 = 551** (+10 HP +20 Atk +15 Def +10 SpD +25 Spe).
+- **Abilities**: Mimicry, hidden Sand Veil (was Mimicry, hidden Sand Veil).
+- **Evolution**: Stunfisk-Galar at level 229, in the rain. Data, a row of Stunfisk's: `{"targetSpecies":"Snareflat","fromForm":"Stunfisk-Galar","method":"LevelInRain","level":229}`.
+- **Look**: from our green-brown Galarian Stunfisk with its jaw of steel teeth: wider and flatter, two rows of steel teeth like a double trap, a fringe of brown weed along its edges that hides it in mud, and the yellow lips kept. Brown and green body, steel teeth. **New feature**: the second row of teeth.
+- **Pokédex**: It lies flat in the mud of the marshes and waits for a whole season. A careless step on its back sets off two jaws at once.
+
+### 7. Hypnoskye, from Articuno-Galar (144): maybe
+
+- **Typing**: Psychic/Flying, kept. *Alternative*: Psychic/Ice.
+- **The Mesmer Pokémon**, No. 5144. 2.0 m, 60.0 kg (Articuno-Galar 1.7 m, 50.9 kg).
+- **Stats**: 90 / 85 / 85 / 125 / 100 / 95 = 580 → **100 / 85 / 100 / 145 / 115 / 115 = 660** (+10 HP +15 Def +20 SpA +15 SpD +20 Spe).
+- **Abilities**: Competitive, hidden Snow Cloak (was Competitive, hidden Snow Cloak).
+- **Evolution**: Articuno-Galar at level 244, holding a Twisted Spoon (used up). Data, a row of Articuno's: `{"targetSpecies":"Hypnoskye","fromForm":"Articuno-Galar","method":"LevelHoldingItem","level":244,"item":"Twisted Spoon"}`.
+- **Look**: from our purple Galarian Articuno with its cold eyes and its wings of psychic feathers: larger, its wings' feathers grown into long blades of violet light that hover apart from the wings (Glow, violet), a crest of three plumes and a long tail with a trailing eye of light. Purple body, violet light, pale eyes. **New feature**: the eye at its tail's end.
+- **Pokédex**: It looks down on everything from a great height. Those who meet its gaze stand still for hours, and can't remember why afterwards.
+
+### 8. Stridestorm, from Zapdos-Galar (145): maybe
+
+- **Typing**: Fighting/Flying, kept. *Alternative*: Fighting/Electric.
+- **The Strider Pokémon**, No. 5145. 1.9 m, 70.0 kg (Zapdos-Galar 1.6 m, 58.2 kg).
+- **Stats**: 90 / 125 / 90 / 85 / 90 / 100 = 580 → **100 / 145 / 105 / 85 / 105 / 120 = 660** (+10 HP +20 Atk +15 Def +15 SpD +20 Spe).
+- **Abilities**: Defiant, hidden Static (was Defiant, hidden Static).
+- **Evolution**: Zapdos-Galar at level 244, holding a Black Belt (used up). Data, a row of Zapdos's: `{"targetSpecies":"Stridestorm","fromForm":"Zapdos-Galar","method":"LevelHoldingItem","level":244,"item":"Black Belt"}`.
+- **Look**: from our orange Galarian Zapdos with its long legs and its crest: taller in the leg, its legs grown thick with muscle and banded in black at the knee, its wings short and folded like a runner's arms, the crest swept back into three points and the beak hooked. Orange body, black bands, dark wings. **New feature**: the bands at its knees.
+- **Pokédex**: It runs across the hills faster than a car on the motorway. Its kicks have split boulders the size of a cottage.
+
+### 9. Duskphoenix, from Moltres-Galar (146): maybe
+
+- **Typing**: Dark/Flying, kept. *Alternative*: Dark/Fire.
+- **The Malice Pokémon**, No. 5146. 2.4 m, 80.0 kg (Moltres-Galar 2 m, 66 kg).
+- **Stats**: 90 / 85 / 90 / 100 / 125 / 90 = 580 → **100 / 85 / 105 / 120 / 140 / 110 = 660** (+10 HP +15 Def +20 SpA +15 SpD +20 Spe).
+- **Abilities**: Berserk, hidden Flame Body (was Berserk, hidden Flame Body).
+- **Evolution**: Moltres-Galar at level 244, holding Black Glasses (used up). Data, a row of Moltres's: `{"targetSpecies":"Duskphoenix","fromForm":"Moltres-Galar","method":"LevelHoldingItem","level":244,"item":"Black Glasses"}`.
+- **Look**: from our dark Galarian Moltres with its flames of violet: larger, its wings of dark flame grown into long trailing veils (Glow, violet and red), a crown of black feathers and a tail like a train of smoke with embers in it. Black and purple body, violet and red flame. **New feature**: the crown of black feathers.
+- **Pokédex**: Its dark flame burns away the spirit, not the body. A forest it has passed over stands untouched and utterly silent.
+
+### 10. Obsidhound, from Arcanine-Hisui (59): yes
+
+- **Typing**: Fire/Rock, kept. *Alternative*: Fire/Steel.
+- **The Volcano Guard Pokémon**, No. 6059. 2.3 m, 210.0 kg (Arcanine-Hisui 2 m, 168 kg).
+- **Stats**: 95 / 115 / 80 / 95 / 80 / 90 = 555 → **100 / 120 / 95 / 95 / 95 / 95 = 600** (+5 HP +5 Atk +15 Def +15 SpD +5 Spe): the rise is +45, to the 600 ceiling.
+- **Abilities**: Intimidate, Flash Fire, hidden Rock Head (was Intimidate, Flash Fire, hidden Rock Head).
+- **Evolution**: Arcanine-Hisui at a Fire Stone used on it at level 238 or above. Data, a row of Arcanine's: `{"targetSpecies":"Obsidhound","fromForm":"Arcanine-Hisui","method":"UseItem","level":238,"item":"Fire Stone"}`.
+- **Look**: from our red Hisuian Arcanine with its mane of fire and its crown of rock: larger, the rock on its brow grown into a helmet of black obsidian that runs down its back in plates, the mane longer with flames that lick between the plates (Glow, orange), and its claws of black glass. Red and cream fur, black obsidian, orange flame. **New feature**: the plates of obsidian down its back.
+- **Pokédex**: Legends of Hisui say it once held back a lava flow alone to save a village. Its plates of black glass are still warm a day after it sleeps.
+
+### 11. Apricharge, from Electrode-Hisui (101): yes
+
+- **Typing**: Electric/Grass, kept. *Alternative*: Grass/Steel.
+- **The Apricorn Pokémon**, No. 6101. 1.5 m, 95.0 kg (Electrode-Hisui 1.2 m, 71 kg).
+- **Stats**: 60 / 50 / 70 / 80 / 80 / 150 = 490 → **80 / 50 / 90 / 100 / 100 / 150 = 570** (+20 HP +20 Def +20 SpA +20 SpD).
+- **Abilities**: Soundproof, Static, hidden Aftermath (was Soundproof, Static, hidden Aftermath).
+- **Evolution**: Electrode-Hisui at a Leaf Stone used on it at level 238 or above. Data, a row of Electrode's: `{"targetSpecies":"Apricharge","fromForm":"Electrode-Hisui","method":"UseItem","level":238,"item":"Leaf Stone"}`.
+- **Look**: from our red and white Hisuian Electrode, a living Apricorn ball: its wooden band grown into a stalk and two leaves on its crown, its shell split in segments like a ripe Apricorn, sparks in the gaps between them (Glow, yellow), and its grin kept. Red and white shell, brown wood, green leaves. **New feature**: the leaves on its crown.
+- **Pokédex**: It ripens on the branch like an Apricorn. Picked too soon it bursts, and the orchard keepers of old Hisui wore helmets at harvest.
+
+### 12. Fandangleaf, from Lilligant-Hisui (549): yes
+
+- **Typing**: Grass/Fighting, kept. *Alternative*: Grass/Fairy.
+- **The Fan Dancer Pokémon**, No. 6549. 1.5 m, 26.0 kg (Lilligant-Hisui 1.2 m, 19.2 kg).
+- **Stats**: 70 / 105 / 75 / 50 / 75 / 105 = 480 → **85 / 125 / 90 / 50 / 90 / 120 = 560** (+15 HP +20 Atk +15 Def +15 SpD +15 Spe).
+- **Abilities**: Chlorophyll, Hustle, hidden Leaf Guard (was Chlorophyll, Hustle, hidden Leaf Guard).
+- **Evolution**: Lilligant-Hisui at a Sun Stone used on it at level 238 or above. Data, a row of Lilligant's: `{"targetSpecies":"Fandangleaf","fromForm":"Lilligant-Hisui","method":"UseItem","level":238,"item":"Sun Stone"}`.
+- **Look**: from our green and white Hisuian Lilligant with its long legs and its flower crown: taller, the leaves on its arms grown into two fans of leaf it opens with a snap, the flower on its head in full bloom with a second ring of petals, and a skirt of leaves that flares when it spins. Green body, white skirt, red and orange flower. **New feature**: the fans.
+- **Pokédex**: Its dance and its fighting are one art. The snap of its fans opening can be heard across a valley, and so can the kick that follows.
+
+### 13. Spectrevix, from Zoroark-Hisui (571): yes
+
+- **Typing**: Normal/Ghost, kept. *Alternative*: Ghost/Dark.
+- **The Grudge Fox Pokémon**, No. 6571. 1.9 m, 85.0 kg (Zoroark-Hisui 1.6 m, 73 kg).
+- **Stats**: 55 / 100 / 60 / 125 / 60 / 110 = 510 → **70 / 100 / 80 / 140 / 75 / 125 = 590** (+15 HP +20 Def +15 SpA +15 SpD +15 Spe).
+- **Abilities**: Illusion (was Illusion).
+- **Evolution**: Zoroark-Hisui at level 238, at night. Data, a row of Zoroark's: `{"targetSpecies":"Spectrevix","fromForm":"Zoroark-Hisui","method":"LevelNight","level":238}`.
+- **Look**: from our white Hisuian Zoroark with its mane of pale flame: taller, its mane grown into a great mane of white fire tipped with red that floats above its shoulders (Glow, pale red), a second ghostly tail that fades at its end and claws that leave trails of light. White fur, red tips, pale flame. **New feature**: the ghostly second tail.
+- **Pokédex**: It gathers the grudges of those turned away in the cold and wears them as illusions. Whoever sees one sees the face they wronged.
+
+### 14. Augurhawk, from Braviary-Hisui (628): yes
+
+- **Typing**: Psychic/Flying, kept. *Alternative*: Psychic/Fire.
+- **The Augury Pokémon**, No. 6628. 2.0 m, 60.0 kg (Braviary-Hisui 1.7 m, 43.4 kg).
+- **Stats**: 110 / 83 / 70 / 112 / 70 / 65 = 510 → **115 / 83 / 90 / 127 / 90 / 85 = 590** (+5 HP +20 Def +15 SpA +20 SpD +20 Spe).
+- **Abilities**: Keen Eye, Sheer Force, hidden Tinted Lens (was Keen Eye, Sheer Force, hidden Tinted Lens).
+- **Evolution**: Braviary-Hisui at level 239, by day. Data, a row of Braviary's: `{"targetSpecies":"Augurhawk","fromForm":"Braviary-Hisui","method":"LevelDay","level":239}`.
+- **Look**: from our red and white Hisuian Braviary with its fiery wing feathers: larger, the feathers of its wings tipped with a glow that traces signs in the air as it flies (Glow, pink), a crest of long feathers and a pale ring round each eye. Red and white feathers, pink signs. **New feature**: the signs left in the air.
+- **Pokédex**: It flies in patterns over the cliffs at noon. The people of old read the coming season in the signs it left in the air.
+
+### 15. Bergbreaker, from Avalugg-Hisui (713): yes
+
+- **Typing**: Ice/Rock, kept. *Alternative*: Ice/Ground.
+- **The Glacier Jaw Pokémon**, No. 6713. 1.8 m, 380.0 kg (Avalugg-Hisui 1.4 m, 262.4 kg).
+- **Stats**: 95 / 127 / 184 / 34 / 36 / 38 = 514 → **110 / 142 / 184 / 34 / 66 / 58 = 594** (+15 HP +15 Atk +30 SpD +20 Spe).
+- **Abilities**: Strong Jaw, Ice Body, hidden Sturdy (was Strong Jaw, Ice Body, hidden Sturdy).
+- **Evolution**: Avalugg-Hisui at level 239, at an Ice Rock. Data, a row of Avalugg's: `{"targetSpecies":"Bergbreaker","fromForm":"Avalugg-Hisui","method":"LevelAtLocation","level":239,"location":"Ice Rock"}`.
+- **Look**: from our blue Hisuian Avalugg with its rock-hard jaw: its jaw grown into a ram of rock and ice that juts forward like a ship's bow, the ice of its back in great tilted slabs and Bergmite riding in the cracks between them. Pale blue ice, grey rock jaw. **New feature**: the bow of a jaw.
+- **Pokédex**: It breaks through sea ice as thick as a house. Bergmite live in the cracks of its back and are carried with it across the frozen sea.
+
+### 16. Ursensei, from Urshifu (892): maybe
+
+- **Typing**: Fighting/Dark, kept. *Alternative*: none within the settled rule; a Fighting/Water one for the Rapid Strike style would be a form of ours.
+- **The Grandmaster Pokémon**, No. 2892. 2.2 m, 140.0 kg (Urshifu 1.9 m, 105 kg).
+- **Stats**: 100 / 130 / 100 / 63 / 60 / 97 = 550 → **110 / 140 / 115 / 63 / 80 / 122 = 630** (+10 HP +10 Atk +15 Def +20 SpD +25 Spe): +80, to 630 (question 3).
+- **Abilities**: Unseen Fist (was Unseen Fist).
+- **Evolution**: Urshifu at level 244, with friendship 220 or more, whatever its style. Data, a row of Urshifu's: `{"targetSpecies":"Ursensei","method":"Friendship","level":244}`.
+- **Look**: from our grey and black Urshifu in its training gi: taller and heavier, the gi grown into a full robe with a black belt knotted twice, both scrolls of the towers worn across its back (the Darkness's and the Waters'), its mane longer and greyed and its fists wrapped. Grey and black fur, pale gi, black belt. **New feature**: the two scrolls on its back.
+- **Pokédex**: It has climbed both towers and read both scrolls. Students come from every corner of Galar to train with it, and few last a week.
+
+## Balance
+
+Measured by the script:
+
+- **Totals**: 551 (Snareflat) to 600 (Obsidhound, +45 to the ceiling, from the Hisuian Arcanine's 555); the Galarian birds' set 660; Ursensei 630. Nothing that isn't legendary passes 600.
+- **Highest of each stat**, not counting the legendaries: HP 119 (Snareflat); Atk 150 (Frostruma); Def 184 (Bergbreaker, the Hisuian Avalugg's own, unrisen); SpA 140 (Spectrevix); SpD 120 (Slowmagus); Spe 150 (Apricharge, the Hisuian Electrode's own, unrisen).
+- **Abilities**: every form keeps its own as the game reads it, but the Galarian Darmanitan's hidden Zen Mode, which the engine runs for Darmanitan alone (`BattleCore.Shapes.cs`), as the main document's question 5 replaced Gulp Missile, Ice Face and Hunger Switch: Frostruma's hidden ability is **Slush Rush** (question 4).
+
+**Flagged as strong**: Frostruma (150 Attack with Gorilla Tactics; *to turn down*: Attack 140 kept, the 10 to Sp. Def) and Spectrevix (140 Sp. Atk and 125 Speed with Illusion; *to turn down*: Speed 115, the 10 to HP).
+
+## Open questions: only what is new here
+
+1. **The numbering rule.** *Default*: a block of a thousand to each region whose forms have designs, + the species' number (Alola 4000, Galar 5000, Hisui 6000, Paldea 7000). *Alternatives*: one block for every regional form; or the next numbers past 3025 in the order approved (above).
+2. **The Hisuian lines of three.** The Hisuian Typhlosion, Samurott, Decidueye and Goodra end lines of three, which no batch gives a design (they take 06 · R31's moves past 100). *Default*: none, as every batch has done. *Alternative*: designs for the four as an exception, since the user asked for the regional forms "that end their lines in Galar or Hisui" and the main document listed them.
+3. **Urshifu's total.** A legendary with no set: +80 to 630 by default. *Alternatives*: to 660 (+110, past the +80 every design keeps to); or to 600, as a species that isn't legendary (+50).
+4. **The Galarian Darmanitan's Zen Mode.** Its hidden ability works for Darmanitan alone. *Default*: Frostruma takes **Slush Rush** in its place (the main document's question 5). *Alternative*: Zen Mode kept, doing nothing on ours.
+5. **The Galarian birds' condition.** *Default*: each holding its own type's item at 244, as Kanto's three hold theirs at 150. *Alternative*: a ring, each with the next in the party (the lake guardians' way), which the engine can't tell from Kanto's birds: `LevelWithSpeciesInParty` asks the species, not the form, so a Kanto Zapdos would do for a Galarian one.
+6. **What the data gives the Galarian birds, Weezing and Zapdos.** The data's forms lack some of their own abilities, and the game reads the species' in their place (`Pokemon.Abilities` and `HiddenAbilityName` fall back to the species): the Galarian Articuno's hidden ability reads as Snow Cloak, the Zapdos's as Static, the Moltres's as Flame Body, and the Galarian Weezing has Levitate and a hidden Misty Surge but not Neutralizing Gas. *Default*: ours keep the slots and the abilities the game reads now (Hypnoskye's hidden Snow Cloak among them), and a correction of the forms' data, if one is wanted, moves both together. *Alternative*: correct the forms' abilities in the importer's overrides first, and ours follow.
+
+## The table to answer
+
+One row a design. The user answers each with yes, a change, or no.
+
+| # | Ours | No. | Typing | Abilities | HP/Atk/Def/SpA/SpD/Spe (total) | Δ | Evolves |
+|---|---|---|---|---|---|---|---|
+| 1 | Glimmane | 5078 | Psychic/Fairy | Run Away, Pastel Veil, Anticipation | 80/105/85/100/95/115 (580) | +15 HP +5 Atk +15 Def +20 SpA +15 SpD +10 Spe | level 230, knowing Psycho Cut |
+| 2 | Slowslinger | 5080 | Poison/Psychic | Quick Draw, Own Tempo, Regenerator | 105/115/105/110/90/45 (570) | +10 HP +15 Atk +10 Def +10 SpA +20 SpD +15 Spe | a Galarica Cuff used on it at level 230 or above |
+| 3 | Slowmagus | 5199 | Poison/Psychic | Curious Medicine, Own Tempo, Regenerator | 105/65/100/125/120/55 (570) | +10 HP +20 Def +15 SpA +10 SpD +25 Spe | a Galarica Wreath used on it at level 230 or above |
+| 4 | Purifume | 5110 | Poison/Fairy | Levitate, Misty Surge | 80/90/130/105/90/75 (570) | +15 HP +10 Def +20 SpA +20 SpD +15 Spe | level 230, knowing Strange Steam |
+| 5 | Frostruma | 5555 | Ice/Fire | Gorilla Tactics, Slush Rush | 115/150/80/30/75/110 (560) | +10 HP +10 Atk +25 Def +20 SpD +15 Spe | an Ice Stone used on it at level 231 or above |
+| 6 | Snareflat | 5618 | Ground/Steel | Mimicry, Sand Veil | 119/101/114/66/94/57 (551) | +10 HP +20 Atk +15 Def +10 SpD +25 Spe | level 229, in the rain |
+| 7 | Hypnoskye | 5144 | Psychic/Flying | Competitive, Snow Cloak | 100/85/100/145/115/115 (660) | +10 HP +15 Def +20 SpA +15 SpD +20 Spe | level 244, holding a Twisted Spoon (used up) |
+| 8 | Stridestorm | 5145 | Fighting/Flying | Defiant, Static | 100/145/105/85/105/120 (660) | +10 HP +20 Atk +15 Def +15 SpD +20 Spe | level 244, holding a Black Belt (used up) |
+| 9 | Duskphoenix | 5146 | Dark/Flying | Berserk, Flame Body | 100/85/105/120/140/110 (660) | +10 HP +15 Def +20 SpA +15 SpD +20 Spe | level 244, holding Black Glasses (used up) |
+| 10 | Obsidhound | 6059 | Fire/Rock | Intimidate, Flash Fire, Rock Head | 100/120/95/95/95/95 (600) | +5 HP +5 Atk +15 Def +15 SpD +5 Spe | a Fire Stone used on it at level 238 or above |
+| 11 | Apricharge | 6101 | Electric/Grass | Soundproof, Static, Aftermath | 80/50/90/100/100/150 (570) | +20 HP +20 Def +20 SpA +20 SpD | a Leaf Stone used on it at level 238 or above |
+| 12 | Fandangleaf | 6549 | Grass/Fighting | Chlorophyll, Hustle, Leaf Guard | 85/125/90/50/90/120 (560) | +15 HP +20 Atk +15 Def +15 SpD +15 Spe | a Sun Stone used on it at level 238 or above |
+| 13 | Spectrevix | 6571 | Normal/Ghost | Illusion | 70/100/80/140/75/125 (590) | +15 HP +20 Def +15 SpA +15 SpD +15 Spe | level 238, at night |
+| 14 | Augurhawk | 6628 | Psychic/Flying | Keen Eye, Sheer Force, Tinted Lens | 115/83/90/127/90/85 (590) | +5 HP +20 Def +15 SpA +20 SpD +20 Spe | level 239, by day |
+| 15 | Bergbreaker | 6713 | Ice/Rock | Strong Jaw, Ice Body, Sturdy | 110/142/184/34/66/58 (594) | +15 HP +15 Atk +30 SpD +20 Spe | level 239, at an Ice Rock |
+| 16 | Ursensei | 2892 | Fighting/Dark | Unseen Fist | 110/140/115/63/80/122 (630) | +10 HP +10 Atk +15 Def +20 SpD +25 Spe | level 244, with friendship 220 or more, whatever its style |
+
+## The technical plan (for after the user's answers)
+
+The table and the importer need two small changes, which the session that builds these makes and tests:
+
+- **A row from a form.** A design row gains `"fromForm"` (the regional form's name, already a field of `EvolutionData`), and `SpeciesPastHundred.Make` takes what it now takes from the forebear species from the form where the form has it (its stats for the effort and the rise, its abilities' slots, its moves by level, its height and weight for the checks, its colour), and numbers the design by question 1's rule instead of `OursFrom` + the species' number. Its evolution goes at the end of the species' `evolutions` with the form's `fromForm`, which `Evolution.FitsForm` already honours, so a Kanto Rapidash never becomes Glimmane and a Galarian one never becomes Solarion (`SpeciesPastHundredTests.ARegionalFormOfAForebearDoesNotBecomeOneOfOurs` already holds the second).
+- **The tests**: `SpeciesPastHundredTests`' rules read the form where a row names one (the forebear "is the last of its line" is asked of the form; the rise of the form's stats); Urshifu's 630 is the one legendary total that isn't 660 (question 3); and a test that each design fires from its form and not from the species, nor from the species' other regional form.
+
+Every condition above is one the engine runs today: `LevelKnowsMove`, `UseItem` with a level, `LevelHoldingItem`, `LevelInRain`, `LevelNight`, `LevelDay`, `LevelAtLocation` (the Ice Rock) and `Friendship` with a level. Two Pokédex entries and a habitat each are written when they are built, in our own words (`--check-entries` clean). No sculpts until the user says otherwise (wave 53).
+
+## How the numbers were checked
+
+A Node.js script kept in the session's scratch folder, reading only `species.json`, `abilities.json`, `items.json`, the table and the nine proposal documents. It found the regional forms of Galar and Hisui (`kind` Regional) that evolve into nothing of the games', walked each one's line back through the `fromForm` and `targetForm` of every evolution (Koffing into the Galarian Weezing by its regional row), and kept the lines of one or two; every one of the 15 has a design and none without one was given one. For each of the 16 designs it checked: that the stats the game reads (the form's, else the species') rise by +80, or what the 600 ceiling leaves, or to 660 for the birds and +80 for Urshifu, with no stat falling and the sums as written; the types, one or two of the eighteen; the abilities, from `abilities.json` and filling exactly the slots the game reads; that it is taller and heavier than its form; the name's shape and that no species, form, row of the table or design of any proposal has it, nor another design here (one, Bergmaw, was taken by another batch and renamed); the method, one the data already uses; the level within its region's band; an item that exists and is no key item; a move in the form's own level-up learnset; the place, one of the data's evolution places. The tables and entries were written by the same script from the same values.

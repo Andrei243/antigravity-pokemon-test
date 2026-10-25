@@ -1,0 +1,41 @@
+{
+  // Route 11 (plan 22 · U8, part a): the road between the Village Bridge and Opelucid City, Black 2's: three trainers, a hut at the foot of the hill, and Virizion, who crosses the road for whoever comes this way first (Black 2's, a Sword of Justice: plan 22 · U10) held hidden meanwhile; our words
+  "area": "unova_route_11",
+  "bgmTrack": "unova/route12",
+  "heldBack": [
+    "7",
+    "8"
+  ],
+  "people": {
+    "0": {
+      "name": "Virizion",
+      "npcType": "Pokemon",
+      "species": "Virizion",
+      "hiddenBy": "FLAG_UNOVA_HIDE_VIRIZION_ROUTE_11",
+      "dialog": [
+        "Virizion: Kikwaaa!"
+      ]
+    },
+    "4": {
+      "name": "Magnolia",
+      "trainer": {
+        "dialogueBefore": "My Pokémon and I have grown up together, so we fight as one!",
+        "dialogueAfter": "Even one made of two hearts can lose."
+      }
+    },
+    "5": {
+      "name": "Crofton",
+      "trainer": {
+        "dialogueBefore": "A Ranger's job is to understand Pokémon. I'll try to understand yours!",
+        "dialogueAfter": "I understood that you're the stronger."
+      }
+    },
+    "6": {
+      "name": "Thalia",
+      "trainer": {
+        "dialogueBefore": "The monkeys of the forest are my teachers. I'll show you what they taught me!",
+        "dialogueAfter": "I should've learned a little more from them."
+      }
+    }
+  }
+}

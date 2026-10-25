@@ -2316,6 +2316,9 @@ grass 26-32
 === shoal_cave_low_tide_stairs_room
 Shoal Cave
 grass 26-32
+=== shopping_mall
+Shopping Mall
+trainers 2, 43: unova_waiter_lou 43, unova_waitress_olwen 43
 === silph_co_10f
 Silph Co.
 trainers 2, 29-33: kanto_scientist_travis 29, kanto_team_rocket_grunt_39 33
@@ -2717,9 +2720,16 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unova_route_11
+Route 11
+grass 36-39
+surf 25-40
+super rod 40-60
+trainers 3, 41-52: unova_pkmn_breeder_magnolia 41, unova_pkmn_ranger_crofton 42, unova_pkmn_ranger_thalia 52
 === unova_route_12
-
-trainers 2, 39-44: unova_team_plasma_grunt_45 39, unova_team_plasma_zinzolin_4 44
+Route 12
+grass 35-38
+trainers 5, 39-44: unova_backers_cleo_rio 40, unova_battle_girl_azra 41, unova_black_belt_jeriel 42, unova_team_plasma_grunt_45 39, unova_team_plasma_zinzolin_4 44
 === unova_route_13
 Route 13
 grass 34-37
@@ -2761,6 +2771,10 @@ trainers 8, 27-28: unova_parasol_lady_nicole 28, unova_parasol_lady_tihana 28, u
 Route 7
 grass 30-33
 trainers 9, 33-35: unova_harlequin_ian 35, unova_harlequin_pat 35, unova_lass_flo 33, unova_nursery_aide_hollie 34, unova_pkmn_breeder_marcus 34, unova_preschooler_chrissy 34, unova_preschooler_greg 34, unova_twins_sola_ana 33, unova_youngster_cody 33
+=== unova_route_9
+Route 9
+grass 37-40
+trainers 5, 42-43: unova_biker_phillip 43, unova_biker_zeke 43, unova_hooligans_jim_cas 42, unova_roughneck_chance 43, unova_roughneck_reese 43
 === valley_windworks_outside
 Valley Windworks
 grass 9-12
@@ -2813,6 +2827,12 @@ old rod 3-15
 good rod 10-25
 super rod 30-55
 trainers 4, 44-50: ace_trainer_henry 48, double_team_jo_and_pat 50, dragon_tamer_ondrej 47, psychic_valencia 46
+=== village_bridge
+Village Bridge
+grass 36-39
+surf 25-40
+super rod 40-70
+trainers 7, 42-44: unova_artist_gough 42, unova_fisherman_dean 42, unova_hoopster_derrick 42, unova_hoopster_nicolas 42, unova_smasher_amy 44, unova_smasher_lizzy 44, unova_youngster_karl 42
 === violet
 Violet City
 surf 10-25
