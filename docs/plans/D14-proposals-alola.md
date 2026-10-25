@@ -1,0 +1,472 @@
+# D14 · Evolutions past level 100, batch 7 (Alola): the proposal
+
+Plan 03 · D14, the design part of its seventh batch, written in wave 53 after the user approved batches 1 to 4 ([D14-proposals-kanto.md](D14-proposals-kanto.md), [D14-proposals-johto.md](D14-proposals-johto.md), [D14-proposals-hoenn.md](D14-proposals-hoenn.md) and [D14-proposals-sinnoh.md](D14-proposals-sinnoh.md)) with every default, on 2026-10-25, and beside the Unova, Kalos, Galar and Hisui, and Paldea batches written in the same wave. **Not answered yet.** Nothing here is built: no species, no evolution row, no learnset, no sculpt, no test. A later session writes each row into the data (as entries of `tools/DataImporter/Overrides/species-past-hundred.json`, batch 1's table). The format is batch 4's.
+
+**What batches 1 to 4 settled, applied here without asking again**: the rise is **+80, capped so that no species of ours that isn't legendary passes 600**, and a region's legendary set rises to **660** (batch 1's birds, batch 2's beasts, batch 3's Regis and eon pair, batch 4's lake guardians); the number is **2000 + the number of the species it evolves from** (here 2735 to 2788, meeting none of the earlier batches' 2020 to 2482); abilities come **only from `abilities.json`**, as many slots as the species had, in its order, the hidden one last; the evolution is **by level with a condition the engine already runs**, a held item used up; our species are listed in the National Pokédex after the 1,025 and **count toward none of its totals or diplomas**; names are invented, one word of at most 12 letters, and held against every species and form of the data and the earlier batches' 170; **an evolution that starts from a regional form belongs to that form's own line** (`Evolution.FitsForm`), and a regional form's own past-100 evolution is a design for a later batch, only on the user's word (batch 1's question 10); a female look, a Mega or a Gigantamax form is kept where the species has one, and **ours have no forms of their own**; the Frontier lets them be entered (a legendary's evolution joins its ban list); the cover legendaries and the mythicals don't evolve; a region's pairs are built as sets or not at all; a species whose forms are its changes (Wormadam, Rotom, Castform) doesn't evolve; **each species evolves within its own region's climb** (batch 3's first question, "at most 160", which question 1 below asks about again).
+
+**Alola's climb, and so its levels** (question 1): Alola is not built (plan 23 · Z5 to Z8), so there is no `regions/alola.json` and no `levels` mapping yet. Plan 18 · W4's fair climb under the modern EXP, which the user chose (option B) and which the built regions follow to the level (Kanto 62 → 104, Johto 104 → 136, Hoenn 136 → 162, Unova 162 → 185, each region file's `levels`), puts Kalos's Champion at about 205 and Alola's at about **224**, its post-game to about 228: Alola will be met at about **205 to 228**. Batch 3's "at most 160" can't be kept here, since the whole of Alola's climb is above it. By default this batch's species evolve **between 209 and 221**, the weakest of Melemele's first routes at 209 (four above the region's first level, as Hoenn's first was at 140 over its 136) and the strongest of Poni at 221, under the Champion; and its one legendary set at **225**, after the Champion. If Z5's mapping comes out other than 205 to 224, every row moves with it by the same steps.
+
+Every name, type, ability, item, move, species, stat and sum in this document was checked by a script that only reads `PokemonPlatinumEngine/Data/species.json`, `abilities.json` and `items.json`, with the four earlier batches' names and numbers read from their documents (kept outside the repository; what it checks is listed under "How the numbers were checked", at the end).
+
+## The shortlist: the twelve strongest
+
+If the user wants a small first build of this batch, these are the twelve. Each lifts one of Alola's weakest last stages or is among the region's best-loved designs.
+
+| | Ours | From | Typing | Total | Evolves | Why it leads |
+|---|---|---|---|---|---|---|
+| 1 | **Inspectoose** | Gumshoos | Normal/Dark | 418 → 498 | level 209, by day | the first route's detective, 418 |
+| 2 | **Pollenoble** | Ribombee | Bug/Fairy | 464 → 544 | level 210, knowing Pollen Puff | the bee-fly that rolls pollen into puffs, 464 |
+| 3 | **Lupinacle** | Lycanroc | Rock | 487 → 567 | level 216, at dusk | the wolf of three shapes, at the hour they meet |
+| 4 | **Diveweaver** | Araquanid | Water/Bug | 454 → 534 | level 212, knowing Liquidation | the diving-bell spider, 454 |
+| 5 | **Orchimantis** | Lurantis | Grass/Fairy | 480 → 560 | level 213, by day | the flower that hunts like a mantis, 480 |
+| 6 | **Lumishroom** | Shiinotic | Grass/Fairy | 405 → 485 | level 211, at night | the glowing mushroom of the night forest, 405 |
+| 7 | **Sandcitadel** | Palossand | Ghost/Ground | 480 → 560 | level 213, holding a Soft Sand (used up) | the haunted sand castle, 480 |
+| 8 | **Cucumbrawl** | Pyukumuku | Water/Fighting | 410 → 490 | level 210, knowing Counter | the beach's joke that punches with its innards, 410 |
+| 9 | **Somnikoala** | Komala | Normal/Psychic | 480 → 560 | level 216, at night | the koala that never wakes, 480 |
+| 10 | **Rollocupine** | Togedemaru | Electric/Steel | 435 → 515 | level 212, knowing Zing Zap | the hedgehog that catches lightning, 435 |
+| 11 | **Masqueradoll** | Mimikyu | Ghost/Fairy | 476 → 556 | level 217, holding a Reaper Cloth at night (used up) | the ghost under the rag, among the best loved |
+| 12 | **Chromagnash** | Bruxish | Water/Psychic | 475 → 555 | level 219, knowing Psychic Fangs | the gaudy fish of the reefs, 475 |
+
+## What qualifies, and how many
+
+The earlier batches' rule and the same script: a species **with no evolution at all**, or **the last stage of a line of two**; an evolution that starts from a regional form counts as that form's own.
+
+**Alola, National Pokédex 722 to 809: 47 species qualify.**
+
+- **31 alone**: Oricorio, Wishiwashi, Comfey, Oranguru, Passimian, Pyukumuku, Minior, Komala, Turtonator, Togedemaru, Mimikyu, Bruxish, Drampa, Dhelmise, Tapu Koko, Tapu Lele, Tapu Bulu, Tapu Fini, Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Necrozma, Magearna, Marshadow, Stakataka, Blacephalon and Zeraora (seventeen of them legendary, mythical or an Ultra Beast).
+- **16 last of a line of two**: Gumshoos, Crabominable, Ribombee, Lycanroc, Toxapex, Mudsdale, Araquanid, Lurantis, Shiinotic, Salazzle, Bewear, Golisopod, Palossand, Silvally, Naganadel and Melmetal. Type: Null's, Poipole's and Meltan's lines are legendary-class or mythical (below).
+- **Deferred to this batch by the earlier four: none.** None of their "not here" lists names a line that ends in Alola, and the script finds no species before No. 722 whose line ends in an Alola species: Alola gave no older line a new last stage.
+- **Not here, last of a line of three (9)**: Decidueye, Incineroar, Primarina, Toucannon, Vikavolt, Tsareena, Kommo-o, Solgaleo and Lunala. They take 06 · R31's moves. Solgaleo and Lunala are also the covers of Sun and Moon.
+- **Not here, the Alolan forms of older lines**: the Alolan Raticate, Raichu, Sandslash, Ninetales, Dugtrio, Persian, Golem, Muk, Exeggutor and Marowak. Each is its form's own line (`fromForm` or `targetForm` Alola in `species.json`: from Rattata, Pikachu, Sandshrew, Vulpix, Diglett, Meowth, Geodude and Graveler, Grimer, Exeggcute and Cubone), so batch 1's Kanto designs (Ratchisel and the rest) are refused to them by `Evolution.FitsForm`, and a design of their own is a later batch's on the user's word (batch 1's question 10).
+
+28 designs follow; Oricorio, Wishiwashi, Minior, Silvally, Necrozma, the ten Ultra Beasts and the four mythicals are left out with their reasons.
+
+## How to read an entry
+
+As batch 4's. **Stats** are the stats the game reads (none of Alola's has a `modern` change in `species.json`). **Levels**: 209 to 221 for the region's own (above), the weakest and those of the first islands (Melemele, Akala) lowest, from 209, and the strongest and those of the last (Ula'ula, Poni) highest, to 221, and the island guardians at 225. **Looks** start from our own sculpt of the species; no species of Alola has a female look in the data, and Salazzle is female only, as is ours. Crabominable, Golisopod and Drampa keep their Megas (the newest game's), which ours don't get. **Pokédex**: a line in our own words, the seed of the two entries `dex-entries.json` will want. **Say**: strong yes (the shortlist), yes, maybe, no.
+
+**The sets.** Alola's pairs are its two pairs of version exclusives, each built as a set or not at all: **Oranguru and Passimian** (Moon's and Sun's apes of the Lush Jungle) and **Turtonator and Drampa** (Sun's and Moon's dragons), each at its level with the other in the party (`LevelWithSpeciesInParty`, as batch 3's Plusle and Minun); and its legendary set, **the four island guardians**, each at 225 with the next in the party, so that the four close a ring (Koko with Lele, Lele with Bulu, Bulu with Fini, Fini with Koko), as batch 4's lake guardians. Lycanroc's three shapes (question 4) are one species of ours. Every condition below is one the engine already runs; none needs a place of its own (no `LevelAtLocation`), and Lycanroc's is Rockruff's own way to its Dusk Form (`LevelDusk`).
+
+## The legendaries, the Ultra Beasts, the mythicals and the shapes that change
+
+Alola has six legendaries (Type: Null and Silvally, Cosmog's line of three, Necrozma), four island guardians, eleven Ultra Beasts and four mythicals; the user asked each batch to say which of its region's evolve.
+
+- **Tapu Koko, Tapu Lele, Tapu Bulu and Tapu Fini: maybe, as a set of four or not at all**, each at level 225 with the next in the party, a ring of the four islands. To 660 as every region's set; from 570 that is **+90**, the largest rise of any batch (the rule is 660, not +80: batch 3's eon pair rose +60). *Default if the user doesn't say*: build them (question 2).
+- **Solgaleo and Lunala: no**, the last of a line of three and the covers of the region's two games. **Necrozma: no**, the cover of the second pair, alone, with its fusions and Ultra Necrozma as its further shapes.
+- **Silvally: no.** Type: Null's line is legendary-class, alone with no set beside it, and Silvally's seventeen memories are its changes, as Arceus's plates.
+- **The Ultra Beasts: no, as a set** (question 6). Nihilego, Buzzwole, Pheromosa, Xurkitree, Celesteela, Kartana, Guzzlord, Stakataka and Blacephalon are alone, and Naganadel is Poipole's end: visitors from Ultra Space at 570 (Naganadel 540), each with Beast Boost, which already grows with every knock-out.
+- **Magearna, Marshadow, Zeraora and Melmetal: no.** The mythicals stand outside any stage, as Mew, Celebi, Jirachi and Manaphy; Melmetal is already Meltan's end and has its Gigantamax form, Magearna its Original Color.
+- **Oricorio: no**, as Wormadam: its four styles are four forms of four typings (Fire, Electric, Psychic and Ghost, each with Flying), and ours have no forms.
+- **Wishiwashi and Minior: no**, as Castform and Cherrim's shape: their battle shapes are their changes (Wishiwashi's School Form, 620; Minior's meteor and its core in seven colours), and Schooling and Shields Down work for Wishiwashi and Minior by name alone (`BattleCore.Shapes.cs`), so an evolution would be a fish that can't school and a meteor that never breaks (question 3).
+
+## The table: every qualifying species
+
+The user may strike rows here before reading the designs. "No." is our number; "Total" is the stats the game reads now, and ours.
+
+| # | Was | Ours | No. | Typing (was → ours) | Total | Evolves | Say |
+|---|---|---|---|---|---|---|---|
+| 1 | Gumshoos (735) | Inspectoose | 2735 | Normal → **Normal/Dark** | 418 → 498 | level 209, by day | strong yes: 418, the mongoose of the first routes, which only walks by day; past 100 the detective works the night shift too |
+| 2 | Crabominable (740) | Glacipincer | 2740 | Fighting/Ice, kept | 478 → 558 | an Ice Stone used on it at level 218 or above | yes: the crab that climbed a mountain to reach the top; by the stone the newer games give Crabrawler, its fists become glaciers |
+| – | Oricorio (741) | none | – | Fire/Flying | 476 | – | no: its four styles are four forms of four typings (Fire, Electric, Psychic and Ghost with Flying), and ours have no forms of their own; as Wormadam, an evolution would lose the style it was made from or be four species |
+| 3 | Ribombee (743) | Pollenoble | 2743 | Bug/Fairy, kept | 464 → 544 | level 210, knowing Pollen Puff | strong yes: 464 and the smallest Pokémon of the region's meadows; the puffs it rolls of pollen become a crown |
+| 4 | Lycanroc (745) | Lupinacle | 2745 | Rock, kept | 487 → 567 | level 216, at dusk | strong yes: the wolf of three shapes; at dusk, the hour where its day and night shapes meet, any of the three becomes the pack's alpha |
+| – | Wishiwashi (746) | none | – | Water | 175 | – | no: its School Form (the data's `Wishiwashi-School`, 620) is its further shape, and Schooling works for Wishiwashi by name alone; as Cherrim's and Castform's changes, an evolution would be a fish that can't school |
+| 5 | Toxapex (748) | Venomreef | 2748 | Poison/Water, kept | 495 → 575 | level 220, holding a Black Sludge (used up) | maybe: one of the strongest walls of any region already (see Balance); a reef of three domes is a fair idea |
+| 6 | Mudsdale (750) | Claysteed | 2750 | Ground, kept | 500 → 580 | level 214, in the rain | yes: the draft horse whose mud dries hard; rain softens it to be worked into armour |
+| 7 | Araquanid (752) | Diveweaver | 2752 | Water/Bug, kept | 454 → 534 | level 212, knowing Liquidation | strong yes: 454, the diving-bell spider of the brooks; its bubble grows into a dome over its whole body |
+| 8 | Lurantis (754) | Orchimantis | 2754 | Grass → **Grass/Fairy** | 480 → 560 | level 213, by day | strong yes: 480, the flower that looks like a mantis; past 100 it is an orchid, and the most beautiful Pokémon of the jungle |
+| 9 | Shiinotic (756) | Lumishroom | 2756 | Grass/Fairy, kept | 405 → 485 | level 211, at night | strong yes: 405, the lowest total of the region's last stages; the glowing mushroom of the night forest grows a ring of its own |
+| 10 | Salazzle (758) | Smolderess | 2758 | Poison/Fire, kept | 480 → 560 | level 215, with a Salandit in the party | yes: the female who rules a nest of males; with one of her retinue at her side, she becomes its empress |
+| 11 | Bewear (760) | Huggrizzle | 2760 | Normal/Fighting, kept | 500 → 580 | level 216, with friendship 220 or more | yes: the bear whose friendly hug breaks bones; only a Bewear that is fond of its trainer learns to hold back |
+| 12 | Comfey (764) | Wreathfey | 2764 | Fairy → **Fairy/Grass** | 485 → 565 | level 214, knowing Floral Healing | yes: the little vine that strings flowers into a ring; past 100 it strings a garland of four colours |
+| 13 | Oranguru (765) | Arborsage | 2765 | Normal/Psychic, kept | 490 → 570 | level 215, with a Passimian in the party | yes: with Passimian, as the jungle's two apes that answer each other across the island: the sage who learns from the athlete |
+| 14 | Passimian (766) | Scrummian | 2766 | Fighting, kept | 490 → 570 | level 215, with an Oranguru in the party | yes: Oranguru's pair: the athlete who learns from the sage, and becomes the captain of the troop |
+| 15 | Golisopod (768) | Shogunpod | 2768 | Bug/Water, kept | 530 → 600 | level 218, knowing First Impression | yes: the armoured isopod that strikes once and flees; past 100 it holds its ground in a samurai's armour |
+| 16 | Palossand (770) | Sandcitadel | 2770 | Ghost/Ground, kept | 480 → 560 | level 213, holding a Soft Sand (used up) | strong yes: 480, the sand castle that swallows those who play on it; past 100 it is a citadel |
+| 17 | Pyukumuku (771) | Cucumbrawl | 2771 | Water → **Water/Fighting** | 410 → 490 | level 210, knowing Counter | strong yes: 410 and the beach's joke, which punches with its own innards; past 100 it has two fists |
+| – | Silvally (773) | none | – | Normal | 570 | – | no: Type: Null's line is legendary-class, alone with no set to rise beside, and its seventeen memories are its changes, as Arceus's plates |
+| – | Minior (774) | none | – | Rock/Flying | 440 | – | no: Shields Down's two shapes (meteor and core) are its battle forms, by Minior's name alone, in seven colours of core; an evolution would need fourteen looks of ours |
+| 18 | Komala (775) | Somnikoala | 2775 | Normal → **Normal/Psychic** | 480 → 560 | level 216, at night | strong yes: the koala that never wakes; past 100 it dreams so deeply that its dreams move things |
+| 19 | Turtonator (776) | Caldertoise | 2776 | Fire/Dragon, kept | 485 → 565 | level 220, with a Drampa in the party | yes: with Drampa, as the two dragons of the region's two versions: the turtle whose shell explodes, grown into a volcano |
+| 20 | Togedemaru (777) | Rollocupine | 2777 | Electric/Steel, kept | 435 → 515 | level 212, knowing Zing Zap | strong yes: 435, the round hedgehog that rolls into a ball; past 100 its spines grow into a lightning rod |
+| 21 | Mimikyu (778) | Masqueradoll | 2778 | Ghost/Fairy, kept | 476 → 556 | level 217, holding a Reaper Cloth at night (used up) | strong yes: among the best loved of any region; the ghost under the rag sews itself a better costume |
+| 22 | Bruxish (779) | Chromagnash | 2779 | Water/Psychic, kept | 475 → 555 | level 219, knowing Psychic Fangs | strong yes: 475, the gaudy fish that gnashes its teeth to send out psychic waves; past 100 its fins are rainbow sails |
+| 23 | Drampa (780) | Elderdrake | 2780 | Normal/Dragon, kept | 485 → 565 | level 220, with a Turtonator in the party | yes: Turtonator's pair: the gentle old dragon of the mountain, its mane grown into wings of cloud |
+| 24 | Dhelmise (781) | Galleonghast | 2781 | Ghost/Grass, kept | 517 → 597 | level 221, knowing Anchor Shot | yes: the seaweed that animates an anchor; past 100 it wears a whole wreck |
+| 25 | Tapu Koko (785) | Kokonui | 2785 | Electric/Fairy, kept | 570 → 660 | level 225, with a Tapu Lele in the party | maybe: the island guardians as a set of four or not at all, each by the next in the party: Melemele's guardian with Akala's |
+| 26 | Tapu Lele (786) | Lelenui | 2786 | Psychic/Fairy, kept | 570 → 660 | level 225, with a Tapu Bulu in the party | maybe: with the guardians: Akala's with Ula'ula's |
+| 27 | Tapu Bulu (787) | Bulunui | 2787 | Grass/Fairy, kept | 570 → 660 | level 225, with a Tapu Fini in the party | maybe: with the guardians: Ula'ula's with Poni's |
+| 28 | Tapu Fini (788) | Fininui | 2788 | Water/Fairy, kept | 570 → 660 | level 225, with a Tapu Koko in the party | maybe: with the guardians: Poni's with Melemele's, which closes the ring |
+| – | Nihilego (793) | none | – | Rock/Poison | 570 | – | no: an Ultra Beast, a visitor from Ultra Space, at 570 with Beast Boost; the eleven are left out as a set (question 6) |
+| – | Buzzwole (794) | none | – | Bug/Fighting | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Pheromosa (795) | none | – | Bug/Fighting | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Xurkitree (796) | none | – | Electric | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Celesteela (797) | none | – | Steel/Flying | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Kartana (798) | none | – | Grass/Steel | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Guzzlord (799) | none | – | Dark/Dragon | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Necrozma (800) | none | – | Psychic | 600 | – | no: legendary, the cover of Ultra Sun and Ultra Moon, alone with no set; its fusions and Ultra Necrozma are its further shapes, as Dialga's Origin Forme |
+| – | Magearna (801) | none | – | Steel/Fairy | 600 | – | no: a mythical, outside any stage, as Mew and Manaphy; its Original Color is its change |
+| – | Marshadow (802) | none | – | Fighting/Ghost | 600 | – | no: a mythical, as Magearna |
+| – | Naganadel (804) | none | – | Poison/Dragon | 540 | – | no: an Ultra Beast and already Poipole's evolution, the one Ultra Beast that grows; as Nihilego |
+| – | Stakataka (805) | none | – | Rock/Steel | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Blacephalon (806) | none | – | Fire/Ghost | 570 | – | no: an Ultra Beast, as Nihilego |
+| – | Zeraora (807) | none | – | Electric | 600 | – | no: a mythical, as Magearna |
+| – | Melmetal (809) | none | – | Steel | 600 | – | no: a mythical, Meltan's end, and its Gigantamax form is its further shape |
+
+In all: 12 strong yes, 11 yes, 5 maybe (the island guardians as a set among them) and 19 no.
+
+## The designs
+
+In National Pokédex order. Each entry: the typing and why, the category word, number, size, the stats (the species' as the game reads them → ours) with where the rise goes, the abilities, the evolution with the row it would be in `species.json`, the look, and a Pokédex line.
+
+### 1. Inspectoose, from Gumshoos (735): strong yes
+
+- **Typing**: Normal → **Normal/Dark**. *Alternative*: Normal/Fighting.
+- **The Inspector Pokémon**, No. 2735. 1.0 m, 22.0 kg (Gumshoos 0.7 m, 14.2 kg).
+- **Stats**: 88 / 110 / 60 / 55 / 60 / 45 = 418 → **98 / 125 / 80 / 55 / 80 / 60 = 498** (+10 HP +15 Atk +20 Def +20 SpD +15 Spe): the rise goes to its defences, which were 60, then its Attack and Speed.
+- **Abilities**: Stakeout, Strong Jaw, hidden Adaptability (was Stakeout, Strong Jaw, hidden Adaptability).
+- **Evolution**: Gumshoos at level 209, by day. Data: `{"targetSpecies":"Inspectoose","method":"LevelDay","level":209}`.
+- **Look**: from our brown mongoose with its yellow-rimmed brow and its stubble jaw: longer, the cream fur of its chest grown into a trench coat's collar turned up round its neck, the brow's fur a brim, and a ring of pale fur round one eye like a lens. **New feature**: the turned-up collar.
+- **Pokédex**: It shadows a quarry for days without being seen, and it never forgets a scent once it has followed it to its den.
+
+### 2. Glacipincer, from Crabominable (740): yes
+
+- **Typing**: Fighting/Ice, kept. *Alternative*: Ice/Water.
+- **The Glacier Fist Pokémon**, No. 2740. 2.1 m, 240.0 kg (Crabominable 1.7 m, 180 kg).
+- **Stats**: 97 / 132 / 77 / 62 / 67 / 43 = 478 → **107 / 142 / 97 / 62 / 92 / 58 = 558** (+10 HP +10 Atk +20 Def +25 SpD +15 Spe): the rise goes to its Sp. Def and Defense, then its Speed.
+- **Abilities**: Hyper Cutter, Iron Fist, hidden Anger Point (was Hyper Cutter, Iron Fist, hidden Anger Point).
+- **Evolution**: Crabominable, an Ice Stone used on it at level 218 or above. Data: `{"targetSpecies":"Glacipincer","method":"UseItem","level":218,"item":"Ice Stone"}`.
+- **Look**: from our white-furred crab with its great fists: larger, the fur over its pincers grown into gauntlets of blue ice hung with icicles, a mane of fur over its eyes and a ridge of frost along its shell. **New feature**: the gauntlets of ice.
+- **Pokédex**: It punches through the ice of a summit's lake to fish. The gauntlets of ice over its pincers grow back thicker after every fight.
+
+### 3. Pollenoble, from Ribombee (743): strong yes
+
+- **Typing**: Bug/Fairy, kept. *Alternative*: Fairy/Flying.
+- **The Pollen Court Pokémon**, No. 2743. 0.4 m, 1.0 kg (Ribombee 0.2 m, 0.5 kg).
+- **Stats**: 60 / 55 / 60 / 95 / 70 / 124 = 464 → **75 / 55 / 75 / 115 / 90 / 134 = 544** (+15 HP +15 Def +20 SpA +20 SpD +10 Spe): the rise goes to its Sp. Atk and Sp. Def, then its HP and Defense.
+- **Abilities**: Honey Gather, Shield Dust, hidden Sweet Veil (was Honey Gather, Shield Dust, hidden Sweet Veil).
+- **Evolution**: Ribombee at level 210, knowing Pollen Puff. Data: `{"targetSpecies":"Pollenoble","method":"LevelKnowsMove","level":210,"move":"Pollen Puff"}`.
+- **Look**: from our tiny yellow bee-fly with its fluffy white collar and its great eyes: larger, the collar grown into a ruff of pollen puffs like a crown of flowers, two more wings and its antennae ending in tufts. **New feature**: the crown of pollen puffs.
+- **Pokédex**: The puffs of its crown are pollen from a hundred kinds of flower. One shaken loose over a meadow brings it into bloom in a night.
+
+### 4. Lupinacle, from Lycanroc (745): strong yes
+
+- **Typing**: Rock, kept. *Alternative*: Rock/Dark.
+- **The Alpha Wolf Pokémon**, No. 2745. 1.2 m, 45.0 kg (Lycanroc 0.8 m, 25 kg).
+- **Stats**: 75 / 115 / 65 / 55 / 65 / 112 = 487 → **90 / 130 / 85 / 55 / 85 / 122 = 567** (+15 HP +15 Atk +20 Def +20 SpD +10 Spe): the rise goes to its defences, which were 65, then its HP and Attack.
+- **Abilities**: Keen Eye, Sand Rush, hidden Steadfast (was Keen Eye, Sand Rush, hidden Steadfast).
+- **Evolution**: Lycanroc at level 216, at dusk. Data: `{"targetSpecies":"Lupinacle","method":"LevelDusk","level":216}`.
+- **Look**: from our tawny Lycanroc of the day: larger, the rocks of its mane grown into a mantle of stone over its shoulders, banded in the day's sand, the night's red and the dusk's gold, its legs longer and a rock spike at its tail's end. One look, whichever of the three it was (question 4). **New feature**: the mantle of stone in three colours.
+- **Pokédex**: The pack follows the one whose mantle rings loudest when it howls. It hunts at the hour between day and night, when its prey can't see it come.
+
+### 5. Venomreef, from Toxapex (748): maybe
+
+- **Typing**: Poison/Water, kept. *Alternative*: Poison/Rock.
+- **The Reef Fortress Pokémon**, No. 2748. 1.2 m, 30.0 kg (Toxapex 0.7 m, 14.5 kg).
+- **Stats**: 50 / 63 / 152 / 53 / 142 / 35 = 495 → **90 / 73 / 152 / 73 / 142 / 45 = 575** (+40 HP +10 Atk +20 SpA +10 Spe): the rise goes to its HP, which was 50, then its attacks; its defences were already 152 and 142.
+- **Abilities**: Merciless, Limber, hidden Regenerator (was Merciless, Limber, hidden Regenerator).
+- **Evolution**: Toxapex at level 220, holding a Black Sludge (used up). Data: `{"targetSpecies":"Venomreef","method":"LevelHoldingItem","level":220,"item":"Black Sludge"}`.
+- **Look**: from our blue dome of tentacles with its spiked pink tips: three domes joined at their rims like a reef, the spikes longer and darker, a ring of eyes peeping between the domes. **New feature**: the three domes.
+- **Pokédex**: Three of them grow together on a reef and never part again. A fish that swims between the domes is never seen to swim out.
+
+### 6. Claysteed, from Mudsdale (750): yes
+
+- **Typing**: Ground, kept. *Alternative*: Ground/Rock.
+- **The Clay Charger Pokémon**, No. 2750. 3.0 m, 990.0 kg (Mudsdale 2.5 m, 920 kg).
+- **Stats**: 100 / 125 / 100 / 55 / 85 / 35 = 500 → **110 / 140 / 110 / 55 / 105 / 60 = 580** (+10 HP +15 Atk +10 Def +20 SpD +25 Spe): the rise goes to its Speed, which was 35, then its Sp. Def and Attack.
+- **Abilities**: Own Tempo, Stamina, hidden Inner Focus (was Own Tempo, Stamina, hidden Inner Focus).
+- **Evolution**: Mudsdale at level 214, in the rain. Data: `{"targetSpecies":"Claysteed","method":"LevelInRain","level":214}`.
+- **Look**: from our brown draft horse with its mane and leggings of mud: larger, the mud over its back fired into plates of red clay like a saddle, the mane in heavy braids and its hooves wider. **New feature**: the saddle of clay plates.
+- **Pokédex**: It wades into rain-soaked fields to coat itself in mud, and the sun bakes it into plates no axe can split. Farmers yoke it to the heaviest ploughs.
+
+### 7. Diveweaver, from Araquanid (752): strong yes
+
+- **Typing**: Water/Bug, kept. *Alternative*: Water/Fairy.
+- **The Diving Bell Pokémon**, No. 2752. 2.2 m, 110.0 kg (Araquanid 1.8 m, 82 kg).
+- **Stats**: 68 / 70 / 92 / 50 / 132 / 42 = 454 → **88 / 95 / 107 / 60 / 132 / 52 = 534** (+20 HP +25 Atk +15 Def +10 SpA +10 Spe): the rise goes to its Attack and HP, then its Defense; its Sp. Def was already 132.
+- **Abilities**: Water Bubble, hidden Water Absorb (was Water Bubble, hidden Water Absorb).
+- **Evolution**: Araquanid at level 212, knowing Liquidation. Data: `{"targetSpecies":"Diveweaver","method":"LevelKnowsMove","level":212,"move":"Liquidation"}`.
+- **Look**: from our green spider with the bubble of water over its head: larger, the bubble grown into a dome over its whole back, a small bubble at each leg's tip, the legs longer and banded in brown. **New feature**: the dome of water over its back.
+- **Pokédex**: It weaves a bell of silk under the water and fills it with air. Small Pokémon of the brook shelter in it from the current.
+
+### 8. Orchimantis, from Lurantis (754): strong yes
+
+- **Typing**: Grass → **Grass/Fairy**. *Alternative*: Grass/Bug.
+- **The Orchid Mantis Pokémon**, No. 2754. 1.3 m, 28.0 kg (Lurantis 0.9 m, 18.5 kg).
+- **Stats**: 70 / 105 / 90 / 80 / 90 / 45 = 480 → **85 / 125 / 100 / 80 / 105 / 65 = 560** (+15 HP +20 Atk +10 Def +15 SpD +20 Spe): the rise goes to its Attack and Speed, then its HP and Sp. Def.
+- **Abilities**: Leaf Guard, hidden Contrary (was Leaf Guard, hidden Contrary).
+- **Evolution**: Lurantis at level 213, by day. Data: `{"targetSpecies":"Orchimantis","method":"LevelDay","level":213}`.
+- **Look**: from our pink flower of a mantis with its two sickles of petal: taller, four sickles where it had two, the frill on its head grown into an orchid's lip in white and pink, and a train of petals behind. **New feature**: the second pair of sickles.
+- **Pokédex**: Its colours are brighter than any orchid's, and the Pokémon drawn in by them are cut down by its four sickles.
+
+### 9. Lumishroom, from Shiinotic (756): strong yes
+
+- **Typing**: Grass/Fairy, kept. *Alternative*: Grass/Ghost.
+- **The Fairy Ring Pokémon**, No. 2756. 1.4 m, 18.0 kg (Shiinotic 1 m, 11.5 kg).
+- **Stats**: 60 / 45 / 80 / 90 / 100 / 30 = 405 → **75 / 45 / 95 / 115 / 115 / 40 = 485** (+15 HP +15 Def +25 SpA +15 SpD +10 Spe): the rise goes to its Sp. Atk, then its HP, Defense and Sp. Def.
+- **Abilities**: Illuminate, Effect Spore, hidden Rain Dish (was Illuminate, Effect Spore, hidden Rain Dish).
+- **Evolution**: Shiinotic at level 211, at night. Data: `{"targetSpecies":"Lumishroom","method":"LevelNight","level":211}`.
+- **Look**: from our purple mushroom with its glowing spotted cap: taller, the cap grown into a wide parasol, a ring of small caps round its foot like a fairy ring, and its spots lit (Glow, green). **New feature**: the ring of small caps.
+- **Pokédex**: Travellers lost in the forest at night follow its lights in a circle until morning. The small caps round its foot are its own children.
+
+### 10. Smolderess, from Salazzle (758): yes
+
+- **Typing**: Poison/Fire, kept. *Alternative*: Poison/Dragon.
+- **The Empress Pokémon**, No. 2758. 1.6 m, 32.0 kg (Salazzle 1.2 m, 22.2 kg).
+- **Stats**: 68 / 64 / 60 / 111 / 60 / 117 = 480 → **88 / 64 / 80 / 131 / 75 / 122 = 560** (+20 HP +20 Def +20 SpA +15 SpD +5 Spe): the rise goes to its HP, Defense and Sp. Atk, then its Sp. Def.
+- **Abilities**: Corrosion, hidden Oblivious (was Corrosion, hidden Oblivious).
+- **Evolution**: Salazzle at level 215, with a Salandit in the party. Data: `{"targetSpecies":"Smolderess","method":"LevelWithSpeciesInParty","level":215,"species":"Salandit"}`.
+- **Look**: from our black lizard with her pink markings: taller, a frill of pink on her head like a crown, the tail longer and forked, and a haze of smoke trailing from her shoulders (decals). Female only, as Salazzle. **New feature**: the forked tail.
+- **Pokédex**: Her court of males follows her through the smoke she breathes. Her poisonous gas is sweeter than any perfume, and those who breathe it obey.
+
+### 11. Huggrizzle, from Bewear (760): yes
+
+- **Typing**: Normal/Fighting, kept. *Alternative*: Fighting/Fairy.
+- **The Embrace Pokémon**, No. 2760. 2.6 m, 200.0 kg (Bewear 2.1 m, 135 kg).
+- **Stats**: 120 / 125 / 80 / 55 / 60 / 60 = 500 → **130 / 140 / 100 / 55 / 85 / 70 = 580** (+10 HP +15 Atk +20 Def +25 SpD +10 Spe): the rise goes to its Sp. Def and Defense, then its Attack.
+- **Abilities**: Fluffy, Klutz, hidden Unnerve (was Fluffy, Klutz, hidden Unnerve).
+- **Evolution**: Bewear at level 216, with friendship 220 or more. Data: `{"targetSpecies":"Huggrizzle","method":"Friendship","level":216}`.
+- **Look**: from our pink and black bear with its hood of black fur: larger, the hood grown into a cape that reaches its knees, the pink fur thicker like a coat and its arms longer still. **New feature**: the cape of black fur.
+- **Pokédex**: It has learned at last to hold back its strength, and its hug is now only crushing. It carries off people it likes to its den all the same.
+
+### 12. Wreathfey, from Comfey (764): yes
+
+- **Typing**: Fairy → **Fairy/Grass**. *Alternative*: Fairy alone.
+- **The Garland Pokémon**, No. 2764. 0.4 m, 1.0 kg (Comfey 0.1 m, 0.3 kg).
+- **Stats**: 51 / 52 / 90 / 82 / 110 / 100 = 485 → **71 / 52 / 100 / 107 / 120 / 115 = 565** (+20 HP +10 Def +25 SpA +10 SpD +15 Spe): the rise goes to its Sp. Atk and HP, then its Speed.
+- **Abilities**: Flower Veil, Triage, hidden Natural Cure (was Flower Veil, Triage, hidden Natural Cure).
+- **Evolution**: Comfey at level 214, knowing Floral Healing. Data: `{"targetSpecies":"Wreathfey","method":"LevelKnowsMove","level":214,"move":"Floral Healing"}`.
+- **Look**: from our small green vine with its ring of flowers: longer, a second ring of flowers round the first so that the two make a garland, the flowers in four colours and three tails of vine. **New feature**: the second ring of flowers.
+- **Pokédex**: It gives its garland to a Pokémon that has fought well, and picks the flowers again before morning. The scent heals the wounded.
+
+### 13. Arborsage, from Oranguru (765): yes
+
+- **Typing**: Normal/Psychic, kept. *Alternative*: Psychic/Grass.
+- **The Forest Elder Pokémon**, No. 2765. 1.9 m, 110.0 kg (Oranguru 1.5 m, 76 kg).
+- **Stats**: 90 / 60 / 80 / 90 / 110 / 60 = 490 → **100 / 60 / 95 / 115 / 125 / 75 = 570** (+10 HP +15 Def +25 SpA +15 SpD +15 Spe): the rise goes to its Sp. Atk, then its Defense, Sp. Def and Speed.
+- **Abilities**: Inner Focus, Telepathy, hidden Symbiosis (was Inner Focus, Telepathy, hidden Symbiosis).
+- **Evolution**: Oranguru at level 215, with a Passimian in the party. Data: `{"targetSpecies":"Arborsage","method":"LevelWithSpeciesInParty","level":215,"species":"Passimian"}`.
+- **Look**: from our white-maned orangutan with its purple fur and its fan of a leaf: larger, the cape of fur grown to the ground like robes, a long white beard and a second fan in its other hand. **New feature**: the robes of fur.
+- **Pokédex**: It sits at the top of the tallest tree and gives orders to the forest. The fans it holds were given to it by Pokémon it helped.
+
+### 14. Scrummian, from Passimian (766): yes
+
+- **Typing**: Fighting, kept. *Alternative*: Fighting/Normal.
+- **The Team Captain Pokémon**, No. 2766. 2.3 m, 110.0 kg (Passimian 2 m, 82.8 kg).
+- **Stats**: 100 / 120 / 90 / 40 / 60 / 80 = 490 → **110 / 140 / 100 / 40 / 80 / 100 = 570** (+10 HP +20 Atk +10 Def +20 SpD +20 Spe): the rise goes to its Attack, Sp. Def and Speed.
+- **Abilities**: Receiver, hidden Defiant (was Receiver, hidden Defiant).
+- **Evolution**: Passimian at level 215, with an Oranguru in the party. Data: `{"targetSpecies":"Scrummian","method":"LevelWithSpeciesInParty","level":215,"species":"Oranguru"}`.
+- **Look**: from our white ape with its mask of fur and its green berry: larger, the mask grown into a band round its brow like a captain's, its arms thicker and a second berry carried at its belt. **New feature**: the captain's band.
+- **Pokédex**: It plans a whole troop's plays and calls them with a shout. The troop that wins with it hands it the berry to keep.
+
+### 15. Shogunpod, from Golisopod (768): yes
+
+- **Typing**: Bug/Water, kept. *Alternative*: Bug/Steel.
+- **The Hard Armour Pokémon**, No. 2768. 2.5 m, 160.0 kg (Golisopod 2 m, 108 kg).
+- **Stats**: 75 / 125 / 140 / 60 / 90 / 40 = 530 → **95 / 140 / 140 / 60 / 105 / 60 = 600** (+20 HP +15 Atk +15 SpD +20 Spe): the rise is +70, to the 600 ceiling: to its HP and Speed, then its Attack and Sp. Def.
+- **Abilities**: Emergency Exit (was Emergency Exit).
+- **Evolution**: Golisopod at level 218, knowing First Impression. Data: `{"targetSpecies":"Shogunpod","method":"LevelKnowsMove","level":218,"move":"First Impression"}`.
+- **Look**: from our grey armoured isopod with its six arms and its claws: larger, its plates layered like a samurai's armour edged in gold, a crest rising from its head and its claws longer. **New feature**: the crest on its head.
+- **Pokédex**: It no longer flees from a fight it can lose. It keeps the shores clean, and a Pokémon that fouls them meets its claws.
+
+### 16. Sandcitadel, from Palossand (770): strong yes
+
+- **Typing**: Ghost/Ground, kept. *Alternative*: Ghost/Rock.
+- **The Sand Citadel Pokémon**, No. 2770. 1.8 m, 400.0 kg (Palossand 1.3 m, 250 kg).
+- **Stats**: 85 / 75 / 110 / 100 / 75 / 35 = 480 → **100 / 75 / 120 / 120 / 95 / 50 = 560** (+15 HP +10 Def +20 SpA +20 SpD +15 Spe): the rise goes to its Sp. Atk and Sp. Def, then its HP and Speed.
+- **Abilities**: Water Compaction, hidden Sand Veil (was Water Compaction, hidden Sand Veil).
+- **Evolution**: Palossand at level 213, holding a Soft Sand (used up). Data: `{"targetSpecies":"Sandcitadel","method":"LevelHoldingItem","level":213,"item":"Soft Sand"}`.
+- **Look**: from our sand castle with its shovel and its dark windows: three towers where it had one, a moat of darker sand round its base, a shovel on each side and the windows lit (Glow, purple). **New feature**: the three towers.
+- **Pokédex**: A whole beach's sand goes into it. People who wander into its moat at dusk are found in the morning, asleep and very far away.
+
+### 17. Cucumbrawl, from Pyukumuku (771): strong yes
+
+- **Typing**: Water → **Water/Fighting**. *Alternative*: Water/Poison.
+- **The Sea Boxer Pokémon**, No. 2771. 0.6 m, 5.0 kg (Pyukumuku 0.3 m, 1.2 kg).
+- **Stats**: 55 / 60 / 130 / 30 / 130 / 5 = 410 → **75 / 90 / 135 / 30 / 135 / 25 = 490** (+20 HP +30 Atk +5 Def +5 SpD +20 Spe): the rise goes to its Attack and its HP and Speed; its defences were already 130.
+- **Abilities**: Innards Out, hidden Unaware (was Innards Out, hidden Unaware).
+- **Evolution**: Pyukumuku at level 210, knowing Counter. Data: `{"targetSpecies":"Cucumbrawl","method":"LevelKnowsMove","level":210,"move":"Counter"}`.
+- **Look**: from our black sea cucumber with its pink spines and the white fist of innards from its mouth: larger, two fists of innards like boxing gloves, the spines longer and a band of pink round its middle. **New feature**: the second fist.
+- **Pokédex**: Throw it back into the sea and it punches the one who threw it. Fishermen say it was once laughed at; nobody laughs now.
+
+### 18. Somnikoala, from Komala (775): strong yes
+
+- **Typing**: Normal → **Normal/Psychic**. *Alternative*: Normal/Grass.
+- **The Deep Sleep Pokémon**, No. 2775. 0.8 m, 35.0 kg (Komala 0.4 m, 19.9 kg).
+- **Stats**: 65 / 115 / 65 / 75 / 95 / 65 = 480 → **85 / 125 / 85 / 85 / 105 / 75 = 560** (+20 HP +10 Atk +20 Def +10 SpA +10 SpD +10 Spe): the rise goes to its HP and Defense, then the rest.
+- **Abilities**: Comatose (was Comatose).
+- **Evolution**: Komala at level 216, at night. Data: `{"targetSpecies":"Somnikoala","method":"LevelNight","level":216}`.
+- **Look**: from our grey koala asleep with its log: larger, the log grown into a leafy bough it lies along, a nightcap of fur drooping over one ear and its eyes still shut. **New feature**: the leafy bough.
+- **Pokédex**: It has slept since it hatched. Those who sleep beside it share its dream, and wake knowing things they never learned.
+
+### 19. Caldertoise, from Turtonator (776): yes
+
+- **Typing**: Fire/Dragon, kept. *Alternative*: Fire/Rock.
+- **The Volcano Pokémon**, No. 2776. 2.4 m, 300.0 kg (Turtonator 2 m, 212 kg).
+- **Stats**: 60 / 78 / 135 / 91 / 85 / 36 = 485 → **85 / 88 / 135 / 111 / 100 / 46 = 565** (+25 HP +10 Atk +20 SpA +15 SpD +10 Spe): the rise goes to its HP, which was 60, then its Sp. Atk and Sp. Def.
+- **Abilities**: Shell Armor (was Shell Armor).
+- **Evolution**: Turtonator at level 220, with a Drampa in the party. Data: `{"targetSpecies":"Caldertoise","method":"LevelWithSpeciesInParty","level":220,"species":"Drampa"}`.
+- **Look**: from our red turtle with its spiked shell: larger, the shell grown into a cone with a crater at its peak glowing (Glow, orange), more spikes round its rim and a longer horn. **New feature**: the crater.
+- **Pokédex**: The crater on its back is a real volcano and erupts when it is angry. Islands are said to have grown from its old shells.
+
+### 20. Rollocupine, from Togedemaru (777): strong yes
+
+- **Typing**: Electric/Steel, kept. *Alternative*: Electric/Fairy.
+- **The Lightning Rod Pokémon**, No. 2777. 0.6 m, 9.0 kg (Togedemaru 0.3 m, 3.3 kg).
+- **Stats**: 65 / 98 / 63 / 40 / 73 / 96 = 435 → **80 / 113 / 83 / 40 / 88 / 111 = 515** (+15 HP +15 Atk +20 Def +15 SpD +15 Spe): the rise goes to its Defense, which was 63, then the rest.
+- **Abilities**: Iron Barbs, Lightning Rod, hidden Sturdy (was Iron Barbs, Lightning Rod, hidden Sturdy).
+- **Evolution**: Togedemaru at level 212, knowing Zing Zap. Data: `{"targetSpecies":"Rollocupine","method":"LevelKnowsMove","level":212,"move":"Zing Zap"}`.
+- **Look**: from our grey round hedgehog with its yellow-banded spines: larger, the spine on its back grown into a tall lightning rod banded in yellow (Glow, yellow), the ring of spines round its face wider and two short tails. **New feature**: the lightning rod.
+- **Pokédex**: In a storm it climbs to the highest roof and catches every bolt. A town with one on its roofs never has a fire from lightning.
+
+### 21. Masqueradoll, from Mimikyu (778): strong yes
+
+- **Typing**: Ghost/Fairy, kept. *Alternative*: Ghost/Dark.
+- **The Costume Pokémon**, No. 2778. 0.5 m, 1.5 kg (Mimikyu 0.2 m, 0.7 kg).
+- **Stats**: 55 / 90 / 80 / 50 / 105 / 96 = 476 → **75 / 105 / 95 / 50 / 120 / 111 = 556** (+20 HP +15 Atk +15 Def +15 SpD +15 Spe): the rise goes to its HP, then its Attack, Defense, Sp. Def and Speed.
+- **Abilities**: **Cursed Body** (was Disguise, question 3).
+- **Evolution**: Mimikyu at level 217, holding a Reaper Cloth at night (used up). Data: `{"targetSpecies":"Masqueradoll","method":"LevelHoldingItemNight","level":217,"item":"Reaper Cloth"}`.
+- **Look**: from our Mimikyu in its rag of a yellow mouse: larger, the costume sewn anew with neater stitches, two ears and a tail of patched cloth, a hood over its head and a cape trailing behind from under which a shadowy claw shows. **New feature**: the stitched cape.
+- **Pokédex**: It sewed its new costume from cloth that ghosts had worn. It is no less lonely, and plays with anyone who doesn't look under the hood.
+
+### 22. Chromagnash, from Bruxish (779): strong yes
+
+- **Typing**: Water/Psychic, kept. *Alternative*: Water/Dark.
+- **The Gnash Fish Pokémon**, No. 2779. 1.3 m, 35.0 kg (Bruxish 0.9 m, 19 kg).
+- **Stats**: 68 / 105 / 70 / 70 / 70 / 92 = 475 → **88 / 120 / 85 / 80 / 85 / 97 = 555** (+20 HP +15 Atk +15 Def +10 SpA +15 SpD +5 Spe): the rise goes to its HP, then its Attack, Defense and Sp. Def.
+- **Abilities**: Dazzling, Strong Jaw, hidden Wonder Skin (was Dazzling, Strong Jaw, hidden Wonder Skin).
+- **Evolution**: Bruxish at level 219, knowing Psychic Fangs. Data: `{"targetSpecies":"Chromagnash","method":"LevelKnowsMove","level":219,"move":"Psychic Fangs"}`.
+- **Look**: from our pink fish with its blue fins and its great teeth: larger, its fins grown into tall sails striped like a rainbow, its teeth in two rows and a crest on its head. **New feature**: the rainbow sails.
+- **Pokédex**: The colours of its sails dazzle any Pokémon that looks at them. The gnashing of its two rows of teeth is heard across a bay.
+
+### 23. Elderdrake, from Drampa (780): yes
+
+- **Typing**: Normal/Dragon, kept. *Alternative*: Dragon/Fairy.
+- **The Old Sage Pokémon**, No. 2780. 3.6 m, 240.0 kg (Drampa 3 m, 185 kg).
+- **Stats**: 78 / 60 / 85 / 135 / 91 / 36 = 485 → **98 / 60 / 95 / 155 / 101 / 56 = 565** (+20 HP +10 Def +20 SpA +10 SpD +20 Spe): the rise goes to its HP, Sp. Atk and Speed.
+- **Abilities**: Berserk, Sap Sipper, hidden Cloud Nine (was Berserk, Sap Sipper, hidden Cloud Nine).
+- **Evolution**: Drampa at level 220, with a Turtonator in the party. Data: `{"targetSpecies":"Elderdrake","method":"LevelWithSpeciesInParty","level":220,"species":"Turtonator"}`.
+- **Look**: from our white old dragon with its mane and beard of cloud: longer, the mane and beard reaching to its tail, two wings of cloud and a crown of four horns. **New feature**: the wings of cloud.
+- **Pokédex**: It comes down from its mountain to play with children on the coldest days. It is gentle with them, and furious with anyone who frightens them.
+
+### 24. Galleonghast, from Dhelmise (781): yes
+
+- **Typing**: Ghost/Grass, kept. *Alternative*: Ghost/Steel.
+- **The Shipwreck Pokémon**, No. 2781. 4.6 m, 300.0 kg (Dhelmise 3.9 m, 210 kg).
+- **Stats**: 70 / 131 / 100 / 86 / 90 / 40 = 517 → **95 / 141 / 110 / 96 / 105 / 50 = 597** (+25 HP +10 Atk +10 Def +10 SpA +15 SpD +10 Spe): the rise goes to its HP, which was 70, then its Sp. Def.
+- **Abilities**: Steelworker (was Steelworker).
+- **Evolution**: Dhelmise at level 221, knowing Anchor Shot. Data: `{"targetSpecies":"Galleonghast","method":"LevelKnowsMove","level":221,"move":"Anchor Shot"}`.
+- **Look**: from our rusty anchor with its ship's wheel and its tangle of seaweed: larger, two anchors chained together, the wheel larger, the seaweed grown into a sail of kelp and barnacles on its flukes. **New feature**: the sail of kelp.
+- **Pokédex**: It drags a wreck behind it as it wanders the sea floor. Ships passing over it lose their anchors to its chain.
+
+### 25. Kokonui, from Tapu Koko (785): maybe
+
+- **Typing**: Electric/Fairy, kept. *Alternative*: each its own type alone, for all four (Electric, Psychic, Grass, Water).
+- **The Land Spirit Pokémon**, No. 2785. 2.2 m, 30.0 kg (Tapu Koko 1.8 m, 20.5 kg).
+- **Stats**: 70 / 115 / 85 / 95 / 75 / 130 = 570 → **90 / 130 / 100 / 110 / 90 / 140 = 660** (+20 HP +15 Atk +15 Def +15 SpA +15 SpD +10 Spe): +90, to the set's 660: to its HP, then the rest.
+- **Abilities**: Electric Surge, hidden Telepathy (was Electric Surge, hidden Telepathy).
+- **Evolution**: Tapu Koko at level 225, with a Tapu Lele in the party. Data: `{"targetSpecies":"Kokonui","method":"LevelWithSpeciesInParty","level":225,"species":"Tapu Lele"}`.
+- **Look**: from our yellow Tapu Koko with its shell of a rooster's crest: larger, the shell grown into a totem's mask of two plates on either side, its crest taller and lit (Glow, yellow), and a ring of four feathers round its shoulders, one for each island. **New feature**: the ring of four feathers.
+- **Pokédex**: Once in an age the four guardians are seen together, and the islands are calm for a hundred years after.
+
+### 26. Lelenui, from Tapu Lele (786): maybe
+
+- **Typing**: Psychic/Fairy, kept. *Alternative*: as Kokonui.
+- **The Land Spirit Pokémon**, No. 2786. 1.6 m, 26.0 kg (Tapu Lele 1.2 m, 18.6 kg).
+- **Stats**: 70 / 85 / 75 / 130 / 115 / 95 = 570 → **90 / 95 / 90 / 145 / 130 / 110 = 660** (+20 HP +10 Atk +15 Def +15 SpA +15 SpD +15 Spe): +90, to the set's 660: to its HP, then the rest.
+- **Abilities**: Psychic Surge, hidden Telepathy (was Psychic Surge, hidden Telepathy).
+- **Evolution**: Tapu Lele at level 225, with a Tapu Bulu in the party. Data: `{"targetSpecies":"Lelenui","method":"LevelWithSpeciesInParty","level":225,"species":"Tapu Bulu"}`.
+- **Look**: from our pink Tapu Lele with its shell of a butterfly's wings: larger, the shell grown into a totem's mask of two plates on either side, its scales of light thicker round it (Glow, pink) and the ring of four feathers round its shoulders. **New feature**: the ring of four feathers.
+- **Pokédex**: The scales it scatters heal anyone they touch. Where it has played for a day, flowers grow for a year.
+
+### 27. Bulunui, from Tapu Bulu (787): maybe
+
+- **Typing**: Grass/Fairy, kept. *Alternative*: as Kokonui.
+- **The Land Spirit Pokémon**, No. 2787. 2.3 m, 70.0 kg (Tapu Bulu 1.9 m, 45.5 kg).
+- **Stats**: 70 / 130 / 115 / 85 / 95 / 75 = 570 → **90 / 145 / 130 / 95 / 110 / 90 = 660** (+20 HP +15 Atk +15 Def +10 SpA +15 SpD +15 Spe): +90, to the set's 660: to its HP, then the rest.
+- **Abilities**: Grassy Surge, hidden Telepathy (was Grassy Surge, hidden Telepathy).
+- **Evolution**: Tapu Bulu at level 225, with a Tapu Fini in the party. Data: `{"targetSpecies":"Bulunui","method":"LevelWithSpeciesInParty","level":225,"species":"Tapu Fini"}`.
+- **Look**: from our red Tapu Bulu with its shell of a bull's horns: larger, the shell grown into a totem's mask of two plates on either side, the horns longer and vines hanging from them, and the ring of four feathers round its shoulders. **New feature**: the ring of four feathers.
+- **Pokédex**: It shakes its horns and a forest grows over a ruined town in a night. It is idle, and only wakes when the islands need it.
+
+### 28. Fininui, from Tapu Fini (788): maybe
+
+- **Typing**: Water/Fairy, kept. *Alternative*: as Kokonui.
+- **The Land Spirit Pokémon**, No. 2788. 1.7 m, 30.0 kg (Tapu Fini 1.3 m, 21.2 kg).
+- **Stats**: 70 / 75 / 115 / 95 / 130 / 85 = 570 → **90 / 85 / 130 / 110 / 145 / 100 = 660** (+20 HP +10 Atk +15 Def +15 SpA +15 SpD +15 Spe): +90, to the set's 660: to its HP, then the rest.
+- **Abilities**: Misty Surge, hidden Telepathy (was Misty Surge, hidden Telepathy).
+- **Evolution**: Tapu Fini at level 225, with a Tapu Koko in the party. Data: `{"targetSpecies":"Fininui","method":"LevelWithSpeciesInParty","level":225,"species":"Tapu Koko"}`.
+- **Look**: from our purple Tapu Fini with its shell of a fish's fins: larger, the shell grown into a totem's mask of two plates on either side, a mist of water round it (decals) and the ring of four feathers round its shoulders. **New feature**: the ring of four feathers.
+- **Pokédex**: Its mist cleans the sea of anything foul. Those who see it in the fog say it asked them a question they could not answer.
+
+## Balance
+
+Measured by the script, as the earlier batches':
+
+- **Totals**: 485 (Lumishroom, from Shiinotic's 405) to 600 (Shogunpod, risen only to the ceiling: +70 from Golisopod's 530), the island guardians 660. Nothing that isn't legendary passes 600.
+- **Highest of each stat** (the region's own, not the guardians): HP 130 (Huggrizzle); Atk 142 (Glacipincer); Def 152 (Venomreef); SpA 155 (Elderdrake); SpD 142 (Venomreef); Spe 134 (Pollenoble). None passes the earlier batches' highest (Cranialith's 165 Attack, Bastionsaur's 168 Defense).
+- **The weakest stay modest on purpose** (batch 1's answer: no floor): Lumishroom 485, Cucumbrawl 490, Inspectoose 498 and Rollocupine 515, from the four lowest totals of the region's last stages and species alone.
+- **Abilities**: every species keeps its own but Mimikyu, whose Disguise becomes **Cursed Body** on Masqueradoll (question 3).
+
+**Flagged as strong** (each inside the official range; the user may want one turned down):
+1. **Venomreef**: Toxapex's 152 Defense and 142 Sp. Def with Regenerator, now on 90 HP. Toxapex is already among the hardest walls of any region. *To turn down*: HP 70 and the 20 to Speed; or keep it a maybe and leave Toxapex as it is.
+2. **Elderdrake**: 155 Sp. Atk with Berserk, the highest special attack of the batch, from Drampa's 135. *To turn down*: Sp. Atk 145 and the 10 to Sp. Def.
+3. **Pollenoble**: 134 Speed and 115 Sp. Atk on a Pokémon that learns Quiver Dance. *To turn down*: Speed 124, Ribombee's own, and the 10 to HP.
+4. **Shogunpod**: 600, with Golisopod's 125 Attack and 140 Defense, now 60 Speed; Emergency Exit still takes it out at half its HP. *To turn down*: Speed 50 and the 10 to HP.
+
+**Weaker by design**: Cucumbrawl (Innards Out and its own 130 defences, its rise to the Attack and Speed it lacked; its Speed is still 25) and Lumishroom (Shiinotic's slow, sleepy support kept) are judged on their designs more than their numbers.
+
+## Open questions: only what is new for Alola
+
+The earlier batches' thirty-two are settled and applied (above). These are new.
+
+1. **The level band.** Batch 3's rule is "within the region's own climb, at most 160", and Alola's climb (about 205 to 228, projected from W4's fair climb, since Alola isn't built) is all above 160. *Default*: **the 160 was Hoenn's top, not a ceiling of its own**: the rule becomes "within the region's own climb, under the game's cap" (`Ruleset.LevelCap`, 260), and Alola's species evolve between **209 and 221** (the region's first level + 4 to its Champion − 3), the island guardians at **225**, the Champion + 1. When plan 23 · Z5 writes `regions/alola.json`'s `levels`, a session moves the rows by the same steps if the climb came out otherwise. *Alternatives*: keep 160, so that every Alola species met in Alola (at 205 or more) evolves at its first level up, which makes the evolution no reward; or Sinnoh's way, the band where the chain first passes 100 (101 to 120), which has the same fault.
+2. **The island guardians.** *Default*: build them as a set of four, each at level 225 with the next in the party (a ring of the four islands), to 660, which is +90 from their 570. *Alternatives*: each holding its own terrain's Seed (the Electric, Psychic, Grassy and Misty Seeds, all four in `items.json`, used up), which is more their own than a ring but no longer ties the four together; each at 225 alone; or not at all.
+3. **Abilities that work by the species' name.** Disguise, Schooling, Shields Down and RKS System act for Mimikyu, Wishiwashi, Minior and Silvally alone (`BattleCore.Shapes.cs` asks the species' name, as Showdown does). *Default*: Masqueradoll takes **Cursed Body** in Disguise's one slot (its rag curses whoever strikes it), and Wishiwashi, Minior and Silvally have no design (above). *Alternatives*: Disguise kept on Masqueradoll, doing nothing until a later session lets ours use it (an engine change, which this batch otherwise doesn't need); or a design for Wishiwashi that is a school for good (Swift Swim in Schooling's place, from its 175, the lowest total of any species in any batch: 255).
+4. **Lycanroc's three shapes.** Its Midday, Midnight and Dusk Forms are forms of one typing with their own stats and abilities. *Default*: one species of ours from all three, at the hour where they meet (`LevelDusk`, Rockruff's own way to the Dusk Form), with Lycanroc's own stats and abilities (the data's species row, the Midday Form's: Keen Eye, Sand Rush, hidden Steadfast) and one look that bands the three colours; `Evolution.FitsForm` lets a form that isn't regional evolve by the species' row. *Alternatives*: three species of ours (No. 2745 and two more the rule of 2000 + the number doesn't give, as Wormadam's question in batch 4); or from the Midday Form only, which needs a row that refuses the other two (an engine change: a row with no `fromForm` fits every form that isn't regional).
+5. **The two pairs of version exclusives.** *Default*: built as sets, each with the other in the party: Oranguru with a Passimian and Passimian with an Oranguru (215), Turtonator with a Drampa and Drampa with a Turtonator (220). *Alternatives*: each by a condition of its own (Oranguru knowing Instruct, Turtonator holding a Charcoal), or not at all.
+6. **The Ultra Beasts.** *Default*: none evolves (above). *Alternatives*: the ten as a set, each at 225 with another Ultra Beast in the party, to 660 (+90, Naganadel +120), which would make them the region's second legendary set; or Naganadel alone, since it is the one that already grew.
+7. **Salazzle.** *Default*: Smolderess is female only, as Salazzle and as the data has it (`genderRatio` 8), and evolves with a Salandit in the party, the court that follows her. *Alternative*: at night, with nobody beside her.
+
+## The table to answer
+
+One row a species. The user answers each with yes, a change, or no; striking a row in the selection table above is a no.
+
+| # | Ours | Typing | Abilities | HP/Atk/Def/SpA/SpD/Spe (total) | Δ | Evolves |
+|---|---|---|---|---|---|---|
+| 1 | Inspectoose | Normal/Dark | Stakeout, Strong Jaw, hidden Adaptability | 98/125/80/55/80/60 (498) | +10 HP +15 Atk +20 Def +20 SpD +15 Spe | level 209, by day |
+| 2 | Glacipincer | Fighting/Ice | Hyper Cutter, Iron Fist, hidden Anger Point | 107/142/97/62/92/58 (558) | +10 HP +10 Atk +20 Def +25 SpD +15 Spe | an Ice Stone used on it at level 218 or above |
+| 3 | Pollenoble | Bug/Fairy | Honey Gather, Shield Dust, hidden Sweet Veil | 75/55/75/115/90/134 (544) | +15 HP +15 Def +20 SpA +20 SpD +10 Spe | level 210, knowing Pollen Puff |
+| 4 | Lupinacle | Rock | Keen Eye, Sand Rush, hidden Steadfast | 90/130/85/55/85/122 (567) | +15 HP +15 Atk +20 Def +20 SpD +10 Spe | level 216, at dusk |
+| 5 | Venomreef | Poison/Water | Merciless, Limber, hidden Regenerator | 90/73/152/73/142/45 (575) | +40 HP +10 Atk +20 SpA +10 Spe | level 220, holding a Black Sludge (used up) |
+| 6 | Claysteed | Ground | Own Tempo, Stamina, hidden Inner Focus | 110/140/110/55/105/60 (580) | +10 HP +15 Atk +10 Def +20 SpD +25 Spe | level 214, in the rain |
+| 7 | Diveweaver | Water/Bug | Water Bubble, hidden Water Absorb | 88/95/107/60/132/52 (534) | +20 HP +25 Atk +15 Def +10 SpA +10 Spe | level 212, knowing Liquidation |
+| 8 | Orchimantis | Grass/Fairy | Leaf Guard, hidden Contrary | 85/125/100/80/105/65 (560) | +15 HP +20 Atk +10 Def +15 SpD +20 Spe | level 213, by day |
+| 9 | Lumishroom | Grass/Fairy | Illuminate, Effect Spore, hidden Rain Dish | 75/45/95/115/115/40 (485) | +15 HP +15 Def +25 SpA +15 SpD +10 Spe | level 211, at night |
+| 10 | Smolderess | Poison/Fire | Corrosion, hidden Oblivious | 88/64/80/131/75/122 (560) | +20 HP +20 Def +20 SpA +15 SpD +5 Spe | level 215, with a Salandit in the party |
+| 11 | Huggrizzle | Normal/Fighting | Fluffy, Klutz, hidden Unnerve | 130/140/100/55/85/70 (580) | +10 HP +15 Atk +20 Def +25 SpD +10 Spe | level 216, with friendship 220 or more |
+| 12 | Wreathfey | Fairy/Grass | Flower Veil, Triage, hidden Natural Cure | 71/52/100/107/120/115 (565) | +20 HP +10 Def +25 SpA +10 SpD +15 Spe | level 214, knowing Floral Healing |
+| 13 | Arborsage | Normal/Psychic | Inner Focus, Telepathy, hidden Symbiosis | 100/60/95/115/125/75 (570) | +10 HP +15 Def +25 SpA +15 SpD +15 Spe | level 215, with a Passimian in the party |
+| 14 | Scrummian | Fighting | Receiver, hidden Defiant | 110/140/100/40/80/100 (570) | +10 HP +20 Atk +10 Def +20 SpD +20 Spe | level 215, with an Oranguru in the party |
+| 15 | Shogunpod | Bug/Water | Emergency Exit | 95/140/140/60/105/60 (600) | +20 HP +15 Atk +15 SpD +20 Spe | level 218, knowing First Impression |
+| 16 | Sandcitadel | Ghost/Ground | Water Compaction, hidden Sand Veil | 100/75/120/120/95/50 (560) | +15 HP +10 Def +20 SpA +20 SpD +15 Spe | level 213, holding a Soft Sand (used up) |
+| 17 | Cucumbrawl | Water/Fighting | Innards Out, hidden Unaware | 75/90/135/30/135/25 (490) | +20 HP +30 Atk +5 Def +5 SpD +20 Spe | level 210, knowing Counter |
+| 18 | Somnikoala | Normal/Psychic | Comatose | 85/125/85/85/105/75 (560) | +20 HP +10 Atk +20 Def +10 SpA +10 SpD +10 Spe | level 216, at night |
+| 19 | Caldertoise | Fire/Dragon | Shell Armor | 85/88/135/111/100/46 (565) | +25 HP +10 Atk +20 SpA +15 SpD +10 Spe | level 220, with a Drampa in the party |
+| 20 | Rollocupine | Electric/Steel | Iron Barbs, Lightning Rod, hidden Sturdy | 80/113/83/40/88/111 (515) | +15 HP +15 Atk +20 Def +15 SpD +15 Spe | level 212, knowing Zing Zap |
+| 21 | Masqueradoll | Ghost/Fairy | Cursed Body | 75/105/95/50/120/111 (556) | +20 HP +15 Atk +15 Def +15 SpD +15 Spe | level 217, holding a Reaper Cloth at night (used up) |
+| 22 | Chromagnash | Water/Psychic | Dazzling, Strong Jaw, hidden Wonder Skin | 88/120/85/80/85/97 (555) | +20 HP +15 Atk +15 Def +10 SpA +15 SpD +5 Spe | level 219, knowing Psychic Fangs |
+| 23 | Elderdrake | Normal/Dragon | Berserk, Sap Sipper, hidden Cloud Nine | 98/60/95/155/101/56 (565) | +20 HP +10 Def +20 SpA +10 SpD +20 Spe | level 220, with a Turtonator in the party |
+| 24 | Galleonghast | Ghost/Grass | Steelworker | 95/141/110/96/105/50 (597) | +25 HP +10 Atk +10 Def +10 SpA +15 SpD +10 Spe | level 221, knowing Anchor Shot |
+| 25 | Kokonui | Electric/Fairy | Electric Surge, hidden Telepathy | 90/130/100/110/90/140 (660) | +20 HP +15 Atk +15 Def +15 SpA +15 SpD +10 Spe | level 225, with a Tapu Lele in the party |
+| 26 | Lelenui | Psychic/Fairy | Psychic Surge, hidden Telepathy | 90/95/90/145/130/110 (660) | +20 HP +10 Atk +15 Def +15 SpA +15 SpD +15 Spe | level 225, with a Tapu Bulu in the party |
+| 27 | Bulunui | Grass/Fairy | Grassy Surge, hidden Telepathy | 90/145/130/95/110/90 (660) | +20 HP +15 Atk +15 Def +10 SpA +15 SpD +15 Spe | level 225, with a Tapu Fini in the party |
+| 28 | Fininui | Water/Fairy | Misty Surge, hidden Telepathy | 90/85/130/110/145/100 (660) | +20 HP +10 Atk +15 Def +15 SpA +15 SpD +15 Spe | level 225, with a Tapu Koko in the party |
+
+## The technical plan (for after the user's answers)
+
+Batch 1's pipeline holds unchanged: each design an entry of `tools/DataImporter/Overrides/species-past-hundred.json` (a `LevelWithSpeciesInParty` row takes `species`, a held or used item `item`, a move to know `move`), two written Pokédex entries and a habitat each in `Data/dex-entries.json` (`--check-entries` clean), a run of the importer, and `SpeciesPastHundredTests`' count of designs and its climb by the forebear's generation, which gains generation 7's band (209 to 221, the set 225). The sculpts wait for the user (wave 53's rule: ours stay generated by rule from their data). Nothing in the engine is needed for this batch: every method above runs today, `LevelDusk`, `LevelHoldingItemNight`, `Friendship` with a level, `UseItem` with a level and `LevelWithSpeciesInParty` among them, and levels up to 260 are the modern rules' cap. The island guardians' evolutions join the Frontier's ban list (`FrontierRules.IsBannedOfOurs`). What is not this batch's: 06 · R31's moves past level 100 (the learnsets take them as batch 1's do), the lines of three, the Alolan forms (batch 1's question 10), and where in Alola the evolutions are met, which waits for plan 23 · Z5 to Z8 (until then they can be had wherever a level of 209 is reached, with the species that the chain's earlier regions give).
+
+## How the numbers were checked
+
+The same kind of Node.js script as the earlier batches', kept in the session's scratch folder and reading only `species.json`, `abilities.json` and `items.json`, with the 170 names and numbers of batches 1 to 4 read from their four documents' tables, and every name searched for in the Unova, Kalos, Galar and Paldea documents written in the same wave, as they stood in their sessions' worktrees when it ran (none met; the merge should look again). It built the lines (a regional form's evolution counted as the form's own) and the list of the 47 that qualify, found no species before No. 722 whose line ends in Alola and no Alola line that ends later, listed the lines of three and the Alolan forms' lines, and for each of the 28 designs checked: that it qualifies and is Alola's, that every qualifying species has a design or a reason for none, and every species given a reason qualifies; that the rise is +80 or what the ceiling leaves (600), or exactly what the set's 660 leaves for the island guardians, that no stat falls, that every rise is a multiple of five and that the six stats add up to the total written (the stats are written as the species' own plus the rise, so the two can't differ); that the name is one word of at most 12 letters, taken by no species or form of the data, by no ability or item, by none of the earlier batches' 170 and by no other design of this batch; that the number is 2000 + the old species' and meets none of the earlier batches' or the data's; that the types are one or two of the eighteen, and "kept" exactly where they are the species' own; that the abilities exist and fill exactly the old species' slots; that the method is one the data already uses; that the level is between 209 and 221 for a species that isn't legendary and 225 for the island guardians; that an item held or used exists and is no key item; that a move to know is in the species' level-up learnset at or below the evolution's level; that a species named in the party exists, and that each of a set names one designed in the same set; that each is taller and heavier than what it comes from and no heavier than 999.9 kg; and that no look names a female where the species has no female look. The tables and the entries were written by the same script from the same values, so a number can't differ between the selection table, an entry and the table to answer.
