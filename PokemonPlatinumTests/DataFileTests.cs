@@ -142,8 +142,8 @@ public class DataFileTests
         Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
         foreach (var form in forms)
             Assert.Equal(2, DexEntries.EntriesOf(form.Name)!.Count);
-        // The file holds exactly the species and the forms
-        Assert.Equal(PokemonDatabase.GetAll().Count() + forms.Count, DexEntries.All.Count);
+        // The file holds exactly the species, ours too (plan 03 · D14), and the forms
+        Assert.Equal(PokemonDatabase.Everyone().Count() + forms.Count, DexEntries.All.Count);
     }
 
     [Fact]

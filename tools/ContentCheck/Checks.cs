@@ -215,7 +215,7 @@ public static class Checks
     }
 
     private static readonly Lazy<HashSet<string>> evolutionSites = new(() =>
-        PokemonDatabase.GetAll().SelectMany(s => s.Evolutions ?? new()).Select(e => e.Location).OfType<string>().ToHashSet(StringComparer.Ordinal));
+        PokemonDatabase.Everyone().SelectMany(s => s.Evolutions ?? new()).Select(e => e.Location).OfType<string>().ToHashSet(StringComparer.Ordinal));
 
     /// <summary>A place some Pokémon evolve at must be one an evolution of the data names, or nothing ever evolves there.</summary>
     internal static void EvolutionSites(List<Finding> found, string file, string name, IEnumerable<string>? sites)

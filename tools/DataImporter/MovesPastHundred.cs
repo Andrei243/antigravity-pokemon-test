@@ -41,15 +41,7 @@ public static class MovesPastHundred
     /// <summary>Appends the moves to every learnset; returns how many species learn how many (for the importer's report).</summary>
     public static SortedDictionary<int, int> Append(List<PokemonSpecies> species, IReadOnlyList<MoveData> moves)
     {
-        var kits = moves.Where(IsOurs).GroupBy(m => m.Type).ToDictionary(g => g.Key, g =>
-        {
-            var four = g.OrderBy(m => m.Id).ToList();
-            if (four.Count != 4 || four[0].Category != MoveCategory.Status || four[1].Category != MoveCategory.Physical || four[2].Category != MoveCategory.Special)
-                throw new InvalidDataException($"The moves past 100 of the {g.Key} type are not a status move, a physical and a special attack and an extra");
-            return new Kit(four[0], four[1], four[2], four[3]);
-        });
-        if (kits.Count != 18) throw new InvalidDataException($"Moves past 100 for {kits.Count} types, not 18");
-
+        var kits = Kits(moves);
         var counts = new SortedDictionary<int, int>();
         foreach (var s in species)
         {
@@ -74,6 +66,22 @@ public static class MovesPastHundred
         }
         return counts;
     }
+
+    private static Dictionary<PokemonType, Kit> Kits(IEnumerable<MoveData> moves)
+    {
+        var kits = moves.Where(IsOurs).GroupBy(m => m.Type).ToDictionary(g => g.Key, g =>
+        {
+            var four = g.OrderBy(m => m.Id).ToList();
+            if (four.Count != 4 || four[0].Category != MoveCategory.Status || four[1].Category != MoveCategory.Physical || four[2].Category != MoveCategory.Special)
+                throw new InvalidDataException($"The moves past 100 of the {g.Key} type are not a status move, a physical and a special attack and an extra");
+            return new Kit(four[0], four[1], four[2], four[3]);
+        });
+        if (kits.Count != 18) throw new InvalidDataException($"Moves past 100 for {kits.Count} types, not 18");
+        return kits;
+    }
+
+    /// <summary>The moves past 100 the rule gives a Pokémon of these types and stats, in the order it learns them (plan 03 · D14's tests ask it of the species of our own).</summary>
+    public static List<MoveData> For(List<PokemonType> types, StatSpread stats, IEnumerable<MoveData> moves) => LearnedBy(types, stats, Kits(moves));
 
     /// <summary>The moves a Pokémon of these types and stats learns past 100, in the order it learns them.</summary>
     private static List<MoveData> LearnedBy(List<PokemonType> types, StatSpread stats, Dictionary<PokemonType, Kit> kits)

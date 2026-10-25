@@ -10960,5 +10960,327 @@
       "It is a sly little thing that can control others with the mochi it makes. Those who eat its sweets fall under its spell.",
       "Pecharunt hides in a ball and hums while it plots. Its poison is a sweet that is hard to resist."
     ]
+  },
+  "Ratchisel": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its front teeth have hardened into chisels of steel that never stop growing. It gnaws through pipes, fence posts and even stone walls to keep them worn down.",
+      "Ratchisel lives in warrens under old towns and farmyards. A colony can hollow out the ground beneath a barn in a single season, so farmers keep a careful watch."
+    ]
+  },
+  "Lancerow": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "Its beak has grown as long as a spear. Lancerow circles high above the cliffs, then folds its wings and drops onto prey with a single precise strike.",
+      "The ring of hard shell around the base of its beak takes the shock of every dive. Old birds bear scratches from countless battles on it."
+    ]
+  },
+  "Najarok": {
+    "habitat": "Grassland",
+    "entries": [
+      "The pattern on its hood has opened its eyes. While Najarok looks one way, the face on its hood keeps watch in the other, so nothing can sneak up on it.",
+      "When it rears up and spreads its crown-shaped frill, both faces glare at once. Most foes flee before it ever has to strike."
+    ]
+  },
+  "Sandspire": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "The quills on its back have turned to sandstone spines as hard as a rampart. It shelters in dry canyons and digs with claws like picks.",
+      "Sandspire curls up and rolls down slopes when it is in a hurry. Its spines grind against the rocks and throw up a trail of dust behind it."
+    ]
+  },
+  "Kitsunox": {
+    "habitat": "Forest",
+    "entries": [
+      "Legends say a Ninetales that has lived for centuries becomes Kitsunox. Pale violet flames burn at the tips of its nine tails without giving off any heat.",
+      "It appears in old forests on moonlit nights. Those who show it kindness are guided home, while those who mock it wander lost until dawn."
+    ]
+  },
+  "Cordyhusk": {
+    "habitat": "Forest",
+    "entries": [
+      "The mushroom has taken over its host completely and now walks the hollow shell. Pale threads trail from the rim of its cap and spread spores wherever it goes.",
+      "Spots on its broad cap glow faintly in the dark. Cordyhusk gathers in the deepest parts of damp forests, where it sways slowly among fallen logs."
+    ]
+  },
+  "Somnimoth": {
+    "habitat": "Forest",
+    "entries": [
+      "The scales it sheds from its long-tailed wings carry strange dreams. Anyone who breathes them in falls into a deep and pleasant sleep.",
+      "It reads the thoughts of other creatures through its large compound eyes. Somnimoth flies only at night and is drawn to the light of the moon."
+    ]
+  },
+  "Molemount": {
+    "habitat": "Cave",
+    "entries": [
+      "Five heads now rise from a mound of earth that finally shows itself. Nobody has ever seen what lies underneath the mound, and researchers argue over it.",
+      "When Molemount tunnels beneath a field, the ground swells and rolls like a wave. Boulders stuck in its slopes are pushed up from far below."
+    ]
+  },
+  "Regalynx": {
+    "habitat": "Urban",
+    "entries": [
+      "The gem on its brow has split into a crown of three. It walks with its head held high and expects others to step aside for it.",
+      "Regalynx collects shiny coins and keeps them in a hidden hoard. Households lucky enough to win its favor often find their purses full by the end of the year."
+    ]
+  },
+  "Psyduke": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The gem on its forehead has become a glowing third eye. Through it Psyduke can sense what will happen moments before it does.",
+      "It meditates while floating on calm lakes. The headaches that troubled its line long ago are gone, replaced by a clear and powerful focus."
+    ]
+  },
+  "Kirinine": {
+    "habitat": "Mountain",
+    "entries": [
+      "It is the beast of legend that old scrolls describe. Its long mane flows like a festival banner and two swept-back horns crown its brow.",
+      "Kirinine is said to appear only before a just and faithful trainer. It crosses mountain passes faster than the wind and leaves embers glowing in its tracks."
+    ]
+  },
+  "Medusarch": {
+    "habitat": "Sea",
+    "entries": [
+      "A tall sail rises from its float and carries it across the open ocean. Whole colonies drift together and paint the waves pale violet.",
+      "Its trailing tentacles stretch for many meters below the surface. Fishing boats change course when they spot a gathering of Medusarch ahead."
+    ]
+  },
+  "Solarion": {
+    "habitat": "Grassland",
+    "entries": [
+      "Two wings of flame spread from its shoulders, and it runs until it lifts into the sky. It races the sun from dawn until dusk.",
+      "Solarion is seen only on clear days. Its spiral horn glows white hot, and its hooves leave scorched prints where it touches down."
+    ]
+  },
+  "Slowmantle": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "The Shellder on its tail has grown into a spiral shell that covers its back. Slowmantle sits inside it and rarely bothers to come out.",
+      "A pearl gleams at the mouth of its shell. It drifts in and out of sleep for days on end, yet seems to know everything happening nearby."
+    ]
+  },
+  "Porrigard": {
+    "habitat": "Grassland",
+    "entries": [
+      "The leek it carries has grown into a long staff tipped with green leaves. It guards the fields where its kind gathers and drives off any intruder.",
+      "Porrigard wears a cape of white feathers at its shoulders. Young Farfetch'd follow it everywhere and learn to fight by watching its every swing."
+    ]
+  },
+  "Tripluma": {
+    "habitat": "Grassland",
+    "entries": [
+      "Each of its three heads wears a crest of plumes in its own color. They raise and shake them to show their mood to the herd.",
+      "When it spreads its fan of tail feathers, all three heads cry out together. The display can be heard across an entire valley."
+    ]
+  },
+  "Glacitusk": {
+    "habitat": "Sea",
+    "entries": [
+      "A long spiral tusk grows from its brow and cracks through sea ice with ease. It hauls its heavy body onto the floes to rest.",
+      "Thick fur at its neck keeps out the coldest winds. Glacitusk travels in small pods and calls to the others with deep, booming barks."
+    ]
+  },
+  "Sludgemire": {
+    "habitat": "Urban",
+    "entries": [
+      "Its body has thickened into a dark, glossy tar. Old bones and stones lie half sunk in it, and bubbles burst slowly on its surface.",
+      "Where Sludgemire rests, the ground beneath turns to a bog of sticky poison. Nothing grows there again for a long time afterward."
+    ]
+  },
+  "Clamspire": {
+    "habitat": "Sea",
+    "entries": [
+      "Its shell has grown into a spire of many shells fused together like a reef. Small sea creatures make their homes on its slopes.",
+      "A second, smaller face peers from a side shell. Nobody knows whether it is part of Clamspire or a guest that moved in and never left."
+    ]
+  },
+  "Mesmeryx": {
+    "habitat": "Grassland",
+    "entries": [
+      "Three coins circle on a fine chain around its hand. Anyone who follows them with their eyes for long falls under its spell.",
+      "Mesmeryx wanders towns after dark and feeds on the dreams of sleepers. People wake the next morning remembering nothing at all."
+    ]
+  },
+  "Pincerex": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its great claw has tempered into steel. One squeeze is enough to crush a boulder, and it uses the claw like a battering ram.",
+      "Pincerex rules the rocky shores it lives on. Other crabs give way when they see the crown of spikes on its head."
+    ]
+  },
+  "Dynamorb": {
+    "habitat": "Mountain",
+    "entries": [
+      "A band of steel now circles its body, and arcs of current spin around it. It was first seen near a strong magnetic field inside a mountain.",
+      "Dynamorb rolls at tremendous speed and crackles with electricity. Compasses spin wildly when it passes close by."
+    ]
+  },
+  "Palmagus": {
+    "habitat": "Forest",
+    "entries": [
+      "Two trunks rise from a single root, each crowned with leaves and heads. A fourth head grows low where the trunks join.",
+      "The heads argue all day about which way to walk. When they finally agree, Palmagus marches off with surprising speed."
+    ]
+  },
+  "Ossugard": {
+    "habitat": "Mountain",
+    "entries": [
+      "It carries a long bone staff topped with a skull. A pale blue flame burns in the eyes of its great horned helmet.",
+      "Ossugard watches over the resting places of its kind. It is said to guide lost spirits back to where they belong."
+    ]
+  },
+  "Savateur": {
+    "habitat": "Urban",
+    "entries": [
+      "Its legs have grown longer and springier than ever. It leaps high into the air and lands kick after kick without touching the ground.",
+      "Savateur wears a short cape of brown hide that flaps as it spins. It trains on rooftops and jumps from building to building."
+    ]
+  },
+  "Pugilord": {
+    "habitat": "Urban",
+    "entries": [
+      "Its gloves have hardened into steel gauntlets. Each punch lands with a ringing clang that can be heard across the arena.",
+      "Pugilord wears a gold belt at its waist as proof of its many victories. It bows to every opponent before the match begins."
+    ]
+  },
+  "Smoglom": {
+    "habitat": "Urban",
+    "entries": [
+      "A third ball of gas has joined the other two. Rings of fire burn along the seams where they meet, and smoke rises from vents on top.",
+      "The gas inside Smoglom is hot enough to ignite. It floats over factories and old dumps and grows larger whenever it feeds on fumes."
+    ]
+  },
+  "Matriroo": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its child has grown and now wears a helmet of its own. The two fight side by side, and the parent never lets the young one out of sight.",
+      "A family of Matriroo protects an entire grassland. Even large predators give their territory a wide berth."
+    ]
+  },
+  "Sabrefin": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its horn has grown into a blade as straight as a sword. It cuts through rapids and waterfalls with powerful strokes of its tail.",
+      "Sabrefin is admired for the elegant patterns on its scales. Anglers who hook one rarely manage to keep it on the line."
+    ]
+  },
+  "Stellamir": {
+    "habitat": "Sea",
+    "entries": [
+      "A third star turns slowly between its two, and a swirl of light glows in its core. It shines brightest on clear nights at sea.",
+      "Some say Stellamir fell from the night sky long ago. Sailors steer by the colors flashing from its gem."
+    ]
+  },
+  "Mimestro": {
+    "habitat": "Urban",
+    "entries": [
+      "It holds a pane of light between its floating hands and shapes it into walls, doors and stages. Its performances draw huge crowds.",
+      "Mimestro conducts its invisible orchestra with sweeping gestures. Its audience swears they can hear music that is not really there."
+    ]
+  },
+  "Aurorelle": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its long pale hair glows with the shifting bands of an aurora. Its gown of ice crystals chimes softly when it moves.",
+      "Aurorelle sings on the coldest nights of the year. When its song reaches the sky, northern lights ripple across the stars."
+    ]
+  },
+  "Mandibron": {
+    "habitat": "Forest",
+    "entries": [
+      "Its dark horns are edged with red teeth and snap shut like a guillotine. It hunts at night and grips its prey with crushing force.",
+      "Mandibron and the great beetles of the forest are bitter rivals. Their clashes can be heard echoing among the trees at night."
+    ]
+  },
+  "Bovarch": {
+    "habitat": "Grassland",
+    "entries": [
+      "It leads the herd from the front. When it lowers its broad, ringed horns and charges, the earth shakes beneath its hooves.",
+      "Bovarch settles arguments within the herd with a single bellow. Younger bulls follow it without question."
+    ]
+  },
+  "Typhonarch": {
+    "habitat": "Sea",
+    "entries": [
+      "It has grown two clawed forelegs and a great fan of fins. Typhonarch rides the storms that its own rage stirs up.",
+      "Whenever this furious dragon appears, heavy rain begins to fall. Ancient records describe whole coastlines changed by its anger."
+    ]
+  },
+  "Ferrisle": {
+    "habitat": "Sea",
+    "entries": [
+      "Its shell has spread into a wide deck topped with a crest of ice. It carries travelers across the sea and never lets one fall.",
+      "Small pines of ice grow on its back, and seabirds nest among them. Ferrisle sings to its passengers to keep them calm in rough waters."
+    ]
+  },
+  "Naiadeon": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "A flowing mane of fins trails behind it as it swims. Naiadeon can melt into the water so completely that it seems to vanish.",
+      "It appears only to trainers who have raised it with great care. Pale wave patterns ripple along its body when it is happy."
+    ]
+  },
+  "Fulgureon": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its spikes sweep back into white-tipped bolts. When it stands still, sparks dance from every one of them.",
+      "Fulgureon runs faster than the eye can follow. The air smells of rain and lightning wherever it has passed."
+    ]
+  },
+  "Pyreon": {
+    "habitat": "Grassland",
+    "entries": [
+      "Small flames dance at the tips of its thick ruff. Its body is so warm that snow melts away wherever it walks.",
+      "Pyreon curls up beside a trusted partner on cold nights. The heat it gives off is gentle and comforting, never harmful."
+    ]
+  },
+  "Ammonarch": {
+    "habitat": "Sea",
+    "entries": [
+      "Its spiral shell is huge and ridged, with spikes along the outer whorl. Fossils show its kind once ruled the ancient seas.",
+      "Ammonarch drifts in the deep and snares prey with many long tentacles. It can draw itself completely into its shell when threatened."
+    ]
+  },
+  "Eurypterox": {
+    "habitat": "Sea",
+    "entries": [
+      "A jointed tail ending in a flat paddle drives it through the water. Its huge scythes and second pair of claws make it a fearsome hunter.",
+      "Eurypterox stalks the sea floor at night. Scientists believe its ancestors were among the largest hunters of the prehistoric oceans."
+    ]
+  },
+  "Azhdarch": {
+    "habitat": "Mountain",
+    "entries": [
+      "A great crest crowns its skull, and its wings stretch wider than a house. It soars over mountain peaks on rising currents of air.",
+      "Amber stones run in a ridge down its back. It is said Azhdarch once ruled the skies before any bird existed."
+    ]
+  },
+  "Dozemount": {
+    "habitat": "Forest",
+    "entries": [
+      "It has slept so long that a forest has grown on its back. Small trees and flowers sprout from its mossy mantle, and birds nest on its head.",
+      "Dozemount wakes only a few times a year to eat. Travelers have been known to camp on it, thinking it was a hill."
+    ]
+  },
+  "Glacirune": {
+    "habitat": "Rare",
+    "entries": [
+      "A veil of aurora streams from its tail, and ice crystals glitter on each wingtip. Wherever it lands, the first frost of winter follows within a day.",
+      "Glacirune appears only to those who have braved the coldest mountains. Its cry can freeze a lake solid in an instant."
+    ]
+  },
+  "Fulguris": {
+    "habitat": "Rare",
+    "entries": [
+      "A crown of storm cloud gathers around its head. Lightning flashes from its jagged feathers whenever it flaps its wings.",
+      "Fulguris brings thunderstorms that last for days. Old tales say it nests in the eye of the greatest storms."
+    ]
+  },
+  "Pyrevant": {
+    "habitat": "Rare",
+    "entries": [
+      "Its fire has turned white at the core, and a halo of embers crowns its head. Three long streamers of flame trail from its tail.",
+      "Legends say Pyrevant is reborn from its own ashes. It is seen only once in a lifetime, heralding the start of spring."
+    ]
   }
 }

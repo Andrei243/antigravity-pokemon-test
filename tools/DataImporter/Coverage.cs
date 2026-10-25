@@ -219,8 +219,10 @@ public static class Coverage
                  $"{genAbilities.Count} | {genAbilities.Count(a => implementedAbilities.Contains(a.Name))} |");
         }
         var ourMoves = standard.Where(m => m.Generation == 0).ToList();
-        if (ourMoves.Count > 0)
-            Line($"| Ours | 0 | {ourMoves.Count} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Full)} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Partial)} | " +
+        // Plan 03 · D14's species of our own are generation 0 too
+        int ourSpecies = species.Count(s => s.Generation == 0);
+        if (ourMoves.Count > 0 || ourSpecies > 0)
+            Line($"| Ours | {ourSpecies} | {ourMoves.Count} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Full)} | {ourMoves.Count(m => m.Support == MoveEffectSupport.Partial)} | " +
                  $"{ourMoves.Count(m => m.Support == MoveEffectSupport.None)} | 0 | 0 |");
         Line($"| All | {species.Count} | {standard.Count} | {standard.Count(m => m.Support == MoveEffectSupport.Full)} | " +
              $"{standard.Count(m => m.Support == MoveEffectSupport.Partial)} | {standard.Count(m => m.Support == MoveEffectSupport.None)} | " +

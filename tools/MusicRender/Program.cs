@@ -152,7 +152,7 @@ if (args.Contains("--cries"))
     bool bad = false;
     bool all = args.Contains("--all"), modes = args.Contains("--modes");
     var names = filters.Count > 0 ? filters
-        : all ? PokemonDatabase.GetAll().OrderBy(sp => sp.DexNumber).SelectMany(sp => new[] { sp.Name }.Concat(sp.Forms?.Select(f => f.Name) ?? Enumerable.Empty<string>())).ToList()
+        : all ? PokemonDatabase.Everyone().OrderBy(sp => sp.DexNumber).SelectMany(sp => new[] { sp.Name }.Concat(sp.Forms?.Select(f => f.Name) ?? Enumerable.Empty<string>())).ToList()
         : new List<string> { "Turtwig", "Grotle", "Torterra", "Chimchar", "Infernape", "Piplup", "Empoleon", "Starly", "Bidoof", "Shinx", "Pikachu",
             "Geodude", "Onix", "Zubat", "Gastly", "Magikarp", "Gyarados", "Happiny", "Snorlax", "Wailord", "Unown", "Dialga", "Palkia", "Giratina", "Giratina-Origin", "Arceus" };
     foreach (var name in names)

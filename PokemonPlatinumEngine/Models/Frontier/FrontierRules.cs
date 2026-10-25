@@ -32,8 +32,14 @@ public static class FrontierRules
     /// <summary>The level the Battle Tower's battles are fought at: its trainers' Pokémon are made at it, and a Pokémon of the player's above it is brought down to it.</summary>
     public const int Level = 50;
 
-    /// <summary>An Egg, or a species on the banlist, enters nothing (<c>sub_02049EC4</c>, <c>Pokemon_IsBannedFromBattleFrontier</c>).</summary>
-    public static bool MayEnter(Pokemon pokemon) => !pokemon.IsEgg && !FrontierDatabase.IsBanned(pokemon.Species.Name);
+    /// <summary>
+    /// An Egg, or a species on the banlist, enters nothing (<c>sub_02049EC4</c>, <c>Pokemon_IsBannedFromBattleFrontier</c>);
+    /// nor does a species of our own that evolves from a legendary or a mythical one (plan 03 · D14, the batches' default).
+    /// </summary>
+    public static bool MayEnter(Pokemon pokemon) => !pokemon.IsEgg && !FrontierDatabase.IsBanned(pokemon.Species.Name) && !IsBannedOfOurs(pokemon.Species);
+
+    /// <summary>A species of our own on the banlist: a legendary's or a mythical's evolution.</summary>
+    public static bool IsBannedOfOurs(PokemonSpecies species) => species.IsOurs && (species.Legendary || species.Mythical);
 
     /// <summary>
     /// Whether the team holds <paramref name="needed"/> Pokémon that could go in together (<c>sub_02049EC4</c>):

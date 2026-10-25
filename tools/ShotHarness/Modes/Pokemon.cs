@@ -71,7 +71,7 @@ partial class Harness
         // Generated models (plan 03 · D5): the first species of each body kind, in Pokédex order, that isn't hand-built,
         // turned round
         var firstOfKind = new Dictionary<string, string>();
-        foreach (var sp in named.Length > 0 ? Array.Empty<string>() : PokemonDatabase.GetAll().OrderBy(s => s.DexNumber).Select(s => s.Name))
+        foreach (var sp in named.Length > 0 ? Array.Empty<string>() : PokemonDatabase.Everyone().OrderBy(s => s.DexNumber).Select(s => s.Name))
         {
             if (handBuilt.Contains(sp, StringComparer.OrdinalIgnoreCase) || PokemonGenomes.For(sp) is not { } genome) continue;
             string kind = genome.Kind.ToString();
