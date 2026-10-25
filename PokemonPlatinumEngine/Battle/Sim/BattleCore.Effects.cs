@@ -314,7 +314,7 @@ public sealed partial class BattleCore
         {
             Does = (b, use) =>
             {
-                if (b.IsTrainerBattle || b.IsDouble || b.TrapOn(use.User, forRunning: true) != null)
+                if (b.IsTrainerBattle || !b.IsSingle || b.TrapOn(use.User, forRunning: true) != null)
                 {
                     b.Fails();
                     return;
@@ -1043,7 +1043,7 @@ public sealed partial class BattleCore
                 Say(Text.Of("battle.anchoredItselfWithIts", ("target", t.Name)));
                 return false;
             }
-            if (!IsTrainerBattle && IsDouble) return Fails();
+            if (!IsTrainerBattle && !IsSingle) return Fails();
 
             int mine = user.Pokemon!.Level, theirs = t.Pokemon!.Level;
             bool moves = mine >= theirs || (rng.Roll(RollKind.Whirlwind, 256) * (mine + theirs) >> 8) + 1 > theirs / 4;

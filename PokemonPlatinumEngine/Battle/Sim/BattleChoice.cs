@@ -89,9 +89,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
 /// (<see cref="BattleCore.Replay"/>) it gives the same log. An inverse battle (plan 14 · B1) says so, since the
 /// same seed and answers under the other chart are another battle: a record written before the flag reads as the
 /// plain chart's. So does a battle that offered Battle Style Shift's switch (plan 08 · P1), whose answers include
-/// each offer's: a record written before the flag reads as a battle that offered none.
+/// each offer's: a record written before the flag reads as a battle that offered none. The core's record says the
+/// format the battle was fought in (plan 14 · B3: a horde's places draw numbers a single's don't); a record that
+/// doesn't say (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
 /// </summary>
-public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal, int RunLevelCap = 0);
+public sealed record BattleRecord(uint Seed, IReadOnlyList<IReadOnlyList<BattleChoice>> Answers, bool Inverse = false, bool OffersSwitch = false, Difficulty Difficulty = Difficulty.Normal, int RunLevelCap = 0,
+    BattleFormat? Format = null);
 
 /// <summary>What the core is waiting for before it can go on.</summary>
 public abstract record BattleRequest;

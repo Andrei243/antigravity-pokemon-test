@@ -387,7 +387,7 @@ public sealed partial class BattleCore
                 if (HasReplacement(t)) DragOut(t);
                 continue;
             }
-            if (IsDouble || user.Pokemon!.Level < t.Pokemon!.Level) continue;
+            if (!IsSingle || user.Pokemon!.Level < t.Pokemon!.Level) continue;
             Say(Text.Of("battle.wasDrivenOff", ("target", t.Name)));
             End(BattleResult.PlayerRan);
         }

@@ -592,7 +592,7 @@ internal sealed class TurnFlags
     /// What moves took from it this turn, by the place they came from (the original's turn flags): what Counter,
     /// Mirror Coat, Metal Burst and Revenge give back. A hit into its Substitute isn't counted.
     /// </summary>
-    public int[] PhysicalFrom = new int[4], SpecialFrom = new int[4];
+    public int[] PhysicalFrom = new int[Sim.Place.MaxNumber], SpecialFrom = new int[Sim.Place.MaxNumber];
     public Place? LastPhysicalFrom, LastSpecialFrom, LastHitFrom;
     public int LastDamage;
 

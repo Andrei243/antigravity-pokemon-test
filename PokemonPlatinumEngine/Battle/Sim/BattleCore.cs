@@ -158,7 +158,10 @@ public sealed partial class BattleCore : IBattleContext
     public bool IsTrainerBattle => Trainers.Count > 0;
     public bool IsDouble => Format == BattleFormat.Double;
 
-    /// <summary>The places on each side: one each in a single battle, two in a double.</summary>
+    /// <summary>One against one: no side has a second place (what a wild battle with others on the field isn't, a horde's included).</summary>
+    public bool IsSingle => Format == BattleFormat.Single;
+
+    /// <summary>The places on each side: one each in a single battle, two in a double, one against up to five in a horde.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
     public IEnumerable<Battler> AllBattlers => PlayerSlots.Concat(EnemySlots);
@@ -279,15 +282,17 @@ public sealed partial class BattleCore : IBattleContext
         SpecialBalls = setup.SpecialBalls;
         Partner = Kind is BattleKind.Safari or BattleKind.PalPark ? null : setup.Partner;
 
-        // A double battle needs two Pokémon able to fight on each side; a partner brings the player's second
-        bool foesForTwo = Trainers.Count == 0 ? WildPokemon.Count >= 2 : Trainers.Count >= 2 || Trainers[0].Party.Members.Count(p => !p.IsFainted) >= 2;
-        bool canDouble = Partner != null
-            ? PlayerParty.Members.Any(p => !p.IsFainted) && Partner.Party.Members.Any(p => !p.IsFainted) && foesForTwo
-            : PlayerParty.Members.Count(p => !p.IsFainted) >= 2 && foesForTwo;
-        if (Partner != null && !canDouble) Partner = null;
-        Format = (setup.Format == BattleFormat.Double || Partner != null) && canDouble && Kind is not (BattleKind.Safari or BattleKind.PalPark)
-            ? BattleFormat.Double : BattleFormat.Single;
-        int slots = IsDouble ? 2 : 1;
+        // A double battle needs two Pokémon able to fight on each side; a partner brings the player's second. A horde
+        // needs the rules that have it and wild Pokémon enough (plan 14 · B3): what can't be had falls back
+        Format = BattleFormats.FallBack(setup.Format, PlayerParty.Members.Count(p => !p.IsFainted), Partner?.Party.Members.Count(p => !p.IsFainted) ?? 0,
+            Partner != null, Trainers.Count, Trainers.Count == 0 ? 0 : Trainers[0].Party.Members.Count(p => !p.IsFainted), WildPokemon.Count,
+            Kind, Rules, out bool partnerStays);
+        if (!partnerStays) Partner = null;
+        int slots = Format.PlacesOf(BattleSide.Player);
+        // A horde of fewer than five is fought with as many places as it has Pokémon
+        int foeSlots = IsHorde ? Math.Min(Format.PlacesOf(BattleSide.Enemy), WildPokemon.Count) : Format.PlacesOf(BattleSide.Enemy);
+        // Every place draws a number for the turn: the original's four, or a number for each a horde can have
+        speedRolls = new int[IsHorde ? Place.MaxNumber : 4];
 
         PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i)
         {
@@ -296,7 +301,7 @@ public sealed partial class BattleCore : IBattleContext
             Field = Field
         }).ToList();
         foreach (var p in PlayerParty.Members) Evolution.BeginBattle(p);
-        EnemySlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Enemy, i) { Field = Field }).ToList();
+        EnemySlots = Enumerable.Range(0, foeSlots).Select(i => new Battler(BattleSide.Enemy, i) { Field = Field }).ToList();
         Field.WeatherIgnored = () => AllBattlers.Any(b => b.IsActive && BattleEffects.Of(b).Any(e => e.IgnoresWeather));
         Field.MudSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.MudSport);
         Field.WaterSport = () => AllBattlers.Any(b => b.IsActive && b.Volatile.WaterSport);
@@ -310,7 +315,7 @@ public sealed partial class BattleCore : IBattleContext
         if (Partner != null) leads.Add(Partner.Party.Members.First(p => !p.IsFainted));
         for (int i = 0; i < leads.Count; i++) PlayerSlots[i].Pokemon = leads[i];
 
-        for (int i = 0; i < slots; i++)
+        for (int i = 0; i < foeSlots; i++)
         {
             var place = EnemySlots[i];
             if (IsTrainerBattle)
@@ -388,7 +393,7 @@ public sealed partial class BattleCore : IBattleContext
     /// given from outside. Null when its numbers aren't a <see cref="BattleRandom"/>'s: nothing else comes out
     /// the same everywhere.
     /// </summary>
-    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0) : null;
+    public BattleRecord? Record => startedFrom is uint seed ? new BattleRecord(seed, answers.ToList(), Inverse, OffersSwitch, Difficulty, RunLevelCap ?? 0, Format) : null;
 
     /// <summary>
     /// Plays a record through. The battle must be new, between teams as they were when the recorded one began,
@@ -402,6 +407,7 @@ public sealed partial class BattleCore : IBattleContext
         if (OffersSwitch != record.OffersSwitch) throw new ArgumentException("A replay offers a switch where the recorded battle did (plan 08 · P1): Shift's as Shift's");
         if (Difficulty != record.Difficulty) throw new ArgumentException("A replay is fought under the record's own difficulty (plan 13 · V2): Easy's EXP as Easy's");
         if ((RunLevelCap ?? 0) != record.RunLevelCap) throw new ArgumentException("A replay is fought under the record's own level cap (plan 13 · V3): a capped battle's EXP as capped");
+        if (record.Format is { } format && format != Format) throw new ArgumentException("A replay is fought in the record's own format (plan 14 · B3): a horde's as a horde");
         Start();
         foreach (var answered in record.Answers) Submit(answered);
     }
@@ -597,7 +603,7 @@ public sealed partial class BattleCore : IBattleContext
                 // What it has as it is met shows from the start (plan 09 · L2)
                 foreach (var brought in Brought(b)) Emit(brought);
             }
-            Say(foes.Count > 1
+            Say(IsHorde ? HordeAppears(foes) : foes.Count > 1
                 ? Text.Of("battle.wildAppeared", ("pokemon", JoinNames(foes.Select(b => b.Pokemon!.DisplayName))))
                 : Text.Of("battle.aWildAppeared", ("pokemon", foes[0].Pokemon!.DisplayName)));
         }
@@ -825,7 +831,7 @@ public sealed partial class BattleCore : IBattleContext
         return order;
     }
 
-    private readonly int[] speedRolls = new int[4];
+    private readonly int[] speedRolls;
 
     /// <summary>Everyone from the fastest to the slowest, as last worked out (before each action and at the turn's end).</summary>
     private List<Battler> speedOrder = new();
@@ -1025,7 +1031,7 @@ public sealed partial class BattleCore : IBattleContext
         bool away = BattleEffects.Of(runner).Any(e => e.AlwaysEscapes);
         if (!away)
         {
-            var foe = EnemySlots.FirstOrDefault(b => b.IsActive) ?? EnemySlots[0];
+            var foe = RunAgainst();
             int speed = runner.Pokemon!.Speed, foeSpeed = foe.Pokemon?.Speed ?? 1;
             // The roll is only made for a Pokémon slower than the foe, as in the original
             away = speed >= foeSpeed || Formulas.Escapes(speed, foeSpeed, runAttempts, rng.Roll(RollKind.Escape, 256));
@@ -1171,7 +1177,8 @@ public sealed partial class BattleCore : IBattleContext
         }
         else
         {
-            Say(Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
+            Say(IsHorde ? Text.Of("battle.defeatedTheHorde", ("player", playerName))
+                : Text.Of("battle.defeatedTheWild", ("player", playerName), ("pokemon", JoinNames(EnemySlots.Where(b => b.Pokemon != null).Select(b => b.Pokemon!.DisplayName)))));
         }
         // What Pay Day scattered, up to the original's most
         if (PayDayMoney > 0) Say(Text.Of("battle.pickedUp", ("player", playerName), ("money", Math.Min(PayDayMoney, 65535))));

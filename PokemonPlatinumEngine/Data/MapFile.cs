@@ -353,7 +353,7 @@ public sealed class MapFile
             map.Add(BuildNpc(n, Name));
 
         foreach (var e in WildEncounters)
-            map.WildEncounters.Add(new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight });
+            map.WildEncounters.Add(new WildEncounterEntry { SpeciesName = e.SpeciesName, MinLevel = e.MinLevel, MaxLevel = e.MaxLevel, Weight = e.Weight, Count = e.Count });
 
         return map;
     }
