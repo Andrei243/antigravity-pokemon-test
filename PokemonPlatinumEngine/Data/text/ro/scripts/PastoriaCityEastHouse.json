@@ -23,7 +23,7 @@
         "That's a Heart Scale you have there! Shall I trade it for a move one of your Pokémon has let slip?"
       ],
       "text": [
-        ""
+        "Ai un Solz-Inimă acolo! Să-l schimb pe o mișcare pe care unul dintre Pokémonii tăi a uitat-o?"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Which Pokémon is it to be?"
       ],
       "text": [
-        ""
+        "Despre care Pokémon e vorba?"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "One, two, and... poof! {wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "Unu, doi și... pufff! {wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "{wearer} remembered {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} și-a amintit {thing}!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Come back whenever a Pokémon of yours wants a move back."
       ],
       "text": [
-        ""
+        "Vino oricând un Pokémon de-al tău vrea o mișcare înapoi."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "An Egg hasn't let anything slip yet. It hasn't learned a thing!"
       ],
       "text": [
-        ""
+        "Un Ou nu a uitat încă nimic. Nu a învățat nimic!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "That Pokémon has no move to remember. It knows everything it has learned so far."
       ],
       "text": [
-        ""
+        "Pokémonul ăsta nu are nicio mișcare de reamintit. Le știe pe toate cele învățate până acum."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "{wearer} did not remember {thing}. Your Heart Scale is safe with you."
       ],
       "text": [
-        ""
+        "{wearer} nu și-a amintit {thing}. Solzul-Inimă rămâne la tine."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "{forgotten} isn't a move that can be given up like that. {wearer} did not remember {thing}."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare la care se poate renunța așa. {wearer} nu și-a amintit {thing}."
       ]
     }
   ]

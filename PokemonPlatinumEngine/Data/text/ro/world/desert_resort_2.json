@@ -6,7 +6,7 @@
           "Archaeologist"
         ],
         "text": [
-          ""
+          "Arheolog"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Psychic"
         ],
         "text": [
-          ""
+          "Medium"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "The sand whispers to me... It says you will battle me. Who am I to argue with sand?"
         ],
         "text": [
-          ""
+          "Nisipul îmi șoptește... Spune că te vei lupta cu mine. Cine sunt eu să mă cert cu nisipul?"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "The sand didn't mention I'd lose."
         ],
         "text": [
-          ""
+          "Nisipul nu a pomenit că voi pierde."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "I've crossed deserts on three continents! This one's my favourite. Battle me in it!"
         ],
         "text": [
-          ""
+          "Am traversat deșerturi pe trei continente! Ăsta e preferatul meu. Luptă-te cu mine în el!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Four continents' worth of defeat, then."
         ],
         "text": [
-          ""
+          "Atunci, înfrângere pe patru continente."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Rangers keep an eye on the desert's Pokémon. And on visitors! Show me what you can do!"
         ],
         "text": [
-          ""
+          "Rangerii veghează asupra Pokémonilor din deșert. Și asupra vizitatorilor! Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "You and your Pokémon work well together. I'll note that down."
         ],
         "text": [
-          ""
+          "Tu și Pokémonii tăi vă înțelegeți bine. O să notez asta."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Lost in the sandstorm? No? Then you won't mind a battle!"
         ],
         "text": [
-          ""
+          "Pierdut în furtuna de nisip? Nu? Atunci nu te deranjează o luptă!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "You know your way around, all right."
         ],
         "text": [
-          ""
+          "Te descurci de minune pe aici."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistentă"
         ]
       },
       "before": {
@@ -128,7 +128,7 @@
           "I'm out here to help anyone the heat has got to. But first, a quick check-up battle!"
         ],
         "text": [
-          ""
+          "Sunt aici să ajut pe oricine l-a copleșit căldura. Dar mai întâi, o luptă rapidă de control!"
         ]
       },
       "after": {
@@ -136,7 +136,7 @@
           "Healthy as can be. You don't need me at all!"
         ],
         "text": [
-          ""
+          "Sănătos tun. N-ai nevoie deloc de mine!"
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Psychic"
         ],
         "text": [
-          ""
+          "Medium"
         ]
       },
       "before": {
@@ -154,7 +154,7 @@
           "I saw you coming in a vision! In the vision, I won. Let's make it come true!"
         ],
         "text": [
-          ""
+          "Te-am văzut venind într-o viziune! În viziune, am câștigat eu. Hai să o facem adevărată!"
         ]
       },
       "after": {
@@ -162,7 +162,7 @@
           "Visions can be wrong. Who knew?"
         ],
         "text": [
-          ""
+          "Viziunile pot greși. Cine ar fi crezut?"
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "before": {
@@ -180,7 +180,7 @@
           "Water's running low, but my fighting spirit's full! Let's go!"
         ],
         "text": [
-          ""
+          "Apa se termină, dar spiritul meu de luptă e plin! Hai!"
         ]
       },
       "after": {
@@ -188,7 +188,7 @@
           "Now both are running low..."
         ],
         "text": [
-          ""
+          "Acum se termină amândouă..."
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "before": {
@@ -206,7 +206,7 @@
           "Every step in this sand is training! Want to see how strong it made my Pokémon?"
         ],
         "text": [
-          ""
+          "Fiecare pas prin nisipul ăsta e antrenament! Vrei să vezi cât de puternici i-a făcut pe Pokémonii mei?"
         ]
       },
       "after": {
@@ -214,7 +214,7 @@
           "Back to the sand for more steps, then."
         ],
         "text": [
-          ""
+          "Înapoi în nisip pentru mai mulți pași, atunci."
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "before": {
@@ -232,7 +232,7 @@
           "My map says there's treasure out here! Help me look? After a battle, of course!"
         ],
         "text": [
-          ""
+          "Harta mea spune că e o comoară pe aici! Mă ajuți să o caut? După o luptă, desigur!"
         ]
       },
       "after": {
@@ -240,7 +240,7 @@
           "Maybe the treasure was the battle all along. ...No, I want real treasure."
         ],
         "text": [
-          ""
+          "Poate că adevărata comoară a fost lupta. ...Nu, vreau o comoară adevărată."
         ]
       }
     },
@@ -250,7 +250,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -258,7 +258,7 @@
           "I came all this way to train in the sand, and now I wish I'd brought a Water-type Pokémon to cool off with!"
         ],
         "text": [
-          ""
+          "Am venit până aici să mă antrenez în nisip și acum aș vrea să fi adus un Pokémon de tip Apă ca să mă răcoresc!"
         ]
       }
     },
@@ -268,7 +268,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "dialog": {
@@ -276,7 +276,7 @@
           "A whole sea of sand! I've heard of a desert in Hoenn where a tower appears and disappears. Nothing like that here... I hope."
         ],
         "text": [
-          ""
+          "O mare întreagă de nisip! Am auzit de un deșert din Hoenn unde apare și dispare un turn. Nimic de genul ăsta aici... sper."
         ]
       }
     },
@@ -286,7 +286,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "dialog": {
@@ -294,7 +294,7 @@
           "A buried castle in an endless desert. If there's no treasure here, there's no treasure anywhere!"
         ],
         "text": [
-          ""
+          "Un castel îngropat într-un deșert fără sfârșit. Dacă nu e comoară aici, nu e nicăieri!"
         ]
       }
     }

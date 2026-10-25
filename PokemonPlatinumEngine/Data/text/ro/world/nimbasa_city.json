@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Membru Plasma"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Mind your own business, kid!"
         ],
         "text": [
-          ""
+          "Ocupă-te de treburile tale, puştiule!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Membru Plasma"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We're just standing here. Is that a crime now?"
         ],
         "text": [
-          ""
+          "Stăm doar aici. E crimă acum?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Membru Plasma"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Team Plasma doesn't take orders from children!"
         ],
         "text": [
-          ""
+          "Echipa Plasma nu primește ordine de la copii!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Membru Plasma"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "What are you staring at?"
         ],
         "text": [
-          ""
+          "La ce te uiți?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Rosa"
         ],
         "text": [
-          ""
+          "Rosa"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Ingo"
         ],
         "text": [
-          ""
+          "Ingo"
         ]
       },
       "before": {
@@ -106,7 +106,7 @@
           "All aboard!"
         ],
         "text": [
-          ""
+          "Toată lumea la bord!"
         ]
       },
       "after": {
@@ -114,7 +114,7 @@
           "A splendid ride!"
         ],
         "text": [
-          ""
+          "Ce plimbare splendidă!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Emmet"
         ],
         "text": [
-          ""
+          "Emmet"
         ]
       },
       "before": {
@@ -132,7 +132,7 @@
           "Departing now!"
         ],
         "text": [
-          ""
+          "Plecăm acum!"
         ]
       },
       "after": {
@@ -140,7 +140,7 @@
           "End of the line!"
         ],
         "text": [
-          ""
+          "Capăt de linie!"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Athlete"
         ],
         "text": [
-          ""
+          "Atlet"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "Athletes and Pokémon playing side by side! See it for yourself at the Big Stadium and the Small Court."
         ],
         "text": [
-          ""
+          "Atleți și Pokémoni care joacă umăr la umăr! Vezi cu ochii tăi la Marele Stadion și la Terenul Mic."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Harlequin"
         ],
         "text": [
-          ""
+          "Arlechin"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "La la la! Nimbasa is full of places to train your Pokémon! Stadiums, subways and a Gym that sparkles!"
         ],
         "text": [
-          ""
+          "La la la! Nimbasa e plin de locuri unde îți poți antrena Pokémonii! Stadioane, metrouri și o Arenă care scânteiază!"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "I want to get to Anville Town. Which way's the Gear Station again? ...Oh, right in front of me."
         ],
         "text": [
-          ""
+          "Vreau să ajung în Orășelul Anville. Pe unde era Gara Gear? ...A, chiar în fața mea."
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "dialog": {
@@ -212,7 +212,7 @@
           "Some battles here need three Pokémon on each side! I've only got two partners so far..."
         ],
         "text": [
-          ""
+          "Unele lupte de aici cer trei Pokémoni de fiecare parte! Eu am doar doi parteneri până acum..."
         ]
       }
     },
@@ -222,7 +222,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -230,7 +230,7 @@
           "I was good all week, so I got to go to the amusement park! And Pansear came too!"
         ],
         "text": [
-          ""
+          "Am fost cuminte toată săptămâna, așa că am voie la parcul de distracții! Și Pansear a venit cu mine!"
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Pansear"
         ],
         "text": [
-          ""
+          "Pansear"
         ]
       },
       "dialog": {
@@ -248,7 +248,7 @@
           "Pansear: Sear-sear!"
         ],
         "text": [
-          ""
+          "Pansear: Sear-sear!"
         ]
       }
     },
@@ -258,7 +258,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemene"
         ]
       },
       "dialog": {
@@ -266,7 +266,7 @@
           "The roller coaster went whoosh, whoosh! Just like Quick Attack!"
         ],
         "text": [
-          ""
+          "Roller coaster-ul a făcut vâjjj, vâjjj! Exact ca Atac Rapid!"
         ]
       }
     },
@@ -276,7 +276,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfan"
         ]
       },
       "dialog": {
@@ -284,7 +284,7 @@
           "Nimbasa's Gym Leader, Elesa, is a fashion model! I'd love to see her walk the runway!"
         ],
         "text": [
-          ""
+          "Liderul Arenei din Nimbasa, Elesa, e model! Aș vrea să o văd defilând pe podium!"
         ]
       }
     },
@@ -294,7 +294,7 @@
           "Nate"
         ],
         "text": [
-          ""
+          "Nate"
         ]
       }
     }
@@ -305,7 +305,7 @@
         "Nimbasa City\nThe city that shines like a lightning flash!"
       ],
       "text": [
-        ""
+        "Orașul Nimbasa\nOrașul care strălucește ca un fulger!"
       ]
     },
     "2": {
@@ -313,7 +313,7 @@
         "Big Stadium\nBaseball, football and soccer"
       ],
       "text": [
-        ""
+        "Marele Stadion\nBaseball, fotbal american și fotbal"
       ]
     },
     "3": {
@@ -321,7 +321,7 @@
         "Small Court\nTennis and basketball"
       ],
       "text": [
-        ""
+        "Terenul Mic\nTenis și baschet"
       ]
     },
     "4": {
@@ -329,7 +329,7 @@
         "Battle Subway\nBattles on board!"
       ],
       "text": [
-        ""
+        "Metroul de Luptă\nLupte la bord!"
       ]
     },
     "5": {
@@ -337,7 +337,7 @@
         "Musical Theater\nProps, music, dancing and dazzle!"
       ],
       "text": [
-        ""
+        "Teatrul Muzical\nAccesorii, muzică, dans și strălucire!"
       ]
     },
     "6": {
@@ -345,7 +345,7 @@
         "Trainer Tips\nGames run at set times at the Big Stadium and the Small Court. You might battle a star athlete!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nJocurile au loc la ore fixe la Marele Stadion și la Terenul Mic. Poate te lupți cu un atlet vedetă!"
       ]
     },
     "10": {
@@ -353,7 +353,7 @@
         "Trainer Tips\nThe Musical Theater always wants new stars. Take part again and again for wonderful Props!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nTeatrul Muzical caută mereu vedete noi. Participă iar și iar pentru Accesorii minunate!"
       ]
     },
     "11": {
@@ -361,7 +361,7 @@
         "Battle Institute\nTest your skills as a Trainer!"
       ],
       "text": [
-        ""
+        "Institutul de Luptă\nÎți testezi talentul de Antrenor!"
       ]
     }
   }

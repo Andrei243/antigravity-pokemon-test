@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeie"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "We moved in because they said the whole road would be built up soon. Still waiting!"
         ],
         "text": [
-          ""
+          "Ne-am mutat aici fiindcă ni s-a spus că tot drumul va fi construit curând. Încă așteptăm!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbat"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "With the works never finished, those rowdy types hang about outside. Mind how you go."
         ],
         "text": [
-          ""
+          "Cum lucrările nu se mai termină, zgomotoșii ăia stau pe afară. Ai grijă pe unde calci."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fată"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I like living here! Castelia's to the south and Nimbasa's to the north. Shopping or fun, you pick!"
         ],
         "text": [
-          ""
+          "Îmi place să locuiesc aici! Castelia e la sud, iar Nimbasa la nord. Cumpărături sau distracție, alege!"
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! I got every Badge too, just like you. I came all this way to tell you something."
       ],
       "text": [
-        ""
+        "{player}! Am câștigat și eu toate Insignele, ca tine. Am venit până aici ca să-ți spun ceva."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I'm not the boy who couldn't even catch a Pokémon any more. I've trained hard with my partners."
       ],
       "text": [
-        ""
+        "Nu mai sunt copilul care nici măcar nu putea prinde un Pokémon. M-am antrenat din greu cu partenerii mei."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "So this time I won't lose. Not to anyone, not even to you!"
       ],
       "text": [
-        ""
+        "Așa că de data asta nu voi pierde. Față de nimeni, nici măcar față de tine!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I lost again... But it doesn't feel the same as the first time. I gave it everything I had."
       ],
       "text": [
-        ""
+        "Am pierdut din nou... Dar nu e ca prima dată. Am dat tot ce am avut."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "You go on ahead, {player}. I'm going to rest here a little, and then I'll follow you to the League!"
       ],
       "text": [
-        ""
+        "Mergi înainte, {player}. Mă odihnesc puțin aici și apoi te urmez la Ligă!"
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "You go on ahead, {player}. I'll follow you to the League once I've rested!"
       ],
       "text": [
-        ""
+        "Mergi înainte, {player}. Te urmez la Ligă după ce mă odihnesc!"
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "{player}! I heard you became the Champion. Congratulations! I knew you would."
       ],
       "text": [
-        ""
+        "{player}! Am auzit că ai devenit Campion. Felicitări! Știam că vei reuși."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "I've been training here ever since, so I could battle the Champion. Will you show me what that's like?"
       ],
       "text": [
-        ""
+        "M-am antrenat aici de atunci, ca să pot lupta cu Campionul. Îmi arăți cum e?"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Wow... So that's the strength of a Champion. I've still got a long way to go."
       ],
       "text": [
-        ""
+        "Uau... Deci asta e puterea unui Campion. Mai am mult de mers."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "I'll keep training on Victory Road. One day I'll catch up with you, {player}. Just you wait!"
       ],
       "text": [
-        ""
+        "Voi continua să mă antrenez pe Drumul Victoriei. Într-o zi te voi ajunge din urmă, {player}. Să vezi tu!"
       ]
     }
   ]

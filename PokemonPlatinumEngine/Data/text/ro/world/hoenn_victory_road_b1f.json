@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Samuel"
         ],
         "text": [
-          ""
+          "Samuel"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Cooltrainer Samuel: You moved those boulders to get here? Then you can move this battle along too!"
         ],
         "text": [
-          ""
+          "Antrenor As Samuel: Ai mutat bolovanii ăia ca să ajungi aici? Atunci poți și să împingi lupta asta înainte!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Cooltrainer Samuel: I've been moved aside like a boulder."
         ],
         "text": [
-          ""
+          "Antrenor As Samuel: M-ai dat la o parte ca pe un bolovan."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Shannon"
         ],
         "text": [
-          ""
+          "Shannon"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Cooltrainer Shannon: It's so dark and quiet down here. A battle will liven it up!"
         ],
         "text": [
-          ""
+          "Antrenoare As Shannon: E atât de întuneric și liniște aici jos. O luptă o să mai animeze lucrurile!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Cooltrainer Shannon: Lively, all right. Too lively for me."
         ],
         "text": [
-          ""
+          "Antrenoare As Shannon: Animat, într-adevăr. Prea animat pentru mine."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Michelle"
         ],
         "text": [
-          ""
+          "Michelle"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Cooltrainer Michelle: I've been waiting for a challenger who could get this far. Don't disappoint me!"
         ],
         "text": [
-          ""
+          "Antrenoare As Michelle: Aștept un provocator care să ajungă până aici. Nu mă dezamăgi!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Cooltrainer Michelle: Not disappointed at all. Just beaten."
         ],
         "text": [
-          ""
+          "Antrenoare As Michelle: Deloc dezamăgită. Doar învinsă."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Mitchell"
         ],
         "text": [
-          ""
+          "Mitchell"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Cooltrainer Mitchell: The League starts here, as far as I'm concerned. Get past me first!"
         ],
         "text": [
-          ""
+          "Antrenor As Mitchell: Pentru mine, Liga începe aici. Treci mai întâi de mine!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Cooltrainer Mitchell: Go on, then. The League's waiting."
         ],
         "text": [
-          ""
+          "Antrenor As Mitchell: Mergi, atunci. Liga te așteaptă."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Halle"
         ],
         "text": [
-          ""
+          "Halle"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Cooltrainer Halle: Every trainer here dreams of beating the Champion. Let's see whose dream is bigger!"
         ],
         "text": [
-          ""
+          "Antrenoare As Halle: Fiecare antrenor de aici visează să învingă Campionul. Să vedem al cui vis e mai mare!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Cooltrainer Halle: Yours, it seems."
         ],
         "text": [
-          ""
+          "Antrenoare As Halle: Al tău, se pare."
         ]
       }
     }
