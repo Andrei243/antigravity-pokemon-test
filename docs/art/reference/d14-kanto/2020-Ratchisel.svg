@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Ratchisel (No. 2020), Normal/Steel, from Raticate: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#b07a46}.bd{fill:#8a5c32}.gr{fill:#a4a2a6}.cr{fill:#f0dfbc}.m{fill:#c8d0dc}.md{fill:#8e98a8}.tl{fill:#d9a88a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="452" rx="200" ry="14" fill="#e6e7ee"/>
+<!-- tail with three steel rings -->
+<path d='M130 344 C90 350 56 330 44 292 C36 266 44 240 62 222' stroke='#1b1b2b' stroke-width='26' fill='none' stroke-linecap='round'/>
+<path d='M130 344 C90 350 56 330 44 292 C36 266 44 240 62 222' stroke='#d9a88a' stroke-width='16' fill='none' stroke-linecap='round'/>
+<path d='M118 346 l-4 -26 M70 334 l14 -20 M44 286 l24 -8' stroke='#1b1b2b' stroke-width='22' stroke-linecap='butt'/>
+<path d='M118 346 l-4 -26 M70 334 l14 -20 M44 286 l24 -8' stroke='#c8d0dc' stroke-width='12' stroke-linecap='butt'/>
+<path class='t' d='M50 250 l8 2 M96 340 l2 -8' stroke-width='2'/>
+<!-- far legs -->
+<path class="o bd" d="M180 380 L170 432 L196 436 L204 384 Z"/>
+<path class="o bd" d="M340 384 L346 432 L370 432 L364 382 Z"/>
+<!-- body: low and long, on all fours -->
+<path class="o b" d="M110 340 C110 290 170 250 260 250 C340 250 390 280 396 330 C400 380 350 404 260 406 C170 408 110 390 110 340 Z"/>
+<!-- grizzled grey back -->
+<path class="gr" d="M124 318 C140 280 190 258 260 256 C330 256 376 278 388 312 C370 296 330 282 260 282 C190 282 150 296 124 318 Z"/>
+<path class="t" d="M150 300 l10-8 M180 286 l10-8 M214 278 l10-8 M250 274 l10-8 M286 274 l10-8 M320 280 l10-8 M350 290 l10-8" stroke="#6e6c72" stroke-width="2.5"/>
+<path class="bd" d="M130 370 C170 396 330 398 390 352 C380 388 340 404 260 406 C190 407 146 396 130 370 Z"/>
+<!-- cream belly -->
+<path class="cr o" d="M200 392 C230 380 300 378 334 392 C310 404 230 406 200 392 Z"/>
+<!-- near legs -->
+<path class="o b" d="M150 360 C140 390 150 410 140 430 C126 434 128 446 144 446 L176 446 C182 424 178 400 186 376 Z"/>
+<path class="o b" d="M300 370 C304 396 296 416 302 432 C292 436 292 448 306 448 L336 448 C338 424 336 398 340 372 Z"/>
+<path class="t" d="M150 438 v8 M162 438 v8 M312 440 v8 M324 440 v8" stroke-width="2"/>
+<!-- head -->
+<path class="o b" d="M330 270 C320 230 350 200 390 202 C428 204 452 226 466 254 C474 270 470 284 452 290 C430 300 410 310 390 316 C356 324 336 300 330 270 Z"/>
+<path class="bd" d="M390 316 C410 310 430 300 452 290 C440 306 418 318 394 322 Z"/>
+<path class="cr" d="M420 270 C440 268 458 272 466 260 C470 278 460 290 440 292 C426 292 418 282 420 270 Z"/>
+<!-- ears -->
+<path class="o b" d="M352 214 C334 186 340 160 362 156 C380 160 384 190 374 210 Z"/>
+<path d="M356 204 C346 186 350 170 362 168 C372 172 372 190 366 204 Z" fill="#e6a090"/>
+<!-- steel chisel teeth, square at the ends -->
+<path class="o m" d="M432 284 L436 342 L470 342 L468 282 Z"/>
+<path class="md" d="M451 286 L452 340 L456 340 L456 284 Z"/>
+<path class="t" d="M436 330 h34" stroke-width="2"/>
+<!-- nose, eye, whiskers -->
+<ellipse cx="470" cy="254" rx="8" ry="6" fill="#1b1b2b"/>
+<path d="M398 236 c8-10 24-10 28 2 c-8 6-20 6-28-2z" fill="#1b1b2b"/>
+<circle cx="416" cy="236" r="3" fill="#e9452a"/>
+<path class="t" d="M448 268 l40-10 M448 276 l42 4 M446 284 l36 14" stroke-width="2"/>
+<!-- highlight -->
+<path d="M352 222 C366 210 384 206 400 208" stroke="#d4a070" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

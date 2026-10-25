@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Ammonarch (No. 2139), Rock/Water, from Omastar: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.s{fill:#e6cf9c}.sd{fill:#c2a36a}.sl{fill:#f7ead0}.b{fill:#6cbfe0}.bd{fill:#4a98bc}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="474" rx="190" ry="14" fill="#e6e7ee"/>
+<!-- tentacles, longer and more of them -->
+<g class="o b">
+<path d="M196 380 C160 410 120 420 84 410 C110 430 150 440 196 404 Z"/>
+<path d="M210 396 C190 430 160 456 120 462 C150 470 200 456 222 410 Z"/>
+<path d="M236 404 C230 436 214 460 190 472 C224 474 246 450 250 410 Z"/>
+<path d="M262 406 C268 438 286 460 312 470 C280 474 256 450 252 412 Z"/>
+<path d="M286 398 C306 430 336 452 376 458 C346 468 298 456 278 410 Z"/>
+<path d="M300 384 C336 406 376 412 412 402 C390 424 350 436 304 404 Z"/>
+<path d="M180 364 C140 380 100 376 70 360 C90 386 140 396 186 380 Z"/>
+<path d="M320 366 C360 382 404 378 434 360 C416 388 366 398 314 382 Z"/>
+</g>
+<g class="bd"><circle cx="110" cy="418" r="5"/><circle cx="150" cy="456" r="5"/><circle cx="204" cy="462" r="5"/><circle cx="296" cy="462" r="5"/><circle cx="350" cy="454" r="5"/><circle cx="392" cy="410" r="5"/></g>
+<!-- body under the shell -->
+<path class="o b" d="M170 360 C170 320 210 300 256 300 C302 300 342 320 342 360 C342 396 302 414 256 414 C210 414 170 396 170 360 Z"/>
+<path class="bd" d="M180 384 C210 408 300 410 334 382 C326 402 300 414 256 414 C214 414 188 402 180 384 Z"/>
+<!-- face -->
+<g class="o" fill="#ffffff"><ellipse cx="226" cy="356" rx="14" ry="16"/><ellipse cx="286" cy="356" rx="14" ry="16"/></g>
+<circle cx="230" cy="358" r="7" fill="#1b1b2b"/><circle cx="290" cy="358" r="7" fill="#1b1b2b"/>
+<path class="o" d="M244 384 l12 18 l12 -18 z" fill="#f2d84a"/>
+<!-- great ridged spiral shell -->
+<path class="o s" d="M256 320 C150 320 90 250 96 170 C102 90 170 40 256 40 C350 40 420 100 420 180 C420 260 360 320 256 320 Z"/>
+<path class="sd" d="M380 90 C414 130 424 190 404 240 C384 290 330 318 260 320 C330 300 380 250 390 190 C396 150 392 120 380 90 Z"/>
+<!-- spikes on the outer whorl -->
+<g class="o sl"><path d="M110 120 l-40 -26 l50 4 z"/><path d="M160 64 l-22 -44 l46 30 z"/><path d="M232 42 l0 -40 l30 38 z"/><path d="M318 48 l26 -38 l4 46 z"/><path d="M384 88 l44 -22 l-26 44 z"/><path d="M416 160 l46 -2 l-40 32 z"/><path d="M98 196 l-46 4 l42 26 z"/></g>
+<!-- the spiral whorls -->
+<path class="o sl" d="M266 254 C204 256 160 216 162 168 C164 122 206 92 256 92 C310 92 350 126 348 172 C346 218 310 252 266 254 Z"/>
+<path class="o s" d="M262 214 C226 214 204 192 206 166 C208 140 230 124 258 124 C288 124 308 144 306 168 C304 194 286 214 262 214 Z"/>
+<path class="o sl" d="M260 186 C244 186 236 178 238 166 C240 154 250 148 262 150 C276 152 282 162 278 172"/>
+<!-- ridges across the whorls -->
+<g class="t" stroke-width="3"><path d="M118 230 l40 -20 M106 160 l56 4 M150 90 l34 32 M226 52 l14 42 M318 56 l-12 40 M384 120 l-38 22 M398 210 l-50 -14 M346 286 l-40 -46 M256 316 l6 -60"/></g>
+<!-- highlight -->
+<path d="M130 120 C160 80 200 60 240 56" stroke="#fff6e0" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg>

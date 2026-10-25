@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Tripluma (No. 2085), Normal/Flying, from Dodrio: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#a8784a}.bd{fill:#805632}.k{fill:#2a2230}.bk{fill:#ecc890}.lg{fill:#e8b860}.rd{fill:#d8402e}.gd{fill:#f0c030}.wh{fill:#f6f6f2}.tf{fill:#5a4a6a}.tfl{fill:#8a74a0}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="476" rx="150" ry="13" fill="#e6e7ee"/>
+<!-- tail fan raised like a peacock's -->
+<g class="o tf">
+<path d="M170 330 L60 250 L80 300 Z"/><path d="M174 320 L80 200 L110 270 Z"/><path d="M180 312 L120 166 L140 250 Z"/><path d="M188 306 L170 150 L176 240 Z"/>
+</g>
+<g class="tfl"><circle cx="76" cy="266" r="8"/><circle cx="96" cy="222" r="8"/><circle cx="128" cy="190" r="8"/><circle cx="172" cy="174" r="8"/></g>
+<!-- thick legs -->
+<path class="o lg" d="M220 380 C214 410 216 430 210 452 L196 466 L240 466 L234 452 C240 430 244 410 244 384 Z"/>
+<path class="o lg" d="M280 382 C286 410 284 430 290 452 L278 466 L322 466 L310 452 C306 430 306 410 304 380 Z"/>
+<!-- body -->
+<path class="o b" d="M160 330 C156 280 200 250 256 250 C312 250 352 280 348 330 C344 378 304 400 256 400 C208 400 164 378 160 330 Z"/>
+<path class="bd" d="M330 280 C350 310 346 360 320 386 C306 396 280 400 256 400 C310 376 336 330 330 280 Z"/>
+<path class="t" d="M196 300 c30 10 80 10 116 0" stroke="#d8b080" stroke-width="5"/>
+<!-- three necks -->
+<path class="o k" d="M196 270 C180 220 170 170 150 130 L176 120 C196 160 210 210 220 262 Z"/>
+<path class="o k" d="M240 256 C238 200 244 150 252 100 L278 104 C272 150 266 200 264 256 Z"/>
+<path class="o k" d="M292 262 C310 210 330 170 356 136 L378 152 C352 184 334 224 316 270 Z"/>
+<!-- three heads -->
+<g class="o b"><ellipse cx="160" cy="114" rx="34" ry="30"/><ellipse cx="264" cy="86" rx="34" ry="30"/><ellipse cx="372" cy="132" rx="34" ry="30"/></g>
+<g class="o bk"><path d="M128 116 L84 126 L128 132 Z"/><path d="M296 86 L344 92 L296 100 Z"/><path d="M404 134 L452 142 L402 148 Z"/></g>
+<path class="t" d="M90 126 l38 -2 M340 92 l-40 0 M446 142 l-40 -4" stroke-width="2"/>
+<!-- eyes: angry, sleepy, cheerful -->
+<path d="M146 104 l18 6 l-16 4 z" fill="#1b1b2b"/>
+<path class="t" d="M262 80 c6 4 12 4 16 0" stroke-width="3.5"/>
+<circle cx="380" cy="124" r="6" fill="#1b1b2b"/><circle cx="382" cy="122" r="2" fill="#fff"/>
+<!-- crests of plumes, each its own colour -->
+<path class="o rd" d="M170 86 C164 56 176 34 196 26 C188 48 194 66 206 76 C186 70 180 80 170 86 Z"/>
+<path class="o rd" d="M158 88 C140 66 140 42 152 30 C154 52 164 66 176 74 Z"/>
+<path class="o gd" d="M268 58 C260 30 270 10 290 4 C284 24 290 42 302 52 C284 48 278 52 268 58 Z"/>
+<path class="o gd" d="M256 58 C240 40 240 20 250 8 C254 28 262 42 274 50 Z"/>
+<path class="o wh" d="M378 104 C376 76 390 56 410 52 C400 72 404 90 414 100 C396 96 388 98 378 104 Z"/>
+<path class="o wh" d="M366 106 C352 84 354 62 366 52 C370 72 376 86 388 96 Z"/>
+<!-- small wings -->
+<path class="o bd" d="M172 330 C150 330 136 344 136 360 C154 362 166 352 176 344 Z"/>
+<!-- highlight -->
+<path d="M190 274 C214 262 240 258 266 258" stroke="#cca070" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

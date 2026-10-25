@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Fulgureon (No. 2135), Electric, from Jolteon: reference only (shares its base drawing with the other two of the trio)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="472" rx="160" ry="13" fill="#e6e7ee"/>
+<!-- spikes swept back into lightning bolts, white at their tips -->
+<path class="o" fill="#f6d43a" d="M200 290 l-30 -8 l14 -14 l-40 -16 l16 -6 l-40 -26 l70 28 l-12 10 l40 18 Z"/><path fill="#ffffff" stroke="#1b1b2b" stroke-width="3" stroke-linejoin="round" d="M130 244 l-40 -26 l46 14 Z"/><path class="o" fill="#f6d43a" d="M230 270 l-30 -8 l14 -14 l-40 -16 l16 -6 l-40 -26 l70 28 l-12 10 l40 18 Z"/><path fill="#ffffff" stroke="#1b1b2b" stroke-width="3" stroke-linejoin="round" d="M160 224 l-40 -26 l46 14 Z"/><path class="o" fill="#f6d43a" d="M176 330 l-33 -8 l15.400000000000002 -14 l-44 -16 l17.6 -6 l-44 -26 l77 28 l-13.200000000000001 10 l44 18 Z"/><path fill="#ffffff" stroke="#1b1b2b" stroke-width="3" stroke-linejoin="round" d="M99 284 l-44 -26 l50.6 14 Z"/><path class="o" fill="#d0aa20" d="M196 360 C192 396 198 424 190 448 L214 450 C220 420 222 392 226 364 Z"/>
+<path class="o" fill="#d0aa20" d="M316 360 C322 396 318 424 326 448 L350 448 C346 420 346 392 340 360 Z"/><path class="o" fill="#f6d43a" d="M150 320 C150 282 196 268 252 268 C310 268 350 282 352 320 C354 356 310 372 252 372 C192 372 150 356 150 320 Z"/>
+<path fill="#d0aa20" d="M160 346 C200 368 310 370 346 340 C338 362 310 372 252 372 C198 372 168 362 160 346 Z"/><g class="o" fill="#f6d43a"><path d="M200 272 l-10 -26 l24 18 z M240 268 l-4 -28 l20 24 z M280 270 l4 -28 l14 28 z"/></g>
+<path class="o" fill="#f6d43a" d="M172 346 C166 390 178 418 168 444 C156 448 156 462 172 462 L202 462 C206 430 202 400 210 352 Z"/>
+<path class="o" fill="#f6d43a" d="M296 350 C304 392 296 418 302 444 C292 448 292 462 308 462 L336 462 C336 430 338 400 332 350 Z"/>
+<path class="t" d="M176 454 v8 M188 454 v8 M312 454 v8 M324 454 v8" stroke-width="2"/><!-- ruff standing up in a crest -->
+<g transform="translate(-40 24)">
+<path class="o" fill="#ffffff" d="M286 270 L276 216 L300 240 L302 186 L320 226 L334 180 L340 230 L356 210 L346 270 C330 290 300 290 286 270 Z"/>
+<path fill="#d8dae4" d="M334 200 L340 230 L356 210 L346 270 C340 276 334 280 326 282 C340 260 340 230 334 200 Z"/>
+</g><g transform="translate(-30 30)"><path class="o" fill="#f6d43a" d="M318 210 C312 170 340 146 376 146 C412 146 438 168 436 204 C434 236 410 254 378 254 C346 254 322 238 318 210 Z"/>
+<path fill="#d0aa20" d="M420 166 C438 188 436 226 418 244 C408 250 394 254 378 254 C410 236 426 206 420 166 Z"/><!-- tall pointed ears -->
+<path class="o" fill="#f6d43a" d="M332 168 L312 82 L366 152 Z"/>
+<path class="o" fill="#f6d43a" d="M392 150 L420 66 L428 166 Z"/>
+<path d="M330 152 L320 106 L352 148 Z M400 146 L416 100 L420 156 Z" fill="#1b1b2b" opacity=".75"/>
+<!-- sparks -->
+<g stroke="#f6d43a" stroke-width="4" stroke-linecap="round"><path d="M460 120 l14 -10 l-4 14 l14 -8 M90 380 l14 -8 l-4 12 l14 -6"/></g>
+<path d="M352 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z M394 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z" fill="#1b1b2b"/>
+<circle cx="370" cy="190" r="3" fill="#fff"/><circle cx="412" cy="190" r="3" fill="#fff"/>
+<path class="t" d="M378 222 l8 6 l8 -6"/></g><path d="M190 286 C220 276 256 274 290 276" stroke="#fff0a0" stroke-width="6" fill="none" stroke-linecap="round"/></svg>

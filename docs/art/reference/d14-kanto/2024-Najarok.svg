@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Najarok (No. 2024), Poison/Dark, from Arbok: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.v{fill:#6a3f9a}.vd{fill:#4b2a72}.vl{fill:#8e62c0}.cr{fill:#efe0b0}.gd{fill:#e8b830}.rd{fill:#d23a3a}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="190" ry="16" fill="#e6e7ee"/>
+<!-- coils on the ground -->
+<path class="o v" d="M70 430 C60 380 140 360 250 362 C360 364 450 384 440 430 C432 466 340 474 250 472 C150 470 76 466 70 430 Z"/>
+<path class="vd" d="M90 448 C150 468 360 470 430 440 C420 466 340 474 250 472 C170 471 110 466 90 448 Z"/>
+<path class="o v" d="M120 420 C116 392 180 384 250 386 C330 388 384 398 380 424 C376 446 320 450 250 450 C180 450 124 444 120 420 Z"/>
+<path class="t" d="M150 404 c-6 10-6 22 2 32 M330 400 c6 10 6 22-2 32" stroke="#e8b830" stroke-width="4"/>
+<!-- tail tip -->
+<path class="o vd" d="M436 420 C470 410 490 384 482 360 C470 380 450 392 430 398 Z"/>
+<!-- rising neck -->
+<path class="o v" d="M206 410 C190 350 196 290 226 240 L290 240 C312 292 316 350 300 410 Z"/>
+<path class="o cr" d="M228 410 C222 360 226 300 244 250 L276 250 C290 300 290 360 280 410 Z"/>
+<path class="t" d="M232 380 h46 M232 350 h48 M236 320 h44 M240 290 h40" stroke="#c9b48a"/>
+<path class="vd" d="M206 410 C190 350 196 290 226 240 L232 240 C206 300 204 360 222 410 Z"/>
+<!-- crown-shaped hood -->
+<path class="o v" d="M258 270 C190 270 140 240 128 180 C122 150 140 120 150 100 L172 130 L186 84 L210 118 L232 72 L258 112 L284 72 L306 118 L330 84 L344 130 L366 100 C376 120 394 150 388 180 C376 240 326 270 258 270 Z"/>
+<path class="vl" d="M258 256 C206 256 166 232 158 186 C186 214 222 228 258 228 C294 228 330 214 358 186 C350 232 310 256 258 256 Z"/>
+<path class="t" d="M150 120 C170 200 210 240 258 252 C306 240 346 200 366 120" stroke="#e8b830" stroke-width="4"/>
+<!-- the waking face on the hood -->
+<path class="o cr" d="M180 168 C196 148 226 148 238 168 C226 190 196 192 180 168 Z"/>
+<path class="o cr" d="M278 168 C290 148 320 148 336 168 C320 192 290 190 278 168 Z"/>
+<circle cx="210" cy="169" r="9" class="rd"/><circle cx="306" cy="169" r="9" class="rd"/>
+<path d="M210 160 v18 M306 160 v18" stroke="#1b1b2b" stroke-width="4" stroke-linecap="round"/>
+<path class="o gd" d="M226 214 C240 226 276 226 290 214 C282 232 234 232 226 214 Z"/>
+<!-- head -->
+<path class='o v' d='M196 96 C192 56 224 32 258 32 C292 32 324 56 320 96 C318 124 300 140 280 146 L236 146 C216 140 198 124 196 96 Z'/>
+<path class='vd' d='M300 50 C322 70 322 112 304 132 C296 140 288 144 280 146 L268 146 C300 124 310 90 300 50 Z'/>
+<path d='M212 82 c10-14 30-14 38 0 c-12 8-26 8-38 0z M266 82 c8-14 28-14 38 0 c-12 8-26 8-38 0z' fill='#e8b830' stroke='#1b1b2b' stroke-width='3'/>
+<path d='M231 72 v18 M285 72 v18' stroke='#1b1b2b' stroke-width='4' stroke-linecap='round'/>
+<path class='t' d='M250 108 l-4 4 M266 108 l4 4'/>
+<path d='M258 146 v18 l-8 10 M258 164 l8 10' stroke='#d23a3a' stroke-width='3' fill='none' stroke-linecap='round'/>
+<!-- highlight -->
+<path d="M232 54 C244 46 258 44 270 46" stroke="#a682d4" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

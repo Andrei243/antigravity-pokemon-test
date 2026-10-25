@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Kirinine (No. 2059), Fire/Dragon, from Arcanine: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.or{fill:#ec8a3a}.ord{fill:#c4642a}.cr{fill:#f6e6c0}.crs{fill:#d8c094}.hn{fill:#e8dcc2}.hns{fill:#b8a888}.k{fill:#1b1b2b}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="474" rx="190" ry="14" fill="#e6e7ee"/>
+<!-- flowing tail -->
+<path class="o cr" d="M120 300 C70 270 40 210 70 170 C78 200 96 210 110 206 C100 230 116 256 140 262 Z"/>
+<path class="crs" d="M118 286 C86 264 66 230 72 196 C82 214 94 220 104 220 C98 240 110 258 128 268 Z"/>
+<!-- far legs -->
+<path class="o ord" d="M180 360 C176 400 182 430 174 452 L200 454 C206 424 208 394 212 364 Z"/>
+<path class="o ord" d="M336 360 C344 400 340 430 348 452 L372 452 C370 424 370 394 362 360 Z"/>
+<!-- body -->
+<path class="o or" d="M120 310 C120 266 180 250 256 250 C330 250 380 270 382 316 C384 360 330 380 256 380 C180 380 120 360 120 310 Z"/>
+<path class="ord" d="M130 340 C176 372 330 374 376 336 C368 364 330 380 256 380 C186 380 144 368 130 340 Z"/>
+<!-- black stripes curling into scrolls -->
+<g class="t" stroke-width="7"><path d="M170 270 c-10 20-4 36 12 36 c10 0 12-12 4-14"/><path d="M220 260 c-8 22 0 40 16 38 c10-2 10-14 2-14"/><path d="M270 258 c-6 22 2 40 18 36 c10-4 8-14 0-14"/></g>
+<!-- near legs -->
+<path class="o or" d="M150 340 C144 390 156 420 146 446 C132 450 132 464 152 464 L186 464 C190 430 186 400 192 350 Z"/>
+<path class="o or" d="M300 346 C308 392 300 420 306 446 C294 450 294 464 312 464 L344 464 C344 430 346 400 340 346 Z"/>
+<g class="t" stroke-width="2"><path d="M154 456 v8 M168 456 v8 M314 456 v8 M328 456 v8"/></g>
+<path class="t" d="M152 380 c10 8 26 8 34 2 M306 384 c10 8 26 8 34 2" stroke-width="5"/>
+<!-- long flowing mane, like a lion dance's -->
+<path class="o cr" d="M296 270 C276 220 290 160 340 140 C390 120 440 140 456 180 C470 220 460 260 440 290 L430 330 L414 300 L402 346 L386 304 L366 340 L356 300 L334 324 L326 290 L306 304 Z"/>
+<path class="crs" d="M440 190 C456 220 452 260 436 286 L426 322 L414 298 C436 270 444 230 440 190 Z"/>
+<path class="t" d="M310 190 c10 30 4 60 -4 80 M336 170 c14 30 10 70 2 100" stroke-width="2.5"/>
+<!-- head -->
+<path class="o or" d="M346 196 C340 162 366 140 400 142 C434 144 458 166 478 182 C490 192 494 206 480 214 C462 224 438 222 418 234 C392 248 352 234 346 196 Z"/>
+<path class="ord" d="M418 234 C438 222 462 224 480 214 C468 230 446 240 420 242 Z"/>
+<!-- long cream beard -->
+<path class="o cr" d="M420 230 C430 260 434 290 424 320 C416 300 404 290 400 270 C394 290 384 298 372 302 C380 280 386 256 386 238 Z"/>
+<!-- two short horns swept back -->
+<path class="o hn" d="M370 150 C350 130 330 112 300 106 C320 126 334 146 352 166 Z"/>
+<path class="o hn" d="M396 142 C384 116 370 96 344 82 C358 106 366 128 376 152 Z"/>
+<path class="hns" d="M352 166 C340 146 326 130 310 116 C330 132 344 148 360 160 Z"/>
+<!-- eye, nose -->
+<path d="M396 180 c8-8 22-8 28 2 c-10 6-20 6-28-2z" fill="#1b1b2b"/>
+<circle cx="412" cy="180" r="3" fill="#ffd24a"/>
+<ellipse cx="486" cy="196" rx="7" ry="6" fill="#1b1b2b"/>
+<path class="t" d="M456 210 c8 4 16 2 22 -4"/>
+<!-- highlight -->
+<path d="M160 270 C190 262 230 258 270 258" stroke="#f6b070" stroke-width="6" fill="none" stroke-linecap="round" opacity=".9"/>
+</svg>

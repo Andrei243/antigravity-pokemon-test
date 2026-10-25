@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Ossugard (No. 2105), Ground/Ghost, from Marowak: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.br{fill:#9a7a52}.bd{fill:#78603e}.cr{fill:#efe2bf}.bn{fill:#f3efe2}.bns{fill:#cfc8b2}.gl{fill:#9fe0ff}.gw{fill:#e8f8ff}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="240" cy="472" rx="130" ry="13" fill="#e6e7ee"/>
+<!-- bone staff over the shoulder -->
+<path d="M150 470 L380 110" stroke="#1b1b2b" stroke-width="22" stroke-linecap="round"/>
+<path d="M150 470 L380 110" stroke="#f3efe2" stroke-width="12" stroke-linecap="round"/>
+<path d="M156 466 L384 114" stroke="#cfc8b2" stroke-width="4"/>
+<path class="o bn" d="M134 462 c-14 4-16 22 0 24 c4 8 22 6 24-4 c10-6 6-22-8-22 c-6-8-18-6-16 2z"/>
+<!-- skull at the staff's head -->
+<path class="o bn" d="M356 120 C340 90 360 56 396 54 C432 52 452 80 444 108 C440 124 428 130 420 132 L418 146 L380 148 L378 134 C368 132 360 128 356 120 Z"/>
+<path class="bns" d="M430 80 C446 92 448 112 432 126 C424 132 418 134 418 146 L408 146 C410 130 432 118 430 80 Z"/>
+<g fill="#1b1b2b"><ellipse cx="384" cy="104" rx="12" ry="14"/><ellipse cx="418" cy="104" rx="11" ry="13"/></g>
+<g class="gl"><ellipse cx="384" cy="106" rx="6" ry="8"/><ellipse cx="418" cy="106" rx="5" ry="7"/></g>
+<path class="t" d="M388 136 v10 M398 136 v10 M408 136 v10"/>
+<!-- tail -->
+<path class="o br" d="M178 380 C130 390 96 420 84 450 C110 446 150 420 192 402 Z"/>
+<path class="o bns" d="M98 432 l-10-18 l18 6 Z M120 418 l-6-20 l18 10 Z"/>
+<!-- legs -->
+<path class="o br" d="M196 390 C186 420 190 440 180 456 C170 460 170 470 186 470 L224 470 C230 456 226 430 236 400 Z"/>
+<path class="o bd" d="M268 392 C276 420 272 440 282 456 C292 460 292 470 278 470 L248 470 C244 456 246 430 240 400 Z"/>
+<path class="t" d="M188 462 v8 M200 462 v8 M212 462 v8" stroke-width="2"/>
+<!-- body -->
+<path class="o br" d="M176 300 C170 240 200 210 240 210 C286 210 312 244 304 304 C298 360 280 404 240 406 C200 406 182 360 176 300 Z"/>
+<path class="bd" d="M286 230 C306 260 304 320 290 370 C280 396 260 406 240 406 C276 380 296 320 286 230 Z"/>
+<path class="o cr" d="M206 290 C206 260 274 258 276 290 C280 340 266 384 240 386 C214 386 202 340 206 290 Z"/>
+<path class="t" d="M216 316 c16 6 36 6 52 0 M214 342 c18 6 38 6 54 0" stroke="#c9b48a"/>
+<!-- arm gripping the staff -->
+<path class="o br" d="M280 262 C310 256 324 260 330 278 C328 294 310 296 296 290 Z"/>
+<path class="o br" d="M316 262 c10-10 28-6 30 8 c0 12-16 18-28 12 z"/>
+<path class="o br" d="M190 270 C168 290 164 320 174 340 C188 340 196 320 204 300 Z"/>
+<!-- head under the great horned skull -->
+<path class="o br" d="M190 196 C188 160 216 140 246 140 C278 140 300 160 298 196 C296 226 274 240 244 240 C214 240 192 226 190 196 Z"/>
+<path class="bd" d="M276 154 C298 170 300 210 284 230 C274 238 260 240 244 240 C276 224 290 196 276 154 Z"/>
+<!-- skull helmet -->
+<path class="o bn" d="M176 168 C170 108 214 76 252 78 C296 80 320 112 316 160 C314 178 306 186 300 190 L296 176 C292 196 270 208 248 208 C224 208 196 198 186 176 L180 190 C176 184 176 176 176 168 Z"/>
+<path class="bns" d="M300 110 C314 130 316 160 302 186 L296 176 C304 150 306 130 300 110 Z"/>
+<!-- horns -->
+<path class="o bn" d="M186 112 C160 94 140 64 146 28 C166 54 186 72 208 86 Z"/>
+<path class="o bn" d="M300 104 C320 82 340 62 344 30 C362 64 350 96 318 124 Z"/>
+<path class="t" d="M160 70 l14-6 M170 90 l14-8 M334 64 l-12-6 M330 88 l-12-8" stroke-width="2.5"/>
+<!-- eye holes with pale blue flame -->
+<path d="M206 150 C210 132 238 132 240 152 C238 166 210 168 206 150 Z" fill="#1b1b2b"/>
+<path d="M256 152 C258 132 288 132 290 150 C288 166 260 168 256 152 Z" fill="#1b1b2b"/>
+<path class="gl" d="M222 160 c-10-6-6-20 2-24 c0 8 6 8 6 2 c6 8 4 20-8 22z"/>
+<path class="gl" d="M272 160 c-10-6-6-20 2-24 c0 8 6 8 6 2 c6 8 4 20-8 22z"/>
+<circle cx="224" cy="152" r="3" class="gw"/><circle cx="274" cy="152" r="3" class="gw"/>
+<!-- nose holes and face below -->
+<path d="M240 176 l6-8 l6 8 z" fill="#1b1b2b"/>
+<path class="t" d="M226 222 c10 6 24 6 36 0"/>
+<!-- highlight -->
+<path d="M200 120 C214 98 236 90 258 90" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

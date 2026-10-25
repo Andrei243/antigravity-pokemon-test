@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Savateur (No. 2106), Fighting/Flying, from Hitmonlee: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#b8865a}.bd{fill:#8e6440}.cr{fill:#f1e2c2}.crs{fill:#d0bc96}.cp{fill:#7a4e30}.cpd{fill:#5a3620}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="230" cy="482" rx="110" ry="11" fill="#e6e7ee"/>
+<!-- cape at the shoulders, behind -->
+<path class="o cp" d="M160 160 C120 200 100 260 110 310 L138 290 L146 330 L176 296 L196 320 L210 250 Z"/>
+<path class="o cp" d="M300 158 C350 180 390 220 420 270 L384 262 L392 300 L356 268 L344 300 L310 220 Z"/>
+<path class="cpd" d="M310 220 C340 230 370 250 400 266 L384 262 L392 300 L356 268 L344 300 Z"/>
+<!-- standing leg -->
+<path class="o b" d="M206 300 C196 360 206 410 190 456 L176 468 L228 470 L224 456 C238 410 236 360 238 304 Z"/>
+<!-- ankle wraps -->
+<path class="o cr" d="M192 432 L228 434 L226 456 L188 456 Z"/>
+<path class="t" d="M194 442 l32 2" stroke-width="2"/>
+<!-- body (headless torso, as its forebear) -->
+<path class="o b" d="M178 230 C174 170 200 130 240 128 C282 128 306 168 300 230 C296 280 276 310 240 312 C204 312 182 284 178 230 Z"/>
+<path class="bd" d="M284 150 C304 180 304 240 290 280 C280 300 262 312 240 312 C278 290 296 240 284 150 Z"/>
+<!-- face on the chest -->
+<path class="o" d="M206 186 C212 172 234 172 236 188 C228 196 212 196 206 186 Z" fill="#ffffff"/>
+<path class="o" d="M248 188 C250 172 272 172 278 186 C272 196 256 196 248 188 Z" fill="#ffffff"/>
+<circle cx="224" cy="186" r="5" fill="#1b1b2b"/><circle cx="260" cy="186" r="5" fill="#1b1b2b"/>
+<path class="t" d="M200 172 l34 8 M284 172 l-34 8" stroke-width="4"/>
+<path class="t" d="M224 222 c10 4 26 4 36 0"/>
+<!-- arms -->
+<path class="o b" d="M182 210 C150 220 130 240 128 266 C142 272 152 260 160 246 C168 236 180 232 190 230 Z"/>
+<path class="o b" d="M296 208 C330 210 352 226 358 250 C346 258 334 248 326 240 C316 232 304 228 294 226 Z"/>
+<g class="o cr" stroke-width="4"><ellipse cx="126" cy="270" rx="12" ry="10"/><ellipse cx="360" cy="254" rx="12" ry="10"/></g>
+<!-- the kicking leg, long and springy -->
+<path class="o b" d="M266 290 C300 290 330 270 362 240 C392 212 420 180 450 160 L466 176 C440 200 414 236 388 266 C360 300 320 324 270 322 Z"/>
+<path class="bd" d="M270 312 C320 314 358 294 386 266 C360 300 320 324 270 322 Z"/>
+<path class="o cr" d="M432 168 L456 150 L470 172 L448 186 Z"/>
+<path class="o cr" d="M460 150 C480 136 500 140 504 156 C496 170 484 176 470 176 Z"/>
+<path class="t" d="M440 172 l20 -14" stroke-width="2"/>
+<!-- motion lines -->
+<path class="t" d="M420 120 l30 -10 M446 112 l20 -2 M480 196 l22 8" stroke="#9aa0b0" stroke-width="3"/>
+<!-- highlight -->
+<path d="M200 150 C214 138 232 134 250 134" stroke="#d9a878" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

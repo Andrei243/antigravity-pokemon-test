@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Psyduke (No. 2055), Water/Psychic, from Golduck: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#3e76c4}.bd{fill:#2c5698}.bl{fill:#6a9ade}.bk{fill:#efd27a}.bks{fill:#c9a84a}.gl{fill:#ff6a7a}.gw{fill:#ffd6dc}.fin{fill:#9cc4f0}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="476" rx="120" ry="12" fill="#e6e7ee"/>
+<!-- pale ring of light round the head, back half -->
+<path d="M166 96 C180 60 330 60 344 96" stroke="#ffd6dc" stroke-width="7" fill="none"/>
+<!-- tail -->
+<path class="o bd" d="M190 380 C150 390 130 410 120 430 C150 430 180 414 204 398 Z"/>
+<!-- legs and webbed feet -->
+<path class="o b" d="M206 380 C200 410 202 430 196 448 L222 450 C228 424 230 400 236 384 Z"/>
+<path class="o bd" d="M268 384 C274 410 272 430 278 448 L302 448 C300 424 298 400 292 380 Z"/>
+<g class="o bk"><path d="M196 446 L170 470 L188 466 L196 476 L208 464 L222 474 L224 448 Z"/><path d="M278 446 L276 474 L292 464 L304 476 L312 466 L330 470 L302 446 Z"/></g>
+<!-- body, tall and lean -->
+<path class="o b" d="M186 300 C178 236 206 196 250 196 C294 196 320 236 312 300 C306 360 284 400 250 400 C214 400 192 360 186 300 Z"/>
+<path class="bd" d="M290 216 C314 250 314 320 298 366 C288 390 270 400 250 400 C286 372 302 310 290 216 Z"/>
+<!-- arms with fins spreading from the forearms -->
+<path class="o b" d="M194 246 C160 270 140 310 146 340 C160 344 170 330 176 312 C180 290 196 270 206 262 Z"/>
+<path class="o fin" d="M160 290 C126 284 104 300 96 326 C116 320 132 324 148 330 Z"/>
+<path class="o b" d="M304 246 C338 270 358 310 352 340 C338 344 328 330 322 312 C318 290 302 270 292 262 Z"/>
+<path class="o fin" d="M338 290 C372 284 394 300 402 326 C382 320 366 324 350 330 Z"/>
+<g class="o" fill="#f4f0e4" stroke-width="3"><path d="M146 338 l-6 12 l12 -4 z"/><path d="M352 338 l6 12 l-12 -4 z"/></g>
+<!-- head -->
+<path class="o b" d="M194 140 C190 100 216 76 250 76 C284 76 310 100 306 140 C302 172 280 190 250 190 C220 190 198 172 194 140 Z"/>
+<path class="bd" d="M290 92 C310 114 310 156 292 176 C282 186 268 190 250 190 C284 172 298 140 290 92 Z"/>
+<!-- longer bill -->
+<path class="o bk" d="M218 150 C222 136 278 136 282 150 C292 170 280 196 250 198 C220 196 208 170 218 150 Z"/>
+<path class="bks" d="M222 176 C232 192 268 192 278 176 C276 190 264 198 250 198 C236 198 226 190 222 176 Z"/>
+<path class="t" d="M226 172 c14 6 34 6 48 0" stroke-width="2.5"/>
+<!-- eyes -->
+<path d="M214 120 c6-8 18-8 22 2 c-8 4-16 4-22-2z M264 122 c4-10 16-10 22-2 c-6 6-14 6-22 2z" fill="#1b1b2b"/>
+<!-- glowing third eye (grown brow gem) -->
+<ellipse cx="250" cy="100" rx="16" ry="11" fill="#ffb0ba" opacity=".6"/>
+<path class="o gl" d="M236 100 C240 90 260 90 264 100 C260 110 240 110 236 100 Z" stroke-width="4"/>
+<ellipse cx="250" cy="100" rx="4" ry="5" fill="#1b1b2b"/>
+<circle cx="247" cy="97" r="2" class="gw"/>
+<!-- pale ring of light, front half, on thin strands -->
+<path class="t" d="M200 100 l-16 -8 M300 100 l16 -8" stroke-width="2"/>
+<path d="M166 96 C176 130 334 130 344 96" stroke="#1b1b2b" stroke-width="11" fill="none"/>
+<path d="M166 96 C176 130 334 130 344 96" stroke="#ffd6dc" stroke-width="5" fill="none"/>
+<!-- highlight -->
+<path d="M206 220 C220 208 240 204 260 204" stroke="#7aa8e6" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

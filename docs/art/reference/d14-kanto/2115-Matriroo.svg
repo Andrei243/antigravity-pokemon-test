@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Matriroo (No. 2115), Normal/Fighting, from Kangaskhan: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#a87a52}.bd{fill:#7e5634}.cr{fill:#efdcb0}.crs{fill:#ccb688}.hm{fill:#6a5a50}.hml{fill:#8e7c70}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="478" rx="160" ry="13" fill="#e6e7ee"/>
+<!-- tail -->
+<path class="o bd" d="M180 400 C130 410 90 440 70 470 L130 470 C150 450 176 432 200 420 Z"/>
+<!-- legs -->
+<path class="o b" d="M184 380 C176 420 184 446 170 466 L150 472 L222 472 C226 446 226 420 228 390 Z"/>
+<path class="o bd" d="M284 390 C288 420 290 446 296 466 L282 472 L350 472 C336 446 330 420 326 380 Z"/>
+<g class="o cr" stroke-width="3"><path d="M156 470 l4 -10 l8 10 z M176 470 l4 -10 l8 10 z M288 470 l4 -10 l8 10 z M310 470 l4 -10 l8 10 z"/></g>
+<!-- tall body -->
+<path class="o b" d="M160 280 C150 200 190 150 256 150 C322 150 362 200 352 280 C346 350 316 400 256 402 C196 402 166 350 160 280 Z"/>
+<path class="bd" d="M330 180 C356 220 356 290 340 340 C326 380 296 402 256 402 C316 370 340 300 330 180 Z"/>
+<!-- belly with the pouch -->
+<path class="o cr" d="M196 260 C196 220 316 220 316 260 C320 330 300 380 256 382 C212 380 192 330 196 260 Z"/>
+<path class="o crs" d="M206 310 C230 300 282 300 306 310 C306 350 290 372 256 374 C222 372 206 350 206 310 Z"/>
+<!-- the child, older, wearing a helmet of its own -->
+<path class="o b" d="M222 300 C220 262 236 240 258 240 C280 240 296 262 294 300 C280 312 236 312 222 300 Z"/>
+<path class="o hm" d="M218 270 C218 236 238 220 258 220 C280 220 300 236 298 270 C286 262 272 258 258 258 C244 258 230 262 218 270 Z"/>
+<path class="hml" d="M236 236 C246 228 262 226 274 230" stroke="#8e7c70" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M238 278 c4-6 12-6 16 0 c-4 4-12 4-16 0z M264 278 c4-6 12-6 16 0 c-4 4-12 4-16 0z" fill="#1b1b2b"/>
+<path class="t" d="M248 296 c6 4 14 4 20 0"/>
+<path class="o b" d="M216 300 c-14 0-20 10-14 18 c8 4 16 -2 18 -10 z M300 300 c14 0 20 10 14 18 c-8 4-16 -2-18 -10 z"/>
+<!-- arms, fists raised -->
+<path class="o b" d="M168 220 C134 220 110 200 104 176 L130 166 C140 182 156 190 176 192 Z"/>
+<path class="o b" d="M344 220 C378 220 402 200 408 176 L382 166 C372 182 356 190 336 192 Z"/>
+<path class="o bd" d="M90 170 C86 146 104 132 122 136 C140 140 144 160 136 174 C128 186 100 186 90 170 Z"/>
+<path class="o bd" d="M422 170 C426 146 408 132 390 136 C372 140 368 160 376 174 C384 186 412 186 422 170 Z"/>
+<!-- head with its helmet grown into a crest -->
+<path class="o b" d="M206 110 C204 74 228 52 258 52 C288 52 310 74 308 110 C306 140 286 156 258 156 C230 156 208 140 206 110 Z"/>
+<path class="o hm" d="M200 104 C196 62 224 30 260 30 C296 30 322 62 316 104 C298 92 280 86 258 86 C236 86 218 92 200 104 Z"/>
+<path class="o hm" d="M232 38 C240 10 280 4 300 22 C286 22 276 28 272 40 Z"/>
+<path class="o cr" d="M228 120 C234 104 284 104 290 120 C292 140 276 150 258 150 C240 150 226 140 228 120 Z"/>
+<path d="M226 104 c6-6 16-6 20 0 c-6 4-14 4-20 0z M270 104 c4-6 14-6 20 0 c-6 4-14 4-20 0z" fill="#1b1b2b"/>
+<path class="t" d="M244 136 c8 4 20 4 28 0"/>
+<!-- highlight -->
+<path d="M190 200 C210 176 236 166 262 164" stroke="#cca070" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M228 52 C238 42 252 38 266 38" stroke="#8e7c70" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

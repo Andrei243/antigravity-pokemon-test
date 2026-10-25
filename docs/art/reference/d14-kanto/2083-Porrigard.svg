@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Porrigard (No. 2083), Normal/Flying, from Farfetch'd: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="478" rx="120" ry="14" fill="#e6e7ee"/>
+<!-- staff (behind) -->
+<path d="M352 470 L392 120" stroke="#1b1b2b" stroke-width="18" stroke-linecap="round"/>
+<path d="M352 470 L392 120" stroke="#9fc25a" stroke-width="9" stroke-linecap="round"/>
+<path d="M357 468 L395 128" stroke="#6f8f34" stroke-width="3"/>
+<!-- leaf bundle -->
+<path class="o" d="M392 125 C350 90 345 50 368 28 C378 60 390 80 394 112 C396 70 410 40 432 26 C440 62 420 96 398 120 C430 98 462 96 480 104 C462 128 424 132 396 126 Z" fill="#6fae3c"/>
+<path d="M394 112 C390 80 380 62 372 40 M398 118 C412 92 422 70 430 40 M398 124 C424 116 450 110 470 106" class="t" stroke-width="2.5"/>
+<path class="o" d="M380 128 h28 v14 h-28 z" fill="#d9cfa8"/>
+<!-- tail feathers -->
+<path class="o" d="M186 350 L118 396 L136 364 L104 360 L120 344 L96 330 L180 318 Z" fill="#7a5232"/>
+<!-- legs -->
+<path class="o" d="M220 400 v58 l-22 12 h52 l-18-12 v-58z" fill="#e9a33a"/>
+<path class="o" d="M270 400 v58 l-16 12 h52 l-22-12 v-58z" fill="#e9a33a"/>
+<!-- body -->
+<path class="o" d="M168 300 C150 230 190 170 250 168 C312 166 336 230 330 300 C326 370 300 412 248 414 C196 416 176 370 168 300 Z" fill="#9b6a3f"/>
+<path d="M300 210 C330 260 330 330 310 380 C296 405 270 412 248 414 C290 390 312 330 300 210 Z" fill="#7a5232"/>
+<!-- cream belly -->
+<path class="o" d="M206 280 C210 250 290 250 294 282 C300 340 284 392 250 394 C214 396 200 340 206 280 Z" fill="#f2e6c8"/>
+<path d="M276 300 C290 340 282 380 256 392 C280 372 286 340 276 300Z" fill="#dccca4"/>
+<!-- white feather cape -->
+<path class="o" d="M176 232 C200 210 300 210 326 234 L334 300 L314 284 L304 318 L286 290 L270 322 L252 292 L234 322 L218 290 L200 318 L192 284 L170 300 Z" fill="#fbfbf6"/>
+<path d="M300 236 L330 252 L332 296 L314 282 L304 316 L294 296 C310 280 310 256 300 236Z" fill="#d9dbe6"/>
+<!-- wing holding the staff -->
+<path class="o" d="M300 250 C340 252 372 270 384 300 C372 318 340 318 312 300 Z" fill="#9b6a3f"/>
+<path class="t" d="M330 268 L350 300 M350 272 L366 302"/>
+<!-- staff hand over wing -->
+<path class="o" d="M366 286 c10-8 26-6 30 6 c-4 12-20 16-30 8 z" fill="#7a5232"/>
+<!-- neck/head -->
+<path class="o" d="M196 140 C192 92 226 62 262 64 C300 66 318 98 312 134 C306 170 280 190 252 190 C222 190 200 172 196 140 Z" fill="#9b6a3f"/>
+<path d="M290 80 C312 100 314 140 296 166 C282 182 262 190 250 190 C284 170 298 130 290 80Z" fill="#7a5232"/>
+<ellipse cx="236" cy="96" rx="22" ry="10" fill="#b98a5e"/>
+<!-- face mask cream -->
+<path class="o" d="M218 128 C222 110 268 108 290 120 C296 140 286 160 258 162 C234 162 216 148 218 128Z" fill="#f2e6c8"/>
+<!-- bill -->
+<path class="o" d="M258 138 C290 128 330 128 352 140 C340 156 300 162 262 156 Z" fill="#f2c040"/>
+<path d="M266 152 C296 156 330 152 348 144 C334 156 300 160 266 156Z" fill="#d49a24"/>
+<path class="t" d="M262 147 C292 146 322 146 346 143"/>
+<!-- eye -->
+<ellipse cx="248" cy="124" rx="8" ry="10" fill="#1b1b2b"/>
+<circle cx="251" cy="120" r="3" fill="#fff"/>
+<!-- dark brow with grey streaks -->
+<path class="o" d="M222 112 C232 98 256 96 270 106 L262 112 C252 106 236 108 228 116 Z" fill="#3a2a22"/>
+<path d="M236 104 l10 -3 M250 101 l9 0" stroke="#a6a6b0" stroke-width="3" stroke-linecap="round"/>
+<!-- head crest -->
+<path class="o" d="M236 66 C232 44 246 30 262 30 C254 44 254 54 260 64 Z" fill="#7a5232"/>
+<!-- highlight -->
+<ellipse cx="190" cy="330" rx="7" ry="22" fill="#c08c5c"/>
+</svg>

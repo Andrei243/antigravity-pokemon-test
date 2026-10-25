@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Pyreon (No. 2136), Fire, from Flareon: reference only (shares its base drawing with the other two of the trio)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="472" rx="160" ry="13" fill="#e6e7ee"/>
+<!-- full, fluffy tail -->
+<path class="o" fill="#f6dc8a" d="M170 300 C110 300 60 260 50 200 C40 150 70 110 100 112 C90 140 100 170 120 180 C110 210 130 250 180 280 Z"/>
+<path fill="#d8b860" d="M160 296 C110 290 72 254 62 210 C80 240 110 262 170 284 Z"/>
+<path class="o" fill="#c44a20" d="M196 360 C192 396 198 424 190 448 L214 450 C220 420 222 392 226 364 Z"/>
+<path class="o" fill="#c44a20" d="M316 360 C322 396 318 424 326 448 L350 448 C346 420 346 392 340 360 Z"/><path class="o" fill="#ec6a34" d="M150 320 C150 282 196 268 252 268 C310 268 350 282 352 320 C354 356 310 372 252 372 C192 372 150 356 150 320 Z"/>
+<path fill="#c44a20" d="M160 346 C200 368 310 370 346 340 C338 362 310 372 252 372 C198 372 168 362 160 346 Z"/><path class="o" fill="#ec6a34" d="M172 346 C166 390 178 418 168 444 C156 448 156 462 172 462 L202 462 C206 430 202 400 210 352 Z"/>
+<path class="o" fill="#ec6a34" d="M296 350 C304 392 296 418 302 444 C292 448 292 462 308 462 L336 462 C336 430 338 400 332 350 Z"/>
+<path class="t" d="M176 454 v8 M188 454 v8 M312 454 v8 M324 454 v8" stroke-width="2"/><!-- fuller ruff, its tips burning -->
+<g transform="translate(-40 24)">
+<path class="o" fill="#f6dc8a" d="M282 300 C250 270 254 210 290 186 C320 166 360 176 366 210 L372 250 L360 240 L362 286 L346 266 L342 310 L324 284 L314 322 L304 290 Z"/>
+<path fill="#d8b860" d="M352 200 C364 220 370 240 372 250 L360 240 L362 286 L346 266 L342 310 L336 300 C350 260 356 230 352 200 Z"/>
+<path class="o" fill="#ffb02a" d="M290 202 c-10-6-10-20 0-28 c-2 10 6 12 8 4 c10 10 8 22-8 24z" transform="rotate(-40 290 196)" stroke-width="3"/><path fill="#fff1a0" d="M290 196 c-4-4-4-10 0-14 c2 6 6 8 4 14z" transform="rotate(-40 290 196)"/><path class="o" fill="#ffb02a" d="M270 246 c-10-6-10-20 0-28 c-2 10 6 12 8 4 c10 10 8 22-8 24z" transform="rotate(-70 270 240)" stroke-width="3"/><path fill="#fff1a0" d="M270 240 c-4-4-4-10 0-14 c2 6 6 8 4 14z" transform="rotate(-70 270 240)"/><path class="o" fill="#ffb02a" d="M284 302 c-10-6-10-20 0-28 c-2 10 6 12 8 4 c10 10 8 22-8 24z" transform="rotate(-110 284 296)" stroke-width="3"/><path fill="#fff1a0" d="M284 296 c-4-4-4-10 0-14 c2 6 6 8 4 14z" transform="rotate(-110 284 296)"/><path class="o" fill="#ffb02a" d="M314 328 c-10-6-10-20 0-28 c-2 10 6 12 8 4 c10 10 8 22-8 24z" transform="rotate(-150 314 322)" stroke-width="3"/><path fill="#fff1a0" d="M314 322 c-4-4-4-10 0-14 c2 6 6 8 4 14z" transform="rotate(-150 314 322)"/><path class="o" fill="#ffb02a" d="M344 318 c-10-6-10-20 0-28 c-2 10 6 12 8 4 c10 10 8 22-8 24z" transform="rotate(170 344 312)" stroke-width="3"/><path fill="#fff1a0" d="M344 312 c-4-4-4-10 0-14 c2 6 6 8 4 14z" transform="rotate(170 344 312)"/></g><g transform="translate(-30 30)"><path class="o" fill="#ec6a34" d="M318 210 C312 170 340 146 376 146 C412 146 438 168 436 204 C434 236 410 254 378 254 C346 254 322 238 318 210 Z"/>
+<path fill="#c44a20" d="M420 166 C438 188 436 226 418 244 C408 250 394 254 378 254 C410 236 426 206 420 166 Z"/><!-- ears -->
+<path class="o" fill="#ec6a34" d="M330 170 L300 92 L364 150 Z"/>
+<path class="o" fill="#ec6a34" d="M392 150 L428 80 L428 168 Z"/>
+<path d="M326 156 L312 114 L346 148 Z M400 146 L420 104 L420 156 Z" fill="#f6dc8a"/>
+<!-- brow tuft streaming back -->
+<path class="o" fill="#f6dc8a" d="M352 154 C330 120 300 110 270 120 C290 126 306 136 316 150 C300 148 288 154 280 166 C304 162 324 164 344 172 Z"/>
+<path d="M352 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z M394 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z" fill="#1b1b2b"/>
+<circle cx="370" cy="190" r="3" fill="#fff"/><circle cx="412" cy="190" r="3" fill="#fff"/>
+<path class="t" d="M378 222 l8 6 l8 -6"/></g><path d="M190 286 C220 276 256 274 290 276" stroke="#ffa070" stroke-width="6" fill="none" stroke-linecap="round"/></svg>
