@@ -54,6 +54,8 @@ public sealed partial class BattleCore
             return "Rayquaza-Mega";
         if (p.HeldItem?.MegaStone is not { } stone || stone.Species != p.Species.Name) return null;
         if (stone.HeldByForm != null && p.Form != stone.HeldByForm) return null;
+        // A stone of the species' own is no regional form's (plan 06 · R20b: Showdown keys a stone by the name, so a Galarian Slowbro or a Hisuian Typhlosion never matches)
+        if (stone.HeldByForm == null && p.FormData?.Kind == FormKind.Regional) return null;
         return p.Species.Form(stone.Form) != null ? stone.Form : null;
     }
 

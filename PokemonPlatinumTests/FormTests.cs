@@ -24,7 +24,8 @@ public class FormTests
     public void TheFormsOfEveryGenerationAreInTheData()
     {
         var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new()).ToList();
-        Assert.Equal(97, forms.Count(f => f.Kind == FormKind.Mega));
+        // The games' 97 and our own fifteen (plan 06 · R20b)
+        Assert.Equal(112, forms.Count(f => f.Kind == FormKind.Mega));
         Assert.Equal(2, forms.Count(f => f.Kind == FormKind.Primal));
         Assert.Equal(34, forms.Count(f => f.Kind == FormKind.Gigantamax));
         Assert.Equal(57, forms.Count(f => f.Kind == FormKind.Regional));
@@ -190,6 +191,10 @@ public class FormTests
         Assert.Null(new SavedPokemonData { SpeciesName = "Rotom", Level = 25 }.ToPokemon().Form);
     }
 
+    /// <summary>The species whose Megas are our own (plan 06 · R20b), waiting for their sculpts.</summary>
+    private static string[] MegasOfOurOwn => new[] { "Typhlosion", "Torterra", "Infernape", "Empoleon", "Serperior", "Samurott", "Decidueye",
+        "Incineroar", "Primarina", "Rillaboom", "Cinderace", "Inteleon", "Meowscarada", "Skeledirge", "Quaquaval" };
+
     [Fact]
     public void EveryFormOfAHandBuiltSpeciesIsHandBuilt()
     {
@@ -220,7 +225,10 @@ public class FormTests
                 "Zygarde-50-Power-Construct", "Rockruff-Own-Tempo", "Appletun-Gmax", "Toxtricity-Low-Key-Gmax", "Sinistea-Antique", "Polteageist-Antique",
                 "Poltchageist-Artisan", "Sinistcha-Masterpiece" }
             .Concat(new[] { "Orange", "Yellow", "Green", "Blue", "Indigo", "Violet" }.Select(c => "Minior-" + c + "-Meteor"))
-            .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p)).ToArray();
+            .Concat(patterns.Select(p => "Scatterbug-" + p)).Concat(patterns.Select(p => "Spewpa-" + p))
+            // Plan 06 · R20b: the fifteen Megas of our own are data only so far; each shows its species' sculpt until the
+            // later session that sculpts them (the user is reworking the sculpts, wave 56), which takes them off this list
+            .Concat(MegasOfOurOwn.Select(s => s + "-Mega")).ToArray();
         Assert.True(PokemonModels.Forms.Length >= 483, $"only {PokemonModels.Forms.Length} forms with a model of their own");
         Assert.Equal(PokemonModels.Forms.Length, PokemonModels.Forms.Distinct().Count());
         foreach (var form in PokemonModels.Forms)
