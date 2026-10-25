@@ -1,0 +1,59 @@
+{
+  "key": "reversal_mountain_7",
+  "index": 536,
+  "name": "Reversal Mountain",
+  "matrix": 329,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_24_B",
+  "nightMusic": "BGM_SW_D_24_B",
+  "encounters": "ENCOUNTERS_REVERSAL_MOUNTAIN_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Spoink", "level": 31 },
+    { "species": "Woobat", "level": 32 },
+    { "species": "Boldore", "level": 32 },
+    { "species": "Skorupi", "level": 33 },
+    { "species": "Boldore", "level": 34 },
+    { "species": "Woobat", "level": 34 },
+    { "species": "Grumpig", "level": 35 },
+    { "species": "Skorupi", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 21, "z": 4, "to": "reversal_mountain_4", "toWarp": 4 },
+    { "x": 27, "z": 25, "to": "undella_town", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "249", "movement": "wander_around", "x": 25, "z": 15, "facing": 1, "rangeX": 3, "rangeZ": 3, "hiddenBy": "FLAG_UNOVA_0x03c0", "script": "2" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 26, "z": 25, "width": 1, "depth": 1, "script": "1", "variable": "VAR_UNOVA_0x4120", "value": "2" }
+  ]
+}

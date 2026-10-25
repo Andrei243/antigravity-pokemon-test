@@ -54,7 +54,10 @@
     // Plan 22 · U7, part a: Mistralton City's
     { "id": 6, "area": "mistralton_city", "x": 108, "y": 305, "room": "MistraltonCity_PokemonCenter" },
     // and Lentimas Town's
-    { "id": 7, "area": "lentimas_town", "x": 634, "y": 305, "room": "LentimasTown_PokemonCenter" }
+    { "id": 7, "area": "lentimas_town", "x": 634, "y": 305, "room": "LentimasTown_PokemonCenter" },
+    // and Undella Town's and Lacunosa Town's (plan 22 · U7, part b)
+    { "id": 8, "area": "undella_town", "x": 760, "y": 300, "room": "UndellaTown_PokemonCenter" },
+    { "id": 9, "area": "lacunosa_town", "x": 660, "y": 185, "room": "LacunosaTown_PokemonCenter" }
   ],
   // Plan 18 · W4: Black 2's levels for a team that crossed from Hoenn, from Hoenn's Champion's 162 on the first
   // route to Iris at 185 (the study's fair climb); the post-game climbs on past her on the same line

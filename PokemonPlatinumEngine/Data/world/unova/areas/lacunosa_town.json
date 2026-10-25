@@ -1,0 +1,51 @@
+{
+  "key": "lacunosa_town",
+  "index": 406,
+  "name": "Lacunosa Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_T_04",
+  "nightMusic": "BGM_T_04",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 660, "z": 184, "to": "lacunosa_town_pokemon_center", "toWarp": 0 },
+    { "x": 648, "z": 184, "to": "lacunosa_town_2", "toWarp": 0 },
+    { "x": 652, "z": 169, "to": "lacunosa_town_3", "toWarp": 0 },
+    { "x": 657, "z": 169, "to": "lacunosa_town_4", "toWarp": 0 },
+    { "x": 667, "z": 165, "to": "lacunosa_town_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "29", "movement": "none", "x": 670, "z": 167, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030c", "script": "8" },
+    { "id": "1", "looks": "backers_f", "movement": "wander_around", "x": 654, "z": 187, "facing": 1, "rangeX": 1, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "9" },
+    { "id": "2", "looks": "school_kid_m", "movement": "wander_around", "x": 661, "z": 189, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "10" },
+    { "id": "3", "looks": "black_belt", "movement": "none", "x": 665, "z": 161, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "11" },
+    { "id": "4", "looks": "parasol_lady", "movement": "wander_around", "x": 652, "z": 178, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "12" },
+    { "id": "5", "looks": "policeman", "movement": "wander_around", "x": 661, "z": 177, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "13" },
+    { "id": "6", "looks": "105", "movement": "none", "x": 658, "z": 171, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030a", "script": "2000" },
+    { "id": "7", "looks": "pkmn_breeder_m", "movement": "wander_around", "x": 642, "z": 162, "facing": 1, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "15" },
+    { "id": "8", "looks": "130", "movement": "wander_around", "x": 641, "z": 173, "facing": 1, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x0313", "script": "14" },
+    { "id": "9", "looks": "249", "movement": "none", "x": 658, "z": 170, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030b", "script": "2000" },
+    { "id": "10", "looks": "302", "movement": "none", "x": 639, "z": 186, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0311", "script": "2000" },
+    { "id": "11", "looks": "team_plasma_grunt_m", "movement": "none", "x": 639, "z": 185, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0311", "script": "2000" },
+    { "id": "12", "looks": "291", "movement": "none", "x": 649, "z": 185, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0310", "script": "16" },
+    { "id": "13", "looks": "110", "movement": "none", "x": 641, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04da", "item": "Full Heal", "script": "7142" },
+    { "id": "14", "looks": "110", "movement": "none", "x": 634, "z": 167, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04dc", "item": "Timer Ball", "script": "7144" }
+  ],
+  "signs": [
+    { "x": 669, "z": 170, "type": 0, "script": "7" }
+  ],
+  "triggers": [
+    { "x": 667, "z": 171, "width": 1, "depth": 2, "script": "3", "variable": "VAR_UNOVA_0x40cc", "value": "0" },
+    { "x": 668, "z": 183, "width": 4, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x40cc", "value": "0" },
+    { "x": 649, "z": 186, "width": 1, "depth": 2, "script": "5", "variable": "VAR_UNOVA_0x40ce", "value": "1" },
+    { "x": 647, "z": 185, "width": 1, "depth": 3, "script": "6", "variable": "VAR_UNOVA_0x40ce", "value": "2" },
+    { "x": 654, "z": 178, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x4129", "value": "1" }
+  ]
+}

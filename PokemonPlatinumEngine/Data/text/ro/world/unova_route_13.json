@@ -1,0 +1,352 @@
+{
+  "people": {
+    "5": {
+      "name": {
+        "en": [
+          "Angi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm walking the whole length of Route 13, and I'm battling everyone who's walking it too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Another trainer, another lesson. On I walk."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Jones"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Nothing's biting, so I thought I'd fish for a battle instead."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hmph. Hook, line and sunk."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Damon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "You can't hurry fishing and you can't hurry a battle. Settle in."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Slow and steady, and I still lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Daryl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A ranger keeps the road safe. Let me see if you're one of the good ones!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You're one of the good ones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Vince"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The big ones are out in the deep water. I'm after you, though. You'll do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A big one got away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Miguel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I hold my Pokémon to the highest standard. I hold myself to it too. Let's see if you do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Higher standards than mine. Well done."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Leroy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The sea wind sharpens a man's mind. And a Pokémon's fangs!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "The wind blew me out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Laura"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Oh, you startled me! Well, if you came to battle, I'll be gracious about it."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "How gracious of you to win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Treasure Hunter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Dianne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rangers see everything on the road, and I saw you coming! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A ranger can't see everything after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "21": {
+      "name": {
+        "en": [
+          "Cobalion"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "24": {
+      "name": {
+        "en": [
+          "Alize"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Let's punch our way through! I'm not stopping until I've fought the whole road!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "A knockout. I'll go and train some more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "25": {
+      "name": {
+        "en": [
+          "Wesley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I stand on this cliff and wait for challengers. You're the first in an hour. Come at me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "That was worth the long wait."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 13\nUndella Town is south, Lacunosa Town west"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Route 13\nThe longest road in Unova"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Trainer Tips\nThe type you set on the Trainer Card is what other players see of you. Pick one that suits you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10801": {
+      "en": [
+        "Route 13\nThe road bends east beyond the cliff"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10802": {
+      "en": [
+        "Lacunosa Town ahead"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

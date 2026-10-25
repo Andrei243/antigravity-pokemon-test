@@ -1,0 +1,16 @@
+{
+  // The Strange House's first library (plan 22 · U7, part b): shelves of books about dreams and the Pokémon who walk in them,
+  // Black 2's, our words. Seven shelves (signs 1 to 7, each along a stretch of wall) say a thing apiece; a Spell Tag (0) and a Dusk
+  // Stone (1) lie on the floor. The way on is the stairs at the east end (strange_house_3)
+  "area": "strange_house_2",
+  "bgmTrack": "unova/strange_house",
+  "signs": {
+    "1": "A book about Cresselia:\nIts wings shine like a crescent moon and keep nightmares away from whoever sleeps near it.",
+    "2": "A book about Darkrai:\nIt drives people and Pokémon away with terrible dreams, to keep itself safe.",
+    "3": "A book about Drowzee:\nThey eat dreams. Eating nightmares gives them a stomach ache.",
+    "4": "A book about Hypno:\nEach carries a pendulum that makes people drowsy. They say one once led a child away in his sleep.",
+    "5": "A book about Dream Eater:\nThe move strikes a sleeping target and heals the user by half of the damage it does.",
+    "6": "A book about Forewarn:\nA Pokémon with this Ability learns one of the foe's moves before it fights, and the strongest moves are noticed first.",
+    "7": "A tall shelf of books from other regions, in many languages."
+  }
+}

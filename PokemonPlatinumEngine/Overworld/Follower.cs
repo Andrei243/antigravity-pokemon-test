@@ -21,7 +21,7 @@ public sealed class Follower
     private NpcWalk? step;
 
     /// <summary>Who walks behind the player on the map: a person, or the thing of the map a Pokémon of the team is dressed as.</summary>
-    public NPC Who { get; }
+    public NPC Who { get; private set; }
 
     /// <summary>The trainer of Platinum's data who battles beside the player while they travel together; null for a Pokémon, who only walks.</summary>
     public string? TrainerId { get; }
@@ -140,6 +140,17 @@ public sealed class Follower
         Who.Facing = facing;
         Who.StepOffsetX = Who.StepOffsetY = 0f;
         Who.WalkBlend = 0f;
+    }
+
+    /// <summary>
+    /// They are now the person of another map who stands for them there (plan 22 · U7, part b: Bianca through Reversal
+    /// Mountain's floors, each of which has her own person with the same key): nothing is left walking on the way.
+    /// </summary>
+    public void Rehome(NPC twin)
+    {
+        Settle();
+        playerHeading = null;
+        Who = twin;
     }
 
     /// <summary>Ends a step under way where it was going: a script takes them over.</summary>

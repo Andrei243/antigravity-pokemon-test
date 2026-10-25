@@ -1,0 +1,57 @@
+{
+  "key": "reversal_mountain_2",
+  "index": 531,
+  "name": "Reversal Mountain",
+  "matrix": 322,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_24_B",
+  "nightMusic": "BGM_SW_D_24_B",
+  "encounters": "ENCOUNTERS_REVERSAL_MOUNTAIN_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Spoink", "level": 31 },
+    { "species": "Woobat", "level": 32 },
+    { "species": "Boldore", "level": 32 },
+    { "species": "Skorupi", "level": 33 },
+    { "species": "Boldore", "level": 34 },
+    { "species": "Woobat", "level": 34 },
+    { "species": "Grumpig", "level": 35 },
+    { "species": "Skorupi", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 29, "z": 4, "to": "reversal_mountain_4", "toWarp": 0 },
+    { "x": 25, "z": 27, "to": "reversal_mountain", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 15, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04c2", "item": "Max Repel", "script": "7118" }
+  ],
+  "signs": [],
+  "triggers": []
+}

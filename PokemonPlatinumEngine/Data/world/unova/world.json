@@ -146,7 +146,33 @@
     // and Lentimas Town's Pokémon Center and two houses (the town itself is on the overworld; the plane from Mistralton lands there)
     { "name": "LentimasTown_PokemonCenter", "matrix": 13, "area": "lentimas_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "LentimasTown_House1", "matrix": 263, "area": "lentimas_town_2", "trees": "Round", "setting": "Indoors" },
-    { "name": "LentimasTown_House2", "matrix": 263, "area": "lentimas_town_3", "trees": "Round", "setting": "Indoors" }
+    { "name": "LentimasTown_House2", "matrix": 263, "area": "lentimas_town_3", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U7, part b: the Strange House's six rooms (the four lookalikes for White 2 are left out), Reversal Mountain's six
+    // floors (Black 2's; White 2's six are twins), Undella Town's Pokémon Center, houses, villa and gate, and the rooms of
+    // Route 13 and Lacunosa Town
+    { "name": "StrangeHouse_Hall", "matrix": 304, "area": "strange_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "StrangeHouse_Library1", "matrix": 305, "area": "strange_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "StrangeHouse_Rooms", "matrix": 306, "area": "strange_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "StrangeHouse_Library2", "matrix": 307, "area": "strange_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "StrangeHouse_Attic", "matrix": 308, "area": "strange_house_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "StrangeHouse_Cellar", "matrix": 309, "area": "strange_house_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "ReversalMountain_1", "matrix": 322, "area": "reversal_mountain_2", "trees": "Round", "setting": "Cave" },
+    { "name": "ReversalMountain_2", "matrix": 323, "area": "reversal_mountain_3", "trees": "Round", "setting": "Cave" },
+    { "name": "ReversalMountain_3", "matrix": 324, "area": "reversal_mountain_4", "trees": "Round", "setting": "Cave" },
+    { "name": "ReversalMountain_4", "matrix": 325, "area": "reversal_mountain_5", "trees": "Round", "setting": "Cave" },
+    { "name": "ReversalMountain_5", "matrix": 326, "area": "reversal_mountain_6", "trees": "Round", "setting": "Cave" },
+    { "name": "ReversalMountain_6", "matrix": 329, "area": "reversal_mountain_7", "trees": "Round", "setting": "Cave" },
+    { "name": "UndellaTown_PokemonCenter", "matrix": 13, "area": "undella_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndellaTown_House1", "matrix": 44, "area": "undella_town_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndellaTown_House2", "matrix": 44, "area": "undella_town_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndellaGate", "matrix": 12, "area": "undella_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route13_House1", "matrix": 47, "area": "unova_route_13_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route13_House2", "matrix": 47, "area": "unova_route_13_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "LacunosaTown_House1", "matrix": 47, "area": "lacunosa_town_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "LacunosaTown_House2", "matrix": 47, "area": "lacunosa_town_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "LacunosaTown_House3", "matrix": 47, "area": "lacunosa_town_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "LacunosaTown_House4", "matrix": 47, "area": "lacunosa_town_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "LacunosaTown_PokemonCenter", "matrix": 13, "area": "lacunosa_town_pokemon_center", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -175,6 +201,12 @@
     "chargestone_cave_2", "chargestone_cave_3", "chargestone_cave_4", "mistralton_city", "mistralton_city_pokemon_center",
     "mistralton_city_2", "mistralton_city_3", "mistralton_city_4", "mistralton_city_gym", "unova_route_7", "unova_route_7_2",
     "unova_route_7_3", "celestial_tower_2", "celestial_tower_3", "celestial_tower_4", "celestial_tower_5", "celestial_tower",
-    "lentimas_town", "lentimas_town_pokemon_center", "lentimas_town_2", "lentimas_town_3"
+    "lentimas_town", "lentimas_town_pokemon_center", "lentimas_town_2", "lentimas_town_3",
+    "strange_house", "strange_house_2", "strange_house_3", "strange_house_4", "strange_house_5", "strange_house_6",
+    "reversal_mountain", "reversal_mountain_2", "reversal_mountain_3", "reversal_mountain_4", "reversal_mountain_5",
+    "reversal_mountain_6", "reversal_mountain_7",
+    "undella_town", "undella_town_pokemon_center", "undella_town_2", "undella_town_3",
+    "undella_gate", "undella_bay", "unova_route_13", "unova_route_13_2", "unova_route_13_3",
+    "lacunosa_town", "lacunosa_town_pokemon_center", "lacunosa_town_2", "lacunosa_town_3", "lacunosa_town_4", "lacunosa_town_5"
   ]
 }

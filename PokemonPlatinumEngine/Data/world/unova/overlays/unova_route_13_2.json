@@ -1,0 +1,36 @@
+{
+  // A house on Route 13 (plan 22 · U7, part b): four who talk, our words. The woman (2) gives a Power Lens once, her Wingull's
+  // find (unova_route_13_2.txt)
+  "area": "unova_route_13_2",
+  "bgmTrack": "unova/route13",
+  "people": {
+    "0": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [
+        "I hope there's a new winner in the Pokémon World Tournament. I do love an upset!"
+      ]
+    },
+    "1": {
+      "name": "Wingull",
+      "npcType": "Pokemon",
+      "species": "Wingull",
+      "dialog": [
+        "Wingull: Wree wreek!"
+      ]
+    },
+    "2": {
+      "name": "Lady",
+      "npcType": "lady",
+      "script": "WingullsFind",
+      "still": true
+    },
+    "3": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_f",
+      "dialog": [
+        "I'd love to go to Pokéstar Studios again. I'm a huge fan of a certain director. I'd love to be in his next film!"
+      ]
+    }
+  }
+}

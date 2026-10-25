@@ -801,7 +801,7 @@ public class StoryTests
         }
         // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
         // TM in the Ruin Maniac's cave, which lies at the end of his tunnel once he has dug it (one or the other is there)
-        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28" };
+        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28", "FLAG_UNOVA_0x04bd" /* the Strange House's Dusk Stone, in both its libraries (plan 22 · U7, part b) */ };
         Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1 && !shared.Contains(g.Key)).Select(g => g.Key));
 
         // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203

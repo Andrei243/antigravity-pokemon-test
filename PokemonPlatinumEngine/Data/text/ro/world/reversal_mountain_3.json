@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lewis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm tracking something big in this mountain. I'll show you the tricks I learned in the field!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "The trail has gone cold, and so has my temper."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bianca_along": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

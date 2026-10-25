@@ -1,0 +1,27 @@
+{
+  // Reversal Mountain's outside (plan 22 · U7, part b): the slopes round the volcano between Lentimas Town and Undella Town, Black
+  // 2's, our words. Two ways in lead to the cave's floors (the west mouth at 654 to 655, 294 to Reversal Mountain's first floor
+  // and the south-east ways at 667 to 673 to its sixth), the Strange House stands at the east end (683, 304), and two cyclists
+  // ride the slopes. Black 2's White 2 twin warps lead nowhere here
+  "area": "reversal_mountain",
+  "bgmTrack": "unova/reversal_mountain",
+  "people": {
+    "3": {
+      "name": "Jeremiah",
+      "trainer": {
+        "dialogueBefore": "These slopes are the best training track in Unova! Care for a race, and then a battle?",
+        "dialogueAfter": "You left me in the dust. And there's a lot of dust here."
+      }
+    },
+    "4": {
+      "name": "Adelaide",
+      "trainer": {
+        "dialogueBefore": "Warm rock under my wheels and a warm wind at my back. What a day for a ride! Battle me!",
+        "dialogueAfter": "Phew! I think I overheated."
+      }
+    }
+  },
+  "signs": {
+    "3": "Reversal Mountain\nThe cave through the volcano's heart leads to Undella Town"
+  }
+}

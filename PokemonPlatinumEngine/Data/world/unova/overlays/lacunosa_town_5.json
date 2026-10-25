@@ -1,0 +1,22 @@
+{
+  // Lacunosa Town's shop (plan 22 · U7, part b): a counter, a customer and a Metronome on a shelf, our words
+  "area": "lacunosa_town_5",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": {
+      "name": "Parasol Lady",
+      "npcType": "parasol_lady",
+      "dialog": [
+        "Lacunosa's shop keeps the oddest things. I came in for an umbrella and I'm leaving with a Metronome."
+      ]
+    },
+    "2": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    }
+  }
+}

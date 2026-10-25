@@ -1,0 +1,38 @@
+{
+  // Reversal Mountain's lower passage (plan 22 · U7, part b): a short way between the great cave's south end and the slopes
+  // outside, Black 2's, our words. Nobody stands here but Bianca, once she travels with the player (bianca_along); before each
+  // of the two ways out (12, 7 and 8, 14) she offers to go her own way (reversal_mountain_6.txt)
+  "area": "reversal_mountain_6",
+  "bgmTrack": "unova/reversal_cave",
+  "triggers": [
+    {
+      "script": "BiancaOffersToPart",
+      "x": 12,
+      "z": 7,
+      "width": 1,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL",
+      "value": 1
+    },
+    {
+      "script": "BiancaOffersToPartBelow",
+      "x": 8,
+      "z": 14,
+      "width": 1,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL",
+      "value": 1
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 8,
+      "y": 5,
+      "facing": "Down",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  // A small house of Lacunosa Town (plan 22 · U7, part b): one who talks, our words
+  "area": "lacunosa_town_4",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "The sun sets early here, and the moon rises soon after. We love the quiet in between."
+      ]
+    }
+  }
+}

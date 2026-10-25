@@ -1,0 +1,160 @@
+{
+  // Lacunosa Town (plan 22 · U7, part b): the town of early nights at the foot of the great hole, Black 2's, our words. Its people keep
+  // indoors after dark, so the streets are empty at night (FLAG_UNOVA_LACUNOSA_NIGHT, set and cleared by the town's own arrival).
+  // As the player first comes in from Route 13 (668 to 671, 183, or from the north, 667, 171 to 172; VAR_UNOVA_LACUNOSA 0)
+  // Professor Juniper (6, FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA) and Bianca (9, FLAG_UNOVA_HIDE_BIANCA_LACUNOSA), who flew ahead,
+  // meet them and take them to the old storyteller's house (lacunosa_town_3), where the tale of the meteorite is told. Hugh (12,
+  // FLAG_UNOVA_HIDE_HUGH_LACUNOSA) stands at the west end afterwards (VAR_UNOVA_LACUNOSA 2); a word with him or a step across his
+  // trigger (649, 186 to 187) is the tag battle against Zinzolin (10, FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA) and a grunt (11,
+  // FLAG_UNOVA_HIDE_GRUNT_LACUNOSA), who run when beaten (lacunosa_town.txt). The way north from the town leads to Route 12
+  // (plan 22 · U8) and is shut. The Pokémon Center is by the south road and the houses are round the square
+  "area": "lacunosa_town",
+  "bgmTrack": "unova/lacunosa",
+  // the Timer Ball (14) lies west of the town, in the road to Route 12 that is not open yet (plan 22 · U8)
+  "heldBack": [ "14" ],
+  "triggers": [
+    {
+      "script": "JuniperAndBiancaMeet",
+      "x": 668,
+      "z": 183,
+      "width": 4,
+      "depth": 1,
+      "variable": "VAR_UNOVA_LACUNOSA",
+      "value": 0
+    },
+    {
+      "script": "JuniperAndBiancaMeet",
+      "x": 667,
+      "z": 171,
+      "width": 1,
+      "depth": 2,
+      "variable": "VAR_UNOVA_LACUNOSA",
+      "value": 0
+    },
+    {
+      "script": "HughAndTheGrunts",
+      "x": 649,
+      "z": 186,
+      "width": 1,
+      "depth": 2,
+      "variable": "VAR_UNOVA_LACUNOSA",
+      "value": 2
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Storyteller",
+      "npcType": "old_woman",
+      "script": "TheOldTale",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "still": true
+    },
+    "1": {
+      "name": "Backers",
+      "npcType": "twin",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "Welcome to Lacunosa Town! Everyone here lives like clockwork, from morning to night. If you spend the day in the sun, you sleep like a baby at night."
+      ]
+    },
+    "2": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "The monster that comes out at night is a Pokémon, isn't it? It must be terrifying if the whole town keeps to the rules because of it."
+      ]
+    },
+    "3": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "My grandmother's stories were about Kyurem, it turns out. Old stories sometimes have a kernel of truth in them."
+      ]
+    },
+    "4": {
+      "name": "Parasol Lady",
+      "npcType": "parasol_lady",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "There are so many people in the world, and each has a different way of thinking about things."
+      ]
+    },
+    "5": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "Since I came to this post there's been nothing for me to do. Nobody goes out at night, so it's very peaceful."
+      ]
+    },
+    "6": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA",
+      "still": true,
+      "dialog": [
+        "This is the place, {player}! Come along."
+      ]
+    },
+    "7": {
+      "name": "Breeder",
+      "npcType": "pokemon_breeder_m",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "My Pokémon runs around all by itself. Maybe it doesn't need a Trainer?"
+      ]
+    },
+    "8": {
+      "name": "Herdier",
+      "npcType": "Pokemon",
+      "species": "Herdier",
+      "hiddenBy": "FLAG_UNOVA_LACUNOSA_NIGHT",
+      "dialog": [
+        "Herdier: Gahoo! Gahoo!"
+      ]
+    },
+    "9": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_LACUNOSA",
+      "still": true,
+      "dialog": [
+        "Come along, {player}! Hee hee, I beat you here!"
+      ]
+    },
+    "10": {
+      "name": "Zinzolin",
+      "npcType": "zinzolin",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA",
+      "still": true,
+      "trainer": {
+        "id": "unova_team_plasma_zinzolin_4",
+        "dialogueBefore": "Oh, for crying out loud. How troublesome.",
+        "dialogueAfter": "You have the look of a certain child I met two years ago."
+      }
+    },
+    "11": {
+      "name": "Grunt",
+      "npcType": "plasma_grunt",
+      "hiddenBy": "FLAG_UNOVA_HIDE_GRUNT_LACUNOSA",
+      "still": true,
+      "trainer": {
+        "id": "unova_team_plasma_grunt_45",
+        "dialogueBefore": "We serve Lord Zinzolin! We're not afraid of kids!",
+        "dialogueAfter": "That wasn't in the plan. Not at all!"
+      }
+    },
+    "12": {
+      "name": "{rival}",
+      "npcType": "hugh",
+      "script": "Hugh",
+      "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_LACUNOSA",
+      "still": true
+    }
+  },
+  "signs": {
+    "7": "Lacunosa Town\nMethodical and orderly, for safety's sake"
+  }
+}

@@ -1,0 +1,17 @@
+# A house on Route 13 (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats.
+# The woman (2) gives a Power Lens once, her Wingull's find.
+
+
+script WingullsFind
+  face 2 player
+  speaker "Lady"
+  if flag FLAG_UNOVA_GOT_POWER_LENS goto Done
+  say "This Wingull used to carry the mail to everyone in the neighbourhood!"
+  say "I know! I'll give you the Power Lens it brought me!"
+  give "Power Lens"
+  setflag FLAG_UNOVA_GOT_POWER_LENS
+  say "It doesn't matter to Wingull that it isn't much of a fighter. It's the best postman in Unova."
+  end
+label Done
+  say "Wingull doesn't mind that it can't battle very well. It delivers the post all the same."
+  end

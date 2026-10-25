@@ -1,0 +1,27 @@
+# Reversal Mountain's first floor (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats. The count of the cave's errand is VAR_UNOVA_REVERSAL (reversal_mountain_4.txt has it whole).
+#
+# With Bianca along, our trigger across the foot of the way out to the slopes (24 to 26, 26, at 1) has her offer to go her own way:
+# the player can't leave the cave with her along, since she can't follow onto the slopes.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  call UnovaBiancaWaits
+  end
+
+
+script BiancaOffersToPart
+  if var VAR_UNOVA_REVERSAL != 1 end
+  if not partner end
+  speaker "Bianca"
+  say "Oh! We're nearly outside! I want to look for more traces of Heatran in here by myself. Shall we split up for now?"
+  call UnovaBiancaAsks
+  if yes goto Gone
+  walk player up 1
+  end
+label Gone
+  fade out 0.4
+  hide bianca_along
+  fade in
+  end

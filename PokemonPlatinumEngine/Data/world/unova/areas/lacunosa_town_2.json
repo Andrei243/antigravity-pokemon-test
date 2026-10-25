@@ -1,0 +1,30 @@
+{
+  "key": "lacunosa_town_2",
+  "index": 408,
+  "name": "Lacunosa Town",
+  "matrix": 47,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_04",
+  "nightMusic": "BGM_T_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "lacunosa_town", "toWarp": 1 },
+    { "x": 6, "z": 9, "to": "lacunosa_town", "toWarp": 1 },
+    { "x": 7, "z": 9, "to": "lacunosa_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pkmn_breeder_m", "movement": "none", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "2" },
+    { "id": "1", "looks": "130", "movement": "none", "x": 5, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "3" },
+    { "id": "2", "looks": "school_kid_m", "movement": "wander_around", "x": 2, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "5" },
+    { "id": "3", "looks": "backers_f", "movement": "none", "x": 10, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

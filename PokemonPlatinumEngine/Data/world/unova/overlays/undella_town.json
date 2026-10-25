@@ -1,0 +1,103 @@
+{
+  // Undella Town (plan 22 · U7, part b): Black 2's resort on the bay below Reversal Mountain, our words. As the player first
+  // walks in from Reversal Mountain's east tunnel to the east end of the street (751 to 755, 299, VAR_UNOVA_UNDELLA 0) Hugh
+  // (hugh_undella, FLAG_UNOVA_HIDE_HUGH_UNDELLA) calls out and they battle, his team the one strong against the player's starter
+  // (Black 2's TRAINER_RIVAL_10, _11 and _12; undella_town.txt). Black 2's later scenes here (Hugh back from the Abyssal Ruins at
+  // 6, Zinzolin reading the ruins' script at 7) wait for plan 22 · U10 and stay hidden (FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER,
+  // FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA). The ways to the sea gate (736, 298) and to Cynthia's villa are shut; the villa's room has
+  // no way in until U10. The Pokémon Center is east of the street, the houses on it and the gate to Route 13 at its north end
+  "area": "undella_town",
+  "bgmTrack": "unova/undella",
+  "triggers": [
+    {
+      "script": "HughAtTheEast",
+      "x": 751,
+      "z": 299,
+      "width": 5,
+      "depth": 1,
+      "variable": "VAR_UNOVA_UNDELLA",
+      "value": 0
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "Undellaaaaa! This is the best town for a summer cheer!"
+      ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [
+        "Cynthia is entering the Pokémon World Tournament! I've got to cheer for her!"
+      ]
+    },
+    "2": {
+      "name": "Woman",
+      "npcType": "middle_aged_woman",
+      "dialog": [
+        "The family on the cliff has moved far away, and our little town is a bit lonelier now."
+      ]
+    },
+    "3": {
+      "name": "Parasol Lady",
+      "npcType": "parasol_lady",
+      "dialog": [
+        "The sun is strong here. Depending on the Pokémon, that helps or it hurts. Fire moves grow stronger and Water moves weaker in sunlight."
+      ]
+    },
+    "4": {
+      "name": "Twins",
+      "npcType": "twin",
+      "dialog": [
+        "Yaaay! Yaaay! Undella Town!"
+      ]
+    },
+    "6": {
+      "name": "Hugh",
+      "npcType": "hugh",
+      "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER",
+      "dialog": [ "Hugh: The ruins under the bay are old, and I mean to read every word of them." ],
+      "still": true
+    },
+    "7": {
+      "name": "Zinzolin",
+      "npcType": "zinzolin",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA",
+      "dialog": [ "Zinzolin: It is warm here. How tiresome." ],
+      "still": true
+    },
+    "8": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "We're building out Undella's resorts. We've just tunnelled through to the volcano's side. Nature's power is amazing!"
+      ]
+    },
+    "9": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [
+        "Sometimes Jellicent drift into Undella Bay. They have a reputation for being a little unusual."
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "hugh_undella",
+      "name": "Hugh",
+      "npcType": "hugh",
+      "x": 756,
+      "y": 300,
+      "facing": "Left",
+      "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_UNDELLA"
+    }
+  ],
+  "signs": {
+    "1": "Undella Town\nA town of rippling waves",
+    "2": "The Marine Tube ahead\nA walk-through aquarium",
+    "14": "Reversal Mountain ahead"
+  }
+}

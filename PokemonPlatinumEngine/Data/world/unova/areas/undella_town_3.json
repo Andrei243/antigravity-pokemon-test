@@ -1,0 +1,33 @@
+{
+  "key": "undella_town_3",
+  "index": 416,
+  "name": "Undella Town",
+  "matrix": 44,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_05_SP",
+  "nightMusic": "BGM_T_05_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "undella_town", "toWarp": 4 },
+    { "x": 6, "z": 9, "to": "undella_town", "toWarp": 4 },
+    { "x": 7, "z": 9, "to": "undella_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "93", "movement": "none", "x": 4, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ad", "script": "4" },
+    { "id": "1", "looks": "215", "movement": "none", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ab", "script": "2" },
+    { "id": "2", "looks": "96", "movement": "none", "x": 7, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ac", "script": "3" },
+    { "id": "3", "looks": "224", "movement": "none", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b1", "script": "7" },
+    { "id": "4", "looks": "228", "movement": "none", "x": 9, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02af", "script": "5" },
+    { "id": "5", "looks": "226", "movement": "none", "x": 10, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02b0", "script": "6" },
+    { "id": "6", "looks": "socialite", "movement": "none", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ae", "script": "8" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,76 @@
+{
+  // Undella Town's Pokémon Center (plan 22 · U7, part b): the same floor as Lentimas Town's, with the town's own people
+  "area": "undella_town_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": {
+    "2108": "PC"
+  },
+  "people": {
+    "1": {
+      "name": "Nurse",
+      "npcType": "Nurse",
+      "script": "Nurse",
+      "isHealingNurse": true
+    },
+    "2": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "3": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "5": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "6": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "8": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [
+        "A holiday by the sea, a rest at the Pokémon Center and an ice cream on the sand. What more could I ask for?"
+      ]
+    },
+    "9": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [
+        "The sun is lovely, but my Pokémon get tired of the heat. A visit here sets them right."
+      ]
+    },
+    "10": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [
+        "I came to Undella for a rest and stayed for the swimming. My Pokémon came for the food."
+      ]
+    },
+    "12": {
+      "name": "Audino",
+      "npcType": "Pokemon",
+      "species": "Audino",
+      "dialog": [
+        "Audino: Dii!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# The Strange House's cellar (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/strange_house_6.s, read for the order alone).
+# VAR_UNOVA_STRANGE is the house's count: 1 after the girl's first walk (strange_house_3.txt), 2 after this one.
+#
+# As the player steps along the middle of the cellar (our trigger at 17, 19 to 19, at 1) the girl (0) is in the room a second time,
+# nearer the stairs to the attic, saying her words again before she goes.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end
+
+
+script TheGirlComesBack
+  scene "The girl comes back"
+  wait 0.5
+  clearflag FLAG_UNOVA_HIDE_STRANGE_GIRL
+  place 0 18 16 up
+  show 0
+  wait 0.4
+  walk 0 up 3
+  speaker "Girl"
+  say "The house is so big, and so dark. Is anyone there? Is anyone looking for me?"
+  say "Up there it's quiet. The quiet's where they leave the things they don't want to lose."
+  wait 0.4
+  hide 0
+  setflag FLAG_UNOVA_HIDE_STRANGE_GIRL
+  setvar VAR_UNOVA_STRANGE 2
+  endscene
+  end

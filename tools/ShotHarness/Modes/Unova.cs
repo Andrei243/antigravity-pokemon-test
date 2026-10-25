@@ -57,6 +57,17 @@ partial class Harness
             ("u83_mistralton_day", "u84_mistralton_night", "Unova", 102, 296, Direction.Right),
             ("u85_route7_day", "u86_route7_night", "Unova", 107, 235, Direction.Up),
             ("u87_lentimas_day", "u88_lentimas_night", "Unova", 616, 308, Direction.Up),
+            // Plan 22 · U7, part b: Reversal Mountain's slopes before the cave's mouth, the Strange House's door, Undella Town's street
+            // and bay, Route 13 at its south and its north ends, Lacunosa Town's square, and the great cave
+            ("u115_reversal_slopes_day", "u116_reversal_slopes_night", "Unova", 656, 297, Direction.Up),
+            ("u117_strange_house_door_day", "u118_strange_house_door_night", "Unova", 683, 306, Direction.Up),
+            ("u119_undella_street_day", "u120_undella_street_night", "Unova", 745, 300, Direction.Right),
+            ("u121_undella_beach_day", "u122_undella_beach_night", "Unova", 740, 310, Direction.Down),
+            ("u123_undella_bay_day", "u124_undella_bay_night", "Unova", 788, 281, Direction.Right),
+            ("u125_route13_south_day", "u126_route13_south_night", "Unova", 750, 280, Direction.Up),
+            ("u127_route13_north_day", "u128_route13_north_night", "Unova", 690, 190, Direction.Up),
+            ("u129_lacunosa_square_day", "u130_lacunosa_square_night", "Unova", 654, 174, Direction.Up),
+            ("u131_reversal_great_cave_day", "u132_reversal_great_cave_night", "ReversalMountain_3", 20, 8, Direction.Right),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -124,6 +135,24 @@ partial class Harness
             ("u95_route7_house", "Route7_House1", 4, 8, Direction.Up),
             ("u96_mistralton_center", "MistraltonCity_PokemonCenter", 7, 18, Direction.Up),
             ("u97_lentimas_center", "LentimasTown_PokemonCenter", 7, 18, Direction.Up),
+            // plan 22 · U7, part b: the Strange House's six rooms, Reversal Mountain's lair, passage and east tunnel, and the towns' rooms
+            ("u98_strange_hall", "StrangeHouse_Hall", 17, 29, Direction.Up),
+            ("u99_strange_library", "StrangeHouse_Library1", 14, 13, Direction.Up),
+            ("u100_strange_rooms", "StrangeHouse_Rooms", 24, 18, Direction.Up),
+            ("u101_strange_library2", "StrangeHouse_Library2", 14, 13, Direction.Up),
+            ("u102_strange_cellar", "StrangeHouse_Cellar", 18, 18, Direction.Up),
+            ("u103_strange_attic", "StrangeHouse_Attic", 6, 11, Direction.Up),
+            ("u104_reversal_first_floor", "ReversalMountain_1", 26, 10, Direction.Up),
+            ("u105_reversal_passage", "ReversalMountain_3", 40, 57, Direction.Up),
+            ("u106_reversal_lair", "ReversalMountain_4", 10, 20, Direction.Up),
+            ("u107_reversal_east_tunnel", "ReversalMountain_6", 25, 20, Direction.Up),
+            ("u108_undella_center", "UndellaTown_PokemonCenter", 7, 18, Direction.Up),
+            ("u109_undella_visitors_house", "UndellaTown_House2", 6, 8, Direction.Up),
+            ("u110_undella_gate", "UndellaGate", 5, 12, Direction.Up),
+            ("u111_route13_house", "Route13_House1", 6, 8, Direction.Up),
+            ("u112_lacunosa_center", "LacunosaTown_PokemonCenter", 7, 18, Direction.Up),
+            ("u113_storyteller_house", "LacunosaTown_House2", 6, 8, Direction.Up),
+            ("u114_lacunosa_shop", "LacunosaTown_House4", 6, 8, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

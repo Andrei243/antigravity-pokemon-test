@@ -3068,6 +3068,48 @@ value can't be named in a script).
 - **What a save needs.** A save of the frigate's chapter is given the chapter's hidden people by `UnovaCatchUp`
   (`FLAG_UNOVA_MISTRALTON_BEGUN`), with no story version raised.
 
+## Unova's third chapter, part b: the Strange House to Lacunosa Town (2026-10-25, plan 22 · U7)
+
+Black 2's beats from the plane's landing to Lacunosa Town, in our own words (the decompilation's zone scripts, read for the
+order alone) on flags of ours.
+
+- **The order of the chapter.** From Lentimas Town the Strange House stands at the slopes' end and Reversal Mountain's cave
+  leads on to Undella Town; Route 13 runs from Undella's gate to Lacunosa Town. Bianca, run ahead from Lentimas Town, waits at
+  the west end of the great cave (`VAR_UNOVA_REVERSAL` 0): she asks the player along, heals the team and travels with them as
+  their partner (1), stops at the cave's middle passage (`VAR_UNOVA_REVERSAL_LAIR` 1), wonders at Heatran's lair (2), and the
+  player parts from her where they like (2 for REVERSAL: she then stands in the east tunnel talking about the Magma Stone).
+  At Undella Town's east end Hugh runs up for a battle (`VAR_UNOVA_UNDELLA` 1). At Lacunosa Town Professor Juniper and Bianca
+  (flown ahead) take the player to the old woman's house for the tale of the meteorite (`VAR_UNOVA_LACUNOSA` 1, then 2),
+  Hugh finds Zinzolin and a grunt at the west end (3) and the two are beaten in a tag battle with Hugh and run (4).
+- **Bianca is the player's partner**, the one `partner` of the cave: her trainer is Black 2's own `unova_bianca` (her
+  Musharna's team of level 40), so wild Pokémon in the grass come in pairs, the team is healed after every battle that isn't
+  lost and two trainers who see the player come together. **A partner follows through a place of several maps**
+  (`Follower.Rehome`, `GameEngine.KeepPartnerAlong`; until this session she followed only on the map where she was a person):
+  on a map that has no person for her she becomes the person of that map with the same key, who the flags keep off it until
+  she comes (`bianca_along`, hidden by `FLAG_UNOVA_HIDE_BIANCA_ALONG`, one in each floor of the cave), and is shown there; a game
+  saved on a walk finds her on the map it wakes on. She **leaves at every way out of the cave** (a trigger across each asks
+  whether to part, and the player is walked back a step on no), since there is no person of hers outside it; a game lost
+  with her along leaves nobody travelling, and the next floor come to puts her back at the west end (`common.UnovaBiancaWaits`).
+- **What is left out, and why.** Black 2's White 2 floors of Reversal Mountain (twins of Black 2's six) are not built. The Strange
+  House's four rooms behind its wrong doors (the original's rooms that lead back into the house) are plain wall, so the house is
+  one way through: hall, library, rooms, library, cellar, attic; the attic's feather is a Lunar Wing. The researcher's Habitat List
+  is a Pokémon of the mountain on the team (the game has no Habitat List). Cynthia's villa (`undella_town_5`) is a scene of
+  Elesa and Skyla in Black 2's data, entered by no warp and no script of the story, and `undella_town_4` is an empty room with
+  no way in; neither is built. Black 2's Cobalion on Route 13, Heatran in its lair, the later Hugh and Zinzolin of Undella Town and
+  the worker on Undella Bay's jetty are overlay people held hidden for plan 22 · U10. Chargestone Cave has no later scene of N and
+  no grunts of Colress in Black 2's data (N is met once, in part a), and Route 7 has no winter drifts in it: the winter chunks
+  are Icirrus City's, Route 8's and the Dragonspiral Tower's cells and Twist Mountain's and the Moor of Icirrus's floors.
+- **Looks and sounds.** Undella Town's houses are stand-ins in the Resort's way of building and Lacunosa Town's in the Stone's,
+  Reversal Mountain's machine hall is Mistralton's hangar style; the beach's parasols are pavilions and its chairs benches (`Architecture`
+  rows of their own are left for a later session, with the style guide's). `Bw2Cover` sorts `in65_light` (a shaft of light over a pool,
+  no lamp) as nothing and `tg_` (Lacunosa's ground) as a packed track. Songs of our own, none heard by the user yet:
+  `unova/strange_house`, `reversal_mountain` (with a night arrangement), `reversal_cave`, `undella` (with a night arrangement), `route13`
+  (with a night arrangement) and `lacunosa`, each over 25 s and clean in `MusicRender`. Team Plasma's Zinzolin has the grunts' eye
+  theme and the boss's battle theme in the sound map.
+- **What a save needs.** A save past part a is given the chapter's hidden people by `UnovaCatchUpB` (`FLAG_UNOVA_LACUNOSA_BEGUN`),
+  which the places of this part call at their arrival, with no story version raised; Bianca at the cave's mouth is shown by that
+  floor's own arrival once the scene at Lentimas Town has been played.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

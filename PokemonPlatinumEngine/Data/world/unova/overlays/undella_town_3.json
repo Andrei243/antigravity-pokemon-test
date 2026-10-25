@@ -1,0 +1,61 @@
+{
+  // The visitors' house of Undella Town (plan 22 · U7, part b): Black 2 fills it with holiday-makers who change with the season and
+  // the day, our words. Four of them are here every day (0 to 3), the three of the other seasons' draw (4 to 6) are not
+  // (FLAG_UNOVA_HIDE_UNDELLA_SPARE)
+  "area": "undella_town_3",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Tourist",
+      "npcType": "gentleman",
+      "dialog": [
+        "I came for the sun and stayed for the sea. I'm turning as red as a Krabby."
+      ]
+    },
+    "1": {
+      "name": "Socialite",
+      "npcType": "socialite",
+      "dialog": [
+        "Everyone who is anyone holidays in Undella Town. Don't you agree?"
+      ]
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "dialog": [
+        "I swam all the way to the buoy! My Pokémon swam in my wake. I'm really proud of both of us."
+      ]
+    },
+    "3": {
+      "name": "Beauty",
+      "npcType": "beauty",
+      "dialog": [
+        "The tide changes the colour of the bay by the hour. I can sit and watch it all day."
+      ]
+    },
+    "4": {
+      "name": "Tourist",
+      "npcType": "lady",
+      "hiddenBy": "FLAG_UNOVA_HIDE_UNDELLA_SPARE",
+      "dialog": [
+        "I've heard it's lovely here in the autumn."
+      ]
+    },
+    "5": {
+      "name": "Tourist",
+      "npcType": "old_man",
+      "hiddenBy": "FLAG_UNOVA_HIDE_UNDELLA_SPARE",
+      "dialog": [
+        "The sea here is warm until the leaves turn."
+      ]
+    },
+    "6": {
+      "name": "Tourist",
+      "npcType": "pokefan_f",
+      "hiddenBy": "FLAG_UNOVA_HIDE_UNDELLA_SPARE",
+      "dialog": [
+        "Winter is quiet in Undella. I like it that way."
+      ]
+    }
+  }
+}

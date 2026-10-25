@@ -1,0 +1,29 @@
+{
+  // Another house on Route 13 (plan 22 · U7, part b): three who talk about living with Pokémon, our words
+  "area": "unova_route_13_3",
+  "bgmTrack": "unova/route13",
+  "people": {
+    "0": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [
+        "What Team Plasma said back then still makes me angry. So my Pokémon live with me, out of their balls. Panpour doesn't listen to a word I say, though."
+      ]
+    },
+    "1": {
+      "name": "Panpour",
+      "npcType": "Pokemon",
+      "species": "Panpour",
+      "dialog": [
+        "Panpour: Chatterchatter!"
+      ]
+    },
+    "2": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [
+        "The Poké Ball let everyone live beside Pokémon, anyone at all. Everyone."
+      ]
+    }
+  }
+}
