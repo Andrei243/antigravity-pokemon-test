@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Pokédoll Floor! These dolls are made to sit about a secret base."
       ],
       "text": [
-        ""
+        "Bine ai venit la etajul Păpușilor Pokémon! Păpușile acestea sunt făcute să stea într-o bază secretă."
       ]
     },
     {
@@ -27,13 +27,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PĂPUȘĂ PICHU  3,000",
+        "PĂPUȘĂ PIKACHU  3,000",
+        "PĂPUȘĂ MARILL  3,000",
+        "PĂPUȘĂ JIGGLYPUFF  3,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -47,13 +47,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PĂPUȘĂ DUSKULL  3,000",
+        "PĂPUȘĂ WYNAUT  3,000",
+        "PĂPUȘĂ BALTOY  3,000",
+        "PĂPUȘĂ KECLEON  3,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -67,13 +67,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PĂPUȘĂ AZURILL  3,000",
+        "PĂPUȘĂ SKITTY  3,000",
+        "PĂPUȘĂ SWABLU  3,000",
+        "PĂPUȘĂ GULPIN  3,000",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MERSI"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Please do come again!"
       ],
       "text": [
-        ""
+        "Te rog să mai treci pe la noi!"
       ]
     }
   ],
@@ -91,7 +91,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Welcome! Cushions, soft and bright, for a secret base."
       ],
       "text": [
-        ""
+        "Bine ai venit! Perne moi și vesele pentru o bază secretă."
       ]
     },
     {
@@ -113,13 +113,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PERNĂ PIKA  2,000",
+        "PERNĂ ROTUNDĂ  2,000",
+        "PERNĂ ZIGZAG  2,000",
+        "PERNĂ SPIRALĂ  2,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -133,13 +133,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PERNĂ ROMB  2,000",
+        "PERNĂ MINGE  2,000",
+        "PERNĂ IARBĂ  2,000",
+        "PERNĂ FOC  2,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -150,10 +150,10 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PERNĂ APĂ  2,000",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MERSI"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "Please do come again!"
       ],
       "text": [
-        ""
+        "Te rog să mai treci pe la noi!"
       ]
     }
   ],
@@ -171,7 +171,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Welcome! Posters to hang on a secret base's walls."
       ],
       "text": [
-        ""
+        "Bine ai venit! Postere de agățat pe pereții unei baze secrete."
       ]
     },
     {
@@ -193,13 +193,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "POSTER MINGE  1,000",
+        "POSTER VERDE  1,000",
+        "POSTER ROȘU  1,000",
+        "POSTER ALBASTRU  1,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -213,13 +213,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "POSTER DRĂGUȚ  1,000",
+        "POSTER PIKA  1,500",
+        "POSTER LUNG  1,500",
+        "POSTER MARIN  1,500",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -230,10 +230,10 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "POSTER CER  1,500",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MERSI"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Please do come again!"
       ],
       "text": [
-        ""
+        "Te rog să mai treci pe la noi!"
       ]
     }
   ],
@@ -251,7 +251,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -259,7 +259,7 @@
         "Welcome! Mats to lay on a secret base's floor."
       ],
       "text": [
-        ""
+        "Bine ai venit! Covorașe de așternut pe podeaua unei baze secrete."
       ]
     },
     {
@@ -273,13 +273,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "COVORAȘ SURF  4,000",
+        "COVORAȘ THUNDER  4,000",
+        "COVORAȘ FIRE BLAST  4,000",
+        "COVORAȘ POWDER SNOW  4,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -293,13 +293,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "COVORAȘ ATTRACT  4,000",
+        "COVORAȘ FISSURE  4,000",
+        "COVORAȘ SPIKES  4,000",
+        "COVORAȘ SCLIPITOR  2,000",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -311,11 +311,11 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "COVORAȘ SĂRITURĂ  2,000",
+        "COVORAȘ SPIRALĂ  2,000",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MERSI"
       ]
     },
     {
@@ -323,7 +323,7 @@
         "Please do come again!"
       ],
       "text": [
-        ""
+        "Te rog să mai treci pe la noi!"
       ]
     }
   ],
@@ -333,7 +333,7 @@
         "Thank you very much! The {thing} has been sent to your decoration PC."
       ],
       "text": [
-        ""
+        "Îți mulțumesc mult! {thing} a fost trimis la PC-ul tău de decorațiuni."
       ]
     },
     {
@@ -341,7 +341,7 @@
         "I'm terribly sorry, but you haven't enough money for that."
       ],
       "text": [
-        ""
+        "Îmi pare tare rău, dar nu ai destui bani pentru asta."
       ]
     },
     {
@@ -349,7 +349,7 @@
         "I'm sorry, but your decoration PC has no more room for things of that kind."
       ],
       "text": [
-        ""
+        "Îmi pare rău, dar PC-ul tău de decorațiuni nu mai are loc pentru lucruri de felul acesta."
       ]
     }
   ]

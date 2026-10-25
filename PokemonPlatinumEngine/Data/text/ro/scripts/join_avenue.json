@@ -5,7 +5,7 @@
         "Shopkeeper"
       ],
       "text": [
-        ""
+        "Negustorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead."
       ],
       "text": [
-        ""
+        "Bine ai venit la piața din Avenue! Mingi, medicamente, tot ce îi trebuie unui Antrenor pe drum."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Thanks for shopping on Join Avenue! Tell your friends!"
       ],
       "text": [
-        ""
+        "Mulțumesc că ai cumpărat de pe Join Avenue! Spune-le și prietenilor!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Florist"
       ],
       "text": [
-        ""
+        "Florăreasa"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!"
       ],
       "text": [
-        ""
+        "Bună! Mulci pentru fructele tale și miere dulce pentru Pokémonii care o adoră. Uită-te!"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Grow something lovely! Come back and tell me how it turned out."
       ],
       "text": [
-        ""
+        "Crește ceva frumos! Vino să-mi spui cum a ieșit."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Waitress"
       ],
       "text": [
-        ""
+        "Chelnerița"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Welcome to the café! Something cold to drink before you head into Nimbasa?"
       ],
       "text": [
-        ""
+        "Bine ai venit la cafenea! Ceva rece de băut înainte să intri în Nimbasa?"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Enjoy! And mind the crowds on the way into the city."
       ],
       "text": [
-        ""
+        "Savurează! Și ai grijă la aglomerație pe drumul spre oraș."
       ]
     }
   ],
@@ -83,7 +83,7 @@
         "Join Avenue Market\nEverything for the road ahead!"
       ],
       "text": [
-        ""
+        "Piața Join Avenue\nTot ce trebuie pentru drum!"
       ]
     }
   ],
@@ -93,7 +93,7 @@
         "Join Avenue Flowers\nMulch and honey for growing things."
       ],
       "text": [
-        ""
+        "Florăria Join Avenue\nMulci și miere pentru lucruri care cresc."
       ]
     }
   ],
@@ -103,7 +103,7 @@
         "Join Avenue Café\nCold drinks all day long."
       ],
       "text": [
-        ""
+        "Cafeneaua Join Avenue\nBăuturi răcoroase toată ziua."
       ]
     }
   ]

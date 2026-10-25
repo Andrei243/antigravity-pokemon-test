@@ -4,7 +4,7 @@
       "Gear Station"
     ],
     "text": [
-      ""
+      "Stația Gear"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Depot Agent"
         ],
         "text": [
-          ""
+          "Agentul depoului"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Depot Agent"
         ],
         "text": [
-          ""
+          "Agentul depoului"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Depot Agent"
         ],
         "text": [
-          ""
+          "Agentul depoului"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Station Agent"
         ],
         "text": [
-          ""
+          "Agentul stației"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -62,7 +62,7 @@
           "Every line in Unova meets here at the Gear Station. Battles on one platform, a sleepy country town on another!"
         ],
         "text": [
-          ""
+          "Toate liniile din Unova se întâlnesc aici, la Stația Gear. Lupte pe un peron, un orășel de țară somnoros pe altul!"
         ]
       }
     },
@@ -72,7 +72,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -80,7 +80,7 @@
           "I rode the Battle Subway all the way to the seventh car! Then I lost. Next time, the Subway Bosses!"
         ],
         "text": [
-          ""
+          "Am mers cu Metroul de Luptă până la al șaptelea vagon! Apoi am pierdut. Data viitoare, Șefii Metroului!"
         ]
       }
     }
@@ -91,7 +91,7 @@
         "A board of the lines leaving the Gear Station.\nBattle Subway: Single Train, Double Train, Multi Train.\nAnville Town Line: all stops to Anville Town."
       ],
       "text": [
-        ""
+        "Un panou cu liniile care pleacă din Stația Gear.\nMetroul de Luptă: Trenul Simplu, Trenul Dublu, Trenul Multiplu.\nLinia Orașului Anville: cu oprire în toate stațiile până în Orașul Anville."
       ]
     }
   }

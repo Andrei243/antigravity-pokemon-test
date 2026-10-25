@@ -6,7 +6,7 @@
           "Stu & Art"
         ],
         "text": [
-          ""
+          "Stu & Art"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "We're Backers! Two voices, two Pokémon, one big cheer!"
         ],
         "text": [
-          ""
+          "Suntem Suporteri! Două voci, doi Pokémoni, o ovație mare!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hip hip... hooray for you, we suppose."
         ],
         "text": [
-          ""
+          "Ura... ura pentru tine, presupunem."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Stu & Art"
         ],
         "text": [
-          ""
+          "Stu & Art"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "We're Backers! Two voices, two Pokémon, one big cheer!"
         ],
         "text": [
-          ""
+          "Suntem Suporteri! Două voci, doi Pokémoni, o ovație mare!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Hip hip... hooray for you, we suppose."
         ],
         "text": [
-          ""
+          "Ura... ura pentru tine, presupunem."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Krissa"
         ],
         "text": [
-          ""
+          "Krissa"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "This road is perfect for a sprint! Race you, then battle you!"
         ],
         "text": [
-          ""
+          "Drumul acesta e perfect pentru un sprint! Fac cursă cu tine, apoi lupt cu tine!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "I pedalled too hard and battled too soft."
         ],
         "text": [
-          ""
+          "Am pedalat prea tare și am luptat prea moale."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Hector"
         ],
         "text": [
-          ""
+          "Hector"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Out of my lane! Unless you want a battle, that is!"
         ],
         "text": [
-          ""
+          "Ieși din banda mea! Dacă nu vrei o luptă, desigur!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Flat tyre. Flat battle. Flat me."
         ],
         "text": [
-          ""
+          "Cauciuc dezumflat. Luptă dezumflată. Eu dezumflat."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Blossom"
         ],
         "text": [
-          ""
+          "Blossom"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "The forest north of here is full of rumours. Let me tell you one after our battle!"
         ],
         "text": [
-          ""
+          "Pădurea de la nord de aici e plină de zvonuri. Îți spun unul după lupta noastră!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "The rumour is... that I lost. It's true!"
         ],
         "text": [
-          ""
+          "Zvonul e... că am pierdut. Și e adevărat!"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Ivan"
         ],
         "text": [
-          ""
+          "Ivan"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "I walked all the way from the desert! My legs are tired but my Pokémon aren't!"
         ],
         "text": [
-          ""
+          "Am venit pe jos tot drumul din deșert! Mă dor picioarele, dar Pokémonii mei nu obosesc!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Now we're all tired."
         ],
         "text": [
-          ""
+          "Acum suntem toți obosiți."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Hank"
         ],
         "text": [
-          ""
+          "Hank"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "I'm a Depot Agent of the Battle Subway, off duty! Fancy a practice run?"
         ],
         "text": [
-          ""
+          "Sunt agent de depou la Metroul de Luptă, în afara serviciului! Ai chef de o cursă de probă?"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Back to the depot for me. You'd do well on the Subway!"
         ],
         "text": [
-          ""
+          "Eu mă întorc la depou. Te-ai descurca bine în Metrou!"
         ]
       }
     }
@@ -189,7 +189,7 @@
         "Route 16\nNimbasa City — Marvelous Bridge"
       ],
       "text": [
-        ""
+        "Ruta 16\nOrașul Nimbasa — Podul Marvelous"
       ]
     },
     "2": {
@@ -197,7 +197,7 @@
         "Marvelous Bridge\nThe great bridge to the east"
       ],
       "text": [
-        ""
+        "Podul Marvelous\nMarele pod din est"
       ]
     }
   }
