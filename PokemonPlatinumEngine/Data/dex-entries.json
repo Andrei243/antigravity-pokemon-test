@@ -13390,6 +13390,13 @@
       "It glides over rival nests and lets its boulder fall. The satchel it carries can hold a rock heavier than the bird itself."
     ]
   },
+  "Zerofin": {
+    "habitat": "Sea",
+    "entries": [
+      "It never puts on a hero's suit. Its swept-back fins carry it faster than any Palafin, and it reaches swimmers in trouble before anyone on shore has noticed.",
+      "A pale streak runs down its back like a racing stripe. It still smiles as it surfaces, and it leaves the rescued on the sand without waiting for thanks."
+    ]
+  },
   "Turbovroom": {
     "habitat": "Urban",
     "entries": [
@@ -13481,6 +13488,90 @@
       "The tunnels it digs under the hills run so far that nobody has ever mapped them. It often loses track of where its own tail has got to."
     ]
   },
+  "Tuskendon": {
+    "habitat": "Rare",
+    "entries": [
+      "A second, shorter pair of tusks has grown under the first. It rolls through the night across the crater's floor, and by morning a boulder field lies flattened behind it.",
+      "Its hide cracks like dry clay along the shoulders, and a coarse red mane runs down its spine. By day it sleeps half buried in the dust of the pit."
+    ]
+  },
+  "Shriekpuff": {
+    "habitat": "Rare",
+    "entries": [
+      "Its scream at night carries over a whole valley, and every Jigglypuff that hears it falls silent until dawn. The ruff round its head has swelled into a cloud of fur.",
+      "The tail now ends in two tufts, and the tips of its ears are pale violet. It keeps close to cliffs, where the echo makes its voice seem to come from everywhere."
+    ]
+  },
+  "Fungoliath": {
+    "habitat": "Rare",
+    "entries": [
+      "It rests as a harmless toadstool by day. After dark its spores drift so thick that the trees around it fall asleep one after another.",
+      "A second row of fangs hides beneath its wide, scaly cap, and thick roots trail behind its body. It feeds on whatever dozes within reach of the spores."
+    ]
+  },
+  "Banshemane": {
+    "habitat": "Rare",
+    "entries": [
+      "Its weeping is heard at night above the ruins. Those who hear it see the ancient sky, full of beasts that no longer live.",
+      "Its feathered hair trails to the ground in a veil, and three red gems shine on its brow. The hem of the veil is ragged, as if torn long ago."
+    ]
+  },
+  "Saurmoth": {
+    "habitat": "Rare",
+    "entries": [
+      "It flies only on moonless nights, beating its many wings so hard that the grass beneath catches fire.",
+      "Two extra pairs of wings run along its long body like the legs of a centipede, and flames flicker at their edges. Its six heavy legs grip the ground when it lands."
+    ]
+  },
+  "Lodestatic": {
+    "habitat": "Rare",
+    "entries": [
+      "Compasses spin wildly within a mile of it at night. It drags iron sand into dunes shaped like the lines of a magnet.",
+      "A coat of iron filings stands on end along its back, and two horns of fused sand crackle on its head. The charge lifts small stones from the ground as it passes."
+    ]
+  },
+  "Treadnought": {
+    "habitat": "Rare",
+    "entries": [
+      "In daylight it races across the plains faster than any car, and the tracks it leaves are perfectly straight.",
+      "Its wheels have become twin treads, and a ring of blue light circles its body. The tusks are shaped into blades, which it uses to carve through fallen trees."
+    ]
+  },
+  "Cryoparcel": {
+    "habitat": "Rare",
+    "entries": [
+      "It speeds above the sea by day, and anything it passes freezes solid. What it carries in its packs remains a secret.",
+      "A second pack of gleaming plates sits on its back, and a visor of ice covers its eyes. Four jets under its body keep it hovering just above the waves."
+    ]
+  },
+  "Gauntletron": {
+    "habitat": "Rare",
+    "entries": [
+      "Its punches crack bedrock at a single blow. It stands motionless by night and wakes the moment the sun touches it.",
+      "Each hand is armoured with four plates like a gauntlet, and coils glow along its arms. A crest on its head is shaped like a helmet and stores the light of the day."
+    ]
+  },
+  "Hydrajet": {
+    "habitat": "Rare",
+    "entries": [
+      "It circles high on clear days, its three heads turning in every direction. Nothing that moves below escapes its notice.",
+      "A third head has grown at the end of its tail, and jets burn at the tips of its swept-back wings. A ring of lights glows round its neck while it hunts."
+    ]
+  },
+  "Fusionmoth": {
+    "habitat": "Rare",
+    "entries": [
+      "Its core burns as hot as the sun at noon. It drifts above the desert by day, and the sand beneath turns to glass.",
+      "A second ring of armour surrounds the core, and its antennae curl into two prongs. The tips of its wings blaze like torches, leaving smoke that smells of poison."
+    ]
+  },
+  "Thornframe": {
+    "habitat": "Rare",
+    "entries": [
+      "It stands still as a statue in the sun, drinking in light through its spines. Then it charges, and nothing can stop it.",
+      "A cage of crystal rods rises over its back, and sparks leap from rod to rod. Its jaw is a heavy plate that can crush a boulder in one bite."
+    ]
+  },
   "Bullionaire": {
     "habitat": "Rare",
     "entries": [
@@ -13516,11 +13607,46 @@
       "Its six beads hold the fire of a jealous king's heart. It glides through molten lava as easily as other fish swim through a stream."
     ]
   },
+  "Lunaroar": {
+    "habitat": "Rare",
+    "entries": [
+      "When the moon is full it soars over the crater's rim, and its roar shakes loose rocks from the walls for hours.",
+      "Its wings hang in ragged shreds like the sails of a ruined ship, and the horns on its head curl forward into a crown. The red of its belly glows brightest at midnight."
+    ]
+  },
+  "Paladroid": {
+    "habitat": "Rare",
+    "entries": [
+      "It moves faster than the eye can follow, and its lance leaves trails of light in the noon sky.",
+      "Its two blades join into one long lance, and a cape of light streams from its shoulders. The visor over its face has been honed to a sharper edge than before."
+    ]
+  },
   "Chagamage": {
     "habitat": "Forest",
     "entries": [
       "Its bowl has become an iron kettle, with a ghostly whisk hovering above. Wisps of matcha steam drift upward, and the green tea inside glows.",
       "It invites anyone who sits still to a tea ceremony. The tea it pours slowly drains the guest's strength, though the cups are exquisite."
+    ]
+  },
+  "Okidaimyo": {
+    "habitat": "Rare",
+    "entries": [
+      "It once guarded a cruel master. Now it bows only to Pecharunt and smashes the boulders of the mountain in its rage.",
+      "A heavy mantle of chain links hangs over its shoulders, and its fur stands up like a lion's mane. Plates of poisoned muscle cover its thick arms."
+    ]
+  },
+  "Munkiregent": {
+    "habitat": "Rare",
+    "entries": [
+      "It wanders through the forest by night, reading the minds of those it meets. It does as Pecharunt wishes and no more.",
+      "Its long tail now forks in two, and its fur is tipped with poison-green light. A collar of linked rings circles its neck, and it never takes it off."
+    ]
+  },
+  "Fezantessa": {
+    "habitat": "Rare",
+    "entries": [
+      "It dances in the moonlight with its train spread wide. All who watch are charmed and forget what they were doing.",
+      "Poison-green eyes mark the feathers of its sweeping train, and a fan of dark plumes frames its throat. It serves Pecharunt gracefully and demands nothing for itself."
     ]
   }
 }

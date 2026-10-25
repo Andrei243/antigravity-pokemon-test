@@ -71,6 +71,10 @@ public class SpeciesPastHundredTests
             {
                 Assert.Equal(660, Total(d.Stats));
                 Assert.InRange(rise, 1, 120); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2); Naganapex +120, from 540 (Alola's supplement)
+                // The one legendary set under 660: the Loyal Three stop at their master Pecharunt's 600 (Paldea supplement, question 1)
+                bool loyal = d.Name is "Okidaimyo" or "Munkiregent" or "Fezantessa";
+                Assert.Equal(loyal ? 600 : 660, Total(d.Stats));
+                Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
             {

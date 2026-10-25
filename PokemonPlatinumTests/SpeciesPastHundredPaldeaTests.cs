@@ -41,9 +41,9 @@ public class SpeciesPastHundredPaldeaTests
         // Question 1's default: the climb wins wherever it starts past 160: 244 to 256 for the region's own, the
         // Treasures of Ruin at 258, Paldea's Champion's level, two under the cap of 260
         var designs = SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root)).Where(d => Species(d.From).Generation == 9).ToList();
-        Assert.Equal(39, designs.Count);
+        Assert.Equal(57, designs.Count); // the 39 of the main document and the 18 of the supplement
         Assert.All(designs.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 244, 256));
-        Assert.Equal(Treasures, designs.Where(d => Species(d.From).Legendary).Select(d => d.Name));
+        Assert.Equal(Treasures.Concat(new[] { "Okidaimyo", "Munkiregent", "Fezantessa" }), designs.Where(d => Species(d.From).Legendary).Select(d => d.Name));
         Assert.All(designs.Where(d => Species(d.From).Legendary), d => Assert.Equal(258, d.Evolution.Level));
         Assert.All(designs, d => Assert.InRange(d.Evolution.Level, 1, Ruleset.Modern.LevelCap));
         Assert.Equal(256, designs.Single(d => d.Name == "Bullionaire").Evolution.Level);
@@ -219,7 +219,7 @@ public class SpeciesPastHundredPaldeaTests
             Assert.Same(Species(name), PokemonDatabase.GetByDex(number));
             Assert.True(Species(name).IsOurs);
         }
-        Assert.Equal("Trufflord", PokemonDatabase.Ours().Where(s => s.DexNumber > 2900).OrderBy(s => s.DexNumber).First().Name);
+        Assert.Equal("Trufflord", PokemonDatabase.Ours().Where(s => s.DexNumber > 2905).OrderBy(s => s.DexNumber).First().Name);
         Assert.NotNull(MoveDatabase.GetAll().FirstOrDefault(m => m.Id == 3001));
 
         // Saved and read back, and found by the number where the name is gone

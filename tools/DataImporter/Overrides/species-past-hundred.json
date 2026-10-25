@@ -2225,5 +2225,117 @@
     "stats": {"hp": 93, "attack": 127, "defense": 83, "spAttack": 151, "spDefense": 99, "speed": 107},
     "abilities": ["Beast Boost"], "legendary": true,
     "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka"]}
+  },
+
+  // Supplement, Paldea: docs/plans/D14-proposals-paldea-supplement.md, approved by the user on 2026-10-26 (all 18, every
+  // default: the Loyal Three to 600 at 258 with a Pecharunt in the party, the ancient paradox Pokémon at night and the
+  // future ones by day to 600, Zerofin with Swift Swim at 248 knowing Wave Crash).
+  "Zerofin": {
+    "from": "Palafin", "types": ["Water"], "category": "Swift Dolphin", "height": 1.6, "weight": 80.0,
+    "stats": {"hp": 100, "attack": 90, "defense": 92, "spAttack": 58, "spDefense": 82, "speed": 115},
+    "abilities": ["Swift Swim"],
+    "evolution": {"method": "LevelKnowsMove", "level": 248, "move": "Wave Crash"}
+  },
+  "Tuskendon": {
+    "from": "Great Tusk", "types": ["Ground","Fighting"], "category": "Ancient Tusk", "height": 2.6, "weight": 420.0,
+    "stats": {"hp": 125, "attack": 131, "defense": 131, "spAttack": 53, "spDefense": 63, "speed": 97},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Shriekpuff": {
+    "from": "Scream Tail", "types": ["Fairy","Psychic"], "category": "Ancient Howl", "height": 1.5, "weight": 14.0,
+    "stats": {"hp": 115, "attack": 70, "defense": 114, "spAttack": 75, "spDefense": 115, "speed": 111},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Fungoliath": {
+    "from": "Brute Bonnet", "types": ["Grass","Dark"], "category": "Ancient Mushroom", "height": 1.6, "weight": 45.0,
+    "stats": {"hp": 111, "attack": 127, "defense": 104, "spAttack": 79, "spDefense": 109, "speed": 70},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Banshemane": {
+    "from": "Flutter Mane", "types": ["Ghost","Fairy"], "category": "Ancient Wail", "height": 1.7, "weight": 6.0,
+    "stats": {"hp": 75, "attack": 55, "defense": 65, "spAttack": 135, "spDefense": 135, "speed": 135},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Saurmoth": {
+    "from": "Slither Wing", "types": ["Bug","Fighting"], "category": "Ancient Moth", "height": 3.8, "weight": 130.0,
+    "stats": {"hp": 90, "attack": 135, "defense": 94, "spAttack": 85, "spDefense": 105, "speed": 91},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Lodestatic": {
+    "from": "Sandy Shocks", "types": ["Electric","Ground"], "category": "Ancient Magnet", "height": 2.7, "weight": 90.0,
+    "stats": {"hp": 100, "attack": 81, "defense": 97, "spAttack": 121, "spDefense": 100, "speed": 101},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 250}
+  },
+  "Treadnought": {
+    "from": "Iron Treads", "types": ["Ground","Steel"], "category": "Future Tank", "height": 1.2, "weight": 380.0,
+    "stats": {"hp": 100, "attack": 112, "defense": 120, "spAttack": 72, "spDefense": 90, "speed": 106},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Cryoparcel": {
+    "from": "Iron Bundle", "types": ["Ice","Water"], "category": "Future Courier", "height": 0.9, "weight": 20.0,
+    "stats": {"hp": 76, "attack": 80, "defense": 114, "spAttack": 124, "spDefense": 70, "speed": 136},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Gauntletron": {
+    "from": "Iron Hands", "types": ["Fighting","Electric"], "category": "Future Fist", "height": 2.2, "weight": 560.0,
+    "stats": {"hp": 154, "attack": 140, "defense": 108, "spAttack": 50, "spDefense": 88, "speed": 60},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Hydrajet": {
+    "from": "Iron Jugulis", "types": ["Dark","Flying"], "category": "Future Hunter", "height": 1.6, "weight": 150.0,
+    "stats": {"hp": 94, "attack": 80, "defense": 101, "spAttack": 122, "spDefense": 95, "speed": 108},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Fusionmoth": {
+    "from": "Iron Moth", "types": ["Fire","Poison"], "category": "Future Moth", "height": 1.5, "weight": 60.0,
+    "stats": {"hp": 85, "attack": 70, "defense": 85, "spAttack": 140, "spDefense": 110, "speed": 110},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Thornframe": {
+    "from": "Iron Thorns", "types": ["Rock","Electric"], "category": "Future Spike", "height": 2.0, "weight": 420.0,
+    "stats": {"hp": 100, "attack": 134, "defense": 110, "spAttack": 70, "spDefense": 99, "speed": 87},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 250}
+  },
+  "Lunaroar": {
+    "from": "Roaring Moon", "types": ["Dragon","Dark"], "category": "Ancient Dragon", "height": 2.4, "weight": 450.0,
+    "stats": {"hp": 105, "attack": 139, "defense": 81, "spAttack": 55, "spDefense": 101, "speed": 119},
+    "abilities": ["Protosynthesis"],
+    "evolution": {"method": "LevelNight", "level": 254}
+  },
+  "Paladroid": {
+    "from": "Iron Valiant", "types": ["Fairy","Fighting"], "category": "Future Knight", "height": 1.7, "weight": 50.0,
+    "stats": {"hp": 74, "attack": 130, "defense": 90, "spAttack": 120, "spDefense": 70, "speed": 116},
+    "abilities": ["Quark Drive"],
+    "evolution": {"method": "LevelDay", "level": 254}
+  },
+  "Okidaimyo": {
+    "from": "Okidogi", "types": ["Poison","Fighting"], "category": "Warlord", "height": 2.2, "weight": 140.0,
+    "stats": {"hp": 103, "attack": 128, "defense": 115, "spAttack": 63, "spDefense": 101, "speed": 90},
+    "abilities": ["Toxic Chain"], "hiddenAbility": "Guard Dog",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Pecharunt"}
+  },
+  "Munkiregent": {
+    "from": "Munkidori", "types": ["Poison","Psychic"], "category": "Regent", "height": 1.4, "weight": 20.0,
+    "stats": {"hp": 103, "attack": 75, "defense": 91, "spAttack": 130, "spDefense": 95, "speed": 106},
+    "abilities": ["Toxic Chain"], "hiddenAbility": "Frisk",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Pecharunt"}
+  },
+  "Fezantessa": {
+    "from": "Fezandipiti", "types": ["Poison","Fairy"], "category": "Courtier", "height": 1.8, "weight": 45.0,
+    "stats": {"hp": 103, "attack": 91, "defense": 102, "spAttack": 80, "spDefense": 125, "speed": 99},
+    "abilities": ["Toxic Chain"], "hiddenAbility": "Technician",
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 258, "species": "Pecharunt"}
   }
 }
