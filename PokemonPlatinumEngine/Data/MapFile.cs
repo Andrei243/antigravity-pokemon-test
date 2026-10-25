@@ -241,6 +241,9 @@ public sealed class MapFile
 
         /// <summary>Two Pokémon at a time, when the player has two that can fight (twins, couples).</summary>
         public bool? DoubleBattle { get; set; }
+
+        /// <summary>A format of the later games (plan 14 · B6: <c>"triple"</c>); null for Platinum's single or double.</summary>
+        public string? Format { get; set; }
     }
 
     public sealed class PartyMember
@@ -504,7 +507,8 @@ public sealed class MapFile
                 DialogueBefore = t.DialogueBefore,
                 DialogueAfter = t.DialogueAfter,
                 SightRange = t.SightRange,
-                DoubleBattle = t.DoubleBattle ?? false
+                DoubleBattle = t.DoubleBattle ?? false,
+                Format = t.Format
             };
             // A trainer of Platinum's data (the gym's, the school's) takes its team, mind and items from it, as the
             // world's people do: a room needs to write only the id and the lines
@@ -638,7 +642,8 @@ public sealed class MapFile
             DialogueBefore = t.DialogueBefore,
             DialogueAfter = t.DialogueAfter,
             SightRange = t.SightRange,
-            DoubleBattle = t.DoubleBattle ? true : null
+            DoubleBattle = t.DoubleBattle ? true : null,
+            Format = t.Format
         } : null
     };
 

@@ -64,6 +64,15 @@ public partial class BattleEngine
     /// <summary>An SOS battle (plan 14 · B5): one wild Pokémon, and an empty place beside it that an ally it calls may fill.</summary>
     public bool IsSos => Format == BattleFormat.Sos;
 
+    /// <summary>A triple battle (plan 14 · B6): three places a side, reach by position.</summary>
+    public bool IsTriple => Format == BattleFormat.Triple;
+
+    /// <summary>
+    /// The Pokémon whose action is being chosen stands at an end of a triple battle's side, so its fourth command is
+    /// SHIFT, to the centre, in place of RUN (plan 14 · B6; style guide, "Battle panels", "SHIFT").
+    /// </summary>
+    public bool OffersShift => IsTriple && Kind == BattleKind.Normal && MenuBattler.Slot != BattleCore.CentreSlot && MenuBattler.Trainer == null;
+
     /// <summary>The calls answered in an SOS battle so far, as the lines shown have told (plan 14 · B5).</summary>
     public int SosChain { get; private set; }
 

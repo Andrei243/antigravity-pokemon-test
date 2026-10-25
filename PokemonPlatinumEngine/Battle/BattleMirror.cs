@@ -40,6 +40,7 @@ internal sealed class BattleMirror
         Party = Copy(trainer.Party),
         PrizeMoney = trainer.PrizeMoney,
         DoubleBattle = trainer.DoubleBattle,
+        Format = trainer.Format,
         Ai = trainer.Ai,
         Items = new List<string>(trainer.Items),
         KeyStone = trainer.KeyStone,

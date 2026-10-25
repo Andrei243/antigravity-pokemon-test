@@ -38,7 +38,14 @@ public enum BattleFormat
     /// wild side left empty for an ally it calls for help. Fought only under rules that have it
     /// (<see cref="Data.Ruleset.SosCalls"/>); anywhere else it is the single it began as (<see cref="BattleFormats.FallBack"/>).
     /// </summary>
-    Sos
+    Sos,
+    /// <summary>
+    /// A triple battle (plan 14 · B6, Black and White's): three places a side, and a move aimed at one reaches only the
+    /// places beside its user and across from it (<see cref="Sim.BattleCore.InReach"/>). Fought only under rules that have
+    /// it (<see cref="Data.Ruleset.Triples"/>) with three able to fight on each side; anywhere else it is the double, or the
+    /// single, the sides can field (<see cref="BattleFormats.FallBack"/>).
+    /// </summary>
+    Triple
 }
 
 /// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
@@ -54,6 +61,8 @@ public static class BattleFormats
         BattleFormat.Horde => side == BattleSide.Enemy ? 5 : 1,
         // The caller's place and the one an ally fills (plan 14 · B5)
         BattleFormat.Sos => side == BattleSide.Enemy ? 2 : 1,
+        // Three a side (plan 14 · B6)
+        BattleFormat.Triple => 3,
         _ => 1
     };
 
@@ -76,6 +85,14 @@ public static class BattleFormats
         // An SOS battle (plan 14 · B5): one wild Pokémon met by the player alone, under rules that have calls for help
         if (asked == BattleFormat.Sos && !partner && rules.SosCalls && trainers == 0 && wild == 1 && ownAble > 0 && kind == BattleKind.Normal)
             return BattleFormat.Sos;
+        // A triple (plan 14 · B6): the player alone with three able to fight, against one trainer's three or three wild
+        // Pokémon, under rules that have it; what can't be one is asked for as a double
+        if (asked == BattleFormat.Triple)
+        {
+            if (!partner && rules.Triples && ownAble >= 3 && (trainers == 0 ? wild >= 3 : trainers == 1 && foesAble >= 3) && kind == BattleKind.Normal)
+                return BattleFormat.Triple;
+            asked = BattleFormat.Double;
+        }
         return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
     }
 }

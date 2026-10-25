@@ -35,7 +35,8 @@ internal static class BattlePlaces
     /// <summary>
     /// Where a place stands: the middle of its side's platform alone; of two, left and right of the middle (the
     /// player's first on the left, the foe's first on the right, as in Platinum); of three to five, on the arc, the
-    /// first at the end the first of two stands on and the rest in order across to the other end.
+    /// first at the end the first of two stands on and the rest in order across to the other end. The player's side has
+    /// three only in a triple battle (plan 14 · B6), and those stand in a straight row across the arc's ends.
     /// </summary>
     public static Vector3 Spot(BattleSide side, int slot, int slots)
     {
@@ -47,7 +48,10 @@ internal static class BattlePlaces
         if (slots == 2) return spot + Vector3.UnitX * sign * (slot == 0 ? 1f : -1f) * radius * 0.5f;
         // Across the arc from the first's end (t = 1) to the other (t = -1); back is away from the other side
         float t = 1f - 2f * Math.Clamp(slot, 0, slots - 1) / (slots - 1);
-        float back = player ? 1f : -1f;
+        // The player's own three of a triple battle (plan 14 · B6) stand in a row across their platform, so that seen
+        // from behind none is in front of another and each faces the foe across from it
+        if (player) return spot + Vector3.UnitX * sign * t * radius * ArcReach;
+        float back = -1f;
         return spot + new Vector3(sign * t * radius * ArcReach, 0f, back * radius * ArcDepth * (1f - t * t));
     }
 

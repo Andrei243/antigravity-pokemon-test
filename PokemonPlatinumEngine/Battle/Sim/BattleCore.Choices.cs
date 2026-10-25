@@ -87,7 +87,16 @@ public sealed partial class BattleCore
                 if (choice.Move < 0 || choice.Move >= moves.Count)
                     return UsableMoves(b).Count == 0 ? null : Text.Of("battle.stillHasMovesIt", ("pokemon", b.Name));
                 // A move chosen to Dynamax with is held to what keeps a Max Move back (plan 06 · R22)
-                return choice.Dynamax ? WhyNotMaxMove(b, moves[choice.Move]) : WhyNotMove(b, moves[choice.Move]);
+                var noMove = choice.Dynamax ? WhyNotMaxMove(b, moves[choice.Move]) : WhyNotMove(b, moves[choice.Move]);
+                // And in a triple battle a move aimed at one Pokémon is aimed within its user's reach (plan 14 · B6)
+                if (noMove == null && IsTriple && choice.Target is { } aimed && moves[choice.Move].Data.Target == MoveTarget.Selected
+                    && !GetsTo(b, At(aimed), moves[choice.Move].Data))
+                    return Text.Of("battle.isOutOfReach", ("pokemon", At(aimed).Pokemon?.DisplayName ?? ""));
+                return noMove;
+
+            case ChoiceKind.Shift:
+                // Only a Pokémon at an end of a triple battle's side moves to the centre (plan 14 · B6)
+                return CanShift(b) ? null : Text.Of("battle.cantShift", ("pokemon", b.Name));
 
             case ChoiceKind.Switch:
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return Text.Of("battle.thereNoPokemonOfYours");

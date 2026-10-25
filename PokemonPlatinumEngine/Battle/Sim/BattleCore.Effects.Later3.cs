@@ -226,7 +226,8 @@ public sealed partial class BattleCore
         else v.AllySwitchOdds = 3;
         v.AllySwitchTurn = Turn;
 
-        var ally = IsDouble ? SlotsOf(user.Side)[1 - user.Slot] : null;
+        // In a triple battle the Pokémon at the other end, and none for the centre (plan 14 · B6; Showdown's allyswitch)
+        var ally = IsDouble ? SlotsOf(user.Side)[1 - user.Slot] : IsTriple && user.Slot != CentreSlot ? SlotsOf(user.Side)[2 - user.Slot] : null;
         if (ally?.Pokemon == null || ally.Pokemon.IsFainted || ally.Trainer != user.Trainer)
         {
             Fails();

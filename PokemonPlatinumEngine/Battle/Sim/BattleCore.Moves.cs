@@ -717,7 +717,10 @@ public sealed partial class BattleCore
     /// <summary>Who a move hits: its target type, the chosen target (or a stand-in if that one is gone).</summary>
     private List<Battler> ResolveTargets(Battler user, Move move, Battler? chosen)
     {
-        var foes = SlotsOf(Other(user.Side)).Where(b => b.IsActive).ToList();
+        // In a triple battle only the places in its user's reach, unless the move reaches anywhere (plan 14 · B6);
+        // in every other format everything is in reach
+        bool Near(Battler b) => GetsTo(user, b, move.Data);
+        var foes = SlotsOf(Other(user.Side)).Where(b => b.IsActive && Near(b)).ToList();
         switch (EffectOf(move.Data).TargetFor(user, move.Target))
         {
             case MoveTarget.User:
@@ -729,6 +732,7 @@ public sealed partial class BattleCore
             case MoveTarget.UserAndAllies:
                 return SlotsOf(user.Side).Where(b => b.IsActive).ToList();
             case MoveTarget.Ally:
+                return SlotsOf(user.Side).Where(b => b.IsActive && b != user && Near(b)).ToList();
             case MoveTarget.Allies:
                 return SlotsOf(user.Side).Where(b => b.IsActive && b != user).ToList();
             case MoveTarget.AllPokemon:
@@ -736,20 +740,20 @@ public sealed partial class BattleCore
             case MoveTarget.AllFoes:
                 return speedOrder.Where(foes.Contains).Concat(foes).Distinct().ToList();
             case MoveTarget.AllOthers:
-                return speedOrder.Concat(AllBattlers).Distinct().Where(b => b.IsActive && b != user).ToList();
+                return speedOrder.Concat(AllBattlers).Distinct().Where(b => b.IsActive && b != user && Near(b)).ToList();
             case MoveTarget.RandomFoe:
                 if (Centre() is { } drawnTo) return new List<Battler> { drawnTo };
                 return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
             default:
                 // Follow Me on the other side draws every move aimed at one Pokémon to its user, while that one stands
                 if (Centre() is { } centre) return new List<Battler> { centre };
-                if (chosen != null && chosen.IsActive && chosen != user) return Drawn(chosen);
+                if (chosen != null && chosen.IsActive && chosen != user && Near(chosen)) return Drawn(chosen);
                 // The chosen foe is gone: the move goes to the other one (an ally that fainted leaves nothing to hit)
                 if (chosen != null && chosen.Side == user.Side) return new List<Battler>();
                 return foes.Count == 0 ? foes : Drawn(foes[rng.Roll(RollKind.Target, foes.Count)]);
         }
 
-        Battler? Centre() => !(TracksItsTarget(move.Data) || KeepsItsAim(user)) && Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre ? centre : null;
+        Battler? Centre() => !(TracksItsTarget(move.Data) || KeepsItsAim(user)) && Field.Side(Other(user.Side)).FollowMe is { } place && At(place) is { IsActive: true } centre && Near(centre) ? centre : null;
 
         // Lightning Rod and Storm Drain (BattleSystem_CheckRedirectionAbilities): an Electric or a Water move aimed
         // at one Pokémon goes to the fastest holder that isn't its user, unless it is on its turn of getting ready
@@ -758,7 +762,7 @@ public sealed partial class BattleCore
         {
             if (Has(user, "Normalize") || Has(user, "Mold Breaker") || (TracksItsTarget(move.Data) || KeepsItsAim(user)) || move.Type is not (PokemonType.Electric or PokemonType.Water)) return new List<Battler> { target };
             if (EffectOf(move.Data).Charge != null && !user.Volatile.Charging) return new List<Battler> { target };
-            var holder = BySpeed().FirstOrDefault(b => b.IsActive && b != user && b.Ability?.Effect?.DrawsMovesOf(move.Type) == true);
+            var holder = BySpeed().FirstOrDefault(b => b.IsActive && b != user && Near(b) && b.Ability?.Effect?.DrawsMovesOf(move.Type) == true);
             if (holder == null || holder == target) return new List<Battler> { target };
             holder.Turn.DrewTheMove = true;
             return new List<Battler> { holder };
