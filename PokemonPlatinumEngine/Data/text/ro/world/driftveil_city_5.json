@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The lift is for residents, I'm afraid. The restaurant is open to everyone, though!"
         ],
         "text": [
-          ""
+          "Liftul e pentru locatari, mă tem. Restaurantul e deschis tuturor, însă!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Waiter"
         ],
         "text": [
-          ""
+          "Chelner"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Today's special is fish fresh off the boats. The miners from the Gym eat here every lunchtime!"
         ],
         "text": [
-          ""
+          "Specialitatea zilei e pește proaspăt din bărci. Minerii de la Arenă mănâncă aici în fiecare zi la prânz!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I came for the fish and stayed for the view. Driftveil does that to people."
         ],
         "text": [
-          ""
+          "Am venit pentru pește și am rămas pentru priveliște. Așa face Driftveil cu oamenii."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Lunch break! Then it's back down the mine. The boss works harder than any of us."
         ],
         "text": [
-          ""
+          "Pauză de masă! Apoi înapoi în mină. Șeful muncește mai mult decât oricare dintre noi."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfan"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The workers say Clay's Gym is full of lifts going up and down. I'd get dizzy!"
         ],
         "text": [
-          ""
+          "Muncitorii spun că Arena lui Clay e plină de lifturi care urcă și coboară. Mi s-ar face amețeală!"
         ]
       }
     }
@@ -97,7 +97,7 @@
         "The lift's call button.\nIt takes residents up to their flats."
       ],
       "text": [
-        ""
+        "Butonul de chemare al liftului.\nÎi duce pe locatari sus, la apartamente."
       ]
     },
     "10426": {
@@ -105,7 +105,7 @@
         "Letterboxes for the flats upstairs."
       ],
       "text": [
-        ""
+        "Cutii poștale pentru apartamentele de la etaj."
       ]
     }
   }

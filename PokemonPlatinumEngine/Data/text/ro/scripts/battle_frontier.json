@@ -107,7 +107,7 @@
         "I guide Trainers along the road between the Battle Frontier and Route 40, in Johto."
       ],
       "text": [
-        ""
+        "Eu îi însoțesc pe Antrenori pe drumul dintre Battle Frontier și Ruta 40, în Johto."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Shall I take you back along the road to Route 40?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi pe drumul spre Ruta 40?"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Very good. Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Foarte bine. Vino după mine și ține-te aproape."
       ]
     },
     {
@@ -131,7 +131,7 @@
         "{player} followed the guide back along the road to Route 40..."
       ],
       "text": [
-        ""
+        "{player} a urmat ghidul înapoi pe drumul spre Ruta 40..."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "Take your time. I'll be here whenever you'd like to go back."
       ],
       "text": [
-        ""
+        "Fără grabă. Voi fi aici ori de câte ori vrei să te întorci."
       ]
     }
   ]

@@ -4,7 +4,7 @@
       "Driftveil City"
     ],
     "text": [
-      ""
+      "Orașul Driftveil"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Clay"
         ],
         "text": [
-          ""
+          "Clay"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Noel"
         ],
         "text": [
-          ""
+          "Noel"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Worker Noel: Mind your head! You're in Clay's mine now, and we dig for battles too!"
         ],
         "text": [
-          ""
+          "Muncitorul Noel: Atenție la cap! Ești în mina lui Clay, iar aici săpăm și după lupte!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Worker Noel: Buried! Go on up, the tunnels only get deeper."
         ],
         "text": [
-          ""
+          "Muncitorul Noel: Îngropat! Urcă mai departe, tunelurile se adâncesc doar."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Tavarius"
         ],
         "text": [
-          ""
+          "Tavarius"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Worker Tavarius: A good miner reads the rock. Let's see if you can read a battle!"
         ],
         "text": [
-          ""
+          "Muncitorul Tavarius: Un miner bun citește stânca. Să vedem dacă știi să citești o luptă!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Worker Tavarius: I read that one all wrong."
         ],
         "text": [
-          ""
+          "Muncitorul Tavarius: Pe asta am citit-o complet greșit."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Tibor"
         ],
         "text": [
-          ""
+          "Tibor"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Worker Tibor: The boss pays us in ore and in battles. I'll take a battle today!"
         ],
         "text": [
-          ""
+          "Muncitorul Tibor: Șeful ne plătește în minereu și în lupte. Azi iau o luptă!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Worker Tibor: Back to the ore, then."
         ],
         "text": [
-          ""
+          "Muncitorul Tibor: Înapoi la minereu, atunci."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Niel"
         ],
         "text": [
-          ""
+          "Niel"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Worker Niel: Ground types shake off Electric moves like dust. Got anything better?"
         ],
         "text": [
-          ""
+          "Muncitorul Niel: Tipurile Ground scutură atacurile Electric ca pe praf. Ai ceva mai bun?"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Worker Niel: You had something better, all right."
         ],
         "text": [
-          ""
+          "Muncitorul Niel: Aveai ceva mai bun, într-adevăr."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Pasqual"
         ],
         "text": [
-          ""
+          "Pasqual"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Worker Pasqual: Halfway up already? Then you'll have to dig through me!"
         ],
         "text": [
-          ""
+          "Muncitorul Pasqual: Ai ajuns deja la jumătate? Atunci va trebui să sapi prin mine!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Worker Pasqual: Dug clean through."
         ],
         "text": [
-          ""
+          "Muncitorul Pasqual: Ai săpat de-a dreptul prin mine."
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Maynard"
         ],
         "text": [
-          ""
+          "Maynard"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "Worker Maynard: The boss is just up ahead. Nobody gets to him without getting past me!"
         ],
         "text": [
-          ""
+          "Muncitorul Maynard: Șeful e chiar mai încolo. Nimeni nu ajunge la el fără să treacă de mine!"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "Worker Maynard: Nobody but you. Go on, he's waiting."
         ],
         "text": [
-          ""
+          "Muncitorul Maynard: Nimeni în afară de tine. Du-te, te așteaptă."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Friedrich"
         ],
         "text": [
-          ""
+          "Friedrich"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "Worker Friedrich: Fresh off the lift? Welcome to the mine. Here's your first shift!"
         ],
         "text": [
-          ""
+          "Muncitorul Friedrich: Tocmai ai coborât cu liftul? Bun venit în mină. Iată prima ta tură!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "Worker Friedrich: Shift's over. Up you go."
         ],
         "text": [
-          ""
+          "Muncitorul Friedrich: Tura s-a terminat. Hai, sus cu tine."
         ]
       }
     }

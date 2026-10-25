@@ -572,3 +572,11 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **Names in the lines**: Bolt Badge "Insigna Fulgerului", Heart Scale "Solz-Inimă", Soft Sand "Nisip Moale", Relic Castle "Castelul Relicvelor", Battle Subway "Metroul de Luptă" (its Bosses "Șefii Metroului"), Big Stadium "Marele Stadion", Small Court "Terenul Mic", Team Plasma "Echipa Plasma" and its Grunt "Membru Plasma" as `classes` has it, Cooltrainer "Antrenor As" / "Antrenoare As" by the person, Ever Grande City "Orașul Ever Grande", Victory Road "Drumul Victoriei"; people's names, Join Avenue and the Unova towns kept in English.
   - **The player without gender**: no line gives the player a gendered adjective or vocative.
   - **Left**: whatever wave 47's other lanes and wave 48 write in English, the next slice.
+
+- [x] N6x Wave 48's lines in Romanian (done 2026-10-25, wave 49)
+
+- **N6x, done 2026-10-25 (wave 49)**: everything written in English in wave 48 and not yet translated, at the commit the wave started from (d53e9fc0).
+  - **The lines**: 447 entries in 324 distinct lines, in 40 files: Driftveil City with its drawbridge, Pokémon Center, market and flats, Clay's Gym and workers (`DriftveilCity_Gym`), Rood and the former Team Plasma members, Bianca; Nimbasa's remaining rooms, the Ferris wheel and the Musical Theater; Route 5 (two halves) and its gate with the Backers; Hoenn's `HoennChapterThirteen` (Mom, Dad, the television and the colour question); Lilycove's harbour and its captain; Route 40's gate house and the Battle Frontier's guide. `extract ro --update` added nothing. The report: nothing untranslated, stale, unknown or wrong. The content check measured 33,804 lines: nothing found. `--filter ScriptTranslationTests`: 19 passed.
+  - **Names in the lines**: Quake Badge "Insigna Cutremurului", Props "Accesorii", Hidden Grotto "Grotă Ascunsă", Ferris wheel "roata panoramică", Driftveil Drawbridge "Podul Mobil Driftveil", speaker tags "Muncitorul <nume>:"; people, Team Plasma ("Echipa Plasma"), Pokémon World Tournament, Battle Institute, Battle Subway, Big Stadium and Small Court kept as in N6w.
+  - **The player without gender**: no gendered adjective or vocative.
+  - **Left**: whatever wave 49 writes in English, the next slice. `ui.json` needed no new key.

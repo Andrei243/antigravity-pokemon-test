@@ -77,7 +77,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{player}! You're up! The whole of Littleroot is talking about you. My child, the Champion of Hoenn!"
       ],
       "text": [
-        ""
+        "{player}! Te-ai trezit! Tot Littleroot vorbește despre tine. Copilul meu, Campionul din Hoenn!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Oh, but come and look, quick! There's a special report on the television."
       ],
       "text": [
-        ""
+        "Oh, dar vino să vezi, repede! E un reportaj special la televizor."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "...we interrupt this programme for a report from across Hoenn. A Pokémon nobody can name has been seen flying over the routes."
       ],
       "text": [
-        ""
+        "...întrerupem programul pentru un reportaj din întreg Hoenn. Un Pokémon pe care nimeni nu-l poate numi a fost văzut zburând deasupra rutelor."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "It flies faster than a jet, they say. But no two people who saw it can agree on what colour it was..."
       ],
       "text": [
-        ""
+        "Zboară mai repede decât un avion cu reacție, spun ei. Dar nu există doi martori care să se pună de acord ce culoare avea..."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "I only caught a glimpse of it out of the window this morning. What colour did it look like to you, {player}?"
       ],
       "text": [
-        ""
+        "Eu doar l-am zărit pe fereastră azi-dimineață. Ce culoare ți s-a părut ție, {player}?"
       ]
     },
     {
@@ -127,9 +127,9 @@
         "BLUE"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Ce culoare avea Pokémonul?",
+        "ROȘU",
+        "ALBASTRU"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Red? Then it might be the one the old stories call Latias. Fancy that, flying about Hoenn right now!"
       ],
       "text": [
-        ""
+        "Roșu? Atunci poate fi cel pe care poveștile vechi îl numesc Latias. Auzi tu, zboară prin Hoenn chiar acum!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Blue? Then it might be the one the old stories call Latios. Fancy that, flying about Hoenn right now!"
       ],
       "text": [
-        ""
+        "Albastru? Atunci poate fi cel pe care poveștile vechi îl numesc Latios. Auzi tu, zboară prin Hoenn chiar acum!"
       ]
     },
     {
@@ -153,7 +153,7 @@
         "Dad"
       ],
       "text": [
-        ""
+        "Tata"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "{player}! I came as soon as I heard. The Champion! I always knew you'd go further than me one day."
       ],
       "text": [
-        ""
+        "{player}! Am venit cum am aflat. Campionul! Am știut mereu că vei ajunge mai departe decât mine într-o zi."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "I've brought you something. Think of it as a present from a proud father."
       ],
       "text": [
-        ""
+        "Ți-am adus ceva. Ia-l ca pe un cadou de la un tată mândru."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "That ticket lets you board the S.S. Tidal at Slateport or Lilycove. And ships out of Lilycove go much further still."
       ],
       "text": [
-        ""
+        "Biletul acela te lasă să urci pe S.S. Tidal la Slateport sau la Lilycove. Iar vapoarele din Lilycove merg mult mai departe."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Well, a Gym Leader can't stay away from his Gym for long. Look after your mother, {player}. I'll see you soon!"
       ],
       "text": [
-        ""
+        "Ei bine, un Lider de Arenă nu poate sta mult departe de Arena lui. Ai grijă de mama ta, {player}. Ne vedem în curând!"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "That's your father for you. He was so proud he could hardly stand still!"
       ],
       "text": [
-        ""
+        "Așa e tatăl tău. Era atât de mândru că abia stătea locului!"
       ]
     }
   ],

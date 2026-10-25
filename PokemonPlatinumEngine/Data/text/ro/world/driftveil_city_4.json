@@ -6,7 +6,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My husband brings goods across the sea. I sell them at the market. A good arrangement!"
         ],
         "text": [
-          ""
+          "Soțul meu aduce mărfuri peste mare. Eu le vând la piață. O înțelegere bună!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome home! Oh, you don't live here? Then I can't let you ride the lift, I'm sorry."
         ],
         "text": [
-          ""
+          "Bun venit acasă! Ah, nu locuiești aici? Atunci nu te pot lăsa să folosești liftul, îmi pare rău."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentleman"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Driftveil was built on trade. Ore from Clay's mines goes out, and treasures from the world come in."
         ],
         "text": [
-          ""
+          "Driftveil s-a construit pe comerț. Minereul din minele lui Clay pleacă, iar comorile lumii sosesc."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "The lift's call button.\nIt takes residents up to their flats."
       ],
       "text": [
-        ""
+        "Butonul de chemare al liftului.\nÎi duce pe locatari sus, la apartamente."
       ]
     },
     "10425": {
@@ -69,7 +69,7 @@
         "Letterboxes for the flats upstairs."
       ],
       "text": [
-        ""
+        "Cutii poștale pentru apartamentele de la etaj."
       ]
     }
   }
