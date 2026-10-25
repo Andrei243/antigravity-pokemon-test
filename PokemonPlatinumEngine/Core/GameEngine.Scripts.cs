@@ -47,6 +47,9 @@ public partial class GameEngine
     /// <summary>True while a script has the field: the player's keys do nothing.</summary>
     public bool ScriptRunning => flow.Runner != null && flow.Runner.IsRunning;
 
+    /// <summary>What each script that went wrong said, in order (plan 16 · T7: the playthrough bot reports them).</summary>
+    internal List<string> ScriptsGoneWrong { get; } = new();
+
     /// <summary>The answers on screen for a question a script asked: tests and the harness pick one with its own buttons.</summary>
     public ChoiceBox Choice => flow.Choice;
 
@@ -739,6 +742,7 @@ public partial class GameEngine
         {
             // A script that goes wrong ends there; the game goes on
             Log.Error("A script went wrong: " + e.Message);
+            ScriptsGoneWrong.Add(e.Message);
             ShowNotification(Text.Of("engine.scriptWentWrong", ("problem", e.Message)));
             flow.Runner.Abort();
         }
