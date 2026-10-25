@@ -105,6 +105,7 @@ public class SpeciesPastHundredTests
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
             5 => (165, legend ? 190 : 183),
+            6 => from.Name == "Sylveon" ? (120, 120) : (188, 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions
             _ => (101, legend ? 160 : 130)
         };
     }
