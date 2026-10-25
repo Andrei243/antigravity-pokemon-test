@@ -1,0 +1,27 @@
+{
+  "key": "battle_frontier_lounge_8",
+  "index": 458,
+  "name": "Battle Frontier",
+  "matrix": 401,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "battle_frontier_outside_east", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "wander_around", "x": 4, "z": 5, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "BattleFrontier_Lounge8_EventScript_NinjaBoy" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_west", "x": 8, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge8_EventScript_Man" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_west", "x": 8, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge8_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

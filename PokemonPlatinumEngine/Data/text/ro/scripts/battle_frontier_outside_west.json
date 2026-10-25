@@ -1,0 +1,52 @@
+{
+  "FerryAttendant": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Frontier! The ferry back to the mainland leaves whenever you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take you back to Lilycove City?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very good. Please come aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back to Lilycove City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enjoy the Frontier! I'll be here when you want to sail home."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

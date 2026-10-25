@@ -1,0 +1,31 @@
+# Scott's house on the Battle Frontier island (plan 21 · H12, part b). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/BattleFrontier_ScottsHouse/scripts.inc).
+#
+# Scott gives a Champion a few Battle Points the first time they call (FLAG_RECEIVED_SCOTTS_BATTLE_POINTS, ours: Emerald
+# gives one to four by how often the player met him), and, while the island's halls are shut (plan 14 · B8 to B10), offers
+# the crossing to Sinnoh's Battle Frontier as his ferry on Lilycove's quay does (lilycove_city_harbor.txt; rulings, "Scott's
+# way to the Battle Frontier"). The way back is the Hoenn guide on Sinnoh's grounds, who sails to Lilycove City.
+
+
+script Scott
+  face self player
+  speaker "Scott"
+  if flag FLAG_RECEIVED_SCOTTS_BATTLE_POINTS goto Offer
+  say "Welcome to my home, {player}! I've watched you since the very start of your journey."
+  say "A little something to begin your challenges with."
+  frontier give 3
+  setflag FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
+  text "{player} received 3 Battle Points!"
+label Offer
+  say "The halls of this island aren't ready yet. The Frontier Brains are still at Sinnoh's Battle Frontier."
+  ask "Shall I take you to the Battle Frontier in Sinnoh?"
+  if no goto Stay
+  say "Splendid! Your team comes along, and your records stay as they are."
+  fade out 0.8
+  text "{player} sailed with Scott for the Battle Frontier..."
+  travel to "BattleFrontier" 47 51 up
+  fade in 0.8
+  end
+label Stay
+  say "Whenever you're ready. I'll be here."
+  end

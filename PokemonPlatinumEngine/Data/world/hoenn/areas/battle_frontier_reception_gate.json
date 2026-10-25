@@ -1,0 +1,30 @@
+{
+  "key": "battle_frontier_reception_gate",
+  "index": 457,
+  "name": "Battle Frontier",
+  "matrix": 400,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 13, "to": "battle_frontier_outside_west", "toWarp": 8 },
+    { "x": 4, "z": 1, "to": "battle_frontier_outside_west", "toWarp": 9 }
+  ],
+  "objects": [
+    { "id": "frontier_reception_greeter", "looks": "teala", "movement": "look_east", "x": 0, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_ReceptionGate_EventScript_Greeter" },
+    { "id": "frontier_reception_guide", "looks": "teala", "movement": "look_west", "x": 8, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_ReceptionGate_EventScript_FacilityGuide" },
+    { "id": "man_2", "looks": "man_2", "movement": "look_west", "x": 8, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_ReceptionGate_EventScript_RulesGuide" },
+    { "id": "frontier_reception_scott", "looks": "scott", "movement": "look_south", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT", "script": "" },
+    { "id": "man_2_2", "looks": "man_2", "movement": "look_east", "x": 0, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_ReceptionGate_EventScript_FrontierPassGuide" }
+  ],
+  "signs": [],
+  "triggers": []
+}

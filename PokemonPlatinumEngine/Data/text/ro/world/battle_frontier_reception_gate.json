@@ -1,0 +1,63 @@
+{
+  "people": {
+    "frontier_reception_greeter": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Battle Frontier, where the toughest Trainers meet! Please enjoy your stay."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_reception_guide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2_2": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_reception_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

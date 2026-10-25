@@ -1,0 +1,12 @@
+# The Battle Frontier island's Poké Mart (plan 21 · H12, part b). docs/scripts.md describes the language; the lines are
+# our own. The clerk sells the League's stock (marts.json's ever_grande_league): Emerald's vitamins are traded for
+# Battle Points at the Exchange Service Corner instead.
+
+
+script FrontierClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome to the Frontier's Mart! What can I get for you?"
+  shop "ever_grande_league"
+  say "Thank you! Good luck in the halls."
+  end

@@ -1,0 +1,51 @@
+{
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old man over there can tell how strong a Pokémon will grow just by looking at it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He told me my Pokémon was nothing special. I'm going to prove him wrong!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

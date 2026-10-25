@@ -1,0 +1,12 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b): the Frontier's know-all and his friends
+  "area": "battle_frontier_lounge_2",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "maniac": { "name": "Maniac", "dialog": [ "I know everything that happens on this island! Right now everyone is talking about the halls that haven't opened yet." ] },
+    "maniac_2": { "name": "Maniac", "dialog": [ "He knows everything, they say. He told me the Dome would open last week." ] },
+    "maniac_3": { "name": "Maniac", "dialog": [ "He also told me it would open the week before." ] },
+    "maniac_4": { "name": "Maniac", "dialog": [ "I come here for the gossip, not the battles." ] },
+    "running_triathlete_f": { "name": "Triathlete", "dialog": [ "The Frontier's Brains train harder than anyone. I'd like to see them run a lap, though!" ] }
+  }
+}

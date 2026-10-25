@@ -1,0 +1,156 @@
+{
+  "people": {
+    "teala": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ranking Hall honours the Frontier's best streaks. The boards will fill as the island's halls open."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Ninja Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One day my name will be on one of these boards. Then everyone will know it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The boards are empty! I guess nobody's had a long enough streak yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords": {
+      "en": [
+        "BATTLE TOWER: SINGLE BATTLES\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": {
+      "en": [
+        "BATTLE TOWER: DOUBLE BATTLES\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": {
+      "en": [
+        "BATTLE TOWER: MULTI BATTLES\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": {
+      "en": [
+        "BATTLE TOWER: LINK MULTI BATTLES\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_ArenaRecords": {
+      "en": [
+        "BATTLE ARENA\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_PalaceRecords": {
+      "en": [
+        "BATTLE PALACE\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_FactoryRecords": {
+      "en": [
+        "BATTLE FACTORY\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_DomeRecords": {
+      "en": [
+        "BATTLE DOME\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_PikeRecords": {
+      "en": [
+        "BATTLE PIKE\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_PyramidRecords": {
+      "en": [
+        "BATTLE PYRAMID\nNo records yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign": {
+      "en": [
+        "The records of the Dome, the Pike and the Factory."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn": {
+      "en": [
+        "The records of the Palace, the Arena and the Pyramid."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

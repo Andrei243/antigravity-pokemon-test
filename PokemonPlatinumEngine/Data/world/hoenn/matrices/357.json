@@ -1,0 +1,19 @@
+{
+  "id": 357,
+  "width": 4,
+  "height": 3,
+  "chunks": [
+    "689 690 691 692",
+    "693 694 695 696",
+    "697 698 699 700"
+  ],
+  "areas": [
+    " 0  0  1  1",
+    " 0  0  1  1",
+    " 0  0  1  1"
+  ],
+  "areaKeys": [
+    "battle_frontier_outside_west",
+    "battle_frontier_outside_east"
+  ]
+}

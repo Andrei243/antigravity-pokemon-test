@@ -1,0 +1,33 @@
+# The Battle Frontier island's east half (plan 21 · H12, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/BattleFrontier_OutsideEast/scripts.inc).
+#
+# The strange tree by the water is Emerald's Sudowoodo (FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO). Watered with the Wailmer
+# Pail it jumps up and battles at level 40; beaten or caught it is gone for good, run from it stays.
+
+
+script Sudowoodo
+  speaker none
+  if not item "Wailmer Pail" goto Wiggles
+  scene "The strange tree of the Battle Frontier"
+  sound "bump"
+  text "It's an odd tree. It is wiggling about!"
+  ask "Water the tree with the Wailmer Pail?"
+  if no goto NotNow
+  text "{player} watered the tree with the Wailmer Pail!"
+  sound "use_water_sport"
+  text "The tree hated the water! It leapt up and attacked!"
+  wildbattle "Sudowoodo" 40
+  if result == 2 goto Fled
+  hide self
+  setflag FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO
+  endscene
+  end
+label NotNow
+  endscene
+  end
+label Fled
+  endscene
+  end
+label Wiggles
+  text "It's an odd tree. It is wiggling about, though there is no wind."
+  end

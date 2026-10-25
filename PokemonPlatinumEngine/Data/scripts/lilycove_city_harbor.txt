@@ -46,8 +46,11 @@ script FerryAttendant
   text "{player} was given a ferry pass for Southern Island!"
   say "There's an island far to the south that no ferry calls at, with a garden in the middle of it. The pass lets my ferry sail there for you."
 label Offer
+  # Plan 21 · H12, part b: with Dad's S.S. Ticket the ferry also sails to the Battle Frontier island, to its quay at 19, 67
+  if flag FLAG_RECEIVED_SS_TICKET goto Choose
   ask "Shall I take you to Southern Island?"
   if no goto Stay
+label Southern
   say "Wonderful! Come aboard."
   fade out 0.8
   text "{player} sailed for Southern Island..."
@@ -58,4 +61,14 @@ label Closed
   end
 label Stay
   say "Of course. Come back whenever you like."
+  end
+label Choose
+  choose "Where would you like to sail?" "SOUTHERN ISLAND" "BATTLE FRONTIER" "NOWHERE"
+  if result == 0 goto Southern
+  if result == 2 goto Stay
+  text "{player} showed the S.S. Ticket."
+  say "The Battle Frontier it is! Please come aboard."
+  fade out 0.8
+  text "{player} sailed for the Battle Frontier..."
+  warp "HoennBattleFrontier" 19 67 up
   end

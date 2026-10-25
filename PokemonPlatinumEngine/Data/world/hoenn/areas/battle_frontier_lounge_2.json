@@ -1,0 +1,30 @@
+{
+  "key": "battle_frontier_lounge_2",
+  "index": 450,
+  "name": "Battle Frontier",
+  "matrix": 393,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "battle_frontier_outside_west", "toWarp": 3 },
+    { "x": 2, "z": 7, "to": "battle_frontier_outside_west", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "maniac", "looks": "maniac", "movement": "look_east", "x": 8, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge2_EventScript_FrontierManiac" },
+    { "id": "maniac_2", "looks": "maniac", "movement": "look_west", "x": 10, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge2_EventScript_Maniac1" },
+    { "id": "maniac_3", "looks": "maniac", "movement": "look_west", "x": 10, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge2_EventScript_Maniac2" },
+    { "id": "running_triathlete_f", "looks": "running_triathlete_f", "movement": "wander_around", "x": 4, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "BattleFrontier_Lounge2_EventScript_TriathleteF" },
+    { "id": "maniac_4", "looks": "maniac", "movement": "look_west", "x": 10, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge2_EventScript_Maniac3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

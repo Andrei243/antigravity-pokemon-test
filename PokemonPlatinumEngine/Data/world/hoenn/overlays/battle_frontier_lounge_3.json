@@ -1,0 +1,13 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b): Emerald's gambler, who bets Battle Points on a
+  // challenger's streak, waits for the island's halls (plan 14 · B8 to B10)
+  "area": "battle_frontier_lounge_3",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "hiker": { "name": "Gambler", "dialog": [ "I like to bet points on who'll win at the halls. With them all shut, there's nothing to bet on!" ] },
+    "fat_man": { "name": "Man", "dialog": [ "We're talking business here. Big business. Move along." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "He bets on other people's battles. I'd rather battle myself." ] },
+    "pokefan_f": { "name": "Pokéfan", "dialog": [ "I put my points on a champion once. She lost in the first round." ] },
+    "man_3": { "name": "Man", "dialog": [ "This lounge is quieter than the others. Most days, anyway." ] }
+  }
+}

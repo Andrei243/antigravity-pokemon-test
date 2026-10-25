@@ -5878,3 +5878,33 @@ places the plan lists for H12 are left (the plan's status line says which).
   here it comes down at once to the tile before the stone.
 - **Altering Cave stays unbuilt**: its warp on Route 103 is a plain rock tile that nobody can walk into in Emerald either
   (the reader leaves such a warp as a way no one can take), and its other wild tables are the Mystery Gift's.
+
+## The Battle Frontier island (2026-10-26, plan 21 · H12, part b)
+
+Emerald's Battle Frontier island (`HoennBattleFrontier`, matrix 357: its west and east halves stitched into one map, as
+the Safari Zone's six are), with the rooms of its grounds: the reception gate, the Pokémon Center on two floors, the
+Mart, the Exchange Service Corner, Scott's house, the Ranking Hall and eight lounges. The lines are our own.
+
+- **The way there** is Lilycove's ferry desk (decision 2: every voyage out of Lilycove): a Champion of Hoenn who holds
+  Dad's S.S. Ticket (`FLAG_RECEIVED_SS_TICKET`) chooses between Southern Island and the Battle Frontier, and is set down on
+  the island's quay at 19, 67; without the ticket the desk asks only about Southern Island, as before. The attendant on
+  the quay sails back to Lilycove's harbour (8, 11). Emerald's ferry to Slateport and the S.S. Tidal's cabins (its
+  Slateport-to-Lilycove cruise) are not built.
+- **The halls stay shut.** The island's seven halls (the Tower, Dome, Palace, Arena, Factory, Pike and Pyramid) are
+  `locked` warps, signs saying so, until plan 14 · B8 to B10 build the five of Emerald's own; the Frontier keeps one set
+  of records and Battle Points, Sinnoh's (plan 06 · R18; "Scott's way to the Battle Frontier"). **Scott's house** is
+  where the island meets them: Scott gives 3 Battle Points the first time (`FLAG_RECEIVED_SCOTTS_BATTLE_POINTS`, ours;
+  Emerald gives one to four by how often he was met) and offers the crossing to Sinnoh's grounds (`travel to
+  "BattleFrontier" 47 51 up`), whose Hoenn guide sails back to Lilycove. In the reception gate Scott gives his Frontier
+  Pass to a Champion who sailed over without taking it on the quay (`FLAG_RECEIVED_FRONTIER_PASS`, which hides him there).
+- **The Exchange Service Corner** trades the same prizes as Sinnoh's booths (`frontier prize items` and `machines`): one
+  set of points, one list. Emerald's dolls and cushions for Battle Points are not offered (their two clerks say the
+  stock hasn't come), nor Lounge 7's two move tutors for Battle Points, Lounge 3's gambler, Lounge 5's nature girl or
+  Lounge 6's trade, whose people talk. Lounge 1's breeder judges a Pokémon by its IVs as the Battle Tower's judge does
+  (`frontier judge`). The Ranking Hall's boards wait for the island's halls.
+- **The Mart** sells the League's stock (`ever_grande_league`); Emerald's vitamins there are the Exchange's prizes.
+- **The strange tree** in the south-east is Emerald's Sudowoodo: watered with the Wailmer Pail it battles at level 40,
+  gone once beaten or caught (`FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO`), there again if fled from.
+- **Left out**: Emerald's ninth lounge, whose door is a blocked tile nobody reaches; Artisan Cave (its two ways in
+  `locked`, Smeargle's cave being plan 21 · H12's later part); the island's own song (it plays Lilycove's, as Sinnoh's
+  Frontier plays Veilstone's); the halls' buildings, which the import draws only where a warp leads somewhere.

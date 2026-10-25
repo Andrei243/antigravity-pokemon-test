@@ -359,7 +359,25 @@
     { "name": "DesertRuins", "matrix": 193, "area": "desert_ruins", "trees": "Round", "setting": "Cave" },
     { "name": "IslandCave", "matrix": 254, "area": "island_cave", "trees": "Round", "setting": "Cave" },
     { "name": "SouthernIsland_Exterior", "matrix": 362, "area": "southern_island_exterior", "trees": "Round" },
-    { "name": "SouthernIsland_Interior", "matrix": 363, "area": "southern_island_interior", "trees": "Round", "setting": "Cave" }
+    { "name": "SouthernIsland_Interior", "matrix": 363, "area": "southern_island_interior", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H12, part b: the Battle Frontier island (its two halves stitched into one map, as the Safari Zone's
+    // are) and the rooms of its grounds; the seven halls' lobbies stay shut (plan 14 · B8 to B10)
+    { "name": "HoennBattleFrontier", "matrix": 357, "trees": "Round" },
+    { "name": "BattleFrontier_ReceptionGate", "matrix": 400, "area": "battle_frontier_reception_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_PokemonCenter_1F", "matrix": 403, "area": "battle_frontier_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_PokemonCenter_2F", "matrix": 404, "area": "battle_frontier_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Mart", "matrix": 405, "area": "battle_frontier_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_ExchangeServiceCorner", "matrix": 392, "area": "battle_frontier_exchange_service_corner", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_ScottsHouse", "matrix": 396, "area": "battle_frontier_scotts_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_RankingHall", "matrix": 390, "area": "battle_frontier_ranking_hall", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge1", "matrix": 391, "area": "battle_frontier_lounge_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge2", "matrix": 393, "area": "battle_frontier_lounge_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge3", "matrix": 394, "area": "battle_frontier_lounge_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge4", "matrix": 395, "area": "battle_frontier_lounge_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge5", "matrix": 397, "area": "battle_frontier_lounge_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge6", "matrix": 398, "area": "battle_frontier_lounge_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge7", "matrix": 399, "area": "battle_frontier_lounge_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "BattleFrontier_Lounge8", "matrix": 401, "area": "battle_frontier_lounge_8", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -493,6 +511,12 @@
     "lilycove_city_contest_lobby", "lilycove_city_contest_hall",
     // Plan 21 · H12, part a: the Regis and Southern Island (Altering Cave stays unbuilt: its way in is a plain rock wall)
     "underwater_route_134", "underwater_sealed_chamber", "sealed_chamber_outer_room", "sealed_chamber_inner_room",
-    "desert_ruins", "island_cave", "southern_island_exterior", "southern_island_interior"
+    "desert_ruins", "island_cave", "southern_island_exterior", "southern_island_interior",
+    // Plan 21 · H12, part b: the Battle Frontier island and the rooms of its grounds
+    "battle_frontier_outside_west", "battle_frontier_outside_east", "battle_frontier_reception_gate",
+    "battle_frontier_pokemon_center_1f", "battle_frontier_pokemon_center_2f", "battle_frontier_mart",
+    "battle_frontier_exchange_service_corner", "battle_frontier_scotts_house", "battle_frontier_ranking_hall",
+    "battle_frontier_lounge_1", "battle_frontier_lounge_2", "battle_frontier_lounge_3", "battle_frontier_lounge_4",
+    "battle_frontier_lounge_5", "battle_frontier_lounge_6", "battle_frontier_lounge_7", "battle_frontier_lounge_8"
   ]
 }

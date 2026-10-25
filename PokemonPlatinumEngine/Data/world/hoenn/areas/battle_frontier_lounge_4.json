@@ -1,0 +1,27 @@
+{
+  "key": "battle_frontier_lounge_4",
+  "index": 452,
+  "name": "Battle Frontier",
+  "matrix": 395,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "battle_frontier_outside_west", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_north", "x": 4, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge4_EventScript_Woman" },
+    { "id": "cook", "looks": "cook", "movement": "wander_around", "x": 6, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge4_EventScript_Cook" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_east", "x": 0, "z": 5, "facing": 3, "rangeX": 2, "rangeZ": 1, "script": "BattleFrontier_Lounge4_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

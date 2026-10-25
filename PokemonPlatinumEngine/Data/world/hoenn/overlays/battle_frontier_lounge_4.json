@@ -1,0 +1,10 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b)
+  "area": "battle_frontier_lounge_4",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "woman_3": { "name": "Woman", "dialog": [ "I come to the lounges to rest between challenges. The chairs are wonderfully soft." ] },
+    "cook": { "name": "Cook", "dialog": [ "Trainers battle better on a full stomach! Can I tempt you with a snack?" ] },
+    "man_3": { "name": "Man", "dialog": [ "My Pokémon fought hard today. We're taking the afternoon off." ] }
+  }
+}

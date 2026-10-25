@@ -1,0 +1,33 @@
+# A lounge of the Battle Frontier island (plan 21 · H12, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/BattleFrontier_Lounge1/scripts.inc): the old breeder judges a Pokémon's potential
+# by its six IVs, as the Battle Tower's judge does in Sinnoh (BattleTower.txt, StatsJudge; `frontier judge`).
+
+
+script Breeder
+  face self player
+  speaker "Breeder"
+  say "I've raised Pokémon all my life. Show me one of yours, and I'll tell you what it could become."
+  choosepokemon
+  if result == 255 goto Cancel
+  frontier judge
+  if result == 0 goto Cancel
+  if result == 3 goto Egg
+  frontier judged total
+  if result <= 90 goto Plain
+  if result <= 150 goto Good
+  say "{wearer} has the makings of a true champion. Raise it with care!"
+  goto Best
+label Plain
+  say "{wearer} is an ordinary sort. Love it all the same, and it'll serve you well."
+  goto Best
+label Good
+  say "{wearer} has a good deal in it. You chose well."
+label Best
+  say "Its greatest gift is its {thing}."
+  end
+label Egg
+  say "An Egg? Bring it back once it has hatched."
+  end
+label Cancel
+  say "Come back if you change your mind."
+  end
