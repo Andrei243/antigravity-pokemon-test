@@ -11,6 +11,7 @@ partial class Harness
     /// </summary>
     void HoennSeaShots()
     {
+        if (!HoennReady("Dive's shots")) return;
         DialogueManager Box() => game.Dialogue;
         GameState State() => game.State;
         void Until(Func<bool> holds, string what, int most = 900)

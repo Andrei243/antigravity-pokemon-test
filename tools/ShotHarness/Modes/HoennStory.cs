@@ -356,6 +356,8 @@ partial class Harness
             Until(() => engine.Choice.IsOpen, "the question's answers");
             Frames(10);
             int at = engine.Choice.Options.ToList().FindIndex(o => o.Contains(option, StringComparison.Ordinal));
+            // (a question's own Yes and No are "Yes" and "No": an answer asked for that isn't there was once taken as the first)
+            if (at < 0) { Console.WriteLine($"  !! no answer \"{option}\" among {string.Join(" / ", engine.Choice.Options)}"); at = engine.Choice.Cursor; }
             for (int i = engine.Choice.Cursor; i < at; i++) { engine.Choice.Move(1); Frames(2); }
             engine.Choice.Confirm();
             Frames(4);
@@ -1442,7 +1444,7 @@ partial class Harness
         game.Interact();
         ReadTo("is ready."); Frames(10); Shot("hs2ak_the_captain_to_unova");
         ReadTo("Shall we set off, then?"); Frames(10); Shot("hs2al_shall_we_set_off");
-        Pick("NO");
+        Pick("No");
         ReadTo(null);
         Eon("the harbour");
 

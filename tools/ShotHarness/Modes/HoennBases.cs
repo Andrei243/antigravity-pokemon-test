@@ -8,8 +8,32 @@ partial class Harness
     /// written and continued (<c>h92b_base_from_the_save</c>). It prints where the base is, what stands in it and what the
     /// save brought back.
     /// </summary>
+    /// <summary>
+    /// What the parts at the end of the <c>hoenn</c> mode ask before they begin: whatever an earlier part left on the
+    /// screen (a line, a question, a script still running) is read through and answered with the way out, and the game
+    /// must be in Hoenn. A part that finds otherwise says so and is left out, never run on the wrong ground.
+    /// </summary>
+    bool HoennReady(string part)
+    {
+        var box = game.Dialogue;
+        for (int i = 0; i < 1200 && (engine.ScriptRunning || box.IsActive || engine.Choice.IsOpen || game.State == GameState.Dialogue); i++)
+        {
+            if (engine.Choice.IsOpen) { engine.Choice.Back(); Frames(4); }
+            else if (box.IsActive && box.IsCurrentLineComplete && !box.IsQuestion) { box.Advance(); Frames(2); }
+            else Frames(1);
+        }
+        game.State = GameState.Overworld;
+        if (!string.Equals(engine.Here.Id, "Hoenn", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine($"  !! {part} left out: the game is in {engine.Here.Id}, not Hoenn");
+            return false;
+        }
+        return true;
+    }
+
     void HoennBaseShots()
     {
+        if (!HoennReady("the secret bases")) return;
         DialogueManager Box() => game.Dialogue;
         void Until(Func<bool> holds, string what, int most = 900)
         {
@@ -68,6 +92,7 @@ partial class Harness
         engine.Choice.Confirm(); Frames(4);
         ReadOn();
         Until(() => game.State == GameState.Decoration, "the decorating screen");
+        if (game.State != GameState.Decoration || game.Decoration == null) { Console.WriteLine("  !! the decorating part is left out"); return; }
         var screen = game.Decoration;
         // (Tree2's floor: x 1 to 4 from row 1 to 10, x 5 from row 6, the wall over row 0; the PC at 5,5)
         var places = new (int X, int Y)[] { (1, 2), (4, 3), (1, 6), (2, 6), (2, 0), (4, 0), (5, 7), (5, 9) };
@@ -101,7 +126,8 @@ partial class Harness
 
         // Saved, and the game continued from the save: the base found again as it was left
         if (!game.Save()) Console.WriteLine("  !! the game wasn't saved");
-        engine.ContinueGame(game.SaveSlot);
+        // (no slot named: the file is read; a slot named is read from the title's cards, which a mode never opened)
+        engine.ContinueGame();
         Until(() => game.State == GameState.Overworld, "the continued game");
         Frames(40);
         game.LocationSign.Hide();

@@ -53,9 +53,12 @@ partial class Harness
         Tell("before the road");
         At("Route40_FrontierGate", 5, 4, Direction.Up); game.Interact();
         ReadTo("Its five halls keep one record");
+        // (the line read is whole but still on the screen: it is put away, and the next line and the question come)
+        box.Advance(); Frames(4);
         Until(() => engine.Choice.IsOpen, "the guide's question", 300);
         Frames(10); Shot("jpd03_the_guides_question");
         ReadTo("followed the guide along the road"); Frames(10); Shot("jpd04_the_road_over_the_dark");
+        box.Advance(); Frames(4);
         Until(() => game.Map.Name == "BattleFrontier" && game.State == GameState.Overworld && !engine.ScriptRunning, "the grounds", 900);
         Frames(30); Shot("jpd05_on_the_frontiers_grounds");
         Tell("on the grounds");
@@ -63,7 +66,7 @@ partial class Harness
         // ---- The Johto guide on the grounds, and back to Route 40
         At("BattleFrontier", 47, 51, Direction.Left); game.Interact();
         ReadTo("Shall I take you back"); Frames(10); Shot("jpd06_the_johto_guide");
-        ReadTo("followed the guide back along the road");
+        ReadTo("followed the guide back along the road"); Frames(4); box.Advance(); Frames(4);
         Until(() => game.Map.Name == "Route40_FrontierGate" && game.State == GameState.Overworld && !engine.ScriptRunning, "Route 40's gate", 900);
         Frames(30); Shot("jpd07_back_in_the_gate");
         Tell("back on Route 40");
