@@ -902,6 +902,13 @@ public sealed partial class ScriptRunner
                     host.Open(ScriptScreen.Crossing, Subject);
                     break;
                 }
+                // "travel to": into another region at a tile of its map, by the one way a region is crossed into
+                // (plan 20 · J13, part d); the script goes on there once the arrival's fade has opened
+                if (i.Name == "to")
+                {
+                    host.CrossInto(i.Other, i.X, i.Y, i.Direction);
+                    break;
+                }
                 host.Open(ScriptScreen.Travel, Subject);
                 afterBusy = () => Result = host.Answer;
                 break;

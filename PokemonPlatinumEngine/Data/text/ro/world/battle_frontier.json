@@ -443,6 +443,16 @@
           "Însoțitoarea"
         ]
       }
+    },
+    "battle_frontier.JohtoGuide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

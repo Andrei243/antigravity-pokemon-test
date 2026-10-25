@@ -1,5 +1,15 @@
 {
   "people": {
+    "w40r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "w40r0101_counterm": {
       "name": {
         "en": [
@@ -11,9 +21,14 @@
       },
       "dialog": {
         "en": [
-          "Beyond this gate is the Battle Frontier, where the strongest Trainers gather. It isn't open to visitors yet."
+          "Beyond this gate is the Battle Frontier, where the strongest Trainers gather.",
+          "The guide by the door takes Champions along the road. It's a long walk, but they say it's worth every step."
         ],
         "text": [
+          "",
+          ""
+        ],
+        "was": [
           "Dincolo de poarta asta e Battle Frontier, unde se adună cei mai puternici Antrenori. Încă nu e deschis vizitatorilor."
         ]
       }

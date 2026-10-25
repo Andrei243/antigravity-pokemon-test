@@ -342,6 +342,9 @@ public sealed class ScriptLibrary
                     case Op.Warp when mapExists != null && !mapExists(i.Name):
                         Wrong(i, $"there is no map '{i.Name}'");
                         break;
+                    case Op.Travel when i.Name == "to" && mapExists != null && !mapExists(i.Other):
+                        Wrong(i, $"there is no map '{i.Other}'");
+                        break;
                     case Op.Music when i.Name.Length > 0 && songExists != null && !songExists(i.Name):
                         Wrong(i, $"there is no song '{i.Name}'");
                         break;

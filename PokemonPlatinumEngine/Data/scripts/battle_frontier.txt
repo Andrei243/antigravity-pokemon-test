@@ -96,3 +96,22 @@ script StatueEast
 script ScaleModel
   text "A model of the whole Battle Frontier, small enough to walk round: the tower, the four halls and the plaza between them."
   end
+
+
+# The guide of Route 40's gate in Johto (plan 20 · J13, part d), on the Frontier's second door: shown once Johto's Hall
+# of Fame is entered, and the way back along the road to Route 40, a crossing into Johto as every region's is (`travel
+# to`, GameEngine.CrossTo). The records, the streaks and the Battle Points are the same from either door.
+script JohtoGuide
+  face self player
+  say "I guide Trainers along the road between the Battle Frontier and Route 40, in Johto."
+  ask "Shall I take you back along the road to Route 40?"
+  if no goto JohtoStay
+  say "Very good. Follow me, and keep close."
+  fade out 0.8
+  text "{player} followed the guide back along the road to Route 40..."
+  travel to "Route40_FrontierGate" 5 4 down
+  fade in 0.8
+  end
+label JohtoStay
+  say "Take your time. I'll be here whenever you'd like to go back."
+  end

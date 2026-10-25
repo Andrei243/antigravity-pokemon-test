@@ -1,16 +1,25 @@
 {
   // The gate house between Route 40 and the Battle Frontier (plan 20 · J8). The way through to the Frontier's road
-  // (warp 1) opens with plan 20 · J13; the man the original puts before it waits for that session too
+  // (warp 1) stays shut: the Battle Frontier is Sinnoh's, and a warp never crosses regions, so the guide before the
+  // door takes the player there by a crossing once Johto's Hall of Fame is entered (plan 20 · J13, part d;
+  // route_40_battle_frontier_gatehouse.txt)
   "area": "route_40_battle_frontier_gatehouse",
   "bgmTrack": "johto/route34",
   "locked": [
     1
   ],
   "people": {
+    "w40r0101_gsmiddleman1": {
+      "name": "Guide",
+      "script": "Guide",
+      "still": true,
+      "hiddenBy": ""
+    },
     "w40r0101_counterm": {
       "name": "Guard",
       "dialog": [
-        "Beyond this gate is the Battle Frontier, where the strongest Trainers gather. It isn't open to visitors yet."
+        "Beyond this gate is the Battle Frontier, where the strongest Trainers gather.",
+        "The guide by the door takes Champions along the road. It's a long walk, but they say it's worth every step."
       ]
     }
   }
