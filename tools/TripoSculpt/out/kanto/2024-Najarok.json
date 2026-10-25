@@ -1,0 +1,17 @@
+{
+  "name": "2024 Najarok",
+  "set": "kanto",
+  "image": "2024-Najarok.jpg",
+  "request": {
+    "model": "v3.1-20260211",
+    "face_limit": 30000,
+    "texture": true,
+    "pbr": false,
+    "enable_image_autofix": false
+  },
+  "taskId": "95255768-3feb-4dd5-b520-00caa6f910d9",
+  "submittedAt": "2026-10-25T20:46:34.7868712Z",
+  "status": "success",
+  "credits": 30,
+  "bytes": 1784804
+}

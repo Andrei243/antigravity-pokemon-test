@@ -1,0 +1,17 @@
+{
+  "name": "2022 Lancerow",
+  "set": "kanto",
+  "image": "2022-Lancerow.jpg",
+  "request": {
+    "model": "v3.1-20260211",
+    "face_limit": 30000,
+    "texture": true,
+    "pbr": false,
+    "enable_image_autofix": false
+  },
+  "taskId": "35326e60-b7a9-4175-9213-22d64f22ad85",
+  "submittedAt": "2026-10-25T20:44:59.2122540Z",
+  "status": "success",
+  "credits": 30,
+  "bytes": 1855212
+}
