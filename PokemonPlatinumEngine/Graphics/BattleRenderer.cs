@@ -99,6 +99,8 @@ public sealed class BattleRenderer
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
         // What lies on the field: hazards, screens, the rooms, what was sent ahead (plan 25 · Y2)
         BattleFieldFx.Emit(anim.FieldLook, anim.Time, places, anim.SlotsOf(BattleSide.Player), anim.SlotsOf(BattleSide.Enemy), fx);
+        // A rotation battle's turntables (plan 14 · B7)
+        RotationFx.Emit(anim, places, fx);
         DollEffects(anim);
         PlaceTrainers(anim);
         PlaceBalls(anim);

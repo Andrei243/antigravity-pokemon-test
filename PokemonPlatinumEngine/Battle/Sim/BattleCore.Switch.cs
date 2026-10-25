@@ -438,7 +438,7 @@ public sealed partial class BattleCore
         }
         if (CanSendIn(place, index)) picked = place.Roster!.Members[index];
         // Whoever chooses must name someone who can come: the next able one otherwise
-        else picked = NextFromRoster(place, SlotsOf(place.Side).Select(b => b.Pokemon));
+        else picked = NextFromRoster(place, SlotsOf(place.Side).Select(b => b.Pokemon).Concat(OnTheWheel(place.Side)));
     }
 
     private string SentOutLine(Battler place, Pokemon incoming) =>
@@ -560,7 +560,7 @@ public sealed partial class BattleCore
     /// </summary>
     private IEnumerable<BattleRequest> OfferSwitch(Battler foe, Pokemon upcoming)
     {
-        if (!OffersSwitch || !IsSingle || !IsTrainerBattle || Frontier || foe.Trainer == null) yield break;
+        if (!OffersSwitch || !IsSingle || IsRotation || !IsTrainerBattle || Frontier || foe.Trainer == null) yield break;
         var mine = PlayerSlots[0];
         if (!mine.IsActive || mine.Trainer != null || ControllerOf(mine) != null || !HasReplacement(mine)) yield break;
 

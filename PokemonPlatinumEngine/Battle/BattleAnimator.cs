@@ -834,6 +834,55 @@ public sealed class BattleAnimator
         spreading[(int)side] = false;
     }
 
+    // ---------------------------------------------------------------- a rotation battle's turntables (plan 14 · B7)
+
+    /// <summary>Each side's platform is a turntable of three seats: a rotation battle (style guide, "Stage", "A rotation's turntable").</summary>
+    public bool Turntables { get; internal set; }
+
+    /// <summary>Seconds of a turntable's turn: the Pokémon brought forward hops to the front as the table turns a third.</summary>
+    public const float RotationTime = 0.7f;
+
+    private readonly float[] rotationAge = { -1f, -1f };
+    private readonly int[] rotationWay = new int[2];
+    private readonly int[] turned = new int[2];
+
+    /// <summary>Seconds since a side's turntable began to turn (-1 = standing).</summary>
+    public float RotationAge(BattleSide side) => rotationAge[(int)side];
+
+    /// <summary>The way a side's turntable turned last: +1 or −1 (0 before it ever turned).</summary>
+    public int RotationWay(BattleSide side) => rotationWay[(int)side];
+
+    /// <summary>
+    /// How far a side's turntable has turned, in thirds of a round from where it stood as the battle opened: whole once a
+    /// turn is over, eased between while one plays. A turn of +1 adds one.
+    /// </summary>
+    public float TurntableTurn(BattleSide side)
+    {
+        int s = (int)side;
+        float age = rotationAge[s];
+        if (age < 0f) return turned[s];
+        float t = Math.Clamp(age / RotationTime, 0f, 1f);
+        float eased = t * t * (3f - 2f * t);
+        return turned[s] - rotationWay[s] * (1f - eased);
+    }
+
+    /// <summary>
+    /// A rotation battle's turntable turns <paramref name="way"/> (plan 14 · B7): the Pokémon brought forward stands at the
+    /// front, hopping on from its seat behind over the turn as an ally answering a call hops in. With the scene off
+    /// (<paramref name="scene"/> false) it is there at once and the table stands turned.
+    /// </summary>
+    public void Rotate(BattleSide side, Pokemon pokemon, int way, bool scene = true)
+    {
+        var v = this[side, 0];
+        Reset(v, pokemon);
+        v.Present = true;
+        v.ArriveAge = scene ? 0f : -1f;
+        int s = (int)side;
+        turned[s] += Math.Sign(way);
+        rotationWay[s] = Math.Sign(way);
+        rotationAge[s] = scene ? 0f : -1f;
+    }
+
     /// <summary>Thrown out of a Poké Ball: the trainer throws it and steps aside, and the Pokémon bursts out as it opens.</summary>
     public void SendOut(BattleSide side, Pokemon pokemon, int slot = 0)
     {
@@ -1235,6 +1284,9 @@ public sealed class BattleAnimator
         // An SOS battle's wild side opens out from one place to two as the first ally comes (plan 14 · B5)
         for (int side = 0; side < 2; side++)
             if (spreading[side]) spread[side] = Math.Min(1f, spread[side] + dt / ArriveTime);
+        // A rotation battle's turntable turns (plan 14 · B7)
+        for (int side = 0; side < 2; side++)
+            if (rotationAge[side] >= 0f && (rotationAge[side] += dt) >= RotationTime) rotationAge[side] = -1f;
         if (Ball != null)
         {
             Ball.Age += dt;

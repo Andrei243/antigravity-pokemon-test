@@ -17,7 +17,7 @@ internal readonly record struct CameraShot(Vector3 Position, Vector3 Target, flo
 }
 
 /// <summary>What the director is showing.</summary>
-internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer }
+internal enum ShotKind { Intro, Overview, SendOut, Attacker, Target, Self, Critical, Throw, Ball, BallClose, Faint, Trainer, Rotation }
 
 /// <summary>
 /// The battle's camera director (plan 04 · G8). The overview is the DS-like framing; the director sweeps in at the
@@ -226,6 +226,15 @@ internal sealed class BattleCamera
             return (TargetShot(places, both, 3.6f), ShotKind.SendOut, null);
         }
 
+        // A rotation battle's turntable turning (plan 14 · B7): the side's platform close, a little wider than a send-out's,
+        // so the table's seats are in the shot as they turn
+        for (int side = 0; side < 2; side++)
+        {
+            var s = (BattleSide)side;
+            if (anim.Turntables && anim.RotationAge(s) >= 0f)
+                return (Close(places, s, 0, RotationShotScale, s == BattleSide.Player ? 0.35f : 0f), ShotKind.Rotation, null);
+        }
+
         // A Pokémon fainting
         for (int side = 0; side < 2; side++)
             for (int slot = 0; slot < anim.SlotsOf((BattleSide)side); slot++)
@@ -238,6 +247,9 @@ internal sealed class BattleCamera
         if (anim.Time < 1.8f) return (Intro(anim.Time), ShotKind.Intro, null);
         return (Overview(anim.Time), ShotKind.Overview, null);
     }
+
+    /// <summary>How wide the shot of a turning turntable is, in the Pokémon's heights (a send-out's is 3.6): plan 14 · B7.</summary>
+    public const float RotationShotScale = 4.4f;
 
     /// <summary>A trainer's height in their rig's own units, which the battle scales up (<see cref="BattleRenderer.SpeakerAt"/>).</summary>
     public const float TrainerHeight = 1.6f;

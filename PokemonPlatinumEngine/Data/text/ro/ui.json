@@ -2516,6 +2516,8 @@
     "movedToTheCentre": "Pokémonii s-au mutat la mijloc!",
     "isOutOfReach": "{pokemon} nu poate fi atins de aici!",
     "cantShift": "{pokemon} este deja la mijloc!",
+    "rotatedToTheFront": "{pokemon} s-a rotit în față!",
+    "cantRotate": "{pokemon} nu se poate roti așa acum!",
     "letItMoveFirst": "{item} l-a lăsat pe {user} să se miște primul!",
     "wasTransferredTo": "Obiectul {item} al lui {target} a trecut la {user}!",
     "wasHurtBy": "{user} a fost rănit de obiectul {item} al lui {target}!",

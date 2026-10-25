@@ -467,6 +467,9 @@ public sealed class RecordedChoice
     public bool Dynamax { get; set; }
     public bool Terastallize { get; set; }
 
+    /// <summary>A rotation battle's turn of the turntable with the move (plan 14 · B7); 0 in every other answer.</summary>
+    public int Rotation { get; set; }
+
     public static RecordedChoice Of(BattleChoice c) => new()
     {
         Side = c.Who.Side,
@@ -481,7 +484,8 @@ public sealed class RecordedChoice
         ZMove = c.ZMove,
         UltraBurst = c.UltraBurst,
         Dynamax = c.Dynamax,
-        Terastallize = c.Terastallize
+        Terastallize = c.Terastallize,
+        Rotation = c.Rotation
     };
 
     public BattleChoice ToChoice() => new(new Place(Side, Slot), Kind)
@@ -494,6 +498,7 @@ public sealed class RecordedChoice
         ZMove = ZMove,
         UltraBurst = UltraBurst,
         Dynamax = Dynamax,
-        Terastallize = Terastallize
+        Terastallize = Terastallize,
+        Rotation = Rotation
     };
 }

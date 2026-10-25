@@ -34,6 +34,29 @@ internal static partial class ModernUi
         _ => (Text.Of("battleMenu.fight"), new[] { Text.Of("battleMenu.bag"), Text.Of("battleMenu.pokemon"), Text.Of("battleMenu.run") })
     };
 
+    /// <summary>
+    /// A rotation battle's arrows beside FIGHT (plan 14 · B7; style guide, "Battle panels", "The rotation arrows"): a
+    /// disc on each end of the FIGHT button, inset 40, with an arrow pointing out, the one the turntable is armed toward
+    /// lit gold; and while it is turned, the name of the Pokémon brought forward along the button's foot.
+    /// </summary>
+    public static void RotationArrows(Rectangle fight, int armed, string fighter)
+    {
+        float cy = fight.Y + fight.Height / 2f;
+        for (int way = -1; way <= 1; way += 2)
+        {
+            float cx = way < 0 ? fight.X + 40 : fight.X + fight.Width - 40;
+            bool lit = armed == way;
+            UiShapes.Circle(new Vector2(cx, cy), 26, lit ? Gold : new Color(255, 255, 255, 230));
+            float tip = cx + way * 12, back = cx - way * 8;
+            var color = lit ? Ink : Red;
+            if (way > 0) UiShapes.Triangle(new Vector2(back, cy - 13), new Vector2(back, cy + 13), new Vector2(tip, cy), color, 2f);
+            else UiShapes.Triangle(new Vector2(tip, cy), new Vector2(back, cy + 13), new Vector2(back, cy - 13), color, 2f);
+        }
+        if (armed == 0) return;
+        float w = UiFonts.Measure(fighter, 26, UiWeight.Black);
+        UiFonts.DrawCentered(fighter, fight.X + (fight.Width - w) / 2f, fight.Y + fight.Height - 30, 26, Color.White, UiWeight.Black);
+    }
+
     public static void DrawBattle(BattleHUD hud, int sw, int sh, BattleEngine battle, Inventory inventory, string message, BattleAnimator anim)
     {
         var active = battle.PlayerPokemon;
@@ -126,17 +149,20 @@ internal static partial class ModernUi
             case BattleMenuState.Main:
                 // The Great Marsh and Pal Park are played with balls alone: the commands are the ball and what else can be thrown
                 bool balls = battle.Kind is BattleKind.Safari or BattleKind.PalPark;
-                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : active.DisplayName);
+                // In a rotation battle the box names the one the turntable is turned to (plan 14 · B7)
+                MessageBox(new Rectangle(48, 858, 1060, 172), null, balls ? PlayerIdentity.Name : battle.IsRotation ? battle.Fighter.DisplayName : active.DisplayName);
                 var (big, labels) = CommandLabels(battle);
                 Color[] colors = { Gold, Green, Blue };
                 Button(new Rectangle(1140, 848, 432, 190), balls ? 30 : 34, Red, big, balls ? 40 : 60, hud.MainMenuIndex == 0);
+                if (battle.IsRotation) RotationArrows(new Rectangle(1140, 848, 432, 190), battle.RotationArmed, battle.Fighter.DisplayName);
                 // The bag closed (plan 14 · B14): BAG stands greyed in its place, and choosing it says why
                 if (battle.BagClosed) colors[0] = Closed;
                 for (int i = 0; i < 3; i++)
                     if (labels[i].Length > 0) Button(new Rectangle(1600, 848 + i * 66, 272, 58), 29, colors[i], labels[i], 28, hud.MainMenuIndex == i + 1);
                 break;
             case BattleMenuState.Moves:
-                MoveMenu(hud, active, battle);
+                // A rotation battle's moves are those of the one the turntable is turned to (plan 14 · B7)
+                MoveMenu(hud, battle.IsRotation ? battle.Fighter : active, battle);
                 break;
             case BattleMenuState.SelectTarget:
                 TargetMenu(hud, battle);

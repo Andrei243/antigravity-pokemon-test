@@ -416,3 +416,11 @@ public sealed record CalledForHelp(Place Caller, bool Answered) : BattleEvent;
 /// copy), and <paramref name="Chain"/> the calls answered in the battle, this one included.
 /// </summary>
 public sealed record AllyJoined(Place Place, Pokemon Pokemon, Pokemon AsItCame, int Chain) : BattleEvent;
+
+/// <summary>
+/// A rotation battle's turntable turns (plan 14 · B7): <paramref name="Way"/> +1 or −1, and <paramref name="Pokemon"/>
+/// (the rules' own) is at the front of the place now, with what lasted on it while it waited behind: its own doll
+/// (<paramref name="Substitute"/>), and what it brings, told on the same line by a <see cref="CameInWith"/> and a
+/// <see cref="VolatileChanged"/>. It rides on the line that says so.
+/// </summary>
+public sealed record Rotated(Place Place, int Way, Pokemon Pokemon, bool Substitute) : BattleEvent;
