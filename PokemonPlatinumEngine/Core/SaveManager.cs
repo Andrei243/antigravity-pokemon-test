@@ -171,6 +171,14 @@ public class SaveData
     public Models.RunRules? Run { get; set; }
 
     /// <summary>
+    /// What the run remembers (plan 13 · V4): the places a wild Pokémon was met under the Nuzlocke, the graveyard, whether
+    /// the run ended. Null while there is nothing in it (every Normal game) and in every save from before it, which reads
+    /// as a run with nothing behind it, so no save version was raised.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.RunState? RunState { get; set; }
+
+    /// <summary>
     /// What the game remembers of its wild Pokémon (plan 06 · R13): the day's numbers, swarms, the Trophy Garden, the
     /// honey trees, the Poké Radar's battery, the roamers. Null in older saves, which are given a new one.
     /// </summary>

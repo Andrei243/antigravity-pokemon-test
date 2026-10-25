@@ -247,6 +247,7 @@ public partial class BattleEngine
             OffersSwitch = setup.OffersSwitch,
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
+            Nuzlocke = setup.Nuzlocke,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
             // has what the recorded one had (plan 08 · P11)
             KeyStone = watched?.KeyStone ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),

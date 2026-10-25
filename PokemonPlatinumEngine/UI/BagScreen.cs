@@ -227,6 +227,9 @@ public class BagScreen
     /// </summary>
     public int? RunCap { get; set; }
 
+    /// <summary>Under the Nuzlocke (plan 13 · V4), set each frame by the engine: no revive is used, and the bag says why.</summary>
+    public bool NoRevives { get; set; }
+
     /// <summary>Turns the pocket to its next order (as taken, A to Z, most first), the cursor staying on the item it was on.</summary>
     public void CycleOrder(Inventory inventory)
     {
@@ -451,7 +454,13 @@ public class BagScreen
                 Follow(inventory.GetPocketItems(CurrentPocket).Count);
                 return;
             case BagAction.Use when ItemUse.RevivesAll(item):
-                // Sacred Ash brings round the whole team at once (Party_ApplyItemEffects to each)
+                // Sacred Ash brings round the whole team at once (Party_ApplyItemEffects to each); never under the Nuzlocke
+                if (NoRevives)
+                {
+                    onNotification(Text.Of("bag.nuzlockeNoRevive"));
+                    AudioManager.PlaySound("error");
+                    return;
+                }
                 var revived = ItemUse.ReviveAll(item, party);
                 if (revived.Count == 0)
                 {
@@ -609,6 +618,13 @@ public class BagScreen
         if (giving)
         {
             GiveToHold(item, inventory, target, onNotification);
+        }
+        else if (NoRevives && Nuzlocke.Revives(item))
+        {
+            // The Nuzlocke (plan 13 · V4): a revive brings nobody round
+            onNotification(Text.Of("bag.nuzlockeNoRevive"));
+            AudioManager.PlaySound("error");
+            return;
         }
         else if (MoveTeaching.IsMachine(item))
         {
