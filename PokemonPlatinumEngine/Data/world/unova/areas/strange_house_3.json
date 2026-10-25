@@ -1,0 +1,54 @@
+{
+  "key": "strange_house_3",
+  "index": 511,
+  "name": "Strange House",
+  "matrix": 306,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_D_25",
+  "nightMusic": "BGM_SW_D_25",
+  "encounters": "ENCOUNTERS_STRANGE_HOUSE_3",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Litwick", "level": 31 },
+    { "species": "Gothita", "level": 31 },
+    { "species": "Raticate", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Litwick", "level": 33 },
+    { "species": "Banette", "level": 32 },
+    { "species": "Raticate", "level": 33 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Banette", "level": 34 },
+    { "species": "Gothorita", "level": 34 },
+    { "species": "Banette", "level": 34 },
+    { "species": "Gothorita", "level": 34 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 17, "z": 31, "to": "reversal_mountain", "toWarp": 6 },
+    { "x": 6, "z": 20, "to": "strange_house_4", "toWarp": 0 },
+    { "x": 30, "z": 20, "to": "strange_house_2", "toWarp": 1 },
+    { "x": 13, "z": 20, "to": "strange_house_7", "toWarp": 0 },
+    { "x": 23, "z": 20, "to": "strange_house_8", "toWarp": 0 },
+    { "x": 18, "z": 31, "to": "reversal_mountain", "toWarp": 6 },
+    { "x": 19, "z": 31, "to": "reversal_mountain", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "lass", "movement": "none", "x": 21, "z": 16, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0382", "script": "2000" }
+  ],
+  "signs": [
+    { "x": 3, "z": 14, "type": 0, "script": "2" },
+    { "x": 4, "z": 14, "type": 0, "script": "2" },
+    { "x": 28, "z": 18, "type": 0, "script": "3" },
+    { "x": 29, "z": 18, "type": 0, "script": "3" }
+  ],
+  "triggers": [
+    { "x": 25, "z": 16, "width": 1, "depth": 3, "script": "1", "variable": "VAR_UNOVA_0x4075", "value": "0" }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  // The gate house between Undella Town and Route 13 (plan 22 · U7, part b): two people who talk, our words
+  "area": "undella_gate",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Clerk",
+      "npcType": "worker",
+      "dialog": [
+        "The longest road in Unova is Route 13, I'm told. Take your time, or you'll still be on it by sunset."
+      ]
+    },
+    "1": {
+      "name": "Dancer",
+      "npcType": "beauty",
+      "dialog": [
+        "I clear my own path with Hidden Moves. Cut, Strength, Surf: they save so much walking!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  // Reversal Mountain's east tunnel (plan 22 · U7, part b): the way out to Undella Town, Black 2's, our words. With Bianca along, the
+  // trigger at its foot (26, 25, VAR_UNOVA_REVERSAL 1) has her say that Undella Town is just ahead and offer to part ways
+  // (reversal_mountain_7.txt). Parted, she (0, FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT) is here talking about the Magma Stone and Heatran
+  "area": "reversal_mountain_7",
+  "bgmTrack": "unova/reversal_cave",
+  "triggers": [
+    {
+      "script": "BiancaSaysGoodbye",
+      "x": 26,
+      "z": 25,
+      "width": 1,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL",
+      "value": 1
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 25,
+      "y": 18,
+      "facing": "Down",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "script": "BiancaAtTheExit",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT",
+      "still": true
+    }
+  }
+}

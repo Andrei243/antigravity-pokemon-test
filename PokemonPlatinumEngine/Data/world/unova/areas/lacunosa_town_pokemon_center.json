@@ -1,0 +1,41 @@
+{
+  "key": "lacunosa_town_pokemon_center",
+  "index": 407,
+  "name": "Lacunosa Town",
+  "matrix": 13,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "3",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_POKECEN",
+  "nightMusic": "BGM_POKECEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 19, "to": "lacunosa_town", "toWarp": 0 },
+    { "x": 7, "z": 19, "to": "lacunosa_town", "toWarp": 0 },
+    { "x": 8, "z": 19, "to": "lacunosa_town", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "70", "movement": "none", "x": 5, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0266", "script": "10397" },
+    { "id": "1", "looks": "79", "movement": "none", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2101" },
+    { "id": "2", "looks": "82", "movement": "none", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10100" },
+    { "id": "3", "looks": "81", "movement": "none", "x": 10, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10105" },
+    { "id": "4", "looks": "78", "movement": "none", "x": 7, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2100" },
+    { "id": "5", "looks": "77", "movement": "none", "x": 11, "z": 16, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "6", "looks": "77", "movement": "none", "x": 11, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "7", "looks": "360", "movement": "none", "x": 5, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02ea", "script": "10638" },
+    { "id": "8", "looks": "policeman", "movement": "none", "x": 1, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "4" },
+    { "id": "9", "looks": "pkmn_breeder_m", "movement": "none", "x": 3, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03dd", "script": "2109" },
+    { "id": "10", "looks": "psychic_f", "movement": "look_around", "x": 3, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" }
+  ],
+  "signs": [
+    { "x": 12, "z": 5, "type": 0, "script": "2108" },
+    { "x": 12, "z": 6, "type": 0, "script": "2108" },
+    { "x": 13, "z": 6, "type": 0, "script": "2108" }
+  ],
+  "triggers": []
+}

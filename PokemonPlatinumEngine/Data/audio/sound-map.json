@@ -133,6 +133,7 @@
     "Nursery Aide": "girl",
     "Janitor": "fun",
     "Team Plasma Grunt": "galactic",
+    "Team Plasma Zinzolin": "galactic",
     "Harlequin": "fun",
     "Doctor": "ace",
     "Hooligans": "fighter",
@@ -191,12 +192,14 @@
     "Subway Boss Ingo": "gym",
     "Subway Boss Emmet": "gym",
     "Leader Clay": "gym",
-    "Leader Skyla": "gym"
+    "Leader Skyla": "gym",
+    "Team Plasma Zinzolin": "galacticBoss"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",
     "Magma Admin": "eye_magma",
     "Magma Leader": "eye_magma",
-    "Team Plasma Grunt": "eye_plasma"
+    "Team Plasma Grunt": "eye_plasma",
+    "Team Plasma Zinzolin": "eye_plasma"
   }
 }

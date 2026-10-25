@@ -1,0 +1,7 @@
+# Undella Bay (plan 22 · U7, part b). docs/scripts.md describes the language. Black 2's worker on the jetty is hidden by
+# FLAG_UNOVA_HIDE_BAY_WORKER, which the chapter's catch-up sets (common.UnovaLacunosa).
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end

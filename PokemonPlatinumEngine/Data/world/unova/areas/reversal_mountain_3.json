@@ -1,0 +1,59 @@
+{
+  "key": "reversal_mountain_3",
+  "index": 532,
+  "name": "Reversal Mountain",
+  "matrix": 323,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_24_B",
+  "nightMusic": "BGM_SW_D_24_B",
+  "encounters": "ENCOUNTERS_REVERSAL_MOUNTAIN_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Grumpig", "level": 35 },
+    { "species": "Woobat", "level": 32 },
+    { "species": "Boldore", "level": 32 },
+    { "species": "Skorupi", "level": 33 },
+    { "species": "Boldore", "level": 34 },
+    { "species": "Woobat", "level": 34 },
+    { "species": "Spoink", "level": 31 },
+    { "species": "Skorupi", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 27, "z": 6, "to": "reversal_mountain_4", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pkmn_ranger_m", "movement": "wander_around", "x": 11, "z": 7, "facing": 3, "rangeX": 5, "rangeZ": 5, "trainer": "sees", "sight": 2, "script": "TRAINER_PKMN_RANGER_LEWIS" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 12, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04c8", "item": "Toxic Orb", "script": "7124" }
+  ],
+  "signs": [
+    { "x": 26, "z": 12, "type": 2, "script": "8087", "item": "Water Gem", "flag": "FLAG_UNOVA_0x0b5b" }
+  ],
+  "triggers": []
+}

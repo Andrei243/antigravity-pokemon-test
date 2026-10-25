@@ -357,7 +357,19 @@ public partial class GameEngine
     private void KeepPartnerAlong()
     {
         if (flow.Along == null) return;
-        if (!flow.Map.Everyone.Contains(flow.Along.Who)) return;
+        if (!flow.Map.Everyone.Contains(flow.Along.Who))
+        {
+            // Someone who travels along through a place of several maps (plan 22 · U7, part b: Reversal Mountain's floors) is,
+            // on each, the person of that map with their key, who the flags keep off it until they come
+            if (flow.Along.TrainerId == null || flow.Map.FindPerson(flow.Along.Who.Key) is not { } twin) return;
+            flow.Along.Rehome(twin);
+        }
+        // and is on the map while they do (a game saved on a walk is taken up with them there)
+        if (flow.Along.TrainerId != null && flow.Along.Who.Forced != true)
+        {
+            flow.Along.Who.Forced = true;
+            flow.Map.ApplyPresence(flow.Story.Has);
+        }
         flow.Map.Follower = flow.Along.Who;
         PutBehind(flow.Along, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
         partnerHeading = flow.Player.Heading;

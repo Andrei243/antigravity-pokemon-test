@@ -722,6 +722,13 @@ public static class RegionDatabase
                 "ChargestoneCave_Heart", "ChargestoneCave_Depths", "MistraltonCity_PokemonCenter", "MistraltonCity_Greenhouse",
                 "MistraltonCity_CargoHall", "MistraltonCity_House", "MistraltonCity_Gym", "Route7_House1", "Route7_House2", "LentimasTown_PokemonCenter", "LentimasTown_House1", "LentimasTown_House2",
                 "CelestialTower_1F", "CelestialTower_2F", "CelestialTower_3F", "CelestialTower_4F", "CelestialTower_Summit",
+                // Plan 22 · U7, part b: the Strange House's six rooms, Reversal Mountain's six floors, Undella Town's Pokémon
+                // Center, two houses and gate, the two houses of Route 13 and Lacunosa Town's four houses and Pokémon Center
+                "StrangeHouse_Hall", "StrangeHouse_Library1", "StrangeHouse_Rooms", "StrangeHouse_Library2", "StrangeHouse_Attic",
+                "StrangeHouse_Cellar", "ReversalMountain_1", "ReversalMountain_2", "ReversalMountain_3", "ReversalMountain_4",
+                "ReversalMountain_5", "ReversalMountain_6", "UndellaTown_PokemonCenter", "UndellaTown_House1", "UndellaTown_House2",
+                "UndellaGate", "Route13_House1", "Route13_House2", "LacunosaTown_House1", "LacunosaTown_House2",
+                "LacunosaTown_House3", "LacunosaTown_House4", "LacunosaTown_PokemonCenter",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

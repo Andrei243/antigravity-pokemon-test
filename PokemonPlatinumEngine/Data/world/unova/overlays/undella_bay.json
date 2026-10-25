@@ -1,0 +1,60 @@
+{
+  // Undella Bay (plan 22 · U7, part b): the open sea east of Undella Town, crossed by Surf, Black 2's, our words. Swimmers and an ace
+  // trainer cover its water and its beach. Its two ways in the north (782 and 783, 262) lead to the Seaside Cave, which waits for
+  // plan 22 · U8 and stays shut; the sea floor and the Abyssal Ruins beneath (Dive) are plan 22 · U10's. Black 2's worker on the
+  // jetty (8, FLAG_UNOVA_HIDE_BAY_WORKER) and the Xtransceiver's ring at the north shore (3) are left out; a Jellicent's two cries from
+  // the water are the bay's own
+  "area": "undella_bay",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Summer",
+      "trainer": {
+        "dialogueBefore": "Summer is my season, and the bay is my home ground. Come and swim into my battle!",
+        "dialogueAfter": "Autumn seems to have arrived early for me."
+      }
+    },
+    "1": {
+      "name": "Arissa",
+      "trainer": {
+        "dialogueBefore": "The water's perfect today! My Pokémon and I could go on all day. Care to start?",
+        "dialogueAfter": "I swallowed a little too much of the sea."
+      }
+    },
+    "2": {
+      "name": "Matt",
+      "trainer": {
+        "dialogueBefore": "I swim out here every morning. If you're in my water, you battle me!",
+        "dialogueAfter": "Now that's a wave I couldn't ride."
+      }
+    },
+    "3": {
+      "name": "Bart",
+      "trainer": {
+        "dialogueBefore": "My sister and I swim as a pair, and we battle as a pair too! Get ready!",
+        "dialogueAfter": "We were pulled under by the current."
+      }
+    },
+    "4": {
+      "name": "Mitzi",
+      "trainer": {
+        "dialogueBefore": "My brother and I do everything together. We're not the same strength, but we have the same stubbornness!",
+        "dialogueAfter": "That's one stubbornness beaten."
+      }
+    },
+    "5": {
+      "name": "Tim",
+      "trainer": {
+        "dialogueBefore": "I've been in the water so long my fingers are as wrinkled as an old Dewott. Battle me!",
+        "dialogueAfter": "Take me to shore. I'm done."
+      }
+    },
+    "8": {
+      "name": "Worker",
+      "npcType": "worker",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BAY_WORKER",
+      "dialog": [ "The jetty is closed for repairs. Mind the gap!" ],
+      "still": true
+    }
+  }
+}

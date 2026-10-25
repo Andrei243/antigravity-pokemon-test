@@ -1,0 +1,29 @@
+{
+  "key": "lacunosa_town_5",
+  "index": 411,
+  "name": "Lacunosa Town",
+  "matrix": 47,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_04",
+  "nightMusic": "BGM_T_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "lacunosa_town", "toWarp": 4 },
+    { "x": 6, "z": 9, "to": "lacunosa_town", "toWarp": 4 },
+    { "x": 7, "z": 9, "to": "lacunosa_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "parasol_lady", "movement": "wander_around", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "2" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 9, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04d9", "item": "Metronome", "script": "7141" },
+    { "id": "2", "looks": "clerk_m_67", "movement": "look_around", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "3" }
+  ],
+  "signs": [],
+  "triggers": []
+}

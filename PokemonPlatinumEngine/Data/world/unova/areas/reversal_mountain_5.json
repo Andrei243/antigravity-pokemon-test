@@ -1,0 +1,59 @@
+{
+  "key": "reversal_mountain_5",
+  "index": 534,
+  "name": "Reversal Mountain",
+  "matrix": 325,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_SW_D_24_B",
+  "nightMusic": "BGM_SW_D_24_B",
+  "encounters": "ENCOUNTERS_REVERSAL_MOUNTAIN_5",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Spoink", "level": 31 },
+    { "species": "Woobat", "level": 32 },
+    { "species": "Boldore", "level": 32 },
+    { "species": "Skorupi", "level": 33 },
+    { "species": "Boldore", "level": 34 },
+    { "species": "Woobat", "level": 34 },
+    { "species": "Grumpig", "level": 35 },
+    { "species": "Skorupi", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 },
+    { "species": "Woobat", "level": 35 },
+    { "species": "Boldore", "level": 35 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 32 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 33 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 34 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 },
+    { "species": "Excadrill", "level": 35 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 10, "z": 25, "to": "reversal_mountain_4", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "349", "movement": "none", "x": 10, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0384", "script": "3" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 9, "z": 16, "width": 3, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x4074", "value": "1" },
+    { "x": 9, "z": 18, "width": 3, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x4121", "value": "2" }
+  ]
+}

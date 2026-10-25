@@ -1,0 +1,35 @@
+# Route 13 (the longest road in Unova, along cliffs and the sea): a steady walking flute tune in A minor over strings, a guitar
+# arpeggio that keeps the pace, a bass on the beat and a light drum, a road with no end in sight and no hurry. At night a clarinet
+# takes the tune, slower. Original composition for this game (plan 22 · U7, part b).
+title Route 13
+tempo 108
+meter 4/4
+reverb 0.24
+nighttempo 0.92
+
+track lead flute night=clarinet vol=0.68 pan=0.08 rev=0.22
+  L o5 a4 o6 c4 e4 c4 | o5 a4 o6 c4 f4 c4 | o6 e4 g4 e4 c4 | o5 b4 o6 d4 g4 d4 |
+  o6 e4 c4 o5 a4 o6 c4 | o6 c4 o5 a4 f4 a4 | o5 b4 o6 d4 o5 b4 g4 | o5 a2 e2 |
+  o5 f4 a4 o6 c4 o5 a4 | o5 g4 o6 c4 e4 c4 | o5 g4 b4 o6 d4 o5 b4 | o5 e4 g4 b4 g4 |
+  o5 f4 a4 o6 c4 f4 | o5 g4 b4 o6 d4 g4 | o6 e2 c4 o5 a4 | o5 a1 |
+
+track pad strings night=pad vol=0.26 pan=-0.22 rev=0.26
+  L o4 (a >c e)1 | o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (a >c e)1 |
+  o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 | o4 (e g b)1 |
+  o4 (f a >c)1 | o4 (g b >d)1 | o4 (a >c e)1 | o4 (a >c e)1 |
+
+track walk guitar vol=0.36 pan=0.24 rev=0.18
+  L [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 | [ o4 a8 >c8 e8 c8 ]2 |
+  [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 | [ o4 a8 >c8 e8 c8 ]2 | [ o4 a8 >c8 e8 c8 ]2 |
+
+track bass bass vol=0.62 rev=0.06
+  L [ o2 a8 o3 a8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 g8 o3 g8 ]4 |
+  [ o2 a8 o3 a8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 e8 o3 e8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 a8 o3 a8 ]4 |
+
+track drums kit vol=0.4 rev=0.1
+  L v74 [ b4 h8 h8 s4 h8 h8 | ]15 b4 h8 h8 s4 s8 s8 |

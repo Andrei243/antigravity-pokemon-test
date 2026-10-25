@@ -1,0 +1,29 @@
+# Reversal Mountain's cave (the heat in the rock, drips and a slow pulse): a sparse marimba figure in A minor over a held choir
+# drone, a low string line and a timpani that beats like a heart a long way down. The cave plays the same by day and by night, as
+# the original's caves do. Original composition for this game (plan 22 · U7, part b).
+title Reversal Mountain Cave
+tempo 80
+meter 4/4
+reverb 0.42
+night none
+
+track lead marimba vol=0.64 pan=0.14 rev=0.4
+  L o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 e8 r8 g8 r8 e8 r8 c8 r8 | o4 e8 r8 g8 r8 e8 r8 c8 r8 |
+  o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 d8 r8 e8 r8 g8 r8 e8 r8 | o4 a4 e4 a2 |
+  o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 e8 r8 g8 r8 e8 r8 c8 r8 | o4 e8 r8 g8 r8 e8 r8 c8 r8 |
+  o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 a8 r8 g8 r8 a8 r8 e8 r8 | o4 d8 r8 e8 r8 g8 r8 e8 r8 | o4 a4 e4 a2 |
+
+track drone choir vol=0.38 pan=-0.2 rev=0.45
+  L o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 |
+  o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 |
+  o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 |
+  o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 | o4 (a >e)1 |
+
+track low contrabass vol=0.64 rev=0.2
+  L o2 a1 | o2 a1 | o2 c1 | o2 c1 |
+  o2 a1 | o2 a1 | o2 e1 | o2 a1 |
+  o2 a1 | o2 a1 | o2 c1 | o2 c1 |
+  o2 a1 | o2 a1 | o2 e1 | o2 a1 |
+
+track heart timpani vol=0.52 rev=0.35
+  L [ o3 a4 r4 o3 a8 r8 r4 | ]15 o3 a4 r4 o3 a8 r8 r4 |

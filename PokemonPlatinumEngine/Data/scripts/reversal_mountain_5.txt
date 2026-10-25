@@ -1,0 +1,27 @@
+# Reversal Mountain's lair (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/reversal_mountain_5.s, read for the order alone). VAR_UNOVA_REVERSAL_LAIR is the
+# errand's count (reversal_mountain_4.txt has it whole): 1 as the player comes up to the lair with Bianca along, 2 once she has
+# had her say.
+#
+# Black 2's Heatran waits in this room for the Magma Stone and the post-game (plan 22 · U10). Its person (0) stays hidden
+# (FLAG_UNOVA_HIDE_HEATRAN) until then.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  call UnovaBiancaWaits
+  end
+
+
+# The passage up to the lair (our trigger across it, 9 to 11, 18, at 1)
+script BiancaInTheLair
+  if var VAR_UNOVA_REVERSAL != 1 end
+  scene "Bianca in the lair"
+  face bianca_along player
+  speaker "Bianca"
+  say "What is this place? It feels very strange."
+  say "Could this be where Reversal Mountain started from? The lair of the Pokémon Heatran?"
+  say "They say Heatran is a Pokémon with magma-like blood flowing through it! Just imagine!"
+  setvar VAR_UNOVA_REVERSAL_LAIR 2
+  endscene
+  end

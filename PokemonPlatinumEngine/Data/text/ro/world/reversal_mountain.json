@@ -1,0 +1,66 @@
+{
+  "people": {
+    "3": {
+      "name": {
+        "en": [
+          "Jeremiah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "These slopes are the best training track in Unova! Care for a race, and then a battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You left me in the dust. And there's a lot of dust here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Adelaide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Warm rock under my wheels and a warm wind at my back. What a day for a ride! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Phew! I think I overheated."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3": {
+      "en": [
+        "Reversal Mountain\nThe cave through the volcano's heart leads to Undella Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

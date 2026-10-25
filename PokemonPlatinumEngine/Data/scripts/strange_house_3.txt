@@ -1,0 +1,32 @@
+# The Strange House's middle rooms (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/strange_house_3.s, read for the order alone).
+# VAR_UNOVA_STRANGE is the house's count (Black 2's 0x4075): 0 before the girl has been seen, 1 after her first walk through
+# this room, 2 after her second in the cellar (strange_house_6.txt).
+#
+# Along the room's north-east end (our trigger at 25, 16 to 18, at 0) a girl (0) walks across the room in a dream, murmuring about
+# her family, and is gone. She is nobody the player can speak to; she appears again in the cellar.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end
+
+
+script TheGirlWalksThrough
+  scene "The girl in the Strange House"
+  wait 0.5
+  clearflag FLAG_UNOVA_HIDE_STRANGE_GIRL
+  place 0 21 16 left
+  show 0
+  wait 0.4
+  walk 0 left 4
+  speaker "Girl"
+  say "An everlasting dark dream... An endless dream of darkness..."
+  say "Dad, Mom, Abra... Where are you?"
+  wait 0.4
+  walk 0 right 4
+  hide 0
+  setflag FLAG_UNOVA_HIDE_STRANGE_GIRL
+  setvar VAR_UNOVA_STRANGE 1
+  endscene
+  end

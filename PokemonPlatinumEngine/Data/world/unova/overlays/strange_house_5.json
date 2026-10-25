@@ -1,0 +1,14 @@
+{
+  // The Strange House's attic (plan 22 · U7, part b): the end of the house, where something has been left on the floor for whoever
+  // gets this far, Black 2's, our words. A Lunar Wing (0) lies in the dust; the stairs lead back down to the cellar
+  "area": "strange_house_5",
+  "bgmTrack": "unova/strange_house",
+  "people": {
+    "0": {
+      "name": "Feather",
+      "npcType": "ItemBall",
+      "item": "Lunar Wing",
+      "still": true
+    }
+  }
+}

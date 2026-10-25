@@ -1,0 +1,105 @@
+# Reversal Mountain's great cave (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/reversal_mountain_4.s, read for the order alone).
+# VAR_UNOVA_REVERSAL is the cave's count (Black 2's 0x4120): 0 with Bianca waiting at the west end (13, once the scene at Lentimas
+# Town has sent her), 1 with her along as the player's partner (bianca_along, who stands in each of the cave's floors:
+# GameEngine.KeepPartnerAlong takes the partner from one floor's person to the next), 2 once she has gone her own way, when she
+# waits at the cave's east end (reversal_mountain_7.txt). VAR_UNOVA_REVERSAL_LAIR (Black 2's 0x4121) is the stretch of the
+# errand: 0 on the way, 1 once she has stopped at the passage, 2 once she has seen the lair (reversal_mountain_5.txt).
+#
+# Black 2's Bianca asks the player along without a choice and has the team healed; she heals it here too, and she battles
+# beside the player (Black 2's `unova_bianca`, her Musharna's team) as the partner does: two wild Pokémon in the grass, two
+# trainers who see the player at once together. She offers to part at each way out of the cave (the west end here, the others'
+# floors' own triggers), and the player can't leave with her along without saying yes.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  call UnovaBiancaWaits
+  # She is here once she has run ahead from Lentimas Town (a game saved after the scene, before this was written, finds her too)
+  if var VAR_UNOVA_REVERSAL != 0 end
+  if var VAR_UNOVA_LENTIMAS < 1 end
+  clearflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  end
+
+
+# Bianca at the west end (her object's script): she asks the player along
+script BiancaAtTheMouth
+  face 13 player
+  speaker "Bianca"
+  if var VAR_UNOVA_REVERSAL != 0 goto Waiting
+  scene "Bianca asks the player along"
+  say "Heeey, {player}! You made it! I told you I'd be here first, didn't I?"
+  say "Um, you know what? There's something I want to look into here in Reversal Mountain, for Professor Juniper."
+  say "But the wild Pokémon in here are really tough, and I can't get far on my own. Could you come with me? Please?"
+  heal
+  text "Bianca healed your Pokémon."
+  say "Don't worry, I'll take care of healing our Pokémon whenever they need it. Ready? Let's go!"
+  hide 13
+  setflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  place bianca_along 8 9 left
+  show bianca_along
+  partner bianca_along "unova_bianca"
+  setvar VAR_UNOVA_REVERSAL 1
+  endscene
+  end
+label Waiting
+  say "I'll be along in a moment, {player}. I just want to look at this rock first."
+  end
+
+
+# The west end of the cave with her along (our trigger on 5, 9, and the floor's own arrival from the first floor): she offers to go her
+# own way, and the player can't go back out of the cave until they say yes
+script BiancaOffersToPart
+  if var VAR_UNOVA_REVERSAL != 1 end
+  if not partner end
+  speaker "Bianca"
+  say "Oh! I'd like to look around a little more by myself. Shall we split up for now?"
+  call UnovaBiancaAsks
+  if yes goto Gone
+  walk player right 1
+  end
+label Gone
+  fade out 0.4
+  hide bianca_along
+  fade in
+  end
+
+
+# The middle passage (our triggers across it, at 36, 56 to 59 and 44, 55 to 59, while the stretch is 0): she stops and says
+# that this is the place
+script BiancaStopsAtThePassage
+  if var VAR_UNOVA_REVERSAL != 1 end
+  scene "Bianca at the passage"
+  face bianca_along player
+  speaker "Bianca"
+  say "Oh! {player}! This is the place! I can feel it! Let's look around here a little."
+  setvar VAR_UNOVA_REVERSAL_LAIR 1
+  endscene
+  end
+
+
+# The scientist at the east end of the long corridor (his object's script)
+script Researcher
+  face 16 player
+  speaker "Researcher"
+  if flag FLAG_UNOVA_GOT_FALSE_SWIPE goto Again
+  say "You look like someone who keeps careful notes on the Pokémon you meet! A kindred spirit!"
+  say "Show me that you know this mountain's own Pokémon. Have one of them on your team and I'll give you something useful."
+  if has "Woobat" goto Pays
+  if has "Boldore" goto Pays
+  if has "Excadrill" goto Pays
+  if has "Skorupi" goto Pays
+  if has "Grumpig" goto Pays
+  if has "Audino" goto Pays
+  if has "Drifblim" goto Pays
+  say "Hmm, there's none of the mountain's own with you. Woobat, Boldore, Skorupi and Grumpig live here, and Excadrill too. Come back with one."
+  end
+label Pays
+  say "Ah! A Pokémon of this very mountain! Wonderful. Please take this."
+  give "TM54"
+  setflag FLAG_UNOVA_GOT_FALSE_SWIPE
+  say "False Swipe leaves its target with 1 HP when it would have fainted. It's a very restrained move, and perfect for catching a Pokémon."
+  end
+label Again
+  say "False Swipe is a gentle move, but a very useful one. The Pokémon here are hardy. Take your time catching them."
+  end

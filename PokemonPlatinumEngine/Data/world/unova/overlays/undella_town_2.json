@@ -1,0 +1,28 @@
+{
+  // A house of Undella Town (plan 22 · U7, part b): three people who talk, our words
+  "area": "undella_town_2",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "dialog": [
+        "I swim a hundred laps of the bay each morning. Then I do a hundred more, to be fair to my Pokémon."
+      ]
+    },
+    "1": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "We came here to cheer for the swimmers! Even the Pokémon ones!"
+      ]
+    },
+    "2": {
+      "name": "Rich Boy",
+      "npcType": "rich_boy",
+      "dialog": [
+        "My family has a holiday house here. I say it's the best, but I haven't been anywhere else."
+      ]
+    }
+  }
+}

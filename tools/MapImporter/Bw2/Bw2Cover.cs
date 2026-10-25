@@ -36,6 +36,10 @@ public static class Bw2Cover
         // out7yuk01 and the park's out36yuk1, yuk a floor's (yuka) and never snow's (yuki): read as snow, they made the
         // city snow country and its battles snowfields
         ("\\dyuk\\d|^ja_floor|^c4g_stage|^c4g_yuka|^c4g_tou", TerrainCover.Paving),   // the city's and the park's paving, Join Avenue's street, the runway's stage and its lights
+        // (plan 22 · U7, part b, judged with --chunk: Reversal Mountain's lights are shafts over its pools, no lamps, and
+        // Lacunosa Town's ground is a packed track)
+        ("^in\\d+_light", null),
+        ("^tg_\\d", TerrainCover.Path),
         ("^ja_roof", null),                                      // the glass roof over Join Avenue
         ("^ja_water", TerrainCover.Water),                       // its basins
         ("^ja_vari", TerrainCover.Building),                     // its shopfronts

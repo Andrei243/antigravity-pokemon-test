@@ -1,0 +1,40 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "2": {
+      "en": [
+        "The portrait has fallen from the wall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Nobody saw it change, but this picture now hangs upside down."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

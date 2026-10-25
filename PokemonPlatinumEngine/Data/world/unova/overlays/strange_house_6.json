@@ -1,0 +1,32 @@
+{
+  // The Strange House's cellar (plan 22 · U7, part b): Black 2's, our words. As the player steps along its middle (17 to 19, 19,
+  // VAR_UNOVA_STRANGE 1) the girl (0, FLAG_UNOVA_HIDE_STRANGE_GIRL) comes down the room once more, still looking for her
+  // family (strange_house_6.txt). The stairs at the north lead to the attic (strange_house_5); the two doors that lead into dead-end
+  // rooms in Black 2 are plain wall here
+  "area": "strange_house_6",
+  "bgmTrack": "unova/strange_house",
+  "triggers": [
+    {
+      "script": "TheGirlComesBack",
+      "x": 17,
+      "z": 19,
+      "width": 3,
+      "depth": 1,
+      "variable": "VAR_UNOVA_STRANGE",
+      "value": 1
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "lass",
+      "hiddenBy": "FLAG_UNOVA_HIDE_STRANGE_GIRL",
+      "still": true,
+      "dialog": [ "..." ]
+    }
+  },
+  "signs": {
+    "2": "The portrait has fallen from the wall.",
+    "3": "Nobody saw it change, but this picture now hangs upside down."
+  }
+}

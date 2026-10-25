@@ -1,0 +1,302 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Storyteller"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You must be the ones who came to hear the old tale of Lacunosa Town."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's right. Please, tell us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Storyteller"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right, my dears. Please sit and listen."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wasn't that an interesting folktale? We can't say what the Pokémon was, but the power in the story is remarkable!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I know... A power that can freeze everything around it. It could rival the legendary dragons!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yes, Bianca. It's rather like the dragons I told you of in Lentimas Town, who scorched Unova long ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Professor, do you think the Pokémon from the old story and the legendary dragons could be connected?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The meteorite."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The meteorite?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The dragons were woken from stones, the Light Stone and the Dark Stone. Suppose the meteorite in the tale and those stones were one and the same..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Remember that elements from the same age were found in the Dragonspiral Tower, where the dragons slept, and the pieces start to fit."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If your theory's right, it must be a really strong Pokémon. Why would it come out only at night, though? Maybe it doesn't like sunlight?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'd have to look into it more deeply before I could say anything about that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now that I think of it, the name Lacunosa may come from lacunosus clouds, clouds that look like a net or a fence. I wonder whether the name is related."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, sorry, I've rambled on, haven't I? {player}, could you ask Drayden about this, if you get the chance?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going to do a little fieldwork. Bianca, you'll help me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sure thing!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, one more thing. Opelucid City's mayor, Drayden, wrestles with his Pokémon to make them tough. Don't be surprised!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Professor Juniper, wait up!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TheOldTale": [
+    {
+      "en": [
+        "Storyteller"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, fine, fine. Come back when you have time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+# Route 13 (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_13.s, read for the order alone). Black 2's Cobalion at the north end (21, which
+# roars as the player comes up and is battled) is plan 22 · U10's and stays hidden.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end
+
+
+# The treasure hunter (13): a Heart Scale a day
+script TreasureHunter
+  face 13 player
+  speaker "Treasure Hunter"
+  if flag FLAG_DAILY_UNOVA_TREASURE_HUNTER goto Done
+  say "What am I doing? I'm hunting for treasure! Sometimes things lie buried in the sand and the soil."
+  say "Actually, I just found something! But it's the same as one I found before, so you can have this."
+  give "Heart Scale"
+  setflag FLAG_DAILY_UNOVA_TREASURE_HUNTER
+  say "I'll be hunting for treasure here again tomorrow. I might find something else, so stop by if you have time."
+  say "I don't find as much as I used to, though..."
+  end
+label Done
+  say "I'll be hunting for treasure here again tomorrow. Stop by if you have time."
+  end

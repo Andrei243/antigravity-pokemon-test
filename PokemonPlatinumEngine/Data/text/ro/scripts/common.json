@@ -2612,5 +2612,81 @@
         ""
       ]
     }
+  ],
+  "UnovaBiancaAsks": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to say goodbye to Bianca here?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK, then! I'd like to look into where Heatran might be hiding, anyway. Thank you for coming with me, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Be careful on the rest of your journey!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "OK! Then let's look around a little more!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "UnovaLacunosaTale": [
+    {
+      "en": [
+        "There's a great, great hole in the land behind this town. Long ago a huge meteorite fell out of the sky, and that was what made it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

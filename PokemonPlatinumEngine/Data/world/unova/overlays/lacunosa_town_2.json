@@ -1,0 +1,36 @@
+{
+  // A house of Lacunosa Town (plan 22 · U7, part b): four who talk, our words. Its people go to bed early like the whole town
+  "area": "lacunosa_town_2",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": {
+      "name": "Breeder",
+      "npcType": "pokemon_breeder_m",
+      "dialog": [
+        "My Herdier eats at the same hour every day. It would complain if I forgot, and it does so loudly."
+      ]
+    },
+    "1": {
+      "name": "Herdier",
+      "npcType": "Pokemon",
+      "species": "Herdier",
+      "dialog": [
+        "Herdier: Gahoo!"
+      ]
+    },
+    "2": {
+      "name": "School Kid",
+      "npcType": "school_kid_m",
+      "dialog": [
+        "I'm not allowed outside after dark. Nobody told me why, so I just sit by the window and wait."
+      ]
+    },
+    "3": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "Nobody here stays out late. I hear that's the rule. We follow it to the minute!"
+      ]
+    }
+  }
+}
