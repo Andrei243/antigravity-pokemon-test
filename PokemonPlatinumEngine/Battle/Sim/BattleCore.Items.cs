@@ -340,6 +340,14 @@ public sealed partial class BattleCore
         if (Frontier) return FrontierBagRefusal;
         // A Master Trainer's battle (plan 14 · B14): nothing from the bag, for either side
         if (NoBattleItems) return NoItemsRefusal;
+        // The Nuzlocke (plan 13 · V4): no revive at any time, and no ball for a Pokémon the run may not catch, the Great
+        // Marsh's Safari Balls among them
+        if (Nuzlocke is { } nuzlocke && b.IsPlayerSide)
+        {
+            if (Models.Nuzlocke.Revives(item)) return Text.Of("battle.nuzlockeNoRevive");
+            if (item.Pocket == ItemPocket.PokeBalls && !IsTrainerBattle && nuzlocke.Catch != NuzlockeCatch.Free)
+                return Text.Of(nuzlocke.Catch == NuzlockeCatch.Duplicate ? "battle.nuzlockeDuplicate" : "battle.nuzlockeAreaSpent");
+        }
         // The Great Marsh and Pal Park have their own balls and nothing else
         if (Kind is BattleKind.Safari or BattleKind.PalPark)
             return item.Name != "Safari Ball" ? Text.Of("battle.onlyTheBallsYou") : SpecialBalls <= 0 ? Text.Of("battle.youHaveNoBalls") : null;

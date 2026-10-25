@@ -682,7 +682,8 @@
     "teach": "Teach {move} to which Pokémon?",
     "useOn": "Use the {item} on which Pokémon?",
     "grew": "{name} grew to Lv. {level}!",
-    "useOnMove": "Use the {item} on which move?"
+    "useOnMove": "Use the {item} on which move?",
+    "nuzlockeNoRevive": "A Pokémon that has fallen in a Nuzlocke can't be brought back."
   },
 
   "shop": {
@@ -882,6 +883,10 @@
       "SetStyle": "Battle Style is Set, and the Shift offer is never made.",
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
       "Start": "Begin the game with these choices. They cannot be changed afterwards."
+    },
+    "ended": {
+      "whiteout": "Your last Pokémon has fallen. The Nuzlocke is over, and this game will not be saved again.",
+      "noSave": "This Nuzlocke is over. The game can't be saved again."
     }
   },
   "card": {
@@ -909,7 +914,12 @@
     "contestsValue": "{won} won of {entered}",
     "started": "ADVENTURE STARTED",
     "stars": "STARS",
-    "starsNote": "A star for each of five great feats."
+    "starsNote": "A star for each of five great feats.",
+    "runEnded": "RUN OVER",
+    "graveyard": "GRAVEYARD  {count}",
+    "graveyardEmpty": "Nobody has fallen yet.",
+    "graveyardMore": "and {count} more before",
+    "fallenLine": "{species}  Lv. {level}  ·  {place}"
   },
   "boxes": {
     "title": "PC BOXES",
@@ -2946,7 +2956,10 @@
     "battleBond": "{pokemon} became fully charged by its bond with its Trainer!",
     "powerConstruct": "You sense the presence of many!",
     "completeForme": "{pokemon} transformed into its Complete Forme!",
-    "ballFetch": "{pokemon} fetched the {item}!"
+    "ballFetch": "{pokemon} fetched the {item}!",
+    "nuzlockeNoRevive": "In a Nuzlocke, a fallen Pokémon can't be revived.",
+    "nuzlockeAreaSpent": "This area's catch is already used. It can't be caught.",
+    "nuzlockeDuplicate": "You've caught this one's line. It can't be caught."
   },
 
   "battleInfo": {

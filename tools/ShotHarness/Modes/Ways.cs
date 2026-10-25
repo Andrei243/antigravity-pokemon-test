@@ -9,6 +9,76 @@ partial class Harness
     {
         LevelCapMode();
         RoarkMode();
+        NuzlockeMode();
+    }
+
+    // V4, the Nuzlocke: wy_nuzlocke_ball_refused (a second wild Pokémon met on Route 201, whose catch the run has had, and
+    // the bag's Poké Ball refused with the battle's line), wy_nickname (the keyboard over the field for a Pokémon just
+    // caught) and wy_trainer_card_graveyard (the card's Run page with three fallen). It prints the place's key, the line,
+    // and the graveyard as the run keeps it
+    void NuzlockeMode()
+    {
+        BeginRun(RunRules.NuzlockePreset);
+        game.Bag.AddItem(ItemDatabase.Get("Poké Ball")!, 5);
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        var (gx, gy) = NearestGrass(sinnoh, 116, 886);
+        At("Sinnoh", gx, gy, Direction.Up);
+        string place = Nuzlocke.PlaceKeyOf(sinnoh, gx, gy);
+        game.RunState.Meet(place);
+        Console.WriteLine($"nuzlocke: Route 201's grass at {gx},{gy} is {place}; met there already: {game.RunState.HasMet(place)}");
+        game.StartWildBattle(new WildEncounterEntry { SpeciesName = "Bidoof", MinLevel = 3, MaxLevel = 3, Weight = 100 });
+        for (int i = 0; i < 900 && game.State != GameState.Battle; i += 2) Frames(2);
+        var b = game.Battle;
+        ToMainMenu(b);
+        b.HUD.MenuState = BattleMenuState.SelectBagPocket;
+        b.SelectBagPocket(2);
+        int ball = b.BagListed.ToList().FindIndex(s => s.Name == "Poké Ball");
+        b.SelectBagItem(Math.Max(0, ball));
+        Skip(0.6);
+        Shot("wy_nuzlocke_ball_refused");
+        Console.WriteLine($"nuzlocke: \"{b.CurrentMessage}\"");
+        game.State = GameState.Overworld;
+        Frames(10);
+
+        // A Pokémon just caught: the keyboard opens over the field once it is back
+        var caught = new Pokemon(PokemonDatabase.Get("Starly")!, 4);
+        game.Party.Add(caught);
+        game.NameAfterBattle = caught;
+        Frames(30);
+        Shot("wy_nickname");
+        Console.WriteLine($"nuzlocke: the keyboard is {(game.State == GameState.Nickname ? "open" : "shut")} for {game.Nickname.Target?.Species.Name}");
+        game.Nickname.Cancel();
+        Frames(10);
+        game.State = GameState.Overworld;
+
+        // Three fallen, as the run keeps them, and the card turned to its Run page
+        foreach (var (species, level, nickname) in new[] { ("Turtwig", 9, "Leafy"), ("Starly", 7, ""), ("Shinx", 11, "Sparks") })
+        {
+            var p = new Pokemon(PokemonDatabase.Get(species)!, level) { Nickname = nickname, CurrentHP = 0 };
+            var team = new Party();
+            team.Add(p);
+            Nuzlocke.Bury(game.RunState, team, place, sinnoh.DisplayNameAt(gx, gy), 600);
+        }
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        game.TrainerCard.Turn(1);
+        game.TrainerCard.Turn(1);
+        Frames(40);
+        Shot("wy_trainer_card_graveyard");
+        Console.WriteLine($"nuzlocke: graveyard {string.Join(", ", game.RunState.Graveyard.Select(f => $"{f.Pokemon.SpeciesName} {f.Pokemon.Level} at {f.Place}"))}");
+        game.TrainerCard.Close();
+        game.State = GameState.Overworld;
+        Frames(10);
+    }
+
+    // The tall grass nearest a tile, open to walk on
+    static (int X, int Y) NearestGrass(Map map, int x, int y)
+    {
+        for (int r = 0; r < 80; r++)
+            for (int dy = -r; dy <= r; dy++)
+                for (int dx = -r; dx <= r; dx++)
+                    if (Math.Max(Math.Abs(dx), Math.Abs(dy)) == r && map.IsTallGrass(x + dx, y + dy) && map.IsWalkable(x + dx, y + dy))
+                        return (x + dx, y + dy);
+        return (x, y);
     }
 
     // A new game of its own under a run, past the first chapter, in front of the house

@@ -90,6 +90,13 @@ public sealed class CoreSetup
     public int RunLevelCap { get; init; }
 
     /// <summary>
+    /// The Nuzlocke's terms for this battle (plan 13 · V4): no revive for the player, and a wild Pokémon that may not be
+    /// caught refuses every ball (<see cref="NuzlockeTerms.Catch"/>). Null for none, which changes nothing. A record of the
+    /// battle doesn't keep it: it only refuses choices, so the answers a battle was given replay alike without it.
+    /// </summary>
+    public NuzlockeTerms? Nuzlocke { get; init; }
+
+    /// <summary>
     /// The player has a Key Stone (plan 06 · R20): under rules with <see cref="Ruleset.MegaEvolution"/> one of their
     /// own Pokémon may Mega Evolve once in the battle. A trainer has theirs as <see cref="Trainer.KeyStone"/>.
     /// </summary>
@@ -193,6 +200,9 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>The level EXP stops at in this battle (<see cref="CoreSetup.RunLevelCap"/>), null for none.</summary>
     public int? RunLevelCap { get; }
 
+    /// <summary>The Nuzlocke's terms (<see cref="CoreSetup.Nuzlocke"/>), null for none.</summary>
+    public NuzlockeTerms? Nuzlocke { get; }
+
     /// <summary>No critical hit lands in the catching lesson or the first battle (<c>BtlCmd_CalcCrit</c>).</summary>
     internal bool NoCriticalHits => Kind == BattleKind.CatchingLesson || FirstBattle;
 
@@ -247,6 +257,7 @@ public sealed partial class BattleCore : IBattleContext
         OffersSwitch = setup.OffersSwitch;
         Difficulty = setup.Difficulty;
         RunLevelCap = setup.RunLevelCap > 0 ? setup.RunLevelCap : null;
+        Nuzlocke = setup.Nuzlocke;
         KeyStone = setup.KeyStone;
         ZRing = setup.ZRing;
         DynamaxBand = setup.DynamaxBand;

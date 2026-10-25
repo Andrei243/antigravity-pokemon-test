@@ -50,6 +50,15 @@ public sealed partial class GameFlow
     /// <summary>The ways to play chosen at NEW GAME (plan 13 · V1; saved as <c>SaveData.Run</c>, Normal when none).</summary>
     public Models.RunRules Run { get; set; } = Models.RunRules.Normal;
 
+    /// <summary>What the run remembers (plan 13 · V4: the places met, the graveyard, its end; saved as <c>SaveData.RunState</c>).</summary>
+    public Models.RunState RunState { get; set; } = new();
+
+    /// <summary>A Pokémon just caught under the Nuzlocke, whose name the keyboard asks once the field is back (plan 13 · V4).</summary>
+    public Models.Pokemon? NameAfterBattle { get; set; }
+
+    /// <summary>Where the Pokémon's keyboard goes back to: the party menu after RENAME, the field after a catch.</summary>
+    public GameState NicknameReturn { get; set; } = GameState.PartyMenu;
+
     /// <summary>The teams entered into the Hall of Fame (plan 06 · R12).</summary>
     public HallOfFame HallOfFame { get; set; } = new();
 

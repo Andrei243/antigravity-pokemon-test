@@ -17,19 +17,25 @@ public partial class GameEngine
     {
         if (place < 0 || place >= flow.Party.Count) return;
         flow.NicknameScreen.Open(flow.Party.Members[place]);
+        flow.NicknameReturn = GameState.PartyMenu;
         flow.State = GameState.Nickname;
     }
 
-    /// <summary>The keyboard closed: the Pokémon keeps the name given (none, for its species' own), and the menu says so.</summary>
+    /// <summary>
+    /// The keyboard closed: the Pokémon keeps the name given (none, for its species' own), and the menu says so; after a
+    /// catch under the Nuzlocke (plan 13 · V4) the field comes back.
+    /// </summary>
     private void CloseNickname()
     {
         var screen = flow.NicknameScreen;
         var pokemon = screen.Target;
+        bool toMenu = flow.NicknameReturn == GameState.PartyMenu;
         if (pokemon != null && screen.Nickname is { } name)
         {
             pokemon.Nickname = name;
-            flow.PartyScreen.Message = Text.Of(name.Length == 0 ? "party.rename.reset" : "party.rename.done", ("name", pokemon.DisplayName));
+            if (toMenu) flow.PartyScreen.Message = Text.Of(name.Length == 0 ? "party.rename.reset" : "party.rename.done", ("name", pokemon.DisplayName));
         }
-        flow.State = GameState.PartyMenu;
+        flow.State = flow.NicknameReturn;
+        flow.NicknameReturn = GameState.PartyMenu;
     }
 }

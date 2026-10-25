@@ -267,6 +267,10 @@ public partial class GameEngine
         public Models.RunRules Run => game.flow.Run;
         /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none.</summary>
         public int? LevelCap => game.CurrentLevelCap();
+        /// <summary>What the run remembers (plan 13 · V4): the places met, the graveyard, its end.</summary>
+        public Models.RunState RunState => game.flow.RunState;
+        /// <summary>A Pokémon caught under the Nuzlocke whose name the keyboard will ask once the field is back (plan 13 · V4).</summary>
+        public Pokemon? NameAfterBattle { get => game.flow.NameAfterBattle; set => game.flow.NameAfterBattle = value; }
         /// <summary>
         /// The slot the game is saved in (plan 12 · Q2). A tool that wants its saves in one place whatever an earlier
         /// run left in its folder sets it.

@@ -5049,7 +5049,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
 | Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
-| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 |
+| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done but Gifts, below) |
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
 | No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
 | Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 |
@@ -5102,6 +5102,41 @@ Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a t
   level of the player's lead and every other moves the same number of levels, so the spread is kept; up or down, as the
   panel's help says. It is laid first, so Challenge's and Easy's levels sit on the scaled team. The first battle and a Master
   Trainer's are left alone, as for the difficulty. A Pokémon is not evolved to suit its new level.
+
+### The Nuzlocke (plan 13 · V4)
+
+The community's rules, which Platinum doesn't have; `Models/Nuzlocke.cs` and `Models/RunState.cs` (GPU-free) are all of
+them, and **a run without the Nuzlocke writes and refuses nothing** (`Meet` returns Free and keeps nothing, a battle is
+handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as they were).
+
+- **One catch in each place.** A place is the area's key on a streamed map (each of the Great Marsh's six areas its own,
+  `great_marsh_1` to `_6`), a room's or a hand-made map's name otherwise. The first wild Pokémon met there in the field
+  (`StartWildBattle`, a roamer included) spends it, caught or not: `RunState.AreasMet`. A later one gets
+  `NuzlockeTerms(AreaSpent)` and every ball is refused in its battle, a Safari Ball too (`BattleCore.WhyNotItem`, for the
+  player's side only). The Bug-Catching Contest's catch is the contest's and counts nothing; a Pokémon a script puts in the
+  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift: the
+  `GiftsCount` clause and the static encounters are left for a later session.
+- **The dupes clause**: a wild Pokémon whose line (`PokemonSpecies.Offspring`, the first of the line, or the species itself)
+  has a species in the Pokédex's caught list passes: no ball, and the place stays unspent for the next. **The shiny
+  clause**: a shiny is free and spends nothing.
+- **The fallen**: after every battle but the assistant's lesson and the first battle (the tutorial), the team's fainted
+  Pokémon (not an Egg, which counts as fainted) go into the graveyard (`RunState.Graveyard`, each as `SavedPokemonData`
+  with the place and the play time), **out of the team for good**, before anything heals them (a partner's heal after a
+  battle, a script's lost battle). The graveyard is neither the team nor a box: nothing can withdraw, heal or use what is
+  in it, and the box rule is simply that a Pokémon never reaches a box fainted (a box holds the living only). A Pokémon
+  that faints and is brought back within one battle is not buried: only those down when it ends.
+- **No revive**: a Revive, a Max Revive, a Revival Herb and Sacred Ash (`item.Use` with `revive` or `reviveAll`) are refused
+  in battle (`battle.nuzlockeNoRevive`) and in the bag (`BagScreen.NoRevives`); other medicine is the same as ever.
+- **The end** (decision 2's recommendation): a whiteout, a battle lost that no script lets the story go on from, ends the
+  run (`RunState.Ended`, `EndedBy` "whiteout"), even with Pokémon in the boxes. The whole team is in the graveyard by then,
+  the player comes round at the Pokémon Center as ever with nobody, and the game is written once, as it ended
+  (`WriteSave(runsLastWord)`). From then on nothing writes the slot (the save menu, SAVE AND QUIT, a script's `save`): the
+  save loads, to look at the card, the graveyard and the boxes, and plays on with no battle to fight. A script's lost battle
+  that lets the story go on buries the fallen and ends nothing, even if it leaves the team empty.
+- **A name for every catch**: a Pokémon caught under the Nuzlocke in the field (or the Great Marsh) is named as the field
+  comes back, on plan 12 · Q19's keyboard (`GameState.Nickname`, `GameFlow.NameAfterBattle`), which closes back to the field;
+  B on an empty name keeps the species' own. Platinum asks after every catch, in the battle: plan 06 still owns that.
+- **Recorded battles** don't keep the terms: they only refuse choices, so the answers a battle was given replay the same.
 
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 
