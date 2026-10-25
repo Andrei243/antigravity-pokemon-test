@@ -647,3 +647,7 @@ A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of th
 ## The autosave
 
 `autosave.json` (plan 12 · Q3; `AutosaveFile`) is written beside the slots' saves while the options' AUTOSAVE is on, never over a slot's own file. It is a save like any other (`SaveManager.Write`: a temporary file, the one before it as `autosave.bak`, a checksum first in the file) with one field more, `AutosaveSlot`, the slot (1 to 3) whose game it is; no slot's save and no save of the corpus has the field. A save by hand into that slot, or deleting it, takes the autosave away. A start offers it (`AutosaveFile.Offer`) when it reads whole and its slot holds the same game (`TrainerId` and `Started`) with less time played, or holds nothing. `tools/SaveTool` reads it like any save.
+
+## Hordes
+
+`Data/hordes.json` (plan 14 · B4; `Overworld/Hordes.cs`) is where X and Y's hordes are met, written by hand: an object keyed by a region's id (`Sinnoh`, `Kanto`…), each a list of places, an `area` (an area's key as its world file names it) and its `hordes`, each a `species`, a `minLevel` and a `maxLevel` that each of the five is drawn from, and an optional `weight` (1). They are met in the place's tall grass once the region's Hall of Fame is entered and under rules that have hordes (`docs/mechanics/rulings.md`, "Hordes"); a horde's species is one of the region's own Pokédex whose family lives in the place's own grass, no stronger than its weakest, which `HordeScreenTests` holds. A place's own tables are never changed by it.

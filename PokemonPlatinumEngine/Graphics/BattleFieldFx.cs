@@ -137,7 +137,10 @@ internal static class BattleFieldFx
     private static readonly PlaceCondition[] PlaceKinds = Enum.GetValues<PlaceCondition>();
 
     /// <summary>Everything the field's look has standing or fading, for a battle of <paramref name="slots"/> Pokémon a side.</summary>
-    public static void Emit(FieldLook look, float time, FxPlaces places, int slots, FxList fx)
+    public static void Emit(FieldLook look, float time, FxPlaces places, int slots, FxList fx) => Emit(look, time, places, slots, slots, fx);
+
+    /// <summary>The same for a battle whose sides have places of their own counts: a horde's one and five (plan 14 · B4).</summary>
+    public static void Emit(FieldLook look, float time, FxPlaces places, int playerSlots, int enemySlots, FxList fx)
     {
         if (!look.Any) return;
         for (int s = 0; s < 2; s++)
@@ -145,7 +148,8 @@ internal static class BattleFieldFx
             var side = (BattleSide)s;
             foreach (var kind in SideKinds)
                 Side(side, kind, look.Of(side, kind), time, places, fx);
-            for (int slot = 0; slot < Math.Clamp(slots, 1, 2); slot++)
+            int slots = side == BattleSide.Player ? playerSlots : enemySlots;
+            for (int slot = 0; slot < Math.Clamp(slots, 1, BattleAnimator.MostSlots); slot++)
                 foreach (var kind in PlaceKinds)
                     Place(new Place(side, slot), kind, look.Of(new Place(side, slot), kind), time, places, fx);
         }

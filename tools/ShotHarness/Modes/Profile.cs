@@ -311,6 +311,20 @@ partial class Harness
             // look ever draws over the most a battle already draws (Modes/ConditionsField.cs)
             EverythingOnTheField();
             Profile("double battle in a sandstorm, everything on the field");
+
+            // A horde (plan 14 · B4): one of the player's against five wild Pokémon on one platform, at the menu
+            var h = new BattleEngine(new BattleSetup
+            {
+                PlayerParty = team, Inventory = inventory, Pokedex = pokedex, Format = BattleFormat.Horde, Rules = Ruleset.Modern,
+                WildPokemon = Enumerable.Range(0, 5).Select(i => Made("Zubat", 20, 31 + i)).ToList(), Random = new Random(9)
+            });
+            game.BattleRenderer.SetArena(game.Map);
+            game.Battle = h;
+            game.State = GameState.Battle;
+            Skip(130 / 60.0);
+            for (int guard = 0; guard < 8 && h.HUD.MenuState == BattleMenuState.Message; guard++) { h.ConfirmMessage(); Frames(1); Skip(50 / 60.0); }
+            Skip(0.8);
+            Profile("horde battle, five at the menu");
             game.State = GameState.Overworld;
         }
         engine.Settings.Quality = GraphicsQuality.High;

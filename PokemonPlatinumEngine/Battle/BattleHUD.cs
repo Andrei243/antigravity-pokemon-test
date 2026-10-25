@@ -69,9 +69,17 @@ public class BattleHUD
 
         float t = 1f;
         if (view.SendOutAge >= 0f) t = view.SendOutAge / BoxSlideTime;
-        else if ((view == anim.Enemy || view == anim[BattleSide.Enemy, 1]) && anim.Time < 1.2f + BoxSlideTime) t = (anim.Time - 1.2f) / BoxSlideTime; // wild Pokémon, after the camera sweep
+        else if (OnTheFoesSide(anim, view) && anim.Time < 1.2f + BoxSlideTime) t = (anim.Time - 1.2f) / BoxSlideTime; // wild Pokémon, after the camera sweep
 
         t = Math.Clamp(t, 0f, 1f);
         return (1f - t) * (1f - t) * (1f - t);
+    }
+
+    /// <summary>Whether a view is one of the foes' places: any of a horde's five (plan 14 · B4).</summary>
+    private static bool OnTheFoesSide(BattleAnimator anim, CombatantView view)
+    {
+        for (int slot = 0; slot < anim.SlotsOf(BattleSide.Enemy); slot++)
+            if (view == anim[BattleSide.Enemy, slot]) return true;
+        return false;
     }
 }

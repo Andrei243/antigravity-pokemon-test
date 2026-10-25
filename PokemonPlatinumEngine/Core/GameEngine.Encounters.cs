@@ -48,7 +48,9 @@ public partial class GameEngine
             // The song the Pokégear's radio plays over the field (plan 20 · J3)
             Radio = radioSong,
             // Unova's season, whose tables an area may have (plan 22 · U4); null in every other region
-            Season = SeasonHere
+            Season = SeasonHere,
+            // The hordes of the region's tall grass, once its Hall of Fame is entered (plan 14 · B4)
+            Hordes = Hordes.Open(Here, flow.Story, Ruleset.Current)
         };
     }
 
