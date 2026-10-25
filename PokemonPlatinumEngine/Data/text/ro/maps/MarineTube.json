@@ -1,0 +1,103 @@
+{
+  "displayName": {
+    "en": [
+      "Marine Tube"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "nonswimmer": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "So this is what the bottom of the sea looks like! I never learned to swim, so I had given up on ever seeing it. I could stay here all day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aquarium": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People call this a walk-through aquarium. But look at them all staring in... I think we are the ones on show!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trench": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Look down there, past the glass! That trench goes down and down. How deep do you think it is? Deeper than any mountain is tall, I bet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dreamer": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea is deep... but my heart is deeper still. Sigh. I came here to think about someone special."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "raindance": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rain Dance is a move you use when you are longing for something. Or is it? Sigh... I cannot think of a good way to explain it today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

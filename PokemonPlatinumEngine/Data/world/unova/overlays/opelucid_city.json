@@ -9,6 +9,7 @@
   // two) take the DNA Splicers (VAR 6), and Cheren (19) comes with the lead to Humilau once the Triad is beaten (VAR 7), when the ice melts
   "area": "opelucid_city",
   "bgmTrack": "unova/opelucid",
+  "architecture": "Skyline",
   "zones": [
     { "x": 380, "z": 134, "width": 76, "depth": 55, "weather": "Snowing", "while": "FLAG_UNOVA_OPELUCID_ICE" }
   ],

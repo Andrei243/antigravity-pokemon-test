@@ -1,0 +1,68 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Walking under the sea with dry feet! I come through the tube every day just to watch the fish watch me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is the gate to the Marine Tube. It runs under the sea all the way to Humilau City."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The glass has never been so clean. You can see right to the bottom of the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3": {
+      "en": [
+        "Marine Tube\nThe walk-through aquarium to Humilau City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

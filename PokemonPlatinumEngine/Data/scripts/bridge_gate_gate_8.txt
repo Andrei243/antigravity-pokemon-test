@@ -1,0 +1,14 @@
+# The Marine Tube's gate north of Undella Town (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are
+# our own. Until Opelucid City's chapter has ended (VAR_UNOVA_OPELUCID 7, Cheren's word that the Frigate made for Humilau City)
+# a worker turns the player back from the tube; once it has, the way is open for good (VAR_UNOVA_TUBE 1).
+
+
+script TubeClosed
+  if var VAR_UNOVA_OPELUCID == 7 goto Open
+  speaker "Worker"
+  say "Sorry! We're polishing the Marine Tube's glass today. Come back another time, would you?"
+  walk player left 1
+  end
+label Open
+  setvar VAR_UNOVA_TUBE 1
+  end

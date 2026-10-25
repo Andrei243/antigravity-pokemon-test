@@ -1,0 +1,39 @@
+{
+  "key": "humilau_city_gym",
+  "index": 473,
+  "name": "Humilau City",
+  "matrix": 336,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_WATER_GYM_01",
+  "nightMusic": "BGM_WATER_GYM_01",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 75, "to": "humilau_city", "toWarp": 1 },
+    { "x": 16, "z": 75, "to": "humilau_city", "toWarp": 1 },
+    { "x": 17, "z": 75, "to": "humilau_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "230", "movement": "none", "x": 16, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ea", "script": "1" },
+    { "id": "1", "looks": "ace_trainer_m", "movement": "none", "x": 3, "z": 58, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_ACE_TRAINER_DOYLE" },
+    { "id": "2", "looks": "ace_trainer_f", "movement": "none", "x": 19, "z": 46, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_MELINA" },
+    { "id": "3", "looks": "ace_trainer_m", "movement": "none", "x": 9, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_ACE_TRAINER_SANTINO" },
+    { "id": "4", "looks": "ace_trainer_m", "movement": "none", "x": 13, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_ENZIO" },
+    { "id": "5", "looks": "ace_trainer_f", "movement": "none", "x": 10, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_ACE_TRAINER_SABLE" },
+    { "id": "6", "looks": "ace_trainer_f", "movement": "none", "x": 25, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 2, "trainer": "sees", "sight": 2, "script": "TRAINER_ACE_TRAINER_JEANNE" },
+    { "id": "7", "looks": "187", "movement": "none", "x": 17, "z": 72, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [
+    { "x": 14, "z": 71, "type": 0, "script": "3" },
+    { "x": 18, "z": 71, "type": 0, "script": "3" }
+  ],
+  "triggers": [
+    { "x": 15, "z": 71, "width": 2, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x411f", "value": "0" }
+  ]
+}

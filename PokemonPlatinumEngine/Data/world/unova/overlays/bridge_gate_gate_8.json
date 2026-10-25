@@ -1,0 +1,25 @@
+{
+  // The Marine Tube's gate north of Undella Town (plan 22 · U8, part b), our words. Its north door leads into the tube, which
+  // Black 2 lays on rails and is a map of ours here (Data/maps/MarineTube.json). Until Opelucid City's chapter has ended
+  // (VAR_UNOVA_OPELUCID 7) a worker across the hall turns the player back (our trigger, 13, 7 to 9, VAR_UNOVA_TUBE 0;
+  // bridge_gate_gate_8.txt); Black 2's second worker (1) is left out
+  "area": "bridge_gate_gate_8",
+  "bgmTrack": "unova/undella",
+  "heldBack": [ "1" ],
+  "doors": [
+    { "warp": 1, "map": "MarineTube", "x": 5, "y": 38, "facing": "Up" },
+    { "warp": 4, "map": "MarineTube", "x": 5, "y": 38, "facing": "Up" },
+    { "warp": 5, "map": "MarineTube", "x": 5, "y": 38, "facing": "Up" }
+  ],
+  "triggers": [
+    { "script": "TubeClosed", "x": 13, "z": 7, "width": 1, "depth": 3, "variable": "VAR_UNOVA_TUBE", "value": 0 }
+  ],
+  "people": {
+    "0": { "name": "Lady", "npcType": "lady", "dialog": [ "Walking under the sea with dry feet! I come through the tube every day just to watch the fish watch me." ] },
+    "2": { "name": "Receptionist", "npcType": "receptionist", "dialog": [ "This is the gate to the Marine Tube. It runs under the sea all the way to Humilau City." ] },
+    "3": { "name": "Worker", "npcType": "worker", "dialog": [ "The glass has never been so clean. You can see right to the bottom of the sea!" ] }
+  },
+  "signs": {
+    "3": "Marine Tube\nThe walk-through aquarium to Humilau City"
+  }
+}

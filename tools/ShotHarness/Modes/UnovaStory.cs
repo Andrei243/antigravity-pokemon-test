@@ -1065,5 +1065,105 @@ partial class Harness
         ReadTo("starting to melt"); Frames(10); Shot("us321_the_ice_melts"); ShotCrop("us321_the_ice_melts_native", 640, 300, 640, 360, 2);
         ReadTo(null); Frames(20); Shot("us322_opelucid_again");
         Opelucid("the ice melted");
+
+        // Plan 22 · U8, part b: the Marine Tube to the Plasma Frigate (us323 to us356), played in this same game: the tube's gate, the
+        // tube, Hugh in Humilau City, Marlon on the beach and in his Gym, the Wave Badge, Hugh and Marlon outside, Colress on Route 22,
+        // the Crustle in the Seaside Cave, Marlon's gangplank, the hold's tag battle, the switches and Colress aboard, Kyurem's
+        // chamber, the second tag battle and the Frigate's flight
+        void Humilau(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, humilau {story.Var("VAR_UNOVA_HUMILAU")}, "
+                + $"tube {story.Var("VAR_UNOVA_TUBE")}, Wave Badge {story.HasBadge(RegionDatabase.Unova, "Wave")}, TM55 {game.Bag.GetQuantity(ItemDatabase.Get("TM55")!)}, "
+                + $"machine {story.Has("FLAG_UNOVA_COLRESS_MACHINE")}/{story.Has("FLAG_UNOVA_COLRESS_MACHINE_BROKE")}, Crustle gone {story.Has("FLAG_UNOVA_HIDE_CRUSTLE")}, "
+                + $"frigate at Route 21 {story.Has("FLAG_UNOVA_FRIGATE_AT_ROUTE_21")}, gone {story.Has("FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21")}, "
+                + $"switches {story.Has("FLAG_UNOVA_FRIGATE_SWITCH_A")}/{story.Has("FLAG_UNOVA_FRIGATE_SWITCH_B")}, barrier {story.Var("VAR_UNOVA_FRIGATE_BARRIER")}");
+
+        // ---- the Marine Tube
+        ComeThrough("MarineTubeGate_Undella", 14, 8, Direction.Right); Frames(30); Shot("us323_the_tube_gate");
+        StepOnto("MarineTubeGate_Undella", 13, 8, Direction.Left); ReadTo(null);
+        ComeThrough("MarineTube", 5, 38, Direction.Up); Frames(30); Shot("us324_into_the_tube");
+        ComeThrough("MarineTube", 5, 20, Direction.Up); Frames(30); Shot("us325_under_the_sea");
+        Humilau("the tube");
+
+        // ---- Hugh by the Gym, Marlon on the beach
+        StepOnto("Unova", 790, 179, Direction.Left);
+        ReadTo("Over here!"); Frames(10); Shot("us326_hugh_in_humilau");
+        ReadTo("went for a swim"); Frames(10); Shot("us327_marlon_is_swimming");
+        ReadTo(null); Frames(10);
+        TalkTo("Unova", "1", "humilau_city");
+        ReadTo("Woo-hoo!"); Frames(10); Shot("us328_marlon_on_the_beach");
+        ReadTo("I'll be waiting in the Gym"); Frames(10); Shot("us329_marlon_goes_back");
+        ReadTo(null); Frames(10);
+        Humilau("Marlon met");
+
+        // ---- the Gym: the guide, the walkway, Marlon and the Wave Badge
+        ComeThrough("HumilauCity_Gym", 16, 74, Direction.Up); Frames(30); Shot("us330_the_humilau_gym");
+        TalkToKey("HumilauCity_Gym", "7", 0, 1);
+        ReadTo("Stay sharp!"); Frames(10); Shot("us331_the_guides_water");
+        ReadTo(null);
+        ComeThrough("HumilauCity_Gym", 25, 62, Direction.Up); Frames(30); Shot("us332_the_dock");
+        TalkToKey("HumilauCity_Gym", "0", 0, 1);
+        ReadTo("Here already, huh?"); Frames(10); Shot("us333_marlon_challenges");
+        ReadTo("strong for real"); Frames(10); Shot("us334_marlon_after_the_battle");
+        ReadTo("received the Wave Badge"); Frames(10); Shot("us335_the_wave_badge");
+        ReadTo(null); Frames(10);
+        Humilau("Wave Badge");
+
+        // ---- out of the Gym: Hugh and Marlon, then Route 22
+        StepOnto("Unova", 783, 173, Direction.Down);
+        ReadTo("all eight Badges"); Frames(10); Shot("us336_hugh_and_marlon");
+        ReadTo("The sea takes in every river"); Frames(10); Shot("us337_every_river");
+        ReadTo("You check Route 22"); Frames(10); Shot("us338_check_route_22");
+        ReadTo(null); Frames(10);
+        StepOnto("Unova", 752, 147, Direction.Left);
+        ReadTo("It's been a while"); Frames(10); Shot("us339_colress_on_route_22");
+        ReadTo("received the Colress Machine"); Frames(10); Shot("us340_the_colress_machine");
+        ReadTo("Seaside Cave"); Frames(10); Shot("us341_the_seaside_cave_hint");
+        ReadTo(null); Frames(10);
+        Humilau("Colress's machine");
+
+        // ---- the Seaside Cave's Crustle
+        ComeThrough("SeasideCave_1F", 28, 10, Direction.Right); Frames(30); Shot("us342_the_great_boulder");
+        TalkToKey("SeasideCave_1F", "9", -1, 0);
+        ReadTo("A Crustle was sleeping"); Frames(10); Shot("us343_the_crustle_wakes");
+        ReadTo("It's broken"); Frames(10); Shot("us344_the_machine_breaks");
+        ReadTo(null); Frames(10);
+        Humilau("the Crustle");
+
+        // ---- Route 21's beach: Hugh and Marlon's gangplank
+        StepOnto("Unova", 796, 241, Direction.Right);
+        ReadTo("You found them!"); Frames(10); Shot("us345_hugh_on_the_beach");
+        ReadTo("Hold up!"); Frames(10); Shot("us346_marlon_swims_up");
+        ReadTo("solid thud"); Frames(10); Shot("us347_the_gangplank");
+        ReadTo("I'm going in!"); Frames(10); Shot("us348_hugh_goes_aboard");
+        ReadTo(null); Frames(10);
+        Humilau("the gangplank");
+
+        // ---- aboard: the hold's tag battle, the two switches, Colress
+        ComeThrough("PlasmaFrigate", 9, 29, Direction.Right); Frames(30); Shot("us349_aboard_at_route_21");
+        StepOnto("PlasmaFrigate_Hold", 11, 15, Direction.Down);
+        ReadTo("feel my rage"); Frames(10); Shot("us350_the_holds_tag_battle");
+        ReadTo("Let's split up"); Frames(10); Shot("us351_split_up");
+        ReadTo(null); Frames(10);
+        ComeThrough("PlasmaFrigate_Cabin", 6, 3, Direction.Up); Frames(10); game.Interact();
+        ReadTo("a barrier switching off"); Frames(10); Shot("us352_the_first_switch");
+        ReadTo(null);
+        ComeThrough("PlasmaFrigate_Stern", 11, 5, Direction.Down); Frames(10);
+        TalkToKey("PlasmaFrigate_Stern", "colress_stern", 0, -1);
+        ReadTo("draw out the whole"); Frames(10); Shot("us353_colress_aboard");
+        ReadTo("the barrier in the hold is down"); Frames(10); Shot("us354_the_barrier_down");
+        ReadTo(null); Frames(10);
+        Humilau("the barrier");
+
+        // ---- Kyurem's chamber, Zinzolin, the second tag battle and the flight
+        ComeThrough("PlasmaFrigate_Bridge", 12, 19, Direction.Up);
+        StepOnto("PlasmaFrigate_Bridge", 12, 18, Direction.Up);
+        ReadTo("Its name is Kyurem"); Frames(10); Shot("us355_kyurem"); ShotCrop("us355_kyurem_native", 640, 300, 640, 360, 2);
+        ReadTo("Not with me around"); Frames(10); Shot("us356_hugh_runs_in");
+        ReadTo("my sister's Pokémon back"); Frames(10); Shot("us357_hughs_question");
+        ReadTo("Shadow Triad, I leave these two"); Frames(10); Shot("us358_the_triad");
+        ReadTo("flew off toward the west"); Frames(10); Shot("us359_the_frigate_flies");
+        ReadTo("the Giant Chasm"); Frames(10); Shot("us360_cheren_on_the_beach");
+        ReadTo(null); Frames(20); Shot("us361_route_21_after");
+        Humilau("the Frigate gone");
     }
 }

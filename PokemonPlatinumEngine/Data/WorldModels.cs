@@ -326,6 +326,9 @@ public static partial class WorldModels
         "driftveil_city" => PokemonType.Ground,
         // and Skyla's in Mistralton City (plan 22 · U7)
         "mistralton_city" => PokemonType.Flying,
+        // and Drayden's in Opelucid City and Marlon's in Humilau City (plan 22 · U8)
+        "opelucid_city" => PokemonType.Dragon,
+        "humilau_city" => PokemonType.Water,
         _ => null
     };
 }

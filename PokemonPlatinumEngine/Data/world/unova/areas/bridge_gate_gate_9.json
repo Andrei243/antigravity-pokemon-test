@@ -1,0 +1,35 @@
+{
+  "key": "bridge_gate_gate_9",
+  "index": 471,
+  "name": "Bridge Gate",
+  "matrix": 272,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 5, "to": "humilau_city", "toWarp": 7 },
+    { "x": 21, "z": 20, "to": "marine_tube", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "humilau_city", "toWarp": 7 },
+    { "x": 1, "z": 7, "to": "humilau_city", "toWarp": 7 },
+    { "x": 22, "z": 20, "to": "marine_tube", "toWarp": 1 },
+    { "x": 23, "z": 20, "to": "marine_tube", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 6, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "artist", "movement": "wander_around", "x": 11, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "2" },
+    { "id": "2", "looks": "parasol_lady", "movement": "none", "x": 10, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "3" }
+  ],
+  "signs": [
+    { "x": 10, "z": 2, "type": 0, "script": "4" },
+    { "x": 9, "z": 2, "type": 0, "script": "4" }
+  ],
+  "triggers": []
+}

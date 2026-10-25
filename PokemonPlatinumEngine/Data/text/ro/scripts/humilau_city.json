@@ -1,0 +1,226 @@
+{
+  "HughWaits": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here! You came through the tube too, huh?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll get the DNA Splicers back from Team Plasma, no matter what. But you should beat this city's Gym Leader first. You'll need the strength."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thing is, the Gym's empty. People say Marlon went for a swim and never came back. Try the beach south of here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "After you've got the Badge, we go looking for Team Plasma! I won't let them turn Unova into a block of ice!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eight Badges! Now it's Team Plasma's turn."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Marlon": [
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Woo-hoo! The sea's just right today!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sup! You must be here to take on the Gym, yeah? I'm the Gym Leader, Marlon. Sorry for the wait, yo."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I was out swimming with my Pokémon, and it felt so good I kinda kept going. I'll be waiting in the Gym, 'K?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sea's got room for everybody, yo."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MarlonAndHugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You got all eight Badges! You're really something, {player}! Normally you'd head for the Pokémon League now, but... Team Plasma comes first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sup again! What's this Team Plasma you're talking about, yo?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They steal people's Pokémon. Like my sister's... And now they want to use a Pokémon to freeze all of Unova solid! Doesn't that make you angry?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marlon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nope! When the sea's your home, you don't sweat that kind of thing. The sea takes in every river, the muddy ones too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you reckon Team Plasma's bad, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I get it. They're bad, so you fight 'em. But say it in your own words first. Then you'll know what you really want to do, and why."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shoots! Not bad. You're not sure, but you're going anyway! Still, say it in your own words first. Then you'll know what you really want to do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well then... See ya!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Man, I can't tell if that guy's laid back or just doesn't care. Doesn't matter. Our opponent is Team Plasma!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First we have to find where they are. Let's split up! You check Route 22, west of the city. I'll look along the shore. Got it?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

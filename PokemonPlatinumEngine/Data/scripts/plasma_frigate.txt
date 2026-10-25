@@ -6,12 +6,14 @@
 # the way and battle the player in turn (Black 2's TRAINER_TEAM_PLASMA_GRUNT_5 and _6), Zinzolin (16) comes down from
 # the bow, and the Shadow Triad (17 to 19) put all three back ashore on the pier, where the grounds' arrival goes on.
 # Black 2 also has Cheren and the player clear a second band of grunts before Zinzolin comes; ours leaves them standing.
-# Come aboard at any other time, the grunts at the rail see the player straight back down the gangway.
+# Come aboard at any other time, the grunts at the rail see the player straight back down the gangway, but at anchor off Route
+# 21 (plan 22 · U8, part b: FLAG_UNOVA_FRIGATE_AT_ROUTE_21), where Marlon's gangplank is the way aboard.
 
 
 script OnEnter
   call UnovaCatchUp
   if var VAR_UNOVA_PWT == 1 goto Boarding
+  if flag FLAG_UNOVA_FRIGATE_AT_ROUTE_21 end
   speaker "Grunt"
   say "Hey! This is a private ship! Off you go, back down the gangway!"
   warp "Unova" 198 494 left

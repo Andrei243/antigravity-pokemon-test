@@ -243,13 +243,23 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- Opelucid City (c8_), the Village Bridge (h04_) and the mall (mall)
         // Plan 22 · U8, part a: Opelucid's buildings stand in Blackthorn's way of building (dragon-blue gables on grey stone) and its modern blocks
         // in Jubilife's, the Village Bridge's in the harbour's, until the towns have ways of their own (the style guide's "Buildings" first)
-        Built("c8_buildb", BuildingKind.House, "a modern block of Opelucid City", Architecture.City, until: "plan 22 · U10"),
-        Built("c8_gym", BuildingKind.Gym, "Opelucid City's Dragon Gym", Architecture.Dragonstone, until: "plan 22 · U10"),
+        // (and since part b in Opelucid's own way, Skyline: pale panels under dragon-violet hips)
+        Built("c8_buildb", BuildingKind.House, "a modern block of Opelucid City", Architecture.Skyline),
+        Built("c8_gym", BuildingKind.Gym, "Opelucid City's Dragon Gym", Architecture.Skyline),
         Built("h04_house", BuildingKind.House, "a long house of the Village Bridge", Architecture.Harbour, until: "plan 22 · U10"),
         Built("h04_ligth", BuildingKind.House, "the great house on the Village Bridge's island", Architecture.Harbour, until: "plan 22 · U10"),
         Built("h04_ligth2", BuildingKind.House, "a small bright house of the Village Bridge", Architecture.Harbour, until: "plan 22 · U10"),
         Built("h3_gate", BuildingKind.Gate, "a gate house of the Village Bridge and Opelucid City"),
         Built("mall", BuildingKind.Shop, "Shopping Mall Nine on Route 9", Architecture.City, until: "plan 22 · U10"),
+
+        // ---------------------------------------------------------------- Humilau City (c14_) and the Plasma Frigate's rooms
+        // Plan 22 · U8, part b: Humilau's houses on stilts over the sea and its Gym in its own way of building (Stilts), the
+        // fishing boat moored among them, and the Frigate's warp panels and ice cannon
+        Built("c14_house", BuildingKind.House, "a house of Humilau City on its stilts over the sea", Architecture.Stilts),
+        Built("c14_gym", BuildingKind.Gym, "Marlon's Gym in Humilau City", Architecture.Stilts),
+        Thing("c14_boat", PropType.Boat, "a boat moored among Humilau's boardwalks"),
+        Furniture("warp01", PropType.WarpPanel, "a warp panel of the Plasma Frigate (the panels' rides are the overlays' exits)"),
+        Furniture("p_gun01", PropType.LabMachine, "the Plasma Frigate's ice cannon, over Kyurem's chamber"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

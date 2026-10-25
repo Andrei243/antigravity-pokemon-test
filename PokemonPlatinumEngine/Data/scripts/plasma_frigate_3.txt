@@ -1,0 +1,43 @@
+# The Plasma Frigate's stern room (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/plasma_frigate_4.s, Colress's room, read for the order alone).
+#
+# Colress (colress_stern) is Team Plasma's scientist, not its servant: he battles the player to see the strength they draw out
+# of their Pokémon (Black 2's TRAINER_TEAM_PLASMA_COLRESS), asks how they think that strength is found, and switches off the
+# second of the barrier's switches himself (FLAG_UNOVA_FRIGATE_SWITCH_B, common.UnovaFrigateBarriers). Black 2's Master Ball
+# from him, after Team Plasma is gone, is plan 22 · U10's.
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script Colress
+  face colress_stern player
+  speaker "Colress"
+  if flag FLAG_UNOVA_FRIGATE_SWITCH_B goto After
+  scene "Colress aboard the Plasma Frigate"
+  music "unova/colress"
+  say "Welcome! I was asked by an acquaintance to help with his research. What I want is to draw out the whole of a Pokémon's potential."
+  say "If that strength comes from the bond between Pokémon and Trainer, so be it. If it takes something cold and mechanical, so be that too."
+  say "I've travelled all over Unova battling Trainers to test the one idea against the other. You're the best test yet. Shall we?"
+  battle colress_stern as "unova_team_plasma_colress"
+  say "So strong! You really are a remarkable Trainer. So tell me..."
+  ask "Do you think you can reach even greater heights by understanding your Pokémon?"
+  if no goto Doubt
+  say "I see! To me, that's the ideal answer. You bring out your Pokémon's power by respecting them. How wonderful!"
+  goto Switch
+label Doubt
+  say "I see... An honest answer. Don't lose heart. The reason you're so strong is that you treat your Pokémon well, whether you know it or not."
+label Switch
+  say "You've given me plenty to think about. As thanks, I'll switch off one of the barrier's switches myself. The other is your problem!"
+  speaker none
+  text "Colress pressed a switch on the wall. Somewhere in the ship, something hummed and went quiet."
+  setflag FLAG_UNOVA_FRIGATE_SWITCH_B
+  call UnovaFrigateBarriers
+  music area
+  endscene
+  end
+label After
+  say "Whether Team Plasma wins or you do will decide what the bond between people and Pokémon becomes. I'm looking forward to seeing which."
+  end

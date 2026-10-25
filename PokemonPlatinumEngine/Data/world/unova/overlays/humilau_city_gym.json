@@ -1,0 +1,34 @@
+{
+  // The Humilau Gym (plan 22 · U8, part b): Black 2's pool of lily pads the challenger hops and slides across, our words. The
+  // pads are not walked here: the hall's walkway from the door, its cross-walk and the dock at its east end are, and two of
+  // the six ace trainers (1, 2) stand on the cross-walk where we put them, the other four (3 to 6) held back with the pads.
+  // Marlon (0, FLAG_UNOVA_HIDE_MARLON_GYM) waits on the dock once he has come back from his swim (humilau_city.txt) for the Wave
+  // Badge and TM55 (humilau_city_gym.txt); the guide (7) gives Fresh Water at the door
+  "area": "humilau_city_gym",
+  "bgmTrack": "unova/gym",
+  "arenaType": "Water",
+  "heldBack": [ "3", "4", "5", "6" ],
+  "people": {
+    "0": { "name": "Marlon", "npcType": "swimmer_m", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_GYM", "still": true, "at": [ 25, 60 ] },
+    "1": {
+      "name": "Doyle",
+      "at": [ 13, 64 ],
+      "trainer": {
+        "dialogueBefore": "Waves come in and go out, and so do challengers. Let's see if you stay!",
+        "dialogueAfter": "You rode that one all the way in."
+      }
+    },
+    "2": {
+      "name": "Melina",
+      "at": [ 21, 64 ],
+      "trainer": {
+        "dialogueBefore": "The Gym may look like a resort, but nobody here is on holiday!",
+        "dialogueAfter": "Splashed! Marlon's waiting on the dock."
+      }
+    },
+    "7": { "name": "Guide", "npcType": "gym_guide", "script": "GymGuide", "still": true }
+  },
+  "signs": {
+    "3": "Humilau City Pokémon Gym\nLeader: Marlon\nCertified Trainers: {player}"
+  }
+}

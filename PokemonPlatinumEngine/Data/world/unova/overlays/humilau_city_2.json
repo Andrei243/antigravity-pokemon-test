@@ -1,0 +1,9 @@
+{
+  // A house of Humilau City on its stilts (plan 22 · U8, part b): two who talk, our words
+  "area": "humilau_city_2",
+  "bgmTrack": "unova/humilau",
+  "people": {
+    "0": { "name": "Artist", "npcType": "artist", "dialog": [ "From my window the sea looks like a painting that never dries." ] },
+    "1": { "name": "Pokéfan", "npcType": "pokefan_m", "dialog": [ "My house stands on legs over the water. When the tide comes in, I can hear the Pokémon swimming under the floor." ] }
+  }
+}

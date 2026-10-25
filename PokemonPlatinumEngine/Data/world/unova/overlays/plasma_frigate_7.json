@@ -1,0 +1,17 @@
+{
+  // The Plasma Frigate's cabins (plan 22 · U8, part b): the forward and aft halls under the deck, each down its own flight from
+  // it, our words. Four grunts (3 to 6) keep the halls; a new recruit (0) in the aft hall tells where the barrier's switches
+  // are. Of the twelve cabin doors only one is open, the forward hall's west cabin with a switch in it (plasma_frigate_9); the
+  // rest, Black 2's warp panels and the people of later boardings (1, 2, and Hugh with the disguised spy, 7) wait for plan
+  // 22 · U9 and U10
+  "area": "plasma_frigate_7",
+  "bgmTrack": "unova/plasma_frigate",
+  "heldBack": [ "1", "2", "7" ],
+  "people": {
+    "0": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "dialog": [ "I only just joined, and they won't give me a Pokémon yet. But I know things! There are two switches for the barrier to the bow.", "One is in the west cabin off the forward hall. The other... the scientist at the stern keeps that one to himself." ] },
+    "3": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "Intruder in the cabins! You won't get any further!", "dialogueAfter": "You got further. A lot further." } },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "These are our quarters! Out!", "dialogueAfter": "I'll be in my cabin. Sulking." } },
+    "5": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "The ship's heart is guarded by the barrier. And by me!", "dialogueAfter": "Just the barrier now, then." } },
+    "6": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "", "trainer": { "dialogueBefore": "We'll freeze Unova, and you can't stop it!", "dialogueAfter": "You stopped me, at least." } }
+  }
+}

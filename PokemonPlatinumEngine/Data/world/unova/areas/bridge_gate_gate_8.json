@@ -1,0 +1,38 @@
+{
+  "key": "bridge_gate_gate_8",
+  "index": 414,
+  "name": "Bridge Gate",
+  "matrix": 271,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 17, "to": "undella_town", "toWarp": 2 },
+    { "x": 26, "z": 0, "to": "marine_tube", "toWarp": 0 },
+    { "x": 6, "z": 17, "to": "undella_town", "toWarp": 2 },
+    { "x": 7, "z": 17, "to": "undella_town", "toWarp": 2 },
+    { "x": 27, "z": 0, "to": "marine_tube", "toWarp": 0 },
+    { "x": 28, "z": 0, "to": "marine_tube", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "lady", "movement": "wander_around", "x": 3, "z": 7, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "7" },
+    { "id": "1", "looks": "janitor", "movement": "none", "x": 18, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x03b3", "script": "2000" },
+    { "id": "2", "looks": "76", "movement": "none", "x": 9, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "3", "looks": "janitor", "movement": "none", "x": 19, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03da", "script": "6" }
+  ],
+  "signs": [
+    { "x": 2, "z": 9, "type": 0, "script": "3" },
+    { "x": 2, "z": 8, "type": 0, "script": "3" }
+  ],
+  "triggers": [
+    { "x": 13, "z": 7, "width": 1, "depth": 3, "script": "5", "variable": "VAR_UNOVA_0x411e", "value": "0" }
+  ]
+}

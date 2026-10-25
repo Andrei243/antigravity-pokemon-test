@@ -1,0 +1,212 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Marlon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eek! Hee hee! You'll never catch me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ha ha! Wait for me! I'm going to catch you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A board you put your face through for a picture! I love them. Some people call them photo boards, but they're wrong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You're here for the Gym? Good luck finding Marlon. He goes wherever the waves take him."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Floating in the waves like this, I feel like a mermaid. They say there was a Gym Leader like that in Kanto once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Swimmer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you know the Seaside Cave? Surf down Route 21 and you'll find it. Go all the way through and you come out by Undella Town."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This dress is so light and comfortable. Humilau makes you want to wear nothing but summer clothes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody controls the sea, or nature. People and Pokémon have to learn to live alongside it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aaah. Another beautiful day. How long have I been on holiday now? All this sunshine is turning my brain to sand."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "16": {
+      "en": [
+        "Humilau City\nCalm and sparkling seas"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "17": {
+      "en": [
+        "Marine Tube ahead\nThe walk-through aquarium"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "18": {
+      "en": [
+        "Humilau City Pokémon Gym\nLeader: Marlon\nMore splash than the sea!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  // The Seaside Cave (plan 22 · U8, part b): the cave under the sea between Undella Bay and Route 21, Black 2's, with four
+  // trainers and its balls and hidden things in the area file; our words. Rocky the black belt (12) and his three Roggenrola
+  // (8, 10, 11, all FLAG_UNOVA_HIDE_ROCKY) stand in the way from Undella Bay until beaten; the Crustle (9, FLAG_UNOVA_HIDE_CRUSTLE)
+  // that lies like a great boulder before the way out to Route 21's east beach wakes only to the Colress Machine
+  // (seaside_cave.txt). The chamber north of the way through (its TM06, and the stairs down to the lower floor's north end) is
+  // joined to the rest by a one-tile wall of the original's data that is blocked here, as Mistralton Cave's chambers are: its
+  // stairs (2) are shut, and the way from Route 21 to its east beach runs along the floor's middle without it
+  "area": "seaside_cave",
+  "bgmTrack": "unova/seaside_cave",
+  "locked": [ 2 ],
+  "heldBack": [ "3" ],
+  "people": {
+    "4": { "name": "Johan", "trainer": { "dialogueBefore": "A Ranger goes where the trouble is. And right now, the trouble is you!", "dialogueAfter": "Trouble handled. By you." } },
+    "5": { "name": "Tia", "trainer": { "dialogueBefore": "The sound of the sea in a cave makes my fists itch! Battle!", "dialogueAfter": "Ow. My fists itch for a different reason now." } },
+    "6": { "name": "Mikiko", "trainer": { "dialogueBefore": "I'm mapping this cave. You're not on my map, so let's battle!", "dialogueAfter": "I'll mark you down as unbeatable." } },
+    "7": { "name": "Drago", "trainer": { "dialogueBefore": "Hyah! The drip of the cave keeps me sharp!", "dialogueAfter": "Drip... drip... defeat." } },
+    "8": { "name": "Roggenrola", "npcType": "Pokemon", "species": "Roggenrola", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "dialog": [ "Roggenrola: Rorogg!" ] },
+    "9": { "name": "Crustle", "npcType": "Pokemon", "species": "Crustle", "script": "Crustle", "hiddenBy": "FLAG_UNOVA_HIDE_CRUSTLE", "still": true },
+    "10": { "name": "Roggenrola", "npcType": "Pokemon", "species": "Roggenrola", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "dialog": [ "Roggenrola: Stur! Stur!" ] },
+    "11": { "name": "Roggenrola", "npcType": "Pokemon", "species": "Roggenrola", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "dialog": [ "Roggenrola: Rooog!" ] },
+    "12": { "name": "Rocky", "npcType": "black_belt", "script": "Rocky", "hiddenBy": "FLAG_UNOVA_HIDE_ROCKY", "still": true, "trainer": { "id": "unova_black_belt_rocky", "dialogueBefore": "If you want past here, you'll have to beat me and my Roggenrola!", "dialogueAfter": "Your strength is the real thing!" } }
+  }
+}

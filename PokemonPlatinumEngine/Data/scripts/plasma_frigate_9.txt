@@ -1,0 +1,35 @@
+# A cabin of the Plasma Frigate (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/plasma_frigate_9.s, read for the order alone).
+#
+# The grunt (0) shows the pictures of Reshiram and Zekrom on the cabin's wall, which the Pokédex notes as seen; the switch on the
+# wall at the head of the middle passage (6, 2) is the first of the hold's barrier's two (FLAG_UNOVA_FRIGATE_SWITCH_A,
+# common.UnovaFrigateBarriers).
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script Grunt
+  face 0 player
+  speaker "Grunt"
+  say "See these pictures? The legendary Pokémon that made the Unova region. This one's Reshiram..."
+  seen "Reshiram"
+  say "...and this one's Zekrom. With Pokémon like these, ruling Unova would be easy, right? Too bad we don't have either. Yet."
+  seen "Zekrom"
+  end
+
+
+script Switch
+  speaker none
+  if flag FLAG_UNOVA_FRIGATE_SWITCH_A goto Off
+  ask "There's a switch on the wall marked BARRIER. Press it?"
+  if no end
+  text "Click! From behind the wall came the sound of a barrier switching off."
+  setflag FLAG_UNOVA_FRIGATE_SWITCH_A
+  call UnovaFrigateBarriers
+  end
+label Off
+  text "The switch marked BARRIER is off."
+  end

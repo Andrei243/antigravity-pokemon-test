@@ -1,0 +1,35 @@
+{
+  "key": "humilau_city_6",
+  "index": 470,
+  "name": "Humilau City",
+  "matrix": 264,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_14",
+  "nightMusic": "BGM_SW_C_14",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "humilau_city", "toWarp": 6 },
+    { "x": 6, "z": 9, "to": "humilau_city", "toWarp": 6 },
+    { "x": 7, "z": 9, "to": "humilau_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "321", "movement": "none", "x": 5, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "socialite", "movement": "none", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 1, "type": 0, "script": "3" },
+    { "x": 6, "z": 1, "type": 0, "script": "3" },
+    { "x": 7, "z": 1, "type": 0, "script": "3" },
+    { "x": 10, "z": 5, "type": 0, "script": "4" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 8, "width": 3, "depth": 1, "script": "5", "variable": "VAR_UNOVA_0x400f", "value": "1" }
+  ]
+}
