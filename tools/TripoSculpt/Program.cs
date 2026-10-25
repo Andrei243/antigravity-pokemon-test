@@ -3,12 +3,13 @@
 //   dotnet run --project tools/TripoSculpt -- generate (--set s | --all | name ... | --image <file> --name <Name>)
 //                                                      [--model <id>] [--face-limit <n>] [--seed <n>] [--no-texture] [--pbr] [--autofix]
 //                                                      [--force] [--limit <n>] [--delay <ms>]
-//   dotnet run --project tools/TripoSculpt -- install [--set s] [--as <Species>] [--force] [name ...]
+//   dotnet run --project tools/TripoSculpt -- install [--set s] [--as <Species>] [--private] [--force] [name ...]
 //   dotnet run --project tools/TripoSculpt -- selftest
 // The key is read from the TRIPO_API_KEY environment variable and never written anywhere (platform.tripo3d.ai/api-keys).
 // Every task costs credits, so generate does nothing until it is told which pictures; --limit 1 is the way to try one.
 // Sculpts go to tools/TripoSculpt/out/<set>/<slug>.glb with a <slug>.json note of the task (git-ignored: drafts, not game art).
-// install copies the ones you approve to overrides/models/<Species>.glb, where the game picks them up (docs/model-files.md).
+// install copies the ones you approve to assets/models/<Species>.glb (tracked by git; --private: overrides/models, which is not),
+// where the game picks them up (docs/model-files.md).
 
 return await Cli.Run(args);
 
@@ -18,7 +19,7 @@ static class Cli
     {
         if (args.Length == 0 || args[0] is "-h" or "--help")
         {
-            Console.WriteLine("usage: TripoSculpt list [--set s] | generate (--set s | --all | name ... | --image file --name Name) [options] | install [--set s] [--as Species] [--force] [name ...] | selftest");
+            Console.WriteLine("usage: TripoSculpt list [--set s] | generate (--set s | --all | name ... | --image file --name Name) [options] | install [--set s] [--as Species] [--private] [--force] [name ...] | selftest");
             Console.WriteLine("generate options: --model id  --face-limit n  --seed n  --no-texture  --pbr  --autofix  --force  --limit n  --delay ms");
             return args.Length == 0 ? 2 : 0;
         }
@@ -32,6 +33,7 @@ static class Cli
         string? image = Take(rest, "--image");
         string? asName = Take(rest, "--name") ?? Take(rest, "--as");
         bool all = Flag(rest, "--all");
+        bool untracked = Flag(rest, "--private");
 
         var o = Options.Default;
         o = o with
@@ -79,7 +81,7 @@ static class Cli
                 if (chosen.Count == 0) { Console.Error.WriteLine("nothing matches."); return 2; }
                 if (asName != null && chosen.Count != 1) { Console.Error.WriteLine("--as names one species: choose one sculpt."); return 2; }
                 if (set == null && rest.Count == 0) { Console.Error.WriteLine("say which: --set <set> or the names."); return 2; }
-                Sculptor.Install(root, chosen, asName, o.Force, Console.Out);
+                Sculptor.Install(root, chosen, asName, o.Force, Console.Out, untracked);
                 return 0;
 
             default:

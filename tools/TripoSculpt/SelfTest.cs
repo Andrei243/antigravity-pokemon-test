@@ -52,11 +52,13 @@ static class SelfTest
             Check(resumed.Made == 1 && fake.Creates == 1 && fake.Uploads == 1, "a sculpt lost after its task was made goes on with that task");
 
             Sculptor.Install(root, fakemon, null, false, quiet);
-            string installed = Path.Combine(root, "overrides", "models", "Fakemon.glb");
-            Check(File.Exists(installed), "install puts it in overrides/models under the species' name");
+            string installed = Path.Combine(root, "assets", "models", "Fakemon.glb");
+            Check(File.Exists(installed), "install puts it in assets/models under the species' name");
             File.WriteAllText(installed, "mine");
             Sculptor.Install(root, fakemon, null, false, quiet);
             Check(File.ReadAllText(installed) == "mine", "install never replaces a file already there");
+            Sculptor.Install(root, fakemon, null, false, quiet, untracked: true);
+            Check(File.Exists(Path.Combine(root, "overrides", "models", "Fakemon.glb")), "--private puts it in overrides/models instead");
 
             fake.Broke = true;
             var broke = concepts.Where(c => c.Slug == "002-Nomoney").ToList();

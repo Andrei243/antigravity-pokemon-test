@@ -15,6 +15,11 @@ Put the files in a folder called `overrides/models`, in either of these places:
 Git ignores every folder called `overrides`, so nothing you put there goes into the repository. Check `git status`
 after adding files if in doubt.
 
+`assets/models` in the repository folder is read the same way, and **git tracks it**: it holds the approved models of
+our own (the new species' sculpts), so they travel with the repository. A file of the same name in `overrides/models`
+wins, which lets you try a draft without touching what is committed. Only models made for this game belong there, each
+with a line in `docs/art/CREDITS.md`.
+
 ## Names
 
 A file is found by the species' name or its National Pokédex number:

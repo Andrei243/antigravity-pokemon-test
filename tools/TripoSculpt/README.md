@@ -1,8 +1,8 @@
 # TripoSculpt
 
 First-draft 3D sculpts of the new species, made by [Tripo](https://platform.tripo3d.ai)'s image-to-model API from the
-concept pictures of `tools/GeminiArt`. A draft is cleaned up in Blender, then dropped into `overrides/models`. Nothing
-here is shipped, and the output folder is git-ignored.
+concept pictures of `tools/GeminiArt`. A draft is cleaned up in Blender, then installed into `assets/models`. The drafts
+are not shipped, and the output folder is git-ignored.
 
 Uses Tripo's **V3** API (`openapi.tripo3d.ai/v3`); V2 is retired on 2026-11-01. The key is read from `TRIPO_API_KEY`
 only (create one at platform.tripo3d.ai/api-keys).
@@ -12,7 +12,7 @@ dotnet run --project tools/TripoSculpt -- list                         # the pic
 dotnet run --project tools/TripoSculpt -- generate --set kanto --limit 1   # try one first: every sculpt costs credits
 dotnet run --project tools/TripoSculpt -- generate Fakemon             # by species name or slug
 dotnet run --project tools/TripoSculpt -- generate --image my.png --name Fakemon   # any picture
-dotnet run --project tools/TripoSculpt -- install Fakemon              # copy an approved draft to overrides/models/Fakemon.glb
+dotnet run --project tools/TripoSculpt -- install Fakemon              # copy an approved draft to assets/models/Fakemon.glb (tracked); --private: overrides/models (ignored)
 dotnet run --project tools/TripoSculpt -- selftest                     # the whole pipeline against a fake server; free
 ```
 

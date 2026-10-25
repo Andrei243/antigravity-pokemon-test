@@ -140,10 +140,14 @@ static class Sculptor
         return new Outcome(made, kept, failed, credits, false);
     }
 
-    /// <summary>Copies finished sculpts to overrides/models, named for the species. Never over a file already there.</summary>
-    public static int Install(string root, List<Concept> chosen, string? asName, bool force, TextWriter log)
+    /// <summary>
+    /// Copies finished sculpts to assets/models (tracked by git) or, untracked, to overrides/models, named for the species.
+    /// Never over a file already there.
+    /// </summary>
+    public static int Install(string root, List<Concept> chosen, string? asName, bool force, TextWriter log, bool untracked = false)
     {
-        string dir = Path.Combine(root, "overrides", "models");
+        string dir = Path.Combine(root, untracked ? "overrides" : "assets", "models");
+        string shown = untracked ? "overrides/models" : "assets/models";
         int copied = 0, skipped = 0;
         foreach (var c in chosen)
         {
@@ -152,7 +156,7 @@ static class Sculptor
             if (File.Exists(target) && !force) { log.WriteLine($"{c.Slug}: {Path.GetFileName(target)} is there already (--force replaces it)"); skipped++; continue; }
             Directory.CreateDirectory(dir);
             File.Copy(c.Glb(root), target, overwrite: true);
-            log.WriteLine($"{c.Slug} -> overrides/models/{Path.GetFileName(target)}");
+            log.WriteLine($"{c.Slug} -> {shown}/{Path.GetFileName(target)}");
             copied++;
         }
         log.WriteLine($"installed {copied}, left {skipped}");
