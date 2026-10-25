@@ -53,4 +53,3 @@ node_modules/
 
 # The player's own files, read and never written (plan 08 · P20): saves and Pokémon files dropped here for the migration
 migrate/
-/tools/DataImporter/Overrides

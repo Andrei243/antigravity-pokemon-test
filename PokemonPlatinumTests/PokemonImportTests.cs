@@ -171,6 +171,37 @@ public class PokemonImportTests
         Assert.Equal(1, chosen[ClipRole.Physical]);
         Assert.Equal(2, chosen[ClipRole.Hit]);
         Assert.Equal(0, chosen[ClipRole.Idle]);
+
+        // A lone clip that is no idle (an attack, a dizzy spell) can be kept from it, and still be named for a role
+        Assert.False(ImportedModels.MatchClips(new[] { "Chariard_dizzy" }, onlyClipIsIdle: false).ContainsKey(ClipRole.Idle));
+        var special = ImportedModels.MatchClips(new[] { "Impactrueno" }, new Dictionary<string, string> { ["special"] = "Impactrueno" }, onlyClipIsIdle: false);
+        Assert.Equal(0, special[ClipRole.Special]);
+        Assert.False(special.ContainsKey(ClipRole.Idle));
+    }
+
+    [Fact]
+    public void PartsTheOptionsNameAreLeftOut()
+    {
+        // A file that carries what shouldn't stand on the model (vines held ready above Bulbasaur's bulb): a second copy
+        // of Gible's mesh, high over it, on a node named as such a part
+        var gible = PokemonModels.Build("Gible");
+        GltfAsset WithVine()
+        {
+            var a = GltfReader.Parse(GltfWriter.Write(gible), null);
+            int mesh = a.Nodes.First(n => n.Mesh >= 0).Mesh;
+            a.Nodes.Add(new GltfNode { Name = "Gible_LVine", Mesh = mesh, Translation = new Vector3(0, 3f, 0) });
+            a.Order = a.Order.Append(a.Nodes.Count - 1).ToArray();
+            return a;
+        }
+        static int Triangles(PokeModel m) => m.Imported!.Parts.Sum(p => p.Mesh.TriangleCount);
+        var plain = ImportedModels.FromAsset(GltfReader.Parse(GltfWriter.Write(gible), null), "Gible");
+        var vine = ImportedModels.FromAsset(WithVine(), "Gible");
+        var hidden = ImportedModels.FromAsset(WithVine(), "Gible", new ImportOptions { Hide = new() { "VINE" } });
+        Assert.True(Triangles(vine) > Triangles(plain));
+        // Left out by any case of a word in its name, and counting for nothing in the model's size
+        Assert.Equal(Triangles(plain), Triangles(hidden));
+        Assert.Equal(plain.Height, hidden.Height, 3);
+        Assert.True(new ImportOptions().Hides("Gible_LVine", null) == false);
     }
 
     [Fact]

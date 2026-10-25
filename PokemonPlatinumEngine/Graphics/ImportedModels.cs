@@ -77,6 +77,21 @@ internal sealed class ImportOptions
     /// <summary>Clip names by role ("idle", "physical", "special", "status", "hit", "faint", "entry"), where the names don't say.</summary>
     public Dictionary<string, string>? Clips { get; set; }
 
+    /// <summary>
+    /// Parts of the file left out, by name: a mesh or the node that holds it whose name contains one of these (any case),
+    /// for a file that carries what shouldn't stand on the model (vines held ready, an effect, a second set of wings).
+    /// What is left out counts for nothing in the model's size either.
+    /// </summary>
+    public List<string>? Hide { get; set; }
+
+    /// <summary>A file's only clip plays as its idle unless this is false (a file whose one clip is an attack or a dizzy spell).</summary>
+    public bool OnlyClipIsIdle { get; set; } = true;
+
+    /// <summary>Whether a mesh, or the node that holds it, is one the options leave out.</summary>
+    public bool Hides(string? nodeName, string? meshName) =>
+        Hide is { Count: > 0 } words && words.Any(w => w.Length > 0 &&
+            ((nodeName?.Contains(w, StringComparison.OrdinalIgnoreCase) ?? false) || (meshName?.Contains(w, StringComparison.OrdinalIgnoreCase) ?? false)));
+
     public static ImportOptions Read(string path)
     {
         if (!File.Exists(path)) return new ImportOptions();
@@ -198,7 +213,7 @@ internal static class ImportedModels
         m.Imported = rig;
 
         var rest = asset.RestGlobals();
-        var gathered = Gather(asset, rest, rig);
+        var gathered = Gather(asset, rest, rig, options);
         if (gathered.Count == 0) throw new InvalidDataException("the model has no triangles");
 
         // Turn, scale and place: the file's front to +Z, a height of 1, the lowest point on the ground
@@ -234,7 +249,7 @@ internal static class ImportedModels
         rig.R = new Quaternion[asset.Nodes.Count];
         rig.S = new Vector3[asset.Nodes.Count];
 
-        foreach (var (role, index) in MatchClips(asset.Animations.Select(a => a.Name).ToList(), options.Clips)) rig.Clips[role] = index;
+        foreach (var (role, index) in MatchClips(asset.Animations.Select(a => a.Name).ToList(), options.Clips, options.OnlyClipIsIdle)) rig.Clips[role] = index;
         m.OwnIdle = rig.Has(ClipRole.Idle);
 
         // Outlines half a sprite pixel wide, like every other model
@@ -259,10 +274,10 @@ internal static class ImportedModels
     }
 
     /// <summary>
-    /// Every primitive of every mesh in the scene, its vertices bound to bones: skinned meshes to their skin's joints
-    /// (each joint with its inverse bind matrix), others wholly to the node that holds them.
+    /// Every primitive of every mesh in the scene but those the options leave out, its vertices bound to bones: skinned
+    /// meshes to their skin's joints (each joint with its inverse bind matrix), others wholly to the node that holds them.
     /// </summary>
-    private static List<Gathered> Gather(GltfAsset asset, Matrix4x4[] rest, ImportedRig rig)
+    private static List<Gathered> Gather(GltfAsset asset, Matrix4x4[] rest, ImportedRig rig, ImportOptions options)
     {
         var bones = new List<(int Node, Matrix4x4 Offset)>();
         var jointBone = new Dictionary<(int Skin, int Slot), int>();
@@ -280,7 +295,8 @@ internal static class ImportedModels
         {
             var node = asset.Nodes[n];
             if (node.Mesh < 0) continue;
-            var skin = node.Skin >= 0 && node.Skin < asset.Skins.Count ? asset.Skins[node.Skin] : null;
+            if (options.Hides(node.Name, asset.Meshes[node.Mesh].Name)) continue;
+            var skin =node.Skin >= 0 && node.Skin < asset.Skins.Count ? asset.Skins[node.Skin] : null;
             foreach (var prim in asset.Meshes[node.Mesh].Primitives)
             {
                 int count = prim.Positions.Length;
@@ -605,9 +621,9 @@ internal static class ImportedModels
 
     /// <summary>
     /// Which clip plays for what: named in the model's options, else the clip whose name has the strongest word for the
-    /// role ("battlewait" before "wait"). A file with a single clip plays it as its idle.
+    /// role ("battlewait" before "wait"). A file with a single clip plays it as its idle, unless the options say not to.
     /// </summary>
-    internal static Dictionary<ClipRole, int> MatchClips(IReadOnlyList<string> names, Dictionary<string, string>? chosen = null)
+    internal static Dictionary<ClipRole, int> MatchClips(IReadOnlyList<string> names, Dictionary<string, string>? chosen = null, bool onlyClipIsIdle = true)
     {
         var result = new Dictionary<ClipRole, int>();
         foreach (var (role, words) in ClipWords)
@@ -635,7 +651,7 @@ internal static class ImportedModels
             }
             if (best >= 0) result[role] = best;
         }
-        if (names.Count == 1 && !result.ContainsKey(ClipRole.Idle)) result[ClipRole.Idle] = 0;
+        if (onlyClipIsIdle && names.Count == 1 && !result.ContainsKey(ClipRole.Idle)) result[ClipRole.Idle] = 0;
         return result;
     }
 

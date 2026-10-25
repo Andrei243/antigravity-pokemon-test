@@ -10,7 +10,7 @@ Put the files in a folder called `overrides/models`, in either of these places:
 
 - the repository folder you start the game from (`dotnet run --project PokemonPlatinumEngine` from the repository
   root reads `overrides/models` there), or
-- next to the game's executable (`PokemonPlatinumEngine/bin/<configuration>/net9.0/overrides/models`).
+- next to the game's executable (`PokemonPlatinumEngine/bin/<configuration>/net10.0/overrides/models`).
 
 Git ignores every folder called `overrides`, so nothing you put there goes into the repository. Check `git status`
 after adding files if in doubt.
@@ -72,7 +72,7 @@ A file's clips are played for what their names say. The first matching word wins
 | Standing in battle with its HP in the red, in place of the idle | `lowhp`, `low_hp`, `tired` |
 | Cheering for a win, a catch or the other side's loss | `victory`, `cheer`, `win` |
 
-A file with a single clip plays it as its idle. Actions are stretched over their time in battle (a move takes 0.65 s
+A file with a single clip plays it as its idle, unless its options say `"onlyClipIsIdle": false` (below). Actions are stretched over their time in battle (a move takes 0.65 s
 and lands its blow 0.35 s in, a dodge takes 0.8 s and is furthest aside 0.35 s in, a cheer takes 1.2 s). For
 whatever the file has no clip for, the species' body plan moves the model as a whole: it breathes and sways, leans
 into a strike, recoils from a hit, hops or dips out of a miss's way, droops when tired, hops for joy and topples when
@@ -88,7 +88,9 @@ A `.json` file with the same name beside a model file can set:
   "yaw": 90,
   "fill": 0.8,
   "hovers": true,
-  "clips": { "idle": "Wait_Loop", "physical": "Kick", "faint": "Down" }
+  "clips": { "idle": "Wait_Loop", "physical": "Kick", "faint": "Down" },
+  "hide": ["Vine", "Effect"],
+  "onlyClipIsIdle": false
 }
 ```
 
@@ -98,6 +100,14 @@ A `.json` file with the same name beside a model file can set:
 - `clips`: clip names by role (`idle`, `physical`, `special`, `status`, `hit`, `faint`, `entry`, `dodge`, `tired`,
   `cheer`), where the names
   don't say.
+- `hide`: parts of the file to leave out, by name: a mesh, or the node that holds it, whose name contains one of
+  these words (any case) is not drawn and doesn't count in the model's size. For files that carry what shouldn't
+  stand on the model: vines held ready, an effect, a second set of wings, lower-detail copies.
+- `onlyClipIsIdle`: `false` keeps a file's only clip from playing as its idle, for a file whose one clip is an
+  attack or a dizzy spell; it can still be named for another role in `clips`.
+
+The harness makes its out dir its working folder, so it reads `<out dir>/overrides/models` and never the
+repository's: to see your files in its shots, copy them (with their `.json`) there.
 
 ## Exporting a model
 
