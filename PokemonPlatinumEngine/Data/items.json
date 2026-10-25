@@ -7304,7 +7304,7 @@
     "id": 1446,
     "name": "Apricorn Box",
     "pocket": "KeyItems",
-    "effectType": "KeyItem",
+    "effectType": "None",
     "effectValue": 0,
     "price": 0,
     "canUseInBattle": false,
