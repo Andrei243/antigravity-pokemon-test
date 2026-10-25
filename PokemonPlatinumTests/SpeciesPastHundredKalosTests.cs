@@ -45,15 +45,17 @@ public class SpeciesPastHundredKalosTests
         // Gym Leader to its Elite Four; Sylveon's end at 120 with the seven Eeveelutions before it
         var designs = SpeciesPastHundred.Load(SpeciesPastHundred.PathIn(Repository.Root));
         var kalos = designs.Where(d => Species(d.From).Generation == 6).ToList();
-        Assert.Equal(24, kalos.Count);
-        Assert.All(kalos.Where(d => d.From != "Sylveon"), d => Assert.InRange(d.Evolution.Level, 188, 203));
+        Assert.Equal(25, kalos.Count); // the 24 of the main document and the supplement's Ecosentinel
+        Assert.All(kalos.Where(d => d.From is not ("Sylveon" or "Zygarde")), d => Assert.InRange(d.Evolution.Level, 188, 203));
         Assert.Equal(120, kalos.Single(d => d.From == "Sylveon").Evolution.Level);
+        Assert.Equal(205, kalos.Single(d => d.From == "Zygarde").Evolution.Level); // the end of Kalos's climb (supplement, question B)
         Assert.All(kalos, d => Assert.Equal(2000 + Species(d.From).DexNumber, Species(d.Name).DexNumber));
-        Assert.All(kalos, d => Assert.InRange(Species(d.Name).DexNumber, 2660, 2715));
+        Assert.All(kalos, d => Assert.InRange(Species(d.Name).DexNumber, 2660, 2718));
 
-        // No legendary or mythical of Kalos goes further (question 2's Zygarde is a design still to approve)
-        Assert.All(new[] { "Xerneas", "Yveltal", "Zygarde", "Diancie", "Hoopa", "Volcanion" },
+        // Zygarde alone of Kalos's legendaries and mythicals goes further (question 2's answer, b)
+        Assert.All(new[] { "Xerneas", "Yveltal", "Diancie", "Hoopa", "Volcanion" },
             name => Assert.DoesNotContain(Species(name).Evolutions ?? new(), e => Species(e.TargetSpecies).IsOurs));
+        Assert.Contains(Species("Zygarde").Evolutions!, e => e.TargetSpecies == "Ecosentinel");
     }
 
     [Fact]
