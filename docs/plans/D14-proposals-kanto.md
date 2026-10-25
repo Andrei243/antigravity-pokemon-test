@@ -1,6 +1,6 @@
 # D14 · Evolutions past level 100, batch 1 (Kanto): the proposal
 
-Plan 03 · D14, the design part of its first batch. The user asked on 2026-10-26 to start recommending the Pokémon that will evolve after level 100; drafted the same day, **awaiting the user's approval**. Nothing here is built: no species, no evolution row, no learnset, no sculpt, no test. Every row below waits for the user's yes, a change, or a no, before a later session writes it into the data. The format is 06 · R20b's ([R20b-mega-proposals.md](R20b-mega-proposals.md)).
+Plan 03 · D14, the design part of its first batch. The user asked on 2026-10-26 to start recommending the Pokémon that will evolve after level 100; drafted the same day, **approved by the user on 2026-10-25 ("I accept all the proposals for kanto": all 46 designs, the sets and the defaults of the ten open questions; the three "no" rows stay out; nothing is built yet)**. Nothing here is built: no species, no evolution row, no learnset, no sculpt, no test. Every row below waits for the user's yes, a change, or a no, before a later session writes it into the data. The format is 06 · R20b's ([R20b-mega-proposals.md](R20b-mega-proposals.md)).
 
 Every name, type, ability, item, move, stat and sum in this document was checked by a script that only reads `PokemonPlatinumEngine/Data/species.json`, `abilities.json` and `items.json` (kept outside the repository; what it checks is listed under "How the numbers were checked", at the end).
 
