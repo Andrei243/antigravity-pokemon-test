@@ -26,7 +26,9 @@ public class Trainer
         foreach (var p in party.Members)
         {
             var mine = p.Clone();
-            mine.Relevel(levelOf(p.Level));
+            // What its level taught it stops at the games' own 100: the moves of our own past it (plan 06 · R31) are the
+            // player's to earn, and a later region's trainer keeps their own game's moves (R31's question 8)
+            mine.Relevel(levelOf(p.Level), Data.Ruleset.Platinum.LevelCap);
             copy.party.Add(mine);
         }
         copy.Items = Items.ToList();

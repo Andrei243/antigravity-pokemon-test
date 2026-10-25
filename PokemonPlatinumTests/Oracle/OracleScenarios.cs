@@ -112,7 +112,8 @@ internal static class OracleScenarios
 
     /// <summary>The moves a scenario may use, as the modern rules have them.</summary>
     public static readonly List<MoveData> Moves = MoveDatabase.GetAll()
-        .Where(m => m.Kind == MoveKind.Standard && m.Support == MoveEffectSupport.Full && !NotInGeneration9.Contains(m.Name))
+        // Generation 0 is ours (plan 06 · R31), which the calculator has never heard of
+        .Where(m => m.Kind == MoveKind.Standard && m.Support == MoveEffectSupport.Full && !NotInGeneration9.Contains(m.Name) && m.Generation > 0)
         .Select(m => m.Under(Ruleset.Modern))
         .Where(m => m.Category != MoveCategory.Status && m.Power > 0 && (m.Effect == null || PlainEffects.Contains(m.Effect)))
         .OrderBy(m => m.Id).ToList();

@@ -27,8 +27,14 @@ public class MovePresentationTests
 
     private static IEnumerable<MoveData> PlatinumMoves => MoveDatabase.GetAll().Where(m => m.Id <= 467);
 
-    /// <summary>Platinum's moves and every later move that has a look of its own (plan 25 · Y11 on).</summary>
-    private static IEnumerable<MoveData> LookedMoves => MoveDatabase.GetAll().Where(m => m.Id <= 467 || MoveFx.BatchOf(m.Name) != null);
+    /// <summary>
+    /// Platinum's moves, every later move that has a look of its own (plan 25 · Y11 on) and the moves of our own past
+    /// level 100 (plan 06 · R31), which play their type's template until a batch gives them looks of their own.
+    /// </summary>
+    private static IEnumerable<MoveData> LookedMoves => MoveDatabase.GetAll().Where(m => m.Id <= 467 || MoveFx.BatchOf(m.Name) != null || IsOurs(m));
+
+    /// <summary>A move of our own, learned past level 100 (plan 06 · R31: generation 0).</summary>
+    private static bool IsOurs(MoveData m) => m.Kind == MoveKind.Standard && m.Generation == 0;
 
     private static EffectCue Cue(MoveData move, bool critical = false, bool superEffective = false, bool missed = false, BattleTerrain terrain = BattleTerrain.Plain)
     {
@@ -674,11 +680,27 @@ public class MovePresentationTests
     [Fact]
     public void EveryRegularMoveOfTheDataHasALookAndASoundOfItsOwn()
     {
-        var regular = MoveDatabase.GetAll().Where(m => m.Kind == MoveKind.Standard).ToList();
+        // The moves of the games; ours (plan 06 · R31) play their type's template and sound until a batch of plan 25 gets to them
+        var regular = MoveDatabase.GetAll().Where(m => m.Kind == MoveKind.Standard && !IsOurs(m)).ToList();
         output.WriteLine($"{regular.Count} regular moves");
         Assert.True(regular.Count >= 847, $"only {regular.Count}");
         var missing = regular.Where(m => MoveFx.BatchOf(m.Name) == null || !(SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)))).Select(m => m.Name).ToList();
         Assert.True(missing.Count == 0, "no look or sound: " + string.Join(", ", missing));
+    }
+
+    [Fact]
+    public void TheMovesOfOurOwnPlayTheirTypesTemplateAndSound()
+    {
+        // Plan 06 · R31: none has a look or a sound of its own yet, and each draws something by its type's template
+        var ours = MoveDatabase.GetAll().Where(IsOurs).ToList();
+        Assert.Equal(72, ours.Count);
+        foreach (var move in ours)
+        {
+            Assert.Null(MoveFx.BatchOf(move.Name));
+            Assert.False(MoveFx.HasOwnEffect(move.Name), move.Name);
+            Assert.Equal(SoundBank.MoveSound(move.Type), SoundBank.MoveSound(move.Name, move.Type));
+            Assert.True(Draw(Cue(move), BattleAnimator.ImpactTime).Count > 0, $"{move.Name} draws nothing");
+        }
     }
 
     [Fact]

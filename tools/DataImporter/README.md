@@ -83,6 +83,8 @@ PokeAPI's data is © Paul Hallett and PokéAPI contributors, used under its BSD 
 
 `Overrides/<file>.json` holds hand corrections, applied last: a name maps to the fields to change (`null` removes one), and a name the import doesn't produce adds a whole entry (the game's own Running Shoes and Distortion Orb). Comments are allowed. `species.json` there gives Cosmoem its two evolutions by time of day, since this game has no versions to choose between Solgaleo and Lunala.
 
+`moves.json` there also holds the 72 moves of our own learned past level 100 (plan 06 · R31, [the proposal](../../docs/plans/R31-move-proposals.md)) as whole rows: ids 3001 to 3072, generation 0 ("ours", counted apart in the coverage report), four to a type in the order status, physical, special, extra. `MovesPastHundred.cs` hands them out after the species are read, appending to every species' `learnset` (and its `modern.learnset`) and to each form's that has its own, by the proposal's rule (by the newest types and base stats; at least four; capstones last; 110 to 250, evenly, rounded to 5; none for Ditto, Unown, Smeargle, Wobbuffet, Wynaut and Shedinja). A level-up move past 100 is never written by hand: change the rule or the rows and run the importer.
+
 ## When an effect gets its code
 
 When plan 06 writes a move effect, remove it from the not-yet-supported cases in `MoveEffects.cs` (or add the later moves' effect id to `FullLaterEffects`), run the importer and check the coverage report. Abilities and held items need no re-import: the report reads `AbilityEffectTable` and `HeldItemEffects` directly.
