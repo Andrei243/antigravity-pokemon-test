@@ -9,6 +9,12 @@ public readonly record struct Place(BattleSide Side, int Slot)
 {
     /// <summary>The place's number as the original counts them: the player's first, the foe's first, then the second of each.</summary>
     public int Number => Slot * 2 + (Side == BattleSide.Enemy ? 1 : 0);
+
+    /// <summary>
+    /// How many numbers a place can have (plan 14 · B3): five slots a side, a horde's widest, so what is kept by a
+    /// place's number (the field's places, what a Pokémon took from each this turn) is sized by it.
+    /// </summary>
+    public const int MaxNumber = 10;
 }
 
 /// <summary>

@@ -150,4 +150,34 @@ internal static class CoreScenario
         }
     }
 
+    /// <summary>The third to fifth places of a horde's wild side (plan 14 · B3).</summary>
+    public static readonly Place Foe3 = new(BattleSide.Enemy, 2), Foe4 = new(BattleSide.Enemy, 3), Foe5 = new(BattleSide.Enemy, 4);
+
+    /// <summary>
+    /// A horde (plan 14 · B3): the player's one Pokémon against the wild ones given, under the modern rules unless others
+    /// are handed (Platinum's have no hordes), both sides answered for from outside.
+    /// </summary>
+    public static BattleCore Horde(Pokemon mine, Pokemon[] theirs, BattleRandom? rolls = null, Ruleset? rules = null, params Pokemon[] bench)
+    {
+        var party = new Party();
+        party.Add(mine);
+        foreach (var p in bench) party.Add(p);
+        var core = new BattleCore(new CoreSetup
+        {
+            PlayerParty = party, WildPokemon = theirs.ToList(), Format = BattleFormat.Horde, Random = rolls ?? Calm(), Rules = rules ?? Ruleset.Modern,
+            PlayerController = null, EnemyController = null, PlayerName = "Lucas"
+        });
+        core.Start();
+        return core;
+    }
+
+    /// <summary>A turn of a horde: the player's move at the target given (null: whoever the rules pick), and every wild Pokémon asked uses its move in <paramref name="foes"/>' place.</summary>
+    public static List<string> HordeTurn(BattleCore core, int mine = 0, Place? at = null, int foes = 0)
+    {
+        var asked = Assert.IsType<ActionRequest>(core.Request).Places;
+        var choices = asked.Select(p => p.Side == BattleSide.Player ? BattleChoice.Fight(p, mine, at) : BattleChoice.Fight(p, foes)).ToList();
+        core.Submit(choices);
+        return Lines(core.TakeLog());
+    }
+
 }

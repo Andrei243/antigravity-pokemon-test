@@ -483,4 +483,25 @@ public class WildEncounterEntry
     /// <summary>The Pokémon met is a roaming one, in this slot of the roamers (plan 06 · R13, <see cref="Roamers"/>); never in a table.</summary>
     [System.Text.Json.Serialization.JsonIgnore]
     public int? Roamer { get; set; }
+
+    /// <summary>
+    /// How many of the slot's species come at once (plan 14 · B3): one, or a horde of up to five, each at a level of its
+    /// own drawn from the slot's range, fought as a <see cref="Battle.BattleFormat.Horde"/>. No table of Platinum's has a
+    /// horde; plan 14 · B4 puts the first in the new zone's (plan 03 · D12).
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int Count { get; set; } = 1;
+
+    /// <summary>The levels a horde's others were met at, drawn as the first's was (<c>WildEncounterRules.Meet</c>); never in a table.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public int[]? OthersLevels { get; set; }
+
+    /// <summary><see cref="Count"/> as a file has it: left out for one, so the tables written before it don't change.</summary>
+    [System.Text.Json.Serialization.JsonPropertyName("count")]
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public int? CountInFile
+    {
+        get => Count > 1 ? Count : null;
+        set => Count = value ?? 1;
+    }
 }

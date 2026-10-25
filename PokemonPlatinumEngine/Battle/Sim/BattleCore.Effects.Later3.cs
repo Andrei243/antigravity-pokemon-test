@@ -122,7 +122,7 @@ public sealed partial class BattleCore
         var hit = new MoveHit { Target = target };
         if (target.IsElsewhere)
         {
-            Say(IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", user.Name)));
+            Say(!IsSingle ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", user.Name)));
             failedNow = true;
             return;
         }

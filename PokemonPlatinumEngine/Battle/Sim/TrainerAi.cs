@@ -202,7 +202,8 @@ public sealed class TrainerAi : IBattleController
         var move = usable[battle.Random.Roll(RollKind.AiChoice, usable.Count)];
         int slot = moves.IndexOf(move);
         Place? target = null;
-        if (move.Target == MoveTarget.Selected && battle.IsDouble)
+        // At one of the foes it faces, where there are several (a double, or the player facing a horde: plan 14 · B3)
+        if (move.Target == MoveTarget.Selected && !battle.IsSingle)
         {
             var foes = battle.ActiveFoes(mine).ToList();
             if (foes.Count > 0) target = foes[battle.Random.Roll(RollKind.AiChoice, foes.Count)].Place;
@@ -522,7 +523,8 @@ public sealed class TrainerAi : IBattleController
     {
         if (place.Roster == null) return -1;
         var foes = battle.SlotsOf(Other(place.Side));
-        var defender = battle.IsDouble ? RandomOpponent(battle, place) : foes[0];
+        // In a horde, the first of the foes still standing (plan 14 · B3)
+        var defender = battle.IsDouble ? RandomOpponent(battle, place) : battle.IsHorde ? foes.FirstOrDefault(f => f.IsActive) ?? foes[0] : foes[0];
         if (defender.Pokemon == null) return -1;
         var party = place.Roster.Members;
         var candidates = Enumerable.Range(0, party.Count).Where(i => battle.CanSendIn(place, i) && Taken(battle, place) != i).ToList();
