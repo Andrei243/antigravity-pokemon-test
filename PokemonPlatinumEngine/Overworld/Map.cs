@@ -548,6 +548,9 @@ public class Map
                 case TileType.CaveFloor: return BattleArena.Cave;
                 // The Distortion World's own stage comes with its battles (plan 02 · S13); a cave's stands in
                 case TileType.DistortionGround or TileType.DistortionSlab: return BattleArena.Cave;
+                // A city's or a town's paving, where the area's header names a city's background and its overlay no
+                // stage of its own, is a street (plan 22, wave 48: Nimbasa's plaza had been a meadow)
+                case TileType.Paving or TileType.Stairs when named == null && AreaAt(x, y)?.BattleBackground == "City": return BattleArena.City;
             }
         }
         return named ?? BattleArena.Grass;

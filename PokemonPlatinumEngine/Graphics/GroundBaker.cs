@@ -28,7 +28,21 @@ internal static class GroundBaker
     public static PixelCanvas BakeInterior(Map map)
     {
         PixelCanvas c;
-        if (map.Interior == InteriorStyle.Gym)
+        if (map.Interior == InteriorStyle.Street)
+        {
+            // A covered street (plan 22, wave 48: Join Avenue): the ground its tiles say, the street's paving, and pale
+            // flagstones where a tile is plain floor, a wall's foot or a door's
+            c = PixelGround.Bake(map, new TileWindow(0, 0, map.Width, map.Height), pad: 0, worldSeeds: false, out _);
+            for (int ty = 0; ty < map.Height; ty++)
+                for (int tx = 0; tx < map.Width; tx++)
+                {
+                    if (map.GetGroundTile(tx, ty) is not (TileType.Floor or TileType.Wall or TileType.Door)) continue;
+                    for (int y = 0; y < ArtTile; y++)
+                        for (int x = 0; x < ArtTile; x++)
+                            c.SetRaw(tx * ArtTile + x, ty * ArtTile + y, FloorTexel(InteriorStyle.Street, tx * ArtTile + x, ty * ArtTile + y));
+                }
+        }
+        else if (map.Interior == InteriorStyle.Gym)
         {
             // A Gym's floor is the ground its tiles say, as the field's is (lawn, flowers, paths, earth), and its hall's
             // own tiles where its tiles are floor, wall or door (a wall's shows at the foot of an inner wall with no face
@@ -113,6 +127,7 @@ internal static class GroundBaker
             InteriorStyle.Museum => (Rgb(226, 222, 212), Rgb(214, 208, 196)),
             InteriorStyle.PokemonCenter => (Rgb(250, 242, 232), Rgb(240, 214, 212)),
             InteriorStyle.PokeMart => (Rgb(230, 238, 246), Rgb(206, 220, 236)),
+            InteriorStyle.Street => (Rgb(226, 220, 204), Rgb(212, 204, 186)),
             _ => (Rgb(240, 242, 246), Rgb(222, 226, 234))
         };
         // Tiles 16 square in two close tones: a grout line on the right and at the foot, a light edge on the left and top
@@ -270,6 +285,8 @@ internal static class GroundBaker
             InteriorStyle.Lab => (Rgb(238, 240, 244), Rgb(224, 228, 236), Tone.Of(150, 160, 186), Tone.Of(250, 250, 252), Tone.Of(96, 104, 128)),
             InteriorStyle.Museum => (Rgb(244, 236, 216), Rgb(230, 220, 196), Tone.Of(96, 84, 78), Tone.Of(250, 246, 232), Tone.Of(64, 56, 54)),
             InteriorStyle.GameHall => (Rgb(44, 48, 96), Rgb(226, 182, 80), Tone.Of(62, 70, 132), Tone.Of(226, 182, 80), Tone.Of(28, 30, 62)),
+            // A covered street's shopfronts: cream stucco with a coral motif over a band of shop glass (plan 22, wave 48)
+            InteriorStyle.Street => (Rgb(240, 230, 208), Rgb(226, 104, 92), Tone.Of(110, 168, 196), Tone.Of(226, 104, 92), Tone.Of(72, 86, 110)),
             _ => (Rgb(246, 232, 200), Rgb(232, 212, 172), Tone.Of(178, 124, 82), Tone.Of(250, 244, 226), Tone.Of(120, 84, 58))
         };
 

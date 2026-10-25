@@ -7,6 +7,8 @@
   "area": "nimbasa_city_gym",
   "bgmTrack": "unova/gym",
   "arenaType": "Electric",
+  // the runway stands over the dark, as the original's does (plan 22, wave 48)
+  "overTheDark": true,
   "triggers": [
     { "script": "Nikola", "x": 14, "z": 54, "width": 3, "depth": 1, "variable": "VAR_UNOVA_NIMBASA_GYM", "value": 0 },
     { "script": "Fleming", "x": 14, "z": 39, "width": 3, "depth": 1, "variable": "VAR_UNOVA_NIMBASA_GYM", "value": 1 },

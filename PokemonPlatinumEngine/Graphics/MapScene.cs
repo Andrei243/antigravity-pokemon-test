@@ -255,7 +255,11 @@ internal sealed class MapScene
 
         PixelCanvas? waterMask = null;
         PixelCanvas ground;
-        if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
+        // A room of several chunks (plan 22, wave 48: the Nimbasa Gym, Join Avenue) is drawn a chunk at a time, and each
+        // chunk's floor takes its own part of the room's floor: its texture coordinates run over the chunk alone
+        if (map.IsIndoors && chunk is { } part)
+            ground = GroundBaker.BakeInterior(map).Crop(part.X * GroundBaker.ArtTile, part.Y * GroundBaker.ArtTile, part.Width * GroundBaker.ArtTile, part.Height * GroundBaker.ArtTile);
+        else if (map.IsIndoors) ground = GroundBaker.BakeInterior(map);
         else if (chunk is { } window) ground = PixelGround.Bake(map, window, PixelGround.ChunkPad, worldSeeds: true, scene.Season, out waterMask);
         else ground = PixelGround.Bake(map, scene.Margin, MapStructures.BuildingsOf(map), out waterMask);
 

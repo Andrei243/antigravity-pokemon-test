@@ -286,6 +286,62 @@ public class UnovaTests
     }
 
     [Fact]
+    public void NimbasaIsPavedAndItsBattlesAreFoughtInTheStreet()
+    {
+        // Plan 22, wave 48: Nimbasa's floor (out7yuk01) was read as snow, which made the city snow country, its light
+        // blue and the Subway Bosses' battle a snowfield; its paving is a street now, and a battle on it the City stage
+        int snow = 0, paving = 0;
+        (int X, int Y)? street = null;
+        for (int y = 400; y < 512; y++)
+            for (int x = 368; x < 464; x++)
+            {
+                if (Overworld.AreaAt(x, y)?.Key != "nimbasa_city") continue;
+                var tile = Overworld.GetGroundTile(x, y);
+                if (tile == TileType.Snow) snow++;
+                if (tile == TileType.Paving && !Overworld.IsSolid(x, y)) { paving++; street ??= (x, y); }
+            }
+        Assert.Equal(0, snow);
+        Assert.True(paving > 200, $"{paving} tiles of paving");
+        var area = Overworld.AreaAt(street!.Value.X, street.Value.Y)!;
+        Assert.False(area.Snowbound);
+        Assert.Equal("City", area.BattleBackground);
+        Assert.Equal(BattleArena.City, Overworld.ArenaAt(street.Value.X, street.Value.Y));
+        Assert.Equal(PokemonPlatinumEngine.Battle.Sim.BattleTerrain.Building, GameEngine.TerrainAt(Overworld, street.Value.X, street.Value.Y));
+        Assert.True(PokemonPlatinumEngine.Graphics.ArenaSpec.For(Overworld, street.Value.X, street.Value.Y).Outdoors);
+    }
+
+    [Fact]
+    public void JoinAvenueIsACoveredStreetAndElesasRunwayStandsOverTheDark()
+    {
+        // Plan 22, wave 48: Join Avenue's floor is the street's paving between shopfronts, not a house's boards
+        var avenue = MapNamed("JoinAvenue");
+        Assert.Equal(InteriorStyle.Street, avenue.Interior);
+        int paved = 0, fronts = 0;
+        for (int y = 0; y < avenue.Height; y++)
+            for (int x = 0; x < avenue.Width; x++)
+            {
+                if (avenue.GetGroundTile(x, y) == TileType.Paving && !avenue.IsSolid(x, y)) paved++;
+                if (avenue.GetGroundTile(x, y) == TileType.Wall && x > 0 && x < avenue.Width - 1 && avenue.InBounds(x - 1, y) && avenue.GetGroundTile(x - 1, y) == TileType.Paving) fronts++;
+            }
+        Assert.True(paved > 300, $"{paved} tiles of the avenue's paving");
+        Assert.True(fronts > 10, $"{fronts} shopfronts on the street");
+        // The Nimbasa Gym's runway is an Electric hall over nothing: no wall but the void round its paving
+        var gym = MapNamed("NimbasaCity_Gym");
+        Assert.Equal(InteriorStyle.Gym, gym.Interior);
+        Assert.Equal(PokemonType.Electric, gym.ArenaType);
+        int voids = 0, walls = 0;
+        for (int y = 0; y < gym.Height; y++)
+            for (int x = 0; x < gym.Width; x++)
+            {
+                if (gym.GetGroundTile(x, y) == TileType.Void) voids++;
+                if (gym.GetGroundTile(x, y) == TileType.Wall) walls++;
+            }
+        Assert.True(voids > 1000, $"{voids} tiles of the dark");
+        Assert.Equal(0, walls);
+        Assert.Contains(Walked.Value.Keys, m => m.Name == "NimbasaCity_Gym");
+    }
+
+    [Fact]
     public void NimbasasRoomsAreOpenAndItsPokemonCenterIsASpawn()
     {
         // Plan 22 · U6, part b: the stadiums' lobbies and halls, two houses, the Battle Institute, the Musical Theater and

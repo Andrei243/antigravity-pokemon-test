@@ -19,7 +19,7 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
     }
 
     /// <summary>Under the open sky, lit by the time of day.</summary>
-    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand;
+    public bool Outdoors => Kind is BattleArena.Grass or BattleArena.Forest or BattleArena.Water or BattleArena.Snow or BattleArena.Sand or BattleArena.City;
 
     /// <summary>A gym or a room of the League.</summary>
     public bool Hall => Kind is BattleArena.Gym or BattleArena.League;
@@ -54,6 +54,7 @@ internal static class BattleArenas
             case BattleArena.Gym: Hall(b, spec.Theme, league: false); break;
             case BattleArena.League: Hall(b, spec.Theme, league: true); break;
             case BattleArena.Underwater: Underwater(b); break;
+            case BattleArena.City: City(b); break;
             default: Meadow(b, spec); break;
         }
     }
@@ -744,6 +745,65 @@ internal static class BattleArenas
             for (int k = 0; k < 3; k++)
                 white.Ellipsoid(new Vector3(x + (k - 1) * 0.3f * s, 0.25f * s, z + Rand(i, k, 93) * 0.2f), new Vector3(0.35f, 0.3f, 0.35f) * s,
                     ring => Mix(Rgb(120, 116, 70), Rgb(170, 160, 96), ring / 6f), 10, 6);
+        }
+    }
+
+    // ------------------------------------------------------------------ a city's paving (plan 22, wave 48)
+
+    /// <summary>
+    /// The street of a city or a town (a battle begun on paving where the area's header names a city's background):
+    /// pale flagstones, platforms of paving ringed in stone, a row of buildings behind the field whose windows light
+    /// up after dark, lamps, and trees in round planters at the sides.
+    /// </summary>
+    private static void City(MeshBatches batches)
+    {
+        GroundDisc(batches, SoftTextures.Tiles("city", Rgb(222, 216, 200), Rgb(210, 204, 186), Rgb(170, 164, 150)));
+        Platforms(batches, SoftTextures.Top("city", Rgb(234, 228, 212), Rgb(214, 206, 188), Rgb(160, 152, 138), rings: 2), Rgb(150, 146, 140));
+
+        var walls = Backdrop(batches);
+        var glass = batches.For(SceneTextures.White, MeshPass.Light);
+        // The row of buildings behind the field: blocks of cream, brick, slate and coral, each with rows of windows
+        Color[] fronts = { Rgb(236, 226, 204), Rgb(176, 96, 78), Rgb(150, 160, 178), Rgb(232, 150, 132), Rgb(214, 200, 168), Rgb(120, 132, 154) };
+        float x = -60f;
+        for (int i = 0; x < 52f; i++)
+        {
+            float w = 7f + Rand(i, 1, 141) * 6f, h = 8f + Rand(i, 2, 141) * 10f, z = -20f - Rand(i, 3, 141) * 5f;
+            var front = fronts[i % fronts.Length];
+            walls.Box(new Vector3(x, 0f, z - 8f), new Vector3(x + w, h, z), front, BoxFaces.All);
+            // a roof's edge and a plinth in a darker tone
+            walls.Box(new Vector3(x - 0.2f, h, z - 8.2f), new Vector3(x + w + 0.2f, h + 0.5f, z + 0.2f), MeshBuilder.Scale(front, 0.78f), BoxFaces.All);
+            walls.Box(new Vector3(x, 0f, z), new Vector3(x + w, 1.2f, z + 0.15f), MeshBuilder.Scale(front, 0.7f), BoxFaces.All);
+            for (float wy = 2.4f; wy + 1.8f < h; wy += 3.2f)
+                for (float wx = x + 1.2f; wx + 1.4f < x + w - 0.6f; wx += 2.4f)
+                {
+                    walls.Box(new Vector3(wx - 0.15f, wy - 0.15f, z), new Vector3(wx + 1.55f, wy + 1.95f, z + 0.1f), MeshBuilder.Scale(front, 0.6f), BoxFaces.All);
+                    glass.Quad(new Vector3(wx, wy, z + 0.12f), new Vector3(wx + 1.4f, wy, z + 0.12f), new Vector3(wx + 1.4f, wy + 1.8f, z + 0.12f), new Vector3(wx, wy + 1.8f, z + 0.12f),
+                        new(0, 1), new(1, 1), new(1, 0), new(0, 0), Rgb(255, 232, 170), Vector3.UnitZ);
+                }
+            x += w + 0.6f + Rand(i, 4, 141) * 1.2f;
+        }
+
+        var white = batches.For(SceneTextures.White);
+        // Lamps along the kerb behind the field, their heads lit after dark
+        foreach (float lx in new[] { -26f, -12f, 2f, 16f })
+        {
+            white.Cylinder(new Vector3(lx, 0f, -14f), 0.14f, 0.12f, 5f, 8, Rgb(70, 76, 92));
+            white.Box(new Vector3(lx - 0.5f, 5f, -14.3f), new Vector3(lx + 0.5f, 5.3f, -13.7f), Rgb(70, 76, 92), BoxFaces.All);
+            Halo(batches, SceneTextures.SoftGlow, new Vector3(lx, 4.9f, -14f), 2.4f, new Color(255, 236, 190, 150));
+        }
+        // Trees in round planters at the sides of the field
+        foreach (var (px, pz, s) in new[] { (-17f, 2f, 1.1f), (-20f, -6f, 1.2f), (14f, -9f, 1f), (17f, 4f, 1.1f) })
+        {
+            white.Cylinder(new Vector3(px, 0f, pz), 1.1f * s, 1.0f * s, 0.8f, 16, Rgb(176, 168, 152));
+            TreeModels.Round(batches, px, pz, (int)(px * 7 + pz), 7, s, soft: true);
+        }
+        // Benches between them
+        foreach (var (bx, bz) in new[] { (-14f, -10f), (9f, -12f) })
+        {
+            white.Box(new Vector3(bx - 1.4f, 0.5f, bz - 0.3f), new Vector3(bx + 1.4f, 0.65f, bz + 0.3f), Rgb(150, 104, 70), BoxFaces.All);
+            white.Box(new Vector3(bx - 1.4f, 0.65f, bz - 0.35f), new Vector3(bx + 1.4f, 1.3f, bz - 0.25f), Rgb(150, 104, 70), BoxFaces.All);
+            foreach (float leg in new[] { -1.2f, 1.2f })
+                white.Box(new Vector3(bx + leg - 0.08f, 0f, bz - 0.25f), new Vector3(bx + leg + 0.08f, 0.5f, bz + 0.25f), Rgb(70, 76, 92), BoxFaces.All);
         }
     }
 

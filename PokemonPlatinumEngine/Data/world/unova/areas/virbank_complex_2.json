@@ -7,7 +7,7 @@
   "sign": "None",
   "weather": "0",
   "camera": "0",
-  "battleBackground": "",
+  "battleBackground": "City",
   "dayMusic": "BGM_SW_D_23",
   "nightMusic": "BGM_SW_D_23",
   "encounters": "ENCOUNTERS_VIRBANK_COMPLEX_2",

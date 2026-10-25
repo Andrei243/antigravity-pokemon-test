@@ -291,7 +291,7 @@ public partial class GameEngine
             BattleArena.Water or BattleArena.Underwater => Battle.Sim.BattleTerrain.Water,
             BattleArena.Snow => Battle.Sim.BattleTerrain.Snow,
             BattleArena.Sand => Battle.Sim.BattleTerrain.Sand,
-            BattleArena.Indoors or BattleArena.Gym => Battle.Sim.BattleTerrain.Building,
+            BattleArena.Indoors or BattleArena.Gym or BattleArena.City => Battle.Sim.BattleTerrain.Building,
             BattleArena.League => Battle.Sim.BattleTerrain.Special,
             _ => Battle.Sim.BattleTerrain.Plain
         };
