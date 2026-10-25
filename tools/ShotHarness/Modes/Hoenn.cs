@@ -19,6 +19,15 @@ partial class Harness
         game.SaveSlot = 1;
         game.LocationSign.Hide();
         Frames(30);
+        // HOENN_FROM=sea runs Dive's shots and the secret bases' alone, HOENN_FROM=bases the bases' alone, in a new game
+        string from = Environment.GetEnvironmentVariable("HOENN_FROM") ?? "";
+        if (from is "sea" or "bases")
+        {
+            if (from == "sea") HoennSeaShots();
+            HoennBaseShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         Console.WriteLine($"a new game in Hoenn begins on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), "
             + $"in {game.Map.AreaAt(game.Player.GridX, game.Player.GridY)?.DisplayName ?? "nowhere"}, with {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}");
         Shot("h00_new_game");
@@ -352,9 +361,10 @@ partial class Harness
         // And last the first chapter played by its own scripts, in a new game of its own (plan 21 · H2)
         HoennScenes();
         // And after the chapter, Dive and the sea floor under Route 124 (plan 21 · H5, h92 to h96)
-        HoennSeaShots();
+        // (each part is guarded: one that throws is told of and the next still runs)
+        try { HoennSeaShots(); } catch (Exception e) { Console.WriteLine($"!! Dive's shots threw {e.GetType().Name}: {e.Message}"); }
         // And last a secret base opened, furnished and found again from a save (plan 21 · H10)
-        HoennBaseShots();
+        try { HoennBaseShots(); } catch (Exception e) { Console.WriteLine($"!! the secret bases' shots threw {e.GetType().Name}: {e.Message}"); }
         engine.NewGameRegion = "Sinnoh";
     }
 }
