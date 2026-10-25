@@ -101,7 +101,9 @@ public enum GameState
     /// <summary>The Pokéathlon's courses, team and events, a script's <c>athlon open</c> waiting on it (plan 15 · E6).</summary>
     Athlon,
     /// <summary>The jukebox: every song, sound, cry and bed to play, from the title or the options (plan 12 · Q15).</summary>
-    Jukebox
+    Jukebox,
+    /// <summary>The Apricorn Box looked into, from the bag, the item button or a script's <c>apricorn box</c> (plan 20 · J6).</summary>
+    ApricornBox
 }
 
 public partial class GameEngine
@@ -374,6 +376,7 @@ public partial class GameEngine
         LoadUnderground(null);
         LoadSecretBase(null, null);
         flow.Pastimes.Clear();
+        flow.Apricorns.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
         flow.ContestOutcome = null;
@@ -582,6 +585,7 @@ public partial class GameEngine
         LoadUnderground(save.Underground);
         LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
+        flow.Apricorns.Load(save.Apricorns);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
         flow.ContestOutcome = null;
@@ -757,6 +761,7 @@ public partial class GameEngine
             SecretBase = flow.SecretBase,
             Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
+            Apricorns = flow.Apricorns.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
             DayCare = DayCareSave.From(flow.DayCare),
@@ -1161,6 +1166,8 @@ public partial class GameEngine
                         // The Seal Case and the Fashion Case are looked into, and close back onto the bag (plan 06 · R17b)
                         else if (usedHere.Name == BagScreen.SealCaseItem) OpenBallCapsules(fromBag: true);
                         else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
+                        // The Apricorn Box is looked into and closes back onto the bag (plan 20 · J6)
+                        else if (usedHere.FieldUse == "ApricornBox") OpenApricornBox(fromBag: true);
                         // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
                         else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
@@ -1288,6 +1295,9 @@ public partial class GameEngine
             case GameState.FashionCase:
                 UpdateFashionCase(dt);
                 break;
+            case GameState.ApricornBox:
+                UpdateApricornBox(dt);
+                break;
             case GameState.Mining:
                 UpdateMining(dt);
                 break;
@@ -1414,6 +1424,7 @@ public partial class GameEngine
         ShatterSnowball();
         KeepTheClock();
         KeepBerriesInView();
+        KeepApricornTreesInView();
         SlideBoulders(fieldDt);
         flow.PoketchView.Update(dt);
         // The app on the Pokétch runs on whether it is out or not, as the original's lower screen does
@@ -1768,7 +1779,7 @@ public partial class GameEngine
         if (TryStepTrigger()) return true;
         if (CheckTrainerSight()) return true;
         // Last, a contact may ring the Pokégear (plan 20 · J3)
-        return PhoneRingsOnAStep();
+        return KurtRingsOnAStep() || PhoneRingsOnAStep();
     }
 
     /// <summary>
@@ -2765,6 +2776,9 @@ public partial class GameEngine
                 break;
             case GameState.FashionCase:
                 flow.FashionCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.ApricornBox:
+                flow.ApricornBoxScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.Mining:
                 flow.MiningScreen.Draw(VirtualWidth, VirtualHeight);

@@ -4,7 +4,7 @@
 # Kurt hears of Team Rocket in the well and runs there himself (FLAG_UNK_19E takes him from the house, FLAG_UNK_19F
 # the guard from the well's mouth, FLAG_UNK_077 says he went). Once the well is cleared its scene brings the player
 # here (VAR_UNK_4080 2), where Kurt thanks them with a Lure Ball (FLAG_UNK_07C). Making balls of Apricorns is plan 20
-# · J6's.
+# · J6's, and is Kurt's script below once the well is clear.
 
 
 script OnEnter
@@ -42,7 +42,94 @@ script Kurt
   endscene
   end
 label Thanked
+  # The workshop (plan 20 · J6): one order at a time, every Apricorn of a colour turned into a ball of its kind, ready
+  # on the next day (Models/Apricorns.cs)
+  apricorn status
+  if result == 2 goto Ready
+  if result == 1 goto Working
+  apricorn held
+  if result == 0 goto NoApricorns
+  say "Ah, Apricorns! Give me every Apricorn of one colour from your Box and I'll turn them into Poké Balls."
+  ask "Shall I make some for you?"
+  if no goto NotNow
+label Colours
+  choose "Which colour?" "Red" "Blue" "Yellow" "Green" "Other colours" "Never mind"
+  if result == 0 goto Red
+  if result == 1 goto Blue
+  if result == 2 goto Yellow
+  if result == 3 goto Green
+  if result == 4 goto MoreColours
+  goto NotNow
+label MoreColours
+  choose "Which colour?" "Pink" "White" "Black" "Back"
+  if result == 0 goto Pink
+  if result == 1 goto White
+  if result == 2 goto Black
+  goto Colours
+label Red
+  apricorn count red
+  if result == 0 goto NoneOfThat
+  apricorn order red
+  goto Ordered
+label Blue
+  apricorn count blue
+  if result == 0 goto NoneOfThat
+  apricorn order blue
+  goto Ordered
+label Yellow
+  apricorn count yellow
+  if result == 0 goto NoneOfThat
+  apricorn order yellow
+  goto Ordered
+label Green
+  apricorn count green
+  if result == 0 goto NoneOfThat
+  apricorn order green
+  goto Ordered
+label Pink
+  apricorn count pink
+  if result == 0 goto NoneOfThat
+  apricorn order pink
+  goto Ordered
+label White
+  apricorn count white
+  if result == 0 goto NoneOfThat
+  apricorn order white
+  goto Ordered
+label Black
+  apricorn count black
+  if result == 0 goto NoneOfThat
+  apricorn order black
+  goto Ordered
+label NoneOfThat
+  say "You've no {apricorn} in your Box. Pick another colour."
+  goto Colours
+label Ordered
+  sound "select"
+  say "Leave it with me. Those {apricorn}s will be {apricorns} × {ball}. Come back tomorrow."
+  if not flag FLAG_GOT_POKEGEAR end
+  if flag FLAG_PHONE_CONTACT_KURT end
+  say "You've a Pokégear? Then take my number, and I'll call you when they're done."
+  ask "Register Kurt's number in your Pokégear?"
+  if no end
+  addcontact kurt
+  end
+label NotNow
+  say "No hurry. Come back whenever you've Apricorns to spare."
+  end
+label NoApricorns
   say "Bring me Apricorns and I'll turn them into Poké Balls. Every colour makes a ball of its own."
+  say "Pick them from the trees, and keep them in your Apricorn Box. A tree bears fruit again each day."
+  end
+label Working
+  say "Patience! Your {ball} are still in the works: {apricorns} of them, for tomorrow."
+  end
+label Ready
+  apricorn collect
+  fanfare item
+  say "There you are, {apricorns} × {ball}, finished today. A fine batch, if I do say so myself."
+  text "{apricorns} × {ball} went into the bag."
+  say "Bring me more Apricorns whenever you like."
   end
 
 

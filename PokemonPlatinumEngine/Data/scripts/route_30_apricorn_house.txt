@@ -1,0 +1,15 @@
+# The house beside the Apricorn tree on Route 30 (plan 20 · J6). docs/scripts.md describes the language; the lines are
+# our own. The man gives the Apricorn Box, in which Apricorns are kept (Models/Apricorns.cs).
+
+
+script ApricornMan
+  speaker "Man"
+  if item "Apricorn Box" goto Have
+  say "See the tree outside with the round fruit? Those are Apricorns."
+  say "You'll want something to keep them in. Here, take my old Apricorn Box."
+  give "Apricorn Box"
+  say "In Azalea Town there's an old man named Kurt who can turn Apricorns into Poké Balls. Every colour makes a ball of its own."
+  end
+label Have
+  say "Those Apricorns grow all over Johto. Kurt in Azalea Town will turn them into Poké Balls, you know."
+  end

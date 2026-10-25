@@ -227,6 +227,8 @@ public class ScriptTests
           lottery boxed
           chooseitem berries
           berry status
+          apricorn tree
+          apricorn order red
           poffin check
           poffin cook
           poffin room
@@ -1585,6 +1587,7 @@ public class ScriptTests
         public int SeenInSinnoh => inner.SeenInSinnoh;
         public SpecialEncounters Encounters => inner.Encounters;
         public BerryPatches Berries => inner.Berries;
+        public ApricornBox Apricorns => inner.Apricorns;
         public string? ChosenItem => inner.ChosenItem;
         public PoffinCase Poffins => inner.Poffins;
         public DayCare DayCare => inner.DayCare;

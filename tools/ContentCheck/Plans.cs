@@ -161,6 +161,7 @@ public static class Plans
             string what = npc.IsItemBall ? $"item {npc.Item}" + (npc.ItemCount > 1 ? $" x{npc.ItemCount}" : "")
                 : npc.IsObstacle ? npc.Obstacle.ToString()!
                 : npc.IsBerrySoil ? $"berry patch {npc.BerryPatch}"
+                : npc.IsApricornTree ? $"Apricorn tree {npc.ApricornColour}"
                 : $"{npc.Key ?? npc.Name} \"{npc.Name}\" {npc.NpcType}" + (npc.IsPokemon ? $" {npc.Species}" : "");
             marks.Add(new PlanMark(Tag("N"), kind, $"{what} {npc.GridX},{npc.GridY}" + (npc.IsThing ? "" : $" facing {npc.Facing}")
                 + (npc.IsTrainer && npc.TrainerData != null ? $", trainer {npc.TrainerData.Id} sight {npc.TrainerData.SightRange}" : "")

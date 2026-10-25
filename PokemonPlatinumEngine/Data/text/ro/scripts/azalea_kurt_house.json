@@ -68,10 +68,145 @@
     },
     {
       "en": [
+        "Ah, Apricorns! Give me every Apricorn of one colour from your Box and I'll turn them into Poké Balls."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Adu-mi Apricorne și le fac Poké Balluri. Fiecare culoare dă un ball aparte."
+      ]
+    },
+    {
+      "en": [
+        "Shall I make some for you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which colour?",
+        "Red",
+        "Blue",
+        "Yellow",
+        "Green",
+        "Other colours",
+        "Never mind"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which colour?",
+        "Pink",
+        "White",
+        "Black",
+        "Back"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've no {apricorn} in your Box. Pick another colour."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leave it with me. Those {apricorn}s will be {apricorns} × {ball}. Come back tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've a Pokégear? Then take my number, and I'll call you when they're done."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Kurt's number in your Pokégear?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No hurry. Come back whenever you've Apricorns to spare."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Bring me Apricorns and I'll turn them into Poké Balls. Every colour makes a ball of its own."
       ],
       "text": [
-        "Adu-mi Apricorne și le fac Poké Balluri. Fiecare culoare dă un ball aparte."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pick them from the trees, and keep them in your Apricorn Box. A tree bears fruit again each day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Patience! Your {ball} are still in the works: {apricorns} of them, for tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are, {apricorns} × {ball}, finished today. A fine batch, if I do say so myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{apricorns} × {ball} went into the bag."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bring me more Apricorns whenever you like."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

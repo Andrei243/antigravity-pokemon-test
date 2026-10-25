@@ -1960,6 +1960,19 @@
     "photoContest": "{category} Contest, {rank} Rank",
     "photoBy": "{trainer}  ·  {date}"
   },
+  "apricorn": {
+    "title": "APRICORN BOX",
+    "apricorn": "APRICORN",
+    "name": "{colour} Apricorn",
+    "colour": { "red": "Red", "blue": "Blue", "yellow": "Yellow", "green": "Green", "pink": "Pink", "white": "White", "black": "Black" },
+    "inAll": "{n} IN ALL",
+    "has": "×{count}  of {limit}",
+    "makes": "Kurt makes it into a {ball}.",
+    "kurt": "KURT'S ORDER",
+    "noOrder": "Nothing ordered.",
+    "orderWorking": "{count} × {ball}, ready tomorrow.",
+    "orderReady": "{count} × {ball}, ready at his house."
+  },
   "ribbonPage": {
     "title": "RIBBONS",
     "none": "No ribbons yet.",

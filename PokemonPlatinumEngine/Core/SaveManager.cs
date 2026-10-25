@@ -225,6 +225,9 @@ public class SaveData
     /// </summary>
     public Models.PastimesSave? Pastimes { get; set; }
 
+    /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
+    public Models.ApricornSave? Apricorns { get; set; }
+
     /// <summary>
     /// The moves of Pokémon between this game's saves that have been begun here and not closed (plan 08 · P22,
     /// <see cref="SlotMoves"/>): a receipt in each of the two saves until the move is over, so that a crash at any step

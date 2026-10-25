@@ -7301,6 +7301,20 @@
     "cantBeTossed": true
   },
   {
+    "id": 1446,
+    "name": "Apricorn Box",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A box for the Apricorns picked from trees. Kurt of Azalea Town turns a colour of them into Poké Balls.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "ApricornBox"
+  },
+  {
     "id": 1449,
     "name": "Lure Ball",
     "pocket": "PokeBalls",

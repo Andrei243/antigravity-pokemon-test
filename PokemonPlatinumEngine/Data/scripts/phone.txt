@@ -495,3 +495,20 @@ label Rematch
 label Waiting
   say "Wally here. I'm still waiting by the way out of Victory Road. I'm ready whenever you are!"
   end
+
+
+# Kurt (plan 20 · J6): he rings when his Poké Balls are ready, and talks of his work when rung. `apricorn status` says
+# whether an order is in hand: 0 none, 1 at work, 2 ready.
+script Kurt
+  speaker "Kurt"
+  apricorn status
+  if result == 2 goto Ready
+  if result == 1 goto Working
+  say "Kurt here. I've nothing in the works. Bring me Apricorns whenever you have them."
+  end
+label Ready
+  say "It's Kurt! Your {ball} are done. Come by the workshop in Azalea Town and collect them."
+  end
+label Working
+  say "Kurt here. Your {ball} are coming along. Give me until tomorrow."
+  end

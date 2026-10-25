@@ -227,6 +227,8 @@ public class TextTests
         // The lobby's map, a person of the room by name, and the look a trainer with none takes
         ["Core/GameEngine.Frontier.cs"] = new[] { "BattleTower", "opponent_2", "Trainer" },
         ["Core/GameEngine.Capsules.cs"] = new[] { "Fashion Case" },
+        // The key item the Apricorn Box is, and Kurt's id in the phone book (plan 20 · J6)
+        ["Core/GameEngine.Apricorns.cs"] = new[] { "Apricorn Box", "kurt" },
         // The start of the Master Ranks' flags, and the region whose story is asked about
         ["Core/GameEngine.SuperContests.cs"] = new[] { "FLAG_CONTEST_MASTER_", "Sinnoh" },
         // The lobbies' maps

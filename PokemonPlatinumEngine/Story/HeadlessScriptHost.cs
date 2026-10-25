@@ -136,6 +136,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public IEnumerable<Pokemon> Boxed => Boxes;
 
     public BerryPatches Berries { get; set; } = BerryPatches.NewGame();
+    public ApricornBox Apricorns { get; set; } = new();
 
     /// <summary>
     /// What the bag chooses when a script asks (<c>chooseitem</c>): the item named, or the first in the bag that fits;

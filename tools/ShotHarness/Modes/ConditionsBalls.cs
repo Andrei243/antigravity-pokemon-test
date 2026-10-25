@@ -8,7 +8,8 @@ partial class Harness
     static readonly string[] BallKinds =
     {
         "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Safari Ball", "Net Ball", "Dive Ball",
-        "Nest Ball", "Repeat Ball", "Timer Ball", "Luxury Ball", "Dusk Ball", "Heal Ball", "Quick Ball", "Cherish Ball"
+        "Nest Ball", "Repeat Ball", "Timer Ball", "Luxury Ball", "Dusk Ball", "Heal Ball", "Quick Ball", "Cherish Ball",
+        "Fast Ball", "Level Ball", "Lure Ball", "Heavy Ball", "Love Ball", "Friend Ball", "Moon Ball"
     };
 
     void BallsMode()
@@ -45,6 +46,19 @@ partial class Harness
         var view = b.Anim[side, 0];
         Console.WriteLine($"  recall: ball {view.Ball}, age {view.RecallAge}, present {view.Present}");
         Shot("96_recall_d_gone");
+
+        // Last, Johto's seven Apricorn balls thrown at the foe (plan 20 · J6), each shot as it lands on the platform
+        // (96_apricorn_balls_<fast, level, lure, heavy, love, friend, moon>); written, not run
+        foreach (string ball in new[] { "Fast Ball", "Level Ball", "Lure Ball", "Heavy Ball", "Love Ball", "Friend Ball", "Moon Ball" })
+        {
+            b.Anim.ThrowBall(ball, 0, 3);
+            Skip(BattleAnimator.BallThrowTime(3) * 0.6);
+            Console.WriteLine($"  apricorn ball: {ball} thrown, {BattleBall.LookOf(ball).Kind}");
+            Shot("96_apricorn_balls_" + ball.Replace(" Ball", "").ToLowerInvariant());
+            Skip(BattleAnimator.BallThrowTime(3) * 0.5);
+            b.Anim.BreakFree();
+            Skip(1.0);
+        }
 
         party.Members.Remove(lead);
         game.State = GameState.Overworld;

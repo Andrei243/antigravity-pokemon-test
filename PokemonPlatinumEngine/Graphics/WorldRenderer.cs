@@ -1126,6 +1126,7 @@ public sealed class WorldRenderer
         mount = null;
         things.Clear();
         berryPlants.Clear();
+        apricornTrees.Clear();
         pokemon.Clear();
         // The strokes swimmers have taken since the last frame drawn are looked for in what has passed of the field's
         // clock since then (plan 11 · C8); a clock that has gone back (a new place) starts again from now
@@ -1157,6 +1158,13 @@ public sealed class WorldRenderer
                 float bx = npc.DrawX + 0.5f, bz = npc.DrawY + 0.5f;
                 var (stage, berry, mulched) = npc.BerryLook;
                 berryPlants.Add((new Vector3(bx, Relief.At(map, bx, bz), bz), stage, berry, mulched));
+                continue;
+            }
+            if (npc.IsApricornTree)
+            {
+                // An Apricorn tree with its fruit on or off, as the game last told it (plan 20 · J6)
+                float ax = npc.DrawX + 0.5f, az = npc.DrawY + 0.5f;
+                apricornTrees.Add((new Vector3(ax, Relief.At(map, ax, az), az), npc.ApricornColour, npc.ApricornInFruit));
                 continue;
             }
             // A snowball of the Snowpoint Gym is a card of the scenery, drawn with the room's pieces (GymPieces)
@@ -1345,6 +1353,10 @@ public sealed class WorldRenderer
     private readonly List<(Vector3 At, BerryStage Stage, string? Berry, bool Mulched)> berryPlants = new();
     private readonly Dictionary<string, CharacterSprites.Card> berryCards = new();
 
+    // The Apricorn trees in view, and a card for each colour with its fruit on and one bare (plan 20 · J6)
+    private readonly List<(Vector3 At, Models.Apricorn? Colour, bool InFruit)> apricornTrees = new();
+    private readonly Dictionary<string, CharacterSprites.Card> apricornCards = new();
+
     /// <summary>The things on the ground: a card for each kind, lit and casting like the people.</summary>
     private void DrawThings(CharacterPass pass)
     {
@@ -1357,6 +1369,12 @@ public sealed class WorldRenderer
         {
             string key = BerryArt.KeyOf(stage, berry, mulched);
             if (!berryCards.TryGetValue(key, out var card)) berryCards[key] = card = CharacterSprites.MakeCard(context, BerryArt.Paint(stage, berry, mulched));
+            CharacterSprites.DrawCard(card, at, VerticalScale, pass);
+        }
+        foreach (var (at, colour, inFruit) in apricornTrees)
+        {
+            string key = ApricornArt.KeyOf(colour, inFruit);
+            if (!apricornCards.TryGetValue(key, out var card)) apricornCards[key] = card = CharacterSprites.MakeCard(context, ApricornArt.Paint(colour, inFruit));
             CharacterSprites.DrawCard(card, at, VerticalScale, pass);
         }
     }

@@ -45,6 +45,7 @@ public sealed partial class GameFlow
     public SealCaseScreen SealCaseScreen { get; } = new();
     public SealShopScreen SealShopScreen { get; } = new();
     public FashionCaseScreen FashionCaseScreen { get; } = new();
+    public ApricornBoxScreen ApricornBoxScreen { get; } = new();
     public PoffinCookingScreen PoffinCookingScreen { get; } = new();
     public PoffinCaseScreen PoffinCaseScreen { get; } = new();
     public PokegearScreen PokegearScreen { get; } = new();

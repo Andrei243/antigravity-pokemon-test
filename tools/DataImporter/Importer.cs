@@ -52,6 +52,8 @@ public sealed partial class Importer
         ["rotom-catalog"] = ItemPocket.KeyItems, ["reins-of-unity"] = ItemPocket.KeyItems,
         // The Shiny Charm: two more rolls at a shiny while it is in the bag (plan 13 · V5)
         ["shiny-charm"] = ItemPocket.KeyItems,
+        // HeartGold's Apricorn Box, which holds the Apricorns Kurt makes balls of (plan 20 · J6)
+        ["apricorn-box"] = ItemPocket.KeyItems,
         ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items
     };
 

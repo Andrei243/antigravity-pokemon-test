@@ -37,6 +37,13 @@ internal readonly record struct BallRelease(BallKind Kind, Color Flash, Color Li
         BallKind.Heal => new(look.Kind, Rgb(255, 225, 240), Rgb(255, 170, 210)),
         BallKind.Quick => new(look.Kind, Rgb(255, 250, 190), Rgb(110, 170, 255)),
         BallKind.Cherish => new(look.Kind, Rgb(255, 220, 220), Rgb(255, 200, 90)),
+        BallKind.Fast => new(look.Kind, Rgb(255, 244, 190), Rgb(250, 190, 60)),
+        BallKind.Level => new(look.Kind, Rgb(255, 230, 215), Rgb(240, 90, 80)),
+        BallKind.Lure => new(look.Kind, Rgb(215, 240, 255), Rgb(70, 140, 220)),
+        BallKind.Heavy => new(look.Kind, Rgb(225, 228, 238), Rgb(120, 130, 156)),
+        BallKind.Love => new(look.Kind, Rgb(255, 232, 244), Rgb(250, 130, 180)),
+        BallKind.Friend => new(look.Kind, Rgb(232, 255, 220), Rgb(120, 200, 90)),
+        BallKind.Moon => new(look.Kind, Rgb(215, 220, 255), Rgb(120, 130, 220)),
         _ => new(BallKind.Poke, Rgb(255, 255, 255), Rgb(255, 246, 200))
     };
 
@@ -125,6 +132,35 @@ internal readonly record struct BallRelease(BallKind Kind, Color Flash, Color Li
             case BallKind.Cherish:
                 Fx.Burst(fx, s, t, at, h, 0f, 0.6f, 8, FxShape.Petal, Rgb(230, 60, 70), Rgb(255, 120, 130), 0.14f, 0.8f, 0.3f, FxBlend.Alpha, spin: 3f, salt: 1);
                 Fx.Burst(fx, s, t, at, h, 0f, 0.5f, 4, FxShape.Star, Rgb(255, 255, 255), Rgb(255, 230, 160), 0.1f, 1.0f, spin: 2f, salt: 2);
+                break;
+            // Johto's seven (plan 20 · J6)
+            case BallKind.Fast:
+                Fx.Burst(fx, s, t, at, h, 0f, 0.4f, 10, FxShape.Streak, Rgb(250, 190, 60), Rgb(255, 240, 170), 0.07f, 2.4f, streak: 1.5f, salt: 1);
+                break;
+            case BallKind.Level:
+                // Three rings, each wider than the last: a level gained
+                for (int i = 0; i < 3; i++)
+                    Fx.Shockwave(fx, t, at, Vector3.Zero, 0.06f * i, 0.4f, h * (0.6f + 0.35f * i), i == 2 ? Rgb(250, 220, 90) : Rgb(240, 90, 80));
+                break;
+            case BallKind.Lure:
+                Fx.Burst(fx, s, t, at, h, 0f, 0.6f, 7, FxShape.Bubble, Rgb(150, 205, 250), Rgb(230, 245, 255), 0.11f, 0.6f, -0.5f, FxBlend.Alpha, salt: 1);
+                Fx.Burst(fx, s, t, at, h, 0f, 0.4f, 4, FxShape.Spark, Rgb(226, 54, 60), Rgb(255, 160, 150), 0.08f, 1.0f, salt: 2);
+                break;
+            case BallKind.Heavy:
+                // Dust thrown low and heavy, falling back
+                Fx.Burst(fx, s, t, at, h, 0f, 0.6f, 7, FxShape.Smoke, new Color(110, 116, 136, 170), new Color(150, 156, 176, 140), 0.2f, 0.45f, 0.6f, FxBlend.Alpha, salt: 1);
+                Fx.Shockwave(fx, t, at, Vector3.Zero, 0.04f, 0.35f, h * 0.9f, Rgb(120, 130, 156));
+                break;
+            case BallKind.Love:
+                Fx.Burst(fx, s, t, at, h, 0f, 0.6f, 8, FxShape.Heart, Rgb(250, 120, 170), Rgb(255, 220, 235), 0.14f, 0.5f, -0.6f, FxBlend.Alpha, salt: 1);
+                break;
+            case BallKind.Friend:
+                Fx.Burst(fx, s, t, at, h, 0f, 0.6f, 8, FxShape.Leaf, Rgb(110, 190, 80), Rgb(250, 232, 120), 0.12f, 0.7f, 0.3f, FxBlend.Alpha, spin: 2f, salt: 1);
+                Fx.Burst(fx, s, t, at, h, 0f, 0.5f, 4, FxShape.Star, Rgb(250, 232, 120), Rgb(255, 250, 200), 0.1f, 0.8f, -0.3f, spin: 2f, salt: 2);
+                break;
+            case BallKind.Moon:
+                Fx.Burst(fx, s, t, at, h, 0f, 0.7f, 8, FxShape.Star, Rgb(250, 232, 140), Rgb(220, 226, 255), 0.1f, 0.4f, -0.4f, spin: 1.5f, salt: 1);
+                fx.Sprite(FxShape.Glow, at + Vector3.UnitY * h * 0.4f, h * 0.3f, Fx.Fade(Rgb(190, 200, 255), Fx.Envelope(t, 0f, 0.1f, 0.3f, 0.55f)));
                 break;
         }
     }

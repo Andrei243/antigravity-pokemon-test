@@ -123,6 +123,9 @@ public partial class GameEngine
         public Models.SuperContests.ContestRecords ContestRecords => game.flow.ContestRecords;
         public void OpenBallCapsules() => game.OpenBallCapsules(fromBag: false);
         public void OpenFashionCase() => game.OpenFashionCase(fromBag: false);
+        public ApricornBoxScreen ApricornBoxScreen => game.flow.ApricornBoxScreen;
+        public ApricornBox Apricorns => game.flow.Apricorns;
+        public void OpenApricornBox() => game.OpenApricornBox(fromBag: false);
         public DayCare DayCare => game.flow.DayCare;
         public RadarChain Radar => game.flow.Radar;
         public FishingAttempt? Fishing { get => game.flow.Fishing; set => game.flow.Fishing = value; }

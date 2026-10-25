@@ -465,6 +465,12 @@ public partial class GameEngine
             OpenFashionCase(fromBag: false);
             return;
         }
+        // The Apricorn Box from the item button (plan 20 · J6)
+        if (item.FieldUse == "ApricornBox")
+        {
+            OpenApricornBox(fromBag: false);
+            return;
+        }
         // The Poffin Case opened from the item button goes back to the field when it closes (UsePoffinCaseInField)
         if (item.FieldUse == "PoffinCase")
         {
@@ -1187,6 +1193,10 @@ public partial class GameEngine
                 case ScriptScreen.SealShop:
                     game.OpenSealShop();
                     break;
+                // The Apricorn Box looked into (plan 20 · J6)
+                case ScriptScreen.Apricorns:
+                    game.OpenApricornBox(fromBag: false);
+                    break;
                 case ScriptScreen.ContestPhoto:
                     if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
                     break;
@@ -1486,6 +1496,7 @@ public partial class GameEngine
         }
 
         public BerryPatches Berries => game.flow.Berries;
+        public ApricornBox Apricorns => game.flow.Apricorns;
         public string? ChosenItem => game.flow.ScriptItem;
 
         // ---- Poffins (plan 06 · R14c)
