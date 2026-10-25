@@ -1,0 +1,17 @@
+# The Relic Passage's east hall (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own.
+#
+# Black 2's halls of the passage have holes in their floors that a great boulder pushed with Strength fills (the
+# behaviour StrengthHole): ours are the overlay's holes, a wall until their flag, and the pits on the hole's tiles,
+# whose script sets the flag as the boulder comes to rest (Map.FilledHoles). The boulder is gone with the hole it filled.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script FillTheHole
+  call BoulderFallsIn
+  setflag FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST
+  hide self
+  end

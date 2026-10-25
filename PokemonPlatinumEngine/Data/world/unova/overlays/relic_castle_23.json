@@ -1,0 +1,10 @@
+{
+  // The Relic Castle's deepest room (plan 22 · U6, part c), Black 2's: Volcarona (0, FLAG_UNOVA_HIDE_VOLCARONA, Black
+  // 2's 0x03a0) rests at its head and battles whoever comes up to it (relic_castle_23.txt)
+  "area": "relic_castle_23",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave",
+  "people": {
+    "0": { "name": "Volcarona", "npcType": "Pokemon", "species": "Volcarona", "script": "Volcarona", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_VOLCARONA" }
+  }
+}

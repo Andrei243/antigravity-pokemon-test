@@ -302,7 +302,9 @@ public enum Architecture
     /// <summary>White clapboard under cherry-red gable roofs with shutters: the city of the amusement park, the stadiums and the Gear Station (Nimbasa, plan 22 · U6).</summary>
     Funfair,
     /// <summary>Red brick under slate-blue gable roofs with a chimney: the port of warehouses, the market and the Cold Storage (Driftveil, plan 22 · U6, part b).</summary>
-    Storehouse
+    Storehouse,
+    /// <summary>Weathered boards under rust-red gable roofs with a chimney: the quiet town of the turntable at the end of the Gear Station's line (Anville, plan 22 · U6, part c).</summary>
+    Railyard
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

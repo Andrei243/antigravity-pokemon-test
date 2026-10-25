@@ -1,0 +1,334 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon World Tournament"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Water, fire and grass Pledges! Use two of them together in a double battle and something special happens!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Fortune Teller"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I can feel the hidden power in every Pokémon that passes. Come back when the tournament opens and I'll read yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sketching the hall before the crowds arrive. It looks like a crown, doesn't it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tournament's banners are going up. Every region's colours, side by side!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gym Leaders, Champions, the best from everywhere... I've trained for years to stand in that hall."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're still putting the finishing touches on the hall. Not long now!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What sort of Trainers will come, I wonder? What sort of battles will they fight?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband teaches the strongest moves there are, to a Pokémon that trusts its Trainer completely. He's off fishing today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Smasher"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In front of a crowd you're supposed to stand firm. But I can't help loving moves with a bit of rhythm!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The crowd's going to go wild for my Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People from all over coming together to test themselves. Isn't that something?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon World Tournament... aka the PWT. Call it whatever you like, just don't miss it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Backpacker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A ship is only really a ship out on the open sea. Moored here, they all look a bit lonely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That cave down there is the Relic Passage. They dug it out only recently, and it runs all the way under the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_pwt": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cheren_pwt": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "grunt_pwt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "colress_pwt": {
+      "name": {
+        "en": [
+          "Colress"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_pier": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cheren_pier": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "18": {
+      "en": [
+        "Pokémon World Tournament\nThe stage where the world's strongest Trainers meet"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

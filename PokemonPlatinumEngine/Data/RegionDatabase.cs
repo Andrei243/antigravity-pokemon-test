@@ -698,6 +698,13 @@ public static class RegionDatabase
                 "DriftveilDrawbridge", "DriftveilCity_PokemonCenter", "DriftveilCity_House1", "DriftveilCity_House2",
                 "DriftveilCity_House3", "DriftveilCity_House4", "DriftveilCity_PlasmaHouse", "DriftveilCity_Market",
                 "DriftveilCity_TournamentGate", "DriftveilCity_GymLobby", "DriftveilCity_Gym",
+                // Plan 22 · U6, part c: the gate to Route 16, the Lostlorn Forest, the Gear Station (a map of ours,
+                // Data/maps/GearStation.json) and Anville Town at the end of its line, the Relic Passage, the Relic
+                // Castle and its buried halls, and the Plasma Frigate's deck
+                "NimbasaGate_Route16", "LostlornForest", "GearStation", "AnvilleTown", "AnvilleTown_House1",
+                "AnvilleTown_House2", "AnvilleTown_House3", "RelicPassage_East", "RelicPassage", "RelicPassage_West",
+                "RelicCastle", "RelicCastle_B1F", "RelicCastle_Ruins1", "RelicCastle_Ruins2", "RelicCastle_Ruins3",
+                "RelicCastle_Ruins4", "RelicCastle_Ruins5", "RelicCastle_Depths", "PlasmaFrigate",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

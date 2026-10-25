@@ -1,0 +1,59 @@
+# A house of Anville Town (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/anville_town_4.s, read for the order alone).
+#
+# A Depot Agent of the Battle Subway (0) hands on what passengers leave on the trains and nobody claims: a Rare Candy the
+# first time (FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE, Black 2's 0x00ef), and after that one thing a day
+# (FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM), drawn on the game's die from Black 2's eight.
+
+
+script LostAndFound
+  face self player
+  speaker "Depot Agent"
+  if not flag FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE goto First
+  if flag FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM goto Tomorrow
+  say "There you are! Lots of passengers lately, and lots of lost property. Nobody's claimed this one, so it's yours."
+  random 8
+  if result == 0 goto FullRestore
+  if result == 1 goto MaxRevive
+  if result == 2 goto Elixir
+  if result == 3 goto Protein
+  if result == 4 goto Iron
+  if result == 5 goto Calcium
+  if result == 6 goto Zinc
+  give "Carbos"
+  goto Given
+label FullRestore
+  give "Full Restore"
+  goto Given
+label MaxRevive
+  give "Max Revive"
+  goto Given
+label Elixir
+  give "Elixir"
+  goto Given
+label Protein
+  give "Protein"
+  goto Given
+label Iron
+  give "Iron"
+  goto Given
+label Calcium
+  give "Calcium"
+  goto Given
+label Zinc
+  give "Zinc"
+label Given
+  setflag FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM
+  say "Better a Trainer uses it than it sits in my drawer. I'm sure it's happier too!"
+  end
+label First
+  say "Oh ho! A Trainer, by the look of you. I'm a Depot Agent on the Battle Subway, in Nimbasa City."
+  say "Passengers leave all sorts behind on the trains. This one's gone unclaimed for ages. Would you take it off my hands?"
+  give "Rare Candy"
+  setflag FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE
+  setflag FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM
+  say "Come back another day. There's always more lost property!"
+  end
+label Tomorrow
+  say "Nothing new in the lost property today. Come back tomorrow, and try the Battle Subway in the meantime!"
+  end

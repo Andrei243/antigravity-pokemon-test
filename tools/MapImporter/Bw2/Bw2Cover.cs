@@ -39,6 +39,13 @@ public static class Bw2Cover
         ("^ja_roof", null),                                      // the glass roof over Join Avenue
         ("^ja_water", TerrainCover.Water),                       // its basins
         ("^ja_vari", TerrainCover.Building),                     // its shopfronts
+        // (plan 22 · U6, part c: the Plasma Frigate, judged with --chunk) the sea round its hull and the hull's sides
+        ("^out70_sea|^azito_wa", TerrainCover.Water),
+        // (and the Relic Castle: its sand, suna, and its walls of stone, which are no railings)
+        ("^in10_suna", TerrainCover.Sand),
+        ("^in10_kabe", TerrainCover.Cliff),
+        // (and the Relic Passage's floors, whose d0yuka is a cave's floor, not a street's)
+        ("^d0yuka", TerrainCover.CaveFloor),
         ("^taki|^sea_zanami|^sea_simi|^shore|^ike\\d|^mizu|kawa|gawa|^sea_|nagare|asase|_zan\\d|mizo|suimon|foun", TerrainCover.Water),   // falls, surf, ponds, rivers, shallows, the sea, ditches, sluices, fountains
         ("marsh", TerrainCover.Marsh),
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock
@@ -139,7 +146,10 @@ public static class Bw2Cover
             return best;
         }
         var over = triangles.Count > 0 ? Bw2Geometry.LayersOver(triangles, w, h, Surface) : null;
-        bool piers = chunk.StartsWith("castelia_", StringComparison.Ordinal);
+        // (and the Plasma Frigate's deck, plan 22 · U6, part c, whose plates lie under its walking surface too)
+        bool piers = chunk.StartsWith("castelia_", StringComparison.Ordinal) || chunk.StartsWith("plasma_frigate", StringComparison.Ordinal)
+            || chunk.StartsWith("anville_town", StringComparison.Ordinal);
+        bool frigate = chunk.StartsWith("plasma_frigate", StringComparison.Ordinal);
 
         // Tiles under a building's box (a room has none: its props are its furniture, numbered as the rooms' are)
         var buildings = new bool[w * h];
@@ -178,7 +188,11 @@ public static class Bw2Cover
                 TerrainCover? pick = solid
                     ? (above is { } a && Stands(a) ? a : ground ?? above ?? under)
                     : (ground is { } g && !Stands(g) ? g : above is { } b && !Stands(b) ? b : under is { } c && !Stands(c) ? c : null);
-                result[i] = pick ?? TerrainCover.Unknown;
+                // (a ship's deck is plates wherever nothing says otherwise: plan 22 · U6, part c, the Plasma Frigate's, whose
+                // unnamed tiles took the lawn of the nearest ground)
+                // (and its walls, out70_kabe, are its bulwarks, not railings on a lawn)
+                if (frigate && pick == TerrainCover.Fence) pick = TerrainCover.Building;
+                result[i] = pick ?? (frigate ? TerrainCover.Paving : TerrainCover.Unknown);
             }
         return result;
     }

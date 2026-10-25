@@ -1,0 +1,29 @@
+# The Gear Station (Nimbasa City's hall of lines, the Battle Subway's and the Anville Town Line's): a bright square-wave
+# tune in G over an electric piano chugging like wheels on rails, a busy bass and a steady beat. Original composition
+# for this game (plan 22 · U6, part c).
+title Gear Station
+tempo 126
+meter 4/4
+reverb 0.22
+nighttempo 0.94
+
+track lead square night=flute vol=0.66 pan=0.1 rev=0.2
+  L o5 g4 b8 o6 d8 o5 b4 g4 | o5 e4 g8 b8 e4 g4 | o5 c4 e8 g8 o6 c4 o5 g4 | o5 f+4 a8 o6 d8 o5 a2 |
+  o5 b4. a8 g4 d4 | o5 b4 d8 f+8 b4 f+4 | o5 e4 g8 c8 e4 g4 | o5 a2. r4 |
+  o5 g4 e8 b8 e4 b4 | o5 c4 g8 e8 c4 e4 | o5 d4 g8 b8 d4 b4 | o5 f+4 a8 d8 f+4 a4 |
+  o5 e4 g8 o6 c8 o5 g4 e4 | o5 f+4 a8 o6 d8 o5 a4 f+4 | o5 g4 b8 d8 g4 b4 | o5 g2. r4 |
+
+track keys epiano night=pad vol=0.38 pan=-0.2 rev=0.26
+  L o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 e8 o4 g8 o4 b8 o5 e8 o4 b8 o4 g8 o4 e8 o4 g8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 |
+  o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 b8 o5 d8 o5 f+8 o5 b8 o5 f+8 o5 d8 o4 b8 o5 d8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 |
+  o4 e8 o4 g8 o4 b8 o5 e8 o4 b8 o4 g8 o4 e8 o4 g8 | o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 |
+  o4 c8 o4 e8 o4 g8 o5 c8 o4 g8 o4 e8 o4 c8 o4 e8 | o4 d8 o4 f+8 o4 a8 o5 d8 o4 a8 o4 f+8 o4 d8 o4 f+8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 | o4 g8 o4 b8 o5 d8 o5 g8 o5 d8 o4 b8 o4 g8 o4 b8 |
+
+track bass bass vol=0.78 rev=0.06
+  L o3 g4 d4 g4 d4 | o3 e4 b4 e4 b4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 |
+  o3 g4 d4 g4 d4 | o3 b4 f+4 b4 f+4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 |
+  o3 e4 b4 e4 b4 | o3 c4 g4 c4 g4 | o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 |
+  o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 | o3 g4 d4 g4 d4 |
+
+track drums kit vol=0.45 rev=0.1
+  L v72 [ b4 h8 h8 s4 h8 h8 | ]16

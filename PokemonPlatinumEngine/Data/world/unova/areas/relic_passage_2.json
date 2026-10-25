@@ -1,0 +1,107 @@
+{
+  "key": "relic_passage_2",
+  "index": 504,
+  "name": "Relic Passage",
+  "matrix": 299,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_RELIC_PASSAGE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 27 },
+    { "species": "Woobat", "level": 27 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Woobat", "level": 28 },
+    { "species": "Gurdurr", "level": 28 },
+    { "species": "Gurdurr", "level": 30 },
+    { "species": "Raticate", "level": 29 },
+    { "species": "Raticate", "level": 29 },
+    { "species": "Boldore", "level": 30 },
+    { "species": "Onix", "level": 30 },
+    { "species": "Woobat", "level": 30 },
+    { "species": "Onix", "level": 30 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Marill", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Onix", "level": 27 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Marill", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Azumarill", "level": 10, "maxLevel": 30 },
+    { "species": "Azumarill", "level": 10, "maxLevel": 30 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 93, "z": 42, "to": "relic_passage", "toWarp": 1 },
+    { "x": 91, "z": 53, "to": "relic_passage", "toWarp": 0 },
+    { "x": 25, "z": 2, "to": "relic_passage_3", "toWarp": 0 },
+    { "x": 89, "z": 4, "to": "relic_castle_21", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 90, "z": 36, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0476", "item": "Rocky Helmet", "script": "7042" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 90, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0477", "item": "Rare Candy", "script": "7043" },
+    { "id": "2", "looks": "110", "movement": "none", "x": 90, "z": 42, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0478", "item": "Ultra Ball", "script": "7044" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 6, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0479", "item": "Big Pearl", "script": "7045" },
+    { "id": "4", "looks": "backpacker_f", "movement": "look_west_and_east", "x": 69, "z": 52, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_BACKPACKER_ANNIE" },
+    { "id": "5", "looks": "psychic_f", "movement": "look_around", "x": 85, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_PSYCHIC_ENA" },
+    { "id": "6", "looks": "psychic_m", "movement": "look_around", "x": 56, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_TULLY" },
+    { "id": "7", "looks": "hiker", "movement": "look_west_and_east", "x": 32, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_HIKER_TOBIAS" },
+    { "id": "8", "looks": "model_bigrock2", "movement": "none", "x": 66, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "9", "looks": "model_bigrock2", "movement": "none", "x": 88, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" }
+  ],
+  "signs": [
+    { "x": 39, "z": 25, "type": 2, "script": "8111", "item": "Max Repel", "flag": "FLAG_UNOVA_0x0b73" },
+    { "x": 23, "z": 25, "type": 2, "script": "8112", "item": "Blue Shard", "flag": "FLAG_UNOVA_0x0b74" },
+    { "x": 58, "z": 24, "type": 2, "script": "8113", "item": "Green Shard", "flag": "FLAG_UNOVA_0x0b75" },
+    { "x": 82, "z": 12, "type": 2, "script": "8114", "item": "Red Shard", "flag": "FLAG_UNOVA_0x0b76" },
+    { "x": 70, "z": 47, "type": 2, "script": "8115", "item": "Yellow Shard", "flag": "FLAG_UNOVA_0x0b77" },
+    { "x": 90, "z": 40, "type": 2, "script": "8116", "item": "Rock Gem", "flag": "FLAG_UNOVA_0x0b78" }
+  ],
+  "triggers": []
+}

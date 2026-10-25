@@ -1,0 +1,7 @@
+{
+  // The Relic Castle's buried halls (plan 22 · U6, part c): the first of Black 2's rooms that the Relic Passage leads
+  // into, under the sand, from which the others follow east and down
+  "area": "relic_castle_21",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave"
+}

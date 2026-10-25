@@ -270,7 +270,8 @@ public class PokemonTests
             // Flood fill; stepping onto a warp tile triggers it, so don't expand past one. Someone a story flag takes
             // off the map isn't in the way for good (the bollards in Fantina's room, gone once she is beaten), and nor is
             // someone whose own script walks them aside (the guard at the League's door)
-            bool Open(int x, int y) => map.IsWalkable(x, y) || !map.IsSolid(x, y)
+            // (and a hole a pushed boulder fills is walked across once it is filled: plan 22 · U6, part c, the Relic Passage's)
+            bool Open(int x, int y) => map.IsWalkable(x, y) || map.FilledHoles.ContainsKey((x, y)) || !map.IsSolid(x, y)
                 && map.NPCs.Any(n => (n.GridX, n.GridY) == (x, y))
                 && map.NPCs.Where(n => (n.GridX, n.GridY) == (x, y)).All(n => n.HiddenBy != null || n.Script != null && WorldWalk.StepsAside(n.Script, n.ScriptFile ?? map.Name));
             var reached = new HashSet<(int, int)> { (startX, startY) };

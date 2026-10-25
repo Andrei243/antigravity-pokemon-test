@@ -1,0 +1,21 @@
+{
+  // The Lostlorn Forest (plan 22 · U6, part c): Black 2's wood north of Route 16, our words. Its trainers stand among
+  // the trees; a traveller (7, FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER, Black 2's 0x03c7) asks after Zoroark, gives a TM and
+  // turns out to be the Zoroark itself, which runs off (lostlorn_forest.txt). Black and White's trailer stands empty,
+  // with no way in, as in Black 2
+  "area": "lostlorn_forest",
+  "bgmTrack": "unova/lostlorn_forest",
+  "people": {
+    "0": { "name": "Galen", "trainer": { "dialogueBefore": "I raise Pokémon out here where it's quiet. Let's see how yours were raised!", "dialogueAfter": "You raised them well. Better than mine, it seems." } },
+    "1": { "name": "Serenity", "trainer": { "dialogueBefore": "A Ranger looks after the forest. Right now I'm looking after it from you!", "dialogueAfter": "All right, the forest is safe with you." } },
+    "2": { "name": "Forrest", "trainer": { "dialogueBefore": "Forrest of the forest! Yes, I've heard every joke. Battle!", "dialogueAfter": "The trees are laughing at me now." } },
+    "3": { "name": "Murphy", "trainer": { "dialogueBefore": "I've chased bugs through every wood in Unova. This one has the strongest. Come and see!", "dialogueAfter": "Ha! The forest has a new champion of bugs." } },
+    "7": { "name": "Traveller", "npcType": "hiker", "script": "Traveller", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER" }
+  },
+  "npcs": [
+    { "id": "zoroark", "name": "Zoroark", "npcType": "Pokemon", "species": "Zoroark", "x": 8, "y": 11, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK" }
+  ],
+  "signs": {
+    "10797": "An old trailer, its door rusted shut. Nobody has lived here for a long while."
+  }
+}

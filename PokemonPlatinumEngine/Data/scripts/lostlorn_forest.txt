@@ -1,0 +1,44 @@
+# The Lostlorn Forest (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/lostlorn_forest.s, read for the order alone).
+#
+# A traveller (7, FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER, Black 2's 0x03c7) stands in the clearing's north-west corner. He
+# asks after Zoroark, gives a TM whatever the answer and tells the forest's rumour; then he is gone, and a Zoroark
+# (zoroark, ours, FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK) cries where he stood and bounds off into the trees. Black 2's TM95
+# (Snarl) is no TM of our data's: the traveller gives TM46, Thief, Dark as Snarl is (the rulings).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script Traveller
+  scene "The traveller in the Lostlorn Forest"
+  place player 8 12 up
+  face self player
+  speaker "Traveller"
+  say "Well, hello there, Trainer. A Pokédex too, I see. I'm a traveller. I wander the world and talk with whoever I meet."
+  ask "Tell me, do you know of a Pokémon called Zoroark?"
+  if no goto DontKnow
+  say "Then you know it can fool the eye. Good. Only be sure it never fools you."
+  goto Gift
+label DontKnow
+  say "No? Then mind yourself. The Pokémon you've never heard of is the easiest one to be fooled by."
+label Gift
+  say "Whether you trust what you see or doubt it all is your own choice. I've enjoyed our talk. Here, a keepsake."
+  give "TM46"
+  say "They say a Zoroark came to this forest two years ago and dressed the grass and the trees in its illusions."
+  say "Only a rumour, of course. But there's always a grain of truth in a rumour..."
+  setflag FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER
+  hide self
+  clearflag FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  show zoroark
+  cry "Zoroark"
+  speaker none
+  text "Grrrowf!"
+  walk zoroark left 3 fast
+  hide zoroark
+  setflag FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  text "The traveller was a Zoroark all along! It vanished into the trees."
+  endscene
+  end

@@ -249,6 +249,10 @@
       "note": "first spoken at ResortAreaVilla.txt(168)",
       "provisional": true
     },
+    "depot_agent": {
+      "note": "first spoken at GearStation.txt(40)",
+      "provisional": true
+    },
     "derek": {
       "note": "first spoken at cinnabar_island_gym.txt(76)",
       "provisional": true
@@ -876,12 +880,20 @@
       "note": "first spoken at five_island_lost_cave_room_10.txt(17)",
       "provisional": true
     },
+    "shadow_triad": {
+      "note": "first spoken at plasma_frigate.txt(57)",
+      "provisional": true
+    },
     "shelly": {
       "note": "first spoken at route_119_weather_institute_2f.txt(21)",
       "provisional": true
     },
     "shop_boy": {
       "note": "first spoken at EternaCycleShop.txt(30)",
+      "provisional": true
+    },
+    "shopkeeper": {
+      "note": "first spoken at join_avenue.txt(11)",
       "provisional": true
     },
     "sidney": {
@@ -902,6 +914,10 @@
     },
     "socialite": {
       "note": "first spoken at FightAreaPokeMart.txt(9)",
+      "provisional": true
+    },
+    "station_agent": {
+      "note": "first spoken at GearStation.txt(13)",
       "provisional": true
     },
     "steven": {},
@@ -927,6 +943,10 @@
     },
     "thorton": {
       "note": "first spoken at BattleFactoryBattleRoom.txt(47)",
+      "provisional": true
+    },
+    "traveller": {
+      "note": "first spoken at lostlorn_forest.txt(19)",
       "provisional": true
     },
     "treasure_hunter": {
@@ -984,6 +1004,10 @@
     },
     "waiter": {
       "note": "first spoken at SevenStarsRestaurant.txt(57)",
+      "provisional": true
+    },
+    "waitress": {
+      "note": "first spoken at join_avenue.txt(27)",
       "provisional": true
     },
     "wallace": {
@@ -1049,6 +1073,10 @@
     },
     "zac": {
       "note": "first spoken at cinnabar_island_gym.txt(114)",
+      "provisional": true
+    },
+    "zinzolin": {
+      "note": "first spoken at plasma_frigate.txt(50)",
       "provisional": true
     }
   },
@@ -1137,6 +1165,7 @@
     "Day-Care Lady": "day_care_lady",
     "Day-Care Man": "day_care_man",
     "Delivery Man": "delivery_man",
+    "Depot Agent": "depot_agent",
     "Derek": "derek",
     "Devon Employee": "devon_employee",
     "Director": "director",
@@ -1325,13 +1354,16 @@
     "Scott": "scott",
     "Scout": "scout",
     "Selphy": "selphy",
+    "Shadow Triad": "shadow_triad",
     "Shelly": "shelly",
     "Shop Boy": "shop_boy",
+    "Shopkeeper": "shopkeeper",
     "Sidney": "sidney",
     "Sign": "sign",
     "Skitty": "skitty",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
+    "Station Agent": "station_agent",
     "Steven": "steven",
     "Studio Hand": "studio_hand",
     "Tabitha": "tabitha",
@@ -1341,6 +1373,7 @@
     "Team Magma Grunt": "look:magma_grunt",
     "Temple Guard": "temple_guard",
     "Thorton": "thorton",
+    "Traveller": "traveller",
     "Treasure Hunter": "treasure_hunter",
     "Trick Master": "trick_master",
     "TV": "tv",
@@ -1355,6 +1388,7 @@
     "Volkner": "volkner",
     "Wade": "wade",
     "Waiter": "waiter",
+    "Waitress": "waitress",
     "Wallace": "wallace",
     "Wally": "wally",
     "Wally's Aunt": "wallys_aunt",
@@ -1374,7 +1408,8 @@
     "Worker": "look:worker",
     "Young Man": "young_man",
     "Youngster": "look:youngster",
-    "Zac": "zac"
+    "Zac": "zac",
+    "Zinzolin": "zinzolin"
   },
   "looks": {
     "archie": "archie",

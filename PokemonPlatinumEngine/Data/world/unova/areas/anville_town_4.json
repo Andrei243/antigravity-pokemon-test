@@ -1,0 +1,27 @@
+{
+  "key": "anville_town_4",
+  "index": 421,
+  "name": "Anville Town",
+  "matrix": 46,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_03",
+  "nightMusic": "BGM_T_03",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "anville_town", "toWarp": 2 },
+    { "x": 5, "z": 9, "to": "anville_town", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "anville_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "depot_agent", "movement": "wander_around", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

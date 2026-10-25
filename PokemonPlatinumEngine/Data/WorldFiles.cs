@@ -923,6 +923,13 @@ public sealed class WorldOverlayFile
     public List<OverlayTileScript>? Pits { get; set; }
 
     /// <summary>
+    /// Holes a pushed boulder fills (plan 22 · U6, part c: Black 2's in the Relic Passage, the behaviour StrengthHole): a
+    /// wall until the flag that says the hole is filled, which the pit's script on the hole's own tiles sets, and open
+    /// ground from then on (<see cref="Overworld.Map.FilledHoles"/>).
+    /// </summary>
+    public List<OverlayHole>? Holes { get; set; }
+
+    /// <summary>
     /// Stretches of the area with weather or music of their own (plan 21 · H4), in tiles of the area's matrix: where the
     /// original sets the weather by script, by the player's row or column (Emerald's <c>setweather</c> in Route 111's desert
     /// and Route 113's ash), and changes the song with it. The first zone a tile is in wins; outside every zone the area's
@@ -1073,6 +1080,17 @@ public sealed class OverlayTileScript
     public int X { get; set; }
     public int Z { get; set; }
     public string Script { get; set; } = "";
+}
+
+/// <summary>A hole of an imported area that a pushed boulder fills, and the flag that says it is filled (<see cref="WorldOverlayFile.Holes"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlayHole>))]
+public sealed class OverlayHole
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public int Width { get; set; } = 1;
+    public int Depth { get; set; } = 1;
+    public string FilledBy { get; set; } = "";
 }
 
 /// <summary>Who one of the original's people is in our game. They stand where the area file puts them.</summary>

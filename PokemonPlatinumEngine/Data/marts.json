@@ -422,6 +422,33 @@
       "Full Heal",
       "Revive",
       "Max Repel"
+    ],
+    "join_avenue_market": [
+      "Poké Ball",
+      "Great Ball",
+      "Potion",
+      "Super Potion",
+      "Antidote",
+      "Paralyze Heal",
+      "Awakening",
+      "Burn Heal",
+      "Ice Heal",
+      "Escape Rope",
+      "Repel"
+    ],
+    "join_avenue_flowers": [
+      "Growth Mulch",
+      "Damp Mulch",
+      "Stable Mulch",
+      "Gooey Mulch",
+      "Honey"
+    ],
+    "join_avenue_cafe": [
+      "Fresh Water",
+      "Soda Pop",
+      "Lemonade",
+      "Moomoo Milk",
+      "Casteliacone"
     ]
   }
 }

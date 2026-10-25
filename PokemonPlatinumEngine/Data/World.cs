@@ -2296,6 +2296,18 @@ public static class WorldMapBuilder
             ? flag + "_" + areaKey.ToUpperInvariant() : flag;
 
     /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
+    /// <summary>
+    /// What an object of the area files is if it is an obstacle: by its looks, or (plan 22 · U6, part c) by Black 2's
+    /// global script it runs, since Black 2 draws its boulders and small trees as models of many names: the global
+    /// script 10000 is a Strength boulder's and 10004 a tree that Cut fells.
+    /// </summary>
+    public static PropType? ObstacleFor(AreaObject o) => ObstacleFor(o.Looks) ?? o.Script switch
+    {
+        "10000" => PropType.StrengthBoulder,
+        "10004" => PropType.CutTree,
+        _ => null
+    };
+
     public static PropType? ObstacleFor(string looks) => looks switch
     {
         // (HeartGold's small tree is "tree", plan 20 · J2)
@@ -2357,15 +2369,18 @@ public static class WorldMapBuilder
             if (!people)
             {
                 // Only the tile someone who never leaves it keeps open inside a thing that blocks the way (below)
-                if (overlay?.People?.GetValueOrDefault(o.Id) is { Still: true } && ObstacleFor(o.Looks) == null && o.Patch == null && o.Item == null
+                if (overlay?.People?.GetValueOrDefault(o.Id) is { Still: true } && ObstacleFor(o) == null && o.Patch == null && o.Item == null
                     && map.IsSolid(o.X, o.Z) && map.Props.Any(p => p.Model.Length > 0 && p.Covers(o.X, o.Z)))
                     map.SetSolid(o.X, o.Z, false);
                 continue;
             }
-            if (ObstacleFor(o.Looks) is { } obstacle)
+            if (ObstacleFor(o) is { } obstacle)
             {
                 var thing = map.AddObstacle(obstacle, o.X, o.Z);
                 thing.HiddenBy = o.HiddenBy is { } flag ? LocalFlag(flag, key) : null;
+                // ...or, where the overlay gives one, by a flag of the story's for good (plan 22 · U6, part c: a boulder
+                // pushed into one of the Relic Passage's holes is gone with the hole it filled)
+                if (overlay?.People?.GetValueOrDefault(o.Id)?.HiddenBy is { Length: > 0 } kept) thing.HiddenBy = kept;
                 thing.Key = o.Id;
                 thing.ScriptFile = key;
                 // ...with a script of the area's own where the overlay gives it one (plan 21 · H3, part b: Rusturf
@@ -2549,6 +2564,8 @@ public static class WorldMapBuilder
         foreach (var pit in overlay?.Pits ?? new())
         {
             map.BoulderPits[(pit.X, pit.Z)] = pit.Script;
+            // (a hole a boulder fills, plan 22 · U6, part c, is the place's own ground: nothing to sink into the void)
+            if (overlay?.Holes?.Any(h => pit.X >= h.X && pit.X < h.X + h.Width && pit.Z >= h.Z && pit.Z < h.Z + h.Depth) == true) continue;
             // In the Distortion World a pit is the tile the original drops its boulder through, which the import
             // knows only as blocked: nothing, let into the island, as deep as the nothing round the islands
             // (VoidIslands has run by now)
@@ -2556,6 +2573,28 @@ public static class WorldMapBuilder
             float island = MathF.Floor(map.HeightAt(pit.X, pit.Z));
             map.SetGroundTile(pit.X, pit.Z, TileType.Void, isSolid: true);
             map.SetHeight(pit.X, pit.Z, island - VoidDrop);
+        }
+        // The holes a pushed boulder fills (plan 22 · U6, part c): a wall until their flag, then ground (Map.ApplyDoors).
+        // The import knows a hole only as blocked, which a cave stands up as rock (RaiseRock): its tiles are the floor
+        // beside it, at that floor's height, so that the filled hole is walked across level
+        foreach (var hole in overlay?.Holes ?? new())
+        {
+            bool InHole(int x, int z) => x >= hole.X && x < hole.X + hole.Width && z >= hole.Z && z < hole.Z + hole.Depth;
+            (TileType Ground, float Height)? floor = null;
+            for (int z = hole.Z - 1; z <= hole.Z + hole.Depth && floor == null; z++)
+                for (int x = hole.X - 1; x <= hole.X + hole.Width && floor == null; x++)
+                    if (!InHole(x, z) && map.InBounds(x, z) && !map.IsSolid(x, z)) floor = (map.GetGroundTile(x, z), map.HeightAt(x, z));
+            for (int z = hole.Z; z < hole.Z + hole.Depth; z++)
+                for (int x = hole.X; x < hole.X + hole.Width; x++)
+                {
+                    map.FilledHoles[(x, z)] = hole.FilledBy;
+                    if (floor is { } f)
+                    {
+                        map.SetGroundTile(x, z, f.Ground, isSolid: true);
+                        map.SetHeight(x, z, f.Height);
+                    }
+                    map.SetSolid(x, z, true);
+                }
         }
         foreach (var prop in overlay?.Props ?? new())
         {
@@ -2608,7 +2647,17 @@ public static class WorldMapBuilder
             else if (world.Index.Region == RegionDatabase.Unova
                 && map.BehaviourAt(from.X, from.Z) is TileBehavior.EntranceEast or TileBehavior.EntranceWest or TileBehavior.EntranceNorth
                     or TileBehavior.EntranceSouth or TileBehavior.ExitEast or TileBehavior.ExitWest or TileBehavior.ExitNorth or TileBehavior.ExitSouth)
+            {
                 map.SetSolid(from.X, from.Z, false);
+                // (and a way out of a cave at the edge of its floor, which the cave stood up as rock while it led nowhere,
+                // is cut down to the floor it is walked into from where it stands a cliff above it: plan 22 · U6, part c,
+                // the Castelia Sewers' way into the Relic Passage)
+                float? floor = null;
+                foreach (var (dx, dz) in new[] { (0, 1), (0, -1), (1, 0), (-1, 0) })
+                    if (map.InBounds(from.X + dx, from.Z + dz) && !map.IsSolid(from.X + dx, from.Z + dz)
+                        && map.HeightAt(from.X + dx, from.Z + dz) is var h && (floor == null || h < floor)) floor = h;
+                if (floor is { } level && map.HeightAt(from.X, from.Z) - level >= FieldMovement.StepLimit) map.SetHeight(from.X, from.Z, level);
+            }
             // So is a GBA game's door the story opens by swapping its tile (the Trick House's puzzle doors, plan 21 · H3,
             // part b): the tile is the way's, which Map.ApplyDoors keeps shut until the story opens it
             else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null))

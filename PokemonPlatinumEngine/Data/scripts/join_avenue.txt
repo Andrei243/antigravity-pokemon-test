@@ -1,0 +1,49 @@
+# Join Avenue (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own.
+#
+# Three of the avenue's shopfronts are open, each a shopkeeper of ours behind a counter in one of the street's bays:
+# the market (marts.json's join_avenue_market), the flower shop's mulches (join_avenue_flowers) and the café's drinks
+# (join_avenue_cafe). Black 2's shops are opened by the avenue's visitors, ranked up and run by the player as its
+# manager; that is plan 22 · U11's (the rulings, "Unova's second chapter, part c"). The counters' ends read as the
+# shops' signs.
+
+
+script Market
+  speaker "Shopkeeper"
+  say "Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead."
+  shop "join_avenue_market"
+  say "Thanks for shopping on Join Avenue! Tell your friends!"
+  end
+
+
+script Flowers
+  speaker "Florist"
+  say "Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!"
+  shop "join_avenue_flowers"
+  say "Grow something lovely! Come back and tell me how it turned out."
+  end
+
+
+script Cafe
+  speaker "Waitress"
+  say "Welcome to the café! Something cold to drink before you head into Nimbasa?"
+  shop "join_avenue_cafe"
+  say "Enjoy! And mind the crowds on the way into the city."
+  end
+
+
+script MarketSign
+  speaker none
+  text "Join Avenue Market\nEverything for the road ahead!"
+  end
+
+
+script FlowersSign
+  speaker none
+  text "Join Avenue Flowers\nMulch and honey for growing things."
+  end
+
+
+script CafeSign
+  speaker none
+  text "Join Avenue Café\nCold drinks all day long."
+  end

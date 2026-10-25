@@ -1,0 +1,64 @@
+# Nimbasa City's Gear Station (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/gear_station.s and anville_town.s, read for the order alone).
+#
+# Black 2's hall stands on rails, which the reader leaves out, so it is a map of ours (Data/maps/GearStation.json): the
+# desks of the Battle Subway's three lines and of the Anville Town Line along its north wall. The Anville Town Line's
+# agent takes the player out to Anville Town, a scene of the fade and lines over the dark as the voyage to Castelia is,
+# and Anville's station agent brings them back (anville_town.txt). The Subway's lines (plan 06 · R18's rules, plan 22 ·
+# U6's next part and U11) are not running yet: their agents say so.
+
+
+script AnvilleLine
+  face self player
+  speaker "Station Agent"
+  say "This is the Anville Town Line. Our train runs out to Anville Town, where the line ends, and back again all day."
+  ask "Will you ride the train to Anville Town?"
+  if no goto Later
+  say "Then please board and take a seat. We'll be leaving shortly!"
+  call ToAnville
+  end
+label Later
+  say "Anville Town is a quiet little place. Do pay it a visit when you have the time."
+  end
+
+
+script ToAnville
+  scene "The train to Anville Town"
+  fade out 0.8
+  music stop
+  sound "crossing_engine"
+  text "The train glides out of the Gear Station and rattles east past fields and woods..."
+  text "With a long sigh of its brakes it rolls into Anville Town, the end of the line."
+  endscene
+  warp "AnvilleTown" 20 52 right
+  fade in
+  return
+
+
+script SingleTrain
+  face self player
+  speaker "Depot Agent"
+  say "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run."
+  call TrainsResting
+  end
+
+
+script DoubleTrain
+  face self player
+  speaker "Depot Agent"
+  say "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
+  call TrainsResting
+  end
+
+
+script MultiTrain
+  face self player
+  speaker "Depot Agent"
+  say "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
+  call TrainsResting
+  end
+
+
+script TrainsResting
+  say "The Subway's cars are in the depot being made ready. Please come back once the lines are running!"
+  return

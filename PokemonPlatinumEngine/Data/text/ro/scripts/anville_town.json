@@ -1,0 +1,78 @@
+{
+  "TrainHome": [
+    {
+      "en": [
+        "Station Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The train back to Nimbasa City leaves shortly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you board?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then please take a seat and wait for the doors to close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The train pulls away from the turntable and runs west through the woods, back toward the lights of Nimbasa..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a quiet town. Stay as long as you like, and take a good look at the cars."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RestingCars": [
+    {
+      "en": [
+        "Station Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The cars here are taking a rest. Come at the weekend, when the whole town turns out to see them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When the yard's full of people, I swear the trains look happier!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

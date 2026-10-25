@@ -1,0 +1,18 @@
+{
+  // A house of Anville Town (plan 22 · U6, part c): Black 2's room, our words
+  "area": "anville_town_2",
+  "bgmTrack": "unova/anville",
+  "people": {
+    "0": {
+      "name": "Lass",
+      "npcType": "Lass",
+      "dialog": [ "Why do I love trains? Every part has a job, and they all work together to carry you so far, so gently." ]
+    },
+    "1": { "name": "Bouffalant", "npcType": "Pokemon", "species": "Bouffalant", "dialog": [ "Bouffalant: Bwuff!" ] },
+    "2": {
+      "name": "Nursery Aide",
+      "npcType": "Lady",
+      "dialog": [ "Ride a train for an hour and you see forests, rivers and towns go by. It's like a picture book!" ]
+    }
+  }
+}
