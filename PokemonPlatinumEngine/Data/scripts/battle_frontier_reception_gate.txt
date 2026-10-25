@@ -1,0 +1,55 @@
+# The Battle Frontier's reception gate (plan 21 · H12, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/BattleFrontier_ReceptionGate/scripts.inc).
+#
+# Scott waits here for a Champion who has not taken his Frontier Pass on Lilycove's quay (lilycove_city_harbor.txt), and
+# gives it (FLAG_RECEIVED_FRONTIER_PASS, which hides him here: he is in his house from then on). The guides tell of the
+# island's halls, which are shut until plan 14 · B8 to B10 builds them, and of the rules Sinnoh's halls play by.
+
+
+script Scott
+  face self player
+  speaker "Scott"
+  say "{player}! You came all the way to the island. I knew you would."
+  say "Every Trainer who challenges the Frontier carries one of these. Here, it's yours."
+  setflag FLAG_RECEIVED_FRONTIER_PASS
+  text "{player} received Scott's Frontier Pass!"
+  say "The halls here are still being finished. Come and find me at my house in the north-east of the island."
+  hide self
+  end
+
+
+script FacilityGuide
+  face self player
+  speaker "Guide"
+  choose "Which part of the Frontier shall I tell you about?" "THE HALLS" "THE EXCHANGE" "THE RANKING HALL" "NOTHING"
+  if result == 0 say "Seven halls stand on this island: the Tower, the Dome, the Palace, the Arena, the Factory, the Pike and the Pyramid." "They are still being made ready. Until they open, Scott sends challengers to the Battle Frontier in Sinnoh."
+  if result == 1 say "The Exchange Service Corner, in the east of the island, trades Battle Points for prizes."
+  if result == 2 say "The Ranking Hall, in the north-east, shows the best streaks of every hall."
+  say "Please enjoy the Battle Frontier!"
+  end
+
+
+script RulesGuide
+  face self player
+  speaker "Guide"
+  choose "Which of the rules shall I explain?" "LEVELS" "ENTRY" "HELD ITEMS" "NOTHING"
+  if result == 0 say "In the Level 50 battles, a Pokémon above level 50 battles as if it were level 50."
+  if result == 1 say "Some very rare Pokémon may not enter, and no two of your Pokémon may be the same species."
+  if result == 2 say "No two of your Pokémon may hold the same item. Items from your Bag can't be used in battle."
+  say "Good luck in your challenges!"
+  end
+
+
+script PassGuide
+  face self player
+  speaker "Guide"
+  choose "What would you like to know about?" "THE PASS" "BATTLE POINTS" "NOTHING"
+  if result == 0 say "The Frontier Pass shows that you are welcome at every hall. Scott gives it to Trainers he believes in."
+  if result == 1 goto Points
+  say "Please ask me again any time."
+  end
+label Points
+  frontier points
+  say "Battle Points are won in the halls. You have {points} BP." "The Battle Points of every Frontier, here and in Sinnoh, are one and the same."
+  say "Please ask me again any time."
+  end

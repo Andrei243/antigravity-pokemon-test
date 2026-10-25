@@ -1,0 +1,12 @@
+{
+  // The Battle Frontier island's Pokémon Center (plan 21 · H12, part b)
+  "area": "battle_frontier_pokemon_center_1f",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "frontier_nurse": { "name": "Nurse", "script": "Nurse" },
+    "school_kid_m": { "name": "School Kid", "dialog": [ "Every hall here has its own rules. I've been writing them all down in my notebook." ] },
+    "man_3": { "name": "Man", "dialog": [ "I lost my streak on the very last battle. My Pokémon need a good rest, and so do I." ] },
+    "picnicker": { "name": "Picnicker", "dialog": [ "My Skitty came all the way here to cheer me on. Isn't she sweet?" ] },
+    "skitty": { "name": "Skitty", "npcType": "Pokemon", "species": "Skitty", "script": "Pokemon", "dialog": [ "Skitty: Mew!" ] }
+  }
+}

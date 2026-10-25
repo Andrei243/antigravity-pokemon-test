@@ -1,0 +1,25 @@
+{
+  // The Battle Frontier island's Ranking Hall (plan 21 · H12, part b): its boards wait for the island's halls (plan 14 ·
+  // B8 to B10); the Frontier's records are read at Sinnoh's halls (battle_frontier_ranking_hall.txt)
+  "area": "battle_frontier_ranking_hall",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "teala": { "name": "Attendant", "dialog": [ "The Ranking Hall honours the Frontier's best streaks. The boards will fill as the island's halls open." ] },
+    "ninja_boy": { "name": "Ninja Boy", "dialog": [ "One day my name will be on one of these boards. Then everyone will know it!" ] },
+    "boy_3": { "name": "Boy", "dialog": [ "The boards are empty! I guess nobody's had a long enough streak yet." ] }
+  },
+  "signs": {
+    "BattleFrontier_RankingHall_EventScript_TowerSinglesRecords": "BATTLE TOWER: SINGLE BATTLES\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": "BATTLE TOWER: DOUBLE BATTLES\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": "BATTLE TOWER: MULTI BATTLES\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": "BATTLE TOWER: LINK MULTI BATTLES\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_ArenaRecords": "BATTLE ARENA\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_PalaceRecords": "BATTLE PALACE\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_FactoryRecords": "BATTLE FACTORY\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_DomeRecords": "BATTLE DOME\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_PikeRecords": "BATTLE PIKE\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_PyramidRecords": "BATTLE PYRAMID\nNo records yet.",
+    "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign": "The records of the Dome, the Pike and the Factory.",
+    "BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn": "The records of the Palace, the Arena and the Pyramid."
+  }
+}

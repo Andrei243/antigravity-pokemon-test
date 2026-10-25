@@ -1,0 +1,29 @@
+{
+  "key": "battle_frontier_lounge_5",
+  "index": 454,
+  "name": "Battle Frontier",
+  "matrix": 397,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "battle_frontier_outside_east", "toWarp": 7 },
+    { "x": 2, "z": 7, "to": "battle_frontier_outside_east", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_west", "x": 12, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge5_EventScript_NatureGirl" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 0, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge5_EventScript_Gentleman" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "wander_around", "x": 6, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge5_EventScript_BlackBelt" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_around", "x": 11, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "BattleFrontier_Lounge5_EventScript_LittleBoy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,452 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Frontier"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "frontier_ferry_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Back home I beat everyone I know. Here I've lost every battle I've had. This island is something else!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Expert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody wanders onto this island by chance. Only Trainers who have proved themselves are brought here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I was going to start a challenge the moment I stepped off the ferry. Then the sea got to me... Ugh."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Not so long ago there was nothing on this island but rock and grass. Look at it now!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mmph... Everyone here looks so tough... Mmph. I'd better finish my snack first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Off to the Battle Dome? I wish you luck. Perhaps we shall meet in the final."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_maniac_1": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you think they'll let us in if we haven't brought any Pokémon of our own?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_maniac_2": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The big fellow at the Factory said he'd lend us Pokémon. I think. I hope."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Factory lends its challengers Pokémon. I've always wondered who trains them all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say the Battle Pike is full of Seviper... I came all this way, so I'll try it. Brr..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I flipped a coin to choose which hall to try first. It came down on its edge, so I'm still standing here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm not leaving this island until I've earned a Frontier Symbol. Not today, anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to the Frontier to be noticed. Watch me, everyone! ...Is anyone watching?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ferry from Lilycove brings new challengers every day. Some leave smiling, most don't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone here battles. I fish. Mind you, nothing ever bites in this harbour."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_fisherman_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard of a Pokémon with a very long tail running about the island. I'd love to see it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Munch... A girl at the Pike shouted at me for eating while she battled. Scary! Munch..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa, this way! The Battle Dome is just over there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandpa's going to win the whole tournament. Go on, Grandpa!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "So this is the Battle Dome? Hmm. Now, where did they put the door?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "frontier_man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those three over there were famous Trainers once. One defeat at the Dome, and now they only cheer for the one who beat them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see the Dome's champion. Isn't he wonderful? He looked my way, I'm sure of it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BattleFrontier_OutsideWest_EventScript_BattleDomeSign": {
+      "en": [
+        "BATTLE DOME\nTournaments for the strongest. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideWest_EventScript_BattlePikeSign": {
+      "en": [
+        "BATTLE PIKE\nThree paths to choose from. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "BattleFrontier_OutsideWest_EventScript_BattleFactorySign": {
+      "en": [
+        "BATTLE FACTORY\nBattles with rented Pokémon. Closed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "POKé MART\nFor all your Pokémon needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

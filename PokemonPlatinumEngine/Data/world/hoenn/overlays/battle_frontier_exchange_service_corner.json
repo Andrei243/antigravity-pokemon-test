@@ -1,0 +1,19 @@
+{
+  // The Battle Frontier island's Exchange Service Corner (plan 21 · H12, part b): the Frontier has one set of Battle
+  // Points, Sinnoh's (plan 06 · R18), so its counters trade the same prizes as the Sinnoh grounds' booths
+  // (battle_frontier_exchange_service_corner.txt). The two counters of Emerald's dolls and cushions wait for the
+  // decorations of the Frontier (plan 21 · H12)
+  "area": "battle_frontier_exchange_service_corner",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "teala": { "name": "Clerk", "script": "DecorClerk", "still": true },
+    "teala_2": { "name": "Clerk", "script": "DecorClerk", "still": true },
+    "teala_3": { "name": "Clerk", "script": "ItemClerk", "still": true },
+    "teala_4": { "name": "Clerk", "script": "MachineClerk", "still": true },
+    "rich_boy": { "name": "Rich Boy", "dialog": [ "I won't spend a single point until I can have the biggest prize on the list." ] },
+    "pokefan_f": { "name": "Pokéfan", "dialog": [ "Battle Points can't be bought with money. Every one of them is won in battle!" ] },
+    "sailor": { "name": "Sailor", "dialog": [ "I traded my points for a Technical Machine. Now I need a Pokémon that can learn it." ] },
+    "man_5": { "name": "Man", "dialog": [ "Points earned on this island and points earned at Sinnoh's Frontier are all the same points." ] },
+    "girl_1": { "name": "Girl", "dialog": [ "Which prize should I choose? I've been standing here for an hour!" ] }
+  }
+}

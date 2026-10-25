@@ -1,0 +1,11 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b): the old breeder judges a Pokémon's potential, as the
+  // Battle Tower's judge does in Sinnoh (battle_frontier_lounge_1.txt)
+  "area": "battle_frontier_lounge_1",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "old_man": { "name": "Breeder", "script": "Breeder", "still": true },
+    "boy_3": { "name": "Boy", "dialog": [ "The old man over there can tell how strong a Pokémon will grow just by looking at it." ] },
+    "boy_2": { "name": "Boy", "dialog": [ "He told me my Pokémon was nothing special. I'm going to prove him wrong!" ] }
+  }
+}

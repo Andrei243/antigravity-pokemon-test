@@ -666,6 +666,11 @@ public static class RegionDatabase
                 // Plan 21 · H12, part a: the Regis and Southern Island
                 "Underwater_Route134", "Underwater_SealedChamber", "SealedChamber_OuterRoom", "SealedChamber_InnerRoom", "DesertRuins", "IslandCave",
                 "SouthernIsland_Exterior", "SouthernIsland_Interior",
+                // Plan 21 · H12, part b: the Battle Frontier island and the rooms of its grounds
+                "HoennBattleFrontier", "BattleFrontier_ReceptionGate", "BattleFrontier_PokemonCenter_1F", "BattleFrontier_PokemonCenter_2F",
+                "BattleFrontier_Mart", "BattleFrontier_ExchangeServiceCorner", "BattleFrontier_ScottsHouse", "BattleFrontier_RankingHall",
+                "BattleFrontier_Lounge1", "BattleFrontier_Lounge2", "BattleFrontier_Lounge3", "BattleFrontier_Lounge4", "BattleFrontier_Lounge5",
+                "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
             }
         },
         new()

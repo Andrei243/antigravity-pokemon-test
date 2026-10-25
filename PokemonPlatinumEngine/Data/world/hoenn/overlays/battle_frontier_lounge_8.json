@@ -1,0 +1,10 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b)
+  "area": "battle_frontier_lounge_8",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "ninja_boy": { "name": "Ninja Boy", "dialog": [ "Shh! I'm hiding from my Pokémon. It always finds me." ] },
+    "man_3": { "name": "Man", "dialog": [ "The ferry brings Trainers from all over Hoenn. Some from much further away, too." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "I heard the Frontier's Brains came from every region of the world." ] }
+  }
+}

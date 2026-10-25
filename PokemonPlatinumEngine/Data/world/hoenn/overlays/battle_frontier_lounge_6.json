@@ -1,0 +1,8 @@
+{
+  // A lounge of the Battle Frontier island (plan 21 · H12, part b): Emerald's trader waits for a trade of this game's own
+  "area": "battle_frontier_lounge_6",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "beauty": { "name": "Beauty", "dialog": [ "I'd love a Skitty to keep me company here. If only someone would trade one with me..." ] }
+  }
+}

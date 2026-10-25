@@ -424,6 +424,43 @@ public static class GbaCover
             {
                 (0x221, 0x221, TerrainCover.Paving), (0x260, 0x261, TerrainCover.Paving),
             },
+            // Plan 21 · H12, part b: the Battle Frontier island, read from what is walked as Lilycove's rows are: every
+            // metatile of its two tilesets no behaviour or label names that is open more often than blocked is the
+            // island's paving (the plazas before the halls, the walks between them, the quay and the steps); what is
+            // blocked is left to the halls, found at their doors, and to the rock
+            ["gTileset_BattleFrontierOutsideWest"] = new (int, int, TerrainCover)[]
+            {
+                (0x204, 0x204, TerrainCover.Paving), (0x20B, 0x20F, TerrainCover.Paving), (0x213, 0x217, TerrainCover.Paving),
+                (0x21E, 0x21E, TerrainCover.Paving), (0x23C, 0x23E, TerrainCover.Paving), (0x25C, 0x25E, TerrainCover.Paving),
+                (0x262, 0x262, TerrainCover.Paving), (0x268, 0x26B, TerrainCover.Paving), (0x270, 0x273, TerrainCover.Paving),
+                (0x279, 0x27E, TerrainCover.Paving), (0x280, 0x281, TerrainCover.Paving), (0x287, 0x288, TerrainCover.Paving),
+                (0x2AB, 0x2AD, TerrainCover.Paving), (0x2D8, 0x2DA, TerrainCover.Paving), (0x2DE, 0x2DF, TerrainCover.Paving),
+                (0x2E1, 0x2E2, TerrainCover.Paving), (0x2E8, 0x2EB, TerrainCover.Paving), (0x2F3, 0x2F4, TerrainCover.Paving),
+                (0x306, 0x306, TerrainCover.Paving), (0x350, 0x353, TerrainCover.Paving), (0x357, 0x35A, TerrainCover.Paving),
+                (0x370, 0x370, TerrainCover.Paving), (0x372, 0x374, TerrainCover.Paving), (0x37A, 0x37F, TerrainCover.Paving),
+                (0x39E, 0x39F, TerrainCover.Paving), (0x3A8, 0x3AB, TerrainCover.Paving), (0x3B0, 0x3B8, TerrainCover.Paving),
+                (0x3BC, 0x3BF, TerrainCover.Paving), (0x3C5, 0x3C7, TerrainCover.Paving), (0x3CE, 0x3CF, TerrainCover.Paving),
+                (0x3E8, 0x3E8, TerrainCover.Paving), (0x3EA, 0x3EA, TerrainCover.Paving), (0x3EC, 0x3EC, TerrainCover.Paving),
+                (0x3F0, 0x3F0, TerrainCover.Paving), (0x3F2, 0x3F2, TerrainCover.Paving), (0x3F7, 0x3FB, TerrainCover.Paving),
+            },
+            ["gTileset_BattleFrontierOutsideEast"] = new (int, int, TerrainCover)[]
+            {
+                (0x201, 0x201, TerrainCover.Paving), (0x208, 0x20F, TerrainCover.Paving), (0x230, 0x233, TerrainCover.Paving),
+                (0x237, 0x23A, TerrainCover.Paving), (0x23D, 0x23D, TerrainCover.Paving), (0x243, 0x247, TerrainCover.Paving),
+                (0x260, 0x269, TerrainCover.Paving), (0x26C, 0x26C, TerrainCover.Paving), (0x270, 0x274, TerrainCover.Paving),
+                (0x277, 0x279, TerrainCover.Paving), (0x27B, 0x27C, TerrainCover.Paving), (0x284, 0x284, TerrainCover.Paving),
+                (0x286, 0x287, TerrainCover.Paving), (0x290, 0x290, TerrainCover.Paving), (0x29E, 0x29E, TerrainCover.Paving),
+                (0x2A7, 0x2A7, TerrainCover.Paving), (0x2AD, 0x2AD, TerrainCover.Paving), (0x2AF, 0x2AF, TerrainCover.Paving),
+                (0x2B6, 0x2B6, TerrainCover.Paving), (0x2CF, 0x2CF, TerrainCover.Paving), (0x2D1, 0x2D1, TerrainCover.Paving),
+                (0x2D7, 0x2D7, TerrainCover.Paving), (0x2DF, 0x2DF, TerrainCover.Paving), (0x2ED, 0x2ED, TerrainCover.Paving),
+                (0x2EF, 0x2F6, TerrainCover.Paving), (0x314, 0x314, TerrainCover.Paving), (0x318, 0x31F, TerrainCover.Paving),
+                (0x339, 0x33B, TerrainCover.Paving), (0x340, 0x340, TerrainCover.Paving), (0x354, 0x354, TerrainCover.Paving),
+                (0x358, 0x358, TerrainCover.Paving), (0x35B, 0x35B, TerrainCover.Paving), (0x35D, 0x35D, TerrainCover.Paving),
+                (0x362, 0x363, TerrainCover.Paving), (0x37A, 0x37F, TerrainCover.Paving), (0x39E, 0x39F, TerrainCover.Paving),
+                (0x3B5, 0x3B6, TerrainCover.Paving), (0x3BD, 0x3BE, TerrainCover.Paving), (0x3C5, 0x3C6, TerrainCover.Paving),
+                (0x3CD, 0x3CE, TerrainCover.Paving), (0x3E4, 0x3E4, TerrainCover.Paving), (0x3EA, 0x3EB, TerrainCover.Paving),
+                (0x3F2, 0x3F3, TerrainCover.Paving), (0x3F7, 0x3F7, TerrainCover.Paving),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

@@ -1,0 +1,95 @@
+{
+  "people": {
+    "maniac": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I know everything that happens on this island! Right now everyone is talking about the halls that haven't opened yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_2": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He knows everything, they say. He told me the Dome would open last week."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_3": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He also told me it would open the week before."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_4": {
+      "name": {
+        "en": [
+          "Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here for the gossip, not the battles."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_f": {
+      "name": {
+        "en": [
+          "Triathlete"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Frontier's Brains train harder than anyone. I'd like to see them run a lap, though!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

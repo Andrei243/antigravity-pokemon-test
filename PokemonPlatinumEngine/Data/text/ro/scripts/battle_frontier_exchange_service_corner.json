@@ -1,0 +1,90 @@
+{
+  "ItemClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! This counter trades Battle Points for items your Pokémon can hold, and more."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MachineClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! This counter trades Battle Points for Technical Machines."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DecorClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This counter will trade Battle Points for dolls and cushions for a secret base. Our stock hasn't arrived yet, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ExchangeTrade": [
+    {
+      "en": [
+        "{player} traded {price} BP for the {item}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Please come again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. You don't have the Battle Points for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
