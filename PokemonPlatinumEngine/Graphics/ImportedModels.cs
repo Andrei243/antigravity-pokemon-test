@@ -104,14 +104,17 @@ internal sealed class ImportOptions
 /// Finds the model files that replace generated and hand-built models (plan 04's asset policy): a <c>.glb</c> or
 /// <c>.gltf</c> named after the species (any case and punctuation: <c>Mr. Mime.glb</c>, <c>mr-mime.glb</c>) or its
 /// National Pokédex number (<c>0025.glb</c>), in <c>overrides/models</c> next to the game or in the folder it was
-/// started from. Git ignores every <c>overrides</c> folder, so these files never go into the repository.
+/// started from, and in <c>assets/models</c> of the folder it was started from. Git ignores every <c>overrides</c>
+/// folder, so those files never go into the repository; <c>assets/models</c> is tracked. The first folder to hold a name wins.
 /// </summary>
 internal static class ModelOverrides
 {
     public static readonly List<string> Folders = new()
     {
         Path.Combine(AppContext.BaseDirectory, "overrides", "models"),
-        Path.Combine(Environment.CurrentDirectory, "overrides", "models")
+        Path.Combine(Environment.CurrentDirectory, "overrides", "models"),
+        // The models of our own that are in the repository: the folder the game is started from (the repository root).
+        Path.Combine(Environment.CurrentDirectory, "assets", "models")
     };
 
     private static Dictionary<string, string>? files;
