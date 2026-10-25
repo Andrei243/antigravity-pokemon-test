@@ -1,0 +1,17 @@
+{
+  "name": "2020 Ratchisel",
+  "set": "kanto",
+  "image": "2020-Ratchisel.jpg",
+  "request": {
+    "model": "v3.1-20260211",
+    "face_limit": 30000,
+    "texture": true,
+    "pbr": false,
+    "enable_image_autofix": false
+  },
+  "taskId": "17b21935-45bf-4a61-a51c-620030ba9c57",
+  "submittedAt": "2026-10-25T20:15:23.2805876Z",
+  "status": "success",
+  "credits": 30,
+  "bytes": 1580736
+}

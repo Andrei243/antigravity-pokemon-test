@@ -2,7 +2,7 @@
 
 First-draft 3D sculpts of the new species, made by [Tripo](https://platform.tripo3d.ai)'s image-to-model API from the
 concept pictures of `tools/GeminiArt` (`docs/art/reference/gemini/<set>`). A draft is cleaned up in Blender, then installed into `assets/models`. The drafts
-are not shipped, and the output folder is git-ignored.
+are not shipped; the output folder `out/` is tracked by git, so a draft is committed if you add it.
 
 Uses Tripo's **V3** API (`openapi.tripo3d.ai/v3`); V2 is retired on 2026-11-01. The key is read from `TRIPO_API_KEY`
 only (create one at platform.tripo3d.ai/api-keys).

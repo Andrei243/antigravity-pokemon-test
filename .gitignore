@@ -53,6 +53,3 @@ node_modules/
 
 # The player's own files, read and never written (plan 08 · P20): saves and Pokémon files dropped here for the migration
 migrate/
-
-# Tripo first-draft sculpts (tools/TripoSculpt): drafts to clean up in Blender, unapproved until the user says
-tools/TripoSculpt/out/
