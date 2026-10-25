@@ -566,6 +566,8 @@ script HiddenItem
 # back, and the team is well. In a room with no machine there is the fanfare alone.
 script Nurse
   say "Good day! You've come to a Pokémon Center."
+  # Plan 13 · V5: a run that doesn't use the Centers (the ways to play, chosen at NEW GAME)
+  if rule nocenter goto RunDeclines
   ask "Your Pokémon look as if they could do with a rest. Shall I see to them?"
   if no goto Goodbye
   say "Leave them with me. It won't take a moment."
@@ -584,6 +586,10 @@ script Nurse
   end
 label Goodbye
   say "Take care out there, and come back whenever you need us!"
+  end
+label RunDeclines
+  say "Oh... I'm sorry. This run of yours goes without our care, so I can't see to your Pokémon here."
+  say "They'll have to rest and mend on their own. Good luck out there!"
   end
 
 

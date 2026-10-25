@@ -10,6 +10,7 @@ partial class Harness
         LevelCapMode();
         RoarkMode();
         NuzlockeMode();
+        RestrictionsMode();
     }
 
     // V4, the Nuzlocke: wy_nuzlocke_ball_refused (a second wild Pokémon met on Route 201, whose catch the run has had, and
@@ -66,6 +67,51 @@ partial class Harness
         Shot("wy_trainer_card_graveyard");
         Console.WriteLine($"nuzlocke: graveyard {string.Join(", ", game.RunState.Graveyard.Select(f => $"{f.Pokemon.SpeciesName} {f.Pokemon.Level} at {f.Place}"))}");
         game.TrainerCard.Close();
+        game.State = GameState.Overworld;
+        Frames(10);
+    }
+
+    // V5, the restrictions: wy_nurse_declines (a run without the Centers, the nurse's line of our own once she is spoken to,
+    // the team still hurt) and wy_bag_greyed (a run with no items in battle, in Roark's battle: BAG painted grey in its
+    // place, which choosing says why). It prints the lines, the team's HP and what BagClosed says in a trainer's battle
+    void RestrictionsMode()
+    {
+        BeginRun(new RunRules { NoCenter = true });
+        var lead = game.Party.Members[0];
+        lead.CurrentHP = 1;
+        At("PokemonCenter", 8, 6, Direction.Up);
+        game.Interact();
+        Frames(3);
+        var box = game.Dialogue;
+        for (int i = 0; i < 300 && !box.IsActive; i++) Frames(1);
+        box.FinishLine();
+        Frames(2);
+        box.Advance();
+        Frames(2);
+        box.FinishLine();
+        Frames(2);
+        Shot("wy_nurse_declines");
+        Console.WriteLine($"restrictions: the nurse says \"{box.CurrentLine}\"");
+        for (int i = 0; i < 8 && box.IsActive; i++) { box.FinishLine(); Frames(2); box.Advance(); Frames(2); }
+        for (int i = 0; i < 120 && engine.ScriptRunning; i++) Frames(1);
+        Console.WriteLine($"restrictions: the lead has {lead.CurrentHP} of {lead.MaxHP} HP after the visit (hurt: {lead.CurrentHP < lead.MaxHP}), script running {engine.ScriptRunning}");
+
+        BeginRun(new RunRules { NoBattleItems = true });
+        var hall = MapDatabase.Get("OreburghGym");
+        var person = hall.Everyone.First(n => n.Name.Equals("Roark", StringComparison.OrdinalIgnoreCase));
+        At("OreburghGym", person.GridX, person.GridY + 1, Direction.Up);
+        Frames(30);
+        var met = Carrying("leader_roark");
+        met.NpcType = person.NpcType;
+        game.StartTrainerBattle(met);
+        for (int i = 0; i < 900 && game.State != GameState.Battle; i += 2) Frames(2);
+        var b = game.Battle;
+        ToMainMenu(b);
+        Shot("wy_bag_greyed");
+        Console.WriteLine($"restrictions: Roark's battle, BAG closed {b.BagClosed}");
+        b.SelectMainMenuOption(1);
+        Skip(0.4);
+        Console.WriteLine($"restrictions: choosing BAG says \"{b.CurrentMessage}\"");
         game.State = GameState.Overworld;
         Frames(10);
     }

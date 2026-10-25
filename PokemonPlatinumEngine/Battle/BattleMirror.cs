@@ -25,7 +25,7 @@ internal sealed class BattleMirror
 
     public Party Copy(Party party)
     {
-        var copy = new Party();
+        var copy = new Party { Limit = party.Limit };
         foreach (var p in party.Members) copy.Add(Copy(p));
         return copy;
     }

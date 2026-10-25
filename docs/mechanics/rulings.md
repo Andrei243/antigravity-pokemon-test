@@ -5142,10 +5142,10 @@ What each choice will change, and which session gives it effect (V1 only asks an
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
 | Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
-| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done but Gifts, below) |
-| Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
-| No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
-| Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 |
+| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done, below; V5 the Gifts clause) |
+| Monotype, Party size | every Pokémon of a type; fewer than six carried | V5 (done, below) |
+| No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 (done, below) |
+| Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 (done, below) |
 
 Presets (NORMAL, NUZLOCKE: the Nuzlocke with the dupes and shiny clauses; HARDCORE: that plus Challenge, the level cap, no
 items in battle and Set) are records with some fields set; a run that matches none is CUSTOM. The clauses show only while
@@ -5207,8 +5207,8 @@ handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as the
   (`StartWildBattle`, a roamer included) spends it, caught or not: `RunState.AreasMet`. A later one gets
   `NuzlockeTerms(AreaSpent)` and every ball is refused in its battle, a Safari Ball too (`BattleCore.WhyNotItem`, for the
   player's side only). The Bug-Catching Contest's catch is the contest's and counts nothing; a Pokémon a script puts in the
-  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift: the
-  `GiftsCount` clause and the static encounters are left for a later session.
+  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift; under the
+  Gifts clause (plan 13 · V5) a gift and such a static encounter are the place's one chance (below).
 - **The dupes clause**: a wild Pokémon whose line (`PokemonSpecies.Offspring`, the first of the line, or the species itself)
   has a species in the Pokédex's caught list passes: no ball, and the place stays unspent for the next. **The shiny
   clause**: a shiny is free and spends nothing.
@@ -5230,6 +5230,43 @@ handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as the
   comes back, on plan 12 · Q19's keyboard (`GameState.Nickname`, `GameFlow.NameAfterBattle`), which closes back to the field;
   B on an empty name keeps the species' own. Platinum asks after every catch, in the battle: plan 06 still owns that.
 - **Recorded battles** don't keep the terms: they only refuse choices, so the answers a battle was given replay the same.
+
+### Restrictions and shiny odds (plan 13 · V5)
+
+Community rules and our own, all off under Normal (`RunRules.BattleTerms()` is null, `Party.Limit` is 6, `Has` is false, the
+shiny roll reads the rules' own odds), so nothing a Normal game does moved. Each is read at the one place it is enforced.
+
+- **The team's size** is `Party.Limit` (6, or the run's `PartyLimit`, set by the engine as a game begins or loads); every
+  caller already asked `IsFull`, so a catch (`Caught.ToBox`), a gift, a withdrawal and an Egg follow it. The battle's copy of
+  the team carries the limit. A gift into a full team goes to the PC, as ever.
+- **Monotype** (`RunRules.MayCarry`): a Pokémon may be on the team only if it has the type; **the starter's whole line is
+  exempt** (it is given before any type could be chosen for). A ball is refused in a battle against a wild Pokémon without the
+  type (`battle.runMonotype`); a gift of another type goes to the PC with a line saying so (`IScriptHost.GivePokemon`, both
+  hosts) and the PC refuses to withdraw it or put it on the team (`PCScreen.WhyNotCarry`). Left: a trade, a hatched Egg, an
+  evolution into another type: the rule is not enforced on those.
+- **No items in battle** (`RunTerms.NoItems`) is the player's side only (the trainers keep their items), **balls excepted**:
+  a wild battle's BAG still opens for a ball, since a Nuzlocke with no ball is no Nuzlocke, and everything else is refused with
+  the closed bag's line. Where no ball could be thrown either (a trainer's battle, or catching forbidden) BAG is greyed as in a
+  Master Trainer's battle (`BattleCore.BagShutByTheRun`, `BattleEngine.BagClosed`). Not in the Great Marsh, Pal Park, the
+  assistant's lesson or the Bug-Catching Contest, whose bags are their own. (`BattleSetup.NoBattleItems` stays the Master
+  Trainers' rule for both sides.)
+- **No catching** refuses every ball for the player's side in a wild battle (`battle.runNoCatching`), the Safari's included;
+  not Pal Park's or the contest's, which are those places' own. **No running** refuses RUN from a wild Pokémon
+  (`battle.runNoRunning`); a trainer's battle never offered it, and the Great Marsh's RUN is the marsh's own.
+- **No Center**: `common.Nurse` asks `if rule nocenter` and declines in a line of our own, healing nothing. Mom's rest, the
+  Hall of Fame and the other regions' own healers are not asked (left).
+- **Set**: the Battle Style row reads Set and cannot be changed while the run's `SetStyle` is on (`OptionsScreen.StyleLocked`,
+  set from the game, never from the title), and `OffersSwitch` is off in every trainer battle.
+- **Shiny odds**: `RunRules.ShinyOdds(rulesOdds)` is the run's denominator, else the rules' (8,192 Platinum's, 4,096 the
+  modern ones); `Pokemon`'s constructor reads it through `RunRules.Current`. **The Shiny Charm** is a key item of the data (the
+  importer brings it in; nothing in the game gives it yet, plan 06 · R28's): with it in the bag a wild Pokémon met in the field
+  and a gift get two more rolls (`ShinyCharm.Roll`, `Pokemon.RerollForShiny`: a fresh personality drawn, the first that is
+  shiny becomes the Pokémon's, with the nature and gender a lead's ability chose and the ability, form and stats that follow).
+  Nothing is drawn without the charm, so no seeded draw moves.
+- **The Nuzlocke's Gifts clause**: with it on, a gift (`GivePokemon`) spends the place's catch and a Pokémon a script puts in
+  the player's way (`wildbattle`) is the place's one chance, caught or not (`Nuzlocke.Gift`, `MeetStatic`); the starter is a
+  gift of the briefcase, not of `GivePokemon`, and spends nothing. A run that has ended shows RUN OVER in red on the CONTINUE
+  card and the save panel (`ModernUi.SaveMark`).
 
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 

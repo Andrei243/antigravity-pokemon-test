@@ -630,6 +630,8 @@ public class ScriptTests
               if region "Kanto" end
               if subject "pushable_boulder_2" end
               if friendship >= 200 end
+              if rule nocenter end
+              if not rule monotype end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

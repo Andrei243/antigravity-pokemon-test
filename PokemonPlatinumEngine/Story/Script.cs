@@ -155,7 +155,9 @@ public enum Query
     /// The friendship of the first of the team that is no Egg (plan 09 · L9: Dr. Footstep's reading; the original's
     /// <c>GetFirstNonEggInParty</c> and <c>GetPartyMonFriendship</c>): <c>friendship &gt;= 200</c>. False with no such Pokémon.
     /// </summary>
-    Friendship
+    Friendship,
+    /// <summary>The run has a rule on (plan 13 · V5): <c>rule nocenter</c>, by a word of <see cref="Models.RunRules.RuleNames"/>; Normal has none.</summary>
+    Rule
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

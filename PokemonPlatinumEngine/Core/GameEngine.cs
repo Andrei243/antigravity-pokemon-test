@@ -181,8 +181,23 @@ public partial class GameEngine
     private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
     /// <summary>The strip of the party menu and the Pokétch's app: the granted moves nobody on the team knows (plan 12 · Q18).</summary>
+    /// <summary>
+    /// What the run chosen at NEW GAME asks of the screens (plan 13 · V5): the PC keeps the Monotype and the team's size, and
+    /// the options' Battle Style stays Set under a run that forces it. A run with none of them changes nothing.
+    /// </summary>
+    private void KeepTheRunInView()
+    {
+        var run = flow.Run;
+        flow.PCScreen.PartyLimit = flow.Party.Limit;
+        flow.PCScreen.WhyNotCarry = run.Monotype == null ? null : p => run.MayCarry(p, flow.Story.PlayerStarter) ? null
+            : Text.Of("run.monotype.notThis", ("type", Words.Type(run.Monotype.Value)));
+        // (From the title no game is in force, whatever the last one set)
+        flow.OptionsScreen.StyleLocked = run.SetStyle && flow.OptionsReturn != GameState.Title;
+    }
+
     private void KeepTheHelpersInView()
     {
+        KeepTheRunInView();
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
@@ -337,6 +352,7 @@ public partial class GameEngine
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(RulesPreset.Modern);
         flow.Party.Clear();
+        flow.Party.Limit = Party.MaxSize;
         flow.Bag.Clear();
         flow.Pokedex.Clear();
         flow.Boxes = new PcBoxes();
@@ -392,6 +408,7 @@ public partial class GameEngine
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
+        flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = new RunState();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
@@ -565,6 +582,7 @@ public partial class GameEngine
         Roamers.Scatter(flow.Encounters, fieldRandom);
 
         flow.Party.Clear();
+        flow.Party.Limit = Party.MaxSize;
         foreach (var pData in save.Party)
         {
             var p = pData.ToPokemon();
@@ -653,6 +671,7 @@ public partial class GameEngine
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
+        flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
@@ -1303,6 +1322,7 @@ public partial class GameEngine
                 if (!flow.HallOfFameScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.PCStorage:
+                KeepTheRunInView();
                 flow.PCScreen.Update(flow.Party, flow.Boxes, ShowNotification, dt);
                 if (!flow.PCScreen.IsActive)
                 {
@@ -1313,6 +1333,7 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Options:
+                KeepTheRunInView();
                 if (flow.OptionsScreen.Update(Settings))
                 {
                     ApplySettings(window: true);

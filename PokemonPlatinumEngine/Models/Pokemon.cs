@@ -786,7 +786,8 @@ public class Pokemon
         Nature = Models.Personality.NatureOf(Personality);
         AbilityName = Models.Personality.AbilityOf(Abilities, Personality);
         // One in 8,192 by Platinum's rules, one in 4,096 by the modern ones (plan 06 · R10)
-        IsShiny = Models.Personality.IsShiny(Core.PlayerIdentity.Number, Personality, Ruleset.Current.ShinyOdds);
+        // (or the odds the run chose at NEW GAME, plan 13 · V5: the rules' own unless it did)
+        IsShiny = Models.Personality.IsShiny(Core.PlayerIdentity.Number, Personality, RunRules.Current.ShinyOdds(Ruleset.Current.ShinyOdds));
 
         // The original's two draws of three IVs each: HP, Attack, Defense, then Speed, Sp. Atk, Sp. Def
         int first = rng.Next(1 << 16), second = rng.Next(1 << 16);
@@ -825,6 +826,33 @@ public class Pokemon
 
         PopulateMovesForLevel();
         ResetStatStages();
+    }
+
+    /// <summary>
+    /// The Shiny Charm's extra rolls (plan 13 · V5): up to <paramref name="rolls"/> more personalities are drawn for a
+    /// Pokémon that came out plain, and the first that is shiny for the player's number becomes its personality, with the
+    /// nature and gender it was asked to keep (<paramref name="gender"/>, <paramref name="nature"/>: what a lead's Cute
+    /// Charm or Synchronize chose) and the ability, form and stats that follow from it. The IVs, moves and level are as they
+    /// were. Returns whether it is shiny. A shiny, an Egg or a Pokémon with no rolls is left as it is, drawing nothing.
+    /// </summary>
+    public bool RerollForShiny(Random rng, int rolls, Gender? gender = null, Nature? nature = null)
+    {
+        if (IsShiny || IsEgg || rolls <= 0) return IsShiny;
+        for (int i = 0; i < rolls; i++)
+        {
+            uint candidate = Models.Personality.Candidate(Species, rng, gender, nature);
+            if (!Models.Personality.IsShiny(Core.PlayerIdentity.Number, candidate, RunRules.Current.ShinyOdds(Ruleset.Current.ShinyOdds))) continue;
+            Personality = candidate;
+            Gender = Models.Personality.GenderOf(Species, candidate);
+            Form = FormOfGender();
+            Nature = Models.Personality.NatureOf(candidate);
+            AbilityName = Models.Personality.AbilityOf(Abilities, candidate);
+            IsShiny = true;
+            RecalculateStats();
+            CurrentHP = MaxHP;
+            return true;
+        }
+        return false;
     }
 
     /// <summary>Male or female by the species' ratio, or genderless.</summary>

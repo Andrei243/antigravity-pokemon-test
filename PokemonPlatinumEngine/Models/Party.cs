@@ -10,7 +10,14 @@ public class Party
     public List<Pokemon> Members { get; } = new();
 
     public int Count => Members.Count;
-    public bool IsFull => Members.Count >= MaxSize;
+    /// <summary>
+    /// How many Pokémon this party holds: <see cref="MaxSize"/>, or fewer under a run that carries fewer (plan 13 · V5, 1
+    /// for a solo run); set by the engine from the run. Whatever asks whether the team is full asks <see cref="IsFull"/>,
+    /// so a catch, a gift, a withdrawal and an Egg all go by it.
+    /// </summary>
+    public int Limit { get; set; } = MaxSize;
+
+    public bool IsFull => Members.Count >= Limit;
     public bool HasUsablePokemon => Members.Any(p => !p.IsFainted);
 
     public Pokemon? FirstUsable => Members.FirstOrDefault(p => !p.IsFainted);

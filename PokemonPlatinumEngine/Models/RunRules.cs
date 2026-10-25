@@ -89,6 +89,51 @@ public sealed record RunRules
         }
     }
 
+    /// <summary>
+    /// The shiny odds as 1 in this many (plan 13 · V5): the run's own when it chose them, else the rules' (8,192 by
+    /// Platinum's, 4,096 by the modern ones), so a run with nothing chosen rolls exactly as the game always did.
+    /// </summary>
+    public int ShinyOdds(int rulesOdds) => ShinyDenominator > 0 ? ShinyDenominator : rulesOdds;
+
+    /// <summary>The rules a script can ask after with <c>if rule …</c> (plan 13 · V5), by the word it uses.</summary>
+    public static readonly string[] RuleNames =
+    {
+        "nuzlocke", "monotype", "solo", "noitems", "nocenter", "nocatching", "norunning", "set", "shinyodds", "challenge", "easy", "levelcap"
+    };
+
+    /// <summary>Whether the run has a rule on, by its script word (<see cref="RuleNames"/>); false for a word it doesn't know.</summary>
+    public bool Has(string rule) => rule.ToLowerInvariant() switch
+    {
+        "nuzlocke" => Nuzlocke,
+        "monotype" => Monotype != null,
+        "solo" => PartyLimit < Party.MaxSize,
+        "noitems" => NoBattleItems,
+        "nocenter" => NoCenter,
+        "nocatching" => NoCatching,
+        "norunning" => NoRunning,
+        "set" => SetStyle,
+        "shinyodds" => ShinyDenominator > 0,
+        "challenge" => Difficulty == Difficulty.Challenge,
+        "easy" => Difficulty == Difficulty.Easy,
+        "levelcap" => LevelCap,
+        _ => false
+    };
+
+    /// <summary>
+    /// Whether a Pokémon may be carried in the team under the run's Monotype (plan 13 · V5): one of the type, or of the
+    /// line of the player's starter, which is exempt (it is given before any type could be chosen for). Anything under
+    /// no Monotype.
+    /// </summary>
+    public bool MayCarry(Pokemon pokemon, string? starter)
+    {
+        if (Monotype is not { } type || pokemon.HasType(type)) return true;
+        return starter != null && PokemonDatabase.Get(starter) is { } start && Models.Nuzlocke.LineOf(pokemon.Species) == Models.Nuzlocke.LineOf(start);
+    }
+
+    /// <summary>What a battle is told of the run's restrictions (the core's <c>Restrictions</c>): null when none touches a battle, which changes nothing.</summary>
+    public RunTerms? BattleTerms() =>
+        NoCatching || NoRunning || Monotype != null || NoBattleItems ? new RunTerms(NoCatching, NoRunning, Monotype, NoBattleItems) : null;
+
     /// <summary>The ShinyDenominator choices, in the order the panel steps through them.</summary>
     public static readonly int[] ShinyChoices = { 0, 4096, 1024, 512 };
 
@@ -101,3 +146,11 @@ public sealed record RunRules
     /// </summary>
     public static RunRules Current { get; set; } = Normal;
 }
+
+/// <summary>
+/// What a battle is told of the run's restrictions (plan 13 · V5; <see cref="Battle.Sim.CoreSetup.Restrictions"/>): no ball
+/// at all, no running, a type every Pokémon caught must have, and no item from the bag but a ball. A battle refuses these
+/// for the player's side only; null (a run with none of them) changes nothing. A recorded battle doesn't keep them: they
+/// only refuse choices.
+/// </summary>
+public sealed record RunTerms(bool NoCatching = false, bool NoRunning = false, PokemonType? Monotype = null, bool NoItems = false);

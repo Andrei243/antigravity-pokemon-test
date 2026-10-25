@@ -157,6 +157,12 @@ public sealed class BattleSetup
     public NuzlockeTerms? Nuzlocke { get; init; }
 
     /// <summary>
+    /// The run's restrictions (plan 13 · V5; <see cref="Sim.CoreSetup.Restrictions"/>): no catching, no running, a Monotype.
+    /// The game hands them over under a run that has any; null for none, which changes nothing.
+    /// </summary>
+    public RunTerms? Restrictions { get; init; }
+
+    /// <summary>
     /// The options' Battle Scene (plan 08 · P1): on unless given, the moves and the turn's animations play; off, the
     /// face shows none of them and a line's hits land at once (<see cref="BattleEngine.Scene"/>). Presentation only,
     /// never read by the rules.

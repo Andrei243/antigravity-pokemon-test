@@ -323,6 +323,19 @@ public sealed partial class BattleCore
     /// <summary>What a battle of the Battle Frontier says of the Bag (plan 06 · R18a): nothing comes out of it there.</summary>
     public static string FrontierBagRefusal => Text.Of("battle.nothingFromTheBag");
 
+    /// <summary>
+    /// The run forbids items in this battle (plan 13 · V5, <see cref="RunTerms.NoItems"/>): in the field's battles of the
+    /// player's team, not the lesson's, the Safari's or Pal Park's (their bags are those places' own) or the Bug-Catching
+    /// Contest's. Balls are the one thing it lets out of the bag.
+    /// </summary>
+    private bool RunClosesTheBag => Restrictions is { NoItems: true } && Kind is BattleKind.Normal or BattleKind.Roamer && Conditions.OnlyBall == null;
+
+    /// <summary>
+    /// The bag is shut for the player altogether under the run (plan 13 · V5): where no ball can be thrown either, in a
+    /// trainer's battle or with catching forbidden. The BAG command is then greyed, as in a Master Trainer's battle.
+    /// </summary>
+    public bool BagShutByTheRun => RunClosesTheBag && (IsTrainerBattle || Restrictions!.NoCatching);
+
     /// <summary>What a battle with no items says when one is reached for (plan 14 · B14): a line of our own.</summary>
     public static string NoItemsRefusal => Text.Of("battle.noItemsMayBe");
 
@@ -347,6 +360,17 @@ public sealed partial class BattleCore
             if (Models.Nuzlocke.Revives(item)) return Text.Of("battle.nuzlockeNoRevive");
             if (item.Pocket == ItemPocket.PokeBalls && !IsTrainerBattle && nuzlocke.Catch != NuzlockeCatch.Free)
                 return Text.Of(nuzlocke.Catch == NuzlockeCatch.Duplicate ? "battle.nuzlockeDuplicate" : "battle.nuzlockeAreaSpent");
+        }
+        // The run's closed bag (plan 13 · V5): nothing but a ball from it, for the player's side
+        if (RunClosesTheBag && b.IsPlayerSide && item.Pocket != ItemPocket.PokeBalls) return NoItemsRefusal;
+        // The run's restrictions (plan 13 · V5): no ball at all, or none for a Pokémon the Monotype's type isn't on. Pal Park's
+        // and the Bug-Catching Contest's catches are those places' own, and a trainer's Pokémon is never to be caught
+        if (Restrictions is { } run && b.IsPlayerSide && item.Pocket == ItemPocket.PokeBalls && !IsTrainerBattle
+            && Kind != BattleKind.PalPark && Conditions.OnlyBall == null)
+        {
+            if (run.NoCatching) return Text.Of("battle.runNoCatching");
+            if (run.Monotype is { } type && EnemySlots.FirstOrDefault(f => f.IsActive) is { } wild && !wild.HasType(type))
+                return Text.Of("battle.runMonotype", ("type", Words.Type(type)));
         }
         // The Great Marsh and Pal Park have their own balls and nothing else
         if (Kind is BattleKind.Safari or BattleKind.PalPark)

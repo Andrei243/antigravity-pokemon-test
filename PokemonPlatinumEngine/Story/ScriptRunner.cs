@@ -2030,6 +2030,8 @@ public sealed partial class ScriptRunner
             // GetNationalDexEnabled (plan 02 · S14)
             Query.NationalDex => host.NationalDex,
             Query.Objective => host.ShowsObjectives && Objectives.Current(host.Story, host.Region) != null,
+            // The ways to play (plan 13 · V5)
+            Query.Rule => host.Rules.Has(c.Name),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

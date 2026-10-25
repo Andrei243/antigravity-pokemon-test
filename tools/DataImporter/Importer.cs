@@ -50,6 +50,8 @@ public sealed partial class Importer
         ["dna-splicers"] = ItemPocket.KeyItems, ["reveal-glass"] = ItemPocket.KeyItems, ["prison-bottle"] = ItemPocket.KeyItems,
         ["zygarde-cube"] = ItemPocket.KeyItems, ["n-solarizer--merge"] = ItemPocket.KeyItems, ["n-lunarizer--merge"] = ItemPocket.KeyItems,
         ["rotom-catalog"] = ItemPocket.KeyItems, ["reins-of-unity"] = ItemPocket.KeyItems,
+        // The Shiny Charm: two more rolls at a shiny while it is in the bag (plan 13 · V5)
+        ["shiny-charm"] = ItemPocket.KeyItems,
         ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items
     };
 

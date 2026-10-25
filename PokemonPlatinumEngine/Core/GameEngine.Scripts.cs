@@ -903,6 +903,7 @@ public partial class GameEngine
         public IReadOnlyCollection<FieldMove> Granted => game.GrantedMoves;
         public string BeganIn => game.flow.BeganIn;
         public bool ShowsObjectives => game.NextObjectiveOn;
+        public RunRules Rules => game.flow.Run;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;
@@ -1125,7 +1126,9 @@ public partial class GameEngine
             game.flow.BattleMayBeLost = false;
             // A script writes its game's own level; a region crossed into meets it at the mapped one (plan 18 · W4)
             if (kind != BattleKind.CatchingLesson) wild.Relevel(game.LevelHere(wild.Level));
-            game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher);
+            // A static encounter is the place's one chance under the Nuzlocke's gifts clause (plan 13 · V4)
+            game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher,
+                nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free);
         }
 
         public BattleOutcome Outcome => game.flow.ScriptOutcome;
@@ -1275,11 +1278,22 @@ public partial class GameEngine
         {
             // A gift of a region crossed into comes at the region's mapped level (plan 18 · W4); an Egg hatches at its own
             if (!pokemon.IsEgg) pokemon.Relevel(game.LevelHere(pokemon.Level));
+            // The Shiny Charm's extra rolls (plan 13 · V5): none, and nothing drawn, without the charm in the bag
+            ShinyCharm.Roll(pokemon, game.flow.Bag, Dice.New());
             game.flow.Pokedex.RegisterSeen(pokemon);
             game.flow.Pokedex.RegisterCaught(pokemon);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)
             pokemon.Met(game.PlaceName(), GameClock.Today);
             game.flow.Poketch.Remember(pokemon);
+            // The Nuzlocke's gifts clause: a gift is the place's catch (plan 13 · V4)
+            Nuzlocke.Gift(game.flow.Run, game.flow.RunState, Nuzlocke.PlaceKeyOf(game.flow.Map, game.flow.Player.GridX, game.flow.Player.GridY));
+            // A run that keeps one type on the team has a gift of another go to the PC, from which it can't be withdrawn (plan 13 · V5)
+            if (!game.flow.Run.MayCarry(pokemon, game.flow.Story.PlayerStarter))
+            {
+                game.flow.Boxes.Store(pokemon);
+                game.ShowNotification(Text.Of("run.monotype.sentToPc", ("name", pokemon.DisplayName)));
+                return false;
+            }
             if (game.flow.Party.Add(pokemon)) return true;
             game.flow.Boxes.Store(pokemon);
             return false;

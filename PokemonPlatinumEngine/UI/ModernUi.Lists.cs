@@ -380,8 +380,8 @@ internal static partial class ModernUi
         for (int b = 0; b < of; b++)
             Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (badges & (1 << b)) != 0, BadgeNameOf(save, b));
         // How the game is played, when it isn't Platinum's way (plan 13 · V1): a mark at the badges' row's right end
-        if (RunMark(save.Run) is { } runMark)
-            Tag(r.X + r.Width - 48 - UiFonts.Measure(runMark, 22, UiWeight.Black) - 31, r.Y + 204, runMark, Selection, 38);
+        if (SaveMark(save) is var (runMark, markColour))
+            Tag(r.X + r.Width - 48 - UiFonts.Measure(runMark, 22, UiWeight.Black) - 31, r.Y + 204, runMark, markColour, 38);
 
         // The party as 2D sprites, like the main games' save panel
         Label(Text.Of("saving.party"), x, r.Y + 340);
@@ -442,7 +442,7 @@ internal static partial class ModernUi
         if (ww > room && ww > 0) size = MathF.Max(18, MathF.Floor(size * room / ww));
         UiFonts.Draw(where, x, r.Y + 100, size, Muted, UiWeight.ExtraBold);
         // How it is played, when it isn't Platinum's way (plan 13 · V1), at the foot's right end
-        if (RunMark(save.Run) is { } runMark)
-            Tag(right - UiFonts.Measure(runMark, 20, UiWeight.Black) - 26, r.Y + 98, runMark, Selection, 34);
+        if (SaveMark(save) is var (runMark, markColour))
+            Tag(right - UiFonts.Measure(runMark, 20, UiWeight.Black) - 26, r.Y + 98, runMark, markColour, 34);
     }
 }

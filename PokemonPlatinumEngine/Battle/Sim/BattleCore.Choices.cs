@@ -105,6 +105,8 @@ public sealed partial class BattleCore
                 if (Frontier) return null;
                 if (CannotFlee && b.IsPlayerSide) return Text.Of("battle.thereNoRunningFrom");
                 if (Kind is BattleKind.Safari or BattleKind.PalPark) return null;
+                // A run that may not run from a wild Pokémon (plan 13 · V5)
+                if (Restrictions is { NoRunning: true } && b.IsPlayerSide && !IsTrainerBattle) return Text.Of("battle.runNoRunning");
                 return IsTrainerBattle ? null : TrapOn(b, forRunning: true);
 
             case ChoiceKind.Bait or ChoiceKind.Mud:

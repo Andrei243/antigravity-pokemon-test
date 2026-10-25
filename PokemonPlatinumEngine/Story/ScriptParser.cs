@@ -1146,6 +1146,13 @@ public static class ScriptParser
                 return new Condition { Query = Query.NationalDex, Negated = negated };
             case "objective":
                 return new Condition { Query = Query.Objective, Negated = negated };
+            // A rule of the run chosen at NEW GAME (plan 13 · V5)
+            case "rule":
+            {
+                string rule = r.Text("a rule of the run").ToLowerInvariant();
+                if (!Models.RunRules.RuleNames.Contains(rule)) throw r.Error($"'{rule}' is no rule of a run ({string.Join(", ", Models.RunRules.RuleNames)})");
+                return new Condition { Query = Query.Rule, Negated = negated, Name = rule };
+            }
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }
