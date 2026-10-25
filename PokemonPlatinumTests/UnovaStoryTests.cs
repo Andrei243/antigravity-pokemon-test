@@ -66,6 +66,8 @@ public class UnovaStoryTests
             maps["BattleSubwayTrain"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "BattleSubwayTrain.json")).ToMap();
             // and the World Tournament's hall (plan 22 · U6, part d)
             maps["PokemonWorldTournament"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "PokemonWorldTournament.json")).ToMap();
+            // and the Marine Tube, Black 2's walk on rails under the sea (plan 22 · U8, part b)
+            maps["MarineTube"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "MarineTube.json")).ToMap();
             // (a game from before the story was written began with none of what a new game sets now)
             if (!begin) return;
             StoryMigration.BeginNewGame(Story, Scripts);
@@ -2248,6 +2250,208 @@ public class UnovaStoryTests
         foreach (string song in new[] { "opelucid", "route12", "village_bridge", "shopping_mall" })
             Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
         Assert.Contains(RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns, s => s.Room == "OpelucidCity_PokemonCenter");
+    }
+
+    // ---- Plan 22 · U8, part b: the Marine Tube to the Plasma Frigate --------------------------------------------------------
+
+    /// <summary>A game that has seen Opelucid City's chapter to its end (Cheren's word that the Frigate made for Humilau City).</summary>
+    private static Game AtHumilau()
+    {
+        var game = AtOpelucid();
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 7);
+        game.Story.GiveBadge(RegionDatabase.Unova, "Legend");
+        game.Arrive("Unova", 790, 179);
+        return game;
+    }
+
+    [Fact]
+    public void TheMarineTubeIsShutUntilOpelucidsChapterEndsAndRunsUnderTheSeaToHumilau()
+    {
+        var game = AtOpelucid();
+        game.Arrive("MarineTubeGate_Undella", 13, 8);
+        Assert.True(game.Fires("TubeClosed"));
+        var shut = game.Step("TubeClosed");
+        Assert.Contains(shut.Transcript, l => l.Speaker == "Worker");
+        Assert.Equal(12, game.Tile.X);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_TUBE"));
+        game.Story.SetVar("VAR_UNOVA_OPELUCID", 7);
+        game.Step("TubeClosed");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_TUBE"));
+        Assert.False(game.Fires("TubeClosed"));
+        // the gate's north door is the tube's, a map of ours, whose far end is Humilau's gate
+        game.Arrive("MarineTubeGate_Undella", 27, 2);
+        game.Through("MarineTube");
+        Assert.Equal("MarineTube", game.Map.Name);
+        Assert.Equal("unova/marine_tube", game.Map.BgmTrack);
+        var walk = ReachableOn(game.Map, game.Tile);
+        Assert.Contains(walk, t => game.Map.GetWarpAt(t.Item1, t.Item2)?.TargetMap == "MarineTubeGate_Humilau");
+        game.Through("MarineTubeGate_Humilau");
+        Assert.Equal("MarineTubeGate_Humilau", game.Map.Name);
+        game.Through("Unova");
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.Equal("humilau_city", game.Map.ScriptFileAt(game.Tile.X, game.Tile.Y));
+    }
+
+    [Fact]
+    public void HumilausHousesStandOnTheWaterAndAreWalkedIntoFromTheirBoardwalks()
+    {
+        var game = AtHumilau();
+        var map = game.Map;
+        foreach (string house in new[] { "HumilauCity_House1", "HumilauCity_House2", "HumilauCity_House3", "HumilauCity_House4", "HumilauCity_House5" })
+        {
+            var door = map.Warps.Single(w => w.TargetMap == house);
+            Assert.False(map.IsSolid(door.SourceX, door.SourceY), house);
+            // the room's way out puts the player on the deck before the door, never on the door
+            var back = game.Mapped(house).Warps.First(w => w.TargetMap == "Unova");
+            Assert.Equal((door.SourceX, door.SourceY + 1), (back.TargetX, back.TargetY));
+            Assert.False(map.IsSolid(back.TargetX, back.TargetY), house);
+        }
+        // the boardwalks are walked from the city's square up to the northern houses
+        var walk = ReachableOn(map, (784, 176));
+        Assert.Contains((797, 134), walk);
+        Assert.Equal(Architecture.Stilts, WorldModels.Of("c14_house", "unova")!.Town);
+        Assert.Equal(PokemonType.Water, WorldModels.GymTheme("humilau_city"));
+        Assert.Contains(RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns, s => s.Room == "HumilauCity_PokemonCenter");
+    }
+
+    [Fact]
+    public void HughSendsThePlayerToMarlonWhoGivesTheWaveBadgeAndHughSendsThemToRouteTwentyTwo()
+    {
+        var game = AtHumilau();
+        Assert.NotNull(game.Present("0", "humilau_city"));
+        Assert.Null(game.Present("1", "humilau_city"));
+        Assert.True(game.Fires("HughWaits"));
+        var hugh = game.Step("HughWaits");
+        Assert.Contains(hugh.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("beach"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        // the Gym's guide: Fresh Water and Marlon away
+        game.Arrive("HumilauCity_Gym", 16, 74);
+        Assert.Null(game.Present("0", "humilau_city_gym"));
+        var guide = game.TalkTo("7");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Fresh Water")!));
+        Assert.Contains(game.TalkTo("7").Transcript, l => l.Text.Contains("swimming"));
+        // Marlon on the beach goes back to his Gym
+        game.Arrive("Unova", 784, 186);
+        var marlon = game.Talk("1", "humilau_city");
+        Assert.Contains(marlon.Transcript, l => l.Speaker == "Marlon" && l.Text.Contains("Gym"));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        Assert.Null(game.Present("1", "humilau_city"));
+        game.Arrive("HumilauCity_Gym", 16, 74);
+        Assert.NotNull(game.Present("0", "humilau_city_gym"));
+        // the walkway from the door reaches the dock and both trainers on the cross-walk
+        var walk = ReachableOn(game.Map, (16, 74));
+        foreach (var tile in new[] { (25, 61), (13, 63), (21, 63) }) Assert.Contains(tile, walk);
+        var leader = game.TalkTo("0");
+        Assert.Contains(leader.Log, l => l.StartsWith("battle unova_leader_marlon"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Wave"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM55")!));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        // out of the Gym: Hugh and Marlon, then Route 22
+        game.Arrive("Unova", 783, 173);
+        Assert.True(game.Fires("MarlonAndHugh"));
+        var outside = game.Step("MarlonAndHugh");
+        Assert.Contains(outside.Transcript, l => l.Speaker == "Hugh" && l.Text.Contains("Route 22"));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        Assert.Null(game.Present("0", "humilau_city"));
+        Assert.Null(game.Present("1", "humilau_city"));
+    }
+
+    [Fact]
+    public void ColressGivesHisMachineOnRouteTwentyTwoAndItWakesTheCrustleInTheSeasideCave()
+    {
+        var game = AtHumilau();
+        game.Story.SetVar("VAR_UNOVA_HUMILAU", 4);
+        game.Story.Unset("FLAG_UNOVA_HIDE_COLRESS_ROUTE_22");
+        game.Arrive("Unova", 752, 147);
+        Assert.Null(game.Present("6", "unova_route_22"));
+        Assert.True(game.Fires("Colress"));
+        var colress = game.Step("Colress");
+        Assert.Contains(colress.Transcript, l => l.Speaker == "Colress" && l.Text.Contains("Seaside Cave"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_COLRESS_MACHINE"));
+        Assert.Equal(5, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        Assert.Null(game.Present("7", "unova_route_22"));
+        // the Crustle before the way out to Route 21's east beach
+        game.Arrive("SeasideCave_1F", 28, 10);
+        Assert.NotNull(game.Present("9", "seaside_cave"));
+        game.Answers.Add(0);
+        var crustle = game.Talk("9", "seaside_cave");
+        Assert.Contains(crustle.Log, l => l.StartsWith("wildbattle Crustle 42"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_CRUSTLE"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_COLRESS_MACHINE_BROKE"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_COLRESS_MACHINE"));
+        Assert.Null(game.Present("9", "seaside_cave"));
+        // Rocky stands in the way from Undella Bay until beaten
+        var rocky = game.Talk("12", "seaside_cave");
+        Assert.Contains(rocky.Log, l => l.StartsWith("battle unova_black_belt_rocky"));
+        Assert.Null(game.Present("12", "seaside_cave"));
+        Assert.Null(game.Present("8", "seaside_cave"));
+    }
+
+    [Fact]
+    public void MarlonsGangplankLeadsAboardAndTheFrigatesRoomsPlayToKyuremAndTheFlight()
+    {
+        var game = AtHumilau();
+        game.Story.SetVar("VAR_UNOVA_HUMILAU", 5);
+        game.Arrive("Unova", 795, 241);
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "PlasmaFrigate" && w.SourceX > 400 && !w.Shut);
+        var plank = game.Step("Gangplank");
+        Assert.Contains(plank.Transcript, l => l.Speaker == "Marlon" && l.Text.Contains("help"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_FRIGATE_AT_ROUTE_21"));
+        Assert.Equal(6, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "PlasmaFrigate" && w.SourceX == 800 && !w.Shut);
+        // aboard: nobody turns the player back, and the gangway leads to Route 21 now
+        game.Arrive("Unova", 799, 241);
+        game.Through("PlasmaFrigate");
+        Assert.Equal("PlasmaFrigate", game.Map.Name);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "Unova" && w.TargetX == 800 && !w.Shut);
+        // the hold: Hugh's tag battle against two grunts
+        game.Arrive("PlasmaFrigate_Hold", 11, 15);
+        var hold = game.Step("HoldScene");
+        Assert.Contains(hold.Log, l => l.StartsWith("battle unova_team_plasma_grunt_50 and unova_team_plasma_grunt_51 with unova_rival_28"));
+        Assert.Equal(7, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        Assert.True(game.Fires("Barrier"));
+        // the two switches: a cabin off the forward hall, and Colress in the stern room
+        game.Arrive("PlasmaFrigate_Cabin", 6, 3);
+        game.Answers.Add(0);
+        game.Play(Scripts.Find("Switch", "plasma_frigate_9")!);
+        Assert.True(game.Story.Has("FLAG_UNOVA_FRIGATE_SWITCH_A"));
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_FRIGATE_BARRIER"));
+        game.Arrive("PlasmaFrigate_Stern", 11, 5);
+        var colress = game.TalkTo("colress_stern");
+        Assert.Contains(colress.Log, l => l.StartsWith("battle unova_team_plasma_colress"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_FRIGATE_BARRIER"));
+        game.Arrive("PlasmaFrigate_Hold", 11, 9);
+        Assert.False(game.Fires("Barrier"));
+        // Kyurem's chamber: Zinzolin, Hugh's second tag battle, the Shadow Triad and the beach
+        game.Arrive("PlasmaFrigate_Bridge", 12, 19);
+        var kyurem = game.Step("Kyurem");
+        Assert.Contains(kyurem.Log, l => l.StartsWith("battle unova_team_plasma_grunt_49 and unova_team_plasma_zinzolin with unova_rival_28"));
+        Assert.Contains(kyurem.Transcript, l => l.Speaker == "Zinzolin" && l.Text.Contains("Kyurem"));
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.Equal(9, game.Story.Var("VAR_UNOVA_HUMILAU"));
+        var flight = game.Played.Last(p => p.Script.StartsWith("unova_route_21.") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(flight.Transcript, l => l.Speaker == "Cheren" && l.Text.Contains("Giant Chasm"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21"));
+        Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "PlasmaFrigate" && w.SourceX > 400 && !w.Shut);
+        Assert.NotNull(game.Present("11", "unova_route_21"));
+        Assert.Null(game.Present("9", "unova_route_21"));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheHumilauChapterIsGivenItsHiddenPeopleAndTheSongsAreOurOwn()
+    {
+        var game = new Game();
+        game.Story.Unset("FLAG_UNOVA_HUMILAU_BEGUN");
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_HUGH_HUMILAU", "FLAG_UNOVA_HIDE_COLRESS_ROUTE_22", "FLAG_UNOVA_HIDE_TERRAKION" })
+            game.Story.Unset(flag);
+        game.Play(Scripts.Find("UnovaCatchUpD", "common")!);
+        Assert.True(game.Story.Has("FLAG_UNOVA_HUMILAU_BEGUN"));
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_HUGH_HUMILAU", "FLAG_UNOVA_HIDE_COLRESS_ROUTE_22", "FLAG_UNOVA_HIDE_TERRAKION", "FLAG_UNOVA_HIDE_HUGH_BRIDGE" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.True(new Game().Story.Has("FLAG_UNOVA_HUMILAU_BEGUN"));
+        foreach (string song in new[] { "humilau", "marine_tube", "seaside_cave", "colress" })
+            Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
+        Assert.Equal(Architecture.Skyline, WorldModels.Of("c8_buildb", "unova")!.Town);
     }
 
     private static string AreaAt(WorldMatrixFile matrix, int x, int y)

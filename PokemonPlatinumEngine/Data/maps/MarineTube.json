@@ -1,0 +1,203 @@
+{
+  "name": "MarineTube",
+  "displayName": "Marine Tube",
+  "bgmTrack": "unova/marine_tube",
+  "interior": "None",
+  "trees": "Round",
+  "width": 11,
+  "height": 40,
+  "ground": [
+    "####DDD####",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "#~~~+++~~~#",
+    "####DDD####"
+  ],
+  "solid": [
+    "####...####",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "#.........#",
+    "####...####"
+  ],
+  "props": [],
+  "warps": [
+    {
+      "sourceX": 4,
+      "sourceY": 0,
+      "targetMap": "MarineTubeGate_Humilau",
+      "targetX": 22,
+      "targetY": 19,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 4,
+      "sourceY": 39,
+      "targetMap": "MarineTubeGate_Undella",
+      "targetX": 27,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 0,
+      "targetMap": "MarineTubeGate_Humilau",
+      "targetX": 22,
+      "targetY": 19,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 5,
+      "sourceY": 39,
+      "targetMap": "MarineTubeGate_Undella",
+      "targetX": 27,
+      "targetY": 1,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 0,
+      "targetMap": "MarineTubeGate_Humilau",
+      "targetX": 22,
+      "targetY": 19,
+      "targetFacing": "Up"
+    },
+    {
+      "sourceX": 6,
+      "sourceY": 39,
+      "targetMap": "MarineTubeGate_Undella",
+      "targetX": 27,
+      "targetY": 1,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "nonswimmer",
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "x": 6,
+      "y": 33,
+      "facing": "Left",
+      "dialog": [
+        "So this is what the bottom of the sea looks like! I never learned to swim, so I had given up on ever seeing it. I could stay here all day."
+      ]
+    },
+    {
+      "id": "aquarium",
+      "name": "Parasol Lady",
+      "npcType": "parasol_lady",
+      "x": 4,
+      "y": 26,
+      "facing": "Right",
+      "dialog": [
+        "People call this a walk-through aquarium. But look at them all staring in... I think we are the ones on show!"
+      ]
+    },
+    {
+      "id": "trench",
+      "name": "Hiker",
+      "npcType": "hiker",
+      "x": 6,
+      "y": 18,
+      "facing": "Left",
+      "dialog": [
+        "Look down there, past the glass! That trench goes down and down. How deep do you think it is? Deeper than any mountain is tall, I bet."
+      ]
+    },
+    {
+      "id": "dreamer",
+      "name": "Lady",
+      "npcType": "lady",
+      "x": 4,
+      "y": 11,
+      "facing": "Right",
+      "dialog": [
+        "The sea is deep... but my heart is deeper still. Sigh. I came here to think about someone special."
+      ]
+    },
+    {
+      "id": "raindance",
+      "name": "Swimmer",
+      "npcType": "swimmer_f",
+      "x": 6,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Rain Dance is a move you use when you are longing for something. Or is it? Sigh... I cannot think of a good way to explain it today."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

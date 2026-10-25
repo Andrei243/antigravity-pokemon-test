@@ -1,0 +1,90 @@
+# Kyurem's chamber in the Plasma Frigate (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/plasma_frigate_5.s, read for the order alone).
+#
+# As the player comes up from the hold (our trigger, 11 to 13, 18, VAR_UNOVA_HUMILAU 7) Zinzolin (1) shows them Kyurem (0), the
+# source of the ice fired on Opelucid City; Hugh (hugh_bridge) runs in, and the battle is a tag battle beside him (Black 2's
+# TRAINER_RIVAL_28, _29 and _30 by the starter against TRAINER_TEAM_PLASMA_GRUNT_49 and TRAINER_TEAM_PLASMA_ZINZOLIN). Hugh asks after
+# his sister's Purrloin and Zinzolin won't answer; Kyurem has recovered, and the Shadow Triad (2, 3) put both Trainers ashore on
+# Route 21 (8), where the Frigate's flight is unova_route_21.txt's.
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script Kyurem
+  scene "Zinzolin and Kyurem"
+  place player 12 18 up
+  face 1 player
+  speaker "Zinzolin"
+  say "You are an impressive Trainer to have come this far. Since you have gone to such trouble, let me show you something."
+  speaker none
+  text "Under the great cannon, something huge stirred in the cold..."
+  cry "Kyurem"
+  speaker "Zinzolin"
+  say "The legendary Pokémon of ice! Its name is Kyurem. The missiles of ice we fired into Opelucid City were made with Kyurem's power and Team Plasma's science."
+  say "Well. You could become a threat to Team Plasma, so we shall be rid of you here."
+  clearflag FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  show hugh_bridge
+  speaker "{rival}"
+  say "Not with me around, you won't! {player}, thanks for switching off the barrier. That was a big help!"
+  speaker "Zinzolin"
+  say "Hmph! Then we shall be rid of you both!"
+  if starter "Snivy" goto WithEmboar
+  if starter "Tepig" goto WithSamurott
+  partner hugh_bridge "unova_rival_30"
+  goto Fight
+label WithEmboar
+  partner hugh_bridge "unova_rival_28"
+  goto Fight
+label WithSamurott
+  partner hugh_bridge "unova_rival_29"
+label Fight
+  battle 4 and 1 with partner
+  partner off
+  speaker "{rival}"
+  say "I'm not losing to Team Plasma! ...What is this place, anyway?"
+  say "That Pokémon... It's freezing just to look at. Was it the one that attacked Opelucid City?"
+  speaker "Zinzolin"
+  say "Hmph. You are cleverer than I thought. With that much sense, why sneak into our ship at all?"
+  speaker "{rival}"
+  say "Isn't it obvious? I'll do whatever it takes to get my sister's Pokémon back! Were you the one who stole a Purrloin in Aspertia City?"
+  speaker "Zinzolin"
+  say "If it was only a Purrloin, someone took it and is using it now. Why can't you see that? There are other Purrloin."
+  speaker "{rival}"
+  say "That's the only Purrloin in the world that my grandpa caught for my little sister!"
+  speaker "Zinzolin"
+  say "One person's feelings. To you they matter a great deal. To everyone else, they are a trifle."
+  say "Ah. Kyurem has recovered completely. We shall put the DNA Splicers to good use. Shadow Triad, I leave these two to you."
+  clearflag FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  show 2
+  show 3
+  speaker "{rival}"
+  say "Don't mess with me! You're the one who lost!"
+  speaker "Shadow Triad"
+  say "..."
+  fade out 0.6
+  setflag FLAG_UNOVA_HIDE_TRIAD_BRIDGE
+  setflag FLAG_UNOVA_HIDE_HUGH_BRIDGE
+  speaker none
+  text "There is a rush of wind, and the cold deck is gone from under your feet..."
+  setvar VAR_UNOVA_HUMILAU 8
+  endscene
+  warp "Unova" 798 242 left
+  fade in
+  end
+
+
+script Zinzolin
+  face 1 player
+  speaker "Zinzolin"
+  say "Children have no business in this chamber."
+  end
+
+
+script Grunt
+  face 4 player
+  speaker "Grunt"
+  say "Don't get any closer to Kyurem!"
+  end

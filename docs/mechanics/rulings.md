@@ -3186,6 +3186,54 @@ Seaside Cave and the Frigate's rooms) is the next session's.
 - **What a save needs.** A save past Lacunosa Town is given the chapter's hidden people by `UnovaCatchUpC` (`FLAG_UNOVA_OPELUCID_BEGUN`),
   which the arrivals of Route 12, Route 11, Opelucid City, its Gym and Drayden's house call, with no story version raised.
 
+## Unova's fourth chapter, part b: the Marine Tube to the Plasma Frigate (2026-10-26, plan 22 · U8)
+
+Black 2's beats from Undella Town's sea gate to the Plasma Frigate's flight from Route 21, in our own words (the decompilation's zone
+scripts, read for the order alone) on flags of ours. `VAR_UNOVA_HUMILAU` is the chapter's count (`humilau_city.txt`'s header).
+
+- **The order of the chapter.** The gate north of Undella Town (`MarineTubeGate_Undella`) turns the player back until Opelucid's
+  chapter has ended (`VAR_UNOVA_OPELUCID` 7; our trigger, `VAR_UNOVA_TUBE`); the Marine Tube leads to Humilau City's gate. Hugh waits by
+  the Gym and sends the player to the beach (1), where Marlon goes back to his Gym (2); his battle gives the Wave Badge, the region's
+  eighth, and TM55 as the data's table, Platinum's, fills it (3). Coming out, Hugh and Marlon talk (Marlon's question of whether Team
+  Plasma is bad, answered either way) and Hugh sends the player to Route 22 (4), where Colress gives his machine and tells of the Seaside
+  Cave (5). The machine wakes the Crustle lying like a boulder before the cave's way out to Route 21's east beach (a wild battle at level
+  42; it scuttles off whatever happens and the machine breaks). On the beach Hugh finds the anchored Frigate and Marlon throws down the
+  gangplank (6); in the hold Hugh and the player fight two grunts in a tag battle (7); the hold's barrier falls once both its switches
+  are off; in Kyurem's chamber Zinzolin shows Kyurem, Hugh runs in for a second tag battle, asks after his sister's Purrloin and gets
+  no answer, and the Shadow Triad put both ashore (8), where the Frigate flies off and Cheren names the Giant Chasm (9).
+- **The Marine Tube is a map of ours** (`Data/maps/MarineTube.json`): Black 2's tube stands on rails, as Castelia's avenue does, and the
+  data gives its chunks nothing to walk. Ours is a straight walkway through the sea, its glass not drawn, with five people of our own
+  on Black 2's beats; the gates' overlay `doors` lead into it. The tube's walls of sea as a room of their own (the style guide's
+  "Rooms") are left.
+- **Humilau's boardwalks and doors.** The city's planks are a second grid of its chunks over a first that is the sea, blocked; the reader
+  walks the deck where the sea under it is blocked (`Bw2World.Decks`, Humilau's six chunks alone, so no other area's file moved). A
+  house's door is a plain wall tile under its front: on the overworld of Unova it is walked into from the deck south of it, and
+  whoever comes out stands on that deck (`World.UnovaWallDoor`, `Join`).
+- **The Humilau Gym's pool of lily pads is not walked.** The walkway from the door, the cross-walk and the dock at its east end are; two of
+  the six ace trainers stand on the cross-walk where we put them, the other four are held back with the pads, and Marlon waits on
+  the dock.
+- **The Colress Machine is a flag** (`FLAG_UNOVA_COLRESS_MACHINE`, then `_BROKE`), as Hoenn's Frontier Pass is: the item isn't in our
+  data. Route 22's Terrakion, who crosses the road before Colress, is plan 22 · U10's (the Swords of Justice) and held hidden.
+- **The Seaside Cave.** The way from Route 21's west mouth to the east beach runs along the upper floor's middle; the chamber north of it
+  (its TM06 and the stairs to the lower floor's north end) is joined to it by a one-tile wall of the original's data that is blocked
+  here, as Mistralton Cave's are, so those stairs are shut and the TM held back (plan 22 · U10 with Mistralton Cave). Rocky the black
+  belt and his Roggenrola guard the way in from Undella Bay until beaten.
+- **The Plasma Frigate.** Five of its rooms are open: the hold under the deck's hatch, the forward and aft cabin halls, one cabin off the
+  forward hall and the stern room, and Kyurem's chamber in the bow. Black 2's warp panels between its lower decks and its four
+  switch rooms off the hold are not walked: the hold's barrier has two switches here, one on a cabin's wall and one that Colress, who
+  battles the player in the stern room (where Black 2 has him at the end of a panel's ride in a room of his own), switches off himself
+  (`common.UnovaFrigateBarriers`). The deck's gangway leads to the tournament's pier until the ship anchors off Route 21 and to Route 21
+  until it has flown (overlay `switches`); the ship is never drawn there, as at Opelucid. Rood and the old Plasma, the Frigate's
+  password and the disguised spy, and its later moorings (the Giant Chasm, plan 22 · U9; the post-game) are left.
+- **Looks and sounds.** Opelucid builds in a way of its own since this part (`Architecture.Skyline`: pale panels under dragon-violet hips
+  with ribbon windows, Black 2's modern city) and Humilau in another (`Architecture.Stilts`: white clapboard under lagoon-aqua gables
+  with flower boxes); the style guide's rows came first. The Opelucid and Humilau Gyms are Dragon's and Water's. Marlon has the swimmer's
+  look until plan 22 · U12. Songs of our own, none heard by the user yet: `unova/humilau` (with a night arrangement), `marine_tube`,
+  `seaside_cave` and `colress` (his theme as he steps up), each over 25 s and clean in `MusicRender`.
+- **What a save needs.** A save past Opelucid City is given the chapter's hidden people by `UnovaCatchUpD` (`FLAG_UNOVA_HUMILAU_BEGUN`),
+  which the arrivals of Humilau City, its Gym, Routes 21 and 22, the Seaside Cave and the Frigate's rooms call, with no story version
+  raised.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

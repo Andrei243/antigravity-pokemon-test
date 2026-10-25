@@ -1,0 +1,103 @@
+# Route 21 (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_21.s, read for the order alone).
+#
+# The beach east of the Seaside Cave's second mouth, where the Plasma Frigate lies at anchor: Hugh (9) finds the player there
+# and Marlon (10) swims up and throws down the gangplank (our trigger, 796, 239 to 242, VAR_UNOVA_HUMILAU 5; the way aboard is
+# FLAG_UNOVA_FRIGATE_AT_ROUTE_21); Hugh goes aboard first (6). Put back ashore by the Shadow Triad (8), the player finds Hugh and
+# Cheren on the beach as the Frigate flies off toward the Giant Chasm (FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21, 9); Cheren stays to say
+# where the chasm lies, which is plan 22 · U9's.
+
+
+script OnEnter
+  call UnovaCatchUpD
+  if var VAR_UNOVA_HUMILAU != 8 end
+  scene "The Plasma Frigate flies off"
+  clearflag FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  clearflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_21
+  show 9
+  show 11
+  face 9 player
+  speaker "{rival}"
+  say "Team Plasma! Wherever you go, I won't let you get away!"
+  speaker none
+  text "With a roar of engines, the Plasma Frigate rose from the water and flew off toward the west..."
+  setflag FLAG_UNOVA_FRIGATE_LEFT_ROUTE_21
+  speaker "{rival}"
+  say "...It flies?! Where's it going?"
+  face 11 player
+  speaker "Cheren"
+  say "Sorry I'm late. If I had to guess, they're making for the Giant Chasm."
+  speaker "{rival}"
+  say "The Giant Chasm! That's at the far end of Route 22, right? Then that's where I'm going!"
+  say "That Pokémon in the ship... Kyurem. Its cry sounded so lonely."
+  speaker "Cheren"
+  say "Kyurem! So Team Plasma means to use Kyurem's power for themselves."
+  speaker "{rival}"
+  say "How do we stop something like that? Drayden said only Reshiram or Zekrom could stand up to it. And neither of them is anywhere!"
+  say "...It doesn't matter. I'm going. {player}, follow when you're ready!"
+  fade out 0.3
+  hide 9
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  setvar VAR_UNOVA_HUMILAU 9
+  fade in
+  endscene
+  end
+
+
+# Marlon and the gangplank (our trigger on the beach, at 5)
+script Gangplank
+  scene "Marlon's gangplank"
+  clearflag FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  show 9
+  face 9 player
+  emote 9 exclaim
+  speaker "{rival}"
+  say "{player}! You found them! I knew you could do it!"
+  say "That's Team Plasma's ship, anchored right off the beach. But... how do we get aboard?"
+  clearflag FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  show 10
+  speaker marlon "Marlon"
+  say "Hold up!"
+  say "Eh, this should do it!"
+  speaker none
+  text "A heavy gangplank came down from the ship's rail with a solid thud..."
+  setflag FLAG_UNOVA_FRIGATE_AT_ROUTE_21
+  speaker "{rival}"
+  say "Marlon! I thought you didn't care about Team Plasma?"
+  speaker marlon "Marlon"
+  say "Hey, friends! Team Plasma's not bothering me. They might be up to no good for real, but it's not my style to decide that without thinking it through."
+  say "But you're in trouble, so I've got to help. That's what I want to do!"
+  speaker "{rival}"
+  say "...Thanks."
+  speaker marlon "Marlon"
+  say "Listen, 'K? Believe in something. Searching for a stolen Pokémon is fine. Keeping Unova from freezing is fine too. Just think about why you're doing it."
+  say "I made a bit of noise, so some of them are bound to come out. Be careful, 'K!"
+  fade out 0.3
+  hide 10
+  setflag FLAG_UNOVA_HIDE_MARLON_ROUTE_21
+  fade in
+  speaker "{rival}"
+  say "What was that?! The guy doesn't stick around, does he?"
+  say "Well... I guess he was being kind in his own way. All right, I'm going in!"
+  fade out 0.3
+  hide 9
+  setflag FLAG_UNOVA_HIDE_HUGH_ROUTE_21
+  clearflag FLAG_UNOVA_HIDE_HUGH_HOLD
+  setvar VAR_UNOVA_HUMILAU 6
+  fade in
+  endscene
+  end
+
+
+script Hugh
+  face 9 player
+  speaker "{rival}"
+  say "Let's go! Team Plasma isn't getting away this time!"
+  end
+
+
+script Cheren
+  face 11 player
+  speaker "Cheren"
+  say "You can reach the Giant Chasm from Route 22. Be ready before you go, {player}."
+  end

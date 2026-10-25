@@ -1,0 +1,28 @@
+{
+  // Route 22 (plan 22 · U8, part b): the wooded hills west of Humilau City to the Giant Chasm, Black 2's, with six trainers and
+  // its balls and hidden things in the area file; our words. Colress (7, FLAG_UNOVA_HIDE_COLRESS_ROUTE_22) is shown once Hugh has
+  // sent the player here and steps out to meet them in the pass below the beach (our trigger, 752, 146 to 148,
+  // VAR_UNOVA_HUMILAU 4; unova_route_22.txt), with the Colress Machine. Black 2's Terrakion (6, FLAG_UNOVA_HIDE_TERRAKION), who
+  // crosses the road before him, is plan 22 · U10's (the Swords of Justice), as are the Giant Chasm's way in (U9) and the two
+  // things of the Shards (15, 16)
+  "area": "unova_route_22",
+  "bgmTrack": "unova/route12",
+  "heldBack": [ "15", "16" ],
+  "triggers": [
+    { "script": "Colress", "x": 752, "z": 146, "width": 1, "depth": 3, "variable": "VAR_UNOVA_HUMILAU", "value": 4 }
+  ],
+  "people": {
+    "0": { "name": "Shel", "trainer": { "dialogueBefore": "The road to the Giant Chasm is no place for beginners. Let me check your strength!", "dialogueAfter": "You'll do. You'll more than do." } },
+    "1": { "name": "Myra", "trainer": { "dialogueBefore": "I've walked every road in Unova, and this one's the steepest. Battle me while I catch my breath!", "dialogueAfter": "Out of breath and out of Pokémon." } },
+    "2": { "name": "Addison", "trainer": { "dialogueBefore": "My Pokémon were raised with love and long walks. Let me show you!", "dialogueAfter": "Love wasn't quite enough today." } },
+    "3": { "name": "Lucca", "trainer": { "dialogueBefore": "Eight Badges? Then you won't mind one more battle!", "dialogueAfter": "Badges don't lie, I suppose." } },
+    "4": { "name": "Lowell", "trainer": { "dialogueBefore": "My pack is heavy, but my Pokémon are heavier hitters!", "dialogueAfter": "Ouch. I'll carry this loss too." } },
+    "5": { "name": "Justin", "trainer": { "dialogueBefore": "These hills have strong Pokémon, and I'm stronger! Hup!", "dialogueAfter": "The hills win again. And you." } },
+    "6": { "name": "Terrakion", "npcType": "Pokemon", "species": "Terrakion", "hiddenBy": "FLAG_UNOVA_HIDE_TERRAKION", "dialog": [ "Terrakion: Gurooooh!" ] },
+    "7": { "name": "Colress", "npcType": "colress", "script": "Colress", "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_ROUTE_22", "still": true }
+  },
+  "signs": {
+    "3": "Route 22\nHumilau City to the Giant Chasm",
+    "10805": "Giant Chasm ahead"
+  }
+}

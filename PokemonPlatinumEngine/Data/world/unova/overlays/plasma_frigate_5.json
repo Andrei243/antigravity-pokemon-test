@@ -1,0 +1,22 @@
+{
+  // Kyurem's chamber in the Plasma Frigate's bow (plan 22 · U8, part b), beyond the hold's barrier, our words. Kyurem (0) lies in
+  // the well under the ice cannon; Zinzolin (1) and a grunt (4) wait before it, and as the player comes up from the hold (our
+  // trigger, 11 to 13, 18, VAR_UNOVA_HUMILAU 7) Hugh (ours, hugh_bridge, FLAG_UNOVA_HIDE_HUGH_BRIDGE) runs in for a tag battle
+  // against the two; then the Shadow Triad (2, 3, FLAG_UNOVA_HIDE_TRIAD_BRIDGE) put the two ashore on Route 21
+  // (plasma_frigate_5.txt)
+  "area": "plasma_frigate_5",
+  "bgmTrack": "unova/plasma_frigate",
+  "triggers": [
+    { "script": "Kyurem", "x": 11, "z": 18, "width": 3, "depth": 1, "variable": "VAR_UNOVA_HUMILAU", "value": 7 }
+  ],
+  "people": {
+    "0": { "name": "Kyurem", "npcType": "Pokemon", "species": "Kyurem", "hiddenBy": "", "still": true, "at": [ 12, 13 ], "dialog": [ "Kyurem: Haaahraa..." ] },
+    "1": { "name": "Zinzolin", "npcType": "zinzolin", "script": "Zinzolin", "hiddenBy": "", "still": true, "trainer": { "id": "unova_team_plasma_zinzolin", "dialogueBefore": "We will simply remove the both of you!", "dialogueAfter": "Hmph. You are smarter than you look." } },
+    "2": { "name": "Shadow Triad", "npcType": "shadow_triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_BRIDGE", "still": true, "dialog": [ "..." ] },
+    "3": { "name": "Shadow Triad", "npcType": "shadow_triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_BRIDGE", "still": true, "dialog": [ "..." ] },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "", "still": true, "trainer": { "id": "unova_team_plasma_grunt_49", "dialogueBefore": "For Lord Zinzolin! For Team Plasma!", "dialogueAfter": "Lord Zinzolin, I'm sorry!" } }
+  },
+  "npcs": [
+    { "id": "hugh_bridge", "name": "{rival}", "npcType": "hugh", "x": 13, "y": 19, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_BRIDGE" }
+  ]
+}

@@ -1,0 +1,114 @@
+# Humilau City (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/humilau_city.s, read for the order alone).
+# VAR_UNOVA_HUMILAU is the chapter's count from here to the Plasma Frigate: 0 before Hugh's word by the Gym, 1 once he has sent
+# the player to find Marlon on the beach, 2 once Marlon has gone back to his Gym, 3 once the Wave Badge is won, 4 once Hugh and
+# Marlon have had their say outside the Gym and Hugh has sent the player to Route 22, 5 once Colress has given the Colress
+# Machine there (unova_route_22.txt), 6 once Marlon has dropped the Frigate's gangplank on Route 21 (unova_route_21.txt), 7 once
+# Hugh's tag battle in the Frigate's hold is won (plasma_frigate_2.txt), 8 once the Shadow Triad have put the two back ashore
+# (plasma_frigate_5.txt) and 9 once Cheren has spoken on Route 21 and the Frigate has gone.
+
+
+script OnEnter
+  call UnovaCatchUpD
+  if var VAR_UNOVA_HUMILAU != 0 end
+  if var VAR_UNOVA_OPELUCID == 7 clearflag FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  end
+
+
+# Hugh by the Gym (our triggers outside the Marine Tube's gate and before the Gym, at 0, and his object's script)
+script HughWaits
+  if var VAR_UNOVA_OPELUCID != 7 end
+  scene "Hugh in Humilau City"
+  clearflag FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  show 0
+  face 0 player
+  emote 0 exclaim
+  speaker "{rival}"
+  say "{player}! Over here! You came through the tube too, huh?"
+  say "We'll get the DNA Splicers back from Team Plasma, no matter what. But you should beat this city's Gym Leader first. You'll need the strength."
+  say "Thing is, the Gym's empty. People say Marlon went for a swim and never came back. Try the beach south of here."
+  clearflag FLAG_UNOVA_HIDE_MARLON_BEACH
+  setvar VAR_UNOVA_HUMILAU 1
+  endscene
+  end
+
+
+script Hugh
+  face 0 player
+  speaker "{rival}"
+  if var VAR_UNOVA_HUMILAU == 0 goto First
+  if var VAR_UNOVA_HUMILAU >= 3 goto Badge
+  say "After you've got the Badge, we go looking for Team Plasma! I won't let them turn Unova into a block of ice!"
+  end
+label First
+  call HughWaits
+  end
+label Badge
+  say "Eight Badges! Now it's Team Plasma's turn."
+  end
+
+
+# Marlon on the beach steps (1): sent back to his Gym
+script Marlon
+  face 1 player
+  speaker marlon "Marlon"
+  if var VAR_UNOVA_HUMILAU != 1 goto Later
+  scene "Marlon on the beach"
+  say "Woo-hoo! The sea's just right today!"
+  say "Sup! You must be here to take on the Gym, yeah? I'm the Gym Leader, Marlon. Sorry for the wait, yo."
+  say "I was out swimming with my Pokémon, and it felt so good I kinda kept going. I'll be waiting in the Gym, 'K?"
+  fade out 0.3
+  hide 1
+  setflag FLAG_UNOVA_HIDE_MARLON_BEACH
+  clearflag FLAG_UNOVA_HIDE_MARLON_GYM
+  setvar VAR_UNOVA_HUMILAU 2
+  fade in
+  endscene
+  end
+label Later
+  say "The sea's got room for everybody, yo."
+  end
+
+
+# Coming out of the Gym with the Wave Badge (our trigger on the Gym's step, at 3): Hugh and Marlon, then Route 22
+script MarlonAndHugh
+  scene "Hugh and Marlon outside the Gym"
+  clearflag FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  clearflag FLAG_UNOVA_HIDE_MARLON_BEACH
+  place 0 784 173 left
+  place 1 782 173 right
+  show 0
+  show 1
+  face player down
+  speaker "{rival}"
+  say "You got all eight Badges! You're really something, {player}! Normally you'd head for the Pokémon League now, but... Team Plasma comes first."
+  speaker marlon "Marlon"
+  say "Sup again! What's this Team Plasma you're talking about, yo?"
+  speaker "{rival}"
+  say "They steal people's Pokémon. Like my sister's... And now they want to use a Pokémon to freeze all of Unova solid! Doesn't that make you angry?"
+  speaker marlon "Marlon"
+  say "Nope! When the sea's your home, you don't sweat that kind of thing. The sea takes in every river, the muddy ones too."
+  ask "So you reckon Team Plasma's bad, then?"
+  if no goto NotSure
+  say "I get it. They're bad, so you fight 'em. But say it in your own words first. Then you'll know what you really want to do, and why."
+  goto Leaves
+label NotSure
+  say "Shoots! Not bad. You're not sure, but you're going anyway! Still, say it in your own words first. Then you'll know what you really want to do."
+label Leaves
+  say "Well then... See ya!"
+  fade out 0.3
+  hide 1
+  setflag FLAG_UNOVA_HIDE_MARLON_BEACH
+  fade in
+  face 0 player
+  speaker "{rival}"
+  say "Man, I can't tell if that guy's laid back or just doesn't care. Doesn't matter. Our opponent is Team Plasma!"
+  say "First we have to find where they are. Let's split up! You check Route 22, west of the city. I'll look along the shore. Got it?"
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_HUGH_HUMILAU
+  clearflag FLAG_UNOVA_HIDE_COLRESS_ROUTE_22
+  setvar VAR_UNOVA_HUMILAU 4
+  fade in
+  endscene
+  end

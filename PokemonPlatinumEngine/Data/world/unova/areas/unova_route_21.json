@@ -1,0 +1,75 @@
+{
+  "key": "unova_route_21",
+  "index": 463,
+  "name": "Route 21",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Water",
+  "dayMusic": "BGM_SW_R_22_SP",
+  "nightMusic": "BGM_SW_R_22_SP",
+  "encounters": "ENCOUNTERS_ROUTE_21",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Frillish", "level": 30, "maxLevel": 45 },
+    { "species": "Mantyke", "level": 30, "maxLevel": 45 },
+    { "species": "Remoraid", "level": 35, "maxLevel": 45 },
+    { "species": "Frillish", "level": 35, "maxLevel": 45 },
+    { "species": "Frillish", "level": 35, "maxLevel": 45 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Luvdisc", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Remoraid", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Luvdisc", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 80,
+  "ripplingWater": [
+    { "species": "Jellicent", "level": 30, "maxLevel": 45 },
+    { "species": "Alomomola", "level": 30, "maxLevel": 45 },
+    { "species": "Mantine", "level": 35, "maxLevel": 45 },
+    { "species": "Alomomola", "level": 35, "maxLevel": 45 },
+    { "species": "Alomomola", "level": 35, "maxLevel": 45 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Remoraid", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Luvdisc", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Remoraid", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Octillery", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Octillery", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 782, "z": 242, "to": "seaside_cave", "toWarp": 1 },
+    { "x": 791, "z": 241, "to": "seaside_cave", "toWarp": 4 },
+    { "x": 800, "z": 241, "to": "plasma_frigate", "toWarp": 6 },
+    { "x": 783, "z": 242, "to": "seaside_cave", "toWarp": 1 },
+    { "x": 791, "z": 242, "to": "seaside_cave", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "swimmer_f", "movement": "wander_north_and_south", "x": 788, "z": 212, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SWIMMER_F_KAORU" },
+    { "id": "1", "looks": "swimmer_m", "movement": "wander_around", "x": 786, "z": 222, "facing": 3, "rangeX": 5, "rangeZ": 3, "trainer": "sees", "sight": 1, "script": "TRAINER_SWIMMER_M_KYLE" },
+    { "id": "2", "looks": "swimmer_m", "movement": "none", "x": 772, "z": 214, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_SWIMMER_M_HAROLD" },
+    { "id": "3", "looks": "swimmer_f", "movement": "none", "x": 781, "z": 199, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_SWIMMER_F_DESIREE" },
+    { "id": "4", "looks": "fisherman", "movement": "none", "x": 775, "z": 240, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": -5, "trainer": "talks", "sight": 0, "script": "TRAINER_FISHERMAN_KENZO" },
+    { "id": "5", "looks": "doctor", "movement": "look_west_and_east", "x": 780, "z": 241, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_DOCTOR_BRAID" },
+    { "id": "6", "looks": "black_belt", "movement": "none", "x": 774, "z": 233, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BLACK_BELT_KENNETH" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 783, "z": 223, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04f5", "item": "Big Pearl", "script": "7169" },
+    { "id": "8", "looks": "110", "movement": "none", "x": 774, "z": 246, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04f6", "item": "PP Up", "script": "7170" },
+    { "id": "9", "looks": "291", "movement": "none", "x": 791, "z": 242, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0357", "script": "2000" },
+    { "id": "10", "looks": "230", "movement": "none", "x": 802, "z": 241, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": -4, "hiddenBy": "FLAG_UNOVA_0x0358", "script": "2000" },
+    { "id": "11", "looks": "223", "movement": "none", "x": 791, "z": 242, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0359", "script": "6" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 796, "z": 239, "width": 1, "depth": 4, "script": "4", "variable": "VAR_UNOVA_0x4106", "value": "1" }
+  ]
+}

@@ -225,7 +225,7 @@ public class RoomPlanTests
 
     /// <summary>Unova's Battle Subway train and the World Tournament's hall (plan 22 · U6, part d): rooms of our own, laid out
     /// for what they hold and not on the hand-made rooms' plan.</summary>
-    internal static readonly string[] UnovaRooms = { "BattleSubwayTrain", "PokemonWorldTournament" };
+    internal static readonly string[] UnovaRooms = { "BattleSubwayTrain", "PokemonWorldTournament", "MarineTube" };
 
     /// <summary>The rival's room over his house (plan 01 · M11, the last rooms): no door, only the stairs, and the scene that
     /// plays as the player first comes up them (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>

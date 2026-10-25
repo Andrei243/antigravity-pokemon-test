@@ -525,7 +525,8 @@ public class UnovaTests
         Assert.Contains(Overworld.Warps, w => w.SourceX == 197 && w.SourceY == 465 && w.TargetMap == "PokemonWorldTournament"
             && w.OpenedBy == "FLAG_UNOVA_PWT_OPEN");
         // the gangway at the pier's end is the frigate's way aboard while it is moored there, and the frigate lies along it
-        var gangway = Overworld.Warps.Single(w => w.TargetMap == "PlasmaFrigate");
+        // (Route 21's gangplank, plan 22 · U8, part b, is the other way aboard)
+        var gangway = Overworld.Warps.Single(w => w.TargetMap == "PlasmaFrigate" && w.SourceX < 400);
         Assert.Equal(("FLAG_UNOVA_FRIGATE_AT_PIER", "FLAG_UNOVA_FRIGATE_SAILED"), (gangway.From, gangway.Until));
         Assert.Contains(Overworld.Props, p => p.Type == PropType.Boat && p.Covers(203, 490));
         Assert.Contains(Overworld.Triggers, t => t.Script == "PlasmaAtThePier");
@@ -535,8 +536,10 @@ public class UnovaTests
             Assert.Contains(deck.Everyone, n => n.Key == key);
         Assert.Contains(deck.Warps, w => w.TargetMap == "Unova");
         Assert.Equal(TileType.Paving, deck.GetGroundTile(13, 24));
-        // the ship's rooms are its later boardings' (plan 22 · U8)
-        Assert.DoesNotContain(deck.Warps, w => w.TargetMap.StartsWith("PlasmaFrigate_", StringComparison.Ordinal));
+        // the ship's rooms are its later boardings' (plan 22 · U8, part b: the hold, the cabins and the stern room)
+        Assert.Contains(deck.Warps, w => w.TargetMap == "PlasmaFrigate_Hold");
+        Assert.Contains(deck.Warps, w => w.TargetMap == "PlasmaFrigate_Cabins");
+        Assert.Contains(deck.Warps, w => w.TargetMap == "PlasmaFrigate_Stern");
         Assert.Contains(Walked.Value.Keys, m => m.Name == "PlasmaFrigate");
     }
 
@@ -568,7 +571,9 @@ public class UnovaTests
                 // and Anville's and Route 16's gate since part c
                 || m.Name is "tt_house01" or "h5_gate" or "h6_gate" or "h3_gate"
                 // and Mistralton's, Route 7's tower and Route 6's lab since plan 22 · U7
-                || m.Name.StartsWith("c6_", StringComparison.Ordinal) || m.Name is "c06_gym" or "r7_toh" or "sikiken" or "t7_house")
+                || m.Name.StartsWith("c6_", StringComparison.Ordinal) || m.Name is "c06_gym" or "r7_toh" or "sikiken" or "t7_house"
+                // and Opelucid's and Humilau's since plan 22 · U8, part b
+                || m.Name.StartsWith("c8_", StringComparison.Ordinal) || m.Name.StartsWith("c14_", StringComparison.Ordinal))
                 Assert.True(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is still a stand-in");
             else Assert.False(string.IsNullOrEmpty(m.StandInUntil), $"{m.Name} is no stand-in");
         }

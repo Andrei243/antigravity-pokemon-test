@@ -142,6 +142,10 @@ internal static partial class BuildingArt
             Architecture.Railyard => Pitched(WallKind.Boards, Rgb(150, 70, 48)) with { Chimney = true },
             // Mistralton's (plan 22 · U7): cream plaster under aviation-orange hips with flower boxes, the airfield town
             Architecture.Airfield => Pitched(WallKind.Plaster, Rgb(238, 134, 50), RoofShape.Hip) with { FlowerBoxes = true },
+            // Opelucid's (plan 22 · U8, part b): pale panels under dragon-violet hips with ribbon windows, the modern city
+            Architecture.Skyline => Pitched(WallKind.Panel, Rgb(104, 84, 164), RoofShape.Hip) with { Window = WindowKind.Ribbon },
+            // Humilau's: white boards under lagoon-aqua gables with flower boxes, the houses on stilts over the sea
+            Architecture.Stilts => Pitched(WallKind.Clapboard, Rgb(52, 176, 186)) with { FlowerBoxes = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

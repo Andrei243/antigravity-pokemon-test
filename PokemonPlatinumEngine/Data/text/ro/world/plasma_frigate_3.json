@@ -1,0 +1,67 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The stern is off limits! Especially to you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Off limits... to me, now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Our scientist is busy. Busy beating you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Okay, he's still busy. I'm not."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "colress_stern": {
+      "name": {
+        "en": [
+          "Colress"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -200,7 +200,25 @@
     { "name": "OpelucidCity_PokemonCenter", "matrix": 13, "area": "opelucid_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
     { "name": "OpelucidCity_Gym", "matrix": 66, "area": "opelucid_city_gym", "trees": "Round", "setting": "Indoors" },
     { "name": "ShoppingMallNine_1F", "matrix": 90, "area": "shopping_mall", "trees": "Round", "setting": "Indoors" },
-    { "name": "ShoppingMallNine_2F", "matrix": 141, "area": "shopping_mall_2", "trees": "Round", "setting": "Indoors" }
+    { "name": "ShoppingMallNine_2F", "matrix": 141, "area": "shopping_mall_2", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U8, part b: the Marine Tube's two gates (the tube, on rails, is a map of ours: Data/maps/MarineTube.json),
+    // Humilau City's rooms and Gym, the Seaside Cave's two floors and five of the Plasma Frigate's rooms below its deck
+    { "name": "MarineTubeGate_Undella", "matrix": 271, "area": "bridge_gate_gate_8", "trees": "Round", "setting": "Indoors" },
+    { "name": "MarineTubeGate_Humilau", "matrix": 272, "area": "bridge_gate_gate_9", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_House1", "matrix": 264, "area": "humilau_city_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_House2", "matrix": 264, "area": "humilau_city_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_House3", "matrix": 264, "area": "humilau_city_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_House4", "matrix": 264, "area": "humilau_city_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_House5", "matrix": 264, "area": "humilau_city_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_PokemonCenter", "matrix": 13, "area": "humilau_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "HumilauCity_Gym", "matrix": 336, "area": "humilau_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "SeasideCave_1F", "matrix": 312, "area": "seaside_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "SeasideCave_B1F", "matrix": 313, "area": "seaside_cave_2", "trees": "Round", "setting": "Cave" },
+    { "name": "PlasmaFrigate_Hold", "matrix": 339, "area": "plasma_frigate_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "PlasmaFrigate_Stern", "matrix": 340, "area": "plasma_frigate_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "PlasmaFrigate_Bridge", "matrix": 342, "area": "plasma_frigate_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "PlasmaFrigate_Cabins", "matrix": 344, "area": "plasma_frigate_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "PlasmaFrigate_Cabin", "matrix": 346, "area": "plasma_frigate_9", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -237,6 +255,8 @@
     "undella_gate", "undella_bay", "unova_route_13", "unova_route_13_2", "unova_route_13_3",
     "lacunosa_town", "lacunosa_town_pokemon_center", "lacunosa_town_2", "lacunosa_town_3", "lacunosa_town_4", "lacunosa_town_5",
     // plan 22 · U8, part a
-    "unova_route_12", "bridge_gate_gate_5", "village_bridge", "bridge_gate_gate_4", "unova_route_11", "unova_route_11_2", "opelucid_gate_gate_2", "opelucid_city", "opelucid_city_2", "opelucid_city_3", "opelucid_city_4", "opelucid_city_5", "opelucid_city_6", "opelucid_city_7", "opelucid_city_8", "opelucid_city_9", "opelucid_city_10", "opelucid_city_11", "opelucid_city_gym", "opelucid_city_pokemon_center", "opelucid_gate", "unova_route_9", "shopping_mall", "shopping_mall_2"
+    "unova_route_12", "bridge_gate_gate_5", "village_bridge", "bridge_gate_gate_4", "unova_route_11", "unova_route_11_2", "opelucid_gate_gate_2", "opelucid_city", "opelucid_city_2", "opelucid_city_3", "opelucid_city_4", "opelucid_city_5", "opelucid_city_6", "opelucid_city_7", "opelucid_city_8", "opelucid_city_9", "opelucid_city_10", "opelucid_city_11", "opelucid_city_gym", "opelucid_city_pokemon_center", "opelucid_gate", "unova_route_9", "shopping_mall", "shopping_mall_2",
+    // plan 22 · U8, part b
+    "bridge_gate_gate_8", "bridge_gate_gate_9", "humilau_city", "humilau_city_2", "humilau_city_3", "humilau_city_4", "humilau_city_5", "humilau_city_6", "humilau_city_pokemon_center", "humilau_city_gym", "unova_route_22", "unova_route_21", "seaside_cave", "seaside_cave_2", "plasma_frigate_2", "plasma_frigate_3", "plasma_frigate_5", "plasma_frigate_7", "plasma_frigate_9"
   ]
 }

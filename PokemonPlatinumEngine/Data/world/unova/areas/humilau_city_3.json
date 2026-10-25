@@ -1,0 +1,30 @@
+{
+  "key": "humilau_city_3",
+  "index": 467,
+  "name": "Humilau City",
+  "matrix": 264,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_14",
+  "nightMusic": "BGM_SW_C_14",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "humilau_city", "toWarp": 3 },
+    { "x": 6, "z": 9, "to": "humilau_city", "toWarp": 3 },
+    { "x": 7, "z": 9, "to": "humilau_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "roughneck", "movement": "none", "x": 7, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "waitress", "movement": "wander_around", "x": 3, "z": 4, "facing": 3, "rangeX": 3, "rangeZ": 3, "script": "2" }
+  ],
+  "signs": [
+    { "x": 10, "z": 5, "type": 2, "script": "8008", "item": "Full Restore", "flag": "FLAG_UNOVA_0x0b0c" }
+  ],
+  "triggers": []
+}

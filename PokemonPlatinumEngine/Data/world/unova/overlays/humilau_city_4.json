@@ -1,0 +1,10 @@
+{
+  // A house of Humilau City on its stilts (plan 22 · U8, part b): a family on holiday, our words
+  "area": "humilau_city_4",
+  "bgmTrack": "unova/humilau",
+  "people": {
+    "0": { "name": "Backers", "npcType": "twin", "hiddenBy": "", "dialog": [ "We rented this house for the whole summer! I never want to go home." ] },
+    "1": { "name": "Lady", "npcType": "lady", "hiddenBy": "", "dialog": [ "My husband said we were coming for a week. That was a month ago." ] },
+    "2": { "name": "Rich Boy", "npcType": "rich_boy", "hiddenBy": "", "dialog": [ "Father says the sea air is good for the brain. I've been breathing it all day, just to be sure." ] }
+  }
+}

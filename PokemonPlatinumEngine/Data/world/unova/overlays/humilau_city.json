@@ -1,0 +1,35 @@
+{
+  // Humilau City (plan 22 · U8, part b): Black 2's city of houses on stilts over a calm sea, walked on boardwalks of planks
+  // that are its chunks' second grid, our words. Hugh (0, FLAG_UNOVA_HIDE_HUGH_HUMILAU) waits by the Gym once Opelucid City's
+  // chapter has sent the player here, and his word (our triggers outside the Marine Tube's gate, 790, 179, and before the Gym,
+  // 786 to 790, 174, VAR_UNOVA_HUMILAU 0) sends them to look for Marlon (1, FLAG_UNOVA_HIDE_MARLON_BEACH) on the beach; the
+  // Badge won, Hugh and Marlon meet the player as they come out of the Gym (783, 173, at 3) and Hugh sends them to Route 22
+  // (humilau_city.txt). Black 2's spare boy (5) and the holiday-maker of a later day (15) are left out
+  "area": "humilau_city",
+  "bgmTrack": "unova/humilau",
+  "architecture": "Stilts",
+  "heldBack": [ "5", "15" ],
+  "triggers": [
+    { "script": "HughWaits", "x": 790, "z": 179, "width": 1, "depth": 1, "variable": "VAR_UNOVA_HUMILAU", "value": 0 },
+    { "script": "HughWaits", "x": 786, "z": 174, "width": 5, "depth": 1, "variable": "VAR_UNOVA_HUMILAU", "value": 0 },
+    { "script": "MarlonAndHugh", "x": 783, "z": 173, "width": 1, "depth": 1, "variable": "VAR_UNOVA_HUMILAU", "value": 3 }
+  ],
+  "people": {
+    "0": { "name": "{rival}", "npcType": "hugh", "script": "Hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_HUMILAU", "still": true },
+    "1": { "name": "Marlon", "npcType": "swimmer_m", "script": "Marlon", "hiddenBy": "FLAG_UNOVA_HIDE_MARLON_BEACH", "still": true },
+    "2": { "name": "Lady", "npcType": "lady", "hiddenBy": "", "dialog": [ "Eek! Hee hee! You'll never catch me!" ] },
+    "3": { "name": "Rich Boy", "npcType": "rich_boy", "hiddenBy": "", "dialog": [ "Ha ha! Wait for me! I'm going to catch you!" ] },
+    "6": { "name": "Photographer", "npcType": "veteran", "hiddenBy": "", "dialog": [ "A board you put your face through for a picture! I love them. Some people call them photo boards, but they're wrong." ] },
+    "9": { "name": "Woman", "npcType": "middle_aged_woman", "dialog": [ "You're here for the Gym? Good luck finding Marlon. He goes wherever the waves take him." ] },
+    "10": { "name": "Swimmer", "npcType": "swimmer_f", "dialog": [ "Floating in the waves like this, I feel like a mermaid. They say there was a Gym Leader like that in Kanto once." ] },
+    "11": { "name": "Swimmer", "npcType": "swimmer_f", "dialog": [ "Do you know the Seaside Cave? Surf down Route 21 and you'll find it. Go all the way through and you come out by Undella Town." ] },
+    "12": { "name": "Lady", "npcType": "lady", "dialog": [ "This dress is so light and comfortable. Humilau makes you want to wear nothing but summer clothes." ] },
+    "13": { "name": "Black Belt", "npcType": "black_belt", "dialog": [ "Nobody controls the sea, or nature. People and Pokémon have to learn to live alongside it." ] },
+    "14": { "name": "Artist", "npcType": "artist", "dialog": [ "Aaah. Another beautiful day. How long have I been on holiday now? All this sunshine is turning my brain to sand." ] }
+  },
+  "signs": {
+    "16": "Humilau City\nCalm and sparkling seas",
+    "17": "Marine Tube ahead\nThe walk-through aquarium",
+    "18": "Humilau City Pokémon Gym\nLeader: Marlon\nMore splash than the sea!"
+  }
+}

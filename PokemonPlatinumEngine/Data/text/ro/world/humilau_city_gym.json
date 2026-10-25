@@ -1,0 +1,86 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Marlon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Doyle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Waves come in and go out, and so do challengers. Let's see if you stay!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You rode that one all the way in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Melina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The Gym may look like a resort, but nobody here is on holiday!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Splashed! Marlon's waiting on the dock."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "3": {
+      "en": [
+        "Humilau City Pokémon Gym\nLeader: Marlon\nCertified Trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -82,6 +82,13 @@ partial class Harness
             ("u151_opelucid_gym_lane_day", "u152_opelucid_gym_lane_night", "Unova", 405, 150, Direction.Up),
             ("u153_route9_day", "u154_route9_night", "Unova", 345, 175, Direction.Right),
             ("u155_mall_front_day", "u156_mall_front_night", "Unova", 357, 168, Direction.Up),
+            // Plan 22 · U8, part b: the Marine Tube, Humilau City's square, beach and boardwalks, Route 22's pass and Route 21's beach
+            ("u172_marine_tube_day", "u173_marine_tube_night", "MarineTube", 5, 20, Direction.Up),
+            ("u174_humilau_square_day", "u175_humilau_square_night", "Unova", 784, 178, Direction.Up),
+            ("u176_humilau_beach_day", "u177_humilau_beach_night", "Unova", 781, 187, Direction.Down),
+            ("u178_humilau_boardwalks_day", "u179_humilau_boardwalks_night", "Unova", 786, 150, Direction.Up),
+            ("u180_route22_pass_day", "u181_route22_pass_night", "Unova", 752, 147, Direction.Left),
+            ("u182_route21_beach_day", "u183_route21_beach_night", "Unova", 796, 242, Direction.Right),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -184,6 +191,21 @@ partial class Harness
             ("u169_mall_ground", "ShoppingMallNine_1F", 15, 26, Direction.Up),
             ("u170_mall_upper", "ShoppingMallNine_1F", 14, 8, Direction.Up),
             ("u171_mall_back_room", "ShoppingMallNine_2F", 6, 6, Direction.Up),
+            // plan 22 · U8, part b: the tube's gates, a house on the water, the Pokémon Center, the Gym's walkway and dock, the Seaside
+            // Cave's two floors and the Frigate's hold, cabins, stern room and Kyurem's chamber
+            ("u184_tube_gate_undella", "MarineTubeGate_Undella", 20, 8, Direction.Right),
+            ("u185_tube_gate_humilau", "MarineTubeGate_Humilau", 10, 8, Direction.Up),
+            ("u186_humilau_house", "HumilauCity_House1", 6, 8, Direction.Up),
+            ("u187_humilau_center", "HumilauCity_PokemonCenter", 7, 18, Direction.Up),
+            ("u188_humilau_gym_walkway", "HumilauCity_Gym", 16, 72, Direction.Up),
+            ("u189_humilau_gym_dock", "HumilauCity_Gym", 25, 62, Direction.Up),
+            ("u190_seaside_cave", "SeasideCave_1F", 10, 15, Direction.Up),
+            ("u191_seaside_cave_crustle", "SeasideCave_1F", 27, 11, Direction.Right),
+            ("u192_seaside_cave_lower", "SeasideCave_B1F", 12, 16, Direction.Right),
+            ("u193_frigate_hold", "PlasmaFrigate_Hold", 11, 14, Direction.Up),
+            ("u194_frigate_cabins", "PlasmaFrigate_Cabins", 16, 24, Direction.Down),
+            ("u195_frigate_stern", "PlasmaFrigate_Stern", 11, 2, Direction.Down),
+            ("u196_frigate_kyurem", "PlasmaFrigate_Bridge", 12, 19, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

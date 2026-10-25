@@ -1,0 +1,30 @@
+# The Marine Tube (a glass walk along the sea floor, light rippling through the water above): a slow celesta tune in E minor
+# drifting over a held string pad, a harp's falling arpeggios and a deep, slow bass, no beat. The tube plays the same by day and
+# by night. Original composition for this game (plan 22 · U8, part b).
+title The Marine Tube
+tempo 84
+meter 4/4
+reverb 0.42
+night none
+
+track lead celesta vol=0.7 pan=0.14 rev=0.4
+  L o5 e4 g4 b2 | o5 a4 g4 e2 | o5 c4 e4 g2 | o5 f+4 a4 b2 |
+  o5 e4 g4 o6 e2 | o5 d4 o5 b4 g2 | o5 a4 g4 f+4 e4 | o5 d+2 f+2 |
+  o5 e4 g4 b2 | o5 a4 g4 e2 | o5 c4 e4 g2 | o5 f+4 a4 b2 |
+  o5 g4 b4 o6 d2 | o5 c4 o5 b4 a2 | o5 f+4 a4 b4 f+4 | o5 e1 |
+
+track pad strings vol=0.42 pan=-0.12 rev=0.46
+  L o4 (e g b)1 | o4 (e a >c)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (e g b)1 | o4 (g b >d)1 | o4 (c e a)1 | o4 (b >d+ f+)1 |
+  o4 (e g b)1 | o4 (e a >c)1 | o4 (c e g)1 | o4 (d f+ a)1 |
+  o4 (g b >d)1 | o4 (e a >c)1 | o4 (b >d+ f+)1 | o4 (e g b)1 |
+
+track ripple harp vol=0.38 pan=0.22 rev=0.36
+  L [ o5 b8 g8 e8 o4 b8 ]2 | [ o5 a8 e8 c8 o4 a8 ]2 | [ o5 g8 e8 c8 o4 g8 ]2 | [ o5 a8 f+8 d8 o4 a8 ]2 |
+  [ o5 b8 g8 e8 o4 b8 ]2 | [ o5 b8 g8 d8 o4 b8 ]2 | [ o5 a8 e8 c8 o4 a8 ]2 | [ o5 f+8 d+8 o4 b8 f+8 ]2 |
+  [ o5 b8 g8 e8 o4 b8 ]2 | [ o5 a8 e8 c8 o4 a8 ]2 | [ o5 g8 e8 c8 o4 g8 ]2 | [ o5 a8 f+8 d8 o4 a8 ]2 |
+  [ o5 b8 g8 d8 o4 b8 ]2 | [ o5 a8 e8 c8 o4 a8 ]2 | [ o5 f+8 d+8 o4 b8 f+8 ]2 | [ o5 b8 g8 e8 o4 b8 ]2 |
+
+track bass contrabass vol=0.62 rev=0.2
+  L o2 e1 | o2 a1 | o2 c1 | o2 d1 | o2 e1 | o2 g1 | o2 a1 | o2 b1 |
+  o2 e1 | o2 a1 | o2 c1 | o2 d1 | o2 g1 | o2 a1 | o2 b1 | o2 e1 |

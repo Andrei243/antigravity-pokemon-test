@@ -1,0 +1,32 @@
+{
+  "key": "plasma_frigate_5",
+  "index": 556,
+  "name": "Plasma Frigate",
+  "matrix": 342,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_D_27_F_AJITO",
+  "nightMusic": "BGM_SW_D_27_F_AJITO",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 20, "to": "plasma_frigate_2", "toWarp": 1 },
+    { "x": 12, "z": 20, "to": "plasma_frigate_12", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "121", "movement": "none", "x": 11, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": -2, "hiddenBy": "FLAG_UNOVA_0x038d", "script": "2000" },
+    { "id": "1", "looks": "302", "movement": "none", "x": 12, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0346", "script": "2000" },
+    { "id": "2", "looks": "182", "movement": "none", "x": 14, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0347", "script": "2000" },
+    { "id": "3", "looks": "182", "movement": "none", "x": 10, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0347", "script": "2000" },
+    { "id": "4", "looks": "team_plasma_grunt_m", "movement": "none", "x": 16, "z": 16, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0346", "script": "2000" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 11, "z": 18, "width": 3, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x4100", "value": "1" }
+  ]
+}

@@ -1,0 +1,68 @@
+# The Humilau Gym (plan 22 · U8, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/humilau_city_gym.s, read for the order alone).
+#
+# Black 2's pool of lily pads is not walked here: the walkway from the door, the cross-walk with two ace trainers on it and the
+# dock where Marlon (0) waits once he is back from his swim (VAR_UNOVA_HUMILAU 2). His battle (Black 2's TRAINER_LEADER_MARLON;
+# _2 is the Challenge Mode's, plan 13's) gives the Wave Badge, the region's eighth (`givebadge wave`), and TM55
+# (FLAG_UNOVA_GOT_TM55), which our data's table, Platinum's, fills with its own move; then he goes out ahead (3).
+
+
+script OnEnter
+  call UnovaCatchUpD
+  end
+
+
+script GymGuide
+  face 7 player
+  speaker "Guide"
+  if not flag FLAG_UNOVA_GOT_WATER_HUMILAU goto Water
+  if badge wave goto Won
+  if var VAR_UNOVA_HUMILAU < 2 goto Away
+  say "Most days you'd hop the lily pads and slide over the water. Today the pads are tied up, so the walkway takes you to the dock."
+  say "Water-type Pokémon don't like Grass and Electric moves. Remember that!"
+  end
+label Water
+  say "This Gym may feel like a resort, but the Gym Leader's no pushover! Here's a little something. Stay sharp!"
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_HUMILAU
+  end
+label Away
+  say "If you're looking for the Gym Leader, he went swimming off into the sea, shouting about the waves! Try looking for him."
+  end
+label Won
+  say "You beat Marlon! Now you've got every Badge in Unova. That's something to shout about!"
+  end
+
+
+script Marlon
+  face 0 player
+  speaker marlon "Marlon"
+  if badge wave goto Won
+  scene "Marlon's battle"
+  say "Sup! Here already, huh? You look strong! Shoots! Let's do this!"
+  battle 0 as "unova_leader_marlon"
+  say "You don't just look strong, you're strong for real! I got swept right away, yo."
+  say "Oh yeah. I was so surprised I almost forgot! I've gotta give you this."
+  givebadge wave
+  text "{player} received the Wave Badge from Marlon!"
+  say "That's the Wave Badge, Unova's newest Gym Badge! Pretty sweet, right? Now you've got all eight, so any Pokémon will listen to you."
+  say "Oh yeah, I've got a TM for you too."
+  give "TM55"
+  setflag FLAG_UNOVA_GOT_TM55
+  say "Use it when the waves are with you, 'K? Shoots! I'm off, then. Hope it comes in handy!"
+  fade out 0.3
+  hide 0
+  setflag FLAG_UNOVA_HIDE_MARLON_GYM
+  if var VAR_UNOVA_HUMILAU < 3 setvar VAR_UNOVA_HUMILAU 3
+  fade in
+  endscene
+  end
+label Won
+  if not flag FLAG_UNOVA_GOT_TM55 goto Tm
+  say "Waves can be rough or calm, but it's still the same sea. There's lots of ways to look at the same thing, yo."
+  end
+label Tm
+  say "Whoa, you forgot your TM! Here."
+  give "TM55"
+  setflag FLAG_UNOVA_GOT_TM55
+  end

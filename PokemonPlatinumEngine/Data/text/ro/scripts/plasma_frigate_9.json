@@ -1,0 +1,54 @@
+{
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See these pictures? The legendary Pokémon that made the Unova region. This one's Reshiram..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...and this one's Zekrom. With Pokémon like these, ruling Unova would be easy, right? Too bad we don't have either. Yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Switch": [
+    {
+      "en": [
+        "There's a switch on the wall marked BARRIER. Press it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! From behind the wall came the sound of a barrier switching off."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The switch marked BARRIER is off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

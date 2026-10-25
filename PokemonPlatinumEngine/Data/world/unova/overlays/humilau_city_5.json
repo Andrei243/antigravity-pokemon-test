@@ -1,0 +1,10 @@
+{
+  // A house of Humilau City on its stilts (plan 22 · U8, part b): a doctor's, our words
+  "area": "humilau_city_5",
+  "bgmTrack": "unova/humilau",
+  "people": {
+    "0": { "name": "Nurse", "npcType": "Nurse", "dialog": [ "The doctor sees people and Pokémon both. Today it's mostly sunburn." ] },
+    "1": { "name": "Doctor", "npcType": "scientist", "dialog": [ "Swim, rest, eat well. That's the whole of my medicine in Humilau, and it works." ] },
+    "2": { "name": "Audino", "npcType": "Pokemon", "species": "Audino", "dialog": [ "Audino: Dabun!" ] }
+  }
+}
