@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     }
@@ -25,7 +25,7 @@
         "The portrait has fallen from the wall."
       ],
       "text": [
-        ""
+        "Portretul a căzut de pe perete."
       ]
     },
     "3": {
@@ -33,7 +33,7 @@
         "Nobody saw it change, but this picture now hangs upside down."
       ],
       "text": [
-        ""
+        "Nimeni nu a văzut când s-a schimbat, dar acum această imagine atârnă cu susul în jos."
       ]
     }
   }

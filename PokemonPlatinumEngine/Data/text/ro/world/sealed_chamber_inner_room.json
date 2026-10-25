@@ -4,7 +4,7 @@
       "Sealed Chamber"
     ],
     "text": [
-      ""
+      "Camera Sigilată"
     ]
   },
   "people": {},
@@ -14,7 +14,7 @@
         "The dots tell of a people. In this cave we lived,\nand the cave gave us everything we had."
       ],
       "text": [
-        ""
+        "Punctele povestesc despre un popor. În această peșteră am trăit,\niar peștera ne-a dat tot ce aveam."
       ]
     },
     "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2": {
@@ -22,7 +22,7 @@
         "The dots go on. All we owned we owed to the\nPokémon, who shared the land with us."
       ],
       "text": [
-        ""
+        "Punctele continuă. Tot ce posedam, datorăm\nPokémonilor, care împărțeau pământul cu noi."
       ]
     },
     "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3": {
@@ -30,7 +30,7 @@
         "The dots grow stern. But we sealed the Pokémon\naway, and shut them in the dark."
       ],
       "text": [
-        ""
+        "Punctele devin aspre. Dar i-am sigilat pe\nPokémoni și i-am închis în întuneric."
       ]
     },
     "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4": {
@@ -38,7 +38,7 @@
         "The dots are crowded here. We feared their\npower, and we feared what it might do."
       ],
       "text": [
-        ""
+        "Punctele sunt înghesuite aici. Ne temeam de\nputerea lor și de ce ar putea face."
       ]
     },
     "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5": {
@@ -46,7 +46,7 @@
         "The dots are steadier again. Those who come\nwith courage and with hope, let them go on."
       ],
       "text": [
-        ""
+        "Punctele sunt iar mai line. Cei care vin\ncu curaj și speranță, lăsați-i să treacă."
       ]
     },
     "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6": {
@@ -54,7 +54,7 @@
         "The last dots: open the door, and an eternal\nPokémon waits behind it."
       ],
       "text": [
-        ""
+        "Ultimele puncte: deschide ușa, iar un\nPokémon veșnic așteaptă în spatele ei."
       ]
     }
   }

@@ -5,7 +5,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinar"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is Southern Island. Nobody lives here, and I only come when the Champion's pass is shown."
       ],
       "text": [
-        ""
+        "Aceasta este Southern Island. Nu locuiește nimeni aici, iar eu vin doar când se arată permisul Campionului."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall I take you back to Lilycove?"
       ],
       "text": [
-        ""
+        "Să te duc înapoi la Lilycove?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Aye. Hold on tight."
       ],
       "text": [
-        ""
+        "Da. Ține-te bine."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} sailed back to Lilycove City..."
       ],
       "text": [
-        ""
+        "{player} s-a întors cu vaporul în Lilycove City..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "As you like. I'll be here when you're ready."
       ],
       "text": [
-        ""
+        "Cum vrei. Voi fi aici când ești gata."
       ]
     }
   ]

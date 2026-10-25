@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Policeman"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Come in off the road by sunset, or the whole town will wonder where you've got to."
         ],
         "text": [
-          ""
+          "Intră de pe drum până la apus, altfel tot orașul se va întreba unde ai dispărut."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Psychic"
         ],
         "text": [
-          ""
+          "Medium"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The people of this town sleep early and rise early. I sense a very good habit."
         ],
         "text": [
-          ""
+          "Oamenii din orașul acesta se culcă devreme și se trezesc devreme. Simt un obicei foarte bun."
         ]
       }
     }

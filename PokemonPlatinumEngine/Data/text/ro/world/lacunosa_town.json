@@ -6,7 +6,7 @@
           "Storyteller"
         ],
         "text": [
-          ""
+          "Povestitoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Welcome to Lacunosa Town! Everyone here lives like clockwork, from morning to night. If you spend the day in the sun, you sleep like a baby at night."
         ],
         "text": [
-          ""
+          "Bun venit în Lacunosa Town! Toți de aici trăiesc ca ceasul, de dimineață până seara. Dacă îți petreci ziua la soare, dormi ca un copil noaptea."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlărița"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The monster that comes out at night is a Pokémon, isn't it? It must be terrifying if the whole town keeps to the rules because of it."
         ],
         "text": [
-          ""
+          "Monstrul care iese noaptea e un Pokémon, nu-i așa? Trebuie să fie înfricoșător dacă tot orașul respectă regulile din cauza lui."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "My grandmother's stories were about Kyurem, it turns out. Old stories sometimes have a kernel of truth in them."
         ],
         "text": [
-          ""
+          "Poveștile bunicii mele erau despre Kyurem, se pare. Poveștile vechi au uneori un sâmbure de adevăr."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Parasol Lady"
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "There are so many people in the world, and each has a different way of thinking about things."
         ],
         "text": [
-          ""
+          "Sunt atât de mulți oameni în lume, iar fiecare gândește diferit despre lucruri."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Policeman"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Since I came to this post there's been nothing for me to do. Nobody goes out at night, so it's very peaceful."
         ],
         "text": [
-          ""
+          "De când am venit la postul acesta, n-am avut nimic de făcut. Nimeni nu iese noaptea, așa că e foarte liniște."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Prof. Juniper"
         ],
         "text": [
-          ""
+          "Prof. Juniper"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "This is the place, {player}! Come along."
         ],
         "text": [
-          ""
+          "Aici este locul, {player}! Vino."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Breeder"
         ],
         "text": [
-          ""
+          "Crescătorul"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "My Pokémon runs around all by itself. Maybe it doesn't need a Trainer?"
         ],
         "text": [
-          ""
+          "Pokémonul meu aleargă singur peste tot. Poate nu are nevoie de Antrenor?"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Herdier"
         ],
         "text": [
-          ""
+          "Herdier"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "Herdier: Gahoo! Gahoo!"
         ],
         "text": [
-          ""
+          "Herdier: Gahoo! Gahoo!"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "Come along, {player}! Hee hee, I beat you here!"
         ],
         "text": [
-          ""
+          "Hai, {player}! Hi hi, am ajuns înaintea ta!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Zinzolin"
         ],
         "text": [
-          ""
+          "Zinzolin"
         ]
       },
       "before": {
@@ -186,7 +186,7 @@
           "Oh, for crying out loud. How troublesome."
         ],
         "text": [
-          ""
+          "Of, pentru numele lui Dumnezeu. Ce supărător."
         ]
       },
       "after": {
@@ -194,7 +194,7 @@
           "You have the look of a certain child I met two years ago."
         ],
         "text": [
-          ""
+          "Semeni cu un anumit copil pe care l-am întâlnit acum doi ani."
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -212,7 +212,7 @@
           "We serve Lord Zinzolin! We're not afraid of kids!"
         ],
         "text": [
-          ""
+          "Îl slujim pe Lordul Zinzolin! Nu ne e frică de copii!"
         ]
       },
       "after": {
@@ -220,7 +220,7 @@
           "That wasn't in the plan. Not at all!"
         ],
         "text": [
-          ""
+          "Asta nu era în plan. Deloc!"
         ]
       }
     },
@@ -230,7 +230,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     }
@@ -241,7 +241,7 @@
         "Lacunosa Town\nMethodical and orderly, for safety's sake"
       ],
       "text": [
-        ""
+        "Lacunosa Town\nMetodic și ordonat, de dragul siguranței"
       ]
     }
   }

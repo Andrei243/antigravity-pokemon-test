@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfana"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "A holiday by the sea, a rest at the Pokémon Center and an ice cream on the sand. What more could I ask for?"
         ],
         "text": [
-          ""
+          "O vacanță la mare, o odihnă la Pokémon Center și o înghețată pe nisip. Ce aș putea cere mai mult?"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The sun is lovely, but my Pokémon get tired of the heat. A visit here sets them right."
         ],
         "text": [
-          ""
+          "Soarele e minunat, dar Pokémonii mei obosesc de căldură. O vizită aici îi pune pe picioare."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "I came to Undella for a rest and stayed for the swimming. My Pokémon came for the food."
         ],
         "text": [
-          ""
+          "Am venit în Undella să mă odihnesc și am rămas pentru înot. Pokémonii mei au venit pentru mâncare."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Audino"
         ],
         "text": [
-          ""
+          "Audino"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "Audino: Dii!"
         ],
         "text": [
-          ""
+          "Audino: Dii!"
         ]
       }
     }
