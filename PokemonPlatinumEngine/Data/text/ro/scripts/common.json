@@ -329,7 +329,7 @@
         "Oh... I'm sorry. This run of yours goes without our care, so I can't see to your Pokémon here."
       ],
       "text": [
-        ""
+        "Oh... Îmi pare rău. Parcursul tău se desfășoară fără îngrijirea noastră, așa că nu pot avea grijă de Pokémonii tăi aici."
       ]
     },
     {
@@ -337,7 +337,7 @@
         "They'll have to rest and mend on their own. Good luck out there!"
       ],
       "text": [
-        ""
+        "Va trebui să se odihnească și să se refacă singuri. Mult noroc acolo!"
       ]
     }
   ],
@@ -2357,7 +2357,7 @@
         "The boulder dropped into the hole and filled it in! The way across is open."
       ],
       "text": [
-        ""
+        "Bolovanul a căzut în groapă și a umplut-o! Drumul de dincolo e liber."
       ]
     }
   ],
@@ -2433,7 +2433,7 @@
         "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
       ],
       "text": [
-        ""
+        "Ai deja o bază secretă. O muți aici? Tot ce e în cea veche se întoarce în PC-ul tău."
       ]
     },
     {
@@ -2441,7 +2441,7 @@
         "There's a small indent in the rock wall here. Use Secret Power?"
       ],
       "text": [
-        ""
+        "Aici e o mică scobitură în peretele de stâncă. Folosești Secret Power?"
       ]
     },
     {
@@ -2449,7 +2449,7 @@
         "This big tree looks as if it might drop a vine. Use Secret Power?"
       ],
       "text": [
-        ""
+        "Copacul acesta mare pare să poată lăsa jos o liană. Folosești Secret Power?"
       ]
     },
     {
@@ -2457,7 +2457,7 @@
         "This clump of grass looks as if it might move aside. Use Secret Power?"
       ],
       "text": [
-        ""
+        "Tufa aceasta de iarbă pare că s-ar putea da la o parte. Folosești Secret Power?"
       ]
     },
     {
@@ -2465,7 +2465,7 @@
         "There's a small indent in the rock wall. A Pokémon's move might open it up."
       ],
       "text": [
-        ""
+        "E o mică scobitură în peretele de stâncă. Atacul unui Pokémon ar putea-o deschide."
       ]
     },
     {
@@ -2473,7 +2473,7 @@
         "This big tree looks as if a vine could drop from it, if only something shook it loose."
       ],
       "text": [
-        ""
+        "Copacul acesta mare pare că ar putea lăsa jos o liană, dacă l-ar scutura ceva."
       ]
     },
     {
@@ -2481,7 +2481,7 @@
         "If this clump of grass could be moved aside, there might be a way in."
       ],
       "text": [
-        ""
+        "Dacă tufa aceasta de iarbă ar putea fi dată la o parte, poate că ar fi o intrare."
       ]
     }
   ],
@@ -2491,7 +2491,7 @@
         "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
       ],
       "text": [
-        ""
+        "Ai deja o bază secretă. O muți aici? Tot ce e în cea veche se întoarce în PC-ul tău."
       ]
     }
   ],
@@ -2501,7 +2501,7 @@
         "A small cavern opened up in the rock!"
       ],
       "text": [
-        ""
+        "În stâncă s-a deschis o mică peșteră!"
       ]
     },
     {
@@ -2509,7 +2509,7 @@
         "A thick vine dropped down from the tree!"
       ],
       "text": [
-        ""
+        "O liană groasă a căzut din copac!"
       ]
     },
     {
@@ -2517,7 +2517,7 @@
         "The grass parted on a small way in!"
       ],
       "text": [
-        ""
+        "Iarba s-a dat la o parte, lăsând o mică intrare!"
       ]
     }
   ],
@@ -2527,7 +2527,7 @@
         "The base's PC hummed into life."
       ],
       "text": [
-        ""
+        "PC-ul bazei a prins viață zumzăind."
       ]
     },
     {
@@ -2539,11 +2539,11 @@
         "LOG OFF"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce ai vrea să faci?",
+        "DECOREAZĂ",
+        "ÎMPACHETEAZĂ",
+        "REGISTRU",
+        "DECONECTARE"
       ]
     },
     {
@@ -2551,7 +2551,7 @@
         "Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again."
       ],
       "text": [
-        ""
+        "Împachetezi și pleci? Tot ce e aici se întoarce în PC-ul tău, iar locul redevine un loc obișnuit."
       ]
     },
     {
@@ -2559,7 +2559,7 @@
         "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
       ],
       "text": [
-        ""
+        "Nicio bază secretă a vreunui prieten nu e înregistrată. Baza unui prieten se obține prin conectare, iar acum nu e nimic conectat."
       ]
     }
   ]

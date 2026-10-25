@@ -5,7 +5,7 @@
         "Station Agent"
       ],
       "text": [
-        ""
+        "Agentul stației"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is the Anville Town Line. Our train runs out to Anville Town, where the line ends, and back again all day."
       ],
       "text": [
-        ""
+        "Aceasta este Linia Orașului Anville. Trenul nostru merge până în Orașul Anville, unde se termină linia, și înapoi, toată ziua."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Will you ride the train to Anville Town?"
       ],
       "text": [
-        ""
+        "Mergi cu trenul spre Orașul Anville?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Then please board and take a seat. We'll be leaving shortly!"
       ],
       "text": [
-        ""
+        "Atunci te rog să te urci și să iei loc. Plecăm în curând!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Anville Town is a quiet little place. Do pay it a visit when you have the time."
       ],
       "text": [
-        ""
+        "Orașul Anville e un loc mic și liniștit. Vizitează-l când ai timp."
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "The train glides out of the Gear Station and rattles east past fields and woods..."
       ],
       "text": [
-        ""
+        "Trenul iese din Stația Gear și huruie spre est, pe lângă câmpuri și păduri..."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "With a long sigh of its brakes it rolls into Anville Town, the end of the line."
       ],
       "text": [
-        ""
+        "Cu un lung suspin al frânelor, intră în Orașul Anville, capătul liniei."
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run."
       ],
       "text": [
-        ""
+        "Bun venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe parcurs."
       ]
     }
   ],
@@ -83,7 +83,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
       ],
       "text": [
-        ""
+        "Bun venit la Metroul de Luptă! În Trenul Dublu doi dintre Pokémonii tăi se luptă câte doi, vagon după vagon."
       ]
     }
   ],
@@ -101,7 +101,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
       ],
       "text": [
-        ""
+        "Bun venit la Metroul de Luptă! Trenul Multiplu e pentru doi Antrenori care luptă umăr la umăr, o pereche contra unei perechi."
       ]
     }
   ],
@@ -119,7 +119,7 @@
         "The Subway's cars are in the depot being made ready. Please come back once the lines are running!"
       ],
       "text": [
-        ""
+        "Vagoanele Metroului sunt în depou și se pregătesc. Te rog să revii când liniile vor funcționa!"
       ]
     }
   ]

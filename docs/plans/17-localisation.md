@@ -580,3 +580,11 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **Names in the lines**: Quake Badge "Insigna Cutremurului", Props "Accesorii", Hidden Grotto "Grotă Ascunsă", Ferris wheel "roata panoramică", Driftveil Drawbridge "Podul Mobil Driftveil", speaker tags "Muncitorul <nume>:"; people, Team Plasma ("Echipa Plasma"), Pokémon World Tournament, Battle Institute, Battle Subway, Big Stadium and Small Court kept as in N6w.
   - **The player without gender**: no gendered adjective or vocative.
   - **Left**: whatever wave 49 writes in English, the next slice. `ui.json` needed no new key.
+
+- [x] N6y Wave 49's lines in Romanian (done 2026-10-25, wave 50)
+
+- **N6y, done 2026-10-25 (wave 50)**: everything written in English in wave 49 and not yet translated, at the commit the wave started from (c930ac69).
+  - **The lines**: 321 distinct lines (about 600 entries, in 39 files, by a script that fills every entry sharing an English text): Unova's part c (Route 16, Lostlorn Forest, Gear Station and the Battle Subway's desks, Anville Town and its rooms, Relic Passage and Castle, the Plasma Frigate, Join Avenue's shops, the World Tournament's grounds), Hoenn's Secret Bases scripts and Route 111's Secret Power man, Slateport's and Lilycove's decoration shops, and the V5 run-restriction lines of `common`. `extract ro --update` added nothing. The report and `--check`: nothing untranslated, stale, unknown or wrong. `--filter ScriptTranslationTests`: 19 passed; the content check: nothing found.
+  - **Names in the lines**: Linia Orașului Anville, Stația Gear, Podul Marvelous, Pasajul Relicvelor, Triada Umbrelor, Zinzolin and Colress kept, speaker tag "Grunt" as in `classes`, shop choices "NU, MERSI" / "MAI MULTE" / "ÎNAPOI LA ÎNCEPUT" with decorations translated and Pokémon names kept; Pokémon World Tournament and the Battle Subway's trains as in N6w.
+  - **The player without gender**: no gendered adjective or vocative.
+  - **Left**: whatever wave 50 writes in English, the next slice, N6z.

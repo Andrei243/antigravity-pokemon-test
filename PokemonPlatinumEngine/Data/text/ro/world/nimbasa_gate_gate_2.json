@@ -6,7 +6,7 @@
           "Baseball Player"
         ],
         "text": [
-          ""
+          "Jucătorul de baseball"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "A few years back, a Pokémon called Zoroark made its den in the Lostlorn Forest, up off Route 16. Spooky, huh?"
         ],
         "text": [
-          ""
+          "Acum câțiva ani, un Pokémon numit Zoroark și-a făcut bârlogul în Pădurea Lostlorn, sus de Ruta 16. Înfricoșător, nu?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Route 16 is short, but it leads all the way to the Marvelous Bridge. Someday I'll cross it!"
         ],
         "text": [
-          ""
+          "Ruta 16 e scurtă, dar duce până la Podul Marvelous. Într-o zi o să-l traversez!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This way to Route 16 and the Marvelous Bridge."
         ],
         "text": [
-          ""
+          "Pe aici se ajunge la Ruta 16 și la Podul Marvelous."
         ]
       }
     }

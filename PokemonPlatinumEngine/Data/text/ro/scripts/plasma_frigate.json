@@ -5,7 +5,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey! This is a private ship! Off you go, back down the gangway!"
       ],
       "text": [
-        ""
+        "Hei! Aceasta e o navă privată! Hai, la plimbare, înapoi pe pasarelă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}! You came! This ship's freezing... why is it so cold up on deck?"
       ],
       "text": [
-        ""
+        "{player}! Ai venit! Nava asta îngheață... de ce e așa frig pe punte?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "It's dressed up as a cargo ship, but look at the crew. This is Team Plasma's ship, all right."
       ],
       "text": [
-        ""
+        "E deghizată în cargou, dar uită-te la echipaj. Asta e nava Echipei Plasma, fără îndoială."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Team Plasma? Correct answer! And there are a lot more of us here than there are of you!"
       ],
       "text": [
-        ""
+        "Echipa Plasma? Răspuns corect! Și suntem mult mai mulți aici decât voi!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Then just tell us where you're keeping the Pokémon you've stolen! My sister's Purrloin first!"
       ],
       "text": [
-        ""
+        "Atunci spuneți-ne unde ții Pokémonii pe care i-ai furat! Mai întâi Purrloinul surorii mele!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Ha! Beat us first. And you, the quiet one, you're up first!"
       ],
       "text": [
-        ""
+        "Ha! Mai întâi învinge-ne. Iar tu, cel tăcut, ești primul!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Next! Somebody, next!"
       ],
       "text": [
-        ""
+        "Următorul! Cineva, următorul!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "My turn! You won't get past me so easy!"
       ],
       "text": [
-        ""
+        "E rândul meu! Nu mă treci așa ușor!"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "What kind of Trainer is this?! Fall back, fall back!"
       ],
       "text": [
-        ""
+        "Ce fel de Antrenor e ăsta?! Retragerea, retragerea!"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Good work. The way to the bow is open. Let's see who's giving the orders on this ship."
       ],
       "text": [
-        ""
+        "Bravo. Drumul spre prova e liber. Să vedem cine dă ordinele pe nava asta."
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Zinzolin"
       ],
       "text": [
-        ""
+        "Zinzolin"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Oh, my. The Gym Leader and a pair of children. Once again, we are made to feel unwelcome."
       ],
       "text": [
-        ""
+        "Vai, vai. Liderul de Sală și doi copii. Încă o dată, ni se dă de înțeles că nu suntem bineveniți."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "No matter. This ship will soon cover all of Unova in ice. The Shadow Triad will see you off."
       ],
       "text": [
-        ""
+        "Nu contează. Nava aceasta va acoperi în curând toată Unova cu gheață. Triada Umbrelor vă va conduce afară."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Shadow Triad"
       ],
       "text": [
-        ""
+        "Triada Umbrelor"
       ]
     },
     {
@@ -197,7 +197,7 @@
         "By order of Lord Ghetsis, you leave this ship. Now."
       ],
       "text": [
-        ""
+        "Din ordinul Lordului Ghetsis, părăsiți nava. Acum."
       ]
     },
     {
@@ -205,7 +205,7 @@
         "There is a rush of wind, and the deck is gone from under your feet..."
       ],
       "text": [
-        ""
+        "Un val de vânt trece, iar puntea dispare de sub picioarele tale..."
       ]
     }
   ]

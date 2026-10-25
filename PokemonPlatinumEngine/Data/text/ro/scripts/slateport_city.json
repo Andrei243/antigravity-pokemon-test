@@ -197,7 +197,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "Welcome! Bricks, balloons and mats to brighten up a secret base."
       ],
       "text": [
-        ""
+        "Bine ai venit! Cărămizi, baloane și covorașe care înveselesc o bază secretă."
       ]
     },
     {
@@ -219,13 +219,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "CĂRĂMIDĂ ROȘIE  500",
+        "CĂRĂMIDĂ ALBASTRĂ  500",
+        "CĂRĂMIDĂ GALBENĂ  500",
+        "BALON ROȘU  500",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -239,13 +239,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "BALON ALBASTRU  500",
+        "BALON GALBEN  500",
+        "COVORAȘ NOTA DO JOS  500",
+        "COVORAȘ NOTA RE  500",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -259,13 +259,13 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "COVORAȘ NOTA MI  500",
+        "COVORAȘ NOTA FA  500",
+        "COVORAȘ NOTA SOL  500",
+        "COVORAȘ NOTA LA  500",
+        "MAI MULTE",
+        "NU, MERSI"
       ]
     },
     {
@@ -277,11 +277,11 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care îl vrei?",
+        "COVORAȘ NOTA SI  500",
+        "COVORAȘ NOTA DO SUS  500",
+        "ÎNAPOI LA ÎNCEPUT",
+        "NU, MERSI"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "Thank you! The {thing} has been sent to your decoration PC."
       ],
       "text": [
-        ""
+        "Mulțumesc! {thing} a fost trimis la PC-ul tău de decorațiuni."
       ]
     },
     {
@@ -297,7 +297,7 @@
         "Oh, I'm sorry. You haven't quite enough money for that."
       ],
       "text": [
-        ""
+        "Oh, îmi pare rău. Nu ai chiar destui bani pentru asta."
       ]
     },
     {
@@ -305,7 +305,7 @@
         "Your decoration PC has no more room for things of that kind."
       ],
       "text": [
-        ""
+        "PC-ul tău de decorațiuni nu mai are loc pentru lucruri de felul acesta."
       ]
     },
     {
@@ -313,7 +313,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai treci pe la noi!"
       ]
     }
   ],
@@ -323,7 +323,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătorul"
       ]
     },
     {
@@ -331,7 +331,7 @@
         "Welcome! Dolls to sit about a secret base."
       ],
       "text": [
-        ""
+        "Bine ai venit! Păpuși de pus într-o bază secretă."
       ]
     },
     {
@@ -343,11 +343,11 @@
         "NO, THANKS"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Pe care o vrei?",
+        "PĂPUȘĂ AZURILL  3,000",
+        "PĂPUȘĂ MARILL  3,000",
+        "PĂPUȘĂ SKITTY  3,000",
+        "NU, MERSI"
       ]
     },
     {
@@ -355,7 +355,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Mai treci pe la noi!"
       ]
     },
     {
@@ -363,7 +363,7 @@
         "Thank you! The {thing} has been sent to your decoration PC."
       ],
       "text": [
-        ""
+        "Mulțumesc! {thing} a fost trimis la PC-ul tău de decorațiuni."
       ]
     },
     {
@@ -371,7 +371,7 @@
         "Oh, I'm sorry. You haven't quite enough money for that."
       ],
       "text": [
-        ""
+        "Oh, îmi pare rău. Nu ai chiar destui bani pentru asta."
       ]
     },
     {
@@ -379,7 +379,7 @@
         "Your decoration PC has no more room for dolls."
       ],
       "text": [
-        ""
+        "PC-ul tău de decorațiuni nu mai are loc pentru păpuși."
       ]
     }
   ]

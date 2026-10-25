@@ -1,22 +1,12 @@
 {
   "people": {
-    "5": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          ""
-        ]
-      }
-    },
     "2": {
       "name": {
         "en": [
           "Terrance"
         ],
         "text": [
-          ""
+          "Terrance"
         ]
       },
       "before": {
@@ -24,7 +14,7 @@
           "These walls are older than Castelia itself! Help me test a theory: are you older than me? No? Battle!"
         ],
         "text": [
-          ""
+          "Zidurile astea sunt mai vechi decât însăși Castelia! Ajută-mă să verific o teorie: ești mai în vârstă decât mine? Nu? Luptă!"
         ]
       },
       "after": {
@@ -32,7 +22,7 @@
           "My theory needs work."
         ],
         "text": [
-          ""
+          "Teoria mea mai are nevoie de lucru."
         ]
       }
     },
@@ -42,7 +32,7 @@
           "Kendall"
         ],
         "text": [
-          ""
+          "Kendall"
         ]
       },
       "before": {
@@ -50,7 +40,7 @@
           "A brand-new cave, and I'm one of the first through it! You're not stealing my glory!"
         ],
         "text": [
-          ""
+          "O peșteră nouă-nouță și sunt unul dintre primii care trec prin ea! Nu-mi furi gloria!"
         ]
       },
       "after": {
@@ -58,7 +48,7 @@
           "Share the glory, then."
         ],
         "text": [
-          ""
+          "Împarte gloria, atunci."
         ]
       }
     },
@@ -68,7 +58,7 @@
           "Lumina"
         ],
         "text": [
-          ""
+          "Lumina"
         ]
       },
       "before": {
@@ -76,7 +66,7 @@
           "I'm surveying the passage for the city. Hold still, you're part of the survey now!"
         ],
         "text": [
-          ""
+          "Măsor pasajul pentru oraș. Stai pe loc, acum faci parte din măsurătoare!"
         ]
       },
       "after": {
@@ -84,7 +74,17 @@
           "Note to self: Trainers are hazardous."
         ],
         "text": [
-          ""
+          "Notă pentru mine: Antrenorii sunt periculoși."
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
         ]
       }
     }

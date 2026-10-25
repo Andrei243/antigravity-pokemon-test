@@ -6,7 +6,7 @@
           "Dua"
         ],
         "text": [
-          ""
+          "Dua"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "You fell in too? Then we're both stuck down here. Let's pass the time!"
         ],
         "text": [
-          ""
+          "Ai căzut și tu? Atunci suntem amândoi blocați aici jos. Să ne petrecem timpul!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Up the stairs with you, then. I'll stay with the sand."
         ],
         "text": [
-          ""
+          "Hai sus pe scări, atunci. Eu rămân cu nisipul."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Low"
         ],
         "text": [
-          ""
+          "Low"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I sense the castle's old kings watching. Let's give them a show!"
         ],
         "text": [
-          ""
+          "Simt cum ne privesc vechii regi ai castelului. Să le dăm un spectacol!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "The kings were not impressed. With me."
         ],
         "text": [
-          ""
+          "Regii n-au fost impresionați. De mine."
         ]
       }
     }
