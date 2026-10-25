@@ -6,7 +6,7 @@
           "Chance"
         ],
         "text": [
-          ""
+          "Chance"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I've been sitting here waiting for someone who'll fight me. You'll do!"
         ],
         "text": [
-          ""
+          "Stau aici și aștept pe cineva care să lupte cu mine. Tu ești bun!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Waiting wasn't so bad. Losing is worse."
         ],
         "text": [
-          ""
+          "Așteptatul n-a fost chiar rău. Pierderea e mai rea."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Zeke"
         ],
         "text": [
-          ""
+          "Zeke"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Vroom! Vroom! I ride up and down this road all day, looking for a fight!"
         ],
         "text": [
-          ""
+          "Vrum! Vrum! Merg pe drumul ăsta în sus și în jos toată ziua, căutând o luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "My engine's gone cold."
         ],
         "text": [
-          ""
+          "Motorul meu s-a răcit."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Phillip"
         ],
         "text": [
-          ""
+          "Phillip"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Out of my way! ...Unless you've got the skill to make me!"
         ],
         "text": [
-          ""
+          "Din calea mea! ...Doar dacă ai îndemânarea să mă faci!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "You've got the skill, apparently."
         ],
         "text": [
-          ""
+          "Se pare că ai îndemânarea."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Reese"
         ],
         "text": [
-          ""
+          "Reese"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I look both ways before I fight. And I don't see anyone stronger than me!"
         ],
         "text": [
-          ""
+          "Mă uit în ambele părți înainte să lupt. Și nu văd pe nimeni mai puternic decât mine!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "I should've looked up."
         ],
         "text": [
-          ""
+          "Ar fi trebuit să mă uit în sus."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Jim"
         ],
         "text": [
-          ""
+          "Jim"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "We're a pair, my buddy and I. We don't lose!"
         ],
         "text": [
-          ""
+          "Suntem o pereche, prietenul meu și cu mine. Noi nu pierdem!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "We lost. Don't tell anyone."
         ],
         "text": [
-          ""
+          "Am pierdut. Să nu spui nimănui."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Cas"
         ],
         "text": [
-          ""
+          "Cas"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Two of us, one of you. Those are good odds!"
         ],
         "text": [
-          ""
+          "Noi doi, tu unul. Sunt șanse bune!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "The odds were against us after all."
         ],
         "text": [
-          ""
+          "Până la urmă, șansele au fost împotriva noastră."
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Black Belt"
       ],
       "text": [
-        ""
+        "Centură Neagră"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hmm! Your {member:0}..."
       ],
       "text": [
-        ""
+        "Hmm! {member:0} al tău..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "It likes {taste}s, doesn't it? No, I'm positive of it! It definitely likes {taste}s!"
       ],
       "text": [
-        ""
+        "Îi place {taste}, nu-i așa? Nu, sunt sigur! Cu siguranță îi place {taste}!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "It doesn't appear to like or dislike any Pokéblocks."
       ],
       "text": [
-        ""
+        "Nu pare să-i placă și nici să-i displacă vreun Pokéblock."
       ]
     }
   ]

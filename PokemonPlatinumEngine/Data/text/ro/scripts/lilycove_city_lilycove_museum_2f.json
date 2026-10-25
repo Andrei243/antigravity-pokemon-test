@@ -5,7 +5,7 @@
         "An empty frame. A card beneath it reads: Coolness."
       ],
       "text": [
-        ""
+        "O ramă goală. Un cartonaș de sub ea spune: Stil."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "An empty frame. A card beneath it reads: Beauty."
       ],
       "text": [
-        ""
+        "O ramă goală. Un cartonaș de sub ea spune: Frumusețe."
       ]
     }
   ],
@@ -25,7 +25,7 @@
         "An empty frame. A card beneath it reads: Cuteness."
       ],
       "text": [
-        ""
+        "O ramă goală. Un cartonaș de sub ea spune: Drăgălășenie."
       ]
     }
   ],
@@ -35,7 +35,7 @@
         "An empty frame. A card beneath it reads: Smartness."
       ],
       "text": [
-        ""
+        "O ramă goală. Un cartonaș de sub ea spune: Istețime."
       ]
     }
   ],
@@ -45,7 +45,7 @@
         "An empty frame. A card beneath it reads: Toughness."
       ],
       "text": [
-        ""
+        "O ramă goală. Un cartonaș de sub ea spune: Duritate."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Curator"
       ],
       "text": [
-        ""
+        "Curatorul"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Thank you! A new painting has been added to the gallery. The visitors do love to see the Pokémon that won at the Contest Hall."
       ],
       "text": [
-        ""
+        "Mulțumesc! S-a adăugat un tablou nou în galerie. Vizitatorilor le place mult să vadă Pokémonii care au câștigat la Sala Concursurilor."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "There is room for more. Each of the five frames is waiting for a winner of its own."
       ],
       "text": [
-        ""
+        "Mai e loc. Fiecare dintre cele cinci rame își așteaptă câștigătorul."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "I wish to fill these five frames with the paintings of Pokémon that win Master Rank contests at the Contest Hall."
       ],
       "text": [
-        ""
+        "Vreau să umplu aceste cinci rame cu tablourile Pokémonilor care câștigă concursurile de rang Master la Sala Concursurilor."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "The painter in the Contest Lobby makes one when a Pokémon wins with a really outstanding performance. If you have such a Pokémon, do enter it!"
       ],
       "text": [
-        ""
+        "Pictorul din Contest Lobby face câte unul când un Pokémon câștigă printr-o prestație cu adevărat remarcabilă. Dacă ai un astfel de Pokémon, înscrie-l!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Oh! It's you! You have filled every frame in my gallery with a winner."
       ],
       "text": [
-        ""
+        "Oh! Tu ești! Ai umplut fiecare ramă din galeria mea cu un câștigător."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Since your Pokémon were hung here, more guests than ever come to see them. The museum owes you a great deal."
       ],
       "text": [
-        ""
+        "De când Pokémonii tăi sunt expuși aici, vin mai mulți vizitatori ca niciodată să-i vadă. Muzeul îți datorează enorm."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Please, take this as a token of my gratitude."
       ],
       "text": [
-        ""
+        "Te rog, primește asta ca semn al recunoștinței mele."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "{player} received the {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit {thing}!"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "It's a decoration for your secret base. May it shine there as your Pokémon shine on stage!"
       ],
       "text": [
-        ""
+        "E o decorațiune pentru baza ta secretă. Să strălucească acolo precum strălucesc Pokémonii tăi pe scenă!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Oh, your PC has no room for it. Make some, and come back. I will keep it for you."
       ],
       "text": [
-        ""
+        "Oh, PC-ul tău nu are loc pentru ea. Fă loc și revino. Ți-o păstrez eu."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "It's an honour to have you visit again. Your Pokémon have made this gallery what it is."
       ],
       "text": [
-        ""
+        "E o onoare să te revăd. Pokémonii tăi au făcut din această galerie ce este."
       ]
     }
   ]
