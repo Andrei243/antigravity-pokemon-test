@@ -1,0 +1,33 @@
+# Drayden's house (plan 22 · U8, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/opelucid_city_2.s, read for the order alone). Once the Legend Badge is won (VAR_UNOVA_OPELUCID 2,
+# FLAG_UNOVA_DRAYDEN_AT_HOME) Drayden waits here and tells the tale of the two dragons; the ice falls as he finishes (3) and the
+# player is put at the door, where opelucid_city.txt plays the rest.
+
+
+script OnEnter
+  call UnovaCatchUpC
+  if var VAR_UNOVA_OPELUCID == 2 call TheTale
+  end
+
+
+script TheTale
+  scene "The tale of the two dragons"
+  walk player up 3
+  face 0 player
+  speaker "Drayden"
+  say "Let me tell you the story. It is a long one, so listen closely."
+  say "Two years ago, two dragon Pokémon were awakened. The white one, Reshiram, sought what is true, with the desire to bring the world to its ideal."
+  say "The black one, Zekrom, pursued what is ideal, with the desire to make that truth real. Each was chosen by a hero, and each hero was sure of his own way."
+  say "You may wonder why there were two. The single dragon had helped twin heroes bring a new region into being. But the heroes quarrelled over truth and ideals, and the dragon split in two."
+  say "As the story goes, a third dragon, Kyurem, also came into existence in that age: a void left behind when the one became two, hungry for what the others took."
+  say "Oh, the DNA Splicers are stored very safely. I guard them because I don't know what kind of power may lie within them. But here, I'll show you..."
+  camera shake 0.8
+  sound "bump"
+  text "Boom!"
+  emote 0 exclaim
+  say "Hm? What was that sound?"
+  clearflag FLAG_UNOVA_DRAYDEN_AT_HOME
+  setvar VAR_UNOVA_OPELUCID 3
+  warp "Unova" 418 160 down
+  endscene
+  end

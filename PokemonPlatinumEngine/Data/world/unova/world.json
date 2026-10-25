@@ -7,6 +7,12 @@
   // Kanto's routes have the same numbers (unova_route_19). A room is a matrix of its own ("Indoors"), several rooms
   // sharing one: each has a map of its own, told apart by its area.
   "region": "Unova",
+  // Plan 22 · U8: Opelucid City under the Plasma Frigate's ice. The five chunks of the city have twins written by the importer (their
+  // numbers plus 2000: the same tiles with made ground ice and bare ground snow), which lie in their cells while the story's flag is
+  // set (the mechanism of a season's chunks and of Hoenn's tide), and the city's overlay lays its snow and its cold over it
+  "swaps": [
+    { "map": "Unova", "flag": "FLAG_UNOVA_OPELUCID_ICE", "cells": [ { "chunkX": 11, "chunkY": 4, "chunk": 2104 }, { "chunkX": 12, "chunkY": 4, "chunk": 2074 }, { "chunkX": 13, "chunkY": 4, "chunk": 2076 }, { "chunkX": 12, "chunkY": 5, "chunk": 2075 }, { "chunkX": 13, "chunkY": 5, "chunk": 2077 } ] }
+  ],
   "maps": [
     // The overworld: Black 2's OVERWORLD matrix, 29 by 27 chunks
     { "name": "Unova", "matrix": 0, "trees": "Round" },
@@ -172,7 +178,29 @@
     { "name": "LacunosaTown_House2", "matrix": 47, "area": "lacunosa_town_3", "trees": "Round", "setting": "Indoors" },
     { "name": "LacunosaTown_House3", "matrix": 47, "area": "lacunosa_town_4", "trees": "Round", "setting": "Indoors" },
     { "name": "LacunosaTown_House4", "matrix": 47, "area": "lacunosa_town_5", "trees": "Round", "setting": "Indoors" },
-    { "name": "LacunosaTown_PokemonCenter", "matrix": 13, "area": "lacunosa_town_pokemon_center", "trees": "Round", "setting": "Indoors" }
+    { "name": "LacunosaTown_PokemonCenter", "matrix": 13, "area": "lacunosa_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U8, part a: the gate houses of Route 12 and Route 11 either side of the Village Bridge, the bridge (its
+    // rooms, on rails, wait for part b), Route 11's hut, Opelucid City's two gates, five houses of two floors, Pokémon Center and Dragon Gym, and the mall of Route 9
+    { "name": "VillageBridgeGate_West", "matrix": 50, "area": "bridge_gate_gate_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "VillageBridgeGate_East", "matrix": 50, "area": "bridge_gate_gate_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidGate_East", "matrix": 50, "area": "opelucid_gate_gate_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidGate_West", "matrix": 50, "area": "opelucid_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "VillageBridge", "matrix": 182, "area": "village_bridge", "trees": "Round" },
+    { "name": "Route11_Hut", "matrix": 65, "area": "unova_route_11_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_DraydensHouse_1F", "matrix": 68, "area": "opelucid_city_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_DraydensHouse_2F", "matrix": 161, "area": "opelucid_city_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_TripleHouse_1F", "matrix": 68, "area": "opelucid_city_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_TripleHouse_2F", "matrix": 161, "area": "opelucid_city_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_MusicalHouse_1F", "matrix": 68, "area": "opelucid_city_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_MusicalHouse_2F", "matrix": 161, "area": "opelucid_city_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_TradeHouse_1F", "matrix": 68, "area": "opelucid_city_8", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_TradeHouse_2F", "matrix": 161, "area": "opelucid_city_9", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_OldHouse_1F", "matrix": 68, "area": "opelucid_city_10", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_OldHouse_2F", "matrix": 161, "area": "opelucid_city_11", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_PokemonCenter", "matrix": 13, "area": "opelucid_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "OpelucidCity_Gym", "matrix": 66, "area": "opelucid_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "ShoppingMallNine_1F", "matrix": 90, "area": "shopping_mall", "trees": "Round", "setting": "Indoors" },
+    { "name": "ShoppingMallNine_2F", "matrix": 141, "area": "shopping_mall_2", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -207,6 +235,8 @@
     "reversal_mountain_6", "reversal_mountain_7",
     "undella_town", "undella_town_pokemon_center", "undella_town_2", "undella_town_3",
     "undella_gate", "undella_bay", "unova_route_13", "unova_route_13_2", "unova_route_13_3",
-    "lacunosa_town", "lacunosa_town_pokemon_center", "lacunosa_town_2", "lacunosa_town_3", "lacunosa_town_4", "lacunosa_town_5"
+    "lacunosa_town", "lacunosa_town_pokemon_center", "lacunosa_town_2", "lacunosa_town_3", "lacunosa_town_4", "lacunosa_town_5",
+    // plan 22 · U8, part a
+    "unova_route_12", "bridge_gate_gate_5", "village_bridge", "bridge_gate_gate_4", "unova_route_11", "unova_route_11_2", "opelucid_gate_gate_2", "opelucid_city", "opelucid_city_2", "opelucid_city_3", "opelucid_city_4", "opelucid_city_5", "opelucid_city_6", "opelucid_city_7", "opelucid_city_8", "opelucid_city_9", "opelucid_city_10", "opelucid_city_11", "opelucid_city_gym", "opelucid_city_pokemon_center", "opelucid_gate", "unova_route_9", "shopping_mall", "shopping_mall_2"
   ]
 }

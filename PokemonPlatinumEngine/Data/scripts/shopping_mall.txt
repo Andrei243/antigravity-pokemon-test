@@ -1,0 +1,43 @@
+# Shopping Mall Nine (plan 22 · U8, part a). docs/scripts.md describes the language. Black 2's five clerks (12 to 16) each sell their
+# floor's goods; ours are the mall's own stock in marts.json (mall_medicine, mall_balls, mall_vitamins, mall_battle, mall_machines).
+
+
+script MedicineCounter
+  face 12 player
+  speaker "Clerk"
+  say "Welcome to the first floor's medicine counter! Everything for a Pokémon that's had a hard day."
+  shop "mall_medicine"
+  say "Please come again!"
+  end
+
+script BallCounter
+  face 13 player
+  speaker "Clerk"
+  say "Welcome! Poké Balls of every kind, for every kind of catch."
+  shop "mall_balls"
+  say "Happy catching!"
+  end
+
+script VitaminCounter
+  face 14 player
+  speaker "Clerk"
+  say "Welcome! Vitamins and wings and feathers: everything to make a Pokémon a little bit better than it was."
+  shop "mall_vitamins"
+  say "Take care of them!"
+  end
+
+script BattleCounter
+  face 15 player
+  speaker "Clerk"
+  say "Welcome! Battle items for the Trainer who plans ahead."
+  shop "mall_battle"
+  say "Win one for me!"
+  end
+
+script MachineCounter
+  face 16 player
+  speaker "Clerk"
+  say "Welcome to the top floor! TMs, in a mall of their own."
+  shop "mall_machines"
+  say "A TM is a lesson in a case. Choose a good teacher!"
+  end

@@ -1,0 +1,8 @@
+# Route 11 (plan 22 · U8, part a): the road between the Village Bridge and Opelucid City. Its arrival gives a save from before the
+# chapter the people of it hidden (UnovaCatchUpC): Black 2's Virizion, who crosses the road for the first to come this way, is plan
+# 22 · U10's (the Swords of Justice) and is held hidden; so are two balls without a thing in them.
+
+
+script OnEnter
+  call UnovaCatchUpC
+  end

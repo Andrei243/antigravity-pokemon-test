@@ -1,0 +1,35 @@
+# The Village Bridge (a village strung along a bridge, with a musician at every corner): a wistful accordion tune in A minor over
+# a plucked guitar, a soft pad, an upright bass and a brushed beat. At night a clarinet takes the tune, slower. Original composition
+# for this game (plan 22 · U8, part a).
+title Village Bridge
+tempo 96
+meter 4/4
+reverb 0.28
+nighttempo 0.9
+
+track lead accordion night=clarinet vol=0.76 pan=0.08 rev=0.26
+  L o5 a4 o6 c4 e4 c4 | o5 a4 g4 e4 g4 | o5 f4 a4 o6 c4 o5 a4 | o5 e4 g4 b4 g4 |
+  o5 a4 o6 c4 e4 a4 | o6 g4 e4 c4 o5 a4 | o5 f4 a4 o6 c4 f4 | o5 e2 g+2 |
+  o6 c4 e4 a4 e4 | o6 d4 c4 o5 a4 f4 | o5 g4 b4 o6 d4 b4 | o6 c4 o5 b4 g4 e4 |
+  o5 f4 a4 o6 c4 o5 a4 | o5 e4 g4 o6 c4 e4 | o5 a4 g4 e4 g4 | o5 a1 |
+
+track pluck guitar vol=0.46 pan=-0.22 rev=0.16
+  L [ o4 a8 >c8 e8 c8 ]2 | [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 | [ o4 c8 e8 g8 e8 ]2 |
+  [ o4 f8 a8 >c8 o4 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 a8 >c8 e8 c8 ]2 | [ o4 a8 >c8 e8 c8 ]2 |
+
+track pad pad vol=0.3 pan=0.2 rev=0.3
+  L o4 (a >c e)1 | o4 (a >c e)1 | o4 (f a >c)1 | o4 (e g b)1 |
+  o4 (a >c e)1 | o4 (a >c e)1 | o4 (f a >c)1 | o4 (e g+ b)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (g b >d)1 | o4 (c e g)1 |
+  o4 (f a >c)1 | o4 (c e g)1 | o4 (a >c e)1 | o4 (a >c e)1 |
+
+track bass contrabass vol=0.74 rev=0.06
+  L o2 a2 o3 e2 | o2 a2 o3 e2 | o2 f2 o3 c2 | o2 e2 b2 |
+  o2 a2 o3 e2 | o2 a2 o3 e2 | o2 f2 o3 c2 | o2 e2 g+2 |
+  o2 a2 o3 e2 | o2 f2 o3 c2 | o2 g2 o3 d2 | o2 c2 g2 |
+  o2 f2 o3 c2 | o2 c2 g2 | o2 a2 o3 e2 | o2 a1 |
+
+track drums kit vol=0.38 rev=0.1
+  L v62 [ b8 h8 h8 h8 s8 h8 h8 h8 | ]15 b8 h8 h8 h8 s8 s16 s16 s8 s8 |

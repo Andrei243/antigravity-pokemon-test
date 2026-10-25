@@ -1,0 +1,14 @@
+{
+  // The hut at the foot of Route 11's hill (plan 22 · U8, part a): a Ranger who talks, our words
+  "area": "unova_route_11_2",
+  "bgmTrack": "unova/route12",
+  "people": {
+    "0": {
+      "name": "Ranger",
+      "npcType": "ranger_f",
+      "dialog": [
+        "Rangers like me patrol the roads so Pokémon can live their lives in peace. It's quiet today, and that suits me fine."
+      ]
+    }
+  }
+}

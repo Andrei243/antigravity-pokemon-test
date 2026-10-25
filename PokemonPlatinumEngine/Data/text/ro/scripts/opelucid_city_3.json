@@ -1,0 +1,44 @@
+{
+  "RingTarget": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have an item I don't know how to use. Would you give it a try and see if you can make it work?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You may be able to master it. Here it is!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If a Pokémon holds a Ring Target, it can be hit even by a move that would usually have no effect on it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If a Pokémon holds a Ring Target, it can be hit even by a move that would usually have no effect on it. For example, a Normal-type move can hit a Ghost-type Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

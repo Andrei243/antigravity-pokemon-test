@@ -1,0 +1,29 @@
+{
+  "key": "opelucid_city_2",
+  "index": 123,
+  "name": "Opelucid City",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_08_B",
+  "nightMusic": "BGM_C_08_B",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 14, "to": "opelucid_city", "toWarp": 3 },
+    { "x": 10, "z": 4, "to": "opelucid_city_3", "toWarp": 0 },
+    { "x": 9, "z": 14, "to": "opelucid_city", "toWarp": 3 },
+    { "x": 10, "z": 14, "to": "opelucid_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "229", "movement": "none", "x": 9, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0320", "script": "1" },
+    { "id": "1", "looks": "318", "movement": "wander_around", "x": 11, "z": 11, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

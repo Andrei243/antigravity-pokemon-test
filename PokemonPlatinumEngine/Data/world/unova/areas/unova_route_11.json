@@ -1,0 +1,126 @@
+{
+  "key": "unova_route_11",
+  "index": 365,
+  "name": "Route 11",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_E_SP",
+  "nightMusic": "BGM_R_E_SP",
+  "encounters": "ENCOUNTERS_ROUTE_11",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Shelmet", "level": 36 },
+    { "species": "Golduck", "level": 36 },
+    { "species": "Gligar", "level": 37 },
+    { "species": "Marill", "level": 36 },
+    { "species": "Zangoose", "level": 38 },
+    { "species": "Seviper", "level": 38 },
+    { "species": "Amoonguss", "level": 37 },
+    { "species": "Karrablast", "level": 36 },
+    { "species": "Gligar", "level": 39 },
+    { "species": "Shelmet", "level": 39 },
+    { "species": "Gligar", "level": 39 },
+    { "species": "Shelmet", "level": 39 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Basculin", "level": 25, "maxLevel": 40 },
+    { "species": "Buizel", "level": 25, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 },
+    { "species": "Basculin", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 50, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50, "weight": 30 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 60, "weight": 5 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 60, "weight": 4 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 60, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "darkGrass": [
+    { "species": "Shelmet", "level": 40 },
+    { "species": "Golduck", "level": 40 },
+    { "species": "Gligar", "level": 41 },
+    { "species": "Marill", "level": 40 },
+    { "species": "Zangoose", "level": 42 },
+    { "species": "Seviper", "level": 42 },
+    { "species": "Amoonguss", "level": 41 },
+    { "species": "Karrablast", "level": 40 },
+    { "species": "Gligar", "level": 43 },
+    { "species": "Shelmet", "level": 43 },
+    { "species": "Gligar", "level": 43 },
+    { "species": "Shelmet", "level": 43 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 36 },
+    { "species": "Audino", "level": 36 },
+    { "species": "Emolga", "level": 37 },
+    { "species": "Audino", "level": 37 },
+    { "species": "Audino", "level": 38 },
+    { "species": "Audino", "level": 38 },
+    { "species": "Audino", "level": 39 },
+    { "species": "Audino", "level": 39 },
+    { "species": "Gliscor", "level": 39 },
+    { "species": "Azumarill", "level": 39 },
+    { "species": "Gliscor", "level": 39 },
+    { "species": "Azumarill", "level": 39 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Buizel", "level": 25, "maxLevel": 40 },
+    { "species": "Basculin", "level": 25, "maxLevel": 40 },
+    { "species": "Floatzel", "level": 30, "maxLevel": 40 },
+    { "species": "Floatzel", "level": 30, "maxLevel": 40 },
+    { "species": "Floatzel", "level": 30, "maxLevel": 40 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 503, "z": 174, "to": "bridge_gate_gate_4", "toWarp": 0 },
+    { "x": 454, "z": 174, "to": "opelucid_gate_gate_2", "toWarp": 1 },
+    { "x": 487, "z": 172, "to": "unova_route_11_2", "toWarp": 0 },
+    { "x": 503, "z": 175, "to": "bridge_gate_gate_4", "toWarp": 0 },
+    { "x": 503, "z": 176, "to": "bridge_gate_gate_4", "toWarp": 0 },
+    { "x": 454, "z": 175, "to": "opelucid_gate_gate_2", "toWarp": 1 },
+    { "x": 454, "z": 176, "to": "opelucid_gate_gate_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "117", "movement": "none", "x": 468, "z": 170, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0321", "script": "4" },
+    { "id": "1", "looks": "216", "movement": "none", "x": 500, "z": 166, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04e6", "item": "Razor Fang", "script": "7154" },
+    { "id": "2", "looks": "210", "movement": "none", "x": 465, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04e7", "item": "Zinc", "script": "7155" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 460, "z": 179, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04e8", "item": "Full Heal", "script": "7156" },
+    { "id": "4", "looks": "pkmn_breeder_f", "movement": "none", "x": 492, "z": 173, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PKMN_BREEDER_MAGNOLIA" },
+    { "id": "5", "looks": "pkmn_ranger_m", "movement": "none", "x": 485, "z": 178, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_PKMN_RANGER_CROFTON" },
+    { "id": "6", "looks": "pkmn_ranger_f", "movement": "none", "x": 496, "z": 165, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_PKMN_RANGER_THALIA" },
+    { "id": "7", "looks": "210", "movement": "none", "x": 494, "z": 167, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03a6", "script": "10521" },
+    { "id": "8", "looks": "210", "movement": "none", "x": 500, "z": 180, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03a7", "script": "10521" }
+  ],
+  "signs": [
+    { "x": 466, "z": 172, "type": 0, "script": "1" },
+    { "x": 499, "z": 172, "type": 0, "script": "2" },
+    { "x": 484, "z": 166, "type": 2, "script": "8165", "item": "HP Up", "flag": "FLAG_UNOVA_0x0ba9" },
+    { "x": 456, "z": 168, "type": 2, "script": "8166", "item": "Max Potion", "flag": "FLAG_UNOVA_0x0baa" }
+  ],
+  "triggers": [
+    { "x": 481, "z": 171, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x4130", "value": "1" },
+    { "x": 470, "z": 173, "width": 1, "depth": 5, "script": "3", "variable": "VAR_UNOVA_0x40da", "value": "0" },
+    { "x": 468, "z": 175, "width": 1, "depth": 1, "script": "2000", "variable": "", "value": "0" }
+  ]
+}

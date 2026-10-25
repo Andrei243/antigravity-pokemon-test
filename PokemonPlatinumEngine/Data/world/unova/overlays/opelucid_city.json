@@ -1,0 +1,71 @@
+{
+  // Opelucid City (plan 22 · U8, part a): Black 2's city of the old and the new, the Dragon Gym's, our words. Iris (11, FLAG_UNOVA_HIDE_IRIS_OPELUCID)
+  // meets the player at the east end of the road (our trigger, 440, 173 to 177; VAR_UNOVA_OPELUCID 0); the Legend Badge is won at the Gym (opelucid_city_gym.txt)
+  // and Drayden (0, FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID) asks the player to his house in the lane below (our trigger, 415 to 421, 171; VAR 2),
+  // where the tale of the two dragons is told (opelucid_city_2.txt); the Plasma Frigate's ice falls (VAR 3): while FLAG_UNOVA_OPELUCID_ICE is
+  // set world.json's swap lays the city's frozen chunks, the zone below lays its snow and the street's people (12 to 18) are indoors. Zinzolin
+  // (1) stands at the Gym's door for his battle (VAR 4) and the grunts (2 to 7, FLAG_UNOVA_HIDE_GRUNTS_OPELUCID) are about the streets; the
+  // Shadow Triad (8, 9, 10; FLAG_UNOVA_HIDE_TRIAD_EAST for the one who waits at the east end, FLAG_UNOVA_HIDE_TRIAD_OPELUCID for the other
+  // two) take the DNA Splicers (VAR 6), and Cheren (19) comes with the lead to Humilau once the Triad is beaten (VAR 7), when the ice melts
+  "area": "opelucid_city",
+  "bgmTrack": "unova/opelucid",
+  "zones": [
+    { "x": 380, "z": 134, "width": 76, "depth": 55, "weather": "Snowing", "while": "FLAG_UNOVA_OPELUCID_ICE" }
+  ],
+  "triggers": [
+    { "script": "IrisGreets", "x": 440, "z": 173, "width": 1, "depth": 5, "variable": "VAR_UNOVA_OPELUCID", "value": 0 },
+    { "script": "DraydenAsks", "x": 415, "z": 171, "width": 7, "depth": 1, "variable": "VAR_UNOVA_OPELUCID", "value": 2 },
+    { "script": "TriadAtTheEast", "x": 440, "z": 173, "width": 1, "depth": 5, "variable": "VAR_UNOVA_OPELUCID", "value": 6 }
+  ],
+  "people": {
+    "0": {
+      "name": "Drayden",
+      "npcType": "dragon_elder",
+      "hiddenBy": "FLAG_UNOVA_HIDE_DRAYDEN_OPELUCID",
+      "still": true,
+      "dialog": [
+        "Drayden: Those foul villains! We'll drive every last one of them out of Opelucid City!"
+      ]
+    },
+    "1": {
+      "name": "Zinzolin",
+      "npcType": "zinzolin",
+      "hiddenBy": "FLAG_UNOVA_HIDE_ZINZOLIN_OPELUCID",
+      "script": "ZinzolinAtTheGym",
+      "still": true,
+      "at": [ 405, 146 ]
+    },
+    "2": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "Grunt41", "still": true },
+    "3": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "Grunt42", "still": true },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "Grunt43", "still": true },
+    "5": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "GruntTalk5", "still": true },
+    "6": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "GruntTalk6", "still": true },
+    "7": { "name": "Grunt", "npcType": "plasma_grunt", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNTS_OPELUCID", "script": "GruntTalk7", "still": true },
+    "8": { "name": "Shadow Triad", "npcType": "shadow_triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_EAST", "still": true, "at": [ 442, 175 ], "dialog": [ "Shadow Triad: ..." ] },
+    "9": { "name": "Shadow Triad", "npcType": "shadow_triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_OPELUCID", "still": true, "dialog": [ "Shadow Triad: ..." ] },
+    "10": { "name": "Shadow Triad", "npcType": "shadow_triad", "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_OPELUCID", "still": true, "dialog": [ "Shadow Triad: ..." ] },
+    "11": { "name": "Iris", "npcType": "iris", "hiddenBy": "FLAG_UNOVA_HIDE_IRIS_OPELUCID", "still": true, "dialog": [ "Iris: Good luck, {player}!" ] },
+    "12": { "name": "Black Belt", "npcType": "blackbelt", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "BlackBelt" },
+    "13": { "name": "Artist", "npcType": "artist", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Artist" },
+    "14": { "name": "Gentleman", "npcType": "gentleman", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Gentleman" },
+    "15": { "name": "Youngster", "npcType": "youngster", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Youngster" },
+    "16": { "name": "Backers", "npcType": "twin", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Backers" },
+    "17": { "name": "Citizen", "npcType": "lady", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Citizen" },
+    "18": { "name": "Worker", "npcType": "worker", "hiddenBy": "FLAG_UNOVA_OPELUCID_ICE", "script": "Worker" },
+    "19": {
+      "name": "Cheren",
+      "npcType": "cheren",
+      "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_OPELUCID",
+      "still": true,
+      "at": [ 446, 175 ],
+      "dialog": [ "Cheren: Humilau City. That's where they're headed." ]
+    }
+  },
+  "signs": {
+    "1": "Opelucid City\nTime's Dividing Line",
+    "2": "Drayden's House",
+    "3": "Formerly the Battle House...",
+    "4": "Trainer Tips!\nMayor Drayden will teach you a strong move if he recognises you as a strong Trainer. Visit his home.",
+    "5": "Opelucid City Pokémon Gym\nLeader: Drayden\nThe Spartan Mayor"
+  }
+}

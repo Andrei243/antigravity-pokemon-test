@@ -1,0 +1,36 @@
+{
+  // The gate house between Route 12 and the Village Bridge (plan 22 · U8, part a): three who talk, our words
+  "area": "bridge_gate_gate_5",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "lass",
+      "dialog": [
+        "I picked a Pokémon that was cute and strong at the same time. It wasn't easy, but I think I got it right!"
+      ]
+    },
+    "1": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [
+        "I come to the bridge to paint the water. The gate is where I get my brushes ready."
+      ]
+    },
+    "2": {
+      "name": "Minccino",
+      "npcType": "Pokemon",
+      "species": "Minccino",
+      "dialog": [
+        "Minccino: Chichino!"
+      ]
+    },
+    "3": {
+      "name": "Gate Guard",
+      "npcType": "worker",
+      "dialog": [
+        "...I'm sorry. I seem to have lost my uniform. Don't tell anyone."
+      ]
+    }
+  }
+}

@@ -3110,6 +3110,53 @@ order alone) on flags of ours.
   which the places of this part call at their arrival, with no story version raised; Bianca at the cave's mouth is shown by that
   floor's own arrival once the scene at Lentimas Town has been played.
 
+## Unova's fourth chapter, part a: Route 12 to Opelucid City (2026-10-25, plan 22 · U8)
+
+Black 2's beats from the road north of Lacunosa Town to the Legend Badge and the Plasma Frigate's ice, in our own words (the
+decompilation's zone scripts, read for the order alone) on flags of ours. Part b (the Marine Tube, Humilau City, Route 22 and 21, the
+Seaside Cave and the Frigate's rooms) is the next session's.
+
+- **The order of the chapter.** From Lacunosa Town Route 12 runs west to the Village Bridge's east gate, the bridge to its west gate and
+  Route 11 on to Opelucid City's east end (the gate houses `VillageBridgeGate_East`, `_West` and `OpelucidGate_East`); Route 9 and its
+  mall lie west of the city behind `OpelucidGate_West`. `VAR_UNOVA_OPELUCID` is the chapter's count: Iris meets the player at the east
+  end (our trigger, 440, 173 to 177; 1) and tells them to see Route 9 first; the Legend Badge is won from Drayden at the top of the Gym
+  (2: he asks the player to his house, and `FLAG_UNOVA_DRAYDEN_AT_HOME` puts him there); his house's arrival plays the tale of the two
+  dragons (Reshiram and Zekrom, the third dragon Kyurem, the Splicers guarded) and a sound from the sky (3) and puts the player at the
+  door, where the city's arrival plays the ice; Zinzolin demands the Splicers and the grunts take the streets (4), Zinzolin waits at the
+  Gym's door and is beaten there (5), Drayden shows the Splicers and the Shadow Triad takes them (6), the Triad's one waits at the east
+  end and is beaten, Cheren comes by the Xtransceiver's call with the way to Humilau City, and the ice melts (7).
+- **The ice is a swapped layout, as a season's chunks are.** Black 2 lays Opelucid's frozen look by a layout of its own (`MapReplace`,
+  whose table the decompilation doesn't extract), and the data has no chunk of it, so the importer writes a twin of each of the city's five
+  chunks (`Bw2World.IceChunk`: the same tiles, behaviours, heights and props, with made ground ice and bare ground snow, numbered the
+  original's plus 2000: 2074 to 2077 and 2104) and `world.json`'s `swaps` lays them in their cells while `FLAG_UNOVA_OPELUCID_ICE` is set;
+  the city's overlay lays snow over the air by a zone with the same flag, and the street's people (12 to 18) are indoors while it holds.
+  The flag is set behind a black screen at 3 and cleared at 7 behind another. A swap may lie on chunks a building of the world's models
+  stands on only where the same building stands in both (`Map.AddSwappedPlace`; it had refused any), since the ice changes the ground
+  round the buildings and not the buildings. The Plasma Frigate itself is never drawn, as the first one's model isn't.
+- **The Dragon Gym is five platforms joined by exits.** Black 2's is a tower the statues' heads carry the challenger up, which the data keeps
+  as platforms over a void: ours joins them with six exits of the overlay (the entrance hall's corridor to the first platform, that to
+  the second, the third and the fourth, and the last back to the first), with the five veterans standing on the platforms where the
+  overlay puts them (`at`) and Drayden in the strip at the top. Black 2's Triple and Rotation battles (the veterans', the Gym's own, the
+  Battle House's) are fought as single ones until plan 14 · B6 and B7. The Legend Badge is the region's seventh; Drayden gives TM82 as the
+  data's table, Platinum's, fills it.
+- **The Village Bridge's rooms are not built.** Its houses stand on Black 2's rails, which give a warp no tile (as Castelia's avenue's
+  do): the bridge, its gates and its trainers and balls are open and its seven rooms (the stone house, the restaurant, the Hip Waders'
+  hut, the nursery, the cottage, the rest house, the studio) and the five people who stand or walk on its rails (the musician Russo, the Gentleman with
+  the 999-win streak and his battle, a backpacker, the runner who asks for Fresh Water and a girl) wait for part b. Route 11's Virizion, who crosses the road for the first to
+  come, is plan 22 · U10's (the Swords of Justice) and is held hidden, as Route 13's Cobalion is; two balls of Route 11 with nothing in them
+  are held back. Opelucid City's old building (`opelucid_city_12`, the memory of Iris and Drayden after the League) is the post-game's.
+- **Shopping Mall Nine** has five counters of our own stock on Goldenrod's lists (marts.json's `mall_medicine`, `_balls`, `_vitamins`,
+  `_battle`, `_machines`); its evening sale and its Lady's errand are left out. Opelucid's five houses of two floors, its Pokémon Center
+  (a spawn) and Route 9's trainers are built as the data has them; the woman upstairs in Drayden's house gives a Ring Target once.
+- **Looks and sounds.** Opelucid's buildings are stand-ins in Blackthorn's way of building (dragon-blue gables) and Jubilife's, the
+  bridge's in the harbour's, until the towns have ways of their own (`Architecture` rows for Opelucid and Humilau are part b's, with the
+  style guide's). Drayden has the dragon elder's look until plan 22 · U12. Songs of our own, none heard by the user yet:
+  `unova/opelucid` (with a night arrangement), `route12` (the family of Routes 9, 11 and 12, with a night arrangement),
+  `village_bridge` (with a night arrangement) and `shopping_mall`, each over 25 s and clean in `MusicRender`. Smashers and Hoopsters
+  have the sporting eye theme.
+- **What a save needs.** A save past Lacunosa Town is given the chapter's hidden people by `UnovaCatchUpC` (`FLAG_UNOVA_OPELUCID_BEGUN`),
+  which the arrivals of Route 12, Route 11, Opelucid City, its Gym and Drayden's house call, with no story version raised.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

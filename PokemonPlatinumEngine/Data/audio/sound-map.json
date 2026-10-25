@@ -155,7 +155,9 @@
     "Musician": "fighter",
     "Pokémon Trainer Rood": "rich",
     "Pilot": "ace",
-    "Depot Agent": "fun"
+    "Depot Agent": "fun",
+    "Smasher": "sport",
+    "Hoopster": "sport"
   },
   "battleThemes": {
     "Leader": "gym",

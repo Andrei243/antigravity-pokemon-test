@@ -1,0 +1,28 @@
+{
+  "key": "opelucid_city_4",
+  "index": 125,
+  "name": "Opelucid City",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_08_B",
+  "nightMusic": "BGM_C_08_B",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 14, "to": "opelucid_city", "toWarp": 4 },
+    { "x": 10, "z": 4, "to": "opelucid_city_5", "toWarp": 0 },
+    { "x": 9, "z": 14, "to": "opelucid_city", "toWarp": 4 },
+    { "x": 10, "z": 14, "to": "opelucid_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "veteran_m", "movement": "none", "x": 9, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

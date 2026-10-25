@@ -1,0 +1,21 @@
+{
+  // The gate house between the Village Bridge and Route 11 (plan 22 · U8, part a): two who talk, our words
+  "area": "bridge_gate_gate_4",
+  "bgmTrack": "unova/undella",
+  "people": {
+    "0": {
+      "name": "Gate Guard",
+      "npcType": "worker",
+      "dialog": [
+        "It's called Village Bridge because it's a bridge with a village on it! Whatever anyone else says, that's what I think."
+      ]
+    },
+    "1": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [
+        "The musicians of the Village Bridge play a little sadly, but I don't mind. You get used to it."
+      ]
+    }
+  }
+}

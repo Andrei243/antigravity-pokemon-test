@@ -6,12 +6,10 @@
   // meet them and take them to the old storyteller's house (lacunosa_town_3), where the tale of the meteorite is told. Hugh (12,
   // FLAG_UNOVA_HIDE_HUGH_LACUNOSA) stands at the west end afterwards (VAR_UNOVA_LACUNOSA 2); a word with him or a step across his
   // trigger (649, 186 to 187) is the tag battle against Zinzolin (10, FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA) and a grunt (11,
-  // FLAG_UNOVA_HIDE_GRUNT_LACUNOSA), who run when beaten (lacunosa_town.txt). The way north from the town leads to Route 12
-  // (plan 22 · U8) and is shut. The Pokémon Center is by the south road and the houses are round the square
+  // FLAG_UNOVA_HIDE_GRUNT_LACUNOSA), who run when beaten (lacunosa_town.txt). The road west from the town leads to Route 12
+  // (plan 22 · U8, part a), whose Timer Ball (14) lies in it. The Pokémon Center is by the south road and the houses are round the square
   "area": "lacunosa_town",
   "bgmTrack": "unova/lacunosa",
-  // the Timer Ball (14) lies west of the town, in the road to Route 12 that is not open yet (plan 22 · U8)
-  "heldBack": [ "14" ],
   "triggers": [
     {
       "script": "JuniperAndBiancaMeet",

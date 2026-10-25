@@ -80,6 +80,10 @@
       "note": "first spoken at anville_town.txt(86)",
       "provisional": true
     },
+    "backers": {
+      "note": "first spoken at opelucid_city.txt(81)",
+      "provisional": true
+    },
     "baoba": {
       "note": "first spoken at olivine.txt(29)",
       "provisional": true
@@ -182,6 +186,10 @@
       "note": "first spoken at cianwood_gym.txt(17)",
       "provisional": true
     },
+    "citizen": {
+      "note": "first spoken at opelucid_city.txt(87)",
+      "provisional": true
+    },
     "clair": {
       "note": "first spoken at blackthorn_gym.txt(60)",
       "provisional": true
@@ -257,6 +265,10 @@
       "note": "first spoken at ResortAreaVilla.txt(168)",
       "provisional": true
     },
+    "denae": {
+      "note": "first spoken at opelucid_city_gym.txt(53)",
+      "provisional": true
+    },
     "depot_agent": {
       "note": "first spoken at GearStation.txt(40)",
       "provisional": true
@@ -283,6 +295,10 @@
     },
     "drake": {
       "note": "first spoken at ever_grande_city_drakes_room.txt(32)",
+      "provisional": true
+    },
+    "drayden": {
+      "note": "first spoken at opelucid_city.txt(101)",
       "provisional": true
     },
     "dusty": {
@@ -472,6 +488,10 @@
       "note": "first spoken at phone.txt(329)",
       "provisional": true
     },
+    "jerry": {
+      "note": "first spoken at opelucid_city_gym.txt(79)",
+      "provisional": true
+    },
     "jessica": {
       "note": "first spoken at phone.txt(343)",
       "provisional": true
@@ -579,6 +599,10 @@
       "provisional": true
     },
     "lucian": {},
+    "lucius": {
+      "note": "first spoken at opelucid_city_gym.txt(92)",
+      "provisional": true
+    },
     "lydia": {
       "note": "first spoken at phone.txt(273)",
       "provisional": true
@@ -822,6 +846,10 @@
       "note": "first spoken at cinnabar_island_gym.txt(57)",
       "provisional": true
     },
+    "rhona": {
+      "note": "first spoken at opelucid_city_gym.txt(66)",
+      "provisional": true
+    },
     "rich_boy_liam": {
       "note": "first spoken at PokemonMansion.txt(106)",
       "provisional": true
@@ -845,6 +873,10 @@
     "roark": {},
     "robert": {
       "note": "first spoken at phone.txt(322)",
+      "provisional": true
+    },
+    "ron": {
+      "note": "first spoken at opelucid_city_gym.txt(40)",
       "provisional": true
     },
     "rood": {
@@ -1152,6 +1184,7 @@
     "Avery": "avery",
     "Azurill": "azurill",
     "Backer": "backer",
+    "Backers": "backers",
     "Baoba": "baoba",
     "Beauty": "beauty",
     "Ben": "ben",
@@ -1186,6 +1219,7 @@
     "Cheren": "cheren",
     "Cheryl": "cheryl",
     "Chuck": "chuck",
+    "Citizen": "citizen",
     "Clair": "clair",
     "Clay": "clay",
     "Clefairy": "clefairy",
@@ -1211,6 +1245,7 @@
     "Day-Care Lady": "day_care_lady",
     "Day-Care Man": "day_care_man",
     "Delivery Man": "delivery_man",
+    "Denae": "denae",
     "Depot Agent": "depot_agent",
     "Derek": "derek",
     "Devon Employee": "devon_employee",
@@ -1218,6 +1253,7 @@
     "Dock": "dock",
     "Dragon Tamer": "dragon_tamer",
     "Drake": "drake",
+    "Drayden": "drayden",
     "Dusty": "dusty",
     "Dylan": "dylan",
     "Edwin": "edwin",
@@ -1278,6 +1314,7 @@
     "Jackson": "jackson",
     "Jasmine": "jasmine",
     "Jeffrey": "jeffrey",
+    "Jerry": "jerry",
     "Jessica": "jessica",
     "Joey": "joey",
     "Juan": "juan",
@@ -1310,6 +1347,7 @@
     "Lottery Clerk": "lottery_clerk",
     "Lt. Surge": "lt_surge",
     "Lucian": "lucian",
+    "Lucius": "lucius",
     "Lydia": "lydia",
     "Machop": "machop",
     "Maid Belinda": "maid_belinda",
@@ -1382,11 +1420,13 @@
     "Ramon": "ramon",
     "Receptionist": "look:receptionist",
     "Researcher": "look:scientist",
+    "Rhona": "rhona",
     "Rich Boy Liam": "rich_boy_liam",
     "Ricky": "ricky",
     "Riley": "riley",
     "Roark": "roark",
     "Robert": "robert",
+    "Ron": "ron",
     "Rood": "rood",
     "Rosa": "rosa",
     "Rose": "rose",

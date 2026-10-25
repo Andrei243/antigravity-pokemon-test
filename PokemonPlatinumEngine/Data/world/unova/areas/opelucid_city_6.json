@@ -1,0 +1,30 @@
+{
+  "key": "opelucid_city_6",
+  "index": 127,
+  "name": "Opelucid City",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_08_B",
+  "nightMusic": "BGM_C_08_B",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 14, "to": "opelucid_city", "toWarp": 5 },
+    { "x": 10, "z": 4, "to": "opelucid_city_7", "toWarp": 0 },
+    { "x": 9, "z": 14, "to": "opelucid_city", "toWarp": 5 },
+    { "x": 10, "z": 14, "to": "opelucid_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "gentleman", "movement": "wander_around", "x": 7, "z": 8, "facing": 1, "rangeX": 3, "rangeZ": 3, "script": "1" },
+    { "id": "1", "looks": "lady", "movement": "none", "x": 11, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "pokefan_f", "movement": "wander_around", "x": 11, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

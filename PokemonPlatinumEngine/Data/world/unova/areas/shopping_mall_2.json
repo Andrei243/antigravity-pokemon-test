@@ -1,0 +1,28 @@
+{
+  "key": "shopping_mall_2",
+  "index": 351,
+  "name": "Shopping Mall",
+  "matrix": 141,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_FS",
+  "nightMusic": "BGM_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "shopping_mall", "toWarp": 1 },
+    { "x": 6, "z": 9, "to": "shopping_mall", "toWarp": 1 },
+    { "x": 7, "z": 9, "to": "shopping_mall", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "janitor", "movement": "none", "x": 6, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "110", "movement": "none", "x": 11, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x05c4", "item": "Poké Doll", "script": "7376" }
+  ],
+  "signs": [],
+  "triggers": []
+}

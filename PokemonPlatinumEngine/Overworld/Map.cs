@@ -1285,8 +1285,13 @@ public class Map
     {
         if (swapped.Width != Width || swapped.Height != Height) throw new ArgumentException("The swapped map is not this map's size.", nameof(swapped));
         var place = new SwappedPlace { Var = variable, Value = value, Flag = flag, Cells = cells.ToList() };
-        foreach (var on in new[] { this, swapped })
-            if (on.PlacedBuildings?.Any(b => place.Covers(b.X0, b.Y0) || place.Covers(b.X1, b.Y1)) == true)
+        // A building of the world's models isn't swapped, so the swap may lie on one only where the same one stands in both (plan 22 ·
+        // U8: Opelucid City's ice changes the ground round its buildings and not the buildings)
+        List<(int, int, int, int, string, BuildingKind)> BuiltAt(Map on, int cx, int cy) => (on.PlacedBuildings ?? new())
+            .Where(bd => bd.X0 / ChunkTiles <= cx && bd.X1 / ChunkTiles >= cx && bd.Y0 / ChunkTiles <= cy && bd.Y1 / ChunkTiles >= cy)
+            .Select(bd => (bd.X0, bd.Y0, bd.X1, bd.Y1, bd.Model, bd.Kind)).OrderBy(bd => bd).ToList();
+        foreach (var c in place.Cells)
+            if (!BuiltAt(this, c.X, c.Y).SequenceEqual(BuiltAt(swapped, c.X, c.Y)))
                 throw new InvalidOperationException($"{Name}: a building stands on chunks that {variable} swaps, which a swap doesn't carry.");
         place.Before = place.Cells.Select(c => CopyChunk(c.X, c.Y)).ToArray();
         place.After = place.Cells.Select(c => swapped.CopyChunk(c.X, c.Y)).ToArray();

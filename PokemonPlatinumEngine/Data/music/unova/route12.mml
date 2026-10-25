@@ -1,0 +1,29 @@
+# Routes 9, 11 and 12 (the roads east of the great hole, cold wind and long grass): a bright guitar and fiddle in D major, a strumming
+# accompaniment, a walking bass and a brisk beat. At night a clarinet takes the tune, slower. Original composition for this game
+# (plan 22 · U8, part a).
+title The Roads of Opelucid
+tempo 120
+meter 4/4
+reverb 0.2
+nighttempo 0.88
+
+track lead violin night=clarinet vol=0.64 pan=0.08 rev=0.22
+  L o5 d8 f+8 a4 f+4 d4 | o5 e8 g8 b4 g4 e4 | o5 f+8 a8 o6 d4 o5 a4 f+4 | o5 g8 b8 o6 d4 o5 b4 g4 |
+  o5 a8 o6 c+8 e4 c+4 o5 a4 | o5 b8 o6 d8 f+4 d4 o5 b4 | o6 c+8 e8 a4 e4 c+4 | o5 a2 b4 o6 c+4 |
+  o6 d8 f+8 a4 f+4 d4 | o5 b8 o6 d8 g4 d4 o5 b4 | o5 a8 o6 c+8 e4 c+4 o5 a4 | o5 f+8 a8 o6 d4 o5 a4 f+4 |
+  o5 g8 b8 o6 d4 o5 b4 g4 | o5 a8 o6 c+8 e4 c+4 o5 a4 | o5 b8 o6 d8 f+4 d4 o5 b4 | o5 a2 d2 |
+
+track strum guitar vol=0.4 pan=-0.22 rev=0.14
+  L [ o4 (d f+ a)8 r8 ]4 | [ o4 (e g b)8 r8 ]4 | [ o4 (f+ a >d)8 r8 ]4 | [ o4 (g b >d)8 r8 ]4 |
+  [ o4 (a >c+ e)8 r8 ]4 | [ o4 (b >d f+)8 r8 ]4 | [ o4 (a >c+ e)8 r8 ]4 | [ o4 (a >c+ e)8 r8 ]4 |
+  [ o4 (d f+ a)8 r8 ]4 | [ o4 (e g b)8 r8 ]4 | [ o4 (a >c+ e)8 r8 ]4 | [ o4 (d f+ a)8 r8 ]4 |
+  [ o4 (g b >d)8 r8 ]4 | [ o4 (a >c+ e)8 r8 ]4 | [ o4 (b >d f+)8 r8 ]4 | [ o4 (a >c+ e)8 r8 ]2 [ o4 (d f+ a)8 r8 ]2 |
+
+track bass bass vol=0.62 rev=0.06
+  L [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 f+8 o3 f+8 ]4 | [ o2 g8 o3 g8 ]4 |
+  [ o2 a8 o3 a8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 a8 o3 a8 ]4 |
+
+track drums kit vol=0.4 rev=0.1
+  L v80 [ b8 h8 h8 b8 s8 h8 h8 h8 | ]15 b8 h8 h8 b8 s8 s16 s16 s8 s8 |

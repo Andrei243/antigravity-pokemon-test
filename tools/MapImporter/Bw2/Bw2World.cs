@@ -186,6 +186,36 @@ public sealed class Bw2World
         return cover[folder] = result;
     }
 
+    /// <summary>
+    /// The chunks of a place that the story freezes (plan 22 · U8: Opelucid City under the Plasma Frigate's ice) as a second
+    /// set of files, each its chunk's number plus <see cref="IceOffset"/>: the same tiles, behaviours, heights and props, with
+    /// made ground ice and bare ground snow. <c>world.json</c>'s <c>swaps</c> lays them while a flag is set, as a season's
+    /// chunks are laid.
+    /// </summary>
+    public const int IceOffset = 2000;
+
+    /// <summary>The zones whose chunks have an ice twin (<see cref="IceChunk"/>).</summary>
+    public static readonly string[] IceZones = { "opelucid_city" };
+
+    public WorldChunkFile IceChunk(string folder)
+    {
+        var file = Chunk(folder);
+        file.Id += IceOffset;
+        for (int z = 0; z < file.Cover.Count; z++)
+        {
+            var row = file.Cover[z].ToCharArray();
+            for (int x = 0; x < row.Length; x++)
+                row[x] = TerrainCoverCodes.CodeOf(TerrainCoverCodes.Parse(row[x]) switch
+                {
+                    TerrainCover.Paving or TerrainCover.Steps => TerrainCover.Ice,
+                    TerrainCover.Grass or TerrainCover.Flowers or TerrainCover.TallGrass or TerrainCover.Path or TerrainCover.Sand => TerrainCover.Snow,
+                    var other => other
+                });
+            file.Cover[z] = new string(row);
+        }
+        return file;
+    }
+
     public WorldChunkFile Chunk(string folder)
     {
         const int T = LandData.Tiles;
