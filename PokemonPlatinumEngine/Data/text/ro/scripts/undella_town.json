@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Wait up, {player}!"
       ],
       "text": [
-        ""
+        "Așteaptă, {player}!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Let's see how well we've raised our Pokémon!"
       ],
       "text": [
-        ""
+        "Să vedem cât de bine ne-am crescut Pokémonii!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Great! If we're this strong, Team Plasma will run screaming the moment they see us!"
       ],
       "text": [
-        ""
+        "Grozav! Dacă suntem așa de puternici, Team Plasma va fugi țipând când ne va vedea!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I won't let them get away this time, though. Her Purrloin... I'll get it back, for sure!"
       ],
       "text": [
-        ""
+        "Dar de data asta nu-i las să scape. Purrloin-ul ei... Îl voi recupera, sigur!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "So, {player}, keep helping me out! And keep working on the Pokédex, too! You're the one who was officially asked to complete it, after all!"
       ],
       "text": [
-        ""
+        "Deci, {player}, continuă să mă ajuți! Și continuă să lucrezi la Pokédex! Tu ai fost cel rugat oficial să-l completezi, la urma urmei!"
       ]
     }
   ]

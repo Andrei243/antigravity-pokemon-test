@@ -6,7 +6,7 @@
           "Eliza"
         ],
         "text": [
-          ""
+          "Eliza"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "I patrol this cave for lost Pokémon. Tough ones live here, so I keep my guard up. Yours too?"
         ],
         "text": [
-          ""
+          "Patrulez peștera după Pokémoni pierduți. Aici trăiesc unii puternici, așa că sunt mereu în gardă. Și tu?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "My guard was up. Yours was higher."
         ],
         "text": [
-          ""
+          "Eram în gardă. Tu ai fost mai sus."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Jared"
         ],
         "text": [
-          ""
+          "Jared"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I've walked every cave in Unova, and I've battled in every one! Show me what you've got!"
         ],
         "text": [
-          ""
+          "Am străbătut toate peșterile din Unova și m-am luptat în fiecare! Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "A new champion of the caves. Congratulations!"
         ],
         "text": [
-          ""
+          "Un nou campion al peșterilor. Felicitări!"
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Corey"
         ],
         "text": [
-          ""
+          "Corey"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "The dark and the heat are my teachers. Fight me and learn what they taught me!"
         ],
         "text": [
-          ""
+          "Întunericul și căldura sunt profesorii mei. Luptă cu mine și învață ce m-au învățat!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Another lesson in humility."
         ],
         "text": [
-          ""
+          "Încă o lecție de modestie."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Cora"
         ],
         "text": [
-          ""
+          "Cora"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "I come to this mountain to train my team's patience. Do you have any?"
         ],
         "text": [
-          ""
+          "Vin la muntele acesta să-mi antrenez răbdarea echipei. Ai ceva răbdare?"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Lost fair and square. I'll practise some more."
         ],
         "text": [
-          ""
+          "Am pierdut corect. Voi mai exersa."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Kumiko"
         ],
         "text": [
-          ""
+          "Kumiko"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "My pack is full, but my Pokémon are even fuller of energy! Ready?"
         ],
         "text": [
-          ""
+          "Rucsacul meu e plin, dar Pokémonii mei sunt și mai plini de energie! Gata?"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "My pack is lighter now. And my pride."
         ],
         "text": [
-          ""
+          "Rucsacul meu e mai ușor acum. Și mândria mea."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Chan"
         ],
         "text": [
-          ""
+          "Chan"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "I trade blows with every Pokémon in this cave! You're next!"
         ],
         "text": [
-          ""
+          "Schimb lovituri cu fiecare Pokémon din peștera aceasta! Urmezi tu!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "That one hurt. Do it again some day!"
         ],
         "text": [
-          ""
+          "Aceea a durut. Mai fă-o într-o zi!"
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Ray"
         ],
         "text": [
-          ""
+          "Ray"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Everyone goes through Reversal Mountain sooner or later. Today it's your turn to go through me!"
         ],
         "text": [
-          ""
+          "Toți trec prin Reversal Mountain mai devreme sau mai târziu. Azi e rândul tău să treci prin mine!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Go on through, then."
         ],
         "text": [
-          ""
+          "Mergi mai departe, atunci."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Derek"
         ],
         "text": [
-          ""
+          "Derek"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "I'm a doctor, so I know exactly how much you can take. Shall we find out?"
         ],
         "text": [
-          ""
+          "Sunt doctor, așa că știu exact cât poți îndura. Să aflăm?"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "The patient is fine. The doctor is not."
         ],
         "text": [
-          ""
+          "Pacientul e bine. Doctorul nu."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Kiyo"
         ],
         "text": [
-          ""
+          "Kiyo"
         ]
       },
       "before": {
@@ -232,7 +232,7 @@
           "I follow the cave's air currents wherever they lead. Apparently they lead to a battle!"
         ],
         "text": [
-          ""
+          "Urmez curenții de aer ai peșterii oriunde mă duc. Se pare că mă duc la o luptă!"
         ]
       },
       "after": {
@@ -240,7 +240,7 @@
           "The wind has changed. Well fought."
         ],
         "text": [
-          ""
+          "Vântul s-a schimbat. Bine luptat."
         ]
       }
     },
@@ -250,7 +250,7 @@
           "Markus"
         ],
         "text": [
-          ""
+          "Markus"
         ]
       },
       "before": {
@@ -258,7 +258,7 @@
           "A hiker needs strong legs and a stronger team. Let me test yours!"
         ],
         "text": [
-          ""
+          "Un drumeț are nevoie de picioare puternice și de o echipă și mai puternică. Lasă-mă s-o încerc pe a ta!"
         ]
       },
       "after": {
@@ -266,7 +266,7 @@
           "That's my legs and my team beaten."
         ],
         "text": [
-          ""
+          "Mi-au fost învinse picioarele și echipa."
         ]
       }
     },
@@ -276,7 +276,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -286,7 +286,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       }
     }

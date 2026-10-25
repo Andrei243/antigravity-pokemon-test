@@ -6,7 +6,7 @@
           "Breeder"
         ],
         "text": [
-          ""
+          "Crescătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My Herdier eats at the same hour every day. It would complain if I forgot, and it does so loudly."
         ],
         "text": [
-          ""
+          "Herdier-ul meu mănâncă la aceeași oră în fiecare zi. Ar protesta dacă aș uita, și o face zgomotos."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Herdier"
         ],
         "text": [
-          ""
+          "Herdier"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Herdier: Gahoo!"
         ],
         "text": [
-          ""
+          "Herdier: Gahoo!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlărița"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm not allowed outside after dark. Nobody told me why, so I just sit by the window and wait."
         ],
         "text": [
-          ""
+          "Nu am voie afară după lăsarea întunericului. Nimeni nu mi-a spus de ce, așa că stau la fereastră și aștept."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Nobody here stays out late. I hear that's the rule. We follow it to the minute!"
         ],
         "text": [
-          ""
+          "Nimeni de aici nu stă afară până târziu. Aud că e regula. O respectăm la minut!"
         ]
       }
     }

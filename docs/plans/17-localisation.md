@@ -602,3 +602,8 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **Names in the lines**: Jet Badge "Insigna Jetului", Aerial Ace kept as the TM's move name in the lines, Celestial Tower "Turnul Celest", Berry Blender "Blenderul de Fructe", Pokéblock "Pokéblock/Pokéblocuri", Apricorn "Apricorn(e)" with Kurt's Apricorn Box "Cutia de Apricorni", the contests' qualities STIL / FRUMUSEȚE / DRĂGĂLĂȘENIE / ISTEȚIME / DURITATE, ranks "Rang Normal/Super/Hyper/Master", Blend Master "Maestrul Amestecător", Season Research Lab and the signs' place names kept in English; people's names, Echipa Plasma and the roles as in earlier slices.
   - **The player without gender**: no gendered adjective or vocative.
   - **Left**: whatever wave 52 writes in English, the next slice, N6zb.
+
+- [x] N6zb Wave 52's lines in Romanian (done 2026-10-25, wave 53)
+
+- **N6zb, done 2026-10-25 (wave 53)**: everything written in English in wave 52 and not yet translated: 497 entries in 371 distinct lines, in 58 files, by hand (entries sharing an English text filled together, speaker tags and names already translated elsewhere reused). H12's Regis, Sealed Chamber and Southern Island, Ancient Tomb, Desert Ruins, Island Cave and the harbour attendant; U7 part b's Strange House, Reversal Mountain, Undella Town and Bay, Route 13 and Lacunosa Town. `extract ro --update` added nothing. `report ro --check`: nothing untranslated, stale, unknown or wrong; RomanianTests, ScriptTranslationTests and TextTests pass.
+  - **Left**: whatever wave 53 writes in English, the next slice, N6zc.
