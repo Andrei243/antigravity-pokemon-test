@@ -184,6 +184,24 @@ public sealed class ScriptLibrary
         .SelectMany(i => i.Condition!.Other is { } other ? new[] { i.Condition.Name, other } : new[] { i.Condition.Name })
         .Where(v => !ScriptParser.BuiltInVariables.Contains(v)).ToHashSet(StringComparer.Ordinal);
 
+    /// <summary>
+    /// The items any script asks the bag for, takes or asks a team member to hold (plan 13 · V6): the ones a story depends
+    /// on, which the randomiser never swaps for another nor hands out in place of another.
+    /// </summary>
+    public IReadOnlySet<string> ItemsAsked => itemsAsked ??= All.SelectMany(s => s.Everything())
+        .SelectMany(i => i.Op == Op.Take ? new[] { i.Name }
+            : i.Op == Op.Team && i.Name == "holds" ? new[] { i.Other }
+            : i.Condition?.Query == Query.Item ? new[] { i.Condition.Name }
+            : Array.Empty<string>())
+        .Where(n => n.Length > 0).ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+    private IReadOnlySet<string>? itemsAsked, speciesAsked;
+
+    /// <summary>The species any script asks the team for (<c>if has "Regirock"</c>, plan 13 · V6): a gift or a static encounter of one is never swapped, or the question could never be answered.</summary>
+    public IReadOnlySet<string> SpeciesAsked => speciesAsked ??= All.SelectMany(s => s.Everything())
+        .Where(i => i.Condition?.Query == Query.Has && i.Condition.Name.Length > 0).Select(i => i.Condition!.Name)
+        .ToHashSet(StringComparer.OrdinalIgnoreCase);
+
     /// <summary>The people a script names besides <c>player</c> and <c>self</c>, each with the line that names them.</summary>
     public static IEnumerable<(string Who, int Line)> PeopleNamed(Script script)
     {
@@ -313,6 +331,12 @@ public sealed class ScriptLibrary
                         Wrong(i, $"there is no species '{i.Other}'");
                         break;
                     case Op.Team when i.Name == "holds" && ItemDatabase.Get(i.Other) == null:
+                        Wrong(i, $"there is no item '{i.Other}'");
+                        break;
+                    case Op.Team when i.Name == "ends" && (PokemonDatabase.Get(i.Other) == null || PokemonDatabase.Get(i.Record) == null):
+                        Wrong(i, $"there is no species '{(PokemonDatabase.Get(i.Other) == null ? i.Other : i.Record)}'");
+                        break;
+                    case Op.WildBattle when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no item '{i.Other}'");
                         break;
                     case Op.Tutor when i.Name == "once" && !Models.MoveTutors.Kanto.ContainsKey(i.Other):

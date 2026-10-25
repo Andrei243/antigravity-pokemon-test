@@ -1,0 +1,32 @@
+{
+  // The Strange House's middle rooms (plan 22 · U7, part b): Black 2's, our words. As the player steps along the north-east end
+  // (25, 16 to 18, VAR_UNOVA_STRANGE 0) a girl (0, FLAG_UNOVA_HIDE_STRANGE_GIRL) walks through the room, murmuring, and is gone
+  // (strange_house_3.txt). The two doors in the south wall that lead into dead-end rooms in Black 2 and back out again are
+  // plain wall here, as are the rooms; the stairs at the west end lead on (strange_house_4), those at the east back to the library
+  "area": "strange_house_3",
+  "bgmTrack": "unova/strange_house",
+  "triggers": [
+    {
+      "script": "TheGirlWalksThrough",
+      "x": 25,
+      "z": 16,
+      "width": 1,
+      "depth": 3,
+      "variable": "VAR_UNOVA_STRANGE",
+      "value": 0
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "lass",
+      "hiddenBy": "FLAG_UNOVA_HIDE_STRANGE_GIRL",
+      "still": true,
+      "dialog": [ "..." ]
+    }
+  },
+  "signs": {
+    "2": "The portrait has fallen from the wall.",
+    "3": "Nobody saw it change, but this picture now hangs upside down."
+  }
+}

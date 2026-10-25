@@ -384,7 +384,9 @@ public static class FieldMovement
                 ? new FieldStep(StepKind.Walk, nx, ny, height, Pace.Fast, TravelMode.Surfing, Obstacle.None)
                 : new FieldStep(StepKind.Land, nx, ny, height, Pace.Walk, TravelMode.OnFoot, Obstacle.None);
         }
-        if (water) return No(Obstacle.Water);
+        // (a floor of its own under the sea, laid as a pool of dark water, is swum: plan 21 · H12, part a, where the floor
+        // under Route 134 leads to the Sealed Chamber's passage, as Emerald's underwater avatar goes over water tiles)
+        if (water && !(walker.Mode == TravelMode.Diving && map.IsUnderwater && there == TileBehavior.DiveWater)) return No(Obstacle.Water);
 
         // A muddy slope is ridden up only at full speed: Platinum's Bicycle in its fast gear, or Emerald's Mach Bike
         // (MB_MUDDY_SLOPE, which plan 18 · W6 reads as the foot of Platinum's slope)

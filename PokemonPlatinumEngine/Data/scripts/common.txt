@@ -1875,6 +1875,7 @@ script HoennNewGame
   call HoennChapterEleven
   call HoennChapterTwelve
   call HoennChapterThirteen
+  call HoennChapterFourteen
   return
 
 
@@ -2192,6 +2193,20 @@ script HoennChapterTwelve
 script HoennChapterThirteen
   setflag FLAG_HOENN_CHAPTER_THIRTEEN
   setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+  return
+
+
+# What Emerald's new game hides for the Regis' chambers and Southern Island (plan 21 · H12, part a): Regirock, Regice and
+# Registeel, whom each cave's arrival shows again while it has not been beaten or caught (Emerald's OnTransition clears the
+# flag), and the eon pair's two figures in Southern Island's garden. No story version is raised: HoennNewGame calls it, and
+# the arrivals of the five places call it for a save that never ran it (FLAG_HOENN_CHAPTER_FOURTEEN)
+script HoennChapterFourteen
+  setflag FLAG_HOENN_CHAPTER_FOURTEEN
+  setflag FLAG_HIDE_REGIROCK
+  setflag FLAG_HIDE_REGICE
+  setflag FLAG_HIDE_REGISTEEL
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIOS
+  setflag FLAG_HIDE_SOUTHERN_ISLAND_LATIAS
   return
 
 
@@ -2736,6 +2751,7 @@ script UnovaMistralton
   setflag FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS
   setflag FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
   setflag FLAG_UNOVA_MISTRALTON_BEGUN
+  call UnovaLacunosa
   return
 
 
@@ -2946,3 +2962,82 @@ label Fruit
 label Full
   say "There's a {apricorn} on the tree, but the Apricorn Box can't hold any more of them."
   end
+
+
+# What Unova's chapter of Reversal Mountain to Lacunosa Town hides until its scenes (plan 22 · U7, part b): Bianca at the
+# mouth of Reversal Mountain's great cave (shown once the scene at Lentimas Town has sent her there), the cave's own Bianca
+# who travels along (in every floor, shown only while she does) and the one who waits at its east end once she has parted,
+# the girl of the Strange House, Hugh at Undella Town's east end and whoever Black 2 keeps there for later, the holiday-makers
+# of Undella's visitors' house who aren't there every day, Undella Bay's worker, Cobalion on Route 13 and Heatran in its lair
+# (all plan 22 · U10's), and everyone Lacunosa Town's two scenes bring (the professor, Bianca, Hugh, Zinzolin and a grunt, in
+# the street and in the storyteller's house). UnovaMistralton runs it, for a new game and for a save of part a's
+# (UnovaCatchUp), with no story version raised. It may only set flags and variables, and ends in return.
+script UnovaLacunosa
+  setflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  setflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  setflag FLAG_UNOVA_HIDE_BIANCA_ALONG
+  setflag FLAG_UNOVA_HIDE_STRANGE_GIRL
+  setflag FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  setflag FLAG_UNOVA_HIDE_HUGH_UNDELLA_LATER
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_UNDELLA
+  setflag FLAG_UNOVA_HIDE_UNDELLA_SPARE
+  setflag FLAG_UNOVA_HIDE_BAY_WORKER
+  setflag FLAG_UNOVA_HIDE_COBALION_ROUTE_13
+  setflag FLAG_UNOVA_HIDE_HEATRAN
+  setflag FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  setflag FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  setflag FLAG_UNOVA_LACUNOSA_BEGUN
+  return
+
+
+# What the arrival of each place of plan 22 · U7, part b calls (Lentimas Town's neighbours to Lacunosa Town): the first chapters' catch-up,
+# and for a save from before them the people of this one hidden (kept out of UnovaCatchUp, which every first place of the region
+# calls and whose scene walk would grow a story to try for each flag it asks)
+script UnovaCatchUpB
+  call UnovaCatchUp
+  if not flag FLAG_UNOVA_LACUNOSA_BEGUN call UnovaLacunosa
+  return
+
+
+# A game lost with Bianca along leaves nobody travelling with the player, and the errand with it: on coming to any floor of the
+# cave she waits at the west end of the great cave again (plan 22 · U7, part b)
+script UnovaBiancaWaits
+  if var VAR_UNOVA_REVERSAL != 1 return
+  if partner return
+  setvar VAR_UNOVA_REVERSAL 0
+  setvar VAR_UNOVA_REVERSAL_LAIR 0
+  clearflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL
+  return
+
+
+# The question Bianca asks when the player is about to leave the cave, or its great cave's west end, with her along (plan 22 ·
+# U7, part b): shall they part? Asked by each floor's own script just before the place; the answer is what it leaves for the
+# caller (yes: she has gone her own way, `if yes`). Parted, she travels no more and waits at the cave's east end.
+script UnovaBiancaAsks
+  speaker "Bianca"
+  ask "Would you like to say goodbye to Bianca here?"
+  if no goto Stay
+  say "OK, then! I'd like to look into where Heatran might be hiding, anyway. Thank you for coming with me, {player}!"
+  say "Be careful on the rest of your journey!"
+  partner off
+  clearflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT
+  setvar VAR_UNOVA_REVERSAL 2
+  return
+label Stay
+  say "OK! Then let's look around a little more!"
+  return
+
+
+# The old tale of Lacunosa Town, told by the storyteller to whoever asks and to the professor and Bianca (plan 22 · U7, part b;
+# Black 2's folk tale of the meteorite and the monster in it that came out at night, in our words)
+script UnovaLacunosaTale
+  say "There's a great, great hole in the land behind this town. Long ago a huge meteorite fell out of the sky, and that was what made it."
+  say "Something frightening was sleeping inside the meteorite. On cold nights it woke, and a freezing wind rolled down into the village."
+  say "Whatever the wind touched turned to ice, and the people hid in their houses until the sun came up again. That's why we keep indoors after dark, even now."
+  say "Believe it or not, as you please. But the people of this town stay inside at night to this day. Old stories shape our lives."
+  return

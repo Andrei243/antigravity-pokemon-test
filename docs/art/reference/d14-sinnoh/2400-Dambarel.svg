@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Dambarel (No. 2400), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="474" rx="170" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- the paddle of a tail, scored like planks -->
+    <path d="M330 400 C370 380 420 360 470 372 C486 392 480 430 458 448 C410 452 362 440 326 432 Z" fill="#8a5a32"/>
+    <path d="M352 388 L360 438 M384 378 L392 444 M416 370 L424 450 M446 368 L452 448" fill="none" stroke="#5e3a1e" stroke-width="4"/>
+    <path d="M336 426 C380 438 420 446 458 448 C440 456 380 450 330 438 Z" fill="#5e3a1e" stroke="none"/>
+    <!-- body -->
+    <path d="M150 300 C130 360 146 440 210 462 C260 474 310 466 340 444 C380 410 376 330 340 280 C300 236 186 240 150 300 Z" fill="#a56a3a"/>
+    <path d="M330 290 C368 340 372 410 336 448 C362 444 384 404 376 346 C370 312 354 294 330 290 Z" fill="#7a4a24" stroke="none"/>
+    <path d="M196 320 C182 370 196 430 246 446 C290 440 306 400 300 350 C292 318 218 304 196 320 Z" fill="#e2c08a"/>
+    <!-- feet -->
+    <path d="M168 456 C170 440 214 438 220 456 C220 470 168 472 168 456 Z" fill="#7a4a24"/>
+    <path d="M274 458 C276 442 320 440 326 458 C326 472 274 474 274 458 Z" fill="#7a4a24"/>
+    <!-- arms -->
+    <path d="M176 300 C160 330 166 362 190 376" fill="none" stroke-width="22"/>
+    <path d="M176 300 C160 330 166 362 190 376" fill="none" stroke="#a56a3a" stroke-width="14"/>
+    <path d="M320 300 C336 330 330 362 306 376" fill="none" stroke-width="22"/>
+    <path d="M320 300 C336 330 330 362 306 376" fill="none" stroke="#a56a3a" stroke-width="14"/>
+    <!-- ruff of wet fur at the neck -->
+    <path d="M160 262 L176 290 L190 268 L206 296 L222 272 L240 300 L256 274 L272 300 L290 272 L306 296 L322 268 L336 290 L350 262 C320 240 190 240 160 262 Z" fill="#7a4a24"/>
+    <!-- head -->
+    <path d="M156 176 C150 118 196 92 252 92 C308 92 352 118 346 176 C342 226 306 260 252 260 C198 260 160 226 156 176 Z" fill="#a56a3a"/>
+    <path d="M166 200 C180 238 216 256 252 258 C206 266 168 240 160 210 Z" fill="#7a4a24" stroke="none"/>
+    <circle cx="172" cy="104" r="20" fill="#7a4a24"/>
+    <circle cx="332" cy="104" r="20" fill="#7a4a24"/>
+    <!-- twig behind the ear -->
+    <path d="M318 96 L380 52" fill="none" stroke-width="11"/>
+    <path d="M318 96 L380 52" fill="none" stroke="#c89a5a" stroke-width="5"/>
+    <path d="M360 66 C372 70 386 66 392 56 C378 52 366 58 360 66 Z" fill="#5aa64a" stroke-width="3"/>
+    <!-- face mask -->
+    <path d="M190 176 C190 142 218 128 252 128 C286 128 314 142 314 176 C314 210 290 232 252 232 C214 232 190 210 190 176 Z" fill="#e2c08a"/>
+    <circle cx="222" cy="160" r="8" fill="#1b1b2b" stroke="none"/>
+    <circle cx="282" cy="160" r="8" fill="#1b1b2b" stroke="none"/>
+    <circle cx="224" cy="157" r="3" fill="#ffffff" stroke="none"/>
+    <circle cx="284" cy="157" r="3" fill="#ffffff" stroke="none"/>
+    <ellipse cx="252" cy="184" rx="18" ry="11" fill="#5e3a1e"/>
+    <path d="M200 196 L156 188 M200 206 L158 214 M304 196 L348 188 M304 206 L346 214" fill="none" stroke-width="3"/>
+    <!-- broad pale-gold teeth -->
+    <path d="M228 204 L276 204 L274 246 C266 252 238 252 230 246 Z" fill="#f2d890"/>
+    <path d="M252 204 L252 250" fill="none" stroke-width="4"/>
+    <path d="M232 210 L234 240" fill="none" stroke="#fff6d8" stroke-width="4"/>
+    <path d="M182 120 C200 104 222 98 244 98" fill="none" stroke="#c88a54" stroke-width="5"/>
+  </g>
+</svg>

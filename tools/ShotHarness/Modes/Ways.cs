@@ -11,6 +11,7 @@ partial class Harness
         RoarkMode();
         NuzlockeMode();
         RestrictionsMode();
+        RandomizerMode();
     }
 
     // V4, the Nuzlocke: wy_nuzlocke_ball_refused (a second wild Pokémon met on Route 201, whose catch the run has had, and

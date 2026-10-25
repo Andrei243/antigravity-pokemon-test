@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Ossuarion (No. 2442), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="476" rx="130" ry="14" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- the swirl of spirits: a ragged vortex over the cairn -->
+    <path d="M200 296 C150 290 104 250 100 196 C96 140 142 92 196 80 C232 50 290 48 326 74 C378 86 414 134 410 188 C430 226 412 274 372 290 C344 312 300 316 270 300 C250 314 220 312 200 296 Z" fill="#6a4a96"/>
+    <path d="M372 290 C344 312 300 316 270 300 C320 296 370 270 392 220 C412 236 404 270 372 290 Z" fill="#4a3070" stroke="none"/>
+    <!-- spiral arms -->
+    <path d="M256 196 C256 176 280 170 292 186 C306 206 290 232 262 234 C226 236 206 206 216 176 C228 140 272 128 306 144 C348 164 356 220 326 254 C292 290 220 290 182 254 C146 220 146 160 182 124" fill="none" stroke="#9a78c8" stroke-width="14"/>
+    <path d="M326 254 C292 290 220 290 182 254 C146 220 146 160 182 124" fill="none" stroke="#4a3070" stroke-width="5"/>
+    <!-- faces in the swirl -->
+    <g fill="#7ee07a" stroke="none">
+      <ellipse cx="240" cy="196" rx="8" ry="11"/>
+      <ellipse cx="274" cy="196" rx="8" ry="11"/>
+      <path d="M240 216 C250 230 266 230 276 216 C266 222 250 222 240 216 Z"/>
+      <ellipse cx="136" cy="196" rx="6" ry="8"/>
+      <ellipse cx="154" cy="200" rx="6" ry="8"/>
+      <path d="M138 214 C144 220 154 220 158 214 Z"/>
+      <ellipse cx="350" cy="122" rx="6" ry="8"/>
+      <ellipse cx="368" cy="128" rx="6" ry="8"/>
+      <path d="M348 142 C354 148 364 150 368 146 Z"/>
+      <ellipse cx="226" cy="98" rx="5" ry="7"/>
+      <ellipse cx="242" cy="96" rx="5" ry="7"/>
+      <ellipse cx="370" cy="236" rx="5" ry="7"/>
+      <ellipse cx="386" cy="230" rx="5" ry="7"/>
+      <ellipse cx="300" cy="96" rx="4" ry="6"/>
+      <ellipse cx="312" cy="98" rx="4" ry="6"/>
+    </g>
+    <path d="M124 160 C130 128 154 102 186 90" fill="none" stroke="#a98ad0" stroke-width="5"/>
+    <!-- the cairn: two keystones stacked -->
+    <path d="M188 392 C186 360 214 346 256 346 C298 346 326 360 324 392 L332 450 C332 466 180 466 180 450 Z" fill="#a6a39a"/>
+    <path d="M300 352 C318 360 326 376 324 392 L332 450 C330 460 310 464 290 464 C306 432 304 382 300 352 Z" fill="#7a776e" stroke="none"/>
+    <path d="M206 300 C206 280 228 270 256 270 C284 270 306 280 306 300 L314 352 C314 366 198 366 198 352 Z" fill="#b8b5ac"/>
+    <path d="M290 274 C304 282 308 292 306 300 L314 352 C312 360 300 364 288 364 C298 336 298 300 290 274 Z" fill="#8a877e" stroke="none"/>
+    <!-- the keystones' cracks, wisps rising from them -->
+    <path d="M250 286 L242 306 L256 318 L246 342" fill="none" stroke-width="4"/>
+    <path d="M232 372 L246 396 L232 420 L244 446" fill="none" stroke-width="4"/>
+    <path d="M286 378 L276 404 L290 428" fill="none" stroke-width="4"/>
+    <path d="M222 286 L216 300 M290 288 L296 302 M212 380 L206 396 M306 380 L312 396" fill="none" stroke="#5a574f" stroke-width="3"/>
+    <g fill="#7ee07a">
+      <path d="M246 342 C236 334 238 322 246 316 C246 326 256 330 254 340 Z" stroke-width="3"/>
+      <path d="M244 446 C232 436 234 420 244 414 C244 426 256 432 252 444 Z" stroke-width="3"/>
+      <path d="M290 428 C280 418 284 404 292 400 C292 412 302 416 298 426 Z" stroke-width="3"/>
+    </g>
+    <path d="M214 288 C226 280 240 276 254 276" fill="none" stroke="#dcd9d0" stroke-width="5"/>
+    <path d="M196 368 C210 358 230 354 250 354" fill="none" stroke="#c8c5bc" stroke-width="5"/>
+  </g>
+</svg>

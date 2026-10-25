@@ -1,0 +1,62 @@
+{
+  // Lacunosa Town's Pokémon Center (plan 22 · U7, part b): the same floor as Lentimas Town's, with the town's own people. The
+  // policeman (8) and the woman at the Center (10) keep to the town's early nights
+  "area": "lacunosa_town_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": {
+    "2108": "PC"
+  },
+  "people": {
+    "1": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "2": {
+      "name": "Nurse",
+      "npcType": "Nurse",
+      "script": "Nurse",
+      "isHealingNurse": true
+    },
+    "3": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "5": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "6": {
+      "name": "Clerk",
+      "npcType": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "8": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [
+        "Come in off the road by sunset, or the whole town will wonder where you've got to."
+      ]
+    },
+    "10": {
+      "name": "Psychic",
+      "npcType": "psychic",
+      "dialog": [
+        "The people of this town sleep early and rise early. I sense a very good habit."
+      ]
+    }
+  }
+}

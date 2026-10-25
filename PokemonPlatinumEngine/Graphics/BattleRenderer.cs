@@ -127,7 +127,7 @@ public sealed class BattleRenderer
     // ------------------------------------------------------------------ places
 
     /// <summary>How much the Pokémon on a side's platform are scaled by how many share it (<see cref="BattlePlaces.Fit"/>).</summary>
-    private static float SlotFit(BattleAnimator anim, BattleSide side) => BattlePlaces.Fit(anim.SlotsOf(side));
+    private static float SlotFit(BattleAnimator anim, BattleSide side) => BattlePlaces.Fit(anim.SlotsOf(side), anim.Spread(side));
 
     /// <summary>Where a place on the field stands (<see cref="BattlePlaces.Spot"/>).</summary>
     private static Vector3 Spot(BattleSide side, int slot, int slots) => BattlePlaces.Spot(side, slot, slots);
@@ -136,7 +136,7 @@ public sealed class BattleRenderer
     private static int MostSlotsShown(BattleAnimator anim) => Math.Max(anim.SlotsOf(BattleSide.Player), anim.SlotsOf(BattleSide.Enemy));
 
     /// <summary>Where a place stands in the battle shown: its side's count of places.</summary>
-    private static Vector3 Spot(BattleAnimator anim, BattleSide side, int slot) => BattlePlaces.Spot(side, slot, anim.SlotsOf(side));
+    private static Vector3 Spot(BattleAnimator anim, BattleSide side, int slot) => BattlePlaces.Spot(side, slot, anim.SlotsOf(side), anim.Spread(side));
 
     /// <summary>
     /// How much a Pokémon's model is scaled on its platform: the same size rule as the sprites, the sprite frame
@@ -710,6 +710,8 @@ public sealed class BattleRenderer
         public Color FlashColor;
         public float Silhouette;      // 0..1 dark silhouette of a wild Pokémon before the camera settles
         public float Entry;           // 0..1 of the entry clip as it comes out of the ball
+        public float ArriveBack;      // 0..1 of its way still to come from behind the platform, an ally answering a call (plan 14 · B5)
+        public float ArriveHop;       // 0..1 of its hop's height on the way
     }
 
     private static Appearance Appear(BattleAnimator anim, CombatantView v, bool isPlayer)
@@ -735,6 +737,15 @@ public sealed class BattleRenderer
             a.Grow = 0.12f + 0.88f * EaseOutBack(e);
             a.Flash = 1f - e;
             a.Entry = e;
+        }
+
+        // An ally that answered a call hops in from behind the platform and lands on its place (plan 14 · B5): BattleAllies has the curve
+        if (v.ArriveAge >= 0f)
+        {
+            var hop = BattleAllies.Hop(v.ArriveAge);
+            a.ArriveBack = hop.Back;
+            a.ArriveHop = hop.Height;
+            a.Grow *= hop.Grow;
         }
 
         // A physical move lunges toward the opponent and back, in step with the clip's strike
@@ -819,7 +830,10 @@ public sealed class BattleRenderer
         var feet = spot + new Vector3(0, platformTop, 0)
             + toward * a.Lunge * frame * (22f / 128f)
             + Vector3.UnitX * a.Shake * frame * (4f / 128f)
-            - Vector3.UnitY * a.Sink * frame;
+            - Vector3.UnitY * a.Sink * frame
+            // An ally hopping in comes from behind its place, away from the other side, in an arc (plan 14 · B5)
+            - toward * a.ArriveBack * frame * BattleAllies.HopFrom
+            + Vector3.UnitY * a.ArriveHop * frame * BattleAllies.HopHeight;
         // A dodge takes the whole body aside, away from the miss's path, and back (plan 25 · Y5)
         float dodge = Math.Max(0f, BattleAnimator.Progress(v.DodgeAge, BattleAnimator.DodgeTime));
         if (dodge > 0f)

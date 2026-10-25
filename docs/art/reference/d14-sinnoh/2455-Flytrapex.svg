@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Flytrapex (No. 2455), reference drawing</title>
+  <defs>
+    <g id="jaw">
+      <!-- a flytrap head open to the left, its hinge at 0,0 -->
+      <path d="M0 0 C-30 -70 -110 -90 -150 -40 C-120 -40 -90 -30 -70 -14 Z" fill="#5aa64a"/>
+      <path d="M0 0 C-30 40 -100 56 -146 24 C-116 18 -88 10 -70 -4 Z" fill="#c8d860"/>
+      <path d="M-70 -14 C-90 -30 -120 -40 -150 -40 C-130 -10 -144 14 -146 24 C-116 18 -88 10 -70 -4 Z" fill="#c03048"/>
+      <path d="M-146 -38 L-140 -24 L-132 -40 L-124 -26 L-114 -38 L-108 -24 L-98 -34 L-92 -22" fill="#ffffff" stroke-width="3"/>
+      <path d="M-142 22 L-134 10 L-126 20 L-118 8 L-108 16 L-100 6 L-92 12" fill="#ffffff" stroke-width="3"/>
+      <path d="M-40 -60 C-70 -66 -100 -62 -124 -50" fill="none" stroke="#86c86a" stroke-width="5"/>
+      <path d="M-20 -30 C-44 -60 -70 -66 -90 -64" fill="none" stroke="#3a7a30" stroke-width="3"/>
+      <ellipse cx="-58" cy="-46" rx="7" ry="9" fill="#1b1b2b" stroke="none"/>
+      <path d="M-150 -40 C-158 -30 -158 -16 -152 -8" fill="none" stroke="#f2c230" stroke-width="7"/>
+      <circle cx="-154" cy="2" r="7" fill="#f2c230" stroke-width="3"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="482" rx="110" ry="12" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- hanging vine from above, as it hangs from trees -->
+    <path d="M256 0 C250 50 266 120 256 196" fill="none" stroke-width="13"/>
+    <path d="M256 0 C250 50 266 120 256 196" fill="none" stroke="#3a7a30" stroke-width="7"/>
+    <!-- vine body -->
+    <path d="M226 200 C206 260 220 330 256 360 C292 330 306 260 286 200 C270 180 242 180 226 200 Z" fill="#3a7a30"/>
+    <path d="M234 220 C246 260 248 300 256 344 M276 220 C268 260 264 300 256 344" fill="none" stroke="#2a5a22" stroke-width="4"/>
+    <!-- thick vine arms with leaves, ending in roots -->
+    <path d="M236 250 C190 270 160 320 160 380 C160 410 150 430 140 444" fill="none" stroke-width="20"/>
+    <path d="M236 250 C190 270 160 320 160 380 C160 410 150 430 140 444" fill="none" stroke="#4a8f3c" stroke-width="12"/>
+    <path d="M276 250 C322 270 352 320 352 380 C352 410 362 430 372 444" fill="none" stroke-width="20"/>
+    <path d="M276 250 C322 270 352 320 352 380 C352 410 362 430 372 444" fill="none" stroke="#4a8f3c" stroke-width="12"/>
+    <path d="M140 444 L124 462 M140 444 L140 466 M140 444 L156 460 M372 444 L356 460 M372 444 L372 466 M372 444 L388 462" fill="none" stroke="#4a8f3c" stroke-width="6"/>
+    <path d="M168 310 C140 300 124 282 122 262 C146 266 164 282 168 310 Z" fill="#6ab85a"/>
+    <path d="M160 370 C132 372 112 360 104 342 C128 338 150 350 160 370 Z" fill="#6ab85a"/>
+    <path d="M344 310 C372 300 388 282 390 262 C366 266 348 282 344 310 Z" fill="#6ab85a"/>
+    <path d="M352 370 C380 372 400 360 408 342 C384 338 362 350 352 370 Z" fill="#6ab85a"/>
+    <!-- two necks -->
+    <path d="M246 196 C232 160 218 140 200 128" fill="none" stroke-width="22"/>
+    <path d="M246 196 C232 160 218 140 200 128" fill="none" stroke="#4a8f3c" stroke-width="14"/>
+    <path d="M266 196 C280 160 296 140 314 128" fill="none" stroke-width="22"/>
+    <path d="M266 196 C280 160 296 140 314 128" fill="none" stroke="#4a8f3c" stroke-width="14"/>
+    <!-- two jaws -->
+    <use href="#jaw" transform="translate(206 138)"/>
+    <use href="#jaw" transform="translate(308 138) scale(-1 1)"/>
+    <!-- sweet glow -->
+    <circle cx="52" cy="140" r="16" fill="#f2c230" opacity="0.2" stroke="none"/>
+    <circle cx="462" cy="140" r="16" fill="#f2c230" opacity="0.2" stroke="none"/>
+  </g>
+</svg>

@@ -1352,6 +1352,7 @@ public static class WorldMapBuilder
             Trees = overlay?.Trees,
             Architecture = overlay?.Architecture,
             Climate = overlay?.Climate ?? AreaClimate.Temperate,
+            CallsForHelp = overlay?.CallsForHelp ?? false,
             Arena = overlay?.BattleArena,
             BattleBackground = file?.BattleBackground ?? "",
             Kind = file?.Kind ?? "",
@@ -1370,6 +1371,9 @@ public static class WorldMapBuilder
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
         if (overlay?.Zones != null) area.Zones.AddRange(overlay.Zones);
+        // The floor's tiles that come up somewhere of their own (plan 21 · H12, part a)
+        foreach (var emerge in overlay?.EmergeAt ?? new())
+            if (SpotOf(world, emerge.To) is { } comesUp) area.EmergeAt[(emerge.X, emerge.Z)] = comesUp;
 
         static void Fill(List<WildEncounterEntry> table, List<AreaEncounter>? slots, int[] weights)
         {
@@ -2582,6 +2586,10 @@ public static class WorldMapBuilder
         }
         // What is read where nothing shows, and the pits a pushed boulder falls into (plan 02 · S12)
         foreach (var read in overlay?.ReadAt ?? new()) map.TileScripts[(read.X, read.Z)] = read.Script;
+        // Where a field move works a puzzle of the place (plan 21 · H12, part a)
+        foreach (var puzzle in overlay?.Braille ?? new())
+            map.BrailleSpots[(puzzle.X, puzzle.Z)] = (FieldMoveRules.Of(puzzle.Move)
+                ?? throw new InvalidDataException($"The overlay of {key} names '{puzzle.Move}' as a field move, which it is not."), puzzle.Script);
         foreach (var pit in overlay?.Pits ?? new())
         {
             map.BoulderPits[(pit.X, pit.Z)] = pit.Script;

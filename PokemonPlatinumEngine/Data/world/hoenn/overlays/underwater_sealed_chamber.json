@@ -1,0 +1,16 @@
+{
+  // The long passage under Route 134 that ends below the Sealed Chamber (plan 21 · H12, part a). Coming up anywhere in it
+  // comes up in Route 134 at 300, 291, but from the one tile at its end, 12, 44, which comes up in the chamber's pool at
+  // 10, 19 (Emerald's Underwater_SealedChamber_OnDive); the dots on the wall beside it point up
+  "area": "underwater_sealed_chamber",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "route_134", "x": 300, "z": 291, "facing": "Down" },
+  "emergeAt": [
+    { "x": 12, "z": 44, "to": { "area": "sealed_chamber_outer_room", "x": 10, "z": 19, "facing": "Up" } }
+  ],
+  "signs": {
+    "Underwater_SealedChamber_EventScript_Braille": "Raised dots on the wall, and a row of them pointing upward.\nThey seem to say: go up here."
+  }
+}

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2367 Gulpereel (Water/Dark), from Huntail: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2367_1" d="M398 210C410 190 436 186 452 200L470 186L466 212L470 236L452 222C436 234 410 230 398 210Z"/><clipPath id="h2367_1c"><use href="#h2367_1"/></clipPath><path id="h2367_2" d="M226 196C220 160 190 140 160 142C130 144 100 160 96 182C120 184 146 190 168 202C182 214 204 220 224 222Z"/><clipPath id="h2367_2c"><use href="#h2367_2"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M112 448a150 12 0 1 0 300 0a150 12 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<path d="M370 300C396 280 410 252 412 226" fill="none" stroke="#1b1b2b" stroke-width="8"/>
+<path d="M370 300C396 280 410 252 412 226" fill="none" stroke="#33549a" stroke-width="3"/>
+<path d="M380 204a40 30 0 1 0 80 0a40 30 0 1 0 -80 0Z" fill="#bfe8ff" opacity="0.4"/>
+<use href="#h2367_1" fill="#cdeeff"/>
+<g clip-path="url(#h2367_1c)"><path d="M398 214C410 230 436 234 452 222L470 236L466 212Z" fill="#9fd2f2"/></g>
+<use href="#h2367_1" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M410 206a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#1b1b2b"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#1b1b2b" stroke-width="52"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#4e78c4" stroke-width="42"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#33549a" stroke-width="16" transform="translate(6 12)"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#86a8e6" stroke-width="6" transform="translate(-9 -10)" opacity="0.7"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#fff2a0" stroke-width="10" stroke-dasharray="0 30" opacity="0.5" transform="translate(-2 -2)"/>
+<path d="M196 186C222 246 150 286 168 350C186 414 324 424 372 372C400 340 392 310 370 300" fill="none" stroke="#ffe85a" stroke-width="6" stroke-dasharray="0 30" transform="translate(-2 -2)"/>
+<use href="#h2367_2" fill="#4e78c4"/>
+<g clip-path="url(#h2367_2c)"><path d="M224 222C204 220 182 214 168 202L190 196L226 196Z" fill="#33549a"/><path d="M138.1 154.3A22 5 -6 1 0 181.9 149.7A22 5 -6 1 0 138.1 154.3Z" fill="#86a8e6"/></g>
+<use href="#h2367_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M96 182C120 194 150 202 176 210C150 222 118 226 94 210Z" fill="#2a1838" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M104 186L114 188L110 198Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M104 218L114 217L108 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M118 188.5L128 190.5L124 200Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M118 216.5L128 215.5L122 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M132 191L142 193L138 202Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M132 215L142 214L136 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M146 193.5L156 195.5L152 204Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M146 213.5L156 212.5L150 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M160 196L170 198L166 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M160 212L170 211L164 206Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2"/>
+<path d="M148 166a10 8 0 1 0 20 0a10 8 0 1 0 -20 0Z" fill="#ffe85a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M153 167a4 6 0 1 0 8 0a4 6 0 1 0 -8 0Z" fill="#1b1b2b"/>
+</svg>

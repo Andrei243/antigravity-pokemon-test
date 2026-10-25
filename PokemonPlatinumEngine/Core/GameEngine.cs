@@ -1223,8 +1223,9 @@ public partial class GameEngine
                     flow.Pokedex.RegisterSeen(chosen);
                     flow.Pokedex.RegisterCaught(chosen);
                     // The story remembers which was taken, and with it which the rival takes
-                    flow.Story.ChooseStarter(chosen.Species.Name);
-                    flow.ScriptAnswer = Math.Max(0, Here.Starters.ToList().IndexOf(chosen.Species.Name));
+                    // (by the card's slot: in a randomised run the Pokémon on it is another species, plan 13 · V6)
+                    flow.Story.ChooseStarter(flow.StarterSelectScreen.ChosenSlot);
+                    flow.ScriptAnswer = Math.Max(0, Here.Starters.ToList().IndexOf(flow.StarterSelectScreen.ChosenSlot));
                     flow.State = GameState.Overworld;
                 }
                 break;
@@ -2324,6 +2325,7 @@ public partial class GameEngine
                 flow.State = GameState.PokedexMenu;
                 flow.Pokedex.Enter(Here);
                 flow.PokedexScreen.FormsKnown = flow.Story.Has(StoryState.FormDetectionFlag);
+                flow.PokedexScreen.Random = Randomizer.For(flow.Run);
         flow.PokedexScreen.Open(flow.Pokedex, world.Portrait(PlayerIdentity.Character), Here);
                 break;
             case StartMenuChoice.Pokemon:

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Nocturmoth (No. 2414), reference drawing</title>
+  <defs>
+    <g id="wingUp">
+      <path d="M0 0 C40 -60 120 -110 210 -96 C224 -40 190 20 110 40 C70 46 30 30 0 0 Z" fill="#e8892c"/>
+      <path d="M20 4 C70 -30 140 -60 196 -60" fill="none" stroke="#7a4a24" stroke-width="8"/>
+      <path d="M30 22 C80 0 140 -10 180 -14" fill="none" stroke="#7a4a24" stroke-width="8"/>
+      <circle cx="150" cy="-50" r="22" fill="#f2d890"/>
+      <circle cx="150" cy="-50" r="11" fill="#7a4a24" stroke="none"/>
+      <circle cx="146" cy="-54" r="4" fill="#fff6d8" stroke="none"/>
+    </g>
+    <g id="wingDown">
+      <path d="M0 0 C40 30 100 80 160 100 C180 70 170 30 120 10 C80 -4 40 -6 0 0 Z" fill="#c86a1e"/>
+      <path d="M20 10 C60 30 110 60 150 80" fill="none" stroke="#7a4a24" stroke-width="7"/>
+      <circle cx="120" cy="44" r="14" fill="#f2d890"/>
+      <circle cx="120" cy="44" r="7" fill="#7a4a24" stroke="none"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="480" rx="90" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- glow round the eyespots, night -->
+    <g fill="#f2d890" opacity="0.18" stroke="none">
+      <circle cx="406" cy="196" r="36"/><circle cx="106" cy="196" r="36"/>
+    </g>
+    <!-- wings -->
+    <use href="#wingDown" transform="translate(272 268)"/>
+    <use href="#wingDown" transform="translate(240 268) scale(-1 1)"/>
+    <use href="#wingUp" transform="translate(272 246)"/>
+    <use href="#wingUp" transform="translate(240 246) scale(-1 1)"/>
+    <!-- body -->
+    <path d="M232 260 C222 320 232 380 256 410 C280 380 290 320 280 260 Z" fill="#7a4a24"/>
+    <path d="M236 300 L276 300 M234 330 L278 330 M240 360 L272 360" fill="none" stroke="#e8892c" stroke-width="6"/>
+    <!-- ruff of fur at its neck -->
+    <path d="M206 230 C206 214 230 204 256 204 C282 204 306 214 306 230 L300 254 L288 242 L278 262 L266 246 L256 266 L246 246 L234 262 L224 242 L212 254 Z" fill="#f2e4c4"/>
+    <!-- head -->
+    <path d="M220 180 C216 150 234 132 256 132 C278 132 296 150 292 180 C290 204 274 216 256 216 C238 216 222 204 220 180 Z" fill="#7a4a24"/>
+    <ellipse cx="238" cy="172" rx="13" ry="15" fill="#f2c230"/>
+    <ellipse cx="274" cy="172" rx="13" ry="15" fill="#f2c230"/>
+    <ellipse cx="240" cy="174" rx="5" ry="8" fill="#1b1b2b" stroke="none"/>
+    <ellipse cx="272" cy="174" rx="5" ry="8" fill="#1b1b2b" stroke="none"/>
+    <!-- feathered antennae -->
+    <path d="M244 136 C230 100 210 80 184 70" fill="none" stroke-width="5"/>
+    <path d="M268 136 C282 100 302 80 328 70" fill="none" stroke-width="5"/>
+    <g fill="none" stroke-width="3">
+      <path d="M236 118 L222 116 M230 104 L216 98 M220 92 L206 82 M206 82 L198 66 M232 110 L242 98 M224 98 L232 84 M212 86 L216 72"/>
+      <path d="M276 118 L290 116 M282 104 L296 98 M292 92 L306 82 M306 82 L314 66 M280 110 L270 98 M288 98 L280 84 M300 86 L296 72"/>
+    </g>
+    <!-- small legs -->
+    <path d="M244 300 L222 320 M268 300 L290 320 M246 330 L228 352 M266 330 L284 352" fill="none" stroke-width="4"/>
+  </g>
+</svg>

@@ -1,21 +1,45 @@
 {
-  "people": {},
-  "signs": {
-    "AncientTomb_EventScript_CaveEntranceMiddle": {
-      "en": [
-        "Rows of raised dots are carved over the doorway.\nThey seem to say: let light shine in the middle."
-      ],
-      "text": [
-        "Rânduri de puncte în relief sunt săpate deasupra intrării.\nPar să spună: lasă lumina să intre la mijloc."
-      ]
+  "people": {
+    "registeel": {
+      "name": {
+        "en": [
+          "Registeel"
+        ],
+        "text": [
+          ""
+        ]
+      }
     },
-    "AncientTomb_EventScript_CaveEntranceSide": {
-      "en": [
-        "The wall is covered in raised dots, worn smooth\nby the years. Nobody could read them now."
-      ],
-      "text": [
-        "Peretele e acoperit de puncte în relief, șterse de\nani. Nimeni nu le-ar mai putea citi acum."
-      ]
+    "registeel_wall_left": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "registeel_wall_middle": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "registeel_wall_right": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
-  }
+  },
+  "signs": {}
 }

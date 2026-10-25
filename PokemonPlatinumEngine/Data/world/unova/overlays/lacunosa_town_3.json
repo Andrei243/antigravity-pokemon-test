@@ -1,0 +1,41 @@
+{
+  // The storyteller's house (plan 22 · U7, part b): the old woman who tells the tale of the meteorite, Black 2's, our words. When
+  // Professor Juniper and Bianca bring the player in (VAR_UNOVA_LACUNOSA 1) the house's own arrival has them sit and hear it
+  // (lacunosa_town_3.txt): the professor (1, FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER) and Bianca (2, FLAG_UNOVA_HIDE_BIANCA_STORYTELLER)
+  // are shown for it and gone afterwards. The old woman tells the tale again to anyone who asks (0)
+  "area": "lacunosa_town_3",
+  "bgmTrack": "unova/lacunosa",
+  "people": {
+    "0": {
+      "name": "Storyteller",
+      "npcType": "old_woman",
+      "script": "TheOldTale",
+      "still": true
+    },
+    "1": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER",
+      "still": true,
+      "dialog": [
+        "What a wonderful old tale! I could listen to it all day."
+      ]
+    },
+    "2": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_STORYTELLER",
+      "still": true,
+      "dialog": [
+        "A monster from a meteorite that only comes out at night! Hee hee, thrilling!"
+      ]
+    },
+    "3": {
+      "name": "Black Belt",
+      "npcType": "blackbelt",
+      "dialog": [
+        "My granny loves old stories! I'm always being made to listen to her really, really long ones."
+      ]
+    }
+  }
+}

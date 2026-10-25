@@ -6,7 +6,7 @@
           "Traveller"
         ],
         "text": [
-          ""
+          "Călătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I came for one night to wait out the wind. That was a week ago. The wind here is stubborn."
         ],
         "text": [
-          ""
+          "Am venit pentru o noapte, să aștept să treacă vântul. Asta a fost acum o săptămână. Vântul de aici e încăpățânat."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Pilot"
         ],
         "text": [
-          ""
+          "Pilot"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "A Pokémon Center is the only place where my feet touch the ground all day. I rather like it!"
         ],
         "text": [
-          ""
+          "Pokémon Center e singurul loc unde picioarele mele ating pământul toată ziua. Chiar îmi place!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Ducklett"
         ],
         "text": [
-          ""
+          "Ducklett"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Ducklett: Kwack!"
         ],
         "text": [
-          ""
+          "Ducklett: Kwack!"
         ]
       }
     }

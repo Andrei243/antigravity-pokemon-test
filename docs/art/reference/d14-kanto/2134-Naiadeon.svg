@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Naiadeon (No. 2134), Water, from Vaporeon: reference only (shares its base drawing with the other two of the trio)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="472" rx="160" ry="13" fill="#e6e7ee"/>
+<!-- wide tail fin, translucent at its edge -->
+<path class="o" fill="#5ab0e0" d="M160 310 C120 290 100 250 110 210 C120 190 140 186 150 196 C150 240 160 270 176 296 Z"/>
+<path class="o" fill="#cfeefc" d="M112 214 C70 180 40 190 26 220 C50 230 60 250 54 280 C84 286 110 270 126 250 C120 236 114 224 112 214 Z" opacity=".9"/>
+<path class="t" d="M40 220 c30 4 60 16 80 30 M60 276 c20 -10 40 -20 60 -26" stroke-width="2"/>
+<path class="o" fill="#3a88bc" d="M196 360 C192 396 198 424 190 448 L214 450 C220 420 222 392 226 364 Z"/>
+<path class="o" fill="#3a88bc" d="M316 360 C322 396 318 424 326 448 L350 448 C346 420 346 392 340 360 Z"/><path class="o" fill="#5ab0e0" d="M150 320 C150 282 196 268 252 268 C310 268 350 282 352 320 C354 356 310 372 252 372 C192 372 150 356 150 320 Z"/>
+<path fill="#3a88bc" d="M160 346 C200 368 310 370 346 340 C338 362 310 372 252 372 C198 372 168 362 160 346 Z"/><!-- pale wave lines down the body -->
+<path d="M180 300 c20 -10 40 10 60 0 c20 -10 40 10 60 0 M190 330 c20 -10 40 10 60 0 c20 -10 40 10 60 0" stroke="#d4f0ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+<path class="o" fill="#5ab0e0" d="M172 346 C166 390 178 418 168 444 C156 448 156 462 172 462 L202 462 C206 430 202 400 210 352 Z"/>
+<path class="o" fill="#5ab0e0" d="M296 350 C304 392 296 418 302 444 C292 448 292 462 308 462 L336 462 C336 430 338 400 332 350 Z"/>
+<path class="t" d="M176 454 v8 M188 454 v8 M312 454 v8 M324 454 v8" stroke-width="2"/><!-- the ruff grown into a flowing mane of fins -->
+<g transform="translate(-40 24)">
+<path class="o" fill="#f2f6f2" d="M290 250 C270 210 290 180 320 180 C340 220 348 260 346 300 L330 330 L318 296 L300 324 L296 290 L276 300 Z"/>
+<path fill="#cfdcd8" d="M330 210 C342 240 346 270 344 300 L330 330 L326 300 C334 270 336 240 330 210 Z"/>
+</g><g transform="translate(-30 30)"><path class="o" fill="#5ab0e0" d="M318 210 C312 170 340 146 376 146 C412 146 438 168 436 204 C434 236 410 254 378 254 C346 254 322 238 318 210 Z"/>
+<path fill="#3a88bc" d="M420 166 C438 188 436 226 418 244 C408 250 394 254 378 254 C410 236 426 206 420 166 Z"/><!-- head fins in place of ears -->
+<path class="o" fill="#f2f6f2" d="M330 170 C300 140 290 100 304 74 C326 100 346 126 352 156 Z"/>
+<path class="o" fill="#f2f6f2" d="M380 150 C384 110 404 80 432 72 C430 110 416 140 398 160 Z"/>
+<path class="o" fill="#f2f6f2" d="M310 220 C280 230 262 250 258 272 C286 268 304 252 318 236 Z"/>
+<path class="t" d="M310 92 l26 54 M420 86 l-28 64" stroke-width="2"/>
+<path d="M352 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z M394 194 c6-10 22-10 28 0 c-8 6-20 6-28 0z" fill="#1b1b2b"/>
+<circle cx="370" cy="190" r="3" fill="#fff"/><circle cx="412" cy="190" r="3" fill="#fff"/>
+<path class="t" d="M378 222 l8 6 l8 -6"/></g><path d="M190 286 C220 276 256 274 290 276" stroke="#9ad4f4" stroke-width="6" fill="none" stroke-linecap="round"/></svg>

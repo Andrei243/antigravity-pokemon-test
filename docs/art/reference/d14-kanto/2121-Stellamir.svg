@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Stellamir (No. 2121), Water/Psychic, from Starmie: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.v{fill:#8a6ac0}.vd{fill:#664a9c}.vl{fill:#aa8ad8}.g{fill:#f2c84a}.gd{fill:#c89a2a}.sm{fill:#c890e8}.smd{fill:#9c68c8}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="486" rx="120" ry="10" fill="#e6e7ee"/>
+<!-- back star -->
+<path class="o vd" d="M256 26 L298 162 L440 150 L322 236 L372 370 L256 290 L140 370 L190 236 L72 150 L214 162 Z" transform="rotate(36 256 240)"/>
+<!-- the third, smaller star turning between -->
+<path class="o sm" d="M256 110 L280 190 L364 186 L296 236 L322 316 L256 268 L190 316 L216 236 L148 186 L232 190 Z" transform="rotate(18 256 230) translate(0 -8)"/>
+<path class="smd" d="M256 268 L322 316 L296 236 L364 186 Z" transform="rotate(18 256 230) translate(0 -8)"/>
+<!-- front star -->
+<path class="o v" d="M256 70 L290 186 L410 178 L310 250 L352 364 L256 296 L160 364 L202 250 L102 178 L222 186 Z"/>
+<path class="vd" d="M256 296 L352 364 L310 250 L410 178 L290 186 Z" opacity=".55"/>
+<path class="t" d="M256 120 v60 M140 186 l60 20 M372 186 l-60 20 M186 330 l40 -40 M326 330 l-40 -40" stroke="#c6aee6" stroke-width="3"/>
+<!-- the core, gold, with a swirl of light in its gem -->
+<path class="o g" d="M196 240 C196 206 222 186 256 186 C290 186 316 206 316 240 C316 274 290 294 256 294 C222 294 196 274 196 240 Z"/>
+<path class="gd" d="M296 202 C314 220 316 258 300 278 C290 290 274 294 256 294 C292 278 304 242 296 202 Z"/>
+<circle class="o" cx="256" cy="240" r="34" fill="#f070b8" stroke-width="4"/>
+<path d="M256 240 m-20 0 a20 20 0 1 1 20 20 a12 12 0 1 1 -8 -16 a5 5 0 1 1 6 4" stroke="#e8d0ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+<circle cx="244" cy="226" r="5" fill="#ffffff"/>
+<!-- highlight -->
+<path d="M180 200 L120 184" stroke="#c6aee6" stroke-width="6" stroke-linecap="round"/>
+<g fill="#ffe8a8"><circle cx="420" cy="80" r="5"/><circle cx="90" cy="420" r="4"/><circle cx="430" cy="430" r="3"/></g>
+</svg>

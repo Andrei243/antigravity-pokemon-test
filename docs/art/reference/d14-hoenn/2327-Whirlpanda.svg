@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2327 Whirlpanda (Normal/Fighting), from Spinda: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2327_1" d="M280.5 397.2A25 58 -12 1 0 329.5 386.8A25 58 -12 1 0 280.5 397.2Z"/><clipPath id="h2327_1c"><use href="#h2327_1"/></clipPath><path id="h2327_2" d="M286 446a32 12 0 1 0 64 0a32 12 0 1 0 -64 0Z"/><clipPath id="h2327_2c"><use href="#h2327_2"/></clipPath><path id="h2327_3" d="M307.9 230.5A16 42 28 1 0 336.1 245.5A16 42 28 1 0 307.9 230.5Z"/><clipPath id="h2327_3c"><use href="#h2327_3"/></clipPath><path id="h2327_4" d="M323 200a17 16 0 1 0 34 0a17 16 0 1 0 -34 0Z"/><clipPath id="h2327_4c"><use href="#h2327_4"/></clipPath><path id="h2327_5" d="M302 352C332 372 352 398 346 424L330 420C330 398 316 378 294 364Z"/><clipPath id="h2327_5c"><use href="#h2327_5"/></clipPath><path id="h2327_6" d="M200.9 328.8A62 80 -10 1 0 323.1 307.2A62 80 -10 1 0 200.9 328.8Z"/><clipPath id="h2327_6c"><use href="#h2327_6"/></clipPath><path id="h2327_7" d="M200.2 394A26 40 -58 1 0 227.8 350A26 40 -58 1 0 200.2 394Z"/><clipPath id="h2327_7c"><use href="#h2327_7"/></clipPath><path id="h2327_8" d="M163.2 395.4A19 32 8 1 0 200.8 400.6A19 32 8 1 0 163.2 395.4Z"/><clipPath id="h2327_8c"><use href="#h2327_8"/></clipPath><path id="h2327_9" d="M311 398a21 24 0 1 0 42 0a21 24 0 1 0 -42 0Z"/><clipPath id="h2327_9c"><use href="#h2327_9"/></clipPath><path id="h2327_10" d="M315 368a13 13 0 1 0 26 0a13 13 0 1 0 -26 0Z"/><clipPath id="h2327_10c"><use href="#h2327_10"/></clipPath><path id="h2327_11" d="M192.5 267.9A16 42 62 1 0 207.5 296.1A16 42 62 1 0 192.5 267.9Z"/><clipPath id="h2327_11c"><use href="#h2327_11"/></clipPath><path id="h2327_12" d="M149 262a17 16 0 1 0 34 0a17 16 0 1 0 -34 0Z"/><clipPath id="h2327_12c"><use href="#h2327_12"/></clipPath><path id="h2327_13" d="M176.8 142.5A21 31 -24 1 0 215.2 125.5A21 31 -24 1 0 176.8 142.5Z"/><clipPath id="h2327_13c"><use href="#h2327_13"/></clipPath><path id="h2327_14" d="M280.8 119.5A21 31 24 1 0 319.2 136.5A21 31 24 1 0 280.8 119.5Z"/><clipPath id="h2327_14c"><use href="#h2327_14"/></clipPath><path id="h2327_15" d="M184.6 199.2A66 58 -8 1 0 315.4 180.8A66 58 -8 1 0 184.6 199.2Z"/><clipPath id="h2327_15c"><use href="#h2327_15"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M142 452a120 14 0 1 0 240 0a120 14 0 1 0 -240 0Z" fill="#e9ebf2"/>
+<use href="#h2327_1" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_1c)"><path d="M304.4 403.7A18 60 -12 1 0 339.6 396.3A18 60 -12 1 0 304.4 403.7Z" fill="#d8c094"/></g>
+<use href="#h2327_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_2" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_2c)"><path d="M310 452a22 8 0 1 0 44 0a22 8 0 1 0 -44 0Z" fill="#d8c094"/></g>
+<use href="#h2327_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_3" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_3c)"><path d="M324.1 239.8A9 40 28 1 0 339.9 248.2A9 40 28 1 0 324.1 239.8Z" fill="#d8c094"/></g>
+<use href="#h2327_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_4" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_4c)"><path d="M338 206a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#d8c094"/></g>
+<use href="#h2327_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_5" fill="#2f6f73"/>
+<g clip-path="url(#h2327_5c)"><path d="M320 380L350 400L346 424L330 420Z" fill="#1f4f53"/></g>
+<use href="#h2327_5" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2327_6" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_6c)"><path d="M250.8 358.7A50 90 -10 1 0 349.2 341.3A50 90 -10 1 0 250.8 358.7Z" fill="#d8c094"/><path d="M273.8 291.6A13 11 20 1 0 298.2 300.4A13 11 20 1 0 273.8 291.6Z" fill="#d6463e"/><path d="M230 372a10 8 0 1 0 20 0a10 8 0 1 0 -20 0Z" fill="#d6463e"/><path d="M181.2 364.2A82 17 -10 1 0 342.8 335.8A82 17 -10 1 0 181.2 364.2Z" fill="#2f6f73"/><path d="M260.6 362.9A40 17 -10 1 0 339.4 349.1A40 17 -10 1 0 260.6 362.9Z" fill="#1f4f53"/><path d="M214.3 283.1A18 30 -10 1 0 249.7 276.9A18 30 -10 1 0 214.3 283.1Z" fill="#fffaf0"/></g>
+<use href="#h2327_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_7" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_7c)"><path d="M211.4 403A20 30 -58 1 0 232.6 369A20 30 -58 1 0 211.4 403Z" fill="#d8c094"/></g>
+<use href="#h2327_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_8" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_8c)"><path d="M178.1 402.3A12 30 8 1 0 201.9 405.7A12 30 8 1 0 178.1 402.3Z" fill="#d8c094"/></g>
+<use href="#h2327_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M154 430a22 11 0 1 0 44 0a22 11 0 1 0 -44 0Z" fill="#f2e2c0" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M314 360C318 368 322 372 326 374" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2327_9" fill="#d9a54a"/>
+<g clip-path="url(#h2327_9c)"><path d="M328 408a14 22 0 1 0 28 0a14 22 0 1 0 -28 0Z" fill="#ad7d2a"/><path d="M319 390a5 8 0 1 0 10 0a5 8 0 1 0 -10 0Z" fill="#f3d38b"/></g>
+<use href="#h2327_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_10" fill="#d9a54a"/>
+<g clip-path="url(#h2327_10c)"><path d="M325 372a9 10 0 1 0 18 0a9 10 0 1 0 -18 0Z" fill="#ad7d2a"/></g>
+<use href="#h2327_10" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M321 352a6 5 0 1 0 12 0a6 5 0 1 0 -12 0Z" fill="#7a4a22" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M318 380C324 384 338 384 346 380" fill="none" stroke="#d6463e" stroke-width="4"/>
+<use href="#h2327_11" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_11c)"><path d="M201.3 283.2A10 40 62 1 0 210.7 300.8A10 40 62 1 0 201.3 283.2Z" fill="#d8c094"/></g>
+<use href="#h2327_11" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_12" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_12c)"><path d="M161 268a11 11 0 1 0 22 0a11 11 0 1 0 -22 0Z" fill="#d8c094"/></g>
+<use href="#h2327_12" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_13" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_13c)"><path d="M188.9 142.1A10 18 -24 1 0 207.1 133.9A10 18 -24 1 0 188.9 142.1Z" fill="#d6463e"/></g>
+<use href="#h2327_13" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_14" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_14c)"><path d="M293.2 128.3A14 30 24 1 0 318.8 139.7A14 30 24 1 0 293.2 128.3Z" fill="#d8c094"/><path d="M289.8 128.3A9 17 24 1 0 306.2 135.7A9 17 24 1 0 289.8 128.3Z" fill="#a82f2b"/></g>
+<use href="#h2327_14" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2327_15" fill="#f2e2c0"/>
+<g clip-path="url(#h2327_15c)"><path d="M240 220a50 50 0 1 0 100 0a50 50 0 1 0 -100 0Z" fill="#d8c094"/><path d="M216 152.2A17 13 20 1 0 248 163.8A17 13 20 1 0 216 152.2Z" fill="#d6463e"/><path d="M281 186a15 12 0 1 0 30 0a15 12 0 1 0 -30 0Z" fill="#d6463e"/><path d="M291 196a9 7 0 1 0 18 0a9 7 0 1 0 -18 0Z" fill="#a82f2b"/><path d="M201.3 165.5A22 12 -20 1 0 242.7 150.5A22 12 -20 1 0 201.3 165.5Z" fill="#fffaf0"/></g>
+<use href="#h2327_15" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M206.3 221.9A28 18 -8 1 0 261.7 214.1A28 18 -8 1 0 206.3 221.9Z" fill="#fffaf0" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M207 210a7 5 0 1 0 14 0a7 5 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M222 228Q232 236 244 228" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M201 186a13 15 0 1 0 26 0a13 15 0 1 0 -26 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M214 186m-9.1 0a9.1 9.1 0 1 1 9.1 9.1a5.8500000000000005 5.8500000000000005 0 1 1 -5.8500000000000005 -5.8500000000000005a2.6 2.6 0 1 1 2.6 2.6" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M253 182a11 13 0 1 0 22 0a11 13 0 1 0 -22 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M264 182m-7.699999999999999 0a7.699999999999999 7.699999999999999 0 1 1 7.699999999999999 7.699999999999999a4.95 4.95 0 1 1 -4.95 -4.95a2.2 2.2 0 1 1 2.2 2.2" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

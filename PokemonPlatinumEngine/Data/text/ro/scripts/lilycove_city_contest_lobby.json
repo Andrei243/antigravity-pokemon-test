@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Contest Lobby! ...Oh, you don't have a Pokéblock Case? Every trainer who comes here should. Please, take this one."
       ],
       "text": [
-        ""
+        "Bine ai venit la Contest Lobby! ...A, nu ai o Cutie de Pokéblocuri? Fiecare antrenor care vine aici ar trebui să aibă. Te rog, ia-o pe asta."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "It holds the Pokéblocks you blend at the Berry Blender, over there. Your Pokémon will love them!"
       ],
       "text": [
-        ""
+        "În ea ții Pokéblocurile pe care le amesteci la Blenderul de Fructe, de acolo. Pokémonilor tăi le vor plăcea!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Welcome to the Contest Lobby! This is the counter for the contests."
       ],
       "text": [
-        ""
+        "Bine ai venit la Contest Lobby! Aici e ghișeul pentru concursuri."
       ]
     },
     {
@@ -40,10 +40,10 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să înscrii un Pokémon într-un concurs?",
+        "ÎNSCRIE",
+        "INFO",
+        "IEȘIRE"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "We look forward to seeing you and your Pokémon on our stage!"
       ],
       "text": [
-        ""
+        "Abia așteptăm să te vedem pe scena noastră, pe tine și pe Pokémonul tău!"
       ]
     },
     {
@@ -63,11 +63,11 @@
         "CANCEL"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce vrei să afli?",
+        "CONCURSURILE",
+        "CALITĂȚILE",
+        "RANGURILE",
+        "ANULEAZĂ"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "Four Pokémon take the stage. First their condition is judged, and the best goes first. Then there are five rounds of appeals, one move each."
       ],
       "text": [
-        ""
+        "Patru Pokémon urcă pe scenă. Mai întâi se judecă starea lor, iar cel mai bun merge primul. Apoi urmează cinci runde de apeluri, câte o mișcare fiecare."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "A move earns hearts, startles those who went before, bends the order or stirs the crowd. The hearts count twice over, on top of the condition. Most points wins!"
       ],
       "text": [
-        ""
+        "O mișcare aduce inimi, îi surprinde pe cei dinaintea ei, schimbă ordinea sau stârnește publicul. Inimile se numără de două ori, peste starea Pokémonului. Câștigă cine are cele mai multe puncte!"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "There are five contests, for the five qualities a Pokémon can show: Cool, Beauty, Cute, Smart and Tough. Each move belongs to one of them."
       ],
       "text": [
-        ""
+        "Sunt cinci concursuri, pentru cele cinci calități pe care le poate arăta un Pokémon: Stil, Frumusețe, Drăgălășenie, Istețime și Duritate. Fiecare mișcare aparține uneia dintre ele."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "A Pokémon's condition is raised with Pokéblocks, which are blended from berries. The Berry Blender is over there."
       ],
       "text": [
-        ""
+        "Starea unui Pokémon se îmbunătățește cu Pokéblocuri, care se amestecă din fructe. Blenderul de Fructe e acolo."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "There are four ranks: Normal, Super, Hyper and Master. Any Pokémon may enter the Normal Rank."
       ],
       "text": [
-        ""
+        "Sunt patru ranguri: Normal, Super, Hyper și Master. Orice Pokémon poate intra în Rangul Normal."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "To go on to a higher rank, a Pokémon must have won the rank under it in the same contest. The winner of a rank wears its ribbon."
       ],
       "text": [
-        ""
+        "Ca să treacă la un rang mai înalt, un Pokémon trebuie să fi câștigat rangul de sub el în același concurs. Câștigătorul unui rang poartă panglica lui."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Come and see me again whenever you'd like to hear more, or to enter!"
       ],
       "text": [
-        ""
+        "Vino să mă vezi oricând vrei să afli mai multe sau să te înscrii!"
       ]
     },
     {
@@ -136,12 +136,12 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce rang alegi?",
+        "RANG NORMAL",
+        "RANG SUPER",
+        "RANG HYPER",
+        "RANG MASTER",
+        "IEȘIRE"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "Which Pokémon will you enter? Please choose one."
       ],
       "text": [
-        ""
+        "Ce Pokémon înscrii? Te rog să alegi unul."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Will you cancel your entry?"
       ],
       "text": [
-        ""
+        "Îți anulezi înscrierea?"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "{contestant} has already won this rank. Enter it anyway?"
       ],
       "text": [
-        ""
+        "{contestant} a câștigat deja acest rang. Îl înscrii oricum?"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "{contestant} has been entered! You are entry number 4."
       ],
       "text": [
-        ""
+        "{contestant} a fost înscris! Ai numărul de concurs 4."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "The contest is about to begin. Right this way, please!"
       ],
       "text": [
-        ""
+        "Concursul e pe cale să înceapă. Pe aici, te rog!"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Thank you for taking part. We hope to see you again soon!"
       ],
       "text": [
-        ""
+        "Mulțumim că ai participat. Sperăm să te revedem curând!"
       ]
     }
   ],
@@ -205,13 +205,13 @@
         "EXIT"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "La ce concurs te înscrii?",
+        "STIL",
+        "FRUMUSEȚE",
+        "DRĂGĂLĂȘENIE",
+        "ISTEȚIME",
+        "DURITATE",
+        "IEȘIRE"
       ]
     }
   ],
@@ -221,7 +221,7 @@
         "An Egg can't go on stage, and neither can a Pokémon that has fainted."
       ],
       "text": [
-        ""
+        "Un Ou nu poate urca pe scenă, și nici un Pokémon care a leșinat."
       ]
     },
     {
@@ -229,7 +229,7 @@
         "That Pokémon hasn't won the rank under this one in this contest yet."
       ],
       "text": [
-        ""
+        "Pokémonul ăsta n-a câștigat încă rangul de dedesubt la concursul ăsta."
       ]
     }
   ],
@@ -239,7 +239,7 @@
         "Congratulations on your win! The hall confers the {ribbon} on {contestant} as your prize."
       ],
       "text": [
-        ""
+        "Felicitări pentru victorie! Sala îi acordă lui {contestant} {ribbon} ca premiu."
       ]
     },
     {
@@ -247,7 +247,7 @@
         "{contestant} received the {ribbon}!"
       ],
       "text": [
-        ""
+        "{contestant} a primit {ribbon}!"
       ]
     },
     {
@@ -255,7 +255,7 @@
         "{contestant} has won this rank before, so please take this prize from the Contest Hall."
       ],
       "text": [
-        ""
+        "{contestant} a câștigat rangul acesta și înainte, așa că ia premiul ăsta de la Contest Hall."
       ]
     }
   ],
@@ -265,7 +265,7 @@
         "Artist"
       ],
       "text": [
-        ""
+        "Artistul"
       ]
     },
     {
@@ -273,7 +273,7 @@
         "Your Pokémon spurred me to paint! I couldn't keep my brush still. Here, see what I have made of {contestant}!"
       ],
       "text": [
-        ""
+        "Pokémonul tău m-a făcut să pictez! N-am mai putut ține pensula nemișcată. Poftim, vezi ce am făcut din {contestant}!"
       ]
     },
     {
@@ -281,7 +281,7 @@
         "Shall I take the painting to the Lilycove Museum, where everyone can see it?"
       ],
       "text": [
-        ""
+        "Duc tabloul la Muzeul din Lilycove, unde îl poate vedea toată lumea?"
       ]
     },
     {
@@ -289,7 +289,7 @@
         "Oh... then you take it home. But I do wish it would hang in the museum, where it belongs."
       ],
       "text": [
-        ""
+        "A... atunci du-l tu acasă. Dar mi-aș fi dorit să atârne în muzeu, unde îi e locul."
       ]
     },
     {
@@ -297,7 +297,7 @@
         "Wonderful! I'll hang it there myself. Your Pokémon will be famous!"
       ],
       "text": [
-        ""
+        "Minunat! Îl atârn chiar eu acolo. Pokémonul tău va deveni faimos!"
       ]
     },
     {
@@ -305,7 +305,7 @@
         "And as a memento of the painting, please take this ribbon for your Pokémon!"
       ],
       "text": [
-        ""
+        "Iar ca amintire a tabloului, ia panglica asta pentru Pokémonul tău!"
       ]
     },
     {
@@ -313,7 +313,7 @@
         "{contestant} received the {ribbon}!"
       ],
       "text": [
-        ""
+        "{contestant} a primit {ribbon}!"
       ]
     }
   ],
@@ -323,7 +323,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -331,7 +331,7 @@
         "This is the counter for contests with friends. Contests with other players are not being held yet. Please try the counter next to me!"
       ],
       "text": [
-        ""
+        "Acesta e ghișeul pentru concursuri cu prietenii. Concursurile cu alți jucători nu se țin încă. Încearcă ghișeul de lângă mine!"
       ]
     }
   ],
@@ -341,7 +341,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -349,7 +349,7 @@
         "Would you like to make Pokéblocks with me at the Berry Blender? Two of us at the drum is just right for a start!"
       ],
       "text": [
-        ""
+        "Vrei să facem Pokéblocuri împreună la Blenderul de Fructe? Doi la tobă e numărul potrivit pentru început!"
       ]
     },
     {
@@ -357,7 +357,7 @@
         "Ah, that's all right. Come back whenever you feel like blending."
       ],
       "text": [
-        ""
+        "A, nicio problemă. Revino oricând ai chef de amestecat."
       ]
     }
   ],
@@ -367,7 +367,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -375,7 +375,7 @@
         "We're about to make Pokéblocks. Would you like to blend with the two of us?"
       ],
       "text": [
-        ""
+        "Urmează să facem Pokéblocuri. Vrei să amestecați cu noi doi?"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "Oh, what a pity. Another time, then!"
       ],
       "text": [
-        ""
+        "Ce păcat. Altă dată, atunci!"
       ]
     }
   ],
@@ -393,7 +393,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -401,7 +401,7 @@
         "There's a place for one more at our drum! Would you like to make Pokéblocks with the three of us?"
       ],
       "text": [
-        ""
+        "Mai e loc pentru încă unul la toba noastră! Vrei să faci Pokéblocuri cu noi trei?"
       ]
     },
     {
@@ -409,7 +409,7 @@
         "Oh dear. Do come back if you change your mind!"
       ],
       "text": [
-        ""
+        "Vai. Revino dacă te răzgândești!"
       ]
     }
   ],
@@ -419,7 +419,7 @@
         "You'll need a Pokéblock Case to keep what we make. The receptionist at the counter will give you one."
       ],
       "text": [
-        ""
+        "Vei avea nevoie de o Cutie de Pokéblocuri ca să păstrezi ce facem. Recepționera de la ghișeu îți dă una."
       ]
     },
     {
@@ -427,7 +427,7 @@
         "Excellent! Choose a berry to blend. The more your berry's flavour stands out from the others', the better the Pokéblock."
       ],
       "text": [
-        ""
+        "Excelent! Alege un fruct de amestecat. Cu cât gustul fructului tău iese mai mult în evidență față de celelalte, cu atât Pokéblocul e mai bun."
       ]
     },
     {
@@ -435,7 +435,7 @@
         "That's a fine Pokéblock! It's in your Case. Your Pokémon will love it."
       ],
       "text": [
-        ""
+        "Ce Pokéblock frumos! E în Cutia ta. Pokémonului tău îi va plăcea."
       ]
     },
     {
@@ -443,7 +443,7 @@
         "Your Pokéblock Case is full. Feed some Pokéblocks to your Pokémon, or throw a few away, and come back."
       ],
       "text": [
-        ""
+        "Cutia ta de Pokéblocuri e plină. Dă niște Pokéblocuri Pokémonilor tăi sau aruncă câteva, apoi revino."
       ]
     }
   ],
@@ -453,7 +453,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrânul"
       ]
     },
     {
@@ -461,7 +461,7 @@
         "Well, well. A young blender! The secret of a great Pokéblock is rhythm. Press as the arm comes round, and never a beat early!"
       ],
       "text": [
-        ""
+        "Ei, ei. Un tânăr amestecător! Secretul unui Pokéblock grozav e ritmul. Apasă când brațul vine în dreptul tău, niciodată cu o bătaie mai devreme!"
       ]
     },
     {
@@ -469,7 +469,7 @@
         "Shall we blend a Pokéblock together?"
       ],
       "text": [
-        ""
+        "Facem un Pokéblock împreună?"
       ]
     },
     {
@@ -477,7 +477,7 @@
         "Another time, then. The arm waits for no one, but I do."
       ],
       "text": [
-        ""
+        "Altă dată, atunci. Brațul nu așteaptă pe nimeni, dar eu da."
       ]
     }
   ],
@@ -487,7 +487,7 @@
         "Let's get blending already! The leader of our drum is waiting for a partner."
       ],
       "text": [
-        ""
+        "Hai să amestecăm odată! Conducătorul tobei noastre așteaptă un partener."
       ]
     }
   ],
@@ -497,7 +497,7 @@
         "A portrait of {wallmon}, a winner here. Its trainer is {wall}."
       ],
       "text": [
-        ""
+        "Portretul lui {wallmon}, câștigător aici. Antrenorul său este {wall}."
       ]
     },
     {
@@ -505,7 +505,7 @@
         "An empty frame. No winner has been hung here yet."
       ],
       "text": [
-        ""
+        "Un cadru gol. Niciun câștigător n-a fost atârnat aici încă."
       ]
     }
   ]

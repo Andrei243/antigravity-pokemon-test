@@ -1,0 +1,7 @@
+# The visitors' house of Undella Town (plan 22 · U7, part b). docs/scripts.md describes the language. The holiday-makers who are not
+# there every day are hidden by FLAG_UNOVA_HIDE_UNDELLA_SPARE, which the chapter's catch-up sets (common.UnovaLacunosa).
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end

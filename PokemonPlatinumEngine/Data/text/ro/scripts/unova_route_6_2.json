@@ -5,7 +5,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Thanks for coming, {player}. I wanted to talk where it's quiet."
       ],
       "text": [
-        ""
+        "Mulțumesc că ai venit, {player}. Voiam să vorbim într-un loc liniștit."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Have you heard about the cold snap near Lacunosa Town? Nobody talks about it, but the records show the air there dropped far below freezing for a moment, and it was no more than a moment."
       ],
       "text": [
-        ""
+        "Ai auzit de valul de frig de lângă Lacunosa Town? Nimeni nu vorbește despre el, dar înregistrările arată că aerul de acolo a scăzut mult sub zero pentru o clipă, și n-a fost mai mult decât o clipă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There were readings almost as low around Castelia City and Driftveil City, too."
       ],
       "text": [
-        ""
+        "Au fost măsurători aproape la fel de scăzute și în jurul Castelia City și Driftveil City."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Add Team Plasma and that ship of theirs, and I don't believe it's a coincidence. Somebody ought to look into it before things get worse. I hate the cold, though."
       ],
       "text": [
-        ""
+        "Adaugă Echipa Plasma și nava lor, și nu cred că e o coincidență. Cineva ar trebui să cerceteze înainte să se înrăutățească lucrurile. Eu urăsc frigul, însă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Here, take this. It's a Hidden Machine with Surf in it. Teach it to one of your Pokémon and you can cross the water on its back."
       ],
       "text": [
-        ""
+        "Poftim, ia asta. E o Mașină Ascunsă cu Surf în ea. Învață-o unui Pokémon de-al tău și poți traversa apa pe spatele lui."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Go to the places I mentioned and see what's going on. I'll stay here and go through the lab's records. We'll compare notes."
       ],
       "text": [
-        ""
+        "Du-te la locurile pe care le-am spus și vezi ce se întâmplă. Eu rămân aici și parcurg înregistrările laboratorului. Vom compara notițele."
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Sorry for slowing you down. Strange things may be happening, so be careful out there!"
       ],
       "text": [
-        ""
+        "Scuze că te-am încetinit. Se pot întâmpla lucruri ciudate, așa că ai grijă!"
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Researcher"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "You can see a Deerling of every season in our lab! When it comes to Deerling, we're the experts."
       ],
       "text": [
-        ""
+        "Poți vedea un Deerling din fiecare anotimp în laboratorul nostru! Când vine vorba de Deerling, noi suntem experții."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "We found an unusually fine one. Would you raise it for us?"
       ],
       "text": [
-        ""
+        "Am găsit unul neobișnuit de frumos. Îl crești tu pentru noi?"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Will you take it?"
       ],
       "text": [
-        ""
+        "Îl iei?"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "{player} received Deerling!"
       ],
       "text": [
-        ""
+        "{player} a primit Deerling!"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "It changes coat with the seasons, so you'll see it in a new colour every few months. Take good care of it!"
       ],
       "text": [
-        ""
+        "Își schimbă blana odată cu anotimpurile, așa că îl vei vedea într-o culoare nouă la câteva luni. Ai mare grijă de el!"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Deerling's coat changes with the season, but not what's underneath. Be kind to yours and it will show."
       ],
       "text": [
-        ""
+        "Blana lui Deerling se schimbă cu anotimpul, dar nu și ce e dedesubt. Poartă-te frumos cu al tău și se va vedea."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Oh... Well, it'll be here if you change your mind."
       ],
       "text": [
-        ""
+        "A... Ei bine, va fi aici dacă te răzgândești."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Your team is full! Make some room, then come back and see me."
       ],
       "text": [
-        ""
+        "Echipa ta e plină! Fă loc, apoi revino la mine."
       ]
     }
   ],
@@ -155,7 +155,7 @@
         "Forecaster"
       ],
       "text": [
-        ""
+        "Prezentatoare meteo"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Welcome! Show me a Pokémon that can change the weather, and I'll give you a Pokémon weather forecast."
       ],
       "text": [
-        ""
+        "Bine ai venit! Arată-mi un Pokémon care poate schimba vremea și îți dau prognoza meteo Pokémon."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Oh dear. None of your Pokémon knows a move that changes the weather. Bring me one that does, and you'll get your forecast!"
       ],
       "text": [
-        ""
+        "Vai. Niciun Pokémon de-al tău nu știe o mișcare care schimbă vremea. Adu-mi unul care știe și vei primi prognoza!"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Sunny Day! Then expect bright skies: Fire-type moves are stronger by half and Water-type moves weaker by half."
       ],
       "text": [
-        ""
+        "Sunny Day! Atunci așteaptă-te la cer senin: mișcările de tip Foc sunt cu jumătate mai puternice, iar cele de tip Apă cu jumătate mai slabe."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Solar Beam needs no charging, ice can't form, and Thunder and Hurricane are harder to land. Don't forget your sunscreen!"
       ],
       "text": [
-        ""
+        "Solar Beam nu mai are nevoie de încărcare, gheața nu se poate forma, iar Thunder și Hurricane sunt mai greu de nimerit. Nu uita crema de soare!"
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Rain Dance! Then expect showers: Water-type moves are stronger by half and Fire-type moves weaker by half."
       ],
       "text": [
-        ""
+        "Rain Dance! Atunci așteaptă-te la averse: mișcările de tip Apă sunt cu jumătate mai puternice, iar cele de tip Foc cu jumătate mai slabe."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "Thunder and Hurricane won't miss, but Solar Beam is slow in the gloom. Don't forget your umbrella!"
       ],
       "text": [
-        ""
+        "Thunder și Hurricane nu dau greș, dar Solar Beam e lent în întuneric. Nu uita umbrela!"
       ]
     },
     {
@@ -211,7 +211,7 @@
         "Hail! Then expect a hailstorm: every Pokémon that isn't an Ice type is hurt a little at each turn's end."
       ],
       "text": [
-        ""
+        "Hail! Atunci așteaptă-te la grindină: fiecare Pokémon care nu e de tip Gheață e rănit puțin la sfârșitul fiecărei ture."
       ]
     },
     {
@@ -219,7 +219,7 @@
         "Blizzard won't miss in it, and Solar Beam is slow. Don't forget your scarf!"
       ],
       "text": [
-        ""
+        "Blizzard nu dă greș în ea, iar Solar Beam e lent. Nu uita fularul!"
       ]
     },
     {
@@ -227,7 +227,7 @@
         "Sandstorm! Then expect flying sand: every Pokémon that isn't Rock, Ground or Steel is hurt a little at each turn's end."
       ],
       "text": [
-        ""
+        "Sandstorm! Atunci așteaptă-te la nisip purtat de vânt: fiecare Pokémon care nu e de tip Rocă, Pământ sau Oțel este rănit puțin la sfârșitul fiecărei ture."
       ]
     },
     {
@@ -235,7 +235,7 @@
         "Rock types find their defense raised. Don't forget your goggles!"
       ],
       "text": [
-        ""
+        "Tipurile Rocă își văd Apărarea crescută. Nu uita ochelarii de protecție!"
       ]
     }
   ]

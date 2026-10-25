@@ -70,7 +70,14 @@ public enum RollKind
     /// A Pokémon of someone else's, over the level the badges command (plan 06 · R10): out of 256 against its level
     /// and the cap, out of 4 for the move it uses instead and for what it says when it does nothing.
     /// </summary>
-    Obedience
+    Obedience,
+    /// <summary>
+    /// An SOS battle (plan 14 · B5): out of 100, a wild Pokémon calls for help below its call chance, and the call is
+    /// answered below its answer chance.
+    /// </summary>
+    Call,
+    /// <summary>The ally that answers a call (plan 14 · B5): its level, which of the species that may come, the number its personality and IVs are made from.</summary>
+    Ally
 }
 
 /// <summary>

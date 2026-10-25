@@ -1,0 +1,30 @@
+{
+  // Reversal Mountain's first floor (plan 22 · U7, part b): the short tunnel from the west mouth to the great cave, Black 2's, our
+  // words. A Max Repel lies on the floor. With Bianca along (VAR_UNOVA_REVERSAL 1) she stands in each of the cave's floors as
+  // bianca_along (hidden until she travels, FLAG_UNOVA_HIDE_BIANCA_ALONG) and, before the way out to the slopes (24 to 26, 26),
+  // offers to go her own way (reversal_mountain_2.txt)
+  "area": "reversal_mountain_2",
+  "bgmTrack": "unova/reversal_cave",
+  "triggers": [
+    {
+      "script": "BiancaOffersToPart",
+      "x": 24,
+      "z": 26,
+      "width": 3,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL",
+      "value": 1
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 27,
+      "y": 6,
+      "facing": "Down",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ]
+}

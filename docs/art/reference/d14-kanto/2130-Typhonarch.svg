@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Typhonarch (No. 2130), Water/Dragon, from Gyarados: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#3a72c8}.bd{fill:#2a5298}.bl{fill:#6a9ae0}.cr{fill:#f2e6b8}.crs{fill:#d0c088}.fn{fill:#f0f2fa}.fns{fill:#c4cade}.wh{fill:#ffffff}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="482" rx="200" ry="12" fill="#e6eef6"/>
+<!-- serpent body coiling (back part) -->
+<path class="o b" d="M60 440 C40 380 80 330 150 330 C220 330 250 380 300 380 C360 380 380 340 370 300 L420 290 C440 360 400 430 310 432 C240 434 210 390 160 390 C110 390 100 420 110 450 Z"/>
+<path class="o cr" d="M110 450 C100 420 110 400 160 400 C210 400 240 444 310 442 C320 442 330 440 340 438 C300 456 240 450 200 420 C170 404 130 410 124 452 Z"/>
+<!-- tail fin -->
+<path class="o fn" d="M66 444 C30 470 10 480 4 500 C40 498 70 488 92 470 C96 490 110 500 130 504 C120 480 112 464 110 452 Z"/>
+<!-- great fan of fins down the back (the crest grown) -->
+<g class="o fn"><path d="M150 330 L130 280 L180 320 Z"/><path d="M210 340 L210 290 L240 346 Z"/><path d="M290 376 L310 330 L320 376 Z"/></g>
+<!-- rising neck -->
+<path class="o b" d="M360 310 C340 250 330 200 340 150 C350 110 380 90 410 92 L440 130 C420 160 410 210 420 260 C426 290 430 300 424 310 Z"/>
+<path class="o cr" d="M396 300 C384 250 380 200 394 160 C404 136 420 128 432 136 C418 170 414 220 420 270 C422 286 422 296 418 304 Z"/>
+<g class="t" stroke="#c0b080" stroke-width="2.5"><path d="M392 280 l26 -2 M388 250 l30 -2 M388 220 l30 -2 M392 190 l28 -4"/></g>
+<!-- two short forelegs with clawed hands -->
+<path class="o b" d="M372 250 C340 260 320 280 316 304 C330 312 342 300 350 290 C358 280 368 274 380 272 Z"/>
+<g class="o wh" stroke-width="3"><path d="M314 302 l-10 12 l14 -2 z M326 310 l-4 14 l12 -8 z M338 306 l4 14 l6 -14 z"/></g>
+<path class="o bd" d="M428 260 C454 272 470 290 474 310 C462 318 450 308 444 298 C438 288 430 282 420 280 Z"/>
+<g class="o wh" stroke-width="3"><path d="M476 306 l12 10 l-14 0 z M464 316 l6 14 l-12 -6 z"/></g>
+<!-- great fan of fins at the crown -->
+<path class="o fn" d="M380 104 C350 70 340 30 356 6 C380 30 396 50 404 80 C410 50 432 24 462 16 C456 50 440 80 424 98 Z"/>
+<path class="fns" d="M404 80 C410 56 428 36 452 26 C444 54 432 78 420 94 Z"/>
+<path class="t" d="M362 22 l30 62 M454 30 l-34 58" stroke-width="2"/>
+<!-- head -->
+<path class="o b" d="M372 120 C360 90 390 64 430 66 C470 68 496 92 500 120 C504 146 488 160 462 162 L420 166 C396 166 378 146 372 120 Z"/>
+<path class="bd" d="M488 96 C500 116 502 142 488 156 C480 160 472 162 462 162 C484 146 494 126 488 96 Z"/>
+<!-- open jaw -->
+<path class="o" d="M420 136 C440 140 476 140 500 132 C496 160 470 176 440 172 C428 170 420 160 420 136 Z" fill="#f0a0b0"/>
+<g fill="#ffffff" stroke="#1b1b2b" stroke-width="2"><path d="M440 138 l4 10 l4 -10 z M458 138 l4 10 l4 -10 z M476 136 l4 10 l4 -10 z"/></g>
+<!-- angry eye -->
+<path d="M410 102 l34 6 l-30 10 z" fill="#f2c040" stroke="#1b1b2b" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="424" cy="108" r="4" fill="#1b1b2b"/>
+<!-- long whiskers flowing like a dragon's -->
+<path class="t" d="M476 150 C470 200 500 240 480 290" stroke-width="7"/>
+<path d="M476 150 C470 200 500 240 480 290" stroke="#f2e6b8" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path class="t" d="M440 166 C420 210 440 250 410 300" stroke-width="7"/>
+<path d="M440 166 C420 210 440 250 410 300" stroke="#f2e6b8" stroke-width="3" fill="none" stroke-linecap="round"/>
+<!-- highlight -->
+<path d="M346 200 C346 170 356 140 372 120" stroke="#6a9ae0" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

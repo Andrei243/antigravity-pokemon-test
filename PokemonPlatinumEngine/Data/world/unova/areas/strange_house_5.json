@@ -1,0 +1,43 @@
+{
+  "key": "strange_house_5",
+  "index": 513,
+  "name": "Strange House",
+  "matrix": 308,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_D_25",
+  "nightMusic": "BGM_SW_D_25",
+  "encounters": "ENCOUNTERS_STRANGE_HOUSE_5",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Litwick", "level": 31 },
+    { "species": "Gothita", "level": 31 },
+    { "species": "Raticate", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Gothorita", "level": 33 },
+    { "species": "Banette", "level": 32 },
+    { "species": "Raticate", "level": 33 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Banette", "level": 34 },
+    { "species": "Gothorita", "level": 34 },
+    { "species": "Banette", "level": 34 },
+    { "species": "Gothorita", "level": 34 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 6, "z": 13, "to": "strange_house_6", "toWarp": 2 },
+    { "x": 7, "z": 13, "to": "strange_house_6", "toWarp": 2 },
+    { "x": 8, "z": 13, "to": "strange_house_6", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0383", "script": "1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,12 +1,27 @@
 {
-  // The Ancient Tomb (plan 21 · H6, part b), behind the cut tree on Route 120: a hall and the chamber behind it, both
-  // open as in Emerald. The raised dots over the inner doorway are read as words of our own. Registeel is not listed:
-  // it stays away, as Emerald keeps it until the Sealed Chamber is read (plan 21 · H8 and after), and Flash in the
-  // chamber's middle opens nothing until then
+  // The Ancient Tomb (plan 21 · H6, part b; H12, part a), behind the cut tree on Route 120: a hall, a wall of dots across
+  // it and the chamber behind, where Registeel waits at 8, 7. The wall is three slabs of rubble and the way through it (the
+  // warp at 8, 20) is shut until the Sealed Chamber's riddle has been read (FLAG_REGI_DOORS_OPENED) and Flash is used before
+  // the wall, at 8, 21: "let light shine in the middle" (a braille spot, Emerald's ShouldDoBrailleRegisteelEffect:
+  // FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED). The raised dots over the doorway are read as words of our own
   "area": "ancient_tomb",
   "bgmTrack": "hoenn/sealed_chamber",
-  "signs": {
-    "AncientTomb_EventScript_CaveEntranceMiddle": "Rows of raised dots are carved over the doorway.\nThey seem to say: let light shine in the middle.",
-    "AncientTomb_EventScript_CaveEntranceSide": "The wall is covered in raised dots, worn smooth\nby the years. Nobody could read them now."
-  }
+  "doors": [
+    { "warp": 1, "map": "AncientTomb", "x": 8, "y": 10, "facing": "Up", "openedBy": "FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED" }
+  ],
+  "braille": [
+    { "x": 8, "z": 21, "move": "Flash", "script": "FlashThrough" }
+  ],
+  "read": {
+    "AncientTomb_EventScript_CaveEntranceMiddle": "Wall",
+    "AncientTomb_EventScript_CaveEntranceSide": "Wall"
+  },
+  "people": {
+    "registeel": { "name": "Registeel", "npcType": "Pokemon", "species": "Registeel", "still": true, "script": "Registeel" }
+  },
+  "npcs": [
+    { "id": "registeel_wall_left", "name": "Wall", "npcType": "Rubble", "x": 7, "y": 20, "hiddenBy": "FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED", "script": "Wall" },
+    { "id": "registeel_wall_middle", "name": "Wall", "npcType": "Rubble", "x": 8, "y": 20, "hiddenBy": "FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED", "script": "Wall" },
+    { "id": "registeel_wall_right", "name": "Wall", "npcType": "Rubble", "x": 9, "y": 20, "hiddenBy": "FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED", "script": "Wall" }
+  ]
 }

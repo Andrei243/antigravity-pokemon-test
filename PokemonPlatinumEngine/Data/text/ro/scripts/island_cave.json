@@ -1,0 +1,48 @@
+{
+  "Wall": [
+    {
+      "en": [
+        "Rows of raised dots cover the wall. They seem to say: run a lap around the hall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is a big hole in the wall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LapDone": [
+    {
+      "en": [
+        "The dots on the wall faded, and the wall slid away!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Regice": [
+    {
+      "en": [
+        "Regice stands in the cold dark, frozen as the cave itself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Regice vanished into the dark of the cave..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

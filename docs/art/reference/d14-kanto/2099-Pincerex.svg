@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Pincerex (No. 2099), Water/Steel, from Kingler: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.r{fill:#c63a2c}.rd{fill:#922a20}.cr{fill:#f0dcb8}.crs{fill:#d4bc94}.m{fill:#b8c2d0}.md{fill:#7e8a9c}.ml{fill:#e4eaf2}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="236" cy="468" rx="190" ry="14" fill="#e6e7ee"/>
+<!-- legs -->
+<g class="o r">
+<path d="M150 380 L96 420 L110 460 L124 456 L118 428 L164 400 Z"/>
+<path d="M170 396 L136 440 L150 472 L164 466 L156 444 L186 410 Z"/>
+<path d="M300 396 L336 440 L322 472 L308 466 L316 444 L286 410 Z"/>
+<path d="M320 380 L374 420 L362 460 L348 456 L354 428 L306 400 Z"/>
+</g>
+<!-- small claw (left), a little bigger -->
+<path class="o r" d="M150 300 C110 300 84 280 74 250 C90 238 110 244 120 256 L140 270 Z"/>
+<path class="o r" d="M84 252 C60 226 56 196 70 176 C88 190 92 214 92 232 C100 214 116 204 130 210 C124 232 110 248 96 256 Z"/>
+<!-- body shell -->
+<path class="o cr" d="M130 330 C130 290 180 270 236 270 C292 270 342 290 342 330 C342 380 296 410 236 410 C176 410 130 380 130 330 Z"/>
+<path class="crs" d="M140 360 C170 396 300 400 334 356 C326 388 290 410 236 410 C184 410 150 390 140 360 Z"/>
+<path class="o r" d="M120 300 C120 240 176 200 236 200 C296 200 352 240 352 300 C330 316 300 324 236 324 C172 324 142 316 120 300 Z"/>
+<path class="rd" d="M300 214 C336 232 354 264 352 300 C340 310 320 318 296 320 C330 290 330 250 300 214 Z"/>
+<!-- spikes along the shell's edge -->
+<g class="o rd"><path d="M118 300 l-24 -6 l18 22 z"/><path d="M140 312 l-16 18 l26 -6 z"/><path d="M332 312 l16 18 l-26 -6 z"/><path d="M354 300 l24 -6 l-18 22 z"/></g>
+<!-- crown of five spikes -->
+<g class="o r"><path d="M180 214 l-6 -34 l24 26 z"/><path d="M206 204 l2 -38 l18 34 z"/><path d="M236 200 l0 -40 l16 40 z"/><path d="M262 204 l12 -36 l8 38 z"/><path d="M288 214 l22 -28 l-2 34 z"/></g>
+<!-- eyes on stalks -->
+<path class="o r" d="M200 236 v-26 M270 236 v-26"/>
+<g class="o" fill="#ffffff"><circle cx="200" cy="208" r="14"/><circle cx="270" cy="208" r="14"/></g>
+<circle cx="203" cy="208" r="6" fill="#1b1b2b"/><circle cx="273" cy="208" r="6" fill="#1b1b2b"/>
+<!-- mouth and bubbles -->
+<path class="t" d="M210 300 c16 10 36 10 52 0"/>
+<g fill="#d8eef9" stroke="#1b1b2b" stroke-width="2.5"><circle cx="252" cy="318" r="7"/><circle cx="266" cy="330" r="5"/></g>
+<!-- the steel claw (right): its arm -->
+<path class="o r" d="M330 290 C360 280 380 270 392 252 L404 270 C396 292 372 308 340 314 Z"/>
+<!-- great steel claw with a red rim -->
+<path class="o m" d="M370 270 C350 230 360 170 404 130 C440 100 486 104 500 134 C474 136 452 150 446 172 C470 170 492 182 500 204 C488 240 450 270 410 280 C394 284 378 282 370 270 Z"/>
+<path class="md" d="M376 266 C366 236 372 200 392 170 C384 210 392 250 420 276 C404 282 386 280 376 266 Z"/>
+<path class="ml" d="M402 150 C420 130 448 120 470 122 C450 130 430 142 418 160 Z"/>
+<path d="M446 172 C452 150 474 136 500 134 M446 172 C470 170 492 182 500 204" stroke="#c63a2c" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path class="t" d="M446 172 C452 150 474 136 500 134 M446 172 C470 170 492 182 500 204"/>
+<g class="t" stroke-width="2"><path d="M462 146 l6 8 M478 140 l4 9 M466 186 l6-8 M482 190 l4-8"/></g>
+<g fill="#7e8a9c"><circle cx="402" cy="226" r="6"/><circle cx="424" cy="246" r="6"/><circle cx="398" cy="196" r="5"/></g>
+<!-- highlight -->
+<path d="M150 260 C176 230 206 218 236 216" stroke="#e36a5a" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

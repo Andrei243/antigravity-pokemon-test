@@ -1,0 +1,27 @@
+{
+  // Reversal Mountain's second floor (plan 22 · U7, part b): a side chamber off the great cave, where a ranger searches and a
+  // Toxic Orb lies, Black 2's, our words. A Water Gem lies buried in the sand (the sign at 26, 12)
+  "area": "reversal_mountain_3",
+  "bgmTrack": "unova/reversal_cave",
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 27,
+      "y": 8,
+      "facing": "Down",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Lewis",
+      "npcType": "ranger_m",
+      "trainer": {
+        "dialogueBefore": "I'm tracking something big in this mountain. I'll show you the tricks I learned in the field!",
+        "dialogueAfter": "The trail has gone cold, and so has my temper."
+      }
+    }
+  }
+}

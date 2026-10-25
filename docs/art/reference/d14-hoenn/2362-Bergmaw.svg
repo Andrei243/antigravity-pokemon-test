@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2362 Bergmaw (Ice), from Glalie: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2362_1" d="M256 98L300 128L350 112L362 170L410 196L380 248L414 300L360 322L352 380L300 370L256 404L212 370L160 380L152 322L98 300L132 248L102 196L150 170L162 112L212 128Z"/><clipPath id="h2362_1c"><use href="#h2362_1"/></clipPath><path id="h2362_2" d="M198 160L170 70L236 140Z"/><clipPath id="h2362_2c"><use href="#h2362_2"/></clipPath><path id="h2362_3" d="M314 160L342 70L276 140Z"/><clipPath id="h2362_3c"><use href="#h2362_3"/></clipPath><path id="h2362_4" d="M144 236L70 210L140 270Z"/><clipPath id="h2362_4c"><use href="#h2362_4"/></clipPath><path id="h2362_5" d="M368 236L442 210L372 270Z"/><clipPath id="h2362_5c"><use href="#h2362_5"/></clipPath><path id="h2362_6" d="M150 252a106 100 0 1 0 212 0a106 100 0 1 0 -212 0Z"/><clipPath id="h2362_6c"><use href="#h2362_6"/></clipPath><path id="h2362_7" d="M168 224C190 196 322 196 344 224C362 270 330 320 256 322C182 320 150 270 168 224Z"/><clipPath id="h2362_7c"><use href="#h2362_7"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M146 462a110 11 0 1 0 220 0a110 11 0 1 0 -220 0Z" fill="#e9ebf2"/>
+<use href="#h2362_1" fill="#bfe0f2"/>
+<g clip-path="url(#h2362_1c)"><path d="M256 250L410 196L380 248L414 300L360 322L352 380L300 370L256 404Z" fill="#9fc7e0"/><path d="M162 112L212 128L256 98L220 160Z" fill="#ffffff"/></g>
+<use href="#h2362_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M256 250L162 112M256 250L410 196M256 250L98 300M256 250L352 380" fill="none" stroke="#9fc7e0" stroke-width="2.5"/>
+<use href="#h2362_2" fill="#e8f6ff"/>
+<g clip-path="url(#h2362_2c)"><path d="M170 70L236 140L210 150Z" fill="#9fc7e0"/></g>
+<use href="#h2362_2" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2362_3" fill="#e8f6ff"/>
+<g clip-path="url(#h2362_3c)"><path d="M342 70L314 160L300 150Z" fill="#9fc7e0"/></g>
+<use href="#h2362_3" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2362_4" fill="#e8f6ff"/>
+<g clip-path="url(#h2362_4c)"><path d="M70 210L140 270L130 250Z" fill="#9fc7e0"/></g>
+<use href="#h2362_4" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2362_5" fill="#e8f6ff"/>
+<g clip-path="url(#h2362_5c)"><path d="M442 210L372 270L380 250Z" fill="#9fc7e0"/></g>
+<use href="#h2362_5" fill="none" stroke="#1b1b2b" stroke-width="4.5"/>
+<use href="#h2362_6" fill="#d6edf8"/>
+<g clip-path="url(#h2362_6c)"><path d="M210 300a90 80 0 1 0 180 0a90 80 0 1 0 -180 0Z" fill="#9fc7e0"/><path d="M176.6 203A34 16 -30 1 0 235.4 169A34 16 -30 1 0 176.6 203Z" fill="#ffffff"/></g>
+<use href="#h2362_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2362_7" fill="#26262f"/>
+<g clip-path="url(#h2362_7c)"><path d="M190.1 216.6A30 5 -5 1 0 249.9 211.4A30 5 -5 1 0 190.1 216.6Z" fill="#4a4a58"/></g>
+<use href="#h2362_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M184 268C220 282 292 282 328 268C320 300 290 314 256 314C222 314 192 300 184 268Z" fill="#5a1a2a" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M194 268L208 269L201 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M216 273L230 274L223 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M238 273L252 274L245 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M260 273L274 274L267 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M282 273L296 274L289 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M304 268L318 269L311 288Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M194 236L236 226L224 256Z" fill="#f2d43a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M278 236L320 246L288 256Z" fill="#f2d43a" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M209 240a5 7 0 1 0 10 0a5 7 0 1 0 -10 0Z" fill="#26262f"/>
+<path d="M293 240a5 7 0 1 0 10 0a5 7 0 1 0 -10 0Z" fill="#26262f"/>
+</svg>

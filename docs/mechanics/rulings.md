@@ -2186,6 +2186,23 @@ A horde is X and Y's: one of the player's Pokémon against five wild ones at onc
 - **How often.** A step in such grass that meets a Pokémon meets a horde one time in twenty (`Hordes.ChanceInHundred`), the share X and Y are said to give; the draw for it is made only where a horde could come. Sweet Scent there always draws one out, as in X and Y (`Map.DrawOutWild`). No horde comes on the water, in a cave, beside a partner, at a Poké Radar patch or as a roamer. X and Y show no sign of a horde in the grass before it comes, and nor does this game: the way into the battle is the one for two at once, and the line "A horde of wild … appeared!" is its sign.
 - **On the screen** (B4; style guide, "Stage", "Places on a platform", and "Battle panels", "A horde's boxes", "The five and the one"): the five stand on an arc across the foe's platform at 0.45 of a single's size, appear together with their cries a third of a second apart (`BattleEngine.HordeCryStep`), and have small boxes stacked down the left; a single-target move asks which of the five on a row of five cards over the player's one; a spread move's shot frames all five. Every look kept for a place (the views, what lasts on each Pokémon, what waits for each place, the effects' places) has five a side (`BattleAnimator.MostSlots`), each side its own count (`SlotsOf`). The Pokédex is told of each of the five as it is met (they are one species but for a mixed horde of a test's making), and the one left to be caught is caught as any.
 
+### SOS calls (plan 14 · B5)
+
+Sun and Moon's SOS battles: a wild Pokémon may call for help, and an ally that answers joins it, so a single becomes one against two. Showdown has no SOS battles, so nothing is read from it; the numbers below are Sun and Moon's as they are commonly given (Bulbapedia's "SOS Battle"), and where a number of theirs isn't known, or the plan asked for something else, the rule is ours and says so.
+
+- **A format, behind the rules.** `BattleFormat.Sos`, handed to a battle as a single, a double and a horde are, with `BattleFormats.PlacesOf` giving the player one place and the wild side two, the second empty as the battle opens. It is fought only under rules that have calls (`Ruleset.SosCalls`: the modern rules), with one wild Pokémon, the player alone and an ordinary wild battle (not the Great Marsh, Pal Park, a roamer, the catching lesson or a trainer's); anything else is the single it began as (`BattleFormats.FallBack`), so `battles-platinum.txt` can't move for it, and neither corpus did (no battle of either asks for one).
+- **Where.** A place's wild Pokémon call only where its overlay says `callsForHelp` (`MapArea.CallsForHelp`; or a met `WildEncounterEntry.CallsForHelp`, which is how the harness asks): no area of Sinnoh says so (plan 14, decision 1), and plan 23 · Z6's totems are the first to. Not beside a partner, nor two at once, nor in the Great Marsh's game or the Bug-Catching Contest.
+- **When.** *A rule of ours, from Sun and Moon:* the call is the wild Pokémon's action for its turn, made in place of the move it chose, as their callers spend their turn calling; the plan had put it in a step after the end of the turn, where the caller would have moved and called both. It is made when the wild Pokémon's action comes, its side has an empty place (none ever calls into a full one, so there are never more than two), it is free to act (not asleep or frozen, not flinching, not held to a move of several turns, not out of sight) and its species calls at all (`BattleCore.CallsForHelp`).
+- **How readily** (`BattleCore.CallChance`, `RollKind.Call` out of 100): the species' call rate (`SosAllies.RateOf`), three times over at half its HP or less and five times at a fifth or less (Sun and Moon's; the plan had "doubled when its HP is low"), twice that when an ally of its fell this turn or the turn before (the plan's), and twice again when the player's Pokémon on the field has Intimidate, Unnerve or Pressure (Sun and Moon's), never past a hundred. **Answered** (`AnswerChance`, a second `RollKind.Call`) at four times the rate: "Foe Pikipek called for help!", then "Wild Pikipek appeared!" or "Its help didn't appear!". The call is the caller's action either way. *Not built:* the chance falling with each call (Sun and Moon's chains run to 255 at the same odds, and the plan names no such fall), and the answer's rise after a call that went unanswered.
+- **The call rates** (plan 14, decision 6, its recommended answer: data of our own) are Sun and Moon's scale, 0, 3, 6, 9 or 15, given by a rule of ours (`Data/SosAllies.cs`): none for a legendary or a mythical species, otherwise by how easily the species is caught (a catch rate of 190 or more 15, 120 or more 9, 45 or more 6, below 3), and `Data/sos-allies.json`'s `rates` where the rule's isn't wanted (the Ultra Beasts, 0).
+- **Who answers** (`SosAllies.Candidates`): the caller's own species, three times likelier than each of the others; every other species of its line (all that share its Egg) that the ally's level reaches by evolving by level alone, so a Pikipek at 10 calls Pikipeks and one at 14 a Trumbeak too, and a Pikachu never calls a Raichu, which a stone brings; and the file's `pairs` of species of other lines (Cubone and Kangaskhan, Corsola and Mareanie, one way), which plan 23 · Z6 widens with Alola's own. The ally's level is the caller's less nought to two (ours: Sun and Moon draw it from the place's table), it comes in the caller's regional form where its species has that form, and it holds nothing.
+- **Made on the battle's own generator** (`RollKind.Ally`): its level, its species, then a number its personality and IVs are drawn from (a `BattleRandom` of its own), so a seed and the answers replay a battle with calls to the same log (`BattleRecord.Format` keeps the format, and a record of an SOS battle is refused as a single's). Its shininess goes by the player's number and the run's odds, as any Pokémon's.
+- **The chain** (`FieldState.SosChain`, the calls answered in the battle; a chain of its own beside the Poké Radar's and the DexNav's, and nothing outside the battle keeps it) gives each ally the bonus of its place in it, Sun and Moon's (`Overworld/WildEncounterRules.cs`, `SosChain.Of`): IVs made whole, one from the fifth ally, two from the tenth, three from the twentieth, four from the thirtieth, each a different stat; its hidden ability, 5 in a hundred from the tenth, 10 from the twentieth, 15 from the thirtieth (under the modern rules alone, which are the only ones with calls); and more rolls to be shiny, 4 from the eleventh, 8 from the twenty-first, 12 from the thirty-first, against the odds the run gives (plan 13 · V5's `ShinyDenominator`, Platinum's 1 in 8,192 or the modern 1 in 4,096 otherwise). The chain goes on while either stands: an ally whose caller fell calls in its turn.
+- **Two standing**: a ball is refused as in a wild double ("There are two Pokémon out!"), so a Pokémon is caught only once it is alone; each faint gives its own EXP as it falls; what a wild double refuses because others stand (Roar, Whirlwind, Teleport, a drive, Emergency Exit's flight) an SOS battle refuses from its first turn, its second place being there even while empty; running is measured against the first standing, as a wild double's is. The battle is won once both places are down and nobody is calling.
+- **The Pokédex** is told of each ally as its line is read, as of any Pokémon met (the line carries its `Seen`), and of an ally caught as of any catch.
+- **The Adrenaline Orb** is its hold effect alone (plan 06 · R28a). *Not built:* using it from the bag in an SOS battle to make the wild Pokémon call more readily, as in Sun and Moon, which waits for the item's battle pocket in the data.
+- **On the screen** (style guide, "Stage", "An ally answers", and "Battle panels", "An SOS battle's boxes"): the caller stands alone in the middle until the first ally comes, hops where it stands and cries as it calls; the ally hops in from behind its place over 0.7 s as the side opens out to a double's two places; the foes' boxes are a double's, the player's a single's. The log carries `CalledForHelp(Caller, Answered)` on the call's line and `AllyJoined(Place, Pokemon, AsItCame, Chain)` just before the ally's line, whose `Entered` is not out of a ball; the screen takes the ally in as it came (`BattleMirror.Adopt`), since the rules are a turn ahead. Every ally the caller may call has its model made behind the battle's fade (`GameEngine.SosAllyLooks`).
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -3050,6 +3067,48 @@ value can't be named in a script).
   `celestial_tower`, each over 25 s and clean in `MusicRender`.
 - **What a save needs.** A save of the frigate's chapter is given the chapter's hidden people by `UnovaCatchUp`
   (`FLAG_UNOVA_MISTRALTON_BEGUN`), with no story version raised.
+
+## Unova's third chapter, part b: the Strange House to Lacunosa Town (2026-10-25, plan 22 · U7)
+
+Black 2's beats from the plane's landing to Lacunosa Town, in our own words (the decompilation's zone scripts, read for the
+order alone) on flags of ours.
+
+- **The order of the chapter.** From Lentimas Town the Strange House stands at the slopes' end and Reversal Mountain's cave
+  leads on to Undella Town; Route 13 runs from Undella's gate to Lacunosa Town. Bianca, run ahead from Lentimas Town, waits at
+  the west end of the great cave (`VAR_UNOVA_REVERSAL` 0): she asks the player along, heals the team and travels with them as
+  their partner (1), stops at the cave's middle passage (`VAR_UNOVA_REVERSAL_LAIR` 1), wonders at Heatran's lair (2), and the
+  player parts from her where they like (2 for REVERSAL: she then stands in the east tunnel talking about the Magma Stone).
+  At Undella Town's east end Hugh runs up for a battle (`VAR_UNOVA_UNDELLA` 1). At Lacunosa Town Professor Juniper and Bianca
+  (flown ahead) take the player to the old woman's house for the tale of the meteorite (`VAR_UNOVA_LACUNOSA` 1, then 2),
+  Hugh finds Zinzolin and a grunt at the west end (3) and the two are beaten in a tag battle with Hugh and run (4).
+- **Bianca is the player's partner**, the one `partner` of the cave: her trainer is Black 2's own `unova_bianca` (her
+  Musharna's team of level 40), so wild Pokémon in the grass come in pairs, the team is healed after every battle that isn't
+  lost and two trainers who see the player come together. **A partner follows through a place of several maps**
+  (`Follower.Rehome`, `GameEngine.KeepPartnerAlong`; until this session she followed only on the map where she was a person):
+  on a map that has no person for her she becomes the person of that map with the same key, who the flags keep off it until
+  she comes (`bianca_along`, hidden by `FLAG_UNOVA_HIDE_BIANCA_ALONG`, one in each floor of the cave), and is shown there; a game
+  saved on a walk finds her on the map it wakes on. She **leaves at every way out of the cave** (a trigger across each asks
+  whether to part, and the player is walked back a step on no), since there is no person of hers outside it; a game lost
+  with her along leaves nobody travelling, and the next floor come to puts her back at the west end (`common.UnovaBiancaWaits`).
+- **What is left out, and why.** Black 2's White 2 floors of Reversal Mountain (twins of Black 2's six) are not built. The Strange
+  House's four rooms behind its wrong doors (the original's rooms that lead back into the house) are plain wall, so the house is
+  one way through: hall, library, rooms, library, cellar, attic; the attic's feather is a Lunar Wing. The researcher's Habitat List
+  is a Pokémon of the mountain on the team (the game has no Habitat List). Cynthia's villa (`undella_town_5`) is a scene of
+  Elesa and Skyla in Black 2's data, entered by no warp and no script of the story, and `undella_town_4` is an empty room with
+  no way in; neither is built. Black 2's Cobalion on Route 13, Heatran in its lair, the later Hugh and Zinzolin of Undella Town and
+  the worker on Undella Bay's jetty are overlay people held hidden for plan 22 · U10. Chargestone Cave has no later scene of N and
+  no grunts of Colress in Black 2's data (N is met once, in part a), and Route 7 has no winter drifts in it: the winter chunks
+  are Icirrus City's, Route 8's and the Dragonspiral Tower's cells and Twist Mountain's and the Moor of Icirrus's floors.
+- **Looks and sounds.** Undella Town's houses are stand-ins in the Resort's way of building and Lacunosa Town's in the Stone's,
+  Reversal Mountain's machine hall is Mistralton's hangar style; the beach's parasols are pavilions and its chairs benches (`Architecture`
+  rows of their own are left for a later session, with the style guide's). `Bw2Cover` sorts `in65_light` (a shaft of light over a pool,
+  no lamp) as nothing and `tg_` (Lacunosa's ground) as a packed track. Songs of our own, none heard by the user yet:
+  `unova/strange_house`, `reversal_mountain` (with a night arrangement), `reversal_cave`, `undella` (with a night arrangement), `route13`
+  (with a night arrangement) and `lacunosa`, each over 25 s and clean in `MusicRender`. Team Plasma's Zinzolin has the grunts' eye
+  theme and the boss's battle theme in the sound map.
+- **What a save needs.** A save past part a is given the chapter's hidden people by `UnovaCatchUpB` (`FLAG_UNOVA_LACUNOSA_BEGUN`),
+  which the places of this part call at their arrival, with no story version raised; Bianca at the cave's mouth is shown by that
+  floor's own arrival once the scene at Lentimas Town has been played.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -5337,6 +5396,7 @@ What each choice will change, and which session gives it effect (V1 only asks an
 | Monotype, Party size | every Pokémon of a type; fewer than six carried | V5 (done, below) |
 | No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 (done, below) |
 | Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 (done, below) |
+| Randomise Pokémon, Randomise items, Seed | other species and other items, the same ones for a seed | V6 (done, below); abilities, moves and types are V7's |
 
 Presets (NORMAL, NUZLOCKE: the Nuzlocke with the dupes and shiny clauses; HARDCORE: that plus Challenge, the level cap, no
 items in battle and Set) are records with some fields set; a run that matches none is CUSTOM. The clauses show only while
@@ -5458,6 +5518,18 @@ shiny roll reads the rules' own odds), so nothing a Normal game does moved. Each
   the player's way (`wildbattle`) is the place's one chance, caught or not (`Nuzlocke.Gift`, `MeetStatic`); the starter is a
   gift of the briefcase, not of `GivePokemon`, and spends nothing. A run that has ended shows RUN OVER in red on the CONTINUE
   card and the save panel (`ModernUi.SaveMark`).
+
+### The randomiser: species and items (plan 13 · V6)
+
+Our own, off under Normal (`RunRules.Random` is null, `Randomizer.For` answers null, nothing asks it, the golden battles are as they were). `Models/Randomizer.cs` (GPU-free) is a map decided by hashing the seed with a number or a place (`Core/SplitMix.cs`: SplitMix32, FNV-1a for a place's text, never `Dice`, `System.Random` or a string's `GetHashCode`), so one seed is one game on every machine and no order of asking changes it. It edits no data: the map is asked where the species or item is used. A seed is 0 to 999,999,999, typed on the title or rolled once from `Dice.Shared` as the randomiser is turned on; `RandomizerOptions` (seed, Species, Items) is kept whole in `SaveData.Run`.
+
+- **A species** goes to another of the games' (never one of ours) in the same place in its line (a lone species, a first, a middle or a last stage), legendaries and mythicals among themselves, within a tenth of its base-stat total at Platinum's values (so the map does not move with the rules in force), the margin widening a tenth at a time until four are found. **A line stays a line**: the evolution of a species goes to one of the evolutions of what its pre-evolution went to, where that has one; otherwise it is chosen alone. It need not be one-to-one, never maps to itself unless nothing else fits, and a name that is no species of the games is left alone.
+- **Where it is asked**: a wild Pokémon in `StartWildBattle` (the grass, the water, rods, rocks, the Great Marsh, the contest, a horde and a second of a pair; **not a roamer**, which the story names), a trainer's team in `StartTrainerBattle` on a copy (`Trainer.WithTeamOf`; the same personality, IVs, level, held item and capsule, never shiny, knowing what its level teaches; a Master Trainer's one species and an empty team stay; the first battle is mapped too, so the rival's team is the mapped one), the partner's team, a script's `givepokemon` and `wildbattle` (`ScriptRunner`, so both hosts), the assistant's Pokémon in the catching lesson, and the briefcase. Order on the copy: the species, then the difficulty's levels. **Left as they are**: a gift with a move of its own (the Dragon Shrine's Dratini), a form named by a script, Eggs, fossils, trades, Pal Park's six, roamers and the lesson's wild Pokémon; and **any species a script asks the team for** (`if has "Regirock"`: `ScriptLibrary.SpeciesAsked`), which would otherwise never come.
+- **The starters**: each briefcase's three slots go to three first stages (that have a line to grow into) of three different lines, decided once in the regions' order (`Randomizer.Starters`, and `Species` says the same of a slot). The briefcase shows the mapped three and gives the mapped Pokémon, **while the story keeps the slot** (`StarterSelectScreen.Slots`, `ChosenSlot`; `StoryState.ChooseStarter(slot)`): `if starter "Turtwig"`, the rival's team ids (`rival_route_201_turtwig`, whose Chimchar is mapped like any other) and the assistant's still choose by the slots, and `{starter}`, `{rivalstarter}` and `{assistantstarter}` name the mapped species. A Monotype run's exempt starter is the mapped one's line (`RunRules.MayCarry`).
+- **An item** found, hidden or given (`find`, `give`; not `additem`, shops, fossils or prizes) goes to another of its pocket and about its price (a half to twice, widening until four are found; a price of nothing only to another of nothing; a TM to another TM, one at a time), among Platinum's own (`Id` up to 467), decided by the seed and the place: **the ball's or hidden item's own flag**, else the script and its line, so a ball is one item every time and another ball another. **Never swapped, in or out**: a key item, an HM, anything that can't be tossed, a Mega Stone or Z-Crystal, and every item a script takes, asks for or asks a Pokémon to hold (`ScriptLibrary.ItemsAsked`: the Coin Case, the Card Key, the Orbs, and Poké Balls and Oran Berries too, which one script or another asks for).
+- **Completable**: a Sinnoh Pokédex of other species can never be seen whole, so a run that randomises species counts it all seen once Sinnoh's Hall of Fame is entered (`Randomizer.SinnohSeen`, the professor's `SEEN`), which is what opens the National Pokédex there. The field moves need a Pokémon that can learn them, which a randomised party may lack: the options' Field helpers row (on unless turned off) lends a wild helper once the Badge and the HM are held, and the HMs are never swapped. The area page of the Pokédex shows where the species that stand for a species live (`Randomizer.Sources`, `Habitats.Of(sources)`).
+- **Shown**: the card's mark reads the preset and the seed (`ModernUi.RunMark`), the Trainer Card's Run page lists the three rows.
+- **Left**: abilities, moves and types are V7's; random evolutions (the plan's switch to loosen lines) are not built; trades, Eggs, fossils, the roamers and the story's fixed Pokémon stay, and a randomised Nuzlocke counts the species met.
 
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 
@@ -5646,3 +5718,48 @@ Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`,
   lowers, 24 seconds at thirty frames a second; the others at the drum press by the generator they are handed, so a
   blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
   waits for plan 07.
+
+## The Regis, the Sealed Chamber and Southern Island (2026-10-26, plan 21 · H12, part a)
+
+Emerald's post-game places that need no new facility, as ours: the three Regis' riddles and caves, the sea floor under
+Route 134 with the Sealed Chamber at its end, and Southern Island with the eon Pokémon that isn't roaming. The other
+places the plan lists for H12 are left (the plan's status line says which).
+
+- **The way down** is Route 134's dark water: any dive there goes to the one floor under it (Emerald's `setdivewarp` in
+  Route134's `OnTransition`, 8, 6), a pool of dark water that a diver swims (`FieldMovement.Step` lets a Diving walker
+  onto `DiveWater` of an underwater map; before it a floor laid as a pool of water could only be arrived on) and a
+  passage at 8, 8 into the Sealed Chamber's corridor. Coming up anywhere in either comes up in Route 134 at 300, 291;
+  from the one tile at the corridor's end, 12, 44 beside the dots that point up, it comes up in the chamber's pool at 10,
+  19 (Emerald's `Underwater_SealedChamber_OnDive`: the overlay's `emergeAt`), and Dive from that pool goes down to it again.
+- **The three braille puzzles are field moves used on a tile**, as Emerald's are (its `ShouldDoBraille…Effect` ask the
+  player's position): Dig at 10, 3 before the outer room's wall, Rock Smash at 8, 21 before the Desert Ruins' wall and
+  Flash at 8, 21 before the Ancient Tomb's. The overlay's `braille` names the tile, the move and the script; chosen in the
+  party menu there the move can be used (the region's badge still asked: Dig none, Rock Smash the Dynamo Badge, Flash the
+  Knuckle Badge) and runs that script. Rock Smash and Flash do nothing, with a line, until the Sealed Chamber's doors have
+  opened; Dig works from the first.
+- **The riddle** is Emerald's: with a Wailord first on the team and a Relicanth last, the back wall of the inner room
+  (10, 4) shakes the cave, three doors open far off and `FLAG_REGI_DOORS_OPENED` is set (`team ends`). The six walls of
+  dots that tell the story and the ten of the alphabet are read as lines of our own; the original's are braille of its
+  own, which nobody here reads.
+- **Regice's lap is ours.** Emerald counts steps along a path of tiles (`ShouldDoBrailleRegicePuzzle`) that its braille
+  describes only as a lap; the Island Cave's is a lap of the hall's four corners one after another, from the wall, and
+  back to it (`VAR_ISLAND_CAVE_LAP` 1 to 5, the overlay's triggers), forgotten as the cave is left and come to again.
+- **A wall of dots is three slabs of rubble** (the `Rubble` thing of Kanto's Victory Road, hidden by the puzzle's flag) over
+  the doorway, whose warp (`doors` and `openedBy`) is shut until then. The original draws a wall with a script's
+  `setmetatile`; the slabs do the same with what the field already draws.
+- **The Regis** are battled at level 40 (Emerald's `StartRegiBattle`), with their own battle songs, and may be run from:
+  one run from is back with the next arrival, one beaten or caught is gone (`FLAG_DEFEATED_<REGI>`); each cave's arrival
+  shows it while it isn't. `common.HoennChapterFourteen` hides all five of the places' people from a new game and an
+  older save gets it as it comes in. No story version was raised.
+- **Southern Island is by ferry from Lilycove's harbour**, and the pass is ours: Emerald gives the Eon Ticket by an event
+  nobody has here, so the attendant at the ferry desk gives a Champion of Hoenn a pass the first time they speak to her
+  (`FLAG_ENABLE_SHIP_SOUTHERN_ISLAND`, a flag as Scott's Frontier Pass is) and sails them to the island's beach whenever
+  they ask; a sailor there sails them back. The S.S. Tidal's cabins and the other ferries (Navel Rock, Birth Island,
+  Faraway Island) are not built.
+- **The eon Pokémon of Southern Island is the one that doesn't roam Hoenn** (Emerald's `VAR_ROAMER_POKEMON`: 0 is Latias
+  roaming and Latios here, 1 the other way), at level 50 holding a Soul Dew (`wildbattle … holding`), met by reading
+  the stone on the island of the garden's pond from 13, 12 once per visit until it is beaten or caught
+  (`FLAG_DEFEATED_` and `FLAG_CAUGHT_LATIAS_OR_LATIOS`). Emerald walks it down from the north over a pan of the camera;
+  here it comes down at once to the tile before the stone.
+- **Altering Cave stays unbuilt**: its warp on Route 103 is a plain rock tile that nobody can walk into in Emerald either
+  (the reader leaves such a warp as a way no one can take), and its other wild tables are the Mystery Gift's.

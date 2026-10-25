@@ -1,0 +1,30 @@
+{
+  "key": "unova_route_13_2",
+  "index": 371,
+  "name": "Route 13",
+  "matrix": 47,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_R_E_SP",
+  "nightMusic": "BGM_R_E_SP",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "unova_route_13", "toWarp": 0 },
+    { "x": 6, "z": 9, "to": "unova_route_13", "toWarp": 0 },
+    { "x": 7, "z": 9, "to": "unova_route_13", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "artist", "movement": "none", "x": 3, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "pokemon_wingull", "movement": "none", "x": 9, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "14", "movement": "none", "x": 10, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "3", "looks": "29", "movement": "none", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

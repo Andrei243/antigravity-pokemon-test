@@ -35,7 +35,9 @@ public partial class GameEngine
             MeetWildPokemon(met, BattleKind.Roamer, nuzlockeCatch: MeetUnderTheRun(met));
             return;
         }
-        var wildSpecies = PokemonDatabase.Get(entry.SpeciesName)!;
+        // A randomised run meets the species its table's species go to (plan 13 · V6); every other run, the table's own
+        var random = Randomizer.For(flow.Run);
+        var wildSpecies = PokemonDatabase.Get(random?.Species(entry.SpeciesName) ?? entry.SpeciesName)!;
         Random rng = fieldRandom;
         // At the region's mapped level in a region the game crossed into (plan 18 · W4), drawn as ever
         int lvl = LevelHere(rng.Next(entry.MinLevel, entry.MaxLevel + 1));
@@ -85,7 +87,7 @@ public partial class GameEngine
             }
             if (other != null)
             {
-                var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
+                var otherSpecies = PokemonDatabase.Get(random?.Species(other.SpeciesName) ?? other.SpeciesName)!;
                 second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
                 ShinyCharm.Roll(second, flow.Bag, rng, other.Gender, other.Nature);
                 if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
@@ -94,7 +96,9 @@ public partial class GameEngine
         }
         // In the Great Marsh's game every Pokémon is met in a Safari battle (plan 01 · M7)
         // Under the Nuzlocke the first Pokémon met in a place is its one chance (plan 13 · V4)
-        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second, nuzlockeCatch: MeetUnderTheRun(wild));
+        // A Pokémon met alone where the place's wild Pokémon call for help is met in an SOS battle (plan 14 · B5)
+        bool sos = second == null && partner == null && !flow.Safari.Active && !InBugContest && (entry.CallsForHelp || area?.CallsForHelp == true);
+        MeetWildPokemon(wild, flow.Safari.Active ? BattleKind.Safari : BattleKind.Normal, second: second, nuzlockeCatch: MeetUnderTheRun(wild), sos: sos);
     }
 
     /// <summary>
@@ -123,7 +127,7 @@ public partial class GameEngine
     /// name alone.)
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
-        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null)
+        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null, bool sos = false)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
         // A horde's others are seen with the first (plan 14 · B3)
@@ -138,7 +142,9 @@ public partial class GameEngine
         {
             party = new Party();
             // Or whoever else shows it, with their own Pokémon (plan 21 · H2: Wally, with his father's Zigzagoon)
-            party.Add(catcher?.Own ?? new Pokemon(PokemonDatabase.Get(flow.Story.AssistantStarter ?? "Piplup")!, 5));
+            // (the assistant's starter is the species its slot goes to in a randomised run, as the lines name it: plan 13 · V6)
+            string assistants = flow.Story.AssistantStarter ?? "Piplup";
+            party.Add(catcher?.Own ?? new Pokemon(PokemonDatabase.Get(Randomizer.For(flow.Run)?.Species(assistants) ?? assistants)!, 5));
             bag = new Inventory();
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
             name = catcher != null ? PlayerIdentity.Fill(catcher.Name) : PlayerIdentity.Fill("{assistant}");
@@ -164,6 +170,8 @@ public partial class GameEngine
         GiveWildItems(wilds, kind);
         if (!flow.FieldEncounter) EndRadarChain();
         var shown = PrepareModels(wilds.Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()));
+        // Every ally an SOS battle's Pokémon may call is made ready behind the fade too, so none comes in waiting for its model (plan 14 · B5)
+        if (sos) shown.AddRange(SosAllyLooks(wildPkmn).Where(name => !shown.Contains(name)).Select(name => { flow.WantModel(name); return name; }).ToList());
         // Who is met and where, which is what the way into the battle goes by (plan 09 · L13): the ground is the
         // battle's own, so a Pokémon hooked on a rod is met the water's way from any bank, and the first Pokémon
         // measured against it is the first of the team that fights (the assistant's, in the lesson)
@@ -187,7 +195,7 @@ public partial class GameEngine
                 PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 WildPokemon = wilds,
-                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : BattleFormat.Single,
+                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : sos ? BattleFormat.Sos : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(),
                 Kind = kind,
@@ -357,7 +365,19 @@ public partial class GameEngine
     private void KeepPartnerAlong()
     {
         if (flow.Along == null) return;
-        if (!flow.Map.Everyone.Contains(flow.Along.Who)) return;
+        if (!flow.Map.Everyone.Contains(flow.Along.Who))
+        {
+            // Someone who travels along through a place of several maps (plan 22 · U7, part b: Reversal Mountain's floors) is,
+            // on each, the person of that map with their key, who the flags keep off it until they come
+            if (flow.Along.TrainerId == null || flow.Map.FindPerson(flow.Along.Who.Key) is not { } twin) return;
+            flow.Along.Rehome(twin);
+        }
+        // and is on the map while they do (a game saved on a walk is taken up with them there)
+        if (flow.Along.TrainerId != null && flow.Along.Who.Forced != true)
+        {
+            flow.Along.Who.Forced = true;
+            flow.Map.ApplyPresence(flow.Story.Has);
+        }
         flow.Map.Follower = flow.Along.Who;
         PutBehind(flow.Along, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing);
         partnerHeading = flow.Player.Heading;
@@ -423,6 +443,14 @@ public partial class GameEngine
         // nobody in particular (plan 11 · C1), whose rig is built behind the fade
         trainer.Look = trainerNpc.NpcType;
         if (secondNpc?.TrainerData is { } carried) carried.Look = secondNpc.NpcType;
+        // A randomised run's trainers bring the species theirs go to, on copies (plan 13 · V6), the rival's first battle
+        // included, so his team is the one the starter taken names, mapped; a Master Trainer's one species stays
+        if (Randomizer.For(flow.Run) is { MapsSpecies: true } random && terms?.Alone == null)
+        {
+            trainers = trainers.Select(random.ForTrainer).ToList();
+            trainer = trainers[0];
+            if (partner != null) partner = random.ForTrainer(partner);
+        }
         // Whoever battles beside the player stands on the platform too, as the person they are in the field: whoever
         // travels along, or someone of the map a script named (plan 06 · R16c)
         if (partner != null)
@@ -528,6 +556,17 @@ public partial class GameEngine
         var species = all.Select(p => p.LookName).Concat(all.SelectMany(p => BattleShapesOf(p).Select(shape => PokemonLook.Of(shape, p.Gender == Gender.Female, p.IsShiny)))).Distinct().ToList();
         foreach (var name in species) flow.WantModel(name);
         return species;
+    }
+
+    /// <summary>
+    /// The models of every ally an SOS battle's Pokémon may call (plan 14 · B5; <see cref="SosAllies.AnyAlly"/>): each plain,
+    /// and in the caller's regional form where it has one. A shiny or a female ally's look is made as it comes.
+    /// </summary>
+    private static IEnumerable<string> SosAllyLooks(Pokemon caller)
+    {
+        string? suffix = caller.FormData is { Kind: FormKind.Regional } form && form.Name.StartsWith(caller.Species.Name) ? form.Name[caller.Species.Name.Length..] : null;
+        foreach (var species in SosAllies.AnyAlly(caller.Species))
+            yield return suffix != null && species.Form(species.Name + suffix) is { Kind: FormKind.Regional } regional ? regional.Name : species.Name;
     }
 
     /// <summary>The shapes a Pokémon may take in the battle itself (plan 06 · R7): Castform's weather, Cherrim's sun, Arceus's plate. Their models are asked for with its own.</summary>

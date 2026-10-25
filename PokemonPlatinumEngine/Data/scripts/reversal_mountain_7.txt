@@ -1,0 +1,37 @@
+# Reversal Mountain's east tunnel (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/reversal_mountain_7.s, read for the order alone). The count of the cave's
+# errand is VAR_UNOVA_REVERSAL (reversal_mountain_4.txt has it whole).
+#
+# With Bianca along, our trigger at the foot of the way out to Undella Town (26, 25, at 1) has her say the town is just ahead and
+# offer to go her own way; the player can't go on with her along without saying yes. Parted, she (0, hidden until she parts)
+# stands further up the tunnel, wondering about the Magma Stone.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  call UnovaBiancaWaits
+  end
+
+
+script BiancaSaysGoodbye
+  if var VAR_UNOVA_REVERSAL != 1 end
+  if not partner end
+  speaker "Bianca"
+  say "Oh! Undella Town is right through here! I'd like to look around a bit more in the cave, though. Shall we say goodbye for now?"
+  call UnovaBiancaAsks
+  if yes goto Gone
+  walk player left 1
+  end
+label Gone
+  fade out 0.4
+  hide bianca_along
+  fade in
+  end
+
+
+script BiancaAtTheExit
+  face 0 player
+  speaker "Bianca"
+  say "Reversal Mountain... I wonder... Could a Magma Stone be in there?"
+  say "Have you heard of it? A Magma Stone was found in a volcano in Sinnoh, far away. It had something to do with Heatran!"
+  end

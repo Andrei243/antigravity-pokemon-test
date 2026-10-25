@@ -1,0 +1,25 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Heatran"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bianca_along": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

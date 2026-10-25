@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Dozemount (No. 2143), Normal/Grass, from Snorlax: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#2e5a6e}.bd{fill:#1f4252}.bl{fill:#4a7a90}.cr{fill:#f0e2c2}.crs{fill:#d0be96}.ms{fill:#6aa448}.msd{fill:#4a8234}.tr{fill:#8a6440}.lf{fill:#4c9a3c}.fl{fill:#f6a0c0}.ny{fill:#a8804e}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="480" rx="220" ry="14" fill="#e6e7ee"/>
+<!-- small trees on the back of the mantle (behind) -->
+<path class="o tr" d="M100 200 L104 150 L114 150 L114 200 Z"/>
+<path class="o lf" d="M86 160 C80 120 96 96 110 92 C126 96 140 120 132 160 C120 168 98 168 86 160 Z"/>
+<path class="o tr" d="M402 196 L404 140 L414 140 L414 196 Z"/>
+<path class="o lf" d="M386 150 C380 106 396 80 410 76 C426 80 440 106 432 150 C420 158 398 158 386 150 Z"/>
+<!-- huge body -->
+<path class="o b" d="M60 340 C50 230 140 160 256 160 C372 160 462 230 452 340 C446 420 370 470 256 470 C142 470 66 420 60 340 Z"/>
+<path class="bd" d="M400 220 C450 270 456 360 420 420 C394 456 336 470 256 470 C360 440 420 360 400 220 Z"/>
+<!-- cream belly -->
+<path class="o cr" d="M120 340 C120 270 190 230 256 230 C322 230 392 270 392 340 C392 410 330 452 256 452 C182 452 120 410 120 340 Z"/>
+<path class="crs" d="M360 280 C390 320 390 380 360 420 C340 440 300 452 256 452 C330 420 370 360 360 280 Z"/>
+<!-- feet -->
+<g class="o cr"><ellipse cx="150" cy="458" rx="50" ry="24"/><ellipse cx="362" cy="458" rx="50" ry="24"/></g>
+<g class="crs"><ellipse cx="150" cy="460" rx="22" ry="10"/><ellipse cx="362" cy="460" rx="22" ry="10"/></g>
+<!-- mossy mantle over the back and shoulders -->
+<path class="o ms" d="M58 300 C60 220 140 168 256 168 C372 168 452 220 454 300 C440 290 430 300 420 290 C410 304 396 290 384 300 C370 280 350 296 340 280 C320 296 300 278 280 292 C260 276 240 292 220 280 C200 296 180 278 166 292 C150 280 136 296 120 284 C106 300 90 286 80 300 C72 294 64 300 58 300 Z"/>
+<path class="msd" d="M420 220 C446 250 454 280 454 300 C440 290 430 300 420 290 C410 304 396 290 384 300 C410 270 420 250 420 220 Z"/>
+<g class="o fl" stroke-width="3"><circle cx="110" cy="250" r="7"/><circle cx="170" cy="220" r="7"/><circle cx="350" cy="214" r="7"/><circle cx="410" cy="256" r="7"/><circle cx="300" cy="196" r="6"/></g>
+<g fill="#ffee88"><circle cx="110" cy="250" r="2.5"/><circle cx="170" cy="220" r="2.5"/><circle cx="350" cy="214" r="2.5"/><circle cx="410" cy="256" r="2.5"/><circle cx="300" cy="196" r="2"/></g>
+<!-- arms resting -->
+<path class="o b" d="M90 320 C70 360 70 400 90 430 C110 430 120 400 124 370 Z"/>
+<path class="o b" d="M422 320 C442 360 442 400 422 430 C402 430 392 400 388 370 Z"/>
+<!-- head -->
+<path class="o b" d="M170 150 C166 100 206 70 256 70 C306 70 346 100 342 150 C338 190 302 212 256 212 C210 212 174 190 170 150 Z"/>
+<path class="o cr" d="M190 152 C192 120 222 104 256 104 C290 104 320 120 322 152 C320 182 292 200 256 200 C220 200 192 182 190 152 Z"/>
+<path class="o b" d="M180 96 L176 60 L206 82 Z M332 96 L336 60 L306 82 Z"/>
+<!-- sleeping face -->
+<path class="t" d="M214 144 c10 8 24 8 32 0 M268 144 c10 8 24 8 32 0" stroke-width="4"/>
+<path class="t" d="M222 176 c20 12 48 12 68 0" stroke-width="4"/>
+<path d="M240 178 l6 8 l6 -8 M260 178 l6 8 l6 -8" stroke="#1b1b2b" stroke-width="2" fill="#ffffff"/>
+<!-- bird's nest on its head -->
+<path class="o ny" d="M216 74 C214 50 298 50 296 74 C290 92 222 92 216 74 Z"/>
+<g class="t" stroke="#6a4c2a" stroke-width="2"><path d="M224 72 l20 -10 M240 80 l24 -14 M262 82 l22 -16 M230 64 l40 10"/></g>
+<g class="o" fill="#e8f0f8" stroke-width="3"><ellipse cx="244" cy="58" rx="10" ry="12"/><ellipse cx="266" cy="56" rx="10" ry="12"/></g>
+<!-- zzz -->
+<g class="t" stroke="#8a94b4" stroke-width="4"><path d="M360 60 h20 l-20 20 h20 M392 30 h14 l-14 14 h14"/></g>
+<!-- highlight -->
+<path d="M200 90 C220 80 240 76 260 76" stroke="#4a7a90" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2312 Cathodion (Electric/Fairy), from Minun: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2312_1" d="M334 340L339.4 345.7L347 343.5L348.8 351.2L356.5 353L354.3 360.6L360 366L354.3 371.4L356.5 379L348.8 380.8L347 388.5L339.4 386.3L334 392L328.6 386.3L321 388.5L319.2 380.8L311.5 379L313.7 371.4L308 366L313.7 360.6L311.5 353L319.2 351.2L321 343.5L328.6 345.7Z"/><clipPath id="h2312_1c"><use href="#h2312_1"/></clipPath><path id="h2312_2" d="M201 440a27 12 0 1 0 54 0a27 12 0 1 0 -54 0Z"/><clipPath id="h2312_2c"><use href="#h2312_2"/></clipPath><path id="h2312_3" d="M261 442a27 12 0 1 0 54 0a27 12 0 1 0 -54 0Z"/><clipPath id="h2312_3c"><use href="#h2312_3"/></clipPath><path id="h2312_4" d="M301 283.1A13 34 32 1 0 323 296.9A13 34 32 1 0 301 283.1Z"/><clipPath id="h2312_4c"><use href="#h2312_4"/></clipPath><path id="h2312_5" d="M208 364a50 66 0 1 0 100 0a50 66 0 1 0 -100 0Z"/><clipPath id="h2312_5c"><use href="#h2312_5"/></clipPath><path id="h2312_6" d="M191 298.9A13 34 -32 1 0 213 285.1A13 34 -32 1 0 191 298.9Z"/><clipPath id="h2312_6c"><use href="#h2312_6"/></clipPath><path id="h2312_7" d="M196.5 144.4A18 60 -14 1 0 231.5 135.6A18 60 -14 1 0 196.5 144.4Z"/><clipPath id="h2312_7c"><use href="#h2312_7"/></clipPath><path id="h2312_8" d="M274.7 131A18 60 16 1 0 309.3 141A18 60 16 1 0 274.7 131Z"/><clipPath id="h2312_8c"><use href="#h2312_8"/></clipPath><path id="h2312_9" d="M194 236a60 52 0 1 0 120 0a60 52 0 1 0 -120 0Z"/><clipPath id="h2312_9c"><use href="#h2312_9"/></clipPath><path id="h2312_10" d="M208 244L212 247.8L217.4 247.1L218.4 252.5L223.2 255.1L220.8 260L223.2 264.9L218.4 267.5L217.4 272.9L212 272.2L208 276L204 272.2L198.6 272.9L197.6 267.5L192.8 264.9L195.2 260L192.8 255.1L197.6 252.5L198.6 247.1L204 247.8Z"/><clipPath id="h2312_10c"><use href="#h2312_10"/></clipPath><path id="h2312_11" d="M298 245L301.2 248.1L305.6 247.5L306.4 251.9L310.4 254L308.4 258L310.4 262L306.4 264.1L305.6 268.5L301.2 267.9L298 271L294.8 267.9L290.4 268.5L289.6 264.1L285.6 262L287.6 258L285.6 254L289.6 251.9L290.4 247.5L294.8 248.1Z"/><clipPath id="h2312_11c"><use href="#h2312_11"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M158 456a100 12 0 1 0 200 0a100 12 0 1 0 -200 0Z" fill="#e9ebf2"/>
+<path d="M294 372a10 8 0 1 0 20 0a10 8 0 1 0 -20 0Z" fill="#f7f0da" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M300 368a34 32 0 1 0 68 0a34 32 0 1 0 -68 0Z" fill="#3f86e0" opacity="0.18"/>
+<use href="#h2312_1" fill="#3f86e0"/>
+<g clip-path="url(#h2312_1c)"><path d="M326 378a20 16 0 1 0 40 0a20 16 0 1 0 -40 0Z" fill="#2a5eb0"/></g>
+<use href="#h2312_1" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M325 366L343 366" fill="none" stroke="#ffffff" stroke-width="4"/>
+<use href="#h2312_2" fill="#f7f0da"/>
+<g clip-path="url(#h2312_2c)"><path d="M222 446a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#d8cdaa"/></g>
+<use href="#h2312_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2312_3" fill="#f7f0da"/>
+<g clip-path="url(#h2312_3c)"><path d="M282 448a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#d8cdaa"/></g>
+<use href="#h2312_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2312_4" fill="#f7f0da"/>
+<g clip-path="url(#h2312_4c)"><path d="M311.2 291.8A8 32 32 1 0 324.8 300.2A8 32 32 1 0 311.2 291.8Z" fill="#d8cdaa"/></g>
+<use href="#h2312_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M314 260a14 13 0 1 0 28 0a14 13 0 1 0 -28 0Z" fill="#3f86e0" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2312_5" fill="#f7f0da"/>
+<g clip-path="url(#h2312_5c)"><path d="M254 390a36 66 0 1 0 72 0a36 66 0 1 0 -72 0Z" fill="#d8cdaa"/><path d="M226 330a12 22 0 1 0 24 0a12 22 0 1 0 -24 0Z" fill="#ffffff"/></g>
+<use href="#h2312_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2312_6" fill="#f7f0da"/>
+<g clip-path="url(#h2312_6c)"><path d="M202.1 301.7A7 32 -32 1 0 213.9 294.3A7 32 -32 1 0 202.1 301.7Z" fill="#d8cdaa"/></g>
+<use href="#h2312_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M172 262a14 13 0 1 0 28 0a14 13 0 1 0 -28 0Z" fill="#3f86e0" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2312_7" fill="#f7f0da"/>
+<g clip-path="url(#h2312_7c)"><path d="M216.2 151.9A8 60 -14 1 0 231.8 148.1A8 60 -14 1 0 216.2 151.9Z" fill="#d8cdaa"/><path d="M172 86a28 30 0 1 0 56 0a28 30 0 1 0 -56 0Z" fill="#3f86e0"/></g>
+<use href="#h2312_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2312_8" fill="#f7f0da"/>
+<g clip-path="url(#h2312_8c)"><path d="M292.4 143.2A10 60 16 1 0 311.6 148.8A10 60 16 1 0 292.4 143.2Z" fill="#d8cdaa"/><path d="M282 82a28 30 0 1 0 56 0a28 30 0 1 0 -56 0Z" fill="#3f86e0"/><path d="M304 92a14 22 0 1 0 28 0a14 22 0 1 0 -28 0Z" fill="#2a5eb0"/></g>
+<use href="#h2312_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2312_9" fill="#f7f0da"/>
+<g clip-path="url(#h2312_9c)"><path d="M248 262a42 42 0 1 0 84 0a42 42 0 1 0 -84 0Z" fill="#d8cdaa"/><path d="M206.7 209.7A22 10 -15 1 0 249.3 198.3A22 10 -15 1 0 206.7 209.7Z" fill="#ffffff"/></g>
+<use href="#h2312_9" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M185 260a23 23 0 1 0 46 0a23 23 0 1 0 -46 0Z" fill="#3f86e0" opacity="0.2"/>
+<use href="#h2312_10" fill="#3f86e0"/>
+<g clip-path="url(#h2312_10c)"><path d="M203.2 266.4a11.2 9.6 0 1 0 22.4 0a11.2 9.6 0 1 0 -22.4 0Z" fill="#2a5eb0"/></g>
+<use href="#h2312_10" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M201.28 260L214.72 260" fill="none" stroke="#ffffff" stroke-width="4"/>
+<path d="M278 258a20 20 0 1 0 40 0a20 20 0 1 0 -40 0Z" fill="#3f86e0" opacity="0.2"/>
+<use href="#h2312_11" fill="#3f86e0"/>
+<g clip-path="url(#h2312_11c)"><path d="M294.1 263.2a9.1 7.8 0 1 0 18.2 0a9.1 7.8 0 1 0 -18.2 0Z" fill="#2a5eb0"/></g>
+<use href="#h2312_11" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M292.54 258L303.46 258" fill="none" stroke="#ffffff" stroke-width="4"/>
+<path d="M225 230a9 13 0 1 0 18 0a9 13 0 1 0 -18 0Z" fill="#1b1b2b"/>
+<path d="M228.4 225.5a2.9 3.6 0 1 0 5.8 0a2.9 3.6 0 1 0 -5.8 0Z" fill="#ffffff"/>
+<path d="M266 228a8 12 0 1 0 16 0a8 12 0 1 0 -16 0Z" fill="#1b1b2b"/>
+<path d="M269 223.8a2.6 3.4 0 1 0 5.1 0a2.6 3.4 0 1 0 -5.1 0Z" fill="#ffffff"/>
+<path d="M248 254Q254 260 260 254" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+</svg>

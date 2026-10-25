@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Mimestro (No. 2122), Psychic/Fairy, from Mr. Mime: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.pk{fill:#f2a4b8}.pkd{fill:#d47e98}.w{fill:#fbfaf6}.ws{fill:#d8d8e2}.bl{fill:#5a8ad8}.hat{fill:#2e2a3a}.hatl{fill:#4c4660}.gl{fill:#cdeaff}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="480" rx="120" ry="12" fill="#e6e7ee"/>
+<!-- tailcoat tails behind -->
+<path class="o pk" d="M196 300 L160 420 L210 400 L230 330 Z"/>
+<path class="o pkd" d="M316 300 L352 420 L302 400 L282 330 Z"/>
+<!-- legs and shoes -->
+<path class="o w" d="M220 360 C214 400 216 430 210 452 L250 452 C250 420 248 390 248 362 Z"/>
+<path class="o w" d="M266 362 C268 390 266 420 268 452 L304 452 C298 430 298 400 294 360 Z"/>
+<g class="o bl"><path d="M196 450 C196 436 252 436 254 452 C254 470 196 470 196 450 Z"/><path d="M264 452 C264 436 320 436 320 450 C320 470 264 470 264 452 Z"/></g>
+<!-- body, tailcoat of pink and white -->
+<path class="o w" d="M196 280 C190 230 220 200 256 200 C292 200 322 230 316 280 C312 330 296 370 256 372 C216 372 200 330 196 280 Z"/>
+<path class="o pk" d="M196 280 C190 230 220 200 256 200 L256 372 C216 372 200 330 196 280 Z"/>
+<path class="o pk" d="M316 280 C322 230 292 200 256 200 L256 372 C296 370 312 330 316 280 Z"/>
+<path class="o w" d="M234 206 L256 300 L278 206 Z"/>
+<g class="o" fill="#e04a6a" stroke-width="3"><circle cx="256" cy="316" r="7"/><circle cx="256" cy="342" r="7"/></g>
+<path class="pkd" d="M300 230 C314 260 314 300 300 340 C290 360 270 370 256 372 L256 360 C286 340 300 290 300 230 Z"/>
+<!-- head -->
+<path class="o w" d="M206 150 C204 112 228 90 256 90 C284 90 308 112 306 150 C304 180 284 198 256 198 C228 198 208 180 206 150 Z"/>
+<path class="o pk" d="M196 140 C176 130 168 116 176 104 C190 108 200 118 206 130 Z"/>
+<path class="o pk" d="M316 140 C336 130 344 116 336 104 C322 108 312 118 306 130 Z"/>
+<path d="M226 146 c6-8 18-8 22 0 c-6 4-16 4-22 0z M266 146 c4-8 16-8 22 0 c-6 4-16 4-22 0z" fill="#1b1b2b"/>
+<circle class="o pk" cx="218" cy="170" r="9" stroke-width="3"/><circle class="o pk" cx="294" cy="170" r="9" stroke-width="3"/>
+<path class="t" d="M244 176 c8 4 16 4 24 0"/>
+<!-- tall hat -->
+<path class="o hat" d="M196 104 C206 96 306 96 316 104 C320 110 310 116 300 114 L212 114 C200 116 192 110 196 104 Z"/>
+<path class="o hat" d="M218 104 L222 20 C240 12 272 12 290 20 L294 104 Z"/>
+<path class="o" d="M220 82 L292 82 L293 96 L219 96 Z" fill="#e04a6a"/>
+<path class="hatl" d="M232 30 L234 76 L242 76 L240 26 Z"/>
+<!-- floating hands holding one pane of light between them -->
+<path class='o gl' d='M336 170 L476 196 L468 352 L328 326 Z' opacity='.85'/>
+<path d='M352 190 L456 210 M350 214 L420 226' stroke='#ffffff' stroke-width='5' stroke-linecap='round'/>
+<g class='o w'><path d='M312 250 C304 230 320 216 336 222 L350 230 L346 268 C332 276 316 270 312 250 Z'/><path d='M500 276 C508 256 492 242 476 248 L462 256 L466 294 C480 302 496 296 500 276 Z'/></g>
+<g class='o pk' stroke-width='4'><circle cx='324' cy='216' r='10'/><circle cx='488' cy='242' r='10'/></g>
+<!-- highlight -->
+<path d="M222 108 C232 100 246 96 260 96" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Lodestarch (No. 2476), reference drawing</title>
+  <defs>
+    <g id="mini">
+      <path d="M-26 -10 C-26 -30 26 -30 26 -10 C26 12 14 24 0 24 C-14 24 -26 12 -26 -10 Z" fill="#3a3a4a"/>
+      <path d="M-10 6 C-10 -4 10 -4 10 6 C10 16 -10 16 -10 6 Z" fill="#d84040" stroke-width="3"/>
+      <circle cx="-9" cy="-10" r="3" fill="#ffffff" stroke="none"/>
+      <circle cx="9" cy="-10" r="3" fill="#ffffff" stroke="none"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="472" rx="170" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- the body: a blue rock, larger -->
+    <path d="M150 440 C130 380 140 260 170 200 C196 150 316 150 342 200 C372 260 382 380 362 440 C320 462 192 462 150 440 Z" fill="#3a6ab8"/>
+    <path d="M332 200 C366 270 372 380 356 442 C336 452 312 456 290 458 C340 400 350 290 322 200 Z" fill="#2a4e8e" stroke="none"/>
+    <path d="M176 220 C166 260 162 300 164 340" fill="none" stroke="#6a9ae0" stroke-width="7"/>
+    <!-- the red needle cap at its peak -->
+    <path d="M220 168 C220 140 292 140 292 168 L276 176 L256 96 L236 176 Z" fill="#d84040"/>
+    <path d="M256 96 L276 176 L264 174 Z" fill="#a82a2a" stroke="none"/>
+    <path d="M214 172 C228 160 284 160 298 172 C290 182 222 182 214 172 Z" fill="#a82a2a"/>
+    <!-- eyes -->
+    <path d="M200 236 L236 246 L204 256 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M312 236 L276 246 L308 256 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M196 224 L240 236 M316 224 L272 236" fill="none" stroke="#f4f4f0" stroke-width="8"/>
+    <path d="M196 224 L240 236 M316 224 L272 236" fill="none" stroke-width="3"/>
+    <!-- great red nose -->
+    <path d="M216 270 C216 236 296 236 296 270 C296 300 280 314 256 314 C232 314 216 300 216 270 Z" fill="#d84040"/>
+    <path d="M232 256 C238 248 248 246 256 246" fill="none" stroke="#ff9a8a" stroke-width="5"/>
+    <!-- the longer moustache -->
+    <path d="M256 310 C220 300 170 320 120 356 C110 364 100 360 104 348 C140 300 210 286 256 300 C302 286 372 300 408 348 C412 360 402 364 392 356 C342 320 292 300 256 310 Z" fill="#e8e8e0"/>
+    <path d="M200 312 C176 320 150 336 128 352 M312 312 C336 320 362 336 384 352" fill="none" stroke="#b8b8b0" stroke-width="4"/>
+    <!-- feet stumps -->
+    <path d="M180 450 L184 470 L224 470 L222 456 Z M290 456 L288 470 L328 470 L332 450 Z" fill="#2a4e8e"/>
+    <!-- five Mini-Noses round it in a star -->
+    <use href="#mini" transform="translate(256 46)"/>
+    <use href="#mini" transform="translate(436 180)"/>
+    <use href="#mini" transform="translate(76 180)"/>
+    <use href="#mini" transform="translate(410 388)"/>
+    <use href="#mini" transform="translate(102 388)"/>
+    <path d="M256 74 L256 90 M412 186 L380 200 M100 186 L132 200 M386 380 L366 372 M126 380 L146 372" fill="none" stroke="#7a8ab0" stroke-width="3" stroke-dasharray="4 6"/>
+  </g>
+</svg>

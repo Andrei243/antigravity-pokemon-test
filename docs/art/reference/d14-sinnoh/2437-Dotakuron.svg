@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Dotakuron (No. 2437), reference drawing</title>
+  <defs>
+    <g id="bell">
+      <path d="M0 -20 C-12 -20 -16 -8 -16 6 L-20 16 L20 16 L16 6 C16 -8 12 -20 0 -20 Z" fill="#c8a040"/>
+      <circle cy="20" r="5" fill="#8a6a20" stroke-width="3"/>
+      <path d="M-8 -12 C-10 -4 -10 4 -10 10" fill="none" stroke="#f2d890" stroke-width="3"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="484" rx="120" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- arms -->
+    <path d="M112 250 C80 260 60 290 62 330 C80 320 100 312 120 312 Z" fill="#2e7a76"/>
+    <path d="M400 250 C432 260 452 290 450 330 C432 320 412 312 392 312 Z" fill="#2e7a76"/>
+    <!-- crown of three spires -->
+    <path d="M206 120 L216 40 L234 116 Z" fill="#3a9a92"/>
+    <path d="M236 112 L256 14 L276 112 Z" fill="#3a9a92"/>
+    <path d="M278 116 L296 40 L306 120 Z" fill="#3a9a92"/>
+    <path d="M256 14 L276 112 L264 112 Z" fill="#2e7a76" stroke="none"/>
+    <!-- the bell -->
+    <path d="M190 130 C170 140 150 200 140 260 C130 320 110 370 96 396 C180 420 332 420 416 396 C402 370 382 320 372 260 C362 200 342 140 322 130 C290 112 222 112 190 130 Z" fill="#3a9a92"/>
+    <path d="M322 130 C342 140 362 200 372 260 C382 320 402 370 416 396 C396 402 376 406 356 408 C356 300 340 190 300 124 Z" fill="#2e7a76" stroke="none"/>
+    <path d="M206 140 C186 190 176 250 168 300" fill="none" stroke="#7ad0c4" stroke-width="7"/>
+    <!-- raised bands of pattern -->
+    <path d="M160 214 C220 228 292 228 352 214" fill="none" stroke-width="5"/>
+    <path d="M150 244 C220 258 292 258 362 244" fill="none" stroke-width="5"/>
+    <path d="M180 232 L190 220 L200 236 L210 222 L220 238 L230 224 L240 240 L250 226 L260 240 L270 224 L280 238 L290 222 L300 236 L310 220 L320 234 L332 222" fill="none" stroke="#c8a040" stroke-width="4"/>
+    <path d="M124 344 C200 362 312 362 388 344" fill="none" stroke-width="5"/>
+    <g fill="#c8a040" stroke-width="3">
+      <circle cx="170" cy="320" r="10"/><circle cx="256" cy="330" r="10"/><circle cx="342" cy="320" r="10"/>
+    </g>
+    <!-- eyes, red -->
+    <path d="M210 168 C214 156 232 156 238 168 C232 180 214 180 210 168 Z" fill="#e8304a"/>
+    <path d="M274 168 C280 156 298 156 302 168 C298 180 280 180 274 168 Z" fill="#e8304a"/>
+    <circle cx="224" cy="168" r="4" fill="#1b1b2b" stroke="none"/>
+    <circle cx="288" cy="168" r="4" fill="#1b1b2b" stroke="none"/>
+    <!-- rim -->
+    <path d="M96 396 C180 420 332 420 416 396 C420 410 408 422 396 424 C320 440 192 440 116 424 C104 422 92 410 96 396 Z" fill="#2e7a76"/>
+    <!-- ring of smaller bells round the rim -->
+    <use href="#bell" transform="translate(124 440)"/>
+    <use href="#bell" transform="translate(178 452)"/>
+    <use href="#bell" transform="translate(234 458)"/>
+    <use href="#bell" transform="translate(290 458)"/>
+    <use href="#bell" transform="translate(346 452)"/>
+    <use href="#bell" transform="translate(398 440)"/>
+  </g>
+</svg>

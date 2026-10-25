@@ -11,7 +11,7 @@ namespace PokemonPlatinumEngine.UI.Kit;
 public enum RunRow
 {
     Preset, Difficulty, LevelCap, ScaleTrainers, Nuzlocke, DupesClause, ShinyClause, GiftsCount, Monotype, PartyLimit,
-    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, ShinyOdds, Start
+    NoBattleItems, NoCenter, NoCatching, NoRunning, SetStyle, ShinyOdds, RandomSpecies, RandomItems, Seed, Start
 }
 
 /// <summary>
@@ -46,6 +46,8 @@ public sealed class RunPanel
             foreach (RunRow row in Enum.GetValues<RunRow>())
             {
                 if (row is RunRow.DupesClause or RunRow.ShinyClause or RunRow.GiftsCount && !Rules.Nuzlocke) continue;
+                // The seed shows once something is randomised (plan 13 · V6)
+                if (row == RunRow.Seed && Rules.Random == null) continue;
                 rows.Add(row);
             }
             return rows;
@@ -69,10 +71,62 @@ public sealed class RunPanel
         First = 0;
         presetAt = 0;
         Done = false;
+        SeedEntry = null;
+    }
+
+    // ------------------------------------------------------------------ the randomiser's seed (plan 13 · V6)
+
+    /// <summary>Where a new seed comes from when the randomiser is first turned on or the seed row is stepped: one roll of the game's chance (a test or a tool hands its own).</summary>
+    public Func<int> RollSeed { get; set; } = () => Dice.Shared.Next(1, RandomizerOptions.MaxSeed + 1);
+
+    /// <summary>
+    /// The keyboard a seed is typed on while the player types one (the introduction's, with the digits only; the letters are
+    /// passed over); null otherwise.
+    /// </summary>
+    public NameEntry? SeedEntry { get; private set; }
+
+    /// <summary>Whether the keyboard for the seed is open: the panel's other rows wait.</summary>
+    public bool EnteringSeed => SeedEntry != null;
+
+    /// <summary>How many digits a seed has at most.</summary>
+    public static readonly int SeedDigits = RandomizerOptions.MaxSeed.ToString().Length;
+
+    private void OpenSeedEntry() => SeedEntry = new NameEntry(null, SeedDigits, extras: "");
+
+    /// <summary>A step of the keyboard's cursor while a seed is being typed.</summary>
+    public void MoveCursor(int dx, int dy) => SeedEntry?.Move(dx, dy);
+
+    /// <summary>The A button on the seed's keyboard: a digit typed, a letter passed over, OK takes the seed typed (the one it had when nothing was).</summary>
+    public void PressSeedKey()
+    {
+        if (SeedEntry is not { } entry) return;
+        if (entry.KeyUnderCursor == NameKey.Letter && !char.IsDigit(entry.RowKeys(entry.Row)[entry.Column])) return;
+        entry.Press();
+        if (!entry.Done) return;
+        if (Randomizer.ParseSeed(entry.Text) is { } typed && Rules.Random is { } options) Rules = Rules with { Random = options with { Seed = typed } };
+        SeedEntry = null;
+    }
+
+    /// <summary>The B button on the seed's keyboard: a digit taken back, and with none left the keyboard closed with the seed as it was.</summary>
+    public void CancelSeedKey()
+    {
+        if (SeedEntry is not { } entry) return;
+        if (!entry.Backspace()) SeedEntry = null;
+    }
+
+    /// <summary>The Start button on the seed's keyboard: the cursor to OK.</summary>
+    public void SeedToDone() => SeedEntry?.ToDone();
+
+    private RandomizerOptions? Toggled(RandomizerOptions? options, bool species)
+    {
+        if (options == null) return new RandomizerOptions { Seed = RollSeed(), Species = species, Items = !species };
+        var changed = species ? options with { Species = !options.Species } : options with { Items = !options.Items };
+        return changed.Species || changed.Items ? changed : null;
     }
 
     public void Move(int step)
     {
+        if (EnteringSeed) return;
         var rows = Rows;
         selected = ((selected + step) % rows.Count + rows.Count) % rows.Count;
         First = UiNav.Window(First, selected, rows.Count, VisibleRows);
@@ -82,7 +136,7 @@ public sealed class RunPanel
     public void Change(int direction)
     {
         int d = Math.Sign(direction);
-        if (d == 0) return;
+        if (d == 0 || EnteringSeed) return;
         var r = Rules;
         switch (SelectedRow)
         {
@@ -120,6 +174,10 @@ public sealed class RunPanel
                 k = ((k + d) % RunRules.ShinyChoices.Length + RunRules.ShinyChoices.Length) % RunRules.ShinyChoices.Length;
                 Rules = r with { ShinyDenominator = RunRules.ShinyChoices[k] };
                 break;
+            case RunRow.RandomSpecies: Rules = r with { Random = Toggled(r.Random, species: true) }; break;
+            case RunRow.RandomItems: Rules = r with { Random = Toggled(r.Random, species: false) }; break;
+            // Left and right roll another seed; A types one
+            case RunRow.Seed when r.Random is { } options: Rules = r with { Random = options with { Seed = RollSeed() } }; break;
             default: return;
         }
         // (A row that was selected among the clauses stays in the list when the Nuzlocke goes)
@@ -134,6 +192,9 @@ public sealed class RunPanel
     public void Confirm()
     {
         var row = SelectedRow;
+        if (EnteringSeed) { PressSeedKey(); return; }
+        // A on the seed types one
+        if (row == RunRow.Seed) { OpenSeedEntry(); return; }
         if (row is RunRow.Preset or RunRow.Start || Rules.IsNormal) Done = true;
         else Change(1);
     }
@@ -154,6 +215,8 @@ public sealed class RunPanel
         RunRow.NoCatching => OnOff(Rules.NoCatching),
         RunRow.NoRunning => OnOff(Rules.NoRunning),
         RunRow.SetStyle => OnOff(Rules.SetStyle),
+        RunRow.RandomSpecies => OnOff(Rules.Random?.Species == true),
+        RunRow.RandomItems => OnOff(Rules.Random?.Items == true),
         _ => ""
     };
 
@@ -165,6 +228,7 @@ public sealed class RunPanel
         RunRow.Monotype => Rules.Monotype is { } t ? Words.Type(t) : Text.Of("run.none"),
         RunRow.PartyLimit => Rules.PartyLimit.ToString(),
         RunRow.ShinyOdds => Rules.ShinyDenominator == 0 ? Text.Of("run.shinyOwn") : Text.Of("run.shinyOdds", ("n", Rules.ShinyDenominator)),
+        RunRow.Seed => Randomizer.SeedText(Rules.Random?.Seed ?? 0),
         RunRow.Start => "",
         _ => Text.Of(ValueKey(row))
     };

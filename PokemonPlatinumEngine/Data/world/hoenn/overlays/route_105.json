@@ -1,11 +1,10 @@
 {
   // Route 105 (plan 21 · H3): the open sea south of Route 104, crossed on Mr. Briney's boat until Surf (plan 21 · H4's
   // Balance Badge). Its swimmers and the hikers on its islet wait for a surfer; the way into the Island Cave on its
-  // western rocks waits for the Regis' riddles (plan 21 · H12)
+  // western rocks is open (plan 21 · H12, part a: its chamber waits for the Regis' riddles)
   "area": "route_105",
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
-  "locked": [ 0 ],
   "people": {
     "swimmer_m": { "name": "Luis", "trainer": { "dialogueBefore": "Swimmer Luis: The current out here is strong. Only the toughest swimmers get this far!", "dialogueAfter": "Swimmer Luis: Swept away by a stronger current..." } },
     "swimmer_m_2": { "name": "Dominik", "trainer": { "dialogueBefore": "Swimmer Dominik: I swim out here every morning. Battle me before I get cold!", "dialogueAfter": "Swimmer Dominik: Brr! Now I'm cold AND beaten." } },

@@ -3,13 +3,14 @@
   // Winstrate family's house at its foot and the old lady's rest stop at its head. The desert in the middle blows a
   // sandstorm (its zones, by the rows and columns Emerald's sandstorm and sun triggers mark) that nobody crosses without
   // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower stands in the sand until its fossil
-  // is taken and it falls (plan 21 · H4, part b: FLAG_HOENN_MIRAGE_TOWER_FALLEN shuts its way in); the Desert Ruins stay
-  // shut until the Regis' riddles and the Trainer Hill's door until its own session; Gabby and Ty come by turns on this
+  // is taken and it falls (plan 21 · H4, part b: FLAG_HOENN_MIRAGE_TOWER_FALLEN shuts its way in); the Desert Ruins are
+  // open (plan 21 · H12, part a: its chamber waits for the Regis' riddles) and the Trainer Hill's door is shut until its
+  // own session; Gabby and Ty come by turns on this
   // route, 118 and 120 (plan 21 · H6, part c: GabbyAndTyUpdateLocation in common.txt)
   "area": "route_111",
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 1, 4 ],
+  "locked": [ 4 ],
   "switches": [ { "warp": 3, "until": "FLAG_HOENN_MIRAGE_TOWER_FALLEN" } ],
   "zones": [
     { "x": 215, "z": 37, "width": 24, "depth": 68, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" },

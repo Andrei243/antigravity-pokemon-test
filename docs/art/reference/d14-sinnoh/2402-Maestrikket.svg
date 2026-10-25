@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Maestrikket (No. 2402), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="476" rx="130" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- tail-coat of wing-cases, behind -->
+    <path d="M222 218 C190 280 178 360 196 452 L226 420 L240 456 C246 380 248 300 246 230 Z" fill="#8e1f2a"/>
+    <path d="M286 218 C318 280 336 356 326 448 L298 418 L282 452 C276 380 272 300 270 230 Z" fill="#a8262f"/>
+    <!-- far arm with the bow -->
+    <path d="M292 214 C318 220 336 238 344 262" fill="none" stroke-width="12"/>
+    <path d="M292 214 C318 220 336 238 344 262" fill="none" stroke="#3a2a2e" stroke-width="6"/>
+    <path d="M300 300 L430 120" fill="none" stroke-width="13"/>
+    <path d="M300 300 L430 120" fill="none" stroke="#b9c4d1" stroke-width="7"/>
+    <path d="M304 288 L426 118" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="butt"/>
+    <path d="M316 302 L442 128" fill="none" stroke="#e8e2cf" stroke-width="3" stroke-linecap="butt"/>
+    <path d="M302 296 L320 306 L326 296 L308 286 Z" fill="#3a2a2e" stroke-width="3"/>
+    <circle cx="430" cy="120" r="8" fill="#7d8a99"/>
+    <path d="M346 262 C352 276 348 290 336 294 C322 290 322 272 334 262 Z" fill="#3a2a2e"/>
+    <!-- legs -->
+    <path d="M238 360 L226 410 L212 464" fill="none" stroke-width="16"/>
+    <path d="M238 360 L226 410 L212 464" fill="none" stroke="#3a2a2e" stroke-width="10"/>
+    <path d="M272 360 L286 410 L298 464" fill="none" stroke-width="16"/>
+    <path d="M272 360 L286 410 L298 464" fill="none" stroke="#3a2a2e" stroke-width="10"/>
+    <circle cx="226" cy="410" r="9" fill="#c8323a"/>
+    <circle cx="286" cy="410" r="9" fill="#c8323a"/>
+    <path d="M192 468 L214 458 L230 470 Z" fill="#3a2a2e"/>
+    <path d="M282 470 L298 458 L320 468 Z" fill="#3a2a2e"/>
+    <!-- abdomen -->
+    <path d="M214 270 C200 320 214 372 256 378 C298 372 312 320 298 270 C284 252 228 252 214 270 Z" fill="#3a2a2e"/>
+    <path d="M226 300 C246 306 266 306 288 300 M222 330 C246 338 268 338 292 330" fill="none" stroke-width="3"/>
+    <!-- thorax / coat front -->
+    <path d="M218 196 C206 236 214 272 256 280 C298 272 306 236 294 196 C276 184 236 184 218 196 Z" fill="#c8323a"/>
+    <path d="M256 200 L244 274 L256 280 L268 274 Z" fill="#8e1f2a" stroke="none"/>
+    <path d="M226 206 C222 226 224 246 232 260" fill="none" stroke="#e8606a" stroke-width="5"/>
+    <!-- head -->
+    <path d="M206 132 C204 90 236 70 262 72 C292 74 312 98 306 134 C300 166 278 184 254 184 C226 184 208 164 206 132 Z" fill="#c8323a"/>
+    <path d="M222 152 C236 174 268 178 290 160 C284 178 268 186 252 186 C234 184 222 172 222 152 Z" fill="#8e1f2a" stroke="none"/>
+    <path d="M228 96 C236 86 250 82 262 84" fill="none" stroke="#ef8a90" stroke-width="5"/>
+    <!-- antennae -->
+    <path d="M236 82 C220 40 182 26 150 40" fill="none" stroke-width="5"/>
+    <path d="M272 80 C292 36 330 26 360 42" fill="none" stroke-width="5"/>
+    <!-- eyes -->
+    <ellipse cx="236" cy="124" rx="14" ry="17" fill="#f2d24a"/>
+    <ellipse cx="280" cy="124" rx="12" ry="16" fill="#f2d24a"/>
+    <ellipse cx="234" cy="126" rx="5" ry="8" fill="#1b1b2b" stroke="none"/>
+    <ellipse cx="278" cy="126" rx="4" ry="7" fill="#1b1b2b" stroke="none"/>
+    <!-- conductor's moustache -->
+    <path d="M256 146 C232 140 196 150 176 132 C168 124 172 110 182 108 C176 124 196 132 214 130 C232 128 248 132 256 140 C264 132 280 128 298 130 C316 132 336 124 330 108 C340 110 344 124 336 132 C316 150 280 140 256 146 Z" fill="#3a2a2e"/>
+    <!-- near arm: the steel blade -->
+    <path d="M220 212 C196 226 184 250 186 278" fill="none" stroke-width="14"/>
+    <path d="M220 212 C196 226 184 250 186 278" fill="none" stroke="#3a2a2e" stroke-width="8"/>
+    <path d="M176 276 C170 290 178 304 192 302 C204 298 204 282 194 274 Z" fill="#3a2a2e"/>
+    <path d="M186 292 L94 430 L108 436 L120 426 L200 300 Z" fill="#b9c4d1"/>
+    <path d="M186 292 L94 430 L108 436 L196 302 Z" fill="#7d8a99" stroke="none"/>
+    <path d="M190 300 L118 410" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <path d="M176 286 L210 300" fill="none" stroke-width="9"/>
+    <path d="M176 286 L210 300" fill="none" stroke="#7d8a99" stroke-width="4"/>
+  </g>
+</svg>

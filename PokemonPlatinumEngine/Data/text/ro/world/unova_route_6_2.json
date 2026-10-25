@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Welcome to the Season Research Lab! Past Mistralton, Twist Mountain wears snow in winter and bare rock the rest of the year. We watch it all change."
         ],
         "text": [
-          ""
+          "Bun venit la Season Research Lab! După Mistralton, Twist Mountain poartă zăpadă iarna și stâncă goală în rest. Noi urmărim cum se schimbă totul."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Deerling"
         ],
         "text": [
-          ""
+          "Deerling"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Deerling: Dree!"
         ],
         "text": [
-          ""
+          "Deerling: Dree!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Some Pokémon change their looks with the seasons. Is that a kind of evolution? We argue about it over lunch."
         ],
         "text": [
-          ""
+          "Unii Pokémon își schimbă înfățișarea odată cu anotimpurile. E un fel de evoluție? Ne certăm pe tema asta la prânz."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "The glass case next to me holds one season at a time. A machine keeps its warmth and damp just so."
         ],
         "text": [
-          ""
+          "Vitrina de sticlă de lângă mine ține un singur anotimp odată. O mașină îi păstrează căldura și umezeala exact cum trebuie."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Deerling"
         ],
         "text": [
-          ""
+          "Deerling"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Deerling: Dree dree!"
         ],
         "text": [
-          ""
+          "Deerling: Dree dree!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Deerling"
         ],
         "text": [
-          ""
+          "Deerling"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Deerling: Droon!"
         ],
         "text": [
-          ""
+          "Deerling: Droon!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Deerling"
         ],
         "text": [
-          ""
+          "Deerling"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Deerling: Dreen... droon?"
         ],
         "text": [
-          ""
+          "Deerling: Dreen... droon?"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -152,7 +152,7 @@
           "Forecaster"
         ],
         "text": [
-          ""
+          "Prezentatoare meteo"
         ]
       }
     }

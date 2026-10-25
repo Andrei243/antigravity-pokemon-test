@@ -1,0 +1,300 @@
+{
+  "JuniperAndBiancaMeet": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello again, {player}! I thought you might come this way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hee hee! I used Fly, so it looks like I beat you here. Thanks for your help in Reversal Mountain!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you go straight on past Lacunosa Town, you'll come to Opelucid City! But before you go, there's something I want you two to hear."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What is it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll see soon enough. Hurry along now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the place!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Plasma could be anywhere. Keep your eyes open, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HughAndTheGrunts": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! What's up? Have you seen Team Plasma anywhere around here? I heard a rumour that they were about."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Zinzolin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, for crying out loud... How troublesome, my curious young Trainers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Perhaps I should satisfy your curiosity a little. The reason I'm still part of Team Plasma is simple: I want to know how the world will change."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What Lord Ghetsis wanted is gone. What he was searching for, though, is still out there. And I intend to find it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shut your mouth! All I want is to get back a stolen Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Give me a hand! You ready?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TagBattleOffer": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are you ready to pitch in? Let's take them on together!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Just so you know... you're about to feel my rage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's with these two? I'm fighting alongside Zinzolin! This shouldn't be happening!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Zinzolin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These Trainers remind me of a certain child from two years ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "More importantly, we must continue the search. As that scientist said, it might be in Opelucid City! We shall play with you again later!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Get back here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Got it! Go and get ready, and then come back here! Being careful against opponents like these is no bad thing!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TheOldTale": [
+    {
+      "en": [
+        "Storyteller"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, fine, fine. Come back when you have time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

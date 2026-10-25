@@ -1,0 +1,27 @@
+{
+  "key": "lacunosa_town_4",
+  "index": 410,
+  "name": "Lacunosa Town",
+  "matrix": 47,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_04",
+  "nightMusic": "BGM_T_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "lacunosa_town", "toWarp": 3 },
+    { "x": 6, "z": 9, "to": "lacunosa_town", "toWarp": 3 },
+    { "x": 7, "z": 9, "to": "lacunosa_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "backers_f", "movement": "wander_around", "x": 4, "z": 4, "facing": 3, "rangeX": 2, "rangeZ": 1, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

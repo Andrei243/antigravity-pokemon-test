@@ -344,7 +344,7 @@ public partial class BattleEngine
         lastMove[user.Pokemon] = index;
 
         // In a double battle and a horde a single-target move asks where to aim it
-        if ((IsDouble || IsHorde) && move.Target == MoveTarget.Selected)
+        if ((IsDouble || IsHorde || IsSos) && move.Target == MoveTarget.Selected)
         {
             // In the order the target menu lays them out: the foes left to right, then the partner
             targetChoices = EnemySlots.Reverse().Where(b => b.IsActive).Concat(PlayerSlots.Where(b => b.IsActive && b != user)).ToList();

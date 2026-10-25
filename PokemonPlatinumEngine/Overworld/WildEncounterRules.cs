@@ -206,3 +206,30 @@ public static class WildEncounterRules
         return first.Gender == Gender.Female ? Gender.Male : Gender.Female;
     }
 }
+
+/// <summary>
+/// What an SOS battle's chain gives the ally that answers a call (plan 14 · B5; <c>docs/mechanics/rulings.md</c>,
+/// "SOS calls"): the IVs it is sure to have whole, the chance in a hundred that it has its hidden ability, and the extra
+/// rolls it is given for being shiny, each by the chain's length (the calls answered in the battle, this one included),
+/// in Sun and Moon's steps. A chain of its own: it shares nothing with the Poké Radar's (plan 06 · R13) or the DexNav's.
+/// </summary>
+public static class SosChain
+{
+    /// <param name="PerfectIvs">How many of its six IVs are 31, each a different stat.</param>
+    /// <param name="HiddenAbilityChance">Out of 100, the chance it has its species' hidden ability (under rules that have SOS calls alone).</param>
+    /// <param name="ShinyRolls">How many more personalities are drawn for it, against the odds the run gives, if it came out plain.</param>
+    public readonly record struct Bonus(int PerfectIvs, int HiddenAbilityChance, int ShinyRolls);
+
+    /// <summary>The longest chain counted: a longer one gives what this one does.</summary>
+    public const int Longest = 255;
+
+    /// <summary>The bonus of the ally that makes the chain <paramref name="chain"/> long.</summary>
+    public static Bonus Of(int chain)
+    {
+        chain = Math.Clamp(chain, 0, Longest);
+        int ivs = chain switch { >= 30 => 4, >= 20 => 3, >= 10 => 2, >= 5 => 1, _ => 0 };
+        int hidden = chain switch { >= 30 => 15, >= 20 => 10, >= 10 => 5, _ => 0 };
+        int shiny = chain switch { >= 31 => 12, >= 21 => 8, >= 11 => 4, _ => 0 };
+        return new Bonus(ivs, hidden, shiny);
+    }
+}

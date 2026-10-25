@@ -1,0 +1,149 @@
+# Lacunosa Town (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/lacunosa_town.s, read for the order alone).
+# VAR_UNOVA_LACUNOSA is the town's count (Black 2's 0x40cc and 0x40ce): 0 before the professor and Bianca have met the player, 1
+# once they take them to the storyteller's house (lacunosa_town_3.txt), 2 once the tale has been told and Hugh waits at the west end
+# of the town, 3 once Zinzolin has had his say and the tag battle waits, 4 once it is won.
+#
+# The town's people keep indoors at night (FLAG_UNOVA_LACUNOSA_NIGHT, set by the town's own arrival where the hour is night or later
+# and cleared where it isn't, hiding the people of the street). Black 2's Zinzolin and a grunt come to the west end while Hugh is
+# looking for Team Plasma; the battle is a tag battle with Hugh (Black 2's TRAINER_RIVAL_25, _26 and _27 by the starter against
+# TRAINER_TEAM_PLASMA_ZINZOLIN_4 and _GRUNT_45) and the two run when they lose.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  clearflag FLAG_UNOVA_LACUNOSA_NIGHT
+  if time night setflag FLAG_UNOVA_LACUNOSA_NIGHT
+  if time latenight setflag FLAG_UNOVA_LACUNOSA_NIGHT
+  end
+
+
+# The professor and Bianca meet the player (our triggers on the south-east road, 668 to 671, 183, and at the north gate, 667,
+# 171 to 172, at 0): they flew ahead
+script JuniperAndBiancaMeet
+  scene "Juniper and Bianca at Lacunosa"
+  fade out 0.4
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  clearflag FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  place 6 658 171 right
+  place 9 658 170 right
+  show 6
+  show 9
+  place player 660 171 left
+  fade in
+  face 6 player
+  face 9 player
+  speaker "Prof. Juniper"
+  say "Hello again, {player}! I thought you might come this way."
+  speaker "Bianca"
+  say "Hee hee! I used Fly, so it looks like I beat you here. Thanks for your help in Reversal Mountain!"
+  speaker "Prof. Juniper"
+  say "If you go straight on past Lacunosa Town, you'll come to Opelucid City! But before you go, there's something I want you two to hear."
+  speaker "Bianca"
+  say "What is it?"
+  speaker "Prof. Juniper"
+  say "You'll see soon enough. Hurry along now!"
+  walk 6 left 1 up 2
+  say "This is the place!"
+  hide 6
+  setflag FLAG_UNOVA_HIDE_JUNIPER_LACUNOSA
+  walk 9 left 1 up 1
+  hide 9
+  setflag FLAG_UNOVA_HIDE_BIANCA_LACUNOSA
+  setvar VAR_UNOVA_LACUNOSA 1
+  warp "LacunosaTown_House2" 6 8 up
+  endscene
+  end
+
+
+# Hugh at the west end (his object's script): before the tag battle he asks, after it he is gone
+script Hugh
+  face 12 player
+  speaker "{rival}"
+  if var VAR_UNOVA_LACUNOSA == 3 goto Offer
+  say "Team Plasma could be anywhere. Keep your eyes open, {player}."
+  end
+label Offer
+  call TagBattleOffer
+  end
+
+
+# Our trigger across the lane below him (649, 186 to 187, at 2): Hugh has found Team Plasma
+script HughAndTheGrunts
+  scene "Hugh and Zinzolin in Lacunosa Town"
+  face 12 player
+  speaker "{rival}"
+  say "{player}! What's up? Have you seen Team Plasma anywhere around here? I heard a rumour that they were about."
+  clearflag FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  clearflag FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  place 10 644 186 right
+  place 11 644 185 right
+  show 10
+  show 11
+  emote 10 exclaim
+  speaker "Zinzolin"
+  say "Oh, for crying out loud... How troublesome, my curious young Trainers."
+  say "Perhaps I should satisfy your curiosity a little. The reason I'm still part of Team Plasma is simple: I want to know how the world will change."
+  say "What Lord Ghetsis wanted is gone. What he was searching for, though, is still out there. And I intend to find it."
+  speaker "{rival}"
+  say "Shut your mouth! All I want is to get back a stolen Pokémon!"
+  say "{player}! Give me a hand! You ready?"
+  setvar VAR_UNOVA_LACUNOSA 3
+  call TagBattleOffer
+  endscene
+  end
+
+
+# The question of the tag battle, asked at the trigger and each time Hugh is spoken to until it is won
+script TagBattleOffer
+  speaker "{rival}"
+  ask "Are you ready to pitch in? Let's take them on together!"
+  if no goto NotReady
+  say "Just so you know... you're about to feel my rage!"
+  if starter "Snivy" goto WithEmboar
+  if starter "Tepig" goto WithSamurott
+  partner 12 "unova_rival_27"
+  goto Fight
+label WithEmboar
+  partner 12 "unova_rival_25"
+  goto Fight
+label WithSamurott
+  partner 12 "unova_rival_26"
+label Fight
+  battle 10 and 11 with partner
+  speaker "Grunt"
+  say "What's with these two? I'm fighting alongside Zinzolin! This shouldn't be happening!"
+  speaker "Zinzolin"
+  say "These Trainers remind me of a certain child from two years ago."
+  say "More importantly, we must continue the search. As that scientist said, it might be in Opelucid City! We shall play with you again later!"
+  partner off
+  fade out 0.4
+  hide 10
+  hide 11
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_LACUNOSA
+  setflag FLAG_UNOVA_HIDE_GRUNT_LACUNOSA
+  fade in
+  speaker "{rival}"
+  say "Get back here!"
+  fade out 0.4
+  hide 12
+  setflag FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  fade in
+  setvar VAR_UNOVA_LACUNOSA 4
+  return
+label NotReady
+  say "Got it! Go and get ready, and then come back here! Being careful against opponents like these is no bad thing!"
+  return
+
+
+# The storyteller on the street (her object's script), the same as in her house
+script TheOldTale
+  face 0 player
+  speaker "Storyteller"
+  ask "Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell."
+  if no goto NotNow
+  call UnovaLacunosaTale
+  end
+label NotNow
+  say "Oh, fine, fine. Come back when you have time."
+  end

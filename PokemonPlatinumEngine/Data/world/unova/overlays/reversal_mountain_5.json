@@ -1,0 +1,39 @@
+{
+  // Reversal Mountain's lair (plan 22 · U7, part b): the small chamber off the great cave where the mountain's heart is said to
+  // be, Black 2's, our words. With Bianca along, the passage before it (9 to 11, 18, VAR_UNOVA_REVERSAL_LAIR 1) is a scene of hers:
+  // she wonders at the place and guesses at Heatran (reversal_mountain_5.txt). Heatran itself (0, FLAG_UNOVA_HIDE_HEATRAN) waits for
+  // the post-game and the Magma Stone (plan 22 · U10); the room is empty until then
+  "area": "reversal_mountain_5",
+  "bgmTrack": "unova/reversal_cave",
+  "triggers": [
+    {
+      "script": "BiancaInTheLair",
+      "x": 9,
+      "z": 18,
+      "width": 3,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL_LAIR",
+      "value": 1
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 10,
+      "y": 22,
+      "facing": "Up",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Heatran",
+      "npcType": "Pokemon",
+      "species": "Heatran",
+      "hiddenBy": "FLAG_UNOVA_HIDE_HEATRAN",
+      "still": true
+    }
+  }
+}

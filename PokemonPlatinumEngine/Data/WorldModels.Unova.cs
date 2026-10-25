@@ -209,6 +209,36 @@ public static partial class WorldModels
         Furniture("machine_l01", PropType.LabMachine, "a machine of the Season Research Lab"),
         Furniture("poster01", PropType.Painting, "a poster on a wall"),
         Furniture("win03", PropType.Window, "a window"),
+
+        // ---------------------------------------------------------------- Reversal Mountain, the Strange House, Undella Town, Route 13 and Lacunosa Town
+        // Plan 22 · U7, part b: the Strange House at the slopes' end and its old furniture, the machine hall on the western
+        // slope, Undella Town's houses (stand-ins in the Resort's way of building until the town has one of its own) with the
+        // beach's shades and chairs, its gate, a cottage of Route 13 and Lacunosa Town's houses (stand-ins in the Stone's way
+        // until the town has one of its own)
+        Built("d25_mhouse", BuildingKind.House, "the Strange House at the end of Reversal Mountain's slopes", Architecture.HalfTimber, until: "plan 22 · U10"),
+        Built("d7_machine", BuildingKind.Lab, "the machine hall on Reversal Mountain's western slope", Architecture.Airfield, until: "plan 22 · U10"),
+        Built("st_house01", BuildingKind.House, "a house of Undella Town", Architecture.Resort, until: "plan 22 · U10"),
+        Built("st_house02", BuildingKind.House, "a house of Undella Town", Architecture.Resort, until: "plan 22 · U10"),
+        Built("st_house03", BuildingKind.House, "the long house of Undella Town, the visitors' house", Architecture.Resort, until: "plan 22 · U10"),
+        Built("h6_gate", BuildingKind.Gate, "the gate house between Undella Town and Route 13"),
+        Built("mcottage", BuildingKind.House, "a cottage of Route 13", Architecture.Cottage, until: "plan 22 · U10"),
+        Built("tg_house01", BuildingKind.House, "a house of Lacunosa Town", Architecture.Stone, until: "plan 22 · U10"),
+        Built("tg_house02", BuildingKind.House, "the storyteller's house in Lacunosa Town", Architecture.Stone, until: "plan 22 · U10"),
+        Built("tg_house04", BuildingKind.House, "a small house of Lacunosa Town", Architecture.Stone, until: "plan 22 · U10"),
+        Thing("s_parasol", PropType.Pavilion, "a shade of striped cloth on Undella's beach"),
+        Thing("o_parasol", PropType.Pavilion, "a shade of striped cloth on Undella's beach"),
+        Thing("o_chair", PropType.Bench, "a deck chair on Undella's beach"),
+        Furniture("d25_obj01", PropType.Table, "a long low chest of the Strange House"),
+        Furniture("d25_obj01_b", PropType.Table, "a long low chest of the Strange House"),
+        Furniture("d25_obj01_c", PropType.Table, "a long low chest of the Strange House"),
+        Furniture("d25_obj02", PropType.Statue, "a tall old cabinet of the Strange House"),
+        Furniture("d25_obj02_b", PropType.Statue, "a tall old cabinet of the Strange House"),
+        Furniture("d25_obj02_c", PropType.Statue, "a tall old cabinet of the Strange House"),
+        Furniture("d25_obj02_d", PropType.Statue, "a tall old cabinet of the Strange House"),
+        Furniture("d25_obj03", PropType.Statue, "a stand clock of the Strange House"),
+        Furniture("d25_obj03_b", PropType.Statue, "a stand clock of the Strange House"),
+        Furniture("d25_obj04", PropType.Table, "the long table of the Strange House's rooms"),
+        Furniture("d25_obj05", PropType.Table, "a long table of the Strange House's rooms"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

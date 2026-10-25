@@ -1,0 +1,12 @@
+{
+  // The Strange House's front hall (plan 22 · U7, part b): the house at the edge of Lentimas Town where the rooms do not stay put,
+  // Black 2's, our words. The three doors in the south wall lead back out to Reversal Mountain; the stairs at the west end lead
+  // on to the library (strange_house_2). Two portraits hang on the walls (signs 1 and 2). Ghosts live here: Litwick, Gothita,
+  // Banette and the rest are the house's wild Pokémon in every room
+  "area": "strange_house",
+  "bgmTrack": "unova/strange_house",
+  "signs": {
+    "1": "A portrait with no signature.\nNobody can say how old it is.",
+    "2": "A portrait covered in fine scratches, as if someone had tried to scratch the face away."
+  }
+}

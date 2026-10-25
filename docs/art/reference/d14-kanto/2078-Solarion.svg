@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Solarion (No. 2078), Fire/Flying, from Rapidash: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#fbf3e2}.bs{fill:#e2d2b4}.fl{fill:#f28a2a}.fg{fill:#ffd24a}.fw{fill:#fff3b8}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="474" rx="150" ry="13" fill="#e6e7ee"/>
+<!-- far wing of flame -->
+<path class="o fl" d="M290 250 C280 170 310 90 380 50 C370 90 400 100 420 80 C420 120 450 130 470 120 C450 170 400 210 330 250 Z"/>
+<path class="fg" d="M300 244 C300 180 330 120 372 82 C368 110 390 130 410 120 C404 150 430 160 446 150 C420 190 370 220 314 246 Z"/>
+<!-- tail streaming -->
+<path class="o fl" d="M150 270 C100 250 60 280 30 250 C60 300 40 330 70 360 C80 330 110 330 120 310 C130 330 160 330 170 300 Z"/>
+<path class="fg" d="M146 284 C110 270 80 290 60 280 C76 310 70 330 80 344 C90 320 116 320 124 304 C134 316 150 312 158 296 Z"/>
+<!-- far legs -->
+<path class="o bs" d="M196 320 C186 350 200 380 186 440 L208 442 C220 400 214 360 226 330 Z"/>
+<path class="o bs" d="M326 320 C346 350 336 390 346 438 L366 436 C360 390 368 350 352 318 Z"/>
+<!-- body -->
+<path class="o b" d="M150 290 C150 250 190 236 250 236 C310 236 350 250 356 290 C362 330 330 352 260 354 C190 356 150 330 150 290 Z"/>
+<path class="bs" d="M168 330 C200 348 300 352 350 316 C344 340 316 352 260 354 C210 355 180 346 168 330 Z"/>
+<!-- near legs -->
+<path class="o b" d="M162 300 C150 340 176 380 156 444 L182 446 C200 390 190 350 204 320 Z"/>
+<path class="o b" d="M290 316 C312 350 300 400 306 446 L332 444 C330 400 338 350 326 310 Z"/>
+<!-- flame hooves -->
+<g class="o fl"><path d="M150 444 c0-14 32-14 34 0 c4 10-4 20-16 20 c-12 0-20-10-18-20z"/><path d="M302 446 c0-14 32-14 34 0 c4 10-4 20-16 20 c-12 0-20-10-18-20z"/></g>
+<g class="fg"><ellipse cx="167" cy="452" rx="8" ry="6"/><ellipse cx="319" cy="454" rx="8" ry="6"/></g>
+<path d="M180 440 c-6 8-6 16 0 24 M332 442 c-6 8-6 16 0 24" class="t" stroke-width="2"/>
+<!-- neck and head -->
+<path class="o b" d="M300 260 C300 210 320 160 354 130 C380 110 420 112 440 132 C458 150 462 172 450 182 C436 192 410 188 392 196 C376 206 370 240 352 270 Z"/>
+<path class="bs" d="M352 270 C368 240 374 210 388 198 C380 226 372 252 352 270 Z"/>
+<!-- muzzle shadow and nostril -->
+<path d="M440 172 c6 0 10 4 8 8" class="t"/>
+<!-- eye -->
+<path d="M396 140 c8-6 20-6 26 2 c-8 6-18 6-26-2z" fill="#1b1b2b"/>
+<circle cx="412" cy="140" r="3" fill="#e9452a"/>
+<!-- ear -->
+<path class="o b" d="M368 128 L364 92 L388 118 Z"/>
+<!-- spiral horn -->
+<path class="o" d="M392 116 L432 36 L412 122 Z" fill="#f4e7c4"/>
+<path class="t" d="M398 106 L414 104 M404 90 L420 86 M412 72 L424 70 M418 58 L428 56" stroke-width="2.5"/>
+<!-- mane of flame -->
+<path class="o fl" d="M356 128 C330 110 330 80 344 60 C346 80 356 86 364 84 C356 60 370 40 390 34 C380 60 388 80 384 104 C376 130 360 150 330 170 C320 190 310 210 300 240 C290 210 300 170 320 150 C300 150 290 130 296 110 C310 130 330 136 356 128 Z"/>
+<path class="fg" d="M352 122 C336 110 336 90 342 76 C346 92 358 98 372 92 C370 70 378 56 386 48 C380 74 384 92 376 112 C366 130 346 146 326 162 C318 176 310 196 304 216 C302 196 310 172 324 154 C312 152 306 140 306 128 C320 138 334 136 352 122 Z"/>
+<!-- near wing of flame -->
+<path class="o fl" d="M232 252 C190 200 170 120 196 60 C206 90 226 96 238 86 C236 120 258 132 276 124 C272 150 290 170 310 168 C300 210 280 236 260 260 Z"/>
+<path class="fg" d="M240 250 C210 206 196 150 206 100 C214 116 228 120 240 114 C244 138 260 150 274 146 C276 166 290 182 300 182 C290 210 274 232 256 256 Z"/>
+<path class="fw" d="M248 240 C228 210 220 180 222 150 C236 170 256 180 266 178 C270 200 276 214 286 220 C276 232 262 240 248 240 Z"/>
+<!-- highlight -->
+<path d="M190 256 C220 246 260 244 290 248" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

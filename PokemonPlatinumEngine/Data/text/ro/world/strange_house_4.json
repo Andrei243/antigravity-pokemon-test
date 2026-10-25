@@ -1,0 +1,61 @@
+{
+  "people": {},
+  "signs": {
+    "1": {
+      "en": [
+        "A book about Cresselia:\nIts wings shine like a crescent moon and keep nightmares away from whoever sleeps near it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "A book about Darkrai:\nIt drives people and Pokémon away with terrible dreams, to keep itself safe."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "A book about Drowzee:\nThey eat dreams. Eating nightmares gives them a stomach ache."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "A book about Hypno:\nEach carries a pendulum that makes people drowsy. They say one once led a child away in his sleep."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "A book about Dream Eater:\nThe move strikes a sleeping target and heals the user by half of the damage it does."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "6": {
+      "en": [
+        "A book about Forewarn:\nA Pokémon with this Ability learns one of the foe's moves before it fights, and the strongest moves are noticed first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "7": {
+      "en": [
+        "A tall shelf of books from other regions, in many languages."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

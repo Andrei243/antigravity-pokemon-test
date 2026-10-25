@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Cordyhusk (No. 2047), Grass/Ghost, from Parasect: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.r{fill:#d2483a}.rd{fill:#a8322a}.hu{fill:#efe4cc}.hus{fill:#cdbf9f}.gl{fill:#fff6c8}.th{stroke:#f4f2ec;stroke-width:4;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="470" rx="170" ry="14" fill="#e6e7ee"/>
+<!-- far legs of the husk -->
+<g class="o hus">
+<path d="M196 380 L150 420 L170 466 L182 462 L172 426 L210 396 Z"/>
+<path d="M306 380 L350 420 L336 466 L324 462 L332 428 L294 396 Z"/>
+</g>
+<!-- husk body -->
+<path class="o hu" d="M170 360 C170 320 210 300 256 300 C302 300 342 320 342 360 C342 400 302 420 256 420 C210 420 170 400 170 360 Z"/>
+<path class="hus" d="M180 386 C210 410 300 414 334 384 C326 404 300 420 256 420 C214 420 188 404 180 386 Z"/>
+<!-- near legs -->
+<g class="o hu">
+<path d="M190 400 L140 440 L156 474 L170 470 L162 446 L206 412 Z"/>
+<path d="M322 400 L372 440 L356 474 L342 470 L350 446 L306 412 Z"/>
+<path d="M240 418 L232 470 L248 472 L256 420 Z"/>
+</g>
+<!-- claws, pale and empty -->
+<path class="o hu" d="M190 360 C150 360 120 370 110 392 C128 404 150 396 160 386 C150 404 162 414 178 404 C188 392 196 380 196 372 Z"/>
+<path class="o hu" d="M322 360 C362 360 392 370 402 392 C384 404 362 396 352 386 C362 404 350 414 334 404 C324 392 316 380 316 372 Z"/>
+<!-- husk face: eyes painted out -->
+<path class="o" d="M224 366 C232 356 248 358 250 370 C244 378 230 378 224 366 Z" fill="#f8f2e2"/>
+<path class="o" d="M262 370 C264 358 280 356 288 366 C282 378 268 378 262 370 Z" fill="#f8f2e2"/>
+<path class="t" d="M240 394 l8 6 l8-6 l8 6 l8-6" stroke-width="2.5"/>
+<!-- mushroom parasol hanging like a cloak -->
+<path class="o r" d="M60 300 C50 190 140 90 256 88 C372 90 462 190 452 300 C430 312 400 300 380 316 C356 300 330 318 306 304 C282 320 258 302 232 318 C210 302 182 320 160 304 C136 318 110 300 84 314 C76 310 66 306 60 300 Z"/>
+<path class="rd" d="M380 120 C430 160 456 220 452 300 C430 312 400 300 380 316 C356 300 340 312 320 306 C390 270 410 200 380 120 Z"/>
+<!-- glowing spots -->
+<g class="o gl" stroke-width="3">
+<circle cx="180" cy="160" r="18"/><circle cx="262" cy="130" r="14"/><circle cx="330" cy="176" r="20"/><circle cx="130" cy="232" r="14"/><circle cx="230" cy="214" r="22"/><circle cx="400" cy="250" r="14"/><circle cx="316" cy="256" r="12"/><circle cx="96" cy="282" r="9"/>
+</g>
+<!-- threads of mycelium from the rim -->
+<path class="th" d="M84 314 c-4 30 6 50 -2 80 M120 310 c0 20 6 40 0 56 M160 306 c-4 24 4 44 -4 70 M380 318 c4 24 -4 46 4 72 M420 306 c2 20 -4 38 2 60 M444 300 c4 30 -4 56 6 84"/>
+<path class="t" d="M84 314 c-4 30 6 50 -2 80 M120 310 c0 20 6 40 0 56 M160 306 c-4 24 4 44 -4 70 M380 318 c4 24 -4 46 4 72 M420 306 c2 20 -4 38 2 60 M444 300 c4 30 -4 56 6 84" stroke-width="1.5" opacity=".6"/>
+<!-- gills under the rim -->
+<path class="t" d="M200 312 v-8 M256 310 v-8 M300 310 v-8" stroke-width="2"/>
+<!-- highlight -->
+<path d="M120 170 C150 128 196 106 240 102" stroke="#ef7a6a" stroke-width="7" fill="none" stroke-linecap="round"/>
+</svg>

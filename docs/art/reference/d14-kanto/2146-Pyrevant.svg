@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Pyrevant (No. 2146), Fire/Flying, from Moltres: reference only (shares its base drawing with the other two birds)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="490" rx="120" ry="10" fill="#e6e7ee"/>
+<!-- tail of three long flame streamers -->
+<path class="o" fill="#f2722a" d="M236 336 C200 380 150 410 70 430 C120 440 150 432 172 420 C140 440 110 452 90 464 C160 462 214 420 254 356 Z"/>
+<path class="o" fill="#f2722a" d="M246 346 C244 400 234 440 200 496 C226 490 240 470 248 446 C252 470 248 490 242 508 C272 470 276 410 268 348 Z"/>
+<path class="o" fill="#f2722a" d="M276 338 C320 376 380 396 462 392 C420 404 392 410 372 410 C402 420 430 422 452 426 C380 438 316 402 266 356 Z"/>
+<path d="M240 352 C206 390 160 416 100 440 M256 360 C256 410 248 446 226 486 M276 356 C320 388 370 402 430 404" stroke="#ffe680" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path class="o" fill="#f2722a" d="M290 230 C320 170 380 110 470 70 C470 100 460 120 450 136 C470 140 480 150 486 164 C460 176 440 180 420 184 C430 200 432 210 430 222 C400 230 370 240 350 246 Z"/><path fill="#ffd060" d="M300 228 C330 176 384 124 450 92 C440 130 420 160 360 200 C340 214 320 224 300 236 Z"/>
+<path fill="#fff6d0" d="M308 228 C330 196 360 166 396 144 C380 176 356 200 316 232 Z"/>
+<path class="o" fill="#9aa4b8" d="M234 344 L228 400 L210 414 L246 414 L242 400 L248 346 Z"/>
+<path class="o" fill="#9aa4b8" d="M268 346 L274 400 L262 414 L298 414 L288 400 L282 344 Z"/><path class="o" fill="#f6c03a" d="M196 270 C190 220 220 196 256 196 C296 196 322 222 318 270 C314 318 290 350 256 352 C222 352 200 318 196 270 Z"/>
+<path fill="#d89a20" d="M300 220 C318 246 318 292 304 322 C294 342 276 352 256 352 C290 330 306 290 300 220 Z"/><path class="o" fill="#f2722a" d="M220 240 C190 170 120 110 30 80 C32 110 42 128 54 142 C34 148 22 160 18 176 C46 186 70 188 92 190 C82 206 82 218 86 232 C116 240 146 250 170 256 Z"/><path fill="#ffd060" d="M212 236 C186 184 132 132 60 104 C70 140 96 170 150 206 C170 218 190 228 212 244 Z"/>
+<path fill="#fff6d0" d="M206 236 C186 202 156 172 120 150 C136 182 160 206 200 240 Z"/>
+<path class="o" fill="#f6c03a" d="M262 210 C266 170 280 140 300 124 L328 138 C312 160 300 190 292 218 Z"/>
+<path class="o" fill="#f6c03a" d="M282 120 C282 92 304 74 330 76 C354 78 370 96 368 118 C366 138 350 150 328 150 C302 150 284 140 282 120 Z"/>
+<path fill="#d89a20" d="M356 92 C368 106 368 132 354 144 C346 148 338 150 328 150 C352 136 360 118 356 92 Z"/>
+<path class="o" fill="#cfd4de" d="M360 110 L404 120 L362 132 Z"/>
+<path d="M322 104 l20 6 l-18 6 z" fill="#1b1b2b"/>
+<path class="t" d="M318 98 l26 8" stroke-width="4"/><!-- flame crest -->
+<path class="o" fill="#f2722a" d="M290 94 C270 70 270 40 290 24 C290 46 300 56 312 60 C308 36 320 18 340 12 C330 34 334 54 348 76 Z"/>
+<path fill="#ffd060" d="M296 88 C284 70 286 50 294 40 C298 58 310 68 324 70 C322 52 328 36 336 28 C332 48 336 62 344 76 Z"/>
+<!-- halo of embers at the crest -->
+<g fill="#ffb030" stroke="#1b1b2b" stroke-width="2.5"><circle cx="260" cy="40" r="6"/><circle cx="276" cy="14" r="5"/><circle cx="314" cy="0" r="4"/><circle cx="358" cy="10" r="5"/><circle cx="378" cy="38" r="6"/><circle cx="380" cy="66" r="4"/><circle cx="250" cy="70" r="4"/></g>
+<path d="M296 130 C300 110 310 96 322 90" stroke="#fff0a0" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

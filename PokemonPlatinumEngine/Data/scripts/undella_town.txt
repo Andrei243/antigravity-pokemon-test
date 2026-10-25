@@ -1,0 +1,45 @@
+# Undella Town (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/undella_town.s, read for the order alone).
+# VAR_UNOVA_UNDELLA is the town's count (Black 2's 0x40cd): 0 before Hugh's battle at the east end of the street, 1 after it.
+#
+# As the player walks up the street towards the Pokémon Center (our trigger across it, 751 to 755, 299, at 0) Hugh (hugh_undella,
+# hidden until then) runs up from the beach wanting a battle: Black 2's TRAINER_RIVAL_10, _11 and _12 are his team by the player's
+# starter (the one strong against it), and he is off again to look for his sister's Purrloin. Black 2's later scenes here
+# (Hugh back from the Abyssal Ruins at 6, Zinzolin reading the ruins' script at 7) are plan 22 · U10's and stay hidden.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  end
+
+
+script HughAtTheEast
+  scene "Hugh at Undella Town"
+  clearflag FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  place hugh_undella 753 304 up
+  show hugh_undella
+  speaker "{rival}"
+  say "Wait up, {player}!"
+  walk hugh_undella up 4
+  face hugh_undella player
+  say "Let's see how well we've raised our Pokémon!"
+  if starter "Snivy" goto AgainstSnivy
+  if starter "Tepig" goto AgainstTepig
+  battle hugh_undella as "unova_rival_12"
+  goto Fought
+label AgainstSnivy
+  battle hugh_undella as "unova_rival_10"
+  goto Fought
+label AgainstTepig
+  battle hugh_undella as "unova_rival_11"
+label Fought
+  speaker "{rival}"
+  say "Great! If we're this strong, Team Plasma will run screaming the moment they see us!"
+  say "I won't let them get away this time, though. Her Purrloin... I'll get it back, for sure!"
+  say "So, {player}, keep helping me out! And keep working on the Pokédex, too! You're the one who was officially asked to complete it, after all!"
+  walk hugh_undella down 4 fast
+  hide hugh_undella
+  setflag FLAG_UNOVA_HIDE_HUGH_UNDELLA
+  setvar VAR_UNOVA_UNDELLA 1
+  endscene
+  end

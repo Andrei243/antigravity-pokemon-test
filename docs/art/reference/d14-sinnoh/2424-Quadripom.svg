@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Quadripom (No. 2424), reference drawing</title>
+  <defs>
+    <g id="hand">
+      <path d="M0 0 C-22 -4 -34 -24 -28 -42 C-24 -52 -12 -50 -10 -40 C-12 -54 2 -60 8 -48 C12 -58 26 -54 24 -40 C34 -44 40 -32 32 -20 C26 -6 14 2 0 0 Z" fill="#f2e4c4"/>
+      <path d="M-10 -40 L-6 -24 M8 -48 L6 -26 M24 -40 L16 -22" fill="none" stroke-width="3"/>
+    </g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="240" cy="476" rx="110" ry="13" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- four tails, each ending in a hand -->
+    <g fill="none">
+      <path d="M270 370 C340 380 380 330 372 270 C366 230 390 200 420 190" stroke-width="18"/>
+      <path d="M270 370 C340 380 380 330 372 270 C366 230 390 200 420 190" stroke="#8a5ab8" stroke-width="10"/>
+      <path d="M270 380 C350 410 420 380 440 320" stroke-width="18"/>
+      <path d="M270 380 C350 410 420 380 440 320" stroke="#8a5ab8" stroke-width="10"/>
+      <path d="M260 384 C300 430 380 440 440 420" stroke-width="18"/>
+      <path d="M260 384 C300 430 380 440 440 420" stroke="#8a5ab8" stroke-width="10"/>
+      <path d="M244 380 C200 420 150 420 110 390 C80 366 60 330 70 296" stroke-width="18"/>
+      <path d="M244 380 C200 420 150 420 110 390 C80 366 60 330 70 296" stroke="#8a5ab8" stroke-width="10"/>
+    </g>
+    <use href="#hand" transform="translate(422 190) rotate(60)"/>
+    <use href="#hand" transform="translate(442 318) rotate(30)"/>
+    <use href="#hand" transform="translate(442 420) rotate(90)"/>
+    <use href="#hand" transform="translate(70 296) rotate(-20)"/>
+    <!-- legs -->
+    <path d="M216 392 C206 420 200 440 196 460 L230 462 L238 398 Z" fill="#8a5ab8"/>
+    <path d="M268 392 C276 420 280 440 284 460 L252 462 L246 398 Z" fill="#8a5ab8"/>
+    <path d="M186 466 C186 454 232 452 234 464 Z M250 464 C252 452 296 454 296 466 Z" fill="#f2e4c4"/>
+    <!-- body -->
+    <path d="M196 270 C180 320 190 380 240 400 C290 380 300 320 284 270 C270 250 210 250 196 270 Z" fill="#9a6ac8"/>
+    <path d="M276 290 C290 330 286 376 250 396 C292 384 300 330 288 284 Z" fill="#6a3e96" stroke="none"/>
+    <path d="M216 300 C210 340 220 376 240 384 C262 376 270 340 264 300 Z" fill="#f2e4c4"/>
+    <!-- small arms -->
+    <path d="M200 290 C184 308 178 330 182 350" fill="none" stroke-width="16"/>
+    <path d="M200 290 C184 308 178 330 182 350" fill="none" stroke="#9a6ac8" stroke-width="9"/>
+    <path d="M280 290 C296 308 302 330 298 350" fill="none" stroke-width="16"/>
+    <path d="M280 290 C296 308 302 330 298 350" fill="none" stroke="#9a6ac8" stroke-width="9"/>
+    <!-- head -->
+    <path d="M150 170 C130 160 118 170 120 186 C122 204 140 210 156 202 Z" fill="#9a6ac8"/>
+    <path d="M330 170 C350 160 362 170 360 186 C358 204 340 210 324 202 Z" fill="#9a6ac8"/>
+    <circle cx="136" cy="186" r="8" fill="#f2e4c4" stroke="none"/>
+    <circle cx="344" cy="186" r="8" fill="#f2e4c4" stroke="none"/>
+    <path d="M146 180 C142 128 186 100 240 100 C294 100 338 128 334 180 C330 236 290 268 240 268 C190 268 150 236 146 180 Z" fill="#9a6ac8"/>
+    <path d="M156 210 C170 246 204 264 240 266 C196 274 162 252 152 220 Z" fill="#6a3e96" stroke="none"/>
+    <!-- taller tuft -->
+    <path d="M222 104 C214 70 222 40 240 22 C246 40 256 50 270 54 C258 66 256 84 262 102 Z" fill="#9a6ac8"/>
+    <path d="M244 34 C250 50 252 70 248 92" fill="none" stroke="#b890e0" stroke-width="4"/>
+    <!-- face: wider grin -->
+    <path d="M176 196 C176 156 206 140 240 140 C274 140 304 156 304 196 C304 236 276 254 240 254 C204 254 176 236 176 196 Z" fill="#f2e4c4"/>
+    <ellipse cx="214" cy="170" rx="9" ry="12" fill="#1b1b2b" stroke="none"/>
+    <ellipse cx="266" cy="170" rx="9" ry="12" fill="#1b1b2b" stroke="none"/>
+    <circle cx="216" cy="166" r="3" fill="#ffffff" stroke="none"/>
+    <circle cx="268" cy="166" r="3" fill="#ffffff" stroke="none"/>
+    <path d="M190 196 C200 240 280 240 290 196 Z" fill="#c03048"/>
+    <path d="M196 198 L284 198 L282 208 L198 208 Z" fill="#ffffff" stroke-width="3"/>
+    <path d="M170 140 C186 120 210 110 232 108" fill="none" stroke="#b890e0" stroke-width="5"/>
+  </g>
+</svg>

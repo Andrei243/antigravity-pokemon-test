@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Mesmeryx (No. 2097), Psychic/Dark, from Hypno: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.y{fill:#f2df8a}.yd{fill:#cdb460}.br{fill:#8a6a48}.brd{fill:#664c32}.wh{fill:#fbfaf4}.whs{fill:#d6d6e0}.cn{fill:#d8dce6}.cns{fill:#9aa2b4}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="240" cy="478" rx="120" ry="12" fill="#e6e7ee"/>
+<!-- legs (brown) -->
+<path class="o br" d="M196 370 C192 410 196 440 186 462 L170 470 L220 470 C228 440 230 410 234 374 Z"/>
+<path class="o brd" d="M262 372 C266 410 266 440 274 462 L264 470 L310 470 C302 440 302 410 298 370 Z"/>
+<!-- body, taller and thinner -->
+<path class="o y" d="M180 270 C176 220 204 196 244 196 C284 196 312 220 308 270 C304 320 300 360 298 384 C270 396 214 396 190 384 C186 360 182 320 180 270 Z"/>
+<path class="o br" d="M186 340 C220 352 270 352 304 340 L298 384 C270 396 214 396 190 384 Z"/>
+<path class="yd" d="M290 212 C306 236 306 290 300 330 L292 336 C296 290 298 240 290 212 Z"/>
+<!-- far arm -->
+<path class="o yd" d="M190 240 C160 260 150 300 160 330 C172 330 178 312 184 296 C188 280 196 268 204 260 Z"/>
+<!-- high white ruff -->
+<path class="o wh" d="M174 214 C176 170 214 150 244 150 C274 150 312 170 314 214 C300 228 288 236 278 236 L270 252 L258 236 L244 254 L230 236 L218 252 L210 236 C196 236 184 226 174 214 Z"/>
+<path class="whs" d="M300 186 C312 196 314 206 314 214 C304 224 294 232 282 234 C296 222 302 204 300 186 Z"/>
+<!-- head -->
+<path class="o y" d="M204 120 C200 86 220 64 248 64 C276 64 296 86 292 120 C290 144 272 160 248 160 C224 160 206 144 204 120 Z"/>
+<path class="yd" d="M280 80 C296 98 296 132 282 148 C274 156 262 160 248 160 C276 146 288 116 280 80 Z"/>
+<!-- long nose -->
+<path class="o y" d="M252 118 C270 112 300 116 316 126 C302 138 274 140 254 134 Z"/>
+<!-- ears -->
+<path class="o y" d="M212 84 C196 62 196 42 210 36 C226 44 230 66 226 80 Z"/>
+<path class="o y" d="M270 72 C276 50 292 36 306 40 C308 58 296 76 284 82 Z"/>
+<!-- half-closed eyes -->
+<path d="M222 104 c6-6 16-6 20 0 l-10 4 z M262 102 c6-6 16-6 20 0 l-10 4 z" fill="#1b1b2b"/>
+<path class="t" d="M220 100 l22 -2 M260 98 l22 -2" stroke-width="2.5"/>
+<!-- near arm reaching out -->
+<path class="o y" d="M296 240 C330 250 356 262 372 280 C368 292 356 296 344 290 C330 280 312 270 296 270 Z"/>
+<path class="o y" d="M364 270 c12-8 28-2 28 12 c-2 12-18 16-28 8 z"/>
+<!-- three coins circling on a thin chain round the hand -->
+<ellipse cx="384" cy="290" rx="72" ry="26" fill="none" stroke="#1b1b2b" stroke-width="2" stroke-dasharray="4 4" transform="rotate(-14 384 290)"/>
+<g class="o cn" stroke-width="4"><ellipse cx="318" cy="318" rx="14" ry="16"/><ellipse cx="452" cy="264" rx="14" ry="16"/><ellipse cx="404" cy="324" rx="12" ry="15"/></g>
+<g class="cns"><ellipse cx="318" cy="318" rx="6" ry="8"/><ellipse cx="452" cy="264" rx="6" ry="8"/><ellipse cx="404" cy="324" rx="5" ry="7"/></g>
+<g class="t" stroke-width="2"><path d="M312 312 l8 -4 M446 258 l8 -4 M399 318 l8 -4"/></g>
+<!-- highlight -->
+<path d="M216 80 C228 70 244 68 258 70" stroke="#fff4c0" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

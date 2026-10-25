@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Tanglewood (No. 2465), reference drawing</title>
+  <defs>
+    <path id="leaf" d="M0 0 C6 -14 22 -20 34 -16 C30 -2 14 6 0 0 Z"/>
+    <g id="flower"><circle r="6" fill="#f2c230" stroke-width="3"/><circle cx="0" cy="-9" r="5" fill="#f08ab0" stroke-width="2"/><circle cx="9" cy="0" r="5" fill="#f08ab0" stroke-width="2"/><circle cx="0" cy="9" r="5" fill="#f08ab0" stroke-width="2"/><circle cx="-9" cy="0" r="5" fill="#f08ab0" stroke-width="2"/></g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="476" rx="160" ry="15" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- crown of fern -->
+    <path d="M256 120 C240 80 210 50 176 40 C196 70 216 100 238 128 Z" fill="#5aa64a"/>
+    <path d="M256 120 C258 76 270 40 296 18 C298 56 286 94 270 126 Z" fill="#4a8f3c"/>
+    <path d="M262 126 C290 90 324 70 360 70 C340 98 310 118 278 132 Z" fill="#5aa64a"/>
+    <path d="M190 52 L200 64 M206 66 L214 80 M222 84 L228 98 M290 34 L282 48 M284 60 L276 74 M280 88 L272 100 M340 76 L328 84 M318 92 L306 100" fill="none" stroke="#2e6a26" stroke-width="3"/>
+    <!-- red feet -->
+    <path d="M176 430 C176 410 236 408 240 430 C240 452 176 454 176 430 Z" fill="#d04040"/>
+    <path d="M272 430 C276 408 336 410 336 430 C336 454 272 452 272 430 Z" fill="#b03030"/>
+    <!-- vine arms ending in roots -->
+    <path d="M150 240 C100 250 70 300 74 360 C76 390 70 410 60 424" fill="none" stroke-width="28"/>
+    <path d="M150 240 C100 250 70 300 74 360 C76 390 70 410 60 424" fill="none" stroke="#3a6ab8" stroke-width="20"/>
+    <path d="M60 424 L40 446 M60 424 L58 452 M60 424 L80 448 M60 424 L30 430" fill="none" stroke="#3a6ab8" stroke-width="7"/>
+    <path d="M362 240 C412 250 442 300 438 360 C436 390 442 410 452 424" fill="none" stroke-width="28"/>
+    <path d="M362 240 C412 250 442 300 438 360 C436 390 442 410 452 424" fill="none" stroke="#2e56a0" stroke-width="20"/>
+    <path d="M452 424 L472 446 M452 424 L454 452 M452 424 L432 448 M452 424 L482 430" fill="none" stroke="#2e56a0" stroke-width="7"/>
+    <!-- the mass of vines -->
+    <path d="M130 260 C120 180 180 120 256 120 C332 120 392 180 382 260 C376 340 340 420 256 426 C172 420 136 340 130 260 Z" fill="#3a6ab8"/>
+    <path d="M360 220 C390 290 370 380 320 414 C300 422 280 426 262 426 C340 380 372 300 360 220 Z" fill="#2e56a0" stroke="none"/>
+    <g fill="none" stroke="#24467e" stroke-width="5">
+      <path d="M150 200 C190 230 230 220 270 196 C310 172 350 190 370 220"/>
+      <path d="M140 270 C180 300 240 290 290 262 C320 248 350 256 376 280"/>
+      <path d="M150 340 C200 370 260 360 300 330 C330 312 352 320 364 336"/>
+      <path d="M190 150 C210 180 220 220 210 260 M310 150 C300 190 300 230 320 270"/>
+    </g>
+    <g fill="none" stroke="#6a9ae0" stroke-width="5">
+      <path d="M156 186 C176 160 200 146 226 138"/>
+    </g>
+    <!-- leaves and flowers among the vines -->
+    <g fill="#5aa64a" stroke-width="3">
+      <use href="#leaf" transform="translate(176 220) rotate(-20)"/>
+      <use href="#leaf" transform="translate(320 196) rotate(200)"/>
+      <use href="#leaf" transform="translate(300 330) rotate(-30)"/>
+      <use href="#leaf" transform="translate(180 352) rotate(160)"/>
+      <use href="#leaf" transform="translate(350 290) rotate(20)"/>
+      <use href="#leaf" transform="translate(234 390) rotate(-10)"/>
+      <use href="#leaf" transform="translate(100 320) rotate(-70)"/>
+      <use href="#leaf" transform="translate(412 320) rotate(250)"/>
+    </g>
+    <use href="#flower" transform="translate(150 290)"/>
+    <use href="#flower" transform="translate(344 240)"/>
+    <use href="#flower" transform="translate(270 360)"/>
+    <use href="#flower" transform="translate(220 170)"/>
+    <!-- eyes in the dark between vines -->
+    <path d="M206 240 C214 226 238 226 302 226 C306 248 290 262 256 262 C226 262 206 256 206 240 Z" fill="#1b1b2b"/>
+    <ellipse cx="232" cy="244" rx="9" ry="7" fill="#ffffff" stroke="none"/>
+    <ellipse cx="282" cy="244" rx="9" ry="7" fill="#ffffff" stroke="none"/>
+    <circle cx="234" cy="245" r="4" fill="#1b1b2b" stroke="none"/>
+    <circle cx="284" cy="245" r="4" fill="#1b1b2b" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,147 @@
+{
+  // Reversal Mountain's great cave (plan 22 · U7, part b): the long cave through the volcano, Black 2's, our words, with Bianca's
+  // errand. Bianca (13, FLAG_UNOVA_HIDE_BIANCA_REVERSAL) waits at the west end once she has run ahead from Lentimas Town; talked to,
+  // she asks the player along and travels as their partner (reversal_mountain_4.txt; VAR_UNOVA_REVERSAL 0 to 1) as bianca_along,
+  // who stands in every floor of the cave to follow them from one to the next (FLAG_UNOVA_HIDE_BIANCA_ALONG). At the middle
+  // passage (36, 56 to 59 and 44, 55 to 59) she stops to say that this is the place (VAR_UNOVA_REVERSAL_LAIR 0 to 1), and the
+  // lair beyond it (reversal_mountain_5) is hers to wonder at (1 to 2). At the west end (5, 9) and at every other way out she
+  // offers to go her own way. The scientist (16) rewards a Pokémon of the mountain on the team once, with False Swipe. Black
+  // 2's White 2 twin of this floor is not built
+  "area": "reversal_mountain_4",
+  "bgmTrack": "unova/reversal_cave",
+  "triggers": [
+    {
+      "script": "BiancaOffersToPart",
+      "x": 5,
+      "z": 9,
+      "width": 1,
+      "depth": 1,
+      "variable": "VAR_UNOVA_REVERSAL",
+      "value": 1
+    },
+    {
+      "script": "BiancaStopsAtThePassage",
+      "x": 36,
+      "z": 56,
+      "width": 1,
+      "depth": 4,
+      "variable": "VAR_UNOVA_REVERSAL_LAIR",
+      "value": 0
+    },
+    {
+      "script": "BiancaStopsAtThePassage",
+      "x": 44,
+      "z": 55,
+      "width": 1,
+      "depth": 5,
+      "variable": "VAR_UNOVA_REVERSAL_LAIR",
+      "value": 0
+    }
+  ],
+  "npcs": [
+    {
+      "id": "bianca_along",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 6,
+      "y": 9,
+      "facing": "Right",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ALONG"
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Eliza",
+      "npcType": "ranger_f",
+      "trainer": {
+        "dialogueBefore": "I patrol this cave for lost Pokémon. Tough ones live here, so I keep my guard up. Yours too?",
+        "dialogueAfter": "My guard was up. Yours was higher."
+      }
+    },
+    "1": {
+      "name": "Jared",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "I've walked every cave in Unova, and I've battled in every one! Show me what you've got!",
+        "dialogueAfter": "A new champion of the caves. Congratulations!"
+      }
+    },
+    "2": {
+      "name": "Corey",
+      "npcType": "blackbelt",
+      "trainer": {
+        "dialogueBefore": "The dark and the heat are my teachers. Fight me and learn what they taught me!",
+        "dialogueAfter": "Another lesson in humility."
+      }
+    },
+    "3": {
+      "name": "Cora",
+      "npcType": "ace_trainer_f",
+      "trainer": {
+        "dialogueBefore": "I come to this mountain to train my team's patience. Do you have any?",
+        "dialogueAfter": "Lost fair and square. I'll practise some more."
+      }
+    },
+    "4": {
+      "name": "Kumiko",
+      "npcType": "picnicker",
+      "trainer": {
+        "dialogueBefore": "My pack is full, but my Pokémon are even fuller of energy! Ready?",
+        "dialogueAfter": "My pack is lighter now. And my pride."
+      }
+    },
+    "5": {
+      "name": "Chan",
+      "npcType": "battle_girl",
+      "trainer": {
+        "dialogueBefore": "I trade blows with every Pokémon in this cave! You're next!",
+        "dialogueAfter": "That one hurt. Do it again some day!"
+      }
+    },
+    "6": {
+      "name": "Ray",
+      "npcType": "ace_trainer_m",
+      "trainer": {
+        "dialogueBefore": "Everyone goes through Reversal Mountain sooner or later. Today it's your turn to go through me!",
+        "dialogueAfter": "Go on through, then."
+      }
+    },
+    "7": {
+      "name": "Derek",
+      "npcType": "scientist",
+      "trainer": {
+        "dialogueBefore": "I'm a doctor, so I know exactly how much you can take. Shall we find out?",
+        "dialogueAfter": "The patient is fine. The doctor is not."
+      }
+    },
+    "13": {
+      "name": "Bianca",
+      "npcType": "bianca",
+      "script": "BiancaAtTheMouth",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_REVERSAL",
+      "still": true
+    },
+    "14": {
+      "name": "Kiyo",
+      "npcType": "camper",
+      "trainer": {
+        "dialogueBefore": "I follow the cave's air currents wherever they lead. Apparently they lead to a battle!",
+        "dialogueAfter": "The wind has changed. Well fought."
+      }
+    },
+    "15": {
+      "name": "Markus",
+      "npcType": "hiker",
+      "trainer": {
+        "dialogueBefore": "A hiker needs strong legs and a stronger team. Let me test yours!",
+        "dialogueAfter": "That's my legs and my team beaten."
+      }
+    },
+    "16": {
+      "name": "Researcher",
+      "npcType": "scientist",
+      "script": "Researcher",
+      "still": true
+    }
+  }
+}

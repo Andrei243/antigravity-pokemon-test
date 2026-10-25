@@ -520,6 +520,7 @@ public sealed partial class ScriptRunner
             {
                 // Handed over or picked up: the same fanfare and the same putting away, in other words
                 var (item, count) = Given(i);
+                (item, count) = Swapped(item, count, i);
                 host.Bag.AddItem(item, count);
                 lastItem = item.Name;
                 host.Fanfare(FanfareFor(item));
@@ -554,6 +555,8 @@ public sealed partial class ScriptRunner
             case Op.GivePokemon:
             {
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
+                // A randomised run gives the species the gift goes to, unless the gift comes with a move of its own (plan 13 · V6)
+                if (i.Move.Length == 0 && Randomizer.For(host.Rules) is { MapsSpecies: true } random) species = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
                 var gift = new Pokemon(species, i.Number);
                 if (i.Other.Length > 0) gift.HeldItem = ItemDatabase.Get(i.Other) ?? throw Wrong(i, $"there is no item '{i.Other}'");
                 // A move in its first place, as HeartGold's SetMonMove puts one (the Dragon Shrine's Dratini)
@@ -730,10 +733,20 @@ public sealed partial class ScriptRunner
                 // A wild Pokémon may be met in a form of its species, named as the form is (Giratina-Origin, plan 02 · S12)
                 var species = PokemonDatabase.Get(i.Name) ?? PokemonDatabase.SpeciesOfForm(i.Name) ?? throw Wrong(i, $"there is no species or form '{i.Name}'");
                 var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
+                // A static encounter of a randomised run is the species it goes to (a form, a lesson and what a script asks the team for stay): plan 13 · V6
+                bool swapped = false;
+                if (i.Op == Op.WildBattle && string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase) && Randomizer.For(host.Rules) is { MapsSpecies: true } random)
+                {
+                    var to = PokemonDatabase.Get(random.Given(species.Name)) ?? species;
+                    swapped = to != species;
+                    species = to;
+                }
                 // A shiny one is made of a shiny personality, as the original's script asks for one (plan 20 · J11)
                 var wild = i.Shiny ? new Pokemon(species, i.Number, Personality.Shiny(host.TrainerNumber, host.Chance), host.Chance) { IsShiny = true }
                     : new Pokemon(species, i.Number);
-                if (!string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
+                if (!swapped && !string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
+                // One that holds something (the eon Pokémon's Soul Dew, plan 21 · H12)
+                if (i.Op == Op.WildBattle && i.Other.Length > 0) wild.HeldItem = ItemDatabase.Get(i.Other);
                 // A lesson someone else shows (plan 21 · H2): their name and their Pokémon
                 var catcher = i.Op == Op.CatchingLesson && i.Other.Length > 0
                     ? new LessonCatcher(i.Other, new Pokemon(PokemonDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no species '{i.Partner}'"), i.X))
@@ -1958,6 +1971,11 @@ public sealed partial class ScriptRunner
             case "holds":
                 Result = team.Any(p => !p.IsEgg && p.HeldItem?.Name == i.Other) ? 1 : 0;
                 break;
+            // CheckRelicanthWailord (plan 21 · H12, part a): the first place of the team holds one species and the last
+            // another, Eggs and fainted Pokémon counted as they stand (the original asks the species of slots 0 and n - 1)
+            case "ends":
+                Result = team.Count >= 2 && team[0].Species.Name == i.Other && team[^1].Species.Name == i.Record ? 1 : 0;
+                break;
             // ScrCmd_ChangeDeoxysForm (plan 06 · R29): every Deoxys of the team takes the meteorite's forme. RESULT is
             // how many changed
             case "deoxys":
@@ -1996,6 +2014,21 @@ public sealed partial class ScriptRunner
         if (!i.Own) return (ItemOf(i), i.Number);
         var (name, count) = ownItem ?? throw Wrong(i, "this script has no item of its own: no item ball and no hidden item started it");
         return (ItemDatabase.Get(name) ?? throw Wrong(i, $"there is no item '{name}'"), count);
+    }
+
+    /// <summary>A starter slot as the run shows it: the species its slot goes to in a randomised run (plan 13 · V6), else the slot itself.</summary>
+    private string? Shown(string? slot) => slot != null && Randomizer.For(host.Rules) is { MapsSpecies: true } random ? random.Species(slot) : slot;
+
+    /// <summary>
+    /// An item given or found, as a randomised run has it (plan 13 · V6): another of its pocket and about its price, decided
+    /// by the seed and the place (the script's own flag, the ball's or the hidden item's, else the script and its line), so one
+    /// ball is one item every time. The same item and count in every other run.
+    /// </summary>
+    private (ItemData Item, int Count) Swapped(ItemData item, int count, Instruction i)
+    {
+        if (Randomizer.For(host.Rules) is not { MapsItems: true } random) return (item, count);
+        var swapped = random.Item(item, i.Own && ownFlag != null ? ownFlag : $"{script?.FullName}:{i.Line}");
+        return (swapped, Randomizer.CountOf(item, swapped, count));
     }
 
     /// <summary>The flag that is the script's own: the one that hides whoever it belongs to, or marks a hidden item found.</summary>
@@ -2210,9 +2243,10 @@ public sealed partial class ScriptRunner
         {
             "var" when argument.Length > 0 => Value(argument).ToString(),
             "lead" => host.Party.Members.FirstOrDefault()?.DisplayName ?? "your Pokémon",
-            "starter" => NameOfSpecies(host.Story.PlayerStarter),
-            "rivalstarter" => NameOfSpecies(host.Story.RivalStarter),
-            "assistantstarter" => NameOfSpecies(host.Story.AssistantStarter),
+            // (the starters by their slots, named as the species the slot goes to in a randomised run: plan 13 · V6)
+            "starter" => NameOfSpecies(Shown(host.Story.PlayerStarter)),
+            "rivalstarter" => NameOfSpecies(Shown(host.Story.RivalStarter)),
+            "assistantstarter" => NameOfSpecies(Shown(host.Story.AssistantStarter)),
             "self" => ShownNameOf(Subject) ?? "",
             "item" => NameOfItem(lastItem),
             "berry" => NameOfItem(berryName),

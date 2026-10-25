@@ -1,0 +1,154 @@
+{
+  "BiancaAtTheMouth": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heeey, {player}! You made it! I told you I'd be here first, didn't I?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Um, you know what? There's something I want to look into here in Reversal Mountain, for Professor Juniper."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But the wild Pokémon in here are really tough, and I can't get far on my own. Could you come with me? Please?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bianca healed your Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't worry, I'll take care of healing our Pokémon whenever they need it. Ready? Let's go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll be along in a moment, {player}. I just want to look at this rock first."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BiancaOffersToPart": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! I'd like to look around a little more by myself. Shall we split up for now?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BiancaStopsAtThePassage": [
+    {
+      "en": [
+        "Bianca"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! {player}! This is the place! I can feel it! Let's look around here a little."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Researcher": [
+    {
+      "en": [
+        "Researcher"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look like someone who keeps careful notes on the Pokémon you meet! A kindred spirit!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show me that you know this mountain's own Pokémon. Have one of them on your team and I'll give you something useful."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm, there's none of the mountain's own with you. Woobat, Boldore, Skorupi and Grumpig live here, and Excadrill too. Come back with one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah! A Pokémon of this very mountain! Wonderful. Please take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "False Swipe leaves its target with 1 HP when it would have fainted. It's a very restrained move, and perfect for catching a Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "False Swipe is a gentle move, but a very useful one. The Pokémon here are hardy. Take your time catching them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

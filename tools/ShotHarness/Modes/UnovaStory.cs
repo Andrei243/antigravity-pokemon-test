@@ -855,5 +855,101 @@ partial class Harness
         ComeThrough("LentimasTown_PokemonCenter", 7, 18, Direction.Up); Frames(30); Shot("us221_lentimas_center");
         ComeThrough("Unova", 616, 308, Direction.Up); Frames(30); Shot("us222_lentimas_strip");
         Mistralton("the end");
+
+        // Plan 22 · U7, part b: the Strange House, Reversal Mountain with Bianca as the partner, Undella Town's Hugh and Lacunosa
+        // Town's tale and tag battle (us223 to us262), played in this same game, which has Bianca gone ahead to the volcano
+        void Lacunosa(string what) =>
+            Console.WriteLine($"  {what}: map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, strange {story.Var("VAR_UNOVA_STRANGE")}, "
+                + $"reversal {story.Var("VAR_UNOVA_REVERSAL")} (lair {story.Var("VAR_UNOVA_REVERSAL_LAIR")}), undella {story.Var("VAR_UNOVA_UNDELLA")}, "
+                + $"lacunosa {story.Var("VAR_UNOVA_LACUNOSA")}, partner {game.PartnerAlong ?? "nobody"}, "
+                + $"Lunar Wing {game.Bag.GetQuantity(ItemDatabase.Get("Lunar Wing")!)}, False Swipe {game.Bag.GetQuantity(ItemDatabase.Get("TM54")!)}, "
+                + $"Bianca at the mouth hidden {story.Has("FLAG_UNOVA_HIDE_BIANCA_REVERSAL")}, at the exit hidden {story.Has("FLAG_UNOVA_HIDE_BIANCA_REVERSAL_EXIT")}");
+
+        // ---- the Strange House: the girl twice, the feather in the attic
+        ComeThrough("StrangeHouse_Hall", 17, 29, Direction.Up); Frames(30); Shot("us223_the_strange_house");
+        StepOnto("StrangeHouse_Rooms", 25, 17, Direction.Left);
+        ReadTo("An everlasting dark dream"); Frames(10); Shot("us224_the_girl_walks_through");
+        ReadTo("Where are you?"); Frames(10); Shot("us225_the_girl_asks");
+        ReadTo(null);
+        StepOnto("StrangeHouse_Cellar", 18, 19, Direction.Up);
+        ReadTo("Is anyone there?"); Frames(10); Shot("us226_the_girl_comes_back");
+        ReadTo(null);
+        ComeThrough("StrangeHouse_Attic", 6, 11, Direction.Up); Frames(30); Shot("us227_the_attic");
+        TalkToKey("StrangeHouse_Attic", "0");
+        ReadTo(null); Frames(20); Shot("us228_the_lunar_wing");
+        Lacunosa("the Strange House");
+
+        // ---- Reversal Mountain: Bianca at the west end of the great cave, asking the player along
+        ComeThrough("ReversalMountain_3", 6, 9, Direction.Right); Frames(30); Shot("us229_the_great_cave");
+        TalkToKey("ReversalMountain_3", "13", 1, 0);
+        ReadTo("You made it!"); Frames(10); Shot("us230_bianca_at_the_mouth");
+        ReadTo("Could you come with me? Please?"); Frames(10); Shot("us231_asked_along");
+        ReadTo("Ready? Let's go!"); Frames(10); Shot("us232_lets_go");
+        ReadTo(null); Frames(20); Shot("us233_bianca_behind_the_player");
+        Lacunosa("Bianca along");
+        // the researcher, who pays once for a Pokémon of the mountain
+        game.Party.Members[game.Party.Members.Count - 1] = new Pokemon(PokemonDatabase.Get("Woobat")!, 34);
+        ComeThrough("ReversalMountain_3", 79, 9, Direction.Up); Frames(10);
+        TalkToKey("ReversalMountain_3", "16", 0, 1);
+        ReadTo("Wonderful. Please take this."); Frames(10); Shot("us234_the_researcher");
+        ReadTo(null);
+        // the passage where she stops, and the lair she wonders at (she is the person of each floor in turn)
+        StepOnto("ReversalMountain_3", 36, 57, Direction.Right);
+        ReadTo("This is the place!"); Frames(10); Shot("us235_this_is_the_place");
+        ReadTo(null);
+        ComeThrough("ReversalMountain_4", 10, 24, Direction.Up); Frames(30); Shot("us236_the_lair_with_bianca");
+        StepOnto("ReversalMountain_4", 10, 18, Direction.Up);
+        ReadTo("What is this place?"); Frames(10); Shot("us237_what_is_this_place");
+        ReadTo("Heatran"); Frames(10); Shot("us238_the_lair_of_heatran");
+        ReadTo(null);
+        ComeThrough("ReversalMountain_6", 22, 6, Direction.Down); Frames(30); Shot("us239_the_east_tunnel_with_bianca");
+        StepOnto("ReversalMountain_6", 26, 25, Direction.Right);
+        ReadTo("Undella Town is right through here!"); Frames(10); Shot("us240_undella_is_near");
+        ReadTo("Thank you for coming with me"); Frames(10); Shot("us241_bianca_says_goodbye");
+        ReadTo(null); Frames(20); Shot("us242_bianca_has_gone");
+        Lacunosa("Bianca parted");
+        TalkToKey("ReversalMountain_6", "0", 0, 1);
+        ReadTo("Magma Stone"); Frames(10); Shot("us243_bianca_at_the_exit");
+        ReadTo(null);
+
+        // ---- Undella Town: Hugh's battle at the east end of the street
+        ComeThrough("Unova", 745, 300, Direction.Right); Frames(30); Shot("us244_undella_town");
+        StepOnto("Unova", 751, 299, Direction.Right);
+        ReadTo("Wait up"); Frames(10); Shot("us245_hugh_runs_up");
+        ReadTo("Let's see how well we've raised our Pokémon!"); Frames(10); Shot("us246_hughs_challenge");
+        ReadTo("Her Purrloin"); Frames(10); Shot("us247_hugh_after_the_battle");
+        ReadTo("officially asked"); Frames(10); Shot("us248_keep_working_on_the_pokedex");
+        ReadTo(null);
+        ComeThrough("UndellaTown_PokemonCenter", 7, 18, Direction.Up); Frames(30); Shot("us249_undella_center");
+        Lacunosa("Undella Town");
+
+        // ---- Route 13's treasure hunter, then Lacunosa Town: Juniper and Bianca, the old tale, Hugh and Zinzolin
+        TalkTo("Unova", "13", "unova_route_13");
+        ReadTo("I'm hunting for treasure"); Frames(10); Shot("us250_the_treasure_hunter");
+        ReadTo(null);
+        StepOnto("Unova", 670, 183, Direction.Up);
+        ReadTo("I thought you might come this way."); Frames(10); Shot("us251_juniper_and_bianca");
+        ReadTo("it looks like I beat you here"); Frames(10); Shot("us252_bianca_flew");
+        ReadTo("Hurry along now!"); Frames(10); Shot("us253_hurry_along");
+        ReadTo("You must be the ones who came to hear"); Frames(10); Shot("us254_the_storytellers_house");
+        ReadTo("meteorite"); Frames(10); Shot("us255_the_meteorite");
+        ReadTo("we keep indoors after dark"); Frames(10); Shot("us256_indoors_after_dark");
+        ReadTo("Wasn't that an interesting folktale?"); Frames(10); Shot("us257_the_professors_theory");
+        ReadTo("lacunosus clouds"); Frames(10); Shot("us258_lacunosus_clouds");
+        ReadTo(null); Frames(20);
+        ComeThrough("Unova", 650, 187, Direction.Left); Frames(10);
+        StepOnto("Unova", 649, 186, Direction.Left);
+        ReadTo("Have you seen Team Plasma anywhere around here?"); Frames(10); Shot("us259_hugh_in_lacunosa");
+        ReadTo("How troublesome"); Frames(10); Shot("us260_zinzolin");
+        ReadTo("Are you ready to pitch in?"); Frames(10); Shot("us261_ready_to_pitch_in");
+        ReadTo("What's with these two?"); Frames(10); Shot("us262_the_two_run");
+        ReadTo(null); Frames(20);
+        Lacunosa("Lacunosa Town");
+        // and the same square after dark: its street is empty
+        engine.Settings.TimeOfDay = TimeOfDay.Night;
+        engine.ApplySettings(window: false);
+        ComeThrough("Unova", 654, 174, Direction.Up); Frames(30); Shot("us263_lacunosa_after_dark");
+        engine.Settings.TimeOfDay = TimeOfDay.Day;
+        engine.ApplySettings(window: false);
     }
 }

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2310 Fulmenhound (Electric), from Manectric: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2310_1" d="M360 300L452 236L426 286L474 296L430 316L462 352L380 330Z"/><clipPath id="h2310_1c"><use href="#h2310_1"/></clipPath><path id="h2310_2" d="M198.4 334A92 44 -5 1 0 381.6 318A92 44 -5 1 0 198.4 334Z"/><clipPath id="h2310_2c"><use href="#h2310_2"/></clipPath><path id="h2310_3" d="M315.1 400.2A21 50 -6 1 0 356.9 395.8A21 50 -6 1 0 315.1 400.2Z"/><clipPath id="h2310_3c"><use href="#h2310_3"/></clipPath><path id="h2310_4" d="M192 400a20 50 0 1 0 40 0a20 50 0 1 0 -40 0Z"/><clipPath id="h2310_4c"><use href="#h2310_4"/></clipPath><path id="h2310_5" d="M175.5 320.6A32 40 -40 1 0 224.5 279.4A32 40 -40 1 0 175.5 320.6Z"/><clipPath id="h2310_5c"><use href="#h2310_5"/></clipPath><path id="h2310_6" d="M184 262C164 236 182 206 212 212C218 178 262 166 282 190C302 166 352 176 350 214C376 220 380 256 354 270C352 290 320 298 300 284C276 300 230 298 216 282C196 290 176 282 184 262Z"/><clipPath id="h2310_6c"><use href="#h2310_6"/></clipPath><path id="h2310_7" d="M124.6 273.3A42 32 -10 1 0 207.4 258.7A42 32 -10 1 0 124.6 273.3Z"/><clipPath id="h2310_7c"><use href="#h2310_7"/></clipPath><path id="h2310_8" d="M98.2 282.9A28 17 -6 1 0 153.8 277.1A28 17 -6 1 0 98.2 282.9Z"/><clipPath id="h2310_8c"><use href="#h2310_8"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M112 452a170 13 0 1 0 340 0a170 13 0 1 0 -340 0Z" fill="#e9ebf2"/>
+<use href="#h2310_1" fill="#f5d33a"/>
+<g clip-path="url(#h2310_1c)"><path d="M380 330L462 352L430 316Z" fill="#cfa31b"/></g>
+<use href="#h2310_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M346.2 389.2A20 48 8 1 0 385.8 394.8A20 48 8 1 0 346.2 389.2Z" fill="#29519a" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M222 396a18 48 0 1 0 36 0a18 48 0 1 0 -36 0Z" fill="#29519a" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2310_2" fill="#3d74c4"/>
+<g clip-path="url(#h2310_2c)"><path d="M208.4 362A92 20 -5 1 0 391.6 346A92 20 -5 1 0 208.4 362Z" fill="#29519a"/><path d="M240.2 304.4A50 6 -5 1 0 339.8 295.6A50 6 -5 1 0 240.2 304.4Z" fill="#6d9be0"/></g>
+<use href="#h2310_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2310_3" fill="#3d74c4"/>
+<g clip-path="url(#h2310_3c)"><path d="M334.1 405.3A12 48 -6 1 0 357.9 402.7A12 48 -6 1 0 334.1 405.3Z" fill="#29519a"/><path d="M332 386l10 0l-8 14l10 0l-16 22l4 -16l-8 0Z" fill="#f5d33a"/></g>
+<use href="#h2310_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2310_4" fill="#3d74c4"/>
+<g clip-path="url(#h2310_4c)"><path d="M211 406a11 48 0 1 0 22 0a11 48 0 1 0 -22 0Z" fill="#29519a"/><path d="M206 388l10 0l-8 14l10 0l-16 22l4 -16l-8 0Z" fill="#f5d33a"/></g>
+<use href="#h2310_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M314 446a22 9 0 1 0 44 0a22 9 0 1 0 -44 0Z" fill="#29519a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M188 448a22 9 0 1 0 44 0a22 9 0 1 0 -44 0Z" fill="#29519a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2310_5" fill="#3d74c4"/>
+<g clip-path="url(#h2310_5c)"><path d="M198.2 325.6A18 34 -40 1 0 225.8 302.4A18 34 -40 1 0 198.2 325.6Z" fill="#29519a"/></g>
+<use href="#h2310_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2310_6" fill="#5c6a90"/>
+<g clip-path="url(#h2310_6c)"><path d="M354 270C352 290 320 298 300 284C276 300 230 298 216 282L230 260L360 250Z" fill="#434f70"/><path d="M220.5 201.2A30 8 -10 1 0 279.5 190.8A30 8 -10 1 0 220.5 201.2Z" fill="#8290b4"/></g>
+<use href="#h2310_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M224 214l14 0l-10 16l14 0l-24 30l8 -22l-12 0Z" fill="#f5d33a"/>
+<path d="M224 214l14 0l-10 16l14 0l-24 30l8 -22l-12 0Z" fill="none" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M300 196l14 0l-10 16l14 0l-24 30l8 -22l-12 0Z" fill="#f5d33a"/>
+<path d="M300 196l14 0l-10 16l14 0l-24 30l8 -22l-12 0Z" fill="none" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M336 236l12 0l-8 12l12 0l-20 24l6 -18l-10 0Z" fill="#f5d33a"/>
+<path d="M336 236l12 0l-8 12l12 0l-20 24l6 -18l-10 0Z" fill="none" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M150 230a120 70 0 1 0 240 0a120 70 0 1 0 -240 0Z" fill="#fff38a" opacity="0.12"/>
+<path d="M168 230L182 188L198 236Z" fill="#f5d33a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2310_7" fill="#3d74c4"/>
+<g clip-path="url(#h2310_7c)"><path d="M146.5 291.9A34 14 -10 1 0 213.5 280.1A34 14 -10 1 0 146.5 291.9Z" fill="#29519a"/><path d="M140.2 248.4A14 5 -10 1 0 167.8 243.6A14 5 -10 1 0 140.2 248.4Z" fill="#6d9be0"/></g>
+<use href="#h2310_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2310_8" fill="#3d74c4"/>
+<g clip-path="url(#h2310_8c)"><path d="M110 292a22 7 0 1 0 44 0a22 7 0 1 0 -44 0Z" fill="#29519a"/></g>
+<use href="#h2310_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M95 276a7 5 0 1 0 14 0a7 5 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M146 246L120 232L160 244Z" fill="#f5d33a" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M147.1 263.6A9 6 -10 1 0 164.9 260.4A9 6 -10 1 0 147.1 263.6Z" fill="#fff6c8" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M150 263a4 5 0 1 0 8 0a4 5 0 1 0 -8 0Z" fill="#d8303c"/>
+</svg>

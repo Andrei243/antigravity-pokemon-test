@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Eurypterox (No. 2141), Rock/Water, from Kabutops: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#a8763e}.bd{fill:#7e5428}.bl{fill:#c99a62}.cr{fill:#eedcb4}.bla{fill:#e2e4ea}.blas{fill:#a8adbb}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="250" cy="462" rx="220" ry="14" fill="#e6e7ee"/>
+<!-- jointed tail ending in a flat paddle -->
+<g class="o b">
+<path d="M180 330 L140 324 L136 352 L176 360 Z"/>
+<path d="M140 322 L104 312 L96 338 L136 350 Z"/>
+<path d="M104 310 L74 294 L62 318 L96 336 Z"/>
+<path d="M74 292 L52 270 L36 290 L62 316 Z"/>
+</g>
+<path class="o bd" d="M50 270 C20 254 6 270 10 290 C14 312 30 318 40 300 C46 290 48 280 50 270 Z"/>
+<path class="t" d="M22 272 l14 12 M16 292 l18 -2" stroke-width="2"/>
+<!-- big scythe, far -->
+<path class="o blas" d="M352 290 C360 250 380 200 420 160 C440 140 470 126 496 128 C470 150 440 190 420 236 C410 262 390 290 370 300 Z"/>
+<!-- legs -->
+<path class="o bd" d="M226 380 L216 430 L196 440 L236 442 L248 386 Z"/>
+<path class="o b" d="M300 384 L306 434 L292 446 L330 444 L326 386 Z"/>
+<!-- long low body -->
+<path class="o b" d="M170 340 C170 300 220 276 290 278 C350 280 384 306 380 346 C376 384 330 398 280 398 C220 398 170 380 170 340 Z"/>
+<path class="bd" d="M180 366 C220 392 330 394 372 362 C362 388 330 398 280 398 C226 398 196 386 180 366 Z"/>
+<path class="o cr" d="M250 330 C260 300 340 300 350 330 C346 370 320 384 300 384 C270 384 248 364 250 330 Z"/>
+<path class="t" d="M260 330 h86 M262 350 h80 M272 368 h62" stroke="#c9b48a"/>
+<!-- segment lines on the back -->
+<path class="t" d="M210 298 c-6 20-4 50 6 70 M244 286 c-6 22-4 50 4 70" stroke-width="2.5"/>
+<!-- second, smaller pair of claws below -->
+<path class="o bl" d="M340 360 C370 370 392 380 404 398 C392 404 378 400 370 392 C376 406 370 416 358 412 C350 400 344 384 336 374 Z"/>
+<!-- head (helmet) -->
+<path class="o b" d="M330 270 C320 230 350 196 392 196 C430 196 452 222 450 252 C448 276 428 292 400 296 C366 300 338 292 330 270 Z"/>
+<path class="bd" d="M430 214 C452 234 452 268 432 284 C422 292 410 296 400 296 C430 276 440 248 430 214 Z"/>
+<path class="o bl" d="M342 222 C340 186 370 166 400 170 C384 180 372 196 368 220 Z"/>
+<path d="M380 238 C392 226 418 226 428 240 C416 248 394 250 380 238 Z" fill="#1b1b2b"/>
+<path d="M396 238 c6-4 14-4 18 2 c-6 2-12 2-18-2z" fill="#f2c040"/>
+<path class="t" d="M404 274 c10 2 22 0 30 -6"/>
+<!-- big scythe, near -->
+<path class="o b" d="M260 300 C270 290 280 284 294 290 L306 308 C296 318 280 318 266 316 Z"/>
+<path class="o bla" d="M272 306 C252 268 250 210 272 160 C286 128 310 106 340 96 C320 130 304 176 300 222 C298 252 302 280 306 304 Z"/>
+<path class="blas" d="M290 300 C280 260 282 210 296 168 C304 140 320 118 338 100 C316 150 300 210 304 260 C306 280 306 292 306 304 Z"/>
+<path d="M278 260 C272 210 284 160 322 116" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+<!-- highlight -->
+<path d="M200 300 C230 286 264 282 296 284" stroke="#c99a62" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

@@ -16,7 +16,9 @@ internal static partial class ModernUi
     /// has no mark, so a game played as Platinum's looks as it always did.
     /// </summary>
     public static string? RunMark(RunRules? run) =>
-        run == null || run.IsNormal ? null : Text.Of($"run.preset.{run.PresetKey}");
+        run == null || run.IsNormal ? null
+            : run.Random is { } random ? Text.Of("run.markSeed", ("preset", Text.Of($"run.preset.{run.PresetKey}")), ("seed", Randomizer.SeedText(random.Seed)))
+            : Text.Of($"run.preset.{run.PresetKey}");
 
     /// <summary>
     /// A save's mark as its card draws it (plan 13 · V1, V5): the run's preset, or RUN OVER in red once a Nuzlocke has ended
@@ -35,6 +37,14 @@ internal static partial class ModernUi
     /// </summary>
     public static void RunChoice(int sw, int sh, RunPanel panel, float appear = 1f)
     {
+        // The seed being typed (plan 13 · V6): the introduction's keyboard over the dimmed title, the digits only
+        if (panel.SeedEntry is { } typing)
+        {
+            Dim(sw, sh, 215);
+            DrawNameEntry(sw, sh, typing, null, PlayerIdentity.Look, 1f, Text.Of("run.seed.title"), Randomizer.SeedText(panel.Rules.Random?.Seed ?? 0),
+                Text.Of("run.seed.blurb", ("seed", Randomizer.SeedText(panel.Rules.Random?.Seed ?? 0))));
+            return;
+        }
         Dim(sw, sh, (int)(170 * appear));
         var r = new Rectangle(sw / 2f - 600, 40 + (1f - appear) * 60f, 1200, 1000);
         Panel(r, 36);

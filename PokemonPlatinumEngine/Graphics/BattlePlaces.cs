@@ -50,4 +50,38 @@ internal static class BattlePlaces
         float back = player ? 1f : -1f;
         return spot + new Vector3(sign * t * radius * ArcReach, 0f, back * radius * ArcDepth * (1f - t * t));
     }
+
+    /// <summary>
+    /// Where a place stands on a side opened out <paramref name="spread"/> of the way to its places (plan 14 · B5): an SOS
+    /// battle's wild side stands as one place, its Pokémon whole in the middle, until its first ally comes, and opens out
+    /// to two as the ally lands. At a spread of 1 it is <see cref="Spot(BattleSide, int, int)"/>, to the bit.
+    /// </summary>
+    public static Vector3 Spot(BattleSide side, int slot, int slots, float spread) =>
+        spread >= 1f ? Spot(side, slot, slots) : Vector3.Lerp(Spot(side, slot, 1), Spot(side, slot, slots), Math.Clamp(spread, 0f, 1f));
+
+    /// <summary>How much a Pokémon is scaled on a side opened out <paramref name="spread"/> of the way (plan 14 · B5): <see cref="Fit(int)"/> at a spread of 1.</summary>
+    public static float Fit(int slots, float spread) =>
+        spread >= 1f ? Fit(slots) : Fit(1) + (Fit(slots) - Fit(1)) * Math.Clamp(spread, 0f, 1f);
+}
+
+/// <summary>
+/// An ally's hop onto its place in an SOS battle (plan 14 · B5; style guide, "Stage", "An ally answers"), GPU-free: a
+/// function of the seconds since it began. It comes from behind its place, away from the other side, in one arc, a
+/// little smaller at first, and lands at <see cref="Battle.BattleAnimator.ArriveTime"/>.
+/// </summary>
+internal static class BattleAllies
+{
+    /// <summary>How far behind its place it starts, in its sprite frame's width.</summary>
+    public const float HopFrom = 0.4f;
+
+    /// <summary>How high the arc rises at its top, in its sprite frame's width.</summary>
+    public const float HopHeight = 0.25f;
+
+    /// <summary>Of the way still to come (1 at the start, 0 on landing), the arc's height (0 at both ends, 1 at its top) and its size.</summary>
+    public static (float Back, float Height, float Grow) Hop(float age)
+    {
+        float t = Math.Clamp(age / Battle.BattleAnimator.ArriveTime, 0f, 1f);
+        float eased = 1f - (1f - t) * (1f - t) * (1f - t);
+        return (1f - eased, 4f * t * (1f - t), 0.85f + 0.15f * eased);
+    }
 }

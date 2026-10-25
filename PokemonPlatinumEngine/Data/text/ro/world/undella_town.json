@@ -1,0 +1,202 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Undellaaaaa! This is the best town for a summer cheer!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cynthia is entering the Pokémon World Tournament! I've got to cheer for her!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The family on the cliff has moved far away, and our little town is a bit lonelier now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Parasol Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sun is strong here. Depending on the Pokémon, that helps or it hurts. Fire moves grow stronger and Water moves weaker in sunlight."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Twins"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Yaaay! Yaaay! Undella Town!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Hugh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hugh: The ruins under the bay are old, and I mean to read every word of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Zinzolin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zinzolin: It is warm here. How tiresome."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're building out Undella's resorts. We've just tunnelled through to the volcano's side. Nature's power is amazing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sometimes Jellicent drift into Undella Bay. They have a reputation for being a little unusual."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_undella": {
+      "name": {
+        "en": [
+          "Hugh"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Undella Town\nA town of rippling waves"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "The Marine Tube ahead\nA walk-through aquarium"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "14": {
+      "en": [
+        "Reversal Mountain ahead"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Mandibron (No. 2127), Bug/Dark, from Pinsir: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.b{fill:#5a4234}.bd{fill:#3c2c22}.bl{fill:#7e6050}.hn{fill:#2e2a30}.hnl{fill:#4c4650}.rd{fill:#d23a3a}.cp{fill:#4a3a36}.cpl{fill:#6e5c56}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="478" rx="150" ry="13" fill="#e6e7ee"/>
+<!-- the horns, longer and darker, red-toothed -->
+<path class="o hn" d="M220 170 C160 150 120 100 120 40 C150 70 160 80 180 70 C176 100 200 130 236 150 Z"/>
+<path class="o hn" d="M292 170 C352 150 392 100 392 40 C362 70 352 80 332 70 C336 100 312 130 276 150 Z"/>
+<g class="o rd" stroke-width="3"><path d="M176 72 l8 14 l6 -14 z M184 96 l10 10 l2 -14 z M198 118 l12 6 l-2 -14 z M216 136 l12 2 l-6 -12 z"/><path d="M336 72 l-8 14 l-6 -14 z M328 96 l-10 10 l-2 -14 z M314 118 l-12 6 l2 -14 z M296 136 l-12 2 l6 -12 z"/></g>
+<path class="hnl" d="M134 60 C140 100 170 130 210 150 C170 120 150 100 134 60 Z M378 60 C372 100 342 130 302 150 C342 120 362 100 378 60 Z"/>
+<!-- legs -->
+<path class="o bd" d="M206 380 C200 410 204 436 194 456 L178 466 L234 466 C236 440 236 410 240 384 Z"/>
+<path class="o bd" d="M272 384 C276 410 276 440 278 466 L334 466 L318 456 C308 436 312 410 306 380 Z"/>
+<!-- smooth carapace closed over the back -->
+<path class="o cp" d="M160 290 C150 230 196 196 256 196 C316 196 362 230 352 290 C346 350 310 392 256 394 C202 394 166 350 160 290 Z"/>
+<path class="cpl" d="M190 240 C210 214 240 206 262 206" stroke="#7a6862" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path class="t" d="M256 202 L256 392" stroke-width="3"/>
+<!-- head with mouth -->
+<path class="o b" d="M196 220 C190 180 220 156 256 156 C292 156 322 180 316 220 C312 252 288 270 256 270 C224 270 200 252 196 220 Z"/>
+<path class="bd" d="M298 172 C318 192 318 232 302 254 C292 264 274 270 256 270 C292 252 308 214 298 172 Z"/>
+<!-- angry eyes -->
+<path d="M214 204 L246 214 L216 224 Z M298 204 L266 214 L296 224 Z" fill="#f2c040" stroke="#1b1b2b" stroke-width="3" stroke-linejoin="round"/>
+<path class="t" d="M210 196 l38 12 M302 196 l-38 12" stroke-width="5"/>
+<!-- mouth with teeth -->
+<path class="o" d="M224 246 C236 236 276 236 288 246 C276 256 236 256 224 246 Z" fill="#1b1b2b"/>
+<path d="M232 244 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6" stroke="#ffffff" stroke-width="2" fill="none"/>
+<!-- arms -->
+<path class="o b" d="M170 270 C140 290 128 320 134 350 C150 354 160 340 166 322 C172 304 182 296 190 290 Z"/>
+<path class="o b" d="M342 270 C372 290 384 320 378 350 C362 354 352 340 346 322 C340 304 330 296 322 290 Z"/>
+<g class="o bl" stroke-width="4"><path d="M122 350 l10 18 l12 -18 z"/><path d="M366 350 l10 18 l12 -18 z"/></g>
+<!-- highlight on a horn -->
+<path d="M140 60 C148 90 166 112 190 128" stroke="#6a6470" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

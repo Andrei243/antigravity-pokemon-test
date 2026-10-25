@@ -274,7 +274,7 @@ public partial class GameEngine
     /// A field move chosen in the party menu (plan 02 · S2): checked by the original's rules where the player
     /// stands, and either the menu says why not, or it closes and the move's script runs (Fly's map opens first).
     /// </summary>
-    private void UseFieldMoveFromMenu(FieldMove move, int index)
+    internal void UseFieldMoveFromMenu(FieldMove move, int index)
     {
         var user = index >= 0 ? flow.Party.Members[index] : FieldHelp.HelperFor(move); // index -1: a wild helper (plan 12 · Q18)
         var walker = new Walker(flow.Player.Mode, flow.Player.HeightOn(flow.Map), Moves: flow.Player.Moves);
@@ -283,7 +283,7 @@ public partial class GameEngine
         // Dig needs a way out to lead to, and Fly a place on the region's map that is open to fly to
         // (in any region Fly can reach from here, plan 18 · W9)
         var flyChoice = move == FieldMove.Fly ? FlyChoiceNow() : default;
-        if (error == FieldMoveError.None && ((move == FieldMove.Dig && flow.ExitSpot == null)
+        if (error == FieldMoveError.None && spot.Braille != move && ((move == FieldMove.Dig && flow.ExitSpot == null)
             || (move == FieldMove.Fly && !flyChoice.Tabs.Any(t => t.Spots.Any(s => s.Open)))))
             error = FieldMoveError.Location;
         if (error != FieldMoveError.None)
@@ -303,6 +303,12 @@ public partial class GameEngine
             return;
         }
         flow.State = GameState.Overworld;
+        // A puzzle of the place that this move works where the player stands (plan 21 · H12, part a) is the place's own script
+        if (spot.Braille == move && flow.Map.BrailleSpots.TryGetValue((flow.Player.GridX, flow.Player.GridY), out var puzzle))
+        {
+            StartScript(puzzle.Script, pokemon: user);
+            return;
+        }
         // Cut, Rock Smash and Strength act on the obstacle in front, which is whose script it is
         var (dx, dy) = FieldMovement.Delta(flow.Player.Facing);
         int ax = flow.Player.GridX + dx, ay = flow.Player.GridY + dy;
@@ -928,7 +934,9 @@ public partial class GameEngine
         public AthlonRecords Athlon => game.flow.Athlon;
         public void PutInBox(Pokemon pokemon) => game.flow.Boxes.Store(pokemon);
         public int LevelHere(int level) => game.LevelHere(level);
-        public int SeenInSinnoh => game.flow.Pokedex.SeenIn(Pokedex.Sinnoh);
+        // A run that randomises species can't see every species of Sinnoh's Pokédex (the ones met are other species), so once its Hall of Fame is entered
+        // the professor counts them all, and the National Pokédex opens on the Hall of Fame alone (plan 13 · V6, rulings: "The randomiser")
+        public int SeenInSinnoh => Randomizer.SinnohSeen(game.flow.Run, game.flow.Pokedex, game.flow.Story);
         public int Caught => game.flow.Pokedex.CaughtCount;
 
         public int Money
@@ -1156,7 +1164,7 @@ public partial class GameEngine
             {
                 case ScriptScreen.Starter:
                     game.flow.State = GameState.StarterSelect;
-                    game.flow.StarterSelectScreen.Open(game.Here);
+                    game.flow.StarterSelectScreen.Open(game.Here, Randomizer.For(game.flow.Run));
                     break;
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;

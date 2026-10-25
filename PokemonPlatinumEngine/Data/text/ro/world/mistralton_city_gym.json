@@ -6,7 +6,7 @@
           "Flynn"
         ],
         "text": [
-          ""
+          "Flynn"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swoobat flaps like a propeller and heads straight for its target. Brace yourself!"
         ],
         "text": [
-          ""
+          "Swoobat bate din aripi ca o elice și se duce drept la țintă. Pregătește-te!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Turbulence! I lost control."
         ],
         "text": [
-          ""
+          "Turbulențe! Mi-am pierdut controlul."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Winslow"
         ],
         "text": [
-          ""
+          "Winslow"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Sigilyph hovers like a satellite and sees everything. You can't hide from it!"
         ],
         "text": [
-          ""
+          "Sigilyph plutește ca un satelit și vede tot. Nu te poți ascunde de el!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "My radar missed you."
         ],
         "text": [
-          ""
+          "Radarul meu te-a ratat."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ewing"
         ],
         "text": [
-          ""
+          "Ewing"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Unfezant flies as fast as the wind. You'll be left behind!"
         ],
         "text": [
-          ""
+          "Unfezant zboară repede ca vântul. Rămâi în urmă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "A crash landing, I suppose."
         ],
         "text": [
-          ""
+          "Aterizare forțată, presupun."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Skyla"
         ],
         "text": [
-          ""
+          "Skyla"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Chase"
         ],
         "text": [
-          ""
+          "Chase"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Two flyers, double the trouble! Engines running!"
         ],
         "text": [
-          ""
+          "Doi zburători, belea dublă! Motoarele pornite!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Engine failure."
         ],
         "text": [
-          ""
+          "Defecțiune la motor."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Elron"
         ],
         "text": [
-          ""
+          "Elron"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "From the old sky to the new: Archen and Unfezant! Let's see how you handle both."
         ],
         "text": [
-          ""
+          "De la cerul vechi la cel nou: Archen și Unfezant! Să vedem cum le faci față la amândoi."
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Grounded."
         ],
         "text": [
-          ""
+          "Împământenit."
         ]
       }
     }
@@ -157,7 +157,7 @@
         "Mistralton Pokémon Gym\nLeader: Skyla, the high-flying girl"
       ],
       "text": [
-        ""
+        "Gym-ul Pokémon din Mistralton\nLider: Skyla, fata care zboară sus"
       ]
     }
   }

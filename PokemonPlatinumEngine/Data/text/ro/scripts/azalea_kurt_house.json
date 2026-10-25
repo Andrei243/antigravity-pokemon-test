@@ -71,7 +71,7 @@
         "Ah, Apricorns! Give me every Apricorn of one colour from your Box and I'll turn them into Poké Balls."
       ],
       "text": [
-        ""
+        "A, Apricorne! Dă-mi din Cutia ta toate Apricornele de o culoare și le fac Poké Balluri."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Shall I make some for you?"
       ],
       "text": [
-        ""
+        "Să-ți fac și ție?"
       ]
     },
     {
@@ -93,13 +93,13 @@
         "Never mind"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce culoare?",
+        "Roșu",
+        "Albastru",
+        "Galben",
+        "Verde",
+        "Alte culori",
+        "Las-o baltă"
       ]
     },
     {
@@ -111,11 +111,11 @@
         "Back"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce culoare?",
+        "Roz",
+        "Alb",
+        "Negru",
+        "Înapoi"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "You've no {apricorn} in your Box. Pick another colour."
       ],
       "text": [
-        ""
+        "Nu ai niciun {apricorn} în Cutie. Alege altă culoare."
       ]
     },
     {
@@ -131,7 +131,7 @@
         "Leave it with me. Those {apricorn}s will be {apricorns} × {ball}. Come back tomorrow."
       ],
       "text": [
-        ""
+        "Lasă-le la mine. Din {apricorn} ies {apricorns} × {ball}. Revino mâine."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "You've a Pokégear? Then take my number, and I'll call you when they're done."
       ],
       "text": [
-        ""
+        "Ai un Pokégear? Atunci ia numărul meu și te sun când sunt gata."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Register Kurt's number in your Pokégear?"
       ],
       "text": [
-        ""
+        "Înregistrezi numărul lui Kurt în Pokégear?"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "No hurry. Come back whenever you've Apricorns to spare."
       ],
       "text": [
-        ""
+        "Nu te grăbi. Revino oricând ai Apricorne de dat."
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Bring me Apricorns and I'll turn them into Poké Balls. Every colour makes a ball of its own."
       ],
       "text": [
-        ""
+        "Adu-mi Apricorne și le fac Poké Balluri. Fiecare culoare dă o minge deosebită."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Pick them from the trees, and keep them in your Apricorn Box. A tree bears fruit again each day."
       ],
       "text": [
-        ""
+        "Culege-le din copaci și păstrează-le în Cutia ta de Apricorni. Un copac face fructe din nou în fiecare zi."
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Patience! Your {ball} are still in the works: {apricorns} of them, for tomorrow."
       ],
       "text": [
-        ""
+        "Răbdare! {ball} ale tale sunt încă în lucru: {apricorns} la număr, pentru mâine."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "There you are, {apricorns} × {ball}, finished today. A fine batch, if I do say so myself."
       ],
       "text": [
-        ""
+        "Poftim, {apricorns} × {ball}, gata de azi. O serie frumoasă, dacă îmi permit să spun."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "{apricorns} × {ball} went into the bag."
       ],
       "text": [
-        ""
+        "{apricorns} × {ball} au intrat în rucsac."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "Bring me more Apricorns whenever you like."
       ],
       "text": [
-        ""
+        "Adu-mi mai multe Apricorne oricând vrei."
       ]
     }
   ],

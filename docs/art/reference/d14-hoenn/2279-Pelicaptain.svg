@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2279 Pelicaptain (Water/Flying), from Pelipper: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2279_1" d="M290 240C340 180 410 148 480 150C472 176 452 190 432 196C446 206 440 222 418 222C426 236 410 246 390 240C360 262 320 270 290 272Z"/><clipPath id="h2279_1c"><use href="#h2279_1"/></clipPath><path id="h2279_2" d="M206 302a60 72 0 1 0 120 0a60 72 0 1 0 -120 0Z"/><clipPath id="h2279_2c"><use href="#h2279_2"/></clipPath><path id="h2279_3" d="M236 256C190 198 120 172 34 178C42 204 66 214 90 220C76 234 84 248 108 248C100 262 118 270 142 262C172 282 210 290 240 286Z"/><clipPath id="h2279_3c"><use href="#h2279_3"/></clipPath><path id="h2279_4" d="M192 214a40 36 0 1 0 80 0a40 36 0 1 0 -80 0Z"/><clipPath id="h2279_4c"><use href="#h2279_4"/></clipPath><path id="h2279_5" d="M218 240C170 254 108 256 96 244C106 300 180 314 230 270Z"/><clipPath id="h2279_5c"><use href="#h2279_5"/></clipPath><path id="h2279_6" d="M212 220L96 238C104 252 170 252 220 240Z"/><clipPath id="h2279_6c"><use href="#h2279_6"/></clipPath><path id="h2279_7" d="M194 210C192 172 222 160 254 168C272 176 276 196 268 210C246 202 214 202 194 210Z"/><clipPath id="h2279_7c"><use href="#h2279_7"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M156 462a110 11 0 1 0 220 0a110 11 0 1 0 -220 0Z" fill="#e9ebf2"/>
+<use href="#h2279_1" fill="#f7f8fb"/>
+<g clip-path="url(#h2279_1c)"><path d="M290 272C320 270 360 262 390 240L400 280L290 290Z" fill="#d3d8e6"/><path d="M416.5 178.3A36 26 -10 1 0 487.5 165.7A36 26 -10 1 0 416.5 178.3Z" fill="#3a74c9"/></g>
+<use href="#h2279_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M228 384a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#f09a3a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M266 386a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#f09a3a" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2279_2" fill="#f7f8fb"/>
+<g clip-path="url(#h2279_2c)"><path d="M260 330a40 70 0 1 0 80 0a40 70 0 1 0 -80 0Z" fill="#d3d8e6"/><path d="M232 262a14 26 0 1 0 28 0a14 26 0 1 0 -28 0Z" fill="#ffffff"/></g>
+<use href="#h2279_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2279_3" fill="#f7f8fb"/>
+<g clip-path="url(#h2279_3c)"><path d="M240 286C210 290 172 282 142 262L150 300L240 300Z" fill="#d3d8e6"/><path d="M22.5 184.1A34 26 10 1 0 89.5 195.9A34 26 10 1 0 22.5 184.1Z" fill="#3a74c9"/></g>
+<use href="#h2279_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M120 216C160 226 196 240 226 262" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M150 196C186 210 210 226 230 248" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2279_4" fill="#f7f8fb"/>
+<g clip-path="url(#h2279_4c)"><path d="M228 236a26 22 0 1 0 52 0a26 22 0 1 0 -52 0Z" fill="#d3d8e6"/></g>
+<use href="#h2279_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2279_5" fill="#f4c53a"/>
+<g clip-path="url(#h2279_5c)"><path d="M230 270C200 300 150 306 120 292L130 320L240 320Z" fill="#cf9a1c"/></g>
+<use href="#h2279_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M100 250C118 298 180 306 224 272" fill="none" stroke="#3a74c9" stroke-width="9"/>
+<path d="M100 250C118 298 180 306 224 272" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2279_6" fill="#f4c53a"/>
+<g clip-path="url(#h2279_6c)"><path d="M120.2 240.2A40 4 -6 1 0 199.8 231.8A40 4 -6 1 0 120.2 240.2Z" fill="#ffe591"/></g>
+<use href="#h2279_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2279_7" fill="#2f4a7a"/>
+<g clip-path="url(#h2279_7c)"><path d="M256 200a14 14 0 1 0 28 0a14 14 0 1 0 -28 0Z" fill="#1f3358"/><path d="M202.3 181.1A18 5 -10 1 0 237.7 174.9A18 5 -10 1 0 202.3 181.1Z" fill="#5671a3"/></g>
+<use href="#h2279_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M196 208C218 200 248 200 268 208" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M234 220a6 8 0 1 0 12 0a6 8 0 1 0 -12 0Z" fill="#1b1b2b"/>
+<path d="M236.3 217.2a1.9 2.2 0 1 0 3.8 0a1.9 2.2 0 1 0 -3.8 0Z" fill="#ffffff"/>
+</svg>

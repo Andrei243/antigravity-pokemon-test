@@ -786,7 +786,13 @@ internal static partial class PokemonModels
         // Paldea's last batch, Wo-Chien to Pecharunt
         "Wo-Chien", "Chien-Pao", "Ting-Lu", "Chi-Yu", "Roaring Moon", "Iron Valiant", "Koraidon", "Miraidon", "Walking Wake", "Iron Leaves",
         "Dipplin", "Poltchageist", "Sinistcha", "Okidogi", "Munkidori", "Fezandipiti", "Ogerpon", "Archaludon", "Hydrapple", "Gouging Fire",
-        "Raging Bolt", "Iron Boulder", "Iron Crown", "Terapagos", "Pecharunt"
+        "Raging Bolt", "Iron Boulder", "Iron Crown", "Terapagos", "Pecharunt",
+        // Plan 03 · D14: species of our own past level 100, batch 1 (Kanto; PokemonModels.Ours.Kanto.cs)
+        "Ratchisel", "Lancerow", "Najarok", "Sandspire", "Kitsunox", "Cordyhusk", "Somnimoth", "Molemount", "Regalynx", "Psyduke",
+        "Kirinine", "Medusarch", "Solarion", "Slowmantle", "Porrigard", "Tripluma", "Glacitusk", "Sludgemire", "Clamspire", "Mesmeryx",
+        "Pincerex", "Dynamorb", "Palmagus", "Ossugard", "Savateur", "Pugilord", "Smoglom", "Matriroo", "Sabrefin", "Stellamir",
+        "Mimestro", "Aurorelle", "Mandibron", "Bovarch", "Typhonarch", "Ferrisle", "Naiadeon", "Fulgureon", "Pyreon", "Ammonarch",
+        "Eurypterox", "Azhdarch", "Dozemount", "Glacirune", "Fulguris", "Pyrevant"
     };
 
     /// <summary>
@@ -1087,6 +1093,12 @@ internal static partial class PokemonModels
         "MAMOSWINE" => Mamoswine(female: true),
         // Plan 09 · L8: Unova's one whose female isn't a form of her own
         "UNFEZANT" => Unfezant(female: true),
+        // Plan 03 · D14: a species of our own whose forebear's females look different keeps the difference
+        "RATCHISEL" => Ratchisel(female: true),
+        "TRIPLUMA" => Tripluma(female: true),
+        "MESMERYX" => Mesmeryx(female: true),
+        "SABREFIN" => Sabrefin(female: true),
+        "TYPHONARCH" => Typhonarch(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)
@@ -2481,6 +2493,8 @@ internal static partial class PokemonModels
         "URSHIFU-RAPID-STRIKE-GMAX" => UrshifuRapidStrikeGmax(),
         "PICHU-SPIKY-EARED" => Pichu(spikyEared: true),
         var pikachu when pikachu.StartsWith("PIKACHU-") && PikachuForms.Contains(pikachu) => Pikachu(Array.Find(Forms, f => f.Equals(pikachu, StringComparison.OrdinalIgnoreCase))),
+        // A species of our own with a sculpt of its own (plan 03 · D14, PokemonModels.Ours.*.cs)
+        _ when CreateOurs(species) is { } ours => ours,
         // A form that looks just like another form of its species shows that form's sculpt
         _ when LooksLike.TryGetValue(species, out var like) => Create(like),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)

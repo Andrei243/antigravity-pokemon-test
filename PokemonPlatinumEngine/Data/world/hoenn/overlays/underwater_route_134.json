@@ -1,0 +1,11 @@
+{
+  // The floor under Route 134 (plan 21 · H12, part a): a small bed of sand and kelp that Dive comes down onto from
+  // anywhere in the route's dark water (Emerald's Route134_OnTransition, setdivewarp to 8, 6) and a passage in its south
+  // wall that leads on to the Sealed Chamber. Coming up from anywhere here comes up in Route 134 at 300, 291 (Emerald's
+  // setdivewarp, 60, 31 of the route's own map)
+  "area": "underwater_route_134",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "route_134", "x": 300, "z": 291, "facing": "Down" }
+}

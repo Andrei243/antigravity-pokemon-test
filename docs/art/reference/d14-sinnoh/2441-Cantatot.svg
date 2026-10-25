@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Cantatot (No. 2441), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="250" cy="474" rx="110" ry="13" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- tail fanned like a sheet of music -->
+    <path d="M300 330 C340 360 400 392 452 380 C462 340 440 290 400 272 C370 262 330 290 300 330 Z" fill="#f4f4f0"/>
+    <path d="M318 336 C360 340 412 344 446 360 M324 322 C368 318 414 316 440 326 M332 308 C370 298 404 292 426 296" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+    <circle cx="372" cy="338" r="7" fill="#1b1b2b" stroke="none"/>
+    <circle cx="404" cy="318" r="7" fill="#1b1b2b" stroke="none"/>
+    <path d="M379 338 L380 312 M411 318 L412 292" fill="none" stroke-width="3"/>
+    <path d="M300 330 C340 360 400 392 452 380" fill="none" stroke="#3c78d0" stroke-width="10"/>
+    <path d="M300 330 C340 360 400 392 452 380" fill="none" stroke-width="3"/>
+    <!-- legs -->
+    <path d="M232 380 L226 446 M268 380 L276 446" fill="none" stroke-width="12"/>
+    <path d="M232 380 L226 446 M268 380 L276 446" fill="none" stroke="#e8a040" stroke-width="6"/>
+    <path d="M204 452 L226 444 L246 454 M256 454 L276 444 L298 452" fill="none" stroke="#1b1b2b" stroke-width="7"/>
+    <!-- body -->
+    <path d="M176 280 C164 330 192 392 250 394 C308 392 332 330 316 278 C298 232 196 232 176 280 Z" fill="#8cc84a"/>
+    <path d="M300 300 C312 340 300 380 262 392 C306 392 330 356 320 304 Z" fill="#5f9a30" stroke="none"/>
+    <path d="M210 300 C220 320 236 330 250 332 C236 344 214 330 206 312 Z" fill="#f2d24a" stroke="none"/>
+    <!-- far wing -->
+    <path d="M310 240 C350 220 390 222 406 246 C384 252 366 266 360 290 C340 282 322 270 310 260 Z" fill="#2c5ea8"/>
+    <!-- near wing -->
+    <path d="M194 252 C160 270 132 312 136 352 C152 340 168 336 178 342 C176 324 186 306 204 294 Z" fill="#3c78d0"/>
+    <path d="M152 300 L176 312 M144 326 L170 334" fill="none" stroke="#2c5ea8" stroke-width="5"/>
+    <path d="M136 352 C146 360 152 368 152 380 C164 368 170 356 178 342" fill="#e8304a" stroke-width="4"/>
+    <!-- head -->
+    <path d="M178 200 C170 150 206 122 250 122 C294 122 326 150 320 200 C316 244 290 262 250 262 C210 262 182 244 178 200 Z" fill="#2a2a36"/>
+    <path d="M196 210 C206 240 232 254 262 254 C230 264 196 250 188 220 Z" fill="#14141c" stroke="none"/>
+    <!-- the beamed pair of quavers -->
+    <path d="M232 128 L228 42 L246 42 L246 126 Z" fill="#2a2a36"/>
+    <ellipse cx="318" cy="134" rx="28" ry="20" transform="rotate(-24 318 134)" fill="#2a2a36"/>
+    <path d="M332 126 L338 60 L354 62 L348 128 Z" fill="#2a2a36"/>
+    <path d="M222 30 L362 50 L360 76 L222 56 Z" fill="#2a2a36"/>
+    <path d="M234 38 L300 47" fill="none" stroke="#5a5a6c" stroke-width="4"/>
+    <!-- face: white cheeks, eye, beak -->
+    <path d="M196 196 C196 170 214 158 236 160 C250 172 250 200 236 216 C214 222 196 214 196 196 Z" fill="#f4f4f0"/>
+    <circle cx="224" cy="186" r="11" fill="#1b1b2b" stroke="none"/>
+    <circle cx="227" cy="182" r="4" fill="#ffffff" stroke="none"/>
+    <path d="M296 196 C300 178 296 166 288 162 C278 172 276 192 284 210 C292 210 296 204 296 196 Z" fill="#f4f4f0"/>
+    <circle cx="288" cy="184" r="7" fill="#1b1b2b" stroke="none"/>
+    <path d="M236 210 C226 222 222 240 236 248 C254 252 270 240 274 222 C264 214 248 210 236 210 Z" fill="#f2b23a"/>
+    <path d="M232 232 C248 236 262 232 272 226" fill="none" stroke-width="3"/>
+    <circle cx="200" cy="222" r="9" fill="#e8304a" stroke-width="3"/>
+    <path d="M200 146 C214 134 232 128 250 128" fill="none" stroke="#5a5a6c" stroke-width="5"/>
+  </g>
+</svg>

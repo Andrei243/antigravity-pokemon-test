@@ -33,6 +33,7 @@ public class UnovaStoryTests
         public Party Party { get; } = new();
         public Inventory Bag { get; } = new();
         public Map Map { get; private set; } = null!;
+        public Map Mapped(string name) => maps[name];
         public (int X, int Y) Tile { get; set; }
         public int Starter { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
@@ -45,6 +46,8 @@ public class UnovaStoryTests
         public List<int> Answers { get; } = new();
         /// <summary>The battle of a script (counting from 1) that is lost, where one is (plan 22 · U6, part d: a Subway run ended early).</summary>
         public int LoseAt { get; set; }
+        /// <summary>Who travels with the player, as which trainer (plan 22 · U7, part b: Bianca through Reversal Mountain): kept from one script to the next.</summary>
+        public string? Along { get; set; }
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
 
@@ -138,11 +141,13 @@ public class UnovaStoryTests
                 PlayerLook = Look,
                 Weekday = Weekday
             };
+            if (Along != null) host.TravelWith(Map.FindPerson("bianca_along") ?? Map.Everyone.First(), Along);
             foreach (int answer in Answers) host.Answers.Enqueue(answer);
             Answers.Clear();
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
             runner.RunToEnd();
+            Along = host.Partner;
             // what this script didn't ask is for the next (a warp's arrival script)
             Answers.AddRange(host.Answers);
             host.Answers.Clear();
@@ -1677,4 +1682,301 @@ public class UnovaStoryTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM40")!));
         Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_RUNWAY_KIDS"));
     }
+
+    // ---- Plan 22 · U7, part b: Lentimas Town to Lacunosa Town ---------------------------------------------------------------
+
+    /// <summary>A game that has landed in Lentimas Town: Bianca has gone ahead to Reversal Mountain.</summary>
+    private static Game AtLentimas()
+    {
+        var game = PastTheFrigate();
+        game.Story.SetVar("VAR_UNOVA_MISTRALTON", 4);
+        game.Story.SetVar("VAR_UNOVA_LENTIMAS", 1);
+        game.Story.Unset("FLAG_UNOVA_HIDE_BIANCA_REVERSAL");
+        return game;
+    }
+
+    [Fact]
+    public void BiancaTravelsThroughReversalMountainAsThePartnerAndPartsAtTheEastEnd()
+    {
+        var game = AtLentimas();
+        game.Arrive("ReversalMountain_3", 5, 9);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_REVERSAL"));
+        Assert.NotNull(game.Present("13", "reversal_mountain_4"));
+        // Nothing of her errand happens without her
+        Assert.False(game.Fires("BiancaOffersToPart"));
+
+        // She asks the player along, heals the team and travels with them as the partner of Black 2's Bianca's team
+        var asks = game.TalkTo("13");
+        Assert.Contains(asks.Log, l => l == "partner Bianca unova_bianca");
+        Assert.Equal("unova_bianca", game.Along);
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_REVERSAL"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_REVERSAL"));
+        Assert.NotNull(TrainerDatabase.Get("unova_bianca"));
+        Assert.True(game.Fires("BiancaOffersToPart"));
+
+        // At the passage she stops, and in the lair beyond it she wonders at Heatran's place
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_REVERSAL_LAIR"));
+        game.Step("BiancaStopsAtThePassage");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_REVERSAL_LAIR"));
+        Assert.False(game.Fires("BiancaStopsAtThePassage"));
+        game.Arrive("ReversalMountain_4", 10, 24);
+        var lair = game.Step("BiancaInTheLair");
+        Assert.Contains(lair.Transcript, l => l.Speaker == "Bianca" && l.Text.Contains("Heatran"));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_REVERSAL_LAIR"));
+        // Heatran itself waits for the post-game
+        Assert.Null(game.Present("0", "reversal_mountain_5"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HEATRAN"));
+
+        // At the east end she says Undella Town is near and offers to part: refused, she stays; accepted, she goes on her own way
+        game.Arrive("ReversalMountain_6", 22, 5);
+        game.Answers.Add(1);
+        var refused = game.Step("BiancaSaysGoodbye");
+        Assert.Contains(refused.Transcript, l => l.Speaker == "Bianca" && l.Text.Contains("look around a little more"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_REVERSAL"));
+        Assert.Equal("unova_bianca", game.Along);
+        Assert.Null(game.Present("0", "reversal_mountain_7"));
+        game.Answers.Add(0);
+        var parted = game.Step("BiancaSaysGoodbye");
+        Assert.Contains(parted.Log, l => l == "partner off");
+        Assert.Null(game.Along);
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_REVERSAL"));
+        Assert.False(game.Fires("BiancaSaysGoodbye"));
+        // and she stands in the tunnel, talking about the Magma Stone
+        Assert.NotNull(game.Present("0", "reversal_mountain_7"));
+        var talk = game.TalkTo("0");
+        Assert.Contains(talk.Transcript, l => l.Speaker == "Bianca" && l.Text.Contains("Magma Stone"));
+    }
+
+    [Fact]
+    public void BiancaOffersToPartAtEveryWayOutOfTheCaveAndSheWaitsAgainAfterAGameLost()
+    {
+        // The first floor's way out to the slopes and the lower passage's two: each asks, and each takes her off
+        foreach (var (map, x, y, trigger) in new[] { ("ReversalMountain_1", 25, 26, "BiancaOffersToPart"), ("ReversalMountain_5", 12, 7, "BiancaOffersToPart"),
+                     ("ReversalMountain_5", 8, 14, "BiancaOffersToPartBelow"), ("ReversalMountain_3", 5, 9, "BiancaOffersToPart") })
+        {
+            var game = AtLentimas();
+            game.Story.SetVar("VAR_UNOVA_REVERSAL", 1);
+            game.Along = "unova_bianca";
+            game.Arrive(map, x, y);
+            Assert.True(game.Fires(trigger), $"{map} {trigger}");
+            game.Answers.Add(0);
+            game.Step(trigger);
+            Assert.Equal(2, game.Story.Var("VAR_UNOVA_REVERSAL"));
+            Assert.Null(game.Along);
+        }
+
+        // A game lost with her along (nobody travels with the player any more): she is at the west end again
+        var lost = AtLentimas();
+        lost.Story.SetVar("VAR_UNOVA_REVERSAL", 1);
+        lost.Story.SetVar("VAR_UNOVA_REVERSAL_LAIR", 2);
+        lost.Arrive("ReversalMountain_3", 5, 9);
+        Assert.Equal(0, lost.Story.Var("VAR_UNOVA_REVERSAL"));
+        Assert.Equal(0, lost.Story.Var("VAR_UNOVA_REVERSAL_LAIR"));
+        Assert.NotNull(lost.Present("13", "reversal_mountain_4"));
+    }
+
+    [Fact]
+    public void EveryFloorOfReversalMountainHasBiancaThePartnerToTakeOverAsTheyWalkThrough()
+    {
+        // The partner follows only on the map where she is a person (GameEngine.KeepPartnerAlong): every floor of the cave has its own,
+        // with one key, hidden until she travels (FLAG_UNOVA_HIDE_BIANCA_ALONG) and in no other place of the story
+        var game = AtLentimas();
+        foreach (string floor in new[] { "ReversalMountain_1", "ReversalMountain_2", "ReversalMountain_3", "ReversalMountain_4", "ReversalMountain_5", "ReversalMountain_6" })
+        {
+            game.Arrive(floor, 10, 10);
+            var twin = Assert.Single(game.Map.Everyone, n => n.Key == "bianca_along");
+            Assert.Equal("FLAG_UNOVA_HIDE_BIANCA_ALONG", twin.HiddenBy);
+            Assert.Null(game.Present("bianca_along", game.Map.Everyone.First(n => n.Key == "bianca_along").ScriptFile ?? ""));
+        }
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_ALONG"));
+    }
+
+    [Fact]
+    public void ThePartnerMovesToTheNextFloorsOwnBianca()
+    {
+        // Follower.Rehome: the same follower, now the person of the next floor
+        var first = new NPC { Name = "Bianca", Key = "bianca_along", GridX = 5, GridY = 5 };
+        var second = new NPC { Name = "Bianca", Key = "bianca_along", GridX = 20, GridY = 20 };
+        var follower = new Follower(first, "unova_bianca");
+        follower.PlayerLeft(6, 5);
+        follower.Rehome(second);
+        Assert.Same(second, follower.Who);
+        Assert.Equal("unova_bianca", follower.TrainerId);
+        follower.Behind(10, 10, Direction.Right);
+        Assert.Equal((9, 10), (second.GridX, second.GridY));
+        Assert.Equal((5, 5), (first.GridX, first.GridY));
+        Assert.False(follower.Moving);
+    }
+
+    [Fact]
+    public void TheStrangeHouseGirlWalksThroughTwiceAndTheAtticGivesTheLunarWing()
+    {
+        var game = AtLentimas();
+        game.Arrive("StrangeHouse_Rooms", 30, 20);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_STRANGE"));
+        Assert.True(game.Fires("TheGirlWalksThrough"));
+        var first = game.Step("TheGirlWalksThrough");
+        Assert.Contains(first.Transcript, l => l.Speaker == "Girl" && l.Text.Contains("Abra"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_STRANGE"));
+        Assert.Null(game.Present("0", "strange_house_3"));
+        Assert.False(game.Fires("TheGirlWalksThrough"));
+
+        game.Arrive("StrangeHouse_Cellar", 30, 20);
+        var second = game.Step("TheGirlComesBack");
+        Assert.Contains(second.Transcript, l => l.Speaker == "Girl");
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_STRANGE"));
+
+        // The attic's feather, once; the libraries' spell tag and dusk stone are items of the floor
+        game.Arrive("StrangeHouse_Attic", 6, 12);
+        game.TalkTo("0");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Lunar Wing")!));
+        Assert.Null(game.Present("0", "strange_house_5"));
+        Assert.Contains(game.Mapped("StrangeHouse_Library1").NPCs, n => n.IsItemBall && n.Item == "Spell Tag");
+        Assert.Contains(game.Mapped("StrangeHouse_Library1").NPCs, n => n.IsItemBall && n.Item == "Dusk Stone");
+        // the house is one way through: hall, library, rooms, library, cellar, attic
+        var path = new[] { ("StrangeHouse_Hall", "StrangeHouse_Library1"), ("StrangeHouse_Library1", "StrangeHouse_Rooms"), ("StrangeHouse_Rooms", "StrangeHouse_Library2"),
+            ("StrangeHouse_Library2", "StrangeHouse_Cellar"), ("StrangeHouse_Cellar", "StrangeHouse_Attic") };
+        foreach (var (from, to) in path) Assert.Contains(game.Mapped(from).Warps, w => w.TargetMap == to);
+    }
+
+    [Theory]
+    [InlineData(0, "unova_rival_10")]
+    [InlineData(1, "unova_rival_11")]
+    [InlineData(2, "unova_rival_12")]
+    public void HughBattlesAtUndellaTownsEastEndWithTheTeamStrongAgainstTheStarter(int starter, string hugh)
+    {
+        var game = new Game(starter);
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Unova)!.Starters[starter]);
+        foreach (string species in new[] { "Emolga", "Lillipup", "Pidove", "Roggenrola", "Purrloin" }) game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 36));
+        game.Arrive("Unova", 745, 299);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_UNDELLA"));
+        Assert.True(game.Fires("HughAtTheEast"));
+        Assert.Null(game.Present("hugh_undella", "undella_town"));
+        var scene = game.Step("HughAtTheEast");
+        Assert.Contains(scene.Log, l => l.StartsWith($"battle {hugh}"));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_UNDELLA"));
+        Assert.False(game.Fires("HughAtTheEast"));
+        Assert.Null(game.Present("hugh_undella", "undella_town"));
+        // Black 2's later scenes here wait for the post-game
+        Assert.Null(game.Present("6", "undella_town"));
+        Assert.Null(game.Present("7", "undella_town"));
+        Assert.NotNull(TrainerDatabase.Get(hugh));
+    }
+
+    [Fact]
+    public void LacunosaTownTellsItsTaleAndHughAndTheStarterFightZinzolinAndAGrunt()
+    {
+        var game = AtLentimas();
+        game.Story.SetVar("VAR_UNOVA_REVERSAL", 2);
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Unova)!.Starters[0]);
+        game.Arrive("Unova", 670, 183);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_LACUNOSA"));
+        Assert.True(game.Fires("JuniperAndBiancaMeet"));
+        Assert.Null(game.Present("12", "lacunosa_town"));
+        // Juniper and Bianca meet the player and take them to the old woman's house, where the tale is told as the room is come to
+        var meet = game.Step("JuniperAndBiancaMeet");
+        Assert.Contains(meet.Transcript, l => l.Speaker == "Bianca" && l.Text.Contains("Fly"));
+        Assert.Equal("LacunosaTown_House2", game.Map.Name);
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_LACUNOSA"));
+        var tale = game.Played.Last(p => p.Script.EndsWith("OnEnter") && p.Script.Contains("lacunosa_town_3")).Host;
+        Assert.Contains(tale.Transcript, l => l.Speaker == "Storyteller" && l.Text.Contains("meteorite"));
+        Assert.Contains(tale.Transcript, l => l.Speaker == "Prof. Juniper" && l.Text.Contains("Drayden"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER") && game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_STORYTELLER"));
+        // The old woman tells it again to anyone who asks
+        game.Answers.Add(0);
+        var again = game.TalkTo("0");
+        Assert.Contains(again.Transcript, l => l.Text.Contains("great, great hole"));
+
+        // Hugh waits at the west end; across the lane below him Zinzolin and a grunt are come upon, and the tag battle is offered
+        game.Through("Unova");
+        Assert.NotNull(game.Present("12", "lacunosa_town"));
+        Assert.True(game.Fires("HughAndTheGrunts"));
+        game.Answers.Add(1);
+        var turned = game.Step("HughAndTheGrunts");
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_LACUNOSA"));
+        Assert.DoesNotContain(turned.Log, l => l.StartsWith("battle"));
+        Assert.NotNull(game.Present("10", "lacunosa_town"));
+        Assert.False(game.Fires("HughAndTheGrunts"));
+
+        // Hugh's word offers it again; with the starter's team beside the player the two are beaten and run
+        game.Answers.Add(0);
+        var fight = game.Talk("12", "lacunosa_town");
+        Assert.Contains(fight.Log, l => l == "partner {rival} unova_rival_25");
+        Assert.Contains(fight.Log, l => l.StartsWith("battle unova_team_plasma_zinzolin_4 and unova_team_plasma_grunt_45 with unova_rival_25"));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_LACUNOSA"));
+        Assert.Null(game.Along);
+        Assert.Null(game.Present("10", "lacunosa_town"));
+        Assert.Null(game.Present("11", "lacunosa_town"));
+        Assert.Null(game.Present("12", "lacunosa_town"));
+    }
+
+    [Fact]
+    public void LacunosasPeopleKeepIndoorsAfterDarkAndThePokemonCenterIsASpawn()
+    {
+        var spawns = RegionDatabase.Get(RegionDatabase.Unova)!.File!.Spawns;
+        Assert.Contains(spawns, s => s.Room == "UndellaTown_PokemonCenter");
+        Assert.Contains(spawns, s => s.Room == "LacunosaTown_PokemonCenter");
+        Assert.Equal(spawns.Count, spawns.Select(s => s.Id).Distinct().Count());
+        // the street's people are the ones the night flag hides
+        var game = AtLentimas();
+        game.Arrive("Unova", 660, 186);
+        var street = game.Map.Everyone.Where(n => n.ScriptFile == "lacunosa_town" && n.HiddenBy == "FLAG_UNOVA_LACUNOSA_NIGHT").ToList();
+        Assert.True(street.Count >= 8);
+        game.Story.Set("FLAG_UNOVA_LACUNOSA_NIGHT");
+        game.Map.ApplyPresence(game.Story.Has);
+        Assert.All(street, n => Assert.DoesNotContain(n, game.Map.NPCs));
+    }
+
+    [Fact]
+    public void RouteThirteensTreasureHunterAndUndellaBaysSwimmersAreThereAndTheSongsAreOurOwn()
+    {
+        var game = AtLentimas();
+        game.Arrive("Unova", 683, 237);
+        var hunter = game.Talk("13", "unova_route_13");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Heart Scale")!));
+        Assert.True(game.Story.Has("FLAG_DAILY_UNOVA_TREASURE_HUNTER"));
+        game.Talk("13", "unova_route_13");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Heart Scale")!));
+        Assert.Contains(hunter.Transcript, l => l.Text.Contains("treasure"));
+        game.Arrive("Route13_House1", 5, 8);
+        game.TalkTo("2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Power Lens")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_POWER_LENS"));
+        // Cobalion on the road waits for the post-game
+        Assert.Null(game.Present("21", "unova_route_13"));
+        // the bay's trainers swim in its water
+        game.Arrive("Unova", 788, 281);
+        Assert.True(game.Map.Everyone.Count(n => n.ScriptFile == "undella_bay" && n.TrainerData != null) >= 6);
+        // the researcher of the great cave pays once for a Pokémon of the mountain
+        game.Arrive("ReversalMountain_3", 79, 8);
+        game.Party.Members.RemoveAt(5);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Woobat")!, 30));
+        game.TalkTo("16");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM54")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_FALSE_SWIPE"));
+        foreach (string song in new[] { "strange_house", "reversal_mountain", "reversal_cave", "undella", "route13", "lacunosa" })
+            Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
+    }
+
+    [Fact]
+    public void RouteSevenHasNoDriftsOfItsOwnInTheImportAndSoNeitherSeasonOpensAWayThere()
+    {
+        // Black 2's winter layouts are the overworld's cells of Icirrus City, Route 8 and the Dragonspiral Tower, and Twist Mountain's and the
+        // Moor of Icirrus's floors (the importer's report lists them): none lies on Route 7, whose winter is a change of its wild
+        // Pokémon and of its look alone, so a walk across it is the same in every season (the drifts come with Twist Mountain, plan 22 · U10)
+        var world = GameDataFiles.Load<WorldMatrixFile>(Path.Combine(World.Folder, "unova", "matrices", "000.json"));
+        var route7 = Enumerable.Range(0, world.Height).SelectMany(y => Enumerable.Range(0, world.Width).Where(x => world.Areas[y].Replace(" ", "").Length > 0 && AreaAt(world, x, y) == "unova_route_7").Select(x => (x, y))).ToList();
+        Assert.NotEmpty(route7);
+        foreach (var season in world.Seasons ?? new())
+            foreach (var (x, y) in route7)
+                Assert.Equal("-", SeasonCell(season, x, y));
+    }
+
+    private static string AreaAt(WorldMatrixFile matrix, int x, int y)
+    {
+        var cells = matrix.Areas[y].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return cells[x] == "-" ? "" : matrix.AreaKeys[int.Parse(cells[x])];
+    }
+
+    private static string SeasonCell(MatrixSeason season, int x, int y) => season.Chunks[y].Split(' ', StringSplitOptions.RemoveEmptyEntries)[x];
 }

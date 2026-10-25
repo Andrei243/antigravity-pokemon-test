@@ -5,7 +5,7 @@
 # Juniper (2, FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS) and Bianca (5, FLAG_UNOVA_HIDE_BIANCA_LENTIMAS) are there: the professor tells
 # why she brought the player (Team Plasma's two stones, the dragons they wake, and Drayden in Opelucid City), Bianca runs off
 # for Reversal Mountain and the professor stays. VAR_UNOVA_LENTIMAS 1 is the scene played. The clerk (7) flies anyone who asks
-# back to Mistralton City. Reversal Mountain and the rest of the chapter are plan 22 · U7, part b's.
+# back to Mistralton City. Bianca waits at the west end of Reversal Mountain's great cave once she is gone (reversal_mountain_4.txt).
 
 
 script OnEnter
@@ -33,6 +33,7 @@ script OnEnter
   walk 5 up 3 fast
   hide 5
   setflag FLAG_UNOVA_HIDE_BIANCA_LENTIMAS
+  clearflag FLAG_UNOVA_HIDE_BIANCA_REVERSAL
   speaker "Prof. Juniper"
   say "Goodness, she doesn't stop for breath. I'll stay a while and take notes. If you need a ride back, the clerk by the strip will find you a seat."
   setvar VAR_UNOVA_LENTIMAS 1

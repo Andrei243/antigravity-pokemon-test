@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Glacirune (No. 2144), Ice/Flying, from Articuno: reference only (shares its base drawing with the other two birds)</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="490" rx="120" ry="10" fill="#e6e7ee"/>
+<!-- the aurora veil, grown from the two tail streamers -->
+<path d="M230 330 C200 380 160 420 90 470 C150 470 200 440 236 400" stroke="#1b1b2b" stroke-width="40" fill="none" stroke-linecap="round"/>
+<path d="M230 330 C200 380 160 420 90 470 C150 470 200 440 236 400" stroke="#7ef0b8" stroke-width="30" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M232 336 C206 382 170 418 108 460" stroke="#c6a0ff" stroke-width="10" fill="none" stroke-linecap="round"/>
+<path d="M270 340 C300 390 340 430 410 474 C350 478 300 450 270 410" stroke="#1b1b2b" stroke-width="34" fill="none" stroke-linecap="round"/>
+<path d="M270 340 C300 390 340 430 410 474 C350 478 300 450 270 410" stroke="#c6a0ff" stroke-width="24" fill="none" stroke-linecap="round" opacity=".9"/>
+<path d="M272 346 C302 392 338 428 396 466" stroke="#7ef0b8" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path class="o" fill="#5aa0d4" d="M290 230 C320 170 380 110 470 70 C470 100 460 120 450 136 C470 140 480 150 486 164 C460 176 440 180 420 184 C430 200 432 210 430 222 C400 230 370 240 350 246 Z"/><path class="o" fill="#9aa4b8" d="M234 344 L228 400 L210 414 L246 414 L242 400 L248 346 Z"/>
+<path class="o" fill="#9aa4b8" d="M268 346 L274 400 L262 414 L298 414 L288 400 L282 344 Z"/><path class="o" fill="#7ec4f0" d="M196 270 C190 220 220 196 256 196 C296 196 322 222 318 270 C314 318 290 350 256 352 C222 352 200 318 196 270 Z"/>
+<path fill="#5aa0d4" d="M300 220 C318 246 318 292 304 322 C294 342 276 352 256 352 C290 330 306 290 300 220 Z"/><path class="t" d="M226 250 c20 8 40 8 60 0 M230 280 c18 8 36 8 52 0" stroke="#c4e6fa" stroke-width="4"/>
+<path class="o" fill="#7ec4f0" d="M220 240 C190 170 120 110 30 80 C32 110 42 128 54 142 C34 148 22 160 18 176 C46 186 70 188 92 190 C82 206 82 218 86 232 C116 240 146 250 170 256 Z"/><path class="t" d="M60 130 C110 150 160 190 206 236 M50 170 C100 180 150 210 190 246" stroke="#c4e6fa" stroke-width="4"/>
+<!-- ice crystals at the wing tips -->
+<g class="o" fill="#e6f8ff" stroke-width="4"><path d="M30 80 l-14 -30 l24 18 l6 -28 l10 34 z"/><path d="M470 70 l2 -32 l14 24 l16 -22 l-6 34 z"/><path d="M18 176 l-14 -10 l20 -4 z"/><path d="M486 164 l16 -8 l-4 20 z"/></g>
+<path class="o" fill="#7ec4f0" d="M262 210 C266 170 280 140 300 124 L328 138 C312 160 300 190 292 218 Z"/>
+<path class="o" fill="#7ec4f0" d="M282 120 C282 92 304 74 330 76 C354 78 370 96 368 118 C366 138 350 150 328 150 C302 150 284 140 282 120 Z"/>
+<path fill="#5aa0d4" d="M356 92 C368 106 368 132 354 144 C346 148 338 150 328 150 C352 136 360 118 356 92 Z"/>
+<path class="o" fill="#9aa4b8" d="M360 110 L404 120 L362 132 Z"/>
+<path d="M322 104 l20 6 l-18 6 z" fill="#1b1b2b"/>
+<path class="t" d="M318 98 l26 8" stroke-width="4"/><!-- crest of three plumes -->
+<path class="o" fill="#5aa0d4" d="M298 86 C280 60 266 40 240 34 C262 52 270 70 280 92 Z"/>
+<path class="o" fill="#5aa0d4" d="M310 78 C302 50 296 30 276 16 C296 26 312 46 320 74 Z"/>
+<path class="o" fill="#5aa0d4" d="M324 76 C326 50 330 30 318 10 C334 22 342 46 336 76 Z"/>
+<path d="M296 130 C300 110 310 96 322 90" stroke="#c4e6fa" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

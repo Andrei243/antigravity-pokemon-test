@@ -32,7 +32,13 @@ public enum BattleFormat
     /// A horde (plan 14 · B3, X and Y's): one of the player's Pokémon against up to five wild ones at once. Fought only
     /// under rules that have it (<see cref="Data.Ruleset.Hordes"/>); anywhere else it falls back (<see cref="BattleFormats.FallBack"/>).
     /// </summary>
-    Horde
+    Horde,
+    /// <summary>
+    /// An SOS battle (plan 14 · B5, Sun and Moon's): one wild Pokémon against the player's one, with a second place on the
+    /// wild side left empty for an ally it calls for help. Fought only under rules that have it
+    /// (<see cref="Data.Ruleset.SosCalls"/>); anywhere else it is the single it began as (<see cref="BattleFormats.FallBack"/>).
+    /// </summary>
+    Sos
 }
 
 /// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
@@ -46,6 +52,8 @@ public static class BattleFormats
     {
         BattleFormat.Double => 2,
         BattleFormat.Horde => side == BattleSide.Enemy ? 5 : 1,
+        // The caller's place and the one an ally fills (plan 14 · B5)
+        BattleFormat.Sos => side == BattleSide.Enemy ? 2 : 1,
         _ => 1
     };
 
@@ -65,6 +73,9 @@ public static class BattleFormats
         bool special = kind is BattleKind.Safari or BattleKind.PalPark;
         if (asked == BattleFormat.Horde && !partnerStays && rules.Hordes && trainers == 0 && wild >= 2 && ownAble > 0 && kind == BattleKind.Normal)
             return BattleFormat.Horde;
+        // An SOS battle (plan 14 · B5): one wild Pokémon met by the player alone, under rules that have calls for help
+        if (asked == BattleFormat.Sos && !partner && rules.SosCalls && trainers == 0 && wild == 1 && ownAble > 0 && kind == BattleKind.Normal)
+            return BattleFormat.Sos;
         return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
     }
 }

@@ -1,0 +1,75 @@
+# The storyteller's house in Lacunosa Town (plan 22 · U7, part b). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/lacunosa_town.s and lacunosa_town_3.s, read for the order alone).
+# VAR_UNOVA_LACUNOSA is the town's count (lacunosa_town.txt has it whole): 1 as the player is brought in by Professor Juniper and
+# Bianca, 2 once the tale has been told and they have gone. The old woman (0) tells it again to anyone who asks.
+
+
+script OnEnter
+  call UnovaCatchUpB
+  if var VAR_UNOVA_LACUNOSA != 1 end
+  scene "The old tale of Lacunosa Town"
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  clearflag FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  place 1 5 5 right
+  place 2 7 5 left
+  show 1
+  show 2
+  walk player up 3
+  face 0 player
+  speaker "Storyteller"
+  say "You must be the ones who came to hear the old tale of Lacunosa Town."
+  speaker "Prof. Juniper"
+  say "That's right. Please, tell us."
+  speaker "Storyteller"
+  say "All right, my dears. Please sit and listen."
+  call UnovaLacunosaTale
+  speaker "Prof. Juniper"
+  say "Wasn't that an interesting folktale? We can't say what the Pokémon was, but the power in the story is remarkable!"
+  speaker "Bianca"
+  say "I know... A power that can freeze everything around it. It could rival the legendary dragons!"
+  speaker "Prof. Juniper"
+  say "Yes, Bianca. It's rather like the dragons I told you of in Lentimas Town, who scorched Unova long ago."
+  speaker "Bianca"
+  say "Professor, do you think the Pokémon from the old story and the legendary dragons could be connected?"
+  speaker "Prof. Juniper"
+  say "The meteorite."
+  speaker "Bianca"
+  say "The meteorite?"
+  speaker "Prof. Juniper"
+  say "The dragons were woken from stones, the Light Stone and the Dark Stone. Suppose the meteorite in the tale and those stones were one and the same..."
+  say "Remember that elements from the same age were found in the Dragonspiral Tower, where the dragons slept, and the pieces start to fit."
+  speaker "Bianca"
+  say "If your theory's right, it must be a really strong Pokémon. Why would it come out only at night, though? Maybe it doesn't like sunlight?"
+  speaker "Prof. Juniper"
+  say "We'd have to look into it more deeply before I could say anything about that."
+  say "Now that I think of it, the name Lacunosa may come from lacunosus clouds, clouds that look like a net or a fence. I wonder whether the name is related."
+  say "Oh, sorry, I've rambled on, haven't I? {player}, could you ask Drayden about this, if you get the chance?"
+  say "I'm going to do a little fieldwork. Bianca, you'll help me!"
+  speaker "Bianca"
+  say "Sure thing!"
+  speaker "Prof. Juniper"
+  say "Oh, one more thing. Opelucid City's mayor, Drayden, wrestles with his Pokémon to make them tough. Don't be surprised!"
+  walk 1 down 3 right 1
+  hide 1
+  setflag FLAG_UNOVA_HIDE_JUNIPER_STORYTELLER
+  speaker "Bianca"
+  say "Professor Juniper, wait up!"
+  walk 2 down 3 left 1
+  hide 2
+  setflag FLAG_UNOVA_HIDE_BIANCA_STORYTELLER
+  clearflag FLAG_UNOVA_HIDE_HUGH_LACUNOSA
+  setvar VAR_UNOVA_LACUNOSA 2
+  endscene
+  end
+
+
+script TheOldTale
+  face 0 player
+  speaker "Storyteller"
+  ask "Do you want to hear that old tale of Lacunosa Town again? It always takes me a little time to tell."
+  if no goto NotNow
+  call UnovaLacunosaTale
+  end
+label NotNow
+  say "Oh, fine, fine. Come back when you have time."
+  end

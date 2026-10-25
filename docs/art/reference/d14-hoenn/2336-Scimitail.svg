@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2336 Scimitail (Poison/Dark), from Seviper: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2336_1" d="M318 312C300 290 300 262 318 236C330 214 352 196 380 186C364 206 352 228 348 250C344 276 336 296 328 318Z"/><clipPath id="h2336_1c"><use href="#h2336_1"/></clipPath><path id="h2336_2" d="M226 214C220 190 196 168 170 166C140 164 112 178 108 196C130 196 156 200 176 210C186 222 206 232 226 236Z"/><clipPath id="h2336_2c"><use href="#h2336_2"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M112 440a150 13 0 1 0 300 0a150 13 0 1 0 -300 0Z" fill="#e9ebf2"/>
+<use href="#h2336_1" fill="#c9364a"/>
+<g clip-path="url(#h2336_1c)"><path d="M328 318C336 296 344 276 348 250C352 228 364 206 380 186L384 196C368 222 360 260 344 300Z" fill="#8e1f30"/><path d="M322.2 260.6A4 26 20 1 0 329.8 263.4A4 26 20 1 0 322.2 260.6Z" fill="#f07a8a"/></g>
+<use href="#h2336_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M196 222C210 270 140 300 160 360C182 420 330 430 370 380C404 336 360 300 320 318" fill="none" stroke="#1b1b2b" stroke-width="52"/>
+<path d="M196 222C210 270 140 300 160 360C182 420 330 430 370 380C404 336 360 300 320 318" fill="none" stroke="#2d2d3a" stroke-width="42"/>
+<path d="M196 222C210 270 140 300 160 360C182 420 330 430 370 380C404 336 360 300 320 318" fill="none" stroke="#d6363e" stroke-width="42" stroke-dasharray="14 26" stroke-linecap="butt"/>
+<path d="M196 222C210 270 140 300 160 360C182 420 330 430 370 380C404 336 360 300 320 318" fill="none" stroke="#e8c03c" stroke-width="42" stroke-dasharray="0 3 8 29" stroke-linecap="butt"/>
+<path d="M196 222C210 270 140 300 160 360C182 420 330 430 370 380C404 336 360 300 320 318" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.35" transform="translate(-8 -10)"/>
+<use href="#h2336_2" fill="#2d2d3a"/>
+<g clip-path="url(#h2336_2c)"><path d="M150 170C170 168 190 176 204 190L196 196C184 184 168 178 150 178Z" fill="#e8c03c"/><path d="M138.1 178.3A22 5 -6 1 0 181.9 173.7A22 5 -6 1 0 138.1 178.3Z" fill="#4f4f62"/></g>
+<use href="#h2336_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M108 196C130 204 158 210 182 218C160 226 128 226 106 212Z" fill="#7a1f30" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M124 200L118 232L132 204Z" fill="#f6f2e6" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M150 206L146 236L158 208Z" fill="#f6f2e6" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M152.2 185.7A10 7 -10 1 0 171.8 182.3A10 7 -10 1 0 152.2 185.7Z" fill="#e8c03c" stroke="#1b1b2b" stroke-width="3.5"/>
+<path d="M159 185a3 6 0 1 0 6 0a3 6 0 1 0 -6 0Z" fill="#d6363e"/>
+<path d="M110 206L92 206L82 198M92 206L82 214" fill="none" stroke="#d6363e" stroke-width="3"/>
+</svg>

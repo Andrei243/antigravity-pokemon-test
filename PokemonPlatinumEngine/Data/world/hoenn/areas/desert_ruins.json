@@ -1,0 +1,31 @@
+{
+  "key": "desert_ruins",
+  "index": 244,
+  "name": "Desert Ruins",
+  "matrix": 193,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEALED_CHAMBER",
+  "nightMusic": "MUS_SEALED_CHAMBER",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 29, "to": "route_111", "toWarp": 1 },
+    { "x": 8, "z": 20, "to": "desert_ruins", "toWarp": 2 },
+    { "x": 8, "z": 11, "to": "desert_ruins", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "regirock", "looks": "regirock", "movement": "look_south", "x": 8, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_REGIROCK", "script": "DesertRuins_EventScript_Regirock" }
+  ],
+  "signs": [
+    { "x": 8, "z": 20, "type": 0, "script": "DesertRuins_EventScript_CaveEntranceMiddle" },
+    { "x": 7, "z": 20, "type": 0, "script": "DesertRuins_EventScript_CaveEntranceSide" },
+    { "x": 9, "z": 20, "type": 0, "script": "DesertRuins_EventScript_CaveEntranceSide" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2321 Leviawhale (Water), from Wailord: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2321_1" d="M44 286C44 202 150 162 276 168C380 174 432 214 452 246L494 210C504 246 504 292 494 330L452 294C424 334 334 362 236 362C126 362 44 344 44 286Z"/><clipPath id="h2321_1c"><use href="#h2321_1"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M58 440a210 14 0 1 0 420 0a210 14 0 1 0 -420 0Z" fill="#e9ebf2"/>
+<path d="M146 130a30 20 0 1 0 60 0a30 20 0 1 0 -60 0Z" fill="#e4f2ff" opacity="0.5"/>
+<path d="M128 108a22 16 0 1 0 44 0a22 16 0 1 0 -44 0Z" fill="#e4f2ff" opacity="0.4"/>
+<path d="M180 104a24 16 0 1 0 48 0a24 16 0 1 0 -48 0Z" fill="#e4f2ff" opacity="0.4"/>
+<path d="M160 84a18 13 0 1 0 36 0a18 13 0 1 0 -36 0Z" fill="#e4f2ff" opacity="0.3"/>
+<path d="M176 160C172 140 160 126 150 116M178 160C182 138 196 124 206 112" fill="none" stroke="#b9d8f2" stroke-width="5"/>
+<path d="M212 178L234 142L246 180Z" fill="#2f5594" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M262 182L284 142L296 184Z" fill="#2f5594" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M312 192L334 154L346 194Z" fill="#2f5594" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M358 208L380 174L392 210Z" fill="#2f5594" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M398 228L420 200L432 230Z" fill="#2f5594" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2321_1" fill="#4a7fc9"/>
+<g clip-path="url(#h2321_1c)"><path d="M40 300C120 330 300 340 452 290L494 330L494 400L40 400Z" fill="#33609e"/><path d="M48 300C100 340 250 356 400 318L420 330C330 370 140 372 48 330Z" fill="#efe6cf"/><path d="M90.1 195.8A110 12 -2 1 0 309.9 188.2A110 12 -2 1 0 90.1 195.8Z" fill="#7aa6e2"/></g>
+<use href="#h2321_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M90 322L96 348" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M136 325L142 349" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M182 328L188 350" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M228 331L234 351" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M274 334L280 352" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M320 337L326 353" fill="none" stroke="#d0c4a6" stroke-width="3"/>
+<path d="M243 196a7 5.6 0 1 0 14 0a7 5.6 0 1 0 -14 0Z" fill="#d9dde4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M261 204a5 4 0 1 0 10 0a5 4 0 1 0 -10 0Z" fill="#d9dde4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M314 204a6 4.8 0 1 0 12 0a6 4.8 0 1 0 -12 0Z" fill="#d9dde4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M332 214a4 3.2 0 1 0 8 0a4 3.2 0 1 0 -8 0Z" fill="#d9dde4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M296 214a4 3.2 0 1 0 8 0a4 3.2 0 1 0 -8 0Z" fill="#d9dde4" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M370 236L410 250" fill="none" stroke="#c8dcf2" stroke-width="4"/>
+<path d="M150 214L190 206" fill="none" stroke="#c8dcf2" stroke-width="4"/>
+<path d="M50 296C90 300 140 300 186 290" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M99 268a7 9 0 1 0 14 0a7 9 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M101.7 264.9a2.2 2.5 0 1 0 4.5 0a2.2 2.5 0 1 0 -4.5 0Z" fill="#ffffff"/>
+</svg>

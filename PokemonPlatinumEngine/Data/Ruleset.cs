@@ -286,6 +286,13 @@ public sealed class Ruleset
     /// </summary>
     public bool Hordes { get; private init; }
 
+    /// <summary>
+    /// Calls for help (plan 14 · B5; Sun and Moon's SOS battles): a wild battle asked for as a <see cref="Battle.BattleFormat.Sos"/>
+    /// keeps a second place on the wild side for an ally its Pokémon may call. Platinum has none, and under its rules such
+    /// a battle is the single it began as (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool SosCalls { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -346,7 +353,8 @@ public sealed class Ruleset
         Dynamax = true,
         Terastallization = true,
         LaterBalls = true,
-        Hordes = true
+        Hordes = true,
+        SosCalls = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

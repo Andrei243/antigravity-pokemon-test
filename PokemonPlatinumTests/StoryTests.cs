@@ -701,6 +701,10 @@ public class StoryTests
         // What looking at the Villa's furniture says, and the Catching Show's end (plan 06 · R16b)
         started.UnionWith(PokemonPlatinumEngine.Core.GameEngine.PastimeScripts.Select(s => Scripts.Find(s.Script, s.File)!.FullName));
         started.UnionWith(Enum.GetValues<FieldMove>().Select(FieldScripts.FromMenu).OfType<string>());
+        // A field move worked at a braille spot, which the party menu starts as the place's own script (plan 21 · H12, part a)
+        foreach (var map in Walk.OwnMaps.Values)
+            foreach (var (at, puzzle) in map.BrailleSpots)
+                started.Add(Scripts.Find(puzzle.Script, map.ScriptFileAt(at.X, at.Y))!.FullName);
         foreach (var script in Scripts.All)
         {
             if (script.Name is ScriptLibrary.OnEnter or ScriptLibrary.OnTransition) started.Add(script.FullName);
@@ -801,7 +805,7 @@ public class StoryTests
         }
         // Each ball has a flag of its own: picking one up takes no other away. But for one the original shares: the
         // TM in the Ruin Maniac's cave, which lies at the end of his tunnel once he has dug it (one or the other is there)
-        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28" };
+        var shared = new[] { "FLAG_OBTAINED_RUIN_MANIAC_CAVE_OR_TUNNEL_TM28", "FLAG_UNOVA_0x04bd" /* the Strange House's Dusk Stone, in both its libraries (plan 22 · U7, part b) */ };
         Assert.Empty(balls.GroupBy(b => b.Ball.HiddenBy).Where(g => g.Count() > 1 && !shared.Contains(g.Key)).Select(g => g.Key));
 
         // What the user asked to see, where Platinum has it: the Potion beside Route 202's grass and the Poké Ball of Route 203

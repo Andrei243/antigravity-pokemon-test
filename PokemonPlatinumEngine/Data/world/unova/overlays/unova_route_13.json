@@ -1,0 +1,107 @@
+{
+  // Route 13 (plan 22 · U7, part b): the longest road in Unova, Black 2's, running from Undella Town's gate north along the sea and
+  // its cliffs to Lacunosa Town, with Cut trees (0 and 1), Strength boulders (2 to 4) and a dozen trainers on it, our words. A
+  // treasure hunter (13) gives away a Heart Scale once a day. Black 2's Cobalion (21, FLAG_UNOVA_HIDE_COBALION_ROUTE_13), which
+  // roars at the north end and is met there, is plan 22 · U10's (the Swords of Justice), and so is Black 2's route east
+  "area": "unova_route_13",
+  "bgmTrack": "unova/route13",
+  "people": {
+    "5": {
+      "name": "Angi",
+      "trainer": {
+        "dialogueBefore": "I'm walking the whole length of Route 13, and I'm battling everyone who's walking it too!",
+        "dialogueAfter": "Another trainer, another lesson. On I walk."
+      }
+    },
+    "6": {
+      "name": "Jones",
+      "trainer": {
+        "dialogueBefore": "Nothing's biting, so I thought I'd fish for a battle instead.",
+        "dialogueAfter": "Hmph. Hook, line and sunk."
+      }
+    },
+    "7": {
+      "name": "Damon",
+      "trainer": {
+        "dialogueBefore": "You can't hurry fishing and you can't hurry a battle. Settle in.",
+        "dialogueAfter": "Slow and steady, and I still lost."
+      }
+    },
+    "8": {
+      "name": "Daryl",
+      "trainer": {
+        "dialogueBefore": "A ranger keeps the road safe. Let me see if you're one of the good ones!",
+        "dialogueAfter": "You're one of the good ones."
+      }
+    },
+    "9": {
+      "name": "Vince",
+      "trainer": {
+        "dialogueBefore": "The big ones are out in the deep water. I'm after you, though. You'll do!",
+        "dialogueAfter": "A big one got away."
+      }
+    },
+    "10": {
+      "name": "Miguel",
+      "trainer": {
+        "dialogueBefore": "I hold my Pokémon to the highest standard. I hold myself to it too. Let's see if you do!",
+        "dialogueAfter": "Higher standards than mine. Well done."
+      }
+    },
+    "11": {
+      "name": "Leroy",
+      "trainer": {
+        "dialogueBefore": "The sea wind sharpens a man's mind. And a Pokémon's fangs!",
+        "dialogueAfter": "The wind blew me out."
+      }
+    },
+    "12": {
+      "name": "Laura",
+      "trainer": {
+        "dialogueBefore": "Oh, you startled me! Well, if you came to battle, I'll be gracious about it.",
+        "dialogueAfter": "How gracious of you to win."
+      }
+    },
+    "13": {
+      "name": "Treasure Hunter",
+      "npcType": "ace_trainer_m",
+      "script": "TreasureHunter",
+      "still": true
+    },
+    "14": {
+      "name": "Dianne",
+      "trainer": {
+        "dialogueBefore": "Rangers see everything on the road, and I saw you coming! Battle me!",
+        "dialogueAfter": "A ranger can't see everything after all."
+      }
+    },
+    "21": {
+      "name": "Cobalion",
+      "npcType": "Pokemon",
+      "species": "Cobalion",
+      "hiddenBy": "FLAG_UNOVA_HIDE_COBALION_ROUTE_13",
+      "still": true
+    },
+    "24": {
+      "name": "Alize",
+      "trainer": {
+        "dialogueBefore": "Let's punch our way through! I'm not stopping until I've fought the whole road!",
+        "dialogueAfter": "A knockout. I'll go and train some more."
+      }
+    },
+    "25": {
+      "name": "Wesley",
+      "trainer": {
+        "dialogueBefore": "I stand on this cliff and wait for challengers. You're the first in an hour. Come at me!",
+        "dialogueAfter": "That was worth the long wait."
+      }
+    }
+  },
+  "signs": {
+    "1": "Route 13\nUndella Town is south, Lacunosa Town west",
+    "2": "Route 13\nThe longest road in Unova",
+    "3": "Trainer Tips\nThe type you set on the Trainer Card is what other players see of you. Pick one that suits you!",
+    "10801": "Route 13\nThe road bends east beyond the cliff",
+    "10802": "Lacunosa Town ahead"
+  }
+}

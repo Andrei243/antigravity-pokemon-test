@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Somnimoth (No. 2049), Bug/Psychic, from Venomoth: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.w{fill:#d8c4f0}.wd{fill:#b49ad8}.wl{fill:#f0e6fc}.b{fill:#8a5cb8}.bd{fill:#6a4294}.bl{fill:#a982d4}.ey{fill:#f2c860}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="256" cy="480" rx="90" ry="10" fill="#e6e7ee"/>
+<!-- lower wings with long luna-moth tails -->
+<path class="o wd" d="M236 280 C180 300 120 330 110 380 C104 420 120 470 92 500 C140 480 150 430 170 400 C196 380 220 340 240 300 Z"/>
+<path class="o wd" d="M276 280 C332 300 392 330 402 380 C408 420 392 470 420 500 C372 480 362 430 342 400 C316 380 292 340 272 300 Z"/>
+<!-- upper wings, wide -->
+<path class="o w" d="M236 250 C180 180 90 150 30 180 C20 230 60 290 120 300 C170 308 210 292 240 278 Z"/>
+<path class="o w" d="M276 250 C332 180 422 150 482 180 C492 230 452 290 392 300 C342 308 302 292 272 278 Z"/>
+<path class="wl" d="M220 250 C170 200 100 182 50 196 C80 194 150 210 210 262 Z M292 250 C342 200 412 182 462 196 C432 194 362 210 302 262 Z"/>
+<!-- eyespots -->
+<g class="o" stroke-width="4"><circle cx="110" cy="230" r="28" fill="#f6eefc"/><circle cx="402" cy="230" r="28" fill="#f6eefc"/></g>
+<g><circle cx="110" cy="230" r="18" fill="#8a5cb8"/><circle cx="402" cy="230" r="18" fill="#8a5cb8"/><circle cx="110" cy="230" r="8" fill="#1b1b2b"/><circle cx="402" cy="230" r="8" fill="#1b1b2b"/><circle cx="106" cy="226" r="3" fill="#fff"/><circle cx="398" cy="226" r="3" fill="#fff"/></g>
+<g class="o" stroke-width="3" fill="#f6eefc"><circle cx="150" cy="380" r="14"/><circle cx="362" cy="380" r="14"/></g>
+<circle cx="150" cy="380" r="6" fill="#8a5cb8"/><circle cx="362" cy="380" r="6" fill="#8a5cb8"/>
+<path class="t" d="M60 200 C110 220 170 250 226 270 M452 200 C402 220 342 250 286 270" stroke-width="2"/>
+<!-- fuzzy, thicker body -->
+<path class="o b" d="M222 300 C214 250 234 214 256 214 C278 214 298 250 290 300 C286 350 272 400 256 404 C240 400 226 350 222 300 Z"/>
+<path class="bd" d="M276 230 C292 262 292 320 280 360 C274 384 266 400 256 404 C276 360 282 300 276 230 Z"/>
+<path class="t" d="M232 320 c14 6 34 6 48 0 M236 350 c12 6 28 6 40 0 M240 378 c10 4 22 4 32 0" stroke-width="2.5"/>
+<!-- fuzzy collar -->
+<path class="o bl" d="M218 224 C222 206 240 196 256 196 C272 196 290 206 294 224 L284 232 L276 222 L266 234 L256 222 L246 234 L236 222 L228 232 Z"/>
+<!-- head -->
+<path class="o b" d="M212 160 C210 128 230 110 256 110 C282 110 302 128 300 160 C298 186 280 200 256 200 C232 200 214 186 212 160 Z"/>
+<!-- compound eyes -->
+<g class="o ey" stroke-width="4"><ellipse cx="232" cy="160" rx="16" ry="20"/><ellipse cx="280" cy="160" rx="16" ry="20"/></g>
+<g class="t" stroke-width="1.5" stroke="#b08a30"><path d="M222 152 h20 M222 164 h20 M270 152 h20 M270 164 h20 M232 142 v36 M280 142 v36"/></g>
+<!-- fern-branched antennae -->
+<path class="t" d="M242 116 C230 80 210 60 186 48 M270 116 C282 80 302 60 326 48" stroke-width="4"/>
+<path class="t" d="M232 92 l-16 -2 M222 76 l-14 -4 M206 62 l-12 -6 M236 98 l-4 -12 M224 82 l-2 -12 M210 66 l-2 -12 M280 92 l16 -2 M290 76 l14 -4 M306 62 l12 -6 M276 98 l4 -12 M288 82 l2 -12 M302 66 l2 -12" stroke-width="2.5"/>
+<!-- highlight -->
+<path d="M226 128 C236 120 248 118 260 118" stroke="#b08ad8" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>

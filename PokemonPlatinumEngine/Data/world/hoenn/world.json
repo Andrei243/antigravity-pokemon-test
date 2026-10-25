@@ -349,7 +349,17 @@
     { "name": "SecretBase_Shrub4", "matrix": 318, "area": "secret_base_shrub_4", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H11: Lilycove City's Contest Lobby (the receptionists, the Berry Blenders) and the Contest Hall behind it (the winners' paintings)
     { "name": "LilycoveCity_ContestLobby", "matrix": 113, "area": "lilycove_city_contest_lobby", "trees": "Round", "setting": "Indoors" },
-    { "name": "LilycoveCity_ContestHall", "matrix": 114, "area": "lilycove_city_contest_hall", "trees": "Round", "setting": "Indoors" }
+    { "name": "LilycoveCity_ContestHall", "matrix": 114, "area": "lilycove_city_contest_hall", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H12, part a: the Regis (the Sealed Chamber under Route 134 and the three caves it opens) and
+    // Southern Island (Altering Cave stays unbuilt: its way in is a plain rock wall)
+    { "name": "Underwater_Route134", "matrix": 256, "area": "underwater_route_134", "trees": "Round", "setting": "Underwater" },
+    { "name": "Underwater_SealedChamber", "matrix": 257, "area": "underwater_sealed_chamber", "trees": "Round", "setting": "Underwater" },
+    { "name": "SealedChamber_OuterRoom", "matrix": 258, "area": "sealed_chamber_outer_room", "trees": "Round", "setting": "Cave" },
+    { "name": "SealedChamber_InnerRoom", "matrix": 259, "area": "sealed_chamber_inner_room", "trees": "Round", "setting": "Cave" },
+    { "name": "DesertRuins", "matrix": 193, "area": "desert_ruins", "trees": "Round", "setting": "Cave" },
+    { "name": "IslandCave", "matrix": 254, "area": "island_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "SouthernIsland_Exterior", "matrix": 362, "area": "southern_island_exterior", "trees": "Round" },
+    { "name": "SouthernIsland_Interior", "matrix": 363, "area": "southern_island_interior", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -480,6 +490,9 @@
     "secret_base_blue_cave_3", "secret_base_yellow_cave_3", "secret_base_tree_3", "secret_base_shrub_3", "secret_base_red_cave_4",
     "secret_base_brown_cave_4", "secret_base_blue_cave_4", "secret_base_yellow_cave_4", "secret_base_tree_4", "secret_base_shrub_4",
     // Plan 21 · H11: the Contest Lobby and the Contest Hall
-    "lilycove_city_contest_lobby", "lilycove_city_contest_hall"
+    "lilycove_city_contest_lobby", "lilycove_city_contest_hall",
+    // Plan 21 · H12, part a: the Regis and Southern Island (Altering Cave stays unbuilt: its way in is a plain rock wall)
+    "underwater_route_134", "underwater_sealed_chamber", "sealed_chamber_outer_room", "sealed_chamber_inner_room",
+    "desert_ruins", "island_cave", "southern_island_exterior", "southern_island_interior"
   ]
 }

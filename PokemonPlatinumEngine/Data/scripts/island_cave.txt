@@ -1,0 +1,76 @@
+# The Island Cave (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/IslandCave/scripts.inc).
+#
+# A wall of dots shuts the chamber where Regice waits. Reading it, once the Sealed Chamber's doors have been opened
+# (FLAG_REGI_DOORS_OPENED), starts the lap its dots ask for: VAR_ISLAND_CAVE_LAP 1, then the hall's four corners one after
+# another (the overlay's triggers, 2 to 5) and back to the wall, which opens it (FLAG_SYS_BRAILLE_REGICE_COMPLETED). Emerald
+# counts steps along a path of tiles; this lap is ours (docs/mechanics/rulings.md). The arrival forgets a lap half run.
+# Regice is shown by the arrival while it has not been beaten or caught and is battled at level 40.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_FOURTEEN call HoennChapterFourteen
+  setvar VAR_ISLAND_CAVE_LAP 0
+  if flag FLAG_DEFEATED_REGICE end
+  clearflag FLAG_HIDE_REGICE
+  end
+
+
+# The wall's dots (and the slabs before them): they ask for a lap of the hall, and begin it
+script Wall
+  speaker none
+  if flag FLAG_SYS_BRAILLE_REGICE_COMPLETED goto Open
+  text "Rows of raised dots cover the wall. They seem to say: run a lap around the hall."
+  if not flag FLAG_REGI_DOORS_OPENED end
+  setvar VAR_ISLAND_CAVE_LAP 1
+  end
+label Open
+  text "There is a big hole in the wall."
+  end
+
+
+# The lap's four corners, taken in order from the wall: west and north, west and south, east and south, east and north
+script LapWestCorner
+  setvar VAR_ISLAND_CAVE_LAP 2
+  end
+
+script LapSouthWestCorner
+  setvar VAR_ISLAND_CAVE_LAP 3
+  end
+
+script LapSouthEastCorner
+  setvar VAR_ISLAND_CAVE_LAP 4
+  end
+
+script LapEastCorner
+  setvar VAR_ISLAND_CAVE_LAP 5
+  end
+
+
+# Back at the wall with the lap run
+script LapDone
+  scene "The wall of the Island Cave opens"
+  sound "rock_smash"
+  camera shake 1
+  wait 0.8
+  speaker none
+  text "The dots on the wall faded, and the wall slid away!"
+  setflag FLAG_SYS_BRAILLE_REGICE_COMPLETED
+  setvar VAR_ISLAND_CAVE_LAP 0
+  endscene
+  end
+
+
+script Regice
+  cry "Regice"
+  speaker none
+  text "Regice stands in the cold dark, frozen as the cave itself."
+  wildbattle "Regice" 40
+  hide self
+  setflag FLAG_HIDE_REGICE
+  if result == 2 goto Fled
+  setflag FLAG_DEFEATED_REGICE
+  end
+label Fled
+  text "Regice vanished into the dark of the cave..."
+  end

@@ -1,0 +1,19 @@
+{
+  // Southern Island's garden (plan 21 · H12, part a): a pond with a stone on an island in its middle, which the player
+  // reaches by Surf and reads from 13, 12 (Emerald's SouthernIsland_Interior_EventScript_TryLatiEncounter, a sign at
+  // 13, 11). The Pokémon of the eon pair that is NOT roaming Hoenn (VAR_ROAMER_POKEMON 0 is Latias roaming, so Latios
+  // waits here) comes down to the stone at level 50, holding a Soul Dew, once for a game
+  // (FLAG_ENCOUNTERED_LATIAS_OR_LATIOS; beaten or caught for good, FLAG_DEFEATED_ and FLAG_CAUGHT_LATIAS_OR_LATIOS).
+  // Both are people of the garden here, hidden until the scene shows the one it needs, at 13, 10, north of the stone
+  "area": "southern_island_interior",
+  "name": "Southern Island",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "trees": "Round",
+  "read": {
+    "SouthernIsland_Interior_EventScript_TryLatiEncounter": "Stone"
+  },
+  "npcs": [
+    { "id": "southern_island_latios", "name": "Latios", "npcType": "Pokemon", "species": "Latios", "x": 13, "y": 10, "facing": "Down", "hiddenBy": "FLAG_HIDE_SOUTHERN_ISLAND_LATIOS", "script": "Lati" },
+    { "id": "southern_island_latias", "name": "Latias", "npcType": "Pokemon", "species": "Latias", "x": 13, "y": 10, "facing": "Down", "hiddenBy": "FLAG_HIDE_SOUTHERN_ISLAND_LATIAS", "script": "Lati" }
+  ]
+}

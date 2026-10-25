@@ -961,6 +961,10 @@
       "provisional": true
     },
     "steven": {},
+    "storyteller": {
+      "note": "first spoken at lacunosa_town.txt(140)",
+      "provisional": true
+    },
     "studio_hand": {
       "note": "first spoken at virbank_city.txt(72)",
       "provisional": true
@@ -1415,6 +1419,7 @@
     "Socialite": "socialite",
     "Station Agent": "station_agent",
     "Steven": "steven",
+    "Storyteller": "storyteller",
     "Studio Hand": "studio_hand",
     "Tabitha": "tabitha",
     "Tate": "tate",

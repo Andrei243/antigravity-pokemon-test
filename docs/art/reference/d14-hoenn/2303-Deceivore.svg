@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2303 Deceivore (Steel/Fairy), from Mawile: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2303_1" d="M284 204C306 120 380 80 434 94C444 110 432 130 418 134C380 128 334 160 308 214Z"/><clipPath id="h2303_1c"><use href="#h2303_1"/></clipPath><path id="h2303_2" d="M298 234C340 208 402 198 442 238C448 262 430 282 412 268C380 250 345 252 312 262Z"/><clipPath id="h2303_2c"><use href="#h2303_2"/></clipPath><path id="h2303_3" d="M282 196L270 132L302 182Z"/><clipPath id="h2303_3c"><use href="#h2303_3"/></clipPath><path id="h2303_4" d="M298 214L316 148L322 206Z"/><clipPath id="h2303_4c"><use href="#h2303_4"/></clipPath><path id="h2303_5" d="M212 262C206 300 182 380 170 432C214 448 298 448 332 432C318 380 292 300 286 262Z"/><clipPath id="h2303_5c"><use href="#h2303_5"/></clipPath><path id="h2303_6" d="M183.8 297.6A12 26 32 1 0 204.2 310.4A12 26 32 1 0 183.8 297.6Z"/><clipPath id="h2303_6c"><use href="#h2303_6"/></clipPath><path id="h2303_7" d="M291.8 310.4A12 26 -32 1 0 312.2 297.6A12 26 -32 1 0 291.8 310.4Z"/><clipPath id="h2303_7c"><use href="#h2303_7"/></clipPath><path id="h2303_8" d="M192 214a54 50 0 1 0 108 0a54 50 0 1 0 -108 0Z"/><clipPath id="h2303_8c"><use href="#h2303_8"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M138 452a120 13 0 1 0 240 0a120 13 0 1 0 -240 0Z" fill="#e9ebf2"/>
+<path d="M308 214C334 160 380 128 418 134L412 268C380 250 345 252 312 262Z" fill="#7a1f2e"/>
+<use href="#h2303_1" fill="#3b3b4a"/>
+<g clip-path="url(#h2303_1c)"><path d="M330 170C370 130 410 120 444 112L444 140L330 190Z" fill="#252530"/><path d="M312.4 123.7A40 7 -20 1 0 387.6 96.3A40 7 -20 1 0 312.4 123.7Z" fill="#6e6e82"/></g>
+<use href="#h2303_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2303_2" fill="#3b3b4a"/>
+<g clip-path="url(#h2303_2c)"><path d="M351.7 257.1A50 18 15 1 0 448.3 282.9A50 18 15 1 0 351.7 257.1Z" fill="#252530"/><path d="M336.3 215.3A34 6 8 1 0 403.7 224.7A34 6 8 1 0 336.3 215.3Z" fill="#6e6e82"/></g>
+<use href="#h2303_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M407 134L421 136L410 152Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M389 136L403 138L393 154Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M371 142L385 144L376 160Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M353 150L367 152L360 168Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M337 162L351 164L346 179Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M323 176L337 178L334 192Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M311 192L325 194L323 207Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M397 264L411 262L404 245Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M379 256L393 254L386 237Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M361 252L375 250L368 233Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M343 252L357 250L350 233Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M325 256L339 254L332 237Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M309 260L323 258L316 241Z" fill="#f4efe0" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2303_3" fill="#3b3b4a"/>
+<g clip-path="url(#h2303_3c)"><path d="M286 160L270 132L302 182Z" fill="#252530"/></g>
+<use href="#h2303_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2303_4" fill="#3b3b4a"/>
+<g clip-path="url(#h2303_4c)"><path d="M312 170L316 148L322 206Z" fill="#252530"/></g>
+<use href="#h2303_4" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M190 442a24 10 0 1 0 48 0a24 10 0 1 0 -48 0Z" fill="#d4a93c" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M262 444a24 10 0 1 0 48 0a24 10 0 1 0 -48 0Z" fill="#d4a93c" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2303_5" fill="#f5d36b"/>
+<g clip-path="url(#h2303_5c)"><path d="M262 262C286 300 306 380 316 444L340 444L300 250Z" fill="#d4a93c"/><path d="M212.1 318.9A8 40 8 1 0 227.9 321.1A8 40 8 1 0 212.1 318.9Z" fill="#fff2bd"/></g>
+<use href="#h2303_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M182 410C214 420 296 422 326 410" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+<use href="#h2303_6" fill="#f5d36b"/>
+<g clip-path="url(#h2303_6c)"><path d="M194.9 306.8A6 24 32 1 0 205.1 313.2A6 24 32 1 0 194.9 306.8Z" fill="#d4a93c"/></g>
+<use href="#h2303_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2303_7" fill="#f5d36b"/>
+<g clip-path="url(#h2303_7c)"><path d="M300.1 313.7A7 24 -32 1 0 311.9 306.3A7 24 -32 1 0 300.1 313.7Z" fill="#d4a93c"/></g>
+<use href="#h2303_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2303_8" fill="#f5d36b"/>
+<g clip-path="url(#h2303_8c)"><path d="M240 240a40 40 0 1 0 80 0a40 40 0 1 0 -80 0Z" fill="#d4a93c"/><path d="M203.2 192.8A20 9 -20 1 0 240.8 179.2A20 9 -20 1 0 203.2 192.8Z" fill="#fff2bd"/></g>
+<use href="#h2303_8" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M196 196C206 160 250 150 290 170C278 176 260 172 248 184C236 174 214 180 196 196Z" fill="#3b3b4a" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M213.9 214a12.2 16.8 0 1 0 24.3 0a12.2 16.8 0 1 0 -24.3 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M217 214a9 14 0 1 0 18 0a9 14 0 1 0 -18 0Z" fill="#9b2335" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M222.9 215.4a4.5 8.4 0 1 0 9 0a4.5 8.4 0 1 0 -9 0Z" fill="#1b1b2b"/>
+<path d="M220.4 209.1a2.9 3.9 0 1 0 5.8 0a2.9 3.9 0 1 0 -5.8 0Z" fill="#ffffff"/>
+<path d="M255.2 212a10.8 15.6 0 1 0 21.6 0a10.8 15.6 0 1 0 -21.6 0Z" fill="#ffffff" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M258 212a8 13 0 1 0 16 0a8 13 0 1 0 -16 0Z" fill="#9b2335" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M263.2 213.3a4 7.8 0 1 0 8 0a4 7.8 0 1 0 -8 0Z" fill="#1b1b2b"/>
+<path d="M261 207.5a2.6 3.6 0 1 0 5.1 0a2.6 3.6 0 1 0 -5.1 0Z" fill="#ffffff"/>
+<path d="M236 240Q246 246 256 240" fill="none" stroke="#1b1b2b" stroke-width="3.5"/>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2314 Lampyria (Bug/Fairy), from Illumise: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2314_1" d="M222 417.2A12 32 4 1 0 246 418.8A12 32 4 1 0 222 417.2Z"/><clipPath id="h2314_1c"><use href="#h2314_1"/></clipPath><path id="h2314_2" d="M266 420.8A12 32 -4 1 0 290 419.2A12 32 -4 1 0 266 420.8Z"/><clipPath id="h2314_2c"><use href="#h2314_2"/></clipPath><path id="h2314_3" d="M226 290C206 330 192 380 188 414C226 426 290 426 326 414C320 380 306 330 286 290Z"/><clipPath id="h2314_3c"><use href="#h2314_3"/></clipPath><path id="h2314_4" d="M222 296a34 30 0 1 0 68 0a34 30 0 1 0 -68 0Z"/><clipPath id="h2314_4c"><use href="#h2314_4"/></clipPath><path id="h2314_5" d="M202.5 300.5A11 30 30 1 0 221.5 311.5A11 30 30 1 0 202.5 300.5Z"/><clipPath id="h2314_5c"><use href="#h2314_5"/></clipPath><path id="h2314_6" d="M290.5 311.5A11 30 -30 1 0 309.5 300.5A11 30 -30 1 0 290.5 311.5Z"/><clipPath id="h2314_6c"><use href="#h2314_6"/></clipPath><path id="h2314_7" d="M210 222a44 40 0 1 0 88 0a44 40 0 1 0 -88 0Z"/><clipPath id="h2314_7c"><use href="#h2314_7"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M162 458a100 11 0 1 0 200 0a100 11 0 1 0 -200 0Z" fill="#e9ebf2"/>
+<path d="M342 400a18 18 0 1 0 36 0a18 18 0 1 0 -36 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M351 400a9 9 0 1 0 18 0a9 9 0 1 0 -18 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M378 378a14 14 0 1 0 28 0a14 14 0 1 0 -28 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M385 378a7 7 0 1 0 14 0a7 7 0 1 0 -14 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M408 350a12 12 0 1 0 24 0a12 12 0 1 0 -24 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M414 350a6 6 0 1 0 12 0a6 6 0 1 0 -12 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M434 318a10 10 0 1 0 20 0a10 10 0 1 0 -20 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M439 318a5 5 0 1 0 10 0a5 5 0 1 0 -10 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M450 284a8 8 0 1 0 16 0a8 8 0 1 0 -16 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M454 284a4 4 0 1 0 8 0a4 4 0 1 0 -8 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M460 252a6 6 0 1 0 12 0a6 6 0 1 0 -12 0Z" fill="#fff3a0" opacity="0.35"/>
+<path d="M463 252a3 3 0 1 0 6 0a3 3 0 1 0 -6 0Z" fill="#fff3a0" stroke="#1b1b2b" stroke-width="2.5"/>
+<path d="M309.6 223.3A24 86 32 1 0 350.4 248.7A24 86 32 1 0 309.6 223.3Z" fill="#e6f2ff" fill-opacity="0.75" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M278.7 216.7A22 84 14 1 0 321.3 227.3A22 84 14 1 0 278.7 216.7Z" fill="#e6f2ff" fill-opacity="0.75" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M300 290L340 180" fill="none" stroke="#9fb6d0" stroke-width="2.5"/>
+<path d="M282 280L306 160" fill="none" stroke="#9fb6d0" stroke-width="2.5"/>
+<use href="#h2314_1" fill="#8c62b8"/>
+<g clip-path="url(#h2314_1c)"><path d="M234 423.6A6 30 4 1 0 246 424.4A6 30 4 1 0 234 423.6Z" fill="#68428f"/></g>
+<use href="#h2314_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2314_2" fill="#8c62b8"/>
+<g clip-path="url(#h2314_2c)"><path d="M278 426.4A6 30 -4 1 0 290 425.6A6 30 -4 1 0 278 426.4Z" fill="#68428f"/></g>
+<use href="#h2314_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M210 450a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#8c62b8" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M266 452a18 8 0 1 0 36 0a18 8 0 1 0 -36 0Z" fill="#8c62b8" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2314_3" fill="#5d62b6"/>
+<g clip-path="url(#h2314_3c)"><path d="M256 290C280 330 300 380 310 422L330 414L290 288Z" fill="#41458e"/><path d="M208.1 359A6 36 10 1 0 219.9 361A6 36 10 1 0 208.1 359Z" fill="#8d92de"/></g>
+<use href="#h2314_3" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M256 296L254 418" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<use href="#h2314_4" fill="#8c62b8"/>
+<g clip-path="url(#h2314_4c)"><path d="M252 306a20 24 0 1 0 40 0a20 24 0 1 0 -40 0Z" fill="#68428f"/></g>
+<use href="#h2314_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2314_5" fill="#8c62b8"/>
+<g clip-path="url(#h2314_5c)"><path d="M210.8 309A6 28 30 1 0 221.2 315A6 28 30 1 0 210.8 309Z" fill="#68428f"/></g>
+<use href="#h2314_5" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2314_6" fill="#8c62b8"/>
+<g clip-path="url(#h2314_6c)"><path d="M298.8 315A6 28 -30 1 0 309.2 309A6 28 -30 1 0 298.8 315Z" fill="#68428f"/></g>
+<use href="#h2314_6" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2314_7" fill="#8c62b8"/>
+<g clip-path="url(#h2314_7c)"><path d="M252 244a28 28 0 1 0 56 0a28 28 0 1 0 -56 0Z" fill="#68428f"/><path d="M217 201.5A16 8 -20 1 0 247 190.5A16 8 -20 1 0 217 201.5Z" fill="#b58fdc"/></g>
+<use href="#h2314_7" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M238 186C226 150 190 150 192 124C194 104 222 108 218 126C214 140 200 134 204 124" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M268 186C284 150 316 152 316 126C316 106 290 108 292 126C294 140 308 134 306 124" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M184 120a20 20 0 1 0 40 0a20 20 0 1 0 -40 0Z" fill="#fff3a0" opacity="0.4"/>
+<path d="M196 120a8 8 0 1 0 16 0a8 8 0 1 0 -16 0Z" fill="#fff3a0" opacity="0.8"/>
+<path d="M286 120a20 20 0 1 0 40 0a20 20 0 1 0 -40 0Z" fill="#fff3a0" opacity="0.4"/>
+<path d="M298 120a8 8 0 1 0 16 0a8 8 0 1 0 -16 0Z" fill="#fff3a0" opacity="0.8"/>
+<path d="M226 222a10 13 0 1 0 20 0a10 13 0 1 0 -20 0Z" fill="#1b1b2b"/>
+<path d="M229.8 217.5a3.2 3.6 0 1 0 6.4 0a3.2 3.6 0 1 0 -6.4 0Z" fill="#ffffff"/>
+<path d="M265 220a9 12 0 1 0 18 0a9 12 0 1 0 -18 0Z" fill="#1b1b2b"/>
+<path d="M268.4 215.8a2.9 3.4 0 1 0 5.8 0a2.9 3.4 0 1 0 -5.8 0Z" fill="#ffffff"/>
+<path d="M246 246Q254 250 262 246" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<title>Ferrisle (No. 2131), Water/Ice, from Lapras: reference only</title>
+<style>.o{stroke:#1b1b2b;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}.t{stroke:#1b1b2b;stroke-width:3;fill:none;stroke-linecap:round}.bl{fill:#5aa6dc}.bd{fill:#3c80b8}.cr{fill:#f4ecd4}.sh{fill:#9aa2b2}.shd{fill:#767e90}.ic{fill:#cdeefa}.icd{fill:#8fd0ec}</style>
+<rect width="512" height="512" fill="#ffffff"/>
+<ellipse cx="240" cy="452" rx="200" ry="18" fill="#e6eef6"/>
+<!-- rear flipper -->
+<path class="o bd" d="M90 400 C50 410 20 440 30 452 C60 450 100 432 120 410 Z"/>
+<!-- body (below deck) -->
+<path class="o bl" d="M70 360 C70 300 160 280 260 284 C350 288 400 310 404 360 C406 410 340 436 240 436 C140 436 70 416 70 360 Z"/>
+<path class="cr o" d="M120 396 C170 420 320 424 380 392 C370 420 320 434 240 434 C170 434 130 420 120 396 Z"/>
+<path class="bd" d="M330 296 C380 308 404 330 404 360 C402 380 390 396 370 404 C390 370 380 320 330 296 Z"/>
+<!-- front flipper -->
+<path class="o bl" d="M300 390 C320 420 350 452 380 456 C390 440 360 410 330 386 Z"/>
+<!-- deck: the grown shell -->
+<path class="o sh" d="M40 330 C60 280 160 250 260 252 C360 254 430 276 444 320 C420 344 340 352 240 350 C140 348 60 348 40 330 Z"/>
+<path class="shd" d="M60 340 C140 346 340 350 430 330 C410 346 340 352 240 350 C150 349 80 348 60 340 Z"/>
+<g class="o" fill="#b4bccb"><circle cx="90" cy="318" r="10"/><circle cx="400" cy="310" r="10"/><circle cx="130" cy="334" r="8"/><circle cx="360" cy="332" r="8"/></g>
+<!-- crest of ice along the middle -->
+<path class="o ic" d="M120 300 L150 250 L172 290 L200 222 L226 286 L256 200 L284 284 L314 226 L338 290 L364 254 L390 300 C300 312 200 312 120 300 Z"/>
+<path class="icd" d="M256 200 L284 284 L272 290 Z M200 222 L226 286 L216 292 Z M314 226 L338 290 L328 294 Z"/>
+<!-- little ice pines on the deck -->
+<g class="o ic"><path d="M78 312 L92 270 L106 312 Z"/><path d="M410 300 L422 262 L434 300 Z"/><path d="M100 330 L110 302 L120 330 Z"/></g>
+<!-- long neck and head -->
+<path class="o bl" d="M370 300 C380 230 390 160 380 110 C376 80 396 56 426 58 C456 60 474 82 468 104 C462 124 436 128 420 134 C412 180 420 250 408 312 Z"/>
+<path class="cr" d="M402 308 C412 250 404 190 410 140 C416 190 414 260 408 312 Z"/>
+<path class="bd" d="M380 110 C376 140 386 200 378 290 L370 300 C380 230 388 170 380 110 Z"/>
+<!-- horn -->
+<path class="o cr" d="M408 64 L404 14 L426 60 Z"/>
+<!-- ear fins -->
+<path class="o bd" d="M390 78 L360 66 L384 96 Z"/>
+<!-- eye and mouth -->
+<ellipse cx="432" cy="88" rx="7" ry="9" fill="#1b1b2b"/>
+<circle cx="434" cy="84" r="3" fill="#fff"/>
+<path class="t" d="M448 112 C456 112 462 108 466 102"/>
+<!-- highlight -->
+<path d="M390 90 C392 76 404 66 418 64" stroke="#a8d6f4" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M60 318 C100 290 170 270 240 266" stroke="#c9cfdb" stroke-width="5" fill="none" stroke-linecap="round"/>
+<!-- water lines -->
+<path class="t" d="M20 456 c20-8 40-8 60 0 M410 448 c20-8 40-8 60 0" stroke="#8fb8d8"/>
+</svg>

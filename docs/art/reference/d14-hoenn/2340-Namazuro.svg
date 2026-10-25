@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" stroke-linejoin="round" stroke-linecap="round">
+<title>2340 Namazuro (Water/Ground), from Whiscash: a reference drawing for sculpting, not a game asset</title>
+<defs><path id="h2340_1" d="M400 272C420 236 446 214 476 204C470 240 462 262 450 282C462 300 470 324 474 354C446 340 420 318 400 296Z"/><clipPath id="h2340_1c"><use href="#h2340_1"/></clipPath><path id="h2340_2" d="M70 296C70 206 168 168 272 178C362 188 412 238 424 288C412 340 362 372 268 372C166 372 70 362 70 296Z"/><clipPath id="h2340_2c"><use href="#h2340_2"/></clipPath><path id="h2340_3" d="M250 184C270 150 300 140 330 146C318 166 312 182 306 196Z"/><clipPath id="h2340_3c"><use href="#h2340_3"/></clipPath><path id="h2340_4" d="M96 230L120 196L166 180L214 182L244 200L230 226L186 220L140 232Z"/><clipPath id="h2340_4c"><use href="#h2340_4"/></clipPath></defs>
+<rect width="512" height="512" fill="#ffffff"/><path d="M56 440a200 12 0 1 0 400 0a200 12 0 1 0 -400 0Z" fill="#e9ebf2"/>
+<use href="#h2340_1" fill="#4b86c8"/>
+<g clip-path="url(#h2340_1c)"><path d="M450 282C462 300 470 324 474 354C446 340 420 318 400 296Z" fill="#33639c"/></g>
+<use href="#h2340_1" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<use href="#h2340_2" fill="#4b86c8"/>
+<g clip-path="url(#h2340_2c)"><path d="M70 320C170 350 320 352 424 288L430 400L70 400Z" fill="#33639c"/><path d="M74 310C130 350 270 362 380 330C330 372 150 380 74 340Z" fill="#ece4c8"/><path d="M180 196a80 8 0 1 0 160 0a80 8 0 1 0 -160 0Z" fill="#7eaee6"/></g>
+<use href="#h2340_2" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M250 250L272 268L262 284L288 300" fill="none" stroke="#fff2a0" stroke-width="12" opacity="0.4"/>
+<path d="M250 250L272 268L262 284L288 300" fill="none" stroke="#fff2a0" stroke-width="4"/>
+<path d="M318 238L334 258L326 276L346 290" fill="none" stroke="#fff2a0" stroke-width="12" opacity="0.4"/>
+<path d="M318 238L334 258L326 276L346 290" fill="none" stroke="#fff2a0" stroke-width="4"/>
+<use href="#h2340_3" fill="#4b86c8"/>
+<g clip-path="url(#h2340_3c)"><path d="M306 196L330 146L322 170Z" fill="#33639c"/></g>
+<use href="#h2340_3" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M200 330C210 360 236 380 264 384C254 360 240 342 224 330Z" fill="#33639c" stroke="#1b1b2b" stroke-width="4"/>
+<use href="#h2340_4" fill="#8a7b6a"/>
+<g clip-path="url(#h2340_4c)"><path d="M186 220L230 226L244 200L214 196Z" fill="#64584b"/><path d="M124 204L164 188L160 200L128 214Z" fill="#ada08f"/></g>
+<use href="#h2340_4" fill="none" stroke="#1b1b2b" stroke-width="5"/>
+<path d="M166 182L178 220M214 184L206 222" fill="none" stroke="#1b1b2b" stroke-width="3"/>
+<path d="M92 286C60 270 40 240 34 200" fill="none" stroke="#1b1b2b" stroke-width="11"/>
+<path d="M92 286C60 270 40 240 34 200" fill="none" stroke="#f2df8a" stroke-width="5"/>
+<path d="M98 292C64 290 40 300 24 330" fill="none" stroke="#1b1b2b" stroke-width="11"/>
+<path d="M98 292C64 290 40 300 24 330" fill="none" stroke="#f2df8a" stroke-width="5"/>
+<path d="M120 300C110 340 120 380 150 410" fill="none" stroke="#1b1b2b" stroke-width="11"/>
+<path d="M120 300C110 340 120 380 150 410" fill="none" stroke="#f2df8a" stroke-width="5"/>
+<path d="M110 278C80 240 74 200 90 160" fill="none" stroke="#1b1b2b" stroke-width="11"/>
+<path d="M110 278C80 240 74 200 90 160" fill="none" stroke="#f2df8a" stroke-width="5"/>
+<path d="M74 290C110 300 150 302 186 292" fill="none" stroke="#1b1b2b" stroke-width="4"/>
+<path d="M137 252a7 9 0 1 0 14 0a7 9 0 1 0 -14 0Z" fill="#1b1b2b"/>
+<path d="M139.7 248.9a2.2 2.5 0 1 0 4.5 0a2.2 2.5 0 1 0 -4.5 0Z" fill="#ffffff"/>
+</svg>

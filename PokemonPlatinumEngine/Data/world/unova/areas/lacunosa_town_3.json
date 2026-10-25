@@ -1,0 +1,30 @@
+{
+  "key": "lacunosa_town_3",
+  "index": 409,
+  "name": "Lacunosa Town",
+  "matrix": 47,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_T_04",
+  "nightMusic": "BGM_T_04",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "lacunosa_town", "toWarp": 2 },
+    { "x": 6, "z": 9, "to": "lacunosa_town", "toWarp": 2 },
+    { "x": 7, "z": 9, "to": "lacunosa_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "29", "movement": "none", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030f", "script": "4" },
+    { "id": "1", "looks": "105", "movement": "none", "x": 5, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030d", "script": "2000" },
+    { "id": "2", "looks": "249", "movement": "none", "x": 6, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x030e", "script": "2000" },
+    { "id": "3", "looks": "black_belt", "movement": "none", "x": 2, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0312", "script": "5" }
+  ],
+  "signs": [],
+  "triggers": []
+}
