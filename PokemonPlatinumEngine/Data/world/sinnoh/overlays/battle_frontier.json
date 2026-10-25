@@ -212,5 +212,12 @@
     { "type": "ScaleModel", "x": 50, "y": 36, "width": 4, "depth": 4 },
     { "type": "TrainerStatue", "x": 46, "y": 48, "width": 2, "depth": 2 },
     { "type": "TrainerStatue", "x": 50, "y": 48, "width": 2, "depth": 2 }
+  ],
+  // The guide of Route 40's gate in Johto (plan 20 · J13, part d), a person of our own: the Frontier's second door, by
+  // which whoever has entered Johto's Hall of Fame walks the road back to Route 40 (a crossing, battle_frontier.txt's
+  // JohtoGuide). The guide on Route 40 sets the player down on the tile beside him
+  "npcs": [
+    { "id": "battle_frontier.JohtoGuide", "name": "Guide", "npcType": "Gentleman", "x": 46, "y": 51, "facing": "Right",
+      "script": "JohtoGuide", "shownBy": "JohtoHallOfFame" }
   ]
 }

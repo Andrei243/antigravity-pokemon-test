@@ -4336,7 +4336,8 @@ upper floors, from HeartGold's maps, events and tables, in our own words and mus
 - **What waits for its chapter**: Jasmine (in the light room by the sick Ampharos, Amphy, and in her Gym), Chuck, the
   red-haired boy at Olivine's Gym door, Suicune and Eusine at Cianwood, the pharmacy's medicine and the Moomoo Farm's
   sick Miltank (they say what they are for), the photographer, the weekday siblings, Professor Oak at the port, the
-  S.S. Aqua's quay (J15), the Battle Frontier beyond Route 40's gate house (J13), the cliff path to Route 47 and the
+  S.S. Aqua's quay (J15), the Battle Frontier beyond Route 40's gate house (J13; since part d its guide takes a Johto
+  Champion there by a crossing: "Route 40's way to the Battle Frontier", below), the cliff path to Route 47 and the
   Safari Zone, and below the Whirl Islands' rock step on their second basement the third basement and Lugia's cave
   (J11). The original hides Route 39's herd, the lighthouse's fourth-floor trainers and the barn's Miltank behind
   flags nothing in this game sets, so they are always there.
@@ -5112,3 +5113,56 @@ Both are off under Normal, and nothing moves: a battle's `RunLevelCap` is 0, a t
 | The boy and Clair afterwards | The boy on Tuesdays and Thursdays; Clair by the hour (6 to 9 until her number is registered, 16 to 18 after), her number for the asking, a photograph with her | The boy on Tuesdays and Thursdays; Clair on the morning, then the afternoon once registered (the time of day, not the hour); no photograph |
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
 | The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |
+
+## Route 40's way to the Battle Frontier (2026-10-25, plan 20 · J13, part d)
+
+HeartGold's gate on Route 40 leads north to a Battle Frontier of its own (`battle_frontier_frontier_access` and the
+facilities behind it). This game has one Battle Frontier, Sinnoh's (plan 06 · R18), and the user decided on 2026-10-25
+that **Route 40's gate is a second door to it, with one set of records**: a streak, the Battle Points and the prints are
+the save's own (`FrontierRecords`, one field of the save, `SaveData.Frontier`), the same whichever door the player came
+by. Plan 18's rules stand in the way of a plain door: every map belongs to exactly one region, and a warp never crosses
+regions.
+
+- **The way chosen: a crossing, not a warp.** The gate's north door (warp 1) stays shut, and the guide HeartGold stands
+  before it (`w40r0101_gsmiddleman1`, shown always: `FLAG_UNK_25B`, which hid him, is HeartGold's and nothing here sets
+  it) walks the player along the road: a question, the script's black screen, one line over it, and `travel to
+  "BattleFrontier" 47 51 up`, which goes through `GameEngine.CrossTo`, the one way every region is crossed into (the
+  vessels' `TravelTo` and Fly's flight to another region are its other callers). So the team goes along whole and each
+  Pokémon is given the region it left (`Crossing.Depart`, `GiveIds`, option B), Sinnoh's Pokédex is entered and its
+  rival is the one `{rival}` names, the grounds' music and name sign come with the arrival, and nothing of the levels
+  is set by the crossing. The player comes out on the grounds on the tile the gate from the Fight Area lets out beside
+  (47, 51, facing the plaza). *Why*: of the two the user's brief named, this is the one that adds no map and copies
+  nothing. Johto-side copies of the grounds would have to be a second `BattleFrontier` in Johto's list leading into
+  the facilities' rooms, which are Sinnoh's maps, so its warps would cross regions all the same, or the five
+  facilities' lobbies, corridors and battle rooms (twenty-odd maps, each with its arrival script) copied as Johto's,
+  whose scripts name their own maps by name: two of everything to keep alike for no gain, since the records are one set
+  anyway.
+- **The way back is a guide, not a harbour.** The README's "Regions" forbids a vessel back to a region left; the road is
+  no vessel and both ends are the same Frontier, so the way back is a guide of our own on the grounds (an overlay
+  `npcs` person of `battle_frontier.json`, `battle_frontier.JohtoGuide`, on 46, 51 beside the arrival tile), who asks
+  and crosses back with `travel to "Route40_FrontierGate" 5 4 down`, setting the player down before Route 40's guide.
+  *Our ruling*: he stands there for **anyone who has entered Johto's Hall of Fame** (`shownBy` `JohtoHallOfFame`), not
+  only for someone who came by Route 40, so the Frontier is one place with two doors: a Sinnoh Champion who has finished
+  Johto may leave by either. Nothing new is saved (no flag of "came from Johto"), and a Champion who never went to
+  Johto never sees him.
+- **When it opens: Johto's Hall of Fame.** HeartGold's own timing couldn't be read (the decompilation's cache isn't on
+  this machine); Platinum's Frontier is post-game, and the facilities are Platinum's, so Route 40's guide offers the road
+  once `JohtoHallOfFame` is set and says before that that only Trainers of the Hall of Fame may go. In a game begun in
+  Sinnoh, which is every game but one begun by `--region`, a Johto Champion is a Sinnoh Champion too and has had the
+  Frontier's Sinnoh door since the Fight Area's ship.
+- **What a visitor from Johto finds.** The facilities ask nothing of the region: a Frontier battle copies the team at
+  level 50 at most, fights trainers of `frontier.json` (never relevelled by a region's mapping), tells the Pokédex
+  nothing, makes every Pokémon obey and takes no money or EXP, so Johto's levels, Pokédex and badges don't enter into
+  it. The grounds are Sinnoh's: Fly from them asks Sinnoh's Fly badge, as it does anywhere in Sinnoh, and the guide is
+  the way back for whoever has none. Each region's place to come back to (`SpawnLocations.VariableOf`) is untouched:
+  neither road has a Pokémon Center, and a Frontier battle never wakes the player in one.
+- **Known edge**: a game begun by `--region Johto` that crosses here may walk on through the gate house into the Fight
+  Area, Sinnoh's post-game, without Sinnoh's story; no game begun in Sinnoh can tell the difference, so the gate house is
+  left as it is.
+
+| What | HeartGold | Here |
+| --- | --- | --- |
+| The Frontier | Its own, north of Route 40's gate, with five facilities of its own | Sinnoh's, reached from Route 40 by a crossing; one set of records |
+| The gate's north door | A warp onto the Frontier's road | Shut; the guide before it takes the player along the road |
+| The way back | The same door | The Johto guide on the grounds, a crossing back to Route 40 |
+| When it opens | Not read (no cache) | Johto's Hall of Fame |

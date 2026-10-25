@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1214 | 1185 | 29 | 1 | 0 |
-| Scripts (`script:`) | 7570 | 7214 | 356 | 17 | 0 |
-| People of the world (`world:`) | 5269 | 5217 | 52 | 4 | 0 |
-| **All** | 14133 | 13696 | 437 | 22 | 0 |
+| Scripts (`script:`) | 7581 | 7225 | 356 | 17 | 0 |
+| People of the world (`world:`) | 5270 | 5218 | 52 | 4 | 0 |
+| **All** | 14145 | 13708 | 437 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -24,14 +24,14 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 362 |
 | a sign | 1264 |
 | the game's own voice (speaker none) | 223 |
-| the game's own voice (text) | 969 |
+| the game's own voice (text) | 971 |
 
 ## The cast
 
 - Named characters: 282 voices (245 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 206, with 623 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1770.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1781.
 
 ## Lines by voice
 
@@ -39,14 +39,14 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1770 | 127 |
+| `@self` | 1781 | 127 |
 | `look:gentleman (any)` | 581 | 12 |
 | `look:grunt (any)` | 533 | 0 |
 | `rival` | 469 | 17 |
 | `look:youngster (any)` | 324 | 11 |
 | `look:lady (any)` | 319 | 1 |
 | `look:lass (any)` | 270 | 8 |
-| `look:clerk (any)` | 224 | 5 |
+| `look:clerk (any)` | 225 | 5 |
 | `look:nurse (any)` | 174 | 0 |
 | `look:attendant (any)` | 165 | 2 |
 | `cynthia` | 157 | 1 |

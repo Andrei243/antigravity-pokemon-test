@@ -100,5 +100,47 @@
         "O machetă a întregului Battle Frontier, destul de mică să te plimbi în jurul ei: turnul, cele patru săli și piața dintre ele."
       ]
     }
+  ],
+  "JohtoGuide": [
+    {
+      "en": [
+        "I guide Trainers along the road between the Battle Frontier and Route 40, in Johto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take you back along the road to Route 40?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very good. Follow me, and keep close."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} followed the guide back along the road to Route 40..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take your time. I'll be here whenever you'd like to go back."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

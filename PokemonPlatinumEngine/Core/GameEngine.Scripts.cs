@@ -1292,6 +1292,15 @@ public partial class GameEngine
             else game.WarpTo(map, x, y, facing);
         }
 
+        public void CrossInto(string map, int x, int y, Direction? facing)
+        {
+            // A tile of another region's map is a crossing there, under the arrival's own fade (plan 20 · J13, part d:
+            // Route 40's way to the Battle Frontier and back); one of this region's is a warp
+            if (RegionDatabase.RegionOfMap(map) is { } to && !string.Equals(to.Id, game.Here.Id, StringComparison.OrdinalIgnoreCase))
+                game.CrossTo(to, new MapSpot(map, x, y, facing ?? Direction.Down));
+            else Warp(map, x, y, facing);
+        }
+
         public void Fade(bool toBlack, float seconds)
         {
             if (!Skipping)

@@ -2150,7 +2150,8 @@ public partial class GameEngine
 
     /// <summary>
     /// Goes into another region at a place of it (plan 18 · W9): the one way both the vessel (<see cref="TravelTo"/>,
-    /// at the region's arrival) and Fly (at a town's spawn) cross, under one fade. The region's music and name sign
+    /// at the region's arrival), Fly (at a town's spawn) and a script's <c>travel to</c> (plan 20 · J13, part d: Route 40's
+    /// road to the Battle Frontier and back) cross, under one fade. The region's music and name sign
     /// come with the arrival, and its levels follow the region by themselves (<see cref="LevelHere"/>).
     /// </summary>
     private void CrossTo(Region region, MapSpot spot)

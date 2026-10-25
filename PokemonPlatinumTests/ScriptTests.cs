@@ -551,6 +551,7 @@ public class ScriptTests
           endscene
           namerival
           travel go
+          travel to "BattleFrontier" 47 51 up
           if var CROSSED_IN == 1 end
           rotatetiles yellow
           rotatetiles red
