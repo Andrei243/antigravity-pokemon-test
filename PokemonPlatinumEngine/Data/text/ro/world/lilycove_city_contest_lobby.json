@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Twin"
         ],
         "text": [
-          ""
+          "Geamănă"
         ]
       },
       "dialog": {
@@ -44,7 +44,7 @@
           "We're waiting for a third at our drum. Care to blend with the two of us?"
         ],
         "text": [
-          ""
+          "Așteptăm un al treilea la toba noastră. Vrei să amesteci cu noi doi?"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -74,7 +74,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -82,7 +82,7 @@
           "I wonder what colour of Pokéblock we'll get this time!"
         ],
         "text": [
-          ""
+          "Mă întreb ce culoare de Pokéblock vom primi de data asta!"
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -120,7 +120,7 @@
           "Whoa, awesome! Nobody turns the arm like the Blend Master does."
         ],
         "text": [
-          ""
+          "Uau, extraordinar! Nimeni nu învârte brațul ca Maestrul Amestecător."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Camper"
         ],
         "text": [
-          ""
+          "Campistul"
         ]
       },
       "dialog": {
@@ -138,7 +138,7 @@
           "Wickedly fast! The arm is just a blur when he's at the drum."
         ],
         "text": [
-          ""
+          "Nebunește de rapid! Brațul e doar o pată când el stă la tobă."
         ]
       }
     },
@@ -148,7 +148,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -156,7 +156,7 @@
           "I made the most amazing Pokéblocks with the Blend Master!"
         ],
         "text": [
-          ""
+          "Am făcut cele mai minunate Pokéblocuri cu Maestrul Amestecător!"
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -174,7 +174,7 @@
           "What an expert! His timing is better than any machine I could build."
         ],
         "text": [
-          ""
+          "Ce expert! Simțul lui al ritmului e mai bun decât orice mașină aș putea construi."
         ]
       }
     },
@@ -184,7 +184,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -192,7 +192,7 @@
           "They say the Blend Master trains his reflexes in the mountains. I believe it."
         ],
         "text": [
-          ""
+          "Se spune că Maestrul Amestecător își antrenează reflexele în munți. Cred."
         ]
       }
     },
@@ -202,7 +202,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -210,7 +210,7 @@
           "I'm going to watch him all day. Maybe I'll learn his secret."
         ],
         "text": [
-          ""
+          "O să-l privesc toată ziua. Poate îi aflu secretul."
         ]
       }
     },
@@ -220,7 +220,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -228,7 +228,7 @@
           "Master Rank, here I come! My Pokémon has never lost its nerve on a stage."
         ],
         "text": [
-          ""
+          "Rang Master, aici sunt! Pokémonul meu nu și-a pierdut niciodată calmul pe scenă."
         ]
       }
     },
@@ -238,7 +238,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -246,7 +246,7 @@
           "There are so many kinds of Pokémon here, and every one is trying to look its best."
         ],
         "text": [
-          ""
+          "Sunt atâtea feluri de Pokémon aici, și fiecare încearcă să arate cât mai bine."
         ]
       }
     },
@@ -256,7 +256,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -264,7 +264,7 @@
           "A contest is a feast for the eyes. I can't stop sketching!"
         ],
         "text": [
-          ""
+          "Un concurs e un festin pentru ochi. Nu mă pot opri din desenat!"
         ]
       }
     },
@@ -274,7 +274,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       },
       "dialog": {
@@ -282,7 +282,7 @@
           "I lavished care on my Pokémon, and it showed on stage. Care is the best Pokéblock there is."
         ],
         "text": [
-          ""
+          "Mi-am îngrijit Pokémonul cu drag, și s-a văzut pe scenă. Grija e cel mai bun Pokéblock."
         ]
       }
     },
@@ -292,7 +292,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -300,7 +300,7 @@
           "The Tough Contest is extreme! Only a Pokémon with real grit will do."
         ],
         "text": [
-          ""
+          "Concursul de Duritate e extrem! Doar un Pokémon cu adevărat dârz se descurcă."
         ]
       }
     },
@@ -310,7 +310,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -318,7 +318,7 @@
           "I made Pokéblocks with my whole family. We couldn't stop!"
         ],
         "text": [
-          ""
+          "Am făcut Pokéblocuri cu toată familia. N-am mai putut să ne oprim!"
         ]
       }
     },
@@ -328,7 +328,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -336,7 +336,7 @@
           "Everyone looks so serious about their Pokémon. I wonder if they ever laugh on stage."
         ],
         "text": [
-          ""
+          "Toți par atât de serioși cu Pokémonii lor. Mă întreb dacă râd vreodată pe scenă."
         ]
       }
     },
@@ -346,7 +346,7 @@
           "Reporter"
         ],
         "text": [
-          ""
+          "Reporterița"
         ]
       },
       "dialog": {
@@ -354,7 +354,7 @@
           "I'm looking for the best story of the day. Maybe it's yours."
         ],
         "text": [
-          ""
+          "Caut cea mai bună poveste a zilei. Poate e a ta."
         ]
       }
     },
@@ -364,7 +364,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -372,7 +372,7 @@
           "I'm sketching the whole contest. Don't mind me!"
         ],
         "text": [
-          ""
+          "Desenez tot concursul. Nu mă băgați în seamă!"
         ]
       }
     },
@@ -382,7 +382,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -390,7 +390,7 @@
           "I'm sketching the whole contest. Don't mind me!"
         ],
         "text": [
-          ""
+          "Desenez tot concursul. Nu mă băgați în seamă!"
         ]
       }
     }
@@ -401,7 +401,7 @@
         "The Berry Blender for four\nBlending with friends is not available yet."
       ],
       "text": [
-        ""
+        "Blenderul de Fructe pentru patru\nAmestecul cu prietenii nu e disponibil încă."
       ]
     },
     "LilycoveCity_ContestLobby_EventScript_BerryBlenderSpeedRecords": {
@@ -409,7 +409,7 @@
         "Berry Blender speed records\nNobody's name is up yet."
       ],
       "text": [
-        ""
+        "Recordurile de viteză la Blenderul de Fructe\nNumele nimănui nu e înscris încă."
       ]
     },
     "LilycoveCity_ContestLobby_EventScript_LinkContestResults": {
@@ -417,7 +417,7 @@
         "Contest results with friends\nNo contests with friends have been held yet."
       ],
       "text": [
-        ""
+        "Rezultatele concursurilor cu prieteni\nNu s-a ținut încă niciun concurs cu prieteni."
       ]
     }
   }

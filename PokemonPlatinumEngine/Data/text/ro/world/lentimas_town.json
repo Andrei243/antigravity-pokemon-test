@@ -6,7 +6,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "From the plane, the view changes with the seasons. Down here the roofs change with the climate. It's a very mixed-up country!"
         ],
         "text": [
-          ""
+          "Din avion, priveliștea se schimbă cu anotimpurile. Aici jos, acoperișurile se schimbă cu clima. Țară foarte amestecată!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Krokorok"
         ],
         "text": [
-          ""
+          "Krokorok"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Krokorok: Rah feh feh!"
         ],
         "text": [
-          ""
+          "Krokorok: Rah feh feh!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Prof. Juniper"
         ],
         "text": [
-          ""
+          "Prof. Juniper"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Traveller"
         ],
         "text": [
-          ""
+          "Călătorul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Why am I on a journey? I'm sure I had a reason when I set out. Do you remember exactly why you're travelling?"
         ],
         "text": [
-          ""
+          "De ce sunt în călătorie? Sunt sigur că aveam un motiv când am plecat. Tu îți amintești exact de ce călătorești?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I'm perfectly fine this close to a volcano, thanks to my little Krokorok! It really rocks!"
         ],
         "text": [
-          ""
+          "Mă simt perfect lângă un vulcan, datorită micului meu Krokorok! Chiar e tare!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I'm off to the volcano! See you, {player}!"
         ],
         "text": [
-          ""
+          "Plec spre vulcan! Pa, {player}!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       }
     }
@@ -117,7 +117,7 @@
         "Lentimas Town\nWhere rough mountain trails lead"
       ],
       "text": [
-        ""
+        "Lentimas Town\nUnde duc potecile aspre de munte"
       ]
     }
   }
