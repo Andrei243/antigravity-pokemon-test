@@ -1001,7 +1001,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     summit giving back the orbs (`VAR_MT_PYRE_STATE` 2); Mirage Island; the abnormal weather over Ever Grande City (H9);
     the Mach Bike's climb of the cracked floors and Rayquaza's battle (H12); Route 134's Sealed Chamber (H12); Match Call
     for Routes 132 to 134's rematch trainers; and parts a's and b's leftovers above but Sootopolis's spawn.
-- [ ] H9 Ever Grande and the League (part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
+- [x] H9 Ever Grande and the League (part b done 2026-10-25, wave 48: home as the Champion, the eon roamer, the harbour to Unova and the bands; part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
   the Hall of Fame and the National Pokédex; tests written and run with `--filter`, shots written and not taken; what is
   left is listed under "Left for part b")
   - **Opened** (19 areas, 307 in all): Ever Grande City (`Architecture.Bloomstone`, the style guide's row first; its pale
@@ -1055,6 +1055,42 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     through Match Call, Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet), the bands of
     Hoenn's Leaders, Four and Champion (plan 09 · L15's way, as Kanto's `KantoBands`), and still from H8: the abnormal
     weather's post-game places, Mirage Island, Mt. Pyre's orbs, Rayquaza's battle.
+  - **Part b** (done 2026-10-25, wave 48; tests written and run with `--filter`, shots written and not taken). Rulings:
+    "Ever Grande City and the League", its part b.
+    - **Home as the Champion**: down the stairs after the credits, the house's arrival (`littleroot_town_brendans_house_1f`,
+      `ChampionHome`, once: `VAR_HOENN_CHAMPION_HOME`, ours) plays Mom's welcome, the television's report of a Pokémon
+      flying over Hoenn, Mom's question of its colour (Emerald's MULTI_TV_LATI: RED sets Latias roaming, BLUE Latios;
+      `VAR_ROAMER_POKEMON` 0 or 1, Emerald's), and Dad home from Petalburg (Emerald's `players_house_1f_dad`, Norman's look
+      and voice, behind `FLAG_HIDE_PLAYERS_HOUSE_DAD`) with the S.S. Ticket (`FLAG_RECEIVED_SS_TICKET`), who walks out to
+      go back to his Gym. `common.HoennChapterThirteen` (`FLAG_HOENN_CHAPTER_THIRTEEN`) hides Dad from the start; the
+      house's arrival calls it for an older save, so a game already past the Hall of Fame plays the scene on its next way
+      down. No story version raised.
+    - **The eon roamer**: `Roamers.Slots` gains Latias and Latios at 40 (Emerald's), roaming `Roamers.HoennRoutes`
+      (Emerald's `sRoamerLocations`: Routes 110, 111 and 117 to 134, with its neighbours as `HoennNearby`) by the shared
+      rules; `InHoenn` and `InSinnoh` beside `InJohto` (the Pokétch's Marking Map shows Sinnoh's alone). A save's
+      encounters are given the two slots as they load (`SpecialEncounters`' own growth).
+    - **The harbour and the way on**: `LilycoveCity_Harbor` (matrix 119) is open (Lilycove's door 12 unlocked), with the
+      ferry desk's attendant as Emerald stands her and its wandering sailor (the S.S. Tidal and Emerald's ferry sailor and
+      Mr. Briney on her tile are H12's), and a captain of ours on the gangway beside her (7, 10), `isTransportAttendant`,
+      `shownBy` `HoennHallOfFame`, as Sinnoh's captain is. `RegionDatabase`'s link from Hoenn is a `Boat` (`ship`) from
+      `LilycoveCity_Harbor` to Unova, whose arrival is the street before the player's house in Aspertia City; `RegionTests`
+      now holds that no link between two built regions is undecided.
+    - **The bands**: `SceneTransition.HoennBands`, Hoenn's thirteen (the style guide's third table), found before Kanto's;
+      Tate and Liza's band is written though their double battle loses it.
+    - **Tests**: `HoennStoryTests.HomeAsTheChampionTheReportsColourSetsTheEonPokemonRoamingAndDadBringsTheTicket` (both
+      colours), `AnOlderSavePastHoennsHallOfFameIsGivenDadsHidingAndTheSceneOnTheWayDown`;
+      `HoennTests.LilycovesHarbourIsOpenAndItsCaptainSailsToUnovaOnceHoennsHallOfFameIsEntered`,
+      `LatiasAndLatiosRoamEmeraldsRoutesOfHoennAlone`; `IntoBattleTests.HoennHasItsOwnThirteenBands`; `RegionTests`,
+      `WildEncounterTests` and `StarkMountainAndTheLegendaryPokemonTests` brought to the new slots and link. Golden
+      `scripts.txt` moves (common.HoennNewGame, common.HoennChapterThirteen, the house's arrival): accept it.
+    - **Shots** (written, not taken): `h238_lilycove_harbour`; `hs2aa` to `hs2ai` (the welcome, the report, the question
+      and its colours, Latias named, Dad and the ticket, Dad leaving, Mom after), `hs2aj` to `hs2al` (the harbour, the
+      captain's word, the question refused), and the bands `hs2b_band_<name>` of the seven single-battle Leaders, the
+      Four and Wallace, each printing what the band holds, and the eon roamer's place after each stage.
+    - **Left**: Scott's Battle Frontier pass and the S.S. Tidal (H12); Wally's and the Four's rematches through Match Call;
+      Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet); Southern Island and the other of
+      the two (Emerald's Eon Ticket, not given); and from H8 the abnormal weather's post-game places, Mirage Island, Mt.
+      Pyre's orbs and Rayquaza's battle (H12).
 - [ ] H10 Secret Bases
 - [ ] H11 The Contest Hall and Pokéblocks
 - [ ] H12 The Frontier island and the post-game

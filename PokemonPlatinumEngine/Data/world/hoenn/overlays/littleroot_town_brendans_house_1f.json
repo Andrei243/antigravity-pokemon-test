@@ -18,6 +18,9 @@
       "hiddenBy": "",
       "still": true
     },
+    // Dad, home from Petalburg once the player is the Champion (plan 21 · H9, part b): only the scene of the house's
+    // arrival shows him, by Emerald's FLAG_HIDE_PLAYERS_HOUSE_DAD, which common.HoennChapterThirteen sets from the start
+    "players_house_1f_dad": { "name": "Dad", "npcType": "norman", "still": true, "dialog": [ "Dad: I'm proud of you, {player}." ] },
     "vigoroth_carrying_box": { "name": "Vigoroth", "npcType": "Pokemon", "species": "Vigoroth", "dialog": [ "Vigoroth: Gruoh! It's too busy carrying boxes to stop!" ] },
     "vigoroth_facing_away": { "name": "Vigoroth", "npcType": "Pokemon", "species": "Vigoroth", "still": true, "dialog": [ "Vigoroth: Gyaoh! It's unpacking with great enthusiasm." ] }
   }

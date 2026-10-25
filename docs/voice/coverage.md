@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1214 | 1185 | 29 | 1 | 0 |
-| Scripts (`script:`) | 7570 | 7214 | 356 | 17 | 0 |
-| People of the world (`world:`) | 5269 | 5217 | 52 | 4 | 0 |
-| **All** | 14133 | 13696 | 437 | 22 | 0 |
+| Scripts (`script:`) | 7581 | 7225 | 356 | 17 | 0 |
+| People of the world (`world:`) | 5272 | 5220 | 52 | 4 | 0 |
+| **All** | 14147 | 13710 | 437 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,16 +21,16 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 168 |
-| a question's answers | 362 |
+| a question's answers | 364 |
 | a sign | 1264 |
 | the game's own voice (speaker none) | 223 |
-| the game's own voice (text) | 969 |
+| the game's own voice (text) | 971 |
 
 ## The cast
 
 - Named characters: 282 voices (245 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
-- Archetypes in use: 206, with 623 voices to cast (V5).
+- Archetypes in use: 207, with 626 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1770.
 
 ## Lines by voice
@@ -60,11 +60,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:fisherman (any)` | 106 | 0 |
 | `look:guard (any)` | 103 | 0 |
 | `class:hiker (any)` | 102 | 0 |
+| `mom` | 102 | 6 |
 | `class:ace_trainer (any)` | 98 | 0 |
 | `class:picnicker (any)` | 98 | 0 |
 | `class:youngster (any)` | 98 | 0 |
 | `class:cooltrainer (any)` | 96 | 0 |
-| `mom` | 95 | 6 |
 | `look:boy (any)` | 94 | 4 |
 | `look:man (any)` | 93 | 4 |
 | `looker` | 91 | 1 |
@@ -79,7 +79,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:old_man (any)` | 82 | 4 |
 | `black_belt` | 78 | 12 |
 | `prof_oak` | 78 | 3 |
-| `look:sailor (any)` | 76 | 0 |
+| `look:sailor (any)` | 77 | 0 |
 | `look:trainer (any)` | 74 | 0 |
 | `class:bug_catcher (any)` | 70 | 0 |
 | `look:old_woman (any)` | 70 | 5 |
@@ -150,6 +150,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `roxie` | 26 | 1 |
 | `byron` | 25 | 1 |
 | `giovanni` | 25 | 2 |
+| `norman` | 25 | 0 |
 | `class:ace_trainer_m (any)` | 24 | 0 |
 | `class:dragon_tamer (any)` | 24 | 0 |
 | `class:sis_and_bro (any)` | 24 | 0 |
@@ -176,7 +177,6 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:battle_girl (any)` | 21 | 0 |
 | `look:bug_catcher (any)` | 21 | 0 |
 | `look:gymstatue (any)` | 21 | 0 |
-| `norman` | 21 | 0 |
 | `class:collector (any)` | 20 | 0 |
 | `class:pokémon_ranger (any)` | 20 | 0 |
 | `class:skier (any)` | 20 | 0 |

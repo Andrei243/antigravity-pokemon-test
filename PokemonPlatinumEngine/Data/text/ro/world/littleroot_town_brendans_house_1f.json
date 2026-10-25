@@ -10,6 +10,24 @@
         ]
       }
     },
+    "players_house_1f_dad": {
+      "name": {
+        "en": [
+          "Dad"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dad: I'm proud of you, {player}."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "vigoroth_carrying_box": {
       "name": {
         "en": [

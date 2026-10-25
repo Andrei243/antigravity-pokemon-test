@@ -1403,5 +1403,65 @@ partial class Harness
         ReadTo("I've upgraded it to the National Pokédex."); Frames(10); Shot("hs2a9_the_national_pokedex");
         ReadTo(null);
         League("home");
+
+        // ---- Plan 21 · H9, part b: home as the Champion (the television's report, the colour named and Latias set
+        // roaming, Dad and the S.S. Ticket), Lilycove's harbour and its captain to Unova, and Hoenn's bands (hs2aa on)
+        void Eon(string what)
+        {
+            var enc = game.Encounters;
+            string Of(string species) => enc.Roamers[Roamers.SlotOf(species)!.Value] is { Active: true } r ? $"{species} on {Roamers.PlaceOf(r)} at level {r.Level}" : $"{species} not roaming";
+            Console.WriteLine($"  {what}: home {story.Var("VAR_HOENN_CHAMPION_HOME")}, colour {story.Var("VAR_ROAMER_POKEMON")}, {Of("Latias")}, {Of("Latios")}, "
+                + $"ticket {story.Has("FLAG_RECEIVED_SS_TICKET")}, dad hidden {story.Has("FLAG_HIDE_PLAYERS_HOUSE_DAD")}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        }
+        ComeThrough("LittlerootTown_BrendansHouse_1F", 8, 3, Direction.Down);
+        ReadTo("There's a special report on the television."); Frames(10); Shot("hs2aa_home_as_the_champion");
+        ReadTo("A Pokémon nobody can name"); Frames(10); Shot("hs2ab_the_televisions_report");
+        ReadTo("What colour did it look like to you"); Frames(10); Shot("hs2ac_what_colour");
+        Box().Advance(); Frames(4);
+        Until(() => engine.Choice.IsOpen, "the colours"); Frames(10); Shot("hs2ad_red_or_blue");
+        Pick("RED");
+        ReadTo("the one the old stories call Latias"); Frames(10); Shot("hs2ae_latias");
+        ReadTo("I came as soon as I heard."); Frames(10); Shot("hs2af_dad_comes_home");
+        ReadTo("S.S. Ticket"); Frames(10); Shot("hs2ag_the_ss_ticket");
+        ReadTo("I'll see you soon!"); Frames(10);
+        Box().Advance(); Frames(40); Shot("hs2ah_dad_goes_back_to_his_gym");
+        ReadTo("He was so proud"); Frames(10); Shot("hs2ai_mom_after");
+        ReadTo(null);
+        Eon("home as the Champion");
+
+        // Lilycove's harbour: the captain on the gangway beside the ferry desk, his word, and the question kept for later
+        ComeThrough("LilycoveCity_Harbor", 7, 12, Direction.Up); Frames(20); Shot("hs2aj_lilycove_harbour");
+        At("LilycoveCity_Harbor", 7, 11, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("is ready."); Frames(10); Shot("hs2ak_the_captain_to_unova");
+        ReadTo("Shall we set off, then?"); Frames(10); Shot("hs2al_shall_we_set_off");
+        Pick("NO");
+        ReadTo(null);
+        Eon("the harbour");
+
+        // Hoenn's bands (the style guide's third table), each battle begun as the game begins a Leader's, the League's
+        // or the Champion's, the band shot as it is lit and the battle let go (Tate and Liza's is a double battle,
+        // which loses its band)
+        foreach (var (id, look) in new[]
+                 {
+                     ("hoenn_roxanne_1", "roxanne"), ("hoenn_brawly_1", "brawly"), ("hoenn_wattson_1", "wattson"),
+                     ("hoenn_flannery_1", "flannery"), ("hoenn_norman_1", "norman"), ("hoenn_winona_1", "winona"),
+                     ("hoenn_juan_1", "juan"), ("hoenn_sidney", "sidney"), ("hoenn_phoebe", "phoebe"),
+                     ("hoenn_glacia", "glacia"), ("hoenn_drake", "drake"), ("hoenn_wallace", "wallace")
+                 })
+        {
+            At("EverGrandeCity_ChampionsRoom", 6, 9, Direction.Up); Frames(10);
+            var record = TrainerDatabase.Get(id) ?? throw new InvalidOperationException($"No trainer {id}");
+            var trainer = new Trainer { Id = record.Id };
+            TrainerDatabase.Fill(trainer, record);
+            game.StartTrainerBattle(new NPC { Name = trainer.Name, NpcType = look, TrainerData = trainer });
+            for (int i = 0; i < 600 && !BandLit(); i++) Frames(1);
+            if (!BandLit()) Console.WriteLine($"  !! never lit: the band of {trainer.Name} ({game.TransitionKind})");
+            ShotBand("hs2b");
+            for (int i = 0; i < 600 && State() != GameState.Battle; i++) Frames(1);
+            Frames(30);
+            game.State = GameState.Overworld;
+            Frames(2);
+        }
     }
 }

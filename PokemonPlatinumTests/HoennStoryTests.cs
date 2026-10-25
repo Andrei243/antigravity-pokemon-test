@@ -3173,6 +3173,65 @@ public class HoennStoryTests
         Assert.Null(older.Present("wally"));
     }
 
+    // ------------------------------------------------------------------ plan 21 · H9, part b: home as the Champion
+
+    [Theory]
+    [InlineData(0, "Latias")]
+    [InlineData(1, "Latios")]
+    public void HomeAsTheChampionTheReportsColourSetsTheEonPokemonRoamingAndDadBringsTheTicket(int answer, string species)
+    {
+        var game = AtEverGrande();
+        // (Moved in long ago: the clock set and the neighbours met)
+        game.Story.SetVar("VAR_LITTLEROOT_INTRO_STATE", 7);
+        // Dad is away until the scene: a new game hides him
+        Assert.True(game.Story.Has("FLAG_HIDE_PLAYERS_HOUSE_DAD"));
+        game.Arrive("LittlerootTown_BrendansHouse_1F", 8, 2);
+        Assert.Null(game.Present("players_house_1f_dad"));
+        Assert.DoesNotContain(game.Last.Transcript, t => t.Speaker == "Dad");
+
+        // Down the stairs as the Champion: the report, Mom's question, Dad and his ticket, and Dad back to his Gym
+        game.Story.Set(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag);
+        game.Story.Set("FLAG_IS_CHAMPION");
+        game.Decide = (question, _) => question.Contains("colour") ? answer : 0;
+        game.Arrive("LittlerootTown_BrendansHouse_1F", 8, 2);
+        var home = game.Last;
+        Assert.Contains(home.Transcript, t => t.Speaker == "Mom");
+        Assert.Contains(home.Transcript, t => t.Speaker == "Dad");
+        Assert.Contains(home.Transcript, t => t.Text.Contains(species));
+        Assert.Equal(answer, game.Story.Var("VAR_ROAMER_POKEMON"));
+        var roamer = home.Encounters.Roamers[Roamers.SlotOf(species)!.Value];
+        Assert.True(roamer.Active, $"{species} roams");
+        Assert.Contains(Roamers.PlaceOf(roamer), Roamers.HoennRoutes);
+        string other = species == "Latias" ? "Latios" : "Latias";
+        Assert.False(home.Encounters.Roamers[Roamers.SlotOf(other)!.Value].Active, $"{other} stays put");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("S.S. Ticket")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_SS_TICKET"));
+        Assert.True(game.Story.Has("FLAG_HIDE_PLAYERS_HOUSE_DAD"));
+        Assert.Null(game.Present("players_house_1f_dad"));
+        Assert.Equal(1, game.Story.Var("VAR_HOENN_CHAMPION_HOME"));
+
+        // Once only
+        game.Arrive("LittlerootTown_BrendansHouse_1F", 8, 2);
+        Assert.DoesNotContain(game.Last.Transcript, t => t.Speaker == "Dad");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("S.S. Ticket")!));
+    }
+
+    [Fact]
+    public void AnOlderSavePastHoennsHallOfFameIsGivenDadsHidingAndTheSceneOnTheWayDown()
+    {
+        // A save of Hoenn from before part b was written: the flag of ours unset, Dad standing in the room
+        var older = AtEverGrande();
+        older.Story.SetVar("VAR_LITTLEROOT_INTRO_STATE", 7);
+        older.Story.Unset("FLAG_HOENN_CHAPTER_THIRTEEN");
+        older.Story.Unset("FLAG_HIDE_PLAYERS_HOUSE_DAD");
+        older.Story.Set(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag);
+        older.Arrive("LittlerootTown_BrendansHouse_1F", 8, 2);
+        Assert.True(older.Story.Has("FLAG_HOENN_CHAPTER_THIRTEEN"));
+        Assert.Contains(older.Last.Transcript, t => t.Speaker == "Dad");
+        Assert.Null(older.Present("players_house_1f_dad"));
+        Assert.Equal(0, older.Story.Var("VAR_ROAMER_POKEMON"));
+    }
+
     [Fact]
     public void TheSongsOfEverGrandeVictoryRoadAndTheHallOfFameAreThere()
     {

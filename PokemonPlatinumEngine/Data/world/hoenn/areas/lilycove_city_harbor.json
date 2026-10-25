@@ -1,0 +1,30 @@
+{
+  "key": "lilycove_city_harbor",
+  "index": 170,
+  "name": "Lilycove City",
+  "matrix": 119,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LILYCOVE",
+  "nightMusic": "MUS_LILYCOVE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 14, "to": "lilycove_city", "toWarp": 12 },
+    { "x": 12, "z": 14, "to": "lilycove_city", "toWarp": 12 }
+  ],
+  "objects": [
+    { "id": "lilycove_harbor_attendant", "looks": "beauty", "movement": "look_south", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_HARBOR_FERRY_ATTENDANT", "script": "LilycoveCity_Harbor_EventScript_FerryAttendant" },
+    { "id": "lilycove_harbor_ss_tidal", "looks": "ss_tidal", "movement": "look_east", "x": 8, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_HARBOR_SSTIDAL", "script": "" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 3, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LilycoveCity_Harbor_EventScript_Sailor" },
+    { "id": "lilycove_harbor_ferry_sailor", "looks": "sailor", "movement": "look_south", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LILYCOVE_HARBOR_FERRY_SAILOR", "script": "" },
+    { "id": "lilycove_harbor_briney", "looks": "expert_m", "movement": "look_south", "x": 8, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LILYCOVE_HARBOR_EVENT_TICKET_TAKER", "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}
