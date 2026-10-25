@@ -1,0 +1,165 @@
+# A car of the Battle Subway (plan 22 · U6, part d). docs/scripts.md describes the language; the lines are our own, on
+# the beats of Black 2's Battle Subway (the trains under Nimbasa City: seven cars to a set, a trainer in each, the Subway
+# Bosses at the 21st and the 49th).
+#
+# A run (Models/Frontier/BattleSubway.cs) is the story's own variables, so a game saved in the car comes back to the same
+# car: the arrival script below goes on from the battle the streak has come to. Trainers come in one after another,
+# each made ready as they are come to (subway opponent) and battled with the Pokémon entered (subway battle, a copy at
+# Level 50 or under: nothing a battle does reaches the Pokémon themselves). After a set of seven the conductor asks
+# whether to get off or go on; a battle lost or getting off ends the run and hands over the Battle Points of the sets
+# cleared, and the player is back in the Gear Station.
+#
+# Not here: the run's pause, the Super trains and the records' board (plan 22 · U6's next part and U11).
+
+
+script OnEnter
+  subway active
+  if result == 0 end
+  speaker "Depot Agent"
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_PARTNER
+  subway mode
+  if result == 2 goto PartnerAboard
+label Next
+  subway boss
+  if result != 0 goto Boss
+  subway next
+  subway opponent
+  place opponent 18 5 left
+  setflag FLAG_UNOVA_SUBWAY_SHOW_OPPONENT
+  show opponent
+  sound "door_slide"
+  subway mode
+  if result != 2 goto OneFoe
+  place opponent_2 18 4 left
+  setflag FLAG_UNOVA_SUBWAY_SHOW_OPPONENT_2
+  show opponent_2
+  walk opponent_2 left 3
+label OneFoe
+  walk opponent left 3
+  text "Car {number}: {foe} wants to battle!"
+  subway battle
+  if result == 0 goto Lost
+  call Leaves
+  subway won
+  if result == 1 goto SetDone
+  say "Well done! The next car is coming up."
+  goto Next
+
+label PartnerAboard
+  setflag FLAG_UNOVA_SUBWAY_SHOW_PARTNER
+  show partner
+  goto Next
+
+# Ingo and Emmet: the Subway Bosses, in a car of their own at the 21st battle and the 49th
+label Boss
+  subway next
+  subway opponent
+  subway mode
+  if result == 2 goto BothBosses
+  subway boss
+  if result == 2 goto Emmet
+  place ingo 18 5 left
+  setflag FLAG_UNOVA_SUBWAY_SHOW_INGO
+  show ingo
+  sound "door_slide"
+  walk ingo left 3
+  speaker "Ingo"
+  say "All aboard! I'm Ingo, a Subway Boss, and this is the car where the trains' stories begin."
+  say "Few reach it. Show me why you did!"
+  goto BossBattle
+label Emmet
+  place emmet 18 5 left
+  setflag FLAG_UNOVA_SUBWAY_SHOW_EMMET
+  show emmet
+  sound "door_slide"
+  walk emmet left 3
+  speaker "Emmet"
+  say "Departing now! I'm Emmet, a Subway Boss, and I've seen every battle this line has to offer."
+  say "Let's see if you have a new one for me!"
+  goto BossBattle
+label BothBosses
+  place ingo 18 5 left
+  place emmet 18 4 left
+  setflag FLAG_UNOVA_SUBWAY_SHOW_INGO
+  setflag FLAG_UNOVA_SUBWAY_SHOW_EMMET
+  show ingo
+  show emmet
+  sound "door_slide"
+  walk ingo left 3
+  walk emmet left 3
+  speaker "Ingo"
+  say "All aboard! You and your partner have come a long way, so we'll ride the rest of it together."
+  speaker "Emmet"
+  say "Two against two, side by side. Departing now!"
+label BossBattle
+  subway battle
+  if result == 0 goto Lost
+  subway boss
+  if result == 2 goto EmmetBeaten
+  speaker "Ingo"
+  say "A splendid ride! The line is yours to keep running."
+  goto Beaten
+label EmmetBeaten
+  speaker "Emmet"
+  say "End of the line! ...For me, anyway. Yours goes on."
+label Beaten
+  call Leaves
+  subway won
+  if result == 1 goto SetDone
+  speaker "Depot Agent"
+  say "Well done! The next car is coming up."
+  goto Next
+
+# A set of seven is through: on to the next, or off here
+label SetDone
+  speaker "Depot Agent"
+  subway streak
+  say "That's the end of the line for this set. {number} cars cleared in a row!"
+  choose "Will you get off here, or go on to the next set?" "GET OFF" "GO ON"
+  if result == 1 goto Next
+  subway finish won
+  subway points
+  if result == 0 goto NoPoints
+  say "Thank you for riding the Battle Subway! Here are the Battle Points you earned."
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Off
+label NoPoints
+  say "Thank you for riding the Battle Subway!"
+label Off
+  goto Home
+  end
+
+label Lost
+  call Leaves
+  subway finish lost
+  speaker "Depot Agent"
+  subway streak
+  say "Oh, bad luck! That's the end of the ride. You cleared {number} cars before you were stopped."
+  subway points
+  if result == 0 goto Home
+  say "The sets you cleared still count. Here are the Battle Points you earned."
+  text "{player} received {number} BP!"
+  fanfare item
+label Home
+  subway end
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_PARTNER
+  hide partner
+  fade out 0.6
+  sound "crossing_engine"
+  warp "GearStation" 11 4 down
+  fade in
+  end
+
+
+# The trainer or trainers, Bosses and partner of the car are shown out again
+script Leaves
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_OPPONENT
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_OPPONENT_2
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_INGO
+  clearflag FLAG_UNOVA_SUBWAY_SHOW_EMMET
+  hide opponent
+  hide opponent_2
+  hide ingo
+  hide emmet
+  return

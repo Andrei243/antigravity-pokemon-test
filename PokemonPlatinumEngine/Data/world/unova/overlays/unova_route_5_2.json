@@ -1,7 +1,7 @@
 {
   // The trailer on Route 5 (plan 22 · U6, part b): Black 2's room, our words. Its owner only talks
   "area": "unova_route_5_2",
-  "bgmTrack": "unova/route4",
+  "bgmTrack": "unova/route5",
   "people": {
     "0": {
       "name": "Old Man",

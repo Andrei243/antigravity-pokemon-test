@@ -2947,6 +2947,65 @@ the battles and the gifts, and nothing of their text.
   `unova/relic_passage`, `unova/relic_castle` and `unova/plasma_frigate`; Route 16 plays Route 4's, as Black 2 plays the
   same route theme on both, and the grounds Driftveil's.
 
+## Unova's second chapter, part d: the Battle Subway, the World Tournament's hall and Driftveil's market (2026-10-25, plan 22 · U6, part d)
+
+What part c left, in our own words and our own teams on the beats of Black 2's story (none of its scripts was read for
+this part: the places, the people and the data of the import are part b's and c's, the rest is written from the plan).
+
+- **The Battle Subway** is the smallest honest version of plan 06 · R18's machinery that the plan allows (`Models/Frontier/
+  BattleSubway.cs`, GPU-free; the script command `subway`, `docs/scripts.md`). It borrows the Frontier's rules whole: who
+  may go in (`FrontierRules`: no Egg, nothing on the banlist, no two of a species or holding the same item), copies of
+  the team at level 50 or under, a Frontier battle (no EXP, money or Bag), the Frontier's trainers (`FrontierTrainers`)
+  drawn by the Battle Tower's rooms (`FrontierDatabase.TowerRooms`, seven battles to a room), and the Battle Points
+  of the Frontier's own count. What it does **not** borrow is a facility's own state: a run is the story's own
+  variables (`VAR_UNOVA_SUBWAY_STATE`, `_TRAIN`, `_WINS`, `_SEED`, `_SLOT_0` to `_3`, `_BEST_SINGLE`, `_DOUBLE`,
+  `_MULTI`), so there is no new field of a save, no host property and no migration, and a game saved in a car comes back
+  to the same car (the arrival script goes on from the battle the streak has come to). The Single Train takes three
+  Pokémon, the Double Train four (two trainers' worth of Pokémon on the field at once, one trainer with four) and the
+  Multi Train two beside a partner, a Frontier trainer of the first room drawn on the run's own seed so that the
+  same two Pokémon stand beside the player every car; the foes are a pair of trainers with two each. Black 2's Subway
+  trainers aren't in the import, so the Frontier's stand in. After seven cars the conductor asks whether to get off or go
+  on; getting off, or a battle lost, ends the run and pays the Battle Points of the sets cleared (3 for the first, one
+  more for each set after it up to 10), and the best streak of each train is kept. **Ingo** waits at the 21st battle and
+  **Emmet** at the 49th, in every train (together in the Multi Train): teams of our own at level 50
+  (`our-trainers.json`'s `subway_ingo` and `subway_emmet`), since the data's Subway Bosses are the tag-battle ones of the
+  story. The car is a map of ours (`BattleSubwayTrain`, entered by the Gear Station's three desks and left by a door or by
+  the run's end), and the Gear Station's desks, which only talked, run it. **Left**: a run put down and taken up again
+  at the desk, the Super trains (Black 2's second set of three, the Super Single's level cap of 100), a friend over a link
+  for the Multi Train, the Subway's own board of records and its Battle Point exchange (the Frontier's Exchange Service
+  Corner is the Tower's, plan 06 · R18a), prints and the Depot Agents' own battles; all of it is plan 22 · U11's and the
+  plan 14 formats' (the Wi-Fi Subway needs other players: plan 06 · R18's decision 7).
+- **The World Tournament's hall** (`PokemonWorldTournament`, a map of ours: Black 2's `pwt_2` rooms are not read, so the
+  lobby, desk and stage are one hall) opens once Clay has told of the tournament (`FLAG_UNOVA_PWT_OPEN`, set by his
+  script and by the grounds' arrival for a save past it). The first visit is a story event: Clay's welcome, the
+  offer, the team of three (the Subway's rules and `subway begin single`), and the **Driftveil Tournament**, a knockout of
+  three rounds in the Subway's way (level 50 copies, nothing from the Bag, nothing won but the match): Cheren
+  (`unova_cheren`), Hugh (`unova_rival_10`, `_11` or `_12`, the team the player's starter meets) and Clay
+  (`unova_leader_clay`), each their own team of the data at level 50 (`subway foe`). A win earns Clay's five Battle Points;
+  a defeat is played out all the same, and either sets `FLAG_UNOVA_PWT_FIRST_TOURNAMENT`, which **lets the pier's scene
+  of the Plasma Frigate play** (Black 2 plays it as the player comes out of the hall after its first tournament; ours
+  is the first step onto the pier after it, as before). A save past the frigate is counted past the tournament too. The
+  desk afterwards says the tournament has been played and that the others open as their rules are drawn up: **the
+  formats of later tournaments (triples, rotations, the Leaders' and Champions' brackets) are plan 14 · B11 and B12's,
+  and no other tournament is held**. Black 2's Hugh, Clay, Cheren and Colress at the hall's door (objects 6 to 9) stay
+  held back, since the hall's scene is theirs.
+- **Driftveil Market's three stalls** (`driftveil_city_7.txt`): the seller sells herbs (`marts.json`'s
+  `driftveil_market_herbs`: Energy Powder, Energy Root, Heal Powder, Revival Herb), the sailor his imports
+  (`_goods`: a Poké Doll, a Fluffy Tail, the Repels, the X items, Guard Spec. and Dire Hit) and the nursery aide sweets
+  (`_sweets`). Black 2's market changes its wares with the ships that come in; ours is a fixed stock of our own.
+  **Join Avenue's growth** (its visitors, ranks and the manager's work) stays plan 22 · U11's.
+- **Anville Town's trades and its lost Pansage**: at the weekend the railway collector (14) swaps a Timburr for his
+  Klink, Cogs, and the girl who tried swapping once (9) a Tympole for her Dwebble, Shelly, each once (`NpcTrades`'
+  `cogs` and `shelly`, ours: a trade of Black 2's own isn't in the import). The girl (16) tells of her lost Pansage, which
+  then sits in the plaza (`FLAG_UNOVA_ANVILLE_PANSAGE_LOST`, Black 2's `0x0362` object), hops into the player's arms
+  when spoken to and is taken back to her for a Miracle Seed, after which it sits by her.
+- **Songs** of our own: `unova/route5` (Route 5 and its gate), `unova/drawbridge` (the Driftveil Drawbridge) and
+  `unova/pwt` (the World Tournament's grounds and hall), each a loop of 29 to 40 seconds with no clashes by day and at
+  night.
+- **Left for the next part**: the frigate's model coming and going, the Marvelous Bridge and Route 15 (plan 22 · U10), the
+  Ferris wheel drawn as a wheel, the drawbridge's raising and its Ducklett shadows, the 2-by-2 boulder of the Relic
+  Passage and the desert's storm timed within budget.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

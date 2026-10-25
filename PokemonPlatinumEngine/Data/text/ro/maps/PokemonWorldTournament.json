@@ -1,0 +1,132 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon World Tournament"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clay": {
+      "name": {
+        "en": [
+          "Clay"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to win this thing, {player}. Even if I have to beat you to do it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cheren": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A tournament is a fine test of what you've learned. I'm looking forward to it, {player}."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In my day you had to travel the world to see such battles. Now they come to one hall!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ace": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Leaders, Champions, the best of every region... One day I'll stand on that stage myself!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "veteran": {
+      "name": {
+        "en": [
+          "Veteran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Triple battles, rotation battles... Tournaments will have them all, once the officials have drawn up the rules."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "8,10": {
+      "en": [
+        "The Pokémon World Tournament.\nThe Driftveil Tournament, a knockout of eight, is held first. Other tournaments follow once their rules are drawn up."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

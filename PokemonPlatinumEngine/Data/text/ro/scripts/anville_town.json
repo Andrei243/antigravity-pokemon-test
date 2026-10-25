@@ -74,5 +74,231 @@
         "Când curtea e plină de oameni, pun pariu că trenurile par mai fericite!"
       ]
     }
+  ],
+  "Collector": [
+    {
+      "en": [
+        "Collector"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I collect anything to do with trains, and my best find is a Klink. All gears and no engine, if you ask me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Timburr is what I'm after, though. It'd look splendid with a girder on its shoulder. Will you swap one for my Klink?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you swap?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Timburr! Oh, look at that grip! Take good care of Cogs, now. It likes a bit of oil."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm? That isn't a Timburr. I'm only after a Timburr."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Then come back when you've a Timburr in your party. I'll be here at the weekends."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cogs is doing well? Good! I've polished my Timburr's girder three times this week."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Swap": [
+    {
+      "en": [
+        "Backer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I tried a swap here once, and it was more fun than I expected. Now I'm after another!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've a Dwebble that needs a wetter home. Will you swap me a Tympole for it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which Pokémon will you swap?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Tympole! It's sweet! Be gentle with Shelly. She carries her rock very proudly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, that's not a Tympole. I'm after a Tympole, nothing else."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Never mind. Find me a Tympole, and I'll be waiting."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I hope Shelly's keeping her rock polished. Tympole's lovely, though. It sings to the rain!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LostPansage": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pansage hopped onto a train on the way home from the amusement park, and it's been gone ever since."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It must be somewhere about the cars. Would you look for it? It's a shy little thing, and it hides when it hears me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Any sign of my Pansage? It likes to sit where the sun's warm, and it can't resist a train."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's my Pansage! Oh, you found it! Come here, you silly thing, you had me so worried!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You must take something for your trouble. Please, it's a Miracle Seed, from my grandfather's garden."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll never let go of it on a train again. Thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pansage hasn't left my side since. It likes the trains, so we go for a ride every weekend, but I hold on tight."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PansageLost": [
+    {
+      "en": [
+        "Pansage: Sage! Sage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pansage hops into your arms, looking pleased with itself, and sits quite still. You carry it back to the girl by the fence."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PansageHome": [
+    {
+      "en": [
+        "Pansage: Pan! Pan-sage!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

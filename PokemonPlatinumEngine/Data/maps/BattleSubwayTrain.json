@@ -1,0 +1,138 @@
+{
+  "name": "BattleSubwayTrain",
+  "displayName": "Battle Subway",
+  "bgmTrack": "unova/subway",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "City",
+  "width": 22,
+  "height": 8,
+  "ground": [
+    "######################",
+    "######################",
+    "######################",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "#____________________#",
+    "######################"
+  ],
+  "solid": [
+    "######################",
+    "######################",
+    "##.###################",
+    "#.....###....###.....#",
+    "#....................#",
+    "#....................#",
+    "#....................#",
+    "######################"
+  ],
+  "props": [
+    {
+      "type": "Bench",
+      "x": 6,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 13,
+      "y": 3,
+      "width": 3,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 2,
+      "sourceY": 2,
+      "targetMap": "GearStation",
+      "targetX": 11,
+      "targetY": 4,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "conductor",
+      "name": "Depot Agent",
+      "npcType": "worker",
+      "x": 4,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "The next car is coming up. Good luck out there!"
+      ]
+    },
+    {
+      "id": "partner",
+      "name": "Partner",
+      "npcType": "ace_trainer_m",
+      "x": 3,
+      "y": 4,
+      "facing": "Right",
+      "dialog": [
+        "Let's give it everything!"
+      ],
+      "shownBy": "FLAG_UNOVA_SUBWAY_SHOW_PARTNER"
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 17,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_UNOVA_SUBWAY_SHOW_OPPONENT"
+    },
+    {
+      "id": "opponent_2",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 17,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_UNOVA_SUBWAY_SHOW_OPPONENT_2"
+    },
+    {
+      "id": "ingo",
+      "name": "Ingo",
+      "npcType": "ingo",
+      "x": 17,
+      "y": 5,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_UNOVA_SUBWAY_SHOW_INGO"
+    },
+    {
+      "id": "emmet",
+      "name": "Emmet",
+      "npcType": "emmet",
+      "x": 17,
+      "y": 4,
+      "facing": "Left",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_UNOVA_SUBWAY_SHOW_EMMET"
+    }
+  ],
+  "wildEncounters": []
+}

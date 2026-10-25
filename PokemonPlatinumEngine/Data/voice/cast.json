@@ -72,6 +72,10 @@
       "note": "first spoken at fallarbor_town.txt(22)",
       "provisional": true
     },
+    "backer": {
+      "note": "first spoken at anville_town.txt(86)",
+      "provisional": true
+    },
     "baoba": {
       "note": "first spoken at olivine.txt(29)",
       "provisional": true
@@ -693,6 +697,10 @@
       "provisional": true
     },
     "norman": {},
+    "nursery_aide": {
+      "note": "first spoken at driftveil_city_7.txt(27)",
+      "provisional": true
+    },
     "officer": {
       "note": "first spoken at new_bark_elms_lab_1f.txt(118)",
       "provisional": true
@@ -878,6 +886,10 @@
     "scott": {},
     "scout": {
       "note": "first spoken at virbank_city_gym_2.txt(63)",
+      "provisional": true
+    },
+    "seller": {
+      "note": "first spoken at driftveil_city_7.txt(9)",
       "provisional": true
     },
     "selphy": {
@@ -1110,6 +1122,7 @@
     "Attendant": "look:attendant",
     "Avery": "avery",
     "Azurill": "azurill",
+    "Backer": "backer",
     "Baoba": "baoba",
     "Beauty": "beauty",
     "Ben": "ben",
@@ -1303,6 +1316,7 @@
     "Nikola": "nikola",
     "Norman": "norman",
     "Nurse": "look:nurse",
+    "Nursery Aide": "nursery_aide",
     "Officer": "officer",
     "Old Lady": "old_lady",
     "Old Man": "look:old_man",
@@ -1358,6 +1372,7 @@
     "Scientist": "look:scientist",
     "Scott": "scott",
     "Scout": "scout",
+    "Seller": "seller",
     "Selphy": "selphy",
     "Shadow Triad": "shadow_triad",
     "Shelly": "shelly",

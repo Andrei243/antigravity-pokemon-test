@@ -1,0 +1,222 @@
+{
+  "name": "PokemonWorldTournament",
+  "displayName": "Pokémon World Tournament",
+  "bgmTrack": "unova/pwt",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "City",
+  "width": 24,
+  "height": 16,
+  "ground": [
+    "########################",
+    "########################",
+    "########################",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "#______________________#",
+    "###########DD###########"
+  ],
+  "solid": [
+    "########################",
+    "########################",
+    "########################",
+    "#.#..................#.#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#.......###.###........#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "#......................#",
+    "###########..###########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 2,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 21,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 7,
+      "y": 4,
+      "width": 10,
+      "depth": 5
+    },
+    {
+      "type": "Counter",
+      "x": 9,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 10,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 12,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 13,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Counter",
+      "x": 14,
+      "y": 10,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Bench",
+      "x": 2,
+      "y": 6,
+      "width": 1,
+      "depth": 3
+    },
+    {
+      "type": "Bench",
+      "x": 21,
+      "y": 6,
+      "width": 1,
+      "depth": 3
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 11,
+      "sourceY": 15,
+      "targetMap": "Unova",
+      "targetX": 197,
+      "targetY": 466,
+      "targetFacing": "Down"
+    },
+    {
+      "sourceX": 12,
+      "sourceY": 15,
+      "targetMap": "Unova",
+      "targetX": 197,
+      "targetY": 466,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [
+    {
+      "x": 8,
+      "y": 10,
+      "text": "The Pokémon World Tournament.\nThe Driftveil Tournament, a knockout of eight, is held first. Other tournaments follow once their rules are drawn up."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "receptionist",
+      "name": "Receptionist",
+      "npcType": "receptionist",
+      "x": 11,
+      "y": 10,
+      "facing": "Down",
+      "script": "Desk"
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "npcType": "clay",
+      "x": 11,
+      "y": 5,
+      "facing": "Down",
+      "script": "ClayHost",
+      "shownBy": "FLAG_UNOVA_PWT_SHOW_CLAY"
+    },
+    {
+      "id": "hugh",
+      "name": "{rival}",
+      "npcType": "hugh",
+      "x": 6,
+      "y": 12,
+      "facing": "Right",
+      "dialog": [
+        "I'm going to win this thing, {player}. Even if I have to beat you to do it!"
+      ],
+      "shownBy": "FLAG_UNOVA_PWT_SHOW_ENTRANTS"
+    },
+    {
+      "id": "cheren",
+      "name": "Cheren",
+      "npcType": "cheren",
+      "x": 17,
+      "y": 12,
+      "facing": "Left",
+      "dialog": [
+        "A tournament is a fine test of what you've learned. I'm looking forward to it, {player}."
+      ],
+      "shownBy": "FLAG_UNOVA_PWT_SHOW_ENTRANTS"
+    },
+    {
+      "id": "gentleman",
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "x": 4,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "In my day you had to travel the world to see such battles. Now they come to one hall!"
+      ]
+    },
+    {
+      "id": "ace",
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "x": 19,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Leaders, Champions, the best of every region... One day I'll stand on that stage myself!"
+      ]
+    },
+    {
+      "id": "veteran",
+      "name": "Veteran",
+      "npcType": "veteran",
+      "x": 4,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Triple battles, rotation battles... Tournaments will have them all, once the officials have drawn up the rules."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

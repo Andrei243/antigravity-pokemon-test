@@ -26,14 +26,6 @@
         "text": [
           "Vânzător"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the market! The new stock is still on the boat. Come back soon and see what's arrived!"
-        ],
-        "text": [
-          "Bun venit la piață! Marfa nouă e încă pe vapor. Revino curând să vezi ce a sosit!"
-        ]
       }
     },
     "3": {
@@ -44,14 +36,6 @@
         "text": [
           "Marinar"
         ]
-      },
-      "dialog": {
-        "en": [
-          "I bring spices from across the sea and leave with ore from the mines. Driftveil keeps us all busy."
-        ],
-        "text": [
-          "Aduc mirodenii de peste mare și plec cu minereu din mine. Driftveil ne ține pe toți ocupați."
-        ]
       }
     },
     "4": {
@@ -61,14 +45,6 @@
         ],
         "text": [
           "Îngrijitoare de creșă"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The children love the market. So many colours, so many smells! I can barely keep them together."
-        ],
-        "text": [
-          "Copiilor le place piața. Atâtea culori, atâtea mirosuri! Abia îi mai țin împreună."
         ]
       }
     },

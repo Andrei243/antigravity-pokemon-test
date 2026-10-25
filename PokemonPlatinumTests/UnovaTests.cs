@@ -498,9 +498,11 @@ public class UnovaTests
     [Fact]
     public void ThePlasmaFrigateMoorsAtTheTournamentsPier()
     {
-        // The tournament's grounds south of Driftveil City are open, the hall's door shut until the tournament is built
+        // The tournament's grounds south of Driftveil City are open, and the hall's door (a map of ours since plan 22 · U6,
+        // part d) opens once Clay has told of the tournament
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "DriftveilCity_TournamentGate");
-        Assert.DoesNotContain(Overworld.Warps, w => w.SourceX == 197 && w.SourceY == 465);
+        Assert.Contains(Overworld.Warps, w => w.SourceX == 197 && w.SourceY == 465 && w.TargetMap == "PokemonWorldTournament"
+            && w.OpenedBy == "FLAG_UNOVA_PWT_OPEN");
         // the gangway at the pier's end is the frigate's way aboard while it is moored there, and the frigate lies along it
         var gangway = Overworld.Warps.Single(w => w.TargetMap == "PlasmaFrigate");
         Assert.Equal(("FLAG_UNOVA_FRIGATE_AT_PIER", "FLAG_UNOVA_FRIGATE_SAILED"), (gangway.From, gangway.Until));

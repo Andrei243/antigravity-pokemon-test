@@ -1,0 +1,165 @@
+# The Pokémon World Tournament's hall (plan 22 · U6, part d). docs/scripts.md describes the language; the lines are our own,
+# on the beats of Black 2's first visit (the decompilation's res/field/scripts/pwt.s, read for the order alone: Clay welcomes the
+# player, the first tournament is played, and the plot goes on outside).
+#
+# Black 2's hall and its rooms aren't read (the reader's output for pwt_2 is plan 22 · U6's later part), so the hall is one
+# map of ours (Data/maps/PokemonWorldTournament.json): the lobby and its desk below, the stage above. The tournament is a
+# story event only: the Driftveil Tournament, a knockout of three rounds that the player plays against Cheren, {rival} and
+# Clay, each fought with Level 50 copies of three of the player's Pokémon and nothing from the Bag, as the Battle Subway is
+# (Models/Frontier/BattleSubway.cs; `subway foe`). The formats the later tournaments play in (triples and rotations, plan 14 ·
+# B11 and B12) and every other tournament are left until those exist. A tournament played, win or lose, sets
+# FLAG_UNOVA_PWT_FIRST_TOURNAMENT, which lets the pier's scene of the Plasma Frigate play (pwt.txt); only a win earns Clay's
+# prize, five Battle Points.
+
+
+script OnEnter
+  if flag FLAG_UNOVA_PWT_FIRST_TOURNAMENT goto Played
+  setflag FLAG_UNOVA_PWT_SHOW_CLAY
+  setflag FLAG_UNOVA_PWT_SHOW_ENTRANTS
+  if flag FLAG_UNOVA_PWT_WELCOMED end
+  scene "Clay's welcome"
+  walk player up 3
+  speaker "Clay"
+  say "Welcome to the Pokémon World Tournament! I built this hall for the city, so that Trainers from every region have somewhere to meet."
+  say "And you're just in time. The first tournament is about to begin. {rival} and Cheren have entered, and I'd like you in it too."
+  endscene
+  setflag FLAG_UNOVA_PWT_WELCOMED
+  call Enter
+  end
+label Played
+  clearflag FLAG_UNOVA_PWT_SHOW_CLAY
+  clearflag FLAG_UNOVA_PWT_SHOW_ENTRANTS
+  end
+
+
+# The front desk
+script Desk
+  face self player
+  speaker "Receptionist"
+  if flag FLAG_UNOVA_PWT_FIRST_TOURNAMENT goto Next
+  say "Welcome to the Pokémon World Tournament! The Driftveil Tournament is about to start. Clay is on the stage and will see you in."
+  end
+label Next
+  say "Welcome to the Pokémon World Tournament! The Driftveil Tournament has been played, and the results are in the record books."
+  say "The tournaments of the other formats will open as their rules are drawn up. Please do come back!"
+  end
+
+
+# Clay on the stage, before the tournament
+script ClayHost
+  face self player
+  call Enter
+  end
+
+
+# The offer, the team and the bracket
+script Enter
+  speaker "Clay"
+  say "The Driftveil Tournament is a knockout of eight Trainers. Three Pokémon each, at Level 50 or under, and nothing from the Bag."
+  ask "Will you enter the Driftveil Tournament?"
+  if no goto Later
+  subway begin single
+  subway enough
+  if result == 1 goto Choose
+  say "You need {number} Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  subway end
+  return
+label Choose
+  say "Then choose the Pokémon you'll enter."
+  subway choose
+  if result == 0 goto Withdraw
+  subway check
+  if result == 1 goto SameSpecies
+  if result == 2 goto SameItem
+  goto Bracket
+label SameSpecies
+  say "I'm sorry. The Pokémon entered must all be of different species."
+  goto Withdraw
+label SameItem
+  say "I'm sorry. No two of the Pokémon entered may hold the same item."
+label Withdraw
+  subway end
+  say "Come back when your team is ready. The stage will wait."
+  return
+label Later
+  say "No rush. The tournament isn't going anywhere, and neither am I."
+  return
+
+label Bracket
+  scene "The Driftveil Tournament"
+  fade out 0.6
+  place player 8 6 right
+  place clay 11 4 down
+  place cheren 15 6 left
+  place hugh 6 12 right
+  fade in
+  text "Eight Trainers took the stage in the Driftveil Tournament, a knockout of three rounds."
+  speaker "Clay"
+  say "First round! Let's hear it for the entrants!"
+  speaker "Cheren"
+  say "I'm not holding back, {player}. I want to see what you've learned since Aspertia."
+  subway foe "unova_cheren"
+  subway battle
+  if result == 0 goto Out1
+  speaker "Cheren"
+  say "Well fought! You've earned your place in the next round."
+  place cheren 17 12 left
+  # The second round: {rival}, with the team the player's own starter meets
+  place hugh 15 6 left
+  speaker "{rival}"
+  say "My turn, {player}! I've been waiting for this since we left the Gym. I won't lose!"
+  if starter "Snivy" goto HughSnivy
+  if starter "Tepig" goto HughTepig
+  subway foe "unova_rival_12"
+  goto Round2
+label HughSnivy
+  subway foe "unova_rival_10"
+  goto Round2
+label HughTepig
+  subway foe "unova_rival_11"
+label Round2
+  subway battle
+  if result == 0 goto Out2
+  speaker "{rival}"
+  say "Argh! ...No, that was a good one. You go on and win it, {player}."
+  place hugh 6 12 right
+  # The final: Clay himself
+  place clay 15 6 left
+  speaker "Clay"
+  say "Well, well! Final round, and the last one standing's me. Ain't that how it goes? Don't you hold back on my account!"
+  subway foe "unova_leader_clay"
+  subway battle
+  if result == 0 goto Out3
+  speaker "Clay"
+  say "Haw haw! Lost to a youngster in my own hall, and I couldn't be gladder. That's a champion's battle you gave me, {player}."
+  say "The Driftveil Tournament's yours. Take these Battle Points, and be proud of 'em."
+  frontier give 5
+  text "{player} received 5 BP!"
+  fanfare item
+  goto Finish
+label Out1
+  speaker "Cheren"
+  say "I'm sorry, {player}. That round was mine. You fought well, though: I can see how far you've come."
+  goto Lost
+label Out2
+  speaker "{rival}"
+  say "Yes! I beat you, {player}! ...Heh. Next time it'll be an even closer one, I bet."
+  goto Lost
+label Out3
+  speaker "Clay"
+  say "Haw haw! Still the top Trainer of my own hall! You came mighty close, though, {player}. Mighty close."
+label Lost
+  speaker "Clay"
+  say "A tournament's about how you fight, not whether you win. You're welcome in this hall any time."
+label Finish
+  subway end
+  setflag FLAG_UNOVA_PWT_FIRST_TOURNAMENT
+  clearflag FLAG_UNOVA_PWT_SHOW_ENTRANTS
+  place clay 11 5 down
+  place player 11 11 up
+  speaker "Clay"
+  say "There's a big ship moored at the end of the pier, by the way. Go on and take a look when you've caught your breath."
+  clearflag FLAG_UNOVA_PWT_SHOW_CLAY
+  endscene
+  return
