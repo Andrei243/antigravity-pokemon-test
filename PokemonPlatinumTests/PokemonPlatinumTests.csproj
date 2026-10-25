@@ -34,6 +34,8 @@
     <ProjectReference Include="..\tools\ContentCheck\ContentCheck.csproj" />
     <!-- The save tool's checks, migration and diff over saves made in the tests (plan 12 · Q3) -->
     <ProjectReference Include="..\tools\SaveTool\SaveTool.csproj" />
+    <!-- The Blender tool's clip names against the game's matcher; nothing in the tests runs Blender -->
+    <ProjectReference Include="..\tools\BlenderAnim\BlenderAnim.csproj" />
   </ItemGroup>
 
 </Project>

@@ -86,7 +86,7 @@ battle's and is added whatever clip plays.
 
 ## Shiny and animations
 
-A shiny look of a model file is the same file with its texture recoloured by the species' shiny palette (`docs/art/style-guide.md`, "Shiny Pokémon"): nothing to make for it. A file without clips is moved as a whole by the body plan; `tools/TripoSculpt` can rig and animate a Tripo sculpt and names its clips for the roles above.
+A shiny look of a model file is the same file with its texture recoloured by the species' shiny palette (`docs/art/style-guide.md`, "Shiny Pokémon"): nothing to make for it. A file without clips is moved as a whole by the body plan; `tools/TripoSculpt` can rig and animate a Tripo sculpt and names its clips for the roles above, and `tools/BlenderAnim` keys a clip for every role on any rigged file with Blender and renders sheets of them (its README); the harness's `clips` mode shoots a model file's clips in battle.
 
 ## Options
 

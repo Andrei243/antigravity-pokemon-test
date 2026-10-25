@@ -53,3 +53,6 @@ node_modules/
 
 # The player's own files, read and never written (plan 08 · P20): saves and Pokémon files dropped here for the migration
 migrate/
+
+# What Python leaves beside tools/BlenderAnim's scripts when Blender imports one from another
+__pycache__/
