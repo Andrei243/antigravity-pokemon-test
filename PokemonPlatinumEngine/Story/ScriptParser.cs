@@ -1072,6 +1072,8 @@ public static class ScriptParser
             }
             case "party":
                 return Counted(Query.Party);
+            case "friendship":
+                return Counted(Query.Friendship);
             case "granted":
                 return new Condition { Query = Query.Granted, Negated = negated, Name = r.Text("a field move's name") };
             case "knows":

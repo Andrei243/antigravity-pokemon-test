@@ -1039,7 +1039,7 @@ Platinum's table and thresholds (`Pokemon_UpdateFriendship`). The +1 for being i
 | The Sunyshore Market's other stalls | Three more sellers of nothing, and the Seals on show | Its people say their lines | Plan 01 · M11 |
 | The Seal Club's programme | A TV programme shows other trainers' capsules | Not there | Plan 08's TV |
 | Seals and backdrops from elsewhere | Mystery gifts, the Global Terminal, a daily Seal in the Pokémon News Press, Amity Square's accessories | Only the givers above | Plans 07, 08 and 01 · M11; Amity Square is R16's |
-| The footprints | Dr. Footstep's reading follows the species' footprint, which the Pokédex shows | One voice, no footprints | Plan 09 |
+| The footprints | Dr. Footstep's reading follows the species' footprint, which the Pokédex shows | The Pokédex shows a print of our own made from each walking species' model (plan 09 · L9), and Dr. Footstep reads his five steps with `if friendship`; he still speaks in one voice, for a Pokémon that leaves no print too | Done but the voices: a voice by the kind of print is a later session's |
 
 ## The eighth chapter, first half (2026-10-10, plan 02 · S11, part a)
 

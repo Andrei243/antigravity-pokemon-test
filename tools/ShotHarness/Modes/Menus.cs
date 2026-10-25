@@ -689,6 +689,27 @@ partial class Harness
         // The list beside an entry not opened keeps the still, and asks for no strip
         dexScreen.Cancel();
         Frames(10); Shot("26za_pokedex_list_still");
+
+        // Footprints (plan 09 · L9), last so that nothing before them moves: the caught species' prints made first (the
+        // list shows only prints already made), the list with them, Turtwig's entry with its stamp and the stamp at the
+        // screen's own resolution, a bird's, and Onix's entry, a serpent's, with none
+        foreach (var name in new[] { "Turtwig", "Bidoof", "Shinx", "Psyduck", "Machop", "Onix", "Starly" })
+            Console.WriteLine(Footprints.Now(name) is { } made ? $"  footprint of {name}: {made.Count} texels" : $"  {name} leaves no footprint");
+        pokedex.RegisterCaught(PokemonDatabase.Get("Starly")!.DexNumber);
+        Pick("Turtwig");
+        Frames(4); Shot("26zb_pokedex_list_footprints");
+        dexScreen.Confirm();
+        Frames(12); Shot("26zc_pokedex_entry_footprint");
+        ShotCrop("26zc_pokedex_entry_footprint_close", 1180, 522, 120, 120, 4);
+        dexScreen.Cancel();
+        Pick("Starly");
+        dexScreen.Confirm();
+        Frames(12); Shot("26zd_pokedex_entry_footprint_bird");
+        dexScreen.Cancel();
+        Pick("Onix");
+        dexScreen.Confirm();
+        Frames(12); Shot("26ze_pokedex_entry_no_footprint");
+        dexScreen.Cancel();
         game.State = GameState.Overworld;
 
         // Remembering and renaming from the party menu (plan 12 · Q19), last so that nothing before it moves: the menu with

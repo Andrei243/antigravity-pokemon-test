@@ -39,6 +39,8 @@ partial class Harness
         FieldSprites.Patient = true;
         // The one Pokémon a menu looks at breathes from the frame after it is asked for, every run (plan 09 · L5)
         PokemonSprites.PatientStrips = true;
+        // An opened entry's footprint is made on the spot, and none is read from an earlier run's cache (plan 09 · L9)
+        Footprints.Patient = true;
         startMs = startClock.Elapsed.TotalMilliseconds;
 
         // Muted, and by day whatever the real time is (the "times" mode sets the other times of day)
