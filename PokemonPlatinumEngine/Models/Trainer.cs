@@ -69,6 +69,16 @@ public class Trainer
     /// <summary>Battles two Pokémon at a time (twins, couples), if the player has two that can fight.</summary>
     public bool DoubleBattle { get; set; }
 
+    /// <summary>
+    /// A format of the later games the trainer battles in (plan 14): <c>"triple"</c> three at a time (B6), where the rules
+    /// have triples and both sides can field three (<see cref="Battle.BattleFormats.FallBack"/>); null for Platinum's
+    /// single or double (<see cref="DoubleBattle"/> stays, and means <c>"double"</c>). None of Platinum's trainers has one.
+    /// </summary>
+    public string? Format { get; set; }
+
+    /// <summary>The format the trainer's <see cref="Format"/> asks for: a triple for <c>"triple"</c> (plan 14 · B6), else null.</summary>
+    public Battle.BattleFormat? AskedFormat => Format == "triple" ? Battle.BattleFormat.Triple : null;
+
     /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
     public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;
 

@@ -292,7 +292,7 @@ public sealed partial class BattleCore : IBattleContext
         // A horde of fewer than five is fought with as many places as it has Pokémon
         int foeSlots = IsHorde ? Math.Min(Format.PlacesOf(BattleSide.Enemy), WildPokemon.Count) : Format.PlacesOf(BattleSide.Enemy);
         // Every place draws a number for the turn: the original's four, or a number for each a horde can have
-        speedRolls = new int[IsHorde ? Place.MaxNumber : 4];
+        speedRolls = new int[IsHorde || IsTriple ? Place.MaxNumber : 4];
 
         PlayerSlots = Enumerable.Range(0, slots).Select(i => new Battler(BattleSide.Player, i)
         {
@@ -664,7 +664,7 @@ public sealed partial class BattleCore : IBattleContext
             var act = waiting[0];
             // The turn's Mega Evolutions come once its switches and items are done, before its first move (plan 06 ·
             // R20); the moves still to come are then put in order again by the Speeds they gave
-            if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run))
+            if (!megasDone && act.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Run or ChoiceKind.Shift))
             {
                 megasDone = true;
                 // The Dynamaxes come after them (plan 06 · R22; Showdown's runDynamax, order 105)
@@ -708,6 +708,10 @@ public sealed partial class BattleCore : IBattleContext
                 case ChoiceKind.Item:
                     ExecuteItemUse(act.User, act);
                     break;
+                case ChoiceKind.Shift:
+                    // A triple battle's shift to the centre is the Pokémon's turn (plan 14 · B6)
+                    ShiftToTheCentre(act.User);
+                    break;
             }
             act.User.Turn.Acted = true;
             if (Result == BattleResult.None) ResolveFaints();
@@ -750,6 +754,8 @@ public sealed partial class BattleCore : IBattleContext
 
         foreach (var request in ReplaceFainted()) yield return request;
         if (Result != BattleResult.None) yield break;
+        // A triple battle's last two out of each other's reach go to the centre (plan 14 · B6)
+        MoveToTheCentre();
         Turn++;
         SetUpNextTurn();
         // The original's switch-in check opens every turn: Slow Start's five turns end here, and a shape follows the weather
@@ -820,8 +826,9 @@ public sealed partial class BattleCore : IBattleContext
         var runner = byPlace.FirstOrDefault(a => a.Choice.Kind == ChoiceKind.Run);
         if (runner != null) return byPlace.Where(a => a == runner).Concat(byPlace.Where(a => a != runner)).ToList();
 
-        var order = byPlace.Where(a => a.Choice.Kind is ChoiceKind.Item or ChoiceKind.Switch)
-            .Concat(byPlace.Where(a => a.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch))).ToList();
+        // A triple battle's shifts go with the switches, before any move (plan 14 · B6)
+        var order = byPlace.Where(a => a.Choice.Kind is ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift)
+            .Concat(byPlace.Where(a => a.Choice.Kind is not (ChoiceKind.Item or ChoiceKind.Switch or ChoiceKind.Shift))).ToList();
         for (int i = 0; i < order.Count - 1; i++)
         {
             for (int j = i + 1; j < order.Count; j++)

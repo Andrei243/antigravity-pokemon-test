@@ -63,7 +63,8 @@ public sealed class TrainerAi : IBattleController
             if (ShouldSwitch(battle, mine)) return BattleChoice.Switch(mine.Place, SwitchTarget(battle, mine));
             if (ShouldUseItem(battle, mine) is { } item) return BattleChoice.UseItem(mine.Place, item);
         }
-        return battle.IsDouble ? Doubles(battle, mine, flags) : Singles(battle, mine, flags);
+        // A triple battle is thought through as a double is, over every place in reach (plan 14 · B6)
+        return battle.IsDouble || battle.IsTriple ? Doubles(battle, mine, flags) : Singles(battle, mine, flags);
     }
 
     public int ChooseReplacement(BattleCore battle, Battler place)
@@ -129,11 +130,13 @@ public sealed class TrainerAi : IBattleController
     private static BattleChoice Doubles(BattleCore battle, Battler mine, AiFlags flags)
     {
         var others = battle.AllBattlers.OrderBy(b => b.Place.Number).ToList();
+        // In a triple battle only the places in its reach, while any foe is (plan 14 · B6)
+        bool anyInReach = battle.ActiveFoes(mine).Any(f => battle.InReach(mine, f));
         var bestOf = new Dictionary<Battler, (int Slot, int Score)>();
         int[]? lastScores = null;
         foreach (var target in others)
         {
-            if (target == mine || target.Pokemon == null || target.Pokemon.CurrentHP == 0)
+            if (target == mine || target.Pokemon == null || target.Pokemon.CurrentHP == 0 || (anyInReach && !battle.InReach(mine, target)))
             {
                 bestOf[target] = (-1, -1);
                 continue;
@@ -205,7 +208,8 @@ public sealed class TrainerAi : IBattleController
         // At one of the foes it faces, where there are several (a double, or the player facing a horde: plan 14 · B3)
         if (move.Target == MoveTarget.Selected && !battle.IsSingle)
         {
-            var foes = battle.ActiveFoes(mine).ToList();
+            // In a triple battle at one in its reach (plan 14 · B6)
+            var foes = battle.ActiveFoes(mine).Where(f => battle.GetsTo(mine, f, move.Data)).ToList();
             if (foes.Count > 0) target = foes[battle.Random.Roll(RollKind.AiChoice, foes.Count)].Place;
         }
         return BattleChoice.Fight(mine.Place, slot, target);
@@ -247,6 +251,12 @@ public sealed class TrainerAi : IBattleController
     private static IEnumerable<int> Bench(BattleCore battle, Battler mine)
     {
         if (mine.Roster == null) return Enumerable.Empty<int>();
+        if (battle.IsTriple)
+        {
+            // Not already picked by either of the others of its side (plan 14 · B6)
+            var picked = TakenInATriple(battle, mine);
+            return Enumerable.Range(0, mine.Roster.Count).Where(i => !picked.Contains(i) && battle.CanSendIn(mine, i));
+        }
         var partner = battle.IsDouble ? battle.SlotsOf(mine.Side)[1 - mine.Slot] : null;
         int taken = partner != null && partner.Roster == mine.Roster && battle.AiMemory.SwitchedTo.TryGetValue(partner.Place, out int s) ? s : -1;
         return Enumerable.Range(0, mine.Roster.Count).Where(i => i != taken && battle.CanSendIn(mine, i));
@@ -524,10 +534,12 @@ public sealed class TrainerAi : IBattleController
         if (place.Roster == null) return -1;
         var foes = battle.SlotsOf(Other(place.Side));
         // In a horde, the first of the foes still standing (plan 14 · B3)
-        var defender = battle.IsDouble ? RandomOpponent(battle, place) : battle.IsHorde ? foes.FirstOrDefault(f => f.IsActive) ?? foes[0] : foes[0];
+        // In a horde, and in a triple battle (plan 14 · B6), the first of the foes still standing
+        var defender = battle.IsDouble ? RandomOpponent(battle, place) : battle.IsHorde || battle.IsTriple ? foes.FirstOrDefault(f => f.IsActive) ?? foes[0] : foes[0];
         if (defender.Pokemon == null) return -1;
         var party = place.Roster.Members;
-        var candidates = Enumerable.Range(0, party.Count).Where(i => battle.CanSendIn(place, i) && Taken(battle, place) != i).ToList();
+        var takenInATriple = battle.IsTriple ? TakenInATriple(battle, place) : null;
+        var candidates = Enumerable.Range(0, party.Count).Where(i => battle.CanSendIn(place, i) && Taken(battle, place) != i && takenInATriple?.Contains(i) != true).ToList();
         var disregarded = new HashSet<int>();
 
         while (true)
@@ -583,6 +595,11 @@ public sealed class TrainerAi : IBattleController
         if (d2 != d1) mul = mul * (int)MathF.Round(Data.TypeChart.GetEffectiveness(attacking, d2, null, rules, inverse) * 10f) / 10;
         return mul;
     }
+
+    /// <summary>The party slots the others of a triple battle's side, of the same team, have been decided on for (plan 14 · B6).</summary>
+    private static HashSet<int> TakenInATriple(BattleCore battle, Battler place) =>
+        battle.SlotsOf(place.Side).Where(o => o != place && o.Roster == place.Roster && battle.AiMemory.SwitchedTo.ContainsKey(o.Place))
+            .Select(o => battle.AiMemory.SwitchedTo[o.Place]).ToHashSet();
 
     private static int Taken(BattleCore battle, Battler place)
     {

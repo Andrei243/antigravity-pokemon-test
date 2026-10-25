@@ -317,7 +317,7 @@
     "accuracy": 100,
     "maxPP": 35,
     "description": "Inflicts regular damage and can hit Pokémon in the air.",
-    "flags": "Protect, Mirror, KingsRock",
+    "flags": "Protect, Mirror, KingsRock, Distance",
     "effect": "DoubleDamageFlyOrBounce",
     "battleEffect": "DoubleDamageFlyOrBounce",
     "contest": {
@@ -337,7 +337,7 @@
     "accuracy": 100,
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "Hit",
     "contest": {
       "type": "Cool",
@@ -384,7 +384,7 @@
     "accuracy": 95,
     "maxPP": 15,
     "description": "User flies high into the air, dodging all attacks, and hits next turn.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "effect": "Fly",
     "battleEffect": "Fly",
     "contest": {
@@ -1388,7 +1388,7 @@
     "accuracy": 100,
     "maxPP": 35,
     "description": "Inflicts regular damage with no additional effect.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "Hit",
     "contest": {
       "type": "Cool",
@@ -1407,7 +1407,7 @@
     "accuracy": 100,
     "maxPP": 20,
     "description": "Inflicts regular damage with no additional effect.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "Hit",
     "contest": {
       "type": "Cool",
@@ -3224,7 +3224,7 @@
     "description": "User charges for one turn before attacking. Has a chance to make the target flinch.",
     "critStage": 1,
     "flinchChancePercent": 30,
-    "flags": "Protect, Mirror, KingsRock",
+    "flags": "Protect, Mirror, KingsRock, Distance",
     "effect": "ChargeTurnHighCritFlinch",
     "battleEffect": "ChargeTurnHighCritFlinch",
     "contest": {
@@ -3992,7 +3992,7 @@
     "maxPP": 5,
     "description": "Has an increased chance for a critical hit.",
     "critStage": 1,
-    "flags": "Protect, Mirror, KingsRock",
+    "flags": "Protect, Mirror, KingsRock, Distance",
     "battleEffect": "HighCritical",
     "contest": {
       "type": "Cool",
@@ -4395,7 +4395,7 @@
     "maxPP": 5,
     "description": "User and target both faint after three turns.",
     "target": "Field",
-    "flags": "Sound",
+    "flags": "Sound, Distance",
     "effect": "AllFaint3Turns",
     "battleEffect": "AllFaint3Turns",
     "contest": {
@@ -4864,7 +4864,7 @@
     "maxPP": 5,
     "description": "Cures the entire party of major status effects.",
     "target": "UserSide",
-    "flags": "Sound, Snatch",
+    "flags": "Sound, Snatch, Distance",
     "effect": "CurePartyStatus",
     "battleEffect": "CurePartyStatus",
     "contest": {
@@ -7061,7 +7061,7 @@
     "maxPP": 5,
     "description": "Cures the entire party of major status effects.",
     "target": "UserSide",
-    "flags": "Snatch",
+    "flags": "Snatch, Distance",
     "effect": "CurePartyStatus",
     "battleEffect": "CurePartyStatus",
     "contest": {
@@ -7545,7 +7545,7 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Never misses.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "BypassAccuracy",
     "contest": {
       "type": "Cool",
@@ -7736,7 +7736,7 @@
     "description": "User bounces high into the air, dodging all attacks, and hits next turn.",
     "inflictStatus": "Paralyze",
     "statusChancePercent": 30,
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "effect": "Bounce",
     "battleEffect": "Bounce",
     "contest": {
@@ -8008,7 +8008,7 @@
     "maxPP": 20,
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 20,
-    "flags": "Pulse, Protect, Mirror, KingsRock",
+    "flags": "Pulse, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "ConfuseHit",
     "contest": {
       "type": "Beauty",
@@ -8294,7 +8294,7 @@
     "accuracy": 100,
     "maxPP": 20,
     "description": "If target has a berry, inflicts double damage and uses the berry.",
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "effect": "EatBerry",
     "battleEffect": "EatBerry",
     "contest": {
@@ -9001,7 +9001,7 @@
     "accuracy": 0,
     "maxPP": 20,
     "description": "Never misses.",
-    "flags": "Pulse, Ballistic, Protect, Mirror, KingsRock",
+    "flags": "Pulse, Ballistic, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "BypassAccuracy",
     "contest": {
       "type": "Beauty",
@@ -9070,7 +9070,7 @@
     "maxPP": 15,
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 20,
-    "flags": "Pulse, Protect, Mirror, KingsRock",
+    "flags": "Pulse, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "FlinchHit",
     "contest": {
       "type": "Cool",
@@ -9148,7 +9148,7 @@
     "maxPP": 20,
     "description": "Has a chance to make the target flinch.",
     "flinchChancePercent": 30,
-    "flags": "Protect, Mirror, KingsRock",
+    "flags": "Protect, Mirror, KingsRock, Distance",
     "battleEffect": "FlinchHit",
     "contest": {
       "type": "Cool",
@@ -9211,7 +9211,7 @@
     "accuracy": 100,
     "maxPP": 10,
     "description": "Inflicts regular damage with no additional effect.",
-    "flags": "Pulse, Protect, Mirror, KingsRock",
+    "flags": "Pulse, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "Hit",
     "contest": {
       "type": "Smart",
@@ -9367,7 +9367,7 @@
     "maxPP": 15,
     "description": "User receives 1/3 the damage inflicted in recoil.",
     "recoilPercent": 33,
-    "flags": "Contact, Protect, Mirror, KingsRock",
+    "flags": "Contact, Protect, Mirror, KingsRock, Distance",
     "battleEffect": "RecoilThird",
     "contest": {
       "type": "Cute",
@@ -10129,7 +10129,7 @@
     "accuracy": 100,
     "maxPP": 20,
     "description": "Has a higher chance to confuse the target when the recorded sound is louder.",
-    "flags": "Sound, Protect",
+    "flags": "Sound, Protect, Distance",
     "effect": "Chatter",
     "battleEffect": "Chatter",
     "contest": {
@@ -11229,7 +11229,7 @@
     "accuracy": 0,
     "maxPP": 10,
     "description": "Heals the target for half its max HP.",
-    "flags": "Pulse, Protect, Reflectable",
+    "flags": "Pulse, Protect, Reflectable, Distance",
     "healPercent": 50,
     "effect": "HealPulse",
     "zBonus": {
@@ -11261,7 +11261,7 @@
     "accuracy": 100,
     "maxPP": 10,
     "description": "Carries the target high into the air, dodging all attacks against either, and drops it next turn.",
-    "flags": "Contact, Protect, Mirror",
+    "flags": "Contact, Protect, Mirror, Distance",
     "effect": "SkyDrop",
     "zPower": 120,
     "maxPower": 110
@@ -11344,7 +11344,7 @@
     "accuracy": 100,
     "maxPP": 15,
     "description": "Has double power if the user has no held item.",
-    "flags": "Contact, Protect, Mirror",
+    "flags": "Contact, Protect, Mirror, Distance",
     "effect": "Acrobatics",
     "zPower": 100,
     "maxPower": 110
@@ -11839,7 +11839,7 @@
     "maxPP": 10,
     "description": "Has a chance to confuse the target.",
     "confuseChancePercent": 30,
-    "flags": "Protect, Mirror",
+    "flags": "Protect, Mirror, Distance",
     "effect": "Hurricane",
     "effectChance": 30,
     "zPower": 185,
@@ -12138,7 +12138,7 @@
     "accuracy": 95,
     "maxPP": 10,
     "description": "Deals both Fighting and Flying-type damage.",
-    "flags": "Contact, Protect, Mirror",
+    "flags": "Contact, Protect, Mirror, Distance",
     "effect": "FlyingPress",
     "zPower": 170,
     "maxPower": 90
@@ -12195,6 +12195,7 @@
       "SpAttack"
     ],
     "target": "AllPokemon",
+    "flags": "Distance",
     "effect": "Rototiller",
     "effectChance": 100,
     "zBonus": {
@@ -12499,6 +12500,7 @@
     "statStageAmount": 1,
     "statChangeChancePercent": 100,
     "target": "AllPokemon",
+    "flags": "Distance",
     "effect": "FlowerShield",
     "effectChance": 100,
     "zBonus": {
@@ -12950,7 +12952,7 @@
       "SpDefense"
     ],
     "target": "UserAndAllies",
-    "flags": "Snatch",
+    "flags": "Snatch, Distance",
     "effect": "MagneticFlux",
     "zBonus": {
       "stats": [
@@ -13160,7 +13162,7 @@
     "maxPP": 10,
     "description": "Drains 75% of the damage inflicted to heal the user.",
     "drainPercent": 75,
-    "flags": "Protect, Mirror",
+    "flags": "Protect, Mirror, Distance",
     "zPower": 160,
     "maxPower": 130
   },
@@ -13274,7 +13276,7 @@
     "alsoChangesStats": [
       "SpDefense"
     ],
-    "flags": "Contact, Protect, Mirror",
+    "flags": "Contact, Protect, Mirror, Distance",
     "zPower": 190,
     "maxPower": 140
   },

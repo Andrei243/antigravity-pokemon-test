@@ -560,7 +560,7 @@ public sealed partial class BattleCore
     /// </summary>
     private IEnumerable<BattleRequest> OfferSwitch(Battler foe, Pokemon upcoming)
     {
-        if (!OffersSwitch || IsDouble || !IsTrainerBattle || Frontier || foe.Trainer == null) yield break;
+        if (!OffersSwitch || !IsSingle || !IsTrainerBattle || Frontier || foe.Trainer == null) yield break;
         var mine = PlayerSlots[0];
         if (!mine.IsActive || mine.Trainer != null || ControllerOf(mine) != null || !HasReplacement(mine)) yield break;
 

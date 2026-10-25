@@ -5,9 +5,10 @@ namespace PokemonPlatinumEngine.Battle.Sim;
 
 /// <summary>
 /// What a choice is: a move, a switch, an item, running; in the Great Marsh also bait or mud thrown at the Pokémon;
-/// and staying in when Battle Style Shift offers a switch (plan 08 · P1).
+/// and staying in when Battle Style Shift offers a switch (plan 08 · P1); in a triple battle, a Pokémon at an end moving
+/// to the centre (plan 14 · B6).
 /// </summary>
-public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay }
+public enum ChoiceKind { Fight, Switch, Item, Run, Bait, Mud, Stay, Shift }
 
 /// <summary>
 /// What one Pokémon's trainer decides for a turn, as plain data: a seed and the choices made are a whole battle
@@ -81,6 +82,12 @@ public sealed record BattleChoice(Place Who, ChoiceKind Kind)
     /// <see cref="Switch"/> is the other answer. (<see cref="GoOn"/> is the core's own answer for a Pokémon held to its move.)
     /// </summary>
     public static BattleChoice Stay(Place who) => new(who, ChoiceKind.Stay);
+
+    /// <summary>
+    /// A triple battle (plan 14 · B6): the Pokémon at an end trades places with the centre, and that is its turn
+    /// (Black and White's rule). Refused anywhere else (<see cref="BattleCore.WhyNot"/>).
+    /// </summary>
+    public static BattleChoice Shift(Place who) => new(who, ChoiceKind.Shift);
 }
 
 /// <summary>

@@ -30,6 +30,10 @@ public sealed class TrainerRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool DoubleBattle { get; set; }
 
+    /// <summary>A format of the later games (plan 14 · B6: <c>"triple"</c>); left out for Platinum's single or double, as every one of Platinum's is.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Format { get; set; }
+
     /// <summary>The trainer has a Key Stone and Mega Evolves under rules that have it (plan 06 · R20); none of Platinum's does.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool KeyStone { get; set; }
@@ -276,6 +280,8 @@ public static class TrainerDatabase
             if (string.IsNullOrEmpty(trainer.TrainerClass) || trainer.TrainerClass == "Trainer") trainer.TrainerClass = IsRival(record.Class) ? RivalClass : record.Class;
             trainer.PrizeMoney = record.PrizeMoney;
             trainer.DoubleBattle |= record.DoubleBattle;
+            // A format of the later games (plan 14 · B6)
+            trainer.Format ??= record.Format;
         }
         trainer.Party.Clear();
         foreach (var m in record.Party) trainer.Party.Add(Build(m));
