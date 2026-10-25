@@ -13,5 +13,18 @@
   "submittedAt": "2026-10-25T20:15:23.2805876Z",
   "status": "success",
   "credits": 30,
-  "bytes": 1580736
+  "bytes": 1580736,
+  "rig": {
+    "type": "quadruped",
+    "taskId": "8169d0f4-01ee-4de6-b92c-94cb008247fd",
+    "retargetTaskId": "3f94bab2-3b95-42d1-9bc8-5cd8b0fcafe8",
+    "animations": [
+      "preset:quadruped:walk"
+    ],
+    "status": "success",
+    "credits": 35,
+    "clips": [
+      "idle_walk"
+    ]
+  }
 }
