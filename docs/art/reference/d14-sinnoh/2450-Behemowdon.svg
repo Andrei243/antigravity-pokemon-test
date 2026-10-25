@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Behemowdon (No. 2450), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="270" cy="464" rx="220" ry="18" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- far legs -->
+    <path d="M380 360 L380 444 L430 444 L430 350 Z" fill="#7a5a36"/>
+    <!-- body -->
+    <path d="M150 240 C200 190 380 180 450 230 C496 270 490 360 450 390 C400 420 230 420 170 390 Z" fill="#b08a56"/>
+    <path d="M450 250 C486 290 480 360 446 388 C420 402 390 410 360 412 C430 380 460 320 450 250 Z" fill="#8a6a3e" stroke="none"/>
+    <path d="M190 360 C250 396 380 400 440 376 C400 404 260 410 196 384 Z" fill="#e2c890" stroke="none"/>
+    <!-- sandstone plates along its back -->
+    <path d="M200 216 L214 178 L262 172 L272 206 Z" fill="#d8b878"/>
+    <path d="M272 206 L278 166 L330 162 L340 200 Z" fill="#d8b878"/>
+    <path d="M340 200 L350 166 L398 172 L404 210 Z" fill="#d8b878"/>
+    <path d="M404 210 L420 182 L458 200 L452 236 Z" fill="#d8b878"/>
+    <path d="M222 184 L256 180 M286 174 L322 170 M358 176 L392 180" fill="none" stroke="#f2e0b0" stroke-width="4"/>
+    <path d="M226 196 L262 194 M290 188 L330 186 M356 190 L396 194" fill="none" stroke="#a8884e" stroke-width="3"/>
+    <!-- pores, sand pouring -->
+    <g fill="#5a3e22" stroke="none">
+      <circle cx="300" cy="250" r="9"/><circle cx="350" cy="244" r="9"/><circle cx="400" cy="256" r="9"/><circle cx="326" cy="290" r="8"/><circle cx="378" cy="290" r="8"/>
+    </g>
+    <g fill="#e8d098" stroke-width="3">
+      <path d="M300 250 C290 240 284 224 290 210 C300 220 306 236 300 250 Z"/>
+      <path d="M350 244 C344 232 342 216 350 204 C358 216 358 232 350 244 Z"/>
+      <path d="M400 256 C406 242 416 230 430 226 C426 240 414 252 400 256 Z"/>
+    </g>
+    <g fill="#e8d098" stroke="none">
+      <circle cx="286" cy="200" r="3"/><circle cx="350" cy="192" r="3"/><circle cx="440" cy="218" r="3"/><circle cx="296" cy="188" r="2"/>
+    </g>
+    <!-- near legs -->
+    <path d="M220 370 L216 452 L270 452 L272 372 Z" fill="#b08a56"/>
+    <path d="M330 384 L330 452 L382 452 L380 380 Z" fill="#9a7646"/>
+    <path d="M222 452 L228 440 M240 452 L244 440 M258 452 L260 440" fill="none" stroke-width="3"/>
+    <!-- head with its wide-open jaw -->
+    <path d="M150 230 C110 210 70 210 46 240 C30 262 34 290 50 300 L170 300 Z" fill="#b08a56"/>
+    <circle cx="96" cy="220" r="14" fill="#b08a56"/>
+    <circle cx="140" cy="210" r="14" fill="#b08a56"/>
+    <path d="M110 244 L130 252 L110 258 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M50 300 C40 300 30 316 36 330 L180 334 L174 300 Z" fill="#c03048"/>
+    <path d="M60 300 L66 314 L74 300 M150 300 L156 314 L164 300" fill="#ffffff" stroke-width="3"/>
+    <path d="M36 330 C30 360 40 390 66 400 C110 410 160 396 190 370 L180 334 Z" fill="#b08a56"/>
+    <path d="M44 360 C60 384 100 396 140 390 C100 404 60 396 40 372 Z" fill="#8a6a3e" stroke="none"/>
+    <path d="M52 334 L58 320 L66 334 M154 336 L160 320 L168 336" fill="#ffffff" stroke-width="3"/>
+    <path d="M62 236 C80 222 100 216 120 216" fill="none" stroke="#d8b878" stroke-width="5"/>
+  </g>
+</svg>

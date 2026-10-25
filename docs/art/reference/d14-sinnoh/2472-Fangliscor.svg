@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Fangliscor (No. 2472), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="484" rx="110" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- wings, wider, with claws at their joints -->
+    <path d="M220 220 C170 150 100 110 30 120 C50 150 50 180 40 210 C70 200 96 210 110 236 C130 222 160 226 176 250 C190 240 206 238 220 246 Z" fill="#5a3a96"/>
+    <path d="M292 220 C342 150 412 110 482 120 C462 150 462 180 472 210 C442 200 416 210 402 236 C382 222 352 226 336 250 C322 240 306 238 292 246 Z" fill="#4a2a80"/>
+    <path d="M220 222 L30 120 M196 236 L110 236 M292 222 L482 120 M316 236 L402 236" fill="none" stroke="#2a1a50" stroke-width="5"/>
+    <path d="M30 120 L18 104 L36 112 Z M482 120 L494 104 L476 112 Z" fill="#f4f4f0" stroke-width="4"/>
+    <path d="M110 236 L100 254 L118 246 Z M402 236 L412 254 L394 246 Z" fill="#f4f4f0" stroke-width="4"/>
+    <!-- tail, its stinger a hook -->
+    <path d="M270 330 C320 380 380 380 400 330 C412 300 400 270 380 266" fill="none" stroke-width="22"/>
+    <path d="M270 330 C320 380 380 380 400 330 C412 300 400 270 380 266" fill="none" stroke="#7a5ab8" stroke-width="14"/>
+    <path d="M384 262 C360 250 352 228 366 214 C376 226 380 236 392 240 L390 262 Z" fill="#c8c0d8"/>
+    <path d="M366 214 C356 228 358 242 368 252" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <!-- body -->
+    <path d="M216 240 C200 290 210 350 256 370 C302 350 312 290 296 240 C280 220 232 220 216 240 Z" fill="#7a5ab8"/>
+    <path d="M288 256 C300 300 294 344 262 366 C296 360 310 300 296 250 Z" fill="#5a3a96" stroke="none"/>
+    <path d="M232 270 C230 300 238 332 256 344 C274 332 282 300 280 270 Z" fill="#9a7ad0" stroke="none"/>
+    <!-- legs -->
+    <path d="M232 360 L224 410 L206 430 M280 360 L288 410 L306 430" fill="none" stroke-width="14"/>
+    <path d="M232 360 L224 410 L206 430 M280 360 L288 410 L306 430" fill="none" stroke="#5a3a96" stroke-width="7"/>
+    <!-- pincers -->
+    <path d="M222 260 C190 270 170 290 160 316" fill="none" stroke-width="16"/>
+    <path d="M222 260 C190 270 170 290 160 316" fill="none" stroke="#7a5ab8" stroke-width="9"/>
+    <path d="M160 316 C130 316 116 340 126 364 L144 350 L140 334 C150 330 160 334 164 344 L176 328 C176 318 170 314 160 316 Z" fill="#c8c0d8"/>
+    <path d="M290 260 C322 270 342 290 352 316" fill="none" stroke-width="16"/>
+    <path d="M290 260 C322 270 342 290 352 316" fill="none" stroke="#5a3a96" stroke-width="9"/>
+    <path d="M352 316 C382 316 396 340 386 364 L368 350 L372 334 C362 330 352 334 348 344 L336 328 C336 318 342 314 352 316 Z" fill="#a8a0c0"/>
+    <!-- head -->
+    <path d="M210 110 C200 80 212 56 228 50 C238 70 240 90 236 108 Z" fill="#7a5ab8"/>
+    <path d="M302 110 C312 80 300 56 284 50 C274 70 272 90 276 108 Z" fill="#7a5ab8"/>
+    <path d="M200 160 C196 120 222 98 256 98 C290 98 316 120 312 160 C308 200 286 222 256 222 C226 222 204 200 200 160 Z" fill="#7a5ab8"/>
+    <path d="M206 180 C218 206 240 220 264 220 C234 228 208 212 202 188 Z" fill="#5a3a96" stroke="none"/>
+    <path d="M216 140 L244 150 L222 160 Z" fill="#f2d24a" stroke-width="3"/>
+    <path d="M296 140 L268 150 L290 160 Z" fill="#f2d24a" stroke-width="3"/>
+    <circle cx="232" cy="150" r="4" fill="#c03030" stroke="none"/>
+    <circle cx="280" cy="150" r="4" fill="#c03030" stroke="none"/>
+    <path d="M226 180 C246 190 266 190 286 180" fill="none" stroke-width="4"/>
+    <!-- longer fangs -->
+    <path d="M234 184 L240 220 L248 188 Z M278 184 L272 220 L264 188 Z" fill="#ffffff" stroke-width="3"/>
+    <path d="M214 116 C226 104 242 100 256 100" fill="none" stroke="#a48ae0" stroke-width="5"/>
+  </g>
+</svg>

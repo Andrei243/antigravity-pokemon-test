@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Mephitarch (No. 2435), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="250" cy="470" rx="180" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- haze round the tail tips -->
+    <g fill="#b48ad8" opacity="0.35" stroke="none">
+      <circle cx="200" cy="70" r="40"/><circle cx="160" cy="96" r="28"/><circle cx="380" cy="56" r="38"/><circle cx="418" cy="90" r="26"/>
+    </g>
+    <!-- the tail split into two plumes over its back -->
+    <path d="M330 330 C390 300 410 220 390 150 C380 110 360 70 380 40 C420 50 440 100 430 150 C424 200 420 260 380 320 Z" fill="#8a5ab8"/>
+    <path d="M396 66 C420 90 426 130 420 170 C414 210 404 250 384 290" fill="none" stroke="#f2e4c4" stroke-width="12"/>
+    <path d="M396 66 C420 90 426 130 420 170 C414 210 404 250 384 290" fill="none" stroke-width="3"/>
+    <path d="M320 320 C330 250 300 180 250 140 C220 116 190 100 200 60 C150 70 140 120 160 160 C190 220 250 270 300 340 Z" fill="#8a5ab8"/>
+    <path d="M186 80 C170 110 176 140 196 170 C220 204 252 236 280 276" fill="none" stroke="#f2e4c4" stroke-width="12"/>
+    <path d="M186 80 C170 110 176 140 196 170 C220 204 252 236 280 276" fill="none" stroke-width="3"/>
+    <!-- legs -->
+    <path d="M300 380 L306 450 L340 450 L336 372 Z" fill="#6a3e96"/>
+    <path d="M150 384 L144 450 L180 450 L184 388 Z" fill="#6a3e96"/>
+    <path d="M196 392 L194 456 L230 456 L230 392 Z" fill="#8a5ab8"/>
+    <path d="M346 372 L356 444 L388 444 L376 360 Z" fill="#8a5ab8"/>
+    <!-- body -->
+    <path d="M110 320 C110 270 170 240 250 240 C330 240 390 270 390 330 C390 380 330 400 250 400 C170 400 110 380 110 320 Z" fill="#8a5ab8"/>
+    <path d="M130 352 C170 390 320 396 380 352 C370 386 320 402 250 402 C180 402 132 384 130 352 Z" fill="#6a3e96" stroke="none"/>
+    <path d="M140 330 C160 360 200 374 240 376 C200 382 150 372 136 344 Z" fill="#f2e4c4" stroke="none"/>
+    <!-- head -->
+    <path d="M70 250 C60 210 86 180 126 180 C166 180 190 210 186 250 C182 286 156 304 124 304 C92 304 74 286 70 250 Z" fill="#8a5ab8"/>
+    <path d="M86 196 C76 170 84 150 98 144 C108 158 112 176 110 192 Z" fill="#8a5ab8"/>
+    <path d="M158 194 C170 168 166 148 152 140 C140 156 136 174 140 190 Z" fill="#8a5ab8"/>
+    <!-- the cream stripe running down to its nose -->
+    <path d="M120 184 C112 210 112 240 118 266 L132 266 C138 240 138 210 132 184 Z" fill="#f2e4c4" stroke-width="4"/>
+    <path d="M184 234 C230 240 290 246 336 262" fill="none" stroke="#f2e4c4" stroke-width="16"/>
+    <path d="M100 290 C110 276 140 276 150 290 C150 304 100 304 100 290 Z" fill="#f2e4c4"/>
+    <ellipse cx="125" cy="284" rx="9" ry="6" fill="#1b1b2b" stroke="none"/>
+    <path d="M92 236 L110 244 L94 252 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M160 236 L142 244 L158 252 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M84 230 L112 238 M168 230 L140 238" fill="none" stroke-width="4"/>
+    <path d="M200 266 C240 262 290 266 340 280" fill="none" stroke="#b08ad8" stroke-width="5"/>
+  </g>
+</svg>

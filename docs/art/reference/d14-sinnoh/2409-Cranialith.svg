@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Cranialith (No. 2409), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="260" cy="474" rx="190" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- tail, heavier, with a club at its end -->
+    <path d="M330 300 C380 300 420 318 444 350 L426 372 C400 350 370 340 330 346 Z" fill="#5a7ab0"/>
+    <path d="M430 340 C450 326 482 332 490 356 C496 380 476 400 452 398 C430 396 420 376 424 360 Z" fill="#c8c8c0"/>
+    <path d="M446 334 L452 318 L462 332 M478 340 L490 330 L490 346 M484 386 L498 392 L486 400" fill="#c8c8c0" stroke-width="4"/>
+    <path d="M450 396 C470 396 486 384 490 366 C492 386 474 402 450 400 Z" fill="#9a9a90" stroke="none"/>
+    <!-- far leg -->
+    <path d="M292 352 C300 392 296 424 286 452 L314 456 C322 420 324 386 316 352 Z" fill="#3e5a8a"/>
+    <!-- body, leaning forward -->
+    <path d="M170 260 C190 220 260 210 314 236 C360 258 360 330 320 370 C280 404 210 396 184 360 C164 330 160 290 170 260 Z" fill="#5a7ab0"/>
+    <path d="M196 300 C206 340 236 370 272 376 C226 386 192 360 184 330 Z" fill="#e0dcc8"/>
+    <path d="M320 260 C350 300 342 352 310 376 C334 372 360 330 350 290 C344 270 334 262 320 260 Z" fill="#3e5a8a" stroke="none"/>
+    <!-- grey spikes on its back -->
+    <path d="M228 222 L240 196 L254 220 M268 220 L284 196 L294 226 M306 234 L326 214 L330 246" fill="#9a9a90" stroke-width="4"/>
+    <!-- near leg -->
+    <path d="M226 352 C214 390 220 424 234 450 L200 456 C190 424 192 386 206 352 Z" fill="#5a7ab0"/>
+    <path d="M190 462 C188 448 236 446 240 460 C240 472 190 474 190 462 Z" fill="#3e5a8a"/>
+    <path d="M276 462 C276 450 318 450 322 462 C322 472 276 474 276 462 Z" fill="#2e4670"/>
+    <path d="M196 462 L190 472 M210 464 L206 474 M224 464 L222 474" fill="none" stroke-width="3"/>
+    <!-- small arms -->
+    <path d="M180 290 C160 300 150 316 152 330" fill="none" stroke-width="16"/>
+    <path d="M180 290 C160 300 150 316 152 330" fill="none" stroke="#5a7ab0" stroke-width="9"/>
+    <path d="M146 330 L144 340 M156 332 L158 342" fill="none" stroke-width="4"/>
+    <!-- head and neck -->
+    <path d="M190 250 C170 230 150 216 128 214 L136 260 C156 262 172 270 186 282 Z" fill="#5a7ab0"/>
+    <path d="M56 206 C50 178 70 160 96 160 L140 164 C160 170 166 200 158 224 C150 250 120 262 92 258 C68 254 58 232 56 206 Z" fill="#5a7ab0"/>
+    <path d="M62 220 C70 240 90 252 116 254 C88 260 64 248 58 226 Z" fill="#3e5a8a" stroke="none"/>
+    <path d="M60 230 C76 238 104 240 128 234" fill="none" stroke-width="4"/>
+    <path d="M70 232 L74 240 M86 234 L88 242 M100 234 L102 242" fill="none" stroke-width="3"/>
+    <circle cx="90" cy="198" r="7" fill="#e8304a"/>
+    <!-- the ram's crown of stone, spikes behind -->
+    <path d="M58 182 C48 132 92 86 142 92 C184 98 204 132 196 168 C192 186 176 196 160 192 C150 162 110 150 72 176 Z" fill="#c8c8c0"/>
+    <path d="M196 168 C192 186 176 196 160 192 C164 170 160 150 150 136 C172 140 194 150 196 168 Z" fill="#9a9a90" stroke="none"/>
+    <path d="M186 118 L216 98 L206 130 L236 124 L210 150 L238 160 L204 168" fill="#9a9a90"/>
+    <path d="M78 130 C94 112 116 104 140 106" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <path d="M70 152 C100 142 140 140 170 150" fill="none" stroke="#8a8a80" stroke-width="4"/>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Brutabby (No. 2432), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="472" rx="150" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- body: heavy, sitting -->
+    <path d="M150 300 C120 360 130 440 190 462 C230 474 290 474 326 462 C388 440 396 362 364 300 C340 250 176 250 150 300 Z" fill="#9a96a8"/>
+    <path d="M330 300 C362 350 370 420 330 456 C356 452 382 420 380 370 C378 334 360 306 330 300 Z" fill="#6e6a7c" stroke="none"/>
+    <path d="M206 330 C196 380 210 430 256 444 C302 430 316 380 306 330 C290 312 222 312 206 330 Z" fill="#d8d4e2"/>
+    <!-- feet and paws -->
+    <ellipse cx="196" cy="462" rx="34" ry="16" fill="#d8d4e2"/>
+    <ellipse cx="316" cy="462" rx="34" ry="16" fill="#d8d4e2"/>
+    <path d="M186 458 L186 470 M200 456 L200 470 M306 456 L306 470 M320 458 L320 470" fill="none" stroke-width="3"/>
+    <path d="M168 330 C146 360 150 400 176 410 C196 402 196 372 186 340 Z" fill="#9a96a8"/>
+    <path d="M344 330 C366 360 362 400 336 410 C316 402 316 372 326 340 Z" fill="#9a96a8"/>
+    <!-- the tail knotted as a belt -->
+    <path d="M144 372 C200 392 312 392 368 372 L366 394 C312 414 200 414 146 394 Z" fill="#7c788c"/>
+    <path d="M238 380 C232 366 252 360 264 366 C280 374 276 396 262 400 C248 404 236 394 238 380 Z" fill="#7c788c"/>
+    <path d="M262 398 C280 418 300 424 318 420 C330 430 330 444 316 446 C300 448 276 432 254 404 Z" fill="#7c788c"/>
+    <path d="M308 428 C316 432 322 436 324 442" fill="none" stroke="#4a4658" stroke-width="5"/>
+    <!-- stripes, darker -->
+    <path d="M160 300 C176 306 186 316 190 330 M352 300 C336 306 326 316 322 330 M150 336 C164 340 172 348 176 358 M362 336 C348 340 340 348 336 358" fill="none" stroke="#4a4658" stroke-width="8"/>
+    <!-- head -->
+    <path d="M156 196 C150 130 196 104 256 104 C316 104 362 130 356 196 C352 252 314 284 256 284 C198 284 160 252 156 196 Z" fill="#9a96a8"/>
+    <path d="M166 220 C176 260 214 280 256 282 C204 290 166 266 160 230 Z" fill="#6e6a7c" stroke="none"/>
+    <!-- ears: the near one torn -->
+    <path d="M166 150 C150 108 154 74 168 56 C190 76 208 100 216 122 Z" fill="#9a96a8"/>
+    <path d="M174 128 C166 104 168 86 174 76 C186 90 196 104 200 118 Z" fill="#e8a4b4" stroke="none"/>
+    <path d="M346 150 C362 108 358 74 344 56 L334 70 L326 64 C314 82 302 104 296 122 Z" fill="#9a96a8"/>
+    <path d="M338 128 C346 104 344 90 340 80 L332 88 C324 98 316 108 312 118 Z" fill="#e8a4b4" stroke="none"/>
+    <!-- face: cream muzzle, scowl -->
+    <path d="M196 226 C196 196 226 186 256 186 C286 186 316 196 316 226 C316 256 290 270 256 270 C222 270 196 256 196 226 Z" fill="#d8d4e2"/>
+    <path d="M198 166 L238 182" fill="none" stroke-width="7"/>
+    <path d="M314 166 L274 182" fill="none" stroke-width="7"/>
+    <path d="M206 186 C216 178 230 180 238 188 C228 196 214 196 206 186 Z" fill="#f2d24a" stroke-width="4"/>
+    <path d="M306 186 C296 178 282 180 274 188 C284 196 298 196 306 186 Z" fill="#f2d24a" stroke-width="4"/>
+    <circle cx="224" cy="188" r="3" fill="#1b1b2b" stroke="none"/>
+    <circle cx="288" cy="188" r="3" fill="#1b1b2b" stroke="none"/>
+    <path d="M246 214 L266 214 L256 224 Z" fill="#e88aa0" stroke-width="3"/>
+    <path d="M226 252 C240 240 272 240 286 252" fill="none" stroke-width="5"/>
+    <path d="M236 248 L240 258 L244 246" fill="#ffffff" stroke-width="3"/>
+    <path d="M190 228 L150 222 M192 240 L152 246 M322 228 L362 222 M320 240 L360 246" fill="none" stroke-width="3"/>
+    <!-- stripes on the brow -->
+    <path d="M236 116 L240 146 M256 112 L256 146 M276 116 L272 146" fill="none" stroke="#4a4658" stroke-width="8"/>
+    <path d="M186 140 C200 124 218 116 236 114" fill="none" stroke="#c8c4d6" stroke-width="5"/>
+  </g>
+</svg>

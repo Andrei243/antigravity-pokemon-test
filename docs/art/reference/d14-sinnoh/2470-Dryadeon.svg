@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Dryadeon (No. 2470), reference drawing</title>
+  <!-- base drawing shared with Borealeon (2471): same pose, body, legs and head -->
+  <defs>
+    <path id="leaf" d="M0 0 C10 -26 40 -40 66 -34 C56 -8 28 6 0 0 Z"/>
+    <g id="bloom"><circle r="5" fill="#f2c230" stroke-width="2"/><circle cy="-8" r="5" fill="#ffffff" stroke-width="2"/><circle cx="8" r="5" fill="#ffffff" stroke-width="2"/><circle cy="8" r="5" fill="#ffffff" stroke-width="2"/><circle cx="-8" r="5" fill="#ffffff" stroke-width="2"/><circle r="4" fill="#f2c230" stroke="none"/></g>
+  </defs>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="270" cy="458" rx="190" ry="16" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- tail of three leaves -->
+    <g fill="#5aa64a">
+      <use href="#leaf" transform="translate(370 300) rotate(-80) scale(1.6)"/>
+      <use href="#leaf" transform="translate(372 304) rotate(-40) scale(1.5)"/>
+      <use href="#leaf" transform="translate(372 308) rotate(-120) scale(1.4)"/>
+    </g>
+    <path d="M384 246 C390 220 398 196 410 180 M414 270 C430 256 446 248 462 246 M352 236 C346 214 340 196 330 184" fill="none" stroke="#3a7a30" stroke-width="3"/>
+    <!-- far legs -->
+    <path d="M222 350 L216 440 L244 440 L248 352 Z" fill="#d8c48a"/>
+    <path d="M330 350 L340 436 L366 436 L352 344 Z" fill="#d8c48a"/>
+    <!-- body (base) -->
+    <path d="M190 300 C200 260 260 250 320 256 C370 262 390 296 380 336 C372 370 330 380 270 378 C220 376 182 344 190 300 Z" fill="#f4e4b0"/>
+    <path d="M370 290 C390 330 372 366 330 378 C300 382 280 380 262 378 C320 366 360 340 370 290 Z" fill="#d8c48a" stroke="none"/>
+    <!-- near legs (base) -->
+    <path d="M206 350 L196 444 L230 444 L236 352 Z" fill="#f4e4b0"/>
+    <path d="M310 356 L314 446 L346 446 L340 350 Z" fill="#f4e4b0"/>
+    <path d="M190 446 C190 434 234 432 236 446 C236 456 190 458 190 446 Z" fill="#7a5a36"/>
+    <path d="M308 448 C310 436 350 436 352 448 C352 458 308 458 308 448 Z" fill="#7a5a36"/>
+    <!-- leaves on the legs -->
+    <g fill="#5aa64a"><use href="#leaf" transform="translate(234 384) rotate(-60) scale(0.7)"/><use href="#leaf" transform="translate(340 386) rotate(-60) scale(0.7)"/></g>
+    <!-- the mane of leaves round its neck -->
+    <g fill="#4a8f3c">
+      <use href="#leaf" transform="translate(220 270) rotate(150) scale(1.1)"/>
+      <use href="#leaf" transform="translate(226 262) rotate(110) scale(1.2)"/>
+      <use href="#leaf" transform="translate(236 258) rotate(70) scale(1.1)"/>
+      <use href="#leaf" transform="translate(240 262) rotate(30) scale(1.1)"/>
+    </g>
+    <g fill="#5aa64a">
+      <use href="#leaf" transform="translate(196 274) rotate(170)"/>
+      <use href="#leaf" transform="translate(240 280) rotate(10)"/>
+    </g>
+    <use href="#bloom" transform="translate(246 304)"/>
+    <use href="#bloom" transform="translate(300 266)"/>
+    <use href="#bloom" transform="translate(186 300)"/>
+    <!-- head (base) -->
+    <path d="M110 220 C104 180 132 156 170 156 C208 156 236 180 232 220 C228 254 202 272 170 272 C138 272 114 254 110 220 Z" fill="#f4e4b0"/>
+    <path d="M118 236 C130 260 156 270 184 268 C150 278 122 264 114 244 Z" fill="#d8c48a" stroke="none"/>
+    <!-- longer leaf ears -->
+    <path d="M140 170 C110 130 100 80 112 30 C140 60 160 110 166 160 Z" fill="#d8c48a"/>
+    <path d="M128 140 C120 110 118 80 122 56 C138 82 148 116 152 148 Z" fill="#5aa64a" stroke="none"/>
+    <path d="M206 166 C226 120 254 80 296 56 C292 100 266 146 226 180 Z" fill="#d8c48a"/>
+    <path d="M226 158 C244 124 262 100 284 82 C278 112 260 140 238 164 Z" fill="#5aa64a" stroke="none"/>
+    <!-- leaf on its brow -->
+    <use href="#leaf" transform="translate(166 168) rotate(-100) scale(0.75)" fill="#5aa64a"/>
+    <!-- face (base) -->
+    <ellipse cx="146" cy="214" rx="10" ry="14" fill="#6a4a2a" stroke="none"/>
+    <ellipse cx="192" cy="214" rx="9" ry="13" fill="#6a4a2a" stroke="none"/>
+    <circle cx="148" cy="208" r="4" fill="#ffffff" stroke="none"/>
+    <circle cx="194" cy="208" r="4" fill="#ffffff" stroke="none"/>
+    <path d="M162 238 L174 238 L168 244 Z" fill="#6a4a2a" stroke-width="2"/>
+    <path d="M160 250 C164 254 172 254 176 250" fill="none" stroke-width="3"/>
+    <path d="M126 176 C138 166 152 162 166 162" fill="none" stroke="#ffffff" stroke-width="5"/>
+  </g>
+</svg>

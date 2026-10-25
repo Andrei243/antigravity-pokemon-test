@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Dirigeist (No. 2426), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="484" rx="120" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- four streamers -->
+    <g fill="none">
+      <path d="M150 250 C120 300 140 350 100 400 C80 420 70 440 74 460" stroke-width="16"/>
+      <path d="M150 250 C120 300 140 350 100 400 C80 420 70 440 74 460" stroke="#f2e4b0" stroke-width="8"/>
+      <path d="M200 270 C190 320 210 360 186 410" stroke-width="16"/>
+      <path d="M200 270 C190 320 210 360 186 410" stroke="#f2e4b0" stroke-width="8"/>
+      <path d="M312 270 C322 320 302 360 326 410" stroke-width="16"/>
+      <path d="M312 270 C322 320 302 360 326 410" stroke="#f2e4b0" stroke-width="8"/>
+      <path d="M362 250 C392 300 372 350 412 400 C432 420 442 440 438 460" stroke-width="16"/>
+      <path d="M362 250 C392 300 372 350 412 400 C432 420 442 440 438 460" stroke="#f2e4b0" stroke-width="8"/>
+    </g>
+    <!-- ropes to the gondola -->
+    <path d="M220 256 L224 330 M292 256 L288 330" fill="none" stroke-width="4"/>
+    <!-- gondola of ghostly cloth -->
+    <path d="M196 330 L316 330 C320 360 310 380 296 396 L284 384 L272 400 L256 386 L240 400 L228 384 L216 396 C202 380 192 360 196 330 Z" fill="#c8b8e8"/>
+    <path d="M196 330 L316 330 L314 344 L198 344 Z" fill="#9a84cc"/>
+    <path d="M226 352 C226 370 232 378 240 378" fill="none" stroke="#ece4fa" stroke-width="4"/>
+    <!-- the envelope, an airship's, with ribs -->
+    <path d="M60 170 C60 100 160 62 256 62 C352 62 452 100 452 170 C452 240 352 270 256 270 C160 270 60 240 60 170 Z" fill="#8a5ac8"/>
+    <path d="M70 196 C100 240 180 264 256 266 C352 266 430 240 446 196 C430 252 350 270 256 270 C162 270 84 250 70 196 Z" fill="#6a3ea0" stroke="none"/>
+    <path d="M150 74 C130 120 130 220 150 262 M256 62 L256 270 M362 74 C382 120 382 220 362 262" fill="none" stroke="#6a3ea0" stroke-width="5"/>
+    <path d="M60 170 C160 182 352 182 452 170" fill="none" stroke="#6a3ea0" stroke-width="5"/>
+    <!-- tail fins -->
+    <path d="M440 140 L494 112 L482 170 Z" fill="#8a5ac8"/>
+    <path d="M440 200 L494 228 L482 170 Z" fill="#6a3ea0"/>
+    <!-- cloud-puff head at its crown -->
+    <path d="M190 74 C176 50 196 30 216 40 C222 20 252 16 262 34 C276 20 306 26 306 48 C326 48 334 72 318 82 C280 92 222 92 190 74 Z" fill="#f2e4b0"/>
+    <path d="M206 44 C214 36 226 34 234 38" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <!-- face -->
+    <ellipse cx="216" cy="150" rx="14" ry="18" fill="#1b1b2b" stroke="none"/>
+    <ellipse cx="296" cy="150" rx="14" ry="18" fill="#1b1b2b" stroke="none"/>
+    <circle cx="220" cy="144" r="6" fill="#e8304a" stroke="none"/>
+    <circle cx="300" cy="144" r="6" fill="#e8304a" stroke="none"/>
+    <path d="M240 210 L272 210 M248 202 L264 218 M264 202 L248 218" fill="none" stroke="#f2c230" stroke-width="6"/>
+    <path d="M100 120 C130 96 170 84 210 80" fill="none" stroke="#b690e8" stroke-width="7"/>
+  </g>
+</svg>

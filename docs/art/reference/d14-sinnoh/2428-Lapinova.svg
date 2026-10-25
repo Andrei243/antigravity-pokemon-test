@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Lapinova (No. 2428), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="240" cy="480" rx="90" ry="11" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- ear ribbons, trailing behind -->
+    <path d="M200 120 C150 150 120 200 90 220 C120 230 150 200 176 170 C156 220 150 260 160 290 C180 250 196 200 204 140 Z" fill="#f2e4c4"/>
+    <path d="M300 120 C350 140 390 180 420 196 C392 210 360 186 330 160 C352 206 356 248 344 276 C326 238 312 190 296 140 Z" fill="#e2d0a8"/>
+    <!-- long ears -->
+    <path d="M214 120 C196 80 190 40 202 6 C224 30 236 70 238 112 Z" fill="#8a5a36"/>
+    <path d="M286 116 C306 78 324 44 350 22 C354 58 336 96 306 126 Z" fill="#7a4a2a"/>
+    <path d="M210 92 C204 64 204 40 208 26 C220 46 226 70 228 96 Z" fill="#c88aa0" stroke="none"/>
+    <!-- raised leg (kicking) -->
+    <path d="M262 330 C300 320 340 300 380 270" fill="none" stroke-width="30"/>
+    <path d="M262 330 C300 320 340 300 380 270" fill="none" stroke="#8a5a36" stroke-width="22"/>
+    <path d="M350 286 C366 268 392 250 412 248 C420 262 404 284 380 300 Z" fill="#f2e4c4"/>
+    <path d="M404 250 C418 238 438 238 446 248 C438 262 420 266 404 262 Z" fill="#7a4a2a"/>
+    <!-- standing leg -->
+    <path d="M232 340 C226 380 224 420 222 456" fill="none" stroke-width="30"/>
+    <path d="M232 340 C226 380 224 420 222 456" fill="none" stroke="#8a5a36" stroke-width="22"/>
+    <path d="M202 380 C210 372 240 372 246 380 L246 438 C238 446 212 446 204 438 Z" fill="#f2e4c4"/>
+    <path d="M206 396 L244 396 M206 414 L244 414" fill="none" stroke="#c8b488" stroke-width="3"/>
+    <path d="M198 462 C198 448 240 446 244 460 C244 472 198 474 198 462 Z" fill="#7a4a2a"/>
+    <!-- body, slim -->
+    <path d="M214 214 C196 260 204 320 232 346 C258 356 282 344 290 320 C300 284 296 240 284 214 C266 200 230 200 214 214 Z" fill="#8a5a36"/>
+    <path d="M280 230 C292 270 292 310 278 338 C268 350 256 354 246 354 C276 320 282 270 272 232 Z" fill="#6a4026" stroke="none"/>
+    <path d="M226 248 C222 280 230 312 250 322 C268 312 272 280 268 248 Z" fill="#f2e4c4"/>
+    <!-- arms in a dancer's pose -->
+    <path d="M216 228 C186 210 166 186 158 160" fill="none" stroke-width="18"/>
+    <path d="M216 228 C186 210 166 186 158 160" fill="none" stroke="#8a5a36" stroke-width="10"/>
+    <circle cx="156" cy="156" r="12" fill="#f2e4c4"/>
+    <path d="M284 230 C312 246 330 268 334 292" fill="none" stroke-width="18"/>
+    <path d="M284 230 C312 246 330 268 334 292" fill="none" stroke="#8a5a36" stroke-width="10"/>
+    <circle cx="334" cy="296" r="12" fill="#f2e4c4"/>
+    <!-- head -->
+    <path d="M200 160 C196 126 220 104 250 104 C280 104 304 126 300 160 C298 190 278 212 250 212 C222 212 202 190 200 160 Z" fill="#8a5a36"/>
+    <path d="M206 176 C214 198 236 210 260 210 C230 218 208 204 202 184 Z" fill="#6a4026" stroke="none"/>
+    <!-- ear fluff at the base, grown into ribbons -->
+    <path d="M196 130 C186 116 196 104 210 108 C214 98 228 98 232 108 L226 132 C214 138 202 138 196 130 Z" fill="#f2e4c4"/>
+    <path d="M300 128 C312 114 304 102 290 104 C286 94 272 96 270 106 L276 130 C288 136 296 136 300 128 Z" fill="#f2e4c4"/>
+    <path d="M226 150 C226 144 234 140 238 146 L240 162 C236 168 228 164 226 156 Z" fill="#1b1b2b" stroke="none"/>
+    <path d="M272 150 C272 144 264 140 260 146 L258 162 C262 168 270 164 272 156 Z" fill="#1b1b2b" stroke="none"/>
+    <circle cx="235" cy="150" r="3" fill="#ffffff" stroke="none"/>
+    <circle cx="263" cy="150" r="3" fill="#ffffff" stroke="none"/>
+    <path d="M244 176 L254 176 L249 182 Z" fill="#c88aa0" stroke-width="3"/>
+    <path d="M240 190 C246 196 254 196 260 190" fill="none" stroke-width="3"/>
+    <path d="M212 132 C220 120 232 114 244 112" fill="none" stroke="#b07a52" stroke-width="5"/>
+  </g>
+</svg>

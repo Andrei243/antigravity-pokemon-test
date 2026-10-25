@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Frostbride (No. 2478), reference drawing</title>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <ellipse cx="256" cy="486" rx="90" ry="10" fill="#e6e8ef"/>
+  <g stroke="#1b1b2b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- the veil of snow, trailing from the sleeves -->
+    <path d="M200 200 C150 230 100 300 70 400 C90 420 120 430 150 420 C130 380 150 330 196 290 Z" fill="#eef4fa"/>
+    <path d="M312 200 C362 230 412 300 442 400 C422 420 392 430 362 420 C382 380 362 330 316 290 Z" fill="#dce6f2"/>
+    <g fill="#ffffff" stroke="#a8c4e0" stroke-width="2">
+      <circle cx="104" cy="360" r="5"/><circle cx="132" cy="300" r="4"/><circle cx="96" cy="404" r="4"/>
+      <circle cx="408" cy="360" r="5"/><circle cx="380" cy="300" r="4"/><circle cx="416" cy="404" r="4"/>
+    </g>
+    <!-- body: a gown, tapering to a wisp -->
+    <path d="M214 196 C196 260 200 340 220 400 C230 430 248 450 256 466 C264 450 282 430 292 400 C312 340 316 260 298 196 C280 182 232 182 214 196 Z" fill="#f4f6fa"/>
+    <path d="M292 210 C308 270 304 340 288 396 C278 424 266 444 256 462 C268 420 282 330 280 216 Z" fill="#c8d4e6" stroke="none"/>
+    <!-- the red ribbon at its waist, longer -->
+    <path d="M214 288 C236 298 276 298 298 288 L300 310 C276 320 236 320 212 310 Z" fill="#d83048"/>
+    <path d="M290 304 C310 330 330 370 340 420 L320 410 L316 434 C306 384 292 344 274 312 Z" fill="#d83048"/>
+    <path d="M298 300 C316 316 320 330 312 340 C300 330 292 318 290 306 Z" fill="#a8243a"/>
+    <!-- purple sash marks -->
+    <path d="M226 230 C240 246 272 246 286 230" fill="none" stroke="#7a5ab8" stroke-width="5"/>
+    <!-- sleeves -->
+    <path d="M214 204 C190 220 176 250 172 290 C188 284 204 282 220 286 Z" fill="#f4f6fa"/>
+    <path d="M298 204 C322 220 336 250 340 290 C324 284 308 282 292 286 Z" fill="#dce6f2"/>
+    <!-- head -->
+    <path d="M206 140 C202 104 226 84 256 84 C286 84 310 104 306 140 C304 172 284 192 256 192 C228 192 208 172 206 140 Z" fill="#f4f6fa"/>
+    <path d="M214 160 C224 180 244 190 266 190 C238 198 214 186 208 166 Z" fill="#c8d4e6" stroke="none"/>
+    <!-- dark face opening -->
+    <path d="M222 132 C222 112 290 112 290 132 C290 156 276 170 256 170 C236 170 222 156 222 132 Z" fill="#3a3a5a"/>
+    <path d="M232 132 C236 124 246 124 250 132 C246 138 236 138 232 132 Z" fill="#7ad0f0" stroke="none"/>
+    <path d="M262 132 C266 124 276 124 280 132 C276 138 266 138 262 132 Z" fill="#7ad0f0" stroke="none"/>
+    <!-- crown of ice crystals, and the head's horn-pieces -->
+    <path d="M206 120 C176 100 160 70 166 40 C188 60 204 86 214 108 Z" fill="#f4f6fa"/>
+    <path d="M306 120 C336 100 352 70 346 40 C324 60 308 86 298 108 Z" fill="#dce6f2"/>
+    <path d="M182 72 L196 90 M330 72 L316 90" fill="none" stroke="#7a5ab8" stroke-width="5"/>
+    <path d="M226 94 L230 58 L242 88 Z M246 86 L256 40 L266 86 Z M270 88 L282 58 L286 94 Z" fill="#a8dcf4"/>
+    <path d="M256 40 L266 86 L260 86 Z" fill="#6ab4dc" stroke="none"/>
+    <path d="M218 98 C228 92 242 90 254 90" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <circle cx="256" cy="98" r="6" fill="#d83048" stroke-width="3"/>
+  </g>
+</svg>
