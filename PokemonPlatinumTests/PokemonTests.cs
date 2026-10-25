@@ -194,12 +194,47 @@ public class PokemonTests
         Assert.Equal(2, inventory.GetQuantity(potion));
     }
 
-    [Theory]
-    [MemberData(nameof(AllMaps))]
-    public void TestEveryWarpIsReachableFromEveryArrivalPoint(string mapName)
+    // One set of maps for every region's walk below, loaded once (plan 24 · guards): reloading the whole world for each of
+    // 1,200 maps took ten minutes. It is this class's own, so another test reloading MapDatabase cannot swap it, and
+    // the walks only read it.
+    private static readonly object WalkLock = new();
+    private static Dictionary<string, Map>? walkMaps;
+    private static ILookup<string, (int X, int Y)>? walkArrivals;
+    private static ILookup<string, (int X, int Y)>? walkScriptArrivals;
+
+    private static void LoadWalkMaps()
     {
-        MapDatabase.Initialize();
-        var map = MapDatabase.Get(mapName);
+        lock (WalkLock)
+        {
+            if (walkMaps != null) return;
+            var fresh = MapDatabase.Fresh();
+            var own = MapDatabase.MapNames.ToDictionary(n => n, n => fresh(n), StringComparer.OrdinalIgnoreCase);
+            walkArrivals = own.Values.SelectMany(m => m.Warps).ToLookup(w => w.TargetMap, w => (w.TargetX, w.TargetY), StringComparer.OrdinalIgnoreCase);
+            walkScriptArrivals = PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
+                .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp && i.Name != null)
+                .ToLookup(i => i.Name!, i => (i.X, i.Y), StringComparer.OrdinalIgnoreCase);
+            walkMaps = own;
+        }
+    }
+
+    /// <summary>The regions the arrival walk is split by, and the rooms and maps no region lists as their own.</summary>
+    public static IEnumerable<object[]> WalkRegions => RegionDatabase.All.Select(r => new object[] { r.Id }).Append(new object[] { "other" }).ToList();
+
+    [Theory]
+    [MemberData(nameof(WalkRegions))]
+    public void TestEveryWarpIsReachableFromEveryArrivalPoint(string regionId)
+    {
+        LoadWalkMaps();
+        foreach (string mapName in walkMaps!.Keys.OrderBy(n => n, StringComparer.Ordinal))
+        {
+            var owner = RegionDatabase.RegionOfMap(mapName);
+            if ((owner?.Id ?? "other") != regionId) continue;
+            CheckArrivals(mapName, walkMaps[mapName]);
+        }
+    }
+
+    private static void CheckArrivals(string mapName, Map map)
+    {
         Assert.Equal(mapName, map.Name);
         // The Hall of Fame is the end of the way: nobody leaves it but by its own scene (plan 01 · M9, part 2d)
         // And the Underground has no way in or out but the Explorer Kit (plan 06 · R16a), and Pal Park's grounds none
@@ -213,16 +248,11 @@ public class PokemonTests
         if (map.IsStreamed) return;
 
         // Every tile another map warps the player onto in this map
-        var arrivals = MapDatabase.MapNames
-            .SelectMany(n => MapDatabase.Get(n).Warps)
-            .Where(w => w.TargetMap == mapName)
-            .Select(w => (w.TargetX, w.TargetY))
-            .ToList();
+        var arrivals = walkArrivals![mapName].ToList();
         // A room no warp leads into is come to by a script's own warp (plan 02 · S13: the gallery of the Vista
         // Lighthouse, where the lift's car puts its rider down)
         if (arrivals.Count == 0)
-            arrivals.AddRange(PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
-                .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp && i.Name == mapName).Select(i => (i.X, i.Y)));
+            arrivals.AddRange(walkScriptArrivals![mapName]);
         Assert.NotEmpty(arrivals);
 
         // The Team Galactic building's upper floors are each cut in two on purpose, as the original's are: there every
@@ -278,8 +308,8 @@ public class PokemonTests
 
     public static IEnumerable<object[]> AllMaps => MapDatabase.MapNames.Select(n => new object[] { n }).ToList();
 
-    [Fact]
-    public void TestEveryWarpCanBeReachedFromWhereTheGameStarts()
+    // The walk of the whole game from every start, made once (both tides of Shoal Cave) and checked per region below
+    private static readonly Lazy<(Func<string, Map> Maps, Dictionary<Map, HashSet<(int X, int Y)>> Reached)> WholeWalk = new(() =>
     {
         // A set of maps of this test's own: other classes reload the shared set while this walk goes on, and a map
         // asked for by name afterwards would then be another object than the one walked
@@ -293,9 +323,17 @@ public class PokemonTests
         foreach (var (map, tiles) in WorldWalk.FromEveryStart(flooded))
             if (reached.TryGetValue(maps(map.Name), out var had)) had.UnionWith(tiles);
             else reached[maps(map.Name)] = tiles;
+        return (maps, reached);
+    }, true);
 
+    [Theory]
+    [MemberData(nameof(WalkRegions))]
+    public void TestEveryWarpCanBeReachedFromWhereTheGameStarts(string regionId)
+    {
+        var (maps, reached) = WholeWalk.Value;
         foreach (string name in MapDatabase.MapNames)
         {
+            if ((RegionDatabase.RegionOfMap(name)?.Id ?? "other") != regionId) continue;
             var map = maps(name);
             // Hoenn and the regions after it have no maps yet; every map there is must be one the game can come to
             Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");
@@ -318,6 +356,7 @@ public class PokemonTests
 
         // The Underground's tunnels are six systems that don't join, each dug down into from the country over it:
         // every one of its hikers can be walked up to, the three under Fullmoon and Newmoon Islands among them
+        if ((RegionDatabase.RegionOfMap("Underground")?.Id ?? "other") != regionId) return;
         var tunnels = maps("Underground");
         var below = reached[tunnels];
         var hikers = tunnels.Everyone.Where(n => n.Key != null && n.Key.Contains("_vendor_")).ToList();
