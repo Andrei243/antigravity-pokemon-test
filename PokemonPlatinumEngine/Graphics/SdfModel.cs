@@ -230,7 +230,8 @@ internal sealed class SdfModel
     private readonly List<SdfPrimitive> shapes = new();
     private bool prepared;
 
-    public string Name { get; }
+    /// <summary>The model's name, part of its description: a sculpt built on another's (a species of our own, plan 03 · D14) takes its own.</summary>
+    public string Name { get; internal set; }
 
     /// <summary>How many bones the shapes refer to (weights are kept for each).</summary>
     public int BoneCount { get; set; } = 1;
@@ -253,6 +254,13 @@ internal sealed class SdfModel
         shapes.Add(p);
         prepared = false;
         return p;
+    }
+
+    /// <summary>Takes away the shapes that match: a part of a forebear's sculpt that a species of our own grows another way.</summary>
+    internal int RemoveAll(Predicate<SdfPrimitive> match)
+    {
+        prepared = false;
+        return shapes.RemoveAll(match);
     }
 
     // ------------------------------------------------------------------ building
