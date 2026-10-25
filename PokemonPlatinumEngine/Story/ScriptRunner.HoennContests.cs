@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 using PokemonPlatinumEngine.Models.Contest;
@@ -14,7 +15,7 @@ public sealed partial class ScriptRunner
 {
     private AppealRank appealRank = AppealRank.Normal;
     private ContestStat appealCategory = ContestStat.Cool;
-    private string lastWinner = "", lastWinnerMon = "";
+    private string lastWinner = "", lastWinnerMon = "", lastTaste = "";
 
     /// <summary>
     /// <c>rank</c> and <c>category</c> set what is entered; <c>check</c> asks whether the Pokémon chosen (the slot in
@@ -27,7 +28,8 @@ public sealed partial class ScriptRunner
     /// painter comes (a Master Rank win of 800 points or more); <c>hang</c> takes the painting to the museum (RESULT 1
     /// when the Artist Ribbon was given with it, <c>{ribbon}</c>); <c>records</c> counts the contests entered or won;
     /// <c>winner</c> asks the Contest Hall's wall for the winner at a place (1 to 6, the newest first): RESULT 1 when one
-    /// hangs there, <c>{wall}</c> and <c>{wallmon}</c> name the trainer and the Pokémon. <c>{contestant}</c> names the
+    /// hangs there, <c>{wall}</c> and <c>{wallmon}</c> name the trainer and the Pokémon; <c>painting</c>, <c>paintings</c>
+    /// and <c>view</c> ask the museum's gallery (part b). <c>{contestant}</c> names the
     /// Pokémon entered.
     /// </summary>
     private void Appeals(Instruction i)
@@ -96,6 +98,26 @@ public sealed partial class ScriptRunner
                 }
                 break;
             }
+            // The Lilycove Museum's gallery (plan 21 · H11, part b): the painting of a quality, if one hangs (RESULT 1; {wall}
+            // and {wallmon} name the trainer and the Pokémon), how many of the five hang, and one looked at
+            case "painting":
+            {
+                var painting = host.HoennContests.Museum[(int)Enum.Parse<ContestStat>(i.Other, ignoreCase: true)];
+                Result = painting != null ? 1 : 0;
+                if (painting == null) break;
+                lastWinner = painting.Trainer;
+                lastWinnerMon = painting.Nickname.Length > 0 ? painting.Nickname : LocalNames.Species(painting.Species);
+                break;
+            }
+            case "paintings":
+                Result = host.HoennContests.MuseumCount;
+                break;
+            case "view":
+                Result = 0;
+                if (host.HoennContests.Museum[(int)Enum.Parse<ContestStat>(i.Other, ignoreCase: true)] == null) break;
+                Result = 1;
+                host.Open(ScriptScreen.ContestPainting, Subject, Enum.Parse<ContestStat>(i.Other, ignoreCase: true).ToString());
+                break;
             case "records":
                 Result = i.Other == "won" ? host.HoennContests.TotalWon : host.HoennContests.TotalEntered;
                 break;
@@ -130,6 +152,15 @@ public sealed partial class ScriptRunner
             case "count":
                 Result = host.PokeblockCase.Count;
                 break;
+            // Mossdeep's black belt: the colour of Pokéblock the lead's nature likes (RESULT 1 and {taste}), 0 for no taste
+            case "taste":
+            {
+                var lead = host.Party.Members.FirstOrDefault();
+                var color = lead == null ? PokeblockColor.None : Pokeblocks.FavouriteOf(lead.Nature);
+                Result = color == PokeblockColor.None ? 0 : 1;
+                lastTaste = color == PokeblockColor.None ? "" : Pokeblocks.NameOf(color);
+                break;
+            }
             case "full":
                 Result = host.PokeblockCase.IsFull ? 1 : 0;
                 break;

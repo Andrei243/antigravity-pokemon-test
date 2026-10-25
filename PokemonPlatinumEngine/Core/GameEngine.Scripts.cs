@@ -1214,6 +1214,10 @@ public partial class GameEngine
                 case ScriptScreen.ContestPhoto:
                     if (System.Enum.TryParse<ContestStat>(counter, out var framed)) game.ShowContestPhoto(framed);
                     break;
+                // A painting of the Lilycove Museum's gallery (plan 21 · H11, part b)
+                case ScriptScreen.ContestPainting:
+                    if (System.Enum.TryParse<ContestStat>(counter, out var hung)) game.ShowContestPainting(hung);
+                    break;
                 case ScriptScreen.Pc:
                     game.flow.State = GameState.PCStorage;
                     game.flow.PCScreen.Open(game.flow.Boxes);

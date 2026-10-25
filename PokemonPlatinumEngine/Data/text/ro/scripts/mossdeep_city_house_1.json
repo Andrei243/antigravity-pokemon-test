@@ -1,0 +1,36 @@
+{
+  "BlackBelt": [
+    {
+      "en": [
+        "Black Belt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm! Your {member:0}..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It likes {taste}s, doesn't it? No, I'm positive of it! It definitely likes {taste}s!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It doesn't appear to like or dislike any Pokéblocks."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

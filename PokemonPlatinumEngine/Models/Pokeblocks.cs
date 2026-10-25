@@ -272,6 +272,19 @@ public static class Pokeblocks
         return total;
     }
 
+    /// <summary>
+    /// The colour of Pokéblock a nature likes best (<c>GetPokeblockNameByMonNature</c>, Mossdeep's black belt): the colour of
+    /// the one flavour it likes (spicy red, dry blue, sweet pink, bitter green, sour yellow); the five natures with no taste
+    /// like none (<see cref="PokeblockColor.None"/>).
+    /// </summary>
+    public static PokeblockColor FavouriteOf(Nature nature)
+    {
+        for (int i = 0; i < 5; i++)
+            if (Compatibility[(int)nature, i] > 0)
+                return i switch { 0 => PokeblockColor.Red, 1 => PokeblockColor.Blue, 2 => PokeblockColor.Pink, 3 => PokeblockColor.Green, _ => PokeblockColor.Yellow };
+        return PokeblockColor.None;
+    }
+
     /// <summary>How a nature takes the Pokéblock, as the message says: gladly, plainly, or with disdain.</summary>
     public static PoffinTaste TasteFor(Nature nature, Pokeblock block)
     {

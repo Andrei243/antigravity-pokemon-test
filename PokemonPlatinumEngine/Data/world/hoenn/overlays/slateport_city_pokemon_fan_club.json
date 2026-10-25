@@ -1,10 +1,11 @@
 {
   // Slateport's Pokémon Fan Club (plan 21 · H3): its chairman, its members and their Pokémon. The woman who gives a
-  // Soothe Bell to a trainer whose lead is fond of them is slateport_city_pokemon_fan_club.txt's
+  // Soothe Bell to a trainer whose lead is fond of them is slateport_city_pokemon_fan_club.txt's, and so is the chairman,
+  // who gives the five scarves for a condition of 200 (plan 21 · H11, part b)
   "area": "slateport_city_pokemon_fan_club",
   "bgmTrack": "hoenn/slateport",
   "people": {
-    "gentleman": { "name": "Chairman", "dialog": [ "Welcome, welcome! The Fan Club loves all Pokémon. Grow your Pokémon's condition, and come and show us!" ] },
+    "gentleman": { "name": "Chairman", "script": "Chairman" },
     "man_1": { "name": "Man", "dialog": [ "The chairman says a Pokémon's condition shows in how it carries itself. I think he's right!" ] },
     "twin": { "name": "Little Girl", "dialog": [ "My Pokémon's the cutest in the whole club. Everyone says so. Well, I say so." ] },
     "reporter_f": { "name": "Reporter", "dialog": [ "I'm writing about Pokémon and their trainers for the paper. Got a story for me?" ] },

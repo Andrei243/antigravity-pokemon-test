@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1241 | 1208 | 33 | 1 | 0 |
-| Scripts (`script:`) | 8226 | 7842 | 384 | 17 | 0 |
-| People of the world (`world:`) | 5806 | 5749 | 57 | 4 | 0 |
-| **All** | 15353 | 14879 | 474 | 22 | 0 |
+| Scripts (`script:`) | 8261 | 7875 | 386 | 17 | 0 |
+| People of the world (`world:`) | 5803 | 5746 | 57 | 4 | 0 |
+| **All** | 15385 | 14909 | 476 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -22,16 +22,16 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 |---|---|
 | a Pokémon's cry | 187 |
 | a question's answers | 496 |
-| a sign | 1360 |
+| a sign | 1355 |
 | the game's own voice (speaker none) | 235 |
-| the game's own voice (text) | 1066 |
+| the game's own voice (text) | 1072 |
 
 ## The cast
 
 - Named characters: 303 voices (266 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 218, with 659 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1816.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1821.
 
 ## Lines by voice
 
@@ -39,7 +39,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1816 | 132 |
+| `@self` | 1821 | 132 |
 | `look:gentleman (any)` | 576 | 12 |
 | `look:grunt (any)` | 545 | 0 |
 | `rival` | 511 | 17 |
@@ -47,7 +47,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:lady (any)` | 337 | 1 |
 | `look:lass (any)` | 286 | 10 |
 | `look:clerk (any)` | 274 | 7 |
-| `look:attendant (any)` | 185 | 3 |
+| `look:attendant (any)` | 187 | 3 |
 | `look:nurse (any)` | 180 | 0 |
 | `cynthia` | 157 | 1 |
 | `look:scientist (any)` | 149 | 4 |
@@ -75,8 +75,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `looker` | 91 | 1 |
 | `class:lass (any)` | 88 | 0 |
 | `class:swimmer_f (any)` | 86 | 0 |
+| `black_belt` | 85 | 14 |
 | `class:galactic (any)` | 84 | 0 |
-| `black_belt` | 83 | 12 |
 | `cyrus` | 83 | 7 |
 | `look:aqua_grunt (any)` | 83 | 3 |
 | `class:bird_keeper (any)` | 82 | 0 |
@@ -156,6 +156,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:expert_m (any)` | 27 | 0 |
 | `president` | 27 | 0 |
 | `captain` | 26 | 0 |
+| `chairman` | 26 | 0 |
 | `class:aroma_lady (any)` | 26 | 0 |
 | `class:guitarist (any)` | 26 | 0 |
 | `look:battle_girl (any)` | 26 | 0 |

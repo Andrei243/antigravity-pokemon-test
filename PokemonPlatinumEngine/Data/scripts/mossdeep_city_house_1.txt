@@ -1,0 +1,16 @@
+# A house in Mossdeep City (plan 21 · H11, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MossdeepCity_House1/scripts.inc): a black belt who can tell at a glance the colour of
+# Pokéblock the first Pokémon of the team likes best (`pokeblock taste`: the one flavour its nature likes, or none).
+
+
+script BlackBelt
+  face self player
+  speaker "Black Belt"
+  say "Hmm! Your {member:0}..."
+  pokeblock taste
+  if result == 0 goto Neutral
+  say "It likes {taste}s, doesn't it? No, I'm positive of it! It definitely likes {taste}s!"
+  end
+label Neutral
+  say "It doesn't appear to like or dislike any Pokéblocks."
+  end

@@ -1,0 +1,150 @@
+{
+  "CoolPainting": [
+    {
+      "en": [
+        "An empty frame. A card beneath it reads: Coolness."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BeautyPainting": [
+    {
+      "en": [
+        "An empty frame. A card beneath it reads: Beauty."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CutePainting": [
+    {
+      "en": [
+        "An empty frame. A card beneath it reads: Cuteness."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SmartPainting": [
+    {
+      "en": [
+        "An empty frame. A card beneath it reads: Smartness."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ToughPainting": [
+    {
+      "en": [
+        "An empty frame. A card beneath it reads: Toughness."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Curator": [
+    {
+      "en": [
+        "Curator"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! A new painting has been added to the gallery. The visitors do love to see the Pokémon that won at the Contest Hall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is room for more. Each of the five frames is waiting for a winner of its own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I wish to fill these five frames with the paintings of Pokémon that win Master Rank contests at the Contest Hall."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The painter in the Contest Lobby makes one when a Pokémon wins with a really outstanding performance. If you have such a Pokémon, do enter it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's you! You have filled every frame in my gallery with a winner."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Since your Pokémon were hung here, more guests than ever come to see them. The museum owes you a great deal."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, take this as a token of my gratitude."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a decoration for your secret base. May it shine there as your Pokémon shine on stage!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, your PC has no room for it. Make some, and come back. I will keep it for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's an honour to have you visit again. Your Pokémon have made this gallery what it is."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

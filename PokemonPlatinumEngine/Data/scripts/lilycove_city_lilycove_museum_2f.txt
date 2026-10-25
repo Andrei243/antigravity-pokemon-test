@@ -1,0 +1,72 @@
+# The Lilycove Museum's gallery (plan 21 · H11, part b). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/LilycoveCity_LilycoveMuseum_2F/scripts.inc): five frames, one for each quality of the
+# Contest Hall, empty until the painter of the Contest Lobby hangs there the winner of a Master Rank contest of 800
+# points or more, and the curator who gives a Glass Ornament once all five hang. Emerald draws a painting by changing
+# the wall's two metatiles; ours is looked at, in a screen of its own (`appeals view`).
+
+
+# A frame, read from before it: the painting (RESULT 1) or the card beneath an empty one
+script CoolPainting
+  appeals view cool
+  if result == 1 end
+  text "An empty frame. A card beneath it reads: Coolness."
+  end
+
+script BeautyPainting
+  appeals view beauty
+  if result == 1 end
+  text "An empty frame. A card beneath it reads: Beauty."
+  end
+
+script CutePainting
+  appeals view cute
+  if result == 1 end
+  text "An empty frame. A card beneath it reads: Cuteness."
+  end
+
+script SmartPainting
+  appeals view smart
+  if result == 1 end
+  text "An empty frame. A card beneath it reads: Smartness."
+  end
+
+script ToughPainting
+  appeals view tough
+  if result == 1 end
+  text "An empty frame. A card beneath it reads: Toughness."
+  end
+
+
+# The curator of the gallery (Emerald's LilycoveCity_LilycoveMuseum_2F_EventScript_Curator): thanks for each painting,
+# and for all five a Glass Ornament for the player's secret base, once
+script Curator
+  face self player
+  speaker "Curator"
+  if flag FLAG_RECEIVED_GLASS_ORNAMENT goto Honoured
+  appeals paintings
+  if result == 5 goto All
+  if result == 0 goto None
+  say "Thank you! A new painting has been added to the gallery. The visitors do love to see the Pokémon that won at the Contest Hall."
+  say "There is room for more. Each of the five frames is waiting for a winner of its own."
+  end
+label None
+  say "I wish to fill these five frames with the paintings of Pokémon that win Master Rank contests at the Contest Hall."
+  say "The painter in the Contest Lobby makes one when a Pokémon wins with a really outstanding performance. If you have such a Pokémon, do enter it!"
+  end
+label All
+  say "Oh! It's you! You have filled every frame in my gallery with a winner."
+  say "Since your Pokémon were hung here, more guests than ever come to see them. The museum owes you a great deal."
+  say "Please, take this as a token of my gratitude."
+  openbase give "Glass Ornament"
+  if result == 0 goto NoRoom
+  setflag FLAG_RECEIVED_GLASS_ORNAMENT
+  fanfare item
+  text "{player} received the {thing}!"
+  say "It's a decoration for your secret base. May it shine there as your Pokémon shine on stage!"
+  end
+label NoRoom
+  say "Oh, your PC has no room for it. Make some, and come back. I will keep it for you."
+  end
+label Honoured
+  say "It's an honour to have you visit again. Your Pokémon have made this gallery what it is."
+  end

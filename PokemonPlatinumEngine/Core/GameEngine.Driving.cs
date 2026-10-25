@@ -68,6 +68,7 @@ public partial class GameEngine
         public Models.PokeblockCase PokeblockCase => game.flow.PokeblockCase;
         public void OpenPokeblockCase() => game.OpenPokeblockCase(false);
         public void BeginBlender(ItemData berry, int others, Random chance) => game.BeginBlender(berry, others, chance);
+        public void ShowContestPainting(ContestStat category) => game.ShowContestPainting(category);
         public void HoldAppeals(int slot, Models.ContestStat category, Models.Contest.AppealRank rank) => game.HoldAppeals(slot, category, rank);
         public BugContestResultsScreen BugContestResults => game.flow.BugContestResultsScreen;
         public SpecialEncounters Encounters => game.flow.Encounters;
