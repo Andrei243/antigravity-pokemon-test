@@ -401,6 +401,14 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `berry plant` | Plants the berry last chosen with `chooseitem berries`, taken from the bag: wet soil, the best rating, growing at once. |
 | `berry water` | Waters the patch to the full. |
 | `berry pick` | Picks what is in fruit into the bag, leaving bare soil with no mulch; `RESULT` is how many. |
+| `apricorn tree` | The Apricorn tree the script belongs to (plan 20 · J6; `Models/Apricorns.cs`, `common.ApricornTree`): `RESULT` is 0 bare (picked today), 1 with its fruit on, 2 with its fruit on and the Box full of that colour; `{apricorn}` names the colour ("Red Apricorn") and `{ball}` the ball it becomes. |
+| `apricorn pick` | Takes the tree's Apricorn into the Apricorn Box: `RESULT` 1, or 0 where it is bare or the Box is full of that colour; `{apricorns}` is how many of the colour the Box holds now. A tree bears one a calendar day. |
+| `apricorn box` | Opens the Apricorn Box (`UI/ApricornBoxScreen.cs`) and waits for it to be put away. |
+| `apricorn held` | `RESULT` is how many colours of Apricorn the Box holds, 0 for none. |
+| `apricorn count red` | `RESULT` and `{apricorns}` are how many Apricorns of the colour (`red`, `blue`, `yellow`, `green`, `pink`, `white`, `black`) the Box holds; `{apricorn}` and `{ball}` name it and its ball. |
+| `apricorn order red` | Kurt's order (plan 20 · J6): takes every Apricorn of the colour out of the Box to be made into balls, ready from the next calendar day. `RESULT` and `{apricorns}` are how many; 0, and nothing taken, with none of the colour or an order already in hand. |
+| `apricorn status` | `RESULT` is 0 with no order in hand, 1 with Kurt at work, 2 with the balls ready to collect; `{apricorn}`, `{apricorns}` and `{ball}` name the order's colour, count and ball. |
+| `apricorn collect` | Hands over a finished order into the bag, silently: `RESULT` and `{apricorns}` how many (0 if none is ready), `{ball}` and `{item}` the ball. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 

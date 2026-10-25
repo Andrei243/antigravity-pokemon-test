@@ -76,6 +76,17 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=apricorn shoots only plan 20 · J6 (Apricorn trees, the Apricorn Box, Kurt's balls)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "apricorn")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoApricornShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         // JOHTO_FROM=partb shoots only plan 20 · J13, part b (Mt. Mortar's Tyrogue, Blackthorn's house of moves)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "partb")
         {
@@ -203,6 +214,8 @@ partial class Harness
         JohtoPartCShots();
         // And last plan 20 · J13, part d: Route 40's gate to the Battle Frontier and back
         JohtoPartDShots();
+        // And last plan 20 · J6: Apricorn trees, the Apricorn Box and Kurt's balls
+        JohtoApricornShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

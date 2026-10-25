@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1241 | 1208 | 33 | 1 | 0 |
-| Scripts (`script:`) | 7910 | 7539 | 371 | 17 | 0 |
-| People of the world (`world:`) | 5482 | 5427 | 55 | 4 | 0 |
-| **All** | 14713 | 14254 | 459 | 22 | 0 |
+| Scripts (`script:`) | 7930 | 7553 | 377 | 17 | 0 |
+| People of the world (`world:`) | 5480 | 5425 | 55 | 4 | 0 |
+| **All** | 14731 | 14266 | 465 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,10 +21,10 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 172 |
-| a question's answers | 468 |
+| a question's answers | 478 |
 | a sign | 1296 |
-| the game's own voice (speaker none) | 229 |
-| the game's own voice (text) | 1014 |
+| the game's own voice (speaker none) | 235 |
+| the game's own voice (text) | 1015 |
 
 ## The cast
 
@@ -40,7 +40,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | Voice | Lines | Shown only |
 |---|---|---|
 | `@self` | 1801 | 130 |
-| `look:gentleman (any)` | 575 | 12 |
+| `look:gentleman (any)` | 573 | 12 |
 | `look:grunt (any)` | 544 | 0 |
 | `rival` | 498 | 17 |
 | `look:youngster (any)` | 330 | 13 |
@@ -66,8 +66,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:ace_trainer (any)` | 98 | 0 |
 | `class:picnicker (any)` | 98 | 0 |
 | `class:youngster (any)` | 98 | 0 |
+| `look:man (any)` | 97 | 4 |
 | `class:cooltrainer (any)` | 96 | 0 |
-| `look:man (any)` | 93 | 4 |
 | `looker` | 91 | 1 |
 | `class:black_belt (any)` | 88 | 0 |
 | `look:sailor (any)` | 87 | 0 |
@@ -137,6 +137,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `gardenia` | 32 | 0 |
 | `candice` | 31 | 0 |
 | `jasmine` | 31 | 0 |
+| `kurt` | 31 | 6 |
 | `class:young_couple (any)` | 30 | 0 |
 | `clay` | 30 | 3 |
 | `celio` | 29 | 1 |

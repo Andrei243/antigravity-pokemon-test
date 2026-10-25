@@ -605,6 +605,13 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Lottery, Line = line, Name = r.OneOf("draw", "boxed") };
             case "berry":
                 return new Instruction { Op = Op.Berry, Line = line, Name = r.OneOf("status", "mulched", "water", "plant", "mulch", "pick", "berries", "mulches") };
+            // Apricorn trees, the Apricorn Box and Kurt's balls (plan 20 · J6)
+            case "apricorn":
+            {
+                string what = r.OneOf("tree", "pick", "box", "held", "count", "order", "status", "collect");
+                string colour = what is "count" or "order" ? r.OneOf("red", "blue", "yellow", "green", "pink", "white", "black") : "";
+                return new Instruction { Op = Op.Apricorn, Line = line, Name = what, Other = colour };
+            }
             case "chooseitem":
                 return new Instruction { Op = Op.ChooseItem, Line = line, Name = r.OneOf("berries", "mulch") };
             case "swarms":

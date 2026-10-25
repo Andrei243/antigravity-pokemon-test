@@ -402,11 +402,27 @@ public class NPC
     /// </summary>
     public (BerryStage Stage, string? Berry, bool Mulched) BerryLook { get; set; }
 
+    // ---- Apricorn trees (plan 20 · J6)
+
     /// <summary>
-    /// A thing rather than a person: an item's ball, an obstacle or a patch of soil. It is drawn as a card, never
-    /// as a character, and never turns to face anyone.
+    /// The <see cref="NpcType"/> of an Apricorn tree, an object of the map as the original's is: in the way like a
+    /// person, drawn as a tree with its fruit on or off, and spoken to through <c>common.ApricornTree</c>.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil || IsUnseen;
+    public const string ApricornTreeType = "ApricornTree";
+
+    public bool IsApricornTree => NpcType == ApricornTreeType;
+
+    /// <summary>For an Apricorn tree: the colour it bears (<c>Data/apricorns.json</c>).</summary>
+    public Models.Apricorn? ApricornColour { get; set; }
+
+    /// <summary>For an Apricorn tree: whether it has its Apricorn on, as the game last told it (the renderer reads this and nothing else).</summary>
+    public bool ApricornInFruit { get; set; } = true;
+
+    /// <summary>
+    /// A thing rather than a person: an item's ball, an obstacle, a patch of soil or an Apricorn tree. It is drawn as
+    /// a card, never as a character, and never turns to face anyone.
+    /// </summary>
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil || IsUnseen || IsApricornTree;
 
     // ---- The story (plan 02 · S1)
 

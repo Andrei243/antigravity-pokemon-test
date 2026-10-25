@@ -1216,5 +1216,39 @@
         ""
       ]
     }
+  ],
+  "Kurt": [
+    {
+      "en": [
+        "Kurt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kurt here. I've nothing in the works. Bring me Apricorns whenever you have them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Kurt! Your {ball} are done. Come by the workshop in Azalea Town and collect them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kurt here. Your {ball} are coming along. Give me until tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

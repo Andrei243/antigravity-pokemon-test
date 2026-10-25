@@ -125,6 +125,8 @@ public enum Op
     BugContest,
     // The Pokéathlon (plan 15 · E6): whether three may go in, the courses run, the Athlete Points
     Athlon,
+    // Apricorn trees, the Apricorn Box and Kurt's balls (plan 20 · J6)
+    Apricorn,
     // Shoal Cave's tide read by the hour as the player comes in from outdoors (plan 21 · H8, part d: Emerald's
     // UpdateShoalTideFlag), FLAG_SYS_SHOAL_TIDE set at high tide
     Tide,

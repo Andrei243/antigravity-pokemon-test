@@ -126,6 +126,9 @@ public sealed partial class GameFlow
     /// <summary>The coins, Pal Park's six, the Villa and the game records kept beside the story (saved).</summary>
     public Pastimes Pastimes { get; } = new();
 
+    /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
+    public ApricornBox Apricorns { get; } = new();
+
     /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
     public UndergroundState Underground { get; set; } = new();
 
