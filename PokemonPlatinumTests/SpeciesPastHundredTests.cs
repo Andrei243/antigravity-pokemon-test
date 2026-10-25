@@ -82,7 +82,7 @@ public class SpeciesPastHundredTests
             var e = d.Evolution;
             var (low, high) = Climb(from);
             Assert.True(e.Level >= low && e.Level <= high, $"{d.Name} evolves at {e.Level}, outside {low} to {high}");
-            Assert.Equal(EvolutionTrigger.LevelUp == Evolution.TriggerOf(e.Method) || e.Method == EvolutionMethod.UseItem, true);
+            Assert.True(Evolution.TriggerOf(e.Method) is EvolutionTrigger.LevelUp or EvolutionTrigger.BattleEnd or EvolutionTrigger.Spin || e.Method == EvolutionMethod.UseItem, $"{d.Name}: {e.Method}");
             if (e.Item != null) Assert.True(ItemDatabase.Get(e.Item) is { } item && item.Pocket != ItemPocket.KeyItems, $"{d.Name}: {e.Item}");
             if (e.Move != null) Assert.Contains(from.Learnset.Concat(from.Modern?.Learnset ?? new()), l => l.MoveName == e.Move);
             if (e.Species != null) Assert.True(Species(e.Species) is { IsOurs: false }, $"{d.Name} asks for {e.Species}");
@@ -104,6 +104,7 @@ public class SpeciesPastHundredTests
         {
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
+            8 => (226, legend ? 244 : 240),
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -185,6 +186,12 @@ public class SpeciesPastHundredTests
             case EvolutionMethod.LevelAfterDefeating: p.EvolutionProgress[Evolution.DefeatKey(e.Species!)] = e.Value; break;
             case EvolutionMethod.LevelKnowsMove: p.Moves.Add(new Move(MoveDatabase.Get(e.Move!))); break;
             case EvolutionMethod.UseItem: context.Item = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.UseItem; break;
+            case EvolutionMethod.LevelDusk: context.IsDusk = true; break;
+            case EvolutionMethod.CriticalHits: p.EvolutionProgress[Evolution.CriticalHitsKey] = e.Value; trigger = EvolutionTrigger.BattleEnd; break;
+            case EvolutionMethod.LevelAfterDamage: p.EvolutionProgress[Evolution.DamageKey] = e.Value; context.Sites = new[] { e.Location! }; break;
+            case EvolutionMethod.LevelAfterMoveUses: p.EvolutionProgress[Evolution.MoveKey(e.Move!)] = e.Value; break;
+            case EvolutionMethod.LevelAfterRecoil: p.EvolutionProgress[Evolution.RecoilKey] = e.Value; break;
+            case EvolutionMethod.SpinHoldingItem: p.HeldItem = ItemDatabase.Get(e.Item!); trigger = EvolutionTrigger.Spin; break;
         }
         return (p, context, trigger);
     }

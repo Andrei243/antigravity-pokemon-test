@@ -31,8 +31,8 @@ The data has 1006 moves in all. The games number 919 of them, because each of th
 | 7 | 88 | 68 | 68 | 0 | 0 | 42 | 42 |
 | 8 | 96 | 89 | 89 | 0 | 0 | 33 | 33 |
 | 9 | 120 | 69 | 69 | 0 | 0 | 47 | 47 |
-| Ours | 170 | 72 | 72 | 0 | 0 | 0 | 0 |
-| All | 1195 | 919 | 919 | 0 | 0 | 313 | 313 |
+| Ours | 212 | 72 | 72 | 0 | 0 | 0 | 0 |
+| All | 1237 | 919 | 919 | 0 | 0 | 313 | 313 |
 
 **Forms** (plan 03 · D11): 541, of 241 species: 97 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
@@ -125,42 +125,42 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 ## Evolutions
 
-752 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
+794 evolutions. `Models/Evolution.cs` has a rule for every method (docs/mechanics/evolution.md explains each); some can't be met in the game until something else is built:
 
 | Method | Evolutions | Set off by | Waits for |
 | --- | --- | --- | --- |
 | Level | 407 | a level-up |  |
-| UseItem | 75 | an item used on it |  |
-| LevelHoldingItem | 52 | a level-up |  |
-| LevelKnowsMove | 30 | a level-up |  |
-| LevelNight | 28 | a level-up |  |
+| UseItem | 79 | an item used on it |  |
+| LevelHoldingItem | 54 | a level-up |  |
+| LevelKnowsMove | 44 | a level-up |  |
+| LevelNight | 30 | a level-up |  |
+| LevelWithSpeciesInParty | 24 | a level-up |  |
 | Friendship | 19 | a level-up |  |
-| LevelWithSpeciesInParty | 18 | a level-up |  |
 | TradeHoldingItem | 16 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
-| LevelDay | 13 | a level-up |  |
+| LevelDay | 15 | a level-up |  |
 | Trade | 12 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
-| LevelAtLocation | 9 | a level-up | maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01) |
+| LevelAtLocation | 10 | a level-up | maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01) |
+| LevelInRain | 9 | a level-up | weather in the field (plan 01) |
+| SpinHoldingItem | 8 | the player spinning |  |
 | LevelFemale | 7 | a level-up |  |
-| LevelInRain | 7 | a level-up | weather in the field (plan 01) |
-| SpinHoldingItem | 7 | the player spinning |  |
+| FriendshipDay | 6 | a level-up |  |
+| FriendshipNight | 6 | a level-up |  |
 | LevelHoldingItemNight | 6 | a level-up |  |
-| FriendshipDay | 5 | a level-up |  |
-| FriendshipNight | 5 | a level-up |  |
+| LevelHoldingItemDay | 4 | a level-up |  |
 | LevelAfterDefeating | 3 | a level-up |  |
+| LevelAfterMoveUses | 3 | a level-up |  |
 | LevelAfterSteps | 3 | a level-up |  |
-| LevelHoldingItemDay | 3 | a level-up |  |
 | LevelMale | 3 | a level-up |  |
-| LevelAfterMoveUses | 2 | a level-up |  |
+| CriticalHits | 2 | the end of a battle |  |
+| LevelAfterDamage | 2 | a level-up | a map with a Stone Arch (plan 03 · D12) |
+| LevelAfterRecoil | 2 | a level-up |  |
+| LevelDusk | 2 | a level-up |  |
 | LevelWithItemsInBag | 2 | a level-up | a way to collect the items (plan 03 · D12) |
 | TradeWithSpecies | 2 | a trade | trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today |
 | Beauty | 1 | a level-up | Poffins (plan 06 · R14) |
-| CriticalHits | 1 | the end of a battle |  |
-| LevelAfterDamage | 1 | a level-up | a map with a Stone Arch (plan 03 · D12) |
-| LevelAfterRecoil | 1 | a level-up |  |
 | LevelAttackEqual | 1 | a level-up |  |
 | LevelAttackHigher | 1 | a level-up |  |
 | LevelDefenseHigher | 1 | a level-up |  |
-| LevelDusk | 1 | a level-up |  |
 | LevelKnowsMoveType | 1 | a level-up |  |
 | LevelNinjask | 1 | a level-up |  |
 | LevelPersonalityHigh | 1 | a level-up |  |
@@ -176,7 +176,7 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1195) | Forms | Moves (1006) | Abilities (313) | Items (931) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1237) | Forms | Moves (1006) | Abilities (313) | Items (931) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | de | 1025 | 365 | 901 | 310 | 925 | 913 | 0 | 191 | 0 |
 | es | 1025 | 0 | 901 | 310 | 925 | 232 | 0 | 0 | 0 |
