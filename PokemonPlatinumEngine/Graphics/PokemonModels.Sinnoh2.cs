@@ -635,28 +635,30 @@ internal static partial class PokemonModels
                 b.Ell(leg, V(0.075f * s * k, 0.022f, (z + 0.035f) * k), V(0.03f * k, 0.022f, 0.04f * k), purple);
                 b.Spike(leg, V(0.075f * s * k, 0.02f, (z + 0.06f) * k), V(0.075f * s * k, 0.005f, (z + 0.09f) * k), 0.012f, Claw, mat: Shell);
             });
-        b.Ell(Body, V(0, 0.2f * k, -0.02f * k), V(0.1f * k, 0.09f * k, 0.15f * k), purple);
-        b.PaintEll(Body, V(0, 0.28f * k, -0.04f * k), V(0.03f * k, 0.03f * k, 0.15f * k), cream);
-        if (grown) b.PaintEll(Body, V(0, 0.14f * k, 0.04f * k), V(0.09f * k, 0.04f * k, 0.12f * k), cream);
-        // A great bushy tail raised over its back, its fur in points, a cream stripe along it
-        int tail = b.Tail(V(0, 0.24f * k, -0.15f * k));
+        b.Ell(Body, V(0, 0.2f * k, -0.02f * k), V(0.11f * k, 0.1f * k, 0.16f * k), purple);
+        b.PaintEll(Body, V(0, 0.29f * k, -0.04f * k), V(0.03f * k, 0.03f * k, 0.16f * k), cream);
+        if (grown) b.PaintEll(Body, V(0, 0.14f * k, 0.04f * k), V(0.1f * k, 0.04f * k, 0.13f * k), cream);
+        // A great bushy tail raised over its back, its fur in points, a cream stripe along it, carried back a little so
+        // that the head stays clear of it
+        int tail = b.Tail(V(0, 0.24f * k, -0.16f * k));
         var path = grown
-            ? new[] { V(0, 0.24f, -0.15f), V(0, 0.42f, -0.22f), V(0, 0.58f, -0.12f), V(0, 0.6f, 0.02f), V(0, 0.52f, 0.12f) }
-            : new[] { V(0, 0.24f, -0.15f), V(0, 0.42f, -0.22f), V(0, 0.56f, -0.14f), V(0, 0.6f, -0.02f) };
-        BushyTail(b, tail, path.Select(p => p * k).ToArray(), 0.07f * k, 0.12f * k, purple, cream, V(0, 1f, -0.5f));
+            ? new[] { V(0, 0.24f, -0.16f), V(0, 0.42f, -0.26f), V(0, 0.58f, -0.18f), V(0, 0.62f, -0.04f), V(0, 0.56f, 0.06f) }
+            : new[] { V(0, 0.24f, -0.16f), V(0, 0.42f, -0.26f), V(0, 0.56f, -0.2f), V(0, 0.6f, -0.08f) };
+        BushyTail(b, tail, path.Select(p => p * k).ToArray(), 0.06f * k, 0.1f * k, purple, cream, V(0, 1f, -0.5f));
 
-        int head = b.Head(V(0, 0.24f * k, 0.12f * k));
-        b.Ell(head, V(0, 0.27f * k, 0.15f * k), V(0.085f * k, 0.075f * k, 0.075f * k), purple);
-        b.PaintEll(head, V(0, 0.3f * k, 0.19f * k), V(0.045f * k, 0.06f * k, 0.05f * k), cream);
-        b.Ell(head, V(0, 0.25f * k, 0.21f * k), V(0.035f * k, 0.03f * k, 0.035f * k), cream);
-        b.Ell(head, V(0, 0.26f * k, 0.245f * k), V(0.012f * k, 0.01f * k, 0.01f * k), Rgb(60, 40, 60), blend: 0.005f);
-        if (grown) PokeBuilder.Both(s => b.Spike(head, V(0.07f * s * k, 0.25f * k, 0.15f * k), V(0.16f * s * k, 0.24f * k, 0.1f * k), 0.035f * k, cream, 0.4f));
+        // A big head for its body, the face cream, a pink nose, a bigger tuft of ear
+        int head = b.Head(V(0, 0.24f * k, 0.13f * k));
+        b.Ell(head, V(0, 0.29f * k, 0.17f * k), V(0.115f * k, 0.1f * k, 0.1f * k), purple);
+        b.PaintEll(head, V(0, 0.31f * k, 0.22f * k), V(0.065f * k, 0.08f * k, 0.065f * k), cream);
+        b.Ell(head, V(0, 0.26f * k, 0.25f * k), V(0.045f * k, 0.036f * k, 0.042f * k), cream);
+        b.Ell(head, V(0, 0.27f * k, 0.29f * k), V(0.016f * k, 0.013f * k, 0.013f * k), Rgb(60, 40, 60), blend: 0.005f);
+        if (grown) PokeBuilder.Both(s => b.Spike(head, V(0.09f * s * k, 0.26f * k, 0.17f * k), V(0.2f * s * k, 0.25f * k, 0.11f * k), 0.04f * k, cream, 0.4f));
         PokeBuilder.Both(s =>
         {
-            int ear = b.Ear(head, s, V(0.05f * s * k, 0.32f * k, 0.12f * k));
-            b.Spike(ear, V(0.05f * s * k, 0.32f * k, 0.12f * k), V(0.08f * s * k, 0.38f * k, 0.1f * k), 0.025f * k, purple, 0.5f);
+            int ear = b.Ear(head, s, V(0.065f * s * k, 0.36f * k, 0.14f * k));
+            b.Spike(ear, V(0.065f * s * k, 0.36f * k, 0.14f * k), V(0.11f * s * k, 0.45f * k, 0.11f * k), 0.032f * k, purple, 0.5f);
         });
-        PokeBuilder.Both(s => b.Eye(head, V(0.04f * s * k, 0.29f * k, 0.205f * k), V(0.5f * s, 0.05f, 1f), 0.02f * k, Rgb(244, 156, 40), glare: grown));
+        PokeBuilder.Both(s => b.Eye(head, V(0.052f * s * k, 0.31f * k, 0.245f * k), V(0.5f * s, 0.05f, 1f), 0.027f * k, Rgb(244, 156, 40), glare: grown));
         return b;
     }
 
