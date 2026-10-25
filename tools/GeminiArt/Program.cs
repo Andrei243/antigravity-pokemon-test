@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 //   dotnet run --project tools/GeminiArt -- generate [--set kanto|johto|hoenn|sinnoh|megas] [--model <id>] [--size 1K|2K]
 //                                                   [--force] [--delay <ms>] [--limit <n>] [name ...]
 // The key is read from the GEMINI_API_KEY environment variable and never written anywhere.
-// Pictures go to tools/GeminiArt/out/<set>/ (git-ignored): references for the sculptors, not game art, not shipped.
+// Pictures go to docs/art/reference/gemini/<set>/: references for the sculptors, not game art, not shipped.
 
 return await Cli.Run(args);
 
@@ -82,7 +82,7 @@ static class Cli
         foreach (var b in chosen)
         {
             if (made >= limit) break;
-            string dir = Path.Combine(root, "tools", "GeminiArt", "out", b.Set);
+            string dir = Path.Combine(root, "docs", "art", "reference", "gemini", b.Set);
             Directory.CreateDirectory(dir);
             string path = Path.Combine(dir, b.Slug + ".jpg");
             if (File.Exists(path) && !force) { skipped++; continue; }
