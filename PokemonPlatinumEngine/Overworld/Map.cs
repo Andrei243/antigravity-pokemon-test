@@ -98,6 +98,12 @@ public sealed class MapArea
     public Data.MapSpot? EmergeSpot { get; init; }
 
     /// <summary>
+    /// Tiles of the area's floor that come up somewhere of their own and not at <see cref="EmergeSpot"/> (plan 21 · H12,
+    /// part a: the Sealed Chamber's last tile, which comes up in the chamber above), by tile of the area's matrix.
+    /// </summary>
+    public Dictionary<(int X, int Y), Data.MapSpot> EmergeAt { get; } = new();
+
+    /// <summary>
     /// The map a cracked floor of the area drops whoever walks onto it to, tile for tile (plan 21 · H8, part c: Sky Pillar's
     /// floors, Emerald's <c>setholewarp</c> in each floor's own script, kept by the overlay's <c>holeTo</c>); null for none.
     /// </summary>
@@ -309,6 +315,7 @@ public class Map
     /// <summary>The map and tile coming up from this tile of the sea floor comes up onto, as <see cref="DiveTargetAt"/> goes down.</summary>
     public Data.MapSpot? EmergeTargetAt(int x, int y) => AreaAt(x, y) switch
     {
+        { Open: true } area when area.EmergeAt.TryGetValue((x, y), out var own) => own,
         { Open: true, Emerge: { } above } => new Data.MapSpot(above, x, y),
         { Open: true, EmergeSpot: { } spot } => spot,
         _ => null
@@ -854,6 +861,12 @@ public class Map
     /// an inscription in a cave or a pillar. The script is the place's own.
     /// </summary>
     public Dictionary<(int X, int Y), string> TileScripts { get; } = new();
+
+    /// <summary>
+    /// The tiles a field move works a puzzle of the place on (plan 21 · H12, part a; Emerald's braille: Dig, Rock Smash or
+    /// Flash used where the player stands), by the tile stood on: the move and the script of the place that carries it out.
+    /// </summary>
+    public Dictionary<(int X, int Y), (FieldMove Move, string Script)> BrailleSpots { get; } = new();
 
     /// <summary>
     /// The spots a secret base is made at (plan 21 · H10: a GBA game's trees, shrubs and indents in rock), by their tile,

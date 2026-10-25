@@ -1,8 +1,9 @@
 {
   // Lilycove City's harbour (plan 21 · H9, part b): a room built from Emerald's layout, its quay round the dock. The
-  // ferry desk's attendant stands on the gangway as Emerald's does; the S.S. Tidal and the voyages to the islands are
-  // plan 21 · H12's, so she only tells of them, and the sailor and Mr. Briney who stand on her tile in Emerald for those
-  // voyages are left out. The captain beside her takes a Champion of Hoenn on to Unova (RegionDatabase's link from Hoenn,
+  // ferry desk's attendant stands on the gangway as Emerald's does; the S.S. Tidal itself is still plan 21 · H12's, so
+  // she tells of it, but a Champion of Hoenn is given the pass for Southern Island and sailed there (plan 21 · H12, part a:
+  // lilycove_city_harbor.txt, FerryAttendant), and the sailor and Mr. Briney who stand on her tile in Emerald for the
+  // other voyages are left out. The captain beside her takes a Champion of Hoenn on to Unova (RegionDatabase's link from Hoenn,
   // common.Attendant), and comes only with Hoenn's Hall of Fame, as Sinnoh's captain does on Canalave's pier
   "area": "lilycove_city_harbor",
   "bgmTrack": "hoenn/lilycove",
@@ -11,6 +12,7 @@
       "name": "Attendant",
       "hiddenBy": "",
       "still": true,
+      "script": "FerryAttendant",
       "dialog": [ "Welcome to Lilycove's harbour. The S.S. Tidal calls here, but she isn't taking passengers today. Please come back another time." ]
     },
     "sailor": {

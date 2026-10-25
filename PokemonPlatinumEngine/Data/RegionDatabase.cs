@@ -663,6 +663,9 @@ public static class RegionDatabase
                 "SecretBase_RedCave4", "SecretBase_BrownCave4", "SecretBase_BlueCave4", "SecretBase_YellowCave4", "SecretBase_Tree4", "SecretBase_Shrub4",
                 // Plan 21 · H11: Lilycove City's Contest Lobby and Contest Hall
                 "LilycoveCity_ContestLobby", "LilycoveCity_ContestHall",
+                // Plan 21 · H12, part a: the Regis and Southern Island
+                "Underwater_Route134", "Underwater_SealedChamber", "SealedChamber_OuterRoom", "SealedChamber_InnerRoom", "DesertRuins", "IslandCave",
+                "SouthernIsland_Exterior", "SouthernIsland_Interior",
             }
         },
         new()

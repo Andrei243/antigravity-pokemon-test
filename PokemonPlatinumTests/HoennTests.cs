@@ -140,7 +140,8 @@ public class HoennTests
         for (int y = 0; y < Overworld.Height; y++)
             for (int x = 0; x < Overworld.Width; x++)
             {
-                if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below) continue;
+                // (Route 134 dives to a floor of its own, the Sealed Chamber's way: plan 21 · H12, part a)
+                if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below || Overworld.AreaAt(x, y)?.DiveSpot != null) continue;
                 Assert.Equal("HoennUnderwater", below);
                 Assert.True(floor.InBounds(x, y) && !floor.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
                 down++;
@@ -396,8 +397,8 @@ public class HoennTests
             Assert.Contains(Overworld.Warps, w => w.TargetMap == target && !w.Shut);
         var tomb = BuiltMaps.Value["AncientTomb"];
         Assert.Equal("hoenn/sealed_chamber", tomb.BgmTrackAt(8, 25));
-        // Registeel stays away until its chamber is read (plan 21 · H8 and after)
-        Assert.DoesNotContain(tomb.NPCs, n => n.Key == "registeel");
+        // Registeel waits in its chamber, behind the wall of dots (plan 21 · H12, part a: HoennPostGameTests)
+        Assert.Contains(tomb.Everyone, n => n.Key == "registeel");
         // The Scorched Slab's TM11, Sunny Day, lies on its far side
         Assert.Contains(BuiltMaps.Value["ScorchedSlab"].Everyone, n => n.IsItemBall && n.Item == "TM11");
     }

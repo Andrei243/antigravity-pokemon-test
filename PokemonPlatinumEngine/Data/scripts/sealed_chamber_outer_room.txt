@@ -1,0 +1,41 @@
+# The Sealed Chamber's outer room (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/SealedChamber_OuterRoom/scripts.inc).
+#
+# The wall at the north end has dots about digging (DigWall). Standing before it at 10, 3 (the overlay's braille spot) and
+# using Dig, which any Pokémon that knows it can do, breaks through it (DigThrough, Emerald's DoBrailleDigEffect); the way
+# into the inner room is shut until FLAG_SYS_BRAILLE_DIG. The pool at 10, 19 is where the sea floor below comes up.
+# (The effects of the braille, here and in the four places beside it, are no `scene`s: each is one move the player chose
+# or one wall read, over in seconds, and started by a field move that a test of the scenes' skipping cannot make.)
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_FOURTEEN call HoennChapterFourteen
+  end
+
+
+# The wall before the inner room: its dots, and once it is dug through, the hole
+script DigWall
+  speaker none
+  if flag FLAG_SYS_BRAILLE_DIG goto Open
+  text "Raised dots run across the wall. They seem to say: dig here."
+  end
+label Open
+  text "There is a big hole in the wall."
+  end
+
+
+# Dig used before the wall, as a Pokémon that knows it could
+script DigThrough
+  if flag FLAG_SYS_BRAILLE_DIG goto Done
+  usemove "Dig"
+  sound "rock_smash"
+  camera shake 1
+  wait 0.8
+  speaker none
+  text "The wall crumbled away, and a dark way on opened up behind it!"
+  setflag FLAG_SYS_BRAILLE_DIG
+  end
+label Done
+  speaker none
+  text "The wall has been dug through already."
+  end

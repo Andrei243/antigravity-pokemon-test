@@ -1,0 +1,21 @@
+{
+  "displayName": {
+    "en": [
+      "Underwater"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {},
+  "signs": {
+    "Underwater_SealedChamber_EventScript_Braille": {
+      "en": [
+        "Raised dots on the wall, and a row of them pointing upward.\nThey seem to say: go up here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

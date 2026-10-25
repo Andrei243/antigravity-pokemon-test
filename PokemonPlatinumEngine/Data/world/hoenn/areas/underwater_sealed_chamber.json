@@ -1,0 +1,25 @@
+{
+  "key": "underwater_sealed_chamber",
+  "index": 308,
+  "name": "Underwater Sealed Chamber",
+  "matrix": 257,
+  "kind": "Underwater",
+  "sign": "None",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_UNDERWATER",
+  "nightMusic": "MUS_UNDERWATER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 1, "to": "underwater_route_134", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 12, "z": 43, "type": 0, "script": "Underwater_SealedChamber_EventScript_Braille" }
+  ],
+  "triggers": []
+}

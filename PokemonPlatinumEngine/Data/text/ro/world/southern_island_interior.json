@@ -1,0 +1,33 @@
+{
+  "displayName": {
+    "en": [
+      "Southern Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "southern_island_latios": {
+      "name": {
+        "en": [
+          "Latios"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "southern_island_latias": {
+      "name": {
+        "en": [
+          "Latias"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

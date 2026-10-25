@@ -137,6 +137,7 @@ public class ScriptTests
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           wildbattle "Gyarados" 30 shiny
+          wildbattle "Latios" 50 holding "Soul Dew"
           catchinglesson "Bidoof" 2
           catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
           face self player
@@ -423,6 +424,7 @@ public class ScriptTests
           team record "Heracross" VAR_HERACROSS_SIZE_RECORD
           team holds "Adamant Orb"
           team deoxys "Deoxys-Speed"
+          team ends "Wailord" "Relicanth"
           setvar VAR_X RESULT
           nationaldex
           hall enough single

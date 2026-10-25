@@ -1,10 +1,11 @@
 {
   // Route 134 (plan 21 · H8, part d): the last of the routes of currents, which carry a surfer west to Slateport City's
-  // eastern shore. Its dark water and the Sealed Chamber under it are the post-game's (plan 21 · H12): the area names
-  // no floor to dive to
+  // eastern shore. Its dark water dives down to the one floor under it (Emerald's setdivewarp, plan 21 · H12, part a: the
+  // floor under Route 134, whose passage leads on to the Sealed Chamber); coming up from the floor comes up at 300, 291
   "area": "route_134",
   "bgmTrack": "hoenn/route119",
   "trees": "Round",
+  "diveTo": { "area": "underwater_route_134", "x": 8, "z": 6, "facing": "Down" },
   "people": {
     "swimmer_m": { "name": "Jack", "trainer": { "dialogueBefore": "Swimmer Jack: The current here runs all the way to Slateport. Battle me before it sweeps you off!", "dialogueAfter": "Swimmer Jack: Off you go, then. Slateport's that way." } },
     "swimmer_f": { "name": "Laurel", "trainer": { "dialogueBefore": "Swimmer Laurel: There's something strange down in the dark water here. Old ruins, people say.", "dialogueAfter": "Swimmer Laurel: I'd love to dive and see them one day." } },

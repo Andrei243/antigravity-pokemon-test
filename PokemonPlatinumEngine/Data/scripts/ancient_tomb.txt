@@ -1,0 +1,63 @@
+# The Ancient Tomb (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/AncientTomb/scripts.inc).
+#
+# A wall of dots shuts the chamber where Registeel waits. Standing before it at 8, 21 (the overlay's braille spot) and using
+# Flash lights the middle of the wall and breaks the seal, once the Sealed Chamber's doors have been opened
+# (FLAG_REGI_DOORS_OPENED): FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED. Registeel is shown by the arrival while it has not been
+# beaten or caught (FLAG_DEFEATED_REGISTEEL) and is battled at level 40; run from, it is back with the next arrival.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_FOURTEEN call HoennChapterFourteen
+  if flag FLAG_DEFEATED_REGISTEEL end
+  clearflag FLAG_HIDE_REGISTEEL
+  end
+
+
+# The wall's dots (and the slabs before them), before and after the way through is open
+script Wall
+  speaker none
+  if flag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED goto Open
+  text "Rows of raised dots are carved over the doorway. They seem to say: let light shine in the middle."
+  end
+label Open
+  text "There is a big hole in the wall."
+  end
+
+
+# Flash used before the wall
+script FlashThrough
+  if flag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED goto Done
+  if not flag FLAG_REGI_DOORS_OPENED goto Nothing
+  usemove "Flash"
+  sound "rock_smash"
+  camera shake 1
+  wait 0.8
+  speaker none
+  text "The dots glowed all along the wall, and the seal cracked open!"
+  setflag FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED
+  end
+label Nothing
+  usemove "Flash"
+  speaker none
+  text "But nothing happened..."
+  end
+label Done
+  speaker none
+  text "The seal on the wall has been broken already."
+  end
+
+
+script Registeel
+  cry "Registeel"
+  speaker none
+  text "Registeel waits in the tomb without a sound."
+  wildbattle "Registeel" 40
+  hide self
+  setflag FLAG_HIDE_REGISTEEL
+  if result == 2 goto Fled
+  setflag FLAG_DEFEATED_REGISTEEL
+  end
+label Fled
+  text "Registeel vanished into the dark of the tomb..."
+  end

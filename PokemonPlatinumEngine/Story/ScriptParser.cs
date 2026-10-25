@@ -323,13 +323,17 @@ public static class ScriptParser
                 }
                 // `nofleeing` (a battle that can't be run from) and `shiny` (plan 20 · J11: the Lake of Rage's red
                 // Gyarados), in either order
+                // and `holding "Soul Dew"` (plan 21 · H12, part a: Emerald's seteventmon of the eon Pokémon on Southern Island)
                 bool noFleeing = false, shiny = false;
+                string held = "";
                 while (r.More)
                 {
-                    if (r.OneOf("nofleeing", "shiny") == "shiny") shiny = true;
+                    string option = r.OneOf("nofleeing", "shiny", "holding");
+                    if (option == "shiny") shiny = true;
+                    else if (option == "holding") held = r.Text("an item's name");
                     else noFleeing = true;
                 }
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny };
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny, Other = held };
             }
 
             case "face":
@@ -811,9 +815,12 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys", "ends");
                 return what switch
                 {
+                    // Plan 21 · H12, part a: the Sealed Chamber's riddle (CheckRelicanthWailord): the first of the team of one
+                    // species and the last of another, `team ends "Wailord" "Relicanth"`
+                    "ends" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("the first Pokémon's species"), Record = r.Text("the last Pokémon's species") },
                     // Plan 06 · R29: Veilstone City's meteorites (ChangeDeoxysForm): "Deoxys" is its Normal Forme
                     "deoxys" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = DeoxysForm(r) },
                     // Plan 01 · M11, part c: a nature by its name, and a size beside the record ("team size keep" keeps it)

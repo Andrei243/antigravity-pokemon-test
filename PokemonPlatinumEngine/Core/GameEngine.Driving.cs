@@ -247,6 +247,8 @@ public partial class GameEngine
         public int BandRendered => game.band.Rendered;
         /// <summary>The player presses the confirm key in the field: talking, reading, a field move's question.</summary>
         public void Interact() => game.TryInteract();
+        /// <summary>A field move chosen in the party menu by the Pokémon at that place of the team (-1: a wild helper), as the menu's own choice does.</summary>
+        public void UseFieldMove(FieldMove move, int partyIndex) => game.UseFieldMoveFromMenu(move, partyIndex);
         /// <summary>What arriving on the current map does: its puzzle laid out, its <c>OnEnter</c>, its first arrival.</summary>
         public void ArriveOnMap() => game.ArriveOnMap();
         public void ChooseFromStartMenu(StartMenuChoice choice) => game.HandleStartMenuChoice(choice);

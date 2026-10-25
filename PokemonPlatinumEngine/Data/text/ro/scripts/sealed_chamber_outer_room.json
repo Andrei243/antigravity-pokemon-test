@@ -1,0 +1,38 @@
+{
+  "DigWall": [
+    {
+      "en": [
+        "Raised dots run across the wall. They seem to say: dig here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There is a big hole in the wall."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DigThrough": [
+    {
+      "en": [
+        "The wall crumbled away, and a dark way on opened up behind it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The wall has been dug through already."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

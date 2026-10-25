@@ -1,0 +1,36 @@
+# The Sealed Chamber's inner room (plan 21 · H12, part a). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/SealedChamber_InnerRoom/scripts.inc).
+#
+# The back wall's dots are the riddle (BackWall): the first of the team a Wailord and the last a Relicanth, and the cave
+# shakes, three doors open far off and FLAG_REGI_DOORS_OPENED is set, which the three Regis' caves wait for (Emerald's
+# CheckRelicanthWailord). The six other walls only tell the story and are the overlay's own words.
+
+
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_FOURTEEN call HoennChapterFourteen
+  end
+
+
+script BackWall
+  speaker none
+  text "The dots on the back wall read: first the great whale of the deep, and last the ancient fish of the shallows."
+  if flag FLAG_REGI_DOORS_OPENED end
+  team ends "Wailord" "Relicanth"
+  if result == 0 end
+  music stop
+  sound "use_earthquake"
+  camera shake 2
+  wait 2
+  sound "door_open"
+  camera shake 0.6
+  wait 1
+  sound "door_open"
+  camera shake 0.6
+  wait 1
+  sound "door_open"
+  camera shake 0.6
+  wait 1
+  text "Somewhere far away, doors opened with a groan!"
+  music area
+  setflag FLAG_REGI_DOORS_OPENED
+  end

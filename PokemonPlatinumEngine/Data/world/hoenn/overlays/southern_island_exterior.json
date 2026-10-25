@@ -1,0 +1,15 @@
+{
+  // Southern Island's beach (plan 21 · H12, part a): the ferry from Lilycove's harbour sets a Champion of Hoenn down at 13,
+  // 22 (lilycove_city_harbor.txt), and the sailor who brought them waits to sail them back (southern_island_exterior.txt;
+  // Emerald's SouthernIsland_Exterior_EventScript_Sailor). The ship itself is not drawn
+  "area": "southern_island_exterior",
+  "name": "Southern Island",
+  "bgmTrack": "hoenn/sailing",
+  "trees": "Round",
+  "people": {
+    "southern_island_sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  },
+  "signs": {
+    "SouthernIsland_Exterior_EventScript_Sign": "SOUTHERN ISLAND\nA small island of the open sea. Nobody lives here."
+  }
+}

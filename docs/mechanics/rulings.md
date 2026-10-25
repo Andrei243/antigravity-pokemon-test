@@ -5646,3 +5646,48 @@ Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`,
   lowers, 24 seconds at thirty frames a second; the others at the drum press by the generator they are handed, so a
   blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
   waits for plan 07.
+
+## The Regis, the Sealed Chamber and Southern Island (2026-10-26, plan 21 · H12, part a)
+
+Emerald's post-game places that need no new facility, as ours: the three Regis' riddles and caves, the sea floor under
+Route 134 with the Sealed Chamber at its end, and Southern Island with the eon Pokémon that isn't roaming. The other
+places the plan lists for H12 are left (the plan's status line says which).
+
+- **The way down** is Route 134's dark water: any dive there goes to the one floor under it (Emerald's `setdivewarp` in
+  Route134's `OnTransition`, 8, 6), a pool of dark water that a diver swims (`FieldMovement.Step` lets a Diving walker
+  onto `DiveWater` of an underwater map; before it a floor laid as a pool of water could only be arrived on) and a
+  passage at 8, 8 into the Sealed Chamber's corridor. Coming up anywhere in either comes up in Route 134 at 300, 291;
+  from the one tile at the corridor's end, 12, 44 beside the dots that point up, it comes up in the chamber's pool at 10,
+  19 (Emerald's `Underwater_SealedChamber_OnDive`: the overlay's `emergeAt`), and Dive from that pool goes down to it again.
+- **The three braille puzzles are field moves used on a tile**, as Emerald's are (its `ShouldDoBraille…Effect` ask the
+  player's position): Dig at 10, 3 before the outer room's wall, Rock Smash at 8, 21 before the Desert Ruins' wall and
+  Flash at 8, 21 before the Ancient Tomb's. The overlay's `braille` names the tile, the move and the script; chosen in the
+  party menu there the move can be used (the region's badge still asked: Dig none, Rock Smash the Dynamo Badge, Flash the
+  Knuckle Badge) and runs that script. Rock Smash and Flash do nothing, with a line, until the Sealed Chamber's doors have
+  opened; Dig works from the first.
+- **The riddle** is Emerald's: with a Wailord first on the team and a Relicanth last, the back wall of the inner room
+  (10, 4) shakes the cave, three doors open far off and `FLAG_REGI_DOORS_OPENED` is set (`team ends`). The six walls of
+  dots that tell the story and the ten of the alphabet are read as lines of our own; the original's are braille of its
+  own, which nobody here reads.
+- **Regice's lap is ours.** Emerald counts steps along a path of tiles (`ShouldDoBrailleRegicePuzzle`) that its braille
+  describes only as a lap; the Island Cave's is a lap of the hall's four corners one after another, from the wall, and
+  back to it (`VAR_ISLAND_CAVE_LAP` 1 to 5, the overlay's triggers), forgotten as the cave is left and come to again.
+- **A wall of dots is three slabs of rubble** (the `Rubble` thing of Kanto's Victory Road, hidden by the puzzle's flag) over
+  the doorway, whose warp (`doors` and `openedBy`) is shut until then. The original draws a wall with a script's
+  `setmetatile`; the slabs do the same with what the field already draws.
+- **The Regis** are battled at level 40 (Emerald's `StartRegiBattle`), with their own battle songs, and may be run from:
+  one run from is back with the next arrival, one beaten or caught is gone (`FLAG_DEFEATED_<REGI>`); each cave's arrival
+  shows it while it isn't. `common.HoennChapterFourteen` hides all five of the places' people from a new game and an
+  older save gets it as it comes in. No story version was raised.
+- **Southern Island is by ferry from Lilycove's harbour**, and the pass is ours: Emerald gives the Eon Ticket by an event
+  nobody has here, so the attendant at the ferry desk gives a Champion of Hoenn a pass the first time they speak to her
+  (`FLAG_ENABLE_SHIP_SOUTHERN_ISLAND`, a flag as Scott's Frontier Pass is) and sails them to the island's beach whenever
+  they ask; a sailor there sails them back. The S.S. Tidal's cabins and the other ferries (Navel Rock, Birth Island,
+  Faraway Island) are not built.
+- **The eon Pokémon of Southern Island is the one that doesn't roam Hoenn** (Emerald's `VAR_ROAMER_POKEMON`: 0 is Latias
+  roaming and Latios here, 1 the other way), at level 50 holding a Soul Dew (`wildbattle … holding`), met by reading
+  the stone on the island of the garden's pond from 13, 12 once per visit until it is beaten or caught
+  (`FLAG_DEFEATED_` and `FLAG_CAUGHT_LATIAS_OR_LATIOS`). Emerald walks it down from the north over a pan of the camera;
+  here it comes down at once to the tile before the stone.
+- **Altering Cave stays unbuilt**: its warp on Route 103 is a plain rock tile that nobody can walk into in Emerald either
+  (the reader leaves such a warp as a way no one can take), and its other wild tables are the Mystery Gift's.

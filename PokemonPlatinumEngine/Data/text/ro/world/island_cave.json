@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Island Cave"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "regice": {
+      "name": {
+        "en": [
+          "Regice"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regice_wall_left": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regice_wall_middle": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regice_wall_right": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

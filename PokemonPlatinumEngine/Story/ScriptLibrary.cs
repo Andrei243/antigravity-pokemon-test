@@ -315,6 +315,12 @@ public sealed class ScriptLibrary
                     case Op.Team when i.Name == "holds" && ItemDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no item '{i.Other}'");
                         break;
+                    case Op.Team when i.Name == "ends" && (PokemonDatabase.Get(i.Other) == null || PokemonDatabase.Get(i.Record) == null):
+                        Wrong(i, $"there is no species '{(PokemonDatabase.Get(i.Other) == null ? i.Other : i.Record)}'");
+                        break;
+                    case Op.WildBattle when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:
+                        Wrong(i, $"there is no item '{i.Other}'");
+                        break;
                     case Op.Tutor when i.Name == "once" && !Models.MoveTutors.Kanto.ContainsKey(i.Other):
                         Wrong(i, $"no tutor of Kanto teaches '{i.Other}'");
                         break;

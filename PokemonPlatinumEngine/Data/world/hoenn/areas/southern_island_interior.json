@@ -1,0 +1,29 @@
+{
+  "key": "southern_island_interior",
+  "index": 420,
+  "name": "Southern Island",
+  "matrix": 363,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ABANDONED_SHIP",
+  "nightMusic": "MUS_ABANDONED_SHIP",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 13, "z": 18, "to": "southern_island_exterior", "toWarp": 0 },
+    { "x": 14, "z": 18, "to": "southern_island_exterior", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "var_0", "looks": "var_0", "movement": "look_north", "x": 13, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SOUTHERN_ISLAND_EON_STONE", "script": "" },
+    { "id": "southern_island_lati", "looks": "var_1", "movement": "look_south", "x": 13, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SOUTHERN_ISLAND_UNCHOSEN_EON_DUO_MON", "script": "" }
+  ],
+  "signs": [
+    { "x": 13, "z": 11, "type": 0, "script": "SouthernIsland_Interior_EventScript_TryLatiEncounter" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Desert Ruins"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "regirock": {
+      "name": {
+        "en": [
+          "Regirock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regirock_wall_left": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regirock_wall_middle": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "regirock_wall_right": {
+      "name": {
+        "en": [
+          "Wall"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

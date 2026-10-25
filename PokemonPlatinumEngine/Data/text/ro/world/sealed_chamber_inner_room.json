@@ -1,0 +1,61 @@
+{
+  "displayName": {
+    "en": [
+      "Sealed Chamber"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {},
+  "signs": {
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart1": {
+      "en": [
+        "The dots tell of a people. In this cave we lived,\nand the cave gave us everything we had."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart2": {
+      "en": [
+        "The dots go on. All we owned we owed to the\nPokémon, who shared the land with us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart3": {
+      "en": [
+        "The dots grow stern. But we sealed the Pokémon\naway, and shut them in the dark."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart4": {
+      "en": [
+        "The dots are crowded here. We feared their\npower, and we feared what it might do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart5": {
+      "en": [
+        "The dots are steadier again. Those who come\nwith courage and with hope, let them go on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SealedChamber_InnerRoom_EventScript_BrailleStoryPart6": {
+      "en": [
+        "The last dots: open the door, and an eternal\nPokémon waits behind it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
