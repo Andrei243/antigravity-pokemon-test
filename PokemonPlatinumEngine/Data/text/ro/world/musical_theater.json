@@ -1,0 +1,274 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the theater café! The stage is dark today, but our tea is always hot."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The performers come in here after a show, still wearing their Props. It's quite a sight!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Waitress"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! The owner is rehearsing a new number upstairs. He says it will be his best ever."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Fan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've seen every musical this season. My favourite was the one with a Lillipup in a top hat!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up, I want to dress Pokémon for the stage. Ribbons, crowns, glasses, the lot!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon battles hard all week. On Sundays it dances. Everyone needs a hobby!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Socialite"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The dressing room is through there. Only performers and their Pokémon may go in, darling."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Dancer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One, two, spin! I'm practising my steps. The Pokémon on stage can't be the only ones who dance!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I am the owner of this theater. A musical is music, dance and costume all at once. Pokémon shine in all three!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mummy said if I'm good we can watch the next show from the front row!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon got a standing ovation last week! I've still got the programme in my wallet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to Nimbasa for the stadiums, but I keep finding myself back here. Funny, isn't it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "22": {
+      "name": {
+        "en": [
+          "Lady"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Props are the best part. A Pokémon in a tiny hat is the most charming thing in Unova."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "23": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keeping an eye on the stage door. Some fans get a little too excited after a show!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12": {
+      "en": [
+        "Pokémon Musical\nToday's show: closed for rehearsals"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "14": {
+      "en": [
+        "Pokémon Musical\nDress up your Pokémon and take the stage!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

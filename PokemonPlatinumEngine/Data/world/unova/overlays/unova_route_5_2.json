@@ -1,0 +1,12 @@
+{
+  // The trailer on Route 5 (plan 22 · U6, part b): Black 2's room, our words. Its owner only talks
+  "area": "unova_route_5_2",
+  "bgmTrack": "unova/route4",
+  "people": {
+    "0": {
+      "name": "Old Man",
+      "npcType": "old_man",
+      "dialog": [ "I park my trailer by the road and listen to the performers. Better than any concert hall, and free!" ]
+    }
+  }
+}

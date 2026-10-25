@@ -1,0 +1,33 @@
+{
+  // Driftveil City's Pokémon Center (plan 22 · U6, part b): the same floor as Castelia's and Nimbasa's, with the city's
+  // own people
+  "area": "driftveil_city_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "people": {
+    "0": {
+      "name": "Sailor",
+      "npcType": "sailor",
+      "dialog": [ "Every ship that ties up in Driftveil sends its crew here first. A long voyage is hard on Pokémon too." ]
+    },
+    "1": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "2": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "3": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "4": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "5": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "8": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_f",
+      "dialog": [ "Clay's Pokémon are as hard as the rock he mines. Water and Grass moves are the way to soften them up!" ]
+    },
+    "9": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "Clay made his fortune in the mines and built half this city. Gruff as a boulder, but he looks after his people." ]
+    }
+  }
+}

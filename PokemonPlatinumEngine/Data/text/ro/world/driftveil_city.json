@@ -1,0 +1,384 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Charles"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The name's Charles. I learned a battle style with three Pokémon out at once to impress a girl. She wasn't impressed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Former Member"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is between me and my old friend. Beat it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Rood"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hold it right there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Clay"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Driftveil! Ships from all over the world tie up at our docks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Lillipup and I train on the quay every morning. The sea air is good for both of us!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cold Storage used to stand over there. Remember it? ...No? Funny, I'm forgetting it myself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clay's Gym is down in a mine. You ride lifts all the way down to the bottom!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bridges join lands, and battles join people. So Pokémon are a kind of bridge too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a story about a Pokémon of thunder and a Pokémon of wind who made trouble everywhere, until a Pokémon of the earth stopped them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "15": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want my Pokémon to grow so strong it never has to lose. That's love, that is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Roughneck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Plasma took my Pokémon once, long ago. They gave it back in the end. Funny lot."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "17": {
+      "name": {
+        "en": [
+          "Twins"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The market sells things from all over the world! We like the sweets best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "18": {
+      "name": {
+        "en": [
+          "Backers"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon World Tournament is just south of the city. Trainers from every region battle there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "19": {
+      "name": {
+        "en": [
+          "Lillipup"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lillipup: Yip! Yip!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "20": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We've started digging a shortcut to Twist Mountain. The rock's hard going, though. It'll take a while!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_church": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_gym": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Welcome to Driftveil City!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Driftveil Drawbridge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "3": {
+      "en": [
+        "Driftveil City\nThe city of billowing sails"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "Driftveil Market\nGoods from every port"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "Driftveil City Pokémon Gym\nLeader: Clay, the boss of the mines"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "26": {
+      "en": [
+        "Clay Tunnel ahead\nWorks in progress"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

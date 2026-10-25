@@ -1,0 +1,27 @@
+{
+  // The Driftveil Drawbridge (plan 22 · U6, part b): Black 2's bridge across the strait between Route 5 and Driftveil
+  // City, our words. Its import is the deck and nothing round it: the sea lies five tiles under it (world.json's
+  // seaBelow; style guide, "Relief", "A bridge over the sea"), its four walkers stand on the deck, and it is seen with a
+  // camera of its own, lower and further off than the overworld's (Black 2's camera 9). Its raising for ships and the
+  // Ducklett shadows over its deck are left for later
+  "area": "driftveil_drawbridge",
+  "bgmTrack": "unova/route4",
+  "camera": "Drawbridge",
+  "people": {
+    "0": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [ "Look at the shadows on the deck! Bird Pokémon fly over the bridge all day long." ]
+    },
+    "1": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "The bridge lifts up in the middle when a tall ship comes through. We got stuck halfway across once!" ]
+    },
+    "2": {
+      "name": "Youngster",
+      "npcType": "youngster",
+      "dialog": [ "Driftveil City's at the far end. Its Gym Leader runs the mines and the cold storage warehouses too!" ]
+    }
+  }
+}

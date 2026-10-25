@@ -1,0 +1,27 @@
+# The Driftveil Gym's lobby (plan 22 · U6, part b). docs/scripts.md describes the language; the lines are our own.
+# The guide (0) gives a challenger Fresh Water (FLAG_UNOVA_GOT_WATER_DRIFTVEIL). The lift's car at the head of the path
+# (7, 3) takes the player down to the Gym's floor (the overlay's exit to DriftveilCity_Gym).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script GymGuide
+  face 0 player
+  speaker "Guide"
+  if not flag FLAG_UNOVA_GOT_WATER_DRIFTVEIL goto Water
+  if badge quake goto Won
+  say "Clay waits at the bottom of the mine, past his workers. Water and Grass moves will wear his Ground types down!"
+  end
+label Water
+  say "Hey there, future champ! This Gym is a working mine. The lift takes you down, and the workers will dig in for a battle!"
+  say "Here, have a drink before you go down!"
+  give "Fresh Water"
+  setflag FLAG_UNOVA_GOT_WATER_DRIFTVEIL
+  say "Clay's Ground types don't care for Water or Grass moves. And Electric moves won't touch them at all!"
+  end
+label Won
+  say "You beat Clay! You dug deep, champ. Even the workers are cheering down there!"
+  end

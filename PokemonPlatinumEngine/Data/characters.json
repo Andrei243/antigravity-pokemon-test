@@ -271,6 +271,11 @@
     "emmet": { "hairColor": "#c8c8ce", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e8c45a", "top": "#f4f4f6", "accent": "#22222a", "bottom": "#f4f4f6", "shoes": "#2a2420", "eyes": "#5a5a66", "coat": true, "build": "Adult", "height": 1.1 },
     "rosa": { "hairColor": "#6a442c", "hair": "Bunches", "hat": "Cap", "hatColor": "#f4f4f6", "hatBand": "#e86a9a", "top": "#3a8ad0", "accent": "#f4f4f6", "bottom": "#f2cc48", "shoes": "#e86a9a", "eyes": "#3a2a2a", "shorts": true, "lashes": true, "blush": true },
     "nate": { "hairColor": "#5a3a26", "hair": "Spiky", "hat": "Cap", "hatColor": "#d83a3a", "hatBand": "#22222a", "top": "#3a62c0", "accent": "#f4f4f6", "bottom": "#26262e", "shoes": "#c83a3a", "eyes": "#3a2a2a" },
+    // Driftveil City's (plan 22 · U6, part b; our own takes, stand-ins until plan 22 · U12): Clay, the Gym Leader who runs
+    // the mines, grey moustache under a brown cowboy hat, a cream shirt and a leather vest; and Rood, the old sage who looks
+    // after the former Team Plasma, white-bearded in a long navy robe
+    "clay": { "skin": "#e0aa80", "hairColor": "#6a6a6e", "hat": "Cowboy", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#f2ecdc", "accent": "#8a5a32", "bottom": "#4a5a7a", "shoes": "#4a3020", "vest": "#7a5a3a", "mustache": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    "rood": { "hairColor": "#d8d8de", "hair": "Bald", "top": "#3a4a6e", "accent": "#e8dcb4", "bottom": "#3a4a6e", "shoes": "#2a2a30", "beard": true, "mustache": true, "coat": true, "skirt": true, "build": "Elder" },
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
@@ -730,6 +735,14 @@
     "Subway Boss Ingo": "ingo",
     "Subway Boss Emmet": "emmet",
     "Pokémon Trainer Rosa": "rosa",
-    "Pokémon Trainer Nate": "nate"
+    "Pokémon Trainer Nate": "nate",
+    // Plan 22 · U6, part b: Route 5's and Driftveil's classes, folded onto the nearest looks until plan 22 · U12, and
+    // Driftveil's cast as themselves
+    "Baker": "waitress",
+    "Dancer": "jogger",
+    "Backers": "twin",
+    "Musician": "guitarist",
+    "Leader Clay": "clay",
+    "Pokémon Trainer Rood": "rood"
   }
 }

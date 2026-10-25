@@ -1,0 +1,37 @@
+{
+  // A block of flats of Driftveil City by the Gym's road (plan 22 · U6, part b): Black 2's ground floor, a little
+  // restaurant, our words. Its lift to the flats upstairs is left out
+  "area": "driftveil_city_5",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "dialog": [ "The lift is for residents, I'm afraid. The restaurant is open to everyone, though!" ]
+    },
+    "1": {
+      "name": "Waiter",
+      "npcType": "waiter",
+      "dialog": [ "Today's special is fish fresh off the boats. The miners from the Gym eat here every lunchtime!" ]
+    },
+    "2": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "I came for the fish and stayed for the view. Driftveil does that to people." ]
+    },
+    "3": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "Lunch break! Then it's back down the mine. The boss works harder than any of us." ]
+    },
+    "4": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_f",
+      "dialog": [ "The workers say Clay's Gym is full of lifts going up and down. I'd get dizzy!" ]
+    }
+  },
+  "signs": {
+    "10422": "The lift's call button.\nIt takes residents up to their flats.",
+    "10426": "Letterboxes for the flats upstairs."
+  }
+}

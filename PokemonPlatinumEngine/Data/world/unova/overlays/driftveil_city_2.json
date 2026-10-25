@@ -1,0 +1,27 @@
+{
+  // A block of flats of Driftveil City by the Pokémon Center (plan 22 · U6, part b): Black 2's ground floor, our words.
+  // Its lift to the flats upstairs is left out, and its attendant (0) says so
+  "area": "driftveil_city_2",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "dialog": [ "The lift goes up to the residents' flats. I'm afraid only residents and their guests may ride it." ]
+    },
+    "1": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "I paint the ships in the harbour. Every one of them has a face of its own, if you look long enough." ]
+    },
+    "2": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [ "I live on the top floor. On a clear day you can see the drawbridge from my window!" ]
+    }
+  },
+  "signs": {
+    "10419": "The lift's call button.\nIt takes residents up to their flats.",
+    "10423": "Letterboxes for the flats upstairs."
+  }
+}

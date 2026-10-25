@@ -1,0 +1,32 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "The lift's switch.\nThe car goes down into the mine, to the Gym's floor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "4": {
+      "en": [
+        "Driftveil City Pokémon Gym\nLeader: Clay, the boss of the mines"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

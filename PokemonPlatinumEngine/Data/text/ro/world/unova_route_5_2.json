@@ -1,0 +1,23 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I park my trailer by the road and listen to the performers. Better than any concert hall, and free!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

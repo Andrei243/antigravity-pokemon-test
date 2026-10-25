@@ -1,0 +1,50 @@
+{
+  "people": {
+    "1": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon World Tournament is through here. The hall's being made ready, so it isn't open just yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gym Leaders and Champions from every region, battling in one place... I can't wait for it to open!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10400": {
+      "en": [
+        "Pokémon World Tournament\nThe stage for the world's strongest Trainers"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

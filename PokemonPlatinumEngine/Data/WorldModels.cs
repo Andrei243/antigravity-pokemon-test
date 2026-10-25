@@ -322,6 +322,8 @@ public static partial class WorldModels
         "castelia_city_3" => PokemonType.Bug,
         // and Elesa's in Nimbasa's amusement park (plan 22 · U6)
         "nimbasa_city_2" => PokemonType.Electric,
+        // and Clay's in Driftveil City (plan 22 · U6, part b)
+        "driftveil_city" => PokemonType.Ground,
         _ => null
     };
 }

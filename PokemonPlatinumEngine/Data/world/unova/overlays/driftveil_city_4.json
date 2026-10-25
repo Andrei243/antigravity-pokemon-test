@@ -1,0 +1,27 @@
+{
+  // A block of flats of Driftveil City by the quay (plan 22 · U6, part b): Black 2's ground floor, our words. Its lift
+  // to the flats upstairs is left out
+  "area": "driftveil_city_4",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [ "My husband brings goods across the sea. I sell them at the market. A good arrangement!" ]
+    },
+    "1": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "dialog": [ "Welcome home! Oh, you don't live here? Then I can't let you ride the lift, I'm sorry." ]
+    },
+    "2": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "Driftveil was built on trade. Ore from Clay's mines goes out, and treasures from the world come in." ]
+    }
+  },
+  "signs": {
+    "10421": "The lift's call button.\nIt takes residents up to their flats.",
+    "10425": "Letterboxes for the flats upstairs."
+  }
+}

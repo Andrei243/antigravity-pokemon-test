@@ -690,6 +690,14 @@ public static class RegionDatabase
                 "Route4_House1_1F", "Route4_House1_2F", "Route4_RestHouse", "Route4_House2_1F", "Route4_House2_2F",
                 "Route4_House3_1F", "Route4_House3_2F", "Route4_House4_1F", "Route4_House4_2F", "JoinAvenue",
                 "DesertResortGate", "DesertResort", "NimbasaCity_PokemonCenter", "NimbasaCity_AmusementPark", "NimbasaCity_Gym",
+                // Plan 22 · U6, part b: Nimbasa City's other rooms, its gate to Route 5, Route 5's trailer, the Driftveil
+                // Drawbridge, Driftveil City's rooms and Clay's Gym (a map of ours, Data/maps/DriftveilCity_Gym.json)
+                "NimbasaCity_BigStadium", "NimbasaCity_BigStadiumStands", "NimbasaCity_SmallCourt", "NimbasaCity_SmallCourtStands",
+                "NimbasaCity_House1_1F", "NimbasaCity_House1_2F", "NimbasaCity_House2_1F", "NimbasaCity_House2_2F",
+                "NimbasaCity_BattleInstitute", "MusicalTheater", "NimbasaCity_RollerCoaster", "NimbasaGate_Route5", "Route5_Trailer",
+                "DriftveilDrawbridge", "DriftveilCity_PokemonCenter", "DriftveilCity_House1", "DriftveilCity_House2",
+                "DriftveilCity_House3", "DriftveilCity_House4", "DriftveilCity_PlasmaHouse", "DriftveilCity_Market",
+                "DriftveilCity_TournamentGate", "DriftveilCity_GymLobby", "DriftveilCity_Gym",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

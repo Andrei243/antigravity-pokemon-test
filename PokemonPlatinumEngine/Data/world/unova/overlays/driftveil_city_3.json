@@ -1,0 +1,32 @@
+{
+  // A block of flats of Driftveil City by the market (plan 22 · U6, part b): Black 2's ground floor, our words. Its lift
+  // to the flats upstairs is left out
+  "area": "driftveil_city_3",
+  "bgmTrack": "unova/driftveil",
+  "people": {
+    "0": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "The light off the water changes every hour. I could paint this port for a hundred years." ]
+    },
+    "1": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "dialog": [ "Good day! The lift is for residents only, I'm sorry to say." ]
+    },
+    "2": {
+      "name": "Pokémon Breeder",
+      "npcType": "pokemon_breeder_f",
+      "dialog": [ "My Pokémon love the sea breeze. We walk along the quay every evening." ]
+    },
+    "3": {
+      "name": "Scientist",
+      "npcType": "scientist_f",
+      "dialog": [ "I study the Pokémon that ships bring in from far away. Driftveil is the best place in Unova to do it!" ]
+    }
+  },
+  "signs": {
+    "10420": "The lift's call button.\nIt takes residents up to their flats.",
+    "10424": "Letterboxes for the flats upstairs."
+  }
+}

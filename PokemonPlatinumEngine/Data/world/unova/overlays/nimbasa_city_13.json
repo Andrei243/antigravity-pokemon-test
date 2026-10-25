@@ -1,0 +1,22 @@
+{
+  // A house of Nimbasa City by the Pokémon Center, upstairs (plan 22 · U6, part b): Black 2's room, our words
+  "area": "nimbasa_city_13",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Socialite",
+      "npcType": "socialite",
+      "dialog": [ "Nimbasa never sleeps, darling. At night the Ferris wheel lights up like a necklace of stars." ]
+    },
+    "1": {
+      "name": "Rich Boy",
+      "npcType": "rich_boy",
+      "dialog": [ "I've ridden the Ferris wheel forty times! The view never changes, but I always see something new." ]
+    },
+    "2": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [ "From this window you can watch the trains come in to the Gear Station. I never tire of it." ]
+    }
+  }
+}

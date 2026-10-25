@@ -1,0 +1,110 @@
+{
+  // Driftveil City (plan 22 · U6, part b): Black 2's port of warehouses, the market and Clay's Gym, our words. As the
+  // player comes off the drawbridge's gate a grunt of Team Plasma (3, FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT) is pressing a
+  // former member (2, FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE) to come back; our trigger (221, 430 to 434, VAR_UNOVA_DRIFTVEIL 0)
+  // plays it: Hugh (5, FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL) runs up and chases the grunt off, and the former member asks the
+  // player to their home by the Gym. Rood (4, FLAG_UNOVA_HIDE_ROOD_DOOR) stands before that home, the old church; our
+  // trigger beside him (194, 397 to 399, at 1) has him test the player in battle, Hugh (hugh_church) comes back from the
+  // chase, and both are asked in (driftveil_city_6.txt tells the rest). A worker stands at the Gym's door while Clay is
+  // busy (1, FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER, gone once Rood has told his tale). Once the Quake Badge is won, Clay
+  // (6, FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL) and Hugh (hugh_gym, FLAG_UNOVA_HIDE_HUGH_GYM) wait outside the Gym; our trigger
+  // before its door (212, 401, at 4) plays their scene and Clay's word of the Pokémon World Tournament
+  // (driftveil_city.txt). The motorcyclist who explains Triple and Rotation Battles (0) only talks until plan 14 builds
+  // them, and the worker of the shortcut to Twist Mountain (20) is always out
+  "area": "driftveil_city",
+  "bgmTrack": "unova/driftveil",
+  "architecture": "Storehouse",
+  "triggers": [
+    { "script": "PlasmaOnTheBridge", "x": 221, "z": 430, "width": 1, "depth": 5, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 0 },
+    { "script": "RoodCalls", "x": 194, "z": 397, "width": 1, "depth": 3, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 1 },
+    { "script": "ClayAndHugh", "x": 212, "z": 401, "width": 1, "depth": 1, "variable": "VAR_UNOVA_DRIFTVEIL", "value": 4 }
+  ],
+  "people": {
+    "0": {
+      "name": "Charles",
+      "npcType": "biker",
+      "dialog": [ "The name's Charles. I learned a battle style with three Pokémon out at once to impress a girl. She wasn't impressed." ]
+    },
+    "1": { "name": "Worker", "npcType": "worker", "script": "GymWorker", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER" },
+    "2": { "name": "Former Member", "npcType": "middle_aged_man", "script": "FormerMember", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE" },
+    "3": {
+      "name": "Grunt",
+      "npcType": "plasma_grunt",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT",
+      "dialog": [ "This is between me and my old friend. Beat it!" ]
+    },
+    "4": { "name": "Rood", "npcType": "rood", "script": "Rood", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_DOOR" },
+    "5": { "name": "{rival}", "npcType": "hugh", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL", "dialog": [ "Hold it right there!" ] },
+    "6": { "name": "Clay", "npcType": "clay", "script": "ClayOutside", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL" },
+    "9": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "Welcome to Driftveil! Ships from all over the world tie up at our docks." ]
+    },
+    "10": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "My Lillipup and I train on the quay every morning. The sea air is good for both of us!" ]
+    },
+    "11": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "The Cold Storage used to stand over there. Remember it? ...No? Funny, I'm forgetting it myself." ]
+    },
+    "12": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "Clay's Gym is down in a mine. You ride lifts all the way down to the bottom!" ]
+    },
+    "13": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "Bridges join lands, and battles join people. So Pokémon are a kind of bridge too!" ]
+    },
+    "14": {
+      "name": "Youngster",
+      "npcType": "youngster",
+      "dialog": [ "There's a story about a Pokémon of thunder and a Pokémon of wind who made trouble everywhere, until a Pokémon of the earth stopped them!" ]
+    },
+    "15": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [ "I want my Pokémon to grow so strong it never has to lose. That's love, that is." ]
+    },
+    "16": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [ "Team Plasma took my Pokémon once, long ago. They gave it back in the end. Funny lot." ]
+    },
+    "17": {
+      "name": "Twins",
+      "npcType": "twin",
+      "dialog": [ "The market sells things from all over the world! We like the sweets best." ]
+    },
+    "18": {
+      "name": "Backers",
+      "npcType": "twin",
+      "dialog": [ "The Pokémon World Tournament is just south of the city. Trainers from every region battle there!" ]
+    },
+    "19": { "name": "Lillipup", "npcType": "Pokemon", "species": "Lillipup", "dialog": [ "Lillipup: Yip! Yip!" ] },
+    "20": {
+      "name": "Worker",
+      "npcType": "worker",
+      "hiddenBy": "",
+      "dialog": [ "We've started digging a shortcut to Twist Mountain. The rock's hard going, though. It'll take a while!" ]
+    }
+  },
+  "npcs": [
+    { "id": "hugh_church", "name": "{rival}", "npcType": "hugh", "x": 188, "y": 398, "facing": "Right", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CHURCH" },
+    { "id": "hugh_gym", "name": "{rival}", "npcType": "hugh", "x": 213, "y": 404, "facing": "Up", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_GYM" }
+  ],
+  "signs": {
+    "1": "Welcome to Driftveil City!",
+    "2": "Driftveil Drawbridge",
+    "3": "Driftveil City\nThe city of billowing sails",
+    "4": "Driftveil Market\nGoods from every port",
+    "5": "Driftveil City Pokémon Gym\nLeader: Clay, the boss of the mines",
+    "26": "Clay Tunnel ahead\nWorks in progress"
+  }
+}

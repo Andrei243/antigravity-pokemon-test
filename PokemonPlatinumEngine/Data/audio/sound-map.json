@@ -147,7 +147,12 @@
     "Pkmn Trainer Marley": "ace",
     "Pkmn Trainer Mira": "ace",
     "Pkmn Trainer Riley": "ace",
-    "Leader": "ace"
+    "Leader": "ace",
+    "Baker": "girl",
+    "Dancer": "fun",
+    "Backers": "sport",
+    "Musician": "fighter",
+    "Pokémon Trainer Rood": "rich"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -182,7 +187,8 @@
     "Pokémon Trainer Colress": "gym",
     "Leader Elesa": "gym",
     "Subway Boss Ingo": "gym",
-    "Subway Boss Emmet": "gym"
+    "Subway Boss Emmet": "gym",
+    "Leader Clay": "gym"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",

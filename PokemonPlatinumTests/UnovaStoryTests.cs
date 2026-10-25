@@ -48,6 +48,8 @@ public class UnovaStoryTests
             foreach (var map in Unova.Value.BuildMaps()) maps[map.Name] = map;
             // Castelia's avenue is a map of ours, Black 2's standing on rails (plan 22 · U5, part c)
             maps["CasteliaCity"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "CasteliaCity.json")).ToMap();
+            // and so is Clay's Gym, Black 2's mine standing on rails (plan 22 · U6, part b)
+            maps["DriftveilCity_Gym"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "DriftveilCity_Gym.json")).ToMap();
             // (a game from before the story was written began with none of what a new game sets now)
             if (!begin) return;
             StoryMigration.BeginNewGame(Story, Scripts);
@@ -95,6 +97,14 @@ public class UnovaStoryTests
         public HeadlessScriptHost Talk(string key, string area)
         {
             var npc = Map.NPCs.First(n => n.Key == key && n.ScriptFile == area);
+            Tile = (npc.GridX, npc.GridY + 1);
+            return Play(Scripts.Find(FieldScripts.For(npc)!, npc.ScriptFile ?? Map.ScriptFileAt(npc.GridX, npc.GridY))!, npc);
+        }
+
+        /// <summary>Speaks to someone of a map file (their script file is the map's), by their id.</summary>
+        public HeadlessScriptHost TalkTo(string key)
+        {
+            var npc = Map.NPCs.First(n => n.Key == key);
             Tile = (npc.GridX, npc.GridY + 1);
             return Play(Scripts.Find(FieldScripts.For(npc)!, npc.ScriptFile ?? Map.ScriptFileAt(npc.GridX, npc.GridY))!, npc);
         }
@@ -568,6 +578,83 @@ public class UnovaStoryTests
         Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_HUGH_NIMBASA"));
         Assert.Null(game.Present("3", "nimbasa_city"));
         Assert.False(game.Fires("HughAndPlasma"));
+
+        PlayTheDriftveilChapter(game);
+    }
+
+    /// <summary>
+    /// Unova's Driftveil chapter (plan 22 · U6, part b), played on from Nimbasa: Bianca's Fly on Route 5, Hugh chasing
+    /// Team Plasma's grunt off Driftveil's bridge, Rood's test at the old church and his tale inside, the Gym's lobby and
+    /// its Fresh Water, Clay and the Quake Badge on the Gym's floor of ours, and Clay's word of the World Tournament.
+    /// </summary>
+    private static void PlayTheDriftveilChapter(Game game)
+    {
+        // Route 5, out of Nimbasa's west gate: Bianca runs after the player with HM02
+        game.Arrive("Unova", 376, 438);
+        Assert.Null(game.Present("bianca", "unova_route_5"));
+        Assert.True(game.Fires("BiancasFly"));
+        var fly = game.Step("BiancasFly");
+        Assert.Contains(fly.Transcript, l => l.Speaker == "Bianca" && l.Text.Contains("Grotto"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM02")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_ROUTE_5"));
+        Assert.Null(game.Present("bianca", "unova_route_5"));
+        Assert.False(game.Fires("BiancasFly"));
+
+        // Driftveil's bridge into town: the grunt and the former member, Hugh's chase
+        game.Arrive("Unova", 230, 432);
+        Assert.NotNull(game.Present("3", "driftveil_city"));
+        Assert.NotNull(game.Present("2", "driftveil_city"));
+        Assert.Null(game.Present("5", "driftveil_city"));
+        // (the Gym's door is kept by a worker while Clay is busy)
+        Assert.NotNull(game.Present("1", "driftveil_city"));
+        var bridge = game.Step("PlasmaOnTheBridge");
+        Assert.Contains(bridge.Transcript, l => l.Speaker == "Hugh");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_DRIFTVEIL"));
+        Assert.Null(game.Present("3", "driftveil_city"));
+        Assert.Null(game.Present("2", "driftveil_city"));
+        Assert.Null(game.Present("5", "driftveil_city"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_EXPLASMA_HOME"));
+
+        // Rood at the old church's door: his test, Hugh back from the chase, and the tale inside
+        game.Arrive("Unova", 192, 399);
+        Assert.NotNull(game.Present("4", "driftveil_city"));
+        var rood = game.Step("RoodCalls");
+        Assert.Contains(rood.Log, l => l.StartsWith("battle unova_rood "));
+        Assert.Equal("DriftveilCity_PlasmaHouse", game.Map.Name);
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_DRIFTVEIL"));
+        Assert.Contains(game.Played, p => p.Host.Transcript.Any(l => l.Speaker == "Rood" && l.Text.Contains("Ghetsis")));
+        Assert.NotNull(game.Present("0", "driftveil_city_6"));
+        Assert.NotNull(game.Present("8", "driftveil_city_6"));
+        Assert.Null(game.Present("12", "driftveil_city_6"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_DRIFTVEIL_GYM_WORKER"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_ROOD_DOOR"));
+        Assert.Equal(MusicRole.BattleTrainer, MusicDirector.BattleRoleOf("Pokémon Trainer Rood"));
+
+        // The Gym's lobby: the guide's Fresh Water, and the lift down to the Gym's floor
+        game.Arrive("DriftveilCity_GymLobby", 7, 13);
+        game.Talk("0", "driftveil_city_gym_2");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_WATER_DRIFTVEIL"));
+        game.Through("DriftveilCity_Gym");
+        Assert.Equal("DriftveilCity_Gym", game.Map.Name);
+
+        // Clay at the head of the mine: his battle, the Quake Badge and TM78
+        var clay = game.TalkTo("clay");
+        Assert.Contains(clay.Log, l => l.StartsWith("battle unova_leader_clay "));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Quake"));
+        Assert.Equal(5, game.Story.BadgeCount(RegionDatabase.Unova));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM78")!));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_DRIFTVEIL"));
+        Assert.Equal(MusicRole.BattleGymLeader, MusicDirector.BattleRoleOf("Leader Clay"));
+
+        // Out of the Gym's door: Clay and Hugh, and the World Tournament south of the city
+        game.Arrive("Unova", 212, 401);
+        Assert.NotNull(game.Present("6", "driftveil_city"));
+        var outside = game.Step("ClayAndHugh");
+        Assert.Contains(outside.Transcript, l => l.Speaker == "Clay" && l.Text.Contains("World Tournament"));
+        Assert.Equal(5, game.Story.Var("VAR_UNOVA_DRIFTVEIL"));
+        Assert.Null(game.Present("6", "driftveil_city"));
+        Assert.Null(game.Present("hugh_gym", "driftveil_city"));
+        Assert.False(game.Fires("ClayAndHugh"));
     }
 
     [Fact]
@@ -621,11 +708,12 @@ public class UnovaStoryTests
         bool Exists(string id) => File.Exists(GameDataFiles.PathOf(Path.Combine("music", id + ".mml")));
         foreach (string song in new[] { "aspertia", "route19", "floccesy", "gym", "battle_wild", "battle_trainer", "battle_rival", "battle_gym",
                      "victory_trainer", "victory_gym", "eye_boy", "eye_girl", "virbank", "eye_plasma", "castelia",
-                     "route4", "nimbasa", "desert_resort" })
+                     "route4", "nimbasa", "desert_resort", "driftveil" })
             Assert.True(Exists("unova/" + song), song);
         Assert.Equal("unova/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, RegionDatabase.Unova, Exists));
         foreach (string key in new[] { "aspertia_city", "unova_route_19", "floccesy_town", "virbank_city", "virbank_complex_2", "castelia_city_3", "castelia_city_10",
-                     "unova_route_4", "nimbasa_city", "nimbasa_city_2", "join_avenue", "desert_resort_2" })
+                     "unova_route_4", "nimbasa_city", "nimbasa_city_2", "join_avenue", "desert_resort_2",
+                     "unova_route_5", "driftveil_drawbridge", "driftveil_city", "driftveil_city_7", "musical_theater" })
             Assert.StartsWith("unova/", Unova.Value.Overlay(key)!.BgmTrack);
         // Team Plasma's grunts bring a song of Unova's own when they spot the player (plan 22 · U5, part b)
         Assert.Equal("unova/eye_plasma", MusicDirector.EyeSong("Team Plasma Grunt", RegionDatabase.Unova, Exists));
@@ -685,6 +773,48 @@ public class UnovaStoryTests
         // the young Trainer before the Gear Station is shown as the city is come to, and Castelia's count stands
         Assert.NotNull(game.Present("5", "nimbasa_city"));
         Assert.Equal(12, game.Story.Var("VAR_UNOVA_CASTELIA"));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheDriftveilChapterIsGivenItsHiddenPeople()
+    {
+        // A save of plan 22 · U6, part a's: Hugh's scene in Nimbasa played, nothing of Driftveil's set
+        var game = new Game(begin: false);
+        foreach (string flag in new[] { "FLAG_UNOVA_STORY_BEGUN", "FLAG_UNOVA_VIRBANK_BEGUN", "FLAG_UNOVA_CASTELIA_BEGUN", "FLAG_UNOVA_NIMBASA_BEGUN" })
+            game.Story.Set(flag);
+        game.Story.SetVar("VAR_UNOVA_ASPERTIA", 7);
+        game.Story.SetVar("VAR_UNOVA_NIMBASA", 2);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 30));
+        game.Arrive("Unova", 376, 438);
+        Assert.True(game.Story.Has("FLAG_UNOVA_DRIFTVEIL_BEGUN"));
+        foreach (string flag in new[] { "FLAG_UNOVA_HIDE_BIANCA_ROUTE_5", "FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL", "FLAG_UNOVA_HIDE_ROOD_HOME",
+                     "FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL", "FLAG_UNOVA_HIDE_HUGH_GYM" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Null(game.Present("bianca", "unova_route_5"));
+        // and Nimbasa's count stands, while Route 5 waits for Bianca
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_NIMBASA"));
+        Assert.True(game.Fires("BiancasFly"));
+    }
+
+    [Fact]
+    public void TheFerrisWheelGoesRoundOverNimbasa()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 25));
+        game.Arrive("NimbasaCity_AmusementPark", 57, 17);
+        var ride = game.Talk("wheel", "nimbasa_city_2");
+        Assert.Contains(ride.Transcript, l => l.Text.Contains("The car climbs slowly"));
+        Assert.Contains(ride.Transcript, l => l.Speaker == "Attendant" && l.Text.Contains("Welcome back"));
+        // a ride changes nothing of the story
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_NIMBASA"));
+        // Said no, there is no ride
+        var npc = game.Present("wheel", "nimbasa_city_2")!;
+        var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map, PlayerTile = (npc.GridX, npc.GridY + 1) };
+        host.Answers.Enqueue(1);
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find(FieldScripts.For(npc)!, "nimbasa_city_2")!, npc);
+        runner.RunToEnd();
+        Assert.DoesNotContain(host.Transcript, l => l.Text.Contains("The car climbs slowly"));
     }
 
     [Fact]

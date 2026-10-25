@@ -1,0 +1,19 @@
+{
+  // The Driftveil Gym's lobby (plan 22 · U6, part b): Black 2's room at the head of Clay's mine, our words. The guide (0)
+  // gives Fresh Water (driftveil_city_gym_2.txt). Black 2's lift down to the Gym's floor is a switch read by a script;
+  // here its car at the head of the path (7, 3) is a way out onto the Gym's floor, a map of ours (DriftveilCity_Gym), whose
+  // own door brings the player back up. The Gym's floor in Black 2 is a mine of lifts on rails, which the reader
+  // leaves out (the rulings' "Unova's second chapter, part b")
+  "area": "driftveil_city_gym_2",
+  "bgmTrack": "unova/gym",
+  "exits": [
+    { "x": 7, "z": 3, "map": "DriftveilCity_Gym", "toX": 10, "toY": 27, "facing": "Up" }
+  ],
+  "people": {
+    "0": { "name": "Guide", "npcType": "gym_guide", "script": "GymGuide", "still": true }
+  },
+  "signs": {
+    "1": "The lift's switch.\nThe car goes down into the mine, to the Gym's floor.",
+    "4": "Driftveil City Pokémon Gym\nLeader: Clay, the boss of the mines"
+  }
+}

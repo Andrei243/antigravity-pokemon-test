@@ -1,0 +1,94 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The light off the water changes every hour. I could paint this port for a hundred years."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Good day! The lift is for residents only, I'm sorry to say."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Pokémon Breeder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon love the sea breeze. We walk along the quay every evening."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I study the Pokémon that ships bring in from far away. Driftveil is the best place in Unova to do it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10420": {
+      "en": [
+        "The lift's call button.\nIt takes residents up to their flats."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "10424": {
+      "en": [
+        "Letterboxes for the flats upstairs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -5,7 +5,9 @@ partial class Harness
     /// the modes after it): a new game begun there (<c>--region Unova</c>) in the player's room, Aspertia City, Route 19,
     /// Floccesy Town and Floccesy Ranch by day and after dark (u01 to u08), a few of their rooms (u10 to u16), Route 4,
     /// the Desert Resort's edge and the desert in their sandstorm, Nimbasa City and its amusement park by day and after
-    /// dark (plan 22 · U6: u21 to u30) and a few of their rooms (u20, u31 to u34), and the
+    /// dark (plan 22 · U6: u21 to u30) and a few of their rooms (u20, u31 to u34), Route 5, the drawbridge's end and its
+    /// deck over the sea and Driftveil City by day and after dark (plan 22 · U6, part b: u35 to u42) and Nimbasa's and
+    /// Driftveil's rooms with Clay's mine (u43 to u53), and the
     /// walk from the player's door in Aspertia City down Route 19 to Floccesy Town's Pokémon Center at running pace, every
     /// frame timed, with what streaming cost.
     /// </summary>
@@ -34,6 +36,10 @@ partial class Harness
             ("u25_desert_day", "u26_desert_night", "DesertResort", 50, 50, Direction.Up),
             ("u27_nimbasa_day", "u28_nimbasa_night", "Unova", 430, 470, Direction.Up),
             ("u29_amusement_park_day", "u30_amusement_park_night", "NimbasaCity_AmusementPark", 60, 14, Direction.Right),
+            // Plan 22 · U6, part b: Route 5, the drawbridge's east end over the sea, and Driftveil City
+            ("u35_route5_day", "u36_route5_night", "Unova", 350, 434, Direction.Up),
+            ("u37_drawbridge_end_day", "u38_drawbridge_end_night", "DriftveilDrawbridge", 209, 47, Direction.Left),
+            ("u39_driftveil_day", "u40_driftveil_night", "Unova", 190, 415, Direction.Up),
         };
         foreach (var (day, _, map, x, y, facing) in places)
         {
@@ -60,11 +66,35 @@ partial class Harness
             ("u32_desert_gate", "DesertResortGate", 5, 8, Direction.Up),
             ("u33_nimbasa_gym", "NimbasaCity_Gym", 15, 57, Direction.Up),
             ("u34_nimbasa_center", "NimbasaCity_PokemonCenter", 7, 13, Direction.Up),
+            // Plan 22 · U6, part b: Nimbasa's other rooms, its gate to Route 5, Driftveil's rooms and Clay's mine of ours
+            ("u43_big_stadium", "NimbasaCity_BigStadium", 11, 17, Direction.Up),
+            ("u44_musical_theater", "MusicalTheater", 14, 18, Direction.Up),
+            ("u45_battle_institute", "NimbasaCity_BattleInstitute", 7, 11, Direction.Up),
+            ("u46_roller_coaster", "NimbasaCity_RollerCoaster", 14, 43, Direction.Up),
+            ("u47_route5_gate", "NimbasaGate_Route5", 8, 5, Direction.Left),
+            ("u48_driftveil_center", "DriftveilCity_PokemonCenter", 7, 17, Direction.Up),
+            ("u49_plasma_house", "DriftveilCity_PlasmaHouse", 7, 22, Direction.Up),
+            ("u50_market", "DriftveilCity_Market", 12, 14, Direction.Up),
+            ("u51_gym_lobby", "DriftveilCity_GymLobby", 7, 13, Direction.Up),
+            ("u52_clays_mine", "DriftveilCity_Gym", 10, 26, Direction.Up),
+            ("u53_ferris_wheel", "NimbasaCity_AmusementPark", 57, 17, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
         }
+
+        // The drawbridge's middle, the player stood on its deck five tiles over the sea (plan 22 · U6, part b; a tile is
+        // come onto at its ground, so the deck's height is given by hand)
+        void OnTheDeck(string name)
+        {
+            At("DriftveilDrawbridge", 120, 47, Direction.Left);
+            game.Player.SetHeight(game.Map.DeckAt(120, 47) ?? game.Map.HeightAt(120, 47));
+            Frames(2); Shot(name);
+            ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            Console.WriteLine($"{name}: camera {game.Map.Camera}, deck {game.Map.DeckAt(120, 47)}, sea {game.Map.HeightAt(120, 30)}");
+        }
+        OnTheDeck("u41_drawbridge_deck_day");
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
         engine.ApplySettings(window: false);
@@ -72,6 +102,7 @@ partial class Harness
         {
             At(map, x, y, facing); Frames(2); Shot(night);
         }
+        OnTheDeck("u42_drawbridge_deck_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

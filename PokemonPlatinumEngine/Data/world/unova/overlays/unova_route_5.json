@@ -1,0 +1,69 @@
+{
+  // Route 5 (plan 22 · U6, part b): Black 2's road of street performers between Nimbasa City and the Driftveil
+  // Drawbridge, our words. Its trainers stand on the road, the Musician (2) battles when spoken to, and the performers
+  // and their audience (8 to 16, Black 2's 0x02f8) are always out. As the player first comes in from Nimbasa's gate,
+  // Bianca (bianca, ours) runs out after them with HM02 and a word on the Hidden Grottoes (our trigger on 372, 437 to
+  // 439, VAR_UNOVA_ROUTE_5 0; unova_route_5.txt); Black 2's grotto she leads the player to is plan 22 · U11's. Cheren,
+  // who waits here after the Hall of Fame (21), is the post-game's
+  "area": "unova_route_5",
+  "bgmTrack": "unova/route4",
+  "triggers": [
+    { "script": "BiancasFly", "x": 372, "z": 437, "width": 1, "depth": 3, "variable": "VAR_UNOVA_ROUTE_5", "value": 0 }
+  ],
+  "people": {
+    "0": {
+      "name": "Pokémon Breeder",
+      "npcType": "pokemon_breeder_f",
+      "dialog": [ "I gather berries along the road while the performers play. Music makes them ripen faster, I'm sure of it!" ]
+    },
+    "1": { "name": "Jenn", "trainer": { "dialogueBefore": "I bake for the performers! Taste my battling first!", "dialogueAfter": "Half-baked, that was. Mine, I mean!" } },
+    "2": {
+      "name": "Preston",
+      "trainer": { "id": "unova_musician_preston", "dialogueBefore": "Hum along to my battle song! It goes like this!", "dialogueAfter": "You stole the show. Encore some other day!" }
+    },
+    "3": { "name": "Brian", "trainer": { "dialogueBefore": "Step, turn, battle! Keep up with my rhythm!", "dialogueAfter": "You tripped me up good and proper." } },
+    "4": { "name": "Ava", "trainer": { "dialogueBefore": "Go, go, Trainers! We cheer for everyone, even you!", "dialogueAfter": "Two, four, six, eight! Who do we appreciate? You!" } },
+    "5": { "name": "Aya", "trainer": { "dialogueBefore": "Two Backers, two Pokémon! Ready?", "dialogueAfter": "Our cheers weren't loud enough!" } },
+    "6": { "name": "Horton", "trainer": { "dialogueBefore": "Hold still! I'm painting the perfect battle!", "dialogueAfter": "A masterpiece... of losing." } },
+    "7": { "name": "Lois", "trainer": { "dialogueBefore": "Rangers keep the routes safe. Let me see if you're safe to travel!", "dialogueAfter": "You're more than safe. You're strong!" } },
+    "8": {
+      "name": "Biker",
+      "npcType": "biker",
+      "hiddenBy": "",
+      "dialog": [ "I play the drums on my bike's tank. Not well, but loudly!" ]
+    },
+    "9": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "hiddenBy": "",
+      "dialog": [ "Performers come from all over Unova to play here. It's the best stage there is: the open road!" ]
+    },
+    "10": {
+      "name": "Backers",
+      "npcType": "twin",
+      "hiddenBy": "",
+      "dialog": [ "We're the audience today! Cheering is a performance too, you know." ]
+    },
+    "14": {
+      "name": "Hiker",
+      "npcType": "hiker",
+      "hiddenBy": "",
+      "dialog": [ "I stop here every time I cross the drawbridge. A song or two and my legs feel brand new!" ]
+    },
+    "16": {
+      "name": "Pokémon Breeder",
+      "npcType": "pokemon_breeder_f",
+      "hiddenBy": "",
+      "dialog": [ "My Pokémon dances while I sing. The crowd throws coins, and we spend them all on berries for the road!" ]
+    }
+  },
+  "npcs": [
+    { "id": "bianca", "name": "Bianca", "npcType": "bianca", "x": 375, "y": 438, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_ROUTE_5" }
+  ],
+  "signs": {
+    "1": "Route 5\nPerformers' Street",
+    "2": "Driftveil Drawbridge\nDriftveil City ahead",
+    "3": "Trainer Tips\nSome Trainers battle three Pokémon at once. Be ready to send out your whole team!",
+    "10796": "Today's Performance\nWhoever walks by is part of the show!"
+  }
+}

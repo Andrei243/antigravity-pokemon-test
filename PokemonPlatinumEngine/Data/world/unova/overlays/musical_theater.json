@@ -1,0 +1,87 @@
+{
+  // The Musical Theater's lobby in Nimbasa City (plan 22 · U6, part b): Black 2's room, our words. The Pokémon Musical
+  // itself (the dressing room, the stage and its Props) is left out, so the café's waitresses (0, 15, 16) and the
+  // lobby's people only talk; a few of the musical's fans who wander the lobby on a show day (1, 4, 18) are shown
+  // always
+  "area": "musical_theater",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [ "Welcome to the theater café! The stage is dark today, but our tea is always hot." ]
+    },
+    "15": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [ "The performers come in here after a show, still wearing their Props. It's quite a sight!" ]
+    },
+    "16": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [ "Shh! The owner is rehearsing a new number upstairs. He says it will be his best ever." ]
+    },
+    "1": {
+      "name": "Fan",
+      "npcType": "pokefan_m",
+      "hiddenBy": "",
+      "dialog": [ "I've seen every musical this season. My favourite was the one with a Lillipup in a top hat!" ]
+    },
+    "4": {
+      "name": "Girl",
+      "npcType": "lass",
+      "hiddenBy": "",
+      "dialog": [ "When I grow up, I want to dress Pokémon for the stage. Ribbons, crowns, glasses, the lot!" ]
+    },
+    "18": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "hiddenBy": "",
+      "dialog": [ "My Pokémon battles hard all week. On Sundays it dances. Everyone needs a hobby!" ]
+    },
+    "6": {
+      "name": "Socialite",
+      "npcType": "socialite",
+      "dialog": [ "The dressing room is through there. Only performers and their Pokémon may go in, darling." ]
+    },
+    "7": {
+      "name": "Dancer",
+      "npcType": "jogger",
+      "dialog": [ "One, two, spin! I'm practising my steps. The Pokémon on stage can't be the only ones who dance!" ]
+    },
+    "11": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "I am the owner of this theater. A musical is music, dance and costume all at once. Pokémon shine in all three!" ]
+    },
+    "12": {
+      "name": "Little Girl",
+      "npcType": "lass",
+      "dialog": [ "Mummy said if I'm good we can watch the next show from the front row!" ]
+    },
+    "13": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_m",
+      "dialog": [ "My Pokémon got a standing ovation last week! I've still got the programme in my wallet." ]
+    },
+    "14": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "I came to Nimbasa for the stadiums, but I keep finding myself back here. Funny, isn't it?" ]
+    },
+    "22": {
+      "name": "Lady",
+      "npcType": "lady",
+      "dialog": [ "The Props are the best part. A Pokémon in a tiny hat is the most charming thing in Unova." ]
+    },
+    "23": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [ "Keeping an eye on the stage door. Some fans get a little too excited after a show!" ]
+    }
+  },
+  "signs": {
+    "12": "Pokémon Musical\nToday's show: closed for rehearsals",
+    "14": "Pokémon Musical\nDress up your Pokémon and take the stage!"
+  }
+}

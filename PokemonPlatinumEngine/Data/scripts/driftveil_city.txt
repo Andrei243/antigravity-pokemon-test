@@ -1,0 +1,179 @@
+# Driftveil City (plan 22 · U6, part b). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/driftveil_city.s, read for the order alone).
+# VAR_UNOVA_DRIFTVEIL is the city's count (Black 2's 0x40c3): 0 as the player first comes in, 1 once Hugh has chased the
+# grunt off the bridge, 2 once Rood has tested the player at his door, 3 once he has told his tale inside (the Gym's
+# door is clear), 4 once the Quake Badge is won, 5 once Clay has told of the Pokémon World Tournament.
+#
+# As the player comes off the drawbridge, a grunt of Team Plasma (3) presses a former member (2) to come back; our
+# trigger on the bridge into town (221, 430 to 434, at 0) plays it: Hugh (5) runs up from behind, the grunt flees and
+# Hugh after him, and the former member asks the player to their home on the hill by the Gym. Rood (4) waits before
+# that home's door, and our trigger beside him (194, 397 to 399, at 1), or the player speaking to him, has him test the
+# player in battle (Black 2's TRAINER_ROOD); Hugh (hugh_church) comes back empty-handed and both are asked in
+# (driftveil_city_6.txt). Once the Quake Badge is won Clay (6) and Hugh (hugh_gym) wait outside the Gym, and our
+# trigger before its door (212, 401, at 4) plays their scene: Hugh asks Clay why he forgave Team Plasma, and Clay tells
+# them both of the Pokémon World Tournament south of the city.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+# The bridge into town, as the player first comes in (our trigger on 221, 430 to 434, at 0)
+script PlasmaOnTheBridge
+  scene "Team Plasma on Driftveil's bridge"
+  place player 221 433 left
+  speaker "Grunt"
+  say "There you are! The boss wants you back. We could use a pair of hands for the old work, you know the kind."
+  speaker "Former Member"
+  say "I told you before. That life is over for me. Taking Pokémon from people hurt everyone, me included."
+  speaker "Grunt"
+  say "And what has quitting got you? Folk still look at you like a crook! Stick with us and they'll be the ones looking up!"
+  speaker "Former Member"
+  say "No. Lord N trusted us to be kind to Pokémon. I won't let him down again."
+  speaker "Grunt"
+  say "Lord N, Lord N! He walked out on the lot of us. Some king he turned out to be!"
+  clearflag FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  show 5
+  speaker "{rival}"
+  say "Hey!"
+  walk 5 left 6 fast
+  face 3 right
+  say "Team Plasma! Where are the Pokémon you've taken? Answer me!"
+  speaker "Grunt"
+  say "You again?! Not today, kid. I've got orders to keep my head down. Next time, though!"
+  walk 3 left 12 fast
+  hide 3
+  setflag FLAG_UNOVA_HIDE_DRIFTVEIL_GRUNT
+  speaker "{rival}"
+  say "You're not getting away!"
+  walk 5 left 13 fast
+  hide 5
+  setflag FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  face 2 player
+  speaker "Former Member"
+  say "I'm all right. Thank you for standing by me."
+  say "He and I joined Team Plasma on the same day. Then, two years back, the team broke in two."
+  say "Those of us who stayed loyal to Lord N only care for Pokémon now. The others answer to Ghetsis, and he has bigger plans."
+  say "There is more to tell, if you want to hear it. We live in the old church up on the hill, next to the Gym."
+  walk 2 left 12
+  hide 2
+  setflag FLAG_UNOVA_HIDE_EXPLASMA_BRIDGE
+  clearflag FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  setvar VAR_UNOVA_DRIFTVEIL 1
+  endscene
+  end
+
+
+script FormerMember
+  face 2 player
+  speaker "Former Member"
+  say "Please, it's nothing to do with you. He'll leave soon enough... I hope."
+  end
+
+
+# Before the old church's door (our trigger on 194, 397 to 399, at 1)
+script RoodCalls
+  place player 194 398 right
+  call RoodTest
+  end
+
+
+script Rood
+  face 4 player
+  speaker "Rood"
+  if var VAR_UNOVA_DRIFTVEIL == 1 goto Test
+  say "This is the home of those who have left Team Plasma behind. We keep to ourselves, traveller. Good day to you."
+  end
+label Test
+  call RoodTest
+  end
+
+
+# Rood tests the player before he asks them in (Black 2's TRAINER_ROOD), then Hugh comes back from the chase
+script RoodTest
+  scene "Rood at the church door"
+  face 4 player
+  speaker "Rood"
+  say "So you are the Trainer who stood up for one of our own on the bridge. You are interested in Team Plasma, then?"
+  say "Before I ask you in, I would see what kind of person you are. In a Pokémon battle, if you will."
+  ask "Will you battle me?"
+  if no goto Refused
+  say "Then let us begin."
+  battle 4 as "unova_rood"
+  say "Well battled. Please forgive the test. People are wary of us, and so we are wary of them in turn."
+  clearflag FLAG_UNOVA_HIDE_HUGH_CHURCH
+  show hugh_church
+  walk hugh_church right 4 fast
+  speaker "{rival}"
+  say "{player}! He got away from me... Huh? Who's this?"
+  speaker "Rood"
+  say "Your friend? Then he may come in too. Please, both of you, follow me."
+  setflag FLAG_UNOVA_HIDE_ROOD_DOOR
+  hide 4
+  setflag FLAG_UNOVA_HIDE_HUGH_CHURCH
+  hide hugh_church
+  clearflag FLAG_UNOVA_HIDE_ROOD_HOME
+  clearflag FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  setvar VAR_UNOVA_DRIFTVEIL 2
+  endscene
+  warp "DriftveilCity_PlasmaHouse" 7 23 up
+  return
+label Refused
+  say "Then I am afraid I must ask you to leave. Come back if you change your mind."
+  endscene
+  return
+
+
+# A worker before the Gym's door while Clay is busy (gone once Rood has told his tale)
+script GymWorker
+  face 1 player
+  speaker "Worker"
+  say "Sorry, the boss is in the middle of something right now. Come back a bit later, would you?"
+  end
+
+
+# Before the Gym's door once the Quake Badge is won (our trigger on 212, 401, at 4)
+script ClayAndHugh
+  scene "Clay and Hugh outside the Gym"
+  clearflag FLAG_UNOVA_HIDE_HUGH_GYM
+  show hugh_gym
+  walk hugh_gym up 2
+  speaker "{rival}"
+  say "{player}! You got your Badge too? I knew you would!"
+  say "I couldn't have done it without my team. A Badge is great, but what matters is how we got it together."
+  say "That's what Team Plasma never understood. A Pokémon isn't a prize to grab. Ask my sister's Purrloin!"
+  walk 6 up 3
+  face 6 player
+  speaker "Clay"
+  say "Huh! So you two know each other. Good pair of young'uns, the both of ya. Got somethin' worth showin' ya."
+  face hugh_gym 6
+  speaker "{rival}"
+  say "Hang on, Clay. I heard you gave Team Plasma a place to live, right here in your city. Why would you do that?"
+  speaker "Clay"
+  say "A man can dig himself out of any hole, given a shovel and time. Those folks put the shovel to work, so I gave 'em time."
+  say "Judge a fella only by what you think's right, and one day there'll be nobody left you can stand to listen to."
+  speaker "{rival}"
+  say "...Sounds like a grown-up excuse to me. Fine! You do your thing. I'm still going after Team Plasma!"
+  say "So what did you want to show us?"
+  speaker "Clay"
+  say "South of town there's the Pokémon World Tournament. Gym Leaders, Champions, the best from every region battle there!"
+  say "Come on down when you're ready. I'll be there."
+  walk 6 down 3
+  hide 6
+  setflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  speaker "{rival}"
+  say "The best from every region? Then I've got some training to do. See you there, {player}!"
+  walk hugh_gym down 3 fast
+  hide hugh_gym
+  setflag FLAG_UNOVA_HIDE_HUGH_GYM
+  setvar VAR_UNOVA_DRIFTVEIL 5
+  endscene
+  end
+
+
+script ClayOutside
+  face 6 player
+  speaker "Clay"
+  say "The Pokémon World Tournament's south of town. Don't keep me waitin'!"
+  end

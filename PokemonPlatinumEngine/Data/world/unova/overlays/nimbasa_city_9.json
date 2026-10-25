@@ -1,0 +1,18 @@
+{
+  // The Small Court's hall over the courts (plan 22 · U6, part b): Black 2's room, our words. The match-day crowd is left
+  // out with the matches
+  "area": "nimbasa_city_9",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "2": {
+      "name": "Gentleman",
+      "npcType": "gentleman",
+      "dialog": [ "A basketball player and his Pokémon passing the ball between them... Now that is teamwork." ]
+    },
+    "7": {
+      "name": "Girl",
+      "npcType": "lass",
+      "dialog": [ "I'm saving this seat for my brother. He's playing tennis today! Well, he will be." ]
+    }
+  }
+}

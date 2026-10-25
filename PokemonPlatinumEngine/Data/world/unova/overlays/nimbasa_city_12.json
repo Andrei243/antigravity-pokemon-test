@@ -1,0 +1,28 @@
+{
+  // A house of Nimbasa City by the Pokémon Center, downstairs (plan 22 · U6, part b): Black 2's room, our words
+  "area": "nimbasa_city_12",
+  "bgmTrack": "unova/nimbasa",
+  "people": {
+    "0": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "We came to Nimbasa to ride the Battle Subway. We've been here three months now. We keep losing on the seventh train!" ]
+    },
+    "1": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "He says the seventh train. I say it's his choice of partners. We'll get there!" ]
+    },
+    "2": {
+      "name": "Pokéfan",
+      "npcType": "pokefan_f",
+      "dialog": [ "This is my sister's flat. She lets me stay on match days. The stadiums are only round the corner!" ]
+    },
+    "3": {
+      "name": "Socialite",
+      "npcType": "socialite",
+      "dialog": [ "My little darling adores the Musical Theater. Dressed up in Props, she outshines everyone on stage!" ]
+    },
+    "4": { "name": "Minccino", "npcType": "Pokemon", "species": "Minccino", "dialog": [ "Minccino: Minccino!" ] }
+  }
+}
