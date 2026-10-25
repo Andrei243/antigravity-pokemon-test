@@ -384,7 +384,7 @@ public static class Evolution
         or EvolutionMethod.SpinHoldingItem));
 
     private static HashSet<string> ItemsOf(Func<EvolutionMethod, bool> methods) =>
-        PokemonDatabase.GetAll().SelectMany(s => s.Evolutions ?? new()).Where(e => e.Item != null && methods(e.Method))
+        PokemonDatabase.Everyone().SelectMany(s => s.Evolutions ?? new()).Where(e => e.Item != null && methods(e.Method))
             .Select(e => e.Item!).ToHashSet();
 
     /// <summary>An item that evolves some Pokémon when used on it: the stones and their like, and the Linking Cord.</summary>

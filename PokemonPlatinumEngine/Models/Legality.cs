@@ -17,7 +17,7 @@ public static class Legality
 {
     /// <summary>Every move the species can know, by the game's own data.</summary>
     public static HashSet<string> Learnable(PokemonSpecies species) =>
-        Learnable(species, PokemonDatabase.GetAll(), machine => ItemDatabase.Get(machine)?.TeachesMove);
+        Learnable(species, PokemonDatabase.Everyone(), machine => ItemDatabase.Get(machine)?.TeachesMove);
 
     /// <summary>
     /// Every move the species can know, with the species to look for its forebears among and how a machine's name

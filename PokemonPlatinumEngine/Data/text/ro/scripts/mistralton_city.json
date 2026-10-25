@@ -1,0 +1,314 @@
+{
+  "JuniperAndSkyla": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi there, {player}! It's lovely to be able to talk to you in person at last. I'm Professor Juniper!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You took the Pokédex and came all the way out here with your partners. Let me see how you are getting on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Marvellous! You've met so many Pokémon already. Thank you for your hard work. This is a token of my gratitude."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Master Ball is the most powerful Poké Ball there is. It catches any Pokémon without fail."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Journeys are about meeting Pokémon, so never let one slip by. Keep the Master Ball for the one you really can't let go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It still amazes me how much the Pokémon of this region have changed in two years. My research will never end. That's what makes it fun!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Professor Juniperrrrr!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Why, if it isn't Skyla!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, this is Skyla. She's Mistralton City's Gym Leader."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Why are you so surprised, Professor? You asked for a lift in my plane to cross Twist Mountain, since you can't reach Opelucid City on foot!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha ha, you're quite right! But I have a quick favour to ask first. I'd like to have a look at the Celestial Tower. Would you mind waiting until I'm through?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Honestly! Okay, but don't take all day!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See you, {player}! Be sure to get along with all kinds of Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Honestly! I can never tell whether she's laid back or just doesn't listen to anything outside her own head."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're {player}? I'm Skyla, Mistralton's Gym Leader, and a pilot besides. Nice to meet you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's next? Will you come to my Gym and challenge me? Or will you follow the professor to the Celestial Tower and train a little?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "As long as I get to fly her over Twist Mountain in the end, I don't mind which!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SkylaOutside": [
+    {
+      "en": [
+        "Skyla"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are you coming to my Gym? Or to the Celestial Tower? Either is fine by me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "JuniperOutside": [
+    {
+      "en": [
+        "Prof. Juniper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Isn't it a marvellous place for research? So much wind! So much sky!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RunwayTreasure": [
+    {
+      "en": [
+        "Youngster"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! You found our treasure!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Found it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Youngster"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Just kidding! Our Ducklett already knows Aerial Ace, so we'll give you this TM instead!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aerial Ace never misses! We hope it helps you win!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See you! Bye-bye!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

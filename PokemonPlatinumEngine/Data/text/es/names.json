@@ -3589,6 +3589,7 @@
     "Vs. Recorder": "Cámara Lucha",
     "Gracidea": "Gracídea",
     "Secret Key": "Llave Secreta",
+    "Apricorn Box": "Caja Bonguri",
     "Lure Ball": "Cebo Ball",
     "Level Ball": "Nivel Ball",
     "Moon Ball": "Luna Ball",
@@ -4066,7 +4067,8 @@
     "Devon Scope": "Detector Devon",
     "Magma Emblem": "Signo Magma",
     "Basement Key": "Llave Sótano",
-    "Rainbow Wing": "Ala Arcoíris"
+    "Rainbow Wing": "Ala Arcoíris",
+    "Pokéblock Case": "Tubo Pokécubos"
   },
   "types": {
     "Normal": "Normal",

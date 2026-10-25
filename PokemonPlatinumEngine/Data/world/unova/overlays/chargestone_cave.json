@@ -1,0 +1,10 @@
+{
+  // Chargestone Cave's mouth on Route 6's north side (plan 22 · U7, part a): the overworld's half of the cave, which leads in to the first
+  // floor (chargestone_cave_2) whose far end comes out in Mistralton City
+  "area": "chargestone_cave",
+  "bgmTrack": "unova/chargestone",
+  "people": {},
+  "signs": {
+    "1": "Chargestone Cave\nStones that float and sparks that fly"
+  }
+}

@@ -18,12 +18,16 @@ namespace PokemonPlatinumEngine.Models;
 public static class DexText
 {
     /// <summary>The entry of <paramref name="species"/>: the first of <c>dexText.entry</c>'s sentences, then how it evolves.</summary>
-    public static string Compose(PokemonSpecies species) => Compose(species, PokemonDatabase.GetAll());
+    public static string Compose(PokemonSpecies species) => Compose(species, PokemonDatabase.Everyone());
 
-    /// <summary>The entry of <paramref name="species"/>, given every species there is (to find the one it evolves from).</summary>
+    /// <summary>
+    /// The entry of <paramref name="species"/>, given every species there is (to find the one it evolves from). A species
+    /// of our own (generation 0, plan 03 · D14) is told of as first found where the species it evolves from was.
+    /// </summary>
     public static string Compose(PokemonSpecies species, IEnumerable<PokemonSpecies> all)
     {
-        int generation = Math.Clamp(species.Generation, 1, 9);
+        var from = all.FirstOrDefault(o => o.Evolutions?.Any(e => e.TargetSpecies == species.Name) == true);
+        int generation = Math.Clamp(species.Generation == 0 && from != null ? from.Generation : species.Generation, 1, 9);
         string region = Text.Of($"dexText.region.{generation}");
         string types = species.SecondaryType is { } second
             ? Text.Of("dexText.typeTwo", ("first", Words.Type(species.PrimaryType)), ("second", Words.Type(second)))
@@ -32,7 +36,6 @@ public static class DexText
             ("name", species.DisplayName), ("article", Text.Language.IndefiniteArticle(species.Category)), ("kind", species.DisplayKind),
             ("types", types), ("region", region), ("height", Measure(species.Height)), ("weight", Measure(species.Weight)));
 
-        var from = all.FirstOrDefault(o => o.Evolutions?.Any(e => e.TargetSpecies == species.Name) == true);
         if (from != null) text += " " + Text.Of("dexText.from", ("species", from.DisplayName));
         if (species.Evolutions is { Count: > 0 } evolutions)
         {

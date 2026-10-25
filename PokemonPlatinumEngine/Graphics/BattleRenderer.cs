@@ -98,7 +98,7 @@ public sealed class BattleRenderer
         ArenaFx.Weather(anim.FadingWeather, BattleAnimator.WeatherFadeTime, anim.Time, places, fx, anim.FadingStrength);
         ArenaFx.Weather(anim.Weather, anim.WeatherAge, anim.Time, places, fx);
         // What lies on the field: hazards, screens, the rooms, what was sent ahead (plan 25 · Y2)
-        BattleFieldFx.Emit(anim.FieldLook, anim.Time, places, anim.Slots, fx);
+        BattleFieldFx.Emit(anim.FieldLook, anim.Time, places, anim.SlotsOf(BattleSide.Player), anim.SlotsOf(BattleSide.Enemy), fx);
         DollEffects(anim);
         PlaceTrainers(anim);
         PlaceBalls(anim);
@@ -126,22 +126,17 @@ public sealed class BattleRenderer
 
     // ------------------------------------------------------------------ places
 
-    /// <summary>In a double battle two Pokémon share each platform, a little smaller.</summary>
-    private static float SlotFit(BattleAnimator anim) => anim.Slots > 1 ? 0.78f : 1f;
+    /// <summary>How much the Pokémon on a side's platform are scaled by how many share it (<see cref="BattlePlaces.Fit"/>).</summary>
+    private static float SlotFit(BattleAnimator anim, BattleSide side) => BattlePlaces.Fit(anim.SlotsOf(side));
 
-    /// <summary>
-    /// Where a place on the field stands: the middle of its side's platform in a single battle; in a double, left
-    /// and right of the middle (the player's first Pokémon on the left, the foe's first on the right, as in Platinum).
-    /// </summary>
-    private static Vector3 Spot(BattleSide side, int slot, int slots)
-    {
-        bool player = side == BattleSide.Player;
-        var spot = player ? BattleStage.PlayerSpot : BattleStage.EnemySpot;
-        if (slots < 2) return spot;
-        float radius = player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
-        float sign = (player ? -1f : 1f) * (slot == 0 ? 1f : -1f);
-        return spot + Vector3.UnitX * sign * radius * 0.5f;
-    }
+    /// <summary>Where a place on the field stands (<see cref="BattlePlaces.Spot"/>).</summary>
+    private static Vector3 Spot(BattleSide side, int slot, int slots) => BattlePlaces.Spot(side, slot, slots);
+
+    /// <summary>The most places either side has: what a loop over both sides' places goes up to.</summary>
+    private static int MostSlotsShown(BattleAnimator anim) => Math.Max(anim.SlotsOf(BattleSide.Player), anim.SlotsOf(BattleSide.Enemy));
+
+    /// <summary>Where a place stands in the battle shown: its side's count of places.</summary>
+    private static Vector3 Spot(BattleAnimator anim, BattleSide side, int slot) => BattlePlaces.Spot(side, slot, anim.SlotsOf(side));
 
     /// <summary>
     /// How much a Pokémon's model is scaled on its platform: the same size rule as the sprites, the sprite frame
@@ -151,22 +146,29 @@ public sealed class BattleRenderer
     {
         var framing = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size);
         float radius = isPlayer ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius;
-        return 2f * radius / ((isPlayer ? 150f : 158f) * framing.WorldPerPixel) * SlotFit(anim);
+        return 2f * radius / ((isPlayer ? 150f : 158f) * framing.WorldPerPixel) * SlotFit(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy);
     }
 
     /// <summary>Measures where each Pokémon stands and how tall it is, for the effects and the camera.</summary>
     private void UpdatePlaces(BattleAnimator anim)
     {
         for (int side = 0; side < 2; side++)
-            for (int slot = 0; slot < 2; slot++)
+            for (int slot = 0; slot < BattleAnimator.MostSlots; slot++)
             {
                 var s = (BattleSide)side;
                 bool isPlayer = s == BattleSide.Player;
-                var feet = Spot(s, Math.Min(slot, anim.Slots - 1), anim.Slots) + new Vector3(0, platformTop, 0);
-                float height = (isPlayer ? 1.2f : 2.2f) * SlotFit(anim);
+                int slots = anim.SlotsOf(s);
+                // A place the battle doesn't have stands where its side's last does (none in a single or a double moves)
+                if (slot >= Math.Max(slots, 2))
+                {
+                    places.Set(s, slot, places.Feet(s, slots - 1), places.Height(s, slots - 1), places.HalfWidth(s, slots - 1));
+                    continue;
+                }
+                var feet = Spot(s, Math.Min(slot, slots - 1), slots) + new Vector3(0, platformTop, 0);
+                float height = (isPlayer ? 1.2f : 2.2f) * SlotFit(anim, s);
                 // How wide its body is as the battle turns it, for what is drawn beside it (plan 09 · L2)
                 float halfWidth = 0f;
-                var shown = slot < anim.Slots ? anim[s, slot].Shown : null;
+                var shown = slot < slots ? anim[s, slot].Shown : null;
                 if (shown != null)
                 {
                     var model = PokemonModels.Get(shown.LookName);
@@ -176,7 +178,7 @@ public sealed class BattleRenderer
                     halfWidth = PokemonSprites.Framing(model, isPlayer ? SpriteView.Back : SpriteView.Front, PokemonSprites.Size).HalfWidth * scale;
                 }
                 // Behind a doll, a move's effect lands on the doll: the place is as tall as what shows of the two
-                if (slot < anim.Slots)
+                if (slot < slots)
                 {
                     var look = DollOf(anim[s, slot]);
                     if (look.Visible)
@@ -278,18 +280,19 @@ public sealed class BattleRenderer
             Rlgl.End();
         }
 
-        float fit = SlotFit(anim);
-        for (int slot = 0; slot < anim.Slots; slot++)
+        float foeFit = SlotFit(anim, BattleSide.Enemy), ownFit = SlotFit(anim, BattleSide.Player);
+        for (int slot = 0; slot < MostSlotsShown(anim); slot++)
         {
             var foe = anim[BattleSide.Enemy, slot];
-            if (foe.Present && foe.Shown != null && Appear(anim, foe, false).Visible)
-                Blob(Spot(BattleSide.Enemy, slot, anim.Slots), BattleStage.EnemyPlatformRadius * 0.62f * fit * PokemonModels.Get(foe.Shown.LookName).Fill);
+            if (slot < anim.SlotsOf(BattleSide.Enemy) && foe.Present && foe.Shown != null && Appear(anim, foe, false).Visible)
+                Blob(Spot(anim, BattleSide.Enemy, slot), BattleStage.EnemyPlatformRadius * 0.62f * foeFit * PokemonModels.Get(foe.Shown.LookName).Fill);
             var mine = anim[BattleSide.Player, slot];
-            if (mine.Present && mine.Shown != null && Appear(anim, mine, true).Visible)
-                Blob(Spot(BattleSide.Player, slot, anim.Slots), BattleStage.PlayerPlatformRadius * 0.62f * fit * PokemonModels.Get(mine.Shown.LookName).Fill);
+            if (slot < anim.SlotsOf(BattleSide.Player) && mine.Present && mine.Shown != null && Appear(anim, mine, true).Visible)
+                Blob(Spot(anim, BattleSide.Player, slot), BattleStage.PlayerPlatformRadius * 0.62f * ownFit * PokemonModels.Get(mine.Shown.LookName).Fill);
             for (int side = 0; side < 2; side++)
             {
                 var s = (BattleSide)side;
+                if (slot >= anim.SlotsOf(s)) continue;
                 var look = DollOf(anim[s, slot]);
                 if (look.Visible && look.Drop < 0.5f)
                     Blob(DollFeet(s, slot, anim), DollSize(s, anim) * 0.42f * (1f - 0.7f * look.Fade));
@@ -487,7 +490,7 @@ public sealed class BattleRenderer
     {
         balls.Clear();
         for (int side = 0; side < 2; side++)
-            for (int slot = 0; slot < anim.Slots; slot++)
+            for (int slot = 0; slot < anim.SlotsOf((BattleSide)side); slot++)
             {
                 PlaceSendOutBall(anim, (BattleSide)side, slot);
                 PlaceRecallBall(anim, (BattleSide)side, slot);
@@ -806,7 +809,7 @@ public sealed class BattleRenderer
         var model = PokemonModels.Get(v.Shown.LookName);
         var view = isPlayer ? SpriteView.Back : SpriteView.Front;
         var framing = PokemonSprites.Framing(model, view, PokemonSprites.Size);
-        var spot = Spot(isPlayer ? BattleSide.Player : BattleSide.Enemy, slot, anim.Slots);
+        var spot = Spot(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy, slot);
         var other = isPlayer ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
 
         // A Dynamaxed Pokémon stands giant (plan 25 · Y15): the lunge and the shake grow with it
@@ -821,7 +824,7 @@ public sealed class BattleRenderer
         float dodge = Math.Max(0f, BattleAnimator.Progress(v.DodgeAge, BattleAnimator.DodgeTime));
         if (dodge > 0f)
         {
-            var from = Spot(v.DodgeFromSide, v.DodgeFromSlot, anim.Slots);
+            var from = Spot(anim, v.DodgeFromSide, v.DodgeFromSlot);
             feet += PokemonAnimation.DodgeAway(from, spot) * PokemonAnimation.DodgeAside(model, dodge) * model.Height * scale;
         }
         // What a move does to the body itself (plan 25 · Y16): a rush, a leap, a spin, a squash, a squeeze, a collapse,
@@ -878,10 +881,10 @@ public sealed class BattleRenderer
 
     private void DrawPokemon3D(BattleAnimator anim, CharacterPass pass)
     {
-        for (int slot = 0; slot < anim.Slots; slot++)
+        for (int slot = 0; slot < MostSlotsShown(anim); slot++)
         {
-            DrawPokemon3D(anim, anim[BattleSide.Enemy, slot], isPlayer: false, slot, pass);
-            DrawPokemon3D(anim, anim[BattleSide.Player, slot], isPlayer: true, slot, pass);
+            if (slot < anim.SlotsOf(BattleSide.Enemy)) DrawPokemon3D(anim, anim[BattleSide.Enemy, slot], isPlayer: false, slot, pass);
+            if (slot < anim.SlotsOf(BattleSide.Player)) DrawPokemon3D(anim, anim[BattleSide.Player, slot], isPlayer: true, slot, pass);
         }
     }
 
@@ -893,12 +896,12 @@ public sealed class BattleRenderer
 
     /// <summary>How tall a doll stands on its side's platform.</summary>
     private static float DollSize(BattleSide side, BattleAnimator anim) =>
-        SubstituteDoll.SizeOn(side == BattleSide.Player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius, SlotFit(anim));
+        SubstituteDoll.SizeOn(side == BattleSide.Player ? BattleStage.PlayerPlatformRadius : BattleStage.EnemyPlatformRadius, SlotFit(anim, side));
 
     /// <summary>Where a doll's feet are on the platform: on its Pokémon's spot, a little toward the other side.</summary>
     private Vector3 DollFeet(BattleSide side, int slot, BattleAnimator anim)
     {
-        var spot = Spot(side, slot, anim.Slots);
+        var spot = Spot(anim, side, slot);
         var other = side == BattleSide.Player ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
         var toward = Vector3.Normalize(new Vector3(other.X - spot.X, 0, other.Z - spot.Z));
         return spot + new Vector3(0, platformTop, 0) + toward * DollSize(side, anim) * 0.15f;
@@ -906,14 +909,15 @@ public sealed class BattleRenderer
 
     private void DrawDolls(BattleAnimator anim, CharacterPass pass)
     {
-        for (int slot = 0; slot < anim.Slots; slot++)
+        for (int slot = 0; slot < MostSlotsShown(anim); slot++)
             for (int side = 0; side < 2; side++)
             {
                 var s = (BattleSide)side;
+                if (slot >= anim.SlotsOf(s)) continue;
                 var look = DollOf(anim[s, slot]);
                 if (!look.Visible) continue;
                 var feet = DollFeet(s, slot, anim);
-                var spot = Spot(s, slot, anim.Slots);
+                var spot = Spot(anim, s, slot);
                 var other = s == BattleSide.Player ? BattleStage.EnemySpot : BattleStage.PlayerSpot;
                 SubstituteDoll.Draw(context, SubstituteDoll.Place(feet, other - spot, DollSize(s, anim), look), pass, look.Fade);
             }
@@ -922,10 +926,11 @@ public sealed class BattleRenderer
     /// <summary>The dust a doll lands in, the stars of its flinch and the puff it fades into.</summary>
     private void DollEffects(BattleAnimator anim)
     {
-        for (int slot = 0; slot < anim.Slots; slot++)
+        for (int slot = 0; slot < MostSlotsShown(anim); slot++)
             for (int side = 0; side < 2; side++)
             {
                 var s = (BattleSide)side;
+                if (slot >= anim.SlotsOf(s)) continue;
                 var v = anim[s, slot];
                 if (v.Substitute == null || v.FaintAge >= 0f) continue;
                 SubstituteDoll.Effects(v.Substitute, DollFeet(s, slot, anim), DollSize(s, anim), fx);

@@ -1,0 +1,44 @@
+{
+  "RingTheBell": [
+    {
+      "en": [
+        "It's the great bell of the Celestial Tower."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you ring the bell?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} rang the bell..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sound of the bell rolls out over the tower and the hills beyond, and slowly fades away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The bell was left untouched..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

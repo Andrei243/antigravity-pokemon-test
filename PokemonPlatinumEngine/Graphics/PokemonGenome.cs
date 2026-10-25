@@ -234,7 +234,7 @@ internal static class PokemonGenomes
         {
             if (preEvolution != null) return preEvolution;
             var map = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            foreach (var s in PokemonDatabase.GetAll().OrderBy(s => s.DexNumber))
+            foreach (var s in PokemonDatabase.Everyone().OrderBy(s => s.DexNumber))
                 foreach (var e in s.Evolutions ?? new List<EvolutionData>())
                     if (!string.IsNullOrEmpty(e.TargetSpecies) && !map.ContainsKey(e.TargetSpecies) && !e.TargetSpecies.Equals(s.Name, StringComparison.OrdinalIgnoreCase))
                         map[e.TargetSpecies] = s.Name;

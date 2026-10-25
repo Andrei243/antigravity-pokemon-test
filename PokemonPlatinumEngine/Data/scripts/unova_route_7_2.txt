@@ -1,0 +1,30 @@
+# A house on Route 7 (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats
+# (the decompilation's res/field/scripts/route_7_2.s, read for the order alone).
+#
+# The hiker (0) wants an Emolga for his Gigalith, once (NpcTrades "gigalith", FLAG_UNOVA_TRADED_GIGALITH).
+
+
+script GigalithTrade
+  face 0 player
+  speaker "Hiker"
+  if flag FLAG_UNOVA_TRADED_GIGALITH goto Done
+  say "Trading Pokémon lets you get to know other Trainers! I've been thinking of a swap myself."
+  ask "Kid! Have you caught an Emolga? If you have, will you trade it for my Gigalith?"
+  if no goto Maybe
+  say "Which Pokémon will you swap?"
+  choosepokemon
+  if result == 255 goto Maybe
+  trade gigalith
+  if result == 0 goto Wrong
+  setflag FLAG_UNOVA_TRADED_GIGALITH
+  say "Oh! What a sweet Pokémon! Please be as kind to Gigalith as I shall be to your Emolga."
+  end
+label Wrong
+  say "Hey, come on now! It's an Emolga I want to swap for..."
+  end
+label Maybe
+  say "I see. Well, come and talk to me again if you change your mind!"
+  end
+label Done
+  say "My Emolga is the dearest thing. Thanks again, kid!"
+  end

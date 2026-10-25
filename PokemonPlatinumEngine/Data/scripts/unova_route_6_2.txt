@@ -1,0 +1,92 @@
+# The Season Research Lab (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black
+# 2's beats (the decompilation's res/field/scripts/route_6_2.s, read for the order alone).
+#
+# As the player comes in with Cheren (unova_route_6.txt, VAR_UNOVA_ROUTE_6 1) he stands in the middle of the lab (0,
+# FLAG_UNOVA_HIDE_CHEREN_LAB), tells of the cold snap near Lacunosa Town and the readings elsewhere, and gives HM03, Surf, so
+# that the player can go and look for themselves (VAR_UNOVA_ROUTE_6 2). A researcher (8) hands a rare Deerling over once
+# (FLAG_UNOVA_GOT_DEERLING), and the forecaster (9) tells the weather by what the team can do.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_ROUTE_6 != 1 end
+  scene "Cheren in the Season Research Lab"
+  clearflag FLAG_UNOVA_HIDE_CHEREN_LAB
+  show 0
+  walk 0 down 2
+  face 0 player
+  speaker "Cheren"
+  say "Thanks for coming, {player}. I wanted to talk where it's quiet."
+  say "Have you heard about the cold snap near Lacunosa Town? Nobody talks about it, but the records show the air there dropped far below freezing for a moment, and it was no more than a moment."
+  say "There were readings almost as low around Castelia City and Driftveil City, too."
+  say "Add Team Plasma and that ship of theirs, and I don't believe it's a coincidence. Somebody ought to look into it before things get worse. I hate the cold, though."
+  say "Here, take this. It's a Hidden Machine with Surf in it. Teach it to one of your Pokémon and you can cross the water on its back."
+  give "HM03"
+  say "Go to the places I mentioned and see what's going on. I'll stay here and go through the lab's records. We'll compare notes."
+  walk 0 up 2
+  face 0 down
+  setvar VAR_UNOVA_ROUTE_6 2
+  endscene
+  end
+
+
+script CherenInTheLab
+  face 0 player
+  speaker "Cheren"
+  say "Sorry for slowing you down. Strange things may be happening, so be careful out there!"
+  end
+
+
+script DeerlingGift
+  face 8 player
+  speaker "Researcher"
+  if flag FLAG_UNOVA_GOT_DEERLING goto Given
+  say "You can see a Deerling of every season in our lab! When it comes to Deerling, we're the experts."
+  say "We found an unusually fine one. Would you raise it for us?"
+  ask "Will you take it?"
+  if no goto No
+  if var PARTY_COUNT >= 6 goto Full
+  givepokemon "Deerling" 10
+  setflag FLAG_UNOVA_GOT_DEERLING
+  fanfare pokemon
+  text "{player} received Deerling!"
+  say "It changes coat with the seasons, so you'll see it in a new colour every few months. Take good care of it!"
+  end
+label Given
+  say "Deerling's coat changes with the season, but not what's underneath. Be kind to yours and it will show."
+  end
+label No
+  say "Oh... Well, it'll be here if you change your mind."
+  end
+label Full
+  say "Your team is full! Make some room, then come back and see me."
+  end
+
+
+# The forecaster tells the weather by what a Pokémon of the team knows
+script Forecaster
+  face 9 player
+  speaker "Forecaster"
+  say "Welcome! Show me a Pokémon that can change the weather, and I'll give you a Pokémon weather forecast."
+  if knows "Sunny Day" goto Sun
+  if knows "Rain Dance" goto Rain
+  if knows "Hail" goto Hail
+  if knows "Sandstorm" goto Sand
+  say "Oh dear. None of your Pokémon knows a move that changes the weather. Bring me one that does, and you'll get your forecast!"
+  end
+label Sun
+  say "Sunny Day! Then expect bright skies: Fire-type moves are stronger by half and Water-type moves weaker by half."
+  say "Solar Beam needs no charging, ice can't form, and Thunder and Hurricane are harder to land. Don't forget your sunscreen!"
+  end
+label Rain
+  say "Rain Dance! Then expect showers: Water-type moves are stronger by half and Fire-type moves weaker by half."
+  say "Thunder and Hurricane won't miss, but Solar Beam is slow in the gloom. Don't forget your umbrella!"
+  end
+label Hail
+  say "Hail! Then expect a hailstorm: every Pokémon that isn't an Ice type is hurt a little at each turn's end."
+  say "Blizzard won't miss in it, and Solar Beam is slow. Don't forget your scarf!"
+  end
+label Sand
+  say "Sandstorm! Then expect flying sand: every Pokémon that isn't Rock, Ground or Steel is hurt a little at each turn's end."
+  say "Rock types find their defense raised. Don't forget your goggles!"
+  end

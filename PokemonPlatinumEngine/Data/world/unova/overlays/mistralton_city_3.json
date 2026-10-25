@@ -1,0 +1,83 @@
+{
+  // Mistralton's Cargo Service hall, the control tower (plan 22 · U7, part a): the counter (6) sells the flight to Lentimas Town once Skyla has
+  // agreed to fly (VAR_UNOVA_MISTRALTON 3 and after); Juniper (2, FLAG_UNOVA_HIDE_JUNIPER_HALL) and Skyla (4,
+  // FLAG_UNOVA_HIDE_SKYLA_HALL) wait here once Juniper is back from the Celestial Tower, and Bianca (bianca_hall,
+  // FLAG_UNOVA_HIDE_BIANCA_HALL) runs in as they are about to go (mistralton_city_3.txt)
+  "area": "mistralton_city_3",
+  "bgmTrack": "unova/mistralton",
+  "people": {
+    "0": {
+      "name": "Retired Pilot",
+      "npcType": "veteran",
+      "dialog": [
+        "I flew these routes for thirty years. The sky never looked the same twice, and neither did the passengers."
+      ]
+    },
+    "1": {
+      "name": "Waitress",
+      "npcType": "waitress",
+      "dialog": [
+        "The café on the other side of the runway makes little sweets. They go well with a long wait for a plane."
+      ]
+    },
+    "2": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "script": "JuniperInTheHall",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_HALL",
+      "still": true
+    },
+    "4": {
+      "name": "Skyla",
+      "npcType": "skyla",
+      "script": "SkylaInTheHall",
+      "hiddenBy": "FLAG_UNOVA_HIDE_SKYLA_HALL",
+      "still": true
+    },
+    "5": {
+      "name": "Pilot",
+      "npcType": "pilot",
+      "dialog": [
+        "We pilots think the Ace Pilot Medal is the coolest of all. If you ever win one, come and show me!"
+      ]
+    },
+    "6": {
+      "name": "Attendant",
+      "npcType": "receptionist",
+      "script": "CargoCounter",
+      "still": true
+    },
+    "7": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "When you use Fly, your Pokémon takes you back to a Pokémon Center you've already visited. Handy, isn't it?"
+      ]
+    },
+    "8": {
+      "name": "Mechanic",
+      "npcType": "worker",
+      "dialog": [
+        "You can't keep a plane in the air if you don't understand how it is built. Battling is the same: know your Pokémon."
+      ]
+    },
+    "10": {
+      "name": "Porter",
+      "npcType": "worker",
+      "dialog": [
+        "The luggage racks go right up to the ceiling. A Flying or Psychic Pokémon saves a porter's back!"
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "bianca_hall",
+      "name": "Bianca",
+      "npcType": "bianca",
+      "x": 14,
+      "y": 23,
+      "facing": "Up",
+      "hiddenBy": "FLAG_UNOVA_HIDE_BIANCA_HALL"
+    }
+  ]
+}

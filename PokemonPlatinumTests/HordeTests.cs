@@ -287,7 +287,8 @@ public class HordeTests
     public void EveryPlacesTablesMeetOnePokemonAtATime()
     {
         // Plan 14, decision 1: Platinum's places keep Platinum's formats. No table of the world, of any region, meets a
-        // horde until plan 14 · B4 puts the first in plan 03 · D12's new zone, which this test then names
+        // horde: the grass's hordes (plan 14 · B4) are a table of their own, Data/hordes.json, met after a region's Hall
+        // of Fame (HordeScreenTests)
         var maps = MapDatabase.Fresh();
         var hordes = new List<string>();
         void Check(string place, IEnumerable<WildEncounterEntry> table)

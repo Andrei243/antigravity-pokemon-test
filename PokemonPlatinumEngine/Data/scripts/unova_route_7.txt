@@ -1,0 +1,9 @@
+# Route 7 (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_7.s, read for the order alone). The route has no scene of its own: its trainers and
+# its two houses are the overlay's and unova_route_7_2.txt's and _3's. Black 2's call on the Xtransceiver at the route's
+# first step (the trigger at 136, 243) is left out, since the Xtransceiver is no device of this game's.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end

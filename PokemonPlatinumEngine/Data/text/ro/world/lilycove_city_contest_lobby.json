@@ -1,0 +1,424 @@
+{
+  "people": {
+    "contest_lobby_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_link_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_blender_2_leader": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_blender_2_participant": {
+      "name": {
+        "en": [
+          "Twin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're waiting for a third at our drum. Care to blend with the two of us?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_blender_3_leader": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_blender_3_participant_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_blender_3_participant_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I wonder what colour of Pokéblock we'll get this time!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "blend_master": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whoa, awesome! Nobody turns the arm like the Blend Master does."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wickedly fast! The arm is just a blur when he's at the drum."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I made the most amazing Pokéblocks with the Blend Master!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What an expert! His timing is better than any machine I could build."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say the Blend Master trains his reflexes in the mountains. I believe it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to watch him all day. Maybe I'll learn his secret."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Master Rank, here I come! My Pokémon has never lost its nerve on a stage."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are so many kinds of Pokémon here, and every one is trying to look its best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A contest is a feast for the eyes. I can't stop sketching!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I lavished care on my Pokémon, and it showed on stage. Care is the best Pokéblock there is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Tough Contest is extreme! Only a Pokémon with real grit will do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I made Pokéblocks with my whole family. We couldn't stop!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl_2": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone looks so serious about their Pokémon. I wonder if they ever laugh on stage."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "reporter_m": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm looking for the best story of the day. Maybe it's yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sketching the whole contest. Don't mind me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "contest_lobby_link_artist": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sketching the whole contest. Don't mind me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "BerryBlender_EventScript_BerryBlenderLink": {
+      "en": [
+        "The Berry Blender for four\nBlending with friends is not available yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LilycoveCity_ContestLobby_EventScript_BerryBlenderSpeedRecords": {
+      "en": [
+        "Berry Blender speed records\nNobody's name is up yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LilycoveCity_ContestLobby_EventScript_LinkContestResults": {
+      "en": [
+        "Contest results with friends\nNo contests with friends have been held yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

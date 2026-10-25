@@ -1,0 +1,52 @@
+{
+  // Lilycove's Contest Lobby (plan 21 · H11): the receptionist enters a Pokémon in a Hoenn contest and gives the Pokéblock
+  // Case, the Berry Blender stands in the east (three drums, for two, three and four at a time), and the winners of the
+  // contests hang on the north wall. The Blend Master and his crowd come on Saturdays (lilycove_city_contest_lobby.txt).
+  // The counter for contests with friends and the four-player drum wait for plan 07. The lobby's song is Lilycove's own
+  // until the hall's songs are written
+  "area": "lilycove_city_contest_lobby",
+  "bgmTrack": "hoenn/lilycove",
+  "people": {
+    "contest_lobby_receptionist": { "name": "Receptionist", "script": "ContestReceptionist" },
+    "contest_lobby_link_receptionist": { "name": "Receptionist", "script": "LinkReceptionist" },
+    "contest_lobby_blender_2_leader": { "name": "Man", "script": "BlenderTwo" },
+    "contest_lobby_blender_2_participant": { "name": "Twin", "dialog": [ "We're waiting for a third at our drum. Care to blend with the two of us?" ] },
+    "contest_lobby_blender_3_leader": { "name": "Woman", "script": "BlenderThree" },
+    "contest_lobby_blender_3_participant_1": { "name": "Boy", "script": "BlenderCompanion" },
+    "contest_lobby_blender_3_participant_2": { "name": "Girl", "dialog": [ "I wonder what colour of Pokéblock we'll get this time!" ] },
+    "blend_master": { "name": "Man", "script": "BlenderOne" },
+    "old_man": { "name": "Old Man", "script": "BlendMaster" },
+    "man_5": { "name": "Man", "dialog": [ "Whoa, awesome! Nobody turns the arm like the Blend Master does." ] },
+    "camper": { "name": "Camper", "dialog": [ "Wickedly fast! The arm is just a blur when he's at the drum." ] },
+    "little_girl": { "name": "Little Girl", "dialog": [ "I made the most amazing Pokéblocks with the Blend Master!" ] },
+    "scientist_2": { "name": "Scientist", "dialog": [ "What an expert! His timing is better than any machine I could build." ] },
+    "woman_1": { "name": "Woman", "dialog": [ "They say the Blend Master trains his reflexes in the mountains. I believe it." ] },
+    "ninja_boy_2": { "name": "Boy", "dialog": [ "I'm going to watch him all day. Maybe I'll learn his secret." ] },
+    "black_belt": { "name": "Black Belt", "dialog": [ "Master Rank, here I come! My Pokémon has never lost its nerve on a stage." ] },
+    "girl_2": { "name": "Girl", "dialog": [ "There are so many kinds of Pokémon here, and every one is trying to look its best." ] },
+    "artist": { "name": "Artist", "dialog": [ "A contest is a feast for the eyes. I can't stop sketching!" ] },
+    "fisherman": { "name": "Fisherman", "dialog": [ "I lavished care on my Pokémon, and it showed on stage. Care is the best Pokéblock there is." ] },
+    "fat_man": { "name": "Man", "dialog": [ "The Tough Contest is extreme! Only a Pokémon with real grit will do." ] },
+    "ninja_boy": { "name": "Boy", "dialog": [ "I made Pokéblocks with my whole family. We couldn't stop!" ] },
+    "little_girl_2": { "name": "Little Girl", "dialog": [ "Everyone looks so serious about their Pokémon. I wonder if they ever laugh on stage." ] },
+    "reporter_m": { "name": "Reporter", "dialog": [ "I'm looking for the best story of the day. Maybe it's yours." ] },
+    "contest_lobby_artist": { "name": "Artist", "dialog": [ "I'm sketching the whole contest. Don't mind me!" ] },
+    "contest_lobby_link_artist": { "name": "Artist", "dialog": [ "I'm sketching the whole contest. Don't mind me!" ] }
+  },
+  "read": {
+    "BerryBlender_EventScript_BerryBlender1": "BlenderOne",
+    "BerryBlender_EventScript_BerryBlender2": "BlenderTwo",
+    "BerryBlender_EventScript_BerryBlender3": "BlenderThree",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner1": "Winner1",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner2": "Winner2",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner3": "Winner3",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner4": "Winner4",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner5": "Winner5",
+    "LilycoveCity_ContestLobby_EventScript_ContestWinner6": "Winner6"
+  },
+  "signs": {
+    "BerryBlender_EventScript_BerryBlenderLink": "The Berry Blender for four\nBlending with friends is not available yet.",
+    "LilycoveCity_ContestLobby_EventScript_BerryBlenderSpeedRecords": "Berry Blender speed records\nNobody's name is up yet.",
+    "LilycoveCity_ContestLobby_EventScript_LinkContestResults": "Contest results with friends\nNo contests with friends have been held yet."
+  }
+}

@@ -218,6 +218,13 @@ internal static partial class Landmarks
             case PropType.ReceptionDesk:
                 ReceptionDesk(kit, map, prop, w, d);
                 return true;
+            // Unova's (plan 22 · U7; Landmarks.Unova.cs)
+            case PropType.Airplane:
+                Airplane(kit, w, d);
+                return true;
+            case PropType.ChargeStone:
+                ChargeStone(kit, w, d, lamplight);
+                return true;
         }
         return false;
     }

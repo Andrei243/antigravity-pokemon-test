@@ -1,0 +1,43 @@
+# The Celestial Tower's ground floor (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own,
+# on Black 2's beats (the decompilation's res/field/scripts/celestial_tower_2.s, read for the order alone).
+#
+# Professor Juniper (0, FLAG_UNOVA_HIDE_JUNIPER_TOWER, cleared by the scene in Mistralton City) is at her field work here.
+# Before the Jet Badge she gives a Lucky Egg once (FLAG_UNOVA_GOT_LUCKY_EGG) and carries on; once it is won she is ready to
+# fly and goes back to Mistralton City, where she and Skyla wait in the Cargo Service's hall (VAR_UNOVA_MISTRALTON 3).
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script JuniperInTheTower
+  face 0 player
+  speaker "Prof. Juniper"
+  if badge jet goto Ready
+  if flag FLAG_UNOVA_GOT_LUCKY_EGG goto Egg
+  say "Hi there, {player}! How did things go with Skyla? Oh? You haven't won her Badge yet?"
+  say "Then I'll keep up my field work a little longer. Before you go, take this for your trip."
+  give "Lucky Egg"
+  setflag FLAG_UNOVA_GOT_LUCKY_EGG
+  say "Give that Lucky Egg to a Pokémon to hold, and it earns a little more Experience from every battle! Strong Pokémon make a strong Trainer."
+  end
+label Egg
+  say "The Celestial Tower... a giant memorial. I wonder whether it was built where Ghost and Psychic Pokémon gathered, or whether they came because of it."
+  say "Either way it's fascinating. Come and fetch me when you've beaten Skyla!"
+  end
+label Ready
+  say "Oh, that's right! How did things go with Skyla? You won the Jet Badge! Well done!"
+  if flag FLAG_UNOVA_GOT_LUCKY_EGG goto Fly
+  give "Lucky Egg"
+  setflag FLAG_UNOVA_GOT_LUCKY_EGG
+  say "Do take that Lucky Egg. Held by a Pokémon, it earns a little more Experience from every battle."
+label Fly
+  say "Then the plane should be ready to fly! Thank you for coming to fetch me."
+  say "I'll be waiting for you in Mistralton City!"
+  hide 0
+  setflag FLAG_UNOVA_HIDE_JUNIPER_TOWER
+  clearflag FLAG_UNOVA_HIDE_JUNIPER_HALL
+  clearflag FLAG_UNOVA_HIDE_SKYLA_HALL
+  setvar VAR_UNOVA_MISTRALTON 3
+  end

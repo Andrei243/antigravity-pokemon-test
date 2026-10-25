@@ -2181,7 +2181,10 @@ A horde is X and Y's: one of the player's Pokémon against five wild ones at onc
 - **What a wild double battle refuses a horde refuses too**, since others stand on the field: Roar and Whirlwind, Teleport, Dragon Tail and Circle Throw driving a wild Pokémon off, and Emergency Exit's flight all fail or do nothing, and a miss is told of its target ("… avoided the attack!", where a single says the user's attack missed). After You and Quash work, as in a double. Dragon Darts aims both darts at its one target, since which foes stand beside which is reach (plan 14 · B6).
 - **What it says.** "A horde of wild Zubat appeared!" as they come out (no names where the species differ: "A horde of wild Pokémon appeared!"), and "Lucas defeated the wild horde!" at the end: lines of our own, where a double names each Pokémon.
 - **A record says its format** (`BattleRecord.Format`), and `Replay` refuses one under another: the same seed and answers in a single are another battle. A record that names none (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
-- **In the field** a table's slot may say how many come at once (`WildEncounterEntry.Count`, `count` in a file, left out for one): the others are the slot's species, each at a level drawn as the first's was (`WildEncounterRules.Meet`), and the game meets them as a horde (`GameEngine.StartWildBattle`), never beside a partner, on the water, in the Great Marsh's game or in the Bug-Catching Contest. No table of Platinum's has one (plan 14, decision 1; `HordeTests.EveryPlacesTablesMeetOnePokemonAtATime` holds every region's), and B4 puts the first in plan 03 · D12's new zone.
+- **In the field** a table's slot may say how many come at once (`WildEncounterEntry.Count`, `count` in a file, left out for one): the others are the slot's species, each at a level drawn as the first's was (`WildEncounterRules.Meet`), and the game meets them as a horde (`GameEngine.StartWildBattle`), never beside a partner, on the water, in the Great Marsh's game or in the Bug-Catching Contest. No table of Platinum's has one (plan 14, decision 1; `HordeTests.EveryPlacesTablesMeetOnePokemonAtATime` holds every region's): the grass's hordes are a table of their own beside the place's (below).
+- **Where hordes live** (plan 14 · B4; `Data/hordes.json`, `Overworld/Hordes.cs`). Plan 03 · D12's zone for the later generations, where the plan first put them, was dropped on 2026-10-12, so the places are our own choice under decision 1: in each built region the tall grass of a few routes the player has reason to walk after its Hall of Fame (Sinnoh's Battle Zone, Routes 224 to 230; Kanto's Routes 13, 17 and 23; Johto's Routes 26, 44 and 45; Hoenn's Routes 115, 118 and 120), each with one or two hordes. **They come only once that region's Hall of Fame is entered** (its `<Region>HallOfFame` flag) **and under rules that have hordes** (`Ruleset.Hordes`): before it, or under Platinum's rules, no draw is made and nothing moves. A horde's species is one of the region's own Pokédex whose family lives in that place's own grass (Machop where Machoke does), five at a time at levels drawn each from the row's range, a few below the place's weakest (X and Y's hordes are weaker than the grass's single Pokémon, which is the point of their EXP); `HordeScreenTests` holds all of it, and `levels.txt` doesn't list them, since they are no table of the place's.
+- **How often.** A step in such grass that meets a Pokémon meets a horde one time in twenty (`Hordes.ChanceInHundred`), the share X and Y are said to give; the draw for it is made only where a horde could come. Sweet Scent there always draws one out, as in X and Y (`Map.DrawOutWild`). No horde comes on the water, in a cave, beside a partner, at a Poké Radar patch or as a roamer. X and Y show no sign of a horde in the grass before it comes, and nor does this game: the way into the battle is the one for two at once, and the line "A horde of wild … appeared!" is its sign.
+- **On the screen** (B4; style guide, "Stage", "Places on a platform", and "Battle panels", "A horde's boxes", "The five and the one"): the five stand on an arc across the foe's platform at 0.45 of a single's size, appear together with their cries a third of a second apart (`BattleEngine.HordeCryStep`), and have small boxes stacked down the left; a single-target move asks which of the five on a row of five cards over the player's one; a spread move's shot frames all five. Every look kept for a place (the views, what lasts on each Pokémon, what waits for each place, the effects' places) has five a side (`BattleAnimator.MostSlots`), each side its own count (`SlotsOf`). The Pokédex is told of each of the five as it is met (they are one species but for a mixed horde of a test's making), and the one left to be caught is caught as any.
 
 ### Master Trainers (plan 14 · B14)
 
@@ -3005,6 +3008,48 @@ this part: the places, the people and the data of the import are part b's and c'
 - **Left for the next part**: the frigate's model coming and going, the Marvelous Bridge and Route 15 (plan 22 · U10), the
   Ferris wheel drawn as a wheel, the drawbridge's raising and its Ducklett shadows, the 2-by-2 boulder of the Relic
   Passage and the desert's storm timed within budget.
+
+## Unova's third chapter, part a: Route 6 to Lentimas Town (2026-10-25, plan 22 · U7)
+
+Black 2's beats from the Season Research Lab to the plane that lands in Lentimas Town, in our own words (the decompilation's
+zone scripts, read for the order of beats alone) on flags of ours, `FLAG_UNOVA_…` and `VAR_UNOVA_…` (the original's by
+value can't be named in a script).
+
+- **The order of the chapter.** After the Plasma Frigate has sailed Cheren stands on Route 6 and walks the player to the
+  Season Research Lab (`VAR_UNOVA_ROUTE_6` 1 to 2): he tells of the cold snap near Lacunosa Town and the odd readings at
+  Castelia and Driftveil and gives HM03, Surf, **which is what takes the player over Route 6's east bank to Mistralton Cave**.
+  On the west bridge Cobalion shows itself across the pond to Rood and an old
+  man (3). Chargestone Cave comes out in Mistralton City, as the original's does: Bianca at its mouth (her errand is for
+  the professor), N alone in its long corridor (he is gone after one word; Colress's grunts and N's later scenes are part
+  b's). In Mistralton City Professor Juniper and Skyla meet the player on the road (the Master Ball for the Pokédex, once;
+  `VAR_UNOVA_MISTRALTON` 1): the professor goes on to the Celestial Tower, Skyla to her Gym. Skyla's Gym (2, the Jet
+  Badge, TM62) is a maze of wind with five pilots; the professor in the tower gives a Lucky Egg once and, once the Badge is
+  won, goes back to the cargo hall (3); there Skyla asks whether the player is ready, Bianca dashes in for the ride, and the
+  plane flies to Lentimas Town (4: a scene of the fade and lines over the dark, as the voyage to Castelia is). In Lentimas
+  Town Juniper tells of the two stones, the dragons in them and Drayden of Opelucid City, and Bianca goes on to Reversal
+  Mountain (`VAR_UNOVA_LENTIMAS` 1); an attendant on the strip flies anyone back to Mistralton City.
+- **The Jet Badge** is the region's sixth (`givebadge jet`, the order of `unova.json`'s badges); Skyla's team is Black 2's
+  (`unova_leader_skyla`), TM62 is the Gym's TM in our data's table (Platinum's, which the importer fills).
+- **The Celestial Tower** has five floors on the original's plans; its spiral ramp is a rail Black 2 rides and the importer
+  leaves out, so each floor has a way up at a tile of its own and a way down at the strip the original gives (overlay
+  `exits` and `doors`), as Castelia's avenue has. The great bell at the summit may be rung by anyone; Black 2's Mesprit,
+  hung over the summit until it is met, and the bell's quest (a waitress, a clerk and a maid of the lower floors) are part
+  b's.
+- **The water's edge** (`TileBehavior.SurfEdge`, Black 2's 0xB7): a blocked tile whose neighbour is open water. It was a
+  wall; it is now **a tile a walker meets as water and a surfer rides over** (`FieldMovement.Step` answers `Obstacle.Water`
+  to a walker, `CanStartSurf` lets Surf begin onto it), which is how the original's shore works, and which opens Route 6's
+  east bank. A blocked tile of any other behaviour in water is still a wall.
+- **Mistralton Cave** has one floor here. The original's own data joins its chambers by one-tile walls this import marks
+  blocked, so only the first chamber is walked; the rest, its second floor (to the Guidance Chamber), Clay Tunnel and the
+  two hikers beyond belong to U10, and the way on is shut meanwhile (a warp that leads nowhere is blocked).
+- **Looks and sounds.** `Architecture.Airfield` (Mistralton and Lentimas: orange plaster, a hip roof, flower boxes), the
+  plane (`PropType.Airplane`, white with an orange stripe) and the crystals (`PropType.ChargeStone`, three shards with a
+  spark in the tallest, glowing with the lamps' light) are ours; the Gym is a Flying one, `GymTheme`
+  `Flying`; looks `skyla`, `pilot` (and the eye theme `ace`, the class's battle theme the Gym's) and `n`. Songs of our
+  own, none heard by the user yet: `unova/route6`, `chargestone`, `mistralton` (with a night arrangement) and
+  `celestial_tower`, each over 25 s and clean in `MusicRender`.
+- **What a save needs.** A save of the frigate's chapter is given the chapter's hidden people by `UnovaCatchUp`
+  (`FLAG_UNOVA_MISTRALTON_BEGUN`), with no story version raised.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -5541,3 +5586,63 @@ the same species, moves, items and AI, with prize money one and a half times, wr
 `hoenn_<who>_rematch` in `Data/our-trainers.json` and named by `Data/world/hoenn/rematches.json` (the importer rewrites the
 region's `trainers.json`, so the rows are read from the file beside it by `TrainerDatabase`); the rows hold, and every
 rematch battle is the room's own, never the Vs. Seeker's.
+
+## Apricorns, the Box and Kurt's balls (2026-10-25, plan 20 · J6)
+
+HeartGold's Apricorn trees, its Apricorn Box and Kurt's workshop, as ours (`Models/Apricorns.cs`, `Data/apricorns.json`).
+
+- **The trees.** The 24 `bonguri` objects of Johto's area files are trees (`NPC.ApricornTreeType`, a thing of the map in the way like a person, spoken to through `common.ApricornTree`). **Their colours are ours**: HeartGold gives each tree a colour by its map, but nothing the pinned sources carry says which, so `apricorns.json` gives each tree one by the route it stands on (Route 37's three are Red, the colour of a Level Ball; all seven colours grow somewhere). A tree **bears one Apricorn a calendar day**: it has its fruit on until it is picked and again from the next calendar day (`GameClock.Today`; the hour does not matter), the day of its last picking kept in the save by its area and id. Picking asks, and fills the Box or leaves the fruit on the tree if the Box already holds 99 of the colour.
+- **The Box.** A key item (`Apricorn Box`, `fieldUse` `ApricornBox`, from PokeAPI's `apricorn-box`) that the man in Route 30's Apricorn house gives (our placement; a tree met without it says the player has nothing to keep the fruit in). The Apricorns are not bag items but counts in the Box (99 of a colour at most), so no pocket fills with them; the Box is looked into from the bag (back to the bag), the item button, or a script's `apricorn box`.
+- **Kurt.** He is given **every Apricorn of one colour** the Box holds, takes **one order at a time** (refused while the balls are in the works, and while they wait to be collected) and has **one ball for each Apricorn on the next calendar day**: Red a Level Ball, Blue a Lure Ball, Yellow a Moon Ball, Green a Friend Ball, Pink a Love Ball, White a Fast Ball, Black a Heavy Ball (the games' own pairing). The count is our own choice: one for each Apricorn, so that the one a tree gives a day is worth a ball. He asks, once the Pokégear is in the bag, to be registered in it (`addcontact kurt`; `phone.json` already lists him as type 4, a number that does not ring on its own), **and rings once, the first step after the day has passed**, to say the balls are ready (`GameEngine.KurtRingsOnAStep`, before the other contacts' chance). A save from before has an empty Box.
+- **The balls' rules** were plan 06 · R28a's and are unchanged: the later games' bonuses of `CatchCalculator.Later.cs` (the Fast Ball 4× from a base Speed of 100, the Level Ball 8×/4×/2×, the Lure Ball 4× on a battle begun by a rod, the Moon Ball 4× for a Moon Stone evolver, the Love Ball 8× for the same species of the other gender, the Heavy Ball by weight on the species' rate, the Friend Ball a friend of 200), under the modern rules. Under Platinum's rules they keep the plain Poké Ball rate, as they did. J6 gives them looks (`BattleBall.LookOf`, the style guide's "Poké Ball (G8)") and releases of their own.
+
+## Hoenn's contests and Pokéblocks (2026-10-26, plan 21 · H11)
+
+Emerald's `src/contest.c`, `contest_effect.c`, `contest_ai.c`, `contest_util.c`, `src/data/contest_moves.h`,
+`contest_opponents.h`, `berry_blender.c`, `pokeblock.c` and `data/scripts/contest_hall.inc`; the lines are our own.
+
+- **Two contests, by region.** Sinnoh plays the Super Contest (plan 06 · R17a: visual, dance, acting) and **Hoenn
+  plays Emerald's contest**, a different game: four Pokémon, five rounds of four appeals, one move each. The two share
+  the quality (`ContestStat`), the ribbon record (`Pokemon.Ribbons`, the ribbon table) and the Poffin/Pokéblock
+  condition (`Cool`… `Sheen`), and nothing else: `MoveData.Contest` is Platinum's, `MoveData.HoennContest` Emerald's
+  (kept in `Data/hoenn-contest.json`, written by `tools/DataImporter -- --hoenn-contest` from the pinned pokeemerald,
+  so that the importer's own files need no merge).
+- **The data**: 48 effects (an appeal and a jam, each in tens of points), 354 moves of the first three generations
+  (an effect, a quality, up to five combos, the starter it is) and 96 contestants (species, moves, quality pools, rank,
+  and whether they appear only before or only after the game's end). A move Emerald never gave a number is a plain
+  appeal of 40 in the quality of its type. Stomp's line in the source has no field name; the importer reads it.
+- **The first round** orders the turns: each contestant's condition is its stat of the contest's quality plus half of its
+  two neighbours' and its sheen (`CalculateContestantRound1Points`), the best going first; ties go to the order they
+  were drawn. The score of the whole contest is that condition plus **twice** the points of the five appeals.
+- **An appeal** is the move's effect: the hearts it gives (ten points each, to eight), the **jam** it takes off the
+  contestant just before, a **combo** (a starter, then the move that follows it, which doubles the base appeal and takes
+  the judge's eye), a **repeat** (minus twenty, then thirty… for the same move again), the **crowd** (a meter of five
+  lights, stirred by moves of the contest's quality and cooled by clashing ones; the fifth light bursts for sixty), a
+  **condition** raised in tens (each ten is a star and adds to every appeal after it) and **nerves**, which the
+  startling move gives and the calm one takes away. A move that asks to go **earlier or later** bends the next round's
+  order; one that gives everything leaves **no more turns**.
+- **The opponents' minds** (`AppealRound.Ai`) are Emerald's `ContestAI_ChooseMove`: the scripts' scoring of each move
+  from what has happened so far, a draw on the round's generator among the best, so a seed and the player's choices
+  are the whole contest. The three are drawn from the table by the contest's quality and rank (`Candidates`), before or
+  after the game's end by the region's story flag.
+- **Ranks and ribbons**: Normal, Super, Hyper and Master; a rank is entered only with the ribbon of the rank below in
+  that quality (`GetContestEntryEligibility`), a win gives that rank's ribbon (`RIBBON_HOENN_COOL`, `_SUPER`, `_HYPER`,
+  `_MASTER`), a win of a rank already won gives nothing but, at the Master Rank, a **Luxury Ball**. A Master Rank win of
+  **800 points or more** brings the painter, who hangs the picture in the Lilycove Museum (one per quality) and gives the
+  **Artist Ribbon** once to each Pokémon. The Contest Hall's wall keeps the last six winners, newest first. The ribbons
+  are no longer "waiting for Hoenn" on a Pokémon's ribbon page.
+- **Ours, not Emerald's**: the contest is a screen (`AppealScreen`) and not the stage's rooms (`ContestHall*` maps
+  with the judge walking); the hall behind the lobby is a room of people who only talk. Contests with friends (the link
+  receptionist) wait for plan 07 and say so.
+- **Pokéblocks** (`Models/Pokeblocks.cs`): the Berry Blender's `CalculatePokeblock` as written. The berries' flavours and
+  smoothness are added, **each flavour is taken from the next one's** (spicy minus dry, dry minus sweet… sour minus
+  spicy), every negative is counted and taken from the rest, the whole is scaled by the speed the arm reached
+  (`maxRpm / 333 + 100`, in tenths), and the colour and feel are read from what is left. Two of one berry, or nothing
+  left, or four negatives, make a **black** Pokéblock whose flavours are three of the five at 2. Feeding adds each
+  flavour's level to the quality it names and the feel to the sheen; the nature's likes and dislikes
+  (`gPokeblockFlavorCompatibilityTable`) add or take the same gain from every quality. A Pokémon whose sheen is full
+  eats no more; an Egg none. The case holds forty and is a key item.
+- **The blender** (`Models/BlenderGame.cs`): the arm turns at a speed that the player's presses raise and a miss
+  lowers, 24 seconds at thirty frames a second; the others at the drum press by the generator they are handed, so a
+  blend is the same given its berries and seed. Their berries are drawn from Cheri to Pomeg. Blending with friends
+  waits for plan 07.

@@ -58,14 +58,30 @@ public partial class BattleEngine
     public IReadOnlyList<Battler> TargetChoices => targetChoices;
 
     /// <summary>
-    /// The four places as the target menu lays them out, two to a row: the foes on top as the player sees them, the
-    /// player's own under them. A place a single battle doesn't have is null.
+    /// How many cards a row of the target menu has: two, or as many as a horde's foes (plan 14 · B4; style guide,
+    /// "Battle panels", "The five and the one").
     /// </summary>
-    public IReadOnlyList<Battler?> TargetLayout => new[]
+    public int TargetColumns => Math.Max(2, Math.Max(EnemySlots.Count, PlayerSlots.Count));
+
+    /// <summary>
+    /// The places as the target menu lays them out, <see cref="TargetColumns"/> to a row: the foes on top as the player
+    /// sees them (left to right, the last place on the left, as the stage stands them), the player's own under them.
+    /// In a single and a double that is the four of two rows of two; a horde's five foes fill the top row and the
+    /// player's one stands under the middle. A place the battle doesn't have is null.
+    /// </summary>
+    public IReadOnlyList<Battler?> TargetLayout
     {
-        EnemySlots.ElementAtOrDefault(1), EnemySlots[0],
-        PlayerSlots[0], PlayerSlots.ElementAtOrDefault(1)
-    };
+        get
+        {
+            int columns = TargetColumns;
+            var layout = new Battler?[columns * 2];
+            for (int i = 0; i < EnemySlots.Count; i++) layout[EnemySlots.Count - 1 - i] = EnemySlots[i];
+            if (EnemySlots.Count < 2) (layout[0], layout[1]) = (null, EnemySlots[0]);
+            if (PlayerSlots.Count == 1 && columns > 2) layout[columns + columns / 2] = PlayerSlots[0];
+            else for (int i = 0; i < PlayerSlots.Count; i++) layout[columns + i] = PlayerSlots[i];
+            return layout;
+        }
+    }
 
     private readonly HashSet<int> seenBefore;
 
@@ -327,8 +343,8 @@ public partial class BattleEngine
         AudioManager.PlaySound("select");
         lastMove[user.Pokemon] = index;
 
-        // In a double battle a single-target move asks where to aim it
-        if (IsDouble && move.Target == MoveTarget.Selected)
+        // In a double battle and a horde a single-target move asks where to aim it
+        if ((IsDouble || IsHorde) && move.Target == MoveTarget.Selected)
         {
             // In the order the target menu lays them out: the foes left to right, then the partner
             targetChoices = EnemySlots.Reverse().Where(b => b.IsActive).Concat(PlayerSlots.Where(b => b.IsActive && b != user)).ToList();
@@ -608,27 +624,36 @@ public partial class BattleEngine
     }
 
     /// <summary>
-    /// A step among the targets, over the four cards as they lie (<see cref="TargetLayout"/>). A card that can't
-    /// be aimed at (the Pokémon using the move, an empty place) is never stopped on: a step up or down that would
-    /// land on one takes the card beside it, and a step sideways stays where it is.
+    /// A step among the targets, over the cards as they lie (<see cref="TargetLayout"/>, a grid of
+    /// <see cref="TargetColumns"/> to a row). A card that can't be aimed at (the Pokémon using the move, an empty
+    /// place, a foe fainted) is never stopped on: a step sideways goes on past it round the row, and stays where it is
+    /// when nothing else in the row can be; a step up or down takes the card in the other row nearest the same column
+    /// (the left of two as near), and stays where it is when that row has none.
     /// </summary>
     private int TargetStep(int index, int dx, int dy)
     {
         if (index < 0 || index >= targetChoices.Count) return 0;
         var layout = TargetLayout;
+        int columns = TargetColumns;
         int at = -1;
         for (int i = 0; i < layout.Count; i++) if (layout[i] == targetChoices[index]) at = i;
         if (at < 0) return index;
 
-        int column = at % 2, row = at / 2;
-        if (dy != 0) row = 1 - row;
-        else column = 1 - column;
-
-        var tries = dy != 0 ? new[] { row * 2 + column, row * 2 + 1 - column } : new[] { row * 2 + column };
-        foreach (int card in tries)
+        int column = at % columns, row = at / columns;
+        int ChoiceAt(int card) => layout[card] is { } there ? targetChoices.IndexOf(there) : -1;
+        if (dy != 0)
         {
-            int choice = layout[card] is { } there ? targetChoices.IndexOf(there) : -1;
-            if (choice >= 0) return choice;
+            row = 1 - row;
+            for (int distance = 0; distance < columns; distance++)
+                foreach (int c in new[] { column - distance, column + distance })
+                    if (c >= 0 && c < columns && ChoiceAt(row * columns + c) is >= 0 and var choice) return choice;
+            return index;
+        }
+        int step = Math.Sign(dx);
+        for (int moved = 1; moved < columns; moved++)
+        {
+            int c = ((column + step * moved) % columns + columns) % columns;
+            if (ChoiceAt(row * columns + c) is >= 0 and var choice) return choice;
         }
         return index;
     }

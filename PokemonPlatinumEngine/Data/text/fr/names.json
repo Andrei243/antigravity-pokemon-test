@@ -4197,6 +4197,7 @@
     "Vs. Recorder": "Magnéto VS",
     "Gracidea": "Gracidée",
     "Secret Key": "Clé Secrète",
+    "Apricorn Box": "Boîte Noigrume",
     "Lure Ball": "Appât Ball",
     "Level Ball": "Niveau Ball",
     "Moon Ball": "Lune Ball",
@@ -4675,7 +4676,8 @@
     "Devon Scope": "Devon Scope",
     "Magma Emblem": "Sceau Magma",
     "Basement Key": "Clé Sous-Sol",
-    "Rainbow Wing": "Arc-en-Ci'Aile"
+    "Rainbow Wing": "Arc-en-Ci'Aile",
+    "Pokéblock Case": "Boîte Pokéblocs"
   },
   "types": {
     "Normal": "Normal",
@@ -7103,6 +7105,7 @@
       "Vs. Recorder": "Enregistre les combats sans-fil, WiFi ou de la Zone de Combat, et stocke les points.",
       "Gracidea": "Change un Shaymin non gelé en Forme Céleste le jour.",
       "Secret Key": "Gén IV: La clé pour la pièce des appareils de Motisma. Gen III: La clé de l'arène de Cramois'Île.",
+      "Apricorn Box": "Stocke les Noigrumes.",
       "Lure Ball": "3× plus efficace en pêchant. Fait à partir de Noigrume Blu.",
       "Level Ball": "Le taux de succès dépend des niveaux du Pokémon de l'utilisateur et de la cible. Fait à partir de Noigrume Rge.",
       "Moon Ball": "4× plus efficace sur les familles de Pokémon qui contiennent une évolution avec une Pierre Lune. Fait à partir de Noigrume Jne.",
@@ -7320,7 +7323,8 @@
       "Devon Scope": "Permet de détecter les Kecleon invisibles.",
       "Magma Emblem": "Permet d'accéder à la Planque Magma au Sentier Sinuroc.",
       "Basement Key": "HS: Clé du tunnel sous Doublonville. Gén III: Clé pour New Lavandia.",
-      "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon."
+      "Rainbow Wing": "Invoque Ho-Oh au sommet de la Tour Carillon.",
+      "Pokéblock Case": "Porte les Pokéblocs."
     }
   }
 }

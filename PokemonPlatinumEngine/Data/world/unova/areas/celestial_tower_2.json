@@ -1,0 +1,30 @@
+{
+  "key": "celestial_tower_2",
+  "index": 338,
+  "name": "Celestial Tower",
+  "matrix": 185,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "33",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 28, "to": "unova_route_7", "toWarp": 0 },
+    { "x": 16, "z": 28, "to": "unova_route_7", "toWarp": 0 },
+    { "x": 17, "z": 28, "to": "unova_route_7", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "105", "movement": "none", "x": 17, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02fe", "script": "2" },
+    { "id": "1", "looks": "waitress", "movement": "none", "x": 15, "z": 25, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0337", "script": "3" },
+    { "id": "2", "looks": "policeman", "movement": "none", "x": 16, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "3", "looks": "65", "movement": "none", "x": 19, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": []
+}

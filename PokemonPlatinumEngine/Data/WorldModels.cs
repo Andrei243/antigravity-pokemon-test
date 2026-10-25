@@ -324,6 +324,8 @@ public static partial class WorldModels
         "nimbasa_city_2" => PokemonType.Electric,
         // and Clay's in Driftveil City (plan 22 · U6, part b)
         "driftveil_city" => PokemonType.Ground,
+        // and Skyla's in Mistralton City (plan 22 · U7)
+        "mistralton_city" => PokemonType.Flying,
         _ => null
     };
 }

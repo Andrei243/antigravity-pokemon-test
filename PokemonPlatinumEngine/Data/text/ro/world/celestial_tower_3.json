@@ -1,0 +1,57 @@
+{
+  "people": {
+    "4": {
+      "name": {
+        "en": [
+          "Joyce"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I can feel the spirits here. And my Musharna is dreaming of beating you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "My dream ended early."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Jude"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "My Clefairy and I come here every day, and it loves a moonlit night. Your Pokémon could use a calm visit too, you know."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Calm down, calm down. Fine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

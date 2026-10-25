@@ -179,7 +179,8 @@ public static class RibbonRules
         RibbonKind.Tower => ribbon.StartsWith("RIBBON_HOENN_", StringComparison.Ordinal) ? Text.Of("ribbonDeeds.waitsFor.hoenn")
             : ribbon == "RIBBON_PAIR_ABILITY" ? Text.Of("ribbonDeeds.waitsFor.friend")
             : ribbon == "RIBBON_WORLD_ABILITY" ? Text.Of("ribbonDeeds.waitsFor.world") : null,
-        RibbonKind.HoennContest => Text.Of("ribbonDeeds.waitsFor.hoenn"),
+        // Lilycove's Contest Hall gives Hoenn's contest ribbons and the painter her Artist Ribbon (plan 21 · H11)
+        RibbonKind.HoennContest => null,
         _ => Text.Of("ribbonDeeds.waitsFor.event")
     };
 

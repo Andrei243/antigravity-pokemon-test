@@ -1,0 +1,67 @@
+{
+  "key": "mistralton_cave",
+  "index": 333,
+  "name": "Mistralton Cave",
+  "matrix": 110,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_MISTRALTON_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Boldore", "level": 27 },
+    { "species": "Woobat", "level": 27 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Woobat", "level": 28 },
+    { "species": "Aron", "level": 29 },
+    { "species": "Axew", "level": 29 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 },
+    { "species": "Aron", "level": 30 },
+    { "species": "Axew", "level": 30 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Drilbur", "level": 27 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 1, "z": 6, "to": "unova_route_6", "toWarp": 1 },
+    { "x": 13, "z": 16, "to": "mistralton_cave_2", "toWarp": 0 },
+    { "x": 26, "z": 25, "to": "clay_tunnel_2", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "model_bigrock2", "movement": "none", "x": 3, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "1", "looks": "model_bigrock2", "movement": "none", "x": 15, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "2", "looks": "model_bigrock2", "movement": "none", "x": 9, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "3", "looks": "hiker", "movement": "none", "x": 15, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_HIKER_JEBEDIAH" },
+    { "id": "4", "looks": "hiker", "movement": "look_north_and_west", "x": 12, "z": 24, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_HIKER_SHELBY" },
+    { "id": "5", "looks": "110", "movement": "none", "x": 9, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x049b", "item": "Yellow Shard", "script": "7079" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 26, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x049c", "item": "Dusk Ball", "script": "7080" },
+    { "id": "7", "looks": "veteran_m", "movement": "none", "x": 25, "z": 25, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0284", "script": "2" }
+  ],
+  "signs": [
+    { "x": 5, "z": 9, "type": 2, "script": "8151", "item": "Super Repel", "flag": "FLAG_UNOVA_0x0b9b" }
+  ],
+  "triggers": []
+}

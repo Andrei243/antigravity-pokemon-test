@@ -208,24 +208,27 @@ internal sealed class BattleCamera
         {
             float best = -1f;
             int slots = 0, first = -1;
-            for (int slot = 0; slot < anim.Slots; slot++)
+            var coming = new List<(BattleSide, int)>();
+            for (int slot = 0; slot < anim.SlotsOf((BattleSide)side); slot++)
             {
                 float age = anim[(BattleSide)side, slot].SendOutAge;
                 if (age < 0f) continue;
                 slots++;
                 if (first < 0) first = slot;
                 best = Math.Max(best, age);
+                coming.Add(((BattleSide)side, slot));
             }
             if (slots == 0 || best >= BattleAnimator.SendOutTime - 0.1f) continue;
             var s = (BattleSide)side;
             if (slots == 1) return (Close(places, s, first, 3.6f, s == BattleSide.Player ? 0.35f : 0f), ShotKind.SendOut, null);
-            var both = new List<(BattleSide, int)> { (s, 0), (s, 1) };
+            // Two of a double framed together, as ever; more come out together framed as a group (plan 14 · B4)
+            var both = slots == 2 ? new List<(BattleSide, int)> { (s, 0), (s, 1) } : coming;
             return (TargetShot(places, both, 3.6f), ShotKind.SendOut, null);
         }
 
         // A Pokémon fainting
         for (int side = 0; side < 2; side++)
-            for (int slot = 0; slot < anim.Slots; slot++)
+            for (int slot = 0; slot < anim.SlotsOf((BattleSide)side); slot++)
             {
                 var v = anim[(BattleSide)side, slot];
                 if (v.FaintAge >= 0f && v.FaintDelay <= 0f)

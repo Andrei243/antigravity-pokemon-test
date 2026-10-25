@@ -1,0 +1,30 @@
+{
+  "key": "mistralton_city_4",
+  "index": 112,
+  "name": "Mistralton City",
+  "matrix": 46,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_C_06",
+  "nightMusic": "BGM_C_06",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "mistralton_city", "toWarp": 1 },
+    { "x": 5, "z": 9, "to": "mistralton_city", "toWarp": 1 },
+    { "x": 6, "z": 9, "to": "mistralton_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "nursery_aide", "movement": "none", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "1", "looks": "10", "movement": "wander_around", "x": 2, "z": 3, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "1" }
+  ],
+  "signs": [
+    { "x": 1, "z": 8, "type": 2, "script": "8007", "item": "Iron", "flag": "FLAG_UNOVA_0x0b0b" }
+  ],
+  "triggers": []
+}

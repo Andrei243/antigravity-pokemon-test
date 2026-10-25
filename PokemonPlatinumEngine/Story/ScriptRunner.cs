@@ -56,6 +56,9 @@ public sealed partial class ScriptRunner
 
     // What the patch of soil the script belongs to holds, as berry status and berry mulched last read it (plan 06 · R14a)
     private string berryName = "", mulchName = "";
+    // The Apricorn last named by a script, the ball it makes and how many (plan 20 · J6)
+    private string apricornName = "", apricornBall = "";
+    private int apricornCount;
     private int berryYield;
     private (string Item, int Count)? ownItem;
     private string? ownFlag;
@@ -348,6 +351,8 @@ public sealed partial class ScriptRunner
         Op.Poffin => i.Name == "cook",
         Op.SuperContest => i.Name is "enter" or "photo",
         Op.Seal => i.Name is "capsules" or "shop",
+        // The Apricorn Box is a screen the player looks into; the trees and Kurt are asked and changed without one
+        Op.Apricorn => i.Name == "box",
         // Below ground only what is handed over or counted needs no screen and no tunnel
         Op.Underground => i.Name is not ("give" or "room" or "flags"),
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
@@ -379,6 +384,9 @@ public sealed partial class ScriptRunner
         Op.Tide => false,
         // A secret base: what is asked and what goes into the decoration PC needs no screen; going in, decorating, packing up do
         Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
+        // Hoenn's contests: the contest and the blender are the player's to play; the rest only asks and changes (plan 21 · H11)
+        Op.Appeals => i.Name == "enter",
+        Op.Pokeblock => i.Name == "blend",
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1011,6 +1019,10 @@ public sealed partial class ScriptRunner
                 host.Encounters.SwarmsOn = true;
                 break;
 
+            case Op.Apricorn:
+                ApricornCommand(i);
+                break;
+
             // Berry patches (plan 06 · R14a; scrcmd_berry.c)
             case Op.Berry:
                 Berry(i);
@@ -1116,6 +1128,14 @@ public sealed partial class ScriptRunner
             // The Underground (plan 06 · R16a)
             case Op.Underground:
                 Underground(i);
+                break;
+
+            // Hoenn's contests and Pokéblocks (plan 21 · H11)
+            case Op.Appeals:
+                Appeals(i);
+                break;
+            case Op.Pokeblock:
+                PokeblockOp(i);
                 break;
 
             // A secret base (plan 21 · H10)
@@ -1761,6 +1781,80 @@ public sealed partial class ScriptRunner
         }
     }
 
+    /// <summary>
+    /// <c>apricorn ...</c> (plan 20 · J6): the tree the script belongs to (<c>tree</c>, <c>pick</c>), the Box
+    /// (<c>box</c>, <c>held</c>, <c>count</c>) and Kurt's one order (<c>order</c>, <c>status</c>, <c>collect</c>).
+    /// </summary>
+    private void ApricornCommand(Instruction i)
+    {
+        var box = host.Apricorns;
+        int day = ApricornBox.DayOf(GameClock.Today);
+        void Name(Apricorn colour)
+        {
+            apricornName = ApricornData.NameOf(colour);
+            apricornBall = ItemDatabase.Get(ApricornData.BallOf(colour))?.DisplayName ?? ApricornData.BallOf(colour);
+        }
+        switch (i.Name)
+        {
+            case "tree":
+            case "pick":
+            {
+                var colour = Subject?.ApricornColour ?? throw Wrong(i, "this script belongs to no Apricorn tree");
+                string key = ApricornBox.TreeKey(Subject.ScriptFile ?? "", Subject.Key ?? "");
+                Name(colour);
+                if (i.Name == "tree")
+                {
+                    // 0 bare, 1 fruit on, 2 fruit on and the Box full of that colour
+                    Result = !box.InFruit(key, day) ? 0 : box.IsFull(colour) ? 2 : 1;
+                    break;
+                }
+                Result = box.Pick(key, colour, day) ? 1 : 0;
+                apricornCount = box.Count(colour);
+                break;
+            }
+            case "box":
+                host.Open(ScriptScreen.Apricorns, Subject);
+                break;
+            case "held":
+                Result = box.Held.Count();
+                break;
+            case "count":
+            {
+                var colour = ApricornData.Parse(i.Other)!.Value;
+                Name(colour);
+                apricornCount = Result = box.Count(colour);
+                break;
+            }
+            case "order":
+            {
+                var colour = ApricornData.Parse(i.Other)!.Value;
+                Name(colour);
+                apricornCount = Result = box.PlaceOrder(colour, day);
+                break;
+            }
+            case "status":
+            {
+                Result = box.Status(day);
+                if (box.Order is { } order && ApricornData.Parse(order.Colour) is { } made)
+                {
+                    Name(made);
+                    apricornCount = order.Count;
+                }
+                break;
+            }
+            case "collect":
+            {
+                Result = 0;
+                if (box.Collect(day) is not { } done || ItemDatabase.Get(done.Ball) is not { } ball) break;
+                host.Bag.AddItem(ball, done.Count);
+                lastItem = ball.Name;
+                apricornBall = ball.DisplayName;
+                apricornCount = Result = done.Count;
+                break;
+            }
+        }
+    }
+
     /// <summary>The Massage Girl's sixteen accessories, in the original's order (ACCESSORY_PRETTY_DEWDROP to ACCESSORY_GLITTER_POWDER).</summary>
     public static readonly IReadOnlyList<string> MassageAccessories = new[]
     {
@@ -2123,6 +2217,9 @@ public sealed partial class ScriptRunner
             "item" => NameOfItem(lastItem),
             "berry" => NameOfItem(berryName),
             "yield" => berryYield.ToString(),
+            "apricorn" => apricornName,
+            "ball" => apricornBall,
+            "apricorns" => apricornCount.ToString(),
             "mulch" => NameOfItem(mulchName),
             "user" => lastUser,
             "money" => host.Money.ToString(),
@@ -2201,6 +2298,9 @@ public sealed partial class ScriptRunner
             "score" => host.BugContest.Score.ToString(),
             "prize" => NameOfItem(host.BugContest.Prize),
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
+            // Hoenn's contests (plan 21 · H11): whose picture hangs on the wall and what the Pokémon was called
+            "wall" => lastWinner,
+            "wallmon" => lastWinnerMon,
             _ => match.Value
         };
     }) : text;

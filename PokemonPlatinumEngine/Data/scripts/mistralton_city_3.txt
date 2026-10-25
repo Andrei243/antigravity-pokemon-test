@@ -1,0 +1,91 @@
+# Mistralton's Cargo Service hall, the control tower (plan 22 · U7, part a). docs/scripts.md describes the language; the
+# lines are our own, on Black 2's beats (the decompilation's res/field/scripts/mistralton_city_3.s, read for the order alone).
+# VAR_UNOVA_MISTRALTON is the city's count (mistralton_city.txt has it whole).
+#
+# Once Professor Juniper is back from the Celestial Tower (celestial_tower_2.txt sets VAR_UNOVA_MISTRALTON 3) she (2) and
+# Skyla (4) wait here. Skyla asks whether the player is ready; as they say yes Juniper tells her to fly to Lentimas Town,
+# Bianca (bianca_hall) runs in out of breath, wanting a ride to do research in Reversal Mountain, and all of them go: a scene
+# of the fade and lines over the dark, as the voyage to Castelia is, ending in Lentimas Town (VAR_UNOVA_MISTRALTON 4). From
+# then on the counter (6) sells the same flight to whoever asks.
+
+
+script OnEnter
+  call UnovaCatchUp
+  end
+
+
+script CargoCounter
+  face 6 player
+  speaker "Attendant"
+  say "Hello! This is Mistralton Cargo Service: quick and safe, runway to runway."
+  if var VAR_UNOVA_MISTRALTON >= 4 goto Open
+  say "We carry passengers now, too, but the flights are up to our Gym Leader. Skyla flies when she's ready."
+  end
+label Open
+  ask "Would you like to board the flight to Lentimas Town?"
+  if no goto Declined
+  say "Very well. We'll contact Skyla, so please board the plane and wait."
+  call TheFlight
+  end
+label Declined
+  say "Of course. Come back any time!"
+  end
+
+
+script JuniperInTheHall
+  face 2 player
+  speaker "Prof. Juniper"
+  say "Hi there! Did I keep you waiting? I'm sorry! Shall we let Skyla show us her flying?"
+  end
+
+
+script SkylaInTheHall
+  face 4 player
+  speaker "Skyla"
+  say "Looks like the professor has reached a stopping point in her investigation. Are you ready to hop aboard my plane?"
+  ask "Ready for takeoff?"
+  if no goto Wait
+  call Boarding
+  end
+label Wait
+  say "Roger! Come and talk to me when you're ready."
+  end
+
+
+script Boarding
+  scene "Skyla's flight to Lentimas Town"
+  speaker "Prof. Juniper"
+  say "All right, Skyla, we're ready. Please take us to Lentimas Town!"
+  clearflag FLAG_UNOVA_HIDE_BIANCA_HALL
+  show bianca_hall
+  speaker "Bianca"
+  say "Waaaait! You guys! Wait, wait, wait, wait!"
+  walk bianca_hall up 3 fast
+  say "Hff... pff... I want to fly, too! I want to do some research in Reversal Mountain, hff... and it's so far to walk!"
+  speaker "Prof. Juniper"
+  say "Bianca, you're here? You're starting to show the dedication of a serious researcher! Very well, everyone, off we go to Lentimas Town!"
+  speaker "Skyla"
+  say "Hee-hee! Looks like everyone's here! At last it's time to fly the Unova skies!"
+  hide bianca_hall
+  setflag FLAG_UNOVA_HIDE_BIANCA_HALL
+  setflag FLAG_UNOVA_HIDE_JUNIPER_HALL
+  setflag FLAG_UNOVA_HIDE_SKYLA_HALL
+  setvar VAR_UNOVA_MISTRALTON 4
+  endscene
+  call TheFlight
+  return
+
+
+# The flight itself: a scene of the fade and lines over the dark, ending in Lentimas Town's street
+script TheFlight
+  scene "The flight to Lentimas Town"
+  fade out 0.8
+  music stop
+  sound "crossing_engine"
+  text "The little plane rolls down the runway and leaps into the wind..."
+  text "Twist Mountain slides by under the wings, white where the snow lies and bare where it doesn't."
+  text "Then the plane banks over the mountain's far side, and Lentimas Town comes up to meet it."
+  endscene
+  warp "Unova" 616 308 down
+  fade in
+  return

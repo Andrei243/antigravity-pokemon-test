@@ -1,0 +1,196 @@
+{
+  "CherenOnTheRoad": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going over the lab's records a while longer. Take care out there, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CherenTakesYouIn": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, there you are. I hoped you would come this way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come with me for a moment, would you? There's something I want to talk over, and the lab is the quietest place for miles."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CobalionPasses": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon...?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the legendary Pokémon Cobalion! I told you the tale the other day, remember?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cobalion! What a noble presence it has."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say Cobalion, Virizion and Terrakion stood against people to protect Pokémon from a war that the people had started."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When people fight, there is no peace for Pokémon either. The three learned how far the deeds of humans can reach into the world of Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But why would it show itself to people at all? Is it on watch over Unova for the Pokémon's sake, after what Team Plasma did two years ago? Or does it feel a new trouble coming?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Unforgivable... So Ghetsis's ambition and malice are still spreading, and still bending the lives they touch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did Cobalion show itself to you by chance, or to ask for your help? I cannot know. Unlike Lord N, I was never able to understand the minds of Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But if you can win Cobalion's trust, it will be a great strength to you on your journey."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "OldManAboutCobalion": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "People and Pokémon alike would do well to trust one another. That's all the three legends ever wanted, I think."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RoodAboutCobalion": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If Cobalion wishes to find you, it will. Be patient and keep your Pokémon close."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

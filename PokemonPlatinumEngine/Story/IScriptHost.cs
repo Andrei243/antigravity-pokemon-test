@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -489,6 +489,9 @@ public interface IScriptHost
     /// <summary>Sinnoh's berry patches.</summary>
     BerryPatches Berries { get; }
 
+    /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6).</summary>
+    ApricornBox Apricorns { get; }
+
     /// <summary>The item the bag chose last for <c>chooseitem</c> (<see cref="ScriptScreen.ChooseItem"/>); null for none.</summary>
     string? ChosenItem { get; }
 
@@ -547,6 +550,29 @@ public interface IScriptHost
     /// decorating a screen, which keep the script waiting (<see cref="Busy"/>).
     /// </summary>
     int SecretBaseAct(string what);
+
+    // ------------------------------------------------------------------ Hoenn's contests and Pokéblocks (plan 21 · H11)
+
+    /// <summary>The contests Hoenn's hall has held for the player and the winners it has hung.</summary>
+    Models.Contest.HoennContestRecords HoennContests { get; }
+
+    /// <summary>The Pokéblock Case.</summary>
+    PokeblockCase PokeblockCase { get; }
+
+    /// <summary>
+    /// Holds a Hoenn contest for the team's Pokémon (<c>appeals enter</c>): its screen plays and the script waits for
+    /// it; afterwards <see cref="AppealOutcome"/> says how it came out.
+    /// </summary>
+    void HoldAppeals(int slot, ContestStat category, Models.Contest.AppealRank rank);
+
+    /// <summary>How the last Hoenn contest came out; null before any.</summary>
+    Models.Contest.AppealOutcome? AppealOutcome { get; }
+
+    /// <summary>The Berry Blender with so many others (<c>pokeblock blend</c>): the bag chooses a berry, the screen plays, the script waits.</summary>
+    void BlendPokeblocks(int others);
+
+    /// <summary>Whether the last blend put a Pokéblock in the case.</summary>
+    bool PokeblockKept { get; }
 
     // ------------------------------------------------------------------ fossils, the Game Corner, the Villa, Pal Park (plan 06 · R16b)
 

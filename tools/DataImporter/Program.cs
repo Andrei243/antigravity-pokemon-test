@@ -33,6 +33,13 @@ if (args.Contains("--check-entries"))
     return EntryCheck.Check(entries, pokeApiDir) == 0 ? 0 : 1;
 }
 
+if (args.Contains("--hoenn-contest"))
+{
+    // Emerald's contest tables alone (plan 21 · H11): hoenn-contest.json, from three headers of pret/pokeemerald
+    Write(Path.Combine(outDir, HoennContestDatabase.FileName), GameDataFiles.Serialize(HoennContestImport.Build(repo, cache)));
+    return 0;
+}
+
 if (decompDir == null)
 {
     Console.WriteLine("Fetching pret/pokeplatinum…");
@@ -60,6 +67,9 @@ Console.WriteLine("Species…");
 var importedSpecies = importer.Species();
 importer.AddFormColors(importedSpecies, showdown);
 var species = Overrides.Apply(importedSpecies, Path.Combine(overrides, "species.json")).OrderBy(s => s.DexNumber).ToList();
+// The species of our own that evolve past level 100 (plan 03 · D14), after the 1,025, before their moves past 100
+var ourSpecies = SpeciesPastHundred.Add(species, SpeciesPastHundred.Load(Path.Combine(overrides, SpeciesPastHundred.FileName)));
+Console.WriteLine($"  species of our own: {ourSpecies.Count} ({string.Join(", ", ourSpecies.Select(s => s.DexNumber))})");
 // The moves of our own past level 100 (plan 06 · R31), handed out by their rule after the species' own learnsets
 var pastHundred = MovesPastHundred.Append(species, moves);
 Console.WriteLine($"  moves past 100: {string.Join(", ", pastHundred.Select(c => $"{c.Value} species learn {c.Key}"))} ({pastHundred.Sum(c => c.Key * c.Value)} learnings)");
@@ -72,6 +82,7 @@ var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")
 importer.AddLaterMachines(species, items);
 importer.AddTechnicalRecords(species, items);
 importer.AddHoennMachines(species, items);
+SpeciesPastHundred.CopyMachines(species);
 var marts = importer.Marts();
 // Counters of other regions's own (plan 20 · J7: the Goldenrod Department Store's, from HeartGold's src/scrcmd_mart.c), which
 // Platinum's lists don't have: Overrides/marts.json's specialties, laid over the imported ones
@@ -87,7 +98,8 @@ var migration = importer.Migration(items, moves);
 Console.WriteLine("Trainers…");
 var trainers = importer.Trainers(species);
 // The Master Trainers (plan 14 · B14): a master for every species, its moves from Showdown's random-battle sets
-var masters = MasterTrainers.Build(showdownDir, species, moves, items);
+// (the games' species alone: the masters are Let's Go's, a master to each of the National Pokédex's)
+var masters = MasterTrainers.Build(showdownDir, species.Where(s => !s.IsOurs).ToList(), moves, items);
 Console.WriteLine($"  {masters.Masters.Count} masters: {masters.FromSets} with moves of a set ({masters.MadeUp} made up with what their level taught them), {masters.WithoutMoves} with none (they know what their level taught them)");
 
 Check(species, moves, abilities, items);

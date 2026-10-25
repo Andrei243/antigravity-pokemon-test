@@ -1,0 +1,23 @@
+{
+  // Mistralton Cave (plan 22 · U7, part a): the cave off Route 6 that Black 2 leads to Clay Tunnel and the Guidance Chamber; both
+  // ways stay shut until the plan's post-game (plan 22 · U10). Its three boulders (0 to 2) move with Strength
+  "area": "mistralton_cave",
+  "bgmTrack": "sinnoh/cave",
+  "battleArena": "Cave",
+  "people": {
+    "3": {
+      "name": "Jebediah",
+      "trainer": {
+        "dialogueBefore": "Mountain men aren't afraid of a dark cave. But Onix isn't afraid of anything at all!",
+        "dialogueAfter": "A rock crushed by a Trainer. Hm."
+      }
+    },
+    "4": {
+      "name": "Shelby",
+      "trainer": {
+        "dialogueBefore": "Boldore! Roll along the path and flatten that Trainer!",
+        "dialogueAfter": "My rolling plan got flattened."
+      }
+    }
+  }
+}

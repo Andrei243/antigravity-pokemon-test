@@ -123,8 +123,15 @@ public sealed partial class GameFlow
     /// <summary>The Poffin Case's Poffins (saved).</summary>
     public PoffinCase PoffinCase { get; } = new();
 
+    /// <summary>The Pokéblock Case (plan 21 · H11; saved) and Hoenn's contests entered, won and hung in the museum (saved).</summary>
+    public PokeblockCase PokeblockCase { get; } = new();
+    public Models.Contest.HoennContestRecords HoennContests { get; set; } = new();
+
     /// <summary>The coins, Pal Park's six, the Villa and the game records kept beside the story (saved).</summary>
     public Pastimes Pastimes { get; } = new();
+
+    /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6; saved).</summary>
+    public ApricornBox Apricorns { get; } = new();
 
     /// <summary>The Underground's own: the bag below ground, the base, the buried Spheres, the day's walls (saved).</summary>
     public UndergroundState Underground { get; set; } = new();

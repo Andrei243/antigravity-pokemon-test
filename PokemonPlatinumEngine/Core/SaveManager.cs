@@ -215,6 +215,12 @@ public class SaveData
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public Models.SecretBaseSave? SecretBase { get; set; }
 
+    /// <summary>The Pokéblock Case's Pokéblocks in their places (plan 21 · H11). Null when it is empty, and in older saves.</summary>
+    public List<Pokeblock>? Pokeblocks { get; set; }
+
+    /// <summary>Hoenn's contests entered and won, and the paintings of its winners (plan 21 · H11). Null before the first, and in older saves.</summary>
+    public Models.Contest.HoennContestRecords? HoennContests { get; set; }
+
     /// <summary>The decoration PC of Hoenn's secret bases (plan 21 · H10): every decoration had. Null with none, and in older saves.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public List<Models.StoredDecoration>? Decorations { get; set; }
@@ -224,6 +230,9 @@ public class SaveData
     /// wait in Pal Park, and four of the original's game records. Null in saves from before them.
     /// </summary>
     public Models.PastimesSave? Pastimes { get; set; }
+
+    /// <summary>The Apricorn Box, the trees picked and Kurt's order (plan 20 · J6). Null in saves from before them, and while none has been picked.</summary>
+    public Models.ApricornSave? Apricorns { get; set; }
 
     /// <summary>
     /// The moves of Pokémon between this game's saves that have been begun here and not closed (plan 08 · P22,

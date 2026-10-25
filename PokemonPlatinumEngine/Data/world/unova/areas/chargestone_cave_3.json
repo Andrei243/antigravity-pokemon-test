@@ -1,0 +1,68 @@
+{
+  "key": "chargestone_cave_3",
+  "index": 196,
+  "name": "Chargestone Cave",
+  "matrix": 24,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "BGM_D_02",
+  "nightMusic": "BGM_D_02",
+  "encounters": "ENCOUNTERS_CHARGESTONE_CAVE_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Joltik", "level": 28 },
+    { "species": "Klink", "level": 29 },
+    { "species": "Joltik", "level": 29 },
+    { "species": "Nosepass", "level": 30 },
+    { "species": "Ferroseed", "level": 29 },
+    { "species": "Ferroseed", "level": 30 },
+    { "species": "Joltik", "level": 30 },
+    { "species": "Boldore", "level": 28 },
+    { "species": "Joltik", "level": 31 },
+    { "species": "Klink", "level": 31 },
+    { "species": "Tynamo", "level": 31 },
+    { "species": "Tynamo", "level": 31 }
+  ],
+  "landRate": 18,
+  "shakingGrass": [
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 28 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 29 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 30 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 },
+    { "species": "Drilbur", "level": 31 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 23, "z": 42, "to": "chargestone_cave_2", "toWarp": 3 },
+    { "x": 61, "z": 50, "to": "chargestone_cave_2", "toWarp": 2 },
+    { "x": 53, "z": 5, "to": "chargestone_cave_2", "toWarp": 4 },
+    { "x": 41, "z": 8, "to": "chargestone_cave_4", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "249", "movement": "none", "x": 49, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0316", "script": "1" },
+    { "id": "1", "looks": "youngster", "movement": "none", "x": 40, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "2", "looks": "pokefan_m", "movement": "none", "x": 41, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "2" },
+    { "id": "3", "looks": "110", "movement": "none", "x": 36, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04aa", "item": "Revive", "script": "7094" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 61, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04ab", "item": "Iron", "script": "7095" },
+    { "id": "5", "looks": "pkmn_ranger_f", "movement": "none", "x": 60, "z": 38, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_PKMN_RANGER_BRIANA" },
+    { "id": "6", "looks": "scientist_f_46", "movement": "wander_around", "x": 55, "z": 15, "facing": 1, "rangeX": 3, "rangeZ": 3, "trainer": "sees", "sight": 1, "script": "TRAINER_SCIENTIST_LUMI" },
+    { "id": "7", "looks": "doctor", "movement": "look_north_and_west", "x": 52, "z": 32, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "talks", "sight": 0, "script": "TRAINER_DOCTOR_KIT" }
+  ],
+  "signs": [
+    { "x": 42, "z": 40, "type": 2, "script": "8064", "item": "Ultra Ball", "flag": "FLAG_UNOVA_0x0b44" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,78 @@
+{
+  // The Season Research Lab (plan 22 · U7, part a): Black 2's glass cases of the year's seasons and its Deerlings, our words.
+  // Cheren (0, FLAG_UNOVA_HIDE_CHEREN_LAB) is shown by the scene that takes the player in from Route 6
+  // (unova_route_6_2.txt: the cold snap, Surf); a researcher (8) hands a rare Deerling over once; the lady (9) tells a
+  // weather forecast by what a Pokémon of the team knows
+  "area": "unova_route_6_2",
+  "bgmTrack": "unova/route6",
+  "people": {
+    "0": {
+      "name": "{rival}",
+      "npcType": "cheren",
+      "script": "CherenInTheLab",
+      "still": true,
+      "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_LAB"
+    },
+    "1": {
+      "name": "Researcher",
+      "dialog": [
+        "Welcome to the Season Research Lab! Past Mistralton, Twist Mountain wears snow in winter and bare rock the rest of the year. We watch it all change."
+      ]
+    },
+    "2": {
+      "name": "Deerling",
+      "npcType": "Pokemon",
+      "species": "Deerling",
+      "dialog": [
+        "Deerling: Dree!"
+      ]
+    },
+    "3": {
+      "name": "Researcher",
+      "dialog": [
+        "Some Pokémon change their looks with the seasons. Is that a kind of evolution? We argue about it over lunch."
+      ]
+    },
+    "4": {
+      "name": "Researcher",
+      "dialog": [
+        "The glass case next to me holds one season at a time. A machine keeps its warmth and damp just so."
+      ]
+    },
+    "5": {
+      "name": "Deerling",
+      "npcType": "Pokemon",
+      "species": "Deerling",
+      "dialog": [
+        "Deerling: Dree dree!"
+      ]
+    },
+    "6": {
+      "name": "Deerling",
+      "npcType": "Pokemon",
+      "species": "Deerling",
+      "dialog": [
+        "Deerling: Droon!"
+      ]
+    },
+    "7": {
+      "name": "Deerling",
+      "npcType": "Pokemon",
+      "species": "Deerling",
+      "dialog": [
+        "Deerling: Dreen... droon?"
+      ]
+    },
+    "8": {
+      "name": "Researcher",
+      "script": "DeerlingGift",
+      "still": true
+    },
+    "9": {
+      "name": "Forecaster",
+      "npcType": "parasol_lady",
+      "script": "Forecaster",
+      "still": true
+    }
+  }
+}

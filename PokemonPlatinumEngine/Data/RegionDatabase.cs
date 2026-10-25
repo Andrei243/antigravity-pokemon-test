@@ -661,6 +661,8 @@ public static class RegionDatabase
                 "SecretBase_RedCave2", "SecretBase_BrownCave2", "SecretBase_BlueCave2", "SecretBase_YellowCave2", "SecretBase_Tree2", "SecretBase_Shrub2",
                 "SecretBase_RedCave3", "SecretBase_BrownCave3", "SecretBase_BlueCave3", "SecretBase_YellowCave3", "SecretBase_Tree3", "SecretBase_Shrub3",
                 "SecretBase_RedCave4", "SecretBase_BrownCave4", "SecretBase_BlueCave4", "SecretBase_YellowCave4", "SecretBase_Tree4", "SecretBase_Shrub4",
+                // Plan 21 · H11: Lilycove City's Contest Lobby and Contest Hall
+                "LilycoveCity_ContestLobby", "LilycoveCity_ContestHall",
             }
         },
         new()
@@ -714,6 +716,12 @@ public static class RegionDatabase
                 "BattleSubwayTrain",
                 // and the Pokémon World Tournament's hall (a map of ours, Data/maps/PokemonWorldTournament.json)
                 "PokemonWorldTournament",
+                // Plan 22 · U7, part a: Route 6's Season Research Lab and house, Mistralton Cave, Chargestone Cave's three
+                // floors, Mistralton City's rooms and Gym, Route 7's houses and the Celestial Tower
+                "Route6_SeasonLab", "Route6_House", "MistraltonCave", "ChargestoneCave",
+                "ChargestoneCave_Heart", "ChargestoneCave_Depths", "MistraltonCity_PokemonCenter", "MistraltonCity_Greenhouse",
+                "MistraltonCity_CargoHall", "MistraltonCity_House", "MistraltonCity_Gym", "Route7_House1", "Route7_House2", "LentimasTown_PokemonCenter", "LentimasTown_House1", "LentimasTown_House2",
+                "CelestialTower_1F", "CelestialTower_2F", "CelestialTower_3F", "CelestialTower_4F", "CelestialTower_Summit",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

@@ -1,0 +1,107 @@
+# Route 6 (plan 22 · U7, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the
+# decompilation's res/field/scripts/route_6.s, read for the order alone).
+# VAR_UNOVA_ROUTE_6 is the route's count (Black 2's 0x40c9 and 0x40ca): 0 until the Plasma Frigate has sailed, 1 while
+# Cheren waits on the path before the Season Research Lab (the arrival sets it), 2 once he has taken the player in
+# (unova_route_6_2.txt tells the cold snap and gives Surf), 3 once Cobalion has run across the west bridge.
+#
+# Once VAR_UNOVA_PWT is 3 Cheren (8, FLAG_UNOVA_HIDE_CHEREN_ROUTE_6) stands on the path; our trigger across it (138, 371
+# to 375, at 1), or the player speaking to him, has him ask the player to come with him: they walk to the lab's door and
+# in. On the bridge in the west (our trigger on 102 to 104, 365, at 2) Cobalion shows itself across the water; Rood (10) and
+# an old man (9) come up beside the road to wonder at it and stay to talk.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_PWT < 3 end
+  if var VAR_UNOVA_ROUTE_6 != 0 end
+  setvar VAR_UNOVA_ROUTE_6 1
+  clearflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  end
+
+
+script CherenCalls
+  call CherenTakesYouIn
+  end
+
+
+script CherenOnTheRoad
+  face 8 player
+  speaker "Cheren"
+  if var VAR_UNOVA_ROUTE_6 == 1 goto Calls
+  say "I'm going over the lab's records a while longer. Take care out there, {player}."
+  end
+label Calls
+  call CherenTakesYouIn
+  end
+
+
+# Cheren asks the player to come with him to the lab, then they go in together
+script CherenTakesYouIn
+  scene "Cheren calls the player to the lab"
+  place player 138 373 left
+  face 8 player
+  speaker "Cheren"
+  say "{player}, there you are. I hoped you would come this way."
+  say "Come with me for a moment, would you? There's something I want to talk over, and the lab is the quietest place for miles."
+  walk 8 up 3
+  walk player left 3 up 2
+  walk 8 up 1
+  hide 8
+  setflag FLAG_UNOVA_HIDE_CHEREN_ROUTE_6
+  walk player up 1
+  endscene
+  warp "Route6_SeasonLab" 5 8 up
+  return
+
+
+# On the bridge in the west, once the lab has been visited (our trigger on 102 to 104, 365, at 2)
+script CobalionPasses
+  scene "Cobalion on Route 6"
+  camera pan 98 365 1
+  place cobalion 98 365 right
+  clearflag FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  show cobalion
+  wait 0.6
+  cry "Cobalion"
+  wait 1.2
+  hide cobalion
+  setflag FLAG_UNOVA_HIDE_COBALION_ROUTE_6
+  camera release 1
+  place 10 102 363 down
+  place 9 103 363 down
+  clearflag FLAG_UNOVA_HIDE_ROOD_ROUTE_6
+  clearflag FLAG_UNOVA_HIDE_OLDMAN_ROUTE_6
+  show 10
+  show 9
+  face player up
+  speaker "Rood"
+  say "That Pokémon...?"
+  speaker "Old Man"
+  say "That's the legendary Pokémon Cobalion! I told you the tale the other day, remember?"
+  speaker "Rood"
+  say "Cobalion! What a noble presence it has."
+  speaker "Old Man"
+  say "They say Cobalion, Virizion and Terrakion stood against people to protect Pokémon from a war that the people had started."
+  say "When people fight, there is no peace for Pokémon either. The three learned how far the deeds of humans can reach into the world of Pokémon."
+  say "But why would it show itself to people at all? Is it on watch over Unova for the Pokémon's sake, after what Team Plasma did two years ago? Or does it feel a new trouble coming?"
+  speaker "Rood"
+  say "Unforgivable... So Ghetsis's ambition and malice are still spreading, and still bending the lives they touch."
+  say "Did Cobalion show itself to you by chance, or to ask for your help? I cannot know. Unlike Lord N, I was never able to understand the minds of Pokémon."
+  say "But if you can win Cobalion's trust, it will be a great strength to you on your journey."
+  setvar VAR_UNOVA_ROUTE_6 3
+  endscene
+  end
+
+
+script OldManAboutCobalion
+  face 9 player
+  speaker "Old Man"
+  say "People and Pokémon alike would do well to trust one another. That's all the three legends ever wanted, I think."
+  end
+
+
+script RoodAboutCobalion
+  face 10 player
+  speaker "Rood"
+  say "If Cobalion wishes to find you, it will. Be patient and keep your Pokémon close."
+  end

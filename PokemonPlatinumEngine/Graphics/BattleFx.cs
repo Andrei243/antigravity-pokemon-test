@@ -117,14 +117,15 @@ internal sealed class FxList
 /// <summary>Where each Pokémon stands and how tall it is this frame, for aiming effects and the camera.</summary>
 internal sealed class FxPlaces
 {
-    private readonly Vector3[,] feet = new Vector3[2, 2];
-    private readonly float[,] height = new float[2, 2];
-    private readonly float[,] halfWidth = new float[2, 2];
+    // Every place a battle can have: a horde's five on the wild side (plan 14 · B4)
+    private readonly Vector3[,] feet = new Vector3[2, BattleAnimator.MostSlots];
+    private readonly float[,] height = new float[2, BattleAnimator.MostSlots];
+    private readonly float[,] halfWidth = new float[2, BattleAnimator.MostSlots];
 
     public FxPlaces()
     {
         // The settled stage's places and typical heights, for anything aimed before the renderer measures
-        for (int slot = 0; slot < 2; slot++)
+        for (int slot = 0; slot < BattleAnimator.MostSlots; slot++)
         {
             Set(BattleSide.Enemy, slot, BattleStage.EnemySpot + new Vector3(0, BattleStage.PlatformHeight, 0), 2.2f);
             Set(BattleSide.Player, slot, BattleStage.PlayerSpot + new Vector3(0, BattleStage.PlatformHeight, 0), 1.2f);
@@ -150,13 +151,13 @@ internal sealed class FxPlaces
     public float HalfWidth(BattleSide side, int slot)
     {
         float h = Height(side, slot);
-        return Math.Clamp(halfWidth[(int)side, Math.Clamp(slot, 0, 1)], h * 0.2f, h * 0.6f);
+        return Math.Clamp(halfWidth[(int)side, BattleAnimator.Within(slot)], h * 0.2f, h * 0.6f);
     }
 
-    public Vector3 Feet(BattleSide side, int slot) => feet[(int)side, Math.Clamp(slot, 0, 1)];
+    public Vector3 Feet(BattleSide side, int slot) => feet[(int)side, BattleAnimator.Within(slot)];
 
     /// <summary>Height of the Pokémon standing there (or a typical one), world units.</summary>
-    public float Height(BattleSide side, int slot) => height[(int)side, Math.Clamp(slot, 0, 1)];
+    public float Height(BattleSide side, int slot) => height[(int)side, BattleAnimator.Within(slot)];
 
     /// <summary>The middle of its body: where moves aim.</summary>
     public Vector3 Body(BattleSide side, int slot) => Feet(side, slot) + Vector3.UnitY * Height(side, slot) * 0.5f;

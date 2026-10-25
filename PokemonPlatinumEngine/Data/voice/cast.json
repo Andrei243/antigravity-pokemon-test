@@ -47,6 +47,10 @@
       "note": "first spoken at route_36.txt(103)",
       "provisional": true
     },
+    "artist": {
+      "note": "first spoken at lilycove_city_contest_lobby.txt(145)",
+      "provisional": true
+    },
     "assistant": {
       "note": "The character the player isn't, under the default name: chosen by the player's look when a talk starts.",
       "chooses": [
@@ -357,6 +361,10 @@
     "flint": {},
     "florist": {
       "note": "first spoken at goldenrod_flower_shop.txt(10)",
+      "provisional": true
+    },
+    "forecaster": {
+      "note": "first spoken at unova_route_6_2.txt(69)",
       "provisional": true
     },
     "foreman": {
@@ -688,6 +696,10 @@
     "mystery": {
       "note": "Whoever the box calls ???."
     },
+    "n": {
+      "note": "first spoken at chargestone_cave_2.txt(40)",
+      "provisional": true
+    },
     "neighbour": {
       "note": "first spoken at littleroot_town_mays_house_1f.txt(13)",
       "provisional": true
@@ -697,6 +709,14 @@
       "provisional": true
     },
     "norman": {},
+    "nugget_boy": {
+      "note": "first spoken at chargestone_cave_3.txt(38)",
+      "provisional": true
+    },
+    "nugget_man": {
+      "note": "first spoken at chargestone_cave_3.txt(24)",
+      "provisional": true
+    },
     "nursery_aide": {
       "note": "first spoken at driftveil_city_7.txt(27)",
       "provisional": true
@@ -924,6 +944,10 @@
       "note": "first spoken at fallarbor_town_mart.txt(5)",
       "provisional": true
     },
+    "skyla": {
+      "note": "first spoken at mistralton_city.txt(48)",
+      "provisional": true
+    },
     "slowbro": {
       "note": "first spoken at cerulean_city.txt(165)",
       "provisional": true
@@ -1118,6 +1142,7 @@
     "Argenta": "argenta",
     "Ariana": "ariana",
     "Arthur": "arthur",
+    "Artist": "artist",
     "Assistant": "assistant_2",
     "Attendant": "look:attendant",
     "Avery": "avery",
@@ -1211,6 +1236,7 @@
     "Fleming": "fleming",
     "Flint": "flint",
     "Florist": "florist",
+    "Forecaster": "forecaster",
     "Foreman": "foreman",
     "Former Member": "former_member",
     "Fossil Maniac": "fossil_maniac",
@@ -1312,9 +1338,12 @@
     "Mr. Psychic": "mr_psychic",
     "Mr. Stone": "mr_stone",
     "Murkrow": "murkrow",
+    "N": "n",
     "Neighbour": "neighbour",
     "Nikola": "nikola",
     "Norman": "norman",
+    "Nugget Boy": "nugget_boy",
+    "Nugget Man": "nugget_man",
     "Nurse": "look:nurse",
     "Nursery Aide": "nursery_aide",
     "Officer": "officer",
@@ -1381,6 +1410,7 @@
     "Sidney": "sidney",
     "Sign": "sign",
     "Skitty": "skitty",
+    "Skyla": "skyla",
     "Slowbro": "slowbro",
     "Socialite": "socialite",
     "Station Agent": "station_agent",

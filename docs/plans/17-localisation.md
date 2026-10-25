@@ -588,3 +588,10 @@ Placeholders and plan 09's markup pass through untouched; a translation may use 
   - **Names in the lines**: Linia Orașului Anville, Stația Gear, Podul Marvelous, Pasajul Relicvelor, Triada Umbrelor, Zinzolin and Colress kept, speaker tag "Grunt" as in `classes`, shop choices "NU, MERSI" / "MAI MULTE" / "ÎNAPOI LA ÎNCEPUT" with decorations translated and Pokémon names kept; Pokémon World Tournament and the Battle Subway's trains as in N6w.
   - **The player without gender**: no gendered adjective or vocative.
   - **Left**: whatever wave 50 writes in English, the next slice, N6z.
+
+- [x] N6z Wave 50's lines in Romanian (done 2026-10-25, wave 51)
+
+- **N6z, done 2026-10-25 (wave 51)**: everything written in English in wave 50 and not yet translated: 251 entries in 19 files, all by hand. Unova part d (the Battle Subway's desks and cars with Ingo and Emmet, the Pokémon World Tournament's hall, desk and first tournament, Driftveil Market's three sellers, Anville's two trades and the lost Pansage), Hoenn part c (Scott's pass and crossing, the Frontier guide, the League rooms' rematch lines, the six Match Call calls). `extract ro --update` added nothing. `report ro` and `--check`: nothing untranslated, stale, unknown or wrong. `--filter ScriptTranslationTests`: 19 passed.
+  - **Names in the lines**: Battle Subway "Metroul de Luptă" and its trains "Trenul Simplu/Dublu/Multiplu" as already in `GearStation`, Subway Bosses "Șefii Metroului", Battle Points "Puncte de Luptă" (PL), Scott's Frontier Pass "Permisul Frontier"; Pokémon World Tournament, Battle Frontier, Ingo, Emmet, Clay, Elite Four kept in English; speaker tags as in N6x ("Agentul depoului", "Recepționera").
+  - **The player without gender**: no gendered adjective or vocative.
+  - **Left**: whatever wave 51 writes in English, the next slice, N6za.

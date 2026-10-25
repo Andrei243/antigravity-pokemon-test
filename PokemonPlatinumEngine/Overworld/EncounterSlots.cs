@@ -69,6 +69,12 @@ public sealed record EncounterMoment
     /// tables (<see cref="MapArea.TablesFor"/>). Null in every region without seasons, where the area's own are met.
     /// </summary>
     public Season? Season { get; init; }
+
+    /// <summary>
+    /// The hordes the region's tall grass holds now (plan 14 · B4, <see cref="Hordes"/>): its places' tables once its
+    /// Hall of Fame is entered, under rules that have hordes. Null where none may be met, and nothing is drawn for one.
+    /// </summary>
+    public HordeTables? Hordes { get; init; }
 }
 
 /// <summary>How a swarm is met (plan 20 · J13, part c; HeartGold's <c>sSwarmMapLUT</c> keeps a way beside each place).</summary>

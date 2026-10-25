@@ -59,6 +59,21 @@
     "description": "A package of Devon parts, bound for Captain Stern at the shipyard in Slateport City.",
     "cantBeTossed": true
   },
+  // Emerald's Pokéblock Case (plan 21 · H11), which no game this importer reads has: the Lilycove Contest Lobby's
+  // receptionist gives it once, and it holds the Pokéblocks the Berry Blender makes (Models/Pokeblocks.cs)
+  "Pokéblock Case": {
+    "id": 9300,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Holds Pokéblocks, the treats the Berry Blender makes of berries. Open it to feed one to a Pokémon.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "PokeblockCase"
+  },
   "Wailmer Pail": {
     "id": 9102,
     "pocket": "KeyItems",
@@ -397,6 +412,8 @@
   "Love Ball": { "description": "Catches a Pokémon of your own Pokémon's species and the other gender eight times as easily." },
   "Park Ball": { "description": "A Poké Ball that never fails. It belongs to the Pal Park." },
   "Sport Ball": { "description": "A Poké Ball made for catching contests. It catches 1.5 times as easily." },
+  // The Apricorn Box (plan 20 · J6): our own words
+  "Apricorn Box": { "description": "A box for the Apricorns picked from trees. Kurt of Azalea Town turns a colour of them into Poké Balls." },
   // The key items that change a form (plan 06 · R29): our own words, where PokeAPI's are a placeholder or say what
   // isn't so here
   "N-Solarizer": { "description": "Fuses Necrozma with Solgaleo, or splits them apart again." },

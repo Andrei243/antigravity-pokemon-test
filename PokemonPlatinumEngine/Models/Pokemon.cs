@@ -315,6 +315,10 @@ public class PokemonSpecies
     [JsonIgnore]
     public bool IsGenderless => GenderRatio < 0;
 
+    /// <summary>A species of our own (plan 03 · D14), numbered from <see cref="PokemonDatabase.OursFrom"/>: none of the games' numbers or counts.</summary>
+    [JsonIgnore]
+    public bool IsOurs => DexNumber >= PokemonDatabase.OursFrom;
+
     /// <summary>One of its forms by name, in any case; null for a name it has no form of.</summary>
     public PokemonForm? Form(string? name) =>
         name == null ? null : Forms?.Find(f => f.Name.Equals(name, StringComparison.OrdinalIgnoreCase));

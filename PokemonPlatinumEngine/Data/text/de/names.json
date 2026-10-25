@@ -4064,6 +4064,7 @@
     "Vs. Recorder": "Kampfkamera",
     "Gracidea": "Gracidea",
     "Secret Key": "Geheimschlüssel",
+    "Apricorn Box": "Aprikokobox",
     "Lure Ball": "Köderball",
     "Level Ball": "Levelball",
     "Moon Ball": "Mondball",
@@ -4541,7 +4542,8 @@
     "Devon Scope": "Devon-Scope",
     "Magma Emblem": "Magmaemblem",
     "Basement Key": "Kelleröffner",
-    "Rainbow Wing": "Buntschwinge"
+    "Rainbow Wing": "Buntschwinge",
+    "Pokéblock Case": "Pokériegelbox"
   },
   "types": {
     "Normal": "Normal",

@@ -3596,6 +3596,7 @@
     "Vs. Recorder": "Registradati",
     "Gracidea": "Gracidea",
     "Secret Key": "Chiave segreta",
+    "Apricorn Box": "Ghicobox",
     "Lure Ball": "Esca Ball",
     "Level Ball": "Level Ball",
     "Moon Ball": "Luna Ball",
@@ -4073,7 +4074,8 @@
     "Devon Scope": "Devonscopio",
     "Magma Emblem": "Stemma Magma",
     "Basement Key": "Chiave sotterr.",
-    "Rainbow Wing": "Ala d'Iride"
+    "Rainbow Wing": "Ala d'Iride",
+    "Pokéblock Case": "PortaPokémelle"
   },
   "types": {
     "Normal": "Normale",

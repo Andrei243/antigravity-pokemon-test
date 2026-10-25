@@ -62,6 +62,21 @@ internal static partial class ModernUi
                 }
             }
         }
+        else if (battle.IsHorde)
+        {
+            // A horde (plan 14 · B4): the foes' small boxes stacked down the left, the player's own box as in a single.
+            // The information panel shows every foe on a card of its own, so the boxes stand back while it is open
+            if (hud.MenuState != BattleMenuState.Info)
+                for (int slot = 0; slot < anim.SlotsOf(BattleSide.Enemy); slot++)
+                {
+                    var foe = anim[BattleSide.Enemy, slot];
+                    float slide = BattleHUD.BoxSlide(anim, foe);
+                    var at = HordeBoxAt(slot);
+                    if (slide >= 0f) HordeBox(at.X - 640 * slide, at.Y, foe, battle.ShowsCaughtMark(foe.Shown!));
+                }
+            float playerSlide = BattleHUD.BoxSlide(anim, anim.Player);
+            if (playerSlide >= 0f && !boxCovered) PlayerBox(1240 + 760 * playerSlide, 650, anim.Player);
+        }
         else
         {
             float enemySlide = BattleHUD.BoxSlide(anim, anim.Enemy);
@@ -209,19 +224,58 @@ internal static partial class ModernUi
         GiantTags(r, view);
     }
 
+    /// <summary>A horde's small HP box (plan 14 · B4; style guide, "Battle panels", "A horde's boxes").</summary>
+    public const float HordeBoxWidth = 440, HordeBoxHeight = 86;
+
     /// <summary>
-    /// Where to aim a move in a double battle: the four places as cards laid out like the field (foes on top), the
-    /// ones that can be chosen lit, with the move described beside them.
+    /// Where a horde's foe's box stands: stacked down the left from the top, each a step to the right of the one over
+    /// it, as a double's two are; the fifth ends above the middle of the picture, clear of the message box.
+    /// </summary>
+    public static Vector2 HordeBoxAt(int slot) => new(48 + slot * 12, 28 + slot * 96);
+
+    /// <summary>A horde's foe's box: its name, condition and level over its HP bar, smaller than a double's.</summary>
+    private static void HordeBox(float x, float y, CombatantView view, bool caught)
+    {
+        var p = view.Shown!;
+        var r = new Rectangle(x, y, HordeBoxWidth, HordeBoxHeight);
+        Panel(r, 18, -0.2f, 4f, null);
+        float nameW = NameWithGender(p, x + 30, y + 27, 26);
+        if (caught) nameW += CaughtMark(x + 30 + nameW, y + 27, 26);
+        StatusPill(x + 30 + nameW + 10, y + 14, p.Status, 24);
+        Level(x + r.Width - 34, y + 27, p.Level, 26);
+        HpBar(x + 30, y + 52, r.Width - 30 - 38, 16, view.DisplayedHp / Math.Max(1, p.MaxHP));
+        GiantTags(r, view);
+    }
+
+    /// <summary>
+    /// Where a card of the target menu stands (style guide, "Battle panels"): two to a row in a double, as ever, and a
+    /// horde's five foes in a row over the player's one, the cards narrower to fit the same width.
+    /// </summary>
+    public static Rectangle TargetCard(int index, int columns)
+    {
+        if (columns <= 2) return new Rectangle(48 + (index % 2) * 556, 836 + (index / 2) * 104, 536, 96);
+        const float gap = 12f, across = 1092f;
+        float width = (across - gap * (columns - 1)) / columns;
+        return new Rectangle(48 + (index % columns) * (width + gap), 836 + (index / columns) * 104, width, 96);
+    }
+
+    /// <summary>
+    /// Where to aim a move in a double battle or a horde: the places as cards laid out like the field (foes on top),
+    /// the ones that can be chosen lit, with the move described beside them.
     /// </summary>
     private static void TargetMenu(BattleHUD hud, BattleEngine battle)
     {
         var choices = battle.TargetChoices;
         var places = battle.TargetLayout;
-        for (int i = 0; i < 4; i++)
+        int columns = battle.TargetColumns;
+        bool narrow = columns > 2;
+        for (int i = 0; i < places.Count; i++)
         {
-            var r = new Rectangle(48 + (i % 2) * 556, 836 + (i / 2) * 104, 536, 96);
+            var r = TargetCard(i, columns);
             var place = places[i];
             int choice = place == null ? -1 : IndexOf(choices, place);
+            // A horde's row of one has no empty cards beside the player's
+            if (narrow && place == null) continue;
             if (place?.Pokemon == null || place.Pokemon.IsFainted)
             {
                 UiShapes.Shape(r, 26, new Color(226, 232, 242, 220), new Color(214, 222, 236, 220), new Color(180, 190, 210, 255), 3);
@@ -243,18 +297,32 @@ internal static partial class ModernUi
             }
 
             var p = place.Pokemon;
-            Portrait(new Vector2(r.X + 56, r.Y + r.Height / 2f), 38, p, 1, selected);
-            NameWithGender(p, r.X + 112, r.Y + 34, 30);
-            Level(r.X + r.Width - 30, r.Y + 34, p.Level, 28);
-            HpBar(r.X + 112, r.Y + 62, r.Width - 142, 18, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
+            if (narrow)
+            {
+                // A horde's narrow card: the portrait, the name fitted to the card, the HP bar; no level
+                Portrait(new Vector2(r.X + 40, r.Y + r.Height / 2f), 28, p, 1, selected);
+                float fits = Math.Min(24f, 24f * (r.Width - 96) / Math.Max(1f, UiFonts.Measure(p.DisplayName, 24, UiWeight.Black)));
+                NameWithGender(p, r.X + 76, r.Y + 32, fits);
+                HpBar(r.X + 76, r.Y + 58, r.Width - 96, 14, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
+            }
+            else
+            {
+                Portrait(new Vector2(r.X + 56, r.Y + r.Height / 2f), 38, p, 1, selected);
+                NameWithGender(p, r.X + 112, r.Y + 34, 30);
+                Level(r.X + r.Width - 30, r.Y + 34, p.Level, 28);
+                HpBar(r.X + 112, r.Y + 62, r.Width - 142, 18, (float)p.CurrentHP / Math.Max(1, p.MaxHP));
+            }
             if (choice < 0) UiShapes.Fill(r, 26, new Color(40, 40, 60, 60));
         }
 
         // How the move will do against each place it can be aimed at, hung on the card's top edge (plan 12 · Q10)
         if (battle.TargetingMove is { } aimed)
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < places.Count; i++)
                 if (places[i] is { } place && IndexOf(choices, place) >= 0)
-                    HintPill(48 + (i % 2) * 556 + 536 - 24, 836 + (i / 2) * 104, battle.HintFor(aimed, place), alignRight: true);
+                {
+                    var card = TargetCard(i, columns);
+                    HintPill(card.X + card.Width - 24, card.Y, battle.HintFor(aimed, place), alignRight: true);
+                }
 
         var info = new Rectangle(1172, 836, 700, 200);
         Panel(info, 28);
@@ -476,7 +544,8 @@ internal static partial class ModernUi
         if (battle.ShowsMoveHints)
         {
             var left = battle.IsDouble ? battle.EnemySlots.ElementAtOrDefault(1) : null;
-            var right = battle.EnemySlots[0];
+            // A horde's move cards tell of the first foe still standing; the target menu tells of each (plan 14 · B4)
+            var right = battle.IsHorde ? battle.EnemySlots.FirstOrDefault(b => b.IsActive) ?? battle.EnemySlots[0] : battle.EnemySlots[0];
             for (int i = 0; i < Math.Min(4, p.Moves.Count); i++)
             {
                 var r = new Rectangle(48 + (i % 2) * 556, 848 + (i / 2) * 100, 536, 88);
@@ -754,9 +823,35 @@ internal static partial class ModernUi
         float height = Math.Min(300, (room - 16 * (n - 1)) / n);
         foreach (var card in side.Pokemon)
         {
-            InfoCard(new Rectangle(r.X + 24, y, r.Width - 48, height), card);
+            // A horde's five foes share the column on small cards (plan 14 · B4)
+            if (height < InfoCardSmallest) InfoCardSmall(new Rectangle(r.X + 24, y, r.Width - 48, height), card);
+            else InfoCard(new Rectangle(r.X + 24, y, r.Width - 48, height), card);
             y += height + 16;
         }
+    }
+
+    /// <summary>The least height a whole information card is drawn at; under it a card is a small one.</summary>
+    public const float InfoCardSmallest = 140f;
+
+    /// <summary>
+    /// A small information card, for a horde's foes (plan 14 · B4): the icon, name, status and level, and on one line
+    /// its ability and item, or a word that the player hasn't seen them. Its stages and conditions are left to the
+    /// whole card of a battle with fewer.
+    /// </summary>
+    private static void InfoCardSmall(Rectangle r, PokemonInfo card)
+    {
+        var p = card.Pokemon;
+        Card(r, 22, false);
+        float mid = r.Y + r.Height / 2f;
+        Portrait(new Vector2(r.X + 48, mid), Math.Min(34f, r.Height / 2f - 6f), p, 1, false);
+        float x = r.X + 96;
+        float nameW = NameWithGender(p, x, r.Y + 26, 26);
+        StatusPill(x + nameW + 10, r.Y + 12, p.Status, 24);
+        Level(r.X + r.Width - 26, r.Y + 26, p.Level, 26);
+        string ability = card.Ability ?? Text.Of("battleMenu.info.notSeen");
+        string item = card.Item ?? Text.Of("battleMenu.info.notSeen");
+        UiFonts.DrawCentered(ability, x, r.Y + r.Height - 24, 22, card.Ability != null ? Ink : Muted, UiWeight.ExtraBold);
+        UiFonts.DrawCentered(item, x + 320, r.Y + r.Height - 24, 22, card.Item != null ? Ink : Muted, UiWeight.ExtraBold);
     }
 
     /// <summary>

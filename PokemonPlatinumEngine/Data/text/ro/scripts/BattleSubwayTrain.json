@@ -5,7 +5,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Car {number}: {foe} wants to battle!"
       ],
       "text": [
-        ""
+        "Vagonul {number}: {foe} vrea să se lupte!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Well done! The next car is coming up."
       ],
       "text": [
-        ""
+        "Bravo! Urmează vagonul următor."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Ingo"
       ],
       "text": [
-        ""
+        "Ingo"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "All aboard! I'm Ingo, a Subway Boss, and this is the car where the trains' stories begin."
       ],
       "text": [
-        ""
+        "Toți la bord! Sunt Ingo, un Șef al Metroului, iar acesta e vagonul unde încep poveștile trenurilor."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Few reach it. Show me why you did!"
       ],
       "text": [
-        ""
+        "Puțini ajung aici. Arată-mi de ce ai ajuns!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Emmet"
       ],
       "text": [
-        ""
+        "Emmet"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Departing now! I'm Emmet, a Subway Boss, and I've seen every battle this line has to offer."
       ],
       "text": [
-        ""
+        "Plecăm acum! Sunt Emmet, un Șef al Metroului, și am văzut toate luptele pe care le oferă linia asta."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Let's see if you have a new one for me!"
       ],
       "text": [
-        ""
+        "Să vedem dacă ai una nouă pentru mine!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Ingo"
       ],
       "text": [
-        ""
+        "Ingo"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "All aboard! You and your partner have come a long way, so we'll ride the rest of it together."
       ],
       "text": [
-        ""
+        "Toți la bord! Voi doi ați ajuns departe, așa că vom parcurge restul drumului împreună."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Emmet"
       ],
       "text": [
-        ""
+        "Emmet"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Two against two, side by side. Departing now!"
       ],
       "text": [
-        ""
+        "Doi contra doi, umăr la umăr. Plecăm acum!"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Ingo"
       ],
       "text": [
-        ""
+        "Ingo"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "A splendid ride! The line is yours to keep running."
       ],
       "text": [
-        ""
+        "O călătorie splendidă! Linia e a ta, ține-o în mișcare."
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Emmet"
       ],
       "text": [
-        ""
+        "Emmet"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "End of the line! ...For me, anyway. Yours goes on."
       ],
       "text": [
-        ""
+        "Capăt de linie! ...Pentru mine, cel puțin. A ta merge mai departe."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "Well done! The next car is coming up."
       ],
       "text": [
-        ""
+        "Bravo! Urmează vagonul următor."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "That's the end of the line for this set. {number} cars cleared in a row!"
       ],
       "text": [
-        ""
+        "Acesta e capătul liniei pentru această serie. {number} vagoane învinse la rând!"
       ]
     },
     {
@@ -175,9 +175,9 @@
         "GO ON"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Cobori aici sau continui cu seria următoare?",
+        "COBOARĂ",
+        "CONTINUĂ"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Thank you for riding the Battle Subway! Here are the Battle Points you earned."
       ],
       "text": [
-        ""
+        "Mulțumim că ai circulat cu Metroul de Luptă! Iată Punctele de Luptă câștigate."
       ]
     },
     {
@@ -193,7 +193,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} PL!"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Thank you for riding the Battle Subway!"
       ],
       "text": [
-        ""
+        "Mulțumim că ai circulat cu Metroul de Luptă!"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "Oh, bad luck! That's the end of the ride. You cleared {number} cars before you were stopped."
       ],
       "text": [
-        ""
+        "Oh, ghinion! Aici se termină călătoria. Ai învins {number} vagoane înainte să fii oprit."
       ]
     },
     {
@@ -225,7 +225,7 @@
         "The sets you cleared still count. Here are the Battle Points you earned."
       ],
       "text": [
-        ""
+        "Seriile învinse se păstrează. Iată Punctele de Luptă câștigate."
       ]
     },
     {
@@ -233,7 +233,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} PL!"
       ]
     }
   ]

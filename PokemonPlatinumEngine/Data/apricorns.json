@@ -1,0 +1,37 @@
+{
+  "colours": [
+    { "name": "Red", "ball": "Level Ball", "rgb": [214, 62, 56] },
+    { "name": "Blue", "ball": "Lure Ball", "rgb": [66, 126, 214] },
+    { "name": "Yellow", "ball": "Moon Ball", "rgb": [240, 204, 70] },
+    { "name": "Green", "ball": "Friend Ball", "rgb": [92, 176, 78] },
+    { "name": "Pink", "ball": "Love Ball", "rgb": [240, 130, 176] },
+    { "name": "White", "ball": "Fast Ball", "rgb": [238, 238, 244] },
+    { "name": "Black", "ball": "Heavy Ball", "rgb": [70, 72, 88] }
+  ],
+  "trees": [
+    { "area": "violet", "id": "t22_bonguri", "colour": "Green" },
+    { "area": "route_29", "id": "r29_bonguri", "colour": "Pink" },
+    { "area": "route_30", "id": "r30_bonguri", "colour": "Blue" },
+    { "area": "route_30", "id": "r30_bonguri_2", "colour": "Black" },
+    { "area": "route_31", "id": "r31_bonguri", "colour": "Red" },
+    { "area": "azalea", "id": "t23_bonguri", "colour": "Black" },
+    { "area": "route_33", "id": "r33_bonguri", "colour": "Pink" },
+    { "area": "route_33", "id": "r33_bonguri_2", "colour": "Green" },
+    { "area": "route_35", "id": "r35_bonguri", "colour": "Yellow" },
+    { "area": "route_36", "id": "r36_bonguri", "colour": "Blue" },
+    { "area": "route_37", "id": "r37_bonguri", "colour": "Red" },
+    { "area": "route_37", "id": "r37_bonguri_2", "colour": "Red" },
+    { "area": "route_37", "id": "r37_bonguri_3", "colour": "Red" },
+    { "area": "route_38", "id": "r38_bonguri", "colour": "White" },
+    { "area": "route_39", "id": "r39_bonguri", "colour": "Black" },
+    { "area": "route_42", "id": "r42_bonguri", "colour": "Green" },
+    { "area": "route_42", "id": "r42_bonguri_2", "colour": "Pink" },
+    { "area": "route_42", "id": "r42_bonguri_3", "colour": "Blue" },
+    { "area": "route_43", "id": "r43_bonguri", "colour": "Yellow" },
+    { "area": "route_44", "id": "r44_bonguri", "colour": "Red" },
+    { "area": "route_45", "id": "r45_bonguri", "colour": "White" },
+    { "area": "route_46", "id": "r46_bonguri", "colour": "Black" },
+    { "area": "route_46", "id": "r46_bonguri_2", "colour": "Pink" },
+    { "area": "route_26", "id": "r26_bonguri", "colour": "Green" }
+  ]
+}

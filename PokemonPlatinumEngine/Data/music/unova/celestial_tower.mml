@@ -1,0 +1,35 @@
+# The Celestial Tower (the tower where Pokémon are laid to rest): a slow tolling bell tune in A minor over a hushed choir, a
+# low string line, a harp that rises and falls like breath, and a single timpani stroke every second bar. The tower plays
+# the same by day and by night. Original composition for this game (plan 22 · U7, part a).
+title Celestial Tower
+tempo 66
+meter 4/4
+reverb 0.5
+night none
+
+track lead bell vol=0.66 pan=0.1 rev=0.5
+  L o5 e2 a2 | o5 c2 f2 | o5 e2 g2 | o5 d2 g2 |
+  o5 a2. e4 | o5 f2. c4 | o5 d2 f2 | o5 g+2 e2 |
+  o6 c2 o5 a2 | o5 f2 a2 | o6 e2 c2 | o5 b2 o6 d2 |
+  o6 e2. c4 | o5 a2. f4 | o5 f2 d2 | o5 e1 |
+
+track pad choir vol=0.42 pan=-0.2 rev=0.5
+  L o4 (a >c e)1 | o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (d f a)1 | o4 (e g+ b)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (c e g)1 | o4 (g b >d)1 |
+  o4 (a >c e)1 | o4 (f a >c)1 | o4 (d f a)1 | o4 (e g+ b)1 |
+
+track low contrabass vol=0.66 rev=0.2
+  L o2 a1 | o2 f1 | o2 c1 | o2 g1 |
+  o2 a1 | o2 f1 | o2 d1 | o2 e1 |
+  o2 a1 | o2 f1 | o2 c1 | o2 g1 |
+  o2 a1 | o2 f1 | o2 d1 | o2 e1 |
+
+track breath harp vol=0.44 pan=0.24 rev=0.4
+  L [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 a8 ]2 | [ o4 d8 f8 a8 f8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 a8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 g8 b8 >d8 o4 b8 ]2 |
+  [ o4 a8 >c8 e8 c8 ]2 | [ o4 f8 a8 >c8 a8 ]2 | [ o4 d8 f8 a8 f8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+
+track toll timpani vol=0.44 rev=0.4
+  L [ o2 a1 | r1 | ]8

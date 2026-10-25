@@ -19,7 +19,8 @@ public class BattleBallTests
     private static readonly string[] Kinds =
     {
         "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Safari Ball", "Net Ball", "Dive Ball",
-        "Nest Ball", "Repeat Ball", "Timer Ball", "Luxury Ball", "Dusk Ball", "Heal Ball", "Quick Ball", "Cherish Ball"
+        "Nest Ball", "Repeat Ball", "Timer Ball", "Luxury Ball", "Dusk Ball", "Heal Ball", "Quick Ball", "Cherish Ball",
+        "Fast Ball", "Level Ball", "Lure Ball", "Heavy Ball", "Love Ball", "Friend Ball", "Moon Ball"
     };
 
     private static readonly Vector3 At = new(1f, 1.2f, -2f);
@@ -92,11 +93,11 @@ public class BattleBallTests
     // ------------------------------------------------------------------ the kinds
 
     [Fact]
-    public void TheSixteenKindsAreDistinctLooks()
+    public void TheTwentyThreeKindsAreDistinctLooks()
     {
         var looks = Kinds.Select(BattleBall.LookOf).ToArray();
-        Assert.Equal(16, looks.Select(l => l.Kind).Distinct().Count());
-        Assert.Equal(16, looks.Distinct().Count());
+        Assert.Equal(23, looks.Select(l => l.Kind).Distinct().Count());
+        Assert.Equal(23, looks.Distinct().Count());
         for (int i = 0; i < Kinds.Length; i++) Assert.Equal((BallKind)i, looks[i].Kind);
     }
 

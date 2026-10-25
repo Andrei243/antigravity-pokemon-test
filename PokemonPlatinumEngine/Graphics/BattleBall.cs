@@ -9,13 +9,13 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>The marks on a ball's top half.</summary>
-internal enum BallMark { None, Wings, H, Domes, Stripes, Spots }
+internal enum BallMark { None, Wings, H, Domes, Stripes, Spots, Crescent, Heart, Bars }
 
 /// <summary>How one kind of ball looks: its two halves, the band round its middle and its marks.</summary>
 internal readonly record struct BallLook(Color Top, Color Bottom, Color Band, Color Accent, BallMark Mark, BallKind Kind = BallKind.Poke);
 
-/// <summary>The sixteen kinds of ball the battle draws (plan 25 · Y4); each has a release of its own.</summary>
-internal enum BallKind { Poke, Great, Ultra, Master, Premier, Safari, Net, Dive, Nest, Repeat, Timer, Luxury, Dusk, Heal, Quick, Cherish }
+/// <summary>The kinds of ball the battle draws (plan 25 · Y4: sixteen; plan 20 · J6 adds Johto's seven Apricorn balls); each has a release of its own.</summary>
+internal enum BallKind { Poke, Great, Ultra, Master, Premier, Safari, Net, Dive, Nest, Repeat, Timer, Luxury, Dusk, Heal, Quick, Cherish, Fast, Level, Lure, Heavy, Love, Friend, Moon }
 
 /// <summary>A ball's two halves, meshed and (once drawn) on the GPU.</summary>
 internal sealed class BallModel
@@ -70,6 +70,14 @@ internal static class BattleBall
         "HEAL BALL" => new(Rgb(250, 150, 190), White, Ink, Rgb(255, 230, 240), BallMark.Stripes, BallKind.Heal),
         "QUICK BALL" => new(Rgb(60, 140, 230), Rgb(250, 220, 80), Ink, Rgb(250, 220, 80), BallMark.Stripes, BallKind.Quick),
         "CHERISH BALL" => new(Rgb(200, 40, 50), Rgb(50, 40, 50), Rgb(240, 200, 80), Rgb(240, 200, 80), BallMark.Stripes, BallKind.Cherish),
+        // Johto's seven Apricorn balls (plan 20 · J6; style guide, "Poké Ball (G8)"): our own colours and marks
+        "FAST BALL" => new(Rgb(244, 190, 50), White, Ink, Rgb(226, 54, 54), BallMark.Wings, BallKind.Fast),
+        "LEVEL BALL" => new(Rgb(226, 54, 54), White, Ink, Rgb(250, 220, 90), BallMark.Bars, BallKind.Level),
+        "LURE BALL" => new(Rgb(60, 130, 210), White, Ink, Rgb(226, 54, 60), BallMark.Stripes, BallKind.Lure),
+        "HEAVY BALL" => new(Rgb(84, 92, 112), Rgb(60, 66, 82), Ink, Rgb(190, 196, 210), BallMark.Stripes, BallKind.Heavy),
+        "LOVE BALL" => new(Rgb(244, 130, 170), White, Ink, Rgb(255, 240, 246), BallMark.Heart, BallKind.Love),
+        "FRIEND BALL" => new(Rgb(96, 180, 80), White, Ink, Rgb(250, 232, 120), BallMark.Spots, BallKind.Friend),
+        "MOON BALL" => new(Rgb(48, 56, 120), Rgb(224, 228, 244), Ink, Rgb(250, 232, 140), BallMark.Crescent, BallKind.Moon),
         _ => new(Rgb(226, 54, 54), White, Ink, Rgb(226, 54, 54), BallMark.None)
     };
 
@@ -171,6 +179,23 @@ internal static class BattleBall
                     float a = i * MathF.Tau / 5f;
                     m.Paint(m.Sphere(new Vector3(MathF.Cos(a) * 0.36f, 0.3f, MathF.Sin(a) * 0.36f), 0.1f, look.Accent, 0));
                 }
+                break;
+            case BallMark.Crescent:
+                // The Moon Ball's crescent on the front: a disc with a darker disc bitten out of it
+                m.Paint(m.Sphere(new Vector3(0f, 0.27f, Radius - 0.02f), 0.12f, look.Accent, 0));
+                m.Paint(m.Sphere(new Vector3(0.07f, 0.3f, Radius - 0.01f), 0.11f, look.Top, 0));
+                break;
+            case BallMark.Heart:
+                // The Love Ball's heart on the front: two round lobes over a point
+                foreach (float side in new[] { -1f, 1f })
+                    m.Paint(m.Sphere(new Vector3(side * 0.06f, 0.31f, Radius - 0.02f), 0.07f, look.Accent, 0));
+                m.Paint(m.Box(new Vector3(0f, 0.25f, Radius - 0.02f), new Vector3(0.06f, 0.06f, 0.08f), 0f, look.Accent, 0,
+                    rotation: Quaternion.CreateFromAxisAngle(Vector3.UnitZ, MathF.PI / 4f)));
+                break;
+            case BallMark.Bars:
+                // The Level Ball's three rising bars on the front
+                for (int i = 0; i < 3; i++)
+                    m.Paint(m.Box(new Vector3((i - 1) * 0.1f, 0.2f + i * 0.04f, Radius - 0.02f), new Vector3(0.03f, 0.05f + i * 0.04f, 0.08f), 0f, look.Accent, 0));
                 break;
         }
     }

@@ -1,0 +1,36 @@
+{
+  // A greenhouse of Mistralton City (plan 22 · U7, part a): a boy (3) who tells of the kids' treasure once the Jet Badge is won
+  // (mistralton_city_2.txt), and a lass, a Ducklett and a worker who talk
+  "area": "mistralton_city_2",
+  "bgmTrack": "unova/mistralton",
+  "people": {
+    "0": {
+      "name": "Lass",
+      "npcType": "lass",
+      "dialog": [
+        "The wind in Skyla's Gym blows so hard it could knock you off your feet!"
+      ]
+    },
+    "1": {
+      "name": "Ducklett",
+      "npcType": "Pokemon",
+      "species": "Ducklett",
+      "dialog": [
+        "Ducklett: Kwa!"
+      ]
+    },
+    "2": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [
+        "Why do we grow vegetables round the runway? So the freshest ones can be sent out as fast as a plane can fly!"
+      ]
+    },
+    "3": {
+      "name": "Boy",
+      "npcType": "youngster",
+      "script": "GreenhouseBoy",
+      "still": true
+    }
+  }
+}

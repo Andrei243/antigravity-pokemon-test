@@ -1,0 +1,43 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "TM Fan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm very fussy about my TMs! Gym Leaders always give you one when you beat them, so don't be shy about challenging them.",
+          "You can find them in odd places, too, and buy some at Poké Marts. They cost a lot, but they're worth it."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sweet Hearts can be traded for Heart Scales, I heard. I just like eating them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

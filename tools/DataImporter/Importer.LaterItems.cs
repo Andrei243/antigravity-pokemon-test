@@ -218,6 +218,14 @@ public sealed partial class Importer
                 if (item.Pocket == ItemPocket.Medicine) item.FieldUse = "Healing";
             }
             if (item.FlingPower == 0 && fling.TryGetValue(item.Name, out int power)) item.FlingPower = power;
+            // The Apricorn Box is looked into from the bag and the item button, like the Poffin Case (plan 20 · J6)
+            if (item.Name == "Apricorn Box")
+            {
+                item.FieldUse = "ApricornBox";
+                item.CanUseInOverworld = true;
+                item.CantBeTossed = true;
+                item.CanBeRegistered = true;
+            }
         }
     }
 }

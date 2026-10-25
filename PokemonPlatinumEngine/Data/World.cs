@@ -2388,6 +2388,22 @@ public static class WorldMapBuilder
                 if (overlay?.People?.GetValueOrDefault(o.Id)?.Script is { Length: > 0 } own) thing.Script = own;
                 continue;
             }
+            // An Apricorn tree (HeartGold's "bonguri", plan 20 · J6) bears the colour apricorns.json gives it, a thing of the
+            // map like a patch of soil, in the way like a person; the game tells it whether its fruit is on
+            if (o.Looks == "bonguri" && Models.ApricornData.ColourOf(key, o.Id) is { } fruit)
+            {
+                map.NPCs.Add(new NPC
+                {
+                    Name = "Apricorn tree",
+                    NpcType = NPC.ApricornTreeType,
+                    GridX = o.X,
+                    GridY = o.Z,
+                    ApricornColour = fruit,
+                    Key = o.Id,
+                    ScriptFile = key
+                });
+                continue;
+            }
             // A patch of soft soil is the save's berry patch its object names (plan 06 · R14a)
             if (o.Patch is { } patch)
             {

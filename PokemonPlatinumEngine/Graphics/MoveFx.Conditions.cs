@@ -56,7 +56,7 @@ internal static partial class MoveFx
     {
         if (!anim.Conditions.Any) return;
         for (int s = 0; s < 2; s++)
-            for (int slot = 0; slot < Math.Clamp(anim.Slots, 1, 2); slot++)
+            for (int slot = 0; slot < anim.SlotsOf((BattleSide)s); slot++)
             {
                 var side = (BattleSide)s;
                 var look = anim.Conditions.Of(side, slot);

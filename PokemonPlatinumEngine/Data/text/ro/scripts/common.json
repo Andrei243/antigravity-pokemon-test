@@ -2562,5 +2562,55 @@
         "Nicio bază secretă a vreunui prieten nu e înregistrată. Baza unui prieten se obține prin conectare, iar acum nu e nimic conectat."
       ]
     }
+  ],
+  "ApricornTree": [
+    {
+      "en": [
+        "It's an Apricorn tree, with round fruit hanging from it. If only you had something to keep the fruit in..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Apricorn tree has no fruit on it just now. It should bear another tomorrow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a {apricorn} hanging on the tree!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pick it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You picked the {apricorn}. It went into the Apricorn Box: {apricorns} of them now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a {apricorn} on the tree, but the Apricorn Box can't hold any more of them."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

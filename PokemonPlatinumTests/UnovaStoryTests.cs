@@ -1470,4 +1470,211 @@ public class UnovaStoryTests
         Assert.Empty(idle.Played.Last().Host.FrontierBattles);
         Assert.False(idle.Map.NPCs.Any(n => n.Key is "opponent" or "ingo" or "emmet" or "partner"));
     }
+
+    // ---- Plan 22 · U7, part a: Route 6 to Lentimas Town ------------------------------------------------------------------
+
+    /// <summary>A game past the Plasma Frigate's chapter, a team of six.</summary>
+    private static Game PastTheFrigate()
+    {
+        var game = new Game();
+        foreach (string species in new[] { "Emolga", "Snivy", "Lillipup", "Pidove", "Roggenrola", "Purrloin" })
+            game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 30));
+        game.Story.SetVar("VAR_UNOVA_PWT", 3);
+        game.Story.Set("FLAG_UNOVA_FRIGATE_SAILED");
+        return game;
+    }
+
+    [Fact]
+    public void RouteSixCherenTakesThePlayerToTheLabAndGivesSurf()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("Unova", 138, 372);
+        // As the route is come to once the frigate has sailed, Cheren stands on the path
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_ROUTE_6"));
+        Assert.NotNull(game.Present("8", "unova_route_6"));
+        Assert.True(game.Fires("CherenCalls"));
+
+        game.Step("CherenCalls");
+        Assert.Equal("Route6_SeasonLab", game.Map.Name);
+        // In the lab his scene plays by its own arrival: the cold snap told, HM03 given, the count moved on
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_ROUTE_6"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM03")!));
+        Assert.Contains(game.Played.SelectMany(p => p.Host.Transcript), l => l.Speaker == "Cheren" && l.Text.Contains("Lacunosa"));
+
+        // The researcher's Deerling, once
+        game.Party.Members.RemoveAt(5);
+        game.Answers.Add(0);
+        game.TalkTo("8");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_DEERLING"));
+        Assert.Equal("Deerling", game.Party.Members.Last().Species.Name);
+    }
+
+    [Fact]
+    public void CobalionCrossesTheWestBridgeOnceTheLabHasBeenVisited()
+    {
+        var game = PastTheFrigate();
+        game.Story.SetVar("VAR_UNOVA_ROUTE_6", 2);
+        game.Arrive("Unova", 103, 366);
+        Assert.True(game.Fires("CobalionPasses"));
+        game.Step("CobalionPasses");
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_ROUTE_6"));
+        Assert.False(game.Fires("CobalionPasses"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_COBALION_ROUTE_6"));
+    }
+
+    [Fact]
+    public void BiancaAndNMeetThePlayerInChargestoneCave()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("ChargestoneCave", 11, 49);
+        game.Step("BiancaAtTheMouth");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_CHARGESTONE"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_CHARGESTONE_HEART"));
+        game.Step("NAlone");
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_CHARGESTONE"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_N_CHARGESTONE"));
+
+        // On the floor beneath the two men each give a Nugget, once
+        game.Arrive("ChargestoneCave_Heart", 5, 5);
+        game.TalkTo("2");
+        game.TalkTo("2");
+        game.TalkTo("1");
+        Assert.Equal(2, game.Bag.GetQuantity(ItemDatabase.Get("Nugget")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_NUGGET_MAN") && game.Story.Has("FLAG_UNOVA_GOT_NUGGET_BOY"));
+    }
+
+    [Fact]
+    public void JuniperAndSkylaMeetThePlayerInMistraltonCityAndTheGymGivesTheJetBadge()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("Unova", 102, 301);
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+        Assert.True(game.Fires("JuniperAndSkyla"));
+        game.Step("JuniperAndSkyla");
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_MASTER_BALL"));
+        // Juniper goes on to the tower and Skyla to her Gym
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_JUNIPER_TOWER"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_SKYLA_GYM"));
+        Assert.False(game.Fires("JuniperAndSkyla"));
+
+        // Skyla's Gym: the guide's water, the battle with Skyla's own team, the Jet Badge and TM62
+        game.Arrive("MistraltonCity_Gym", 8, 30);
+        game.TalkTo("5");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_WATER_MISTRALTON"));
+        var skyla = game.TalkTo("3");
+        Assert.Contains(skyla.Log, l => l.StartsWith("battle") && l.Contains("unova_leader_skyla"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Unova, "Jet"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM62")!));
+        Assert.Equal(2, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+        Assert.NotEmpty(TrainerDatabase.Get("unova_leader_skyla")!.Party);
+        // A defeated Skyla only talks
+        var again = game.TalkTo("3");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle"));
+    }
+
+    [Fact]
+    public void JuniperLeavesTheTowerForTheHallOnceTheBadgeIsWonAndTheFlightEndsInLentimasTown()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("Unova", 102, 301);
+        game.Step("JuniperAndSkyla");
+        // Before the Badge the professor gives a Lucky Egg and stays
+        game.Arrive("CelestialTower_1F", 14, 20);
+        game.TalkTo("0");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Lucky Egg")!));
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+
+        // With the Jet Badge she goes back to the Cargo Service's hall
+        game.Story.GiveBadge(RegionDatabase.Unova, "Jet");
+        game.TalkTo("0");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Lucky Egg")!));
+        Assert.Equal(3, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_JUNIPER_TOWER"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_JUNIPER_HALL"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_SKYLA_HALL"));
+
+        // In the hall Skyla asks and the plane takes off: it lands in Lentimas Town, where Juniper tells her news
+        game.Arrive("MistraltonCity_CargoHall", 8, 9);
+        game.Answers.Add(0);
+        var flight = game.TalkTo("4");
+        Assert.Contains(flight.Log, l => l.StartsWith("warp Unova 616 308"));
+        Assert.Equal(4, game.Story.Var("VAR_UNOVA_MISTRALTON"));
+        Assert.Equal("Unova", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_LENTIMAS"));
+        Assert.Contains(game.Played.Select(p => p.Host).SelectMany(h => h.Transcript), l => l.Speaker == "Prof. Juniper" && l.Text.Contains("Drayden"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_BIANCA_LENTIMAS"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_HIDE_JUNIPER_LENTIMAS"));
+        Assert.NotNull(game.Present("2", "lentimas_town"));
+        Assert.Null(game.Present("5", "lentimas_town"));
+        // The scene is played once
+        game.Arrive("Unova", 616, 308);
+        Assert.Equal(1, game.Story.Var("VAR_UNOVA_LENTIMAS"));
+    }
+
+    [Fact]
+    public void LentimasTownsAttendantFliesThePlayerBackToMistraltonCity()
+    {
+        var game = PastTheFrigate();
+        game.Story.SetVar("VAR_UNOVA_MISTRALTON", 4);
+        game.Story.SetVar("VAR_UNOVA_LENTIMAS", 1);
+        game.Arrive("Unova", 617, 304);
+        game.Answers.Add(0);
+        var back = game.Talk("7", "lentimas_town");
+        Assert.Contains(back.Log, l => l.StartsWith("warp Unova 108 305"));
+        game.Answers.Add(1);
+        var no = game.Talk("7", "lentimas_town");
+        Assert.DoesNotContain(no.Log, l => l.StartsWith("warp"));
+    }
+
+    [Fact]
+    public void RouteSevensHikerTradesAGigalithForAnEmolgaAndTheOldManTellsOfLandorus()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("Route7_House1", 3, 5);
+        game.Answers.Add(0);
+        game.TalkTo("0");
+        Assert.True(game.Story.Has("FLAG_UNOVA_TRADED_GIGALITH"));
+        Assert.Equal("Gigalith", game.Party.Members[0].Species.Name);
+        Assert.DoesNotContain(game.Party.Members.Skip(1), p => p.Species.Name == "Emolga");
+
+        game.Arrive("Route7_House2", 3, 5);
+        game.TalkTo("1");
+        Assert.True(game.Story.Has("FLAG_UNOVA_LANDORUS_TALE"));
+    }
+
+    [Fact]
+    public void TheCelestialTowersFloorsAreJoinedByTheirSpiralOfRamps()
+    {
+        var game = PastTheFrigate();
+        var floors = new[] { "CelestialTower_1F", "CelestialTower_2F", "CelestialTower_3F", "CelestialTower_4F", "CelestialTower_Summit" };
+        for (int i = 0; i < floors.Length; i++)
+        {
+            game.Arrive(floors[i], 10, 10);
+            if (i < floors.Length - 1) Assert.Contains(game.Map.Warps, w => w.TargetMap == floors[i + 1]);
+            if (i > 0) Assert.Contains(game.Map.Warps, w => w.TargetMap == floors[i - 1]);
+        }
+    }
+
+    [Fact]
+    public void MistraltonsAndTheTowersSongsAreOurOwn()
+    {
+        foreach (string song in new[] { "route6", "chargestone", "mistralton", "celestial_tower" })
+            Assert.True(File.Exists(GameDataFiles.PathOf(Path.Combine("music", "unova", song + ".mml"))), song);
+    }
+
+    [Fact]
+    public void TheKidsAtTheRunwaysEdgeGiveTheirTmOnceAfterTheTreasureIsFound()
+    {
+        var game = PastTheFrigate();
+        game.Arrive("Unova", 75, 329);
+        game.Story.Unset("FLAG_UNOVA_HIDE_RUNWAY_TREASURE");
+        game.Map.ApplyPresence(game.Story.Has);
+        game.Talk("0", "mistralton_city");
+        Assert.True(game.Story.Has("FLAG_UNOVA_GOT_TM40"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM40")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_HIDE_RUNWAY_KIDS"));
+    }
 }

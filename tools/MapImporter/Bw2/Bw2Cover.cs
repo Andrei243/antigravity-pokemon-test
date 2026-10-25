@@ -51,6 +51,10 @@ public static class Bw2Cover
         ("gake|^ga_s|dansa|gak\\d|futa|wall", TerrainCover.Cliff),   // cliffs, the sea's cliffs, their caps (futa) and steps of rock, walls of rock
         ("^\\d*ki\\d|_ki\\d|^mori|plant", TerrainCover.Tree),    // the trees of every kind (ki02, ki03, the battle's 54ki, C12_ki02), woods, plants
         ("^iwa|_iwa|ishi|isi\\d", TerrainCover.Boulder),          // rocks and stones
+        // (plan 22 · U7, judged with --chunk: the Celestial Tower's floors are in42_fl01 and _fl02, marble and no flowers, and
+        // its ramp's and the summit's slopes steps; the Mistralton Gym's gratings and scaffolds are its walkways)
+        ("^in42_fl\\d|^gym06_(ami|asiba)", TerrainCover.Paving),
+        ("^in42_slop|^o23_slop", TerrainCover.Steps),
         ("hana|kadan|_fl\\d", TerrainCover.Flowers),             // flowers and flower beds
         ("nagakusa", TerrainCover.TallGrass),                   // the long grass
         ("kusa|grass|grs\\d", TerrainCover.Grass),               // the lawn

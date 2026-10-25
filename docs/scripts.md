@@ -401,6 +401,14 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `berry plant` | Plants the berry last chosen with `chooseitem berries`, taken from the bag: wet soil, the best rating, growing at once. |
 | `berry water` | Waters the patch to the full. |
 | `berry pick` | Picks what is in fruit into the bag, leaving bare soil with no mulch; `RESULT` is how many. |
+| `apricorn tree` | The Apricorn tree the script belongs to (plan 20 · J6; `Models/Apricorns.cs`, `common.ApricornTree`): `RESULT` is 0 bare (picked today), 1 with its fruit on, 2 with its fruit on and the Box full of that colour; `{apricorn}` names the colour ("Red Apricorn") and `{ball}` the ball it becomes. |
+| `apricorn pick` | Takes the tree's Apricorn into the Apricorn Box: `RESULT` 1, or 0 where it is bare or the Box is full of that colour; `{apricorns}` is how many of the colour the Box holds now. A tree bears one a calendar day. |
+| `apricorn box` | Opens the Apricorn Box (`UI/ApricornBoxScreen.cs`) and waits for it to be put away. |
+| `apricorn held` | `RESULT` is how many colours of Apricorn the Box holds, 0 for none. |
+| `apricorn count red` | `RESULT` and `{apricorns}` are how many Apricorns of the colour (`red`, `blue`, `yellow`, `green`, `pink`, `white`, `black`) the Box holds; `{apricorn}` and `{ball}` name it and its ball. |
+| `apricorn order red` | Kurt's order (plan 20 · J6): takes every Apricorn of the colour out of the Box to be made into balls, ready from the next calendar day. `RESULT` and `{apricorns}` are how many; 0, and nothing taken, with none of the colour or an order already in hand. |
+| `apricorn status` | `RESULT` is 0 with no order in hand, 1 with Kurt at work, 2 with the balls ready to collect; `{apricorn}`, `{apricorns}` and `{ball}` name the order's colour, count and ball. |
+| `apricorn collect` | Hands over a finished order into the bag, silently: `RESULT` and `{apricorns}` how many (0 if none is ready), `{ball}` and `{item}` the ball. |
 | `lottery boxed` | `RESULT` is 1 when the last draw's winner is in the boxes, 0 when on the team (which wins a tie). |
 | `survivepoison VAR_X` | The team's Pokémon at the place the variable gives comes through the poison if it is down to one hit point: cured, `RESULT` 1; otherwise 0. |
 
@@ -422,6 +430,28 @@ Plan 06 · R17a. A Super Contest is held by `Models/SuperContests/` (the contest
 | `giveaccessory "Glitter Powder" [2]` | An accessory (`contests.json`'s names) into the Fashion Case, with the item fanfare and the lines that say so. `RESULT` 1, or 0 and not a word when the case has no room for it (nine of a kind, one of the kinds that come alone). |
 
 `{contestant}` is the Pokémon checked for the contest, `{ribbon}` the ribbon the last contest gave, `{accessory}` the accessory last given or won.
+
+### Hoenn's contests and the Berry Blender
+
+Plan 21 · H11. Hoenn's contest is a different game from the Super Contest: `Models/Contest/AppealRound.cs` (four Pokémon, five rounds of four appeals; `docs/mechanics/rulings.md`, "Hoenn's contests and Pokéblocks") on `UI/AppealScreen.cs`. `appeals` is the commands of `contest_hall.inc` in one; `pokeblock` those of `berry_blender.inc` and the Pokéblock Case.
+
+| Command | What it does |
+|---|---|
+| `appeals rank normal` | The rank to be entered: `normal`, `super`, `hyper` or `master`. `RESULT` is left alone. |
+| `appeals category cool` | The contest: `cool`, `beauty`, `cute`, `smart` or `tough`. |
+| `appeals check` | Whether the Pokémon last chosen with `choosepokemon` (its place is `RESULT`) may enter (`GetContestEntryEligibility`): `RESULT` 0 it may; 1 none was chosen; 2 an Egg or fainted; 3 it lacks the ribbon of the rank before; 4 it may, having won this rank already. 0 and 4 are the Pokémon `enter` enters. |
+| `appeals enter` | Holds the contest for the Pokémon checked, and the script waits for it. `RESULT` is the player's place, 0 for the winner; a win at the Master Rank sets `FLAG_HOENN_CONTEST_MASTER_<QUALITY>`. A win has already given its ribbon, and the contest is counted and hung on the Contest Hall's wall. |
+| `appeals ribbon` | `RESULT` 1 when that win gave a ribbon the Pokémon hadn't; `{ribbon}` names it. |
+| `appeals prize` | `RESULT` 1 when a Luxury Ball is due: a win of a Master Rank the Pokémon had won already. The script gives it. |
+| `appeals painter` | `RESULT` 1 when the painter comes: a Master Rank win of 800 points or more. |
+| `appeals hang` | The painter takes the picture to the Lilycove Museum (`FLAG_<QUALITY>_PAINTING_MADE`); `RESULT` 1 when the Artist Ribbon went with it (once for a Pokémon), `{ribbon}`. |
+| `appeals records [won]` | The contests entered (or won) in all. |
+| `appeals winner 1` | The Contest Hall's wall at a place, 1 to 6, the newest first: `RESULT` 1 when a winner hangs there, `{wall}` the trainer and `{wallmon}` the Pokémon. |
+| `pokeblock blend 2` | The Berry Blender with so many others (1 to 3) at the drum: the bag chooses the player's berry, the blender plays and the script waits; `RESULT` 1 when a Pokéblock went into the case, 0 when the player backed out or the case was full. |
+| `pokeblock count` | How many Pokéblocks the Pokéblock Case holds. |
+| `pokeblock full` | `RESULT` 1 when the case can take no more (forty). |
+
+`{contestant}` is the Pokémon checked, `{ribbon}` the ribbon last given. A menu that leads back to a menu is hundreds of ways for the tests that play every way through a script: the receptionist's explanations end the talk.
 
 ### Ball Capsules, Seals and ribbons
 

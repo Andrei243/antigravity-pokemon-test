@@ -58,6 +58,9 @@ public partial class BattleEngine
     public bool ShowsCaughtMark(Pokemon foe) => !IsTrainerBattle && Pokedex.IsCaught(foe.Species.DexNumber);
     public bool IsDouble => Format == BattleFormat.Double;
 
+    /// <summary>A horde (plan 14 · B4): one of the player's against up to five wild Pokémon, on the screen too.</summary>
+    public bool IsHorde => Format == BattleFormat.Horde;
+
     /// <summary>The places on each side as the screen has them: one each in a single battle, two in a double.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
     public IReadOnlyList<Battler> EnemySlots { get; }
@@ -263,7 +266,8 @@ public partial class BattleEngine
         Opening = BattleRecordFile.Opening(rules);
         core = new BattleCore(rules);
 
-        Anim.Slots = core.PlayerSlots.Count;
+        // A horde's wild side has its own count of places (plan 14 · B4); a single's and a double's are the same both sides
+        Anim.SetSlots(core.PlayerSlots.Count, core.EnemySlots.Count);
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
         EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
@@ -574,7 +578,10 @@ public partial class BattleEngine
                 else
                 {
                     Anim.Appear(entered.Place.Side, pokemon, entered.Place.Slot);
-                    AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side));
+                    // A horde's five are there together, and cry one after another (plan 14 · B4)
+                    if (IsHorde && entered.Place.Slot > 0)
+                        After(entered.Place.Slot * HordeCryStep, () => AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side)));
+                    else AudioManager.PlayCry(pokemon, CryMode.Normal, Pan(entered.Place.Side));
                 }
                 // A shiny one sparkles as it comes out (plan 09 · L1): the screen's alone, as the Seals are; with the
                 // scene off, as the original's other animations that are no moves, it doesn't
@@ -1072,6 +1079,9 @@ public partial class BattleEngine
 
     /// <summary>How long after its ball opens a Pokémon cries: once it has begun to grow out of the light.</summary>
     public const float CryDelay = 0.15f;
+
+    /// <summary>Seconds between the cries of a horde's Pokémon as they appear, the first at once (plan 14 · B4).</summary>
+    public const float HordeCryStep = 0.3f;
 
     /// <summary>When the last move's sound was played: a move aimed at several Pokémon is shown once for each, and heard once.</summary>
     private float moveSoundAt = -1f;

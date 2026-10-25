@@ -1,0 +1,50 @@
+{
+  // The Celestial Tower's ground floor (plan 22 · U7, part a): Black 2's tower where Pokémon are laid to rest, our words. Its spiral ramp, a rail
+  // Black 2 rides from floor to floor, is a way up at a tile of each floor and a way down at the strip the original gives (the overlays' exits and doors). Professor
+  // Juniper (0, FLAG_UNOVA_HIDE_JUNIPER_TOWER, shown by the scene in Mistralton City) is at her field work here: she gives a
+  // Lucky Egg once and, once the Jet Badge is won, goes back to Mistralton City to fly (celestial_tower_2.txt). Black 2's
+  // waitress of the bell (1), who battles for a couple in Humilau City, waits for plan 22 · U8
+  "area": "celestial_tower_2",
+  "bgmTrack": "unova/celestial_tower",
+  "exits": [
+    {
+      "x": 14,
+      "z": 22,
+      "map": "CelestialTower_2F",
+      "toX": 16,
+      "toY": 23,
+      "facing": "Left"
+    },
+    {
+      "x": 14,
+      "z": 23,
+      "map": "CelestialTower_2F",
+      "toX": 16,
+      "toY": 23,
+      "facing": "Left"
+    }
+  ],
+  "people": {
+    "0": {
+      "name": "Prof. Juniper",
+      "npcType": "prof_juniper",
+      "script": "JuniperInTheTower",
+      "hiddenBy": "FLAG_UNOVA_HIDE_JUNIPER_TOWER",
+      "still": true
+    },
+    "2": {
+      "name": "Policeman",
+      "npcType": "policeman",
+      "dialog": [
+        "This tower is where Pokémon are laid to rest. Please keep your voice down and your steps soft."
+      ]
+    },
+    "3": {
+      "name": "Old Woman",
+      "npcType": "old_woman",
+      "dialog": [
+        "At the very top of the tower hangs a great bell. They say its ring gives peace to the spirits."
+      ]
+    }
+  }
+}

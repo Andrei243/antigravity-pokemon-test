@@ -1,0 +1,5072 @@
+{
+  "effects": [
+    {
+      "id": 0,
+      "name": "HighlyAppealing",
+      "type": "Appeal",
+      "appeal": 40,
+      "jam": 0
+    },
+    {
+      "id": 1,
+      "name": "UserMoreEasilyStartled",
+      "type": "Appeal",
+      "appeal": 60,
+      "jam": 0
+    },
+    {
+      "id": 2,
+      "name": "GreatAppealButNoMoreMoves",
+      "type": "Appeal",
+      "appeal": 80,
+      "jam": 0
+    },
+    {
+      "id": 3,
+      "name": "RepetitionNotBoring",
+      "type": "Appeal",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 4,
+      "name": "AvoidStartleOnce",
+      "type": "AvoidStartle",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 5,
+      "name": "AvoidStartle",
+      "type": "AvoidStartle",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 6,
+      "name": "AvoidStartleSlightly",
+      "type": "AvoidStartle",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 7,
+      "name": "UserLessEasilyStartled",
+      "type": "AvoidStartle",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 8,
+      "name": "StartleFrontMon",
+      "type": "StartleMon",
+      "appeal": 30,
+      "jam": 20
+    },
+    {
+      "id": 9,
+      "name": "SlightlyStartlePrevMons",
+      "type": "StartleMons",
+      "appeal": 30,
+      "jam": 10
+    },
+    {
+      "id": 10,
+      "name": "StartlePrevMon",
+      "type": "StartleMon",
+      "appeal": 20,
+      "jam": 30
+    },
+    {
+      "id": 11,
+      "name": "StartlePrevMons",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 20
+    },
+    {
+      "id": 12,
+      "name": "BadlyStartleFrontMon",
+      "type": "StartleMon",
+      "appeal": 10,
+      "jam": 40
+    },
+    {
+      "id": 13,
+      "name": "BadlyStartlePrevMons",
+      "type": "StartleMons",
+      "appeal": 10,
+      "jam": 30
+    },
+    {
+      "id": 14,
+      "name": "StartlePrevMon2",
+      "type": "StartleMon",
+      "appeal": 30,
+      "jam": 20
+    },
+    {
+      "id": 15,
+      "name": "StartlePrevMons2",
+      "type": "StartleMons",
+      "appeal": 30,
+      "jam": 10
+    },
+    {
+      "id": 16,
+      "name": "ShiftJudgeAttention",
+      "type": "Worsen",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 17,
+      "name": "StartleMonWithJudgesAttention",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 18,
+      "name": "JamsOthersButMissOneTurn",
+      "type": "StartleMons",
+      "appeal": 40,
+      "jam": 40
+    },
+    {
+      "id": 19,
+      "name": "StartleMonsSameTypeAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 20,
+      "name": "StartleMonsCoolAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 21,
+      "name": "StartleMonsBeautyAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 22,
+      "name": "StartleMonsCuteAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 23,
+      "name": "StartleMonsSmartAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 24,
+      "name": "StartleMonsToughAppeal",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 25,
+      "name": "MakeFollowingMonNervous",
+      "type": "Worsen",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 26,
+      "name": "MakeFollowingMonsNervous",
+      "type": "Worsen",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 27,
+      "name": "WorsenConditionOfPrevMons",
+      "type": "Worsen",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 28,
+      "name": "BadlyStartlesMonsInGoodCondition",
+      "type": "StartleMons",
+      "appeal": 30,
+      "jam": 10
+    },
+    {
+      "id": 29,
+      "name": "BetterIfFirst",
+      "type": "SpecialAppeal",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 30,
+      "name": "BetterIfLast",
+      "type": "SpecialAppeal",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 31,
+      "name": "AppealAsGoodAsPrevOnes",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 32,
+      "name": "AppealAsGoodAsPrevOne",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 33,
+      "name": "BetterWhenLater",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 34,
+      "name": "QualityDependsOnTiming",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 35,
+      "name": "BetterIfSameType",
+      "type": "SpecialAppeal",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 36,
+      "name": "BetterIfDiffType",
+      "type": "SpecialAppeal",
+      "appeal": 20,
+      "jam": 0
+    },
+    {
+      "id": 37,
+      "name": "AffectedByPrevAppeal",
+      "type": "SpecialAppeal",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 38,
+      "name": "ImproveConditionPreventNervousness",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 39,
+      "name": "BetterWithGoodCondition",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 40,
+      "name": "NextAppealEarlier",
+      "type": "TurnOrder",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 41,
+      "name": "NextAppealLater",
+      "type": "TurnOrder",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 42,
+      "name": "MakeScramblingTurnOrderEasier",
+      "type": "TurnOrder",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 43,
+      "name": "ScrambleNextTurnOrder",
+      "type": "TurnOrder",
+      "appeal": 30,
+      "jam": 0
+    },
+    {
+      "id": 44,
+      "name": "ExciteAudienceInAnyContest",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 45,
+      "name": "BadlyStartleMonsWithGoodAppeals",
+      "type": "StartleMons",
+      "appeal": 20,
+      "jam": 10
+    },
+    {
+      "id": 46,
+      "name": "BetterWhenAudienceExcited",
+      "type": "SpecialAppeal",
+      "appeal": 10,
+      "jam": 0
+    },
+    {
+      "id": 47,
+      "name": "DontExciteAudience",
+      "type": "Worsen",
+      "appeal": 30,
+      "jam": 0
+    }
+  ],
+  "comboStarters": [
+    "Rain Dance",
+    "Rage",
+    "Focus Energy",
+    "Hypnosis",
+    "Endure",
+    "Horn Attack",
+    "Swords Dance",
+    "Stockpile",
+    "Sunny Day",
+    "Rest",
+    "Vice Grip",
+    "Defense Curl",
+    "Charge",
+    "Rock Throw",
+    "Yawn",
+    "Scary Face",
+    "Powder Snow",
+    "Lock On",
+    "Soft Boiled",
+    "Mean Look",
+    "Scratch",
+    "Growth",
+    "Hail",
+    "Sandstorm",
+    "Belly Drum",
+    "Mind Reader",
+    "Dragon Breath",
+    "Dragon Rage",
+    "Dragon Dance",
+    "Surf",
+    "Dive",
+    "String Shot",
+    "Leer",
+    "Taunt",
+    "Charm",
+    "Harden",
+    "Sing",
+    "Earthquake",
+    "Double Team",
+    "Curse",
+    "Sweet Scent",
+    "Sludge",
+    "Sludge Bomb",
+    "Thunder Punch",
+    "Fire Punch",
+    "Ice Punch",
+    "Peck",
+    "Metal Sound",
+    "Mud Sport",
+    "Water Sport",
+    "Bone Club",
+    "Bonemerang",
+    "Bone Rush",
+    "Sand Attack",
+    "Mud Slap",
+    "Fake Out",
+    "Psychic",
+    "Kinesis",
+    "Confusion",
+    "Pound",
+    "Smog",
+    "Calm Mind"
+  ],
+  "moves": {
+    "Pound": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 60,
+      "combos": []
+    },
+    "Karate Chop": {
+      "effect": 37,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Double Slap": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        60
+      ]
+    },
+    "Comet Punch": {
+      "effect": 35,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mega Punch": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        26
+      ]
+    },
+    "Pay Day": {
+      "effect": 46,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Fire Punch": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 45,
+      "combos": [
+        9,
+        44,
+        46
+      ]
+    },
+    "Ice Punch": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 46,
+      "combos": [
+        44,
+        45
+      ]
+    },
+    "Thunder Punch": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 44,
+      "combos": [
+        13,
+        45,
+        46
+      ]
+    },
+    "Scratch": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 21,
+      "combos": [
+        33
+      ]
+    },
+    "Vise Grip": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 11,
+      "combos": []
+    },
+    "Guillotine": {
+      "effect": 45,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        11
+      ]
+    },
+    "Razor Wind": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Swords Dance": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 7,
+      "combos": []
+    },
+    "Cut": {
+      "effect": 45,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        7
+      ]
+    },
+    "Gust": {
+      "effect": 43,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Wing Attack": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Whirlwind": {
+      "effect": 43,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Fly": {
+      "effect": 5,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Bind": {
+      "effect": 47,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        11
+      ]
+    },
+    "Slam": {
+      "effect": 19,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        60
+      ]
+    },
+    "Vine Whip": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Stomp": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        33
+      ]
+    },
+    "Double Kick": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mega Kick": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        26
+      ]
+    },
+    "Jump Kick": {
+      "effect": 1,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        26
+      ]
+    },
+    "Rolling Kick": {
+      "effect": 13,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sand Attack": {
+      "effect": 17,
+      "category": "Cute",
+      "comboStarter": 54,
+      "combos": [
+        55,
+        24
+      ]
+    },
+    "Headbutt": {
+      "effect": 10,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Horn Attack": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 6,
+      "combos": [
+        33
+      ]
+    },
+    "Fury Attack": {
+      "effect": 17,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        6,
+        47
+      ]
+    },
+    "Horn Drill": {
+      "effect": 45,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        6
+      ]
+    },
+    "Tackle": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        12,
+        33,
+        36
+      ]
+    },
+    "Body Slam": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Wrap": {
+      "effect": 47,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Take Down": {
+      "effect": 1,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        36
+      ]
+    },
+    "Thrash": {
+      "effect": 18,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        2
+      ]
+    },
+    "Double-Edge": {
+      "effect": 1,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        36
+      ]
+    },
+    "Tail Whip": {
+      "effect": 30,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        35
+      ]
+    },
+    "Poison Sting": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Twineedle": {
+      "effect": 10,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Pin Missile": {
+      "effect": 17,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Leer": {
+      "effect": 47,
+      "category": "Cool",
+      "comboStarter": 33,
+      "combos": [
+        2,
+        16
+      ]
+    },
+    "Bite": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        33,
+        16
+      ]
+    },
+    "Growl": {
+      "effect": 30,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        35
+      ]
+    },
+    "Roar": {
+      "effect": 43,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sing": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 37,
+      "combos": []
+    },
+    "Supersonic": {
+      "effect": 43,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sonic Boom": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Disable": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Acid": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Ember": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Flamethrower": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Mist": {
+      "effect": 5,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Water Gun": {
+      "effect": 0,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        1,
+        50,
+        49
+      ]
+    },
+    "Hydro Pump": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Surf": {
+      "effect": 37,
+      "category": "Beauty",
+      "comboStarter": 30,
+      "combos": [
+        1,
+        31
+      ]
+    },
+    "Ice Beam": {
+      "effect": 19,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Blizzard": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        17,
+        23
+      ]
+    },
+    "Psybeam": {
+      "effect": 43,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Bubble Beam": {
+      "effect": 13,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Aurora Beam": {
+      "effect": 19,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Hyper Beam": {
+      "effect": 18,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Peck": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 47,
+      "combos": []
+    },
+    "Drill Peck": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        47
+      ]
+    },
+    "Submission": {
+      "effect": 1,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        26
+      ]
+    },
+    "Low Kick": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Counter": {
+      "effect": 4,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        34
+      ]
+    },
+    "Seismic Toss": {
+      "effect": 19,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        56
+      ]
+    },
+    "Strength": {
+      "effect": 19,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Absorb": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Mega Drain": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Leech Seed": {
+      "effect": 11,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Growth": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 22,
+      "combos": []
+    },
+    "Razor Leaf": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Solar Beam": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        9,
+        22
+      ]
+    },
+    "Poison Powder": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        41
+      ]
+    },
+    "Stun Spore": {
+      "effect": 45,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        41
+      ]
+    },
+    "Sleep Powder": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        41
+      ]
+    },
+    "Petal Dance": {
+      "effect": 18,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "String Shot": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 32,
+      "combos": []
+    },
+    "Dragon Rage": {
+      "effect": 33,
+      "category": "Cool",
+      "comboStarter": 28,
+      "combos": [
+        27,
+        29
+      ]
+    },
+    "Fire Spin": {
+      "effect": 47,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Thunder Shock": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Thunderbolt": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Thunder Wave": {
+      "effect": 45,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Thunder": {
+      "effect": 11,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13,
+        1,
+        18
+      ]
+    },
+    "Rock Throw": {
+      "effect": 35,
+      "category": "Tough",
+      "comboStarter": 14,
+      "combos": []
+    },
+    "Earthquake": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 38,
+      "combos": []
+    },
+    "Fissure": {
+      "effect": 45,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        38
+      ]
+    },
+    "Dig": {
+      "effect": 5,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Toxic": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Confusion": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 59,
+      "combos": [
+        57,
+        58,
+        62
+      ]
+    },
+    "Psychic": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 57,
+      "combos": [
+        58,
+        59,
+        62
+      ]
+    },
+    "Hypnosis": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 4,
+      "combos": []
+    },
+    "Meditate": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Agility": {
+      "effect": 40,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        39
+      ]
+    },
+    "Quick Attack": {
+      "effect": 40,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        39
+      ]
+    },
+    "Rage": {
+      "effect": 3,
+      "category": "Cool",
+      "comboStarter": 2,
+      "combos": []
+    },
+    "Teleport": {
+      "effect": 5,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        39,
+        57,
+        58,
+        59
+      ]
+    },
+    "Night Shade": {
+      "effect": 19,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mimic": {
+      "effect": 32,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Screech": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Double Team": {
+      "effect": 4,
+      "category": "Cool",
+      "comboStarter": 39,
+      "combos": []
+    },
+    "Recover": {
+      "effect": 19,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Harden": {
+      "effect": 4,
+      "category": "Tough",
+      "comboStarter": 36,
+      "combos": []
+    },
+    "Minimize": {
+      "effect": 4,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Smokescreen": {
+      "effect": 16,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        61
+      ]
+    },
+    "Confuse Ray": {
+      "effect": 43,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Withdraw": {
+      "effect": 5,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Defense Curl": {
+      "effect": 4,
+      "category": "Cute",
+      "comboStarter": 12,
+      "combos": []
+    },
+    "Barrier": {
+      "effect": 5,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Light Screen": {
+      "effect": 5,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Haze": {
+      "effect": 27,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Reflect": {
+      "effect": 5,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Focus Energy": {
+      "effect": 13,
+      "category": "Cool",
+      "comboStarter": 3,
+      "combos": []
+    },
+    "Bide": {
+      "effect": 5,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Metronome": {
+      "effect": 3,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mirror Move": {
+      "effect": 32,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Self-Destruct": {
+      "effect": 2,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Egg Bomb": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        19
+      ]
+    },
+    "Lick": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Smog": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 61,
+      "combos": []
+    },
+    "Sludge": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 42,
+      "combos": [
+        43
+      ]
+    },
+    "Bone Club": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 51,
+      "combos": [
+        52,
+        53
+      ]
+    },
+    "Fire Blast": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Waterfall": {
+      "effect": 30,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Clamp": {
+      "effect": 47,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Swift": {
+      "effect": 29,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Skull Bash": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Spike Cannon": {
+      "effect": 17,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Constrict": {
+      "effect": 10,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Amnesia": {
+      "effect": 38,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Kinesis": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 58,
+      "combos": [
+        57,
+        59
+      ]
+    },
+    "Soft-Boiled": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 19,
+      "combos": []
+    },
+    "High Jump Kick": {
+      "effect": 1,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        26
+      ]
+    },
+    "Glare": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        33
+      ]
+    },
+    "Dream Eater": {
+      "effect": 11,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        4,
+        62
+      ]
+    },
+    "Poison Gas": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Barrage": {
+      "effect": 35,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Leech Life": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Lovely Kiss": {
+      "effect": 13,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sky Attack": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Transform": {
+      "effect": 3,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Bubble": {
+      "effect": 11,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Dizzy Punch": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Spore": {
+      "effect": 13,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Flash": {
+      "effect": 16,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Psywave": {
+      "effect": 45,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Splash": {
+      "effect": 30,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Acid Armor": {
+      "effect": 38,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Crabhammer": {
+      "effect": 37,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        1,
+        7
+      ]
+    },
+    "Explosion": {
+      "effect": 2,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Fury Swipes": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        21
+      ]
+    },
+    "Bonemerang": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 52,
+      "combos": [
+        51,
+        53
+      ]
+    },
+    "Rest": {
+      "effect": 4,
+      "category": "Cute",
+      "comboStarter": 10,
+      "combos": [
+        25,
+        35,
+        15
+      ]
+    },
+    "Rock Slide": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        14
+      ]
+    },
+    "Hyper Fang": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sharpen": {
+      "effect": 38,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Conversion": {
+      "effect": 35,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Tri Attack": {
+      "effect": 11,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        18
+      ]
+    },
+    "Super Fang": {
+      "effect": 45,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        16
+      ]
+    },
+    "Slash": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        7,
+        21
+      ]
+    },
+    "Substitute": {
+      "effect": 4,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Struggle": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sketch": {
+      "effect": 32,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Triple Kick": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Thief": {
+      "effect": 31,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Spider Web": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        32
+      ]
+    },
+    "Mind Reader": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 26,
+      "combos": []
+    },
+    "Nightmare": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        4
+      ]
+    },
+    "Flame Wheel": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Snore": {
+      "effect": 0,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        10
+      ]
+    },
+    "Curse": {
+      "effect": 41,
+      "category": "Tough",
+      "comboStarter": 40,
+      "combos": []
+    },
+    "Flail": {
+      "effect": 33,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        5
+      ]
+    },
+    "Conversion 2": {
+      "effect": 35,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Aeroblast": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Cotton Spore": {
+      "effect": 17,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Reversal": {
+      "effect": 30,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        5
+      ]
+    },
+    "Spite": {
+      "effect": 33,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        40
+      ]
+    },
+    "Powder Snow": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 17,
+      "combos": [
+        23
+      ]
+    },
+    "Protect": {
+      "effect": 5,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        36
+      ]
+    },
+    "Mach Punch": {
+      "effect": 40,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Scary Face": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 16,
+      "combos": [
+        2,
+        33
+      ]
+    },
+    "Feint Attack": {
+      "effect": 29,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        56,
+        33,
+        60
+      ]
+    },
+    "Sweet Kiss": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        35
+      ]
+    },
+    "Belly Drum": {
+      "effect": 38,
+      "category": "Cute",
+      "comboStarter": 25,
+      "combos": []
+    },
+    "Sludge Bomb": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 43,
+      "combos": [
+        42
+      ]
+    },
+    "Mud-Slap": {
+      "effect": 17,
+      "category": "Cute",
+      "comboStarter": 55,
+      "combos": [
+        54,
+        49,
+        24
+      ]
+    },
+    "Octazooka": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        1,
+        18
+      ]
+    },
+    "Spikes": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Zap Cannon": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        18
+      ]
+    },
+    "Foresight": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Destiny Bond": {
+      "effect": 2,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        20,
+        40,
+        5
+      ]
+    },
+    "Perish Song": {
+      "effect": 45,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        20,
+        37
+      ]
+    },
+    "Icy Wind": {
+      "effect": 13,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Detect": {
+      "effect": 4,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        34
+      ]
+    },
+    "Bone Rush": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 53,
+      "combos": [
+        3,
+        51,
+        52
+      ]
+    },
+    "Lock-On": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 18,
+      "combos": []
+    },
+    "Outrage": {
+      "effect": 18,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sandstorm": {
+      "effect": 43,
+      "category": "Tough",
+      "comboStarter": 24,
+      "combos": []
+    },
+    "Giga Drain": {
+      "effect": 17,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Endure": {
+      "effect": 4,
+      "category": "Tough",
+      "comboStarter": 5,
+      "combos": []
+    },
+    "Charm": {
+      "effect": 19,
+      "category": "Cute",
+      "comboStarter": 35,
+      "combos": []
+    },
+    "Rollout": {
+      "effect": 47,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        12,
+        36
+      ]
+    },
+    "False Swipe": {
+      "effect": 13,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        7
+      ]
+    },
+    "Swagger": {
+      "effect": 29,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Milk Drink": {
+      "effect": 35,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Spark": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Fury Cutter": {
+      "effect": 3,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        7
+      ]
+    },
+    "Steel Wing": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mean Look": {
+      "effect": 26,
+      "category": "Beauty",
+      "comboStarter": 20,
+      "combos": [
+        40
+      ]
+    },
+    "Attract": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sleep Talk": {
+      "effect": 3,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        10
+      ]
+    },
+    "Heal Bell": {
+      "effect": 30,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Return": {
+      "effect": 44,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Present": {
+      "effect": 3,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Frustration": {
+      "effect": 44,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Safeguard": {
+      "effect": 5,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Pain Split": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        5
+      ]
+    },
+    "Sacred Fire": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Magnitude": {
+      "effect": 46,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Dynamic Punch": {
+      "effect": 17,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        26
+      ]
+    },
+    "Megahorn": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Dragon Breath": {
+      "effect": 13,
+      "category": "Cool",
+      "comboStarter": 27,
+      "combos": [
+        28,
+        29
+      ]
+    },
+    "Baton Pass": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Encore": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Pursuit": {
+      "effect": 45,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Rapid Spin": {
+      "effect": 4,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sweet Scent": {
+      "effect": 13,
+      "category": "Cute",
+      "comboStarter": 41,
+      "combos": []
+    },
+    "Iron Tail": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Metal Claw": {
+      "effect": 0,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        48
+      ]
+    },
+    "Vital Throw": {
+      "effect": 41,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        56
+      ]
+    },
+    "Morning Sun": {
+      "effect": 34,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Synthesis": {
+      "effect": 34,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Moonlight": {
+      "effect": 34,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Hidden Power": {
+      "effect": 3,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Cross Chop": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Twister": {
+      "effect": 43,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Rain Dance": {
+      "effect": 46,
+      "category": "Tough",
+      "comboStarter": 1,
+      "combos": []
+    },
+    "Sunny Day": {
+      "effect": 46,
+      "category": "Beauty",
+      "comboStarter": 9,
+      "combos": []
+    },
+    "Crunch": {
+      "effect": 12,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        16
+      ]
+    },
+    "Mirror Coat": {
+      "effect": 4,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        34
+      ]
+    },
+    "Psych Up": {
+      "effect": 35,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Extreme Speed": {
+      "effect": 40,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Ancient Power": {
+      "effect": 38,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Shadow Ball": {
+      "effect": 16,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Future Sight": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        57,
+        58,
+        59,
+        62
+      ]
+    },
+    "Rock Smash": {
+      "effect": 39,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Whirlpool": {
+      "effect": 47,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Beat Up": {
+      "effect": 45,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Fake Out": {
+      "effect": 19,
+      "category": "Cute",
+      "comboStarter": 56,
+      "combos": []
+    },
+    "Uproar": {
+      "effect": 43,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Stockpile": {
+      "effect": 4,
+      "category": "Tough",
+      "comboStarter": 8,
+      "combos": []
+    },
+    "Spit Up": {
+      "effect": 0,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        8
+      ]
+    },
+    "Swallow": {
+      "effect": 38,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        8
+      ]
+    },
+    "Heat Wave": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Hail": {
+      "effect": 13,
+      "category": "Beauty",
+      "comboStarter": 23,
+      "combos": []
+    },
+    "Torment": {
+      "effect": 26,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Flatter": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        35
+      ]
+    },
+    "Will-O-Wisp": {
+      "effect": 12,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Memento": {
+      "effect": 2,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Facade": {
+      "effect": 30,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Focus Punch": {
+      "effect": 41,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Smelling Salts": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Follow Me": {
+      "effect": 47,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Nature Power": {
+      "effect": 46,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Charge": {
+      "effect": 35,
+      "category": "Smart",
+      "comboStarter": 13,
+      "combos": []
+    },
+    "Taunt": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 34,
+      "combos": []
+    },
+    "Helping Hand": {
+      "effect": 26,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Trick": {
+      "effect": 35,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Role Play": {
+      "effect": 31,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Wish": {
+      "effect": 47,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Assist": {
+      "effect": 34,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Ingrain": {
+      "effect": 5,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Superpower": {
+      "effect": 1,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        18
+      ]
+    },
+    "Magic Coat": {
+      "effect": 5,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Recycle": {
+      "effect": 3,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Revenge": {
+      "effect": 41,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Brick Break": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Yawn": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 15,
+      "combos": []
+    },
+    "Knock Off": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        56
+      ]
+    },
+    "Endeavor": {
+      "effect": 30,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        5
+      ]
+    },
+    "Eruption": {
+      "effect": 33,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        5,
+        38,
+        9
+      ]
+    },
+    "Skill Swap": {
+      "effect": 31,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Imprison": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Refresh": {
+      "effect": 38,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        50,
+        37
+      ]
+    },
+    "Grudge": {
+      "effect": 33,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        40
+      ]
+    },
+    "Snatch": {
+      "effect": 45,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Secret Power": {
+      "effect": 39,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Dive": {
+      "effect": 4,
+      "category": "Beauty",
+      "comboStarter": 31,
+      "combos": [
+        1,
+        30
+      ]
+    },
+    "Arm Thrust": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        3,
+        56
+      ]
+    },
+    "Camouflage": {
+      "effect": 37,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Tail Glow": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Luster Purge": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Mist Ball": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    },
+    "Feather Dance": {
+      "effect": 30,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Teeter Dance": {
+      "effect": 18,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Blaze Kick": {
+      "effect": 0,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Mud Sport": {
+      "effect": 0,
+      "category": "Cute",
+      "comboStarter": 49,
+      "combos": [
+        55,
+        50
+      ]
+    },
+    "Ice Ball": {
+      "effect": 47,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Needle Arm": {
+      "effect": 12,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Slack Off": {
+      "effect": 33,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": [
+        15
+      ]
+    },
+    "Hyper Voice": {
+      "effect": 13,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Poison Fang": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Crush Claw": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        7
+      ]
+    },
+    "Blast Burn": {
+      "effect": 18,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Hydro Cannon": {
+      "effect": 18,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Meteor Mash": {
+      "effect": 35,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Astonish": {
+      "effect": 10,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Weather Ball": {
+      "effect": 0,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        1,
+        9,
+        23,
+        24
+      ]
+    },
+    "Aromatherapy": {
+      "effect": 30,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Fake Tears": {
+      "effect": 30,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Air Cutter": {
+      "effect": 19,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Overheat": {
+      "effect": 1,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        9
+      ]
+    },
+    "Odor Sleuth": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Rock Tomb": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        14
+      ]
+    },
+    "Silver Wind": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Metal Sound": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 48,
+      "combos": []
+    },
+    "Grass Whistle": {
+      "effect": 13,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Tickle": {
+      "effect": 27,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Cosmic Power": {
+      "effect": 38,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Water Spout": {
+      "effect": 33,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Signal Beam": {
+      "effect": 43,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Shadow Punch": {
+      "effect": 29,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Extrasensory": {
+      "effect": 12,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Sky Uppercut": {
+      "effect": 19,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        3
+      ]
+    },
+    "Sand Tomb": {
+      "effect": 47,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        24
+      ]
+    },
+    "Sheer Cold": {
+      "effect": 45,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Muddy Water": {
+      "effect": 17,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Bullet Seed": {
+      "effect": 45,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Aerial Ace": {
+      "effect": 29,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Icicle Spear": {
+      "effect": 19,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Iron Defense": {
+      "effect": 5,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Block": {
+      "effect": 26,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Howl": {
+      "effect": 38,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Dragon Claw": {
+      "effect": 19,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        27,
+        28,
+        29
+      ]
+    },
+    "Frenzy Plant": {
+      "effect": 18,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Bulk Up": {
+      "effect": 38,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Bounce": {
+      "effect": 5,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Mud Shot": {
+      "effect": 13,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Poison Tail": {
+      "effect": 27,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Covet": {
+      "effect": 31,
+      "category": "Cute",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Volt Tackle": {
+      "effect": 1,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Magical Leaf": {
+      "effect": 29,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        22
+      ]
+    },
+    "Water Sport": {
+      "effect": 0,
+      "category": "Cute",
+      "comboStarter": 50,
+      "combos": [
+        1,
+        49
+      ]
+    },
+    "Calm Mind": {
+      "effect": 4,
+      "category": "Smart",
+      "comboStarter": 62,
+      "combos": []
+    },
+    "Leaf Blade": {
+      "effect": 37,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Dragon Dance": {
+      "effect": 38,
+      "category": "Cool",
+      "comboStarter": 29,
+      "combos": [
+        28,
+        27
+      ]
+    },
+    "Rock Blast": {
+      "effect": 35,
+      "category": "Tough",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Shock Wave": {
+      "effect": 29,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": [
+        13
+      ]
+    },
+    "Water Pulse": {
+      "effect": 43,
+      "category": "Beauty",
+      "comboStarter": 0,
+      "combos": [
+        1
+      ]
+    },
+    "Doom Desire": {
+      "effect": 47,
+      "category": "Cool",
+      "comboStarter": 0,
+      "combos": []
+    },
+    "Psycho Boost": {
+      "effect": 1,
+      "category": "Smart",
+      "comboStarter": 0,
+      "combos": [
+        62
+      ]
+    }
+  },
+  "opponents": [
+    {
+      "trainer": "Jimmy",
+      "species": "Poochyena",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Roar",
+        "Bite",
+        "Take Down",
+        "Howl"
+      ],
+      "cool": 10,
+      "beauty": 4,
+      "cute": 10,
+      "smart": 3,
+      "tough": 4,
+      "sheen": 50,
+      "time": "Either"
+    },
+    {
+      "trainer": "Edith",
+      "species": "Illumise",
+      "rank": 0,
+      "pools": [
+        "Cute"
+      ],
+      "moves": [
+        "Rest",
+        "Facade",
+        "Tackle",
+        "Covet"
+      ],
+      "cool": 10,
+      "beauty": 10,
+      "cute": 6,
+      "smart": 1,
+      "tough": 2,
+      "sheen": 60,
+      "time": "Either"
+    },
+    {
+      "trainer": "Evan",
+      "species": "Dustox",
+      "rank": 0,
+      "pools": [
+        "Beauty"
+      ],
+      "moves": [
+        "Silver Wind",
+        "Moonlight",
+        "Light Screen",
+        "Gust"
+      ],
+      "cool": 2,
+      "beauty": 10,
+      "cute": 10,
+      "smart": 12,
+      "tough": 4,
+      "sheen": 70,
+      "time": "Either"
+    },
+    {
+      "trainer": "Kelsey",
+      "species": "Seedot",
+      "rank": 0,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Bide",
+        "Synthesis",
+        "Bullet Seed",
+        "Growth"
+      ],
+      "cool": 3,
+      "beauty": 3,
+      "cute": 5,
+      "smart": 2,
+      "tough": 7,
+      "sheen": 80,
+      "time": "Either"
+    },
+    {
+      "trainer": "Madison",
+      "species": "Taillow",
+      "rank": 0,
+      "pools": [
+        "Cool"
+      ],
+      "moves": [
+        "Wing Attack",
+        "Agility",
+        "Aerial Ace",
+        "Growl"
+      ],
+      "cool": 1,
+      "beauty": 3,
+      "cute": 3,
+      "smart": 5,
+      "tough": 4,
+      "sheen": 90,
+      "time": "Either"
+    },
+    {
+      "trainer": "Raymond",
+      "species": "Nincada",
+      "rank": 0,
+      "pools": [
+        "Smart"
+      ],
+      "moves": [
+        "Leech Life",
+        "False Swipe",
+        "Fury Swipes",
+        "Mind Reader"
+      ],
+      "cool": 5,
+      "beauty": 2,
+      "cute": 10,
+      "smart": 7,
+      "tough": 8,
+      "sheen": 100,
+      "time": "Either"
+    },
+    {
+      "trainer": "Grant",
+      "species": "Shroomish",
+      "rank": 0,
+      "pools": [
+        "Smart"
+      ],
+      "moves": [
+        "Stun Spore",
+        "Leech Seed",
+        "Mega Drain",
+        "Attract"
+      ],
+      "cool": 3,
+      "beauty": 3,
+      "cute": 10,
+      "smart": 2,
+      "tough": 2,
+      "sheen": 50,
+      "time": "Either"
+    },
+    {
+      "trainer": "Paige",
+      "species": "Spheal",
+      "rank": 0,
+      "pools": [
+        "Beauty",
+        "Cute"
+      ],
+      "moves": [
+        "Aurora Beam",
+        "Water Gun",
+        "Growl",
+        "Rock Tomb"
+      ],
+      "cool": 3,
+      "beauty": 5,
+      "cute": 1,
+      "smart": 10,
+      "tough": 10,
+      "sheen": 60,
+      "time": "Either"
+    },
+    {
+      "trainer": "Alec",
+      "species": "Slakoth",
+      "rank": 0,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Strength",
+        "Counter",
+        "Yawn",
+        "Encore"
+      ],
+      "cool": 10,
+      "beauty": 4,
+      "cute": 4,
+      "smart": 5,
+      "tough": 18,
+      "sheen": 70,
+      "time": "Either"
+    },
+    {
+      "trainer": "Sydney",
+      "species": "Whismur",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Smart"
+      ],
+      "moves": [
+        "Astonish",
+        "Screech",
+        "Uproar",
+        "Hyper Voice"
+      ],
+      "cool": 2,
+      "beauty": 2,
+      "cute": 7,
+      "smart": 2,
+      "tough": 7,
+      "sheen": 80,
+      "time": "Either"
+    },
+    {
+      "trainer": "Morris",
+      "species": "Makuhita",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Seismic Toss",
+        "Vital Throw",
+        "Tackle",
+        "Reversal"
+      ],
+      "cool": 9,
+      "beauty": 1,
+      "cute": 1,
+      "smart": 8,
+      "tough": 1,
+      "sheen": 90,
+      "time": "Either"
+    },
+    {
+      "trainer": "Mariah",
+      "species": "Aron",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Metal Claw",
+        "Iron Defense",
+        "Headbutt",
+        "Take Down"
+      ],
+      "cool": 5,
+      "beauty": 10,
+      "cute": 2,
+      "smart": 10,
+      "tough": 2,
+      "sheen": 100,
+      "time": "Either"
+    },
+    {
+      "trainer": "Russell",
+      "species": "Crobat",
+      "rank": 0,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Haze",
+        "Mean Look",
+        "Confuse Ray",
+        "Leech Life"
+      ],
+      "cool": 4,
+      "beauty": 2,
+      "cute": 2,
+      "smart": 2,
+      "tough": 10,
+      "sheen": 50,
+      "time": "Either"
+    },
+    {
+      "trainer": "Melanie",
+      "species": "Gulpin",
+      "rank": 0,
+      "pools": [
+        "Cute"
+      ],
+      "moves": [
+        "Sludge",
+        "Amnesia",
+        "Toxic",
+        "Yawn"
+      ],
+      "cool": 1,
+      "beauty": 10,
+      "cute": 1,
+      "smart": 10,
+      "tough": 5,
+      "sheen": 60,
+      "time": "Either"
+    },
+    {
+      "trainer": "Chance",
+      "species": "Manectric",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Spark",
+        "Thunder Wave",
+        "Thunder",
+        "Roar"
+      ],
+      "cool": 20,
+      "beauty": 10,
+      "cute": 1,
+      "smart": 1,
+      "tough": 1,
+      "sheen": 70,
+      "time": "Either"
+    },
+    {
+      "trainer": "Agatha",
+      "species": "Bulbasaur",
+      "rank": 0,
+      "pools": [
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Growl",
+        "Leech Seed",
+        "Tackle",
+        "Sweet Scent"
+      ],
+      "cool": 5,
+      "beauty": 3,
+      "cute": 10,
+      "smart": 10,
+      "tough": 4,
+      "sheen": 50,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Beau",
+      "species": "Butterfree",
+      "rank": 0,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Supersonic",
+        "Whirlwind",
+        "Silver Wind",
+        "Safeguard"
+      ],
+      "cool": 3,
+      "beauty": 10,
+      "cute": 2,
+      "smart": 10,
+      "tough": 4,
+      "sheen": 60,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Kay",
+      "species": "Pidgeotto",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Mirror Move",
+        "Quick Attack",
+        "Aerial Ace",
+        "Feather Dance"
+      ],
+      "cool": 10,
+      "beauty": 8,
+      "cute": 4,
+      "smart": 2,
+      "tough": 3,
+      "sheen": 70,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Cale",
+      "species": "Diglett",
+      "rank": 0,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Dig",
+        "Earthquake",
+        "Fissure",
+        "Magnitude"
+      ],
+      "cool": 4,
+      "beauty": 2,
+      "cute": 3,
+      "smart": 5,
+      "tough": 10,
+      "sheen": 80,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Caitlin",
+      "species": "Poliwag",
+      "rank": 0,
+      "pools": [
+        "Beauty",
+        "Tough"
+      ],
+      "moves": [
+        "Hydro Pump",
+        "Rain Dance",
+        "Body Slam",
+        "Ice Beam"
+      ],
+      "cool": 2,
+      "beauty": 10,
+      "cute": 5,
+      "smart": 3,
+      "tough": 10,
+      "sheen": 90,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Colby",
+      "species": "Totodile",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Rage",
+        "Screech",
+        "Surf",
+        "Blizzard"
+      ],
+      "cool": 6,
+      "beauty": 10,
+      "cute": 2,
+      "smart": 1,
+      "tough": 5,
+      "sheen": 100,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Kylie",
+      "species": "Ledyba",
+      "rank": 0,
+      "pools": [
+        "Cool",
+        "Cute"
+      ],
+      "moves": [
+        "Baton Pass",
+        "Agility",
+        "Swift",
+        "Attract"
+      ],
+      "cool": 8,
+      "beauty": 6,
+      "cute": 8,
+      "smart": 6,
+      "tough": 2,
+      "sheen": 90,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Liam",
+      "species": "Delibird",
+      "rank": 0,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Present",
+        "Facade",
+        "Focus Punch",
+        "Return"
+      ],
+      "cool": 4,
+      "beauty": 3,
+      "cute": 10,
+      "smart": 5,
+      "tough": 3,
+      "sheen": 80,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Milo",
+      "species": "Larvitar",
+      "rank": 0,
+      "pools": [
+        "Tough"
+      ],
+      "moves": [
+        "Thrash",
+        "Torment",
+        "Crunch",
+        "Dig"
+      ],
+      "cool": 8,
+      "beauty": 5,
+      "cute": 5,
+      "smart": 8,
+      "tough": 10,
+      "sheen": 70,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Karina",
+      "species": "Roselia",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Petal Dance",
+        "Magical Leaf",
+        "Grass Whistle",
+        "Ingrain"
+      ],
+      "cool": 50,
+      "beauty": 15,
+      "cute": 75,
+      "smart": 10,
+      "tough": 20,
+      "sheen": 100,
+      "time": "Either"
+    },
+    {
+      "trainer": "Bobby",
+      "species": "Dodrio",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Peck",
+        "Fury Attack",
+        "Return",
+        "Growl"
+      ],
+      "cool": 15,
+      "beauty": 21,
+      "cute": 15,
+      "smart": 85,
+      "tough": 35,
+      "sheen": 110,
+      "time": "Either"
+    },
+    {
+      "trainer": "Claire",
+      "species": "Trapinch",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Bite",
+        "Sand Attack",
+        "Dig",
+        "Feint Attack"
+      ],
+      "cool": 75,
+      "beauty": 25,
+      "cute": 25,
+      "smart": 10,
+      "tough": 25,
+      "sheen": 120,
+      "time": "Either"
+    },
+    {
+      "trainer": "Willie",
+      "species": "Cacnea",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Smart"
+      ],
+      "moves": [
+        "Spikes",
+        "Leer",
+        "Poison Sting",
+        "Sand Attack"
+      ],
+      "cool": 10,
+      "beauty": 30,
+      "cute": 25,
+      "smart": 65,
+      "tough": 25,
+      "sheen": 130,
+      "time": "Either"
+    },
+    {
+      "trainer": "Cassidy",
+      "species": "Sandslash",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Slash",
+        "Defense Curl",
+        "Swift",
+        "Fury Swipes"
+      ],
+      "cool": 30,
+      "beauty": 90,
+      "cute": 30,
+      "smart": 10,
+      "tough": 100,
+      "sheen": 140,
+      "time": "Either"
+    },
+    {
+      "trainer": "Morgan",
+      "species": "Baltoy",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Self-Destruct",
+        "Rock Tomb",
+        "Psybeam",
+        "Confusion"
+      ],
+      "cool": 50,
+      "beauty": 40,
+      "cute": 10,
+      "smart": 35,
+      "tough": 35,
+      "sheen": 150,
+      "time": "Either"
+    },
+    {
+      "trainer": "Summer",
+      "species": "Medicham",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Tough"
+      ],
+      "moves": [
+        "Reversal",
+        "Thunder Punch",
+        "Fire Punch",
+        "Ice Punch"
+      ],
+      "cool": 40,
+      "beauty": 20,
+      "cute": 40,
+      "smart": 40,
+      "tough": 40,
+      "sheen": 100,
+      "time": "Either"
+    },
+    {
+      "trainer": "Miles",
+      "species": "Spinda",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Teeter Dance",
+        "Psych Up",
+        "Hypnosis",
+        "Uproar"
+      ],
+      "cool": 25,
+      "beauty": 75,
+      "cute": 25,
+      "smart": 10,
+      "tough": 25,
+      "sheen": 110,
+      "time": "Either"
+    },
+    {
+      "trainer": "Audrey",
+      "species": "Swablu",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Mirror Move",
+        "Perish Song",
+        "Safeguard",
+        "Mist"
+      ],
+      "cool": 30,
+      "beauty": 30,
+      "cute": 40,
+      "smart": 30,
+      "tough": 25,
+      "sheen": 120,
+      "time": "Either"
+    },
+    {
+      "trainer": "Avery",
+      "species": "Spoink",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Splash",
+        "Confuse Ray",
+        "Snore",
+        "Rest"
+      ],
+      "cool": 40,
+      "beauty": 10,
+      "cute": 30,
+      "smart": 40,
+      "tough": 30,
+      "sheen": 130,
+      "time": "Either"
+    },
+    {
+      "trainer": "Ariana",
+      "species": "Kecleon",
+      "rank": 1,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Thief",
+        "Screech",
+        "Ancient Power",
+        "Bind"
+      ],
+      "cool": 10,
+      "beauty": 10,
+      "cute": 40,
+      "smart": 75,
+      "tough": 35,
+      "sheen": 140,
+      "time": "Either"
+    },
+    {
+      "trainer": "Ashton",
+      "species": "Goldeen",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Horn Attack",
+        "Fury Attack",
+        "Horn Drill",
+        "Tail Whip"
+      ],
+      "cool": 70,
+      "beauty": 30,
+      "cute": 5,
+      "smart": 30,
+      "tough": 25,
+      "sheen": 150,
+      "time": "Either"
+    },
+    {
+      "trainer": "Sandra",
+      "species": "Barboach",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Mud Sport",
+        "Water Sport",
+        "Earthquake",
+        "Future Sight"
+      ],
+      "cool": 45,
+      "beauty": 45,
+      "cute": 60,
+      "smart": 25,
+      "tough": 15,
+      "sheen": 100,
+      "time": "Either"
+    },
+    {
+      "trainer": "Carson",
+      "species": "Skarmory",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Tough"
+      ],
+      "moves": [
+        "Swift",
+        "Double Team",
+        "Agility",
+        "Cut"
+      ],
+      "cool": 40,
+      "beauty": 30,
+      "cute": 25,
+      "smart": 60,
+      "tough": 20,
+      "sheen": 110,
+      "time": "Either"
+    },
+    {
+      "trainer": "Katrina",
+      "species": "Lotad",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Astonish",
+        "Growl",
+        "Rain Dance",
+        "Water Pulse"
+      ],
+      "cool": 15,
+      "beauty": 15,
+      "cute": 30,
+      "smart": 15,
+      "tough": 75,
+      "sheen": 120,
+      "time": "Either"
+    },
+    {
+      "trainer": "Luke",
+      "species": "Slowbro",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Yawn",
+        "Disable",
+        "Growl",
+        "Confusion"
+      ],
+      "cool": 20,
+      "beauty": 40,
+      "cute": 40,
+      "smart": 30,
+      "tough": 20,
+      "sheen": 100,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Raul",
+      "species": "Farfetch'd",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Cute"
+      ],
+      "moves": [
+        "Facade",
+        "Fury Cutter",
+        "Fly",
+        "Return"
+      ],
+      "cool": 40,
+      "beauty": 10,
+      "cute": 40,
+      "smart": 20,
+      "tough": 20,
+      "sheen": 110,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Jada",
+      "species": "Seel",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Cute"
+      ],
+      "moves": [
+        "Attract",
+        "Ice Beam",
+        "Safeguard",
+        "Growl"
+      ],
+      "cool": 10,
+      "beauty": 30,
+      "cute": 40,
+      "smart": 20,
+      "tough": 20,
+      "sheen": 120,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Zeek",
+      "species": "Drowzee",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Disable",
+        "Future Sight",
+        "Hidden Power",
+        "Return"
+      ],
+      "cool": 10,
+      "beauty": 40,
+      "cute": 50,
+      "smart": 30,
+      "tough": 45,
+      "sheen": 130,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Diego",
+      "species": "Hitmonchan",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Sky Uppercut",
+        "Detect",
+        "Revenge",
+        "Mega Punch"
+      ],
+      "cool": 45,
+      "beauty": 20,
+      "cute": 10,
+      "smart": 20,
+      "tough": 45,
+      "sheen": 140,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Aliyah",
+      "species": "Blissey",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Sing",
+        "Soft-Boiled",
+        "Egg Bomb",
+        "Double-Edge"
+      ],
+      "cool": 20,
+      "beauty": 35,
+      "cute": 40,
+      "smart": 20,
+      "tough": 20,
+      "sheen": 150,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Natalia",
+      "species": "Elekid",
+      "rank": 1,
+      "pools": [
+        "Cool",
+        "Cute"
+      ],
+      "moves": [
+        "Shock Wave",
+        "Quick Attack",
+        "Screech",
+        "Attract"
+      ],
+      "cool": 40,
+      "beauty": 10,
+      "cute": 40,
+      "smart": 25,
+      "tough": 25,
+      "sheen": 140,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Devin",
+      "species": "Snubbull",
+      "rank": 1,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Scary Face",
+        "Taunt",
+        "Tail Whip",
+        "Bite"
+      ],
+      "cool": 20,
+      "beauty": 20,
+      "cute": 20,
+      "smart": 20,
+      "tough": 20,
+      "sheen": 130,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Tylor",
+      "species": "Misdreavus",
+      "rank": 1,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Perish Song",
+        "Mean Look",
+        "Confuse Ray",
+        "Pain Split"
+      ],
+      "cool": 10,
+      "beauty": 35,
+      "cute": 10,
+      "smart": 45,
+      "tough": 20,
+      "sheen": 120,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Ronnie",
+      "species": "Lairon",
+      "rank": 2,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Metal Sound",
+        "Metal Claw",
+        "Harden",
+        "Take Down"
+      ],
+      "cool": 30,
+      "beauty": 50,
+      "cute": 35,
+      "smart": 100,
+      "tough": 90,
+      "sheen": 200,
+      "time": "Either"
+    },
+    {
+      "trainer": "Claudia",
+      "species": "Shiftry",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Growth",
+        "Razor Wind",
+        "Explosion",
+        "Extrasensory"
+      ],
+      "cool": 75,
+      "beauty": 75,
+      "cute": 65,
+      "smart": 35,
+      "tough": 70,
+      "sheen": 210,
+      "time": "Either"
+    },
+    {
+      "trainer": "Elias",
+      "species": "Ninjask",
+      "rank": 2,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Screech",
+        "Fury Swipes",
+        "Sand Attack",
+        "Baton Pass"
+      ],
+      "cool": 30,
+      "beauty": 50,
+      "cute": 95,
+      "smart": 70,
+      "tough": 70,
+      "sheen": 220,
+      "time": "Either"
+    },
+    {
+      "trainer": "Jade",
+      "species": "Swellow",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Agility",
+        "Aerial Ace",
+        "Wing Attack",
+        "Fly"
+      ],
+      "cool": 65,
+      "beauty": 85,
+      "cute": 35,
+      "smart": 75,
+      "tough": 40,
+      "sheen": 230,
+      "time": "Either"
+    },
+    {
+      "trainer": "Francis",
+      "species": "Mightyena",
+      "rank": 2,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Taunt",
+        "Thief",
+        "Odor Sleuth",
+        "Take Down"
+      ],
+      "cool": 40,
+      "beauty": 80,
+      "cute": 35,
+      "smart": 70,
+      "tough": 70,
+      "sheen": 240,
+      "time": "Either"
+    },
+    {
+      "trainer": "Alisha",
+      "species": "Beautifly",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Morning Sun",
+        "Silver Wind",
+        "Stun Spore",
+        "Secret Power"
+      ],
+      "cool": 40,
+      "beauty": 70,
+      "cute": 25,
+      "smart": 80,
+      "tough": 100,
+      "sheen": 250,
+      "time": "Either"
+    },
+    {
+      "trainer": "Saul",
+      "species": "Seaking",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Flail",
+        "Supersonic",
+        "Horn Attack",
+        "Fury Attack"
+      ],
+      "cool": 80,
+      "beauty": 60,
+      "cute": 30,
+      "smart": 70,
+      "tough": 90,
+      "sheen": 200,
+      "time": "Either"
+    },
+    {
+      "trainer": "Felicia",
+      "species": "Castform",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Sunny Day",
+        "Weather Ball",
+        "Sandstorm",
+        "Return"
+      ],
+      "cool": 70,
+      "beauty": 80,
+      "cute": 80,
+      "smart": 50,
+      "tough": 65,
+      "sheen": 210,
+      "time": "Either"
+    },
+    {
+      "trainer": "Emilio",
+      "species": "Machoke",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Seismic Toss",
+        "Focus Energy",
+        "Karate Chop",
+        "Scary Face"
+      ],
+      "cool": 70,
+      "beauty": 85,
+      "cute": 25,
+      "smart": 60,
+      "tough": 50,
+      "sheen": 220,
+      "time": "Either"
+    },
+    {
+      "trainer": "Karla",
+      "species": "Lombre",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Attract",
+        "Flash",
+        "Uproar",
+        "Growl"
+      ],
+      "cool": 40,
+      "beauty": 60,
+      "cute": 90,
+      "smart": 45,
+      "tough": 70,
+      "sheen": 230,
+      "time": "Either"
+    },
+    {
+      "trainer": "Darryl",
+      "species": "Seviper",
+      "rank": 2,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Poison Fang",
+        "Glare",
+        "Wrap",
+        "Screech"
+      ],
+      "cool": 35,
+      "beauty": 50,
+      "cute": 90,
+      "smart": 40,
+      "tough": 100,
+      "sheen": 240,
+      "time": "Either"
+    },
+    {
+      "trainer": "Selena",
+      "species": "Wailmer",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Cute"
+      ],
+      "moves": [
+        "Water Pulse",
+        "Rest",
+        "Water Spout",
+        "Splash"
+      ],
+      "cool": 30,
+      "beauty": 100,
+      "cute": 100,
+      "smart": 50,
+      "tough": 30,
+      "sheen": 250,
+      "time": "Either"
+    },
+    {
+      "trainer": "Noel",
+      "species": "Magikarp",
+      "rank": 2,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Tackle",
+        "Splash",
+        "Flail",
+        "Tackle"
+      ],
+      "cool": 30,
+      "beauty": 30,
+      "cute": 160,
+      "smart": 50,
+      "tough": 160,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Lacey",
+      "species": "Lunatone",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Explosion",
+        "Future Sight",
+        "Psychic",
+        "Confusion"
+      ],
+      "cool": 50,
+      "beauty": 70,
+      "cute": 60,
+      "smart": 70,
+      "tough": 50,
+      "sheen": 210,
+      "time": "Either"
+    },
+    {
+      "trainer": "Corbin",
+      "species": "Absol",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Perish Song",
+        "Hail",
+        "Hyper Beam",
+        "Slash"
+      ],
+      "cool": 95,
+      "beauty": 80,
+      "cute": 85,
+      "smart": 35,
+      "tough": 35,
+      "sheen": 220,
+      "time": "Either"
+    },
+    {
+      "trainer": "Gracie",
+      "species": "Exeggutor",
+      "rank": 2,
+      "pools": [
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Stomp",
+        "Hypnosis",
+        "Egg Bomb",
+        "Skill Swap"
+      ],
+      "cool": 40,
+      "beauty": 50,
+      "cute": 60,
+      "smart": 100,
+      "tough": 80,
+      "sheen": 200,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Coltin",
+      "species": "Cubone",
+      "rank": 2,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Bone Club",
+        "Bonemerang",
+        "Bone Rush",
+        "Growl"
+      ],
+      "cool": 40,
+      "beauty": 35,
+      "cute": 85,
+      "smart": 35,
+      "tough": 100,
+      "sheen": 210,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Ellie",
+      "species": "Hitmonlee",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Reversal",
+        "Revenge",
+        "Focus Energy",
+        "Mega Kick"
+      ],
+      "cool": 85,
+      "beauty": 30,
+      "cute": 25,
+      "smart": 50,
+      "tough": 100,
+      "sheen": 220,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Marcus",
+      "species": "Squirtle",
+      "rank": 2,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Tail Whip",
+        "Bubble",
+        "Focus Punch",
+        "Withdraw"
+      ],
+      "cool": 30,
+      "beauty": 35,
+      "cute": 100,
+      "smart": 40,
+      "tough": 95,
+      "sheen": 230,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Kiara",
+      "species": "Kangaskhan",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Mega Punch",
+        "Rage",
+        "Focus Punch",
+        "Tail Whip"
+      ],
+      "cool": 100,
+      "beauty": 50,
+      "cute": 30,
+      "smart": 50,
+      "tough": 100,
+      "sheen": 240,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Bryce",
+      "species": "Pineco",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Explosion",
+        "Spikes",
+        "Light Screen",
+        "Giga Drain"
+      ],
+      "cool": 80,
+      "beauty": 80,
+      "cute": 80,
+      "smart": 80,
+      "tough": 80,
+      "sheen": 250,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Jamie",
+      "species": "Dunsparce",
+      "rank": 2,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Spite",
+        "Yawn",
+        "Defense Curl",
+        "Take Down"
+      ],
+      "cool": 40,
+      "beauty": 35,
+      "cute": 100,
+      "smart": 40,
+      "tough": 110,
+      "sheen": 240,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Jorge",
+      "species": "Houndoom",
+      "rank": 2,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Roar",
+        "Flamethrower",
+        "Feint Attack",
+        "Sunny Day"
+      ],
+      "cool": 100,
+      "beauty": 100,
+      "cute": 30,
+      "smart": 25,
+      "tough": 80,
+      "sheen": 230,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Devon",
+      "species": "Miltank",
+      "rank": 2,
+      "pools": [
+        "Beauty",
+        "Cute"
+      ],
+      "moves": [
+        "Milk Drink",
+        "Heal Bell",
+        "Defense Curl",
+        "Blizzard"
+      ],
+      "cool": 50,
+      "beauty": 110,
+      "cute": 100,
+      "smart": 35,
+      "tough": 40,
+      "sheen": 220,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Justina",
+      "species": "Gyarados",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Tough"
+      ],
+      "moves": [
+        "Hyper Beam",
+        "Hydro Pump",
+        "Rain Dance",
+        "Bite"
+      ],
+      "cool": 160,
+      "beauty": 200,
+      "cute": 20,
+      "smart": 40,
+      "tough": 160,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Ralph",
+      "species": "Loudred",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Hyper Voice",
+        "Stomp",
+        "Roar",
+        "Howl"
+      ],
+      "cool": 170,
+      "beauty": 50,
+      "cute": 55,
+      "smart": 150,
+      "tough": 160,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Rosa",
+      "species": "Skitty",
+      "rank": 3,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Attract",
+        "Assist",
+        "Feint Attack",
+        "Tail Whip"
+      ],
+      "cool": 40,
+      "beauty": 200,
+      "cute": 150,
+      "smart": 185,
+      "tough": 60,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Keaton",
+      "species": "Slaking",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Covet",
+        "Counter",
+        "Encore",
+        "Slack Off"
+      ],
+      "cool": 85,
+      "beauty": 85,
+      "cute": 170,
+      "smart": 110,
+      "tough": 150,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Mayra",
+      "species": "Altaria",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Dragon Dance",
+        "Hyper Beam",
+        "Perish Song",
+        "Safeguard"
+      ],
+      "cool": 170,
+      "beauty": 150,
+      "cute": 30,
+      "smart": 30,
+      "tough": 90,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Lamar",
+      "species": "Kirlia",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Smart"
+      ],
+      "moves": [
+        "Shock Wave",
+        "Shadow Ball",
+        "Skill Swap",
+        "Return"
+      ],
+      "cool": 230,
+      "beauty": 60,
+      "cute": 60,
+      "smart": 230,
+      "tough": 80,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Aubrey",
+      "species": "Bellossom",
+      "rank": 3,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Petal Dance",
+        "Sweet Scent",
+        "Stun Spore",
+        "Flash"
+      ],
+      "cool": 35,
+      "beauty": 200,
+      "cute": 150,
+      "smart": 130,
+      "tough": 40,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Nigel",
+      "species": "Sableye",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Mean Look",
+        "Feint Attack",
+        "Knock Off",
+        "Confuse Ray"
+      ],
+      "cool": 25,
+      "beauty": 35,
+      "cute": 230,
+      "smart": 150,
+      "tough": 160,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Camille",
+      "species": "Natu",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Night Shade",
+        "Future Sight",
+        "Confuse Ray",
+        "Psychic"
+      ],
+      "cool": 35,
+      "beauty": 35,
+      "cute": 150,
+      "smart": 130,
+      "tough": 170,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Deon",
+      "species": "Sharpedo",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Agility",
+        "Swagger",
+        "Taunt",
+        "Take Down"
+      ],
+      "cool": 140,
+      "beauty": 70,
+      "cute": 140,
+      "smart": 75,
+      "tough": 100,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Janelle",
+      "species": "Luvdisc",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Sweet Kiss",
+        "Attract",
+        "Take Down",
+        "Charm"
+      ],
+      "cool": 50,
+      "beauty": 100,
+      "cute": 220,
+      "smart": 40,
+      "tough": 190,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Heath",
+      "species": "Heracross",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Strength",
+        "Endure",
+        "Reversal",
+        "Rock Tomb"
+      ],
+      "cool": 170,
+      "beauty": 70,
+      "cute": 110,
+      "smart": 240,
+      "tough": 140,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Sasha",
+      "species": "Electrode",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Explosion",
+        "Light Screen",
+        "Swift",
+        "Flash"
+      ],
+      "cool": 200,
+      "beauty": 200,
+      "cute": 30,
+      "smart": 35,
+      "tough": 50,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Frankie",
+      "species": "Pichu",
+      "rank": 3,
+      "pools": [
+        "Beauty",
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Sweet Kiss",
+        "Attract",
+        "Rest",
+        "Tail Whip"
+      ],
+      "cool": 25,
+      "beauty": 150,
+      "cute": 180,
+      "smart": 115,
+      "tough": 120,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Helen",
+      "species": "Wobbuffet",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Counter",
+        "Mirror Coat",
+        "Safeguard",
+        "Destiny Bond"
+      ],
+      "cool": 60,
+      "beauty": 230,
+      "cute": 50,
+      "smart": 220,
+      "tough": 210,
+      "sheen": 255,
+      "time": "Either"
+    },
+    {
+      "trainer": "Camile",
+      "species": "Gengar",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Destiny Bond",
+        "Confuse Ray",
+        "Lick",
+        "Sludge Bomb"
+      ],
+      "cool": 200,
+      "beauty": 100,
+      "cute": 50,
+      "smart": 80,
+      "tough": 180,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Martin",
+      "species": "Porygon",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty",
+        "Cute",
+        "Smart",
+        "Tough"
+      ],
+      "moves": [
+        "Conversion 2",
+        "Conversion",
+        "Return",
+        "Recycle"
+      ],
+      "cool": 130,
+      "beauty": 130,
+      "cute": 130,
+      "smart": 130,
+      "tough": 130,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Sergio",
+      "species": "Dragonite",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Outrage",
+        "Slam",
+        "Twister",
+        "Earthquake"
+      ],
+      "cool": 150,
+      "beauty": 140,
+      "cute": 50,
+      "smart": 120,
+      "tough": 150,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Kailey",
+      "species": "Meowth",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Smart"
+      ],
+      "moves": [
+        "Growl",
+        "Taunt",
+        "Pay Day",
+        "Bite"
+      ],
+      "cool": 125,
+      "beauty": 110,
+      "cute": 180,
+      "smart": 170,
+      "tough": 80,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Perla",
+      "species": "Jynx",
+      "rank": 3,
+      "pools": [
+        "Beauty",
+        "Smart"
+      ],
+      "moves": [
+        "Perish Song",
+        "Mean Look",
+        "Lovely Kiss",
+        "Fake Tears"
+      ],
+      "cool": 100,
+      "beauty": 150,
+      "cute": 100,
+      "smart": 150,
+      "tough": 120,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Clara",
+      "species": "Togepi",
+      "rank": 3,
+      "pools": [
+        "Cute"
+      ],
+      "moves": [
+        "Growl",
+        "Yawn",
+        "Encore",
+        "Follow Me"
+      ],
+      "cool": 80,
+      "beauty": 120,
+      "cute": 200,
+      "smart": 120,
+      "tough": 80,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Jakob",
+      "species": "Espeon",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Beauty"
+      ],
+      "moves": [
+        "Swift",
+        "Quick Attack",
+        "Morning Sun",
+        "Tail Whip"
+      ],
+      "cool": 180,
+      "beauty": 150,
+      "cute": 100,
+      "smart": 80,
+      "tough": 150,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Trey",
+      "species": "Slowking",
+      "rank": 3,
+      "pools": [
+        "Cute",
+        "Tough"
+      ],
+      "moves": [
+        "Facade",
+        "Curse",
+        "Yawn",
+        "Focus Punch"
+      ],
+      "cool": 100,
+      "beauty": 80,
+      "cute": 200,
+      "smart": 110,
+      "tough": 170,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    },
+    {
+      "trainer": "Lane",
+      "species": "Ursaring",
+      "rank": 3,
+      "pools": [
+        "Cool",
+        "Tough"
+      ],
+      "moves": [
+        "Thrash",
+        "Aerial Ace",
+        "Fake Tears",
+        "Leer"
+      ],
+      "cool": 180,
+      "beauty": 140,
+      "cute": 30,
+      "smart": 80,
+      "tough": 190,
+      "sheen": 255,
+      "time": "OnlyAfterTheGame"
+    }
+  ]
+}
