@@ -8002,6 +8002,17 @@
     "fieldUse": "FormChange"
   },
   {
+    "id": 1675,
+    "name": "Shiny Charm",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Raises the chance of finding a shiny Pokémon."
+  },
+  {
     "id": 1681,
     "name": "Reveal Glass",
     "pocket": "KeyItems",

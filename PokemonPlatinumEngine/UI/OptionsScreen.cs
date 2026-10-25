@@ -113,14 +113,25 @@ public class OptionsScreen
         {
             int step = InputManager.IsActionPressed(GameAction.Left) ? -1
                 : InputManager.IsActionPressed(GameAction.Right) || InputManager.IsActionPressed(GameAction.Confirm) ? 1 : 0;
-            if (step != 0)
-            {
-                Change(settings, Rows[SelectedIndex], step);
-                AudioManager.PlaySound("select");
-                return true;
-            }
+            if (step != 0) return Step(settings, step);
         }
         return false;
+    }
+
+    /// <summary>
+    /// A press of left, right or A on the row the cursor is on: moves its setting a step and returns true; or, for the Battle
+    /// Style row a run keeps on Set (plan 13 · V5), says no with the error sound and changes nothing.
+    /// </summary>
+    public bool Step(GameSettings settings, int step)
+    {
+        if (Rows[SelectedIndex] == OptionRow.BattleStyle && StyleLocked)
+        {
+            AudioManager.PlaySound("error");
+            return false;
+        }
+        Change(settings, Rows[SelectedIndex], step);
+        AudioManager.PlaySound("select");
+        return true;
     }
 
     /// <summary>The A button on the row the cursor is on: HELP opens the help pages; any other row is changed by Update.</summary>
@@ -282,6 +293,18 @@ public class OptionsScreen
 
     private static int Wrap(int value, int count) => ((value % count) + count) % count;
 
+    /// <summary>
+    /// Whether the run in force keeps the Battle Style on Set (plan 13 · V5, <c>RunRules.SetStyle</c>): the row then reads Set
+    /// whatever the file holds, says why, and cannot be changed. The game sets it as the screen is used; false from the title.
+    /// </summary>
+    public bool StyleLocked { get; set; }
+
+    /// <summary>A row as it is drawn: <see cref="Describe"/>, but for the Battle Style row a run has locked on Set.</summary>
+    private (string Label, string Value, string Help) Described(GameSettings s, OptionRow row) =>
+        row == OptionRow.BattleStyle && StyleLocked
+            ? (Text.Of("options.battleStyle.label"), Text.Of("options.battleStyle.value.Set"), Text.Of("options.battleStyle.help.locked"))
+            : Describe(s, row);
+
     private static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
     {
         OptionRow.Language => (Text.Of("options.language.label"), (Core.Language.Of(s.Language) ?? Text.Language).Name, Text.Of("options.language.help")),
@@ -356,7 +379,7 @@ public class OptionsScreen
         for (int k = 0; k < Math.Min(VisibleRows, Rows.Length); k++)
         {
             int i = FirstRow + k;
-            var (label, value, _) = Describe(settings, Rows[i]);
+            var (label, value, _) = Described(settings, Rows[i]);
             ModernUi.ValueRow(new Rectangle(64, ModernUi.ContentTop + k * pitch, width, height), label, value, i == SelectedIndex);
         }
         if (scrolls)
@@ -372,6 +395,6 @@ public class OptionsScreen
         float top = ModernUi.ContentTop + Math.Min(VisibleRows, Rows.Length) * pitch + 6;
         var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
-        ModernUi.DrawWrapped(Describe(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);
+        ModernUi.DrawWrapped(Described(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);
     }
 }

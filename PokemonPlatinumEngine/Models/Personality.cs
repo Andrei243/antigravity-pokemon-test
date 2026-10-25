@@ -139,6 +139,19 @@ public static class Personality
     public static uint NextAlternate(uint value) => unchecked(value * 1812433253u + 1u);
 
     /// <summary>
+    /// A fresh personality for the Shiny Charm's extra rolls (plan 13 · V5), drawn like any other but keeping the nature or
+    /// the gender the Pokémon was asked to have (drawn again until one fits); a plain draw when nothing was asked.
+    /// </summary>
+    public static uint Candidate(PokemonSpecies species, Random rng, Gender? gender, Nature? nature)
+    {
+        bool wantsGender = gender is { } g && g != Gender.Genderless && HasRandomGender(species);
+        uint personality;
+        do personality = nature is { } n ? ForNature(n, rng) : Draw(rng);
+        while (wantsGender && GenderOf(species, personality) != gender);
+        return personality;
+    }
+
+    /// <summary>
     /// The personality a Pokémon is made with when the caller asks for a gender or a nature (Cute Charm and
     /// Synchronize at the head of the team, <c>CreateWildMon</c>): a gender the species can have is given by Cute
     /// Charm's built personality, with the nature asked for or one drawn; a nature alone is drawn for; nothing asked

@@ -64,6 +64,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     public bool ShowObjectives { get; set; } = true;
     public bool ShowsObjectives => ShowObjectives;
 
+    /// <summary>The ways to play a test sets (plan 13 · V5); Normal unless it does.</summary>
+    public RunRules Rules { get; set; } = RunRules.Normal;
+
     /// <summary>Where Pokémon go when the team is full.</summary>
     public List<Pokemon> Box { get; } = new();
 
@@ -795,7 +798,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         var three = RegionDatabase.Get(Region)?.Starters is { Count: > 0 } own ? own : StoryState.Starters;
         int choice = Math.Clamp(StarterChoice, 0, three.Count - 1);
         string species = three[choice];
-        GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, 5));
+        Give(new Pokemon(PokemonDatabase.Get(species)!, 5), theStarter: true);
         Story.ChooseStarter(species);
         Answer = choice;
     }
@@ -896,9 +899,19 @@ public sealed class HeadlessScriptHost : IScriptHost
         return done;
     }
 
-    public bool GivePokemon(Pokemon pokemon)
+    public bool GivePokemon(Pokemon pokemon) => Give(pokemon, theStarter: false);
+
+    /// <summary>A Pokémon onto the team, or to the box when the team is full or the run's Monotype keeps it off it (the player's starter is exempt, plan 13 · V5).</summary>
+    private bool Give(Pokemon pokemon, bool theStarter)
     {
         pokemon.Met(Map?.DisplayNameAt(PlayerTile.X, PlayerTile.Y), GameClock.Today);
+        ShinyCharm.Roll(pokemon, Bag, Dice.New());
+        if (!theStarter && !Rules.MayCarry(pokemon, Story.PlayerStarter))
+        {
+            Box.Add(pokemon);
+            Log.Add($"givepokemon {pokemon.Species.Name} kept out by the run's type");
+            return false;
+        }
         if (Party.Add(pokemon)) return true;
         Box.Add(pokemon);
         return false;

@@ -56,6 +56,12 @@ public interface IScriptHost
     /// </summary>
     bool ShowsObjectives => true;
 
+    /// <summary>
+    /// The ways to play chosen at NEW GAME (plan 13 · V5): what <c>if rule …</c> asks. Normal, with nothing on, unless a host
+    /// says otherwise; the game's host gives the run in force, the headless host the one a test sets.
+    /// </summary>
+    RunRules Rules => RunRules.Normal;
+
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
 
