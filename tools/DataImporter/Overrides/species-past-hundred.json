@@ -2153,5 +2153,13 @@
     "stats": {"hp": 91, "attack": 60, "defense": 106, "spAttack": 141, "spDefense": 105, "speed": 85},
     "abilities": ["Hospitality"], "hiddenAbility": "Heatproof",
     "evolution": {"method": "UseItem", "level": 250, "item": "Masterpiece Teacup"}
+  },
+  // Supplement, Kalos: docs/plans/D14-proposals-kalos-supplement.md, approved by the user on 2026-10-26 (Zygarde alone as the
+  // trio's guardian; every question at its default: 660, level 205, any forme evolves, knowing Core Enforcer).
+  "Ecosentinel": {
+    "from": "Zygarde", "types": ["Dragon","Ground"], "category": "Equilibrium", "height": 6.2, "weight": 720.0,
+    "stats": {"hp": 118, "attack": 110, "defense": 131, "spAttack": 81, "spDefense": 110, "speed": 110},
+    "abilities": ["Aura Break"],
+    "evolution": {"method": "LevelKnowsMove", "level": 205, "move": "Core Enforcer"}
   }
 }

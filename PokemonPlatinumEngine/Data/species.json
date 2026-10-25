@@ -195168,7 +195168,7 @@
     "weight": 305,
     "color": "Green",
     "shape": "Squiggle",
-    "dexEntry": "Zygarde is an Order Pokémon, Dragon- and Ground-type, first found in Kalos. It stands 5.0 m tall and weighs 305.0 kg.",
+    "dexEntry": "Zygarde is an Order Pokémon, Dragon- and Ground-type, first found in Kalos. It stands 5.0 m tall and weighs 305.0 kg. It evolves into Ecosentinel.",
     "learnset": [
       {
         "level": 1,
@@ -195326,6 +195326,14 @@
       "Spite",
       "Superpower",
       "Zen Headbutt"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Ecosentinel",
+        "level": 205,
+        "move": "Core Enforcer"
+      }
     ],
     "abilities": [
       "Aura Break"
@@ -309276,6 +309284,200 @@
       "Infiltrator"
     ],
     "hiddenAbility": "Telepathy"
+  },
+  {
+    "dexNumber": 2718,
+    "dexNumbers": {},
+    "name": "Ecosentinel",
+    "category": "Equilibrium",
+    "legendary": true,
+    "primaryType": "Dragon",
+    "secondaryType": "Ground",
+    "baseHP": 118,
+    "baseAttack": 110,
+    "baseDefense": 131,
+    "baseSpAttack": 81,
+    "baseSpDefense": 110,
+    "baseSpeed": 110,
+    "evYield": {
+      "hp": 3,
+      "spDefense": 1
+    },
+    "catchRate": 3,
+    "baseExpYield": 324,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Undiscovered"
+    ],
+    "hatchCycles": 120,
+    "height": 6.2,
+    "weight": 720,
+    "color": "Green",
+    "shape": "Squiggle",
+    "dexEntry": "Ecosentinel is an Equilibrium Pokémon, Dragon- and Ground-type, first found in Kalos. It stands 6.2 m tall and weighs 720.0 kg. It evolves from Zygarde.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Thousand Arrows"
+      },
+      {
+        "level": 1,
+        "moveName": "Thousand Waves"
+      },
+      {
+        "level": 1,
+        "moveName": "Core Enforcer"
+      },
+      {
+        "level": 1,
+        "moveName": "Bind"
+      },
+      {
+        "level": 1,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 1,
+        "moveName": "Dragon Breath"
+      },
+      {
+        "level": 1,
+        "moveName": "Bite"
+      },
+      {
+        "level": 8,
+        "moveName": "Haze"
+      },
+      {
+        "level": 16,
+        "moveName": "Dig"
+      },
+      {
+        "level": 24,
+        "moveName": "Safeguard"
+      },
+      {
+        "level": 32,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 40,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 48,
+        "moveName": "Land's Wrath"
+      },
+      {
+        "level": 56,
+        "moveName": "Glare"
+      },
+      {
+        "level": 64,
+        "moveName": "Sandstorm"
+      },
+      {
+        "level": 72,
+        "moveName": "Coil"
+      },
+      {
+        "level": 80,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 88,
+        "moveName": "Outrage"
+      },
+      {
+        "level": 110,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 140,
+        "moveName": "Scale Rend"
+      },
+      {
+        "level": 165,
+        "moveName": "Dust Veil"
+      },
+      {
+        "level": 195,
+        "moveName": "Fault Line"
+      },
+      {
+        "level": 220,
+        "moveName": "Serpent Crash"
+      },
+      {
+        "level": 250,
+        "moveName": "Tectonic Rend"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM20",
+      "TM21",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM37",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM52",
+      "TM58",
+      "TM59",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "HM04",
+      "HM06",
+      "TR01",
+      "TR10",
+      "TR20",
+      "TR21",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR32",
+      "TR39",
+      "TR42",
+      "TR51",
+      "TR62",
+      "TR64",
+      "TR67",
+      "TR69",
+      "TR75",
+      "TR77",
+      "TR78",
+      "TR94"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Outrage",
+      "Snore",
+      "Spite",
+      "Superpower",
+      "Zen Headbutt"
+    ],
+    "offspring": "Zygarde",
+    "abilities": [
+      "Aura Break"
+    ]
   },
   {
     "dexNumber": 2735,

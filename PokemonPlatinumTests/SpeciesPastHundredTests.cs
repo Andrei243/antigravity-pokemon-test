@@ -105,7 +105,7 @@ public class SpeciesPastHundredTests
             3 => (140, legend ? 160 : 158),
             4 => (101, legend ? 150 : 120),
             5 => (165, legend ? 190 : 183),
-            6 => from.Name == "Sylveon" ? (120, 120) : (188, 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions
+            6 => from.Name == "Sylveon" ? (120, 120) : (188, legend ? 205 : 203), // Kalos's own climb (its question 1), Sylveon's end with the Eeveelutions, Zygarde's at 205 (the supplement)
             7 => (209, legend ? 225 : 221),
             8 => (226, legend ? 244 : 240),
             9 => (244, legend ? 258 : 256), // Paldea's climb (its question 1, 2026-10-26): 244 to 256, the Treasures of Ruin at 258
