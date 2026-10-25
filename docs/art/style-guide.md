@@ -631,6 +631,24 @@ The drought and the abnormal weather are Emerald's (plan 21 · H8, part b): Grou
 
   The Champion's band is the rival's, whoever the player named him: it is found by the class alone, and the plate says the name he was given. A Leader, a member of the Elite Four or a Champion that no table names wears the plain band, steel grey, under their own name. The card behind a portrait is the band's light colour for all thirteen of Kanto's.
 
+  **Hoenn's thirteen** (plan 21 · H9, part b; `SceneTransition.HoennBands`, the same beats and the same rules of colour), the eight Leaders, the four of the Elite Four and Wallace, each after its Gym's type or its room, none the base colour of a Sinnoh or Kanto band. Tate and Liza battle together, a double battle, which loses the band as the original's double battles do: theirs is written for a single battle all the same. The card behind a portrait is the band's light colour for all thirteen:
+
+  | Whose | After | Base | Deep | Light |
+  |---|---|---|---|---|
+  | Roxanne | rock, a warm sandstone | `176,120,84` | `98,62,40` | `236,196,160` |
+  | Brawly | fighting, a brick red | `184,64,64` | `104,28,32` | `244,160,152` |
+  | Wattson | electricity, a bright lemon | `240,212,72` | `140,116,24` | `252,244,168` |
+  | Flannery | fire, an ember orange | `236,128,40` | `148,64,16` | `252,204,128` |
+  | Norman | the normal type, a plain khaki | `176,160,128` | `96,84,60` | `232,224,196` |
+  | Winona | flying, a high sky blue | `96,184,236` | `36,104,160` | `196,232,252` |
+  | Tate & Liza | the mind, an orchid | `184,112,208` | `100,48,124` | `232,196,248` |
+  | Juan | water, a deep sea blue | `48,120,176` | `20,60,108` | `140,196,236` |
+  | Sidney | the dark type, a smoky plum | `88,72,96` | `40,30,48` | `180,164,196` |
+  | Phoebe | ghosts, a dusk violet | `120,96,168` | `60,44,100` | `200,184,236` |
+  | Glacia | ice, a pale glacier | `152,200,232` | `64,112,152` | `224,244,252` |
+  | Drake | dragons, an indigo | `104,72,184` | `52,32,112` | `192,172,244` |
+  | Wallace | the Champion's room, a teal of the sea | `40,168,176` | `16,92,100` | `156,228,232` |
+
   The card behind a portrait is the band's light colour, but for the two whose hair is that colour: Volkner's is the pale blue of a spark, `196,224,252`, and Cynthia's a moonlit blue, `132,140,196`, between her hair's gold and her coat's night. A band's colours are chosen with its person on it (the harness's `gyms` and `league` shoot all thirteen, `g_band_<name>` and `lg_band_<name>`), never from the table alone.
 
   A Leader or a League member the table doesn't name (another region's, before its band is written) wears a plain band of steel grey (`120,132,152`, `64,72,92`, `204,212,224`).

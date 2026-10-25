@@ -71,6 +71,138 @@
       "text": [
         "Dar întâi du-te alături și salută-i pe vecini. Acolo locuiește Profesorul Birch, iar copilul lui e cam de vârsta ta!"
       ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You're up! The whole of Littleroot is talking about you. My child, the Champion of Hoenn!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, but come and look, quick! There's a special report on the television."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...we interrupt this programme for a report from across Hoenn. A Pokémon nobody can name has been seen flying over the routes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It flies faster than a jet, they say. But no two people who saw it can agree on what colour it was..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I only caught a glimpse of it out of the window this morning. What colour did it look like to you, {player}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What colour was the Pokémon?",
+        "RED",
+        "BLUE"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Red? Then it might be the one the old stories call Latias. Fancy that, flying about Hoenn right now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blue? Then it might be the one the old stories call Latios. Fancy that, flying about Hoenn right now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I came as soon as I heard. The Champion! I always knew you'd go further than me one day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've brought you something. Think of it as a present from a proud father."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That ticket lets you board the S.S. Tidal at Slateport or Lilycove. And ships out of Lilycove go much further still."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, a Gym Leader can't stay away from his Gym for long. Look after your mother, {player}. I'll see you soon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's your father for you. He was so proud he could hardly stand still!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "GoSeeRoom": [

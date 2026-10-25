@@ -426,9 +426,9 @@ public class HoennTests
         Assert.True(Overworld.IsWalkable(lilycove.X, lilycove.Y), $"nobody can land at {lilycove.X},{lilycove.Y}");
         Assert.Equal("hoenn/lilycove", Overworld.BgmTrackAt(507, 80));
         Assert.Single(BuiltMaps.Value["LilycoveCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
-        // The Contest Hall (plan 21 · H11) and the harbour (H9) stay shut, and so does the store's lift on every floor
-        // (Team Aqua's hideout opened with part b)
-        foreach (string target in new[] { "LilycoveCity_ContestLobby", "LilycoveCity_Harbor" })
+        // The Contest Hall (plan 21 · H11) stays shut, and so does the store's lift on every floor (Team Aqua's hideout
+        // opened with part b, and the harbour with plan 21 · H9, part b)
+        foreach (string target in new[] { "LilycoveCity_ContestLobby" })
             Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap == target && !w.Shut);
         foreach (string floor in new[] { "1F", "2F", "3F", "4F", "5F" })
             Assert.DoesNotContain(BuiltMaps.Value[$"LilycoveCity_DepartmentStore_{floor}"].Warps,
@@ -857,6 +857,69 @@ public class HoennTests
         {
             Follow(soot, _ => false);
             soot.WeatherClock = 0;
+        }
+    }
+
+    // ------------------------------------------------------------------ plan 21 · H9, part b: the harbour and the way on
+
+    [Fact]
+    public void LilycovesHarbourIsOpenAndItsCaptainSailsToUnovaOnceHoennsHallOfFameIsEntered()
+    {
+        Assert.Contains("lilycove_city_harbor", Hoenn.Index.Areas);
+        Assert.Contains("LilycoveCity_Harbor", RegionDatabase.Get(RegionDatabase.Hoenn)!.Maps);
+        // Lilycove's door to it is open, and the walk of the whole game comes into it
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "LilycoveCity_Harbor" && !w.Shut);
+        Assert.Contains(Walked.Value.Keys, m => m.Name == "LilycoveCity_Harbor");
+        // The link from Hoenn is a ship from the harbour, its captain beside the ferry desk's attendant on the gangway
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!;
+        Assert.Equal((RegionDatabase.Unova, Transport.Boat, "ship", "LilycoveCity_Harbor"), (link.To, link.Transport, link.VesselWord, link.DepartureMap));
+        var harbour = BuiltMaps.Value["LilycoveCity_Harbor"];
+        var captain = harbour.Everyone.Single(n => n.IsTransportAttendant);
+        Assert.Equal((7, 10), (captain.GridX, captain.GridY));
+        Assert.Equal(RegionDatabase.Get(RegionDatabase.Hoenn)!.StoryCompleteFlag, captain.ShownBy);
+        Assert.True(harbour.IsWalkable(7, 11), "the captain is spoken to from the quay");
+        Assert.Contains(harbour.Everyone, n => n.Key == "lilycove_harbor_attendant");
+        // Emerald's ferry sailor and Mr. Briney, who stand on the attendant's own tile for the voyages of H12, are left out
+        Assert.Single(harbour.Everyone, n => n.GridX == 8 && n.GridY == 10);
+        // Only a Champion of Hoenn sails, and Unova is built
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(link, story));
+        story.CompleteRegion(RegionDatabase.Hoenn);
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(link, story));
+        Assert.NotNull(RegionDatabase.Get(RegionDatabase.Unova)!.ArrivalSpot);
+    }
+
+    [Fact]
+    public void LatiasAndLatiosRoamEmeraldsRoutesOfHoennAlone()
+    {
+        // Emerald's sRoamerLocations: the twenty routes, every one an area of the world, each beside the others it names
+        Assert.Equal(20, Roamers.HoennRoutes.Length);
+        foreach (string route in Roamers.HoennRoutes) Assert.Contains(route, Hoenn.Index.Areas);
+        Assert.True(Roamers.InHoenn("Latias") && Roamers.InHoenn("Latios"));
+        Assert.False(Roamers.InSinnoh("Latias"));
+        Assert.Same(Roamers.HoennRoutes, Roamers.RoutesOf("Latios"));
+        foreach (string species in new[] { "Latias", "Latios" })
+        {
+            var state = new SpecialEncounters { PreviousPlace = "route_110" };
+            int slot = Roamers.SlotOf(species)!.Value;
+            var rng = new Random(7);
+            Roamers.SetLoose(state, slot, rng);
+            var roamer = state.Roamers[slot];
+            Assert.Equal(40, roamer.Level);
+            var seen = new HashSet<string>();
+            for (int i = 0; i < 300; i++)
+            {
+                Roamers.PlayerWalkedInto(state, i % 2 == 0 ? "route_118" : "route_119", rng);
+                seen.Add(Roamers.PlaceOf(roamer)!);
+            }
+            Assert.All(seen, place => Assert.Contains(place, Roamers.HoennRoutes));
+            Assert.True(seen.Count > 8, $"{species} only went to {string.Join(", ", seen)}");
+            Assert.DoesNotContain(Roamers.Routes, seen.Contains);
+            Assert.DoesNotContain(Roamers.JohtoRoutes, seen.Contains);
+            // Met where it is: a roamer at a place is met one time in two
+            int met = 0;
+            for (int i = 0; i < 200; i++) if (Roamers.MeetHere(state, Roamers.PlaceOf(roamer), rng) == slot) met++;
+            Assert.InRange(met, 60, 140);
         }
     }
 }

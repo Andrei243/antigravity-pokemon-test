@@ -1868,6 +1868,7 @@ script HoennNewGame
   call HoennChapterTen
   call HoennChapterEleven
   call HoennChapterTwelve
+  call HoennChapterThirteen
   return
 
 
@@ -2176,6 +2177,15 @@ script HoennChapterTwelve
   setflag FLAG_HIDE_CHAMPIONS_ROOM_RIVAL
   setflag FLAG_HIDE_CHAMPIONS_ROOM_BIRCH
   setflag FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT
+  return
+
+
+# What Emerald's new game hides for the time after Hoenn's Hall of Fame (plan 21 · H9, part b): Dad at home, who comes
+# back from Petalburg with the S.S. Ticket once the Champion is home. No story version is raised: HoennNewGame calls it,
+# and the family's house's arrival calls it for a save that never ran it (FLAG_HOENN_CHAPTER_THIRTEEN)
+script HoennChapterThirteen
+  setflag FLAG_HOENN_CHAPTER_THIRTEEN
+  setflag FLAG_HIDE_PLAYERS_HOUSE_DAD
   return
 
 

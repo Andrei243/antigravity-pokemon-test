@@ -138,9 +138,9 @@ public class RegionTests
             Assert.Contains(link.DepartureMap, region.Maps);
             Assert.Contains(MapDatabase.Get(link.DepartureMap!).Everyone, n => n.IsTransportAttendant);
         }
-        // Hoenn's departure is plan 21's, once Hoenn's Hall of Fame is written; a link added undecided between two
-        // built regions is a finding
-        Assert.Equal(new[] { "Hoenn>Unova" }, undecided);
+        // Since plan 21 · H9, part b every link between two built regions names its departure (Hoenn's is Lilycove's
+        // harbour): a link added undecided between two built regions is a finding
+        Assert.Empty(undecided);
     }
 
     [Fact]
@@ -150,7 +150,7 @@ public class RegionTests
         Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Sinnoh)!.VesselWord);
         Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Kanto)!.VesselWord);
         Assert.Equal("ferry", RegionDatabase.LinkFrom(RegionDatabase.Johto)!.VesselWord);
-        Assert.Equal("way", RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!.VesselWord);
+        Assert.Equal("ship", RegionDatabase.LinkFrom(RegionDatabase.Hoenn)!.VesselWord);
         Assert.Equal(Transport.Plane, RegionDatabase.LinkFrom(RegionDatabase.Unova)!.Transport);
         Assert.Equal("plane", RegionDatabase.LinkFrom(RegionDatabase.Galar)!.VesselWord);
         foreach (var link in RegionDatabase.Links)

@@ -3898,6 +3898,37 @@ differs from Emerald, and why:
   harbour's ship on to the next region (`RegionDatabase`'s Hoenn link is still undecided), Scott's Battle Frontier pass,
   Wally's and the Four's rematches through Match Call, and the abnormal weather's other places of the post-game.
 
+## Home as Hoenn's Champion, the eon roamer and the way on (2026-10-25, plan 21 · H9, its second part)
+
+What the first part left of the League's end, with scripts of ours on Emerald's beats (`littleroot_town_brendans_house_1f.txt`,
+`common.HoennChapterThirteen`). What differs from Emerald, and why:
+
+- **Home.** The first way down the stairs once `HoennHallOfFame` is set plays one scene in the family's house: Mom's
+  welcome, the television's report of a Pokémon nobody can name flying over Hoenn, her question of its colour, and Dad
+  (Norman) home from Petalburg with the S.S. Ticket, who then goes back to his Gym. Emerald plays the report and Dad's
+  visit as two beats of the same arrival; here they are one scene, played once (`VAR_HOENN_CHAMPION_HOME`, ours).
+  `FLAG_HIDE_PLAYERS_HOUSE_DAD` is Emerald's; a new game sets it (`HoennChapterThirteen`), and the house's arrival gives
+  it to a save made before it was written, which then plays the scene on its next way down.
+- **The colour named roams.** RED sets Latias roaming and BLUE Latios, at level 40 (Emerald's `VAR_ROAMER_POKEMON` 0 and
+  1, its `ROAMER_SPECIES`). The other of the two is Emerald's Southern Island's, reached with the Eon Ticket, which no
+  scene gives here. The roamer goes over Emerald's twenty places (`sRoamerLocations`: Routes 110, 111 and 117 to 134,
+  `Roamers.HoennRoutes`) by Platinum's rules of moving, which differ from Emerald's only in the odds: one time in
+  sixteen anywhere, nearby otherwise, never to the place the player has just left. It is met on land and on the water
+  where its place has a table, one time in two, as every roamer of this game is.
+- **The S.S. Ticket** is Emerald's present, given for the S.S. Tidal and the Battle Frontier, both plan 21 · H12's: until
+  then Lilycove's ferry desk says the Tidal takes no passengers today.
+- **The way on to Unova is by ship from Lilycove City's harbour.** Emerald has no such crossing, so the captain is ours:
+  he stands on the gangway beside the ferry desk (7, 10) once Hoenn's Hall of Fame is entered, as Sinnoh's captain does
+  on Canalave's pier, and `common.Attendant` speaks for him. A Champion of Hoenn lands before the player's house in
+  Aspertia City (Unova's `Arrival`). Plan 18's table proposed a ship from Slateport; Lilycove is where Emerald's ships
+  for far places leave (the ferries to the islands of its events), and it has a room for the quay where Slateport's
+  harbour is Captain Stern's and Team Aqua's.
+- **Hoenn's bands.** The eight Leaders, the Elite Four and Wallace wear bands after their Gym's type or their room (the
+  style guide's third table), none the base colour of a Sinnoh or Kanto band; Tate and Liza's double battle loses its
+  band, as every double battle does.
+- **Left**: Scott's Battle Frontier pass, Wally's and the Four's rematches through Match Call, Hoenn's table for plan 14 ·
+  B11's tournaments, and the post-game's places (H12).
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
