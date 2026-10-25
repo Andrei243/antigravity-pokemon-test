@@ -6,7 +6,7 @@
           "Drayden"
         ],
         "text": [
-          ""
+          "Drayden"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Drayden: Those foul villains! We'll drive every last one of them out of Opelucid City!"
         ],
         "text": [
-          ""
+          "Drayden: Ticăloșii ăștia! Îi vom alunga pe toți din Orașul Opelucid!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Zinzolin"
         ],
         "text": [
-          ""
+          "Zinzolin"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -74,7 +74,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "Shadow Triad: ..."
         ],
         "text": [
-          ""
+          "Triada Umbrelor: ..."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -120,7 +120,7 @@
           "Shadow Triad: ..."
         ],
         "text": [
-          ""
+          "Triada Umbrelor: ..."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -138,7 +138,7 @@
           "Shadow Triad: ..."
         ],
         "text": [
-          ""
+          "Triada Umbrelor: ..."
         ]
       }
     },
@@ -148,7 +148,7 @@
           "Iris"
         ],
         "text": [
-          ""
+          "Iris"
         ]
       },
       "dialog": {
@@ -156,7 +156,7 @@
           "Iris: Good luck, {player}!"
         ],
         "text": [
-          ""
+          "Iris: Mult noroc, {player}!"
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       }
     },
@@ -216,7 +216,7 @@
           "Citizen"
         ],
         "text": [
-          ""
+          "Cetățeanul"
         ]
       }
     },
@@ -226,7 +226,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -236,7 +236,7 @@
           "Cheren"
         ],
         "text": [
-          ""
+          "Cheren"
         ]
       },
       "dialog": {
@@ -244,7 +244,7 @@
           "Cheren: Humilau City. That's where they're headed."
         ],
         "text": [
-          ""
+          "Cheren: Orașul Humilau. Încolo se îndreaptă."
         ]
       }
     }
@@ -255,7 +255,7 @@
         "Opelucid City\nTime's Dividing Line"
       ],
       "text": [
-        ""
+        "Orașul Opelucid\nLinia care împarte timpul"
       ]
     },
     "2": {
@@ -263,7 +263,7 @@
         "Drayden's House"
       ],
       "text": [
-        ""
+        "Casa lui Drayden"
       ]
     },
     "3": {
@@ -271,7 +271,7 @@
         "Formerly the Battle House..."
       ],
       "text": [
-        ""
+        "Fosta Casă a Luptelor..."
       ]
     },
     "4": {
@@ -279,7 +279,7 @@
         "Trainer Tips!\nMayor Drayden will teach you a strong move if he recognises you as a strong Trainer. Visit his home."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori!\nPrimarul Drayden te va învăța o mișcare puternică dacă te recunoaște ca Antrenor puternic. Vizitează-i casa."
       ]
     },
     "5": {
@@ -287,7 +287,7 @@
         "Opelucid City Pokémon Gym\nLeader: Drayden\nThe Spartan Mayor"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Opelucid\nLider: Drayden\nPrimarul spartan"
       ]
     }
   }
