@@ -69,7 +69,9 @@ public class SpeciesPastHundredTests
             Assert.All(Stats, stat => Assert.True(d.Stats.Of(stat) >= was.Of(stat), $"{d.Name}'s {stat} falls"));
             if (legend)
             {
-                Assert.Equal(660, Total(d.Stats));
+                // The one legendary set under 660: the Loyal Three stop at their master Pecharunt's 600 (Paldea supplement, question 1)
+                bool loyal = d.Name is "Okidaimyo" or "Munkiregent" or "Fezantessa";
+                Assert.Equal(loyal ? 600 : 660, Total(d.Stats));
                 Assert.InRange(rise, 1, 90); // the Treasures of Ruin rise +90, from 570 (Paldea's question 2)
             }
             else
