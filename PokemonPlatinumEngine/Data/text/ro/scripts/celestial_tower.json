@@ -5,7 +5,7 @@
         "It's the great bell of the Celestial Tower."
       ],
       "text": [
-        ""
+        "E clopotul cel mare din Turnul Celest."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Will you ring the bell?"
       ],
       "text": [
-        ""
+        "Tragi clopotul?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} rang the bell..."
       ],
       "text": [
-        ""
+        "{player} a tras clopotul..."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The sound of the bell rolls out over the tower and the hills beyond, and slowly fades away."
       ],
       "text": [
-        ""
+        "Sunetul clopotului se rostogolește peste turn și peste dealurile din jur, apoi se stinge încet."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The bell was left untouched..."
       ],
       "text": [
-        ""
+        "Clopotul a rămas neatins..."
       ]
     }
   ]

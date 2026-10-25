@@ -6,7 +6,7 @@
           "April"
         ],
         "text": [
-          ""
+          "April"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Minccino keeps my house spotless and Deerling keeps my garden pretty. Shall we show you how it's done?"
         ],
         "text": [
-          ""
+          "Minccino îmi ține casa curată, iar Deerling îmi face grădina frumoasă. Îți arătăm cum se face?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Spotless defeat! I'll go and dust myself off."
         ],
         "text": [
-          ""
+          "Înfrângere curată! Mă duc să mă scutur de praf."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Nicole"
         ],
         "text": [
-          ""
+          "Nicole"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "A drizzle, a sunbeam, a gust... Castform wears every kind of weather. Watch it change!"
         ],
         "text": [
-          ""
+          "O burniță, o rază de soare, o pală de vânt... Castform poartă orice fel de vreme. Uită-te cum se schimbă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Your skies were clearer than mine."
         ],
         "text": [
-          ""
+          "Cerul tău era mai senin decât al meu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Mara"
         ],
         "text": [
-          ""
+          "Mara"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Our teacher says to study the seasons. So I study them in battle!"
         ],
         "text": [
-          ""
+          "Profesorul nostru zice să studiem anotimpurile. Le studiez în luptă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "I need to go over my notes again."
         ],
         "text": [
-          ""
+          "Trebuie să-mi recitesc notițele."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Jacques"
         ],
         "text": [
-          ""
+          "Jacques"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Watching a Deerling's coat turn with the seasons is my life's work. Now watch this battle!"
         ],
         "text": [
-          ""
+          "Să privesc cum își schimbă blana un Deerling odată cu anotimpurile e opera vieții mele. Acum privește lupta asta!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "A fascinating result! Unfortunately for me."
         ],
         "text": [
-          ""
+          "Un rezultat fascinant! Din păcate pentru mine."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Marissa"
         ],
         "text": [
-          ""
+          "Marissa"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "A Shelmet and a Karrablast: two Pokémon that change only when they meet. Let's see how you change in battle!"
         ],
         "text": [
-          ""
+          "Un Shelmet și un Karrablast: doi Pokémon care se schimbă doar când se întâlnesc. Să vedem cum te schimbi în luptă!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "I'd like to study how you won that."
         ],
         "text": [
-          ""
+          "Aș vrea să studiez cum ai câștigat asta."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Tihana"
         ],
         "text": [
-          ""
+          "Tihana"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "The sun is out, so my Castform is at its best. Can you keep up?"
         ],
         "text": [
-          ""
+          "E soare, așa că Castform al meu e în cea mai bună formă. Poți ține pasul?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Even Castform's shine wasn't enough."
         ],
         "text": [
-          ""
+          "Nici strălucirea lui Castform n-a fost de ajuns."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Alvin"
         ],
         "text": [
-          ""
+          "Alvin"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "I skipped class to explore the route. Don't tell! Beat me and I'll keep quiet."
         ],
         "text": [
-          ""
+          "Am chiulit de la ore ca să explorez traseul. Să nu spui! Învinge-mă și tac."
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Ugh, I should have stayed in class."
         ],
         "text": [
-          ""
+          "Of, ar fi trebuit să rămân la ore."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Richard"
         ],
         "text": [
-          ""
+          "Richard"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Rangers watch the whole road. I saw you coming from a mile away!"
         ],
         "text": [
-          ""
+          "Rangerii veghează tot drumul. Te-am văzut venind de la un kilometru!"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "A ranger beaten fair and square. Well fought!"
         ],
         "text": [
-          ""
+          "Un ranger învins corect. Bine luptat!"
         ]
       }
     },
@@ -214,7 +214,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -234,7 +234,7 @@
           "Rood"
         ],
         "text": [
-          ""
+          "Rood"
         ]
       }
     },
@@ -244,7 +244,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -252,7 +252,7 @@
           "The Season Research Lab is the building in the fenced garden. They keep every season in glass cases in there!"
         ],
         "text": [
-          ""
+          "Season Research Lab e clădirea din grădina îngrădită. Țin toate anotimpurile în vitrine de sticlă acolo!"
         ]
       }
     },
@@ -262,7 +262,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -270,7 +270,7 @@
           "I met a Ferroseed in Chargestone Cave. All spikes, and cute with it! Don't pat it, though."
         ],
         "text": [
-          ""
+          "Am întâlnit un Ferroseed în Chargestone Cave. Numai țepi și, cu toate astea, drăgălaș! Nu-l mângâia, totuși."
         ]
       }
     },
@@ -280,7 +280,7 @@
           "Cobalion"
         ],
         "text": [
-          ""
+          "Cobalion"
         ]
       }
     }
@@ -291,7 +291,7 @@
         "Route 6\nThe riverside road to Chargestone Cave"
       ],
       "text": [
-        ""
+        "Route 6\nDrumul de lângă râu spre Chargestone Cave"
       ]
     },
     "2": {
@@ -299,7 +299,7 @@
         "Trainer Tips\nA Pokémon holding an item can use it at the right moment all by itself. Check what each one is carrying!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Pokémon care ține un obiect îl poate folosi singur la momentul potrivit. Verifică ce poartă fiecare!"
       ]
     },
     "3": {
@@ -307,7 +307,7 @@
         "Season Research Lab\nWhere the year's four seasons are studied"
       ],
       "text": [
-        ""
+        "Season Research Lab\nUnde se studiază cele patru anotimpuri ale anului"
       ]
     }
   }

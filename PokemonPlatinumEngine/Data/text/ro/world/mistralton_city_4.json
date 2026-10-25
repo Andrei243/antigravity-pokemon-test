@@ -6,7 +6,7 @@
           "TM Fan"
         ],
         "text": [
-          ""
+          "Fan TM"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "You can find them in odd places, too, and buy some at Poké Marts. They cost a lot, but they're worth it."
         ],
         "text": [
-          "",
-          ""
+          "Sunt foarte pretențios cu TM-urile mele! Liderii de Gym îți dau mereu unul când îi învingi, așa că nu te sfii să-i provoci.",
+          "Le poți găsi și în locuri ciudate, și poți cumpăra unele de la Poké Mart. Costă mult, dar merită."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Sweet Hearts can be traded for Heart Scales, I heard. I just like eating them."
         ],
         "text": [
-          ""
+          "Am auzit că Inimioarele Dulci se pot schimba pe Solzi-Inimă. Mie doar îmi place să le mănânc."
         ]
       }
     }

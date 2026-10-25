@@ -5,7 +5,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Heeey! {player}, is that you? Hi there!"
       ],
       "text": [
-        ""
+        "Heeey! {player}, tu ești? Salut!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Isn't this place something? The whole cave is charged with electricity, and Pokémon just love it."
       ],
       "text": [
-        ""
+        "Nu-i super locul ăsta? Toată peștera e încărcată cu electricitate, iar Pokémonilor le place enorm."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The charge jumps from one rock to the next. That's why some of the stones in here glow, and why there are sparks underfoot."
       ],
       "text": [
-        ""
+        "Încărcătura sare de pe o stâncă pe alta. De-asta unele pietre de aici strălucesc și de-asta sunt scântei sub picioare."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Oh, that's right! I came here to research something for Professor Juniper. I'd better get back to it. See you, {player}!"
       ],
       "text": [
-        ""
+        "A, da! Am venit aici să cercetez ceva pentru Profesoara Juniper. Mai bine mă întorc la treabă. Pa, {player}!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "N"
       ],
       "text": [
-        ""
+        "N"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Chargestone Cave... I like it here. The stones hum, and the Pokémon hum with them."
       ],
       "text": [
-        ""
+        "Chargestone Cave... Îmi place aici. Pietrele bâzâie, iar Pokémonii bâzâie odată cu ele."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Someone could write all of it down in formulas: the charge, the Pokémon, the people. But a formula never asks how a Pokémon feels."
       ],
       "text": [
-        ""
+        "Cineva ar putea scrie totul în formule: încărcătura, Pokémonii, oamenii. Dar o formulă nu întreabă niciodată cum se simte un Pokémon."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "I have to go. There are Pokémon who need someone to speak for them, and there is a person I must stop."
       ],
       "text": [
-        ""
+        "Trebuie să plec. Sunt Pokémon care au nevoie de cineva să vorbească pentru ei, și e o persoană pe care trebuie s-o opresc."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "N"
       ],
       "text": [
-        ""
+        "N"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Please, let me be. I'm listening to the stones."
       ],
       "text": [
-        ""
+        "Te rog, lasă-mă. Ascult pietrele."
       ]
     }
   ]

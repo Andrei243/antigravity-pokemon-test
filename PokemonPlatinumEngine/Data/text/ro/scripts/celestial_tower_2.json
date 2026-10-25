@@ -5,7 +5,7 @@
         "Prof. Juniper"
       ],
       "text": [
-        ""
+        "Prof. Juniper"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hi there, {player}! How did things go with Skyla? Oh? You haven't won her Badge yet?"
       ],
       "text": [
-        ""
+        "Salut, {player}! Cum a mers cu Skyla? Oh? Încă n-ai câștigat Insigna ei?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Then I'll keep up my field work a little longer. Before you go, take this for your trip."
       ],
       "text": [
-        ""
+        "Atunci mai continui puțin cercetarea pe teren. Înainte să pleci, ia asta pentru drum."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Give that Lucky Egg to a Pokémon to hold, and it earns a little more Experience from every battle! Strong Pokémon make a strong Trainer."
       ],
       "text": [
-        ""
+        "Dă Oul Norocos ăsta unui Pokémon să-l țină și va primi puțină experiență în plus la fiecare luptă! Pokémon puternici fac un Antrenor puternic."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The Celestial Tower... a giant memorial. I wonder whether it was built where Ghost and Psychic Pokémon gathered, or whether they came because of it."
       ],
       "text": [
-        ""
+        "Turnul Celest... un memorial uriaș. Mă întreb dacă a fost construit acolo unde se adunau Pokémon de tip Fantomă și Psihic, sau dacă ei au venit din cauza lui."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Either way it's fascinating. Come and fetch me when you've beaten Skyla!"
       ],
       "text": [
-        ""
+        "Oricum, e fascinant. Vino să mă iei când o învingi pe Skyla!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Oh, that's right! How did things go with Skyla? You won the Jet Badge! Well done!"
       ],
       "text": [
-        ""
+        "A, da! Cum a mers cu Skyla? Ai câștigat Insigna Jetului! Bravo!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Do take that Lucky Egg. Held by a Pokémon, it earns a little more Experience from every battle."
       ],
       "text": [
-        ""
+        "Ia Oul Norocos. Ținut de un Pokémon, aduce puțină experiență în plus la fiecare luptă."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Then the plane should be ready to fly! Thank you for coming to fetch me."
       ],
       "text": [
-        ""
+        "Atunci avionul ar trebui să fie gata de zbor! Mulțumesc că ai venit să mă iei."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "I'll be waiting for you in Mistralton City!"
       ],
       "text": [
-        ""
+        "Te aștept în Mistralton City!"
       ]
     }
   ]
