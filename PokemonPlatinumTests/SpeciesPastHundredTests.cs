@@ -14,8 +14,8 @@ using static PokemonPlatinumTests.Scenario;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// Plan 03 · D14: the species of our own that evolve past level 100, batches 1 to 3 (Kanto, Johto and Hoenn:
-/// docs/plans/D14-proposals-kanto.md, -johto.md and -hoenn.md, each approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
+/// Plan 03 · D14: the species of our own that evolve past level 100, batches 1 to 4 (Kanto, Johto, Hoenn and Sinnoh:
+/// docs/plans/D14-proposals-kanto.md, -johto.md, -hoenn.md and -sinnoh.md, each approved by the user on 2026-10-25). The hand-written table (<c>tools/DataImporter/Overrides/species-past-hundred.json</c>)
 /// held to the proposals' rules, the species the importer made of it, each evolution firing at its level under the
 /// engine's own rules and not before, their moves by R31's rule, a battle, a save, and how the rest of the game counts
 /// them (outside the 1,025: the National Pokédex lists them last and counts them toward nothing).
@@ -36,8 +36,8 @@ public class SpeciesPastHundredTests
     [Fact]
     public void TheTableHoldsTheApprovedDesignsByTheProposalsRules()
     {
-        // Kanto's 46, Johto's 34 and Hoenn's 51
-        Assert.True(Designs.Count >= 131, $"only {Designs.Count} designs");
+        // Kanto's 46, Johto's 34, Hoenn's 51 and Sinnoh's 39
+        Assert.True(Designs.Count >= 170, $"only {Designs.Count} designs");
         var games = PokemonDatabase.GetAll().SelectMany(s => new[] { s.Name }.Concat((s.Forms ?? new()).Select(f => f.Name)))
             .Select(Plain).ToHashSet();
         Assert.Equal(Designs.Count, Designs.Select(d => Plain(d.Name)).Distinct().Count());
@@ -94,7 +94,8 @@ public class SpeciesPastHundredTests
     /// <summary>
     /// The levels a design may evolve at: within the climb of the region its forebear is from (Hoenn's question 1,
     /// accepted on 2026-10-25). Kanto and Johto from 101, at most 130 (Johto's are 104 to 120); Hoenn, met at 136 to
-    /// 162, from 140 to 158; a legendary at most 160 everywhere.
+    /// 162, from 140 to 158; a legendary at most 160 everywhere. Sinnoh, whose own climb never passes 100, takes the band
+    /// where the chain first does (its question 1, accepted on 2026-10-25): 101 to 120, its lake guardians at 150.
     /// </summary>
     private static (int Low, int High) Climb(PokemonSpecies from)
     {
@@ -102,6 +103,7 @@ public class SpeciesPastHundredTests
         return from.Generation switch
         {
             3 => (140, legend ? 160 : 158),
+            4 => (101, legend ? 150 : 120),
             _ => (101, legend ? 160 : 130)
         };
     }
@@ -257,7 +259,8 @@ public class SpeciesPastHundredTests
             ("Plusle", "Minun", "Anodion", 142), ("Minun", "Plusle", "Cathodion", 142),
             ("Volbeat", "Illumise", "Photurion", 145), ("Illumise", "Volbeat", "Lampyria", 145),
             ("Latias", "Latios", "Aurelias", 160), ("Latios", "Latias", "Aurelios", 160),
-            ("Mantine", "Octillery", "Raysail", 112)
+            ("Mantine", "Octillery", "Raysail", 112),
+            ("Honchkrow", "Murkrow", "Corvicapo", 115)
         })
         {
             var p = Mon(who, level);
@@ -325,8 +328,13 @@ public class SpeciesPastHundredTests
     [Fact]
     public void EspeonAndUmbreonNeedTheirStoneAndTheirFriendship()
     {
-        // Johto's question 1: as batch 1's three Eeveelutions, each at 120 holding its stone with friendship 220 or more
-        foreach (var (who, stone, into) in new[] { ("Espeon", "Sun Stone", "Zenitheon"), ("Umbreon", "Moon Stone", "Eclipseon") })
+        // Johto's question 1: as batch 1's three Eeveelutions, each at 120 holding its stone with friendship 220 or more;
+        // Sinnoh's Leafeon and Glaceon the same
+        foreach (var (who, stone, into) in new[]
+        {
+            ("Espeon", "Sun Stone", "Zenitheon"), ("Umbreon", "Moon Stone", "Eclipseon"),
+            ("Leafeon", "Leaf Stone", "Dryadeon"), ("Glaceon", "Ice Stone", "Borealeon")
+        })
         {
             var p = Mon(who, 120);
             p.HeldItem = ItemDatabase.Get(stone);
@@ -344,8 +352,13 @@ public class SpeciesPastHundredTests
             Assert.Null(Evolution.Find(used, EvolutionTrigger.UseItem, new EvolutionContext { Item = ItemDatabase.Get(stone) }));
         }
 
-        // Sunflora and Delcatty take the stone again from the bag, past their level and not before
-        foreach (var (who, stone, into, level) in new[] { ("Sunflora", "Sun Stone", "Helianthra", 110), ("Delcatty", "Moon Stone", "Felinelle", 140) })
+        // Sunflora and Delcatty take the stone again from the bag, past their level and not before; Sinnoh's Cherrim,
+        // Mismagius and Froslass too
+        foreach (var (who, stone, into, level) in new[]
+        {
+            ("Sunflora", "Sun Stone", "Helianthra", 110), ("Delcatty", "Moon Stone", "Felinelle", 140),
+            ("Cherrim", "Sun Stone", "Sakurabloom", 104), ("Mismagius", "Dusk Stone", "Hexmagistra", 115), ("Froslass", "Dawn Stone", "Frostbride", 112)
+        })
         {
             var context = new EvolutionContext { Item = ItemDatabase.Get(stone) };
             Assert.Null(Evolution.Find(Mon(who, level - 1), EvolutionTrigger.UseItem, context));
@@ -389,6 +402,75 @@ public class SpeciesPastHundredTests
         var johto = Designs.Where(d => Species(d.From).Generation == 2).ToList();
         Assert.Equal(34, johto.Count);
         Assert.All(johto.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 104, 120));
+    }
+
+    [Fact]
+    public void SinnohsSpeciesEvolveInTheBandWhereTheChainFirstPassesAHundred()
+    {
+        // Sinnoh's question 1: its own levels never pass 100 (Platinum's), so its 36 evolve at 101 to 120, Kanto's
+        // band, and its legendary set at 150, as the birds and the beasts
+        var sinnoh = Designs.Where(d => Species(d.From).Generation == 4).ToList();
+        Assert.Equal(39, sinnoh.Count);
+        Assert.All(sinnoh.Where(d => !Species(d.From).Legendary), d => Assert.InRange(d.Evolution.Level, 101, 120));
+        Assert.Equal(new[] { "Uxinous", "Mespathos", "Azelthymos" }, sinnoh.Where(d => Species(d.From).Legendary).Select(d => d.Name));
+        Assert.All(sinnoh.Where(d => Species(d.From).Legendary), d => Assert.Equal(150, d.Evolution.Level));
+    }
+
+    [Fact]
+    public void TheLakeGuardiansCloseARing()
+    {
+        // Sinnoh's question 2: each at 150 with the next in the party (Uxie with a Mesprit, Mesprit with an Azelf, Azelf
+        // with an Uxie); the one before it, or another of its own kind, is not enough
+        foreach (var (who, next, before, into) in new[]
+        {
+            ("Uxie", "Mesprit", "Azelf", "Uxinous"), ("Mesprit", "Azelf", "Uxie", "Mespathos"), ("Azelf", "Uxie", "Mesprit", "Azelthymos")
+        })
+        {
+            var p = Mon(who, 150);
+            Assert.Null(LevelUp(p, new EvolutionContext()));
+            Assert.Null(LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(before, 50), Mon(who, 50)) }));
+            Assert.Equal(into, LevelUp(p, new EvolutionContext { Party = PartyOf(p, Mon(next, 50)) }));
+            Assert.Null(LevelUp(Mon(who, 149), new EvolutionContext { Party = PartyOf(Mon(next, 50)) }));
+            Assert.Equal(660, Total(SpeciesPastHundred.StatsOf(Species(into))));
+            Assert.False(FrontierRules.MayEnter(Mon(into, 150)));
+        }
+    }
+
+    [Fact]
+    public void LucarioAndLopunnyGrowByFriendshipByDay()
+    {
+        // FriendshipDay, Riolu's own way, past a level: by day with friendship 220 or more, never at night
+        foreach (var (who, into, level) in new[] { ("Lucario", "Aurasage", 120), ("Lopunny", "Lapinova", 110) })
+        {
+            var p = Mon(who, level);
+            p.Friendship = FriendshipRules.EvolveAt;
+            Assert.Equal(into, LevelUp(p, new EvolutionContext { IsNight = false }));
+            Assert.Null(LevelUp(p, new EvolutionContext { IsNight = true }));
+            p.Friendship = FriendshipRules.EvolveAt - 1;
+            Assert.Null(LevelUp(p, new EvolutionContext { IsNight = false }));
+            var early = Mon(who, level - 1);
+            early.Friendship = 255;
+            Assert.Null(LevelUp(early, new EvolutionContext { IsNight = false }));
+        }
+    }
+
+    [Fact]
+    public void SinnohsThreePlacesEachGrowTheirOwn()
+    {
+        // LevelAtLocation at Sinnoh's own places: Abomasnow at the Ice Rock, Tangrowth at the Moss Rock, Probopass at
+        // the Magnetic Field, and none of them at another's
+        string[] places = { "Ice Rock", "Moss Rock", "Magnetic Field" };
+        foreach (var (who, place, into, level) in new[]
+        {
+            ("Abomasnow", "Ice Rock", "Glaciarbor", 115), ("Tangrowth", "Moss Rock", "Tanglewood", 120), ("Probopass", "Magnetic Field", "Lodestarch", 118)
+        })
+        {
+            var p = Mon(who, level);
+            Assert.Null(LevelUp(p, new EvolutionContext()));
+            foreach (var other in places.Where(o => o != place)) Assert.Null(LevelUp(p, new EvolutionContext { Sites = new[] { other } }));
+            Assert.Equal(into, LevelUp(p, new EvolutionContext { Sites = new[] { place } }));
+            Assert.Null(LevelUp(Mon(who, level - 1), new EvolutionContext { Sites = new[] { place } }));
+        }
     }
 
     // ------------------------------------------------------------------ moves
@@ -450,7 +532,7 @@ public class SpeciesPastHundredTests
     [Fact]
     public void OneOfOursIsSavedAndReadBackAndFoundByItsNumber()
     {
-        foreach (var name in new[] { "Ratchisel", "Glacirune", "Mimestro", "Ironwyrm", "Aurelias", "Heartreef" })
+        foreach (var name in new[] { "Ratchisel", "Glacirune", "Mimestro", "Ironwyrm", "Aurelias", "Heartreef", "Aurasage", "Uxinous" })
         {
             var p = new Pokemon(Species(name), 130, new Random(3));
             var saved = SavedPokemonData.FromPokemon(p);
