@@ -11,9 +11,10 @@ namespace PokemonPlatinumEngine.Overworld;
 /// <summary>
 /// The moves a Pokémon can use outside battle (plan 02 · S2), in the original's order (<c>FieldMoveList</c> in
 /// <c>field_move_tasks.h</c>), which is also the order the party menu offers them in when one Pokémon knows several.
-/// HeartGold's Whirlpool (plan 20 · J8) comes after Platinum's own, and Emerald's Dive (plan 21 · H5) after it.
+/// HeartGold's Whirlpool (plan 20 · J8) comes after Platinum's own, and Emerald's Dive (plan 21 · H5) after it, and its Secret Power
+/// (plan 21 · H10) last.
 /// </summary>
-public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool, Dive }
+public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool, Dive, SecretPower }
 
 /// <summary>Why a field move can't be used here and now: the original's <c>FieldMoveError</c>.</summary>
 public enum FieldMoveError
@@ -59,6 +60,9 @@ public sealed record FieldSpot
 
     /// <summary>The sea floor under a diver, where Dive comes back up (<see cref="FieldMovement.CanSurface"/>).</summary>
     public bool Surface { get; init; }
+
+    /// <summary>A secret base's spot in front (a tree, a shrub, an indent in rock: Emerald's, plan 21 · H10), where Secret Power opens a base.</summary>
+    public bool SecretBase { get; init; }
 
     /// <summary>The place lies in fog that nobody has blown away.</summary>
     public bool Fog { get; init; }
@@ -134,6 +138,7 @@ public static class FieldMoveRules
         "Soft-Boiled" => FieldMove.Softboiled,
         "Whirlpool" => FieldMove.Whirlpool,
         "Dive" => FieldMove.Dive,
+        "Secret Power" => FieldMove.SecretPower,
         _ => null
     };
 
@@ -145,6 +150,7 @@ public static class FieldMoveRules
         FieldMove.SweetScent => "Sweet Scent",
         FieldMove.MilkDrink => "Milk Drink",
         FieldMove.Softboiled => "Soft-Boiled",
+        FieldMove.SecretPower => "Secret Power",
         _ => move.ToString()
     };
 
@@ -201,6 +207,11 @@ public static class FieldMoveRules
             // TrySetDiveWarp for either), with nobody walking along (plan 21 · H5)
             case FieldMove.Dive:
                 if (!spot.Dive && !spot.Surface) return FieldMoveError.Location;
+                return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
+            // Emerald's: a secret base's spot in front, on foot (SetUpFieldMove_SecretPower asks the tile ahead, and
+            // a spot is never faced from the water), with nobody walking along (plan 21 · H10)
+            case FieldMove.SecretPower:
+                if (!spot.SecretBase || spot.Surfing) return FieldMoveError.Location;
                 return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
             case FieldMove.RockClimb:
                 if (!spot.RockFace) return FieldMoveError.Location;
@@ -271,6 +282,7 @@ public static class FieldMoveRules
             Whirlpool = ahead == TileBehavior.Whirlpool,
             Dive = FieldMovement.CanDive(map, x, y, walker with { Moves = walker.Moves | FieldMoves.Dive }),
             Surface = walker.Mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y),
+            SecretBase = map.SecretBaseSpots.ContainsKey((nx, ny)),
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             Dark = Darkness.Covers(map),
             Surfing = walker.Mode == TravelMode.Surfing,

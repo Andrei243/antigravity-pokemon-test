@@ -656,6 +656,11 @@ public static class RegionDatabase
                 "HoennVictoryRoad_1F", "HoennVictoryRoad_B1F", "HoennVictoryRoad_B2F",
                 // Plan 21 · H9, part b: Lilycove City's harbour, where the ship on to Unova sails from
                 "LilycoveCity_Harbor",
+                // Plan 21 · H10: the secret bases' twenty-four rooms (Models/SecretBase.cs)
+                "SecretBase_RedCave1", "SecretBase_BrownCave1", "SecretBase_BlueCave1", "SecretBase_YellowCave1", "SecretBase_Tree1", "SecretBase_Shrub1",
+                "SecretBase_RedCave2", "SecretBase_BrownCave2", "SecretBase_BlueCave2", "SecretBase_YellowCave2", "SecretBase_Tree2", "SecretBase_Shrub2",
+                "SecretBase_RedCave3", "SecretBase_BrownCave3", "SecretBase_BlueCave3", "SecretBase_YellowCave3", "SecretBase_Tree3", "SecretBase_Shrub3",
+                "SecretBase_RedCave4", "SecretBase_BrownCave4", "SecretBase_BlueCave4", "SecretBase_YellowCave4", "SecretBase_Tree4", "SecretBase_Shrub4",
             }
         },
         new()

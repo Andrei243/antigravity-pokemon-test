@@ -440,14 +440,6 @@
         "text": [
           "Vânzătoarea"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Decorations for a secret base! Desks, chairs, plants... Ah, but my stock hasn't come in yet."
-        ],
-        "text": [
-          "Decorațiuni pentru o bază secretă! Birouri, scaune, plante... Ah, dar marfa mea n-a sosit încă."
-        ]
       }
     },
     "mart_employee_2": {
@@ -457,14 +449,6 @@
         ],
         "text": [
           "Vânzătoarea"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Dolls and cushions for your secret base! Come back when my stall's open for business."
-        ],
-        "text": [
-          "Păpuși și perne pentru baza ta secretă! Revino când îmi deschid taraba."
         ]
       }
     },

@@ -356,6 +356,7 @@ public partial class GameEngine
         flow.FashionCase.Load(null);
         flow.SealCase.Load(null);
         LoadUnderground(null);
+        LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
@@ -557,6 +558,7 @@ public partial class GameEngine
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) flow.FashionCase.Add("Glitter Powder");
         flow.SealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
+        LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
@@ -672,6 +674,8 @@ public partial class GameEngine
         else ResumeStroll();
         // A game saved below ground finds the tunnels laid out as it left them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
+        // and one saved in a secret base finds it furnished (plan 21 · H10)
+        if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -726,6 +730,8 @@ public partial class GameEngine
             Backdrops = flow.FashionCase.Backdrops.Count > 0 ? flow.FashionCase.BackdropsToSave() : null,
             SealCase = flow.SealCase.Total > 0 ? flow.SealCase.ToSave() : null,
             Underground = flow.Underground,
+            SecretBase = flow.SecretBase,
+            Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -2012,6 +2018,9 @@ public partial class GameEngine
 
         // Below ground: the wall ahead, a trap or a Sphere in the floor, the base's PC and goods (plan 06 · R16a)
         if (TryInteractUnderground(targetX, targetY)) return;
+
+        // A secret base's spot, and in a base its PC (plan 21 · H10)
+        if (TryInteractSecretBase(targetX, targetY)) return;
 
         // A signboard is read, or runs the script it has
         var sign = flow.Map.GetSignboardAt(targetX, targetY);

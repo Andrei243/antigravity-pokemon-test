@@ -51,6 +51,12 @@ internal static class PropModels
             PastimeArt.Build(kit, p, map);
             return;
         }
+        // A secret base's decorations (plan 21 · H10)
+        if (DecorationArt.Builds(p))
+        {
+            DecorationArt.Build(kit, p, map);
+            return;
+        }
         switch (p.Type)
         {
             // What has no furniture of its own is built as the towns build it: a Gym rebuilt to the original's plan

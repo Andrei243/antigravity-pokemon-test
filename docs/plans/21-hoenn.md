@@ -1091,6 +1091,51 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet); Southern Island and the other of
       the two (Emerald's Eon Ticket, not given); and from H8 the abnormal weather's post-game places, Mirage Island, Mt.
       Pyre's orbs and Rayquaza's battle (H12).
-- [ ] H10 Secret Bases
+- [x] H10 Secret Bases (wave 49; `docs/mechanics/rulings.md`, "Secret bases")
+    - **The spots**: the GBA reader keeps a `secret_base` bg event as an `AreaSign` of type 3 (`AreaSign.SecretBase`,
+      its script the base's constant, `SECRET_BASE_TREE2_1`), and leaves out a base room's objects of no look of their
+      own (the decorations' and the visitor's `OBJ_EVENT_GFX_VAR_*`); `World` lays them as `Map.SecretBaseSpots` (tile to
+      id). Hoenn has 75 spots on thirteen routes, every one of the 24 rooms some spot's. `TileBehavior.SecretBaseSpot`
+      is ruled now (`TileBehaviors.InGame`, `docs/tile-behaviours.md`).
+    - **The rooms**: Emerald's 24 layouts (`SecretBase_RedCave1` to `SecretBase_Shrub4`, matrices 295 to 318, areas
+      `secret_base_<kind>_<n>`) opened in `world.json` and `RegionDatabase`'s Hoenn maps, each with an overlay whose door
+      leads to the first spot of its layout; `Models/SecretBase.cs` (`SecretBaseLayouts`: the id's group and kind, the
+      tile before each PC from Emerald's `sSecretBaseEntrancePositions`; `SecretBaseSave`; `BaseFloor`; `SecretBases`,
+      the rules). The game aims the door at the player's own spot as the room is laid out (`GameEngine.SecretBases.cs`).
+    - **Secret Power**: `FieldMove.SecretPower` at the enum's end, listed by the party menu only in Hoenn,
+      `FieldSpot.SecretBase`, `common.UseSecretPower`; a spot faced runs `common.SecretBaseSpot` (the move asked for,
+      a base elsewhere moved, the player's own gone into) and `common.SecretBaseMake`. The script command `openbase`
+      (`Op.OpenBase`: `openbase`, `check`, `kind`, `enter`, `pc`, `packup`, `give`, `buy`, `room`; both hosts,
+      `ScriptTests.EveryCommand`, `StopsAHurry`, `docs/scripts.md`). The Secret Power man on Route 111 gives TM43
+      (`route_111.SecretPowerMan`).
+    - **Decorations**: `Data/decorations.json` (Emerald's 120 as numbers, names of ours, kinds, shapes, placements and
+      prices, written once from Emerald's `header.h`), `DecorationDatabase`; the decoration PC (`SaveData.Decorations`,
+      the shared seam's `StoredDecoration`s; ten, thirty or forty of a kind) and the base (`SaveData.SecretBase`), both
+      null in older saves, so no save version was raised. `PropType.Decoration` (at the enum's end) built by
+      `Graphics/DecorationArt.cs` (style guide, "Secret bases", written first).
+    - **Decorating** goes through the Underground's seam: `DecorationRoom.Allows` (a room's say where a piece may
+      hang: a poster on the wall, a desk on the floor, a tall plant's top before the wall) and `TileAt` (the plan's rock
+      and wall) were added to it, and `DecorationScreen` opens on the base's PC (`common.SecretBasePC`: DECORATE, PACK
+      UP, REGISTRY, LOG OFF), sixteen out at most.
+    - **The sellers**: Slateport's market (`slateport_city.DecorClerk`, `DollClerk`) and Lilycove's fifth floor
+      (`lilycove_city_department_store_5f.Dolls`, `Cushions`, `Posters`, `Mats`), Emerald's lists and prices, a page of
+      four at a time, through `openbase buy`.
+    - **Tests**: `SecretBaseTests` (eleven: the ids, every spot's room and kind, every room's PC and door, Secret Power
+      only at a spot and only in Hoenn, the spot's script with and without the move, placement and overlap, the PC's
+      room by kind, a second spot emptying the first, the save round trip, the walk in at a spot and out by the door, the
+      sellers); `WorldWalk` goes into a base at its spot; `HoennTests.EveryWayIntoARoomLandsOnOpenGroundAndLeadsBack`
+      leaves the bases to `SecretBaseTests`; `FieldMovementTests.EveryBehaviourIsAccountedFor` knows the spot. Golden
+      `scripts.txt` moves by additions only (common.SecretBase*, common.UseSecretPower, the sellers, the Secret Power
+      man): accept it.
+    - **Shots** (written, not taken; `Modes/HoennBases.cs`, last of `hoenn`): `h90_secret_power_tree`, `h91_base_empty`,
+      `h93_decoration_screen`, `h92_base_decorated` and `h92b_base_from_the_save` (the base found again from a save
+      written and continued).
+    - **Left**: the six kinds' own looks (the rooms wear the house's interior; a cave of coloured rock, a hollow tree, a
+      den of grass) and the open entrance drawn at a spot (a vine, a hole, parted grass); dolls and cushions on desks and
+      mats (they stand on the floor here, as the seam sets one thing a tile), the Solid Board over a hole, the mats'
+      sounds and the breakable door and mud ball breaking; a friend's base, its trainer and the registry (no link); the
+      Wailmer Doll's woman in Mossdeep, the Gold and Silver Shields from the Battle Tower and the Glass Ornament (H12),
+      the Battle Frontier's and the Game Corner's decorations as prizes; the TM salesman Emerald shows at Slateport once
+      Secret Power is given; the player's own room's decorations (Emerald's `playerRoomDecorations`).
 - [ ] H11 The Contest Hall and Pokéblocks
 - [ ] H12 The Frontier island and the post-game

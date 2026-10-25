@@ -73,6 +73,10 @@ public static class GbaEvents
         for (int i = 0; i < map.Objects.Count; i++)
         {
             var o = map.Objects[i];
+            // A secret base's room keeps its decorations and its visitor as objects of no look of their own
+            // (OBJ_EVENT_GFX_VAR_0 to _F, each behind a flag of the base's): the game lays the base's own out itself
+            // (plan 21 · H10), so they are left out
+            if (map.MapType == "MAP_TYPE_SECRET_BASE" && o.Graphics.StartsWith("OBJ_EVENT_GFX_VAR_", StringComparison.Ordinal)) continue;
             string looks = Strip(o.Graphics, "OBJ_EVENT_GFX_");
             string id = o.LocalId.Length > 0 ? Strip(Regex.Replace(o.LocalId, "^LOCALID_", ""), "") : looks;
             string unique = id;
@@ -129,7 +133,10 @@ public static class GbaEvents
                 });
             else if (b.Type == "sign")
                 area.Signs.Add(new AreaSign { X = ox + b.X, Z = oy + b.Y, Type = 0, Script = b.Script });
-            // A secret base's spot is plan 21's (Hoenn's secret bases): left out
+            // A secret base's spot (plan 21 · H10): the tile Secret Power opens, with the base's id (SECRET_BASE_TREE1_1),
+            // whose tens are the layout its room is (SecretBaseLayouts)
+            else if (b.Type == "secret_base" && b.Script.Length > 0)
+                area.Signs.Add(new AreaSign { X = ox + b.X, Z = oy + b.Y, Type = AreaSign.SecretBase, Script = b.Script });
         }
 
         foreach (var c in map.Coords.Where(c => c.Type == "trigger"))

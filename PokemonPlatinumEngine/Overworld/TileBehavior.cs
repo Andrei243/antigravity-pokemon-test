@@ -364,7 +364,8 @@ public static class TileBehaviors
         TileBehavior.CrackedFloor
             => (BehaviourSupport.Ruled, "Gives way under a walker where its area names the floor below, dropping them onto the same tile there (Map.HoleTargetAt, Emerald's setholewarp: Sky Pillar; plan 21 · H8, part c); ridden over on the Bicycle, and walked like plain ground anywhere else."),
         TileBehavior.SecretBaseSpot
-            or TileBehavior.NoRunning
+            => (BehaviourSupport.Ruled, "Stands in the way; faced, where the area's file names its base (Map.SecretBaseSpots), Secret Power makes the player's secret base there and goes in, and the player's own base is gone into (common.SecretBaseSpot; plan 21 · H10)."),
+        TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
             => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),

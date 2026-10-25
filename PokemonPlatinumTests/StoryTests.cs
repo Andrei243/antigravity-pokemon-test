@@ -675,6 +675,8 @@ public class StoryTests
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace, FieldScripts.Whirlpool });
         // Dive down from dark water and up from the sea floor, which A on the tile underfoot runs (plan 21 · H5)
         started.UnionWith(new[] { FieldScripts.Dive, FieldScripts.Surface });
+        // A secret base's spot faced and its PC (plan 21 · H10)
+        started.UnionWith(new[] { FieldScripts.SecretBaseSpot, FieldScripts.SecretBasePc });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
         started.UnionWith(new[] { FieldScripts.EscapeRope, FieldScripts.CyclistsOnly });
         // Waking up after a lost battle, in a Pokémon Center or at home

@@ -2743,3 +2743,108 @@ label TooFew
 label Declined
   say "Come back whenever your Pokémon feel like a run!"
   end
+
+
+# Hoenn's secret bases (plan 21 · H10; Emerald's data/scripts/secret_base.inc, our own words). A spot faced (a tree that
+# might drop a vine, a clump of grass, an indent in a rock wall): the player's own base is gone into; anywhere else a
+# Pokémon of the team that knows Secret Power opens it and the base is made there, the one before emptied and all that
+# stood in it back in the decoration PC (one base at a time, as Emerald has it). Nothing is asked of a Badge, as
+# Emerald asks none; the question whether to make the base here is asked outside, where Emerald asks it inside.
+script SecretBaseSpot
+  speaker none
+  openbase check
+  if result == 2 goto Own
+  if result == 3 goto Elsewhere
+  if not knows "Secret Power" goto Cannot
+  goto Ask
+label Own
+  openbase enter
+  end
+label Elsewhere
+  if not knows "Secret Power" goto Cannot
+  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  if no end
+label Ask
+  openbase kind
+  if result == 5 goto AskTree
+  if result == 6 goto AskShrub
+  ask "There's a small indent in the rock wall here. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label AskTree
+  ask "This big tree looks as if it might drop a vine. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label AskShrub
+  ask "This clump of grass looks as if it might move aside. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label Cannot
+  openbase kind
+  if result == 5 goto CannotTree
+  if result == 6 goto CannotShrub
+  text "There's a small indent in the rock wall. A Pokémon's move might open it up."
+  end
+label CannotTree
+  text "This big tree looks as if a vine could drop from it, if only something shook it loose."
+  end
+label CannotShrub
+  text "If this clump of grass could be moved aside, there might be a way in."
+  end
+
+# Secret Power chosen in the party menu at a spot: the same, with no question but moving a base
+script UseSecretPower
+  openbase check
+  if result == 2 goto Own
+  if result != 3 goto Make
+  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  if no end
+label Make
+  call SecretBaseMake
+  end
+label Own
+  openbase enter
+  end
+
+# Secret Power at work on a spot: what it opened, and the base made there and gone into (only by a Pokémon that knows it)
+script SecretBaseMake
+  if not knows "Secret Power" return
+  usemove "Secret Power"
+  openbase kind
+  if result == 5 goto Tree
+  if result == 6 goto Shrub
+  text "A small cavern opened up in the rock!"
+  goto Open
+label Tree
+  text "A thick vine dropped down from the tree!"
+  goto Open
+label Shrub
+  text "The grass parted on a small way in!"
+label Open
+  openbase
+  return
+
+# A secret base's PC (Emerald's SecretBase_EventScript_PC): the decorating, the base packed up and given up, or the
+# registry of friends' bases, which only a link brings and which stays empty here
+script SecretBasePC
+  speaker none
+  text "The base's PC hummed into life."
+  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "LOG OFF"
+  if result == 0 goto Decorate
+  if result == 1 goto PackUp
+  if result == 2 goto Registry
+  end
+label Decorate
+  openbase pc
+  end
+label PackUp
+  ask "Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again."
+  if no end
+  openbase packup
+  end
+label Registry
+  text "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
+  end

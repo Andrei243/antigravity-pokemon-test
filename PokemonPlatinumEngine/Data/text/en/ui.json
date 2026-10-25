@@ -3751,5 +3751,8 @@
     }
   },
   "places": {
+  },
+  "secretBase": {
+    "decorating": "DECORATE YOUR SECRET BASE"
   }
 }

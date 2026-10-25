@@ -521,6 +521,18 @@ public interface IScriptHost
     /// </summary>
     int UndergroundAct(string what, NPC? subject);
 
+    // ------------------------------------------------------------------ Hoenn's secret bases (plan 21 · H10)
+
+    /// <summary>The decoration PC: every decoration the player has, and whether it stands in the base.</summary>
+    List<Models.StoredDecoration> Decorations { get; }
+
+    /// <summary>
+    /// What a secret base's commands do where the player stands (<c>openbase</c>, <c>check</c>, <c>kind</c>,
+    /// <c>enter</c>, <c>pc</c>, <c>packup</c>); the number is the script's RESULT. Going in or out is a warp, and the
+    /// decorating a screen, which keep the script waiting (<see cref="Busy"/>).
+    /// </summary>
+    int SecretBaseAct(string what);
+
     // ------------------------------------------------------------------ fossils, the Game Corner, the Villa, Pal Park (plan 06 · R16b)
 
     /// <summary>The Coin Case's coins, Pal Park's six and its show, and the game records the Villa's catalogue asks about.</summary>

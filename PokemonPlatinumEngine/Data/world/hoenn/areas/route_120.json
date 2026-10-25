@@ -110,10 +110,18 @@
   "signs": [
     { "x": 387, "z": 3, "type": 0, "script": "Route120_EventScript_RouteSignFortree" },
     { "x": 398, "z": 88, "type": 0, "script": "Route120_EventScript_RouteSign121" },
+    { "x": 388, "z": 62, "type": 3, "script": "SECRET_BASE_BLUE_CAVE3_1" },
+    { "x": 390, "z": 62, "type": 3, "script": "SECRET_BASE_BLUE_CAVE4_1" },
+    { "x": 386, "z": 10, "type": 3, "script": "SECRET_BASE_SHRUB3_2" },
+    { "x": 389, "z": 85, "type": 3, "script": "SECRET_BASE_SHRUB4_2" },
+    { "x": 378, "z": 12, "type": 3, "script": "SECRET_BASE_BLUE_CAVE2_3" },
+    { "x": 398, "z": 54, "type": 3, "script": "SECRET_BASE_SHRUB1_3" },
+    { "x": 391, "z": 23, "type": 3, "script": "SECRET_BASE_SHRUB2_3" },
     { "x": 369, "z": 1, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_1" },
     { "x": 391, "z": 11, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_REVIVE" },
     { "x": 360, "z": 86, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_RARE_CANDY_2" },
-    { "x": 384, "z": 42, "type": 2, "script": "", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_ZINC" }
+    { "x": 384, "z": 42, "type": 2, "script": "", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_ROUTE_120_ZINC" },
+    { "x": 365, "z": 76, "type": 3, "script": "SECRET_BASE_SHRUB1_4" }
   ],
   "triggers": []
 }

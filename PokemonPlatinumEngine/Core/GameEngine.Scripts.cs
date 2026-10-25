@@ -196,6 +196,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
+        if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
         flow.Arrived = true;
@@ -1508,6 +1510,11 @@ public partial class GameEngine
         public Models.Underground.UndergroundState Underground => game.flow.Underground;
         public int UndergroundAct(string what, NPC? subject) => game.UndergroundAct(what, subject);
         public string DiggerName => game.DiggerName;
+
+        // ---- Hoenn's secret bases (plan 21 · H10)
+
+        public List<StoredDecoration> Decorations => game.flow.Decorations;
+        public int SecretBaseAct(string what) => game.SecretBaseAct(what);
 
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));

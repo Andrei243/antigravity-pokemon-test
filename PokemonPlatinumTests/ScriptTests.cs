@@ -570,6 +570,15 @@ public class ScriptTests
           athlon open
           athlon points
           tide
+          openbase check
+          openbase kind
+          openbase
+          openbase enter
+          openbase pc
+          openbase packup
+          openbase give "Red Brick"
+          openbase buy "Small Desk"
+          openbase room "Pikachu Doll"
         script Other
           end
         """;
@@ -1571,6 +1580,8 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.SuperContests.ContestRecords ContestRecords => inner.ContestRecords;
         public PokemonPlatinumEngine.Models.Underground.UndergroundState Underground => inner.Underground;
         public int UndergroundAct(string what, NPC? subject) => inner.UndergroundAct(what, subject);
+        public List<PokemonPlatinumEngine.Models.StoredDecoration> Decorations => inner.Decorations;
+        public int SecretBaseAct(string what) => inner.SecretBaseAct(what);
         public PokemonPlatinumEngine.Models.Pastimes Pastimes => inner.Pastimes;
         public PokemonPlatinumEngine.Models.VillaRecords VillaRecords => inner.VillaRecords;
         public int PastimeAct(string what, int number, NPC? subject) => inner.PastimeAct(what, number, subject);

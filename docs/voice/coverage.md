@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1228 | 1199 | 29 | 1 | 0 |
-| Scripts (`script:`) | 7666 | 7309 | 357 | 17 | 0 |
-| People of the world (`world:`) | 5388 | 5336 | 52 | 4 | 0 |
-| **All** | 14362 | 13924 | 438 | 22 | 0 |
+| Scripts (`script:`) | 7710 | 7350 | 360 | 17 | 0 |
+| People of the world (`world:`) | 5382 | 5330 | 52 | 4 | 0 |
+| **All** | 14400 | 13959 | 441 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -21,17 +21,17 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | What | Lines |
 |---|---|
 | a Pokémon's cry | 171 |
-| a question's answers | 364 |
+| a question's answers | 454 |
 | a sign | 1288 |
-| the game's own voice (speaker none) | 223 |
-| the game's own voice (text) | 979 |
+| the game's own voice (speaker none) | 229 |
+| the game's own voice (text) | 987 |
 
 ## The cast
 
 - Named characters: 285 voices (248 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 212, with 641 voices to cast (V5).
-- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1781.
+- Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1785.
 
 ## Lines by voice
 
@@ -39,14 +39,14 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 
 | Voice | Lines | Shown only |
 |---|---|---|
-| `@self` | 1781 | 127 |
+| `@self` | 1785 | 128 |
 | `look:gentleman (any)` | 570 | 12 |
 | `look:grunt (any)` | 537 | 0 |
 | `rival` | 485 | 17 |
 | `look:youngster (any)` | 326 | 11 |
-| `look:lady (any)` | 323 | 1 |
+| `look:lady (any)` | 319 | 1 |
 | `look:lass (any)` | 273 | 8 |
-| `look:clerk (any)` | 228 | 5 |
+| `look:clerk (any)` | 261 | 7 |
 | `look:nurse (any)` | 176 | 0 |
 | `look:attendant (any)` | 170 | 2 |
 | `cynthia` | 157 | 1 |
@@ -61,11 +61,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:guard (any)` | 103 | 0 |
 | `class:hiker (any)` | 102 | 0 |
 | `mom` | 102 | 6 |
+| `look:boy (any)` | 99 | 4 |
 | `class:ace_trainer (any)` | 98 | 0 |
 | `class:picnicker (any)` | 98 | 0 |
 | `class:youngster (any)` | 98 | 0 |
 | `class:cooltrainer (any)` | 96 | 0 |
-| `look:boy (any)` | 94 | 4 |
 | `look:man (any)` | 93 | 4 |
 | `looker` | 91 | 1 |
 | `class:psychic (any)` | 90 | 0 |

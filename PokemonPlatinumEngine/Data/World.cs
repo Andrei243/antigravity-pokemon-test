@@ -2502,7 +2502,12 @@ public static class WorldMapBuilder
         foreach (var s in file.Signs)
         {
             if (!map.InBounds(s.X, s.Z)) continue;
-            if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null)
+            // A secret base's spot (plan 21 · H10): its base's id, by its tile
+            if (s.Type == AreaSign.SecretBase)
+            {
+                if (Models.SecretBaseLayouts.IdOf(s.Script) is > 0 and var baseId) map.SecretBaseSpots[(s.X, s.Z)] = baseId;
+            }
+            else if (s.Type == AreaSign.HiddenItem && s.Item != null && s.Flag != null)
                 map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
             else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
                 map.TileScripts[(s.X, s.Z)] = read;

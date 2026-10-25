@@ -104,8 +104,15 @@
   "signs": [
     { "x": 47, "z": 66, "type": 0, "script": "Route114_EventScript_MeteorFallsSign" },
     { "x": 71, "z": 9, "type": 0, "script": "Route114_EventScript_FossilManiacsHouseSign" },
+    { "x": 49, "z": 49, "type": 3, "script": "SECRET_BASE_BROWN_CAVE1_1" },
+    { "x": 70, "z": 53, "type": 3, "script": "SECRET_BASE_BROWN_CAVE2_1" },
+    { "x": 51, "z": 64, "type": 3, "script": "SECRET_BASE_BROWN_CAVE3_1" },
+    { "x": 59, "z": 72, "type": 3, "script": "SECRET_BASE_BROWN_CAVE4_1" },
+    { "x": 51, "z": 29, "type": 3, "script": "SECRET_BASE_TREE3_2" },
+    { "x": 52, "z": 29, "type": 3, "script": "SECRET_BASE_TREE4_2" },
     { "x": 65, "z": 40, "type": 0, "script": "Route114_EventScript_LanettesHouseSign" },
     { "x": 60, "z": 59, "type": 2, "script": "", "item": "Carbos", "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_CARBOS" },
+    { "x": 72, "z": 59, "type": 3, "script": "SECRET_BASE_BROWN_CAVE4_3" },
     { "x": 47, "z": 32, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_REVIVE" }
   ],
   "triggers": []

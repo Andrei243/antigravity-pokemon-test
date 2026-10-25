@@ -273,7 +273,9 @@ public sealed class GbaMaps
         var warps = List("warp_events").Select(w => new GbaWarp(I(w, "x"), I(w, "y"), I(w, "elevation"), S(w, "dest_map"), I(w, "dest_warp_id"))).ToList();
         var coords = List("coord_events").Select(c => new GbaCoord(S(c, "type"), I(c, "x"), I(c, "y"), I(c, "elevation"), S(c, "var"), S(c, "var_value"),
             S(c, "script"), S(c, "weather"))).ToList();
-        var bgs = List("bg_events").Select(b => new GbaBg(S(b, "type"), I(b, "x"), I(b, "y"), I(b, "elevation"), S(b, "script"), S(b, "item"),
+        // A secret base's spot keeps its base's id where a sign keeps its script (plan 21 · H10: SECRET_BASE_RED_CAVE1_1)
+        var bgs = List("bg_events").Select(b => new GbaBg(S(b, "type"), I(b, "x"), I(b, "y"), I(b, "elevation"),
+            S(b, "type") == "secret_base" ? S(b, "secret_base_id") : S(b, "script"), S(b, "item"),
             I(b, "quantity", 1), S(b, "flag"))).ToList();
         return new GbaMap
         {

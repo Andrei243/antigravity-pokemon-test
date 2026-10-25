@@ -128,6 +128,9 @@ public enum Op
     // Shoal Cave's tide read by the hour as the player comes in from outdoors (plan 21 · H8, part d: Emerald's
     // UpdateShoalTideFlag), FLAG_SYS_SHOAL_TIDE set at high tide
     Tide,
+    // A secret base (plan 21 · H10): made at the spot ahead with Secret Power and gone into, asked about, decorated,
+    // packed up, and its decoration PC filled
+    OpenBase,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

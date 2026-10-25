@@ -204,6 +204,25 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>The turns the battle last fought took, as a test says (<see cref="Fight"/> may set it battle by battle).</summary>
     public int BattleTurns { get; set; }
 
+    /// <summary>
+    /// Hoenn's secret bases (plan 21 · H10): the decoration PC, empty unless a test or a script fills it, and what the
+    /// base's commands in the field come to, which a test may set by name (1 where it sets none).
+    /// </summary>
+    public List<Models.StoredDecoration> Decorations { get; } = new();
+    public Dictionary<string, int> SecretBaseResults { get; } = new();
+
+    public int SecretBaseAct(string what)
+    {
+        Log.Add($"openbase {what}");
+        // (what is only asked, check and kind, may be hurried through)
+        if (what is "open" or "enter" or "pc" or "packup")
+        {
+            NeverInAHurry($"a secret base's '{what}'");
+            Waits();
+        }
+        return SecretBaseResults.GetValueOrDefault(what, 1);
+    }
+
     public int UndergroundAct(string what, NPC? subject)
     {
         Log.Add($"underground {what}");

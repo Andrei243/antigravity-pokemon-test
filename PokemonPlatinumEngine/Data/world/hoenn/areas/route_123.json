@@ -107,9 +107,12 @@
   ],
   "signs": [
     { "x": 437, "z": 150, "type": 0, "script": "Route123_EventScript_RouteSignMtPyre" },
+    { "x": 367, "z": 143, "type": 3, "script": "SECRET_BASE_BLUE_CAVE1_2" },
+    { "x": 369, "z": 143, "type": 3, "script": "SECRET_BASE_BLUE_CAVE2_2" },
     { "x": 330, "z": 152, "type": 0, "script": "Route123_EventScript_RouteSign" },
     { "x": 395, "z": 141, "type": 2, "script": "", "item": "Super Repel", "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_SUPER_REPEL" },
     { "x": 340, "z": 147, "type": 0, "script": "Route123_EventScript_BerryMastersHouseSign" },
+    { "x": 377, "z": 145, "type": 3, "script": "SECRET_BASE_BLUE_CAVE1_3" },
     { "x": 332, "z": 141, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_REVIVE" },
     { "x": 411, "z": 155, "type": 2, "script": "", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_HYPER_POTION" },
     { "x": 459, "z": 155, "type": 2, "script": "", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_ROUTE_123_PP_UP" },
