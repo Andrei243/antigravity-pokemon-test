@@ -612,6 +612,68 @@ partial class Harness
         ReadTo(null);
         Frigate("Volcarona");
 
+        // Plan 22 · U6, part d: the team screen answered (the first of the party, in their order), and a shop's counter looked at
+        void EnterTheTeam(int count = 3)
+        {
+            for (int i = 0; i < 900 && State() != GameState.PartyMenu; i++)
+            {
+                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else Frames(1);
+            }
+            if (State() != GameState.PartyMenu) { Console.WriteLine("  !! never happened: the team to choose from"); return; }
+            var screen = game.PartyScreen;
+            Frames(60);
+            for (int slot = 0; slot < count; slot++) { screen.SelectedIndex = slot; Frames(2); screen.Confirm(game.Party); Frames(6); }
+            screen.Confirm(game.Party);
+            Frames(4);
+        }
+        void AtTheCounter(string shot)
+        {
+            for (int i = 0; i < 900 && State() != GameState.Shop; i++)
+            {
+                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (State() != GameState.Shop) { Console.WriteLine("  !! never happened: the counter"); return; }
+            Frames(20);
+            Shot(shot);
+            game.Shop.Close();
+            Frames(6);
+        }
+        void Hall(string what) =>
+            Console.WriteLine($"  {what}: first tournament {story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT")}, BP {game.Frontier.BattlePoints}, "
+                + $"run {story.Var(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.State)}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}");
+
+        // ---- the hall's first tournament (plan 22 · U6, part d): Clay's welcome, the offer, the team of three, and the
+        // bracket against Cheren, Hugh and Clay, the prize and the pier waiting
+        foreach (string species in new[] { "Lillipup", "Pidove" }) game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 30));
+        ComeThrough("PokemonWorldTournament", 11, 14, Direction.Up); Frames(30);
+        ReadTo("Welcome to the Pokémon World Tournament!"); Frames(10); Shot("us150_clay_welcomes");
+        ReadTo("I'd like you in it too."); Frames(10); Shot("us151_the_entrants");
+        ReadTo("Will you enter the Driftveil Tournament?"); Frames(10); Shot("us152_the_offer");
+        ReadTo("Then choose the Pokémon you'll enter.");
+        EnterTheTeam(); Frames(30);
+        ReadTo("Eight Trainers took the stage"); Frames(10); Shot("us153_the_stage");
+        ReadTo("I'm not holding back"); Frames(10); Shot("us154_cheren_on_the_stage");
+        IntoBattle("Cheren");
+        ToMainMenu(game.Battle); Shot("us155_the_first_round");
+        Win();
+        ReadTo("You've earned your place in the next round."); Frames(10); Shot("us156_cheren_beaten");
+        ReadTo("I've been waiting for this since we left the Gym."); Frames(10); Shot("us157_hugh_on_the_stage");
+        ReadTo("Final round"); Frames(10); Shot("us158_clay_on_the_stage");
+        IntoBattle("Clay");
+        ToMainMenu(game.Battle); Shot("us159_the_final");
+        Win();
+        ReadTo("Take these Battle Points"); Frames(10); Shot("us160_the_prize");
+        ReadTo("There's a big ship moored"); Frames(10); Shot("us161_clay_points_to_the_pier");
+        ReadTo(null); Frames(20); Shot("us162_the_hall_afterwards");
+        Hall("the tournament");
+        TalkToKey("PokemonWorldTournament", "receptionist");
+        ReadTo("has been played"); Frames(10); Shot("us163_the_desk_afterwards");
+        ReadTo(null);
+
         // ---- the World Tournament's pier: Cheren, Hugh, the running grunt and Colress
         StepOnto("Unova", 197, 476, Direction.Down);
         ReadTo("I hardly knew you."); Frames(10); Shot("us139_cheren_and_hugh");
@@ -638,5 +700,56 @@ partial class Harness
         ReadTo("I'm going on to Route 6."); Frames(10); Shot("us149_cheren_goes_on");
         ReadTo(null);
         Frigate("ashore");
+
+        // Plan 22 · U6, part d: the Battle Subway's Single Train from the Gear Station's desk to the end of a set, Anville's
+        // lost Pansage and Driftveil Market's stalls
+        void Subway(string what) =>
+            Console.WriteLine($"  {what}: run {story.Var(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.State)}, "
+                + $"streak {story.Var(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.Wins)}, "
+                + $"best single {story.Var(PokemonPlatinumEngine.Models.Frontier.BattleSubway.Vars.Best(PokemonPlatinumEngine.Models.Frontier.SubwayTrain.Single))}, "
+                + $"BP {game.Frontier.BattlePoints}, map {game.Map.Name} {game.Player.GridX},{game.Player.GridY}");
+
+        // ---- the Battle Subway: the desk, the three taken aboard, seven cars, and off again with the points
+        ComeThrough("GearStation", 11, 4, Direction.Up); Frames(30);
+        TalkToKey("GearStation", "single_desk");
+        ReadTo("Welcome to the Battle Subway!"); Frames(10); Shot("us164_the_single_desk");
+        ReadTo("What would you like to do?"); Frames(10); Shot("us165_the_desks_choices");
+        ReadTo("Please choose the Pokémon you will take aboard.");
+        EnterTheTeam(); Frames(30);
+        ReadTo("Car 1"); Frames(20); Shot("us166_the_first_car");
+        IntoBattle("the first car");
+        ToMainMenu(game.Battle); Shot("us167_a_subway_battle");
+        Win();
+        ReadTo("Well done! The next car is coming up."); Frames(10); Shot("us168_the_next_car");
+        ReadTo("That's the end of the line for this set"); Frames(10); Shot("us169_a_set_cleared");
+        ReadTo("Here are the Battle Points you earned."); Frames(10); Shot("us170_the_points");
+        ReadTo(null); Frames(40); Shot("us171_back_at_the_gear_station");
+        Subway("the Single Train");
+
+        // ---- Anville Town: the girl's lost Pansage, found in the plaza and returned
+        ComeThrough("AnvilleTown", 20, 52, Direction.Right); Frames(30);
+        TalkTo("AnvilleTown", "16", "anville_town", 1, 0);
+        ReadTo("My Pansage hopped onto a train"); Frames(10); Shot("us172_the_lost_pansage");
+        ReadTo(null);
+        Frames(20); Shot("us173_the_pansage_in_the_plaza");
+        TalkTo("AnvilleTown", "15", "anville_town");
+        ReadTo("Pansage: Sage! Sage!"); Frames(10); Shot("us174_the_pansage_found");
+        ReadTo(null);
+        TalkTo("AnvilleTown", "16", "anville_town", 1, 0);
+        ReadTo("That's my Pansage!"); Frames(10); Shot("us175_the_pansage_returned");
+        ReadTo(null);
+        Frames(20); Shot("us176_the_pansage_at_her_side");
+
+        // ---- Driftveil Market: three sellers at their stalls
+        ComeThrough("DriftveilCity_Market", 9, 16, Direction.Up); Frames(30); Shot("us177_driftveil_market");
+        TalkTo("DriftveilCity_Market", "1", "driftveil_city_7");
+        AtTheCounter("us178_the_herb_stall");
+        ReadTo(null);
+        TalkTo("DriftveilCity_Market", "3", "driftveil_city_7");
+        AtTheCounter("us179_the_sailors_goods");
+        ReadTo(null);
+        TalkTo("DriftveilCity_Market", "4", "driftveil_city_7");
+        AtTheCounter("us180_the_sweets");
+        ReadTo(null);
     }
 }

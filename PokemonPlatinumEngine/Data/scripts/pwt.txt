@@ -16,6 +16,10 @@
 
 script OnEnter
   call UnovaCatchUp
+  # the tournament's hall (plan 22 · U6, part d) is open once Clay has told of it, and a save that has seen the frigate has
+  # been through the first tournament by the story's order (no story version)
+  if var VAR_UNOVA_DRIFTVEIL >= 5 setflag FLAG_UNOVA_PWT_OPEN
+  if var VAR_UNOVA_PWT >= 1 setflag FLAG_UNOVA_PWT_FIRST_TOURNAMENT
   if var VAR_UNOVA_PWT != 2 end
   scene "Hugh and Cheren on the pier"
   speaker "{rival}"
@@ -42,6 +46,7 @@ script OnEnter
 # The first step onto the pier, once Clay has told of the tournament (our trigger on 196 to 198, 476, at 0)
 script PlasmaAtThePier
   if var VAR_UNOVA_DRIFTVEIL < 5 end
+  if not flag FLAG_UNOVA_PWT_FIRST_TOURNAMENT end
   scene "The Plasma Frigate at the pier"
   place player 197 476 up
   clearflag FLAG_UNOVA_HIDE_HUGH_PWT

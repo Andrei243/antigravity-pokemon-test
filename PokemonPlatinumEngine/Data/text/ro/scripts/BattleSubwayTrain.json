@@ -1,0 +1,240 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Car {number}: {foe} wants to battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well done! The next car is coming up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard! I'm Ingo, a Subway Boss, and this is the car where the trains' stories begin."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Few reach it. Show me why you did!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Departing now! I'm Emmet, a Subway Boss, and I've seen every battle this line has to offer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's see if you have a new one for me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard! You and your partner have come a long way, so we'll ride the rest of it together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Two against two, side by side. Departing now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ingo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A splendid ride! The line is yours to keep running."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Emmet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "End of the line! ...For me, anyway. Yours goes on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well done! The next car is coming up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the end of the line for this set. {number} cars cleared in a row!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you get off here, or go on to the next set?",
+        "GET OFF",
+        "GO ON"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for riding the Battle Subway! Here are the Battle Points you earned."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for riding the Battle Subway!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, bad luck! That's the end of the ride. You cleared {number} cars before you were stopped."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The sets you cleared still count. Here are the Battle Points you earned."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {number} BP!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

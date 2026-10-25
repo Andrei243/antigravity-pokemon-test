@@ -70,7 +70,63 @@
     },
     {
       "en": [
-        "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run."
+        "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Single Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
       ],
       "text": [
         ""
@@ -93,6 +149,62 @@
       "text": [
         ""
       ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Subway Bosses wait for those who ride on to the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Double Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "MultiTrain": [
@@ -111,12 +223,116 @@
       "text": [
         ""
       ]
-    }
-  ],
-  "TrainsResting": [
+    },
     {
       "en": [
-        "The Subway's cars are in the depot being made ready. Please come back once the lines are running!"
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A partner from a friend over a link is not on the line yet. We're sorry!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Multi Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Board": [
+    {
+      "en": [
+        "I'm sorry. You need {number} Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the Pokémon you will take aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard! Mind the doors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The Pokémon taken aboard must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the Pokémon taken aboard may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
       ],
       "text": [
         ""

@@ -526,6 +526,22 @@ public class ScriptTests
           arcade beaten
           arcade forfeit
           arcade end
+          subway enough
+          subway begin double
+          subway choose
+          subway check
+          subway active
+          subway mode
+          subway next
+          subway boss
+          subway opponent
+          subway battle
+          subway won
+          subway streak
+          subway best
+          subway finish lost
+          subway points
+          subway end
           amity arrive
           amity may
           amity next

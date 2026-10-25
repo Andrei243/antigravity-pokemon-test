@@ -449,6 +449,31 @@
       "Lemonade",
       "Moomoo Milk",
       "Casteliacone"
+    ],
+    "driftveil_market_herbs": [
+      "Energy Powder",
+      "Energy Root",
+      "Heal Powder",
+      "Revival Herb"
+    ],
+    "driftveil_market_goods": [
+      "Poké Doll",
+      "Fluffy Tail",
+      "Super Repel",
+      "Max Repel",
+      "X Attack",
+      "X Speed",
+      "X Accuracy",
+      "X Defense",
+      "Guard Spec.",
+      "Dire Hit"
+    ],
+    "driftveil_market_sweets": [
+      "Lemonade",
+      "Moomoo Milk",
+      "Sweet Heart",
+      "Lava Cookie",
+      "Old Gateau"
     ]
   }
 }

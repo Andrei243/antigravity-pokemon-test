@@ -1,0 +1,35 @@
+# The Driftveil Drawbridge (the long bridge over the bay, wind and gulls and the lorries' hum): a wide flute melody in D
+# over held strings, a rolling harp, a slow bass and a sparse beat, a crossing taken at a walk. Original composition for
+# this game (plan 22 · U6, part d).
+title The Driftveil Drawbridge
+tempo 96
+meter 4/4
+reverb 0.4
+nighttempo 0.9
+
+track lead flute night=ocarina vol=0.72 pan=0.04 rev=0.4
+  L o5 d2 f+4 a4 | o6 c+2 o5 a4 e4 | o5 b2 o6 d4 f+4 | o6 c+2. o5 a4 |
+  o5 g2 b4 o6 d4 | o6 d2 o5 a4 f+4 | o5 g4 b4 o6 e4 d4 | o6 c+2. r4 |
+  o5 d4 f+4 a4 o6 d4 | o6 e2 c+4 o5 a4 | o5 b4 o6 d4 f+4 d4 | o6 c+2 o5 a2 |
+  o5 b4 o6 d4 g4 d4 | o6 e2 d4 o5 b4 | o5 a4 o6 c+4 e4 c+4 | o5 a1 |
+
+track pad strings night=pad vol=0.3 pan=-0.2 rev=0.4
+  L o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (b >d f+)1 | o4 (f+ a >c+)1 |
+  o4 (g b >d)1 | o4 (d f+ a)1 | o4 (e g b)1 | o4 (a >c+ e)1 |
+  o4 (d f+ a)1 | o4 (a >c+ e)1 | o4 (b >d f+)1 | o4 (f+ a >c+)1 |
+  o4 (g b >d)1 | o4 (e g b)1 | o4 (a >c+ e)1 | o4 (a >c+ e)1 |
+
+track harp harp vol=0.4 pan=0.24 rev=0.38
+  L o4 d8 f+8 a8 o5 d8 o4 a8 f+8 d8 f+8 | o3 a8 o4 c+8 e8 a8 e8 c+8 e8 c+8 | o3 b8 o4 d8 f+8 b8 f+8 d8 f+8 d8 | o3 f+8 a8 o4 c+8 f+8 c+8 o3 a8 f+8 a8 |
+  o3 g8 b8 o4 d8 g8 d8 o3 b8 g8 b8 | o4 d8 f+8 a8 o5 d8 o4 a8 f+8 d8 f+8 | o3 e8 g8 b8 o4 e8 o3 b8 g8 e8 g8 | o3 a8 o4 c+8 e8 a8 e8 c+8 e8 c+8 |
+  o4 d8 f+8 a8 o5 d8 o4 a8 f+8 d8 f+8 | o3 a8 o4 c+8 e8 a8 e8 c+8 e8 c+8 | o3 b8 o4 d8 f+8 b8 f+8 d8 f+8 d8 | o3 f+8 a8 o4 c+8 f+8 c+8 o3 a8 f+8 a8 |
+  o3 g8 b8 o4 d8 g8 d8 o3 b8 g8 b8 | o3 e8 g8 b8 o4 e8 o3 b8 g8 e8 g8 | o3 a8 o4 c+8 e8 a8 e8 c+8 e8 c+8 | o3 a8 o4 c+8 e8 a8 e8 c+8 e8 c+8 |
+
+track bass contrabass vol=0.72 rev=0.08
+  L o2 d2 a2 | o2 a2 o3 e2 | o2 b2 o3 f+2 | o2 f+2 o3 c+2 |
+  o2 g2 o3 d2 | o2 d2 a2 | o2 e2 b2 | o2 a2 o3 e2 |
+  o2 d2 a2 | o2 a2 o3 e2 | o2 b2 o3 f+2 | o2 f+2 o3 c+2 |
+  o2 g2 o3 d2 | o2 e2 b2 | o2 a2 o3 e2 | o2 a2 o3 e2 |
+
+track drums kit vol=0.3 rev=0.14
+  L v62 [ b4 r8 h8 s4 r8 h8 | ]15 b4 r4 s8 s8 s4 |

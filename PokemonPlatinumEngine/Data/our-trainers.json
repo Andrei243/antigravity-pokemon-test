@@ -34,5 +34,29 @@
         ]
       }
     ]
+  },
+  {
+    "id": "subway_ingo",
+    "name": "Ingo",
+    "class": "Subway Boss Ingo",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Excadrill", "level": 50, "ivScale": 255, "personality": 4358793 },
+      { "species": "Conkeldurr", "level": 50, "ivScale": 255, "personality": 4358794 },
+      { "species": "Archeops", "level": 50, "ivScale": 255, "personality": 4358795 }
+    ]
+  },
+  {
+    "id": "subway_emmet",
+    "name": "Emmet",
+    "class": "Subway Boss Emmet",
+    "ai": [ "Basic", "EvalAttack", "Expert" ],
+    "prizeMoney": 0,
+    "party": [
+      { "species": "Chandelure", "level": 50, "ivScale": 255, "personality": 10054537 },
+      { "species": "Eelektross", "level": 50, "ivScale": 255, "personality": 10054538 },
+      { "species": "Galvantula", "level": 50, "ivScale": 255, "personality": 10054539 }
+    ]
   }
 ]

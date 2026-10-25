@@ -972,6 +972,21 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Arcade, Line = line, Name = what, Other = which };
             }
 
+            // The Battle Subway (plan 22 · U6, part d)
+            case "subway":
+            {
+                string what = r.OneOf("enough", "begin", "choose", "check", "active", "end", "next", "boss", "opponent", "battle", "won", "streak",
+                    "best", "finish", "points", "mode", "foe");
+                string which = what switch
+                {
+                    "begin" => r.OneOf("single", "double", "multi"),
+                    "finish" => r.OneOf("won", "lost"),
+                    "foe" => r.Text("a trainer's id"),
+                    _ => ""
+                };
+                return new Instruction { Op = Op.Subway, Line = line, Name = what, Other = which };
+            }
+
             // Amity Square's walk (plan 06 · R16c)
             case "amity":
                 return new Instruction

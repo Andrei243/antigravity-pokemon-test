@@ -330,6 +330,9 @@ public sealed class ScriptLibrary
                     case Op.Defeat when TrainerDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no trainer '{i.Name}'");
                         break;
+                    case Op.Subway when i.Name == "foe" && TrainerDatabase.Get(i.Other) == null:
+                        Wrong(i, $"there is no trainer '{i.Other}'");
+                        break;
                     case Op.Battle when i.AsTrainer.Length > 0 && TrainerDatabase.Get(i.AsTrainer) == null:
                         Wrong(i, $"there is no trainer '{i.AsTrainer}'");
                         break;

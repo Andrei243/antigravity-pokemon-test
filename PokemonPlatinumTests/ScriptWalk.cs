@@ -327,6 +327,14 @@ internal sealed class ScriptWalk
         {
             if (i.Op == Op.Call && Scripts.Find(i.Name, script.File) is { } called)
                 foreach (var (what, give) in Givens(called, looked)) Add(what, give);
+            // A team that may enter a Frontier-style run (plan 22 · U6, part d: the Battle Subway's desks and the World
+            // Tournament's offer), of different species, which a Bidoof or two couldn't make up
+            if (i.Op == Op.Subway && i.Name == "enough")
+                Add("a team that may enter", host =>
+                {
+                    foreach (string species in new[] { "Starly", "Shinx", "Kricketot", "Bidoof" })
+                        host.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 5, new Random(host.Party.Count)));
+                });
             if (i.Condition is not { } c) continue;
             switch (c.Query)
             {

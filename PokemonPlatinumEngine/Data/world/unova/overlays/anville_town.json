@@ -3,12 +3,12 @@
   // and the old cars on its sidings, our words. Nobody walks here: the train from Nimbasa's Gear Station brings the
   // player to its station, and the station agent (2) sends them back (anville_town.txt). On a Saturday or a Sunday the
   // town fills with train fans and collectors (4 to 6, 8 to 10, 12 to 14, FLAG_UNOVA_HIDE_ANVILLE_WEEKEND, which the
-  // town's arrival clears at the weekend); the collectors' trades of Black 2 only talk of themselves. The lost Pansage
-  // (15, Black 2's 0x0362) and the girl's errand are left
+  // town's arrival clears at the weekend); two of the collectors swap Pokémon (14 and 9, ours: NpcTrades "cogs" and
+  // "shelly", part d). The girl (16) has lost her Pansage (15, Black 2's 0x0362): she tells of it, it sits in the plaza
+  // until it is found, and once she has it back it sits by her (anville_town.txt, LostPansage)
   "area": "anville_town",
   "bgmTrack": "unova/anville",
   "architecture": "Railyard",
-  "heldBack": [ "15" ],
   "people": {
     "0": {
       "name": "Worker",
@@ -55,7 +55,8 @@
       "name": "Backer",
       "npcType": "Lass",
       "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
-      "dialog": [ "The collectors here swap all sorts of things. I tried it once, and it was more fun than I expected!" ]
+      "script": "Swap",
+      "still": true
     },
     "10": {
       "name": "Old Man",
@@ -84,14 +85,29 @@
       "name": "Collector",
       "npcType": "Gentleman",
       "hiddenBy": "FLAG_UNOVA_HIDE_ANVILLE_WEEKEND",
-      "dialog": [ "I collect anything to do with trains. Tickets, signs, the odd bolt. Come back when you have something to swap!" ]
+      "script": "Collector",
+      "still": true
+    },
+    "15": {
+      "name": "Pansage",
+      "npcType": "Pokemon",
+      "species": "Pansage",
+      "at": [ 20, 54 ],
+      "shownBy": "FLAG_UNOVA_ANVILLE_PANSAGE_LOST",
+      "hiddenBy": "FLAG_UNOVA_ANVILLE_PANSAGE_FOUND",
+      "script": "PansageLost",
+      "still": true
     },
     "16": {
       "name": "Girl",
       "npcType": "Lass",
-      "dialog": [ "My Pansage hopped onto a train on the way home from the amusement park. I hope someone kind finds it..." ]
+      "script": "LostPansage",
+      "still": true
     }
   },
+  "npcs": [
+    { "id": "pansage_home", "name": "Pansage", "npcType": "Pokemon", "species": "Pansage", "x": 16, "y": 51, "facing": "Left", "shownBy": "FLAG_UNOVA_ANVILLE_PANSAGE_THANKED", "script": "PansageHome" }
+  ],
   "signs": {
     "6": "A map of Unova's railways.\nThe Gear Station in Nimbasa City is the hub of every line.",
     "7": "Anville Town\nWhere the steel rails end and turn round"

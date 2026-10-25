@@ -154,14 +154,6 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "The collectors here swap all sorts of things. I tried it once, and it was more fun than I expected!"
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "10": {
@@ -244,10 +236,12 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
+      }
+    },
+    "15": {
+      "name": {
         "en": [
-          "I collect anything to do with trains. Tickets, signs, the odd bolt. Come back when you have something to swap!"
+          "Pansage"
         ],
         "text": [
           ""
@@ -262,10 +256,12 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
+      }
+    },
+    "pansage_home": {
+      "name": {
         "en": [
-          "My Pansage hopped onto a train on the way home from the amusement park. I hope someone kind finds it..."
+          "Pansage"
         ],
         "text": [
           ""

@@ -5,7 +5,7 @@
   // camera of its own, lower and further off than the overworld's (Black 2's camera 9). Its raising for ships and the
   // Ducklett shadows over its deck are left for later
   "area": "driftveil_drawbridge",
-  "bgmTrack": "unova/route4",
+  "bgmTrack": "unova/drawbridge",
   "camera": "Drawbridge",
   "people": {
     "0": {

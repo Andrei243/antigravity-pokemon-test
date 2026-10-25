@@ -1,0 +1,35 @@
+# The Pokémon World Tournament (its grounds, its pier and the hall's lobby): a ceremonial fanfare tune in F, trumpets
+# over strings and brass stabs, a marching tuba bass and a crowd-roar of snares. Original composition for this game
+# (plan 22 · U6, part d).
+title Pokémon World Tournament
+tempo 132
+meter 4/4
+reverb 0.34
+nighttempo 0.92
+
+track lead trumpet night=horn vol=0.7 pan=0.04 rev=0.3
+  L o5 f4. a8 o6 c4 o5 a4 | o5 a4. o6 d8 f4 d4 | o5 b-4. o6 d8 f4 d4 | o6 c2 e4 g4 |
+  o6 a4. f8 c4 o5 a4 | o6 c4. e8 a4 e4 | o6 d4. f8 b-4 f4 | o6 g2 e4 c4 |
+  o6 d4 f4 a4 f4 | o6 d4 f4 b-4 f4 | o6 c4 o5 a4 f4 o6 c4 | o6 e4 d4 c4 o5 g4 |
+  o6 d4. f8 b-4 d4 | o6 d4. g8 b-4 g4 | o6 e4 g4 >c2 | o6 c4. r8 r2 |
+
+track pad strings night=pad vol=0.3 pan=-0.22 rev=0.34
+  L o4 (f a >c)1 | o4 (d f a)1 | o4 (b- >d f)1 | o4 (c e g)1 |
+  o4 (f a >c)1 | o4 (a >c e)1 | o4 (b- >d f)1 | o4 (c e g)1 |
+  o4 (d f a)1 | o4 (b- >d f)1 | o4 (f a >c)1 | o4 (c e g)1 |
+  o4 (b- >d f)1 | o4 (g b- >d)1 | o4 (c e g)1 | o4 (c e g)1 |
+
+track stabs brass night=horn vol=0.34 pan=0.2 rev=0.26
+  L r4 o4 (f a >c)4 r4 o4 (f a >c)4 | r4 o4 (d f a)4 r4 o4 (d f a)4 | r4 o4 (b- >d f)4 r4 o4 (b- >d f)4 | r4 o4 (c e g)4 r4 o4 (c e g)4 |
+  r4 o4 (f a >c)4 r4 o4 (f a >c)4 | r4 o4 (a >c e)4 r4 o4 (a >c e)4 | r4 o4 (b- >d f)4 r4 o4 (b- >d f)4 | r4 o4 (c e g)4 r4 o4 (c e g)4 |
+  r4 o4 (d f a)4 r4 o4 (d f a)4 | r4 o4 (b- >d f)4 r4 o4 (b- >d f)4 | r4 o4 (f a >c)4 r4 o4 (f a >c)4 | r4 o4 (c e g)4 r4 o4 (c e g)4 |
+  r4 o4 (b- >d f)4 r4 o4 (b- >d f)4 | r4 o4 (g b- >d)4 r4 o4 (g b- >d)4 | r4 o4 (c e g)4 r4 o4 (c e g)4 | r4 o4 (c e g)4 r4 o4 (c e g)4 |
+
+track bass tuba vol=0.66 rev=0.1
+  L o2 f4 o3 c4 o2 f4 o3 c4 | o2 d4 a4 d4 a4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 c4 g4 c4 g4 |
+  o2 f4 o3 c4 o2 f4 o3 c4 | o2 a4 o3 e4 o2 a4 o3 e4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 c4 g4 c4 g4 |
+  o2 d4 a4 d4 a4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 f4 o3 c4 o2 f4 o3 c4 | o2 c4 g4 c4 g4 |
+  o2 b-4 o3 f4 o2 b-4 o3 f4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 c4 g4 c4 g4 | o2 c4 g4 c4 g4 |
+
+track drums kit vol=0.46 rev=0.12
+  L v84 [ b4 s8 s8 b4 s4 | ]15 b4 s8 s8 s16 s16 s16 s16 s4 |

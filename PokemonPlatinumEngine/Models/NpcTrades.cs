@@ -50,7 +50,14 @@ public static class NpcTrades
         // item table hasn't got: it holds Bubble Mail, the sea's
         new NpcTrade("seasor", "Bagon", "Horsea", "Seasor", "Skylar", 46285, PlayerLook.Boy, 0x7F, "Bubble Mail",
             new[] { 5, 4, 4, 4, 5, 4 }, Nature.Brave, "Swift Swim", Gender.Male,
-            Conditions: new[] { 5, 5, 5, 5, 30 }, Sheen: 10)
+            Conditions: new[] { 5, 5, 5, 5, 30 }, Sheen: 10),
+        // Anville Town's collectors (plan 22 · U6, part d), trades of our own on the weekend crowd: the railway fan wants
+        // a Timburr, the girl who tried her first swap a Tympole. Their personalities (0x2A and 0x3B) give a Sassy
+        // Klink and a Careful Dwebble with their first abilities
+        new NpcTrade("cogs", "Timburr", "Klink", "Cogs", "Dmitri", 38511, PlayerLook.Boy, 0x2A, "Metal Coat",
+            new[] { 20, 20, 25, 15, 20, 15 }, Nature.Sassy, "Plus", Gender.Genderless),
+        new NpcTrade("shelly", "Tympole", "Dwebble", "Shelly", "Odette", 52690, PlayerLook.Girl, 0x3B, "Oran Berry",
+            new[] { 15, 20, 25, 15, 15, 20 }, Nature.Careful, "Sturdy", Gender.Female)
     };
 
     public static NpcTrade? Get(string id) => All.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase));

@@ -1,0 +1,35 @@
+# Route 5 (the long road between Nimbasa and the Driftveil Drawbridge, the lorry-trodden way with its warehouse row):
+# a brisk oboe tune in A over strings, a plucked arpeggio, a walking bass and a steady beat. Original composition for
+# this game (plan 22 · U6, part d).
+title Route 5
+tempo 124
+meter 4/4
+reverb 0.22
+nighttempo 0.9
+
+track lead oboe night=clarinet vol=0.7 pan=0.06 rev=0.22
+  L o5 a4 e8 a8 o6 c+4 o5 a4 | o5 f+4 a8 o6 d8 o5 a4 f+4 | o5 g+4 b8 o6 e8 o5 b4 g+4 | o5 a2 e4 o6 c+4 |
+  o5 f+4 a8 o6 c+8 f+4 c+4 | o5 f+4 a8 o6 d8 o5 a4 o6 d4 | o5 e4 g+8 b8 o6 e4 o5 b4 | o5 e2 g+4 b4 |
+  o6 c+4 o5 a8 e8 a4 o6 c+4 | o5 d4 f+8 a8 o6 d4 o5 a4 | o5 b4 g+8 e8 b4 g+4 | o5 a2 o6 c+4 o5 e4 |
+  o5 f+4 a8 o6 c+8 f+4 e4 | o6 d4 o5 a8 f+8 d4 f+4 | o5 e4 g+8 b8 o6 e4 d4 | o5 a2. r4 |
+
+track pad strings night=pad vol=0.28 pan=-0.22 rev=0.3
+  L o4 (a >c+ e)1 | o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (a >c+ e)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (e g+ b)1 |
+  o4 (a >c+ e)1 | o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (a >c+ e)1 |
+  o4 (f+ a >c+)1 | o4 (d f+ a)1 | o4 (e g+ b)1 | o4 (a >c+ e)1 |
+
+track pluck pizzicato vol=0.34 pan=0.22 rev=0.2
+  L [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+  [ o4 f+8 a8 o5 c+8 o4 a8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 |
+  [ o4 a8 o5 c+8 e8 c+8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+  [ o4 f+8 a8 o5 c+8 o4 a8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g+8 b8 g+8 ]2 | [ o4 a8 o5 c+8 e8 c+8 ]2 |
+
+track bass bass vol=0.64 rev=0.06
+  L [ o2 a8 o3 a8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 f+8 o3 f+8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 e8 o3 e8 ]4 |
+  [ o2 a8 o3 a8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 f+8 o3 f+8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 |
+
+track drums kit vol=0.42 rev=0.1
+  L v80 [ b8 h8 h8 b8 s8 h8 h8 h8 | ]15 b8 h8 h8 b8 s8 s16 s16 s8 s8 |

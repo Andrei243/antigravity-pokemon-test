@@ -101,6 +101,11 @@ partial class Harness
             ("u72_plasma_frigate", "PlasmaFrigate", 12, 28, Direction.Up),
             ("u73_relic_castle_ruins", "RelicCastle_Ruins1", 6, 12, Direction.Up),
             ("u74_join_avenue_shops", "JoinAvenue", 9, 28, Direction.Left),
+            // plan 22 · U6, part d: a car of the Battle Subway, the World Tournament's hall, Route 5 and the drawbridge's gate
+            ("u75_battle_subway_car", "BattleSubwayTrain", 3, 5, Direction.Right),
+            ("u76_world_tournament_hall", "PokemonWorldTournament", 11, 12, Direction.Up),
+            ("u77_anville_plaza", "AnvilleTown", 20, 56, Direction.Up),
+            ("u78_driftveil_market", "DriftveilCity_Market", 9, 14, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in more)
         {

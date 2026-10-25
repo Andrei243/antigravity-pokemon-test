@@ -353,7 +353,7 @@ public sealed partial class ScriptRunner
         // The pastimes, the Battle Frontier's facilities, the tutors and Amity Square's walk open screens, ask and
         // battle on most of their words: none of them is hurried through
         Op.Fossil or Op.GameCorner or Op.Villa or Op.PalPark => true,
-        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade => true,
+        Op.Frontier or Op.Tower or Op.Factory or Op.Hall or Op.Castle or Op.Arcade or Op.Subway => true,
         Op.Tutor or Op.Amity => true,
         // A scene's own two lines
         Op.Scene or Op.EndScene => false,
@@ -1231,6 +1231,11 @@ public sealed partial class ScriptRunner
             // The Battle Arcade (plan 06 · R18d)
             case Op.Arcade:
                 Arcade(i);
+                break;
+
+            // The Battle Subway (plan 22 · U6, part d)
+            case Op.Subway:
+                Subway(i);
                 break;
 
             // Amity Square's walk (plan 06 · R16c)

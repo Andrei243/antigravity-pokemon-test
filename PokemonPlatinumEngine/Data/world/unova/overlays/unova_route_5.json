@@ -6,7 +6,7 @@
   // 439, VAR_UNOVA_ROUTE_5 0; unova_route_5.txt); Black 2's grotto she leads the player to is plan 22 · U11's. Cheren,
   // who waits here after the Hall of Fame (21), is the post-game's
   "area": "unova_route_5",
-  "bgmTrack": "unova/route4",
+  "bgmTrack": "unova/route5",
   "triggers": [
     { "script": "BiancasFly", "x": 372, "z": 437, "width": 1, "depth": 3, "variable": "VAR_UNOVA_ROUTE_5", "value": 0 }
   ],
