@@ -64,7 +64,10 @@ public class TextTests
         ["Core/Diagnostics/Log.cs"] = "the log, for whoever reads log.txt",
         ["Core/Diagnostics/CrashReport.cs"] = "a crash's report, for whoever reads it",
         ["Core/Diagnostics/Manifest.cs"] = "--verify, said to the terminal",
-        ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it"
+        ["Core/Diagnostics/GameVersion.cs"] = "the build's version as the log and --help write it",
+        ["Core/Autoplay/AutoplayReport.cs"] = "the playthrough bot's play.md, for whoever reads the run (plan 16 · T7)",
+        ["Core/Autoplay/Autoplayer.cs"] = "the playthrough bot's findings and the goals it names, for play.md (plan 16 · T7)",
+        ["Core/Autoplay/Policy.cs"] = "the keys the bot remembers its goals by, no words (plan 16 · T7)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
