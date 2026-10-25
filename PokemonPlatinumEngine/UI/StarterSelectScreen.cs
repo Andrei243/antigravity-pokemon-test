@@ -23,7 +23,14 @@ public class StarterSelectScreen
     /// <summary>The region whose briefcase this is (plan 18 · W1): its three partners, in the order the file lists them. Sinnoh's until opened.</summary>
     public Region Region { get; private set; } = RegionDatabase.Get(RegionDatabase.Sinnoh)!;
 
-    public IReadOnlyList<string> Starters => Region.Starters;
+    /// <summary>The species on the three cards: the region's own, or in a randomised run (plan 13 · V6) the species its slots go to.</summary>
+    public IReadOnlyList<string> Starters { get; private set; } = RegionDatabase.Get(RegionDatabase.Sinnoh)!.Starters;
+
+    /// <summary>The slots the cards stand for, which the story goes by (the rival's team, <c>if starter</c>): the region's own three, whatever the cards show.</summary>
+    public IReadOnlyList<string> Slots => Region.Starters;
+
+    /// <summary>The slot of the card chosen: what <c>StoryState.ChooseStarter</c> is told, whichever species the card shows.</summary>
+    public string ChosenSlot => Slots[Math.Clamp(SelectedIndex, 0, Slots.Count - 1)];
 
     private readonly UiReveal asking = new(0.18f, 0.1f);
     private float openAge;
@@ -35,9 +42,10 @@ public class StarterSelectScreen
     public bool ConfirmingSelection { get; set; }
     public bool AnswerYes { get; private set; }
 
-    public void Open(Region? region = null)
+    public void Open(Region? region = null, Randomizer? random = null)
     {
         Region = region ?? RegionDatabase.Get(RegionDatabase.Sinnoh)!;
+        Starters = random?.Starters(Region.Starters) ?? Region.Starters;
         IsActive = true;
         SelectedIndex = 0;
         ConfirmingSelection = false;

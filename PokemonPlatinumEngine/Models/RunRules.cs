@@ -58,6 +58,13 @@ public sealed record RunRules
     /// </summary>
     public int ShinyDenominator { get; init; }
 
+    /// <summary>
+    /// The randomiser (plan 13 · V6): the seed and what it touches, null for a run that randomises nothing (every run but a
+    /// chosen one). Asked for through <see cref="Randomizer.For"/>.
+    /// </summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public RandomizerOptions? Random { get; init; }
+
     public static RunRules Normal { get; } = new();
 
     /// <summary>The usual Nuzlocke: the two common clauses, nothing else.</summary>
@@ -127,6 +134,8 @@ public sealed record RunRules
     public bool MayCarry(Pokemon pokemon, string? starter)
     {
         if (Monotype is not { } type || pokemon.HasType(type)) return true;
+        // (a randomised run's starter is the species its slot goes to: plan 13 · V6)
+        if (starter != null && Randomizer.For(this) is { } random) starter = random.Species(starter);
         return starter != null && PokemonDatabase.Get(starter) is { } start && Models.Nuzlocke.LineOf(pokemon.Species) == Models.Nuzlocke.LineOf(start);
     }
 

@@ -871,6 +871,11 @@
     "preset": { "normal": "NORMAL", "nuzlocke": "NUZLOCKE", "hardcore": "HARDCORE", "custom": "CUSTOM" },
     "difficulty": { "Easy": "Easy", "Normal": "Normal", "Challenge": "Challenge" },
     "hint": { "start": "Start" },
+    "markSeed": "{preset} · SEED {seed}",
+    "seed": {
+      "title": "SEED",
+      "blurb": "Type up to nine digits. The same seed always makes the same game. It is {seed} now; leave it empty to keep it."
+    },
     "monotype": {
       "notThis": "This run only keeps {type}-type Pokémon on the team.",
       "sentToPc": "{name} isn't of this run's type, so it was sent to the PC."
@@ -892,6 +897,9 @@
       "NoRunning": "No running",
       "SetStyle": "Set battles only",
       "ShinyOdds": "Shiny odds",
+      "RandomSpecies": "Randomise Pokémon",
+      "RandomItems": "Randomise items",
+      "Seed": "Seed",
       "Start": "START"
     },
     "help": {
@@ -911,6 +919,9 @@
       "NoRunning": "You cannot run from wild battles.",
       "SetStyle": "Battle Style is Set, and the Shift offer is never made.",
       "ShinyOdds": "How often a Pokémon is shiny. As the rules say is the game's usual chance.",
+      "RandomSpecies": "Wild Pokémon, trainers' teams, gifts, legends and your partner are other species, the same ones every time for a seed. Evolutions stay in their lines.",
+      "RandomItems": "Items on the ground and handed to you are other items. Key items, HMs and anything the story asks for are never changed.",
+      "Seed": "One seed makes one game. Left and right roll another; A types nine digits at most. It is kept on the Trainer Card.",
       "Start": "Begin the game with these choices. They cannot be changed afterwards."
     },
     "ended": {

@@ -928,7 +928,9 @@ public partial class GameEngine
         public AthlonRecords Athlon => game.flow.Athlon;
         public void PutInBox(Pokemon pokemon) => game.flow.Boxes.Store(pokemon);
         public int LevelHere(int level) => game.LevelHere(level);
-        public int SeenInSinnoh => game.flow.Pokedex.SeenIn(Pokedex.Sinnoh);
+        // A run that randomises species can't see every species of Sinnoh's Pokédex (the ones met are other species), so once its Hall of Fame is entered
+        // the professor counts them all, and the National Pokédex opens on the Hall of Fame alone (plan 13 · V6, rulings: "The randomiser")
+        public int SeenInSinnoh => Randomizer.SinnohSeen(game.flow.Run, game.flow.Pokedex, game.flow.Story);
         public int Caught => game.flow.Pokedex.CaughtCount;
 
         public int Money
@@ -1156,7 +1158,7 @@ public partial class GameEngine
             {
                 case ScriptScreen.Starter:
                     game.flow.State = GameState.StarterSelect;
-                    game.flow.StarterSelectScreen.Open(game.Here);
+                    game.flow.StarterSelectScreen.Open(game.Here, Randomizer.For(game.flow.Run));
                     break;
                 case ScriptScreen.Shop:
                     game.flow.State = GameState.Shop;

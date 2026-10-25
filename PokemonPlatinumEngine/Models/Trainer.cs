@@ -47,6 +47,19 @@ public class Trainer
         return copy;
     }
 
+    /// <summary>
+    /// A copy whose team is what <paramref name="change"/> makes of each Pokémon (plan 13 · V6: the randomiser's species);
+    /// like the others it shares nothing with the original and the trainer of the map keeps their team.
+    /// </summary>
+    public Trainer WithTeamOf(Func<Pokemon, Pokemon> change)
+    {
+        var copy = (Trainer)MemberwiseClone();
+        copy.party = new Party();
+        foreach (var p in party.Members) copy.party.Add(change(p));
+        copy.Items = Items.ToList();
+        return copy;
+    }
+
     public int PrizeMoney { get; set; } = 300;
     public string DialogueBefore { get; set; } = string.Empty;
     public string DialogueAfter { get; set; } = string.Empty;
