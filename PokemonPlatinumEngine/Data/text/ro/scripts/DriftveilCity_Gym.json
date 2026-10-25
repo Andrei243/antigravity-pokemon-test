@@ -5,7 +5,7 @@
         "Clay"
       ],
       "text": [
-        ""
+        "Clay"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "So you dug your way down here. I'm Clay, boss of these mines and Leader of this Gym. I don't go easy on anybody!"
       ],
       "text": [
-        ""
+        "Deci ai săpat până aici jos. Sunt Clay, șeful minelor astea și Liderul Arenei. Nu fac concesii nimănui!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Let's see if your team's got the grit to strike it rich against mine!"
       ],
       "text": [
-        ""
+        "Să vedem dacă echipa ta are tăria să dea lovitura împotriva mea!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Well, I'll be. You struck a seam I never saw comin'. Here, you earned it fair and square."
       ],
       "text": [
-        ""
+        "Ei, na. Ai dat peste un filon pe care nu l-am văzut venind. Ia, l-ai câștigat cinstit."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Quake Badge from Clay!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Cutremurului de la Clay!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Your fifth Badge, is it? Then take this along with it. A move that shakes the ground and slows down whoever it hits."
       ],
       "text": [
-        ""
+        "Deci a cincea ta Insignă, nu? Atunci ia și asta. O mișcare care zguduie pământul și îl încetinește pe cel lovit."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Now get on up out of my mine. I've got work to do, and so have you!"
       ],
       "text": [
-        ""
+        "Acum ieși din mina mea. Eu am de lucru, și tu la fel!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Hard work never lies, kid. Not to you, and not to your Pokémon."
       ],
       "text": [
-        ""
+        "Munca cinstită nu minte niciodată, puștiule. Nici față de tine, nici față de Pokémonii tăi."
       ]
     }
   ]

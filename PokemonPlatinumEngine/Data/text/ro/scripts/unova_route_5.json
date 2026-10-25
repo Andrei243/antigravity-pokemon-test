@@ -5,7 +5,7 @@
         "Bianca"
       ],
       "text": [
-        ""
+        "Bianca"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Heeey! Wait for me!"
       ],
       "text": [
-        ""
+        "{player}! Heeei! Așteaptă-mă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Phew, I caught you! Good timing, too. I've been wanting to give you this!"
       ],
       "text": [
-        ""
+        "Uf, te-am prins! Și la momentul potrivit. Voiam să-ți dau asta!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Ta-da! It's Fly! Teach it to a Pokémon and it can carry you to any town you've visited, like a Pokémon Center you know."
       ],
       "text": [
-        ""
+        "Ta-da! E Zbor! Învață-l unui Pokémon și te poate duce în orice oraș ai vizitat, cum ar fi un Centru Pokémon pe care îl cunoști."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Oh, and {player}, do you know about Hidden Grottoes?"
       ],
       "text": [
-        ""
+        "Ah, și {player}, știi despre Grotele Ascunse?"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Then let me tell you! Sometimes there's a little hollow among the trees where Pokémon like to hide. That's a Hidden Grotto!"
       ],
       "text": [
-        ""
+        "Atunci îți spun eu! Uneori e o scobitură între copaci unde Pokémonilor le place să se ascundă. Asta e o Grotă Ascunsă!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "You do? Great! Keep your eyes open, then. You might find one just around the corner!"
       ],
       "text": [
-        ""
+        "Știi? Grozav! Ține ochii deschiși, atunci. Poate găsești una după colț!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Oops, I said I'd help the professor this afternoon! See you, {player}! Good luck in Driftveil!"
       ],
       "text": [
-        ""
+        "Hopa, am zis că îl ajut pe profesor după-amiază! Pe curând, {player}! Succes la Driftveil!"
       ]
     }
   ]

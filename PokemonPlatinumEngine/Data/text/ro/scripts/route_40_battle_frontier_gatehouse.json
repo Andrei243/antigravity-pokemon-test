@@ -5,7 +5,7 @@
         "Through this door runs the road to the Battle Frontier, where the strongest Trainers of every region gather."
       ],
       "text": [
-        ""
+        "Prin ușa asta trece drumul spre Battle Frontier, unde se adună cei mai puternici Antrenori din fiecare regiune."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Its five halls keep one record of your streaks and Battle Points, whichever way you come to them."
       ],
       "text": [
-        ""
+        "Cele cinci săli țin un singur registru al seriilor și al Battle Points tăi, indiferent pe unde ajungi la ele."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Shall I take you along the road to the Battle Frontier?"
       ],
       "text": [
-        ""
+        "Să te duc pe drumul spre Battle Frontier?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Splendid! Follow me, and keep close."
       ],
       "text": [
-        ""
+        "Minunat! Vino după mine și ține-te aproape."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} followed the guide along the road to the Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} a urmat ghidul pe drumul spre Battle Frontier..."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Whenever you're ready. The Frontier isn't going anywhere."
       ],
       "text": [
-        ""
+        "Oricând ești gata. Frontier nu fuge nicăieri."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "The road beyond leads to the Battle Frontier. Only Trainers who have entered the Hall of Fame may go."
       ],
       "text": [
-        ""
+        "Drumul de dincolo duce la Battle Frontier. Pot merge doar Antrenorii care au intrat în Hall of Fame."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Come back once you've beaten the Pokémon League, and I'll take you there myself."
       ],
       "text": [
-        ""
+        "Revino după ce ai învins Liga Pokémon și te duc chiar eu."
       ]
     }
   ]

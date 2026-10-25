@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Lilycove's harbour. The S.S. Tidal calls here, but she isn't taking passengers today. Please come back another time."
         ],
         "text": [
-          ""
+          "Bun venit în portul Lilycove. S.S. Tidal acostează aici, dar azi nu primește pasageri. Vă rog să reveniți altă dată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Ships out of Lilycove go a long way. Some of them cross the whole ocean to lands I've only heard of."
         ],
         "text": [
-          ""
+          "Vapoarele din Lilycove merg departe. Unele traversează tot oceanul spre ținuturi despre care am auzit doar."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Captain"
         ],
         "text": [
-          ""
+          "Căpitan"
         ]
       }
     }

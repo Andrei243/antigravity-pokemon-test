@@ -6,7 +6,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The light off the water changes every hour. I could paint this port for a hundred years."
         ],
         "text": [
-          ""
+          "Lumina de pe apă se schimbă din oră în oră. Aș putea picta portul ăsta o sută de ani."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Good day! The lift is for residents only, I'm sorry to say."
         ],
         "text": [
-          ""
+          "Bună ziua! Liftul e doar pentru locatari, îmi pare rău."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Pokémon Breeder"
         ],
         "text": [
-          ""
+          "Crescător Pokémon"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My Pokémon love the sea breeze. We walk along the quay every evening."
         ],
         "text": [
-          ""
+          "Pokémonilor mei le place briza mării. Ne plimbăm pe chei în fiecare seară."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetător"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I study the Pokémon that ships bring in from far away. Driftveil is the best place in Unova to do it!"
         ],
         "text": [
-          ""
+          "Studiez Pokémonii pe care vapoarele îi aduc de departe. Driftveil e cel mai bun loc din Unova pentru asta!"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "The lift's call button.\nIt takes residents up to their flats."
       ],
       "text": [
-        ""
+        "Butonul de chemare al liftului.\nÎi duce pe locatari sus, la apartamente."
       ]
     },
     "10424": {
@@ -87,7 +87,7 @@
         "Letterboxes for the flats upstairs."
       ],
       "text": [
-        ""
+        "Cutii poștale pentru apartamentele de la etaj."
       ]
     }
   }
