@@ -1,5 +1,25 @@
 {
   "people": {
+    "8": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
     "4": {
       "name": {
         "en": [
@@ -101,26 +121,6 @@
         ],
         "text": [
           "Înapoi la săpat, presupun."
-        ]
-      }
-    },
-    "8": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
-        ]
-      }
-    },
-    "9": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
         ]
       }
     }

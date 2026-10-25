@@ -1,5 +1,15 @@
 {
   "people": {
+    "4": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
     "1": {
       "name": {
         "en": [
@@ -75,16 +85,6 @@
         ],
         "text": [
           "S-a făcut praf ca gresia."
-        ]
-      }
-    },
-    "4": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
         ]
       }
     },

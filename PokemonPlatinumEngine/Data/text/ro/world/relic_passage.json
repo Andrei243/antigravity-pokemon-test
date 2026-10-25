@@ -1,5 +1,15 @@
 {
   "people": {
+    "5": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          "Bolovan"
+        ]
+      }
+    },
     "2": {
       "name": {
         "en": [
@@ -75,16 +85,6 @@
         ],
         "text": [
           "Notă pentru mine: Antrenorii sunt periculoși."
-        ]
-      }
-    },
-    "5": {
-      "name": {
-        "en": [
-          "Boulder"
-        ],
-        "text": [
-          "Bolovan"
         ]
       }
     }
