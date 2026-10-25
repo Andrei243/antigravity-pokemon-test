@@ -51,11 +51,22 @@ partial class Harness
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     if (fight.EnemyPokemon is { } met) met.CurrentHP = Math.Min(met.CurrentHP, 1);
+                    // (a double battle's second foe is no member of the first trainer's team, and its move wants a target:
+                    // the sewers' tag battle beside Hugh went round its Leers for half an hour)
+                    if (fight.IsDouble)
+                        foreach (var foe in fight.EnemySlots.Select(s => s.Pokemon))
+                            if (foe != null) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    // (a foe's berry restores what was taken and its blow can still fell the lead: Burgh's Leavanny ate its
+                    // Sitrus Berry coming in and knocked Snivy out with one Struggle Bug. The foes are left nothing to hold
+                    // and only Struggle, as the Hoenn mode leaves a Leader's)
+                    foreach (var foe in (fight.EnemyParty?.Members ?? new List<Pokemon>()).Concat(fight.EnemySlots.Select(s => s.Pokemon)))
+                        if (foe != null) { foe.HeldItem = null; foreach (var move in foe.Moves) move.CurrentPP = 0; }
                     var lead = fight.PlayerPokemon;
                     if (lead != null) lead.CurrentHP = lead.MaxHP;
                     fight.SelectMainMenuOption(0);
                     int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
                     fight.SelectMove(hurts);
+                    if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 }
                 else Confirm(fight);
                 Skip(0.5);
@@ -388,7 +399,7 @@ partial class Harness
         Castelia("the Insect Badge");
 
         // ---- the plaza: Colress
-        At("CasteliaCity_Plaza", 16, 14, Direction.Up); Frames(30); Shot("us74_the_plaza");
+        At("CasteliaCity_Plaza", 16, 18, Direction.Up); Frames(30); Shot("us74_the_plaza");
         StepOnto("CasteliaCity_Plaza", 15, 3, Direction.Up);
         ReadTo("might I have a look at your Pokémon?"); Frames(10); Shot("us75_colress");
         ReadTo("my name is Colress"); Frames(10); Shot("us76_colress_names_himself");
