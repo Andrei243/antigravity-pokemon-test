@@ -186,7 +186,8 @@ public class HoennTests
     [Fact]
     public void EveryWayIntoARoomLandsOnOpenGroundAndLeadsBack()
     {
-        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors))
+        // (a secret base's room is come into by Secret Power at a spot, not by a warp: SecretBaseTests holds its door)
+        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors && !SecretBaseLayouts.IsBaseMap(m.Name)))
             foreach (var warp in room.Warps.Where(w => w.TargetMap == "Hoenn"))
             {
                 // (someone of the story may stand on it for a while: Team Aqua queues at the Oceanic Museum's door until

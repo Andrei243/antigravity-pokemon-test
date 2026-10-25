@@ -1,0 +1,72 @@
+# The Plasma Frigate's deck (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on
+# Black 2's beats (the decompilation's res/field/scripts/plasma_frigate.s, read for the order alone).
+#
+# The first boarding is one scene, played as the player comes aboard from the gangway at the Pokémon World
+# Tournament's pier while VAR_UNOVA_PWT is 1 (pwt.txt): Hugh (0) and Cheren (1) are on deck, two grunts (15, 14) stand in
+# the way and battle the player in turn (Black 2's TRAINER_TEAM_PLASMA_GRUNT_5 and _6), Zinzolin (16) comes down from
+# the bow, and the Shadow Triad (17 to 19) put all three back ashore on the pier, where the grounds' arrival goes on.
+# Black 2 also has Cheren and the player clear a second band of grunts before Zinzolin comes; ours leaves them standing.
+# Come aboard at any other time, the grunts at the rail see the player straight back down the gangway.
+
+
+script OnEnter
+  call UnovaCatchUp
+  if var VAR_UNOVA_PWT == 1 goto Boarding
+  speaker "Grunt"
+  say "Hey! This is a private ship! Off you go, back down the gangway!"
+  warp "Unova" 198 494 left
+  end
+label Boarding
+  scene "Aboard the Plasma Frigate"
+  face 0 player
+  speaker "{rival}"
+  say "{player}! You came! This ship's freezing... why is it so cold up on deck?"
+  speaker "Cheren"
+  say "It's dressed up as a cargo ship, but look at the crew. This is Team Plasma's ship, all right."
+  face 15 player
+  speaker "Grunt"
+  say "Team Plasma? Correct answer! And there are a lot more of us here than there are of you!"
+  speaker "{rival}"
+  say "Then just tell us where you're keeping the Pokémon you've stolen! My sister's Purrloin first!"
+  speaker "Grunt"
+  say "Ha! Beat us first. And you, the quiet one, you're up first!"
+  battle 15 as "unova_team_plasma_grunt_5"
+  speaker "Grunt"
+  say "Next! Somebody, next!"
+  face 14 player
+  speaker "Grunt"
+  say "My turn! You won't get past me so easy!"
+  battle 14 as "unova_team_plasma_grunt_6"
+  speaker "Grunt"
+  say "What kind of Trainer is this?! Fall back, fall back!"
+  setflag FLAG_UNOVA_HIDE_FRIGATE_GRUNTS
+  hide 14
+  hide 15
+  speaker "Cheren"
+  say "Good work. The way to the bow is open. Let's see who's giving the orders on this ship."
+  clearflag FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  show 16
+  walk 16 down 4
+  speaker "Zinzolin"
+  say "Oh, my. The Gym Leader and a pair of children. Once again, we are made to feel unwelcome."
+  say "No matter. This ship will soon cover all of Unova in ice. The Shadow Triad will see you off."
+  clearflag FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  show 17
+  show 18
+  show 19
+  speaker "Shadow Triad"
+  say "By order of Lord Ghetsis, you leave this ship. Now."
+  fade out 0.6
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  setflag FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  setflag FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  setflag FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  clearflag FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  clearflag FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  speaker none
+  text "There is a rush of wind, and the deck is gone from under your feet..."
+  setvar VAR_UNOVA_PWT 2
+  endscene
+  warp "Unova" 197 490 up
+  fade in
+  end

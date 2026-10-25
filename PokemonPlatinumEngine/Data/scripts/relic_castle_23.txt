@@ -1,0 +1,25 @@
+# The Relic Castle's deepest room (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our
+# own, on Black 2's beats (the decompilation's res/field/scripts/relic_castle_23.s, read for the order alone).
+#
+# Volcarona (0, FLAG_UNOVA_HIDE_VOLCARONA, Black 2's 0x03a0) rests at the head of the room and battles at level 35
+# whoever comes up to it. Beaten or caught it is gone for good; run from, it stays (Black 2's level 65 after the Hall
+# of Fame is the post-game's, plan 22 · U10).
+
+
+script Volcarona
+  scene "Volcarona in the Relic Castle"
+  cry "Volcarona"
+  speaker none
+  text "Vraaahh! The air shimmers with heat as Volcarona spreads its burning wings!"
+  wildbattle "Volcarona" 35
+  if result == 2 goto Fled
+  setflag FLAG_UNOVA_HIDE_VOLCARONA
+  hide self
+  if result == 3 goto Caught
+  text "Volcarona fluttered off into the depths of the ruins."
+label Caught
+  endscene
+  end
+label Fled
+  endscene
+  end

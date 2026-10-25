@@ -1,0 +1,29 @@
+{
+  // The Relic Passage's middle hall (plan 22 · U6, part c): Black 2's long cave under the sea between Castelia and
+  // Driftveil, our words. Its north-east tunnel climbs into the Relic Castle's buried halls, its north-west on to the
+  // west hall and the Pokémon World Tournament's grounds; two boulders (8, 9) move with Strength
+  "area": "relic_passage_2",
+  "bgmTrack": "unova/relic_passage",
+  "holes": [
+    { "x": 70, "z": 14, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_MIDDLE" },
+    { "x": 88, "z": 6, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH" }
+  ],
+  "pits": [
+    { "x": 70, "z": 14, "script": "FillTheMiddleHole" },
+    { "x": 71, "z": 14, "script": "FillTheMiddleHole" },
+    { "x": 70, "z": 15, "script": "FillTheMiddleHole" },
+    { "x": 71, "z": 15, "script": "FillTheMiddleHole" },
+    { "x": 88, "z": 6, "script": "FillTheNorthHole" },
+    { "x": 89, "z": 6, "script": "FillTheNorthHole" },
+    { "x": 88, "z": 7, "script": "FillTheNorthHole" },
+    { "x": 89, "z": 7, "script": "FillTheNorthHole" }
+  ],
+  "people": {
+    "8": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_MIDDLE" },
+    "9": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH" },
+    "4": { "name": "Annie", "trainer": { "dialogueBefore": "I've walked under the whole sea! Well, half of it. Battle me and I'll do the other half!", "dialogueAfter": "Maybe I'll take a boat next time." } },
+    "5": { "name": "Ena", "trainer": { "dialogueBefore": "Something old sleeps beyond this tunnel. It told me you were coming.", "dialogueAfter": "It didn't tell me I'd lose." } },
+    "6": { "name": "Tully", "trainer": { "dialogueBefore": "The echoes in here make my Pokémon's cries twice as scary! Hear this!", "dialogueAfter": "The echo of my defeat is louder." } },
+    "7": { "name": "Tobias", "trainer": { "dialogueBefore": "I helped dig this passage with my own two hands! And my Pokémon's four!", "dialogueAfter": "Back to digging, I suppose." } }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "people": {
+    "2": {
+      "name": {
+        "en": [
+          "Stu & Art"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're Backers! Two voices, two Pokémon, one big cheer!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hip hip... hooray for you, we suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Stu & Art"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "We're Backers! Two voices, two Pokémon, one big cheer!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hip hip... hooray for you, we suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Krissa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "This road is perfect for a sprint! Race you, then battle you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "I pedalled too hard and battled too soft."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Hector"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Out of my lane! Unless you want a battle, that is!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Flat tyre. Flat battle. Flat me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Blossom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "The forest north of here is full of rumours. Let me tell you one after our battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "The rumour is... that I lost. It's true!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Ivan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I walked all the way from the desert! My legs are tired but my Pokémon aren't!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Now we're all tired."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Hank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I'm a Depot Agent of the Battle Subway, off duty! Fancy a practice run?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Back to the depot for me. You'd do well on the Subway!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "1": {
+      "en": [
+        "Route 16\nNimbasa City — Marvelous Bridge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "2": {
+      "en": [
+        "Marvelous Bridge\nThe great bridge to the east"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

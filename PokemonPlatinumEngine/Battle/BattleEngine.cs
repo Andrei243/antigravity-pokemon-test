@@ -248,6 +248,7 @@ public partial class BattleEngine
             Difficulty = setup.Difficulty,
             RunLevelCap = setup.RunLevelCap,
             Nuzlocke = setup.Nuzlocke,
+            Restrictions = setup.Restrictions,
             // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
             // has what the recorded one had (plan 08 · P11)
             KeyStone = watched?.KeyStone ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
@@ -300,7 +301,7 @@ public partial class BattleEngine
     public bool IsFrontier => core.Frontier;
 
     /// <summary>Nothing may be used from the bag (plan 14 · B14, a Master Trainer's battle): BAG is greyed and says why.</summary>
-    public bool BagClosed => core.NoBattleItems;
+    public bool BagClosed => core.NoBattleItems || core.BagShutByTheRun;
 
     /// <summary>
     /// The one ball this battle throws in place of the bag (plan 15 · E5: the Bug-Catching Contest's Sport Ball, counted

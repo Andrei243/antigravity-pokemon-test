@@ -211,6 +211,14 @@ public class SaveData
     /// </summary>
     public Models.Underground.UndergroundState? Underground { get; set; }
 
+    /// <summary>The player's secret base of Hoenn's (plan 21 · H10): its spot and what stands in it. Null with none, and in older saves.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Models.SecretBaseSave? SecretBase { get; set; }
+
+    /// <summary>The decoration PC of Hoenn's secret bases (plan 21 · H10): every decoration had. Null with none, and in older saves.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public List<Models.StoredDecoration>? Decorations { get; set; }
+
     /// <summary>
     /// Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b): the Coin Case's coins, the six Pokémon that
     /// wait in Pal Park, and four of the original's game records. Null in saves from before them.
@@ -271,6 +279,13 @@ public class SaveData
     /// </summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? BeganIn { get; set; }
+
+    /// <summary>
+    /// The slot an autosave belongs to (plan 12 · Q3): written only into <c>autosave.json</c> (<see cref="AutosaveFile"/>), so
+    /// no slot's save and no save of the corpus has it, and a save without it is no autosave.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public int? AutosaveSlot { get; set; }
 
     /// <summary>The region the game began in: <see cref="BeganIn"/>, or for a save from before it, the region of the map it stands on.</summary>
     public string BeganInOrHere() =>

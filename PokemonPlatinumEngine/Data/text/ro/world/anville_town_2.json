@@ -1,0 +1,59 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Why do I love trains? Every part has a job, and they all work together to carry you so far, so gently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Bouffalant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bouffalant: Bwuff!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Nursery Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ride a train for an hour and you see forests, rivers and towns go by. It's like a picture book!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

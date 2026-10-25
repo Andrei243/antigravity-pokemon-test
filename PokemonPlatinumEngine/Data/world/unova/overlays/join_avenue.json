@@ -2,11 +2,28 @@
   // Join Avenue (plan 22 · U6): Black 2's street of empty shopfronts between Route 4 and Nimbasa City, our words. Black
   // 2's owner asks the first visitor to manage the avenue and fill it with shops; the avenue's shops and their running
   // are left for later (plan 22 · U6, part b), so its owner, his two assistants and the two shop girls only talk, and
-  // the trigger at the avenue's south end (Black 2's 0x410b) has no script
+  // the trigger at the avenue's south end (Black 2's 0x410b) has no script. Since plan 22 · U6, part c three shops of
+  // ours are open in the street's bays, each a shopkeeper behind a counter whose end reads as the shop's sign
+  // (join_avenue.txt): the market (market, 6, 28), the flower shop (florist, 24, 21) and the café (waitress, 6, 42)
   "area": "join_avenue",
   "bgmTrack": "unova/nimbasa",
   // a covered street of shopfronts on its paving (plan 22, wave 48), not a house's room
   "interior": "Street",
+  "props": [
+    { "type": "Counter", "x": 7, "y": 27, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 23, "y": 20, "width": 1, "depth": 3 },
+    { "type": "Counter", "x": 7, "y": 41, "width": 1, "depth": 3 }
+  ],
+  "npcs": [
+    { "id": "market", "name": "Shopkeeper", "npcType": "Clerk", "x": 6, "y": 28, "facing": "Right", "script": "Market" },
+    { "id": "florist", "name": "Florist", "npcType": "Lady", "x": 24, "y": 21, "facing": "Left", "script": "Flowers" },
+    { "id": "waitress", "name": "Waitress", "npcType": "waitress", "x": 6, "y": 42, "facing": "Right", "script": "Cafe" }
+  ],
+  "readAt": [
+    { "x": 7, "z": 27, "script": "MarketSign" },
+    { "x": 23, "z": 20, "script": "FlowersSign" },
+    { "x": 7, "z": 41, "script": "CafeSign" }
+  ],
   "people": {
     "0": {
       "name": "Owner",

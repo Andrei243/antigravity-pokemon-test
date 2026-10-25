@@ -110,6 +110,8 @@
     { "x": 220, "z": 254, "type": 0, "script": "Route110_EventScript_SlateportCitySign" },
     { "x": 207, "z": 239, "type": 0, "script": "Route110_EventScript_Route103Sign" },
     { "x": 203, "z": 177, "type": 0, "script": "Route110_EventScript_MauvilleCitySign" },
+    { "x": 216, "z": 185, "type": 3, "script": "SECRET_BASE_TREE3_1" },
+    { "x": 217, "z": 185, "type": 3, "script": "SECRET_BASE_TREE4_1" },
     { "x": 233, "z": 199, "type": 0, "script": "Route110_EventScript_TrainerTipsPrlzSleep" },
     { "x": 237, "z": 230, "type": 0, "script": "Route110_EventScript_TrainerTipsRegisterItems" },
     { "x": 208, "z": 227, "type": 0, "script": "Route110_EventScript_TrickHouseSign" },

@@ -165,6 +165,24 @@ public static partial class WorldModels
         Ground("elevator01", "a lift's doors in a house of flats (the room's walls are its own)"),
         Ground("warp02", "the turnstiles to a stadium's field (the room's floor is its own)"),
         Ground("c04_object01", "a piece of the old roller coaster's track (the room's walls are its own)"),
+
+        // ---------------------------------------------------------------- Route 16, Anville Town (t03_, tt_) and the Relic Castle (d4)
+        // Plan 22 · U6, part c: the gate house at Route 16's east end toward the Marvelous Bridge, Anville's way of
+        // building (Architecture.Railyard), its cars and turntable, the Lostlorn Forest's stumps, the Relic Passage's
+        // rocks and the Relic Castle's stairs, sand hills, sand pits and heaps of treasure
+        Built("h5_gate", BuildingKind.Gate, "the gate house at Route 16's east end, toward the Marvelous Bridge"),
+        Built("tt_house01", BuildingKind.House, "a house of Anville Town", Architecture.Railyard),
+        Thing("tt_train01", PropType.Tram, "an old train car standing on Anville's turntable"),
+        Thing("tt_train11", PropType.Tram, "the train from Nimbasa standing at Anville's station"),
+        Ground("tt_table01", "the rim of Anville's turntable (the ground draws it)"),
+        Thing("stump", PropType.Boulder, "a tree stump in the Lostlorn Forest"),
+        Thing("drock02", PropType.Boulder, "a large rock in the Relic Passage"),
+        Ground("d4stair_u01", "stairs up in the Relic Castle: the warp's tile is the way"),
+        Ground("d4stair_d01", "stairs down in the Relic Castle: the warp's tile is the way"),
+        Ground("d4shill01", "a hill of sand in the Relic Castle (the ground draws it)"),
+        Ground("quicksand", "a sand pit in the Relic Castle's floor, which drops whoever steps on it to the floor below"),
+        Thing("d4treasure01", PropType.Crates, "a heap of the Relic Castle's old treasure"),
+        Thing("d4treasure02", PropType.Crates, "a heap of the Relic Castle's old treasure"),
     };
 
     private static readonly Dictionary<string, WorldModel> UnovaByName = UnovaTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

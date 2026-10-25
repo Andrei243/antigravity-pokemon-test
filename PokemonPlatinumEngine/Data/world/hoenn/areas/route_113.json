@@ -58,6 +58,7 @@
     { "x": 112, "z": 9, "type": 0, "script": "Route113_EventScript_RouteSignFallarbor" },
     { "x": 158, "z": 4, "type": 0, "script": "Route113_EventScript_TrainerTipsRegisterKeyItems" },
     { "x": 131, "z": 5, "type": 0, "script": "Route113_EventScript_GlassWorkshopSign" },
+    { "x": 149, "z": 8, "type": 3, "script": "SECRET_BASE_RED_CAVE1_3" },
     { "x": 166, "z": 3, "type": 2, "script": "", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_ROUTE_113_ETHER" },
     { "x": 122, "z": 5, "type": 2, "script": "", "item": "TM32", "flag": "FLAG_HIDDEN_ITEM_ROUTE_113_TM_DOUBLE_TEAM" },
     { "x": 173, "z": 3, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_ROUTE_113_NUGGET" }

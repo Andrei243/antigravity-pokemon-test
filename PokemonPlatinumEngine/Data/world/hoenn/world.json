@@ -319,7 +319,34 @@
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; Route 124's floor opened first, 126's and 127's with them in
     // plan 21 · H8, and 128's, with the Seafloor Cavern's way in, in its part b
-    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
+    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" },
+    // Plan 21 · H10: the secret bases' twenty-four rooms, four of each kind of spot (a red, brown, blue or yellow cave's
+    // indent, a tree, a shrub), each a room of its own reached only by Secret Power at a spot that names it
+    // (Models/SecretBase.cs: SecretBaseLayouts); its door leads back out to whichever spot the player's base is at
+    { "name": "SecretBase_RedCave1", "matrix": 295, "area": "secret_base_red_cave_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BrownCave1", "matrix": 296, "area": "secret_base_brown_cave_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BlueCave1", "matrix": 297, "area": "secret_base_blue_cave_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_YellowCave1", "matrix": 298, "area": "secret_base_yellow_cave_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Tree1", "matrix": 299, "area": "secret_base_tree_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Shrub1", "matrix": 300, "area": "secret_base_shrub_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_RedCave2", "matrix": 301, "area": "secret_base_red_cave_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BrownCave2", "matrix": 302, "area": "secret_base_brown_cave_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BlueCave2", "matrix": 303, "area": "secret_base_blue_cave_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_YellowCave2", "matrix": 304, "area": "secret_base_yellow_cave_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Tree2", "matrix": 305, "area": "secret_base_tree_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Shrub2", "matrix": 306, "area": "secret_base_shrub_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_RedCave3", "matrix": 307, "area": "secret_base_red_cave_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BrownCave3", "matrix": 308, "area": "secret_base_brown_cave_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BlueCave3", "matrix": 309, "area": "secret_base_blue_cave_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_YellowCave3", "matrix": 310, "area": "secret_base_yellow_cave_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Tree3", "matrix": 311, "area": "secret_base_tree_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Shrub3", "matrix": 312, "area": "secret_base_shrub_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_RedCave4", "matrix": 313, "area": "secret_base_red_cave_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BrownCave4", "matrix": 314, "area": "secret_base_brown_cave_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_BlueCave4", "matrix": 315, "area": "secret_base_blue_cave_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_YellowCave4", "matrix": 316, "area": "secret_base_yellow_cave_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Tree4", "matrix": 317, "area": "secret_base_tree_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "SecretBase_Shrub4", "matrix": 318, "area": "secret_base_shrub_4", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -442,6 +469,12 @@
     "ever_grande_city_glacias_room", "ever_grande_city_hall_3", "ever_grande_city_drakes_room", "ever_grande_city_hall_4",
     "ever_grande_city_champions_room", "ever_grande_city_hall_of_fame",
     // Plan 21 · H9, part b: Lilycove City's harbour, where the ship on to Unova sails from once Hoenn's Hall of Fame is entered
-    "lilycove_city_harbor"
+    "lilycove_city_harbor",
+    // Plan 21 · H10: the secret bases' rooms
+    "secret_base_red_cave_1", "secret_base_brown_cave_1", "secret_base_blue_cave_1", "secret_base_yellow_cave_1",
+    "secret_base_tree_1", "secret_base_shrub_1", "secret_base_red_cave_2", "secret_base_brown_cave_2", "secret_base_blue_cave_2",
+    "secret_base_yellow_cave_2", "secret_base_tree_2", "secret_base_shrub_2", "secret_base_red_cave_3", "secret_base_brown_cave_3",
+    "secret_base_blue_cave_3", "secret_base_yellow_cave_3", "secret_base_tree_3", "secret_base_shrub_3", "secret_base_red_cave_4",
+    "secret_base_brown_cave_4", "secret_base_blue_cave_4", "secret_base_yellow_cave_4", "secret_base_tree_4", "secret_base_shrub_4"
   ]
 }

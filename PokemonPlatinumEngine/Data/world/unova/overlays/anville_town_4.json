@@ -1,0 +1,9 @@
+{
+  // A house of Anville Town (plan 22 · U6, part c): Black 2's room, our words. A Depot Agent of the Battle Subway (0)
+  // hands on what passengers leave behind (anville_town_4.txt): a Rare Candy the first time, then one thing a day
+  "area": "anville_town_4",
+  "bgmTrack": "unova/anville",
+  "people": {
+    "0": { "name": "Depot Agent", "npcType": "worker", "script": "LostAndFound" }
+  }
+}

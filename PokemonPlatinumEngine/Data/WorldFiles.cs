@@ -923,6 +923,13 @@ public sealed class WorldOverlayFile
     public List<OverlayTileScript>? Pits { get; set; }
 
     /// <summary>
+    /// Holes a pushed boulder fills (plan 22 · U6, part c: Black 2's in the Relic Passage, the behaviour StrengthHole): a
+    /// wall until the flag that says the hole is filled, which the pit's script on the hole's own tiles sets, and open
+    /// ground from then on (<see cref="Overworld.Map.FilledHoles"/>).
+    /// </summary>
+    public List<OverlayHole>? Holes { get; set; }
+
+    /// <summary>
     /// Stretches of the area with weather or music of their own (plan 21 · H4), in tiles of the area's matrix: where the
     /// original sets the weather by script, by the player's row or column (Emerald's <c>setweather</c> in Route 111's desert
     /// and Route 113's ash), and changes the song with it. The first zone a tile is in wins; outside every zone the area's
@@ -1075,6 +1082,17 @@ public sealed class OverlayTileScript
     public string Script { get; set; } = "";
 }
 
+/// <summary>A hole of an imported area that a pushed boulder fills, and the flag that says it is filled (<see cref="WorldOverlayFile.Holes"/>).</summary>
+[JsonConverter(typeof(OneLine<OverlayHole>))]
+public sealed class OverlayHole
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public int Width { get; set; } = 1;
+    public int Depth { get; set; } = 1;
+    public string FilledBy { get; set; } = "";
+}
+
 /// <summary>Who one of the original's people is in our game. They stand where the area file puts them.</summary>
 /// <summary>
 /// A trainer of the imported world (plan 08 · P7): what they say before and after the battle, in our own words. Their
@@ -1224,6 +1242,12 @@ public sealed class AreaSign
 
     /// <summary>The <see cref="Type"/> of a sign that is read: its script says what it says (a GBA game's signposts, plan 19 · K1).</summary>
     public const int Read = 0;
+
+    /// <summary>
+    /// The <see cref="Type"/> of a secret base's spot (a GBA game's, plan 21 · H10): a tree, a shrub or an indent in a
+    /// rock wall that Secret Power opens; its <see cref="Script"/> is the base's id (<c>SECRET_BASE_TREE1_1</c>).
+    /// </summary>
+    public const int SecretBase = 3;
 
     public int X { get; set; }
     public int Z { get; set; }

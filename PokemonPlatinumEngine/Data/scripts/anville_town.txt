@@ -1,0 +1,52 @@
+# Anville Town (plan 22 · U6, part c). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/anville_town.s, read for the order alone).
+#
+# Nobody walks to Anville: the Gear Station's train brings the player (GearStation.txt), and the station agent (2) takes
+# them back. On a Saturday or a Sunday the train fans and the collectors come (FLAG_UNOVA_HIDE_ANVILLE_WEEKEND, which
+# the arrival clears at the weekend and sets the rest of the week, as Black 2's 0x02a8 and 0x02a9 are).
+
+
+script OnEnter
+  call UnovaCatchUp
+  setflag FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  if weekday saturday goto Weekend
+  if weekday sunday goto Weekend
+  end
+label Weekend
+  clearflag FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  end
+
+
+# The station agent by the train (2)
+script TrainHome
+  face self player
+  speaker "Station Agent"
+  say "The train back to Nimbasa City leaves shortly."
+  ask "Will you board?"
+  if no goto Stay
+  say "Then please take a seat and wait for the doors to close."
+  scene "The train back to Nimbasa City"
+  fade out 0.8
+  music stop
+  sound "crossing_engine"
+  text "The train pulls away from the turntable and runs west through the woods, back toward the lights of Nimbasa..."
+  endscene
+  warp "GearStation" 17 4 down
+  fade in
+  end
+label Stay
+  say "It's a quiet town. Stay as long as you like, and take a good look at the cars."
+  end
+
+
+# The station agent by the turntable (7)
+script RestingCars
+  face self player
+  speaker "Station Agent"
+  if weekday saturday goto Busy
+  if weekday sunday goto Busy
+  say "The cars here are taking a rest. Come at the weekend, when the whole town turns out to see them."
+  end
+label Busy
+  say "When the yard's full of people, I swear the trains look happier!"
+  end

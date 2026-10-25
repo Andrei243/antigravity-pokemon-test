@@ -890,6 +890,16 @@ public static class ScriptParser
             // Shoal Cave's tide (plan 21 · H8, part d): FLAG_SYS_SHOAL_TIDE by the hour, when come in from outdoors
             case "tide":
                 return new Instruction { Op = Op.Tide, Line = line };
+            // A secret base (plan 21 · H10): made at the spot ahead and gone into, asked about, decorated, packed up, and
+            // the decoration PC filled
+            case "openbase":
+            {
+                string what = r.More ? r.OneOf("check", "kind", "enter", "pc", "packup", "give", "buy", "room") : "open";
+                if (what is not ("give" or "buy" or "room")) return new Instruction { Op = Op.OpenBase, Line = line, Name = what };
+                string decoration = r.Text("a decoration's name");
+                if (Data.DecorationDatabase.Get(decoration) == null) throw r.Error($"there is no decoration '{decoration}'");
+                return new Instruction { Op = Op.OpenBase, Line = line, Name = what, Other = decoration };
+            }
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
@@ -1146,6 +1156,13 @@ public static class ScriptParser
                 return new Condition { Query = Query.NationalDex, Negated = negated };
             case "objective":
                 return new Condition { Query = Query.Objective, Negated = negated };
+            // A rule of the run chosen at NEW GAME (plan 13 · V5)
+            case "rule":
+            {
+                string rule = r.Text("a rule of the run").ToLowerInvariant();
+                if (!Models.RunRules.RuleNames.Contains(rule)) throw r.Error($"'{rule}' is no rule of a run ({string.Join(", ", Models.RunRules.RuleNames)})");
+                return new Condition { Query = Query.Rule, Negated = negated, Name = rule };
+            }
             default:
                 throw r.Error($"'{word}' is nothing an 'if' can ask");
         }

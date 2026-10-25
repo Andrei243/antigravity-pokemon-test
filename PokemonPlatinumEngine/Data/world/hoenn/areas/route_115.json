@@ -88,8 +88,19 @@
     { "id": "item_ball_6", "looks": "item_ball", "movement": "look_around", "x": 12, "z": 56, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_115_HEAL_POWDER", "item": "Heal Powder", "script": "Route115_EventScript_ItemHealPowder" }
   ],
   "signs": [
+    { "x": 32, "z": 48, "type": 3, "script": "SECRET_BASE_BROWN_CAVE4_2" },
+    { "x": 21, "z": 60, "type": 3, "script": "SECRET_BASE_BROWN_CAVE3_2" },
     { "x": 16, "z": 106, "type": 0, "script": "Route115_EventScript_RouteSignRustboro" },
     { "x": 25, "z": 80, "type": 0, "script": "Route115_EventScript_MeteorFallsSign" },
+    { "x": 8, "z": 72, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE2_3" },
+    { "x": 32, "z": 81, "type": 3, "script": "SECRET_BASE_BROWN_CAVE1_2" },
+    { "x": 26, "z": 57, "type": 3, "script": "SECRET_BASE_BROWN_CAVE2_2" },
+    { "x": 23, "z": 50, "type": 3, "script": "SECRET_BASE_BROWN_CAVE1_3" },
+    { "x": 32, "z": 88, "type": 3, "script": "SECRET_BASE_BROWN_CAVE2_3" },
+    { "x": 7, "z": 62, "type": 3, "script": "SECRET_BASE_TREE2_4" },
+    { "x": 8, "z": 62, "type": 3, "script": "SECRET_BASE_TREE3_3" },
+    { "x": 25, "z": 66, "type": 3, "script": "SECRET_BASE_BROWN_CAVE3_3" },
+    { "x": 20, "z": 95, "type": 3, "script": "SECRET_BASE_RED_CAVE3_1" },
     { "x": 15, "z": 91, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE" }
   ],
   "triggers": []

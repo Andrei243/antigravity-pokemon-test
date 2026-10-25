@@ -377,6 +377,8 @@ public sealed partial class ScriptRunner
         Op.Athlon => i.Name == "open",
         // The tide is only a flag (plan 21 · H8, part d)
         Op.Tide => false,
+        // A secret base: what is asked and what goes into the decoration PC needs no screen; going in, decorating, packing up do
+        Op.OpenBase => i.Name is not ("check" or "kind" or "give" or "buy" or "room"),
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -561,6 +563,7 @@ public sealed partial class ScriptRunner
                 if (StoryState.FindBadge(host.Region, i.Name) < 0) throw Wrong(i, $"{host.Region} has no badge '{i.Name}'");
                 story.GiveBadge(host.Region, i.Name);
                 host.Fanfare(MusicRole.FanfareBadge);
+                host.Milestone(AutosaveMoment.Badge);
                 break;
             case Op.GiveMoney:
                 host.Money += i.Number;
@@ -571,6 +574,7 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Heal:
                 host.Party.HealAll();
+                host.Milestone(AutosaveMoment.Heal);
                 break;
             case Op.ClearGreetings:
                 host.Story.ClearGreetings();
@@ -1112,6 +1116,11 @@ public sealed partial class ScriptRunner
             // The Underground (plan 06 · R16a)
             case Op.Underground:
                 Underground(i);
+                break;
+
+            // A secret base (plan 21 · H10)
+            case Op.OpenBase:
+                OpenBase(i);
                 break;
 
             // The Pokédex is told of a Pokémon the story shows (plan 02 · S12)
@@ -2030,6 +2039,8 @@ public sealed partial class ScriptRunner
             // GetNationalDexEnabled (plan 02 · S14)
             Query.NationalDex => host.NationalDex,
             Query.Objective => host.ShowsObjectives && Objectives.Current(host.Story, host.Region) != null,
+            // The ways to play (plan 13 · V5)
+            Query.Rule => host.Rules.Has(c.Name),
             _ => throw Wrong(at, $"the runner can't answer '{c.Query}'")
         };
         return yes != c.Negated;

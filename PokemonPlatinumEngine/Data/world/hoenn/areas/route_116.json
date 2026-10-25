@@ -71,8 +71,12 @@
     { "x": 45, "z": 132, "type": 0, "script": "Route116_EventScript_RouteSignRustboro" },
     { "x": 88, "z": 131, "type": 0, "script": "Route116_EventScript_RusturfTunnelSign" },
     { "x": 80, "z": 131, "type": 0, "script": "Route116_EventScript_TunnelersRestHouseSign" },
+    { "x": 111, "z": 126, "type": 3, "script": "SECRET_BASE_BLUE_CAVE1_1" },
+    { "x": 119, "z": 133, "type": 3, "script": "SECRET_BASE_BLUE_CAVE2_1" },
     { "x": 56, "z": 134, "type": 0, "script": "Route116_EventScript_TrainerTipsBToStopEvolution" },
     { "x": 69, "z": 132, "type": 0, "script": "Route116_EventScript_TrainerTipsBagHasPockets" },
+    { "x": 96, "z": 128, "type": 3, "script": "SECRET_BASE_BLUE_CAVE3_2" },
+    { "x": 95, "z": 137, "type": 3, "script": "SECRET_BASE_BLUE_CAVE4_2" },
     { "x": 62, "z": 131, "type": 2, "script": "", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_ROUTE_116_SUPER_POTION" },
     { "x": 110, "z": 135, "type": 2, "script": "", "item": "Black Glasses", "flag": "FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES" }
   ],

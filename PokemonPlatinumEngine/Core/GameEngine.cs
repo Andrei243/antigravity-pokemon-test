@@ -181,8 +181,23 @@ public partial class GameEngine
     private Region NewGameRegionRecord => (NewGameRegion != null ? RegionDatabase.Get(NewGameRegion) : null) ?? RegionDatabase.First;
 
     /// <summary>The strip of the party menu and the Pokétch's app: the granted moves nobody on the team knows (plan 12 · Q18).</summary>
+    /// <summary>
+    /// What the run chosen at NEW GAME asks of the screens (plan 13 · V5): the PC keeps the Monotype and the team's size, and
+    /// the options' Battle Style stays Set under a run that forces it. A run with none of them changes nothing.
+    /// </summary>
+    private void KeepTheRunInView()
+    {
+        var run = flow.Run;
+        flow.PCScreen.PartyLimit = flow.Party.Limit;
+        flow.PCScreen.WhyNotCarry = run.Monotype == null ? null : p => run.MayCarry(p, flow.Story.PlayerStarter) ? null
+            : Text.Of("run.monotype.notThis", ("type", Words.Type(run.Monotype.Value)));
+        // (From the title no game is in force, whatever the last one set)
+        flow.OptionsScreen.StyleLocked = run.SetStyle && flow.OptionsReturn != GameState.Title;
+    }
+
     private void KeepTheHelpersInView()
     {
+        KeepTheRunInView();
         flow.PartyScreen.Helpers = GrantedMoves.Where(m => FieldMoveRules.Knower(flow.Party, m) == null).ToList();
         flow.PartyScreen.PartyTools = PartyToolsOn;
         flow.BagScreen.Sorting = BoxLinkOn;
@@ -315,7 +330,7 @@ public partial class GameEngine
             else Log.Info($"The saves read as: {read}.");
             var notices = new List<TitleNotice?> { TitleNotice.ForCrash(crashed, titleSlots.Select(s => s.Outcome).ToList()), TitleNotice.ForOldSave(old) };
             notices.AddRange(titleSlots.Select(s => TitleNotice.ForSlot(s.Number, s.Outcome)));
-            flow.TitleScreen = TitleScreen.WithSlots(titleSlots.Where(s => s.Taken).Select(s => new TitleSlot(s.Number, s.Save)), notices.ToArray());
+            flow.TitleScreen = TitleScreen.WithSlots(TitleCards(), notices.ToArray());
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
         }
@@ -337,6 +352,7 @@ public partial class GameEngine
         // Before any Pokémon is made: the moves they learn take their values from the rules
         Ruleset.Use(RulesPreset.Modern);
         flow.Party.Clear();
+        flow.Party.Limit = Party.MaxSize;
         flow.Bag.Clear();
         flow.Pokedex.Clear();
         flow.Boxes = new PcBoxes();
@@ -356,6 +372,7 @@ public partial class GameEngine
         flow.FashionCase.Load(null);
         flow.SealCase.Load(null);
         LoadUnderground(null);
+        LoadSecretBase(null, null);
         flow.Pastimes.Clear();
         LoadFrontier(null);
         flow.ContestRecords.Load(null);
@@ -392,6 +409,7 @@ public partial class GameEngine
         flow.DayCare.Clear();
         flow.AdventureStarted = GameClock.Today;
         flow.Run = RunRules.Current = run ?? RunRules.Normal;
+        flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = new RunState();
         flow.NameAfterBattle = null;
         flow.TrainerScore = flow.ScoredBadges = 0;
@@ -411,10 +429,11 @@ public partial class GameEngine
     /// names the slot its card was for, and the game is the one that card showed; a tool names none and takes up
     /// the slot the game is saved in, read from its file as it is now.
     /// </summary>
-    public void ContinueGame(int? slot = null)
+    public void ContinueGame(int? slot = null, bool fromAutosave = false)
     {
         int from = slot ?? flow.SaveSlot;
-        var save = slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
+        var save = fromAutosave && AutosaveFor(from) is { } autosaved ? autosaved
+            : slot != null ? titleSlots.FirstOrDefault(s => s.Number == from)?.Save : SaveSlots.Read(SavePaths.Current, from).Save;
         if (save == null)
         {
             StartNewGame();
@@ -440,6 +459,10 @@ public partial class GameEngine
         // The log is told where a game begins or is taken up, so a report's last lines say what was being played
         Log.Info($"A game is entered at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}, by the {Ruleset.Current.Preset} rules; it is saved in slot {flow.SaveSlot}.");
         gameStarted = true;
+        // Nothing waits to be autosaved from another game, and the first arrival is not held to a gap (plan 12 · Q3)
+        autosaveDue = null;
+        autosaveDisc = -1f;
+        lastAutosaveAt = float.NegativeInfinity;
         flow.TrainersLookOnArrival = true;
         flow.Arrived = true;
         flow.ScriptFade.Clear();
@@ -557,6 +580,7 @@ public partial class GameEngine
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) flow.FashionCase.Add("Glitter Powder");
         flow.SealCase.Load(save.SealCase);
         LoadUnderground(save.Underground);
+        LoadSecretBase(save.SecretBase, save.Decorations);
         flow.Pastimes.Load(save.Pastimes);
         LoadFrontier(save.Frontier);
         flow.ContestRecords.Load(save.ContestRecords);
@@ -565,6 +589,7 @@ public partial class GameEngine
         Roamers.Scatter(flow.Encounters, fieldRandom);
 
         flow.Party.Clear();
+        flow.Party.Limit = Party.MaxSize;
         foreach (var pData in save.Party)
         {
             var p = pData.ToPokemon();
@@ -653,6 +678,7 @@ public partial class GameEngine
         flow.LinkBattles = LinkBattleRecord.From(save.LinkBattles);
         flow.AdventureStarted = save.Started;
         flow.Run = RunRules.Current = save.Run ?? RunRules.Normal;
+        flow.Party.Limit = RunRules.ClampLimit(flow.Run.PartyLimit);
         flow.RunState = save.RunState ?? new RunState();
         flow.NameAfterBattle = null;
         flow.TrainerScore = save.TrainerScore;
@@ -672,6 +698,8 @@ public partial class GameEngine
         else ResumeStroll();
         // A game saved below ground finds the tunnels laid out as it left them (plan 06 · R16a)
         if (IsUnderground) ArriveUnderground();
+        // and one saved in a secret base finds it furnished (plan 21 · H10)
+        if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
     }
 
     /// <summary>The game as it stands, as a save.</summary>
@@ -726,6 +754,8 @@ public partial class GameEngine
             Backdrops = flow.FashionCase.Backdrops.Count > 0 ? flow.FashionCase.BackdropsToSave() : null,
             SealCase = flow.SealCase.Total > 0 ? flow.SealCase.ToSave() : null,
             Underground = flow.Underground,
+            SecretBase = flow.SecretBase,
+            Decorations = flow.Decorations.Count > 0 ? flow.Decorations : null,
             Pastimes = flow.Pastimes.ToSave(),
             Frontier = flow.Frontier,
             ContestRecords = flow.ContestRecords.IsEmpty ? null : flow.ContestRecords,
@@ -779,6 +809,8 @@ public partial class GameEngine
         }
         bool written = SaveSlots.Write(SavePaths.Current, flow.SaveSlot, BuildSave());
         Log.Info(written ? $"The game was saved in slot {flow.SaveSlot} at {PlaceKey()} {flow.Player.GridX},{flow.Player.GridY}." : $"The game couldn't be saved in slot {flow.SaveSlot}.");
+        // A save by hand makes this slot's autosave older than the game beside it: it goes (plan 12 · Q3)
+        if (written) AutosaveFile.ClearFor(SavePaths.Current, flow.SaveSlot);
         return written;
     }
 
@@ -804,6 +836,9 @@ public partial class GameEngine
         if (SaveSlots.Delete(SavePaths.Current, slot))
         {
             titleSlots = titleSlots.Select(s => s.Number == slot ? new SaveSlot(slot, SaveLoad.None, null) : s).ToList();
+            // The slot's autosave goes with it: a game deleted at the player's word is not to come back (plan 12 · Q3)
+            AutosaveFile.ClearFor(SavePaths.Current, slot);
+            if (titleAutosave?.Slot == slot) titleAutosave = null;
             flow.TitleScreen.Forget(slot);
             Log.Info($"Slot {slot} was deleted at the player's word.");
         }
@@ -903,6 +938,7 @@ public partial class GameEngine
         if (gameStarted && flow.State != GameState.WindowClosing) flow.PlayTime += dt;
 
         flow.Toast.Update(dt);
+        KeepTheAutosave(dt);
         flow.StartMenu.Animate(dt);
         closePrompt.Animate(dt);
         flow.ScriptFade.Update(dt);
@@ -977,7 +1013,7 @@ public partial class GameEngine
                 switch (flow.TitleScreen.TakeChoice())
                 {
                     case TitleChoice.Continue:
-                        ContinueGame(flow.TitleScreen.Slot);
+                        ContinueGame(flow.TitleScreen.Slot, flow.TitleScreen.UseAutosave);
                         break;
                     case TitleChoice.NewGame:
                         // The professor's welcome comes first; the game begins when it ends, in the slot the title
@@ -1303,6 +1339,7 @@ public partial class GameEngine
                 if (!flow.HallOfFameScreen.IsActive) flow.State = GameState.Overworld;
                 break;
             case GameState.PCStorage:
+                KeepTheRunInView();
                 flow.PCScreen.Update(flow.Party, flow.Boxes, ShowNotification, dt);
                 if (!flow.PCScreen.IsActive)
                 {
@@ -1313,6 +1350,8 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Options:
+                KeepTheRunInView();
+                flow.OptionsScreen.Animate(dt);
                 if (flow.OptionsScreen.Update(Settings))
                 {
                     ApplySettings(window: true);
@@ -2012,6 +2051,9 @@ public partial class GameEngine
 
         // Below ground: the wall ahead, a trap or a Sphere in the floor, the base's PC and goods (plan 06 · R16a)
         if (TryInteractUnderground(targetX, targetY)) return;
+
+        // A secret base's spot, and in a base its PC (plan 21 · H10)
+        if (TryInteractSecretBase(targetX, targetY)) return;
 
         // A signboard is read, or runs the script it has
         var sign = flow.Map.GetSignboardAt(targetX, targetY);
@@ -2783,6 +2825,7 @@ public partial class GameEngine
         }
 
         flow.Toast.Draw(VirtualWidth);
+        DrawAutosaveDisc();
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
         // and a band is drawn with whose it is and the portraits rendered for it so far

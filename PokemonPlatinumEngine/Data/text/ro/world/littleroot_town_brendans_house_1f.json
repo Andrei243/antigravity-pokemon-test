@@ -16,7 +16,7 @@
           "Dad"
         ],
         "text": [
-          ""
+          "Tata"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Dad: I'm proud of you, {player}."
         ],
         "text": [
-          ""
+          "Tata: Sunt mândru de tine, {player}."
         ]
       }
     },

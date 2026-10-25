@@ -1,0 +1,138 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Galen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I raise Pokémon out here where it's quiet. Let's see how yours were raised!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "You raised them well. Better than mine, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Serenity"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "A Ranger looks after the forest. Right now I'm looking after it from you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "All right, the forest is safe with you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Forrest"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Forrest of the forest! Yes, I've heard every joke. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "The trees are laughing at me now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Murphy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I've chased bugs through every wood in Unova. This one has the strongest. Come and see!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ha! The forest has a new champion of bugs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Traveller"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zoroark": {
+      "name": {
+        "en": [
+          "Zoroark"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "10797": {
+      "en": [
+        "An old trailer, its door rusted shut. Nobody has lived here for a long while."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

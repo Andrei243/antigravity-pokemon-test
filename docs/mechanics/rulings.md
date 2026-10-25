@@ -2860,6 +2860,77 @@ the order of the scenes, who stands where, the battles and the gifts, and nothin
 - **Songs** of our own: `unova/driftveil` (the city, its rooms and the market). Clay's battle is the Gym Leader's, Rood's
   the trainer's.
 
+## Unova's second chapter, part c: Route 16 to the Plasma Frigate (2026-10-25, plan 22 · U6, part c)
+
+Black 2's side roads of the chapter and its first boarding of the Plasma Frigate, in our own words on the beats of the
+decompilation's scripts (`res/field/scripts/route_16.s`, `lostlorn_forest.s`, `gear_station.s`, `anville_town*.s`,
+`relic_passage*.s`, `relic_castle*.s`, `pwt.s`, `plasma_frigate.s`), read for the order of the scenes, who stands where,
+the battles and the gifts, and nothing of their text.
+
+- **Route 16 and the Lostlorn Forest**: Nimbasa's east gate opens onto Route 16, its trainers on the road, its small tree
+  and boulder Black 2's (whose objects are told by the global scripts they run, 10000 a Strength boulder and 10004 a tree
+  that Cut fells, since Black 2 draws them as models of many names); the gate house at its east end leads to the
+  Marvelous Bridge, the post-game's, and stays shut. North of it the Lostlorn Forest: its trainers, and a traveller who
+  asks after Zoroark, gives a TM and turns out to be the Zoroark, which cries and bounds off (Black 2's `0x03c7`). Black
+  2's TM95 (Snarl) is no TM of our data's: the traveller gives TM46, Thief, Dark as Snarl is. Black and White's trailer
+  stands in the forest with no way in, as in Black 2 (its room is left out).
+- **The Gear Station and Anville Town**: Black 2's hall stands on rails, which the reader leaves out, so it is a map of
+  ours (`GearStation`): the desks of the Battle Subway's three lines and of the Anville Town Line along its north wall.
+  The Subway's desks say the cars are in the depot (its lines are plan 22 · U6's next part and U11, on plan 06 · R18's
+  rules); the Anville Town Line's agent takes the player out to Anville Town, a ride of the fade and lines over the dark
+  with the engine's sound, as the voyage to Castelia is, and Anville's station agent brings them back. Anville builds in
+  a way of its own (`Architecture.Railyard`); its cars are trams on their rails and its turntable ground. On a Saturday
+  or a Sunday its train fans and collectors come (Black 2's `0x02a8` and `0x02a9`, ours `FLAG_UNOVA_HIDE_ANVILLE_WEEKEND`,
+  set or cleared by the town's arrival); the collectors' trades of items only talk of themselves, and the girl's lost
+  Pansage (`0x0362`) is left. A Depot Agent in a house hands on lost property: a Rare Candy the first time (`0x00ef`),
+  then one of Black 2's eight items a day, drawn on the game's die.
+- **The Relic Passage**: three halls under the sea from the Castelia Sewers (whose way north opens) to the World
+  Tournament's grounds, with a tunnel up into the Relic Castle's buried halls. Its four holes (the behaviour
+  `StrengthHole`, 2 by 2) are filled by a boulder pushed with Strength: ours are the overlays' `holes`, a wall until the
+  hole's flag (`FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST`, `_MIDDLE`, `_NORTH`, `_WEST`), and `pits` on their tiles whose
+  script sets it as the boulder comes to rest, the boulder gone with the hole it filled. Black 2's boulder fills its
+  2-by-2 hole whole; ours is one tile and fills it as well.
+- **The Relic Castle**: the Desert Resort's ruin opens. Its entrance hall's two sand pits (Black 2's `MapChangeQuicksand`
+  triggers) drop whoever steps in to the floor below, and stairs lead down and up; the buried halls the Relic Passage
+  leads into run on to the deepest room, where Volcarona battles at level 35 (beaten or caught it is gone for good, run
+  from it stays; Black 2's level 65 after the Hall of Fame is the post-game's). Black 2's zones 3 to 15, 18, 20 and 24 to
+  31 of the castle are Black and White's rooms on the Black City matrix with nothing in them, and are not opened.
+- **The Pokémon World Tournament's grounds and the Plasma Frigate**: the gate south of Driftveil opens onto the grounds;
+  the tournament's hall stays shut (plan 14 · B11 and B12 with plan 22's next part), and Black 2's Clay, Hugh, Cheren and
+  Colress at its door are held back for it. Black 2 plays the frigate's scene as the player comes out of the hall after
+  its first tournament; ours plays at the first step onto the tournament's pier once Clay has told of the tournament
+  (`VAR_UNOVA_DRIFTVEIL` 5): Cheren and Hugh come up behind the player, a grunt runs down the pier, Hugh goes after him and
+  Cheren after Hugh, and Colress warns the player off and then bids them go. The gangway at the pier's end is the way
+  aboard only while the frigate is moored (`FLAG_UNOVA_FRIGATE_AT_PIER` to `FLAG_UNOVA_FRIGATE_SAILED`); the frigate is
+  drawn as a ship along the pier (a `Boat` of the overlay's), and stays drawn after it has sailed until it has a model of
+  its own that can come and go. Aboard, one scene: Hugh and Cheren on deck, two grunts battled in turn (Black 2's
+  `TRAINER_TEAM_PLASMA_GRUNT_5` and `_6`), Zinzolin from the bow, and the Shadow Triad putting all three back ashore;
+  Black 2 has Cheren and the player clear a second band of grunts before Zinzolin, which is left. On the pier Hugh rages
+  at the departing ship and Cheren goes on to Route 6. The ship's rooms, its later moorings and its later boardings'
+  people and items are plan 22 · U8's; come aboard at any other time, the deck's grunts see the player back down.
+- **Join Avenue's shops**: Black 2's avenue fills with shops as its visitors come and the player manages it; ours opens
+  three of its bays as shops of our own, each a shopkeeper behind a counter whose end reads as its sign: a market of
+  balls and medicine, a flower shop of mulches and Honey, and a café of drinks and a Casteliacone (`marts.json`'s
+  `join_avenue_market`, `_flowers`, `_cafe`). The visitors, the ranks and the manager's work are plan 22 · U11's.
+- **Flags and variables**, ours where Black 2's are by value: `VAR_UNOVA_PWT` is the grounds' count (Black 2's `0x40c6`
+  from 2: 0 until the pier's scene, 1 aboard, 2 put ashore, 3 done); `FLAG_UNOVA_HIDE_HUGH_PWT`, `_CHEREN_PWT`,
+  `_GRUNT_PWT`, `_COLRESS_PWT`, `_HUGH_PWT_PIER`, `_CHEREN_PWT_PIER`, `_HUGH_FRIGATE` (`0x033e`), `_CHEREN_FRIGATE`
+  (`0x033d`), `_ZINZOLIN_FRIGATE` (`0x0341`), `_TRIAD_FRIGATE` (`0x0342`), `_FRIGATE_GRUNTS`, `_LOSTLORN_TRAVELLER`
+  (`0x03c7`), `_LOSTLORN_ZOROARK`, `_VOLCARONA` (`0x03a0`); `FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE` and
+  `FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM` are the lost property's. `common.UnovaFrigate` hides the chapter's people
+  (`FLAG_UNOVA_FRIGATE_BEGUN`), run by `UnovaDriftveil` and, for a save of part b's, by `UnovaCatchUp`, with no story
+  version raised.
+- **The look of the import**: the frigate's deck plates and Anville's ground lie under their walking surface, as
+  Castelia's streets do, and are judged from what lies under a tile with nothing on or over it (`Bw2Cover`, their chunks
+  alone); the sea round the frigate's hull is water, its deck plates wherever nothing names a tile and its walls
+  (`out70_kabe`) its bulwarks, the Relic Castle's sand
+  (`in10_suna`) sand and its walls of stone (`in10_kabe`) cliffs, not railings, and the Relic Passage's `d0yuka` a cave's
+  floor, not a street's. A Unova way out at the edge of a cave's floor that the cave stood up as rock while
+  it led nowhere is cut down to the floor it is walked into from (the Castelia Sewers' way into the Relic Passage).
+- **Songs** of our own: `unova/lostlorn_forest`, `unova/anville`, `unova/subway` (the Gear Station),
+  `unova/relic_passage`, `unova/relic_castle` and `unova/plasma_frigate`; Route 16 plays Route 4's, as Black 2 plays the
+  same route theme on both, and the grounds Driftveil's.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
@@ -5142,10 +5213,10 @@ What each choice will change, and which session gives it effect (V1 only asks an
 |---|---|---|
 | Difficulty | Easy / Normal / Challenge: trainers' levels, held items, AI, EXP and prices | V2 (done, below) |
 | Level cap, Trainers scale | EXP stops at the next leader's level; trainers follow the lead | V3 (done, below) |
-| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done but Gifts, below) |
-| Monotype, Party size | every Pokémon of a type; fewer than six carried | V4 |
-| No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 |
-| Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 |
+| Nuzlocke, Dupes / Shiny / Gifts clauses | a fainted Pokémon is lost; one catch for each area | V4 (done, below; V5 the Gifts clause) |
+| Monotype, Party size | every Pokémon of a type; fewer than six carried | V5 (done, below) |
+| No items in battle, No Center, No catching, No running, Set | refused by the rules where each is enforced | V5 (done, below) |
+| Shiny odds | 0 is the rules' own (what Normal keeps); 4096, 1024 or 512 otherwise | V5 (done, below) |
 
 Presets (NORMAL, NUZLOCKE: the Nuzlocke with the dupes and shiny clauses; HARDCORE: that plus Challenge, the level cap, no
 items in battle and Set) are records with some fields set; a run that matches none is CUSTOM. The clauses show only while
@@ -5207,8 +5278,8 @@ handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as the
   (`StartWildBattle`, a roamer included) spends it, caught or not: `RunState.AreasMet`. A later one gets
   `NuzlockeTerms(AreaSpent)` and every ball is refused in its battle, a Safari Ball too (`BattleCore.WhyNotItem`, for the
   player's side only). The Bug-Catching Contest's catch is the contest's and counts nothing; a Pokémon a script puts in the
-  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift: the
-  `GiftsCount` clause and the static encounters are left for a later session.
+  way (`wildbattle`: the legendaries, the lakes' guardians) is free to catch and spends nothing, as is a gift; under the
+  Gifts clause (plan 13 · V5) a gift and such a static encounter are the place's one chance (below).
 - **The dupes clause**: a wild Pokémon whose line (`PokemonSpecies.Offspring`, the first of the line, or the species itself)
   has a species in the Pokédex's caught list passes: no ball, and the place stays unspent for the next. **The shiny
   clause**: a shiny is free and spends nothing.
@@ -5230,6 +5301,43 @@ handed no terms, `BattleCore.Nuzlocke` is null, so the golden battles are as the
   comes back, on plan 12 · Q19's keyboard (`GameState.Nickname`, `GameFlow.NameAfterBattle`), which closes back to the field;
   B on an empty name keeps the species' own. Platinum asks after every catch, in the battle: plan 06 still owns that.
 - **Recorded battles** don't keep the terms: they only refuse choices, so the answers a battle was given replay the same.
+
+### Restrictions and shiny odds (plan 13 · V5)
+
+Community rules and our own, all off under Normal (`RunRules.BattleTerms()` is null, `Party.Limit` is 6, `Has` is false, the
+shiny roll reads the rules' own odds), so nothing a Normal game does moved. Each is read at the one place it is enforced.
+
+- **The team's size** is `Party.Limit` (6, or the run's `PartyLimit`, set by the engine as a game begins or loads); every
+  caller already asked `IsFull`, so a catch (`Caught.ToBox`), a gift, a withdrawal and an Egg follow it. The battle's copy of
+  the team carries the limit. A gift into a full team goes to the PC, as ever.
+- **Monotype** (`RunRules.MayCarry`): a Pokémon may be on the team only if it has the type; **the starter's whole line is
+  exempt** (it is given before any type could be chosen for). A ball is refused in a battle against a wild Pokémon without the
+  type (`battle.runMonotype`); a gift of another type goes to the PC with a line saying so (`IScriptHost.GivePokemon`, both
+  hosts) and the PC refuses to withdraw it or put it on the team (`PCScreen.WhyNotCarry`). Left: a trade, a hatched Egg, an
+  evolution into another type: the rule is not enforced on those.
+- **No items in battle** (`RunTerms.NoItems`) is the player's side only (the trainers keep their items), **balls excepted**:
+  a wild battle's BAG still opens for a ball, since a Nuzlocke with no ball is no Nuzlocke, and everything else is refused with
+  the closed bag's line. Where no ball could be thrown either (a trainer's battle, or catching forbidden) BAG is greyed as in a
+  Master Trainer's battle (`BattleCore.BagShutByTheRun`, `BattleEngine.BagClosed`). Not in the Great Marsh, Pal Park, the
+  assistant's lesson or the Bug-Catching Contest, whose bags are their own. (`BattleSetup.NoBattleItems` stays the Master
+  Trainers' rule for both sides.)
+- **No catching** refuses every ball for the player's side in a wild battle (`battle.runNoCatching`), the Safari's included;
+  not Pal Park's or the contest's, which are those places' own. **No running** refuses RUN from a wild Pokémon
+  (`battle.runNoRunning`); a trainer's battle never offered it, and the Great Marsh's RUN is the marsh's own.
+- **No Center**: `common.Nurse` asks `if rule nocenter` and declines in a line of our own, healing nothing. Mom's rest, the
+  Hall of Fame and the other regions' own healers are not asked (left).
+- **Set**: the Battle Style row reads Set and cannot be changed while the run's `SetStyle` is on (`OptionsScreen.StyleLocked`,
+  set from the game, never from the title), and `OffersSwitch` is off in every trainer battle.
+- **Shiny odds**: `RunRules.ShinyOdds(rulesOdds)` is the run's denominator, else the rules' (8,192 Platinum's, 4,096 the
+  modern ones); `Pokemon`'s constructor reads it through `RunRules.Current`. **The Shiny Charm** is a key item of the data (the
+  importer brings it in; nothing in the game gives it yet, plan 06 · R28's): with it in the bag a wild Pokémon met in the field
+  and a gift get two more rolls (`ShinyCharm.Roll`, `Pokemon.RerollForShiny`: a fresh personality drawn, the first that is
+  shiny becomes the Pokémon's, with the nature and gender a lead's ability chose and the ability, form and stats that follow).
+  Nothing is drawn without the charm, so no seeded draw moves.
+- **The Nuzlocke's Gifts clause**: with it on, a gift (`GivePokemon`) spends the place's catch and a Pokémon a script puts in
+  the player's way (`wildbattle`) is the place's one chance, caught or not (`Nuzlocke.Gift`, `MeetStatic`); the starter is a
+  gift of the briefcase, not of `GivePokemon`, and spends nothing. A run that has ended shows RUN OVER in red on the CONTINUE
+  card and the save panel (`ModernUi.SaveMark`).
 
 ## The Dragon's Den after the League, Johto's swarms and the Move Relearner (2026-10-25, plan 20 · J13, part c)
 
@@ -5293,3 +5401,40 @@ regions.
 | The gate's north door | A warp onto the Frontier's road | Shut; the guide before it takes the player along the road |
 | The way back | The same door | The Johto guide on the grounds, a crossing back to Route 40 |
 | When it opens | Not read (no cache) | Johto's Hall of Fame |
+
+## Secret bases (2026-10-25, plan 21 · H10)
+
+Emerald's `src/secret_base.c`, `src/decoration.c`, `src/data/decoration/header.h` and `data/scripts/secret_base.inc`;
+the lines are our own.
+
+- **Kept as Emerald has them**: a spot's id names its room by its tens (`SECRET_BASE_TREE2_1` is 171, room `Tree2`);
+  the four rooms of each of the six kinds and the tile before each PC; one base at a time, a second spot emptying the
+  first with everything in it back in the decoration PC; Secret Power known by a Pokémon of the team, and no Badge for
+  it; sixteen decorations standing at most; the PC's pockets (ten desks, chairs, plants, posters and cushions, thirty
+  ornaments and mats, forty dolls); each decoration's shape, kind, placement and price; where each placement may stand
+  (on floor, a poster only on the wall over the floor, a tall piece's top row before the wall); the sellers' lists and
+  prices (Slateport's market, Lilycove's fifth floor); the Secret Power man on Route 111 and TM43.
+- **Rulings**:
+  - The question whether to make a base at a spot is asked outside it, before Secret Power, where Emerald goes in first
+    and asks there; answered no, nothing is made. Facing the player's own base goes in, with no question.
+  - A spot's kind is told by its id, not by its tile: the reader keeps all of Emerald's spot behaviours as one
+    `SecretBaseSpot`.
+  - The wall a poster hangs on is every blocked tile with floor right under it that is no PC (Emerald's
+    `MB_SECRET_BASE_NORTH_WALL`, which the reader doesn't keep); the floor every open tile but the door's.
+  - Dolls and cushions stand on the floor, one to a tile, as every decoration does here; Emerald stands them on desks
+    and mats too. A big doll stands on one tile, two tiles tall.
+  - Kept clear: the tile inside the door and the tile before the PC (Emerald keeps clear the tile the player stood on
+    when they turned the PC on, which is that one), and the visitor's spot is no matter, as no friend's base comes.
+  - The Solid Board isn't laid over a hole, the breakable door and the mud ball don't break, and the mats make no sound.
+  - The base's door leads back to the tile the player opened it from, facing away from the spot.
+  - REGISTRY says that no friend's base is registered: friends' bases come by record mixing, and nothing is linked.
+  - PACK UP takes everything back into the PC and gives the base up, and the player is put out at its spot (Emerald's
+    `MoveOutOfSecretBase`).
+  - A base's room wears a house's interior until the six kinds have their own looks.
+
+| What | Emerald | Here |
+| --- | --- | --- |
+| Making a base | Secret Power at a spot, in, then "make it here?" | "Use Secret Power?" at the spot, then in |
+| A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
+| Dolls and cushions | On the floor, a desk or a mat | On the floor |
+| The decoration PC | Eight pockets by kind | One list, the same rooms by kind |

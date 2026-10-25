@@ -93,6 +93,10 @@
   ],
   "signs": [
     { "x": 432, "z": 94, "type": 0, "script": "Route121_EventScript_MtPyrePierSign" },
+    { "x": 440, "z": 91, "type": 3, "script": "SECRET_BASE_RED_CAVE2_2" },
+    { "x": 418, "z": 93, "type": 3, "script": "SECRET_BASE_RED_CAVE3_2" },
+    { "x": 443, "z": 87, "type": 3, "script": "SECRET_BASE_TREE1_2" },
+    { "x": 442, "z": 87, "type": 3, "script": "SECRET_BASE_TREE2_2" },
     { "x": 439, "z": 86, "type": 0, "script": "Route121_EventScript_SafariZoneSign" },
     { "x": 423, "z": 90, "type": 2, "script": "", "item": "HP Up", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_HP_UP" },
     { "x": 458, "z": 83, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_NUGGET" },

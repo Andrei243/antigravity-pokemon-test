@@ -77,9 +77,20 @@ internal static class WorldWalk
             // A tile whose own script puts the player down elsewhere on the map is a way there (plan 06 · R16c: the huts
             // of Amity Square's ruins, three tiles in each, which are the only way onto most of its raised ground)
             foreach (var trigger in map.TriggersAt(x, y))
+            {
                 foreach (var put in PutsOf(trigger.Script, trigger.ScriptFile ?? map.ScriptFileAt(x, y)))
                     if (put.X >= 0 && put.Y >= 0 && put.X < map.Width && put.Y < map.Height && !map.IsSolid(put.X, put.Y))
                         Visit(map, put.X, put.Y, TravelMode.OnFoot, map.HeightAt(put.X, put.Y), arrived: true);
+                // and a tile that sends whoever steps on it to another map is a way there (plan 22 · U6, part c: the Relic
+                // Castle's sand pits, which drop to the floor below, the only way to its stairs up to the entrance's ledge)
+                if (trigger.Script.Length > 0)
+                    foreach (var sent in WarpsOf(trigger.Script, trigger.ScriptFile ?? map.ScriptFileAt(x, y)))
+                    {
+                        var onto = mapOf(sent.Name);
+                        if (onto.InBounds(sent.X, sent.Y) && !onto.IsSolid(sent.X, sent.Y))
+                            Visit(onto, sent.X, sent.Y, TravelMode.OnFoot, onto.HeightAt(sent.X, sent.Y), arrived: true);
+                    }
+            }
 
             // Stepping onto a warp takes it; one is only ever stood on by arriving through another
             if (!arrived && map.WarpsAt(x, y).Any())
@@ -153,6 +164,12 @@ internal static class WorldWalk
             foreach (var way in Ways)
             {
                 var (ax, ay) = FieldMovement.Delta(way);
+                // A secret base's spot is a way into its room, by Secret Power (plan 21 · H10): in at the tile inside its
+                // door, whose way out leads back
+                if (mode == TravelMode.OnFoot && map.SecretBaseSpots.TryGetValue((x + ax, y + ay), out int baseId)
+                    && PokemonPlatinumEngine.Models.SecretBaseLayouts.Of(baseId) is { } layout && mapOf(layout.Map) is { } baseRoom
+                    && baseRoom.Name == layout.Map && baseRoom.Warps.FirstOrDefault() is { } baseDoor)
+                    Visit(baseRoom, baseDoor.SourceX, baseDoor.SourceY - 1, TravelMode.OnFoot, baseRoom.HeightAt(baseDoor.SourceX, baseDoor.SourceY - 1), arrived: true);
                 if (SendingOf(map).TryGetValue((x + ax, y + ay), out var portals))
                     foreach (var sent in portals)
                     {
@@ -203,6 +220,11 @@ internal static class WorldWalk
                 // (GymTests searches the buttons; here every walkway counts as one that can be come to)
                 // and so is the Blackthorn Gym's lava, which its slabs carry the player over (BlackthornGymTests holds
                 // the slabs; here every tile of lava counts as one a slab can be brought under; plan 20 · J11, part c)
+                // and so is a hole a pushed boulder fills (plan 22 · U6, part c: the Relic Passage's, which its pits' scripts
+                // fill; UnovaStoryTests pushes the boulders in)
+                else if (step.Obstacle == Obstacle.Solid && mode == TravelMode.OnFoot && map.FilledHoles.ContainsKey((nx, ny))
+                         && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
+                    Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 else if (step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);

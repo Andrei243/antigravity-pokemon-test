@@ -113,6 +113,10 @@ public partial class GameEngine
         public void OpenUndergroundBag(int tab = 0) => game.OpenUndergroundBag(tab);
         public void SpringTrap(int trap) => game.SpringTrap(trap);
         public void OpenBaseDecoration() => game.OpenDecoration();
+        /// <summary>Hoenn's secret bases (plan 21 · H10): the player's base, the decoration PC, and the base's decorating opened.</summary>
+        public Models.SecretBaseSave? SecretBase => game.flow.SecretBase;
+        public List<Models.StoredDecoration> Decorations => game.flow.Decorations;
+        public void OpenSecretBaseDecoration() => game.OpenSecretBaseDecoration();
         public void UseDiggerDrill(int slot) => game.UseDiggerDrill(slot);
         public SealShopScreen SealShop => game.flow.SealShopScreen;
         public FashionCaseScreen FashionCaseScreen => game.flow.FashionCaseScreen;
@@ -276,6 +280,12 @@ public partial class GameEngine
         /// run left in its folder sets it.
         /// </summary>
         public int SaveSlot { get => game.flow.SaveSlot; set => game.flow.SaveSlot = SavePaths.IsSlot(value) ? value : throw new ArgumentOutOfRangeException(nameof(value)); }
+        /// <summary>The seconds played (plan 12 · Q3: a test moves the clock on past the autosave's gap).</summary>
+        public float PlayTime { get => game.flow.PlayTime; set => game.flow.PlayTime = value; }
+        /// <summary>The autosave's disc shown at a share (0 to 1) of its time, or put away with a negative one: a picture of it without a write (plan 12 · Q3).</summary>
+        public void ShowAutosaveDisc(float share) => game.autosaveDisc = share < 0f ? -1f : share * AutosaveDiscSeconds;
+        /// <summary>The autosaves this game has written (plan 12 · Q3).</summary>
+        public int AutosavesWritten => game.AutosavesWritten;
         /// <summary>The file of the slot the game is saved in, in the folder the saves are kept in.</summary>
         public string SaveFile => SavePaths.Current.Slot(game.flow.SaveSlot);
         /// <summary>The slot the game is saved in deleted, its backup with it: a tool that saved takes its save away again.</summary>

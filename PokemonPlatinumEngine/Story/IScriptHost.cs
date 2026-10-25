@@ -56,6 +56,12 @@ public interface IScriptHost
     /// </summary>
     bool ShowsObjectives => true;
 
+    /// <summary>
+    /// The ways to play chosen at NEW GAME (plan 13 · V5): what <c>if rule …</c> asks. Normal, with nothing on, unless a host
+    /// says otherwise; the game's host gives the run in force, the headless host the one a test sets.
+    /// </summary>
+    RunRules Rules => RunRules.Normal;
+
     /// <summary>The player's Pokétch: whether they have it and its apps (plan 02 · S2).</summary>
     Poketch Poketch { get; }
 
@@ -416,6 +422,15 @@ public interface IScriptHost
     /// </summary>
     bool SmashEncounter();
 
+    // ------------------------------------------------------------------ autosave (plan 12 · Q3)
+
+    /// <summary>
+    /// A moment worth an autosave has come in a script (<see cref="AutosaveMoment.Heal"/>, <see cref="AutosaveMoment.Badge"/>):
+    /// the game's host notes it and writes once the script has ended, never in the middle of one. The default does
+    /// nothing (a host with no screen has nothing to save).
+    /// </summary>
+    void Milestone(AutosaveMoment moment) { }
+
     // ------------------------------------------------------------------ sound
 
     /// <summary>Plays a song; null goes back to the theme of the place, and an empty name is silence.</summary>
@@ -520,6 +535,18 @@ public interface IScriptHost
     /// RESULT. A screen it opens keeps the script waiting (<see cref="Busy"/>).
     /// </summary>
     int UndergroundAct(string what, NPC? subject);
+
+    // ------------------------------------------------------------------ Hoenn's secret bases (plan 21 · H10)
+
+    /// <summary>The decoration PC: every decoration the player has, and whether it stands in the base.</summary>
+    List<Models.StoredDecoration> Decorations { get; }
+
+    /// <summary>
+    /// What a secret base's commands do where the player stands (<c>openbase</c>, <c>check</c>, <c>kind</c>,
+    /// <c>enter</c>, <c>pc</c>, <c>packup</c>); the number is the script's RESULT. Going in or out is a warp, and the
+    /// decorating a screen, which keep the script waiting (<see cref="Busy"/>).
+    /// </summary>
+    int SecretBaseAct(string what);
 
     // ------------------------------------------------------------------ fossils, the Game Corner, the Villa, Pal Park (plan 06 · R16b)
 

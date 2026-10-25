@@ -1,7 +1,7 @@
 {
   // The Desert Resort (plan 22 · U6): Black 2's desert beyond the gate house, in its thick sandstorm (the zone's header),
   // our words. Its trainers, the man who tells of the Relic Castle and gives Soft Sand (0, desert_resort_2.txt) and a
-  // few who only talk; the Relic Castle's door stands shut until plan 22 · U6, part b opens the castle
+  // few who only talk; the Relic Castle's door opens into the castle (plan 22 · U6, part c)
   "area": "desert_resort_2",
   "bgmTrack": "unova/desert_resort",
   "people": {

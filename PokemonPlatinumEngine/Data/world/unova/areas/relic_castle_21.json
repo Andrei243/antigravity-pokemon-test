@@ -1,0 +1,42 @@
+{
+  "key": "relic_castle_21",
+  "index": 180,
+  "name": "Relic Castle",
+  "matrix": 74,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_D_04",
+  "nightMusic": "BGM_D_04",
+  "encounters": "ENCOUNTERS_RELIC_CASTLE_6",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Yamask", "level": 27 },
+    { "species": "Sandile", "level": 27 },
+    { "species": "Yamask", "level": 28 },
+    { "species": "Sandile", "level": 28 },
+    { "species": "Sandslash", "level": 28 },
+    { "species": "Sandslash", "level": 29 },
+    { "species": "Yamask", "level": 29 },
+    { "species": "Krokorok", "level": 29 },
+    { "species": "Yamask", "level": 30 },
+    { "species": "Krokorok", "level": 30 },
+    { "species": "Yamask", "level": 30 },
+    { "species": "Krokorok", "level": 30 }
+  ],
+  "landRate": 18,
+  "warps": [
+    { "x": 12, "z": 7, "to": "relic_castle_16", "toWarp": 1 },
+    { "x": 5, "z": 15, "to": "relic_passage_2", "toWarp": 3 },
+    { "x": 6, "z": 15, "to": "relic_passage_2", "toWarp": 3 },
+    { "x": 7, "z": 15, "to": "relic_passage_2", "toWarp": 3 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

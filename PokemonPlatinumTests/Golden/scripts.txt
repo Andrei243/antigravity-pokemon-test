@@ -2938,6 +2938,41 @@ from the sign at 26,9 of GalacticHQLaboratory
 from the sign at 29,9 of GalacticHQLaboratory
 from the sign at 30,9 of GalacticHQLaboratory
 way -
+=== GearStation.AnvilleLine
+from Station Agent at 17,3 of GearStation
+way 0
+  Station Agent> This is the Anville Town Line. Our train runs out to Anville Town, where the line ends, and back again all day.
+  Station Agent> Will you ride the train to Anville Town?
+  Station Agent> Then please board and take a seat. We'll be leaving shortly!
+  > The train glides out of the Gear Station and rattles east past fields and woods...
+  > With a long sigh of its brakes it rolls into Anville Town, the end of the line.
+  ? Will you ride the train to Anville Town? = Yes
+  * scene GearStation.The train to Anville Town
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp AnvilleTown 20 52
+  * fade in
+  + seen GearStation.The train to Anville Town
+way 1, from answer 1
+  Station Agent> Anville Town is a quiet little place. Do pay it a visit when you have the time.
+  ? Will you ride the train to Anville Town? = No
+=== GearStation.DoubleTrain
+from Depot Agent at 7,3 of GearStation
+way -
+  Depot Agent> Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car.
+  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
+=== GearStation.MultiTrain
+from Depot Agent at 11,3 of GearStation
+way -
+  Depot Agent> Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair.
+  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
+=== GearStation.SingleTrain
+from Depot Agent at 3,3 of GearStation
+way -
+  Depot Agent> Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run.
+  Depot Agent> The Subway's cars are in the depot being made ready. Please come back once the lines are running!
 === GlobalTerminal1F.Favourite
 from Beauty at 15,10 of GlobalTerminal1F
 way 0
@@ -5966,6 +6001,40 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== anville_town.RestingCars
+from Station Agent at 31,38 of AnvilleTown
+way -
+  Station Agent> The cars here are taking a rest. Come at the weekend, when the whole town turns out to see them.
+=== anville_town.TrainHome
+from Station Agent at 22,52 of AnvilleTown
+way 0
+  Station Agent> The train back to Nimbasa City leaves shortly.
+  Station Agent> Will you board?
+  Station Agent> Then please take a seat and wait for the doors to close.
+  > The train pulls away from the turntable and runs west through the woods, back toward the lights of Nimbasa...
+  ? Will you board? = Yes
+  * scene anville_town.The train back to Nimbasa City
+  * fade out
+  * music stop
+  * sound crossing_engine
+  * endscene
+  * warp GearStation 17 4
+  * fade in
+  + seen anville_town.The train back to Nimbasa City
+way 1, from answer 1
+  Station Agent> It's a quiet town. Stay as long as you like, and take a good look at the cars.
+  ? Will you board? = No
+=== anville_town_4.LostAndFound
+from Depot Agent at 5,5 of AnvilleTown_House3
+way -
+  Depot Agent> Oh ho! A Trainer, by the look of you. I'm a Depot Agent on the Battle Subway, in Nimbasa City.
+  Depot Agent> Passengers leave all sorts behind on the trains. This one's gone unclaimed for ages. Would you take it off my hands?
+  > Lucas received the Rare Candy!
+  > Lucas put it away in the Medicine pocket.
+  Depot Agent> Come back another day. There's always more lost property!
+  * fanfare FanfareItem
+  + FLAG_DAILY_UNOVA_ANVILLE_LOST_ITEM
+  + FLAG_UNOVA_GOT_RARE_CANDY_ANVILLE
 === aqua_hideout_1f.Guard1
 from Team Aqua Grunt at 13,11 of AquaHideout_1F
 way -
@@ -8265,6 +8334,11 @@ way 1, from answer 1
 from an obstacle, with no field move and no badge
 way -
   > A heavy boulder. Only a Pokémon of great power could shift it.
+=== common.BoulderFallsIn
+from a trainer with lines of their own
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
 === common.Briefcase
 from a trainer with lines of their own
 way -
@@ -10102,6 +10176,34 @@ way -
   * fade out
   * warp Kanto 288 232
   * fade in
+=== common.SecretBaseMake
+from a trainer with lines of their own
+way -
+=== common.SecretBasePC
+from a trainer with lines of their own
+way 0
+  > The base's PC hummed into life.
+  > What would you like to do?
+  ? What would you like to do? = DECORATE
+  * openbase pc
+way 3, from answer 1
+  ? What would you like to do? = LOG OFF
+way 2, from answer 1
+  > No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked.
+  ? What would you like to do? = REGISTRY
+way 1.0, from answer 1
+  > Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again.
+  ? What would you like to do? = PACK UP
+  ? Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again. = Yes
+  * openbase packup
+way 1.1, from answer 2
+  ? Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again. = No
+=== common.SecretBaseSpot
+from a trainer with lines of their own
+way -
+  > There's a small indent in the rock wall. A Pokémon's move might open it up.
+  * openbase check
+  * openbase kind
 === common.Sign
 from a trainer with lines of their own
 way -
@@ -10187,23 +10289,34 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_THUMB
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_ROOD_HOME
@@ -10211,6 +10324,8 @@ way -
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaCatchUp
 from a trainer with lines of their own
@@ -10219,6 +10334,8 @@ way -
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ASPERTIA
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
@@ -10226,19 +10343,27 @@ way -
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGHS_SISTER
   + FLAG_UNOVA_HIDE_HUGH_ASPERTIA
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -10246,6 +10371,7 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -10258,7 +10384,9 @@ way -
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -10270,36 +10398,75 @@ way -
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_ROOD_HOME
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+=== common.UnovaFrigate
+from a trainer with lines of their own
+way -
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
 === common.UnovaNewGame
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_CENTER
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_19
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
   + FLAG_UNOVA_HIDE_CHEREN_ASPERTIA
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CHEREN_ROUTE_20
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_ROUTE_20
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
@@ -10307,6 +10474,7 @@ way -
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_MOM_ASPERTIA
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
@@ -10319,7 +10487,9 @@ way -
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_STORY_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
@@ -10327,18 +10497,31 @@ way -
 from a trainer with lines of their own
 way -
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_ROOD_HOME
   + FLAG_UNOVA_HIDE_ROSA_NIMBASA
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
   + FLAG_UNOVA_NIMBASA_BEGUN
 === common.UnovaOpeningDone
 from a trainer with lines of their own
@@ -10360,25 +10543,36 @@ from a trainer with lines of their own
 way -
   + FLAG_UNOVA_CASTELIA_BEGUN
   + FLAG_UNOVA_DRIFTVEIL_BEGUN
+  + FLAG_UNOVA_FRIGATE_BEGUN
+  + FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
   + FLAG_UNOVA_HIDE_BIANCA_ROUTE_5
   + FLAG_UNOVA_HIDE_BURGH_GYM
   + FLAG_UNOVA_HIDE_CAPTAIN_TERMINAL
+  + FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  + FLAG_UNOVA_HIDE_CHEREN_PWT
+  + FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
   + FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   + FLAG_UNOVA_HIDE_COLRESS_PLAZA
+  + FLAG_UNOVA_HIDE_COLRESS_PWT
   + FLAG_UNOVA_HIDE_COLRESS_ROUTE_4
   + FLAG_UNOVA_HIDE_EXPLASMA_HOME
+  + FLAG_UNOVA_HIDE_GRUNT_PWT
   + FLAG_UNOVA_HIDE_HUGH_CHURCH
   + FLAG_UNOVA_HIDE_HUGH_DRIFTVEIL
+  + FLAG_UNOVA_HIDE_HUGH_FRIGATE
   + FLAG_UNOVA_HIDE_HUGH_GYM
   + FLAG_UNOVA_HIDE_HUGH_NIMBASA
   + FLAG_UNOVA_HIDE_HUGH_PIER
   + FLAG_UNOVA_HIDE_HUGH_PLASMA_HOUSE
+  + FLAG_UNOVA_HIDE_HUGH_PWT
+  + FLAG_UNOVA_HIDE_HUGH_PWT_PIER
   + FLAG_UNOVA_HIDE_HUGH_SEWERS
   + FLAG_UNOVA_HIDE_HUGH_TERMINAL
   + FLAG_UNOVA_HIDE_HUGH_THUMB
   + FLAG_UNOVA_HIDE_IRIS_AVENUE
   + FLAG_UNOVA_HIDE_IRIS_GYM_STREET
   + FLAG_UNOVA_HIDE_IRIS_PIER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
   + FLAG_UNOVA_HIDE_NATE_NIMBASA
   + FLAG_UNOVA_HIDE_NIMBASA_PLASMA
   + FLAG_UNOVA_HIDE_ROOD_HOME
@@ -10388,7 +10582,9 @@ way -
   + FLAG_UNOVA_HIDE_SEWERS_BURGH
   + FLAG_UNOVA_HIDE_SEWERS_COLRESS
   + FLAG_UNOVA_HIDE_SEWER_GRUNTS
+  + FLAG_UNOVA_HIDE_TRIAD_FRIGATE
   + FLAG_UNOVA_HIDE_VIRBANK_DOCK
+  + FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
   + FLAG_UNOVA_NIMBASA_BEGUN
   + FLAG_UNOVA_VIRBANK_BEGUN
 === common.UseCut
@@ -10443,6 +10639,15 @@ way -
   > Bibarel used Rock Smash!
   * usemove Rock Smash Bibarel on Tree
   + FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_TEST
+=== common.UseSecretPower
+from an obstacle, with every field move and every badge
+way -
+  > Bibarel used Secret Power!
+  > A small cavern opened up in the rock!
+  * openbase check
+  * usemove Secret Power Bibarel on Tree
+  * openbase kind
+  * openbase open
 === common.UseStrength
 from an obstacle, with every field move and every badge
 way -
@@ -13337,6 +13542,36 @@ way 0
 way 1, from answer 1
   * battle johto_rival_silver_5 Lost
   * scene over, unseen
+=== join_avenue.Cafe
+from Waitress at 6,42 of JoinAvenue
+way -
+  Waitress> Welcome to the café! Something cold to drink before you head into Nimbasa?
+  Waitress> Enjoy! And mind the crowds on the way into the city.
+  * open Shop join_avenue_cafe
+=== join_avenue.CafeSign
+from the tile read at 7,41 of JoinAvenue
+way -
+  > Join Avenue Café\nCold drinks all day long.
+=== join_avenue.Flowers
+from Florist at 24,21 of JoinAvenue
+way -
+  Florist> Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!
+  Florist> Grow something lovely! Come back and tell me how it turned out.
+  * open Shop join_avenue_flowers
+=== join_avenue.FlowersSign
+from the tile read at 23,20 of JoinAvenue
+way -
+  > Join Avenue Flowers\nMulch and honey for growing things.
+=== join_avenue.Market
+from Shopkeeper at 6,28 of JoinAvenue
+way -
+  Shopkeeper> Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead.
+  Shopkeeper> Thanks for shopping on Join Avenue! Tell your friends!
+  * open Shop join_avenue_market
+=== join_avenue.MarketSign
+from the tile read at 7,27 of JoinAvenue
+way -
+  > Join Avenue Market\nEverything for the road ahead!
 === jubilife_city.Cameraman
 from Cameraman at 169,753 of Sinnoh
 way -
@@ -13893,6 +14128,102 @@ way -
   Clerk> Welcome! These machines teach moves that protect your team.
   Clerk> Please come again!
   * open Shop lilycove_4f_defense
+=== lilycove_city_department_store_5f.Cushions
+from Clerk at 9,2 of LilycoveCity_DepartmentStore_5F
+way 0
+  Clerk> Welcome! Cushions, soft and bright, for a secret base.
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Pika Cushion has been sent to your decoration PC.
+  ? Which would you like? = PIKA CUSHION  2,000
+way 5, from answer 1
+  Clerk> Please do come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Diamond Cushion has been sent to your decoration PC.
+  ? Which would you like? = MORE
+  ? Which would you like? = DIAMOND CUSHION  2,000
+way 3, from answer 1
+  Clerk> Thank you very much! The Spin Cushion has been sent to your decoration PC.
+  ? Which would you like? = SPIN CUSHION  2,000
+way 2, from answer 1
+  Clerk> Thank you very much! The Zigzag Cushion has been sent to your decoration PC.
+  ? Which would you like? = ZIGZAG CUSHION  2,000
+way 1, from answer 1
+  Clerk> Thank you very much! The Round Cushion has been sent to your decoration PC.
+  ? Which would you like? = ROUND CUSHION  2,000
+=== lilycove_city_department_store_5f.Dolls
+from Clerk at 7,2 of LilycoveCity_DepartmentStore_5F
+way 0
+  Clerk> Welcome to the Pokédoll Floor! These dolls are made to sit about a secret base.
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Pichu Doll has been sent to your decoration PC.
+  ? Which would you like? = PICHU DOLL  3,000
+way 5, from answer 1
+  Clerk> Please do come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Duskull Doll has been sent to your decoration PC.
+  ? Which would you like? = MORE
+  ? Which would you like? = DUSKULL DOLL  3,000
+way 3, from answer 1
+  Clerk> Thank you very much! The Jigglypuff Doll has been sent to your decoration PC.
+  ? Which would you like? = JIGGLYPUFF DOLL  3,000
+way 2, from answer 1
+  Clerk> Thank you very much! The Marill Doll has been sent to your decoration PC.
+  ? Which would you like? = MARILL DOLL  3,000
+way 1, from answer 1
+  Clerk> Thank you very much! The Pikachu Doll has been sent to your decoration PC.
+  ? Which would you like? = PIKACHU DOLL  3,000
+=== lilycove_city_department_store_5f.Mats
+from Clerk at 17,6 of LilycoveCity_DepartmentStore_5F
+way 0
+  Clerk> Welcome! Mats to lay on a secret base's floor.
+  Clerk> Which would you like?
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = SURF MAT  4,000
+way 5, from answer 1
+  Clerk> Please do come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = MORE
+  ? Which would you like? = ATTRACT MAT  4,000
+way 3, from answer 1
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = POWDER SNOW MAT  4,000
+way 2, from answer 1
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = FIRE BLAST MAT  4,000
+way 1, from answer 1
+  Clerk> I'm terribly sorry, but you haven't enough money for that.
+  ? Which would you like? = THUNDER MAT  4,000
+=== lilycove_city_department_store_5f.Posters
+from Clerk at 15,6 of LilycoveCity_DepartmentStore_5F
+way 0
+  Clerk> Welcome! Posters to hang on a secret base's walls.
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Ball Poster has been sent to your decoration PC.
+  ? Which would you like? = BALL POSTER  1,000
+way 5, from answer 1
+  Clerk> Please do come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> Thank you very much! The Cute Poster has been sent to your decoration PC.
+  ? Which would you like? = MORE
+  ? Which would you like? = CUTE POSTER  1,000
+way 3, from answer 1
+  Clerk> Thank you very much! The Blue Poster has been sent to your decoration PC.
+  ? Which would you like? = BLUE POSTER  1,000
+way 2, from answer 1
+  Clerk> Thank you very much! The Red Poster has been sent to your decoration PC.
+  ? Which would you like? = RED POSTER  1,000
+way 1, from answer 1
+  Clerk> Thank you very much! The Green Poster has been sent to your decoration PC.
+  ? Which would you like? = GREEN POSTER  1,000
 === lilycove_city_department_store_rooftop.SubstituteTutor
 from Woman at 15,5 of LilycoveCity_DepartmentStoreRooftop
 way 0
@@ -14095,6 +14426,45 @@ way -
 from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
 way -
   Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
+=== lostlorn_forest.Traveller
+from Traveller at 8,11 of LostlornForest
+way 0
+  Traveller> Well, hello there, Trainer. A Pokédex too, I see. I'm a traveller. I wander the world and talk with whoever I meet.
+  Traveller> Tell me, do you know of a Pokémon called Zoroark?
+  Traveller> Then you know it can fool the eye. Good. Only be sure it never fools you.
+  Traveller> Whether you trust what you see or doubt it all is your own choice. I've enjoyed our talk. Here, a keepsake.
+  > Lucas received the TM46!
+  > TM46 holds the move Thief.
+  > Lucas put it away in the TMs & HMs pocket.
+  Traveller> They say a Zoroark came to this forest two years ago and dressed the grass and the trees in its illusions.
+  Traveller> Only a rumour, of course. But there's always a grain of truth in a rumour...
+  > Grrrowf!
+  > The traveller was a Zoroark all along! It vanished into the trees.
+  ? Tell me, do you know of a Pokémon called Zoroark? = Yes
+  * scene lostlorn_forest.The traveller in the Lostlorn Forest
+  * fanfare FanfareTM
+  * cry Zoroark
+  * endscene
+  + FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + seen lostlorn_forest.The traveller in the Lostlorn Forest
+way 1, from answer 1
+  Traveller> No? Then mind yourself. The Pokémon you've never heard of is the easiest one to be fooled by.
+  Traveller> Whether you trust what you see or doubt it all is your own choice. I've enjoyed our talk. Here, a keepsake.
+  > Lucas received the TM46!
+  > TM46 holds the move Thief.
+  > Lucas put it away in the TMs & HMs pocket.
+  Traveller> They say a Zoroark came to this forest two years ago and dressed the grass and the trees in its illusions.
+  Traveller> Only a rumour, of course. But there's always a grain of truth in a rumour...
+  > Grrrowf!
+  > The traveller was a Zoroark all along! It vanished into the trees.
+  ? Tell me, do you know of a Pokémon called Zoroark? = No
+  * fanfare FanfareTM
+  * cry Zoroark
+  * endscene
+  + FLAG_UNOVA_HIDE_LOSTLORN_TRAVELLER
+  + FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  + seen lostlorn_forest.The traveller in the Lostlorn Forest
 === magma_hideout_4f.Maxie
 from Maxie at 16,21 of MagmaHideout_4F
 way 0
@@ -16497,6 +16867,75 @@ way 0
 way 1, from answer 1
   * wildbattle Zapdos 50 Lost
   * scene over, unseen
+=== pwt.PlasmaAtThePier
+from the trigger at 196,476 of Unova
+way -
+=== relic_castle.SandPitEast
+from the trigger at 14,13 of RelicCastle
+way -
+  > The sand gives way underfoot...!
+  * sound use_sand_tomb
+  * fade out
+  * warp RelicCastle_B1F 15 11
+  * fade in
+=== relic_castle.SandPitWest
+from the trigger at 5,12 of RelicCastle
+way -
+  > The sand gives way underfoot...!
+  * sound use_sand_tomb
+  * fade out
+  * warp RelicCastle_B1F 10 10
+  * fade in
+=== relic_castle_23.Volcarona
+from Volcarona at 16,5 of RelicCastle_Depths
+way 0
+  > Vraaahh! The air shimmers with heat as Volcarona spreads its burning wings!
+  > Volcarona fluttered off into the depths of the ruins.
+  * scene relic_castle_23.Volcarona in the Relic Castle
+  * cry Volcarona
+  * wildbattle Volcarona 35 Won
+  * endscene
+  + FLAG_UNOVA_HIDE_VOLCARONA
+  + seen relic_castle_23.Volcarona in the Relic Castle
+way 1, from answer 1
+  * wildbattle Volcarona 35 Lost
+  * scene over, unseen
+=== relic_passage.FillTheHole
+from the pit at 25,46 of RelicPassage_East
+from the pit at 25,47 of RelicPassage_East
+from the pit at 26,46 of RelicPassage_East
+from the pit at 26,47 of RelicPassage_East
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST
+=== relic_passage_2.FillTheMiddleHole
+from the pit at 70,14 of RelicPassage
+from the pit at 70,15 of RelicPassage
+from the pit at 71,14 of RelicPassage
+from the pit at 71,15 of RelicPassage
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_RELIC_PASSAGE_HOLE_MIDDLE
+=== relic_passage_2.FillTheNorthHole
+from the pit at 88,6 of RelicPassage
+from the pit at 88,7 of RelicPassage
+from the pit at 89,6 of RelicPassage
+from the pit at 89,7 of RelicPassage
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_RELIC_PASSAGE_HOLE_NORTH
+=== relic_passage_3.FillTheHole
+from the pit at 35,23 of RelicPassage_West
+from the pit at 35,24 of RelicPassage_West
+from the pit at 36,23 of RelicPassage_West
+from the pit at 36,24 of RelicPassage_West
+way -
+  > The boulder dropped into the hole and filled it in! The way across is open.
+  * sound ledge
+  + FLAG_UNOVA_RELIC_PASSAGE_HOLE_WEST
 === resort_area.Byron
 from Byron at 823,473 of Sinnoh
 way 0
@@ -17025,6 +17464,23 @@ from Man at 219,101 of Hoenn
 way -
   Man> These rocks are cracked all over. A good Rock Smash and they'd crumble to bits.
   Man> Sometimes a Pokémon that was hiding underneath comes tumbling out! It gave me such a fright.
+=== route_111.SecretPowerMan
+from Boy at 213,20 of Hoenn
+way 0
+  Boy> Me? I'm working out how to make a room of my own out here, with a Pokémon's move. Here, take this TM! Will you make one too?
+  > Lucas received the TM43!
+  > TM43 holds the move Secret Power.
+  > Lucas put it away in the TMs & HMs pocket.
+  Boy> Find a big tree that looks as if it might drop a vine, and use Secret Power in front of it.
+  Boy> Or try a small indent in a rock wall, or a thick clump of grass. Inside there's room for all your favourite things.
+  Boy> Your very own secret base! I'm off to find a spot of my own. Bye!
+  ? Me? I'm working out how to make a room of my own out here, with a Pokémon's move. Here, take this TM! Will you make one too? = Yes
+  * fanfare FanfareTM
+  + FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN
+  + FLAG_RECEIVED_SECRET_POWER
+way 1, from answer 1
+  Boy> Oh, you don't want it? Tell me if you change your mind, okay?
+  ? Me? I'm working out how to make a room of my own out here, with a Pokémon's move. Here, take this TM! Will you make one too? = No
 === route_111.Victor
 from Victor at 213,114 of Hoenn
 way 0.0.0.0.0
@@ -20214,6 +20670,46 @@ way -
 === slateport_city.CaptStern
 from Captain Stern at 228,273 of Hoenn
 way -
+=== slateport_city.DecorClerk
+from Clerk at 206,298 of Hoenn
+way 0
+  Clerk> Welcome! Bricks, balloons and mats to brighten up a secret base.
+  Clerk> Which would you like?
+  Clerk> Thank you! The Red Brick has been sent to your decoration PC.
+  ? Which would you like? = RED BRICK  500
+way 5, from answer 1
+  Clerk> Please come again!
+  ? Which would you like? = NO, THANKS
+way 4.0, from answer 1
+  Clerk> Which would you like?
+  Clerk> Thank you! The Blue Balloon has been sent to your decoration PC.
+  ? Which would you like? = MORE
+  ? Which would you like? = BLUE BALLOON  500
+way 3, from answer 1
+  Clerk> Thank you! The Red Balloon has been sent to your decoration PC.
+  ? Which would you like? = RED BALLOON  500
+way 2, from answer 1
+  Clerk> Thank you! The Yellow Brick has been sent to your decoration PC.
+  ? Which would you like? = YELLOW BRICK  500
+way 1, from answer 1
+  Clerk> Thank you! The Blue Brick has been sent to your decoration PC.
+  ? Which would you like? = BLUE BRICK  500
+=== slateport_city.DollClerk
+from Clerk at 205,311 of Hoenn
+way 0
+  Clerk> Welcome! Dolls to sit about a secret base.
+  Clerk> Which would you like?
+  Clerk> Thank you! The Azurill Doll has been sent to your decoration PC.
+  ? Which would you like? = AZURILL DOLL  3,000
+way 3, from answer 1
+  Clerk> Please come again!
+  ? Which would you like? = NO, THANKS
+way 2, from answer 1
+  Clerk> Thank you! The Skitty Doll has been sent to your decoration PC.
+  ? Which would you like? = SKITTY DOLL  3,000
+way 1, from answer 1
+  Clerk> Thank you! The Marill Doll has been sent to your decoration PC.
+  ? Which would you like? = MARILL DOLL  3,000
 === slateport_city.EnergyGuru
 from Energy Guru at 205,307 of Hoenn
 way -

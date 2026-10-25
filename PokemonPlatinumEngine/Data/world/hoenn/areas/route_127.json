@@ -57,6 +57,12 @@
     { "id": "woman_5", "looks": "woman_5", "movement": "look_east", "x": 652, "z": 163, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_ATHENA" },
     { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 653, "z": 160, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_127_RARE_CANDY", "item": "Rare Candy", "script": "Route127_EventScript_ItemRareCandy" }
   ],
-  "signs": [],
+  "signs": [
+    { "x": 699, "z": 207, "type": 3, "script": "SECRET_BASE_RED_CAVE4_1" },
+    { "x": 699, "z": 212, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE3_2" },
+    { "x": 707, "z": 203, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE4_1" },
+    { "x": 701, "z": 161, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE3_3" },
+    { "x": 685, "z": 164, "type": 3, "script": "SECRET_BASE_YELLOW_CAVE1_3" }
+  ],
   "triggers": []
 }

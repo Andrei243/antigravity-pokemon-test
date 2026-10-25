@@ -725,6 +725,12 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 25-45
+=== lostlorn_forest
+Lostlorn Forest
+grass 21-24
+surf 10-25
+super rod 40-70
+trainers 4, 24-51: unova_pkmn_breeder_galen 24, unova_pkmn_ranger_forrest 26, unova_pkmn_ranger_serenity 26, unova_veteran_murphy 51
 === magma_hideout_1f
 Magma Hideout
 grass 27-33
@@ -1135,6 +1141,46 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== relic_castle
+Relic Castle
+grass 18-21
+trainers 1, 23: unova_psychic_perry 23
+=== relic_castle_16
+Relic Castle
+grass 27-30
+=== relic_castle_17
+Relic Castle
+grass 27-30
+=== relic_castle_19
+Relic Castle
+grass 27-30
+=== relic_castle_2
+Relic Castle
+grass 18-21
+trainers 2, 23: unova_psychic_dua 23, unova_psychic_low 23
+=== relic_castle_21
+Relic Castle
+grass 27-30
+=== relic_castle_22
+Relic Castle
+grass 27-30
+=== relic_castle_23
+Relic Castle
+grass 27-30
+=== relic_passage
+Relic Passage
+grass 16-18
+trainers 3, 17-18: unova_backpacker_kendall 18, unova_scientist_lumina 17, unova_scientist_terrance 18
+=== relic_passage_2
+Relic Passage
+grass 27-30
+surf 10-30
+super rod 40-70
+trainers 4, 31-33: unova_backpacker_annie 32, unova_hiker_tobias 31, unova_psychic_ena 32, unova_psychic_tully 33
+=== relic_passage_3
+Relic Passage
+grass 27-30
+trainers 3, 31-32: unova_backpacker_eileen 32, unova_backpacker_randall 32, unova_hiker_keith 31
 === resort_area
 Resort Area
 surf 35-55
@@ -2586,6 +2632,10 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unova_route_16
+Route 16
+grass 21-24
+trainers 6, 24-25: unova_backers_stu_art 24, unova_backpacker_blossom 25, unova_backpacker_ivan 25, unova_cyclist_hector 25, unova_cyclist_krissa 25, unova_depot_agent_hank 25
 === unova_route_19
 Route 19
 grass 2-4

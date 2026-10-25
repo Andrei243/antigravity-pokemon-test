@@ -127,3 +127,22 @@ script RockSmashMan
   say "These rocks are cracked all over. A good Rock Smash and they'd crumble to bits."
   say "Sometimes a Pokémon that was hiding underneath comes tumbling out! It gave me such a fright."
   end
+
+
+# The boy who thinks of a room of his own (Route111_EventScript_SecretPowerMan, plan 21 · H10): he gives TM43, Secret
+# Power, tells how a secret base is made and goes off to find a spot of his own, for good
+script SecretPowerMan
+  speaker "Boy"
+  ask "Me? I'm working out how to make a room of my own out here, with a Pokémon's move. Here, take this TM! Will you make one too?"
+  if no goto Refused
+  give "TM43"
+  setflag FLAG_RECEIVED_SECRET_POWER
+  say "Find a big tree that looks as if it might drop a vine, and use Secret Power in front of it."
+  say "Or try a small indent in a rock wall, or a thick clump of grass. Inside there's room for all your favourite things."
+  say "Your very own secret base! I'm off to find a spot of my own. Bye!"
+  setflag FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN
+  hide self
+  end
+label Refused
+  say "Oh, you don't want it? Tell me if you change your mind, okay?"
+  end

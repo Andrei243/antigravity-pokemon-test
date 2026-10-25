@@ -792,9 +792,9 @@ public class SceneSkipTests
         Assert.Equal(new[] { SkipScenes.Seen, SkipScenes.Any, SkipScenes.Off, SkipScenes.Seen }, seen);
         OptionsScreen.Change(settings, OptionRow.SkipScenes, -1);
         Assert.Equal(SkipScenes.Off, settings.SkipScenes);
-        // A new row goes in before HELP, which stays the last
+        // A new row goes in before HELP, and the reset (plan 12 · Q3) is the last
         var rows = Enum.GetValues<OptionRow>();
-        Assert.Equal(OptionRow.Help, rows[^1]);
+        Assert.Equal(OptionRow.ResetDefaults, rows[^1]);
         Assert.True(Array.IndexOf(rows, OptionRow.SkipScenes) < Array.IndexOf(rows, OptionRow.Help));
     }
 

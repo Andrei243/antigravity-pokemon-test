@@ -59,6 +59,24 @@ public static class Nuzlocke
         return NuzlockeCatch.Free;
     }
 
+    /// <summary>
+    /// A Pokémon given to the player (plan 13 · V4's gifts clause, <see cref="RunRules.GiftsCount"/>): under a Nuzlocke with
+    /// the clause on it spends the place's chance, as a wild Pokémon met there would have, so a later one met in the same
+    /// place can't be caught. Nothing under any other run, which writes nothing.
+    /// </summary>
+    public static void Gift(RunRules rules, RunState state, string place)
+    {
+        if (rules.Nuzlocke && rules.GiftsCount) state.Meet(place);
+    }
+
+    /// <summary>
+    /// A wild Pokémon a script puts in the player's way, a legend or a sleeping Snorlax (the static encounters): under the
+    /// gifts clause it is the place's one chance, like any wild Pokémon met there (<see cref="Meet"/>); without it, or under any
+    /// other run, it is free to catch and spends nothing.
+    /// </summary>
+    public static NuzlockeCatch MeetStatic(RunRules rules, RunState state, string place, Pokemon wild, Pokedex dex) =>
+        rules.Nuzlocke && rules.GiftsCount ? Meet(rules, state, place, wild, dex) : NuzlockeCatch.Free;
+
     /// <summary>Whether an item brings a fainted Pokémon round (a Revive, a Max Revive, a Revival Herb, Sacred Ash).</summary>
     public static bool Revives(ItemData item) => item.Use?.ContainsKey("revive") == true || item.Use?.ContainsKey("reviveAll") == true;
 

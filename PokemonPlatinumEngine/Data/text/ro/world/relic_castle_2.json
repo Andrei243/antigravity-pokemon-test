@@ -1,0 +1,57 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Dua"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "You fell in too? Then we're both stuck down here. Let's pass the time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Up the stairs with you, then. I'll stay with the sand."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Low"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "I sense the castle's old kings watching. Let's give them a show!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "The kings were not impressed. With me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

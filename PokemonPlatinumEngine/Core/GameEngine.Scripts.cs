@@ -146,6 +146,8 @@ public partial class GameEngine
     {
         // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
         TimeTheArrival();
+        // Coming to a place is the fifth moment of an autosave, written once the place's own script has ended (plan 12 · Q3)
+        AutosaveSoon(AutosaveMoment.Arrival);
         // The Pokégear's radio is off once a door has been gone through (plan 20 · J3)
         SilenceTheRadio();
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
@@ -196,6 +198,8 @@ public partial class GameEngine
         }
         // The Villa's furniture stands where it is owned (plan 06 · R16b)
         if (flow.Map.Name == VillaMap) FurnishVilla();
+        // and a secret base's decorations where they were set down, its door aimed at its spot (plan 21 · H10)
+        if (SecretBaseLayouts.IsBaseMap(flow.Map.Name)) LayOutSecretBase(flow.Map);
         // The people of the place come to are made ready behind the fade, and the rigs of the place left are let go
         KeepCharactersNear(trim: true);
         flow.Arrived = true;
@@ -903,6 +907,7 @@ public partial class GameEngine
         public IReadOnlyCollection<FieldMove> Granted => game.GrantedMoves;
         public string BeganIn => game.flow.BeganIn;
         public bool ShowsObjectives => game.NextObjectiveOn;
+        public RunRules Rules => game.flow.Run;
         public Party Party => game.flow.Party;
         public Inventory Bag => game.flow.Bag;
         public Poketch Poketch => game.flow.Poketch;
@@ -1125,7 +1130,9 @@ public partial class GameEngine
             game.flow.BattleMayBeLost = false;
             // A script writes its game's own level; a region crossed into meets it at the mapped one (plan 18 · W4)
             if (kind != BattleKind.CatchingLesson) wild.Relevel(game.LevelHere(wild.Level));
-            game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher);
+            // A static encounter is the place's one chance under the Nuzlocke's gifts clause (plan 13 · V4)
+            game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher,
+                nuzlockeCatch: kind == BattleKind.Normal && !game.InBugContest ? game.MeetStaticUnderTheRun(wild) : NuzlockeCatch.Free);
         }
 
         public BattleOutcome Outcome => game.flow.ScriptOutcome;
@@ -1275,11 +1282,22 @@ public partial class GameEngine
         {
             // A gift of a region crossed into comes at the region's mapped level (plan 18 · W4); an Egg hatches at its own
             if (!pokemon.IsEgg) pokemon.Relevel(game.LevelHere(pokemon.Level));
+            // The Shiny Charm's extra rolls (plan 13 · V5): none, and nothing drawn, without the charm in the bag
+            ShinyCharm.Roll(pokemon, game.flow.Bag, Dice.New());
             game.flow.Pokedex.RegisterSeen(pokemon);
             game.flow.Pokedex.RegisterCaught(pokemon);
             // A gift is met where it is given (Pokemon_GiveMonFromScript)
             pokemon.Met(game.PlaceName(), GameClock.Today);
             game.flow.Poketch.Remember(pokemon);
+            // The Nuzlocke's gifts clause: a gift is the place's catch (plan 13 · V4)
+            Nuzlocke.Gift(game.flow.Run, game.flow.RunState, Nuzlocke.PlaceKeyOf(game.flow.Map, game.flow.Player.GridX, game.flow.Player.GridY));
+            // A run that keeps one type on the team has a gift of another go to the PC, from which it can't be withdrawn (plan 13 · V5)
+            if (!game.flow.Run.MayCarry(pokemon, game.flow.Story.PlayerStarter))
+            {
+                game.flow.Boxes.Store(pokemon);
+                game.ShowNotification(Text.Of("run.monotype.sentToPc", ("name", pokemon.DisplayName)));
+                return false;
+            }
             if (game.flow.Party.Add(pokemon)) return true;
             game.flow.Boxes.Store(pokemon);
             return false;
@@ -1508,6 +1526,11 @@ public partial class GameEngine
         public Models.Underground.UndergroundState Underground => game.flow.Underground;
         public int UndergroundAct(string what, NPC? subject) => game.UndergroundAct(what, subject);
         public string DiggerName => game.DiggerName;
+
+        // ---- Hoenn's secret bases (plan 21 · H10)
+
+        public List<StoredDecoration> Decorations => game.flow.Decorations;
+        public int SecretBaseAct(string what) => game.SecretBaseAct(what);
 
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));

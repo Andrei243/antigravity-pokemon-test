@@ -1,0 +1,105 @@
+{
+  // The Pokémon World Tournament's grounds (plan 22 · U6, part c): Black 2's plaza south of Driftveil City round the
+  // tournament's hall, its pier and the way down into the Relic Passage, our words. The hall's door stays shut until
+  // the tournament is built (plan 22 · U6's next part, with plan 14 · B11 and B12); Black 2's Hugh, Clay, Cheren and
+  // Colress at its door (6 to 9) are held back for it. Once the Quake Badge is won and Clay has told of the tournament,
+  // the first step onto the pier (our trigger on 196 to 198, 476, VAR_UNOVA_PWT 0) plays the scene of the Plasma
+  // Frigate (pwt.txt): Cheren and Hugh, a grunt running down the pier, Hugh and Cheren after him, Colress's warning; the
+  // gangway at the pier's end (warp 3) leads aboard until the frigate sails (FLAG_UNOVA_FRIGATE_SAILED), and the
+  // grounds' arrival plays Hugh and Cheren on the pier once the Shadow Triad have put the player back ashore
+  "area": "pwt",
+  "name": "Pokémon World Tournament",
+  "bgmTrack": "unova/driftveil",
+  "architecture": "Storehouse",
+  "heldBack": [ "6", "7", "8", "9" ],
+  "switches": [ { "warp": 3, "from": "FLAG_UNOVA_FRIGATE_AT_PIER", "until": "FLAG_UNOVA_FRIGATE_SAILED" } ],
+  // The frigate moored along the pier's east side (ours: Black 2 shows its model there only while it is moored); it
+  // stays drawn there after it has sailed until the ship has a model that can come and go (plan 22 · U8)
+  "props": [ { "type": "Boat", "x": 201, "y": 482, "width": 6, "depth": 17 } ],
+  "triggers": [
+    { "script": "PlasmaAtThePier", "x": 196, "z": 476, "width": 3, "depth": 1, "variable": "VAR_UNOVA_PWT", "value": 0 }
+  ],
+  "people": {
+    "0": {
+      "name": "Backer",
+      "npcType": "Lass",
+      "dialog": [ "Water, fire and grass Pledges! Use two of them together in a double battle and something special happens!" ]
+    },
+    "1": {
+      "name": "Fortune Teller",
+      "npcType": "Lady",
+      "dialog": [ "I can feel the hidden power in every Pokémon that passes. Come back when the tournament opens and I'll read yours." ]
+    },
+    "2": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "I'm sketching the hall before the crowds arrive. It looks like a crown, doesn't it?" ]
+    },
+    "3": {
+      "name": "Artist",
+      "npcType": "artist",
+      "dialog": [ "The tournament's banners are going up. Every region's colours, side by side!" ]
+    },
+    "4": {
+      "name": "Ace Trainer",
+      "npcType": "ace_trainer_m",
+      "dialog": [ "Gym Leaders, Champions, the best from everywhere... I've trained for years to stand in that hall." ]
+    },
+    "5": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "We're still putting the finishing touches on the hall. Not long now!" ]
+    },
+    "11": {
+      "name": "Gentleman",
+      "npcType": "Gentleman",
+      "dialog": [ "What sort of Trainers will come, I wonder? What sort of battles will they fight?" ]
+    },
+    "12": {
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "dialog": [ "My husband teaches the strongest moves there are, to a Pokémon that trusts its Trainer completely. He's off fishing today." ]
+    },
+    "13": {
+      "name": "Smasher",
+      "npcType": "ace_trainer_f",
+      "dialog": [ "In front of a crowd you're supposed to stand firm. But I can't help loving moves with a bit of rhythm!" ]
+    },
+    "14": {
+      "name": "Battle Girl",
+      "npcType": "battle_girl",
+      "dialog": [ "The crowd's going to go wild for my Pokémon!" ]
+    },
+    "15": {
+      "name": "Roughneck",
+      "npcType": "roughneck",
+      "dialog": [ "People from all over coming together to test themselves. Isn't that something?" ]
+    },
+    "16": {
+      "name": "Veteran",
+      "npcType": "veteran",
+      "dialog": [ "The Pokémon World Tournament... aka the PWT. Call it whatever you like, just don't miss it!" ]
+    },
+    "17": {
+      "name": "Backpacker",
+      "npcType": "picnicker",
+      "dialog": [ "A ship is only really a ship out on the open sea. Moored here, they all look a bit lonely." ]
+    },
+    "18": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "That cave down there is the Relic Passage. They dug it out only recently, and it runs all the way under the sea!" ]
+    }
+  },
+  "npcs": [
+    { "id": "hugh_pwt", "name": "{rival}", "npcType": "hugh", "x": 196, "y": 473, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PWT" },
+    { "id": "cheren_pwt", "name": "Cheren", "npcType": "cheren", "x": 195, "y": 473, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_PWT" },
+    { "id": "grunt_pwt", "name": "Grunt", "npcType": "plasma_grunt", "x": 198, "y": 473, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_GRUNT_PWT" },
+    { "id": "colress_pwt", "name": "Colress", "npcType": "colress", "x": 193, "y": 474, "facing": "Right", "hiddenBy": "FLAG_UNOVA_HIDE_COLRESS_PWT" },
+    { "id": "hugh_pier", "name": "{rival}", "npcType": "hugh", "x": 196, "y": 488, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_PWT_PIER" },
+    { "id": "cheren_pier", "name": "Cheren", "npcType": "cheren", "x": 198, "y": 488, "facing": "Down", "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_PWT_PIER" }
+  ],
+  "signs": {
+    "18": "Pokémon World Tournament\nThe stage where the world's strongest Trainers meet"
+  }
+}

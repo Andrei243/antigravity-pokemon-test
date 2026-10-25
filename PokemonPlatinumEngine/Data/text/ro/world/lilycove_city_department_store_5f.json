@@ -8,14 +8,6 @@
         "text": [
           "Vânzătoarea"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the Pokédoll Floor! Our dolls and cushions are for decorating a secret base. We'll have them out for you soon!"
-        ],
-        "text": [
-          "Bun venit la Etajul Poképăpușilor! Păpușile și pernele noastre sunt pentru decorarea unei baze secrete. Le vom scoate curând pentru tine!"
-        ]
       }
     },
     "woman_3_2": {
@@ -25,14 +17,6 @@
         ],
         "text": [
           "Vânzătoarea"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Mats and posters for your secret base will be on sale shortly. Thank you for waiting!"
-        ],
-        "text": [
-          "Covorașele și posterele pentru baza ta secretă vor fi puse în vânzare în curând. Mulțumim pentru răbdare!"
         ]
       }
     },
@@ -44,14 +28,6 @@
         "text": [
           "Vânzătoarea"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Big dolls are our pride and joy. They're coming soon, so please look in again!"
-        ],
-        "text": [
-          "Păpușile mari sunt mândria noastră. Vin în curând, așa că mai trece pe aici!"
-        ]
       }
     },
     "woman_3_4": {
@@ -61,14 +37,6 @@
         ],
         "text": [
           "Vânzătoarea"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Our display cases are being stocked right now. Do come back!"
-        ],
-        "text": [
-          "Vitrinele noastre se umplu chiar acum. Revino!"
         ]
       }
     },

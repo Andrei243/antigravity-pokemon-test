@@ -566,6 +566,8 @@ script HiddenItem
 # back, and the team is well. In a room with no machine there is the fanfare alone.
 script Nurse
   say "Good day! You've come to a Pokémon Center."
+  # Plan 13 · V5: a run that doesn't use the Centers (the ways to play, chosen at NEW GAME)
+  if rule nocenter goto RunDeclines
   ask "Your Pokémon look as if they could do with a rest. Shall I see to them?"
   if no goto Goodbye
   say "Leave them with me. It won't take a moment."
@@ -584,6 +586,10 @@ script Nurse
   end
 label Goodbye
   say "Take care out there, and come back whenever you need us!"
+  end
+label RunDeclines
+  say "Oh... I'm sorry. This run of yours goes without our care, so I can't see to your Pokémon here."
+  say "They'll have to rest and mend on their own. Good luck out there!"
   end
 
 
@@ -2677,6 +2683,38 @@ script UnovaDriftveil
   setflag FLAG_UNOVA_HIDE_EXPLASMA_HOME
   setflag FLAG_UNOVA_HIDE_CLAY_DRIFTVEIL
   setflag FLAG_UNOVA_DRIFTVEIL_BEGUN
+  call UnovaFrigate
+  return
+
+
+# What Unova's chapter of the Plasma Frigate hides until its scenes (plan 22 · U6, part c): Hugh, Cheren, a grunt and
+# Colress on the Pokémon World Tournament's grounds, Hugh and Cheren on its pier and on the frigate's deck, Zinzolin
+# and the Shadow Triad aboard, and the Zoroark of the Lostlorn Forest until its traveller has had his say.
+# UnovaDriftveil runs it, for a new game and for a save of part b's (UnovaCatchUp), with no story version raised. It
+# may only set flags and variables, and ends in return.
+script UnovaFrigate
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT
+  setflag FLAG_UNOVA_HIDE_GRUNT_PWT
+  setflag FLAG_UNOVA_HIDE_COLRESS_PWT
+  setflag FLAG_UNOVA_HIDE_HUGH_PWT_PIER
+  setflag FLAG_UNOVA_HIDE_CHEREN_PWT_PIER
+  setflag FLAG_UNOVA_HIDE_HUGH_FRIGATE
+  setflag FLAG_UNOVA_HIDE_CHEREN_FRIGATE
+  setflag FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE
+  setflag FLAG_UNOVA_HIDE_TRIAD_FRIGATE
+  setflag FLAG_UNOVA_HIDE_LOSTLORN_ZOROARK
+  setflag FLAG_UNOVA_HIDE_ANVILLE_WEEKEND
+  setflag FLAG_UNOVA_FRIGATE_BEGUN
+  return
+
+
+# A boulder pushed with Strength comes to rest in one of the Relic Passage's holes (plan 22 · U6, part c): the place's
+# pit script calls this, then sets the hole's flag and takes the boulder away
+script BoulderFallsIn
+  sound "ledge"
+  speaker none
+  text "The boulder dropped into the hole and filled it in! The way across is open."
   return
 
 
@@ -2710,6 +2748,7 @@ script UnovaCatchUp
   if not flag FLAG_UNOVA_CASTELIA_BEGUN call UnovaCastelia
   if not flag FLAG_UNOVA_NIMBASA_BEGUN call UnovaNimbasa
   if not flag FLAG_UNOVA_DRIFTVEIL_BEGUN call UnovaDriftveil
+  if not flag FLAG_UNOVA_FRIGATE_BEGUN call UnovaFrigate
   if var VAR_UNOVA_ASPERTIA != 0 return
   if var CROSSED_IN == 1 return
   if var PARTY_COUNT == 0 return
@@ -2742,4 +2781,109 @@ label TooFew
   end
 label Declined
   say "Come back whenever your Pokémon feel like a run!"
+  end
+
+
+# Hoenn's secret bases (plan 21 · H10; Emerald's data/scripts/secret_base.inc, our own words). A spot faced (a tree that
+# might drop a vine, a clump of grass, an indent in a rock wall): the player's own base is gone into; anywhere else a
+# Pokémon of the team that knows Secret Power opens it and the base is made there, the one before emptied and all that
+# stood in it back in the decoration PC (one base at a time, as Emerald has it). Nothing is asked of a Badge, as
+# Emerald asks none; the question whether to make the base here is asked outside, where Emerald asks it inside.
+script SecretBaseSpot
+  speaker none
+  openbase check
+  if result == 2 goto Own
+  if result == 3 goto Elsewhere
+  if not knows "Secret Power" goto Cannot
+  goto Ask
+label Own
+  openbase enter
+  end
+label Elsewhere
+  if not knows "Secret Power" goto Cannot
+  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  if no end
+label Ask
+  openbase kind
+  if result == 5 goto AskTree
+  if result == 6 goto AskShrub
+  ask "There's a small indent in the rock wall here. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label AskTree
+  ask "This big tree looks as if it might drop a vine. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label AskShrub
+  ask "This clump of grass looks as if it might move aside. Use Secret Power?"
+  if no end
+  call SecretBaseMake
+  end
+label Cannot
+  openbase kind
+  if result == 5 goto CannotTree
+  if result == 6 goto CannotShrub
+  text "There's a small indent in the rock wall. A Pokémon's move might open it up."
+  end
+label CannotTree
+  text "This big tree looks as if a vine could drop from it, if only something shook it loose."
+  end
+label CannotShrub
+  text "If this clump of grass could be moved aside, there might be a way in."
+  end
+
+# Secret Power chosen in the party menu at a spot: the same, with no question but moving a base
+script UseSecretPower
+  openbase check
+  if result == 2 goto Own
+  if result != 3 goto Make
+  ask "You already have a secret base. Move it here? Everything in the old one goes back into your PC."
+  if no end
+label Make
+  call SecretBaseMake
+  end
+label Own
+  openbase enter
+  end
+
+# Secret Power at work on a spot: what it opened, and the base made there and gone into (only by a Pokémon that knows it)
+script SecretBaseMake
+  if not knows "Secret Power" return
+  usemove "Secret Power"
+  openbase kind
+  if result == 5 goto Tree
+  if result == 6 goto Shrub
+  text "A small cavern opened up in the rock!"
+  goto Open
+label Tree
+  text "A thick vine dropped down from the tree!"
+  goto Open
+label Shrub
+  text "The grass parted on a small way in!"
+label Open
+  openbase
+  return
+
+# A secret base's PC (Emerald's SecretBase_EventScript_PC): the decorating, the base packed up and given up, or the
+# registry of friends' bases, which only a link brings and which stays empty here
+script SecretBasePC
+  speaker none
+  text "The base's PC hummed into life."
+  choose "What would you like to do?" "DECORATE" "PACK UP" "REGISTRY" "LOG OFF"
+  if result == 0 goto Decorate
+  if result == 1 goto PackUp
+  if result == 2 goto Registry
+  end
+label Decorate
+  openbase pc
+  end
+label PackUp
+  ask "Pack up and move out? Everything here goes back into your PC, and this place is a plain spot again."
+  if no end
+  openbase packup
+  end
+label Registry
+  text "No friend's secret base is registered. A friend's base comes by linking up, and nothing is linked."
   end

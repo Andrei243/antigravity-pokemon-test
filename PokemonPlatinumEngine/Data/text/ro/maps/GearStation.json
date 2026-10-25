@@ -1,0 +1,98 @@
+{
+  "displayName": {
+    "en": [
+      "Gear Station"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "single_desk": {
+      "name": {
+        "en": [
+          "Depot Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "double_desk": {
+      "name": {
+        "en": [
+          "Depot Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "multi_desk": {
+      "name": {
+        "en": [
+          "Depot Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "anville_desk": {
+      "name": {
+        "en": [
+          "Station Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "traveller": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every line in Unova meets here at the Gear Station. Battles on one platform, a sleepy country town on another!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I rode the Battle Subway all the way to the seventh car! Then I lost. Next time, the Subway Bosses!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "20,3": {
+      "en": [
+        "A board of the lines leaving the Gear Station.\nBattle Subway: Single Train, Double Train, Multi Train.\nAnville Town Line: all stops to Anville Town."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

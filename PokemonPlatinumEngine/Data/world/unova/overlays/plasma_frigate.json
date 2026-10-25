@@ -1,0 +1,34 @@
+{
+  // The Plasma Frigate's deck (plan 22 · U6, part c): Black 2's ship of Team Plasma, moored at the Pokémon World
+  // Tournament's pier, our words. Its first boarding is one scene, played as the player comes aboard from the gangway
+  // (plasma_frigate.txt): Hugh (0) and Cheren (1) are on deck before them, two grunts (15, 14) battle in turn, Zinzolin
+  // (16) comes up from the bow and the Shadow Triad (17 to 19) put everyone back ashore. The ship's rooms, its later
+  // moorings (Route 21, the P2 Laboratory) and the grunts and things of its later boardings (20 to 27) are plan 22 ·
+  // U8's: its doors stay shut and those are held back
+  "area": "plasma_frigate",
+  "bgmTrack": "unova/plasma_frigate",
+  "battleArena": "City",
+  "heldBack": [ "20", "21", "22", "23", "24", "25", "26", "27" ],
+  "people": {
+    "0": { "name": "{rival}", "npcType": "hugh", "still": true, "dialog": [ "Team Plasma's ship... My sister's Purrloin could be anywhere on board!" ], "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_FRIGATE" },
+    "1": { "name": "Cheren", "npcType": "cheren", "still": true, "dialog": [ "Stay close. We don't know how many of them there are." ], "hiddenBy": "FLAG_UNOVA_HIDE_CHEREN_FRIGATE" },
+    "2": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Go on, go on! Shove off before the boss sees you!" ] },
+    "3": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Who let a kid on board? Not me, that's who!" ] },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "This is a cargo ship. Nothing to see here. Totally ordinary cargo." ] },
+    "5": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "The Gym Leader's here too? We're outnumbered! ...By two." ] },
+    "6": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Hey, remember me? No? Good." ] },
+    "7": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Ugh, the deck's freezing today. Why is this ship always so cold?" ] },
+    "8": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Don't look around too much. Seriously. Don't." ] },
+    "9": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "You think you're tough? We'll see about that." ] },
+    "10": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "I'm not scared of you! I'm just... standing very still." ] },
+    "11": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Sniff... You smell like a Trainer. We hate that smell." ] },
+    "12": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Intruders on deck! Somebody do something!" ] },
+    "13": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "dialog": [ "Let them through? Are you mad?" ] },
+    "14": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_FRIGATE_GRUNTS", "dialog": [ "Get off our ship!" ] },
+    "15": { "name": "Grunt", "npcType": "plasma_grunt", "still": true, "hiddenBy": "FLAG_UNOVA_HIDE_FRIGATE_GRUNTS", "dialog": [ "Get off our ship!" ] },
+    "16": { "name": "Zinzolin", "npcType": "zinzolin", "still": true, "dialog": [ "Children have no business aboard this ship." ], "hiddenBy": "FLAG_UNOVA_HIDE_ZINZOLIN_FRIGATE" },
+    "17": { "name": "Shadow Triad", "npcType": "shadow_triad", "still": true, "dialog": [ "..." ], "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_FRIGATE" },
+    "18": { "name": "Shadow Triad", "npcType": "shadow_triad", "still": true, "dialog": [ "..." ], "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_FRIGATE" },
+    "19": { "name": "Shadow Triad", "npcType": "shadow_triad", "still": true, "dialog": [ "..." ], "hiddenBy": "FLAG_UNOVA_HIDE_TRIAD_FRIGATE" }
+  }
+}

@@ -51,6 +51,15 @@ public class PCScreen
     public Pokemon? Held { get; private set; }
     public (StorageZone Zone, int Box, int Index) HeldFrom { get; private set; }
 
+    /// <summary>
+    /// What a run says of a Pokémon joining the team from a box (plan 13 · V5, a Monotype): the reason it may not, or null.
+    /// Set by the game as it opens the PC; none under a run without the rule, which changes nothing.
+    /// </summary>
+    public Func<Pokemon, string?>? WhyNotCarry { get; set; }
+
+    /// <summary>How many places the team has under the run (plan 13 · V5): 6, or fewer for a run that carries fewer.</summary>
+    public int PartyLimit { get; set; } = Party.MaxSize;
+
     /// <summary>Whether a Pokémon was stored, moved or released this time (the Journal's line, plan 06 · R12).</summary>
     public bool Changed { get; private set; }
 
@@ -152,7 +161,7 @@ public class PCScreen
         int boxBefore = Box;
         int col = Cell % Columns, row = Cell / Columns;
         // Someone carried can be put down on the team's empty place after its last member too
-        int partyPlaces = Math.Min(Party.MaxSize, partyCount + (Held != null ? 1 : 0));
+        int partyPlaces = Math.Min(PartyLimit, partyCount + (Held != null ? 1 : 0));
         switch (Zone)
         {
             case StorageZone.Party:
@@ -346,6 +355,12 @@ public class PCScreen
                     onNotification(Text.Of("boxes.partyFull"));
                     return;
                 }
+                // A run that keeps one type on the team (plan 13 · V5)
+                if (WhyNotCarry?.Invoke(pokemon) is { } notThis)
+                {
+                    onNotification(notThis);
+                    return;
+                }
                 pc.Withdraw(party, Box, Cell);
                 AudioManager.PlaySound("select");
                 onNotification(Text.Of("boxes.joined", ("name", pokemon.DisplayName)));
@@ -467,6 +482,17 @@ public class PCScreen
         if (Zone == StorageZone.BoxName) return;
         if (Zone == StorageZone.Party)
         {
+            // From a box onto the team: the run's Monotype and the team's size apply (plan 13 · V5); the Pokémon stays in hand
+            if (HeldFrom.Zone == StorageZone.Box && WhyNotCarry?.Invoke(held) is { } notThis)
+            {
+                onNotification(notThis);
+                return;
+            }
+            if (PartyIndex >= party.Count && party.IsFull)
+            {
+                onNotification(Text.Of("boxes.partyFull"));
+                return;
+            }
             if (PartyIndex < party.Count)
             {
                 // Swapped with the member there, who is carried now

@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Big Stadium! There's no game on the field right now. Do come back on a match day!"
         ],
         "text": [
-          ""
+          "Bun venit la Big Stadium! Nu e niciun meci pe teren acum. Revino într-o zi de meci!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Baseball, football, soccer... Every sport comes through here. The athletes battle with Pokémon on their days off!"
         ],
         "text": [
-          ""
+          "Baseball, fotbal american, fotbal... Toate sporturile trec pe aici. Atleții se luptă cu Pokémoni în zilele libere!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Programmes, caps, foam fingers! Well, there will be, once the season starts."
         ],
         "text": [
-          ""
+          "Programe, șepci, mâini de spumă! Ei bine, vor fi, odată ce începe sezonul."
         ]
       }
     }

@@ -1,0 +1,21 @@
+{
+  // The Relic Passage's east hall (plan 22 · U6, part c): Black 2's cave newly dug out under the bay, our words. It
+  // opens off the Castelia Sewers and leads on west to its middle hall; a boulder (5) moves with Strength
+  "area": "relic_passage",
+  "bgmTrack": "unova/relic_passage",
+  "holes": [
+    { "x": 25, "z": 46, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST" }
+  ],
+  "pits": [
+    { "x": 25, "z": 46, "script": "FillTheHole" },
+    { "x": 26, "z": 46, "script": "FillTheHole" },
+    { "x": 25, "z": 47, "script": "FillTheHole" },
+    { "x": 26, "z": 47, "script": "FillTheHole" }
+  ],
+  "people": {
+    "5": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_EAST" },
+    "2": { "name": "Terrance", "trainer": { "dialogueBefore": "These walls are older than Castelia itself! Help me test a theory: are you older than me? No? Battle!", "dialogueAfter": "My theory needs work." } },
+    "3": { "name": "Kendall", "trainer": { "dialogueBefore": "A brand-new cave, and I'm one of the first through it! You're not stealing my glory!", "dialogueAfter": "Share the glory, then." } },
+    "4": { "name": "Lumina", "trainer": { "dialogueBefore": "I'm surveying the passage for the city. Hold still, you're part of the survey now!", "dialogueAfter": "Note to self: Trainers are hazardous." } }
+  }
+}

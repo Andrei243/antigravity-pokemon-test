@@ -1,0 +1,93 @@
+{
+  "key": "unova_route_16",
+  "index": 383,
+  "name": "Route 16",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "",
+  "dayMusic": "BGM_R_C_SP",
+  "nightMusic": "BGM_R_C_SP",
+  "encounters": "ENCOUNTERS_ROUTE_16",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Gothita", "level": 21 },
+    { "species": "Minccino", "level": 21 },
+    { "species": "Trubbish", "level": 21 },
+    { "species": "Trubbish", "level": 23 },
+    { "species": "Liepard", "level": 22 },
+    { "species": "Liepard", "level": 24 },
+    { "species": "Minccino", "level": 22 },
+    { "species": "Gothita", "level": 22 },
+    { "species": "Minccino", "level": 23 },
+    { "species": "Gothita", "level": 23 },
+    { "species": "Minccino", "level": 24 },
+    { "species": "Gothita", "level": 24 }
+  ],
+  "landRate": 13,
+  "darkGrass": [
+    { "species": "Gothita", "level": 23 },
+    { "species": "Minccino", "level": 23 },
+    { "species": "Trubbish", "level": 23 },
+    { "species": "Trubbish", "level": 25 },
+    { "species": "Liepard", "level": 24 },
+    { "species": "Liepard", "level": 26 },
+    { "species": "Minccino", "level": 24 },
+    { "species": "Gothita", "level": 24 },
+    { "species": "Minccino", "level": 25 },
+    { "species": "Gothita", "level": 25 },
+    { "species": "Minccino", "level": 26 },
+    { "species": "Gothita", "level": 26 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 21 },
+    { "species": "Audino", "level": 21 },
+    { "species": "Emolga", "level": 22 },
+    { "species": "Audino", "level": 22 },
+    { "species": "Audino", "level": 23 },
+    { "species": "Audino", "level": 23 },
+    { "species": "Audino", "level": 24 },
+    { "species": "Audino", "level": 24 },
+    { "species": "Cinccino", "level": 24 },
+    { "species": "Audino", "level": 24 },
+    { "species": "Cinccino", "level": 24 },
+    { "species": "Audino", "level": 24 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 503, "z": 431, "to": "bridge_gate_gate_7", "toWarp": 0 },
+    { "x": 454, "z": 437, "to": "nimbasa_gate_gate_2", "toWarp": 0 },
+    { "x": 483, "z": 416, "to": "lostlorn_forest", "toWarp": 0 },
+    { "x": 503, "z": 432, "to": "bridge_gate_gate_7", "toWarp": 0 },
+    { "x": 454, "z": 438, "to": "nimbasa_gate_gate_2", "toWarp": 0 },
+    { "x": 454, "z": 439, "to": "nimbasa_gate_gate_2", "toWarp": 0 },
+    { "x": 484, "z": 416, "to": "lostlorn_forest", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "108", "movement": "none", "x": 474, "z": 425, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10004" },
+    { "id": "1", "looks": "model_3", "movement": "none", "x": 482, "z": 439, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "2", "looks": "backers_m", "movement": "none", "x": 484, "z": 441, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BACKERS_STU_ART" },
+    { "id": "3", "looks": "backers_m", "movement": "none", "x": 485, "z": 441, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BACKERS_STU_ART" },
+    { "id": "4", "looks": "cyclist_f", "movement": "none", "x": 498, "z": 432, "facing": 1, "rangeX": 9, "rangeZ": 12, "trainer": "sees", "sight": 3, "script": "TRAINER_CYCLIST_KRISSA" },
+    { "id": "5", "looks": "cyclist_m", "movement": "wander_around", "x": 480, "z": 442, "facing": 1, "rangeX": 14, "rangeZ": 2, "trainer": "sees", "sight": 3, "script": "TRAINER_CYCLIST_HECTOR" },
+    { "id": "6", "looks": "backpacker_f", "movement": "look_north_and_east", "x": 491, "z": 426, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BACKPACKER_BLOSSOM" },
+    { "id": "7", "looks": "backpacker_m", "movement": "wander_around", "x": 478, "z": 427, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BACKPACKER_IVAN" },
+    { "id": "8", "looks": "depot_agent", "movement": "none", "x": 465, "z": 434, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_DEPOT_AGENT_HANK" },
+    { "id": "9", "looks": "110", "movement": "none", "x": 502, "z": 426, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x048b", "item": "TM66", "script": "7063" },
+    { "id": "10", "looks": "110", "movement": "none", "x": 476, "z": 418, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x048c", "item": "Heal Ball", "script": "7064" }
+  ],
+  "signs": [
+    { "x": 458, "z": 435, "type": 0, "script": "1" },
+    { "x": 501, "z": 428, "type": 0, "script": "2" },
+    { "x": 492, "z": 420, "type": 2, "script": "8183", "item": "Tiny Mushroom", "flag": "FLAG_UNOVA_0x0bbb" }
+  ],
+  "triggers": [
+    { "x": 467, "z": 438, "width": 1, "depth": 1, "script": "10860", "variable": "VAR_UNOVA_0x4134", "value": "1" }
+  ]
+}

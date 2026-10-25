@@ -1,0 +1,206 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gah! The Shadow Triad... What are they? One second we were on deck, the next we're standing out here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And the ship's leaving! Team Plasma, get back here! You still have my sister's Purrloin!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Shadow Triad... They can hold a person still and disappear in the blink of an eye. But it's Zinzolin who worries me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A ship that freezes everything it passes, and a plan to turn Unova to ice. Something big is coming, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's something I want to look into. I'm going on to Route 6. Be careful out there."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PlasmaAtThePier": [
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I hardly knew you. You've come a long way since our battle in Aspertia. So has {rival}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren came to see the tournament hall. It's not even open yet and there's already a crowd!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Out of the way, out of the way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That uniform... Team Plasma! He's running for that ship at the end of the pier!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going after him! {player}, come with me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Colress"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wait. Children have no business running headlong into something so dangerous."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon I'm looking for, my little sister's Purrloin... It might be on that ship! I'm not waiting!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cheren"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going too. Someone has to keep him out of trouble!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Colress"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Recklessness, not courage. Do they believe anything is possible simply because they have Pokémon with them?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Or perhaps that is exactly the force I keep looking for. Go on, then. I would very much like to see what you do."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

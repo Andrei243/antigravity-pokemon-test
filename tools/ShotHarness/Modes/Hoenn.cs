@@ -353,6 +353,8 @@ partial class Harness
         HoennScenes();
         // And after the chapter, Dive and the sea floor under Route 124 (plan 21 · H5, h92 to h96)
         HoennSeaShots();
+        // And last a secret base opened, furnished and found again from a save (plan 21 · H10)
+        HoennBaseShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

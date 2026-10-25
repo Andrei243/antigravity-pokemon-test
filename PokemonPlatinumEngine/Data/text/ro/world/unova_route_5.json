@@ -6,7 +6,7 @@
           "Pokémon Breeder"
         ],
         "text": [
-          ""
+          "Crescător Pokémon"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I gather berries along the road while the performers play. Music makes them ripen faster, I'm sure of it!"
         ],
         "text": [
-          ""
+          "Adun fructe de pădure pe drum cât cântă artiștii. Muzica le face să se coacă mai repede, sunt sigur!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Jenn"
         ],
         "text": [
-          ""
+          "Jenn"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "I bake for the performers! Taste my battling first!"
         ],
         "text": [
-          ""
+          "Eu coc pentru artiști! Gustă întâi luptele mele!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Half-baked, that was. Mine, I mean!"
         ],
         "text": [
-          ""
+          "Pe jumătate coaptă a fost. A mea, adică!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Preston"
         ],
         "text": [
-          ""
+          "Preston"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Hum along to my battle song! It goes like this!"
         ],
         "text": [
-          ""
+          "Fredonează cu mine cântecul meu de luptă! Merge așa!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "You stole the show. Encore some other day!"
         ],
         "text": [
-          ""
+          "Ai furat spectacolul. Bis altă dată!"
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Brian"
         ],
         "text": [
-          ""
+          "Brian"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Step, turn, battle! Keep up with my rhythm!"
         ],
         "text": [
-          ""
+          "Pas, întoarcere, luptă! Ține pasul cu ritmul meu!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "You tripped me up good and proper."
         ],
         "text": [
-          ""
+          "Mi-ai pus piedică pe cinste."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Ava"
         ],
         "text": [
-          ""
+          "Ava"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Go, go, Trainers! We cheer for everyone, even you!"
         ],
         "text": [
-          ""
+          "Hai, hai, Antrenori! Încurajăm pe toată lumea, chiar și pe tine!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Two, four, six, eight! Who do we appreciate? You!"
         ],
         "text": [
-          ""
+          "Doi, patru, șase, opt! Pe cine aplaudăm? Pe tine!"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Aya"
         ],
         "text": [
-          ""
+          "Aya"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Two Backers, two Pokémon! Ready?"
         ],
         "text": [
-          ""
+          "Doi Backers, doi Pokémoni! Gata?"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Our cheers weren't loud enough!"
         ],
         "text": [
-          ""
+          "Strigătele noastre n-au fost destul de tari!"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Horton"
         ],
         "text": [
-          ""
+          "Horton"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "Hold still! I'm painting the perfect battle!"
         ],
         "text": [
-          ""
+          "Stai nemișcat! Pictez lupta perfectă!"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "A masterpiece... of losing."
         ],
         "text": [
-          ""
+          "O capodoperă... a pierderii."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Lois"
         ],
         "text": [
-          ""
+          "Lois"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "Rangers keep the routes safe. Let me see if you're safe to travel!"
         ],
         "text": [
-          ""
+          "Rangerii păzesc rutele. Să văd dacă poți călători în siguranță!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "You're more than safe. You're strong!"
         ],
         "text": [
-          ""
+          "Ești mai mult decât în siguranță. Ești puternic!"
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Biker"
         ],
         "text": [
-          ""
+          "Motociclist"
         ]
       },
       "dialog": {
@@ -214,7 +214,7 @@
           "I play the drums on my bike's tank. Not well, but loudly!"
         ],
         "text": [
-          ""
+          "Cânt la tobe pe rezervorul motocicletei. Nu bine, dar tare!"
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -232,7 +232,7 @@
           "Performers come from all over Unova to play here. It's the best stage there is: the open road!"
         ],
         "text": [
-          ""
+          "Artiști din toată Unova vin să cânte aici. E cea mai bună scenă: drumul deschis!"
         ]
       }
     },
@@ -242,7 +242,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -250,7 +250,7 @@
           "We're the audience today! Cheering is a performance too, you know."
         ],
         "text": [
-          ""
+          "Azi suntem publicul! Și încurajarea e un spectacol, să știi."
         ]
       }
     },
@@ -260,7 +260,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -268,7 +268,7 @@
           "I stop here every time I cross the drawbridge. A song or two and my legs feel brand new!"
         ],
         "text": [
-          ""
+          "Mă opresc aici de fiecare dată când traversez podul mobil. O melodie sau două și picioarele mi se simt ca noi!"
         ]
       }
     },
@@ -278,7 +278,7 @@
           "Pokémon Breeder"
         ],
         "text": [
-          ""
+          "Crescător Pokémon"
         ]
       },
       "dialog": {
@@ -286,7 +286,7 @@
           "My Pokémon dances while I sing. The crowd throws coins, and we spend them all on berries for the road!"
         ],
         "text": [
-          ""
+          "Pokémonul meu dansează cât cânt eu. Mulțimea aruncă monede, iar noi le cheltuim pe fructe de pădure pentru drum!"
         ]
       }
     },
@@ -296,7 +296,7 @@
           "Bianca"
         ],
         "text": [
-          ""
+          "Bianca"
         ]
       }
     }
@@ -307,7 +307,7 @@
         "Route 5\nPerformers' Street"
       ],
       "text": [
-        ""
+        "Ruta 5\nStrada Artiștilor"
       ]
     },
     "2": {
@@ -315,7 +315,7 @@
         "Driftveil Drawbridge\nDriftveil City ahead"
       ],
       "text": [
-        ""
+        "Podul Mobil Driftveil\nOrașul Driftveil în față"
       ]
     },
     "3": {
@@ -323,7 +323,7 @@
         "Trainer Tips\nSome Trainers battle three Pokémon at once. Be ready to send out your whole team!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUnii Antrenori se luptă cu trei Pokémoni deodată. Fii gata să-ți trimiți toată echipa!"
       ]
     },
     "10796": {
@@ -331,7 +331,7 @@
         "Today's Performance\nWhoever walks by is part of the show!"
       ],
       "text": [
-        ""
+        "Spectacolul de azi\nOricine trece pe aici face parte din spectacol!"
       ]
     }
   }

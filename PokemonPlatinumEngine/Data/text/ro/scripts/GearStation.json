@@ -1,0 +1,126 @@
+{
+  "AnvilleLine": [
+    {
+      "en": [
+        "Station Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Anville Town Line. Our train runs out to Anville Town, where the line ends, and back again all day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you ride the train to Anville Town?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then please board and take a seat. We'll be leaving shortly!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Anville Town is a quiet little place. Do pay it a visit when you have the time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ToAnville": [
+    {
+      "en": [
+        "The train glides out of the Gear Station and rattles east past fields and woods..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With a long sigh of its brakes it rolls into Anville Town, the end of the line."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SingleTrain": [
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DoubleTrain": [
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MultiTrain": [
+    {
+      "en": [
+        "Depot Agent"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TrainsResting": [
+    {
+      "en": [
+        "The Subway's cars are in the depot being made ready. Please come back once the lines are running!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -18,6 +18,13 @@ internal static partial class ModernUi
     public static string? RunMark(RunRules? run) =>
         run == null || run.IsNormal ? null : Text.Of($"run.preset.{run.PresetKey}");
 
+    /// <summary>
+    /// A save's mark as its card draws it (plan 13 · V1, V5): the run's preset, or RUN OVER in red once a Nuzlocke has ended
+    /// (its save still loads, to look at); null for a game played as Platinum's is, which has no mark.
+    /// </summary>
+    public static (string Text, Color Colour)? SaveMark(SaveData save) =>
+        save.RunState is { Ended: true } ? (Text.Of("card.runEnded"), Red) : RunMark(save.Run) is { } mark ? (mark, Selection) : null;
+
     /// <summary>The words of a run row's name: a key of the table.</summary>
     public static string RunRowName(RunRow row) => Text.Of($"run.row.{row}");
 

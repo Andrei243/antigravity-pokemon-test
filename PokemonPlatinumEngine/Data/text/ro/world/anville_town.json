@@ -1,0 +1,294 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No train's come in today, more's the pity. Still, a quiet yard gives me time to oil the turntable."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Musician"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you hear it? A soft tune drifting over the rooftops... It's the kind that makes you want to sit a while."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Station Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Rich Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The girl up on the footbridge plays to the trains every evening. A lullaby, so they sleep well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "School Kid"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trains are the best thing ever! Mum brought me, but she ran off to take pictures."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Photographer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From right here, the cars line up just so on the turntable. Perfect picture!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Weekends here are packed! I came to watch the cars turn round."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "7": {
+      "name": {
+        "en": [
+          "Station Agent"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell that air! Coal smoke and pine trees. Nothing like it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Backer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The collectors here swap all sorts of things. I tried it once, and it was more fun than I expected!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That round thing in the middle of the yard is a turntable. It swings a car round to face the other way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hardly a train in sight this weekend. Good for painting, bad for company."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Backpacker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I spent everything I had getting here. Worth it, though. Look at those cars!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "13": {
+      "name": {
+        "en": [
+          "Ace Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every collector here thinks they've got the rarest thing in town. Most of them are wrong!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "14": {
+      "name": {
+        "en": [
+          "Collector"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I collect anything to do with trains. Tickets, signs, the odd bolt. Come back when you have something to swap!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "16": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pansage hopped onto a train on the way home from the amusement park. I hope someone kind finds it..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6": {
+      "en": [
+        "A map of Unova's railways.\nThe Gear Station in Nimbasa City is the hub of every line."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "7": {
+      "en": [
+        "Anville Town\nWhere the steel rails end and turn round"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -67,7 +67,7 @@ public static class Coverage
 
     // The later items the mechanics of plan 06 · R20 to R23 run by name: the Key Stone, the Z-Ring, the Dynamax Band
     // and the Tera Orb that let a trainer use them, and the two orbs of Primal Reversion
-    private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Tera Orb", "Red Orb", "Blue Orb" };
+    private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Tera Orb", "Red Orb", "Blue Orb", "Shiny Charm" };
 
     // The later items only there to be had (plan 06 · R28b): Unova's Pass Orbs, which bought the Entralink's powers, of a
     // link this game has none of. docs/mechanics/where-items-are-found.md says where each later item comes from

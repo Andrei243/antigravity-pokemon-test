@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitor"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The lift goes up to the residents' flats. I'm afraid only residents and their guests may ride it."
         ],
         "text": [
-          ""
+          "Liftul urcă la apartamentele locatarilor. Mă tem că îl pot folosi doar locatarii și oaspeții lor."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I paint the ships in the harbour. Every one of them has a face of its own, if you look long enough."
         ],
         "text": [
-          ""
+          "Pictez vapoarele din port. Fiecare are chipul lui, dacă te uiți destul de mult."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfan"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I live on the top floor. On a clear day you can see the drawbridge from my window!"
         ],
         "text": [
-          ""
+          "Locuiesc la ultimul etaj. Într-o zi senină se vede podul de la fereastra mea!"
         ]
       }
     }
@@ -61,7 +61,7 @@
         "The lift's call button.\nIt takes residents up to their flats."
       ],
       "text": [
-        ""
+        "Butonul de chemare al liftului.\nÎi duce pe locatari sus, la apartamente."
       ]
     },
     "10423": {
@@ -69,7 +69,7 @@
         "Letterboxes for the flats upstairs."
       ],
       "text": [
-        ""
+        "Cutii poștale pentru apartamentele de la etaj."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Charles"
         ],
         "text": [
-          ""
+          "Charles"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The name's Charles. I learned a battle style with three Pokémon out at once to impress a girl. She wasn't impressed."
         ],
         "text": [
-          ""
+          "Mă cheamă Charles. Am învățat un stil de luptă cu trei Pokémoni afară deodată ca să impresionez o fată. Nu a fost impresionată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Former Member"
         ],
         "text": [
-          ""
+          "Fost membru"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "This is between me and my old friend. Beat it!"
         ],
         "text": [
-          ""
+          "Asta e între mine și vechiul meu prieten. Pleacă!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Rood"
         ],
         "text": [
-          ""
+          "Rood"
         ]
       }
     },
@@ -72,7 +72,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -80,7 +80,7 @@
           "Hold it right there!"
         ],
         "text": [
-          ""
+          "Stai pe loc!"
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Clay"
         ],
         "text": [
-          ""
+          "Clay"
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -108,7 +108,7 @@
           "Welcome to Driftveil! Ships from all over the world tie up at our docks."
         ],
         "text": [
-          ""
+          "Bun venit la Driftveil! Vapoare din toată lumea acostează în docurile noastre."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -126,7 +126,7 @@
           "My Lillipup and I train on the quay every morning. The sea air is good for both of us!"
         ],
         "text": [
-          ""
+          "Lillipup-ul meu și cu mine ne antrenăm pe chei în fiecare dimineață. Aerul mării ne prinde bine amândurora!"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -144,7 +144,7 @@
           "The Cold Storage used to stand over there. Remember it? ...No? Funny, I'm forgetting it myself."
         ],
         "text": [
-          ""
+          "Cold Storage stătea acolo. Îți amintești? ...Nu? Ciudat, nici eu nu mi-l mai amintesc."
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -162,7 +162,7 @@
           "Clay's Gym is down in a mine. You ride lifts all the way down to the bottom!"
         ],
         "text": [
-          ""
+          "Arena lui Clay e într-o mină. Cobori cu lifturi până în fund!"
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -180,7 +180,7 @@
           "Bridges join lands, and battles join people. So Pokémon are a kind of bridge too!"
         ],
         "text": [
-          ""
+          "Podurile unesc ținuturile, iar luptele unesc oamenii. Deci și Pokémonii sunt un fel de pod!"
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -198,7 +198,7 @@
           "There's a story about a Pokémon of thunder and a Pokémon of wind who made trouble everywhere, until a Pokémon of the earth stopped them!"
         ],
         "text": [
-          ""
+          "Se spune că un Pokémon al tunetului și unul al vântului făceau numai probleme peste tot, până ce un Pokémon al pământului i-a oprit!"
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "dialog": {
@@ -216,7 +216,7 @@
           "I want my Pokémon to grow so strong it never has to lose. That's love, that is."
         ],
         "text": [
-          ""
+          "Vreau ca Pokémonul meu să devină atât de puternic încât să nu piardă niciodată. Asta e dragoste, nu glumă."
         ]
       }
     },
@@ -226,7 +226,7 @@
           "Roughneck"
         ],
         "text": [
-          ""
+          "Bătăuș"
         ]
       },
       "dialog": {
@@ -234,7 +234,7 @@
           "Team Plasma took my Pokémon once, long ago. They gave it back in the end. Funny lot."
         ],
         "text": [
-          ""
+          "Echipa Plasma mi-a luat Pokémonul odată, demult. Mi l-au dat înapoi până la urmă. Ciudați oameni."
         ]
       }
     },
@@ -244,7 +244,7 @@
           "Twins"
         ],
         "text": [
-          ""
+          "Gemenii"
         ]
       },
       "dialog": {
@@ -252,7 +252,7 @@
           "The market sells things from all over the world! We like the sweets best."
         ],
         "text": [
-          ""
+          "Piața vinde lucruri din toată lumea! Nouă ne plac cel mai mult dulciurile."
         ]
       }
     },
@@ -262,7 +262,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Backers"
         ]
       },
       "dialog": {
@@ -270,7 +270,7 @@
           "The Pokémon World Tournament is just south of the city. Trainers from every region battle there!"
         ],
         "text": [
-          ""
+          "Pokémon World Tournament e chiar la sud de oraș. Antrenori din fiecare regiune se luptă acolo!"
         ]
       }
     },
@@ -280,7 +280,7 @@
           "Lillipup"
         ],
         "text": [
-          ""
+          "Lillipup"
         ]
       },
       "dialog": {
@@ -288,7 +288,7 @@
           "Lillipup: Yip! Yip!"
         ],
         "text": [
-          ""
+          "Lillipup: Ham! Ham!"
         ]
       }
     },
@@ -298,7 +298,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitor"
         ]
       },
       "dialog": {
@@ -306,7 +306,7 @@
           "We've started digging a shortcut to Twist Mountain. The rock's hard going, though. It'll take a while!"
         ],
         "text": [
-          ""
+          "Am început să săpăm o scurtătură spre Twist Mountain. Stânca e grea, însă. Va dura!"
         ]
       }
     },
@@ -316,7 +316,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -326,7 +326,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     }
@@ -337,7 +337,7 @@
         "Welcome to Driftveil City!"
       ],
       "text": [
-        ""
+        "Bun venit în Orașul Driftveil!"
       ]
     },
     "2": {
@@ -345,7 +345,7 @@
         "Driftveil Drawbridge"
       ],
       "text": [
-        ""
+        "Podul Mobil Driftveil"
       ]
     },
     "3": {
@@ -353,7 +353,7 @@
         "Driftveil City\nThe city of billowing sails"
       ],
       "text": [
-        ""
+        "Orașul Driftveil\nOrașul pânzelor umflate"
       ]
     },
     "4": {
@@ -361,7 +361,7 @@
         "Driftveil Market\nGoods from every port"
       ],
       "text": [
-        ""
+        "Piața Driftveil\nMărfuri din fiecare port"
       ]
     },
     "5": {
@@ -369,7 +369,7 @@
         "Driftveil City Pokémon Gym\nLeader: Clay, the boss of the mines"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Driftveil City\nLider: Clay, șeful minelor"
       ]
     },
     "26": {
@@ -377,7 +377,7 @@
         "Clay Tunnel ahead\nWorks in progress"
       ],
       "text": [
-        ""
+        "Tunelul lui Clay în față\nLucrări în curs"
       ]
     }
   }

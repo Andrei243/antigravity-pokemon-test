@@ -138,6 +138,8 @@ internal static partial class BuildingArt
             Architecture.Funfair => Pitched(WallKind.Clapboard, Rgb(222, 64, 88)) with { Shutters = true },
             // Driftveil's (plan 22 · U6, part b): red brick under slate-blue gables with a chimney, the port's warehouses
             Architecture.Storehouse => Pitched(WallKind.Brick, Rgb(70, 96, 128)) with { Chimney = true },
+            // Anville's (plan 22 · U6, part c): weathered boards under rust-red gables with a chimney, the railway town
+            Architecture.Railyard => Pitched(WallKind.Boards, Rgb(150, 70, 48)) with { Chimney = true },
             Architecture.Crater => Pitched(WallKind.PaleStone, Rgb(46, 96, 168), RoofShape.Hip) with { Shutters = true },
             Architecture.Raft => Pitched(WallKind.Log, Rgb(206, 166, 92)) with { Shutters = true },
             Architecture.Bloomstone => Pitched(WallKind.PaleStone, Rgb(190, 92, 132), RoofShape.Hip) with { FlowerBoxes = true },

@@ -1,0 +1,20 @@
+{
+  // The Relic Castle (plan 22 · U6, part c): Black 2's ruin half sunk in the Desert Resort, our words. Two flights of
+  // stairs lead down, and the floor's two sand pits (the original's triggers 0 and 1, Black 2's MapChangeQuicksand) drop
+  // whoever steps into them to the floor below (relic_castle.txt). A Psychic battles; the scientist (1) only talks
+  "area": "relic_castle",
+  "bgmTrack": "unova/relic_castle",
+  "battleArena": "Cave",
+  "triggers": [
+    { "trigger": 0, "script": "SandPitWest" },
+    { "trigger": 1, "script": "SandPitEast" }
+  ],
+  "people": {
+    "0": { "name": "Perry", "trainer": { "dialogueBefore": "The ancients built this castle to last. Will your team last against me?", "dialogueAfter": "Swallowed by the sands of defeat..." } },
+    "1": {
+      "name": "Scientist",
+      "npcType": "scientist",
+      "dialog": [ "Mind the sand pits! Step in one and down you go, a whole floor in a moment. I've done it three times today." ]
+    }
+  }
+}

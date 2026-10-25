@@ -44,8 +44,10 @@ public partial class GameEngine
         var wild = entry.Shiny
             ? new Pokemon(wildSpecies, lvl, Personality.ShinyWith(wildSpecies, PlayerIdentity.Number, rng, entry.Gender, entry.Nature), rng)
             : new Pokemon(wildSpecies, lvl, gender: entry.Gender, nature: entry.Nature);
+        // The Shiny Charm's two extra rolls (plan 13 · V5), keeping what the lead's ability chose; none without the charm
+        if (!entry.Shiny) ShinyCharm.Roll(wild, flow.Bag, rng, entry.Gender, entry.Nature);
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
-        var area = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
+        var area =flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
@@ -68,6 +70,7 @@ public partial class GameEngine
             {
                 var otherSpecies = PokemonDatabase.Get(other.SpeciesName)!;
                 second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
+                ShinyCharm.Roll(second, flow.Bag, rng, other.Gender, other.Nature);
                 if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
                 DressForTheSeason(second);
             }
@@ -84,6 +87,13 @@ public partial class GameEngine
     /// </summary>
     private NuzlockeCatch MeetUnderTheRun(Pokemon wild) => InBugContest ? NuzlockeCatch.Free
         : Nuzlocke.Meet(flow.Run, flow.RunState, Nuzlocke.PlaceKeyOf(flow.Map, flow.Player.GridX, flow.Player.GridY), wild, flow.Pokedex);
+
+    /// <summary>What the run restricts in a battle (plan 13 · V5): none in the assistant's lesson, which isn't the player's; null under a run with nothing to restrict.</summary>
+    private RunTerms? RunTermsFor(BattleKind kind) => kind == BattleKind.CatchingLesson ? null : flow.Run.BattleTerms();
+
+    /// <summary>The Nuzlocke's word on a Pokémon a script puts in the player's way (a static encounter, plan 13 · V4's gifts clause); free without the clause.</summary>
+    private NuzlockeCatch MeetStaticUnderTheRun(Pokemon wild) =>
+        Nuzlocke.MeetStatic(flow.Run, flow.RunState, Nuzlocke.PlaceKeyOf(flow.Map, flow.Player.GridX, flow.Player.GridY), wild, flow.Pokedex);
 
     /// <summary>What a battle is told of the Nuzlocke (plan 13 · V4): null under any other run and in the assistant's lesson, which isn't the player's.</summary>
     private NuzlockeTerms? NuzlockeTermsFor(BattleKind kind, NuzlockeCatch catching = NuzlockeCatch.Free) =>
@@ -171,6 +181,7 @@ public partial class GameEngine
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
                 Nuzlocke = NuzlockeTermsFor(kind, nuzlockeCatch),
+                Restrictions = RunTermsFor(kind),
                 Scene = Settings.BattleScene
             });
             // A Pokémon hooked on a rod is fought on the water's stage, as a surfer's is (the original's water
@@ -457,10 +468,11 @@ public partial class GameEngine
                 MoveHints = MoveHintsOn,
                 TrainerLines = TrainerLinesOn,
                 // Platinum's two battle options (plan 08 · P1): the core offers only where a single battle allows it
-                OffersSwitch = Settings.BattleStyle == BattleStyle.Shift,
+                OffersSwitch = Settings.BattleStyle == BattleStyle.Shift && !flow.Run.SetStyle,
                 Difficulty = flow.Run.Difficulty,
                 RunLevelCap = CurrentLevelCap() ?? 0,
                 Nuzlocke = NuzlockeTermsFor(BattleKind.Normal),
+                Restrictions = RunTermsFor(BattleKind.Normal),
                 Scene = Settings.BattleScene
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
@@ -533,6 +545,8 @@ public partial class GameEngine
     private void EndBattle()
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
+        // A battle over, or a Pokémon caught in it, is worth an autosave once the field is free again (plan 12 · Q3)
+        AutosaveSoon(flow.Battle?.Caught != null ? AutosaveMoment.Catch : AutosaveMoment.Battle);
         ScoreBattle();
         // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
         KeepTheRecord(flow.Battle);

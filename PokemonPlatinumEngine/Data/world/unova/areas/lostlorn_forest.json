@@ -1,0 +1,116 @@
+{
+  "key": "lostlorn_forest",
+  "index": 385,
+  "name": "Lostlorn Forest",
+  "matrix": 238,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Forest",
+  "dayMusic": "BGM_D_06",
+  "nightMusic": "BGM_D_06",
+  "encounters": "ENCOUNTERS_LOSTLORN_FOREST",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Cottonee", "level": 21 },
+    { "species": "Swadloon", "level": 21 },
+    { "species": "Combee", "level": 22 },
+    { "species": "Venipede", "level": 21 },
+    { "species": "Roselia", "level": 23 },
+    { "species": "Venipede", "level": 21 },
+    { "species": "Roselia", "level": 24 },
+    { "species": "Heracross", "level": 24 },
+    { "species": "Cottonee", "level": 23 },
+    { "species": "Swadloon", "level": 24 },
+    { "species": "Cottonee", "level": 24 },
+    { "species": "Swadloon", "level": 24 }
+  ],
+  "landRate": 13,
+  "water": [
+    { "species": "Basculin", "level": 10, "maxLevel": 25 },
+    { "species": "Buizel", "level": 10, "maxLevel": 25 },
+    { "species": "Basculin", "level": 10, "maxLevel": 25 },
+    { "species": "Basculin", "level": 10, "maxLevel": 25 },
+    { "species": "Basculin", "level": 10, "maxLevel": 25 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "darkGrass": [
+    { "species": "Cottonee", "level": 23 },
+    { "species": "Swadloon", "level": 23 },
+    { "species": "Combee", "level": 24 },
+    { "species": "Whirlipede", "level": 23 },
+    { "species": "Roselia", "level": 25 },
+    { "species": "Whirlipede", "level": 23 },
+    { "species": "Roselia", "level": 26 },
+    { "species": "Heracross", "level": 26 },
+    { "species": "Cottonee", "level": 25 },
+    { "species": "Swadloon", "level": 26 },
+    { "species": "Cottonee", "level": 26 },
+    { "species": "Swadloon", "level": 26 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 21 },
+    { "species": "Audino", "level": 23 },
+    { "species": "Emolga", "level": 22 },
+    { "species": "Pansage", "level": 22 },
+    { "species": "Pansear", "level": 22 },
+    { "species": "Panpour", "level": 22 },
+    { "species": "Vespiquen", "level": 24 },
+    { "species": "Roserade", "level": 24 },
+    { "species": "Leavanny", "level": 24 },
+    { "species": "Whimsicott", "level": 24 },
+    { "species": "Leavanny", "level": 24 },
+    { "species": "Whimsicott", "level": 24 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Buizel", "level": 10, "maxLevel": 30 },
+    { "species": "Basculin", "level": 10, "maxLevel": 30 },
+    { "species": "Floatzel", "level": 10, "maxLevel": 30 },
+    { "species": "Floatzel", "level": 10, "maxLevel": 30 },
+    { "species": "Floatzel", "level": 10, "maxLevel": 30 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 12, "z": 52, "to": "unova_route_16", "toWarp": 2 },
+    { "x": 13, "z": 52, "to": "unova_route_16", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "pkmn_breeder_m", "movement": "look_north_and_east", "x": 11, "z": 43, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PKMN_BREEDER_GALEN" },
+    { "id": "1", "looks": "pkmn_ranger_f", "movement": "none", "x": 11, "z": 34, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_PKMN_RANGER_SERENITY" },
+    { "id": "2", "looks": "pkmn_ranger_m", "movement": "wander_around", "x": 17, "z": 23, "facing": 0, "rangeX": 8, "rangeZ": 8, "trainer": "sees", "sight": 2, "script": "TRAINER_PKMN_RANGER_FORREST" },
+    { "id": "3", "looks": "veteran_m", "movement": "none", "x": 20, "z": 38, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_VETERAN_MURPHY" },
+    { "id": "4", "looks": "210", "movement": "none", "x": 12, "z": 41, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x048d", "item": "Ultra Ball", "script": "7065" },
+    { "id": "5", "looks": "216", "movement": "none", "x": 27, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x048e", "item": "Rare Candy", "script": "7066" },
+    { "id": "6", "looks": "110", "movement": "none", "x": 28, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x048f", "item": "Net Ball", "script": "7067" },
+    { "id": "7", "looks": "backpacker_m", "movement": "none", "x": 8, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c7", "script": "1" }
+  ],
+  "signs": [
+    { "x": 6, "z": 24, "type": 2, "script": "8184", "item": "Leaf Stone", "flag": "FLAG_UNOVA_0x0bbc" },
+    { "x": 19, "z": 33, "type": 2, "script": "8185", "item": "Grass Gem", "flag": "FLAG_UNOVA_0x0bbd" },
+    { "x": 22, "z": 9, "type": 0, "script": "10797" },
+    { "x": 23, "z": 9, "type": 0, "script": "10797" }
+  ],
+  "triggers": []
+}

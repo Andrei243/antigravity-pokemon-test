@@ -1,0 +1,110 @@
+{
+  "Market": [
+    {
+      "en": [
+        "Shopkeeper"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the avenue's market! Balls, medicine, everything a Trainer needs for the road ahead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for shopping on Join Avenue! Tell your friends!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Flowers": [
+    {
+      "en": [
+        "Florist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello there! Mulch for your berries, and sweet honey for the Pokémon who love it. Have a look!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grow something lovely! Come back and tell me how it turned out."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Cafe": [
+    {
+      "en": [
+        "Waitress"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the café! Something cold to drink before you head into Nimbasa?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Enjoy! And mind the crowds on the way into the city."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MarketSign": [
+    {
+      "en": [
+        "Join Avenue Market\nEverything for the road ahead!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FlowersSign": [
+    {
+      "en": [
+        "Join Avenue Flowers\nMulch and honey for growing things."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CafeSign": [
+    {
+      "en": [
+        "Join Avenue Café\nCold drinks all day long."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

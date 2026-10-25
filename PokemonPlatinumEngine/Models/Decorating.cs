@@ -8,6 +8,9 @@ namespace PokemonPlatinumEngine.Models;
 /// <summary>A kind of thing a room can be decorated with: its name and the tiles it takes, east and south from its corner.</summary>
 public sealed record DecorationKind(int Id, string Name, int Width, int Depth);
 
+/// <summary>What a tile of a room to decorate is, for its plan: floor, the wall a poster hangs on, or rock nothing goes on.</summary>
+public enum RoomTile { Floor, Wall, Rock }
+
 /// <summary>One thing in the store a room is decorated from: its kind, and whether it stands in the room now.</summary>
 public sealed class StoredDecoration
 {
@@ -60,6 +63,15 @@ public sealed class DecorationRoom
     /// <summary>What to say once a fixture has been taken away for good (a boulder cleared); null to say nothing more.</summary>
     public Func<RoomPiece, string?> AfterTakingAway { get; init; } = _ => null;
 
+    /// <summary>
+    /// The room's own say whether a piece may hang with its corner on a tile, beyond the bounds and what stands there
+    /// (plan 21 · H10: a secret base's poster only on its wall, a desk only on its floor); null where the floor is all alike.
+    /// </summary>
+    public Func<RoomPiece, int, int, bool>? Allows { get; init; }
+
+    /// <summary>What each tile of the room's rectangle is, for its plan (plan 21 · H10: a cave's base is no rectangle); null for floor all over.</summary>
+    public Func<int, int, RoomTile>? TileAt { get; init; }
+
     public bool Inside(int x, int y, int width = 1, int depth = 1) => x >= Left && y >= Top && x + width <= Left + Width && y + depth <= Top + Height;
 
     public RoomPiece? PieceAt(int x, int y) => Pieces.FirstOrDefault(p => p.Covers(x, y));
@@ -71,7 +83,8 @@ public sealed class DecorationRoom
     public bool CanStand(int x, int y, int width, int depth, RoomPiece? except = null) =>
         Inside(x, y, width, depth)
         && !Pieces.Any(p => p != except && p.Overlaps(x, y, width, depth))
-        && !KeptClear.Any(t => t.X >= x && t.X < x + width && t.Y >= y && t.Y < y + depth);
+        && !KeptClear.Any(t => t.X >= x && t.X < x + width && t.Y >= y && t.Y < y + depth)
+        && (Allows == null || except == null || Allows(except, x, y));
 }
 
 /// <summary>What the decorating is at.</summary>

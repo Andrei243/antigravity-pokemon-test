@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Battle Institute, where Trainers are tested and ranked! I'm sorry, the link for the tests is closed for now."
         ],
         "text": [
-          ""
+          "Bun venit la Battle Institute, unde Antrenorii sunt testați și clasați! Îmi pare rău, legătura pentru teste este închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Five battles in a row, and a score at the end. I want to see my name at the top of that board!"
         ],
         "text": [
-          ""
+          "Cinci lupte la rând și un scor la sfârșit. Vreau să-mi văd numele în fruntea tabelului!"
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Battle Institute\nTest your skills as a Trainer!"
       ],
       "text": [
-        ""
+        "Battle Institute\nPune-ți la încercare priceperea de Antrenor!"
       ]
     }
   }

@@ -1190,6 +1190,8 @@ public class FieldMovementTests
             // Nor do thin ice and a cracked floor: what gives way under a walker is the Sootopolis Gym's puzzle
             // (SootopolisIce) and a fall to the floor below its area names (Map.HoleTargetAt, plan 21 · H8, part c)
             changes |= behaviour is TileBehavior.ThinIce or TileBehavior.CrackedFloor;
+            // Nor does a secret base's spot: it is faced, and Secret Power opens it (Map.SecretBaseSpots, plan 21 · H10)
+            changes |= behaviour == TileBehavior.SecretBaseSpot;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

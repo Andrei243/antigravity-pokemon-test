@@ -1,0 +1,26 @@
+{
+  // The Relic Passage's west hall (plan 22 · U6, part c): Black 2's, our words. Its way up comes out beside the Pokémon
+  // World Tournament's grounds south of Driftveil City; a boulder (4) moves with Strength, and a worker (5) gathers shards
+  "area": "relic_passage_3",
+  "bgmTrack": "unova/relic_passage",
+  "holes": [
+    { "x": 35, "z": 23, "width": 2, "depth": 2, "filledBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_WEST" }
+  ],
+  "pits": [
+    { "x": 35, "z": 23, "script": "FillTheHole" },
+    { "x": 36, "z": 23, "script": "FillTheHole" },
+    { "x": 35, "z": 24, "script": "FillTheHole" },
+    { "x": 36, "z": 24, "script": "FillTheHole" }
+  ],
+  "people": {
+    "4": { "name": "Boulder", "hiddenBy": "FLAG_UNOVA_RELIC_PASSAGE_HOLE_WEST" },
+    "1": { "name": "Eileen", "trainer": { "dialogueBefore": "Which way is Driftveil? Never mind, let's battle first!", "dialogueAfter": "Up and to the left, I think. Good luck!" } },
+    "2": { "name": "Randall", "trainer": { "dialogueBefore": "I came all this way under the sea for a battle, and here you are!", "dialogueAfter": "Worth the walk, even so." } },
+    "3": { "name": "Keith", "trainer": { "dialogueBefore": "The rock down here is ancient and tough. So are my Pokémon!", "dialogueAfter": "Crumbled like sandstone." } },
+    "5": {
+      "name": "Worker",
+      "npcType": "worker",
+      "dialog": [ "I'm here collecting shards. Red, blue, yellow, green... the passage is full of them, if you look closely at the rocks." ]
+    }
+  }
+}
