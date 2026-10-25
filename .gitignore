@@ -56,3 +56,6 @@ migrate/
 
 # Gemini concept art (tools/GeminiArt): references for sculptors, unapproved until the user says
 tools/GeminiArt/out/
+
+# Tripo first-draft sculpts (tools/TripoSculpt): drafts to clean up in Blender, unapproved until the user says
+tools/TripoSculpt/out/
