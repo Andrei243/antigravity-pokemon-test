@@ -13180,6 +13180,13 @@
       "It swims under the ice of frozen lakes for weeks without coming up for air. A frill of frost runs all the way along its back."
     ]
   },
+  "Ursensei": {
+    "habitat": "Rare",
+    "entries": [
+      "It has climbed both of the old towers and read both of their scrolls. Students travel from every corner of Galar to train under it, and few of them last a week.",
+      "Its fists strike like a single blow or like a flood of a hundred, whichever its opponent least expects. It bows deeply before every bout and after every win."
+    ]
+  },
   "Regifulgur": {
     "habitat": "Rare",
     "entries": [
@@ -13647,6 +13654,111 @@
     "entries": [
       "It dances in the moonlight with its train spread wide. All who watch are charmed and forget what they were doing.",
       "Poison-green eyes mark the feathers of its sweeping train, and a fan of dark plumes frames its throat. It serves Pecharunt gracefully and demands nothing for itself."
+    ]
+  },
+  "Glimmane": {
+    "habitat": "Forest",
+    "entries": [
+      "Where it walks at night the moss glows behind it for an hour. Travellers lost in deep woods are said to find the path home by following its trail.",
+      "Its mane has grown into a cloak of pastel light that trails down to its hocks. The spiralled horn hums softly when someone nearby is feeling sad."
+    ]
+  },
+  "Slowslinger": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It draws faster than anything in the west of Galar, though it usually forgets what it was aiming at before it has fired a single shot.",
+      "A Shellder now clings to each of its arms, and both have grown long bores like barrels. It wears cuffs of braided twigs that it never takes off."
+    ]
+  },
+  "Purifume": {
+    "habitat": "Urban",
+    "entries": [
+      "Towns that once lay under smoke hold a festival when it drifts over. The air it leaves behind smells of fresh rain on summer grass.",
+      "A third body has risen between the other two, and each wears a tall black hat. Its row of chimney pots breathes out a pale green mist."
+    ]
+  },
+  "Hypnoskye": {
+    "habitat": "Rare",
+    "entries": [
+      "It looks down on everything from a great height. Those who meet its gaze stand still for hours, and afterwards they can never remember why.",
+      "Its feathers have become blades of violet light that hover apart from its wings. The eye at the end of its tail is said to watch whoever it passes."
+    ]
+  },
+  "Stridestorm": {
+    "habitat": "Rare",
+    "entries": [
+      "It runs across the hills faster than a car on the motorway. Its kicks have split boulders as large as a cottage clean down the middle.",
+      "Black bands circle its powerful knees, and its short wings fold back like a sprinter's arms. Hikers feel the ground shake long before it comes into view."
+    ]
+  },
+  "Duskphoenix": {
+    "habitat": "Rare",
+    "entries": [
+      "Its dark flame burns away the spirit, not the body. A forest it has passed over stands untouched and utterly silent for days afterwards.",
+      "A crown of black feathers sits upon its head, and its tail trails behind like a long train of smoke. Embers glow red and violet within it."
+    ]
+  },
+  "Slowmagus": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It mixes poisons in a cauldron by moonlight and pours out medicines. Nobody has learned which of its brews is which before tasting them.",
+      "The Shellder on its head has grown into a tall crown of spiral shell. A little flask of poison always hangs at its waist, sealed with a cork of bark."
+    ]
+  },
+  "Frostruma": {
+    "habitat": "Mountain",
+    "entries": [
+      "It keeps a fire burning inside a ball of ice and hurls the ball at whatever crosses its snowfield. The ice never melts, and the fire never goes out.",
+      "The flame on its brow has been lit again under its frost. Its broad feet carry its great weight over deep snowdrifts without ever sinking."
+    ]
+  },
+  "Snareflat": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It lies flat in the mud of the marshes and waits for a whole season. A careless step on its back sets off two jaws at once.",
+      "A fringe of brown weed along its edges hides it completely in mud. It hunts best in heavy rain, when nothing can see the water ripple above it."
+    ]
+  },
+  "Obsidhound": {
+    "habitat": "Mountain",
+    "entries": [
+      "Legends of Hisui say it once held back a lava flow alone to save a village. Its plates of black glass stay warm a full day after it sleeps.",
+      "A helmet of obsidian covers its brow and runs down its back in heavy plates. Flames lick out between them whenever it is ready to fight."
+    ]
+  },
+  "Apricharge": {
+    "habitat": "Forest",
+    "entries": [
+      "It ripens on the branch like an Apricorn. Picked too soon it bursts, so the orchard keepers of old Hisui wore helmets at harvest time.",
+      "A stalk and two leaves sprout from its crown, and its shell has split into segments like ripe fruit. Sparks crackle in the gaps between them."
+    ]
+  },
+  "Fandangleaf": {
+    "habitat": "Mountain",
+    "entries": [
+      "Its dance and its fighting are one art. The snap of its fans opening can be heard across a valley, and so can the kick that follows.",
+      "The leaves on its arms have grown into two broad fans, and its skirt of leaves flares wide when it spins. The flower crowning its head blooms twice over."
+    ]
+  },
+  "Spectrevix": {
+    "habitat": "RoughTerrain",
+    "entries": [
+      "It gathers the grudges of those turned away in the cold and wears them as illusions. Whoever sees one sees the face of someone they once wronged.",
+      "A second, ghostly tail fades away at its end, and its claws leave trails of pale light. It walks abroad only after the sun has set."
+    ]
+  },
+  "Augurhawk": {
+    "habitat": "Mountain",
+    "entries": [
+      "It flies in patterns over the cliffs at noon. The people of old read the coming season in the glowing signs it left in the air.",
+      "A pale ring surrounds each of its eyes, and a crest of long feathers sweeps back from its head. Its wingtips glow pink as it soars."
+    ]
+  },
+  "Bergbreaker": {
+    "habitat": "Sea",
+    "entries": [
+      "It breaks through sea ice as thick as a house. Bergmite live in the cracks of its back and are carried along with it across the frozen sea.",
+      "Its jaw of rock and ice juts forward like the bow of a ship. Slabs of tilted ice cover its back, groaning loudly whenever it moves."
     ]
   }
 }

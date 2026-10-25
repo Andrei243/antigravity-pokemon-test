@@ -27,7 +27,7 @@ public static class DexText
     public static string Compose(PokemonSpecies species, IEnumerable<PokemonSpecies> all)
     {
         var from = all.FirstOrDefault(o => o.Evolutions?.Any(e => e.TargetSpecies == species.Name) == true);
-        int generation = Math.Clamp(species.Generation == 0 && from != null ? from.Generation : species.Generation, 1, 9);
+        int generation = Math.Clamp(species.Generation == 0 && from != null ? FoundIn(species, from) : species.Generation, 1, 9);
         string region = Text.Of($"dexText.region.{generation}");
         string types = species.SecondaryType is { } second
             ? Text.Of("dexText.typeTwo", ("first", Words.Type(species.PrimaryType)), ("second", Words.Type(second)))
@@ -46,6 +46,18 @@ public static class DexText
                     ("rest", string.Join(Text.Of("dexText.listSeparator"), into.SkipLast(1))), ("last", into[^1])))));
         }
         return text;
+    }
+
+    /// <summary>
+    /// The generation a species of ours is told of as first found in: its forebear's, or, grown from a regional form
+    /// (plan 03 · D14, the Galar supplement), the generation that form came with (Alola's 7, Galar's and Hisui's 8, Paldea's 9).
+    /// </summary>
+    private static int FoundIn(PokemonSpecies ours, PokemonSpecies from)
+    {
+        var form = from.Evolutions!.First(e => e.TargetSpecies == ours.Name).FromForm;
+        if (form == null) return from.Generation;
+        var parts = form.Split('-');
+        return parts.Contains("Alola") ? 7 : parts.Contains("Galar") || parts.Contains("Hisui") ? 8 : parts.Contains("Paldea") ? 9 : from.Generation;
     }
 
     /// <summary>A height or weight to up to two places, at least one, with the language's own decimal mark (<c>0.7</c>, <c>1.25</c>, <c>905.0</c>).</summary>
