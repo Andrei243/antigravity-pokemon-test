@@ -69,6 +69,8 @@ public sealed partial class BattleCore
     {
         var b = At(choice.Who);
         if (!b.IsActive) return Text.Of("battle.thereIsNoPokemon");
+        // A move chosen for a Pokémon behind the front of a rotation battle's turntable (plan 14 · B7)
+        if (choice.Rotation != 0) return WhyNotRotation(choice);
         // A Mega Evolution goes with a move and where the rules let it (plan 06 · R20)
         if (choice.Mega && (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove)) return Text.Of("battle.cantMegaEvolve", ("pokemon", b.Name));
         if (choice.Mega && WhyNotMega(b) is { } noMega) return noMega;

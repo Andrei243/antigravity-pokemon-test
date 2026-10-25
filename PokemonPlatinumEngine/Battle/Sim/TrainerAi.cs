@@ -36,7 +36,8 @@ public sealed class TrainerAi : IBattleController
     /// </summary>
     private static BattleChoice WithTheLaterMechanics(BattleCore battle, Battler mine, BattleChoice choice)
     {
-        if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove) return choice;
+        // A move chosen with a turn of a rotation battle's turntable goes alone (plan 14 · B7)
+        if (choice.Kind != ChoiceKind.Fight || choice.Move == BattleChoice.HeldMove || choice.Rotation != 0) return choice;
         if (battle.CanMegaEvolve(mine)) choice = choice with { Mega = true };
         if (battle.CanUltraBurst(mine)) choice = choice with { UltraBurst = true };
         if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move)) choice = choice with { ZMove = true };
@@ -63,8 +64,54 @@ public sealed class TrainerAi : IBattleController
             if (ShouldSwitch(battle, mine)) return BattleChoice.Switch(mine.Place, SwitchTarget(battle, mine));
             if (ShouldUseItem(battle, mine) is { } item) return BattleChoice.UseItem(mine.Place, item);
         }
+        // A rotation battle turns to whichever of its three has the best move against the front (plan 14 · B7)
+        if (battle.IsRotation) return Rotating(battle, mine, flags);
         // A triple battle is thought through as a double is, over every place in reach (plan 14 · B6)
         return battle.IsDouble || battle.IsTriple ? Doubles(battle, mine, flags) : Singles(battle, mine, flags);
+    }
+
+    /// <summary>
+    /// A rotation battle (plan 14 · B7; a rule of ours, since Platinum's AI never rotated): the Pokémon of the three on
+    /// the turntable whose best move scores highest against the foe in front (<see cref="RotationScore"/>) is turned to,
+    /// the one in front where it scores as well as any, and its move is then chosen as a single battle's is, with the
+    /// turntable turned for the asking and back. Nothing is drawn for the turn itself.
+    /// </summary>
+    private static BattleChoice Rotating(BattleCore battle, Battler mine, AiFlags flags)
+    {
+        var foe = battle.ActiveFoes(mine).FirstOrDefault();
+        int way = 0;
+        if (foe != null && !mine.IsHeldToItsMove && !mine.Volatile.Dynamaxed)
+        {
+            int best = RotationScore(battle, mine.Pokemon!, mine, foe);
+            foreach (int turn in new[] { 1, -1 })
+            {
+                if (battle.RotatesIn(mine, turn) is not { IsFainted: false } behind) continue;
+                int score = RotationScore(battle, behind, mine, foe);
+                if (score > best) (best, way) = (score, turn);
+            }
+        }
+        if (way == 0) return Singles(battle, mine, flags);
+        var chosen = battle.WithRotated(mine, way, () => Singles(battle, mine, flags));
+        return chosen.Kind == ChoiceKind.Fight && chosen.Move != BattleChoice.HeldMove && battle.WhyNot(chosen with { Rotation = way }) == null
+            ? chosen with { Rotation = way } : Singles(battle, mine, flags);
+    }
+
+    /// <summary>
+    /// How well a Pokémon of the turntable would do against the foe in front (plan 14 · B7): its best damaging move with
+    /// PP left, by power, the battle's type chart against the foe's types and the same-type bonus, in tenths.
+    /// </summary>
+    internal static int RotationScore(BattleCore battle, Pokemon who, Battler place, Battler foe)
+    {
+        int best = 0;
+        var types = foe.Types;
+        foreach (var move in who.Moves)
+        {
+            if (move.Category == MoveCategory.Status || move.Power <= 1 || move.CurrentPP <= 0) continue;
+            float chart = TypeChart.GetEffectiveness(move.Type, types[0], types.Count > 1 ? types[1] : null, battle.Rules, battle.Field.Inverse);
+            float same = who.PrimaryType == move.Type || who.SecondaryType == move.Type ? 1.5f : 1f;
+            best = Math.Max(best, (int)(move.Power * chart * same * 10f));
+        }
+        return best;
     }
 
     public int ChooseReplacement(BattleCore battle, Battler place)

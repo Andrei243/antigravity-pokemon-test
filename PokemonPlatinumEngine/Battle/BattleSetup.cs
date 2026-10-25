@@ -45,7 +45,14 @@ public enum BattleFormat
     /// it (<see cref="Data.Ruleset.Triples"/>) with three able to fight on each side; anywhere else it is the double, or the
     /// single, the sides can field (<see cref="BattleFormats.FallBack"/>).
     /// </summary>
-    Triple
+    Triple,
+    /// <summary>
+    /// A rotation battle (plan 14 · B7, Black and White's): three of each side's Pokémon stand on a turntable and only the
+    /// one in front fights; a move may be chosen for one of the other two, which rotates to the front as the turn begins
+    /// (<see cref="Sim.BattleChoice.Rotation"/>). Fought only under rules that have it (<see cref="Data.Ruleset.Rotations"/>)
+    /// against one trainer with three able on each side; anywhere else it is the single it began as (<see cref="BattleFormats.FallBack"/>).
+    /// </summary>
+    Rotation
 }
 
 /// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
@@ -92,6 +99,14 @@ public static class BattleFormats
             if (!partner && rules.Triples && ownAble >= 3 && (trainers == 0 ? wild >= 3 : trainers == 1 && foesAble >= 3) && kind == BattleKind.Normal)
                 return BattleFormat.Triple;
             asked = BattleFormat.Double;
+        }
+        // A rotation battle (plan 14 · B7): one place a side with two more Pokémon on the turntable behind it, the player
+        // alone with three able against one trainer's three, under rules that have it; otherwise the single it began as
+        if (asked == BattleFormat.Rotation)
+        {
+            if (!partner && rules.Rotations && ownAble >= 3 && trainers == 1 && foesAble >= 3 && kind == BattleKind.Normal)
+                return BattleFormat.Rotation;
+            asked = BattleFormat.Single;
         }
         return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
     }

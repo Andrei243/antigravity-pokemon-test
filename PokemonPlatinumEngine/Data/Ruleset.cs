@@ -300,6 +300,13 @@ public sealed class Ruleset
     /// </summary>
     public bool Triples { get; private init; }
 
+    /// <summary>
+    /// Rotation battles (plan 14 · B7; Black and White's): a battle asked for as a <see cref="Battle.BattleFormat.Rotation"/>
+    /// is fought with three on each side's turntable, the front one fighting. Platinum has none, and under its rules such a
+    /// battle is a single (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool Rotations { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -362,7 +369,8 @@ public sealed class Ruleset
         LaterBalls = true,
         Hordes = true,
         SosCalls = true,
-        Triples = true
+        Triples = true,
+        Rotations = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

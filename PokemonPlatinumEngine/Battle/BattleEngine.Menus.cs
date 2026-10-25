@@ -155,6 +155,7 @@ public partial class BattleEngine
         ZArmed = false;
         DynamaxArmed = false;
         TeraArmed = false;
+        RotationArmed = 0;
         // Only the Pokémon the rules ask about: one in the middle of a move has nothing to choose
         asked = core.Request is ActionRequest request ? request.Places.Where(p => p.Side == BattleSide.Player).Select(p => p.Slot).ToList() : new List<int>();
         menuSlot = asked.Count > 0 ? asked[0] : 0;
@@ -195,6 +196,9 @@ public partial class BattleEngine
         choice = WithDynamaxArmed(choice);
         // And with the Terastallization armed for it (plan 06 · R23)
         choice = WithTeraArmed(choice);
+        // A move chosen with a turn of a rotation battle's turntable goes alone (plan 14 · B7)
+        if (choice.Rotation != 0) choice = choice with { Mega = false, ZMove = false, UltraBurst = false, Dynamax = false, Terastallize = false };
+        RotationArmed = 0;
         choices[menuSlot] = choice;
 
         // Running is for the whole side: nobody else is asked
@@ -275,17 +279,19 @@ public partial class BattleEngine
         switch (index)
         {
             case 0:
-                if (core.UsableMoves(InCore(MenuBattler)).Count == 0)
+                if (FighterUsableMoves().Count == 0)
                 {
-                    // Nothing left to use: it struggles
+                    // Nothing left to use: it struggles (in a rotation battle, the one the turntable is turned to: plan 14 · B7)
                     var place = MenuBattler.Place;
-                    QueueMessage(Text.Of("battle.hasNoMovesLeft", ("pokemon", MenuBattler.Name)), () => Commit(BattleChoice.Fight(place, -1)));
+                    int way = RotationArmed;
+                    QueueMessage(Text.Of("battle.hasNoMovesLeft", ("pokemon", way == 0 ? MenuBattler.Name : Fighter.DisplayName)),
+                        () => Commit(BattleChoice.Fight(place, -1) with { Rotation = way }));
                     Pump();
                     return;
                 }
                 HUD.MenuState = BattleMenuState.Moves;
                 // The cursor waits on the move this Pokémon chose last
-                HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(MenuBattler.Pokemon!), 0, Math.Max(0, MenuBattler.Pokemon!.Moves.Count - 1));
+                HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(Fighter), 0, Math.Max(0, Fighter.Moves.Count - 1));
                 break;
             case 1:
                 // The Battle Frontier lets nothing out of the Bag, and says so at once (PLAYER_INPUT_ITEM)
@@ -343,24 +349,68 @@ public partial class BattleEngine
         Commit(BattleChoice.Shift(MenuBattler.Place));
     }
 
+    /// <summary>
+    /// The turn of a rotation battle's turntable armed for the move to be chosen (plan 14 · B7; style guide, "Battle
+    /// panels", "The rotation arrows"): 0 to fight with the one in front, +1 or −1 to turn to a seat behind first.
+    /// Turned with the shoulder buttons in the commands and the move menu (<see cref="RotateChoice"/>).
+    /// </summary>
+    public int RotationArmed { get; private set; }
+
+    /// <summary>
+    /// The Pokémon whose moves are being chosen: the one in front, or in a rotation battle the one the turntable is
+    /// turned to (the game's own Pokémon, as the screen shows it).
+    /// </summary>
+    public Pokemon Fighter => RotationArmed != 0 && core.RotatesIn(InCore(MenuBattler), RotationArmed) is { } behind ? mirror.Shown(behind) : MenuBattler.Pokemon!;
+
+    /// <summary>The moves <see cref="Fighter"/> may pick this turn, as the rules have them.</summary>
+    private List<Move> FighterUsableMoves()
+    {
+        var mine = InCore(MenuBattler);
+        return core.WithRotated(mine, RotationArmed, () => core.UsableMoves(mine));
+    }
+
+    /// <summary>
+    /// Turns the armed turntable toward <paramref name="way"/> (+1 or −1) in a rotation battle's commands or move menu,
+    /// or back to the front when it is already turned that way (plan 14 · B7). False, and nothing changes, where it
+    /// can't: no rotation battle, another menu, or a seat whose Pokémon can't fight.
+    /// </summary>
+    public bool RotateChoice(int way)
+    {
+        if (!IsRotation || HUD.MenuState is not (BattleMenuState.Main or BattleMenuState.Moves) || way is not (1 or -1)) return false;
+        int next = RotationArmed == way ? 0 : way;
+        if (next != 0 && core.RotatesIn(InCore(MenuBattler), next) is not { IsFainted: false }) return false;
+        RotationArmed = next;
+        if (HUD.MenuState == BattleMenuState.Moves)
+            HUD.MoveMenuIndex = Math.Clamp(lastMove.GetValueOrDefault(Fighter), 0, Math.Max(0, Fighter.Moves.Count - 1));
+        return true;
+    }
+
     /// <summary>Uses the move in the given slot, as chosen from the FIGHT menu.</summary>
     public void SelectMove(int index)
     {
         var user = MenuBattler;
-        if (index < 0 || index >= user.Pokemon!.Moves.Count) return;
+        // In a rotation battle the moves are those of the Pokémon the turntable is turned to (plan 14 · B7)
+        var fighter = Fighter;
+        if (index < 0 || index >= fighter.Moves.Count) return;
 
-        var move = user.Pokemon.Moves[index];
+        var move = fighter.Moves[index];
 
         // The rules say what can't be picked, and why: no PP, a Choice item, a Taunt, an Encore, a Disable…
         var mine = InCore(user);
-        if (core.WhyNotMove(mine, mine.Pokemon!.Moves[index]) is { } refusal)
+        int way = RotationArmed;
+        if ((way == 0 ? core.WhyNotMove(mine, mine.Pokemon!.Moves[index]) : core.WhyNot(BattleChoice.Fight(user.Place, index) with { Rotation = way })) is { } refusal)
         {
             Refuse(refusal, BattleMenuState.Moves);
             return;
         }
 
         AudioManager.PlaySound("select");
-        lastMove[user.Pokemon] = index;
+        lastMove[fighter] = index;
+        if (way != 0)
+        {
+            Commit(BattleChoice.Fight(user.Place, index) with { Rotation = way });
+            return;
+        }
 
         // In a double battle and a horde a single-target move asks where to aim it
         if ((IsDouble || IsHorde || IsSos || IsTriple) && move.Target == MoveTarget.Selected)
@@ -601,7 +651,7 @@ public partial class BattleEngine
             case BattleMenuState.Moves:
                 // Two to a row; a Pokémon with fewer than four moves has no cursor on the empty places
                 before = HUD.MoveMenuIndex;
-                after = HUD.MoveMenuIndex = UI.Kit.UiNav.Grid(before, MenuBattler.Pokemon!.Moves.Count, 2, dx, dy);
+                after = HUD.MoveMenuIndex = UI.Kit.UiNav.Grid(before, Fighter.Moves.Count, 2, dx, dy);
                 break;
             case BattleMenuState.SelectTarget:
                 before = HUD.TargetMenuIndex;
@@ -722,6 +772,16 @@ public partial class BattleEngine
         AudioManager.PlaySound("cursor");
     }
 
+    /// <summary>The shoulder buttons in a rotation battle's commands and move menu turn the armed turntable (plan 14 · B7).</summary>
+    private bool TurnedTheTable()
+    {
+        if (!IsRotation) return false;
+        int way = InputManager.IsActionPressed(GameAction.PageRight) ? 1 : InputManager.IsActionPressed(GameAction.PageLeft) ? -1 : 0;
+        if (way == 0) return false;
+        AudioManager.PlaySound(RotateChoice(way) ? "select" : "cancel");
+        return true;
+    }
+
     private void HandleMenuInput()
     {
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right), dy = InputManager.Axis(GameAction.Up, GameAction.Down);
@@ -740,6 +800,8 @@ public partial class BattleEngine
                     AudioManager.PlaySound("select");
                     return;
                 }
+                // A rotation battle's arrows beside FIGHT turn the turntable for the move (plan 14 · B7)
+                if (TurnedTheTable()) return;
                 MoveCursor(dx, dy);
                 if (confirm)
                 {
@@ -769,6 +831,7 @@ public partial class BattleEngine
                     AudioManager.PlaySound(ToggleLaterMechanic() ? "select" : "cancel");
                     return;
                 }
+                if (TurnedTheTable()) return;
                 MoveCursor(dx, dy);
                 if (confirm) SelectMove(HUD.MoveMenuIndex);
                 break;

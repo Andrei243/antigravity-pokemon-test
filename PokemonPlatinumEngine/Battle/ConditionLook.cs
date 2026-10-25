@@ -217,6 +217,10 @@ public sealed class ConditionLooks
             case Entered entered:
                 Of(entered.Place).Clear();
                 return true;
+            // A rotation battle's turntable turns (plan 14 · B7): the one brought forward shows what its line says it brings
+            case Rotated rotated:
+                Of(rotated.Place).Clear();
+                return true;
             case CameInWith brought:
                 Of(brought.Place).SetStatus(brought.Status, this, Salt(brought.Place), instantly: false);
                 return true;

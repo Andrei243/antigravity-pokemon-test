@@ -77,7 +77,13 @@ public class Trainer
     public string? Format { get; set; }
 
     /// <summary>The format the trainer's <see cref="Format"/> asks for: a triple for <c>"triple"</c> (plan 14 · B6), else null.</summary>
-    public Battle.BattleFormat? AskedFormat => Format == "triple" ? Battle.BattleFormat.Triple : null;
+    public Battle.BattleFormat? AskedFormat => Format switch
+    {
+        "triple" => Battle.BattleFormat.Triple,
+        // Three on a turntable, the front one fighting (plan 14 · B7)
+        "rotation" => Battle.BattleFormat.Rotation,
+        _ => null
+    };
 
     /// <summary>How the trainer thinks in battle (plan 06 · R9): Platinum's flags from the trainer's data.</summary>
     public Battle.Sim.Ai.AiFlags Ai { get; set; } = Battle.Sim.Ai.AiFlags.Basic;

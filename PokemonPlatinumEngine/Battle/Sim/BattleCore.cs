@@ -159,7 +159,8 @@ public sealed partial class BattleCore : IBattleContext
     public bool IsDouble => Format == BattleFormat.Double;
 
     /// <summary>One against one: no side has a second place (what a wild battle with others on the field isn't, a horde's included).</summary>
-    public bool IsSingle => Format == BattleFormat.Single;
+    // A rotation battle is one against one on the field (plan 14 · B7)
+    public bool IsSingle => Format is BattleFormat.Single or BattleFormat.Rotation;
 
     /// <summary>The places on each side: one each in a single battle, two in a double, one against up to five in a horde.</summary>
     public IReadOnlyList<Battler> PlayerSlots { get; }
@@ -334,6 +335,8 @@ public sealed partial class BattleCore : IBattleContext
         }
 
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) b.Pokemon!.ResetStatStages();
+        // A rotation battle's two seats behind each front (plan 14 · B7)
+        SetUpTheTurntables();
     }
 
     // ---------------------------------------------------------------- asking and answering
@@ -452,7 +455,7 @@ public sealed partial class BattleCore : IBattleContext
         var roster = At(place.Place).Roster;
         if (roster == null || partyIndex < 0 || partyIndex >= roster.Count) return false;
         var p = roster.Members[partyIndex];
-        return !p.IsFainted && SlotsOf(place.Side).All(b => b.Pokemon != p);
+        return !p.IsFainted && SlotsOf(place.Side).All(b => b.Pokemon != p) && !OnTheWheel(place.Side).Contains(p);
     }
 
     // ---------------------------------------------------------------- the log
@@ -575,6 +578,8 @@ public sealed partial class BattleCore : IBattleContext
         var foes = EnemySlots.Where(b => b.Pokemon != null).ToList();
         var mine = PlayerSlots.Where(b => b.Pokemon != null).ToList();
         foreach (var foe in foes) Emit(Seen.Of(foe.Pokemon!));
+        // A rotation battle's foes behind the front are out on the turntable from the start (plan 14 · B7)
+        foreach (var behind in OnTheWheel(BattleSide.Enemy)) Emit(Seen.Of(behind));
 
         if (IsTrainerBattle)
         {
@@ -637,6 +642,8 @@ public sealed partial class BattleCore : IBattleContext
     /// <summary>A turn: everyone acts in order, the end of the turn runs, fainted Pokémon are replaced.</summary>
     private IEnumerable<BattleRequest> PlayTurn(List<BattleChoice> choices)
     {
+        // A rotation battle's turntables turn before anything else (plan 14 · B7)
+        TurnTheTurntables(choices);
         foreach (var b in AllBattlers)
         {
             b.MovedThisTurn = false;
@@ -756,6 +763,8 @@ public sealed partial class BattleCore : IBattleContext
         if (Result != BattleResult.None) yield break;
         // A triple battle's last two out of each other's reach go to the centre (plan 14 · B6)
         MoveToTheCentre();
+        // A rotation battle's fallen front with nobody to send in turns away (plan 14 · B7)
+        TurnPastTheFallen();
         Turn++;
         SetUpNextTurn();
         // The original's switch-in check opens every turn: Slow Start's five turns end here, and a shape follows the weather
@@ -1200,7 +1209,7 @@ public sealed partial class BattleCore : IBattleContext
         // a knocked-off item is in its holder's hands again
         // A Dynamax ends with the battle (plan 06 · R22)
         foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Undynamax(b, said: false);
-        foreach (var b in AllBattlers.Where(b => b.Pokemon != null)) Revert(b);
+        foreach (var b in AllBattlers.Concat(WheelBattlers).Where(b => b.Pokemon != null)) Revert(b);
         // And the shapes that last the battle out are given back (plan 06 · R19b: Disguise, Ice Face, Zero to Hero)
         GiveBackLastingShapes();
         // And so are the Mega and primal forms (plan 06 · R20)

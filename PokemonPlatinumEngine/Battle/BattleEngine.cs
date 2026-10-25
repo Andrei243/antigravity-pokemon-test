@@ -67,6 +67,9 @@ public partial class BattleEngine
     /// <summary>A triple battle (plan 14 · B6): three places a side, reach by position.</summary>
     public bool IsTriple => Format == BattleFormat.Triple;
 
+    /// <summary>A rotation battle (plan 14 · B7): one place a side, the front of a turntable of three.</summary>
+    public bool IsRotation => Format == BattleFormat.Rotation;
+
     /// <summary>
     /// The Pokémon whose action is being chosen stands at an end of a triple battle's side, so its fourth command is
     /// SHIFT, to the centre, in place of RUN (plan 14 · B6; style guide, "Battle panels", "SHIFT").
@@ -288,6 +291,8 @@ public partial class BattleEngine
         Anim.SetSlots(core.PlayerSlots.Count, core.EnemySlots.Count);
         // An SOS battle's wild Pokémon stands alone in the middle until an ally comes (plan 14 · B5)
         if (IsSos) Anim.Gather(BattleSide.Enemy);
+        // A rotation battle's platforms are turntables (plan 14 · B7)
+        Anim.Turntables = IsRotation;
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();
         EnemySlots = core.EnemySlots.Select(OnScreen).ToList();
 
@@ -821,6 +826,20 @@ public partial class BattleEngine
                 Sound("z_power", zPower.Place.Side);
                 if (Scene) Anim.ZPower(zPower.Place.Side, zPower.Place.Slot, MoveDatabase.Get(zPower.ZMove)?.Type ?? MoveDatabase.Get(zPower.From)?.Type ?? PokemonType.Normal);
                 break;
+            case Rotated rotated:
+            {
+                // A rotation battle's turntable turns (plan 14 · B7): the Pokémon brought forward hops to the front as
+                // the table turns under it, its own doll (if it kept one behind) in front of it at once
+                var forward = mirror.Shown(rotated.Pokemon);
+                forward.Status = showing?.Shows.OfType<CameInWith>().FirstOrDefault(brings => brings.Place == rotated.Place)?.Status ?? forward.Status;
+                At(rotated.Place).Pokemon = forward;
+                Anim.Rotate(rotated.Place.Side, forward, rotated.Way, Scene);
+                Anim.SettleSubstitute(rotated.Place.Side, rotated.Place.Slot, rotated.Substitute);
+                // The turn's whoosh is the recall's, as the one in front goes back to its seat
+                if (Scene) Sound("recall", rotated.Place.Side);
+                After(Scene ? BattleAnimator.RotationTime * 0.6f : 0f, () => AudioManager.PlayCry(forward, Cries.SendOutMode(forward), Pan(rotated.Place.Side)));
+                break;
+            }
             case PlacesSwapped swap:
                 // Ally Switch (plan 06 · R25's leftovers): the screen's two places change Pokémon, and the views go
                 // with them (the marks that last were moved by Conditions.Tell above)
