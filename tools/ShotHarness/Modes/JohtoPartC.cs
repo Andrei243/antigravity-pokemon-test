@@ -43,10 +43,18 @@ partial class Harness
                 if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    if (fight.EnemyPokemon is { } met) met.CurrentHP = Math.Min(met.CurrentHP, 1);
+                    // (the Den's double battle: the champions' and the foes' slots all left a single HP and only Struggle, and
+                    // whoever stands for the player kept whole, as the other modes' helpers do)
+                    if (fight.IsDouble)
+                        foreach (var foe in (fight.EnemyParty?.Members ?? new List<Pokemon>()).Concat(fight.EnemySlots.Select(s => s.Pokemon)))
+                            if (foe != null) { foe.CurrentHP = Math.Min(foe.CurrentHP, 1); foreach (var move in foe.Moves) move.CurrentPP = 0; }
                     var lead = fight.PlayerPokemon;
-                    if (lead != null) lead.CurrentHP = lead.MaxHP;
+                    foreach (var mine in fight.PlayerSlots.Select(s => s.Pokemon).Append(lead))
+                        if (mine != null && !mine.IsFainted) mine.CurrentHP = mine.MaxHP;
                     fight.SelectMainMenuOption(0);
                     fight.SelectMove(Math.Max(0, lead == null ? 0 : lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status)));
+                    if (fight.HUD.MenuState == BattleMenuState.SelectTarget) fight.SelectTarget(0);
                 }
                 else Confirm(fight);
                 Skip(0.5);
@@ -89,8 +97,8 @@ partial class Harness
         TalkTo("Blackthorn_MoveTutorHouse", "t30r0601_gsbigman");
         ReadTo("Ah, a young Trainer"); Frames(10); Shot("jpc02_the_relearner");
         ReadTo("Shall I trade it"); Frames(10); Shot("jpc03_the_question");
-        ReadTo("Which Pokémon is it to be"); Frames(10);
-        Until(() => game.State != GameState.Overworld, "the team screen", 300);
+        ReadTo("Which Pokémon is it to be"); Frames(10); box.Advance(); Frames(2);
+        Until(() => game.State == GameState.PartyMenu, "the team screen", 300);
         Frames(20); Shot("jpc04_the_team_screen");
         game.PartyScreen.SelectedIndex = game.Party.Members.IndexOf(pidgey);
         game.PartyScreen.Confirm(game.Party); Frames(3);
