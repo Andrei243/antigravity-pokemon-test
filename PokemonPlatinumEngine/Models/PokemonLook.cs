@@ -44,7 +44,9 @@ public static class PokemonLook
         "Hippowdon", "Croagunk", "Toxicroak", "Finneon", "Lumineon", "Snover", "Abomasnow", "Weavile", "Rhyperior",
         "Tangrowth", "Mamoswine",
         // Plan 09 · L8: Unova's one whose female is no form of her own
-        "Unfezant"
+        "Unfezant",
+        // Plan 03 · D14: species of our own sculpted with their forebears' female difference (batch 1, Kanto)
+        "Ratchisel", "Tripluma", "Mesmeryx", "Sabrefin", "Typhonarch"
     };
 
     /// <summary>

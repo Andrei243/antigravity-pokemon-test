@@ -39,6 +39,12 @@ internal sealed class Skeleton
         for (int b = first; b < bones.Count; b++) bones[b] = bones[b] with { Joint = bones[b].Joint + delta };
     }
 
+    /// <summary>Scales the joints of every bone about the origin (a sculpt stretched after it was built).</summary>
+    public void Scale(Vector3 k)
+    {
+        for (int b = 0; b < bones.Count; b++) bones[b] = bones[b] with { Joint = bones[b].Joint * k };
+    }
+
     /// <summary>
     /// Skinning matrices for <paramref name="pose"/> (System.Numerics row-vector convention): each maps a point
     /// of the sculpted model to where the bone has taken it.
