@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Vito"
         ],
         "text": [
-          ""
+          "Vito"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Cooltrainer Vito: I was told the bottom of Victory Road is where the real trainers are. I'm one of them!"
         ],
         "text": [
-          ""
+          "Antrenor As Vito: Mi s-a spus că la baza Drumului Victoriei sunt adevărații antrenori. Sunt unul dintre ei!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Cooltrainer Vito: Maybe the real ones are further up after all."
         ],
         "text": [
-          ""
+          "Antrenor As Vito: Poate că adevărații sunt mai sus, până la urmă."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Owen"
         ],
         "text": [
-          ""
+          "Owen"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Cooltrainer Owen: The water down here is freezing. A battle will warm me up!"
         ],
         "text": [
-          ""
+          "Antrenor As Owen: Apa de aici e înghețată. O luptă mă va încălzi!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Cooltrainer Owen: I'm colder than ever now."
         ],
         "text": [
-          ""
+          "Antrenor As Owen: Acum îmi e mai frig ca niciodată."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Caroline"
         ],
         "text": [
-          ""
+          "Caroline"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Cooltrainer Caroline: You found the way down here? Then you've earned a battle with me!"
         ],
         "text": [
-          ""
+          "Antrenoare As Caroline: Ai găsit drumul până aici jos? Atunci ți-ai câștigat o luptă cu mine!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Cooltrainer Caroline: You've earned more than that. Go on up."
         ],
         "text": [
-          ""
+          "Antrenoare As Caroline: Ți-ai câștigat mai mult de-atât. Urcă mai departe."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Julie"
         ],
         "text": [
-          ""
+          "Julie"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Cooltrainer Julie: I trained under that waterfall for a month. My Pokémon are as tough as rock now!"
         ],
         "text": [
-          ""
+          "Antrenoare As Julie: M-am antrenat sub cascada aceea o lună întreagă. Pokémonii mei sunt acum tari ca piatra!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Cooltrainer Julie: Back under the falls for another month."
         ],
         "text": [
-          ""
+          "Antrenoare As Julie: Înapoi sub cascadă pentru încă o lună."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Dianne"
         ],
         "text": [
-          ""
+          "Dianne"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Cooltrainer Dianne: The two of us watch this bank together. You'll have to go through me first!"
         ],
         "text": [
-          ""
+          "Antrenoare As Dianne: Noi doi păzim malul ăsta împreună. Va trebui să treci mai întâi de mine!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Cooltrainer Dianne: Felix, it's your turn now."
         ],
         "text": [
-          ""
+          "Antrenoare As Dianne: Felix, e rândul tău acum."
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Felix"
         ],
         "text": [
-          ""
+          "Felix"
         ]
       },
       "before": {
@@ -152,7 +152,7 @@
           "Cooltrainer Felix: Dianne didn't stop you? Then I will!"
         ],
         "text": [
-          ""
+          "Antrenor As Felix: Dianne nu te-a oprit? Atunci te opresc eu!"
         ]
       },
       "after": {
@@ -160,7 +160,7 @@
           "Cooltrainer Felix: Neither of us stopped you. Well done."
         ],
         "text": [
-          ""
+          "Antrenor As Felix: Niciunul dintre noi nu te-a oprit. Bravo."
         ]
       }
     }

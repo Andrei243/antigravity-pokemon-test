@@ -6,7 +6,7 @@
           "Owner"
         ],
         "text": [
-          ""
+          "Proprietar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Join Avenue! As you see, there's nothing here yet but empty shopfronts. One day this street will be the liveliest in Unova!"
         ],
         "text": [
-          ""
+          "Bine ai venit pe Join Avenue! După cum vezi, nu e nimic aici încă, doar vitrine goale. Într-o zi, strada asta va fi cea mai animată din Unova!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Assistant"
         ],
         "text": [
-          ""
+          "Asistent"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The owner is looking for someone to run the avenue. Shops, visitors, the lot! It's a big job."
         ],
         "text": [
-          ""
+          "Proprietarul caută pe cineva care să conducă bulevardul. Magazine, vizitatori, tot tacâmul! E o treabă mare."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Assistant"
         ],
         "text": [
-          ""
+          "Asistent"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Nimbasa City is just through the north gate. Big crowds, big stadiums, and a Gym like a fashion show!"
         ],
         "text": [
-          ""
+          "Orașul Nimbasa e chiar dincolo de poarta de nord. Mulțimi mari, stadioane mari și o Arenă ca o prezentare de modă!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Shop Girl"
         ],
         "text": [
-          ""
+          "Vânzătoare"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Our shop isn't open yet. Come back once the avenue's up and running!"
         ],
         "text": [
-          ""
+          "Magazinul nostru nu e deschis încă. Întoarce-te când bulevardul funcționează!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Shop Girl"
         ],
         "text": [
-          ""
+          "Vânzătoare"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I'm practising my welcome. ...Welcome! How was that?"
         ],
         "text": [
-          ""
+          "Îmi exersez salutul. ...Bine ai venit! Cum a fost?"
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Join Avenue's office\nManager wanted. Apply within!"
       ],
       "text": [
-        ""
+        "Biroul Join Avenue\nCăutăm manager. Prezentați-vă înăuntru!"
       ]
     }
   }

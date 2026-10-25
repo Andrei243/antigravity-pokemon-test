@@ -63,7 +63,7 @@
         "Hm? You're up early, with nothing to do already? I may have time to listen to you."
       ],
       "text": [
-        ""
+        "Hm? Ești treaz de dimineață și n-ai nimic de făcut? Poate am timp să te ascult."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "If you insist, we can swap numbers, too! What do you say?"
       ],
       "text": [
-        ""
+        "Dacă insiști, putem face schimb de numere! Ce zici?"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Fine. Here's my number, {player}."
       ],
       "text": [
-        ""
+        "Bine. Ține numărul meu, {player}."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Registered Clair in the Pokégear."
       ],
       "text": [
-        ""
+        "Clair a fost înregistrată în Pokégear."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "I can battle you on Friday nights, if you insist!"
       ],
       "text": [
-        ""
+        "Mă pot lupta cu tine vinerea seara, dacă insiști!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "..."
       ],
       "text": [
-        ""
+        "..."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "You again? Friday nights, remember, if it's a battle you're after. Until then, let me train."
       ],
       "text": [
-        ""
+        "Tu din nou? Vinerea seara, ține minte, dacă vrei o luptă. Până atunci, lasă-mă să mă antrenez."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Hm? What is it? I'm on my way back to the Gym."
       ],
       "text": [
-        ""
+        "Hm? Ce e? Mă întorc la Arenă."
       ]
     }
   ],
@@ -129,7 +129,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "...What? Yes, I'm training my Pokémon here. You can laugh at me now, but it has to be done."
       ],
       "text": [
-        ""
+        "...Ce? Da, îmi antrenez Pokémonii aici. Poți râde de mine acum, dar trebuie făcut."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "My Pokémon aren't ready to beat you yet. I can't push them too hard. I have to be strict with myself to become the greatest Trainer."
       ],
       "text": [
-        ""
+        "Pokémonii mei nu sunt încă gata să te învingă. Nu-i pot forța prea tare. Trebuie să fiu sever cu mine ca să devin cel mai mare Antrenor."
       ]
     },
     {
@@ -153,7 +153,7 @@
         "...Whew. Learn to stay out of my way."
       ],
       "text": [
-        ""
+        "...Uf. Învață să-mi stai din cale."
       ]
     }
   ],
@@ -163,7 +163,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -171,7 +171,7 @@
         "...What? Have you come all this way to laugh at my training? Humph!"
       ],
       "text": [
-        ""
+        "...Ce? Ai venit până aici să râzi de antrenamentul meu? Hmpf!"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "I came here to learn the Master's secrets, and he makes a mystery of everything. So I'm training my Pokémon here myself."
       ],
       "text": [
-        ""
+        "Am venit aici să aflu secretele Maestrului, iar el face un mister din orice. Așa că îmi antrenez singur Pokémonii aici."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Hello, {player}! And you, too. We met at the Team Rocket hideout."
       ],
       "text": [
-        ""
+        "Salut, {player}! Și tu, la fel. Ne-am întâlnit în ascunzătoarea Echipei Rocket."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -211,7 +211,7 @@
         "You! Where have you been all this time? Prepare to lose. I challenge you!"
       ],
       "text": [
-        ""
+        "Tu! Unde ai fost în tot timpul ăsta? Pregătește-te să pierzi. Te provoc!"
       ]
     },
     {
@@ -219,7 +219,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -228,8 +228,8 @@
         "But I never turn down a challenger! How about a Double Battle?"
       ],
       "text": [
-        "",
-        ""
+        "Calmează-te. Eram grăbit atunci și îmi pare rău pentru asta.",
+        "Dar nu refuz niciodată un provocator! Ce-ar fi o Luptă Dublă?"
       ]
     },
     {
@@ -237,7 +237,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -245,7 +245,7 @@
         "Humph! You can't beat me one on one, can you?"
       ],
       "text": [
-        ""
+        "Hmpf! Nu poți să mă învingi unul la unul, nu-i așa?"
       ]
     },
     {
@@ -253,7 +253,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -261,7 +261,7 @@
         "Come on, a Double Battle isn't so bad. {player}, you'll be on my side!"
       ],
       "text": [
-        ""
+        "Hai, o Luptă Dublă nu e chiar așa rea. {player}, vei fi de partea mea!"
       ]
     },
     {
@@ -269,7 +269,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -277,7 +277,7 @@
         "Well, then. You over there, will you team up with me?"
       ],
       "text": [
-        ""
+        "Ei bine. Tu de colo, vrei să faci echipă cu mine?"
       ]
     },
     {
@@ -285,7 +285,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -293,7 +293,7 @@
         "You can't be serious! Me, with that show-off in the strange costume? No way!"
       ],
       "text": [
-        ""
+        "Nu vorbești serios! Eu, cu fanfaronul ăla în costumul ciudat? Nici gând!"
       ]
     },
     {
@@ -301,7 +301,7 @@
         "{player}! Come to my side! We'll beat Lance together!"
       ],
       "text": [
-        ""
+        "{player}! Vino de partea mea! Îl învingem pe Lance împreună!"
       ]
     },
     {
@@ -309,7 +309,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -319,9 +319,9 @@
         "See you another time, {player}!"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Exact cum mă așteptam. Formați o echipă bună voi doi.",
+        "Să mergi singur e o cale de a ținti spre vârf. Dar o luptă Pokémon nu înseamnă doar atât, deși nu cred că vreunul dintre voi are nevoie de o reamintire.",
+        "Pe data viitoare, {player}!"
       ]
     },
     {
@@ -329,7 +329,7 @@
         "Clair"
       ],
       "text": [
-        ""
+        "Clair"
       ]
     },
     {
@@ -337,7 +337,7 @@
         "I must excuse myself. ...{player}, that was a fun battle. And that goes for you too, wise guy."
       ],
       "text": [
-        ""
+        "Trebuie să plec. ...{player}, a fost o luptă distractivă. Și asta se aplică și pentru tine, deștept-ule."
       ]
     },
     {
@@ -345,7 +345,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -353,7 +353,7 @@
         "{player}... It wasn't supposed to go this way. Anyway, I'm not giving up on beating you!"
       ],
       "text": [
-        ""
+        "{player}... Nu trebuia să iasă așa. Oricum, nu renunț să te înving!"
       ]
     },
     {
@@ -361,7 +361,7 @@
         "I'll train my Pokémon, and my own heart too. I'll come back as the toughest challenge you've ever had!"
       ],
       "text": [
-        ""
+        "Îmi voi antrena Pokémonii și propria inimă. Mă voi întoarce ca cea mai grea provocare pe care ai avut-o vreodată!"
       ]
     }
   ]

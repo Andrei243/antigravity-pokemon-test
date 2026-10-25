@@ -6,7 +6,7 @@
         "Victory Road\nThe last trial before the Pokémon League"
       ],
       "text": [
-        ""
+        "Drumul Victoriei\nUltima încercare înaintea Ligii Pokémon"
       ]
     },
     "EverGrandeCity_EventScript_CitySign": {
@@ -14,7 +14,7 @@
         "Ever Grande City\nWhere flowers, the sea and Pokémon meet"
       ],
       "text": [
-        ""
+        "Orașul Ever Grande\nUnde se întâlnesc florile, marea și Pokémonii"
       ]
     },
     "EverGrandeCity_EventScript_PokemonLeagueSign": {
@@ -22,7 +22,7 @@
         "The Pokémon League\nThe gate to the Elite Four and the Champion"
       ],
       "text": [
-        ""
+        "Liga Pokémon\nPoarta spre Elita celor Patru și Campion"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -30,7 +30,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     }
   }

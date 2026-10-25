@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Wally"
         ],
         "text": [
-          ""
+          "Wally"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Wally"
         ],
         "text": [
-          ""
+          "Wally"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Edgar"
         ],
         "text": [
-          ""
+          "Edgar"
         ]
       },
       "before": {
@@ -42,7 +42,7 @@
           "Cooltrainer Edgar: Everyone who reaches Victory Road has eight Badges. So we're equals. Let's see who's more equal!"
         ],
         "text": [
-          ""
+          "Antrenor As Edgar: Toți cei care ajung pe Drumul Victoriei au opt Insigne. Deci suntem egali. Să vedem cine e mai egal!"
         ]
       },
       "after": {
@@ -50,7 +50,7 @@
           "Cooltrainer Edgar: All right, you're the more equal one."
         ],
         "text": [
-          ""
+          "Antrenor As Edgar: Bine, tu ești mai egal."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Hope"
         ],
         "text": [
-          ""
+          "Hope"
         ]
       },
       "before": {
@@ -68,7 +68,7 @@
           "Cooltrainer Hope: This cave is where dreams of the League are made, or broken. Which will yours be?"
         ],
         "text": [
-          ""
+          "Antrenoare As Hope: În peștera asta se nasc sau se sparg visele despre Ligă. Ce se va întâmpla cu al tău?"
         ]
       },
       "after": {
@@ -76,7 +76,7 @@
           "Cooltrainer Hope: Mine were the ones that broke."
         ],
         "text": [
-          ""
+          "Antrenoare As Hope: Ale mele s-au spart."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Albert"
         ],
         "text": [
-          ""
+          "Albert"
         ]
       },
       "before": {
@@ -94,7 +94,7 @@
           "Cooltrainer Albert: I've walked this road a hundred times and never reached the end. Maybe you'll be my hundred-and-first try!"
         ],
         "text": [
-          ""
+          "Antrenor As Albert: Am mers pe drumul ăsta de o sută de ori și n-am ajuns niciodată la capăt. Poate tu vei fi încercarea mea cu numărul o sută unu!"
         ]
       },
       "after": {
@@ -102,7 +102,7 @@
           "Cooltrainer Albert: Back to the start for me."
         ],
         "text": [
-          ""
+          "Antrenor As Albert: Înapoi la început pentru mine."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Katelynn"
         ],
         "text": [
-          ""
+          "Katelynn"
         ]
       },
       "before": {
@@ -120,7 +120,7 @@
           "Cooltrainer Katelynn: Only the strongest leave this cave at the top. Prove you're one of them!"
         ],
         "text": [
-          ""
+          "Antrenoare As Katelynn: Doar cei mai puternici ies din peștera asta pe la capătul de sus. Dovedește că ești unul dintre ei!"
         ]
       },
       "after": {
@@ -128,7 +128,7 @@
           "Cooltrainer Katelynn: You've proved it to me, at least."
         ],
         "text": [
-          ""
+          "Antrenoare As Katelynn: Mie mi-ai dovedit-o, cel puțin."
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Quincy"
         ],
         "text": [
-          ""
+          "Quincy"
         ]
       },
       "before": {
@@ -146,7 +146,7 @@
           "Cooltrainer Quincy: My team and I have trained our whole lives for the League. You won't stop us here!"
         ],
         "text": [
-          ""
+          "Antrenor As Quincy: Echipa mea și cu mine ne-am antrenat toată viața pentru Ligă. Nu ne vei opri aici!"
         ]
       },
       "after": {
@@ -154,7 +154,7 @@
           "Cooltrainer Quincy: We'll train a little longer, then."
         ],
         "text": [
-          ""
+          "Antrenor As Quincy: Ne vom antrena puțin mai mult, atunci."
         ]
       }
     }

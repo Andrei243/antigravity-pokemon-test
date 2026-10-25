@@ -16,7 +16,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "...Humph!"
         ],
         "text": [
-          ""
+          "...Hmpf!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       },
       "before": {
@@ -52,7 +52,7 @@
           "Lance: Dragons are at their best when their Trainers are."
         ],
         "text": [
-          ""
+          "Lance: Dragonii sunt la înălțime când Antrenorii lor sunt."
         ]
       },
       "after": {
@@ -60,7 +60,7 @@
           "Lance: Just as I expected."
         ],
         "text": [
-          ""
+          "Lance: Exact cum mă așteptam."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clair"
         ],
         "text": [
-          ""
+          "Clair"
         ]
       },
       "before": {
@@ -78,7 +78,7 @@
           "Clair: Don't just stand there. Get ready."
         ],
         "text": [
-          ""
+          "Clair: Nu sta degeaba. Pregătește-te."
         ]
       },
       "after": {
@@ -86,7 +86,7 @@
           "Clair: That was a fun battle."
         ],
         "text": [
-          ""
+          "Clair: A fost o luptă distractivă."
         ]
       }
     },
