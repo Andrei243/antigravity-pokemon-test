@@ -7,6 +7,7 @@ sealed record Concept(string Set, string Slug, string Name, string Image)
     public string Dir(string root) => Path.Combine(root, "tools", "TripoSculpt", "out", Set);
     public string Glb(string root) => Path.Combine(Dir(root), Slug + ".glb");
     public string Meta(string root) => Path.Combine(Dir(root), Slug + ".json");
+    public string Animated(string root) => Path.Combine(Dir(root), Slug + ".animated.glb");
 
     /// <summary>The species' file name for the game: the concept's slug without the category number GeminiArt puts first.</summary>
     public string Species => System.Text.RegularExpressions.Regex.Replace(Slug, @"^\d+-", "");
@@ -142,9 +143,9 @@ static class Sculptor
 
     /// <summary>
     /// Copies finished sculpts to assets/models (tracked by git) or, untracked, to overrides/models, named for the species.
-    /// Never over a file already there.
+    /// The rigged file with its clips if there is one (unless staticOnly). Never over a file already there.
     /// </summary>
-    public static int Install(string root, List<Concept> chosen, string? asName, bool force, TextWriter log, bool untracked = false)
+    public static int Install(string root, List<Concept> chosen, string? asName, bool force, TextWriter log, bool untracked = false, bool staticOnly = false)
     {
         string dir = Path.Combine(root, untracked ? "overrides" : "assets", "models");
         string shown = untracked ? "overrides/models" : "assets/models";
@@ -155,8 +156,9 @@ static class Sculptor
             string target = Path.Combine(dir, (asName ?? c.Species) + ".glb");
             if (File.Exists(target) && !force) { log.WriteLine($"{c.Slug}: {Path.GetFileName(target)} is there already (--force replaces it)"); skipped++; continue; }
             Directory.CreateDirectory(dir);
-            File.Copy(c.Glb(root), target, overwrite: true);
-            log.WriteLine($"{c.Slug} -> {shown}/{Path.GetFileName(target)}");
+            bool rigged = !staticOnly && File.Exists(c.Animated(root));
+            File.Copy(rigged ? c.Animated(root) : c.Glb(root), target, overwrite: true);
+            log.WriteLine($"{c.Slug} -> {shown}/{Path.GetFileName(target)}{(rigged ? " (rigged, with its clips)" : "")}");
             copied++;
         }
         log.WriteLine($"installed {copied}, left {skipped}");
@@ -171,12 +173,12 @@ static class Sculptor
         return copy;
     }
 
-    static JsonObject ReadMeta(string path)
+    public static JsonObject ReadMeta(string path)
     {
         try { return File.Exists(path) ? (JsonNode.Parse(File.ReadAllText(path)) as JsonObject ?? new JsonObject()) : new JsonObject(); }
         catch (JsonException) { return new JsonObject(); }
     }
 
-    static void WriteMeta(string path, JsonObject meta) =>
+    public static void WriteMeta(string path, JsonObject meta) =>
         File.WriteAllText(path, meta.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
 }

@@ -3,11 +3,14 @@
 //   dotnet run --project tools/TripoSculpt -- generate (--set s | --all | name ... | --image <file> --name <Name>)
 //                                                      [--model <id>] [--face-limit <n>] [--seed <n>] [--no-texture] [--pbr] [--autofix]
 //                                                      [--force] [--limit <n>] [--delay <ms>]
-//   dotnet run --project tools/TripoSculpt -- install [--set s] [--as <Species>] [--private] [--force] [name ...]
+//   dotnet run --project tools/TripoSculpt -- rig (--set s | --all | name ...) [--rig-type biped|quadruped|hexapod|octopod|serpentine|aquatic|avian|others] [--rig-model <id>]
+//                                                 [--animations idle,hurt,...] [--force] [--limit <n>]
+//   dotnet run --project tools/TripoSculpt -- install [--set s] [--as <Species>] [--private] [--static] [--force] [name ...]
 //   dotnet run --project tools/TripoSculpt -- selftest
 // The key is read from the TRIPO_API_KEY environment variable and never written anywhere (platform.tripo3d.ai/api-keys).
 // Every task costs credits, so generate does nothing until it is told which pictures; --limit 1 is the way to try one.
 // Sculpts go to tools/TripoSculpt/out/<set>/<slug>.glb with a <slug>.json note of the task (tracked by git: drafts, not game art).
+// rig checks the body, rigs the sculpt and retargets preset animations onto it (<slug>.animated.glb, the clips named for the roles the game reads).
 // install copies the ones you approve to assets/models/<Species>.glb (tracked by git; --private: overrides/models, which is not),
 // where the game picks them up (docs/model-files.md).
 
@@ -19,7 +22,7 @@ static class Cli
     {
         if (args.Length == 0 || args[0] is "-h" or "--help")
         {
-            Console.WriteLine("usage: TripoSculpt list [--set s] | generate (--set s | --all | name ... | --image file --name Name) [options] | install [--set s] [--as Species] [--private] [--force] [name ...] | selftest");
+            Console.WriteLine("usage: TripoSculpt list [--set s] | generate (--set s | --all | name ... | --image file --name Name) [options] | rig (--set s | --all | name ...) [--rig-type t] [--rig-model id] [--animations a,b] [--limit n] | install [--set s] [--as Species] [--private] [--static] [--force] [name ...] | selftest");
             Console.WriteLine("generate options: --model id  --face-limit n  --seed n  --no-texture  --pbr  --autofix  --force  --limit n  --delay ms");
             return args.Length == 0 ? 2 : 0;
         }
@@ -34,6 +37,11 @@ static class Cli
         string? asName = Take(rest, "--name") ?? Take(rest, "--as");
         bool all = Flag(rest, "--all");
         bool untracked = Flag(rest, "--private");
+        bool staticOnly = Flag(rest, "--static");
+        string? rigType = Take(rest, "--rig-type");
+        string? rigModel = Take(rest, "--rig-model");
+        var animations = Take(rest, "--animations")?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                             .Select(a => a.Contains(':') ? a : "preset:" + a).ToList();
 
         var o = Options.Default;
         o = o with
@@ -77,11 +85,14 @@ static class Cli
             case "generate":
                 return await Generate(root, chosen, rest, set, all, image != null, o);
 
+            case "rig":
+                return await Rig(root, chosen, rest, set, all, new RigOptions(rigType, rigModel, animations, o.Force, o.Limit, o.DelayMs, o.Timeout, o.PollMs));
+
             case "install":
                 if (chosen.Count == 0) { Console.Error.WriteLine("nothing matches."); return 2; }
                 if (asName != null && chosen.Count != 1) { Console.Error.WriteLine("--as names one species: choose one sculpt."); return 2; }
                 if (set == null && rest.Count == 0) { Console.Error.WriteLine("say which: --set <set> or the names."); return 2; }
-                Sculptor.Install(root, chosen, asName, o.Force, Console.Out, untracked);
+                Sculptor.Install(root, chosen, asName, o.Force, Console.Out, untracked, staticOnly);
                 return 0;
 
             default:
@@ -110,6 +121,24 @@ static class Cli
 
         var client = new TripoClient(key, Environment.GetEnvironmentVariable("TRIPO_BASE_URL"));
         var outcome = await Sculptor.Generate(root, client, chosen, o, Console.Out);
+        return outcome.Failed == 0 ? 0 : 1;
+    }
+
+    static async Task<int> Rig(string root, List<Concept> chosen, List<string> names, string? set, bool all, RigOptions ro)
+    {
+        string? key = Environment.GetEnvironmentVariable("TRIPO_API_KEY");
+        if (string.IsNullOrWhiteSpace(key)) { Console.Error.WriteLine("set TRIPO_API_KEY first (the key is only read from the environment)."); return 2; }
+        if (!all && set == null && names.Count == 0)
+        {
+            Console.Error.WriteLine("rigging costs credits: say which sculpts (--set <set>, --all or names), and try one first with --limit 1.");
+            return 2;
+        }
+        var todo = chosen.Where(c => File.Exists(c.Glb(root)) && (ro.Force || !File.Exists(c.Animated(root)))).ToList();
+        if (todo.Count == 0) { Console.Error.WriteLine("nothing to rig: no sculpt yet (generate first), or the rigged files are there already (--force)."); return 2; }
+        Console.WriteLine($"{Math.Min(todo.Count, ro.Limit)} sculpt(s) to rig and animate " +
+                          $"({(ro.Animations is { } a ? string.Join(", ", a) : "the default presets of the body Tripo finds")}).");
+        var client = new TripoClient(key, Environment.GetEnvironmentVariable("TRIPO_BASE_URL"));
+        var outcome = await Rigger.Run(root, client, todo, ro, Console.Out);
         return outcome.Failed == 0 ? 0 : 1;
     }
 
