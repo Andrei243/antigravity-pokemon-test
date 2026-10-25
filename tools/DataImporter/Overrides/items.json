@@ -440,5 +440,17 @@
   "Inteleonite": { "id": 9411, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Inteleon, it lets it Mega Evolve in battle.", "megaStone": { "species": "Inteleon", "form": "Inteleon-Mega" } },
   "Meowscaradite": { "id": 9412, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Meowscarada, it lets it Mega Evolve in battle.", "megaStone": { "species": "Meowscarada", "form": "Meowscarada-Mega" } },
   "Skeledirgite": { "id": 9413, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Skeledirge, it lets it Mega Evolve in battle.", "megaStone": { "species": "Skeledirge", "form": "Skeledirge-Mega" } },
-  "Quaquavalite": { "id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } }
+  "Quaquavalite": { "id": 9414, "pocket": "Items", "effectType": "None", "effectValue": 0, "price": 0, "canUseInBattle": false, "canUseInOverworld": false, "description": "Held by Quaquaval, it lets it Mega Evolve in battle.", "megaStone": { "species": "Quaquaval", "form": "Quaquaval-Mega" } },
+  // The band of Mega Dynamax (plan 06 · R20c, our own): Sonia sets the Key Stone into the Dynamax Band after Galar's Hall of Fame
+  "Mega Max Band": {
+    "id": 9500,
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A Dynamax Band with a Key Stone set into it. It lets a Mega-Evolved Pokémon Dynamax.",
+    "cantBeTossed": true
+  }
 }

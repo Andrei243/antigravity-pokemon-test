@@ -76,6 +76,9 @@ public sealed class CoreSetup
     /// </summary>
     public bool OffersSwitch { get; init; }
 
+    /// <summary>A den's Mega Dynamax boss (plan 06 · R20c): the wild side has a Key Stone and a Mega Max Band.</summary>
+    public bool MegaMaxDen { get; init; }
+
     /// <summary>
     /// The difficulty chosen at NEW GAME (plan 13 · V2): under Easy a battle gives three halves of the EXP
     /// (<see cref="DifficultyRules.ScaleExp"/>). Normal unless given, which changes nothing; a record of the battle keeps it.
@@ -120,6 +123,9 @@ public sealed class CoreSetup
     /// Pokémon may Dynamax once in the battle. A trainer has theirs as <see cref="Trainer.DynamaxBand"/>.
     /// </summary>
     public bool DynamaxBand { get; init; }
+
+    /// <summary>The player has a Mega Max Band (plan 06 · R20c): under rules with <see cref="Ruleset.MegaDynamax"/> a Mega of theirs may Dynamax. A trainer has theirs as <see cref="Trainer.MegaMaxBand"/>.</summary>
+    public bool MegaMaxBand { get; init; }
 
     /// <summary>
     /// The player has a Tera Orb (plan 06 · R23): under rules with <see cref="Ruleset.Terastallization"/> one of their
@@ -269,6 +275,7 @@ public sealed partial class BattleCore : IBattleContext
         FirstBattle = setup.FirstBattle;
         Frontier = setup.Frontier;
         OffersSwitch = setup.OffersSwitch;
+        MegaMaxDen = setup.MegaMaxDen;
         Difficulty = setup.Difficulty;
         RunLevelCap = setup.RunLevelCap > 0 ? setup.RunLevelCap : null;
         Nuzlocke = setup.Nuzlocke;
@@ -276,6 +283,7 @@ public sealed partial class BattleCore : IBattleContext
         KeyStone = setup.KeyStone;
         ZRing = setup.ZRing;
         DynamaxBand = setup.DynamaxBand;
+        MegaMaxBand = setup.MegaMaxBand;
         TeraOrb = setup.TeraOrb;
         Field.Frontier = Frontier;
         NoBattleItems = setup.NoBattleItems;

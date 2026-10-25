@@ -41,8 +41,13 @@ public sealed class TrainerAi : IBattleController
         if (battle.CanMegaEvolve(mine)) choice = choice with { Mega = true };
         if (battle.CanUltraBurst(mine)) choice = choice with { UltraBurst = true };
         if (choice.Move >= 0 && battle.CanUseZMove(mine, choice.Move)) choice = choice with { ZMove = true };
-        // And a Dynamax (plan 06 · R22) where none of those was chosen, with a move of its own, whenever it can
-        if (choice.Move >= 0 && !choice.Mega && !choice.ZMove && !choice.UltraBurst && battle.CanDynamax(mine)) choice = choice with { Dynamax = true };
+        // A Mega Dynamax (plan 06 · R20c) with the Mega Evolution, the first turn it can
+        if (choice.Move >= 0 && choice.Mega && battle.CanMegaDynamax(mine)) choice = choice with { Dynamax = true };
+        // And a Dynamax (plan 06 · R22) where none of those was chosen, with a move of its own, whenever it can; with the
+        // Mega Max Band it is kept for a Pokémon that can still Mega Evolve (R20c), unless this one is a Mega already
+        if (choice.Move >= 0 && !choice.Mega && !choice.ZMove && !choice.UltraBurst && battle.CanDynamax(mine)
+            && (mine.Pokemon?.FormData?.Kind == FormKind.Mega || !battle.KeepsDynamaxForAMega(mine)))
+            choice = choice with { Dynamax = true };
         // And Terastallization (plan 06 · R23) where none of those was chosen, with any move, whenever it can
         if (choice.Kind == ChoiceKind.Fight && !choice.Mega && !choice.ZMove && !choice.UltraBurst && !choice.Dynamax && battle.CanTerastallize(mine))
             choice = choice with { Terastallize = true };

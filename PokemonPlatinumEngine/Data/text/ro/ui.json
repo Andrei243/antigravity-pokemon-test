@@ -2695,6 +2695,9 @@
     "dynamaxOnlyOnce": "Poți folosi Dynamax o singură dată într-o luptă!",
     "dynamaxed": "{pokemon} a crescut uriaș, plin de energie Dynamax!",
     "gigantamaxed": "{pokemon} a crescut în forma sa Gigantamax!",
+    "megaDynamaxed": "{pokemon} a crescut în forma sa Mega Dynamax!",
+    "cantMegaDynamax": "{pokemon} nu poate face Mega Dynamax!",
+    "megaReactingDen": "{pokemon}: {item} reacționează la lumina vizuinii!",
     "dynamaxEnded": "{pokemon} a revenit la mărimea obișnuită!",
     "dynamaxHoldsGround": "{pokemon} e mult prea uriaș ca să fie mutat!",
     "gmaxWildfireStart": "Flăcări se rotesc în jurul {team}!",
@@ -3161,7 +3164,8 @@
       "zPower": "Puterea Z",
       "ultraBurst": "Ultra Explozie",
       "dynamax": "Dynamax",
-      "tera": "Terastalizare"
+      "tera": "Terastalizare",
+      "megaDynamax": "Mega Dynamax"
     },
     "fight": "LUPTĂ",
     "bag": "RUCSAC",

@@ -46,6 +46,10 @@ public sealed class TrainerRecord
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool DynamaxBand { get; set; }
 
+    /// <summary>The trainer has a Mega Max Band and may Mega Dynamax (plan 06 · R20c); none of Platinum's does.</summary>
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool MegaMaxBand { get; set; }
+
     /// <summary>The trainer has a Tera Orb and Terastallizes under rules that have it (plan 06 · R23); none of Platinum's does.</summary>
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool TeraOrb { get; set; }
@@ -236,6 +240,9 @@ public static class TrainerDatabase
     /// Kanto's Champion, who is the rival (plan 19 · K7): FireRed's TRAINER_CHAMPION_FIRST_* and _REMATCH_* are of the
     /// Champion's class, which picks the League's band and song, under the rival's own placeholder name.
     /// </summary>
+    /// <summary>What a rematch team's id adds, and what a Champion's Mega Dynamax team's adds in its place (plan 06 · R20c, <c>BattleCore.MegaMaxTeamOf</c>).</summary>
+    public const string RematchSuffix = "_rematch", MegaMaxSuffix = "_megamax";
+
     public static bool IsRivalAsChampion(TrainerRecord record) =>
         record.Class == "Champion" && record.Id.StartsWith("kanto_champion_", StringComparison.Ordinal);
 
@@ -266,6 +273,7 @@ public static class TrainerDatabase
         trainer.KeyStone = record.KeyStone;
         trainer.ZRing = record.ZRing;
         trainer.DynamaxBand = record.DynamaxBand;
+        trainer.MegaMaxBand = record.MegaMaxBand;
         trainer.TeraOrb = record.TeraOrb;
         var mine = trainer.Party.Members;
         bool same = mine.Count == 0 || (mine.Count == record.Party.Count &&

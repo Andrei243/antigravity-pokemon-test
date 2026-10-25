@@ -172,7 +172,7 @@ public static class Breeding
     /// </summary>
     public static string? EggForm(Pokemon mother, PokemonSpecies egg)
     {
-        if (mother.FormData is not { } form || form.Kind is FormKind.Mega or FormKind.Gigantamax) return null;
+        if (mother.FormData is not { } form || form.Kind is FormKind.Mega or FormKind.Gigantamax or FormKind.MegaDynamax) return null;
         string own = mother.Species.Name + "-";
         if (!form.Name.StartsWith(own, StringComparison.Ordinal)) return null;
         return egg.Form(egg.Name + "-" + form.Name[own.Length..])?.Name;

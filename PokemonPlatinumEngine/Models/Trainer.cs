@@ -106,6 +106,9 @@ public class Trainer
     /// <summary>The trainer has a Dynamax Band and may Dynamax one Pokémon a battle (plan 06 · R22), under rules that have it. None of Platinum's trainers has one; Galar's chapter gives its trainers theirs.</summary>
     public bool DynamaxBand { get; set; }
 
+    /// <summary>The trainer has a Mega Max Band and may Dynamax a Mega of theirs (plan 06 · R20c), under rules that have it. None of Platinum's trainers has one.</summary>
+    public bool MegaMaxBand { get; set; }
+
     /// <summary>The trainer has a Tera Orb and may Terastallize one Pokémon a battle (plan 06 · R23), under rules that have it. None of Platinum's trainers has one; Paldea's chapter gives its trainers theirs.</summary>
     public bool TeraOrb { get; set; }
 

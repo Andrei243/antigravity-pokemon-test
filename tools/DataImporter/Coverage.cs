@@ -71,7 +71,7 @@ public static class Coverage
 
     // The later items the mechanics of plan 06 · R20 to R23 run by name: the Key Stone, the Z-Ring, the Dynamax Band
     // and the Tera Orb that let a trainer use them, and the two orbs of Primal Reversion
-    private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Tera Orb", "Red Orb", "Blue Orb", "Shiny Charm" };
+    private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Mega Max Band", "Tera Orb", "Red Orb", "Blue Orb", "Shiny Charm" };
 
     // The later items only there to be had (plan 06 · R28b): Unova's Pass Orbs, which bought the Entralink's powers, of a
     // link this game has none of. docs/mechanics/where-items-are-found.md says where each later item comes from
@@ -231,7 +231,7 @@ public static class Coverage
         var forms = species.SelectMany(s => s.Forms ?? new()).ToList();
         int Forms(FormKind kind) => forms.Count(f => f.Kind == kind);
         Line($"**Forms** (plan 03 · D11): {forms.Count}, of {species.Count(s => s.Forms != null)} species: {Forms(FormKind.Mega)} Mega, {Forms(FormKind.Primal)} Primal, " +
-             $"{Forms(FormKind.Gigantamax)} Gigantamax, {Forms(FormKind.Regional)} regional, {Forms(FormKind.Battle)} for battle only, {Forms(FormKind.Alternate)} others " +
+             $"{Forms(FormKind.Gigantamax)} Gigantamax, {Forms(FormKind.MegaDynamax)} Mega Dynamax, {Forms(FormKind.Regional)} regional, {Forms(FormKind.Battle)} for battle only, {Forms(FormKind.Alternate)} others " +
              $"with values of their own and {Forms(FormKind.Look)} that only look different. {species.Count(s => s.Modern is { Types: not null } or { BaseStats: not null })} species and " +
              $"{forms.Count(f => f.Modern is { Types: not null } or { BaseStats: not null })} forms have other types or base stats in the newest games, and {species.Count(s => s.Modern?.Learnset != null)} species and {forms.Count(f => f.Modern?.Learnset != null)} forms learn another list of moves by level there, which every game learns by (plan 06 · R19).");
         Line();

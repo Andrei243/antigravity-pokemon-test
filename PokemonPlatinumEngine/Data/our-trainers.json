@@ -578,5 +578,674 @@
         "personality": 10054539
       }
     ]
+  },
+  {
+    "id": "champion_cynthia_megamax",
+    "name": "Cynthia",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 15600,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Spiritomb",
+        "level": 74,
+        "ivScale": 250,
+        "personality": 1988216,
+        "moves": [
+          "Dark Pulse",
+          "Psychic",
+          "Silver Wind",
+          "Ominous Wind"
+        ]
+      },
+      {
+        "species": "Roserade",
+        "level": 74,
+        "ivScale": 250,
+        "personality": 8734072,
+        "moves": [
+          "Energy Ball",
+          "Sludge Bomb",
+          "Shadow Ball",
+          "Extrasensory"
+        ]
+      },
+      {
+        "species": "Togekiss",
+        "level": 76,
+        "ivScale": 250,
+        "personality": 6657656,
+        "moves": [
+          "Air Slash",
+          "Aura Sphere",
+          "Water Pulse",
+          "Psychic"
+        ]
+      },
+      {
+        "species": "Lucario",
+        "level": 76,
+        "ivScale": 250,
+        "personality": 10512504,
+        "moves": [
+          "Aura Sphere",
+          "Dragon Pulse",
+          "Psychic",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Milotic",
+        "level": 74,
+        "ivScale": 250,
+        "personality": 13009528,
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Mirror Coat",
+          "Aqua Ring"
+        ]
+      },
+      {
+        "species": "Garchomp",
+        "level": 78,
+        "ivScale": 250,
+        "personality": 7349880,
+        "item": "Garchompite",
+        "moves": [
+          "Dragon Rush",
+          "Earthquake",
+          "Brick Break",
+          "Giga Impact"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_champion_megamax_squirtle",
+    "name": "Terry",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7500,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Pidgeot",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 613000,
+        "moves": [
+          "Aerial Ace",
+          "Feather Dance",
+          "Sand Attack",
+          "Whirlwind"
+        ],
+        "item": "Pidgeotite"
+      },
+      {
+        "species": "Alakazam",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 1373832,
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Calm Mind",
+          "Reflect"
+        ]
+      },
+      {
+        "species": "Tyranitar",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 2094728,
+        "moves": [
+          "Crunch",
+          "Earthquake",
+          "Thunderbolt",
+          "Aerial Ace"
+        ]
+      },
+      {
+        "species": "Arcanine",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 2752392,
+        "moves": [
+          "Extreme Speed",
+          "Overheat",
+          "Aerial Ace",
+          "Iron Tail"
+        ]
+      },
+      {
+        "species": "Exeggutor",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 3472264,
+        "moves": [
+          "Giga Drain",
+          "Psychic",
+          "Sleep Powder",
+          "Light Screen"
+        ]
+      },
+      {
+        "species": "Blastoise",
+        "level": 75,
+        "ivScale": 255,
+        "personality": 4187016,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Hydro Pump",
+          "Ice Beam",
+          "Earthquake",
+          "Rain Dance"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_champion_megamax_bulbasaur",
+    "name": "Terry",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7500,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Pidgeot",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 613000,
+        "moves": [
+          "Aerial Ace",
+          "Feather Dance",
+          "Sand Attack",
+          "Whirlwind"
+        ],
+        "item": "Pidgeotite"
+      },
+      {
+        "species": "Alakazam",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 1373832,
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Calm Mind",
+          "Reflect"
+        ]
+      },
+      {
+        "species": "Tyranitar",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 2094728,
+        "moves": [
+          "Crunch",
+          "Earthquake",
+          "Thunderbolt",
+          "Aerial Ace"
+        ]
+      },
+      {
+        "species": "Gyarados",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 2758792,
+        "moves": [
+          "Hydro Pump",
+          "Dragon Dance",
+          "Earthquake",
+          "Hyper Beam"
+        ]
+      },
+      {
+        "species": "Arcanine",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 3416456,
+        "moves": [
+          "Extreme Speed",
+          "Overheat",
+          "Aerial Ace",
+          "Iron Tail"
+        ]
+      },
+      {
+        "species": "Venusaur",
+        "level": 75,
+        "ivScale": 255,
+        "personality": 4088456,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Solar Beam",
+          "Sludge Bomb",
+          "Earthquake",
+          "Sunny Day"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kanto_champion_megamax_charmander",
+    "name": "Terry",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 7500,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Pidgeot",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 613000,
+        "moves": [
+          "Aerial Ace",
+          "Feather Dance",
+          "Sand Attack",
+          "Whirlwind"
+        ],
+        "item": "Pidgeotite"
+      },
+      {
+        "species": "Alakazam",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 1373832,
+        "moves": [
+          "Psychic",
+          "Shadow Ball",
+          "Calm Mind",
+          "Reflect"
+        ]
+      },
+      {
+        "species": "Tyranitar",
+        "level": 72,
+        "ivScale": 255,
+        "personality": 2094728,
+        "moves": [
+          "Crunch",
+          "Earthquake",
+          "Thunderbolt",
+          "Aerial Ace"
+        ]
+      },
+      {
+        "species": "Exeggutor",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 2814600,
+        "moves": [
+          "Giga Drain",
+          "Psychic",
+          "Sleep Powder",
+          "Light Screen"
+        ]
+      },
+      {
+        "species": "Gyarados",
+        "level": 73,
+        "ivScale": 255,
+        "personality": 3478664,
+        "moves": [
+          "Hydro Pump",
+          "Dragon Dance",
+          "Earthquake",
+          "Hyper Beam"
+        ]
+      },
+      {
+        "species": "Charizard",
+        "level": 75,
+        "ivScale": 255,
+        "personality": 4189832,
+        "item": "Sitrus Berry",
+        "moves": [
+          "Fire Blast",
+          "Dragon Claw",
+          "Aerial Ace",
+          "Earthquake"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "johto_champion_lance_megamax",
+    "name": "Lance",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 10000,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Gyarados",
+        "level": 46,
+        "ivScale": 250,
+        "personality": 2681480,
+        "moves": [
+          "Flail",
+          "Dragon Pulse",
+          "Waterfall",
+          "Ice Fang"
+        ]
+      },
+      {
+        "species": "Dragonite",
+        "level": 49,
+        "ivScale": 250,
+        "personality": 13859464,
+        "moves": [
+          "Thunder Wave",
+          "Dragon Rush",
+          "Thunder",
+          "Hyper Beam"
+        ]
+      },
+      {
+        "species": "Dragonite",
+        "level": 49,
+        "ivScale": 250,
+        "personality": 13859464,
+        "moves": [
+          "Thunder Wave",
+          "Dragon Rush",
+          "Blizzard",
+          "Hyper Beam"
+        ]
+      },
+      {
+        "species": "Aerodactyl",
+        "level": 48,
+        "ivScale": 250,
+        "personality": 6744201,
+        "moves": [
+          "Aerial Ace",
+          "Crunch",
+          "Rock Slide",
+          "Thunder Fang"
+        ]
+      },
+      {
+        "species": "Charizard",
+        "level": 48,
+        "ivScale": 250,
+        "personality": 3228297,
+        "moves": [
+          "Shadow Claw",
+          "Air Slash",
+          "Dragon Claw",
+          "Fire Fang"
+        ]
+      },
+      {
+        "species": "Dragonite",
+        "level": 50,
+        "ivScale": 250,
+        "personality": 2165897,
+        "item": "Dragoninite",
+        "moves": [
+          "Fire Blast",
+          "Safeguard",
+          "Outrage",
+          "Hyper Beam"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hoenn_steven_megamax",
+    "name": "Steven",
+    "class": "Rival",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 4680,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Skarmory",
+        "level": 77,
+        "ivScale": 255,
+        "personality": 719240,
+        "moves": [
+          "Toxic",
+          "Aerial Ace",
+          "Spikes",
+          "Steel Wing"
+        ]
+      },
+      {
+        "species": "Claydol",
+        "level": 75,
+        "ivScale": 255,
+        "personality": 1378440,
+        "moves": [
+          "Reflect",
+          "Light Screen",
+          "Ancient Power",
+          "Earthquake"
+        ]
+      },
+      {
+        "species": "Aggron",
+        "level": 76,
+        "ivScale": 255,
+        "personality": 1987464,
+        "moves": [
+          "Thunder",
+          "Earthquake",
+          "Solar Beam",
+          "Dragon Claw"
+        ]
+      },
+      {
+        "species": "Cradily",
+        "level": 76,
+        "ivScale": 255,
+        "personality": 2646664,
+        "moves": [
+          "Giga Drain",
+          "Ancient Power",
+          "Ingrain",
+          "Confuse Ray"
+        ]
+      },
+      {
+        "species": "Armaldo",
+        "level": 76,
+        "ivScale": 255,
+        "personality": 3303816,
+        "moves": [
+          "Water Pulse",
+          "Ancient Power",
+          "Aerial Ace",
+          "Slash"
+        ]
+      },
+      {
+        "species": "Metagross",
+        "level": 78,
+        "ivScale": 255,
+        "personality": 4069768,
+        "item": "Metagrossite",
+        "moves": [
+          "Earthquake",
+          "Psychic",
+          "Meteor Mash",
+          "Shadow Ball"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unova_champion_iris_megamax",
+    "name": "Iris",
+    "class": "Champion",
+    "ai": [
+      "Basic",
+      "EvalAttack",
+      "Expert"
+    ],
+    "items": [
+      "Full Restore",
+      "Full Restore",
+      "Full Restore"
+    ],
+    "prizeMoney": 11800,
+    "keyStone": true,
+    "dynamaxBand": true,
+    "megaMaxBand": true,
+    "party": [
+      {
+        "species": "Hydreigon",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 13841288,
+        "moves": [
+          "Flamethrower",
+          "Charge Beam",
+          "Dragon Pulse",
+          "Surf"
+        ]
+      },
+      {
+        "species": "Druddigon",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 15947656,
+        "item": "Life Orb",
+        "moves": [
+          "Rock Slide",
+          "Flamethrower",
+          "Dragon Tail",
+          "Focus Blast"
+        ]
+      },
+      {
+        "species": "Archeops",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 9691784,
+        "moves": [
+          "Acrobatics",
+          "Rock Slide",
+          "Dragon Claw",
+          "Endeavor"
+        ]
+      },
+      {
+        "species": "Aggron",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 13009544,
+        "moves": [
+          "Earthquake",
+          "Double-Edge",
+          "Rock Slide",
+          "Autotomize"
+        ],
+        "item": "Aggronite"
+      },
+      {
+        "species": "Lapras",
+        "level": 57,
+        "ivScale": 250,
+        "personality": 5784712,
+        "moves": [
+          "Surf",
+          "Ice Beam",
+          "Thunderbolt",
+          "Sing"
+        ]
+      },
+      {
+        "species": "Haxorus",
+        "level": 59,
+        "ivScale": 250,
+        "personality": 223624,
+        "item": "Focus Sash",
+        "moves": [
+          "Earthquake",
+          "X-Scissor",
+          "Dual Chop",
+          "Dragon Dance"
+        ]
+      }
+    ]
   }
 ]

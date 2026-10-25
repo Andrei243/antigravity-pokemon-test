@@ -793,6 +793,24 @@
         "baseExpYield": 281
       },
       {
+        "name": "Venusaur-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 100,
+          "defense": 123,
+          "spAttack": 122,
+          "spDefense": 120,
+          "speed": 80
+        },
+        "abilities": [
+          "Thick Fat"
+        ],
+        "height": 29,
+        "weight": 1000,
+        "baseExpYield": 281
+      },
+      {
         "name": "Venusaur-Gmax",
         "kind": "Gigantamax",
         "height": 24,
@@ -1669,6 +1687,29 @@
         "color": "Black"
       },
       {
+        "name": "Charizard-Mega-X-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Fire",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 78,
+          "attack": 130,
+          "defense": 111,
+          "spAttack": 130,
+          "spDefense": 85,
+          "speed": 100
+        },
+        "abilities": [
+          "Tough Claws"
+        ],
+        "height": 30,
+        "weight": 1000,
+        "baseExpYield": 285,
+        "color": "Black"
+      },
+      {
         "name": "Charizard-Mega-Y",
         "kind": "Mega",
         "baseStats": {
@@ -1683,6 +1724,24 @@
           "Drought"
         ],
         "weight": 100.5,
+        "baseExpYield": 285
+      },
+      {
+        "name": "Charizard-Mega-Y-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 78,
+          "attack": 104,
+          "defense": 78,
+          "spAttack": 159,
+          "spDefense": 115,
+          "speed": 100
+        },
+        "abilities": [
+          "Drought"
+        ],
+        "height": 30,
+        "weight": 1000,
         "baseExpYield": 285
       },
       {
@@ -2606,6 +2665,24 @@
           "Mega Launcher"
         ],
         "weight": 101.1,
+        "baseExpYield": 284
+      },
+      {
+        "name": "Blastoise-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 79,
+          "attack": 103,
+          "defense": 120,
+          "spAttack": 135,
+          "spDefense": 115,
+          "speed": 78
+        },
+        "abilities": [
+          "Mega Launcher"
+        ],
+        "height": 27,
+        "weight": 1000,
         "baseExpYield": 284
       },
       {
@@ -3708,6 +3785,24 @@
         "height": 1.4,
         "weight": 40.5,
         "baseExpYield": 223
+      },
+      {
+        "name": "Beedrill-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 65,
+          "attack": 150,
+          "defense": 40,
+          "spAttack": 15,
+          "spDefense": 80,
+          "speed": 145
+        },
+        "abilities": [
+          "Adaptability"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 223
       }
     ],
     "modern": {
@@ -4539,6 +4634,24 @@
         ],
         "height": 2.2,
         "weight": 50.5,
+        "baseExpYield": 261
+      },
+      {
+        "name": "Pidgeot-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 83,
+          "attack": 80,
+          "defense": 80,
+          "spAttack": 135,
+          "spDefense": 80,
+          "speed": 121
+        },
+        "abilities": [
+          "No Guard"
+        ],
+        "height": 26,
+        "weight": 1000,
         "baseExpYield": 261
       }
     ],
@@ -7719,6 +7832,23 @@
         "weight": 38
       },
       {
+        "name": "Raichu-Mega-X-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 135,
+          "defense": 95,
+          "spAttack": 90,
+          "spDefense": 95,
+          "speed": 110
+        },
+        "abilities": [
+          "Electric Surge"
+        ],
+        "height": 20,
+        "weight": 1000
+      },
+      {
         "name": "Raichu-Mega-Y",
         "kind": "Mega",
         "baseStats": {
@@ -7734,6 +7864,23 @@
         ],
         "height": 1,
         "weight": 26
+      },
+      {
+        "name": "Raichu-Mega-Y-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 100,
+          "defense": 55,
+          "spAttack": 160,
+          "spDefense": 80,
+          "speed": 130
+        },
+        "abilities": [
+          "No Guard"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -20035,6 +20182,24 @@
         ],
         "height": 1.2,
         "baseExpYield": 270
+      },
+      {
+        "name": "Alakazam-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 55,
+          "attack": 50,
+          "defense": 65,
+          "spAttack": 175,
+          "spDefense": 105,
+          "speed": 150
+        },
+        "abilities": [
+          "Trace"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 270
       }
     ],
     "modern": {
@@ -21774,6 +21939,23 @@
         ],
         "height": 4.5,
         "weight": 125.5
+      },
+      {
+        "name": "Victreebel-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 125,
+          "defense": 85,
+          "spAttack": 135,
+          "spDefense": 95,
+          "speed": 70
+        },
+        "abilities": [
+          "Innards Out"
+        ],
+        "height": 54,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -25153,6 +25335,24 @@
         ],
         "height": 2,
         "weight": 120,
+        "baseExpYield": 207
+      },
+      {
+        "name": "Slowbro-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 95,
+          "attack": 75,
+          "defense": 180,
+          "spAttack": 130,
+          "spDefense": 80,
+          "speed": 30
+        },
+        "abilities": [
+          "Shell Armor"
+        ],
+        "height": 24,
+        "weight": 1000,
         "baseExpYield": 207
       },
       {
@@ -29778,6 +29978,24 @@
           "Shadow Tag"
         ],
         "height": 1.4,
+        "baseExpYield": 270
+      },
+      {
+        "name": "Gengar-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 65,
+          "defense": 80,
+          "spAttack": 170,
+          "spDefense": 95,
+          "speed": 130
+        },
+        "abilities": [
+          "Shadow Tag"
+        ],
+        "height": 22,
+        "weight": 1000,
         "baseExpYield": 270
       },
       {
@@ -36773,6 +36991,24 @@
         ],
         "weight": 100,
         "baseExpYield": 207
+      },
+      {
+        "name": "Kangaskhan-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 105,
+          "attack": 125,
+          "defense": 100,
+          "spAttack": 60,
+          "spDefense": 100,
+          "speed": 100
+        },
+        "abilities": [
+          "Parental Bond"
+        ],
+        "height": 26,
+        "weight": 1000,
+        "baseExpYield": 207
       }
     ],
     "modern": {
@@ -38446,6 +38682,23 @@
           "Huge Power"
         ],
         "height": 2.3
+      },
+      {
+        "name": "Starmie-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 100,
+          "defense": 105,
+          "spAttack": 130,
+          "spDefense": 105,
+          "speed": 120
+        },
+        "abilities": [
+          "Huge Power"
+        ],
+        "height": 28,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -40538,6 +40791,28 @@
         "height": 1.7,
         "weight": 59,
         "baseExpYield": 210
+      },
+      {
+        "name": "Pinsir-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Bug",
+          "Flying"
+        ],
+        "baseStats": {
+          "hp": 65,
+          "attack": 155,
+          "defense": 120,
+          "spAttack": 65,
+          "spDefense": 90,
+          "speed": 105
+        },
+        "abilities": [
+          "Aerilate"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 210
       }
     ],
     "modern": {
@@ -41621,6 +41896,28 @@
           "Mold Breaker"
         ],
         "weight": 305,
+        "baseExpYield": 224
+      },
+      {
+        "name": "Gyarados-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Water",
+          "Dark"
+        ],
+        "baseStats": {
+          "hp": 95,
+          "attack": 155,
+          "defense": 109,
+          "spAttack": 70,
+          "spDefense": 130,
+          "speed": 81
+        },
+        "abilities": [
+          "Mold Breaker"
+        ],
+        "height": 60,
+        "weight": 1000,
         "baseExpYield": 224
       }
     ],
@@ -45218,6 +45515,24 @@
         "height": 2.1,
         "weight": 79,
         "baseExpYield": 215
+      },
+      {
+        "name": "Aerodactyl-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 135,
+          "defense": 85,
+          "spAttack": 70,
+          "spDefense": 95,
+          "speed": 150
+        },
+        "abilities": [
+          "Tough Claws"
+        ],
+        "height": 25,
+        "weight": 1000,
+        "baseExpYield": 215
       }
     ],
     "modern": {
@@ -47741,6 +48056,23 @@
           "Multiscale"
         ],
         "weight": 290
+      },
+      {
+        "name": "Dragonite-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 91,
+          "attack": 124,
+          "defense": 115,
+          "spAttack": 145,
+          "spDefense": 125,
+          "speed": 100
+        },
+        "abilities": [
+          "Multiscale"
+        ],
+        "height": 26,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -49372,6 +49704,27 @@
         ],
         "height": 2.4,
         "weight": 201
+      },
+      {
+        "name": "Meganium-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Grass",
+          "Fairy"
+        ],
+        "baseStats": {
+          "hp": 80,
+          "attack": 92,
+          "defense": 115,
+          "spAttack": 143,
+          "spDefense": 115,
+          "speed": 80
+        },
+        "abilities": [
+          "Mega Sol"
+        ],
+        "height": 29,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -50307,6 +50660,28 @@
         "height": 1.9,
         "weight": 95,
         "color": "Gray"
+      },
+      {
+        "name": "Typhlosion-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Fire",
+          "Ground"
+        ],
+        "baseStats": {
+          "hp": 78,
+          "attack": 84,
+          "defense": 98,
+          "spAttack": 149,
+          "spDefense": 105,
+          "speed": 120
+        },
+        "abilities": [
+          "Drought"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "color": "Gray"
       }
     ],
     "modern": {
@@ -51176,6 +51551,27 @@
           "Dragonize"
         ],
         "weight": 108.8
+      },
+      {
+        "name": "Feraligatr-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Water",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 85,
+          "attack": 160,
+          "defense": 125,
+          "spAttack": 89,
+          "spDefense": 93,
+          "speed": 78
+        },
+        "abilities": [
+          "Dragonize"
+        ],
+        "height": 28,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -57076,6 +57472,28 @@
         "abilities": [
           "Mold Breaker"
         ],
+        "baseExpYield": 275
+      },
+      {
+        "name": "Ampharos-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Electric",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 90,
+          "attack": 95,
+          "defense": 105,
+          "spAttack": 165,
+          "spDefense": 110,
+          "speed": 45
+        },
+        "abilities": [
+          "Mold Breaker"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 275
       }
     ],
@@ -64935,6 +65353,24 @@
         "height": 10.5,
         "weight": 740,
         "baseExpYield": 214
+      },
+      {
+        "name": "Steelix-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 75,
+          "attack": 125,
+          "defense": 230,
+          "spAttack": 55,
+          "spDefense": 95,
+          "speed": 30
+        },
+        "abilities": [
+          "Sand Force"
+        ],
+        "height": 60,
+        "weight": 1000,
+        "baseExpYield": 214
       }
     ],
     "modern": {
@@ -66328,6 +66764,24 @@
         "height": 2,
         "weight": 125,
         "baseExpYield": 210
+      },
+      {
+        "name": "Scizor-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 150,
+          "defense": 140,
+          "spAttack": 65,
+          "spDefense": 100,
+          "speed": 75
+        },
+        "abilities": [
+          "Technician"
+        ],
+        "height": 24,
+        "weight": 1000,
+        "baseExpYield": 210
       }
     ],
     "modern": {
@@ -66967,6 +67421,24 @@
         ],
         "height": 1.7,
         "weight": 62.5,
+        "baseExpYield": 210
+      },
+      {
+        "name": "Heracross-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 185,
+          "defense": 115,
+          "spAttack": 40,
+          "spDefense": 105,
+          "speed": 75
+        },
+        "abilities": [
+          "Skill Link"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 210
       }
     ],
@@ -70905,6 +71377,23 @@
           "Stalwart"
         ],
         "weight": 40.4
+      },
+      {
+        "name": "Skarmory-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 65,
+          "attack": 140,
+          "defense": 110,
+          "spAttack": 40,
+          "spDefense": 100,
+          "speed": 110
+        },
+        "abilities": [
+          "Stalwart"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -71500,6 +71989,24 @@
         ],
         "height": 1.9,
         "weight": 49.5,
+        "baseExpYield": 210
+      },
+      {
+        "name": "Houndoom-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 75,
+          "attack": 90,
+          "defense": 90,
+          "spAttack": 140,
+          "spDefense": 90,
+          "speed": 115
+        },
+        "abilities": [
+          "Solar Power"
+        ],
+        "height": 23,
+        "weight": 1000,
         "baseExpYield": 210
       }
     ],
@@ -76827,6 +77334,21 @@
         "height": 2.5,
         "weight": 255,
         "baseExpYield": 315
+      },
+      {
+        "name": "Tyranitar-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 100,
+          "attack": 164,
+          "defense": 150,
+          "spAttack": 95,
+          "spDefense": 120,
+          "speed": 71
+        },
+        "height": 30,
+        "weight": 1000,
+        "baseExpYield": 315
       }
     ],
     "modern": {
@@ -78678,6 +79200,28 @@
         "height": 1.9,
         "weight": 55.2,
         "baseExpYield": 284
+      },
+      {
+        "name": "Sceptile-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Grass",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 70,
+          "attack": 110,
+          "defense": 75,
+          "spAttack": 145,
+          "spDefense": 85,
+          "speed": 145
+        },
+        "abilities": [
+          "Lightning Rod"
+        ],
+        "height": 23,
+        "weight": 1000,
+        "baseExpYield": 284
       }
     ],
     "modern": {
@@ -79597,6 +80141,24 @@
           "Speed Boost"
         ],
         "baseExpYield": 284
+      },
+      {
+        "name": "Blaziken-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 160,
+          "defense": 80,
+          "spAttack": 130,
+          "spDefense": 80,
+          "speed": 100
+        },
+        "abilities": [
+          "Speed Boost"
+        ],
+        "height": 23,
+        "weight": 1000,
+        "baseExpYield": 284
       }
     ],
     "modern": {
@@ -80512,6 +81074,24 @@
         ],
         "height": 1.9,
         "weight": 102,
+        "baseExpYield": 286
+      },
+      {
+        "name": "Swampert-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 100,
+          "attack": 150,
+          "defense": 110,
+          "spAttack": 95,
+          "spDefense": 110,
+          "speed": 70
+        },
+        "abilities": [
+          "Swift Swim"
+        ],
+        "height": 23,
+        "weight": 1000,
         "baseExpYield": 286
       }
     ],
@@ -86301,6 +86881,24 @@
           "Pixilate"
         ],
         "baseExpYield": 278
+      },
+      {
+        "name": "Gardevoir-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 68,
+          "attack": 85,
+          "defense": 65,
+          "spAttack": 165,
+          "spDefense": 135,
+          "speed": 100
+        },
+        "abilities": [
+          "Pixilate"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 278
       }
     ],
     "modern": {
@@ -91743,6 +92341,24 @@
         ],
         "weight": 161,
         "baseExpYield": 168
+      },
+      {
+        "name": "Sableye-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 50,
+          "attack": 85,
+          "defense": 125,
+          "spAttack": 85,
+          "spDefense": 115,
+          "speed": 20
+        },
+        "abilities": [
+          "Magic Bounce"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 168
       }
     ],
     "modern": {
@@ -92092,6 +92708,24 @@
         ],
         "height": 1,
         "weight": 23.5,
+        "baseExpYield": 168
+      },
+      {
+        "name": "Mawile-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 50,
+          "attack": 105,
+          "defense": 125,
+          "spAttack": 55,
+          "spDefense": 95,
+          "speed": 50
+        },
+        "abilities": [
+          "Huge Power"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 168
       }
     ],
@@ -93102,6 +93736,27 @@
         "height": 2.2,
         "weight": 395,
         "baseExpYield": 284
+      },
+      {
+        "name": "Aggron-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Steel"
+        ],
+        "baseStats": {
+          "hp": 70,
+          "attack": 140,
+          "defense": 230,
+          "spAttack": 60,
+          "spDefense": 80,
+          "speed": 50
+        },
+        "abilities": [
+          "Filter"
+        ],
+        "height": 26,
+        "weight": 1000,
+        "baseExpYield": 284
       }
     ],
     "modern": {
@@ -93759,6 +94414,21 @@
           "speed": 100
         },
         "baseExpYield": 179
+      },
+      {
+        "name": "Medicham-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 100,
+          "defense": 85,
+          "spAttack": 80,
+          "spDefense": 85,
+          "speed": 100
+        },
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 179
       }
     ],
     "modern": {
@@ -94352,6 +95022,24 @@
         ],
         "height": 1.8,
         "weight": 44,
+        "baseExpYield": 201
+      },
+      {
+        "name": "Manectric-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 75,
+          "defense": 80,
+          "spAttack": 135,
+          "spDefense": 80,
+          "speed": 135
+        },
+        "abilities": [
+          "Intimidate"
+        ],
+        "height": 22,
+        "weight": 1000,
         "baseExpYield": 201
       }
     ],
@@ -96944,6 +97632,24 @@
         "height": 2.5,
         "weight": 130.3,
         "baseExpYield": 196
+      },
+      {
+        "name": "Sharpedo-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 140,
+          "defense": 70,
+          "spAttack": 110,
+          "spDefense": 65,
+          "speed": 105
+        },
+        "abilities": [
+          "Strong Jaw"
+        ],
+        "height": 30,
+        "weight": 1000,
+        "baseExpYield": 196
       }
     ],
     "modern": {
@@ -98156,6 +98862,24 @@
         ],
         "height": 2.5,
         "weight": 320.5,
+        "baseExpYield": 196
+      },
+      {
+        "name": "Camerupt-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 120,
+          "defense": 100,
+          "spAttack": 145,
+          "spDefense": 105,
+          "speed": 20
+        },
+        "abilities": [
+          "Sheer Force"
+        ],
+        "height": 30,
+        "weight": 1000,
         "baseExpYield": 196
       }
     ],
@@ -101416,6 +102140,28 @@
           "Pixilate"
         ],
         "height": 1.5,
+        "baseExpYield": 207
+      },
+      {
+        "name": "Altaria-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Dragon",
+          "Fairy"
+        ],
+        "baseStats": {
+          "hp": 75,
+          "attack": 110,
+          "defense": 110,
+          "spAttack": 110,
+          "spDefense": 105,
+          "speed": 80
+        },
+        "abilities": [
+          "Pixilate"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 207
       }
     ],
@@ -107357,6 +108103,24 @@
         "height": 1.2,
         "weight": 13,
         "baseExpYield": 194
+      },
+      {
+        "name": "Banette-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 64,
+          "attack": 165,
+          "defense": 75,
+          "spAttack": 93,
+          "spDefense": 83,
+          "speed": 75
+        },
+        "abilities": [
+          "Prankster"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 194
       }
     ],
     "modern": {
@@ -108925,6 +109689,24 @@
         "baseExpYield": 198
       },
       {
+        "name": "Absol-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 65,
+          "attack": 150,
+          "defense": 60,
+          "spAttack": 115,
+          "spDefense": 60,
+          "speed": 115
+        },
+        "abilities": [
+          "Magic Bounce"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 198
+      },
+      {
         "name": "Absol-Mega-Z",
         "kind": "Mega",
         "types": [
@@ -109644,6 +110426,24 @@
         ],
         "height": 2.1,
         "weight": 350.2,
+        "baseExpYield": 203
+      },
+      {
+        "name": "Glalie-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 120,
+          "defense": 80,
+          "spAttack": 120,
+          "spDefense": 80,
+          "speed": 100
+        },
+        "abilities": [
+          "Refrigerate"
+        ],
+        "height": 25,
+        "weight": 1000,
         "baseExpYield": 203
       }
     ],
@@ -112662,6 +113462,24 @@
         "height": 1.8,
         "weight": 112.6,
         "baseExpYield": 315
+      },
+      {
+        "name": "Salamence-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 95,
+          "attack": 145,
+          "defense": 130,
+          "spAttack": 120,
+          "spDefense": 90,
+          "speed": 120
+        },
+        "abilities": [
+          "Aerilate"
+        ],
+        "height": 22,
+        "weight": 1000,
+        "baseExpYield": 315
       }
     ],
     "modern": {
@@ -113431,6 +114249,24 @@
         ],
         "height": 2.5,
         "weight": 942.9,
+        "baseExpYield": 315
+      },
+      {
+        "name": "Metagross-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 145,
+          "defense": 150,
+          "spAttack": 105,
+          "spDefense": 110,
+          "speed": 110
+        },
+        "abilities": [
+          "Tough Claws"
+        ],
+        "height": 30,
+        "weight": 1000,
         "baseExpYield": 315
       }
     ],
@@ -117745,6 +118581,23 @@
         ],
         "height": 2.6,
         "weight": 400
+      },
+      {
+        "name": "Torterra-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 95,
+          "attack": 129,
+          "defense": 145,
+          "spAttack": 75,
+          "spDefense": 115,
+          "speed": 66
+        },
+        "abilities": [
+          "Solid Rock"
+        ],
+        "height": 26,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -118627,6 +119480,23 @@
         ],
         "height": 1.5,
         "weight": 62
+      },
+      {
+        "name": "Infernape-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 76,
+          "attack": 129,
+          "defense": 81,
+          "spAttack": 129,
+          "spDefense": 81,
+          "speed": 138
+        },
+        "abilities": [
+          "Iron Fist"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -119438,6 +120308,23 @@
         ],
         "height": 2,
         "weight": 105
+      },
+      {
+        "name": "Empoleon-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 84,
+          "attack": 86,
+          "defense": 113,
+          "spAttack": 146,
+          "spDefense": 126,
+          "speed": 75
+        },
+        "abilities": [
+          "Competitive"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -128522,6 +129409,28 @@
         "height": 1.3,
         "weight": 28.3,
         "baseExpYield": 203
+      },
+      {
+        "name": "Lopunny-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Normal",
+          "Fighting"
+        ],
+        "baseStats": {
+          "hp": 65,
+          "attack": 136,
+          "defense": 94,
+          "spAttack": 54,
+          "spDefense": 96,
+          "speed": 135
+        },
+        "abilities": [
+          "Scrappy"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 203
       }
     ],
     "modern": {
@@ -133263,6 +134172,24 @@
         "baseExpYield": 315
       },
       {
+        "name": "Garchomp-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 108,
+          "attack": 170,
+          "defense": 115,
+          "spAttack": 120,
+          "spDefense": 95,
+          "speed": 92
+        },
+        "abilities": [
+          "Sand Force"
+        ],
+        "height": 23,
+        "weight": 1000,
+        "baseExpYield": 315
+      },
+      {
         "name": "Garchomp-Mega-Z",
         "kind": "Mega",
         "types": [
@@ -134250,6 +135177,24 @@
         ],
         "height": 1.3,
         "weight": 57.5,
+        "baseExpYield": 219
+      },
+      {
+        "name": "Lucario-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 145,
+          "defense": 88,
+          "spAttack": 140,
+          "spDefense": 70,
+          "speed": 112
+        },
+        "abilities": [
+          "Adaptability"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 219
       },
       {
@@ -137873,6 +138818,21 @@
         },
         "height": 2.7,
         "weight": 185,
+        "baseExpYield": 208
+      },
+      {
+        "name": "Abomasnow-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 90,
+          "attack": 132,
+          "defense": 105,
+          "spAttack": 132,
+          "spDefense": 105,
+          "speed": 30
+        },
+        "height": 32,
+        "weight": 1000,
         "baseExpYield": 208
       }
     ],
@@ -142569,6 +143529,24 @@
         ],
         "weight": 56.4,
         "baseExpYield": 278
+      },
+      {
+        "name": "Gallade-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 68,
+          "attack": 165,
+          "defense": 95,
+          "spAttack": 65,
+          "spDefense": 115,
+          "speed": 110
+        },
+        "abilities": [
+          "Inner Focus"
+        ],
+        "height": 20,
+        "weight": 1000,
+        "baseExpYield": 278
       }
     ],
     "modern": {
@@ -143622,6 +144600,23 @@
         ],
         "height": 2.6,
         "weight": 29.6
+      },
+      {
+        "name": "Froslass-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 80,
+          "defense": 70,
+          "spAttack": 140,
+          "spDefense": 100,
+          "speed": 120
+        },
+        "abilities": [
+          "Snow Warning"
+        ],
+        "height": 31,
+        "weight": 1000
       }
     ],
     "modern": {
@@ -149405,6 +150400,27 @@
         ],
         "height": 3.8,
         "weight": 80
+      },
+      {
+        "name": "Serperior-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Grass",
+          "Dragon"
+        ],
+        "baseStats": {
+          "hp": 75,
+          "attack": 75,
+          "defense": 110,
+          "spAttack": 115,
+          "spDefense": 110,
+          "speed": 143
+        },
+        "abilities": [
+          "Contrary"
+        ],
+        "height": 40,
+        "weight": 1000
       }
     ]
   },
@@ -149969,6 +150985,23 @@
         ],
         "height": 1.8,
         "weight": 180.3
+      },
+      {
+        "name": "Emboar-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 110,
+          "attack": 148,
+          "defense": 75,
+          "spAttack": 110,
+          "spDefense": 110,
+          "speed": 75
+        },
+        "abilities": [
+          "Mold Breaker"
+        ],
+        "height": 22,
+        "weight": 1000
       }
     ]
   },
@@ -150677,6 +151710,27 @@
         ],
         "height": 1.8,
         "weight": 120
+      },
+      {
+        "name": "Samurott-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Water",
+          "Steel"
+        ],
+        "baseStats": {
+          "hp": 95,
+          "attack": 140,
+          "defense": 105,
+          "spAttack": 108,
+          "spDefense": 85,
+          "speed": 95
+        },
+        "abilities": [
+          "Sharpness"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -155548,6 +156602,23 @@
         ],
         "height": 0.9,
         "weight": 60
+      },
+      {
+        "name": "Excadrill-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 110,
+          "attack": 165,
+          "defense": 100,
+          "spAttack": 65,
+          "spDefense": 65,
+          "speed": 103
+        },
+        "abilities": [
+          "Piercing Drill"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -155805,6 +156876,29 @@
         ],
         "height": 1.5,
         "weight": 32,
+        "baseExpYield": 425,
+        "color": "White"
+      },
+      {
+        "name": "Audino-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Normal",
+          "Fairy"
+        ],
+        "baseStats": {
+          "hp": 103,
+          "attack": 60,
+          "defense": 126,
+          "spAttack": 80,
+          "spDefense": 126,
+          "speed": 50
+        },
+        "abilities": [
+          "Healer"
+        ],
+        "height": 20,
+        "weight": 1000,
         "baseExpYield": 425,
         "color": "White"
       }
@@ -158400,6 +159494,23 @@
         ],
         "height": 3.2,
         "weight": 230.5
+      },
+      {
+        "name": "Scolipede-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 140,
+          "defense": 149,
+          "spAttack": 75,
+          "spDefense": 99,
+          "speed": 62
+        },
+        "abilities": [
+          "Shell Armor"
+        ],
+        "height": 38,
+        "weight": 1000
       }
     ]
   },
@@ -171889,6 +173000,23 @@
         ],
         "height": 2.5,
         "weight": 69.6
+      },
+      {
+        "name": "Chandelure-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 60,
+          "attack": 75,
+          "defense": 110,
+          "spAttack": 175,
+          "spDefense": 110,
+          "speed": 90
+        },
+        "abilities": [
+          "Infiltrator"
+        ],
+        "height": 30,
+        "weight": 1000
       }
     ]
   },
@@ -181270,6 +182398,23 @@
         "abilities": [
           "Bulletproof"
         ]
+      },
+      {
+        "name": "Chesnaught-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 88,
+          "attack": 137,
+          "defense": 172,
+          "spAttack": 74,
+          "spDefense": 115,
+          "speed": 44
+        },
+        "abilities": [
+          "Bulletproof"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -181840,6 +182985,23 @@
         "abilities": [
           "Levitate"
         ]
+      },
+      {
+        "name": "Delphox-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 75,
+          "attack": 69,
+          "defense": 72,
+          "spAttack": 159,
+          "spDefense": 125,
+          "speed": 134
+        },
+        "abilities": [
+          "Levitate"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -182561,6 +183723,23 @@
         "abilities": [
           "Protean"
         ]
+      },
+      {
+        "name": "Greninja-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 72,
+          "attack": 125,
+          "defense": 77,
+          "spAttack": 133,
+          "spDefense": 81,
+          "speed": 142
+        },
+        "abilities": [
+          "Protean"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -184696,6 +185875,23 @@
           "Fire Mane"
         ],
         "weight": 93.3
+      },
+      {
+        "name": "Pyroar-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 86,
+          "attack": 88,
+          "defense": 92,
+          "spAttack": 129,
+          "spDefense": 86,
+          "speed": 126
+        },
+        "abilities": [
+          "Fire Mane"
+        ],
+        "height": 20,
+        "weight": 1000
       },
       {
         "name": "Pyroar-Female",
@@ -189538,6 +190734,23 @@
         ],
         "height": 2.1,
         "weight": 100.3
+      },
+      {
+        "name": "Dragalge-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 65,
+          "attack": 85,
+          "defense": 105,
+          "spAttack": 132,
+          "spDefense": 163,
+          "speed": 44
+        },
+        "abilities": [
+          "Regenerator"
+        ],
+        "height": 25,
+        "weight": 1000
       }
     ]
   },
@@ -197119,6 +198332,23 @@
         ],
         "height": 1.8,
         "weight": 44
+      },
+      {
+        "name": "Decidueye-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 78,
+          "attack": 142,
+          "defense": 90,
+          "spAttack": 100,
+          "spDefense": 110,
+          "speed": 110
+        },
+        "abilities": [
+          "Infiltrator"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -197714,6 +198944,23 @@
         ],
         "height": 2,
         "weight": 105
+      },
+      {
+        "name": "Incineroar-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 95,
+          "attack": 145,
+          "defense": 110,
+          "spAttack": 80,
+          "spDefense": 110,
+          "speed": 90
+        },
+        "abilities": [
+          "Intimidate"
+        ],
+        "height": 22,
+        "weight": 1000
       }
     ]
   },
@@ -198282,6 +199529,23 @@
         ],
         "height": 2.1,
         "weight": 52
+      },
+      {
+        "name": "Primarina-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 74,
+          "defense": 94,
+          "spAttack": 156,
+          "spDefense": 136,
+          "speed": 90
+        },
+        "abilities": [
+          "Liquid Voice"
+        ],
+        "height": 22,
+        "weight": 1000
       }
     ]
   },
@@ -205655,6 +206919,27 @@
         ],
         "height": 2.3,
         "weight": 148
+      },
+      {
+        "name": "Golisopod-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "types": [
+          "Bug",
+          "Steel"
+        ],
+        "baseStats": {
+          "hp": 75,
+          "attack": 150,
+          "defense": 175,
+          "spAttack": 70,
+          "spDefense": 120,
+          "speed": 40
+        },
+        "abilities": [
+          "Tough Claws"
+        ],
+        "height": 28,
+        "weight": 1000
       }
     ]
   },
@@ -214417,6 +215702,23 @@
         "weight": 120
       },
       {
+        "name": "Rillaboom-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 100,
+          "attack": 160,
+          "defense": 110,
+          "spAttack": 60,
+          "spDefense": 90,
+          "speed": 110
+        },
+        "abilities": [
+          "Grassy Surge"
+        ],
+        "height": 30,
+        "weight": 1000
+      },
+      {
         "name": "Rillaboom-Gmax",
         "kind": "Gigantamax",
         "height": 28,
@@ -214909,6 +216211,23 @@
         "weight": 38
       },
       {
+        "name": "Cinderace-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 80,
+          "attack": 151,
+          "defense": 95,
+          "spAttack": 65,
+          "spDefense": 95,
+          "speed": 144
+        },
+        "abilities": [
+          "Libero"
+        ],
+        "height": 29,
+        "weight": 1000
+      },
+      {
         "name": "Cinderace-Gmax",
         "kind": "Gigantamax",
         "height": 27,
@@ -215392,6 +216711,23 @@
         ],
         "height": 2.1,
         "weight": 52
+      },
+      {
+        "name": "Inteleon-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 70,
+          "attack": 95,
+          "defense": 80,
+          "spAttack": 160,
+          "spDefense": 80,
+          "speed": 145
+        },
+        "abilities": [
+          "Sniper"
+        ],
+        "height": 42,
+        "weight": 1000
       },
       {
         "name": "Inteleon-Gmax",
@@ -231257,6 +232593,23 @@
         ],
         "height": 1.7,
         "weight": 36
+      },
+      {
+        "name": "Meowscarada-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 76,
+          "attack": 150,
+          "defense": 85,
+          "spAttack": 81,
+          "spDefense": 90,
+          "speed": 148
+        },
+        "abilities": [
+          "Magician"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -231711,6 +233064,23 @@
         ],
         "height": 1.9,
         "weight": 380
+      },
+      {
+        "name": "Skeledirge-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 104,
+          "attack": 75,
+          "defense": 115,
+          "spAttack": 145,
+          "spDefense": 105,
+          "speed": 86
+        },
+        "abilities": [
+          "Punk Rock"
+        ],
+        "height": 20,
+        "weight": 1000
       }
     ]
   },
@@ -232167,6 +233537,23 @@
         ],
         "height": 2,
         "weight": 70
+      },
+      {
+        "name": "Quaquaval-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 85,
+          "attack": 155,
+          "defense": 100,
+          "spAttack": 85,
+          "spDefense": 90,
+          "speed": 115
+        },
+        "abilities": [
+          "Dancer"
+        ],
+        "height": 22,
+        "weight": 1000
       }
     ]
   },
@@ -240742,6 +242129,23 @@
         ],
         "height": 2.8,
         "weight": 77
+      },
+      {
+        "name": "Glimmora-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 83,
+          "attack": 90,
+          "defense": 105,
+          "spAttack": 150,
+          "spDefense": 96,
+          "speed": 101
+        },
+        "abilities": [
+          "Adaptability"
+        ],
+        "height": 34,
+        "weight": 1000
       }
     ]
   },
@@ -245170,6 +246574,21 @@
           "speed": 87
         },
         "weight": 315,
+        "color": "Blue"
+      },
+      {
+        "name": "Baxcalibur-Mega-Mmax",
+        "kind": "MegaDynamax",
+        "baseStats": {
+          "hp": 115,
+          "attack": 175,
+          "defense": 117,
+          "spAttack": 105,
+          "spDefense": 101,
+          "speed": 87
+        },
+        "height": 25,
+        "weight": 1000,
         "color": "Blue"
       }
     ]

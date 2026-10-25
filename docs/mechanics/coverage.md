@@ -34,7 +34,7 @@ The data has 1006 moves in all. The games number 919 of them, because each of th
 | Ours | 400 | 72 | 72 | 0 | 0 | 0 | 0 |
 | All | 1425 | 919 | 919 | 0 | 0 | 313 | 313 |
 
-**Forms** (plan 03 · D11): 556, of 250 species: 112 Mega, 2 Primal, 34 Gigantamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
+**Forms** (plan 03 · D11): 634, of 250 species: 112 Mega, 2 Primal, 34 Gigantamax, 78 Mega Dynamax, 57 regional, 23 for battle only, 85 others with values of their own and 243 that only look different. 61 species and 5 forms have other types or base stats in the newest games, and 656 species and 12 forms learn another list of moves by level there, which every game learns by (plan 06 · R19).
 
 ## Move effects still to write
 
@@ -176,7 +176,7 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1425) | Forms | Moves (1006) | Abilities (313) | Items (946) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1425) | Forms | Moves (1006) | Abilities (313) | Items (947) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | de | 1025 | 365 | 901 | 310 | 925 | 913 | 0 | 191 | 0 |
 | es | 1025 | 0 | 901 | 310 | 925 | 232 | 0 | 0 | 0 |
@@ -184,6 +184,6 @@ Names and descriptions per language (plan 17 · N3), counted from `Data/text/<ta
 | it | 1025 | 0 | 901 | 310 | 925 | 232 | 0 | 0 | 0 |
 | ja | 1025 | 1 | 901 | 310 | 926 | 328 | 0 | 0 | 0 |
 | ko | 1025 | 0 | 901 | 310 | 902 | 232 | 0 | 0 | 0 |
-| ro (own) | 0 | 0 | 1006 | 313 | 946 | 0 | 1006 | 313 | 946 |
+| ro (own) | 0 | 0 | 1006 | 313 | 947 | 0 | 1006 | 313 | 947 |
 | zh-Hans | 1025 | 0 | 901 | 310 | 901 | 62 | 0 | 0 | 0 |
 | zh-Hant | 1025 | 0 | 901 | 310 | 901 | 62 | 0 | 0 | 0 |

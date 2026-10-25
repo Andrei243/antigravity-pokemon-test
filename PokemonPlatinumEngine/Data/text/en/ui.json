@@ -2641,6 +2641,9 @@
     "dynamaxOnlyOnce": "You can Dynamax only once in a battle!",
     "dynamaxed": "{pokemon} swelled to a giant size with Dynamax energy!",
     "gigantamaxed": "{pokemon} swelled into its Gigantamax form!",
+    "megaDynamaxed": "{pokemon} swelled into its Mega Dynamax form!",
+    "cantMegaDynamax": "{pokemon} can't Mega Dynamax!",
+    "megaReactingDen": "{pokemon}'s {item} is reacting to the den's light!",
     "dynamaxEnded": "{pokemon} shrank back to its usual size!",
     "dynamaxHoldsGround": "{pokemon} is far too huge to be moved!",
     "gmaxWildfireStart": "Flames whirl around {team}!",
@@ -3110,7 +3113,8 @@
       "zPower": "Z-Power",
       "ultraBurst": "Ultra Burst",
       "dynamax": "Dynamax",
-      "tera": "Terastallize"
+      "tera": "Terastallize",
+      "megaDynamax": "Mega Dynamax"
     },
     "fight": "FIGHT",
     "bag": "BAG",

@@ -220,6 +220,9 @@ public sealed class BattleSetup
     /// </summary>
     public bool OffersSwitch { get; init; }
 
+    /// <summary>A Galar den's battle against a Mega Dynamax boss (plan 06 · R20c, question 14): the wild Pokémon there may Mega Evolve and Mega Dynamax by itself, under rules that have it. Off unless given.</summary>
+    public bool MegaMaxDen { get; init; }
+
     /// <summary>
     /// The difficulty chosen at NEW GAME (plan 13 · V2; <see cref="Sim.CoreSetup.Difficulty"/>): Easy gives more EXP. The
     /// game hands it over from the run's rules; a battle a test or a tool builds itself is Normal unless it asks.
