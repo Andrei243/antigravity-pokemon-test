@@ -182168,7 +182168,7 @@
     "weight": 42.4,
     "color": "Brown",
     "shape": "Upright",
-    "dexEntry": "Diggersby is a Digging Pokémon, Normal- and Ground-type, first found in Kalos. It stands 1.0 m tall and weighs 42.4 kg. It evolves from Bunnelby.",
+    "dexEntry": "Diggersby is a Digging Pokémon, Normal- and Ground-type, first found in Kalos. It stands 1.0 m tall and weighs 42.4 kg. It evolves from Bunnelby. It evolves into Excavabbit.",
     "learnset": [
       {
         "level": 1,
@@ -182347,6 +182347,14 @@
       "Uproar"
     ],
     "offspring": "Bunnelby",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Excavabbit",
+        "level": 188,
+        "move": "Hammer Arm"
+      }
+    ],
     "abilities": [
       "Pickup",
       "Cheek Pouch"
@@ -183912,7 +183920,7 @@
     "weight": 81.5,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Pyroar is a Royal Pokémon, Fire- and Normal-type, first found in Kalos. It stands 1.5 m tall and weighs 81.5 kg. It evolves from Litleo.",
+    "dexEntry": "Pyroar is a Royal Pokémon, Fire- and Normal-type, first found in Kalos. It stands 1.5 m tall and weighs 81.5 kg. It evolves from Litleo. It evolves into Blazemonarch.",
     "learnset": [
       {
         "level": 1,
@@ -184040,6 +184048,13 @@
       "Snore"
     ],
     "offspring": "Litleo",
+    "evolutions": [
+      {
+        "method": "LevelDay",
+        "targetSpecies": "Blazemonarch",
+        "level": 190
+      }
+    ],
     "abilities": [
       "Rivalry",
       "Unnerve"
@@ -184959,7 +184974,7 @@
     "weight": 91,
     "color": "Brown",
     "shape": "Quadruped",
-    "dexEntry": "Gogoat is a Mount Pokémon, Grass-type, first found in Kalos. It stands 1.7 m tall and weighs 91.0 kg. It evolves from Skiddo.",
+    "dexEntry": "Gogoat is a Mount Pokémon, Grass-type, first found in Kalos. It stands 1.7 m tall and weighs 91.0 kg. It evolves from Skiddo. It evolves into Alpicorn.",
     "learnset": [
       {
         "level": 0,
@@ -185095,6 +185110,14 @@
       "Zen Headbutt"
     ],
     "offspring": "Skiddo",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Alpicorn",
+        "level": 190,
+        "move": "Horn Leech"
+      }
+    ],
     "abilities": [
       "Sap Sipper"
     ],
@@ -185359,7 +185382,7 @@
     "weight": 136,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Pangoro is a Daunting Pokémon, Fighting- and Dark-type, first found in Kalos. It stands 2.1 m tall and weighs 136.0 kg. It evolves from Pancham.",
+    "dexEntry": "Pangoro is a Daunting Pokémon, Fighting- and Dark-type, first found in Kalos. It stands 2.1 m tall and weighs 136.0 kg. It evolves from Pancham. It evolves into Bambrawler.",
     "learnset": [
       {
         "level": 0,
@@ -185554,6 +185577,14 @@
       "Zen Headbutt"
     ],
     "offspring": "Pancham",
+    "evolutions": [
+      {
+        "method": "LevelWithSpeciesInParty",
+        "targetSpecies": "Bambrawler",
+        "level": 192,
+        "species": "Pancham"
+      }
+    ],
     "abilities": [
       "Iron Fist",
       "Mold Breaker"
@@ -185596,7 +185627,7 @@
     "weight": 28,
     "color": "White",
     "shape": "Quadruped",
-    "dexEntry": "Furfrou is a Poodle Pokémon, Normal-type, first found in Kalos. It stands 1.2 m tall and weighs 28.0 kg.",
+    "dexEntry": "Furfrou is a Poodle Pokémon, Normal-type, first found in Kalos. It stands 1.2 m tall and weighs 28.0 kg. It evolves into Majesthound.",
     "learnset": [
       {
         "level": 1,
@@ -185709,6 +185740,13 @@
       "Refresh",
       "Captivate",
       "Work Up"
+    ],
+    "evolutions": [
+      {
+        "method": "FriendshipDay",
+        "targetSpecies": "Majesthound",
+        "level": 190
+      }
     ],
     "abilities": [
       "Fur Coat"
@@ -185967,7 +186005,7 @@
     "weight": 8.5,
     "color": "Blue",
     "shape": "Upright",
-    "dexEntry": "Meowstic is a Constraint Pokémon, Psychic-type, first found in Kalos. It stands 0.6 m tall and weighs 8.5 kg. It evolves from Espurr.",
+    "dexEntry": "Meowstic is a Constraint Pokémon, Psychic-type, first found in Kalos. It stands 0.6 m tall and weighs 8.5 kg. It evolves from Espurr. It evolves into Occulynx.",
     "learnset": [
       {
         "level": 1,
@@ -186132,6 +186170,13 @@
     "eggMoves": [
       "Yawn",
       "Tickle"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelNight",
+        "targetSpecies": "Occulynx",
+        "level": 190
+      }
     ],
     "abilities": [
       "Keen Eye",
@@ -187048,7 +187093,7 @@
     "weight": 15.5,
     "color": "Pink",
     "shape": "Humanoid",
-    "dexEntry": "Aromatisse is a Fragrance Pokémon, Fairy-type, first found in Kalos. It stands 0.8 m tall and weighs 15.5 kg. It evolves from Spritzee.",
+    "dexEntry": "Aromatisse is a Fragrance Pokémon, Fairy-type, first found in Kalos. It stands 0.8 m tall and weighs 15.5 kg. It evolves from Spritzee. It evolves into Perfumelle.",
     "learnset": [
       {
         "level": 1,
@@ -187199,6 +187244,14 @@
       "Snore"
     ],
     "offspring": "Spritzee",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Perfumelle",
+        "level": 194,
+        "item": "Sachet"
+      }
+    ],
     "abilities": [
       "Healer"
     ],
@@ -187417,7 +187470,7 @@
     "weight": 5,
     "color": "White",
     "shape": "Humanoid",
-    "dexEntry": "Slurpuff is a Meringue Pokémon, Fairy-type, first found in Kalos. It stands 0.8 m tall and weighs 5.0 kg. It evolves from Swirlix.",
+    "dexEntry": "Slurpuff is a Meringue Pokémon, Fairy-type, first found in Kalos. It stands 0.8 m tall and weighs 5.0 kg. It evolves from Swirlix. It evolves into Soufflair.",
     "learnset": [
       {
         "level": 1,
@@ -187555,6 +187608,14 @@
       "Snore"
     ],
     "offspring": "Swirlix",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Soufflair",
+        "level": 194,
+        "item": "Whipped Dream"
+      }
+    ],
     "abilities": [
       "Sweet Veil"
     ],
@@ -187804,7 +187865,7 @@
     "weight": 47,
     "color": "Blue",
     "shape": "Blob",
-    "dexEntry": "Malamar is an Overturning Pokémon, Dark- and Psychic-type, first found in Kalos. It stands 1.5 m tall and weighs 47.0 kg. It evolves from Inkay.",
+    "dexEntry": "Malamar is an Overturning Pokémon, Dark- and Psychic-type, first found in Kalos. It stands 1.5 m tall and weighs 47.0 kg. It evolves from Inkay. It evolves into Mesmerquid.",
     "learnset": [
       {
         "level": 1,
@@ -187963,6 +188024,14 @@
       "Disable",
       "Destiny Bond",
       "Acupressure"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Mesmerquid",
+        "level": 194,
+        "move": "Topsy-Turvy"
+      }
     ],
     "abilities": [
       "Contrary",
@@ -188229,7 +188298,7 @@
     "weight": 96,
     "color": "Brown",
     "shape": "Heads",
-    "dexEntry": "Barbaracle is a Collective Pokémon, Rock- and Water-type, first found in Kalos. It stands 1.3 m tall and weighs 96.0 kg. It evolves from Binacle.",
+    "dexEntry": "Barbaracle is a Collective Pokémon, Rock- and Water-type, first found in Kalos. It stands 1.3 m tall and weighs 96.0 kg. It evolves from Binacle. It evolves into Reefcolony.",
     "learnset": [
       {
         "level": 1,
@@ -188406,6 +188475,14 @@
       "Superpower"
     ],
     "offspring": "Binacle",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Reefcolony",
+        "level": 194,
+        "move": "Shell Smash"
+      }
+    ],
     "abilities": [
       "Tough Claws",
       "Sniper"
@@ -188672,7 +188749,7 @@
     "weight": 81.5,
     "color": "Brown",
     "shape": "Blob",
-    "dexEntry": "Dragalge is a Mock Kelp Pokémon, Poison- and Dragon-type, first found in Kalos. It stands 1.8 m tall and weighs 81.5 kg. It evolves from Skrelp.",
+    "dexEntry": "Dragalge is a Mock Kelp Pokémon, Poison- and Dragon-type, first found in Kalos. It stands 1.8 m tall and weighs 81.5 kg. It evolves from Skrelp. It evolves into Kelpdrake.",
     "learnset": [
       {
         "level": 1,
@@ -188812,6 +188889,13 @@
       "Snore"
     ],
     "offspring": "Skrelp",
+    "evolutions": [
+      {
+        "method": "LevelInRain",
+        "targetSpecies": "Kelpdrake",
+        "level": 196
+      }
+    ],
     "abilities": [
       "Poison Point",
       "Poison Touch"
@@ -189054,7 +189138,7 @@
     "weight": 35.3,
     "color": "Blue",
     "shape": "Squiggle",
-    "dexEntry": "Clawitzer is a Howitzer Pokémon, Water-type, first found in Kalos. It stands 1.3 m tall and weighs 35.3 kg. It evolves from Clauncher.",
+    "dexEntry": "Clawitzer is a Howitzer Pokémon, Water-type, first found in Kalos. It stands 1.3 m tall and weighs 35.3 kg. It evolves from Clauncher. It evolves into Salvoclaw.",
     "learnset": [
       {
         "level": 1,
@@ -189197,6 +189281,14 @@
       "Snore"
     ],
     "offspring": "Clauncher",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Salvoclaw",
+        "level": 196,
+        "move": "Aura Sphere"
+      }
+    ],
     "abilities": [
       "Mega Launcher"
     ]
@@ -189415,7 +189507,7 @@
     "weight": 21,
     "color": "Yellow",
     "shape": "Upright",
-    "dexEntry": "Heliolisk is a Generator Pokémon, Electric- and Normal-type, first found in Kalos. It stands 1.0 m tall and weighs 21.0 kg. It evolves from Helioptile.",
+    "dexEntry": "Heliolisk is a Generator Pokémon, Electric- and Normal-type, first found in Kalos. It stands 1.0 m tall and weighs 21.0 kg. It evolves from Helioptile. It evolves into Coronafrill.",
     "learnset": [
       {
         "level": 1,
@@ -189559,6 +189651,14 @@
       "Thunder Punch"
     ],
     "offspring": "Helioptile",
+    "evolutions": [
+      {
+        "method": "UseItem",
+        "targetSpecies": "Coronafrill",
+        "level": 194,
+        "item": "Sun Stone"
+      }
+    ],
     "abilities": [
       "Dry Skin",
       "Sand Veil"
@@ -189808,7 +189908,7 @@
     "weight": 270,
     "color": "Red",
     "shape": "Upright",
-    "dexEntry": "Tyrantrum is a Despot Pokémon, Rock- and Dragon-type, first found in Kalos. It stands 2.5 m tall and weighs 270.0 kg. It evolves from Tyrunt.",
+    "dexEntry": "Tyrantrum is a Despot Pokémon, Rock- and Dragon-type, first found in Kalos. It stands 2.5 m tall and weighs 270.0 kg. It evolves from Tyrunt. It evolves into Despotitan.",
     "learnset": [
       {
         "level": 1,
@@ -189969,6 +190069,14 @@
       "Zen Headbutt"
     ],
     "offspring": "Tyrunt",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItemDay",
+        "targetSpecies": "Despotitan",
+        "level": 196,
+        "item": "Rare Bone"
+      }
+    ],
     "abilities": [
       "Strong Jaw"
     ],
@@ -190241,7 +190349,7 @@
     "weight": 225,
     "color": "Blue",
     "shape": "Quadruped",
-    "dexEntry": "Aurorus is a Tundra Pokémon, Rock- and Ice-type, first found in Kalos. It stands 2.7 m tall and weighs 225.0 kg. It evolves from Amaura.",
+    "dexEntry": "Aurorus is a Tundra Pokémon, Rock- and Ice-type, first found in Kalos. It stands 2.7 m tall and weighs 225.0 kg. It evolves from Amaura. It evolves into Borealosaur.",
     "learnset": [
       {
         "level": 1,
@@ -190410,6 +190518,14 @@
       "Zen Headbutt"
     ],
     "offspring": "Amaura",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItemNight",
+        "targetSpecies": "Borealosaur",
+        "level": 196,
+        "item": "Rare Bone"
+      }
+    ],
     "abilities": [
       "Refrigerate"
     ],
@@ -190456,7 +190572,7 @@
     "weight": 23.5,
     "color": "Pink",
     "shape": "Quadruped",
-    "dexEntry": "Sylveon is an Intertwining Pokémon, Fairy-type, first found in Kalos. It stands 1.0 m tall and weighs 23.5 kg. It evolves from Eevee.",
+    "dexEntry": "Sylveon is an Intertwining Pokémon, Fairy-type, first found in Kalos. It stands 1.0 m tall and weighs 23.5 kg. It evolves from Eevee. It evolves into Faerieon.",
     "learnset": [
       {
         "level": 0,
@@ -190622,6 +190738,15 @@
       "Snore"
     ],
     "offspring": "Eevee",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Faerieon",
+        "level": 120,
+        "item": "Shiny Stone",
+        "needsFriendship": true
+      }
+    ],
     "abilities": [
       "Cute Charm"
     ],
@@ -190669,7 +190794,7 @@
     "weight": 21.5,
     "color": "Green",
     "shape": "Humanoid",
-    "dexEntry": "Hawlucha is a Wrestling Pokémon, Fighting- and Flying-type, first found in Kalos. It stands 0.8 m tall and weighs 21.5 kg.",
+    "dexEntry": "Hawlucha is a Wrestling Pokémon, Fighting- and Flying-type, first found in Kalos. It stands 0.8 m tall and weighs 21.5 kg. It evolves into Luchacondor.",
     "learnset": [
       {
         "level": 1,
@@ -190852,6 +190977,14 @@
       "Entrainment",
       "Quick Guard"
     ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Luchacondor",
+        "level": 194,
+        "move": "Flying Press"
+      }
+    ],
     "abilities": [
       "Limber",
       "Unburden"
@@ -190916,7 +191049,7 @@
     "weight": 2.2,
     "color": "Yellow",
     "shape": "Upright",
-    "dexEntry": "Dedenne is an Antenna Pokémon, Electric- and Fairy-type, first found in Kalos. It stands 0.2 m tall and weighs 2.2 kg.",
+    "dexEntry": "Dedenne is an Antenna Pokémon, Electric- and Fairy-type, first found in Kalos. It stands 0.2 m tall and weighs 2.2 kg. It evolves into Signalmus.",
     "learnset": [
       {
         "level": 1,
@@ -191058,6 +191191,14 @@
       "Magnet Rise",
       "Tearful Look"
     ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Signalmus",
+        "level": 192,
+        "move": "Nuzzle"
+      }
+    ],
     "abilities": [
       "Cheek Pouch",
       "Pickup"
@@ -191108,7 +191249,7 @@
     "weight": 5.7,
     "color": "Gray",
     "shape": "Ball",
-    "dexEntry": "Carbink is a Jewel Pokémon, Rock- and Fairy-type, first found in Kalos. It stands 0.3 m tall and weighs 5.7 kg.",
+    "dexEntry": "Carbink is a Jewel Pokémon, Rock- and Fairy-type, first found in Kalos. It stands 0.3 m tall and weighs 5.7 kg. It evolves into Druzarion.",
     "learnset": [
       {
         "level": 1,
@@ -191257,6 +191398,14 @@
       "Iron Defense",
       "Magnet Rise",
       "Snore"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Druzarion",
+        "level": 196,
+        "item": "Star Piece"
+      }
     ],
     "abilities": [
       "Clear Body"
@@ -192119,7 +192268,7 @@
     "weight": 3,
     "color": "Gray",
     "shape": "Ball",
-    "dexEntry": "Klefki is a Key Ring Pokémon, Steel- and Fairy-type, first found in Kalos. It stands 0.2 m tall and weighs 3.0 kg.",
+    "dexEntry": "Klefki is a Key Ring Pokémon, Steel- and Fairy-type, first found in Kalos. It stands 0.2 m tall and weighs 3.0 kg. It evolves into Chatelkey.",
     "learnset": [
       {
         "level": 1,
@@ -192265,6 +192414,14 @@
     "eggMoves": [
       "Magnet Rise",
       "Switcheroo"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Chatelkey",
+        "level": 198,
+        "move": "Magic Room"
+      }
     ],
     "abilities": [
       "Prankster"
@@ -192516,7 +192673,7 @@
     "weight": 71,
     "color": "Brown",
     "shape": "Tentacles",
-    "dexEntry": "Trevenant is an Elder Tree Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 1.5 m tall and weighs 71.0 kg. It evolves from Phantump.",
+    "dexEntry": "Trevenant is an Elder Tree Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 1.5 m tall and weighs 71.0 kg. It evolves from Phantump. It evolves into Sylvanshade.",
     "learnset": [
       {
         "level": 0,
@@ -192681,6 +192838,14 @@
       "Disable",
       "Sucker Punch",
       "Ally Switch"
+    ],
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Sylvanshade",
+        "level": 198,
+        "move": "Forest's Curse"
+      }
     ],
     "abilities": [
       "Natural Cure",
@@ -192988,7 +193153,7 @@
     "weight": 12.5,
     "color": "Brown",
     "shape": "Blob",
-    "dexEntry": "Gourgeist is a Pumpkin Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 0.9 m tall and weighs 12.5 kg. It evolves from Pumpkaboo.",
+    "dexEntry": "Gourgeist is a Pumpkin Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 0.9 m tall and weighs 12.5 kg. It evolves from Pumpkaboo. It evolves into Lanternhusk.",
     "learnset": [
       {
         "level": 1,
@@ -193158,6 +193323,13 @@
       "Trick"
     ],
     "offspring": "Pumpkaboo",
+    "evolutions": [
+      {
+        "method": "LevelNight",
+        "targetSpecies": "Lanternhusk",
+        "level": 198
+      }
+    ],
     "abilities": [
       "Pickup",
       "Frisk"
@@ -193438,7 +193610,7 @@
     "weight": 505,
     "color": "Blue",
     "shape": "Quadruped",
-    "dexEntry": "Avalugg is an Iceberg Pokémon, Ice-type, first found in Kalos. It stands 2.0 m tall and weighs 505.0 kg. It evolves from Bergmite.",
+    "dexEntry": "Avalugg is an Iceberg Pokémon, Ice-type, first found in Kalos. It stands 2.0 m tall and weighs 505.0 kg. It evolves from Bergmite. It evolves into Glacitadel.",
     "learnset": [
       {
         "level": 0,
@@ -193596,6 +193768,14 @@
       "Superpower"
     ],
     "offspring": "Bergmite",
+    "evolutions": [
+      {
+        "method": "LevelHoldingItem",
+        "targetSpecies": "Glacitadel",
+        "level": 200,
+        "item": "Never-Melt Ice"
+      }
+    ],
     "abilities": [
       "Own Tempo",
       "Ice Body"
@@ -193968,7 +194148,7 @@
     "weight": 85,
     "color": "Purple",
     "shape": "Wings",
-    "dexEntry": "Noivern is a Sound Wave Pokémon, Flying- and Dragon-type, first found in Kalos. It stands 1.5 m tall and weighs 85.0 kg. It evolves from Noibat.",
+    "dexEntry": "Noivern is a Sound Wave Pokémon, Flying- and Dragon-type, first found in Kalos. It stands 1.5 m tall and weighs 85.0 kg. It evolves from Noibat. It evolves into Sonarwing.",
     "learnset": [
       {
         "level": 0,
@@ -194130,6 +194310,14 @@
       "Uproar"
     ],
     "offspring": "Noibat",
+    "evolutions": [
+      {
+        "method": "LevelKnowsMove",
+        "targetSpecies": "Sonarwing",
+        "level": 203,
+        "move": "Boomburst"
+      }
+    ],
     "abilities": [
       "Frisk",
       "Infiltrator"
@@ -293653,5 +293841,4608 @@
         }
       ]
     }
+  },
+  {
+    "dexNumber": 2660,
+    "dexNumbers": {},
+    "name": "Excavabbit",
+    "category": "Excavator",
+    "primaryType": "Normal",
+    "secondaryType": "Ground",
+    "baseHP": 100,
+    "baseAttack": 66,
+    "baseDefense": 97,
+    "baseSpAttack": 50,
+    "baseSpDefense": 97,
+    "baseSpeed": 93,
+    "evYield": {
+      "hp": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 178,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.4,
+    "weight": 60,
+    "color": "Brown",
+    "shape": "Upright",
+    "dexEntry": "Excavabbit is an Excavator Pokémon, Normal- and Ground-type, first found in Kalos. It stands 1.4 m tall and weighs 60.0 kg. It evolves from Diggersby.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Mud-Slap"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Laser Focus"
+      },
+      {
+        "level": 9,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 12,
+        "moveName": "Mud Shot"
+      },
+      {
+        "level": 15,
+        "moveName": "Flail"
+      },
+      {
+        "level": 18,
+        "moveName": "Double Kick"
+      },
+      {
+        "level": 23,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 28,
+        "moveName": "Dig"
+      },
+      {
+        "level": 33,
+        "moveName": "Bounce"
+      },
+      {
+        "level": 38,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 43,
+        "moveName": "Swords Dance"
+      },
+      {
+        "level": 48,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 53,
+        "moveName": "Super Fang"
+      },
+      {
+        "level": 58,
+        "moveName": "Hammer Arm"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 140,
+        "moveName": "Titan Tackle"
+      },
+      {
+        "level": 165,
+        "moveName": "Snapstep"
+      },
+      {
+        "level": 195,
+        "moveName": "Dust Veil"
+      },
+      {
+        "level": 220,
+        "moveName": "Fault Line"
+      },
+      {
+        "level": 250,
+        "moveName": "Tectonic Rend"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM36",
+      "TM37",
+      "TM39",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM75",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM01",
+      "HM03",
+      "HM04",
+      "HM06",
+      "TR00",
+      "TR01",
+      "TR04",
+      "TR07",
+      "TR10",
+      "TR12",
+      "TR20",
+      "TR22",
+      "TR23",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR35",
+      "TR39",
+      "TR48",
+      "TR67",
+      "TR73",
+      "TR74",
+      "TR75",
+      "TR77",
+      "TR81",
+      "TR85",
+      "TR86",
+      "TR94"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Earth Power",
+      "Endeavor",
+      "Fire Punch",
+      "Gastro Acid",
+      "Gunk Shot",
+      "Ice Punch",
+      "Iron Head",
+      "Knock Off",
+      "Last Resort",
+      "Snore",
+      "Superpower",
+      "Thunder Punch",
+      "Uproar"
+    ],
+    "offspring": "Bunnelby",
+    "abilities": [
+      "Pickup",
+      "Cheek Pouch"
+    ],
+    "hiddenAbility": "Huge Power"
+  },
+  {
+    "dexNumber": 2668,
+    "dexNumbers": {},
+    "name": "Blazemonarch",
+    "category": "Sovereign",
+    "genderDifferences": true,
+    "primaryType": "Fire",
+    "secondaryType": "Normal",
+    "baseHP": 96,
+    "baseAttack": 78,
+    "baseDefense": 92,
+    "baseSpAttack": 119,
+    "baseSpDefense": 91,
+    "baseSpeed": 111,
+    "evYield": {
+      "spAttack": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 212,
+    "growthRate": "MediumSlow",
+    "genderRatio": 7,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.8,
+    "weight": 110,
+    "color": "Brown",
+    "shape": "Quadruped",
+    "dexEntry": "Blazemonarch is a Sovereign Pokémon, Fire- and Normal-type, first found in Kalos. It stands 1.8 m tall and weighs 110.0 kg. It evolves from Pyroar.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Ember"
+      },
+      {
+        "level": 1,
+        "moveName": "Hyper Beam"
+      },
+      {
+        "level": 1,
+        "moveName": "Work Up"
+      },
+      {
+        "level": 11,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 15,
+        "moveName": "Noble Roar"
+      },
+      {
+        "level": 20,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 23,
+        "moveName": "Fire Fang"
+      },
+      {
+        "level": 28,
+        "moveName": "Endeavor"
+      },
+      {
+        "level": 33,
+        "moveName": "Echoed Voice"
+      },
+      {
+        "level": 38,
+        "moveName": "Flamethrower"
+      },
+      {
+        "level": 42,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 48,
+        "moveName": "Hyper Voice"
+      },
+      {
+        "level": 51,
+        "moveName": "Incinerate"
+      },
+      {
+        "level": 57,
+        "moveName": "Overheat"
+      },
+      {
+        "level": 110,
+        "moveName": "Kindle"
+      },
+      {
+        "level": 145,
+        "moveName": "Pyre Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 215,
+        "moveName": "Resonant Hymn"
+      },
+      {
+        "level": 250,
+        "moveName": "Sunforge Blast"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM28",
+      "TM32",
+      "TM35",
+      "TM38",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM50",
+      "TM58",
+      "TM61",
+      "TM66",
+      "TM68",
+      "TM79",
+      "TM82",
+      "TM87",
+      "TM90",
+      "HM04",
+      "HM06"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Endeavor",
+      "Heat Wave",
+      "Helping Hand",
+      "Snore"
+    ],
+    "offspring": "Litleo",
+    "abilities": [
+      "Rivalry",
+      "Unnerve"
+    ],
+    "hiddenAbility": "Moxie"
+  },
+  {
+    "dexNumber": 2673,
+    "dexNumbers": {},
+    "name": "Alpicorn",
+    "category": "Summit",
+    "primaryType": "Grass",
+    "secondaryType": "Rock",
+    "baseHP": 123,
+    "baseAttack": 110,
+    "baseDefense": 87,
+    "baseSpAttack": 97,
+    "baseSpDefense": 101,
+    "baseSpeed": 82,
+    "evYield": {
+      "hp": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 223,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.1,
+    "weight": 140,
+    "color": "Brown",
+    "shape": "Quadruped",
+    "dexEntry": "Alpicorn is a Summit Pokémon, Grass- and Rock-type, first found in Kalos. It stands 2.1 m tall and weighs 140.0 kg. It evolves from Gogoat.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 1,
+        "moveName": "Growth"
+      },
+      {
+        "level": 1,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Vine Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 12,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 13,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 16,
+        "moveName": "Worry Seed"
+      },
+      {
+        "level": 20,
+        "moveName": "Synthesis"
+      },
+      {
+        "level": 22,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 26,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 30,
+        "moveName": "Seed Bomb"
+      },
+      {
+        "level": 34,
+        "moveName": "Bulk Up"
+      },
+      {
+        "level": 40,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 47,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 55,
+        "moveName": "Leaf Blade"
+      },
+      {
+        "level": 58,
+        "moveName": "Milk Drink"
+      },
+      {
+        "level": 110,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 140,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 165,
+        "moveName": "Root Snare"
+      },
+      {
+        "level": 195,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 220,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 250,
+        "moveName": "Skyfall Stone"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM09",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM21",
+      "TM22",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM40",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM53",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM90",
+      "HM03",
+      "HM04",
+      "HM06"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Seed Bomb",
+      "Snore",
+      "Superpower",
+      "Synthesis",
+      "Zen Headbutt"
+    ],
+    "offspring": "Skiddo",
+    "abilities": [
+      "Sap Sipper"
+    ],
+    "hiddenAbility": "Grass Pelt"
+  },
+  {
+    "dexNumber": 2675,
+    "dexNumbers": {},
+    "name": "Bambrawler",
+    "category": "Gang Boss",
+    "primaryType": "Fighting",
+    "secondaryType": "Dark",
+    "baseHP": 110,
+    "baseAttack": 134,
+    "baseDefense": 98,
+    "baseSpAttack": 69,
+    "baseSpDefense": 91,
+    "baseSpeed": 73,
+    "evYield": {
+      "attack": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 208,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field",
+      "Human-Like"
+    ],
+    "hatchCycles": 25,
+    "baseFriendship": 70,
+    "height": 2.4,
+    "weight": 180,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Bambrawler is a Gang Boss Pokémon, Fighting- and Dark-type, first found in Kalos. It stands 2.4 m tall and weighs 180.0 kg. It evolves from Pangoro.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Night Slash"
+      },
+      {
+        "level": 1,
+        "moveName": "Bullet Punch"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 1,
+        "moveName": "Arm Thrust"
+      },
+      {
+        "level": 1,
+        "moveName": "Taunt"
+      },
+      {
+        "level": 12,
+        "moveName": "Circle Throw"
+      },
+      {
+        "level": 16,
+        "moveName": "Low Sweep"
+      },
+      {
+        "level": 20,
+        "moveName": "Work Up"
+      },
+      {
+        "level": 24,
+        "moveName": "Slash"
+      },
+      {
+        "level": 28,
+        "moveName": "Vital Throw"
+      },
+      {
+        "level": 35,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 40,
+        "moveName": "Body Slam"
+      },
+      {
+        "level": 46,
+        "moveName": "Parting Shot"
+      },
+      {
+        "level": 52,
+        "moveName": "Entrainment"
+      },
+      {
+        "level": 58,
+        "moveName": "Hammer Arm"
+      },
+      {
+        "level": 110,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 140,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 165,
+        "moveName": "Dread Aura"
+      },
+      {
+        "level": 195,
+        "moveName": "Rending Fang"
+      },
+      {
+        "level": 220,
+        "moveName": "Pilfer Strike"
+      },
+      {
+        "level": 250,
+        "moveName": "Mountain Breaker"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM05",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM36",
+      "TM39",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM63",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM75",
+      "TM79",
+      "TM80",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM90",
+      "HM01",
+      "HM03",
+      "HM04",
+      "HM06",
+      "TR00",
+      "TR01",
+      "TR04",
+      "TR07",
+      "TR10",
+      "TR13",
+      "TR20",
+      "TR21",
+      "TR22",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR32",
+      "TR35",
+      "TR37",
+      "TR39",
+      "TR42",
+      "TR47",
+      "TR48",
+      "TR53",
+      "TR57",
+      "TR58",
+      "TR60",
+      "TR64",
+      "TR69",
+      "TR73",
+      "TR74",
+      "TR75",
+      "TR77",
+      "TR81",
+      "TR85",
+      "TR93",
+      "TR95"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Fire Punch",
+      "Gunk Shot",
+      "Helping Hand",
+      "Ice Punch",
+      "Iron Head",
+      "Knock Off",
+      "Outrage",
+      "Snore",
+      "Spite",
+      "Superpower",
+      "Thunder Punch",
+      "Uproar",
+      "Zen Headbutt"
+    ],
+    "offspring": "Pancham",
+    "abilities": [
+      "Iron Fist",
+      "Mold Breaker"
+    ],
+    "hiddenAbility": "Scrappy"
+  },
+  {
+    "dexNumber": 2676,
+    "dexNumbers": {},
+    "name": "Majesthound",
+    "category": "Royal Guard",
+    "primaryType": "Normal",
+    "baseHP": 95,
+    "baseAttack": 95,
+    "baseDefense": 85,
+    "baseSpAttack": 75,
+    "baseSpDefense": 90,
+    "baseSpeed": 112,
+    "evYield": {
+      "defense": 1,
+      "speed": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 198,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.5,
+    "weight": 40,
+    "color": "White",
+    "shape": "Quadruped",
+    "dexEntry": "Majesthound is a Royal Guard Pokémon, Normal-type, first found in Kalos. It stands 1.5 m tall and weighs 40.0 kg. It evolves from Furfrou.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 5,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 9,
+        "moveName": "Baby-Doll Eyes"
+      },
+      {
+        "level": 12,
+        "moveName": "Headbutt"
+      },
+      {
+        "level": 15,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 22,
+        "moveName": "Bite"
+      },
+      {
+        "level": 27,
+        "moveName": "Odor Sleuth"
+      },
+      {
+        "level": 33,
+        "moveName": "Retaliate"
+      },
+      {
+        "level": 35,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 38,
+        "moveName": "Charm"
+      },
+      {
+        "level": 42,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 48,
+        "moveName": "Cotton Guard"
+      },
+      {
+        "level": 110,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 155,
+        "moveName": "Titan Tackle"
+      },
+      {
+        "level": 205,
+        "moveName": "Snapstep"
+      },
+      {
+        "level": 250,
+        "moveName": "Resonant Hymn"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM27",
+      "TM28",
+      "TM32",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM57",
+      "TM68",
+      "TM70",
+      "TM73",
+      "TM79",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM03",
+      "HM06"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Helping Hand",
+      "Last Resort",
+      "Snore",
+      "Uproar",
+      "Zen Headbutt"
+    ],
+    "offspring": "Furfrou",
+    "eggMoves": [
+      "Mimic",
+      "Role Play",
+      "Refresh",
+      "Captivate",
+      "Work Up"
+    ],
+    "abilities": [
+      "Fur Coat"
+    ]
+  },
+  {
+    "dexNumber": 2678,
+    "dexNumbers": {},
+    "name": "Occulynx",
+    "category": "Unsealed",
+    "genderDifferences": true,
+    "primaryType": "Psychic",
+    "baseHP": 89,
+    "baseAttack": 48,
+    "baseDefense": 91,
+    "baseSpAttack": 108,
+    "baseSpDefense": 96,
+    "baseSpeed": 114,
+    "evYield": {
+      "spAttack": 1,
+      "speed": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 196,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.9,
+    "weight": 14,
+    "color": "Blue",
+    "shape": "Upright",
+    "dexEntry": "Occulynx is an Unsealed Pokémon, Psychic-type, first found in Kalos. It stands 0.9 m tall and weighs 14.0 kg. It evolves from Meowstic.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Mean Look"
+      },
+      {
+        "level": 1,
+        "moveName": "Disarming Voice"
+      },
+      {
+        "level": 1,
+        "moveName": "Fake Out"
+      },
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 1,
+        "moveName": "Leer"
+      },
+      {
+        "level": 9,
+        "moveName": "Confusion"
+      },
+      {
+        "level": 12,
+        "moveName": "Helping Hand"
+      },
+      {
+        "level": 15,
+        "moveName": "Charm"
+      },
+      {
+        "level": 18,
+        "moveName": "Covet"
+      },
+      {
+        "level": 21,
+        "moveName": "Psybeam"
+      },
+      {
+        "level": 24,
+        "moveName": "Sucker Punch"
+      },
+      {
+        "level": 29,
+        "moveName": "Role Play"
+      },
+      {
+        "level": 34,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 34,
+        "moveName": "Reflect"
+      },
+      {
+        "level": 39,
+        "moveName": "Psyshock"
+      },
+      {
+        "level": 44,
+        "moveName": "Imprison"
+      },
+      {
+        "level": 49,
+        "moveName": "Quick Guard"
+      },
+      {
+        "level": 54,
+        "moveName": "Psychic"
+      },
+      {
+        "level": 59,
+        "moveName": "Misty Terrain"
+      },
+      {
+        "level": 110,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 155,
+        "moveName": "Astral Pulse"
+      },
+      {
+        "level": 205,
+        "moveName": "Mindbreak Wave"
+      },
+      {
+        "level": 250,
+        "moveName": "Mind Blade"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM27",
+      "TM28",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM33",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM48",
+      "TM53",
+      "TM57",
+      "TM58",
+      "TM66",
+      "TM68",
+      "TM70",
+      "TM73",
+      "TM77",
+      "TM79",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM92",
+      "HM01",
+      "TR08",
+      "TR11",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR33",
+      "TR38",
+      "TR40",
+      "TR49",
+      "TR58",
+      "TR65",
+      "TR68",
+      "TR69",
+      "TR83",
+      "TR85",
+      "TR90"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Signal Beam",
+      "Snore",
+      "Trick",
+      "Zen Headbutt"
+    ],
+    "offspring": "Espurr",
+    "eggMoves": [
+      "Yawn",
+      "Tickle"
+    ],
+    "abilities": [
+      "Keen Eye",
+      "Infiltrator"
+    ],
+    "hiddenAbility": "Prankster"
+  },
+  {
+    "dexNumber": 2683,
+    "dexNumbers": {},
+    "name": "Perfumelle",
+    "category": "Perfumer",
+    "primaryType": "Fairy",
+    "baseHP": 111,
+    "baseAttack": 72,
+    "baseDefense": 92,
+    "baseSpAttack": 119,
+    "baseSpDefense": 109,
+    "baseSpeed": 39,
+    "evYield": {
+      "hp": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 194,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Fairy"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.1,
+    "weight": 22,
+    "color": "Pink",
+    "shape": "Humanoid",
+    "dexEntry": "Perfumelle is a Perfumer Pokémon, Fairy-type, first found in Kalos. It stands 1.1 m tall and weighs 22.0 kg. It evolves from Aromatisse.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Aromatic Mist"
+      },
+      {
+        "level": 1,
+        "moveName": "Heal Pulse"
+      },
+      {
+        "level": 1,
+        "moveName": "Fairy Wind"
+      },
+      {
+        "level": 1,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 1,
+        "moveName": "Sweet Kiss"
+      },
+      {
+        "level": 1,
+        "moveName": "Echoed Voice"
+      },
+      {
+        "level": 9,
+        "moveName": "Disarming Voice"
+      },
+      {
+        "level": 12,
+        "moveName": "Aromatherapy"
+      },
+      {
+        "level": 15,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 18,
+        "moveName": "Attract"
+      },
+      {
+        "level": 21,
+        "moveName": "Flail"
+      },
+      {
+        "level": 24,
+        "moveName": "Misty Terrain"
+      },
+      {
+        "level": 27,
+        "moveName": "Psychic"
+      },
+      {
+        "level": 30,
+        "moveName": "Charm"
+      },
+      {
+        "level": 33,
+        "moveName": "Calm Mind"
+      },
+      {
+        "level": 36,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 39,
+        "moveName": "Skill Swap"
+      },
+      {
+        "level": 42,
+        "moveName": "Psych Up"
+      },
+      {
+        "level": 110,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 155,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 205,
+        "moveName": "Dew Kiss"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM48",
+      "TM53",
+      "TM57",
+      "TM58",
+      "TM60",
+      "TM68",
+      "TM70",
+      "TM74",
+      "TM77",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM91",
+      "TM92",
+      "TR08",
+      "TR09",
+      "TR11",
+      "TR14",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR40",
+      "TR49",
+      "TR52",
+      "TR65",
+      "TR68",
+      "TR70",
+      "TR83",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Helping Hand",
+      "Snore"
+    ],
+    "offspring": "Spritzee",
+    "abilities": [
+      "Healer"
+    ],
+    "hiddenAbility": "Aroma Veil"
+  },
+  {
+    "dexNumber": 2685,
+    "dexNumbers": {},
+    "name": "Soufflair",
+    "category": "Souffle",
+    "primaryType": "Fairy",
+    "baseHP": 97,
+    "baseAttack": 95,
+    "baseDefense": 96,
+    "baseSpAttack": 100,
+    "baseSpDefense": 90,
+    "baseSpeed": 82,
+    "evYield": {
+      "hp": 1,
+      "defense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Fairy"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.2,
+    "weight": 9,
+    "color": "White",
+    "shape": "Humanoid",
+    "dexEntry": "Soufflair is a Souffle Pokémon, Fairy-type, first found in Kalos. It stands 1.2 m tall and weighs 9.0 kg. It evolves from Slurpuff.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Sweet Scent"
+      },
+      {
+        "level": 1,
+        "moveName": "Play Nice"
+      },
+      {
+        "level": 1,
+        "moveName": "Fairy Wind"
+      },
+      {
+        "level": 9,
+        "moveName": "Aromatherapy"
+      },
+      {
+        "level": 12,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 15,
+        "moveName": "Fake Tears"
+      },
+      {
+        "level": 18,
+        "moveName": "Round"
+      },
+      {
+        "level": 21,
+        "moveName": "String Shot"
+      },
+      {
+        "level": 24,
+        "moveName": "Cotton Spore"
+      },
+      {
+        "level": 27,
+        "moveName": "Energy Ball"
+      },
+      {
+        "level": 30,
+        "moveName": "Wish"
+      },
+      {
+        "level": 33,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 36,
+        "moveName": "Cotton Guard"
+      },
+      {
+        "level": 39,
+        "moveName": "Endeavor"
+      },
+      {
+        "level": 42,
+        "moveName": "Sticky Web"
+      },
+      {
+        "level": 110,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 155,
+        "moveName": "Fey Strike"
+      },
+      {
+        "level": 205,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM35",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM53",
+      "TM58",
+      "TM60",
+      "TM68",
+      "TM70",
+      "TM77",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "HM03",
+      "TR02",
+      "TR04",
+      "TR08",
+      "TR09",
+      "TR11",
+      "TR14",
+      "TR17",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR49",
+      "TR65",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Endeavor",
+      "Gastro Acid",
+      "Helping Hand",
+      "Snore"
+    ],
+    "offspring": "Swirlix",
+    "abilities": [
+      "Sweet Veil"
+    ],
+    "hiddenAbility": "Unburden"
+  },
+  {
+    "dexNumber": 2687,
+    "dexNumbers": {},
+    "name": "Mesmerquid",
+    "category": "Mind Thrall",
+    "primaryType": "Dark",
+    "secondaryType": "Psychic",
+    "baseHP": 101,
+    "baseAttack": 112,
+    "baseDefense": 103,
+    "baseSpAttack": 68,
+    "baseSpDefense": 90,
+    "baseSpeed": 88,
+    "evYield": {
+      "attack": 3
+    },
+    "catchRate": 45,
+    "baseExpYield": 203,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1",
+      "Water 2"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2,
+    "weight": 70,
+    "color": "Blue",
+    "shape": "Blob",
+    "dexEntry": "Mesmerquid is a Mind Thrall Pokémon, Dark- and Psychic-type, first found in Kalos. It stands 2.0 m tall and weighs 70.0 kg. It evolves from Malamar.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Wrap"
+      },
+      {
+        "level": 1,
+        "moveName": "Peck"
+      },
+      {
+        "level": 1,
+        "moveName": "Hypnosis"
+      },
+      {
+        "level": 1,
+        "moveName": "Reversal"
+      },
+      {
+        "level": 9,
+        "moveName": "Payback"
+      },
+      {
+        "level": 12,
+        "moveName": "Pluck"
+      },
+      {
+        "level": 15,
+        "moveName": "Psybeam"
+      },
+      {
+        "level": 18,
+        "moveName": "Swagger"
+      },
+      {
+        "level": 21,
+        "moveName": "Slash"
+      },
+      {
+        "level": 24,
+        "moveName": "Night Slash"
+      },
+      {
+        "level": 27,
+        "moveName": "Psycho Cut"
+      },
+      {
+        "level": 33,
+        "moveName": "Switcheroo"
+      },
+      {
+        "level": 37,
+        "moveName": "Foul Play"
+      },
+      {
+        "level": 42,
+        "moveName": "Topsy-Turvy"
+      },
+      {
+        "level": 47,
+        "moveName": "Superpower"
+      },
+      {
+        "level": 110,
+        "moveName": "Dread Aura"
+      },
+      {
+        "level": 145,
+        "moveName": "Rending Fang"
+      },
+      {
+        "level": 180,
+        "moveName": "Pilfer Strike"
+      },
+      {
+        "level": 215,
+        "moveName": "Clairvoyance"
+      },
+      {
+        "level": 250,
+        "moveName": "Mind Blade"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM24",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM35",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM48",
+      "TM56",
+      "TM58",
+      "TM63",
+      "TM66",
+      "TM68",
+      "TM70",
+      "TM77",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM92",
+      "HM01",
+      "TR02",
+      "TR08",
+      "TR11",
+      "TR20",
+      "TR21",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR29",
+      "TR34",
+      "TR37",
+      "TR39",
+      "TR49",
+      "TR58",
+      "TR68",
+      "TR81",
+      "TR82",
+      "TR83",
+      "TR95",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Knock Off",
+      "Signal Beam",
+      "Snore",
+      "Spite",
+      "Superpower"
+    ],
+    "offspring": "Inkay",
+    "eggMoves": [
+      "Disable",
+      "Destiny Bond",
+      "Acupressure"
+    ],
+    "abilities": [
+      "Contrary",
+      "Suction Cups"
+    ],
+    "hiddenAbility": "Infiltrator"
+  },
+  {
+    "dexNumber": 2689,
+    "dexNumbers": {},
+    "name": "Reefcolony",
+    "category": "Colony",
+    "primaryType": "Rock",
+    "secondaryType": "Water",
+    "baseHP": 97,
+    "baseAttack": 120,
+    "baseDefense": 120,
+    "baseSpAttack": 54,
+    "baseSpDefense": 106,
+    "baseSpeed": 83,
+    "evYield": {
+      "hp": 1,
+      "attack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 210,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 3"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.8,
+    "weight": 150,
+    "color": "Brown",
+    "shape": "Heads",
+    "dexEntry": "Reefcolony is a Colony Pokémon, Rock- and Water-type, first found in Kalos. It stands 1.8 m tall and weighs 150.0 kg. It evolves from Barbaracle.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Skull Bash"
+      },
+      {
+        "level": 1,
+        "moveName": "Mud-Slap"
+      },
+      {
+        "level": 1,
+        "moveName": "Scratch"
+      },
+      {
+        "level": 1,
+        "moveName": "Withdraw"
+      },
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 12,
+        "moveName": "Fury Cutter"
+      },
+      {
+        "level": 16,
+        "moveName": "Fury Swipes"
+      },
+      {
+        "level": 20,
+        "moveName": "Ancient Power"
+      },
+      {
+        "level": 24,
+        "moveName": "Rock Polish"
+      },
+      {
+        "level": 28,
+        "moveName": "Slash"
+      },
+      {
+        "level": 32,
+        "moveName": "Hone Claws"
+      },
+      {
+        "level": 36,
+        "moveName": "Razor Shell"
+      },
+      {
+        "level": 42,
+        "moveName": "Shell Smash"
+      },
+      {
+        "level": 48,
+        "moveName": "Cross Chop"
+      },
+      {
+        "level": 54,
+        "moveName": "Stone Edge"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 140,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 165,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 195,
+        "moveName": "Riptide Slam"
+      },
+      {
+        "level": 220,
+        "moveName": "Skyfall Stone"
+      },
+      {
+        "level": 250,
+        "moveName": "Maelstrom Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM12",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM36",
+      "TM37",
+      "TM39",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM63",
+      "TM65",
+      "TM66",
+      "TM68",
+      "TM69",
+      "TM71",
+      "TM75",
+      "TM76",
+      "TM80",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM90",
+      "HM01",
+      "HM03",
+      "HM04",
+      "HM06",
+      "HM09",
+      "TR00",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR07",
+      "TR10",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR35",
+      "TR37",
+      "TR39",
+      "TR45",
+      "TR46",
+      "TR47",
+      "TR48",
+      "TR57",
+      "TR60",
+      "TR64",
+      "TR67",
+      "TR75",
+      "TR76",
+      "TR77",
+      "TR78",
+      "TR84",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Endeavor",
+      "Helping Hand",
+      "Icy Wind",
+      "Iron Defense",
+      "Snore",
+      "Superpower"
+    ],
+    "offspring": "Binacle",
+    "abilities": [
+      "Tough Claws",
+      "Sniper"
+    ],
+    "hiddenAbility": "Pickpocket"
+  },
+  {
+    "dexNumber": 2691,
+    "dexNumbers": {},
+    "name": "Kelpdrake",
+    "category": "Toxic Kelp",
+    "primaryType": "Poison",
+    "secondaryType": "Dragon",
+    "baseHP": 90,
+    "baseAttack": 75,
+    "baseDefense": 105,
+    "baseSpAttack": 117,
+    "baseSpDefense": 123,
+    "baseSpeed": 64,
+    "evYield": {
+      "hp": 1,
+      "spDefense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 208,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.4,
+    "weight": 120,
+    "color": "Brown",
+    "shape": "Blob",
+    "dexEntry": "Kelpdrake is a Toxic Kelp Pokémon, Poison- and Dragon-type, first found in Kalos. It stands 2.4 m tall and weighs 120.0 kg. It evolves from Dragalge.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Acid"
+      },
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 1,
+        "moveName": "Smokescreen"
+      },
+      {
+        "level": 15,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 20,
+        "moveName": "Double Team"
+      },
+      {
+        "level": 25,
+        "moveName": "Poison Tail"
+      },
+      {
+        "level": 30,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 35,
+        "moveName": "Toxic"
+      },
+      {
+        "level": 40,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 45,
+        "moveName": "Aqua Tail"
+      },
+      {
+        "level": 52,
+        "moveName": "Sludge Bomb"
+      },
+      {
+        "level": 59,
+        "moveName": "Hydro Pump"
+      },
+      {
+        "level": 66,
+        "moveName": "Outrage"
+      },
+      {
+        "level": 110,
+        "moveName": "Corrosive Haze"
+      },
+      {
+        "level": 145,
+        "moveName": "Miasma Torrent"
+      },
+      {
+        "level": 180,
+        "moveName": "Caustic Drain"
+      },
+      {
+        "level": 215,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 250,
+        "moveName": "Wyrmflare"
+      }
+    ],
+    "tmMoves": [
+      "TM03",
+      "TM06",
+      "TM07",
+      "TM10",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM30",
+      "TM32",
+      "TM36",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM58",
+      "TM59",
+      "TM68",
+      "TM82",
+      "TM87",
+      "TM90",
+      "HM03",
+      "HM07",
+      "HM09",
+      "TR03",
+      "TR04",
+      "TR08",
+      "TR09",
+      "TR16",
+      "TR20",
+      "TR22",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR33",
+      "TR54",
+      "TR62",
+      "TR64",
+      "TR73",
+      "TR78",
+      "TR84",
+      "TR90",
+      "TR91"
+    ],
+    "tutorMoves": [
+      "Aqua Tail",
+      "Bounce",
+      "Gunk Shot",
+      "Icy Wind",
+      "Outrage",
+      "Snore"
+    ],
+    "offspring": "Skrelp",
+    "abilities": [
+      "Poison Point",
+      "Poison Touch"
+    ],
+    "hiddenAbility": "Adaptability"
+  },
+  {
+    "dexNumber": 2693,
+    "dexNumbers": {},
+    "name": "Salvoclaw",
+    "category": "Battery",
+    "primaryType": "Water",
+    "secondaryType": "Dragon",
+    "baseHP": 91,
+    "baseAttack": 83,
+    "baseDefense": 103,
+    "baseSpAttack": 135,
+    "baseSpDefense": 104,
+    "baseSpeed": 64,
+    "evYield": {
+      "hp": 1,
+      "spAttack": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 120,
+    "growthRate": "Slow",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Water 1",
+      "Water 3"
+    ],
+    "hatchCycles": 15,
+    "baseFriendship": 70,
+    "height": 1.8,
+    "weight": 60,
+    "color": "Blue",
+    "shape": "Squiggle",
+    "dexEntry": "Salvoclaw is a Battery Pokémon, Water- and Dragon-type, first found in Kalos. It stands 1.8 m tall and weighs 60.0 kg. It evolves from Clawitzer.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Water Gun"
+      },
+      {
+        "level": 1,
+        "moveName": "Splash"
+      },
+      {
+        "level": 1,
+        "moveName": "Flail"
+      },
+      {
+        "level": 1,
+        "moveName": "Dark Pulse"
+      },
+      {
+        "level": 1,
+        "moveName": "Dragon Pulse"
+      },
+      {
+        "level": 1,
+        "moveName": "Heal Pulse"
+      },
+      {
+        "level": 15,
+        "moveName": "Aqua Jet"
+      },
+      {
+        "level": 20,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 25,
+        "moveName": "Hone Claws"
+      },
+      {
+        "level": 30,
+        "moveName": "Water Pulse"
+      },
+      {
+        "level": 35,
+        "moveName": "Swords Dance"
+      },
+      {
+        "level": 42,
+        "moveName": "Aura Sphere"
+      },
+      {
+        "level": 49,
+        "moveName": "Bounce"
+      },
+      {
+        "level": 56,
+        "moveName": "Muddy Water"
+      },
+      {
+        "level": 63,
+        "moveName": "Crabhammer"
+      },
+      {
+        "level": 110,
+        "moveName": "Tidal Ward"
+      },
+      {
+        "level": 155,
+        "moveName": "Abyssal Current"
+      },
+      {
+        "level": 205,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 250,
+        "moveName": "Wyrmflare"
+      }
+    ],
+    "tmMoves": [
+      "TM03",
+      "TM06",
+      "TM10",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM23",
+      "TM27",
+      "TM30",
+      "TM32",
+      "TM36",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM52",
+      "TM58",
+      "TM59",
+      "TM68",
+      "TM75",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM89",
+      "TM90",
+      "TM91",
+      "HM01",
+      "HM03",
+      "HM07",
+      "HM09",
+      "TR00",
+      "TR04",
+      "TR05",
+      "TR16",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR33",
+      "TR45",
+      "TR56",
+      "TR58",
+      "TR62",
+      "TR64",
+      "TR70",
+      "TR78",
+      "TR84",
+      "TR98"
+    ],
+    "tutorMoves": [
+      "Aqua Tail",
+      "Bounce",
+      "Helping Hand",
+      "Icy Wind",
+      "Snore"
+    ],
+    "offspring": "Clauncher",
+    "abilities": [
+      "Mega Launcher"
+    ]
+  },
+  {
+    "dexNumber": 2695,
+    "dexNumbers": {},
+    "name": "Coronafrill",
+    "category": "Corona",
+    "primaryType": "Electric",
+    "secondaryType": "Normal",
+    "baseHP": 82,
+    "baseAttack": 60,
+    "baseDefense": 77,
+    "baseSpAttack": 124,
+    "baseSpDefense": 99,
+    "baseSpeed": 119,
+    "evYield": {
+      "defense": 1,
+      "spAttack": 1,
+      "speed": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 202,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Monster",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.4,
+    "weight": 32,
+    "color": "Yellow",
+    "shape": "Upright",
+    "dexEntry": "Coronafrill is a Corona Pokémon, Electric- and Normal-type, first found in Kalos. It stands 1.4 m tall and weighs 32.0 kg. It evolves from Heliolisk.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Eerie Impulse"
+      },
+      {
+        "level": 1,
+        "moveName": "Discharge"
+      },
+      {
+        "level": 1,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 1,
+        "moveName": "Charge"
+      },
+      {
+        "level": 1,
+        "moveName": "Bulldoze"
+      },
+      {
+        "level": 1,
+        "moveName": "Volt Switch"
+      },
+      {
+        "level": 1,
+        "moveName": "Parabolic Charge"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunder Wave"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunderbolt"
+      },
+      {
+        "level": 1,
+        "moveName": "Electrify"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunder"
+      },
+      {
+        "level": 1,
+        "moveName": "Mud-Slap"
+      },
+      {
+        "level": 1,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Pound"
+      },
+      {
+        "level": 1,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 110,
+        "moveName": "Overcharge"
+      },
+      {
+        "level": 155,
+        "moveName": "Ion Cascade"
+      },
+      {
+        "level": 205,
+        "moveName": "Rally Cry"
+      },
+      {
+        "level": 250,
+        "moveName": "Resonant Hymn"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM22",
+      "TM23",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM28",
+      "TM32",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM52",
+      "TM57",
+      "TM58",
+      "TM59",
+      "TM68",
+      "TM70",
+      "TM73",
+      "TM77",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM01",
+      "HM03",
+      "TR04",
+      "TR07",
+      "TR08",
+      "TR09",
+      "TR12",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR42",
+      "TR58",
+      "TR62",
+      "TR64",
+      "TR77",
+      "TR80",
+      "TR83",
+      "TR86"
+    ],
+    "tutorMoves": [
+      "Fire Punch",
+      "Magnet Rise",
+      "Signal Beam",
+      "Snore",
+      "Thunder Punch"
+    ],
+    "offspring": "Helioptile",
+    "abilities": [
+      "Dry Skin",
+      "Sand Veil"
+    ],
+    "hiddenAbility": "Solar Power"
+  },
+  {
+    "dexNumber": 2697,
+    "dexNumbers": {},
+    "name": "Despotitan",
+    "category": "Emperor",
+    "primaryType": "Rock",
+    "secondaryType": "Dragon",
+    "baseHP": 96,
+    "baseAttack": 131,
+    "baseDefense": 124,
+    "baseSpAttack": 69,
+    "baseSpDefense": 89,
+    "baseSpeed": 91,
+    "evYield": {
+      "attack": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 218,
+    "growthRate": "MediumFast",
+    "genderRatio": 1,
+    "eggGroups": [
+      "Monster",
+      "Dragon"
+    ],
+    "hatchCycles": 30,
+    "baseFriendship": 70,
+    "height": 3.2,
+    "weight": 380,
+    "color": "Red",
+    "shape": "Upright",
+    "dexEntry": "Despotitan is an Emperor Pokémon, Rock- and Dragon-type, first found in Kalos. It stands 3.2 m tall and weighs 380.0 kg. It evolves from Tyrantrum.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Roar"
+      },
+      {
+        "level": 1,
+        "moveName": "Ancient Power"
+      },
+      {
+        "level": 12,
+        "moveName": "Charm"
+      },
+      {
+        "level": 16,
+        "moveName": "Bite"
+      },
+      {
+        "level": 20,
+        "moveName": "Dragon Tail"
+      },
+      {
+        "level": 24,
+        "moveName": "Stomp"
+      },
+      {
+        "level": 28,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 32,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 36,
+        "moveName": "Dragon Claw"
+      },
+      {
+        "level": 42,
+        "moveName": "Thrash"
+      },
+      {
+        "level": 48,
+        "moveName": "Earthquake"
+      },
+      {
+        "level": 54,
+        "moveName": "Horn Drill"
+      },
+      {
+        "level": 60,
+        "moveName": "Giga Impact"
+      },
+      {
+        "level": 66,
+        "moveName": "Head Smash"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 140,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 165,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 195,
+        "moveName": "Scale Rend"
+      },
+      {
+        "level": 220,
+        "moveName": "Skyfall Stone"
+      },
+      {
+        "level": 250,
+        "moveName": "Serpent Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM23",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM37",
+      "TM39",
+      "TM40",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM58",
+      "TM59",
+      "TM68",
+      "TM69",
+      "TM71",
+      "TM76",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "HM04",
+      "HM06",
+      "TR01",
+      "TR10",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR32",
+      "TR39",
+      "TR42",
+      "TR46",
+      "TR47",
+      "TR51",
+      "TR53",
+      "TR58",
+      "TR62",
+      "TR67",
+      "TR69",
+      "TR74",
+      "TR75",
+      "TR76",
+      "TR90",
+      "TR94",
+      "TR97"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Iron Defense",
+      "Iron Head",
+      "Outrage",
+      "Snore",
+      "Superpower",
+      "Zen Headbutt"
+    ],
+    "offspring": "Tyrunt",
+    "abilities": [
+      "Strong Jaw"
+    ],
+    "hiddenAbility": "Rock Head"
+  },
+  {
+    "dexNumber": 2699,
+    "dexNumbers": {},
+    "name": "Borealosaur",
+    "category": "Polar Night",
+    "primaryType": "Rock",
+    "secondaryType": "Ice",
+    "baseHP": 123,
+    "baseAttack": 82,
+    "baseDefense": 102,
+    "baseSpAttack": 119,
+    "baseSpDefense": 102,
+    "baseSpeed": 72,
+    "evYield": {
+      "hp": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 125,
+    "growthRate": "MediumFast",
+    "genderRatio": 1,
+    "eggGroups": [
+      "Monster"
+    ],
+    "hatchCycles": 30,
+    "baseFriendship": 70,
+    "height": 3.4,
+    "weight": 300,
+    "color": "Blue",
+    "shape": "Quadruped",
+    "dexEntry": "Borealosaur is a Polar Night Pokémon, Rock- and Ice-type, first found in Kalos. It stands 3.4 m tall and weighs 300.0 kg. It evolves from Aurorus.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Powder Snow"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 1,
+        "moveName": "Encore"
+      },
+      {
+        "level": 1,
+        "moveName": "Ancient Power"
+      },
+      {
+        "level": 12,
+        "moveName": "Icy Wind"
+      },
+      {
+        "level": 16,
+        "moveName": "Round"
+      },
+      {
+        "level": 20,
+        "moveName": "Mist"
+      },
+      {
+        "level": 24,
+        "moveName": "Aurora Beam"
+      },
+      {
+        "level": 28,
+        "moveName": "Thunder Wave"
+      },
+      {
+        "level": 32,
+        "moveName": "Nature Power"
+      },
+      {
+        "level": 36,
+        "moveName": "Freeze-Dry"
+      },
+      {
+        "level": 42,
+        "moveName": "Ice Beam"
+      },
+      {
+        "level": 48,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 54,
+        "moveName": "Hail"
+      },
+      {
+        "level": 60,
+        "moveName": "Blizzard"
+      },
+      {
+        "level": 66,
+        "moveName": "Hyper Beam"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 145,
+        "moveName": "Crystal Lance"
+      },
+      {
+        "level": 180,
+        "moveName": "Hoarfrost"
+      },
+      {
+        "level": 215,
+        "moveName": "Whiteout Gale"
+      },
+      {
+        "level": 250,
+        "moveName": "Permafrost Lance"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM05",
+      "TM06",
+      "TM07",
+      "TM10",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM25",
+      "TM26",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM57",
+      "TM58",
+      "TM68",
+      "TM69",
+      "TM70",
+      "TM71",
+      "TM72",
+      "TM73",
+      "TM76",
+      "TM77",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM90",
+      "TM91",
+      "HM06",
+      "TR01",
+      "TR05",
+      "TR06",
+      "TR08",
+      "TR09",
+      "TR10",
+      "TR11",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR30",
+      "TR31",
+      "TR42",
+      "TR46",
+      "TR49",
+      "TR58",
+      "TR67",
+      "TR69",
+      "TR70",
+      "TR74",
+      "TR75",
+      "TR76"
+    ],
+    "tutorMoves": [
+      "Aqua Tail",
+      "Earth Power",
+      "Icy Wind",
+      "Iron Defense",
+      "Iron Head",
+      "Magnet Rise",
+      "Outrage",
+      "Snore",
+      "Zen Headbutt"
+    ],
+    "offspring": "Amaura",
+    "abilities": [
+      "Refrigerate"
+    ],
+    "hiddenAbility": "Snow Warning"
+  },
+  {
+    "dexNumber": 2700,
+    "dexNumbers": {},
+    "name": "Faerieon",
+    "category": "Bond",
+    "primaryType": "Fairy",
+    "baseHP": 105,
+    "baseAttack": 65,
+    "baseDefense": 90,
+    "baseSpAttack": 120,
+    "baseSpDefense": 130,
+    "baseSpeed": 90,
+    "evYield": {
+      "spDefense": 2,
+      "speed": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 221,
+    "growthRate": "MediumFast",
+    "genderRatio": 1,
+    "eggGroups": [
+      "Field"
+    ],
+    "hatchCycles": 35,
+    "baseFriendship": 70,
+    "height": 1.2,
+    "weight": 30,
+    "color": "Pink",
+    "shape": "Quadruped",
+    "dexEntry": "Faerieon is a Bond Pokémon, Fairy-type, first found in Kalos. It stands 1.2 m tall and weighs 30.0 kg. It evolves from Sylveon.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Baton Pass"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 1,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 1,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Bite"
+      },
+      {
+        "level": 1,
+        "moveName": "Growl"
+      },
+      {
+        "level": 1,
+        "moveName": "Copycat"
+      },
+      {
+        "level": 1,
+        "moveName": "Covet"
+      },
+      {
+        "level": 1,
+        "moveName": "Charm"
+      },
+      {
+        "level": 1,
+        "moveName": "Helping Hand"
+      },
+      {
+        "level": 5,
+        "moveName": "Sand Attack"
+      },
+      {
+        "level": 10,
+        "moveName": "Quick Attack"
+      },
+      {
+        "level": 15,
+        "moveName": "Baby-Doll Eyes"
+      },
+      {
+        "level": 20,
+        "moveName": "Swift"
+      },
+      {
+        "level": 25,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 30,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 35,
+        "moveName": "Misty Terrain"
+      },
+      {
+        "level": 40,
+        "moveName": "Skill Swap"
+      },
+      {
+        "level": 45,
+        "moveName": "Psych Up"
+      },
+      {
+        "level": 50,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 55,
+        "moveName": "Last Resort"
+      },
+      {
+        "level": 110,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 155,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 205,
+        "moveName": "Dew Kiss"
+      },
+      {
+        "level": 250,
+        "moveName": "Fey Strike"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM05",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM23",
+      "TM27",
+      "TM28",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM48",
+      "TM58",
+      "TM68",
+      "TM70",
+      "TM77",
+      "TM82",
+      "TM87",
+      "TM90",
+      "HM01",
+      "TR01",
+      "TR13",
+      "TR20",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR29",
+      "TR31",
+      "TR33",
+      "TR40",
+      "TR42",
+      "TR49",
+      "TR82",
+      "TR85",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Last Resort",
+      "Snore"
+    ],
+    "offspring": "Eevee",
+    "abilities": [
+      "Cute Charm"
+    ],
+    "hiddenAbility": "Pixilate"
+  },
+  {
+    "dexNumber": 2701,
+    "dexNumbers": {},
+    "name": "Luchacondor",
+    "category": "Title Belt",
+    "primaryType": "Fighting",
+    "secondaryType": "Flying",
+    "baseHP": 98,
+    "baseAttack": 112,
+    "baseDefense": 90,
+    "baseSpAttack": 74,
+    "baseSpDefense": 88,
+    "baseSpeed": 118,
+    "evYield": {
+      "attack": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 210,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Flying",
+      "Human-Like"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.1,
+    "weight": 35,
+    "color": "Green",
+    "shape": "Humanoid",
+    "dexEntry": "Luchacondor is a Title Belt Pokémon, Fighting- and Flying-type, first found in Kalos. It stands 1.1 m tall and weighs 35.0 kg. It evolves from Hawlucha.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Hone Claws"
+      },
+      {
+        "level": 4,
+        "moveName": "Wing Attack"
+      },
+      {
+        "level": 8,
+        "moveName": "Detect"
+      },
+      {
+        "level": 12,
+        "moveName": "Aerial Ace"
+      },
+      {
+        "level": 16,
+        "moveName": "Encore"
+      },
+      {
+        "level": 20,
+        "moveName": "Feather Dance"
+      },
+      {
+        "level": 24,
+        "moveName": "Brick Break"
+      },
+      {
+        "level": 28,
+        "moveName": "Bounce"
+      },
+      {
+        "level": 32,
+        "moveName": "Taunt"
+      },
+      {
+        "level": 36,
+        "moveName": "Roost"
+      },
+      {
+        "level": 40,
+        "moveName": "Swords Dance"
+      },
+      {
+        "level": 44,
+        "moveName": "Flying Press"
+      },
+      {
+        "level": 48,
+        "moveName": "High Jump Kick"
+      },
+      {
+        "level": 52,
+        "moveName": "Endeavor"
+      },
+      {
+        "level": 56,
+        "moveName": "Sky Attack"
+      },
+      {
+        "level": 110,
+        "moveName": "Centered Stance"
+      },
+      {
+        "level": 140,
+        "moveName": "Crescent Kick"
+      },
+      {
+        "level": 165,
+        "moveName": "Updraft"
+      },
+      {
+        "level": 195,
+        "moveName": "Talon Dive"
+      },
+      {
+        "level": 220,
+        "moveName": "Mountain Breaker"
+      },
+      {
+        "level": 250,
+        "moveName": "Zenith Plunge"
+      }
+    ],
+    "tmMoves": [
+      "TM01",
+      "TM06",
+      "TM08",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM27",
+      "TM28",
+      "TM31",
+      "TM32",
+      "TM39",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM47",
+      "TM51",
+      "TM52",
+      "TM54",
+      "TM56",
+      "TM58",
+      "TM60",
+      "TM66",
+      "TM68",
+      "TM71",
+      "TM75",
+      "TM80",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM01",
+      "HM02",
+      "HM04",
+      "HM06",
+      "TR00",
+      "TR07",
+      "TR12",
+      "TR20",
+      "TR21",
+      "TR26",
+      "TR27",
+      "TR29",
+      "TR30",
+      "TR37",
+      "TR39",
+      "TR48",
+      "TR53",
+      "TR57",
+      "TR60",
+      "TR64",
+      "TR66",
+      "TR69",
+      "TR74",
+      "TR75",
+      "TR77",
+      "TR83",
+      "TR85",
+      "TR95",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Bounce",
+      "Endeavor",
+      "Fire Punch",
+      "Helping Hand",
+      "Iron Head",
+      "Last Resort",
+      "Snore",
+      "Superpower",
+      "Thunder Punch",
+      "Zen Headbutt"
+    ],
+    "offspring": "Hawlucha",
+    "eggMoves": [
+      "Mean Look",
+      "Cross Chop",
+      "Feint",
+      "Defog",
+      "Entrainment",
+      "Quick Guard"
+    ],
+    "abilities": [
+      "Limber",
+      "Unburden"
+    ],
+    "hiddenAbility": "Mold Breaker"
+  },
+  {
+    "dexNumber": 2702,
+    "dexNumbers": {},
+    "name": "Signalmus",
+    "category": "Transmitter",
+    "primaryType": "Electric",
+    "secondaryType": "Fairy",
+    "baseHP": 82,
+    "baseAttack": 73,
+    "baseDefense": 77,
+    "baseSpAttack": 96,
+    "baseSpDefense": 82,
+    "baseSpeed": 101,
+    "evYield": {
+      "defense": 1,
+      "speed": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 181,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Field",
+      "Fairy"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.4,
+    "weight": 5,
+    "color": "Yellow",
+    "shape": "Upright",
+    "dexEntry": "Signalmus is a Transmitter Pokémon, Electric- and Fairy-type, first found in Kalos. It stands 0.4 m tall and weighs 5.0 kg. It evolves from Dedenne.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tail Whip"
+      },
+      {
+        "level": 1,
+        "moveName": "Nuzzle"
+      },
+      {
+        "level": 5,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 10,
+        "moveName": "Charge"
+      },
+      {
+        "level": 15,
+        "moveName": "Thunder Shock"
+      },
+      {
+        "level": 20,
+        "moveName": "Charm"
+      },
+      {
+        "level": 25,
+        "moveName": "Parabolic Charge"
+      },
+      {
+        "level": 30,
+        "moveName": "Volt Switch"
+      },
+      {
+        "level": 35,
+        "moveName": "Rest"
+      },
+      {
+        "level": 35,
+        "moveName": "Snore"
+      },
+      {
+        "level": 40,
+        "moveName": "Discharge"
+      },
+      {
+        "level": 45,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 50,
+        "moveName": "Super Fang"
+      },
+      {
+        "level": 55,
+        "moveName": "Entrainment"
+      },
+      {
+        "level": 60,
+        "moveName": "Thunder"
+      },
+      {
+        "level": 110,
+        "moveName": "Overcharge"
+      },
+      {
+        "level": 145,
+        "moveName": "Ion Cascade"
+      },
+      {
+        "level": 180,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 215,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM21",
+      "TM23",
+      "TM24",
+      "TM25",
+      "TM27",
+      "TM28",
+      "TM32",
+      "TM40",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM56",
+      "TM57",
+      "TM58",
+      "TM68",
+      "TM70",
+      "TM73",
+      "TM82",
+      "TM86",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM01",
+      "TR08",
+      "TR09",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR77",
+      "TR80",
+      "TR83",
+      "TR86",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Helping Hand",
+      "Last Resort",
+      "Magnet Rise",
+      "Signal Beam",
+      "Snore",
+      "Thunder Punch"
+    ],
+    "offspring": "Dedenne",
+    "eggMoves": [
+      "Covet",
+      "Magnet Rise",
+      "Tearful Look"
+    ],
+    "abilities": [
+      "Cheek Pouch",
+      "Pickup"
+    ],
+    "hiddenAbility": "Plus"
+  },
+  {
+    "dexNumber": 2703,
+    "dexNumbers": {},
+    "name": "Druzarion",
+    "category": "Geode",
+    "primaryType": "Rock",
+    "secondaryType": "Fairy",
+    "baseHP": 80,
+    "baseAttack": 70,
+    "baseDefense": 150,
+    "baseSpAttack": 70,
+    "baseSpDefense": 150,
+    "baseSpeed": 60,
+    "evYield": {
+      "hp": 1,
+      "defense": 1,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 120,
+    "growthRate": "Slow",
+    "genderRatio": -1,
+    "eggGroups": [
+      "Fairy",
+      "Mineral"
+    ],
+    "hatchCycles": 25,
+    "baseFriendship": 70,
+    "height": 0.6,
+    "weight": 20,
+    "color": "Gray",
+    "shape": "Ball",
+    "dexEntry": "Druzarion is a Geode Pokémon, Rock- and Fairy-type, first found in Kalos. It stands 0.6 m tall and weighs 20.0 kg. It evolves from Carbink.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 5,
+        "moveName": "Guard Split"
+      },
+      {
+        "level": 10,
+        "moveName": "Smack Down"
+      },
+      {
+        "level": 15,
+        "moveName": "Flail"
+      },
+      {
+        "level": 20,
+        "moveName": "Ancient Power"
+      },
+      {
+        "level": 25,
+        "moveName": "Rock Polish"
+      },
+      {
+        "level": 30,
+        "moveName": "Light Screen"
+      },
+      {
+        "level": 35,
+        "moveName": "Rock Slide"
+      },
+      {
+        "level": 40,
+        "moveName": "Skill Swap"
+      },
+      {
+        "level": 45,
+        "moveName": "Power Gem"
+      },
+      {
+        "level": 50,
+        "moveName": "Stealth Rock"
+      },
+      {
+        "level": 55,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 60,
+        "moveName": "Stone Edge"
+      },
+      {
+        "level": 110,
+        "moveName": "Monolith Pose"
+      },
+      {
+        "level": 130,
+        "moveName": "Boulder Crush"
+      },
+      {
+        "level": 150,
+        "moveName": "Crystal Lance"
+      },
+      {
+        "level": 170,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 190,
+        "moveName": "Fey Strike"
+      },
+      {
+        "level": 210,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 230,
+        "moveName": "Dew Kiss"
+      },
+      {
+        "level": 250,
+        "moveName": "Skyfall Stone"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM07",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM37",
+      "TM39",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM48",
+      "TM58",
+      "TM64",
+      "TM68",
+      "TM69",
+      "TM70",
+      "TM71",
+      "TM74",
+      "TM76",
+      "TM77",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM91",
+      "TM92",
+      "TR11",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR40",
+      "TR46",
+      "TR49",
+      "TR52",
+      "TR63",
+      "TR67",
+      "TR75",
+      "TR76",
+      "TR83",
+      "TR92",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Earth Power",
+      "Iron Defense",
+      "Magnet Rise",
+      "Snore"
+    ],
+    "offspring": "Carbink",
+    "abilities": [
+      "Clear Body"
+    ],
+    "hiddenAbility": "Sturdy"
+  },
+  {
+    "dexNumber": 2707,
+    "dexNumbers": {},
+    "name": "Chatelkey",
+    "category": "Vault",
+    "primaryType": "Steel",
+    "secondaryType": "Fairy",
+    "baseHP": 82,
+    "baseAttack": 90,
+    "baseDefense": 106,
+    "baseSpAttack": 95,
+    "baseSpDefense": 102,
+    "baseSpeed": 75,
+    "evYield": {
+      "hp": 1,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 198,
+    "growthRate": "Fast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Mineral"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 0.4,
+    "weight": 6,
+    "color": "Gray",
+    "shape": "Ball",
+    "dexEntry": "Chatelkey is a Vault Pokémon, Steel- and Fairy-type, first found in Kalos. It stands 0.4 m tall and weighs 6.0 kg. It evolves from Klefki.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 4,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 8,
+        "moveName": "Fairy Wind"
+      },
+      {
+        "level": 12,
+        "moveName": "Torment"
+      },
+      {
+        "level": 16,
+        "moveName": "Fairy Lock"
+      },
+      {
+        "level": 20,
+        "moveName": "Metal Sound"
+      },
+      {
+        "level": 24,
+        "moveName": "Draining Kiss"
+      },
+      {
+        "level": 28,
+        "moveName": "Recycle"
+      },
+      {
+        "level": 32,
+        "moveName": "Imprison"
+      },
+      {
+        "level": 36,
+        "moveName": "Flash Cannon"
+      },
+      {
+        "level": 40,
+        "moveName": "Play Rough"
+      },
+      {
+        "level": 44,
+        "moveName": "Magic Room"
+      },
+      {
+        "level": 48,
+        "moveName": "Foul Play"
+      },
+      {
+        "level": 52,
+        "moveName": "Last Resort"
+      },
+      {
+        "level": 110,
+        "moveName": "Alloy Plating"
+      },
+      {
+        "level": 130,
+        "moveName": "Forge Hammer"
+      },
+      {
+        "level": 150,
+        "moveName": "Magnet Lance"
+      },
+      {
+        "level": 170,
+        "moveName": "Rivet Shot"
+      },
+      {
+        "level": 190,
+        "moveName": "Moonlit Grace"
+      },
+      {
+        "level": 210,
+        "moveName": "Fey Strike"
+      },
+      {
+        "level": 230,
+        "moveName": "Starlight Chorus"
+      },
+      {
+        "level": 250,
+        "moveName": "Dew Kiss"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM27",
+      "TM29",
+      "TM32",
+      "TM33",
+      "TM37",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM58",
+      "TM68",
+      "TM73",
+      "TM77",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM91",
+      "TM92",
+      "HM01",
+      "TR11",
+      "TR20",
+      "TR23",
+      "TR25",
+      "TR26",
+      "TR27",
+      "TR46",
+      "TR49",
+      "TR70",
+      "TR81",
+      "TR82",
+      "TR90",
+      "TR92"
+    ],
+    "tutorMoves": [
+      "Iron Defense",
+      "Last Resort",
+      "Magnet Rise",
+      "Snore"
+    ],
+    "offspring": "Klefki",
+    "eggMoves": [
+      "Magnet Rise",
+      "Switcheroo"
+    ],
+    "abilities": [
+      "Prankster"
+    ],
+    "hiddenAbility": "Magician"
+  },
+  {
+    "dexNumber": 2709,
+    "dexNumbers": {},
+    "name": "Sylvanshade",
+    "category": "Ancient Grove",
+    "primaryType": "Ghost",
+    "secondaryType": "Grass",
+    "baseHP": 100,
+    "baseAttack": 120,
+    "baseDefense": 96,
+    "baseSpAttack": 80,
+    "baseSpDefense": 92,
+    "baseSpeed": 66,
+    "evYield": {
+      "attack": 2,
+      "defense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 199,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Grass",
+      "Amorphous"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.2,
+    "weight": 130,
+    "color": "Brown",
+    "shape": "Tentacles",
+    "dexEntry": "Sylvanshade is an Ancient Grove Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 2.2 m tall and weighs 130.0 kg. It evolves from Trevenant.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Branch Poke"
+      },
+      {
+        "level": 12,
+        "moveName": "Confuse Ray"
+      },
+      {
+        "level": 16,
+        "moveName": "Will-O-Wisp"
+      },
+      {
+        "level": 20,
+        "moveName": "Hex"
+      },
+      {
+        "level": 24,
+        "moveName": "Growth"
+      },
+      {
+        "level": 28,
+        "moveName": "Horn Leech"
+      },
+      {
+        "level": 32,
+        "moveName": "Curse"
+      },
+      {
+        "level": 36,
+        "moveName": "Phantom Force"
+      },
+      {
+        "level": 40,
+        "moveName": "Ingrain"
+      },
+      {
+        "level": 44,
+        "moveName": "Wood Hammer"
+      },
+      {
+        "level": 48,
+        "moveName": "Destiny Bond"
+      },
+      {
+        "level": 52,
+        "moveName": "Forest's Curse"
+      },
+      {
+        "level": 110,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 145,
+        "moveName": "Spectral Claw"
+      },
+      {
+        "level": 180,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 215,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 250,
+        "moveName": "Root Snare"
+      }
+    ],
+    "tmMoves": [
+      "TM04",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM26",
+      "TM27",
+      "TM28",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM33",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM48",
+      "TM52",
+      "TM53",
+      "TM58",
+      "TM60",
+      "TM61",
+      "TM65",
+      "TM68",
+      "TM77",
+      "TM79",
+      "TM80",
+      "TM81",
+      "TM82",
+      "TM84",
+      "TM85",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TM92",
+      "HM01",
+      "HM04",
+      "HM06",
+      "TR10",
+      "TR11",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR38",
+      "TR40",
+      "TR49",
+      "TR57",
+      "TR58",
+      "TR59",
+      "TR60",
+      "TR64",
+      "TR65",
+      "TR71",
+      "TR77",
+      "TR81",
+      "TR83",
+      "TR91"
+    ],
+    "tutorMoves": [
+      "Seed Bomb",
+      "Snore",
+      "Spite",
+      "Trick"
+    ],
+    "offspring": "Phantump",
+    "eggMoves": [
+      "Disable",
+      "Sucker Punch",
+      "Ally Switch"
+    ],
+    "abilities": [
+      "Natural Cure",
+      "Frisk"
+    ],
+    "hiddenAbility": "Harvest"
+  },
+  {
+    "dexNumber": 2711,
+    "dexNumbers": {},
+    "name": "Lanternhusk",
+    "category": "Harvest Moon",
+    "primaryType": "Ghost",
+    "secondaryType": "Grass",
+    "baseHP": 90,
+    "baseAttack": 105,
+    "baseDefense": 122,
+    "baseSpAttack": 78,
+    "baseSpDefense": 90,
+    "baseSpeed": 89,
+    "evYield": {
+      "hp": 1,
+      "defense": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 208,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Amorphous"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 1.8,
+    "weight": 45,
+    "color": "Brown",
+    "shape": "Blob",
+    "dexEntry": "Lanternhusk is a Harvest Moon Pokémon, Ghost- and Grass-type, first found in Kalos. It stands 1.8 m tall and weighs 45.0 kg. It evolves from Gourgeist.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Explosion"
+      },
+      {
+        "level": 1,
+        "moveName": "Moonblast"
+      },
+      {
+        "level": 1,
+        "moveName": "Trick-or-Treat"
+      },
+      {
+        "level": 1,
+        "moveName": "Astonish"
+      },
+      {
+        "level": 1,
+        "moveName": "Shadow Sneak"
+      },
+      {
+        "level": 1,
+        "moveName": "Confuse Ray"
+      },
+      {
+        "level": 12,
+        "moveName": "Trick-or-Treat"
+      },
+      {
+        "level": 12,
+        "moveName": "Razor Leaf"
+      },
+      {
+        "level": 16,
+        "moveName": "Leech Seed"
+      },
+      {
+        "level": 20,
+        "moveName": "Bullet Seed"
+      },
+      {
+        "level": 24,
+        "moveName": "Trick-or-Treat"
+      },
+      {
+        "level": 24,
+        "moveName": "Scary Face"
+      },
+      {
+        "level": 28,
+        "moveName": "Worry Seed"
+      },
+      {
+        "level": 32,
+        "moveName": "Seed Bomb"
+      },
+      {
+        "level": 36,
+        "moveName": "Trick-or-Treat"
+      },
+      {
+        "level": 36,
+        "moveName": "Shadow Ball"
+      },
+      {
+        "level": 40,
+        "moveName": "Trick"
+      },
+      {
+        "level": 44,
+        "moveName": "Pain Split"
+      },
+      {
+        "level": 48,
+        "moveName": "Phantom Force"
+      },
+      {
+        "level": 110,
+        "moveName": "Grave Chill"
+      },
+      {
+        "level": 145,
+        "moveName": "Spectral Claw"
+      },
+      {
+        "level": 180,
+        "moveName": "Verdant Renewal"
+      },
+      {
+        "level": 215,
+        "moveName": "Thornlash"
+      },
+      {
+        "level": 250,
+        "moveName": "Root Snare"
+      }
+    ],
+    "tmMoves": [
+      "TM06",
+      "TM09",
+      "TM10",
+      "TM11",
+      "TM15",
+      "TM16",
+      "TM17",
+      "TM19",
+      "TM20",
+      "TM21",
+      "TM22",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM32",
+      "TM35",
+      "TM36",
+      "TM38",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM48",
+      "TM52",
+      "TM53",
+      "TM57",
+      "TM58",
+      "TM61",
+      "TM64",
+      "TM68",
+      "TM70",
+      "TM74",
+      "TM79",
+      "TM80",
+      "TM82",
+      "TM85",
+      "TM86",
+      "TM87",
+      "TM90",
+      "TM92",
+      "HM06",
+      "TR02",
+      "TR11",
+      "TR15",
+      "TR20",
+      "TR22",
+      "TR26",
+      "TR27",
+      "TR33",
+      "TR38",
+      "TR40",
+      "TR52",
+      "TR58",
+      "TR59",
+      "TR64",
+      "TR65",
+      "TR68",
+      "TR72",
+      "TR77",
+      "TR81",
+      "TR83"
+    ],
+    "tutorMoves": [
+      "Seed Bomb",
+      "Spite",
+      "Synthesis",
+      "Trick"
+    ],
+    "offspring": "Pumpkaboo",
+    "abilities": [
+      "Pickup",
+      "Frisk"
+    ],
+    "hiddenAbility": "Insomnia"
+  },
+  {
+    "dexNumber": 2713,
+    "dexNumbers": {},
+    "name": "Glacitadel",
+    "category": "Glacier",
+    "primaryType": "Ice",
+    "baseHP": 120,
+    "baseAttack": 127,
+    "baseDefense": 184,
+    "baseSpAttack": 44,
+    "baseSpDefense": 81,
+    "baseSpeed": 38,
+    "evYield": {
+      "defense": 2,
+      "spDefense": 1
+    },
+    "catchRate": 45,
+    "baseExpYield": 216,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Monster",
+      "Mineral"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2.6,
+    "weight": 800,
+    "color": "Blue",
+    "shape": "Quadruped",
+    "dexEntry": "Glacitadel is a Glacier Pokémon, Ice-type, first found in Kalos. It stands 2.6 m tall and weighs 800.0 kg. It evolves from Avalugg.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Powder Snow"
+      },
+      {
+        "level": 1,
+        "moveName": "Rapid Spin"
+      },
+      {
+        "level": 1,
+        "moveName": "Wide Guard"
+      },
+      {
+        "level": 1,
+        "moveName": "Harden"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 9,
+        "moveName": "Curse"
+      },
+      {
+        "level": 12,
+        "moveName": "Icy Wind"
+      },
+      {
+        "level": 15,
+        "moveName": "Protect"
+      },
+      {
+        "level": 18,
+        "moveName": "Avalanche"
+      },
+      {
+        "level": 21,
+        "moveName": "Bite"
+      },
+      {
+        "level": 24,
+        "moveName": "Ice Fang"
+      },
+      {
+        "level": 27,
+        "moveName": "Iron Defense"
+      },
+      {
+        "level": 30,
+        "moveName": "Recover"
+      },
+      {
+        "level": 33,
+        "moveName": "Crunch"
+      },
+      {
+        "level": 36,
+        "moveName": "Take Down"
+      },
+      {
+        "level": 41,
+        "moveName": "Blizzard"
+      },
+      {
+        "level": 46,
+        "moveName": "Double-Edge"
+      },
+      {
+        "level": 51,
+        "moveName": "Icicle Crash"
+      },
+      {
+        "level": 110,
+        "moveName": "Hoarfrost"
+      },
+      {
+        "level": 155,
+        "moveName": "Glacier Ram"
+      },
+      {
+        "level": 205,
+        "moveName": "Whiteout Gale"
+      },
+      {
+        "level": 250,
+        "moveName": "Rally Cry"
+      }
+    ],
+    "tmMoves": [
+      "TM05",
+      "TM06",
+      "TM07",
+      "TM10",
+      "TM13",
+      "TM14",
+      "TM15",
+      "TM17",
+      "TM18",
+      "TM20",
+      "TM21",
+      "TM26",
+      "TM27",
+      "TM32",
+      "TM39",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM58",
+      "TM68",
+      "TM69",
+      "TM70",
+      "TM71",
+      "TM72",
+      "TM74",
+      "TM80",
+      "TM82",
+      "TM87",
+      "TM90",
+      "TM91",
+      "HM03",
+      "HM04",
+      "HM06",
+      "TR01",
+      "TR03",
+      "TR04",
+      "TR05",
+      "TR06",
+      "TR10",
+      "TR20",
+      "TR26",
+      "TR27",
+      "TR32",
+      "TR39",
+      "TR46",
+      "TR52",
+      "TR70",
+      "TR74",
+      "TR75",
+      "TR79",
+      "TR94",
+      "TR99"
+    ],
+    "tutorMoves": [
+      "Icy Wind",
+      "Iron Defense",
+      "Iron Head",
+      "Snore",
+      "Superpower"
+    ],
+    "offspring": "Bergmite",
+    "abilities": [
+      "Own Tempo",
+      "Ice Body"
+    ],
+    "hiddenAbility": "Sturdy"
+  },
+  {
+    "dexNumber": 2715,
+    "dexNumbers": {},
+    "name": "Sonarwing",
+    "category": "Sonic Boom",
+    "primaryType": "Flying",
+    "secondaryType": "Dragon",
+    "baseHP": 100,
+    "baseAttack": 90,
+    "baseDefense": 95,
+    "baseSpAttack": 97,
+    "baseSpDefense": 95,
+    "baseSpeed": 123,
+    "evYield": {
+      "attack": 1,
+      "speed": 2
+    },
+    "catchRate": 45,
+    "baseExpYield": 224,
+    "growthRate": "MediumFast",
+    "genderRatio": 4,
+    "eggGroups": [
+      "Flying",
+      "Dragon"
+    ],
+    "hatchCycles": 20,
+    "baseFriendship": 70,
+    "height": 2,
+    "weight": 120,
+    "color": "Purple",
+    "shape": "Wings",
+    "dexEntry": "Sonarwing is a Sonic Boom Pokémon, Flying- and Dragon-type, first found in Kalos. It stands 2.0 m tall and weighs 120.0 kg. It evolves from Noivern.",
+    "learnset": [
+      {
+        "level": 1,
+        "moveName": "Gust"
+      },
+      {
+        "level": 1,
+        "moveName": "Moonlight"
+      },
+      {
+        "level": 1,
+        "moveName": "Tackle"
+      },
+      {
+        "level": 1,
+        "moveName": "Absorb"
+      },
+      {
+        "level": 1,
+        "moveName": "Supersonic"
+      },
+      {
+        "level": 12,
+        "moveName": "Double Team"
+      },
+      {
+        "level": 16,
+        "moveName": "Wing Attack"
+      },
+      {
+        "level": 20,
+        "moveName": "Bite"
+      },
+      {
+        "level": 24,
+        "moveName": "Air Cutter"
+      },
+      {
+        "level": 28,
+        "moveName": "Whirlwind"
+      },
+      {
+        "level": 32,
+        "moveName": "Super Fang"
+      },
+      {
+        "level": 36,
+        "moveName": "Air Slash"
+      },
+      {
+        "level": 40,
+        "moveName": "Screech"
+      },
+      {
+        "level": 44,
+        "moveName": "Roost"
+      },
+      {
+        "level": 51,
+        "moveName": "Tailwind"
+      },
+      {
+        "level": 56,
+        "moveName": "Hurricane"
+      },
+      {
+        "level": 62,
+        "moveName": "Boomburst"
+      },
+      {
+        "level": 110,
+        "moveName": "Updraft"
+      },
+      {
+        "level": 130,
+        "moveName": "Talon Dive"
+      },
+      {
+        "level": 150,
+        "moveName": "Jet Stream"
+      },
+      {
+        "level": 170,
+        "moveName": "Wyrm Dance"
+      },
+      {
+        "level": 190,
+        "moveName": "Scale Rend"
+      },
+      {
+        "level": 210,
+        "moveName": "Wyrmflare"
+      },
+      {
+        "level": 230,
+        "moveName": "Zenith Plunge"
+      },
+      {
+        "level": 250,
+        "moveName": "Serpent Crash"
+      }
+    ],
+    "tmMoves": [
+      "TM02",
+      "TM03",
+      "TM06",
+      "TM10",
+      "TM11",
+      "TM12",
+      "TM15",
+      "TM17",
+      "TM21",
+      "TM22",
+      "TM23",
+      "TM27",
+      "TM29",
+      "TM30",
+      "TM31",
+      "TM32",
+      "TM35",
+      "TM40",
+      "TM41",
+      "TM42",
+      "TM43",
+      "TM44",
+      "TM45",
+      "TM46",
+      "TM47",
+      "TM51",
+      "TM52",
+      "TM58",
+      "TM59",
+      "TM65",
+      "TM68",
+      "TM79",
+      "TM81",
+      "TM82",
+      "TM85",
+      "TM87",
+      "TM89",
+      "TM90",
+      "HM01",
+      "HM02",
+      "TR02",
+      "TR11",
+      "TR12",
+      "TR18",
+      "TR20",
+      "TR24",
+      "TR26",
+      "TR27",
+      "TR31",
+      "TR33",
+      "TR35",
+      "TR36",
+      "TR37",
+      "TR42",
+      "TR47",
+      "TR51",
+      "TR58",
+      "TR60",
+      "TR62",
+      "TR64",
+      "TR86",
+      "TR89"
+    ],
+    "tutorMoves": [
+      "Heat Wave",
+      "Outrage",
+      "Snore",
+      "Uproar"
+    ],
+    "offspring": "Noibat",
+    "abilities": [
+      "Frisk",
+      "Infiltrator"
+    ],
+    "hiddenAbility": "Telepathy"
   }
 ]
