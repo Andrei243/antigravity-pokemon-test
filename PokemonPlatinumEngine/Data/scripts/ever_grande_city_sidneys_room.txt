@@ -15,6 +15,7 @@ script OnEnter
 script Sidney
   face sidney player
   speaker "Sidney"
+  if flag FLAG_PHONE_REMATCH_SIDNEY goto Rematch
   if flag FLAG_DEFEATED_ELITE_4_SIDNEY goto Beaten
   scene "Sidney"
   music "common/eye_elite_four"
@@ -25,10 +26,21 @@ script Sidney
   speaker "Sidney"
   say "Ha! That's it, I'm beaten. And I don't even mind. That was a battle and a half!"
   setflag FLAG_DEFEATED_ELITE_4_SIDNEY
+  addcontact sidney
+  text "Registered Sidney in the PokéNav."
   sound "door_open"
   say "Go on through. The rest of the Elite Four won't go easy on you. Show them what you showed me!"
   endscene
   end
 label Beaten
   say "Don't look back now. The next room is waiting for you. Go and win it!"
+  end
+label Rematch
+  say "Ha! You again! I've been waiting for this. Same rules as before: I play dirty, and I play to win!"
+  battle self as "hoenn_sidney_rematch"
+  speaker "Sidney"
+  say "Ha! Beaten again, and I enjoyed every second. You keep getting better, don't you?"
+  clearflag FLAG_PHONE_REMATCH_SIDNEY
+  setflag FLAG_DEFEATED_ELITE_4_SIDNEY
+  sound "door_open"
   end

@@ -50,10 +50,18 @@
     },
     {
       "en": [
+        "Registered Drake in the PokéNav."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Go on through. The Champion waits at the end of the hall. Give it everything you have."
       ],
       "text": [
-        "Treci mai departe. Campionul așteaptă la capătul holului. Dă tot ce ai."
+        ""
       ]
     },
     {
@@ -61,7 +69,31 @@
         "Why do you linger here? The Champion is waiting for you."
       ],
       "text": [
-        "De ce zăboveşti aici? Campionul te așteaptă."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've come back to my room. Good. A dragon's pride is a patient thing. Show me what you've grown into!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drake"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid. Beaten again, and I could not be prouder of the fight. My dragons will remember it."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

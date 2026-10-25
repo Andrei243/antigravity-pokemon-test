@@ -2167,6 +2167,22 @@ An inverse battle is X and Y's: the type chart is turned round for the whole bat
 | His team, and the name the battle gives him | — | A trainer of our own since plan 14 · B14, `scientist_ingram` in `Data/our-trainers.json`: Scientist Ingram, with a Magneton at 55 and a Bronzong at 53, each knowing four moves of its own data, and Platinum's prize for a Scientist of his last level | `trainers.json` is Platinum's table and nothing else (the golden `trainers.txt` holds it), and a team written into the overlay would be drawn from the game's chance as the world loads. In B1 he borrowed `scientist_shaun_rematch_3` and was called Scientist Shaun, the name of a trainer of Route 212; B14's file of trainers of ours gave him his own. The Bronzong (Steel and Psychic, Levitate) is a second Pokémon the chart turns round for: what it feared in Platinum (Fire, Ghost and Dark) it resists there, and what it shrugged off (Grass, Psychic, Poison among them) finds it weak |
 | A battle lost to him | — | No white-out: the script goes on (`canlose`) and the day's battle is had. The battle itself still says its usual last lines and takes a loss's money | Every battle a script may lose ends so; the lines after a loss are the battle's, not the script's |
 
+### Hordes (plan 14 · B3)
+
+A horde is X and Y's: one of the player's Pokémon against five wild ones at once. Showdown has no horde format, so the rules are the games' as Showdown's own pieces give them (the spread hit, a wild battle's) and our own where it says so below. B3 is the rules alone; the screen and the grass are B4's.
+
+- **A format, behind the rules.** `BattleFormat.Horde`, handed to a battle as a single or a double is (`BattleSetup.Format`, `CoreSetup.Format`), with `BattleFormats.PlacesOf` saying one place for the player and five for the wild side, and `BattleFormats.FallBack` what a battle asked for becomes. A horde is fought only under rules that have it (`Ruleset.Hordes`: the modern rules), with at least two wild Pokémon, the player alone (a partner along makes it the double it always was), and an ordinary wild battle (not the Great Marsh, Pal Park, a roamer, the catching lesson or a trainer's); anything else falls back to a single against the first, so `battles-platinum.txt` can't move for it. A horde of two to four is fought with as many places as it has.
+- **The places** are numbered as the original numbers its four (`Place.Number`, slot × 2, + 1 for the wild side), up to `Place.MaxNumber` (10): the field's places and what a Pokémon took from each place this turn are sized by it. Every place draws a number for the turn's order (a Quick Claw's), the original's four in a single or a double and ten in a horde, so no battle of a single or a double draws one number more than it did.
+- **Who chooses.** Each wild Pokémon chooses for itself, as any wild Pokémon does (`TrainerAi`: a move at random, and where it faces several foes a foe drawn for it). The player's Pokémon may aim a move at any of the five.
+- **A move that hits every foe hits all five**, and each takes the spread hit (three quarters: `Formulas.BaseDamage`'s `* 3 / 4`, the modern formula's 3072/4096), the same as in a double: nothing is added for five.
+- **A ball can't be aimed until one is left** (`WhyNotItem`): "There are two Pokémon out!" with two, and a line of our own with more, "There are too many Pokémon out! The Ball can't be aimed!".
+- **EXP comes as each foe faints**, from that foe, as in any wild battle with more than one: nothing is shared out at the end.
+- **Running is measured against the fastest wild Pokémon standing** (the first of them where two are as fast), by the same formula; in a single or a wild double it is the first of them, as Platinum has it. The games don't say which foe they measure against: this is the plan's choice.
+- **What a wild double battle refuses a horde refuses too**, since others stand on the field: Roar and Whirlwind, Teleport, Dragon Tail and Circle Throw driving a wild Pokémon off, and Emergency Exit's flight all fail or do nothing, and a miss is told of its target ("… avoided the attack!", where a single says the user's attack missed). After You and Quash work, as in a double. Dragon Darts aims both darts at its one target, since which foes stand beside which is reach (plan 14 · B6).
+- **What it says.** "A horde of wild Zubat appeared!" as they come out (no names where the species differ: "A horde of wild Pokémon appeared!"), and "Lucas defeated the wild horde!" at the end: lines of our own, where a double names each Pokémon.
+- **A record says its format** (`BattleRecord.Format`), and `Replay` refuses one under another: the same seed and answers in a single are another battle. A record that names none (one written before, or a Vs. Recorder file's, whose setup names the format itself) isn't held to one.
+- **In the field** a table's slot may say how many come at once (`WildEncounterEntry.Count`, `count` in a file, left out for one): the others are the slot's species, each at a level drawn as the first's was (`WildEncounterRules.Meet`), and the game meets them as a horde (`GameEngine.StartWildBattle`), never beside a partner, on the water, in the Great Marsh's game or in the Bug-Catching Contest. No table of Platinum's has one (plan 14, decision 1; `HordeTests.EveryPlacesTablesMeetOnePokemonAtATime` holds every region's), and B4 puts the first in plan 03 · D12's new zone.
+
 ### Master Trainers (plan 14 · B14)
 
 Let's Go's Master Trainers: a master for every species, battled one-on-one by one of the player's Pokémon of that species, with the bag closed. Nothing of Let's Go's is read; the masters' moves are Pokémon Showdown's random-battle sets at the pinned commit (MIT), and their names are our own.
@@ -2930,6 +2946,65 @@ the battles and the gifts, and nothing of their text.
 - **Songs** of our own: `unova/lostlorn_forest`, `unova/anville`, `unova/subway` (the Gear Station),
   `unova/relic_passage`, `unova/relic_castle` and `unova/plasma_frigate`; Route 16 plays Route 4's, as Black 2 plays the
   same route theme on both, and the grounds Driftveil's.
+
+## Unova's second chapter, part d: the Battle Subway, the World Tournament's hall and Driftveil's market (2026-10-25, plan 22 · U6, part d)
+
+What part c left, in our own words and our own teams on the beats of Black 2's story (none of its scripts was read for
+this part: the places, the people and the data of the import are part b's and c's, the rest is written from the plan).
+
+- **The Battle Subway** is the smallest honest version of plan 06 · R18's machinery that the plan allows (`Models/Frontier/
+  BattleSubway.cs`, GPU-free; the script command `subway`, `docs/scripts.md`). It borrows the Frontier's rules whole: who
+  may go in (`FrontierRules`: no Egg, nothing on the banlist, no two of a species or holding the same item), copies of
+  the team at level 50 or under, a Frontier battle (no EXP, money or Bag), the Frontier's trainers (`FrontierTrainers`)
+  drawn by the Battle Tower's rooms (`FrontierDatabase.TowerRooms`, seven battles to a room), and the Battle Points
+  of the Frontier's own count. What it does **not** borrow is a facility's own state: a run is the story's own
+  variables (`VAR_UNOVA_SUBWAY_STATE`, `_TRAIN`, `_WINS`, `_SEED`, `_SLOT_0` to `_3`, `_BEST_SINGLE`, `_DOUBLE`,
+  `_MULTI`), so there is no new field of a save, no host property and no migration, and a game saved in a car comes back
+  to the same car (the arrival script goes on from the battle the streak has come to). The Single Train takes three
+  Pokémon, the Double Train four (two trainers' worth of Pokémon on the field at once, one trainer with four) and the
+  Multi Train two beside a partner, a Frontier trainer of the first room drawn on the run's own seed so that the
+  same two Pokémon stand beside the player every car; the foes are a pair of trainers with two each. Black 2's Subway
+  trainers aren't in the import, so the Frontier's stand in. After seven cars the conductor asks whether to get off or go
+  on; getting off, or a battle lost, ends the run and pays the Battle Points of the sets cleared (3 for the first, one
+  more for each set after it up to 10), and the best streak of each train is kept. **Ingo** waits at the 21st battle and
+  **Emmet** at the 49th, in every train (together in the Multi Train): teams of our own at level 50
+  (`our-trainers.json`'s `subway_ingo` and `subway_emmet`), since the data's Subway Bosses are the tag-battle ones of the
+  story. The car is a map of ours (`BattleSubwayTrain`, entered by the Gear Station's three desks and left by a door or by
+  the run's end), and the Gear Station's desks, which only talked, run it. **Left**: a run put down and taken up again
+  at the desk, the Super trains (Black 2's second set of three, the Super Single's level cap of 100), a friend over a link
+  for the Multi Train, the Subway's own board of records and its Battle Point exchange (the Frontier's Exchange Service
+  Corner is the Tower's, plan 06 · R18a), prints and the Depot Agents' own battles; all of it is plan 22 · U11's and the
+  plan 14 formats' (the Wi-Fi Subway needs other players: plan 06 · R18's decision 7).
+- **The World Tournament's hall** (`PokemonWorldTournament`, a map of ours: Black 2's `pwt_2` rooms are not read, so the
+  lobby, desk and stage are one hall) opens once Clay has told of the tournament (`FLAG_UNOVA_PWT_OPEN`, set by his
+  script and by the grounds' arrival for a save past it). The first visit is a story event: Clay's welcome, the
+  offer, the team of three (the Subway's rules and `subway begin single`), and the **Driftveil Tournament**, a knockout of
+  three rounds in the Subway's way (level 50 copies, nothing from the Bag, nothing won but the match): Cheren
+  (`unova_cheren`), Hugh (`unova_rival_10`, `_11` or `_12`, the team the player's starter meets) and Clay
+  (`unova_leader_clay`), each their own team of the data at level 50 (`subway foe`). A win earns Clay's five Battle Points;
+  a defeat is played out all the same, and either sets `FLAG_UNOVA_PWT_FIRST_TOURNAMENT`, which **lets the pier's scene
+  of the Plasma Frigate play** (Black 2 plays it as the player comes out of the hall after its first tournament; ours
+  is the first step onto the pier after it, as before). A save past the frigate is counted past the tournament too. The
+  desk afterwards says the tournament has been played and that the others open as their rules are drawn up: **the
+  formats of later tournaments (triples, rotations, the Leaders' and Champions' brackets) are plan 14 · B11 and B12's,
+  and no other tournament is held**. Black 2's Hugh, Clay, Cheren and Colress at the hall's door (objects 6 to 9) stay
+  held back, since the hall's scene is theirs.
+- **Driftveil Market's three stalls** (`driftveil_city_7.txt`): the seller sells herbs (`marts.json`'s
+  `driftveil_market_herbs`: Energy Powder, Energy Root, Heal Powder, Revival Herb), the sailor his imports
+  (`_goods`: a Poké Doll, a Fluffy Tail, the Repels, the X items, Guard Spec. and Dire Hit) and the nursery aide sweets
+  (`_sweets`). Black 2's market changes its wares with the ships that come in; ours is a fixed stock of our own.
+  **Join Avenue's growth** (its visitors, ranks and the manager's work) stays plan 22 · U11's.
+- **Anville Town's trades and its lost Pansage**: at the weekend the railway collector (14) swaps a Timburr for his
+  Klink, Cogs, and the girl who tried swapping once (9) a Tympole for her Dwebble, Shelly, each once (`NpcTrades`'
+  `cogs` and `shelly`, ours: a trade of Black 2's own isn't in the import). The girl (16) tells of her lost Pansage, which
+  then sits in the plaza (`FLAG_UNOVA_ANVILLE_PANSAGE_LOST`, Black 2's `0x0362` object), hops into the player's arms
+  when spoken to and is taken back to her for a Miracle Seed, after which it sits by her.
+- **Songs** of our own: `unova/route5` (Route 5 and its gate), `unova/drawbridge` (the Driftveil Drawbridge) and
+  `unova/pwt` (the World Tournament's grounds and hall), each a loop of 29 to 40 seconds with no clashes by day and at
+  night.
+- **Left for the next part**: the frigate's model coming and going, the Marvelous Bridge and Route 15 (plan 22 · U10), the
+  Ferris wheel drawn as a wheel, the drawbridge's raising and its Ducklett shadows, the 2-by-2 boulder of the Relic
+  Passage and the desert's storm timed within budget.
 
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
@@ -5438,3 +5513,31 @@ the lines are our own.
 | A friend's base | Record mixing, its trainer and the registry | None; REGISTRY is empty |
 | Dolls and cushions | On the floor, a desk or a mat | On the floor |
 | The decoration PC | Eight pockets by kind | One list, the same rooms by kind |
+
+## Scott's way to the Battle Frontier and the League's rematches (2026-10-26, plan 21 · H9, part c)
+
+**The Frontier.** Emerald's Scott gives a Frontier Pass and the ferry to an island of its own; this game has one Battle
+Frontier, Sinnoh's (plan 06 · R18), so Hoenn's door is the third of the pattern of "Route 40's way to the Battle
+Frontier", with one set of records. Scott stands on Lilycove's quay beside the harbour's desk (`lilycove_city_harbor.Scott`,
+13, 12, `shownBy` `HoennHallOfFame`) and gives **the pass as a flag** (`FLAG_RECEIVED_FRONTIER_PASS`: there is no item, so
+no table, no Romanian name and no bag line to add), then asks and crosses with `travel to "BattleFrontier" 47 51 up`
+(`GameEngine.CrossTo`: the whole team, each Pokémon given the region it left, Sinnoh's Pokédex entered). On the grounds
+a second guide, `battle_frontier.HoennGuide` (48, 51, facing the arrival tile beside Johto's at 46, 51, shown by
+`HoennHallOfFame`), crosses back to the harbour on 12, 12 beside Scott. Both are there for anyone who has entered Hoenn's
+Hall of Fame; nothing new is saved. Emerald's own facilities (the S.S. Tidal, the island's seven halls) stay plan 21 ·
+H12's and plan 14's: a Hoenn Champion plays Sinnoh's five.
+
+**The rematches.** Emerald has no rematch for the Elite Four, the Champion or Wally; the user's brief gives them the
+PokéNav's Match Call, as Johto's trainers have the Pokégear's. Each of Sidney, Phoebe, Glacia, Drake, Wallace and Wally
+(the one who waits by Victory Road's way out) is **registered by `addcontact` the first time they are beaten** (in their
+room's script, and Wally's), and asks a **Champion of Hoenn** for a rematch when rung, or ringing, on their day and hour
+(`phone.json`: Monday day, Wednesday night, Friday morning, Saturday day, Sunday day and Tuesday morning), by the rule
+of `PhoneRematch` (`Wants` reads the contact's region and asks Hoenn's Hall of Fame for Hoenn's). The call sets the
+waiting flag (`FLAG_PHONE_REMATCH_<ID>`; the call's script sets it too, since the story test wants every flag a script
+reads written by a script). **The waiting person is in their room, not on the road**: a League room's script (Wallace's is
+the scene of the Champion's room) battles the rematch team when its flag is set and clears it, so no one spins in a room
+the player walks through once by its doors. **One level each**: a rematch is the same team at +8 levels (+10 for Wally),
+the same species, moves, items and AI, with prize money one and a half times, written by hand as
+`hoenn_<who>_rematch` in `Data/our-trainers.json` and named by `Data/world/hoenn/rematches.json` (the importer rewrites the
+region's `trainers.json`, so the rows are read from the file beside it by `TrainerDatabase`); the rows hold, and every
+rematch battle is the room's own, never the Vs. Seeker's.

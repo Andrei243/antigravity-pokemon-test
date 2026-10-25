@@ -104,12 +104,16 @@ public static class WildEncounterRules
         int level = Level(table, slot, water, lead, rng);
         if (keptAway && ScaredOff(lead, level, rng)) return null;
         if (keptAway && RepelTurnsAway(lead, level)) return null;
+        // A horde's others each draw a level of their own as the first did (plan 14 · B3); nothing is drawn for one alone
+        int[]? others = slot.Count > 1 ? Enumerable.Range(1, slot.Count - 1).Select(_ => Level(table, slot, water, lead, rng)).ToArray() : null;
         return new WildEncounterEntry
         {
             SpeciesName = slot.SpeciesName,
             MinLevel = level,
             MaxLevel = level,
             Weight = slot.Weight,
+            Count = slot.Count,
+            OthersLevels = others,
             Gender = GenderFor(PokemonDatabase.Get(slot.SpeciesName), lead, rng),
             Nature = NatureFor(lead, rng)
         };

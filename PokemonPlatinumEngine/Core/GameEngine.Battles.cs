@@ -51,6 +51,23 @@ public partial class GameEngine
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
+        // A horde (plan 14 · B3): the slot's species again for each of the others, each at the level drawn for it, met
+        // one against all of them. Not beside a partner, on the water, in the Great Marsh's game or in the Contest
+        if (entry.Count > 1 && partner == null && flow.Player.Mode != TravelMode.Surfing && !flow.Safari.Active && !InBugContest)
+        {
+            var horde = new List<Pokemon> { wild };
+            for (int i = 1; i < entry.Count; i++)
+            {
+                int drawn = entry.OthersLevels is { } levels && i - 1 < levels.Length ? levels[i - 1] : rng.Next(entry.MinLevel, entry.MaxLevel + 1);
+                var other = new Pokemon(wildSpecies, LevelHere(drawn));
+                ShinyCharm.Roll(other, flow.Bag, rng, null, null);
+                if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) other.ChangeForm(otherForm);
+                DressForTheSeason(other);
+                horde.Add(other);
+            }
+            MeetWildPokemon(wild, BattleKind.Normal, horde: horde, nuzlockeCatch: MeetUnderTheRun(wild));
+            return;
+        }
         // Beside a partner every Pokémon of the grass comes with a second (TryGenerateGrassEncounter_DoubleBattle): both
         // are drawn as the first was, and the lead's ability scaring either off leaves the grass quiet. In Black 2's dark
         // grass a second comes now and then by itself, to a player with two able to fight (plan 22 · U4)
@@ -106,9 +123,11 @@ public partial class GameEngine
     /// name alone.)
     /// </summary>
     private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
-        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free)
+        Story.LessonCatcher? catcher = null, NuzlockeCatch nuzlockeCatch = NuzlockeCatch.Free, IReadOnlyList<Pokemon>? horde = null)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second);
+        // A horde's others are seen with the first (plan 14 · B3)
+        foreach (var other in horde?.Skip(1) ?? Enumerable.Empty<Pokemon>()) flow.Pokedex.RegisterSeen(other);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
         if (kind != BattleKind.CatchingLesson) flow.Pokedex.RegisterSeen(wildPkmn);
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
@@ -140,7 +159,7 @@ public partial class GameEngine
         var beside = kind == BattleKind.Normal ? PartnerTrainer() : null;
         // They stand on the platform beside the player, and their rig is made behind the fade (plan 06 · R16c)
         if (beside != null) CharacterModels.Preload(new[] { CharacterStyles.Default.InBattle(beside.TrainerClass, beside.Look is { } look ? PlayerIdentity.CharacterFor(look) : null) });
-        var wilds = second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
+        var wilds = horde != null ? horde.ToList() : second != null ? new List<Pokemon> { wildPkmn, second } : new List<Pokemon> { wildPkmn };
         // What wild Pokémon hold, and the Poké Radar's chain, which only a Pokémon of the field's own lets go on (plan 06 · R13)
         GiveWildItems(wilds, kind);
         if (!flow.FieldEncounter) EndRadarChain();
@@ -151,7 +170,7 @@ public partial class GameEngine
         var meeting = new BattleMeeting
         {
             WildSpecies = wildPkmn.Species.Name,
-            Double = second != null,
+            Double = second != null || horde != null,
             Kind = kind,
             Terrain = BattleConditionsHere().Terrain,
             TheirLevel = wildPkmn.Level,
@@ -168,7 +187,7 @@ public partial class GameEngine
                 PcStorage = flow.Boxes,
                 Place = PlaceName(),
                 WildPokemon = wilds,
-                Format = second != null ? BattleFormat.Double : BattleFormat.Single,
+                Format = horde != null ? BattleFormat.Horde : second != null ? BattleFormat.Double : BattleFormat.Single,
                 Partner = beside,
                 Conditions = BattleConditionsHere(),
                 Kind = kind,

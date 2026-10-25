@@ -45,6 +45,10 @@
     // visitors: the market, the flower shop's mulches and the café's drinks
     "join_avenue_market": [ "Poké Ball", "Great Ball", "Potion", "Super Potion", "Antidote", "Paralyze Heal", "Awakening", "Burn Heal", "Ice Heal", "Escape Rope", "Repel" ],
     "join_avenue_flowers": [ "Growth Mulch", "Damp Mulch", "Stable Mulch", "Gooey Mulch", "Honey" ],
-    "join_avenue_cafe": [ "Fresh Water", "Soda Pop", "Lemonade", "Moomoo Milk", "Casteliacone" ]
+    "join_avenue_cafe": [ "Fresh Water", "Soda Pop", "Lemonade", "Moomoo Milk", "Casteliacone" ],
+    // Driftveil Market's three stalls (plan 22 · U6, part d), our own stock: the herb seller, the sailor's imports and the sweets
+    "driftveil_market_herbs": [ "Energy Powder", "Energy Root", "Heal Powder", "Revival Herb" ],
+    "driftveil_market_goods": [ "Poké Doll", "Fluffy Tail", "Super Repel", "Max Repel", "X Attack", "X Speed", "X Accuracy", "X Defense", "Guard Spec.", "Dire Hit" ],
+    "driftveil_market_sweets": [ "Lemonade", "Moomoo Milk", "Sweet Heart", "Lava Cookie", "Old Gateau" ]
   }
 }

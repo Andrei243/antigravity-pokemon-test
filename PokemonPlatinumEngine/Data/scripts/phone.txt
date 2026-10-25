@@ -406,3 +406,92 @@ script Juan
   say "Ah, {player}. Juan speaking. The water in the crater is as still as glass today. A fine day for a dance."
   say "Do take care on the road ahead. I am always ready for another battle, should you wish one."
   end
+
+
+# The Elite Four, Wallace and Wally, registered once beaten, who ask a Champion of Hoenn for a rematch on their day
+# (plan 21 · H9, part c; Data/world/hoenn/phone.json, rematches.json). The call only sets the rematch waiting
+# (VAR_PHONE_CALL 2, then 3 until it is fought): the Elite Four wait in their rooms of the League, Wallace in the
+# Champion's room, Wally by the way out of Victory Road, whose scripts battle the stronger team while it waits.
+script Sidney
+  speaker "Sidney"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "It's Sidney! I've been working on a new look. My Mightyena says it's an improvement. Hard to tell with a Mightyena."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_SIDNEY
+  say "Sidney here. I've been training like mad since you beat me. Come to my room in the League and let's battle again!"
+  end
+label Waiting
+  say "It's me, Sidney. I'm still waiting in my room at the League. I want that rematch!"
+  end
+
+script Phoebe
+  speaker "Phoebe"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "This is Phoebe. I spent a night on Mt. Pyre again. The spirits there were chatty. My Banette says hello."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_PHOEBE
+  say "It's Phoebe. My Pokémon have grown close to the spirits since we met. Come to my room in the League and see for yourself!"
+  end
+label Waiting
+  say "Phoebe speaking. I'm still waiting for you in my room at the League. My Pokémon are restless."
+  end
+
+script Glacia
+  speaker "Glacia"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Glacia here. It was freezing at the League this morning, and I enjoyed every minute. Do you ever dress warmly?"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_GLACIA
+  say "It's Glacia. I haven't forgotten how you thawed my team. Come to my room at the League. I intend to hold the ice this time."
+  end
+label Waiting
+  say "Glacia speaking. I'm still waiting in my room at the League. My Pokémon won't stay cold much longer."
+  end
+
+script Drake
+  speaker "Drake"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Drake speaking. I took my Salamence out over the sea today. The sky is the only thing larger than a dragon's pride."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_DRAKE
+  say "It's Drake. A dragon doesn't forget a defeat. Come to my room at the League and let's settle this properly."
+  end
+label Waiting
+  say "Drake here. I'm still waiting in my room at the League. Don't keep a dragon waiting too long."
+  end
+
+script Wallace
+  speaker "Wallace"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Hello, {player}. It's Wallace. Sootopolis was beautiful in the rain today. Beauty is everywhere, if you care to look."
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_WALLACE
+  say "This is Wallace. My Pokémon and I have found a few new ways to dance. Would you join us in the Champion's room?"
+  end
+label Waiting
+  say "Wallace speaking. The Champion's room is ready whenever you are. I do look forward to our rematch."
+  end
+
+script HoennWally
+  speaker "Wally"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "H-hello, {player}? It's Wally! I'm still training on Victory Road. My Gardevoir and I get stronger every day!"
+  end
+label Rematch
+  setflag FLAG_PHONE_REMATCH_HOENN_WALLY
+  say "It's Wally! I've been training so hard. Please come to Victory Road's way out and battle me again!"
+  end
+label Waiting
+  say "Wally here. I'm still waiting by the way out of Victory Road. I'm ready whenever you are!"
+  end

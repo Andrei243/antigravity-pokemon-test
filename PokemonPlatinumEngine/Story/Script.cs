@@ -131,6 +131,8 @@ public enum Op
     // A secret base (plan 21 · H10): made at the spot ahead with Secret Power and gone into, asked about, decorated,
     // packed up, and its decoration PC filled
     OpenBase,
+    // The Battle Subway (plan 22 · U6, part d): a run of cars from the desk to the last battle and back
+    Subway,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

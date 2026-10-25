@@ -710,6 +710,10 @@ public static class RegionDatabase
                 "AnvilleTown_House2", "AnvilleTown_House3", "RelicPassage_East", "RelicPassage", "RelicPassage_West",
                 "RelicCastle", "RelicCastle_B1F", "RelicCastle_Ruins1", "RelicCastle_Ruins2", "RelicCastle_Ruins3",
                 "RelicCastle_Ruins4", "RelicCastle_Ruins5", "RelicCastle_Depths", "PlasmaFrigate",
+                // Plan 22 · U6, part d: a car of the Battle Subway (a map of ours, Data/maps/BattleSubwayTrain.json)
+                "BattleSubwayTrain",
+                // and the Pokémon World Tournament's hall (a map of ours, Data/maps/PokemonWorldTournament.json)
+                "PokemonWorldTournament",
             }
         },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

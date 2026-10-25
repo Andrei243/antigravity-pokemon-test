@@ -1,0 +1,121 @@
+{
+  "displayName": {
+    "en": [
+      "Battle Subway"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "conductor": {
+      "name": {
+        "en": [
+          "Depot Agent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The next car is coming up. Good luck out there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "partner": {
+      "name": {
+        "en": [
+          "Partner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Let's give it everything!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent_2": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ingo": {
+      "name": {
+        "en": [
+          "Ingo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "emmet": {
+      "name": {
+        "en": [
+          "Emmet"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

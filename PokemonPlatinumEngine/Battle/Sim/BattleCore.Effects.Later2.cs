@@ -505,7 +505,7 @@ public sealed partial class BattleCore
     /// <summary>After You and Quash: the target's action comes next, or last of the turn; in a single battle neither works.</summary>
     private bool Reorder(Battler t, bool first)
     {
-        var act = IsDouble ? waiting.FirstOrDefault(a => a.User == t && a.Actor == t.Pokemon) : null;
+        var act = !IsSingle ? waiting.FirstOrDefault(a => a.User == t && a.Actor == t.Pokemon) : null;
         if (act == null) return Fails();
         waiting.Remove(act);
         if (first) waiting.Insert(0, act);

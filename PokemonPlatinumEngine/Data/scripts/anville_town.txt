@@ -50,3 +50,100 @@ script RestingCars
 label Busy
   say "When the yard's full of people, I swear the trains look happier!"
   end
+
+
+# The collectors' swaps (plan 22 · U6, part d). Black 2's weekend crowd trades with whoever has something to swap; the two
+# here are ours, once each (NpcTrades "cogs" and "shelly"). The collector (14, hidden through the week) wants a Timburr
+# for his Klink, the girl who tried swapping once (9) a Tympole for her Dwebble.
+script Collector
+  face self player
+  speaker "Collector"
+  if flag FLAG_UNOVA_ANVILLE_COGS_TRADED goto Done
+  say "I collect anything to do with trains, and my best find is a Klink. All gears and no engine, if you ask me."
+  ask "A Timburr is what I'm after, though. It'd look splendid with a girder on its shoulder. Will you swap one for my Klink?"
+  if no goto Maybe
+  say "Which Pokémon will you swap?"
+  choosepokemon
+  if result == 255 goto Maybe
+  trade cogs
+  if result == 0 goto Wrong
+  setflag FLAG_UNOVA_ANVILLE_COGS_TRADED
+  say "A Timburr! Oh, look at that grip! Take good care of Cogs, now. It likes a bit of oil."
+  end
+label Wrong
+  say "Hmm? That isn't a Timburr. I'm only after a Timburr."
+  end
+label Maybe
+  say "No? Then come back when you've a Timburr in your party. I'll be here at the weekends."
+  end
+label Done
+  say "Cogs is doing well? Good! I've polished my Timburr's girder three times this week."
+  end
+
+
+script Swap
+  face self player
+  speaker "Backer"
+  if flag FLAG_UNOVA_ANVILLE_SHELLY_TRADED goto Done
+  say "I tried a swap here once, and it was more fun than I expected. Now I'm after another!"
+  ask "I've a Dwebble that needs a wetter home. Will you swap me a Tympole for it?"
+  if no goto Maybe
+  say "Which Pokémon will you swap?"
+  choosepokemon
+  if result == 255 goto Maybe
+  trade shelly
+  if result == 0 goto Wrong
+  setflag FLAG_UNOVA_ANVILLE_SHELLY_TRADED
+  say "A Tympole! It's sweet! Be gentle with Shelly. She carries her rock very proudly."
+  end
+label Wrong
+  say "Oh, that's not a Tympole. I'm after a Tympole, nothing else."
+  end
+label Maybe
+  say "Never mind. Find me a Tympole, and I'll be waiting."
+  end
+label Done
+  say "I hope Shelly's keeping her rock polished. Tympole's lovely, though. It sings to the rain!"
+  end
+
+
+# The girl's lost Pansage (16, and 15 in the plaza, Black 2's 0x0362). She tells of it, which puts it in the plaza by the
+# cars (FLAG_UNOVA_ANVILLE_PANSAGE_LOST, which shows it); the Pansage, spoken to, hops into the player's arms (_FOUND, which
+# hides it); the girl, spoken to once more, takes it back with a gift (_THANKED, which shows her Pansage by her).
+script LostPansage
+  face self player
+  speaker "Girl"
+  if flag FLAG_UNOVA_ANVILLE_PANSAGE_THANKED goto Thanked
+  if flag FLAG_UNOVA_ANVILLE_PANSAGE_FOUND goto Return
+  if flag FLAG_UNOVA_ANVILLE_PANSAGE_LOST goto Waiting
+  say "My Pansage hopped onto a train on the way home from the amusement park, and it's been gone ever since."
+  say "It must be somewhere about the cars. Would you look for it? It's a shy little thing, and it hides when it hears me."
+  setflag FLAG_UNOVA_ANVILLE_PANSAGE_LOST
+  end
+label Waiting
+  say "Any sign of my Pansage? It likes to sit where the sun's warm, and it can't resist a train."
+  end
+label Return
+  say "That's my Pansage! Oh, you found it! Come here, you silly thing, you had me so worried!"
+  say "You must take something for your trouble. Please, it's a Miracle Seed, from my grandfather's garden."
+  give "Miracle Seed"
+  setflag FLAG_UNOVA_ANVILLE_PANSAGE_THANKED
+  say "I'll never let go of it on a train again. Thank you!"
+  end
+label Thanked
+  say "Pansage hasn't left my side since. It likes the trains, so we go for a ride every weekend, but I hold on tight."
+  end
+
+
+script PansageLost
+  cry own
+  say "Pansage: Sage! Sage!"
+  say "The Pansage hops into your arms, looking pleased with itself, and sits quite still. You carry it back to the girl by the fence."
+  setflag FLAG_UNOVA_ANVILLE_PANSAGE_FOUND
+  end
+
+
+script PansageHome
+  cry own
+  say "Pansage: Pan! Pan-sage!"
+  end

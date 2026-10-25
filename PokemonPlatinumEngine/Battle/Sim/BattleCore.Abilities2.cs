@@ -301,7 +301,7 @@ public sealed partial class BattleCore
             if (!t.IsActive) continue;
             if (t.Roster == null)
             {
-                if (IsTrainerBattle || IsDouble || t.IsPlayerSide) continue;
+                if (IsTrainerBattle || !IsSingle || t.IsPlayerSide) continue;
                 Say(Text.Of("battle.emergencyExit", ("pokemon", t.Name), ("ability", AbilityOf(t))));
                 Say(Text.Of("battle.ranAway", ("pokemon", t.Name))).With(new Left(t.Place, Ran: true));
                 End(BattleResult.EnemyFled);

@@ -381,14 +381,14 @@ public sealed partial class BattleCore
         {
             if (item.Name != only) return Text.Of("battle.onlyTheBallsYou");
             if (SpecialBalls <= 0) return Text.Of("battle.youHaveNoBalls");
-            if (EnemySlots.Count(f => f.IsActive) > 1) return Text.Of("battle.thereAreTwoPokemon");
+            if (EnemySlots.Count(f => f.IsActive) is > 1 and var standing) return NoAim(standing);
             return null;
         }
         if (item.Name == BugContestBall) return Text.Of("battle.sportBallsAreFor");
         if (item.Pocket == ItemPocket.PokeBalls)
         {
             if (IsTrainerBattle) return Text.Of("battle.theTrainerBlockedThe");
-            if (EnemySlots.Count(f => f.IsActive) > 1) return Text.Of("battle.thereAreTwoPokemon");
+            if (EnemySlots.Count(f => f.IsActive) is > 1 and var standing) return NoAim(standing);
             return null;
         }
         if (!CanUseInBattle(item)) return Text.Of("battle.thereATimeAnd");

@@ -6,7 +6,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "No train's come in today, more's the pity. Still, a quiet yard gives me time to oil the turntable."
         ],
         "text": [
-          ""
+          "Azi n-a sosit niciun tren, păcat. Totuși, o curte liniștită îmi dă timp să ung placa turnantă."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Musician"
         ],
         "text": [
-          ""
+          "Muzicianul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Do you hear it? A soft tune drifting over the rooftops... It's the kind that makes you want to sit a while."
         ],
         "text": [
-          ""
+          "Auzi? O melodie blândă plutește peste acoperișuri... Genul care te face să vrei să stai puțin."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Station Agent"
         ],
         "text": [
-          ""
+          "Agentul stației"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Rich Boy"
         ],
         "text": [
-          ""
+          "Băiat bogat"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "The girl up on the footbridge plays to the trains every evening. A lullaby, so they sleep well."
         ],
         "text": [
-          ""
+          "Fata de pe pasarelă cântă pentru trenuri în fiecare seară. Un cântec de leagăn, ca să doarmă bine."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "School Kid"
         ],
         "text": [
-          ""
+          "Școlărița"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Trains are the best thing ever! Mum brought me, but she ran off to take pictures."
         ],
         "text": [
-          ""
+          "Trenurile sunt cel mai grozav lucru! Mama m-a adus, dar a fugit să facă poze."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Photographer"
         ],
         "text": [
-          ""
+          "Fotograful"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "From right here, the cars line up just so on the turntable. Perfect picture!"
         ],
         "text": [
-          ""
+          "De aici, vagoanele se aliniază exact cum trebuie pe placa turnantă. Poză perfectă!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Backer"
         ],
         "text": [
-          ""
+          "Suporterul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Weekends here are packed! I came to watch the cars turn round."
         ],
         "text": [
-          ""
+          "Weekendurile de aici sunt pline! Am venit să văd cum se rotesc vagoanele."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Station Agent"
         ],
         "text": [
-          ""
+          "Agentul stației"
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -142,7 +142,7 @@
           "Smell that air! Coal smoke and pine trees. Nothing like it."
         ],
         "text": [
-          ""
+          "Miroase aerul! Fum de cărbune și pini. Nimic nu se compară."
         ]
       }
     },
@@ -152,15 +152,7 @@
           "Backer"
         ],
         "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The collectors here swap all sorts of things. I tried it once, and it was more fun than I expected!"
-        ],
-        "text": [
-          ""
+          "Suporterul"
         ]
       }
     },
@@ -170,7 +162,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -178,7 +170,7 @@
           "That round thing in the middle of the yard is a turntable. It swings a car round to face the other way."
         ],
         "text": [
-          ""
+          "Chestia rotundă din mijlocul curții e o placă turnantă. Întoarce un vagon cu fața în cealaltă parte."
         ]
       }
     },
@@ -188,7 +180,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -196,7 +188,7 @@
           "Hardly a train in sight this weekend. Good for painting, bad for company."
         ],
         "text": [
-          ""
+          "Abia dacă se vede un tren în weekendul ăsta. Bine pentru pictat, rău pentru companie."
         ]
       }
     },
@@ -206,7 +198,7 @@
           "Backpacker"
         ],
         "text": [
-          ""
+          "Rucsăcar"
         ]
       },
       "dialog": {
@@ -214,7 +206,7 @@
           "I spent everything I had getting here. Worth it, though. Look at those cars!"
         ],
         "text": [
-          ""
+          "Mi-am cheltuit tot ce aveam ca să ajung aici. Merită, totuși. Uită-te la vagoanele alea!"
         ]
       }
     },
@@ -224,7 +216,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -232,7 +224,7 @@
           "Every collector here thinks they've got the rarest thing in town. Most of them are wrong!"
         ],
         "text": [
-          ""
+          "Fiecare colecționar de aici crede că are cel mai rar lucru din oraș. Cei mai mulți se înșală!"
         ]
       }
     },
@@ -242,15 +234,17 @@
           "Collector"
         ],
         "text": [
-          ""
+          "Colecționarul"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "15": {
+      "name": {
         "en": [
-          "I collect anything to do with trains. Tickets, signs, the odd bolt. Come back when you have something to swap!"
+          "Pansage"
         ],
         "text": [
-          ""
+          "Colecționez orice are legătură cu trenurile. Bilete, semne, câte un șurub. Revino când ai ceva de schimbat!"
         ]
       }
     },
@@ -260,15 +254,17 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "pansage_home": {
+      "name": {
         "en": [
-          "My Pansage hopped onto a train on the way home from the amusement park. I hope someone kind finds it..."
+          "Pansage"
         ],
         "text": [
-          ""
+          "Pansage-ul meu a sărit într-un tren pe drumul de întoarcere de la parcul de distracții. Sper să-l găsească cineva cumsecade..."
         ]
       }
     }
@@ -279,7 +275,7 @@
         "A map of Unova's railways.\nThe Gear Station in Nimbasa City is the hub of every line."
       ],
       "text": [
-        ""
+        "O hartă a căilor ferate din Unova.\nStația Gear din Orașul Nimbasa este nodul tuturor liniilor."
       ]
     },
     "7": {
@@ -287,7 +283,7 @@
         "Anville Town\nWhere the steel rails end and turn round"
       ],
       "text": [
-        ""
+        "Orașul Anville\nUnde se termină șinele de oțel și se întorc"
       ]
     }
   }

@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Team Plasma's ship... My sister's Purrloin could be anywhere on board!"
         ],
         "text": [
-          ""
+          "Nava Echipei Plasma... Purrloinul surorii mele ar putea fi oriunde la bord!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Cheren"
         ],
         "text": [
-          ""
+          "Cheren"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Stay close. We don't know how many of them there are."
         ],
         "text": [
-          ""
+          "Rămâi aproape. Nu știm câți sunt."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Go on, go on! Shove off before the boss sees you!"
         ],
         "text": [
-          ""
+          "Hai, hai! Pleacă până nu te vede șeful!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Who let a kid on board? Not me, that's who!"
         ],
         "text": [
-          ""
+          "Cine a lăsat un copil la bord? Nu eu, asta e sigur!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "This is a cargo ship. Nothing to see here. Totally ordinary cargo."
         ],
         "text": [
-          ""
+          "Asta e un cargou. Nimic de văzut aici. Marfă absolut obișnuită."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The Gym Leader's here too? We're outnumbered! ...By two."
         ],
         "text": [
-          ""
+          "Și Liderul de Sală e aici? Suntem depășiți numeric! ...Cu doi."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Hey, remember me? No? Good."
         ],
         "text": [
-          ""
+          "Hei, îți amintești de mine? Nu? Bine."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Ugh, the deck's freezing today. Why is this ship always so cold?"
         ],
         "text": [
-          ""
+          "Uf, puntea e înghețată azi. De ce e nava asta mereu așa de rece?"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "Don't look around too much. Seriously. Don't."
         ],
         "text": [
-          ""
+          "Nu te uita prea mult în jur. Serios. Nu."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "You think you're tough? We'll see about that."
         ],
         "text": [
-          ""
+          "Crezi că ești dur? Vom vedea noi."
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "I'm not scared of you! I'm just... standing very still."
         ],
         "text": [
-          ""
+          "Nu mi-e frică de tine! Doar... stau foarte nemișcat."
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -212,7 +212,7 @@
           "Sniff... You smell like a Trainer. We hate that smell."
         ],
         "text": [
-          ""
+          "Sniff... Miroși a Antrenor. Urâm mirosul ăsta."
         ]
       }
     },
@@ -222,7 +222,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -230,7 +230,7 @@
           "Intruders on deck! Somebody do something!"
         ],
         "text": [
-          ""
+          "Intruși pe punte! Să facă cineva ceva!"
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -248,7 +248,7 @@
           "Let them through? Are you mad?"
         ],
         "text": [
-          ""
+          "Să-i lăsăm să treacă? Ești nebun?"
         ]
       }
     },
@@ -258,7 +258,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -266,7 +266,7 @@
           "Get off our ship!"
         ],
         "text": [
-          ""
+          "Coborâți de pe nava noastră!"
         ]
       }
     },
@@ -276,7 +276,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -284,7 +284,7 @@
           "Get off our ship!"
         ],
         "text": [
-          ""
+          "Coborâți de pe nava noastră!"
         ]
       }
     },
@@ -294,7 +294,7 @@
           "Zinzolin"
         ],
         "text": [
-          ""
+          "Zinzolin"
         ]
       },
       "dialog": {
@@ -302,7 +302,7 @@
           "Children have no business aboard this ship."
         ],
         "text": [
-          ""
+          "Copiii n-au ce căuta pe nava aceasta."
         ]
       }
     },
@@ -312,7 +312,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -320,7 +320,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -330,7 +330,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -338,7 +338,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -348,7 +348,7 @@
           "Shadow Triad"
         ],
         "text": [
-          ""
+          "Triada Umbrelor"
         ]
       },
       "dialog": {
@@ -356,7 +356,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     }

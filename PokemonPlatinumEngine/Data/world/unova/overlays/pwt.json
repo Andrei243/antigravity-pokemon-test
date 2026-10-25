@@ -1,17 +1,19 @@
 {
   // The Pokémon World Tournament's grounds (plan 22 · U6, part c): Black 2's plaza south of Driftveil City round the
-  // tournament's hall, its pier and the way down into the Relic Passage, our words. The hall's door stays shut until
-  // the tournament is built (plan 22 · U6's next part, with plan 14 · B11 and B12); Black 2's Hugh, Clay, Cheren and
-  // Colress at its door (6 to 9) are held back for it. Once the Quake Badge is won and Clay has told of the tournament,
-  // the first step onto the pier (our trigger on 196 to 198, 476, VAR_UNOVA_PWT 0) plays the scene of the Plasma
+  // tournament's hall, its pier and the way down into the Relic Passage, our words. The hall's door (warp 0) is open
+  // once Clay has told of the tournament (FLAG_UNOVA_PWT_OPEN) and leads into a map of ours (plan 22 · U6, part d: the
+  // PokemonWorldTournament hall and its first tournament, with plan 14 · B11 and B12 left); Black 2's Hugh, Clay, Cheren
+  // and Colress at its door (6 to 9) stay held back, since their scene is the hall's own. Once the first tournament has
+  // been played, the first step onto the pier (our trigger on 196 to 198, 476, VAR_UNOVA_PWT 0) plays the scene of the Plasma
   // Frigate (pwt.txt): Cheren and Hugh, a grunt running down the pier, Hugh and Cheren after him, Colress's warning; the
   // gangway at the pier's end (warp 3) leads aboard until the frigate sails (FLAG_UNOVA_FRIGATE_SAILED), and the
   // grounds' arrival plays Hugh and Cheren on the pier once the Shadow Triad have put the player back ashore
   "area": "pwt",
   "name": "Pokémon World Tournament",
-  "bgmTrack": "unova/driftveil",
+  "bgmTrack": "unova/pwt",
   "architecture": "Storehouse",
   "heldBack": [ "6", "7", "8", "9" ],
+  "doors": [ { "warp": 0, "map": "PokemonWorldTournament", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_UNOVA_PWT_OPEN" } ],
   "switches": [ { "warp": 3, "from": "FLAG_UNOVA_FRIGATE_AT_PIER", "until": "FLAG_UNOVA_FRIGATE_SAILED" } ],
   // The frigate moored along the pier's east side (ours: Black 2 shows its model there only while it is moored); it
   // stays drawn there after it has sailed until the ship has a model that can come and go (plan 22 · U8)
@@ -48,7 +50,7 @@
     "5": {
       "name": "Worker",
       "npcType": "worker",
-      "dialog": [ "We're still putting the finishing touches on the hall. Not long now!" ]
+      "dialog": [ "The hall is open at last! Clay himself is welcoming the first entrants." ]
     },
     "11": {
       "name": "Gentleman",

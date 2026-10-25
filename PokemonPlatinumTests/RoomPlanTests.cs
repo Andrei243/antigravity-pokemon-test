@@ -223,6 +223,10 @@ public class RoomPlanTests
     /// as the original's has, and the floors over it only their stairs (<c>RebuiltRoomTests</c>).</summary>
     internal static readonly string[] PoketchCompany = { "PoketchCompany", "PoketchCompany2F", "PoketchCompany3F" };
 
+    /// <summary>Unova's Battle Subway train and the World Tournament's hall (plan 22 · U6, part d): rooms of our own, laid out
+    /// for what they hold and not on the hand-made rooms' plan.</summary>
+    internal static readonly string[] UnovaRooms = { "BattleSubwayTrain", "PokemonWorldTournament" };
+
     /// <summary>The rival's room over his house (plan 01 · M11, the last rooms): no door, only the stairs, and the scene that
     /// plays as the player first comes up them (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>
     internal static readonly string[] RivalsRoom = { "RivalHouse2F" };
@@ -1187,6 +1191,7 @@ public class RoomPlanTests
             ParkGallery,
             BattleArcade,
             PoketchCompany,
+            UnovaRooms,
             RivalsRoom,
             PlayersRoom,
         }.SelectMany(names => names).ToHashSet();

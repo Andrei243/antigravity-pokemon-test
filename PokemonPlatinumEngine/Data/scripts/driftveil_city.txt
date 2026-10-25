@@ -168,6 +168,7 @@ script ClayAndHugh
   hide hugh_gym
   setflag FLAG_UNOVA_HIDE_HUGH_GYM
   setvar VAR_UNOVA_DRIFTVEIL 5
+  setflag FLAG_UNOVA_PWT_OPEN
   endscene
   end
 

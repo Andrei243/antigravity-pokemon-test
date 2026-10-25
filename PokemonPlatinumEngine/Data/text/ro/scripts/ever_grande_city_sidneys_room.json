@@ -50,10 +50,18 @@
     },
     {
       "en": [
+        "Registered Sidney in the PokéNav."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Go on through. The rest of the Elite Four won't go easy on you. Show them what you showed me!"
       ],
       "text": [
-        "Treci mai departe. Restul Elitei celor Patru nu va fi blând cu tine. Arată-le ce mi-ai arătat și mie!"
+        ""
       ]
     },
     {
@@ -61,7 +69,31 @@
         "Don't look back now. The next room is waiting for you. Go and win it!"
       ],
       "text": [
-        "Nu te mai uita înapoi. Camera următoare te așteaptă. Du-te și câștig-o!"
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! You again! I've been waiting for this. Same rules as before: I play dirty, and I play to win!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sidney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! Beaten again, and I enjoyed every second. You keep getting better, don't you?"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

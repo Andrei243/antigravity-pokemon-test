@@ -6,6 +6,7 @@
 script Glacia
   face glacia player
   speaker "Glacia"
+  if flag FLAG_PHONE_REMATCH_GLACIA goto Rematch
   if flag FLAG_DEFEATED_ELITE_4_GLACIA goto Beaten
   scene "Glacia"
   music "common/eye_elite_four"
@@ -16,10 +17,21 @@ script Glacia
   speaker "Glacia"
   say "Such fire... You melted my ice completely. I have not felt this in a long time."
   setflag FLAG_DEFEATED_ELITE_4_GLACIA
+  addcontact glacia
+  text "Registered Glacia in the PokéNav."
   sound "door_open"
   say "Go on. The last of the Elite Four waits ahead, and he is not as gentle as I am."
   endscene
   end
 label Beaten
   say "Keep that fire burning. You will need all of it for what lies ahead."
+  end
+label Rematch
+  say "So you are here. I have trained my team to the edge of winter itself. Let us see you thaw it again."
+  battle self as "hoenn_glacia_rematch"
+  speaker "Glacia"
+  say "Defeated again. Your warmth is formidable, {player}. I will come back stronger."
+  clearflag FLAG_PHONE_REMATCH_GLACIA
+  setflag FLAG_DEFEATED_ELITE_4_GLACIA
+  sound "door_open"
   end

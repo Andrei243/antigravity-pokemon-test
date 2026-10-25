@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Gah! The Shadow Triad... What are they? One second we were on deck, the next we're standing out here!"
       ],
       "text": [
-        ""
+        "Gah! Triada Umbrelor... Ce sunt aceștia? Într-o clipă eram pe punte, în alta stăm aici afară!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "And the ship's leaving! Team Plasma, get back here! You still have my sister's Purrloin!"
       ],
       "text": [
-        ""
+        "Iar nava pleacă! Echipa Plasma, întoarceți-vă! Încă aveți Purrloinul surorii mele!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The Shadow Triad... They can hold a person still and disappear in the blink of an eye. But it's Zinzolin who worries me."
       ],
       "text": [
-        ""
+        "Triada Umbrelor... Pot ține un om pe loc și dispar într-o clipită. Dar Zinzolin e cel care mă îngrijorează."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "A ship that freezes everything it passes, and a plan to turn Unova to ice. Something big is coming, {player}."
       ],
       "text": [
-        ""
+        "O navă care îngheață tot ce trece pe lângă ea și un plan de a preface Unova în gheață. Se apropie ceva mare, {player}."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "There's something I want to look into. I'm going on to Route 6. Be careful out there."
       ],
       "text": [
-        ""
+        "Vreau să cercetez ceva. Merg mai departe spre Ruta 6. Ai grijă pe acolo."
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "{player}! I hardly knew you. You've come a long way since our battle in Aspertia. So has {rival}."
       ],
       "text": [
-        ""
+        "{player}! Abia te-am recunoscut. Ai făcut mult drum de la lupta noastră din Aspertia. La fel și {rival}."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Cheren came to see the tournament hall. It's not even open yet and there's already a crowd!"
       ],
       "text": [
-        ""
+        "Cheren a venit să vadă sala turneului. Nici nu s-a deschis încă și deja e lume multă!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Out of the way, out of the way!"
       ],
       "text": [
-        ""
+        "Feriți-vă, feriți-vă!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "That uniform... Team Plasma! He's running for that ship at the end of the pier!"
       ],
       "text": [
-        ""
+        "Uniforma aceea... Echipa Plasma! Aleargă spre nava de la capătul debarcaderului!"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "I'm going after him! {player}, come with me!"
       ],
       "text": [
-        ""
+        "Mă iau după el! {player}, vino cu mine!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Colress"
       ],
       "text": [
-        ""
+        "Colress"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Wait. Children have no business running headlong into something so dangerous."
       ],
       "text": [
-        ""
+        "Așteptați. Copiii n-au ce căuta năvălind orbește într-un loc atât de periculos."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "The Pokémon I'm looking for, my little sister's Purrloin... It might be on that ship! I'm not waiting!"
       ],
       "text": [
-        ""
+        "Pokémonul pe care îl caut, Purrloinul surioarei mele... Ar putea fi pe nava aceea! Nu mai aștept!"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "Cheren"
       ],
       "text": [
-        ""
+        "Cheren"
       ]
     },
     {
@@ -175,7 +175,7 @@
         "I'm going too. Someone has to keep him out of trouble!"
       ],
       "text": [
-        ""
+        "Merg și eu. Cineva trebuie să-l ferească de bucluc!"
       ]
     },
     {
@@ -183,7 +183,7 @@
         "Colress"
       ],
       "text": [
-        ""
+        "Colress"
       ]
     },
     {
@@ -191,7 +191,7 @@
         "Recklessness, not courage. Do they believe anything is possible simply because they have Pokémon with them?"
       ],
       "text": [
-        ""
+        "Nesăbuință, nu curaj. Oare cred că orice e posibil doar pentru că au Pokémoni alături?"
       ]
     },
     {
@@ -199,7 +199,7 @@
         "...Or perhaps that is exactly the force I keep looking for. Go on, then. I would very much like to see what you do."
       ],
       "text": [
-        ""
+        "...Sau poate chiar aceasta e forța pe care o tot caut. Mergeți, atunci. Mi-ar plăcea foarte mult să văd ce faceți."
       ]
     }
   ]

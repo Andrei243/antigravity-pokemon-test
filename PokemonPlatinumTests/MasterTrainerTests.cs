@@ -169,7 +169,7 @@ public class MasterTrainerTests
     [Fact]
     public void TheFightAreasScientistHasATeamOfOurOwn()
     {
-        var ours = Assert.Single(TrainerDatabase.Ours);
+        var ours = Assert.Single(TrainerDatabase.Ours, t => t.Id == "scientist_ingram");
         Assert.Equal("scientist_ingram", ours.Id);
         Assert.Same(ours, TrainerDatabase.Get("scientist_ingram"));
         // A name that is nobody's in Platinum's table, and a team that could be had

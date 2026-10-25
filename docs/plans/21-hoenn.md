@@ -1001,7 +1001,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     summit giving back the orbs (`VAR_MT_PYRE_STATE` 2); Mirage Island; the abnormal weather over Ever Grande City (H9);
     the Mach Bike's climb of the cracked floors and Rayquaza's battle (H12); Route 134's Sealed Chamber (H12); Match Call
     for Routes 132 to 134's rematch trainers; and parts a's and b's leftovers above but Sootopolis's spawn.
-- [x] H9 Ever Grande and the League (part b done 2026-10-25, wave 48: home as the Champion, the eon roamer, the harbour to Unova and the bands; part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
+- [x] H9 Ever Grande and the League (part c done 2026-10-26, wave 50: Scott's Frontier Pass and the crossing to the Battle Frontier, and the Four's, Wallace's and Wally's rematches over Match Call: `docs/mechanics/rulings.md`, "Scott's way to the Battle Frontier and the League's rematches"; tests written and run with `--filter` (`HoennPartCTests`), shots `hs2c0` to `hs2e3` written and not taken; part b done 2026-10-25, wave 48: home as the Champion, the eon roamer, the harbour to Unova and the bands; part a done 2026-10-25, wave 47: Ever Grande City, Victory Road, the League's battles,
   the Hall of Fame and the National Pokédex; tests written and run with `--filter`, shots written and not taken; what is
   left is listed under "Left for part b")
   - **Opened** (19 areas, 307 in all): Ever Grande City (`Architecture.Bloomstone`, the style guide's row first; its pale
@@ -1087,8 +1087,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       and its colours, Latias named, Dad and the ticket, Dad leaving, Mom after), `hs2aj` to `hs2al` (the harbour, the
       captain's word, the question refused), and the bands `hs2b_band_<name>` of the seven single-battle Leaders, the
       Four and Wallace, each printing what the band holds, and the eon roamer's place after each stage.
-    - **Left**: Scott's Battle Frontier pass and the S.S. Tidal (H12); Wally's and the Four's rematches through Match Call;
-      Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet); Southern Island and the other of
+    - **Left**: the S.S. Tidal (H12); Hoenn's leaders and Champion for plan 14 · B11's `tournaments.json` (not made yet); Southern Island and the other of
       the two (Emerald's Eon Ticket, not given); and from H8 the abnormal weather's post-game places, Mirage Island, Mt.
       Pyre's orbs and Rayquaza's battle (H12).
 - [x] H10 Secret Bases (wave 49; `docs/mechanics/rulings.md`, "Secret bases")

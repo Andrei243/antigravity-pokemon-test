@@ -61,7 +61,7 @@ A form (`PokemonForm`, plan 03 · D11) has a `name`, the species' and the form's
   "triggers": [ { "x": 4, "y": 9, "width": 3, "depth": 1, "script": "RivalStopsYou", "variable": "VAR_TOWN_STATE", "value": 0 } ],   // optional, see below
   "hiddenItems": [ { "x": 7, "y": 2, "item": "Nugget", "flag": "FLAG_OBTAINED_HIDDEN_SOMEWHERE_NUGGET" } ],   // optional, see below
   "tileScripts": [ { "x": 6, "y": 5, "script": "TV" } ],   // optional: a tile that runs a script of its own when looked at (plan 08 · P8)
-  "wildEncounters": [ { "speciesName": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 45 } ]
+  "wildEncounters": [ { "speciesName": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 45 } ]   // a slot may add "count": 2 to 5, a horde (plan 14 · B3), each at a level of its own; left out, one
 }
 ```
 

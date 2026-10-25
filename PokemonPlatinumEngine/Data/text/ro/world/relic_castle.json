@@ -6,7 +6,7 @@
           "Perry"
         ],
         "text": [
-          ""
+          "Perry"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "The ancients built this castle to last. Will your team last against me?"
         ],
         "text": [
-          ""
+          "Anticii au construit castelul acesta ca să dureze. Va dura echipa ta în fața mea?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swallowed by the sands of defeat..."
         ],
         "text": [
-          ""
+          "Înghițit de nisipurile înfrângerii..."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "Mind the sand pits! Step in one and down you go, a whole floor in a moment. I've done it three times today."
         ],
         "text": [
-          ""
+          "Atenție la gropile de nisip! Calci într-una și cobori, un etaj întreg într-o clipă. Am făcut-o de trei ori azi."
         ]
       }
     }

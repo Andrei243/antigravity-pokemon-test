@@ -5,7 +5,7 @@
         "Station Agent"
       ],
       "text": [
-        ""
+        "Agentul stației"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is the Anville Town Line. Our train runs out to Anville Town, where the line ends, and back again all day."
       ],
       "text": [
-        ""
+        "Aceasta este Linia Orașului Anville. Trenul nostru merge până în Orașul Anville, unde se termină linia, și înapoi, toată ziua."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Will you ride the train to Anville Town?"
       ],
       "text": [
-        ""
+        "Mergi cu trenul spre Orașul Anville?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Then please board and take a seat. We'll be leaving shortly!"
       ],
       "text": [
-        ""
+        "Atunci te rog să te urci și să iei loc. Plecăm în curând!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Anville Town is a quiet little place. Do pay it a visit when you have the time."
       ],
       "text": [
-        ""
+        "Orașul Anville e un loc mic și liniștit. Vizitează-l când ai timp."
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "The train glides out of the Gear Station and rattles east past fields and woods..."
       ],
       "text": [
-        ""
+        "Trenul iese din Stația Gear și huruie spre est, pe lângă câmpuri și păduri..."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "With a long sigh of its brakes it rolls into Anville Town, the end of the line."
       ],
       "text": [
-        ""
+        "Cu un lung suspin al frânelor, intră în Orașul Anville, capătul liniei."
       ]
     }
   ],
@@ -65,15 +65,71 @@
         "Depot Agent"
       ],
       "text": [
+        "Agentul depoului"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a set."
+      ],
+      "text": [
         ""
       ]
     },
     {
       "en": [
-        "Welcome to the Battle Subway! On the Single Train you battle one on one, car after car, seven to a run."
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A trainer waits in every car. Clear seven and you may get off with Battle Points, or go on to the next set."
       ],
       "text": [
         ""
+      ]
+    },
+    {
+      "en": [
+        "The Single Train takes three Pokémon, all of different species and holding different items. They battle at Level 50 or under, and nothing from the Bag may be used."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Subway Bosses, Ingo and Emmet, wait for those who ride on to the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Single Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
+      ],
+      "text": [
+        "Bun venit la Metroul de Luptă! În Trenul Simplu te lupți unul contra unu, vagon după vagon, șapte pe parcurs."
       ]
     }
   ],
@@ -83,12 +139,68 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
       "en": [
         "Welcome to the Battle Subway! On the Double Train two of your Pokémon battle two at a time, car after car."
+      ],
+      "text": [
+        "Bun venit la Metroul de Luptă! În Trenul Dublu doi dintre Pokémonii tăi se luptă câte doi, vagon după vagon."
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every car holds a trainer with four Pokémon, and two of them battle two of yours at once. Clear seven cars for a set."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Double Train takes four Pokémon, all of different species and holding different items, at Level 50 or under."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Subway Bosses wait for those who ride on to the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Double Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
       ],
       "text": [
         ""
@@ -101,7 +213,7 @@
         "Depot Agent"
       ],
       "text": [
-        ""
+        "Agentul depoului"
       ]
     },
     {
@@ -109,17 +221,121 @@
         "Welcome to the Battle Subway! The Multi Train is for two Trainers who battle side by side, a pair against a pair."
       ],
       "text": [
+        "Bun venit la Metroul de Luptă! Trenul Multiplu e pentru doi Antrenori care luptă umăr la umăr, o pereche contra unei perechi."
+      ]
+    },
+    {
+      "en": [
+        "What would you like to do?",
+        "RIDE",
+        "INFO",
+        "RECORD",
+        "EXIT"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You bring two Pokémon and a partner from our own staff brings two more. Every car holds a pair of trainers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The two Pokémon must be of different species and hold different items, at Level 50 or under. Ingo and Emmet ride together in the 21st car and the 49th."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A partner from a friend over a link is not on the line yet. We're sorry!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your longest streak on the Multi Train is {number} cars."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
+      ],
+      "text": [
         ""
       ]
     }
   ],
-  "TrainsResting": [
+  "Board": [
     {
       "en": [
-        "The Subway's cars are in the depot being made ready. Please come back once the lines are running!"
+        "I'm sorry. You need {number} Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
         ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the Pokémon you will take aboard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard! Mind the doors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The Pokémon taken aboard must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the Pokémon taken aboard may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please ride with us again!"
+      ],
+      "text": [
+        "Vagoanele Metroului sunt în depou și se pregătesc. Te rog să revii când liniile vor funcționa!"
       ]
     }
   ]

@@ -1254,7 +1254,7 @@ public sealed partial class BattleCore
             }
             if (hit.Missed || hit.OutOfReach)
             {
-                Say(hit.FailLine ?? (several || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", t.Name)) : Text.Of("battle.attackMissed", ("user", user.Name))));
+                Say(hit.FailLine ?? (several || !IsSingle ? Text.Of("battle.avoidedTheAttack", ("target", t.Name)) : Text.Of("battle.attackMissed", ("user", user.Name))));
                 Unlock(user);
                 use.Effect.OnMiss(this, use, hit);
                 continue;
@@ -1426,7 +1426,7 @@ public sealed partial class BattleCore
         else
         {
             if (hit.Missed && hit.FailLine == null) use.StatusMissed = true;
-            Say(hit.FailLine ?? (use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name))));
+            Say(hit.FailLine ?? (use.Targets.Count > 1 || !IsSingle ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name))));
         }
         return false;
     }

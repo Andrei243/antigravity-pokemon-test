@@ -1,0 +1,31 @@
+# Driftveil Market (plan 22 · U6, part d). docs/scripts.md describes the language; the lines are our own.
+#
+# Three of the market hall's people sell, each from their own stall (marts.json's driftveil_market_herbs, _goods and
+# _sweets, our own stock where Black 2's market changes its wares with the ships that come in).
+
+
+script Herbs
+  face self player
+  speaker "Seller"
+  say "Welcome to the market! Herbs, bitter and good for you, the way our grandmothers brewed them."
+  shop "driftveil_market_herbs"
+  say "Bitter, but they work wonders. Come again!"
+  end
+
+
+script Goods
+  face self player
+  speaker "Sailor"
+  say "Ahoy! I've brought these across the sea, and I'll let them go for a fair price."
+  shop "driftveil_market_goods"
+  say "Fair winds to you, Trainer!"
+  end
+
+
+script Sweets
+  face self player
+  speaker "Nursery Aide"
+  say "Sweets for the market's children, and for any Pokémon with a taste for them!"
+  shop "driftveil_market_sweets"
+  say "Don't let them eat it all at once!"
+  end

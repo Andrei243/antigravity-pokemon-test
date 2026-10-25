@@ -232,5 +232,59 @@
     "type": 12,
     "class": "Leader",
     "area": "sootopolis_city_gym_1f"
+  },
+  {
+    "id": "sidney",
+    "type": 0,
+    "class": "Elite Four",
+    "trainer": "hoenn_sidney",
+    "area": "ever_grande_city_sidneys_room",
+    "rematchDay": "Monday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "phoebe",
+    "type": 0,
+    "class": "Elite Four",
+    "trainer": "hoenn_phoebe",
+    "area": "ever_grande_city_phoebes_room",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "glacia",
+    "type": 0,
+    "class": "Elite Four",
+    "trainer": "hoenn_glacia",
+    "area": "ever_grande_city_glacias_room",
+    "rematchDay": "Friday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "drake",
+    "type": 0,
+    "class": "Elite Four",
+    "trainer": "hoenn_drake",
+    "area": "ever_grande_city_drakes_room",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "wallace",
+    "type": 0,
+    "class": "Champion",
+    "trainer": "hoenn_wallace",
+    "area": "ever_grande_city_champions_room",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "hoenn_wally",
+    "type": 0,
+    "class": "Pokémon Trainer",
+    "trainer": "hoenn_wally_vr_2",
+    "area": "hoenn_victory_road_1f",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Morning"
   }
 ]

@@ -1,0 +1,80 @@
+{
+  "Herbs": [
+    {
+      "en": [
+        "Seller"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the market! Herbs, bitter and good for you, the way our grandmothers brewed them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bitter, but they work wonders. Come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Goods": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy! I've brought these across the sea, and I'll let them go for a fair price."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fair winds to you, Trainer!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sweets": [
+    {
+      "en": [
+        "Nursery Aide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sweets for the market's children, and for any Pokémon with a taste for them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't let them eat it all at once!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

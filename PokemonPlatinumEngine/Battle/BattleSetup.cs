@@ -27,7 +27,46 @@ public enum BattleFormat
     /// <summary>One Pokémon per side.</summary>
     Single,
     /// <summary>Two Pokémon per side (twins, Galactic pairs, two trainers who spot the player together).</summary>
-    Double
+    Double,
+    /// <summary>
+    /// A horde (plan 14 · B3, X and Y's): one of the player's Pokémon against up to five wild ones at once. Fought only
+    /// under rules that have it (<see cref="Data.Ruleset.Hordes"/>); anywhere else it falls back (<see cref="BattleFormats.FallBack"/>).
+    /// </summary>
+    Horde
+}
+
+/// <summary>What each format is made of (plan 14 · B3): how many places a side has, and what a battle asked for becomes.</summary>
+public static class BattleFormats
+{
+    /// <summary>
+    /// The most places a side of a battle in this format has: one each in a single, two in a double, and in a horde
+    /// one for the player and five for the wild Pokémon (a horde of fewer is fought with as many as it has).
+    /// </summary>
+    public static int PlacesOf(this BattleFormat format, BattleSide side) => format switch
+    {
+        BattleFormat.Double => 2,
+        BattleFormat.Horde => side == BattleSide.Enemy ? 5 : 1,
+        _ => 1
+    };
+
+    /// <summary>
+    /// The format a battle asked for is fought in, by who can stand on each side. A double needs two able to fight on
+    /// each side (a partner brings the player's second; a partner with nobody able is left out, <paramref name="partnerStays"/>),
+    /// and is never the Great Marsh's or Pal Park's; a horde needs rules that have it, at least two wild Pokémon, a
+    /// player alone with one able to fight and an ordinary battle, and falls back to a single, or to the double a
+    /// partner makes. Everything else is a single.
+    /// </summary>
+    public static BattleFormat FallBack(BattleFormat asked, int ownAble, int partnerAble, bool partner, int trainers, int foesAble, int wild,
+        BattleKind kind, Data.Ruleset rules, out bool partnerStays)
+    {
+        bool foesForTwo = trainers == 0 ? wild >= 2 : trainers >= 2 || foesAble >= 2;
+        bool canDouble = partner ? ownAble > 0 && partnerAble > 0 && foesForTwo : ownAble >= 2 && foesForTwo;
+        partnerStays = partner && canDouble;
+        bool special = kind is BattleKind.Safari or BattleKind.PalPark;
+        if (asked == BattleFormat.Horde && !partnerStays && rules.Hordes && trainers == 0 && wild >= 2 && ownAble > 0 && kind == BattleKind.Normal)
+            return BattleFormat.Horde;
+        return (asked == BattleFormat.Double || partnerStays) && canDouble && !special ? BattleFormat.Double : BattleFormat.Single;
+    }
 }
 
 /// <summary>

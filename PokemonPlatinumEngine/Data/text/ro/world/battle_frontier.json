@@ -453,6 +453,16 @@
           "Ghid"
         ]
       }
+    },
+    "battle_frontier.HoennGuide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

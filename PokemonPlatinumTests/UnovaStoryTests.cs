@@ -3,6 +3,7 @@ using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Models.Frontier;
 using PokemonPlatinumEngine.Overworld;
 using PokemonPlatinumEngine.Story;
 using Xunit;
@@ -40,6 +41,10 @@ public class UnovaStoryTests
         public PlayerLook Look { get; set; } = PlayerLook.Boy;
         /// <summary>The day of the week the game's scripts see (plan 22 · U6, part c: Anville Town's weekend crowd).</summary>
         public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
+        /// <summary>The answers the next script played is given, in the order it asks (plan 22 · U6, part d: the Subway's menus).</summary>
+        public List<int> Answers { get; } = new();
+        /// <summary>The battle of a script (counting from 1) that is lost, where one is (plan 22 · U6, part d: a Subway run ended early).</summary>
+        public int LoseAt { get; set; }
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
 
@@ -54,6 +59,10 @@ public class UnovaStoryTests
             maps["DriftveilCity_Gym"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "DriftveilCity_Gym.json")).ToMap();
             // and so is the Gear Station, Black 2's hall standing on rails (plan 22 · U6, part c)
             maps["GearStation"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "GearStation.json")).ToMap();
+            // and the Battle Subway's car (plan 22 · U6, part d)
+            maps["BattleSubwayTrain"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "BattleSubwayTrain.json")).ToMap();
+            // and the World Tournament's hall (plan 22 · U6, part d)
+            maps["PokemonWorldTournament"] = GameDataFiles.Load<MapFile>(Path.Combine(MapDatabase.Folder, "PokemonWorldTournament.json")).ToMap();
             // (a game from before the story was written began with none of what a new game sets now)
             if (!begin) return;
             StoryMigration.BeginNewGame(Story, Scripts);
@@ -115,6 +124,7 @@ public class UnovaStoryTests
 
         public HeadlessScriptHost Play(Script script, NPC? subject = null)
         {
+            int fought = 0;
             var host = new HeadlessScriptHost(Story, Party, Bag)
             {
                 Map = Map,
@@ -122,15 +132,20 @@ public class UnovaStoryTests
                 MapNamed = name => maps.GetValueOrDefault(name),
                 StarterChoice = Starter,
                 RivalName = "Hugh",
-                Fight = _ => Fight,
+                Fight = _ => ++fought == LoseAt ? BattleOutcome.Lost : Fight,
                 NeedsPokemon = true,
                 BeganInRegion = BeganIn,
                 PlayerLook = Look,
                 Weekday = Weekday
             };
+            foreach (int answer in Answers) host.Answers.Enqueue(answer);
+            Answers.Clear();
             var runner = new ScriptRunner(Scripts, host);
             runner.Start(script, subject);
             runner.RunToEnd();
+            // what this script didn't ask is for the next (a warp's arrival script)
+            Answers.AddRange(host.Answers);
+            host.Answers.Clear();
             Played.Add((script.FullName, host));
             Assert.Empty(host.Problems);
             foreach (var map in maps.Values.Distinct())
@@ -678,6 +693,15 @@ public class UnovaStoryTests
         Assert.All(game.Map.Warps.Where(w => w.TargetMap == "PlasmaFrigate"), w => Assert.True(w.Shut));
         Assert.Null(game.Present("hugh_pwt", "pwt"));
         Assert.True(game.Fires("PlasmaAtThePier"));
+        // The hall is open, and its first tournament comes first: until it has been played the pier is only a pier
+        game.Step("PlasmaAtThePier");
+        Assert.Equal(0, game.Story.Var("VAR_UNOVA_PWT"));
+        // (a team of three to enter: the chapter has played with the starter alone)
+        foreach (string species in new[] { "Lillipup", "Pidove" }) game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 36));
+        game.Tile = (197, 466);
+        game.Through("PokemonWorldTournament");
+        Assert.True(game.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+        game.Arrive("Unova", 197, 470);
         var pier = game.Step("PlasmaAtThePier");
         Assert.Contains(pier.Transcript, l => l.Speaker == "Cheren");
         Assert.Contains(pier.Transcript, l => l.Speaker == "Colress");
@@ -749,6 +773,116 @@ public class UnovaStoryTests
         Assert.True(game.Fires("PlasmaAtThePier"));
     }
 
+    // ------------------------------------------------------------------ the World Tournament's hall (plan 22 · U6, part d)
+
+    private static Game AtTheTournament(int starter, Action<Game>? before = null)
+    {
+        var game = new Game(starter);
+        foreach (string species in new[] { "Snivy", "Lillipup", "Pidove", "Roggenrola" }) game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 36));
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Unova)!.Starters[starter]);
+        game.Story.SetVar("VAR_UNOVA_DRIFTVEIL", 5);
+        before?.Invoke(game);
+        game.Arrive("Unova", 197, 470);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, "unova_rival_10")]
+    [InlineData(1, "unova_rival_11")]
+    [InlineData(2, "unova_rival_12")]
+    public void TheFirstTournamentIsAKnockoutOfThreeRoundsAndOpensThePier(int starter, string hugh)
+    {
+        var game = AtTheTournament(starter);
+        // Clay's word opens the hall's door (a save past it is given the flag as the grounds are come to)
+        Assert.True(game.Story.Has("FLAG_UNOVA_PWT_OPEN"));
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "PokemonWorldTournament" && !w.Shut);
+        Assert.True(game.Map.IsWalkable(197, 465));
+        game.Tile = (197, 466);
+        game.Through("PokemonWorldTournament");
+
+        // The welcome, the offer, the team of three and the bracket: Cheren, Hugh and Clay, each at level 50
+        var hall = game.Played.First(p => p.Script.Contains("PokemonWorldTournament"));
+        Assert.Contains(hall.Host.Transcript, l => l.Speaker == "Clay" && l.Text.Contains("Welcome to the Pokémon World Tournament"));
+        var battles = hall.Host.FrontierBattles;
+        Assert.Equal(new[] { "unova_cheren", hugh, "unova_leader_clay" }, battles.Select(b => Assert.Single(b.Foes).Id));
+        Assert.All(battles, b => Assert.Equal(3, b.Team.Count));
+        Assert.All(battles, b => Assert.False(b.Doubles));
+        Assert.All(battles, b => Assert.All(b.Foes[0].Party.Members, p => Assert.Equal(50, p.Level)));
+        Assert.All(game.Party.Members, p => Assert.Equal(36, p.Level));
+        // the prize, the flag and nothing left of the run
+        Assert.Equal(5, hall.Host.Frontier.BattlePoints);
+        Assert.Contains(hall.Host.Transcript, l => l.Text.Contains("received 5 BP"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+        Assert.Equal(0, game.Story.Var(BattleSubway.Vars.State));
+        Assert.Equal(("PokemonWorldTournament", (11, 11)), (game.Map.Name, game.Tile));
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "hugh");
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "clay");
+        Assert.Contains(hall.Host.Transcript, l => l.Speaker == "Clay" && l.Text.Contains("big ship"));
+
+        // The desk afterwards says the tournament has been played
+        Assert.Contains(game.TalkTo("receptionist").Transcript, l => l.Text.Contains("has been played"));
+        // and coming in again plays nothing
+        int played = game.Played.Count;
+        game.Arrive("PokemonWorldTournament", 11, 14);
+        Assert.Equal(played + 1, game.Played.Count);
+        Assert.Empty(game.Played[^1].Host.FrontierBattles);
+    }
+
+    [Fact]
+    public void ATournamentLostIsStillPlayedAndAnotherCanBeDeclined()
+    {
+        // knocked out in the second round: no prize, and the story goes on all the same
+        var game = AtTheTournament(0);
+        game.LoseAt = 2;
+        game.Tile = (197, 466);
+        game.Through("PokemonWorldTournament");
+        var hall = game.Played.First(p => p.Script.Contains("PokemonWorldTournament"));
+        Assert.Equal(2, hall.Host.FrontierBattles.Count);
+        Assert.Equal(0, hall.Host.Frontier.BattlePoints);
+        Assert.Contains(hall.Host.Transcript, l => l.Text.Contains("I beat you"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+
+        // one who says no isn't entered, and may be asked again by Clay
+        var shy = AtTheTournament(0);
+        shy.Answers.Add(1);
+        shy.Tile = (197, 466);
+        shy.Through("PokemonWorldTournament");
+        Assert.Empty(shy.Played.First(p => p.Script.Contains("PokemonWorldTournament")).Host.FrontierBattles);
+        Assert.False(shy.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+        Assert.Contains(shy.Map.NPCs, n => n.Key == "clay");
+        var again = shy.TalkTo("clay");
+        Assert.Equal(3, again.FrontierBattles.Count);
+        Assert.True(shy.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+
+        // a team too small is turned back, not entered
+        var few = new Game();
+        few.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 36));
+        few.Story.SetVar("VAR_UNOVA_DRIFTVEIL", 5);
+        few.Arrive("Unova", 197, 470);
+        few.Tile = (197, 466);
+        few.Through("PokemonWorldTournament");
+        Assert.Contains(few.Played.First(p => p.Script.Contains("PokemonWorldTournament")).Host.Transcript, l => l.Text.Contains("You need 3 Pokémon"));
+        Assert.False(few.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+    }
+
+    [Fact]
+    public void TheHallIsClosedUntilClayHasToldOfItAndASaveWhoSawTheFrigateHasPlayedTheTournament()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 30));
+        game.Arrive("Unova", 197, 470);
+        Assert.False(game.Story.Has("FLAG_UNOVA_PWT_OPEN"));
+        Assert.False(game.Map.IsWalkable(197, 465));
+        // a save of part c's, past the frigate's scene, is counted past the tournament too
+        var old = new Game();
+        old.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 36));
+        old.Story.SetVar("VAR_UNOVA_DRIFTVEIL", 5);
+        old.Story.SetVar("VAR_UNOVA_PWT", 3);
+        old.Arrive("Unova", 197, 470);
+        Assert.True(old.Story.Has("FLAG_UNOVA_PWT_OPEN"));
+        Assert.True(old.Story.Has("FLAG_UNOVA_PWT_FIRST_TOURNAMENT"));
+    }
+
     [Fact]
     public void TheLostlornForestsTravellerIsAZoroark()
     {
@@ -773,7 +907,7 @@ public class UnovaStoryTests
         var game = new Game();
         game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
         game.Arrive("GearStation", 17, 4);
-        // The Subway's desks only talk until its lines run
+        // The Subway's desks turn a team of one back (they run since plan 22 · U6, part d: the Subway's own tests)
         var single = game.TalkTo("single_desk");
         Assert.DoesNotContain(single.Log, l => l.StartsWith("battle ") || l.StartsWith("warp "));
         // The Anville Town Line's agent takes the player out to Anville
@@ -847,6 +981,70 @@ public class UnovaStoryTests
             Assert.NotEmpty(MartDatabase.Stock(mart, 0));
         }
         Assert.Contains(MartDatabase.Stock("join_avenue_cafe", 0), i => i.Name == "Moomoo Milk");
+    }
+
+    [Fact]
+    public void DriftveilMarketsThreeStallsSellTheirOwnGoods()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("DriftveilCity_Market", 9, 16);
+        foreach (var (key, mart, item) in new[] { ("1", "driftveil_market_herbs", "Revival Herb"), ("3", "driftveil_market_goods", "Poké Doll"),
+                     ("4", "driftveil_market_sweets", "Old Gateau") })
+        {
+            var shop = game.Talk(key, "driftveil_city_7");
+            Assert.Contains(shop.Log, l => l == $"open Shop {mart}");
+            Assert.Contains(MartDatabase.Stock(mart, 0), i => i.Name == item);
+        }
+        // The others in the hall only talk
+        Assert.DoesNotContain(game.Talk("0", "driftveil_city_7").Log, l => l.StartsWith("open Shop"));
+    }
+
+    [Fact]
+    public void AnvillesCollectorsSwapAndTheGirlsLostPansageIsFoundAndReturned()
+    {
+        // At the weekend the collector wants a Timburr for his Klink, once; the girl who tried swapping a Tympole for her Dwebble
+        var game = new Game { Weekday = DayOfWeek.Sunday };
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Timburr")!, 22));
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("AnvilleTown", 20, 52);
+        var collector = game.Talk("14", "anville_town");
+        Assert.Contains(collector.Log, l => l.StartsWith("trade cogs"));
+        var cogs = game.Party.Members[0];
+        Assert.Equal(("Klink", "Cogs", 22, "Plus", "Metal Coat"), (cogs.Species.Name, cogs.Nickname, cogs.Level, cogs.AbilityName, cogs.HeldItem?.Name));
+        Assert.Equal(Gender.Genderless, cogs.Gender);
+        Assert.True(game.Story.Has("FLAG_UNOVA_ANVILLE_COGS_TRADED"));
+        Assert.Contains(game.Talk("14", "anville_town").Transcript, l => l.Text.Contains("Cogs is doing well"));
+        // a Pokémon that isn't the one asked for is kept
+        var wrong = game.Talk("9", "anville_town");
+        Assert.Contains(wrong.Transcript, l => l.Text.Contains("not a Tympole"));
+        Assert.False(game.Story.Has("FLAG_UNOVA_ANVILLE_SHELLY_TRADED"));
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Tympole")!, 18));
+        game.Talk("9", "anville_town");
+        Assert.Equal(("Dwebble", "Shelly", Gender.Female), (game.Party.Members[0].Species.Name, game.Party.Members[0].Nickname, game.Party.Members[0].Gender));
+        Assert.True(game.Story.Has("FLAG_UNOVA_ANVILLE_SHELLY_TRADED"));
+
+        // The Pansage: nowhere to be seen until the girl tells of it, found in the plaza, handed back for a Miracle Seed
+        Assert.Null(game.Present("15", "anville_town"));
+        Assert.Null(game.Present("pansage_home", "anville_town"));
+        game.Talk("16", "anville_town");
+        Assert.True(game.Story.Has("FLAG_UNOVA_ANVILLE_PANSAGE_LOST"));
+        var pansage = game.Present("15", "anville_town")!;
+        Assert.Equal((20, 54), (pansage.GridX, pansage.GridY));
+        Assert.True(game.Map.IsWalkable(20, 53) || game.Map.IsWalkable(21, 54));
+        game.Talk("16", "anville_town");
+        Assert.False(game.Story.Has("FLAG_UNOVA_ANVILLE_PANSAGE_FOUND"));
+        var found = game.Talk("15", "anville_town");
+        Assert.Contains(found.Log, l => l.StartsWith("cry Pansage"));
+        Assert.True(game.Story.Has("FLAG_UNOVA_ANVILLE_PANSAGE_FOUND"));
+        Assert.Null(game.Present("15", "anville_town"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Miracle Seed")!));
+        game.Talk("16", "anville_town");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Miracle Seed")!));
+        Assert.True(game.Story.Has("FLAG_UNOVA_ANVILLE_PANSAGE_THANKED"));
+        Assert.NotNull(game.Present("pansage_home", "anville_town"));
+        game.Talk("16", "anville_town");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Miracle Seed")!));
     }
 
     [Fact]
@@ -1063,5 +1261,213 @@ public class UnovaStoryTests
         runner.RunToEnd();
         Assert.DoesNotContain(host.Log, l => l.StartsWith("battle "));
         Assert.False(other.Story.Has("FLAG_UNOVA_HIDE_SUBWAY_BOSSES"));
+    }
+
+    // ------------------------------------------------------------------ the Battle Subway (plan 22 · U6, part d)
+
+    private static Game Rider(DayOfWeek day = DayOfWeek.Monday)
+    {
+        var game = new Game { Weekday = day };
+        foreach (string species in new[] { "Snivy", "Lillipup", "Pidove", "Roggenrola", "Purrloin", "Patrat" })
+            game.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 26));
+        game.Arrive("GearStation", 11, 4);
+        return game;
+    }
+
+    private static HeadlessScriptHost Car(Game game) => game.Played.First(p => p.Script.Contains("BattleSubwayTrain")).Host;
+
+    [Theory]
+    [InlineData("single_desk", 0, 3, false)]
+    [InlineData("double_desk", 1, 4, true)]
+    [InlineData("multi_desk", 2, 2, true)]
+    public void EverySubwayDeskOpensARunWithItsFormat(string desk, int train, int size, bool doubles)
+    {
+        var game = Rider();
+        // RIDE; the first set of seven cleared and the second answer of "get off here, or go on" being the first: get off
+        var desks = game.TalkTo(desk);
+        Assert.Contains(desks.Log, l => l.StartsWith("warp BattleSubwayTrain"));
+        var car = Car(game);
+
+        // Seven cars, each with the Pokémon entered as copies and the train's own number of them against a trainer's
+        Assert.Equal(7, car.FrontierBattles.Count);
+        Assert.All(car.FrontierBattles, b => Assert.Equal(size, b.Team.Count));
+        Assert.All(car.FrontierBattles, b => Assert.Equal(doubles, b.Doubles));
+        Assert.All(car.FrontierBattles, b => Assert.All(b.Team.Members, p => Assert.True(p.Level <= 50)));
+        if (train == 0 || train == 1)
+            Assert.All(car.FrontierBattles, b => Assert.Equal(size, Assert.Single(b.Foes).Party.Count));
+        else
+        {
+            // a pair against a pair, the player's partner of the Subway's own staff beside them
+            Assert.All(car.FrontierBattles, b => Assert.Equal(new[] { 2, 2 }, b.Foes.Select(f => f.Party.Count)));
+            Assert.All(car.FrontierBattles, b => Assert.Equal(2, b.Partner!.Party.Count));
+            Assert.Single(car.FrontierBattles.Select(b => b.Partner!.Id).Distinct());
+            Assert.Single(car.FrontierBattles.Select(b => string.Join(",", b.Partner!.Party.Members.Select(p => p.Species.Name))).Distinct());
+        }
+        // The Pokémon themselves are never fought with
+        Assert.All(game.Party.Members, p => Assert.Equal(26, p.Level));
+
+        // Getting off after a set of seven: its Battle Points, the best streak of the train, back in the Gear Station
+        Assert.Equal(3, car.Frontier.BattlePoints);
+        Assert.Contains(car.Transcript, l => l.Text.Contains("received 3 BP"));
+        Assert.Equal(7, game.Story.Var(BattleSubway.Vars.Best((SubwayTrain)train)));
+        Assert.Equal(0, game.Story.Var(BattleSubway.Vars.State));
+        Assert.Equal("GearStation", game.Map.Name);
+        Assert.Equal((11, 4), game.Tile);
+    }
+
+    [Fact]
+    public void ADeskTurnsBackATeamTooSmallAndRefusesTwoOfAKind()
+    {
+        // one Pokémon: three are needed
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Snivy")!, 26));
+        game.Arrive("GearStation", 11, 4);
+        var few = game.TalkTo("single_desk");
+        Assert.Contains(few.Transcript, l => l.Text.Contains("You need 3 Pokémon"));
+        Assert.DoesNotContain(few.Log, l => l.StartsWith("warp "));
+        Assert.Equal(0, game.Story.Var(BattleSubway.Vars.State));
+
+        // an Egg or a banned species can't make up the number
+        var banned = new Game();
+        foreach (string species in new[] { "Snivy", "Lillipup", "Mewtwo" }) banned.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 40));
+        banned.Arrive("GearStation", 11, 4);
+        Assert.Contains(banned.TalkTo("single_desk").Transcript, l => l.Text.Contains("You need 3 Pokémon"));
+
+        // two of a species, entered by hand, are refused
+        var twins = new Game();
+        foreach (string species in new[] { "Snivy", "Lillipup", "Pidove", "Lillipup" }) twins.Party.Add(new Pokemon(PokemonDatabase.Get(species)!, 26));
+        twins.Arrive("GearStation", 11, 4);
+        var desk = twins.Map.NPCs.First(n => n.Key == "single_desk");
+        twins.Tile = (desk.GridX, desk.GridY + 1);
+        var host = new HeadlessScriptHost(twins.Story, twins.Party, twins.Bag) { Map = twins.Map, PlayerTile = twins.Tile, NeedsPokemon = true };
+        host.Entering.Enqueue(new[] { 1, 3, 0 });
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find("SingleTrain", "GearStation")!, desk);
+        runner.RunToEnd();
+        Assert.Contains(host.Transcript, l => l.Text.Contains("different species"));
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("warp "));
+        Assert.Equal(0, twins.Story.Var(BattleSubway.Vars.State));
+    }
+
+    [Fact]
+    public void ABattleLostEndsTheRunWithTheStreakAndThePointsOfTheSetsCleared()
+    {
+        var game = Rider();
+        game.LoseAt = 4;
+        game.TalkTo("single_desk");
+        var car = Car(game);
+        Assert.Equal(4, car.FrontierBattles.Count);
+        Assert.Equal(0, car.Frontier.BattlePoints);
+        Assert.Contains(car.Transcript, l => l.Text.Contains("cleared 3 cars"));
+        Assert.Equal(3, game.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Single)));
+        Assert.Equal(0, game.Story.Var(BattleSubway.Vars.State));
+        Assert.Equal("GearStation", game.Map.Name);
+
+        // The second set lost: the first set's points are paid, and a longer streak replaces the shorter
+        var next = Rider();
+        next.Answers.AddRange(new[] { 0, 1 });
+        next.LoseAt = 10;
+        next.TalkTo("single_desk");
+        var second = Car(next);
+        Assert.Equal(10, second.FrontierBattles.Count);
+        Assert.Equal(3, second.Frontier.BattlePoints);
+        Assert.Equal(9, next.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Single)));
+    }
+
+    [Fact]
+    public void IngoWaitsAtTheTwentyFirstCarAndEmmetAtTheFortyNinth()
+    {
+        // GO ON after the first and the second set, GET OFF after the third: the 21st battle is Ingo's, and 3 + 4 + 5 points
+        var game = Rider();
+        game.Answers.AddRange(new[] { 0, 1, 1, 0 });
+        game.TalkTo("single_desk");
+        var car = Car(game);
+        Assert.Equal(21, car.FrontierBattles.Count);
+        Assert.Equal("subway_ingo", Assert.Single(car.FrontierBattles[20].Foes).Id);
+        Assert.Equal(new[] { "Excadrill", "Conkeldurr", "Archeops" }, car.FrontierBattles[20].Foes[0].Party.Members.Select(p => p.Species.Name));
+        Assert.All(car.FrontierBattles.Take(20), b => Assert.StartsWith("frontier_", Assert.Single(b.Foes).Id));
+        Assert.Equal(12, car.Frontier.BattlePoints);
+        Assert.Equal(21, game.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Single)));
+
+        // and on to the 49th, which is Emmet's, in the Double Train with the pair of them side by side in the Multi Train
+        var far = Rider();
+        far.Answers.AddRange(new[] { 0 }.Concat(Enumerable.Repeat(1, 6)).Concat(new[] { 0 }));
+        far.TalkTo("double_desk");
+        var carD = Car(far);
+        Assert.Equal(49, carD.FrontierBattles.Count);
+        Assert.Equal("subway_emmet", Assert.Single(carD.FrontierBattles[48].Foes).Id);
+        Assert.True(carD.FrontierBattles[48].Doubles);
+        Assert.Equal((49, 42), (far.Story.Var(BattleSubway.Vars.Best(SubwayTrain.Double)), carD.Frontier.BattlePoints));
+
+        var multi = Rider();
+        multi.Answers.AddRange(new[] { 0, 1, 1, 0 });
+        multi.TalkTo("multi_desk");
+        var pair = Car(multi).FrontierBattles[20];
+        Assert.Equal(new[] { "subway_ingo", "subway_emmet" }, pair.Foes.Select(f => f.Id));
+        Assert.All(pair.Foes, f => Assert.Equal(2, f.Party.Count));
+        Assert.NotNull(pair.Partner);
+    }
+
+    [Fact]
+    public void TheSubwaysRulesAreTheFrontiersOnATrain()
+    {
+        Assert.Equal(new[] { 3, 4, 2 }, new[] { SubwayTrain.Single, SubwayTrain.Double, SubwayTrain.Multi }.Select(BattleSubway.PartySize));
+        Assert.Equal(new[] { 0, 0, 1, 0, 2, 0 }, new[] { 1, 20, 21, 22, 49, 50 }.Select(BattleSubway.BossAt));
+        // Three sets of 3, 4 and 5 points, and none for a set not finished
+        Assert.Equal(new[] { 0, 0, 3, 3, 7, 12 }, new[] { 0, 6, 7, 13, 14, 21 }.Select(BattleSubway.PointsFor));
+        Assert.Equal(82, BattleSubway.PointsFor(70 + 7));
+        // A battle's trainer is of its room's row, whatever the draw
+        var rng = new Random(3);
+        for (int battle = 1; battle <= 70; battle++)
+        {
+            int number = BattleSubway.TrainerFor(battle, () => rng.Next(0x10000));
+            int room = (battle - 1) / 7, place = (battle - 1) % 7;
+            var row = room >= 7 ? FrontierDatabase.TowerRooms[7] : place == 6 ? FrontierDatabase.TowerBossRooms[room] : FrontierDatabase.TowerRooms[room];
+            Assert.InRange(number, row[0], row[1]);
+        }
+        // Their teams hold the train's number of Pokémon, at level 50, none of a species twice
+        foreach (var train in new[] { SubwayTrain.Single, SubwayTrain.Double, SubwayTrain.Multi })
+        {
+            var foes = BattleSubway.MakeOpponents(train, 9, () => rng.Next(0x10000));
+            Assert.Equal(train == SubwayTrain.Multi ? 2 : 1, foes.Count);
+            Assert.All(foes, f => Assert.Equal(BattleSubway.PartySize(train), f.Pokemon.Count));
+            Assert.All(foes, f => Assert.All(f.Pokemon, p => Assert.Equal(50, p.Level)));
+            Assert.All(foes, f => Assert.Equal(f.Pokemon.Count, f.Pokemon.Select(p => p.Species.Name).Distinct().Count()));
+        }
+        // The partner is the same two Pokémon for a seed and another pair for another
+        var partner = BattleSubway.MakePartner(77);
+        Assert.Equal(partner.Pokemon.Select(p => p.Species.Name), BattleSubway.MakePartner(77).Pokemon.Select(p => p.Species.Name));
+        Assert.Equal(2, partner.Pokemon.Count);
+        // The bosses are of our own data, level 50 and fit for a double or a pair
+        foreach (var train in new[] { SubwayTrain.Single, SubwayTrain.Multi })
+        {
+            Assert.All(new[] { 1, 2 }, which => Assert.All(BattleSubway.Boss(which, train).Party.Members, p => Assert.Equal(50, p.Level)));
+            Assert.Equal(train == SubwayTrain.Multi ? 2 : 3, BattleSubway.Boss(1, train).Party.Count);
+        }
+        Assert.Equal(new[] { "Subway Boss Ingo", "Subway Boss Emmet" }, BattleSubway.Bosses(SubwayTrain.Multi, 21).Select(b => b.TrainerClass));
+        Assert.Single(BattleSubway.Bosses(SubwayTrain.Single, 49));
+        Assert.Empty(BattleSubway.Bosses(SubwayTrain.Single, 8));
+    }
+
+    [Fact]
+    public void ARunBeingFoughtKeepsItsStateInTheStoryAndTheCarComesBackToIt()
+    {
+        // A game saved in the car comes back to the car: the run is the story's own variables
+        var game = Rider();
+        game.Story.SetVar(BattleSubway.Vars.State, 1);
+        game.Story.SetVar(BattleSubway.Vars.Train, (int)SubwayTrain.Single);
+        game.Story.SetVar(BattleSubway.Vars.Wins, 4);
+        BattleSubway.KeepSlots(game.Story, new[] { 0, 2, 3 });
+        game.Arrive("BattleSubwayTrain", 3, 5);
+        var car = game.Played.Last().Host;
+        // three more cars to the end of the set, the fifth battle first
+        Assert.Equal(3, car.FrontierBattles.Count);
+        Assert.Equal(new[] { "Snivy", "Pidove", "Roggenrola" }, car.FrontierBattles[0].Team.Members.Select(p => p.Species.Name));
+        Assert.Contains(car.Transcript, l => l.Text.Contains("Car 5"));
+        // a player who wanders in with no run under way is simply left in the car
+        var idle = new Game();
+        idle.Arrive("BattleSubwayTrain", 3, 5);
+        Assert.Empty(idle.Played.Last().Host.FrontierBattles);
+        Assert.False(idle.Map.NPCs.Any(n => n.Key is "opponent" or "ingo" or "emmet" or "partner"));
     }
 }

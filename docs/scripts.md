@@ -765,6 +765,29 @@ battle, the question.
 | `arcade brain`, `arcade beat silver`, `arcade beat gold` | Counts the Arcade Star met; notes her beaten, so that the print waits in the lobby. |
 | `arcade finish won`, `arcade finish lost`, `arcade points`, `arcade beaten` | As the Hall's: the records, the Battle Points a round earned, and who was beaten. |
 
+### The Battle Subway
+
+Plan 22 · U6, part d; `docs/mechanics/rulings.md`, "Unova's second chapter, part d". The smallest honest version of plan 06 ·
+R18's machinery (`Models/Frontier/BattleSubway.cs`): the Frontier's rules for who may go in and for how a team is made, with
+no host state, since a run is the story's own variables (`VAR_UNOVA_SUBWAY_STATE`, `_TRAIN`, `_WINS`, `_SEED`, `_SLOT_0` to
+`_3` and `_BEST_SINGLE`, `_DOUBLE` and `_MULTI`): a game saved in the car comes back to the same battle. The three desks of
+the Gear Station (`GearStation.txt`) begin a run and take the player down to the car (`BattleSubwayTrain.txt`, whose arrival
+script loops, one car after another). The Single Train takes three Pokémon, the Double Train four, the Multi Train two beside
+a partner of the Subway's own; they go in as copies at level 50 or under, and the trainers are the Frontier's own table's, drawn
+by the Tower's rooms, with the Subway Bosses at the 21st battle (Ingo) and the 49th (Emmet; in the Multi Train the two together).
+
+| Command | What it does |
+|---|---|
+| `subway enough` | `RESULT` 1 when the team holds as many Pokémon as the train takes (three before a run is begun) that could go in together. `{number}` how many, `{banned}` the species of the banlist the Pokédex has seen. |
+| `subway begin single`, `subway begin double`, `subway begin multi` | Starts a run: the train kept, no battle won, no Pokémon chosen yet. |
+| `subway choose`, `subway check` | Opens the team for the train's number to be chosen, and waits: `RESULT` 1, or 0 when backed out of. Then 0, or 1 for two of one species and 2 for two holding the same item. |
+| `subway active`, `subway mode`, `subway end` | `RESULT` 1 while a run is under way; its train (0 single, 1 double, 2 multi); lets go of it, the streak and the Pokémon chosen. |
+| `subway next`, `subway boss` | The number of the battle to come (`{number}`); 0, or 1 when Ingo waits at it and 2 when Emmet does. |
+| `subway opponent` | Makes the trainers of the car ready, or the Bosses, and stands the trainers of the Frontier's table in the room as `opponent` and `opponent_2`. `{foe}` names them. |
+| `subway battle` | The battle with the Pokémon chosen, as copies (`RESULT` 1 won, 0 lost). The Multi Train's partner is drawn on the run's seed, the same two Pokémon every car. |
+| `subway won`, `subway streak`, `subway best` | Counts the win (`RESULT` 1 once a set of seven is through); the streak as it stands and the longest of the run's train (`{number}`). |
+| `subway finish won`, `subway finish lost`, `subway points` | Writes the best streak of the train; hands over the Battle Points of the sets cleared (3 for the first, one more for each set after it, up to 10; `RESULT` and `{number}`). |
+
 ### Amity Square's walk
 
 Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what

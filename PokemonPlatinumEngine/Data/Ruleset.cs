@@ -279,6 +279,13 @@ public sealed class Ruleset
     /// </summary>
     public bool LaterBalls { get; private init; }
 
+    /// <summary>
+    /// Hordes (plan 14 · B3; X and Y's): a wild battle asked for as a <see cref="Battle.BattleFormat.Horde"/> is fought
+    /// one against five. Platinum has none, and under its rules such a battle falls back to a single against the first
+    /// (<see cref="Battle.BattleFormats.FallBack"/>), so <c>battles-platinum.txt</c> never moves for it.
+    /// </summary>
+    public bool Hordes { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -338,7 +345,8 @@ public sealed class Ruleset
         ZMoves = true,
         Dynamax = true,
         Terastallization = true,
-        LaterBalls = true
+        LaterBalls = true,
+        Hordes = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

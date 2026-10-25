@@ -118,10 +118,42 @@
     },
     {
       "en": [
+        "Registered Wally in the PokéNav."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You came! I've trained harder than ever. Please, battle me one more time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still not enough... but I felt it this time. I'm getting closer, I know it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "I'll keep training on Victory Road. One day I'll catch up with you, {player}. Just you wait!"
       ],
       "text": [
-        "Voi continua să mă antrenez pe Drumul Victoriei. Într-o zi te voi ajunge din urmă, {player}. Să vezi tu!"
+        ""
       ]
     }
   ]

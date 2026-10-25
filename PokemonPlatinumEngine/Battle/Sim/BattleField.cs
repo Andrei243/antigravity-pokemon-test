@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle.Sim;
@@ -203,8 +204,8 @@ public sealed class FieldState
     /// <summary>Indexed by <see cref="BattleSide"/>.</summary>
     public SideState[] Sides { get; } = { new(), new() };
 
-    /// <summary>Indexed by a place's number (slot × 2, + 1 for the foe's side).</summary>
-    public PlaceState[] Places { get; } = { new(), new(), new(), new() };
+    /// <summary>Indexed by a place's number (slot × 2, + 1 for the foe's side), up to a horde's widest (<see cref="Place.MaxNumber"/>).</summary>
+    public PlaceState[] Places { get; } = Enumerable.Range(0, Place.MaxNumber).Select(_ => new PlaceState()).ToArray();
 
     public SideState Side(BattleSide side) => Sides[(int)side];
     public PlaceState At(Place place) => Places[place.Slot * 2 + (place.Side == BattleSide.Enemy ? 1 : 0)];
