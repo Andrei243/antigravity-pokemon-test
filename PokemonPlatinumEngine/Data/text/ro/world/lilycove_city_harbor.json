@@ -45,6 +45,16 @@
           "Căpitan"
         ]
       }
+    },
+    "lilycove_city_harbor.Scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

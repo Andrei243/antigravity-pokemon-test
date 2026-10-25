@@ -142,5 +142,47 @@
         "Fără grabă. Voi fi aici ori de câte ori vrei să te întorci."
       ]
     }
+  ],
+  "HoennGuide": [
+    {
+      "en": [
+        "I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I take you back to Lilycove City?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very good. Climb aboard, and mind your step."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} sailed back to Lilycove City..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take your time. The ferry waits for those who have Scott's pass."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

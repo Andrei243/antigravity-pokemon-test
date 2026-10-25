@@ -42,10 +42,24 @@
     },
     {
       "en": [
+        "Registered Wallace in the PokéNav."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Wallace"
+      ]
+    },
+    {
+      "en": [
         "Wallace"
       ],
       "text": [
-        "Wallace"
+        ""
+      ],
+      "was": [
+        "Eu, Campionul, am fost învins... Tu și Pokémonii tăi ați fost pur și simplu magnifici."
       ]
     },
     {
@@ -53,7 +67,10 @@
         "I, the Champion, have been beaten... You and your Pokémon were simply magnificent."
       ],
       "text": [
-        "Eu, Campionul, am fost învins... Tu și Pokémonii tăi ați fost pur și simplu magnifici."
+        ""
+      ],
+      "was": [
+        "Ai luptat cu tot ce ai avut, iar Pokémonii tăi au luptat pentru tine. Asta e lupta unui adevărat Campion."
       ]
     },
     {
@@ -61,7 +78,10 @@
         "You fought with everything you had, and your Pokémon fought for you. That is a true Champion's battle."
       ],
       "text": [
-        "Ai luptat cu tot ce ai avut, iar Pokémonii tăi au luptat pentru tine. Asta e lupta unui adevărat Campion."
+        ""
+      ],
+      "was": [
+        "{rival}"
       ]
     },
     {
@@ -69,7 +89,10 @@
         "{rival}"
       ],
       "text": [
-        "{rival}"
+        ""
+      ],
+      "was": [
+        "{player}! Am venit cât de repede am putut. Ascultă, despre Campion, am niște sfaturi pentru tine..."
       ]
     },
     {
@@ -77,7 +100,10 @@
         "{player}! I came as fast as I could. Listen, about the Champion, I've got some advice for you..."
       ],
       "text": [
-        "{player}! Am venit cât de repede am putut. Ascultă, despre Campion, am niște sfaturi pentru tine..."
+        ""
+      ],
+      "was": [
+        "Stai... S-a terminat deja? Ai învins Campionul? Oh, {player}, e uimitor!"
       ]
     },
     {
@@ -85,7 +111,10 @@
         "Wait... Is it already over? You beat the Champion? Oh, {player}, that's amazing!"
       ],
       "text": [
-        "Stai... S-a terminat deja? Ai învins Campionul? Oh, {player}, e uimitor!"
+        ""
+      ],
+      "was": [
+        "{player}! Am alergat tot drumul până aici. Uite, înainte să înfrunți Campionul, trebuie să știi..."
       ]
     },
     {
@@ -93,7 +122,10 @@
         "{player}! I ran all the way here. Look, before you take on the Champion, you need to know..."
       ],
       "text": [
-        "{player}! Am alergat tot drumul până aici. Uite, înainte să înfrunți Campionul, trebuie să știi..."
+        ""
+      ],
+      "was": [
+        "Stai puțin. S-a terminat deja? Ai câștigat? Serios? ...Da. Normal că ai câștigat."
       ]
     },
     {
@@ -101,7 +133,10 @@
         "Hang on. It's over already? You won? Seriously? ...Yeah. Of course you did."
       ],
       "text": [
-        "Stai puțin. S-a terminat deja? Ai câștigat? Serios? ...Da. Normal că ai câștigat."
+        ""
+      ],
+      "was": [
+        "Prof. Birch"
       ]
     },
     {
@@ -109,7 +144,10 @@
         "Prof. Birch"
       ],
       "text": [
-        "Prof. Birch"
+        ""
+      ],
+      "was": [
+        "Uf! Iată-te, {player}! Am venit să văd cum se descurcă Pokédexul meu și uite în ce am nimerit."
       ]
     },
     {
@@ -117,7 +155,10 @@
         "Phew! There you are, {player}! I came to see how my Pokédex was getting along, and look what I've walked into."
       ],
       "text": [
-        "Uf! Iată-te, {player}! Am venit să văd cum se descurcă Pokédexul meu și uite în ce am nimerit."
+        ""
+      ],
+      "was": [
+        "L-ai umplut cu atâția Pokémoni în călătoria ta. A făcut mai mult pentru cercetările mele decât am sperat vreodată."
       ]
     },
     {
@@ -125,7 +166,10 @@
         "You've filled it with so many Pokémon on your journey. It's done more for my research than I ever hoped."
       ],
       "text": [
-        "L-ai umplut cu atâția Pokémoni în călătoria ta. A făcut mai mult pentru cercetările mele decât am sperat vreodată."
+        ""
+      ],
+      "was": [
+        "Și ai devenit și Campion! Felicitări, {player}! Nu aș putea fi mai mândru."
       ]
     },
     {
@@ -133,7 +177,10 @@
         "And you've become the Champion as well! Congratulations, {player}! I couldn't be prouder."
       ],
       "text": [
-        "Și ai devenit și Campion! Felicitări, {player}! Nu aș putea fi mai mândru."
+        ""
+      ],
+      "was": [
+        "Wallace"
       ]
     },
     {
@@ -141,7 +188,10 @@
         "Wallace"
       ],
       "text": [
-        "Wallace"
+        ""
+      ],
+      "was": [
+        "{player}, trebuie să te duc într-un loc. Vino cu mine, te rog."
       ]
     },
     {
@@ -149,7 +199,10 @@
         "{player}, there is somewhere I must take you. Come with me, please."
       ],
       "text": [
-        "{player}, trebuie să te duc într-un loc. Vino cu mine, te rog."
+        ""
+      ],
+      "was": [
+        "Îmi pare rău, dar doar noul Campion poate trece prin ușa asta. Ați putea aștepta amândoi aici?"
       ]
     },
     {
@@ -157,7 +210,10 @@
         "I'm sorry, but only the new Champion may come through this door. Would the two of you wait out here?"
       ],
       "text": [
-        "Îmi pare rău, dar doar noul Campion poate trece prin ușa asta. Ați putea aștepta amândoi aici?"
+        ""
+      ],
+      "was": [
+        "{rival}"
       ]
     },
     {
@@ -165,7 +221,10 @@
         "{rival}"
       ],
       "text": [
-        "{rival}"
+        ""
+      ],
+      "was": [
+        "Desigur! Hai, {player}. Te așteptăm chiar aici când te întorci!"
       ]
     },
     {
@@ -173,7 +232,23 @@
         "Of course! Go on, {player}. We'll be right here when you come back!"
       ],
       "text": [
-        "Desigur! Hai, {player}. Te așteptăm chiar aici când te întorci!"
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Magnificent, once again! You and your Pokémon have only grown more splendid since we last danced."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

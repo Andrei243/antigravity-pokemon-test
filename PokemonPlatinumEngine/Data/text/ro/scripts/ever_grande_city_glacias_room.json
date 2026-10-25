@@ -50,10 +50,24 @@
     },
     {
       "en": [
+        "Registered Glacia in the PokéNav."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Mergi mai departe. Ultimul din Elita celor Patru te așteaptă și nu e la fel de blând ca mine."
+      ]
+    },
+    {
+      "en": [
         "Go on. The last of the Elite Four waits ahead, and he is not as gentle as I am."
       ],
       "text": [
-        "Mergi mai departe. Ultimul din Elita celor Patru te așteaptă și nu e la fel de blând ca mine."
+        ""
+      ],
+      "was": [
+        "Ține focul acela aprins. Vei avea nevoie de tot pentru ce urmează."
       ]
     },
     {
@@ -61,7 +75,31 @@
         "Keep that fire burning. You will need all of it for what lies ahead."
       ],
       "text": [
-        "Ține focul acela aprins. Vei avea nevoie de tot pentru ce urmează."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you are here. I have trained my team to the edge of winter itself. Let us see you thaw it again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Glacia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Defeated again. Your warmth is formidable, {player}. I will come back stronger."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

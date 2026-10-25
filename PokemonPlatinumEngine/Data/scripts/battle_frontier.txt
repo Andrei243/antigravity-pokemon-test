@@ -115,3 +115,22 @@ script JohtoGuide
 label JohtoStay
   say "Take your time. I'll be here whenever you'd like to go back."
   end
+
+
+# The guide of Scott's ferry in Hoenn (plan 21 · H9, part c), on the Frontier's third door: shown once Hoenn's Hall of
+# Fame is entered, and the way back to Lilycove City's harbour, a crossing as every region's is (`travel to`,
+# GameEngine.CrossTo). The records, the streaks and the Battle Points are the same from every door.
+script HoennGuide
+  face self player
+  say "I run Scott's ferry between the Battle Frontier and Lilycove City, in Hoenn."
+  ask "Shall I take you back to Lilycove City?"
+  if no goto HoennStay
+  say "Very good. Climb aboard, and mind your step."
+  fade out 0.8
+  text "{player} sailed back to Lilycove City..."
+  travel to "LilycoveCity_Harbor" 12 12 down
+  fade in 0.8
+  end
+label HoennStay
+  say "Take your time. The ferry waits for those who have Scott's pass."
+  end

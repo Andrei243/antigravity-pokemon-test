@@ -6,6 +6,7 @@
 script Drake
   face drake player
   speaker hoenn_drake "Drake"
+  if flag FLAG_PHONE_REMATCH_DRAKE goto Rematch
   if flag FLAG_DEFEATED_ELITE_4_DRAKE goto Beaten
   scene "Drake"
   music "common/eye_elite_four"
@@ -16,10 +17,21 @@ script Drake
   speaker hoenn_drake "Drake"
   say "Superb. You have it, the thing my dragons and I look for in a trainer: a true bond with your Pokémon."
   setflag FLAG_DEFEATED_ELITE_4_DRAKE
+  addcontact drake
+  text "Registered Drake in the PokéNav."
   sound "door_open"
   say "Go on through. The Champion waits at the end of the hall. Give it everything you have."
   endscene
   end
 label Beaten
   say "Why do you linger here? The Champion is waiting for you."
+  end
+label Rematch
+  say "You've come back to my room. Good. A dragon's pride is a patient thing. Show me what you've grown into!"
+  battle self as "hoenn_drake_rematch"
+  speaker "Drake"
+  say "Splendid. Beaten again, and I could not be prouder of the fight. My dragons will remember it."
+  clearflag FLAG_PHONE_REMATCH_DRAKE
+  setflag FLAG_DEFEATED_ELITE_4_DRAKE
+  sound "door_open"
   end

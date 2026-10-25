@@ -1470,5 +1470,59 @@ partial class Harness
             game.State = GameState.Overworld;
             Frames(2);
         }
+
+        // ---- Plan 21 · H9, part c (hs2c0 on, not taken yet): Scott on Lilycove's quay with the Frontier Pass and the
+        // crossing to the Battle Frontier, the Hoenn guide on its grounds and the way back, and the League's rematches
+        // over Match Call (a call, then the room's battle with the stronger team)
+        story.Set("HoennHallOfFame");
+        ComeThrough("LilycoveCity_Harbor", 12, 12, Direction.Left); Frames(20); Shot("hs2c0_scott_on_the_quay");
+        TalkTo("LilycoveCity_Harbor", "lilycove_city_harbor.Scott", -1, 0);
+        ReadTo("The Champion of Hoenn at last"); Frames(10); Shot("hs2c1_scott");
+        ReadTo("received Scott's Frontier Pass!"); Frames(10); Shot("hs2c2_the_frontier_pass");
+        ReadTo("Shall we sail for the Battle Frontier now?"); Frames(10); Shot("hs2c3_shall_we_sail");
+        Pick("YES");
+        Until(() => game.Map.Name == "BattleFrontier" && State() == GameState.Overworld && !engine.ScriptRunning, "the Battle Frontier", 600);
+        Frames(20); Shot("hs2c4_the_battle_frontier_from_hoenn");
+        Console.WriteLine($"  the Frontier from Hoenn: pass {story.Has("FLAG_RECEIVED_FRONTIER_PASS")}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), region {engine.Here.Id}, party region {game.Party.Members[0].Region}");
+        TalkTo("BattleFrontier", "battle_frontier.HoennGuide", -1, 0);
+        ReadTo("Shall I take you back to Lilycove City?"); Frames(10); Shot("hs2c5_the_hoenn_guide");
+        Pick("YES");
+        Until(() => game.Map.Name == "LilycoveCity_Harbor" && State() == GameState.Overworld && !engine.ScriptRunning, "Lilycove's harbour", 600);
+        Frames(20); Shot("hs2c6_back_on_the_quay");
+        Console.WriteLine($"  back from the Frontier: on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), region {engine.Here.Id}");
+
+        // The rematches: each beaten once and registered, the call that asks, and the room's battle with the stronger team
+        foreach (var (contact, trainer, rematchTeam) in new[]
+                 {
+                     ("sidney", "hoenn_sidney", "hoenn_sidney_rematch"), ("phoebe", "hoenn_phoebe", "hoenn_phoebe_rematch"),
+                     ("glacia", "hoenn_glacia", "hoenn_glacia_rematch"), ("drake", "hoenn_drake", "hoenn_drake_rematch"),
+                     ("wallace", "hoenn_wallace", "hoenn_wallace_rematch"), ("hoenn_wally", "hoenn_wally_vr_2", "hoenn_wally_rematch")
+                 })
+        {
+            story.Defeat(trainer);
+            story.Set(Pokegear.ContactFlag(contact));
+            var who = PhoneBook.Get(contact)!;
+            story.Set(PhoneRematch.WaitingFlag(contact));
+            game.PlaceCall(who, incoming: false);
+            ReadTo("still waiting"); Frames(10); Shot($"hs2d_{contact}_call");
+            ReadTo(null);
+            var team = TrainerDatabase.Get(rematchTeam)!;
+            Console.WriteLine($"  {who.Name}: waiting {story.Has(PhoneRematch.WaitingFlag(contact))}, rematch team {string.Join(", ", team.Party.Select(p => p.Species + ' ' + p.Level))}");
+        }
+        foreach (var (map, key, line, shot) in new[]
+                 {
+                     ("EverGrandeCity_SidneysRoom", "sidney", "You again!", "hs2e0_sidneys_rematch"),
+                     ("EverGrandeCity_PhoebesRoom", "phoebe", "You came back.", "hs2e1_phoebes_rematch"),
+                     ("EverGrandeCity_GlaciasRoom", "glacia", "So you are here.", "hs2e2_glacias_rematch"),
+                     ("EverGrandeCity_DrakesRoom", "drake", "You've come back to my room.", "hs2e3_drakes_rematch")
+                 })
+        {
+            story.Set($"FLAG_PHONE_REMATCH_{key.ToUpperInvariant()}");
+            TalkTo(map, MapDatabase.Get(map).NPCs.First(n => n.Name.Equals(key, StringComparison.OrdinalIgnoreCase)).Key);
+            ReadTo(line); Frames(10); Shot(shot);
+            ToMainMenu(game.Battle); Frames(2);
+            game.State = GameState.Overworld;
+            ReadTo(null);
+        }
     }
 }

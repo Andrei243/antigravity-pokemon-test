@@ -1,0 +1,32 @@
+# Lilycove City's harbour (plan 21 · H9, part c). docs/scripts.md describes the language; the lines are our own.
+#
+# Scott, who has watched the player since Petalburg, waits on the quay for a Champion of Hoenn (shown by HoennHallOfFame in
+# the overlay). Emerald gives the Frontier Pass here as the Battle Frontier's ferry is offered; this game has one Battle
+# Frontier, Sinnoh's (plan 06 · R18), so Scott's pass is a flag (FLAG_RECEIVED_FRONTIER_PASS) and the ferry is a crossing
+# as Route 40's guide is Johto's (docs/mechanics/rulings.md, "Scott's way to the Battle Frontier"): `travel to` goes
+# through GameEngine.CrossTo, the whole team along, onto the Frontier's grounds. The way back is the Hoenn guide on the
+# grounds (battle_frontier.txt, HoennGuide), who sets the player down beside Scott.
+
+
+script Scott
+  face self player
+  speaker "Scott"
+  if flag FLAG_RECEIVED_FRONTIER_PASS goto Offer
+  say "{player}! The Champion of Hoenn at last, and I was here to see it. Didn't I say I'd be cheering?"
+  say "I told you I was looking for trainers who could carry on what the Battle Frontier stands for. Here, take this."
+  setflag FLAG_RECEIVED_FRONTIER_PASS
+  text "{player} received Scott's Frontier Pass!"
+  say "The Frontier is where the strongest Trainers of every region meet. Five halls, five Frontier Brains, and a place for you."
+label Offer
+  say "My ferry runs to the Battle Frontier whenever you like. Your team goes along, and the Frontier keeps one record of your streaks and Battle Points."
+  ask "Shall we sail for the Battle Frontier now?"
+  if no goto Stay
+  say "Wonderful! Hold on to your hat."
+  fade out 0.8
+  text "{player} sailed with Scott for the Battle Frontier..."
+  travel to "BattleFrontier" 47 51 up
+  fade in 0.8
+  end
+label Stay
+  say "No hurry. The Frontier will still be there when you are ready."
+  end

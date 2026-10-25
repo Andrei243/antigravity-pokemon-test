@@ -1012,5 +1012,209 @@
         "Ai grijă pe drumul din față. Sunt mereu gata de o altă luptă, dacă ți-o dorești."
       ]
     }
+  ],
+  "Sidney": [
+    {
+      "en": [
+        "Sidney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Sidney! I've been working on a new look. My Mightyena says it's an improvement. Hard to tell with a Mightyena."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sidney here. I've been training like mad since you beat me. Come to my room in the League and let's battle again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's me, Sidney. I'm still waiting in my room at the League. I want that rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Phoebe": [
+    {
+      "en": [
+        "Phoebe"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is Phoebe. I spent a night on Mt. Pyre again. The spirits there were chatty. My Banette says hello."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Phoebe. My Pokémon have grown close to the spirits since we met. Come to my room in the League and see for yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phoebe speaking. I'm still waiting for you in my room at the League. My Pokémon are restless."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Glacia": [
+    {
+      "en": [
+        "Glacia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Glacia here. It was freezing at the League this morning, and I enjoyed every minute. Do you ever dress warmly?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Glacia. I haven't forgotten how you thawed my team. Come to my room at the League. I intend to hold the ice this time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Glacia speaking. I'm still waiting in my room at the League. My Pokémon won't stay cold much longer."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Drake": [
+    {
+      "en": [
+        "Drake"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drake speaking. I took my Salamence out over the sea today. The sky is the only thing larger than a dragon's pride."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Drake. A dragon doesn't forget a defeat. Come to my room at the League and let's settle this properly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Drake here. I'm still waiting in my room at the League. Don't keep a dragon waiting too long."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wallace": [
+    {
+      "en": [
+        "Wallace"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}. It's Wallace. Sootopolis was beautiful in the rain today. Beauty is everywhere, if you care to look."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is Wallace. My Pokémon and I have found a few new ways to dance. Would you join us in the Champion's room?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wallace speaking. The Champion's room is ready whenever you are. I do look forward to our rematch."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennWally": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "H-hello, {player}? It's Wally! I'm still training on Victory Road. My Gardevoir and I get stronger every day!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Wally! I've been training so hard. Please come to Victory Road's way out and battle me again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally here. I'm still waiting by the way out of Victory Road. I'm ready whenever you are!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }
