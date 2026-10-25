@@ -4,7 +4,7 @@
 //                                                      [--model <id>] [--face-limit <n>] [--seed <n>] [--no-texture] [--pbr] [--autofix]
 //                                                      [--force] [--limit <n>] [--delay <ms>]
 //   dotnet run --project tools/TripoSculpt -- rig (--set s | --all | name ...) [--rig-type biped|quadruped|hexapod|octopod|serpentine|aquatic|avian|others] [--rig-model <id>]
-//                                                 [--animations idle,hurt,...] [--force] [--limit <n>]
+//                                                 [--animations idle,hurt,...] [--reanimate] [--force] [--limit <n>]
 //   dotnet run --project tools/TripoSculpt -- install [--set s] [--as <Species>] [--private] [--static] [--force] [name ...]
 //   dotnet run --project tools/TripoSculpt -- selftest
 // The key is read from the TRIPO_API_KEY environment variable and never written anywhere (platform.tripo3d.ai/api-keys).
@@ -38,6 +38,7 @@ static class Cli
         bool all = Flag(rest, "--all");
         bool untracked = Flag(rest, "--private");
         bool staticOnly = Flag(rest, "--static");
+        bool reanimate = Flag(rest, "--reanimate");
         string? rigType = Take(rest, "--rig-type");
         string? rigModel = Take(rest, "--rig-model");
         var animations = Take(rest, "--animations")?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
@@ -86,7 +87,7 @@ static class Cli
                 return await Generate(root, chosen, rest, set, all, image != null, o);
 
             case "rig":
-                return await Rig(root, chosen, rest, set, all, new RigOptions(rigType, rigModel, animations, o.Force, o.Limit, o.DelayMs, o.Timeout, o.PollMs));
+                return await Rig(root, chosen, rest, set, all, new RigOptions(rigType, rigModel, animations, o.Force, o.Limit, o.DelayMs, o.Timeout, o.PollMs, reanimate));
 
             case "install":
                 if (chosen.Count == 0) { Console.Error.WriteLine("nothing matches."); return 2; }
@@ -133,7 +134,7 @@ static class Cli
             Console.Error.WriteLine("rigging costs credits: say which sculpts (--set <set>, --all or names), and try one first with --limit 1.");
             return 2;
         }
-        var todo = chosen.Where(c => File.Exists(c.Glb(root)) && (ro.Force || !File.Exists(c.Animated(root)))).ToList();
+        var todo = chosen.Where(c => File.Exists(c.Glb(root)) && (ro.Force || ro.Reanimate || !File.Exists(c.Animated(root)))).ToList();
         if (todo.Count == 0) { Console.Error.WriteLine("nothing to rig: no sculpt yet (generate first), or the rigged files are there already (--force)."); return 2; }
         Console.WriteLine($"{Math.Min(todo.Count, ro.Limit)} sculpt(s) to rig and animate " +
                           $"({(ro.Animations is { } a ? string.Join(", ", a) : "the default presets of the body Tripo finds")}).");

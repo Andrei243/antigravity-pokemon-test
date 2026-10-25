@@ -2,7 +2,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 
 sealed record RigOptions(string? RigType, string? RigModel, List<string>? Animations, bool Force, int Limit,
-                         int DelayMs, TimeSpan Timeout, int PollMs)
+                         int DelayMs, TimeSpan Timeout, int PollMs, bool Reanimate = false)
 {
     public static RigOptions Default => new(null, null, null, false, int.MaxValue, 1000, TimeSpan.FromMinutes(10), 3000);
 }
@@ -56,7 +56,7 @@ static class Rigger
         foreach (var c in chosen)
         {
             if (made >= o.Limit) break;
-            if (File.Exists(c.Animated(root)) && !o.Force) { kept++; continue; }
+            if (File.Exists(c.Animated(root)) && !o.Force && !o.Reanimate) { kept++; continue; }
             if (!File.Exists(c.Glb(root))) { log.WriteLine($"{c.Set}/{c.Slug}: no sculpt to rig yet (generate first)"); continue; }
 
             log.Write($"{c.Set}/{c.Slug} ... ");
@@ -68,6 +68,8 @@ static class Rigger
                 if (sculptTask == null) throw new TripoException("the note holds no task of the sculpt (it was not made by this tool)", false);
                 var rig = o.Force || meta["rig"] is not JsonObject ? new JsonObject() : (JsonObject)meta["rig"]!;
                 meta["rig"] = rig;
+                // --reanimate keeps the rig that was paid for and retargets other animations onto it
+                if (o.Reanimate && !o.Force) { rig.Remove("retargetTaskId"); rig.Remove("animations"); }
 
                 // 1. what kind of body
                 string? type = o.RigType ?? rig["type"]?.GetValue<string>();
@@ -91,6 +93,7 @@ static class Rigger
 
                 // 2. the rig
                 string? rigTask = rig["taskId"]?.GetValue<string>();
+                bool rigIsNew = rigTask == null;
                 if (rigTask == null)
                 {
                     rigTask = await client.CreateTask("/animations/rig", new JsonObject
@@ -104,13 +107,14 @@ static class Rigger
                     Sculptor.WriteMeta(c.Meta(root), meta);
                 }
                 var rigged = await Wait(client, rigTask, o, log, "rig");
-                spent += rigged.Credits;
+                if (rigIsNew) spent += rigged.Credits;   // a rig that was paid for in an earlier run is not charged again
 
                 // 3. the animations
                 var presets = o.Animations ?? DefaultPresets(type);
                 if (presets.Count == 0) throw new TripoException($"Tripo has no preset animations for a {type} body: name some with --animations", false);
                 if (presets.Count > 5) throw new TripoException("Tripo takes at most five animations in one task", false);
                 string? animTask = rig["retargetTaskId"]?.GetValue<string>();
+                bool animIsNew = animTask == null;
                 if (animTask == null)
                 {
                     var body = new JsonObject { ["input"] = rigTask, ["out_format"] = "glb", ["animate_in_place"] = true };
@@ -121,8 +125,17 @@ static class Rigger
                     rig["animations"] = new JsonArray(presets.Select(p => (JsonNode)p).ToArray());
                     Sculptor.WriteMeta(c.Meta(root), meta);
                 }
-                var animated = await Wait(client, animTask, o, log, "animate");
-                spent += animated.Credits;
+                TripoTask animated;
+                try { animated = await Wait(client, animTask, o, log, "animate"); }
+                catch (TripoException)
+                {
+                    // A failed retarget is not gone back to: the next run asks for its animations afresh on the same rig
+                    rig.Remove("retargetTaskId");
+                    rig.Remove("animations");
+                    Sculptor.WriteMeta(c.Meta(root), meta);
+                    throw;
+                }
+                if (animIsNew) spent += animated.Credits;
                 if (animated.ModelUrls.Count == 0) throw new TripoException("the animation task names no model", false);
 
                 // 4. one file
