@@ -2153,5 +2153,69 @@
     "stats": {"hp": 91, "attack": 60, "defense": 106, "spAttack": 141, "spDefense": 105, "speed": 85},
     "abilities": ["Hospitality"], "hiddenAbility": "Heatproof",
     "evolution": {"method": "UseItem", "level": 250, "item": "Masterpiece Teacup"}
+  },
+
+  // Supplement, Alola: docs/plans/D14-proposals-alola-supplement.md, approved by the user on 2026-10-26 (all ten, every
+  // question at its default): the Ultra Beasts made a legendary set by the row ("legendary"), each at 225 with any other
+  // Ultra Beast in the party ("anyOfSpecies": the eleven but itself, Poipole among them), to 660.
+  "Nihiliad": {
+    "from": "Nihilego", "types": ["Rock","Poison"], "category": "Sovereign Parasite", "height": 1.6, "weight": 70.0,
+    "stats": {"hp": 129, "attack": 53, "defense": 82, "spAttack": 142, "spDefense": 131, "speed": 123},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Buzzcolossus": {
+    "from": "Buzzwole", "types": ["Bug","Fighting"], "category": "Colossus", "height": 3.0, "weight": 480.0,
+    "stats": {"hp": 117, "attack": 149, "defense": 139, "spAttack": 68, "spDefense": 93, "speed": 94},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Pheromuse": {
+    "from": "Pheromosa", "types": ["Bug","Fighting"], "category": "Graceful", "height": 2.2, "weight": 30.0,
+    "stats": {"hp": 101, "attack": 137, "defense": 67, "spAttack": 137, "spDefense": 67, "speed": 151},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Xurkigrove": {
+    "from": "Xurkitree", "types": ["Electric"], "category": "Power Grove", "height": 4.6, "weight": 140.0,
+    "stats": {"hp": 103, "attack": 89, "defense": 96, "spAttack": 173, "spDefense": 96, "speed": 103},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Celestrata": {
+    "from": "Celesteela", "types": ["Steel","Flying"], "category": "Orbiter", "height": 11.0, "weight": 999.9,
+    "stats": {"hp": 107, "attack": 111, "defense": 113, "spAttack": 117, "spDefense": 111, "speed": 101},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Kartana","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Origamurai": {
+    "from": "Kartana", "types": ["Grass","Steel"], "category": "Folded Blade", "height": 0.5, "weight": 0.3,
+    "stats": {"hp": 99, "attack": 181, "defense": 131, "spAttack": 69, "spDefense": 71, "speed": 109},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Guzzlord","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Devourmaw": {
+    "from": "Guzzlord", "types": ["Dark","Dragon"], "category": "Devourer", "height": 6.5, "weight": 950.0,
+    "stats": {"hp": 223, "attack": 111, "defense": 83, "spAttack": 107, "spDefense": 83, "speed": 53},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Poipole","Naganadel","Stakataka","Blacephalon"]}
+  },
+  "Naganapex": {
+    "from": "Naganadel", "types": ["Poison","Dragon"], "category": "Poison Lance", "height": 4.2, "weight": 190.0,
+    "stats": {"hp": 103, "attack": 93, "defense": 103, "spAttack": 137, "spDefense": 103, "speed": 121},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Stakataka","Blacephalon"]}
+  },
+  "Ziggurak": {
+    "from": "Stakataka", "types": ["Rock","Steel"], "category": "Ziggurat", "height": 6.5, "weight": 960.0,
+    "stats": {"hp": 101, "attack": 141, "defense": 211, "spAttack": 63, "spDefense": 111, "speed": 33},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Blacephalon"]}
+  },
+  "Pyrocephalon": {
+    "from": "Blacephalon", "types": ["Fire","Ghost"], "category": "Grand Finale", "height": 2.3, "weight": 20.0,
+    "stats": {"hp": 93, "attack": 127, "defense": 83, "spAttack": 151, "spDefense": 99, "speed": 107},
+    "abilities": ["Beast Boost"], "legendary": true,
+    "evolution": {"method": "LevelWithSpeciesInParty", "level": 225, "anyOfSpecies": ["Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Poipole","Naganadel","Stakataka"]}
   }
 }

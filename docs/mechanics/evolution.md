@@ -59,7 +59,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelHoldingItemDay` / `LevelHoldingItemNight` | Holding the item at that time | Happiny + Oval Stone; Gligar + Razor Fang, Sneasel + Razor Claw | 4 | |
 | `LevelHoldingItem` | Holding the item | (none in the data yet) | 4 | |
 | `LevelKnowsMove` | Knowing the move | Piloswine, Yanma, Tangela (Ancient Power), Lickitung (Rollout), Aipom (Double Hit), Bonsly, Mime Jr. (Mimic), Steenee, Clobbopus, Girafarig, Dunsparce | 4 | |
-| `LevelWithSpeciesInParty` | That species elsewhere in the party | Mantyke with Remoraid | 4 | |
+| `LevelWithSpeciesInParty` | That species elsewhere in the party (or any one of a row's `anyOfSpecies`, our Ultra Beasts' rows) | Mantyke with Remoraid | 4 | |
 | `LevelAtLocation` | The map has the place: `Moss Rock`, `Ice Rock`, `Magnetic Field` | Eevee → Leafeon / Glaceon, Magneton, Nosepass | 4 | Eterna Forest, Route 217, Mt. Coronet (plan 01) |
 | `LevelDay` / `LevelNight` | The level, at that time | Tyrunt, Amaura, Rockruff, Fomantis, Yungoos, Greavard, Cosmoem | 6 | |
 | `LevelDusk` | The level, at dusk: Platinum's evening, 17:00 to 19:59 | Own Tempo Rockruff into Dusk Form Lycanroc | 7 | |

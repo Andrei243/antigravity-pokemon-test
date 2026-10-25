@@ -232,7 +232,8 @@ public sealed class SpeciesSources
             EvolutionMethod.Trade => Cord(),
             EvolutionMethod.TradeHoldingItem => Cord() && Item(),
             EvolutionMethod.TradeWithSpecies => Cord() && e.Species != null && f.ways.ContainsKey(e.Species),
-            EvolutionMethod.LevelWithSpeciesInParty => e.Species != null && f.ways.ContainsKey(e.Species),
+            EvolutionMethod.LevelWithSpeciesInParty => e.Species != null && f.ways.ContainsKey(e.Species)
+                || e.AnyOfSpecies?.Any(f.ways.ContainsKey) == true,
             EvolutionMethod.LevelAtLocation => e.Location != null && f.sites.Contains(e.Location),
             EvolutionMethod.Other => false,
             _ => true
