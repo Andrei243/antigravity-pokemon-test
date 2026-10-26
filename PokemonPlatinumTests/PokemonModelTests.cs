@@ -64,7 +64,9 @@ public class PokemonModelTests
         ["Squeakshire"] = 12, ["Wugsextet"] = 12, ["Habanerogue"] = 6, ["Hydrajet"] = 8, ["Lodestatic"] = 3,
         ["Orthobore"] = 0, ["Barrowhound"] = 0, ["Chagamage"] = 0,
         // Plan 06 · R20b: Mega Inteleon's right eye is the lens of its scope
-        ["Inteleon-Mega"] = 1
+        ["Inteleon-Mega"] = 1,
+        // Plan 06 · R20c: the Mega Dynamax forms keep their Megas' eyes (Mega Starmie has none, Kangaskhan four, Inteleon one)
+        ["Inteleon-Mega-Mmax"] = 1, ["Kangaskhan-Mega-Mmax"] = 4, ["Starmie-Mega-Mmax"] = 0
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>

@@ -749,10 +749,10 @@ public class Pokemon
 
     /// <summary>
     /// The name its model and sprites are asked for by: its form's, or its species'. A Mega Dynamax form (plan 06 · R20c)
-    /// has no sculpt of its own yet and shows its Mega's, grown as every giant is in battle.
+    /// has a sculpt of its own where <see cref="MegaDynamaxLooks"/> says so, and shows its Mega's otherwise, grown as every giant is in battle.
     /// </summary>
     public string ModelName => Form is { } form
-        ? (form.EndsWith(MegaDynamaxSuffix, StringComparison.Ordinal) && FormData?.Kind == FormKind.MegaDynamax ? form[..^MegaDynamaxSuffix.Length] : form)
+        ? (form.EndsWith(MegaDynamaxSuffix, StringComparison.Ordinal) && FormData?.Kind == FormKind.MegaDynamax && !MegaDynamaxLooks.HasSculpt(form) ? form[..^MegaDynamaxSuffix.Length] : form)
         : Species.Name;
 
     /// <summary>What a Mega Dynamax form's name adds to its Mega's (<c>Charizard-Mega-X-Mmax</c>).</summary>

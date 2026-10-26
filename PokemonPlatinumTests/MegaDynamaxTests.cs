@@ -322,7 +322,7 @@ public class MegaDynamaxTests
             Assert.False(species.Legendary || species.Mythical, form.Name);
             // A Pokémon in it shows its Mega's model until it has a sculpt of its own
             var p = new Pokemon(species, 50) { Form = form.Name };
-            Assert.Equal(mega.Name, p.ModelName);
+            Assert.Equal(PokemonPlatinumEngine.Models.MegaDynamaxLooks.HasSculpt(form.Name) ? form.Name : mega.Name, p.ModelName);
         }
     }
 

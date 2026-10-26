@@ -941,7 +941,15 @@ internal static partial class PokemonModels
         "Hatterene-Gmax", "Grimmsnarl-Gmax", "Alcremie-Gmax", "Copperajah-Gmax", "Duraludon-Gmax", "Urshifu-Single-Strike-Gmax", "Urshifu-Rapid-Strike-Gmax",
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
-        "Pikachu-Cosplay", "Pichu-Spiky-Eared"
+        "Pikachu-Cosplay", "Pichu-Spiky-Eared",
+        // The Mega Dynamax forms of the second half (plan 06 · R20c, PokemonModels.MegaMax2.cs)
+        "Incineroar-Mega-Mmax", "Infernape-Mega-Mmax", "Inteleon-Mega-Mmax", "Kangaskhan-Mega-Mmax", "Lopunny-Mega-Mmax", "Lucario-Mega-Mmax",
+        "Manectric-Mega-Mmax", "Mawile-Mega-Mmax", "Medicham-Mega-Mmax", "Meganium-Mega-Mmax", "Meowscarada-Mega-Mmax", "Metagross-Mega-Mmax",
+        "Pidgeot-Mega-Mmax", "Pinsir-Mega-Mmax", "Primarina-Mega-Mmax", "Pyroar-Mega-Mmax", "Quaquaval-Mega-Mmax", "Raichu-Mega-X-Mmax",
+        "Raichu-Mega-Y-Mmax", "Rillaboom-Mega-Mmax", "Sableye-Mega-Mmax", "Salamence-Mega-Mmax", "Samurott-Mega-Mmax", "Sceptile-Mega-Mmax",
+        "Scizor-Mega-Mmax", "Scolipede-Mega-Mmax", "Serperior-Mega-Mmax", "Sharpedo-Mega-Mmax", "Skarmory-Mega-Mmax", "Skeledirge-Mega-Mmax",
+        "Slowbro-Mega-Mmax", "Starmie-Mega-Mmax", "Steelix-Mega-Mmax", "Swampert-Mega-Mmax", "Torterra-Mega-Mmax", "Typhlosion-Mega-Mmax",
+        "Tyranitar-Mega-Mmax", "Venusaur-Mega-Mmax", "Victreebel-Mega-Mmax"
     };
 
     /// <summary>
@@ -2596,6 +2604,8 @@ internal static partial class PokemonModels
         _ when CreateOurs(species) is { } ours => ours,
         // A Mega of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
         _ when CreateOurMega(species.ToUpperInvariant()) is { } mega => mega,
+        // A Mega Dynamax form with a sculpt of its own (PokemonModels.MegaMax*.cs; the others are asked for by their Mega's name, Pokemon.ModelName)
+        _ when CreateMegaMax2(species.ToUpperInvariant()) is { } megaMax => megaMax,
         // A form that looks just like another form of its species shows that form's sculpt
         _ when LooksLike.TryGetValue(species, out var like) => Create(like),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)
