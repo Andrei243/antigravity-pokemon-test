@@ -463,6 +463,16 @@
           "Ghidul"
         ]
       }
+    },
+    "battle_frontier.AnnexGuide": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -222,6 +222,10 @@
     // The guide of Scott's ferry from Lilycove City (plan 21 · H9, part c), the third door: shown with Hoenn's Hall of
     // Fame, he takes the player back to the harbour beside Scott (battle_frontier.txt, HoennGuide)
     { "id": "battle_frontier.HoennGuide", "name": "Guide", "npcType": "Gentleman", "x": 50, "y": 51, "facing": "Left",
-      "script": "HoennGuide", "shownBy": "HoennHallOfFame" }
+      "script": "HoennGuide", "shownBy": "HoennHallOfFame" },
+    // The guide of the Frontier's annex (plan 14 · B8), before the lodge on the plaza's south side: he shows the player into
+    // its lobby, the Battle Dome's (battle_frontier.txt, AnnexGuide)
+    { "id": "battle_frontier.AnnexGuide", "name": "Guide", "npcType": "Gentleman", "x": 44, "y": 64, "facing": "Up",
+      "script": "AnnexGuide" }
   ]
 }

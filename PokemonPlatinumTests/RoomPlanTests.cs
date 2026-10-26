@@ -235,6 +235,10 @@ public class RoomPlanTests
     /// begins in it (<c>RebuiltRoomTests</c>, <c>OpeningTests</c>).</summary>
     internal static readonly string[] PlayersRoom = { "PlayerHouse2F" };
 
+    /// <summary>The Battle Frontier's annex (plan 14 · B8): rooms of our own, its lobby and the Battle Dome's hall, laid out
+    /// for what they hold and not on the hand-made rooms' plan (<c>BattleDomeTests</c>).</summary>
+    internal static readonly string[] FrontierAnnex = { "BattleFrontierAnnex", "BattleDome" };
+
     /// <summary>The Canalave Library's upper floors (plan 02 · S10): no door, only the stairs.</summary>
     internal static readonly string[] LibraryUpperFloors = { "CanalaveLibrary2F", "CanalaveLibrary3F" };
 
@@ -1194,6 +1198,7 @@ public class RoomPlanTests
             UnovaRooms,
             RivalsRoom,
             PlayersRoom,
+            FrontierAnnex,
         }.SelectMany(names => names).ToHashSet();
         foreach (string path in Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json"))
         {

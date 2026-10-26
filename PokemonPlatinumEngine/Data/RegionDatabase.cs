@@ -352,6 +352,8 @@ public static class RegionDatabase
                 "Battleground", "SpearPillarDialga", "SpearPillarPalkia",
                 // Plan 01 · M11, the last rooms: the floors over the Pokétch Company's, on the original's plans
                 "PoketchCompany2F", "PoketchCompany3F",
+                // Plan 14 · B8: the Battle Frontier's annex, its lobby and the Battle Dome's hall (maps of ours)
+                "BattleFrontierAnnex", "BattleDome",
             }
         },
         new()

@@ -102,6 +102,9 @@ public partial class GameEngine
         /// <summary>The Battle Hall and the Battle Castle (plan 06 · R18c): the challenges under way, the board of types and the valet's counters.</summary>
         public Models.Frontier.BattleHallChallenge? Hall => game.flow.Hall;
         public HallBoardScreen HallBoard => game.flow.HallBoardScreen;
+        /// <summary>The Battle Dome (plan 14 · B8): the tournament under way and its bracket.</summary>
+        public Models.Frontier.BattleDomeChallenge? Dome => game.flow.Dome;
+        public BracketScreen Bracket => game.flow.BracketScreen;
         /// <summary>A stone panel of the Ruins of Alph, open while a chamber's script waits on it (plan 20 · J5).</summary>
         public AlphPuzzleScreen AlphPuzzle => game.flow.AlphPuzzleScreen;
         /// <summary>The phrase picker, open while a script's <c>phrase</c> waits on it (plan 08 · P9).</summary>

@@ -4035,5 +4035,27 @@
       "BetterWhenAudienceExcited": "The more excited the crowd, the better.",
       "DontExciteAudience": "Holds the crowd still for the rest of the round."
     }
+  },
+  "bracketScreen": {
+    "title": "BATTLE DOME",
+    "hint": { "bracket": "Bracket" },
+    "round": { "0": "FIRST ROUND", "1": "QUARTERFINALS", "2": "SEMIFINALS", "3": "FINAL" },
+    "over": "THE TOURNAMENT IS OVER",
+    "you": "You",
+    "next": "NEXT",
+    "champion": "CHAMPION",
+    "outIn": "OUT IN THE {round}",
+    "prompt": {
+      "look": "The tournament's bracket. Look at any Trainer's card.",
+      "back": "Press Back to return to your choice.",
+      "pick": "Choose two of your three to send in.",
+      "ready": "Send these two in to battle?"
+    },
+    "level": "Lv. {level}",
+    "sentIn": "SENT IN",
+    "theirThree": "THEIR THREE",
+    "yourThree": "YOUR THREE",
+    "chooseTwo": "TWO GO INTO BATTLE",
+    "battle": "BATTLE"
   }
 }

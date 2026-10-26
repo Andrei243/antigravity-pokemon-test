@@ -1,0 +1,148 @@
+{
+  "name": "BattleDome",
+  "displayName": "Battle Dome",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "GameHall",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 17,
+  "height": 15,
+  "ground": [
+    "#################",
+    "#################",
+    "#################",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "#_______________#",
+    "########D########"
+  ],
+  "solid": [
+    "#################",
+    "#################",
+    "#################",
+    "##.............##",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "#...............#",
+    "##.............##",
+    "########.########"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 15,
+      "y": 3,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 4,
+      "width": 7,
+      "depth": 7
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 8,
+      "sourceY": 14,
+      "targetMap": "BattleFrontierAnnex",
+      "targetX": 7,
+      "targetY": 6,
+      "targetFacing": "Down"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "announcer",
+      "name": "Announcer",
+      "npcType": "Gentleman",
+      "x": 3,
+      "y": 7,
+      "facing": "Right",
+      "dialog": [
+        "The next tournament hasn't begun yet. Please speak to the receptionist in the annex's lobby."
+      ]
+    },
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 8,
+      "y": 3,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_DOME_SHOW_OPPONENT"
+    },
+    {
+      "id": "spectator_1",
+      "name": "Spectator",
+      "npcType": "Lass",
+      "x": 1,
+      "y": 8,
+      "facing": "Right",
+      "dialog": [
+        "I've had the bracket memorised since this morning."
+      ]
+    },
+    {
+      "id": "spectator_2",
+      "name": "Spectator",
+      "npcType": "Youngster",
+      "x": 15,
+      "y": 8,
+      "facing": "Left",
+      "dialog": [
+        "Two out of three! Which two will they send in?"
+      ]
+    },
+    {
+      "id": "spectator_3",
+      "name": "Spectator",
+      "npcType": "Lady",
+      "x": 5,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "Every round, the crowd gets louder."
+      ]
+    },
+    {
+      "id": "spectator_4",
+      "name": "Spectator",
+      "npcType": "Gentleman",
+      "x": 11,
+      "y": 13,
+      "facing": "Up",
+      "dialog": [
+        "A tournament is won one match at a time. Nobody remembers who lost in the first round."
+      ]
+    }
+  ],
+  "wildEncounters": []
+}

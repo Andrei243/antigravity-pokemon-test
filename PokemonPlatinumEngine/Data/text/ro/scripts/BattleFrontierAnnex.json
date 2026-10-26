@@ -1,0 +1,122 @@
+{
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Battle Dome! Sixteen Trainers meet in a tournament, and four wins in a row make a champion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've won {number} tournaments in a row. The field gets tougher with every one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Would you like to enter a tournament?",
+        "Enter",
+        "The rules",
+        "No"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need three Pokémon that can take part, all of different species and holding different items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't take part, and nor can {banned}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please choose the three Pokémon you'll enter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! The bracket has been drawn. This way to the hall, please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. The three entered must all be of different species."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. No two of the three entered may hold the same item."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again. There's always another tournament about to begin."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your three battle at Level 50, or at their own level if it's lower. Nothing you do here changes them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Win the final and you're the champion. Lose a match, and the tournament is over for you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
