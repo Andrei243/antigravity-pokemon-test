@@ -246,6 +246,25 @@ public static class TrainerDatabase
     /// <summary>What a League's team beyond adds (plan 03 · D15-T, <c>BattleCore.BeyondTeamOf</c>), and what a first battle's id of Kanto's Champion holds.</summary>
     public const string BeyondSuffix = "_beyond", FirstMarker = "_first";
 
+    /// <summary>
+    /// Whether a team is a rematch's (plan 18 · W4b, L9): an id with <c>_rematch</c> in it (Platinum's Vs. Seeker rows,
+    /// its League's and the Battleground's, Hoenn's of ours), a team of any trainer's row (<see cref="TrainerRecord.Rematches"/>:
+    /// Johto's phone), or an Elite Four's or a Champion's team with a number after the first's id (Kanto's League once the
+    /// Sevii Islands are linked, <c>kanto_elite_four_lorelei_2</c>). Never a team beyond the League or a Mega Dynamax team.
+    /// </summary>
+    public static bool IsRematchTeam(string id)
+    {
+        if (string.IsNullOrEmpty(id) || id.EndsWith(BeyondSuffix, StringComparison.Ordinal) || id.EndsWith(MegaMaxSuffix, StringComparison.Ordinal)) return false;
+        if (id.Contains(RematchSuffix, StringComparison.Ordinal) || RowTeams.Value.Contains(id)) return true;
+        int end = id.Length;
+        while (end > 0 && char.IsAsciiDigit(id[end - 1])) end--;
+        return end < id.Length && end > 1 && id[end - 1] == '_' && Get(id[..(end - 1)]) is { } first
+            && (first.Class == "Elite Four" || first.Class == "Champion");
+    }
+
+    private static readonly Lazy<HashSet<string>> RowTeams = new(() =>
+        Trainers.Values.SelectMany(t => t.Rematches ?? new List<string?>()).OfType<string>().ToHashSet(StringComparer.OrdinalIgnoreCase));
+
     public static bool IsRivalAsChampion(TrainerRecord record) =>
         record.Class == "Champion" && record.Id.StartsWith("kanto_champion_", StringComparison.Ordinal);
 
