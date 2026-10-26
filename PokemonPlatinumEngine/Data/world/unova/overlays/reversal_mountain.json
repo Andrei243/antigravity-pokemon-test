@@ -23,5 +23,8 @@
   },
   "signs": {
     "3": "Reversal Mountain\nThe cave through the volcano's heart leads to Undella Town"
+  },
+  "ours": {
+    "land": [ [ "Helioptera", 183, 187 ], [ "Pyrovore", 176, 180 ] ]
   }
 }

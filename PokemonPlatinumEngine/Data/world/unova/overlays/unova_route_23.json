@@ -21,5 +21,9 @@
   },
   "signs": {
     "10806": "Route 23\nThe Giant Chasm to Victory Road"
+  },
+  "ours": {
+    "land": [ [ "Bouffalanx", 176, 180 ], [ "Mienshifu", 180, 184 ] ],
+    "surf": [ [ "Bascurage", 172, 176 ] ]
   }
 }

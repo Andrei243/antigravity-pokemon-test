@@ -94,5 +94,9 @@
         "I tried to ask for directions, but it turned out I was talking to a Pokémon Trainer! You need to be careful, too."
       ]
     }
+  },
+  "ours": {
+    "land": [ [ "Remedino", 168, 172 ], [ "Chinchillux", 170, 174 ] ],
+    "superRod": [ [ "Fluxflounder", 172, 176 ] ]
   }
 }

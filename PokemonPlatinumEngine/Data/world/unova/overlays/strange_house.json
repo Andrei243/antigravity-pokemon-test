@@ -8,5 +8,8 @@
   "signs": {
     "1": "A portrait with no signature.\nNobody can say how old it is.",
     "2": "A portrait covered in fine scratches, as if someone had tried to scratch the face away."
+  },
+  "ours": {
+    "land": [ [ "Zoromirage", 178, 182 ], [ "Somnarna", 170, 174 ] ]
   }
 }

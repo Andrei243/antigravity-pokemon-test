@@ -26,6 +26,7 @@ public class OursSlotsTests
         RegionDatabase.Kanto,
         RegionDatabase.Johto,
         RegionDatabase.Hoenn,
+        RegionDatabase.Unova,
     };
 
     private static MapArea AreaWithTables()

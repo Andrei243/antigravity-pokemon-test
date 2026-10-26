@@ -56,5 +56,9 @@
       "dialog": [ "The jetty is closed for repairs. Mind the gap!" ],
       "still": true
     }
+  },
+  "ours": {
+    "surf": [ [ "Tortugarch", 178, 182 ] ],
+    "superRod": [ [ "Jellicrown", 176, 180 ] ]
   }
 }

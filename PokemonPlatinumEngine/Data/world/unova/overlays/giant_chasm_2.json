@@ -24,5 +24,8 @@
   },
   "npcs": [
     { "id": "hugh_cave", "name": "{rival}", "npcType": "hugh", "x": 24, "y": 52, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CAVE", "dialog": [ "The crater's this way. Come on!" ] }
-  ]
+  ],
+  "ours": {
+    "land": [ [ "Cosmogrey", 178, 182 ], [ "Amorabat", 166, 170 ] ]
+  }
 }

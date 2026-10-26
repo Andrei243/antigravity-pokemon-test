@@ -3,5 +3,8 @@
   // in the area file; nobody stands here
   "area": "unova_victory_road_21",
   "name": "Victory Road",
-  "bgmTrack": "unova/victory_road"
+  "bgmTrack": "unova/victory_road",
+  "ours": {
+    "land": [ [ "Ferrospire", 176, 180 ], [ "Voltarantula", 175, 179 ] ]
+  }
 }

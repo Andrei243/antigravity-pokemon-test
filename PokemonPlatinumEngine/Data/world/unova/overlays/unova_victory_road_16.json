@@ -12,5 +12,8 @@
   ],
   "npcs": [
     { "id": "hugh_tunnel", "name": "{rival}", "npcType": "hugh", "x": 20, "y": 7, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_TUNNEL" }
-  ]
+  ],
+  "ours": {
+    "land": [ [ "Excavarch", 176, 180 ], [ "Formicarch", 176, 180 ] ]
+  }
 }

@@ -86,5 +86,8 @@
     "1": "Route 7\nWind sweeps down from the Celestial Tower",
     "2": "Celestial Tower\nWhere Pokémon go to rest",
     "3": "Trainer Tips\nA Pokémon much weaker than its foe earns more Experience Points from a win. But the fight is harder!"
+  },
+  "ours": {
+    "land": [ [ "Stormstrika", 170, 174 ], [ "Beaconwatch", 165, 169 ] ]
   }
 }

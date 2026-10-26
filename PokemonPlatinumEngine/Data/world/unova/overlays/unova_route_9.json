@@ -48,5 +48,8 @@
         "dialogueAfter": "The odds were against us after all."
       }
     }
+  },
+  "ours": {
+    "land": [ [ "Scrapodor", 172, 176 ], [ "Umbrapard", 166, 170 ] ]
   }
 }

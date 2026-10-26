@@ -136,5 +136,8 @@
     "1": "Route 6\nThe riverside road to Chargestone Cave",
     "2": "Trainer Tips\nA Pokémon holding an item can use it at the right moment all by itself. Check what each one is carrying!",
     "3": "Season Research Lab\nWhere the year's four seasons are studied"
+  },
+  "ours": {
+    "land": [ [ "Seasonstag", 174, 178 ], [ "Nimbolga", 167, 171 ] ]
   }
 }

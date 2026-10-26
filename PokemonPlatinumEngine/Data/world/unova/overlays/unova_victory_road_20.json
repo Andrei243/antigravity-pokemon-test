@@ -28,5 +28,8 @@
     "6": { "name": "Abraham", "trainer": { "dialogueBefore": "This cave has turned back many a challenger. Will it be you?", "dialogueAfter": "Not you. Clearly not you." } },
     "7": { "name": "Elle", "trainer": { "dialogueBefore": "I patrol the length of this cave. You'll have to battle your way through!", "dialogueAfter": "On you go, then. Carefully." } },
     "8": { "name": "Eddie", "trainer": { "dialogueBefore": "The Pokémon here are tough, but a Ranger is tougher!", "dialogueAfter": "A Ranger is tougher, but you're toughest." } }
+  },
+  "ours": {
+    "land": [ [ "Primavian", 178, 182 ] ]
   }
 }

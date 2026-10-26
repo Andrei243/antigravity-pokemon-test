@@ -6,5 +6,8 @@
   "bgmTrack": "unova/victory_road",
   "people": {
     "6": { "name": "Chandra", "trainer": { "dialogueBefore": "I've been running up and down this grove all day. You're just in time!", "dialogueAfter": "Just in time to beat me, it seems." } }
+  },
+  "ours": {
+    "land": [ [ "Cottonimbus", 172, 176 ], [ "Sporemonarch", 174, 178 ] ]
   }
 }

@@ -11,5 +11,9 @@
     "3": { "name": "Beckett", "trainer": { "dialogueBefore": "A quiet ridge in the middle of Victory Road. Let's ruin the quiet!", "dialogueAfter": "Quiet again. Thanks for that." } },
     "4": { "name": "Cathy", "trainer": { "dialogueBefore": "Water, rock and Trainers. Victory Road has them all!", "dialogueAfter": "And now it has one beaten Veteran." } },
     "5": { "name": "Pierce", "trainer": { "dialogueBefore": "The falls are loud. My Pokémon's attacks are louder!", "dialogueAfter": "I can hardly hear myself lose." } }
+  },
+  "ours": {
+    "land": [ [ "Imperavia", 182, 186 ], [ "Carrionqueen", 182, 186 ] ],
+    "surf": [ [ "Cygnelle", 172, 176 ] ]
   }
 }

@@ -31,5 +31,8 @@
         "dialogueAfter": "Even my guard wasn't enough."
       }
     }
+  },
+  "ours": {
+    "land": [ [ "Simiscorch", 170, 174 ], [ "Simitorrent", 170, 174 ] ]
   }
 }

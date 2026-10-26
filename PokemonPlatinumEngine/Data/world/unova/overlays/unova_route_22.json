@@ -24,5 +24,8 @@
   "signs": {
     "3": "Route 22\nHumilau City to the Giant Chasm",
     "10805": "Giant Chasm ahead"
+  },
+  "ours": {
+    "land": [ [ "Brawlhood", 174, 178 ] ]
   }
 }

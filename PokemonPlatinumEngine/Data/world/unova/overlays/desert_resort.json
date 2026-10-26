@@ -17,5 +17,8 @@
   },
   "signs": {
     "1": "Desert Resort ahead\nA desert with a little something extra!"
+  },
+  "ours": {
+    "land": [ [ "Crustadel", 174, 178 ] ]
   }
 }
