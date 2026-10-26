@@ -102,14 +102,14 @@ script Lola
   if not defeated self goto Fight
   if flag FLAG_PHONE_CONTACT_HOENN_LOLA goto Known
   speaker "Lola"
-  say "Azurill liked you! Let's be friends. I'll tell you everything about floating!"
+  say "Azumarill liked you! Let's be friends. I'll tell you everything about floating!"
   ask "Register Lola in the PokéNav's Match Call?"
   if no goto Refused
   addcontact hoenn_lola
-  say "Hooray! Azurill says hi!"
+  say "Hooray! Azumarill says hi!"
   end
 label Refused
-  say "Oh... Azurill's sad now."
+  say "Oh... Azumarill's sad now."
   end
 label Known
   trainerline after

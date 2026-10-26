@@ -19,13 +19,13 @@
       "name": "Cathy",
       "trainer": {
         "dialogueBefore": "Lass Cathy: Whitney's Pokémon are so cute! Mine are too, aren't they?",
-        "dialogueAfter": "Lass Cathy: Even my three Jigglypuff couldn't sing you to sleep."
+        "dialogueAfter": "Lass Cathy: Even my three Wigglytuff couldn't sing you to sleep."
       }
     },
     "t25gym0101_gsgirl1_2": {
       "name": "Carrie",
       "trainer": {
-        "dialogueBefore": "Lass Carrie: Don't be fooled by how sweet Snubbull looks. It bites!",
+        "dialogueBefore": "Lass Carrie: Don't be fooled by how sweet Mastiffang looks. It bites!",
         "dialogueAfter": "Lass Carrie: Ow. That one bit back."
       }
     },
@@ -39,7 +39,7 @@
     "t25gym0101_gswoman2_2": {
       "name": "Samantha",
       "trainer": {
-        "dialogueBefore": "Beauty Samantha: My Meowth and I are a matching pair. Shall we?",
+        "dialogueBefore": "Beauty Samantha: My Regalynx and I are a matching pair. Shall we?",
         "dialogueAfter": "Beauty Samantha: Our matching pair, beaten together."
       }
     }

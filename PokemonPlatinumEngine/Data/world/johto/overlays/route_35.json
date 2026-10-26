@@ -21,7 +21,7 @@
     "r35_picnicgirl_2": {
       "name": "Kim",
       "trainer": {
-        "dialogueBefore": "Picnicker Kim: My Vulpix and I are on a picnic. Will you battle us before lunch?",
+        "dialogueBefore": "Picnicker Kim: My Ninetales and I are on a picnic. Will you battle us before lunch?",
         "dialogueAfter": "Picnicker Kim: Now I've lost my appetite!"
       }
     },
@@ -57,7 +57,7 @@
       "name": "Arnie",
       "trainer": {
         "dialogueBefore": "Bug Catcher Arnie: I'm looking for rare bugs for the Bug-Catching Contest!",
-        "dialogueAfter": "Bug Catcher Arnie: My Venonat needs more practice."
+        "dialogueAfter": "Bug Catcher Arnie: My Somnimoth needs more practice."
       }
     },
     "r35_gsman2": {
@@ -70,7 +70,7 @@
     "r35_fire": {
       "name": "Walt",
       "trainer": {
-        "dialogueBefore": "Firebreather Walt: I breathe fire to warm up my Magmar. Feel the heat!",
+        "dialogueBefore": "Firebreather Walt: I breathe fire to warm up my Magmortar. Feel the heat!",
         "dialogueAfter": "Firebreather Walt: Snuffed out."
       }
     }

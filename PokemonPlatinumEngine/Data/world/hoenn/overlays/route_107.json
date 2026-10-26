@@ -5,9 +5,9 @@
   "trees": "Round",
   "people": {
     "swimmer_m": { "name": "Darrin", "trainer": { "dialogueBefore": "Swimmer Darrin: Round and round, keeping an eye on everything. Spotted you!", "dialogueAfter": "Swimmer Darrin: I should have looked the other way." } },
-    "swimmer_m_2": { "name": "Tony", "trainer": { "dialogueBefore": "Swimmer Tony: My Carvanha bites anything that swims near. Even you!", "dialogueAfter": "Swimmer Tony: It bit off more than it could chew." } },
+    "swimmer_m_2": { "name": "Tony", "trainer": { "dialogueBefore": "Swimmer Tony: My Sharpedo bites anything that swims near. Even you!", "dialogueAfter": "Swimmer Tony: It bit off more than it could chew." } },
     "swimmer_f": { "name": "Denise", "trainer": { "dialogueBefore": "Swimmer Denise: The sea is my battlefield. Ready?", "dialogueAfter": "Swimmer Denise: The sea wasn't on my side today." } },
-    "swimmer_f_2": { "name": "Beth", "trainer": { "dialogueBefore": "Swimmer Beth: My Goldeen is the queen of these waters. Bow down!", "dialogueAfter": "Swimmer Beth: Dethroned..." } },
+    "swimmer_f_2": { "name": "Beth", "trainer": { "dialogueBefore": "Swimmer Beth: My Sabrefin is the queen of these waters. Bow down!", "dialogueAfter": "Swimmer Beth: Dethroned..." } },
     "swimmer_f_3": { "name": "Lisa & Ray", "trainer": { "dialogueBefore": "Sis and Bro Lisa & Ray: My little brother and I always battle together!", "dialogueAfter": "Sis and Bro Lisa & Ray: Ray, stop crying. We'll train harder." } },
     "tuber_m_swimming": { "name": "Lisa & Ray", "trainer": { "dialogueBefore": "Sis and Bro Lisa & Ray: Me and my big sister! We're gonna win!", "dialogueAfter": "Sis and Bro Lisa & Ray: Waaah! We lost!" } },
     "swimmer_m_3": { "name": "Camron", "trainer": { "dialogueBefore": "Triathlete Camron: Swim, cycle, run, battle! I train at all four.", "dialogueAfter": "Triathlete Camron: I'll have to train at losing less." } }

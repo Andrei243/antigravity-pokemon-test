@@ -11,10 +11,10 @@
       },
       "before": {
         "en": [
-          "Swimmer Douglas: Two Tentacool, twice the stings! Come on in!"
+          "Swimmer Douglas: Two Medusarch, twice the stings! Come on in!"
         ],
         "text": [
-          "Înotător Douglas: Doi Tentacool, de două ori mai multe înțepături! Hai în apă!"
+          "Înotător Douglas: Doi Medusarch, de două ori mai multe înțepături! Hai în apă!"
         ]
       },
       "after": {
@@ -37,18 +37,18 @@
       },
       "before": {
         "en": [
-          "Swimmer Kyla: My Wailmer gives the best rides. Shall we battle first?"
+          "Swimmer Kyla: My Wailord gives the best rides. Shall we battle first?"
         ],
         "text": [
-          "Înotătoare Kyla: Wailmer al meu te plimbă cel mai bine. Ne luptăm întâi?"
+          "Înotătoare Kyla: Wailord al meu te plimbă cel mai bine. Ne luptăm întâi?"
         ]
       },
       "after": {
         "en": [
-          "Swimmer Kyla: Wailmer, let's float home."
+          "Swimmer Kyla: Wailord, let's float home."
         ],
         "text": [
-          "Înotătoare Kyla: Wailmer, hai să plutim spre casă."
+          "Înotătoare Kyla: Wailord, hai să plutim spre casă."
         ]
       }
     },

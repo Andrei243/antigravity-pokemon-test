@@ -9,13 +9,13 @@
     { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
   ],
   "people": {
-    "swimmer_m": { "name": "Richard", "trainer": { "dialogueBefore": "Swimmer Richard: My Pelipper carries my lunch while I swim. Want to see what else it can do?", "dialogueAfter": "Swimmer Richard: It dropped my lunch." } },
+    "swimmer_m": { "name": "Richard", "trainer": { "dialogueBefore": "Swimmer Richard: My Pelicaptain carries my lunch while I swim. Want to see what else it can do?", "dialogueAfter": "Swimmer Richard: It dropped my lunch." } },
     "swimmer_m_2": { "name": "Herman", "trainer": { "dialogueBefore": "Swimmer Herman: That tower on the island to the north... nobody's been to the top in ages.", "dialogueAfter": "Swimmer Herman: Maybe you'll be the first." } },
-    "swimmer_f": { "name": "Susie", "trainer": { "dialogueBefore": "Swimmer Susie: My Luvdisc is the cutest thing in the sea. Don't you dare be mean to it!", "dialogueAfter": "Swimmer Susie: You were a little mean." } },
-    "swimmer_f_2": { "name": "Kara", "trainer": { "dialogueBefore": "Swimmer Kara: I swim here from Pacifidlog every day. My Seaking keeps me company.", "dialogueAfter": "Swimmer Kara: It's swimming home without me." } },
+    "swimmer_f": { "name": "Susie", "trainer": { "dialogueBefore": "Swimmer Susie: My Heartreef is the cutest thing in the sea. Don't you dare be mean to it!", "dialogueAfter": "Swimmer Susie: You were a little mean." } },
+    "swimmer_f_2": { "name": "Kara", "trainer": { "dialogueBefore": "Swimmer Kara: I swim here from Pacifidlog every day. My Sabrefin keeps me company.", "dialogueAfter": "Swimmer Kara: It's swimming home without me." } },
     "swimmer_f_3": { "name": "Reli", "trainer": { "dialogueBefore": "Reli: My little brother and I always battle together. Ready, Ian?", "dialogueAfter": "Reli: Sorry, Ian. We'll do better next time." } },
     "tuber_m_swimming": { "name": "Ian", "trainer": { "dialogueBefore": "Ian: My sister's the best swimmer in Pacifidlog! We'll beat you!", "dialogueAfter": "Ian: Waaah! My sister lost too!" } },
-    "swimmer_m_3": { "name": "Kevin", "trainer": { "dialogueBefore": "Swimmer Kevin: Spheal rolls on the ice, but it rolls on the sea too. Watch this!", "dialogueAfter": "Swimmer Kevin: It rolled the wrong way." } },
+    "swimmer_m_3": { "name": "Kevin", "trainer": { "dialogueBefore": "Swimmer Kevin: Walrein rolls on the ice, but it rolls on the sea too. Watch this!", "dialogueAfter": "Swimmer Kevin: It rolled the wrong way." } },
     "swimmer_f_4": { "name": "Talia", "trainer": { "dialogueBefore": "Triathlete Talia: Swim, ride, run and battle. I never stop!", "dialogueAfter": "Triathlete Talia: I'll stop for a minute, I think." } }
   }
 }

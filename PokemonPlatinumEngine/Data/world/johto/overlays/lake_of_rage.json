@@ -41,7 +41,7 @@
     "t29_fishing_2_2": {
       "name": "Raymond",
       "trainer": {
-        "dialogueBefore": "Fisherman Raymond: Four Magikarp! That's my whole team. Don't laugh!",
+        "dialogueBefore": "Fisherman Raymond: Four Gyarados! That's my whole team. Don't laugh!",
         "dialogueAfter": "Fisherman Raymond: All right, you can laugh now."
       },
       "hiddenBy": ""

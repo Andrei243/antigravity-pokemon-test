@@ -48,7 +48,7 @@
     "t27gym0101_itako_2": {
       "name": "Grace",
       "trainer": {
-        "dialogueBefore": "Medium Grace: My Haunter float over the holes. You'd better watch your step!",
+        "dialogueBefore": "Medium Grace: My Gengar float over the holes. You'd better watch your step!",
         "dialogueAfter": "Medium Grace: You didn't fall in. How?"
       }
     },

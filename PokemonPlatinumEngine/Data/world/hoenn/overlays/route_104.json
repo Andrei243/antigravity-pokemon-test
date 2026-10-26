@@ -47,7 +47,7 @@
     "fisherman": {
       "name": "Ivan",
       "trainer": {
-        "dialogueBefore": "Fisherman Ivan: I fished up three Magikarp today! Let's see what they can do.",
+        "dialogueBefore": "Fisherman Ivan: I fished up three Typhonarch today! Let's see what they can do.",
         "dialogueAfter": "Fisherman Ivan: Splash, splash, splash. That's all they did."
       }
     },
@@ -82,14 +82,14 @@
     "youngster": {
       "name": "Billy",
       "trainer": {
-        "dialogueBefore": "Youngster Billy: My Zigzagoon goes all over the place! Try and keep up!",
+        "dialogueBefore": "Youngster Billy: My Linoone goes all over the place! Try and keep up!",
         "dialogueAfter": "Youngster Billy: It went all over the place. Mostly the wrong place."
       }
     },
     "fisherman_2": {
       "name": "Darian",
       "trainer": {
-        "dialogueBefore": "Fisherman Darian: This Magikarp's the biggest I ever caught. It must be strong!",
+        "dialogueBefore": "Fisherman Darian: This Typhonarch's the biggest I ever caught. It must be strong!",
         "dialogueAfter": "Fisherman Darian: Big isn't the same as strong, I guess."
       }
     }

@@ -19,7 +19,7 @@ label Short
 script WallysUncle
   face self player
   speaker "Wally's Uncle"
-  say "Wally's in the next room, so to speak. He's been training with his Ralts from morning till night!"
+  say "Wally's in the next room, so to speak. He's been training with his Gardevoir from morning till night!"
   end
 
 

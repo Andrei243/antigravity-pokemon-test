@@ -43,7 +43,7 @@
     "t23gym0102_gsboy3_3": {
       "name": "Josh",
       "trainer": {
-        "dialogueBefore": "Bug Catcher Josh: You won't get to Bugsy without getting past me and my Paras!",
+        "dialogueBefore": "Bug Catcher Josh: You won't get to Bugsy without getting past me and my Cordyhusk!",
         "dialogueAfter": "Bug Catcher Josh: Okay, you got past me."
       }
     },

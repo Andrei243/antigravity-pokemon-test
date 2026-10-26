@@ -7,28 +7,28 @@
     "0": {
       "name": "Flo",
       "trainer": {
-        "dialogueBefore": "Ducklett and Unfezant: three beautiful birds! Do you have a flying friend of your own?",
+        "dialogueBefore": "Cygnelle and Unfezant: three beautiful birds! Do you have a flying friend of your own?",
         "dialogueAfter": "My birds are ruffled."
       }
     },
     "1": {
       "name": "Marcus",
       "trainer": {
-        "dialogueBefore": "I raise my Ducklett and Tranquill on seed and sunshine. They don't go down easily!",
+        "dialogueBefore": "I raise my Cygnelle and Unfezant on seed and sunshine. They don't go down easily!",
         "dialogueAfter": "Those birds have flown the coop."
       }
     },
     "2": {
       "name": "Greg",
       "trainer": {
-        "dialogueBefore": "My Sunflora likes the sun, and so do I! Battle!",
+        "dialogueBefore": "My Helianthra likes the sun, and so do I! Battle!",
         "dialogueAfter": "I wasn't ready."
       }
     },
     "3": {
       "name": "Chrissy",
       "trainer": {
-        "dialogueBefore": "Darumaka is round and red like me when I'm cross! Battle!",
+        "dialogueBefore": "Darumandala is round and red like me when I'm cross! Battle!",
         "dialogueAfter": "I'm not cross, I'm just red."
       }
     },
@@ -49,7 +49,7 @@
     "6": {
       "name": "Pat",
       "trainer": {
-        "dialogueBefore": "Baltoy spins and so do I! Care for a turn around the ring?",
+        "dialogueBefore": "Dogunarch spins and so do I! Care for a turn around the ring?",
         "dialogueAfter": "That took the wind out of my sails."
       }
     },
@@ -63,14 +63,14 @@
     "8": {
       "name": "Hollie",
       "trainer": {
-        "dialogueBefore": "Cleffa and Cinccino keep our nursery tidy and bright. Would you like to see what else they do?",
+        "dialogueBefore": "Clefable and Chinchillux keep our nursery tidy and bright. Would you like to see what else they do?",
         "dialogueAfter": "Time for a nap."
       }
     },
     "13": {
       "name": "Cody",
       "trainer": {
-        "dialogueBefore": "Stoutland leads my team and two Deerling bring up the rear! Battle me!",
+        "dialogueBefore": "Stoutland leads my team and two Seasonstag bring up the rear! Battle me!",
         "dialogueAfter": "I should have asked Stoutland to run away."
       }
     },

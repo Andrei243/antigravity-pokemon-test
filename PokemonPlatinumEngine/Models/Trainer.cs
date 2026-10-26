@@ -18,8 +18,10 @@ public class Trainer
     /// The trainer as a battle in a region the game crossed into meets them (plan 18 · W4): a copy whose team is copies,
     /// each put at the level <paramref name="levelOf"/> gives for its own (<see cref="Pokemon.Relevel"/>). The trainer of
     /// the map keeps their own team at their game's levels, so a rematch or a refreshed team is mapped afresh, never twice.
+    /// With <paramref name="grow"/> each takes the stage its new level allows (plan 18 · W4b-2, plan 03 · D15-A:
+    /// <see cref="OursGrowth.GrowTrainers"/>), the games' stages and then ours.
     /// </summary>
-    public Trainer Relevelled(Func<int, int> levelOf)
+    public Trainer Relevelled(Func<int, int> levelOf, bool grow = false)
     {
         var copy = (Trainer)MemberwiseClone();
         copy.party = new Party();
@@ -29,6 +31,7 @@ public class Trainer
             // What its level taught it stops at the games' own 100: the moves of our own past it (plan 06 · R31) are the
             // player's to earn, and a later region's trainer keeps their own game's moves (R31's question 8)
             mine.Relevel(levelOf(p.Level), Data.Ruleset.Platinum.LevelCap);
+            if (grow) OursGrowth.GrowTrainers(mine, Data.Ruleset.Platinum.LevelCap);
             copy.party.Add(mine);
         }
         copy.Items = Items.ToList();

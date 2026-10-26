@@ -55,14 +55,14 @@
     "4": {
       "name": "Joyce",
       "trainer": {
-        "dialogueBefore": "I can feel the spirits here. And my Musharna is dreaming of beating you!",
+        "dialogueBefore": "I can feel the spirits here. And my Somnarna is dreaming of beating you!",
         "dialogueAfter": "My dream ended early."
       }
     },
     "5": {
       "name": "Jude",
       "trainer": {
-        "dialogueBefore": "My Clefairy and I come here every day, and it loves a moonlit night. Your Pokémon could use a calm visit too, you know.",
+        "dialogueBefore": "My Clefable and I come here every day, and it loves a moonlit night. Your Pokémon could use a calm visit too, you know.",
         "dialogueAfter": "Calm down, calm down. Fine."
       }
     }

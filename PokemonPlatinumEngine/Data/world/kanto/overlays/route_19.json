@@ -14,7 +14,7 @@
     "swimmer_m_water_4": { "name": "David", "trainer": { "dialogueBefore": "Swimmer David: Fancy a battle on the waves? Mind you don't fall in!", "dialogueAfter": "Swimmer David: I'm the one who fell in." } },
     "swimmer_m_water_5": { "name": "Axle", "trainer": { "dialogueBefore": "Swimmer Axle: I brought my whole team out for a swim. Five against one!", "dialogueAfter": "Swimmer Axle: Five wasn't enough." } },
     "swimmer_f_water": { "name": "Alice", "trainer": { "dialogueBefore": "Swimmer Alice: A tan, a swim and a battle. A perfect day!", "dialogueAfter": "Swimmer Alice: Two out of three's not bad." } },
-    "swimmer_f_water_2": { "name": "Connie", "trainer": { "dialogueBefore": "Swimmer Connie: My Staryu glitter like real stars on the water!", "dialogueAfter": "Swimmer Connie: My stars have set." } },
+    "swimmer_f_water_2": { "name": "Connie", "trainer": { "dialogueBefore": "Swimmer Connie: My Starmie glitter like real stars on the water!", "dialogueAfter": "Swimmer Connie: My stars have set." } },
     "swimmer_f_water_3": { "name": "Anya", "trainer": { "dialogueBefore": "Swimmer Anya: The current pulls you out here. Hold on tight!", "dialogueAfter": "Swimmer Anya: I got pulled under instead." } },
     "swimmer_f_water_4": { "name": "Lia", "trainer": { "dialogueBefore": "Sis and Bro Lia: My little brother and I always battle together!", "dialogueAfter": "Sis and Bro Lia: We'll practise more, I promise." } },
     "tuber_m_water": { "name": "Luc", "trainer": { "dialogueBefore": "Sis and Bro Luc: Me and my sister are a team! Ready?", "dialogueAfter": "Sis and Bro Luc: Sis, we lost..." } }

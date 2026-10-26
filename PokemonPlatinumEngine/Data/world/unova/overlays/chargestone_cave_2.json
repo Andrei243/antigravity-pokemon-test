@@ -31,7 +31,7 @@
     "3": {
       "name": "Ronald",
       "trainer": {
-        "dialogueBefore": "Magneton are three Magnemite in one, and I'm one stubborn scientist! Battle!",
+        "dialogueBefore": "Magnezone started out as three Magnemite, and I'm one stubborn scientist! Battle!",
         "dialogueAfter": "Magnetism has its limits, it seems."
       }
     },
@@ -66,8 +66,8 @@
     "10": {
       "name": "Otto",
       "trainer": {
-        "dialogueBefore": "I follow my Nosepass: it always points the way, and the way is always north.",
-        "dialogueAfter": "I should have asked Nosepass for a better route."
+        "dialogueBefore": "I follow my Lodestarch: it always points the way, and the way is always north.",
+        "dialogueAfter": "I should have asked Lodestarch for a better route."
       }
     },
     "11": {

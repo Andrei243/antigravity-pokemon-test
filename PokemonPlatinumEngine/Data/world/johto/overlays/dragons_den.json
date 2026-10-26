@@ -59,8 +59,8 @@
       "name": "Gil",
       "trainer": {
         "id": "johto_twins_clea_and_gil",
-        "dialogueBefore": "Twins Gil: Our Dratini are twins too!",
-        "dialogueAfter": "Twins Gil: Our Dratini need a nap."
+        "dialogueBefore": "Twins Gil: Our Dragonite are twins too!",
+        "dialogueAfter": "Twins Gil: Our Dragonite need a nap."
       }
     }
   },

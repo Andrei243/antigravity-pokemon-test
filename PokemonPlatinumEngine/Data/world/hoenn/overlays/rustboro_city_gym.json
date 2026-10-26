@@ -30,7 +30,7 @@
     "hiker": {
       "name": "Marc",
       "trainer": {
-        "dialogueBefore": "Hiker Marc: My Geodude and I climbed every hill in Hoenn. A little trainer won't stop us!",
+        "dialogueBefore": "Hiker Marc: My Golem and I climbed every hill in Hoenn. A little trainer won't stop us!",
         "dialogueAfter": "Hiker Marc: Stopped. By a little trainer."
       }
     }

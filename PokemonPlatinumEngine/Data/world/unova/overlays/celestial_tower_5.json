@@ -47,21 +47,21 @@
     "3": {
       "name": "Grace",
       "trainer": {
-        "dialogueBefore": "Roselia, my little rose, will scent the air with a battle's perfume. Prepare yourself!",
+        "dialogueBefore": "Roserade, my little rose, will scent the air with a battle's perfume. Prepare yourself!",
         "dialogueAfter": "The petals are scattered."
       }
     },
     "4": {
       "name": "Daniel",
       "trainer": {
-        "dialogueBefore": "My Umbreon is as calm as the dark. It never loses its poise, and neither shall I.",
+        "dialogueBefore": "My Eclipseon is as calm as the dark. It never loses its poise, and neither shall I.",
         "dialogueAfter": "Well, I never! A defeat!"
       }
     },
     "5": {
       "name": "Sarah",
       "trainer": {
-        "dialogueBefore": "The dead walk this tower at night, they say. Yamask is the proof! Battle me!",
+        "dialogueBefore": "The dead walk this tower at night, they say. Pharaurum is the proof! Battle me!",
         "dialogueAfter": "You've the nerve for it, then."
       }
     }

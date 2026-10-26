@@ -52,16 +52,16 @@ script Joey
   if var VAR_PHONE_CALL == 3 goto Waiting
   random 2
   if result == 1 goto Two
-  say "Hey, it's Joey! My Rattata ate a whole berry by itself today. It's growing up so fast!"
+  say "Hey, it's Joey! My Ratchisel ate a whole berry by itself today. It's growing up so fast!"
   end
 label Two
-  say "Joey here! I was just thinking about our battle. My Rattata's been training non-stop since then."
+  say "Joey here! I was just thinking about our battle. My Ratchisel's been training non-stop since then."
   end
 label Rematch
-  say "It's Joey! My Rattata's in even better shape now. Come and battle me again on Route 30!"
+  say "It's Joey! My Ratchisel's in even better shape now. Come and battle me again on Route 30!"
   end
 label Waiting
-  say "Joey here. I'm still waiting for you on Route 30! My Rattata is getting restless."
+  say "Joey here. I'm still waiting for you on Route 30! My Ratchisel is getting restless."
   end
 
 script Wade
@@ -229,7 +229,7 @@ script HoennRicky
 # Lola, the tuber of Route 109
 script HoennLola
   speaker "Lola"
-  say "Hi! It's Lola! Azurill and me floated all the way to the rocks and back!"
+  say "Hi! It's Lola! Azumarill and me floated all the way to the rocks and back!"
   end
 
 
@@ -250,14 +250,14 @@ script HoennBenjamin
 # Abigail, the triathlete of Route 110
 script HoennAbigail
   speaker "Abigail"
-  say "Abigail here! My Magnemite and I rode all the way to Mauville and back. It's buzzing with energy!"
+  say "Abigail here! My Magnezone and I rode all the way to Mauville and back. It's buzzing with energy!"
   end
 
 
 # Isabel, the pokéfan of Route 110
 script HoennIsabel
   speaker "Isabel"
-  say "It's Isabel! Plusle and Minun fell asleep holding hands today. I nearly cried, it was so sweet!"
+  say "It's Isabel! Anodion and Cathodion fell asleep holding hands today. I nearly cried, it was so sweet!"
   end
 
 
@@ -271,35 +271,35 @@ script HoennIsaac
 # Lydia, the pokémon breeder of Route 117
 script HoennLydia
   speaker "Lydia"
-  say "Hello, it's Lydia! My Marill learnt a new move today. I'm so proud of the little dear!"
+  say "Hello, it's Lydia! My Azumarill learnt a new move today. I'm so proud of the little dear!"
   end
 
 
 # Dylan, the triathlete of Route 117
 script HoennDylan
   speaker "Dylan"
-  say "Dylan here! Huff... huff... I'm running right now. Doduo's way ahead of me as usual!"
+  say "Dylan here! Huff... huff... I'm running right now. Tripluma's way ahead of me as usual!"
   end
 
 
 # Maria, the triathlete of Route 117
 script HoennMaria
   speaker "Maria"
-  say "Maria here! Doduo and I beat our best time on Route 117. Two heads really are better than one!"
+  say "Maria here! Tripluma and I beat our best time on Route 117. Two heads really are better than one!"
   end
 
 
 # Rose, the Aroma Lady of Route 118 (plan 21 · H6)
 script HoennRose
   speaker "Rose"
-  say "Rose here. My Roselia's flowers have opened at last. The whole house smells sweet!"
+  say "Rose here. My Roserade's flowers have opened at last. The whole house smells sweet!"
   end
 
 
 # Dalton, the guitarist of Route 118
 script HoennDalton
   speaker "Dalton"
-  say "Yo, it's Dalton! I wrote a new song about the river on Route 118. My Whismur hums along!"
+  say "Yo, it's Dalton! I wrote a new song about the river on Route 118. My Exploud hums along!"
   end
 
 
@@ -320,7 +320,7 @@ script HoennCatherine
 # Robert, the bird keeper of Route 120
 script HoennRobert
   speaker "Robert"
-  say "Robert here. My Swablu flew all the way to Fortree and back today. Its wings are getting stronger!"
+  say "Robert here. My Altaria flew all the way to Fortree and back today. Its wings are getting stronger!"
   end
 
 
@@ -341,7 +341,7 @@ script HoennWalter
 # Jessica, the beauty of Route 121
 script HoennJessica
   speaker "Jessica"
-  say "Hi, it's Jessica! My Kecleon hid in the curtains all morning. I only found it when it sneezed!"
+  say "Hi, it's Jessica! My Chromeleon hid in the curtains all morning. I only found it when it sneezed!"
   end
 
 
@@ -416,7 +416,7 @@ script Sidney
   speaker "Sidney"
   if var VAR_PHONE_CALL == 2 goto Rematch
   if var VAR_PHONE_CALL == 3 goto Waiting
-  say "It's Sidney! I've been working on a new look. My Mightyena says it's an improvement. Hard to tell with a Mightyena."
+  say "It's Sidney! I've been working on a new look. My Hyaenarch says it's an improvement. Hard to tell with a Hyaenarch."
   end
 label Rematch
   setflag FLAG_PHONE_REMATCH_SIDNEY
@@ -430,7 +430,7 @@ script Phoebe
   speaker "Phoebe"
   if var VAR_PHONE_CALL == 2 goto Rematch
   if var VAR_PHONE_CALL == 3 goto Waiting
-  say "This is Phoebe. I spent a night on Mt. Pyre again. The spirits there were chatty. My Banette says hello."
+  say "This is Phoebe. I spent a night on Mt. Pyre again. The spirits there were chatty. My Effigrim says hello."
   end
 label Rematch
   setflag FLAG_PHONE_REMATCH_PHOEBE

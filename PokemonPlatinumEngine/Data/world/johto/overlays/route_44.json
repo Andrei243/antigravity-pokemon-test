@@ -23,7 +23,7 @@
     "r44_fishing_2_2": {
       "name": "Wilton",
       "trainer": {
-        "dialogueBefore": "Fisherman Wilton: My Goldeen are the prettiest swimmers on this river.",
+        "dialogueBefore": "Fisherman Wilton: My Sabrefin are the prettiest swimmers on this river.",
         "dialogueAfter": "Fisherman Wilton: Pretty, but not strong enough."
       }
     },
@@ -44,7 +44,7 @@
     "r44_mania": {
       "name": "Zach",
       "trainer": {
-        "dialogueBefore": "Poké Maniac Zach: My Rhyhorn charges first and thinks later. Ready?",
+        "dialogueBefore": "Poké Maniac Zach: My Rhyperior charges first and thinks later. Ready?",
         "dialogueAfter": "Poké Maniac Zach: It's still thinking about that one."
       }
     },

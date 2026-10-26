@@ -8,7 +8,7 @@
     "r46_mount_2": {
       "name": "Bailey",
       "trainer": {
-        "dialogueBefore": "Hiker Bailey: Geodude, Geodude, Geodude! I only raise the best!",
+        "dialogueBefore": "Hiker Bailey: Golem, Golem, Golem! I only raise the best!",
         "dialogueAfter": "Hiker Bailey: Five of the best, and still beaten."
       }
     },
@@ -22,7 +22,7 @@
     "r46_picnicgirl_2": {
       "name": "Erin",
       "trainer": {
-        "dialogueBefore": "Picnicker Erin: My Ponyta can gallop up any hill. Race you!",
+        "dialogueBefore": "Picnicker Erin: My Rapidash can gallop up any hill. Race you!",
         "dialogueAfter": "Picnicker Erin: You won by a length."
       }
     },

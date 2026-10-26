@@ -11,10 +11,10 @@
       },
       "before": {
         "en": [
-          "Magneton are three Magnemite in one, and I'm one stubborn scientist! Battle!"
+          "Magnezone started out as three Magnemite, and I'm one stubborn scientist! Battle!"
         ],
         "text": [
-          "Magneton sunt trei Magnemite într-unul, iar eu sunt un om de știință încăpățânat! Luptă!"
+          "Magnezone a pornit ca trei Magnemite, iar eu sunt un om de știință încăpățânat! Luptă!"
         ]
       },
       "after": {
@@ -141,18 +141,18 @@
       },
       "before": {
         "en": [
-          "I follow my Nosepass: it always points the way, and the way is always north."
+          "I follow my Lodestarch: it always points the way, and the way is always north."
         ],
         "text": [
-          "Îl urmez pe Nosepass: arată mereu drumul, iar drumul e mereu spre nord."
+          "Îl urmez pe Lodestarch: arată mereu drumul, iar drumul e mereu spre nord."
         ]
       },
       "after": {
         "en": [
-          "I should have asked Nosepass for a better route."
+          "I should have asked Lodestarch for a better route."
         ],
         "text": [
-          "Ar fi trebuit să-l întreb pe Nosepass de un drum mai bun."
+          "Ar fi trebuit să-l întreb pe Lodestarch de un drum mai bun."
         ]
       }
     },

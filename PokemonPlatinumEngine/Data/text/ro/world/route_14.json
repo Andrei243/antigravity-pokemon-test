@@ -115,10 +115,10 @@
       },
       "before": {
         "en": [
-          "Biker Isaac: My Grimer's been eating my lunch. Let's see if it can eat you!"
+          "Biker Isaac: My Muk's been eating my lunch. Let's see if it can eat you!"
         ],
         "text": [
-          "Motociclist Isaac: Grimer al meu mi-a mâncat prânzul. Să vedem dacă te mănâncă și pe tine!"
+          "Motociclist Isaac: Muk al meu mi-a mâncat prânzul. Să vedem dacă te mănâncă și pe tine!"
         ]
       },
       "after": {
@@ -219,10 +219,10 @@
       },
       "before": {
         "en": [
-          "Biker Lukas: Breathe deep! My Koffing filled the air just for you!"
+          "Biker Lukas: Breathe deep! My Weezing filled the air just for you!"
         ],
         "text": [
-          "Motociclist Lukas: Respiră adânc! Koffing al meu a umplut aerul doar pentru tine!"
+          "Motociclist Lukas: Respiră adânc! Weezing al meu a umplut aerul doar pentru tine!"
         ]
       },
       "after": {
@@ -245,10 +245,10 @@
       },
       "before": {
         "en": [
-          "Bird Keeper Benny: My Spearow are hungry for a battle!"
+          "Bird Keeper Benny: My Fearow are hungry for a battle!"
         ],
         "text": [
-          "Crescător de păsări Benny: Spearow-ii mei sunt flămânzi de luptă!"
+          "Crescător de păsări Benny: Fearow-ii mei sunt flămânzi de luptă!"
         ]
       },
       "after": {

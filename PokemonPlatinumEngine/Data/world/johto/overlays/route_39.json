@@ -18,7 +18,7 @@
     "r39_gsmiddleman1": {
       "name": "Derek",
       "trainer": {
-        "dialogueBefore": "Pokéfan Derek: Isn't my Pikachu the cutest thing you've ever seen? Battle us!",
+        "dialogueBefore": "Pokéfan Derek: Isn't my Raichu the cutest thing you've ever seen? Battle us!",
         "dialogueAfter": "Pokéfan Derek: Still the cutest. Just not the strongest."
       }
     },

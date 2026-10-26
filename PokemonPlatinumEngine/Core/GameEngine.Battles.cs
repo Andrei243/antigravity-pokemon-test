@@ -53,6 +53,8 @@ public partial class GameEngine
         // Shellos and Gastrodon east of Mt. Coronet, Unown in their room's letters (AddWildMonToParty; plan 06 · R10)
         var area =flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
         if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } form) wild.ChangeForm(form);
+        // Met at or past an evolution of ours, one time in four it is met as it, by its own personality (plan 03 · D15-A)
+        OursGrowth.GrowWild(wild);
         // Deerling and Sawsbuck in the season's coat where the region has seasons (plan 22 · U4)
         DressForTheSeason(wild);
         // A horde (plan 14 · B3): the slot's species again for each of the others, each at the level drawn for it, met
@@ -66,6 +68,7 @@ public partial class GameEngine
                 var other = new Pokemon(wildSpecies, LevelHere(drawn));
                 ShinyCharm.Roll(other, flow.Bag, rng, null, null);
                 if (FormRules.WildForm(wildSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) other.ChangeForm(otherForm);
+                OursGrowth.GrowWild(other);
                 DressForTheSeason(other);
                 horde.Add(other);
             }
@@ -93,6 +96,7 @@ public partial class GameEngine
                 second = new Pokemon(otherSpecies, other.Unmapped ? other.MinLevel : LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
                 ShinyCharm.Roll(second, flow.Bag, rng, other.Gender, other.Nature);
                 if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
+                OursGrowth.GrowWild(second);
                 DressForTheSeason(second);
             }
         }
@@ -475,19 +479,26 @@ public partial class GameEngine
         CharacterModels.Preload(trainers.Concat(partner == null ? Enumerable.Empty<Trainer>() : new[] { partner })
             .Select(t => CharacterStyles.Default.InBattle(t)));
         // In a region the game crossed into, everyone fights at the region's mapped levels (plan 18 · W4): the battle is
-        // handed copies, and the trainers of the map keep their teams at their game's levels
-        if (CrossedLevels() is { } levels)
+        // handed copies, and the trainers of the map keep their teams at their game's levels. Each Pokémon takes the
+        // stage its new level allows, the games' and then ours (plan 18 · W4b-2, plan 03 · D15-A), the partner's too. Not
+        // the first battle's, nor a Master Trainer's, who follows the player instead (below)
+        var crossed = CrossedLevels();
+        if (crossed is { } levels && !firstBattle && terms?.Alone == null)
         {
-            trainers = trainers.Select(t => t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal) ? t : t.Relevelled(levels.Map)).ToList();
+            trainers = trainers.Select(t => t.Id.EndsWith(Battle.Sim.BattleCore.BeyondSuffix, StringComparison.Ordinal) ? t : t.Relevelled(levels.Map, grow: true)).ToList();
             trainer = trainers[0];
-            partner = partner?.Relevelled(levels.Map);
+            partner = partner?.Relevelled(levels.Map, grow: true);
         }
         // The difficulty chosen at NEW GAME is laid on a copy of each foe (plan 13 · V2): the trainers of the map keep
-        // their teams, and under Normal the very same objects are handed on. The first battle of a game, the tutorial
-        // the rival fights beside the player's first Pokémon, and a Master Trainer's (a Pokémon chosen to fight alone, at
-        // a level of its own) are left as they are
+        // their teams, and under Normal the very same objects are handed on; in a crossed region by share of the level
+        // (plan 18 · W4b-2, L6). The first battle of a game, the tutorial the rival fights beside the player's first
+        // Pokémon, and a Master Trainer's (a Pokémon chosen to fight alone, at a level of its own) are left as they are
         if (!firstBattle && terms?.Alone == null)
-            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run, LeadLevel())).ToList();
+            trainers = trainers.Select(t => DifficultyRules.Prepare(t, flow.Run, LeadLevel(), crossed: crossed != null)).ToList();
+        // A Master Trainer follows the player (W4b's section 4, piece 5): met at the higher of its own level and the
+        // chosen Pokémon's
+        if (terms?.Alone is { } chosen)
+            trainers = trainers.Select(t => DifficultyRules.FollowThePlayer(t, chosen.Level)).ToList();
         trainer = trainers[0];
 
         eyeThemePlaying = false;

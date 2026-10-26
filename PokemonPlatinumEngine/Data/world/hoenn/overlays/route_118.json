@@ -18,7 +18,7 @@
     "route118_steven": { "name": "Steven", "npcType": "steven", "still": true, "dialog": [ "The river runs fast here. I wonder what it has carried down from the mountains." ] },
     "fisherman": { "name": "Fisherman", "script": "GoodRodFisherman", "still": true },
     "girl_2": { "name": "Girl", "dialog": [ "With Surf, a Pokémon can carry you right across a river like this one. No bridge needed!" ] },
-    "man_5": { "name": "Perry", "trainer": { "dialogueBefore": "Bird Keeper Perry: My Wingull rides the sea breeze all the way up here. Ready to be blown away?", "dialogueAfter": "Bird Keeper Perry: The breeze changed direction on me." } },
+    "man_5": { "name": "Perry", "trainer": { "dialogueBefore": "Bird Keeper Perry: My Pelicaptain rides the sea breeze all the way up here. Ready to be blown away?", "dialogueAfter": "Bird Keeper Perry: The breeze changed direction on me." } },
     "woman_2": { "name": "Rose", "script": "Rose", "trainer": { "dialogueBefore": "Aroma Lady Rose: Do you smell that? My flowers are in full bloom, and so is their power!", "dialogueAfter": "Aroma Lady Rose: Even a wilted flower has its charm, I suppose." } },
     "fisherman_2": { "name": "Wade", "trainer": { "dialogueBefore": "Fisherman Wade: I've been waiting for a bite all morning. You'll do!", "dialogueAfter": "Fisherman Wade: That one got away from me." } },
     "man_5_2": { "name": "Chester", "trainer": { "dialogueBefore": "Bird Keeper Chester: My birds have been circling you for a while. Time to swoop!", "dialogueAfter": "Bird Keeper Chester: Grounded, and by a kid on foot." } },

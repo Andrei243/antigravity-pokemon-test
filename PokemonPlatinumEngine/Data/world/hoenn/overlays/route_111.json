@@ -57,7 +57,7 @@
     "woman_5": { "name": "Brooke", "trainer": { "dialogueBefore": "Cool Trainer Brooke: I've got a balanced team. Can you break through it?", "dialogueAfter": "Cool Trainer Brooke: Balanced, but not enough." } },
     "man_3_2": { "name": "Wilton", "trainer": { "dialogueBefore": "Cool Trainer Wilton: I could tell from far off you'd be a good one. Let's battle!", "dialogueAfter": "Cool Trainer Wilton: I was right about you." } },
     "camper_4": { "name": "Tyron", "trainer": { "dialogueBefore": "Camper Tyron: Mauville's bright lights are behind us. Out here it's just us and our Pokémon!", "dialogueAfter": "Camper Tyron: I'll head back to the lights now." } },
-    "woman_2": { "name": "Celina", "trainer": { "dialogueBefore": "Aroma Lady Celina: My Roselia's scent is sweet. Its battling isn't!", "dialogueAfter": "Aroma Lady Celina: A bitter ending." } },
+    "woman_2": { "name": "Celina", "trainer": { "dialogueBefore": "Aroma Lady Celina: My Roserade's scent is sweet. Its battling isn't!", "dialogueAfter": "Aroma Lady Celina: A bitter ending." } },
     "picnicker_4": { "name": "Bianca", "trainer": { "dialogueBefore": "Picnicker Bianca: Have you come from Mauville? Then you'll want a battle before the long walk!", "dialogueAfter": "Picnicker Bianca: Good luck on the long walk!" } },
     "man_5": { "name": "Hayden", "trainer": { "dialogueBefore": "Kindler Hayden: My fire burns hotter than the desert sun! Feel it!", "dialogueAfter": "Kindler Hayden: My flame's down to a flicker." } },
     "hiker_2": { "name": "Bryan", "trainer": { "dialogueBefore": "Ruin Maniac Bryan: I came looking for ruins and found you instead. Battle!", "dialogueAfter": "Ruin Maniac Bryan: Buried in defeat." } },

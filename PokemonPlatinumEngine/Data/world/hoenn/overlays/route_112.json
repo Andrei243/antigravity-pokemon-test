@@ -14,7 +14,7 @@
     "hiker": { "name": "Brice", "trainer": { "dialogueBefore": "Hiker Brice: Mt. Chimney's slopes made my legs strong. Let's see how strong my Pokémon are!", "dialogueAfter": "Hiker Brice: My legs are fine. My pride, not so much." } },
     "camper": { "name": "Larry", "trainer": { "dialogueBefore": "Camper Larry: I'm camping at the foot of a volcano. Exciting, right? Battle!", "dialogueAfter": "Camper Larry: That was hotter than the volcano." } },
     "picnicker": { "name": "Carol", "trainer": { "dialogueBefore": "Picnicker Carol: We packed a lunch for the climb! But a battle comes first.", "dialogueAfter": "Picnicker Carol: I need that lunch now." } },
-    "hiker_2": { "name": "Trent", "trainer": { "dialogueBefore": "Hiker Trent: My Geodude and I have climbed every mountain in Hoenn!", "dialogueAfter": "Hiker Trent: We'll go and climb a bigger one." } },
+    "hiker_2": { "name": "Trent", "trainer": { "dialogueBefore": "Hiker Trent: My Golem and I have climbed every mountain in Hoenn!", "dialogueAfter": "Hiker Trent: We'll go and climb a bigger one." } },
     "man_5": { "name": "Bryant", "trainer": { "dialogueBefore": "Kindler Bryant: Being so close to the volcano fires me right up!", "dialogueAfter": "Kindler Bryant: Doused." } },
     "woman_2": { "name": "Shayla", "trainer": { "dialogueBefore": "Aroma Lady Shayla: The flowers by the berry trees smell lovely. Shall we battle among them?", "dialogueAfter": "Aroma Lady Shayla: Even losing smells sweet here." } }
   },

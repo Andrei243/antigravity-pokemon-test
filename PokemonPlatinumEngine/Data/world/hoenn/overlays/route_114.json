@@ -14,7 +14,7 @@
     "hiker_2": { "name": "Lucas", "trainer": { "dialogueBefore": "Hiker Lucas: Rocks and fire, that's my team! Ready?", "dialogueAfter": "Hiker Lucas: All crumbled." } },
     "camper": { "name": "Shane", "trainer": { "dialogueBefore": "Camper Shane: There's a waterfall up ahead that falls from the stars, they say. First, a battle!", "dialogueAfter": "Camper Shane: I'm the one who fell." } },
     "picnicker": { "name": "Nancy", "trainer": { "dialogueBefore": "Picnicker Nancy: The river here is so clear! Our battle won't be so calm.", "dialogueAfter": "Picnicker Nancy: I'll sit by the river for a while." } },
-    "maniac": { "name": "Steve", "trainer": { "dialogueBefore": "Pokémaniac Steve: Steel and rock! My Aron's the best there is!", "dialogueAfter": "Pokémaniac Steve: My Aron's still the best. Just not today." } },
+    "maniac": { "name": "Steve", "trainer": { "dialogueBefore": "Pokémaniac Steve: Steel and rock! My Aggron's the best there is!", "dialogueAfter": "Pokémaniac Steve: My Aggron's still the best. Just not today." } },
     "fisherman": { "name": "Nolan", "trainer": { "dialogueBefore": "Fisherman Nolan: Shh, you'll scare off the fish. Oh, a battle? Fine!", "dialogueAfter": "Fisherman Nolan: Now the fish are laughing at me." } },
     "fisherman_2": { "name": "Claude", "trainer": { "dialogueBefore": "Fisherman Claude: I reeled you in! Time to battle!", "dialogueAfter": "Fisherman Claude: The one that got away." } },
     "man_5": { "name": "Bernie", "trainer": { "dialogueBefore": "Kindler Bernie: I'll set this battle ablaze! Hope you've got water on hand!", "dialogueAfter": "Kindler Bernie: You put my fire out." } },
@@ -22,7 +22,7 @@
     "lass_2": { "name": "Tyra & Ivy", "trainer": { "dialogueBefore": "Sr. & Jr. Tyra & Ivy: I'll do my best beside my big sister!", "dialogueAfter": "Sr. & Jr. Tyra & Ivy: We'll practise more together." } },
     "picnicker_2": { "name": "Charlotte", "trainer": { "dialogueBefore": "Picnicker Charlotte: I came all the way up here for the view. And to battle someone like you!", "dialogueAfter": "Picnicker Charlotte: At least the view's still nice." } },
     "picnicker_3": { "name": "Angelina", "trainer": { "dialogueBefore": "Picnicker Angelina: I've been waiting by the water for a strong trainer. Is it you?", "dialogueAfter": "Picnicker Angelina: It was you, all right." } },
-    "fisherman_3": { "name": "Kai", "trainer": { "dialogueBefore": "Fisherman Kai: My Barboach can sense when a battle's coming. It's been twitching all day!", "dialogueAfter": "Fisherman Kai: Now it's sulking at the bottom of the river." } }
+    "fisherman_3": { "name": "Kai", "trainer": { "dialogueBefore": "Fisherman Kai: My Whiscash can sense when a battle's coming. It's been twitching all day!", "dialogueAfter": "Fisherman Kai: Now it's sulking at the bottom of the river." } }
   },
   "signs": {
     "Route114_EventScript_MeteorFallsSign": "Meteor Falls\nAhead: Route 115",

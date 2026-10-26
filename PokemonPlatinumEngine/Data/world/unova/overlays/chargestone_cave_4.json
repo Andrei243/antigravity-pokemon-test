@@ -14,14 +14,14 @@
     "4": {
       "name": "Vicki",
       "trainer": {
-        "dialogueBefore": "A Ferroseed on the team means I never fear a spark. Come on!",
-        "dialogueAfter": "My Ferroseed is stunned."
+        "dialogueBefore": "A Ferrothorn on the team means I never fear a spark. Come on!",
+        "dialogueAfter": "My Ferrothorn is stunned."
       }
     },
     "5": {
       "name": "Beverly",
       "trainer": {
-        "dialogueBefore": "Zebstrika's mane lights up like a stage! Let me play you a battle song.",
+        "dialogueBefore": "Stormstrika's mane lights up like a stage! Let me play you a battle song.",
         "dialogueAfter": "And that's the final chord."
       }
     },

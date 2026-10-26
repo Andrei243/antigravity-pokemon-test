@@ -6,7 +6,7 @@
   "people": {
     "pokefan_m": { "name": "Owner", "script": "Owner" },
     "sailor": { "name": "Dwayne", "trainer": { "dialogueBefore": "Sailor Dwayne: I came in for a cold drink. A battle'll do just as well!", "dialogueAfter": "Sailor Dwayne: Now I really need that drink." } },
-    "tuber_m": { "name": "Simon", "trainer": { "dialogueBefore": "Tuber Simon: My Azurill and Marill are the best of friends. And the best battlers!", "dialogueAfter": "Tuber Simon: Best of friends, at least." } },
+    "tuber_m": { "name": "Simon", "trainer": { "dialogueBefore": "Tuber Simon: My two Azumarill are the best of friends. And the best battlers!", "dialogueAfter": "Tuber Simon: Best of friends, at least." } },
     "beauty": { "name": "Johanna", "trainer": { "dialogueBefore": "Beauty Johanna: The sea breeze is lovely here. Shall we battle in it?", "dialogueAfter": "Beauty Johanna: The breeze has turned against me." } }
   }
 }

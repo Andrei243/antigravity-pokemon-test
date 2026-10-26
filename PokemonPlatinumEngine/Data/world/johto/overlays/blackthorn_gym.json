@@ -46,7 +46,7 @@
     "t30gym0101_gsman3_3": {
       "name": "Mike",
       "trainer": {
-        "dialogueBefore": "Ace Trainer Mike: My Dragonair is the last test before the Leader!",
+        "dialogueBefore": "Ace Trainer Mike: My Dragonite is the last test before the Leader!",
         "dialogueAfter": "Ace Trainer Mike: You've passed it."
       }
     }

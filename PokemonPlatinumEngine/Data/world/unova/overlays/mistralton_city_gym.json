@@ -10,14 +10,14 @@
     "0": {
       "name": "Flynn",
       "trainer": {
-        "dialogueBefore": "Swoobat flaps like a propeller and heads straight for its target. Brace yourself!",
+        "dialogueBefore": "Amorabat flaps like a propeller and heads straight for its target. Brace yourself!",
         "dialogueAfter": "Turbulence! I lost control."
       }
     },
     "1": {
       "name": "Winslow",
       "trainer": {
-        "dialogueBefore": "Sigilyph hovers like a satellite and sees everything. You can't hide from it!",
+        "dialogueBefore": "Glyphoracle hovers like a satellite and sees everything. You can't hide from it!",
         "dialogueAfter": "My radar missed you."
       }
     },
@@ -51,7 +51,7 @@
     "6": {
       "name": "Elron",
       "trainer": {
-        "dialogueBefore": "From the old sky to the new: Archen and Unfezant! Let's see how you handle both.",
+        "dialogueBefore": "From the old sky to the new: Archeops and Unfezant! Let's see how you handle both.",
         "dialogueAfter": "Grounded."
       }
     }

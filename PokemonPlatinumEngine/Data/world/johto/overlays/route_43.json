@@ -16,7 +16,7 @@
     "r43_picnicgirl_2": {
       "name": "Tiffany",
       "trainer": {
-        "dialogueBefore": "Picnicker Tiffany: My Clefairy and I picnic up here every weekend. Battle with us!",
+        "dialogueBefore": "Picnicker Tiffany: My Clefable and I picnic up here every weekend. Battle with us!",
         "dialogueAfter": "Picnicker Tiffany: We'd better pack up and go home."
       }
     },

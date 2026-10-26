@@ -23,7 +23,7 @@
     "r45_mount_2_2": {
       "name": "Parry",
       "trainer": {
-        "dialogueBefore": "Hiker Parry: Onix and I are as solid as the mountain!",
+        "dialogueBefore": "Hiker Parry: Ironwyrm and I are as solid as the mountain!",
         "dialogueAfter": "Hiker Parry: The mountain cracked."
       }
     },
@@ -44,7 +44,7 @@
     "r45_mount_2_3": {
       "name": "Timothy",
       "trainer": {
-        "dialogueBefore": "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?",
+        "dialogueBefore": "Hiker Timothy: Two Molemount, digging twice as fast! Ready?",
         "dialogueAfter": "Hiker Timothy: They dug themselves into a hole."
       }
     },

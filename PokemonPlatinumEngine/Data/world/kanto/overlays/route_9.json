@@ -57,7 +57,7 @@
     "picnicker_2": {
       "name": "Caitlin",
       "trainer": {
-        "dialogueBefore": "Picnicker Caitlin: My Meowth is the cutest one you'll ever meet!",
+        "dialogueBefore": "Picnicker Caitlin: My Persian is the cutest one you'll ever meet!",
         "dialogueAfter": "Picnicker Caitlin: Even cute isn't enough, huh?"
       }
     },

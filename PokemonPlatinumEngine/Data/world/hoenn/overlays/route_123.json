@@ -17,12 +17,12 @@
     "hex_maniac": { "name": "Kindra", "trainer": { "dialogueBefore": "Hex Maniac Kindra: The ghosts of Mt. Pyre follow me down the road... They want to battle you...", "dialogueAfter": "Hex Maniac Kindra: The ghosts are going home now..." } },
     "ninja_boy": { "name": "Jonas", "trainer": { "dialogueBefore": "Ninja Boy Jonas: You walked right past me! I was hiding as a tree. Now, battle!", "dialogueAfter": "Ninja Boy Jonas: I should have stayed a tree." } },
     "woman_2_2": { "name": "Kayley", "trainer": { "dialogueBefore": "Parasol Lady Kayley: Rain or shine, my parasol and I are ready. And so is my Castform!", "dialogueAfter": "Parasol Lady Kayley: Clouds have rolled over my sunny mood." } },
-    "maniac": { "name": "Ed", "trainer": { "dialogueBefore": "Collector Ed: Zangoose and Seviper together! Do you know how hard that was? Look!", "dialogueAfter": "Collector Ed: At least my collection's still the best." } },
+    "maniac": { "name": "Ed", "trainer": { "dialogueBefore": "Collector Ed: Ravagoose and Scimitail together! Do you know how hard that was? Look!", "dialogueAfter": "Collector Ed: At least my collection's still the best." } },
     "man_5": { "name": "Fernando", "trainer": { "dialogueBefore": "Guitarist Fernando: My guitar and my Pokémon make the loudest band on Route 123! Let's rock!", "dialogueAfter": "Guitarist Fernando: My strings snapped. My spirit, too." } },
     "man_5_2": { "name": "Alberto", "trainer": { "dialogueBefore": "Bird Keeper Alberto: My birds have flown all the way here from the sea. They're ready for anything!", "dialogueAfter": "Bird Keeper Alberto: My birds are tired from the flight, that's all." } },
     "expert_m": { "name": "Fredrick", "trainer": { "dialogueBefore": "Expert Fredrick: I've battled on this road since before you were born. Let's see what the young can do!", "dialogueAfter": "Expert Fredrick: The young can do plenty, it seems." } },
     "woman_5_2": { "name": "Jazmyn", "trainer": { "dialogueBefore": "Cooltrainer Jazmyn: My Absol and I are never wrong about trouble. Today, the trouble is you!", "dialogueAfter": "Cooltrainer Jazmyn: We were right. You were trouble." } },
-    "youngster": { "name": "Davis", "trainer": { "dialogueBefore": "Bug Catcher Davis: I caught a Pinsir in the Safari Zone! Want to see how strong it is?", "dialogueAfter": "Bug Catcher Davis: It's strong. Just not as strong as yours." } }
+    "youngster": { "name": "Davis", "trainer": { "dialogueBefore": "Bug Catcher Davis: I caught a Mandibron in the Safari Zone! Want to see how strong it is?", "dialogueAfter": "Bug Catcher Davis: It's strong. Just not as strong as yours." } }
   },
   "signs": {
     "Route123_EventScript_RouteSignMtPyre": "Route 123\nEast: Mt. Pyre and Route 122",
