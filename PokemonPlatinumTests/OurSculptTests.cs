@@ -185,6 +185,67 @@ public class OurSculptTests
             }
     }
 
+    /// <summary>The fifteen Megas of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs).</summary>
+    private static readonly string[] OurMegas = { "Typhlosion", "Torterra", "Infernape", "Empoleon", "Serperior", "Samurott", "Decidueye",
+        "Incineroar", "Primarina", "Rillaboom", "Cinderace", "Inteleon", "Meowscarada", "Skeledirge", "Quaquaval" };
+
+    [Fact]
+    public void EveryMegaOfOursIsHandBuiltAndNotItsSpecies()
+    {
+        foreach (var species in OurMegas)
+        {
+            string mega = species + "-Mega";
+            Assert.Equal(species, PokemonDatabase.SpeciesOfForm(mega)?.Name);
+            Assert.True(PokemonModels.HasModel(mega), $"{mega} has no sculpt of its own");
+            Assert.Contains(mega, PokemonModels.Forms);
+            Assert.NotEqual(PokemonModels.Signature(species), PokemonModels.Signature(mega));
+            Assert.Equal(mega, PokemonModels.Build(mega).Species);
+        }
+        // No two of them are the same sculpt
+        Assert.Equal(OurMegas.Length, OurMegas.Select(s => PokemonModels.Signature(s + "-Mega")).Distinct().Count());
+    }
+
+    [Fact]
+    public void EachDecalOfAMegaOfOursCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for these fifteen alone (that test walks every model)
+        foreach (var species in OurMegas)
+        {
+            var m = PokemonModels.Get(species + "-Mega");
+            var uvs = m.DecalUVs!;
+            for (int d = 0; d < m.Decals.Count; d++)
+            {
+                int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                bool left = false, right = false, top = false, bottom = false;
+                foreach (var uv in uvs)
+                {
+                    if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                    left |= uv.X <= center.X - half.X;
+                    right |= uv.X >= center.X + half.X;
+                    top |= uv.Y <= center.Y - half.Y;
+                    bottom |= uv.Y >= center.Y + half.Y;
+                }
+                Assert.True(left && right && top && bottom, $"{species}-Mega: decal {d} isn't covered");
+            }
+        }
+    }
+
+    [Fact]
+    public void AMegaDynamaxOfOursShowsItsMegasSculpt()
+    {
+        // A Pokémon in a Mega Dynamax form asks for its Mega's model (Pokemon.ModelName), which is now its own
+        foreach (var species in OurMegas)
+        {
+            var mmax = PokemonDatabase.Get(species)!.Forms?.FirstOrDefault(f => f.Kind == FormKind.MegaDynamax);
+            if (mmax == null) continue;
+            var p = new Pokemon(PokemonDatabase.Get(species)!, 50, Gender.Male, Nature.Hardy, false);
+            p.ChangeForm(mmax.Name);
+            Assert.Equal(species + "-Mega", p.ModelName);
+        }
+    }
+
     [Fact]
     public void AJohtoFemaleLookIsKeptWhereTheForebearsIs()
     {

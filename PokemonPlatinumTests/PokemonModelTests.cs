@@ -51,7 +51,9 @@ public class PokemonModelTests
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0,
         // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
-        ["Noctaugur"] = 3, ["Cerberhound"] = 6
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6,
+        // Plan 06 · R20b: Mega Inteleon's right eye is the lens of its scope
+        ["Inteleon-Mega"] = 1
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
