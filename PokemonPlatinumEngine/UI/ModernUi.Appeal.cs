@@ -131,9 +131,9 @@ internal static partial class ModernUi
             HeartRow(r.X + 650, r.Y + 76, hearts, AppealRules.HeartsOf(80), 17f);
             string pts = appeal < 0 ? $"{appeal}" : appeal.ToString();
             UiFonts.DrawCentered(pts, r.X + 650, r.Y + 130, 34, appeal < 0 ? Red : Ink, UiWeight.Black);
-            Label(Text.Of("appeal.total"), r.X + r.Width - 190, r.Y + 20);
+            Label(Text.Of("appeal.total"), r.X + r.Width - 150, r.Y + 20);
             string total = screen.ShownTotal[who].ToString();
-            UiFonts.Draw(total, r.X + r.Width - 190, r.Y + 54, 56, Ink, UiWeight.Black);
+            UiFonts.Draw(total, r.X + r.Width - 150, r.Y + 54, 56, Ink, UiWeight.Black);
         }
 
         // The crowd
@@ -236,18 +236,18 @@ internal static partial class ModernUi
         {
             int who = order[row];
             var a = round.Appealers[who];
-            var r = new Rectangle(panel.X + 24, panel.Y + 64 + row * 190, panel.Width - 48, 176);
+            var r = new Rectangle(panel.X + 24, panel.Y + 64 + row * 162, panel.Width - 48, 150);
             bool winner = screen.ResultStage >= 3 && round.FinalStandings[who] == 0;
             Card(r, 26, winner, a.IsPlayer ? Selection : QualityColor(round.Category));
             if (screen.ResultStage >= 2) Tag(r.X + 20, r.Y + 18, AppealScreen.PlaceName(round.FinalStandings[who]), winner ? Gold : Frame, 38);
             PixelArt(PixelArtGenerator.IconOf(a.Pokemon), new Vector2(r.X + 190, r.Y + r.Height / 2f), 1);
-            UiFonts.DrawCentered(a.Pokemon.DisplayName, r.X + 260, r.Y + 62, 38, Ink, UiWeight.Black);
-            UiFonts.DrawCentered(a.Trainer, r.X + 260, r.Y + 112, 26, Muted, UiWeight.ExtraBold);
-            UiFonts.DrawCentered(a.Round1Points.ToString(), col[0], r.Y + 88, 52, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(a.Pokemon.DisplayName, r.X + 260, r.Y + 50, 38, Ink, UiWeight.Black);
+            UiFonts.DrawCentered(a.Trainer, r.X + 260, r.Y + 100, 26, Muted, UiWeight.ExtraBold);
+            UiFonts.DrawCentered(a.Round1Points.ToString(), col[0], r.Y + 76, 52, Ink, UiWeight.Black);
             if (screen.ResultStage >= 1)
-                UiFonts.DrawCentered(round.Round2Points[who].ToString(), col[1], r.Y + 88, 52, Ink, UiWeight.Black);
+                UiFonts.DrawCentered(round.Round2Points[who].ToString(), col[1], r.Y + 76, 52, Ink, UiWeight.Black);
             if (screen.ResultStage >= 2)
-                UiFonts.DrawCentered(round.TotalPoints[who].ToString(), col[2], r.Y + 88, 56, winner ? Selection : Ink, UiWeight.Black);
+                UiFonts.DrawCentered(round.TotalPoints[who].ToString(), col[2], r.Y + 76, 56, winner ? Selection : Ink, UiWeight.Black);
         }
     }
 }
