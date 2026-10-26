@@ -10,6 +10,8 @@ partial class Harness
     {
         engine.StartNewGame();
         PastTheOpening();
+        // (The nurse's script asks "a reminder of what to do next?" while that option is on, which is no part of what this mode shows and leaves its first script waiting on a question)
+        engine.Settings.NextObjective = RulesDefault.Off;
         game.State = GameState.Overworld;
         game.LocationSign.Hide();
         var story = game.Story;
