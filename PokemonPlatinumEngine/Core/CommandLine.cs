@@ -59,6 +59,12 @@ public sealed record LaunchOptions
     /// <summary><c>--where</c> (plan 12 · Q2): say where they are kept, and why, and exit: nothing is opened, made or moved.</summary>
     public bool Where { get; init; }
 
+    /// <summary>
+    /// <c>--record &lt;file&gt;</c> (plan 16 · T19): the session, which the game always records in memory from the title,
+    /// is written to this file as the game ends or crashes.
+    /// </summary>
+    public string? RecordPath { get; init; }
+
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
 
@@ -154,7 +160,8 @@ public static class CommandLine
             Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--save takes a folder, and '{v}' can't be one." : null
         },
         new("--where", null, "Say where the saves, the options and the log are kept, and why, and exit. Nothing is opened, made or moved.",
-            (o, _) => o with { Where = true })
+            (o, _) => o with { Where = true }),
+        new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null }
     };
 
     /// <summary>

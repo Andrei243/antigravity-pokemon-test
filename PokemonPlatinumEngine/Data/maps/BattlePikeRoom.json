@@ -1,0 +1,162 @@
+{
+  "name": "BattlePikeRoom",
+  "displayName": "Battle Pike",
+  "bgmTrack": "sinnoh/veilstone",
+  "interior": "Museum",
+  "trees": "Round",
+  "battleArena": "Gym",
+  "width": 13,
+  "height": 11,
+  "ground": [
+    "#############",
+    "#############",
+    "#############",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#___________#",
+    "#############"
+  ],
+  "solid": [
+    "#############",
+    "#############",
+    "######.######",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "#...........#",
+    "##.........##",
+    "#############"
+  ],
+  "props": [
+    {
+      "type": "Plant",
+      "x": 1,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Plant",
+      "x": 11,
+      "y": 9,
+      "width": 1,
+      "depth": 1
+    },
+    {
+      "type": "Rug",
+      "x": 5,
+      "y": 3,
+      "width": 3,
+      "depth": 6
+    }
+  ],
+  "warps": [
+    {
+      "sourceX": 6,
+      "sourceY": 2,
+      "targetMap": "BattlePike",
+      "targetX": 6,
+      "targetY": 9,
+      "targetFacing": "Up"
+    }
+  ],
+  "signboards": [],
+  "npcs": [
+    {
+      "id": "opponent",
+      "name": "Trainer",
+      "npcType": "Youngster",
+      "x": 5,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_OPPONENT"
+    },
+    {
+      "id": "opponent_2",
+      "name": "Trainer",
+      "npcType": "Lass",
+      "x": 7,
+      "y": 5,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_OPPONENT_2"
+    },
+    {
+      "id": "attendant",
+      "name": "Attendant",
+      "npcType": "Lady",
+      "x": 3,
+      "y": 6,
+      "facing": "Right",
+      "dialog": [
+        "Rest while you can. The next door may not be so kind."
+      ],
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_ATTENDANT"
+    },
+    {
+      "id": "visitor",
+      "name": "Visitor",
+      "npcType": "Gentleman",
+      "x": 9,
+      "y": 6,
+      "facing": "Left",
+      "dialog": [
+        "Oh, a challenger! Don't mind me. I only come to watch the doors."
+      ],
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_VISITOR"
+    },
+    {
+      "id": "queen",
+      "name": "Lucy",
+      "npcType": "lucy",
+      "x": 4,
+      "y": 4,
+      "facing": "Down",
+      "dialog": [
+        "..."
+      ],
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_QUEEN"
+    },
+    {
+      "id": "kirlia",
+      "name": "Kirlia",
+      "npcType": "Pokemon",
+      "x": 8,
+      "y": 4,
+      "facing": "Down",
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_KIRLIA",
+      "species": "Kirlia"
+    },
+    {
+      "id": "dusclops",
+      "name": "Dusclops",
+      "npcType": "Pokemon",
+      "x": 9,
+      "y": 4,
+      "facing": "Down",
+      "shownBy": "FLAG_BATTLE_PIKE_SHOW_DUSCLOPS",
+      "species": "Dusclops"
+    }
+  ],
+  "triggers": [
+    {
+      "x": 6,
+      "y": 2,
+      "width": 1,
+      "depth": 1,
+      "script": "Exit"
+    }
+  ],
+  "wildEncounters": []
+}

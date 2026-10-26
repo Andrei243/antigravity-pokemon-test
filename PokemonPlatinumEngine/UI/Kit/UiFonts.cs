@@ -61,7 +61,7 @@ public static class UiFonts
         string path = Path.Combine(AppContext.BaseDirectory, "Assets", "Fonts", FileFor(weight));
         if (File.Exists(path))
         {
-            font = Raylib.LoadFontEx(path, AtlasSize, codepoints, codepoints.Length);
+            font = PokemonPlatinumEngine.Graphics.Gpu.FontFrom(path, AtlasSize, codepoints, "font");
             if (font.Texture.Id != 0)
             {
                 Raylib.GenTextureMipmaps(ref font.Texture);
@@ -178,7 +178,7 @@ public static class UiFonts
             if (File.Exists(path))
             {
                 int[] codepoints = Enumerable.Range(32, 95).Concat(new[] { 0xE9 }).ToArray();
-                var loaded = Raylib.LoadFontEx(path, DisplaySize, codepoints, codepoints.Length);
+                var loaded = PokemonPlatinumEngine.Graphics.Gpu.FontFrom(path, DisplaySize, codepoints, "font");
                 if (loaded.Texture.Id != 0)
                 {
                     Raylib.GenTextureMipmaps(ref loaded.Texture);
@@ -239,7 +239,7 @@ void main()
     {
         if (!gradientLoaded)
         {
-            gradient = Raylib.LoadShaderFromMemory(GradientVertex, GradientFragment);
+            gradient = PokemonPlatinumEngine.Graphics.Gpu.ShaderFrom(GradientVertex, GradientFragment, "shader");
             gradientLoaded = true;
         }
         static Vector4 V(Color c) => new(c.R / 255f, c.G / 255f, c.B / 255f, c.A / 255f);

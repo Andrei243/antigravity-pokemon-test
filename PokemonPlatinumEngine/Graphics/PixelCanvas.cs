@@ -392,10 +392,10 @@ public sealed class PixelCanvas
         return img;
     }
 
-    public Texture2D ToTexture(int upscale = 1)
+    public Texture2D ToTexture(int upscale = 1, string owner = "canvas")
     {
         Image img = ToImage(upscale);
-        Texture2D tex = Raylib.LoadTextureFromImage(img);
+        Texture2D tex = Gpu.TextureFromImage(img, owner);
         Raylib.UnloadImage(img);
         Raylib.SetTextureFilter(tex, TextureFilter.Point);
         return tex;

@@ -55,7 +55,7 @@ internal static class PokemonStudio
         var shaders = context.Shaders;
         int frames = Math.Max(times.Length, yaws.Length);
         var sheet = Raylib.GenImageColor(w * frames, h, new Color(206, 218, 232, 255));
-        var target = Raylib.LoadRenderTexture(w, h);
+        var target = Gpu.Target(w, h, "studio");
 
         // Framed by the model's largest dimension, so long and wide models fit from every side
         var min = new Vector3(float.MaxValue);
@@ -97,7 +97,7 @@ internal static class PokemonStudio
             Raylib.UnloadImage(view);
         }
         Rlgl.SetClipPlanes(0.01, 1000.0);
-        Raylib.UnloadRenderTexture(target);
+        Gpu.Unload(target);
         return sheet;
     }
 }

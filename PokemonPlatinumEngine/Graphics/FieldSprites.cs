@@ -240,7 +240,7 @@ internal static class FieldSprites
     {
         context.EnsureLoaded();
         var (size, scale) = Fit(model, name);
-        if (!Targets.TryGetValue(size, out var target)) Targets[size] = target = Raylib.LoadRenderTexture(size, size);
+        if (!Targets.TryGetValue(size, out var target)) Targets[size] = target = Gpu.Target(size, size, "sprites");
 
         float yaw = facing * MathF.PI / 2f;
         var root = Matrix4x4.CreateScale(scale) * Matrix4x4.CreateRotationY(yaw);

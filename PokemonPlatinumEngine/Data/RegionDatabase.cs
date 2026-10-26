@@ -356,6 +356,8 @@ public static class RegionDatabase
                 "BattleFrontierAnnex", "BattleDome",
                 // Plan 14 · B9: the Battle Palace's and the Battle Arena's halls in the annex (maps of ours)
                 "BattlePalace", "BattleArena",
+                // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
+                "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
             }
         },
         new()

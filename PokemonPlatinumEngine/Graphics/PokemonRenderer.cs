@@ -48,7 +48,7 @@ internal static class PokemonRenderer
         m.DecalModel?.Unload();
         foreach (var material in m.DecalMaterials)
         {
-            Raylib.UnloadTexture(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
+            Gpu.Unload(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(material.Maps);
         }
         m.Body = m.Outline = m.DecalModel = null;

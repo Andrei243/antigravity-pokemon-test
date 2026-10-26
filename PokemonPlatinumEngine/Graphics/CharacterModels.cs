@@ -190,7 +190,7 @@ internal static class CharacterModels
         rig.FaceModel?.Unload();
         foreach (var material in rig.FaceMaterials)
         {
-            Raylib.UnloadTexture(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
+            Gpu.Unload(material.Maps[(int)MaterialMapIndex.Albedo].Texture);
             Raylib.MemFree(material.Maps);
         }
         rig.Body = rig.Outline = rig.ClothesBody = rig.ClothesOutline = rig.FaceModel = null;

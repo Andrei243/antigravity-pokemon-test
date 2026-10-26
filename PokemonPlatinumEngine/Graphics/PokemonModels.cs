@@ -859,7 +859,7 @@ internal static partial class PokemonModels
     /// Stellar Forms). The few that look just like their species (Mothim's cloaks, the partner Pikachu and Eevee, the
     /// Artisan Poltchageist and the Masterpiece Sinistcha) show its model.
     /// </summary>
-    public static readonly string[] Forms =
+    public static readonly string[] Forms = new[]
     {
         "Rotom-Heat", "Rotom-Wash", "Rotom-Frost", "Rotom-Fan", "Rotom-Mow", "Giratina-Origin",
         "Burmy-Sandy", "Burmy-Trash", "Wormadam-Sandy", "Wormadam-Trash", "Shellos-East", "Gastrodon-East", "Cherrim-Sunshine",
@@ -942,7 +942,11 @@ internal static partial class PokemonModels
         "Pikachu-Original-Cap", "Pikachu-Hoenn-Cap", "Pikachu-Sinnoh-Cap", "Pikachu-Unova-Cap", "Pikachu-Kalos-Cap", "Pikachu-Alola-Cap",
         "Pikachu-Partner-Cap", "Pikachu-World-Cap", "Pikachu-Rock-Star", "Pikachu-Belle", "Pikachu-Pop-Star", "Pikachu-Phd", "Pikachu-Libre",
         "Pikachu-Cosplay", "Pichu-Spiky-Eared"
-    };
+    }
+        // The Mega Dynamax forms with a sculpt of their own (wave 60: PokemonModels.MegaMax1.cs; MegaMax2.cs adds its own list the same way)
+        .Concat(MegaMax1.Names).Concat(new[] {
+            "Incineroar-Mega-Mmax", "Infernape-Mega-Mmax", "Inteleon-Mega-Mmax", "Kangaskhan-Mega-Mmax", "Lopunny-Mega-Mmax", "Lucario-Mega-Mmax", "Manectric-Mega-Mmax", "Mawile-Mega-Mmax", "Medicham-Mega-Mmax", "Meganium-Mega-Mmax", "Meowscarada-Mega-Mmax", "Metagross-Mega-Mmax", "Pidgeot-Mega-Mmax", "Pinsir-Mega-Mmax", "Primarina-Mega-Mmax", "Pyroar-Mega-Mmax", "Quaquaval-Mega-Mmax", "Raichu-Mega-X-Mmax", "Raichu-Mega-Y-Mmax", "Rillaboom-Mega-Mmax", "Sableye-Mega-Mmax", "Salamence-Mega-Mmax", "Samurott-Mega-Mmax", "Sceptile-Mega-Mmax", "Scizor-Mega-Mmax", "Scolipede-Mega-Mmax", "Serperior-Mega-Mmax", "Sharpedo-Mega-Mmax", "Skarmory-Mega-Mmax", "Skeledirge-Mega-Mmax", "Slowbro-Mega-Mmax", "Starmie-Mega-Mmax", "Steelix-Mega-Mmax", "Swampert-Mega-Mmax", "Torterra-Mega-Mmax", "Typhlosion-Mega-Mmax", "Tyranitar-Mega-Mmax", "Venusaur-Mega-Mmax", "Victreebel-Mega-Mmax"
+        }).ToArray();
 
     /// <summary>
     /// Forms that look just like another form rather than like their species itself, and show that form's sculpt:
@@ -2596,6 +2600,10 @@ internal static partial class PokemonModels
         _ when CreateOurs(species) is { } ours => ours,
         // A Mega of our own (plan 06 · R20b, PokemonModels.Ours.Megas.cs)
         _ when CreateOurMega(species.ToUpperInvariant()) is { } mega => mega,
+        // A Mega Dynamax form with a sculpt of its own (wave 60, PokemonModels.MegaMax1.cs)
+        _ when MegaMax1.Make(species.ToUpperInvariant()) is { } megaMax => megaMax,
+        // A Mega Dynamax form with a sculpt of its own (PokemonModels.MegaMax*.cs; the others are asked for by their Mega's name, Pokemon.ModelName)
+        _ when CreateMegaMax2(species.ToUpperInvariant()) is { } megaMax => megaMax,
         // A form that looks just like another form of its species shows that form's sculpt
         _ when LooksLike.TryGetValue(species, out var like) => Create(like),
         // A form of a hand-built species shows its species' model until it has one of its own (plan 03 · D11)

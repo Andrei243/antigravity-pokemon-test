@@ -161,6 +161,8 @@ public partial class GameEngine
         cameInFromOutdoors = flow.LeftMap.Length > 0 && !flow.LeftCave
             && MapDatabase.Get(flow.LeftMap) is { IsIndoors: false, Setting: MapSetting.Outdoors };
         ChangePlace();
+        // A Giratina of the team takes its Origin Forme in the Distortion World and its item's form outside (plan 06 · R29b)
+        FormRules.GiratinaHere(flow.Party.Members, flow.Map.Name);
         NoteTheTrailOnArrival();
         // The place's own script behind the fade (Emerald's ON_TRANSITION), and the chunks it swaps laid at once
         RunTransitionScript();
@@ -903,10 +905,12 @@ public partial class GameEngine
     /// <summary>Goes to a tile of a map through a fade, as a door does: a script's warp.</summary>
     private void WarpTo(string mapName, int x, int y, Direction? facing)
     {
-        var target = MapDatabase.Get(mapName);
+        var target = MapNamed(mapName);
         PlayAreaMusic(target, x, y);
         StartTransition(GameState.Overworld, () =>
         {
+            // A floor of the Battle Pyramid is laid afresh under the same name: the last one's scene goes (plan 14 · B10)
+            if (target != flow.Map && target.Name == flow.Map.Name) world.Forget(target, 0, 0, target.Width, target.Height);
             flow.Map = target;
             flow.Player.SetPosition(x, y, facing ?? flow.Player.Facing);
             world.Life.Clear();

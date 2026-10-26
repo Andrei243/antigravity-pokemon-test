@@ -1890,8 +1890,8 @@ internal static partial class PokemonModels
         for (int i = 0; i < 6; i++)
         {
             float a = (i + 0.5f) * MathF.Tau / 6f;
-            var at = rc + V(MathF.Sin(a) * 0.13f, -MathF.Cos(a) * 0.13f * MathF.Sin(8f * Degree), MathF.Cos(a) * 0.13f);
-            b.Ell(Body, at, V(0.017f, 0.017f, 0.017f), lamps[i % 3], mat: Glow, blend: 0.004f);
+            var at = rc + V(MathF.Sin(a) * 0.13f, MathF.Cos(a) * 0.13f * MathF.Sin(8f * Degree), MathF.Cos(a) * 0.13f);
+            b.Ell(Body, at, V(0.019f, 0.019f, 0.019f), lamps[i % 3], mat: Glow, blend: 0.004f);
         }
         // The cape
         PokeBuilder.Both(s => Frond(b, Body, V(0.03f * s, 0.31f, -0.03f), V(0.14f * s, 0.02f, -0.1f), 0.1f, cape, V(0.3f * s, 0.2f, -1f), 0.12f, SurfaceMaterial.Cloth, 0.012f));

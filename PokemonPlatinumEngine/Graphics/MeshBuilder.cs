@@ -366,10 +366,10 @@ internal sealed class MeshBuilder
         return copy;
     }
 
-    public Mesh Upload()
+    public Mesh Upload(string owner = "mesh")
     {
         var mesh = Pack();
-        Raylib.UploadMesh(ref mesh, false);
+        Gpu.Upload(ref mesh, owner);
         return mesh;
     }
 

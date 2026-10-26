@@ -1051,8 +1051,9 @@ public sealed partial class BattleCore : IBattleContext
     private void TryRun(Battler runner)
     {
         ranThisTurn = true;
-        // COMMAND_SELECTION_RUN_SELECT in the Battle Frontier: the match is given up, and lost
-        if (Frontier)
+        // COMMAND_SELECTION_RUN_SELECT in the Battle Frontier: the match is given up, and lost (a wild Pokémon of the Battle
+        // Pike's or the Battle Pyramid's is run from as anywhere, plan 14 · B10)
+        if (Frontier && IsTrainerBattle)
         {
             Say(Text.Of("battle.forfeitedTheMatch", ("player", playerName)));
             End(BattleResult.PlayerDefeat);

@@ -77,6 +77,26 @@
           ""
         ]
       }
+    },
+    "pike_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pyramid_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

@@ -278,7 +278,7 @@ public sealed class CreditsScreen
         renderContext.EnsureLoaded();
         if (!pictureLoaded)
         {
-            picture = Raylib.LoadRenderTexture(PictureSize, PictureSize);
+            picture = Gpu.Target(PictureSize, PictureSize, "ui");
             Raylib.SetTextureFilter(picture.Texture, TextureFilter.Bilinear);
             pictureLoaded = true;
         }

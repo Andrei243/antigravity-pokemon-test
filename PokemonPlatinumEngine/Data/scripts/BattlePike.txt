@@ -1,0 +1,76 @@
+# The Battle Pike's hall of three doors (plan 14 · B10). docs/scripts.md describes the language; the lines are our own, on
+# the beats of Emerald's Battle Pike (BattleFrontier_BattlePikeThreePathRoom): before every room the attendant senses what
+# waits behind one of the three doors, and the player chooses one.
+#
+# The round lives between the desk and the rooms as the host's Pike (Models/Frontier/BattlePike.cs; `pike`), and is not
+# saved: a game closed in the middle of one finds no round here, and the next begun at the desk ends the streak. The door
+# south leads back to the annex's lobby; a round walked out of that way is given up.
+
+
+script OnEnter
+  pike active
+  if result == 0 end
+  place player 6 9 up
+  pike hint
+  if result == 4 goto Queen
+  pike hintdoor
+  speaker "Attendant"
+  if result == 1 goto Middle
+  if result == 2 goto Right
+  say "Room {number} of fourteen. Something stirs behind the door on the left..."
+  goto Sense
+label Middle
+  say "Room {number} of fourteen. Something stirs behind the middle door..."
+  goto Sense
+label Right
+  say "Room {number} of fourteen. Something stirs behind the door on the right..."
+label Sense
+  pike hint
+  if result == 0 goto Nostalgia
+  if result == 1 goto Whispering
+  if result == 2 goto Creatures
+  say "I can feel people waiting in there. Someone eager, I think."
+  end
+label Nostalgia
+  say "It feels nostalgic, somehow. Like something from long ago."
+  end
+label Whispering
+  say "I can hear whispering. Quiet voices, just behind the wall."
+  end
+label Creatures
+  say "I sense Pokémon in there. Strong ones, and restless."
+  end
+label Queen
+  speaker "Attendant"
+  say "Room {number}... Oh! The same presence fills every door at once."
+  say "The Pike Queen is waiting. Whichever door you take, you'll meet her."
+  end
+
+
+# The three doors in the north wall: the room behind the one walked into is drawn, and the player goes through
+script LeftDoor
+  pike active
+  if result == 0 end
+  pike door 0
+  call Through
+  end
+
+script MiddleDoor
+  pike active
+  if result == 0 end
+  pike door 1
+  call Through
+  end
+
+script RightDoor
+  pike active
+  if result == 0 end
+  pike door 2
+  call Through
+  end
+
+script Through
+  fade out 0.4
+  warp "BattlePikeRoom" 6 9 up
+  fade in
+  return

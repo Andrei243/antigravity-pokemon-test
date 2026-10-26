@@ -474,7 +474,7 @@ void main()
     {
         if (!flatLoaded)
         {
-            flat = Raylib.LoadShaderFromMemory(null, FlatFragment);
+            flat = PokemonPlatinumEngine.Graphics.Gpu.ShaderFrom(null, FlatFragment, "shader");
             flatLoaded = true;
         }
         _ = UiFonts.Display;

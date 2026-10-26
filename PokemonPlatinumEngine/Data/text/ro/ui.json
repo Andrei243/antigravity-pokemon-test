@@ -891,6 +891,9 @@
   "bag": {
     "title": "RUCSAC",
     "nuzlockeNoRevive": "Un Pokémon care a leșinat într-un Nuzlocke nu poate fi readus.",
+    "catalog": { "heat": "Cuptor cu microunde", "wash": "Mașină de spălat", "frost": "Frigider", "fan": "Ventilator", "mow": "Mașină de tuns iarba", "bulb": "Bec" },
+    "cube": { "changeForme": "Schimbă forma" },
+    "optionsFor": "Ce să facă {item} pentru {name}?",
     "order": {
       "label": "ORDINE",
       "Taken": "CUM AU VENIT",
@@ -3528,7 +3531,9 @@
     "BossTrainer": "Antrenor-Șef",
     "Harlequin": "Arlechin",
     "NoData": "Antrenor",
-    "PokemonTrainerColress": "Antrenor Pokémon"
+    "PokemonTrainerColress": "Antrenor Pokémon",
+    "PikeQueen": "Regina Știucii",
+    "PyramidKing": "Regele Piramidei"
   },
   "broadcast": {
     "clock": {

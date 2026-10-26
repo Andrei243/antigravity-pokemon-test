@@ -5,8 +5,7 @@
 # from it. The Griseous Orb lies here in its ball; the portal behind leads back to the cave.
 #
 # The original puts a Giratina on the team into its Origin Forme as it comes in here and back as it leaves
-# (SetPartyGiratinaForm): here its forme goes by the Griseous Orb alone (Models/FormRules.cs), which is plan 06's to
-# change.
+# (SetPartyGiratinaForm): the engine does the same on every arrival since plan 06 · R29b (FormRules.GiratinaHere).
 
 
 # The portal back (the original's DistortionWorldTurnbackCaveRoom_Portal).

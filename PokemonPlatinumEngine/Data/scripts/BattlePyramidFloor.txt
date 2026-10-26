@@ -1,0 +1,118 @@
+# A floor of the Battle Pyramid (plan 14 · B10). docs/scripts.md describes the language; the lines are our own, on the
+# beats of Emerald's Battle Pyramid (BattleFrontier_BattlePyramidFloor, BattleFrontier_BattlePyramidTop): seven dark
+# floors, each laid out afresh from the round's seeds (Models/Frontier/PyramidFloor.cs), whose trainers see the player and
+# battle, whose wild Pokémon jump out of the dark, and whose finds help the three on the spot.
+#
+# The map is made by `pyramid enter` and reached by the warp after it; Data/maps/BattlePyramidFloor.json is only the floor
+# before any round. A game saved on a floor and loaded finds no round under way here, and is shown back out to the lobby.
+
+
+script OnEnter
+  pyramid active
+  if result == 0 goto Out
+  pyramid floor
+  text "Battle Pyramid, floor {number}. The stairs up are somewhere in the dark."
+  end
+label Out
+  fade out 0.6
+  warp "BattleFrontierAnnex" 12 7 right
+  fade in
+  end
+
+
+# A trainer of the floor who saw the player, or was spoken to
+script Trainer
+  pyramid active
+  if result == 0 end
+  pyramid opponent
+  if result == 0 goto Beaten
+  text "{foe} stepped out of the dark!"
+  pyramid fight
+  if result == 0 goto Lost
+  pyramid light
+  text "The light around {player} grew a little wider."
+  end
+label Beaten
+  text "{foe} is catching their breath in the dark."
+  end
+label Lost
+  call Down
+  end
+
+
+# A wild Pokémon met in the dark, which the game starts (GameEngine.MeetInThePyramid)
+script Wild
+  pyramid active
+  if result == 0 end
+  pyramid wild
+  if result == 0 goto Lost
+  if result == 2 end
+  pyramid light
+  text "The light around {player} grew a little wider."
+  end
+label Lost
+  call Down
+  end
+
+
+# Something hidden in the floor, used at once on whoever needs it (the floor's own, in place of the common one)
+script HiddenItem
+  pyramid active
+  if result == 0 end
+  setflag own
+  pyramid find
+  if result == 0 goto Spare
+  text "{player} found {item}! It was used on {entrant} at once."
+  end
+label Spare
+  text "{player} found {item}, but none of the three needed it, and it crumbled to dust."
+  end
+
+
+# The stairs up: the next floor, or the top of the Pyramid after the seventh
+script Stairs
+  pyramid active
+  if result == 0 end
+  pyramid climb
+  if result == 1 goto Top
+  fade out 0.6
+  pyramid enter
+  warp "BattlePyramidFloor" 17 19 up
+  pyramid arrive
+  fade in
+  end
+label Top
+  pyramid king
+  if result == 0 goto RoundWon
+  speaker "Brandon"
+  say "Ha! You climbed my Pyramid in the dark and kept your nerve. I like that!"
+  say "I'm Brandon, the Pyramid King. Now show me how you fight in the light!"
+  pyramid fight
+  if result == 0 goto KingLost
+  speaker "Brandon"
+  say "What a climb! You've earned the view from up here."
+label RoundWon
+  text "{player} reached the top of the Battle Pyramid!"
+  pyramid finish won
+  pyramid points
+  text "{player} received {number} BP!"
+  fanfare item
+  pyramid end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 12 7 right
+  fade in
+  end
+label KingLost
+  call Down
+  end
+
+
+# All three have fainted: the round is over, and the player is shown back out to the lobby
+script Down
+  pyramid finish lost
+  text "{player}'s Pokémon can't go on. The climb ends here."
+  pyramid end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 12 7 right
+  fade in
+  return

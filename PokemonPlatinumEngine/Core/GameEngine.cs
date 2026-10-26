@@ -248,7 +248,7 @@ public partial class GameEngine
         using var startUp = Log.Phase("start-up, in all");
         using (Log.Phase("the screen"))
         {
-            virtualScreen = Raylib.LoadRenderTexture(VirtualWidth * RenderScale, VirtualHeight * RenderScale);
+            virtualScreen = Gpu.Target(VirtualWidth * RenderScale, VirtualHeight * RenderScale, "screen");
             UiShapes.PixelScale = RenderScale;
             Raylib.SetTextureFilter(virtualScreen.Texture, TextureFilter.Bilinear);
         }
@@ -1451,6 +1451,7 @@ public partial class GameEngine
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
         if (flow.Map.Name == DewfordLights.GymMap) DewfordLights.Keep(flow.Map, flow.Story, fieldDt);
+        KeepThePyramidsLight(fieldDt);
         KeepPuzzleInForce(fieldDt);
         ShatterSnowball();
         KeepTheClock();
@@ -2111,8 +2112,10 @@ public partial class GameEngine
             && StartScript(faced, file: flow.Map.ScriptFileAt(targetX, targetY))) return;
 
         // Something hidden where the player is looking: it is found, once
+        // (a place's own HiddenItem stands in for the common one: the Battle Pyramid's finds, plan 14 · B10)
         if (FieldScripts.HiddenAt(flow.Map, targetX, targetY, flow.Story) is { } hidden
-            && StartScript(FieldScripts.HiddenItem, file: flow.Map.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
+            && StartScript(flow.Scripts.In(flow.Map.ScriptFileAt(targetX, targetY), "HiddenItem") != null ? "HiddenItem" : FieldScripts.HiddenItem,
+                file: flow.Map.ScriptFileAt(targetX, targetY), item: (hidden.Item, hidden.Count), flag: hidden.Flag)) return;
 
         // A honey tree faced from the south (HoneyTree_TryInteract, plan 06 · R13)
         if (HoneyTrees.Faced(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing) != null && StartScript(FieldScripts.HoneyTree)) return;
@@ -2944,7 +2947,7 @@ public partial class GameEngine
         band.End();
         renderContext.Unload();
         RegionMapPictures.Unload();
-        Raylib.UnloadRenderTexture(virtualScreen);
+        Gpu.Unload(virtualScreen);
         AudioManager.Close();
     }
 }

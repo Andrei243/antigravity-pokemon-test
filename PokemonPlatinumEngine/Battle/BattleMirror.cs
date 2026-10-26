@@ -75,9 +75,27 @@ internal sealed class BattleMirror
     /// are the same unless something outside the battle changed a Pokémon (a test setting a burn, the harness
     /// staging a picture), and the rules have to know of it.
     /// </summary>
-    public void Adopt()
+    /// <returns>
+    /// Whether any of them had changed in what the rules fight with (HP, status, level, held item, moves and PP): a
+    /// change no answer of the record holds, so a record of the battle no longer replays (plan 16 · T19's follow-up).
+    /// </returns>
+    public bool Adopt()
     {
-        foreach (var (shown, copy) in copyOf) copy.CopyStateFrom(shown);
+        bool changed = false;
+        foreach (var (shown, copy) in copyOf)
+        {
+            if (!changed && !Alike(shown, copy)) changed = true;
+            copy.CopyStateFrom(shown);
+        }
+        return changed;
+    }
+
+    private static bool Alike(Pokemon a, Pokemon b)
+    {
+        if (a.CurrentHP != b.CurrentHP || a.Status != b.Status || a.Level != b.Level || a.HeldItem?.Name != b.HeldItem?.Name || a.Moves.Count != b.Moves.Count) return false;
+        for (int i = 0; i < a.Moves.Count; i++)
+            if (a.Moves[i].Data.Name != b.Moves[i].Data.Name || a.Moves[i].CurrentPP != b.Moves[i].CurrentPP) return false;
+        return true;
     }
 
     /// <summary>

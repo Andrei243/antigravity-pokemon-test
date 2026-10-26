@@ -493,7 +493,7 @@ The rematch teams of the League and the Battleground use none; R20 to R23 decide
 **Rules the story stands on (plan 06).**
 - *Amity Square's walk*: its two gates are rooms with receptionists who only talk. **Plan 06 · R16c.**
 - *The Battle Arcade*: its doors are shut on the Battle Frontier's grounds. **Plan 06 · R18d.**
-- *A Giratina on the team* is not put into its Origin Forme on entering the Distortion World and back on leaving (`SetPartyGiratinaForm`); its forme goes by the Griseous Orb (and since plan 06 · R29 the Griseous Core) alone. **Plan 06 · R29b** (R29 left it).
+- *A Giratina on the team* is not put into its Origin Forme on entering the Distortion World and back on leaving (`SetPartyGiratinaForm`); its forme goes by the Griseous Orb (and since plan 06 · R29 the Griseous Core) alone. **Plan 06 · R29b** (R29 left it). Done in R29b (2026-10-26): `FormRules.GiratinaHere` on every arrival.
 - *A partner's Pokémon that comes back by its own move* is said to go back to the player (`BattleCore.Switch.cs`: the rival's Staraptor after U-turn). **Plan 06 · R19**, the next session that changes the battle's rules.
 
 **Event Pokémon and what an event's gift opens (plan 03 · D12c, which decides for each between the gift and a quest in its place).** Each place is built or its door is named, shut with its reason in the rulings:
