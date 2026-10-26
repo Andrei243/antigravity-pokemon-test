@@ -5,7 +5,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! You came all the way to the island. I knew you would."
       ],
       "text": [
-        ""
+        "{player}! Ai venit tocmai până pe insulă. Știam eu că o vei face."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Every Trainer who challenges the Frontier carries one of these. Here, it's yours."
       ],
       "text": [
-        ""
+        "Fiecare Antrenor care provoacă Frontier-ul poartă unul din astea. Ia, e al tău."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} received Scott's Frontier Pass!"
       ],
       "text": [
-        ""
+        "{player} a primit Permisul Frontier al lui Scott!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The halls here are still being finished. Come and find me at my house in the north-east of the island."
       ],
       "text": [
-        ""
+        "Sălile de aici nu sunt încă gata. Vino să mă cauți la casa mea, în nord-estul insulei."
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Guide"
       ],
       "text": [
-        ""
+        "Ghidul"
       ]
     },
     {
@@ -59,11 +59,11 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Despre ce parte din Frontier să-ți povestesc?",
+        "SĂLILE",
+        "SCHIMBUL",
+        "SALA CLASAMENTELOR",
+        "NIMIC"
       ]
     },
     {
@@ -72,8 +72,8 @@
         "They are still being made ready. Until they open, Scott sends challengers to the Battle Frontier in Sinnoh."
       ],
       "text": [
-        "",
-        ""
+        "Pe insula asta se află șapte săli: Tower, Dome, Palace, Arena, Factory, Pike și Pyramid.",
+        "Încă sunt pregătite. Până se deschid, Scott îi trimite pe provocatori la Battle Frontier din Sinnoh."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "The Exchange Service Corner, in the east of the island, trades Battle Points for prizes."
       ],
       "text": [
-        ""
+        "Exchange Service Corner, în estul insulei, schimbă Puncte de Luptă pe premii."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "The Ranking Hall, in the north-east, shows the best streaks of every hall."
       ],
       "text": [
-        ""
+        "Sala Clasamentelor, în nord-est, arată cele mai bune serii din fiecare sală."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Please enjoy the Battle Frontier!"
       ],
       "text": [
-        ""
+        "Bucură-te de Battle Frontier!"
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "Guide"
       ],
       "text": [
-        ""
+        "Ghidul"
       ]
     },
     {
@@ -119,11 +119,11 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care dintre reguli să ți-o explic?",
+        "NIVELURI",
+        "INTRAREA",
+        "OBIECTE PURTATE",
+        "NIMIC"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "In the Level 50 battles, a Pokémon above level 50 battles as if it were level 50."
       ],
       "text": [
-        ""
+        "În luptele de Nivel 50, un Pokémon de peste nivelul 50 luptă ca și cum ar avea nivelul 50."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "Some very rare Pokémon may not enter, and no two of your Pokémon may be the same species."
       ],
       "text": [
-        ""
+        "Unii Pokémon foarte rari nu au voie să intre, iar doi Pokémon din echipa ta nu pot fi de aceeași specie."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "No two of your Pokémon may hold the same item. Items from your Bag can't be used in battle."
       ],
       "text": [
-        ""
+        "Doi Pokémon din echipa ta nu pot purta același obiect. Obiectele din Rucsac nu pot fi folosite în luptă."
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Good luck in your challenges!"
       ],
       "text": [
-        ""
+        "Mult noroc la provocări!"
       ]
     }
   ],
@@ -165,7 +165,7 @@
         "Guide"
       ],
       "text": [
-        ""
+        "Ghidul"
       ]
     },
     {
@@ -176,10 +176,10 @@
         "NOTHING"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Despre ce vrei să afli?",
+        "PERMISUL",
+        "PUNCTE DE LUPTĂ",
+        "NIMIC"
       ]
     },
     {
@@ -187,7 +187,7 @@
         "The Frontier Pass shows that you are welcome at every hall. Scott gives it to Trainers he believes in."
       ],
       "text": [
-        ""
+        "Permisul Frontier arată că ești binevenit în fiecare sală. Scott îl dă Antrenorilor în care crede."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "Please ask me again any time."
       ],
       "text": [
-        ""
+        "Întreabă-mă din nou oricând."
       ]
     },
     {
@@ -204,8 +204,8 @@
         "The Battle Points of every Frontier, here and in Sinnoh, are one and the same."
       ],
       "text": [
-        "",
-        ""
+        "Punctele de Luptă se câștigă în săli. Ai {points} PL.",
+        "Punctele de Luptă din orice Frontier, de aici și din Sinnoh, sunt unele și aceleași."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "Please ask me again any time."
       ],
       "text": [
-        ""
+        "Întreabă-mă din nou oricând."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Backers"
         ],
         "text": [
-          ""
+          "Excursioniștii"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Humilau's Pokémon Center has a view of the sea from every window. My Pokémon rest better here, I swear."
         ],
         "text": [
-          ""
+          "Centrul Pokémon din Humilau are vedere la mare de la fiecare fereastră. Pokémonii mei se odihnesc mai bine aici, jur."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Pokémon Ranger"
         ],
         "text": [
-          ""
+          "Ranger Pokémon"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I patrol the water between here and Undella. The sea is calm, but the currents round the Seaside Cave are strong."
         ],
         "text": [
-          ""
+          "Patrulez apele dintre aici și Undella. Marea e calmă, dar curenții din jurul Seaside Cave sunt puternici."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Breeder"
         ],
         "text": [
-          ""
+          "Crescătorul"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Water types love this city. So do their Trainers. So do I, come to think of it."
         ],
         "text": [
-          ""
+          "Pokémonii de tip Apă iubesc orașul ăsta. La fel și Antrenorii lor. Și eu, de fapt."
         ]
       }
     }

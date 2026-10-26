@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "One is in the west cabin off the forward hall. The other... the scientist at the stern keeps that one to himself."
         ],
         "text": [
-          "",
-          ""
+          "Abia m-am alăturat și încă nu-mi dau un Pokémon. Dar știu lucruri! Sunt două comutatoare pentru bariera spre prora.",
+          "Unul e în cabina de vest, de pe holul din față. Celălalt... omul de știință de la pupa îl păstrează pentru el."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Intruder in the cabins! You won't get any further!"
         ],
         "text": [
-          ""
+          "Intrus în cabine! Nu mai ajungi mai departe!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "You got further. A lot further."
         ],
         "text": [
-          ""
+          "Ai ajuns mai departe. Mult mai departe."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "These are our quarters! Out!"
         ],
         "text": [
-          ""
+          "Astea sunt cabinele noastre! Afară!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "I'll be in my cabin. Sulking."
         ],
         "text": [
-          ""
+          "Mă duc în cabina mea. Să mă supăr."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "The ship's heart is guarded by the barrier. And by me!"
         ],
         "text": [
-          ""
+          "Inima navei e păzită de barieră. Și de mine!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Just the barrier now, then."
         ],
         "text": [
-          ""
+          "Atunci rămâne doar bariera."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "We'll freeze Unova, and you can't stop it!"
         ],
         "text": [
-          ""
+          "O să înghețăm Unova, și tu nu ne poți opri!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "You stopped me, at least."
         ],
         "text": [
-          ""
+          "Pe mine m-ai oprit, cel puțin."
         ]
       }
     }

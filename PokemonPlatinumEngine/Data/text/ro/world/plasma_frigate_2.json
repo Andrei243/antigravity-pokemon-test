@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Who are you? You don't belong on this ship!"
         ],
         "text": [
-          ""
+          "Cine ești? Nu ai ce căuta pe nava asta!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Ugh! We have to warn the others!"
         ],
         "text": [
-          ""
+          "Ugh! Trebuie să-i avertizăm pe ceilalți!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Two kids? On our ship? Get them!"
         ],
         "text": [
-          ""
+          "Doi copii? Pe nava noastră? Prindeți-i!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Protect the switches! Somebody!"
         ],
         "text": [
-          ""
+          "Apărați comutatoarele! Cineva!"
         ]
       }
     }

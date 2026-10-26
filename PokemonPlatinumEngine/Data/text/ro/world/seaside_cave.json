@@ -6,7 +6,7 @@
           "Johan"
         ],
         "text": [
-          ""
+          "Johan"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "A Ranger goes where the trouble is. And right now, the trouble is you!"
         ],
         "text": [
-          ""
+          "Un Ranger merge acolo unde sunt probleme. Iar acum, problema ești tu!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Trouble handled. By you."
         ],
         "text": [
-          ""
+          "Problema rezolvată. De tine."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Tia"
         ],
         "text": [
-          ""
+          "Tia"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "The sound of the sea in a cave makes my fists itch! Battle!"
         ],
         "text": [
-          ""
+          "Sunetul mării într-o peșteră îmi face pumnii să mă mănânce! Luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Ow. My fists itch for a different reason now."
         ],
         "text": [
-          ""
+          "Au. Pumnii mă mănâncă acum din alt motiv."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Mikiko"
         ],
         "text": [
-          ""
+          "Mikiko"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "I'm mapping this cave. You're not on my map, so let's battle!"
         ],
         "text": [
-          ""
+          "Cartografiez peștera asta. Tu nu ești pe harta mea, așa că să luptăm!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "I'll mark you down as unbeatable."
         ],
         "text": [
-          ""
+          "Te trec ca neînvins."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Drago"
         ],
         "text": [
-          ""
+          "Drago"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Hyah! The drip of the cave keeps me sharp!"
         ],
         "text": [
-          ""
+          "Hyah! Picurul peșterii mă ține treaz!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Drip... drip... defeat."
         ],
         "text": [
-          ""
+          "Pic... pic... înfrângere."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Roggenrola"
         ],
         "text": [
-          ""
+          "Roggenrola"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "Roggenrola: Rorogg!"
         ],
         "text": [
-          ""
+          "Roggenrola: Rorogg!"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Crustle"
         ],
         "text": [
-          ""
+          "Crustle"
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Roggenrola"
         ],
         "text": [
-          ""
+          "Roggenrola"
         ]
       },
       "dialog": {
@@ -146,7 +146,7 @@
           "Roggenrola: Stur! Stur!"
         ],
         "text": [
-          ""
+          "Roggenrola: Stur! Stur!"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Roggenrola"
         ],
         "text": [
-          ""
+          "Roggenrola"
         ]
       },
       "dialog": {
@@ -164,7 +164,7 @@
           "Roggenrola: Rooog!"
         ],
         "text": [
-          ""
+          "Roggenrola: Rooog!"
         ]
       }
     },
@@ -174,7 +174,7 @@
           "Rocky"
         ],
         "text": [
-          ""
+          "Stâncosul"
         ]
       },
       "before": {
@@ -182,7 +182,7 @@
           "If you want past here, you'll have to beat me and my Roggenrola!"
         ],
         "text": [
-          ""
+          "Dacă vrei să treci pe aici, trebuie să ne învingi pe mine și pe Roggenrola mea!"
         ]
       },
       "after": {
@@ -190,7 +190,7 @@
           "Your strength is the real thing!"
         ],
         "text": [
-          ""
+          "Puterea ta e pe bune!"
         ]
       }
     }

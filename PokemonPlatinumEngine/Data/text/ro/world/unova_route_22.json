@@ -6,7 +6,7 @@
           "Shel"
         ],
         "text": [
-          ""
+          "Shel"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "The road to the Giant Chasm is no place for beginners. Let me check your strength!"
         ],
         "text": [
-          ""
+          "Drumul spre Giant Chasm nu e pentru începători. Să-ți verific puterea!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "You'll do. You'll more than do."
         ],
         "text": [
-          ""
+          "O să te descurci. Chiar mai mult decât atât."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Myra"
         ],
         "text": [
-          ""
+          "Myra"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "I've walked every road in Unova, and this one's the steepest. Battle me while I catch my breath!"
         ],
         "text": [
-          ""
+          "Am bătut toate drumurile din Unova, și ăsta e cel mai abrupt. Luptă cu mine cât îmi trag sufletul!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Out of breath and out of Pokémon."
         ],
         "text": [
-          ""
+          "Fără suflu și fără Pokémon."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Addison"
         ],
         "text": [
-          ""
+          "Addison"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "My Pokémon were raised with love and long walks. Let me show you!"
         ],
         "text": [
-          ""
+          "Pokémonii mei au fost crescuți cu dragoste și plimbări lungi. Să-ți arăt!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Love wasn't quite enough today."
         ],
         "text": [
-          ""
+          "Dragostea n-a fost destul azi."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Lucca"
         ],
         "text": [
-          ""
+          "Lucca"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Eight Badges? Then you won't mind one more battle!"
         ],
         "text": [
-          ""
+          "Opt Insigne? Atunci nu te deranjează încă o luptă!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Badges don't lie, I suppose."
         ],
         "text": [
-          ""
+          "Insignele nu mint, bănuiesc."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Lowell"
         ],
         "text": [
-          ""
+          "Lowell"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "My pack is heavy, but my Pokémon are heavier hitters!"
         ],
         "text": [
-          ""
+          "Rucsacul meu e greu, dar Pokémonii mei lovesc mai greu!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Ouch. I'll carry this loss too."
         ],
         "text": [
-          ""
+          "Ouch. O să car și înfrângerea asta."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Justin"
         ],
         "text": [
-          ""
+          "Justin"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "These hills have strong Pokémon, and I'm stronger! Hup!"
         ],
         "text": [
-          ""
+          "Dealurile astea au Pokémon puternici, iar eu sunt mai puternic! Hup!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "The hills win again. And you."
         ],
         "text": [
-          ""
+          "Dealurile câștigă iar. Și tu."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Terrakion"
         ],
         "text": [
-          ""
+          "Terrakion"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "Terrakion: Gurooooh!"
         ],
         "text": [
-          ""
+          "Terrakion: Gurooooh!"
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Colress"
         ],
         "text": [
-          ""
+          "Colress"
         ]
       }
     }
@@ -191,7 +191,7 @@
         "Route 22\nHumilau City to the Giant Chasm"
       ],
       "text": [
-        ""
+        "Ruta 22\nDin Orașul Humilau spre Giant Chasm"
       ]
     },
     "10805": {
@@ -199,7 +199,7 @@
         "Giant Chasm ahead"
       ],
       "text": [
-        ""
+        "Giant Chasm în față"
       ]
     }
   }

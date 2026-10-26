@@ -6,7 +6,7 @@
           "Marlon"
         ],
         "text": [
-          ""
+          "Marlon"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Doyle"
         ],
         "text": [
-          ""
+          "Doyle"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Waves come in and go out, and so do challengers. Let's see if you stay!"
         ],
         "text": [
-          ""
+          "Valurile vin și se duc, la fel și provocatorii. Să vedem dacă rămâi!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "You rode that one all the way in."
         ],
         "text": [
-          ""
+          "Ai călărit valul ăla până la țărm."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Melina"
         ],
         "text": [
-          ""
+          "Melina"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "The Gym may look like a resort, but nobody here is on holiday!"
         ],
         "text": [
-          ""
+          "Arena poate arăta ca o stațiune, dar nimeni de aici nu e în vacanță!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Splashed! Marlon's waiting on the dock."
         ],
         "text": [
-          ""
+          "Stropit! Marlon te așteaptă pe doc."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Humilau City Pokémon Gym\nLeader: Marlon\nCertified Trainers: {player}"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Humilau\nLider: Marlon\nAntrenori certificați: {player}"
       ]
     }
   }

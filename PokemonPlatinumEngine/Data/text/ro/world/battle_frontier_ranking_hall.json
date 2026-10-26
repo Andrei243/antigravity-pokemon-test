@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Ranking Hall honours the Frontier's best streaks. The boards will fill as the island's halls open."
         ],
         "text": [
-          ""
+          "Sala Clasamentelor cinstește cele mai bune serii din Frontier. Panourile se vor umple pe măsură ce se deschid sălile insulei."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Ninja Boy"
         ],
         "text": [
-          ""
+          "Micul Ninja"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "One day my name will be on one of these boards. Then everyone will know it!"
         ],
         "text": [
-          ""
+          "Într-o zi numele meu va fi pe unul din panourile astea. Atunci toată lumea îl va ști!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The boards are empty! I guess nobody's had a long enough streak yet."
         ],
         "text": [
-          ""
+          "Panourile sunt goale! Se pare că nimeni n-a avut încă o serie destul de lungă."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "BATTLE TOWER: SINGLE BATTLES\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE TOWER: LUPTE SIMPLE\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_TowerDoublesRecords": {
@@ -69,7 +69,7 @@
         "BATTLE TOWER: DOUBLE BATTLES\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE TOWER: LUPTE DUBLE\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_TowerMultisRecords": {
@@ -77,7 +77,7 @@
         "BATTLE TOWER: MULTI BATTLES\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE TOWER: LUPTE MULTIPLE\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_TowerLinkRecords": {
@@ -85,7 +85,7 @@
         "BATTLE TOWER: LINK MULTI BATTLES\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE TOWER: LUPTE MULTIPLE ÎN REȚEA\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_ArenaRecords": {
@@ -93,7 +93,7 @@
         "BATTLE ARENA\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE ARENA\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PalaceRecords": {
@@ -101,7 +101,7 @@
         "BATTLE PALACE\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE PALACE\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_FactoryRecords": {
@@ -109,7 +109,7 @@
         "BATTLE FACTORY\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE FACTORY\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_DomeRecords": {
@@ -117,7 +117,7 @@
         "BATTLE DOME\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE DOME\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PikeRecords": {
@@ -125,7 +125,7 @@
         "BATTLE PIKE\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE PIKE\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PyramidRecords": {
@@ -133,7 +133,7 @@
         "BATTLE PYRAMID\nNo records yet."
       ],
       "text": [
-        ""
+        "BATTLE PYRAMID\nNicio înregistrare încă."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_DomePikeFactoryRecordsSign": {
@@ -141,7 +141,7 @@
         "The records of the Dome, the Pike and the Factory."
       ],
       "text": [
-        ""
+        "Recordurile de la Dome, Pike și Factory."
       ]
     },
     "BattleFrontier_RankingHall_EventScript_PalaceArenaPyramidRecordsSIgn": {
@@ -149,7 +149,7 @@
         "The records of the Palace, the Arena and the Pyramid."
       ],
       "text": [
-        ""
+        "Recordurile de la Palace, Arena și Pyramid."
       ]
     }
   }

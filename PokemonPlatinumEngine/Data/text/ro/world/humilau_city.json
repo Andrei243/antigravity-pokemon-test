@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Marlon"
         ],
         "text": [
-          ""
+          "Marlon"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Eek! Hee hee! You'll never catch me!"
         ],
         "text": [
-          ""
+          "Iiii! Hi hi! N-o să mă prinzi niciodată!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Rich Boy"
         ],
         "text": [
-          ""
+          "Băiat bogat"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Ha ha! Wait for me! I'm going to catch you!"
         ],
         "text": [
-          ""
+          "Ha ha! Așteaptă-mă! O să te prind!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Photographer"
         ],
         "text": [
-          ""
+          "Fotograful"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "A board you put your face through for a picture! I love them. Some people call them photo boards, but they're wrong."
         ],
         "text": [
-          ""
+          "Un panou prin care îți bagi fața pentru o poză! Îmi plac. Unii le spun panouri foto, dar greșesc."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "You're here for the Gym? Good luck finding Marlon. He goes wherever the waves take him."
         ],
         "text": [
-          ""
+          "Ai venit pentru Arenă? Mult noroc să-l găsești pe Marlon. Merge oriunde îl duc valurile."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Swimmer"
         ],
         "text": [
-          ""
+          "Înotătorul"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Floating in the waves like this, I feel like a mermaid. They say there was a Gym Leader like that in Kanto once."
         ],
         "text": [
-          ""
+          "Plutind așa pe valuri, mă simt ca o sirenă. Se zice că a fost odată un Lider de Arenă ca asta în Kanto."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Swimmer"
         ],
         "text": [
-          ""
+          "Înotătorul"
         ]
       },
       "dialog": {
@@ -124,7 +124,7 @@
           "Do you know the Seaside Cave? Surf down Route 21 and you'll find it. Go all the way through and you come out by Undella Town."
         ],
         "text": [
-          ""
+          "Cunoști Seaside Cave? Navighează în jos pe Ruta 21 și o găsești. Treci de-a lungul ei și ieși lângă Orășelul Undella."
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Lady"
         ],
         "text": [
-          ""
+          "Doamna"
         ]
       },
       "dialog": {
@@ -142,7 +142,7 @@
           "This dress is so light and comfortable. Humilau makes you want to wear nothing but summer clothes."
         ],
         "text": [
-          ""
+          "Rochia asta e atât de ușoară și comodă. La Humilau îți vine să porți numai haine de vară."
         ]
       }
     },
@@ -152,7 +152,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -160,7 +160,7 @@
           "Nobody controls the sea, or nature. People and Pokémon have to learn to live alongside it."
         ],
         "text": [
-          ""
+          "Nimeni nu stăpânește marea, nici natura. Oamenii și Pokémonii trebuie să învețe să trăiască alături de ea."
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -178,7 +178,7 @@
           "Aaah. Another beautiful day. How long have I been on holiday now? All this sunshine is turning my brain to sand."
         ],
         "text": [
-          ""
+          "Aaah. Încă o zi frumoasă. De cât timp sunt în vacanță? Tot soarele ăsta îmi transformă creierul în nisip."
         ]
       }
     }
@@ -189,7 +189,7 @@
         "Humilau City\nCalm and sparkling seas"
       ],
       "text": [
-        ""
+        "Orașul Humilau\nMări calme și sclipitoare"
       ]
     },
     "17": {
@@ -197,7 +197,7 @@
         "Marine Tube ahead\nThe walk-through aquarium"
       ],
       "text": [
-        ""
+        "Tubul Marin în față\nAcvariul pe jos"
       ]
     },
     "18": {
@@ -205,7 +205,7 @@
         "Humilau City Pokémon Gym\nLeader: Marlon\nMore splash than the sea!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Humilau\nLider: Marlon\nMai multă stropeală decât marea!"
       ]
     }
   }

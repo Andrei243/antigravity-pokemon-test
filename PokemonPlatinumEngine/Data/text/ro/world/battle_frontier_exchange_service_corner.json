@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Rich Boy"
         ],
         "text": [
-          ""
+          "Băiat bogat"
         ]
       },
       "dialog": {
@@ -54,7 +54,7 @@
           "I won't spend a single point until I can have the biggest prize on the list."
         ],
         "text": [
-          ""
+          "Nu cheltuiesc niciun punct până nu pot lua cel mai mare premiu de pe listă."
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Pokéfan"
         ],
         "text": [
-          ""
+          "Pokéfana"
         ]
       },
       "dialog": {
@@ -72,7 +72,7 @@
           "Battle Points can't be bought with money. Every one of them is won in battle!"
         ],
         "text": [
-          ""
+          "Punctele de Luptă nu se cumpără cu bani. Fiecare se câștigă în luptă!"
         ]
       }
     },
@@ -82,7 +82,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -90,7 +90,7 @@
           "I traded my points for a Technical Machine. Now I need a Pokémon that can learn it."
         ],
         "text": [
-          ""
+          "Mi-am schimbat punctele pe o Mașină Tehnică. Acum îmi trebuie un Pokémon care s-o poată învăța."
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -108,7 +108,7 @@
           "Points earned on this island and points earned at Sinnoh's Frontier are all the same points."
         ],
         "text": [
-          ""
+          "Punctele câștigate pe insula asta și cele câștigate la Frontier-ul din Sinnoh sunt toate aceleași puncte."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -126,7 +126,7 @@
           "Which prize should I choose? I've been standing here for an hour!"
         ],
         "text": [
-          ""
+          "Ce premiu să aleg? Stau aici de o oră!"
         ]
       }
     }

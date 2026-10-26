@@ -162,10 +162,10 @@
         "NOWHERE"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Unde vrei să navigăm?",
+        "INSULA DIN SUD",
+        "Battle Frontier",
+        "NICĂIERI"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "{player} showed the S.S. Ticket."
       ],
       "text": [
-        ""
+        "{player} a arătat Biletul de Vapor."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "The Battle Frontier it is! Please come aboard."
       ],
       "text": [
-        ""
+        "Battle Frontier, deci! Urcă la bord, te rog."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "{player} sailed for the Battle Frontier..."
       ],
       "text": [
-        ""
+        "{player} a pornit spre Battle Frontier..."
       ]
     }
   ]
