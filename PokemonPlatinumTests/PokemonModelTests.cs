@@ -64,7 +64,9 @@ public class PokemonModelTests
         ["Squeakshire"] = 12, ["Wugsextet"] = 12, ["Habanerogue"] = 6, ["Hydrajet"] = 8, ["Lodestatic"] = 3,
         ["Orthobore"] = 0, ["Barrowhound"] = 0, ["Chagamage"] = 0,
         // Plan 06 · R20b: Mega Inteleon's right eye is the lens of its scope
-        ["Inteleon-Mega"] = 1
+        ["Inteleon-Mega"] = 1,
+        // Wave 60: the Mega Dynamax form of Gengar keeps its Mega's third eye
+        ["Gengar-Mega-Mmax"] = 3
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
@@ -78,7 +80,9 @@ public class PokemonModelTests
         // Probopass's heir keeps its two Mini-Noses hovering free at its sides
         ["Lodestarch"] = 3,
         // Beadruin's ring of six beads floats round its body, as Chi-Yu's beads do round it in the original
-        ["Beadruin"] = 2
+        ["Beadruin"] = 2,
+        // Wave 60: Mega Alakazam's five spoons are five crystals in its Mega Dynamax form, still floating over its head
+        ["Alakazam-Mega-Mmax"] = 6
     };
 
     [Theory]
