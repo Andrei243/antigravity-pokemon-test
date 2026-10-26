@@ -708,7 +708,10 @@
     "useOn": "Use the {item} on which Pokémon?",
     "grew": "{name} grew to Lv. {level}!",
     "useOnMove": "Use the {item} on which move?",
-    "nuzlockeNoRevive": "A Pokémon that has fallen in a Nuzlocke can't be brought back."
+    "nuzlockeNoRevive": "A Pokémon that has fallen in a Nuzlocke can't be brought back.",
+    "catalog": { "heat": "Microwave oven", "wash": "Washing machine", "frost": "Refrigerator", "fan": "Electric fan", "mow": "Lawn mower", "bulb": "Light bulb" },
+    "cube": { "changeForme": "Change Forme" },
+    "optionsFor": "What should the {item} do for {name}?"
   },
 
   "shop": {

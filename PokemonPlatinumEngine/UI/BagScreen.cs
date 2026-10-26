@@ -100,6 +100,12 @@ public class BagScreen
     public bool ChoosingMove { get; private set; }
     public int MoveIndex { get; private set; }
 
+    // ---- a key item's list to choose from (plan 06 · R29b: the Rotom Catalog, the Zygarde Cube)
+
+    /// <summary>The rows the item offers for the chosen Pokémon while it waits for one (null otherwise), and the cursor on them.</summary>
+    public IReadOnlyList<string>? Options { get; private set; }
+    public int OptionIndex { get; private set; }
+
     // ---- teaching a move to a Pokémon that knows four
 
     private readonly Queue<(Pokemon Pokemon, string Move, ItemData? Machine)> toTeach = new();
@@ -187,6 +193,7 @@ public class BagScreen
         choosingFor = null;
         Tossing = false;
         ChoosingMove = false;
+        Options = null;
         teaching = null;
         toTeach.Clear();
         LevelUp = null;
@@ -212,6 +219,7 @@ public class BagScreen
         choosingFor = null;
         Tossing = false;
         ChoosingMove = false;
+        Options = null;
         LevelUp = null;
         taughtByCandy = null;
     }
@@ -536,6 +544,12 @@ public class BagScreen
                 else if (cancel) CancelMove();
                 else if (confirm) UseOnMove(inventory, party, onNotification);
             }
+            else if (Options != null)
+            {
+                if (dy != 0) MoveOption(dy);
+                else if (cancel) CancelOption();
+                else if (confirm) ChooseOption(party, onNotification);
+            }
             else if (dx != 0 || dy != 0) MoveTarget(dx, dy, party.Count);
             else if (cancel) CancelTarget();
             else if (confirm) UseOnTarget(inventory, party, onNotification, context ?? new EvolutionContext { Party = party, Bag = inventory });
@@ -579,6 +593,7 @@ public class BagScreen
         giving = give;
         TargetIndex = 0;
         ChoosingMove = false;
+        Options = null;
         choiceAge = 0f;
         AudioManager.PlaySound("select");
     }
@@ -694,7 +709,15 @@ public class BagScreen
         else if (FormChanges.Handles(item))
         {
             // The later games' key items that change a form (plan 06 · R29): never used up, and the move a form brings
-            // that doesn't fit is asked about as a level's is
+            // that doesn't fit is asked about as a level's is. The Rotom Catalog and the Zygarde Cube list what they
+            // can do for it first (plan 06 · R29b)
+            if (FormChanges.WouldHelp(item, target, party) && FormChanges.OptionsFor(item, target) is { } rows)
+            {
+                Options = rows;
+                OptionIndex = 0;
+                AudioManager.PlaySound("select");
+                return;
+            }
             var result = FormChanges.Apply(item, target, party);
             if (!result.Applied)
             {
@@ -763,6 +786,45 @@ public class BagScreen
         taughtByCandy = null;
         if (NextTeaching()) return;
         CheckCandyEvolution();
+        choosingFor = null;
+    }
+
+    // ---------------------------------------------------------------- a key item's list (plan 06 · R29b)
+
+    public void MoveOption(int dy)
+    {
+        if (Options is not { Count: > 0 } rows) return;
+        OptionIndex = UiNav.Wrap(OptionIndex, Math.Sign(dy), rows.Count);
+        AudioManager.PlaySound("cursor");
+    }
+
+    public void CancelOption()
+    {
+        Options = null;
+        AudioManager.PlaySound("cancel");
+    }
+
+    /// <summary>
+    /// The row under the cursor of the Rotom Catalog's or the Zygarde Cube's list (<see cref="FormChanges.Choose"/>):
+    /// a row that would change nothing says why and the list stays; otherwise the list and the choice close, and a
+    /// move that doesn't fit is asked about as a level's is.
+    /// </summary>
+    public void ChooseOption(Party party, Action<string> onNotification)
+    {
+        if (Options == null || choosingFor is not { } item || TargetIndex >= party.Count) return;
+        var target = party.Members[TargetIndex];
+        var result = FormChanges.Choose(item, target, party, OptionIndex);
+        if (!result.Applied)
+        {
+            onNotification(result.Message);
+            AudioManager.PlaySound("error");
+            return;
+        }
+        Options = null;
+        AudioManager.PlayCry(target);
+        if (result.Message.Length > 0) onNotification(result.Message);
+        foreach (string wanted in result.Wanted) toTeach.Enqueue((target, wanted, null));
+        if (NextTeaching()) return;
         choosingFor = null;
     }
 
@@ -921,7 +983,9 @@ public class BagScreen
             var item = choosingFor;
             var probe = context ?? new EvolutionContext { Party = party, Bag = inventory };
             string prompt = giving ? Text.Of("bag.giveTo", ("item", item.DisplayName))
-                : MoveTeaching.IsMachine(item) ? Text.Of("bag.teach", ("move", item.TeachesMove)) : Text.Of("bag.useOn", ("item", item.DisplayName));
+                : MoveTeaching.IsMachine(item) ? Text.Of("bag.teach", ("move", item.TeachesMove))
+                : Options != null && TargetIndex < party.Count ? Text.Of("bag.optionsFor", ("item", item.DisplayName), ("name", party.Members[TargetIndex].DisplayName))
+                : Text.Of("bag.useOn", ("item", item.DisplayName));
             if (LevelUp is { } level)
             {
                 // A level's panel over the team's cards (plan 08 · P5): the prompt says the level's line and waits for a press
@@ -936,6 +1000,7 @@ public class BagScreen
             if (teaching is var (p, move, _)) ModernUi.MoveChoice(panel, p, move, ForgetIndex, 1f);
             else if (ChoosingMove && TargetIndex < party.Count)
                 ModernUi.MovePick(panel, party.Members[TargetIndex], MoveIndex, Text.Of("bag.useOnMove", ("item", item.DisplayName)));
+            else if (Options != null) ModernUi.DrawChoices(screenWidth, screenHeight, Options, OptionIndex, 1f);
             return;
         }
 

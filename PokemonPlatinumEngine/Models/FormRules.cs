@@ -85,14 +85,18 @@ public static class FormRules
     /// Forme with the Griseous Orb and its Altered Forme without, and Arceus with Multitype is the type of its
     /// plate. True when the form changed.
     /// </summary>
-    public static bool ByHeldItem(Pokemon p)
+    /// <param name="distortionWorld">
+    /// The Pokémon is on the team in the Distortion World (plan 06 · R29b): a Giratina is in its Origin Forme there
+    /// whatever it holds (<c>Party_SetGiratinaForm</c> with the Origin Forme, <c>Pokemon_SetGiratinaOriginForm</c>).
+    /// </param>
+    public static bool ByHeldItem(Pokemon p, bool distortionWorld = false)
     {
         string? form;
         switch (p.Species.Name)
         {
             case "Giratina":
                 // The Griseous Orb is Platinum's way, the Griseous Core Legends: Arceus's (plan 06 · R29)
-                form = p.HeldItem?.Name is GriseousOrb or GriseousCore ? "Giratina-Origin" : null;
+                form = distortionWorld || p.HeldItem?.Name is GriseousOrb or GriseousCore ? "Giratina-Origin" : null;
                 break;
             // Plan 06 · R29: Legends: Arceus's crystal and globe hold Dialga and Palkia in their Origin Formes
             case "Dialga":
@@ -130,6 +134,22 @@ public static class FormRules
         return true;
     }
 
+    /// <summary>Whether a map is a floor or a room of the Distortion World (plan 06 · R29b): the Turnback Cave's room too.</summary>
+    public static bool IsDistortionWorld(string map) => map.StartsWith("DistortionWorld", StringComparison.Ordinal);
+
+    /// <summary>
+    /// The team's Giratina as the player comes to a map (plan 06 · R29b; <c>Party_SetGiratinaForm</c>): in the Origin
+    /// Forme in the Distortion World, and outside it in the form its item gives it. Nobody else is touched. True when
+    /// a form changed.
+    /// </summary>
+    public static bool GiratinaHere(IEnumerable<Pokemon> team, string map)
+    {
+        bool changed = false, inside = IsDistortionWorld(map);
+        foreach (var p in team)
+            if (p.Species.Name == "Giratina" && !p.IsEgg) changed |= ByHeldItem(p, inside);
+        return changed;
+    }
+
     /// <summary>
     /// What its moves do to its form (plan 06 · R29): Keldeo is in its Resolute Form while it knows Secret Sword and in
     /// its Ordinary Form without (Showdown's Keldeo-Resolute by its required move). True when the form changed.
@@ -158,6 +178,17 @@ public static class FormRules
     public static bool BackToLand(Pokemon p)
     {
         if (p.Species.Name != "Shaymin" || p.Form == null) return false;
+        p.ChangeForm(null);
+        return true;
+    }
+
+    /// <summary>
+    /// Furfrou's trim grows out as it goes into a box (plan 06 · R29b; X and Y's, where a trim also lasts five days:
+    /// the groomer who gives one and the days are plan 23's, with Kalos). True when it changed.
+    /// </summary>
+    public static bool TrimGrowsOut(Pokemon p)
+    {
+        if (p.Species.Name != "Furfrou" || p.Form == null) return false;
         p.ChangeForm(null);
         return true;
     }
