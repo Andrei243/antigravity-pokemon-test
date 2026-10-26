@@ -733,6 +733,14 @@ surf 5-10
 old rod 10
 good rod 20
 super rod 40
+=== johto_route_6
+Route 6
+grass 12-15
+surf 5-10
+old rod 10
+good rod 20
+super rod 40
+trainers 3, 41-43: johto_camper_virgil 43, johto_picnicker_selina 42, johto_twins_day_and_dani 41
 === johto_victory_road_1f
 Victory Road Jk
 grass 32-36
@@ -2377,6 +2385,9 @@ trainers 5, 31-37: kanto_black_belt_aaron 36, kanto_black_belt_hideki 32, kanto_
 === saffron_city_gym
 Saffron City
 trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_channeler_tasha 33, kanto_psychic_cameron 33, kanto_psychic_johan 31, kanto_psychic_preston 38, kanto_psychic_tyron 34
+=== saffron_gym
+Saffron City
+trainers 4, 42-47: johto_medium_darcy 46, johto_medium_rebecca 45, johto_psychic_m_franklin 47, johto_psychic_m_jared 45
 === seafloor_cavern_entrance
 Seafloor Cavern
 surf 5-35

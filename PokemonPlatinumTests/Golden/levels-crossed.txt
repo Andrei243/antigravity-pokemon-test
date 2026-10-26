@@ -373,7 +373,6 @@ johto_camper_tanner_4 137 (52) [Sudowoodo → Mimicedar, Lanturn → Abyssolux]
 johto_camper_todd_2 123 (31) [Geodude → Golem, Geodude → Golem, Psyduck → Psyduke]
 johto_camper_todd_3 127 (36) [Geodude → Golem, Graveler → Golem, Golduck → Psyduke, Slugma → Calderon]
 johto_camper_todd_4 139 (56) [Graveler → Golem, Graveler → Golem, Magcargo → Calderon, Golduck → Psyduke]
-johto_camper_virgil 131 (43) [Slakoth → Slaking]
 johto_castle_valet_darach 106 (5) [Rattata → Ratchisel]
 johto_champion_lance 136 (50) [Gyarados → Typhonarch, Aerodactyl → Azhdarch]
 johto_champion_lance_2 149 (75) [Gyarados → Typhonarch]
@@ -508,10 +507,8 @@ johto_leader_sabrina_sabrina_2 141 (60) [Espeon → Zenitheon, Mr. Mime → Mime
 johto_leader_whitney 115 (19) [Clefairy → Clefable, Miltank → Pastorine]
 johto_leader_whitney_2 140 (58) [Girafarig → Farigiraf, Lickilicky → Lickolossus, Bibarel → Dambarel, Miltank → Pastorine]
 johto_medium_bethany 119 (25) [Haunter → Gengar]
-johto_medium_darcy 133 (46) [Slowpoke → Slowmantle, Slowbro → Slowmantle]
 johto_medium_ethel 119 (25) [Haunter → Gengar]
 johto_medium_margaret 119 (25) [Haunter → Gengar]
-johto_medium_rebecca 133 (45) [Bronzor → Dotakuron, Hypno → Mesmeryx]
 johto_mystery_man_eusine 121 (27) [Drowzee → Mesmeryx, Haunter → Gengar, Electrode → Dynamorb]
 johto_partner_rival_1 141 (60)
 johto_partner_rival_2 141 (60)
@@ -539,7 +536,6 @@ johto_picnicker_liz_4 141 (60)
 johto_picnicker_mickey 124 (32) [Weepinbell → Victreebel]
 johto_picnicker_mickey_2 128 (38)
 johto_picnicker_piper 129 (40) [Spoink → Grumpig]
-johto_picnicker_selina 131 (42) [Cherubi → Sakurabloom]
 johto_picnicker_sharon 131 (43) [Furret → Ermilong, Rapidash → Solarion]
 johto_picnicker_tanya 135 (49) [Exeggutor → Palmagus]
 johto_picnicker_tiffany_2 125 (34) [Clefairy → Clefable]
@@ -576,9 +572,7 @@ johto_pokefan_m_robert 131 (43) [Quagsire → Mirelord]
 johto_pokefan_m_trevor 131 (42) [Psyduck → Psyduke]
 johto_pokefan_marigold 113 (16) [Meowth → Regalynx]
 johto_psychic_m_fidel 131 (43) [Xatu → Totemsight]
-johto_psychic_m_franklin 134 (47) [Kadabra → Alakazam, Girafarig → Farigiraf]
 johto_psychic_m_herman 129 (39) [Exeggcute → Palmagus, Exeggcute → Palmagus, Exeggutor → Palmagus]
-johto_psychic_m_jared 133 (45) [Mr. Mime → Mimestro, Exeggcute → Palmagus, Exeggcute → Palmagus]
 johto_psychic_m_rodney 130 (41) [Chingling → Chimecho, Hypno → Mesmeryx]
 johto_rival_silver 115 (18) [Gastly → Gengar, Zubat → Crobat, Bayleef → Meganium]
 johto_rival_silver_10 115 (18) [Gastly → Gengar, Zubat → Crobat, Croconaw → Feraligatr]
@@ -722,7 +716,6 @@ johto_team_rocket_mickey_7 123 (30) [Golbat → Crobat, Golbat → Crobat, Arbok
 johto_tower_tycoon_palmer 106 (5) [Rattata → Ratchisel]
 johto_twins_amy_and_mimi_2 109 (10) [Ledyba → Coccinova, Spinarak → Orbweavix]
 johto_twins_dara_and_dia 113 (16) [Mareep → Ampharos, Marill → Azumarill]
-johto_twins_day_and_dani 130 (41)
 johto_twins_jo_and_zoe 134 (47)
 johto_twins_jo_and_zoe_2 127 (37)
 johto_twins_kay_and_tia 130 (41) [Quagsire → Mirelord, Quagsire → Mirelord]
@@ -2212,6 +2205,14 @@ surf 106-109 (own 5-10)
 old rod 109 (own 10)
 good rod 116 (own 20)
 super rod 129 (own 40)
+=== johto_route_6
+Route 6, Johto
+grass 111-113 (own 12-15)
+surf 106-109 (own 5-10)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 130-131 (own 41-43): johto_camper_virgil 131 (43) [Slakoth → Slaking], johto_picnicker_selina 131 (42) [Cherubi → Sakurabloom], johto_twins_day_and_dani 130 (41)
 === johto_victory_road_1f
 Victory Road Jk, Johto
 grass 124-127 (own 32-36)
@@ -3416,6 +3417,9 @@ trainers 5, 82-86 (own 31-37): kanto_black_belt_aaron 85 (36) [Primeape → Anni
 === saffron_city_gym
 Saffron City, Kanto
 trainers 7, 82-87 (own 31-38): kanto_channeler_amanda 84 (34) [Gastly → Gengar, Haunter → Gengar], kanto_channeler_stacy 87 (38) [Haunter → Gengar], kanto_channeler_tasha 83 (33) [Gastly → Gengar, Gastly → Gengar, Haunter → Gengar], kanto_psychic_cameron 83 (33) [Slowpoke → Slowbro, Slowpoke → Slowbro], kanto_psychic_johan 82 (31) [Kadabra → Alakazam, Slowpoke → Slowbro, Kadabra → Alakazam], kanto_psychic_preston 87 (38), kanto_psychic_tyron 84 (34) [Kadabra → Alakazam]
+=== saffron_gym
+Saffron City, Johto
+trainers 4, 131-134 (own 42-47): johto_medium_darcy 133 (46) [Slowpoke → Slowmantle, Slowbro → Slowmantle], johto_medium_rebecca 133 (45) [Bronzor → Dotakuron, Hypno → Mesmeryx], johto_psychic_m_franklin 134 (47) [Kadabra → Alakazam, Girafarig → Farigiraf], johto_psychic_m_jared 133 (45) [Mr. Mime → Mimestro, Exeggcute → Palmagus, Exeggcute → Palmagus]
 === seafloor_cavern_entrance
 Seafloor Cavern, Hoenn
 surf 137-151 (own 5-35)

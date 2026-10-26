@@ -7386,6 +7386,28 @@ way 1, from answer 1
   Scott> Whenever you're ready. I'll be here.
   ? Shall I take you to the Battle Frontier in Sinnoh? = No
   + FLAG_RECEIVED_SCOTTS_BATTLE_POINTS
+=== birth_island_exterior.Deoxys
+from Deoxys at 15,3 of BirthIsland_Exterior
+way -
+  > A strange Pokémon floats over the sand, watching.
+=== birth_island_exterior.Triangle
+from Triangle at 15,12 of BirthIsland_Exterior
+way -
+  * sound select
+  = VAR_DEOXYS_ROCK_LEVEL 0 -> 1
+=== birth_island_harbor.Sailor
+from Sailor at 8,5 of BirthIsland_Harbor
+way 0
+  Sailor> This is Birth Island. Odd place. The sky over it hums some nights.
+  Sailor> Shall we sail back to Lilycove?
+  Sailor> Aye. Hold on tight.
+  > Lucas sailed back to Lilycove City...
+  ? Shall we sail back to Lilycove? = Yes
+  * fade out
+  * warp LilycoveCity_Harbor 8 11
+way 1, from answer 1
+  Sailor> As you like. I'll be here when you're ready.
+  ? Shall we sail back to Lilycove? = No
 === blackthorn.DenGuard
 from Old Man at 672,133 of Johto
 way -
@@ -15588,6 +15610,11 @@ way 0
 way 1, from answer 1
   * battle johto_leader_whitney Lost
   * scene over, unseen
+=== goldenrod_magnet_train_station_1f.Officer
+from Officer at 6,8 of Goldenrod_MagnetTrainStation
+way -
+  Officer> The Magnet Train runs between Goldenrod City and Saffron City in Kanto.
+  Officer> For now its seats are kept for those the League has named Champion. Win at the Indigo Plateau, and you can ride.
 === goldenrod_radio_tower_1f.Grunt
 from Grunt at 23,5 of Goldenrod_RadioTower_1F
 way -
@@ -19219,6 +19246,56 @@ way 1, from answer 1
 from Old Woman at 23,5 of MtPyre_Summit
 way -
   Old Woman> The orbs have been taken from this summit. I pray no harm comes of it.
+=== navel_rock_bottom.Lugia
+from Lugia at 11,13 of NavelRock_Bottom
+way 0
+  > Lugia dived into the dark water and was gone...
+  * scene navel_rock_bottom.Lugia at the foot of Navel Rock
+  * camera Shake
+  * camera Shake
+  * cry Lugia
+  * endscene
+  * wildbattle Lugia 70 Won
+  + FLAG_DEFEATED_LUGIA
+  + FLAG_HIDE_LUGIA
+  + seen navel_rock_bottom.Lugia at the foot of Navel Rock
+way 1, from answer 1
+  * wildbattle Lugia 70 Lost
+  + seen navel_rock_bottom.Lugia at the foot of Navel Rock
+=== navel_rock_harbor.Sailor
+from Sailor at 8,5 of NavelRock_Harbor
+way 0
+  Sailor> This is Navel Rock. The sea gets rough out here, so I'll wait with the ship.
+  Sailor> Shall we sail back to Lilycove?
+  Sailor> Aye. Hold on tight.
+  > Lucas sailed back to Lilycove City...
+  ? Shall we sail back to Lilycove? = Yes
+  * fade out
+  * warp LilycoveCity_Harbor 8 11
+way 1, from answer 1
+  Sailor> As you like. I'll be here when you're ready.
+  ? Shall we sail back to Lilycove? = No
+=== navel_rock_top.HoOh
+from the trigger at 12,10 of NavelRock_Top
+way 0
+  > Ho-Oh spread its wings and flew off into the sky...
+  * scene navel_rock_top.Ho-Oh at the peak of Navel Rock
+  * cry Ho-Oh
+  * camera Shake
+  * endscene
+  * wildbattle Ho-Oh 70 Won
+  + FLAG_DEFEATED_HO_OH
+  + FLAG_HIDE_HO_OH
+  = VAR_TEMP_1 0 -> 1
+  + seen navel_rock_top.Ho-Oh at the peak of Navel Rock
+way 1, from answer 1
+  * wildbattle Ho-Oh 70 Lost
+  = VAR_TEMP_1 0 -> 1
+  + seen navel_rock_top.Ho-Oh at the peak of Navel Rock
+=== navel_rock_top.Waiting
+from Ho-Oh at 12,9 of NavelRock_Top
+way -
+  > A Pokémon of rainbow colours is perched high on the rock above the peak.
 === new_bark.Friend
 from {assistant} at 694,400 of Johto
 way -
@@ -23934,6 +24011,10 @@ way -
 from Devon Employee at 15,5 of RustboroCity_DevonCorp_1F
 way -
   Devon Employee> I'm sorry, the floors upstairs are for Devon staff only.
+=== rustboro_city_devon_corp_2f.FossilScientist
+from Scientist at 14,8 of RustboroCity_DevonCorp_2F
+way -
+  Scientist> I've been building a machine that brings Pokémon back from their fossils. And do you know what? It works!
 === rustboro_city_devon_corp_3f.Employee
 from Devon Employee at 3,5 of RustboroCity_DevonCorp_3F
 way -
@@ -24286,6 +24367,73 @@ way -
   Mr. Psychic> TM29 is Psychic. It strikes with the mind, and it may lower the foe's Special Defense.
   * fanfare FanfareTM
   + FLAG_GOT_TM29_FROM_MR_PSYCHIC
+=== saffron_gym.GymGuy
+from Gym Guide at 16,23 of Saffron_Gym
+way -
+  Gym Guide> Hey, champ! Sabrina waits in the middle room, but the only way in is by the warp panels.
+  Gym Guide> Step on one and it whisks you to another room. Keep trying them, and you'll find the way through!
+  Gym Guide> Her Pokémon are Psychic types. Dark types and Bug types are what you want here.
+=== saffron_gym.Sabrina
+from Sabrina at 15,13 of Saffron_Gym
+way 0
+  Sabrina> I knew you would come. I saw it three years ago, in a vision: a Champion from Johto, standing where you stand now.
+  Sabrina> I don't enjoy battling, but it's my duty as a Gym Leader. Show me the strength my vision promised!
+  Sabrina> Your power is far beyond what I foresaw. Even my visions can't see everything. Take the Marsh Badge.
+  > Lucas received the Marsh Badge from Sabrina!
+  Sabrina> Take this as well. It holds a move that lets two Pokémon trade their abilities.
+  > Lucas received the TM48!
+  > TM48 holds the move Skill Swap.
+  > Lucas put it away in the TMs & HMs pocket.
+  Sabrina> TM48 is Skill Swap. Used well, it turns a foe's own ability against it.
+  * scene saffron_gym.Sabrina
+  * battle johto_leader_sabrina_sabrina Won
+  * fanfare FanfareBadge
+  * defeat johto_medium_darcy
+  * defeat johto_psychic_m_jared
+  * defeat johto_medium_rebecca
+  * defeat johto_psychic_m_franklin
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_JOHTO_DEFEATED_SABRINA
+  + FLAG_JOHTO_GOT_TM48_FROM_SABRINA
+  + beaten johto_leader_sabrina_sabrina
+  + beaten johto_medium_darcy
+  + beaten johto_medium_rebecca
+  + beaten johto_psychic_m_franklin
+  + beaten johto_psychic_m_jared
+  = badges Kanto 0 -> 100000
+  + seen saffron_gym.Sabrina
+way 1, from answer 1
+  * battle johto_leader_sabrina_sabrina Lost
+  * scene over, unseen
+=== saffron_gym.Statue
+from the tile read at 13,23 of Saffron_Gym
+from the tile read at 17,23 of Saffron_Gym
+way -
+  > Saffron City Pokémon Gym\nLeader: Sabrina
+=== saffron_magnet_train_station_1f.Officer
+from Officer at 14,9 of Saffron_MagnetTrainStation
+way 0
+  Officer> The Magnet Train to Goldenrod City in Johto is about to leave. Would you like to board?
+  Officer> All aboard! Please stand clear of the doors.
+  > The Magnet Train glided out of Saffron, floating silently west toward Johto...
+  ? The Magnet Train to Goldenrod City in Johto is about to leave. Would you like to board? = Yes
+  * fade out
+  * warp Goldenrod_MagnetTrainStation 6 9
+  * fade in
+way 1, from answer 1
+  Officer> The trains run all day. Come back whenever you're ready.
+  ? The Magnet Train to Goldenrod City in Johto is about to leave. Would you like to board? = No
+=== saffron_mr_psychic_house.MrPsychic
+from Mr. Psychic at 8,5 of Saffron_MrPsychicHouse
+way -
+  Mr. Psychic> ...Wait. Don't tell me. You came here hoping for something, didn't you? I knew it!
+  Mr. Psychic> Here, take this. I had a feeling I'd be giving it away today.
+  > Lucas received the TM29!
+  > TM29 holds the move Psychic.
+  > Lucas put it away in the TMs & HMs pocket.
+  * fanfare FanfareTM
+  + FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -
