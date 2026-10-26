@@ -59,4 +59,28 @@ public class OurSculptTests
         Assert.Equal(new[] { "Mesmeryx", "Ratchisel", "Sabrefin", "Tripluma", "Typhonarch" }, flagged);
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
+
+    /// <summary>Batch 5: the species of our own that evolve from Unova's (Nos. 2494 to 2649), sculpted from the user's reference pictures.</summary>
+    private static PokemonSpecies[] Unova => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2494 and <= 2649).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfUnovaIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(52, Unova.Length);
+        foreach (var s in Unova)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void JellicrownsFemaleIsPinkAndHerOwn()
+    {
+        // Jellicent's female is a form of her own; Jellicrown keeps the difference as a look of the one species
+        Assert.True(PokemonLook.HasFemale("Jellicrown"));
+        Assert.NotEqual(PokemonModels.Signature("Jellicrown"), PokemonModels.Signature("Jellicrown+f"));
+    }
 }
