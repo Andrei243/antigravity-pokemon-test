@@ -1,0 +1,105 @@
+{
+  "people": {
+    "ghetsis": {
+      "name": {
+        "en": [
+          "Ghetsis"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kyurem": {
+      "name": {
+        "en": [
+          "Kyurem"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kyurem_black": {
+      "name": {
+        "en": [
+          "Kyurem"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "n": {
+      "name": {
+        "en": [
+          "N"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zekrom": {
+      "name": {
+        "en": [
+          "Zekrom"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_cavern_a": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_cavern_b": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_cavern_c": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_cavern": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cheren_cavern": {
+      "name": {
+        "en": [
+          "Cheren"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

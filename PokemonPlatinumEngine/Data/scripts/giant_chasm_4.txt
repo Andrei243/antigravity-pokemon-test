@@ -1,0 +1,93 @@
+# The Giant Chasm's crater as the story finds it, with the Plasma Frigate at rest in its frozen middle (plan 22 · U9, part a).
+# docs/scripts.md describes the language; the lines are our own, on Black 2's beats (the decompilation's
+# res/field/scripts/giant_chasm_4.s, read for the order alone).
+#
+# Rood (2) and two of the old Team Plasma's sages (0, 1) stand against five grunts of the new (4, 5, 7, 8, 12) on the grass north
+# of the cave's mouth. As the player comes up from the cave (Black 2's trigger, 25 to 27, 72; VAR_UNOVA_CHASM 1) Hugh (6) is
+# already there: the grunts won't listen to Rood, Hugh takes one of them on and the player another (Black 2's
+# TRAINER_TEAM_PLASMA_GRUNT_46), Rood's sages see to the team, and Rood sends both on to the ship's ramp (2). The ramp hall is
+# plasma_frigate_6.txt; the passage north to the cavern where Ghetsis waits is giant_chasm_5, the cavern giant_chasm_6.txt.
+
+
+script OnEnter
+  call UnovaCatchUpE
+  end
+
+
+script RoodAndTheGrunts
+  scene "Rood's stand in the crater"
+  speaker "Rood"
+  say "Listen to me! Ghetsis never cared for Pokémon. Freeing them was only a tale to win Unova for himself!"
+  speaker "Grunt"
+  say "Save your speeches, old man. You walked out on Team Plasma. Traitors don't get a say!"
+  face 6 player
+  speaker "{rival}"
+  say "Well, talking didn't work. {player}, you're just in time!"
+  face 6 up
+  say "Out of the way! I'm here for a Pokémon you people stole, and I'm not leaving without it!"
+  speaker "Grunt"
+  say "A couple of kids? Don't make us laugh. Nobody gets near the Plasma Frigate!"
+  speaker "{rival}"
+  say "Fine! I'll take this one. {player}, you take the other!"
+  speaker "Grunt"
+  say "We'll flatten you both, and the traitors with you!"
+  battle 4 as "unova_team_plasma_grunt_46"
+  speaker "Grunt"
+  say "Ugh... Retreat! Back to the ship, everyone!"
+  fade out 0.4
+  setflag FLAG_UNOVA_HIDE_CRATER_GRUNTS
+  hide 4
+  hide 5
+  hide 7
+  hide 8
+  hide 12
+  fade in
+  face 2 player
+  speaker "Rood"
+  say "Are your Pokémon hurt? Here, let my friends see to them."
+  heal
+  speaker none
+  text "Rood's sages tended the team. Everyone is full of energy again!"
+  speaker "Rood"
+  say "We believed, once, that we fought for a world kinder to Pokémon. We were blind to what Ghetsis truly wanted."
+  say "Now we must make amends. We will hold this ground. You two, go aboard by the ramp to the north-east and stop him!"
+  say "And you, young man. The Purrloin you seek is most likely held by the Shadow Triad, Ghetsis's own shadows."
+  face 6 2
+  speaker "{rival}"
+  say "Then I'll get it back from them myself. If it helps you old Plasma folks make up for things, all the better!"
+  face 6 player
+  say "{player}, I'll go first. Don't be long!"
+  fade out 0.3
+  setflag FLAG_UNOVA_HIDE_HUGH_CRATER
+  hide 6
+  clearflag FLAG_UNOVA_HIDE_GHETSIS_RAMP
+  clearflag FLAG_UNOVA_HIDE_TRIAD_RAMP
+  setvar VAR_UNOVA_CHASM 2
+  endscene
+  fade in
+  end
+
+
+script Rood
+  face 2 player
+  speaker "Rood"
+  if var VAR_UNOVA_CHASM >= 2 goto Ship
+  say "Child, stand back. These are our old comrades, and we will make them listen."
+  end
+label Ship
+  say "The ramp to the Frigate is to the north-east, across the ice. We will keep the way open for you."
+  end
+
+
+script Sage
+  face self player
+  speaker "Sage"
+  say "We will not let the new Team Plasma set foot outside this crater."
+  end
+
+
+script Grunt
+  face self player
+  speaker "Grunt"
+  say "The boss is going to freeze all of Unova! Then we'll take every Pokémon there is!"
+  end

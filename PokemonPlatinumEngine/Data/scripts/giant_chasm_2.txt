@@ -1,0 +1,78 @@
+# The Giant Chasm's cave (plan 22 · U9, part a). docs/scripts.md describes the language; the lines are our own, on Black 2's
+# beats (the decompilation's res/field/scripts/giant_chasm_2.s, read for the order alone).
+#
+# VAR_UNOVA_CHASM is the chapter's count: 0 until Hugh is met in the cave, 1 once he has gone on to the crater, 2 once Rood's
+# stand against the grunts is over, 3 once the Shadow Triad have been beaten aboard the Frigate, 4 once Ghetsis is beaten
+# (giant_chasm_6.txt), when FLAG_UNOVA_CHASM_CLEARED turns the cave's way into the crater from the crater with the Frigate
+# (giant_chasm_4) to the crater as it is afterwards (giant_chasm_3).
+#
+# A spy of Rood's in a grunt's clothes (10) waits beside the way up into the crater. Until the Plasma Frigate has flown from
+# Route 21 (VAR_UNOVA_HUMILAU 9) he turns everyone back from it (our trigger, 23, 51, the tile before the way up); then, as the
+# player comes to it, Hugh catches up, the spy tells them where the Frigate lies and goes off to warn Rood, and Hugh runs on
+# ahead. Two of the new Team Plasma (7, 8) keep the way out to Route 23 until the chapter is over.
+
+
+script OnEnter
+  call UnovaCatchUpE
+  end
+
+
+script HughInTheCave
+  if var VAR_UNOVA_HUMILAU == 9 goto Catch
+  face 10 player
+  speaker "Grunt"
+  say "Hold it! The crater isn't safe right now. Something huge is coming, and I'm keeping watch for it."
+  walk player down 1
+  end
+label Catch
+  scene "Hugh in the Giant Chasm"
+  place player 23 51 up
+  clearflag FLAG_UNOVA_HIDE_HUGH_CAVE
+  show hugh_cave
+  face player hugh_cave
+  speaker "{rival}"
+  say "{player}! You got here first? I ran the whole way from Route 21 and you still beat me."
+  say "So this is the Giant Chasm. It's freezing in here... That has to be Kyurem's doing."
+  face player 10
+  speaker "Grunt"
+  say "Psst! Easy, easy. I'm not one of them. Rood of the old Team Plasma asked me to keep watch in these clothes."
+  say "Their ship came down in the crater up this way. The new Team Plasma are guarding it, and Rood has gone to face them."
+  speaker "{rival}"
+  say "The old Team Plasma, standing up to the new one? Then we'd better hurry before they get hurt!"
+  speaker "Grunt"
+  say "I'll go back and tell the others that help has come. Thank you, really!"
+  fade out 0.4
+  setflag FLAG_UNOVA_CHASM_SPY_GONE
+  hide 10
+  speaker "{rival}"
+  say "Come on, {player}! My sister's Purrloin could be on that ship!"
+  setflag FLAG_UNOVA_HIDE_HUGH_CAVE
+  hide hugh_cave
+  clearflag FLAG_UNOVA_HIDE_ROOD_CHASM
+  clearflag FLAG_UNOVA_HIDE_CRATER_GRUNTS
+  clearflag FLAG_UNOVA_HIDE_HUGH_CRATER
+  setvar VAR_UNOVA_CHASM 1
+  endscene
+  fade in
+  end
+
+
+# The spy, spoken to: before the Frigate has flown from Route 21 he keeps everyone out of the crater
+script Spy
+  face 10 player
+  speaker "Grunt"
+  if var VAR_UNOVA_HUMILAU == 9 goto Waiting
+  say "This crater's no place to be right now. Something huge is on its way here, and I'm watching for it."
+  say "...Don't tell anyone, but I'm with Rood. Go and help the people of Humilau first, all right?"
+  end
+label Waiting
+  say "You came! Their ship is up in the crater. Go on and I'll warn the others."
+  end
+
+
+# The two who keep the way out to Route 23
+script Guard
+  face self player
+  speaker "Grunt"
+  say "Nobody goes out this way! Lord Ghetsis's orders!"
+  end

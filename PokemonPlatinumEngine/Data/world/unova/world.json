@@ -218,7 +218,15 @@
     { "name": "PlasmaFrigate_Stern", "matrix": 340, "area": "plasma_frigate_3", "trees": "Round", "setting": "Indoors" },
     { "name": "PlasmaFrigate_Bridge", "matrix": 342, "area": "plasma_frigate_5", "trees": "Round", "setting": "Indoors" },
     { "name": "PlasmaFrigate_Cabins", "matrix": 344, "area": "plasma_frigate_7", "trees": "Round", "setting": "Indoors" },
-    { "name": "PlasmaFrigate_Cabin", "matrix": 346, "area": "plasma_frigate_9", "trees": "Round", "setting": "Indoors" }
+    { "name": "PlasmaFrigate_Cabin", "matrix": 346, "area": "plasma_frigate_9", "trees": "Round", "setting": "Indoors" },
+    // Plan 22 · U9, part a: the Giant Chasm's cave, its crater (as the story finds it, with the Plasma Frigate at rest in it, and
+    // as it is afterwards), the passage north and the cavern where Ghetsis waits, and the Frigate's ramp hall
+    { "name": "GiantChasm_Cave", "matrix": 184, "area": "giant_chasm_2", "trees": "Round", "setting": "Cave" },
+    { "name": "GiantChasm_Crater", "matrix": 250, "area": "giant_chasm_3", "trees": "Round" },
+    { "name": "GiantChasm_CraterFrigate", "matrix": 251, "area": "giant_chasm_4", "trees": "Round" },
+    { "name": "GiantChasm_Passage", "matrix": 252, "area": "giant_chasm_5", "trees": "Round", "setting": "Cave" },
+    { "name": "GiantChasm_Cavern", "matrix": 397, "area": "giant_chasm_6", "trees": "Round", "setting": "Cave" },
+    { "name": "PlasmaFrigate_Ramp", "matrix": 343, "area": "plasma_frigate_6", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
@@ -257,6 +265,8 @@
     // plan 22 · U8, part a
     "unova_route_12", "bridge_gate_gate_5", "village_bridge", "bridge_gate_gate_4", "unova_route_11", "unova_route_11_2", "opelucid_gate_gate_2", "opelucid_city", "opelucid_city_2", "opelucid_city_3", "opelucid_city_4", "opelucid_city_5", "opelucid_city_6", "opelucid_city_7", "opelucid_city_8", "opelucid_city_9", "opelucid_city_10", "opelucid_city_11", "opelucid_city_gym", "opelucid_city_pokemon_center", "opelucid_gate", "unova_route_9", "shopping_mall", "shopping_mall_2",
     // plan 22 · U8, part b
-    "bridge_gate_gate_8", "bridge_gate_gate_9", "humilau_city", "humilau_city_2", "humilau_city_3", "humilau_city_4", "humilau_city_5", "humilau_city_6", "humilau_city_pokemon_center", "humilau_city_gym", "unova_route_22", "unova_route_21", "seaside_cave", "seaside_cave_2", "plasma_frigate_2", "plasma_frigate_3", "plasma_frigate_5", "plasma_frigate_7", "plasma_frigate_9"
+    "bridge_gate_gate_8", "bridge_gate_gate_9", "humilau_city", "humilau_city_2", "humilau_city_3", "humilau_city_4", "humilau_city_5", "humilau_city_6", "humilau_city_pokemon_center", "humilau_city_gym", "unova_route_22", "unova_route_21", "seaside_cave", "seaside_cave_2", "plasma_frigate_2", "plasma_frigate_3", "plasma_frigate_5", "plasma_frigate_7", "plasma_frigate_9",
+    // plan 22 · U9, part a
+    "giant_chasm", "giant_chasm_2", "giant_chasm_3", "giant_chasm_4", "giant_chasm_5", "giant_chasm_6", "plasma_frigate_6"
   ]
 }

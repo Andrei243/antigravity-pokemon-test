@@ -1,0 +1,74 @@
+{
+  "key": "giant_chasm",
+  "index": 230,
+  "name": "Giant Chasm",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "9",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "BGM_R_E_SP",
+  "nightMusic": "BGM_R_E_SP",
+  "encounters": "ENCOUNTERS_GIANT_CHASM",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tangela", "level": 44 },
+    { "species": "Pelipper", "level": 45 },
+    { "species": "Tangela", "level": 45 },
+    { "species": "Lunatone", "level": 45 },
+    { "species": "Solrock", "level": 46 },
+    { "species": "Clefairy", "level": 45 },
+    { "species": "Vanillish", "level": 45 },
+    { "species": "Clefairy", "level": 47 },
+    { "species": "Vanillish", "level": 47 },
+    { "species": "Delibird", "level": 44 },
+    { "species": "Vanillish", "level": 47 },
+    { "species": "Delibird", "level": 44 }
+  ],
+  "landRate": 13,
+  "darkGrass": [
+    { "species": "Tangela", "level": 49 },
+    { "species": "Pelipper", "level": 50 },
+    { "species": "Tangela", "level": 50 },
+    { "species": "Lunatone", "level": 50 },
+    { "species": "Solrock", "level": 51 },
+    { "species": "Clefairy", "level": 50 },
+    { "species": "Vanillish", "level": 50 },
+    { "species": "Clefairy", "level": 52 },
+    { "species": "Vanillish", "level": 52 },
+    { "species": "Delibird", "level": 49 },
+    { "species": "Vanillish", "level": 52 },
+    { "species": "Delibird", "level": 49 }
+  ],
+  "darkGrassRate": 13,
+  "shakingGrass": [
+    { "species": "Audino", "level": 44 },
+    { "species": "Audino", "level": 44 },
+    { "species": "Audino", "level": 45 },
+    { "species": "Audino", "level": 45 },
+    { "species": "Audino", "level": 46 },
+    { "species": "Audino", "level": 46 },
+    { "species": "Audino", "level": 47 },
+    { "species": "Clefable", "level": 47 },
+    { "species": "Vanilluxe", "level": 47 },
+    { "species": "Tangrowth", "level": 47 },
+    { "species": "Vanilluxe", "level": 47 },
+    { "species": "Tangrowth", "level": 47 }
+  ],
+  "shakingGrassRate": 13,
+  "warps": [
+    { "x": 684, "z": 152, "to": "giant_chasm_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "110", "movement": "none", "x": 693, "z": 147, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04db", "item": "Yellow Shard", "script": "7143" }
+  ],
+  "signs": [
+    { "x": 678, "z": 158, "type": 2, "script": "8073", "item": "Max Potion", "flag": "FLAG_UNOVA_0x0b4d" },
+    { "x": 689, "z": 141, "type": 2, "script": "8074", "item": "Moon Stone", "flag": "FLAG_UNOVA_0x0b4e" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,28 @@
+{
+  // The Giant Chasm's cave (plan 22 · U9, part a): Black 2's ring of tunnels between Route 22, the chasm's forest outside (giant_chasm),
+  // the crater and Route 23, with its boulders, balls and hidden things in the area file; our words. A spy of Rood's in a grunt's
+  // clothes (10, gone once FLAG_UNOVA_CHASM_SPY_GONE) turns everyone back from the way up into the crater until the Frigate has
+  // flown from Route 21; Hugh (hugh_cave, FLAG_UNOVA_HIDE_HUGH_CAVE) catches the player up as they come to it (our trigger on the
+  // tile before it, 23, 51; VAR_UNOVA_CHASM 0; giant_chasm_2.txt). The way into the crater (1 and 2, one tile) leads to the crater with the Plasma Frigate
+  // (giant_chasm_4) until FLAG_UNOVA_CHASM_CLEARED and to the crater as it is afterwards (giant_chasm_3) from then on. Two of the
+  // new Team Plasma (7, 8) keep the way out to Route 23 (4; plan 22 · U9, part b) until the chapter is over; the other grunts and
+  // Hugh of Black 2's cave (6, 9, 11) are held back
+  "area": "giant_chasm_2",
+  "bgmTrack": "unova/giant_chasm",
+  "switches": [
+    { "warp": 1, "from": "FLAG_UNOVA_CHASM_CLEARED" },
+    { "warp": 2, "until": "FLAG_UNOVA_CHASM_CLEARED" }
+  ],
+  "heldBack": [ "6", "9", "11" ],
+  "triggers": [
+    { "script": "HughInTheCave", "x": 23, "z": 51, "width": 1, "depth": 1, "variable": "VAR_UNOVA_CHASM", "value": 0 }
+  ],
+  "people": {
+    "7": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Guard", "hiddenBy": "FLAG_UNOVA_CHASM_CLEARED", "still": true },
+    "8": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Guard", "hiddenBy": "FLAG_UNOVA_CHASM_CLEARED", "still": true },
+    "10": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Spy", "hiddenBy": "FLAG_UNOVA_CHASM_SPY_GONE", "still": true, "at": [ 22, 52 ] }
+  },
+  "npcs": [
+    { "id": "hugh_cave", "name": "{rival}", "npcType": "hugh", "x": 24, "y": 52, "facing": "Left", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CAVE", "dialog": [ "The crater's this way. Come on!" ] }
+  ]
+}

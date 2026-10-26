@@ -1,0 +1,39 @@
+{
+  "key": "giant_chasm_6",
+  "index": 604,
+  "name": "Giant Chasm",
+  "matrix": 397,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 46, "to": "giant_chasm_5", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "301", "movement": "none", "x": 15, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0375", "script": "4" },
+    { "id": "1", "looks": "work_02", "movement": "none", "x": 14, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0379", "script": "6" },
+    { "id": "2", "looks": "work_00", "movement": "none", "x": 27, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0377", "script": "2000" },
+    { "id": "3", "looks": "work_01", "movement": "none", "x": 15, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0378", "script": "2000" },
+    { "id": "4", "looks": "103", "movement": "none", "x": 17, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0376", "script": "5" },
+    { "id": "5", "looks": "353", "movement": "none", "x": 15, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c8", "script": "2000" },
+    { "id": "6", "looks": "354", "movement": "none", "x": 18, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c9", "script": "7" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 15, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03eb", "script": "8" },
+    { "id": "8", "looks": "121", "movement": "wander_around", "x": 14, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ec", "script": "9" },
+    { "id": "9", "looks": "223", "movement": "none", "x": 15, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03f3", "script": "2000" },
+    { "id": "10", "looks": "249", "movement": "none", "x": 14, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03f3", "script": "2000" },
+    { "id": "11", "looks": "291", "movement": "none", "x": 15, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0407", "script": "11" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 13, "z": 24, "width": 5, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x4072", "value": "1" },
+    { "x": 13, "z": 23, "width": 5, "depth": 1, "script": "10", "variable": "VAR_UNOVA_0x4072", "value": "3" }
+  ]
+}

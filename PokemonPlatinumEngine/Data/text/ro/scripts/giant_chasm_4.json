@@ -1,0 +1,266 @@
+{
+  "RoodAndTheGrunts": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Listen to me! Ghetsis never cared for Pokémon. Freeing them was only a tale to win Unova for himself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Save your speeches, old man. You walked out on Team Plasma. Traitors don't get a say!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, talking didn't work. {player}, you're just in time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Out of the way! I'm here for a Pokémon you people stole, and I'm not leaving without it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A couple of kids? Don't make us laugh. Nobody gets near the Plasma Frigate!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine! I'll take this one. {player}, you take the other!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll flatten you both, and the traitors with you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh... Retreat! Back to the ship, everyone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Are your Pokémon hurt? Here, let my friends see to them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood's sages tended the team. Everyone is full of energy again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We believed, once, that we fought for a world kinder to Pokémon. We were blind to what Ghetsis truly wanted."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now we must make amends. We will hold this ground. You two, go aboard by the ramp to the north-east and stop him!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you, young man. The Purrloin you seek is most likely held by the Shadow Triad, Ghetsis's own shadows."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then I'll get it back from them myself. If it helps you old Plasma folks make up for things, all the better!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, I'll go first. Don't be long!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rood": [
+    {
+      "en": [
+        "Rood"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Child, stand back. These are our old comrades, and we will make them listen."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The ramp to the Frigate is to the north-east, across the ice. We will keep the way open for you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sage": [
+    {
+      "en": [
+        "Sage"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We will not let the new Team Plasma set foot outside this crater."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The boss is going to freeze all of Unova! Then we'll take every Pokémon there is!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

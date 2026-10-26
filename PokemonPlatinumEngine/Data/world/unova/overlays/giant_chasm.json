@@ -1,0 +1,6 @@
+{
+  // The Giant Chasm's forest outside the cave (plan 22 · U9, part a): Black 2's ring of woods and old stones round the cave's
+  // southern mouth, with its ball and hidden things in the area file. Nobody stands here
+  "area": "giant_chasm",
+  "bgmTrack": "unova/giant_chasm"
+}

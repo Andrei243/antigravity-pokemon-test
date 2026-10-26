@@ -1,0 +1,110 @@
+{
+  "key": "giant_chasm_2",
+  "index": 231,
+  "name": "Giant Chasm",
+  "matrix": 184,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "BGM_D_05",
+  "nightMusic": "BGM_D_05",
+  "encounters": "ENCOUNTERS_GIANT_CHASM_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Sneasel", "level": 44 },
+    { "species": "Piloswine", "level": 44 },
+    { "species": "Vanillish", "level": 45 },
+    { "species": "Clefairy", "level": 44 },
+    { "species": "Lunatone", "level": 46 },
+    { "species": "Solrock", "level": 46 },
+    { "species": "Clefairy", "level": 46 },
+    { "species": "Vanillish", "level": 47 },
+    { "species": "Piloswine", "level": 46 },
+    { "species": "Delibird", "level": 47 },
+    { "species": "Piloswine", "level": 46 },
+    { "species": "Delibird", "level": 47 }
+  ],
+  "landRate": 18,
+  "water": [
+    { "species": "Basculin", "level": 35, "maxLevel": 50 },
+    { "species": "Seel", "level": 35, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 },
+    { "species": "Basculin", "level": 40, "maxLevel": 50 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Excadrill", "level": 44 },
+    { "species": "Excadrill", "level": 44 },
+    { "species": "Excadrill", "level": 45 },
+    { "species": "Excadrill", "level": 45 },
+    { "species": "Excadrill", "level": 46 },
+    { "species": "Excadrill", "level": 46 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 },
+    { "species": "Excadrill", "level": 47 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Seel", "level": 35, "maxLevel": 50 },
+    { "species": "Basculin", "level": 35, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 },
+    { "species": "Dewgong", "level": 40, "maxLevel": 50 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwrath", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 23, "z": 62, "to": "giant_chasm", "toWarp": 0 },
+    { "x": 23, "z": 50, "to": "giant_chasm_3", "toWarp": 0 },
+    { "x": 23, "z": 50, "to": "giant_chasm_4", "toWarp": 0 },
+    { "x": 62, "z": 12, "to": "unova_route_22", "toWarp": 0 },
+    { "x": 1, "z": 22, "to": "unova_route_23", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "model_bigrock2", "movement": "none", "x": 5, "z": 56, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "1", "looks": "model_bigrock2", "movement": "none", "x": 12, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "2", "looks": "model_bigrock2", "movement": "none", "x": 57, "z": 53, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "3", "looks": "model_bigrock2", "movement": "none", "x": 39, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "10000" },
+    { "id": "4", "looks": "110", "movement": "none", "x": 9, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04fd", "item": "Max Repel", "script": "7177" },
+    { "id": "5", "looks": "110", "movement": "none", "x": 55, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04fe", "item": "TM13", "script": "7178" },
+    { "id": "6", "looks": "team_plasma_grunt_m", "movement": "none", "x": 61, "z": 39, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x036c", "script": "3" },
+    { "id": "7", "looks": "team_plasma_grunt_m", "movement": "none", "x": 2, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x036f", "script": "5" },
+    { "id": "8", "looks": "team_plasma_grunt_m", "movement": "none", "x": 2, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x036f", "script": "6" },
+    { "id": "9", "looks": "291", "movement": "none", "x": 61, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0370", "script": "2000" },
+    { "id": "10", "looks": "team_plasma_grunt_m", "movement": "none", "x": 60, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x036e", "script": "4" },
+    { "id": "11", "looks": "team_plasma_grunt_m", "movement": "none", "x": 60, "z": 39, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x036c", "script": "3" },
+    { "id": "12", "looks": "110", "movement": "none", "x": 12, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x04fc", "item": "Star Piece", "script": "7176" }
+  ],
+  "signs": [
+    { "x": 15, "z": 58, "type": 2, "script": "8076", "item": "Star Piece", "flag": "FLAG_UNOVA_0x0b50" },
+    { "x": 6, "z": 6, "type": 2, "script": "8077", "item": "Ultra Ball", "flag": "FLAG_UNOVA_0x0b51" },
+    { "x": 40, "z": 7, "type": 2, "script": "8075", "item": "Ice Gem", "flag": "FLAG_UNOVA_0x0b4f" }
+  ],
+  "triggers": [
+    { "x": 61, "z": 37, "width": 1, "depth": 1, "script": "7", "variable": "VAR_UNOVA_0x4070", "value": "1" }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "people": {
+    "ghetsis_ramp": {
+      "name": {
+        "en": [
+          "Ghetsis"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_ramp_a": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_ramp_b": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "triad_ramp_c": {
+      "name": {
+        "en": [
+          "Shadow Triad"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "liepard": {
+      "name": {
+        "en": [
+          "Liepard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hugh_ramp": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "12": {
+      "en": [
+        "A map of Unova glows on the screen. The Giant Chasm is circled in red."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "13": {
+      "en": [
+        "Diagrams of the ship's engines and cannons scroll past."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "14": {
+      "en": [
+        "The screen hisses with static. Faint voices can be heard."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

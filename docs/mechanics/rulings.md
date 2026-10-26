@@ -3248,6 +3248,44 @@ scripts, read for the order alone) on flags of ours. `VAR_UNOVA_HUMILAU` is the 
   which the arrivals of Humilau City, its Gym, Routes 21 and 22, the Seaside Cave and the Frigate's rooms call, with no story version
   raised.
 
+## Unova's fifth chapter, part a: the Giant Chasm (2026-10-26, plan 22 · U9)
+
+Black 2's beats from Route 22's cave mouth to Ghetsis's fall in the Giant Chasm's cavern, in our own words (the decompilation's zone
+scripts, read for the order alone) on flags of ours. `VAR_UNOVA_CHASM` is the chapter's count (`giant_chasm_2.txt`'s header). Part b
+(Route 23, Victory Road and the League) is the next session's.
+
+- **The order of the chapter.** Route 22's cave mouth leads into the chasm's cave, whose way up into the crater a spy of Rood's in a
+  grunt's clothes turns everyone back from (our trigger on the tile before it) until the Frigate has flown from Route 21
+  (`VAR_UNOVA_HUMILAU` 9); then Hugh catches up and the spy goes to warn Rood (1). In the crater Rood and two of the old Team Plasma's
+  sages stand against five grunts of the new on the grass by the cave's mouth; Hugh takes one of them and the player another (Black
+  2's `TRAINER_TEAM_PLASMA_GRUNT_46`), the sages heal the team and Rood sends both to the ship (2). Up its ramp Ghetsis tells his plan
+  for Kyurem and leaves; Hugh runs in and asks after the Purrloin; the first of the Shadow Triad shows it grown into a Liepard that
+  answers only to him; the three battle the player one after another (`_SHADOW`, `_SHADOW_2`, `_SHADOW_3`) and give it back; Hugh stays
+  with it (3). North of the crater, through the passage, Ghetsis waits in the cavern with Kyurem: N comes with Zekrom (Black 2's dragon),
+  Ghetsis uses the DNA Splicers, the black Kyurem is battled and parts from Zekrom, Ghetsis battles the player himself
+  (`TRAINER_TEAM_PLASMA_GHETSIS`), the Triad take him away, N sends the player to the League and leaves on Zekrom, Kyurem goes back
+  into the dark, and Hugh and Cheren come up to say the way to Route 23 lies through the cave (4, `FLAG_UNOVA_CHASM_CLEARED`).
+- **Two craters, one way in.** Black 2 keeps the crater with the Frigate (`giant_chasm_4`) and the crater afterwards (`giant_chasm_3`)
+  as two zones under one tile of the cave's and of the passage's warps; ours keep both, switched by `FLAG_UNOVA_CHASM_CLEARED`
+  (overlay `switches`). The crater's three balls lie in both under the same flags, so the crater with the Frigate holds them back.
+- **The Frigate in the crater.** Its ramp leads straight into its ramp hall (`plasma_frigate_6`), where Black 2 has the player come
+  down from the deck (`plasma_frigate_11`) by warp panels; the deck is not open and the ship itself is not drawn, as at its other
+  moorings (the catalogue's `c03_ship_03` is ground). Colress, battled aboard in U8's stern room, is not met again: Rood says
+  afterwards that the scientist flew the ship away.
+- **The black Kyurem can't be caught.** Black 2's is a wild battle that refuses a ball; ours is Ghetsis's, a team of ours of one
+  Pokémon (`unova_ghetsis_kyurem`, `Kyurem` in its `Kyurem-Black` form at level 50, our-trainers.json), so nothing in the battle
+  needs a new rule and Kyurem stays free for the post-game (plan 22 · U10).
+- **Route 22's catwalks are decks.** Black 2's second grid of a chunk (a catwalk, a bridge) lies over its ground, and Route 22's
+  catwalks cross the tall grass of the hollow before the cave's mouth. Laid as plates the walker stood on, the catwalks walled the
+  hollow off and nobody could reach the cave; a Black 2 chunk's overlapping plates are now decks, as a GBA bridge's are, so the grass
+  is walked under them and the catwalks on top.
+- **Looks and sounds.** Ghetsis has a look of ours (tall, sage-green hair over a dark violet robe banded in gold) until plan 22 · U12;
+  `Team Plasma Ghetsis` and `Team Plasma Shadow` battle in his and the Triad's looks, Ghetsis's battles in the villain boss's role.
+  The chasm's song is ours, `unova/giant_chasm` (45.7 s, the same by day and night), not yet heard by the user.
+- **What a save needs.** A save past the Frigate's flight is given the chapter's hidden people by `UnovaCatchUpE`
+  (`FLAG_UNOVA_CHASM_BEGUN`), which the arrivals of the cave, both craters, the ramp hall and the cavern call, with no story version
+  raised.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

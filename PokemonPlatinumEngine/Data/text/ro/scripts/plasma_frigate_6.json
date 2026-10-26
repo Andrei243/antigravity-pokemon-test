@@ -1,0 +1,306 @@
+{
+  "GhetsisAboard": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So Colress has gone his own way, has he? He cares more for his questions than for the cause that fed them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ghetsis"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, well. A child, here? Then you shall have the rare honour of hearing my plan from my own lips."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kyurem is a hollow thing, what was left behind when Reshiram and Zekrom were made. Hollow things can be filled."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With our science, its power will be wound to the very limit, and all of Unova will be buried in ice."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The people will beg us to stop it, and they will give up their Pokémon to save themselves. Unova will be mine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lord Ghetsis. Kyurem has been moved to the place you chose."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ghetsis"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "At last! Then the age of my rule begins. I leave this child to you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I saw a man in a long robe leave... Never mind him. You! You're one of the Shadow Triad, aren't you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tell me what happened to the Purrloin that was stolen in Aspertia City five years ago!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Perhaps this is the one you mean."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I took it as a Purrloin, five years ago. It has grown, and now it obeys no one but me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No... That Pokémon belongs to my little sister! Give it back!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pity the Pokémon, bound to Poké Balls and to whatever their Trainers want. But enough. You will not hinder Lord Ghetsis."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm. Then try all three of us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even if we fall, Lord Ghetsis need only win."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It makes no difference. You can only watch as Lord Ghetsis uses Kyurem to freeze Unova."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You may have the Liepard back. After what Lord Ghetsis is about to do, I have no more need of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...It's glaring at me. I finally found my sister's Pokémon, and it doesn't know me at all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... If Team Plasma get their way, there'll be more Pokémon like this one, and like Kyurem. Go after that man!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll stay here with Liepard for now. I'll catch you up, I promise."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hugh": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The man in the robe went somewhere north of the crater, deeper in. Go on, {player}. I'll be right behind you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Liepard": [
+    {
+      "en": [
+        "Liepard: Grrrrr..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Triad": [
+    {
+      "en": [
+        "Shadow Triad"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

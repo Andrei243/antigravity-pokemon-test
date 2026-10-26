@@ -158,7 +158,9 @@
     "Depot Agent": "fun",
     "Smasher": "sport",
     "Hoopster": "sport",
-    "Team Plasma Colress": "mystery"
+    "Team Plasma Colress": "mystery",
+    "Team Plasma Shadow": "galactic",
+    "Team Plasma Ghetsis": "galactic"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -199,13 +201,17 @@
     "Team Plasma Zinzolin": "galacticBoss",
     "Leader Drayden": "gym",
     "Leader Marlon": "gym",
-    "Team Plasma Colress": "gym"
+    "Team Plasma Colress": "gym",
+    "Team Plasma Shadow": "galactic",
+    "Team Plasma Ghetsis": "galacticBoss"
   },
   "eyeSongs": {
     "Team Magma": "eye_magma",
     "Magma Admin": "eye_magma",
     "Magma Leader": "eye_magma",
     "Team Plasma Grunt": "eye_plasma",
-    "Team Plasma Zinzolin": "eye_plasma"
+    "Team Plasma Zinzolin": "eye_plasma",
+    "Team Plasma Shadow": "eye_plasma",
+    "Team Plasma Ghetsis": "eye_plasma"
   }
 }

@@ -3092,6 +3092,7 @@ script UnovaHumilau
   setflag FLAG_UNOVA_HIDE_HUGH_BRIDGE
   setflag FLAG_UNOVA_HIDE_TRIAD_BRIDGE
   setflag FLAG_UNOVA_HUMILAU_BEGUN
+  call UnovaChasm
   return
 
 
@@ -3111,4 +3112,37 @@ script UnovaFrigateBarriers
   setvar VAR_UNOVA_FRIGATE_BARRIER 1
   speaker none
   text "Somewhere below came a long falling hum: the barrier in the hold is down!"
+  return
+
+
+# What Unova's Giant Chasm chapter hides until its scenes (plan 22 · U9, part a): Hugh in the cave, Rood, his sages and the grunts in
+# the crater, Hugh there, Ghetsis, the Shadow Triad, Hugh and the Liepard aboard the Frigate, and Ghetsis, Kyurem in both its looks,
+# N, Zekrom, the Shadow Triad, Hugh and Cheren in the cavern. A new game runs it from UnovaHumilau (the chain of every chapter's
+# hiding); a save of Humilau's is given it by UnovaCatchUpE. It may only set flags and variables, and ends in return.
+script UnovaChasm
+  setflag FLAG_UNOVA_HIDE_HUGH_CAVE
+  setflag FLAG_UNOVA_HIDE_ROOD_CHASM
+  setflag FLAG_UNOVA_HIDE_CRATER_GRUNTS
+  setflag FLAG_UNOVA_HIDE_HUGH_CRATER
+  setflag FLAG_UNOVA_HIDE_GHETSIS_RAMP
+  setflag FLAG_UNOVA_HIDE_TRIAD_RAMP
+  setflag FLAG_UNOVA_HIDE_HUGH_RAMP
+  setflag FLAG_UNOVA_HIDE_LIEPARD_RAMP
+  setflag FLAG_UNOVA_HIDE_GHETSIS_CAVERN
+  setflag FLAG_UNOVA_HIDE_KYUREM_CAVERN
+  setflag FLAG_UNOVA_HIDE_BLACK_KYUREM
+  setflag FLAG_UNOVA_HIDE_N_CAVERN
+  setflag FLAG_UNOVA_HIDE_ZEKROM_CAVERN
+  setflag FLAG_UNOVA_HIDE_TRIAD_CAVERN
+  setflag FLAG_UNOVA_HIDE_HUGH_CAVERN
+  setflag FLAG_UNOVA_HIDE_CHEREN_CAVERN
+  setflag FLAG_UNOVA_CHASM_BEGUN
+  return
+
+
+# What the arrival of each place of plan 22 · U9's first part calls (the Giant Chasm): the earlier chapters' catch-up, and for a
+# save from before this one the people of it hidden
+script UnovaCatchUpE
+  call UnovaCatchUpD
+  if not flag FLAG_UNOVA_CHASM_BEGUN call UnovaChasm
   return

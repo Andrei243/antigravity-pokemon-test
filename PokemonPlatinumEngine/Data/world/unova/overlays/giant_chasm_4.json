@@ -1,0 +1,26 @@
+{
+  // The Giant Chasm's crater as the story finds it (plan 22 · U9, part a): Black 2's ring of forest round a frozen middle where the
+  // Plasma Frigate has come to rest, with its balls in the area file; our words. Rood (2) and two of the old Team Plasma's sages
+  // (0, 1; FLAG_UNOVA_HIDE_ROOD_CHASM) stand against five grunts of the new (4, 5, 7, 8, 12; FLAG_UNOVA_HIDE_CRATER_GRUNTS) north
+  // of the cave's mouth; Hugh (6, FLAG_UNOVA_HIDE_HUGH_CRATER) is there before the player, and the stand is one scene as the
+  // player comes up from the cave (Black 2's trigger, 25 to 27, 72; VAR_UNOVA_CHASM 1; giant_chasm_4.txt). The ship's ramp (3)
+  // leads into its ramp hall (plasma_frigate_6); its deck (2) is not open, and the two grunts of Black 2's backup (3, 13) are held back,
+  // as are its three balls (9 to 11), which lie in the crater afterwards on the same tiles under the same flags (giant_chasm_3)
+  "area": "giant_chasm_4",
+  "bgmTrack": "unova/giant_chasm",
+  "heldBack": [ "3", "9", "10", "11", "13" ],
+  "triggers": [
+    { "script": "RoodAndTheGrunts", "x": 25, "z": 72, "width": 3, "depth": 1, "variable": "VAR_UNOVA_CHASM", "value": 1 }
+  ],
+  "people": {
+    "0": { "name": "Sage", "npcType": "sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
+    "1": { "name": "Sage", "npcType": "sage", "script": "Sage", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
+    "2": { "name": "Rood", "npcType": "rood", "script": "Rood", "hiddenBy": "FLAG_UNOVA_HIDE_ROOD_CHASM", "still": true },
+    "4": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
+    "5": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
+    "6": { "name": "{rival}", "npcType": "hugh", "hiddenBy": "FLAG_UNOVA_HIDE_HUGH_CRATER", "still": true, "dialog": [ "The grunts won't listen to Rood. Looks like we'll have to make them!" ] },
+    "7": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
+    "8": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true },
+    "12": { "name": "Grunt", "npcType": "plasma_grunt", "script": "Grunt", "hiddenBy": "FLAG_UNOVA_HIDE_CRATER_GRUNTS", "still": true }
+  }
+}
