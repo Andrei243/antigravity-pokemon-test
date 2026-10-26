@@ -269,7 +269,82 @@ internal static partial class PokemonModels
         return best;
     }
 
+    /// <summary>
+    /// Whether a mark's square lies on a patch of surface it can cover: the points round its middle half, each
+    /// projected onto the surface, stay within the depth the decal takes triangles from, face the way the mark does
+    /// and belong to the mark's bone.
+    /// </summary>
+    private static bool MmCovers(PokeBuilder b, Vector3 center, Vector3 n, Vector2 half, int bone)
+    {
+        var probe = new PokeDecal { Center = center, Normal = n, Half = half };
+        PokemonDecals.Frame(probe, out var right, out var up);
+        int bones = Math.Max(b.Model.Skeleton.Count, 1);
+        var w = new float[bones];
+        float depth = MathF.Max(half.X, half.Y) * 1.5f * 0.6f;
+        foreach (var (x, y) in new[] { (0.9f, 0f), (-0.9f, 0f), (0f, 0.9f), (0f, -0.9f), (0.65f, 0.65f), (-0.65f, 0.65f), (0.65f, -0.65f), (-0.65f, -0.65f), (0.5f, 0f), (-0.5f, 0f), (0f, 0.5f), (0f, -0.5f) })
+        {
+            var p = center + right * (x * half.X) + up * (y * half.Y);
+            float dist = b.Sdf.Distance(p);
+            if (MathF.Abs(dist) > depth) return false;
+            var q = p - MmNormal(b, p) * dist;
+            if (MathF.Abs(Vector3.Dot(q - center, n)) > depth) return false;
+            if (Vector3.Dot(MmNormal(b, q), n) < 0.5f) return false;
+            b.Sdf.Surface(q, w);
+            if (bone >= bones || w[bone] < 0.5f) return false;
+        }
+        return true;
+    }
+
     private static void MmFitDecals(PokeBuilder b)
+    {
+        var (mn0, mx0) = b.Sdf.Bounds();
+        float cell0 = MathF.Max(mx0.X - mn0.X, MathF.Max(mx0.Y - mn0.Y, mx0.Z - mn0.Z)) * 1.05f / PokemonModels.CellsAcross;
+        var firsts = b.Model.Decals.Select(d => d.Center).ToList();
+        MmFitSizes(b);
+        // A marking whose square would hang off its patch of surface (an edge, a fold, another bone) is slid
+        // and shrunk to the nearest place it fits; a ring and the star in it move together.
+        var all = b.Model.Decals;
+        for (int i = 0; i < all.Count; i++)
+        {
+            var d = all[i];
+            if (d.IsEye || MmCovers(b, d.Center, d.Normal, d.Half, d.Bone)) continue;
+            var group = new System.Collections.Generic.List<PokeDecal>();
+            for (int j = 0; j < all.Count; j++) if (!all[j].IsEye && firsts[j] == firsts[i]) group.Add(all[j]);
+            var lead = group.OrderByDescending(g => g.Half.X).First();
+            float floor = cell0 * 3.2f;
+            bool found = false;
+            foreach (float scale in new[] { 1f, 0.85f, 0.7f, 0.6f })
+            {
+                var half = lead.Half * scale;
+                if (half.X < floor) half = new Vector2(floor, floor);
+                var offsets = new System.Collections.Generic.List<(float x, float y)>();
+                for (int ix = -4; ix <= 4; ix++)
+                    for (int iy = -4; iy <= 4; iy++) offsets.Add((ix, iy));
+                foreach (var (ox, oy) in offsets.OrderBy(o => o.x * o.x + o.y * o.y))
+                {
+                    PokemonDecals.Frame(lead, out var right, out var up);
+                    var p = lead.Center + right * (ox * 0.5f * half.X) + up * (oy * 0.5f * half.Y);
+                    float dist = b.Sdf.Distance(p);
+                    var c = p - MmNormal(b, p) * dist;
+                    var n = MmNormal(b, c);
+                    var probe = new PokeDecal { Center = c, Normal = n, Half = half, Bone = lead.Bone };
+                    int bone = MmBoneHolding(b, probe);
+                    if (!MmCovers(b, c, n, half, bone)) continue;
+                    float k = half.X / lead.Half.X;
+                    foreach (var g in group)
+                    {
+                        g.Center = c; g.Normal = n; g.Bone = bone;
+                        g.Half *= k; g.Size *= k;
+                    }
+                    found = true;
+                    break;
+                }
+                if (found) break;
+            }
+        }
+    }
+
+    private static void MmFitSizes(PokeBuilder b)
     {
         var (mn, mx) = b.Sdf.Bounds();
         float cell = MathF.Max(mx.X - mn.X, MathF.Max(mx.Y - mn.Y, mx.Z - mn.Z)) * 1.05f / PokemonModels.CellsAcross;
