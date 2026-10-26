@@ -476,6 +476,47 @@ partial class Harness
         ShotCrop("title_47b_run_marked_native", 1016, (int)marked.EntryRects()[0].Y, 824, 452, 2);
         save.Run = null;
 
+        FirstStartShots(Seconds);
+
         game.State = GameState.Overworld;
+    }
+
+    /// <summary>
+    /// The first start (plan 16 · T24): the page a first run opens on, asked for here since the harness's options are no
+    /// first run, then with a row changed and with the cursor on CONTINUE. The options are put back as they were and
+    /// nothing is written: the page's CONTINUE is not pressed.
+    /// </summary>
+    void FirstStartShots(Action<float> seconds)
+    {
+        var settings = game.Settings;
+        string language = settings.Language;
+        var buttons = settings.ButtonMode;
+        game.OpenFirstStart();
+        var page = game.FirstStart;
+        seconds(0.5f); Shot("title_0_first_start");
+        Console.WriteLine($"first start: rows {string.Join(", ", page.Rows)}");
+
+        // The language moved on: the page is in it at once
+        if (page.Change(settings, 1)) game.ApplyFirstStartChange();
+        seconds(0.2f); Shot("title_0b_first_start_language");
+        Console.WriteLine($"first start: language {settings.Language}, the page's title \"{Text.Of("firstStart.title")}\"");
+        page.Change(settings, -1);
+        game.ApplyFirstStartChange();
+
+        // The button preset changed
+        while (page.Selected is { } row && row != OptionRow.ButtonMode) page.Move(1);
+        if (page.Change(settings, 1)) game.ApplyFirstStartChange();
+        seconds(0.2f); Shot("title_0b_first_start_buttonmode");
+        Console.WriteLine($"first start: button mode {settings.ButtonMode}");
+
+        // CONTINUE under the cursor, with what it does in the panel
+        while (!page.OnContinue) page.Move(1);
+        seconds(0.2f); Shot("title_0c_first_start_continue");
+
+        settings.Language = language;
+        settings.ButtonMode = buttons;
+        game.ApplyFirstStartChange();
+        page.Close();
+        game.State = GameState.Title;
     }
 }

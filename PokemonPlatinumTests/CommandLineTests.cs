@@ -66,7 +66,7 @@ public class CommandLineTests
         foreach (var row in CommandLine.Switches)
         {
             // Given as it is written, with a value where it takes one, every switch changes something and is no mistake
-            string value = row.Name switch { "--region" => "Sinnoh", "--crash-after" => "3", _ => "x" };
+            string value = row.Name switch { "--region" => "Sinnoh", "--crash-after" => "3", "--packs" => "none", _ => "x" };
             var launch = row.Value == null ? Parse(row.Name) : Parse(row.Name, value);
             Assert.True(launch.IsValid, $"{row.Name}: {string.Join(" ", launch.Errors)}");
             Assert.NotEqual(new LaunchOptions() with { Errors = launch.Errors, Given = launch.Given }, launch);

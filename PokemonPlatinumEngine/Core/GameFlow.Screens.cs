@@ -39,6 +39,8 @@ public sealed partial class GameFlow
     /// <summary>The jukebox (plan 12 · Q15), and where it goes back to.</summary>
     public JukeboxScreen JukeboxScreen { get; } = new();
     public GameState JukeboxReturn { get; set; } = GameState.Title;
+    /// <summary>The first start's page of options (plan 16 · T24).</summary>
+    public FirstStartScreen FirstStartScreen { get; } = new();
     public HatchScreen HatchScreen { get; } = new();
     public HallOfFameCeremony Ceremony { get; } = new();
     public CreditsScreen Credits { get; } = new();

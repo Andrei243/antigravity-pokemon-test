@@ -42,9 +42,10 @@ public static partial class MapDatabase
             throw new DirectoryNotFoundException($"Map folder not found: {folder}");
 
         var loaded = new Dictionary<string, Map>(System.StringComparer.OrdinalIgnoreCase);
-        foreach (string path in Directory.GetFiles(folder, "*.json").OrderBy(p => p, System.StringComparer.Ordinal))
+        // The game's own rooms and every pack's, a pack's map replacing the game's of the same name (plan 16 · T14)
+        foreach (var (key, path) in DataLayers.FilesIn(Folder, "*.json"))
         {
-            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, Path.GetFileName(path)));
+            var file = GameDataFiles.Load<MapFile>(Path.Combine(Folder, key));
             string expected = Path.GetFileNameWithoutExtension(path);
             if (file.Name != expected)
                 throw new InvalidDataException($"Map file {path} names its map '{file.Name}'; the file must be called {file.Name}.json.");

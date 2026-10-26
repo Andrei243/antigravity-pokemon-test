@@ -1,0 +1,5 @@
+# A test pack's own lines for Walda's dolls (plan 16 · T14)
+
+script Doll
+  say "The alpha pack's doll waves."
+  end

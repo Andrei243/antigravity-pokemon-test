@@ -4390,5 +4390,14 @@
     "playing": "Se reia {folder}. {key:menu} iese; ține apăsat {key:run} ca să meargă de patru ori mai repede.",
     "parted": "Reluarea se desparte de înregistrare la {seconds} s ({groups}). {key:menu} iese.",
     "ended": "Înregistrarea s-a încheiat. {key:menu} iese."
+  },
+  "firstStart": {
+    "title": "ÎNAINTE SĂ ÎNCEPI",
+    "line": "Potrivește jocul așa cum îți vine mai bine să citești și să joci. Orice alegere de aici se poate schimba mai târziu din OPȚIUNI.",
+    "hint": { "continue": "Continuă" },
+    "continue": {
+      "label": "CONTINUĂ",
+      "help": "Păstrează aceste alegeri și trece la ecranul de titlu. Pagina aceasta nu va mai apărea."
+    }
   }
 }

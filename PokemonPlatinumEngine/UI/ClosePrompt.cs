@@ -41,7 +41,7 @@ public sealed class ClosePrompt
     /// from it) before any game has begun, where nothing can be lost.
     /// </summary>
     public static bool QuitsAtOnce(bool gameBegun, GameState state) =>
-        !gameBegun && state is GameState.Title or GameState.Options;
+        !gameBegun && state is GameState.Title or GameState.Options or GameState.FirstStart;
 
     public static string Label(CloseChoice choice) => choice switch
     {

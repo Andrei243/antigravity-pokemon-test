@@ -58,10 +58,10 @@ public static class MusicLibrary
     private static Dictionary<string, Song> Load()
     {
         var result = new Dictionary<string, Song>(StringComparer.OrdinalIgnoreCase);
-        if (!System.IO.Directory.Exists(Directory)) return result;
-        foreach (var path in System.IO.Directory.EnumerateFiles(Directory, "*.mml", SearchOption.AllDirectories).OrderBy(p => p))
+        // The game's own songs and every pack's, a pack's song replacing the game's of the same id (plan 16 · T14)
+        foreach (var (key, path) in DataLayers.FilesIn("music", "*.mml", recursive: true))
         {
-            string id = Path.ChangeExtension(Path.GetRelativePath(Directory, path), null).Replace('\\', '/');
+            string id = key[..^".mml".Length];
             result[id] = Mml.Parse(id, File.ReadAllText(path));
         }
         return result;

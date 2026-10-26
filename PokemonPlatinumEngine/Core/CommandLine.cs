@@ -67,6 +67,8 @@ public sealed record LaunchOptions
 
     /// <summary><c>--replay &lt;folder&gt;</c> (plan 16 · T20): play a report's folder (or a recording's file) back in the game's window, saving into its <c>replayed/</c>.</summary>
     public string? ReplayFolder { get; init; }
+    /// <summary><c>--packs none</c> (plan 16 · T14): no pack is read this time, whatever the packs folders hold.</summary>
+    public bool NoPacks { get; init; }
 
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
@@ -169,6 +171,7 @@ public static class CommandLine
             (o, _) => o with { Where = true }),
         new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null },
         new("--replay", "folder", "Play a report's folder (written with F8, or after a crash) back in the window, from the title to where it was written, saving into its replayed folder and never over your save. Menu leaves; hold Run to go four times as fast.", (o, v) => o with { ReplayFolder = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--replay takes a folder, and '{v}' can't be one." : null }
+        new("--packs", "none", "With none, read no pack this time: the game's own data alone, whatever the packs folders beside the game and the saves hold.", (o, _) => o with { NoPacks = true }) { Check = v => v == "none" ? null : $"--packs takes none, not '{v}'." }
     };
 
     /// <summary>
