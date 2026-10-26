@@ -64,5 +64,8 @@
     { "id": 18, "area": "resort_area", "x": 802, "y": 473, "room": "ResortAreaPokemonCenter" },
     { "id": 19, "area": "route_221", "x": 306, "y": 910, "room": "PalParkLobby", "unlockedOnArrival": false },
     { "id": 20, "area": "pokemon_league", "x": 847, "y": 560, "room": "PokemonLeagueNorthPokemonCenter", "unlockedOnArrival": false }
-  ]
+  ],
+  // Plan 13 · V3, moved here by plan 18 · W4b-1: the level cap by Badges held, plan 02's pacing targets (each Leader's
+  // best in Platinum's data, then Cynthia's); Sinnoh has no "levels", since every game begins here
+  "caps": [14, 22, 26, 32, 37, 41, 44, 50, 62]
 }

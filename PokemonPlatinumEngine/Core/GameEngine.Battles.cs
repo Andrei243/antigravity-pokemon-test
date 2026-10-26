@@ -422,7 +422,7 @@ public partial class GameEngine
     private int LeadLevel() => flow.Party.Members.FirstOrDefault(p => !p.IsFainted)?.Level ?? 0;
 
     /// <summary>The level the run's cap holds the player's Pokémon to now (plan 13 · V3), null for none: Normal, no table for the region, or its story done.</summary>
-    internal int? CurrentLevelCap() => LevelCaps.For(flow.Run, Here.Id, flow.Story);
+    internal int? CurrentLevelCap() => LevelCaps.For(flow.Run, Here.Id, flow.Story, crossed: CrossedLevels() != null);
 
     /// <summary>
     /// A battle with a trainer of the map; with a <paramref name="partner"/>, a tag battle beside them (plan 06 · R9);

@@ -65,8 +65,9 @@ public class RunLevelCapTests
         Assert.Null(LevelCaps.For(RunRules.Normal, "Sinnoh", story));
         Assert.Null(LevelCaps.For(null, "Sinnoh", story));
         Assert.Null(LevelCaps.For(RunRules.NuzlockePreset, "Sinnoh", story));
-        // A region with no table is uncapped until its own plan writes one
-        Assert.Null(LevelCaps.For(Capped, "Kanto", story));
+        // A region with no table is uncapped until its own plan writes one (Kanto has had one since plan 18 · W4b-1)
+        Assert.Null(LevelCaps.For(Capped, "Kalos", story));
+        Assert.Equal(14, LevelCaps.For(Capped, "Kanto", story));
         Assert.True(RunRules.Hardcore.LevelCap);
         Assert.Equal(14, LevelCaps.For(RunRules.Hardcore, "Sinnoh", story));
     }

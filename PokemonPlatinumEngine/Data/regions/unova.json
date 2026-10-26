@@ -67,6 +67,10 @@
     { "id": 13, "area": "unova_pokemon_league", "map": "UnovaPokemonLeague", "x": 19, "y": 48, "room": "UnovaPokemonLeague_PokemonCenter" }
   ],
   // Plan 18 · W4: Black 2's levels for a team that crossed from Hoenn, from Hoenn's Champion's 162 on the first
-  // route to Iris at 185 (the study's fair climb); the post-game climbs on past her on the same line
-  "levels": [[2, 162], [59, 185]]
+  // route to Iris at 185 (the study's fair climb); W4b-1: the post-game's strongest (Benga and the last Boss
+  // Trainers, 80) at 203, min(1.15 × 185, Kalos's 205 − 2, 260), Kalos's Champion being the study's until plan 23
+  "levels": [[2, 162], [59, 185], [80, 203]],
+  // Plan 18 · W4b-1: the level cap by Badges held, Black 2's own levels (the Leaders' best in rising order, then
+  // Iris's); mapped by "levels" where the region is crossed into
+  "caps": [13, 18, 24, 30, 33, 39, 48, 51, 59]
 }

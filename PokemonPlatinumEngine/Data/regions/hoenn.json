@@ -78,6 +78,10 @@
     { "id": 20, "area": "ever_grande_city", "x": 778, "y": 186, "room": "EverGrandeCity_PokemonLeague_1F" }
   ],
   // Plan 18 · W4: Emerald's levels for a team that crossed from Johto, from Lance's 136 on the first route to a
-  // Champion at 162 (the study's fair climb); the post-game climbs on past him on the same line
-  "levels": [[2, 136], [58, 162]]
+  // Champion at 162 (the study's fair climb); W4b-1: the post-game's strongest (Steven, 78) at 183,
+  // min(1.15 × 162, Unova's 185 − 2, 260)
+  "levels": [[2, 136], [58, 162], [78, 183]],
+  // Plan 18 · W4b-1: the level cap by Badges held, Emerald's own levels (the Leaders' best in rising order, then
+  // Wallace's); mapped by "levels" where the region is crossed into
+  "caps": [15, 19, 24, 29, 31, 33, 42, 46, 58]
 }

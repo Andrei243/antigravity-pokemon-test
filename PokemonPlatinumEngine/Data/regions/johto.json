@@ -56,6 +56,10 @@
     { "id": 11, "area": "indigo_plateau", "x": 912, "y": 201, "room": "IndigoLeague_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: HeartGold's levels for a team that crossed from Kanto, from Kanto's Champion's 104 on the first
-  // route to Lance at 136 (the study's fair climb); the post-game climbs on past him on the same line, Red to 161
-  "levels": [[2, 104], [50, 136]]
+  // route to Lance at 136 (the study's fair climb); W4b-1: the post-game's strongest (Red, 88) at 156,
+  // min(1.15 × 136, Hoenn's 162 − 2, 260)
+  "levels": [[2, 104], [50, 136], [88, 156]],
+  // Plan 18 · W4b-1: the level cap by Badges held, HeartGold's own levels (the Leaders' best in rising order, since
+  // Chuck, Jasmine and Pryce may come in more than one order, then Lance's); mapped by "levels" where crossed into
+  "caps": [13, 17, 19, 25, 31, 34, 35, 41, 50]
 }
