@@ -51,7 +51,12 @@ public class PokemonModelTests
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0,
         // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
-        ["Noctaugur"] = 3, ["Cerberhound"] = 6
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6,
+        // Batch 6 (Kalos): Reefcolony's two more heads at its shoulders, Sylvanshade's three eyes in its knot
+        ["Reefcolony"] = 6, ["Sylvanshade"] = 3,
+        // Batch 7 (Alola): the Ultra Beasts' heirs keep their forebears' faceless heads
+        ["Nihiliad"] = 0, ["Xurkigrove"] = 0, ["Celestrata"] = 0, ["Origamurai"] = 0, ["Pyrocephalon"] = 0,
+        ["Galleonghast"] = 1
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>

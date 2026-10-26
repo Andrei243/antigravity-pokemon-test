@@ -822,7 +822,17 @@ internal static partial class PokemonModels
         "Ermilong", "Noctaugur", "Coccinova", "Orbweavix", "Abyssolux", "Totemsight", "Mimicedar", "Helianthra", "Mirelord", "Zenitheon",
         "Eclipseon", "Slowmonarch", "Wobbulwark", "Pinecitadel", "Ironwyrm", "Mastiffang", "Fugumace", "Guillotyne",
         "Fermentoise", "Atlascross", "Calderon", "Reefcrown", "Krakannon", "Sleighwing", "Raysail", "Rapierwing",
-        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren"
+        "Cerberhound", "Siegephant", "Muralist", "Gyrodrill", "Pastorine", "Raitenko", "Enkaiou", "Suiseiren",
+        // Batch 6 (Kalos; PokemonModels.Ours.Kalos.cs)
+        "Excavabbit", "Blazemonarch", "Alpicorn", "Bambrawler", "Majesthound", "Occulynx", "Perfumelle", "Soufflair", "Mesmerquid", "Reefcolony", "Kelpdrake", "Salvoclaw", "Coronafrill", "Despotitan", "Borealosaur", "Faerieon", "Luchacondor", "Signalmus",
+        "Druzarion", "Chatelkey", "Sylvanshade", "Lanternhusk", "Glacitadel", "Sonarwing", "Ecosentinel",
+        // Batch 7 (Alola; PokemonModels.Ours.Alola.cs)
+        "Inspectoose", "Glacipincer", "Pollenoble", "Lupinacle", "Venomreef", "Claysteed",
+        "Diveweaver", "Orchimantis", "Lumishroom", "Smolderess", "Huggrizzle", "Wreathfey",
+        "Arborsage", "Scrummian", "Shogunpod", "Sandcitadel", "Cucumbrawl", "Somnikoala",
+        "Caldertoise", "Rollocupine", "Masqueradoll", "Chromagnash", "Elderdrake", "Galleonghast",
+        "Kokonui", "Lelenui", "Bulunui", "Fininui",
+        "Nihiliad", "Buzzcolossus", "Pheromuse", "Xurkigrove", "Celestrata", "Origamurai", "Devourmaw", "Naganapex", "Ziggurak", "Pyrocephalon"
     };
 
     /// <summary>
@@ -1161,6 +1171,9 @@ internal static partial class PokemonModels
         "KRAKANNON" => Krakannon(female: true),
         "CERBERHOUND" => Cerberhound(female: true),
         "SIEGEPHANT" => Siegephant(female: true),
+        // Batch 6: Pyroar's and Meowstic's females are forms, Blazemonarch's and Occulynx's looks of the one species
+        "BLAZEMONARCH" => Blazemonarch(female: true),
+        "OCCULYNX" => Occulynx(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)
