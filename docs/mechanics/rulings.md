@@ -5504,6 +5504,14 @@ well above 100 ([the study](../plans/W4-level-curve-study.md), option B). What W
 - **Not yet**: the post-games of the later regions climb on past their Champions on the same line (Johto's Red, 88 in
   HeartGold, comes to 161), which a region's plan may bend with a third pair. The Battle Hall takes a Pokémon at its own
   level and draws its foes to 100 at most: a Pokémon past 100 entered there is plan 06's to rule on.
+- **The post-game and the caps** (plan 18 · W4b-1, design C of `docs/plans/W4b-levelling-the-world.md`, approved
+  2026-10-26): each region's third pair puts its post-game's strongest trainer at `min(1.15 × its Champion, the next
+  Champion − 2, 260)`: Kanto `[75, 120]`, Johto `[88, 156]` (Red), Hoenn `[78, 183]` (Steven), Unova `[80, 203]` (Kalos's
+  Champion the study's 205 until plan 23). Each region file's `caps` is V3's level cap by Badges held in its own game's
+  levels (the Leaders' best in rising order, so Johto's Chuck, Jasmine and Pryce may come in any order, then the
+  Champion's), and `LevelCaps.TableOf(region, crossed)` maps it in a region crossed into: Kanto 70 to 104, Johto 111
+  to 136, Hoenn 142 to 162, Unova 166 to 185. `levels-crossed.txt` holds every crossed place as met; `LevelLadderTests`
+  holds the rules.
 
 ## Regions (2026-10-24, plan 18 · W4, part b)
 

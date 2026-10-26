@@ -136,6 +136,13 @@ public sealed class RegionFile
     /// are Platinum's and where every game begins.
     /// </summary>
     public List<int[]>? Levels { get; set; }
+
+    /// <summary>
+    /// The level cap by Badges held (plan 13 · V3; plan 18 · W4b-1), in the region's own game's levels: index 0 the cap
+    /// with none, the last the cap with every Badge (the Champion's). <c>LevelCaps.TableOf</c> reads it and maps it by
+    /// <see cref="Levels"/> where the region is crossed into. None where the region has no table yet.
+    /// </summary>
+    public List<int>? Caps { get; set; }
 }
 
 /// <summary>The kinds of rule that open the National Pokédex (plan 18 · W3).</summary>

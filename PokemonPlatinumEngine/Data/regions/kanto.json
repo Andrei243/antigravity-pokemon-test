@@ -47,6 +47,10 @@
     { "id": 2, "area": "viridian_city", "x": 74, "y": 207, "room": "ViridianCity_PokemonCenter_1F" }
   ],
   // Plan 18 · W4: FireRed's levels for a team that crossed from Sinnoh, from Cynthia's 62 on the first route to a
-  // Champion at 104 (the study's fair climb); the Sevii Islands climb on past it on the same line
-  "levels": [[2, 62], [63, 104]]
+  // Champion at 104 (the study's fair climb); W4b-1: the post-game's strongest (the Champion's rematch, 75) at 120,
+  // min(1.15 × 104, Johto's 136 − 2, 260), the Sevii Islands climbing to it
+  "levels": [[2, 62], [63, 104], [75, 120]],
+  // Plan 18 · W4b-1: the level cap by Badges held, FireRed's own levels (the Leaders' best in rising order, then the
+  // Champion's); mapped by "levels" where the region is crossed into
+  "caps": [14, 21, 24, 29, 43, 43, 47, 50, 63]
 }

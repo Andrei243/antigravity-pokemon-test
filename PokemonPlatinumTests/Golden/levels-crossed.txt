@@ -1,0 +1,3993 @@
+# Every region crossed into, as a game begun in Sinnoh meets it (plan 18 · W4b-1), made by GoldenLevelTests. Rewritten by: GOLDEN=accept dotnet test PokemonPlatinumTests --filter Golden
+# A region's pairs and caps, then its trainers that stand on no map; then each of its places' wild Pokémon and trainers. Each level as met, its own game's in brackets.
+=== region Kanto
+levels 2 → 62, 63 → 104, 75 → 120
+caps 70 75 77 81 90 90 93 95 104 (own 14 21 24 29 43 43 47 50 63)
+kanto_beauty_grace_2 94 (49)
+kanto_beauty_lauren 83 (33)
+kanto_beauty_sheila_2 94 (49)
+kanto_biker_goon 86 (37)
+kanto_biker_goon_2 87 (38)
+kanto_biker_goon_3 87 (38)
+kanto_biker_jaren_2 81 (30)
+kanto_biker_jaxon_2 94 (49)
+kanto_biker_lukas_2 93 (47)
+kanto_biker_ruben_2 94 (48)
+kanto_bird_keeper_benny_2 83 (32)
+kanto_bird_keeper_benny_3 94 (49)
+kanto_bird_keeper_chaz_2 98 (55)
+kanto_bird_keeper_chester_2 81 (30)
+kanto_bird_keeper_chester_3 94 (48)
+kanto_bird_keeper_harold_2 98 (55)
+kanto_bird_keeper_jacob_2 80 (28)
+kanto_bird_keeper_jacob_3 93 (47)
+kanto_bird_keeper_keith 87 (39)
+kanto_bird_keeper_marlon_2 81 (30)
+kanto_bird_keeper_marlon_3 94 (48)
+kanto_bird_keeper_milo_2 98 (55)
+kanto_bird_keeper_reed 87 (39)
+kanto_bird_keeper_robert_2 80 (28)
+kanto_bird_keeper_robert_3 93 (47)
+kanto_black_belt_hugh_2 95 (50)
+kanto_black_belt_hugh_3 98 (55)
+kanto_black_belt_shea_2 95 (50)
+kanto_black_belt_shea_3 98 (55)
+kanto_boss_giovanni 81 (29)
+kanto_boss_giovanni_2 89 (41)
+kanto_bug_catcher_2 73 (18)
+kanto_bug_catcher_colton_2 74 (19)
+kanto_bug_catcher_colton_3 79 (27)
+kanto_bug_catcher_colton_4 98 (54)
+kanto_burglar_1 81 (29)
+kanto_burglar_2 83 (33)
+kanto_burglar_3 80 (28)
+kanto_burglar_4 84 (34)
+kanto_camper_chris_2 77 (24)
+kanto_camper_chris_3 81 (29)
+kanto_camper_chris_4 98 (54)
+kanto_camper_jeff_2 75 (21)
+kanto_camper_jeff_3 81 (29)
+kanto_camper_jeff_4 98 (54)
+kanto_camper_ricky_2 76 (22)
+kanto_camper_ricky_3 81 (30)
+kanto_camper_ricky_4 98 (55)
+kanto_champion_first_bulbasaur 104 (63)
+kanto_champion_first_charmander 104 (63)
+kanto_champion_first_squirtle 104 (63)
+kanto_champion_rematch_bulbasaur 120 (75)
+kanto_champion_rematch_charmander 120 (75)
+kanto_champion_rematch_squirtle 120 (75)
+kanto_channeler_1 76 (23)
+kanto_channeler_2 77 (24)
+kanto_channeler_3 76 (22)
+kanto_channeler_4 77 (24)
+kanto_channeler_5 76 (22)
+kanto_channeler_6 76 (22)
+kanto_channeler_7 77 (24)
+kanto_channeler_8 77 (24)
+kanto_cool_couple_lex_nya_2 100 (57)
+kanto_cooltrainer_austina 90 (42)
+kanto_cooltrainer_berke 90 (42)
+kanto_cooltrainer_brooke 90 (42)
+kanto_cooltrainer_gilbert 90 (42)
+kanto_cooltrainer_julie 90 (42)
+kanto_cooltrainer_leroy_2 98 (55)
+kanto_cooltrainer_michelle_2 99 (56)
+kanto_cooltrainer_owen 90 (42)
+kanto_cooltrainer_paul 90 (42)
+kanto_cooltrainer_shannon 90 (42)
+kanto_crush_girl_cyndy_2 98 (54)
+kanto_crush_girl_sharon_2 95 (50)
+kanto_crush_girl_sharon_3 98 (55)
+kanto_crush_girl_tanya_2 95 (50)
+kanto_crush_girl_tanya_3 98 (55)
+kanto_crush_kin_mik_kia_2 96 (51)
+kanto_crush_kin_mik_kia_3 99 (56)
+kanto_crush_kin_ron_mya_2 83 (33)
+kanto_crush_kin_ron_mya_3 96 (51)
+kanto_crush_kin_ron_mya_4 99 (56)
+kanto_cue_ball_camron_2 94 (49)
+kanto_cue_ball_chase 82 (31)
+kanto_cue_ball_corey_2 94 (49)
+kanto_cue_ball_isaiah_2 94 (49)
+kanto_cue_ball_paxton 87 (39)
+kanto_elite_four_agatha 101 (58)
+kanto_elite_four_agatha_2 113 (70)
+kanto_elite_four_bruno 99 (56)
+kanto_elite_four_bruno_2 111 (68)
+kanto_elite_four_lance 102 (60)
+kanto_elite_four_lance_2 116 (72)
+kanto_elite_four_lorelei 98 (54)
+kanto_elite_four_lorelei_2 108 (66)
+kanto_engineer_bernie_2 80 (28)
+kanto_fisherman_elliot_2 80 (28)
+kanto_fisherman_wade_2 93 (47)
+kanto_gamer_darian_2 81 (29)
+kanto_gamer_rich_2 81 (30)
+kanto_gentleman_norton 94 (48)
+kanto_gentleman_walter 72 (17)
+kanto_hiker_earl_2 98 (54)
+kanto_hiker_franklin_2 78 (25)
+kanto_hiker_jeremy_2 81 (30)
+kanto_hiker_trent_2 82 (31)
+kanto_juggler_mason_2 96 (52)
+kanto_lady_selphy 94 (49)
+kanto_lass_2 71 (15)
+kanto_lass_janice_2 74 (20)
+kanto_lass_janice_3 80 (28)
+kanto_lass_megan_2 76 (23)
+kanto_lass_megan_3 94 (48)
+kanto_lass_reli_2 74 (20)
+kanto_lass_reli_3 80 (28)
+kanto_leader_blaine 93 (47)
+kanto_leader_brock 70 (14)
+kanto_leader_erika 81 (29)
+kanto_leader_giovanni 95 (50)
+kanto_leader_koga 90 (43)
+kanto_leader_lt_surge 77 (24)
+kanto_leader_misty 75 (21)
+kanto_leader_sabrina 90 (43)
+kanto_painter_rayna_2 98 (54)
+kanto_picnicker_alicia_2 78 (25)
+kanto_picnicker_alicia_3 81 (30)
+kanto_picnicker_alicia_4 98 (55)
+kanto_picnicker_becky_2 83 (32)
+kanto_picnicker_becky_3 94 (49)
+kanto_picnicker_becky_4 98 (54)
+kanto_picnicker_hannah 77 (24)
+kanto_picnicker_isabelle_2 75 (21)
+kanto_picnicker_isabelle_3 81 (29)
+kanto_picnicker_isabelle_4 95 (50)
+kanto_picnicker_kelsey_2 75 (21)
+kanto_picnicker_kelsey_3 81 (29)
+kanto_picnicker_kelsey_4 94 (49)
+kanto_picnicker_missy_2 94 (49)
+kanto_picnicker_missy_3 98 (54)
+kanto_picnicker_susie_2 79 (27)
+kanto_picnicker_susie_3 93 (47)
+kanto_picnicker_susie_4 96 (52)
+kanto_pkmn_breeder_alize_2 97 (53)
+kanto_pkmn_ranger_jackson_2 98 (55)
+kanto_pkmn_ranger_katelyn_2 99 (56)
+kanto_pkmn_ranger_madeline_2 98 (55)
+kanto_pkmn_ranger_nicolas_2 98 (55)
+kanto_pokemaniac_hector_2 98 (55)
+kanto_pokemaniac_herman_2 81 (29)
+kanto_pokemaniac_herman_3 98 (54)
+kanto_pokemaniac_mark_2 83 (33)
+kanto_pokemaniac_mark_3 98 (54)
+kanto_psychic_dario_2 99 (56)
+kanto_psychic_jaclyn_2 98 (54)
+kanto_psychic_rodette_2 97 (53)
+kanto_rival_cerulean_bulbasaur 73 (18)
+kanto_rival_cerulean_charmander 73 (18)
+kanto_rival_cerulean_squirtle 73 (18)
+kanto_rival_oaks_lab_bulbasaur 64 (5)
+kanto_rival_oaks_lab_charmander 64 (5)
+kanto_rival_oaks_lab_squirtle 64 (5)
+kanto_rival_pokemon_tower_bulbasaur 78 (25)
+kanto_rival_pokemon_tower_charmander 78 (25)
+kanto_rival_pokemon_tower_squirtle 78 (25)
+kanto_rival_route22_early_bulbasaur 67 (9)
+kanto_rival_route22_early_charmander 67 (9)
+kanto_rival_route22_early_squirtle 67 (9)
+kanto_rival_route22_late_bulbasaur 97 (53)
+kanto_rival_route22_late_charmander 97 (53)
+kanto_rival_route22_late_squirtle 97 (53)
+kanto_rival_silph_bulbasaur 88 (40)
+kanto_rival_silph_charmander 88 (40)
+kanto_rival_silph_squirtle 88 (40)
+kanto_rival_ss_anne_bulbasaur 74 (20)
+kanto_rival_ss_anne_charmander 74 (20)
+kanto_rival_ss_anne_squirtle 74 (20)
+kanto_rocker_luca_2 83 (33)
+kanto_rocker_randall 74 (20)
+kanto_ruin_maniac_larry_2 98 (54)
+kanto_scientist_gideon 92 (46)
+kanto_sis_and_bro_lil_ian_2 95 (50)
+kanto_sis_and_bro_lil_ian_3 98 (55)
+kanto_super_nerd_1 76 (22)
+kanto_super_nerd_2 74 (20)
+kanto_super_nerd_3 77 (24)
+kanto_super_nerd_glenn_2 80 (28)
+kanto_super_nerd_miguel 69 (12)
+kanto_swimmer_female_alice_2 94 (49)
+kanto_swimmer_female_melissa_2 94 (49)
+kanto_swimmer_female_nicole_2 98 (54)
+kanto_swimmer_male_darrin_2 96 (52)
+kanto_swimmer_male_finn_2 95 (50)
+kanto_swimmer_male_jack_2 95 (50)
+kanto_swimmer_male_matthew_2 94 (49)
+kanto_swimmer_male_samir_2 98 (55)
+kanto_swimmer_male_tony_2 94 (49)
+kanto_tamer_evan_2 98 (55)
+kanto_tamer_john 90 (42)
+kanto_team_rocket_admin_2 98 (55)
+kanto_team_rocket_grunt_22 79 (26)
+kanto_team_rocket_grunt_43 86 (37)
+kanto_team_rocket_grunt_44 85 (35)
+kanto_team_rocket_grunt_45 87 (38)
+kanto_team_rocket_grunt_5 72 (17)
+kanto_team_rocket_grunt_6 71 (15)
+kanto_tuber_amira_2 93 (47)
+kanto_twins_eli_anne_2 80 (28)
+kanto_twins_joy_meg_2 94 (49)
+kanto_young_couple_gia_jes_2 81 (30)
+kanto_young_couple_gia_jes_3 98 (55)
+kanto_youngster_ben_2 72 (17)
+kanto_youngster_ben_3 80 (28)
+kanto_youngster_ben_4 94 (48)
+kanto_youngster_chad_2 74 (20)
+kanto_youngster_chad_3 80 (28)
+kanto_youngster_chad_4 94 (48)
+kanto_youngster_destin_2 97 (53)
+kanto_youngster_timmy_2 74 (19)
+kanto_youngster_timmy_3 79 (27)
+kanto_youngster_timmy_4 96 (52)
+kanto_youngster_yasu_2 76 (22)
+kanto_youngster_yasu_3 93 (47)
+=== region Johto
+levels 2 → 104, 50 → 136, 88 → 156
+caps 111 114 115 119 123 125 126 130 136 (own 13 17 19 25 31 34 35 41 50)
+johto_ace_trainer_f_carol 131 (43)
+johto_ace_trainer_f_irene 119 (24)
+johto_ace_trainer_f_jamie_2 128 (38)
+johto_ace_trainer_f_jamie_3 131 (42)
+johto_ace_trainer_f_jamie_4 141 (59)
+johto_ace_trainer_f_jenn 120 (26)
+johto_ace_trainer_f_kate 121 (28)
+johto_ace_trainer_f_quinn 134 (47)
+johto_ace_trainer_f_reena_2 128 (38)
+johto_ace_trainer_f_reena_3 134 (47)
+johto_ace_trainer_f_reena_4 139 (56)
+johto_ace_trainer_f_salma 138 (53)
+johto_ace_trainer_m_arabella 138 (53)
+johto_ace_trainer_m_bonita 137 (52)
+johto_ace_trainer_m_french 134 (47)
+johto_ace_trainer_m_gaven_2 125 (34)
+johto_ace_trainer_m_gaven_3 129 (39)
+johto_ace_trainer_m_gaven_4 137 (52)
+johto_ace_trainer_m_kevin 135 (48)
+johto_ace_trainer_m_mickey 109 (10)
+johto_ace_trainer_m_mickey_2 109 (10)
+johto_ace_trainer_m_mickey_3 109 (10)
+johto_ace_trainer_m_mickey_4 112 (14)
+johto_ace_trainer_m_shaye 131 (43)
+johto_arcade_star_dahlia 106 (5)
+johto_beauty_caroline 129 (40)
+johto_beauty_cassie 131 (42)
+johto_beauty_charlotte 113 (16)
+johto_beauty_julia 134 (47)
+johto_beauty_kimberly 115 (19)
+johto_beauty_mickey 113 (15)
+johto_beauty_mickey_10 113 (15)
+johto_beauty_mickey_2 113 (15)
+johto_beauty_mickey_3 113 (16)
+johto_beauty_mickey_4 113 (15)
+johto_beauty_mickey_5 113 (15)
+johto_beauty_mickey_6 113 (15)
+johto_beauty_mickey_7 113 (15)
+johto_beauty_mickey_8 113 (15)
+johto_beauty_mickey_9 113 (15)
+johto_biker_aiden 133 (45)
+johto_biker_aiden_2 136 (50)
+johto_biker_aiden_3 139 (55)
+johto_biker_aiden_4 140 (58)
+johto_biker_charles 131 (42)
+johto_biker_dale 134 (47)
+johto_biker_dan 129 (39)
+johto_biker_dwayne 130 (41)
+johto_biker_ernest 133 (45)
+johto_biker_ernest_2 134 (47)
+johto_biker_ernest_3 135 (49)
+johto_biker_ernest_4 140 (58)
+johto_biker_glenn 131 (43)
+johto_biker_harris 133 (45)
+johto_biker_jacob 131 (43)
+johto_biker_joel 131 (43)
+johto_biker_markey 134 (47)
+johto_biker_mickey 116 (20)
+johto_biker_mickey_2 116 (20)
+johto_biker_reese 133 (45)
+johto_biker_reese_2 135 (48)
+johto_biker_reese_3 136 (50)
+johto_biker_reese_4 139 (56)
+johto_biker_teddy 133 (46)
+johto_biker_theron 133 (45)
+johto_biker_zeke 131 (43)
+johto_bird_keeper_gs_bert 133 (46)
+johto_bird_keeper_gs_bob 135 (48)
+johto_bird_keeper_gs_boris 130 (41)
+johto_bird_keeper_gs_bret 130 (41)
+johto_bird_keeper_gs_easton 127 (36)
+johto_bird_keeper_gs_ernie 135 (48)
+johto_bird_keeper_gs_gail 131 (42)
+johto_bird_keeper_gs_hank 132 (44)
+johto_bird_keeper_gs_jose 132 (44)
+johto_bird_keeper_gs_jose_3 133 (45)
+johto_bird_keeper_gs_jose_4 138 (53)
+johto_bird_keeper_gs_josh 127 (37)
+johto_bird_keeper_gs_josh_2 134 (47)
+johto_bird_keeper_gs_josh_3 137 (51)
+johto_bird_keeper_gs_josh_4 139 (55)
+johto_bird_keeper_gs_justin 132 (44)
+johto_bird_keeper_gs_kinsley 127 (37)
+johto_bird_keeper_gs_perry 131 (42)
+johto_bird_keeper_gs_roy 132 (44)
+johto_bird_keeper_gs_vance_2 125 (33)
+johto_bird_keeper_gs_vance_3 131 (42)
+johto_bird_keeper_gs_vance_4 139 (56)
+johto_black_belt_ander 132 (44)
+johto_black_belt_kenji_2 124 (32)
+johto_black_belt_kenji_3 130 (41)
+johto_black_belt_kenji_4 138 (53)
+johto_black_belt_kiyo 125 (34)
+johto_black_belt_manford 134 (47)
+johto_black_belt_wai 131 (42)
+johto_boarder_bryce 139 (55)
+johto_boarder_shaun 139 (55)
+johto_bug_catcher_abner 132 (44)
+johto_bug_catcher_arnie_2 127 (36)
+johto_bug_catcher_arnie_3 131 (43)
+johto_bug_catcher_arnie_4 139 (56)
+johto_bug_catcher_dane 135 (48)
+johto_bug_catcher_dion 136 (50)
+johto_bug_catcher_doug 129 (39)
+johto_bug_catcher_doug_2 129 (40)
+johto_bug_catcher_doug_3 134 (47)
+johto_bug_catcher_doug_4 137 (52)
+johto_bug_catcher_ed 131 (43)
+johto_bug_catcher_ellis 133 (46)
+johto_bug_catcher_ken 129 (40)
+johto_bug_catcher_mickey 129 (40)
+johto_bug_catcher_mickey_2 125 (34)
+johto_bug_catcher_rob 129 (40)
+johto_bug_catcher_rob_2 133 (45)
+johto_bug_catcher_rob_3 137 (52)
+johto_bug_catcher_rob_4 139 (56)
+johto_bug_catcher_stacey 141 (60)
+johto_bug_catcher_wade_2 129 (40)
+johto_bug_catcher_wade_3 122 (29)
+johto_bug_catcher_wade_4 137 (52)
+johto_bug_catcher_wayne 109 (10)
+johto_burglar_corey 128 (38)
+johto_camper_barry 135 (48)
+johto_camper_bertrand 123 (30)
+johto_camper_clark 129 (40)
+johto_camper_dean 132 (44)
+johto_camper_jerry 136 (50)
+johto_camper_lloyd 133 (46)
+johto_camper_mickey 113 (15)
+johto_camper_mickey_2 113 (15)
+johto_camper_mickey_3 131 (42)
+johto_camper_mickey_4 131 (42)
+johto_camper_mickey_5 131 (42)
+johto_camper_mickey_6 131 (42)
+johto_camper_mickey_7 127 (36)
+johto_camper_pedro 133 (45)
+johto_camper_sid 131 (43)
+johto_camper_tanner 128 (38)
+johto_camper_tanner_2 130 (41)
+johto_camper_tanner_3 135 (48)
+johto_camper_tanner_4 137 (52)
+johto_camper_todd_2 123 (31)
+johto_camper_todd_3 127 (36)
+johto_camper_todd_4 139 (56)
+johto_camper_virgil 131 (43)
+johto_castle_valet_darach 106 (5)
+johto_champion_lance 136 (50)
+johto_champion_lance_2 149 (75)
+johto_double_team_elan_and_ida 137 (52)
+johto_double_team_zac_and_jen 134 (47)
+johto_elder_li 109 (10)
+johto_elite_four_bruno_bruno 133 (46)
+johto_elite_four_bruno_bruno_2 143 (64)
+johto_elite_four_karen_karen 134 (47)
+johto_elite_four_karen_karen_2 143 (64)
+johto_elite_four_koga_koga 132 (44)
+johto_elite_four_koga_koga_2 143 (64)
+johto_elite_four_will_will 131 (42)
+johto_elite_four_will_will_2 142 (62)
+johto_executive_archer_archer 128 (38)
+johto_executive_petrel_petrel 124 (32)
+johto_executive_proton_proton 111 (12)
+johto_factory_head_thorton 106 (5)
+johto_firebreather_burt 133 (45)
+johto_firebreather_lyle 129 (39)
+johto_firebreather_otis 134 (47)
+johto_firebreather_walt_2 124 (32)
+johto_firebreather_walt_3 127 (37)
+johto_firebreather_walt_4 140 (58)
+johto_fisherman_arnold 132 (44)
+johto_fisherman_barney 129 (40)
+johto_fisherman_gideon 132 (44)
+johto_fisherman_jonah 127 (37)
+johto_fisherman_kyle 129 (39)
+johto_fisherman_kyle_2 131 (43)
+johto_fisherman_kyle_3 134 (47)
+johto_fisherman_kyle_4 137 (52)
+johto_fisherman_kyler 115 (18)
+johto_fisherman_kyler_2 115 (18)
+johto_fisherman_kyler_3 115 (18)
+johto_fisherman_kyler_4 115 (18)
+johto_fisherman_liam 131 (42)
+johto_fisherman_martin 131 (42)
+johto_fisherman_mickey 129 (39)
+johto_fisherman_murphy 128 (38)
+johto_fisherman_ralph_2 129 (40)
+johto_fisherman_ralph_3 133 (45)
+johto_fisherman_ralph_4 139 (56)
+johto_fisherman_stephen 131 (43)
+johto_fisherman_tully_2 125 (33)
+johto_fisherman_tully_3 128 (38)
+johto_fisherman_tully_4 138 (53)
+johto_fisherman_wilton_2 127 (36)
+johto_fisherman_wilton_3 129 (40)
+johto_fisherman_wilton_4 143 (63)
+johto_gentleman_alfred_2 127 (36)
+johto_gentleman_alfred_3 131 (42)
+johto_gentleman_alfred_4 140 (58)
+johto_gentleman_edward 130 (41)
+johto_gentleman_gregory 133 (46)
+johto_gentleman_mickey 116 (20)
+johto_gentleman_milton 133 (45)
+johto_guitarist_clyde 131 (42)
+johto_guitarist_vincent 133 (45)
+johto_hall_matron_argenta 106 (5)
+johto_hiker_anthony_2 125 (33)
+johto_hiker_anthony_3 129 (40)
+johto_hiker_anthony_4 139 (55)
+johto_hiker_bruce 133 (45)
+johto_hiker_clarke 133 (45)
+johto_hiker_dwight 132 (44)
+johto_hiker_edwin 136 (50)
+johto_hiker_eoin 131 (42)
+johto_hiker_jim 133 (45)
+johto_hiker_kenny 125 (33)
+johto_hiker_kenny_2 127 (37)
+johto_hiker_kenny_3 133 (46)
+johto_hiker_kenny_4 138 (54)
+johto_hiker_mickey 127 (36)
+johto_hiker_noland 131 (42)
+johto_hiker_parry_2 128 (38)
+johto_hiker_parry_3 130 (41)
+johto_hiker_parry_4 139 (56)
+johto_juggler_fritz 127 (37)
+johto_juggler_horton 131 (43)
+johto_juggler_irwin_2 125 (34)
+johto_juggler_irwin_3 131 (42)
+johto_juggler_irwin_4 137 (51)
+johto_kimono_girl_kuni 128 (38)
+johto_kimono_girl_mickey 116 (20)
+johto_kimono_girl_miki 128 (38)
+johto_kimono_girl_naoko 128 (38)
+johto_kimono_girl_sayo 128 (38)
+johto_kimono_girl_zuki 128 (38)
+johto_lass_alice 133 (45)
+johto_lass_dana_2 124 (32)
+johto_lass_dana_3 128 (38)
+johto_lass_dana_4 138 (54)
+johto_lass_ellen 132 (44)
+johto_lass_krise_2 123 (31)
+johto_lass_krise_3 128 (38)
+johto_lass_krise_4 138 (54)
+johto_lass_laura 130 (41)
+johto_lass_linda 133 (45)
+johto_lass_michelle 133 (46)
+johto_lass_mickey 117 (21)
+johto_lass_mickey_2 117 (21)
+johto_lass_mickey_3 127 (36)
+johto_lass_shannon 131 (42)
+johto_leader_blaine_blaine 141 (59)
+johto_leader_blaine_blaine_2 142 (62)
+johto_leader_blue_blue 141 (60)
+johto_leader_blue_blue_2 148 (72)
+johto_leader_brock_brock 138 (54)
+johto_leader_brock_brock_2 142 (61)
+johto_leader_bugsy_bugsy 114 (17)
+johto_leader_bugsy_bugsy_2 139 (56)
+johto_leader_chuck_chuck 123 (31)
+johto_leader_chuck_chuck_2 141 (60)
+johto_leader_clair_clair 130 (41)
+johto_leader_clair_clair_2 141 (60)
+johto_leader_erika_erika 139 (56)
+johto_leader_erika_erika_2 141 (60)
+johto_leader_falkner_falkner 111 (13)
+johto_leader_falkner_falkner_2 139 (56)
+johto_leader_janine_janine 136 (50)
+johto_leader_janine_janine_2 141 (59)
+johto_leader_jasmine_jasmine 126 (35)
+johto_leader_jasmine_jasmine_2 142 (62)
+johto_leader_lt_surge_lt__surge 138 (53)
+johto_leader_lt_surge_lt__surge_2 141 (60)
+johto_leader_misty_misty 138 (54)
+johto_leader_misty_misty_2 141 (60)
+johto_leader_morty_morty 119 (25)
+johto_leader_morty_morty_2 140 (57)
+johto_leader_pryce_pryce 125 (34)
+johto_leader_pryce_pryce_2 141 (60)
+johto_leader_sabrina_sabrina 139 (55)
+johto_leader_sabrina_sabrina_2 141 (60)
+johto_leader_whitney 115 (19)
+johto_leader_whitney_2 140 (58)
+johto_medium_bethany 119 (25)
+johto_medium_darcy 133 (46)
+johto_medium_ethel 119 (25)
+johto_medium_margaret 119 (25)
+johto_medium_rebecca 133 (45)
+johto_mystery_man_eusine 121 (27)
+johto_partner_rival_1 141 (60)
+johto_partner_rival_2 141 (60)
+johto_partner_rival_3 141 (60)
+johto_passerby_boy 106 (5)
+johto_passerby_boy_2 106 (5)
+johto_passerby_boy_3 106 (5)
+johto_picnicker_adrian 133 (45)
+johto_picnicker_cheyenne 133 (45)
+johto_picnicker_cindy 135 (48)
+johto_picnicker_debra 130 (41)
+johto_picnicker_edna 133 (45)
+johto_picnicker_erin_2 130 (41)
+johto_picnicker_erin_3 135 (48)
+johto_picnicker_erin_4 138 (53)
+johto_picnicker_gina_2 124 (32)
+johto_picnicker_gina_3 132 (44)
+johto_picnicker_gina_4 139 (55)
+johto_picnicker_ginger 130 (41)
+johto_picnicker_heidi 131 (43)
+johto_picnicker_hope 132 (44)
+johto_picnicker_liz_2 128 (38)
+johto_picnicker_liz_3 129 (40)
+johto_picnicker_liz_4 141 (60)
+johto_picnicker_mickey 124 (32)
+johto_picnicker_mickey_2 128 (38)
+johto_picnicker_piper 129 (40)
+johto_picnicker_selina 131 (42)
+johto_picnicker_sharon 131 (43)
+johto_picnicker_tanya 135 (49)
+johto_picnicker_tiffany_2 125 (34)
+johto_picnicker_tiffany_3 130 (41)
+johto_picnicker_tiffany_4 142 (61)
+johto_pkmn_trainer_buck_marley 144 (65)
+johto_pkmn_trainer_cheryl_cheryl 144 (65)
+johto_pkmn_trainer_lance_lance 129 (40)
+johto_pkmn_trainer_marley_mira 144 (65)
+johto_pkmn_trainer_mira_buck 144 (65)
+johto_pkmn_trainer_red_red 156 (88)
+johto_pkmn_trainer_riley_riley 144 (65)
+johto_poke_maniac_brent_2 125 (34)
+johto_poke_maniac_brent_3 131 (43)
+johto_poke_maniac_brent_4 140 (58)
+johto_poke_maniac_morgan 129 (39)
+johto_pokefan_beverly_2 123 (31)
+johto_pokefan_beverly_3 131 (43)
+johto_pokefan_beverly_4 138 (53)
+johto_pokefan_eleanor 131 (43)
+johto_pokefan_georgia 127 (36)
+johto_pokefan_m_alex 144 (65)
+johto_pokefan_m_andy 132 (44)
+johto_pokefan_m_boone 131 (43)
+johto_pokefan_m_carter 128 (38)
+johto_pokefan_m_colin 129 (40)
+johto_pokefan_m_derek_2 123 (30)
+johto_pokefan_m_derek_3 127 (37)
+johto_pokefan_m_derek_4 134 (47)
+johto_pokefan_m_jeremy 127 (36)
+johto_pokefan_m_joshua 124 (32)
+johto_pokefan_m_rex 133 (45)
+johto_pokefan_m_robert 131 (43)
+johto_pokefan_m_trevor 131 (42)
+johto_pokefan_marigold 113 (16)
+johto_psychic_m_fidel 131 (43)
+johto_psychic_m_franklin 134 (47)
+johto_psychic_m_herman 129 (39)
+johto_psychic_m_jared 133 (45)
+johto_psychic_m_rodney 130 (41)
+johto_rival_silver 115 (18)
+johto_rival_silver_10 115 (18)
+johto_rival_silver_11 117 (22)
+johto_rival_silver_12 124 (32)
+johto_rival_silver_13 129 (40)
+johto_rival_silver_14 136 (50)
+johto_rival_silver_15 136 (50)
+johto_rival_silver_16 136 (50)
+johto_rival_silver_17 125 (34)
+johto_rival_silver_18 125 (34)
+johto_rival_silver_19 141 (60)
+johto_rival_silver_2 106 (5)
+johto_rival_silver_20 141 (60)
+johto_rival_silver_21 141 (60)
+johto_rival_silver_3 106 (5)
+johto_rival_silver_4 117 (22)
+johto_rival_silver_5 129 (40)
+johto_rival_silver_6 106 (5)
+johto_rival_silver_7 115 (18)
+johto_rival_silver_8 117 (22)
+johto_rival_silver_9 129 (40)
+johto_rocket_boss_giovanni 133 (46)
+johto_sage_mickey 117 (22)
+johto_sage_mickey_2 113 (16)
+johto_sage_mickey_3 124 (32)
+johto_sage_mickey_4 124 (32)
+johto_sage_mickey_5 124 (32)
+johto_sailor_eddie 135 (48)
+johto_sailor_garrett 131 (42)
+johto_sailor_huey_2 127 (36)
+johto_sailor_huey_3 130 (41)
+johto_sailor_huey_4 137 (52)
+johto_sailor_jeff 129 (40)
+johto_sailor_kenneth 127 (36)
+johto_sailor_parker 131 (43)
+johto_sailor_stanly 130 (41)
+johto_school_kid_m_alan_2 124 (32)
+johto_school_kid_m_alan_3 127 (36)
+johto_school_kid_m_alan_4 138 (54)
+johto_school_kid_m_billy 129 (39)
+johto_school_kid_m_billy_2 131 (43)
+johto_school_kid_m_billy_3 134 (47)
+johto_school_kid_m_billy_4 139 (55)
+johto_school_kid_m_chad_2 123 (30)
+johto_school_kid_m_chad_3 129 (39)
+johto_school_kid_m_chad_4 139 (56)
+johto_school_kid_m_connor 131 (42)
+johto_school_kid_m_danny 131 (43)
+johto_school_kid_m_dudley 133 (45)
+johto_school_kid_m_jack_2 122 (29)
+johto_school_kid_m_jack_3 128 (38)
+johto_school_kid_m_jack_4 137 (52)
+johto_school_kid_m_joe 132 (44)
+johto_school_kid_m_johnny 131 (42)
+johto_school_kid_m_kipp 129 (40)
+johto_school_kid_m_mickey 127 (37)
+johto_school_kid_m_mickey_2 126 (35)
+johto_school_kid_m_mickey_3 128 (38)
+johto_school_kid_m_nate 129 (40)
+johto_school_kid_m_ricky 129 (40)
+johto_school_kid_m_sherman 131 (43)
+johto_school_kid_m_tommy 131 (43)
+johto_school_kid_m_torin 130 (41)
+johto_school_kid_m_torin_2 133 (46)
+johto_school_kid_m_torin_3 137 (51)
+johto_school_kid_m_torin_4 138 (53)
+johto_school_kid_m_travis 131 (42)
+johto_scientist_gs_daniel 136 (50)
+johto_scientist_gs_linden 136 (50)
+johto_scientist_gs_lowell 136 (50)
+johto_skier_cady 138 (53)
+johto_super_nerd_cary 138 (53)
+johto_super_nerd_merle 138 (53)
+johto_super_nerd_mickey 116 (20)
+johto_super_nerd_mickey_2 117 (22)
+johto_super_nerd_mickey_3 119 (24)
+johto_super_nerd_mickey_4 116 (20)
+johto_super_nerd_mickey_5 121 (27)
+johto_super_nerd_mickey_6 123 (30)
+johto_super_nerd_pat 134 (47)
+johto_super_nerd_sam 132 (44)
+johto_super_nerd_shawn 130 (41)
+johto_super_nerd_tyrone 129 (40)
+johto_super_nerd_waldo 138 (53)
+johto_swimmer_f_briana 133 (46)
+johto_swimmer_f_chelan 129 (40)
+johto_swimmer_f_debbie 133 (46)
+johto_swimmer_f_diana 135 (48)
+johto_swimmer_f_joy 135 (48)
+johto_swimmer_f_katie 130 (41)
+johto_swimmer_f_kendra 131 (43)
+johto_swimmer_f_leona 132 (44)
+johto_swimmer_f_lori 131 (42)
+johto_swimmer_f_mickey 121 (28)
+johto_swimmer_f_mickey_2 122 (29)
+johto_swimmer_f_mickey_3 116 (20)
+johto_swimmer_f_mickey_4 116 (20)
+johto_swimmer_f_mickey_5 116 (20)
+johto_swimmer_f_mina 130 (41)
+johto_swimmer_f_nicole 131 (42)
+johto_swimmer_f_nikki 131 (42)
+johto_swimmer_m_duane 129 (40)
+johto_swimmer_m_elmo 133 (46)
+johto_swimmer_m_esteban 128 (38)
+johto_swimmer_m_frankie 132 (44)
+johto_swimmer_m_harold 131 (42)
+johto_swimmer_m_jerome 129 (40)
+johto_swimmer_m_luis 133 (46)
+johto_swimmer_m_mickey 120 (26)
+johto_swimmer_m_mickey_2 121 (27)
+johto_swimmer_m_mickey_3 119 (25)
+johto_swimmer_m_mickey_4 116 (20)
+johto_swimmer_m_mickey_5 115 (18)
+johto_swimmer_m_mickey_6 115 (18)
+johto_swimmer_m_mickey_7 115 (18)
+johto_swimmer_m_mickey_8 115 (18)
+johto_swimmer_m_parker 131 (43)
+johto_swimmer_m_tucker 132 (44)
+johto_swimmer_m_tyson 131 (42)
+johto_teacher_clarice 131 (43)
+johto_teacher_colette 133 (45)
+johto_teacher_hillary 130 (41)
+johto_teacher_hillary_2 131 (43)
+johto_teacher_hillary_3 135 (49)
+johto_teacher_hillary_4 139 (55)
+johto_teacher_shirley 131 (43)
+johto_team_rocket_f_grunt_4 119 (24)
+johto_team_rocket_grunt_20 115 (19)
+johto_team_rocket_grunt_21 115 (18)
+johto_team_rocket_grunt_24 129 (39)
+johto_team_rocket_grunt_26 111 (12)
+johto_team_rocket_grunt_3 119 (24)
+johto_team_rocket_mickey 112 (14)
+johto_team_rocket_mickey_2 125 (33)
+johto_team_rocket_mickey_3 117 (22)
+johto_team_rocket_mickey_4 127 (36)
+johto_team_rocket_mickey_5 123 (30)
+johto_team_rocket_mickey_6 113 (15)
+johto_team_rocket_mickey_7 123 (30)
+johto_tower_tycoon_palmer 106 (5)
+johto_twins_amy_and_mimi_2 109 (10)
+johto_twins_dara_and_dia 113 (16)
+johto_twins_day_and_dani 130 (41)
+johto_twins_jo_and_zoe 134 (47)
+johto_twins_jo_and_zoe_2 127 (37)
+johto_twins_kay_and_tia 130 (41)
+johto_twins_kay_and_tia_2 135 (48)
+johto_twins_kay_and_tia_3 138 (53)
+johto_twins_kay_and_tia_4 139 (55)
+johto_twins_meg_and_peg 129 (39)
+johto_twins_meg_and_peg_2 129 (39)
+johto_twins_mickey 128 (38)
+johto_young_couple_moe_and_lulu 131 (43)
+johto_young_couple_tim_and_sue 133 (46)
+johto_young_couple_tim_and_sue_2 136 (50)
+johto_young_couple_tim_and_sue_3 137 (52)
+johto_young_couple_tim_and_sue_4 139 (56)
+johto_young_couple_vic_and_tara 132 (44)
+johto_youngster_ian_2 125 (33)
+johto_youngster_ian_3 129 (40)
+johto_youngster_ian_4 140 (58)
+johto_youngster_jason 131 (42)
+johto_youngster_jimmy 131 (42)
+johto_youngster_joey_2 125 (34)
+johto_youngster_joey_3 129 (40)
+johto_youngster_joey_4 138 (54)
+johto_youngster_mickey 127 (37)
+johto_youngster_owen 132 (44)
+johto_youngster_regis 129 (40)
+johto_youngster_warren 131 (42)
+=== region Hoenn
+levels 2 → 136, 58 → 162, 78 → 183
+caps 142 144 146 149 149 150 155 156 162 (own 15 19 24 29 31 33 42 46 58)
+hoenn_abigail_2 148 (28)
+hoenn_abigail_3 149 (31)
+hoenn_abigail_4 151 (34)
+hoenn_abigail_5 152 (37)
+hoenn_alan 145 (22)
+hoenn_alexis 154 (41)
+hoenn_alvaro 154 (41)
+hoenn_amy_and_liv_2 148 (27)
+hoenn_amy_and_liv_3 139 (9)
+hoenn_amy_and_liv_4 149 (30)
+hoenn_amy_and_liv_5 150 (33)
+hoenn_amy_and_liv_6 152 (36)
+hoenn_anabel 137 (5)
+hoenn_andres_2 149 (31)
+hoenn_andres_3 150 (33)
+hoenn_andres_4 151 (35)
+hoenn_andres_5 152 (37)
+hoenn_anna_and_meg_2 149 (30)
+hoenn_anna_and_meg_3 150 (33)
+hoenn_anna_and_meg_4 152 (36)
+hoenn_anna_and_meg_5 153 (38)
+hoenn_archie 155 (43)
+hoenn_benjamin_2 149 (30)
+hoenn_benjamin_3 150 (33)
+hoenn_benjamin_4 152 (36)
+hoenn_benjamin_5 153 (39)
+hoenn_benny 152 (36)
+hoenn_bernie_2 147 (26)
+hoenn_bernie_3 149 (29)
+hoenn_bernie_4 150 (32)
+hoenn_bernie_5 151 (35)
+hoenn_brandon 137 (5)
+hoenn_brawly_1 144 (19)
+hoenn_brawly_2 152 (37)
+hoenn_brawly_3 155 (42)
+hoenn_brawly_4 157 (47)
+hoenn_brawly_5 159 (52)
+hoenn_brendan_lilycove_mudkip 151 (34)
+hoenn_brendan_lilycove_torchic 151 (34)
+hoenn_brendan_lilycove_treecko 151 (34)
+hoenn_brendan_placeholder 137 (5)
+hoenn_brendan_route_103_mudkip 137 (5)
+hoenn_brendan_route_103_torchic 137 (5)
+hoenn_brendan_route_103_treecko 137 (5)
+hoenn_brendan_route_110_mudkip 144 (20)
+hoenn_brendan_route_110_torchic 144 (20)
+hoenn_brendan_route_110_treecko 144 (20)
+hoenn_brendan_route_119_mudkip 149 (31)
+hoenn_brendan_route_119_torchic 149 (31)
+hoenn_brendan_route_119_treecko 149 (31)
+hoenn_brendan_rustboro_mudkip 142 (15)
+hoenn_brendan_rustboro_torchic 142 (15)
+hoenn_brendan_rustboro_treecko 142 (15)
+hoenn_brooke_2 147 (26)
+hoenn_brooke_3 149 (29)
+hoenn_brooke_4 150 (32)
+hoenn_brooke_5 151 (34)
+hoenn_calvin_2 148 (27)
+hoenn_calvin_3 149 (30)
+hoenn_calvin_4 150 (33)
+hoenn_calvin_5 152 (36)
+hoenn_cameron_2 150 (33)
+hoenn_cameron_3 153 (38)
+hoenn_cameron_4 154 (41)
+hoenn_cameron_5 156 (45)
+hoenn_catherine_2 149 (30)
+hoenn_catherine_3 150 (33)
+hoenn_catherine_4 152 (36)
+hoenn_catherine_5 153 (39)
+hoenn_charlie 147 (26)
+hoenn_cindy_2 140 (11)
+hoenn_cindy_3 148 (27)
+hoenn_cindy_4 149 (30)
+hoenn_cindy_5 150 (33)
+hoenn_cindy_6 152 (36)
+hoenn_colton 155 (42)
+hoenn_cora 148 (27)
+hoenn_cory_2 149 (30)
+hoenn_cory_3 150 (32)
+hoenn_cory_4 151 (34)
+hoenn_cory_5 152 (36)
+hoenn_cristin_2 151 (35)
+hoenn_cristin_3 152 (37)
+hoenn_cristin_4 153 (39)
+hoenn_cristin_5 154 (41)
+hoenn_cyndy_2 147 (26)
+hoenn_cyndy_3 149 (29)
+hoenn_cyndy_4 150 (32)
+hoenn_cyndy_5 151 (35)
+hoenn_dalton_2 147 (25)
+hoenn_dalton_3 148 (28)
+hoenn_dalton_4 149 (31)
+hoenn_dalton_5 151 (34)
+hoenn_demetrius 147 (25)
+hoenn_diana_2 147 (25)
+hoenn_diana_3 148 (28)
+hoenn_diana_4 149 (31)
+hoenn_diana_5 154 (40)
+hoenn_drake 161 (55)
+hoenn_dudley 150 (33)
+hoenn_duncan 147 (25)
+hoenn_dusty_2 148 (27)
+hoenn_dusty_3 149 (30)
+hoenn_dusty_4 150 (33)
+hoenn_dusty_5 152 (36)
+hoenn_dylan_2 148 (28)
+hoenn_dylan_3 149 (31)
+hoenn_dylan_4 151 (34)
+hoenn_dylan_5 152 (37)
+hoenn_edwin_2 147 (26)
+hoenn_edwin_3 149 (29)
+hoenn_edwin_4 150 (32)
+hoenn_edwin_5 151 (35)
+hoenn_elliot_2 148 (27)
+hoenn_elliot_3 149 (29)
+hoenn_elliot_4 149 (31)
+hoenn_elliot_5 151 (35)
+hoenn_ernest_2 152 (36)
+hoenn_ernest_3 153 (39)
+hoenn_ernest_4 155 (42)
+hoenn_ernest_5 156 (45)
+hoenn_ethan_2 147 (26)
+hoenn_ethan_3 149 (29)
+hoenn_ethan_4 149 (31)
+hoenn_ethan_5 151 (34)
+hoenn_everett 154 (41)
+hoenn_fernando_2 151 (35)
+hoenn_fernando_3 152 (37)
+hoenn_fernando_4 153 (39)
+hoenn_fernando_5 154 (41)
+hoenn_flannery_1 149 (29)
+hoenn_flannery_2 154 (40)
+hoenn_flannery_3 156 (45)
+hoenn_flannery_4 158 (50)
+hoenn_flannery_5 161 (55)
+hoenn_gabby_and_ty_1 143 (17)
+hoenn_gabby_and_ty_2 148 (27)
+hoenn_gabby_and_ty_3 149 (30)
+hoenn_gabby_and_ty_4 150 (33)
+hoenn_gabby_and_ty_5 152 (36)
+hoenn_gabby_and_ty_6 153 (39)
+hoenn_gabrielle_2 149 (31)
+hoenn_gabrielle_3 150 (33)
+hoenn_gabrielle_4 151 (35)
+hoenn_gabrielle_5 152 (37)
+hoenn_garret 156 (45)
+hoenn_garrison 147 (26)
+hoenn_georgia 143 (16)
+hoenn_gina_and_mia_2 140 (10)
+hoenn_glacia 160 (53)
+hoenn_greta 137 (5)
+hoenn_grunt_jagged_pass 145 (22)
+hoenn_grunt_museum_1 142 (15)
+hoenn_grunt_museum_2 142 (14)
+hoenn_grunt_petalburg_woods 139 (9)
+hoenn_grunt_rusturf_tunnel 140 (11)
+hoenn_grunt_space_center_5 150 (32)
+hoenn_grunt_space_center_6 150 (32)
+hoenn_grunt_space_center_7 150 (32)
+hoenn_grunt_unused 149 (31)
+hoenn_haley_2 147 (26)
+hoenn_haley_3 149 (29)
+hoenn_haley_4 150 (32)
+hoenn_haley_5 151 (34)
+hoenn_isaac_2 145 (22)
+hoenn_isaac_3 147 (25)
+hoenn_isaac_4 148 (28)
+hoenn_isaac_5 149 (31)
+hoenn_isabel_2 147 (26)
+hoenn_isabel_3 149 (29)
+hoenn_isabel_4 150 (32)
+hoenn_isabel_5 151 (35)
+hoenn_isaiah_2 153 (39)
+hoenn_isaiah_3 155 (42)
+hoenn_isaiah_4 156 (45)
+hoenn_isaiah_5 157 (48)
+hoenn_jacki_2 151 (34)
+hoenn_jacki_3 152 (37)
+hoenn_jacki_4 154 (40)
+hoenn_jacki_5 155 (43)
+hoenn_jackson_2 149 (31)
+hoenn_jackson_3 151 (34)
+hoenn_jackson_4 152 (37)
+hoenn_jackson_5 153 (39)
+hoenn_james_2 148 (27)
+hoenn_james_3 149 (29)
+hoenn_james_4 149 (31)
+hoenn_james_5 150 (33)
+hoenn_jani 147 (26)
+hoenn_jeffrey_2 149 (31)
+hoenn_jeffrey_3 151 (34)
+hoenn_jeffrey_4 152 (36)
+hoenn_jeffrey_5 153 (38)
+hoenn_jenny_2 153 (38)
+hoenn_jenny_3 154 (41)
+hoenn_jenny_4 155 (43)
+hoenn_jenny_5 156 (45)
+hoenn_jerry_2 147 (26)
+hoenn_jerry_3 149 (29)
+hoenn_jerry_4 150 (32)
+hoenn_jerry_5 151 (34)
+hoenn_jessica_2 151 (35)
+hoenn_jessica_3 153 (38)
+hoenn_jessica_4 154 (41)
+hoenn_jessica_5 156 (44)
+hoenn_john_and_jay_2 155 (43)
+hoenn_john_and_jay_3 156 (46)
+hoenn_john_and_jay_4 158 (49)
+hoenn_john_and_jay_5 159 (52)
+hoenn_joshua 154 (41)
+hoenn_juan_1 156 (46)
+hoenn_juan_2 159 (51)
+hoenn_juan_3 161 (56)
+hoenn_juan_4 165 (61)
+hoenn_juan_5 170 (66)
+hoenn_justin 146 (24)
+hoenn_karen_2 147 (26)
+hoenn_karen_3 149 (29)
+hoenn_karen_4 150 (32)
+hoenn_karen_5 151 (35)
+hoenn_katelyn_2 153 (39)
+hoenn_katelyn_3 155 (42)
+hoenn_katelyn_4 156 (45)
+hoenn_katelyn_5 157 (48)
+hoenn_kaylee 151 (34)
+hoenn_keira 156 (45)
+hoenn_kira_and_dan_1 147 (25)
+hoenn_kira_and_dan_2 149 (30)
+hoenn_kira_and_dan_3 150 (33)
+hoenn_kira_and_dan_4 152 (36)
+hoenn_kira_and_dan_5 153 (39)
+hoenn_koji_2 152 (37)
+hoenn_koji_3 153 (39)
+hoenn_koji_4 154 (41)
+hoenn_koji_5 155 (43)
+hoenn_lao_2 147 (26)
+hoenn_lao_3 149 (29)
+hoenn_lao_4 150 (32)
+hoenn_lao_5 151 (35)
+hoenn_lea_and_jed 156 (45)
+hoenn_leaf 137 (5)
+hoenn_leonard 155 (43)
+hoenn_leroy 156 (46)
+hoenn_lila_and_roy_2 155 (42)
+hoenn_lila_and_roy_3 156 (45)
+hoenn_lila_and_roy_4 157 (48)
+hoenn_lila_and_roy_5 159 (51)
+hoenn_lola_2 147 (26)
+hoenn_lola_3 149 (29)
+hoenn_lola_4 150 (32)
+hoenn_lola_5 151 (35)
+hoenn_lucas_2 139 (9)
+hoenn_lucy 137 (5)
+hoenn_lydia_2 145 (22)
+hoenn_lydia_3 147 (25)
+hoenn_lydia_4 148 (28)
+hoenn_lydia_5 149 (31)
+hoenn_madeline_2 149 (29)
+hoenn_madeline_3 150 (32)
+hoenn_madeline_4 151 (34)
+hoenn_madeline_5 152 (37)
+hoenn_maria_2 148 (28)
+hoenn_maria_3 149 (31)
+hoenn_maria_4 151 (34)
+hoenn_maria_5 152 (37)
+hoenn_mariela 154 (41)
+hoenn_martha 146 (23)
+hoenn_matt 151 (34)
+hoenn_maxie_magma_hideout 153 (39)
+hoenn_maxie_mossdeep 156 (44)
+hoenn_maxie_mt_chimney 147 (25)
+hoenn_may_lilycove_mudkip 151 (34)
+hoenn_may_lilycove_torchic 151 (34)
+hoenn_may_lilycove_treecko 151 (34)
+hoenn_may_placeholder 137 (5)
+hoenn_may_route_103_mudkip 137 (5)
+hoenn_may_route_103_torchic 137 (5)
+hoenn_may_route_103_treecko 137 (5)
+hoenn_may_route_110_mudkip 144 (20)
+hoenn_may_route_110_torchic 144 (20)
+hoenn_may_route_110_treecko 144 (20)
+hoenn_may_route_119_mudkip 149 (31)
+hoenn_may_route_119_torchic 149 (31)
+hoenn_may_route_119_treecko 149 (31)
+hoenn_may_rustboro_mudkip 142 (15)
+hoenn_may_rustboro_torchic 142 (15)
+hoenn_may_rustboro_treecko 142 (15)
+hoenn_micah 156 (44)
+hoenn_miguel_2 149 (29)
+hoenn_miguel_3 150 (32)
+hoenn_miguel_4 151 (35)
+hoenn_miguel_5 153 (38)
+hoenn_mike_1 140 (10)
+hoenn_naomi 156 (45)
+hoenn_nicolas_2 154 (41)
+hoenn_nicolas_3 156 (44)
+hoenn_nicolas_4 156 (46)
+hoenn_nicolas_5 158 (49)
+hoenn_nob_2 148 (27)
+hoenn_nob_3 149 (29)
+hoenn_nob_4 149 (31)
+hoenn_nob_5 150 (33)
+hoenn_noland 137 (5)
+hoenn_norman_1 149 (31)
+hoenn_norman_2 156 (45)
+hoenn_norman_3 158 (50)
+hoenn_norman_4 161 (55)
+hoenn_norman_5 164 (60)
+hoenn_pablo_2 152 (37)
+hoenn_pablo_3 153 (39)
+hoenn_pablo_4 154 (41)
+hoenn_pablo_5 155 (43)
+hoenn_patricia 154 (41)
+hoenn_paul 142 (15)
+hoenn_paula 148 (27)
+hoenn_phillip 156 (44)
+hoenn_phoebe 159 (51)
+hoenn_red 137 (5)
+hoenn_ricky_2 148 (27)
+hoenn_ricky_3 149 (30)
+hoenn_ricky_4 150 (33)
+hoenn_ricky_5 152 (36)
+hoenn_robert_2 150 (32)
+hoenn_robert_3 151 (35)
+hoenn_robert_4 153 (38)
+hoenn_robert_5 154 (41)
+hoenn_rose_2 147 (26)
+hoenn_rose_3 148 (28)
+hoenn_rose_4 149 (31)
+hoenn_rose_5 151 (34)
+hoenn_roxanne_1 142 (15)
+hoenn_roxanne_2 152 (37)
+hoenn_roxanne_3 155 (42)
+hoenn_roxanne_4 157 (47)
+hoenn_roxanne_5 159 (52)
+hoenn_sawyer_2 147 (26)
+hoenn_sawyer_3 148 (28)
+hoenn_sawyer_4 149 (30)
+hoenn_sawyer_5 150 (33)
+hoenn_sebastian 153 (39)
+hoenn_shelby_2 149 (30)
+hoenn_shelby_3 150 (33)
+hoenn_shelby_4 152 (36)
+hoenn_shelby_5 153 (39)
+hoenn_sidney 158 (49)
+hoenn_sophia 153 (38)
+hoenn_spenser 137 (5)
+hoenn_steve_2 148 (27)
+hoenn_steve_3 149 (29)
+hoenn_steve_4 150 (32)
+hoenn_steve_5 151 (35)
+hoenn_steven 183 (78)
+hoenn_steven_partner 156 (44)
+hoenn_tate_and_liza_1 155 (42)
+hoenn_tate_and_liza_2 158 (50)
+hoenn_tate_and_liza_3 161 (55)
+hoenn_tate_and_liza_4 164 (60)
+hoenn_tate_and_liza_5 169 (65)
+hoenn_ted 143 (17)
+hoenn_terry 152 (37)
+hoenn_thalia_1 147 (25)
+hoenn_thalia_2 151 (34)
+hoenn_thalia_3 152 (36)
+hoenn_thalia_4 153 (38)
+hoenn_thalia_5 154 (40)
+hoenn_thomas 156 (45)
+hoenn_timothy_2 150 (33)
+hoenn_timothy_3 152 (36)
+hoenn_timothy_4 153 (39)
+hoenn_timothy_5 155 (42)
+hoenn_tony_2 149 (30)
+hoenn_tony_3 150 (33)
+hoenn_tony_4 152 (36)
+hoenn_tony_5 153 (39)
+hoenn_trent_2 146 (24)
+hoenn_trent_3 148 (27)
+hoenn_trent_4 149 (30)
+hoenn_trent_5 150 (33)
+hoenn_tucker 137 (5)
+hoenn_valerie_2 149 (31)
+hoenn_valerie_3 151 (35)
+hoenn_valerie_4 154 (40)
+hoenn_valerie_5 155 (42)
+hoenn_vicky 143 (18)
+hoenn_victor 143 (16)
+hoenn_victoria 143 (17)
+hoenn_vincent 156 (44)
+hoenn_vivi 142 (15)
+hoenn_wallace 162 (58)
+hoenn_wally_mauville 143 (16)
+hoenn_wally_vr_1 156 (45)
+hoenn_wally_vr_2 157 (48)
+hoenn_wally_vr_3 159 (51)
+hoenn_wally_vr_4 160 (54)
+hoenn_wally_vr_5 162 (57)
+hoenn_walter_2 151 (34)
+hoenn_walter_3 152 (36)
+hoenn_walter_4 153 (39)
+hoenn_walter_5 154 (41)
+hoenn_wattson_1 146 (24)
+hoenn_wattson_2 154 (40)
+hoenn_wattson_3 156 (45)
+hoenn_wattson_4 158 (50)
+hoenn_wattson_5 161 (55)
+hoenn_wilton_2 147 (26)
+hoenn_wilton_3 149 (29)
+hoenn_wilton_4 150 (32)
+hoenn_wilton_5 151 (35)
+hoenn_winona_1 150 (33)
+hoenn_winona_2 156 (45)
+hoenn_winona_3 158 (50)
+hoenn_winona_4 161 (55)
+hoenn_winona_5 164 (60)
+hoenn_winston_2 148 (27)
+hoenn_winston_3 149 (30)
+hoenn_winston_4 150 (33)
+hoenn_winston_5 152 (36)
+hoenn_yuji 147 (26)
+=== region Unova
+levels 2 → 162, 59 → 185, 80 → 203
+caps 166 168 171 173 175 177 181 182 185 (own 13 18 24 30 33 39 48 51 59)
+unova_ace_trainer_austin 172 (26)
+unova_ace_trainer_belle 175 (33)
+unova_ace_trainer_charlie 188 (63)
+unova_ace_trainer_cheyenne 191 (66)
+unova_ace_trainer_cora_2 177 (39)
+unova_ace_trainer_dusty 189 (64)
+unova_ace_trainer_enzio 180 (46)
+unova_ace_trainer_eve 177 (40)
+unova_ace_trainer_geoff 175 (33)
+unova_ace_trainer_henry 188 (63)
+unova_ace_trainer_henry_2 168 (18)
+unova_ace_trainer_jacqueline 177 (40)
+unova_ace_trainer_jeanne 180 (47)
+unova_ace_trainer_junko 177 (39)
+unova_ace_trainer_kathrine 188 (63)
+unova_ace_trainer_kelsey 188 (63)
+unova_ace_trainer_kipp 177 (39)
+unova_ace_trainer_layla 177 (40)
+unova_ace_trainer_lucille 188 (63)
+unova_ace_trainer_mariana 188 (62)
+unova_ace_trainer_mariana_2 168 (18)
+unova_ace_trainer_natasha 177 (40)
+unova_ace_trainer_nina 177 (40)
+unova_ace_trainer_ray 177 (39)
+unova_ace_trainer_sable 180 (47)
+unova_ace_trainer_santino 181 (48)
+unova_ace_trainer_sean 191 (66)
+unova_ace_trainer_trish 177 (40)
+unova_alder 188 (62)
+unova_artist_pierre 188 (62)
+unova_backers_ai_ciel 187 (61)
+unova_backers_alf_fred 187 (61)
+unova_backers_ami_eira 174 (31)
+unova_backers_ami_eira_2 179 (45)
+unova_backers_ami_eira_3 187 (61)
+unova_backers_cam_abby 187 (61)
+unova_backers_hawk_dar 174 (31)
+unova_backers_hawk_dar_2 179 (45)
+unova_backers_hawk_dar_3 187 (61)
+unova_backers_joe_ross 174 (31)
+unova_backers_joe_ross_2 179 (45)
+unova_backers_joe_ross_3 187 (61)
+unova_backers_kat_phae 187 (61)
+unova_backers_kay_ali 174 (31)
+unova_backers_kay_ali_2 179 (45)
+unova_backers_kay_ali_3 187 (61)
+unova_backers_les_web 187 (61)
+unova_backers_masa_yas 174 (31)
+unova_backers_masa_yas_2 179 (45)
+unova_backers_masa_yas_3 187 (61)
+unova_backers_may_mal 188 (62)
+unova_backpacker_alexander 188 (62)
+unova_backpacker_boone 176 (36)
+unova_backpacker_clifford 168 (16)
+unova_backpacker_corin 186 (60)
+unova_backpacker_jill 188 (62)
+unova_backpacker_kiyo_2 176 (37)
+unova_backpacker_kumiko 176 (37)
+unova_backpacker_patty 188 (62)
+unova_backpacker_rachel 170 (21)
+unova_backpacker_reece 177 (38)
+unova_backpacker_roland 170 (21)
+unova_backpacker_shane 188 (62)
+unova_backpacker_talon 186 (60)
+unova_baker_chris 178 (42)
+unova_baker_lilly 187 (61)
+unova_battle_girl_glinda 177 (40)
+unova_battle_girl_janie 188 (63)
+unova_battle_girl_lee 187 (61)
+unova_battle_girl_maggie 188 (62)
+unova_battle_girl_wendy 190 (65)
+unova_battle_girl_xiao 188 (62)
+unova_beauty_amp_re 172 (27)
+unova_beauty_december 171 (24)
+unova_beauty_fleming 172 (27)
+unova_beauty_nikola 172 (27)
+unova_bianca 177 (40)
+unova_bianca_2 190 (65)
+unova_bianca_3 190 (65)
+unova_bianca_4 190 (65)
+unova_black_belt_andrey 167 (15)
+unova_black_belt_donny 167 (15)
+unova_black_belt_edward 188 (62)
+unova_black_belt_gordon 167 (15)
+unova_black_belt_grigor 167 (15)
+unova_black_belt_jay 182 (52)
+unova_black_belt_kentaro 187 (61)
+unova_black_belt_lao 187 (61)
+unova_black_belt_mathis 167 (15)
+unova_black_belt_rich 180 (47)
+unova_black_belt_rodrigo 167 (15)
+unova_black_belt_thomas 188 (62)
+unova_black_belt_zachary 190 (65)
+unova_boss_trainer_abed 183 (53)
+unova_boss_trainer_abigail 183 (53)
+unova_boss_trainer_benga 203 (80)
+unova_boss_trainer_benga_2 203 (80)
+unova_boss_trainer_bess 184 (56)
+unova_boss_trainer_brent 184 (56)
+unova_boss_trainer_carleigh 185 (59)
+unova_boss_trainer_carlen 185 (59)
+unova_boss_trainer_daneil 188 (62)
+unova_boss_trainer_danelle 188 (62)
+unova_boss_trainer_elie 190 (65)
+unova_boss_trainer_ellas 190 (65)
+unova_boss_trainer_frederick 193 (68)
+unova_boss_trainer_freira 193 (68)
+unova_boss_trainer_gail 195 (71)
+unova_boss_trainer_gaius 195 (71)
+unova_boss_trainer_harmon 198 (74)
+unova_boss_trainer_harmony 198 (74)
+unova_boss_trainer_ira 200 (77)
+unova_boss_trainer_iria 200 (77)
+unova_boss_trainer_janna 203 (80)
+unova_boss_trainer_jariel 203 (80)
+unova_champion_iris 185 (59)
+unova_champion_iris_2 201 (78)
+unova_champion_iris_3 185 (59)
+unova_champion_iris_4 202 (79)
+unova_cheren 175 (33)
+unova_cheren_2 192 (67)
+unova_cheren_3 192 (67)
+unova_cheren_4 192 (67)
+unova_cheren_5 192 (67)
+unova_chili 192 (67)
+unova_cilan 192 (67)
+unova_clerk_f_britney 168 (16)
+unova_clerk_f_lana 189 (64)
+unova_clerk_f_trisha 171 (24)
+unova_clerk_f_wren 186 (60)
+unova_clerk_m_augustin 171 (24)
+unova_clerk_m_chaz 187 (61)
+unova_clerk_m_chaz_2 168 (16)
+unova_clerk_m_clemens 168 (16)
+unova_clerk_m_fredric 188 (62)
+unova_clerk_m_gilligan 168 (17)
+unova_clerk_m_nelson 185 (58)
+unova_clerk_m_warren 168 (16)
+unova_colress 170 (23)
+unova_colress_2 198 (74)
+unova_cress 192 (67)
+unova_cynthia 201 (78)
+unova_dancer_davey 187 (61)
+unova_dancer_dirk 171 (24)
+unova_dancer_jean_paul 174 (32)
+unova_depot_agent_josh 187 (61)
+unova_doctor_jules 188 (62)
+unova_doctor_julius 181 (49)
+unova_elite_four_caitlin 185 (58)
+unova_elite_four_caitlin_2 198 (74)
+unova_elite_four_caitlin_3 185 (58)
+unova_elite_four_caitlin_4 199 (75)
+unova_elite_four_grimsley 185 (58)
+unova_elite_four_grimsley_2 198 (74)
+unova_elite_four_grimsley_3 185 (58)
+unova_elite_four_grimsley_4 199 (75)
+unova_elite_four_marshal 185 (58)
+unova_elite_four_marshal_2 198 (74)
+unova_elite_four_marshal_3 185 (58)
+unova_elite_four_marshal_4 199 (75)
+unova_elite_four_shauntal 185 (58)
+unova_elite_four_shauntal_2 198 (74)
+unova_elite_four_shauntal_3 185 (58)
+unova_elite_four_shauntal_4 199 (75)
+unova_fisherman_arnold 186 (60)
+unova_fisherman_bruce 187 (61)
+unova_fisherman_bucky 189 (64)
+unova_fisherman_devon 185 (59)
+unova_fisherman_eustace 186 (60)
+unova_fisherman_lydon 189 (64)
+unova_fisherman_mack 185 (58)
+unova_fisherman_ryder 186 (60)
+unova_fisherman_sid 177 (38)
+unova_game_freak_morimoto 201 (78)
+unova_game_freak_morimoto_2 167 (14)
+unova_game_freak_nishino 168 (16)
+unova_game_freak_nishino_2 201 (78)
+unova_gentleman_renaud 188 (62)
+unova_gentleman_rich 162 (1)
+unova_gentleman_robert 186 (60)
+unova_gentleman_robert_2 168 (17)
+unova_gentleman_sheldon 177 (39)
+unova_gentleman_stonewall 179 (43)
+unova_guitarist_january 171 (24)
+unova_guitarist_tina 175 (33)
+unova_harlequin_charley 187 (61)
+unova_harlequin_jack 169 (20)
+unova_hiker_andy 171 (24)
+unova_hiker_hunter 187 (61)
+unova_hiker_jerome 166 (11)
+unova_hiker_manuel 187 (61)
+unova_hiker_russel 186 (60)
+unova_hiker_stephen 189 (64)
+unova_hiker_teppei 187 (61)
+unova_hiker_wade 187 (61)
+unova_hiker_zaiem 187 (61)
+unova_hoopster_bobby 172 (26)
+unova_hoopster_bobby_2 175 (34)
+unova_hoopster_bobby_3 181 (48)
+unova_hoopster_bobby_4 188 (63)
+unova_hoopster_john 180 (47)
+unova_hoopster_john_2 188 (63)
+unova_hoopster_john_3 171 (25)
+unova_hoopster_john_4 175 (33)
+unova_hoopster_lamarcus 188 (63)
+unova_hoopster_lamarcus_2 171 (25)
+unova_hoopster_lamarcus_3 175 (33)
+unova_hoopster_lamarcus_4 180 (47)
+unova_infielder_alex 171 (24)
+unova_infielder_alex_2 174 (32)
+unova_infielder_alex_3 180 (46)
+unova_infielder_alex_4 188 (62)
+unova_infielder_connor 180 (47)
+unova_infielder_connor_2 188 (63)
+unova_infielder_connor_3 171 (25)
+unova_infielder_connor_4 175 (33)
+unova_infielder_todd 188 (63)
+unova_infielder_todd_2 172 (26)
+unova_infielder_todd_3 175 (34)
+unova_infielder_todd_4 180 (47)
+unova_janitor_caleb 187 (61)
+unova_lady_colette 171 (24)
+unova_lady_elizandra 186 (60)
+unova_lady_elizandra_2 168 (16)
+unova_lady_lina 170 (22)
+unova_lady_sophie 188 (62)
+unova_lass_dana 186 (60)
+unova_lass_diana 162 (1)
+unova_lass_diana_2 188 (63)
+unova_lass_helia 186 (60)
+unova_lass_henrietta 187 (61)
+unova_lass_lurleen 177 (39)
+unova_lass_mai 186 (60)
+unova_lass_mali 187 (61)
+unova_lass_persephone 171 (24)
+unova_lass_shannon 188 (62)
+unova_lass_sibyl 187 (61)
+unova_lass_sibyl_2 168 (16)
+unova_leader_burgh 171 (24)
+unova_leader_burgh_2 171 (24)
+unova_leader_cheren 166 (13)
+unova_leader_cheren_2 166 (13)
+unova_leader_clay 175 (33)
+unova_leader_clay_2 175 (33)
+unova_leader_drayden 181 (48)
+unova_leader_drayden_2 181 (48)
+unova_leader_elesa 173 (30)
+unova_leader_elesa_2 173 (30)
+unova_leader_marlon 182 (51)
+unova_leader_marlon_2 182 (51)
+unova_leader_roxie 168 (18)
+unova_leader_roxie_2 168 (18)
+unova_leader_skyla 177 (39)
+unova_leader_skyla_2 177 (39)
+unova_linebacker_bob 180 (47)
+unova_linebacker_bob_2 188 (62)
+unova_linebacker_bob_3 171 (25)
+unova_linebacker_bob_4 175 (33)
+unova_linebacker_dan 171 (25)
+unova_linebacker_dan_2 175 (33)
+unova_linebacker_dan_3 180 (47)
+unova_linebacker_dan_4 188 (62)
+unova_linebacker_jonah 189 (64)
+unova_linebacker_jonah_2 172 (26)
+unova_linebacker_jonah_3 175 (34)
+unova_linebacker_jonah_4 181 (48)
+unova_maid_alica 187 (61)
+unova_maid_tammy 191 (66)
+unova_maid_tanya 187 (61)
+unova_maid_tanya_2 168 (17)
+unova_motorcyclist_charles 172 (26)
+unova_motorcyclist_charles_2 172 (26)
+unova_motorcyclist_charles_3 172 (26)
+unova_motorcyclist_charles_4 172 (26)
+unova_musician_boris 187 (61)
+unova_n 194 (70)
+unova_n_2 194 (70)
+unova_n_3 200 (77)
+unova_n_4 200 (77)
+unova_n_5 200 (77)
+unova_n_6 200 (77)
+unova_nate 171 (25)
+unova_nate_2 171 (25)
+unova_nate_3 171 (25)
+unova_no_data_616 162 (1)
+unova_no_data_617 162 (1)
+unova_no_data_618 162 (1)
+unova_no_data_619 162 (1)
+unova_no_data_620 162 (1)
+unova_nurse_carol 188 (62)
+unova_nurse_kirsten 188 (62)
+unova_nursery_aide_autumn 187 (61)
+unova_nursery_aide_ethel 187 (61)
+unova_nursery_aide_ilse 188 (62)
+unova_nursery_aide_june 171 (24)
+unova_nursery_aide_leah 187 (61)
+unova_nursery_aide_naoise 162 (1)
+unova_nursery_aide_rosalyn 187 (61)
+unova_parasol_lady_gwyneth 188 (62)
+unova_parasol_lady_ingrid 186 (60)
+unova_parasol_lady_tyra 186 (60)
+unova_pilot_leonard 186 (60)
+unova_pkmn_breeder_brooke 184 (57)
+unova_pkmn_breeder_owen 184 (57)
+unova_pkmn_ranger_alain 187 (61)
+unova_pkmn_ranger_audra 189 (64)
+unova_pkmn_ranger_bret 175 (33)
+unova_pkmn_ranger_dwayne 188 (62)
+unova_pkmn_ranger_elaine 188 (62)
+unova_pkmn_ranger_eliza_2 177 (38)
+unova_pkmn_ranger_heidi 187 (61)
+unova_pkmn_ranger_hillary 188 (62)
+unova_pkmn_ranger_katie 188 (62)
+unova_pkmn_ranger_leaf 174 (32)
+unova_pkmn_ranger_lewis_2 177 (38)
+unova_pkmn_ranger_malory 175 (33)
+unova_pkmn_ranger_maxwell 188 (62)
+unova_pkmn_ranger_melita 188 (62)
+unova_pkmn_ranger_naoko 174 (32)
+unova_pkmn_ranger_parker 188 (62)
+unova_pkmn_ranger_ralph 188 (62)
+unova_pkmn_ranger_rick 189 (64)
+unova_pokefan_colin 187 (61)
+unova_pokefan_darcy 185 (58)
+unova_pokefan_elliot 186 (60)
+unova_pokefan_lydia 186 (60)
+unova_pokefan_norbert 170 (21)
+unova_pokefan_sachiko 170 (22)
+unova_policeman_jeff 187 (61)
+unova_preschooler_buster 187 (61)
+unova_preschooler_eva 187 (61)
+unova_preschooler_evan 187 (61)
+unova_preschooler_ike 186 (60)
+unova_preschooler_jojo 186 (60)
+unova_preschooler_jose 185 (59)
+unova_preschooler_mia 187 (61)
+unova_preschooler_samantha 185 (59)
+unova_preschooler_tyrone 187 (61)
+unova_preschooler_winter 170 (23)
+unova_psychic_gerard 187 (61)
+unova_psychic_lynette 176 (36)
+unova_psychic_madhu 188 (62)
+unova_psychic_nandor 188 (62)
+unova_psychic_olesia 188 (62)
+unova_rich_boy_anthony 188 (62)
+unova_rich_boy_brad 187 (61)
+unova_rich_boy_brad_2 168 (16)
+unova_rich_boy_keenan 170 (22)
+unova_rich_boy_martin 170 (23)
+unova_rich_boy_rolan 171 (24)
+unova_rival 163 (5)
+unova_rival_10 178 (41)
+unova_rival_11 178 (41)
+unova_rival_12 178 (41)
+unova_rival_13 169 (20)
+unova_rival_14 169 (20)
+unova_rival_15 169 (20)
+unova_rival_16 184 (57)
+unova_rival_17 184 (57)
+unova_rival_18 184 (57)
+unova_rival_19 189 (64)
+unova_rival_2 163 (5)
+unova_rival_20 189 (64)
+unova_rival_21 189 (64)
+unova_rival_22 192 (67)
+unova_rival_23 192 (67)
+unova_rival_24 192 (67)
+unova_rival_25 179 (43)
+unova_rival_26 179 (43)
+unova_rival_27 179 (43)
+unova_rival_28 181 (50)
+unova_rival_29 181 (50)
+unova_rival_3 163 (5)
+unova_rival_30 181 (50)
+unova_rival_4 164 (8)
+unova_rival_5 164 (8)
+unova_rival_6 164 (8)
+unova_rival_7 175 (33)
+unova_rival_8 175 (33)
+unova_rival_9 175 (33)
+unova_rood 172 (27)
+unova_rosa 171 (25)
+unova_rosa_2 171 (25)
+unova_rosa_3 171 (25)
+unova_roughneck_fletcher 186 (60)
+unova_roughneck_ricky 174 (32)
+unova_school_kid_alan 186 (60)
+unova_school_kid_alberta 175 (35)
+unova_school_kid_cassie 165 (9)
+unova_school_kid_cassie_2 165 (9)
+unova_school_kid_cassie_3 165 (9)
+unova_school_kid_edgar 187 (61)
+unova_school_kid_keston 186 (60)
+unova_school_kid_marsha 187 (61)
+unova_school_kid_millie 186 (60)
+unova_school_kid_neil 168 (17)
+unova_school_kid_rita 188 (63)
+unova_school_kid_sally 186 (60)
+unova_school_kid_seymour 165 (9)
+unova_school_kid_seymour_2 165 (9)
+unova_school_kid_seymour_3 165 (9)
+unova_school_kid_william 188 (63)
+unova_scientist_athena 188 (63)
+unova_scientist_blythe 187 (61)
+unova_scientist_dudley 175 (34)
+unova_scientist_franklin 188 (63)
+unova_scientist_marie 186 (60)
+unova_scientist_simon 187 (61)
+unova_smasher_aspen 180 (47)
+unova_smasher_aspen_2 188 (63)
+unova_smasher_aspen_3 171 (25)
+unova_smasher_aspen_4 175 (33)
+unova_smasher_elena 172 (26)
+unova_smasher_elena_2 175 (34)
+unova_smasher_elena_3 181 (48)
+unova_smasher_elena_4 188 (63)
+unova_smasher_mari 188 (63)
+unova_smasher_mari_2 172 (26)
+unova_smasher_mari_3 175 (34)
+unova_smasher_mari_4 181 (48)
+unova_socialite_cassandra 187 (61)
+unova_socialite_cassandra_2 168 (17)
+unova_socialite_emilia 187 (61)
+unova_socialite_marian 177 (39)
+unova_striker_marco 188 (63)
+unova_striker_marco_2 172 (26)
+unova_striker_marco_3 175 (34)
+unova_striker_marco_4 180 (47)
+unova_striker_roberto 181 (48)
+unova_striker_roberto_2 188 (62)
+unova_striker_roberto_3 172 (26)
+unova_striker_roberto_4 175 (34)
+unova_striker_tony 172 (26)
+unova_striker_tony_2 175 (34)
+unova_striker_tony_3 181 (48)
+unova_striker_tony_4 188 (63)
+unova_swimmer_f_dara 190 (65)
+unova_swimmer_f_ruth 190 (65)
+unova_swimmer_m_jeffery 190 (65)
+unova_swimmer_m_wright 190 (65)
+unova_team_plasma_colress 182 (52)
+unova_team_plasma_colress_2 162 (1)
+unova_team_plasma_ghetsis 182 (52)
+unova_team_plasma_grunt_10 173 (29)
+unova_team_plasma_grunt_11 180 (46)
+unova_team_plasma_grunt_12 180 (47)
+unova_team_plasma_grunt_13 180 (47)
+unova_team_plasma_grunt_14 180 (46)
+unova_team_plasma_grunt_15 179 (45)
+unova_team_plasma_grunt_16 180 (47)
+unova_team_plasma_grunt_17 180 (47)
+unova_team_plasma_grunt_18 180 (46)
+unova_team_plasma_grunt_19 180 (46)
+unova_team_plasma_grunt_2 180 (46)
+unova_team_plasma_grunt_20 180 (47)
+unova_team_plasma_grunt_21 179 (45)
+unova_team_plasma_grunt_22 179 (45)
+unova_team_plasma_grunt_23 180 (47)
+unova_team_plasma_grunt_24 180 (46)
+unova_team_plasma_grunt_25 180 (46)
+unova_team_plasma_grunt_26 180 (46)
+unova_team_plasma_grunt_27 180 (47)
+unova_team_plasma_grunt_28 180 (47)
+unova_team_plasma_grunt_29 180 (46)
+unova_team_plasma_grunt_30 179 (45)
+unova_team_plasma_grunt_31 180 (47)
+unova_team_plasma_grunt_32 180 (47)
+unova_team_plasma_grunt_33 180 (46)
+unova_team_plasma_grunt_34 180 (46)
+unova_team_plasma_grunt_35 180 (47)
+unova_team_plasma_grunt_36 179 (45)
+unova_team_plasma_grunt_37 179 (45)
+unova_team_plasma_grunt_38 180 (47)
+unova_team_plasma_grunt_39 180 (46)
+unova_team_plasma_grunt_4 172 (27)
+unova_team_plasma_grunt_40 180 (46)
+unova_team_plasma_grunt_41 179 (44)
+unova_team_plasma_grunt_42 179 (44)
+unova_team_plasma_grunt_43 179 (44)
+unova_team_plasma_grunt_44 167 (14)
+unova_team_plasma_grunt_46 180 (47)
+unova_team_plasma_grunt_47 172 (27)
+unova_team_plasma_grunt_48 167 (14)
+unova_team_plasma_grunt_5 173 (30)
+unova_team_plasma_grunt_56 180 (47)
+unova_team_plasma_grunt_58 180 (47)
+unova_team_plasma_grunt_6 173 (30)
+unova_team_plasma_grunt_7 173 (29)
+unova_team_plasma_grunt_8 173 (29)
+unova_team_plasma_grunt_9 173 (29)
+unova_team_plasma_shadow 182 (51)
+unova_team_plasma_shadow_2 182 (51)
+unova_team_plasma_shadow_3 182 (51)
+unova_team_plasma_shadow_4 181 (48)
+unova_team_plasma_shadow_5 192 (67)
+unova_team_plasma_shadow_6 192 (67)
+unova_team_plasma_shadow_7 192 (67)
+unova_team_plasma_zinzolin_2 182 (51)
+unova_team_plasma_zinzolin_3 181 (48)
+unova_twins_ally_amy 186 (60)
+unova_twins_rae_ula 177 (38)
+unova_twins_tara_val 169 (20)
+unova_veteran_arlen 188 (63)
+unova_veteran_carter 189 (64)
+unova_veteran_chester 193 (68)
+unova_veteran_chloris 189 (64)
+unova_veteran_crispin 186 (60)
+unova_veteran_denae 179 (44)
+unova_veteran_donnaven 186 (60)
+unova_veteran_eli 186 (60)
+unova_veteran_ernest 186 (60)
+unova_veteran_gina 193 (68)
+unova_veteran_jerry 179 (45)
+unova_veteran_joseph 186 (60)
+unova_veteran_julia 188 (63)
+unova_veteran_lucius 180 (46)
+unova_veteran_maya 194 (70)
+unova_veteran_oriana 191 (66)
+unova_veteran_rayne 191 (66)
+unova_veteran_rhona 179 (45)
+unova_veteran_ron 179 (44)
+unova_veteran_rosaline 189 (64)
+unova_veteran_sayuri 188 (63)
+unova_veteran_shaun 188 (62)
+unova_veteran_sinan 189 (64)
+unova_veteran_vincent 194 (70)
+unova_veteran_wain 186 (60)
+unova_veteran_zach 188 (63)
+unova_waiter_clint 186 (60)
+unova_waitress_aurora 171 (24)
+unova_waitress_bonita 187 (61)
+unova_waitress_jan 186 (60)
+unova_worker_brand 186 (60)
+unova_worker_cairn 186 (60)
+unova_worker_cliff 188 (62)
+unova_worker_gus 186 (60)
+unova_worker_herman 187 (61)
+unova_worker_leo 186 (60)
+unova_worker_matthew 187 (61)
+unova_worker_morgann 187 (61)
+unova_worker_patton 187 (61)
+unova_worker_paul 186 (60)
+unova_worker_ryan 186 (60)
+unova_worker_tyler 187 (61)
+unova_worker_victor 187 (61)
+unova_youngster_abe 186 (60)
+unova_youngster_abe_2 168 (16)
+unova_youngster_astor 186 (60)
+unova_youngster_henley 186 (60)
+unova_youngster_jaye 176 (37)
+unova_youngster_jimmy 187 (61)
+unova_youngster_keita 188 (63)
+unova_youngster_keita_2 186 (60)
+unova_youngster_kevin 186 (60)
+unova_youngster_mikey 187 (61)
+unova_youngster_nicholas 186 (60)
+unova_youngster_wes 177 (39)
+=== DriftveilCity_Gym
+Driftveil City, Unova
+trainers 7, 173-174 (own 29-31): unova_worker_friedrich 174 (31), unova_worker_maynard 174 (31), unova_worker_niel 173 (30), unova_worker_noel 174 (31), unova_worker_pasqual 173 (30), unova_worker_tavarius 173 (29), unova_worker_tibor 173 (30)
+=== aqua_hideout_1f
+Aqua Hideout, Hoenn
+trainers 1, 150 (own 32): hoenn_grunt_aqua_hideout_1 150 (32)
+=== aqua_hideout_b1f
+Aqua Hideout, Hoenn
+trainers 4, 149-150 (own 31-32): hoenn_grunt_aqua_hideout_2 149 (31), hoenn_grunt_aqua_hideout_3 150 (32), hoenn_grunt_aqua_hideout_5 150 (32), hoenn_grunt_aqua_hideout_7 149 (31)
+=== aqua_hideout_b2f
+Aqua Hideout, Hoenn
+trainers 3, 150 (own 32): hoenn_grunt_aqua_hideout_4 150 (32), hoenn_grunt_aqua_hideout_6 150 (32), hoenn_grunt_aqua_hideout_8 150 (32)
+=== aspertia_city
+Aspertia City, Unova
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+=== aspertia_city_gym
+Aspertia City, Unova
+trainers 2, 165 (own 9): unova_lass_serena 165 (9), unova_youngster_pedro 165 (9)
+=== azalea_gym
+Azalea Town, Johto
+trainers 4, 107-111 (own 7-13): johto_bug_catcher_al 111 (12), johto_bug_catcher_benny 111 (12), johto_bug_catcher_josh 111 (13), johto_twins_amy_and_mimi 109 (10)
+=== blackthorn
+Blackthorn City, Johto
+surf 104-116 (own 2-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== blackthorn_gym
+Blackthorn City, Johto
+trainers 5, 126-128 (own 35-38): johto_ace_trainer_f_fran 128 (38), johto_ace_trainer_f_lola 127 (37), johto_ace_trainer_m_cody 127 (37), johto_ace_trainer_m_mike 128 (38), johto_ace_trainer_m_paulo 126 (35)
+=== burned_tower_1f
+Burned Tower, Johto
+grass 111-113 (own 13-16)
+trainers 2, 113-115 (own 16-18): johto_firebreather_ned 114 (17), johto_firebreather_richard 115 (18)
+=== burned_tower_b1f
+Burned Tower, Johto
+grass 112-113 (own 14-16)
+=== castelia_city_gym
+Castelia City, Unova
+trainers 3, 169 (own 19-20): unova_harlequin_anders 169 (20), unova_harlequin_clarence 169 (20), unova_harlequin_gary 169 (19)
+=== castelia_sewers
+Castelia Sewers, Unova
+grass 167-168 (own 14-17)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+trainers 9, 168-174 (own 16-31): unova_doctor_heath 168 (17), unova_janitor_brady 174 (31), unova_janitor_felix 168 (16), unova_scientist_caroline 168 (17), unova_scientist_clarke 168 (17), unova_team_plasma_grunt 168 (16), unova_team_plasma_grunt_3 168 (16), unova_worker_scott 168 (17), unova_worker_zack 168 (17)
+=== cave_of_origin_1f
+Cave Of Origin, Hoenn
+grass 149-152 (own 30-36)
+=== cave_of_origin_entrance
+Cave Of Origin, Hoenn
+grass 148-152 (own 28-36)
+=== celadon_city
+Celadon City, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-88 (own 15-40)
+=== celadon_city_game_corner
+Celadon City, Kanto
+trainers 1, 74 (own 20): kanto_team_rocket_grunt_7 74 (20)
+=== celadon_city_gym
+Celadon City, Kanto
+trainers 7, 75-77 (own 21-24): kanto_beauty_bridget 75 (21), kanto_beauty_lori 77 (24), kanto_beauty_tamia 77 (24), kanto_cooltrainer_mary 76 (22), kanto_lass_kay 76 (23), kanto_lass_lisa 76 (23), kanto_picnicker_tina 77 (24)
+=== celestial_tower
+Celestial Tower, Unova
+grass 173-175 (own 30-33)
+=== celestial_tower_3
+Celestial Tower, Unova
+grass 172-173 (own 27-30)
+trainers 2, 175-176 (own 35-36): unova_pokefan_jude 175 (35), unova_psychic_joyce 176 (36)
+=== celestial_tower_4
+Celestial Tower, Unova
+grass 172-174 (own 28-31)
+trainers 4, 175-176 (own 35-36): unova_nurse_dixie 175 (35), unova_pokefan_georgia 175 (35), unova_psychic_bryce 175 (35), unova_psychic_micki 176 (36)
+=== celestial_tower_5
+Celestial Tower, Unova
+grass 173-174 (own 29-32)
+trainers 3, 175 (own 35): unova_gentleman_daniel 175 (35), unova_psychic_sarah 175 (35), unova_socialite_grace 175 (35)
+=== cerulean_cave_1f
+Cerulean Cave, Kanto
+grass 92-103 (own 46-61)
+surf 81-98 (own 30-55)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== cerulean_cave_2f
+Cerulean Cave, Kanto
+grass 94-105 (own 49-64)
+=== cerulean_cave_b1f
+Cerulean Cave, Kanto
+grass 96-109 (own 52-67)
+surf 88-107 (own 40-65)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== cerulean_city
+Cerulean City, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== cerulean_city_gym
+Cerulean City, Kanto
+trainers 2, 72-74 (own 16-19): kanto_picnicker_diana 74 (19), kanto_swimmer_male_luis 72 (16)
+=== chargestone_cave_2
+Chargestone Cave, Unova
+grass 171-172 (own 25-28)
+trainers 6, 173-175 (own 30-34): unova_ace_trainer_corky 175 (33), unova_ace_trainer_mary 175 (34), unova_guitarist_anna 173 (30), unova_hiker_otto 174 (32), unova_pkmn_ranger_louis 175 (34), unova_scientist_ronald 173 (30)
+=== chargestone_cave_3
+Chargestone Cave, Unova
+grass 172-174 (own 28-31)
+trainers 3, 174-175 (own 32-33): unova_doctor_kit 174 (32), unova_pkmn_ranger_briana 175 (33), unova_scientist_lumi 174 (32)
+=== chargestone_cave_4
+Chargestone Cave, Unova
+grass 172-174 (own 28-31)
+trainers 4, 174-175 (own 32-34): unova_ace_trainer_shaye 175 (34), unova_ace_trainer_vicki 175 (33), unova_guitarist_beverly 175 (33), unova_hiker_jeremy 174 (32)
+=== cherrygrove
+Cherrygrove City, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== cianwood
+Cianwood City, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== cianwood_gym
+Cianwood City, Johto
+trainers 4, 118-121 (own 23-27): johto_black_belt_lao 121 (27), johto_black_belt_lung 119 (25), johto_black_belt_nob 119 (25), johto_black_belt_yoshi 121 (27)
+=== cinnabar_island
+Cinnabar Island, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== cinnabar_island_gym
+Cinnabar Island, Kanto
+trainers 7, 84-89 (own 34-41): kanto_burglar_dusty 86 (37), kanto_burglar_quinn 85 (36), kanto_burglar_ramon 89 (41), kanto_super_nerd_avery 84 (34), kanto_super_nerd_derek 89 (41), kanto_super_nerd_erik 85 (36), kanto_super_nerd_zac 86 (37)
+=== cliff_cave
+Cliff Cave, Johto
+grass 115-118 (own 18-23)
+=== cliff_edge_gate
+Cliff Edge Gate, Johto
+surf 116-129 (own 20-40)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== dark_cave_route_31_side
+Dark Cave, Johto
+grass 104-105 (own 2-4)
+surf 104-116 (own 2-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== dark_cave_route_45_side
+Dark Cave, Johto
+grass 116-119 (own 20-25)
+surf 104-116 (own 2-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== desert_resort
+Desert Resort, Unova
+grass 168-170 (own 18-21)
+=== desert_resort_2
+Desert Resort, Unova
+grass 168-170 (own 18-21)
+trainers 9, 170 (own 22-23): unova_backpacker_clara 170 (22), unova_backpacker_sam 170 (22), unova_backpacker_tami 170 (22), unova_backpacker_walt 170 (22), unova_nurse_mariah 170 (22), unova_pkmn_ranger_anja 170 (23), unova_pkmn_ranger_jaden 170 (23), unova_psychic_future 170 (23), unova_psychic_tommy 170 (22)
+=== desert_underpass
+Desert Underpass, Hoenn
+grass 151-156 (own 35-45)
+=== dewford_town
+Dewford Town, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== dewford_town_gym
+Dewford Town, Hoenn
+trainers 6, 141 (own 13): hoenn_brenden 141 (13), hoenn_cristian 141 (13), hoenn_jocelyn 141 (13), hoenn_laura 141 (13), hoenn_lilith 141 (13), hoenn_takao 141 (13)
+=== digletts_cave_b1f
+Diglett's Cave, Kanto
+grass 71-82 (own 15-31)
+=== dragons_den
+Dragons Den, Johto
+surf 106-116 (own 5-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 5, 125-149 (own 33-75): johto_ace_trainer_f_piper 126 (35), johto_ace_trainer_m_kobe 127 (37), johto_champion_lance_3 149 (75), johto_leader_clair_clair_3 141 (60), johto_twins_clea_and_gil 126 (35)
+=== ecruteak
+Ecruteak City, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== ecruteak_gym
+Ecruteak City, Johto
+trainers 4, 113-117 (own 16-22): johto_medium_edith 117 (22), johto_medium_georgina 113 (16), johto_medium_grace 116 (20), johto_medium_martha 116 (20)
+=== ever_grande_city
+Ever Grande City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 149-156 (own 30-45)
+=== fiery_path
+Fiery Path, Hoenn
+grass 142-143 (own 14-16)
+=== five_island
+Five Island, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== five_island_lost_cave_room_1
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+trainers 1, 93-94 (own 47-49): kanto_ruin_maniac_lawson 94 (49)
+=== five_island_lost_cave_room_10
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_11
+Lost Cave, Kanto
+grass 71-96 (own 15-52)
+=== five_island_lost_cave_room_12
+Lost Cave, Kanto
+grass 71-96 (own 15-52)
+=== five_island_lost_cave_room_13
+Lost Cave, Kanto
+grass 71-96 (own 15-52)
+=== five_island_lost_cave_room_14
+Lost Cave, Kanto
+grass 71-96 (own 15-52)
+=== five_island_lost_cave_room_2
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_3
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_4
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+trainers 1, 94 (own 48-49): kanto_psychic_laura 94 (49)
+=== five_island_lost_cave_room_5
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_6
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_7
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_8
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_lost_cave_room_9
+Lost Cave, Kanto
+grass 76-96 (own 22-52)
+=== five_island_meadow
+Five Isle Meadow, Kanto
+grass 68-95 (own 10-50)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 3, 94 (own 48-49): kanto_team_rocket_grunt_49 94 (48), kanto_team_rocket_grunt_50 94 (49), kanto_team_rocket_grunt_51 94 (48)
+=== five_island_memorial_pillar
+Memorial Pillar, Kanto
+grass 65-72 (own 6-16)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 3, 93-94 (own 47-49): kanto_bird_keeper_chaz 94 (49), kanto_bird_keeper_harold 94 (49), kanto_bird_keeper_milo 94 (49)
+=== five_island_resort_gorgeous
+Resort Gorgeous, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 7, 93-95 (own 47-50): kanto_lady_gillian 94 (49), kanto_lady_jacki 95 (50), kanto_painter_celina 95 (50), kanto_painter_daisy 95 (50), kanto_painter_rayna 95 (50), kanto_swimmer_male_toby 94 (48), kanto_youngster_destin 94 (48)
+=== five_island_rocket_warehouse
+Rocket Warehouse, Kanto
+trainers 4, 94-98 (own 48-54): kanto_team_rocket_admin 98 (54), kanto_team_rocket_grunt_42 94 (49), kanto_team_rocket_grunt_47 94 (48), kanto_team_rocket_grunt_48 94 (49)
+=== five_island_water_labyrinth
+Water Labyrinth, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 1, 94 (own 48): kanto_pkmn_breeder_alize 94 (48)
+=== floccesy_ranch
+Floccesy Ranch, Unova
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+=== floccesy_ranch_2
+Floccesy Ranch, Unova
+grass 163-164 (own 4-7)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+trainers 3, 164 (own 6): unova_janitor_orville 164 (6), unova_lass_molly 164 (6), unova_youngster_kenny 164 (6)
+=== fortree_city_gym
+Fortree City, Hoenn
+trainers 6, 148-149 (own 27-30): hoenn_ashley 148 (27), hoenn_darius 149 (30), hoenn_edwardo 149 (29), hoenn_flint 149 (29), hoenn_humberto 149 (30), hoenn_jared 148 (27)
+=== four_island
+Four Island, Kanto
+surf 64-85 (own 5-35)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== four_island_icefall_cave_1f
+Icefall Cave, Kanto
+grass 76-94 (own 23-48)
+=== four_island_icefall_cave_b1f
+Icefall Cave, Kanto
+grass 76-94 (own 23-48)
+=== four_island_icefall_cave_back
+Icefall Cave, Kanto
+grass 88-97 (own 40-53)
+surf 64-92 (own 5-45)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== four_island_icefall_cave_entrance
+Icefall Cave, Kanto
+grass 88-97 (own 40-53)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== fuchsia_city
+Fuchsia City, Kanto
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== fuchsia_city_gym
+Fuchsia City, Kanto
+trainers 6, 82-87 (own 31-38): kanto_juggler_kayden 87 (38), kanto_juggler_kirk 82 (31), kanto_juggler_nate 84 (34), kanto_juggler_shawn 84 (34), kanto_tamer_edgar 83 (33), kanto_tamer_phil 84 (34)
+=== giant_chasm
+Giant Chasm, Unova
+grass 179-180 (own 44-47)
+=== giant_chasm_2
+Giant Chasm, Unova
+grass 179-180 (own 44-47)
+surf 175-181 (own 35-50)
+super rod 177-194 (own 40-70)
+=== giant_chasm_3
+Giant Chasm, Unova
+grass 179-180 (own 44-47)
+=== giant_chasm_4
+Giant Chasm, Unova
+grass 179-180 (own 44-47)
+=== giant_chasm_5
+Giant Chasm, Unova
+grass 179-180 (own 44-47)
+surf 175-181 (own 35-50)
+super rod 177-194 (own 40-70)
+=== goldenrod_gym
+Goldenrod City, Johto
+trainers 4, 109-114 (own 9-17): johto_beauty_samantha 113 (16), johto_beauty_victoria 113 (16), johto_lass_carrie 114 (17), johto_lass_cathy 113 (15)
+=== goldenrod_radio_tower_2f
+Radio Tower, Johto
+trainers 4, 117-120 (own 21-26): johto_team_rocket_f_grunt_2 120 (26), johto_team_rocket_grunt_4 119 (25), johto_team_rocket_grunt_5 118 (23), johto_team_rocket_grunt_6 120 (26)
+=== goldenrod_radio_tower_3f
+Radio Tower, Johto
+trainers 4, 118-121 (own 23-27): johto_scientist_gs_garett 121 (27), johto_team_rocket_grunt_7 118 (23), johto_team_rocket_grunt_8 120 (26), johto_team_rocket_grunt_9 120 (26)
+=== goldenrod_radio_tower_4f
+Radio Tower, Johto
+trainers 3, 117-125 (own 22-33): johto_executive_proton_proton_2 125 (33), johto_scientist_gs_trenton 123 (30), johto_team_rocket_grunt_10 119 (24)
+=== goldenrod_radio_tower_5f
+Radio Tower, Johto
+trainers 1, 124 (own 32): johto_executive_ariana_ariana 124 (32)
+=== goldenrod_tunnel_b1f
+Goldenrod Tunnel, Johto
+trainers 4, 107-111 (own 7-12): johto_poke_maniac_donald 110 (11), johto_poke_maniac_issac 111 (12), johto_super_nerd_eric 110 (11), johto_super_nerd_teru 110 (11)
+=== goldenrod_tunnel_b2f
+Goldenrod City, Johto
+trainers 6, 118-121 (own 23-27): johto_burglar_duncan 119 (25), johto_burglar_orson 120 (26), johto_team_rocket_f_grunt_3 119 (25), johto_team_rocket_grunt_11 119 (25), johto_team_rocket_grunt_12 121 (27), johto_team_rocket_grunt_23 119 (24)
+=== goldenrod_tunnel_warehouse
+Goldenrod City, Johto
+trainers 3, 118-120 (own 23-26): johto_team_rocket_grunt_13 119 (24), johto_team_rocket_grunt_14 120 (26), johto_team_rocket_grunt_22 119 (25)
+=== granite_cave_1f
+Granite Cave, Hoenn
+grass 138-140 (own 6-10)
+=== granite_cave_b1f
+Granite Cave, Hoenn
+grass 139-140 (own 9-11)
+=== granite_cave_b2f
+Granite Cave, Hoenn
+grass 140-141 (own 10-12)
+=== granite_cave_stevens_room
+Granite Cave, Hoenn
+grass 138-140 (own 6-10)
+=== hoenn_safari_zone_north
+Safari Zone, Hoenn
+grass 148-149 (own 27-31)
+=== hoenn_safari_zone_northeast
+Safari Zone, Hoenn
+grass 150-154 (own 33-40)
+=== hoenn_safari_zone_northwest
+Safari Zone, Hoenn
+grass 148-149 (own 27-31)
+surf 144-154 (own 20-40)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-154 (own 25-40)
+=== hoenn_safari_zone_south
+Safari Zone, Hoenn
+grass 147-149 (own 25-29)
+=== hoenn_safari_zone_southeast
+Safari Zone, Hoenn
+grass 150-154 (own 33-40)
+surf 147-154 (own 25-40)
+old rod 147-149 (own 25-30)
+good rod 147-151 (own 25-35)
+super rod 147-154 (own 25-40)
+=== hoenn_safari_zone_southwest
+Safari Zone, Hoenn
+grass 147-149 (own 25-29)
+surf 144-151 (own 20-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-154 (own 25-40)
+=== hoenn_victory_road_1f
+Victory Road, Hoenn
+grass 152-154 (own 36-40)
+trainers 5, 155-156 (own 43-45): hoenn_albert 155 (43), hoenn_edgar 155 (43), hoenn_hope 156 (45), hoenn_katelynn 155 (43), hoenn_quincy 155 (43)
+=== hoenn_victory_road_b1f
+Victory Road, Hoenn
+grass 153-155 (own 38-42)
+trainers 5, 155-156 (own 42-45): hoenn_halle 155 (43), hoenn_michelle 155 (42), hoenn_mitchell 155 (43), hoenn_samuel 155 (42), hoenn_shannon 156 (45)
+=== hoenn_victory_road_b2f
+Victory Road, Hoenn
+grass 154-156 (own 40-44)
+surf 147-154 (own 25-40)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 6, 155 (own 42-43): hoenn_caroline 155 (43), hoenn_dianne 155 (43), hoenn_felix 155 (43), hoenn_julie 155 (42), hoenn_owen 155 (42), hoenn_vito 155 (42)
+=== humilau_city
+Humilau City, Unova
+surf 173-179 (own 30-45)
+super rod 177-194 (own 40-70)
+=== humilau_city_gym
+Humilau City, Unova
+trainers 2, 180-181 (own 47-48): unova_ace_trainer_doyle 180 (47), unova_ace_trainer_melina 181 (48)
+=== ice_path_1f
+Ice Path, Johto
+grass 117-118 (own 21-23)
+=== ice_path_b1f
+Ice Path, Johto
+grass 117-118 (own 21-23)
+=== ice_path_b2f
+Ice Path, Johto
+grass 117-119 (own 22-24)
+=== ice_path_b3f
+Ice Path, Johto
+grass 117-119 (own 22-24)
+=== ilex_forest
+Ilex Forest, Johto
+grass 106-107 (own 5-6)
+surf 106-116 (own 5-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== jagged_pass
+Jagged Pass, Hoenn
+grass 144-145 (own 20-22)
+trainers 5, 144-145 (own 19-21): hoenn_autumn 145 (21), hoenn_diana_1 144 (19), hoenn_eric 144 (20), hoenn_ethan_1 144 (20), hoenn_julio 145 (21)
+=== johto_route_22
+Route 22, Johto
+grass 105-107 (own 3-7)
+surf 106-109 (own 5-10)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== johto_victory_road_1f
+Victory Road Jk, Johto
+grass 124-127 (own 32-36)
+=== johto_victory_road_2f
+Victory Road Jk, Johto
+grass 124-127 (own 32-36)
+=== johto_victory_road_3f
+Victory Road Jk, Johto
+grass 124-127 (own 32-36)
+=== kanto_victory_road_1f
+Victory Road, Kanto
+grass 83-92 (own 32-46)
+trainers 2, 90 (own 42): kanto_cooltrainer_naomi 90 (42), kanto_cooltrainer_rolando 90 (42)
+=== kanto_victory_road_2f
+Victory Road, Kanto
+grass 84-94 (own 34-48)
+trainers 5, 88-94 (own 40-48): kanto_black_belt_daisuke 90 (43), kanto_juggler_gregory 94 (48), kanto_juggler_nelson 89 (41), kanto_pokemaniac_dawson 88 (40), kanto_tamer_vincent 91 (44)
+=== kanto_victory_road_3f
+Victory Road, Kanto
+grass 83-92 (own 32-46)
+trainers 5, 89-92 (own 41-45): kanto_cool_couple_ray_tyra 92 (45), kanto_cooltrainer_alexa 90 (42), kanto_cooltrainer_caroline 90 (42), kanto_cooltrainer_colby 90 (43), kanto_cooltrainer_george 90 (42)
+=== lake_of_rage
+Lake of Rage, Johto
+surf 106-116 (own 5-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 4, 117-121 (own 22-27): johto_ace_trainer_f_lois 119 (25), johto_ace_trainer_m_alton 119 (24), johto_fisherman_andre 121 (27), johto_fisherman_raymond 117 (22)
+=== lavaridge_town_gym_1f
+Lavaridge Town, Hoenn
+trainers 4, 146 (own 23): hoenn_axle 146 (23), hoenn_cole 146 (23), hoenn_danielle 146 (23), hoenn_gerald 146 (23)
+=== lavaridge_town_gym_b1f
+Lavaridge Town, Hoenn
+trainers 4, 145-146 (own 22-23): hoenn_eli 146 (23), hoenn_jace 146 (23), hoenn_jeff 145 (22), hoenn_keegan 146 (23)
+=== lilycove_city
+Lilycove City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== lostlorn_forest
+Lostlorn Forest, Unova
+grass 170-171 (own 21-24)
+surf 165-171 (own 10-25)
+super rod 177-194 (own 40-70)
+trainers 4, 171-182 (own 24-51): unova_pkmn_breeder_galen 171 (24), unova_pkmn_ranger_forrest 172 (26), unova_pkmn_ranger_serenity 172 (26), unova_veteran_murphy 182 (51)
+=== magma_hideout_1f
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 2, 149 (own 29): hoenn_grunt_magma_hideout_1 149 (29), hoenn_grunt_magma_hideout_2 149 (29)
+=== magma_hideout_2f_1r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 4, 148-149 (own 28-29): hoenn_grunt_magma_hideout_14 149 (29), hoenn_grunt_magma_hideout_3 149 (29), hoenn_grunt_magma_hideout_4 148 (28), hoenn_grunt_magma_hideout_5 148 (28)
+=== magma_hideout_2f_2r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 4, 149 (own 29): hoenn_grunt_magma_hideout_15 149 (29), hoenn_grunt_magma_hideout_6 149 (29), hoenn_grunt_magma_hideout_7 149 (29), hoenn_grunt_magma_hideout_8 149 (29)
+=== magma_hideout_2f_3r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+=== magma_hideout_3f_1r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 2, 149 (own 29): hoenn_grunt_magma_hideout_16 149 (29), hoenn_grunt_magma_hideout_9 149 (29)
+=== magma_hideout_3f_2r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 1, 149 (own 29): hoenn_grunt_magma_hideout_10 149 (29)
+=== magma_hideout_3f_3r
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+=== magma_hideout_4f
+Magma Hideout, Hoenn
+grass 148-150 (own 27-33)
+trainers 4, 147-150 (own 26-33): hoenn_grunt_magma_hideout_11 149 (29), hoenn_grunt_magma_hideout_12 149 (29), hoenn_grunt_magma_hideout_13 149 (29), hoenn_tabitha_magma_hideout 150 (33)
+=== mahogany_gym_leader_room
+Mahogany Town, Johto
+trainers 3, 119-122 (own 25-29): johto_boarder_deandre 120 (26), johto_boarder_gerardo 120 (26), johto_skier_jill 122 (29)
+=== mahogany_gym_room_2
+Mahogany Town, Johto
+trainers 2, 121-122 (own 27-29): johto_boarder_patton 121 (27), johto_skier_diana 122 (29)
+=== mauville_city_gym
+Mauville City, Hoenn
+trainers 5, 143 (own 17): hoenn_angelo 143 (17), hoenn_ben 143 (17), hoenn_kirk 143 (17), hoenn_shawn 143 (17), hoenn_vivian 143 (17)
+=== meteor_falls_1f_1r
+Meteor Falls, Hoenn
+grass 142-144 (own 14-20)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== meteor_falls_1f_2r
+Meteor Falls, Hoenn
+grass 150-154 (own 33-40)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 2, 152-153 (own 37-39): hoenn_john_and_jay_1 153 (39), hoenn_nicolas_1 152 (37)
+=== meteor_falls_b1f_1r
+Meteor Falls, Hoenn
+grass 150-154 (own 33-40)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== meteor_falls_b1f_2r
+Meteor Falls, Hoenn
+grass 147-154 (own 25-40)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== meteor_falls_stevens_cave
+Meteor Falls, Hoenn
+grass 150-154 (own 33-40)
+=== mirage_tower_1f
+Mirage Tower, Hoenn
+grass 144-146 (own 20-24)
+=== mirage_tower_2f
+Mirage Tower, Hoenn
+grass 144-146 (own 20-24)
+=== mirage_tower_3f
+Mirage Tower, Hoenn
+grass 144-146 (own 20-24)
+=== mirage_tower_4f
+Mirage Tower, Hoenn
+grass 144-146 (own 20-24)
+=== mistralton_cave
+Mistralton Cave, Unova
+grass 172-173 (own 27-30)
+trainers 2, 174 (own 32): unova_hiker_jebediah 174 (32), unova_hiker_shelby 174 (32)
+=== mistralton_city_gym
+Mistralton City, Unova
+trainers 5, 176 (own 36-37): unova_pilot_chase 176 (36), unova_pilot_elron 176 (36), unova_pilot_ewing 176 (37), unova_pilot_flynn 176 (37), unova_pilot_winslow 176 (37)
+=== mossdeep_city
+Mossdeep City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== mossdeep_city_gym
+Mossdeep City, Hoenn
+trainers 12, 152 (own 36): hoenn_blake 152 (36), hoenn_clifford 152 (36), hoenn_hannah 152 (36), hoenn_kathleen 152 (36), hoenn_macey 152 (36), hoenn_maura 152 (36), hoenn_nate 152 (36), hoenn_nicholas 152 (36), hoenn_preston 152 (36), hoenn_samantha 152 (36), hoenn_sylvia 152 (36), hoenn_virgil 152 (36)
+=== mossdeep_city_space_center_1f
+Mossdeep City, Hoenn
+trainers 4, 147-150 (own 26-32): hoenn_grunt_space_center_1 150 (32), hoenn_grunt_space_center_2 149 (30), hoenn_grunt_space_center_3 149 (31), hoenn_grunt_space_center_4 150 (32)
+=== mossdeep_city_space_center_2f
+Mossdeep City, Hoenn
+trainers 1, 152-154 (own 36-40): hoenn_tabitha_mossdeep 154 (40)
+=== mount_mortar_1f_back
+Mt. Mortar, Johto
+grass 111-113 (own 13-15)
+trainers 2, 114-115 (own 17-19): johto_poke_maniac_harrison 114 (17), johto_super_nerd_markus 115 (19)
+=== mount_mortar_1f_entrance
+Mt. Mortar, Johto
+grass 111-113 (own 13-16)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_mortar_2f
+Mt. Mortar, Johto
+grass 121-124 (own 28-32)
+surf 113-123 (own 15-30)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 1, 129 (own 39): johto_super_nerd_hugh 129 (39)
+=== mount_mortar_b1f
+Mt. Mortar, Johto
+grass 113-114 (own 15-17)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver
+Mt. Silver, Johto
+grass 130-132 (own 41-44)
+surf 123-135 (own 30-48)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver_cave_1f
+Mt. Silver Cave, Johto
+grass 113-133 (own 15-45)
+surf 123-136 (own 30-50)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver_cave_2f
+Mt. Silver Cave, Johto
+grass 113-136 (own 15-50)
+surf 123-133 (own 30-45)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver_cave_3f
+Mt. Silver Cave, Johto
+grass 113-136 (own 15-50)
+surf 123-133 (own 30-45)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver_cave_expert_belt_chamber
+Mt. Silver Cave, Johto
+grass 113-135 (own 15-48)
+=== mount_silver_cave_lower_mountainside
+Mt. Silver Cave, Johto
+grass 113-137 (own 15-51)
+=== mount_silver_cave_moltres_chamber
+Mt. Silver Cave, Johto
+grass 113-135 (own 15-48)
+surf 123-133 (own 30-45)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mount_silver_cave_upper_mountainside
+Mt. Silver Cave, Johto
+grass 113-135 (own 15-48)
+surf 123-133 (own 30-45)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== mt_chimney
+Mt Chimney, Hoenn
+trainers 8, 143-145 (own 18-22): hoenn_grunt_mt_chimney_1 144 (20), hoenn_grunt_mt_chimney_2 144 (20), hoenn_melissa 145 (21), hoenn_sawyer_1 145 (21), hoenn_sheila 145 (21), hoenn_shelby_1 145 (21), hoenn_shirley 145 (21), hoenn_tabitha_mt_chimney 145 (22)
+=== mt_ember_exterior
+Mt. Ember, Kanto
+grass 81-90 (own 30-42)
+trainers 3, 86-88 (own 37-40): kanto_crush_girl_jocelyn 87 (38), kanto_pkmn_ranger_beth 87 (38), kanto_pkmn_ranger_logan 88 (40)
+=== mt_ember_ruby_path_1f
+Ruby Path, Kanto
+grass 83-90 (own 32-42)
+=== mt_ember_ruby_path_b1f
+Ruby Path, Kanto
+grass 77-90 (own 24-42)
+=== mt_ember_ruby_path_b1f_stairs
+Ruby Path, Kanto
+grass 76-91 (own 22-44)
+=== mt_ember_ruby_path_b2f
+Ruby Path, Kanto
+grass 76-91 (own 22-44)
+=== mt_ember_ruby_path_b2f_stairs
+Ruby Path, Kanto
+grass 77-90 (own 24-42)
+=== mt_ember_ruby_path_b3f
+Ruby Path, Kanto
+grass 73-85 (own 18-36)
+=== mt_ember_summit_path_1f
+Mt. Ember, Kanto
+grass 81-87 (own 29-39)
+=== mt_ember_summit_path_2f
+Mt. Ember, Kanto
+grass 81-88 (own 30-40)
+=== mt_ember_summit_path_3f
+Mt. Ember, Kanto
+grass 81-87 (own 29-39)
+=== mt_moon_1f
+Mt Moon, Kanto
+grass 65-68 (own 7-10)
+trainers 7, 68-70 (own 10-14): kanto_bug_catcher_kent 68 (11), kanto_bug_catcher_robby 68 (10), kanto_hiker_marcos 68 (10), kanto_lass_iris 70 (14), kanto_lass_miriam 68 (11), kanto_super_nerd_jovan 68 (11), kanto_youngster_josh 68 (10)
+=== mt_moon_b1f
+Mt Moon, Kanto
+grass 64-68 (own 5-10)
+=== mt_moon_b2f
+Mt Moon, Kanto
+grass 66-69 (own 8-12)
+trainers 4, 68-70 (own 11-13): kanto_team_rocket_grunt 70 (13), kanto_team_rocket_grunt_2 68 (11), kanto_team_rocket_grunt_3 68 (11), kanto_team_rocket_grunt_4 70 (13)
+=== mt_pyre_1f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+=== mt_pyre_2f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+trainers 4, 149 (own 31): hoenn_dez_and_luke 149 (31), hoenn_leah 149 (31), hoenn_mark 149 (31), hoenn_zander 149 (31)
+=== mt_pyre_3f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+trainers 3, 147 (own 26): hoenn_gabrielle_1 147 (26), hoenn_kayla 147 (26), hoenn_william 147 (26)
+=== mt_pyre_4f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+trainers 1, 150 (own 32): hoenn_tasha 150 (32)
+=== mt_pyre_5f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+trainers 1, 150 (own 32): hoenn_atsushi 150 (32)
+=== mt_pyre_6f
+Mt Pyre, Hoenn
+grass 145-149 (own 22-29)
+trainers 2, 150 (own 32): hoenn_cedric 150 (32), hoenn_valerie_1 150 (32)
+=== mt_pyre_exterior
+Mt Pyre, Hoenn
+grass 147-149 (own 25-29)
+=== mt_pyre_summit
+Mt Pyre, Hoenn
+grass 146-149 (own 24-30)
+trainers 4, 149-150 (own 30-32): hoenn_grunt_mt_pyre_1 150 (32), hoenn_grunt_mt_pyre_2 150 (32), hoenn_grunt_mt_pyre_3 149 (30), hoenn_grunt_mt_pyre_4 149 (30)
+=== national_park
+National Park, Johto
+grass 109-112 (own 10-14)
+trainers 4, 111-114 (own 12-17): johto_lass_krise 114 (17), johto_pokefan_beverly 113 (16), johto_pokefan_m_william 113 (16), johto_school_kid_m_jack 113 (15)
+=== new_bark
+New Bark Town, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== new_mauville_entrance
+New Mauville, Hoenn
+grass 145-147 (own 22-26)
+=== new_mauville_inside
+New Mauville, Hoenn
+grass 145-147 (own 22-26)
+=== nimbasa_city
+Nimbasa City, Unova
+trainers 2, 172 (own 26): unova_subway_boss_emmet 172 (26), unova_subway_boss_ingo 172 (26)
+=== olivine
+Olivine City, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== olivine_lighthouse_2f
+Lighthouse, Johto
+trainers 2, 115-117 (own 18-22): johto_gentleman_alfred 117 (22), johto_sailor_huey 116 (20)
+=== olivine_lighthouse_3f
+Lighthouse, Johto
+trainers 3, 113-116 (own 15-20): johto_bird_keeper_gs_denis 116 (20), johto_bird_keeper_gs_theo 115 (19), johto_sailor_kent 116 (20)
+=== olivine_lighthouse_4f
+Lighthouse, Johto
+trainers 2, 115-117 (own 18-21): johto_gentleman_preston 115 (18), johto_lass_connie 117 (21)
+=== olivine_lighthouse_5f
+Lighthouse, Johto
+trainers 2, 115-116 (own 18-20): johto_sailor_roberto 115 (18), johto_sailor_terrell 116 (20)
+=== one_island
+One Island, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== one_island_kindle_road
+Kindle Road, Kanto
+grass 81-88 (own 30-40)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 12, 83-87 (own 33-39): kanto_black_belt_hugh 86 (37), kanto_black_belt_shea 87 (38), kanto_camper_bryce 85 (36), kanto_crush_girl_sharon 86 (37), kanto_crush_girl_tanya 87 (38), kanto_crush_kin_mik_kia 87 (39), kanto_fisherman_tommy 85 (35), kanto_picnicker_claire 85 (35), kanto_swimmer_female_abigail 86 (37), kanto_swimmer_female_maria 86 (37), kanto_swimmer_male_finn 87 (38), kanto_swimmer_male_garrett 87 (38)
+=== one_island_treasure_beach
+Treasure Beach, Kanto
+grass 82-88 (own 31-40)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 1, 85 (own 36): kanto_swimmer_female_amara 85 (36)
+=== pacifidlog_town
+Pacifidlog Town, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== pallet_town
+Pallet Town, Kanto
+surf 64-88 (own 5-40)
+old rod 64-68 (own 5-10)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== petalburg_city
+Petalburg City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== petalburg_city_gym
+Petalburg City, Hoenn
+trainers 7, 147 (own 26): hoenn_alexia 147 (26), hoenn_berke 147 (26), hoenn_george 147 (26), hoenn_jody 147 (26), hoenn_mary 147 (26), hoenn_parker 147 (26), hoenn_randall 147 (26)
+=== petalburg_woods
+Petalburg Woods, Hoenn
+grass 137-138 (own 5-6)
+trainers 2, 136-138 (own 3-6): hoenn_james_1 138 (6), hoenn_lyle 136 (3)
+=== pewter_city_gym
+Pewter City, Kanto
+trainers 1, 68 (own 10-11): kanto_camper_liam 68 (11)
+=== plasma_frigate_2
+Plasma Frigate, Unova
+trainers 2, 180 (own 46): unova_team_plasma_grunt_50 180 (46), unova_team_plasma_grunt_51 180 (46)
+=== plasma_frigate_3
+Plasma Frigate, Unova
+trainers 2, 180 (own 46): unova_team_plasma_grunt_55 180 (46), unova_team_plasma_grunt_57 180 (46)
+=== plasma_frigate_5
+Plasma Frigate, Unova
+trainers 2, 179-181 (own 45-50): unova_team_plasma_grunt_49 179 (45), unova_team_plasma_zinzolin 181 (50)
+=== plasma_frigate_7
+Plasma Frigate, Unova
+trainers 4, 179-180 (own 45-47): unova_team_plasma_grunt_52 180 (47), unova_team_plasma_grunt_53 180 (47), unova_team_plasma_grunt_54 180 (47), unova_team_plasma_grunt_59 179 (45)
+=== pokemon_mansion_1f
+Pokémon Mansion, Kanto
+grass 79-85 (own 26-36)
+trainers 2, 81-84 (own 29-34): kanto_scientist_ted 81 (29), kanto_youngster_johnson 84 (34)
+=== pokemon_mansion_2f
+Pokémon Mansion, Kanto
+grass 79-85 (own 26-36)
+trainers 1, 84 (own 34): kanto_burglar_arnie 84 (34)
+=== pokemon_mansion_3f
+Pokémon Mansion, Kanto
+grass 79-85 (own 26-36)
+trainers 2, 83-87 (own 33-38): kanto_burglar_simon 87 (38), kanto_scientist_braydon 83 (33)
+=== pokemon_mansion_b1f
+Pokémon Mansion, Kanto
+grass 79-87 (own 26-38)
+trainers 2, 84 (own 34): kanto_burglar_lewis 84 (34), kanto_scientist_ivan 84 (34)
+=== pokemon_tower_3f
+Pokémon Tower, Kanto
+grass 70-74 (own 13-20)
+trainers 3, 76-77 (own 22-24): kanto_channeler_carly 77 (24), kanto_channeler_hope 76 (23), kanto_channeler_patricia 76 (22)
+=== pokemon_tower_4f
+Pokémon Tower, Kanto
+grass 70-74 (own 13-20)
+trainers 3, 76-77 (own 22-24): kanto_channeler_jody 76 (22), kanto_channeler_laurel 76 (23), kanto_channeler_paula 77 (24)
+=== pokemon_tower_5f
+Pokémon Tower, Kanto
+grass 70-74 (own 13-20)
+trainers 4, 76-77 (own 22-24): kanto_channeler_janae 76 (22), kanto_channeler_karina 77 (24), kanto_channeler_ruth 76 (22), kanto_channeler_tammy 76 (23)
+=== pokemon_tower_6f
+Pokémon Tower, Kanto
+grass 70-76 (own 14-23)
+trainers 3, 76-77 (own 22-24): kanto_channeler_angelica 76 (22), kanto_channeler_emilia 77 (24), kanto_channeler_jennifer 77 (24)
+=== pokemon_tower_7f
+Pokémon Tower, Kanto
+grass 71-78 (own 15-25)
+trainers 3, 76-79 (own 23-26): kanto_team_rocket_grunt_19 78 (25), kanto_team_rocket_grunt_20 79 (26), kanto_team_rocket_grunt_21 76 (23)
+=== power_plant
+Power Plant, Kanto
+grass 76-85 (own 22-35)
+=== relic_castle
+Relic Castle, Unova
+grass 168-170 (own 18-21)
+trainers 1, 170 (own 23): unova_psychic_perry 170 (23)
+=== relic_castle_16
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_castle_17
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_castle_19
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_castle_2
+Relic Castle, Unova
+grass 168-170 (own 18-21)
+trainers 2, 170 (own 23): unova_psychic_dua 170 (23), unova_psychic_low 170 (23)
+=== relic_castle_21
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_castle_22
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_castle_23
+Relic Castle, Unova
+grass 172-173 (own 27-30)
+=== relic_passage
+Relic Passage, Unova
+grass 168 (own 16-18)
+trainers 3, 168 (own 17-18): unova_backpacker_kendall 168 (18), unova_scientist_lumina 168 (17), unova_scientist_terrance 168 (18)
+=== relic_passage_2
+Relic Passage, Unova
+grass 172-173 (own 27-30)
+surf 165-173 (own 10-30)
+super rod 177-194 (own 40-70)
+trainers 4, 174-175 (own 31-33): unova_backpacker_annie 174 (32), unova_hiker_tobias 174 (31), unova_psychic_ena 174 (32), unova_psychic_tully 175 (33)
+=== relic_passage_3
+Relic Passage, Unova
+grass 172-173 (own 27-30)
+trainers 3, 174 (own 31-32): unova_backpacker_eileen 174 (32), unova_backpacker_randall 174 (32), unova_hiker_keith 174 (31)
+=== reversal_mountain
+Reversal Mountain, Unova
+grass 174-175 (own 31-34)
+trainers 2, 176 (own 37): unova_cyclist_adelaide 176 (37), unova_cyclist_jeremiah 176 (37)
+=== reversal_mountain_2
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+=== reversal_mountain_3
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+trainers 1, 177 (own 38): unova_pkmn_ranger_lewis 177 (38)
+=== reversal_mountain_4
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+trainers 10, 176-177 (own 37-39): unova_ace_trainer_cora 177 (39), unova_ace_trainer_ray_2 177 (39), unova_backpacker_kiyo 176 (37), unova_backpacker_kumiko_2 176 (37), unova_battle_girl_chan 176 (37), unova_black_belt_corey 176 (37), unova_doctor_derek 177 (38), unova_hiker_jared 176 (37), unova_hiker_markus 176 (37), unova_pkmn_ranger_eliza 177 (38)
+=== reversal_mountain_5
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+=== reversal_mountain_6
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+=== reversal_mountain_7
+Reversal Mountain, Unova
+grass 174-175 (own 31-35)
+=== rock_tunnel_1f
+Rock Tunnel, Kanto
+grass 70-72 (own 13-17)
+trainers 7, 74-76 (own 19-23): kanto_hiker_lenny 74 (19), kanto_hiker_lucas 75 (21), kanto_hiker_oliver 74 (20), kanto_picnicker_ariana 74 (19), kanto_picnicker_dana 74 (20), kanto_picnicker_leah 76 (22), kanto_pokemaniac_ashton 76 (23)
+=== rock_tunnel_b1f
+Rock Tunnel, Kanto
+grass 70-72 (own 13-17)
+trainers 8, 74-78 (own 20-25): kanto_hiker_allen 78 (25), kanto_hiker_dudley 75 (21), kanto_hiker_eric 74 (20), kanto_picnicker_martha 76 (22), kanto_picnicker_sofia 75 (21), kanto_pokemaniac_cooper 74 (20), kanto_pokemaniac_steve 76 (22), kanto_pokemaniac_winston 78 (25)
+=== rocket_hideout_b1f
+Rocket Hideout, Kanto
+trainers 5, 74-76 (own 19-22): kanto_team_rocket_grunt_10 74 (20), kanto_team_rocket_grunt_11 74 (19), kanto_team_rocket_grunt_12 76 (22), kanto_team_rocket_grunt_8 75 (21), kanto_team_rocket_grunt_9 75 (21)
+=== rocket_hideout_b2f
+Rocket Hideout, Kanto
+trainers 1, 72 (own 17): kanto_team_rocket_grunt_13 72 (17)
+=== rocket_hideout_b3f
+Rocket Hideout, Kanto
+trainers 2, 74-75 (own 20-21): kanto_team_rocket_grunt_14 74 (20), kanto_team_rocket_grunt_15 75 (21)
+=== rocket_hideout_b4f
+Rocket Hideout, Kanto
+trainers 3, 75-76 (own 21-23): kanto_team_rocket_grunt_16 76 (23), kanto_team_rocket_grunt_17 76 (23), kanto_team_rocket_grunt_18 75 (21)
+=== route_1
+Route 1, Kanto
+grass 62-64 (own 2-5)
+=== route_10
+Route 10, Kanto
+grass 68-72 (own 11-17)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 6, 74-81 (own 19-29): kanto_hiker_clark 75 (21), kanto_hiker_trent 74 (19), kanto_picnicker_carol 75 (21), kanto_picnicker_heidi 74 (20), kanto_pokemaniac_herman 74 (20), kanto_pokemaniac_mark 81 (29)
+=== route_101
+Route 101, Hoenn
+grass 136 (own 2-3)
+=== route_102
+Route 102, Hoenn
+grass 136-137 (own 3-4)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 4, 136-137 (own 3-5): hoenn_allen 137 (4), hoenn_calvin_1 137 (5), hoenn_rick 137 (4), hoenn_tiana 137 (4)
+=== route_103
+Route 103, Hoenn
+grass 136-137 (own 2-4)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 137-142 (own 5-15): hoenn_amy_and_liv_1 142 (15), hoenn_andrew 142 (15), hoenn_daisy 142 (14), hoenn_isabelle 142 (15), hoenn_marcos 142 (15), hoenn_miguel_1 142 (15), hoenn_pete 142 (15), hoenn_rhett 142 (15)
+=== route_104
+Route 104, Hoenn
+grass 136-137 (own 3-5)
+surf 140-149 (own 10-30)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 7, 137-139 (own 5-9): hoenn_billy 138 (7), hoenn_cindy_1 138 (7), hoenn_darian 139 (9), hoenn_gina_and_mia_1 138 (6), hoenn_haley_1 138 (6), hoenn_ivan 138 (7), hoenn_winston_1 138 (7)
+=== route_105
+Route 105, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 7, 147 (own 25-26): hoenn_andres_1 147 (25), hoenn_beverly 147 (25), hoenn_dominik 147 (26), hoenn_foster 147 (25), hoenn_imani 147 (26), hoenn_josue 147 (25), hoenn_luis 147 (26)
+=== route_106
+Route 106, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 4, 138-147 (own 7-26): hoenn_douglas 146 (24), hoenn_elliot_1 140 (10), hoenn_kyla 147 (26), hoenn_ned 140 (11)
+=== route_107
+Route 107, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 6, 146-148 (own 24-27): hoenn_beth 147 (26), hoenn_camron 147 (26), hoenn_darrin 146 (24), hoenn_denise 147 (25), hoenn_lisa_and_ray 148 (27), hoenn_tony_1 147 (26)
+=== route_108
+Route 108, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 6, 146-147 (own 24-26): hoenn_carolina 146 (24), hoenn_cory_1 146 (24), hoenn_jerome 147 (26), hoenn_matthew 147 (26), hoenn_missy 147 (26), hoenn_tara 147 (25)
+=== route_109
+Route 109, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 13, 141-148 (own 12-27): hoenn_alice 146 (24), hoenn_austina 147 (26), hoenn_carter 147 (25), hoenn_chandler 141 (12), hoenn_david 147 (25), hoenn_edmond 141 (13), hoenn_elijah 147 (25), hoenn_gwen 147 (26), hoenn_hailey 141 (13), hoenn_huey 141 (12), hoenn_lola_1 141 (12), hoenn_mel_and_paul 148 (27), hoenn_ricky_1 141 (13)
+=== route_109_seashore_house
+Route 109, Hoenn
+trainers 3, 140-141 (own 11-13): hoenn_dwayne 140 (11), hoenn_johanna 141 (13), hoenn_simon 141 (12)
+=== route_11
+Route 11, Kanto
+grass 68-72 (own 11-17)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 10, 72-75 (own 17-21): kanto_engineer_bernie 73 (18), kanto_engineer_braxton 75 (21), kanto_gamer_darian 73 (18), kanto_gamer_dirk 73 (18), kanto_gamer_hugo 73 (18), kanto_gamer_jasper 73 (18), kanto_youngster_dave 73 (18), kanto_youngster_dillon 74 (19), kanto_youngster_eddie 75 (21), kanto_youngster_yasu 72 (17)
+=== route_110
+Route 110, Hoenn
+grass 141 (own 12-13)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 14, 138-143 (own 6-16): hoenn_abigail_1 143 (16), hoenn_alyssa 142 (15), hoenn_anthony 142 (14), hoenn_benjamin_1 143 (16), hoenn_dale 142 (14), hoenn_edward 142 (15), hoenn_edwin_1 142 (14), hoenn_isabel_1 142 (14), hoenn_jaclyn 143 (16), hoenn_jacob 142 (14), hoenn_jasmine 142 (14), hoenn_joseph 142 (14), hoenn_kaleb 142 (14), hoenn_timmy 142 (15)
+=== route_110_trick_house_puzzle_1
+Route 110, Hoenn
+trainers 3, 142-143 (own 14-16): hoenn_eddie 143 (16), hoenn_robin 142 (14), hoenn_sally 143 (16)
+=== route_111
+Route 111, Hoenn
+grass 144-145 (own 19-22)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 17, 143-146 (own 17-23): hoenn_beau 145 (21), hoenn_becky 145 (22), hoenn_bianca 143 (18), hoenn_branden 145 (22), hoenn_brooke_1 143 (17), hoenn_bryan 145 (22), hoenn_celia 145 (22), hoenn_celina 143 (18), hoenn_daisuke 144 (19), hoenn_drew 146 (23), hoenn_dusty_1 146 (23), hoenn_hayden 143 (18), hoenn_heidi 145 (22), hoenn_irene 143 (17), hoenn_travis 143 (18), hoenn_tyron 144 (19), hoenn_wilton_1 143 (17)
+=== route_112
+Route 112, Hoenn
+grass 142-143 (own 14-16)
+trainers 6, 143 (own 16-18): hoenn_brice 143 (17), hoenn_bryant 143 (18), hoenn_carol 143 (17), hoenn_larry 143 (18), hoenn_shayla 143 (18), hoenn_trent_1 143 (17)
+=== route_113
+Route 113, Hoenn
+grass 142-143 (own 14-16)
+trainers 10, 143-144 (own 17-19): hoenn_coby 144 (19), hoenn_dillon 144 (19), hoenn_jaylen 144 (19), hoenn_lao_1 143 (17), hoenn_lawrence 143 (18), hoenn_lung 143 (18), hoenn_madeline_1 144 (19), hoenn_sophie 144 (19), hoenn_tori_and_tia 144 (19), hoenn_wyatt 143 (18)
+=== route_114
+Route 114, Hoenn
+grass 142-143 (own 15-18)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 12, 143-144 (own 16-20): hoenn_angelina 143 (18), hoenn_bernie_1 143 (18), hoenn_charlotte 144 (19), hoenn_claude 143 (18), hoenn_kai 144 (19), hoenn_lenny 143 (18), hoenn_lucas_1 143 (18), hoenn_nancy 143 (18), hoenn_nolan 144 (19), hoenn_shane 143 (18), hoenn_steve_1 144 (19), hoenn_tyra_and_ivy 144 (20)
+=== route_115
+Route 115, Hoenn
+grass 146-147 (own 23-26)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 10, 143-148 (own 18-28): hoenn_alix 147 (26), hoenn_cyndy_1 143 (18), hoenn_hector 143 (18), hoenn_helene 147 (26), hoenn_jaiden 147 (26), hoenn_koichi 148 (28), hoenn_kyra 147 (26), hoenn_marlene 143 (18), hoenn_nob_1 144 (19), hoenn_timothy_1 148 (27)
+=== route_116
+Route 116, Hoenn
+grass 138-139 (own 6-8)
+trainers 10, 139 (own 8-9): hoenn_clark 139 (8), hoenn_dawson 139 (8), hoenn_devan 139 (8), hoenn_janice 139 (9), hoenn_jerry_1 139 (9), hoenn_joey 139 (9), hoenn_johnson 139 (8), hoenn_jose 139 (8), hoenn_karen_1 139 (9), hoenn_sarah 139 (8)
+=== route_117
+Route 117, Hoenn
+grass 141-142 (own 13-14)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 9, 140-143 (own 11-17): hoenn_aisha 143 (17), hoenn_anna_and_meg_1 143 (17), hoenn_brandi 143 (17), hoenn_derek 143 (16), hoenn_dylan_1 143 (17), hoenn_isaac_1 140 (11), hoenn_lydia_1 140 (11), hoenn_maria_1 143 (17), hoenn_melina 143 (17)
+=== route_118
+Route 118, Hoenn
+grass 146-148 (own 24-27)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 7, 142-147 (own 14-26): hoenn_barny 147 (25), hoenn_chester 147 (25), hoenn_dalton_1 142 (15), hoenn_deandre 142 (14), hoenn_perry 147 (26), hoenn_rose_1 142 (14), hoenn_wade 143 (16)
+=== route_119
+Route 119, Hoenn
+grass 146-148 (own 24-27)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 17, 144-149 (own 20-29): hoenn_brent 147 (26), hoenn_catherine_1 147 (26), hoenn_chris 149 (29), hoenn_dayton 147 (25), hoenn_donald 146 (24), hoenn_doug 148 (28), hoenn_fabian 147 (26), hoenn_greg 147 (25), hoenn_hideo 147 (25), hoenn_hugh 147 (25), hoenn_jackson_1 148 (27), hoenn_kent 147 (25), hoenn_phil 147 (26), hoenn_rachel 147 (26), hoenn_takashi 147 (25), hoenn_taylor 148 (27), hoenn_yasu 147 (26)
+=== route_119_weather_institute_1f
+Route 119, Hoenn
+trainers 2, 148 (own 27-28): hoenn_grunt_weather_inst_1 148 (27), hoenn_grunt_weather_inst_4 148 (28)
+=== route_119_weather_institute_2f
+Route 119, Hoenn
+trainers 4, 147-148 (own 26-28): hoenn_grunt_weather_inst_2 148 (27), hoenn_grunt_weather_inst_3 147 (26), hoenn_grunt_weather_inst_5 148 (27), hoenn_shelly_weather_institute 148 (28)
+=== route_12
+Route 12, Kanto
+grass 76-81 (own 22-30)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 8, 75-81 (own 21-29): kanto_camper_justin 81 (29), kanto_fisherman_andrew 77 (24), kanto_fisherman_chip 77 (24), kanto_fisherman_elliot 75 (21), kanto_fisherman_hank 79 (27), kanto_fisherman_ned 76 (22), kanto_rocker_luca 81 (29), kanto_young_couple_gia_jes 77 (24)
+=== route_120
+Route 120, Hoenn
+grass 147-148 (own 25-27)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 13, 148-149 (own 27-30): hoenn_angelica 149 (30), hoenn_callie 148 (28), hoenn_chip 148 (27), hoenn_clarissa 148 (28), hoenn_colin 148 (28), hoenn_jeffrey_1 148 (27), hoenn_jenna 148 (28), hoenn_jennifer 149 (30), hoenn_keigo 148 (28), hoenn_leonel 149 (30), hoenn_lorenzo 148 (28), hoenn_riley 148 (28), hoenn_robert_1 149 (29)
+=== route_121
+Route 121, Hoenn
+grass 147-148 (own 25-28)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 10, 147-150 (own 25-32): hoenn_cale 149 (29), hoenn_cristin_1 149 (29), hoenn_jessica_1 149 (29), hoenn_kate_and_joy 150 (32), hoenn_marcel 149 (29), hoenn_myles 147 (25), hoenn_pat 147 (25), hoenn_tammy 149 (29), hoenn_vanessa 149 (30), hoenn_walter_1 149 (29)
+=== route_122
+Route 122, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+=== route_123
+Route 123, Hoenn
+grass 147-148 (own 25-28)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+trainers 15, 147-149 (own 26-31): hoenn_alberto 149 (30), hoenn_braxton 148 (28), hoenn_cameron_1 149 (31), hoenn_davis 148 (27), hoenn_ed 149 (30), hoenn_fernando_1 149 (30), hoenn_fredrick 149 (30), hoenn_jacki_1 149 (30), hoenn_jazmyn 148 (27), hoenn_jonas 149 (31), hoenn_kayley 149 (31), hoenn_kindra 149 (30), hoenn_miu_and_yuki 147 (26), hoenn_violet 147 (26), hoenn_wendy 149 (29)
+=== route_124
+Route 124, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 150-151 (own 33-34): hoenn_chad 150 (33), hoenn_declan 151 (34), hoenn_grace 151 (34), hoenn_isabella 151 (34), hoenn_jenny_1 151 (34), hoenn_lila_and_roy_1 151 (34), hoenn_roland 151 (34), hoenn_spencer 150 (33)
+=== route_125
+Route 125, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 150-151 (own 32-35): hoenn_auron 150 (33), hoenn_ernest_1 150 (33), hoenn_kim_and_iris 151 (35), hoenn_nolen 151 (34), hoenn_presley 150 (33), hoenn_sharon 151 (34), hoenn_stan 151 (34), hoenn_tanya 151 (34)
+=== route_126
+Route 126, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 149-151 (own 31-34): hoenn_barry 151 (34), hoenn_brenda 151 (34), hoenn_dean 149 (31), hoenn_isobel 151 (34), hoenn_leonardo 151 (34), hoenn_nikki 150 (33), hoenn_pablo_1 150 (33), hoenn_sienna 150 (33)
+=== route_127
+Route 127, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 142-151 (own 15-35): hoenn_aidan 150 (32), hoenn_athena 150 (32), hoenn_camden 150 (33), hoenn_donny 151 (34), hoenn_henry 151 (34), hoenn_jonah 150 (32), hoenn_koji_1 151 (34), hoenn_roger 151 (35)
+=== route_128
+Route 128, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 149-156 (own 30-45)
+trainers 7, 149-152 (own 31-36): hoenn_alexa 151 (34), hoenn_carlee 151 (35), hoenn_harrison 151 (35), hoenn_isaiah_1 151 (35), hoenn_katelyn_1 151 (35), hoenn_ruben 151 (34), hoenn_wayne 152 (36)
+=== route_129
+Route 129, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 5, 147-151 (own 26-34): hoenn_allison 150 (33), hoenn_chase 151 (34), hoenn_clarence 151 (34), hoenn_reed 150 (33), hoenn_tisha 151 (34)
+=== route_13
+Route 13, Kanto
+grass 76-81 (own 22-30)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 10, 77-81 (own 24-30): kanto_beauty_lola 79 (27), kanto_beauty_sheila 81 (29), kanto_biker_jared 80 (28), kanto_bird_keeper_perry 78 (25), kanto_bird_keeper_robert 79 (26), kanto_bird_keeper_sebastian 81 (29), kanto_picnicker_alma 80 (28), kanto_picnicker_gwen 79 (27), kanto_picnicker_susie 77 (24), kanto_picnicker_valerie 81 (30)
+=== route_130
+Route 130, Hoenn
+grass 137-158 (own 5-50)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 3, 150-151 (own 33-34): hoenn_katie 150 (33), hoenn_rodney 151 (34), hoenn_santiago 150 (33)
+=== route_131
+Route 131, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 7, 150-151 (own 33-35): hoenn_herman 150 (33), hoenn_kara 151 (34), hoenn_kevin 151 (34), hoenn_reli_and_ian 151 (35), hoenn_richard 151 (34), hoenn_susie 151 (34), hoenn_talia 151 (34)
+=== route_132
+Route 132, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 8, 144-151 (own 19-35): hoenn_dana 151 (34), hoenn_darcy 150 (33), hoenn_gilbert 151 (34), hoenn_jonathan 150 (33), hoenn_kiyo 151 (34), hoenn_makayla 150 (33), hoenn_paxton 150 (33), hoenn_ronald 151 (35)
+=== route_133
+Route 133, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 7, 150-151 (own 33-34): hoenn_beck 151 (34), hoenn_conor 150 (33), hoenn_debra 151 (34), hoenn_franklin 151 (34), hoenn_linda 150 (33), hoenn_mollie 150 (33), hoenn_warren 150 (33)
+=== route_134
+Route 134, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 147-156 (own 25-45)
+trainers 9, 150-151 (own 32-34): hoenn_aaron 151 (34), hoenn_alex 150 (33), hoenn_hitoshi 150 (32), hoenn_hudson 151 (34), hoenn_jack 151 (34), hoenn_kelvin 150 (33), hoenn_laurel 150 (33), hoenn_marley 151 (34), hoenn_reyna 150 (33)
+=== route_14
+Route 14, Kanto
+grass 76-81 (own 22-30)
+trainers 11, 79-83 (own 26-33): kanto_biker_gerald 81 (29), kanto_biker_isaac 80 (28), kanto_biker_lukas 79 (26), kanto_biker_malik 81 (29), kanto_bird_keeper_beck 81 (29), kanto_bird_keeper_benny 81 (29), kanto_bird_keeper_carter 80 (28), kanto_bird_keeper_donald 83 (33), kanto_bird_keeper_marlon 80 (28), kanto_bird_keeper_mitch 79 (26), kanto_twins_kiri_jan 81 (29)
+=== route_15
+Route 15, Kanto
+grass 76-81 (own 22-30)
+trainers 11, 78-83 (own 25-33): kanto_beauty_grace 81 (29), kanto_beauty_olivia 81 (29), kanto_biker_alex 80 (28), kanto_biker_ernest 78 (25), kanto_bird_keeper_chester 80 (28), kanto_bird_keeper_edwin 79 (26), kanto_crush_kin_ron_mya 81 (29), kanto_picnicker_becky 81 (29), kanto_picnicker_celia 83 (33), kanto_picnicker_kindra 80 (28), kanto_picnicker_yazmin 81 (29)
+=== route_16
+Route 16, Kanto
+grass 73-78 (own 18-25)
+trainers 7, 80-83 (own 28-33): kanto_biker_hideo 83 (33), kanto_biker_lao 81 (29), kanto_biker_ruben 80 (28), kanto_cue_ball_camron 81 (29), kanto_cue_ball_koji 80 (28), kanto_cue_ball_luke 81 (29), kanto_young_couple_lea_jed 81 (29)
+=== route_17
+Route 17, Kanto
+grass 74-81 (own 20-29)
+trainers 10, 78-83 (own 25-33): kanto_biker_billy 83 (33), kanto_biker_jaxon 81 (29), kanto_biker_nikolas 81 (29), kanto_biker_virgil 80 (28), kanto_biker_william 78 (25), kanto_cue_ball_corey 81 (29), kanto_cue_ball_isaiah 81 (29), kanto_cue_ball_jamal 79 (26), kanto_cue_ball_raul 81 (29), kanto_cue_ball_zeek 83 (33)
+=== route_18
+Route 18, Kanto
+grass 74-81 (own 20-29)
+trainers 3, 79-84 (own 26-34): kanto_bird_keeper_jacob 79 (26), kanto_bird_keeper_ramiro 84 (34), kanto_bird_keeper_wilton 81 (29)
+=== route_19
+Route 19, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 11, 79-81 (own 27-30): kanto_sis_and_bro_lia_luc 81 (30), kanto_swimmer_female_alice 81 (30), kanto_swimmer_female_anya 79 (27), kanto_swimmer_female_connie 81 (29), kanto_swimmer_male_axle 79 (27), kanto_swimmer_male_david 81 (29), kanto_swimmer_male_douglas 79 (27), kanto_swimmer_male_matthew 81 (30), kanto_swimmer_male_reece 81 (29), kanto_swimmer_male_richard 81 (30), kanto_swimmer_male_tony 81 (30)
+=== route_2
+Route 2, Kanto
+grass 62-64 (own 2-5)
+=== route_20
+Route 20, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 10, 80-85 (own 28-35): kanto_bird_keeper_roger 81 (30), kanto_picnicker_irene 81 (30), kanto_picnicker_missy 82 (31), kanto_swimmer_female_melissa 82 (31), kanto_swimmer_female_nora 81 (30), kanto_swimmer_female_shirley 81 (30), kanto_swimmer_female_tiffany 85 (35), kanto_swimmer_male_barry 82 (31), kanto_swimmer_male_darrin 80 (28), kanto_swimmer_male_dean 85 (35)
+=== route_21_north
+Route 21, Kanto
+grass 72-80 (own 17-28)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 4, 79-83 (own 27-33): kanto_fisherman_ronald 80 (28), kanto_fisherman_wade 79 (27), kanto_sis_and_bro_lil_ian 83 (33), kanto_swimmer_male_spencer 83 (33)
+=== route_21_south
+Route 21, Kanto
+grass 72-80 (own 17-28)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 5, 82-86 (own 31-37): kanto_fisherman_claude 82 (31), kanto_fisherman_nolan 83 (33), kanto_swimmer_male_jack 86 (37), kanto_swimmer_male_jerome 83 (33), kanto_swimmer_male_roland 83 (32)
+=== route_22
+Route 22, Kanto
+grass 62-64 (own 2-5)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== route_23
+Route 23, Kanto
+grass 83-91 (own 32-44)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== route_24
+Route 24, Kanto
+grass 65-70 (own 7-14)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 6, 68-73 (own 10-18): kanto_bug_catcher_cale 68 (10), kanto_camper_ethan 73 (18), kanto_camper_shane 70 (14), kanto_lass_ali 69 (12), kanto_lass_reli 72 (16), kanto_youngster_timmy 70 (14)
+=== route_25
+Route 25, Kanto
+grass 66-70 (own 8-14)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 9, 70-72 (own 13-17): kanto_camper_flint 70 (14), kanto_hiker_franklin 71 (15), kanto_hiker_nob 70 (13), kanto_hiker_wayne 72 (17), kanto_lass_haley 70 (13), kanto_picnicker_kelsey 71 (15), kanto_youngster_chad 70 (14), kanto_youngster_dan 72 (17), kanto_youngster_joey 71 (15)
+=== route_26
+Route 26, Johto
+grass 121-124 (own 28-32)
+surf 119-123 (own 25-30)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 6, 123-127 (own 30-36): johto_ace_trainer_f_jamie 127 (36), johto_ace_trainer_f_joyce 127 (36), johto_ace_trainer_m_gaven 124 (32), johto_ace_trainer_m_jake 126 (35), johto_fisherman_scott 125 (34), johto_psychic_m_vernon 127 (36)
+=== route_27
+Route 27, Johto
+grass 121-124 (own 28-32)
+surf 113-116 (own 15-20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 6, 123-129 (own 30-40): johto_ace_trainer_f_megan 124 (32), johto_ace_trainer_f_reena 127 (36), johto_ace_trainer_m_blake 125 (33), johto_ace_trainer_m_brian 126 (35), johto_bird_keeper_gs_jose_2 129 (40), johto_psychic_m_eli 125 (34)
+=== route_28
+Route 28, Johto
+grass 129-131 (own 39-43)
+surf 126-129 (own 35-40)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== route_29
+Route 29, Johto
+grass 104-105 (own 2-4)
+=== route_3
+Route 3, Kanto
+grass 63-66 (own 3-8)
+trainers 8, 67-70 (own 9-14): kanto_bug_catcher_colton 68 (10), kanto_bug_catcher_greg 67 (9), kanto_bug_catcher_james 68 (11), kanto_lass_janice 67 (9), kanto_lass_robin 70 (14), kanto_lass_sally 68 (10), kanto_youngster_ben 68 (11), kanto_youngster_calvin 70 (14)
+=== route_30
+Route 30, Johto
+grass 104-105 (own 2-4)
+surf 109-124 (own 10-32)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 104-105 (own 2-4): johto_bug_catcher_don 105 (3), johto_youngster_joey 105 (4), johto_youngster_mikey 105 (4)
+=== route_31
+Route 31, Johto
+grass 105-106 (own 3-5)
+surf 109-124 (own 10-32)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 1, 104-105 (own 2-3): johto_bug_catcher_wade 105 (3)
+=== route_32
+Route 32, Johto
+grass 105-107 (own 4-6)
+surf 109-127 (own 10-36)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 8, 106-113 (own 5-15): johto_bird_keeper_gs_peter 108 (8), johto_camper_roland 109 (9), johto_fisherman_henry 108 (8), johto_fisherman_justin 113 (15), johto_fisherman_ralph 109 (10), johto_picnicker_liz 108 (8), johto_youngster_albert 108 (8), johto_youngster_gordon 109 (10)
+=== route_33
+Route 33, Johto
+grass 105-108 (own 4-8)
+trainers 1, 110 (own 11): johto_hiker_anthony 110 (11)
+=== route_34
+Route 34, Johto
+grass 109-111 (own 10-13)
+surf 109-122 (own 10-29)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 6, 107-114 (own 7-17): johto_camper_todd 112 (14), johto_picnicker_gina 111 (12), johto_pokefan_m_brandon 111 (13), johto_policeman_keith 114 (17), johto_youngster_ian 111 (12), johto_youngster_samuel 109 (10)
+=== route_35
+Route 35, Johto
+grass 109-112 (own 10-14)
+surf 109-123 (own 10-31)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 9, 104-113 (own 2-16): johto_bird_keeper_gs_bryan 112 (14), johto_bug_catcher_arnie 113 (15), johto_camper_elliot 113 (15), johto_camper_ivan 112 (14), johto_firebreather_walt 113 (16), johto_juggler_irwin 112 (14), johto_picnicker_brooke 113 (16), johto_picnicker_kim 113 (15), johto_policeman_dirk 112 (14)
+=== route_36
+Route 36, Johto
+grass 111-113 (own 12-15)
+trainers 2, 112-114 (own 14-17): johto_psychic_m_mark 113 (16), johto_school_kid_m_alan 114 (17)
+=== route_37
+Route 37, Johto
+grass 111-113 (own 13-15)
+trainers 4, 113-114 (own 16-17): johto_beauty_callie 113 (16), johto_beauty_kassandra 113 (16), johto_psychic_m_greg 114 (17), johto_twins_tori_and_til 113 (16)
+=== route_38
+Route 38, Johto
+grass 111-113 (own 13-16)
+trainers 5, 113-116 (own 16-20): johto_beauty_valerie 115 (18), johto_bird_keeper_gs_toby 115 (18), johto_lass_dana 115 (19), johto_sailor_harry 116 (20), johto_school_kid_m_chad 116 (20)
+=== route_39
+Route 39, Johto
+grass 113-114 (own 15-17)
+trainers 4, 114-116 (own 17-20): johto_pokefan_m_derek 115 (18), johto_pokefan_ruth 114 (17), johto_psychic_m_nelson 116 (20), johto_sailor_eugene 115 (19)
+=== route_4
+Route 4, Kanto
+grass 65-69 (own 6-12)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 1, 82 (own 31): kanto_lass_crissy 82 (31)
+=== route_40
+Route 40, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 4, 115-117 (own 18-21): johto_swimmer_f_elaine 117 (21), johto_swimmer_f_paula 115 (19), johto_swimmer_m_randall 116 (20), johto_swimmer_m_simon 116 (20)
+=== route_41
+Route 41, Johto
+surf 113-119 (own 15-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 10, 113-118 (own 16-23): johto_swimmer_f_denise 117 (22), johto_swimmer_f_kara 116 (20), johto_swimmer_f_kaylee 116 (20), johto_swimmer_f_susie 117 (22), johto_swimmer_f_wendy 117 (21), johto_swimmer_m_berke 118 (23), johto_swimmer_m_charlie 117 (21), johto_swimmer_m_george 115 (19), johto_swimmer_m_matthew 118 (23), johto_swimmer_m_ronald 116 (20)
+=== route_42
+Route 42, Johto
+grass 111-114 (own 13-17)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 113-115 (own 15-19): johto_fisherman_tully 115 (19), johto_hiker_benjamin 114 (17), johto_poke_maniac_shane 114 (17)
+=== route_43
+Route 43, Johto
+grass 113-114 (own 15-17)
+surf 106-136 (own 5-50)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 6, 109-119 (own 10-24): johto_camper_spencer 116 (20), johto_fisherman_marvin 116 (20), johto_picnicker_tiffany 117 (21), johto_poke_maniac_beckett 116 (20), johto_poke_maniac_brent 119 (24), johto_poke_maniac_ron 116 (20)
+=== route_44
+Route 44, Johto
+grass 117-120 (own 22-26)
+surf 113-123 (own 15-30)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 7, 120-123 (own 26-30): johto_ace_trainer_f_cybil 122 (29), johto_ace_trainer_m_allen 122 (29), johto_bird_keeper_gs_vance 121 (28), johto_fisherman_edgar 121 (28), johto_fisherman_wilton 121 (28), johto_poke_maniac_zach 123 (30), johto_psychic_m_phil 122 (29)
+=== route_45
+Route 45, Johto
+grass 116-121 (own 20-27)
+surf 104-119 (own 2-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 7, 119-123 (own 24-30): johto_ace_trainer_f_kelly 121 (27), johto_ace_trainer_m_ryan 121 (27), johto_black_belt_kenji 121 (28), johto_hiker_erik 121 (27), johto_hiker_michael 119 (25), johto_hiker_parry 123 (30), johto_hiker_timothy 121 (27)
+=== route_46
+Route 46, Johto
+grass 104-105 (own 2-4)
+trainers 3, 111-114 (own 13-17): johto_camper_ted 114 (17), johto_hiker_bailey 111 (13), johto_picnicker_erin 114 (17)
+=== route_47
+Route 47, Johto
+grass 123-129 (own 31-40)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 4, 115-119 (own 19-25): johto_camper_grant 117 (21), johto_double_team_thom_and_kae 119 (25), johto_hiker_devin 115 (19), johto_young_couple_duff_and_eda 117 (22)
+=== route_48
+Route 48, Johto
+grass 116-119 (own 20-25)
+=== route_5
+Route 5, Kanto
+grass 68-72 (own 10-16)
+=== route_6
+Route 6, Kanto
+grass 68-72 (own 10-16)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 6, 72-74 (own 16-20): kanto_bug_catcher_elijah 74 (20), kanto_bug_catcher_keigo 72 (16), kanto_camper_jeff 72 (16), kanto_camper_ricky 74 (20), kanto_picnicker_isabelle 72 (16), kanto_picnicker_nancy 72 (16)
+=== route_7
+Route 7, Kanto
+grass 72-76 (own 17-22)
+=== route_8
+Route 8, Kanto
+grass 71-74 (own 15-20)
+trainers 12, 74-79 (own 19-26): kanto_biker_jaren 77 (24), kanto_biker_ricardo 76 (23), kanto_gamer_rich 77 (24), kanto_gamer_stan 76 (22), kanto_lass_andrea 77 (24), kanto_lass_julia 76 (22), kanto_lass_megan 74 (19), kanto_lass_paige 76 (23), kanto_super_nerd_aidan 74 (20), kanto_super_nerd_glenn 76 (22), kanto_super_nerd_leslie 79 (26), kanto_twins_eli_anne 76 (22)
+=== route_9
+Route 9, Kanto
+grass 68-72 (own 11-17)
+trainers 9, 73-76 (own 18-23): kanto_bug_catcher_brent 74 (19), kanto_bug_catcher_conner 74 (20), kanto_camper_chris 75 (21), kanto_camper_drew 74 (19), kanto_hiker_alan 75 (21), kanto_hiker_brice 74 (20), kanto_hiker_jeremy 74 (20), kanto_picnicker_alicia 73 (18), kanto_picnicker_caitlin 76 (23)
+=== ruins_of_alph
+Ruins of Alph, Johto
+grass 115-119 (own 18-24)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 1, 120 (own 26): johto_psychic_m_nathan 120 (26)
+=== rustboro_city_gym
+Rustboro City, Hoenn
+trainers 3, 139-140 (own 8-10): hoenn_josh 140 (10), hoenn_marc 139 (8), hoenn_tommy 139 (8)
+=== rusturf_tunnel
+Rusturf Tunnel, Hoenn
+grass 137-139 (own 5-8)
+trainers 1, 143 (own 16): hoenn_mike_2 143 (16)
+=== safari_zone_01
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_02
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 113-114 (own 15-17)
+old rod 111-113 (own 12-15)
+good rod 117-119 (own 22-25)
+super rod 126-128 (own 35-38)
+=== safari_zone_03
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_04
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_05
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 113-114 (own 15-17)
+old rod 111-113 (own 12-15)
+good rod 117-119 (own 22-25)
+super rod 126-129 (own 35-39)
+=== safari_zone_06
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 113-114 (own 15-17)
+old rod 111-113 (own 12-15)
+good rod 117-119 (own 22-25)
+super rod 126-127 (own 35-37)
+=== safari_zone_07
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_08
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 113-114 (own 15-17)
+old rod 111-113 (own 12-15)
+good rod 117-119 (own 22-25)
+super rod 126-127 (own 35-37)
+=== safari_zone_09
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 113-114 (own 15-17)
+old rod 111-113 (own 12-15)
+good rod 117-119 (own 22-25)
+super rod 126-128 (own 35-38)
+=== safari_zone_10
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_11
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_12
+Safari Zone, Johto
+grass 113-114 (own 15-17)
+surf 117-119 (own 22-25)
+old rod 111 (own 12-13)
+good rod 117-119 (own 22-25)
+super rod 131-133 (own 42-45)
+=== safari_zone_center
+Kanto Safari Zone, Kanto
+grass 76-82 (own 22-31)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== safari_zone_east
+Kanto Safari Zone, Kanto
+grass 76-83 (own 22-33)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== safari_zone_north
+Kanto Safari Zone, Kanto
+grass 76-83 (own 23-32)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== safari_zone_west
+Kanto Safari Zone, Kanto
+grass 76-83 (own 22-32)
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== saffron_city_dojo
+Saffron City, Kanto
+trainers 5, 82-86 (own 31-37): kanto_black_belt_aaron 85 (36), kanto_black_belt_hideki 83 (32), kanto_black_belt_hitoshi 82 (31), kanto_black_belt_koichi 86 (37), kanto_black_belt_mike 82 (31)
+=== saffron_city_gym
+Saffron City, Kanto
+trainers 7, 82-87 (own 31-38): kanto_channeler_amanda 84 (34), kanto_channeler_stacy 87 (38), kanto_channeler_tasha 83 (33), kanto_psychic_cameron 83 (33), kanto_psychic_johan 82 (31), kanto_psychic_preston 87 (38), kanto_psychic_tyron 84 (34)
+=== seafloor_cavern_entrance
+Seafloor Cavern, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== seafloor_cavern_room_1
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+trainers 2, 152 (own 36): hoenn_grunt_seafloor_cavern_1 152 (36), hoenn_grunt_seafloor_cavern_2 152 (36)
+=== seafloor_cavern_room_2
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+=== seafloor_cavern_room_3
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+trainers 2, 151-152 (own 35-37): hoenn_grunt_seafloor_cavern_5 151 (35), hoenn_shelly_seafloor_cavern 152 (37)
+=== seafloor_cavern_room_4
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+trainers 2, 152 (own 36): hoenn_grunt_seafloor_cavern_3 152 (36), hoenn_grunt_seafloor_cavern_4 152 (36)
+=== seafloor_cavern_room_5
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+=== seafloor_cavern_room_6
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== seafloor_cavern_room_7
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== seafloor_cavern_room_8
+Seafloor Cavern, Hoenn
+grass 148-152 (own 28-36)
+=== seafoam_islands_1f
+Seafoam Islands, Kanto
+grass 76-83 (own 22-33)
+=== seafoam_islands_b1f
+Seafoam Islands, Kanto
+grass 76-85 (own 22-35)
+=== seafoam_islands_b2f
+Seafoam Islands, Kanto
+grass 76-84 (own 22-34)
+=== seafoam_islands_b3f
+Seafoam Islands, Kanto
+grass 77-84 (own 24-34)
+surf 78-88 (own 25-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== seafoam_islands_b4f
+Seafoam Islands, Kanto
+grass 79-85 (own 26-36)
+surf 78-88 (own 25-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== seaside_cave
+Seaside Cave, Unova
+grass 175-176 (own 34-37)
+surf 171-177 (own 25-40)
+super rod 177-194 (own 40-70)
+trainers 5, 179-180 (own 44-47): unova_battle_girl_tia 180 (47), unova_black_belt_drago 180 (47), unova_black_belt_rocky 179 (44), unova_pkmn_ranger_johan 180 (46), unova_pkmn_ranger_mikiko 180 (46)
+=== seaside_cave_2
+Seaside Cave, Unova
+grass 177-178 (own 39-42)
+trainers 1, 180 (own 47): unova_battle_girl_maki 180 (47)
+=== seven_island_sevault_canyon
+Sevault Canyon, Kanto
+grass 71-98 (own 15-54)
+trainers 7, 93-96 (own 47-52): kanto_cool_couple_lex_nya 96 (52), kanto_cooltrainer_leroy 95 (50), kanto_cooltrainer_michelle 95 (50), kanto_crush_girl_cyndy 94 (48), kanto_pkmn_ranger_jackson 94 (49), kanto_pkmn_ranger_katelyn 96 (52), kanto_tamer_evan 94 (49)
+=== seven_island_sevault_canyon_entrance
+Canyon Entrance, Kanto
+grass 68-95 (own 10-50)
+trainers 5, 93-96 (own 47-51): kanto_aroma_lady_miah 95 (50), kanto_juggler_mason 93 (47), kanto_pkmn_ranger_madeline 96 (51), kanto_pkmn_ranger_nicolas 96 (51), kanto_young_couple_eve_jon 95 (50)
+=== seven_island_tanoby_ruins
+Tanoby Ruins, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 4, 94-95 (own 48-50): kanto_gentleman_clifford 94 (49), kanto_painter_edna 95 (50), kanto_ruin_maniac_benjamin 94 (48), kanto_ruin_maniac_brandon 95 (50)
+=== seven_island_tanoby_ruins_dilford_chamber
+Dilford Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_liptoo_chamber
+Liptoo Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_monean_chamber
+Monean Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_rixy_chamber
+Rixy Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_scufib_chamber
+Scufib Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_viapois_chamber
+Viapois Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_tanoby_ruins_weepth_chamber
+Weepth Chamber, Kanto
+grass 78 (own 25)
+=== seven_island_trainer_tower
+Trainer Tower, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 2, 94-96 (own 48-52): kanto_psychic_dario 96 (52), kanto_psychic_rodette 95 (50)
+=== shoal_cave_low_tide_entrance_room
+Shoal Cave, Hoenn
+grass 147-150 (own 26-32)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== shoal_cave_low_tide_ice_room
+Shoal Cave, Hoenn
+grass 147-150 (own 26-32)
+=== shoal_cave_low_tide_inner_room
+Shoal Cave, Hoenn
+grass 147-150 (own 26-32)
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== shoal_cave_low_tide_lower_room
+Shoal Cave, Hoenn
+grass 147-150 (own 26-32)
+=== shoal_cave_low_tide_stairs_room
+Shoal Cave, Hoenn
+grass 147-150 (own 26-32)
+=== shopping_mall
+Shopping Mall, Unova
+trainers 2, 179 (own 43): unova_waiter_lou 179 (43), unova_waitress_olwen 179 (43)
+=== silph_co_10f
+Silph Co., Kanto
+trainers 2, 81-83 (own 29-33): kanto_scientist_travis 81 (29), kanto_team_rocket_grunt_39 83 (33)
+=== silph_co_11f
+Silph Co., Kanto
+trainers 2, 78-83 (own 25-32): kanto_team_rocket_grunt_40 78 (25), kanto_team_rocket_grunt_41 83 (32)
+=== silph_co_2f
+Silph Co., Kanto
+trainers 4, 78-81 (own 25-29): kanto_scientist_connor 79 (26), kanto_scientist_jerry 80 (28), kanto_team_rocket_grunt_23 81 (29), kanto_team_rocket_grunt_24 78 (25)
+=== silph_co_3f
+Silph Co., Kanto
+trainers 2, 80-81 (own 28-29): kanto_scientist_jose 81 (29), kanto_team_rocket_grunt_25 80 (28)
+=== silph_co_4f
+Silph Co., Kanto
+trainers 3, 80-83 (own 28-33): kanto_scientist_rodney 83 (33), kanto_team_rocket_grunt_26 81 (29), kanto_team_rocket_grunt_27 80 (28)
+=== silph_co_5f
+Silph Co., Kanto
+trainers 4, 79-83 (own 26-33): kanto_juggler_dalton 81 (29), kanto_scientist_beau 79 (26), kanto_team_rocket_grunt_28 83 (33), kanto_team_rocket_grunt_29 83 (33)
+=== silph_co_6f
+Silph Co., Kanto
+trainers 3, 78-81 (own 25-29): kanto_scientist_taylor 78 (25), kanto_team_rocket_grunt_30 81 (29), kanto_team_rocket_grunt_31 80 (28)
+=== silph_co_7f
+Silph Co., Kanto
+trainers 4, 79-81 (own 26-29): kanto_scientist_joshua 81 (29), kanto_team_rocket_grunt_33 81 (29), kanto_team_rocket_grunt_34 81 (29), kanto_team_rocket_grunt_35 79 (26)
+=== silph_co_8f
+Silph Co., Kanto
+trainers 3, 79-81 (own 26-29): kanto_scientist_parker 81 (29), kanto_team_rocket_grunt_32 79 (26), kanto_team_rocket_grunt_36 80 (28)
+=== silph_co_9f
+Silph Co., Kanto
+trainers 3, 80 (own 28): kanto_scientist_ed 80 (28), kanto_team_rocket_grunt_37 80 (28), kanto_team_rocket_grunt_38 80 (28)
+=== six_island_altering_cave
+Altering Cave, Kanto
+grass 65-72 (own 6-16)
+=== six_island_green_path
+Green Path, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 1, 94 (own 48-49): kanto_psychic_jaclyn 94 (49)
+=== six_island_outcast_island
+Outcast Island, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 5, 94-95 (own 48-50): kanto_fisherman_tylor 94 (49), kanto_sis_and_bro_ava_geb 95 (50), kanto_swimmer_female_nicole 95 (50), kanto_swimmer_male_mymo 94 (49), kanto_team_rocket_grunt_46 94 (48)
+=== six_island_pattern_bush
+Pattern Bush, Kanto
+grass 65-81 (own 6-30)
+trainers 12, 92-95 (own 45-50): kanto_bug_catcher_garret 94 (49), kanto_bug_catcher_jonah 93 (47), kanto_bug_catcher_vance 94 (48), kanto_camper_riley 95 (50), kanto_lass_dalia 94 (48), kanto_lass_joana 94 (49), kanto_picnicker_marcy 94 (49), kanto_pkmn_breeder_allison 94 (48), kanto_pkmn_breeder_bethany 95 (50), kanto_ruin_maniac_layton 94 (48), kanto_youngster_cordell 94 (48), kanto_youngster_nash 94 (49)
+=== six_island_ruin_valley
+Ruin Valley, Kanto
+grass 71-96 (own 15-52)
+surf 64-78 (own 5-25)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 5, 94-95 (own 48-50): kanto_hiker_daryl 95 (50), kanto_pokemaniac_hector 94 (49), kanto_ruin_maniac_foster 95 (50), kanto_ruin_maniac_larry 94 (49), kanto_ruin_maniac_stanly 94 (48)
+=== six_island_water_path
+Water Path, Kanto
+grass 68-95 (own 10-50)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 6, 92-95 (own 46-50): kanto_aroma_lady_rose 94 (49), kanto_hiker_earl 94 (49), kanto_juggler_edward 94 (48), kanto_swimmer_female_denise 94 (49), kanto_swimmer_male_samir 95 (50), kanto_twins_miu_mia 95 (50)
+=== sky_pillar_1f
+Sky Pillar, Hoenn
+grass 150-153 (own 33-38)
+=== sky_pillar_3f
+Sky Pillar, Hoenn
+grass 150-153 (own 33-38)
+=== sky_pillar_5f
+Sky Pillar, Hoenn
+grass 150-153 (own 33-39)
+=== slateport_city
+Slateport City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 144-156 (own 20-45)
+=== slowpoke_well_b1f
+Slowpoke Well, Johto
+grass 106-108 (own 5-8)
+surf 106-119 (own 5-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 107-110 (own 7-11): johto_team_rocket_f_grunt 110 (11), johto_team_rocket_grunt 109 (9), johto_team_rocket_grunt_2 109 (9)
+=== slowpoke_well_b2f
+Slowpoke Well, Johto
+grass 115-118 (own 19-23)
+surf 109-123 (own 10-30)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== sootopolis_city
+Sootopolis City, Hoenn
+surf 137-151 (own 5-35)
+old rod 137-140 (own 5-10)
+good rod 140-149 (own 10-30)
+super rod 137-156 (own 5-45)
+=== sootopolis_city_gym_b1f
+Sootopolis City, Hoenn
+trainers 10, 151-154 (own 35-40): hoenn_andrea 154 (40), hoenn_annika 153 (39), hoenn_bethany 153 (39), hoenn_brianna 154 (40), hoenn_bridget 154 (40), hoenn_connie 154 (40), hoenn_crissy 153 (39), hoenn_daphne 153 (39), hoenn_olivia 153 (39), hoenn_tiffany 153 (39)
+=== sprout_tower_1f
+Sprout Tower, Johto
+trainers 1, 105 (own 3): johto_sage_chow 105 (3)
+=== sprout_tower_2f
+Sprout Tower, Johto
+grass 105-107 (own 3-6)
+trainers 2, 105 (own 3): johto_sage_edmond 105 (3), johto_sage_nico 105 (3)
+=== sprout_tower_3f
+Sprout Tower, Johto
+grass 105-107 (own 3-6)
+trainers 3, 107 (own 6-7): johto_sage_jin 107 (6), johto_sage_neal 107 (6), johto_sage_troy 107 (7)
+=== ss_anne_1f_room_2
+S.S. Anne, Kanto
+trainers 2, 73-75 (own 18-21): kanto_lass_ann 73 (18), kanto_youngster_tyler 75 (21)
+=== ss_anne_1f_room_5
+S.S. Anne, Kanto
+trainers 1, 74 (own 19): kanto_gentleman_arthur 74 (19)
+=== ss_anne_1f_room_7
+S.S. Anne, Kanto
+trainers 1, 73 (own 18): kanto_gentleman_thomas 73 (18)
+=== ss_anne_2f_room_2
+S.S. Anne, Kanto
+trainers 2, 72-76 (own 17-23): kanto_fisherman_dale 72 (17), kanto_gentleman_brooks 76 (23)
+=== ss_anne_2f_room_4
+S.S. Anne, Kanto
+trainers 2, 72-73 (own 17-18): kanto_gentleman_lamar 72 (17), kanto_lass_dawn 73 (18)
+=== ss_anne_b1f_room_1
+S.S. Anne, Kanto
+trainers 2, 72-74 (own 17-20): kanto_fisherman_barny 72 (17), kanto_sailor_phillip 74 (20)
+=== ss_anne_b1f_room_2
+S.S. Anne, Kanto
+trainers 1, 73 (own 18): kanto_sailor_huey 73 (18)
+=== ss_anne_b1f_room_3
+S.S. Anne, Kanto
+trainers 1, 72 (own 17): kanto_sailor_dylan 72 (17)
+=== ss_anne_b1f_room_4
+S.S. Anne, Kanto
+trainers 2, 72-75 (own 17-21): kanto_sailor_duncan 72 (17), kanto_sailor_leonard 75 (21)
+=== ss_anne_deck
+S.S. Anne, Kanto
+trainers 2, 72-73 (own 17-18): kanto_sailor_edmond 73 (18), kanto_sailor_trevor 72 (17)
+=== ss_anne_exterior
+S.S. Anne, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== strange_house
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== strange_house_2
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== strange_house_3
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== strange_house_4
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== strange_house_5
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== strange_house_6
+Strange House, Unova
+grass 174-175 (own 31-34)
+=== team_rocket_headquarters_b1f
+Team Rocket Hq, Johto
+trainers 2, 113-116 (own 16-20): johto_scientist_gs_gregg 116 (20), johto_team_rocket_grunt_15 113 (16)
+=== team_rocket_headquarters_b2f
+Team Rocket Hq, Johto
+trainers 5, 114-121 (own 17-27): johto_executive_ariana_ariana_2 121 (27), johto_team_rocket_grunt_16 115 (18), johto_team_rocket_grunt_17 114 (17), johto_team_rocket_grunt_18 115 (18), johto_team_rocket_grunt_25 116 (20)
+=== team_rocket_headquarters_b3f
+Team Rocket Hq, Johto
+trainers 5, 115-119 (own 18-24): johto_executive_petrel_petrel_2 119 (24), johto_scientist_gs_mitch 119 (24), johto_scientist_gs_ross 117 (22), johto_team_rocket_f_grunt_5 115 (18), johto_team_rocket_grunt_19 115 (19)
+=== three_island_berry_forest
+Berry Forest, Kanto
+grass 81-88 (own 30-40)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== three_island_bond_bridge
+Bond Bridge, Kanto
+grass 81-88 (own 29-40)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+trainers 6, 84-87 (own 34-38): kanto_aroma_lady_nikki 86 (37), kanto_aroma_lady_violet 85 (36), kanto_swimmer_female_tisha 87 (38), kanto_tuber_alexis 84 (34), kanto_tuber_amira 85 (35), kanto_twins_joy_meg 86 (37)
+=== three_island_port
+Three Island, Kanto
+grass 64-85 (own 5-35)
+=== tohjo_falls
+Tohjo Falls, Johto
+grass 116-118 (own 20-23)
+surf 116 (own 20)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== two_island_cape_brink
+Cape Brink, Kanto
+grass 81-88 (own 30-40)
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== undella_bay
+Undella Bay, Unova
+surf 171-177 (own 25-40)
+super rod 177-194 (own 40-70)
+trainers 6, 177 (own 38-40): unova_ace_trainer_summer 177 (40), unova_swimmer_f_arissa 177 (39), unova_swimmer_f_mitzi 177 (38), unova_swimmer_m_bart 177 (39), unova_swimmer_m_matt 177 (39), unova_swimmer_m_tim 177 (39)
+=== undella_town
+Undella Town, Unova
+surf 171-177 (own 25-40)
+super rod 177-194 (own 40-70)
+=== underwater_route_124
+Underwater, Hoenn
+surf 144-151 (own 20-35)
+=== underwater_route_126
+Underwater, Hoenn
+surf 144-151 (own 20-35)
+=== union_cave_1f
+Union Cave, Johto
+grass 105-107 (own 4-7)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 5, 105-110 (own 4-11): johto_firebreather_bill 107 (6), johto_firebreather_ray 109 (9), johto_hiker_daniel 110 (11), johto_hiker_russel 108 (8), johto_poke_maniac_larry 110 (11)
+=== union_cave_b1f
+Union Cave, Johto
+grass 107-109 (own 6-9)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 4, 118-120 (own 23-26): johto_hiker_leonard 119 (25), johto_hiker_phillip 119 (25), johto_poke_maniac_andrew 119 (24), johto_poke_maniac_calvin 120 (26)
+=== union_cave_b2f
+Union Cave, Johto
+grass 116-118 (own 20-23)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+trainers 3, 117-121 (own 22-28): johto_ace_trainer_f_emma 121 (28), johto_ace_trainer_f_gwen 120 (26), johto_ace_trainer_m_nick 120 (26)
+=== unova_route_11
+Route 11, Unova
+grass 176-177 (own 36-39)
+surf 171-177 (own 25-40)
+super rod 177-186 (own 40-60)
+trainers 3, 178-182 (own 41-52): unova_pkmn_breeder_magnolia 178 (41), unova_pkmn_ranger_crofton 178 (42), unova_pkmn_ranger_thalia 182 (52)
+=== unova_route_12
+Route 12, Unova
+grass 175-177 (own 35-38)
+trainers 5, 177-179 (own 39-44): unova_backers_cleo_rio 177 (40), unova_battle_girl_azra 178 (41), unova_black_belt_jeriel 178 (42), unova_team_plasma_grunt_45 177 (39), unova_team_plasma_zinzolin_4 179 (44)
+=== unova_route_13
+Route 13, Unova
+grass 175-176 (own 34-37)
+surf 171-177 (own 25-40)
+super rod 177-194 (own 40-70)
+trainers 11, 177-178 (own 39-41): unova_ace_trainer_angi 178 (41), unova_ace_trainer_miguel 178 (41), unova_battle_girl_alize 178 (41), unova_black_belt_wesley 178 (41), unova_fisherman_damon 177 (39), unova_fisherman_jones 177 (40), unova_fisherman_leroy 177 (40), unova_fisherman_vince 177 (40), unova_parasol_lady_laura 177 (40), unova_pkmn_ranger_daryl 177 (39), unova_pkmn_ranger_dianne 177 (39)
+=== unova_route_16
+Route 16, Unova
+grass 170-171 (own 21-24)
+trainers 6, 171 (own 24-25): unova_backers_stu_art 171 (24), unova_backpacker_blossom 171 (25), unova_backpacker_ivan 171 (25), unova_cyclist_hector 171 (25), unova_cyclist_krissa 171 (25), unova_depot_agent_hank 171 (25)
+=== unova_route_19
+Route 19, Unova
+grass 162-163 (own 2-4)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+=== unova_route_20
+Route 20, Unova
+grass 162-163 (own 2-4)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+trainers 7, 163-166 (own 4-11): unova_lass_isabel 163 (4), unova_nursery_aide_kimya 166 (11), unova_preschooler_albert 165 (10), unova_preschooler_lin 165 (10), unova_twins_lia_lily 165 (9), unova_youngster_petey 163 (4), unova_youngster_terrell 163 (4)
+=== unova_route_21
+Route 21, Unova
+surf 173-179 (own 30-45)
+super rod 177-194 (own 40-70)
+trainers 7, 179-180 (own 44-47): unova_black_belt_kenneth 180 (47), unova_doctor_braid 180 (46), unova_fisherman_kenzo 179 (44), unova_swimmer_f_desiree 180 (46), unova_swimmer_f_kaoru 179 (45), unova_swimmer_m_harold 180 (46), unova_swimmer_m_kyle 179 (45)
+=== unova_route_22
+Route 22, Unova
+grass 177-178 (own 39-42)
+surf 167-177 (own 15-40)
+super rod 177-194 (own 40-70)
+trainers 6, 179-180 (own 45-47): unova_ace_trainer_lucca 180 (47), unova_ace_trainer_shel 180 (47), unova_backpacker_lowell 179 (45), unova_backpacker_myra 179 (45), unova_hiker_justin 179 (45), unova_pkmn_breeder_addison 179 (45)
+=== unova_route_23
+Route 23, Unova
+grass 180-182 (own 47-51)
+surf 177-183 (own 40-55)
+super rod 177-194 (own 40-70)
+trainers 12, 182-183 (own 51-54): unova_ace_trainer_grant 183 (53), unova_ace_trainer_juliet 183 (53), unova_ace_trainer_miki 183 (54), unova_ace_trainer_tom 183 (54), unova_battle_girl_brenda 183 (53), unova_battle_girl_tiffany 183 (53), unova_black_belt_benjamin 183 (53), unova_black_belt_luke 183 (53), unova_hiker_don 182 (51), unova_hiker_doug 183 (53), unova_pkmn_ranger_lena 183 (53), unova_pkmn_ranger_steve 182 (52)
+=== unova_route_4
+Route 4, Unova
+grass 167-168 (own 14-17)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+trainers 11, 168-170 (own 16-22): unova_biker_stanley 170 (21), unova_fisherman_andrew 168 (16), unova_fisherman_hubert 168 (17), unova_hooligans_rob_sal 170 (21), unova_pkmn_breeder_irene 168 (16), unova_policeman_braven 168 (16), unova_policeman_dell 170 (21), unova_policeman_neagle 170 (22), unova_roughneck_joey 170 (21), unova_roughneck_silvester 170 (22), unova_youngster_sinclair 170 (22)
+=== unova_route_5
+Route 5, Unova
+grass 170-171 (own 21-24)
+trainers 6, 171 (own 24-25): unova_artist_horton 171 (25), unova_backers_ava_aya 171 (24), unova_baker_jenn 171 (24), unova_dancer_brian 171 (25), unova_musician_preston 171 (25), unova_pkmn_ranger_lois 171 (25)
+=== unova_route_6
+Route 6, Unova
+grass 170-172 (own 23-26)
+surf 165-171 (own 10-25)
+super rod 177-194 (own 40-70)
+trainers 8, 172 (own 27-28): unova_parasol_lady_nicole 172 (28), unova_parasol_lady_tihana 172 (28), unova_pkmn_breeder_april 172 (27), unova_pkmn_ranger_richard 172 (28), unova_school_kid_alvin 172 (27), unova_school_kid_mara 172 (27), unova_scientist_jacques 172 (28), unova_scientist_marissa 172 (27)
+=== unova_route_7
+Route 7, Unova
+grass 173-175 (own 30-33)
+trainers 9, 175 (own 33-35): unova_harlequin_ian 175 (35), unova_harlequin_pat 175 (35), unova_lass_flo 175 (33), unova_nursery_aide_hollie 175 (34), unova_pkmn_breeder_marcus 175 (34), unova_preschooler_chrissy 175 (34), unova_preschooler_greg 175 (34), unova_twins_sola_ana 175 (33), unova_youngster_cody 175 (33)
+=== unova_route_9
+Route 9, Unova
+grass 176-177 (own 37-40)
+trainers 5, 178-179 (own 42-43): unova_biker_phillip 179 (43), unova_biker_zeke 179 (43), unova_hooligans_jim_cas 178 (42), unova_roughneck_chance 179 (43), unova_roughneck_reese 179 (43)
+=== unova_victory_road_16
+Victory Road, Unova
+grass 180-181 (own 47-50)
+=== unova_victory_road_17
+Victory Road, Unova
+grass 180-181 (own 47-50)
+surf 175-181 (own 35-50)
+super rod 177-183 (own 40-55)
+trainers 6, 183 (own 54-55): unova_ace_trainer_billy 183 (55), unova_ace_trainer_jamie 183 (55), unova_psychic_al 183 (54), unova_psychic_alia 183 (54), unova_veteran_cecile 183 (55), unova_veteran_claude 183 (55)
+=== unova_victory_road_18
+Victory Road, Unova
+grass 180-181 (own 47-50)
+trainers 1, 183 (own 55): unova_ace_trainer_chandra 183 (55)
+=== unova_victory_road_19
+Victory Road, Unova
+grass 180-181 (own 47-50)
+surf 175-181 (own 35-50)
+super rod 177-194 (own 40-70)
+trainers 6, 183 (own 54-55): unova_ace_trainer_beckett 183 (55), unova_ace_trainer_pierce 183 (55), unova_ace_trainer_shelly 183 (55), unova_backpacker_mae 183 (54), unova_doctor_logan 183 (54), unova_veteran_cathy 183 (55)
+=== unova_victory_road_20
+Victory Road, Unova
+grass 178-179 (own 41-44)
+trainers 5, 183 (own 54-55): unova_ace_trainer_shanta 183 (55), unova_ace_trainer_webster 183 (55), unova_pkmn_ranger_eddie 183 (54), unova_pkmn_ranger_elle 183 (54), unova_veteran_abraham 183 (55)
+=== unova_victory_road_21
+Victory Road, Unova
+grass 180-181 (own 47-50)
+surf 175-181 (own 35-50)
+super rod 177-194 (own 40-70)
+=== unova_victory_road_22
+Victory Road, Unova
+grass 180-181 (own 47-50)
+trainers 6, 183 (own 54-55): unova_ace_trainer_caroll 183 (55), unova_ace_trainer_elmer 183 (55), unova_battle_girl_chalina 183 (54), unova_black_belt_martell 183 (54), unova_veteran_portia 183 (54), unova_veteran_sterling 183 (54)
+=== unova_victory_road_23
+Victory Road, Unova
+grass 180-181 (own 47-50)
+trainers 1, 183 (own 54): unova_veteran_hugo 183 (54)
+=== vermilion_city
+Vermilion City, Kanto
+surf 64-88 (own 5-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== vermilion_city_gym
+Vermilion City, Kanto
+trainers 3, 75-76 (own 21-23): kanto_engineer_baily 75 (21), kanto_gentleman_tucker 76 (23), kanto_sailor_dwayne 75 (21)
+=== village_bridge
+Village Bridge, Unova
+grass 176-177 (own 36-39)
+surf 171-177 (own 25-40)
+super rod 177-194 (own 40-70)
+trainers 7, 178-179 (own 42-44): unova_artist_gough 178 (42), unova_fisherman_dean 178 (42), unova_hoopster_derrick 178 (42), unova_hoopster_nicolas 178 (42), unova_smasher_amy 179 (44), unova_smasher_lizzy 179 (44), unova_youngster_karl 178 (42)
+=== violet
+Violet City, Johto
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== violet_gym
+Violet City, Johto
+trainers 2, 107-109 (own 7-9): johto_bird_keeper_gs_abe 109 (9), johto_bird_keeper_gs_rod 107 (7)
+=== virbank_city
+Virbank City, Unova
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+=== virbank_city_gym_2
+Virbank City, Unova
+trainers 2, 167 (own 14): unova_guitarist_billy_jo 167 (14), unova_roughneck_nicky 167 (14)
+=== virbank_complex
+Virbank Complex, Unova
+grass 165-166 (own 10-13)
+surf 163-167 (own 5-15)
+super rod 177-194 (own 40-70)
+=== virbank_complex_2
+Virbank Complex, Unova
+grass 165-166 (own 10-13)
+trainers 6, 166 (own 12-13): unova_lass_daya 166 (13), unova_worker_isaac 166 (12), unova_worker_mitchell 166 (12), unova_worker_nathan 166 (12), unova_youngster_masahiro 166 (13), unova_youngster_waylon 166 (13)
+=== viridian_city
+Viridian City, Kanto
+surf 74-88 (own 20-40)
+old rod 64 (own 5)
+good rod 64-71 (own 5-15)
+super rod 71-85 (own 15-35)
+=== viridian_city_gym
+Viridian City, Kanto
+trainers 8, 86-90 (own 37-43): kanto_black_belt_atsushi 88 (40), kanto_black_belt_kiyo 90 (43), kanto_black_belt_takashi 87 (38), kanto_cooltrainer_samuel 87 (39), kanto_cooltrainer_warren 87 (39), kanto_cooltrainer_yuji 87 (38), kanto_tamer_cole 87 (39), kanto_tamer_jason 90 (43)
+=== viridian_forest
+Viridian Forest, Kanto
+grass 63-65 (own 3-6)
+trainers 5, 65-67 (own 6-9): kanto_bug_catcher_anthony 66 (8), kanto_bug_catcher_charlie 65 (7), kanto_bug_catcher_doug 65 (7), kanto_bug_catcher_rick 65 (6), kanto_bug_catcher_sammy 67 (9)
+=== whirl_islands_1f
+Whirl Islands, Johto
+grass 117-119 (own 22-24)
+surf 109-119 (own 10-25)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)
+=== whirl_islands_b1f
+Whirl Islands, Johto
+grass 117-119 (own 22-24)
+=== whirl_islands_b2f
+Whirl Islands, Johto
+grass 117-119 (own 22-24)
+surf 113-123 (own 15-30)
+old rod 109 (own 10)
+good rod 116 (own 20)
+super rod 129 (own 40)

@@ -203,3 +203,16 @@ Design A is W4b-1 and W4b-2 alone. Design B is W4b-1 with its own pairs, then a 
 8. **A later region's starter and gifts.** *Recommended:* given at the mapped level and evolving over their first level-ups, as today; the alternative is to give the stage the level allows.
 9. **Coming back to a region by a harbour.** *Recommended:* its levels stay as they were met (as Gold and Silver's Kanto), but its League's rematch and its Vs. Seeker or phone rematches take the levels of the furthest region whose Hall of Fame is entered, mapped by that region's post-game pair.
 10. **A game begun outside Sinnoh** (`--region`, a development switch). *Recommended: leave it*: every game the title starts begins in Sinnoh.
+
+## 7. Status
+
+Approved by the user on 2026-10-26 (design C; [APPROVAL-levelling-and-our-species.md](APPROVAL-levelling-and-our-species.md)).
+
+- [x] **W4b-1, the ladder's data** (wave 64). Every number checked again by a script against the data at `48df8ff0`.
+  - Each later region file's `levels` has its post-game pair, the region's strongest trainer met at `min(1.15 × Champion, next Champion − 2, 260)` (rounded to the nearest): Kanto `[75, 120]` (the Champion's rematch; 119.6), Johto `[88, 156]` (Red; 156.4), Hoenn `[78, 183]` (Steven; 186.3 against Unova's 185 − 2), Unova `[80, 203]` (Benga and the last Boss Trainers; 212.75 against Kalos's 205 − 2, the study's Champion until plan 23).
+  - Every region file has `caps` (`RegionFile.Caps`), its own game's levels by Badges held: Sinnoh's table moved out of `LevelCaps` into `sinnoh.json` unchanged; Kanto `[14,21,24,29,43,43,47,50,63]`, Johto `[13,17,19,25,31,34,35,41,50]`, Hoenn `[15,19,24,29,31,33,42,46,58]`, Unova `[13,18,24,30,33,39,48,51,59]`. *Decided*: a table is the Leaders' best **in rising order**, then the Champion's, since Johto's Chuck (31), Jasmine (35) and Pryce (34) need not come in one order; the section 4 numbers were already so.
+  - `LevelCaps.TableOf(region, crossed)` reads the file and maps it by `levels` in a crossed region (Kanto 70 75 77 81 90 90 93 95 104, Johto 111 114 115 119 123 125 126 130 136, Hoenn 142 144 146 149 149 150 155 156 162, Unova 166 168 171 173 175 177 181 182 185, section 3's table); `LevelCaps.For(..., crossed)` and `GameEngine.CurrentLevelCap` pass it, so V3's capped runs are capped in every built region now. W4b-3's ceiling is these tables with its margin.
+  - `levels-crossed.txt` (`GoldenLevelTests.TheLevelsOfEveryCrossedPlaceAreWhatTheyWere`): a block per crossed region (pairs, caps met and own, its trainers that stand on no map), then every place of those regions, each level as met with its own in brackets. `levels.txt` does not move.
+  - `LevelLadderTests`: the pairs rise on both sides, each first route at or above the Champion before it less 5, each post-game pair its rule and the file's strongest trainer and under the next Champion, each cap table its trainers' files', the mapped tables, a capped run held at the mapped cap.
+- [ ] W4b-2, stages (with D15-A).
+- [ ] W4b-3, a crossed region's EXP.
