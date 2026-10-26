@@ -135,6 +135,10 @@ public partial class GameEngine
             case "arcadeboard":
                 OpenArcadeBoard();
                 return 0;
+            case "tournamentfoe":
+                // The World Tournament's opponent of the round walks on in their own look (plan 14 · B11)
+                StandTournamentOpponent();
+                return 1;
             default:
                 return 0;
         }
@@ -171,7 +175,7 @@ public partial class GameEngine
             .Select(t => CharacterStyles.Default.InBattle(t.TrainerClass, PlayerIdentity.CharacterFor(t.Look ?? "Trainer"))));
         eyeThemePlaying = false;
         if (wild.Count > 0) AudioManager.PlayWildBattleMusic(wild[0].Species);
-        else AudioManager.PlayMusic(MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
+        else AudioManager.PlayMusic(conditions?.Tournament == true ? MusicRole.BattleTournament : MusicDirector.BattleRole(trainers.Select(t => t.TrainerClass)), immediate: true);
         var shown = PrepareModels(trainers.SelectMany(t => t.Party.Members).Concat(wild).Concat(beside?.Party.Members ?? Enumerable.Empty<Pokemon>()).Concat(team.Members));
         // BATTLE_TYPE_FRONTIER: the Frontier's own way in, a Brain's even in a double, and the double's for anyone else's (plan 09 · L13)
         var meeting = new BattleMeeting
@@ -216,7 +220,9 @@ public partial class GameEngine
                 Scene = Settings.BattleScene,
                 // The annex's Battle Palace and Battle Arena (plan 14 · B9)
                 Palace = conditions?.Palace ?? false,
-                TurnLimit = conditions?.TurnLimit ?? 0
+                TurnLimit = conditions?.TurnLimit ?? 0,
+                // The World Tournament's own victory (plan 14 · B11)
+                VictoryMusic = conditions?.Tournament == true ? MusicRole.VictoryTournament : null
             });
             battleRenderer.SetArena(flow.Map, flow.Player.GridX, flow.Player.GridY);
             flow.BattleTrainers.Clear();

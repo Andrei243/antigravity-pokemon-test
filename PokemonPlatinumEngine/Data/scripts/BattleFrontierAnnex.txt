@@ -238,3 +238,52 @@ label PyramidRules
   say "Each floor is dark. Every battle you win lets you see a little farther. Flash is no help in here."
   say "Find the stairs on seven floors to win the round. If all three of yours faint, the round is over."
   end
+
+
+# The World Tournament's desk (plan 14 · B11): an event chosen, three entered at Level 50, and a bracket of eight in the
+# hall (Models/Tournament.cs; the tournament itself is WorldTournamentHall.txt's arrival script)
+script TournamentDesk
+  face self player
+  speaker "Receptionist"
+  say "Welcome to the Pokémon World Tournament! Leaders and Champions battle here, and every Pokémon fights at Level 50."
+  tournament titles
+  if result == 0 goto TournamentAsk
+  say "Titles you've won here so far: {number}. The crowd knows your name!"
+label TournamentAsk
+  choose "Would you like to enter a tournament?" "Enter" "The rules" "No"
+  if result == 1 goto TournamentRules
+  if result == 2 goto TournamentLater
+  tournament enough
+  if result == 1 goto TournamentEvents
+  say "You need three Pokémon that can take part, all of different species and holding different items."
+  say "An Egg can't take part, and nor can {banned}."
+  end
+label TournamentEvents
+  say "Which event would you like to enter?"
+  tournament events
+  if result == 0 goto TournamentLater
+  say "Please choose the three Pokémon you'll enter."
+  tournament choose
+  if result == 0 goto TournamentLater
+  tournament check
+  if result == 1 goto TournamentSameSpecies
+  if result == 2 goto TournamentSameItem
+  tournament begin
+  say "Thank you! The bracket has been drawn. This way to the hall, please!"
+  fade out 0.6
+  warp "WorldTournamentHall" 8 10 up
+  fade in
+  end
+label TournamentSameSpecies
+  say "I'm sorry. The three entered must all be of different species."
+  goto TournamentLater
+label TournamentSameItem
+  say "I'm sorry. No two of the three entered may hold the same item."
+label TournamentLater
+  say "Please come again. The Leaders are always ready for another tournament."
+  end
+label TournamentRules
+  say "Every Pokémon battles at Level 50 here, raised or lowered to it. Nothing that happens here changes yours."
+  say "Eight Trainers enter, and you meet one in each round: three of your Pokémon against three of theirs."
+  say "Win three matches and the title is yours. Lose one, and the tournament is over for you."
+  end

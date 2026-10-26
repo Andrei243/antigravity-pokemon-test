@@ -64,7 +64,9 @@ public enum MusicRole
     FanfareEvolution,
     FanfareBadge,
     FanfareTM,
-    FanfareKeyItem
+    FanfareKeyItem,
+    /// <summary>The World Tournament's hall, its battles and its wins (plan 14 · B11; songs of our own in <c>common/tournament</c>).</summary>
+    Tournament, BattleTournament, VictoryTournament
 }
 
 /// <summary>
@@ -157,6 +159,9 @@ public static class MusicDirector
         MusicRole.FanfareBadge => "fanfare_badge",
         MusicRole.FanfareTM => "fanfare_tm",
         MusicRole.FanfareKeyItem => "fanfare_keyitem",
+        MusicRole.Tournament => "tournament/hall",
+        MusicRole.BattleTournament => "tournament/battle",
+        MusicRole.VictoryTournament => "tournament/victory",
         _ => throw new ArgumentOutOfRangeException(nameof(role))
     };
 
@@ -182,6 +187,8 @@ public static class MusicDirector
         MusicRole.VictoryChampion => MusicRole.VictoryEliteFour,
         MusicRole.FanfareEvolution => MusicRole.FanfarePokemon,
         MusicRole.FanfareBadge or MusicRole.FanfareTM or MusicRole.FanfareKeyItem => MusicRole.FanfareItem,
+        MusicRole.BattleTournament => MusicRole.BattleGymLeader,
+        MusicRole.VictoryTournament => MusicRole.VictoryGymLeader,
         _ => null
     };
 

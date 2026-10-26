@@ -111,7 +111,9 @@ public enum GameState
     /// <summary>The Battle Dome's bracket, a script's <c>bracket show</c> or <c>bracket pick</c> waiting on it (plan 14 · B8).</summary>
     Bracket,
     /// <summary>The first start's page of options, before the title's notice on the first run only (plan 16 · T24).</summary>
-    FirstStart
+    FirstStart,
+    /// <summary>The World Tournament's events or bracket, a script's <c>tournament events</c> or <c>tournament show</c> waiting on it (plan 14 · B11).</summary>
+    Tournament
 }
 
 public partial class GameEngine
@@ -1379,6 +1381,9 @@ public partial class GameEngine
                 break;
             case GameState.Bracket:
                 UpdateBracket(dt);
+                break;
+            case GameState.Tournament:
+                UpdateTournament(dt);
                 break;
             case GameState.FirstStart:
                 UpdateFirstStart(dt);
@@ -2785,6 +2790,9 @@ public partial class GameEngine
                 break;
             case GameState.Bracket:
                 flow.BracketScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Tournament:
+                flow.TournamentScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.FirstStart:
                 flow.FirstStartScreen.Draw(VirtualWidth, VirtualHeight, Settings);

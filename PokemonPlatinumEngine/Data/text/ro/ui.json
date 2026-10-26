@@ -4375,6 +4375,29 @@
     "chooseTwo": "DOI INTRĂ ÎN LUPTĂ",
     "battle": "LUPTĂ"
   },
+  "tournamentScreen": {
+    "title": "TURNEUL MONDIAL",
+    "event": { "sinnohLeaders": "LIDERII DIN SINNOH", "sinnohChampion": "PROBA CAMPIONEI" },
+    "note": {
+      "sinnohLeaders": "Cei opt Lideri de Sală din Sinnoh. Șapte dintre ei te înfruntă într-un tablou de opt.",
+      "sinnohChampion": "Cynthia și Elita celor Patru, cu doi Lideri de Sală trași la sorți ca să fie șapte."
+    },
+    "titles": "Titluri câștigate: {count}",
+    "points": "{points} PL",
+    "after": "Se deschide după ce câștigi titlul {event}.",
+    "locked": "ÎNCHIS",
+    "round": { "0": "SFERTURI", "1": "SEMIFINALE", "2": "FINALA" },
+    "over": "TURNEUL S-A ÎNCHEIAT",
+    "you": "Tu",
+    "next": "URMĂTORUL",
+    "champion": "CAMPION",
+    "outIn": "ELIMINAT ÎN {round}",
+    "prompt": {
+      "events": "Alege o probă la care să participi.",
+      "locked": "Proba aceasta nu ți-e încă deschisă.",
+      "look": "Tabloul turneului. Uită-te la fișa oricărui Antrenor."
+    }
+  },
   "venueScreen": {
     "closed": "ALEGE DUPĂ FIRE",
     "closedNote": "Aici Pokémonul tău își alege singur atacurile.",

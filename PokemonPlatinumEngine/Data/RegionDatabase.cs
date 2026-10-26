@@ -358,6 +358,8 @@ public static class RegionDatabase
                 "BattlePalace", "BattleArena",
                 // Plan 14 · B10: the Battle Pike's hall of doors and its room, and the Battle Pyramid's floor (maps of ours)
                 "BattlePike", "BattlePikeRoom", "BattlePyramidFloor",
+                // Plan 14 · B11: the World Tournament's hall in the annex (a map of ours)
+                "WorldTournamentHall",
             }
         },
         new()

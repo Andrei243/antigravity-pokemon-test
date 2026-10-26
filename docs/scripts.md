@@ -895,6 +895,27 @@ stairs). Both live as the host's `Pike` and `Pyramid` and are not saved.
 
 A place's own `HiddenItem` script stands in for the common one when something hidden there is found (the Pyramid's finds).
 
+### The World Tournament
+
+Plan 14 · B11; `docs/mechanics/rulings.md`, "The World Tournament". Black 2's Pokémon World Tournament in the Battle
+Frontier's annex (`Models/Tournament.cs` over `Models/Frontier/Bracket.cs`, the events in `Data/tournaments.json`): an event
+chosen at the desk (`BattleFrontierAnnex.txt`, `TournamentDesk`), three Pokémon entered under the species and item clauses and
+copied at exactly level 50, up or down (`Battle/Sim/LevelScaling.cs`), seven of the event's trainers seated with the player in a
+bracket of eight, matches of three against three, and the other matches of a round fought headless by the battle's core. The
+tournament lives between the desk and the hall (`WorldTournamentHall.txt`, whose arrival script loops round by round) as the
+host's `Tournament`; nothing of it is saved but the record (`FrontierRecords.Tournament`) and the Battle Points.
+
+| Command | What it does |
+|---|---|
+| `tournament events` | Opens the events (the screen `Tournament`, the counter `events`) and waits: `RESULT` the event chosen counted from 1 (Sinnoh's Leaders 1, the Champion's event 2), or 0 when backed out of or not open yet. |
+| `tournament enough`, `tournament choose`, `tournament check` | As `bracket`'s: three that could go in together; the three chosen on the team's screen (`RESULT` 1, or 0); the clauses (0, 1 two of one species, 2 two holding one item). |
+| `tournament begin`, `tournament titles` | Seats the event's eight and draws the bracket with the three chosen; every title won (`RESULT` and `{number}`). |
+| `tournament active`, `tournament round` | `RESULT` 1 while a tournament is under way; the round to come, 0 to 2 (2 the final), `{number}` 1 to 3. |
+| `tournament show`, `tournament opponent` | Opens the bracket to be looked at (the counter `bracket`) and waits; stands the round's opponent in the room as `opponent` in their own look, `{foe}` naming them. |
+| `tournament battle` | The match: the three at level 50 against the opponent's three at level 50, the tournament's own songs, nothing paid or gained (`RESULT` 1 won, 0 lost). |
+| `tournament won`, `tournament lost` | Decides the player's match and fights every other match of the round headless; `won` is `RESULT` 1 when that was the final. |
+| `tournament finish won`, `tournament finish lost`, `tournament points`, `tournament end` | Writes the record (a title for a win); hands over the event's Battle Points for a title (`RESULT` and `{number}`); lets go of the tournament. |
+
 ### Amity Square's walk
 
 Plan 06 · R16c; `docs/mechanics/rulings.md`, "Amity Square's walk". The rules are `Overworld/AmitySquare.cs`, and what

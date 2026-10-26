@@ -1625,6 +1625,15 @@ Plan 14 · B8 (`BracketScreen`, `ModernUi.DrawBracket`); plan 14 · B11's World 
 - **A card** is a panel 920 by 620 over the tree dimmed: the trainer's class and name in Black 42, how far they have come in the label's style (the round they stand in, OUT IN THE round, or CHAMPION), and their three, each a card 116 tall: the menu icon on its disc, the name and gender in 34, the level at 50 in muted Black 24 and the type pills.
 - **The pick** is two panels side by side over the tree dimmed: at the left the opponent's card (THEIR THREE), at the right the player's three (YOUR THREE, TWO GO INTO BATTLE) as the same cards, a chosen one with a green border and a green SENT IN tag; under them BATTLE, a red pill 300 by 80, muted until two are chosen, with a white border under the cursor.
 
+#### The World Tournament
+
+Plan 14 · B11 (`TournamentScreen`, `ModernUi.DrawTournament`): the bracket's look, at eight.
+
+- **The hall** (`WorldTournamentHall`) is the Dome's hall laid out again, ours: a game hall's room seventeen tiles by fifteen, the stage a rug seven tiles square, the challenger at its south edge and the opponent walking down onto its north, the announcer west of it and the crowd along the walls. The desk is the annex lobby's, its receptionist at the east wall's foot beside the Pyramid's.
+- **The events** are one screen in the menus' look, titled WORLD TOURNAMENT: a card for each event 196 tall on a pitch of 224, as wide as the content less 400, at its middle, with the event's name in Black 40, what it is in muted ExtraBold 26 and the titles won in Black 24; the Battle Points a title earns on a gold tag at its top right. The cursor is the selection's border with a gold one. **A locked event** is washed out, its name muted, with a muted LOCKED tag and the event whose title opens it in its last line; A on it is the error sound. The foot panel 96 tall says what is asked in ExtraBold 34.
+- **The tree** is the bracket's with four seats down each side, each a card 380 by 96 on a row of 168 from 90 under the content's top (the name in Black 34, the class in muted Black 20), three steps across each half to the final's panel (280 by 100) in the middle; the event's name in muted Black 26 over the round's (QUARTERFINALS, SEMIFINALS, FINAL) in white Black 34. Lines, borders, the NEXT tag, an entrant out washed and the champion's frame are the bracket's.
+- **A card** is the bracket's card: the trainer's class and name, how far they have come, and their three at level 50.
+
 ### The Pokéathlon
 
 Plan 15 · E6 (`AthlonScreen`, `ModernUi.DrawAthlon`). Our own throughout: nothing of HeartGold's dome, events or

@@ -26,6 +26,12 @@ partial class Harness
             VenuesPikePyramid(fresh: true);
             return;
         }
+        // B11's World Tournament alone (Modes/VenuesTournament.cs)
+        if (Environment.GetEnvironmentVariable("VENUES_FROM") == "tournament")
+        {
+            VenuesTournament(fresh: true);
+            return;
+        }
         engine.StartNewGame();
         PastTheOpening();
         game.State = GameState.Overworld;
@@ -277,5 +283,7 @@ partial class Harness
         VenuesPalaceArena(fresh: false);
         // ---- B10: the Battle Pike and the Battle Pyramid, from the same lobby
         VenuesPikePyramid(fresh: false);
+        // ---- B11: the World Tournament, from the same lobby
+        VenuesTournament(fresh: false);
     }
 }

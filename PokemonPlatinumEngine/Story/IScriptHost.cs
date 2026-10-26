@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase, NameRival, Crossing, BugContestResults, Athlon, Apricorns, ContestPainting, Bracket, Tournament }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -750,6 +750,13 @@ public interface IScriptHost
     /// <summary>The round of the Battle Pike and of the Battle Pyramid under way (plan 14 · B10); null while none is. A script's <c>pike</c> and <c>pyramid</c> play them.</summary>
     Models.Frontier.BattlePikeChallenge? Pike { get; set; }
     Models.Frontier.BattlePyramidChallenge? Pyramid { get; set; }
+
+    /// <summary>
+    /// The World Tournament under way (plan 14 · B11); null while none is. A script's <c>tournament</c> plays it, and its
+    /// screen is <see cref="ScriptScreen.Tournament"/>: the counter <c>events</c> for an event to be chosen (<see cref="Answer"/>
+    /// the event counted from 1, 0 when backed out of), <c>bracket</c> for the bracket to be looked at.
+    /// </summary>
+    Models.Tournament? Tournament { get; set; }
 
     /// <summary>
     /// A Pokémon of the team is out of its ball and walks behind the player as a thing of the map (plan 06 · R16c:

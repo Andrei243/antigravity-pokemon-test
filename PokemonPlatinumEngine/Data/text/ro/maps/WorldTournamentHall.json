@@ -1,0 +1,121 @@
+{
+  "displayName": {
+    "en": [
+      "World Tournament"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "announcer": {
+      "name": {
+        "en": [
+          "Announcer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No tournament is under way. The World Tournament's desk is in the annex's lobby."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "opponent": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_1": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Gym Leaders from all over Sinnoh, at Level 50! Anyone could win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_2": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three against three, and every Pokémon at the same level. Pure skill!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_3": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all the way from Hearthome to see Fantina battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "spectator_4": {
+      "name": {
+        "en": [
+          "Spectator"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Eight Trainers, three rounds. Only one of them leaves with the title."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

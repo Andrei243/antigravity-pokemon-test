@@ -688,6 +688,22 @@ public class ScriptTests
           pyramid streak
           pyramid best
           pyramid end
+          tournament events
+          tournament enough
+          tournament choose
+          tournament check
+          tournament begin
+          tournament titles
+          tournament active
+          tournament round
+          tournament show
+          tournament opponent
+          tournament battle
+          tournament won
+          tournament lost
+          tournament finish won
+          tournament points
+          tournament end
         script Other
           end
         """;
@@ -1713,6 +1729,7 @@ public class ScriptTests
         public PokemonPlatinumEngine.Models.Frontier.BattleVenueChallenge? Venue { get => inner.Venue; set => inner.Venue = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePikeChallenge? Pike { get => inner.Pike; set => inner.Pike = value; }
         public PokemonPlatinumEngine.Models.Frontier.BattlePyramidChallenge? Pyramid { get => inner.Pyramid; set => inner.Pyramid = value; }
+        public PokemonPlatinumEngine.Models.Tournament? Tournament { get => inner.Tournament; set => inner.Tournament = value; }
         public void WalkWith(NPC? body, Pokemon? pokemon) => inner.WalkWith(body, pokemon);
         public int FrontierAct(string what, int number, NPC? subject) => inner.FrontierAct(what, number, subject);
         public IReadOnlyList<int> Entered => inner.Entered;

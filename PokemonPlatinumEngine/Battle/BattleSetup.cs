@@ -272,6 +272,9 @@ public sealed class BattleSetup
     /// <summary>A battle of the Battle Arena (plan 14 · B9; <see cref="Sim.CoreSetup.TurnLimit"/>): the turns a bout runs before it is judged, 0 for none.</summary>
     public int TurnLimit { get; init; }
 
+    /// <summary>The victory's song in place of the one the trainers' classes bring (plan 14 · B11: the World Tournament's own); null for theirs.</summary>
+    public Audio.MusicRole? VictoryMusic { get; init; }
+
     /// <summary>The trainer's first Pokémon when it isn't the first in their party (the old constructor's foe argument).</summary>
     internal Pokemon? FirstTrainerPokemon { get; init; }
 }

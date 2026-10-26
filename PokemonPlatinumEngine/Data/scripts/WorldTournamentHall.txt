@@ -1,0 +1,68 @@
+# The World Tournament's hall (plan 14 · B11), in the Battle Frontier's annex. docs/scripts.md describes the language; the
+# lines are our own, on the beats of Black 2's Pokémon World Tournament: the bracket shown before each round, the
+# opponent walking onto the stage, a battle of three against three at Level 50, the other matches of the round fought
+# while the player waits, and the bracket again at the end.
+#
+# A whole tournament is this one arrival script, which loops round by round (Models/Tournament.cs; `tournament`). The
+# tournament lives between the desk and the hall as the host's Tournament, so a game closed in the middle of one finds no
+# tournament here: the script does nothing. Nothing of a tournament is saved but the record and the Battle Points.
+
+
+script OnEnter
+  tournament active
+  if result == 0 end
+  clearflag FLAG_WORLD_TOURNAMENT_SHOW_OPPONENT
+  hide opponent
+  place player 8 10 up
+label Round
+  tournament round
+  speaker "Announcer"
+  if result == 2 goto TheFinal
+  say "Round {number} of the World Tournament! Let's look at the bracket."
+  goto Bracket
+label TheFinal
+  say "The final! Only two Trainers are left standing. Let's look at the bracket."
+label Bracket
+  tournament show
+  tournament opponent
+  place opponent 8 3 down
+  setflag FLAG_WORLD_TOURNAMENT_SHOW_OPPONENT
+  show opponent
+  walk opponent down 2
+  text "{foe} steps onto the stage!"
+  tournament battle
+  if result == 0 goto Lost
+  call Leaves
+  tournament won
+  if result == 1 goto Champion
+  speaker "Announcer"
+  say "What a match! The rest of the round is over too. On to the next!"
+  goto Round
+label Champion
+  speaker "Announcer"
+  say "And there it is! {player} takes the title of the World Tournament!"
+  tournament show
+  tournament finish won
+  tournament points
+  text "{player} received {number} BP!"
+  fanfare item
+  goto Home
+label Lost
+  call Leaves
+  tournament lost
+  tournament finish lost
+  speaker "Announcer"
+  say "Defeated! {player}'s tournament ends here. A fine showing all the same!"
+label Home
+  tournament end
+  fade out 0.6
+  warp "BattleFrontierAnnex" 12 8 left
+  fade in
+  end
+
+
+# The opponent goes off the stage again
+script Leaves
+  clearflag FLAG_WORLD_TOURNAMENT_SHOW_OPPONENT
+  hide opponent
+  return

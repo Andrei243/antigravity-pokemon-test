@@ -156,6 +156,15 @@
       "y": 7,
       "facing": "Left",
       "script": "PyramidDesk"
+    },
+    {
+      "id": "tournament_receptionist",
+      "name": "Receptionist",
+      "npcType": "Lady",
+      "x": 13,
+      "y": 8,
+      "facing": "Left",
+      "script": "TournamentDesk"
     }
   ],
   "wildEncounters": []

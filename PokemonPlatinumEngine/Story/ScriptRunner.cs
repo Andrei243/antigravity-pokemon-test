@@ -393,6 +393,8 @@ public sealed partial class ScriptRunner
         Op.Venue => true,
         // And the Battle Pike and the Battle Pyramid (plan 14 · B10)
         Op.Pike or Op.Pyramid => true,
+        // And the World Tournament (plan 14 · B11)
+        Op.Tournament => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1298,6 +1300,10 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Pyramid:
                 PyramidRound(i);
+                break;
+            // The World Tournament (plan 14 · B11)
+            case Op.Tournament:
+                WorldTournament(i);
                 break;
 
             // Amity Square's walk (plan 06 · R16c)

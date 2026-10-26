@@ -173,6 +173,9 @@ public sealed class FrontierRecords
     public VenueRecord Pike { get; set; } = new();
     public VenueRecord Pyramid { get; set; } = new();
 
+    /// <summary>The World Tournament's (plan 14 · B11, in the annex): the titles won by event, the tournaments entered and the matches won.</summary>
+    public TournamentRecord Tournament { get; set; } = new();
+
     // ------------------------------------------------------------------ the numbers
 
     /// <summary><c>BattleFrontierSave_GetStat</c>.</summary>
