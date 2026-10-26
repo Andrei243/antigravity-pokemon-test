@@ -1840,6 +1840,13 @@
       "When it rises in this form the clouds part and the sun beats down hard. The ground it crosses smoulders for days, and nothing grows there until the rains return."
     ]
   },
+  "Typhlosion-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "The flames on its back roar as high as a watchtower, and a crown of lava rock rings its neck. Where it steps, the ground glows orange and cracks.",
+      "Heat shimmers over the whole valley when it stands up straight. Travelers say its breath alone can bake clay into bricks in a single afternoon."
+    ]
+  },
   "Typhlosion-Hisui": {
     "habitat": "Grassland",
     "entries": [
@@ -4164,6 +4171,13 @@
       "Its shell hardens to bedrock, and even blows that should break it only chip the stone. Birds nest in the grove on its back and never seem to notice it moving."
     ]
   },
+  "Torterra-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "A whole grove has grown on its shell, with pale blossoms in the high branches and a spiral of stone along the rim. Birds nest there for years without leaving.",
+      "Its slow steps shake the hillside. Crystal blooms along its spine hum softly when storm clouds gather over the roots of the little forest it carries."
+    ]
+  },
   "Chimchar": {
     "habitat": "Mountain",
     "entries": [
@@ -4192,6 +4206,13 @@
       "Its gold markings grow into plates of armour on its shoulders and knees. It throws punches so fast that the air around its fists is left trembling with heat."
     ]
   },
+  "Infernape-Mega-Mmax": {
+    "habitat": "Mountain",
+    "entries": [
+      "It leaps from ridge to ridge wrapped in a mane of fire as tall as a tree. The glowing bands on its wrists trail sparks like shooting stars.",
+      "No cliff is too steep for it. When it beats its chest, red clouds crowd above the peaks, and the air around the mountain smells of scorched stone."
+    ]
+  },
   "Piplup": {
     "habitat": "WatersEdge",
     "entries": [
@@ -4218,6 +4239,13 @@
     "entries": [
       "Its crest rises into a tall crown of three gold-edged prongs, and a cape of navy plumage falls from its shoulders to the ground. It carries itself like a ruler at court.",
       "The blades of its flippers turn to steel and grow longer. Any attempt to weaken it only stirs its pride, and its counterattack comes back far stronger than before."
+    ]
+  },
+  "Empoleon-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "Its crown of ice blades spreads wide as a ship's sails, and frost forms on the water wherever it wades. Sailors steer around the glittering wake.",
+      "Steel plates cover its flippers like the hull of a warship. Violet storm light flickers deep inside its cold, calm eyes."
     ]
   },
   "Starly": {
@@ -5305,6 +5333,13 @@
       "The harder it is pushed back, the stronger it grows. It is said that every blow an opponent lands only makes this Pokémon look down on them more coldly."
     ]
   },
+  "Serperior-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "It coils into a living hill of green and gold, and its crest unfurls like the leaves of a great tree. The coils are so long that no one has seen both ends.",
+      "Calm weather follows it everywhere. Dragon scales along its back flash like polished jade whenever it lifts its head above the grass."
+    ]
+  },
   "Tepig": {
     "habitat": "Grassland",
     "entries": [
@@ -5366,6 +5401,13 @@
     "entries": [
       "Its helmet grows into a full war helm with a tall crescent crest, and plates of shell armour cover its shoulders and flanks. Its whiskers hang longer than before.",
       "Both blades on its forelegs are half drawn and longer than its legs. A single stroke can split a boulder cleanly in two, and the cut faces are smooth as glass."
+    ]
+  },
+  "Samurott-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its sea-shell blades have grown into broad armoured wings, and steel plating wraps its shoulders. Waves part before it, and the spray falls as cold rain.",
+      "It stands guard on the shore like a castle wall. The moonlit edges of its blades are sharp enough to slice through the crest of a breaker."
     ]
   },
   "Samurott-Hisui": {
@@ -8049,6 +8091,13 @@
       "It holds a bow of vine across its chest. Its arrows slip past walls, screens and shields alike, and the target rarely knows where the shot came from."
     ]
   },
+  "Decidueye-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "Its feathers have stiffened into dark green blades, and a hood of leaves hangs over a gleaming ghostly arrow. It watches from the highest branch without a sound.",
+      "Fog rolls in beneath its perch each evening. Anything that wanders under the tree feels a pair of pale eyes follow it all the way home."
+    ]
+  },
   "Decidueye-Hisui": {
     "habitat": "Forest",
     "entries": [
@@ -8084,6 +8133,13 @@
       "A single glare from it makes rivals lose their nerve before the bout begins. It plays to the crowd between blows, and flames leap up behind its belt whenever it roars."
     ]
   },
+  "Incineroar-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Its belt blazes like a furnace, and horns of molten metal curve over its brow. When it roars, flames lick the edges of the ring it fights in.",
+      "A cheering crowd is all it needs. Sparks rain from its heavy fists, and the floor it paces on is scorched black by the end of a match."
+    ]
+  },
   "Popplio": {
     "habitat": "Sea",
     "entries": [
@@ -8110,6 +8166,13 @@
     "entries": [
       "Its hair falls to the ground behind it like the train of a gown, strung with more pearls than before. A tiara of pink coral sits where its star once was.",
       "Spheres of water float in a ring around it, each lit softly like a stage light. Its songs carry over the waves, and listeners say the sea itself seems to sing along."
+    ]
+  },
+  "Primarina-Mega-Mmax": {
+    "habitat": "Sea",
+    "entries": [
+      "A pearly gown of water swirls around it, and bubbles the size of boats drift from its voice. Its song calms rough seas for miles in every direction.",
+      "Glassy coral rises from its collar like a chandelier. Fish gather beneath it in glowing schools when it sings at night, and the tide itself seems to listen."
     ]
   },
   "Pikipek": {
@@ -9043,6 +9106,13 @@
       "Its drumsticks have become thick branches with leaves at the ends. Each beat makes grass spring up around it, and the whole forest seems to pulse with the rhythm."
     ]
   },
+  "Rillaboom-Mega-Mmax": {
+    "habitat": "Forest",
+    "entries": [
+      "The drum on its back has grown into a stage of living wood, thumped so hard that roots tremble underfoot. Green lightning dances along the beat.",
+      "Its rhythm wakes every tree for a hundred paces. Vines curl around its arms like ribbons, and fresh shoots sprout wherever the sound rolls across the soil."
+    ]
+  },
   "Rillaboom-Gmax": {
     "habitat": "Forest",
     "entries": [
@@ -9078,6 +9148,13 @@
       "It keeps a ball of fire trapped under one foot, ready to kick. It changes its style to suit each match and seems to enjoy surprising every opponent it faces."
     ]
   },
+  "Cinderace-Mega-Mmax": {
+    "habitat": "Grassland",
+    "entries": [
+      "Its fiery ball has swelled to the size of a small moon, and flame trails stream behind its boots as it sprints. The grass flattens in a long, glowing line.",
+      "A single kick sends the burning orb screaming over the horizon. Spectators say the sky stays orange for a whole minute after the shot."
+    ]
+  },
   "Cinderace-Gmax": {
     "habitat": "Grassland",
     "entries": [
@@ -9111,6 +9188,13 @@
     "entries": [
       "Its yellow crest sweeps back like a hood, and its tail lengthens into the tails of a coat that falls to its knees. It moves without making a sound.",
       "The membrane over one eye has become a scope with a pale lens. It can pick out a single target across a wide lake and strike its weakest point every time."
+    ]
+  },
+  "Inteleon-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "Its long body has stretched like a periscope, and water gathers in a lens above its head. It aims by looking through that shimmering glass.",
+      "A needle of pressure shoots from its fingertip with no sound at all. Tiny rainbows hover around it when sunlight crosses the spray it leaves behind."
     ]
   },
   "Inteleon-Gmax": {
@@ -10443,6 +10527,13 @@
       "It spins a flower bomb on one fingertip while it performs. Every attack doubles as a trick, and opponents often find their held items have vanished into its cape."
     ]
   },
+  "Meowscarada-Mega-Mmax": {
+    "habitat": "Urban",
+    "entries": [
+      "Its flower mask has bloomed into a huge hat of petals, and a cape of vines trails from its shoulders. Every step it takes scatters bright blossoms.",
+      "It performs by moonlight and vanishes mid-bow. Only the sweet smell of blooms remains on the rooftops where the crowd was just clapping."
+    ]
+  },
   "Fuecoco": {
     "habitat": "Grassland",
     "entries": [
@@ -10471,6 +10562,13 @@
       "The flame at the end of its tail is shaped like the head of a guitar. Its loud songs shake the ground, and noise aimed back at it falls strangely flat."
     ]
   },
+  "Skeledirge-Mega-Mmax": {
+    "habitat": "Cave",
+    "entries": [
+      "The skull on its tail has grown into a blazing lantern as tall as a house, and a blue flame hums out a mournful song. The cave walls shine with ghostly light.",
+      "Its tune is gentle, yet the heat of the fire is fierce. Lost travelers follow the singing out of the dark, and the flame guides them to the open air."
+    ]
+  },
   "Quaxly": {
     "habitat": "WatersEdge",
     "entries": [
@@ -10497,6 +10595,13 @@
     "entries": [
       "Its plumes fan out into a crescent headdress, blue with flashes of orange at the tips. A skirt of blue feathers flares around its hips as it spins.",
       "Streamers of water trail from its wrists in long strings of beads. When another Pokémon dances nearby, it cannot resist answering with the very same steps."
+    ]
+  },
+  "Quaquaval-Mega-Mmax": {
+    "habitat": "WatersEdge",
+    "entries": [
+      "It dances on a floor of rising waves, and the feathers on its head fan out like a carnival headdress. Each spin throws a fan of glittering water into the air.",
+      "Its stage is the whole pond. The beat of its steps rolls out in rings, and water lilies bob in time with the rhythm as the crowd of birds joins in."
     ]
   },
   "Lechonk": {

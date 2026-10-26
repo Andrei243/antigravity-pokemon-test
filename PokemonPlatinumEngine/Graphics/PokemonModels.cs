@@ -801,7 +801,7 @@ internal static partial class PokemonModels
         "Leviawhale", "Volcamel", "Smeltortoise", "Boarcane", "Whirlpanda", "Saguarox", "Nimbusong", "Ravagoose", "Scimitail", "Selenolith",
         "Heliolith", "Namazuro", "Crayronin", "Dogunarch", "Crinolith", "Anomalorex", "Prismaria", "Chromeleon", "Effigrim",
         "Musadon", "Carillone", "Omenblade", "Bergmaw", "Gulpereel", "Sirenyss", "Aeonfin", "Heartreef", "Regimonolith", "Regiglacier",
-        "Regiferrum", "Aurelias", "Aurelios"
+        "Regiferrum", "Aurelias", "Aurelios",
         // Plan 03 · D14, batch 5 (Unova; PokemonModels.Ours.Unova.cs)
         "Beaconwatch", "Umbrapard", "Simisylvan", "Simiscorch", "Simitorrent", "Somnarna", "Stormstrika", "Amorabat", "Excavarch", "Remedino",
         "Throjutsu", "Sawkendo", "Cottonimbus", "Ballerilly", "Bascurage",
@@ -811,13 +811,13 @@ internal static partial class PokemonModels
         "Voltarantula", "Ferrospire", "Cosmogrey",
         "Beartundra", "Cryohedron", "Velocigor", "Fluxflounder", "Mienshifu",
         "Drudrakon", "Colossurk", "Bouffalanx", "Imperavia",
-        "Carrionqueen", "Pyrovore", "Formicarch", "Helioptera", "Cobaltarch", "Terrakhan", "Virizenith"
+        "Carrionqueen", "Pyrovore", "Formicarch", "Helioptera", "Cobaltarch", "Terrakhan", "Virizenith",
         // Batch 4 (Sinnoh; PokemonModels.Ours.Sinnoh.cs)
         "Dambarel", "Maestrikket", "Cranialith", "Bastionsaur", "Nocturmoth", "Hivempress", "Voltglider", "Tidestoat",
         "Sakurabloom", "Gastromire", "Quadripom", "Dirigeist", "Lapinova", "Hexmagistra", "Corvicapo", "Brutabby",
         "Mephitarch", "Dotakuron", "Cantatot", "Ossuarion", "Aurasage", "Behemowdon", "Dreadpion", "Venomsensei",
         "Flytrapex", "Lumifathom", "Glaciarbor", "Rimeripper", "Lickolossus", "Tanglewood",
-        "Meganeuron", "Dryadeon", "Borealeon", "Fangliscor", "Lodestarch", "Frostbride", "Uxinous", "Mespathos", "Azelthymos"
+        "Meganeuron", "Dryadeon", "Borealeon", "Fangliscor", "Lodestarch", "Frostbride", "Uxinous", "Mespathos", "Azelthymos",
         // Batch 2 (Johto; PokemonModels.Ours.Johto.cs)
         "Ermilong", "Noctaugur", "Coccinova", "Orbweavix", "Abyssolux", "Totemsight", "Mimicedar", "Helianthra", "Mirelord", "Zenitheon",
         "Eclipseon", "Slowmonarch", "Wobbulwark", "Pinecitadel", "Ironwyrm", "Mastiffang", "Fugumace", "Guillotyne",
