@@ -72,11 +72,7 @@ public class MegaDynamaxSculptsOneTests
             var p = new Pokemon(species, 50) { Form = form };
             Assert.Equal(form, p.ModelName);
         }
-        // A Mega Dynamax form with no sculpt yet (Incineroar's is the second half's to build) shows its Mega's
-        var untouched = PokemonDatabase.GetAll().SelectMany(sp => (sp.Forms ?? new()).Select(f => (sp, f)))
-            .First(x => x.f.Kind == FormKind.MegaDynamax && !PokemonModels.HasModel(x.f.Name));
-        var q = new Pokemon(untouched.sp, 50) { Form = untouched.f.Name };
-        Assert.Equal(untouched.f.Name[..^"-Mmax".Length], q.ModelName);
+        // Every Mega Dynamax form of the games' Megas has its own sculpt since wave 60
     }
 
     [Theory]

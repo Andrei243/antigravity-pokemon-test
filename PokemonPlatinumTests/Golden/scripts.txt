@@ -422,6 +422,74 @@ way 1, from answer 1
   Receptionist> You give no orders here. Each Pokémon chooses its moves by its nature, bolder or warier as its HP runs low.
   Receptionist> Beat seven Trainers in a row to win the round. Lose once, and the round is over.
   ? Would you like to take on the Battle Palace? = The rules
+=== BattleFrontierAnnex.PikeDesk
+from Receptionist at 1,7 of BattleFrontierAnnex
+way 0
+  Receptionist> Welcome to the Battle Pike! Three doors, fourteen rooms, and luck as your fourth Pokémon.
+  Receptionist> Would you like to take on the Battle Pike?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Pike? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> Please come again. The doors will still be here, and still be hiding things.
+  ? Would you like to take on the Battle Pike? = No
+way 1, from answer 1
+  Receptionist> Your three go in at Level 50, or at their own level if it's lower. Nothing heals them unless a room does.
+  Receptionist> Before every room you choose one of three doors. Behind it there may be a battle, a rest, a wild Pokémon, or worse.
+  Receptionist> Pass fourteen rooms to win the round. If all three of yours faint, the round is over.
+  ? Would you like to take on the Battle Pike? = The rules
+=== BattleFrontierAnnex.PyramidDesk
+from Receptionist at 13,7 of BattleFrontierAnnex
+way 0
+  Receptionist> Welcome to the Battle Pyramid! Seven floors in the dark, and the stairs up somewhere on each.
+  Receptionist> Would you like to take on the Battle Pyramid?
+  Receptionist> You need three Pokémon that can take part, all of different species and holding different items.
+  Receptionist> An Egg can't take part, and nor can certain rare Pokémon.
+  ? Would you like to take on the Battle Pyramid? = Enter
+  * frontier seen 150
+  * frontier seen 151
+  * frontier seen 249
+  * frontier seen 250
+  * frontier seen 251
+  * frontier seen 382
+  * frontier seen 383
+  * frontier seen 384
+  * frontier seen 385
+  * frontier seen 386
+  * frontier seen 483
+  * frontier seen 484
+  * frontier seen 487
+  * frontier seen 489
+  * frontier seen 490
+  * frontier seen 491
+  * frontier seen 492
+  * frontier seen 493
+way 2, from answer 1
+  Receptionist> Please come again. The Pyramid changes every time, but it's always dark.
+  ? Would you like to take on the Battle Pyramid? = No
+way 1, from answer 1
+  Receptionist> Your three go in at Level 50, or at their own level if it's lower. Nothing heals them but what you find.
+  Receptionist> Each floor is dark. Every battle you win lets you see a little farther. Flash is no help in here.
+  Receptionist> Find the stairs on seven floors to win the round. If all three of yours faint, the round is over.
+  ? Would you like to take on the Battle Pyramid? = The rules
 === BattleFrontierAnnex.Receptionist
 from Receptionist at 7,4 of BattleFrontierAnnex
 way 0
@@ -682,6 +750,21 @@ way -
 from Woman at 20,4 of BattleHall
 way -
   Woman> It's one Pokémon against one. A record made that way is a record worth having, don't you think?
+=== BattlePike.LeftDoor
+from the trigger at 3,2 of BattlePike
+way -
+=== BattlePike.MiddleDoor
+from the trigger at 6,2 of BattlePike
+way -
+=== BattlePike.RightDoor
+from the trigger at 9,2 of BattlePike
+way -
+=== BattlePikeRoom.Exit
+from the trigger at 6,2 of BattlePikeRoom
+way -
+=== BattlePyramidFloor.Stairs
+from the trigger at 17,8 of BattlePyramidFloor
+way -
 === BattleTower.Artist
 from Artist at 2,14 of BattleTower
 way -

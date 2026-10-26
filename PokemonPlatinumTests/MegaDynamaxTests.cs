@@ -309,7 +309,7 @@ public class MegaDynamaxTests
     public void EveryMegaDynamaxFormIsItsMegasDataGrown()
     {
         var forms = PokemonDatabase.GetAll().SelectMany(s => (s.Forms ?? new()).Select(f => (s, f))).Where(x => x.f.Kind == FormKind.MegaDynamax).ToList();
-        Assert.Equal(63, forms.Count);
+        Assert.Equal(78, forms.Count);
         foreach (var (species, form) in forms)
         {
             Assert.EndsWith("-Mmax", form.Name);
