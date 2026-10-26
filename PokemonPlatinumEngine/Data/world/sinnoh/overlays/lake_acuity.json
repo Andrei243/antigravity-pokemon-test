@@ -1,5 +1,6 @@
 {
   "area": "lake_acuity",
+  "ours": { "surf": [ ["Dambarel", 101, 105] ] },
   "bgmTrack": "sinnoh/lake",
   "trees": "Pine",
   // Two of its ways out lie among the trees, where nobody walks (the original's own, left from the lake's other

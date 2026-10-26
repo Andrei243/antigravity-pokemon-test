@@ -219,9 +219,11 @@ surf 30-55
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Dynamorb 105-109, Cordyhusk 110-114, Psyduke 112-116, Sabrefin 106-110
 === cerulean_cave_2f
 Cerulean Cave
 grass 49-64
+ours Pugilord 110-114, Savateur 110-114
 === cerulean_cave_b1f
 Cerulean Cave
 grass 52-67
@@ -229,6 +231,7 @@ surf 40-65
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Dynamorb 105-109, Mesmeryx 110-114, Psyduke 112-116, Typhonarch 130-134
 === cerulean_city
 Cerulean City
 surf 5-40
@@ -319,6 +322,7 @@ trainers 6, 13: hoenn_brenden 13, hoenn_cristian 13, hoenn_jocelyn 13, hoenn_lau
 === digletts_cave_b1f
 Diglett's Cave
 grass 15-31
+ours Molemount 104-108
 === dragons_den
 Dragons Den
 surf 5-20
@@ -366,6 +370,7 @@ super rod 15-35
 === five_island_lost_cave_room_1
 Lost Cave
 grass 22-52
+ours Kitsunox 120-124, Ossugard 105-109
 trainers 1, 47-49: kanto_ruin_maniac_lawson 49
 === five_island_lost_cave_room_10
 Lost Cave
@@ -382,6 +387,7 @@ grass 15-52
 === five_island_lost_cave_room_14
 Lost Cave
 grass 15-52
+ours Kitsunox 120-124, Cordyhusk 110-114
 === five_island_lost_cave_room_2
 Lost Cave
 grass 22-52
@@ -414,6 +420,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Porrigard 101-105, Tripluma 108-112, Naiadeon 120-124
 trainers 3, 48-49: kanto_team_rocket_grunt_49 48, kanto_team_rocket_grunt_50 49, kanto_team_rocket_grunt_51 48
 === five_island_memorial_pillar
 Memorial Pillar
@@ -439,6 +446,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Stellamir 120-124, Pincerex 110-114
 trainers 1, 48: kanto_pkmn_breeder_alize 48
 === floccesy_ranch
 Floccesy Ranch
@@ -462,9 +470,11 @@ super rod 15-35
 === four_island_icefall_cave_1f
 Icefall Cave
 grass 23-48
+ours Aurorelle 112-116
 === four_island_icefall_cave_b1f
 Icefall Cave
 grass 23-48
+ours Aurorelle 112-116
 === four_island_icefall_cave_back
 Icefall Cave
 grass 40-53
@@ -472,6 +482,7 @@ surf 5-45
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Ferrisle 125-129, Clamspire 120-124
 === four_island_icefall_cave_entrance
 Icefall Cave
 grass 40-53
@@ -479,6 +490,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Glacitusk 112-116, Clamspire 120-124
 === fuchsia_city
 Fuchsia City
 surf 20-40
@@ -560,6 +572,7 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+ours Flytrapex 106-110, Venomsensei 112-116
 === great_marsh_2
 Great Marsh
 grass 28-31
@@ -567,6 +580,7 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+ours Meganeuron 115-119, Tanglewood 120-124
 === great_marsh_3
 Great Marsh
 grass 27-30
@@ -721,14 +735,17 @@ trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_
 === kanto_victory_road_1f
 Victory Road
 grass 32-46
+ours Najarok 106-110, Sandspire 108-112
 trainers 2, 42: kanto_cooltrainer_naomi 42, kanto_cooltrainer_rolando 42
 === kanto_victory_road_2f
 Victory Road
 grass 34-48
+ours Najarok 106-110, Azhdarch 125-129
 trainers 5, 40-48: kanto_black_belt_daisuke 43, kanto_juggler_gregory 48, kanto_juggler_nelson 41, kanto_pokemaniac_dawson 40, kanto_tamer_vincent 44
 === kanto_victory_road_3f
 Victory Road
 grass 32-46
+ours Molemount 104-108, Ossugard 105-109
 trainers 5, 41-45: kanto_cool_couple_ray_tyra 45, kanto_cooltrainer_alexa 42, kanto_cooltrainer_caroline 42, kanto_cooltrainer_colby 43, kanto_cooltrainer_george 42
 === lake_acuity
 Lake Acuity
@@ -737,6 +754,7 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+ours Dambarel 101-105
 === lake_of_rage
 Lake of Rage
 surf 5-20
@@ -751,6 +769,7 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+ours Dambarel 101-105
 === lake_valor_drained
 Lake Valor
 trainers 3, 33-37: galactic_grunt_lake_valor_1 37, galactic_grunt_lake_valor_2 33, galactic_grunt_lake_valor_3 35
@@ -1028,6 +1047,7 @@ grass 36-40
 === mt_ember_exterior
 Mt. Ember
 grass 30-42
+ours Solarion 115-119, Kirinine 130-134
 trainers 3, 37-40: kanto_crush_girl_jocelyn 38, kanto_pkmn_ranger_beth 38, kanto_pkmn_ranger_logan 40
 === mt_ember_ruby_path_1f
 Ruby Path
@@ -1041,6 +1061,7 @@ grass 22-44
 === mt_ember_ruby_path_b2f
 Ruby Path
 grass 22-44
+ours Kirinine 130-134, Pyreon 120-124
 === mt_ember_ruby_path_b2f_stairs
 Ruby Path
 grass 24-42
@@ -1147,6 +1168,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Solarion 115-119, Pyreon 120-124
 trainers 12, 33-39: kanto_black_belt_hugh 37, kanto_black_belt_shea 38, kanto_camper_bryce 36, kanto_crush_girl_sharon 37, kanto_crush_girl_tanya 38, kanto_crush_kin_mik_kia 39, kanto_fisherman_tommy 35, kanto_picnicker_claire 35, kanto_swimmer_female_abigail 37, kanto_swimmer_female_maria 37, kanto_swimmer_male_finn 38, kanto_swimmer_male_garrett 38
 === one_island_treasure_beach
 Treasure Beach
@@ -1155,6 +1177,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Medusarch 115-119, Eurypterox 120-124
 trainers 1, 36: kanto_swimmer_female_amara 36
 === oreburgh_gate_1f
 Oreburgh Gate
@@ -1230,6 +1253,7 @@ super rod 20-55
 === pokemon_mansion_1f
 Pokémon Mansion
 grass 26-36
+ours Ratchisel 105-109, Kirinine 130-134
 trainers 2, 29-34: kanto_scientist_ted 29, kanto_youngster_johnson 34
 === pokemon_mansion_2f
 Pokémon Mansion
@@ -1242,6 +1266,7 @@ trainers 2, 33-38: kanto_burglar_simon 38, kanto_scientist_braydon 33
 === pokemon_mansion_b1f
 Pokémon Mansion
 grass 26-38
+ours Smoglom 112-116, Sludgemire 115-119
 trainers 2, 34: kanto_burglar_lewis 34, kanto_scientist_ivan 34
 === pokemon_tower_3f
 Pokémon Tower
@@ -1266,6 +1291,7 @@ trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26,
 === power_plant
 Power Plant
 grass 22-35
+ours Dynamorb 105-109, Fulgureon 120-124
 === ravaged_path
 Ravaged Path
 grass 3-6
@@ -1531,6 +1557,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Dozemount 130-134
 trainers 8, 21-29: kanto_camper_justin 29, kanto_fisherman_andrew 24, kanto_fisherman_chip 24, kanto_fisherman_elliot 21, kanto_fisherman_hank 27, kanto_fisherman_ned 22, kanto_rocker_luca 29, kanto_young_couple_gia_jes 24
 === route_120
 Route 120
@@ -1659,6 +1686,7 @@ trainers 11, 25-33: kanto_beauty_grace 29, kanto_beauty_olivia 29, kanto_biker_a
 === route_16
 Route 16
 grass 18-25
+ours Dozemount 130-134, Ratchisel 105-109
 trainers 7, 28-33: kanto_biker_hideo 33, kanto_biker_lao 29, kanto_biker_ruben 28, kanto_cue_ball_camron 29, kanto_cue_ball_koji 28, kanto_cue_ball_luke 29, kanto_young_couple_lea_jed 29
 === route_17
 Route 17
@@ -1880,6 +1908,7 @@ surf 30-50
 old rod 3-15
 good rod 10-25
 super rod 30-55
+ours Voltglider 102-106, Mephitarch 110-114, Tidestoat 110-114
 trainers 11, 40-45: beauty_nicola 45, fisherman_alec 45, fisherman_brett 43, fisherman_cole 43, fisherman_george 42, policeman_thomas 43, rich_boy_trey 45, sailor_luther 43, sailor_marc 45, tuber_conner 44, tuber_holly 44
 === route_223
 Route 223
@@ -1895,6 +1924,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 20-55
+ours Sakurabloom 104-108, Dryadeon 120-124, Tidestoat 110-114, Lumifathom 106-110
 trainers 8, 53-60: ace_trainer_jamie 60, ace_trainer_ruben 57, black_belt_carl 59, dragon_tamer_hayden 56, psychic_brittney 57, psychic_maxwell 58, ruin_maniac_larry 57, veteran_armando 56
 === route_225
 Route 225
@@ -1903,6 +1933,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 30-55
+ours Lapinova 110-114, Quadripom 110-114
 trainers 8, 51-56: ace_trainer_deanna 56, ace_trainer_quinn 56, ace_trainer_rodolfo 56, bird_keeper_audrey 55, dragon_tamer_geoffrey 55, psychic_daisy 56, ranger_ashlee 55, ranger_dwayne 54
 === route_226
 Route 226
@@ -1911,6 +1942,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 20-55
+ours Cantatot 101-105, Brutabby 106-110, Gastromire 110-114
 trainers 5, 53-59: ace_trainer_graham 59, bird_keeper_geneva 57, dragon_tamer_stanley 57, swimmer_lydia 54, swimmer_wade 56
 === route_227
 Route 227
@@ -1919,6 +1951,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 30-55
+ours Aurasage 120-124, Corvicapo 115-119
 trainers 4, 56-61: ace_trainer_mikayla 56, ace_trainer_saul 61, black_belt_griffin 58, ranger_felicia 59
 === route_228
 Route 228
@@ -1927,6 +1960,7 @@ surf 35-55
 old rod 3-15
 good rod 10-35
 super rod 30-55
+ours Behemowdon 115-119, Dreadpion 115-119
 trainers 8, 54-58: ace_trainer_jose 57, ace_trainer_meagan 58, ace_trainer_moira 57, black_belt_davon 57, dragon_tamer_keegan 57, psychic_corbin 56, ranger_krista 57, ranger_kyler 58
 === route_229
 Route 229
@@ -1935,6 +1969,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 30-55
+ours Hivempress 112-116, Nocturmoth 106-110, Gastromire 110-114
 trainers 4, 54-56: ace_trainer_dana 56, ace_trainer_felix 56, ace_trainer_sandra 55, ranger_deshawn 54
 === route_23
 Route 23
@@ -1943,6 +1978,7 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Najarok 106-110, Lancerow 104-108
 === route_230
 Route 230
 grass 47-50
@@ -1950,6 +1986,7 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 20-55
+ours Maestrikket 101-105, Lickolossus 115-119, Gastromire 110-114, Lumifathom 106-110
 trainers 6, 51-54: swimmer_glenn 53, swimmer_joanna 54, swimmer_kurt 54, swimmer_mallory 54, swimmer_sam 53, swimmer_sophia 53
 === route_24
 Route 24
@@ -2257,6 +2294,7 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Mandibron 115-119, Palmagus 118-122
 === safari_zone_east
 Kanto Safari Zone
 grass 22-33
@@ -2264,6 +2302,7 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Matriroo 115-119, Mandibron 115-119
 === safari_zone_north
 Kanto Safari Zone
 grass 23-32
@@ -2271,6 +2310,7 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Bovarch 115-119, Somnimoth 112-116
 === safari_zone_west
 Kanto Safari Zone
 grass 22-32
@@ -2278,6 +2318,7 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Tripluma 108-112, Matriroo 115-119
 === saffron_city_dojo
 Saffron City
 trainers 5, 31-37: kanto_black_belt_aaron 36, kanto_black_belt_hideki 32, kanto_black_belt_hitoshi 31, kanto_black_belt_koichi 37, kanto_black_belt_mike 31
@@ -2341,6 +2382,7 @@ surf 25-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Glacitusk 112-116, Sabrefin 106-110
 === seafoam_islands_b4f
 Seafoam Islands
 grass 26-36
@@ -2348,6 +2390,7 @@ surf 25-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Slowmantle 120-124, Typhonarch 130-134
 === seaside_cave
 Seaside Cave
 grass 34-37
@@ -2368,10 +2411,12 @@ super rod 30-55
 === seven_island_sevault_canyon
 Sevault Canyon
 grass 15-54
+ours Ossugard 105-109, Lancerow 104-108
 trainers 7, 47-52: kanto_cool_couple_lex_nya 52, kanto_cooltrainer_leroy 50, kanto_cooltrainer_michelle 50, kanto_crush_girl_cyndy 48, kanto_pkmn_ranger_jackson 49, kanto_pkmn_ranger_katelyn 52, kanto_tamer_evan 49
 === seven_island_sevault_canyon_entrance
 Canyon Entrance
 grass 10-50
+ours Regalynx 110-114, Sandspire 108-112
 trainers 5, 47-51: kanto_aroma_lady_miah 50, kanto_juggler_mason 47, kanto_pkmn_ranger_madeline 51, kanto_pkmn_ranger_nicolas 51, kanto_young_couple_eve_jon 50
 === seven_island_tanoby_ruins
 Tanoby Ruins
@@ -2379,6 +2424,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Stellamir 120-124, Ammonarch 120-124
 trainers 4, 48-50: kanto_gentleman_clifford 49, kanto_painter_edna 50, kanto_ruin_maniac_benjamin 48, kanto_ruin_maniac_brandon 50
 === seven_island_tanoby_ruins_dilford_chamber
 Dilford Chamber
@@ -2480,6 +2526,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Medusarch 115-119, Eurypterox 120-124
 trainers 5, 48-50: kanto_fisherman_tylor 49, kanto_sis_and_bro_ava_geb 50, kanto_swimmer_female_nicole 50, kanto_swimmer_male_mymo 49, kanto_team_rocket_grunt_46 48
 === six_island_pattern_bush
 Pattern Bush
@@ -2500,6 +2547,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Mimestro 108-112, Regalynx 110-114, Naiadeon 120-124, Pincerex 110-114
 trainers 6, 46-50: kanto_aroma_lady_rose 49, kanto_hiker_earl 49, kanto_juggler_edward 48, kanto_swimmer_female_denise 49, kanto_swimmer_male_samir 50, kanto_twins_miu_mia 50
 === sky_pillar_1f
 Sky Pillar
@@ -2534,15 +2582,19 @@ super rod 40
 === snowpoint_temple_1f
 Snowpoint Temple
 grass 47-50
+ours Frostbride 112-116, Borealeon 120-124
 === snowpoint_temple_b1f
 Snowpoint Temple
 grass 47-50
+ours Rimeripper 115-119, Glaciarbor 115-119
 === snowpoint_temple_b2f
 Snowpoint Temple
 grass 47-50
+ours Frostbride 112-116, Rimeripper 115-119
 === snowpoint_temple_b3f
 Snowpoint Temple
 grass 47-50
+ours Glaciarbor 115-119, Borealeon 120-124
 === snowpoint_temple_b4f
 Snowpoint Temple
 grass 47-51
@@ -2663,13 +2715,16 @@ super rod 15-35
 === stark_mountain_outside
 Stark Mountain
 grass 51-54
+ours Fangliscor 118-122, Dreadpion 115-119
 trainers 1, 60: dragon_tamer_darien 60
 === stark_mountain_room_1
 Stark Mountain
 grass 51-54
+ours Cranialith 115-119, Bastionsaur 115-119
 === stark_mountain_room_2
 Stark Mountain
 grass 52-55
+ours Lodestarch 118-122, Dotakuron 118-122
 trainers 16, 55-61: ace_trainer_abel 60, ace_trainer_jasmin 61, ace_trainer_kassandra 59, ace_trainer_keenan 59, ace_trainer_monique 59, ace_trainer_natasha 59, ace_trainer_skylar 59, ace_trainer_stefan 61, bird_keeper_krystal 59, black_belt_jarrett 60, black_belt_ray 58, dragon_tamer_drake 57, dragon_tamer_kenny 57, psychic_chelsey 59, psychic_sterling 59, veteran_harlan 59
 === strange_house
 Strange House
@@ -2711,6 +2766,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Palmagus 118-122, Mesmeryx 110-114
 === three_island_bond_bridge
 Bond Bridge
 grass 29-40
@@ -2718,6 +2774,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Somnimoth 112-116
 trainers 6, 34-38: kanto_aroma_lady_nikki 37, kanto_aroma_lady_violet 36, kanto_swimmer_female_tisha 38, kanto_tuber_alexis 34, kanto_tuber_amira 35, kanto_twins_joy_meg 37
 === three_island_port
 Three Island
@@ -2771,9 +2828,11 @@ grass 25-28
 === turnback_cave_pillar_3_room_1
 Turnback Cave
 grass 35-38
+ours Hexmagistra 115-119, Ossuarion 115-119
 === turnback_cave_pillar_3_room_2
 Turnback Cave
 grass 35-38
+ours Dirigeist 112-116, Hexmagistra 115-119
 === turnback_cave_pillar_3_room_3
 Turnback Cave
 grass 35-38
@@ -2796,6 +2855,7 @@ surf 5-40
 old rod 5
 good rod 5-15
 super rod 15-35
+ours Lancerow 104-108, Porrigard 101-105, Slowmantle 120-124, Ammonarch 120-124
 === undella_bay
 Undella Bay
 surf 25-40
@@ -2972,6 +3032,7 @@ trainers 6, 43-48: ace_trainer_mariah 48, bird_keeper_hana 47, black_belt_miles 
 === victory_road_1f_room_1
 Victory Road
 grass 47-50
+ours Lodestarch 118-122, Aurasage 120-124
 === victory_road_1f_room_2
 Victory Road
 grass 47-50
@@ -2979,10 +3040,12 @@ surf 35-55
 old rod 3-15
 good rod 10-25
 super rod 30-55
+ours Dotakuron 118-122, Fangliscor 118-122, Tidestoat 110-114
 trainers 14, 51-57: ace_trainer_arthur 55, ace_trainer_brandi 57, ace_trainer_clarice 56, ace_trainer_micah 56, bird_keeper_autumn 54, black_belt_eddie 55, black_belt_willie 54, dragon_tamer_joe 56, psychic_deandre 56, psychic_desiree 54, psychic_kendra 55, psychic_landon 55, veteran_brenden 54, veteran_terrell 55
 === victory_road_1f_room_3
 Victory Road
 grass 47-50
+ours Cranialith 115-119, Bastionsaur 115-119
 === victory_road_2f
 Victory Road
 grass 41-44

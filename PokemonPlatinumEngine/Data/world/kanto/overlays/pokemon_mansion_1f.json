@@ -5,6 +5,7 @@
   // tiles and changes with setmetatile are things of ours on their tiles (opened under them): those of the switch's
   // first state shown until it is pressed (hiddenBy), the others from then on (shownBy). Its trainers are FireRed's
   "area": "pokemon_mansion_1f",
+  "ours": { "land": [ ["Ratchisel", 105, 109], ["Kirinine", 130, 134] ] },
   "name": "Pokémon Mansion",
   "bgmTrack": "kanto/pokemon_mansion",
   "people": {

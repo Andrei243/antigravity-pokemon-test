@@ -1,5 +1,6 @@
 {
   "area": "great_marsh_2",
+  "ours": { "land": [ ["Meganeuron", 115, 119], ["Tanglewood", 120, 124] ] },
   "bgmTrack": "sinnoh/great_marsh",
   "trees": "Round",
   "people": {

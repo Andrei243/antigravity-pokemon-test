@@ -5,6 +5,7 @@
   // (FLAG_UNLOCKED_ROCKET_WAREHOUSE). The grunts outside go with the rest of the gang once the warehouse is cleared
   // (FLAG_HIDE_FIVE_ISLAND_ROCKETS)
   "area": "five_island_meadow",
+  "ours": { "land": [ ["Porrigard", 101, 105], ["Tripluma", 108, 112] ], "surf": [ ["Naiadeon", 120, 124] ] },
   "name": "Five Isle Meadow",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

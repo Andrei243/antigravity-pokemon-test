@@ -1,5 +1,6 @@
 {
   "area": "route_224",
+  "ours": { "land": [ ["Sakurabloom", 104, 108], ["Dryadeon", 120, 124] ], "surf": [ ["Tidestoat", 110, 114] ], "superRod": [ ["Lumifathom", 106, 110] ] },
   // ROAD_F, the role Routes 210, 214 and 215 share
   "bgmTrack": "sinnoh/route210",
   "trees": "Round",

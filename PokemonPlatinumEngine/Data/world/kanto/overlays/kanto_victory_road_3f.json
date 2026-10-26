@@ -3,6 +3,7 @@
   // hole in the east takes a boulder down to the floor below (kanto_victory_road_3f.txt), where the second switch of
   // 2F waits for it
   "area": "kanto_victory_road_3f",
+  "ours": { "land": [ ["Molemount", 104, 108], ["Ossugard", 105, 109] ] },
   "name": "Victory Road",
   "bgmTrack": "kanto/mt_moon",
   "pits": [

@@ -2,6 +2,7 @@
   // The Water Path (plan 19 · K9, part b): FireRed's map, our words. A long road of sand and sea down Six Island's
   // east side, two houses by its north end
   "area": "six_island_water_path",
+  "ours": { "land": [ ["Mimestro", 108, 112], ["Regalynx", 110, 114] ], "surf": [ ["Naiadeon", 120, 124] ], "superRod": [ ["Pincerex", 110, 114] ] },
   "name": "Water Path",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

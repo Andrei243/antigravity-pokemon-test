@@ -2,6 +2,7 @@
   // Sevault Canyon (plan 19 · K9, part b): FireRed's map, our words. A deep gorge of boulders and ledges down to the
   // Tanoby Ruins; the Tanoby Key's cave opens in its side
   "area": "seven_island_sevault_canyon",
+  "ours": { "land": [ ["Ossugard", 105, 109], ["Lancerow", 104, 108] ] },
   "name": "Sevault Canyon",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

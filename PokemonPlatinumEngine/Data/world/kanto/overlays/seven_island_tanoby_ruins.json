@@ -4,6 +4,7 @@
   // switches are pressed; here their ways in stay shut until then (FLAG_SYS_UNLOCKED_TANOBY_RUINS), since an area's
   // wild Pokémon don't wait for a flag
   "area": "seven_island_tanoby_ruins",
+  "ours": { "surf": [ ["Stellamir", 120, 124] ], "superRod": [ ["Ammonarch", 120, 124] ] },
   "name": "Tanoby Ruins",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",

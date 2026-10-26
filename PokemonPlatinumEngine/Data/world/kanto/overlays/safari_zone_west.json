@@ -2,6 +2,7 @@
   // The Safari Zone's west part, Area 3 (plan 19 · K6, part a): FireRed's map, our words. The Warden's lost Gold Teeth
   // lie here in an item ball, and in its far corner is the secret house with HM03
   "area": "safari_zone_west",
+  "ours": { "land": [ ["Tripluma", 108, 112], ["Matriroo", 115, 119] ] },
   "bgmTrack": "kanto/safari_zone",
   // The rest houses build as Fuchsia does (plan 19 · K6, part b)
   "architecture": "Wildwood",

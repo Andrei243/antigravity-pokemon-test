@@ -1,5 +1,6 @@
 {
   "area": "route_229",
+  "ours": { "land": [ ["Hivempress", 112, 116], ["Nocturmoth", 106, 110] ], "superRod": [ ["Gastromire", 110, 114] ] },
   // The original's role is ROAD_BZA (Routes 228 to 230), which has no song yet (plan 05 · A6): Route 209's stands in
   "bgmTrack": "sinnoh/route209",
   "trees": "Round",

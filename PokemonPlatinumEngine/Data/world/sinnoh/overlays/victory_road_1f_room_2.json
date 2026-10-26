@@ -1,5 +1,6 @@
 {
   "area": "victory_road_1f_room_2",
+  "ours": { "land": [ ["Dotakuron", 118, 122], ["Fangliscor", 118, 122] ], "surf": [ ["Tidestoat", 110, 114] ] },
   "bgmTrack": "sinnoh/victory_road",
   // The long back room of Victory Road (plan 01 · M10, part a). Marley waits just inside, joins whoever comes in,
   // walks behind them and battles beside them against the room's trainers, who stand in pairs and see the player

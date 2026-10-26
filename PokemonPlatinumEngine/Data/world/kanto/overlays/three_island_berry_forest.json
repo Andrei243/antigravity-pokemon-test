@@ -3,6 +3,7 @@
   // Lostelle wandered off to pick berries and was cornered by a Hypno at the wood's far end
   // (three_island_berry_forest.txt)
   "area": "three_island_berry_forest",
+  "ours": { "land": [ ["Palmagus", 118, 122], ["Mesmeryx", 110, 114] ] },
   "name": "Berry Forest",
   "bgmTrack": "kanto/viridian_forest",
   "trees": "Round",

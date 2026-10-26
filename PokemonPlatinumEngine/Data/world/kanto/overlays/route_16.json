@@ -2,6 +2,7 @@
   // Route 16 (plan 19 · K5, part b), west of Celadon City: the Snorlax asleep across its lower lane, the bikers past
   // the gate and the house where HM02 is given (route_16.txt). Route 17, the Cycling Road, is K6's
   "area": "route_16",
+  "ours": { "land": [ ["Dozemount", 130, 134], ["Ratchisel", 105, 109] ] },
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {

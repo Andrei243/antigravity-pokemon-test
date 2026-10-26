@@ -2,6 +2,7 @@
   // Bond Bridge (plan 19 · K9, part a): FireRed's map, our words. The long boardwalk from Three Island's west shore to
   // Berry Forest; its trainers battle by their own records, and Joy and Meg, the twins, battle together as one
   "area": "three_island_bond_bridge",
+  "ours": { "land": [ ["Somnimoth", 112, 116] ] },
   "name": "Bond Bridge",
   "bgmTrack": "kanto/route3",
   "trees": "Round",

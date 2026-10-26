@@ -3,6 +3,7 @@
   // once two boulders lie across its mouth (seafoam_islands_b3f.txt), and the holes on its west side that take
   // boulders down to B4F's current
   "area": "seafoam_islands_b3f",
+  "ours": { "surf": [ ["Glacitusk", 112, 116] ], "superRod": [ ["Sabrefin", 106, 110] ] },
   "name": "Seafoam Islands",
   "bgmTrack": "kanto/viridian_forest",
   "pits": [

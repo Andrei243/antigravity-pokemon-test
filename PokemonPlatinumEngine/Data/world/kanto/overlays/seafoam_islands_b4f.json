@@ -4,6 +4,7 @@
   // FireRed's three steps at the foot of the current from B3F, which turned a surfer back north, are the current's
   // own pull here, and have no script
   "area": "seafoam_islands_b4f",
+  "ours": { "surf": [ ["Slowmantle", 120, 124] ], "superRod": [ ["Typhonarch", 130, 134] ] },
   "name": "Seafoam Islands",
   "bgmTrack": "kanto/viridian_forest",
   "people": {

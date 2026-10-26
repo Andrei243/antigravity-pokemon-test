@@ -1,5 +1,6 @@
 {
   "area": "snowpoint_temple_b3f",
+  "ours": { "land": [ ["Glaciarbor", 115, 119], ["Borealeon", 120, 124] ] },
   "climate": "Frozen",
   "bgmTrack": "sinnoh/forest"
   // The third floor down (plan 01 · M10, part b): a sheet of ice from wall to wall with a few stones to stop

@@ -3,6 +3,7 @@
   // City, its pond and rest house, and the ways into the other three parts. Every wild Pokémon here is met in a Safari
   // battle while the game is on (Models/SafariGame.cs)
   "area": "safari_zone_center",
+  "ours": { "land": [ ["Mandibron", 115, 119], ["Palmagus", 118, 122] ] },
   "bgmTrack": "kanto/safari_zone",
   // The rest houses build as Fuchsia does (plan 19 · K6, part b)
   "architecture": "Wildwood",

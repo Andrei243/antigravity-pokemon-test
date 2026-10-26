@@ -1,5 +1,6 @@
 {
   "area": "stark_mountain_room_2",
+  "ours": { "land": [ ["Lodestarch", 118, 122], ["Dotakuron", 118, 122] ] },
   "climate": "Volcanic",
   // D_06, as the first room: Victory Road's stands in (plan 05 · A6)
   "bgmTrack": "sinnoh/victory_road",

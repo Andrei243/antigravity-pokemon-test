@@ -3,6 +3,7 @@
   // nests in its far corner, and two of the Poké Balls lying about are Electrode that wake when touched
   // (power_plant.txt); the rest are items, where FireRed has them
   "area": "power_plant",
+  "ours": { "land": [ ["Dynamorb", 105, 109], ["Fulgureon", 120, 124] ] },
   "name": "Power Plant",
   "bgmTrack": "kanto/pokemon_mansion",
   // FireRed's warps 0, 2 and 4 stand in the walls beside its two mats (the way out is the mat at 5, 38 and the

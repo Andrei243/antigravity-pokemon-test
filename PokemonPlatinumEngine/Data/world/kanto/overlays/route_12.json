@@ -2,6 +2,7 @@
   // Route 12 (plan 19 · K5, part b), south of Lavender Town along the sea: the Snorlax asleep across the way south
   // (route_12.txt), the fishermen on the pier and the fishing house. Its foot opens onto Route 13 (plan 19 · K6)
   "area": "route_12",
+  "ours": { "land": [ ["Dozemount", 130, 134] ] },
   "bgmTrack": "kanto/route11",
   "trees": "Round",
   // The gate's second door tile leads to a warp FireRed never lets anyone take (on its wall): it goes to the first

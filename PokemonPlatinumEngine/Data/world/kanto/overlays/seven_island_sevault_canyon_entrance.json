@@ -2,6 +2,7 @@
   // The Canyon Entrance (plan 19 · K9, part b): FireRed's map, our words. The way down from Seven Island's town to
   // Sevault Canyon
   "area": "seven_island_sevault_canyon_entrance",
+  "ours": { "land": [ ["Regalynx", 110, 114], ["Sandspire", 108, 112] ] },
   "name": "Canyon Entrance",
   "bgmTrack": "kanto/sevii_route",
   "trees": "Round",
