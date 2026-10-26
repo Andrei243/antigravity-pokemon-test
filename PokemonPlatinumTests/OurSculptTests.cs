@@ -75,6 +75,13 @@ public class OurSculptTests
     {
         Assert.Equal(52, Unova.Length);
         foreach (var s in Unova)
+    /// <summary>Batch 4: the species of our own that evolve from Sinnoh's (Nos. 2400 to 2482).</summary>
+    private static PokemonSpecies[] Sinnoh => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2400 and <= 2499).ToArray();
+
+    public void EverySpeciesOfOursOfSinnohIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(39, Sinnoh.Length);
+        foreach (var s in Sinnoh)
         {
             Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
             Assert.Contains(s.Name, PokemonModels.Species);
@@ -99,5 +106,10 @@ public class OurSculptTests
         // Jellicent's female is a form of her own; Jellicrown keeps the difference as a look of the one species
         Assert.True(PokemonLook.HasFemale("Jellicrown"));
         Assert.NotEqual(PokemonModels.Signature("Jellicrown"), PokemonModels.Signature("Jellicrown+f"));
+    public void ASinnohFemaleLookIsKeptWhereTheForebearsIs()
+    {
+        var flagged = Sinnoh.Where(s => s.GenderDifferences).Select(s => s.Name).OrderBy(n => n).ToArray();
+        Assert.Equal(11, flagged.Length);
+        Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
 }
