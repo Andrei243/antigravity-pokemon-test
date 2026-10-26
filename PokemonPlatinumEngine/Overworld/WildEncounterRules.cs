@@ -114,6 +114,7 @@ public static class WildEncounterRules
             Weight = slot.Weight,
             Count = slot.Count,
             OthersLevels = others,
+            Unmapped = slot.Unmapped,
             Gender = GenderFor(PokemonDatabase.Get(slot.SpeciesName), lead, rng),
             Nature = NatureFor(lead, rng)
         };

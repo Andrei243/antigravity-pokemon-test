@@ -1433,6 +1433,10 @@ public static class WorldMapBuilder
         // Diamond's and Pearl's species of ours, once the National Pokédex is had (plan 03 · D12a)
         area.NationalSlots.AddRange(overlay?.National?.Land ?? new());
         area.NationalSuperRod.AddRange(overlay?.National?.SuperRod ?? new());
+        // Our own species past level 100, once the region's Hall of Fame is entered (plan 03 · D15, design B)
+        area.OursLand.AddRange(overlay?.Ours?.Land ?? new());
+        area.OursSurf.AddRange(overlay?.Ours?.Surf ?? new());
+        area.OursSuperRod.AddRange(overlay?.Ours?.SuperRod ?? new());
         area.WaterRate = file?.WaterRate ?? 0;
         // The rods' tables: the Old Rod's slots bite as often as the water's, the other two's by their own weights
         Fill(area.RodEncounters[(int)FishingRod.Old], file?.OldRod, WorldAreaFile.WaterSlotWeights);

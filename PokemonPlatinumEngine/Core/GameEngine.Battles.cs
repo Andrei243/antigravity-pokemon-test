@@ -40,7 +40,9 @@ public partial class GameEngine
         var wildSpecies = PokemonDatabase.Get(random?.Species(entry.SpeciesName) ?? entry.SpeciesName)!;
         Random rng = fieldRandom;
         // At the region's mapped level in a region the game crossed into (plan 18 · W4), drawn as ever
-        int lvl = LevelHere(rng.Next(entry.MinLevel, entry.MaxLevel + 1));
+        int lvl = rng.Next(entry.MinLevel, entry.MaxLevel + 1);
+        // A slot of our own species keeps its own levels, never mapped (plan 03 · D15)
+        if (!entry.Unmapped) lvl = LevelHere(lvl);
         // The gender and the nature are the lead's ability's choice when it made one (Cute Charm, Synchronize); a Poké
         // Radar patch's sparkle is a personality found shiny for the player (plan 06 · R15)
         var wild = entry.Shiny
@@ -88,7 +90,7 @@ public partial class GameEngine
             if (other != null)
             {
                 var otherSpecies = PokemonDatabase.Get(random?.Species(other.SpeciesName) ?? other.SpeciesName)!;
-                second = new Pokemon(otherSpecies, LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
+                second = new Pokemon(otherSpecies, other.Unmapped ? other.MinLevel : LevelHere(other.MinLevel), gender: other.Gender, nature: other.Nature);
                 ShinyCharm.Roll(second, flow.Bag, rng, other.Gender, other.Nature);
                 if (FormRules.WildForm(otherSpecies, area?.EastSea ?? false, area?.UnownTable ?? 0, rng) is { } otherForm) second.ChangeForm(otherForm);
                 DressForTheSeason(second);

@@ -21,6 +21,8 @@ public enum HabitatWays
     SuperRod = 64,
     /// <summary>Met in a way of its own, which the habitat's <see cref="Habitat.How"/> tells (plan 08 · P12).</summary>
     Special = 128,
+    /// <summary>One of our own species past level 100, in a rare slot of its own after the Hall of Fame (plan 03 · D15).</summary>
+    Ours = 256,
     Grass = Morning | Day | Night,
     Fishing = OldRod | GoodRod | SuperRod
 }
@@ -49,7 +51,8 @@ public sealed class Habitats
     /// <summary>The hand-written file beside the habitats file, which the importer never writes.</summary>
     public const string SpecialFileName = "special.json";
 
-    public Habitats(WorldHabitatsFile file, WorldHabitatsFile? special = null)
+    /// <param name="ours">The overlays' slots of our own species past level 100, by area key (plan 03 · D15): shown in the areas of those keys.</param>
+    public Habitats(WorldHabitatsFile file, WorldHabitatsFile? special = null, IEnumerable<(string Key, OverlayOurs Ours)>? ours = null)
     {
         map = file.Map.ToArray();
         Height = map.Length;
@@ -78,6 +81,26 @@ public sealed class Habitats
             Add(area.OldRod, HabitatWays.OldRod);
             Add(area.GoodRod, HabitatWays.GoodRod);
             Add(area.SuperRod, HabitatWays.SuperRod);
+        }
+        // Our own species past level 100, a way of their own in the areas their overlays name (plan 03 · D15)
+        var byKey = file.Areas.GroupBy(a => a.Key, StringComparer.OrdinalIgnoreCase).ToDictionary(g => g.Key, g => g.First(), StringComparer.OrdinalIgnoreCase);
+        foreach (var (key, slots) in ours ?? Enumerable.Empty<(string, OverlayOurs)>())
+        {
+            if (!byKey.TryGetValue(key, out var area)) continue;
+            var cells = ParseCells(area.Cells);
+            void AddOurs(List<OursSlot>? list, HabitatWays way)
+            {
+                foreach (var slot in list ?? new List<OursSlot>())
+                {
+                    var at = (slot.Species, area.Name);
+                    if (!ways.TryGetValue(at, out var entry)) entry = (HabitatWays.None, new SortedSet<(int, int)>(), order++);
+                    foreach (var c in cells) entry.Cells.Add(c);
+                    ways[at] = (entry.Ways | way | HabitatWays.Ours, entry.Cells, entry.First);
+                }
+            }
+            AddOurs(slots.Land, HabitatWays.Grass);
+            AddOurs(slots.Surf, HabitatWays.Surfing);
+            AddOurs(slots.SuperRod, HabitatWays.SuperRod);
         }
         foreach (var ((species, name), (w, cells, _)) in ways.OrderBy(p => p.Value.First))
         {
@@ -155,9 +178,26 @@ public sealed class Habitats
             string special = Path.Combine(World.Folder, folder, SpecialFileName);
             if (File.Exists(GameDataFiles.PathOf(path)))
                 habitats = new Habitats(GameDataFiles.Load<WorldHabitatsFile>(path),
-                    File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null);
+                    File.Exists(GameDataFiles.PathOf(special)) ? GameDataFiles.Load<WorldHabitatsFile>(special) : null,
+                    OursOf(Path.Combine(World.Folder, folder)));
             return loaded[region] = habitats;
         }
+    }
+
+    /// <summary>The slots of ours a region's overlays give (plan 03 · D15), by area key, in the order of the keys.</summary>
+    private static List<(string Key, OverlayOurs Ours)> OursOf(string regionFolder)
+    {
+        var found = new List<(string, OverlayOurs)>();
+        string overlays = GameDataFiles.PathOf(Path.Combine(regionFolder, "overlays"));
+        if (!Directory.Exists(overlays)) return found;
+        foreach (string file in Directory.GetFiles(overlays, "*.json").OrderBy(f => f, StringComparer.Ordinal))
+        {
+            // Most overlays hold none: only those that name the key are read whole
+            if (!File.ReadAllText(file).Contains("\"ours\"", StringComparison.Ordinal)) continue;
+            var overlay = GameDataFiles.Load<WorldOverlayFile>(Path.Combine(regionFolder, "overlays", Path.GetFileName(file)));
+            if (overlay.Ours != null) found.Add((Path.GetFileNameWithoutExtension(file), overlay.Ours));
+        }
+        return found;
     }
 
     /// <summary>A region's habitats, read from its folder; null for a region with none (plan 18 · W3).</summary>

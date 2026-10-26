@@ -95,6 +95,37 @@ public static class Overlays
                 if (PokemonDatabase.Get(s) == null) Add(Kind.Data, "national", $"names '{s}', which is no species of the data");
         }
 
+        // ---- our own species past level 100 after the Hall of Fame (plan 03 · D15): species of ours that may be wild, of
+        // this region's batch, at levels from their evolution's to 260, as many as the slots, where the tables have them
+        if (overlay.Ours is { } ours)
+        {
+            string regionId = Path.GetFileName(region.Folder.TrimEnd('/', '\\'));
+            void Slots(string name, List<OursSlot>? list, int most, bool tableThere, string table)
+            {
+                if (list == null) return;
+                if (list.Count > most) Add(Kind.Data, name, $"names {list.Count} species; {most} {(most == 1 ? "slot takes one" : "slots take two")}");
+                if (list.Count > 0 && !tableThere) Add(Kind.Data, name, $"the area has no {table} to put {(list.Count == 1 ? "it" : "them")} in");
+                foreach (var slot in list)
+                {
+                    if (PokemonDatabase.Get(slot.Species) is not { } species)
+                    {
+                        Add(Kind.Data, name, $"names '{slot.Species}', which is no species of the data");
+                        continue;
+                    }
+                    if (!species.IsOurs) Add(Kind.Data, name, $"names {slot.Species}, which is a species of the games, not one of ours");
+                    else if (!OursSlots.Placeable(species)) Add(Kind.Data, name, $"names {slot.Species}, the end of a legendary set, which is never wild");
+                    else if (!string.Equals(OursSlots.RegionOf(species), regionId, StringComparison.OrdinalIgnoreCase))
+                        Add(Kind.Data, name, $"names {slot.Species}, of {OursSlots.RegionOf(species) ?? "no"} region's batch, in {regionId}");
+                    int from = species.IsOurs ? OursSlots.EvolutionLevel(species) : 1;
+                    if (slot.MinLevel > slot.MaxLevel || slot.MinLevel < from || slot.MaxLevel > Ruleset.HighestLevel)
+                        Add(Kind.Data, name, $"meets {slot.Species} at {slot.MinLevel} to {slot.MaxLevel}; its levels go from its evolution's, {from}, to {Ruleset.HighestLevel}");
+                }
+            }
+            Slots("ours.land", ours.Land, OverlayOurs.MostOnLand, (area.Land?.Count ?? 0) == WorldAreaFile.LandSlotWeights.Length, "grass table of twelve slots");
+            Slots("ours.surf", ours.Surf, OverlayOurs.MostOnWater, (area.Water?.Count ?? 0) > OverlayOurs.SurfSlot, "water table of five slots");
+            Slots("ours.superRod", ours.SuperRod, OverlayOurs.MostOnRod, (area.SuperRod?.Count ?? 0) > OverlayOurs.SuperRodSlot, "Super Rod table");
+        }
+
         // ---- the people
 
         var objects = area.Objects.GroupBy(o => o.Id).ToDictionary(g => g.Key, g => g.First());

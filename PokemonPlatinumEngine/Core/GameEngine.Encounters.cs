@@ -50,7 +50,9 @@ public partial class GameEngine
             // Unova's season, whose tables an area may have (plan 22 · U4); null in every other region
             Season = SeasonHere,
             // The hordes of the region's tall grass, once its Hall of Fame is entered (plan 14 · B4)
-            Hordes = Hordes.Open(Here, flow.Story, Ruleset.Current)
+            Hordes = Hordes.Open(Here, flow.Story, Ruleset.Current),
+            // Our own species past level 100 in the rarest slots, once the region's Hall of Fame is entered (plan 03 · D15)
+            OursOpen = OursSlots.Open(Here, flow.Story)
         };
     }
 

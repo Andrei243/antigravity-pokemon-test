@@ -31,6 +31,19 @@ public class GoldenLevelTests
         text.Append($"{how} {Range(table.SelectMany(e => new[] { e.MinLevel, e.MaxLevel }))}\n");
     }
 
+    /// <summary>
+    /// An area's species of our own past level 100 (plan 03 · D15): their own levels, never mapped, which alone may pass
+    /// 100 (to 260), each from its evolution's level; a line only where the area has any.
+    /// </summary>
+    private static void Ours(StringBuilder text, MapArea area)
+    {
+        var slots = area.OursLand.Concat(area.OursSurf).Concat(area.OursSuperRod).ToList();
+        if (slots.Count == 0) return;
+        Assert.All(slots, s => Assert.InRange(s.MinLevel, OursSlots.EvolutionLevel(PokemonDatabase.Get(s.Species)!), s.MaxLevel));
+        Assert.All(slots, s => Assert.InRange(s.MaxLevel, s.MinLevel, Ruleset.HighestLevel));
+        text.Append($"ours {string.Join(", ", slots.Select(s => $"{s.Species} {(s.MinLevel == s.MaxLevel ? $"{s.MinLevel}" : $"{s.MinLevel}-{s.MaxLevel}")}"))}\n");
+    }
+
     [Fact]
     public void TheLevelsOfEveryPlaceAreWhatTheyWere()
     {
@@ -54,6 +67,7 @@ public class GoldenLevelTests
                     Wild(text, "old rod", area.RodEncounters[0]);
                     Wild(text, "good rod", area.RodEncounters[1]);
                     Wild(text, "super rod", area.RodEncounters[2]);
+                    Ours(text, area);
                 }, new List<NPC>());
             foreach (var person in map.Everyone.Where(n => n.TrainerData != null))
                 if (map.AreaAt(person.GridX, person.GridY) is { } stands) places[stands.Key].Trainers.Add(person);

@@ -782,7 +782,8 @@
       "rods": {
         "one": "{rods} Rod",
         "other": "{rods} Rods"
-      }
+      },
+      "ours": "Rarely, after the Hall of Fame"
     },
     "search": {
       "title": "Search the Pokédex",
