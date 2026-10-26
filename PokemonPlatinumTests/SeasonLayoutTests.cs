@@ -44,7 +44,7 @@ public class SeasonLayoutTests
         // Laid twice is laid once
         Assert.Empty(unova.ApplySeason(Season.Autumn));
         // The story never moves a season's chunks
-        Assert.Empty(unova.ApplySwappedPlaces(_ => 0, _ => true));
+        Assert.Empty(unova.ApplySwappedPlaces(_ => 0, _ => false));
         Assert.Equal(Season.Autumn, unova.SeasonLaid);
 
         // Winter has no chunks of its own here yet, so it is spring's ground; and spring is spring's to the tile

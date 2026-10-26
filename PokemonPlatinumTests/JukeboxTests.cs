@@ -192,7 +192,8 @@ public class JukeboxTests
         var rows = Enum.GetValues<OptionRow>();
         Assert.Equal(OptionRow.ResetDefaults, rows[^1]);
         Assert.Equal(OptionRow.Help, rows[^2]);
-        Assert.Equal(OptionRow.Jukebox, rows[^3]);
+        Assert.Equal(OptionRow.Packs, rows[^3]);
+        Assert.Equal(OptionRow.Jukebox, rows[^4]);
 
         var options = new OptionsScreen();
         options.Open();
