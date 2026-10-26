@@ -304,6 +304,9 @@ grass 18-21
 Desert Resort
 grass 18-21
 trainers 9, 22-23: unova_backpacker_clara 22, unova_backpacker_sam 22, unova_backpacker_tami 22, unova_backpacker_walt 22, unova_nurse_mariah 22, unova_pkmn_ranger_anja 23, unova_pkmn_ranger_jaden 23, unova_psychic_future 23, unova_psychic_tommy 22
+=== desert_underpass
+Desert Underpass
+grass 35-45
 === dewford_town
 Dewford Town
 surf 5-35
@@ -915,6 +918,54 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== mount_silver
+Mt. Silver
+grass 41-44
+surf 30-48
+old rod 10
+good rod 20
+super rod 40
+=== mount_silver_cave_1f
+Mt. Silver Cave
+grass 15-45
+surf 30-50
+old rod 10
+good rod 20
+super rod 40
+=== mount_silver_cave_2f
+Mt. Silver Cave
+grass 15-50
+surf 30-45
+old rod 10
+good rod 20
+super rod 40
+=== mount_silver_cave_3f
+Mt. Silver Cave
+grass 15-50
+surf 30-45
+old rod 10
+good rod 20
+super rod 40
+=== mount_silver_cave_expert_belt_chamber
+Mt. Silver Cave
+grass 15-48
+=== mount_silver_cave_lower_mountainside
+Mt. Silver Cave
+grass 15-51
+=== mount_silver_cave_moltres_chamber
+Mt. Silver Cave
+grass 15-48
+surf 30-45
+old rod 10
+good rod 20
+super rod 40
+=== mount_silver_cave_upper_mountainside
+Mt. Silver Cave
+grass 15-48
+surf 30-45
+old rod 10
+good rod 20
+super rod 40
 === mt_chimney
 Mt Chimney
 trainers 8, 18-22: hoenn_grunt_mt_chimney_1 20, hoenn_grunt_mt_chimney_2 20, hoenn_melissa 21, hoenn_sawyer_1 21, hoenn_sheila 21, hoenn_shelby_1 21, hoenn_shirley 21, hoenn_tabitha_mt_chimney 22
@@ -1056,6 +1107,12 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== new_mauville_entrance
+New Mauville
+grass 22-26
+=== new_mauville_inside
+New Mauville
+grass 22-26
 === nimbasa_city
 Nimbasa City
 trainers 2, 26: unova_subway_boss_emmet 26, unova_subway_boss_ingo 26
@@ -1926,6 +1983,13 @@ old rod 10
 good rod 20
 super rod 40
 trainers 6, 30-40: johto_ace_trainer_f_megan 32, johto_ace_trainer_f_reena 36, johto_ace_trainer_m_blake 33, johto_ace_trainer_m_brian 35, johto_bird_keeper_gs_jose_2 40, johto_psychic_m_eli 34
+=== route_28
+Route 28
+grass 39-43
+surf 35-40
+old rod 10
+good rod 20
+super rod 40
 === route_29
 Route 29
 grass 2-4

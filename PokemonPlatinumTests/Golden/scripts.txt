@@ -13139,6 +13139,10 @@ from the tile read at 8,20 of DesertRuins
 from the tile read at 9,20 of DesertRuins
 way -
   > Rows of raised dots cover the wall. They seem to say: use Rock Smash.
+=== desert_underpass.Fossil
+from Fossil at 132,10 of DesertUnderpass
+way -
+  > A fossil is set fast in the rock. It won't come loose.
 === dewford_town.Briney
 from Mr. Briney at 72,371 of Hoenn
 way 0
@@ -17999,6 +18003,17 @@ way 1, from answer 1
 from Wally's Uncle at 209,146 of Hoenn
 way -
   Wally's Uncle> Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him.
+=== mauville_city.Wattson
+from Wattson at 229,149 of Hoenn
+way -
+  Wattson> Oh, Lucas! You're just the one I wanted. I've a favour to ask of a trainer of your spark!
+  Wattson> Under the Cycling Road lies New Mauville, a power plant I built. Its generator has run wild and won't settle down.
+  Wattson> Would you go and switch it off for me? Here, this is the key to its door.
+  > Lucas received the Basement Key!
+  > Lucas put it away in the Key Items pocket.
+  Wattson> Don't you worry about it. Surf along Route 110 under the Cycling Road and you'll come to its door. Wahahaha!
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_BASEMENT_KEY_FROM_WATTSON
 === mauville_city_bike_shop.AcroHandbook
 from the tile read at 11,1 of MauvilleCity_BikeShop
 way 0
@@ -18790,6 +18805,38 @@ way 0.1, from answer 2
 way 1, from answer 1
   Karate Master> Then leave me to my training. Come back when your fists are ready.
   ? You have the eyes of someone who wants to test their fists. Will you fight me? = No
+=== mount_silver_cave_moltres_chamber.Moltres
+from Moltres at 10,9 of MtSilverCave_MoltresChamber
+way 0
+  > Gyaoo!\nThe chamber blazed as Moltres spread its wings of fire!
+  * scene mount_silver_cave_moltres_chamber.Moltres
+  * cry Moltres
+  * wildbattle Moltres 50 Won
+  * endscene
+  + FLAG_HIDE_MT_SILVER_CAVE_MOLTRES
+  + FLAG_JOHTO_FOUGHT_MOLTRES
+  + seen mount_silver_cave_moltres_chamber.Moltres
+way 1, from answer 1
+  * wildbattle Moltres 50 Lost
+  * scene over, unseen
+=== mount_silver_cave_summit.Red
+from Red at 30,11 of MtSilverCave_Summit
+way 0
+  Red> ...
+  Red> ...!
+  Red> ...
+  * scene mount_silver_cave_summit.Red
+  * battle johto_pkmn_trainer_red_red Won
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_JOHTO_BEAT_RED
+  + FLAG_UNK_25F
+  + beaten johto_pkmn_trainer_red_red
+  + seen mount_silver_cave_summit.Red
+way 1, from answer 1
+  * battle johto_pkmn_trainer_red_red Lost
+  * scene over, unseen
 === mt_chimney.Archie
 from Archie at 24,19 of MtChimney
 way -
@@ -19194,6 +19241,72 @@ way -
 from Mom at 6,7 of NewBark_PlayersHouse_1F
 way -
   Mom> Professor Elm is waiting for you at his lab. It's the big building up the lane.
+=== new_mauville_entrance.Door
+from the trigger at 4,2 of NewMauville_Entrance
+way -
+  > The door is locked.
+=== new_mauville_inside.BlueButton
+from the trigger at 13,10 of NewMauville_Inside
+from the trigger at 16,22 of NewMauville_Inside
+from the trigger at 30,38 of NewMauville_Inside
+from the trigger at 4,26 of NewMauville_Inside
+from the trigger at 6,11 of NewMauville_Inside
+way -
+  * sound select
+  = VAR_TEMP_1 0 -> 1
+=== new_mauville_inside.Generator
+from the tile read at 32,2 of NewMauville_Inside
+from the tile read at 32,3 of NewMauville_Inside
+from the tile read at 32,4 of NewMauville_Inside
+from the tile read at 33,4 of NewMauville_Inside
+from the tile read at 34,4 of NewMauville_Inside
+from the tile read at 35,2 of NewMauville_Inside
+from the tile read at 35,3 of NewMauville_Inside
+from the tile read at 35,4 of NewMauville_Inside
+way -
+  > The generator is giving off heat that can be felt from a distance. It should be switched off as soon as possible.
+=== new_mauville_inside.GreenButton
+from the trigger at 17,10 of NewMauville_Inside
+from the trigger at 18,36 of NewMauville_Inside
+from the trigger at 2,11 of NewMauville_Inside
+from the trigger at 25,18 of NewMauville_Inside
+way -
+  * sound select
+  = VAR_TEMP_2 0 -> 1
+=== new_mauville_inside.RedButton
+from the trigger at 33,6 of NewMauville_Inside
+way -
+  > Lucas stepped on the switch. Click...
+  > ... ... ... ... ... ...
+  > The generator appears to have stopped...
+  = VAR_NEW_MAUVILLE_STATE 0 -> 2
+=== new_mauville_inside.Voltorb1
+from Poké Ball at 25,18 of NewMauville_Inside
+way 0
+  > The Poké Ball was a Voltorb!
+  * cry Voltorb
+  * wildbattle Voltorb 25 Won
+  + FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE
+way 1, from answer 1
+  * wildbattle Voltorb 25 Lost
+=== new_mauville_inside.Voltorb2
+from Poké Ball at 6,11 of NewMauville_Inside
+way 0
+  > The Poké Ball was a Voltorb!
+  * cry Voltorb
+  * wildbattle Voltorb 25 Won
+  + FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE
+way 1, from answer 1
+  * wildbattle Voltorb 25 Lost
+=== new_mauville_inside.Voltorb3
+from Poké Ball at 13,10 of NewMauville_Inside
+way 0
+  > The Poké Ball was a Voltorb!
+  * cry Voltorb
+  * wildbattle Voltorb 25 Won
+  + FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE
+way 1, from answer 1
+  * wildbattle Voltorb 25 Lost
 === newmoon_island.Ferry
 from Sailor at 151,277 of Sinnoh
 way 0
@@ -23082,6 +23195,14 @@ way -
 from the trigger at 14,8 of Route22_LeagueReceptionGate
 way -
   Guard> Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion.
+=== route_22_pokemon_league_reception_gate.MtSilverCheck
+from the trigger at 8,8 of Route22_LeagueReceptionGate
+way -
+  Guard> Hold on! Past this door is Route 28, and Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go there.
+=== route_22_pokemon_league_reception_gate.MtSilverGuard
+from Guard at 8,9 of Route22_LeagueReceptionGate
+way -
+  Guard> The road west leads to Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go that way.
 === route_23.CascadeGuard
 from Guard at 15,179 of Kanto
 way -
@@ -23257,6 +23378,17 @@ way 0
 way 1, from answer 1
   Woman> All right. Come back if you get tired on the way.
   ? The road to the League is a long one. Would your Pokémon like a rest? = No
+=== route_28_house.Celebrity
+from Celebrity at 5,5 of Route28_House
+way -
+  Celebrity> Oh! You found me... Please don't tell anyone I'm hiding out here. My fans never give me a moment's peace.
+  Celebrity> If you keep my secret, I'll give you this. My Fearow and I used it in all of our films.
+  > Lucas received the TM47!
+  > TM47 holds the move Steel Wing.
+  > Lucas put it away in the TMs & HMs pocket.
+  Celebrity> TM47 is Steel Wing. It hits hard, and it can make the user's Defense rise too!
+  * fanfare FanfareTM
+  + FLAG_GOT_TM47_ON_ROUTE_28
 === route_29.Lesson
 from the trigger at 666,396 of Johto
 way -

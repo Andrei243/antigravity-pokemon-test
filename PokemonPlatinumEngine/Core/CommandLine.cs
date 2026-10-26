@@ -170,7 +170,7 @@ public static class CommandLine
         new("--where", null, "Say where the saves, the options and the log are kept, and why, and exit. Nothing is opened, made or moved.",
             (o, _) => o with { Where = true }),
         new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null },
-        new("--replay", "folder", "Play a report's folder (written with F8, or after a crash) back in the window, from the title to where it was written, saving into its replayed folder and never over your save. Menu leaves; hold Run to go four times as fast.", (o, v) => o with { ReplayFolder = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--replay takes a folder, and '{v}' can't be one." : null }
+        new("--replay", "folder", "Play a report's folder (written with F8, or after a crash) back in the window, from the title to where it was written, saving into its replayed folder and never over your save. Menu leaves; hold Run to go four times as fast.", (o, v) => o with { ReplayFolder = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--replay takes a folder, and '{v}' can't be one." : null },
         new("--packs", "none", "With none, read no pack this time: the game's own data alone, whatever the packs folders beside the game and the saves hold.", (o, _) => o with { NoPacks = true }) { Check = v => v == "none" ? null : $"--packs takes none, not '{v}'." }
     };
 

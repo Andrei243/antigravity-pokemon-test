@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1270 | 1231 | 39 | 1 | 0 |
-| Scripts (`script:`) | 8800 | 8382 | 418 | 17 | 0 |
-| People of the world (`world:`) | 6204 | 6145 | 59 | 4 | 0 |
-| **All** | 16354 | 15838 | 516 | 22 | 0 |
+| Scripts (`script:`) | 8809 | 8391 | 418 | 17 | 0 |
+| People of the world (`world:`) | 6203 | 6144 | 59 | 4 | 0 |
+| **All** | 16362 | 15846 | 516 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -23,8 +23,8 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a Pokémon's cry | 209 |
 | a question's answers | 525 |
 | a sign | 1401 |
-| the game's own voice (speaker none) | 246 |
-| the game's own voice (text) | 1167 |
+| the game's own voice (speaker none) | 247 |
+| the game's own voice (text) | 1178 |
 
 ## The cast
 
