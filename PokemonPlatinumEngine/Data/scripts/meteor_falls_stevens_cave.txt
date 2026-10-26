@@ -1,0 +1,28 @@
+# Steven's cave behind Meteor Falls (plan 21 · H12, part c). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/MeteorFalls_StevensCave/scripts.inc).
+#
+# Its mouth opens in the first room once Hoenn's Hall of Fame is entered. Steven stands at the far end looking at the
+# rock; spoken to, he starts, turns and battles with his own team (hoenn_steven, Emerald's TRAINER_STEVEN), and after it
+# says what he had foreseen (FLAG_DEFEATED_METEOR_FALLS_STEVEN). He stays, and says it again whenever spoken to.
+
+
+script Steven
+  if flag FLAG_DEFEATED_METEOR_FALLS_STEVEN goto Afterwards
+  emote self exclaim
+  wait 0.8
+  face self player
+  speaker "Steven"
+  say "Oh! {player}, you found me here? I wonder what you take me for. Just a man who loves stones?"
+  say "We fought side by side in Mossdeep's Space Center. You know what I can do."
+  say "If you mean to challenge me, then come at me with everything. I won't hold back!"
+  battle self as "hoenn_steven"
+  setflag FLAG_DEFEATED_METEOR_FALLS_STEVEN
+  goto Foreseen
+label Afterwards
+  face self player
+  speaker "Steven"
+label Foreseen
+  say "Ever since we met in Granite Cave, I had a feeling you would become the Champion."
+  say "My hunches tend to come true. So where will you go from here?"
+  say "...Ha! Even I can't see that far."
+  end

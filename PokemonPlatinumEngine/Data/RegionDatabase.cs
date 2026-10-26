@@ -671,6 +671,8 @@ public static class RegionDatabase
                 "BattleFrontier_Mart", "BattleFrontier_ExchangeServiceCorner", "BattleFrontier_ScottsHouse", "BattleFrontier_RankingHall",
                 "BattleFrontier_Lounge1", "BattleFrontier_Lounge2", "BattleFrontier_Lounge3", "BattleFrontier_Lounge4", "BattleFrontier_Lounge5",
                 "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
+                // Plan 21 · H12, part c: Steven's cave
+                "MeteorFalls_StevensCave",
             }
         },
         new()

@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1246 | 1213 | 33 | 1 | 0 |
-| Scripts (`script:`) | 8536 | 8144 | 392 | 17 | 0 |
+| Scripts (`script:`) | 8542 | 8150 | 392 | 17 | 0 |
 | People of the world (`world:`) | 6109 | 6050 | 59 | 4 | 0 |
-| **All** | 15971 | 15487 | 484 | 22 | 0 |
+| **All** | 15977 | 15493 | 484 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,11 +20,11 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 206 |
+| a Pokémon's cry | 205 |
 | a question's answers | 510 |
 | a sign | 1394 |
 | the game's own voice (speaker none) | 239 |
-| the game's own voice (text) | 1103 |
+| the game's own voice (text) | 1105 |
 
 ## The cast
 
@@ -89,13 +89,13 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:bug_catcher (any)` | 70 | 0 |
 | `class:swimmer (any)` | 70 | 0 |
 | `look:fisherman (any)` | 69 | 4 |
+| `steven` | 65 | 0 |
 | `look:worker (any)` | 63 | 0 |
 | `class:camper (any)` | 62 | 0 |
 | `prof_juniper` | 62 | 0 |
 | `underground_man` | 62 | 0 |
 | `class:twins (any)` | 60 | 0 |
 | `beauty` | 59 | 4 |
-| `steven` | 59 | 0 |
 | `lance` | 58 | 0 |
 | `prof_elm` | 58 | 1 |
 | `class:sailor (any)` | 54 | 0 |

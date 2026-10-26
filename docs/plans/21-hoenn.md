@@ -1195,7 +1195,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       painting drawn on the gallery's wall itself in place of the viewer (Emerald's metatile swap needs an alternate
       chunk each); the museum's first scene on the stairs (`ShowExhibitHall`); the PokéNav's condition page already shows
       the sheen the Pokéblock's feel raises.
-- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds)
+- [ ] H12 The Frontier island and the post-game (part a done 2026-10-26, wave 52: the Regis, the Sealed Chamber and Southern Island; `docs/mechanics/rulings.md`, "The Regis, the Sealed Chamber and Southern Island"; tests written and run with `--filter` (`HoennPostGameTests`), shots `h240` to `h268` written and not taken; part b done 2026-10-26, wave 56: the Battle Frontier island and the rooms of its grounds; part c done 2026-10-26, wave 57: Rayquaza on Sky Pillar cracked, Steven at Meteor Falls and Hoenn's species check)
     - **Built**: nine maps opened (matrices 193, 254, 256 to 259, 362, 363: Desert Ruins, Island Cave, the floor under Route
       134, the Sealed Chamber's corridor, outer room and inner room, Southern Island's beach and garden; the Ancient Tomb was
       open), all in `RegionDatabase`'s Hoenn list; Route 105's and Route 111's doors into their caves unlocked.
@@ -1258,3 +1258,22 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       nature girl, the island's song and its halls' buildings, Artisan Cave, and part a's other leftovers (the Marine and
       Terra Caves, Sky Pillar's top, Steven at Meteor Falls, the Desert Underpass, New Mauville, Trainer Hill, Mirage Island,
       Altering Cave, the Weather Institute's reports, the event islands, the Shields and the Glass Ornament).
+    - **Part c** (done 2026-10-26, wave 57: Rayquaza on Sky Pillar, Steven at Meteor Falls and the species check;
+      `docs/mechanics/rulings.md`, "Rayquaza on Sky Pillar and Steven at Meteor Falls"; tests written and run with `--filter`
+      (`HoennRayquazaAndStevenTests`, `HoennSpeciesTests`), shots `h280` to `h288` written and not taken). **Built**: Sky
+      Pillar's six cracked layouts as alternates (`GbaWorld.Alternates`, chunks 821 to 826) swapped in by
+      `FLAG_HOENN_SKY_PILLAR_CRACKED`, which Sootopolis's calm sets and the island's arrival sets for an older save; a hole
+      already broken through drops a rider (`Map.IsOpenHole`); Rayquaza on the top from the calm, battled at level 70
+      (`sky_pillar_top.Rayquaza`); the importer's patched layouts (`GbaMaps.Patches`: a map's own `setmetatile` on load
+      written as a layout of its own, the warp on an opened block kept), Steven's cave's mouth in Meteor Falls'
+      first room swapped in by `HoennHallOfFame` (chunks 827, 828), `MeteorFalls_StevensCave` (matrix 294) opened with
+      Steven's battle (`hoenn_steven`, `FLAG_DEFEATED_METEOR_FALLS_STEVEN`); `Map.OpenOnceSwapped`, which the content
+      check asks of a landing; `SpeciesSources.Hoenn` (the open areas, rocks smashed, the scripts, the professor's bag) and
+      its test with the list of what is owed and why. The two walks of the whole game (`HoennTests`, `PokemonTests`) lay
+      every swap of a flag for their second walk. **Decided**: any bicycle crosses cracked floor (as H8 part c); Rayquaza
+      may be battled before the League, as in Emerald. **Golden** `scripts.txt` moves (meteor_falls_stevens_cave.Steven
+      new, sky_pillar_top.Rayquaza): accept it. **Left**: the Marine and Terra Caves with the Weather Institute's reports
+      (sixteen route tiles by metatile; the cache lacks `abnormal_weather.inc` and a swap of the overworld builds the
+      whole map, so a cheaper swap first), New Mauville, the Desert Underpass, Trainer Hill, Mirage Island, Altering
+      Cave, the event islands, the S.S. Tidal, the halls, the Shields and the Glass Ornament, and the species
+      `HoennSpeciesTests.Owed` lists.

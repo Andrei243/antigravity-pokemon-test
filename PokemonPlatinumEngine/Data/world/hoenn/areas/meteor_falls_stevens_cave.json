@@ -1,0 +1,41 @@
+{
+  "key": "meteor_falls_stevens_cave",
+  "index": 345,
+  "name": "Meteor Falls",
+  "matrix": 294,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CAVE_OF_ORIGIN",
+  "nightMusic": "MUS_CAVE_OF_ORIGIN",
+  "encounters": "meteor_falls_stevens_cave",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Solrock", "level": 35 },
+    { "species": "Solrock", "level": 33 },
+    { "species": "Solrock", "level": 37 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Solrock", "level": 39 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Golbat", "level": 40 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Golbat", "level": 40 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 10, "z": 29, "to": "meteor_falls_1f_1r", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "meteor_falls_steven", "looks": "steven", "movement": "look_north", "x": 19, "z": 3, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "MeteorFalls_StevensCave_EventScript_Steven" }
+  ],
+  "signs": [],
+  "triggers": []
+}
