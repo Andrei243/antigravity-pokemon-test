@@ -802,6 +802,16 @@ internal static partial class PokemonModels
         "Heliolith", "Namazuro", "Crayronin", "Dogunarch", "Crinolith", "Anomalorex", "Prismaria", "Chromeleon", "Effigrim",
         "Musadon", "Carillone", "Omenblade", "Bergmaw", "Gulpereel", "Sirenyss", "Aeonfin", "Heartreef", "Regimonolith", "Regiglacier",
         "Regiferrum", "Aurelias", "Aurelios"
+        // Plan 03 · D14, batch 5 (Unova; PokemonModels.Ours.Unova.cs)
+        "Beaconwatch", "Umbrapard", "Simisylvan", "Simiscorch", "Simitorrent", "Somnarna", "Stormstrika", "Amorabat", "Excavarch", "Remedino",
+        "Throjutsu", "Sawkendo", "Cottonimbus", "Ballerilly", "Bascurage",
+        "Darumandala", "Mariachactus", "Crustadel", "Brawlhood", "Glyphoracle", "Pharaurum",
+        "Tortugarch", "Primavian", "Scrapodor", "Zoromirage", "Chinchillux", "Cygnelle",
+        "Seasonstag", "Nimbolga", "Lancelier", "Sporemonarch", "Jellicrown", "Alomatron",
+        "Voltarantula", "Ferrospire", "Cosmogrey",
+        "Beartundra", "Cryohedron", "Velocigor", "Fluxflounder", "Mienshifu",
+        "Drudrakon", "Colossurk", "Bouffalanx", "Imperavia",
+        "Carrionqueen", "Pyrovore", "Formicarch", "Helioptera", "Cobaltarch", "Terrakhan", "Virizenith"
     };
 
     /// <summary>
@@ -1116,6 +1126,8 @@ internal static partial class PokemonModels
         "SAGUAROX" => Saguarox(female: true),
         "PRISMARIA" => Prismaria(female: true),
         "AEONFIN" => Aeonfin(female: true),
+        // Batch 5: Jellicent's female is a form of her own, Jellicrown's a look of the same species (by the data's flag)
+        "JELLICROWN" => Jellicrown(female: true),
         // Plan 09 · L8: a flagged species with no sculpt of its own (none today) is generated, her by the rule of
         // PokemonGenomes.FemaleOf; a hand-built one missing above shows her male, which FemaleLookTests forbids
         _ => HasModel(species) ? Create(species) : PokemonGenerator.Build(species + PokemonPlatinumEngine.Models.PokemonLook.FemaleSuffix) ?? Create(species)
