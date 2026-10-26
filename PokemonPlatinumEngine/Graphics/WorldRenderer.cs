@@ -338,6 +338,23 @@ public sealed class WorldRenderer
         }
     }
 
+    /// <summary>
+    /// Lets go of every scene and chunk drawn so far (plan 16 · T17): a scenario that rebuilds the maps begins on none
+    /// of the last one's, so what it draws is what it would draw alone.
+    /// </summary>
+    public void ForgetAll()
+    {
+        foreach (var scene in scenes.Values) scene.Unload();
+        scenes.Clear();
+        foreach (var slot in chunks.Values)
+        {
+            slot.Pending?.Wait();
+            slot.Arriving?.Unload();
+            slot.Scene?.Unload();
+        }
+        chunks.Clear();
+    }
+
     private void Evict(Map map, float focusX, float focusZ)
     {
         leaving.Clear();

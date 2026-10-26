@@ -1,0 +1,8 @@
+# A wild Starly met on Route 201, brought to the battle's menu
+newgame
+at Sinnoh 115 854 up
+wild Starly 4
+menu
+shot scn_wild_starly_menu
+expect state Battle
+expect battle.menu Main

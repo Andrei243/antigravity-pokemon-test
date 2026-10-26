@@ -495,8 +495,12 @@ public class Map
     public double WeatherClock { get; set; }
 
     /// <summary>What falls or hangs in the air over a tile; in a room and a cave only fog hangs (the Lost Tower's top floor).</summary>
+    /// <summary>A weather a developer's command lays over the whole map (plan 16 · T17, the console's <c>weather</c>); null for the place's own.</summary>
+    public FieldWeather? WeatherOverride { get; set; }
+
     public FieldWeather WeatherAt(int x, int y)
     {
+        if (WeatherOverride is { } over) return over;
         if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
         var weather = AreaAt(x, y) is { } area ? area.WeatherAt(x, y, Core.GameClock.Today) : Weather;
