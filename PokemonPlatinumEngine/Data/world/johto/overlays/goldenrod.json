@@ -4,13 +4,12 @@
   // takeover (plan 20 · J11, part b) is the town's arrival script's (scripts/goldenrod.txt): the townspeople keep
   // indoors while it lasts (FLAG_HIDE_ROCKET_TAKEOVER_2), and its grunts stand about the streets by HeartGold's flags.
   // The friend of the Gym's who stands where a Gym trainer faces a grunt down after the takeover (FLAG_UNK_318) is
-  // left out. The Magnet Train station (warp 9) and the Global Terminal (warp 16) stay shut
+  // left out. The Global Terminal (warp 16) stays shut; the Magnet Train station (warp 9) is open since plan 20 · J15, part c
   "area": "goldenrod",
   "bgmTrack": "johto/goldenrod",
   "trees": "Round",
   "architecture": "Boulevard",
   "locked": [
-    9,
     16
   ],
   "triggers": [

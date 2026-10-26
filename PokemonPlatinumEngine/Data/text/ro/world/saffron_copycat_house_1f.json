@@ -1,0 +1,59 @@
+{
+  "people": {
+    "t11r0801_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our daughter copies everyone she meets. Talk to her and she'll copy you too, just watch!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0801_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "She's been ever so glum since she lost her favourite doll. She had it with her on the Magnet Train, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11r0801_tsure_poke_static_blissey": {
+      "name": {
+        "en": [
+          "Blissey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Blissey gave a happy little bounce."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

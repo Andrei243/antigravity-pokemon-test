@@ -1,0 +1,28 @@
+# Goldenrod City's Magnet Train station (plan 20 · J15, part c). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T25R0501).
+#
+# The officer at the gate to the platform makes the ride to Saffron City in Kanto. HeartGold asks for the Magnet Train
+# Pass, which the Copycat gives once the Power Plant is running again; here, as on the S.S. Aqua, the Hall of Fame is
+# the ticket (the rulings' "HeartGold's Kanto, part c"). The ride is told over the dark and ends before the officer
+# at Saffron's gate.
+
+
+script Officer
+  face t25r0501_policeman player
+  speaker "Officer"
+  if not flag JohtoHallOfFame goto Shut
+  ask "The Magnet Train to Saffron City in Kanto is about to leave. Would you like to board?"
+  if no goto Later
+  say "All aboard! Please stand clear of the doors."
+  fade out 0.6
+  text "The Magnet Train glided out of Goldenrod, floating silently east toward Kanto..."
+  warp "Saffron_MagnetTrainStation" 14 10 down
+  fade in
+  end
+label Later
+  say "The trains run all day. Come back whenever you're ready."
+  end
+label Shut
+  say "The Magnet Train runs between Goldenrod City and Saffron City in Kanto."
+  say "For now its seats are kept for those the League has named Champion. Win at the Indigo Plateau, and you can ride."
+  end

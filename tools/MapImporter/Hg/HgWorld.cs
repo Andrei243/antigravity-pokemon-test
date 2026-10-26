@@ -200,10 +200,10 @@ public sealed class HgWorld
     /// <c>route_22</c> and <c>pokemon_league_hall_of_fame</c>. Such a key takes the region's prefix, as FireRed's
     /// Victory Road takes <c>kanto_</c>, since a script file and the regions' areas are found by the key alone. The
     /// rest of HeartGold's Kanto shares FireRed's keys too (<c>route_1</c>, <c>route_25</c>): the session that opens
-    /// it adds them here.
+    /// it adds them here: Route 6, between Vermilion and Saffron, since plan 20 · J15, part c.
     /// </summary>
     public static bool Clashes(string key) =>
-        key.StartsWith("victory_road", StringComparison.Ordinal) || key is "route_22" or "pokemon_league_hall_of_fame";
+        key.StartsWith("victory_road", StringComparison.Ordinal) || key is "route_22" or "pokemon_league_hall_of_fame" or "route_6";
 
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);

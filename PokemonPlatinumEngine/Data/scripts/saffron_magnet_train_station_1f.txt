@@ -1,0 +1,21 @@
+# Saffron City's Magnet Train station (plan 20 · J15, part c). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_T11R0601).
+#
+# The officer at the gate to the platform makes the ride back to Goldenrod City in Johto, for anyone who has come this
+# far: whoever stands in Saffron came by the S.S. Aqua or the train, both a Champion's.
+
+
+script Officer
+  face t11r0601_policeman player
+  speaker "Officer"
+  ask "The Magnet Train to Goldenrod City in Johto is about to leave. Would you like to board?"
+  if no goto Later
+  say "All aboard! Please stand clear of the doors."
+  fade out 0.6
+  text "The Magnet Train glided out of Saffron, floating silently west toward Johto..."
+  warp "Goldenrod_MagnetTrainStation" 6 9 down
+  fade in
+  end
+label Later
+  say "The trains run all day. Come back whenever you're ready."
+  end

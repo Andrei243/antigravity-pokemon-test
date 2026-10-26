@@ -6403,3 +6403,28 @@ The user approved L9's default on 2026-10-26 (docs/plans/APPROVAL-levelling-and-
 - *Left*: the rest of HeartGold's Kanto (its other seven Gyms, routes and towns, the Magnet Train and the Expn Card, the
   Power Plant, Suicune's Kanto stops, Kanto's Apricorn trees), the S.S. Aqua's night aboard, the Fan Club's lost item,
   Suicune, Eusine, Steven and the photographer in Vermilion, the rival's Mt. Moon battle, Blue at the gate.
+
+## HeartGold's Kanto, part c (2026-10-26, plan 20 · J15, part c)
+
+- *The slice*: Route 6 north from Vermilion with its gate, Saffron City with its Pokémon Center (both floors), Mart,
+  Fighting Dojo, Mr. Psychic's house, the Copycat's house and Gym, and the Magnet Train's two stations. Route 6 is the
+  first key of HeartGold's Kanto that meets FireRed's (`route_6`): it takes Johto's prefix, `johto_route_6`
+  (`HgWorld.Clashes`), and its script file would be `johto_route_6.txt`; Saffron's keys (`saffron`, `saffron_gym`…) meet
+  none of FireRed's (`saffron_city*`), so no `ScriptLibrary` region folder is needed yet. Saffron's gates to Routes 5, 7
+  and 8, Silph Co. and Route 6's Underground Path stay shut.
+- *The Magnet Train*: HeartGold asks for the Magnet Train Pass, which the Copycat trades for her lost doll once the Power
+  Plant runs again. Here, as on the S.S. Aqua, the Hall of Fame is the ticket: the officer at Goldenrod's gate to the
+  platform rides a Champion of Johto to Saffron over the dark (a script's `warp`, as the Battle Frontier's annex does),
+  and Saffron's officer rides anyone back (whoever stands in Saffron came as a Champion). The train's car, the Pass, the
+  doll and the Power Plant are not built; the Copycat and her mother speak of the doll.
+- *The Gym*: HeartGold's own nine rooms joined by warp panels (its warps on behaviour 0x67, the field's `WarpPanel`);
+  Sabrina gives Kanto's Marsh Badge (`givebadge marsh of kanto`) and TM48 (Skill Swap), whether she is beaten here being
+  `FLAG_JOHTO_DEFEATED_SABRINA` (ours), as Lt. Surge's is. Mr. Psychic gives TM29 once (`FLAG_JOHTO_GOT_TM29_FROM_MR_PSYCHIC`).
+- *Ground*: Olivine's streets and quay and Saffron's (`as_fe0N`, `ymb_fe0N`, `as_hato01`–`04`) were open floor read as
+  nothing (and drawn as the grass round them); `HgCover` now reads them as paving, which changes four of Olivine's chunks
+  and its quay's.
+- *Songs*: Saffron and its rooms play FireRed's `kanto/viridian` (as FireRed's Saffron does), Route 6 and its gate
+  `kanto/route3`, the Gym Johto's Gym theme, Goldenrod's station Goldenrod's.
+- *Left*: the rest of HeartGold's Kanto (its six other Gyms, the roads out of Saffron, Silph Co., the Underground Path,
+  the Power Plant and the Pass, Suicune's stops, the Apricorn trees), the Gym Leaders' rematches at the Dojo, Lt. Surge
+  at Saffron's station, Cameron the photographer, the rival's Mt. Moon battle, Blue at the gate.

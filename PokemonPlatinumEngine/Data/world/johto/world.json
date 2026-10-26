@@ -251,7 +251,19 @@
     { "name": "Vermilion_FanClub", "matrix": 185, "area": "vermilion_pokemon_fan_club", "trees": "Round", "setting": "Indoors" },
     { "name": "Vermilion_CentralHouse", "matrix": 95, "area": "vermilion_central_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Vermilion_SouthHouse", "matrix": 95, "area": "vermilion_south_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "Vermilion_Gym", "matrix": 255, "area": "vermilion_gym", "trees": "Round", "setting": "Indoors" }
+    { "name": "Vermilion_Gym", "matrix": 255, "area": "vermilion_gym", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J15, part c: the Magnet Train's stations, Route 6's gate to Saffron City, and Saffron City's rooms and Gym
+    { "name": "Goldenrod_MagnetTrainStation", "matrix": 111, "area": "goldenrod_magnet_train_station_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_MagnetTrainStation", "matrix": 187, "area": "saffron_magnet_train_station_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route6_SaffronGate", "matrix": 69, "area": "route_6_saffron_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_PokemonCenter_1F", "matrix": 73, "area": "saffron_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_PokemonCenter_2F", "matrix": 77, "area": "saffron_pokecenter_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_Mart", "matrix": 104, "area": "saffron_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_FightingDojo", "matrix": 192, "area": "saffron_fighting_dojo", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_MrPsychicHouse", "matrix": 97, "area": "saffron_mr_psychic_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_CopycatHouse_1F", "matrix": 190, "area": "saffron_copycat_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_CopycatHouse_2F", "matrix": 191, "area": "saffron_copycat_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Saffron_Gym", "matrix": 256, "area": "saffron_gym", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -346,6 +358,10 @@
     // Plan 20 · J15, part b: the S.S. Aqua's voyage from Olivine's quay to Vermilion City's, and Vermilion City with its rooms and Gym
     "ss_aqua_olivine_port_exterior", "ss_aqua_1f", "ss_aqua_vermilion_port_exterior", "ss_aqua_vermilion_port_interior", "vermilion",
     "vermilion_pokecenter_1f", "vermilion_pokecenter_b1f", "vermilion_pokemart", "vermilion_fishing_dude_house", "vermilion_pokemon_fan_club",
-    "vermilion_central_house", "vermilion_south_house", "vermilion_gym"
+    "vermilion_central_house", "vermilion_south_house", "vermilion_gym",
+    // Plan 20 · J15, part c: the Magnet Train between Goldenrod and Saffron, Route 6 from Vermilion with its gate, and Saffron City with its rooms and Gym
+    "goldenrod_magnet_train_station_1f", "saffron_magnet_train_station_1f", "johto_route_6", "route_6_saffron_gatehouse", "saffron",
+    "saffron_pokecenter_1f", "saffron_pokecenter_2f", "saffron_pokemart", "saffron_fighting_dojo", "saffron_mr_psychic_house",
+    "saffron_copycat_house_1f", "saffron_copycat_house_2f", "saffron_gym"
   ]
 }

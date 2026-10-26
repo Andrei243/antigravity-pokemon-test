@@ -1,0 +1,198 @@
+{
+  "people": {
+    "t11_gsgirl2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Magnet Train floats on magnets, so it's quick and quiet. I ride it to Goldenrod City to go shopping!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There used to be two Gyms here, side by side. The other one's a Fighting Dojo now. Go and have a look!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Magnet Train station is just over there. The trains run every day, rain or shine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Silph Co. makes Poké Balls and all kinds of things. They're building something new, but it's a secret."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sabrina, the Gym Leader, can read minds. She knew I was coming before I'd even decided to!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Saffron is the heart of Kanto. Every road in the region seems to meet here sooner or later."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The gates out of town are closed for roadworks. Only the road south to Vermilion City is open."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t11_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Psychic lives just round the corner. He's a strange fellow, but he's kind to visitors."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T11_008+1": {
+      "en": [
+        "Saffron City Station\nMagnet Train service to Goldenrod City in Johto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11_009+1": {
+      "en": [
+        "Saffron City\nShining, golden land of commerce."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11_010+1": {
+      "en": [
+        "Fighting Dojo\nAll comers welcome!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11_011+1": {
+      "en": [
+        "Saffron City Pokémon Gym\nLeader: Sabrina\nThe mistress of Psychic Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11_012+1": {
+      "en": [
+        "Silph Co. Head Office\nClosed to visitors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11_013+1": {
+      "en": [
+        "Mr. Psychic's House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

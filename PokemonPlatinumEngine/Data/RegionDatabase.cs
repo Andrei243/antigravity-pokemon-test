@@ -557,6 +557,8 @@ public static class RegionDatabase
                 "Route28_House", "MtSilver_PokemonCenter_1F", "MtSilver_PokemonCenter_B1F", "MtSilverCave_1F", "MtSilverCave_UpperMountainside", "MtSilverCave_LowerMountainside", "MtSilverCave_ExpertBeltChamber", "MtSilverCave_MoltresChamber", "MtSilverCave_2F", "MtSilverCave_3F", "MtSilverCave_Summit",
                 // Plan 20 · J15, part b: the S.S. Aqua's voyage and Vermilion City's rooms
                 "SSAqua_OlivinePort", "SSAqua_1F", "SSAqua_VermilionPort", "Vermilion_PortHall", "Vermilion_PokemonCenter_1F", "Vermilion_PokemonCenter_B1F", "Vermilion_Mart", "Vermilion_FishingGuruHouse", "Vermilion_FanClub", "Vermilion_CentralHouse", "Vermilion_SouthHouse", "Vermilion_Gym",
+                // Plan 20 · J15, part c: the Magnet Train's stations, Route 6's gate and Saffron City's rooms
+                "Goldenrod_MagnetTrainStation", "Saffron_MagnetTrainStation", "Route6_SaffronGate", "Saffron_PokemonCenter_1F", "Saffron_PokemonCenter_2F", "Saffron_Mart", "Saffron_FightingDojo", "Saffron_MrPsychicHouse", "Saffron_CopycatHouse_1F", "Saffron_CopycatHouse_2F", "Saffron_Gym",
             }
         },
         new()

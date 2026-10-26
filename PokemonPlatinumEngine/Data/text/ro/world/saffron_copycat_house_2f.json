@@ -1,0 +1,50 @@
+{
+  "people": {
+    "t11r0802_gsgirl1": {
+      "name": {
+        "en": [
+          "Copycat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello, {player}! ...Oh, sorry. I'm practising being you. Did I sound right?",
+          "I lost my favourite doll somewhere. Copying people cheers me up a little."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T11R0802_001+1": {
+      "en": [
+        "A games console. The Copycat plays it every day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11R0802_002+1": {
+      "en": [
+        "A games console. The Copycat plays it every day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T11R0802_006+1": {
+      "en": [
+        "There's an empty spot on the shelf, just the size of a doll."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

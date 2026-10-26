@@ -1,0 +1,24 @@
+{
+  "people": {
+    "t25r0501_policeman": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25R0501_007+1": {
+      "en": [
+        "Magnet Train\nGoldenrod City to Saffron City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

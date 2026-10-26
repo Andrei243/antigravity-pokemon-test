@@ -1,0 +1,28 @@
+{
+  "key": "saffron_copycat_house_1f",
+  "index": 404,
+  "name": "Saffron City",
+  "matrix": 190,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_YAMABUKI",
+  "nightMusic": "GS_C_YAMABUKI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 11, "to": "saffron", "toWarp": 7 },
+    { "x": 8, "z": 3, "to": "saffron_copycat_house_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t11r0801_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 5, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T11R0801_000+1" },
+    { "id": "t11r0801_middlewoman1_2", "looks": "middlewoman1_2", "movement": "17", "x": 2, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T11R0801_001+1" },
+    { "id": "t11r0801_tsure_poke_static_blissey", "looks": "follower_mon_static_blissey", "movement": "2", "x": 11, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T11R0801_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

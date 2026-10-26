@@ -1,0 +1,45 @@
+{
+  // The Saffron Gym as HeartGold has it (plan 20 · J15, part c): nine rooms joined by warp panels, Sabrina in the middle
+  // one (saffron_gym.txt). The panels are HeartGold's own warps on its panel tiles, which the field's warp panels carry
+  // the player by (WarpPanels). Her four trainers battle by their own records (Johto's trainers.json); the trigger
+  // before her (HeartGold's VAR_TEMP_x4002) is left without a script
+  "area": "saffron_gym",
+  "bgmTrack": "johto/gym",
+  "arenaType": "Psychic",
+  "people": {
+    "t11gym0101_gsleader10": { "name": "Sabrina", "script": "Sabrina", "still": true, "hiddenBy": "" },
+    "t11gym0101_sunglasses": { "name": "Gym Guide", "script": "GymGuy", "still": true },
+    "t11gym0101_itako": {
+      "name": "Darcy",
+      "trainer": {
+        "dialogueBefore": "Medium Darcy: The spirits whispered that you would come. They didn't say you'd win, though.",
+        "dialogueAfter": "Medium Darcy: The spirits have gone very quiet."
+      }
+    },
+    "t11gym0101_mystery_2": {
+      "name": "Jared",
+      "trainer": {
+        "dialogueBefore": "Psychic Jared: I can see which panel you'll step on next. Can you see what I'll do?",
+        "dialogueAfter": "Psychic Jared: I didn't see that coming at all."
+      }
+    },
+    "t11gym0101_itako_2": {
+      "name": "Rebecca",
+      "trainer": {
+        "dialogueBefore": "Medium Rebecca: Lost among the panels? Let me lead you astray a little further!",
+        "dialogueAfter": "Medium Rebecca: It seems I'm the one who's lost."
+      }
+    },
+    "t11gym0101_mystery_2_2": {
+      "name": "Franklin",
+      "trainer": {
+        "dialogueBefore": "Psychic Franklin: Sabrina sees everything. So do I, a little. Let's battle!",
+        "dialogueAfter": "Psychic Franklin: My mind's eye needs glasses."
+      }
+    }
+  },
+  // The statues by the door, read where they stand
+  "read": {
+    "T11GYM0101_002+1": "Statue"
+  }
+}

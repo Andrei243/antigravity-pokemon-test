@@ -1,0 +1,12 @@
+{
+  // Mr. Psychic's house in Saffron City (plan 20 · J15, part c). He gives TM29 once (saffron_mr_psychic_house.txt)
+  "area": "saffron_mr_psychic_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11r0501_fishing_2": {
+      "name": "Mr. Psychic",
+      "script": "MrPsychic",
+      "still": true
+    }
+  }
+}

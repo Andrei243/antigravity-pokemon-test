@@ -1,0 +1,128 @@
+{
+  "Sabrina": [
+    {
+      "en": [
+        "Sabrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I knew you would come. I saw it three years ago, in a vision: a Champion from Johto, standing where you stand now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I don't enjoy battling, but it's my duty as a Gym Leader. Show me the strength my vision promised!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your power is far beyond what I foresaw. Even my visions can't see everything. Take the Marsh Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Marsh Badge from Sabrina!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this as well. It holds a move that lets two Pokémon trade their abilities."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM48 is Skill Swap. Used well, it turns a foe's own ability against it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Psychic power isn't only for battling. I've learned to feel what others feel, too. You feel... happy."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ! Sabrina waits in the middle room, but the only way in is by the warp panels."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Step on one and it whisks you to another room. Keep trying them, and you'll find the way through!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Her Pokémon are Psychic types. Dark types and Bug types are what you want here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You read Sabrina's mind before she could read yours! What a battle!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Saffron City Pokémon Gym\nLeader: Sabrina"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Saffron City Pokémon Gym\nLeader: Sabrina\nWinning trainers: {player}"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

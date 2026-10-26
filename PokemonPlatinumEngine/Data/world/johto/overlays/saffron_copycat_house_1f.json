@@ -1,0 +1,27 @@
+{
+  // The Copycat's house in Saffron City, downstairs (plan 20 · J15, part c): her parents and their Blissey
+  "area": "saffron_copycat_house_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11r0801_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Our daughter copies everyone she meets. Talk to her and she'll copy you too, just watch!"
+      ]
+    },
+    "t11r0801_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "She's been ever so glum since she lost her favourite doll. She had it with her on the Magnet Train, I think."
+      ]
+    },
+    "t11r0801_tsure_poke_static_blissey": {
+      "name": "Blissey",
+      "npcType": "Pokemon",
+      "species": "Blissey",
+      "dialog": [ "Blissey gave a happy little bounce." ]
+    }
+  }
+}

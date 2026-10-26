@@ -1,0 +1,36 @@
+{
+  "key": "goldenrod_magnet_train_station_1f",
+  "index": 197,
+  "name": "Goldenrod City",
+  "matrix": 111,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 18, "to": "goldenrod", "toWarp": 9 },
+    { "x": 3, "z": 3, "to": "goldenrod_magnet_train_station_2f_empty", "toWarp": 0 },
+    { "x": 3, "z": 4, "to": "goldenrod_magnet_train_station_2f_empty", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t25r0501_policeman", "looks": "policeman", "movement": "0", "x": 6, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T25R0501_000+1" }
+  ],
+  "signs": [
+    { "x": 14, "z": 8, "type": 0, "script": "T25R0501_007+1" }
+  ],
+  "triggers": [
+    { "x": 4, "z": 3, "width": 2, "depth": 3, "script": "T25R0501_004+1", "variable": "VAR_TEMP_x400A", "value": "2" },
+    { "x": 4, "z": 9, "width": 2, "depth": 3, "script": "T25R0501_002+1", "variable": "VAR_TEMP_x400A", "value": "2" },
+    { "x": 6, "z": 11, "width": 3, "depth": 3, "script": "T25R0501_002+1", "variable": "VAR_TEMP_x400A", "value": "2" },
+    { "x": 6, "z": 4, "width": 1, "depth": 2, "script": "T25R0501_003+1", "variable": "VAR_TEMP_x400A", "value": "3" },
+    { "x": 6, "z": 6, "width": 1, "depth": 1, "script": "T25R0501_001+1", "variable": "VAR_UNK_410B", "value": "0" },
+    { "x": 6, "z": 7, "width": 1, "depth": 2, "script": "T25R0501_003+1", "variable": "VAR_TEMP_x400A", "value": "1" }
+  ]
+}

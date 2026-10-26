@@ -1,0 +1,20 @@
+{
+  // Saffron City's Fighting Dojo (plan 20 · J15, part c). The Gym Leaders HeartGold gathers here for their rematches
+  // (each behind a flag of its own) wait for the session that writes them
+  "area": "saffron_fighting_dojo",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11r0101_gsfighter": {
+      "name": "Black Belt",
+      "still": true,
+      "dialog": [
+        "This was Saffron's Gym once, until Sabrina won the right to the title. Now it's a dojo, and we train harder than ever!",
+        "The masters of Kanto and Johto come here to battle one another. You might meet one if you're lucky."
+      ]
+    }
+  },
+  "signs": {
+    "T11R0101_001+1": "\"Fighting spirit!\"",
+    "T11R0101_002+1": "\"Train your body and your mind!\""
+  }
+}

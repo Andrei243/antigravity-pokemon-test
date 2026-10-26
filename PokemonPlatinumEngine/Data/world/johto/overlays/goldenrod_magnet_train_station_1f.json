@@ -1,0 +1,22 @@
+{
+  // Goldenrod City's Magnet Train station (plan 20 · J15, part c). The officer at the gate to the platform makes the
+  // ride to Saffron City for a Champion of Johto (goldenrod_magnet_train_station_1f.txt); HeartGold's Pass and its
+  // Power Plant are not built (the rulings' "HeartGold's Kanto, part c"). The train's own car (warps 1 and 2) is told
+  // over the dark, so its ways stay shut
+  "area": "goldenrod_magnet_train_station_1f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "t25r0501_policeman": {
+      "name": "Officer",
+      "script": "Officer",
+      "still": true
+    }
+  },
+  "signs": {
+    "T25R0501_007+1": "Magnet Train\nGoldenrod City to Saffron City"
+  }
+}

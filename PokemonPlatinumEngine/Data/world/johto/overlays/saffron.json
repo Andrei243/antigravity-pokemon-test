@@ -1,0 +1,77 @@
+{
+  // Saffron City as HeartGold has it three years on (plan 20 · J15, part c): a town of Johto's own map, come to by
+  // Route 6 from Vermilion City or by the Magnet Train from Goldenrod. Its Gym gives Kanto's Marsh Badge
+  // (saffron_gym.txt). The gates to Routes 5, 7 and 8 (warps 2 to 5, 15 and 16) lead onto roads whose keys meet
+  // FireRed's and wait for the session that opens them; Silph Co. (warps 8 and 9) stays shut. Cameron the photographer
+  // and the man HeartGold keeps behind FLAG_UNK_27F wait for theirs
+  "area": "saffron",
+  "bgmTrack": "kanto/viridian",
+  "locked": [
+    2,
+    3,
+    4,
+    5,
+    8,
+    9,
+    15,
+    16
+  ],
+  "people": {
+    "t11_gsgirl2": {
+      "name": "Girl",
+      "dialog": [
+        "The Magnet Train floats on magnets, so it's quick and quiet. I ride it to Goldenrod City to go shopping!"
+      ]
+    },
+    "t11_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "There used to be two Gyms here, side by side. The other one's a Fighting Dojo now. Go and have a look!"
+      ]
+    },
+    "t11_gswoman2": {
+      "name": "Woman",
+      "dialog": [
+        "The Magnet Train station is just over there. The trains run every day, rain or shine."
+      ]
+    },
+    "t11_gsboy2": {
+      "name": "Boy",
+      "dialog": [
+        "Silph Co. makes Poké Balls and all kinds of things. They're building something new, but it's a secret."
+      ]
+    },
+    "t11_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "Sabrina, the Gym Leader, can read minds. She knew I was coming before I'd even decided to!"
+      ]
+    },
+    "t11_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Saffron is the heart of Kanto. Every road in the region seems to meet here sooner or later."
+      ]
+    },
+    "t11_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "The gates out of town are closed for roadworks. Only the road south to Vermilion City is open."
+      ]
+    },
+    "t11_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "Mr. Psychic lives just round the corner. He's a strange fellow, but he's kind to visitors."
+      ]
+    }
+  },
+  "signs": {
+    "T11_008+1": "Saffron City Station\nMagnet Train service to Goldenrod City in Johto.",
+    "T11_009+1": "Saffron City\nShining, golden land of commerce.",
+    "T11_010+1": "Fighting Dojo\nAll comers welcome!",
+    "T11_011+1": "Saffron City Pokémon Gym\nLeader: Sabrina\nThe mistress of Psychic Pokémon.",
+    "T11_012+1": "Silph Co. Head Office\nClosed to visitors.",
+    "T11_013+1": "Mr. Psychic's House"
+  }
+}

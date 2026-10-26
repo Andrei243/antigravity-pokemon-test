@@ -1,0 +1,11 @@
+{
+  // The gate house between Route 6 and Saffron City (plan 20 · J15, part c)
+  "area": "route_6_saffron_gatehouse",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "r06r0201_counterm": {
+      "name": "Officer",
+      "dialog": [ "Saffron City is just through here. It's the biggest city in Kanto, so try not to get lost!" ]
+    }
+  }
+}

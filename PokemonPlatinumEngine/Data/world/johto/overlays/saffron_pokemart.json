@@ -1,0 +1,37 @@
+{
+  // Saffron City's Poké Mart (plan 20 · J15, part c). Its delivery men are the original's gifts, which this game has
+  // no use for
+  "area": "saffron_pokemart",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "t11fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t11fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t11fs0101_gsman3": {
+      "name": "Man",
+      "dialog": [
+        "Dark types aren't bothered by Psychic moves at all. That's worth knowing before you take on Sabrina."
+      ]
+    },
+    "t11fs0101_gswoman3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I came in for one Potion and I'm leaving with a whole bag. That always happens to me in big cities."
+      ]
+    }
+  }
+}
