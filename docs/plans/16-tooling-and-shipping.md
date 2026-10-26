@@ -318,7 +318,7 @@ After T23 and plan 12 · Q8 (the page earns its place once text size and colours
 - [x] T7 The playthrough bot and the key fuzzer (2026-10-25, wave 56: `Core/Autoplay` with the policy, the runner, the softlock detector, the fuzzer and the report; `BattleEngine.Suggest`; `PlaythroughBotTests` headless; the harness's `play` mode written, not run; `WorldWalk` not moved and the done-when's `play 10` over every area owed)
 - [x] T8 The content check (2026-10-12: `tools/ContentCheck` in the solution, its checks driven by `ContentTests`; lines measured with no window; plans of rooms and areas; 16 findings in the repository, all settled)
 - [ ] T9 The room and overlay editor
-- [ ] T10 Performance budgets
+- [~] T10 Performance budgets (wave 57, part a: `PokemonPlatinumTests/BudgetTests.cs` holds 8 budgets without a window, measured on the Windows machine 2026-10-26, each x3 (`BUDGETS=off` skips, `strict` x1.5); the harness `budgets` mode (`Modes/Budgets.cs`, written not run) holds `MapScene.Prepare` and writes `budgets.json`; its measured constants are 0 until run. Left: the nightly `budgets` branch and the 30 % rule, and Prepare's figures)
 - [ ] T11 The state machine without the renderers (T11a to T11h done 2026-10-13: `GameFlow` with the state, transitions, return states and evolution queue, then the field's objects, then the actions as frames and the menu screens, then every screen and what a save keeps, then the field's running state; the harness's `diff` of `all` is owed)
 - [x] T12 The headless field (2026-10-13: `GameEngine.InitializeHeadless`; `HeadlessGameTests`; the harness's `diff` of `field` owed with T11's `all`)
 - [ ] T13 The end-to-end test and the field fuzzer
