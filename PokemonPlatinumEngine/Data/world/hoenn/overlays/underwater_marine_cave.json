@@ -1,0 +1,14 @@
+{
+  // The pool under the sea before the Marine Cave (plan 21 · H12, part e): the sea floors of Routes 105, 125, 127 and 129
+  // each have two passages into it, one open while the rain is over that place (common.HoennAbnormalWeather). Coming up
+  // anywhere in its dark water comes up in the cave's mouth (Emerald's setdivewarp, emergeTo); its passage south leads back
+  // to the floor of the route the rain is over (underwater_marine_cave.txt's Out, a trigger on the passage's tile, which
+  // goes before the door the passage needs to be a way at all)
+  "area": "underwater_marine_cave",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "emergeTo": { "area": "marine_cave_entrance", "x": 10, "z": 17, "facing": "Up" },
+  "doors": [ { "warp": 0, "map": "Underwater_Route105", "x": 13, "y": 267, "facing": "Down" } ],
+  "triggers": [ { "x": 9, "z": 8, "script": "Out" } ]
+}

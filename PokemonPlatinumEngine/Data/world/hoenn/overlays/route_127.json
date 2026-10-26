@@ -4,8 +4,15 @@
   // swaps numbers for the PokéNav once beaten (route_127.txt)
   "area": "route_127",
   "bgmTrack": "hoenn/route120",
+  // The dark water Emerald's abnormal weather lays over the floor's passages into the Marine Cave (plan 21 · H12, part e)
+  "darkWater": [
+    { "x": 697, "z": 150, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_NORTH" },
+    { "x": 701, "z": 171, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_SOUTH" }
+  ],
   "zones": [
-    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_NORTH" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_SOUTH" }
   ],
   "trees": "Round",
   "people": {

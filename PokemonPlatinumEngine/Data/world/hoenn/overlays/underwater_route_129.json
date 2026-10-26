@@ -1,0 +1,13 @@
+{
+  // The sea floor under Route 129 (plan 21 · H12, part e): a matrix of its own laid under its route, dived to from the
+  // route's dark water and come up from to the same tile. Its two passages into the pool before the Marine Cave
+  // (Route 129's west and east) are shut but while the rain is over that place (common.HoennAbnormalWeather)
+  "area": "underwater_route_129",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "Underwater_MarineCave", "x": 9, "y": 7, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_WEST" },
+    { "warp": 1, "map": "Underwater_MarineCave", "x": 9, "y": 7, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_EAST" }
+  ]
+}

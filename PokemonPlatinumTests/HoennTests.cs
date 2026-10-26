@@ -143,8 +143,10 @@ public class HoennTests
             {
                 // (Route 134 dives to a floor of its own, the Sealed Chamber's way: plan 21 · H12, part a)
                 if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below || Overworld.AreaAt(x, y)?.DiveSpot != null) continue;
-                Assert.Equal("HoennUnderwater", below);
-                Assert.True(floor.InBounds(x, y) && !floor.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
+                // (and Routes 105, 125 and 129 dive to floors of their own, the Marine Cave's ways: plan 21 · H12, part e)
+                var under = BuiltMaps.Value[below];
+                Assert.True(below == "HoennUnderwater" || Overworld.FlaggedDarkWater.ContainsKey((x, y)), $"{x},{y} dives to {below}");
+                Assert.True(under.InBounds(x, y) && !under.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
                 down++;
             }
         for (int y = 0; y < floor.Height; y++)
@@ -513,10 +515,10 @@ public class HoennTests
         Assert.Contains(Overworld.Warps, w => w.TargetMap == "Route124_DivingTreasureHuntersHouse" && !w.Shut);
         // The Space Center's two floors are joined by their stairs
         Assert.Contains(BuiltMaps.Value["MossdeepCity_SpaceCenter_1F"].Warps, w => w.TargetMap == "MossdeepCity_SpaceCenter_2F");
-        // Route 125 has no dark water until the post-game's Marine Cave (Emerald's abnormal weather lays it), so its sea
-        // floor is the post-game's too
-        Assert.False(BuiltMaps.Value.ContainsKey("HoennUnderwaterRoute125"));
-        Assert.DoesNotContain("underwater_route_125", Hoenn.Index.Areas);
+        // Route 125 has no dark water but the post-game's Marine Cave's (Emerald's abnormal weather lays it, plan 21 · H12,
+        // part e: an overlay's darkWater, laid only while its flag is set), and its sea floor is a map of its own
+        Assert.Contains("underwater_route_125", Hoenn.Index.Areas);
+        Assert.Equal(2 * 2 * 2, Overworld.FlaggedDarkWater.Keys.Count(t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_125"));
         // Mossdeep's open metatiles are its sandy paths, and Emerald's shallows are water to look at
         var emerald = MapImporter.Gba.GbaGame.Emerald;
         Assert.Equal(TerrainCover.Path, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Mossdeep", 0x2F0, emerald));

@@ -401,7 +401,17 @@
     // Desert Underpass behind the Fossil Maniac's tunnel
     { "name": "NewMauville_Entrance", "matrix": 239, "area": "new_mauville_entrance", "trees": "Round", "setting": "Indoors" },
     { "name": "NewMauville_Inside", "matrix": 240, "area": "new_mauville_inside", "trees": "Round", "setting": "Indoors" },
-    { "name": "DesertUnderpass", "matrix": 285, "area": "desert_underpass", "trees": "Round", "setting": "Cave" }
+    { "name": "DesertUnderpass", "matrix": 285, "area": "desert_underpass", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H12, part e: the Weather Institute's reports, the Marine Cave (under the sea floors of Routes 105, 125,
+    // 127 and 129, each a matrix of its own laid under its route but 127's) and Terra Cave (behind Routes 114 to 118)
+    { "name": "Underwater_Route129", "matrix": 3, "area": "underwater_route_129", "trees": "Round", "setting": "Underwater" },
+    { "name": "Underwater_Route105", "matrix": 4, "area": "underwater_route_105", "trees": "Round", "setting": "Underwater" },
+    { "name": "Underwater_Route125", "matrix": 5, "area": "underwater_route_125", "trees": "Round", "setting": "Underwater" },
+    { "name": "Underwater_MarineCave", "matrix": 288, "area": "underwater_marine_cave", "trees": "Round", "setting": "Underwater" },
+    { "name": "MarineCave_Entrance", "matrix": 289, "area": "marine_cave_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "MarineCave_End", "matrix": 290, "area": "marine_cave_end", "trees": "Round", "setting": "Cave" },
+    { "name": "TerraCave_Entrance", "matrix": 291, "area": "terra_cave_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "TerraCave_End", "matrix": 292, "area": "terra_cave_end", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -545,6 +555,9 @@
     // Plan 21 · H12, part c: Steven's cave
     "meteor_falls_stevens_cave",
     // Plan 21 · H12, part d: New Mauville and the Desert Underpass
-    "new_mauville_entrance", "new_mauville_inside", "desert_underpass"
+    "new_mauville_entrance", "new_mauville_inside", "desert_underpass",
+    // Plan 21 · H12, part e: the Marine Cave and Terra Cave, and the sea floors the Marine Cave is dived to from
+    "underwater_route_105", "underwater_route_125", "underwater_route_129", "underwater_marine_cave",
+    "marine_cave_entrance", "marine_cave_end", "terra_cave_entrance", "terra_cave_end"
   ]
 }

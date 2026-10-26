@@ -1,12 +1,19 @@
 {
   // Route 115 (plan 21 · H4, part b): the seaside road north from Rustboro City to Meteor Falls' western mouth, with its
-  // beach and the high ground above it. Terra Cave's hollows open only after Sootopolis's storm (plan 21 · H12), so its
-  // two ways in stay shut
+  // beach and the high ground above it. Its two ways into Terra Cave open one at a time after the Hall of Fame, while the
+  // drought is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather; the doors' and zones' flags)
   "area": "route_115",
   "ours": { "land": [ ["Swiftarrow", 145, 149] ] },
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
-  "locked": [ 1, 2 ],
+  "doors": [
+    { "warp": 1, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_WEST" },
+    { "warp": 2, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_EAST" }
+  ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_WEST" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_EAST" }
+  ],
   "people": {
     "woman_2": { "name": "Woman", "dialog": [ "The sea breeze up here is lovely. Meteor Falls is just north, if you fancy a look at the waterfalls." ] },
     "expert_m": { "name": "Timothy", "trainer": { "dialogueBefore": "Expert Timothy: I've trained on this cliff since before you were born. Let me show you what that means!", "dialogueAfter": "Expert Timothy: Hm! The young learn quickly these days." } },

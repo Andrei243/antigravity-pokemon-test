@@ -2210,6 +2210,55 @@ script HoennChapterFourteen
   return
 
 
+# The abnormal weather after the Hall of Fame (plan 21 · H12, part e; Emerald's data/scripts/abnormal_weather.inc): where
+# VAR_ABNORMAL_WEATHER_LOCATION says (1 to 8 a drought over a route of Terra Cave's, 9 to 16 heavy rain over one of the
+# Marine Cave's; 0 none), its flag of ours is set and every other cleared. Each flag opens that place's way into the cave
+# (an overlay's `openedBy`) and lays the weather over its route (a zone `while` it), where Emerald lays the cave's mouth by
+# setmetatile and sets the weather by the route's own script
+script HoennAbnormalWeather
+  call HoennAbnormalWeatherEnd
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 1 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_NORTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 2 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 3 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_WEST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 4 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_EAST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 5 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_NORTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 6 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_SOUTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 7 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_118_EAST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 8 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_118_WEST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 9 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 10 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_SOUTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 11 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_125_WEST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 12 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_125_EAST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 13 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_NORTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 14 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_SOUTH
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 15 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_WEST
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 16 setflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_EAST
+  return
+
+
+# The abnormal weather over (Emerald's VAR_SHOULD_END_ABNORMAL_WEATHER): every way into the two caves shut and every route's
+# sky its own again. VAR_ABNORMAL_WEATHER_LOCATION is kept, so the way back out of the cave the player is in still knows
+# where it leads (terra_cave_entrance.Out, underwater_marine_cave.Out)
+script HoennAbnormalWeatherEnd
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_NORTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_WEST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_115_EAST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_NORTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_SOUTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_118_EAST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_118_WEST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_SOUTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_125_WEST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_125_EAST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_NORTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_SOUTH
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_WEST
+  clearflag FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_EAST
+  return
+
+
 # ---------------------------------------------------------------- Gabby and Ty (plan 21 · H6, part c)
 #
 # Emerald's reporter and cameraman (data/scripts/gabby_and_ty.inc, src/tv.c): a pair who come on three routes in turn,

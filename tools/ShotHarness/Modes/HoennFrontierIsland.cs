@@ -100,5 +100,6 @@ partial class Harness
         Flags("the tree", "FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO");
         HoennRayquazaAndStevenShots();
         HoennNewMauvilleShots();
+        HoennWeatherCavesShots();
     }
 }

@@ -1,0 +1,19 @@
+# Terra Cave's mouth (plan 21 · H12, part e). docs/scripts.md describes the language; Emerald's map is
+# data/maps/TerraCave_Entrance.
+#
+# Emerald's way out at the room's south end is MAP_DYNAMIC: back to the warp the player came in by, which is the route the
+# drought is over. Here the step onto it (a trigger of the overlay's) warps the player out onto that route by
+# VAR_ABNORMAL_WEATHER_LOCATION, one step south of the cave's mouth, before the overlay's door underneath (to Route 114's
+# southern mouth) is ever taken.
+
+
+script Out
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 1 warp "Hoenn" 47 7 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 2 warp "Hoenn" 46 49 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 3 warp "Hoenn" 21 49 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 4 warp "Hoenn" 36 53 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 5 warp "Hoenn" 99 136 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 6 warp "Hoenn" 119 129 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 7 warp "Hoenn" 282 147 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 8 warp "Hoenn" 249 147 down
+  end

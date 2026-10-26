@@ -1,0 +1,27 @@
+{
+  "key": "terra_cave_end",
+  "index": 343,
+  "name": "Terra Cave",
+  "matrix": 292,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 4, "to": "terra_cave_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "terra_cave_groudon", "looks": "groudon_front", "movement": "look_south", "x": 17, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TERRA_CAVE_GROUDON", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 17, "z": 26, "width": 1, "depth": 1, "script": "TerraCave_End_EventScript_Groudon", "variable": "VAR_TEMP_1", "value": "1" }
+  ]
+}

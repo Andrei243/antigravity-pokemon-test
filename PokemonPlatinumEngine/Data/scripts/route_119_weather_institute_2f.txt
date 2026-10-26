@@ -77,6 +77,7 @@ script WeatherScientist
   speaker "Scientist"
   if var VAR_WEATHER_INSTITUTE_STATE == 0 goto Held
   if not flag FLAG_RECEIVED_CASTFORM goto Give
+  if flag HoennHallOfFame goto Report
   say "Strange weather has been reported in Hoenn of late. Heavy rain in one place, blazing sun in another."
   say "Castform would know all about it. Take good care of it!"
   end
@@ -86,3 +87,56 @@ label Give
 label Held
   say "Th-they want our data on rain! What could anyone want with that much rain?"
   end
+# Once the player is Champion (plan 21 · H12, part e; Emerald's Route119_WeatherInstitute_2F_EventScript_TryStartAbnormalWeather):
+# the scientist tracks a drought or a downpour that has settled over one route, which is where Groudon's or Kyogre's cave
+# has opened. Each visit's first word of it draws a new place (Emerald's CreateAbnormalWeatherEvent behind FLAG_TEMP_2, a
+# flag of the visit); once both have been beaten or caught the weather is ordinary again
+label Report
+  if not flag FLAG_DEFEATED_KYOGRE goto Tracking
+  if not flag FLAG_DEFEATED_GROUDON goto Tracking
+  say "The abnormal weather has stopped. Nothing strange has been recorded anywhere in Hoenn for a while now."
+  say "A little rain now and then is a blessing, really."
+  end
+label Tracking
+  if not flag FLAG_MAP_LOCAL_WEATHER_REPORTED call Draw
+  say "I keep track of the weather all over Hoenn. Lately, something very odd has been showing up on our charts."
+  if var VAR_ABNORMAL_WEATHER_LOCATION >= 9 goto Rain
+  if var VAR_ABNORMAL_WEATHER_LOCATION <= 2 say "A fierce drought has settled over Route 114, and it won't move on."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 3 say "A fierce drought has settled over Route 115, and it won't move on."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 4 say "A fierce drought has settled over Route 115, and it won't move on."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 5 say "A fierce drought has settled over Route 116, and it won't move on."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 6 say "A fierce drought has settled over Route 116, and it won't move on."
+  if var VAR_ABNORMAL_WEATHER_LOCATION >= 7 say "A fierce drought has settled over Route 118, and it won't move on."
+  say "Sunshine that harsh, in one spot only... Could something be sleeping somewhere close by?"
+  end
+label Rain
+  if var VAR_ABNORMAL_WEATHER_LOCATION <= 10 say "Heavy rain has been pouring down over Route 105, and it won't let up."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 11 say "Heavy rain has been pouring down over Route 125, and it won't let up."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 12 say "Heavy rain has been pouring down over Route 125, and it won't let up."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 13 say "Heavy rain has been pouring down over Route 127, and it won't let up."
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 14 say "Heavy rain has been pouring down over Route 127, and it won't let up."
+  if var VAR_ABNORMAL_WEATHER_LOCATION >= 15 say "Heavy rain has been pouring down over Route 129, and it won't let up."
+  say "A downpour that never moves on... Could something be sleeping deep under the sea there?"
+  end
+
+
+# Where the weather settles this visit (Emerald's CreateAbnormalWeatherEvent): Terra Cave's eight places while Kyogre is
+# beaten, the Marine Cave's while Groudon is, otherwise either kind as a coin falls, and one of its eight as a die does
+script Draw
+  setflag FLAG_MAP_LOCAL_WEATHER_REPORTED
+  if flag FLAG_DEFEATED_KYOGRE goto Terra
+  if flag FLAG_DEFEATED_GROUDON goto Marine
+  random 2
+  if var RESULT == 0 goto Terra
+label Marine
+  random 8
+  setvar VAR_ABNORMAL_WEATHER_LOCATION RESULT
+  addvar VAR_ABNORMAL_WEATHER_LOCATION 9
+  call HoennAbnormalWeather
+  return
+label Terra
+  random 8
+  setvar VAR_ABNORMAL_WEATHER_LOCATION RESULT
+  addvar VAR_ABNORMAL_WEATHER_LOCATION 1
+  call HoennAbnormalWeather
+  return

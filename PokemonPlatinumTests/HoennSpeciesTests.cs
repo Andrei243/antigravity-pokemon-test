@@ -36,8 +36,6 @@ public class HoennSpeciesTests
         "Lileep", "Cradily", "Anorith", "Armaldo",
         // Route 119's Feebas tiles, not built for Hoenn
         "Feebas", "Milotic",
-        // The Marine and Terra Caves after the Weather Institute's reports (plan 21 · H12)
-        "Kyogre", "Groudon",
         // The event Pokémon of decision 5 (Faraway, Birth and Navel Rock's tickets) and Jirachi's
         "Jirachi", "Deoxys"
     };

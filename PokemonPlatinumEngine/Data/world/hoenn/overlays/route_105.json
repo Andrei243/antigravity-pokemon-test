@@ -5,6 +5,16 @@
   "area": "route_105",
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
+  // The deep water Emerald's abnormal weather lays by setmetatile (data/scripts/abnormal_weather.inc), two tiles by two near each
+  // of the floor's passages into the Marine Cave (plan 21 · H12, part e)
+  "darkWater": [
+    { "x": 10, "z": 291, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH" },
+    { "x": 20, "z": 316, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_SOUTH" }
+  ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_NORTH" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_105_SOUTH" }
+  ],
   "people": {
     "swimmer_m": { "name": "Luis", "trainer": { "dialogueBefore": "Swimmer Luis: The current out here is strong. Only the toughest swimmers get this far!", "dialogueAfter": "Swimmer Luis: Swept away by a stronger current..." } },
     "swimmer_m_2": { "name": "Dominik", "trainer": { "dialogueBefore": "Swimmer Dominik: I swim out here every morning. Battle me before I get cold!", "dialogueAfter": "Swimmer Dominik: Brr! Now I'm cold AND beaten." } },

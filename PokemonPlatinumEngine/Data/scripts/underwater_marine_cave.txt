@@ -1,0 +1,19 @@
+# The pool under the sea before the Marine Cave (plan 21 · H12, part e). docs/scripts.md describes the language; Emerald's
+# map is data/maps/Underwater_MarineCave.
+#
+# Coming up anywhere in its dark water comes up in the cave's mouth (the overlay's emergeTo, Emerald's setdivewarp). Its
+# passage south is Emerald's MAP_DYNAMIC: back along the sea floor of whichever route the rain is over. Here the step onto
+# it (a trigger of the overlay's) warps the diver back onto that floor by VAR_ABNORMAL_WEATHER_LOCATION, one step south of
+# the passage's mouth, before the overlay's door underneath (to Route 105's northern mouth) is ever taken.
+
+
+script Out
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 9 warp "Underwater_Route105" 13 267 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 10 warp "Underwater_Route105" 17 329 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 11 warp "Underwater_Route125" 662 71 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 12 warp "Underwater_Route125" 685 91 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 13 warp "HoennUnderwater" 697 146 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 14 warp "HoennUnderwater" 707 179 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 15 warp "Underwater_Route129" 666 264 down
+  if var VAR_ABNORMAL_WEATHER_LOCATION == 16 warp "Underwater_Route129" 672 282 down
+  end

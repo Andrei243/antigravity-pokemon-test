@@ -1,0 +1,11 @@
+{
+  // Terra Cave's mouth (plan 21 · H12, part e): the way in from whichever of Routes 114, 115, 116 and 118 the drought is over
+  // (common.HoennAbnormalWeather), and the way on to the inner room at its north end. Its way out at the south end leads back
+  // to that route (terra_cave_entrance.txt's Out, a trigger on the way's tile, which goes before the door the tile needs to be
+  // a way at all). Emerald plays Petalburg Woods' song all through the cave
+  "area": "terra_cave_entrance",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "doors": [ { "warp": 0, "map": "Hoenn", "x": 46, "y": 49, "facing": "Down" } ],
+  "triggers": [ { "x": 8, "z": 18, "script": "Out" } ]
+}

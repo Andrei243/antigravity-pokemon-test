@@ -1,8 +1,12 @@
 {
-  // The sea floor under Route 127 (plan 21 · H8, part a), south of Mossdeep City. Its two ways into the Marine Cave are
-  // the post-game's (plan 21 · H12) and lead nowhere yet
+  // The sea floor under Route 127 (plan 21 · H8, part a), south of Mossdeep City. Its two ways into the pool before the Marine Cave
+  // are shut but while the rain is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather)
   "area": "underwater_route_127",
   "name": "Underwater",
   "bgmTrack": "hoenn/underwater",
-  "trees": "Round"
+  "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "Underwater_MarineCave", "x": 9, "y": 7, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_NORTH" },
+    { "warp": 1, "map": "Underwater_MarineCave", "x": 9, "y": 7, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_127_SOUTH" }
+  ]
 }

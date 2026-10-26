@@ -1,0 +1,50 @@
+# The Marine Cave's inner room (plan 21 · H12, part e). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MarineCave_End/scripts.inc).
+#
+# Kyogre waits in the pool at the room's heart until it is beaten or caught (FLAG_DEFEATED_KYOGRE). The room's arrival shows
+# it and readies the step before the pool (the area's trigger 0, VAR_TEMP_1 1), as Emerald's OnTransition does; that step
+# meets it at level 70. Run from, it dives away and is back the next time the room is come to. Beaten or caught, the rain
+# over the route the cave opened from stops and its way in closes (common.HoennAbnormalWeatherEnd), and the Weather
+# Institute's next report can only be of Terra Cave.
+
+
+script OnEnter
+  if flag FLAG_DEFEATED_KYOGRE goto Gone
+  clearflag FLAG_HIDE_MARINE_CAVE_KYOGRE
+  setvar VAR_TEMP_1 1
+  end
+label Gone
+  setflag FLAG_HIDE_MARINE_CAVE_KYOGRE
+  setvar VAR_TEMP_1 0
+  end
+
+
+script Kyogre
+  if flag FLAG_DEFEATED_KYOGRE end
+  scene "Kyogre in the Marine Cave"
+  face player up
+  wait 0.4
+  cry "Kyogre"
+  camera shake 0.6
+  wait 0.8
+  speaker none
+  text "Kyogre rose from the depths of the pool!"
+  endscene
+  setvar VAR_TEMP_1 0
+  wildbattle "Kyogre" 70
+  hide marine_cave_kyogre
+  setflag FLAG_HIDE_MARINE_CAVE_KYOGRE
+  if result == 2 goto Fled
+  setflag FLAG_DEFEATED_KYOGRE
+  call HoennAbnormalWeatherEnd
+  end
+label Fled
+  text "Kyogre dived down into the depths of the pool..."
+  end
+
+
+# Kyogre looked at across the water before the step that wakes it
+script Waiting
+  speaker none
+  text "A huge blue Pokémon floats in the pool, perfectly still."
+  end
