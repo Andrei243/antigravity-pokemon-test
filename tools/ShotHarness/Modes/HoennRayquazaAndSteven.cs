@@ -90,5 +90,7 @@ partial class Harness
         Until(() => game.State == GameState.Battle, "Steven's battle", 600);
         if (game.State == GameState.Battle) { ToMainMenu(game.Battle); Shot("h288_steven_battle"); }
         Flags("Steven", "FLAG_DEFEATED_METEOR_FALLS_STEVEN");
+        // leave the battle and let the scene end, or its box stays over every later shot of the mode
+        game.State = GameState.Overworld; ReadOn(); Box().Close();
     }
 }

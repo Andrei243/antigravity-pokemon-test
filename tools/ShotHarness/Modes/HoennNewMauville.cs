@@ -43,6 +43,7 @@ partial class Harness
         game.State = GameState.Overworld;
         game.LocationSign.Hide();
         engine.Settings.TimeOfDay = TimeOfDay.Day;
+        Box().Close();
 
         // ---- The entrance: the door shut, the key's question, and the door open
         game.Story.SetVar("VAR_NEW_MAUVILLE_STATE", 0);
@@ -53,7 +54,14 @@ partial class Harness
         Shot("h290_new_mauville_door_shut");
         At("NewMauville_Entrance", 4, 3, Direction.Up); Frames(4);
         engine.Steering = (Direction.Up, false); Frames(20); engine.Steering = null;
-        Until(() => Box().IsQuestion, "the Basement Key's question", 600);
+        // the door's own line ("The door is locked.") comes first: read it on until the question is asked
+        for (int i = 0; i < 600 && !Box().IsQuestion; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete) { Frames(20); Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Frames(60); Box().FinishLine(); Frames(2);
+        if (!Box().IsQuestion) Console.WriteLine("  !! never happened: the Basement Key's question");
         Shot("h291_new_mauville_basement_key");
         Until(() => engine.Choice.IsOpen, "the yes and no"); Frames(10); engine.Choice.Confirm(); Frames(4);
         ReadOn();

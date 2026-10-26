@@ -59,9 +59,11 @@ partial class Harness
         for (int i = 0; i < 12 && !Box().IsQuestion; i++) { Until(() => Box().IsCurrentLineComplete, "a line"); Box().Advance(); Frames(4); }
         Shot("h2b1_ferry_desk_five_places");
         Console.WriteLine($"  passes: Navel Rock {game.Story.Has("FLAG_ENABLE_SHIP_NAVEL_ROCK")}, Birth Island {game.Story.Has("FLAG_ENABLE_SHIP_BIRTH_ISLAND")}");
+        Until(() => engine.Choice.IsOpen, "the places' list");
+        Frames(10);
         for (int k = 0; k < 2; k++) engine.Choice.Move(1);
         engine.Choice.Confirm(); Frames(4);
-        ReadOn();
+        ReadOn(); Box().Close();
 
         // ---- Navel Rock
         At("NavelRock_Harbor", 8, 4, Direction.Up); Frames(20);
