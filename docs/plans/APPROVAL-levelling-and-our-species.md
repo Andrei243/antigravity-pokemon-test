@@ -98,3 +98,14 @@ Reply "**all defaults**" and this is what is built, in order:
 About eight sessions in all, none of which touches the sculpts or the battle goldens (`levels.txt` gets an `ours` line and a new `levels-crossed.txt`).
 
 *Note for L3/S3: with all defaults taken literally the two disagree (L3 keeps named trainers' stages, S3 grows them). If you say "all defaults", I will read it as **named trainers keep their games' last stage** (L3), and S3 = keep.*
+
+---
+
+## Approved by the user on 2026-10-26
+
+- **L1 = C** (the climb kept; ×1.5 EXP in a crossed region; soft ceiling at 110% of the next milestone's mapped level).
+- **S1 = A + B + T, T now** (growth as they are met; the rare `ours` slots; the Leagues' 26 `<id>_beyond` teams).
+- **L3 / S3 = named trainers grow too** (Leaders, Elite Four, Champions, rivals and bosses go on into species of ours like everyone). This overrides L3's default; W4b-2's stage rule therefore has no tier exception for species of ours (Masters excepted: they follow the player).
+- **Everything else at its default**: L2 post-game `min(1.15 × Champion, next Champion − 2, 260)` (Kanto 120, Johto 156, Hoenn 183, Unova 203); L4 wild Pokémon do not evolve with their level; L5 ceiling and bonus in every difficulty; L6 Challenge by share in a crossed region; L7 later regions settled in plan 23; L8 gifts at the mapped level; L9 rematches use the furthest Hall of Fame entered; L10 leave `--region` games alone; S2 every evolution counts, the condition taken as met; S4 wild one in four; S5 slots 10 and 11 land, water slot 4, Super Rod slot 4; S6 the region's own Hall of Fame (Sinnoh: Kanto's); S7 evolution level to four above, never mapped; S8 shown on the Pokédex's area page; S9 Kalos–Paldea's 147 wait for their regions; S10 a "beyond" team is ready at the region's Hall of Fame with a team Pokémon at or above the batch's lowest evolution level.
+
+**Build order** (both touch `Trainer.Relevelled`, so one after the other): W4b-1 the ladder's data, then W4b-2 stages together with D15-A (growth), then W4b-3 crossed-region EXP, D15-B's engine session, D15-T, then D15-B's three placement sessions.
