@@ -125,11 +125,13 @@ public sealed class ScriptLibrary
     /// <summary>Reads every script file of a folder; a file that can't be read as scripts stops the game with its line named.</summary>
     public static ScriptLibrary Load(string? folder = null)
     {
-        folder ??= GameDataFiles.PathOf(Folder);
+        // The game's own scripts and every pack's, a pack's file replacing the game's of the same name (plan 16 · T14)
+        var paths = folder == null ? DataLayers.FilesIn(Folder, "*.txt").Select(f => f.Path).ToList() : null;
+        folder ??= Path.Combine(GameDataFiles.Directory, Folder);
         if (!Directory.Exists(folder)) throw new DirectoryNotFoundException($"Script folder not found: {folder}");
         try
         {
-            return new ScriptLibrary(Directory.GetFiles(folder, "*.txt").OrderBy(p => p, StringComparer.Ordinal)
+            return new ScriptLibrary((paths ?? Directory.GetFiles(folder, "*.txt").OrderBy(p => p, StringComparer.Ordinal).ToList())
                 .Select(p => (Path.GetFileNameWithoutExtension(p), File.ReadAllText(p))));
         }
         catch (ScriptException e)

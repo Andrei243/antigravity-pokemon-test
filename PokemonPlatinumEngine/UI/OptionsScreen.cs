@@ -46,7 +46,16 @@ public enum OptionRow
 /// </summary>
 public class OptionsScreen
 {
-    private static readonly OptionRow[] Rows = Enum.GetValues<OptionRow>();
+    /// <summary>Every row of the options, in the order the screen shows them.</summary>
+    public static IReadOnlyList<OptionRow> AllRows { get; } = Enum.GetValues<OptionRow>();
+
+    /// <summary>
+    /// The rows this screen shows: every one unless it was made with fewer (plan 16 · T24: the first start's page shows a
+    /// few and shares <see cref="Change"/> and <see cref="Describe"/> with this screen).
+    /// </summary>
+    public IReadOnlyList<OptionRow> Rows { get; }
+
+    public OptionsScreen(IReadOnlyList<OptionRow>? rows = null) => Rows = rows ?? AllRows;
 
     /// <summary>The rows the screen shows at once, above the help panel.</summary>
     public const int VisibleRows = 9;
@@ -121,8 +130,8 @@ public class OptionsScreen
     /// <summary>One step of the cursor up or down the rows, wrapping round; the window follows it.</summary>
     public void Move(int dy)
     {
-        SelectedIndex = (SelectedIndex + dy + Rows.Length) % Rows.Length;
-        FirstRow = UiNav.Window(FirstRow, SelectedIndex, Rows.Length, VisibleRows);
+        SelectedIndex = (SelectedIndex + dy + Rows.Count) % Rows.Count;
+        FirstRow = UiNav.Window(FirstRow, SelectedIndex, Rows.Count, VisibleRows);
         AudioManager.PlaySound("cursor");
     }
 
@@ -365,7 +374,7 @@ public class OptionsScreen
             ? (Text.Of("options.battleStyle.label"), Text.Of("options.battleStyle.value.Set"), Text.Of("options.battleStyle.help.locked"))
             : Describe(s, row);
 
-    private static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
+    public static (string Label, string Value, string Help) Describe(GameSettings s, OptionRow row) => row switch
     {
         OptionRow.Language => (Text.Of("options.language.label"), (Core.Language.Of(s.Language) ?? Text.Language).Name, Text.Of("options.language.help")),
         OptionRow.TextSpeed => (Text.Of("options.textSpeed.label"), Text.Of($"options.textSpeed.value.{s.TextSpeed}"), Text.Of("options.textSpeed.help")),
@@ -436,9 +445,9 @@ public class OptionsScreen
         else ModernUi.Hints(sw - 64, 44, ModernUi.Hint("shared.keys.leftRight", "shared.hints.change"), ModernUi.Hint("shared.keys.esc", "shared.hints.back"));
 
         const float pitch = 86, height = 78;
-        bool scrolls = Rows.Length > VisibleRows;
+        bool scrolls = Rows.Count > VisibleRows;
         float width = sw - 128 - (scrolls ? 36 : 0);
-        for (int k = 0; k < Math.Min(VisibleRows, Rows.Length); k++)
+        for (int k = 0; k < Math.Min(VisibleRows, Rows.Count); k++)
         {
             int i = FirstRow + k;
             var (label, value, _) = Described(settings, Rows[i]);
@@ -449,12 +458,12 @@ public class OptionsScreen
             // Where the window is among all the rows: a thin track with a thumb at the right
             var track = new Rectangle(sw - 64 - 12, ModernUi.ContentTop, 12, VisibleRows * pitch - (pitch - height));
             UiShapes.Fill(track, 6, ModernUi.Rule);
-            float size = track.Height * VisibleRows / Rows.Length;
-            float at = (track.Height - size) * FirstRow / (Rows.Length - VisibleRows);
+            float size = track.Height * VisibleRows / Rows.Count;
+            float at = (track.Height - size) * FirstRow / (Rows.Count - VisibleRows);
             UiShapes.Fill(new Rectangle(track.X, track.Y + at, track.Width, size), 6, ModernUi.Frame);
         }
 
-        float top = ModernUi.ContentTop + Math.Min(VisibleRows, Rows.Length) * pitch + 6;
+        float top = ModernUi.ContentTop + Math.Min(VisibleRows, Rows.Count) * pitch + 6;
         var help = new Rectangle(64, top, sw - 128, ModernUi.ContentBottom - top);
         ModernUi.Panel(help, 30);
         ModernUi.DrawWrapped(Described(settings, Rows[SelectedIndex]).Help, help.X + 52, help.Y + (help.Height - 30) / 2f - 2, help.Width - 104, 30, ModernUi.Ink, 40);

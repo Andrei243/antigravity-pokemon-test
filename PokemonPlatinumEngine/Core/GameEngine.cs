@@ -109,7 +109,9 @@ public enum GameState
     PokeblockCase,
     Blender,
     /// <summary>The Battle Dome's bracket, a script's <c>bracket show</c> or <c>bracket pick</c> waiting on it (plan 14 · B8).</summary>
-    Bracket
+    Bracket,
+    /// <summary>The first start's page of options, before the title's notice on the first run only (plan 16 · T24).</summary>
+    FirstStart
 }
 
 public partial class GameEngine
@@ -342,6 +344,8 @@ public partial class GameEngine
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
         }
+        // On the first run only, a page of options comes before the title's notice (plan 16 · T24)
+        OfferTheFirstStart();
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -1370,6 +1374,9 @@ public partial class GameEngine
                 break;
             case GameState.Bracket:
                 UpdateBracket(dt);
+                break;
+            case GameState.FirstStart:
+                UpdateFirstStart(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -2773,6 +2780,9 @@ public partial class GameEngine
                 break;
             case GameState.Bracket:
                 flow.BracketScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.FirstStart:
+                flow.FirstStartScreen.Draw(VirtualWidth, VirtualHeight, Settings);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);

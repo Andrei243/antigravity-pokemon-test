@@ -38,7 +38,7 @@ internal sealed class CharacterStyles
     /// <summary>The game's own table, read from the data folder the first time it is asked.</summary>
     public static CharacterStyles Default => table.Value;
 
-    private static readonly Lazy<CharacterStyles> table = new(() => Parse(System.IO.File.ReadAllText(GameDataFiles.PathOf(FileName))));
+    private static readonly Lazy<CharacterStyles> table = new(() => Parse(DataLayers.ReadPatched(FileName))); // a pack's characters.patch.json laid over it (plan 16 · T14)
 
     private readonly Dictionary<string, CharacterStyle> looks;
     private readonly Dictionary<string, string> same, fallbacks;

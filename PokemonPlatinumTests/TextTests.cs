@@ -278,7 +278,9 @@ public class TextTests
         ["Battle/BattleEngine.Menus.cs"] = new[] { "Safari Ball" },
         ["Battle/BattleEngine.cs"] = new[] { "Transform" },
         // What a crash report says of the screen the game was on, for whoever reads the report
-        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" }
+        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" },
+        // The options' rows the first start's page asks for by name, some not built yet (plan 16 · T24)
+        ["UI/FirstStartScreen.cs"] = new[] { "Language", "Captions", "Quality" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);

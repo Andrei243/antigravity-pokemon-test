@@ -4381,5 +4381,14 @@
     "skill": "ÎNDEMÂNARE",
     "body": "TRUP",
     "total": "TOTAL"
+  },
+  "firstStart": {
+    "title": "ÎNAINTE SĂ ÎNCEPI",
+    "line": "Potrivește jocul așa cum îți vine mai bine să citești și să joci. Orice alegere de aici se poate schimba mai târziu din OPȚIUNI.",
+    "hint": { "continue": "Continuă" },
+    "continue": {
+      "label": "CONTINUĂ",
+      "help": "Păstrează aceste alegeri și trece la ecranul de titlu. Pagina aceasta nu va mai apărea."
+    }
   }
 }

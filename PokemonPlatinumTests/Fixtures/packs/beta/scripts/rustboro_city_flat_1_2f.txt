@@ -1,0 +1,5 @@
+# A second test pack's lines for the same dolls, which load after alpha's (plan 16 · T14)
+
+script Doll
+  say "The beta pack's doll bows."
+  end

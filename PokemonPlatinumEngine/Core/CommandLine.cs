@@ -65,6 +65,9 @@ public sealed record LaunchOptions
     /// </summary>
     public string? RecordPath { get; init; }
 
+    /// <summary><c>--packs none</c> (plan 16 · T14): no pack is read this time, whatever the packs folders hold.</summary>
+    public bool NoPacks { get; init; }
+
     /// <summary>What was wrong with the command line, a line to each mistake; empty when nothing was.</summary>
     public IReadOnlyList<string> Errors { get; init; } = Array.Empty<string>();
 
@@ -161,7 +164,8 @@ public static class CommandLine
         },
         new("--where", null, "Say where the saves, the options and the log are kept, and why, and exit. Nothing is opened, made or moved.",
             (o, _) => o with { Where = true }),
-        new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null }
+        new("--record", "file", "Write this session's recording (every frame's keys and clock, kept from the title) to this file as the game ends or crashes, to be played back.", (o, v) => o with { RecordPath = v }) { Check = v => v.IndexOfAny(Path.GetInvalidPathChars()) >= 0 ? $"--record takes a file, and '{v}' can't be one." : null },
+        new("--packs", "none", "With none, read no pack this time: the game's own data alone, whatever the packs folders beside the game and the saves hold.", (o, _) => o with { NoPacks = true }) { Check = v => v == "none" ? null : $"--packs takes none, not '{v}'." }
     };
 
     /// <summary>

@@ -296,6 +296,12 @@ public sealed class GameSettings
     public List<string> ScenesSeen { get; set; } = new();
 
     /// <summary>
+    /// The packs (plan 16 · T14), in the order they load and each on or off: a pack found and not named here loads
+    /// after these, by name. Empty unless chosen; plan 16 · T15's screen changes it.
+    /// </summary>
+    public List<Data.PackChoice> Packs { get; set; } = new();
+
+    /// <summary>
     /// Notes a scene as seen on this machine; true when it hadn't been, which is when the options are worth writing
     /// to their file again (once for each scene, never a frame's work).
     /// </summary>

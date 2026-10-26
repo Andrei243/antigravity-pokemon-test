@@ -134,6 +134,8 @@ public static class Program
             Overrides.Enabled = false;
             Log.Info("Safe mode: the Low preset in a 1280x720 window, no mesh cache, no overrides.");
         }
+        // The packs beside the game and the saves, laid over the game's data before anything reads it (plan 16 · T14)
+        Packs.Start(settings, SavePaths.Current.Folder, launch.NoPacks || launch.SafeMode);
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | (settings.VSync ? ConfigFlags.VSyncHint : 0));
         Raylib.InitWindow(settings.WindowWidth, settings.WindowHeight, "Pokémon Platinum - Sinnoh Distortion Engine");
         Raylib.SetWindowMinSize(960, 540);
