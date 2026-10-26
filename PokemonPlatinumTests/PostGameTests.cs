@@ -187,9 +187,7 @@ public class PostGameTests
         Assert.Equal(before, Ground());
         Assert.Equal(props, map.Props.Count);
 
-        // A swap doesn't carry a building: one of chunks a building of the world's models stands on is refused
-        var town = map.PlacedBuildings!.First();
-        Assert.Throws<InvalidOperationException>(() => map.AddSwappedPlace("VAR_TEST", 1, new[] { (town.X0 / Map.ChunkTiles, town.Y0 / Map.ChunkTiles) }, map));
+        // A swap over a building is accepted only where the same building stands in both layouts (plan 22 · U8, Opelucid's ice); a map swapped with itself is such a case
         Assert.Single(map.SwappedPlaces);
 
         // The path and the meadow at its end: Floaroma's theme stands in for the original's, nobody stands there (Shaymin
