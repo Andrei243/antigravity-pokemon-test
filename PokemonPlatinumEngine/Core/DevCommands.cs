@@ -51,7 +51,8 @@ internal static class DevCommands
         new("flag", "flag <name> [on|off]", "flag FLAG_HAS_POKEDEX on", 1, 2,
             a => a.Length > 1 && a[1] != "on" && a[1] != "off" ? $"a flag is on or off, not '{a[1]}'" : null, Flag),
         new("var", "var <name> [value]", "var VAR_SPAWN_LOCATION 1", 1, 2,
-            a => a.Length > 1 ? Int(a[1], "value", int.MinValue) : null, Var)
+            a => a.Length > 1 ? Int(a[1], "value", int.MinValue) : null, Var),
+        new("layers", "layers <" + string.Join("|", Graphics.DebugLayers.Names.Select(n => n.Name)) + "|all|off>...", "layers solid,sight", 1, 9, Graphics.DebugLayers.CheckWords, Graphics.DebugLayers.Command)
     };
 
     public static DevCommand? Find(string name) => Commands.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));

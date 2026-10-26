@@ -19,7 +19,7 @@ namespace PokemonPlatinumEngine.Graphics;
 /// uploaded here, and chunks left behind are freed.
 /// </para>
 /// </summary>
-public sealed class WorldRenderer
+public sealed partial class WorldRenderer
 {
     private readonly RenderContext context;
     private bool lastWasIndoors;
@@ -197,6 +197,7 @@ public sealed class WorldRenderer
         // whole, behind the fade. The rest is uploaded a few steps a frame, as far as the frame's budget goes,
         // and is ready well before the player can walk into sight of it.
         streamClock.Restart();
+        waitedThisFrame.Clear();
 
         foreach (var (key, slot) in chunks)
         {
@@ -212,6 +213,7 @@ public sealed class WorldRenderer
                     double before = streamClock.Elapsed.TotalMilliseconds;
                     slot.Pending.Wait();
                     Streaming.Waits++;
+                    waitedThisFrame.Add(key);
                     Streaming.WorstWaitMs = Math.Max(Streaming.WorstWaitMs, streamClock.Elapsed.TotalMilliseconds - before);
                 }
                 var prepared = slot.Pending.GetAwaiter().GetResult();
@@ -734,6 +736,8 @@ public sealed class WorldRenderer
         DrawActors(CharacterPass.Color);
         DrawLife(map, camera, rig, upright: true);
         DrawBubbles(map, player, camera, rig, indoors, pitchDeg, vs);
+        // The field's rules as layers, when a developer has turned any on (plan 16 · T18)
+        if (Layers != DebugLayer.None || LastLayers != null) DrawDebugLayers(map, camera, view);
 
         Rlgl.EnableBackfaceCulling();
         Raylib.EndMode3D();
@@ -763,6 +767,7 @@ public sealed class WorldRenderer
         if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
         if (Life.Flash is > 0f and var flash)
             Raylib.DrawRectangle(0, 0, destWidth, destHeight, new Color(255, 255, 255, (int)(flash * 255f)));
+        DrawLayerLabels(destWidth, destHeight);
     }
 
     /// <summary>

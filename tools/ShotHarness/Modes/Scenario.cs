@@ -308,6 +308,8 @@ partial class Harness
         // The maps made again (with their people, their trainers' teams and their own dice), then the engine's own
         MapDatabase.Initialize();
         game.Afresh();
+        // ... and the layers back to what SHOTS_LAYERS asked for, whatever the last scenario turned on (plan 16 · T18)
+        game.World.Layers = ShotLayers;
     }
 
     // One frame of reading on: a line finished or put away, or the game left to go on
