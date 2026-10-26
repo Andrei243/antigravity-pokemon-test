@@ -161,7 +161,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "{player}! Welcome home, Champion! I heard it all on the news. I'm so proud of you I could burst!"
       ],
       "text": [
-        ""
+        "{player}! Bine ai revenit acasă, Campion! Am aflat totul din știri. Sunt atât de mândră de tine că aș exploda!"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Oh, and we have a visitor. He's been waiting all morning to meet you."
       ],
       "text": [
-        ""
+        "Ah, și avem un oaspete. Te așteaptă de dimineață să te cunoască."
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Prof. Cedric Juniper"
       ],
       "text": [
-        ""
+        "Prof. Cedric Juniper"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "So you're the new Champion! I'm Cedric Juniper. Yes, the professor's father. I study Pokémon too, in my own way."
       ],
       "text": [
-        ""
+        "Deci tu ești noul Campion! Sunt Cedric Juniper. Da, tatăl profesoarei. Studiez și eu Pokémonii, în felul meu."
       ]
     },
     {
@@ -201,7 +201,7 @@
         "My daughter tells me you've filled your Pokédex with Unova's Pokémon. Then it's time it saw the rest of the world."
       ],
       "text": [
-        ""
+        "Fiica mea îmi spune că ți-ai umplut Pokédex-ul cu Pokémonii din Unova. Atunci e timpul să vadă și restul lumii."
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Let me have it for a moment... There! It's the National Pokédex now."
       ],
       "text": [
-        ""
+        "Dă-mi-l o clipă... Gata! Acum e Pokédex-ul Național."
       ]
     },
     {
@@ -217,7 +217,7 @@
         "{player}'s Pokédex was upgraded to the National Pokédex!"
       ],
       "text": [
-        ""
+        "Pokédex-ul lui {player} a fost transformat în Pokédex-ul Național!"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "Prof. Cedric Juniper"
       ],
       "text": [
-        ""
+        "Prof. Cedric Juniper"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Pokémon from far beyond Unova will be recorded now. And there's a plane at Mistralton for anyone who wants to go and see them!"
       ],
       "text": [
-        ""
+        "De acum vor fi înregistrați Pokémoni din locuri mult dincolo de Unova. Și la Mistralton e un avion pentru oricine vrea să-i vadă!"
       ]
     },
     {
@@ -241,7 +241,7 @@
         "Well, I'll be off. Good luck, Champion!"
       ],
       "text": [
-        ""
+        "Ei bine, eu plec. Mult noroc, Campion!"
       ]
     }
   ]

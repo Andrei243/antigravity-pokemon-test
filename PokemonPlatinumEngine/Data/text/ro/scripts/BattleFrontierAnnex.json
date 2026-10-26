@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Battle Dome! Sixteen Trainers meet in a tournament, and four wins in a row make a champion."
       ],
       "text": [
-        ""
+        "Bun venit la Domul Luptei! Șaisprezece Antrenori se întâlnesc într-un turneu, iar patru victorii la rând fac un campion."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "You've won {number} tournaments in a row. The field gets tougher with every one!"
       ],
       "text": [
-        ""
+        "Ai câștigat {number} turnee la rând. Concurența devine mai grea cu fiecare!"
       ]
     },
     {
@@ -32,10 +32,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să te înscrii într-un turneu?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -51,7 +51,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "Please choose the three Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Thank you! The bracket has been drawn. This way to the hall, please!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Tabloul a fost tras la sorți. Pe aici spre sală, te rog!"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Please come again. There's always another tournament about to begin."
       ],
       "text": [
-        ""
+        "Revino oricând. Mereu urmează un alt turneu."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Your three battle at Level 50, or at their own level if it's lower. Nothing you do here changes them."
       ],
       "text": [
-        ""
+        "Cei trei ai tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic. Nimic din ce faci aici nu îi schimbă."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Before every match you'll see your opponent's three, and you send two of yours into a battle of one on one."
       ],
       "text": [
-        ""
+        "Înaintea fiecărui meci vezi cei trei ai adversarului, iar tu trimiți doi dintre ai tăi într-o luptă unu la unu."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Win the final and you're the champion. Lose a match, and the tournament is over for you."
       ],
       "text": [
-        ""
+        "Câștigă finala și ești campionul. Pierde un meci, și turneul s-a terminat pentru tine."
       ]
     }
   ],
@@ -125,7 +125,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Welcome to the Battle Palace! Here your Pokémon battle as their natures tell them to."
       ],
       "text": [
-        ""
+        "Bun venit la Palatul Luptei! Aici Pokémonii tăi luptă așa cum le dictează firea."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "You've won {number} battles in a row here. Your Pokémon must trust you!"
       ],
       "text": [
-        ""
+        "Ai câștigat {number} lupte la rând aici. Pokémonii tăi trebuie să aibă încredere în tine!"
       ]
     },
     {
@@ -152,10 +152,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să încerci Palatul Luptei?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Please choose the three Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Thank you! Seven Trainers are waiting. This way to the hall, please!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Șapte Antrenori te așteaptă. Pe aici spre sală, te rog!"
       ]
     },
     {
@@ -195,7 +195,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -203,7 +203,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -211,7 +211,7 @@
         "Please come again. Your Pokémon will be glad of the chance to speak for themselves."
       ],
       "text": [
-        ""
+        "Revino oricând. Pokémonii tăi vor fi bucuroși să vorbească singuri."
       ]
     },
     {
@@ -219,7 +219,7 @@
         "Your three battle at Level 50, or at their own level if it's lower. They are made whole after every battle."
       ],
       "text": [
-        ""
+        "Cei trei ai tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic. Sunt vindecați complet după fiecare luptă."
       ]
     },
     {
@@ -227,7 +227,7 @@
         "You give no orders here. Each Pokémon chooses its moves by its nature, bolder or warier as its HP runs low."
       ],
       "text": [
-        ""
+        "Aici nu dai ordine. Fiecare Pokémon își alege mișcările după fire, mai îndrăzneț sau mai prudent pe măsură ce îi scade HP-ul."
       ]
     },
     {
@@ -235,7 +235,7 @@
         "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
       ],
       "text": [
-        ""
+        "Învinge șapte Antrenori la rând ca să câștigi runda. Pierde o dată, și runda s-a terminat."
       ]
     }
   ],
@@ -245,7 +245,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -253,7 +253,7 @@
         "Welcome to the Battle Arena! Every bout is fought to a finish, or to the judge's verdict."
       ],
       "text": [
-        ""
+        "Bun venit la Arena Luptei! Fiecare dispută se duce până la capăt sau până la verdictul judecătorului."
       ]
     },
     {
@@ -261,7 +261,7 @@
         "You've won {number} battles in a row here. The judges know your name!"
       ],
       "text": [
-        ""
+        "Ai câștigat {number} lupte la rând aici. Judecătorii îți știu numele!"
       ]
     },
     {
@@ -272,10 +272,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să încerci Arena Luptei?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -283,7 +283,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -299,7 +299,7 @@
         "Please choose the three Pokémon you'll enter, in the order they'll fight."
       ],
       "text": [
-        ""
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii, în ordinea în care vor lupta."
       ]
     },
     {
@@ -307,7 +307,7 @@
         "Thank you! Seven Trainers are waiting. This way to the arena, please!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Șapte Antrenori te așteaptă. Pe aici spre arenă, te rog!"
       ]
     },
     {
@@ -315,7 +315,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -323,7 +323,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -331,7 +331,7 @@
         "Please come again. The judges are always watching."
       ],
       "text": [
-        ""
+        "Revino oricând. Judecătorii privesc mereu."
       ]
     },
     {
@@ -339,7 +339,7 @@
         "Your three battle at Level 50, or at their own level if it's lower, one at a time in the order you chose."
       ],
       "text": [
-        ""
+        "Cei trei ai tăi luptă la Nivelul 50, sau la nivelul lor, dacă e mai mic, câte unul pe rând, în ordinea aleasă."
       ]
     },
     {
@@ -347,7 +347,7 @@
         "No switching! A bout still going after three turns is judged on Mind, Skill and Body, and the loser is out."
       ],
       "text": [
-        ""
+        "Fără schimbări! O dispută care durează și după trei ture e judecată după Minte, Îndemânare și Trup, iar învinsul iese."
       ]
     },
     {
@@ -355,7 +355,7 @@
         "Beat seven Trainers in a row to win the round. Lose once, and the round is over."
       ],
       "text": [
-        ""
+        "Învinge șapte Antrenori la rând ca să câștigi runda. Pierde o dată, și runda s-a terminat."
       ]
     }
   ],
@@ -365,7 +365,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -373,7 +373,7 @@
         "Welcome to the Battle Pike! Three doors, fourteen rooms, and luck as your fourth Pokémon."
       ],
       "text": [
-        ""
+        "Bun venit la Știuca Luptei! Trei uși, paisprezece camere și norocul drept al patrulea Pokémon."
       ]
     },
     {
@@ -381,7 +381,7 @@
         "You've passed {number} rooms in a row here. The Pike remembers you!"
       ],
       "text": [
-        ""
+        "Ai trecut de {number} camere la rând aici. Gheara își amintește de tine!"
       ]
     },
     {
@@ -392,10 +392,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să încerci Știuca Luptei?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -403,7 +403,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -411,7 +411,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -419,7 +419,7 @@
         "Please choose the three Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -427,7 +427,7 @@
         "Thank you! The first three doors are waiting. Good luck, and choose well!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Primele trei uși te așteaptă. Mult noroc și alege cu grijă!"
       ]
     },
     {
@@ -435,7 +435,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -443,7 +443,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -451,7 +451,7 @@
         "Please come again. The doors will still be here, and still be hiding things."
       ],
       "text": [
-        ""
+        "Revino oricând. Ușile vor fi tot aici și tot vor ascunde lucruri."
       ]
     },
     {
@@ -459,7 +459,7 @@
         "Your three go in at Level 50, or at their own level if it's lower. Nothing heals them unless a room does."
       ],
       "text": [
-        ""
+        "Cei trei ai tăi intră la Nivelul 50, sau la nivelul lor, dacă e mai mic. Nimic nu îi vindecă decât o cameră."
       ]
     },
     {
@@ -467,7 +467,7 @@
         "Before every room you choose one of three doors. Behind it there may be a battle, a rest, a wild Pokémon, or worse."
       ],
       "text": [
-        ""
+        "Înaintea fiecărei camere alegi una din trei uși. În spatele ei poate fi o luptă, o odihnă, un Pokémon sălbatic sau ceva mai rău."
       ]
     },
     {
@@ -475,7 +475,7 @@
         "Pass fourteen rooms to win the round. If all three of yours faint, the round is over."
       ],
       "text": [
-        ""
+        "Trece de paisprezece camere ca să câștigi runda. Dacă leșină toți trei ai tăi, runda s-a terminat."
       ]
     }
   ],
@@ -485,7 +485,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -493,7 +493,7 @@
         "Welcome to the Battle Pyramid! Seven floors in the dark, and the stairs up somewhere on each."
       ],
       "text": [
-        ""
+        "Bun venit la Piramida Luptei! Șapte etaje în întuneric, iar scările în sus sunt undeva pe fiecare."
       ]
     },
     {
@@ -501,7 +501,7 @@
         "You've climbed {number} floors in a row. The Pyramid King has heard of you!"
       ],
       "text": [
-        ""
+        "Ai urcat {number} etaje la rând. Regele Piramidei a auzit de tine!"
       ]
     },
     {
@@ -512,10 +512,10 @@
         "No"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Vrei să încerci Piramida Luptei?",
+        "Înscrie-mă",
+        "Regulile",
+        "Nu"
       ]
     },
     {
@@ -523,7 +523,7 @@
         "You need three Pokémon that can take part, all of different species and holding different items."
       ],
       "text": [
-        ""
+        "Ai nevoie de trei Pokémoni care pot participa, toți de specii diferite și cu obiecte diferite."
       ]
     },
     {
@@ -531,7 +531,7 @@
         "An Egg can't take part, and nor can {banned}."
       ],
       "text": [
-        ""
+        "Un Ou nu poate participa, și nici {banned}."
       ]
     },
     {
@@ -539,7 +539,7 @@
         "Please choose the three Pokémon you'll enter."
       ],
       "text": [
-        ""
+        "Te rog să alegi cei trei Pokémoni pe care îi înscrii."
       ]
     },
     {
@@ -547,7 +547,7 @@
         "Thank you! The first floor has been laid out. Watch your step in the dark!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Primul etaj a fost pregătit. Ai grijă pe unde calci în întuneric!"
       ]
     },
     {
@@ -555,7 +555,7 @@
         "I'm sorry. The three entered must all be of different species."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Cei trei înscriși trebuie să fie toți de specii diferite."
       ]
     },
     {
@@ -563,7 +563,7 @@
         "I'm sorry. No two of the three entered may hold the same item."
       ],
       "text": [
-        ""
+        "Îmi pare rău. Doi dintre cei trei înscriși nu pot ține același obiect."
       ]
     },
     {
@@ -571,7 +571,7 @@
         "Please come again. The Pyramid changes every time, but it's always dark."
       ],
       "text": [
-        ""
+        "Revino oricând. Piramida se schimbă de fiecare dată, dar e mereu întuneric."
       ]
     },
     {
@@ -579,7 +579,7 @@
         "Your three go in at Level 50, or at their own level if it's lower. Nothing heals them but what you find."
       ],
       "text": [
-        ""
+        "Cei trei ai tăi intră la Nivelul 50, sau la nivelul lor, dacă e mai mic. Nimic nu îi vindecă în afară de ce găsești."
       ]
     },
     {
@@ -587,7 +587,7 @@
         "Each floor is dark. Every battle you win lets you see a little farther. Flash is no help in here."
       ],
       "text": [
-        ""
+        "Fiecare etaj e întunecat. Fiecare luptă câștigată îți dă voie să vezi puțin mai departe. Flash nu te ajută aici."
       ]
     },
     {
@@ -595,7 +595,7 @@
         "Find the stairs on seven floors to win the round. If all three of yours faint, the round is over."
       ],
       "text": [
-        ""
+        "Găsește scările pe șapte etaje ca să câștigi runda. Dacă leșină toți trei ai tăi, runda s-a terminat."
       ]
     }
   ]

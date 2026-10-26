@@ -5,7 +5,7 @@
         "The statue is glowing. All four of the Elite Four have been beaten!"
       ],
       "text": [
-        ""
+        "Statuia strălucește. Toți patru din Elita celor Patru au fost învinși!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Go down to the Champion?"
       ],
       "text": [
-        ""
+        "Cobori la Campion?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The statue sank slowly into the ground, carrying {player} with it..."
       ],
       "text": [
-        ""
+        "Statuia s-a scufundat încet în pământ, ducându-l cu ea pe {player}..."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "A statue of a Pokémon stands in the well. It won't move until all four of the Elite Four have been beaten."
       ],
       "text": [
-        ""
+        "O statuie a unui Pokémon stă în put. Nu se mișcă până nu sunt învinși toți patru din Elita celor Patru."
       ]
     }
   ]

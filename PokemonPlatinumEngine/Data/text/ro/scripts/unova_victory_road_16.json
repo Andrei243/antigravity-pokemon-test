@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Wait up, {player}!"
       ],
       "text": [
-        ""
+        "Așteaptă, {player}!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Before you take on the Pokémon League, battle me one more time. Every battle makes us stronger, right?"
       ],
       "text": [
-        ""
+        "Înainte să înfrunți Liga Pokémon, luptă-te cu mine încă o dată. Fiecare luptă ne face mai puternici, nu?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player}... Thanks to you, I did what I set out to do on this journey. My sister's Purrloin is home."
       ],
       "text": [
-        ""
+        "{player}... Datorită ție, am făcut ce îmi propusesem în această călătorie. Purrloin-ul surorii mele e acasă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "I wish you could have seen her face. This is my thanks!"
       ],
       "text": [
-        ""
+        "Mi-aș fi dorit să-i fi văzut chipul. Asta e mulțumirea mea!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "You're seriously amazing. So go and become the Champion! Show everyone the kind of Trainer your Pokémon are proud of!"
       ],
       "text": [
-        ""
+        "Ești uluitor. Așa că mergi și fă-te Campion! Arată-le tuturor ce fel de Antrenor fac mândri Pokémonii tăi!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "See you!"
       ],
       "text": [
-        ""
+        "Pe curând!"
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Palace Maven"
       ],
       "text": [
-        ""
+        "Maestrul Palatului"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Battle {number} of seven! Your Pokémon choose for themselves. Trust their natures."
       ],
       "text": [
-        ""
+        "Lupta {number} din șapte! Pokémonii tăi aleg singuri. Încrede-te în firea lor."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{foe} steps forward!"
       ],
       "text": [
-        ""
+        "{foe} înaintează!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Palace Maven"
       ],
       "text": [
-        ""
+        "Maestrul Palatului"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Well fought! Your three have been made whole again. The next Trainer awaits."
       ],
       "text": [
-        ""
+        "Bine luptat! Cei trei ai tăi au fost vindecați complet. Urmează următorul Antrenor."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Palace Maven"
       ],
       "text": [
-        ""
+        "Maestrul Palatului"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Seven in a row! {player}'s Pokémon have shown us who they truly are."
       ],
       "text": [
-        ""
+        "Șapte la rând! Pokémonii lui {player} ne-au arătat cine sunt cu adevărat."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Palace Maven"
       ],
       "text": [
-        ""
+        "Maestrul Palatului"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "The round ends here. Even a defeat teaches you your Pokémon's hearts."
       ],
       "text": [
-        ""
+        "Runda se încheie aici. Chiar și o înfrângere te învață ce au Pokémonii tăi în suflet."
       ]
     }
   ]

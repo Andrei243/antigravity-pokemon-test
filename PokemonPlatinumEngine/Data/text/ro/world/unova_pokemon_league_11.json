@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționarul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Funcționarul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot ajuta?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Ace Trainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Once you walk through the League's door, there's no coming back out until it's over. Heal up first!"
         ],
         "text": [
-          ""
+          "Odată ce treci prin ușa Ligii, nu mai ieși până nu se termină. Vindecă-te mai întâi!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Veteran"
         ],
         "text": [
-          ""
+          "Veteran"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I lost to the Elite Four years ago. Now I come to watch the young ones try. Good luck to you."
         ],
         "text": [
-          ""
+          "Am pierdut în fața Elitei celor Patru acum ani. Acum vin să-i privesc pe cei tineri încercând. Mult noroc!"
         ]
       }
     }

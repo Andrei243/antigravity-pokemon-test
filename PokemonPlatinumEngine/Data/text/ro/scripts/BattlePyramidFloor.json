@@ -5,7 +5,7 @@
         "Battle Pyramid, floor {number}. The stairs up are somewhere in the dark."
       ],
       "text": [
-        ""
+        "Piramida Luptei, etajul {number}. Scările în sus sunt undeva în întuneric."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "{foe} stepped out of the dark!"
       ],
       "text": [
-        ""
+        "{foe} a ieșit din întuneric!"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "The light around {player} grew a little wider."
       ],
       "text": [
-        ""
+        "Lumina din jurul lui {player} s-a lărgit puțin."
       ]
     },
     {
@@ -31,7 +31,7 @@
         "{foe} is catching their breath in the dark."
       ],
       "text": [
-        ""
+        "{foe} își trage sufletul în întuneric."
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "The light around {player} grew a little wider."
       ],
       "text": [
-        ""
+        "Lumina din jurul lui {player} s-a lărgit puțin."
       ]
     }
   ],
@@ -51,7 +51,7 @@
         "{player} found {item}! It was used on {entrant} at once."
       ],
       "text": [
-        ""
+        "{player} a găsit {item}! A fost folosit imediat pe {entrant}."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "{player} found {item}, but none of the three needed it, and it crumbled to dust."
       ],
       "text": [
-        ""
+        "{player} a găsit {item}, dar niciunul dintre cei trei nu avea nevoie de el, și s-a făcut praf."
       ]
     }
   ],
@@ -69,7 +69,7 @@
         "Brandon"
       ],
       "text": [
-        ""
+        "Brandon"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Ha! You climbed my Pyramid in the dark and kept your nerve. I like that!"
       ],
       "text": [
-        ""
+        "Ha! Ai urcat în Piramida mea prin întuneric și ți-ai păstrat sângele rece. Îmi place!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "I'm Brandon, the Pyramid King. Now show me how you fight in the light!"
       ],
       "text": [
-        ""
+        "Sunt Brandon, Regele Piramidei. Acum arată-mi cum lupți la lumină!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Brandon"
       ],
       "text": [
-        ""
+        "Brandon"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "What a climb! You've earned the view from up here."
       ],
       "text": [
-        ""
+        "Ce urcuș! Ți-ai câștigat priveliștea de aici de sus."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "{player} reached the top of the Battle Pyramid!"
       ],
       "text": [
-        ""
+        "{player} a ajuns în vârful Piramidei Luptei!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "{player}'s Pokémon can't go on. The climb ends here."
       ],
       "text": [
-        ""
+        "Pokémonii lui {player} nu mai pot continua. Urcușul se termină aici."
       ]
     }
   ]

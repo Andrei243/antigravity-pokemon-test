@@ -5,7 +5,7 @@
         "{foe} was waiting in the room!"
       ],
       "text": [
-        ""
+        "{foe} aștepta în cameră!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Be careful. The Trainer in this room is far tougher than the rest."
       ],
       "text": [
-        ""
+        "Fii atent. Antrenorul din această cameră este mult mai puternic decât ceilalți."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{foe} was waiting in the room!"
       ],
       "text": [
-        ""
+        "{foe} aștepta în cameră!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Two Trainers were waiting in the room!"
       ],
       "text": [
-        ""
+        "Doi Antrenori așteptau în cameră!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "You look worn out. Please, let me take care of your Pokémon."
       ],
       "text": [
-        ""
+        "Pari frânt de oboseală. Te rog, lasă-mă să-ți îngrijesc Pokémonii."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "All three are well again. Good luck behind the next door!"
       ],
       "text": [
-        ""
+        "Toți trei sunt din nou sănătoși. Mult noroc în spatele următoarei uși!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Gentleman"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Ah, a weary traveller. Allow me to look after a few of your Pokémon."
       ],
       "text": [
-        ""
+        "Ah, un călător obosit. Îngăduie-mi să am grijă de câțiva dintre Pokémonii tăi."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "There. {number} of them are well again."
       ],
       "text": [
-        ""
+        "Gata. {number} dintre ei sunt din nou sănătoși."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Your Pokémon are in fine shape. There's nothing I can do for them."
       ],
       "text": [
-        ""
+        "Pokémonii tăi sunt în formă excelentă. Nu pot face nimic pentru ei."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Visitor"
       ],
       "text": [
-        ""
+        "Vizitator"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Oh, hello! I'm only here to watch. I like to guess what's behind each door."
       ],
       "text": [
-        ""
+        "Oh, bună! Sunt aici doar să mă uit. Îmi place să ghicesc ce e în spatele fiecărei uși."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Whatever you find next, I hope it's kind to you!"
       ],
       "text": [
-        ""
+        "Orice vei găsi mai departe, sper să fie blând cu tine!"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Gentleman"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Welcome! My Pokémon has been dying to show off its strange power."
       ],
       "text": [
-        ""
+        "Bun venit! Pokémonul meu abia așteaptă să-și arate puterea ciudată."
       ]
     },
     {
@@ -141,7 +141,7 @@
         "{foe} gave off a strange power!"
       ],
       "text": [
-        ""
+        "{foe} a degajat o putere ciudată!"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "{number} of your Pokémon froze solid!"
       ],
       "text": [
-        ""
+        "{number} dintre Pokémonii tăi au înghețat bocnă!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "{number} of your Pokémon were badly poisoned!"
       ],
       "text": [
-        ""
+        "{number} dintre Pokémonii tăi au fost grav otrăviți!"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "{number} of your Pokémon were burned!"
       ],
       "text": [
-        ""
+        "{number} dintre Pokémonii tăi au fost arși!"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "{number} of your Pokémon were paralysed!"
       ],
       "text": [
-        ""
+        "{number} dintre Pokémonii tăi au fost paralizați!"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "{number} of your Pokémon fell asleep!"
       ],
       "text": [
-        ""
+        "{number} dintre Pokémonii tăi au adormit!"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Hmm. It seems your Pokémon shrugged it off. How dull!"
       ],
       "text": [
-        ""
+        "Hmm. Se pare că Pokémonii tăi au trecut peste asta. Ce plictisitor!"
       ]
     },
     {
@@ -197,7 +197,7 @@
         "A wild Pokémon leapt out of the shadows!"
       ],
       "text": [
-        ""
+        "Un Pokémon sălbatic a sărit din umbră!"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "Lucy"
       ],
       "text": [
-        ""
+        "Lucy"
       ]
     },
     {
@@ -213,7 +213,7 @@
         "So you made it this far. Your luck held, but luck runs out."
       ],
       "text": [
-        ""
+        "Deci ai ajuns până aici. Norocul ți-a ținut, dar norocul se termină."
       ]
     },
     {
@@ -221,7 +221,7 @@
         "I'm the Pike Queen. Let's see what you're really made of."
       ],
       "text": [
-        ""
+        "Sunt Regina Știucii. Să vedem din ce ești făcut cu adevărat."
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Lucy"
       ],
       "text": [
-        ""
+        "Lucy"
       ]
     },
     {
@@ -237,7 +237,7 @@
         "...Fine. You won. Don't expect it to happen twice."
       ],
       "text": [
-        ""
+        "...Bine. Ai câștigat. Să nu te aștepți să se mai întâmple."
       ]
     },
     {
@@ -245,7 +245,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -253,7 +253,7 @@
         "Your Pokémon can't go on. The round ends here."
       ],
       "text": [
-        ""
+        "Pokémonii tăi nu mai pot continua. Runda se încheie aici."
       ]
     }
   ],
@@ -263,7 +263,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Fourteen rooms! You've passed the whole of the Battle Pike."
       ],
       "text": [
-        ""
+        "Paisprezece camere! Ai trecut de toată Știuca Luptei."
       ]
     },
     {
@@ -279,7 +279,7 @@
         "{player} received {number} BP!"
       ],
       "text": [
-        ""
+        "{player} a primit {number} BP!"
       ]
     }
   ]

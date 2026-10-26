@@ -4,7 +4,7 @@
       "Battle Palace"
     ],
     "text": [
-      ""
+      "Palatul Luptei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Palace Maven"
         ],
         "text": [
-          ""
+          "Maestrul Palatului"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "No round is under way. The receptionist in the annex's lobby takes your three."
         ],
         "text": [
-          ""
+          "Nicio rundă nu este în desfășurare. Recepționera din holul anexei îți primește cei trei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenor"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Onlooker"
         ],
         "text": [
-          ""
+          "Privitor"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "A gentle Pokémon in a corner turns nasty. Natures show most when the going gets hard."
         ],
         "text": [
-          ""
+          "Un Pokémon blând, încolțit, devine răutăcios. Firea se vede cel mai bine când e greu."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Onlooker"
         ],
         "text": [
-          ""
+          "Privitor"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "Here you don't command. You watch, and you learn who your Pokémon really are."
         ],
         "text": [
-          ""
+          "Aici nu dai tu ordine. Privești și afli cine sunt cu adevărat Pokémonii tăi."
         ]
       }
     }

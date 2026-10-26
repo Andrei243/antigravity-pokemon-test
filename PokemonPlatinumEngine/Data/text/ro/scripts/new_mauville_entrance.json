@@ -5,7 +5,7 @@
         "The door is locked."
       ],
       "text": [
-        ""
+        "Ușa este încuiată."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Use the Basement Key?"
       ],
       "text": [
-        ""
+        "Folosești Basement Key?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} used the Basement Key. The door opened!"
       ],
       "text": [
-        ""
+        "{player} a folosit Basement Key. Ușa s-a deschis!"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Cardul tău de Antrenor arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te pe el din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători este închisă deocamdată."
         ]
       }
     }

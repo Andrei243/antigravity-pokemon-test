@@ -4,7 +4,7 @@
       "Battle Dome"
     ],
     "text": [
-      ""
+      "Domul Luptei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Announcer"
         ],
         "text": [
-          ""
+          "Crainicul"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "The next tournament hasn't begun yet. Please speak to the receptionist in the annex's lobby."
         ],
         "text": [
-          ""
+          "Următorul turneu nu a început încă. Te rog să vorbești cu recepționera din holul anexei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Trainer"
         ],
         "text": [
-          ""
+          "Antrenor"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "I've had the bracket memorised since this morning."
         ],
         "text": [
-          ""
+          "Știu tabloul turneului pe de rost încă de dimineață."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -76,7 +76,7 @@
           "Two out of three! Which two will they send in?"
         ],
         "text": [
-          ""
+          "Doi din trei! Care doi vor fi trimiși?"
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -94,7 +94,7 @@
           "Every round, the crowd gets louder."
         ],
         "text": [
-          ""
+          "La fiecare rundă, mulțimea face tot mai mult zgomot."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Spectator"
         ],
         "text": [
-          ""
+          "Spectator"
         ]
       },
       "dialog": {
@@ -112,7 +112,7 @@
           "A tournament is won one match at a time. Nobody remembers who lost in the first round."
         ],
         "text": [
-          ""
+          "Un turneu se câștigă meci cu meci. Nimeni nu-și amintește cine a pierdut în prima rundă."
         ]
       }
     }
