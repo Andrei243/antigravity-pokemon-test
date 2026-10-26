@@ -45,7 +45,7 @@ public sealed class StateSnapshot
     }
 
     /// <summary>The flow as it stands, with the flags and variables named (<c>FLAG_...</c>, <c>VAR_...</c>) beside the rest.</summary>
-    public static StateSnapshot Of(GameFlow flow, IEnumerable<string>? named = null)
+    public static StateSnapshot Of(GameFlow flow, IEnumerable<string>? named = null, int revisionBase = 0)
     {
         var s = new StateSnapshot();
         s.Add("state", flow.State);
@@ -90,7 +90,7 @@ public sealed class StateSnapshot
         }
 
         s.Add("money", flow.Money);
-        s.Add("revision", flow.Story.Revision);
+        s.Add("revision", flow.Story.Revision - revisionBase);
         foreach (string name in (named ?? Array.Empty<string>()).Distinct(StringComparer.Ordinal))
         {
             if (name.StartsWith("FLAG_", StringComparison.Ordinal) || name.StartsWith("flag.", StringComparison.Ordinal))

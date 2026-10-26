@@ -269,25 +269,28 @@ partial class Harness
                 string name = scenario.Name + "/" + a[0];
                 if (a.Count == 6) ShotCrop(name, int.Parse(a[1]), int.Parse(a[2]), int.Parse(a[3]), int.Parse(a[4]), int.Parse(a[5]));
                 else Shot(name);
-                File.WriteAllText(Path.Combine(folder, a[0] + ".state.json"), StateSnapshot.Of(game.Flow, scenario.Watched).ToJson());
+                File.WriteAllText(Path.Combine(folder, a[0] + ".state.json"), StateSnapshot.Of(game.Flow, scenario.Watched, scenarioRevisionBase).ToJson());
                 return null;
             }
             case "state":
             {
-                var snapshot = StateSnapshot.Of(game.Flow, scenario.Watched);
+                var snapshot = StateSnapshot.Of(game.Flow, scenario.Watched, scenarioRevisionBase);
                 foreach (var (field, value) in snapshot.Fields) say($"  {field}: {value}");
                 File.WriteAllText(Path.Combine(folder, StateSnapshot.FileName), snapshot.ToJson());
                 return null;
             }
             case "expect":
             {
-                string? actual = StateSnapshot.Of(game.Flow, scenario.Watched)[a[0]];
+                string? actual = StateSnapshot.Of(game.Flow, scenario.Watched, scenarioRevisionBase)[a[0]];
                 if (actual == a[1]) { say($"  {a[0]} is {a[1]}"); return null; }
                 return actual == null ? $"the state has no field '{a[0]}'" : $"{a[0]} was to be '{a[1]}' and is '{actual}'";
             }
         }
         return $"'{step.Verb}' is known to the reader but not to the harness";
     }
+
+    // The story's count of changes when a scenario began: a snapshot tells it from there, so a scenario served after another reads what it reads alone
+    int scenarioRevisionBase;
 
     // The game begun afresh for a scenario, whatever the one before it left
     void BeginScenarioGame(int seed)
@@ -308,6 +311,7 @@ partial class Harness
         // The maps made again (with their people, their trainers' teams and their own dice), then the engine's own
         MapDatabase.Initialize();
         game.Afresh();
+        scenarioRevisionBase = game.Flow.Story.Revision;
     }
 
     // One frame of reading on: a line finished or put away, or the game left to go on
