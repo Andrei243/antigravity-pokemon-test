@@ -312,6 +312,8 @@ partial class Harness
         MapDatabase.Initialize();
         game.Afresh();
         scenarioRevisionBase = game.Flow.Story.Revision;
+        // ... and the layers back to what SHOTS_LAYERS asked for, whatever the last scenario turned on (plan 16 · T18)
+        game.World.Layers = ShotLayers;
     }
 
     // One frame of reading on: a line finished or put away, or the game left to go on

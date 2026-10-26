@@ -52,7 +52,8 @@ public class ArchitectureTests
     public static readonly (string Caller, string Method, string Why)[] WalkedHeights =
     {
         ("GymPieces", "BuildPastoria", "the Pastoria Gym's rafts and water levels are the puzzle's walked heights"),
-        ("WorldRenderer", "GatherActors", "asks the Canalave Gym's puzzle whether someone is on a floor not yet in view")
+        ("WorldRenderer", "GatherActors", "asks the Canalave Gym's puzzle whether someone is on a floor not yet in view"),
+        ("DebugLayers", "Height", "the height layer labels the walked height beside the drawn one (plan 16 · T18)")
     };
 
     public static readonly Rule[] Rules =

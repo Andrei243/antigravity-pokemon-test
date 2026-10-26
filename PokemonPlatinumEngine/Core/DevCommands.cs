@@ -61,7 +61,8 @@ internal static class DevCommands
         new("fps", "fps [on|off|sections]", "fps on", 0, 1,
             a => a.Length > 0 && a[0] is not ("on" or "off" or "sections") ? $"fps is on, off or sections, not '{a[0]}'" : null, Fps),
         new("screenshot", "screenshot", "screenshot", 0, 0, _ => null, (engine, _) => engine.DevShot()),
-        new("help", "help [command]", "help warp", 0, 1, a => a.Length > 0 && Find(a[0]) == null ? $"no command is called '{a[0]}'" : null, Help)
+        new("help", "help [command]", "help warp", 0, 1, a => a.Length > 0 && Find(a[0]) == null ? $"no command is called '{a[0]}'" : null, Help),
+        new("layers", "layers <" + string.Join("|", Graphics.DebugLayers.Names.Select(n => n.Name)) + "|all|off>...", "layers solid,sight", 1, 9, Graphics.DebugLayers.CheckWords, Graphics.DebugLayers.Command)
     };
 
     public static DevCommand? Find(string name) => Commands.FirstOrDefault(c => c.Name.Equals(name, StringComparison.OrdinalIgnoreCase));

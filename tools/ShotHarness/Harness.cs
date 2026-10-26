@@ -53,6 +53,10 @@ partial class Harness
         // word the table doesn't give shows bare
         if (Environment.GetEnvironmentVariable("SHOTS_LANGUAGE") is { Length: > 0 } language) engine.Settings.Language = language;
         engine.ApplySettings(window: false);
+        // SHOTS_LAYERS=solid,sight,... draws the field's rules over every field shot (plan 16 · T18); none unless named
+        ShotLayers = DebugLayers.Parse(Environment.GetEnvironmentVariable("SHOTS_LAYERS") ?? "", out var unknownLayer)
+            ?? throw new ArgumentException($"SHOTS_LAYERS names '{unknownLayer}', which is no layer");
+        game.World.Layers = ShotLayers;
 
         // The game opens on its title screen; everything but the "title" mode wants a game in progress
         // (in Sinnoh, which the shots below show)
@@ -75,6 +79,9 @@ partial class Harness
     }
 
     public bool Run(string section) => mode == "all" || mode == section;
+
+    // The layers SHOTS_LAYERS asked for, drawn over every field shot (plan 16 · T18)
+    readonly DebugLayer ShotLayers;
 
     public void Close() => engine.Close();
 
