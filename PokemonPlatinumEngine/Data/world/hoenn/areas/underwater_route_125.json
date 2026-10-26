@@ -1,0 +1,25 @@
+{
+  "key": "underwater_route_125",
+  "index": 56,
+  "name": "Underwater 125",
+  "matrix": 5,
+  "kind": "Underwater",
+  "sign": "None",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_UNDERWATER",
+  "nightMusic": "MUS_UNDERWATER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "emerge": "route_125",
+  "warps": [
+    { "x": 662, "z": 70, "to": "underwater_marine_cave", "toWarp": 0 },
+    { "x": 685, "z": 90, "to": "underwater_marine_cave", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

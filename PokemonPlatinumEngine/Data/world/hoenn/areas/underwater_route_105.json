@@ -1,0 +1,25 @@
+{
+  "key": "underwater_route_105",
+  "index": 55,
+  "name": "Underwater 105",
+  "matrix": 4,
+  "kind": "Underwater",
+  "sign": "None",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_UNDERWATER",
+  "nightMusic": "MUS_UNDERWATER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "emerge": "route_105",
+  "warps": [
+    { "x": 13, "z": 266, "to": "underwater_marine_cave", "toWarp": 0 },
+    { "x": 17, "z": 328, "to": "underwater_marine_cave", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

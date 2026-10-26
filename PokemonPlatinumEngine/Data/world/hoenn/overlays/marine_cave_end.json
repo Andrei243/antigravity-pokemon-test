@@ -1,0 +1,11 @@
+{
+  // The Marine Cave's inner room (plan 21 · H12, part e): Kyogre waits in the pool at its heart until beaten or caught, met by
+  // the step before the pool (the area's trigger 0, which the room's arrival readies; marine_cave_end.txt)
+  "area": "marine_cave_end",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "Kyogre" } ],
+  "people": {
+    "marine_cave_kyogre": { "name": "Kyogre", "npcType": "Pokemon", "species": "Kyogre", "still": true, "script": "Waiting" }
+  }
+}

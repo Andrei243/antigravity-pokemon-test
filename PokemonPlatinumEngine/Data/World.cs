@@ -2653,6 +2653,15 @@ public static class WorldMapBuilder
                     map.SetSolid(x, z, true);
                 }
         }
+        // The dark water the story lays only for a while (plan 21 · H12, part e): laid here, kept by Map.ApplyDoors
+        foreach (var dark in overlay?.DarkWater ?? new())
+            for (int z = dark.Z; z < dark.Z + dark.Depth; z++)
+                for (int x = dark.X; x < dark.X + dark.Width; x++)
+                    if (map.InBounds(x, z) && dark.While is { } flag)
+                    {
+                        map.FlaggedDarkWater[(x, z)] = (flag, map.BehaviourAt(x, z));
+                        map.SetBehaviour(x, z, TileBehavior.DiveWater);
+                    }
         foreach (var prop in overlay?.Props ?? new())
         {
             var placed = map.AddProp(prop.Type, prop.X, prop.Y, prop.Width, prop.Depth);

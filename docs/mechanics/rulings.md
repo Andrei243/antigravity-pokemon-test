@@ -6227,6 +6227,45 @@ Two of Emerald's places left for the time after Norman and after the Hall of Fam
   Island, Altering Cave, the event islands, the S.S. Tidal, the island's halls, the Devon Corporation's revival of the
   desert's fossils, and Wattson's rematch in his Gym (Emerald's FLAG_WATTSON_REMATCH_AVAILABLE).
 
+## The Weather Institute's reports, the Marine Cave and Terra Cave (2026-10-26, plan 21 · H12, part e)
+
+Emerald's way to Kyogre and Groudon after the Hall of Fame (data/scripts/abnormal_weather.inc, read from pret/pokeemerald
+for its coordinates; the caves' maps, CreateAbnormalWeatherEvent). The lines are our own.
+
+- **The report.** Once Hoenn's Hall of Fame is entered (Emerald's FLAG_SYS_GAME_CLEAR, here HoennHallOfFame), the
+  scientist on the Weather Institute's upper floor tracks abnormal weather: the first time he is asked on a visit (a local
+  flag, Emerald's FLAG_TEMP_2) he draws a place, as Emerald's CreateAbnormalWeatherEvent does: Terra Cave's eight while
+  Kyogre is beaten or caught, the Marine Cave's eight while Groudon is, otherwise a coin for the kind and a die of eight
+  for the place (`random`). VAR_ABNORMAL_WEATHER_LOCATION keeps Emerald's numbers (1 to 8 Routes 114 north and south,
+  115 west and east, 116 north and south, 118 east and west; 9 to 16 Routes 105 north and south, 125 west and east, 127
+  north and south, 129 west and east). With both beaten or caught he says the weather is ordinary again. *Ours*: he stays
+  where the Castform scene left him (Emerald walks him to 2, 2 for the post-game), and his report names the route.
+- **The place laid.** `common.HoennAbnormalWeather` sets a flag of ours for the place (`FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_NORTH`
+  and its fifteen fellows) and clears the rest; each flag opens that place's way into its cave (an overlay's door
+  `openedBy`, where Emerald lays the cave's mouth by setmetatile; Route 114's northern way is a plain wall in the
+  import and is cut down to the ground beside it, as the Ruby Path's mouth is), lays a drought or heavy rain over its
+  route (an overlay zone `while` the flag, with the abnormal weather's song), and for the Marine Cave lays Emerald's two
+  tiles by two of deep water on the sea above (an overlay's `darkWater`, new: `Map.FlaggedDarkWater`, kept by
+  `ApplyDoors`; dark water only while the flag is set). *Left*: the cave's mouth and the deep water are not drawn
+  otherwise than the ground round them; the weather and the scientist's words are the sign.
+- **No expiry.** Emerald moves the weather on after a thousand steps elsewhere (AbnormalWeatherHasExpired); here it stays
+  until the report is asked again on another visit or the Pokémon is beaten or caught. *Our ruling*: a step counter of the
+  field for one event was not worth an engine hook.
+- **The way back.** Each cave's way out (Terra Cave's mouth, the pool under the sea's passage) is Emerald's MAP_DYNAMIC,
+  back to where the player came in: here a trigger of the overlay's on the way's tile warps the player one step out of the
+  route's way in by VAR_ABNORMAL_WEATHER_LOCATION (`terra_cave_entrance.Out`, `underwater_marine_cave.Out`), before the door
+  that makes the tile a way at all (to Route 114's southern mouth, to Route 105's northern passage). The variable is kept
+  when the weather ends, so the way out still leads home.
+- **The Marine Cave** is dived to from the deep water, along the route's sea floor (Routes 105, 125 and 129's floors are
+  open as maps of their own, laid under their routes; Route 127's is HoennUnderwater's), through the open passage into the
+  pool under the sea, up into the cave's mouth (Emerald's setdivewarp, `emergeTo`; its dark water dives back, `diveTo`).
+- **Kyogre and Groudon** wait in the inner rooms (their arrival shows them and readies the step before them, VAR_TEMP_1 1,
+  as Emerald's OnTransition) and are met at level 70 on that step with their own battle themes. Run from, they are back
+  the next time the room is come to; beaten or caught, FLAG_DEFEATED_KYOGRE or _GROUDON is set and the weather ends
+  (`common.HoennAbnormalWeatherEnd`). *Ours*: neither walks up two tiles first (Emerald's affine approach), since both stand
+  in their pool or past their magma.
+- `HoennSpeciesTests.Owed` no longer lists Kyogre and Groudon.
+
 ## A crossed region's EXP (2026-10-26, plan 18 · W4b-3)
 
 Design C of [the levelling proposal](../plans/W4b-levelling-the-world.md), approved by the user on 2026-10-26 with

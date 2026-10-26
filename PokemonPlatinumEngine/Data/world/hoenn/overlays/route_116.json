@@ -1,12 +1,20 @@
 {
   // Route 116 (plan 21 · H2, part b), east out of Rustboro City to Rusturf Tunnel. Mr. Briney, frantic at the tunnel's
   // mouth while the grunt holds his Peeko inside, is route_116.txt's (trigger 0). East of the tunnel's mouth the road
-  // runs on toward Verdanturf Town past rocks only Rock Smash moves (plan 21 · H3), and the ways that lead there are shut
+  // runs on toward Verdanturf Town past rocks only Rock Smash moves (plan 21 · H3). Its two ways into Terra Cave open one at
+  // a time after the Hall of Fame, while the drought is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather)
   "area": "route_116",
   "ours": { "land": [ ["Shinobuzz", 145, 149] ] },
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
-  "locked": [ 3, 4 ],
+  "doors": [
+    { "warp": 3, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_NORTH" },
+    { "warp": 4, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_SOUTH" }
+  ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_NORTH" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_116_SOUTH" }
+  ],
   "triggers": [
     { "trigger": 0, "script": "BrineyTrigger" }
   ],

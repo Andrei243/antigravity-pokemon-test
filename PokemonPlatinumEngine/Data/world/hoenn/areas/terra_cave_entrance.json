@@ -1,0 +1,24 @@
+{
+  "key": "terra_cave_entrance",
+  "index": 342,
+  "name": "Terra Cave",
+  "matrix": 291,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 18, "to": "", "toWarp": 0 },
+    { "x": 14, "z": 1, "to": "terra_cave_end", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

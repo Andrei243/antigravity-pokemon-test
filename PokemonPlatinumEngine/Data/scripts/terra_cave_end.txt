@@ -1,0 +1,50 @@
+# Terra Cave's inner room (plan 21 · H12, part e). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/TerraCave_End/scripts.inc).
+#
+# Groudon waits beyond the magma at the room's heart until it is beaten or caught (FLAG_DEFEATED_GROUDON). The room's arrival
+# shows it and readies the step before it (the area's trigger 0, VAR_TEMP_1 1), as Emerald's OnTransition does; that step
+# meets it at level 70. Run from, it sinks away and is back the next time the room is come to. Beaten or caught, the
+# drought over the route the cave opened from breaks and its way in closes (common.HoennAbnormalWeatherEnd), and the
+# Weather Institute's next report can only be of the Marine Cave.
+
+
+script OnEnter
+  if flag FLAG_DEFEATED_GROUDON goto Gone
+  clearflag FLAG_HIDE_TERRA_CAVE_GROUDON
+  setvar VAR_TEMP_1 1
+  end
+label Gone
+  setflag FLAG_HIDE_TERRA_CAVE_GROUDON
+  setvar VAR_TEMP_1 0
+  end
+
+
+script Groudon
+  if flag FLAG_DEFEATED_GROUDON end
+  scene "Groudon in Terra Cave"
+  face player up
+  wait 0.4
+  cry "Groudon"
+  camera shake 0.6
+  wait 0.8
+  speaker none
+  text "Groudon heaved itself up out of the magma!"
+  endscene
+  setvar VAR_TEMP_1 0
+  wildbattle "Groudon" 70
+  hide terra_cave_groudon
+  setflag FLAG_HIDE_TERRA_CAVE_GROUDON
+  if result == 2 goto Fled
+  setflag FLAG_DEFEATED_GROUDON
+  call HoennAbnormalWeatherEnd
+  end
+label Fled
+  text "Groudon sank back down into the magma..."
+  end
+
+
+# Groudon looked at across the magma before the step that wakes it
+script Waiting
+  speaker none
+  text "A huge red Pokémon lies beyond the magma, perfectly still."
+  end

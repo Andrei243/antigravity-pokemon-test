@@ -1,0 +1,11 @@
+{
+  // Terra Cave's inner room (plan 21 · H12, part e): Groudon waits beyond the magma at its heart until beaten or caught, met
+  // by the step before it (the area's trigger 0, which the room's arrival readies; terra_cave_end.txt)
+  "area": "terra_cave_end",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "Groudon" } ],
+  "people": {
+    "terra_cave_groudon": { "name": "Groudon", "npcType": "Pokemon", "species": "Groudon", "still": true, "script": "Waiting" }
+  }
+}

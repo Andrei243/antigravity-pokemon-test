@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1270 | 1231 | 39 | 1 | 0 |
-| Scripts (`script:`) | 8809 | 8391 | 418 | 17 | 0 |
+| Scripts (`script:`) | 8826 | 8408 | 418 | 17 | 0 |
 | People of the world (`world:`) | 6203 | 6144 | 59 | 4 | 0 |
-| **All** | 16362 | 15846 | 516 | 22 | 0 |
+| **All** | 16379 | 15863 | 516 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -24,7 +24,7 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 | a question's answers | 525 |
 | a sign | 1401 |
 | the game's own voice (speaker none) | 247 |
-| the game's own voice (text) | 1178 |
+| the game's own voice (text) | 1184 |
 
 ## The cast
 
@@ -50,8 +50,8 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:attendant (any)` | 207 | 7 |
 | `look:nurse (any)` | 189 | 0 |
 | `look:gym_guide (any)` | 173 | 1 |
+| `look:scientist (any)` | 167 | 4 |
 | `cynthia` | 157 | 1 |
-| `look:scientist (any)` | 150 | 4 |
 | `rowan` | 147 | 12 |
 | `class:ace_trainer (any)` | 146 | 0 |
 | `look:receptionist (any)` | 136 | 15 |

@@ -1,13 +1,20 @@
 {
   // Route 129 (plan 21 · H8, part c): the open sea west of Route 128, toward Routes 130 and 131 and Pacifidlog Town.
   // While the titans' weather lasts (FLAG_SYS_WEATHER_CTRL) the downpour and the drought take turns over it, as over the
-  // rest of the eastern sea. The sea floor under it is the Marine Cave's, left for the post-game (plan 21 · H12)
+  // rest of the eastern sea. The sea floor under it leads into the Marine Cave while heavy rain is over one of its two places (plan 21 · H12, part e)
   "area": "route_129",
   "ours": { "superRod": [ ["Leviawhale", 155, 159] ] },
   "bgmTrack": "hoenn/route119",
   "trees": "Round",
+  // The dark water Emerald's abnormal weather lays over the floor's passages into the Marine Cave (plan 21 · H12, part e)
+  "darkWater": [
+    { "x": 656, "z": 275, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_WEST" },
+    { "x": 682, "z": 280, "width": 2, "depth": 2, "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_EAST" }
+  ],
   "zones": [
-    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" }
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Abnormal", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_SYS_WEATHER_CTRL" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_WEST" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "HeavyRain", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_129_EAST" }
   ],
   "people": {
     "swimmer_m": { "name": "Chase", "trainer": { "dialogueBefore": "Triathlete Chase: I've swum all the way from Ever Grande. Still got enough left for you!", "dialogueAfter": "Triathlete Chase: Now I've got nothing left at all." } },

@@ -983,6 +983,14 @@ public sealed class WorldOverlayFile
     /// <see cref="WorldMapBuilder.CameraOf"/> knows. Left out, the area file's own camera.
     /// </summary>
     public string? Camera { get; set; }
+
+    /// <summary>
+    /// Stretches of the area's sea that are dark water, which Dive goes down from, only while their flag (<c>while</c>) is set
+    /// (plan 21 · H12, part e; Emerald's abnormal weather lays deep water by setmetatile over the Marine Cave's passages on
+    /// Routes 105, 125 and 129). A map fresh from the builder has them all, as a door the story opens is open there; the
+    /// game keeps them with <see cref="Overworld.Map.ApplyDoors"/>. Only the rectangle and the flag of each are read.
+    /// </summary>
+    public List<OverlayZone>? DarkWater { get; set; }
 }
 
 /// <summary>A tile of an imported area (its key, and a tile of its matrix), facing a way (<see cref="WorldOverlayFile.DiveTo"/>).</summary>

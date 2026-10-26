@@ -1,11 +1,19 @@
 {
   // Route 114 (plan 21 · H4, part a): the rugged valley north from Fallarbor Town to Meteor Falls, with the Fossil
-  // Maniac's house and Lanette's (route_114.txt). The ways into Terra Cave's hollow and a secret base's stay shut
+  // Maniac's house and Lanette's (route_114.txt). Its two ways into Terra Cave open one at a time after the Hall of Fame,
+  // while the drought is over that place (plan 21 · H12, part e: common.HoennAbnormalWeather; the doors' and zones' flags)
   "area": "route_114",
   "ours": { "land": [ ["Ravagoose", 148, 152], ["Scimitail", 148, 152] ] },
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 3, 4 ],
+  "doors": [
+    { "warp": 3, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH" },
+    { "warp": 4, "map": "TerraCave_Entrance", "x": 8, "y": 17, "facing": "Up", "openedBy": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_NORTH" }
+  ],
+  "zones": [
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_SOUTH" },
+    { "x": 0, "z": 0, "width": 100000, "depth": 100000, "weather": "Drought", "bgmTrack": "hoenn/abnormal_weather", "while": "FLAG_HOENN_ABNORMAL_WEATHER_ROUTE_114_NORTH" }
+  ],
   "people": {
     "man_4": { "name": "Man", "script": "BerryMan" },
     "gentleman": { "name": "Gentleman", "script": "RoarGentleman" },

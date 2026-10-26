@@ -824,7 +824,16 @@ public class Map
         ShutLoneWays();
         // and opens the holes a boulder has filled (plan 22 · U6, part c)
         foreach (var (tile, filled) in FilledHoles) SetSolid(tile.X, tile.Y, !flagSet(filled));
+        // and lays the dark water the story lays only for a while, or the sea it was (plan 21 · H12, part e)
+        foreach (var (tile, (flag, was)) in FlaggedDarkWater) SetBehaviour(tile.X, tile.Y, flagSet(flag) ? TileBehavior.DiveWater : was);
     }
+
+    /// <summary>
+    /// Tiles of sea that are dark water only while a flag is set, with the behaviour each has otherwise (plan 21 · H12, part
+    /// e: an overlay's <c>darkWater</c>, the Marine Cave's ways down). The builder lays them dark; <see cref="ApplyDoors"/>
+    /// follows the story.
+    /// </summary>
+    public Dictionary<(int X, int Y), (string Flag, TileBehavior Was)> FlaggedDarkWater { get; } = new();
 
     /// <summary>
     /// A way the story switches that shares its tile with no other (plan 02 · S12: the hole behind Mt. Coronet's cave

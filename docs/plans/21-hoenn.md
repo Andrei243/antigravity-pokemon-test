@@ -1277,3 +1277,21 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
       whole map, so a cheaper swap first), New Mauville, the Desert Underpass, Trainer Hill, Mirage Island, Altering
       Cave, the event islands, the S.S. Tidal, the halls, the Shields and the Glass Ornament, and the species
       `HoennSpeciesTests.Owed` lists.
+    - **Part e** (done 2026-10-26, wave 66: the Weather Institute's reports, the Marine Cave and Terra Cave; docs/mechanics/rulings.md,
+      "The Weather Institute's reports, the Marine Cave and Terra Cave"; tests written and run with --filter
+      (HoennWeatherCavesTests, HoennTests, HoennSpeciesTests), shots h2a0 to h2ab written and not taken).
+      **Built**: eight maps (matrices 3, 4, 5, 288 to 292: the sea floors of Routes 129, 105 and 125, Underwater_MarineCave,
+      MarineCave_Entrance, MarineCave_End, TerraCave_Entrance, TerraCave_End) in RegionDatabase's Hoenn list; the
+      scientist's report after the Hall of Fame drawing one of Emerald's sixteen places (VAR_ABNORMAL_WEATHER_LOCATION,
+      Draw in oute_119_weather_institute_2f.txt), common.HoennAbnormalWeather and HoennAbnormalWeatherEnd (sixteen flags
+      of ours), the eight ways into Terra Cave on Routes 114 to 118 and the eight passages into the Marine Cave's pool on the
+      floors of Routes 105 to 129 as overlay doors openedBy those flags, a drought or heavy rain over each route by a zone
+      while its flag, Emerald's deep water (abnormal_weather.inc's coordinates) as a new overlay field darkWater
+      (Map.FlaggedDarkWater, kept by ApplyDoors), the two caves' MAP_DYNAMIC ways out as triggers warping by the variable,
+      the Marine Cave's dive and emerge spots, Kyogre and Groudon at level 70 (run from, back next visit; beaten or caught, the
+      weather ends). **Decided**: no thousand-step expiry; the scientist stays where he stood; neither titan walks up first.
+      **Golden** scripts.txt moves (common's two new scripts, the scientist's report and draw, the five new places'
+      scripts): accept it. **Left**: the cave mouths and the deep water drawn as Emerald draws them (the tiles keep the
+      route's own look; a look per flag would be a swap of the overworld), the weather's expiry, Trainer Hill, Mirage Island,
+      Altering Cave, the event islands, the S.S. Tidal, the halls, Wattson's rematch, the Devon Corporation's fossil revival,
+      the Shields and the Glass Ornament.

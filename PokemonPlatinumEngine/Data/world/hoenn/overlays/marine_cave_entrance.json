@@ -1,0 +1,9 @@
+{
+  // The Marine Cave's mouth (plan 21 · H12, part e): a pool the diver comes up into from the pool under the sea (Emerald's
+  // setdivewarp), its dark water diving back down (diveTo), and a beach at its north end with the way on to the inner room.
+  // Emerald plays Petalburg Woods' song all through the cave
+  "area": "marine_cave_entrance",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "diveTo": { "area": "underwater_marine_cave", "x": 9, "z": 6, "facing": "Down" }
+}
