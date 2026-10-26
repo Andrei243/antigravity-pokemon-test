@@ -1,0 +1,28 @@
+{
+  "Door": [
+    {
+      "en": [
+        "The door is locked."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Use the Basement Key?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} used the Basement Key. The door opened!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

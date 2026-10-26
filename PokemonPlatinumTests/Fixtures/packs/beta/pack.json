@@ -1,0 +1,8 @@
+{
+  "name": "beta",
+  "version": "2.1",
+  "author": "The test suite",
+  "credits": "Written for the tests of plan 16 · T14; nothing in it is from the games.",
+  "after": [ "alpha" ],
+  "description": "Loads after alpha: its doll's line and Bulbasaur's Attack win over alpha's."
+}

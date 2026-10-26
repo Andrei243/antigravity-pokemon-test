@@ -5,8 +5,9 @@
 # row before him is the area's first trigger, which waits on VAR_UNK_4110 as HeartGold counts it (1 once he has seen
 # them), and a trainer without them is turned back a step. The guard at the door to Route 22 keeps Kanto shut to
 # anyone who hasn't stood before the League's Champion: his line of tiles is the third trigger, which turns everyone
-# back but a Champion of Johto (plan 20 · J12). Route 28's door, toward Mt. Silver, is locked
-# in the overlay.
+# back but a Champion of Johto (plan 20 · J12). The guard at Route 28's door, toward Mt. Silver, lets through only a
+# Champion of Johto who holds Kanto's eight Badges as well, sixteen in all, as HeartGold's does (plan 20 · J15): his
+# line of tiles is the second trigger, which waits on VAR_UNK_4110 1 and is put to rest at 2 once he has let them by.
 
 
 script BadgeCheck
@@ -26,7 +27,7 @@ label Short
 
 script Guard
   speaker "Guard"
-  if var VAR_UNK_4110 == 1 goto Passed
+  if var VAR_UNK_4110 >= 1 goto Passed
   say "Only a trainer with all eight of Johto's Badges may take the road north to Victory Road."
   end
 label Passed
@@ -57,4 +58,33 @@ script KantoGuard
   end
 label Champion
   say "Through this door is Route 22, and Kanto beyond it. Safe travels, Champion."
+  end
+
+
+# Plan 20 · J15: the line before Route 28's door. Mt. Silver is for a Champion of Johto with Kanto's eight Badges too
+# (HeartGold asks for all sixteen and Professor Oak's word; here Kanto's are the region's own, won in FireRed's Kanto),
+# and once he has let the player by the trigger is put to rest (VAR_UNK_4110 2)
+script MtSilverCheck
+  face r22r0101_policeman_2 player
+  speaker "Guard"
+  if not flag JohtoHallOfFame goto Shut
+  if badges of kanto < 8 goto Shut
+  say "Sixteen Badges, Johto's and Kanto's... You're the trainer the League told me about. Mt. Silver is past this door."
+  say "The mountain is wild and its Pokémon are fierce. Go carefully."
+  setvar VAR_UNK_4110 2
+  end
+label Shut
+  say "Hold on! Past this door is Route 28, and Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go there."
+  walk player right 1
+  end
+
+
+# The guard at Route 28's door
+script MtSilverGuard
+  speaker "Guard"
+  if var VAR_UNK_4110 == 2 goto Passed
+  say "The road west leads to Mt. Silver. Only a Champion with all sixteen of Johto's and Kanto's Badges may go that way."
+  end
+label Passed
+  say "Mt. Silver is past this door. Not many trainers come back down it the same as they went up."
   end

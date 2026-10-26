@@ -80,7 +80,8 @@ public class TextTests
         ["UI/DevConsole.cs"] = "the developer's console, which says what its commands answer in English (plan 16 · T6)",
         ["Core/InputRecording.cs"] = "why a recording is refused, for whoever plays it back with a tool (plan 16 · T19)",
         ["Core/Movie.cs"] = "where a replay parted, for the log and the tool playing it (plan 16 · T19)",
-        ["Core/StateHash.cs"] = "the names of the hash's groups, which a parting names (plan 16 · T19)"
+        ["Core/StateHash.cs"] = "the names of the hash's groups, which a parting names (plan 16 · T19)",
+        ["Core/Diagnostics/ReportFolder.cs"] = "a report's report.txt, for whoever is handed the folder (plan 16 · T20)"
     };
 
     /// <summary>What may stay in quotes in a file on the table: names of the data, and the logo, which is a picture (plan 17).</summary>
@@ -278,7 +279,9 @@ public class TextTests
         ["Battle/BattleEngine.Menus.cs"] = new[] { "Safari Ball" },
         ["Battle/BattleEngine.cs"] = new[] { "Transform" },
         // What a crash report says of the screen the game was on, for whoever reads the report
-        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" }
+        ["Core/GameEngine.Diagnostics.cs"] = new[] { "{flow.ClosingFrom} (the close button's question was up)", "Transition ({flow.Before} to {flow.After})" },
+        // The options' rows the first start's page asks for by name, some not built yet (plan 16 · T24)
+        ["UI/FirstStartScreen.cs"] = new[] { "Language", "Captions", "Quality" }
     };
 
     private static readonly Regex Literal = new(@"(\$?)""((?:[^""\\\n]|\\.)*)""", RegexOptions.Compiled);

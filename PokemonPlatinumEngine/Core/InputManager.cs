@@ -23,7 +23,8 @@ public enum GameAction
     PageRight,    // The right shoulder (E): a page on
     Fullscreen,   // F11 (Alt+Enter too)
     Mute,         // M
-    Screenshot    // F12 (plan 12 · Q16 takes the picture)
+    Screenshot,   // F12 (plan 12 · Q16 takes the picture)
+    Report        // F8: a report of the session, to be replayed (plan 16 · T20)
 }
 
 /// <summary>An action's keys and the pad's buttons for it, with the name the help page gives it.</summary>

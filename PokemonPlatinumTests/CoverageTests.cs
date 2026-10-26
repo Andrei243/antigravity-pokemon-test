@@ -52,9 +52,9 @@ public class CoverageTests
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(190, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(308, n.PlatinumItemsFully, "Platinum's items that work"); // plan 06 · R28a: the Luxury and Heal Balls
+        AtLeast(379, n.PlatinumItemsFully, "Platinum's items that work"); // plan 06 · R28a: the Luxury and Heal Balls; R30: the berries, mulch, the Sprayduck and the Oval Stone judged by what the game does with them
         AtLeast(449, n.LaterItemsFully, "later items that work"); // plan 06 · R28b: everything used outside a battle, the TRs, the last held items; R29: the key items that change a form, the Origin Formes' three
-        AtLeast(357, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
+        AtLeast(380, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         // The 35 Z-Moves since plan 06 · R21
         AtLeast(35, n.SpecialMovesRun, "Z-Moves and Max Moves run");
@@ -242,14 +242,18 @@ public class CoverageTests
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Full Restore")!));   // from the bag and in battle (plan 06 · R8)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("X Attack")!));       // in battle, which is all it is for
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Poké Doll")!));
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Occa Berry")!));    // held; planted in soil is R14's
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Occa Berry")!));     // held, and planted in soil (R14a)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Macho Brace")!));    // its Speed in battle (the EVs it doubles are R10's)
         Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.EffectValue);            // the table's signed byte read right
         Assert.Equal(200, ItemDatabase.Get("Hyper Potion")!.Use!["hpRestored"]);
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("TM01")!));          // teaches from the bag (plan 06 · R11)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Ether")!));         // in battle and from the bag (R11)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Repel")!));         // keeps weaker Pokémon away (R11)
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Oran Berry")!));   // eaten and held; planted is R14's
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Oran Berry")!));    // eaten, held and planted (R14a)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Razz Berry")!));    // planted, cooked and blended (R14a, R14c, plan 21 · H11; R30)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Growth Mulch")!));  // spread on the soil (R14a; R30)
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Oval Stone")!));    // held by a Happiny to evolve (R30)
+        Assert.Equal(Works.NotYet, Coverage.Of(ItemDatabase.Get("Coin Case")!));    // the bag's count of coins isn't built
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Leftovers")!));
         Assert.Equal(Works.NothingToRun, Coverage.Of(ItemDatabase.Get("Nugget")!));
     }

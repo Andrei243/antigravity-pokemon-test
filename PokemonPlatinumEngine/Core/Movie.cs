@@ -82,11 +82,15 @@ public sealed class MovieRecorder
         return new MovieRecorder(recording, fixFrameClock);
     }
 
-    /// <summary>Plays a frame on the engine and keeps it, with the hash's row once a second has passed.</summary>
+    /// <summary>
+    /// Keeps a frame and plays it on the engine, with the hash's row once a second has passed. The frame is kept
+    /// before it is played (plan 16 · T20), so a report written in it, or a crash thrown in it, has the frame that did
+    /// it, and its replay comes to the same frame and does it again.
+    /// </summary>
     public void Step(GameEngine engine, InputFrame frame)
     {
-        Movie.Play(engine, frame, Recording.Offset, fixFrameClock ? seconds : null);
         Recording.Frames.Add(frame);
+        Movie.Play(engine, frame, Recording.Offset, fixFrameClock ? seconds : null);
         seconds += frame.Dt;
         if (seconds >= nextSecond)
         {
@@ -137,6 +141,12 @@ public sealed class MoviePlayer
 
     /// <summary>The frames played so far.</summary>
     public int Position => source.Position;
+
+    /// <summary>The movie's time played so far, in seconds.</summary>
+    public double Seconds => seconds;
+
+    /// <summary>The recording being played.</summary>
+    public InputRecording Recording => recording;
 
     /// <summary>The rows of the hash this replay came to, as the recording keeps its own.</summary>
     public List<MovieCheckpoint> Checkpoints { get; } = new();

@@ -5848,6 +5848,17 @@ Our own, off under Normal (`RunRules.Random` is null, `Randomizer.For` answers n
 | Swarms | One place of twenty a day (`sSwarmMapLUT`), met in the grass, on the water or on a rod, turned on in Oak's lab and told by Pokémon Talk | The same twenty by the day's number modulo 20; they begin at the Johto Hall of Fame (`swarms on`); the radio tells the day's one time in two; the nine Kanto places are in the table and open nowhere yet |
 | The Move Relearner | A Heart Scale for a move the Pokémon could have learned by its level and doesn't know | The same (`Relearning.MovesFor`, the party menu's REMEMBER list) in Pastoria and in Blackthorn; the scale goes only once the move is learned; Fallarbor's relearner still only talks |
 
+## Mt. Silver and Red (2026-10-26, plan 20 · J15, first part)
+
+| Subject | HeartGold | This game |
+|---|---|---|
+| Who may go west to Mt. Silver | Professor Oak's word once all sixteen Badges (Johto's and Kanto's) are won; the guard at the reception gate's west door (`R22R0101_002`, the second trigger, on `VAR_UNK_4110` 1) turns back anyone without it | The same guard and trigger: a Champion of Johto (`JohtoHallOfFame`) who holds Kanto's eight Badges too (`badges of kanto >= 8`), sixteen in all; Kanto's are the region's own, won in FireRed's Kanto, since HeartGold's Kanto Gyms aren't built. Let by, the trigger rests at `VAR_UNK_4110` 2 (ours). A game begun in Johto has no way to Kanto's Badges yet, so Mt. Silver waits for it |
+| The places | Route 28 with its house, Mt. Silver's foot and Pokémon Center, the cave's eight areas | All of them, HeartGold's maps as the second DS reader reads them; the cave plays the lighthouse's song as HeartGold does, and its silent summit the same song (no silent track yet) |
+| The celebrity on Route 28 | TM47 Steel Wing once | The same, in our own words (`FLAG_GOT_TM47_ON_ROUTE_28`, ours) |
+| Red | Silent; battled when spoken to; gone afterwards, back after each new entry into the Hall of Fame | The same: `johto_pkmn_trainer_red_red`, HeartGold's team; beaten, `FLAG_UNK_25F` hides him and Johto's Hall of Fame scene clears it; `FLAG_JOHTO_BEAT_RED` (ours) remembers the first win |
+| Moltres | Waits in its chamber off the first floor | Level 50, as on Mt. Ember: fought it is gone (`FLAG_JOHTO_FOUGHT_MOLTRES`, ours), run from it is back on the next visit |
+| Left | Kanto three years on as Johto's maps (its towns, Gyms and the eight Badges, the S.S. Aqua's voyage to Vermilion, the Magnet Train, the Power Plant, Suicune's Kanto stops, the Kanto Apricorn trees), the rival's Mt. Moon battle, Blue at the gate, Lance's rematch teams, Cameron's photographs | |
+
 ## Route 40's way to the Battle Frontier (2026-10-25, plan 20 · J13, part d)
 
 HeartGold's gate on Route 40 leads north to a Battle Frontier of its own (`battle_frontier_frontier_access` and the
@@ -6176,3 +6187,34 @@ plan 03 · D12a's check for Hoenn's own game. The lines are our own.
   by metatile on sixteen route tiles, `abnormal_weather.inc`, which the pinned cache doesn't hold; a swap of the
   overworld builds the whole map again, so sixteen of them want a cheaper swap first), New Mauville, the Desert
   Underpass, Trainer Hill, Mirage Island, Altering Cave, the event islands, the S.S. Tidal and the island's halls.
+## New Mauville and the Desert Underpass (2026-10-26, plan 21 · H12, part d)
+
+Two of Emerald's places left for the time after Norman and after the Hall of Fame. The lines are our own.
+
+- **Wattson's errand.** Wattson stands in Mauville's street once Norman is beaten (as part H4 left him). Spoken to, he
+  gives the Basement Key (FLAG_GOT_BASEMENT_KEY_FROM_WATTSON) and asks for New Mauville's generator to be stopped; once
+  it is (VAR_NEW_MAUVILLE_STATE 2) he gives TM24, Thunderbolt (FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON), and the next
+  arrival in the city puts him back in his Gym, as Emerald's MoveWattsonBackToGym does. HeartGold's key item has the
+  same name, so New Mauville's door asks Wattson's flag, not the bag (Goldenrod's Radio Tower made the same choice).
+- **The door.** Route 110's way in under the Cycling Road is open (it had been locked); the entrance's own door is
+  shut until the key is used from the step before it. Emerald lays the shut door's six blocks on load while the state
+  is 0; here they are a patch of the layout (GbaMaps.Patches, chunk 829) swapped in by VAR_NEW_MAUVILLE_STATE 0,
+  with the way's own tile left open in the patch, since the overlay's door (FLAG_HOENN_NEW_MAUVILLE_OPENED, ours) is
+  what shuts it, so a walk of the whole game still goes in.
+- **The barriers.** Emerald's switches lay a dozen barrier blocks each by setmetatile, keyed by its temporary
+  variables (VAR_TEMP_1 the blue switch stepped on, VAR_TEMP_2 the green), which its arrival sets back to 0 with
+  every barrier up. Here each switch's layout is a patch of its own (chunks 830 to 837) swapped in by the same two
+  variables, which the plant's OnTransition sets back to 0 behind the warp's fade. The two patches share their cells
+  and take turns, so Map.ApplySwappedPlaces now puts back whatever goes before laying whatever comes (it had done both
+  in the list's order, and a swap going back laid the plain chunks over the one coming). The red switch stops the
+  generator (the state 2, chunk 839 for its quiet blocks), for good.
+- **The Voltorb.** Three of the plant's Poké Balls are Voltorb at level 25, as in the Aqua Hideout: whatever comes of
+  the battle, won, run from or caught, each is gone for good (FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE to _3_).
+- **The Desert Underpass.** The Fossil Maniac's tunnel opens onto it once Hoenn's Hall of Fame is entered (Emerald's
+  FLAG_SYS_GAME_CLEAR, here HoennHallOfFame on the overlay's door), and the maniac stands aside on 6, 5. At its east
+  end lies the fossil Mirage Tower's fall left: the Claw Fossil after the Root, the Root after the Claw; whoever took
+  neither finds one stuck fast and nothing to take (Emerald shows it and gives nothing). Its wild Pokémon are Emerald's
+  (Ditto, Whismur, Loudred).
+- **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports, Trainer Hill, Mirage
+  Island, Altering Cave, the event islands, the S.S. Tidal, the island's halls, the Devon Corporation's revival of the
+  desert's fossils, and Wattson's rematch in his Gym (Emerald's FLAG_WATTSON_REMATCH_AVAILABLE).

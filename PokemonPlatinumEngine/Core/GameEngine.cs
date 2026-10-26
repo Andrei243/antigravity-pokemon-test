@@ -109,7 +109,9 @@ public enum GameState
     PokeblockCase,
     Blender,
     /// <summary>The Battle Dome's bracket, a script's <c>bracket show</c> or <c>bracket pick</c> waiting on it (plan 14 · B8).</summary>
-    Bracket
+    Bracket,
+    /// <summary>The first start's page of options, before the title's notice on the first run only (plan 16 · T24).</summary>
+    FirstStart
 }
 
 public partial class GameEngine
@@ -342,6 +344,8 @@ public partial class GameEngine
             // The player's own files (plan 08 · P21): MIGRATE is on the menu while the folder holds one the readers know
             using (Log.Phase("migrate folder")) OfferMigration();
         }
+        // On the first run only, a page of options comes before the title's notice (plan 16 · T24)
+        OfferTheFirstStart();
     }
 
     /// <summary>Starts a new game at once as the boy with his own name: for tests and the screenshot harness.</summary>
@@ -513,11 +517,12 @@ public partial class GameEngine
         if (flow.Battle != null) flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
         flow.Dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
         ModernUi.TextFrame = Settings.Frame;
-        if (window) WindowSettings.Apply(Settings);
+        if (window && !WindowLocked) WindowSettings.Apply(Settings);
     }
 
     public void ToggleFullscreen()
     {
+        if (WindowLocked) return; // a replay's window is the player's (plan 16 · T20)
         Settings.Fullscreen = !Settings.Fullscreen;
         ApplySettings(window: true);
         Settings.Save();
@@ -944,6 +949,7 @@ public partial class GameEngine
     {
         // Full screen on F11 or Alt+Enter: the Fullscreen action (plan 12 · Q4), read even while the game waits behind another window
         if (!IsHeadless && !InputManager.CaptureRequested && InputManager.IsActionPressed(GameAction.Fullscreen)) ToggleFullscreen();
+        KeepTheReportKey(); // F8: a report of the session (plan 16 · T20)
         // Behind another window, with the option on, the game waits where it is and its sound drops (plan 16 · T3)
         bool held = HeldForFocus;
         AudioManager.Away = held;
@@ -1370,6 +1376,9 @@ public partial class GameEngine
                 break;
             case GameState.Bracket:
                 UpdateBracket(dt);
+                break;
+            case GameState.FirstStart:
+                UpdateFirstStart(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -2774,6 +2783,9 @@ public partial class GameEngine
             case GameState.Bracket:
                 flow.BracketScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
+            case GameState.FirstStart:
+                flow.FirstStartScreen.Draw(VirtualWidth, VirtualHeight, Settings);
+                break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);
                 break;
@@ -2887,6 +2899,7 @@ public partial class GameEngine
         }
 
         flow.Toast.Draw(VirtualWidth);
+        DrawStandingNotice();
         DrawAutosaveDisc();
 
         // The scene closing, or the next one opening; a cave's ring closes on the player, wherever the field shows them,
@@ -2906,6 +2919,7 @@ public partial class GameEngine
         Rlgl.ColorMask(true, true, true, true);
         Raylib.EndTextureMode();
         TakeDevShot();
+        TakeReportScreen();
         FrameProfiler.Lap(FrameSection.Interface);
 
         // Fit the 4K screen into the window (at 1080p this halves it, which also anti-aliases it)

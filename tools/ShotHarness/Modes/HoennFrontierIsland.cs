@@ -99,5 +99,6 @@ partial class Harness
         if (game.State == GameState.Battle) { ToMainMenu(game.Battle); Shot("h27f_sudowoodo_battle"); }
         Flags("the tree", "FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO");
         HoennRayquazaAndStevenShots();
+        HoennNewMauvilleShots();
     }
 }

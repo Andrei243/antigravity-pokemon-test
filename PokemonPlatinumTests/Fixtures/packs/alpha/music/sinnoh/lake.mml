@@ -1,0 +1,7 @@
+# A test pack's song in place of the lakes' (plan 16 · T14). Our own four notes.
+title Pack Lake
+tempo 90
+meter 4/4
+
+track lead flute vol=0.7 pan=0
+  L o4 c4 e4 g4 >c4 |

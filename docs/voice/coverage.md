@@ -10,9 +10,9 @@ A **line** is one string a character says in a text box (a script's `say` and th
 |---|---|---|---|---|---|
 | The introduction (`intro:`) | 80 | 80 | 0 | 0 | 0 |
 | People of the hand-made maps (`map:`) | 1270 | 1231 | 39 | 1 | 0 |
-| Scripts (`script:`) | 8788 | 8373 | 415 | 17 | 0 |
-| People of the world (`world:`) | 6199 | 6140 | 59 | 4 | 0 |
-| **All** | 16337 | 15824 | 513 | 22 | 0 |
+| Scripts (`script:`) | 8809 | 8391 | 418 | 17 | 0 |
+| People of the world (`world:`) | 6203 | 6144 | 59 | 4 | 0 |
+| **All** | 16362 | 15846 | 516 | 22 | 0 |
 
 ## Not voiced, by decision
 
@@ -20,15 +20,15 @@ Plan 26's decision 7: the game's own voice, a question's answers, signs and a Po
 
 | What | Lines |
 |---|---|
-| a Pokémon's cry | 208 |
+| a Pokémon's cry | 209 |
 | a question's answers | 525 |
-| a sign | 1399 |
-| the game's own voice (speaker none) | 246 |
-| the game's own voice (text) | 1165 |
+| a sign | 1401 |
+| the game's own voice (speaker none) | 247 |
+| the game's own voice (text) | 1178 |
 
 ## The cast
 
-- Named characters: 326 voices (289 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
+- Named characters: 328 voices (291 provisional: added for a name nobody has cast yet, with nothing said about how they sound).
 - Cloned from the user's samples: `rival`.
 - Archetypes in use: 222, with 671 voices to cast (V5).
 - Lines whose voice is the person spoken to, decided as the talk starts (`@self`): 1827.
@@ -48,7 +48,7 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `look:clerk (any)` | 305 | 7 |
 | `look:lass (any)` | 295 | 11 |
 | `look:attendant (any)` | 207 | 7 |
-| `look:nurse (any)` | 183 | 0 |
+| `look:nurse (any)` | 189 | 0 |
 | `look:gym_guide (any)` | 173 | 1 |
 | `cynthia` | 157 | 1 |
 | `look:scientist (any)` | 150 | 4 |
@@ -62,11 +62,11 @@ The voices with twenty lines or more; archetypes are summed over their voices.
 | `class:psychic (any)` | 112 | 0 |
 | `class:swimmer_m (any)` | 112 | 0 |
 | `assistant` | 111 | 5 |
+| `look:guard (any)` | 108 | 0 |
 | `class:black_belt (any)` | 106 | 0 |
 | `look:old_man (any)` | 106 | 4 |
 | `look:boy (any)` | 104 | 4 |
 | `mom` | 104 | 6 |
-| `look:guard (any)` | 103 | 0 |
 | `class:youngster (any)` | 102 | 0 |
 | `look:man (any)` | 101 | 4 |
 | `bianca` | 99 | 3 |

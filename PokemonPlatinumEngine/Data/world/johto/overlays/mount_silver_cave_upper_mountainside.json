@@ -1,0 +1,7 @@
+{
+  // Mt. Silver's upper mountainside (plan 20 · J15): the snowy slopes the cave's second floor opens onto, and the way up
+  // to the third
+  "area": "mount_silver_cave_upper_mountainside",
+  "bgmTrack": "johto/lighthouse",
+  "people": {}
+}

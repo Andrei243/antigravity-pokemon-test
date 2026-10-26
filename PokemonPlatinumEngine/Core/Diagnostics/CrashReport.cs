@@ -37,7 +37,8 @@ public sealed record CrashNote(string Report, bool SaveKept, DateTime When);
 /// <param name="ReportPath">The report written, or null where none could be.</param>
 /// <param name="SavePath">The crash save written, or null where there was no game in progress or it couldn't be written whole.</param>
 /// <param name="SaveProblem">Why there is no crash save, in a few words; null where there is one.</param>
-public sealed record CrashOutcome(string? ReportPath, string? SavePath, string? SaveProblem);
+/// <param name="ReportFolder">The report's folder in <c>repros/</c> written beside it (plan 16 · T20), or null where the session wasn't recorded or it couldn't be written.</param>
+public sealed record CrashOutcome(string? ReportPath, string? SavePath, string? SaveProblem, string? ReportFolder = null);
 
 /// <summary>
 /// The crash report (plan 16 · T3), written when the game stops on an exception nobody caught: a file in
@@ -291,8 +292,16 @@ public static class CrashReport
             watching = false;
             watchedGame = null;
             watchedSave = null;
+            ReportFolderWriter = null;
         }
     }
+
+    /// <summary>
+    /// Writes a report's folder for a crash (plan 16 · T20, <see cref="Diagnostics.ReportFolder"/>), given the save's
+    /// folder and the exception, and gives its path: set, while watching, by whoever records the session
+    /// (<c>GameEngine.WriteCrashFolder</c>), and let go by <see cref="StopWatching"/>. Null writes none.
+    /// </summary>
+    public static Func<string, Exception, string?>? ReportFolderWriter { get; set; }
 
     private static void OnUnhandled(object sender, UnhandledExceptionEventArgs e) =>
         Caught(e.ExceptionObject as Exception ?? new InvalidOperationException($"Something that is no exception was thrown: {e.ExceptionObject}"));
@@ -329,6 +338,18 @@ public static class CrashReport
             catch (Exception e) { Diagnostics.Log.Info($"The game couldn't say where it was: {e.GetType().Name}: {e.Message}"); }
 
             var outcome = Write(folder, exception, CrashFacts.Now(facts, arguments), save);
+            // The session's report beside it, which replays to the frame that threw (plan 16 · T20)
+            string? reportFolder = null;
+            try { reportFolder = ReportFolderWriter?.Invoke(folder, exception); }
+            catch (Exception e) { Diagnostics.Log.Info($"The session's report couldn't be written: {e.GetType().Name}: {e.Message}"); }
+            if (reportFolder != null)
+            {
+                outcome = outcome with { ReportFolder = reportFolder };
+                string replay = $"{Environment.NewLine}== Replay =={Environment.NewLine}The session to this crash: {Diagnostics.ReportFolder.Shown(reportFolder)} (play it with --replay).{Environment.NewLine}";
+                try { if (outcome.ReportPath != null) File.AppendAllText(outcome.ReportPath, replay, new UTF8Encoding(false)); }
+                catch (Exception e) when (e is IOException or UnauthorizedAccessException) { }
+                Diagnostics.Log.Info($"The session to the crash was written to {Diagnostics.ReportFolder.Shown(reportFolder)}.");
+            }
             // The log is told, and so is whoever started the game from a console
             string told = outcome.ReportPath != null ? $"A report was written to {FolderName}/{Path.GetFileName(outcome.ReportPath)}." : "No report could be written.";
             string kept = outcome.SavePath != null ? $"The game as it stood was kept as {SaveName}; your own save wasn't touched." : outcome.SaveProblem ?? "No crash save.";

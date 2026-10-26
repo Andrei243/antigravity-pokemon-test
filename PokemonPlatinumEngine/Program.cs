@@ -4,6 +4,7 @@ using Raylib_cs;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Core.Diagnostics;
 using PokemonPlatinumEngine.Graphics;
+using PokemonPlatinumEngine.UI;
 
 namespace PokemonPlatinumEngine;
 
@@ -59,7 +60,8 @@ public static class Program
 
         GameEngine? engine = null;
         int code = Guarded(() => engine, launch.Given, () => Play(launch, made => engine = made));
-        Log.Info(code == CommandLine.Ended ? "The game ended as the player chose." : "The game stopped on a crash.");
+        if (code == CommandLine.Ended && playCode is { } own) code = own;
+        Log.Info(code == CommandLine.Crashed ? "The game stopped on a crash." : "The game ended as the player chose.");
         Log.Close();
         return code;
     }
@@ -119,12 +121,26 @@ public static class Program
         }
     }
 
+    // What a run that ended without a crash exits with, where it isn't Ended (a replay refused)
+    private static int? playCode;
+
     private static void Play(LaunchOptions launch, Action<GameEngine> made)
     {
         // The window opens at the size and V-Sync choice saved in the options (sized for the monitor the first time),
         // but for what a switch asks of this run alone (--windowed, --fullscreen, --safe-mode)
         var settings = GameSettings.Load();
         launch.ApplyTo(settings);
+        // --replay (plan 16 · T20): the recording is read, and refused if this build can't play it, before a window opens
+        MoviePlayer? player = null;
+        if (launch.ReplayFolder is { } replayFolder)
+        {
+            player = OpenReplay(replayFolder);
+            if (player == null)
+            {
+                playCode = CommandLine.ReplayRefused;
+                return;
+            }
+        }
         // Developer mode (plan 16 · T6): the console, and the files watched, read from the repository's data before anything loads them
         if (DevMode.Wanted(launch, settings)) DevMode.Enable();
         if (launch.SafeMode)
@@ -134,6 +150,8 @@ public static class Program
             Overrides.Enabled = false;
             Log.Info("Safe mode: the Low preset in a 1280x720 window, no mesh cache, no overrides.");
         }
+        // The packs beside the game and the saves, laid over the game's data before anything reads it (plan 16 · T14)
+        Packs.Start(settings, SavePaths.Current.Folder, launch.NoPacks || launch.SafeMode);
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow | (settings.VSync ? ConfigFlags.VSyncHint : 0));
         Raylib.InitWindow(settings.WindowWidth, settings.WindowHeight, "Pokémon Platinum - Sinnoh Distortion Engine");
         Raylib.SetWindowMinSize(960, 540);
@@ -144,6 +162,12 @@ public static class Program
         WindowSettings.Apply(settings);
         Log.Info($"Renderer: {Gl.Renderer() ?? "unknown"}");
         Log.Info($"Options: {System.Text.RegularExpressions.Regex.Replace(settings.Describe(), @"\s+", " ")}");
+        if (player != null)
+        {
+            Replay(player, launch.ReplayFolder!, made);
+            Raylib.CloseWindow();
+            return;
+        }
 
         // The session is recorded from the title (plan 16 · T19): a seed drawn by chance goes into the dice before the
         // engine is made, so the field's chance and every map the start loads draw from it, and each frame's keys and
@@ -152,8 +176,10 @@ public static class Program
         Log.Info($"Recording the session from seed {recorder.Recording.Seed}{(launch.RecordPath != null ? $", to be written to {launch.RecordPath}" : "")}.");
 
         // Initialize Engine
-        GameEngine engine = new(settings);
+        GameEngine engine = new(settings) { Recording = recorder.Recording };
         made(engine);
+        // A crash leaves a report's folder beside its report, which replays to the frame that threw (plan 16 · T20)
+        CrashReport.ReportFolderWriter = engine.WriteCrashFolder;
         engine.NewGameRegion = launch.Region;
         engine.Initialize();
         // What the start-up had to say is on the disk before the first frame
@@ -202,5 +228,73 @@ public static class Program
         // Cleanup
         engine.Close();
         Raylib.CloseWindow();
+    }
+
+    /// <summary>A report's recording, read and checked; null, said to the terminal and the log, where it can't be played.</summary>
+    private static MoviePlayer? OpenReplay(string folder)
+    {
+        string movie = ReportFolder.MovieIn(folder);
+        try
+        {
+            return new MoviePlayer(InputRecording.ReadFrom(movie));
+        }
+        catch (Exception e) when (e is IOException or UnauthorizedAccessException or InvalidDataException or EndOfStreamException or RecordingRefusedException)
+        {
+            string why = $"The recording {movie} can't be played: {e.Message}";
+            Log.Warn(why);
+            Log.Say(why, error: true);
+            return null;
+        }
+    }
+
+    /// <summary>
+    /// A report played back in the game's window (plan 16 · T20, <c>--replay</c>): the title's files and the seed from
+    /// the recording, the game saving into the folder's <c>replayed/</c> and never over the player's save, its options
+    /// changing the game but never the window, and the frames fed from the recording. The keys do nothing but Menu,
+    /// which leaves, and Run held, which plays four frames to each one drawn. A standing notice names the second the
+    /// hash parts at, if it does, and the end.
+    /// </summary>
+    private static void Replay(MoviePlayer player, string folder, Action<GameEngine> made)
+    {
+        string root = File.Exists(folder) ? Path.GetDirectoryName(Path.GetFullPath(folder))! : Path.GetFullPath(folder);
+        string replayed = Path.Combine(root, ReportFolder.ReplayedName);
+        Log.Info($"Replaying {player.Recording.Frames.Count} frames ({player.Recording.Seconds:0.0} s) of {folder}, saving into {replayed}.");
+        var engine = player.Prepare(replayed, headless: false);
+        engine.WindowLocked = true;
+        made(engine);
+        engine.Initialize();
+        engine.StandingNotice = Text.Of("replayNotice.playing", ("folder", ReportFolder.Shown(root)));
+        Log.Flush();
+
+        float shown = 0f;
+        bool over = false;
+        try
+        {
+            while (!Raylib.WindowShouldClose())
+            {
+                // The player's own keys, read outside the recording's frames: only Menu and Run mean anything
+                var keys = InputManager.ReadKeys();
+                if (keys.IsPressed(GameAction.Menu)) break;
+                if (!over)
+                {
+                    int frames = keys.IsDown(GameAction.Run) ? 4 : 1;
+                    for (int i = 0; i < frames && !over; i++) over = !player.Step(engine);
+                    if (over)
+                    {
+                        engine.StandingNotice = player.Parted is { } parted
+                            ? Text.Of("replayNotice.parted", ("seconds", parted.Seconds.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture)), ("groups", string.Join(", ", parted.Groups)))
+                            : Text.Of("replayNotice.ended");
+                        Log.Info(player.Parted?.ToString() ?? $"The replay came to the recording's end at frame {player.Position}.");
+                    }
+                    else if ((shown += Raylib.GetFrameTime()) > Toast.SlideTime * 2f + Toast.HoldTime && engine.StandingNotice != null) engine.StandingNotice = null;
+                }
+                engine.Draw();
+            }
+        }
+        finally
+        {
+            Movie.Release();
+            engine.Close();
+        }
     }
 }

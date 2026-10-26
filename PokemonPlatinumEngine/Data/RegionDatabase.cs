@@ -551,6 +551,8 @@ public static class RegionDatabase
                 "Goldenrod_RadioTower_2F", "Goldenrod_RadioTower_3F", "Goldenrod_RadioTower_4F", "Goldenrod_RadioTower_5F",
                 "Goldenrod_RadioTower_ObservationDeck", "Goldenrod_RadioTower_Elevator", "Goldenrod_Underground_B1F",
                 "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse", "Goldenrod_DeptStore_Basement",
+                // Plan 20 · J15: Route 28's house, Mt. Silver's Pokémon Center and the cave to the summit
+                "Route28_House", "MtSilver_PokemonCenter_1F", "MtSilver_PokemonCenter_B1F", "MtSilverCave_1F", "MtSilverCave_UpperMountainside", "MtSilverCave_LowerMountainside", "MtSilverCave_ExpertBeltChamber", "MtSilverCave_MoltresChamber", "MtSilverCave_2F", "MtSilverCave_3F", "MtSilverCave_Summit",
             }
         },
         new()
@@ -679,6 +681,8 @@ public static class RegionDatabase
                 "BattleFrontier_Lounge6", "BattleFrontier_Lounge7", "BattleFrontier_Lounge8",
                 // Plan 21 · H12, part c: Steven's cave
                 "MeteorFalls_StevensCave",
+                // Plan 21 · H12, part d: New Mauville and the Desert Underpass
+                "NewMauville_Entrance", "NewMauville_Inside", "DesertUnderpass",
             }
         },
         new()

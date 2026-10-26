@@ -1,0 +1,56 @@
+{
+  "key": "mount_silver_cave_lower_mountainside",
+  "index": 460,
+  "name": "Mt. Silver Cave",
+  "matrix": 267,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "encounters": "D41R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Golbat", "level": 51 },
+    { "species": "Onix", "level": 48 },
+    { "species": "Golbat", "level": 51 },
+    { "species": "Onix", "level": 48 },
+    { "species": "Phanpy", "level": 48 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Donphan", "level": 50 },
+    { "species": "Donphan", "level": 50 },
+    { "species": "Golduck", "level": 51 },
+    { "species": "Larvitar", "level": 20 },
+    { "species": "Golduck", "level": 51 },
+    { "species": "Larvitar", "level": 15 }
+  ],
+  "landRate": 20,
+  "swarm": [
+    "Golbat",
+    "Golbat"
+  ],
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 19, "z": 20, "to": "mount_silver_cave_1f", "toWarp": 5 },
+    { "x": 23, "z": 37, "to": "mount_silver_cave_1f", "toWarp": 4 },
+    { "x": 27, "z": 42, "to": "mount_silver_cave_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 27, "z": 46, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D41R0103_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d41r0103_escape_rope" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 15, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D41R0103_TM76", "item": "TM76", "script": "std_itemball_d41r0103_tm76" }
+  ],
+  "signs": [],
+  "triggers": []
+}

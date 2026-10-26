@@ -1161,7 +1161,15 @@ public static class ScriptParser
             case "badge":
                 return new Condition { Query = Query.Badge, Negated = negated, Name = r.Badge() };
             case "badges":
-                return Counted(Query.Badges);
+            {
+                // ...of another region by its name (plan 20 · J15: Mt. Silver's guard counts Kanto's eight beside Johto's)
+                if (!r.PeekWord("of")) return Counted(Query.Badges);
+                r.Next();
+                string region = r.Word("a region");
+                if (RegionDatabase.Get(region) is not { } named) throw r.Error($"'{region}' is no region");
+                var compare = r.Compare();
+                return new Condition { Query = Query.Badges, Negated = negated, Name = named.Id, Compare = compare, Number = r.Int("a number") };
+            }
             case "movebadge":
             {
                 string move = r.Text("a field move's name");

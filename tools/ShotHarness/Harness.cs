@@ -9,8 +9,9 @@ partial class Harness
     readonly string outDir;
     readonly string startDir;
 
-    readonly GameEngine engine;
-    readonly GameEngine.Driver game;
+    // (Not readonly: a scenario's `replay` puts a player's game in the harness's place, plan 16 · T20)
+    GameEngine engine;
+    GameEngine.Driver game;
     readonly double startMs;
     long tick;
 

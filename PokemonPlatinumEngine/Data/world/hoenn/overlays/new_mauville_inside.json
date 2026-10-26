@@ -1,0 +1,22 @@
+{
+  // New Mauville's plant (plan 21 · H12, part d): corridors barred by blue and green barriers, the switches that lower one
+  // colour and raise the other (triggers 0 to 8), the red switch that stops the generator (trigger 9), the generator itself
+  // read from before it, and three Poké Balls that are Voltorb (new_mauville_inside.txt), each gone once battled
+  "area": "new_mauville_inside",
+  "bgmTrack": "hoenn/mt_pyre",
+  "trees": "Round",
+  "triggers": [
+    { "trigger": 0, "script": "BlueButton" }, { "trigger": 1, "script": "GreenButton" }, { "trigger": 2, "script": "BlueButton" },
+    { "trigger": 3, "script": "BlueButton" }, { "trigger": 4, "script": "GreenButton" }, { "trigger": 5, "script": "GreenButton" },
+    { "trigger": 6, "script": "BlueButton" }, { "trigger": 7, "script": "BlueButton" }, { "trigger": 8, "script": "GreenButton" },
+    { "trigger": 9, "script": "RedButton" }
+  ],
+  "read": {
+    "NewMauville_Inside_EventScript_Generator": "Generator"
+  },
+  "people": {
+    "item_ball_6": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Voltorb1", "hiddenBy": "FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE", "still": true },
+    "item_ball_7": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Voltorb2", "hiddenBy": "FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE", "still": true },
+    "item_ball_8": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Voltorb3", "hiddenBy": "FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE", "still": true }
+  }
+}

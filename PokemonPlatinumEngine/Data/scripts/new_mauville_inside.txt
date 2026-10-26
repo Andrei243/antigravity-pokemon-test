@@ -1,0 +1,75 @@
+# New Mauville's plant (plan 21 · H12, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/NewMauville_Inside/scripts.inc).
+#
+# Blue and green barriers stand across the plant's corridors. Stepping on a switch of one colour lowers that colour's
+# barriers and raises the other's (VAR_TEMP_1 for the blue, VAR_TEMP_2 for the green, which world.json's swaps lay; the
+# area's triggers 0 to 8 run only while their colour isn't the one down), and every arrival puts both back to nought,
+# as Emerald's arrival does, with every barrier up. The red switch before the generator (trigger 9, while
+# VAR_NEW_MAUVILLE_STATE is 1) stops it (the state 2, which lays the generator's blocks quiet), and Wattson is told so in
+# Mauville City. Three of the Poké Balls lying about are Voltorb, level 25 each: looked at, one cries and battles, and
+# whatever comes of it, it is gone for good (FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE to _3_, which the overlay hides it by).
+
+
+script OnTransition
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 0
+  end
+
+
+script BlueButton
+  setvar VAR_TEMP_1 1
+  setvar VAR_TEMP_2 0
+  sound "select"
+  end
+
+
+script GreenButton
+  setvar VAR_TEMP_1 0
+  setvar VAR_TEMP_2 1
+  sound "select"
+  end
+
+
+script RedButton
+  speaker none
+  text "{player} stepped on the switch. Click..."
+  text "... ... ... ... ... ..."
+  setvar VAR_NEW_MAUVILLE_STATE 2
+  text "The generator appears to have stopped..."
+  end
+
+
+script Generator
+  speaker none
+  if var VAR_NEW_MAUVILLE_STATE == 2 goto Quiet
+  text "The generator is giving off heat that can be felt from a distance. It should be switched off as soon as possible."
+  end
+label Quiet
+  text "The generator has gone quiet."
+  end
+
+
+script Voltorb1
+  cry "Voltorb"
+  speaker none
+  text "The Poké Ball was a Voltorb!"
+  wildbattle "Voltorb" 25
+  setflag FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE
+  hide self
+  end
+script Voltorb2
+  cry "Voltorb"
+  speaker none
+  text "The Poké Ball was a Voltorb!"
+  wildbattle "Voltorb" 25
+  setflag FLAG_DEFEATED_VOLTORB_2_NEW_MAUVILLE
+  hide self
+  end
+script Voltorb3
+  cry "Voltorb"
+  speaker none
+  text "The Poké Ball was a Voltorb!"
+  wildbattle "Voltorb" 25
+  setflag FLAG_DEFEATED_VOLTORB_3_NEW_MAUVILLE
+  hide self
+  end

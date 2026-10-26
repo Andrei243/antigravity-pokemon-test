@@ -106,6 +106,8 @@ public static partial class WorldModels
         Built("poke_c_gate", BuildingKind.Gate, "the gate house between Route 35, the National Park and the Pokéathlon Dome"),
         Thing("d22_funsui", PropType.Fountain, "the National Park's fountain"),
         Ground("d22_mizu", "the water of the National Park's fountain: its own ground draws it"),
+        // Plan 20 · J15: Mt. Silver Cave's falls and the backdrop round its summit
+        Ground("dsm_fal1", "a waterfall in Mt. Silver Cave: its own ground draws the water"), Ground("dsm_fal2", "a waterfall in Mt. Silver Cave: its own ground draws the water"), Ground("dsm_bg1", "the peaks round Mt. Silver's summit (no model of its own: the field's sky stands in)"),
 
         // ---------------------------------------------------------------- Ecruteak City (en_: Enju), plan 20 · J5, part b
         House("en_h01a", Architecture.Heritage, "a house of Ecruteak City"),
@@ -312,6 +314,7 @@ public static partial class WorldModels
         // Kanto's own models (kn_: the original's Kanto) where Routes 26, 27 and 22 cross into it: the houses on the
         // two routes are built as Viridian builds, the nearest town of Kanto's
         House("kn_h01", Architecture.Evergreen, "a house on Route 26 or Route 27"),
+        House("to_h01", Architecture.Evergreen, "the house on Route 28, below Mt. Silver (plan 20 · J15)"),
         Door("kn_door2"),
         // The League's reception gate is one room seen from three roads: a face of it on each
         Built("kn_gate", BuildingKind.Gate, "the League's reception gate, its south face where Route 26 comes up to it"),

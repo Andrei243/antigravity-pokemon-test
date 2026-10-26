@@ -2151,7 +2151,7 @@
     "action": {
       "Up": "Up", "Down": "Down", "Left": "Left", "Right": "Right", "Confirm": "Confirm, talk, read", "Cancel": "Back", "Menu": "Menu",
       "Run": "Run (held)", "Item": "Registered item", "Poketch": "Pokétch out or away", "PoketchApp": "Next Pokétch app",
-      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot"
+      "PoketchTouch": "Touch the Pokétch", "PageLeft": "Page back", "PageRight": "Page on", "Fullscreen": "Full screen", "Mute": "Sound on or off", "Screenshot": "Take a screenshot", "Report": "Write a report to replay"
     },
     "page": {
       "title": "CONTROLS",
@@ -4087,5 +4087,23 @@
     "skill": "SKILL",
     "body": "BODY",
     "total": "TOTAL"
+  },
+  "sessionReport": {
+    "written": "A report to replay was written to {folder}.",
+    "notWritten": "The report couldn't be written: {why}"
+  },
+  "replayNotice": {
+    "playing": "Replaying {folder}. {key:menu} leaves; hold {key:run} to go four times as fast.",
+    "parted": "The replay parts from its recording at {seconds} s ({groups}). {key:menu} leaves.",
+    "ended": "The recording is over. {key:menu} leaves."
+  },
+  "firstStart": {
+    "title": "BEFORE YOU BEGIN",
+    "line": "Set the game up to read and play the way that suits you. Every choice here can be changed later under OPTIONS.",
+    "hint": { "continue": "Continue" },
+    "continue": {
+      "label": "CONTINUE",
+      "help": "Keeps these choices and goes on to the title screen. This page won't be shown again."
+    }
   }
 }

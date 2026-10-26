@@ -23,7 +23,14 @@
     { "map": "SkyPillar_5F", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 825 } ] },
     { "map": "SkyPillar_Top", "flag": "FLAG_HOENN_SKY_PILLAR_CRACKED", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 826 } ] },
     // and Steven's cave's mouth in Meteor Falls' first room, which Emerald's ON_LOAD opens once the game is cleared
-    { "map": "MeteorFalls_1F_1R", "flag": "HoennHallOfFame", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 827 }, { "chunkX": 0, "chunkY": 1, "chunk": 828 } ] }
+    { "map": "MeteorFalls_1F_1R", "flag": "HoennHallOfFame", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 827 }, { "chunkX": 0, "chunkY": 1, "chunk": 828 } ] },
+    // Plan 21 · H12, part d: New Mauville's door shut until the Basement Key opens it (VAR_NEW_MAUVILLE_STATE 0), the
+    // barriers inside as the last switch stepped on leaves them (VAR_TEMP_1 the blue, VAR_TEMP_2 the green, which the
+    // plant's OnTransition sets back to 0, as Emerald's arrival does) and the generator switched off (the state 2)
+    { "map": "NewMauville_Entrance", "var": "VAR_NEW_MAUVILLE_STATE", "value": 0, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 829 } ] },
+    { "map": "NewMauville_Inside", "var": "VAR_TEMP_1", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 830 }, { "chunkX": 0, "chunkY": 1, "chunk": 832 }, { "chunkX": 1, "chunkY": 1, "chunk": 833 } ] },
+    { "map": "NewMauville_Inside", "var": "VAR_TEMP_2", "value": 1, "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 834 }, { "chunkX": 0, "chunkY": 1, "chunk": 836 }, { "chunkX": 1, "chunkY": 1, "chunk": 837 } ] },
+    { "map": "NewMauville_Inside", "var": "VAR_NEW_MAUVILLE_STATE", "value": 2, "cells": [ { "chunkX": 1, "chunkY": 0, "chunk": 839 } ] }
   ],
   "maps": [
     // The overworld: Emerald's connected maps stitched into one, Littleroot Town at its south-west
@@ -389,7 +396,12 @@
     { "name": "BattleFrontier_Lounge7", "matrix": 399, "area": "battle_frontier_lounge_7", "trees": "Round", "setting": "Indoors" },
     { "name": "BattleFrontier_Lounge8", "matrix": 401, "area": "battle_frontier_lounge_8", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H12, part c: Steven's cave behind Meteor Falls' first room
-    { "name": "MeteorFalls_StevensCave", "matrix": 294, "area": "meteor_falls_stevens_cave", "trees": "Round", "setting": "Cave" }
+    { "name": "MeteorFalls_StevensCave", "matrix": 294, "area": "meteor_falls_stevens_cave", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H12, part d: New Mauville under Route 110's Cycling Road (its entrance and the plant inside) and the
+    // Desert Underpass behind the Fossil Maniac's tunnel
+    { "name": "NewMauville_Entrance", "matrix": 239, "area": "new_mauville_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "NewMauville_Inside", "matrix": 240, "area": "new_mauville_inside", "trees": "Round", "setting": "Indoors" },
+    { "name": "DesertUnderpass", "matrix": 285, "area": "desert_underpass", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -531,6 +543,8 @@
     "battle_frontier_lounge_1", "battle_frontier_lounge_2", "battle_frontier_lounge_3", "battle_frontier_lounge_4",
     "battle_frontier_lounge_5", "battle_frontier_lounge_6", "battle_frontier_lounge_7", "battle_frontier_lounge_8",
     // Plan 21 · H12, part c: Steven's cave
-    "meteor_falls_stevens_cave"
+    "meteor_falls_stevens_cave",
+    // Plan 21 · H12, part d: New Mauville and the Desert Underpass
+    "new_mauville_entrance", "new_mauville_inside", "desert_underpass"
   ]
 }

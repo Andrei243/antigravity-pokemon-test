@@ -1,0 +1,93 @@
+{
+  "key": "route_28",
+  "index": 32,
+  "name": "Route 28",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "encounters": "R28",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Tangela", "level": 39 },
+    { "species": "Ponyta", "level": 40 },
+    { "species": "Tangela", "level": 39 },
+    { "species": "Ponyta", "level": 40 },
+    { "species": "Donphan", "level": 40 },
+    { "species": "Donphan", "level": 40 },
+    { "species": "Rapidash", "level": 42, "night": "Sneasel" },
+    { "species": "Rapidash", "level": 42, "night": "Sneasel" },
+    { "species": "Doduo", "level": 41, "night": "Rapidash" },
+    { "species": "Dodrio", "level": 43, "night": "Rapidash" },
+    { "species": "Doduo", "level": 41, "night": "Rapidash" },
+    { "species": "Dodrio", "level": 43, "night": "Rapidash" }
+  ],
+  "landRate": 25,
+  "swarm": [
+    "Tangela",
+    "Tangela"
+  ],
+  "surfSwarm": "Poliwag",
+  "fishSwarm": "Magikarp",
+  "water": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 35, "maxLevel": 35 },
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 40 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 887, "z": 266, "to": "route_22_pokemon_league_reception_gate", "toWarp": 3 },
+    { "x": 887, "z": 267, "to": "route_22_pokemon_league_reception_gate", "toWarp": 3 },
+    { "x": 851, "z": 263, "to": "route_28_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r28_monstarball", "looks": "monstarball", "movement": "0", "x": 865, "z": 264, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R28_TM35", "item": "TM35", "script": "std_itemball_r28_tm35" },
+    { "id": "r28_tree", "looks": "tree", "movement": "0", "x": 840, "z": 267, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" }
+  ],
+  "signs": [
+    { "x": 874, "z": 262, "type": 2, "script": "std_hiddenitem_r28_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_R28_RARE_CANDY" },
+    { "x": 882, "z": 266, "type": 1, "script": "R28_001+1" }
+  ],
+  "triggers": []
+}

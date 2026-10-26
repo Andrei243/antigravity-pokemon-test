@@ -34,7 +34,11 @@ public static class GameDataFiles
         NewLine = "\n"
     };
 
-    public static string PathOf(string relativePath) => Path.Combine(Directory, relativePath);
+    /// <summary>
+    /// Where a data file is read from: the game's own <see cref="Directory"/>, or the last pack in use that carries a
+    /// file of that name (plan 16 · T14, <see cref="DataLayers.PathOf"/>); with no pack, the game's own path.
+    /// </summary>
+    public static string PathOf(string relativePath) => DataLayers.PathOf(relativePath);
 
     /// <summary>
     /// The five files a battle's rules are made of (plan 08 · P10): what <see cref="Version"/> is a hash of. A file the
@@ -50,7 +54,12 @@ public static class GameDataFiles
     /// 07's rooms, plan 12 · Q25's suspended battles and Q29's Home box, plan 13 · V22's trainer files and plan 16 ·
     /// T19's recordings refuse the same way. Read once, the first time it is asked.
     /// </summary>
-    public static string Version => version ??= VersionOf(VersionedFiles.Select(name => File.ReadAllBytes(PathOf(name))));
+    public static string Version => version ??= VersionOf(VersionedFiles.SelectMany(name =>
+        // A pack's patches of a file are part of the data it makes (plan 16 · T14); with no pack, the five files alone
+        new[] { File.ReadAllBytes(PathOf(name)) }.Concat(DataLayers.PatchesOf(name).Select(File.ReadAllBytes))));
+
+    /// <summary>The data's version worked out again the next time it is asked: the packs in use have changed.</summary>
+    public static void ForgetVersion() => version = null;
 
     /// <summary>
     /// The hash <see cref="Version"/> is: FNV-1a of 64 bits over the files in their order, each followed by a nought,
@@ -82,7 +91,8 @@ public static class GameDataFiles
 
         try
         {
-            return JsonSerializer.Deserialize<T>(File.ReadAllText(path), Json)
+            // A pack's patch of the file laid over it (plan 16 · T14); the file as it is when there is none
+            return JsonSerializer.Deserialize<T>(DataLayers.ReadPatched(relativePath), Json)
                 ?? throw new InvalidDataException($"Game data file is empty: {path}");
         }
         catch (JsonException e)

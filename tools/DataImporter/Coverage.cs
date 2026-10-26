@@ -149,7 +149,9 @@ public static class Coverage
     /// <summary>
     /// What using it from the bag outside a battle does (plan 06 · R11): the field's own uses (the Bicycle, the rods,
     /// an Escape Rope, a Repel, a flute, Sacred Ash), teaching a TM or an HM, evolving, the Gracidea, and an item used
-    /// on a Pokémon by the parameters above. A berry is also planted in soil, which waits for berry soil (R14).
+    /// on a Pokémon by the parameters above. A berry is also planted in soil (plan 06 · R14a, `BerryPatches`), cooked
+    /// into Poffins (R14c) and blended into Pokéblocks (plan 21 · H11); mulch is spread on the soil and the Sprayduck
+    /// waters it (`common.BerryPatch`); a stone a species evolves holding (the Oval Stone) is held, not used (R30).
     /// </summary>
     private static Works FieldUseOf(ItemData item)
     {
@@ -157,9 +159,12 @@ public static class Coverage
             || FormChanges.Handles(item))
             return Works.Fully;
         if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
+        if (item.FieldUse is "Mulch" or "Sprayduck" || Evolution.IsHeldForEvolution(item)) return Works.Fully;
+        // A berry with no use on a Pokémon is for the soil, the pot and the blender alone
+        if (item.FieldUse == "Berry" && item.Berry != null && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
         if (!BagScreen.CanUse(item)) return Works.NotYet;
         bool runs = item.Use == null || item.Use.Keys.All(FieldRuns.Contains);
-        return runs && item.FieldUse != "Berry" ? Works.Fully : Works.Partly;
+        return runs && (item.FieldUse != "Berry" || item.Berry != null) ? Works.Fully : Works.Partly;
     }
 
     private static string Word(Works works) => works switch
@@ -325,7 +330,8 @@ public static class Coverage
 
         Line("## The later mechanics' data");
         Line();
-        Line("Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.");
+        Line("What plan 06 · R20–R23 wrote their rules from, and every part of it runs under the modern rules: Mega Evolution (R20), Z-Moves (R21), " +
+             "Dynamax and Gigantamax (R22) and Terastallization (R23), with the Megas of our own (R20b) and Mega Dynamax (R20c).");
         Line();
         Line($"- **Z-Moves**: {n.ZMoves} ({moves.Count(m => m.Kind == MoveKind.ZMove && m.Power == 0)} that take their power from the move they are made of, " +
              $"{moves.Count(m => m.Kind == MoveKind.ZMove && m.Power > 0)} with a power of their own). {standard.Count(m => m.ZPower > 0)} moves have a Z-Move power, " +
@@ -333,7 +339,7 @@ public static class Coverage
         Line($"- **Max Moves**: {n.MaxMoves}, and {n.GMaxMoves} G-Max Moves for {moves.Where(m => m.GigantamaxOf != null).Select(m => m.GigantamaxOf).Distinct().Count()} Gigantamax forms. " +
              $"{standard.Count(m => m.MaxPower > 0)} moves have a Max Move power.");
         Line($"- **Mega Stones**: {n.MegaStones}, for {items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Form).Distinct().Count()} forms of " +
-             $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species, each a form in `species.json`; Mega Evolving in battle is plan 06's.");
+             $"{items.Where(i => i.MegaStone != null).Select(i => i.MegaStone!.Species).Distinct().Count()} species, each a form in `species.json`, Mega Evolved in battle by `BattleCore.Mega.cs`.");
         Line($"- **Z-Crystals**: {n.ZCrystals} ({items.Count(i => i.ZCrystal?.Type != null)} for a type, {items.Count(i => i.ZCrystal?.Move != null)} for one species' move).");
         Line($"- **Modern values**: {standard.Count(m => m.Modern != null)} of Platinum's moves have other values in the newest games, which a game played by the modern rules uses.");
         Line();
@@ -411,12 +417,9 @@ public static class Coverage
     private static string WaitsFor(EvolutionMethod method) => method switch
     {
         EvolutionMethod.Trade or EvolutionMethod.TradeHoldingItem or EvolutionMethod.TradeWithSpecies
-            => "trading (plan 07 · O5; in-game trades in plan 06 · R12). A Linking Cord used on the Pokémon does the same today",
-        EvolutionMethod.Beauty => "Poffins (plan 06 · R14)",
-        EvolutionMethod.LevelAtLocation => "maps with a Moss Rock, an Ice Rock or a magnetic field (plan 01)",
-        EvolutionMethod.LevelInRain => "weather in the field (plan 01)",
-        EvolutionMethod.LevelWithItemsInBag => "a way to collect the items (plan 03 · D12)",
-        EvolutionMethod.LevelAfterDamage => "a map with a Stone Arch (plan 03 · D12)",
+            => "trading with a friend (plan 07 · O5); the game's own trades (plan 06 · R12) and a Linking Cord used on the Pokémon set it off today",
+        EvolutionMethod.LevelWithItemsInBag => "a way to gather Meltan Candies (Pokémon GO's) and Gimmighoul Coins (Paldea, plan 23)",
+        EvolutionMethod.LevelAfterDamage => "a map with a Stone Arch (Galar, plan 23)",
         EvolutionMethod.Other => "a rule of its own",
         _ => ""
     };

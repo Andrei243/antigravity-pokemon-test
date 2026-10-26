@@ -375,7 +375,7 @@ internal sealed class ScriptWalk
                     break;
                 case Query.Badges:
                     foreach (int badges in new[] { c.Number, c.Number - 1 }.Where(b => b is > 0 and <= 8))
-                        Add($"{badges} badges", host => host.Story.SetBadges(host.Region, (1 << badges) - 1));
+                        Add($"{badges} badges{(string.IsNullOrEmpty(c.Name) ? "" : " of " + c.Name)}", host => host.Story.SetBadges(string.IsNullOrEmpty(c.Name) ? host.Region : c.Name, (1 << badges) - 1));
                     break;
                 case Query.Badge:
                     // (of the region the script plays in: a Johto Leader asks for a Johto badge, plan 20 · J9)
