@@ -51,7 +51,10 @@ public class PokemonModelTests
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0,
         // Batch 2 (Johto): Noctaugur's third eye on its brow, Cerberhound's two more heads
-        ["Noctaugur"] = 3, ["Cerberhound"] = 6
+        ["Noctaugur"] = 3, ["Cerberhound"] = 6,
+        // Batch 9 (Paldea): six mice, six eels, Habanerogue's third head, Hydrajet's head at its tail; the eyeless forebears' heirs
+        ["Squeakshire"] = 12, ["Wugsextet"] = 12, ["Habanerogue"] = 6, ["Hydrajet"] = 8, ["Lodestatic"] = 3,
+        ["Orthobore"] = 0, ["Barrowhound"] = 0, ["Chagamage"] = 0
     }.Concat(PokemonModels.Forms.Where(f => f.StartsWith("Unown-")).Select(f => KeyValuePair.Create(f, 1))).ToDictionary(e => e.Key, e => e.Value);
 
     /// <summary>
@@ -63,7 +66,9 @@ public class PokemonModelTests
     {
         ["Haunter"] = 3, ["Probopass"] = 3, ["Porygon-Z"] = 5, ["Alakazam-Mega"] = 6, ["Shedinja"] = 2, ["Hoopa-Unbound"] = 5,
         // Probopass's heir keeps its two Mini-Noses hovering free at its sides
-        ["Lodestarch"] = 3
+        ["Lodestarch"] = 3,
+        // Beadruin's ring of six beads floats round its body, as Chi-Yu's beads do round it in the original
+        ["Beadruin"] = 2
     };
 
     [Theory]

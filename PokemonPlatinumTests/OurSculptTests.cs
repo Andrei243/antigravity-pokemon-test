@@ -193,4 +193,59 @@ public class OurSculptTests
         Assert.All(flagged, n => Assert.Contains(n, PokemonLook.Females));
     }
 
+
+    /// <summary>Batch 9 and its supplement: the species of our own that evolve from Paldea's (Nos. 2916 to 3016), sculpted from the user's reference pictures.</summary>
+    private static PokemonSpecies[] Paldea => PokemonDatabase.Ours().Where(s => s.DexNumber is >= 2906 and <= 3099).ToArray();
+
+    [Fact]
+    public void EverySpeciesOfOursOfPaldeaIsHandBuiltAndItsOwn()
+    {
+        Assert.Equal(57, Paldea.Length);
+        foreach (var s in Paldea)
+        {
+            Assert.True(PokemonModels.HasModel(s.Name), $"{s.Name} has no sculpt of its own");
+            Assert.Contains(s.Name, PokemonModels.Species);
+            Assert.NotEqual(PokemonModels.Signature(ForebearOf(s).Name), PokemonModels.Signature(s.Name));
+            Assert.Equal(s.Name, PokemonModels.Build(s.Name).Species);
+        }
+    }
+
+    [Fact]
+    public void TrufflordKeepsTheFemaleOinkolognesLook()
+    {
+        // Oinkologne's female is a form of her own; Trufflord keeps the difference as a look of the one species
+        var flagged = Paldea.Where(s => s.GenderDifferences).Select(s => s.Name).ToArray();
+        Assert.Equal(new[] { "Trufflord" }, flagged);
+        Assert.Contains("Trufflord", PokemonLook.Females);
+        Assert.NotEqual(PokemonModels.Signature("Trufflord"), PokemonModels.Signature("Trufflord+f"));
+    }
+
+    [Fact]
+    public void EachPaldeaDecalCoversItsWholeSquare()
+    {
+        // As PokemonModelTests.EachDecalCoversItsWholeSquare, for this batch alone (that test walks every model)
+        foreach (var s in Paldea)
+            foreach (var name in s.GenderDifferences ? new[] { s.Name, s.Name + PokemonLook.FemaleSuffix } : new[] { s.Name })
+            {
+                var m = PokemonModels.Get(name);
+                var uvs = m.DecalUVs!;
+                for (int d = 0; d < m.Decals.Count; d++)
+                {
+                    int col = d % m.AtlasColumns, row = d / m.AtlasColumns;
+                    var center = new System.Numerics.Vector2((col + 0.5f) / m.AtlasColumns, (row + 0.5f) / m.AtlasRows);
+                    var half = new System.Numerics.Vector2(0.25f / m.AtlasColumns, 0.25f / m.AtlasRows);
+                    bool left = false, right = false, top = false, bottom = false;
+                    foreach (var uv in uvs)
+                    {
+                        if (System.MathF.Abs(uv.X - center.X) > 2f * half.X || System.MathF.Abs(uv.Y - center.Y) > 2f * half.Y) continue;
+                        left |= uv.X <= center.X - half.X;
+                        right |= uv.X >= center.X + half.X;
+                        top |= uv.Y <= center.Y - half.Y;
+                        bottom |= uv.Y >= center.Y + half.Y;
+                    }
+                    Assert.True(left && right && top && bottom, $"{name}: decal {d} isn't covered");
+                }
+            }
+    }
+
 }
