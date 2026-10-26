@@ -1,0 +1,42 @@
+{
+  "key": "new_mauville_entrance",
+  "index": 290,
+  "name": "New Mauville",
+  "matrix": 239,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_PYRE",
+  "nightMusic": "MUS_MT_PYRE",
+  "encounters": "new_mauville_entrance",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Voltorb", "level": 24 },
+    { "species": "Magnemite", "level": 24 },
+    { "species": "Voltorb", "level": 25 },
+    { "species": "Magnemite", "level": 25 },
+    { "species": "Voltorb", "level": 23 },
+    { "species": "Magnemite", "level": 23 },
+    { "species": "Voltorb", "level": 26 },
+    { "species": "Magnemite", "level": 26 },
+    { "species": "Voltorb", "level": 22 },
+    { "species": "Magnemite", "level": 22 },
+    { "species": "Voltorb", "level": 22 },
+    { "species": "Magnemite", "level": 22 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 4, "z": 6, "to": "route_110", "toWarp": 0 },
+    { "x": 4, "z": 1, "to": "new_mauville_inside", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": [
+    { "x": 4, "z": 2, "width": 1, "depth": 1, "script": "NewMauville_Entrance_EventScript_Door", "variable": "VAR_NEW_MAUVILLE_STATE", "value": "0" }
+  ]
+}

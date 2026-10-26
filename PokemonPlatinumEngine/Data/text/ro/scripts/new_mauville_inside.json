@@ -1,0 +1,76 @@
+{
+  "RedButton": [
+    {
+      "en": [
+        "{player} stepped on the switch. Click..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "... ... ... ... ... ..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The generator appears to have stopped..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Generator": [
+    {
+      "en": [
+        "The generator is giving off heat that can be felt from a distance. It should be switched off as soon as possible."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The generator has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Voltorb1": [
+    {
+      "en": [
+        "The Poké Ball was a Voltorb!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Voltorb2": [
+    {
+      "en": [
+        "The Poké Ball was a Voltorb!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Voltorb3": [
+    {
+      "en": [
+        "The Poké Ball was a Voltorb!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

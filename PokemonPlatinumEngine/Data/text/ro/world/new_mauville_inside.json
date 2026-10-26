@@ -1,0 +1,35 @@
+{
+  "people": {
+    "item_ball_6": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball_7": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball_8": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

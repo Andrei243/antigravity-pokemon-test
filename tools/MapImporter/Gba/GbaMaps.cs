@@ -232,8 +232,39 @@ public sealed class GbaMaps
     {
         // Steven's cave's mouth in Meteor Falls' first room (METATILE_MeteorFalls_CaveEntrance_Top, _Left, _Bottom, _Right)
         new GbaPatch("LAYOUT_METEOR_FALLS_1F_1R_STEVENS_CAVE_OPEN", "LAYOUT_METEOR_FALLS_1F_1R",
-            new[] { (4, 1, 0x246, true), (3, 2, 0x24D, true), (4, 2, 0x24E, false), (5, 2, 0x24F, true) })
+            new[] { (4, 1, 0x246, true), (3, 2, 0x24D, true), (4, 2, 0x24E, false), (5, 2, 0x24F, true) }),
+        // Plan 21 · H12, part d: New Mauville. Its entrance's door shut until the Basement Key is used
+        // (NewMauville_Entrance_EventScript_CloseDoor; the way's own tile is left open here, since the overlay's door shuts
+        // it), the barriers inside as a blue switch and a green one leave them (..._SetBarrierStateBlueButton and
+        // _GreenButton: each lowers its own colour and raises the other) and the generator switched off (_SetGeneratorOffMetatiles)
+        new GbaPatch("LAYOUT_NEW_MAUVILLE_ENTRANCE_CLOSED", "LAYOUT_NEW_MAUVILLE_ENTRANCE",
+            new[] { (3, 0, 0x314, true), (4, 0, 0x315, true), (5, 0, 0x316, true), (3, 1, 0x31C, true), (4, 1, 0x31D, false), (5, 1, 0x31E, true) }),
+        new GbaPatch("LAYOUT_NEW_MAUVILLE_INSIDE_BLUE", "LAYOUT_NEW_MAUVILLE_INSIDE", NewMauvilleBarriers(blue: true)),
+        new GbaPatch("LAYOUT_NEW_MAUVILLE_INSIDE_GREEN", "LAYOUT_NEW_MAUVILLE_INSIDE", NewMauvilleBarriers(blue: false)),
+        new GbaPatch("LAYOUT_NEW_MAUVILLE_INSIDE_GENERATOR_OFF", "LAYOUT_NEW_MAUVILLE_INSIDE",
+            new[] { (33, 6, 0x24F, false), (32, 2, 0x2F0, true), (33, 2, 0x2F1, true), (34, 2, 0x2F2, true), (35, 2, 0x2F3, true),
+                (32, 3, 0x2F4, true), (33, 3, 0x2F5, true), (34, 3, 0x2F6, true), (35, 3, 0x2F7, true) })
     };
+
+    /// <summary>
+    /// New Mauville's barriers once a switch of one colour is stepped on: that colour's four barriers lowered (their two
+    /// upper blocks the hidden barrier's, the two lower the floor's shadow and the wall's edge, open), the other colour's
+    /// raised, the switches of that colour pressed and the other colour's lit (Emerald's metatiles, as its scripts lay them).
+    /// </summary>
+    private static (int X, int Y, int Metatile, bool Blocked)[] NewMauvilleBarriers(bool blue)
+    {
+        (int X, int Y)[] blues = { (23, 34), (10, 16), (10, 0) }, greens = { (37, 33), (28, 22), (10, 24), (21, 2) };
+        (int X, int Y)[] blueButtons = { (6, 11), (13, 10), (16, 22), (4, 26), (30, 38) }, greenButtons = { (2, 11), (17, 10), (25, 18), (18, 36) };
+        var blocks = new List<(int, int, int, bool)>();
+        foreach (var (x, y) in blue ? blues : greens)
+            blocks.AddRange(new[] { (x, y, 0x269, true), (x, y + 1, 0x271, true), (x, y + 2, 0x26D, false), (x, y + 3, 0x281, false) });
+        int top = blue ? 0x2B6 : 0x2B7, topMid = blue ? 0x2BE : 0x2BF, bottomMid = blue ? 0x2C6 : 0x2C7, bottom = blue ? 0x2CE : 0x2CF;
+        foreach (var (x, y) in blue ? greens : blues)
+            blocks.AddRange(new[] { (x, y, top, true), (x, y + 1, topMid, true), (x, y + 2, bottomMid, true), (x, y + 3, bottom, true) });
+        foreach (var (x, y) in blue ? blueButtons : greenButtons) blocks.Add((x, y, 0x24F, false));
+        foreach (var (x, y) in blue ? greenButtons : blueButtons) blocks.Add((x, y, blue ? 0x22E : 0x236, false));
+        return blocks.ToArray();
+    }
 
     /// <summary>Whether a patch of this layout opens the block a warp stands on (<see cref="GbaPatch.Opens"/>).</summary>
     public static bool PatchOpens(string layout, int x, int y) => Patches.Any(p => p.Base == layout && p.Opens(x, y));

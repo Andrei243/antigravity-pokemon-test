@@ -1343,18 +1343,21 @@ public class Map
     public List<SwappedPlace> ApplySwappedPlaces(Func<string, int> variable, Func<string, bool>? flag = null)
     {
         var changed = new List<SwappedPlace>();
-        foreach (var place in SwappedPlaces)
-        {
-            // A season's chunks are the season's to lay (plan 22 · U4), never the story's
-            if (place.Season != null) continue;
-            bool swap = place.Flag != null ? flag?.Invoke(place.Flag) == true : variable(place.Var) == place.Value;
-            if (swap == place.Swapped) continue;
-            for (int i = 0; i < place.Cells.Count; i++)
-                PutChunk(place.Cells[i].X, place.Cells[i].Y, swap ? place.After[i] : place.Before[i]);
-            place.Swapped = swap;
-            BuildingCache = null;
-            changed.Add(place);
-        }
+        // Every place that goes back is put back before any is laid, so two swaps of one cell that take turns (plan 21 ·
+        // H12, part d: New Mauville's blue barriers and its green ones) never leave the one going over the one coming
+        for (int pass = 0; pass < 2; pass++)
+            foreach (var place in SwappedPlaces)
+            {
+                // A season's chunks are the season's to lay (plan 22 · U4), never the story's
+                if (place.Season != null) continue;
+                bool swap = place.Flag != null ? flag?.Invoke(place.Flag) == true : variable(place.Var) == place.Value;
+                if (swap == place.Swapped || swap != (pass == 1)) continue;
+                for (int i = 0; i < place.Cells.Count; i++)
+                    PutChunk(place.Cells[i].X, place.Cells[i].Y, swap ? place.After[i] : place.Before[i]);
+                place.Swapped = swap;
+                BuildingCache = null;
+                changed.Add(place);
+            }
         return changed;
     }
 

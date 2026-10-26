@@ -2,13 +2,12 @@
   // Route 110 (plan 21 · H3, part b): the long road north from Slateport City to Mauville City, with the Seaside Cycling
   // Road running over it from one gate house to the other, the Trick House by the path and a crowd of cyclists. The
   // rival waits by the road's north end and battles the player at the first step past them (route_110.txt), giving
-  // the Itemfinder. New Mauville's door, under the water by the road, is shut until Wattson's Basement Key (H4 and
-  // after); Team Aqua's grunts stand at the way west to Route 103 until Mt. Chimney (H4), and the professor's own scene
+  // the Itemfinder. New Mauville's way in, under the water by the road, is open, and its own door inside waits for
+  // Wattson's Basement Key (plan 21 · H12, part d); Team Aqua's grunts stand at the way west to Route 103 until Mt. Chimney (H4), and the professor's own scene
   // here, his number for Match Call, is left for later
   "area": "route_110",
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 0 ],
   "triggers": [
     { "trigger": 2, "script": "RivalTrigger" },
     { "trigger": 3, "script": "RivalTrigger" },

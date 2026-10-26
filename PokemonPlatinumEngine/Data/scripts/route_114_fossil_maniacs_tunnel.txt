@@ -5,6 +5,20 @@
 
 script FossilManiac
   speaker "Fossil Maniac"
+  if flag HoennHallOfFame goto CaveIn
   say "I'm digging for fossils! I dig and dig, every day. Pokémon from ancient times lie hidden in the rock."
   say "They say fossils turn up in the desert, too. If you ever find one, I'd love to see it!"
+  end
+label CaveIn
+  say "Oh... careful back there. I was digging away when the whole wall gave in. There's a great cavern under the desert now."
+  say "I've let it be. I doubt there are any fossils down there..."
+  end
+
+
+# Plan 21 · H12, part d: once Hoenn's Hall of Fame is entered, the cave-in behind him has opened onto the Desert Underpass
+# (the overlay's door, opened by HoennHallOfFame) and he stands aside from it, facing the way he came (Emerald's
+# Route114_FossilManiacsTunnel_EventScript_MoveFossilManiac, which puts him on 6, 5)
+script OnEnter
+  if not flag HoennHallOfFame end
+  place fossil_maniac 6 5 down
   end

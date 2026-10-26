@@ -6187,3 +6187,34 @@ plan 03 · D12a's check for Hoenn's own game. The lines are our own.
   by metatile on sixteen route tiles, `abnormal_weather.inc`, which the pinned cache doesn't hold; a swap of the
   overworld builds the whole map again, so sixteen of them want a cheaper swap first), New Mauville, the Desert
   Underpass, Trainer Hill, Mirage Island, Altering Cave, the event islands, the S.S. Tidal and the island's halls.
+## New Mauville and the Desert Underpass (2026-10-26, plan 21 · H12, part d)
+
+Two of Emerald's places left for the time after Norman and after the Hall of Fame. The lines are our own.
+
+- **Wattson's errand.** Wattson stands in Mauville's street once Norman is beaten (as part H4 left him). Spoken to, he
+  gives the Basement Key (FLAG_GOT_BASEMENT_KEY_FROM_WATTSON) and asks for New Mauville's generator to be stopped; once
+  it is (VAR_NEW_MAUVILLE_STATE 2) he gives TM24, Thunderbolt (FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON), and the next
+  arrival in the city puts him back in his Gym, as Emerald's MoveWattsonBackToGym does. HeartGold's key item has the
+  same name, so New Mauville's door asks Wattson's flag, not the bag (Goldenrod's Radio Tower made the same choice).
+- **The door.** Route 110's way in under the Cycling Road is open (it had been locked); the entrance's own door is
+  shut until the key is used from the step before it. Emerald lays the shut door's six blocks on load while the state
+  is 0; here they are a patch of the layout (GbaMaps.Patches, chunk 829) swapped in by VAR_NEW_MAUVILLE_STATE 0,
+  with the way's own tile left open in the patch, since the overlay's door (FLAG_HOENN_NEW_MAUVILLE_OPENED, ours) is
+  what shuts it, so a walk of the whole game still goes in.
+- **The barriers.** Emerald's switches lay a dozen barrier blocks each by setmetatile, keyed by its temporary
+  variables (VAR_TEMP_1 the blue switch stepped on, VAR_TEMP_2 the green), which its arrival sets back to 0 with
+  every barrier up. Here each switch's layout is a patch of its own (chunks 830 to 837) swapped in by the same two
+  variables, which the plant's OnTransition sets back to 0 behind the warp's fade. The two patches share their cells
+  and take turns, so Map.ApplySwappedPlaces now puts back whatever goes before laying whatever comes (it had done both
+  in the list's order, and a swap going back laid the plain chunks over the one coming). The red switch stops the
+  generator (the state 2, chunk 839 for its quiet blocks), for good.
+- **The Voltorb.** Three of the plant's Poké Balls are Voltorb at level 25, as in the Aqua Hideout: whatever comes of
+  the battle, won, run from or caught, each is gone for good (FLAG_DEFEATED_VOLTORB_1_NEW_MAUVILLE to _3_).
+- **The Desert Underpass.** The Fossil Maniac's tunnel opens onto it once Hoenn's Hall of Fame is entered (Emerald's
+  FLAG_SYS_GAME_CLEAR, here HoennHallOfFame on the overlay's door), and the maniac stands aside on 6, 5. At its east
+  end lies the fossil Mirage Tower's fall left: the Claw Fossil after the Root, the Root after the Claw; whoever took
+  neither finds one stuck fast and nothing to take (Emerald shows it and gives nothing). Its wild Pokémon are Emerald's
+  (Ditto, Whismur, Loudred).
+- **Left for a later part**: the Marine and Terra Caves with the Weather Institute's reports, Trainer Hill, Mirage
+  Island, Altering Cave, the event islands, the S.S. Tidal, the island's halls, the Devon Corporation's revival of the
+  desert's fossils, and Wattson's rematch in his Gym (Emerald's FLAG_WATTSON_REMATCH_AVAILABLE).

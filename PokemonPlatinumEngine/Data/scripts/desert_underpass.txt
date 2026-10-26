@@ -1,0 +1,24 @@
+# The Desert Underpass (plan 21 · H12, part d). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/DesertUnderpass/scripts.inc).
+#
+# The cavern the Fossil Maniac's digging broke into, behind his tunnel once Hoenn's Hall of Fame is entered. At its far
+# east end lies the fossil Mirage Tower's fall left behind: the Claw Fossil for whoever took the Root Fossil there
+# (FLAG_CHOSE_ROOT_FOSSIL), the Root Fossil for whoever took the Claw (FLAG_CHOSE_CLAW_FOSSIL), and nothing to take for
+# whoever took neither. Taken, it is gone for good (FLAG_HIDE_DESERT_UNDERPASS_FOSSIL).
+
+
+script Fossil
+  speaker none
+  if flag FLAG_CHOSE_ROOT_FOSSIL goto Claw
+  if flag FLAG_CHOSE_CLAW_FOSSIL goto Root
+  text "A fossil is set fast in the rock. It won't come loose."
+  end
+label Claw
+  find "Claw Fossil"
+  goto Taken
+label Root
+  find "Root Fossil"
+label Taken
+  setflag FLAG_HIDE_DESERT_UNDERPASS_FOSSIL
+  hide self
+  end

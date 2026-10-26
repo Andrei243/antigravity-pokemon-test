@@ -32,8 +32,6 @@ public class HoennSpeciesTests
         "Surskit", "Masquerain",
         // Evolved by trading, and Hoenn sells or gives no Linking Cord yet
         "Alakazam", "Golem", "Machamp", "Kingdra", "Huntail", "Gorebyss",
-        // New Mauville, not built
-        "Magnemite", "Magneton", "Voltorb",
         // The Devon Corporation's revival of the desert's two fossils, not built
         "Lileep", "Cradily", "Anorith", "Armaldo",
         // Route 119's Feebas tiles, not built for Hoenn
