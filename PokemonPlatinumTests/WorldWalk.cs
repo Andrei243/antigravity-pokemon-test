@@ -350,6 +350,8 @@ internal static class WorldWalk
         new("IndigoVictoryRoad_2F", 54, 23, Direction.Down),
         // The port's east steps lead to the Dunsparce Tunnel's far end, which exists only once the dig has laid the tunnel
         // out again (FLAG_THREE_ISLAND_TUNNEL_DUG_OUT): the walk goes by the layout before it
+        // Olivine's quay and the S.S. Aqua: come to by the sailor only once the Hall of Fame is entered (FLAG_JOHTO_SS_AQUA_PASSAGE)
+        new("SSAqua_OlivinePort", 11, 12, Direction.Down),
         new("ThreeIsland", 134, 45, Direction.Down),
         new("ThreeIsland_DunsparceTunnel", 25, 5, Direction.Down),
         // Icefall Cave's thin ice (see FallenTo): the stairs it hides lead down to B1F
