@@ -7,7 +7,7 @@ using Xunit;
 namespace PokemonPlatinumTests;
 
 /// <summary>
-/// The sculpts of the species of our own (plan 03 Ã‚Â· D14, PokemonModels.Ours.*.cs): each batch whose looks are built
+/// The sculpts of the species of our own (plan 03 · D14, PokemonModels.Ours.*.cs): each batch whose looks are built
 /// is hand-built whole, every sculpt its own and not its forebear's, its shiny palette given by the rule of its number
 /// and its female look kept where its forebear's is (the model tests hold each to the rest: one piece, its eyes, its
 /// decals covered).

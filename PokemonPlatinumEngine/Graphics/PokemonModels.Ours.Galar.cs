@@ -5,7 +5,7 @@ using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
 
-// The species of our own that evolve past level 100 (plan 03 Ãƒâ€šÃ‚Â· D14), batch 8: Galar's and Hisui's, in our numbers'
+// The species of our own that evolve past level 100 (plan 03 · D14), batch 8: Galar's and Hisui's, in our numbers'
 // order (2000 + the forebear's National number), then the supplement's designs grown from regional forms (5000 + a
 // Galarian form's National number, 6000 + a Hisuian one's), each built on that form's own look. Each is sculpted from
 // its forebear's own sculpt as the look of docs/plans/D14-proposals-galar.md and -galar-supplement.md and the user's

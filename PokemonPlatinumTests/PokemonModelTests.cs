@@ -10,7 +10,7 @@ using static PokemonPlatinumTests.MeshPieces;
 
 namespace PokemonPlatinumTests;
 
-/// <summary>PokÃ©mon models, version 2 (plan 04 Â· G7): the SDF bodies, their skeletons, decals and clips.</summary>
+/// <summary>Pokémon models, version 2 (plan 04 · G7): the SDF bodies, their skeletons, decals and clips.</summary>
 public class PokemonModelTests
 {
     private readonly ITestOutputHelper output;
@@ -32,7 +32,7 @@ public class PokemonModelTests
         ["Kangaskhan-Mega"] = 4, ["Staryu"] = 0, ["Starmie"] = 0, ["Starmie-Mega"] = 0, ["Chinchou"] = 0, ["Lunatone"] = 1, ["Claydol"] = 7,
         ["Beldum"] = 1, ["Regirock"] = 0, ["Regice"] = 0, ["Registeel"] = 0, ["Roggenrola"] = 0, ["Boldore"] = 0, ["Sigilyph"] = 1, ["Vanilluxe"] = 4, ["Klang"] = 1, ["Klinklang"] = 1, ["Litwick"] = 1, ["Deino"] = 0, ["Zweilous"] = 0,
         ["Honedge"] = 1, ["Aegislash"] = 1, ["Aegislash-Blade"] = 1,
-        // Plan 03 Â· D14's of Sinnoh: Yanmega's heir has its eyes sculpted, Carnivine's two heads two pairs
+        // Plan 03 · D14's of Sinnoh: Yanmega's heir has its eyes sculpted, Carnivine's two heads two pairs
         ["Meganeuron"] = 0, ["Flytrapex"] = 4,
         ["Binacle"] = 4, ["Trevenant"] = 1,
         ["Type: Null"] = 0, ["Dhelmise"] = 1,
@@ -46,7 +46,7 @@ public class PokemonModelTests
         ["Brambleghast"] = 0, ["Scovillain"] = 4, ["Scovillain-Mega"] = 4, ["Wugtrio"] = 6, ["Orthworm"] = 0, ["Greavard"] = 0,
         ["Houndstone"] = 0,
         ["Sandy Shocks"] = 3, ["Iron Jugulis"] = 6, ["Poltchageist"] = 0, ["Sinistcha"] = 0,
-        // Plan 03 Â· D14: the species of our own (the face on Najarok's hood has eyes of its own)
+        // Plan 03 · D14: the species of our own (the face on Najarok's hood has eyes of its own)
         ["Najarok"] = 4, ["Molemount"] = 10, ["Tripluma"] = 6, ["Clamspire"] = 4, ["Palmagus"] = 14, ["Smoglom"] = 6, ["Matriroo"] = 4,
         ["Stellamir"] = 0,
         ["Dogunarch"] = 7, ["Regimonolith"] = 0, ["Regiglacier"] = 0, ["Regiferrum"] = 0,
